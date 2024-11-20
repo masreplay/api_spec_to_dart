@@ -19,7 +19,9 @@ _$SubjectImpl _$$SubjectImplFromJson(Map<String, dynamic> json) =>
       isEnrolled: json['is_enrolled'] as bool?,
       isEnabled: json['is_enabled'] as bool?,
       courseStatus: (json['course_status'] as num?)?.toInt(),
-      courseStaff: json['course_staff'] as List<dynamic>?,
+      courseStaff: (json['course_staff'] as List<dynamic>?)
+          ?.map((e) => CourseStaffsTable.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$SubjectImplToJson(_$SubjectImpl instance) =>

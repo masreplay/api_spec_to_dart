@@ -16,7 +16,7 @@ class BaseResponseUnionDictStrAnyNoneType
     @JsonKey(name: 'message') required String? message,
 
     /// Data
-    @JsonKey(name: 'data') required Map? data,
+    @JsonKey(name: 'data') required Map<String, dynamic>? data,
   }) = _BaseResponseUnionDictStrAnyNoneType;
 
   factory BaseResponseUnionDictStrAnyNoneType.fromJson(

@@ -11,7 +11,9 @@ _$PaymentInfoResponseImpl _$$PaymentInfoResponseImplFromJson(
     _$PaymentInfoResponseImpl(
       amount:
           PaymentInfoAmount.fromJson(json['amount'] as Map<String, dynamic>),
-      paymentMethods: json['payment_methods'] as List<dynamic>,
+      paymentMethods: (json['payment_methods'] as List<dynamic>)
+          .map((e) => PaymentMethodPublic.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$PaymentInfoResponseImplToJson(

@@ -11,7 +11,10 @@ _$BaseResponseListStudentSelectedCoursesPublicImpl
             Map<String, dynamic> json) =>
         _$BaseResponseListStudentSelectedCoursesPublicImpl(
           message: json['message'] as String?,
-          data: json['data'] as List<dynamic>,
+          data: (json['data'] as List<dynamic>)
+              .map((e) => StudentSelectedCoursesPublic.fromJson(
+                  e as Map<String, dynamic>))
+              .toList(),
         );
 
 Map<String, dynamic> _$$BaseResponseListStudentSelectedCoursesPublicImplToJson(

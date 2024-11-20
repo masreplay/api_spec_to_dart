@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../convertors.dart';
+import './models.dart';
 
 part 'lecturer_assignment_public.freezed.dart';
 part 'lecturer_assignment_public.g.dart';
@@ -36,7 +37,7 @@ class LecturerAssignmentPublic with _$LecturerAssignmentPublic {
     @JsonKey(name: 'created_at_formatted') required String createdAtFormatted,
 
     /// Files
-    @JsonKey(name: 'files') required List files,
+    @JsonKey(name: 'files') required List<FilePublic> files,
   }) = _LecturerAssignmentPublic;
 
   factory LecturerAssignmentPublic.fromJson(Map<String, dynamic> json) =>

@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../convertors.dart';
+import './models.dart';
 
 part 'ui_form.freezed.dart';
 part 'ui_form.g.dart';
@@ -15,7 +16,7 @@ class UIForm with _$UIForm {
     @JsonKey(name: 'key') required String key,
 
     /// Fields
-    @JsonKey(name: 'fields') required List fields,
+    @JsonKey(name: 'fields') required List<UIFormField> fields,
 
     /// Title
     @JsonKey(name: 'title') required String title,

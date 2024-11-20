@@ -9,7 +9,9 @@ part of 'home_feed_public.dart';
 _$HomeFeedPublicImpl _$$HomeFeedPublicImplFromJson(Map<String, dynamic> json) =>
     _$HomeFeedPublicImpl(
       type: json['type'] as String? ?? feed,
-      sections: json['sections'] as List<dynamic>,
+      sections: (json['sections'] as List<dynamic>)
+          .map((e) => HomeFeedSectionModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$HomeFeedPublicImplToJson(

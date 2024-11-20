@@ -77,6 +77,10 @@ class ${className} with _\$${className} {
     final dartType = config.dartType(
       format: value.format,
       type: value.type,
+      genericType: value.items?.mapOrNull(
+        // TODO(mohammed.atheer): handle type recursively
+        ref: (value) => config.className(value.ref!.split('/').last),
+      ),
     );
 
     return _generateField(
@@ -129,6 +133,9 @@ class ${className} with _\$${className} {
             return config.dartType(
               type: value.type,
               format: value.format,
+              genericType: value.items?.mapOrNull(
+                ref: (value) => config.className(value.ref!.split('/').last),
+              ),
             );
           },
           ref: (value) => config.className(value.ref!.split('/').last),
@@ -170,7 +177,7 @@ class ${className} with _\$${className} {
       ];
       buffer.writeln('/// ${commentParts.join(', ')}');
     }
-    
+
     // Add @Default annotation if default value is provided
     if (freezedDefaultValue != null) {
       buffer.writeln('@Default($freezedDefaultValue)');

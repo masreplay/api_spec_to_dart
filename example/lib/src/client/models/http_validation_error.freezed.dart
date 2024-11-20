@@ -22,7 +22,7 @@ HttpValidationError _$HttpValidationErrorFromJson(Map<String, dynamic> json) {
 mixin _$HttpValidationError {
   /// Detail
   @JsonKey(name: 'detail')
-  List<dynamic> get detail => throw _privateConstructorUsedError;
+  List<ValidationError> get detail => throw _privateConstructorUsedError;
 
   /// Serializes this HttpValidationError to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,7 +40,7 @@ abstract class $HttpValidationErrorCopyWith<$Res> {
           HttpValidationError value, $Res Function(HttpValidationError) then) =
       _$HttpValidationErrorCopyWithImpl<$Res, HttpValidationError>;
   @useResult
-  $Res call({@JsonKey(name: 'detail') List<dynamic> detail});
+  $Res call({@JsonKey(name: 'detail') List<ValidationError> detail});
 }
 
 /// @nodoc
@@ -64,7 +64,7 @@ class _$HttpValidationErrorCopyWithImpl<$Res, $Val extends HttpValidationError>
       detail: null == detail
           ? _value.detail
           : detail // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<ValidationError>,
     ) as $Val);
   }
 }
@@ -77,7 +77,7 @@ abstract class _$$HttpValidationErrorImplCopyWith<$Res>
       __$$HttpValidationErrorImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'detail') List<dynamic> detail});
+  $Res call({@JsonKey(name: 'detail') List<ValidationError> detail});
 }
 
 /// @nodoc
@@ -99,7 +99,7 @@ class __$$HttpValidationErrorImplCopyWithImpl<$Res>
       detail: null == detail
           ? _value._detail
           : detail // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<ValidationError>,
     ));
   }
 }
@@ -109,7 +109,7 @@ class __$$HttpValidationErrorImplCopyWithImpl<$Res>
 @JsonSerializable(converters: convertors)
 class _$HttpValidationErrorImpl extends _HttpValidationError {
   const _$HttpValidationErrorImpl(
-      {@JsonKey(name: 'detail') required final List<dynamic> detail})
+      {@JsonKey(name: 'detail') required final List<ValidationError> detail})
       : _detail = detail,
         super._();
 
@@ -117,12 +117,12 @@ class _$HttpValidationErrorImpl extends _HttpValidationError {
       _$$HttpValidationErrorImplFromJson(json);
 
   /// Detail
-  final List<dynamic> _detail;
+  final List<ValidationError> _detail;
 
   /// Detail
   @override
   @JsonKey(name: 'detail')
-  List<dynamic> get detail {
+  List<ValidationError> get detail {
     if (_detail is EqualUnmodifiableListView) return _detail;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_detail);
@@ -165,8 +165,8 @@ class _$HttpValidationErrorImpl extends _HttpValidationError {
 
 abstract class _HttpValidationError extends HttpValidationError {
   const factory _HttpValidationError(
-          {@JsonKey(name: 'detail') required final List<dynamic> detail}) =
-      _$HttpValidationErrorImpl;
+      {@JsonKey(name: 'detail')
+      required final List<ValidationError> detail}) = _$HttpValidationErrorImpl;
   const _HttpValidationError._() : super._();
 
   factory _HttpValidationError.fromJson(Map<String, dynamic> json) =
@@ -175,7 +175,7 @@ abstract class _HttpValidationError extends HttpValidationError {
   /// Detail
   @override
   @JsonKey(name: 'detail')
-  List<dynamic> get detail;
+  List<ValidationError> get detail;
 
   /// Create a copy of HttpValidationError
   /// with the given fields replaced by the non-null parameter values.

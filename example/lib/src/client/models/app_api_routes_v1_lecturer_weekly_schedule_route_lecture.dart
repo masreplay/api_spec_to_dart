@@ -43,7 +43,7 @@ class AppApiRoutesV1LecturerWeeklyScheduleRouteLecture
     @JsonKey(name: 'division') required String? division,
 
     /// Members
-    @JsonKey(name: 'members') required List members,
+    @JsonKey(name: 'members') required List<dynamic> members,
 
     /// Has Code
     @JsonKey(name: 'has_code') required bool? hasCode,

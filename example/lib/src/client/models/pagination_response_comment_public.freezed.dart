@@ -35,7 +35,7 @@ mixin _$PaginationResponseCommentPublic {
 
   /// Data
   @JsonKey(name: 'data')
-  List<dynamic> get data => throw _privateConstructorUsedError;
+  List<CommentPublic> get data => throw _privateConstructorUsedError;
 
   /// Serializes this PaginationResponseCommentPublic to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -59,7 +59,7 @@ abstract class $PaginationResponseCommentPublicCopyWith<$Res> {
       {@JsonKey(name: 'page') int page,
       @JsonKey(name: 'per_page') int perPage,
       @JsonKey(name: 'total') int total,
-      @JsonKey(name: 'data') List<dynamic> data});
+      @JsonKey(name: 'data') List<CommentPublic> data});
 }
 
 /// @nodoc
@@ -99,7 +99,7 @@ class _$PaginationResponseCommentPublicCopyWithImpl<$Res,
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<CommentPublic>,
     ) as $Val);
   }
 }
@@ -117,7 +117,7 @@ abstract class _$$PaginationResponseCommentPublicImplCopyWith<$Res>
       {@JsonKey(name: 'page') int page,
       @JsonKey(name: 'per_page') int perPage,
       @JsonKey(name: 'total') int total,
-      @JsonKey(name: 'data') List<dynamic> data});
+      @JsonKey(name: 'data') List<CommentPublic> data});
 }
 
 /// @nodoc
@@ -156,7 +156,7 @@ class __$$PaginationResponseCommentPublicImplCopyWithImpl<$Res>
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<CommentPublic>,
     ));
   }
 }
@@ -170,7 +170,7 @@ class _$PaginationResponseCommentPublicImpl
       {@JsonKey(name: 'page') required this.page,
       @JsonKey(name: 'per_page') required this.perPage,
       @JsonKey(name: 'total') required this.total,
-      @JsonKey(name: 'data') required final List<dynamic> data})
+      @JsonKey(name: 'data') required final List<CommentPublic> data})
       : _data = data,
         super._();
 
@@ -194,12 +194,12 @@ class _$PaginationResponseCommentPublicImpl
   final int total;
 
   /// Data
-  final List<dynamic> _data;
+  final List<CommentPublic> _data;
 
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic> get data {
+  List<CommentPublic> get data {
     if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_data);
@@ -250,7 +250,7 @@ abstract class _PaginationResponseCommentPublic
           {@JsonKey(name: 'page') required final int page,
           @JsonKey(name: 'per_page') required final int perPage,
           @JsonKey(name: 'total') required final int total,
-          @JsonKey(name: 'data') required final List<dynamic> data}) =
+          @JsonKey(name: 'data') required final List<CommentPublic> data}) =
       _$PaginationResponseCommentPublicImpl;
   const _PaginationResponseCommentPublic._() : super._();
 
@@ -275,7 +275,7 @@ abstract class _PaginationResponseCommentPublic
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic> get data;
+  List<CommentPublic> get data;
 
   /// Create a copy of PaginationResponseCommentPublic
   /// with the given fields replaced by the non-null parameter values.

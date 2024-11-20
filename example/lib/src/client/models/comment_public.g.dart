@@ -16,7 +16,9 @@ _$CommentPublicImpl _$$CommentPublicImplFromJson(Map<String, dynamic> json) =>
       parent: json['parent'] == null
           ? null
           : CommentPublic.fromJson(json['parent'] as Map<String, dynamic>),
-      replies: json['replies'] as List<dynamic>,
+      replies: (json['replies'] as List<dynamic>)
+          .map((e) => CommentPublic.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$CommentPublicImplToJson(_$CommentPublicImpl instance) =>

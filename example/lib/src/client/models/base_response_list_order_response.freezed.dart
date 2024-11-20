@@ -27,7 +27,7 @@ mixin _$BaseResponseListOrderResponse {
 
   /// Data
   @JsonKey(name: 'data')
-  List<dynamic> get data => throw _privateConstructorUsedError;
+  List<OrderResponse> get data => throw _privateConstructorUsedError;
 
   /// Serializes this BaseResponseListOrderResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -49,7 +49,7 @@ abstract class $BaseResponseListOrderResponseCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<dynamic> data});
+      @JsonKey(name: 'data') List<OrderResponse> data});
 }
 
 /// @nodoc
@@ -79,7 +79,7 @@ class _$BaseResponseListOrderResponseCopyWithImpl<$Res,
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<OrderResponse>,
     ) as $Val);
   }
 }
@@ -95,7 +95,7 @@ abstract class _$$BaseResponseListOrderResponseImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<dynamic> data});
+      @JsonKey(name: 'data') List<OrderResponse> data});
 }
 
 /// @nodoc
@@ -124,7 +124,7 @@ class __$$BaseResponseListOrderResponseImplCopyWithImpl<$Res>
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<OrderResponse>,
     ));
   }
 }
@@ -136,7 +136,7 @@ class _$BaseResponseListOrderResponseImpl
     extends _BaseResponseListOrderResponse {
   const _$BaseResponseListOrderResponseImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required final List<dynamic> data})
+      @JsonKey(name: 'data') required final List<OrderResponse> data})
       : _data = data,
         super._();
 
@@ -150,12 +150,12 @@ class _$BaseResponseListOrderResponseImpl
   final String? message;
 
   /// Data
-  final List<dynamic> _data;
+  final List<OrderResponse> _data;
 
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic> get data {
+  List<OrderResponse> get data {
     if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_data);
@@ -202,7 +202,7 @@ abstract class _BaseResponseListOrderResponse
     extends BaseResponseListOrderResponse {
   const factory _BaseResponseListOrderResponse(
           {@JsonKey(name: 'message') required final String? message,
-          @JsonKey(name: 'data') required final List<dynamic> data}) =
+          @JsonKey(name: 'data') required final List<OrderResponse> data}) =
       _$BaseResponseListOrderResponseImpl;
   const _BaseResponseListOrderResponse._() : super._();
 
@@ -217,7 +217,7 @@ abstract class _BaseResponseListOrderResponse
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic> get data;
+  List<OrderResponse> get data;
 
   /// Create a copy of BaseResponseListOrderResponse
   /// with the given fields replaced by the non-null parameter values.

@@ -13,7 +13,9 @@ _$CourseSubjectPublicImpl _$$CourseSubjectPublicImplFromJson(
       courseSubjectHeader: json['course_subject_header'] as String,
       courseSubjectContent: json['course_subject_content'] as String,
       id: (json['id'] as num).toInt(),
-      attachments: json['attachments'] as List<dynamic>?,
+      attachments: (json['attachments'] as List<dynamic>?)
+          ?.map((e) => AttachmentResponse.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$CourseSubjectPublicImplToJson(

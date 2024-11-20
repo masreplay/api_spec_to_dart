@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../convertors.dart';
+import './models.dart';
 
 part 'pagination_response_comment_public.freezed.dart';
 part 'pagination_response_comment_public.g.dart';
@@ -21,7 +22,7 @@ class PaginationResponseCommentPublic with _$PaginationResponseCommentPublic {
     @JsonKey(name: 'total') required int total,
 
     /// Data
-    @JsonKey(name: 'data') required List data,
+    @JsonKey(name: 'data') required List<CommentPublic> data,
   }) = _PaginationResponseCommentPublic;
 
   factory PaginationResponseCommentPublic.fromJson(Map<String, dynamic> json) =>

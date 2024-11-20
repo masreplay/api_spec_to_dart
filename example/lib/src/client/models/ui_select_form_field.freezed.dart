@@ -50,7 +50,8 @@ mixin _$UISelectFormField {
 
   /// Options
   @JsonKey(name: 'options')
-  List<dynamic> get options => throw _privateConstructorUsedError;
+  List<UISelectFormFieldOption> get options =>
+      throw _privateConstructorUsedError;
 
   /// Default Value
   @JsonKey(name: 'default_value')
@@ -84,7 +85,7 @@ abstract class $UISelectFormFieldCopyWith<$Res> {
       @JsonKey(name: 'read_only') bool readOnly,
       @JsonKey(name: 'doc') String? doc,
       @JsonKey(name: 'type') String type,
-      @JsonKey(name: 'options') List<dynamic> options,
+      @JsonKey(name: 'options') List<UISelectFormFieldOption> options,
       @JsonKey(name: 'default_value') String? defaultValue,
       @JsonKey(name: 'example') String? example});
 }
@@ -147,7 +148,7 @@ class _$UISelectFormFieldCopyWithImpl<$Res, $Val extends UISelectFormField>
       options: null == options
           ? _value.options
           : options // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<UISelectFormFieldOption>,
       defaultValue: freezed == defaultValue
           ? _value.defaultValue
           : defaultValue // ignore: cast_nullable_to_non_nullable
@@ -176,7 +177,7 @@ abstract class _$$UISelectFormFieldImplCopyWith<$Res>
       @JsonKey(name: 'read_only') bool readOnly,
       @JsonKey(name: 'doc') String? doc,
       @JsonKey(name: 'type') String type,
-      @JsonKey(name: 'options') List<dynamic> options,
+      @JsonKey(name: 'options') List<UISelectFormFieldOption> options,
       @JsonKey(name: 'default_value') String? defaultValue,
       @JsonKey(name: 'example') String? example});
 }
@@ -237,7 +238,7 @@ class __$$UISelectFormFieldImplCopyWithImpl<$Res>
       options: null == options
           ? _value._options
           : options // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<UISelectFormFieldOption>,
       defaultValue: freezed == defaultValue
           ? _value.defaultValue
           : defaultValue // ignore: cast_nullable_to_non_nullable
@@ -262,7 +263,8 @@ class _$UISelectFormFieldImpl extends _UISelectFormField {
       @JsonKey(name: 'read_only') required this.readOnly = false,
       @JsonKey(name: 'doc') required this.doc,
       @JsonKey(name: 'type') required this.type = select,
-      @JsonKey(name: 'options') required final List<dynamic> options = const [],
+      @JsonKey(name: 'options')
+      required final List<UISelectFormFieldOption> options = const [],
       @JsonKey(name: 'default_value') required this.defaultValue,
       @JsonKey(name: 'example') required this.example})
       : _options = options,
@@ -307,12 +309,12 @@ class _$UISelectFormFieldImpl extends _UISelectFormField {
   final String type;
 
   /// Options
-  final List<dynamic> _options;
+  final List<UISelectFormFieldOption> _options;
 
   /// Options
   @override
   @JsonKey(name: 'options')
-  List<dynamic> get options {
+  List<UISelectFormFieldOption> get options {
     if (_options is EqualUnmodifiableListView) return _options;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_options);
@@ -394,7 +396,8 @@ abstract class _UISelectFormField extends UISelectFormField {
           @JsonKey(name: 'read_only') required final bool readOnly,
           @JsonKey(name: 'doc') required final String? doc,
           @JsonKey(name: 'type') required final String type,
-          @JsonKey(name: 'options') required final List<dynamic> options,
+          @JsonKey(name: 'options')
+          required final List<UISelectFormFieldOption> options,
           @JsonKey(name: 'default_value') required final String? defaultValue,
           @JsonKey(name: 'example') required final String? example}) =
       _$UISelectFormFieldImpl;
@@ -441,7 +444,7 @@ abstract class _UISelectFormField extends UISelectFormField {
   /// Options
   @override
   @JsonKey(name: 'options')
-  List<dynamic> get options;
+  List<UISelectFormFieldOption> get options;
 
   /// Default Value
   @override

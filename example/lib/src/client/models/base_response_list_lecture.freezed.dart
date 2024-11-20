@@ -27,7 +27,8 @@ mixin _$BaseResponseListLecture {
 
   /// Data
   @JsonKey(name: 'data')
-  List<dynamic> get data => throw _privateConstructorUsedError;
+  List<AppApiRoutesV1StudentAttendanceRouteLecture> get data =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this BaseResponseListLecture to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -47,7 +48,8 @@ abstract class $BaseResponseListLectureCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<dynamic> data});
+      @JsonKey(name: 'data')
+      List<AppApiRoutesV1StudentAttendanceRouteLecture> data});
 }
 
 /// @nodoc
@@ -77,7 +79,7 @@ class _$BaseResponseListLectureCopyWithImpl<$Res,
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<AppApiRoutesV1StudentAttendanceRouteLecture>,
     ) as $Val);
   }
 }
@@ -93,7 +95,8 @@ abstract class _$$BaseResponseListLectureImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<dynamic> data});
+      @JsonKey(name: 'data')
+      List<AppApiRoutesV1StudentAttendanceRouteLecture> data});
 }
 
 /// @nodoc
@@ -122,7 +125,7 @@ class __$$BaseResponseListLectureImplCopyWithImpl<$Res>
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<AppApiRoutesV1StudentAttendanceRouteLecture>,
     ));
   }
 }
@@ -133,7 +136,8 @@ class __$$BaseResponseListLectureImplCopyWithImpl<$Res>
 class _$BaseResponseListLectureImpl extends _BaseResponseListLecture {
   const _$BaseResponseListLectureImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required final List<dynamic> data})
+      @JsonKey(name: 'data')
+      required final List<AppApiRoutesV1StudentAttendanceRouteLecture> data})
       : _data = data,
         super._();
 
@@ -146,12 +150,12 @@ class _$BaseResponseListLectureImpl extends _BaseResponseListLecture {
   final String? message;
 
   /// Data
-  final List<dynamic> _data;
+  final List<AppApiRoutesV1StudentAttendanceRouteLecture> _data;
 
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic> get data {
+  List<AppApiRoutesV1StudentAttendanceRouteLecture> get data {
     if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_data);
@@ -195,9 +199,10 @@ class _$BaseResponseListLectureImpl extends _BaseResponseListLecture {
 
 abstract class _BaseResponseListLecture extends BaseResponseListLecture {
   const factory _BaseResponseListLecture(
-          {@JsonKey(name: 'message') required final String? message,
-          @JsonKey(name: 'data') required final List<dynamic> data}) =
-      _$BaseResponseListLectureImpl;
+      {@JsonKey(name: 'message') required final String? message,
+      @JsonKey(name: 'data')
+      required final List<AppApiRoutesV1StudentAttendanceRouteLecture>
+          data}) = _$BaseResponseListLectureImpl;
   const _BaseResponseListLecture._() : super._();
 
   factory _BaseResponseListLecture.fromJson(Map<String, dynamic> json) =
@@ -211,7 +216,7 @@ abstract class _BaseResponseListLecture extends BaseResponseListLecture {
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic> get data;
+  List<AppApiRoutesV1StudentAttendanceRouteLecture> get data;
 
   /// Create a copy of BaseResponseListLecture
   /// with the given fields replaced by the non-null parameter values.

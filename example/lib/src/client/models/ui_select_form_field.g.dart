@@ -16,7 +16,11 @@ _$UISelectFormFieldImpl _$$UISelectFormFieldImplFromJson(
       readOnly: json['read_only'] as bool? ?? false,
       doc: json['doc'] as String?,
       type: json['type'] as String? ?? select,
-      options: json['options'] as List<dynamic>? ?? const [],
+      options: (json['options'] as List<dynamic>?)
+              ?.map((e) =>
+                  UISelectFormFieldOption.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
       defaultValue: json['default_value'] as String?,
       example: json['example'] as String?,
     );

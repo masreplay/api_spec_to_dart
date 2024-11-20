@@ -27,7 +27,7 @@ mixin _$BaseResponseListStudyYearPublic {
 
   /// Data
   @JsonKey(name: 'data')
-  List<dynamic> get data => throw _privateConstructorUsedError;
+  List<StudyYearPublic> get data => throw _privateConstructorUsedError;
 
   /// Serializes this BaseResponseListStudyYearPublic to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -49,7 +49,7 @@ abstract class $BaseResponseListStudyYearPublicCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<dynamic> data});
+      @JsonKey(name: 'data') List<StudyYearPublic> data});
 }
 
 /// @nodoc
@@ -79,7 +79,7 @@ class _$BaseResponseListStudyYearPublicCopyWithImpl<$Res,
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<StudyYearPublic>,
     ) as $Val);
   }
 }
@@ -95,7 +95,7 @@ abstract class _$$BaseResponseListStudyYearPublicImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<dynamic> data});
+      @JsonKey(name: 'data') List<StudyYearPublic> data});
 }
 
 /// @nodoc
@@ -124,7 +124,7 @@ class __$$BaseResponseListStudyYearPublicImplCopyWithImpl<$Res>
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<StudyYearPublic>,
     ));
   }
 }
@@ -136,7 +136,7 @@ class _$BaseResponseListStudyYearPublicImpl
     extends _BaseResponseListStudyYearPublic {
   const _$BaseResponseListStudyYearPublicImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required final List<dynamic> data})
+      @JsonKey(name: 'data') required final List<StudyYearPublic> data})
       : _data = data,
         super._();
 
@@ -150,12 +150,12 @@ class _$BaseResponseListStudyYearPublicImpl
   final String? message;
 
   /// Data
-  final List<dynamic> _data;
+  final List<StudyYearPublic> _data;
 
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic> get data {
+  List<StudyYearPublic> get data {
     if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_data);
@@ -202,7 +202,7 @@ abstract class _BaseResponseListStudyYearPublic
     extends BaseResponseListStudyYearPublic {
   const factory _BaseResponseListStudyYearPublic(
           {@JsonKey(name: 'message') required final String? message,
-          @JsonKey(name: 'data') required final List<dynamic> data}) =
+          @JsonKey(name: 'data') required final List<StudyYearPublic> data}) =
       _$BaseResponseListStudyYearPublicImpl;
   const _BaseResponseListStudyYearPublic._() : super._();
 
@@ -217,7 +217,7 @@ abstract class _BaseResponseListStudyYearPublic
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic> get data;
+  List<StudyYearPublic> get data;
 
   /// Create a copy of BaseResponseListStudyYearPublic
   /// with the given fields replaced by the non-null parameter values.

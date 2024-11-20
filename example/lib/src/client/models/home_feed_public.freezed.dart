@@ -26,7 +26,7 @@ mixin _$HomeFeedPublic {
 
   /// Sections
   @JsonKey(name: 'sections')
-  List<dynamic> get sections => throw _privateConstructorUsedError;
+  List<HomeFeedSectionModel> get sections => throw _privateConstructorUsedError;
 
   /// Serializes this HomeFeedPublic to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -46,7 +46,7 @@ abstract class $HomeFeedPublicCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'type') String type,
-      @JsonKey(name: 'sections') List<dynamic> sections});
+      @JsonKey(name: 'sections') List<HomeFeedSectionModel> sections});
 }
 
 /// @nodoc
@@ -75,7 +75,7 @@ class _$HomeFeedPublicCopyWithImpl<$Res, $Val extends HomeFeedPublic>
       sections: null == sections
           ? _value.sections
           : sections // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<HomeFeedSectionModel>,
     ) as $Val);
   }
 }
@@ -90,7 +90,7 @@ abstract class _$$HomeFeedPublicImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'type') String type,
-      @JsonKey(name: 'sections') List<dynamic> sections});
+      @JsonKey(name: 'sections') List<HomeFeedSectionModel> sections});
 }
 
 /// @nodoc
@@ -117,7 +117,7 @@ class __$$HomeFeedPublicImplCopyWithImpl<$Res>
       sections: null == sections
           ? _value._sections
           : sections // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<HomeFeedSectionModel>,
     ));
   }
 }
@@ -128,7 +128,8 @@ class __$$HomeFeedPublicImplCopyWithImpl<$Res>
 class _$HomeFeedPublicImpl extends _HomeFeedPublic {
   const _$HomeFeedPublicImpl(
       {@JsonKey(name: 'type') required this.type = feed,
-      @JsonKey(name: 'sections') required final List<dynamic> sections})
+      @JsonKey(name: 'sections')
+      required final List<HomeFeedSectionModel> sections})
       : _sections = sections,
         super._();
 
@@ -141,12 +142,12 @@ class _$HomeFeedPublicImpl extends _HomeFeedPublic {
   final String type;
 
   /// Sections
-  final List<dynamic> _sections;
+  final List<HomeFeedSectionModel> _sections;
 
   /// Sections
   @override
   @JsonKey(name: 'sections')
-  List<dynamic> get sections {
+  List<HomeFeedSectionModel> get sections {
     if (_sections is EqualUnmodifiableListView) return _sections;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_sections);
@@ -191,7 +192,8 @@ class _$HomeFeedPublicImpl extends _HomeFeedPublic {
 abstract class _HomeFeedPublic extends HomeFeedPublic {
   const factory _HomeFeedPublic(
           {@JsonKey(name: 'type') required final String type,
-          @JsonKey(name: 'sections') required final List<dynamic> sections}) =
+          @JsonKey(name: 'sections')
+          required final List<HomeFeedSectionModel> sections}) =
       _$HomeFeedPublicImpl;
   const _HomeFeedPublic._() : super._();
 
@@ -206,7 +208,7 @@ abstract class _HomeFeedPublic extends HomeFeedPublic {
   /// Sections
   @override
   @JsonKey(name: 'sections')
-  List<dynamic> get sections;
+  List<HomeFeedSectionModel> get sections;
 
   /// Create a copy of HomeFeedPublic
   /// with the given fields replaced by the non-null parameter values.

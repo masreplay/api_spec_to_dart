@@ -15,7 +15,7 @@ class WeeklyScheduleTeacherResponse with _$WeeklyScheduleTeacherResponse {
     @JsonKey(name: 'weekday') required int weekday,
 
     /// Lectures
-    @JsonKey(name: 'lectures') required List lectures,
+    @JsonKey(name: 'lectures') required List<dynamic> lectures,
   }) = _WeeklyScheduleTeacherResponse;
 
   factory WeeklyScheduleTeacherResponse.fromJson(Map<String, dynamic> json) =>

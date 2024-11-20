@@ -8,7 +8,9 @@ part of 'ui_form.dart';
 
 _$UIFormImpl _$$UIFormImplFromJson(Map<String, dynamic> json) => _$UIFormImpl(
       key: json['key'] as String,
-      fields: json['fields'] as List<dynamic>,
+      fields: (json['fields'] as List<dynamic>)
+          .map((e) => UIFormField.fromJson(e as Map<String, dynamic>))
+          .toList(),
       title: json['title'] as String,
       description: json['description'] as String?,
       submitText: json['submit_text'] as String,

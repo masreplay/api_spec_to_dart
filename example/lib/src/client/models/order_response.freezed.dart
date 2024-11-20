@@ -38,7 +38,7 @@ mixin _$OrderResponse {
 
   /// Order Status History
   @JsonKey(name: 'order_status_history')
-  Map<dynamic, dynamic>? get orderStatusHistory =>
+  Map<String, dynamic>? get orderStatusHistory =>
       throw _privateConstructorUsedError;
 
   /// Quantity
@@ -102,7 +102,7 @@ abstract class $OrderResponseCopyWith<$Res> {
       @JsonKey(name: 'order_type') OrderTypeEnum? orderType,
       @JsonKey(name: 'order_status') OrderStatusEnum? orderStatus,
       @JsonKey(name: 'order_status_history')
-      Map<dynamic, dynamic>? orderStatusHistory,
+      Map<String, dynamic>? orderStatusHistory,
       @JsonKey(name: 'quantity') int? quantity,
       @JsonKey(name: 'payment_method') String? paymentMethod,
       @JsonKey(name: 'payment_status') String? paymentStatus,
@@ -179,7 +179,7 @@ class _$OrderResponseCopyWithImpl<$Res, $Val extends OrderResponse>
       orderStatusHistory: freezed == orderStatusHistory
           ? _value.orderStatusHistory
           : orderStatusHistory // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, dynamic>?,
+              as Map<String, dynamic>?,
       quantity: freezed == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -313,7 +313,7 @@ abstract class _$$OrderResponseImplCopyWith<$Res>
       @JsonKey(name: 'order_type') OrderTypeEnum? orderType,
       @JsonKey(name: 'order_status') OrderStatusEnum? orderStatus,
       @JsonKey(name: 'order_status_history')
-      Map<dynamic, dynamic>? orderStatusHistory,
+      Map<String, dynamic>? orderStatusHistory,
       @JsonKey(name: 'quantity') int? quantity,
       @JsonKey(name: 'payment_method') String? paymentMethod,
       @JsonKey(name: 'payment_status') String? paymentStatus,
@@ -393,7 +393,7 @@ class __$$OrderResponseImplCopyWithImpl<$Res>
       orderStatusHistory: freezed == orderStatusHistory
           ? _value._orderStatusHistory
           : orderStatusHistory // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, dynamic>?,
+              as Map<String, dynamic>?,
       quantity: freezed == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -453,7 +453,7 @@ class _$OrderResponseImpl extends _OrderResponse {
       @JsonKey(name: 'order_type') required this.orderType,
       @JsonKey(name: 'order_status') required this.orderStatus,
       @JsonKey(name: 'order_status_history')
-      required final Map<dynamic, dynamic>? orderStatusHistory,
+      required final Map<String, dynamic>? orderStatusHistory,
       @JsonKey(name: 'quantity') required this.quantity,
       @JsonKey(name: 'payment_method') required this.paymentMethod,
       @JsonKey(name: 'payment_status') required this.paymentStatus,
@@ -493,12 +493,12 @@ class _$OrderResponseImpl extends _OrderResponse {
   final OrderStatusEnum? orderStatus;
 
   /// Order Status History
-  final Map<dynamic, dynamic>? _orderStatusHistory;
+  final Map<String, dynamic>? _orderStatusHistory;
 
   /// Order Status History
   @override
   @JsonKey(name: 'order_status_history')
-  Map<dynamic, dynamic>? get orderStatusHistory {
+  Map<String, dynamic>? get orderStatusHistory {
     final value = _orderStatusHistory;
     if (value == null) return null;
     if (_orderStatusHistory is EqualUnmodifiableMapView)
@@ -645,7 +645,7 @@ abstract class _OrderResponse extends OrderResponse {
       @JsonKey(name: 'order_status')
       required final OrderStatusEnum? orderStatus,
       @JsonKey(name: 'order_status_history')
-      required final Map<dynamic, dynamic>? orderStatusHistory,
+      required final Map<String, dynamic>? orderStatusHistory,
       @JsonKey(name: 'quantity') required final int? quantity,
       @JsonKey(name: 'payment_method') required final String? paymentMethod,
       @JsonKey(name: 'payment_status') required final String? paymentStatus,
@@ -690,7 +690,7 @@ abstract class _OrderResponse extends OrderResponse {
   /// Order Status History
   @override
   @JsonKey(name: 'order_status_history')
-  Map<dynamic, dynamic>? get orderStatusHistory;
+  Map<String, dynamic>? get orderStatusHistory;
 
   /// Quantity
   @override

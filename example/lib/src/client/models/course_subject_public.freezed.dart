@@ -38,7 +38,8 @@ mixin _$CourseSubjectPublic {
 
   /// Attachments
   @JsonKey(name: 'attachments')
-  List<dynamic>? get attachments => throw _privateConstructorUsedError;
+  List<AttachmentResponse>? get attachments =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this CourseSubjectPublic to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -61,7 +62,7 @@ abstract class $CourseSubjectPublicCopyWith<$Res> {
       @JsonKey(name: 'course_subject_header') String courseSubjectHeader,
       @JsonKey(name: 'course_subject_content') String courseSubjectContent,
       @JsonKey(name: 'id') int id,
-      @JsonKey(name: 'attachments') List<dynamic>? attachments});
+      @JsonKey(name: 'attachments') List<AttachmentResponse>? attachments});
 }
 
 /// @nodoc
@@ -105,7 +106,7 @@ class _$CourseSubjectPublicCopyWithImpl<$Res, $Val extends CourseSubjectPublic>
       attachments: freezed == attachments
           ? _value.attachments
           : attachments // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<AttachmentResponse>?,
     ) as $Val);
   }
 }
@@ -123,7 +124,7 @@ abstract class _$$CourseSubjectPublicImplCopyWith<$Res>
       @JsonKey(name: 'course_subject_header') String courseSubjectHeader,
       @JsonKey(name: 'course_subject_content') String courseSubjectContent,
       @JsonKey(name: 'id') int id,
-      @JsonKey(name: 'attachments') List<dynamic>? attachments});
+      @JsonKey(name: 'attachments') List<AttachmentResponse>? attachments});
 }
 
 /// @nodoc
@@ -165,7 +166,7 @@ class __$$CourseSubjectPublicImplCopyWithImpl<$Res>
       attachments: freezed == attachments
           ? _value._attachments
           : attachments // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<AttachmentResponse>?,
     ));
   }
 }
@@ -180,7 +181,8 @@ class _$CourseSubjectPublicImpl extends _CourseSubjectPublic {
       @JsonKey(name: 'course_subject_content')
       required this.courseSubjectContent,
       @JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'attachments') required final List<dynamic>? attachments})
+      @JsonKey(name: 'attachments')
+      required final List<AttachmentResponse>? attachments})
       : _attachments = attachments,
         super._();
 
@@ -208,12 +210,12 @@ class _$CourseSubjectPublicImpl extends _CourseSubjectPublic {
   final int id;
 
   /// Attachments
-  final List<dynamic>? _attachments;
+  final List<AttachmentResponse>? _attachments;
 
   /// Attachments
   @override
   @JsonKey(name: 'attachments')
-  List<dynamic>? get attachments {
+  List<AttachmentResponse>? get attachments {
     final value = _attachments;
     if (value == null) return null;
     if (_attachments is EqualUnmodifiableListView) return _attachments;
@@ -271,15 +273,16 @@ class _$CourseSubjectPublicImpl extends _CourseSubjectPublic {
 
 abstract class _CourseSubjectPublic extends CourseSubjectPublic {
   const factory _CourseSubjectPublic(
-      {@JsonKey(name: 'course_curriculum_id')
-      required final int courseCurriculumId,
-      @JsonKey(name: 'course_subject_header')
-      required final String courseSubjectHeader,
-      @JsonKey(name: 'course_subject_content')
-      required final String courseSubjectContent,
-      @JsonKey(name: 'id') required final int id,
-      @JsonKey(name: 'attachments')
-      required final List<dynamic>? attachments}) = _$CourseSubjectPublicImpl;
+          {@JsonKey(name: 'course_curriculum_id')
+          required final int courseCurriculumId,
+          @JsonKey(name: 'course_subject_header')
+          required final String courseSubjectHeader,
+          @JsonKey(name: 'course_subject_content')
+          required final String courseSubjectContent,
+          @JsonKey(name: 'id') required final int id,
+          @JsonKey(name: 'attachments')
+          required final List<AttachmentResponse>? attachments}) =
+      _$CourseSubjectPublicImpl;
   const _CourseSubjectPublic._() : super._();
 
   factory _CourseSubjectPublic.fromJson(Map<String, dynamic> json) =
@@ -308,7 +311,7 @@ abstract class _CourseSubjectPublic extends CourseSubjectPublic {
   /// Attachments
   @override
   @JsonKey(name: 'attachments')
-  List<dynamic>? get attachments;
+  List<AttachmentResponse>? get attachments;
 
   /// Create a copy of CourseSubjectPublic
   /// with the given fields replaced by the non-null parameter values.

@@ -23,7 +23,7 @@ StudentEkycFormDataRequest _$StudentEkycFormDataRequestFromJson(
 mixin _$StudentEkycFormDataRequest {
   /// Ekyc Extra
   @JsonKey(name: 'ekyc_extra')
-  Map<dynamic, dynamic> get ekycExtra => throw _privateConstructorUsedError;
+  Map<String, dynamic> get ekycExtra => throw _privateConstructorUsedError;
 
   /// Serializes this StudentEkycFormDataRequest to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -42,7 +42,7 @@ abstract class $StudentEkycFormDataRequestCopyWith<$Res> {
       _$StudentEkycFormDataRequestCopyWithImpl<$Res,
           StudentEkycFormDataRequest>;
   @useResult
-  $Res call({@JsonKey(name: 'ekyc_extra') Map<dynamic, dynamic> ekycExtra});
+  $Res call({@JsonKey(name: 'ekyc_extra') Map<String, dynamic> ekycExtra});
 }
 
 /// @nodoc
@@ -67,7 +67,7 @@ class _$StudentEkycFormDataRequestCopyWithImpl<$Res,
       ekycExtra: null == ekycExtra
           ? _value.ekycExtra
           : ekycExtra // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, dynamic>,
+              as Map<String, dynamic>,
     ) as $Val);
   }
 }
@@ -81,7 +81,7 @@ abstract class _$$StudentEkycFormDataRequestImplCopyWith<$Res>
       __$$StudentEkycFormDataRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'ekyc_extra') Map<dynamic, dynamic> ekycExtra});
+  $Res call({@JsonKey(name: 'ekyc_extra') Map<String, dynamic> ekycExtra});
 }
 
 /// @nodoc
@@ -105,7 +105,7 @@ class __$$StudentEkycFormDataRequestImplCopyWithImpl<$Res>
       ekycExtra: null == ekycExtra
           ? _value._ekycExtra
           : ekycExtra // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, dynamic>,
+              as Map<String, dynamic>,
     ));
   }
 }
@@ -116,7 +116,7 @@ class __$$StudentEkycFormDataRequestImplCopyWithImpl<$Res>
 class _$StudentEkycFormDataRequestImpl extends _StudentEkycFormDataRequest {
   const _$StudentEkycFormDataRequestImpl(
       {@JsonKey(name: 'ekyc_extra')
-      required final Map<dynamic, dynamic> ekycExtra})
+      required final Map<String, dynamic> ekycExtra})
       : _ekycExtra = ekycExtra,
         super._();
 
@@ -125,12 +125,12 @@ class _$StudentEkycFormDataRequestImpl extends _StudentEkycFormDataRequest {
       _$$StudentEkycFormDataRequestImplFromJson(json);
 
   /// Ekyc Extra
-  final Map<dynamic, dynamic> _ekycExtra;
+  final Map<String, dynamic> _ekycExtra;
 
   /// Ekyc Extra
   @override
   @JsonKey(name: 'ekyc_extra')
-  Map<dynamic, dynamic> get ekycExtra {
+  Map<String, dynamic> get ekycExtra {
     if (_ekycExtra is EqualUnmodifiableMapView) return _ekycExtra;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_ekycExtra);
@@ -175,7 +175,7 @@ class _$StudentEkycFormDataRequestImpl extends _StudentEkycFormDataRequest {
 abstract class _StudentEkycFormDataRequest extends StudentEkycFormDataRequest {
   const factory _StudentEkycFormDataRequest(
           {@JsonKey(name: 'ekyc_extra')
-          required final Map<dynamic, dynamic> ekycExtra}) =
+          required final Map<String, dynamic> ekycExtra}) =
       _$StudentEkycFormDataRequestImpl;
   const _StudentEkycFormDataRequest._() : super._();
 
@@ -185,7 +185,7 @@ abstract class _StudentEkycFormDataRequest extends StudentEkycFormDataRequest {
   /// Ekyc Extra
   @override
   @JsonKey(name: 'ekyc_extra')
-  Map<dynamic, dynamic> get ekycExtra;
+  Map<String, dynamic> get ekycExtra;
 
   /// Create a copy of StudentEkycFormDataRequest
   /// with the given fields replaced by the non-null parameter values.

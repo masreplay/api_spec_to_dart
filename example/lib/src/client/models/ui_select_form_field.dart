@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../convertors.dart';
+import './models.dart';
 
 part 'ui_select_form_field.freezed.dart';
 part 'ui_select_form_field.g.dart';
@@ -33,7 +34,9 @@ class UISelectFormField with _$UISelectFormField {
     @Default(select) @JsonKey(name: 'type') required String type,
 
     /// Options
-    @Default([]) @JsonKey(name: 'options') required List options,
+    @Default([])
+    @JsonKey(name: 'options')
+    required List<UISelectFormFieldOption> options,
 
     /// Default Value
     @JsonKey(name: 'default_value') required String? defaultValue,

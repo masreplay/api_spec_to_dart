@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../convertors.dart';
+import './models.dart';
 
 part 'pagination_response_lecturer_announcement_public.freezed.dart';
 part 'pagination_response_lecturer_announcement_public.g.dart';
@@ -22,7 +23,7 @@ class PaginationResponseLecturerAnnouncementPublic
     @JsonKey(name: 'total') required int total,
 
     /// Data
-    @JsonKey(name: 'data') required List data,
+    @JsonKey(name: 'data') required List<LecturerAnnouncementPublic> data,
   }) = _PaginationResponseLecturerAnnouncementPublic;
 
   factory PaginationResponseLecturerAnnouncementPublic.fromJson(

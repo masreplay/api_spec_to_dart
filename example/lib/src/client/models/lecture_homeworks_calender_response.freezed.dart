@@ -23,7 +23,8 @@ LectureHomeworksCalenderResponse _$LectureHomeworksCalenderResponseFromJson(
 mixin _$LectureHomeworksCalenderResponse {
   /// Events
   @JsonKey(name: 'events')
-  List<dynamic> get events => throw _privateConstructorUsedError;
+  List<HomeworkCalenderEventPublic> get events =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this LectureHomeworksCalenderResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,7 +44,8 @@ abstract class $LectureHomeworksCalenderResponseCopyWith<$Res> {
       _$LectureHomeworksCalenderResponseCopyWithImpl<$Res,
           LectureHomeworksCalenderResponse>;
   @useResult
-  $Res call({@JsonKey(name: 'events') List<dynamic> events});
+  $Res call(
+      {@JsonKey(name: 'events') List<HomeworkCalenderEventPublic> events});
 }
 
 /// @nodoc
@@ -68,7 +70,7 @@ class _$LectureHomeworksCalenderResponseCopyWithImpl<$Res,
       events: null == events
           ? _value.events
           : events // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<HomeworkCalenderEventPublic>,
     ) as $Val);
   }
 }
@@ -82,7 +84,8 @@ abstract class _$$LectureHomeworksCalenderResponseImplCopyWith<$Res>
       __$$LectureHomeworksCalenderResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'events') List<dynamic> events});
+  $Res call(
+      {@JsonKey(name: 'events') List<HomeworkCalenderEventPublic> events});
 }
 
 /// @nodoc
@@ -106,7 +109,7 @@ class __$$LectureHomeworksCalenderResponseImplCopyWithImpl<$Res>
       events: null == events
           ? _value._events
           : events // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<HomeworkCalenderEventPublic>,
     ));
   }
 }
@@ -117,7 +120,8 @@ class __$$LectureHomeworksCalenderResponseImplCopyWithImpl<$Res>
 class _$LectureHomeworksCalenderResponseImpl
     extends _LectureHomeworksCalenderResponse {
   const _$LectureHomeworksCalenderResponseImpl(
-      {@JsonKey(name: 'events') required final List<dynamic> events})
+      {@JsonKey(name: 'events')
+      required final List<HomeworkCalenderEventPublic> events})
       : _events = events,
         super._();
 
@@ -126,12 +130,12 @@ class _$LectureHomeworksCalenderResponseImpl
       _$$LectureHomeworksCalenderResponseImplFromJson(json);
 
   /// Events
-  final List<dynamic> _events;
+  final List<HomeworkCalenderEventPublic> _events;
 
   /// Events
   @override
   @JsonKey(name: 'events')
-  List<dynamic> get events {
+  List<HomeworkCalenderEventPublic> get events {
     if (_events is EqualUnmodifiableListView) return _events;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_events);
@@ -176,7 +180,8 @@ class _$LectureHomeworksCalenderResponseImpl
 abstract class _LectureHomeworksCalenderResponse
     extends LectureHomeworksCalenderResponse {
   const factory _LectureHomeworksCalenderResponse(
-          {@JsonKey(name: 'events') required final List<dynamic> events}) =
+          {@JsonKey(name: 'events')
+          required final List<HomeworkCalenderEventPublic> events}) =
       _$LectureHomeworksCalenderResponseImpl;
   const _LectureHomeworksCalenderResponse._() : super._();
 
@@ -187,7 +192,7 @@ abstract class _LectureHomeworksCalenderResponse
   /// Events
   @override
   @JsonKey(name: 'events')
-  List<dynamic> get events;
+  List<HomeworkCalenderEventPublic> get events;
 
   /// Create a copy of LectureHomeworksCalenderResponse
   /// with the given fields replaced by the non-null parameter values.

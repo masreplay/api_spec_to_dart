@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../convertors.dart';
+import './models.dart';
 
 part 'base_response_list_specialization_public.freezed.dart';
 part 'base_response_list_specialization_public.g.dart';
@@ -16,7 +17,7 @@ class BaseResponseListSpecializationPublic
     @JsonKey(name: 'message') required String? message,
 
     /// Data
-    @JsonKey(name: 'data') required List data,
+    @JsonKey(name: 'data') required List<SpecializationPublic> data,
   }) = _BaseResponseListSpecializationPublic;
 
   factory BaseResponseListSpecializationPublic.fromJson(

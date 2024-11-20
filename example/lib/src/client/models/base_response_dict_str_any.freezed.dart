@@ -27,7 +27,7 @@ mixin _$BaseResponseDictStrAny {
 
   /// Data
   @JsonKey(name: 'data')
-  Map<dynamic, dynamic> get data => throw _privateConstructorUsedError;
+  Map<String, dynamic> get data => throw _privateConstructorUsedError;
 
   /// Serializes this BaseResponseDictStrAny to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -47,7 +47,7 @@ abstract class $BaseResponseDictStrAnyCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') Map<dynamic, dynamic> data});
+      @JsonKey(name: 'data') Map<String, dynamic> data});
 }
 
 /// @nodoc
@@ -77,7 +77,7 @@ class _$BaseResponseDictStrAnyCopyWithImpl<$Res,
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, dynamic>,
+              as Map<String, dynamic>,
     ) as $Val);
   }
 }
@@ -93,7 +93,7 @@ abstract class _$$BaseResponseDictStrAnyImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') Map<dynamic, dynamic> data});
+      @JsonKey(name: 'data') Map<String, dynamic> data});
 }
 
 /// @nodoc
@@ -122,7 +122,7 @@ class __$$BaseResponseDictStrAnyImplCopyWithImpl<$Res>
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, dynamic>,
+              as Map<String, dynamic>,
     ));
   }
 }
@@ -133,7 +133,7 @@ class __$$BaseResponseDictStrAnyImplCopyWithImpl<$Res>
 class _$BaseResponseDictStrAnyImpl extends _BaseResponseDictStrAny {
   const _$BaseResponseDictStrAnyImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required final Map<dynamic, dynamic> data})
+      @JsonKey(name: 'data') required final Map<String, dynamic> data})
       : _data = data,
         super._();
 
@@ -146,12 +146,12 @@ class _$BaseResponseDictStrAnyImpl extends _BaseResponseDictStrAny {
   final String? message;
 
   /// Data
-  final Map<dynamic, dynamic> _data;
+  final Map<String, dynamic> _data;
 
   /// Data
   @override
   @JsonKey(name: 'data')
-  Map<dynamic, dynamic> get data {
+  Map<String, dynamic> get data {
     if (_data is EqualUnmodifiableMapView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_data);
@@ -196,7 +196,7 @@ class _$BaseResponseDictStrAnyImpl extends _BaseResponseDictStrAny {
 abstract class _BaseResponseDictStrAny extends BaseResponseDictStrAny {
   const factory _BaseResponseDictStrAny(
           {@JsonKey(name: 'message') required final String? message,
-          @JsonKey(name: 'data') required final Map<dynamic, dynamic> data}) =
+          @JsonKey(name: 'data') required final Map<String, dynamic> data}) =
       _$BaseResponseDictStrAnyImpl;
   const _BaseResponseDictStrAny._() : super._();
 
@@ -211,7 +211,7 @@ abstract class _BaseResponseDictStrAny extends BaseResponseDictStrAny {
   /// Data
   @override
   @JsonKey(name: 'data')
-  Map<dynamic, dynamic> get data;
+  Map<String, dynamic> get data;
 
   /// Create a copy of BaseResponseDictStrAny
   /// with the given fields replaced by the non-null parameter values.

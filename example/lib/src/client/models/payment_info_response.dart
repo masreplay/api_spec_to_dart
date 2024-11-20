@@ -15,7 +15,8 @@ class PaymentInfoResponse with _$PaymentInfoResponse {
     @JsonKey(name: 'amount') required PaymentInfoAmount amount,
 
     /// Payment Methods
-    @JsonKey(name: 'payment_methods') required List paymentMethods,
+    @JsonKey(name: 'payment_methods')
+    required List<PaymentMethodPublic> paymentMethods,
   }) = _PaymentInfoResponse;
 
   factory PaymentInfoResponse.fromJson(Map<String, dynamic> json) =>

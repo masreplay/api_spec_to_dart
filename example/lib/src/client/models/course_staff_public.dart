@@ -25,7 +25,8 @@ class CourseStaffPublic with _$CourseStaffPublic {
     @JsonKey(name: 'close_editing_employee') required bool closeEditingEmployee,
 
     /// Course Configuration
-    @JsonKey(name: 'course_configuration') required Map? courseConfiguration,
+    @JsonKey(name: 'course_configuration')
+    required Map<String, dynamic>? courseConfiguration,
 
     /// Id
     @JsonKey(name: 'id') required int? id,

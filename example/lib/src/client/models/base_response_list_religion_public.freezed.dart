@@ -27,7 +27,7 @@ mixin _$BaseResponseListReligionPublic {
 
   /// Data
   @JsonKey(name: 'data')
-  List<dynamic> get data => throw _privateConstructorUsedError;
+  List<ReligionPublic> get data => throw _privateConstructorUsedError;
 
   /// Serializes this BaseResponseListReligionPublic to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -49,7 +49,7 @@ abstract class $BaseResponseListReligionPublicCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<dynamic> data});
+      @JsonKey(name: 'data') List<ReligionPublic> data});
 }
 
 /// @nodoc
@@ -79,7 +79,7 @@ class _$BaseResponseListReligionPublicCopyWithImpl<$Res,
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<ReligionPublic>,
     ) as $Val);
   }
 }
@@ -95,7 +95,7 @@ abstract class _$$BaseResponseListReligionPublicImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<dynamic> data});
+      @JsonKey(name: 'data') List<ReligionPublic> data});
 }
 
 /// @nodoc
@@ -124,7 +124,7 @@ class __$$BaseResponseListReligionPublicImplCopyWithImpl<$Res>
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<ReligionPublic>,
     ));
   }
 }
@@ -136,7 +136,7 @@ class _$BaseResponseListReligionPublicImpl
     extends _BaseResponseListReligionPublic {
   const _$BaseResponseListReligionPublicImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required final List<dynamic> data})
+      @JsonKey(name: 'data') required final List<ReligionPublic> data})
       : _data = data,
         super._();
 
@@ -150,12 +150,12 @@ class _$BaseResponseListReligionPublicImpl
   final String? message;
 
   /// Data
-  final List<dynamic> _data;
+  final List<ReligionPublic> _data;
 
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic> get data {
+  List<ReligionPublic> get data {
     if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_data);
@@ -202,7 +202,7 @@ abstract class _BaseResponseListReligionPublic
     extends BaseResponseListReligionPublic {
   const factory _BaseResponseListReligionPublic(
           {@JsonKey(name: 'message') required final String? message,
-          @JsonKey(name: 'data') required final List<dynamic> data}) =
+          @JsonKey(name: 'data') required final List<ReligionPublic> data}) =
       _$BaseResponseListReligionPublicImpl;
   const _BaseResponseListReligionPublic._() : super._();
 
@@ -217,7 +217,7 @@ abstract class _BaseResponseListReligionPublic
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic> get data;
+  List<ReligionPublic> get data;
 
   /// Create a copy of BaseResponseListReligionPublic
   /// with the given fields replaced by the non-null parameter values.

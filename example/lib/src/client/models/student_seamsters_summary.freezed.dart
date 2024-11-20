@@ -51,11 +51,11 @@ mixin _$StudentSeamstersSummary {
 
   /// Current Subjects
   @JsonKey(name: 'current_subjects')
-  List<dynamic> get currentSubjects => throw _privateConstructorUsedError;
+  List<Subject> get currentSubjects => throw _privateConstructorUsedError;
 
   /// Previous Subjects
   @JsonKey(name: 'previous_subjects')
-  List<dynamic> get previousSubjects => throw _privateConstructorUsedError;
+  List<Subject> get previousSubjects => throw _privateConstructorUsedError;
 
   /// Serializes this StudentSeamstersSummary to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -81,8 +81,8 @@ abstract class $StudentSeamstersSummaryCopyWith<$Res> {
       @JsonKey(name: 'total_number_of_units') num? totalNumberOfUnits,
       @JsonKey(name: 'current_number_of_units') int currentNumberOfUnits,
       @JsonKey(name: 'current_number_of_subjects') int currentNumberOfSubjects,
-      @JsonKey(name: 'current_subjects') List<dynamic> currentSubjects,
-      @JsonKey(name: 'previous_subjects') List<dynamic> previousSubjects});
+      @JsonKey(name: 'current_subjects') List<Subject> currentSubjects,
+      @JsonKey(name: 'previous_subjects') List<Subject> previousSubjects});
 }
 
 /// @nodoc
@@ -143,11 +143,11 @@ class _$StudentSeamstersSummaryCopyWithImpl<$Res,
       currentSubjects: null == currentSubjects
           ? _value.currentSubjects
           : currentSubjects // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<Subject>,
       previousSubjects: null == previousSubjects
           ? _value.previousSubjects
           : previousSubjects // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<Subject>,
     ) as $Val);
   }
 }
@@ -169,8 +169,8 @@ abstract class _$$StudentSeamstersSummaryImplCopyWith<$Res>
       @JsonKey(name: 'total_number_of_units') num? totalNumberOfUnits,
       @JsonKey(name: 'current_number_of_units') int currentNumberOfUnits,
       @JsonKey(name: 'current_number_of_subjects') int currentNumberOfSubjects,
-      @JsonKey(name: 'current_subjects') List<dynamic> currentSubjects,
-      @JsonKey(name: 'previous_subjects') List<dynamic> previousSubjects});
+      @JsonKey(name: 'current_subjects') List<Subject> currentSubjects,
+      @JsonKey(name: 'previous_subjects') List<Subject> previousSubjects});
 }
 
 /// @nodoc
@@ -230,11 +230,11 @@ class __$$StudentSeamstersSummaryImplCopyWithImpl<$Res>
       currentSubjects: null == currentSubjects
           ? _value._currentSubjects
           : currentSubjects // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<Subject>,
       previousSubjects: null == previousSubjects
           ? _value._previousSubjects
           : previousSubjects // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<Subject>,
     ));
   }
 }
@@ -254,9 +254,9 @@ class _$StudentSeamstersSummaryImpl extends _StudentSeamstersSummary {
       @JsonKey(name: 'current_number_of_subjects')
       required this.currentNumberOfSubjects = 0,
       @JsonKey(name: 'current_subjects')
-      required final List<dynamic> currentSubjects,
+      required final List<Subject> currentSubjects,
       @JsonKey(name: 'previous_subjects')
-      required final List<dynamic> previousSubjects})
+      required final List<Subject> previousSubjects})
       : _currentSubjects = currentSubjects,
         _previousSubjects = previousSubjects,
         super._();
@@ -300,24 +300,24 @@ class _$StudentSeamstersSummaryImpl extends _StudentSeamstersSummary {
   final int currentNumberOfSubjects;
 
   /// Current Subjects
-  final List<dynamic> _currentSubjects;
+  final List<Subject> _currentSubjects;
 
   /// Current Subjects
   @override
   @JsonKey(name: 'current_subjects')
-  List<dynamic> get currentSubjects {
+  List<Subject> get currentSubjects {
     if (_currentSubjects is EqualUnmodifiableListView) return _currentSubjects;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_currentSubjects);
   }
 
   /// Previous Subjects
-  final List<dynamic> _previousSubjects;
+  final List<Subject> _previousSubjects;
 
   /// Previous Subjects
   @override
   @JsonKey(name: 'previous_subjects')
-  List<dynamic> get previousSubjects {
+  List<Subject> get previousSubjects {
     if (_previousSubjects is EqualUnmodifiableListView)
       return _previousSubjects;
     // ignore: implicit_dynamic_type
@@ -397,9 +397,9 @@ abstract class _StudentSeamstersSummary extends StudentSeamstersSummary {
           @JsonKey(name: 'current_number_of_subjects')
           required final int currentNumberOfSubjects,
           @JsonKey(name: 'current_subjects')
-          required final List<dynamic> currentSubjects,
+          required final List<Subject> currentSubjects,
           @JsonKey(name: 'previous_subjects')
-          required final List<dynamic> previousSubjects}) =
+          required final List<Subject> previousSubjects}) =
       _$StudentSeamstersSummaryImpl;
   const _StudentSeamstersSummary._() : super._();
 
@@ -444,12 +444,12 @@ abstract class _StudentSeamstersSummary extends StudentSeamstersSummary {
   /// Current Subjects
   @override
   @JsonKey(name: 'current_subjects')
-  List<dynamic> get currentSubjects;
+  List<Subject> get currentSubjects;
 
   /// Previous Subjects
   @override
   @JsonKey(name: 'previous_subjects')
-  List<dynamic> get previousSubjects;
+  List<Subject> get previousSubjects;
 
   /// Create a copy of StudentSeamstersSummary
   /// with the given fields replaced by the non-null parameter values.

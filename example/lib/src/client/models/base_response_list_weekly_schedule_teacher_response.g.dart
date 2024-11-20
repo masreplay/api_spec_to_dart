@@ -11,7 +11,10 @@ _$BaseResponseListWeeklyScheduleTeacherResponseImpl
             Map<String, dynamic> json) =>
         _$BaseResponseListWeeklyScheduleTeacherResponseImpl(
           message: json['message'] as String?,
-          data: json['data'] as List<dynamic>,
+          data: (json['data'] as List<dynamic>)
+              .map((e) => WeeklyScheduleTeacherResponse.fromJson(
+                  e as Map<String, dynamic>))
+              .toList(),
         );
 
 Map<String, dynamic> _$$BaseResponseListWeeklyScheduleTeacherResponseImplToJson(

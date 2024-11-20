@@ -62,7 +62,7 @@ mixin _$StudentDeviceCreate {
 
   /// Extra Data
   @JsonKey(name: 'extra_data')
-  Map<dynamic, dynamic>? get extraData => throw _privateConstructorUsedError;
+  Map<String, dynamic>? get extraData => throw _privateConstructorUsedError;
 
   /// Device Language
   @JsonKey(name: 'device_language')
@@ -95,7 +95,7 @@ abstract class $StudentDeviceCreateCopyWith<$Res> {
       @JsonKey(name: 'serial_number') String? serialNumber,
       @JsonKey(name: 'device_manufacturer') String? deviceManufacturer,
       @JsonKey(name: 'sdk_type') String? sdkType,
-      @JsonKey(name: 'extra_data') Map<dynamic, dynamic>? extraData,
+      @JsonKey(name: 'extra_data') Map<String, dynamic>? extraData,
       @JsonKey(name: 'device_language') String? deviceLanguage});
 }
 
@@ -171,7 +171,7 @@ class _$StudentDeviceCreateCopyWithImpl<$Res, $Val extends StudentDeviceCreate>
       extraData: freezed == extraData
           ? _value.extraData
           : extraData // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, dynamic>?,
+              as Map<String, dynamic>?,
       deviceLanguage: freezed == deviceLanguage
           ? _value.deviceLanguage
           : deviceLanguage // ignore: cast_nullable_to_non_nullable
@@ -199,7 +199,7 @@ abstract class _$$StudentDeviceCreateImplCopyWith<$Res>
       @JsonKey(name: 'serial_number') String? serialNumber,
       @JsonKey(name: 'device_manufacturer') String? deviceManufacturer,
       @JsonKey(name: 'sdk_type') String? sdkType,
-      @JsonKey(name: 'extra_data') Map<dynamic, dynamic>? extraData,
+      @JsonKey(name: 'extra_data') Map<String, dynamic>? extraData,
       @JsonKey(name: 'device_language') String? deviceLanguage});
 }
 
@@ -273,7 +273,7 @@ class __$$StudentDeviceCreateImplCopyWithImpl<$Res>
       extraData: freezed == extraData
           ? _value._extraData
           : extraData // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, dynamic>?,
+              as Map<String, dynamic>?,
       deviceLanguage: freezed == deviceLanguage
           ? _value.deviceLanguage
           : deviceLanguage // ignore: cast_nullable_to_non_nullable
@@ -298,7 +298,7 @@ class _$StudentDeviceCreateImpl extends _StudentDeviceCreate {
       @JsonKey(name: 'device_manufacturer') required this.deviceManufacturer,
       @JsonKey(name: 'sdk_type') required this.sdkType,
       @JsonKey(name: 'extra_data')
-      required final Map<dynamic, dynamic>? extraData,
+      required final Map<String, dynamic>? extraData,
       @JsonKey(name: 'device_language') required this.deviceLanguage})
       : _extraData = extraData,
         super._();
@@ -357,12 +357,12 @@ class _$StudentDeviceCreateImpl extends _StudentDeviceCreate {
   final String? sdkType;
 
   /// Extra Data
-  final Map<dynamic, dynamic>? _extraData;
+  final Map<String, dynamic>? _extraData;
 
   /// Extra Data
   @override
   @JsonKey(name: 'extra_data')
-  Map<dynamic, dynamic>? get extraData {
+  Map<String, dynamic>? get extraData {
     final value = _extraData;
     if (value == null) return null;
     if (_extraData is EqualUnmodifiableMapView) return _extraData;
@@ -457,7 +457,7 @@ abstract class _StudentDeviceCreate extends StudentDeviceCreate {
       required final String? deviceManufacturer,
       @JsonKey(name: 'sdk_type') required final String? sdkType,
       @JsonKey(name: 'extra_data')
-      required final Map<dynamic, dynamic>? extraData,
+      required final Map<String, dynamic>? extraData,
       @JsonKey(name: 'device_language')
       required final String? deviceLanguage}) = _$StudentDeviceCreateImpl;
   const _StudentDeviceCreate._() : super._();
@@ -518,7 +518,7 @@ abstract class _StudentDeviceCreate extends StudentDeviceCreate {
   /// Extra Data
   @override
   @JsonKey(name: 'extra_data')
-  Map<dynamic, dynamic>? get extraData;
+  Map<String, dynamic>? get extraData;
 
   /// Device Language
   @override

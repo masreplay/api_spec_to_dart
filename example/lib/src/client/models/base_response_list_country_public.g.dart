@@ -10,7 +10,9 @@ _$BaseResponseListCountryPublicImpl
     _$$BaseResponseListCountryPublicImplFromJson(Map<String, dynamic> json) =>
         _$BaseResponseListCountryPublicImpl(
           message: json['message'] as String?,
-          data: json['data'] as List<dynamic>,
+          data: (json['data'] as List<dynamic>)
+              .map((e) => CountryPublic.fromJson(e as Map<String, dynamic>))
+              .toList(),
         );
 
 Map<String, dynamic> _$$BaseResponseListCountryPublicImplToJson(

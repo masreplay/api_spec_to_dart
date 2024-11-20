@@ -27,7 +27,7 @@ mixin _$BaseResponseListCommentPublic {
 
   /// Data
   @JsonKey(name: 'data')
-  List<dynamic> get data => throw _privateConstructorUsedError;
+  List<CommentPublic> get data => throw _privateConstructorUsedError;
 
   /// Serializes this BaseResponseListCommentPublic to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -49,7 +49,7 @@ abstract class $BaseResponseListCommentPublicCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<dynamic> data});
+      @JsonKey(name: 'data') List<CommentPublic> data});
 }
 
 /// @nodoc
@@ -79,7 +79,7 @@ class _$BaseResponseListCommentPublicCopyWithImpl<$Res,
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<CommentPublic>,
     ) as $Val);
   }
 }
@@ -95,7 +95,7 @@ abstract class _$$BaseResponseListCommentPublicImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<dynamic> data});
+      @JsonKey(name: 'data') List<CommentPublic> data});
 }
 
 /// @nodoc
@@ -124,7 +124,7 @@ class __$$BaseResponseListCommentPublicImplCopyWithImpl<$Res>
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<CommentPublic>,
     ));
   }
 }
@@ -136,7 +136,7 @@ class _$BaseResponseListCommentPublicImpl
     extends _BaseResponseListCommentPublic {
   const _$BaseResponseListCommentPublicImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required final List<dynamic> data})
+      @JsonKey(name: 'data') required final List<CommentPublic> data})
       : _data = data,
         super._();
 
@@ -150,12 +150,12 @@ class _$BaseResponseListCommentPublicImpl
   final String? message;
 
   /// Data
-  final List<dynamic> _data;
+  final List<CommentPublic> _data;
 
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic> get data {
+  List<CommentPublic> get data {
     if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_data);
@@ -202,7 +202,7 @@ abstract class _BaseResponseListCommentPublic
     extends BaseResponseListCommentPublic {
   const factory _BaseResponseListCommentPublic(
           {@JsonKey(name: 'message') required final String? message,
-          @JsonKey(name: 'data') required final List<dynamic> data}) =
+          @JsonKey(name: 'data') required final List<CommentPublic> data}) =
       _$BaseResponseListCommentPublicImpl;
   const _BaseResponseListCommentPublic._() : super._();
 
@@ -217,7 +217,7 @@ abstract class _BaseResponseListCommentPublic
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic> get data;
+  List<CommentPublic> get data;
 
   /// Create a copy of BaseResponseListCommentPublic
   /// with the given fields replaced by the non-null parameter values.

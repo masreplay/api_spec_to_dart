@@ -26,7 +26,7 @@ mixin _$UIForm {
 
   /// Fields
   @JsonKey(name: 'fields')
-  List<dynamic> get fields => throw _privateConstructorUsedError;
+  List<UIFormField> get fields => throw _privateConstructorUsedError;
 
   /// Title
   @JsonKey(name: 'title')
@@ -72,7 +72,7 @@ abstract class $UIFormCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'key') String key,
-      @JsonKey(name: 'fields') List<dynamic> fields,
+      @JsonKey(name: 'fields') List<UIFormField> fields,
       @JsonKey(name: 'title') String title,
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'submit_text') String submitText,
@@ -115,7 +115,7 @@ class _$UIFormCopyWithImpl<$Res, $Val extends UIForm>
       fields: null == fields
           ? _value.fields
           : fields // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<UIFormField>,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -157,7 +157,7 @@ abstract class _$$UIFormImplCopyWith<$Res> implements $UIFormCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'key') String key,
-      @JsonKey(name: 'fields') List<dynamic> fields,
+      @JsonKey(name: 'fields') List<UIFormField> fields,
       @JsonKey(name: 'title') String title,
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'submit_text') String submitText,
@@ -198,7 +198,7 @@ class __$$UIFormImplCopyWithImpl<$Res>
       fields: null == fields
           ? _value._fields
           : fields // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<UIFormField>,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -237,7 +237,7 @@ class __$$UIFormImplCopyWithImpl<$Res>
 class _$UIFormImpl extends _UIForm {
   const _$UIFormImpl(
       {@JsonKey(name: 'key') required this.key,
-      @JsonKey(name: 'fields') required final List<dynamic> fields,
+      @JsonKey(name: 'fields') required final List<UIFormField> fields,
       @JsonKey(name: 'title') required this.title,
       @JsonKey(name: 'description') required this.description,
       @JsonKey(name: 'submit_text') required this.submitText,
@@ -257,12 +257,12 @@ class _$UIFormImpl extends _UIForm {
   final String key;
 
   /// Fields
-  final List<dynamic> _fields;
+  final List<UIFormField> _fields;
 
   /// Fields
   @override
   @JsonKey(name: 'fields')
-  List<dynamic> get fields {
+  List<UIFormField> get fields {
     if (_fields is EqualUnmodifiableListView) return _fields;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_fields);
@@ -362,7 +362,7 @@ class _$UIFormImpl extends _UIForm {
 abstract class _UIForm extends UIForm {
   const factory _UIForm(
       {@JsonKey(name: 'key') required final String key,
-      @JsonKey(name: 'fields') required final List<dynamic> fields,
+      @JsonKey(name: 'fields') required final List<UIFormField> fields,
       @JsonKey(name: 'title') required final String title,
       @JsonKey(name: 'description') required final String? description,
       @JsonKey(name: 'submit_text') required final String submitText,
@@ -382,7 +382,7 @@ abstract class _UIForm extends UIForm {
   /// Fields
   @override
   @JsonKey(name: 'fields')
-  List<dynamic> get fields;
+  List<UIFormField> get fields;
 
   /// Title
   @override

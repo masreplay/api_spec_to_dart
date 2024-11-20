@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../convertors.dart';
+import './models.dart';
 
 part 'base_response_union_list_weekly_schedule_response_none_type.freezed.dart';
 part 'base_response_union_list_weekly_schedule_response_none_type.g.dart';
@@ -16,7 +17,7 @@ class BaseResponseUnionListWeeklyScheduleResponseNoneType
     @JsonKey(name: 'message') required String? message,
 
     /// Data
-    @JsonKey(name: 'data') required List? data,
+    @JsonKey(name: 'data') required List<WeeklyScheduleResponse>? data,
   }) = _BaseResponseUnionListWeeklyScheduleResponseNoneType;
 
   factory BaseResponseUnionListWeeklyScheduleResponseNoneType.fromJson(

@@ -24,7 +24,8 @@ class OrderResponse with _$OrderResponse {
     @JsonKey(name: 'order_status') required OrderStatusEnum? orderStatus,
 
     /// Order Status History
-    @JsonKey(name: 'order_status_history') required Map? orderStatusHistory,
+    @JsonKey(name: 'order_status_history')
+    required Map<String, dynamic>? orderStatusHistory,
 
     /// Quantity
     @JsonKey(name: 'quantity') required int? quantity,

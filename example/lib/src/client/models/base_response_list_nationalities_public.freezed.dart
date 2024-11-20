@@ -27,7 +27,7 @@ mixin _$BaseResponseListNationalitiesPublic {
 
   /// Data
   @JsonKey(name: 'data')
-  List<dynamic> get data => throw _privateConstructorUsedError;
+  List<NationalitiesPublic> get data => throw _privateConstructorUsedError;
 
   /// Serializes this BaseResponseListNationalitiesPublic to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -50,7 +50,7 @@ abstract class $BaseResponseListNationalitiesPublicCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<dynamic> data});
+      @JsonKey(name: 'data') List<NationalitiesPublic> data});
 }
 
 /// @nodoc
@@ -80,7 +80,7 @@ class _$BaseResponseListNationalitiesPublicCopyWithImpl<$Res,
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<NationalitiesPublic>,
     ) as $Val);
   }
 }
@@ -96,7 +96,7 @@ abstract class _$$BaseResponseListNationalitiesPublicImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<dynamic> data});
+      @JsonKey(name: 'data') List<NationalitiesPublic> data});
 }
 
 /// @nodoc
@@ -125,7 +125,7 @@ class __$$BaseResponseListNationalitiesPublicImplCopyWithImpl<$Res>
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<NationalitiesPublic>,
     ));
   }
 }
@@ -137,7 +137,7 @@ class _$BaseResponseListNationalitiesPublicImpl
     extends _BaseResponseListNationalitiesPublic {
   const _$BaseResponseListNationalitiesPublicImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required final List<dynamic> data})
+      @JsonKey(name: 'data') required final List<NationalitiesPublic> data})
       : _data = data,
         super._();
 
@@ -151,12 +151,12 @@ class _$BaseResponseListNationalitiesPublicImpl
   final String? message;
 
   /// Data
-  final List<dynamic> _data;
+  final List<NationalitiesPublic> _data;
 
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic> get data {
+  List<NationalitiesPublic> get data {
     if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_data);
@@ -203,7 +203,8 @@ abstract class _BaseResponseListNationalitiesPublic
     extends BaseResponseListNationalitiesPublic {
   const factory _BaseResponseListNationalitiesPublic(
           {@JsonKey(name: 'message') required final String? message,
-          @JsonKey(name: 'data') required final List<dynamic> data}) =
+          @JsonKey(name: 'data')
+          required final List<NationalitiesPublic> data}) =
       _$BaseResponseListNationalitiesPublicImpl;
   const _BaseResponseListNationalitiesPublic._() : super._();
 
@@ -219,7 +220,7 @@ abstract class _BaseResponseListNationalitiesPublic
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic> get data;
+  List<NationalitiesPublic> get data;
 
   /// Create a copy of BaseResponseListNationalitiesPublic
   /// with the given fields replaced by the non-null parameter values.

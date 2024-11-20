@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../convertors.dart';
+import './models.dart';
 
 part 'base_response_list_course_public.freezed.dart';
 part 'base_response_list_course_public.g.dart';
@@ -15,7 +16,7 @@ class BaseResponseListCoursePublic with _$BaseResponseListCoursePublic {
     @JsonKey(name: 'message') required String? message,
 
     /// Data
-    @JsonKey(name: 'data') required List data,
+    @JsonKey(name: 'data') required List<CoursePublic> data,
   }) = _BaseResponseListCoursePublic;
 
   factory BaseResponseListCoursePublic.fromJson(Map<String, dynamic> json) =>

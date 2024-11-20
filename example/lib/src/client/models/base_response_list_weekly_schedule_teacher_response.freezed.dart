@@ -28,7 +28,8 @@ mixin _$BaseResponseListWeeklyScheduleTeacherResponse {
 
   /// Data
   @JsonKey(name: 'data')
-  List<dynamic> get data => throw _privateConstructorUsedError;
+  List<WeeklyScheduleTeacherResponse> get data =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this BaseResponseListWeeklyScheduleTeacherResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -51,7 +52,7 @@ abstract class $BaseResponseListWeeklyScheduleTeacherResponseCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<dynamic> data});
+      @JsonKey(name: 'data') List<WeeklyScheduleTeacherResponse> data});
 }
 
 /// @nodoc
@@ -82,7 +83,7 @@ class _$BaseResponseListWeeklyScheduleTeacherResponseCopyWithImpl<$Res,
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<WeeklyScheduleTeacherResponse>,
     ) as $Val);
   }
 }
@@ -100,7 +101,7 @@ abstract class _$$BaseResponseListWeeklyScheduleTeacherResponseImplCopyWith<
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<dynamic> data});
+      @JsonKey(name: 'data') List<WeeklyScheduleTeacherResponse> data});
 }
 
 /// @nodoc
@@ -130,7 +131,7 @@ class __$$BaseResponseListWeeklyScheduleTeacherResponseImplCopyWithImpl<$Res>
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<WeeklyScheduleTeacherResponse>,
     ));
   }
 }
@@ -142,7 +143,8 @@ class _$BaseResponseListWeeklyScheduleTeacherResponseImpl
     extends _BaseResponseListWeeklyScheduleTeacherResponse {
   const _$BaseResponseListWeeklyScheduleTeacherResponseImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required final List<dynamic> data})
+      @JsonKey(name: 'data')
+      required final List<WeeklyScheduleTeacherResponse> data})
       : _data = data,
         super._();
 
@@ -156,12 +158,12 @@ class _$BaseResponseListWeeklyScheduleTeacherResponseImpl
   final String? message;
 
   /// Data
-  final List<dynamic> _data;
+  final List<WeeklyScheduleTeacherResponse> _data;
 
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic> get data {
+  List<WeeklyScheduleTeacherResponse> get data {
     if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_data);
@@ -210,7 +212,8 @@ abstract class _BaseResponseListWeeklyScheduleTeacherResponse
     extends BaseResponseListWeeklyScheduleTeacherResponse {
   const factory _BaseResponseListWeeklyScheduleTeacherResponse(
           {@JsonKey(name: 'message') required final String? message,
-          @JsonKey(name: 'data') required final List<dynamic> data}) =
+          @JsonKey(name: 'data')
+          required final List<WeeklyScheduleTeacherResponse> data}) =
       _$BaseResponseListWeeklyScheduleTeacherResponseImpl;
   const _BaseResponseListWeeklyScheduleTeacherResponse._() : super._();
 
@@ -226,7 +229,7 @@ abstract class _BaseResponseListWeeklyScheduleTeacherResponse
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic> get data;
+  List<WeeklyScheduleTeacherResponse> get data;
 
   /// Create a copy of BaseResponseListWeeklyScheduleTeacherResponse
   /// with the given fields replaced by the non-null parameter values.

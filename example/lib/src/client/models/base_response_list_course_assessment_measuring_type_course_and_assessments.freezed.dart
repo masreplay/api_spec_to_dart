@@ -29,7 +29,8 @@ mixin _$BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments {
 
   /// Data
   @JsonKey(name: 'data')
-  List<dynamic> get data => throw _privateConstructorUsedError;
+  List<CourseAssessmentMeasuringTypeCourseAndAssessments> get data =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -56,7 +57,8 @@ abstract class $BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessment
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<dynamic> data});
+      @JsonKey(name: 'data')
+      List<CourseAssessmentMeasuringTypeCourseAndAssessments> data});
 }
 
 /// @nodoc
@@ -90,7 +92,7 @@ class _$BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessmentsCopyWit
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<CourseAssessmentMeasuringTypeCourseAndAssessments>,
     ) as $Val);
   }
 }
@@ -113,7 +115,8 @@ abstract class _$$BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessme
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<dynamic> data});
+      @JsonKey(name: 'data')
+      List<CourseAssessmentMeasuringTypeCourseAndAssessments> data});
 }
 
 /// @nodoc
@@ -150,7 +153,7 @@ class __$$BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessmentsImplC
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<CourseAssessmentMeasuringTypeCourseAndAssessments>,
     ));
   }
 }
@@ -162,7 +165,9 @@ class _$BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessmentsImpl
     extends _BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments {
   const _$BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessmentsImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required final List<dynamic> data})
+      @JsonKey(name: 'data')
+      required final List<CourseAssessmentMeasuringTypeCourseAndAssessments>
+          data})
       : _data = data,
         super._();
 
@@ -177,12 +182,12 @@ class _$BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessmentsImpl
   final String? message;
 
   /// Data
-  final List<dynamic> _data;
+  final List<CourseAssessmentMeasuringTypeCourseAndAssessments> _data;
 
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic> get data {
+  List<CourseAssessmentMeasuringTypeCourseAndAssessments> get data {
     if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_data);
@@ -232,7 +237,9 @@ abstract class _BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessment
     extends BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments {
   const factory _BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments(
           {@JsonKey(name: 'message') required final String? message,
-          @JsonKey(name: 'data') required final List<dynamic> data}) =
+          @JsonKey(name: 'data')
+          required final List<CourseAssessmentMeasuringTypeCourseAndAssessments>
+              data}) =
       _$BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessmentsImpl;
   const _BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments._()
       : super._();
@@ -250,7 +257,7 @@ abstract class _BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessment
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic> get data;
+  List<CourseAssessmentMeasuringTypeCourseAndAssessments> get data;
 
   /// Create a copy of BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments
   /// with the given fields replaced by the non-null parameter values.

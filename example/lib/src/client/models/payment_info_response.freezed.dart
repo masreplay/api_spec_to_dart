@@ -25,7 +25,8 @@ mixin _$PaymentInfoResponse {
 
   /// Payment Methods
   @JsonKey(name: 'payment_methods')
-  List<dynamic> get paymentMethods => throw _privateConstructorUsedError;
+  List<PaymentMethodPublic> get paymentMethods =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this PaymentInfoResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -45,7 +46,8 @@ abstract class $PaymentInfoResponseCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'amount') PaymentInfoAmount amount,
-      @JsonKey(name: 'payment_methods') List<dynamic> paymentMethods});
+      @JsonKey(name: 'payment_methods')
+      List<PaymentMethodPublic> paymentMethods});
 
   $PaymentInfoAmountCopyWith<$Res> get amount;
 }
@@ -76,7 +78,7 @@ class _$PaymentInfoResponseCopyWithImpl<$Res, $Val extends PaymentInfoResponse>
       paymentMethods: null == paymentMethods
           ? _value.paymentMethods
           : paymentMethods // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<PaymentMethodPublic>,
     ) as $Val);
   }
 
@@ -101,7 +103,8 @@ abstract class _$$PaymentInfoResponseImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'amount') PaymentInfoAmount amount,
-      @JsonKey(name: 'payment_methods') List<dynamic> paymentMethods});
+      @JsonKey(name: 'payment_methods')
+      List<PaymentMethodPublic> paymentMethods});
 
   @override
   $PaymentInfoAmountCopyWith<$Res> get amount;
@@ -131,7 +134,7 @@ class __$$PaymentInfoResponseImplCopyWithImpl<$Res>
       paymentMethods: null == paymentMethods
           ? _value._paymentMethods
           : paymentMethods // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<PaymentMethodPublic>,
     ));
   }
 }
@@ -143,7 +146,7 @@ class _$PaymentInfoResponseImpl extends _PaymentInfoResponse {
   const _$PaymentInfoResponseImpl(
       {@JsonKey(name: 'amount') required this.amount,
       @JsonKey(name: 'payment_methods')
-      required final List<dynamic> paymentMethods})
+      required final List<PaymentMethodPublic> paymentMethods})
       : _paymentMethods = paymentMethods,
         super._();
 
@@ -155,12 +158,12 @@ class _$PaymentInfoResponseImpl extends _PaymentInfoResponse {
   final PaymentInfoAmount amount;
 
   /// Payment Methods
-  final List<dynamic> _paymentMethods;
+  final List<PaymentMethodPublic> _paymentMethods;
 
   /// Payment Methods
   @override
   @JsonKey(name: 'payment_methods')
-  List<dynamic> get paymentMethods {
+  List<PaymentMethodPublic> get paymentMethods {
     if (_paymentMethods is EqualUnmodifiableListView) return _paymentMethods;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_paymentMethods);
@@ -205,9 +208,10 @@ class _$PaymentInfoResponseImpl extends _PaymentInfoResponse {
 
 abstract class _PaymentInfoResponse extends PaymentInfoResponse {
   const factory _PaymentInfoResponse(
-      {@JsonKey(name: 'amount') required final PaymentInfoAmount amount,
-      @JsonKey(name: 'payment_methods')
-      required final List<dynamic> paymentMethods}) = _$PaymentInfoResponseImpl;
+          {@JsonKey(name: 'amount') required final PaymentInfoAmount amount,
+          @JsonKey(name: 'payment_methods')
+          required final List<PaymentMethodPublic> paymentMethods}) =
+      _$PaymentInfoResponseImpl;
   const _PaymentInfoResponse._() : super._();
 
   factory _PaymentInfoResponse.fromJson(Map<String, dynamic> json) =
@@ -220,7 +224,7 @@ abstract class _PaymentInfoResponse extends PaymentInfoResponse {
   /// Payment Methods
   @override
   @JsonKey(name: 'payment_methods')
-  List<dynamic> get paymentMethods;
+  List<PaymentMethodPublic> get paymentMethods;
 
   /// Create a copy of PaymentInfoResponse
   /// with the given fields replaced by the non-null parameter values.

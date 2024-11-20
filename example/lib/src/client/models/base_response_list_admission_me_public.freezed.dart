@@ -27,7 +27,7 @@ mixin _$BaseResponseListAdmissionMePublic {
 
   /// Data
   @JsonKey(name: 'data')
-  List<dynamic> get data => throw _privateConstructorUsedError;
+  List<AdmissionMePublic> get data => throw _privateConstructorUsedError;
 
   /// Serializes this BaseResponseListAdmissionMePublic to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -49,7 +49,7 @@ abstract class $BaseResponseListAdmissionMePublicCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<dynamic> data});
+      @JsonKey(name: 'data') List<AdmissionMePublic> data});
 }
 
 /// @nodoc
@@ -79,7 +79,7 @@ class _$BaseResponseListAdmissionMePublicCopyWithImpl<$Res,
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<AdmissionMePublic>,
     ) as $Val);
   }
 }
@@ -95,7 +95,7 @@ abstract class _$$BaseResponseListAdmissionMePublicImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<dynamic> data});
+      @JsonKey(name: 'data') List<AdmissionMePublic> data});
 }
 
 /// @nodoc
@@ -124,7 +124,7 @@ class __$$BaseResponseListAdmissionMePublicImplCopyWithImpl<$Res>
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<AdmissionMePublic>,
     ));
   }
 }
@@ -136,7 +136,7 @@ class _$BaseResponseListAdmissionMePublicImpl
     extends _BaseResponseListAdmissionMePublic {
   const _$BaseResponseListAdmissionMePublicImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required final List<dynamic> data})
+      @JsonKey(name: 'data') required final List<AdmissionMePublic> data})
       : _data = data,
         super._();
 
@@ -150,12 +150,12 @@ class _$BaseResponseListAdmissionMePublicImpl
   final String? message;
 
   /// Data
-  final List<dynamic> _data;
+  final List<AdmissionMePublic> _data;
 
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic> get data {
+  List<AdmissionMePublic> get data {
     if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_data);
@@ -202,7 +202,7 @@ abstract class _BaseResponseListAdmissionMePublic
     extends BaseResponseListAdmissionMePublic {
   const factory _BaseResponseListAdmissionMePublic(
           {@JsonKey(name: 'message') required final String? message,
-          @JsonKey(name: 'data') required final List<dynamic> data}) =
+          @JsonKey(name: 'data') required final List<AdmissionMePublic> data}) =
       _$BaseResponseListAdmissionMePublicImpl;
   const _BaseResponseListAdmissionMePublic._() : super._();
 
@@ -218,7 +218,7 @@ abstract class _BaseResponseListAdmissionMePublic
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic> get data;
+  List<AdmissionMePublic> get data;
 
   /// Create a copy of BaseResponseListAdmissionMePublic
   /// with the given fields replaced by the non-null parameter values.

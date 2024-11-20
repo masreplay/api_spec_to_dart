@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../convertors.dart';
+import './models.dart';
 
 part 'student_seamsters_summary.freezed.dart';
 part 'student_seamsters_summary.g.dart';
@@ -37,10 +38,10 @@ class StudentSeamstersSummary with _$StudentSeamstersSummary {
     required int currentNumberOfSubjects,
 
     /// Current Subjects
-    @JsonKey(name: 'current_subjects') required List currentSubjects,
+    @JsonKey(name: 'current_subjects') required List<Subject> currentSubjects,
 
     /// Previous Subjects
-    @JsonKey(name: 'previous_subjects') required List previousSubjects,
+    @JsonKey(name: 'previous_subjects') required List<Subject> previousSubjects,
   }) = _StudentSeamstersSummary;
 
   factory StudentSeamstersSummary.fromJson(Map<String, dynamic> json) =>

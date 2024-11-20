@@ -12,7 +12,7 @@ class StudentEkycFormDataRequest with _$StudentEkycFormDataRequest {
   @JsonSerializable(converters: convertors)
   const factory StudentEkycFormDataRequest({
     /// Ekyc Extra
-    @JsonKey(name: 'ekyc_extra') required Map ekycExtra,
+    @JsonKey(name: 'ekyc_extra') required Map<String, dynamic> ekycExtra,
   }) = _StudentEkycFormDataRequest;
 
   factory StudentEkycFormDataRequest.fromJson(Map<String, dynamic> json) =>

@@ -18,8 +18,12 @@ _$StudentSeamstersSummaryImpl _$$StudentSeamstersSummaryImplFromJson(
           (json['current_number_of_units'] as num?)?.toInt() ?? 0,
       currentNumberOfSubjects:
           (json['current_number_of_subjects'] as num?)?.toInt() ?? 0,
-      currentSubjects: json['current_subjects'] as List<dynamic>,
-      previousSubjects: json['previous_subjects'] as List<dynamic>,
+      currentSubjects: (json['current_subjects'] as List<dynamic>)
+          .map((e) => Subject.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      previousSubjects: (json['previous_subjects'] as List<dynamic>)
+          .map((e) => Subject.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$StudentSeamstersSummaryImplToJson(

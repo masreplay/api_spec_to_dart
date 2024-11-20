@@ -10,7 +10,9 @@ _$StudentSeamstersSummaryWithoutCoursesImpl
     _$$StudentSeamstersSummaryWithoutCoursesImplFromJson(
             Map<String, dynamic> json) =>
         _$StudentSeamstersSummaryWithoutCoursesImpl(
-          semesters: json['semesters'] as List<dynamic>?,
+          semesters: (json['semesters'] as List<dynamic>?)
+              ?.map((e) => Summary.fromJson(e as Map<String, dynamic>))
+              .toList(),
           year: json['year'] == null
               ? null
               : StudyYearPublic.fromJson(json['year'] as Map<String, dynamic>),

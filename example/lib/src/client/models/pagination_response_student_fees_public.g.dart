@@ -13,7 +13,9 @@ _$PaginationResponseStudentFeesPublicImpl
           page: (json['page'] as num).toInt(),
           perPage: (json['per_page'] as num).toInt(),
           total: (json['total'] as num).toInt(),
-          data: json['data'] as List<dynamic>,
+          data: (json['data'] as List<dynamic>)
+              .map((e) => StudentFeesPublic.fromJson(e as Map<String, dynamic>))
+              .toList(),
         );
 
 Map<String, dynamic> _$$PaginationResponseStudentFeesPublicImplToJson(

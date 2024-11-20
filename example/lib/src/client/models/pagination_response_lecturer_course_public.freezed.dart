@@ -36,7 +36,7 @@ mixin _$PaginationResponseLecturerCoursePublic {
 
   /// Data
   @JsonKey(name: 'data')
-  List<dynamic> get data => throw _privateConstructorUsedError;
+  List<LecturerCoursePublic> get data => throw _privateConstructorUsedError;
 
   /// Serializes this PaginationResponseLecturerCoursePublic to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -61,7 +61,7 @@ abstract class $PaginationResponseLecturerCoursePublicCopyWith<$Res> {
       {@JsonKey(name: 'page') int page,
       @JsonKey(name: 'per_page') int perPage,
       @JsonKey(name: 'total') int total,
-      @JsonKey(name: 'data') List<dynamic> data});
+      @JsonKey(name: 'data') List<LecturerCoursePublic> data});
 }
 
 /// @nodoc
@@ -101,7 +101,7 @@ class _$PaginationResponseLecturerCoursePublicCopyWithImpl<$Res,
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<LecturerCoursePublic>,
     ) as $Val);
   }
 }
@@ -119,7 +119,7 @@ abstract class _$$PaginationResponseLecturerCoursePublicImplCopyWith<$Res>
       {@JsonKey(name: 'page') int page,
       @JsonKey(name: 'per_page') int perPage,
       @JsonKey(name: 'total') int total,
-      @JsonKey(name: 'data') List<dynamic> data});
+      @JsonKey(name: 'data') List<LecturerCoursePublic> data});
 }
 
 /// @nodoc
@@ -158,7 +158,7 @@ class __$$PaginationResponseLecturerCoursePublicImplCopyWithImpl<$Res>
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<LecturerCoursePublic>,
     ));
   }
 }
@@ -172,7 +172,7 @@ class _$PaginationResponseLecturerCoursePublicImpl
       {@JsonKey(name: 'page') required this.page,
       @JsonKey(name: 'per_page') required this.perPage,
       @JsonKey(name: 'total') required this.total,
-      @JsonKey(name: 'data') required final List<dynamic> data})
+      @JsonKey(name: 'data') required final List<LecturerCoursePublic> data})
       : _data = data,
         super._();
 
@@ -196,12 +196,12 @@ class _$PaginationResponseLecturerCoursePublicImpl
   final int total;
 
   /// Data
-  final List<dynamic> _data;
+  final List<LecturerCoursePublic> _data;
 
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic> get data {
+  List<LecturerCoursePublic> get data {
     if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_data);
@@ -253,7 +253,8 @@ abstract class _PaginationResponseLecturerCoursePublic
           {@JsonKey(name: 'page') required final int page,
           @JsonKey(name: 'per_page') required final int perPage,
           @JsonKey(name: 'total') required final int total,
-          @JsonKey(name: 'data') required final List<dynamic> data}) =
+          @JsonKey(name: 'data')
+          required final List<LecturerCoursePublic> data}) =
       _$PaginationResponseLecturerCoursePublicImpl;
   const _PaginationResponseLecturerCoursePublic._() : super._();
 
@@ -279,7 +280,7 @@ abstract class _PaginationResponseLecturerCoursePublic
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic> get data;
+  List<LecturerCoursePublic> get data;
 
   /// Create a copy of PaginationResponseLecturerCoursePublic
   /// with the given fields replaced by the non-null parameter values.

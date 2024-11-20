@@ -38,7 +38,7 @@ mixin _$CourseStaffPublic {
 
   /// Course Configuration
   @JsonKey(name: 'course_configuration')
-  Map<dynamic, dynamic>? get courseConfiguration =>
+  Map<String, dynamic>? get courseConfiguration =>
       throw _privateConstructorUsedError;
 
   /// Id
@@ -71,7 +71,7 @@ abstract class $CourseStaffPublicCopyWith<$Res> {
       @JsonKey(name: 'capacity') int capacity,
       @JsonKey(name: 'close_editing_employee') bool closeEditingEmployee,
       @JsonKey(name: 'course_configuration')
-      Map<dynamic, dynamic>? courseConfiguration,
+      Map<String, dynamic>? courseConfiguration,
       @JsonKey(name: 'id') int? id,
       @JsonKey(name: 'course') CourseTable? course,
       @JsonKey(name: 'employee') EmployeePublic? employee});
@@ -124,7 +124,7 @@ class _$CourseStaffPublicCopyWithImpl<$Res, $Val extends CourseStaffPublic>
       courseConfiguration: freezed == courseConfiguration
           ? _value.courseConfiguration
           : courseConfiguration // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, dynamic>?,
+              as Map<String, dynamic>?,
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -183,7 +183,7 @@ abstract class _$$CourseStaffPublicImplCopyWith<$Res>
       @JsonKey(name: 'capacity') int capacity,
       @JsonKey(name: 'close_editing_employee') bool closeEditingEmployee,
       @JsonKey(name: 'course_configuration')
-      Map<dynamic, dynamic>? courseConfiguration,
+      Map<String, dynamic>? courseConfiguration,
       @JsonKey(name: 'id') int? id,
       @JsonKey(name: 'course') CourseTable? course,
       @JsonKey(name: 'employee') EmployeePublic? employee});
@@ -236,7 +236,7 @@ class __$$CourseStaffPublicImplCopyWithImpl<$Res>
       courseConfiguration: freezed == courseConfiguration
           ? _value._courseConfiguration
           : courseConfiguration // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, dynamic>?,
+              as Map<String, dynamic>?,
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -264,7 +264,7 @@ class _$CourseStaffPublicImpl extends _CourseStaffPublic {
       @JsonKey(name: 'close_editing_employee')
       required this.closeEditingEmployee,
       @JsonKey(name: 'course_configuration')
-      required final Map<dynamic, dynamic>? courseConfiguration,
+      required final Map<String, dynamic>? courseConfiguration,
       @JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'course') required this.course,
       @JsonKey(name: 'employee') required this.employee})
@@ -295,12 +295,12 @@ class _$CourseStaffPublicImpl extends _CourseStaffPublic {
   final bool closeEditingEmployee;
 
   /// Course Configuration
-  final Map<dynamic, dynamic>? _courseConfiguration;
+  final Map<String, dynamic>? _courseConfiguration;
 
   /// Course Configuration
   @override
   @JsonKey(name: 'course_configuration')
-  Map<dynamic, dynamic>? get courseConfiguration {
+  Map<String, dynamic>? get courseConfiguration {
     final value = _courseConfiguration;
     if (value == null) return null;
     if (_courseConfiguration is EqualUnmodifiableMapView)
@@ -384,7 +384,7 @@ abstract class _CourseStaffPublic extends CourseStaffPublic {
           @JsonKey(name: 'close_editing_employee')
           required final bool closeEditingEmployee,
           @JsonKey(name: 'course_configuration')
-          required final Map<dynamic, dynamic>? courseConfiguration,
+          required final Map<String, dynamic>? courseConfiguration,
           @JsonKey(name: 'id') required final int? id,
           @JsonKey(name: 'course') required final CourseTable? course,
           @JsonKey(name: 'employee') required final EmployeePublic? employee}) =
@@ -417,7 +417,7 @@ abstract class _CourseStaffPublic extends CourseStaffPublic {
   /// Course Configuration
   @override
   @JsonKey(name: 'course_configuration')
-  Map<dynamic, dynamic>? get courseConfiguration;
+  Map<String, dynamic>? get courseConfiguration;
 
   /// Id
   @override

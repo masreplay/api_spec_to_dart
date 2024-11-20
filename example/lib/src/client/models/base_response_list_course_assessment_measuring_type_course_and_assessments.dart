@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../convertors.dart';
+import './models.dart';
 
 part 'base_response_list_course_assessment_measuring_type_course_and_assessments.freezed.dart';
 part 'base_response_list_course_assessment_measuring_type_course_and_assessments.g.dart';
@@ -16,7 +17,8 @@ class BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments
     @JsonKey(name: 'message') required String? message,
 
     /// Data
-    @JsonKey(name: 'data') required List data,
+    @JsonKey(name: 'data')
+    required List<CourseAssessmentMeasuringTypeCourseAndAssessments> data,
   }) = _BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments;
 
   factory BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments.fromJson(

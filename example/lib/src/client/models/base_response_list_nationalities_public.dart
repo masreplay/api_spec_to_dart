@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../convertors.dart';
+import './models.dart';
 
 part 'base_response_list_nationalities_public.freezed.dart';
 part 'base_response_list_nationalities_public.g.dart';
@@ -16,7 +17,7 @@ class BaseResponseListNationalitiesPublic
     @JsonKey(name: 'message') required String? message,
 
     /// Data
-    @JsonKey(name: 'data') required List data,
+    @JsonKey(name: 'data') required List<NationalitiesPublic> data,
   }) = _BaseResponseListNationalitiesPublic;
 
   factory BaseResponseListNationalitiesPublic.fromJson(

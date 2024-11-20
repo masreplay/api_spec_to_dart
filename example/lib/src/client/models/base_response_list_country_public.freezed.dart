@@ -27,7 +27,7 @@ mixin _$BaseResponseListCountryPublic {
 
   /// Data
   @JsonKey(name: 'data')
-  List<dynamic> get data => throw _privateConstructorUsedError;
+  List<CountryPublic> get data => throw _privateConstructorUsedError;
 
   /// Serializes this BaseResponseListCountryPublic to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -49,7 +49,7 @@ abstract class $BaseResponseListCountryPublicCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<dynamic> data});
+      @JsonKey(name: 'data') List<CountryPublic> data});
 }
 
 /// @nodoc
@@ -79,7 +79,7 @@ class _$BaseResponseListCountryPublicCopyWithImpl<$Res,
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<CountryPublic>,
     ) as $Val);
   }
 }
@@ -95,7 +95,7 @@ abstract class _$$BaseResponseListCountryPublicImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<dynamic> data});
+      @JsonKey(name: 'data') List<CountryPublic> data});
 }
 
 /// @nodoc
@@ -124,7 +124,7 @@ class __$$BaseResponseListCountryPublicImplCopyWithImpl<$Res>
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<CountryPublic>,
     ));
   }
 }
@@ -136,7 +136,7 @@ class _$BaseResponseListCountryPublicImpl
     extends _BaseResponseListCountryPublic {
   const _$BaseResponseListCountryPublicImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required final List<dynamic> data})
+      @JsonKey(name: 'data') required final List<CountryPublic> data})
       : _data = data,
         super._();
 
@@ -150,12 +150,12 @@ class _$BaseResponseListCountryPublicImpl
   final String? message;
 
   /// Data
-  final List<dynamic> _data;
+  final List<CountryPublic> _data;
 
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic> get data {
+  List<CountryPublic> get data {
     if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_data);
@@ -202,7 +202,7 @@ abstract class _BaseResponseListCountryPublic
     extends BaseResponseListCountryPublic {
   const factory _BaseResponseListCountryPublic(
           {@JsonKey(name: 'message') required final String? message,
-          @JsonKey(name: 'data') required final List<dynamic> data}) =
+          @JsonKey(name: 'data') required final List<CountryPublic> data}) =
       _$BaseResponseListCountryPublicImpl;
   const _BaseResponseListCountryPublic._() : super._();
 
@@ -217,7 +217,7 @@ abstract class _BaseResponseListCountryPublic
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic> get data;
+  List<CountryPublic> get data;
 
   /// Create a copy of BaseResponseListCountryPublic
   /// with the given fields replaced by the non-null parameter values.

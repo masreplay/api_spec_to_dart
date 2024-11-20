@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../convertors.dart';
+import './models.dart';
 
 part 'pagination_response_student_notifications_public.freezed.dart';
 part 'pagination_response_student_notifications_public.g.dart';
@@ -22,7 +23,7 @@ class PaginationResponseStudentNotificationsPublic
     @JsonKey(name: 'total') required int total,
 
     /// Data
-    @JsonKey(name: 'data') required List data,
+    @JsonKey(name: 'data') required List<StudentNotificationsPublic> data,
   }) = _PaginationResponseStudentNotificationsPublic;
 
   factory PaginationResponseStudentNotificationsPublic.fromJson(

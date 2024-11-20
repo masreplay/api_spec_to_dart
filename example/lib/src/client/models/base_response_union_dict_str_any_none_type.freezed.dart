@@ -27,7 +27,7 @@ mixin _$BaseResponseUnionDictStrAnyNoneType {
 
   /// Data
   @JsonKey(name: 'data')
-  Map<dynamic, dynamic>? get data => throw _privateConstructorUsedError;
+  Map<String, dynamic>? get data => throw _privateConstructorUsedError;
 
   /// Serializes this BaseResponseUnionDictStrAnyNoneType to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -50,7 +50,7 @@ abstract class $BaseResponseUnionDictStrAnyNoneTypeCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') Map<dynamic, dynamic>? data});
+      @JsonKey(name: 'data') Map<String, dynamic>? data});
 }
 
 /// @nodoc
@@ -80,7 +80,7 @@ class _$BaseResponseUnionDictStrAnyNoneTypeCopyWithImpl<$Res,
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, dynamic>?,
+              as Map<String, dynamic>?,
     ) as $Val);
   }
 }
@@ -96,7 +96,7 @@ abstract class _$$BaseResponseUnionDictStrAnyNoneTypeImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') Map<dynamic, dynamic>? data});
+      @JsonKey(name: 'data') Map<String, dynamic>? data});
 }
 
 /// @nodoc
@@ -125,7 +125,7 @@ class __$$BaseResponseUnionDictStrAnyNoneTypeImplCopyWithImpl<$Res>
       data: freezed == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, dynamic>?,
+              as Map<String, dynamic>?,
     ));
   }
 }
@@ -137,7 +137,7 @@ class _$BaseResponseUnionDictStrAnyNoneTypeImpl
     extends _BaseResponseUnionDictStrAnyNoneType {
   const _$BaseResponseUnionDictStrAnyNoneTypeImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required final Map<dynamic, dynamic>? data})
+      @JsonKey(name: 'data') required final Map<String, dynamic>? data})
       : _data = data,
         super._();
 
@@ -151,12 +151,12 @@ class _$BaseResponseUnionDictStrAnyNoneTypeImpl
   final String? message;
 
   /// Data
-  final Map<dynamic, dynamic>? _data;
+  final Map<String, dynamic>? _data;
 
   /// Data
   @override
   @JsonKey(name: 'data')
-  Map<dynamic, dynamic>? get data {
+  Map<String, dynamic>? get data {
     final value = _data;
     if (value == null) return null;
     if (_data is EqualUnmodifiableMapView) return _data;
@@ -205,7 +205,7 @@ abstract class _BaseResponseUnionDictStrAnyNoneType
     extends BaseResponseUnionDictStrAnyNoneType {
   const factory _BaseResponseUnionDictStrAnyNoneType(
           {@JsonKey(name: 'message') required final String? message,
-          @JsonKey(name: 'data') required final Map<dynamic, dynamic>? data}) =
+          @JsonKey(name: 'data') required final Map<String, dynamic>? data}) =
       _$BaseResponseUnionDictStrAnyNoneTypeImpl;
   const _BaseResponseUnionDictStrAnyNoneType._() : super._();
 
@@ -221,7 +221,7 @@ abstract class _BaseResponseUnionDictStrAnyNoneType
   /// Data
   @override
   @JsonKey(name: 'data')
-  Map<dynamic, dynamic>? get data;
+  Map<String, dynamic>? get data;
 
   /// Create a copy of BaseResponseUnionDictStrAnyNoneType
   /// with the given fields replaced by the non-null parameter values.

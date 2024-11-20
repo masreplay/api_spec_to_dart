@@ -42,7 +42,7 @@ class StudentDeviceCreate with _$StudentDeviceCreate {
     @JsonKey(name: 'sdk_type') required String? sdkType,
 
     /// Extra Data
-    @JsonKey(name: 'extra_data') required Map? extraData,
+    @JsonKey(name: 'extra_data') required Map<String, dynamic>? extraData,
 
     /// Device Language
     @JsonKey(name: 'device_language') required String? deviceLanguage,

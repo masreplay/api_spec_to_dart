@@ -42,7 +42,7 @@ mixin _$CommentPublic {
 
   /// Replies
   @JsonKey(name: 'replies')
-  List<dynamic> get replies => throw _privateConstructorUsedError;
+  List<CommentPublic> get replies => throw _privateConstructorUsedError;
 
   /// Serializes this CommentPublic to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -67,7 +67,7 @@ abstract class $CommentPublicCopyWith<$Res> {
       @JsonKey(name: 'created_at_formatted') String createdAtFormatted,
       @JsonKey(name: 'user') CommentUserPublic user,
       @JsonKey(name: 'parent') CommentPublic? parent,
-      @JsonKey(name: 'replies') List<dynamic> replies});
+      @JsonKey(name: 'replies') List<CommentPublic> replies});
 
   $CommentUserPublicCopyWith<$Res> get user;
   $CommentPublicCopyWith<$Res>? get parent;
@@ -124,7 +124,7 @@ class _$CommentPublicCopyWithImpl<$Res, $Val extends CommentPublic>
       replies: null == replies
           ? _value.replies
           : replies // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<CommentPublic>,
     ) as $Val);
   }
 
@@ -168,7 +168,7 @@ abstract class _$$CommentPublicImplCopyWith<$Res>
       @JsonKey(name: 'created_at_formatted') String createdAtFormatted,
       @JsonKey(name: 'user') CommentUserPublic user,
       @JsonKey(name: 'parent') CommentPublic? parent,
-      @JsonKey(name: 'replies') List<dynamic> replies});
+      @JsonKey(name: 'replies') List<CommentPublic> replies});
 
   @override
   $CommentUserPublicCopyWith<$Res> get user;
@@ -225,7 +225,7 @@ class __$$CommentPublicImplCopyWithImpl<$Res>
       replies: null == replies
           ? _value._replies
           : replies // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<CommentPublic>,
     ));
   }
 }
@@ -241,7 +241,7 @@ class _$CommentPublicImpl extends _CommentPublic {
       @JsonKey(name: 'created_at_formatted') required this.createdAtFormatted,
       @JsonKey(name: 'user') required this.user,
       @JsonKey(name: 'parent') required this.parent,
-      @JsonKey(name: 'replies') required final List<dynamic> replies})
+      @JsonKey(name: 'replies') required final List<CommentPublic> replies})
       : _replies = replies,
         super._();
 
@@ -275,12 +275,12 @@ class _$CommentPublicImpl extends _CommentPublic {
   final CommentPublic? parent;
 
   /// Replies
-  final List<dynamic> _replies;
+  final List<CommentPublic> _replies;
 
   /// Replies
   @override
   @JsonKey(name: 'replies')
-  List<dynamic> get replies {
+  List<CommentPublic> get replies {
     if (_replies is EqualUnmodifiableListView) return _replies;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_replies);
@@ -337,15 +337,15 @@ class _$CommentPublicImpl extends _CommentPublic {
 
 abstract class _CommentPublic extends CommentPublic {
   const factory _CommentPublic(
-          {@JsonKey(name: 'id') required final int id,
-          @JsonKey(name: 'content') required final String content,
-          @JsonKey(name: 'created_at') required final DateTime createdAt,
-          @JsonKey(name: 'created_at_formatted')
-          required final String createdAtFormatted,
-          @JsonKey(name: 'user') required final CommentUserPublic user,
-          @JsonKey(name: 'parent') required final CommentPublic? parent,
-          @JsonKey(name: 'replies') required final List<dynamic> replies}) =
-      _$CommentPublicImpl;
+      {@JsonKey(name: 'id') required final int id,
+      @JsonKey(name: 'content') required final String content,
+      @JsonKey(name: 'created_at') required final DateTime createdAt,
+      @JsonKey(name: 'created_at_formatted')
+      required final String createdAtFormatted,
+      @JsonKey(name: 'user') required final CommentUserPublic user,
+      @JsonKey(name: 'parent') required final CommentPublic? parent,
+      @JsonKey(name: 'replies')
+      required final List<CommentPublic> replies}) = _$CommentPublicImpl;
   const _CommentPublic._() : super._();
 
   factory _CommentPublic.fromJson(Map<String, dynamic> json) =
@@ -380,7 +380,7 @@ abstract class _CommentPublic extends CommentPublic {
   /// Replies
   @override
   @JsonKey(name: 'replies')
-  List<dynamic> get replies;
+  List<CommentPublic> get replies;
 
   /// Create a copy of CommentPublic
   /// with the given fields replaced by the non-null parameter values.

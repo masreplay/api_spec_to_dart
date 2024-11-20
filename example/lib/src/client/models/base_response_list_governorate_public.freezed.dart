@@ -27,7 +27,7 @@ mixin _$BaseResponseListGovernoratePublic {
 
   /// Data
   @JsonKey(name: 'data')
-  List<dynamic> get data => throw _privateConstructorUsedError;
+  List<GovernoratePublic> get data => throw _privateConstructorUsedError;
 
   /// Serializes this BaseResponseListGovernoratePublic to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -49,7 +49,7 @@ abstract class $BaseResponseListGovernoratePublicCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<dynamic> data});
+      @JsonKey(name: 'data') List<GovernoratePublic> data});
 }
 
 /// @nodoc
@@ -79,7 +79,7 @@ class _$BaseResponseListGovernoratePublicCopyWithImpl<$Res,
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<GovernoratePublic>,
     ) as $Val);
   }
 }
@@ -95,7 +95,7 @@ abstract class _$$BaseResponseListGovernoratePublicImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<dynamic> data});
+      @JsonKey(name: 'data') List<GovernoratePublic> data});
 }
 
 /// @nodoc
@@ -124,7 +124,7 @@ class __$$BaseResponseListGovernoratePublicImplCopyWithImpl<$Res>
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<GovernoratePublic>,
     ));
   }
 }
@@ -136,7 +136,7 @@ class _$BaseResponseListGovernoratePublicImpl
     extends _BaseResponseListGovernoratePublic {
   const _$BaseResponseListGovernoratePublicImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required final List<dynamic> data})
+      @JsonKey(name: 'data') required final List<GovernoratePublic> data})
       : _data = data,
         super._();
 
@@ -150,12 +150,12 @@ class _$BaseResponseListGovernoratePublicImpl
   final String? message;
 
   /// Data
-  final List<dynamic> _data;
+  final List<GovernoratePublic> _data;
 
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic> get data {
+  List<GovernoratePublic> get data {
     if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_data);
@@ -202,7 +202,7 @@ abstract class _BaseResponseListGovernoratePublic
     extends BaseResponseListGovernoratePublic {
   const factory _BaseResponseListGovernoratePublic(
           {@JsonKey(name: 'message') required final String? message,
-          @JsonKey(name: 'data') required final List<dynamic> data}) =
+          @JsonKey(name: 'data') required final List<GovernoratePublic> data}) =
       _$BaseResponseListGovernoratePublicImpl;
   const _BaseResponseListGovernoratePublic._() : super._();
 
@@ -218,7 +218,7 @@ abstract class _BaseResponseListGovernoratePublic
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic> get data;
+  List<GovernoratePublic> get data;
 
   /// Create a copy of BaseResponseListGovernoratePublic
   /// with the given fields replaced by the non-null parameter values.

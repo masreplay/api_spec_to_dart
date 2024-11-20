@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../convertors.dart';
+import './models.dart';
 
 part 'home_feed_public.freezed.dart';
 part 'home_feed_public.g.dart';
@@ -15,7 +16,7 @@ class HomeFeedPublic with _$HomeFeedPublic {
     @Default(feed) @JsonKey(name: 'type') required String type,
 
     /// Sections
-    @JsonKey(name: 'sections') required List sections,
+    @JsonKey(name: 'sections') required List<HomeFeedSectionModel> sections,
   }) = _HomeFeedPublic;
 
   factory HomeFeedPublic.fromJson(Map<String, dynamic> json) =>

@@ -3,16 +3,16 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../convertors.dart';
 import './models.dart';
 
-part 'home_feed_course_selection_status_section_public.freezed.dart';
-part 'home_feed_course_selection_status_section_public.g.dart';
+part 'home_feed_course_selection_status_section_model.freezed.dart';
+part 'home_feed_course_selection_status_section_model.g.dart';
 
 @freezed
-class HomeFeedCourseSelectionStatusSectionPublic
-    with _$HomeFeedCourseSelectionStatusSectionPublic {
-  const HomeFeedCourseSelectionStatusSectionPublic._();
+class HomeFeedCourseSelectionStatusSectionModel
+    with _$HomeFeedCourseSelectionStatusSectionModel {
+  const HomeFeedCourseSelectionStatusSectionModel._();
 
   @JsonSerializable(converters: convertors)
-  const factory HomeFeedCourseSelectionStatusSectionPublic({
+  const factory HomeFeedCourseSelectionStatusSectionModel({
     /// Id
     @JsonKey(name: 'id') required int id,
 
@@ -28,9 +28,9 @@ class HomeFeedCourseSelectionStatusSectionPublic
     @JsonKey(name: 'description') required String? description,
     @JsonKey(name: 'data')
     required HomeFeedCourseSelectionStatusSectionDataPublic data,
-  }) = _HomeFeedCourseSelectionStatusSectionPublic;
+  }) = _HomeFeedCourseSelectionStatusSectionModel;
 
-  factory HomeFeedCourseSelectionStatusSectionPublic.fromJson(
+  factory HomeFeedCourseSelectionStatusSectionModel.fromJson(
           Map<String, dynamic> json) =>
-      _$HomeFeedCourseSelectionStatusSectionPublicFromJson(json);
+      _$HomeFeedCourseSelectionStatusSectionModelFromJson(json);
 }

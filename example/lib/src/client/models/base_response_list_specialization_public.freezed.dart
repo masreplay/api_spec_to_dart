@@ -27,7 +27,7 @@ mixin _$BaseResponseListSpecializationPublic {
 
   /// Data
   @JsonKey(name: 'data')
-  List<dynamic> get data => throw _privateConstructorUsedError;
+  List<SpecializationPublic> get data => throw _privateConstructorUsedError;
 
   /// Serializes this BaseResponseListSpecializationPublic to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -50,7 +50,7 @@ abstract class $BaseResponseListSpecializationPublicCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<dynamic> data});
+      @JsonKey(name: 'data') List<SpecializationPublic> data});
 }
 
 /// @nodoc
@@ -80,7 +80,7 @@ class _$BaseResponseListSpecializationPublicCopyWithImpl<$Res,
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<SpecializationPublic>,
     ) as $Val);
   }
 }
@@ -96,7 +96,7 @@ abstract class _$$BaseResponseListSpecializationPublicImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<dynamic> data});
+      @JsonKey(name: 'data') List<SpecializationPublic> data});
 }
 
 /// @nodoc
@@ -125,7 +125,7 @@ class __$$BaseResponseListSpecializationPublicImplCopyWithImpl<$Res>
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<SpecializationPublic>,
     ));
   }
 }
@@ -137,7 +137,7 @@ class _$BaseResponseListSpecializationPublicImpl
     extends _BaseResponseListSpecializationPublic {
   const _$BaseResponseListSpecializationPublicImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required final List<dynamic> data})
+      @JsonKey(name: 'data') required final List<SpecializationPublic> data})
       : _data = data,
         super._();
 
@@ -151,12 +151,12 @@ class _$BaseResponseListSpecializationPublicImpl
   final String? message;
 
   /// Data
-  final List<dynamic> _data;
+  final List<SpecializationPublic> _data;
 
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic> get data {
+  List<SpecializationPublic> get data {
     if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_data);
@@ -203,7 +203,8 @@ abstract class _BaseResponseListSpecializationPublic
     extends BaseResponseListSpecializationPublic {
   const factory _BaseResponseListSpecializationPublic(
           {@JsonKey(name: 'message') required final String? message,
-          @JsonKey(name: 'data') required final List<dynamic> data}) =
+          @JsonKey(name: 'data')
+          required final List<SpecializationPublic> data}) =
       _$BaseResponseListSpecializationPublicImpl;
   const _BaseResponseListSpecializationPublic._() : super._();
 
@@ -219,7 +220,7 @@ abstract class _BaseResponseListSpecializationPublic
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic> get data;
+  List<SpecializationPublic> get data;
 
   /// Create a copy of BaseResponseListSpecializationPublic
   /// with the given fields replaced by the non-null parameter values.

@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../convertors.dart';
+import './models.dart';
 
 part 'subject.freezed.dart';
 part 'subject.g.dart';
@@ -45,7 +46,8 @@ class Subject with _$Subject {
     @JsonKey(name: 'course_status') required int? courseStatus,
 
     /// Course Staff
-    @JsonKey(name: 'course_staff') required List? courseStaff,
+    @JsonKey(name: 'course_staff')
+    required List<CourseStaffsTable>? courseStaff,
   }) = _Subject;
 
   factory Subject.fromJson(Map<String, dynamic> json) =>

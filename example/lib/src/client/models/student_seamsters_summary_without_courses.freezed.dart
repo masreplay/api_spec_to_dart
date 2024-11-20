@@ -23,7 +23,7 @@ StudentSeamstersSummaryWithoutCourses
 mixin _$StudentSeamstersSummaryWithoutCourses {
   /// Semesters
   @JsonKey(name: 'semesters')
-  List<dynamic>? get semesters => throw _privateConstructorUsedError;
+  List<Summary>? get semesters => throw _privateConstructorUsedError;
   @JsonKey(name: 'year')
   StudyYearPublic? get year => throw _privateConstructorUsedError;
 
@@ -47,7 +47,7 @@ abstract class $StudentSeamstersSummaryWithoutCoursesCopyWith<$Res> {
           StudentSeamstersSummaryWithoutCourses>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'semesters') List<dynamic>? semesters,
+      {@JsonKey(name: 'semesters') List<Summary>? semesters,
       @JsonKey(name: 'year') StudyYearPublic? year});
 
   $StudyYearPublicCopyWith<$Res>? get year;
@@ -76,7 +76,7 @@ class _$StudentSeamstersSummaryWithoutCoursesCopyWithImpl<$Res,
       semesters: freezed == semesters
           ? _value.semesters
           : semesters // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<Summary>?,
       year: freezed == year
           ? _value.year
           : year // ignore: cast_nullable_to_non_nullable
@@ -109,7 +109,7 @@ abstract class _$$StudentSeamstersSummaryWithoutCoursesImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'semesters') List<dynamic>? semesters,
+      {@JsonKey(name: 'semesters') List<Summary>? semesters,
       @JsonKey(name: 'year') StudyYearPublic? year});
 
   @override
@@ -138,7 +138,7 @@ class __$$StudentSeamstersSummaryWithoutCoursesImplCopyWithImpl<$Res>
       semesters: freezed == semesters
           ? _value._semesters
           : semesters // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<Summary>?,
       year: freezed == year
           ? _value.year
           : year // ignore: cast_nullable_to_non_nullable
@@ -153,7 +153,7 @@ class __$$StudentSeamstersSummaryWithoutCoursesImplCopyWithImpl<$Res>
 class _$StudentSeamstersSummaryWithoutCoursesImpl
     extends _StudentSeamstersSummaryWithoutCourses {
   const _$StudentSeamstersSummaryWithoutCoursesImpl(
-      {@JsonKey(name: 'semesters') required final List<dynamic>? semesters,
+      {@JsonKey(name: 'semesters') required final List<Summary>? semesters,
       @JsonKey(name: 'year') required this.year})
       : _semesters = semesters,
         super._();
@@ -163,12 +163,12 @@ class _$StudentSeamstersSummaryWithoutCoursesImpl
       _$$StudentSeamstersSummaryWithoutCoursesImplFromJson(json);
 
   /// Semesters
-  final List<dynamic>? _semesters;
+  final List<Summary>? _semesters;
 
   /// Semesters
   @override
   @JsonKey(name: 'semesters')
-  List<dynamic>? get semesters {
+  List<Summary>? get semesters {
     final value = _semesters;
     if (value == null) return null;
     if (_semesters is EqualUnmodifiableListView) return _semesters;
@@ -221,7 +221,7 @@ class _$StudentSeamstersSummaryWithoutCoursesImpl
 abstract class _StudentSeamstersSummaryWithoutCourses
     extends StudentSeamstersSummaryWithoutCourses {
   const factory _StudentSeamstersSummaryWithoutCourses(
-          {@JsonKey(name: 'semesters') required final List<dynamic>? semesters,
+          {@JsonKey(name: 'semesters') required final List<Summary>? semesters,
           @JsonKey(name: 'year') required final StudyYearPublic? year}) =
       _$StudentSeamstersSummaryWithoutCoursesImpl;
   const _StudentSeamstersSummaryWithoutCourses._() : super._();
@@ -233,7 +233,7 @@ abstract class _StudentSeamstersSummaryWithoutCourses
   /// Semesters
   @override
   @JsonKey(name: 'semesters')
-  List<dynamic>? get semesters;
+  List<Summary>? get semesters;
   @override
   @JsonKey(name: 'year')
   StudyYearPublic? get year;

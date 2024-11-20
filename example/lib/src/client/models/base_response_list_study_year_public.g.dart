@@ -10,7 +10,9 @@ _$BaseResponseListStudyYearPublicImpl
     _$$BaseResponseListStudyYearPublicImplFromJson(Map<String, dynamic> json) =>
         _$BaseResponseListStudyYearPublicImpl(
           message: json['message'] as String?,
-          data: json['data'] as List<dynamic>,
+          data: (json['data'] as List<dynamic>)
+              .map((e) => StudyYearPublic.fromJson(e as Map<String, dynamic>))
+              .toList(),
         );
 
 Map<String, dynamic> _$$BaseResponseListStudyYearPublicImplToJson(

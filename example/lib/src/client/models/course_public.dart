@@ -53,7 +53,7 @@ class CoursePublic with _$CoursePublic {
     @JsonKey(name: 'name') required String? name,
 
     /// Course Staffs
-    @JsonKey(name: 'course_staffs') required List? courseStaffs,
+    @JsonKey(name: 'course_staffs') required List<dynamic>? courseStaffs,
     @JsonKey(name: 'seamster') required AcademicYearDivisionPublic? seamster,
   }) = _CoursePublic;
 

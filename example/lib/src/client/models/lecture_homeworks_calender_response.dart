@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../convertors.dart';
+import './models.dart';
 
 part 'lecture_homeworks_calender_response.freezed.dart';
 part 'lecture_homeworks_calender_response.g.dart';
@@ -12,7 +13,7 @@ class LectureHomeworksCalenderResponse with _$LectureHomeworksCalenderResponse {
   @JsonSerializable(converters: convertors)
   const factory LectureHomeworksCalenderResponse({
     /// Events
-    @JsonKey(name: 'events') required List events,
+    @JsonKey(name: 'events') required List<HomeworkCalenderEventPublic> events,
   }) = _LectureHomeworksCalenderResponse;
 
   factory LectureHomeworksCalenderResponse.fromJson(

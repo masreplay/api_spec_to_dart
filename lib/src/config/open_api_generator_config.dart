@@ -29,6 +29,7 @@ class OpenApiGeneratorConfig {
   String dartType({
     required OpenApiSchemaVarType? type,
     required String? format,
+    required String? genericType,
   }) {
     switch (type) {
       case OpenApiSchemaVarType.string:
@@ -47,9 +48,13 @@ class OpenApiGeneratorConfig {
       case OpenApiSchemaVarType.boolean:
         return 'bool';
       case OpenApiSchemaVarType.array:
-        return 'List';
+        if (genericType == null) return 'List<dynamic>';
+
+        return 'List<$genericType>';
       case OpenApiSchemaVarType.object:
-        return 'Map';
+        if (genericType == null) return 'Map<String, dynamic>';
+
+        return 'Map<String, $genericType>';
       case OpenApiSchemaVarType.null_ || OpenApiSchemaVarType.$unknown || null:
         return 'dynamic';
     }

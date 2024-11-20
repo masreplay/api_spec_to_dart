@@ -18,10 +18,10 @@ class StudentNotificationsPublic with _$StudentNotificationsPublic {
     @JsonKey(name: 'student_id') required int? studentId,
 
     /// Title
-    @JsonKey(name: 'title') required Map title,
+    @JsonKey(name: 'title') required Map<String, dynamic> title,
 
     /// Message
-    @JsonKey(name: 'message') required Map message,
+    @JsonKey(name: 'message') required Map<String, dynamic> message,
 
     /// Notification Type
     @JsonKey(name: 'notification_type') required String notificationType,
@@ -36,7 +36,7 @@ class StudentNotificationsPublic with _$StudentNotificationsPublic {
     @JsonKey(name: 'image_url') required String? imageUrl,
 
     /// Extra Data
-    @JsonKey(name: 'extra_data') required Map? extraData,
+    @JsonKey(name: 'extra_data') required Map<String, dynamic>? extraData,
 
     /// Creator Id
     @JsonKey(name: 'creator_id') required int creatorId,

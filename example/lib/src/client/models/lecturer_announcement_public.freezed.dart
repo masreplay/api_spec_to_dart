@@ -55,7 +55,7 @@ mixin _$LecturerAnnouncementPublic {
 
   /// Files
   @JsonKey(name: 'files')
-  List<dynamic> get files => throw _privateConstructorUsedError;
+  List<FilePublic> get files => throw _privateConstructorUsedError;
 
   /// Serializes this LecturerAnnouncementPublic to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -83,7 +83,7 @@ abstract class $LecturerAnnouncementPublicCopyWith<$Res> {
       @JsonKey(name: 'comments_count') int commentsCount,
       @JsonKey(name: 'created_at') DateTime createdAt,
       @JsonKey(name: 'created_at_formatted') String createdAtFormatted,
-      @JsonKey(name: 'files') List<dynamic> files});
+      @JsonKey(name: 'files') List<FilePublic> files});
 }
 
 /// @nodoc
@@ -148,7 +148,7 @@ class _$LecturerAnnouncementPublicCopyWithImpl<$Res,
       files: null == files
           ? _value.files
           : files // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<FilePublic>,
     ) as $Val);
   }
 }
@@ -171,7 +171,7 @@ abstract class _$$LecturerAnnouncementPublicImplCopyWith<$Res>
       @JsonKey(name: 'comments_count') int commentsCount,
       @JsonKey(name: 'created_at') DateTime createdAt,
       @JsonKey(name: 'created_at_formatted') String createdAtFormatted,
-      @JsonKey(name: 'files') List<dynamic> files});
+      @JsonKey(name: 'files') List<FilePublic> files});
 }
 
 /// @nodoc
@@ -235,7 +235,7 @@ class __$$LecturerAnnouncementPublicImplCopyWithImpl<$Res>
       files: null == files
           ? _value._files
           : files // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<FilePublic>,
     ));
   }
 }
@@ -253,7 +253,7 @@ class _$LecturerAnnouncementPublicImpl extends _LecturerAnnouncementPublic {
       @JsonKey(name: 'comments_count') required this.commentsCount = 0,
       @JsonKey(name: 'created_at') required this.createdAt,
       @JsonKey(name: 'created_at_formatted') required this.createdAtFormatted,
-      @JsonKey(name: 'files') required final List<dynamic> files})
+      @JsonKey(name: 'files') required final List<FilePublic> files})
       : _files = files,
         super._();
 
@@ -302,12 +302,12 @@ class _$LecturerAnnouncementPublicImpl extends _LecturerAnnouncementPublic {
   final String createdAtFormatted;
 
   /// Files
-  final List<dynamic> _files;
+  final List<FilePublic> _files;
 
   /// Files
   @override
   @JsonKey(name: 'files')
-  List<dynamic> get files {
+  List<FilePublic> get files {
     if (_files is EqualUnmodifiableListView) return _files;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_files);
@@ -381,7 +381,7 @@ abstract class _LecturerAnnouncementPublic extends LecturerAnnouncementPublic {
           @JsonKey(name: 'created_at') required final DateTime createdAt,
           @JsonKey(name: 'created_at_formatted')
           required final String createdAtFormatted,
-          @JsonKey(name: 'files') required final List<dynamic> files}) =
+          @JsonKey(name: 'files') required final List<FilePublic> files}) =
       _$LecturerAnnouncementPublicImpl;
   const _LecturerAnnouncementPublic._() : super._();
 
@@ -431,7 +431,7 @@ abstract class _LecturerAnnouncementPublic extends LecturerAnnouncementPublic {
   /// Files
   @override
   @JsonKey(name: 'files')
-  List<dynamic> get files;
+  List<FilePublic> get files;
 
   /// Create a copy of LecturerAnnouncementPublic
   /// with the given fields replaced by the non-null parameter values.

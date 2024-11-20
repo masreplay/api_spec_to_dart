@@ -27,7 +27,7 @@ mixin _$BaseResponseListPaymentMethodPublic {
 
   /// Data
   @JsonKey(name: 'data')
-  List<dynamic> get data => throw _privateConstructorUsedError;
+  List<PaymentMethodPublic> get data => throw _privateConstructorUsedError;
 
   /// Serializes this BaseResponseListPaymentMethodPublic to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -50,7 +50,7 @@ abstract class $BaseResponseListPaymentMethodPublicCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<dynamic> data});
+      @JsonKey(name: 'data') List<PaymentMethodPublic> data});
 }
 
 /// @nodoc
@@ -80,7 +80,7 @@ class _$BaseResponseListPaymentMethodPublicCopyWithImpl<$Res,
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<PaymentMethodPublic>,
     ) as $Val);
   }
 }
@@ -96,7 +96,7 @@ abstract class _$$BaseResponseListPaymentMethodPublicImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<dynamic> data});
+      @JsonKey(name: 'data') List<PaymentMethodPublic> data});
 }
 
 /// @nodoc
@@ -125,7 +125,7 @@ class __$$BaseResponseListPaymentMethodPublicImplCopyWithImpl<$Res>
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<PaymentMethodPublic>,
     ));
   }
 }
@@ -137,7 +137,7 @@ class _$BaseResponseListPaymentMethodPublicImpl
     extends _BaseResponseListPaymentMethodPublic {
   const _$BaseResponseListPaymentMethodPublicImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required final List<dynamic> data})
+      @JsonKey(name: 'data') required final List<PaymentMethodPublic> data})
       : _data = data,
         super._();
 
@@ -151,12 +151,12 @@ class _$BaseResponseListPaymentMethodPublicImpl
   final String? message;
 
   /// Data
-  final List<dynamic> _data;
+  final List<PaymentMethodPublic> _data;
 
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic> get data {
+  List<PaymentMethodPublic> get data {
     if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_data);
@@ -203,7 +203,8 @@ abstract class _BaseResponseListPaymentMethodPublic
     extends BaseResponseListPaymentMethodPublic {
   const factory _BaseResponseListPaymentMethodPublic(
           {@JsonKey(name: 'message') required final String? message,
-          @JsonKey(name: 'data') required final List<dynamic> data}) =
+          @JsonKey(name: 'data')
+          required final List<PaymentMethodPublic> data}) =
       _$BaseResponseListPaymentMethodPublicImpl;
   const _BaseResponseListPaymentMethodPublic._() : super._();
 
@@ -219,7 +220,7 @@ abstract class _BaseResponseListPaymentMethodPublic
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic> get data;
+  List<PaymentMethodPublic> get data;
 
   /// Create a copy of BaseResponseListPaymentMethodPublic
   /// with the given fields replaced by the non-null parameter values.

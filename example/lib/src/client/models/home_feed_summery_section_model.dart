@@ -3,15 +3,15 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../convertors.dart';
 import './models.dart';
 
-part 'home_feed_summery_section_public.freezed.dart';
-part 'home_feed_summery_section_public.g.dart';
+part 'home_feed_summery_section_model.freezed.dart';
+part 'home_feed_summery_section_model.g.dart';
 
 @freezed
-class HomeFeedSummerySectionPublic with _$HomeFeedSummerySectionPublic {
-  const HomeFeedSummerySectionPublic._();
+class HomeFeedSummerySectionModel with _$HomeFeedSummerySectionModel {
+  const HomeFeedSummerySectionModel._();
 
   @JsonSerializable(converters: convertors)
-  const factory HomeFeedSummerySectionPublic({
+  const factory HomeFeedSummerySectionModel({
     /// Id
     @JsonKey(name: 'id') required int id,
 
@@ -24,8 +24,8 @@ class HomeFeedSummerySectionPublic with _$HomeFeedSummerySectionPublic {
     /// Description
     @JsonKey(name: 'description') required String? description,
     @JsonKey(name: 'data') required HomeFeedSummerySectionDataPublic data,
-  }) = _HomeFeedSummerySectionPublic;
+  }) = _HomeFeedSummerySectionModel;
 
-  factory HomeFeedSummerySectionPublic.fromJson(Map<String, dynamic> json) =>
-      _$HomeFeedSummerySectionPublicFromJson(json);
+  factory HomeFeedSummerySectionModel.fromJson(Map<String, dynamic> json) =>
+      _$HomeFeedSummerySectionModelFromJson(json);
 }

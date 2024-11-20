@@ -28,7 +28,7 @@ mixin _$BaseResponseUnionListCourseStaffPublicNoneType {
 
   /// Data
   @JsonKey(name: 'data')
-  List<dynamic>? get data => throw _privateConstructorUsedError;
+  List<CourseStaffPublic>? get data => throw _privateConstructorUsedError;
 
   /// Serializes this BaseResponseUnionListCourseStaffPublicNoneType to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -51,7 +51,7 @@ abstract class $BaseResponseUnionListCourseStaffPublicNoneTypeCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<dynamic>? data});
+      @JsonKey(name: 'data') List<CourseStaffPublic>? data});
 }
 
 /// @nodoc
@@ -82,7 +82,7 @@ class _$BaseResponseUnionListCourseStaffPublicNoneTypeCopyWithImpl<$Res,
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<CourseStaffPublic>?,
     ) as $Val);
   }
 }
@@ -100,7 +100,7 @@ abstract class _$$BaseResponseUnionListCourseStaffPublicNoneTypeImplCopyWith<
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<dynamic>? data});
+      @JsonKey(name: 'data') List<CourseStaffPublic>? data});
 }
 
 /// @nodoc
@@ -130,7 +130,7 @@ class __$$BaseResponseUnionListCourseStaffPublicNoneTypeImplCopyWithImpl<$Res>
       data: freezed == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<CourseStaffPublic>?,
     ));
   }
 }
@@ -142,7 +142,7 @@ class _$BaseResponseUnionListCourseStaffPublicNoneTypeImpl
     extends _BaseResponseUnionListCourseStaffPublicNoneType {
   const _$BaseResponseUnionListCourseStaffPublicNoneTypeImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required final List<dynamic>? data})
+      @JsonKey(name: 'data') required final List<CourseStaffPublic>? data})
       : _data = data,
         super._();
 
@@ -156,12 +156,12 @@ class _$BaseResponseUnionListCourseStaffPublicNoneTypeImpl
   final String? message;
 
   /// Data
-  final List<dynamic>? _data;
+  final List<CourseStaffPublic>? _data;
 
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic>? get data {
+  List<CourseStaffPublic>? get data {
     final value = _data;
     if (value == null) return null;
     if (_data is EqualUnmodifiableListView) return _data;
@@ -212,7 +212,8 @@ abstract class _BaseResponseUnionListCourseStaffPublicNoneType
     extends BaseResponseUnionListCourseStaffPublicNoneType {
   const factory _BaseResponseUnionListCourseStaffPublicNoneType(
           {@JsonKey(name: 'message') required final String? message,
-          @JsonKey(name: 'data') required final List<dynamic>? data}) =
+          @JsonKey(name: 'data')
+          required final List<CourseStaffPublic>? data}) =
       _$BaseResponseUnionListCourseStaffPublicNoneTypeImpl;
   const _BaseResponseUnionListCourseStaffPublicNoneType._() : super._();
 
@@ -228,7 +229,7 @@ abstract class _BaseResponseUnionListCourseStaffPublicNoneType
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic>? get data;
+  List<CourseStaffPublic>? get data;
 
   /// Create a copy of BaseResponseUnionListCourseStaffPublicNoneType
   /// with the given fields replaced by the non-null parameter values.

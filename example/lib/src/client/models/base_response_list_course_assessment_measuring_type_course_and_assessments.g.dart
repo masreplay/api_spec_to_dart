@@ -11,7 +11,11 @@ _$BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessmentsImpl
             Map<String, dynamic> json) =>
         _$BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessmentsImpl(
           message: json['message'] as String?,
-          data: json['data'] as List<dynamic>,
+          data: (json['data'] as List<dynamic>)
+              .map((e) =>
+                  CourseAssessmentMeasuringTypeCourseAndAssessments.fromJson(
+                      e as Map<String, dynamic>))
+              .toList(),
         );
 
 Map<String, dynamic>

@@ -10,7 +10,10 @@ _$LectureHomeworksCalenderResponseImpl
     _$$LectureHomeworksCalenderResponseImplFromJson(
             Map<String, dynamic> json) =>
         _$LectureHomeworksCalenderResponseImpl(
-          events: json['events'] as List<dynamic>,
+          events: (json['events'] as List<dynamic>)
+              .map((e) => HomeworkCalenderEventPublic.fromJson(
+                  e as Map<String, dynamic>))
+              .toList(),
         );
 
 Map<String, dynamic> _$$LectureHomeworksCalenderResponseImplToJson(

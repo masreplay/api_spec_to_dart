@@ -38,7 +38,7 @@ mixin _$CourseStaffsTable {
 
   /// Course Configuration
   @JsonKey(name: 'course_configuration')
-  Map<dynamic, dynamic>? get courseConfiguration =>
+  Map<String, dynamic>? get courseConfiguration =>
       throw _privateConstructorUsedError;
 
   /// Id
@@ -99,7 +99,7 @@ abstract class $CourseStaffsTableCopyWith<$Res> {
       @JsonKey(name: 'capacity') int capacity,
       @JsonKey(name: 'close_editing_employee') bool closeEditingEmployee,
       @JsonKey(name: 'course_configuration')
-      Map<dynamic, dynamic>? courseConfiguration,
+      Map<String, dynamic>? courseConfiguration,
       @JsonKey(name: 'id') int id,
       @JsonKey(name: 'course_id') int courseId,
       @JsonKey(name: 'creator_id') int creatorId,
@@ -161,7 +161,7 @@ class _$CourseStaffsTableCopyWithImpl<$Res, $Val extends CourseStaffsTable>
       courseConfiguration: freezed == courseConfiguration
           ? _value.courseConfiguration
           : courseConfiguration // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, dynamic>?,
+              as Map<String, dynamic>?,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -216,7 +216,7 @@ abstract class _$$CourseStaffsTableImplCopyWith<$Res>
       @JsonKey(name: 'capacity') int capacity,
       @JsonKey(name: 'close_editing_employee') bool closeEditingEmployee,
       @JsonKey(name: 'course_configuration')
-      Map<dynamic, dynamic>? courseConfiguration,
+      Map<String, dynamic>? courseConfiguration,
       @JsonKey(name: 'id') int id,
       @JsonKey(name: 'course_id') int courseId,
       @JsonKey(name: 'creator_id') int creatorId,
@@ -276,7 +276,7 @@ class __$$CourseStaffsTableImplCopyWithImpl<$Res>
       courseConfiguration: freezed == courseConfiguration
           ? _value._courseConfiguration
           : courseConfiguration // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, dynamic>?,
+              as Map<String, dynamic>?,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -328,7 +328,7 @@ class _$CourseStaffsTableImpl extends _CourseStaffsTable {
       @JsonKey(name: 'close_editing_employee')
       required this.closeEditingEmployee,
       @JsonKey(name: 'course_configuration')
-      required final Map<dynamic, dynamic>? courseConfiguration,
+      required final Map<String, dynamic>? courseConfiguration,
       @JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'course_id') required this.courseId,
       @JsonKey(name: 'creator_id') required this.creatorId,
@@ -366,12 +366,12 @@ class _$CourseStaffsTableImpl extends _CourseStaffsTable {
   final bool closeEditingEmployee;
 
   /// Course Configuration
-  final Map<dynamic, dynamic>? _courseConfiguration;
+  final Map<String, dynamic>? _courseConfiguration;
 
   /// Course Configuration
   @override
   @JsonKey(name: 'course_configuration')
-  Map<dynamic, dynamic>? get courseConfiguration {
+  Map<String, dynamic>? get courseConfiguration {
     final value = _courseConfiguration;
     if (value == null) return null;
     if (_courseConfiguration is EqualUnmodifiableMapView)
@@ -508,7 +508,7 @@ abstract class _CourseStaffsTable extends CourseStaffsTable {
       @JsonKey(name: 'close_editing_employee')
       required final bool closeEditingEmployee,
       @JsonKey(name: 'course_configuration')
-      required final Map<dynamic, dynamic>? courseConfiguration,
+      required final Map<String, dynamic>? courseConfiguration,
       @JsonKey(name: 'id') required final int id,
       @JsonKey(name: 'course_id') required final int courseId,
       @JsonKey(name: 'creator_id') required final int creatorId,
@@ -548,7 +548,7 @@ abstract class _CourseStaffsTable extends CourseStaffsTable {
   /// Course Configuration
   @override
   @JsonKey(name: 'course_configuration')
-  Map<dynamic, dynamic>? get courseConfiguration;
+  Map<String, dynamic>? get courseConfiguration;
 
   /// Id
   @override

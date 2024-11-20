@@ -28,7 +28,7 @@ mixin _$BaseResponseUnionListWeeklyScheduleResponseNoneType {
 
   /// Data
   @JsonKey(name: 'data')
-  List<dynamic>? get data => throw _privateConstructorUsedError;
+  List<WeeklyScheduleResponse>? get data => throw _privateConstructorUsedError;
 
   /// Serializes this BaseResponseUnionListWeeklyScheduleResponseNoneType to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -53,7 +53,7 @@ abstract class $BaseResponseUnionListWeeklyScheduleResponseNoneTypeCopyWith<
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<dynamic>? data});
+      @JsonKey(name: 'data') List<WeeklyScheduleResponse>? data});
 }
 
 /// @nodoc
@@ -85,7 +85,7 @@ class _$BaseResponseUnionListWeeklyScheduleResponseNoneTypeCopyWithImpl<$Res,
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<WeeklyScheduleResponse>?,
     ) as $Val);
   }
 }
@@ -106,7 +106,7 @@ abstract class _$$BaseResponseUnionListWeeklyScheduleResponseNoneTypeImplCopyWit
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<dynamic>? data});
+      @JsonKey(name: 'data') List<WeeklyScheduleResponse>? data});
 }
 
 /// @nodoc
@@ -139,7 +139,7 @@ class __$$BaseResponseUnionListWeeklyScheduleResponseNoneTypeImplCopyWithImpl<
       data: freezed == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<WeeklyScheduleResponse>?,
     ));
   }
 }
@@ -151,7 +151,7 @@ class _$BaseResponseUnionListWeeklyScheduleResponseNoneTypeImpl
     extends _BaseResponseUnionListWeeklyScheduleResponseNoneType {
   const _$BaseResponseUnionListWeeklyScheduleResponseNoneTypeImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required final List<dynamic>? data})
+      @JsonKey(name: 'data') required final List<WeeklyScheduleResponse>? data})
       : _data = data,
         super._();
 
@@ -165,12 +165,12 @@ class _$BaseResponseUnionListWeeklyScheduleResponseNoneTypeImpl
   final String? message;
 
   /// Data
-  final List<dynamic>? _data;
+  final List<WeeklyScheduleResponse>? _data;
 
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic>? get data {
+  List<WeeklyScheduleResponse>? get data {
     final value = _data;
     if (value == null) return null;
     if (_data is EqualUnmodifiableListView) return _data;
@@ -222,7 +222,8 @@ abstract class _BaseResponseUnionListWeeklyScheduleResponseNoneType
     extends BaseResponseUnionListWeeklyScheduleResponseNoneType {
   const factory _BaseResponseUnionListWeeklyScheduleResponseNoneType(
           {@JsonKey(name: 'message') required final String? message,
-          @JsonKey(name: 'data') required final List<dynamic>? data}) =
+          @JsonKey(name: 'data')
+          required final List<WeeklyScheduleResponse>? data}) =
       _$BaseResponseUnionListWeeklyScheduleResponseNoneTypeImpl;
   const _BaseResponseUnionListWeeklyScheduleResponseNoneType._() : super._();
 
@@ -238,7 +239,7 @@ abstract class _BaseResponseUnionListWeeklyScheduleResponseNoneType
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic>? get data;
+  List<WeeklyScheduleResponse>? get data;
 
   /// Create a copy of BaseResponseUnionListWeeklyScheduleResponseNoneType
   /// with the given fields replaced by the non-null parameter values.

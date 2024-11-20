@@ -17,7 +17,9 @@ _$LecturerAssignmentPublicImpl _$$LecturerAssignmentPublicImplFromJson(
       commentsCount: (json['comments_count'] as num?)?.toInt() ?? 0,
       createdAt: DateTime.parse(json['created_at'] as String),
       createdAtFormatted: json['created_at_formatted'] as String,
-      files: json['files'] as List<dynamic>,
+      files: (json['files'] as List<dynamic>)
+          .map((e) => FilePublic.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$LecturerAssignmentPublicImplToJson(

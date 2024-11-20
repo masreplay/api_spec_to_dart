@@ -31,11 +31,11 @@ mixin _$StudentNotificationsPublic {
 
   /// Title
   @JsonKey(name: 'title')
-  Map<dynamic, dynamic> get title => throw _privateConstructorUsedError;
+  Map<String, dynamic> get title => throw _privateConstructorUsedError;
 
   /// Message
   @JsonKey(name: 'message')
-  Map<dynamic, dynamic> get message => throw _privateConstructorUsedError;
+  Map<String, dynamic> get message => throw _privateConstructorUsedError;
 
   /// Notification Type
   @JsonKey(name: 'notification_type')
@@ -55,7 +55,7 @@ mixin _$StudentNotificationsPublic {
 
   /// Extra Data
   @JsonKey(name: 'extra_data')
-  Map<dynamic, dynamic>? get extraData => throw _privateConstructorUsedError;
+  Map<String, dynamic>? get extraData => throw _privateConstructorUsedError;
 
   /// Creator Id
   @JsonKey(name: 'creator_id')
@@ -105,13 +105,13 @@ abstract class $StudentNotificationsPublicCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id') int id,
       @JsonKey(name: 'student_id') int? studentId,
-      @JsonKey(name: 'title') Map<dynamic, dynamic> title,
-      @JsonKey(name: 'message') Map<dynamic, dynamic> message,
+      @JsonKey(name: 'title') Map<String, dynamic> title,
+      @JsonKey(name: 'message') Map<String, dynamic> message,
       @JsonKey(name: 'notification_type') String notificationType,
       @JsonKey(name: 'is_opened') bool isOpened,
       @JsonKey(name: 'deep_link') String? deepLink,
       @JsonKey(name: 'image_url') String? imageUrl,
-      @JsonKey(name: 'extra_data') Map<dynamic, dynamic>? extraData,
+      @JsonKey(name: 'extra_data') Map<String, dynamic>? extraData,
       @JsonKey(name: 'creator_id') int creatorId,
       @JsonKey(name: 'creation_time') DateTime creationTime,
       @JsonKey(name: 'last_modifier_id') int? lastModifierId,
@@ -166,11 +166,11 @@ class _$StudentNotificationsPublicCopyWithImpl<$Res,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, dynamic>,
+              as Map<String, dynamic>,
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, dynamic>,
+              as Map<String, dynamic>,
       notificationType: null == notificationType
           ? _value.notificationType
           : notificationType // ignore: cast_nullable_to_non_nullable
@@ -190,7 +190,7 @@ class _$StudentNotificationsPublicCopyWithImpl<$Res,
       extraData: freezed == extraData
           ? _value.extraData
           : extraData // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, dynamic>?,
+              as Map<String, dynamic>?,
       creatorId: null == creatorId
           ? _value.creatorId
           : creatorId // ignore: cast_nullable_to_non_nullable
@@ -235,13 +235,13 @@ abstract class _$$StudentNotificationsPublicImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'id') int id,
       @JsonKey(name: 'student_id') int? studentId,
-      @JsonKey(name: 'title') Map<dynamic, dynamic> title,
-      @JsonKey(name: 'message') Map<dynamic, dynamic> message,
+      @JsonKey(name: 'title') Map<String, dynamic> title,
+      @JsonKey(name: 'message') Map<String, dynamic> message,
       @JsonKey(name: 'notification_type') String notificationType,
       @JsonKey(name: 'is_opened') bool isOpened,
       @JsonKey(name: 'deep_link') String? deepLink,
       @JsonKey(name: 'image_url') String? imageUrl,
-      @JsonKey(name: 'extra_data') Map<dynamic, dynamic>? extraData,
+      @JsonKey(name: 'extra_data') Map<String, dynamic>? extraData,
       @JsonKey(name: 'creator_id') int creatorId,
       @JsonKey(name: 'creation_time') DateTime creationTime,
       @JsonKey(name: 'last_modifier_id') int? lastModifierId,
@@ -295,11 +295,11 @@ class __$$StudentNotificationsPublicImplCopyWithImpl<$Res>
       title: null == title
           ? _value._title
           : title // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, dynamic>,
+              as Map<String, dynamic>,
       message: null == message
           ? _value._message
           : message // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, dynamic>,
+              as Map<String, dynamic>,
       notificationType: null == notificationType
           ? _value.notificationType
           : notificationType // ignore: cast_nullable_to_non_nullable
@@ -319,7 +319,7 @@ class __$$StudentNotificationsPublicImplCopyWithImpl<$Res>
       extraData: freezed == extraData
           ? _value._extraData
           : extraData // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, dynamic>?,
+              as Map<String, dynamic>?,
       creatorId: null == creatorId
           ? _value.creatorId
           : creatorId // ignore: cast_nullable_to_non_nullable
@@ -359,14 +359,14 @@ class _$StudentNotificationsPublicImpl extends _StudentNotificationsPublic {
   const _$StudentNotificationsPublicImpl(
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'student_id') required this.studentId,
-      @JsonKey(name: 'title') required final Map<dynamic, dynamic> title,
-      @JsonKey(name: 'message') required final Map<dynamic, dynamic> message,
+      @JsonKey(name: 'title') required final Map<String, dynamic> title,
+      @JsonKey(name: 'message') required final Map<String, dynamic> message,
       @JsonKey(name: 'notification_type') required this.notificationType,
       @JsonKey(name: 'is_opened') required this.isOpened,
       @JsonKey(name: 'deep_link') required this.deepLink,
       @JsonKey(name: 'image_url') required this.imageUrl,
       @JsonKey(name: 'extra_data')
-      required final Map<dynamic, dynamic>? extraData,
+      required final Map<String, dynamic>? extraData,
       @JsonKey(name: 'creator_id') required this.creatorId,
       @JsonKey(name: 'creation_time') required this.creationTime,
       @JsonKey(name: 'last_modifier_id') required this.lastModifierId,
@@ -395,24 +395,24 @@ class _$StudentNotificationsPublicImpl extends _StudentNotificationsPublic {
   final int? studentId;
 
   /// Title
-  final Map<dynamic, dynamic> _title;
+  final Map<String, dynamic> _title;
 
   /// Title
   @override
   @JsonKey(name: 'title')
-  Map<dynamic, dynamic> get title {
+  Map<String, dynamic> get title {
     if (_title is EqualUnmodifiableMapView) return _title;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_title);
   }
 
   /// Message
-  final Map<dynamic, dynamic> _message;
+  final Map<String, dynamic> _message;
 
   /// Message
   @override
   @JsonKey(name: 'message')
-  Map<dynamic, dynamic> get message {
+  Map<String, dynamic> get message {
     if (_message is EqualUnmodifiableMapView) return _message;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_message);
@@ -439,12 +439,12 @@ class _$StudentNotificationsPublicImpl extends _StudentNotificationsPublic {
   final String? imageUrl;
 
   /// Extra Data
-  final Map<dynamic, dynamic>? _extraData;
+  final Map<String, dynamic>? _extraData;
 
   /// Extra Data
   @override
   @JsonKey(name: 'extra_data')
-  Map<dynamic, dynamic>? get extraData {
+  Map<String, dynamic>? get extraData {
     final value = _extraData;
     if (value == null) return null;
     if (_extraData is EqualUnmodifiableMapView) return _extraData;
@@ -568,27 +568,27 @@ class _$StudentNotificationsPublicImpl extends _StudentNotificationsPublic {
 
 abstract class _StudentNotificationsPublic extends StudentNotificationsPublic {
   const factory _StudentNotificationsPublic(
-      {@JsonKey(name: 'id') required final int id,
-      @JsonKey(name: 'student_id') required final int? studentId,
-      @JsonKey(name: 'title') required final Map<dynamic, dynamic> title,
-      @JsonKey(name: 'message') required final Map<dynamic, dynamic> message,
-      @JsonKey(name: 'notification_type')
-      required final String notificationType,
-      @JsonKey(name: 'is_opened') required final bool isOpened,
-      @JsonKey(name: 'deep_link') required final String? deepLink,
-      @JsonKey(name: 'image_url') required final String? imageUrl,
-      @JsonKey(name: 'extra_data')
-      required final Map<dynamic, dynamic>? extraData,
-      @JsonKey(name: 'creator_id') required final int creatorId,
-      @JsonKey(name: 'creation_time') required final DateTime creationTime,
-      @JsonKey(name: 'last_modifier_id') required final int? lastModifierId,
-      @JsonKey(name: 'last_modification_time')
-      required final DateTime? lastModificationTime,
-      @JsonKey(name: 'is_deleted') required final bool isDeleted,
-      @JsonKey(name: 'deleter_id') required final int? deleterId,
-      @JsonKey(name: 'deletion_time')
-      required final DateTime?
-          deletionTime}) = _$StudentNotificationsPublicImpl;
+          {@JsonKey(name: 'id') required final int id,
+          @JsonKey(name: 'student_id') required final int? studentId,
+          @JsonKey(name: 'title') required final Map<String, dynamic> title,
+          @JsonKey(name: 'message') required final Map<String, dynamic> message,
+          @JsonKey(name: 'notification_type')
+          required final String notificationType,
+          @JsonKey(name: 'is_opened') required final bool isOpened,
+          @JsonKey(name: 'deep_link') required final String? deepLink,
+          @JsonKey(name: 'image_url') required final String? imageUrl,
+          @JsonKey(name: 'extra_data')
+          required final Map<String, dynamic>? extraData,
+          @JsonKey(name: 'creator_id') required final int creatorId,
+          @JsonKey(name: 'creation_time') required final DateTime creationTime,
+          @JsonKey(name: 'last_modifier_id') required final int? lastModifierId,
+          @JsonKey(name: 'last_modification_time')
+          required final DateTime? lastModificationTime,
+          @JsonKey(name: 'is_deleted') required final bool isDeleted,
+          @JsonKey(name: 'deleter_id') required final int? deleterId,
+          @JsonKey(name: 'deletion_time')
+          required final DateTime? deletionTime}) =
+      _$StudentNotificationsPublicImpl;
   const _StudentNotificationsPublic._() : super._();
 
   factory _StudentNotificationsPublic.fromJson(Map<String, dynamic> json) =
@@ -607,12 +607,12 @@ abstract class _StudentNotificationsPublic extends StudentNotificationsPublic {
   /// Title
   @override
   @JsonKey(name: 'title')
-  Map<dynamic, dynamic> get title;
+  Map<String, dynamic> get title;
 
   /// Message
   @override
   @JsonKey(name: 'message')
-  Map<dynamic, dynamic> get message;
+  Map<String, dynamic> get message;
 
   /// Notification Type
   @override
@@ -637,7 +637,7 @@ abstract class _StudentNotificationsPublic extends StudentNotificationsPublic {
   /// Extra Data
   @override
   @JsonKey(name: 'extra_data')
-  Map<dynamic, dynamic>? get extraData;
+  Map<String, dynamic>? get extraData;
 
   /// Creator Id
   @override

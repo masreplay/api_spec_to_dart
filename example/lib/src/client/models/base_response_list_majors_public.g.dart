@@ -10,7 +10,9 @@ _$BaseResponseListMajorsPublicImpl _$$BaseResponseListMajorsPublicImplFromJson(
         Map<String, dynamic> json) =>
     _$BaseResponseListMajorsPublicImpl(
       message: json['message'] as String?,
-      data: json['data'] as List<dynamic>,
+      data: (json['data'] as List<dynamic>)
+          .map((e) => MajorsPublic.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$BaseResponseListMajorsPublicImplToJson(

@@ -28,7 +28,7 @@ mixin _$BaseResponseListVerificationMethodPublic {
 
   /// Data
   @JsonKey(name: 'data')
-  List<dynamic> get data => throw _privateConstructorUsedError;
+  List<VerificationMethodPublic> get data => throw _privateConstructorUsedError;
 
   /// Serializes this BaseResponseListVerificationMethodPublic to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -51,7 +51,7 @@ abstract class $BaseResponseListVerificationMethodPublicCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<dynamic> data});
+      @JsonKey(name: 'data') List<VerificationMethodPublic> data});
 }
 
 /// @nodoc
@@ -82,7 +82,7 @@ class _$BaseResponseListVerificationMethodPublicCopyWithImpl<$Res,
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<VerificationMethodPublic>,
     ) as $Val);
   }
 }
@@ -98,7 +98,7 @@ abstract class _$$BaseResponseListVerificationMethodPublicImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<dynamic> data});
+      @JsonKey(name: 'data') List<VerificationMethodPublic> data});
 }
 
 /// @nodoc
@@ -127,7 +127,7 @@ class __$$BaseResponseListVerificationMethodPublicImplCopyWithImpl<$Res>
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<VerificationMethodPublic>,
     ));
   }
 }
@@ -139,7 +139,8 @@ class _$BaseResponseListVerificationMethodPublicImpl
     extends _BaseResponseListVerificationMethodPublic {
   const _$BaseResponseListVerificationMethodPublicImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required final List<dynamic> data})
+      @JsonKey(name: 'data')
+      required final List<VerificationMethodPublic> data})
       : _data = data,
         super._();
 
@@ -153,12 +154,12 @@ class _$BaseResponseListVerificationMethodPublicImpl
   final String? message;
 
   /// Data
-  final List<dynamic> _data;
+  final List<VerificationMethodPublic> _data;
 
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic> get data {
+  List<VerificationMethodPublic> get data {
     if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_data);
@@ -206,7 +207,8 @@ abstract class _BaseResponseListVerificationMethodPublic
     extends BaseResponseListVerificationMethodPublic {
   const factory _BaseResponseListVerificationMethodPublic(
           {@JsonKey(name: 'message') required final String? message,
-          @JsonKey(name: 'data') required final List<dynamic> data}) =
+          @JsonKey(name: 'data')
+          required final List<VerificationMethodPublic> data}) =
       _$BaseResponseListVerificationMethodPublicImpl;
   const _BaseResponseListVerificationMethodPublic._() : super._();
 
@@ -222,7 +224,7 @@ abstract class _BaseResponseListVerificationMethodPublic
   /// Data
   @override
   @JsonKey(name: 'data')
-  List<dynamic> get data;
+  List<VerificationMethodPublic> get data;
 
   /// Create a copy of BaseResponseListVerificationMethodPublic
   /// with the given fields replaced by the non-null parameter values.

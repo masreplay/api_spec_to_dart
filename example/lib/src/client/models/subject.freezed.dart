@@ -66,7 +66,8 @@ mixin _$Subject {
 
   /// Course Staff
   @JsonKey(name: 'course_staff')
-  List<dynamic>? get courseStaff => throw _privateConstructorUsedError;
+  List<CourseStaffsTable>? get courseStaff =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this Subject to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -94,7 +95,7 @@ abstract class $SubjectCopyWith<$Res> {
       @JsonKey(name: 'is_enrolled') bool? isEnrolled,
       @JsonKey(name: 'is_enabled') bool? isEnabled,
       @JsonKey(name: 'course_status') int? courseStatus,
-      @JsonKey(name: 'course_staff') List<dynamic>? courseStaff});
+      @JsonKey(name: 'course_staff') List<CourseStaffsTable>? courseStaff});
 }
 
 /// @nodoc
@@ -173,7 +174,7 @@ class _$SubjectCopyWithImpl<$Res, $Val extends Subject>
       courseStaff: freezed == courseStaff
           ? _value.courseStaff
           : courseStaff // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<CourseStaffsTable>?,
     ) as $Val);
   }
 }
@@ -197,7 +198,7 @@ abstract class _$$SubjectImplCopyWith<$Res> implements $SubjectCopyWith<$Res> {
       @JsonKey(name: 'is_enrolled') bool? isEnrolled,
       @JsonKey(name: 'is_enabled') bool? isEnabled,
       @JsonKey(name: 'course_status') int? courseStatus,
-      @JsonKey(name: 'course_staff') List<dynamic>? courseStaff});
+      @JsonKey(name: 'course_staff') List<CourseStaffsTable>? courseStaff});
 }
 
 /// @nodoc
@@ -274,7 +275,7 @@ class __$$SubjectImplCopyWithImpl<$Res>
       courseStaff: freezed == courseStaff
           ? _value._courseStaff
           : courseStaff // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<CourseStaffsTable>?,
     ));
   }
 }
@@ -295,7 +296,8 @@ class _$SubjectImpl extends _Subject {
       @JsonKey(name: 'is_enrolled') required this.isEnrolled,
       @JsonKey(name: 'is_enabled') required this.isEnabled,
       @JsonKey(name: 'course_status') required this.courseStatus,
-      @JsonKey(name: 'course_staff') required final List<dynamic>? courseStaff})
+      @JsonKey(name: 'course_staff')
+      required final List<CourseStaffsTable>? courseStaff})
       : _courseStaff = courseStaff,
         super._();
 
@@ -358,12 +360,12 @@ class _$SubjectImpl extends _Subject {
   final int? courseStatus;
 
   /// Course Staff
-  final List<dynamic>? _courseStaff;
+  final List<CourseStaffsTable>? _courseStaff;
 
   /// Course Staff
   @override
   @JsonKey(name: 'course_staff')
-  List<dynamic>? get courseStaff {
+  List<CourseStaffsTable>? get courseStaff {
     final value = _courseStaff;
     if (value == null) return null;
     if (_courseStaff is EqualUnmodifiableListView) return _courseStaff;
@@ -451,7 +453,7 @@ abstract class _Subject extends Subject {
       @JsonKey(name: 'is_enabled') required final bool? isEnabled,
       @JsonKey(name: 'course_status') required final int? courseStatus,
       @JsonKey(name: 'course_staff')
-      required final List<dynamic>? courseStaff}) = _$SubjectImpl;
+      required final List<CourseStaffsTable>? courseStaff}) = _$SubjectImpl;
   const _Subject._() : super._();
 
   factory _Subject.fromJson(Map<String, dynamic> json) = _$SubjectImpl.fromJson;
@@ -514,7 +516,7 @@ abstract class _Subject extends Subject {
   /// Course Staff
   @override
   @JsonKey(name: 'course_staff')
-  List<dynamic>? get courseStaff;
+  List<CourseStaffsTable>? get courseStaff;
 
   /// Create a copy of Subject
   /// with the given fields replaced by the non-null parameter values.
