@@ -4,6 +4,7 @@ part 'open_api_schema.freezed.dart';
 part 'open_api_schema.g.dart';
 
 const String _anyOfKey = 'anyOf';
+const String _oneOfKey = 'oneOf';
 const String _refKey = '\$ref';
 
 @Freezed()
@@ -19,6 +20,8 @@ class OpenApiSchema with _$OpenApiSchema {
     )
     OpenApiSchemaVarType? type,
     @OpenApiSchemaJsonConverter() @JsonKey(name: 'items') OpenApiSchema? items,
+    @JsonKey(name: 'maxLength') int? maxLength,
+    @JsonKey(name: 'minLength') int? minLength,
     @JsonKey(name: 'format') String? format,
     @JsonKey(name: 'description') String? description,
     @JsonKey(name: 'pattern') String? pattern,
@@ -41,10 +44,30 @@ class OpenApiSchema with _$OpenApiSchema {
     @JsonKey(name: 'title') String? title,
   }) = OpenApiSchemaAnyOf;
 
-  factory OpenApiSchema.fromJson(
-    Map<String, dynamic> json,
-  ) =>
+  @FreezedUnionValue('oneOf')
+  const factory OpenApiSchema.oneOf({
+    @OpenApiSchemaJsonConverter()
+    @JsonKey(name: _oneOfKey)
+    required List<OpenApiSchema>? oneOf,
+    @JsonKey(name: 'description') String? description,
+    @JsonKey(name: 'title') String? title,
+    @JsonKey(name: 'discriminator')
+    required OpenApiSchemaOneOfDiscriminator discriminator,
+  }) = OpenApiSchemaOneOf;
+
+  factory OpenApiSchema.fromJson(Map<String, dynamic> json) =>
       _$OpenApiSchemaFromJson(json);
+}
+
+@freezed
+class OpenApiSchemaOneOfDiscriminator with _$OpenApiSchemaOneOfDiscriminator {
+  factory OpenApiSchemaOneOfDiscriminator({
+    @JsonKey(name: 'propertyName') required String propertyName,
+    @JsonKey(name: 'mapping') required Map<String, String> mapping,
+  }) = _OpenApiSchemaOneOfDiscriminator;
+
+  factory OpenApiSchemaOneOfDiscriminator.fromJson(Map<String, dynamic> json) =>
+      _$OpenApiSchemaOneOfDiscriminatorFromJson(json);
 }
 
 enum OpenApiSchemaVarType {
@@ -76,6 +99,8 @@ class OpenApiSchemaJsonConverter
   OpenApiSchema fromJson(Map<String, dynamic> json) {
     if (json.containsKey(_anyOfKey)) {
       return OpenApiSchemaAnyOf.fromJson(json);
+    } else if (json.containsKey(_oneOfKey)) {
+      return OpenApiSchemaOneOf.fromJson(json);
     } else if (json.containsKey(_refKey)) {
       return OpenApiSchemaRef.fromJson(json);
     } else {

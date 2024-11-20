@@ -22,6 +22,8 @@ OpenApiSchema _$OpenApiSchemaFromJson(Map<String, dynamic> json) {
       return OpenApiSchemaRef.fromJson(json);
     case 'anyOf':
       return OpenApiSchemaAnyOf.fromJson(json);
+    case 'oneOf':
+      return OpenApiSchemaOneOf.fromJson(json);
 
     default:
       throw CheckedFromJsonException(json, 'runtimeType', 'OpenApiSchema',
@@ -41,6 +43,8 @@ mixin _$OpenApiSchema {
             @OpenApiSchemaJsonConverter()
             @JsonKey(name: 'items')
             OpenApiSchema? items,
+            @JsonKey(name: 'maxLength') int? maxLength,
+            @JsonKey(name: 'minLength') int? minLength,
             @JsonKey(name: 'format') String? format,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'pattern') String? pattern,
@@ -57,6 +61,15 @@ mixin _$OpenApiSchema {
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'title') String? title)
         anyOf,
+    required TResult Function(
+            @OpenApiSchemaJsonConverter()
+            @JsonKey(name: _oneOfKey)
+            List<OpenApiSchema>? oneOf,
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'discriminator')
+            OpenApiSchemaOneOfDiscriminator discriminator)
+        oneOf,
   }) =>
       throw _privateConstructorUsedError;
 
@@ -70,6 +83,8 @@ mixin _$OpenApiSchema {
             @OpenApiSchemaJsonConverter()
             @JsonKey(name: 'items')
             OpenApiSchema? items,
+            @JsonKey(name: 'maxLength') int? maxLength,
+            @JsonKey(name: 'minLength') int? minLength,
             @JsonKey(name: 'format') String? format,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'pattern') String? pattern,
@@ -86,6 +101,15 @@ mixin _$OpenApiSchema {
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'title') String? title)?
         anyOf,
+    TResult Function(
+            @OpenApiSchemaJsonConverter()
+            @JsonKey(name: _oneOfKey)
+            List<OpenApiSchema>? oneOf,
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'discriminator')
+            OpenApiSchemaOneOfDiscriminator discriminator)?
+        oneOf,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -102,6 +126,8 @@ class _$OpenApiSchemaTypeImpl extends OpenApiSchemaType {
       @JsonKey(name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
       this.type,
       @OpenApiSchemaJsonConverter() @JsonKey(name: 'items') this.items,
+      @JsonKey(name: 'maxLength') this.maxLength,
+      @JsonKey(name: 'minLength') this.minLength,
       @JsonKey(name: 'format') this.format,
       @JsonKey(name: 'description') this.description,
       @JsonKey(name: 'pattern') this.pattern,
@@ -134,6 +160,12 @@ class _$OpenApiSchemaTypeImpl extends OpenApiSchemaType {
   @JsonKey(name: 'items')
   final OpenApiSchema? items;
   @override
+  @JsonKey(name: 'maxLength')
+  final int? maxLength;
+  @override
+  @JsonKey(name: 'minLength')
+  final int? minLength;
+  @override
   @JsonKey(name: 'format')
   final String? format;
   @override
@@ -154,7 +186,7 @@ class _$OpenApiSchemaTypeImpl extends OpenApiSchemaType {
 
   @override
   String toString() {
-    return 'OpenApiSchema.type(enum_: $enum_, type: $type, items: $items, format: $format, description: $description, pattern: $pattern, default_: $default_, title: $title)';
+    return 'OpenApiSchema.type(enum_: $enum_, type: $type, items: $items, maxLength: $maxLength, minLength: $minLength, format: $format, description: $description, pattern: $pattern, default_: $default_, title: $title)';
   }
 
   @override
@@ -165,6 +197,10 @@ class _$OpenApiSchemaTypeImpl extends OpenApiSchemaType {
             const DeepCollectionEquality().equals(other._enum_, _enum_) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.items, items) || other.items == items) &&
+            (identical(other.maxLength, maxLength) ||
+                other.maxLength == maxLength) &&
+            (identical(other.minLength, minLength) ||
+                other.minLength == minLength) &&
             (identical(other.format, format) || other.format == format) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -180,6 +216,8 @@ class _$OpenApiSchemaTypeImpl extends OpenApiSchemaType {
       const DeepCollectionEquality().hash(_enum_),
       type,
       items,
+      maxLength,
+      minLength,
       format,
       description,
       pattern,
@@ -197,6 +235,8 @@ class _$OpenApiSchemaTypeImpl extends OpenApiSchemaType {
             @OpenApiSchemaJsonConverter()
             @JsonKey(name: 'items')
             OpenApiSchema? items,
+            @JsonKey(name: 'maxLength') int? maxLength,
+            @JsonKey(name: 'minLength') int? minLength,
             @JsonKey(name: 'format') String? format,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'pattern') String? pattern,
@@ -213,9 +253,18 @@ class _$OpenApiSchemaTypeImpl extends OpenApiSchemaType {
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'title') String? title)
         anyOf,
+    required TResult Function(
+            @OpenApiSchemaJsonConverter()
+            @JsonKey(name: _oneOfKey)
+            List<OpenApiSchema>? oneOf,
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'discriminator')
+            OpenApiSchemaOneOfDiscriminator discriminator)
+        oneOf,
   }) {
-    return type(
-        enum_, this.type, items, format, description, pattern, default_, title);
+    return type(enum_, this.type, items, maxLength, minLength, format,
+        description, pattern, default_, title);
   }
 
   @override
@@ -229,6 +278,8 @@ class _$OpenApiSchemaTypeImpl extends OpenApiSchemaType {
             @OpenApiSchemaJsonConverter()
             @JsonKey(name: 'items')
             OpenApiSchema? items,
+            @JsonKey(name: 'maxLength') int? maxLength,
+            @JsonKey(name: 'minLength') int? minLength,
             @JsonKey(name: 'format') String? format,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'pattern') String? pattern,
@@ -245,11 +296,20 @@ class _$OpenApiSchemaTypeImpl extends OpenApiSchemaType {
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'title') String? title)?
         anyOf,
+    TResult Function(
+            @OpenApiSchemaJsonConverter()
+            @JsonKey(name: _oneOfKey)
+            List<OpenApiSchema>? oneOf,
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'discriminator')
+            OpenApiSchemaOneOfDiscriminator discriminator)?
+        oneOf,
     required TResult orElse(),
   }) {
     if (type != null) {
-      return type(enum_, this.type, items, format, description, pattern,
-          default_, title);
+      return type(enum_, this.type, items, maxLength, minLength, format,
+          description, pattern, default_, title);
     }
     return orElse();
   }
@@ -270,6 +330,8 @@ abstract class OpenApiSchemaType extends OpenApiSchema {
       @OpenApiSchemaJsonConverter()
       @JsonKey(name: 'items')
       final OpenApiSchema? items,
+      @JsonKey(name: 'maxLength') final int? maxLength,
+      @JsonKey(name: 'minLength') final int? minLength,
       @JsonKey(name: 'format') final String? format,
       @JsonKey(name: 'description') final String? description,
       @JsonKey(name: 'pattern') final String? pattern,
@@ -287,6 +349,10 @@ abstract class OpenApiSchemaType extends OpenApiSchema {
   @OpenApiSchemaJsonConverter()
   @JsonKey(name: 'items')
   OpenApiSchema? get items;
+  @JsonKey(name: 'maxLength')
+  int? get maxLength;
+  @JsonKey(name: 'minLength')
+  int? get minLength;
   @JsonKey(name: 'format')
   String? get format;
   @JsonKey(name: 'description')
@@ -352,6 +418,8 @@ class _$OpenApiSchemaRefImpl extends OpenApiSchemaRef {
             @OpenApiSchemaJsonConverter()
             @JsonKey(name: 'items')
             OpenApiSchema? items,
+            @JsonKey(name: 'maxLength') int? maxLength,
+            @JsonKey(name: 'minLength') int? minLength,
             @JsonKey(name: 'format') String? format,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'pattern') String? pattern,
@@ -368,6 +436,15 @@ class _$OpenApiSchemaRefImpl extends OpenApiSchemaRef {
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'title') String? title)
         anyOf,
+    required TResult Function(
+            @OpenApiSchemaJsonConverter()
+            @JsonKey(name: _oneOfKey)
+            List<OpenApiSchema>? oneOf,
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'discriminator')
+            OpenApiSchemaOneOfDiscriminator discriminator)
+        oneOf,
   }) {
     return ref(this.ref, default_);
   }
@@ -383,6 +460,8 @@ class _$OpenApiSchemaRefImpl extends OpenApiSchemaRef {
             @OpenApiSchemaJsonConverter()
             @JsonKey(name: 'items')
             OpenApiSchema? items,
+            @JsonKey(name: 'maxLength') int? maxLength,
+            @JsonKey(name: 'minLength') int? minLength,
             @JsonKey(name: 'format') String? format,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'pattern') String? pattern,
@@ -399,6 +478,15 @@ class _$OpenApiSchemaRefImpl extends OpenApiSchemaRef {
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'title') String? title)?
         anyOf,
+    TResult Function(
+            @OpenApiSchemaJsonConverter()
+            @JsonKey(name: _oneOfKey)
+            List<OpenApiSchema>? oneOf,
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'discriminator')
+            OpenApiSchemaOneOfDiscriminator discriminator)?
+        oneOf,
     required TResult orElse(),
   }) {
     if (ref != null) {
@@ -502,6 +590,8 @@ class _$OpenApiSchemaAnyOfImpl extends OpenApiSchemaAnyOf {
             @OpenApiSchemaJsonConverter()
             @JsonKey(name: 'items')
             OpenApiSchema? items,
+            @JsonKey(name: 'maxLength') int? maxLength,
+            @JsonKey(name: 'minLength') int? minLength,
             @JsonKey(name: 'format') String? format,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'pattern') String? pattern,
@@ -518,6 +608,15 @@ class _$OpenApiSchemaAnyOfImpl extends OpenApiSchemaAnyOf {
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'title') String? title)
         anyOf,
+    required TResult Function(
+            @OpenApiSchemaJsonConverter()
+            @JsonKey(name: _oneOfKey)
+            List<OpenApiSchema>? oneOf,
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'discriminator')
+            OpenApiSchemaOneOfDiscriminator discriminator)
+        oneOf,
   }) {
     return anyOf(this.anyOf, description, title);
   }
@@ -533,6 +632,8 @@ class _$OpenApiSchemaAnyOfImpl extends OpenApiSchemaAnyOf {
             @OpenApiSchemaJsonConverter()
             @JsonKey(name: 'items')
             OpenApiSchema? items,
+            @JsonKey(name: 'maxLength') int? maxLength,
+            @JsonKey(name: 'minLength') int? minLength,
             @JsonKey(name: 'format') String? format,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'pattern') String? pattern,
@@ -549,6 +650,15 @@ class _$OpenApiSchemaAnyOfImpl extends OpenApiSchemaAnyOf {
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'title') String? title)?
         anyOf,
+    TResult Function(
+            @OpenApiSchemaJsonConverter()
+            @JsonKey(name: _oneOfKey)
+            List<OpenApiSchema>? oneOf,
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'discriminator')
+            OpenApiSchemaOneOfDiscriminator discriminator)?
+        oneOf,
     required TResult orElse(),
   }) {
     if (anyOf != null) {
@@ -584,4 +694,324 @@ abstract class OpenApiSchemaAnyOf extends OpenApiSchema {
   String? get description;
   @JsonKey(name: 'title')
   String? get title;
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$OpenApiSchemaOneOfImpl extends OpenApiSchemaOneOf {
+  const _$OpenApiSchemaOneOfImpl(
+      {@OpenApiSchemaJsonConverter()
+      @JsonKey(name: _oneOfKey)
+      required final List<OpenApiSchema>? oneOf,
+      @JsonKey(name: 'description') this.description,
+      @JsonKey(name: 'title') this.title,
+      @JsonKey(name: 'discriminator') required this.discriminator,
+      final String? $type})
+      : _oneOf = oneOf,
+        $type = $type ?? 'oneOf',
+        super._();
+
+  factory _$OpenApiSchemaOneOfImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OpenApiSchemaOneOfImplFromJson(json);
+
+  final List<OpenApiSchema>? _oneOf;
+  @override
+  @OpenApiSchemaJsonConverter()
+  @JsonKey(name: _oneOfKey)
+  List<OpenApiSchema>? get oneOf {
+    final value = _oneOf;
+    if (value == null) return null;
+    if (_oneOf is EqualUnmodifiableListView) return _oneOf;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  @JsonKey(name: 'description')
+  final String? description;
+  @override
+  @JsonKey(name: 'title')
+  final String? title;
+  @override
+  @JsonKey(name: 'discriminator')
+  final OpenApiSchemaOneOfDiscriminator discriminator;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'OpenApiSchema.oneOf(oneOf: $oneOf, description: $description, title: $title, discriminator: $discriminator)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OpenApiSchemaOneOfImpl &&
+            const DeepCollectionEquality().equals(other._oneOf, _oneOf) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.discriminator, discriminator) ||
+                other.discriminator == discriminator));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_oneOf),
+      description,
+      title,
+      discriminator);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            @JsonKey(name: 'enum') List<String>? enum_,
+            @JsonKey(
+                name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
+            OpenApiSchemaVarType? type,
+            @OpenApiSchemaJsonConverter()
+            @JsonKey(name: 'items')
+            OpenApiSchema? items,
+            @JsonKey(name: 'maxLength') int? maxLength,
+            @JsonKey(name: 'minLength') int? minLength,
+            @JsonKey(name: 'format') String? format,
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'pattern') String? pattern,
+            @JsonKey(name: 'default') Object? default_,
+            @JsonKey(name: 'title') String? title)
+        type,
+    required TResult Function(@JsonKey(name: _refKey) String? ref,
+            @JsonKey(name: 'default') Object? default_)
+        ref,
+    required TResult Function(
+            @OpenApiSchemaJsonConverter()
+            @JsonKey(name: _anyOfKey)
+            List<OpenApiSchema>? anyOf,
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'title') String? title)
+        anyOf,
+    required TResult Function(
+            @OpenApiSchemaJsonConverter()
+            @JsonKey(name: _oneOfKey)
+            List<OpenApiSchema>? oneOf,
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'discriminator')
+            OpenApiSchemaOneOfDiscriminator discriminator)
+        oneOf,
+  }) {
+    return oneOf(this.oneOf, description, title, discriminator);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            @JsonKey(name: 'enum') List<String>? enum_,
+            @JsonKey(
+                name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
+            OpenApiSchemaVarType? type,
+            @OpenApiSchemaJsonConverter()
+            @JsonKey(name: 'items')
+            OpenApiSchema? items,
+            @JsonKey(name: 'maxLength') int? maxLength,
+            @JsonKey(name: 'minLength') int? minLength,
+            @JsonKey(name: 'format') String? format,
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'pattern') String? pattern,
+            @JsonKey(name: 'default') Object? default_,
+            @JsonKey(name: 'title') String? title)?
+        type,
+    TResult Function(@JsonKey(name: _refKey) String? ref,
+            @JsonKey(name: 'default') Object? default_)?
+        ref,
+    TResult Function(
+            @OpenApiSchemaJsonConverter()
+            @JsonKey(name: _anyOfKey)
+            List<OpenApiSchema>? anyOf,
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'title') String? title)?
+        anyOf,
+    TResult Function(
+            @OpenApiSchemaJsonConverter()
+            @JsonKey(name: _oneOfKey)
+            List<OpenApiSchema>? oneOf,
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'discriminator')
+            OpenApiSchemaOneOfDiscriminator discriminator)?
+        oneOf,
+    required TResult orElse(),
+  }) {
+    if (oneOf != null) {
+      return oneOf(this.oneOf, description, title, discriminator);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$OpenApiSchemaOneOfImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class OpenApiSchemaOneOf extends OpenApiSchema {
+  const factory OpenApiSchemaOneOf(
+          {@OpenApiSchemaJsonConverter()
+          @JsonKey(name: _oneOfKey)
+          required final List<OpenApiSchema>? oneOf,
+          @JsonKey(name: 'description') final String? description,
+          @JsonKey(name: 'title') final String? title,
+          @JsonKey(name: 'discriminator')
+          required final OpenApiSchemaOneOfDiscriminator discriminator}) =
+      _$OpenApiSchemaOneOfImpl;
+  const OpenApiSchemaOneOf._() : super._();
+
+  factory OpenApiSchemaOneOf.fromJson(Map<String, dynamic> json) =
+      _$OpenApiSchemaOneOfImpl.fromJson;
+
+  @OpenApiSchemaJsonConverter()
+  @JsonKey(name: _oneOfKey)
+  List<OpenApiSchema>? get oneOf;
+  @JsonKey(name: 'description')
+  String? get description;
+  @JsonKey(name: 'title')
+  String? get title;
+  @JsonKey(name: 'discriminator')
+  OpenApiSchemaOneOfDiscriminator get discriminator;
+}
+
+OpenApiSchemaOneOfDiscriminator _$OpenApiSchemaOneOfDiscriminatorFromJson(
+    Map<String, dynamic> json) {
+  return _OpenApiSchemaOneOfDiscriminator.fromJson(json);
+}
+
+/// @nodoc
+mixin _$OpenApiSchemaOneOfDiscriminator {
+  @JsonKey(name: 'propertyName')
+  String get propertyName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'mapping')
+  Map<String, String> get mapping => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(@JsonKey(name: 'propertyName') String propertyName,
+            @JsonKey(name: 'mapping') Map<String, String> mapping)
+        $default,
+  ) =>
+      throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(@JsonKey(name: 'propertyName') String propertyName,
+            @JsonKey(name: 'mapping') Map<String, String> mapping)?
+        $default, {
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+
+  /// Serializes this OpenApiSchemaOneOfDiscriminator to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$OpenApiSchemaOneOfDiscriminatorImpl
+    implements _OpenApiSchemaOneOfDiscriminator {
+  _$OpenApiSchemaOneOfDiscriminatorImpl(
+      {@JsonKey(name: 'propertyName') required this.propertyName,
+      @JsonKey(name: 'mapping') required final Map<String, String> mapping})
+      : _mapping = mapping;
+
+  factory _$OpenApiSchemaOneOfDiscriminatorImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$OpenApiSchemaOneOfDiscriminatorImplFromJson(json);
+
+  @override
+  @JsonKey(name: 'propertyName')
+  final String propertyName;
+  final Map<String, String> _mapping;
+  @override
+  @JsonKey(name: 'mapping')
+  Map<String, String> get mapping {
+    if (_mapping is EqualUnmodifiableMapView) return _mapping;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_mapping);
+  }
+
+  @override
+  String toString() {
+    return 'OpenApiSchemaOneOfDiscriminator(propertyName: $propertyName, mapping: $mapping)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OpenApiSchemaOneOfDiscriminatorImpl &&
+            (identical(other.propertyName, propertyName) ||
+                other.propertyName == propertyName) &&
+            const DeepCollectionEquality().equals(other._mapping, _mapping));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, propertyName, const DeepCollectionEquality().hash(_mapping));
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(@JsonKey(name: 'propertyName') String propertyName,
+            @JsonKey(name: 'mapping') Map<String, String> mapping)
+        $default,
+  ) {
+    return $default(propertyName, mapping);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(@JsonKey(name: 'propertyName') String propertyName,
+            @JsonKey(name: 'mapping') Map<String, String> mapping)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(propertyName, mapping);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$OpenApiSchemaOneOfDiscriminatorImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _OpenApiSchemaOneOfDiscriminator
+    implements OpenApiSchemaOneOfDiscriminator {
+  factory _OpenApiSchemaOneOfDiscriminator(
+          {@JsonKey(name: 'propertyName') required final String propertyName,
+          @JsonKey(name: 'mapping')
+          required final Map<String, String> mapping}) =
+      _$OpenApiSchemaOneOfDiscriminatorImpl;
+
+  factory _OpenApiSchemaOneOfDiscriminator.fromJson(Map<String, dynamic> json) =
+      _$OpenApiSchemaOneOfDiscriminatorImpl.fromJson;
+
+  @override
+  @JsonKey(name: 'propertyName')
+  String get propertyName;
+  @override
+  @JsonKey(name: 'mapping')
+  Map<String, String> get mapping;
 }

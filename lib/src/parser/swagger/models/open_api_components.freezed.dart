@@ -177,6 +177,8 @@ mixin _$OpenApiSchemas {
   List<String>? get required => throw _privateConstructorUsedError;
   @JsonKey(name: 'enum')
   List<Object>? get enum_ => throw _privateConstructorUsedError;
+  @JsonKey(name: 'const')
+  Object? get const_ => throw _privateConstructorUsedError;
   @JsonKey(name: 'title')
   String? get title => throw _privateConstructorUsedError;
   @JsonKey(name: 'description')
@@ -190,6 +192,7 @@ mixin _$OpenApiSchemas {
             @JsonKey(name: 'type') String type,
             @JsonKey(name: 'required') List<String>? required,
             @JsonKey(name: 'enum') List<Object>? enum_,
+            @JsonKey(name: 'const') Object? const_,
             @JsonKey(name: 'title') String? title,
             @JsonKey(name: 'description') String? description)
         $default,
@@ -205,6 +208,7 @@ mixin _$OpenApiSchemas {
             @JsonKey(name: 'type') String type,
             @JsonKey(name: 'required') List<String>? required,
             @JsonKey(name: 'enum') List<Object>? enum_,
+            @JsonKey(name: 'const') Object? const_,
             @JsonKey(name: 'title') String? title,
             @JsonKey(name: 'description') String? description)?
         $default, {
@@ -226,6 +230,7 @@ class _$OpenApiSchemasImpl extends _OpenApiSchemas {
       @JsonKey(name: 'type') required this.type,
       @JsonKey(name: 'required') required final List<String>? required,
       @JsonKey(name: 'enum') required final List<Object>? enum_,
+      @JsonKey(name: 'const') required this.const_,
       @JsonKey(name: 'title') required this.title,
       @JsonKey(name: 'description') required this.description})
       : _properties = properties,
@@ -274,6 +279,9 @@ class _$OpenApiSchemasImpl extends _OpenApiSchemas {
   }
 
   @override
+  @JsonKey(name: 'const')
+  final Object? const_;
+  @override
   @JsonKey(name: 'title')
   final String? title;
   @override
@@ -282,7 +290,7 @@ class _$OpenApiSchemasImpl extends _OpenApiSchemas {
 
   @override
   String toString() {
-    return 'OpenApiSchemas(properties: $properties, type: $type, required: $required, enum_: $enum_, title: $title, description: $description)';
+    return 'OpenApiSchemas(properties: $properties, type: $type, required: $required, enum_: $enum_, const_: $const_, title: $title, description: $description)';
   }
 
   @override
@@ -295,6 +303,7 @@ class _$OpenApiSchemasImpl extends _OpenApiSchemas {
             (identical(other.type, type) || other.type == type) &&
             const DeepCollectionEquality().equals(other._required, _required) &&
             const DeepCollectionEquality().equals(other._enum_, _enum_) &&
+            const DeepCollectionEquality().equals(other.const_, const_) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
                 other.description == description));
@@ -308,6 +317,7 @@ class _$OpenApiSchemasImpl extends _OpenApiSchemas {
       type,
       const DeepCollectionEquality().hash(_required),
       const DeepCollectionEquality().hash(_enum_),
+      const DeepCollectionEquality().hash(const_),
       title,
       description);
 
@@ -321,11 +331,13 @@ class _$OpenApiSchemasImpl extends _OpenApiSchemas {
             @JsonKey(name: 'type') String type,
             @JsonKey(name: 'required') List<String>? required,
             @JsonKey(name: 'enum') List<Object>? enum_,
+            @JsonKey(name: 'const') Object? const_,
             @JsonKey(name: 'title') String? title,
             @JsonKey(name: 'description') String? description)
         $default,
   ) {
-    return $default(properties, type, required, enum_, title, description);
+    return $default(
+        properties, type, required, enum_, const_, title, description);
   }
 
   @override
@@ -338,13 +350,15 @@ class _$OpenApiSchemasImpl extends _OpenApiSchemas {
             @JsonKey(name: 'type') String type,
             @JsonKey(name: 'required') List<String>? required,
             @JsonKey(name: 'enum') List<Object>? enum_,
+            @JsonKey(name: 'const') Object? const_,
             @JsonKey(name: 'title') String? title,
             @JsonKey(name: 'description') String? description)?
         $default, {
     required TResult orElse(),
   }) {
     if ($default != null) {
-      return $default(properties, type, required, enum_, title, description);
+      return $default(
+          properties, type, required, enum_, const_, title, description);
     }
     return orElse();
   }
@@ -365,6 +379,7 @@ abstract class _OpenApiSchemas extends OpenApiSchemas {
           @JsonKey(name: 'type') required final String type,
           @JsonKey(name: 'required') required final List<String>? required,
           @JsonKey(name: 'enum') required final List<Object>? enum_,
+          @JsonKey(name: 'const') required final Object? const_,
           @JsonKey(name: 'title') required final String? title,
           @JsonKey(name: 'description') required final String? description}) =
       _$OpenApiSchemasImpl;
@@ -386,6 +401,9 @@ abstract class _OpenApiSchemas extends OpenApiSchemas {
   @override
   @JsonKey(name: 'enum')
   List<Object>? get enum_;
+  @override
+  @JsonKey(name: 'const')
+  Object? get const_;
   @override
   @JsonKey(name: 'title')
   String? get title;

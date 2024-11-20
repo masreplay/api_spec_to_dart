@@ -14,6 +14,8 @@ _$OpenApiSchemaTypeImpl _$$OpenApiSchemaTypeImplFromJson(
           unknownValue: OpenApiSchemaVarType.$unknown),
       items: _$JsonConverterFromJson<Map<String, dynamic>, OpenApiSchema>(
           json['items'], const OpenApiSchemaJsonConverter().fromJson),
+      maxLength: (json['maxLength'] as num?)?.toInt(),
+      minLength: (json['minLength'] as num?)?.toInt(),
       format: json['format'] as String?,
       description: json['description'] as String?,
       pattern: json['pattern'] as String?,
@@ -32,6 +34,8 @@ Map<String, dynamic> _$$OpenApiSchemaTypeImplToJson(
               instance.items, const OpenApiSchemaJsonConverter().toJson)
           case final value?)
         'items': value,
+      if (instance.maxLength case final value?) 'maxLength': value,
+      if (instance.minLength case final value?) 'minLength': value,
       if (instance.format case final value?) 'format': value,
       if (instance.description case final value?) 'description': value,
       if (instance.pattern case final value?) 'pattern': value,
@@ -102,4 +106,46 @@ Map<String, dynamic> _$$OpenApiSchemaAnyOfImplToJson(
       if (instance.description case final value?) 'description': value,
       if (instance.title case final value?) 'title': value,
       'runtimeType': instance.$type,
+    };
+
+_$OpenApiSchemaOneOfImpl _$$OpenApiSchemaOneOfImplFromJson(
+        Map<String, dynamic> json) =>
+    _$OpenApiSchemaOneOfImpl(
+      oneOf: (json['oneOf'] as List<dynamic>?)
+          ?.map((e) => const OpenApiSchemaJsonConverter()
+              .fromJson(e as Map<String, dynamic>))
+          .toList(),
+      description: json['description'] as String?,
+      title: json['title'] as String?,
+      discriminator: OpenApiSchemaOneOfDiscriminator.fromJson(
+          json['discriminator'] as Map<String, dynamic>),
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$OpenApiSchemaOneOfImplToJson(
+        _$OpenApiSchemaOneOfImpl instance) =>
+    <String, dynamic>{
+      if (instance.oneOf
+              ?.map(const OpenApiSchemaJsonConverter().toJson)
+              .toList()
+          case final value?)
+        'oneOf': value,
+      if (instance.description case final value?) 'description': value,
+      if (instance.title case final value?) 'title': value,
+      'discriminator': instance.discriminator.toJson(),
+      'runtimeType': instance.$type,
+    };
+
+_$OpenApiSchemaOneOfDiscriminatorImpl
+    _$$OpenApiSchemaOneOfDiscriminatorImplFromJson(Map<String, dynamic> json) =>
+        _$OpenApiSchemaOneOfDiscriminatorImpl(
+          propertyName: json['propertyName'] as String,
+          mapping: Map<String, String>.from(json['mapping'] as Map),
+        );
+
+Map<String, dynamic> _$$OpenApiSchemaOneOfDiscriminatorImplToJson(
+        _$OpenApiSchemaOneOfDiscriminatorImpl instance) =>
+    <String, dynamic>{
+      'propertyName': instance.propertyName,
+      'mapping': instance.mapping,
     };

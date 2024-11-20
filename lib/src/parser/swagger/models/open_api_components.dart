@@ -29,6 +29,7 @@ class OpenApiSchemas with _$OpenApiSchemas {
     @JsonKey(name: 'type') required String type,
     @JsonKey(name: 'required') required List<String>? required,
     @JsonKey(name: 'enum') required List<Object>? enum_,
+    @JsonKey(name: 'const') required Object? const_,
     @JsonKey(name: 'title') required String? title,
     @JsonKey(name: 'description') required String? description,
   }) = _OpenApiSchemas;
