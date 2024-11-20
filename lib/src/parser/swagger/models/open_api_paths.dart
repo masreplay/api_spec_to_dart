@@ -71,6 +71,9 @@ enum OpenApiPathMethodParameterType {
   cookie,
 }
 
+const String _anyOfKey = 'anyOf';
+const String _refKey = '\$ref';
+
 class OpenApiPathMethodParameterSchemaJsonMapConverter
     implements
         JsonConverter<OpenApiPathMethodParameterSchema, Map<String, dynamic>> {
@@ -78,10 +81,12 @@ class OpenApiPathMethodParameterSchemaJsonMapConverter
 
   @override
   OpenApiPathMethodParameterSchema fromJson(Map<String, dynamic> json) {
-    if (json.containsKey('anyOf')) {
-      return _OpenApiPathMethodParameterSchemaAnyOf.fromJson(json);
+    if (json.containsKey(_anyOfKey)) {
+      return OpenApiPathMethodParameterSchemaAnyOf.fromJson(json);
+    } else if (json.containsKey(_refKey)) {
+      return OpenApiPathMethodParameterSchemaRef.fromJson(json);
     } else {
-      return OpenApiPathMethodParameterSchemaDefault.fromJson(json);
+      return OpenApiPathMethodParameterSchemaType.fromJson(json);
     }
   }
 
@@ -124,24 +129,35 @@ Map<String, dynamic> removeRuntimeType(Map<String, dynamic> json) {
 class OpenApiPathMethodParameterSchema with _$OpenApiPathMethodParameterSchema {
   const OpenApiPathMethodParameterSchema._();
 
-  const factory OpenApiPathMethodParameterSchema({
+  const factory OpenApiPathMethodParameterSchema.type({
     @JsonKey(
       name: 'type',
-      unknownEnumValue: OpenApiPathMethodParameterSchemaType.$unknown,
+      unknownEnumValue: OpenApiSchemaVariableType.$unknown,
     )
-    required OpenApiPathMethodParameterSchemaType type,
-    @JsonKey(name: 'anyOf') @JsonKey(name: 'format') String? format,
+    OpenApiSchemaVariableType? type,
+    @JsonKey(name: 'format') String? format,
     @JsonKey(name: 'description') String? description,
     @JsonKey(name: 'title') String? title,
     @JsonKey(name: 'pattern') String? pattern,
     @JsonKey(name: 'default') Object? default_,
-  }) = OpenApiPathMethodParameterSchemaDefault;
+  }) = OpenApiPathMethodParameterSchemaType;
+
+  const factory OpenApiPathMethodParameterSchema.ref({
+    @JsonKey(name: _refKey) String? ref,
+    @JsonKey(name: 'format') String? format,
+    @JsonKey(name: 'description') String? description,
+    @JsonKey(name: 'title') String? title,
+    @JsonKey(name: 'pattern') String? pattern,
+    @JsonKey(name: 'default') Object? default_,
+  }) = OpenApiPathMethodParameterSchemaRef;
 
   const factory OpenApiPathMethodParameterSchema.anyOf({
     @OpenApiPathMethodParameterSchemaJsonMapConverter()
-    @JsonKey(name: 'anyOf')
-    required List<OpenApiPathMethodParameterSchemaDefault>? anyOf,
-  }) = _OpenApiPathMethodParameterSchemaAnyOf;
+    @JsonKey(name: _anyOfKey)
+    required List<OpenApiPathMethodParameterSchema>? anyOf,
+    @JsonKey(name: 'title') String? title,
+    @JsonKey(name: 'description') String? description,
+  }) = OpenApiPathMethodParameterSchemaAnyOf;
 
   factory OpenApiPathMethodParameterSchema.fromJson(
     Map<String, dynamic> json,
@@ -149,7 +165,7 @@ class OpenApiPathMethodParameterSchema with _$OpenApiPathMethodParameterSchema {
       _$OpenApiPathMethodParameterSchemaFromJson(json);
 }
 
-enum OpenApiPathMethodParameterSchemaType {
+enum OpenApiSchemaVariableType {
   @JsonValue('string')
   string,
   @JsonValue('number')

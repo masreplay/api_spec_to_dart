@@ -36,8 +36,8 @@ void main() {
                   name: 'accept-language',
                   in_: OpenApiPathMethodParameterType.header,
                   required_: true,
-                  schema: OpenApiPathMethodParameterSchema(
-                    type: OpenApiPathMethodParameterSchemaType.string,
+                  schema: OpenApiPathMethodParameterSchema.type(
+                    type: OpenApiSchemaVariableType.string,
                   ),
                 ),
                 OpenApiPathMethodParameter(
@@ -46,11 +46,11 @@ void main() {
                   required_: true,
                   schema: OpenApiPathMethodParameterSchema.anyOf(
                     anyOf: [
-                      OpenApiPathMethodParameterSchemaDefault(
-                        type: OpenApiPathMethodParameterSchemaType.boolean,
+                      OpenApiPathMethodParameterSchema.type(
+                        type: OpenApiSchemaVariableType.boolean,
                       ),
-                      OpenApiPathMethodParameterSchemaDefault(
-                        type: OpenApiPathMethodParameterSchemaType.null_,
+                      OpenApiPathMethodParameterSchemaType(
+                        type: OpenApiSchemaVariableType.null_,
                       ),
                     ],
                   ),
