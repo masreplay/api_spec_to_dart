@@ -27,11 +27,11 @@ class OpenApiSchemas with _$OpenApiSchemas {
     @JsonKey(name: 'properties')
     required Map<String, OpenApiSchema>? properties,
     @JsonKey(name: 'type') required String type,
-    @JsonKey(name: 'required') required List<String>? required,
-    @JsonKey(name: 'enum') required List<Object>? enum_,
-    @JsonKey(name: 'const') required Object? const_,
-    @JsonKey(name: 'title') required String? title,
-    @JsonKey(name: 'description') required String? description,
+    @JsonKey(name: 'required') List<String>? required_,
+    @JsonKey(name: 'enum') List<Object>? enum_,
+    @JsonKey(name: 'const') Object? const_,
+    @JsonKey(name: 'title') String? title,
+    @JsonKey(name: 'description') String? description,
   }) = _OpenApiSchemas;
 
   factory OpenApiSchemas.fromJson(Map<String, dynamic> json) =>

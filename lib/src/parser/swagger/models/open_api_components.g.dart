@@ -32,7 +32,7 @@ _$OpenApiSchemasImpl _$$OpenApiSchemasImplFromJson(Map<String, dynamic> json) =>
                 .fromJson(e as Map<String, dynamic>)),
       ),
       type: json['type'] as String,
-      required: (json['required'] as List<dynamic>?)
+      required_: (json['required'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
       enum_: (json['enum'] as List<dynamic>?)?.map((e) => e as Object).toList(),
@@ -49,7 +49,7 @@ Map<String, dynamic> _$$OpenApiSchemasImplToJson(
           case final value?)
         'properties': value,
       'type': instance.type,
-      if (instance.required case final value?) 'required': value,
+      if (instance.required_ case final value?) 'required': value,
       if (instance.enum_ case final value?) 'enum': value,
       if (instance.const_ case final value?) 'const': value,
       if (instance.title case final value?) 'title': value,

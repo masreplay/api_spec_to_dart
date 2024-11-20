@@ -94,7 +94,7 @@ class OpenApiPathMethodResponse with _$OpenApiPathMethodResponse {
 @freezed
 class OpenApiPathMethodRequestBody with _$OpenApiPathMethodRequestBody {
   factory OpenApiPathMethodRequestBody({
-    @JsonKey(name: 'required') bool? required,
+    @JsonKey(name: 'required') bool? required_,
     @JsonKey(name: 'content') required OpenApiContent content,
   }) = _OpenApiPathMethodRequestBody;
 

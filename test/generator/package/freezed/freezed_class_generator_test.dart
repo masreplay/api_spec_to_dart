@@ -12,7 +12,6 @@ void main() {
     test('Normal class without fields', () {
       final actual = r"""
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'dart:convert';
 
 import '../src/models/models.dart';
 

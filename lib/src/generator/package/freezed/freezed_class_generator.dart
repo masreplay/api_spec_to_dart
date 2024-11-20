@@ -15,7 +15,6 @@ class FreezedClassGenerator {
 
     return '''
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'dart:convert';
 
 ${imports.join('\n')}
 

@@ -139,13 +139,13 @@ Map<String, dynamic> _$$OpenApiPathMethodResponseImplToJson(
 _$OpenApiPathMethodRequestBodyImpl _$$OpenApiPathMethodRequestBodyImplFromJson(
         Map<String, dynamic> json) =>
     _$OpenApiPathMethodRequestBodyImpl(
-      required: json['required'] as bool?,
+      required_: json['required'] as bool?,
       content: OpenApiContent.fromJson(json['content'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$OpenApiPathMethodRequestBodyImplToJson(
         _$OpenApiPathMethodRequestBodyImpl instance) =>
     <String, dynamic>{
-      if (instance.required case final value?) 'required': value,
+      if (instance.required_ case final value?) 'required': value,
       'content': instance.content.toJson(),
     };
