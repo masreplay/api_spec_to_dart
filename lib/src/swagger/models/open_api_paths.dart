@@ -30,6 +30,7 @@ class OpenApiPathMethod with _$OpenApiPathMethod {
     @JsonKey(name: 'operationId') required String operationId,
     @JsonKey(name: 'parameters')
     required OpenApiPathMethodParameters parameters,
+    required OpenApiPathMethodResponses? responses,
   }) = _OpenApiPathMethod;
 
   factory OpenApiPathMethod.fromJson(Map<String, dynamic> json) =>
@@ -44,8 +45,70 @@ typedef OpenApiPathMethodParameters = List<OpenApiPathMethodParameter>;
 class OpenApiPathMethodParameter with _$OpenApiPathMethodParameter {
   const OpenApiPathMethodParameter._();
 
-  const factory OpenApiPathMethodParameter() = _OpenApiPathMethodParameter;
+  const factory OpenApiPathMethodParameter({
+    @JsonKey(name: 'name') required String name,
+    @JsonKey(name: 'in') required OpenApiPathMethodParameterType in_,
+    @JsonKey(name: 'required') required bool required_,
+    @JsonKey(name: 'schema') required OpenApiPathMethodParameterSchema schema,
+    required String? description,
+    required String? example,
+  }) = _OpenApiPathMethodParameter;
 
   factory OpenApiPathMethodParameter.fromJson(Map<String, dynamic> json) =>
       _$OpenApiPathMethodParameterFromJson(json);
+}
+
+enum OpenApiPathMethodParameterType {
+  query,
+  path,
+  header,
+  cookie,
+}
+
+@freezed
+class OpenApiPathMethodParameterSchema with _$OpenApiPathMethodParameterSchema {
+  const OpenApiPathMethodParameterSchema._();
+
+  const factory OpenApiPathMethodParameterSchema({
+    required OpenApiPathMethodParameterSchemaType type,
+    required String? format,
+    required String? description,
+    required String? title,
+    required String? pattern,
+    required List<OpenApiPathMethodParameterSchema>? anyOf,
+    required dynamic defaultValue,
+  }) = _OpenApiPathMethodParameterSchema;
+
+  factory OpenApiPathMethodParameterSchema.fromJson(
+    Map<String, dynamic> json,
+  ) =>
+      _$OpenApiPathMethodParameterSchemaFromJson(json);
+}
+
+enum OpenApiPathMethodParameterSchemaType {
+  @JsonValue('string')
+  string,
+  @JsonValue('number')
+  number,
+  @JsonValue('integer')
+  integer,
+  @JsonValue('boolean')
+  boolean,
+  @JsonValue('array')
+  array,
+  @JsonValue('object')
+  object,
+  @JsonValue('null')
+  null_,
+}
+
+// "responses": { "200": {} }
+typedef OpenApiPathMethodResponses = Map<String, OpenApiPathMethodResponse>;
+
+@freezed
+class OpenApiPathMethodResponse with _$OpenApiPathMethodResponse {
+  factory OpenApiPathMethodResponse() = _OpenApiPathMethodResponse;
+
+  factory OpenApiPathMethodResponse.fromJson(Map<String, dynamic> json) =>
+      _$OpenApiPathMethodResponseFromJson(json);
 }

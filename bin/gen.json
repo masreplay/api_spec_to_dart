@@ -15,7 +15,11 @@
         "operationId": "settings-read_settings",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/common/files/upload": {
@@ -27,7 +31,11 @@
         "operationId": "files-upload_file",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/common/files/delete/{id}": {
@@ -40,7 +48,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/auth/login": {
@@ -52,7 +64,11 @@
         "operationId": "student_auth-login",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/auth/swagger/login": {
@@ -64,7 +80,11 @@
         "operationId": "student_auth-swagger_login",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/auth/refresh_token": {
@@ -76,7 +96,11 @@
         "operationId": "student_auth-refresh_token",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/auth/logout": {
@@ -89,7 +113,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/auth/change-temporary-password": {
@@ -101,7 +129,11 @@
         "operationId": "student_auth-change_temporary_password",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/auth/otp/init": {
@@ -113,7 +145,11 @@
         "operationId": "student_verification-init_otp_data",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/auth/otp/send": {
@@ -125,7 +161,11 @@
         "operationId": "student_verification-send_otp",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/auth/otp/verify": {
@@ -137,7 +177,11 @@
         "operationId": "student_verification-verify_otp",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/auth/reset-password/init": {
@@ -149,7 +193,11 @@
         "operationId": "student_reset_password-init_otp_data",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/auth/reset-password/send-phone-forgot-password": {
@@ -163,7 +211,11 @@
           {},
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/auth/reset-password/verify-phone-otp-forgot-password": {
@@ -177,7 +229,11 @@
           {},
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/auth/reset-password/set-password": {
@@ -191,7 +247,11 @@
           {},
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/auth/reset-password/send-email-otp-forgot-password": {
@@ -204,7 +264,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/auth/reset-password/verify-email-otp-forgot-password": {
@@ -218,7 +282,11 @@
           {},
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/profile/": {
@@ -230,7 +298,11 @@
         "operationId": "student_profile-has_study_programs",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/profile/personal": {
@@ -242,7 +314,11 @@
         "operationId": "student_profile-read_student_personal_info",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/profile/school": {
@@ -254,7 +330,11 @@
         "operationId": "student_profile-read_student_school_info",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/profile/ids": {
@@ -266,7 +346,11 @@
         "operationId": "student_profile-read_student_ids_info",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/profile/university-card": {
@@ -278,7 +362,11 @@
         "operationId": "student_profile-read_student_card",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/registration/personal": {
@@ -290,7 +378,11 @@
         "operationId": "student_registration-update_student_personal_info",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/registration/school": {
@@ -302,7 +394,11 @@
         "operationId": "student_registration-update_student_school_info",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/registration/ids/foreigner": {
@@ -314,7 +410,11 @@
         "operationId": "student_registration-update_student_ids_info_foreigner",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/registration/ids/identity_card": {
@@ -326,7 +426,11 @@
         "operationId": "student_registration-update_student_ids_info_identity_card",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/registration/ids/nationality_card": {
@@ -338,7 +442,11 @@
         "operationId": "student_registration-update_student_ids_info_nationality_card",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/admissions/me": {
@@ -350,7 +458,11 @@
         "operationId": "student_admissions-read_admissions",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/admissions/me/joining-time": {
@@ -362,7 +474,11 @@
         "operationId": "student_admissions-get_joining_time",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/attendances/": {
@@ -374,7 +490,11 @@
         "operationId": "student_attendances-read_attendances",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/attendances/me": {
@@ -386,7 +506,11 @@
         "operationId": "student_attendances-get_my_attendance",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/attendances/me/check-in/": {
@@ -398,7 +522,11 @@
         "operationId": "student_attendances-check_in_my_attendance",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/attendances/{course_id}/lectures": {
@@ -411,7 +539,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/weekly_schedules/me": {
@@ -423,7 +555,11 @@
         "operationId": "student_weekly_schedules-get_my_weekly_schedule",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/notifications/": {
@@ -438,7 +574,11 @@
           {},
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/notifications/token": {
@@ -450,7 +590,11 @@
         "operationId": "student_notifications-send_player_id",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/notifications/mark-as-read": {
@@ -463,7 +607,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/notifications/{id}": {
@@ -476,7 +624,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/fees_types/": {
@@ -488,7 +640,11 @@
         "operationId": "student_fees_types-read_fees_types",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/fees/": {
@@ -504,7 +660,11 @@
           {},
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/specializations/": {
@@ -516,7 +676,11 @@
         "operationId": "student_specializations-read_specializations",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/governorates/": {
@@ -528,7 +692,11 @@
         "operationId": "student_governorates-read_governorates",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/study_years/": {
@@ -540,7 +708,11 @@
         "operationId": "student_study_years-read_student_workloads",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/nationalities/": {
@@ -552,7 +724,11 @@
         "operationId": "student_nationalities-read_nationalities",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/home/": {
@@ -564,7 +740,11 @@
         "operationId": "student_home-read_student_home",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/religions/": {
@@ -576,7 +756,11 @@
         "operationId": "student_religions-read_religions",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/nationalisms/": {
@@ -588,7 +772,11 @@
         "operationId": "student_nationalisms-read_nationalisms",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/countries/": {
@@ -600,7 +788,11 @@
         "operationId": "student_countries-read_countries",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/majors/": {
@@ -612,7 +804,11 @@
         "operationId": "student_majors-read_majors",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/student_selected_courses/me": {
@@ -624,7 +820,11 @@
         "operationId": "student_selected_courses-read_student_summary",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/student_selected_courses/update": {
@@ -637,7 +837,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/student_selected_courses/{id}": {
@@ -650,7 +854,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/information_status/": {
@@ -662,7 +870,11 @@
         "operationId": "student_information_status-read_status",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/ekyc/download-license": {
@@ -675,7 +887,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/ekyc/init": {
@@ -687,7 +903,11 @@
         "operationId": "student_ekyc-init",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/ekyc/national_id/back": {
@@ -700,7 +920,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/ekyc/national_id/front": {
@@ -713,7 +937,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/ekyc/passport": {
@@ -726,7 +954,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/ekyc/face": {
@@ -739,7 +971,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/ekyc/nfc": {
@@ -752,7 +988,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/ekyc/face/eye": {
@@ -765,7 +1005,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/ekyc/form": {
@@ -778,7 +1022,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       },
       "patch": {
         "tags": [
@@ -789,7 +1037,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/ekyc/submit": {
@@ -803,7 +1055,11 @@
           {},
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/payments/methods": {
@@ -815,7 +1071,11 @@
         "operationId": "student_payments-read_payment_methods",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/payments/methods/{id}": {
@@ -828,7 +1088,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/payments/status/{order_id}": {
@@ -841,7 +1105,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/payments/enrollment": {
@@ -853,7 +1121,11 @@
         "operationId": "student_payments-read_enrollment_payment_information",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/os/me": {
@@ -865,7 +1137,11 @@
         "operationId": "student_os-read_organizational_structure_for_student",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/summary/": {
@@ -877,7 +1153,11 @@
         "operationId": "student_summary-read_student_summary",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/summary/student-seamsters": {
@@ -889,7 +1169,11 @@
         "operationId": "student_summary-read_student_seamsters",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/summary/student-seamsters-courses": {
@@ -901,7 +1185,11 @@
         "operationId": "student_summary-read_student_seamsters_courses",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/courses/": {
@@ -913,7 +1201,11 @@
         "operationId": "student_courses-read_student_workloads",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/courses/student-courses": {
@@ -925,7 +1217,11 @@
         "operationId": "student_courses-read_student_courses",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/courses/staff/{id}": {
@@ -938,7 +1234,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/courses/{id}": {
@@ -951,7 +1251,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/information_bureaus/": {
@@ -963,7 +1267,11 @@
         "operationId": "student_information_bureaus-read_information_bureaus",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/home_works/course/{course_id}": {
@@ -976,7 +1284,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/semesters/{id}": {
@@ -990,7 +1302,11 @@
           {},
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/orders/me": {
@@ -1002,7 +1318,11 @@
         "operationId": "student_orders-read_orders_for_student",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/student/attachments/{course_id}": {
@@ -1015,7 +1335,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/lecturer/auth/login": {
@@ -1027,7 +1351,11 @@
         "operationId": "lecturer_auth-login",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/lecturer/auth/swagger/login": {
@@ -1039,7 +1367,11 @@
         "operationId": "lecturer_auth-swagger_login",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/lecturer/auth/refresh_token": {
@@ -1052,7 +1384,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/lecturer/auth/logout": {
@@ -1065,7 +1401,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/lecturer/courses/me": {
@@ -1079,7 +1419,11 @@
           {},
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/lecturer/courses/me/{id}": {
@@ -1092,7 +1436,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/lecturer/announcements/me/{course_id}": {
@@ -1105,7 +1453,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       },
       "get": {
         "tags": [
@@ -1118,7 +1470,11 @@
           {},
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/lecturer/announcements/{id}": {
@@ -1131,7 +1487,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       },
       "put": {
         "tags": [
@@ -1142,7 +1502,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       },
       "delete": {
         "tags": [
@@ -1153,7 +1517,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/lecturer/announcements/{id}/comments": {
@@ -1166,7 +1534,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       },
       "get": {
         "tags": [
@@ -1179,7 +1551,11 @@
           {},
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/lecturer/assignments/me/{course_id}": {
@@ -1194,7 +1570,11 @@
           {},
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       },
       "post": {
         "tags": [
@@ -1205,7 +1585,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/lecturer/assignments/{id}": {
@@ -1218,7 +1602,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       },
       "delete": {
         "tags": [
@@ -1229,7 +1617,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       },
       "put": {
         "tags": [
@@ -1240,7 +1632,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/lecturer/assignments/{id}/comments": {
@@ -1253,7 +1649,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       },
       "post": {
         "tags": [
@@ -1264,7 +1664,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/lecturer/calender/homework": {
@@ -1279,7 +1683,11 @@
           {},
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/lecturer/attendances/create": {
@@ -1291,7 +1699,11 @@
         "operationId": "lecturer_attendances-lecturer_create_attendance",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/lecturer/weekly_schedules/me": {
@@ -1303,7 +1715,11 @@
         "operationId": "lecturer_weekly_schedules-get_weekly_schedule",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/lecturer/ids/me": {
@@ -1316,7 +1732,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/lecturer/": {
@@ -1329,7 +1749,11 @@
         "parameters": [
           {},
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     },
     "/api/v1/lecturer/profile/me": {
@@ -1341,7 +1765,11 @@
         "operationId": "lecturer_profile-get_lecturer_profile",
         "parameters": [
           {}
-        ]
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
       }
     }
   },

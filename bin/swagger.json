@@ -1,11 +1,138 @@
 {
     "openapi": "3.1.0",
     "info": {
-        "title": "UMS.SIS.API",
-        "description": "API for development using FastAPI",
-        "version": "dev-v0.1.24-development"
+        "title": "UMS.SIS.API.LOCAL",
+        "description": "API for local using FastAPI",
+        "version": "0.0.54-local"
     },
+    "servers": [
+        {
+            "url": "http://0.0.0.0:8004",
+            "description": "Local environment"
+        },
+        {
+            "url": "https://swift-nice-strictly.ngrok-free.app",
+            "description": "Predev environment"
+        },
+        {
+            "url": "https://ums-app-dev.mohesr.net",
+            "description": "Development environment"
+        },
+        {
+            "url": "https://ums-app-demo.mohesr.net",
+            "description": "Staging environment"
+        },
+        {
+            "url": "https://ums-app-prod.mohesr.net",
+            "description": "Production environment"
+        }
+    ],
     "paths": {
+        "/dev/sentry-debug": {
+            "get": {
+                "tags": [
+                    "dev"
+                ],
+                "summary": "Trigger Error",
+                "operationId": "dev-trigger_error",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response Dev-Trigger Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/dev/s3/{file_path}": {
+            "get": {
+                "tags": [
+                    "dev"
+                ],
+                "summary": "Proxy To Minio",
+                "operationId": "dev-proxy_to_minio",
+                "parameters": [
+                    {
+                        "name": "file_path",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "File Path"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response Dev-Proxy To Minio"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/dev/upload-file/": {
+            "post": {
+                "tags": [
+                    "dev"
+                ],
+                "summary": "Upload File",
+                "operationId": "dev-upload_file",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Body_dev-upload_file"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "Response Dev-Upload File"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/v1/common/settings/": {
             "get": {
                 "tags": [
@@ -8548,6 +8675,20 @@
                 "title": "BloodGroupEnum",
                 "description": "صنف الدم"
             },
+            "Body_dev-upload_file": {
+                "properties": {
+                    "file": {
+                        "type": "string",
+                        "format": "binary",
+                        "title": "File"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "file"
+                ],
+                "title": "Body_dev-upload_file"
+            },
             "Body_files-upload_file": {
                 "properties": {
                     "file": {
@@ -15662,20 +15803,7 @@
                     },
                     "fields": {
                         "items": {
-                            "anyOf": [
-                                {
-                                    "$ref": "#/components/schemas/UITextFormField"
-                                },
-                                {
-                                    "$ref": "#/components/schemas/UICheckboxFormField"
-                                },
-                                {
-                                    "$ref": "#/components/schemas/UISelectFormField"
-                                },
-                                {
-                                    "$ref": "#/components/schemas/UIDateFormField"
-                                }
-                            ]
+                            "$ref": "#/components/schemas/UIFormField"
                         },
                         "type": "array",
                         "title": "Fields"
@@ -15736,6 +15864,41 @@
                 ],
                 "title": "UIForm"
             },
+            "UIFormField": {
+                "properties": {
+                    "field": {
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/UITextFormField"
+                            },
+                            {
+                                "$ref": "#/components/schemas/UICheckboxFormField"
+                            },
+                            {
+                                "$ref": "#/components/schemas/UISelectFormField"
+                            },
+                            {
+                                "$ref": "#/components/schemas/UIDateFormField"
+                            }
+                        ],
+                        "title": "Field",
+                        "discriminator": {
+                            "propertyName": "type",
+                            "mapping": {
+                                "checkbox": "#/components/schemas/UICheckboxFormField",
+                                "date": "#/components/schemas/UIDateFormField",
+                                "select": "#/components/schemas/UISelectFormField",
+                                "text": "#/components/schemas/UITextFormField"
+                            }
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "field"
+                ],
+                "title": "UIFormField"
+            },
             "UISelectFormField": {
                 "properties": {
                     "key": {
@@ -15791,7 +15954,8 @@
                             "$ref": "#/components/schemas/UISelectFormFieldOption"
                         },
                         "type": "array",
-                        "title": "Options"
+                        "title": "Options",
+                        "default": []
                     },
                     "default_value": {
                         "anyOf": [
@@ -15823,7 +15987,6 @@
                     "hint",
                     "is_required",
                     "doc",
-                    "options",
                     "example"
                 ],
                 "title": "UISelectFormField"
