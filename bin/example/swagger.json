@@ -99,14 +99,14 @@
                 "summary": "Upload File",
                 "operationId": "dev-upload_file",
                 "requestBody": {
-                    "required": true,
                     "content": {
                         "multipart/form-data": {
                             "schema": {
                                 "$ref": "#/components/schemas/Body_dev-upload_file"
                             }
                         }
-                    }
+                    },
+                    "required": true
                 },
                 "responses": {
                     "200": {
@@ -5080,6 +5080,72 @@
             }
         },
         "/api/v1/lecturer/announcements/me/{course_id}": {
+            "post": {
+                "tags": [
+                    "lecturer_announcements"
+                ],
+                "summary": "Create Lecturer Announcement",
+                "operationId": "lecturer_announcements-create_lecturer_announcement",
+                "security": [
+                    {
+                        "LecturerOAuth2PasswordBearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "course_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "title": "Course Id"
+                        }
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "description": "Language",
+                            "title": "Accept-Language"
+                        },
+                        "description": "Language"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Body_lecturer_announcements-create_lecturer_announcement"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BaseResponse_LecturerAnnouncementPublic_"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "get": {
                 "tags": [
                     "lecturer_announcements"
@@ -5140,72 +5206,6 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/BaseResponse_PaginationResponse_LecturerAnnouncementPublic__"
-                                }
-                            }
-                        }
-                    },
-                    "422": {
-                        "description": "Validation Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/HTTPValidationError"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "lecturer_announcements"
-                ],
-                "summary": "Create Lecturer Announcement",
-                "operationId": "lecturer_announcements-create_lecturer_announcement",
-                "security": [
-                    {
-                        "LecturerOAuth2PasswordBearer": []
-                    }
-                ],
-                "parameters": [
-                    {
-                        "name": "course_id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer",
-                            "title": "Course Id"
-                        }
-                    },
-                    {
-                        "name": "Accept-Language",
-                        "in": "header",
-                        "required": true,
-                        "schema": {
-                            "type": "string",
-                            "description": "Language",
-                            "title": "Accept-Language"
-                        },
-                        "description": "Language"
-                    }
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/x-www-form-urlencoded": {
-                            "schema": {
-                                "$ref": "#/components/schemas/Body_lecturer_announcements-create_lecturer_announcement"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Successful Response",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/BaseResponse_LecturerAnnouncementPublic_"
                                 }
                             }
                         }
@@ -5404,6 +5404,72 @@
             }
         },
         "/api/v1/lecturer/announcements/{id}/comments": {
+            "post": {
+                "tags": [
+                    "lecturer_announcements"
+                ],
+                "summary": "Create Lecturer Announcement Comment",
+                "operationId": "lecturer_announcements-create_lecturer_announcement_comment",
+                "security": [
+                    {
+                        "LecturerOAuth2PasswordBearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "title": "Id"
+                        }
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "description": "Language",
+                            "title": "Accept-Language"
+                        },
+                        "description": "Language"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CommentCreatePublic"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BaseResponse_CommentPublic_"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "get": {
                 "tags": [
                     "lecturer_announcements"
@@ -5464,72 +5530,6 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/BaseResponse_PaginationResponse_CommentPublic__"
-                                }
-                            }
-                        }
-                    },
-                    "422": {
-                        "description": "Validation Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/HTTPValidationError"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "lecturer_announcements"
-                ],
-                "summary": "Create Lecturer Announcement Comment",
-                "operationId": "lecturer_announcements-create_lecturer_announcement_comment",
-                "security": [
-                    {
-                        "LecturerOAuth2PasswordBearer": []
-                    }
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer",
-                            "title": "Id"
-                        }
-                    },
-                    {
-                        "name": "Accept-Language",
-                        "in": "header",
-                        "required": true,
-                        "schema": {
-                            "type": "string",
-                            "description": "Language",
-                            "title": "Accept-Language"
-                        },
-                        "description": "Language"
-                    }
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/CommentCreatePublic"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Successful Response",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/BaseResponse_CommentPublic_"
                                 }
                             }
                         }
@@ -5748,6 +5748,62 @@
                     }
                 }
             },
+            "delete": {
+                "tags": [
+                    "lecturer_assignments"
+                ],
+                "summary": "Delete Lecturer Assignment",
+                "operationId": "lecturer_assignments-delete_lecturer_assignment",
+                "security": [
+                    {
+                        "LecturerOAuth2PasswordBearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "title": "Id"
+                        }
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "description": "Language",
+                            "title": "Accept-Language"
+                        },
+                        "description": "Language"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MessageResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "put": {
                 "tags": [
                     "lecturer_assignments"
@@ -5798,62 +5854,6 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/BaseResponse_LecturerAssignmentPublic_"
-                                }
-                            }
-                        }
-                    },
-                    "422": {
-                        "description": "Validation Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/HTTPValidationError"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "lecturer_assignments"
-                ],
-                "summary": "Delete Lecturer Assignment",
-                "operationId": "lecturer_assignments-delete_lecturer_assignment",
-                "security": [
-                    {
-                        "LecturerOAuth2PasswordBearer": []
-                    }
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer",
-                            "title": "Id"
-                        }
-                    },
-                    {
-                        "name": "Accept-Language",
-                        "in": "header",
-                        "required": true,
-                        "schema": {
-                            "type": "string",
-                            "description": "Language",
-                            "title": "Accept-Language"
-                        },
-                        "description": "Language"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful Response",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/MessageResponse"
                                 }
                             }
                         }
@@ -7901,10 +7901,10 @@
                     "data": {
                         "anyOf": [
                             {
-                                "type": "array",
                                 "items": {
                                     "$ref": "#/components/schemas/CourseStaffPublic"
-                                }
+                                },
+                                "type": "array"
                             },
                             {
                                 "type": "null"
@@ -7935,10 +7935,10 @@
                     "data": {
                         "anyOf": [
                             {
-                                "type": "array",
                                 "items": {
                                     "$ref": "#/components/schemas/CourseSubjectPublic"
-                                }
+                                },
+                                "type": "array"
                             },
                             {
                                 "type": "null"
@@ -7969,10 +7969,10 @@
                     "data": {
                         "anyOf": [
                             {
-                                "type": "array",
                                 "items": {
                                     "$ref": "#/components/schemas/StudentSeamstersSummary"
-                                }
+                                },
+                                "type": "array"
                             },
                             {
                                 "type": "null"
@@ -8003,10 +8003,10 @@
                     "data": {
                         "anyOf": [
                             {
-                                "type": "array",
                                 "items": {
                                     "$ref": "#/components/schemas/WeeklyScheduleResponse"
-                                }
+                                },
+                                "type": "array"
                             },
                             {
                                 "type": "null"
@@ -8083,10 +8083,10 @@
                         "title": "Message"
                     },
                     "data": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/AdmissionMePublic"
                         },
+                        "type": "array",
                         "title": "Data"
                     }
                 },
@@ -8110,10 +8110,10 @@
                         "title": "Message"
                     },
                     "data": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/CommentPublic"
                         },
+                        "type": "array",
                         "title": "Data"
                     }
                 },
@@ -8137,10 +8137,10 @@
                         "title": "Message"
                     },
                     "data": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/CountryPublic"
                         },
+                        "type": "array",
                         "title": "Data"
                     }
                 },
@@ -8164,10 +8164,10 @@
                         "title": "Message"
                     },
                     "data": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/CourseAssessmentMeasuringTypeCourseAndAssessments"
                         },
+                        "type": "array",
                         "title": "Data"
                     }
                 },
@@ -8191,10 +8191,10 @@
                         "title": "Message"
                     },
                     "data": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/CoursePublic"
                         },
+                        "type": "array",
                         "title": "Data"
                     }
                 },
@@ -8218,10 +8218,10 @@
                         "title": "Message"
                     },
                     "data": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/FeesTypesPublic"
                         },
+                        "type": "array",
                         "title": "Data"
                     }
                 },
@@ -8245,10 +8245,10 @@
                         "title": "Message"
                     },
                     "data": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/GovernoratePublic"
                         },
+                        "type": "array",
                         "title": "Data"
                     }
                 },
@@ -8272,10 +8272,10 @@
                         "title": "Message"
                     },
                     "data": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/InformationBureausPublic"
                         },
+                        "type": "array",
                         "title": "Data"
                     }
                 },
@@ -8299,10 +8299,10 @@
                         "title": "Message"
                     },
                     "data": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/app__api__routes__v1__student__attendance_route__Lecture"
                         },
+                        "type": "array",
                         "title": "Data"
                     }
                 },
@@ -8326,10 +8326,10 @@
                         "title": "Message"
                     },
                     "data": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/MajorsPublic"
                         },
+                        "type": "array",
                         "title": "Data"
                     }
                 },
@@ -8353,10 +8353,10 @@
                         "title": "Message"
                     },
                     "data": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/NationalismsPublic"
                         },
+                        "type": "array",
                         "title": "Data"
                     }
                 },
@@ -8380,10 +8380,10 @@
                         "title": "Message"
                     },
                     "data": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/NationalitiesPublic"
                         },
+                        "type": "array",
                         "title": "Data"
                     }
                 },
@@ -8407,10 +8407,10 @@
                         "title": "Message"
                     },
                     "data": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/OrderPublic"
                         },
+                        "type": "array",
                         "title": "Data"
                     }
                 },
@@ -8434,10 +8434,10 @@
                         "title": "Message"
                     },
                     "data": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/PaymentMethodPublic"
                         },
+                        "type": "array",
                         "title": "Data"
                     }
                 },
@@ -8461,10 +8461,10 @@
                         "title": "Message"
                     },
                     "data": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/ReligionPublic"
                         },
+                        "type": "array",
                         "title": "Data"
                     }
                 },
@@ -8488,10 +8488,10 @@
                         "title": "Message"
                     },
                     "data": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/SpecializationPublic"
                         },
+                        "type": "array",
                         "title": "Data"
                     }
                 },
@@ -8515,10 +8515,10 @@
                         "title": "Message"
                     },
                     "data": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/StudentAttendancePublic"
                         },
+                        "type": "array",
                         "title": "Data"
                     }
                 },
@@ -8542,10 +8542,10 @@
                         "title": "Message"
                     },
                     "data": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/StudentSelectedCoursesPublic"
                         },
+                        "type": "array",
                         "title": "Data"
                     }
                 },
@@ -8569,10 +8569,10 @@
                         "title": "Message"
                     },
                     "data": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/StudyYearPublic"
                         },
+                        "type": "array",
                         "title": "Data"
                     }
                 },
@@ -8596,10 +8596,10 @@
                         "title": "Message"
                     },
                     "data": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/VerificationMethodPublic"
                         },
+                        "type": "array",
                         "title": "Data"
                     }
                 },
@@ -8623,10 +8623,10 @@
                         "title": "Message"
                     },
                     "data": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/WeeklyScheduleTeacherResponse"
                         },
+                        "type": "array",
                         "title": "Data"
                     }
                 },
@@ -8746,11 +8746,11 @@
             "Body_lecturer_assignments-create_lecturer_assignment": {
                 "properties": {
                     "files": {
-                        "type": "array",
                         "items": {
                             "type": "string",
                             "format": "binary"
                         },
+                        "type": "array",
                         "title": "Files"
                     },
                     "title": {
@@ -8793,11 +8793,11 @@
             "Body_lecturer_assignments-update_lecturer_assignment": {
                 "properties": {
                     "files": {
-                        "type": "array",
                         "items": {
                             "type": "string",
                             "format": "binary"
                         },
+                        "type": "array",
                         "title": "Files"
                     },
                     "title": {
@@ -9102,10 +9102,10 @@
                         ]
                     },
                     "replies": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/CommentPublic"
                         },
+                        "type": "array",
                         "title": "Replies"
                     }
                 },
@@ -9487,8 +9487,8 @@
                     "course_staffs": {
                         "anyOf": [
                             {
-                                "type": "array",
-                                "items": {}
+                                "items": {},
+                                "type": "array"
                             },
                             {
                                 "type": "null"
@@ -9739,10 +9739,10 @@
                     "attachments": {
                         "anyOf": [
                             {
-                                "type": "array",
                                 "items": {
                                     "$ref": "#/components/schemas/AttachmentResponse"
-                                }
+                                },
+                                "type": "array"
                             },
                             {
                                 "type": "null"
@@ -10638,10 +10638,10 @@
             "HTTPValidationError": {
                 "properties": {
                     "detail": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/ValidationError"
                         },
+                        "type": "array",
                         "title": "Detail"
                     }
                 },
@@ -10667,13 +10667,13 @@
                         "title": "Id"
                     },
                     "type": {
+                        "type": "string",
                         "enum": [
                             "course_selection_status"
                         ],
-                        "type": "string",
                         "const": "course_selection_status",
-                        "default": "course_selection_status",
-                        "title": "Type"
+                        "title": "Type",
+                        "default": "course_selection_status"
                     },
                     "title": {
                         "type": "string",
@@ -10732,13 +10732,13 @@
                         "title": "Id"
                     },
                     "type": {
+                        "type": "string",
                         "enum": [
                             "missing_payment"
                         ],
-                        "type": "string",
                         "const": "missing_payment",
-                        "default": "missing_payment",
-                        "title": "Type"
+                        "title": "Type",
+                        "default": "missing_payment"
                     },
                     "title": {
                         "type": "string",
@@ -10771,16 +10771,15 @@
             "HomeFeedPublic": {
                 "properties": {
                     "type": {
+                        "type": "string",
                         "enum": [
                             "feed"
                         ],
-                        "type": "string",
                         "const": "feed",
-                        "default": "feed",
-                        "title": "Type"
+                        "title": "Type",
+                        "default": "feed"
                     },
                     "sections": {
-                        "type": "array",
                         "items": {
                             "anyOf": [
                                 {
@@ -10797,6 +10796,7 @@
                                 }
                             ]
                         },
+                        "type": "array",
                         "title": "Sections"
                     }
                 },
@@ -10865,13 +10865,13 @@
                         "title": "Id"
                     },
                     "type": {
+                        "type": "string",
                         "enum": [
                             "study_program"
                         ],
-                        "type": "string",
                         "const": "study_program",
-                        "default": "study_program",
-                        "title": "Type"
+                        "title": "Type",
+                        "default": "study_program"
                     },
                     "title": {
                         "type": "string",
@@ -10941,13 +10941,13 @@
                         "title": "Id"
                     },
                     "type": {
+                        "type": "string",
                         "enum": [
                             "summary"
                         ],
-                        "type": "string",
                         "const": "summary",
-                        "default": "summary",
-                        "title": "Type"
+                        "title": "Type",
+                        "default": "summary"
                     },
                     "title": {
                         "type": "string",
@@ -11026,13 +11026,13 @@
             "HomeStatusPublic": {
                 "properties": {
                     "type": {
+                        "type": "string",
                         "enum": [
                             "status"
                         ],
-                        "type": "string",
                         "const": "status",
-                        "default": "status",
-                        "title": "Type"
+                        "title": "Type",
+                        "default": "status"
                     },
                     "title": {
                         "type": "string",
@@ -11114,13 +11114,13 @@
                         "title": "End Date Formatted"
                     },
                     "type": {
+                        "type": "string",
                         "enum": [
                             "assignment"
                         ],
-                        "type": "string",
                         "const": "assignment",
-                        "default": "assignment",
-                        "title": "Type"
+                        "title": "Type",
+                        "default": "assignment"
                     },
                     "title": {
                         "type": "string",
@@ -11215,10 +11215,10 @@
             "LectureHomeworksCalenderResponse": {
                 "properties": {
                     "events": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/HomeworkCalenderEventPublic"
                         },
+                        "type": "array",
                         "title": "Events"
                     }
                 },
@@ -11266,8 +11266,8 @@
                     },
                     "comments_count": {
                         "type": "integer",
-                        "default": 0,
-                        "title": "Comments Count"
+                        "title": "Comments Count",
+                        "default": 0
                     },
                     "created_at": {
                         "type": "string",
@@ -11279,10 +11279,10 @@
                         "title": "Created At Formatted"
                     },
                     "files": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/FilePublic"
                         },
+                        "type": "array",
                         "title": "Files"
                     }
                 },
@@ -11361,8 +11361,8 @@
                     },
                     "comments_count": {
                         "type": "integer",
-                        "default": 0,
-                        "title": "Comments Count"
+                        "title": "Comments Count",
+                        "default": 0
                     },
                     "created_at": {
                         "type": "string",
@@ -11374,10 +11374,10 @@
                         "title": "Created At Formatted"
                     },
                     "files": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/FilePublic"
                         },
+                        "type": "array",
                         "title": "Files"
                     }
                 },
@@ -11850,10 +11850,10 @@
                         "title": "Total"
                     },
                     "data": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/CommentPublic"
                         },
+                        "type": "array",
                         "title": "Data"
                     }
                 },
@@ -11881,10 +11881,10 @@
                         "title": "Total"
                     },
                     "data": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/LecturerAnnouncementPublic"
                         },
+                        "type": "array",
                         "title": "Data"
                     }
                 },
@@ -11912,10 +11912,10 @@
                         "title": "Total"
                     },
                     "data": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/LecturerAssignmentPublic"
                         },
+                        "type": "array",
                         "title": "Data"
                     }
                 },
@@ -11943,10 +11943,10 @@
                         "title": "Total"
                     },
                     "data": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/LecturerCoursePublic"
                         },
+                        "type": "array",
                         "title": "Data"
                     }
                 },
@@ -11974,10 +11974,10 @@
                         "title": "Total"
                     },
                     "data": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/StudentFeesPublic"
                         },
+                        "type": "array",
                         "title": "Data"
                     }
                 },
@@ -12005,10 +12005,10 @@
                         "title": "Total"
                     },
                     "data": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/StudentNotificationsPublic"
                         },
+                        "type": "array",
                         "title": "Data"
                     }
                 },
@@ -12050,10 +12050,10 @@
                         "$ref": "#/components/schemas/PaymentInfoAmount"
                     },
                     "payment_methods": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/PaymentMethodPublic"
                         },
+                        "type": "array",
                         "title": "Payment Methods"
                     }
                 },
@@ -12262,12 +12262,12 @@
                         "title": "Credential"
                     },
                     "method": {
+                        "type": "string",
                         "enum": [
                             "sms",
                             "whatsapp",
                             "email"
                         ],
-                        "type": "string",
                         "title": "Method"
                     }
                 },
@@ -14566,26 +14566,26 @@
                     },
                     "current_number_of_units": {
                         "type": "integer",
-                        "default": 0,
-                        "title": "Current Number Of Units"
+                        "title": "Current Number Of Units",
+                        "default": 0
                     },
                     "current_number_of_subjects": {
                         "type": "integer",
-                        "default": 0,
-                        "title": "Current Number Of Subjects"
+                        "title": "Current Number Of Subjects",
+                        "default": 0
                     },
                     "current_subjects": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/Subject"
                         },
+                        "type": "array",
                         "title": "Current Subjects"
                     },
                     "previous_subjects": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/Subject"
                         },
+                        "type": "array",
                         "title": "Previous Subjects"
                     }
                 },
@@ -14601,10 +14601,10 @@
                     "semesters": {
                         "anyOf": [
                             {
-                                "type": "array",
                                 "items": {
                                     "$ref": "#/components/schemas/Summary"
-                                }
+                                },
+                                "type": "array"
                             },
                             {
                                 "type": "null"
@@ -15476,10 +15476,10 @@
                     "course_staff": {
                         "anyOf": [
                             {
-                                "type": "array",
                                 "items": {
                                     "$ref": "#/components/schemas/CourseStaffsTable"
-                                }
+                                },
+                                "type": "array"
                             },
                             {
                                 "type": "null"
@@ -15551,13 +15551,13 @@
                     },
                     "current_number_of_units": {
                         "type": "integer",
-                        "default": 0,
-                        "title": "Current Number Of Units"
+                        "title": "Current Number Of Units",
+                        "default": 0
                     },
                     "current_number_of_subjects": {
                         "type": "integer",
-                        "default": 0,
-                        "title": "Current Number Of Subjects"
+                        "title": "Current Number Of Subjects",
+                        "default": 0
                     }
                 },
                 "type": "object",
@@ -15634,8 +15634,8 @@
                     },
                     "read_only": {
                         "type": "boolean",
-                        "default": false,
-                        "title": "Read Only"
+                        "title": "Read Only",
+                        "default": false
                     },
                     "doc": {
                         "anyOf": [
@@ -15649,18 +15649,18 @@
                         "title": "Doc"
                     },
                     "type": {
+                        "type": "string",
                         "enum": [
                             "checkbox"
                         ],
-                        "type": "string",
                         "const": "checkbox",
-                        "default": "checkbox",
-                        "title": "Type"
+                        "title": "Type",
+                        "default": "checkbox"
                     },
                     "default_value": {
                         "type": "boolean",
-                        "default": false,
-                        "title": "Default Value"
+                        "title": "Default Value",
+                        "default": false
                     },
                     "example": {
                         "type": "boolean",
@@ -15705,8 +15705,8 @@
                     },
                     "read_only": {
                         "type": "boolean",
-                        "default": false,
-                        "title": "Read Only"
+                        "title": "Read Only",
+                        "default": false
                     },
                     "doc": {
                         "anyOf": [
@@ -15720,13 +15720,13 @@
                         "title": "Doc"
                     },
                     "type": {
+                        "type": "string",
                         "enum": [
                             "date"
                         ],
-                        "type": "string",
                         "const": "date",
-                        "default": "date",
-                        "title": "Type"
+                        "title": "Type",
+                        "default": "date"
                     },
                     "default_value": {
                         "anyOf": [
@@ -15802,10 +15802,10 @@
                         "title": "Key"
                     },
                     "fields": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/UIFormField"
                         },
+                        "type": "array",
                         "title": "Fields"
                     },
                     "title": {
@@ -15926,8 +15926,8 @@
                     },
                     "read_only": {
                         "type": "boolean",
-                        "default": false,
-                        "title": "Read Only"
+                        "title": "Read Only",
+                        "default": false
                     },
                     "doc": {
                         "anyOf": [
@@ -15941,21 +15941,21 @@
                         "title": "Doc"
                     },
                     "type": {
+                        "type": "string",
                         "enum": [
                             "select"
                         ],
-                        "type": "string",
                         "const": "select",
-                        "default": "select",
-                        "title": "Type"
+                        "title": "Type",
+                        "default": "select"
                     },
                     "options": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/UISelectFormFieldOption"
                         },
-                        "default": [],
-                        "title": "Options"
+                        "type": "array",
+                        "title": "Options",
+                        "default": []
                     },
                     "default_value": {
                         "anyOf": [
@@ -16036,8 +16036,8 @@
                     },
                     "read_only": {
                         "type": "boolean",
-                        "default": false,
-                        "title": "Read Only"
+                        "title": "Read Only",
+                        "default": false
                     },
                     "doc": {
                         "anyOf": [
@@ -16051,13 +16051,13 @@
                         "title": "Doc"
                     },
                     "type": {
+                        "type": "string",
                         "enum": [
                             "text"
                         ],
-                        "type": "string",
                         "const": "text",
-                        "default": "text",
-                        "title": "Type"
+                        "title": "Type",
+                        "default": "text"
                     },
                     "regex": {
                         "anyOf": [
@@ -16144,7 +16144,6 @@
             "ValidationError": {
                 "properties": {
                     "loc": {
-                        "type": "array",
                         "items": {
                             "anyOf": [
                                 {
@@ -16155,6 +16154,7 @@
                                 }
                             ]
                         },
+                        "type": "array",
                         "title": "Location"
                     },
                     "msg": {
@@ -16213,7 +16213,6 @@
                         "title": "Weekday"
                     },
                     "lectures": {
-                        "type": "array",
                         "items": {
                             "anyOf": [
                                 {
@@ -16224,6 +16223,7 @@
                                 }
                             ]
                         },
+                        "type": "array",
                         "title": "Lectures"
                     }
                 },
@@ -16241,7 +16241,6 @@
                         "title": "Weekday"
                     },
                     "lectures": {
-                        "type": "array",
                         "items": {
                             "anyOf": [
                                 {
@@ -16252,6 +16251,7 @@
                                 }
                             ]
                         },
+                        "type": "array",
                         "title": "Lectures"
                     }
                 },
@@ -16377,7 +16377,6 @@
                         "title": "Division"
                     },
                     "members": {
-                        "type": "array",
                         "items": {
                             "anyOf": [
                                 {
@@ -16388,6 +16387,7 @@
                                 }
                             ]
                         },
+                        "type": "array",
                         "title": "Members"
                     },
                     "has_code": {

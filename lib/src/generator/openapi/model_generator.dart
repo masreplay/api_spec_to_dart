@@ -89,6 +89,7 @@ class ${modelName} with _\$${modelName} {
     required String propertyName,
   }) {
     final dartType = config.dartType(value.type, value.format);
+
     final defaultValue = value.default_ == null
         ? ''
         : '@Default(${(value.enum_?.isEmpty ?? true) ? '' : '${dartType}.'}${value.default_})';
@@ -108,7 +109,7 @@ class ${modelName} with _\$${modelName} {
   }) {
     final dartType = value.ref!.split('/').last;
 
-    //TODO Check if the value is enum
+    // TODO(mohammed.atheer): Check if the value is enum
     final defaultValue =
         value.default_ == null ? '' : '@Default(${value.default_})';
 

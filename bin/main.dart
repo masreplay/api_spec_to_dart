@@ -7,7 +7,7 @@ import 'package:swagger_to_dart/swagger_to_dart.dart';
 final logger = Logger();
 
 Future<void> main(List<String> args) async {
-  final path = './bin/swagger.json';
+  final path = './bin/example/swagger.json';
 
   final file = File(path);
 
