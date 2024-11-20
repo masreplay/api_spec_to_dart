@@ -35,7 +35,7 @@ class OpenApiPathMethod with _$OpenApiPathMethod {
     @JsonKey(name: 'summary') required String? summary,
     @JsonKey(name: 'description') required String? description,
     @JsonKey(name: 'operationId') required String operationId,
-    @JsonKey(name: 'deprecated') required bool deprecated,
+    @JsonKey(name: 'deprecated') required bool? deprecated,
     @JsonKey(name: 'security') List<Map<String, List<dynamic>>>? security,
     @JsonKey(name: 'parameters')
     required OpenApiPathMethodParameters? parameters,

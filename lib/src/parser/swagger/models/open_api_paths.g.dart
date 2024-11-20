@@ -53,7 +53,7 @@ _$OpenApiPathMethodImpl _$$OpenApiPathMethodImplFromJson(
       summary: json['summary'] as String?,
       description: json['description'] as String?,
       operationId: json['operationId'] as String,
-      deprecated: json['deprecated'] as bool,
+      deprecated: json['deprecated'] as bool?,
       security: (json['security'] as List<dynamic>?)
           ?.map((e) => (e as Map<String, dynamic>).map(
                 (k, e) => MapEntry(k, e as List<dynamic>),
@@ -80,7 +80,7 @@ Map<String, dynamic> _$$OpenApiPathMethodImplToJson(
       if (instance.summary case final value?) 'summary': value,
       if (instance.description case final value?) 'description': value,
       'operationId': instance.operationId,
-      'deprecated': instance.deprecated,
+      if (instance.deprecated case final value?) 'deprecated': value,
       if (instance.security case final value?) 'security': value,
       if (instance.parameters?.map((e) => e.toJson()).toList()
           case final value?)

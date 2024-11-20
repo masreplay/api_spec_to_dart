@@ -214,7 +214,7 @@ mixin _$OpenApiPathMethod {
   @JsonKey(name: 'operationId')
   String get operationId => throw _privateConstructorUsedError;
   @JsonKey(name: 'deprecated')
-  bool get deprecated => throw _privateConstructorUsedError;
+  bool? get deprecated => throw _privateConstructorUsedError;
   @JsonKey(name: 'security')
   List<Map<String, List<dynamic>>>? get security =>
       throw _privateConstructorUsedError;
@@ -234,7 +234,7 @@ mixin _$OpenApiPathMethod {
             @JsonKey(name: 'summary') String? summary,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'operationId') String operationId,
-            @JsonKey(name: 'deprecated') bool deprecated,
+            @JsonKey(name: 'deprecated') bool? deprecated,
             @JsonKey(name: 'security')
             List<Map<String, List<dynamic>>>? security,
             @JsonKey(name: 'parameters')
@@ -254,7 +254,7 @@ mixin _$OpenApiPathMethod {
             @JsonKey(name: 'summary') String? summary,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'operationId') String operationId,
-            @JsonKey(name: 'deprecated') bool deprecated,
+            @JsonKey(name: 'deprecated') bool? deprecated,
             @JsonKey(name: 'security')
             List<Map<String, List<dynamic>>>? security,
             @JsonKey(name: 'parameters')
@@ -317,7 +317,7 @@ class _$OpenApiPathMethodImpl extends _OpenApiPathMethod {
   final String operationId;
   @override
   @JsonKey(name: 'deprecated')
-  final bool deprecated;
+  final bool? deprecated;
   final List<Map<String, List<dynamic>>>? _security;
   @override
   @JsonKey(name: 'security')
@@ -403,7 +403,7 @@ class _$OpenApiPathMethodImpl extends _OpenApiPathMethod {
             @JsonKey(name: 'summary') String? summary,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'operationId') String operationId,
-            @JsonKey(name: 'deprecated') bool deprecated,
+            @JsonKey(name: 'deprecated') bool? deprecated,
             @JsonKey(name: 'security')
             List<Map<String, List<dynamic>>>? security,
             @JsonKey(name: 'parameters')
@@ -426,7 +426,7 @@ class _$OpenApiPathMethodImpl extends _OpenApiPathMethod {
             @JsonKey(name: 'summary') String? summary,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'operationId') String operationId,
-            @JsonKey(name: 'deprecated') bool deprecated,
+            @JsonKey(name: 'deprecated') bool? deprecated,
             @JsonKey(name: 'security')
             List<Map<String, List<dynamic>>>? security,
             @JsonKey(name: 'parameters')
@@ -459,7 +459,7 @@ abstract class _OpenApiPathMethod extends OpenApiPathMethod {
           @JsonKey(name: 'summary') required final String? summary,
           @JsonKey(name: 'description') required final String? description,
           @JsonKey(name: 'operationId') required final String operationId,
-          @JsonKey(name: 'deprecated') required final bool deprecated,
+          @JsonKey(name: 'deprecated') required final bool? deprecated,
           @JsonKey(name: 'security')
           final List<Map<String, List<dynamic>>>? security,
           @JsonKey(name: 'parameters')
@@ -488,7 +488,7 @@ abstract class _OpenApiPathMethod extends OpenApiPathMethod {
   String get operationId;
   @override
   @JsonKey(name: 'deprecated')
-  bool get deprecated;
+  bool? get deprecated;
   @override
   @JsonKey(name: 'security')
   List<Map<String, List<dynamic>>>? get security;
