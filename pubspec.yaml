@@ -6,6 +6,7 @@ environment:
   sdk: ^3.5.3
 
 dependencies:
+  change_case: ^2.1.0
   freezed_annotation: ^2.4.4
   json_annotation: ^4.9.0
   logger: ^2.5.0
