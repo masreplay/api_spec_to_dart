@@ -38,9 +38,12 @@ class OpenApiDartModelGenerator {
       entry.value.map(
         type: (value) {
           final dartType = config.dartType(value.type, value.format);
+          final defaultValue = value.default_ == null
+              ? ''
+              : '@Default(${(value.enum_?.isEmpty ?? true) ? '' : '${dartType}.'}${value.default_})';
 
-          //
           body += '''
+  $defaultValue
   @JsonKey(name: \'${entry.key}\') 
   $isRequired $dartType $propertyName,
 ''';
@@ -49,9 +52,8 @@ class OpenApiDartModelGenerator {
           final dartType = value.ref!.split('/').last;
 
           //TODO Check if the value is enum
-          final defaultValue = value.default_ == null
-              ? ''
-              : '@Default($dartType.${config.enumName(value.default_.toString())})';
+          final defaultValue =
+              value.default_ == null ? '' : '@Default(${value.default_})';
 
           body += value.ref == null
               ? ''
@@ -64,7 +66,12 @@ class OpenApiDartModelGenerator {
         anyOf: (value) {
           final dartType = getAnyOfType(value, config);
 
+          //TODO Check if the value is enum
+          final defaultValue =
+              value.default_ == null ? '' : '@Default(${value.default_})';
+
           body += '''
+  $defaultValue
   @JsonKey(name: \'${entry.key}\')
   $isRequired $dartType $propertyName,
 ''';

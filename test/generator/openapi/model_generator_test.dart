@@ -28,6 +28,7 @@ class OpenApi with _$OpenApi {
     @JsonKey(name: 'openapi') required String openapi,
     @Default(SelectedCourseResultEnum.selected)
     @JsonKey(name: 'selected_course_result_enum')  SelectedCourseResultEnum selectedCourseResultEnum,
+    @Default('default-description')
     @JsonKey(name: 'description')  String? description,
   }) = _OpenApi;
 
@@ -58,6 +59,7 @@ class OpenApi with _$OpenApi {
                     type: OpenApiSchemaVarType.null_,
                   ),
                 ],
+                default_: 'default-description',
                 title: 'description',
               ),
             },
