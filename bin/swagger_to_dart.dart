@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:logger/logger.dart';
-import 'package:swagger_to_dart/src/swagger/models/open_api.dart';
+import 'package:swagger_to_dart/src/parser/swagger/models/open_api.dart';
 
 final logger = Logger();
 
