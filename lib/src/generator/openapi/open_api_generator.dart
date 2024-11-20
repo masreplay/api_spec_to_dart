@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:path/path.dart';
 import 'dart:io';
 
 import 'package:swagger_to_dart/src/config/open_api_generator_config.dart';
@@ -24,7 +25,18 @@ class OpenApiDartGenerator {
     final modelGenerator = OpenApiDartModelGenerator(config: config);
 
     for (final entry in _openApi.components.schemas.entries) {
-      await modelGenerator.generator(entry);
+      final result = modelGenerator.generator(entry);
+
+      final filepath = join(
+        config.output,
+        '${modelGenerator.filename(entry)}.dart',
+      );
+
+      final file = File(filepath);
+
+      await file.writeAsString(result.content);
+
+      print('Generated: $filepath');
     }
   }
 }
