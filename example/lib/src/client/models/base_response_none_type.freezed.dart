@@ -23,7 +23,7 @@ mixin _$BaseResponseNoneType {
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
   @JsonKey(name: 'data')
-  Null get data => throw _privateConstructorUsedError;
+  dynamic get data => throw _privateConstructorUsedError;
 
   /// Serializes this BaseResponseNoneType to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,7 +43,7 @@ abstract class $BaseResponseNoneTypeCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') Null data});
+      @JsonKey(name: 'data') dynamic data});
 }
 
 /// @nodoc
@@ -63,17 +63,17 @@ class _$BaseResponseNoneTypeCopyWithImpl<$Res,
   @override
   $Res call({
     Object? message = freezed,
-    Object? data = null,
+    Object? data = freezed,
   }) {
     return _then(_value.copyWith(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      data: null == data
+      data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as Null,
+              as dynamic,
     ) as $Val);
   }
 }
@@ -88,7 +88,7 @@ abstract class _$$BaseResponseNoneTypeImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') Null data});
+      @JsonKey(name: 'data') dynamic data});
 }
 
 /// @nodoc
@@ -105,17 +105,17 @@ class __$$BaseResponseNoneTypeImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? message = freezed,
-    Object? data = null,
+    Object? data = freezed,
   }) {
     return _then(_$BaseResponseNoneTypeImpl(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      data: null == data
+      data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as Null,
+              as dynamic,
     ));
   }
 }
@@ -135,7 +135,7 @@ class _$BaseResponseNoneTypeImpl implements _BaseResponseNoneType {
   final String? message;
   @override
   @JsonKey(name: 'data')
-  final Null data;
+  final dynamic data;
 
   @override
   String toString() {
@@ -148,12 +148,13 @@ class _$BaseResponseNoneTypeImpl implements _BaseResponseNoneType {
         (other.runtimeType == runtimeType &&
             other is _$BaseResponseNoneTypeImpl &&
             (identical(other.message, message) || other.message == message) &&
-            (identical(other.data, data) || other.data == data));
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, message, data);
+  int get hashCode => Object.hash(
+      runtimeType, message, const DeepCollectionEquality().hash(data));
 
   /// Create a copy of BaseResponseNoneType
   /// with the given fields replaced by the non-null parameter values.
@@ -176,7 +177,7 @@ class _$BaseResponseNoneTypeImpl implements _BaseResponseNoneType {
 abstract class _BaseResponseNoneType implements BaseResponseNoneType {
   const factory _BaseResponseNoneType(
           {@JsonKey(name: 'message') required final String? message,
-          @JsonKey(name: 'data') required final Null data}) =
+          @JsonKey(name: 'data') required final dynamic data}) =
       _$BaseResponseNoneTypeImpl;
 
   factory _BaseResponseNoneType.fromJson(Map<String, dynamic> json) =
@@ -187,7 +188,7 @@ abstract class _BaseResponseNoneType implements BaseResponseNoneType {
   String? get message;
   @override
   @JsonKey(name: 'data')
-  Null get data;
+  dynamic get data;
 
   /// Create a copy of BaseResponseNoneType
   /// with the given fields replaced by the non-null parameter values.

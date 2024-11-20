@@ -27,9 +27,9 @@ mixin _$AppApiRoutesV1LecturerWeeklyScheduleRouteLecture {
   @JsonKey(name: 'subject_title')
   String? get subjectTitle => throw _privateConstructorUsedError;
   @JsonKey(name: 'start_time')
-  TimeOfDay? get startTime => throw _privateConstructorUsedError;
+  DateTime? get startTime => throw _privateConstructorUsedError;
   @JsonKey(name: 'end_time')
-  TimeOfDay? get endTime => throw _privateConstructorUsedError;
+  DateTime? get endTime => throw _privateConstructorUsedError;
   @JsonKey(name: 'group_code')
   String? get groupCode => throw _privateConstructorUsedError;
   @JsonKey(name: 'room_code')
@@ -72,8 +72,8 @@ abstract class $AppApiRoutesV1LecturerWeeklyScheduleRouteLectureCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id') int? id,
       @JsonKey(name: 'subject_title') String? subjectTitle,
-      @JsonKey(name: 'start_time') TimeOfDay? startTime,
-      @JsonKey(name: 'end_time') TimeOfDay? endTime,
+      @JsonKey(name: 'start_time') DateTime? startTime,
+      @JsonKey(name: 'end_time') DateTime? endTime,
       @JsonKey(name: 'group_code') String? groupCode,
       @JsonKey(name: 'room_code') String? roomCode,
       @JsonKey(name: 'duration') num? duration,
@@ -128,11 +128,11 @@ class _$AppApiRoutesV1LecturerWeeklyScheduleRouteLectureCopyWithImpl<$Res,
       startTime: freezed == startTime
           ? _value.startTime
           : startTime // ignore: cast_nullable_to_non_nullable
-              as TimeOfDay?,
+              as DateTime?,
       endTime: freezed == endTime
           ? _value.endTime
           : endTime // ignore: cast_nullable_to_non_nullable
-              as TimeOfDay?,
+              as DateTime?,
       groupCode: freezed == groupCode
           ? _value.groupCode
           : groupCode // ignore: cast_nullable_to_non_nullable
@@ -188,8 +188,8 @@ abstract class _$$AppApiRoutesV1LecturerWeeklyScheduleRouteLectureImplCopyWith<
   $Res call(
       {@JsonKey(name: 'id') int? id,
       @JsonKey(name: 'subject_title') String? subjectTitle,
-      @JsonKey(name: 'start_time') TimeOfDay? startTime,
-      @JsonKey(name: 'end_time') TimeOfDay? endTime,
+      @JsonKey(name: 'start_time') DateTime? startTime,
+      @JsonKey(name: 'end_time') DateTime? endTime,
       @JsonKey(name: 'group_code') String? groupCode,
       @JsonKey(name: 'room_code') String? roomCode,
       @JsonKey(name: 'duration') num? duration,
@@ -244,11 +244,11 @@ class __$$AppApiRoutesV1LecturerWeeklyScheduleRouteLectureImplCopyWithImpl<$Res>
       startTime: freezed == startTime
           ? _value.startTime
           : startTime // ignore: cast_nullable_to_non_nullable
-              as TimeOfDay?,
+              as DateTime?,
       endTime: freezed == endTime
           ? _value.endTime
           : endTime // ignore: cast_nullable_to_non_nullable
-              as TimeOfDay?,
+              as DateTime?,
       groupCode: freezed == groupCode
           ? _value.groupCode
           : groupCode // ignore: cast_nullable_to_non_nullable
@@ -321,10 +321,10 @@ class _$AppApiRoutesV1LecturerWeeklyScheduleRouteLectureImpl
   final String? subjectTitle;
   @override
   @JsonKey(name: 'start_time')
-  final TimeOfDay? startTime;
+  final DateTime? startTime;
   @override
   @JsonKey(name: 'end_time')
-  final TimeOfDay? endTime;
+  final DateTime? endTime;
   @override
   @JsonKey(name: 'group_code')
   final String? groupCode;
@@ -372,8 +372,9 @@ class _$AppApiRoutesV1LecturerWeeklyScheduleRouteLectureImpl
             (identical(other.id, id) || other.id == id) &&
             (identical(other.subjectTitle, subjectTitle) ||
                 other.subjectTitle == subjectTitle) &&
-            const DeepCollectionEquality().equals(other.startTime, startTime) &&
-            const DeepCollectionEquality().equals(other.endTime, endTime) &&
+            (identical(other.startTime, startTime) ||
+                other.startTime == startTime) &&
+            (identical(other.endTime, endTime) || other.endTime == endTime) &&
             (identical(other.groupCode, groupCode) ||
                 other.groupCode == groupCode) &&
             (identical(other.roomCode, roomCode) ||
@@ -396,8 +397,8 @@ class _$AppApiRoutesV1LecturerWeeklyScheduleRouteLectureImpl
       runtimeType,
       id,
       subjectTitle,
-      const DeepCollectionEquality().hash(startTime),
-      const DeepCollectionEquality().hash(endTime),
+      startTime,
+      endTime,
       groupCode,
       roomCode,
       duration,
@@ -433,8 +434,8 @@ abstract class _AppApiRoutesV1LecturerWeeklyScheduleRouteLecture
   const factory _AppApiRoutesV1LecturerWeeklyScheduleRouteLecture(
           {@JsonKey(name: 'id') required final int? id,
           @JsonKey(name: 'subject_title') required final String? subjectTitle,
-          @JsonKey(name: 'start_time') required final TimeOfDay? startTime,
-          @JsonKey(name: 'end_time') required final TimeOfDay? endTime,
+          @JsonKey(name: 'start_time') required final DateTime? startTime,
+          @JsonKey(name: 'end_time') required final DateTime? endTime,
           @JsonKey(name: 'group_code') required final String? groupCode,
           @JsonKey(name: 'room_code') required final String? roomCode,
           @JsonKey(name: 'duration') required final num? duration,
@@ -459,10 +460,10 @@ abstract class _AppApiRoutesV1LecturerWeeklyScheduleRouteLecture
   String? get subjectTitle;
   @override
   @JsonKey(name: 'start_time')
-  TimeOfDay? get startTime;
+  DateTime? get startTime;
   @override
   @JsonKey(name: 'end_time')
-  TimeOfDay? get endTime;
+  DateTime? get endTime;
   @override
   @JsonKey(name: 'group_code')
   String? get groupCode;

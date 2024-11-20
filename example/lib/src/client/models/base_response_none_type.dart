@@ -7,7 +7,7 @@ part 'base_response_none_type.g.dart';
 class BaseResponseNoneType with _$BaseResponseNoneType {
   const factory BaseResponseNoneType({
     @JsonKey(name: 'message') required String? message,
-    @JsonKey(name: 'data') required Null data,
+    @JsonKey(name: 'data') required dynamic data,
   }) = _BaseResponseNoneType;
 
   factory BaseResponseNoneType.fromJson(Map<String, dynamic> json) =>

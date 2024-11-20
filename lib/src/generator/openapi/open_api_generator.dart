@@ -33,7 +33,7 @@ class OpenApiDartGenerator {
 
       final filepath = path.join(
         config.modelsOutputDirectory,
-        '${modelGenerator.filename(entry)}.dart',
+        '${config.filename(entry.key)}.dart',
       );
 
       final file = File(filepath);

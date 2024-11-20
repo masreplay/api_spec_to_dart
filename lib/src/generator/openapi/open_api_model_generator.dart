@@ -1,5 +1,4 @@
 import 'package:swagger_to_dart/src/config/open_api_generator_config.dart';
-import 'package:swagger_to_dart/src/utils/recase.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 typedef OpenApiModel = MapEntry<String, OpenApiSchemas>;
@@ -11,45 +10,28 @@ class OpenApiDartModelGenerator {
 
   final OpenApiGeneratorConfig config;
 
-  String className(
-    OpenApiModel model,
-  ) {
-    return Recase.instance.toPascalCase(model.key);
-  }
-
-  String filename(OpenApiModel model) {
-    return Recase.instance.toSnakeCase(model.key);
-  }
-
   ({String filename, String content}) generator(OpenApiModel model) {
-    final filename = this.filename(model);
-    final modelName = className(model);
+    final filename = config.filename(model.key);
+    final modelName = config.className(model.key);
 
     String body = '';
 
     for (final entry in (model.value.properties ?? {}).entries) {
       final propertyName = config.propertyRename(entry.key);
 
-      final isRequired = (model.value.required_?.contains(entry.key) ?? false)
-          ? 'required'
-          : 'required';
-
       body += entry.value.map(
         type: (value) => _modelPropertyTypeGenerator(
           key: entry.key,
-          isRequired: isRequired,
           value: value,
           propertyName: propertyName,
         ),
         ref: (value) => _modelPropertyRefGenerator(
           key: entry.key,
-          isRequired: isRequired,
           value: value,
           propertyName: propertyName,
         ),
         anyOf: (value) => _modelPropertyAnyOfGenerator(
           key: entry.key,
-          isRequired: isRequired,
           value: value,
           propertyName: propertyName,
         ),
@@ -83,11 +65,13 @@ class ${modelName} with _\$${modelName} {
 
   String _modelPropertyTypeGenerator({
     required String key,
-    required String isRequired,
     required OpenApiSchemaType value,
     required String propertyName,
   }) {
-    final dartType = config.dartType(value.type, value.format);
+    final dartType = config.dartType(
+      format: value.format,
+      type: value.type,
+    );
 
     final defaultValue = value.default_ == null
         ? ''
@@ -96,13 +80,12 @@ class ${modelName} with _\$${modelName} {
     return '''
   $defaultValue
   @JsonKey(name: \'${key}\') 
-  $isRequired $dartType $propertyName,
+  required $dartType $propertyName,
 ''';
   }
 
   String _modelPropertyRefGenerator({
     required String key,
-    required String isRequired,
     required OpenApiSchemaRef value,
     required String propertyName,
   }) {
@@ -117,13 +100,12 @@ class ${modelName} with _\$${modelName} {
         : '''
   $defaultValue 
   @JsonKey(name: \'${key}\')
-  $isRequired $dartType $propertyName,
+  required $dartType $propertyName,
 ''';
   }
 
   String _modelPropertyAnyOfGenerator({
     required String key,
-    required String isRequired,
     required OpenApiSchemaAnyOf value,
     required String propertyName,
   }) {
@@ -141,10 +123,13 @@ class ${modelName} with _\$${modelName} {
               isNullable = true;
               return '';
             } else {
-              return config.dartType(value.type, value.format);
+              return config.dartType(
+                type: value.type,
+                format: value.format,
+              );
             }
           },
-          ref: (value) => value.ref!.split('/').last,
+          ref: (value) => config.className(value.ref!.split('/').last),
           anyOf: (value) => getAnyOfType(value, config),
           //TODO(shahadKadhim): implement this
           oneOf: (value) => '',
@@ -163,7 +148,7 @@ class ${modelName} with _\$${modelName} {
     return '''
   $defaultValue
   @JsonKey(name: \'${key}\')
-  $isRequired $dartType $propertyName,
+  required $dartType $propertyName,
 ''';
   }
 }

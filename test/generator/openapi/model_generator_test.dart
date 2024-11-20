@@ -13,6 +13,7 @@ void main() {
           packageName: 'example',
           input: '',
           output: '',
+          isFlutter: false,
         ),
       );
     });

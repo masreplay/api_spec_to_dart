@@ -26,7 +26,7 @@ mixin _$BaseResponseUnionPaginationResponseStudentFeesPublicNoneType {
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
   @JsonKey(name: 'data')
-  PaginationResponse_StudentFeesPublic_? get data =>
+  PaginationResponseStudentFeesPublic? get data =>
       throw _privateConstructorUsedError;
 
   /// Serializes this BaseResponseUnionPaginationResponseStudentFeesPublicNoneType to a JSON map.
@@ -53,7 +53,9 @@ abstract class $BaseResponseUnionPaginationResponseStudentFeesPublicNoneTypeCopy
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') PaginationResponse_StudentFeesPublic_? data});
+      @JsonKey(name: 'data') PaginationResponseStudentFeesPublic? data});
+
+  $PaginationResponseStudentFeesPublicCopyWith<$Res>? get data;
 }
 
 /// @nodoc
@@ -87,8 +89,23 @@ class _$BaseResponseUnionPaginationResponseStudentFeesPublicNoneTypeCopyWithImpl
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as PaginationResponse_StudentFeesPublic_?,
+              as PaginationResponseStudentFeesPublic?,
     ) as $Val);
+  }
+
+  /// Create a copy of BaseResponseUnionPaginationResponseStudentFeesPublicNoneType
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PaginationResponseStudentFeesPublicCopyWith<$Res>? get data {
+    if (_value.data == null) {
+      return null;
+    }
+
+    return $PaginationResponseStudentFeesPublicCopyWith<$Res>(_value.data!,
+        (value) {
+      return _then(_value.copyWith(data: value) as $Val);
+    });
   }
 }
 
@@ -109,7 +126,10 @@ abstract class _$$BaseResponseUnionPaginationResponseStudentFeesPublicNoneTypeIm
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') PaginationResponse_StudentFeesPublic_? data});
+      @JsonKey(name: 'data') PaginationResponseStudentFeesPublic? data});
+
+  @override
+  $PaginationResponseStudentFeesPublicCopyWith<$Res>? get data;
 }
 
 /// @nodoc
@@ -145,7 +165,7 @@ class __$$BaseResponseUnionPaginationResponseStudentFeesPublicNoneTypeImplCopyWi
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as PaginationResponse_StudentFeesPublic_?,
+              as PaginationResponseStudentFeesPublic?,
     ));
   }
 }
@@ -168,7 +188,7 @@ class _$BaseResponseUnionPaginationResponseStudentFeesPublicNoneTypeImpl
   final String? message;
   @override
   @JsonKey(name: 'data')
-  final PaginationResponse_StudentFeesPublic_? data;
+  final PaginationResponseStudentFeesPublic? data;
 
   @override
   String toString() {
@@ -182,13 +202,12 @@ class _$BaseResponseUnionPaginationResponseStudentFeesPublicNoneTypeImpl
             other
                 is _$BaseResponseUnionPaginationResponseStudentFeesPublicNoneTypeImpl &&
             (identical(other.message, message) || other.message == message) &&
-            const DeepCollectionEquality().equals(other.data, data));
+            (identical(other.data, data) || other.data == data));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, message, const DeepCollectionEquality().hash(data));
+  int get hashCode => Object.hash(runtimeType, message, data);
 
   /// Create a copy of BaseResponseUnionPaginationResponseStudentFeesPublicNoneType
   /// with the given fields replaced by the non-null parameter values.
@@ -215,7 +234,7 @@ abstract class _BaseResponseUnionPaginationResponseStudentFeesPublicNoneType
   const factory _BaseResponseUnionPaginationResponseStudentFeesPublicNoneType(
           {@JsonKey(name: 'message') required final String? message,
           @JsonKey(name: 'data')
-          required final PaginationResponse_StudentFeesPublic_? data}) =
+          required final PaginationResponseStudentFeesPublic? data}) =
       _$BaseResponseUnionPaginationResponseStudentFeesPublicNoneTypeImpl;
 
   factory _BaseResponseUnionPaginationResponseStudentFeesPublicNoneType.fromJson(
@@ -228,7 +247,7 @@ abstract class _BaseResponseUnionPaginationResponseStudentFeesPublicNoneType
   String? get message;
   @override
   @JsonKey(name: 'data')
-  PaginationResponse_StudentFeesPublic_? get data;
+  PaginationResponseStudentFeesPublic? get data;
 
   /// Create a copy of BaseResponseUnionPaginationResponseStudentFeesPublicNoneType
   /// with the given fields replaced by the non-null parameter values.

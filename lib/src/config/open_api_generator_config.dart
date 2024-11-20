@@ -7,9 +7,12 @@ class OpenApiGeneratorConfig {
     required this.packageName,
     required this.input,
     required this.output,
+    required this.isFlutter,
   });
 
   final String packageName;
+
+  final bool isFlutter;
 
   final String input;
 
@@ -23,14 +26,17 @@ class OpenApiGeneratorConfig {
     return """import './models.dart';""";
   }
 
-  String dartType(OpenApiSchemaVarType? type, String? format) {
+  String dartType({
+    required OpenApiSchemaVarType? type,
+    required String? format,
+  }) {
     switch (type) {
       case OpenApiSchemaVarType.string:
         return switch (format) {
           'date-time' => 'DateTime',
           'binary' => 'File',
           'uuid' => 'String',
-          'duration' => 'TimeOfDay',
+          'duration' => isFlutter ? 'TimeOfDay' : 'DateTime',
           'uri' => 'Uri',
           _ => 'String',
         };
@@ -44,9 +50,7 @@ class OpenApiGeneratorConfig {
         return 'List';
       case OpenApiSchemaVarType.object:
         return 'Map';
-      case OpenApiSchemaVarType.null_:
-        return 'Null';
-      case OpenApiSchemaVarType.$unknown || null:
+      case OpenApiSchemaVarType.null_ || OpenApiSchemaVarType.$unknown || null:
         return 'dynamic';
     }
   }
@@ -57,5 +61,13 @@ class OpenApiGeneratorConfig {
 
   String enumName(String key) {
     return Recase.instance.toPascalCase(key);
+  }
+
+  String className(String key) {
+    return Recase.instance.toPascalCase(key);
+  }
+
+  String filename(String key) {
+    return Recase.instance.toSnakeCase(key);
   }
 }

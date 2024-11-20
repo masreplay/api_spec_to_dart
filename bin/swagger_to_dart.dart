@@ -14,6 +14,7 @@ Future<void> main(List<String> args) async {
     packageName: 'example',
     input: path.join(dir, 'schema/swagger.json'),
     output: path.join(dir, 'lib/src/client'),
+    isFlutter: false,
   );
 
   final generator = OpenApiDartGenerator(config: config);

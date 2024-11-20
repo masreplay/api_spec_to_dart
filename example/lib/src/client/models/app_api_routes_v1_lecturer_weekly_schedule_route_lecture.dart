@@ -9,8 +9,8 @@ class AppApiRoutesV1LecturerWeeklyScheduleRouteLecture
   const factory AppApiRoutesV1LecturerWeeklyScheduleRouteLecture({
     @JsonKey(name: 'id') required int? id,
     @JsonKey(name: 'subject_title') required String? subjectTitle,
-    @JsonKey(name: 'start_time') required TimeOfDay? startTime,
-    @JsonKey(name: 'end_time') required TimeOfDay? endTime,
+    @JsonKey(name: 'start_time') required DateTime? startTime,
+    @JsonKey(name: 'end_time') required DateTime? endTime,
     @JsonKey(name: 'group_code') required String? groupCode,
     @JsonKey(name: 'room_code') required String? roomCode,
     @JsonKey(name: 'duration') required num? duration,
