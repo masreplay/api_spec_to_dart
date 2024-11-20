@@ -14,11 +14,11 @@ class OpenApiDartModelGenerator {
   String className(
     OpenApiModel model,
   ) {
-    return Recase.instance.pascalCase(model.key);
+    return Recase.instance.toPascalCase(model.key);
   }
 
   String filename(OpenApiModel model) {
-    return Recase.instance.snakeCase(model.key);
+    return Recase.instance.toSnakeCase(model.key);
   }
 
   ({String filename, String content}) generator(OpenApiModel model) {
