@@ -32,6 +32,8 @@ class OpenApiPathMethod with _$OpenApiPathMethod {
     @JsonKey(name: 'summary') required String? summary,
     @JsonKey(name: 'description') required String? description,
     @JsonKey(name: 'operationId') required String operationId,
+    @JsonKey(name: 'security')
+    required List<Map<String, List<dynamic>>>? security,
     @JsonKey(name: 'parameters')
     required OpenApiPathMethodParameters parameters,
     required OpenApiPathMethodResponses? responses,

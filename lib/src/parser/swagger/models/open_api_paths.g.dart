@@ -53,6 +53,11 @@ _$OpenApiPathMethodImpl _$$OpenApiPathMethodImplFromJson(
       summary: json['summary'] as String?,
       description: json['description'] as String?,
       operationId: json['operationId'] as String,
+      security: (json['security'] as List<dynamic>?)
+          ?.map((e) => (e as Map<String, dynamic>).map(
+                (k, e) => MapEntry(k, e as List<dynamic>),
+              ))
+          .toList(),
       parameters: (json['parameters'] as List<dynamic>)
           .map((e) =>
               OpenApiPathMethodParameter.fromJson(e as Map<String, dynamic>))
@@ -70,6 +75,7 @@ Map<String, dynamic> _$$OpenApiPathMethodImplToJson(
       if (instance.summary case final value?) 'summary': value,
       if (instance.description case final value?) 'description': value,
       'operationId': instance.operationId,
+      if (instance.security case final value?) 'security': value,
       'parameters': instance.parameters.map((e) => e.toJson()).toList(),
       if (instance.responses?.map((k, e) => MapEntry(k, e.toJson()))
           case final value?)

@@ -12,9 +12,20 @@
           "settings"
         ],
         "summary": "Read Settings",
+        "description": "Retrieve the platform settings.",
         "operationId": "settings-read_settings",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -28,9 +39,20 @@
           "files"
         ],
         "summary": "Upload File",
+        "description": "If type related to a student or a teacher, the id should be the student or teacher id.",
         "operationId": "files-upload_file",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -38,7 +60,7 @@
         }
       }
     },
-    "/api/v1/common/files/delete/{id}": {
+    "/api/v1/common/files/delete/%7Bid%7D": {
       "delete": {
         "tags": [
           "files"
@@ -46,8 +68,26 @@
         "summary": "Delete File",
         "operationId": "files-delete_file",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -63,7 +103,17 @@
         "summary": "Login",
         "operationId": "student_auth-login",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -79,7 +129,17 @@
         "summary": "Swagger Login",
         "operationId": "student_auth-swagger_login",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -95,7 +155,15 @@
         "summary": "Refresh Token",
         "operationId": "student_auth-refresh_token",
         "parameters": [
-          {}
+          {
+            "name": "refresh_token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Refresh Token"
+            }
+          }
         ],
         "responses": {
           "200": {},
@@ -111,8 +179,26 @@
         "summary": "Logout",
         "operationId": "student_auth-logout",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "refresh_token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Refresh Token"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -126,9 +212,20 @@
           "student_auth"
         ],
         "summary": "Change Temporary Password",
+        "description": "Change temporary password",
         "operationId": "student_auth-change_temporary_password",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -144,7 +241,17 @@
         "summary": "Init Otp Data",
         "operationId": "student_verification-init_otp_data",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -160,7 +267,17 @@
         "summary": "Send Otp",
         "operationId": "student_verification-send_otp",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -176,7 +293,17 @@
         "summary": "Verify Otp",
         "operationId": "student_verification-verify_otp",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -192,7 +319,17 @@
         "summary": "Init Otp Data",
         "operationId": "student_reset_password-init_otp_data",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -208,9 +345,38 @@
         "summary": "Send Otp By Phone",
         "operationId": "student_reset_password-send_otp_by_phone",
         "parameters": [
-          {},
-          {},
-          {}
+          {
+            "name": "phone_number",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Phone Number",
+              "pattern": "07[3-9][0-9]{8}"
+            },
+            "example": "07701234567"
+          },
+          {
+            "name": "method",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "title": "Method",
+              "default": "sms"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -226,9 +392,38 @@
         "summary": "Verify Phone Otp",
         "operationId": "student_reset_password-verify_phone_otp",
         "parameters": [
-          {},
-          {},
-          {}
+          {
+            "name": "phone",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Phone",
+              "pattern": "07[3-9][0-9]{8}"
+            },
+            "example": "07701234567"
+          },
+          {
+            "name": "method",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "title": "Method",
+              "default": "sms"
+            }
+          },
+          {
+            "name": "otp",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Otp",
+              "pattern": "^\\d{4}$"
+            },
+            "example": "1234"
+          }
         ],
         "responses": {
           "200": {},
@@ -244,9 +439,34 @@
         "summary": "Set Password",
         "operationId": "student_reset_password-set_password",
         "parameters": [
-          {},
-          {},
-          {}
+          {
+            "name": "password_1",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Password 1"
+            }
+          },
+          {
+            "name": "method",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "title": "Method",
+              "default": "sms"
+            }
+          },
+          {
+            "name": "input",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Input"
+            }
+          }
         ],
         "responses": {
           "200": {},
@@ -262,8 +482,27 @@
         "summary": "Send Otp Email",
         "operationId": "student_reset_password-send_otp_email",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "email",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Email",
+              "pattern": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$"
+            },
+            "example": "example@test.come"
+          },
+          {
+            "name": "method",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "title": "Method",
+              "default": "email"
+            }
+          }
         ],
         "responses": {
           "200": {},
@@ -279,9 +518,38 @@
         "summary": "Verify Email Otp",
         "operationId": "student_reset_password-verify_email_otp",
         "parameters": [
-          {},
-          {},
-          {}
+          {
+            "name": "email",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Email",
+              "pattern": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$"
+            },
+            "example": "example@test.come"
+          },
+          {
+            "name": "method",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "title": "Method",
+              "default": "email"
+            }
+          },
+          {
+            "name": "otp",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Otp",
+              "pattern": "^\\d{4}$"
+            },
+            "example": "1234"
+          }
         ],
         "responses": {
           "200": {},
@@ -297,7 +565,17 @@
         "summary": "Has Study Programs",
         "operationId": "student_profile-has_study_programs",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -313,7 +591,17 @@
         "summary": "Read Student Personal Info",
         "operationId": "student_profile-read_student_personal_info",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -329,7 +617,17 @@
         "summary": "Read Student School Info",
         "operationId": "student_profile-read_student_school_info",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -345,7 +643,17 @@
         "summary": "Read Student Ids Info",
         "operationId": "student_profile-read_student_ids_info",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -361,7 +669,17 @@
         "summary": "Read Student Card",
         "operationId": "student_profile-read_student_card",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -377,7 +695,17 @@
         "summary": "Update Student Personal Info",
         "operationId": "student_registration-update_student_personal_info",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -393,7 +721,17 @@
         "summary": "Update Student School Info",
         "operationId": "student_registration-update_student_school_info",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -409,7 +747,17 @@
         "summary": "Update Student Ids Info Foreigner",
         "operationId": "student_registration-update_student_ids_info_foreigner",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -425,7 +773,17 @@
         "summary": "Update Student Ids Info Identity Card",
         "operationId": "student_registration-update_student_ids_info_identity_card",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -441,7 +799,17 @@
         "summary": "Update Student Ids Info Nationality Card",
         "operationId": "student_registration-update_student_ids_info_nationality_card",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -457,7 +825,17 @@
         "summary": "Read Admissions",
         "operationId": "student_admissions-read_admissions",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -473,7 +851,17 @@
         "summary": "Get Joining Time",
         "operationId": "student_admissions-get_joining_time",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -489,7 +877,17 @@
         "summary": "Read Attendances",
         "operationId": "student_attendances-read_attendances",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -503,9 +901,20 @@
           "student_attendances"
         ],
         "summary": "Get My Attendance",
+        "description": "Get my attendance by id.",
         "operationId": "student_attendances-get_my_attendance",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -519,9 +928,20 @@
           "student_attendances"
         ],
         "summary": "Check In My Attendance",
+        "description": "Get my attendance by id.",
         "operationId": "student_attendances-check_in_my_attendance",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -529,7 +949,7 @@
         }
       }
     },
-    "/api/v1/student/attendances/{course_id}/lectures": {
+    "/api/v1/student/attendances/%7Bcourse_id%7D/lectures": {
       "get": {
         "tags": [
           "student_attendances"
@@ -537,8 +957,26 @@
         "summary": "Read Attendance For Course",
         "operationId": "student_attendances-read_attendance_for_course",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Course Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -552,9 +990,20 @@
           "student_weekly_schedules"
         ],
         "summary": "Get My Weekly Schedule",
+        "description": "as student i want to call all my lectures for this week",
         "operationId": "student_weekly_schedules-get_my_weekly_schedule",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -570,10 +1019,53 @@
         "summary": "Read Notifications",
         "operationId": "student_notifications-read_notifications",
         "parameters": [
-          {},
-          {},
-          {},
-          {}
+          {
+            "name": "is_read",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Is Read"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "title": "Page",
+              "default": 1
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "title": "Per Page",
+              "default": 10
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -589,7 +1081,17 @@
         "summary": "Send Player Id",
         "operationId": "student_notifications-send_player_id",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -605,8 +1107,26 @@
         "summary": "Mark As Read",
         "operationId": "student_notifications-mark_as_read",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -614,7 +1134,7 @@
         }
       }
     },
-    "/api/v1/student/notifications/{id}": {
+    "/api/v1/student/notifications/%7Bid%7D": {
       "get": {
         "tags": [
           "student_notifications"
@@ -622,8 +1142,26 @@
         "summary": "Read Notification Detail",
         "operationId": "student_notifications-read_notification_detail",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -639,7 +1177,17 @@
         "summary": "Read Fees Types",
         "operationId": "student_fees_types-read_fees_types",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -655,11 +1203,69 @@
         "summary": "Read Fees",
         "operationId": "student_fees-read_fees",
         "parameters": [
-          {},
-          {},
-          {},
-          {},
-          {}
+          {
+            "name": "fees_type_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Fees Type Id"
+            }
+          },
+          {
+            "name": "study_year_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Study Year Id"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "title": "Page",
+              "default": 1
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "title": "Per Page",
+              "default": 10
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -675,7 +1281,17 @@
         "summary": "Read Specializations",
         "operationId": "student_specializations-read_specializations",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -691,7 +1307,17 @@
         "summary": "Read Governorates",
         "operationId": "student_governorates-read_governorates",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -707,7 +1333,17 @@
         "summary": "Read Student Workloads",
         "operationId": "student_study_years-read_student_workloads",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -723,7 +1359,17 @@
         "summary": "Read Nationalities",
         "operationId": "student_nationalities-read_nationalities",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -739,7 +1385,17 @@
         "summary": "Read Student Home",
         "operationId": "student_home-read_student_home",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -755,7 +1411,17 @@
         "summary": "Read Religions",
         "operationId": "student_religions-read_religions",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -771,7 +1437,17 @@
         "summary": "Read Nationalisms",
         "operationId": "student_nationalisms-read_nationalisms",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -787,7 +1463,17 @@
         "summary": "Read Countries",
         "operationId": "student_countries-read_countries",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -803,7 +1489,17 @@
         "summary": "Read Majors",
         "operationId": "student_majors-read_majors",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -819,7 +1515,17 @@
         "summary": "Read Student Summary",
         "operationId": "student_selected_courses-read_student_summary",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -835,8 +1541,26 @@
         "summary": "Update Selected Courses",
         "operationId": "student_selected_courses-update_selected_courses",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/SemesterFilter",
+              "default": "all"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -844,16 +1568,35 @@
         }
       }
     },
-    "/api/v1/student/student_selected_courses/{id}": {
+    "/api/v1/student/student_selected_courses/%7Bid%7D": {
       "get": {
         "tags": [
           "student_selected_courses"
         ],
         "summary": "Read Student Selected Courses By Id",
+        "description": "Read student selected courses by id",
         "operationId": "student_selected_courses-read_student_selected_courses_by_id",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -869,7 +1612,17 @@
         "summary": "Read Status",
         "operationId": "student_information_status-read_status",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -885,8 +1638,26 @@
         "summary": "Download License",
         "operationId": "student_ekyc-download_license",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "package-name",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Package-Name"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -900,9 +1671,20 @@
           "student_ekyc"
         ],
         "summary": "Init",
+        "description": "Step 1: Create a new ekyc report. If an existing report is present and not approved,\ndelete it and create a new one.",
         "operationId": "student_ekyc-init",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -918,8 +1700,27 @@
         "summary": "Upload National Id Back Data",
         "operationId": "student_ekyc-upload_national_id_back_data",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "ekyc-report-id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Ekyc-Report-Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -935,8 +1736,27 @@
         "summary": "Upload National Id Front Data",
         "operationId": "student_ekyc-upload_national_id_front_data",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "ekyc-report-id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Ekyc-Report-Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -952,8 +1772,27 @@
         "summary": "Upload Passport Data",
         "operationId": "student_ekyc-upload_passport_data",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "ekyc-report-id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Ekyc-Report-Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -969,8 +1808,27 @@
         "summary": "Upload Face Data",
         "operationId": "student_ekyc-upload_face_data",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "ekyc-report-id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Ekyc-Report-Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -986,8 +1844,27 @@
         "summary": "Upload Nfc",
         "operationId": "student_ekyc-upload_nfc",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "ekyc-report-id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Ekyc-Report-Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1003,8 +1880,27 @@
         "summary": "Upload Eye Data",
         "operationId": "student_ekyc-upload_eye_data",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "ekyc-report-id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Ekyc-Report-Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1020,8 +1916,27 @@
         "summary": "Read Student Ekyc Form",
         "operationId": "student_ekyc-read_student_ekyc_form",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "ekyc-report-id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Ekyc-Report-Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1035,8 +1950,27 @@
         "summary": "Upload Student Ekyc Form",
         "operationId": "student_ekyc-upload_student_ekyc_form",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "ekyc-report-id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Ekyc-Report-Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1050,11 +1984,38 @@
           "student_ekyc"
         ],
         "summary": "Submit Ekyc",
+        "description": "The final step in the flow ensure that everything is valid",
         "operationId": "student_ekyc-submit_ekyc",
         "parameters": [
-          {},
-          {},
-          {}
+          {
+            "name": "ekyc-report-id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Ekyc-Report-Id"
+            }
+          },
+          {
+            "name": "type",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/EkycTypeEnum"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1070,7 +2031,17 @@
         "summary": "Read Payment Methods",
         "operationId": "student_payments-read_payment_methods",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1078,7 +2049,7 @@
         }
       }
     },
-    "/api/v1/student/payments/methods/{id}": {
+    "/api/v1/student/payments/methods/%7Bid%7D": {
       "post": {
         "tags": [
           "student_payments"
@@ -1086,8 +2057,26 @@
         "summary": "Read Payment Method",
         "operationId": "student_payments-read_payment_method",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1095,7 +2084,7 @@
         }
       }
     },
-    "/api/v1/student/payments/status/{order_id}": {
+    "/api/v1/student/payments/status/%7Border_id%7D": {
       "post": {
         "tags": [
           "student_payments"
@@ -1103,8 +2092,27 @@
         "summary": "Read Payment Status",
         "operationId": "student_payments-read_payment_status",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "order_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Order Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1120,7 +2128,17 @@
         "summary": "Read Enrollment Payment Information",
         "operationId": "student_payments-read_enrollment_payment_information",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1136,7 +2154,17 @@
         "summary": "Read Organizational Structure For Student",
         "operationId": "student_os-read_organizational_structure_for_student",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1150,9 +2178,20 @@
           "student_summary"
         ],
         "summary": "Read Student Summary",
+        "description": "Removed at version 0.1.0",
         "operationId": "student_summary-read_student_summary",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1168,7 +2207,17 @@
         "summary": "Read Student Seamsters",
         "operationId": "student_summary-read_student_seamsters",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1184,7 +2233,17 @@
         "summary": "Read Student Seamsters Courses",
         "operationId": "student_summary-read_student_seamsters_courses",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1200,7 +2259,17 @@
         "summary": "Read Student Workloads",
         "operationId": "student_courses-read_student_workloads",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1216,7 +2285,17 @@
         "summary": "Read Student Courses",
         "operationId": "student_courses-read_student_courses",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1224,7 +2303,7 @@
         }
       }
     },
-    "/api/v1/student/courses/staff/{id}": {
+    "/api/v1/student/courses/staff/%7Bid%7D": {
       "get": {
         "tags": [
           "student_courses"
@@ -1232,8 +2311,26 @@
         "summary": "Get",
         "operationId": "student_courses-get",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1241,7 +2338,7 @@
         }
       }
     },
-    "/api/v1/student/courses/{id}": {
+    "/api/v1/student/courses/%7Bid%7D": {
       "get": {
         "tags": [
           "student_courses"
@@ -1249,8 +2346,26 @@
         "summary": "Read Course By Id",
         "operationId": "student_courses-read_course_by_id",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1266,7 +2381,17 @@
         "summary": "Read Information Bureaus",
         "operationId": "student_information_bureaus-read_information_bureaus",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1274,7 +2399,7 @@
         }
       }
     },
-    "/api/v1/student/home_works/course/{course_id}": {
+    "/api/v1/student/home_works/course/%7Bcourse_id%7D": {
       "get": {
         "tags": [
           "student_home_works"
@@ -1282,8 +2407,26 @@
         "summary": "Read Course Assessment By Course Id",
         "operationId": "student_home_works-read_course_assessment_by_course_id",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Course Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1291,7 +2434,7 @@
         }
       }
     },
-    "/api/v1/student/semesters/{id}": {
+    "/api/v1/student/semesters/%7Bid%7D": {
       "get": {
         "tags": [
           "student_semesters"
@@ -1299,9 +2442,35 @@
         "summary": "Read Semesters",
         "operationId": "student_semesters-read_semesters",
         "parameters": [
-          {},
-          {},
-          {}
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Id"
+            }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/SemesterFilter",
+              "default": "all"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1317,7 +2486,17 @@
         "summary": "Read Orders For Student",
         "operationId": "student_orders-read_orders_for_student",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1325,7 +2504,7 @@
         }
       }
     },
-    "/api/v1/student/attachments/{course_id}": {
+    "/api/v1/student/attachments/%7Bcourse_id%7D": {
       "get": {
         "tags": [
           "student_attachments"
@@ -1333,8 +2512,26 @@
         "summary": "Get Subject For Courses",
         "operationId": "student_attachments-get_subject_for_courses",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Course Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1350,7 +2547,17 @@
         "summary": "Login",
         "operationId": "lecturer_auth-login",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1366,7 +2573,17 @@
         "summary": "Swagger Login",
         "operationId": "lecturer_auth-swagger_login",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1382,8 +2599,26 @@
         "summary": "Refresh Token",
         "operationId": "lecturer_auth-refresh_token",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "refresh_token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Refresh Token"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1399,8 +2634,26 @@
         "summary": "Logout",
         "operationId": "lecturer_auth-logout",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "refresh_token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Refresh Token"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1416,9 +2669,37 @@
         "summary": "Get Lecturer Courses",
         "operationId": "lecturer_courses-get_lecturer_courses",
         "parameters": [
-          {},
-          {},
-          {}
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "title": "Page",
+              "default": 1
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "title": "Per Page",
+              "default": 10
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1426,7 +2707,7 @@
         }
       }
     },
-    "/api/v1/lecturer/courses/me/{id}": {
+    "/api/v1/lecturer/courses/me/%7Bid%7D": {
       "get": {
         "tags": [
           "lecturer_courses"
@@ -1434,8 +2715,26 @@
         "summary": "Get Lecturer Course",
         "operationId": "lecturer_courses-get_lecturer_course",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1443,22 +2742,7 @@
         }
       }
     },
-    "/api/v1/lecturer/announcements/me/{course_id}": {
-      "post": {
-        "tags": [
-          "lecturer_announcements"
-        ],
-        "summary": "Create Lecturer Announcement",
-        "operationId": "lecturer_announcements-create_lecturer_announcement",
-        "parameters": [
-          {},
-          {}
-        ],
-        "responses": {
-          "200": {},
-          "422": {}
-        }
-      },
+    "/api/v1/lecturer/announcements/me/%7Bcourse_id%7D": {
       "get": {
         "tags": [
           "lecturer_announcements"
@@ -1466,10 +2750,79 @@
         "summary": "Get Lecturer Announcements",
         "operationId": "lecturer_announcements-get_lecturer_announcements",
         "parameters": [
-          {},
-          {},
-          {},
-          {}
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Course Id"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "title": "Page",
+              "default": 1
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "title": "Per Page",
+              "default": 10
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
+      },
+      "post": {
+        "tags": [
+          "lecturer_announcements"
+        ],
+        "summary": "Create Lecturer Announcement",
+        "operationId": "lecturer_announcements-create_lecturer_announcement",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Course Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1477,7 +2830,7 @@
         }
       }
     },
-    "/api/v1/lecturer/announcements/{id}": {
+    "/api/v1/lecturer/announcements/%7Bid%7D": {
       "get": {
         "tags": [
           "lecturer_announcements"
@@ -1485,8 +2838,26 @@
         "summary": "Get Lecturer Announcement",
         "operationId": "lecturer_announcements-get_lecturer_announcement",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1500,8 +2871,26 @@
         "summary": "Update Lecturer Announcement",
         "operationId": "lecturer_announcements-update_lecturer_announcement",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1515,8 +2904,26 @@
         "summary": "Delete Lecturer Announcement",
         "operationId": "lecturer_announcements-delete_lecturer_announcement",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1524,22 +2931,7 @@
         }
       }
     },
-    "/api/v1/lecturer/announcements/{id}/comments": {
-      "post": {
-        "tags": [
-          "lecturer_announcements"
-        ],
-        "summary": "Create Lecturer Announcement Comment",
-        "operationId": "lecturer_announcements-create_lecturer_announcement_comment",
-        "parameters": [
-          {},
-          {}
-        ],
-        "responses": {
-          "200": {},
-          "422": {}
-        }
-      },
+    "/api/v1/lecturer/announcements/%7Bid%7D/comments": {
       "get": {
         "tags": [
           "lecturer_announcements"
@@ -1547,10 +2939,79 @@
         "summary": "Get Lecturer Announcement Comments",
         "operationId": "lecturer_announcements-get_lecturer_announcement_comments",
         "parameters": [
-          {},
-          {},
-          {},
-          {}
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Id"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "title": "Page",
+              "default": 1
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "title": "Per Page",
+              "default": 10
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
+      },
+      "post": {
+        "tags": [
+          "lecturer_announcements"
+        ],
+        "summary": "Create Lecturer Announcement Comment",
+        "operationId": "lecturer_announcements-create_lecturer_announcement_comment",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1558,7 +3019,7 @@
         }
       }
     },
-    "/api/v1/lecturer/assignments/me/{course_id}": {
+    "/api/v1/lecturer/assignments/me/%7Bcourse_id%7D": {
       "get": {
         "tags": [
           "lecturer_assignments"
@@ -1566,10 +3027,46 @@
         "summary": "Get Lecturer Assignments",
         "operationId": "lecturer_assignments-get_lecturer_assignments",
         "parameters": [
-          {},
-          {},
-          {},
-          {}
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Course Id"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "title": "Page",
+              "default": 1
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "title": "Per Page",
+              "default": 10
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1583,8 +3080,26 @@
         "summary": "Create Lecturer Assignment",
         "operationId": "lecturer_assignments-create_lecturer_assignment",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Course Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1592,7 +3107,7 @@
         }
       }
     },
-    "/api/v1/lecturer/assignments/{id}": {
+    "/api/v1/lecturer/assignments/%7Bid%7D": {
       "get": {
         "tags": [
           "lecturer_assignments"
@@ -1600,23 +3115,26 @@
         "summary": "Get Lecturer Assignment",
         "operationId": "lecturer_assignments-get_lecturer_assignment",
         "parameters": [
-          {},
-          {}
-        ],
-        "responses": {
-          "200": {},
-          "422": {}
-        }
-      },
-      "delete": {
-        "tags": [
-          "lecturer_assignments"
-        ],
-        "summary": "Delete Lecturer Assignment",
-        "operationId": "lecturer_assignments-delete_lecturer_assignment",
-        "parameters": [
-          {},
-          {}
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1630,8 +3148,59 @@
         "summary": "Update Lecturer Assignment",
         "operationId": "lecturer_assignments-update_lecturer_assignment",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
+        ],
+        "responses": {
+          "200": {},
+          "422": {}
+        }
+      },
+      "delete": {
+        "tags": [
+          "lecturer_assignments"
+        ],
+        "summary": "Delete Lecturer Assignment",
+        "operationId": "lecturer_assignments-delete_lecturer_assignment",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1639,7 +3208,7 @@
         }
       }
     },
-    "/api/v1/lecturer/assignments/{id}/comments": {
+    "/api/v1/lecturer/assignments/%7Bid%7D/comments": {
       "get": {
         "tags": [
           "lecturer_assignments"
@@ -1647,8 +3216,26 @@
         "summary": "Get Lecturer Assignment Comments",
         "operationId": "lecturer_assignments-get_lecturer_assignment_comments",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1662,8 +3249,26 @@
         "summary": "Create Lecturer Assignment Comment",
         "operationId": "lecturer_assignments-create_lecturer_assignment_comment",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1679,10 +3284,67 @@
         "summary": "Get Lecturer Read Homework Calender",
         "operationId": "lecturer_calender-get_lecturer_read_homework_calender",
         "parameters": [
-          {},
-          {},
-          {},
-          {}
+          {
+            "name": "course_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Course Id"
+            }
+          },
+          {
+            "name": "start_date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Start Date"
+            }
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "End Date"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1698,7 +3360,17 @@
         "summary": "Lecturer Create Attendance",
         "operationId": "lecturer_attendances-lecturer_create_attendance",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1714,7 +3386,17 @@
         "summary": "Get Weekly Schedule",
         "operationId": "lecturer_weekly_schedules-get_weekly_schedule",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1728,10 +3410,29 @@
           "lecturer_ids"
         ],
         "summary": "Get Employee Identification Cards",
+        "description": "Get employee identification cards",
         "operationId": "lecturer_ids-get_employee_identification_cards",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "employee_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Employee Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1745,10 +3446,29 @@
           "lecturer_family_info"
         ],
         "summary": "Get Employee Family Info",
+        "description": "Get employee family info",
         "operationId": "lecturer_family_info-get_employee_family_info",
         "parameters": [
-          {},
-          {}
+          {
+            "name": "employee_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Employee Id"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
@@ -1764,7 +3484,17 @@
         "summary": "Get Lecturer Profile",
         "operationId": "lecturer_profile-get_lecturer_profile",
         "parameters": [
-          {}
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Language",
+              "title": "Accept-Language"
+            },
+            "description": "Language"
+          }
         ],
         "responses": {
           "200": {},
