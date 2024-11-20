@@ -90,7 +90,7 @@ _$OpenApiPathMethodParameterImpl _$$OpenApiPathMethodParameterImplFromJson(
       name: json['name'] as String,
       in_: $enumDecode(_$OpenApiPathMethodParameterTypeEnumMap, json['in']),
       required_: json['required'] as bool,
-      schema: const OpenApiPathMethodParameterSchemaJsonMapConverter()
+      schema: const OpenApiSchemaJsonMapConverter()
           .fromJson(json['schema'] as Map<String, dynamic>),
       description: json['description'] as String?,
       example: json['example'] as String?,
@@ -102,8 +102,7 @@ Map<String, dynamic> _$$OpenApiPathMethodParameterImplToJson(
       'name': instance.name,
       'in': _$OpenApiPathMethodParameterTypeEnumMap[instance.in_]!,
       'required': instance.required_,
-      'schema': const OpenApiPathMethodParameterSchemaJsonMapConverter()
-          .toJson(instance.schema),
+      'schema': const OpenApiSchemaJsonMapConverter().toJson(instance.schema),
       if (instance.description case final value?) 'description': value,
       if (instance.example case final value?) 'example': value,
     };
@@ -115,102 +114,51 @@ const _$OpenApiPathMethodParameterTypeEnumMap = {
   OpenApiPathMethodParameterType.cookie: 'cookie',
 };
 
-_$OpenApiPathMethodParameterSchemaTypeImpl
-    _$$OpenApiPathMethodParameterSchemaTypeImplFromJson(
-            Map<String, dynamic> json) =>
-        _$OpenApiPathMethodParameterSchemaTypeImpl(
-          type: $enumDecodeNullable(
-              _$OpenApiSchemaVariableTypeEnumMap, json['type'],
-              unknownValue: OpenApiSchemaVariableType.$unknown),
-          format: json['format'] as String?,
-          description: json['description'] as String?,
-          title: json['title'] as String?,
-          pattern: json['pattern'] as String?,
-          default_: json['default'],
-          $type: json['runtimeType'] as String?,
-        );
-
-Map<String, dynamic> _$$OpenApiPathMethodParameterSchemaTypeImplToJson(
-        _$OpenApiPathMethodParameterSchemaTypeImpl instance) =>
-    <String, dynamic>{
-      if (_$OpenApiSchemaVariableTypeEnumMap[instance.type] case final value?)
-        'type': value,
-      if (instance.format case final value?) 'format': value,
-      if (instance.description case final value?) 'description': value,
-      if (instance.title case final value?) 'title': value,
-      if (instance.pattern case final value?) 'pattern': value,
-      if (instance.default_ case final value?) 'default': value,
-      'runtimeType': instance.$type,
-    };
-
-const _$OpenApiSchemaVariableTypeEnumMap = {
-  OpenApiSchemaVariableType.string: 'string',
-  OpenApiSchemaVariableType.number: 'number',
-  OpenApiSchemaVariableType.integer: 'integer',
-  OpenApiSchemaVariableType.boolean: 'boolean',
-  OpenApiSchemaVariableType.array: 'array',
-  OpenApiSchemaVariableType.object: 'object',
-  OpenApiSchemaVariableType.null_: 'null',
-  OpenApiSchemaVariableType.$unknown: r'$unknown',
-};
-
-_$OpenApiPathMethodParameterSchemaRefImpl
-    _$$OpenApiPathMethodParameterSchemaRefImplFromJson(
-            Map<String, dynamic> json) =>
-        _$OpenApiPathMethodParameterSchemaRefImpl(
-          ref: json[r'$ref'] as String?,
-          format: json['format'] as String?,
-          description: json['description'] as String?,
-          title: json['title'] as String?,
-          pattern: json['pattern'] as String?,
-          default_: json['default'],
-          $type: json['runtimeType'] as String?,
-        );
-
-Map<String, dynamic> _$$OpenApiPathMethodParameterSchemaRefImplToJson(
-        _$OpenApiPathMethodParameterSchemaRefImpl instance) =>
-    <String, dynamic>{
-      if (instance.ref case final value?) r'$ref': value,
-      if (instance.format case final value?) 'format': value,
-      if (instance.description case final value?) 'description': value,
-      if (instance.title case final value?) 'title': value,
-      if (instance.pattern case final value?) 'pattern': value,
-      if (instance.default_ case final value?) 'default': value,
-      'runtimeType': instance.$type,
-    };
-
-_$OpenApiPathMethodParameterSchemaAnyOfImpl
-    _$$OpenApiPathMethodParameterSchemaAnyOfImplFromJson(
-            Map<String, dynamic> json) =>
-        _$OpenApiPathMethodParameterSchemaAnyOfImpl(
-          anyOf: (json['anyOf'] as List<dynamic>?)
-              ?.map((e) =>
-                  const OpenApiPathMethodParameterSchemaJsonMapConverter()
-                      .fromJson(e as Map<String, dynamic>))
-              .toList(),
-          title: json['title'] as String?,
-          description: json['description'] as String?,
-          $type: json['runtimeType'] as String?,
-        );
-
-Map<String, dynamic> _$$OpenApiPathMethodParameterSchemaAnyOfImplToJson(
-        _$OpenApiPathMethodParameterSchemaAnyOfImpl instance) =>
-    <String, dynamic>{
-      if (instance.anyOf
-              ?.map(const OpenApiPathMethodParameterSchemaJsonMapConverter()
-                  .toJson)
-              .toList()
-          case final value?)
-        'anyOf': value,
-      if (instance.title case final value?) 'title': value,
-      if (instance.description case final value?) 'description': value,
-      'runtimeType': instance.$type,
-    };
-
 _$OpenApiPathMethodResponseImpl _$$OpenApiPathMethodResponseImplFromJson(
         Map<String, dynamic> json) =>
-    _$OpenApiPathMethodResponseImpl();
+    _$OpenApiPathMethodResponseImpl(
+      description: json['description'] as String?,
+      content: OpenApiPathMethodResponseContent.fromJson(
+          json['content'] as Map<String, dynamic>),
+    );
 
 Map<String, dynamic> _$$OpenApiPathMethodResponseImplToJson(
         _$OpenApiPathMethodResponseImpl instance) =>
+    <String, dynamic>{
+      if (instance.description case final value?) 'description': value,
+      'content': instance.content.toJson(),
+    };
+
+_$OpenApiPathMethodResponseContentImpl
+    _$$OpenApiPathMethodResponseContentImplFromJson(
+            Map<String, dynamic> json) =>
+        _$OpenApiPathMethodResponseContentImpl(
+          applicationJson: json['application/json'] == null
+              ? null
+              : OpenApiPathMethodResponseContentSchema.fromJson(
+                  json['application/json'] as Map<String, dynamic>),
+          applicationXWwwFormUrlencoded:
+              json['application/x-www-form-urlencoded'] == null
+                  ? null
+                  : OpenApiPathMethodResponseContentSchema.fromJson(
+                      json['application/x-www-form-urlencoded']
+                          as Map<String, dynamic>),
+        );
+
+Map<String, dynamic> _$$OpenApiPathMethodResponseContentImplToJson(
+        _$OpenApiPathMethodResponseContentImpl instance) =>
+    <String, dynamic>{
+      if (instance.applicationJson?.toJson() case final value?)
+        'application/json': value,
+      if (instance.applicationXWwwFormUrlencoded?.toJson() case final value?)
+        'application/x-www-form-urlencoded': value,
+    };
+
+_$OpenApiPathMethodResponseContentSchemaImpl
+    _$$OpenApiPathMethodResponseContentSchemaImplFromJson(
+            Map<String, dynamic> json) =>
+        _$OpenApiPathMethodResponseContentSchemaImpl();
+
+Map<String, dynamic> _$$OpenApiPathMethodResponseContentSchemaImplToJson(
+        _$OpenApiPathMethodResponseContentSchemaImpl instance) =>
     <String, dynamic>{};

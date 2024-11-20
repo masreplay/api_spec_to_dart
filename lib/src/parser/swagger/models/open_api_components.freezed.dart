@@ -21,14 +21,14 @@ OpenApiComponents _$OpenApiComponentsFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$OpenApiComponents {
   @JsonKey(name: 'schemas')
-  Map<String, OpenApiSchema> get schemas => throw _privateConstructorUsedError;
+  Map<String, OpenApiSchemas> get schemas => throw _privateConstructorUsedError;
   @JsonKey(name: 'securitySchemes')
   Map<String, dynamic> get securitySchemes =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            @JsonKey(name: 'schemas') Map<String, OpenApiSchema> schemas,
+            @JsonKey(name: 'schemas') Map<String, OpenApiSchemas> schemas,
             @JsonKey(name: 'securitySchemes')
             Map<String, dynamic> securitySchemes)
         $default,
@@ -38,7 +38,7 @@ mixin _$OpenApiComponents {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            @JsonKey(name: 'schemas') Map<String, OpenApiSchema> schemas,
+            @JsonKey(name: 'schemas') Map<String, OpenApiSchemas> schemas,
             @JsonKey(name: 'securitySchemes')
             Map<String, dynamic> securitySchemes)?
         $default, {
@@ -55,7 +55,7 @@ mixin _$OpenApiComponents {
 class _$OpenApiComponentsImpl extends _OpenApiComponents {
   const _$OpenApiComponentsImpl(
       {@JsonKey(name: 'schemas')
-      required final Map<String, OpenApiSchema> schemas,
+      required final Map<String, OpenApiSchemas> schemas,
       @JsonKey(name: 'securitySchemes')
       required final Map<String, dynamic> securitySchemes})
       : _schemas = schemas,
@@ -65,10 +65,10 @@ class _$OpenApiComponentsImpl extends _OpenApiComponents {
   factory _$OpenApiComponentsImpl.fromJson(Map<String, dynamic> json) =>
       _$$OpenApiComponentsImplFromJson(json);
 
-  final Map<String, OpenApiSchema> _schemas;
+  final Map<String, OpenApiSchemas> _schemas;
   @override
   @JsonKey(name: 'schemas')
-  Map<String, OpenApiSchema> get schemas {
+  Map<String, OpenApiSchemas> get schemas {
     if (_schemas is EqualUnmodifiableMapView) return _schemas;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_schemas);
@@ -109,7 +109,7 @@ class _$OpenApiComponentsImpl extends _OpenApiComponents {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            @JsonKey(name: 'schemas') Map<String, OpenApiSchema> schemas,
+            @JsonKey(name: 'schemas') Map<String, OpenApiSchemas> schemas,
             @JsonKey(name: 'securitySchemes')
             Map<String, dynamic> securitySchemes)
         $default,
@@ -121,7 +121,7 @@ class _$OpenApiComponentsImpl extends _OpenApiComponents {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            @JsonKey(name: 'schemas') Map<String, OpenApiSchema> schemas,
+            @JsonKey(name: 'schemas') Map<String, OpenApiSchemas> schemas,
             @JsonKey(name: 'securitySchemes')
             Map<String, dynamic> securitySchemes)?
         $default, {
@@ -144,7 +144,7 @@ class _$OpenApiComponentsImpl extends _OpenApiComponents {
 abstract class _OpenApiComponents extends OpenApiComponents {
   const factory _OpenApiComponents(
           {@JsonKey(name: 'schemas')
-          required final Map<String, OpenApiSchema> schemas,
+          required final Map<String, OpenApiSchemas> schemas,
           @JsonKey(name: 'securitySchemes')
           required final Map<String, dynamic> securitySchemes}) =
       _$OpenApiComponentsImpl;
@@ -155,18 +155,18 @@ abstract class _OpenApiComponents extends OpenApiComponents {
 
   @override
   @JsonKey(name: 'schemas')
-  Map<String, OpenApiSchema> get schemas;
+  Map<String, OpenApiSchemas> get schemas;
   @override
   @JsonKey(name: 'securitySchemes')
   Map<String, dynamic> get securitySchemes;
 }
 
-OpenApiSchema _$OpenApiSchemaFromJson(Map<String, dynamic> json) {
-  return _OpenApiSchema.fromJson(json);
+OpenApiSchemas _$OpenApiSchemasFromJson(Map<String, dynamic> json) {
+  return _OpenApiSchemas.fromJson(json);
 }
 
 /// @nodoc
-mixin _$OpenApiSchema {
+mixin _$OpenApiSchemas {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default,
@@ -180,27 +180,27 @@ mixin _$OpenApiSchema {
   }) =>
       throw _privateConstructorUsedError;
 
-  /// Serializes this OpenApiSchema to a JSON map.
+  /// Serializes this OpenApiSchemas to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$OpenApiSchemaImpl extends _OpenApiSchema {
-  const _$OpenApiSchemaImpl() : super._();
+class _$OpenApiSchemasImpl extends _OpenApiSchemas {
+  const _$OpenApiSchemasImpl() : super._();
 
-  factory _$OpenApiSchemaImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OpenApiSchemaImplFromJson(json);
+  factory _$OpenApiSchemasImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OpenApiSchemasImplFromJson(json);
 
   @override
   String toString() {
-    return 'OpenApiSchema()';
+    return 'OpenApiSchemas()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$OpenApiSchemaImpl);
+        (other.runtimeType == runtimeType && other is _$OpenApiSchemasImpl);
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -229,16 +229,16 @@ class _$OpenApiSchemaImpl extends _OpenApiSchema {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$OpenApiSchemaImplToJson(
+    return _$$OpenApiSchemasImplToJson(
       this,
     );
   }
 }
 
-abstract class _OpenApiSchema extends OpenApiSchema {
-  const factory _OpenApiSchema() = _$OpenApiSchemaImpl;
-  const _OpenApiSchema._() : super._();
+abstract class _OpenApiSchemas extends OpenApiSchemas {
+  const factory _OpenApiSchemas() = _$OpenApiSchemasImpl;
+  const _OpenApiSchemas._() : super._();
 
-  factory _OpenApiSchema.fromJson(Map<String, dynamic> json) =
-      _$OpenApiSchemaImpl.fromJson;
+  factory _OpenApiSchemas.fromJson(Map<String, dynamic> json) =
+      _$OpenApiSchemasImpl.fromJson;
 }

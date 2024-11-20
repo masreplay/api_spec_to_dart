@@ -8,7 +8,7 @@ class OpenApiComponents with _$OpenApiComponents {
   const OpenApiComponents._();
 
   const factory OpenApiComponents({
-    @JsonKey(name: 'schemas') required Map<String, OpenApiSchema> schemas,
+    @JsonKey(name: 'schemas') required Map<String, OpenApiSchemas> schemas,
     @JsonKey(name: 'securitySchemes')
     required Map<String, dynamic> securitySchemes,
   }) = _OpenApiComponents;
@@ -18,11 +18,11 @@ class OpenApiComponents with _$OpenApiComponents {
 }
 
 @freezed
-class OpenApiSchema with _$OpenApiSchema {
-  const OpenApiSchema._();
+class OpenApiSchemas with _$OpenApiSchemas {
+  const OpenApiSchemas._();
 
-  const factory OpenApiSchema() = _OpenApiSchema;
+  const factory OpenApiSchemas() = _OpenApiSchemas;
 
-  factory OpenApiSchema.fromJson(Map<String, dynamic> json) =>
-      _$OpenApiSchemaFromJson(json);
+  factory OpenApiSchemas.fromJson(Map<String, dynamic> json) =>
+      _$OpenApiSchemasFromJson(json);
 }

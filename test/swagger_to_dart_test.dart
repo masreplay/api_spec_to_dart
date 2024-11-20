@@ -5,6 +5,7 @@ import 'package:swagger_to_dart/src/parser/swagger/models/open_api.dart';
 import 'package:swagger_to_dart/src/parser/swagger/models/open_api_components.dart';
 import 'package:swagger_to_dart/src/parser/swagger/models/open_api_info.dart';
 import 'package:swagger_to_dart/src/parser/swagger/models/open_api_paths.dart';
+import 'package:swagger_to_dart/src/parser/swagger/models/open_api_schema.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -32,7 +33,7 @@ void main() {
                   name: 'accept-language',
                   in_: OpenApiPathMethodParameterType.header,
                   required_: true,
-                  schema: OpenApiPathMethodParameterSchema.type(
+                  schema: OpenApiSchema.type(
                     type: OpenApiSchemaVariableType.string,
                   ),
                 ),
@@ -40,12 +41,12 @@ void main() {
                   name: 'package-name',
                   in_: OpenApiPathMethodParameterType.header,
                   required_: true,
-                  schema: OpenApiPathMethodParameterSchema.anyOf(
+                  schema: OpenApiSchema.anyOf(
                     anyOf: [
-                      OpenApiPathMethodParameterSchema.type(
+                      OpenApiSchema.type(
                         type: OpenApiSchemaVariableType.boolean,
                       ),
-                      OpenApiPathMethodParameterSchemaType(
+                      OpenApiSchemaType(
                         type: OpenApiSchemaVariableType.null_,
                       ),
                     ],

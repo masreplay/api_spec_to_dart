@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'open_api_schema.dart';
+
 part 'open_api_paths.freezed.dart';
 part 'open_api_paths.g.dart';
 
@@ -54,9 +56,9 @@ class OpenApiPathMethodParameter with _$OpenApiPathMethodParameter {
     @JsonKey(name: 'name') required String name,
     @JsonKey(name: 'in') required OpenApiPathMethodParameterType in_,
     @JsonKey(name: 'required') required bool required_,
-    @OpenApiPathMethodParameterSchemaJsonMapConverter()
+    @OpenApiSchemaJsonMapConverter()
     @JsonKey(name: 'schema')
-    required OpenApiPathMethodParameterSchema schema,
+    required OpenApiSchema schema,
     String? description,
     String? example,
   }) = _OpenApiPathMethodParameter;
@@ -72,126 +74,42 @@ enum OpenApiPathMethodParameterType {
   cookie,
 }
 
-const String _anyOfKey = 'anyOf';
-const String _refKey = '\$ref';
-
-class OpenApiPathMethodParameterSchemaJsonMapConverter
-    implements
-        JsonConverter<OpenApiPathMethodParameterSchema, Map<String, dynamic>> {
-  const OpenApiPathMethodParameterSchemaJsonMapConverter();
-
-  @override
-  OpenApiPathMethodParameterSchema fromJson(Map<String, dynamic> json) {
-    if (json.containsKey(_anyOfKey)) {
-      return OpenApiPathMethodParameterSchemaAnyOf.fromJson(json);
-    } else if (json.containsKey(_refKey)) {
-      return OpenApiPathMethodParameterSchemaRef.fromJson(json);
-    } else {
-      return OpenApiPathMethodParameterSchemaType.fromJson(json);
-    }
-  }
-
-  @override
-  Map<String, dynamic> toJson(OpenApiPathMethodParameterSchema object) {
-    final json = object.toJson();
-
-    return removeRuntimeType(json);
-  }
-}
-
-Map<String, dynamic> removeRuntimeType(Map<String, dynamic> json) {
-  final newJson = <String, dynamic>{};
-
-  for (final entry in json.entries) {
-    if (entry.key == 'runtimeType') {
-      continue;
-    }
-
-    if (entry.value is Map<String, dynamic>) {
-      newJson[entry.key] =
-          removeRuntimeType(entry.value as Map<String, dynamic>);
-    } else if (entry.value is List) {
-      newJson[entry.key] = (entry.value as List).map((e) {
-        if (e is Map<String, dynamic>) {
-          return removeRuntimeType(e);
-        } else {
-          return e;
-        }
-      }).toList();
-    } else {
-      newJson[entry.key] = entry.value;
-    }
-  }
-
-  return newJson;
-}
-
-@freezed
-class OpenApiPathMethodParameterSchema with _$OpenApiPathMethodParameterSchema {
-  const OpenApiPathMethodParameterSchema._();
-
-  const factory OpenApiPathMethodParameterSchema.type({
-    @JsonKey(
-      name: 'type',
-      unknownEnumValue: OpenApiSchemaVariableType.$unknown,
-    )
-    OpenApiSchemaVariableType? type,
-    @JsonKey(name: 'format') String? format,
-    @JsonKey(name: 'description') String? description,
-    @JsonKey(name: 'title') String? title,
-    @JsonKey(name: 'pattern') String? pattern,
-    @JsonKey(name: 'default') Object? default_,
-  }) = OpenApiPathMethodParameterSchemaType;
-
-  const factory OpenApiPathMethodParameterSchema.ref({
-    @JsonKey(name: _refKey) String? ref,
-    @JsonKey(name: 'format') String? format,
-    @JsonKey(name: 'description') String? description,
-    @JsonKey(name: 'title') String? title,
-    @JsonKey(name: 'pattern') String? pattern,
-    @JsonKey(name: 'default') Object? default_,
-  }) = OpenApiPathMethodParameterSchemaRef;
-
-  const factory OpenApiPathMethodParameterSchema.anyOf({
-    @OpenApiPathMethodParameterSchemaJsonMapConverter()
-    @JsonKey(name: _anyOfKey)
-    required List<OpenApiPathMethodParameterSchema>? anyOf,
-    @JsonKey(name: 'title') String? title,
-    @JsonKey(name: 'description') String? description,
-  }) = OpenApiPathMethodParameterSchemaAnyOf;
-
-  factory OpenApiPathMethodParameterSchema.fromJson(
-    Map<String, dynamic> json,
-  ) =>
-      _$OpenApiPathMethodParameterSchemaFromJson(json);
-}
-
-enum OpenApiSchemaVariableType {
-  @JsonValue('string')
-  string,
-  @JsonValue('number')
-  number,
-  @JsonValue('integer')
-  integer,
-  @JsonValue('boolean')
-  boolean,
-  @JsonValue('array')
-  array,
-  @JsonValue('object')
-  object,
-  @JsonValue('null')
-  null_,
-
-  $unknown,
-}
-
 // "responses": { "200": {} }
 typedef OpenApiPathMethodResponses = Map<String, OpenApiPathMethodResponse>;
 
 @freezed
 class OpenApiPathMethodResponse with _$OpenApiPathMethodResponse {
-  factory OpenApiPathMethodResponse() = _OpenApiPathMethodResponse;
+  factory OpenApiPathMethodResponse({
+    @JsonKey(name: 'description') String? description,
+    @JsonKey(name: 'content') required OpenApiPathMethodResponseContent content,
+  }) = _OpenApiPathMethodResponse;
 
   factory OpenApiPathMethodResponse.fromJson(Map<String, dynamic> json) =>
       _$OpenApiPathMethodResponseFromJson(json);
+}
+
+@freezed
+class OpenApiPathMethodResponseContent with _$OpenApiPathMethodResponseContent {
+  factory OpenApiPathMethodResponseContent({
+    @JsonKey(name: 'application/json')
+    required OpenApiPathMethodResponseContentSchema? applicationJson,
+    @JsonKey(name: 'application/x-www-form-urlencoded')
+    required OpenApiPathMethodResponseContentSchema?
+        applicationXWwwFormUrlencoded,
+  }) = _OpenApiPathMethodResponseContent;
+
+  factory OpenApiPathMethodResponseContent.fromJson(
+          Map<String, dynamic> json) =>
+      _$OpenApiPathMethodResponseContentFromJson(json);
+}
+
+@freezed
+class OpenApiPathMethodResponseContentSchema
+    with _$OpenApiPathMethodResponseContentSchema {
+  factory OpenApiPathMethodResponseContentSchema() =
+      _OpenApiPathMethodResponseContentSchema;
+
+  factory OpenApiPathMethodResponseContentSchema.fromJson(
+          Map<String, dynamic> json) =>
+      _$OpenApiPathMethodResponseContentSchemaFromJson(json);
 }
