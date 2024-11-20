@@ -38,12 +38,12 @@ Map<String, dynamic> _$$OpenApiContentImplToJson(
 _$OpenApiContentSchemaImpl _$$OpenApiContentSchemaImplFromJson(
         Map<String, dynamic> json) =>
     _$OpenApiContentSchemaImpl(
-      schema: const OpenApiSchemaJsonMapConverter()
+      schema: const OpenApiSchemaJsonConverter()
           .fromJson(json['schema'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$OpenApiContentSchemaImplToJson(
         _$OpenApiContentSchemaImpl instance) =>
     <String, dynamic>{
-      'schema': const OpenApiSchemaJsonMapConverter().toJson(instance.schema),
+      'schema': const OpenApiSchemaJsonConverter().toJson(instance.schema),
     };

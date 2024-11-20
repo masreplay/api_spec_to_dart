@@ -59,7 +59,7 @@ class OpenApiPathMethodParameter with _$OpenApiPathMethodParameter {
     @JsonKey(name: 'name') required String name,
     @JsonKey(name: 'in') required OpenApiPathMethodParameterType in_,
     @JsonKey(name: 'required') required bool required_,
-    @OpenApiSchemaJsonMapConverter()
+    @OpenApiSchemaJsonConverter()
     @JsonKey(name: 'schema')
     required OpenApiSchema schema,
     String? description,

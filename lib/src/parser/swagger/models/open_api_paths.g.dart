@@ -96,7 +96,7 @@ _$OpenApiPathMethodParameterImpl _$$OpenApiPathMethodParameterImplFromJson(
       name: json['name'] as String,
       in_: $enumDecode(_$OpenApiPathMethodParameterTypeEnumMap, json['in']),
       required_: json['required'] as bool,
-      schema: const OpenApiSchemaJsonMapConverter()
+      schema: const OpenApiSchemaJsonConverter()
           .fromJson(json['schema'] as Map<String, dynamic>),
       description: json['description'] as String?,
       example: json['example'] as String?,
@@ -108,7 +108,7 @@ Map<String, dynamic> _$$OpenApiPathMethodParameterImplToJson(
       'name': instance.name,
       'in': _$OpenApiPathMethodParameterTypeEnumMap[instance.in_]!,
       'required': instance.required_,
-      'schema': const OpenApiSchemaJsonMapConverter().toJson(instance.schema),
+      'schema': const OpenApiSchemaJsonConverter().toJson(instance.schema),
       if (instance.description case final value?) 'description': value,
       if (instance.example case final value?) 'example': value,
     };

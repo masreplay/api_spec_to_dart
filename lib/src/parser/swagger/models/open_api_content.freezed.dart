@@ -181,13 +181,13 @@ OpenApiContentSchema _$OpenApiContentSchemaFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OpenApiContentSchema {
-  @OpenApiSchemaJsonMapConverter()
+  @OpenApiSchemaJsonConverter()
   @JsonKey(name: 'schema')
   OpenApiSchema get schema => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            @OpenApiSchemaJsonMapConverter()
+            @OpenApiSchemaJsonConverter()
             @JsonKey(name: 'schema')
             OpenApiSchema schema)
         $default,
@@ -197,7 +197,7 @@ mixin _$OpenApiContentSchema {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            @OpenApiSchemaJsonMapConverter()
+            @OpenApiSchemaJsonConverter()
             @JsonKey(name: 'schema')
             OpenApiSchema schema)?
         $default, {
@@ -213,7 +213,7 @@ mixin _$OpenApiContentSchema {
 @JsonSerializable()
 class _$OpenApiContentSchemaImpl implements _OpenApiContentSchema {
   _$OpenApiContentSchemaImpl(
-      {@OpenApiSchemaJsonMapConverter()
+      {@OpenApiSchemaJsonConverter()
       @JsonKey(name: 'schema')
       required this.schema});
 
@@ -221,7 +221,7 @@ class _$OpenApiContentSchemaImpl implements _OpenApiContentSchema {
       _$$OpenApiContentSchemaImplFromJson(json);
 
   @override
-  @OpenApiSchemaJsonMapConverter()
+  @OpenApiSchemaJsonConverter()
   @JsonKey(name: 'schema')
   final OpenApiSchema schema;
 
@@ -246,7 +246,7 @@ class _$OpenApiContentSchemaImpl implements _OpenApiContentSchema {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            @OpenApiSchemaJsonMapConverter()
+            @OpenApiSchemaJsonConverter()
             @JsonKey(name: 'schema')
             OpenApiSchema schema)
         $default,
@@ -258,7 +258,7 @@ class _$OpenApiContentSchemaImpl implements _OpenApiContentSchema {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            @OpenApiSchemaJsonMapConverter()
+            @OpenApiSchemaJsonConverter()
             @JsonKey(name: 'schema')
             OpenApiSchema schema)?
         $default, {
@@ -280,7 +280,7 @@ class _$OpenApiContentSchemaImpl implements _OpenApiContentSchema {
 
 abstract class _OpenApiContentSchema implements OpenApiContentSchema {
   factory _OpenApiContentSchema(
-      {@OpenApiSchemaJsonMapConverter()
+      {@OpenApiSchemaJsonConverter()
       @JsonKey(name: 'schema')
       required final OpenApiSchema schema}) = _$OpenApiContentSchemaImpl;
 
@@ -288,7 +288,7 @@ abstract class _OpenApiContentSchema implements OpenApiContentSchema {
       _$OpenApiContentSchemaImpl.fromJson;
 
   @override
-  @OpenApiSchemaJsonMapConverter()
+  @OpenApiSchemaJsonConverter()
   @JsonKey(name: 'schema')
   OpenApiSchema get schema;
 }

@@ -6,34 +6,34 @@ part 'open_api_schema.g.dart';
 const String _anyOfKey = 'anyOf';
 const String _refKey = '\$ref';
 
-@freezed
+@Freezed()
 class OpenApiSchema with _$OpenApiSchema {
   const OpenApiSchema._();
 
+  @FreezedUnionValue('type')
   const factory OpenApiSchema.type({
+    @JsonKey(name: 'enum') List<String>? enum_,
     @JsonKey(
       name: 'type',
       unknownEnumValue: OpenApiSchemaVarType.$unknown,
     )
     OpenApiSchemaVarType? type,
+    @OpenApiSchemaJsonConverter() @JsonKey(name: 'items') OpenApiSchema? items,
     @JsonKey(name: 'format') String? format,
     @JsonKey(name: 'description') String? description,
     @JsonKey(name: 'pattern') String? pattern,
-    @JsonKey(name: 'title') String? title,
     @JsonKey(name: 'default') Object? default_,
+    @JsonKey(name: 'title') String? title,
   }) = OpenApiSchemaType;
 
+  @FreezedUnionValue('ref')
   const factory OpenApiSchema.ref({
     @JsonKey(name: _refKey) String? ref,
-    @JsonKey(name: 'format') String? format,
-    @JsonKey(name: 'description') String? description,
-    @JsonKey(name: 'pattern') String? pattern,
-    @JsonKey(name: 'title') String? title,
-    @JsonKey(name: 'default') Object? default_,
   }) = OpenApiSchemaRef;
 
+  @FreezedUnionValue('anyOf')
   const factory OpenApiSchema.anyOf({
-    @OpenApiSchemaJsonMapConverter()
+    @OpenApiSchemaJsonConverter()
     @JsonKey(name: _anyOfKey)
     required List<OpenApiSchema>? anyOf,
     @JsonKey(name: 'title') String? title,
@@ -67,9 +67,9 @@ enum OpenApiSchemaVarType {
 
 const String _unionKeyType = 'runtimeType';
 
-class OpenApiSchemaJsonMapConverter
+class OpenApiSchemaJsonConverter
     implements JsonConverter<OpenApiSchema, Map<String, dynamic>> {
-  const OpenApiSchemaJsonMapConverter();
+  const OpenApiSchemaJsonConverter();
 
   @override
   OpenApiSchema fromJson(Map<String, dynamic> json) {

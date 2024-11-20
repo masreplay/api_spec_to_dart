@@ -499,7 +499,7 @@ mixin _$OpenApiPathMethodParameter {
   OpenApiPathMethodParameterType get in_ => throw _privateConstructorUsedError;
   @JsonKey(name: 'required')
   bool get required_ => throw _privateConstructorUsedError;
-  @OpenApiSchemaJsonMapConverter()
+  @OpenApiSchemaJsonConverter()
   @JsonKey(name: 'schema')
   OpenApiSchema get schema => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
@@ -510,7 +510,7 @@ mixin _$OpenApiPathMethodParameter {
             @JsonKey(name: 'name') String name,
             @JsonKey(name: 'in') OpenApiPathMethodParameterType in_,
             @JsonKey(name: 'required') bool required_,
-            @OpenApiSchemaJsonMapConverter()
+            @OpenApiSchemaJsonConverter()
             @JsonKey(name: 'schema')
             OpenApiSchema schema,
             String? description,
@@ -525,7 +525,7 @@ mixin _$OpenApiPathMethodParameter {
             @JsonKey(name: 'name') String name,
             @JsonKey(name: 'in') OpenApiPathMethodParameterType in_,
             @JsonKey(name: 'required') bool required_,
-            @OpenApiSchemaJsonMapConverter()
+            @OpenApiSchemaJsonConverter()
             @JsonKey(name: 'schema')
             OpenApiSchema schema,
             String? description,
@@ -546,7 +546,7 @@ class _$OpenApiPathMethodParameterImpl extends _OpenApiPathMethodParameter {
       {@JsonKey(name: 'name') required this.name,
       @JsonKey(name: 'in') required this.in_,
       @JsonKey(name: 'required') required this.required_,
-      @OpenApiSchemaJsonMapConverter()
+      @OpenApiSchemaJsonConverter()
       @JsonKey(name: 'schema')
       required this.schema,
       this.description,
@@ -567,7 +567,7 @@ class _$OpenApiPathMethodParameterImpl extends _OpenApiPathMethodParameter {
   @JsonKey(name: 'required')
   final bool required_;
   @override
-  @OpenApiSchemaJsonMapConverter()
+  @OpenApiSchemaJsonConverter()
   @JsonKey(name: 'schema')
   final OpenApiSchema schema;
   @override
@@ -607,7 +607,7 @@ class _$OpenApiPathMethodParameterImpl extends _OpenApiPathMethodParameter {
             @JsonKey(name: 'name') String name,
             @JsonKey(name: 'in') OpenApiPathMethodParameterType in_,
             @JsonKey(name: 'required') bool required_,
-            @OpenApiSchemaJsonMapConverter()
+            @OpenApiSchemaJsonConverter()
             @JsonKey(name: 'schema')
             OpenApiSchema schema,
             String? description,
@@ -624,7 +624,7 @@ class _$OpenApiPathMethodParameterImpl extends _OpenApiPathMethodParameter {
             @JsonKey(name: 'name') String name,
             @JsonKey(name: 'in') OpenApiPathMethodParameterType in_,
             @JsonKey(name: 'required') bool required_,
-            @OpenApiSchemaJsonMapConverter()
+            @OpenApiSchemaJsonConverter()
             @JsonKey(name: 'schema')
             OpenApiSchema schema,
             String? description,
@@ -651,7 +651,7 @@ abstract class _OpenApiPathMethodParameter extends OpenApiPathMethodParameter {
       {@JsonKey(name: 'name') required final String name,
       @JsonKey(name: 'in') required final OpenApiPathMethodParameterType in_,
       @JsonKey(name: 'required') required final bool required_,
-      @OpenApiSchemaJsonMapConverter()
+      @OpenApiSchemaJsonConverter()
       @JsonKey(name: 'schema')
       required final OpenApiSchema schema,
       final String? description,
@@ -671,7 +671,7 @@ abstract class _OpenApiPathMethodParameter extends OpenApiPathMethodParameter {
   @JsonKey(name: 'required')
   bool get required_;
   @override
-  @OpenApiSchemaJsonMapConverter()
+  @OpenApiSchemaJsonConverter()
   @JsonKey(name: 'schema')
   OpenApiSchema get schema;
   @override

@@ -24,7 +24,7 @@ class OpenApiContent with _$OpenApiContent {
 @freezed
 class OpenApiContentSchema with _$OpenApiContentSchema {
   factory OpenApiContentSchema({
-    @OpenApiSchemaJsonMapConverter()
+    @OpenApiSchemaJsonConverter()
     @JsonKey(name: 'schema')
     required OpenApiSchema schema,
   }) = _OpenApiContentSchema;
