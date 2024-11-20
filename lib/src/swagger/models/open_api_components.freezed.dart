@@ -25,99 +25,29 @@ mixin _$OpenApiComponents {
   @JsonKey(name: 'securitySchemes')
   Map<String, dynamic> get securitySchemes =>
       throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'schemas') Map<String, OpenApiSchema> schemas,
+            @JsonKey(name: 'securitySchemes')
+            Map<String, dynamic> securitySchemes)
+        $default,
+  ) =>
+      throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'schemas') Map<String, OpenApiSchema> schemas,
+            @JsonKey(name: 'securitySchemes')
+            Map<String, dynamic> securitySchemes)?
+        $default, {
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this OpenApiComponents to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of OpenApiComponents
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $OpenApiComponentsCopyWith<OpenApiComponents> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $OpenApiComponentsCopyWith<$Res> {
-  factory $OpenApiComponentsCopyWith(
-          OpenApiComponents value, $Res Function(OpenApiComponents) then) =
-      _$OpenApiComponentsCopyWithImpl<$Res, OpenApiComponents>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'schemas') Map<String, OpenApiSchema> schemas,
-      @JsonKey(name: 'securitySchemes') Map<String, dynamic> securitySchemes});
-}
-
-/// @nodoc
-class _$OpenApiComponentsCopyWithImpl<$Res, $Val extends OpenApiComponents>
-    implements $OpenApiComponentsCopyWith<$Res> {
-  _$OpenApiComponentsCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of OpenApiComponents
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? schemas = null,
-    Object? securitySchemes = null,
-  }) {
-    return _then(_value.copyWith(
-      schemas: null == schemas
-          ? _value.schemas
-          : schemas // ignore: cast_nullable_to_non_nullable
-              as Map<String, OpenApiSchema>,
-      securitySchemes: null == securitySchemes
-          ? _value.securitySchemes
-          : securitySchemes // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$OpenApiComponentsImplCopyWith<$Res>
-    implements $OpenApiComponentsCopyWith<$Res> {
-  factory _$$OpenApiComponentsImplCopyWith(_$OpenApiComponentsImpl value,
-          $Res Function(_$OpenApiComponentsImpl) then) =
-      __$$OpenApiComponentsImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'schemas') Map<String, OpenApiSchema> schemas,
-      @JsonKey(name: 'securitySchemes') Map<String, dynamic> securitySchemes});
-}
-
-/// @nodoc
-class __$$OpenApiComponentsImplCopyWithImpl<$Res>
-    extends _$OpenApiComponentsCopyWithImpl<$Res, _$OpenApiComponentsImpl>
-    implements _$$OpenApiComponentsImplCopyWith<$Res> {
-  __$$OpenApiComponentsImplCopyWithImpl(_$OpenApiComponentsImpl _value,
-      $Res Function(_$OpenApiComponentsImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of OpenApiComponents
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? schemas = null,
-    Object? securitySchemes = null,
-  }) {
-    return _then(_$OpenApiComponentsImpl(
-      schemas: null == schemas
-          ? _value._schemas
-          : schemas // ignore: cast_nullable_to_non_nullable
-              as Map<String, OpenApiSchema>,
-      securitySchemes: null == securitySchemes
-          ? _value._securitySchemes
-          : securitySchemes // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
-    ));
-  }
 }
 
 /// @nodoc
@@ -175,14 +105,33 @@ class _$OpenApiComponentsImpl extends _OpenApiComponents {
       const DeepCollectionEquality().hash(_schemas),
       const DeepCollectionEquality().hash(_securitySchemes));
 
-  /// Create a copy of OpenApiComponents
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$OpenApiComponentsImplCopyWith<_$OpenApiComponentsImpl> get copyWith =>
-      __$$OpenApiComponentsImplCopyWithImpl<_$OpenApiComponentsImpl>(
-          this, _$identity);
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'schemas') Map<String, OpenApiSchema> schemas,
+            @JsonKey(name: 'securitySchemes')
+            Map<String, dynamic> securitySchemes)
+        $default,
+  ) {
+    return $default(schemas, securitySchemes);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'schemas') Map<String, OpenApiSchema> schemas,
+            @JsonKey(name: 'securitySchemes')
+            Map<String, dynamic> securitySchemes)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(schemas, securitySchemes);
+    }
+    return orElse();
+  }
 
   @override
   Map<String, dynamic> toJson() {
@@ -210,13 +159,6 @@ abstract class _OpenApiComponents extends OpenApiComponents {
   @override
   @JsonKey(name: 'securitySchemes')
   Map<String, dynamic> get securitySchemes;
-
-  /// Create a copy of OpenApiComponents
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OpenApiComponentsImplCopyWith<_$OpenApiComponentsImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 OpenApiSchema _$OpenApiSchemaFromJson(Map<String, dynamic> json) {
@@ -225,48 +167,21 @@ OpenApiSchema _$OpenApiSchemaFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OpenApiSchema {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default,
+  ) =>
+      throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+
   /// Serializes this OpenApiSchema to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $OpenApiSchemaCopyWith<$Res> {
-  factory $OpenApiSchemaCopyWith(
-          OpenApiSchema value, $Res Function(OpenApiSchema) then) =
-      _$OpenApiSchemaCopyWithImpl<$Res, OpenApiSchema>;
-}
-
-/// @nodoc
-class _$OpenApiSchemaCopyWithImpl<$Res, $Val extends OpenApiSchema>
-    implements $OpenApiSchemaCopyWith<$Res> {
-  _$OpenApiSchemaCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of OpenApiSchema
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-abstract class _$$OpenApiSchemaImplCopyWith<$Res> {
-  factory _$$OpenApiSchemaImplCopyWith(
-          _$OpenApiSchemaImpl value, $Res Function(_$OpenApiSchemaImpl) then) =
-      __$$OpenApiSchemaImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$OpenApiSchemaImplCopyWithImpl<$Res>
-    extends _$OpenApiSchemaCopyWithImpl<$Res, _$OpenApiSchemaImpl>
-    implements _$$OpenApiSchemaImplCopyWith<$Res> {
-  __$$OpenApiSchemaImplCopyWithImpl(
-      _$OpenApiSchemaImpl _value, $Res Function(_$OpenApiSchemaImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of OpenApiSchema
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -291,6 +206,26 @@ class _$OpenApiSchemaImpl extends _OpenApiSchema {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default,
+  ) {
+    return $default();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default();
+    }
+    return orElse();
+  }
 
   @override
   Map<String, dynamic> toJson() {

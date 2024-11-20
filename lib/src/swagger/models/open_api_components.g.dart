@@ -19,7 +19,7 @@ _$OpenApiComponentsImpl _$$OpenApiComponentsImplFromJson(
 Map<String, dynamic> _$$OpenApiComponentsImplToJson(
         _$OpenApiComponentsImpl instance) =>
     <String, dynamic>{
-      'schemas': instance.schemas,
+      'schemas': instance.schemas.map((k, e) => MapEntry(k, e.toJson())),
       'securitySchemes': instance.securitySchemes,
     };
 

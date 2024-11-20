@@ -10,6 +10,8 @@ _$OpenApiImpl _$$OpenApiImplFromJson(Map<String, dynamic> json) =>
     _$OpenApiImpl(
       openapi: json['openapi'] as String,
       info: OpenApiInfo.fromJson(json['info'] as Map<String, dynamic>),
+      servers:
+          (json['servers'] as List<dynamic>?)?.map((e) => e as String).toList(),
       paths: (json['paths'] as Map<String, dynamic>).map(
         (k, e) => MapEntry(
             k,
@@ -25,10 +27,13 @@ _$OpenApiImpl _$$OpenApiImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$OpenApiImplToJson(_$OpenApiImpl instance) =>
     <String, dynamic>{
       'openapi': instance.openapi,
-      'info': instance.info,
+      'info': instance.info.toJson(),
+      if (instance.servers case final value?) 'servers': value,
       'paths': instance.paths.map((k, e) => MapEntry(
-          k, e.map((k, e) => MapEntry(_$OpenApiPathMethodTypeEnumMap[k]!, e)))),
-      'components': instance.components,
+          k,
+          e.map((k, e) =>
+              MapEntry(_$OpenApiPathMethodTypeEnumMap[k]!, e.toJson())))),
+      'components': instance.components.toJson(),
     };
 
 const _$OpenApiPathMethodTypeEnumMap = {

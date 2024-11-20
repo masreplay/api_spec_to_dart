@@ -14,6 +14,7 @@ class OpenApi with _$OpenApi {
   const factory OpenApi({
     @JsonKey(name: 'openapi') required String openapi,
     @JsonKey(name: 'info') required OpenApiInfo info,
+    @JsonKey(name: 'servers') required List<String>? servers,
     @JsonKey(name: 'paths') required OpenApiPaths paths,
     @JsonKey(name: 'components') required OpenApiComponents components,
   }) = _OpenApi;

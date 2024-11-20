@@ -76,7 +76,7 @@ class OpenApiPathMethodParameterSchema with _$OpenApiPathMethodParameterSchema {
     required String? title,
     required String? pattern,
     required List<OpenApiPathMethodParameterSchema>? anyOf,
-    required dynamic defaultValue,
+    required Object? defaultValue,
   }) = _OpenApiPathMethodParameterSchema;
 
   factory OpenApiPathMethodParameterSchema.fromJson(

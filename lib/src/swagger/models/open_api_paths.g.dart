@@ -26,10 +26,12 @@ Map<String, dynamic> _$$OpenApiPathMethodImplToJson(
         _$OpenApiPathMethodImpl instance) =>
     <String, dynamic>{
       'tags': instance.tags,
-      'summary': instance.summary,
+      if (instance.summary case final value?) 'summary': value,
       'operationId': instance.operationId,
-      'parameters': instance.parameters,
-      'responses': instance.responses,
+      'parameters': instance.parameters.map((e) => e.toJson()).toList(),
+      if (instance.responses?.map((k, e) => MapEntry(k, e.toJson()))
+          case final value?)
+        'responses': value,
     };
 
 _$OpenApiPathMethodParameterImpl _$$OpenApiPathMethodParameterImplFromJson(
@@ -50,9 +52,9 @@ Map<String, dynamic> _$$OpenApiPathMethodParameterImplToJson(
       'name': instance.name,
       'in': _$OpenApiPathMethodParameterTypeEnumMap[instance.in_]!,
       'required': instance.required_,
-      'schema': instance.schema,
-      'description': instance.description,
-      'example': instance.example,
+      'schema': instance.schema.toJson(),
+      if (instance.description case final value?) 'description': value,
+      if (instance.example case final value?) 'example': value,
     };
 
 const _$OpenApiPathMethodParameterTypeEnumMap = {
@@ -72,23 +74,24 @@ _$OpenApiPathMethodParameterSchemaImpl
           description: json['description'] as String?,
           title: json['title'] as String?,
           pattern: json['pattern'] as String?,
-          anyOf: (json['anyOf'] as List<dynamic>?)
+          anyOf: (json['any_of'] as List<dynamic>?)
               ?.map((e) => OpenApiPathMethodParameterSchema.fromJson(
                   e as Map<String, dynamic>))
               .toList(),
-          defaultValue: json['defaultValue'],
+          defaultValue: json['default_value'],
         );
 
 Map<String, dynamic> _$$OpenApiPathMethodParameterSchemaImplToJson(
         _$OpenApiPathMethodParameterSchemaImpl instance) =>
     <String, dynamic>{
       'type': _$OpenApiPathMethodParameterSchemaTypeEnumMap[instance.type]!,
-      'format': instance.format,
-      'description': instance.description,
-      'title': instance.title,
-      'pattern': instance.pattern,
-      'anyOf': instance.anyOf,
-      'defaultValue': instance.defaultValue,
+      if (instance.format case final value?) 'format': value,
+      if (instance.description case final value?) 'description': value,
+      if (instance.title case final value?) 'title': value,
+      if (instance.pattern case final value?) 'pattern': value,
+      if (instance.anyOf?.map((e) => e.toJson()).toList() case final value?)
+        'any_of': value,
+      if (instance.defaultValue case final value?) 'default_value': value,
     };
 
 const _$OpenApiPathMethodParameterSchemaTypeEnumMap = {

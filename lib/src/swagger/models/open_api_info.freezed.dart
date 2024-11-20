@@ -26,111 +26,29 @@ mixin _$OpenApiInfo {
   String get description => throw _privateConstructorUsedError;
   @JsonKey(name: 'version')
   String get version => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'title') String title,
+            @JsonKey(name: 'description') String description,
+            @JsonKey(name: 'version') String version)
+        $default,
+  ) =>
+      throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'title') String title,
+            @JsonKey(name: 'description') String description,
+            @JsonKey(name: 'version') String version)?
+        $default, {
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this OpenApiInfo to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of OpenApiInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $OpenApiInfoCopyWith<OpenApiInfo> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $OpenApiInfoCopyWith<$Res> {
-  factory $OpenApiInfoCopyWith(
-          OpenApiInfo value, $Res Function(OpenApiInfo) then) =
-      _$OpenApiInfoCopyWithImpl<$Res, OpenApiInfo>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'title') String title,
-      @JsonKey(name: 'description') String description,
-      @JsonKey(name: 'version') String version});
-}
-
-/// @nodoc
-class _$OpenApiInfoCopyWithImpl<$Res, $Val extends OpenApiInfo>
-    implements $OpenApiInfoCopyWith<$Res> {
-  _$OpenApiInfoCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of OpenApiInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? title = null,
-    Object? description = null,
-    Object? version = null,
-  }) {
-    return _then(_value.copyWith(
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      version: null == version
-          ? _value.version
-          : version // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$OpenApiInfoImplCopyWith<$Res>
-    implements $OpenApiInfoCopyWith<$Res> {
-  factory _$$OpenApiInfoImplCopyWith(
-          _$OpenApiInfoImpl value, $Res Function(_$OpenApiInfoImpl) then) =
-      __$$OpenApiInfoImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'title') String title,
-      @JsonKey(name: 'description') String description,
-      @JsonKey(name: 'version') String version});
-}
-
-/// @nodoc
-class __$$OpenApiInfoImplCopyWithImpl<$Res>
-    extends _$OpenApiInfoCopyWithImpl<$Res, _$OpenApiInfoImpl>
-    implements _$$OpenApiInfoImplCopyWith<$Res> {
-  __$$OpenApiInfoImplCopyWithImpl(
-      _$OpenApiInfoImpl _value, $Res Function(_$OpenApiInfoImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of OpenApiInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? title = null,
-    Object? description = null,
-    Object? version = null,
-  }) {
-    return _then(_$OpenApiInfoImpl(
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      version: null == version
-          ? _value.version
-          : version // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
@@ -175,13 +93,33 @@ class _$OpenApiInfoImpl extends _OpenApiInfo {
   @override
   int get hashCode => Object.hash(runtimeType, title, description, version);
 
-  /// Create a copy of OpenApiInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$OpenApiInfoImplCopyWith<_$OpenApiInfoImpl> get copyWith =>
-      __$$OpenApiInfoImplCopyWithImpl<_$OpenApiInfoImpl>(this, _$identity);
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'title') String title,
+            @JsonKey(name: 'description') String description,
+            @JsonKey(name: 'version') String version)
+        $default,
+  ) {
+    return $default(title, description, version);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'title') String title,
+            @JsonKey(name: 'description') String description,
+            @JsonKey(name: 'version') String version)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(title, description, version);
+    }
+    return orElse();
+  }
 
   @override
   Map<String, dynamic> toJson() {
@@ -211,11 +149,4 @@ abstract class _OpenApiInfo extends OpenApiInfo {
   @override
   @JsonKey(name: 'version')
   String get version;
-
-  /// Create a copy of OpenApiInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OpenApiInfoImplCopyWith<_$OpenApiInfoImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
