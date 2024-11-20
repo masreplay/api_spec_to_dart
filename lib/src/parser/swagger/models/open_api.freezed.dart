@@ -27,7 +27,7 @@ mixin _$OpenApi {
   @JsonKey(name: 'servers')
   List<OpenApiServer>? get servers => throw _privateConstructorUsedError;
   @JsonKey(name: 'paths')
-  Map<Uri, OpenApiPath> get paths => throw _privateConstructorUsedError;
+  Map<String, OpenApiPath> get paths => throw _privateConstructorUsedError;
   @JsonKey(name: 'components')
   OpenApiComponents get components => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,7 +36,7 @@ mixin _$OpenApi {
             @JsonKey(name: 'openapi') String openapi,
             @JsonKey(name: 'info') OpenApiInfo info,
             @JsonKey(name: 'servers') List<OpenApiServer>? servers,
-            @JsonKey(name: 'paths') Map<Uri, OpenApiPath> paths,
+            @JsonKey(name: 'paths') Map<String, OpenApiPath> paths,
             @JsonKey(name: 'components') OpenApiComponents components)
         $default,
   ) =>
@@ -48,7 +48,7 @@ mixin _$OpenApi {
             @JsonKey(name: 'openapi') String openapi,
             @JsonKey(name: 'info') OpenApiInfo info,
             @JsonKey(name: 'servers') List<OpenApiServer>? servers,
-            @JsonKey(name: 'paths') Map<Uri, OpenApiPath> paths,
+            @JsonKey(name: 'paths') Map<String, OpenApiPath> paths,
             @JsonKey(name: 'components') OpenApiComponents components)?
         $default, {
     required TResult orElse(),
@@ -66,7 +66,7 @@ class _$OpenApiImpl extends _OpenApi {
       {@JsonKey(name: 'openapi') required this.openapi,
       @JsonKey(name: 'info') required this.info,
       @JsonKey(name: 'servers') required final List<OpenApiServer>? servers,
-      @JsonKey(name: 'paths') required final Map<Uri, OpenApiPath> paths,
+      @JsonKey(name: 'paths') required final Map<String, OpenApiPath> paths,
       @JsonKey(name: 'components') required this.components})
       : _servers = servers,
         _paths = paths,
@@ -92,10 +92,10 @@ class _$OpenApiImpl extends _OpenApi {
     return EqualUnmodifiableListView(value);
   }
 
-  final Map<Uri, OpenApiPath> _paths;
+  final Map<String, OpenApiPath> _paths;
   @override
   @JsonKey(name: 'paths')
-  Map<Uri, OpenApiPath> get paths {
+  Map<String, OpenApiPath> get paths {
     if (_paths is EqualUnmodifiableMapView) return _paths;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_paths);
@@ -140,7 +140,7 @@ class _$OpenApiImpl extends _OpenApi {
             @JsonKey(name: 'openapi') String openapi,
             @JsonKey(name: 'info') OpenApiInfo info,
             @JsonKey(name: 'servers') List<OpenApiServer>? servers,
-            @JsonKey(name: 'paths') Map<Uri, OpenApiPath> paths,
+            @JsonKey(name: 'paths') Map<String, OpenApiPath> paths,
             @JsonKey(name: 'components') OpenApiComponents components)
         $default,
   ) {
@@ -154,7 +154,7 @@ class _$OpenApiImpl extends _OpenApi {
             @JsonKey(name: 'openapi') String openapi,
             @JsonKey(name: 'info') OpenApiInfo info,
             @JsonKey(name: 'servers') List<OpenApiServer>? servers,
-            @JsonKey(name: 'paths') Map<Uri, OpenApiPath> paths,
+            @JsonKey(name: 'paths') Map<String, OpenApiPath> paths,
             @JsonKey(name: 'components') OpenApiComponents components)?
         $default, {
     required TResult orElse(),
@@ -178,7 +178,7 @@ abstract class _OpenApi extends OpenApi {
       {@JsonKey(name: 'openapi') required final String openapi,
       @JsonKey(name: 'info') required final OpenApiInfo info,
       @JsonKey(name: 'servers') required final List<OpenApiServer>? servers,
-      @JsonKey(name: 'paths') required final Map<Uri, OpenApiPath> paths,
+      @JsonKey(name: 'paths') required final Map<String, OpenApiPath> paths,
       @JsonKey(name: 'components')
       required final OpenApiComponents components}) = _$OpenApiImpl;
   const _OpenApi._() : super._();
@@ -196,7 +196,7 @@ abstract class _OpenApi extends OpenApi {
   List<OpenApiServer>? get servers;
   @override
   @JsonKey(name: 'paths')
-  Map<Uri, OpenApiPath> get paths;
+  Map<String, OpenApiPath> get paths;
   @override
   @JsonKey(name: 'components')
   OpenApiComponents get components;

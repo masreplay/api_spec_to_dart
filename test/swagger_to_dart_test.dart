@@ -7,10 +7,6 @@ import 'package:swagger_to_dart/src/parser/swagger/models/open_api_info.dart';
 import 'package:swagger_to_dart/src/parser/swagger/models/open_api_paths.dart';
 import 'package:test/test.dart';
 
-extension on String {
-  Uri get _ => Uri.parse(this);
-}
-
 void main() {
   group('A group of tests', () {
     setUp(() {});
@@ -25,7 +21,7 @@ void main() {
         ),
         servers: null,
         paths: {
-          '/api'._: OpenApiPath(
+          '/api/': OpenApiPath(
             get: OpenApiPathMethod(
               tags: ['tag'],
               summary: 'summary',

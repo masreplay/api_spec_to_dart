@@ -4,7 +4,7 @@ part 'open_api_paths.freezed.dart';
 part 'open_api_paths.g.dart';
 
 /// "paths": {}
-typedef OpenApiPaths = Map<Uri, OpenApiPath>;
+typedef OpenApiPaths = Map<String, OpenApiPath>;
 
 @freezed
 class OpenApiPath with _$OpenApiPath {

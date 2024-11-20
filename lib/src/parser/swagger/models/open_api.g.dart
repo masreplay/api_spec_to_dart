@@ -14,8 +14,7 @@ _$OpenApiImpl _$$OpenApiImplFromJson(Map<String, dynamic> json) =>
           ?.map((e) => OpenApiServer.fromJson(e as Map<String, dynamic>))
           .toList(),
       paths: (json['paths'] as Map<String, dynamic>).map(
-        (k, e) => MapEntry(
-            Uri.parse(k), OpenApiPath.fromJson(e as Map<String, dynamic>)),
+        (k, e) => MapEntry(k, OpenApiPath.fromJson(e as Map<String, dynamic>)),
       ),
       components: OpenApiComponents.fromJson(
           json['components'] as Map<String, dynamic>),
@@ -27,7 +26,7 @@ Map<String, dynamic> _$$OpenApiImplToJson(_$OpenApiImpl instance) =>
       'info': instance.info.toJson(),
       if (instance.servers?.map((e) => e.toJson()).toList() case final value?)
         'servers': value,
-      'paths': instance.paths.map((k, e) => MapEntry(k.toString(), e.toJson())),
+      'paths': instance.paths.map((k, e) => MapEntry(k, e.toJson())),
       'components': instance.components.toJson(),
     };
 
