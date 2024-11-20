@@ -67,6 +67,7 @@ _$OpenApiSchemaRefImpl _$$OpenApiSchemaRefImplFromJson(
         Map<String, dynamic> json) =>
     _$OpenApiSchemaRefImpl(
       ref: json[r'$ref'] as String?,
+      default_: json['default'],
       $type: json['runtimeType'] as String?,
     );
 
@@ -74,6 +75,7 @@ Map<String, dynamic> _$$OpenApiSchemaRefImplToJson(
         _$OpenApiSchemaRefImpl instance) =>
     <String, dynamic>{
       if (instance.ref case final value?) r'$ref': value,
+      if (instance.default_ case final value?) 'default': value,
       'runtimeType': instance.$type,
     };
 
@@ -84,8 +86,8 @@ _$OpenApiSchemaAnyOfImpl _$$OpenApiSchemaAnyOfImplFromJson(
           ?.map((e) => const OpenApiSchemaJsonConverter()
               .fromJson(e as Map<String, dynamic>))
           .toList(),
-      title: json['title'] as String?,
       description: json['description'] as String?,
+      title: json['title'] as String?,
       $type: json['runtimeType'] as String?,
     );
 
@@ -97,7 +99,7 @@ Map<String, dynamic> _$$OpenApiSchemaAnyOfImplToJson(
               .toList()
           case final value?)
         'anyOf': value,
-      if (instance.title case final value?) 'title': value,
       if (instance.description case final value?) 'description': value,
+      if (instance.title case final value?) 'title': value,
       'runtimeType': instance.$type,
     };

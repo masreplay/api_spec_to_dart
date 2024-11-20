@@ -47,13 +47,15 @@ mixin _$OpenApiSchema {
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)
         type,
-    required TResult Function(@JsonKey(name: _refKey) String? ref) ref,
+    required TResult Function(@JsonKey(name: _refKey) String? ref,
+            @JsonKey(name: 'default') Object? default_)
+        ref,
     required TResult Function(
             @OpenApiSchemaJsonConverter()
             @JsonKey(name: _anyOfKey)
             List<OpenApiSchema>? anyOf,
-            @JsonKey(name: 'title') String? title,
-            @JsonKey(name: 'description') String? description)
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'title') String? title)
         anyOf,
   }) =>
       throw _privateConstructorUsedError;
@@ -74,13 +76,15 @@ mixin _$OpenApiSchema {
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)?
         type,
-    TResult Function(@JsonKey(name: _refKey) String? ref)? ref,
+    TResult Function(@JsonKey(name: _refKey) String? ref,
+            @JsonKey(name: 'default') Object? default_)?
+        ref,
     TResult Function(
             @OpenApiSchemaJsonConverter()
             @JsonKey(name: _anyOfKey)
             List<OpenApiSchema>? anyOf,
-            @JsonKey(name: 'title') String? title,
-            @JsonKey(name: 'description') String? description)?
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'title') String? title)?
         anyOf,
     required TResult orElse(),
   }) =>
@@ -199,13 +203,15 @@ class _$OpenApiSchemaTypeImpl extends OpenApiSchemaType {
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)
         type,
-    required TResult Function(@JsonKey(name: _refKey) String? ref) ref,
+    required TResult Function(@JsonKey(name: _refKey) String? ref,
+            @JsonKey(name: 'default') Object? default_)
+        ref,
     required TResult Function(
             @OpenApiSchemaJsonConverter()
             @JsonKey(name: _anyOfKey)
             List<OpenApiSchema>? anyOf,
-            @JsonKey(name: 'title') String? title,
-            @JsonKey(name: 'description') String? description)
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'title') String? title)
         anyOf,
   }) {
     return type(
@@ -229,13 +235,15 @@ class _$OpenApiSchemaTypeImpl extends OpenApiSchemaType {
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)?
         type,
-    TResult Function(@JsonKey(name: _refKey) String? ref)? ref,
+    TResult Function(@JsonKey(name: _refKey) String? ref,
+            @JsonKey(name: 'default') Object? default_)?
+        ref,
     TResult Function(
             @OpenApiSchemaJsonConverter()
             @JsonKey(name: _anyOfKey)
             List<OpenApiSchema>? anyOf,
-            @JsonKey(name: 'title') String? title,
-            @JsonKey(name: 'description') String? description)?
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'title') String? title)?
         anyOf,
     required TResult orElse(),
   }) {
@@ -295,7 +303,9 @@ abstract class OpenApiSchemaType extends OpenApiSchema {
 @JsonSerializable()
 class _$OpenApiSchemaRefImpl extends OpenApiSchemaRef {
   const _$OpenApiSchemaRefImpl(
-      {@JsonKey(name: _refKey) this.ref, final String? $type})
+      {@JsonKey(name: _refKey) this.ref,
+      @JsonKey(name: 'default') this.default_,
+      final String? $type})
       : $type = $type ?? 'ref',
         super._();
 
@@ -305,13 +315,16 @@ class _$OpenApiSchemaRefImpl extends OpenApiSchemaRef {
   @override
   @JsonKey(name: _refKey)
   final String? ref;
+  @override
+  @JsonKey(name: 'default')
+  final Object? default_;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'OpenApiSchema.ref(ref: $ref)';
+    return 'OpenApiSchema.ref(ref: $ref, default_: $default_)';
   }
 
   @override
@@ -319,12 +332,14 @@ class _$OpenApiSchemaRefImpl extends OpenApiSchemaRef {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OpenApiSchemaRefImpl &&
-            (identical(other.ref, ref) || other.ref == ref));
+            (identical(other.ref, ref) || other.ref == ref) &&
+            const DeepCollectionEquality().equals(other.default_, default_));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, ref);
+  int get hashCode => Object.hash(
+      runtimeType, ref, const DeepCollectionEquality().hash(default_));
 
   @override
   @optionalTypeArgs
@@ -343,16 +358,18 @@ class _$OpenApiSchemaRefImpl extends OpenApiSchemaRef {
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)
         type,
-    required TResult Function(@JsonKey(name: _refKey) String? ref) ref,
+    required TResult Function(@JsonKey(name: _refKey) String? ref,
+            @JsonKey(name: 'default') Object? default_)
+        ref,
     required TResult Function(
             @OpenApiSchemaJsonConverter()
             @JsonKey(name: _anyOfKey)
             List<OpenApiSchema>? anyOf,
-            @JsonKey(name: 'title') String? title,
-            @JsonKey(name: 'description') String? description)
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'title') String? title)
         anyOf,
   }) {
-    return ref(this.ref);
+    return ref(this.ref, default_);
   }
 
   @override
@@ -372,18 +389,20 @@ class _$OpenApiSchemaRefImpl extends OpenApiSchemaRef {
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)?
         type,
-    TResult Function(@JsonKey(name: _refKey) String? ref)? ref,
+    TResult Function(@JsonKey(name: _refKey) String? ref,
+            @JsonKey(name: 'default') Object? default_)?
+        ref,
     TResult Function(
             @OpenApiSchemaJsonConverter()
             @JsonKey(name: _anyOfKey)
             List<OpenApiSchema>? anyOf,
-            @JsonKey(name: 'title') String? title,
-            @JsonKey(name: 'description') String? description)?
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'title') String? title)?
         anyOf,
     required TResult orElse(),
   }) {
     if (ref != null) {
-      return ref(this.ref);
+      return ref(this.ref, default_);
     }
     return orElse();
   }
@@ -397,7 +416,9 @@ class _$OpenApiSchemaRefImpl extends OpenApiSchemaRef {
 }
 
 abstract class OpenApiSchemaRef extends OpenApiSchema {
-  const factory OpenApiSchemaRef({@JsonKey(name: _refKey) final String? ref}) =
+  const factory OpenApiSchemaRef(
+          {@JsonKey(name: _refKey) final String? ref,
+          @JsonKey(name: 'default') final Object? default_}) =
       _$OpenApiSchemaRefImpl;
   const OpenApiSchemaRef._() : super._();
 
@@ -406,6 +427,8 @@ abstract class OpenApiSchemaRef extends OpenApiSchema {
 
   @JsonKey(name: _refKey)
   String? get ref;
+  @JsonKey(name: 'default')
+  Object? get default_;
 }
 
 /// @nodoc
@@ -415,8 +438,8 @@ class _$OpenApiSchemaAnyOfImpl extends OpenApiSchemaAnyOf {
       {@OpenApiSchemaJsonConverter()
       @JsonKey(name: _anyOfKey)
       required final List<OpenApiSchema>? anyOf,
-      @JsonKey(name: 'title') this.title,
       @JsonKey(name: 'description') this.description,
+      @JsonKey(name: 'title') this.title,
       final String? $type})
       : _anyOf = anyOf,
         $type = $type ?? 'anyOf',
@@ -438,18 +461,18 @@ class _$OpenApiSchemaAnyOfImpl extends OpenApiSchemaAnyOf {
   }
 
   @override
-  @JsonKey(name: 'title')
-  final String? title;
-  @override
   @JsonKey(name: 'description')
   final String? description;
+  @override
+  @JsonKey(name: 'title')
+  final String? title;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'OpenApiSchema.anyOf(anyOf: $anyOf, title: $title, description: $description)';
+    return 'OpenApiSchema.anyOf(anyOf: $anyOf, description: $description, title: $title)';
   }
 
   @override
@@ -458,15 +481,15 @@ class _$OpenApiSchemaAnyOfImpl extends OpenApiSchemaAnyOf {
         (other.runtimeType == runtimeType &&
             other is _$OpenApiSchemaAnyOfImpl &&
             const DeepCollectionEquality().equals(other._anyOf, _anyOf) &&
-            (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
-                other.description == description));
+                other.description == description) &&
+            (identical(other.title, title) || other.title == title));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_anyOf), title, description);
+      const DeepCollectionEquality().hash(_anyOf), description, title);
 
   @override
   @optionalTypeArgs
@@ -485,16 +508,18 @@ class _$OpenApiSchemaAnyOfImpl extends OpenApiSchemaAnyOf {
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)
         type,
-    required TResult Function(@JsonKey(name: _refKey) String? ref) ref,
+    required TResult Function(@JsonKey(name: _refKey) String? ref,
+            @JsonKey(name: 'default') Object? default_)
+        ref,
     required TResult Function(
             @OpenApiSchemaJsonConverter()
             @JsonKey(name: _anyOfKey)
             List<OpenApiSchema>? anyOf,
-            @JsonKey(name: 'title') String? title,
-            @JsonKey(name: 'description') String? description)
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'title') String? title)
         anyOf,
   }) {
-    return anyOf(this.anyOf, title, description);
+    return anyOf(this.anyOf, description, title);
   }
 
   @override
@@ -514,18 +539,20 @@ class _$OpenApiSchemaAnyOfImpl extends OpenApiSchemaAnyOf {
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)?
         type,
-    TResult Function(@JsonKey(name: _refKey) String? ref)? ref,
+    TResult Function(@JsonKey(name: _refKey) String? ref,
+            @JsonKey(name: 'default') Object? default_)?
+        ref,
     TResult Function(
             @OpenApiSchemaJsonConverter()
             @JsonKey(name: _anyOfKey)
             List<OpenApiSchema>? anyOf,
-            @JsonKey(name: 'title') String? title,
-            @JsonKey(name: 'description') String? description)?
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'title') String? title)?
         anyOf,
     required TResult orElse(),
   }) {
     if (anyOf != null) {
-      return anyOf(this.anyOf, title, description);
+      return anyOf(this.anyOf, description, title);
     }
     return orElse();
   }
@@ -540,12 +567,11 @@ class _$OpenApiSchemaAnyOfImpl extends OpenApiSchemaAnyOf {
 
 abstract class OpenApiSchemaAnyOf extends OpenApiSchema {
   const factory OpenApiSchemaAnyOf(
-          {@OpenApiSchemaJsonConverter()
-          @JsonKey(name: _anyOfKey)
-          required final List<OpenApiSchema>? anyOf,
-          @JsonKey(name: 'title') final String? title,
-          @JsonKey(name: 'description') final String? description}) =
-      _$OpenApiSchemaAnyOfImpl;
+      {@OpenApiSchemaJsonConverter()
+      @JsonKey(name: _anyOfKey)
+      required final List<OpenApiSchema>? anyOf,
+      @JsonKey(name: 'description') final String? description,
+      @JsonKey(name: 'title') final String? title}) = _$OpenApiSchemaAnyOfImpl;
   const OpenApiSchemaAnyOf._() : super._();
 
   factory OpenApiSchemaAnyOf.fromJson(Map<String, dynamic> json) =
@@ -554,8 +580,8 @@ abstract class OpenApiSchemaAnyOf extends OpenApiSchema {
   @OpenApiSchemaJsonConverter()
   @JsonKey(name: _anyOfKey)
   List<OpenApiSchema>? get anyOf;
-  @JsonKey(name: 'title')
-  String? get title;
   @JsonKey(name: 'description')
   String? get description;
+  @JsonKey(name: 'title')
+  String? get title;
 }

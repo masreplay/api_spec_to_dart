@@ -29,6 +29,7 @@ class OpenApiSchema with _$OpenApiSchema {
   @FreezedUnionValue('ref')
   const factory OpenApiSchema.ref({
     @JsonKey(name: _refKey) String? ref,
+    @JsonKey(name: 'default') Object? default_,
   }) = OpenApiSchemaRef;
 
   @FreezedUnionValue('anyOf')
@@ -36,8 +37,8 @@ class OpenApiSchema with _$OpenApiSchema {
     @OpenApiSchemaJsonConverter()
     @JsonKey(name: _anyOfKey)
     required List<OpenApiSchema>? anyOf,
-    @JsonKey(name: 'title') String? title,
     @JsonKey(name: 'description') String? description,
+    @JsonKey(name: 'title') String? title,
   }) = OpenApiSchemaAnyOf;
 
   factory OpenApiSchema.fromJson(
