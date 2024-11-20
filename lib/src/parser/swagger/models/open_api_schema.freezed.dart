@@ -48,6 +48,7 @@ mixin _$OpenApiSchema {
             @JsonKey(name: 'format') String? format,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'pattern') String? pattern,
+            @JsonKey(name: 'const') Object? const_,
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)
         type,
@@ -88,6 +89,7 @@ mixin _$OpenApiSchema {
             @JsonKey(name: 'format') String? format,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'pattern') String? pattern,
+            @JsonKey(name: 'const') Object? const_,
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)?
         type,
@@ -131,6 +133,7 @@ class _$OpenApiSchemaTypeImpl extends OpenApiSchemaType {
       @JsonKey(name: 'format') this.format,
       @JsonKey(name: 'description') this.description,
       @JsonKey(name: 'pattern') this.pattern,
+      @JsonKey(name: 'const') this.const_,
       @JsonKey(name: 'default') this.default_,
       @JsonKey(name: 'title') this.title,
       final String? $type})
@@ -175,6 +178,9 @@ class _$OpenApiSchemaTypeImpl extends OpenApiSchemaType {
   @JsonKey(name: 'pattern')
   final String? pattern;
   @override
+  @JsonKey(name: 'const')
+  final Object? const_;
+  @override
   @JsonKey(name: 'default')
   final Object? default_;
   @override
@@ -186,7 +192,7 @@ class _$OpenApiSchemaTypeImpl extends OpenApiSchemaType {
 
   @override
   String toString() {
-    return 'OpenApiSchema.type(enum_: $enum_, type: $type, items: $items, maxLength: $maxLength, minLength: $minLength, format: $format, description: $description, pattern: $pattern, default_: $default_, title: $title)';
+    return 'OpenApiSchema.type(enum_: $enum_, type: $type, items: $items, maxLength: $maxLength, minLength: $minLength, format: $format, description: $description, pattern: $pattern, const_: $const_, default_: $default_, title: $title)';
   }
 
   @override
@@ -205,6 +211,7 @@ class _$OpenApiSchemaTypeImpl extends OpenApiSchemaType {
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.pattern, pattern) || other.pattern == pattern) &&
+            const DeepCollectionEquality().equals(other.const_, const_) &&
             const DeepCollectionEquality().equals(other.default_, default_) &&
             (identical(other.title, title) || other.title == title));
   }
@@ -221,6 +228,7 @@ class _$OpenApiSchemaTypeImpl extends OpenApiSchemaType {
       format,
       description,
       pattern,
+      const DeepCollectionEquality().hash(const_),
       const DeepCollectionEquality().hash(default_),
       title);
 
@@ -240,6 +248,7 @@ class _$OpenApiSchemaTypeImpl extends OpenApiSchemaType {
             @JsonKey(name: 'format') String? format,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'pattern') String? pattern,
+            @JsonKey(name: 'const') Object? const_,
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)
         type,
@@ -264,7 +273,7 @@ class _$OpenApiSchemaTypeImpl extends OpenApiSchemaType {
         oneOf,
   }) {
     return type(enum_, this.type, items, maxLength, minLength, format,
-        description, pattern, default_, title);
+        description, pattern, const_, default_, title);
   }
 
   @override
@@ -283,6 +292,7 @@ class _$OpenApiSchemaTypeImpl extends OpenApiSchemaType {
             @JsonKey(name: 'format') String? format,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'pattern') String? pattern,
+            @JsonKey(name: 'const') Object? const_,
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)?
         type,
@@ -309,7 +319,7 @@ class _$OpenApiSchemaTypeImpl extends OpenApiSchemaType {
   }) {
     if (type != null) {
       return type(enum_, this.type, items, maxLength, minLength, format,
-          description, pattern, default_, title);
+          description, pattern, const_, default_, title);
     }
     return orElse();
   }
@@ -335,6 +345,7 @@ abstract class OpenApiSchemaType extends OpenApiSchema {
       @JsonKey(name: 'format') final String? format,
       @JsonKey(name: 'description') final String? description,
       @JsonKey(name: 'pattern') final String? pattern,
+      @JsonKey(name: 'const') final Object? const_,
       @JsonKey(name: 'default') final Object? default_,
       @JsonKey(name: 'title') final String? title}) = _$OpenApiSchemaTypeImpl;
   const OpenApiSchemaType._() : super._();
@@ -359,6 +370,8 @@ abstract class OpenApiSchemaType extends OpenApiSchema {
   String? get description;
   @JsonKey(name: 'pattern')
   String? get pattern;
+  @JsonKey(name: 'const')
+  Object? get const_;
   @JsonKey(name: 'default')
   Object? get default_;
   @JsonKey(name: 'title')
@@ -423,6 +436,7 @@ class _$OpenApiSchemaRefImpl extends OpenApiSchemaRef {
             @JsonKey(name: 'format') String? format,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'pattern') String? pattern,
+            @JsonKey(name: 'const') Object? const_,
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)
         type,
@@ -465,6 +479,7 @@ class _$OpenApiSchemaRefImpl extends OpenApiSchemaRef {
             @JsonKey(name: 'format') String? format,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'pattern') String? pattern,
+            @JsonKey(name: 'const') Object? const_,
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)?
         type,
@@ -595,6 +610,7 @@ class _$OpenApiSchemaAnyOfImpl extends OpenApiSchemaAnyOf {
             @JsonKey(name: 'format') String? format,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'pattern') String? pattern,
+            @JsonKey(name: 'const') Object? const_,
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)
         type,
@@ -637,6 +653,7 @@ class _$OpenApiSchemaAnyOfImpl extends OpenApiSchemaAnyOf {
             @JsonKey(name: 'format') String? format,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'pattern') String? pattern,
+            @JsonKey(name: 'const') Object? const_,
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)?
         type,
@@ -782,6 +799,7 @@ class _$OpenApiSchemaOneOfImpl extends OpenApiSchemaOneOf {
             @JsonKey(name: 'format') String? format,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'pattern') String? pattern,
+            @JsonKey(name: 'const') Object? const_,
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)
         type,
@@ -824,6 +842,7 @@ class _$OpenApiSchemaOneOfImpl extends OpenApiSchemaOneOf {
             @JsonKey(name: 'format') String? format,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'pattern') String? pattern,
+            @JsonKey(name: 'const') Object? const_,
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)?
         type,

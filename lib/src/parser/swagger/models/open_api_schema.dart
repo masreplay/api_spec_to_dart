@@ -25,6 +25,7 @@ class OpenApiSchema with _$OpenApiSchema {
     @JsonKey(name: 'format') String? format,
     @JsonKey(name: 'description') String? description,
     @JsonKey(name: 'pattern') String? pattern,
+    @JsonKey(name: 'const') Object? const_,
     @JsonKey(name: 'default') Object? default_,
     @JsonKey(name: 'title') String? title,
   }) = OpenApiSchemaType;
