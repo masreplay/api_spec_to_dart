@@ -219,6 +219,8 @@ mixin _$OpenApiPathMethod {
   @JsonKey(name: 'parameters')
   List<OpenApiPathMethodParameter>? get parameters =>
       throw _privateConstructorUsedError;
+  OpenApiPathMethodRequestBody? get requestBody =>
+      throw _privateConstructorUsedError;
   Map<String, OpenApiPathMethodResponse>? get responses =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -232,6 +234,7 @@ mixin _$OpenApiPathMethod {
             List<Map<String, List<dynamic>>>? security,
             @JsonKey(name: 'parameters')
             List<OpenApiPathMethodParameter>? parameters,
+            OpenApiPathMethodRequestBody? requestBody,
             Map<String, OpenApiPathMethodResponse>? responses)
         $default,
   ) =>
@@ -248,6 +251,7 @@ mixin _$OpenApiPathMethod {
             List<Map<String, List<dynamic>>>? security,
             @JsonKey(name: 'parameters')
             List<OpenApiPathMethodParameter>? parameters,
+            OpenApiPathMethodRequestBody? requestBody,
             Map<String, OpenApiPathMethodResponse>? responses)?
         $default, {
     required TResult orElse(),
@@ -270,6 +274,7 @@ class _$OpenApiPathMethodImpl extends _OpenApiPathMethod {
       final List<Map<String, List<dynamic>>>? security,
       @JsonKey(name: 'parameters')
       required final List<OpenApiPathMethodParameter>? parameters,
+      required this.requestBody,
       required final Map<String, OpenApiPathMethodResponse>? responses})
       : _tags = tags,
         _security = security,
@@ -320,6 +325,8 @@ class _$OpenApiPathMethodImpl extends _OpenApiPathMethod {
     return EqualUnmodifiableListView(value);
   }
 
+  @override
+  final OpenApiPathMethodRequestBody? requestBody;
   final Map<String, OpenApiPathMethodResponse>? _responses;
   @override
   Map<String, OpenApiPathMethodResponse>? get responses {
@@ -332,7 +339,7 @@ class _$OpenApiPathMethodImpl extends _OpenApiPathMethod {
 
   @override
   String toString() {
-    return 'OpenApiPathMethod(tags: $tags, summary: $summary, description: $description, operationId: $operationId, security: $security, parameters: $parameters, responses: $responses)';
+    return 'OpenApiPathMethod(tags: $tags, summary: $summary, description: $description, operationId: $operationId, security: $security, parameters: $parameters, requestBody: $requestBody, responses: $responses)';
   }
 
   @override
@@ -349,6 +356,8 @@ class _$OpenApiPathMethodImpl extends _OpenApiPathMethod {
             const DeepCollectionEquality().equals(other._security, _security) &&
             const DeepCollectionEquality()
                 .equals(other._parameters, _parameters) &&
+            (identical(other.requestBody, requestBody) ||
+                other.requestBody == requestBody) &&
             const DeepCollectionEquality()
                 .equals(other._responses, _responses));
   }
@@ -363,6 +372,7 @@ class _$OpenApiPathMethodImpl extends _OpenApiPathMethod {
       operationId,
       const DeepCollectionEquality().hash(_security),
       const DeepCollectionEquality().hash(_parameters),
+      requestBody,
       const DeepCollectionEquality().hash(_responses));
 
   @override
@@ -377,11 +387,12 @@ class _$OpenApiPathMethodImpl extends _OpenApiPathMethod {
             List<Map<String, List<dynamic>>>? security,
             @JsonKey(name: 'parameters')
             List<OpenApiPathMethodParameter>? parameters,
+            OpenApiPathMethodRequestBody? requestBody,
             Map<String, OpenApiPathMethodResponse>? responses)
         $default,
   ) {
     return $default(tags, summary, description, operationId, security,
-        parameters, responses);
+        parameters, requestBody, responses);
   }
 
   @override
@@ -396,13 +407,14 @@ class _$OpenApiPathMethodImpl extends _OpenApiPathMethod {
             List<Map<String, List<dynamic>>>? security,
             @JsonKey(name: 'parameters')
             List<OpenApiPathMethodParameter>? parameters,
+            OpenApiPathMethodRequestBody? requestBody,
             Map<String, OpenApiPathMethodResponse>? responses)?
         $default, {
     required TResult orElse(),
   }) {
     if ($default != null) {
       return $default(tags, summary, description, operationId, security,
-          parameters, responses);
+          parameters, requestBody, responses);
     }
     return orElse();
   }
@@ -425,6 +437,7 @@ abstract class _OpenApiPathMethod extends OpenApiPathMethod {
           final List<Map<String, List<dynamic>>>? security,
           @JsonKey(name: 'parameters')
           required final List<OpenApiPathMethodParameter>? parameters,
+          required final OpenApiPathMethodRequestBody? requestBody,
           required final Map<String, OpenApiPathMethodResponse>? responses}) =
       _$OpenApiPathMethodImpl;
   const _OpenApiPathMethod._() : super._();
@@ -450,6 +463,8 @@ abstract class _OpenApiPathMethod extends OpenApiPathMethod {
   @override
   @JsonKey(name: 'parameters')
   List<OpenApiPathMethodParameter>? get parameters;
+  @override
+  OpenApiPathMethodRequestBody? get requestBody;
   @override
   Map<String, OpenApiPathMethodResponse>? get responses;
 }
@@ -658,12 +673,11 @@ mixin _$OpenApiPathMethodResponse {
   @JsonKey(name: 'description')
   String? get description => throw _privateConstructorUsedError;
   @JsonKey(name: 'content')
-  OpenApiPathMethodResponseContent get content =>
-      throw _privateConstructorUsedError;
+  OpenApiContent get content => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(@JsonKey(name: 'description') String? description,
-            @JsonKey(name: 'content') OpenApiPathMethodResponseContent content)
+            @JsonKey(name: 'content') OpenApiContent content)
         $default,
   ) =>
       throw _privateConstructorUsedError;
@@ -671,7 +685,7 @@ mixin _$OpenApiPathMethodResponse {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(@JsonKey(name: 'description') String? description,
-            @JsonKey(name: 'content') OpenApiPathMethodResponseContent content)?
+            @JsonKey(name: 'content') OpenApiContent content)?
         $default, {
     required TResult orElse(),
   }) =>
@@ -696,7 +710,7 @@ class _$OpenApiPathMethodResponseImpl implements _OpenApiPathMethodResponse {
   final String? description;
   @override
   @JsonKey(name: 'content')
-  final OpenApiPathMethodResponseContent content;
+  final OpenApiContent content;
 
   @override
   String toString() {
@@ -721,7 +735,7 @@ class _$OpenApiPathMethodResponseImpl implements _OpenApiPathMethodResponse {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(@JsonKey(name: 'description') String? description,
-            @JsonKey(name: 'content') OpenApiPathMethodResponseContent content)
+            @JsonKey(name: 'content') OpenApiContent content)
         $default,
   ) {
     return $default(description, content);
@@ -731,7 +745,7 @@ class _$OpenApiPathMethodResponseImpl implements _OpenApiPathMethodResponse {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(@JsonKey(name: 'description') String? description,
-            @JsonKey(name: 'content') OpenApiPathMethodResponseContent content)?
+            @JsonKey(name: 'content') OpenApiContent content)?
         $default, {
     required TResult orElse(),
   }) {
@@ -752,8 +766,7 @@ class _$OpenApiPathMethodResponseImpl implements _OpenApiPathMethodResponse {
 abstract class _OpenApiPathMethodResponse implements OpenApiPathMethodResponse {
   factory _OpenApiPathMethodResponse(
           {@JsonKey(name: 'description') final String? description,
-          @JsonKey(name: 'content')
-          required final OpenApiPathMethodResponseContent content}) =
+          @JsonKey(name: 'content') required final OpenApiContent content}) =
       _$OpenApiPathMethodResponseImpl;
 
   factory _OpenApiPathMethodResponse.fromJson(Map<String, dynamic> json) =
@@ -764,277 +777,107 @@ abstract class _OpenApiPathMethodResponse implements OpenApiPathMethodResponse {
   String? get description;
   @override
   @JsonKey(name: 'content')
-  OpenApiPathMethodResponseContent get content;
+  OpenApiContent get content;
 }
 
-OpenApiPathMethodResponseContent _$OpenApiPathMethodResponseContentFromJson(
+OpenApiPathMethodRequestBody _$OpenApiPathMethodRequestBodyFromJson(
     Map<String, dynamic> json) {
-  return _OpenApiPathMethodResponseContent.fromJson(json);
+  return _OpenApiPathMethodRequestBody.fromJson(json);
 }
 
 /// @nodoc
-mixin _$OpenApiPathMethodResponseContent {
-  @JsonKey(name: 'application/json')
-  OpenApiPathMethodResponseContentSchema? get applicationJson =>
-      throw _privateConstructorUsedError;
-  @JsonKey(name: 'application/x-www-form-urlencoded')
-  OpenApiPathMethodResponseContentSchema? get applicationXWwwFormUrlencoded =>
-      throw _privateConstructorUsedError;
+mixin _$OpenApiPathMethodRequestBody {
+  @JsonKey(name: 'content')
+  OpenApiContent get content => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(
-            @JsonKey(name: 'application/json')
-            OpenApiPathMethodResponseContentSchema? applicationJson,
-            @JsonKey(name: 'application/x-www-form-urlencoded')
-            OpenApiPathMethodResponseContentSchema?
-                applicationXWwwFormUrlencoded)
-        $default,
+    TResult Function(@JsonKey(name: 'content') OpenApiContent content) $default,
   ) =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            @JsonKey(name: 'application/json')
-            OpenApiPathMethodResponseContentSchema? applicationJson,
-            @JsonKey(name: 'application/x-www-form-urlencoded')
-            OpenApiPathMethodResponseContentSchema?
-                applicationXWwwFormUrlencoded)?
+    TResult Function(@JsonKey(name: 'content') OpenApiContent content)?
         $default, {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 
-  /// Serializes this OpenApiPathMethodResponseContent to a JSON map.
+  /// Serializes this OpenApiPathMethodRequestBody to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$OpenApiPathMethodResponseContentImpl
-    implements _OpenApiPathMethodResponseContent {
-  _$OpenApiPathMethodResponseContentImpl(
-      {@JsonKey(name: 'application/json') required this.applicationJson,
-      @JsonKey(name: 'application/x-www-form-urlencoded')
-      required this.applicationXWwwFormUrlencoded});
+class _$OpenApiPathMethodRequestBodyImpl
+    implements _OpenApiPathMethodRequestBody {
+  _$OpenApiPathMethodRequestBodyImpl(
+      {@JsonKey(name: 'content') required this.content});
 
-  factory _$OpenApiPathMethodResponseContentImpl.fromJson(
+  factory _$OpenApiPathMethodRequestBodyImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$OpenApiPathMethodResponseContentImplFromJson(json);
+      _$$OpenApiPathMethodRequestBodyImplFromJson(json);
 
   @override
-  @JsonKey(name: 'application/json')
-  final OpenApiPathMethodResponseContentSchema? applicationJson;
-  @override
-  @JsonKey(name: 'application/x-www-form-urlencoded')
-  final OpenApiPathMethodResponseContentSchema? applicationXWwwFormUrlencoded;
+  @JsonKey(name: 'content')
+  final OpenApiContent content;
 
   @override
   String toString() {
-    return 'OpenApiPathMethodResponseContent(applicationJson: $applicationJson, applicationXWwwFormUrlencoded: $applicationXWwwFormUrlencoded)';
+    return 'OpenApiPathMethodRequestBody(content: $content)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OpenApiPathMethodResponseContentImpl &&
-            (identical(other.applicationJson, applicationJson) ||
-                other.applicationJson == applicationJson) &&
-            (identical(other.applicationXWwwFormUrlencoded,
-                    applicationXWwwFormUrlencoded) ||
-                other.applicationXWwwFormUrlencoded ==
-                    applicationXWwwFormUrlencoded));
+            other is _$OpenApiPathMethodRequestBodyImpl &&
+            (identical(other.content, content) || other.content == content));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, applicationJson, applicationXWwwFormUrlencoded);
+  int get hashCode => Object.hash(runtimeType, content);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(
-            @JsonKey(name: 'application/json')
-            OpenApiPathMethodResponseContentSchema? applicationJson,
-            @JsonKey(name: 'application/x-www-form-urlencoded')
-            OpenApiPathMethodResponseContentSchema?
-                applicationXWwwFormUrlencoded)
-        $default,
+    TResult Function(@JsonKey(name: 'content') OpenApiContent content) $default,
   ) {
-    return $default(applicationJson, applicationXWwwFormUrlencoded);
+    return $default(content);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            @JsonKey(name: 'application/json')
-            OpenApiPathMethodResponseContentSchema? applicationJson,
-            @JsonKey(name: 'application/x-www-form-urlencoded')
-            OpenApiPathMethodResponseContentSchema?
-                applicationXWwwFormUrlencoded)?
+    TResult Function(@JsonKey(name: 'content') OpenApiContent content)?
         $default, {
     required TResult orElse(),
   }) {
     if ($default != null) {
-      return $default(applicationJson, applicationXWwwFormUrlencoded);
+      return $default(content);
     }
     return orElse();
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$OpenApiPathMethodResponseContentImplToJson(
+    return _$$OpenApiPathMethodRequestBodyImplToJson(
       this,
     );
   }
 }
 
-abstract class _OpenApiPathMethodResponseContent
-    implements OpenApiPathMethodResponseContent {
-  factory _OpenApiPathMethodResponseContent(
-          {@JsonKey(name: 'application/json')
-          required final OpenApiPathMethodResponseContentSchema? applicationJson,
-          @JsonKey(name: 'application/x-www-form-urlencoded')
-          required final OpenApiPathMethodResponseContentSchema?
-              applicationXWwwFormUrlencoded}) =
-      _$OpenApiPathMethodResponseContentImpl;
+abstract class _OpenApiPathMethodRequestBody
+    implements OpenApiPathMethodRequestBody {
+  factory _OpenApiPathMethodRequestBody(
+          {@JsonKey(name: 'content') required final OpenApiContent content}) =
+      _$OpenApiPathMethodRequestBodyImpl;
 
-  factory _OpenApiPathMethodResponseContent.fromJson(
-          Map<String, dynamic> json) =
-      _$OpenApiPathMethodResponseContentImpl.fromJson;
+  factory _OpenApiPathMethodRequestBody.fromJson(Map<String, dynamic> json) =
+      _$OpenApiPathMethodRequestBodyImpl.fromJson;
 
   @override
-  @JsonKey(name: 'application/json')
-  OpenApiPathMethodResponseContentSchema? get applicationJson;
-  @override
-  @JsonKey(name: 'application/x-www-form-urlencoded')
-  OpenApiPathMethodResponseContentSchema? get applicationXWwwFormUrlencoded;
-}
-
-OpenApiPathMethodResponseContentSchema
-    _$OpenApiPathMethodResponseContentSchemaFromJson(
-        Map<String, dynamic> json) {
-  return _OpenApiPathMethodResponseContentSchema.fromJson(json);
-}
-
-/// @nodoc
-mixin _$OpenApiPathMethodResponseContentSchema {
-  @OpenApiSchemaJsonMapConverter()
-  @JsonKey(name: 'schema')
-  OpenApiSchema get schema => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            @OpenApiSchemaJsonMapConverter()
-            @JsonKey(name: 'schema')
-            OpenApiSchema schema)
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            @OpenApiSchemaJsonMapConverter()
-            @JsonKey(name: 'schema')
-            OpenApiSchema schema)?
-        $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this OpenApiPathMethodResponseContentSchema to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$OpenApiPathMethodResponseContentSchemaImpl
-    implements _OpenApiPathMethodResponseContentSchema {
-  _$OpenApiPathMethodResponseContentSchemaImpl(
-      {@OpenApiSchemaJsonMapConverter()
-      @JsonKey(name: 'schema')
-      required this.schema});
-
-  factory _$OpenApiPathMethodResponseContentSchemaImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$OpenApiPathMethodResponseContentSchemaImplFromJson(json);
-
-  @override
-  @OpenApiSchemaJsonMapConverter()
-  @JsonKey(name: 'schema')
-  final OpenApiSchema schema;
-
-  @override
-  String toString() {
-    return 'OpenApiPathMethodResponseContentSchema(schema: $schema)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$OpenApiPathMethodResponseContentSchemaImpl &&
-            (identical(other.schema, schema) || other.schema == schema));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, schema);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            @OpenApiSchemaJsonMapConverter()
-            @JsonKey(name: 'schema')
-            OpenApiSchema schema)
-        $default,
-  ) {
-    return $default(schema);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            @OpenApiSchemaJsonMapConverter()
-            @JsonKey(name: 'schema')
-            OpenApiSchema schema)?
-        $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(schema);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$OpenApiPathMethodResponseContentSchemaImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _OpenApiPathMethodResponseContentSchema
-    implements OpenApiPathMethodResponseContentSchema {
-  factory _OpenApiPathMethodResponseContentSchema(
-          {@OpenApiSchemaJsonMapConverter()
-          @JsonKey(name: 'schema')
-          required final OpenApiSchema schema}) =
-      _$OpenApiPathMethodResponseContentSchemaImpl;
-
-  factory _OpenApiPathMethodResponseContentSchema.fromJson(
-          Map<String, dynamic> json) =
-      _$OpenApiPathMethodResponseContentSchemaImpl.fromJson;
-
-  @override
-  @OpenApiSchemaJsonMapConverter()
-  @JsonKey(name: 'schema')
-  OpenApiSchema get schema;
+  @JsonKey(name: 'content')
+  OpenApiContent get content;
 }

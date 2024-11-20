@@ -62,6 +62,10 @@ _$OpenApiPathMethodImpl _$$OpenApiPathMethodImplFromJson(
           ?.map((e) =>
               OpenApiPathMethodParameter.fromJson(e as Map<String, dynamic>))
           .toList(),
+      requestBody: json['request_body'] == null
+          ? null
+          : OpenApiPathMethodRequestBody.fromJson(
+              json['request_body'] as Map<String, dynamic>),
       responses: (json['responses'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(
             k, OpenApiPathMethodResponse.fromJson(e as Map<String, dynamic>)),
@@ -79,6 +83,8 @@ Map<String, dynamic> _$$OpenApiPathMethodImplToJson(
       if (instance.parameters?.map((e) => e.toJson()).toList()
           case final value?)
         'parameters': value,
+      if (instance.requestBody?.toJson() case final value?)
+        'request_body': value,
       if (instance.responses?.map((k, e) => MapEntry(k, e.toJson()))
           case final value?)
         'responses': value,
@@ -118,8 +124,7 @@ _$OpenApiPathMethodResponseImpl _$$OpenApiPathMethodResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$OpenApiPathMethodResponseImpl(
       description: json['description'] as String?,
-      content: OpenApiPathMethodResponseContent.fromJson(
-          json['content'] as Map<String, dynamic>),
+      content: OpenApiContent.fromJson(json['content'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$OpenApiPathMethodResponseImplToJson(
@@ -129,41 +134,14 @@ Map<String, dynamic> _$$OpenApiPathMethodResponseImplToJson(
       'content': instance.content.toJson(),
     };
 
-_$OpenApiPathMethodResponseContentImpl
-    _$$OpenApiPathMethodResponseContentImplFromJson(
-            Map<String, dynamic> json) =>
-        _$OpenApiPathMethodResponseContentImpl(
-          applicationJson: json['application/json'] == null
-              ? null
-              : OpenApiPathMethodResponseContentSchema.fromJson(
-                  json['application/json'] as Map<String, dynamic>),
-          applicationXWwwFormUrlencoded:
-              json['application/x-www-form-urlencoded'] == null
-                  ? null
-                  : OpenApiPathMethodResponseContentSchema.fromJson(
-                      json['application/x-www-form-urlencoded']
-                          as Map<String, dynamic>),
-        );
+_$OpenApiPathMethodRequestBodyImpl _$$OpenApiPathMethodRequestBodyImplFromJson(
+        Map<String, dynamic> json) =>
+    _$OpenApiPathMethodRequestBodyImpl(
+      content: OpenApiContent.fromJson(json['content'] as Map<String, dynamic>),
+    );
 
-Map<String, dynamic> _$$OpenApiPathMethodResponseContentImplToJson(
-        _$OpenApiPathMethodResponseContentImpl instance) =>
+Map<String, dynamic> _$$OpenApiPathMethodRequestBodyImplToJson(
+        _$OpenApiPathMethodRequestBodyImpl instance) =>
     <String, dynamic>{
-      if (instance.applicationJson?.toJson() case final value?)
-        'application/json': value,
-      if (instance.applicationXWwwFormUrlencoded?.toJson() case final value?)
-        'application/x-www-form-urlencoded': value,
-    };
-
-_$OpenApiPathMethodResponseContentSchemaImpl
-    _$$OpenApiPathMethodResponseContentSchemaImplFromJson(
-            Map<String, dynamic> json) =>
-        _$OpenApiPathMethodResponseContentSchemaImpl(
-          schema: const OpenApiSchemaJsonMapConverter()
-              .fromJson(json['schema'] as Map<String, dynamic>),
-        );
-
-Map<String, dynamic> _$$OpenApiPathMethodResponseContentSchemaImplToJson(
-        _$OpenApiPathMethodResponseContentSchemaImpl instance) =>
-    <String, dynamic>{
-      'schema': const OpenApiSchemaJsonMapConverter().toJson(instance.schema),
+      'content': instance.content.toJson(),
     };

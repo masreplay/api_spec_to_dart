@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'open_api_content.dart';
 import 'open_api_schema.dart';
 
 part 'open_api_paths.freezed.dart';
@@ -37,6 +38,7 @@ class OpenApiPathMethod with _$OpenApiPathMethod {
     @JsonKey(name: 'security') List<Map<String, List<dynamic>>>? security,
     @JsonKey(name: 'parameters')
     required OpenApiPathMethodParameters? parameters,
+    required OpenApiPathMethodRequestBody? requestBody,
     required OpenApiPathMethodResponses? responses,
   }) = _OpenApiPathMethod;
 
@@ -74,14 +76,13 @@ enum OpenApiPathMethodParameterType {
   cookie,
 }
 
-// "responses": { "200": {} }
 typedef OpenApiPathMethodResponses = Map<String, OpenApiPathMethodResponse>;
 
 @freezed
 class OpenApiPathMethodResponse with _$OpenApiPathMethodResponse {
   factory OpenApiPathMethodResponse({
     @JsonKey(name: 'description') String? description,
-    @JsonKey(name: 'content') required OpenApiPathMethodResponseContent content,
+    @JsonKey(name: 'content') required OpenApiContent content,
   }) = _OpenApiPathMethodResponse;
 
   factory OpenApiPathMethodResponse.fromJson(Map<String, dynamic> json) =>
@@ -89,32 +90,11 @@ class OpenApiPathMethodResponse with _$OpenApiPathMethodResponse {
 }
 
 @freezed
-class OpenApiPathMethodResponseContent with _$OpenApiPathMethodResponseContent {
-  factory OpenApiPathMethodResponseContent({
-    @JsonKey(name: 'application/json')
-    required OpenApiPathMethodResponseContentSchema? applicationJson,
-    @JsonKey(name: 'application/x-www-form-urlencoded')
-    required OpenApiPathMethodResponseContentSchema?
-        applicationXWwwFormUrlencoded,
-  }) = _OpenApiPathMethodResponseContent;
+class OpenApiPathMethodRequestBody with _$OpenApiPathMethodRequestBody {
+  factory OpenApiPathMethodRequestBody({
+    @JsonKey(name: 'content') required OpenApiContent content,
+  }) = _OpenApiPathMethodRequestBody;
 
-  factory OpenApiPathMethodResponseContent.fromJson(
-    Map<String, dynamic> json,
-  ) =>
-      _$OpenApiPathMethodResponseContentFromJson(json);
-}
-
-@freezed
-class OpenApiPathMethodResponseContentSchema
-    with _$OpenApiPathMethodResponseContentSchema {
-  factory OpenApiPathMethodResponseContentSchema({
-    @OpenApiSchemaJsonMapConverter()
-    @JsonKey(name: 'schema')
-    required OpenApiSchema schema,
-  }) = _OpenApiPathMethodResponseContentSchema;
-
-  factory OpenApiPathMethodResponseContentSchema.fromJson(
-    Map<String, dynamic> json,
-  ) =>
-      _$OpenApiPathMethodResponseContentSchemaFromJson(json);
+  factory OpenApiPathMethodRequestBody.fromJson(Map<String, dynamic> json) =>
+      _$OpenApiPathMethodRequestBodyFromJson(json);
 }

@@ -54,6 +54,7 @@ void main() {
                 ),
               ],
               responses: null,
+              requestBody: null,
             ),
           ),
         },
