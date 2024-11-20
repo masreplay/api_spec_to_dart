@@ -617,7 +617,7 @@ abstract class _OpenApiPathMethodParameter extends OpenApiPathMethodParameter {
 
 OpenApiPathMethodParameterSchema _$OpenApiPathMethodParameterSchemaFromJson(
     Map<String, dynamic> json) {
-  switch (json['type']) {
+  switch (json['runtimeType']) {
     case 'default':
       return OpenApiPathMethodParameterSchemaDefault.fromJson(json);
     case 'anyOf':
@@ -626,9 +626,9 @@ OpenApiPathMethodParameterSchema _$OpenApiPathMethodParameterSchemaFromJson(
     default:
       throw CheckedFromJsonException(
           json,
-          'type',
+          'runtimeType',
           'OpenApiPathMethodParameterSchema',
-          'Invalid union type "${json['type']}"!');
+          'Invalid union type "${json['runtimeType']}"!');
   }
 }
 
@@ -694,8 +694,10 @@ class _$OpenApiPathMethodParameterSchemaDefaultImpl
       @JsonKey(name: 'description') this.description,
       @JsonKey(name: 'title') this.title,
       @JsonKey(name: 'pattern') this.pattern,
-      @JsonKey(name: 'default') this.default_})
-      : super._();
+      @JsonKey(name: 'default') this.default_,
+      final String? $type})
+      : $type = $type ?? 'default',
+        super._();
 
   factory _$OpenApiPathMethodParameterSchemaDefaultImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -722,6 +724,9 @@ class _$OpenApiPathMethodParameterSchemaDefaultImpl
   @override
   @JsonKey(name: 'default')
   final Object? default_;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -870,7 +875,7 @@ class _$OpenApiPathMethodParameterSchemaAnyOfImpl
     return EqualUnmodifiableListView(value);
   }
 
-  @JsonKey(name: 'type')
+  @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override

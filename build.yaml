@@ -19,7 +19,6 @@ targets:
 
       freezed:
         options:
-          union_key: type
           format: true
           copy_with: false
           map: false

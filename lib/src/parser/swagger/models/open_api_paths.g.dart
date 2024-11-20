@@ -119,6 +119,7 @@ _$OpenApiPathMethodParameterSchemaDefaultImpl
           title: json['title'] as String?,
           pattern: json['pattern'] as String?,
           default_: json['default'],
+          $type: json['runtimeType'] as String?,
         );
 
 Map<String, dynamic> _$$OpenApiPathMethodParameterSchemaDefaultImplToJson(
@@ -130,6 +131,7 @@ Map<String, dynamic> _$$OpenApiPathMethodParameterSchemaDefaultImplToJson(
       if (instance.title case final value?) 'title': value,
       if (instance.pattern case final value?) 'pattern': value,
       if (instance.default_ case final value?) 'default': value,
+      'runtimeType': instance.$type,
     };
 
 const _$OpenApiPathMethodParameterSchemaTypeEnumMap = {
@@ -151,7 +153,7 @@ _$OpenApiPathMethodParameterSchemaAnyOfImpl
               ?.map((e) => OpenApiPathMethodParameterSchemaDefault.fromJson(
                   e as Map<String, dynamic>))
               .toList(),
-          $type: json['type'] as String?,
+          $type: json['runtimeType'] as String?,
         );
 
 Map<String, dynamic> _$$OpenApiPathMethodParameterSchemaAnyOfImplToJson(
@@ -159,7 +161,7 @@ Map<String, dynamic> _$$OpenApiPathMethodParameterSchemaAnyOfImplToJson(
     <String, dynamic>{
       if (instance.anyOf?.map((e) => e.toJson()).toList() case final value?)
         'anyOf': value,
-      'type': instance.$type,
+      'runtimeType': instance.$type,
     };
 
 _$OpenApiPathMethodResponseImpl _$$OpenApiPathMethodResponseImplFromJson(

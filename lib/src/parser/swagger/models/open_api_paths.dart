@@ -45,7 +45,7 @@ typedef OpenApiPathMethodTags = List<String>;
 
 typedef OpenApiPathMethodParameters = List<OpenApiPathMethodParameter>;
 
-@freezed
+@Freezed()
 class OpenApiPathMethodParameter with _$OpenApiPathMethodParameter {
   const OpenApiPathMethodParameter._();
 
@@ -87,8 +87,37 @@ class OpenApiPathMethodParameterSchemaJsonMapConverter
 
   @override
   Map<String, dynamic> toJson(OpenApiPathMethodParameterSchema object) {
-    return object.toJson();
+    final json = object.toJson();
+
+    return removeRuntimeType(json);
   }
+}
+
+Map<String, dynamic> removeRuntimeType(Map<String, dynamic> json) {
+  final newJson = <String, dynamic>{};
+
+  for (final entry in json.entries) {
+    if (entry.key == 'runtimeType') {
+      continue;
+    }
+
+    if (entry.value is Map<String, dynamic>) {
+      newJson[entry.key] =
+          removeRuntimeType(entry.value as Map<String, dynamic>);
+    } else if (entry.value is List) {
+      newJson[entry.key] = (entry.value as List).map((e) {
+        if (e is Map<String, dynamic>) {
+          return removeRuntimeType(e);
+        } else {
+          return e;
+        }
+      }).toList();
+    } else {
+      newJson[entry.key] = entry.value;
+    }
+  }
+
+  return newJson;
 }
 
 @freezed
