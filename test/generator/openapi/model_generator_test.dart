@@ -9,7 +9,11 @@ void main() {
   group('A group of tests', () {
     setUp(() {
       generator = OpenApiDartModelGenerator(
-        config: OpenApiGeneratorConfig(packageName: 'example'),
+        config: OpenApiGeneratorConfig(
+          packageName: 'example',
+          input: '',
+          output: '',
+        ),
       );
     });
 

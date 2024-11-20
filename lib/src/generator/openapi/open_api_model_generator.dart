@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:recase/recase.dart';
 import 'package:swagger_to_dart/src/config/open_api_generator_config.dart';
+import 'package:swagger_to_dart/src/utils/recase.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 typedef OpenApiModel = MapEntry<String, OpenApiSchemas>;
@@ -15,11 +16,11 @@ class OpenApiDartModelGenerator {
   String className(
     OpenApiModel model,
   ) {
-    return model.key.pascalCase;
+    return Recase.instance.pascalCase(model.key);
   }
 
   String filename(OpenApiModel model) {
-    return model.key.snakeCase;
+    return Recase.instance.snakeCase(model.key);
   }
 
   ({String filename, String content}) generator(OpenApiModel model) {

@@ -1,4 +1,4 @@
-import 'package:recase/recase.dart';
+import 'package:swagger_to_dart/src/utils/recase.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 class OpenApiGeneratorConfig {
@@ -47,10 +47,10 @@ class OpenApiGeneratorConfig {
   }
 
   String propertyRename(String key) {
-    return key.camelCase;
+    return Recase.instance.camelCase(key);
   }
 
   String enumName(String key) {
-    return key.camelCase;
+    return Recase.instance.pascalCase(key);
   }
 }
