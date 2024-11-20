@@ -25,29 +25,99 @@ mixin _$OpenApiComponents {
   @JsonKey(name: 'securitySchemes')
   Map<String, dynamic> get securitySchemes =>
       throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            @JsonKey(name: 'schemas') Map<String, OpenApiSchemas> schemas,
-            @JsonKey(name: 'securitySchemes')
-            Map<String, dynamic> securitySchemes)
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            @JsonKey(name: 'schemas') Map<String, OpenApiSchemas> schemas,
-            @JsonKey(name: 'securitySchemes')
-            Map<String, dynamic> securitySchemes)?
-        $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
 
   /// Serializes this OpenApiComponents to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of OpenApiComponents
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $OpenApiComponentsCopyWith<OpenApiComponents> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OpenApiComponentsCopyWith<$Res> {
+  factory $OpenApiComponentsCopyWith(
+          OpenApiComponents value, $Res Function(OpenApiComponents) then) =
+      _$OpenApiComponentsCopyWithImpl<$Res, OpenApiComponents>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'schemas') Map<String, OpenApiSchemas> schemas,
+      @JsonKey(name: 'securitySchemes') Map<String, dynamic> securitySchemes});
+}
+
+/// @nodoc
+class _$OpenApiComponentsCopyWithImpl<$Res, $Val extends OpenApiComponents>
+    implements $OpenApiComponentsCopyWith<$Res> {
+  _$OpenApiComponentsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of OpenApiComponents
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? schemas = null,
+    Object? securitySchemes = null,
+  }) {
+    return _then(_value.copyWith(
+      schemas: null == schemas
+          ? _value.schemas
+          : schemas // ignore: cast_nullable_to_non_nullable
+              as Map<String, OpenApiSchemas>,
+      securitySchemes: null == securitySchemes
+          ? _value.securitySchemes
+          : securitySchemes // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$OpenApiComponentsImplCopyWith<$Res>
+    implements $OpenApiComponentsCopyWith<$Res> {
+  factory _$$OpenApiComponentsImplCopyWith(_$OpenApiComponentsImpl value,
+          $Res Function(_$OpenApiComponentsImpl) then) =
+      __$$OpenApiComponentsImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'schemas') Map<String, OpenApiSchemas> schemas,
+      @JsonKey(name: 'securitySchemes') Map<String, dynamic> securitySchemes});
+}
+
+/// @nodoc
+class __$$OpenApiComponentsImplCopyWithImpl<$Res>
+    extends _$OpenApiComponentsCopyWithImpl<$Res, _$OpenApiComponentsImpl>
+    implements _$$OpenApiComponentsImplCopyWith<$Res> {
+  __$$OpenApiComponentsImplCopyWithImpl(_$OpenApiComponentsImpl _value,
+      $Res Function(_$OpenApiComponentsImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of OpenApiComponents
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? schemas = null,
+    Object? securitySchemes = null,
+  }) {
+    return _then(_$OpenApiComponentsImpl(
+      schemas: null == schemas
+          ? _value._schemas
+          : schemas // ignore: cast_nullable_to_non_nullable
+              as Map<String, OpenApiSchemas>,
+      securitySchemes: null == securitySchemes
+          ? _value._securitySchemes
+          : securitySchemes // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
+    ));
+  }
 }
 
 /// @nodoc
@@ -105,33 +175,14 @@ class _$OpenApiComponentsImpl extends _OpenApiComponents {
       const DeepCollectionEquality().hash(_schemas),
       const DeepCollectionEquality().hash(_securitySchemes));
 
+  /// Create a copy of OpenApiComponents
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            @JsonKey(name: 'schemas') Map<String, OpenApiSchemas> schemas,
-            @JsonKey(name: 'securitySchemes')
-            Map<String, dynamic> securitySchemes)
-        $default,
-  ) {
-    return $default(schemas, securitySchemes);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            @JsonKey(name: 'schemas') Map<String, OpenApiSchemas> schemas,
-            @JsonKey(name: 'securitySchemes')
-            Map<String, dynamic> securitySchemes)?
-        $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(schemas, securitySchemes);
-    }
-    return orElse();
-  }
+  @pragma('vm:prefer-inline')
+  _$$OpenApiComponentsImplCopyWith<_$OpenApiComponentsImpl> get copyWith =>
+      __$$OpenApiComponentsImplCopyWithImpl<_$OpenApiComponentsImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -159,6 +210,13 @@ abstract class _OpenApiComponents extends OpenApiComponents {
   @override
   @JsonKey(name: 'securitySchemes')
   Map<String, dynamic> get securitySchemes;
+
+  /// Create a copy of OpenApiComponents
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$OpenApiComponentsImplCopyWith<_$OpenApiComponentsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 OpenApiSchemas _$OpenApiSchemasFromJson(Map<String, dynamic> json) {
@@ -183,41 +241,157 @@ mixin _$OpenApiSchemas {
   String? get title => throw _privateConstructorUsedError;
   @JsonKey(name: 'description')
   String? get description => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            @OpenApiSchemaJsonConverter()
-            @JsonKey(name: 'properties')
-            Map<String, OpenApiSchema>? properties,
-            @JsonKey(name: 'type') String type,
-            @JsonKey(name: 'required') List<String>? required_,
-            @JsonKey(name: 'enum') List<Object>? enum_,
-            @JsonKey(name: 'const') Object? const_,
-            @JsonKey(name: 'title') String? title,
-            @JsonKey(name: 'description') String? description)
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            @OpenApiSchemaJsonConverter()
-            @JsonKey(name: 'properties')
-            Map<String, OpenApiSchema>? properties,
-            @JsonKey(name: 'type') String type,
-            @JsonKey(name: 'required') List<String>? required_,
-            @JsonKey(name: 'enum') List<Object>? enum_,
-            @JsonKey(name: 'const') Object? const_,
-            @JsonKey(name: 'title') String? title,
-            @JsonKey(name: 'description') String? description)?
-        $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
 
   /// Serializes this OpenApiSchemas to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of OpenApiSchemas
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $OpenApiSchemasCopyWith<OpenApiSchemas> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OpenApiSchemasCopyWith<$Res> {
+  factory $OpenApiSchemasCopyWith(
+          OpenApiSchemas value, $Res Function(OpenApiSchemas) then) =
+      _$OpenApiSchemasCopyWithImpl<$Res, OpenApiSchemas>;
+  @useResult
+  $Res call(
+      {@OpenApiSchemaJsonConverter()
+      @JsonKey(name: 'properties')
+      Map<String, OpenApiSchema>? properties,
+      @JsonKey(name: 'type') String type,
+      @JsonKey(name: 'required') List<String>? required_,
+      @JsonKey(name: 'enum') List<Object>? enum_,
+      @JsonKey(name: 'const') Object? const_,
+      @JsonKey(name: 'title') String? title,
+      @JsonKey(name: 'description') String? description});
+}
+
+/// @nodoc
+class _$OpenApiSchemasCopyWithImpl<$Res, $Val extends OpenApiSchemas>
+    implements $OpenApiSchemasCopyWith<$Res> {
+  _$OpenApiSchemasCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of OpenApiSchemas
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? properties = freezed,
+    Object? type = null,
+    Object? required_ = freezed,
+    Object? enum_ = freezed,
+    Object? const_ = freezed,
+    Object? title = freezed,
+    Object? description = freezed,
+  }) {
+    return _then(_value.copyWith(
+      properties: freezed == properties
+          ? _value.properties
+          : properties // ignore: cast_nullable_to_non_nullable
+              as Map<String, OpenApiSchema>?,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      required_: freezed == required_
+          ? _value.required_
+          : required_ // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      enum_: freezed == enum_
+          ? _value.enum_
+          : enum_ // ignore: cast_nullable_to_non_nullable
+              as List<Object>?,
+      const_: freezed == const_ ? _value.const_ : const_,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$OpenApiSchemasImplCopyWith<$Res>
+    implements $OpenApiSchemasCopyWith<$Res> {
+  factory _$$OpenApiSchemasImplCopyWith(_$OpenApiSchemasImpl value,
+          $Res Function(_$OpenApiSchemasImpl) then) =
+      __$$OpenApiSchemasImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@OpenApiSchemaJsonConverter()
+      @JsonKey(name: 'properties')
+      Map<String, OpenApiSchema>? properties,
+      @JsonKey(name: 'type') String type,
+      @JsonKey(name: 'required') List<String>? required_,
+      @JsonKey(name: 'enum') List<Object>? enum_,
+      @JsonKey(name: 'const') Object? const_,
+      @JsonKey(name: 'title') String? title,
+      @JsonKey(name: 'description') String? description});
+}
+
+/// @nodoc
+class __$$OpenApiSchemasImplCopyWithImpl<$Res>
+    extends _$OpenApiSchemasCopyWithImpl<$Res, _$OpenApiSchemasImpl>
+    implements _$$OpenApiSchemasImplCopyWith<$Res> {
+  __$$OpenApiSchemasImplCopyWithImpl(
+      _$OpenApiSchemasImpl _value, $Res Function(_$OpenApiSchemasImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of OpenApiSchemas
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? properties = freezed,
+    Object? type = null,
+    Object? required_ = freezed,
+    Object? enum_ = freezed,
+    Object? const_ = freezed,
+    Object? title = freezed,
+    Object? description = freezed,
+  }) {
+    return _then(_$OpenApiSchemasImpl(
+      properties: freezed == properties
+          ? _value._properties
+          : properties // ignore: cast_nullable_to_non_nullable
+              as Map<String, OpenApiSchema>?,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      required_: freezed == required_
+          ? _value._required_
+          : required_ // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      enum_: freezed == enum_
+          ? _value._enum_
+          : enum_ // ignore: cast_nullable_to_non_nullable
+              as List<Object>?,
+      const_: freezed == const_ ? _value.const_ : const_,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
@@ -322,47 +496,14 @@ class _$OpenApiSchemasImpl extends _OpenApiSchemas {
       title,
       description);
 
+  /// Create a copy of OpenApiSchemas
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            @OpenApiSchemaJsonConverter()
-            @JsonKey(name: 'properties')
-            Map<String, OpenApiSchema>? properties,
-            @JsonKey(name: 'type') String type,
-            @JsonKey(name: 'required') List<String>? required_,
-            @JsonKey(name: 'enum') List<Object>? enum_,
-            @JsonKey(name: 'const') Object? const_,
-            @JsonKey(name: 'title') String? title,
-            @JsonKey(name: 'description') String? description)
-        $default,
-  ) {
-    return $default(
-        properties, type, required_, enum_, const_, title, description);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            @OpenApiSchemaJsonConverter()
-            @JsonKey(name: 'properties')
-            Map<String, OpenApiSchema>? properties,
-            @JsonKey(name: 'type') String type,
-            @JsonKey(name: 'required') List<String>? required_,
-            @JsonKey(name: 'enum') List<Object>? enum_,
-            @JsonKey(name: 'const') Object? const_,
-            @JsonKey(name: 'title') String? title,
-            @JsonKey(name: 'description') String? description)?
-        $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(
-          properties, type, required_, enum_, const_, title, description);
-    }
-    return orElse();
-  }
+  @pragma('vm:prefer-inline')
+  _$$OpenApiSchemasImplCopyWith<_$OpenApiSchemasImpl> get copyWith =>
+      __$$OpenApiSchemasImplCopyWithImpl<_$OpenApiSchemasImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -411,4 +552,11 @@ abstract class _OpenApiSchemas extends OpenApiSchemas {
   @override
   @JsonKey(name: 'description')
   String? get description;
+
+  /// Create a copy of OpenApiSchemas
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$OpenApiSchemasImplCopyWith<_$OpenApiSchemasImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

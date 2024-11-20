@@ -13,7 +13,7 @@ void main() {
       );
     });
 
-    test('Normal class without fields', () {
+    test('First Test', () {
       final actual = r"""
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -33,7 +33,7 @@ class OpenApi with _$OpenApi {
 """;
 
       final expected = generator.run(
-        model: MapEntry(
+        MapEntry(
           'OpenApi',
           OpenApiSchemas(
             type: 'object',
@@ -50,8 +50,11 @@ class OpenApi with _$OpenApi {
         ),
       );
 
+      print('-------------------');
       print(actual);
+      print('-------------------');
       print(expected);
+      print('-------------------');
 
       expect(actual, expected);
     });

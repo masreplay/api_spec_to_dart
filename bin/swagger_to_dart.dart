@@ -1,7 +1,8 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:logger/logger.dart';
-import 'package:swagger_to_dart/src/parser/swagger/models/open_api.dart';
+import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 final logger = Logger();
 
@@ -21,8 +22,7 @@ Future<void> main(List<String> args) async {
 
   final openApi = OpenApi.fromJson(json);
 
-  final validatedJson =
-      JsonEncoder.withIndent('    ').convert(openApi.toJson());
+  final validatedJson = JsonFactory.instance.encode(openApi.toJson());
 
   print(validatedJson);
 

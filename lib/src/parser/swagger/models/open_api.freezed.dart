@@ -30,33 +30,160 @@ mixin _$OpenApi {
   Map<String, OpenApiPath> get paths => throw _privateConstructorUsedError;
   @JsonKey(name: 'components')
   OpenApiComponents get components => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            @JsonKey(name: 'openapi') String openapi,
-            @JsonKey(name: 'info') OpenApiInfo info,
-            @JsonKey(name: 'servers') List<OpenApiServer>? servers,
-            @JsonKey(name: 'paths') Map<String, OpenApiPath> paths,
-            @JsonKey(name: 'components') OpenApiComponents components)
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            @JsonKey(name: 'openapi') String openapi,
-            @JsonKey(name: 'info') OpenApiInfo info,
-            @JsonKey(name: 'servers') List<OpenApiServer>? servers,
-            @JsonKey(name: 'paths') Map<String, OpenApiPath> paths,
-            @JsonKey(name: 'components') OpenApiComponents components)?
-        $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
 
   /// Serializes this OpenApi to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of OpenApi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $OpenApiCopyWith<OpenApi> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OpenApiCopyWith<$Res> {
+  factory $OpenApiCopyWith(OpenApi value, $Res Function(OpenApi) then) =
+      _$OpenApiCopyWithImpl<$Res, OpenApi>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'openapi') String openapi,
+      @JsonKey(name: 'info') OpenApiInfo info,
+      @JsonKey(name: 'servers') List<OpenApiServer>? servers,
+      @JsonKey(name: 'paths') Map<String, OpenApiPath> paths,
+      @JsonKey(name: 'components') OpenApiComponents components});
+
+  $OpenApiInfoCopyWith<$Res> get info;
+  $OpenApiComponentsCopyWith<$Res> get components;
+}
+
+/// @nodoc
+class _$OpenApiCopyWithImpl<$Res, $Val extends OpenApi>
+    implements $OpenApiCopyWith<$Res> {
+  _$OpenApiCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of OpenApi
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? openapi = null,
+    Object? info = null,
+    Object? servers = freezed,
+    Object? paths = null,
+    Object? components = null,
+  }) {
+    return _then(_value.copyWith(
+      openapi: null == openapi
+          ? _value.openapi
+          : openapi // ignore: cast_nullable_to_non_nullable
+              as String,
+      info: null == info
+          ? _value.info
+          : info // ignore: cast_nullable_to_non_nullable
+              as OpenApiInfo,
+      servers: freezed == servers
+          ? _value.servers
+          : servers // ignore: cast_nullable_to_non_nullable
+              as List<OpenApiServer>?,
+      paths: null == paths
+          ? _value.paths
+          : paths // ignore: cast_nullable_to_non_nullable
+              as Map<String, OpenApiPath>,
+      components: null == components
+          ? _value.components
+          : components // ignore: cast_nullable_to_non_nullable
+              as OpenApiComponents,
+    ) as $Val);
+  }
+
+  /// Create a copy of OpenApi
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $OpenApiInfoCopyWith<$Res> get info {
+    return $OpenApiInfoCopyWith<$Res>(_value.info, (value) {
+      return _then(_value.copyWith(info: value) as $Val);
+    });
+  }
+
+  /// Create a copy of OpenApi
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $OpenApiComponentsCopyWith<$Res> get components {
+    return $OpenApiComponentsCopyWith<$Res>(_value.components, (value) {
+      return _then(_value.copyWith(components: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$OpenApiImplCopyWith<$Res> implements $OpenApiCopyWith<$Res> {
+  factory _$$OpenApiImplCopyWith(
+          _$OpenApiImpl value, $Res Function(_$OpenApiImpl) then) =
+      __$$OpenApiImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'openapi') String openapi,
+      @JsonKey(name: 'info') OpenApiInfo info,
+      @JsonKey(name: 'servers') List<OpenApiServer>? servers,
+      @JsonKey(name: 'paths') Map<String, OpenApiPath> paths,
+      @JsonKey(name: 'components') OpenApiComponents components});
+
+  @override
+  $OpenApiInfoCopyWith<$Res> get info;
+  @override
+  $OpenApiComponentsCopyWith<$Res> get components;
+}
+
+/// @nodoc
+class __$$OpenApiImplCopyWithImpl<$Res>
+    extends _$OpenApiCopyWithImpl<$Res, _$OpenApiImpl>
+    implements _$$OpenApiImplCopyWith<$Res> {
+  __$$OpenApiImplCopyWithImpl(
+      _$OpenApiImpl _value, $Res Function(_$OpenApiImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of OpenApi
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? openapi = null,
+    Object? info = null,
+    Object? servers = freezed,
+    Object? paths = null,
+    Object? components = null,
+  }) {
+    return _then(_$OpenApiImpl(
+      openapi: null == openapi
+          ? _value.openapi
+          : openapi // ignore: cast_nullable_to_non_nullable
+              as String,
+      info: null == info
+          ? _value.info
+          : info // ignore: cast_nullable_to_non_nullable
+              as OpenApiInfo,
+      servers: freezed == servers
+          ? _value._servers
+          : servers // ignore: cast_nullable_to_non_nullable
+              as List<OpenApiServer>?,
+      paths: null == paths
+          ? _value._paths
+          : paths // ignore: cast_nullable_to_non_nullable
+              as Map<String, OpenApiPath>,
+      components: null == components
+          ? _value.components
+          : components // ignore: cast_nullable_to_non_nullable
+              as OpenApiComponents,
+    ));
+  }
 }
 
 /// @nodoc
@@ -133,37 +260,13 @@ class _$OpenApiImpl extends _OpenApi {
       const DeepCollectionEquality().hash(_paths),
       components);
 
+  /// Create a copy of OpenApi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            @JsonKey(name: 'openapi') String openapi,
-            @JsonKey(name: 'info') OpenApiInfo info,
-            @JsonKey(name: 'servers') List<OpenApiServer>? servers,
-            @JsonKey(name: 'paths') Map<String, OpenApiPath> paths,
-            @JsonKey(name: 'components') OpenApiComponents components)
-        $default,
-  ) {
-    return $default(openapi, info, servers, paths, components);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            @JsonKey(name: 'openapi') String openapi,
-            @JsonKey(name: 'info') OpenApiInfo info,
-            @JsonKey(name: 'servers') List<OpenApiServer>? servers,
-            @JsonKey(name: 'paths') Map<String, OpenApiPath> paths,
-            @JsonKey(name: 'components') OpenApiComponents components)?
-        $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(openapi, info, servers, paths, components);
-    }
-    return orElse();
-  }
+  @pragma('vm:prefer-inline')
+  _$$OpenApiImplCopyWith<_$OpenApiImpl> get copyWith =>
+      __$$OpenApiImplCopyWithImpl<_$OpenApiImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -200,6 +303,13 @@ abstract class _OpenApi extends OpenApi {
   @override
   @JsonKey(name: 'components')
   OpenApiComponents get components;
+
+  /// Create a copy of OpenApi
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$OpenApiImplCopyWith<_$OpenApiImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 OpenApiServer _$OpenApiServerFromJson(Map<String, dynamic> json) {
@@ -212,25 +322,99 @@ mixin _$OpenApiServer {
   Uri get url => throw _privateConstructorUsedError;
   @JsonKey(name: 'description')
   String? get description => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(@JsonKey(name: 'url') Uri url,
-            @JsonKey(name: 'description') String? description)
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(@JsonKey(name: 'url') Uri url,
-            @JsonKey(name: 'description') String? description)?
-        $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
 
   /// Serializes this OpenApiServer to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of OpenApiServer
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $OpenApiServerCopyWith<OpenApiServer> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OpenApiServerCopyWith<$Res> {
+  factory $OpenApiServerCopyWith(
+          OpenApiServer value, $Res Function(OpenApiServer) then) =
+      _$OpenApiServerCopyWithImpl<$Res, OpenApiServer>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'url') Uri url,
+      @JsonKey(name: 'description') String? description});
+}
+
+/// @nodoc
+class _$OpenApiServerCopyWithImpl<$Res, $Val extends OpenApiServer>
+    implements $OpenApiServerCopyWith<$Res> {
+  _$OpenApiServerCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of OpenApiServer
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? url = null,
+    Object? description = freezed,
+  }) {
+    return _then(_value.copyWith(
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$OpenApiServerImplCopyWith<$Res>
+    implements $OpenApiServerCopyWith<$Res> {
+  factory _$$OpenApiServerImplCopyWith(
+          _$OpenApiServerImpl value, $Res Function(_$OpenApiServerImpl) then) =
+      __$$OpenApiServerImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'url') Uri url,
+      @JsonKey(name: 'description') String? description});
+}
+
+/// @nodoc
+class __$$OpenApiServerImplCopyWithImpl<$Res>
+    extends _$OpenApiServerCopyWithImpl<$Res, _$OpenApiServerImpl>
+    implements _$$OpenApiServerImplCopyWith<$Res> {
+  __$$OpenApiServerImplCopyWithImpl(
+      _$OpenApiServerImpl _value, $Res Function(_$OpenApiServerImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of OpenApiServer
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? url = null,
+    Object? description = freezed,
+  }) {
+    return _then(_$OpenApiServerImpl(
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
@@ -270,29 +454,13 @@ class _$OpenApiServerImpl extends _OpenApiServer {
   @override
   int get hashCode => Object.hash(runtimeType, url, description);
 
+  /// Create a copy of OpenApiServer
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(@JsonKey(name: 'url') Uri url,
-            @JsonKey(name: 'description') String? description)
-        $default,
-  ) {
-    return $default(url, description);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(@JsonKey(name: 'url') Uri url,
-            @JsonKey(name: 'description') String? description)?
-        $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(url, description);
-    }
-    return orElse();
-  }
+  @pragma('vm:prefer-inline')
+  _$$OpenApiServerImplCopyWith<_$OpenApiServerImpl> get copyWith =>
+      __$$OpenApiServerImplCopyWithImpl<_$OpenApiServerImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -318,4 +486,11 @@ abstract class _OpenApiServer extends OpenApiServer {
   @override
   @JsonKey(name: 'description')
   String? get description;
+
+  /// Create a copy of OpenApiServer
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$OpenApiServerImplCopyWith<_$OpenApiServerImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

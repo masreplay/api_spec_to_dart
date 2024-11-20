@@ -20,9 +20,3 @@ targets:
       freezed:
         options:
           format: true
-          copy_with: false
-          map: false
-          when:
-            when: true
-            maybe_when: true
-            when_or_null: false
