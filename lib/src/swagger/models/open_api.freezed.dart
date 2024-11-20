@@ -25,7 +25,7 @@ mixin _$OpenApi {
   @JsonKey(name: 'info')
   OpenApiInfo get info => throw _privateConstructorUsedError;
   @JsonKey(name: 'servers')
-  List<String>? get servers => throw _privateConstructorUsedError;
+  List<OpenApiServer>? get servers => throw _privateConstructorUsedError;
   @JsonKey(name: 'paths')
   Map<String, Map<OpenApiPathMethodType, OpenApiPathMethod>> get paths =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$OpenApi {
     TResult Function(
             @JsonKey(name: 'openapi') String openapi,
             @JsonKey(name: 'info') OpenApiInfo info,
-            @JsonKey(name: 'servers') List<String>? servers,
+            @JsonKey(name: 'servers') List<OpenApiServer>? servers,
             @JsonKey(name: 'paths')
             Map<String, Map<OpenApiPathMethodType, OpenApiPathMethod>> paths,
             @JsonKey(name: 'components') OpenApiComponents components)
@@ -49,7 +49,7 @@ mixin _$OpenApi {
     TResult Function(
             @JsonKey(name: 'openapi') String openapi,
             @JsonKey(name: 'info') OpenApiInfo info,
-            @JsonKey(name: 'servers') List<String>? servers,
+            @JsonKey(name: 'servers') List<OpenApiServer>? servers,
             @JsonKey(name: 'paths')
             Map<String, Map<OpenApiPathMethodType, OpenApiPathMethod>> paths,
             @JsonKey(name: 'components') OpenApiComponents components)?
@@ -68,7 +68,7 @@ class _$OpenApiImpl extends _OpenApi {
   const _$OpenApiImpl(
       {@JsonKey(name: 'openapi') required this.openapi,
       @JsonKey(name: 'info') required this.info,
-      @JsonKey(name: 'servers') required final List<String>? servers,
+      @JsonKey(name: 'servers') required final List<OpenApiServer>? servers,
       @JsonKey(name: 'paths')
       required final Map<String, Map<OpenApiPathMethodType, OpenApiPathMethod>>
           paths,
@@ -86,10 +86,10 @@ class _$OpenApiImpl extends _OpenApi {
   @override
   @JsonKey(name: 'info')
   final OpenApiInfo info;
-  final List<String>? _servers;
+  final List<OpenApiServer>? _servers;
   @override
   @JsonKey(name: 'servers')
-  List<String>? get servers {
+  List<OpenApiServer>? get servers {
     final value = _servers;
     if (value == null) return null;
     if (_servers is EqualUnmodifiableListView) return _servers;
@@ -144,7 +144,7 @@ class _$OpenApiImpl extends _OpenApi {
     TResult Function(
             @JsonKey(name: 'openapi') String openapi,
             @JsonKey(name: 'info') OpenApiInfo info,
-            @JsonKey(name: 'servers') List<String>? servers,
+            @JsonKey(name: 'servers') List<OpenApiServer>? servers,
             @JsonKey(name: 'paths')
             Map<String, Map<OpenApiPathMethodType, OpenApiPathMethod>> paths,
             @JsonKey(name: 'components') OpenApiComponents components)
@@ -159,7 +159,7 @@ class _$OpenApiImpl extends _OpenApi {
     TResult Function(
             @JsonKey(name: 'openapi') String openapi,
             @JsonKey(name: 'info') OpenApiInfo info,
-            @JsonKey(name: 'servers') List<String>? servers,
+            @JsonKey(name: 'servers') List<OpenApiServer>? servers,
             @JsonKey(name: 'paths')
             Map<String, Map<OpenApiPathMethodType, OpenApiPathMethod>> paths,
             @JsonKey(name: 'components') OpenApiComponents components)?
@@ -184,7 +184,7 @@ abstract class _OpenApi extends OpenApi {
   const factory _OpenApi(
       {@JsonKey(name: 'openapi') required final String openapi,
       @JsonKey(name: 'info') required final OpenApiInfo info,
-      @JsonKey(name: 'servers') required final List<String>? servers,
+      @JsonKey(name: 'servers') required final List<OpenApiServer>? servers,
       @JsonKey(name: 'paths')
       required final Map<String, Map<OpenApiPathMethodType, OpenApiPathMethod>>
           paths,
@@ -202,11 +202,129 @@ abstract class _OpenApi extends OpenApi {
   OpenApiInfo get info;
   @override
   @JsonKey(name: 'servers')
-  List<String>? get servers;
+  List<OpenApiServer>? get servers;
   @override
   @JsonKey(name: 'paths')
   Map<String, Map<OpenApiPathMethodType, OpenApiPathMethod>> get paths;
   @override
   @JsonKey(name: 'components')
   OpenApiComponents get components;
+}
+
+OpenApiServer _$OpenApiServerFromJson(Map<String, dynamic> json) {
+  return _OpenApiServer.fromJson(json);
+}
+
+/// @nodoc
+mixin _$OpenApiServer {
+  @JsonKey(name: 'url')
+  Uri get url => throw _privateConstructorUsedError;
+  @JsonKey(name: 'description')
+  String? get description => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(@JsonKey(name: 'url') Uri url,
+            @JsonKey(name: 'description') String? description)
+        $default,
+  ) =>
+      throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(@JsonKey(name: 'url') Uri url,
+            @JsonKey(name: 'description') String? description)?
+        $default, {
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+
+  /// Serializes this OpenApiServer to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$OpenApiServerImpl extends _OpenApiServer {
+  const _$OpenApiServerImpl(
+      {@JsonKey(name: 'url') required this.url,
+      @JsonKey(name: 'description') required this.description})
+      : super._();
+
+  factory _$OpenApiServerImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OpenApiServerImplFromJson(json);
+
+  @override
+  @JsonKey(name: 'url')
+  final Uri url;
+  @override
+  @JsonKey(name: 'description')
+  final String? description;
+
+  @override
+  String toString() {
+    return 'OpenApiServer(url: $url, description: $description)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OpenApiServerImpl &&
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.description, description) ||
+                other.description == description));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, url, description);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(@JsonKey(name: 'url') Uri url,
+            @JsonKey(name: 'description') String? description)
+        $default,
+  ) {
+    return $default(url, description);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(@JsonKey(name: 'url') Uri url,
+            @JsonKey(name: 'description') String? description)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(url, description);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$OpenApiServerImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _OpenApiServer extends OpenApiServer {
+  const factory _OpenApiServer(
+          {@JsonKey(name: 'url') required final Uri url,
+          @JsonKey(name: 'description') required final String? description}) =
+      _$OpenApiServerImpl;
+  const _OpenApiServer._() : super._();
+
+  factory _OpenApiServer.fromJson(Map<String, dynamic> json) =
+      _$OpenApiServerImpl.fromJson;
+
+  @override
+  @JsonKey(name: 'url')
+  Uri get url;
+  @override
+  @JsonKey(name: 'description')
+  String? get description;
 }
