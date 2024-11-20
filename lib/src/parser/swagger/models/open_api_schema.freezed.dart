@@ -39,9 +39,8 @@ mixin _$OpenApiSchema {
   TResult when<TResult extends Object?>({
     required TResult Function(
             @JsonKey(
-                name: 'type',
-                unknownEnumValue: OpenApiSchemaVariableType.$unknown)
-            OpenApiSchemaVariableType? type,
+                name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
+            OpenApiSchemaVarType? type,
             @JsonKey(name: 'format') String? format,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'title') String? title,
@@ -70,9 +69,8 @@ mixin _$OpenApiSchema {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             @JsonKey(
-                name: 'type',
-                unknownEnumValue: OpenApiSchemaVariableType.$unknown)
-            OpenApiSchemaVariableType? type,
+                name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
+            OpenApiSchemaVarType? type,
             @JsonKey(name: 'format') String? format,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'title') String? title,
@@ -106,8 +104,7 @@ mixin _$OpenApiSchema {
 @JsonSerializable()
 class _$OpenApiSchemaTypeImpl extends OpenApiSchemaType {
   const _$OpenApiSchemaTypeImpl(
-      {@JsonKey(
-          name: 'type', unknownEnumValue: OpenApiSchemaVariableType.$unknown)
+      {@JsonKey(name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
       this.type,
       @JsonKey(name: 'format') this.format,
       @JsonKey(name: 'description') this.description,
@@ -122,8 +119,8 @@ class _$OpenApiSchemaTypeImpl extends OpenApiSchemaType {
       _$$OpenApiSchemaTypeImplFromJson(json);
 
   @override
-  @JsonKey(name: 'type', unknownEnumValue: OpenApiSchemaVariableType.$unknown)
-  final OpenApiSchemaVariableType? type;
+  @JsonKey(name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
+  final OpenApiSchemaVarType? type;
   @override
   @JsonKey(name: 'format')
   final String? format;
@@ -172,9 +169,8 @@ class _$OpenApiSchemaTypeImpl extends OpenApiSchemaType {
   TResult when<TResult extends Object?>({
     required TResult Function(
             @JsonKey(
-                name: 'type',
-                unknownEnumValue: OpenApiSchemaVariableType.$unknown)
-            OpenApiSchemaVariableType? type,
+                name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
+            OpenApiSchemaVarType? type,
             @JsonKey(name: 'format') String? format,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'title') String? title,
@@ -205,9 +201,8 @@ class _$OpenApiSchemaTypeImpl extends OpenApiSchemaType {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             @JsonKey(
-                name: 'type',
-                unknownEnumValue: OpenApiSchemaVariableType.$unknown)
-            OpenApiSchemaVariableType? type,
+                name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
+            OpenApiSchemaVarType? type,
             @JsonKey(name: 'format') String? format,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'title') String? title,
@@ -247,9 +242,8 @@ class _$OpenApiSchemaTypeImpl extends OpenApiSchemaType {
 
 abstract class OpenApiSchemaType extends OpenApiSchema {
   const factory OpenApiSchemaType(
-      {@JsonKey(
-          name: 'type', unknownEnumValue: OpenApiSchemaVariableType.$unknown)
-      final OpenApiSchemaVariableType? type,
+      {@JsonKey(name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
+      final OpenApiSchemaVarType? type,
       @JsonKey(name: 'format') final String? format,
       @JsonKey(name: 'description') final String? description,
       @JsonKey(name: 'title') final String? title,
@@ -261,8 +255,8 @@ abstract class OpenApiSchemaType extends OpenApiSchema {
   factory OpenApiSchemaType.fromJson(Map<String, dynamic> json) =
       _$OpenApiSchemaTypeImpl.fromJson;
 
-  @JsonKey(name: 'type', unknownEnumValue: OpenApiSchemaVariableType.$unknown)
-  OpenApiSchemaVariableType? get type;
+  @JsonKey(name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
+  OpenApiSchemaVarType? get type;
   @JsonKey(name: 'format')
   String? get format;
   @override
@@ -345,9 +339,8 @@ class _$OpenApiSchemaRefImpl extends OpenApiSchemaRef {
   TResult when<TResult extends Object?>({
     required TResult Function(
             @JsonKey(
-                name: 'type',
-                unknownEnumValue: OpenApiSchemaVariableType.$unknown)
-            OpenApiSchemaVariableType? type,
+                name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
+            OpenApiSchemaVarType? type,
             @JsonKey(name: 'format') String? format,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'title') String? title,
@@ -378,9 +371,8 @@ class _$OpenApiSchemaRefImpl extends OpenApiSchemaRef {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             @JsonKey(
-                name: 'type',
-                unknownEnumValue: OpenApiSchemaVariableType.$unknown)
-            OpenApiSchemaVariableType? type,
+                name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
+            OpenApiSchemaVarType? type,
             @JsonKey(name: 'format') String? format,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'title') String? title,
@@ -513,9 +505,8 @@ class _$OpenApiSchemaAnyOfImpl extends OpenApiSchemaAnyOf {
   TResult when<TResult extends Object?>({
     required TResult Function(
             @JsonKey(
-                name: 'type',
-                unknownEnumValue: OpenApiSchemaVariableType.$unknown)
-            OpenApiSchemaVariableType? type,
+                name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
+            OpenApiSchemaVarType? type,
             @JsonKey(name: 'format') String? format,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'title') String? title,
@@ -546,9 +537,8 @@ class _$OpenApiSchemaAnyOfImpl extends OpenApiSchemaAnyOf {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             @JsonKey(
-                name: 'type',
-                unknownEnumValue: OpenApiSchemaVariableType.$unknown)
-            OpenApiSchemaVariableType? type,
+                name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
+            OpenApiSchemaVarType? type,
             @JsonKey(name: 'format') String? format,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'title') String? title,

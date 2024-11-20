@@ -34,7 +34,7 @@ void main() {
                   in_: OpenApiPathMethodParameterType.header,
                   required_: true,
                   schema: OpenApiSchema.type(
-                    type: OpenApiSchemaVariableType.string,
+                    type: OpenApiSchemaVarType.string,
                   ),
                 ),
                 OpenApiPathMethodParameter(
@@ -44,10 +44,10 @@ void main() {
                   schema: OpenApiSchema.anyOf(
                     anyOf: [
                       OpenApiSchema.type(
-                        type: OpenApiSchemaVariableType.boolean,
+                        type: OpenApiSchemaVarType.boolean,
                       ),
                       OpenApiSchemaType(
-                        type: OpenApiSchemaVariableType.null_,
+                        type: OpenApiSchemaVarType.null_,
                       ),
                     ],
                   ),

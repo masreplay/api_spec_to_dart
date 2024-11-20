@@ -36,7 +36,12 @@
                 "summary": "Trigger Error",
                 "operationId": "dev-trigger_error",
                 "responses": {
-                    "200": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -59,8 +64,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -72,8 +87,18 @@
                 "summary": "Upload File",
                 "operationId": "dev-upload_file",
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -99,8 +124,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -131,8 +166,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -171,8 +216,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -197,8 +252,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -223,8 +288,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -247,8 +322,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -282,8 +367,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -314,8 +409,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -345,8 +450,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -376,8 +491,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -407,8 +532,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -433,8 +568,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -480,8 +625,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -527,8 +682,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -570,8 +735,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -606,8 +781,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -653,8 +838,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -684,8 +879,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -715,8 +920,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -746,8 +961,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -777,8 +1002,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -808,8 +1043,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -839,8 +1084,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -870,8 +1125,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -901,8 +1166,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -932,8 +1207,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -963,8 +1248,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -994,8 +1289,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -1025,8 +1330,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -1056,8 +1371,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -1088,8 +1413,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -1120,8 +1455,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -1160,8 +1505,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -1192,8 +1547,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -1259,8 +1624,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -1290,8 +1665,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -1330,8 +1715,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -1370,8 +1765,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -1401,8 +1806,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -1484,8 +1899,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -1515,8 +1940,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -1546,8 +1981,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -1577,8 +2022,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -1608,8 +2063,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -1639,8 +2104,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -1670,8 +2145,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -1701,8 +2186,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -1732,8 +2227,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -1763,8 +2268,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -1794,8 +2309,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -1834,8 +2359,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -1875,8 +2410,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -1906,8 +2451,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -1946,8 +2501,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -1978,8 +2543,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -2019,8 +2594,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -2060,8 +2645,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -2101,8 +2696,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -2142,8 +2747,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -2183,8 +2798,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -2224,8 +2849,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -2265,8 +2900,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             },
             "patch": {
@@ -2304,8 +2949,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -2354,8 +3009,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -2385,8 +3050,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -2425,8 +3100,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -2466,8 +3151,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -2497,8 +3192,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -2528,8 +3233,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -2560,8 +3275,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -2591,8 +3316,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -2622,8 +3357,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -2653,8 +3398,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -2684,8 +3439,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -2724,8 +3489,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -2764,8 +3539,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -2795,8 +3580,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -2835,8 +3630,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -2884,8 +3689,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -2915,8 +3730,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -2955,8 +3780,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -2981,8 +3816,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -3007,8 +3852,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -3042,8 +3897,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -3077,8 +3942,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -3128,8 +4003,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -3168,8 +4053,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -3228,8 +4123,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             },
             "post": {
@@ -3266,8 +4171,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -3306,8 +4221,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             },
             "put": {
@@ -3344,8 +4269,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             },
             "delete": {
@@ -3382,8 +4317,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -3442,8 +4387,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             },
             "post": {
@@ -3480,8 +4435,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -3540,8 +4505,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             },
             "post": {
@@ -3578,8 +4553,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -3618,8 +4603,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             },
             "put": {
@@ -3656,8 +4651,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             },
             "delete": {
@@ -3694,8 +4699,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -3734,8 +4749,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             },
             "post": {
@@ -3772,8 +4797,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -3853,8 +4888,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -3884,8 +4929,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -3910,8 +4965,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -3946,8 +5011,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -3982,8 +5057,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         },
@@ -4013,8 +5098,18 @@
                     }
                 ],
                 "responses": {
-                    "200": {},
-                    "422": {}
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
                 }
             }
         }

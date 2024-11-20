@@ -99,7 +99,8 @@ class OpenApiPathMethodResponseContent with _$OpenApiPathMethodResponseContent {
   }) = _OpenApiPathMethodResponseContent;
 
   factory OpenApiPathMethodResponseContent.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$OpenApiPathMethodResponseContentFromJson(json);
 }
 
@@ -110,6 +111,7 @@ class OpenApiPathMethodResponseContentSchema
       _OpenApiPathMethodResponseContentSchema;
 
   factory OpenApiPathMethodResponseContentSchema.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$OpenApiPathMethodResponseContentSchemaFromJson(json);
 }

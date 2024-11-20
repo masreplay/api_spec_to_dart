@@ -13,9 +13,9 @@ class OpenApiSchema with _$OpenApiSchema {
   const factory OpenApiSchema.type({
     @JsonKey(
       name: 'type',
-      unknownEnumValue: OpenApiSchemaVariableType.$unknown,
+      unknownEnumValue: OpenApiSchemaVarType.$unknown,
     )
-    OpenApiSchemaVariableType? type,
+    OpenApiSchemaVarType? type,
     @JsonKey(name: 'format') String? format,
     @JsonKey(name: 'description') String? description,
     @JsonKey(name: 'title') String? title,
@@ -46,7 +46,7 @@ class OpenApiSchema with _$OpenApiSchema {
       _$OpenApiSchemaFromJson(json);
 }
 
-enum OpenApiSchemaVariableType {
+enum OpenApiSchemaVarType {
   @JsonValue('string')
   string,
   @JsonValue('number')
@@ -64,6 +64,8 @@ enum OpenApiSchemaVariableType {
 
   $unknown,
 }
+
+const String _unionKeyType = 'runtimeType';
 
 class OpenApiSchemaJsonMapConverter
     implements JsonConverter<OpenApiSchema, Map<String, dynamic>> {
@@ -91,7 +93,7 @@ class OpenApiSchemaJsonMapConverter
     final newJson = <String, dynamic>{};
 
     for (final entry in json.entries) {
-      if (entry.key == 'runtimeType') {
+      if (entry.key == _unionKeyType) {
         continue;
       }
 

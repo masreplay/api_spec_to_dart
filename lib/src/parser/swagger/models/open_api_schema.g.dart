@@ -9,9 +9,8 @@ part of 'open_api_schema.dart';
 _$OpenApiSchemaTypeImpl _$$OpenApiSchemaTypeImplFromJson(
         Map<String, dynamic> json) =>
     _$OpenApiSchemaTypeImpl(
-      type: $enumDecodeNullable(
-          _$OpenApiSchemaVariableTypeEnumMap, json['type'],
-          unknownValue: OpenApiSchemaVariableType.$unknown),
+      type: $enumDecodeNullable(_$OpenApiSchemaVarTypeEnumMap, json['type'],
+          unknownValue: OpenApiSchemaVarType.$unknown),
       format: json['format'] as String?,
       description: json['description'] as String?,
       title: json['title'] as String?,
@@ -23,7 +22,7 @@ _$OpenApiSchemaTypeImpl _$$OpenApiSchemaTypeImplFromJson(
 Map<String, dynamic> _$$OpenApiSchemaTypeImplToJson(
         _$OpenApiSchemaTypeImpl instance) =>
     <String, dynamic>{
-      if (_$OpenApiSchemaVariableTypeEnumMap[instance.type] case final value?)
+      if (_$OpenApiSchemaVarTypeEnumMap[instance.type] case final value?)
         'type': value,
       if (instance.format case final value?) 'format': value,
       if (instance.description case final value?) 'description': value,
@@ -33,15 +32,15 @@ Map<String, dynamic> _$$OpenApiSchemaTypeImplToJson(
       'runtimeType': instance.$type,
     };
 
-const _$OpenApiSchemaVariableTypeEnumMap = {
-  OpenApiSchemaVariableType.string: 'string',
-  OpenApiSchemaVariableType.number: 'number',
-  OpenApiSchemaVariableType.integer: 'integer',
-  OpenApiSchemaVariableType.boolean: 'boolean',
-  OpenApiSchemaVariableType.array: 'array',
-  OpenApiSchemaVariableType.object: 'object',
-  OpenApiSchemaVariableType.null_: 'null',
-  OpenApiSchemaVariableType.$unknown: r'$unknown',
+const _$OpenApiSchemaVarTypeEnumMap = {
+  OpenApiSchemaVarType.string: 'string',
+  OpenApiSchemaVarType.number: 'number',
+  OpenApiSchemaVarType.integer: 'integer',
+  OpenApiSchemaVarType.boolean: 'boolean',
+  OpenApiSchemaVarType.array: 'array',
+  OpenApiSchemaVarType.object: 'object',
+  OpenApiSchemaVarType.null_: 'null',
+  OpenApiSchemaVarType.$unknown: r'$unknown',
 };
 
 _$OpenApiSchemaRefImpl _$$OpenApiSchemaRefImplFromJson(
