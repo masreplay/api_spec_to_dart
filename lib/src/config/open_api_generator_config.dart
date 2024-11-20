@@ -47,10 +47,10 @@ class OpenApiGeneratorConfig {
   }
 
   String propertyRename(String key) {
-    return Recase.instance.camelCase(key);
+    return Recase(key).camelCase;
   }
 
   String enumName(String key) {
-    return Recase.instance.pascalCase(key);
+    return Recase(key).pascalCase;
   }
 }

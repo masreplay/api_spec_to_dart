@@ -7,8 +7,8 @@ final logger = Logger();
 Future<void> main(List<String> args) async {
   final config = OpenApiGeneratorConfig(
     packageName: 'example',
-    input: 'bin/schema/swagger.json',
-    output: 'bin/generation',
+    input: 'example/input/swagger.json',
+    output: 'example/src/client',
   );
 
   final generator = OpenApiDartGenerator(config: config);
