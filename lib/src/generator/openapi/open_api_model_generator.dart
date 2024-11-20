@@ -1,5 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:recase/recase.dart';
 import 'package:swagger_to_dart/src/config/open_api_generator_config.dart';
 import 'package:swagger_to_dart/src/utils/recase.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
@@ -7,11 +5,11 @@ import 'package:swagger_to_dart/swagger_to_dart.dart';
 typedef OpenApiModel = MapEntry<String, OpenApiSchemas>;
 
 class OpenApiDartModelGenerator {
-  final OpenApiGeneratorConfig config;
-
   const OpenApiDartModelGenerator({
     required this.config,
   });
+
+  final OpenApiGeneratorConfig config;
 
   String className(
     OpenApiModel model,
