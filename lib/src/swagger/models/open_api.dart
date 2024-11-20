@@ -10,7 +10,7 @@ part 'open_api.g.dart';
 @freezed
 class OpenApi with _$OpenApi {
   const OpenApi._();
-  
+
   const factory OpenApi({
     @JsonKey(name: 'openapi') required String openapi,
     @JsonKey(name: 'info') required OpenApiInfo info,
