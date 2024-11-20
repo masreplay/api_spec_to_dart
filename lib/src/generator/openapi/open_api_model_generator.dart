@@ -32,7 +32,7 @@ class OpenApiDartModelGenerator {
 
       final isRequired = (model.value.required_?.contains(entry.key) ?? false)
           ? 'required'
-          : '';
+          : 'required';
 
       body += entry.value.map(
         type: (value) => _modelPropertyTypeGenerator(
@@ -65,7 +65,7 @@ class OpenApiDartModelGenerator {
     final content = '''
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-${config.importModelsText}
+${config.relativeImportModelsCode}
 
 part '${filename}.freezed.dart';
 part '${filename}.g.dart';

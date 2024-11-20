@@ -1,0 +1,103 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'blood_group_enum.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+
+BloodGroupEnum _$BloodGroupEnumFromJson(Map<String, dynamic> json) {
+  return _BloodGroupEnum.fromJson(json);
+}
+
+/// @nodoc
+mixin _$BloodGroupEnum {
+  /// Serializes this BloodGroupEnum to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $BloodGroupEnumCopyWith<$Res> {
+  factory $BloodGroupEnumCopyWith(
+          BloodGroupEnum value, $Res Function(BloodGroupEnum) then) =
+      _$BloodGroupEnumCopyWithImpl<$Res, BloodGroupEnum>;
+}
+
+/// @nodoc
+class _$BloodGroupEnumCopyWithImpl<$Res, $Val extends BloodGroupEnum>
+    implements $BloodGroupEnumCopyWith<$Res> {
+  _$BloodGroupEnumCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of BloodGroupEnum
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$BloodGroupEnumImplCopyWith<$Res> {
+  factory _$$BloodGroupEnumImplCopyWith(_$BloodGroupEnumImpl value,
+          $Res Function(_$BloodGroupEnumImpl) then) =
+      __$$BloodGroupEnumImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$BloodGroupEnumImplCopyWithImpl<$Res>
+    extends _$BloodGroupEnumCopyWithImpl<$Res, _$BloodGroupEnumImpl>
+    implements _$$BloodGroupEnumImplCopyWith<$Res> {
+  __$$BloodGroupEnumImplCopyWithImpl(
+      _$BloodGroupEnumImpl _value, $Res Function(_$BloodGroupEnumImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of BloodGroupEnum
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$BloodGroupEnumImpl implements _BloodGroupEnum {
+  const _$BloodGroupEnumImpl();
+
+  factory _$BloodGroupEnumImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BloodGroupEnumImplFromJson(json);
+
+  @override
+  String toString() {
+    return 'BloodGroupEnum()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$BloodGroupEnumImpl);
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$BloodGroupEnumImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _BloodGroupEnum implements BloodGroupEnum {
+  const factory _BloodGroupEnum() = _$BloodGroupEnumImpl;
+
+  factory _BloodGroupEnum.fromJson(Map<String, dynamic> json) =
+      _$BloodGroupEnumImpl.fromJson;
+}

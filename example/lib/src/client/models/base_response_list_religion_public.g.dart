@@ -1,0 +1,21 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'base_response_list_religion_public.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+_$BaseResponseListReligionPublicImpl
+    _$$BaseResponseListReligionPublicImplFromJson(Map<String, dynamic> json) =>
+        _$BaseResponseListReligionPublicImpl(
+          message: json['message'] as String?,
+          data: json['data'] as List<dynamic>,
+        );
+
+Map<String, dynamic> _$$BaseResponseListReligionPublicImplToJson(
+        _$BaseResponseListReligionPublicImpl instance) =>
+    <String, dynamic>{
+      'message': instance.message,
+      'data': instance.data,
+    };

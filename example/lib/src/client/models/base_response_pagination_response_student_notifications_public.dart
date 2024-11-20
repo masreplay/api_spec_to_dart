@@ -1,0 +1,18 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'base_response_pagination_response_student_notifications_public.freezed.dart';
+part 'base_response_pagination_response_student_notifications_public.g.dart';
+
+@freezed
+class BaseResponsePaginationResponseStudentNotificationsPublic
+    with _$BaseResponsePaginationResponseStudentNotificationsPublic {
+  const factory BaseResponsePaginationResponseStudentNotificationsPublic({
+    @JsonKey(name: 'message') required String? message,
+    @JsonKey(name: 'data')
+    required PaginationResponse_StudentNotificationsPublic_ data,
+  }) = _BaseResponsePaginationResponseStudentNotificationsPublic;
+
+  factory BaseResponsePaginationResponseStudentNotificationsPublic.fromJson(
+          Map<String, dynamic> json) =>
+      _$BaseResponsePaginationResponseStudentNotificationsPublicFromJson(json);
+}

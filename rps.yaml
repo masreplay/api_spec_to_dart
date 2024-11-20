@@ -1,6 +1,4 @@
 scripts:
-  s: rps swagger && rps g
-
   swagger: dart run bin/main.dart
 
   g:

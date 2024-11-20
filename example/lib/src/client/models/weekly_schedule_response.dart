@@ -1,0 +1,15 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'weekly_schedule_response.freezed.dart';
+part 'weekly_schedule_response.g.dart';
+
+@freezed
+class WeeklyScheduleResponse with _$WeeklyScheduleResponse {
+  const factory WeeklyScheduleResponse({
+    @JsonKey(name: 'weekday') required int weekday,
+    @JsonKey(name: 'lectures') required List lectures,
+  }) = _WeeklyScheduleResponse;
+
+  factory WeeklyScheduleResponse.fromJson(Map<String, dynamic> json) =>
+      _$WeeklyScheduleResponseFromJson(json);
+}

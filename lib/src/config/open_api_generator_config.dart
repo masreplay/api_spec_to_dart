@@ -1,3 +1,4 @@
+import 'package:path/path.dart' as path;
 import 'package:swagger_to_dart/src/utils/recase.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
@@ -14,8 +15,12 @@ class OpenApiGeneratorConfig {
 
   final String output;
 
-  String get importModelsText {
-    return """import 'package:$packageName/src/models/models.dart';""";
+  String get modelsOutputDirectory {
+    return path.join(output, 'models');
+  }
+
+  String get relativeImportModelsCode {
+    return """import './models.dart';""";
   }
 
   String dartType(OpenApiSchemaVarType? type, String? format) {

@@ -1,0 +1,26 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'pagination_response_lecturer_announcement_public.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+_$PaginationResponseLecturerAnnouncementPublicImpl
+    _$$PaginationResponseLecturerAnnouncementPublicImplFromJson(
+            Map<String, dynamic> json) =>
+        _$PaginationResponseLecturerAnnouncementPublicImpl(
+          page: (json['page'] as num).toInt(),
+          perPage: (json['per_page'] as num).toInt(),
+          total: (json['total'] as num).toInt(),
+          data: json['data'] as List<dynamic>,
+        );
+
+Map<String, dynamic> _$$PaginationResponseLecturerAnnouncementPublicImplToJson(
+        _$PaginationResponseLecturerAnnouncementPublicImpl instance) =>
+    <String, dynamic>{
+      'page': instance.page,
+      'per_page': instance.perPage,
+      'total': instance.total,
+      'data': instance.data,
+    };

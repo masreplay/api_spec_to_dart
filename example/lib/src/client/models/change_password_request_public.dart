@@ -1,0 +1,15 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'change_password_request_public.freezed.dart';
+part 'change_password_request_public.g.dart';
+
+@freezed
+class ChangePasswordRequestPublic with _$ChangePasswordRequestPublic {
+  const factory ChangePasswordRequestPublic({
+    @JsonKey(name: 'old_password') required String oldPassword,
+    @JsonKey(name: 'new_password') required String newPassword,
+  }) = _ChangePasswordRequestPublic;
+
+  factory ChangePasswordRequestPublic.fromJson(Map<String, dynamic> json) =>
+      _$ChangePasswordRequestPublicFromJson(json);
+}

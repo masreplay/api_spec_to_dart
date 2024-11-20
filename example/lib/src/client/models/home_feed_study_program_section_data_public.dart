@@ -1,0 +1,26 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+import './models.dart';
+
+part 'home_feed_study_program_section_data_public.freezed.dart';
+part 'home_feed_study_program_section_data_public.g.dart';
+
+@freezed
+class HomeFeedStudyProgramSectionDataPublic
+    with _$HomeFeedStudyProgramSectionDataPublic {
+  const factory HomeFeedStudyProgramSectionDataPublic({
+    @JsonKey(name: 'study_program_id') required int studyProgramId,
+    @JsonKey(name: 'name') required int name,
+    @JsonKey(name: 'study_year') required String studyYear,
+    @JsonKey(name: 'study_year_formatted') required String studyYearFormatted,
+    @JsonKey(name: 'study_type') required StudyProgramType studyType,
+    @JsonKey(name: 'study_type_formatted') required String studyTypeFormatted,
+    @JsonKey(name: 'semester') required String semester,
+    @JsonKey(name: 'grade') required int grade,
+    @JsonKey(name: 'grade_formatted') required String gradeFormatted,
+  }) = _HomeFeedStudyProgramSectionDataPublic;
+
+  factory HomeFeedStudyProgramSectionDataPublic.fromJson(
+          Map<String, dynamic> json) =>
+      _$HomeFeedStudyProgramSectionDataPublicFromJson(json);
+}

@@ -1,0 +1,17 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'base_response_list_student_selected_courses_public.freezed.dart';
+part 'base_response_list_student_selected_courses_public.g.dart';
+
+@freezed
+class BaseResponseListStudentSelectedCoursesPublic
+    with _$BaseResponseListStudentSelectedCoursesPublic {
+  const factory BaseResponseListStudentSelectedCoursesPublic({
+    @JsonKey(name: 'message') required String? message,
+    @JsonKey(name: 'data') required List data,
+  }) = _BaseResponseListStudentSelectedCoursesPublic;
+
+  factory BaseResponseListStudentSelectedCoursesPublic.fromJson(
+          Map<String, dynamic> json) =>
+      _$BaseResponseListStudentSelectedCoursesPublicFromJson(json);
+}

@@ -1,0 +1,51 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+import './models.dart';
+
+part 'student_table.freezed.dart';
+part 'student_table.g.dart';
+
+@freezed
+class StudentTable with _$StudentTable {
+  const factory StudentTable({
+    @JsonKey(name: 'arabic_name1') required String? arabicName1,
+    @JsonKey(name: 'arabic_name2') required String? arabicName2,
+    @JsonKey(name: 'arabic_name3') required String? arabicName3,
+    @JsonKey(name: 'arabic_name4') required String? arabicName4,
+    @JsonKey(name: 'english_name1') required String? englishName1,
+    @JsonKey(name: 'english_name2') required String? englishName2,
+    @JsonKey(name: 'english_name3') required String? englishName3,
+    @JsonKey(name: 'english_name4') required String? englishName4,
+    @JsonKey(name: 'arabic_mother_name1') required String? arabicMotherName1,
+    @JsonKey(name: 'arabic_mother_name2') required String? arabicMotherName2,
+    @JsonKey(name: 'arabic_mother_name3') required String? arabicMotherName3,
+    @JsonKey(name: 'english_mother_name1') required String? englishMotherName1,
+    @JsonKey(name: 'english_mother_name2') required String? englishMotherName2,
+    @JsonKey(name: 'english_mother_name3') required String? englishMotherName3,
+    @Default(1) @JsonKey(name: 'gender') required GenderEnum? gender,
+    @Default(1)
+    @JsonKey(name: 'citizenship_type')
+    required CitizenshipTypeEnum? citizenshipType,
+    @JsonKey(name: 'blood_group') required BloodGroupEnum? bloodGroup,
+    @JsonKey(name: 'date_of_birth') required DateTime? dateOfBirth,
+    @JsonKey(name: 'governorate_id') required int? governorateId,
+    @JsonKey(name: 'nationality_id') required int? nationalityId,
+    @JsonKey(name: 'nationalism_id') required int? nationalismId,
+    @JsonKey(name: 'religion_id') required int? religionId,
+    @JsonKey(name: 'postpone_course') required int? postponeCourse,
+    @JsonKey(name: 'university_number') required int? universityNumber,
+    @JsonKey(name: 'registered') required bool registered,
+    @JsonKey(name: 'accepted_by_the_college')
+    required bool acceptedByTheCollege,
+    @JsonKey(name: 'check_request') required bool checkRequest,
+    @JsonKey(name: 'user_id') required String userId,
+    @JsonKey(name: 'phone_number') required String phoneNumber,
+    @JsonKey(name: 'email') required String? email,
+    @JsonKey(name: 'id') required int id,
+    @JsonKey(name: 'login_credentials') required String? loginCredentials,
+    @JsonKey(name: 'creation_time') required DateTime creationTime,
+  }) = _StudentTable;
+
+  factory StudentTable.fromJson(Map<String, dynamic> json) =>
+      _$StudentTableFromJson(json);
+}

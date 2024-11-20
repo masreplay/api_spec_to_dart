@@ -1,0 +1,15 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'body_student_ekyc_upload_nfc.freezed.dart';
+part 'body_student_ekyc_upload_nfc.g.dart';
+
+@freezed
+class BodyStudentEkycUploadNfc with _$BodyStudentEkycUploadNfc {
+  const factory BodyStudentEkycUploadNfc({
+    @JsonKey(name: 'data') required String data,
+    @JsonKey(name: 'file') required File file,
+  }) = _BodyStudentEkycUploadNfc;
+
+  factory BodyStudentEkycUploadNfc.fromJson(Map<String, dynamic> json) =>
+      _$BodyStudentEkycUploadNfcFromJson(json);
+}
