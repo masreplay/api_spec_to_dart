@@ -78,6 +78,6 @@ Future<void> dumpJson(
   Map<String, dynamic> value,
 ) {
   return File('test/dump/$name.json').writeAsString(
-    JsonEncoder.withIndent('  ').convert(value),
+    JsonEncoder.withIndent('    ').convert(value),
   );
 }

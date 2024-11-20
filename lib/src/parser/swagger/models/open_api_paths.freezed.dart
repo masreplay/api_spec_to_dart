@@ -217,7 +217,7 @@ mixin _$OpenApiPathMethod {
   List<Map<String, List<dynamic>>>? get security =>
       throw _privateConstructorUsedError;
   @JsonKey(name: 'parameters')
-  List<OpenApiPathMethodParameter> get parameters =>
+  List<OpenApiPathMethodParameter>? get parameters =>
       throw _privateConstructorUsedError;
   Map<String, OpenApiPathMethodResponse>? get responses =>
       throw _privateConstructorUsedError;
@@ -231,7 +231,7 @@ mixin _$OpenApiPathMethod {
             @JsonKey(name: 'security')
             List<Map<String, List<dynamic>>>? security,
             @JsonKey(name: 'parameters')
-            List<OpenApiPathMethodParameter> parameters,
+            List<OpenApiPathMethodParameter>? parameters,
             Map<String, OpenApiPathMethodResponse>? responses)
         $default,
   ) =>
@@ -247,7 +247,7 @@ mixin _$OpenApiPathMethod {
             @JsonKey(name: 'security')
             List<Map<String, List<dynamic>>>? security,
             @JsonKey(name: 'parameters')
-            List<OpenApiPathMethodParameter> parameters,
+            List<OpenApiPathMethodParameter>? parameters,
             Map<String, OpenApiPathMethodResponse>? responses)?
         $default, {
     required TResult orElse(),
@@ -267,9 +267,9 @@ class _$OpenApiPathMethodImpl extends _OpenApiPathMethod {
       @JsonKey(name: 'description') required this.description,
       @JsonKey(name: 'operationId') required this.operationId,
       @JsonKey(name: 'security')
-      required final List<Map<String, List<dynamic>>>? security,
+      final List<Map<String, List<dynamic>>>? security,
       @JsonKey(name: 'parameters')
-      required final List<OpenApiPathMethodParameter> parameters,
+      required final List<OpenApiPathMethodParameter>? parameters,
       required final Map<String, OpenApiPathMethodResponse>? responses})
       : _tags = tags,
         _security = security,
@@ -309,13 +309,15 @@ class _$OpenApiPathMethodImpl extends _OpenApiPathMethod {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<OpenApiPathMethodParameter> _parameters;
+  final List<OpenApiPathMethodParameter>? _parameters;
   @override
   @JsonKey(name: 'parameters')
-  List<OpenApiPathMethodParameter> get parameters {
+  List<OpenApiPathMethodParameter>? get parameters {
+    final value = _parameters;
+    if (value == null) return null;
     if (_parameters is EqualUnmodifiableListView) return _parameters;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_parameters);
+    return EqualUnmodifiableListView(value);
   }
 
   final Map<String, OpenApiPathMethodResponse>? _responses;
@@ -374,7 +376,7 @@ class _$OpenApiPathMethodImpl extends _OpenApiPathMethod {
             @JsonKey(name: 'security')
             List<Map<String, List<dynamic>>>? security,
             @JsonKey(name: 'parameters')
-            List<OpenApiPathMethodParameter> parameters,
+            List<OpenApiPathMethodParameter>? parameters,
             Map<String, OpenApiPathMethodResponse>? responses)
         $default,
   ) {
@@ -393,7 +395,7 @@ class _$OpenApiPathMethodImpl extends _OpenApiPathMethod {
             @JsonKey(name: 'security')
             List<Map<String, List<dynamic>>>? security,
             @JsonKey(name: 'parameters')
-            List<OpenApiPathMethodParameter> parameters,
+            List<OpenApiPathMethodParameter>? parameters,
             Map<String, OpenApiPathMethodResponse>? responses)?
         $default, {
     required TResult orElse(),
@@ -420,9 +422,9 @@ abstract class _OpenApiPathMethod extends OpenApiPathMethod {
           @JsonKey(name: 'description') required final String? description,
           @JsonKey(name: 'operationId') required final String operationId,
           @JsonKey(name: 'security')
-          required final List<Map<String, List<dynamic>>>? security,
+          final List<Map<String, List<dynamic>>>? security,
           @JsonKey(name: 'parameters')
-          required final List<OpenApiPathMethodParameter> parameters,
+          required final List<OpenApiPathMethodParameter>? parameters,
           required final Map<String, OpenApiPathMethodResponse>? responses}) =
       _$OpenApiPathMethodImpl;
   const _OpenApiPathMethod._() : super._();
@@ -447,7 +449,7 @@ abstract class _OpenApiPathMethod extends OpenApiPathMethod {
   List<Map<String, List<dynamic>>>? get security;
   @override
   @JsonKey(name: 'parameters')
-  List<OpenApiPathMethodParameter> get parameters;
+  List<OpenApiPathMethodParameter>? get parameters;
   @override
   Map<String, OpenApiPathMethodResponse>? get responses;
 }

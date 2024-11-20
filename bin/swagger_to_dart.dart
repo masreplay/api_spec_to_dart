@@ -22,7 +22,8 @@ Future<void> main(List<String> args) async {
 
   final openApi = OpenApi.fromJson(json);
 
-  final validatedJson = JsonEncoder.withIndent('  ').convert(openApi.toJson());
+  final validatedJson =
+      JsonEncoder.withIndent('    ').convert(openApi.toJson());
 
   print(validatedJson);
 
