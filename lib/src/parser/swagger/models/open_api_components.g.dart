@@ -24,8 +24,32 @@ Map<String, dynamic> _$$OpenApiComponentsImplToJson(
     };
 
 _$OpenApiSchemasImpl _$$OpenApiSchemasImplFromJson(Map<String, dynamic> json) =>
-    _$OpenApiSchemasImpl();
+    _$OpenApiSchemasImpl(
+      properties: (json['properties'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(
+            k,
+            const OpenApiSchemaJsonConverter()
+                .fromJson(e as Map<String, dynamic>)),
+      ),
+      type: json['type'] as String,
+      required: (json['required'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      enum_: (json['enum'] as List<dynamic>?)?.map((e) => e as Object).toList(),
+      title: json['title'] as String?,
+      description: json['description'] as String?,
+    );
 
 Map<String, dynamic> _$$OpenApiSchemasImplToJson(
         _$OpenApiSchemasImpl instance) =>
-    <String, dynamic>{};
+    <String, dynamic>{
+      if (instance.properties?.map((k, e) =>
+              MapEntry(k, const OpenApiSchemaJsonConverter().toJson(e)))
+          case final value?)
+        'properties': value,
+      'type': instance.type,
+      if (instance.required case final value?) 'required': value,
+      if (instance.enum_ case final value?) 'enum': value,
+      if (instance.title case final value?) 'title': value,
+      if (instance.description case final value?) 'description': value,
+    };

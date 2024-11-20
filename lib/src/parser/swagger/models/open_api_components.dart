@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 part 'open_api_components.freezed.dart';
 part 'open_api_components.g.dart';
@@ -21,7 +22,16 @@ class OpenApiComponents with _$OpenApiComponents {
 class OpenApiSchemas with _$OpenApiSchemas {
   const OpenApiSchemas._();
 
-  const factory OpenApiSchemas() = _OpenApiSchemas;
+  const factory OpenApiSchemas({
+    @OpenApiSchemaJsonConverter()
+    @JsonKey(name: 'properties')
+    required Map<String, OpenApiSchema>? properties,
+    @JsonKey(name: 'type') required String type,
+    @JsonKey(name: 'required') required List<String>? required,
+    @JsonKey(name: 'enum') required List<Object>? enum_,
+    @JsonKey(name: 'title') required String? title,
+    @JsonKey(name: 'description') required String? description,
+  }) = _OpenApiSchemas;
 
   factory OpenApiSchemas.fromJson(Map<String, dynamic> json) =>
       _$OpenApiSchemasFromJson(json);
