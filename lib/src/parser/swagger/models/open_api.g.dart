@@ -15,11 +15,7 @@ _$OpenApiImpl _$$OpenApiImplFromJson(Map<String, dynamic> json) =>
           .toList(),
       paths: (json['paths'] as Map<String, dynamic>).map(
         (k, e) => MapEntry(
-            k,
-            (e as Map<String, dynamic>).map(
-              (k, e) => MapEntry($enumDecode(_$OpenApiPathMethodTypeEnumMap, k),
-                  OpenApiPathMethod.fromJson(e as Map<String, dynamic>)),
-            )),
+            Uri.parse(k), OpenApiPath.fromJson(e as Map<String, dynamic>)),
       ),
       components: OpenApiComponents.fromJson(
           json['components'] as Map<String, dynamic>),
@@ -31,23 +27,9 @@ Map<String, dynamic> _$$OpenApiImplToJson(_$OpenApiImpl instance) =>
       'info': instance.info.toJson(),
       if (instance.servers?.map((e) => e.toJson()).toList() case final value?)
         'servers': value,
-      'paths': instance.paths.map((k, e) => MapEntry(
-          k,
-          e.map((k, e) =>
-              MapEntry(_$OpenApiPathMethodTypeEnumMap[k]!, e.toJson())))),
+      'paths': instance.paths.map((k, e) => MapEntry(k.toString(), e.toJson())),
       'components': instance.components.toJson(),
     };
-
-const _$OpenApiPathMethodTypeEnumMap = {
-  OpenApiPathMethodType.get: 'get',
-  OpenApiPathMethodType.post: 'post',
-  OpenApiPathMethodType.put: 'put',
-  OpenApiPathMethodType.delete: 'delete',
-  OpenApiPathMethodType.options: 'options',
-  OpenApiPathMethodType.head: 'head',
-  OpenApiPathMethodType.patch: 'patch',
-  OpenApiPathMethodType.trace: 'trace',
-};
 
 _$OpenApiServerImpl _$$OpenApiServerImplFromJson(Map<String, dynamic> json) =>
     _$OpenApiServerImpl(

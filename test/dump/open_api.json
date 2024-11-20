@@ -1,0 +1,50 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "title",
+    "description": "description",
+    "version": "0.0.1"
+  },
+  "paths": {
+    "/api": {
+      "get": {
+        "tags": [
+          "tag"
+        ],
+        "summary": "summary",
+        "description": "description",
+        "operationId": "operationId",
+        "parameters": [
+          {
+            "name": "accept-language",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "package-name",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "type": "anyOf"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {},
+    "securitySchemes": {}
+  }
+}
