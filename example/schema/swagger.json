@@ -10660,7 +10660,7 @@
                 ],
                 "title": "HomeFeedCourseSelectionStatusSectionDataPublic"
             },
-            "HomeFeedCourseSelectionStatusSectionPublic": {
+            "HomeFeedCourseSelectionStatusSectionModel": {
                 "properties": {
                     "id": {
                         "type": "integer",
@@ -10701,7 +10701,7 @@
                     "description",
                     "data"
                 ],
-                "title": "HomeFeedCourseSelectionStatusSectionPublic"
+                "title": "HomeFeedCourseSelectionStatusSectionModel"
             },
             "HomeFeedMissingPaymentSectionDataPublic": {
                 "properties": {
@@ -10781,20 +10781,7 @@
                     },
                     "sections": {
                         "items": {
-                            "anyOf": [
-                                {
-                                    "$ref": "#/components/schemas/HomeFeedSummerySectionPublic"
-                                },
-                                {
-                                    "$ref": "#/components/schemas/HomeFeedStudyProgramSectionPublic"
-                                },
-                                {
-                                    "$ref": "#/components/schemas/HomeFeedCourseSelectionStatusSectionPublic"
-                                },
-                                {
-                                    "$ref": "#/components/schemas/HomeFeedMissingPaymentSectionPublic"
-                                }
-                            ]
+                            "$ref": "#/components/schemas/HomeFeedSectionModel"
                         },
                         "type": "array",
                         "title": "Sections"
@@ -10805,6 +10792,42 @@
                     "sections"
                 ],
                 "title": "HomeFeedPublic"
+            },
+            "HomeFeedSectionModel": {
+                "properties": {
+                    "section": {
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/HomeFeedSummerySectionModel"
+                            },
+                            {
+                                "$ref": "#/components/schemas/HomeFeedStudyProgramSectionPublic"
+                            },
+                            {
+                                "$ref": "#/components/schemas/HomeFeedCourseSelectionStatusSectionModel"
+                            },
+                            {
+                                "$ref": "#/components/schemas/HomeFeedMissingPaymentSectionPublic"
+                            }
+                        ],
+                        "title": "Section",
+                        "discriminator": {
+                            "propertyName": "type",
+                            "mapping": {
+                                "course_selection_status": "#/components/schemas/HomeFeedCourseSelectionStatusSectionModel",
+                                "missing_payment": "#/components/schemas/HomeFeedMissingPaymentSectionPublic",
+                                "study_program": "#/components/schemas/HomeFeedStudyProgramSectionPublic",
+                                "summary": "#/components/schemas/HomeFeedSummerySectionModel"
+                            }
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "section"
+                ],
+                "title": "HomeFeedSectionModel",
+                "description": "Union of all form field types."
             },
             "HomeFeedStudyProgramSectionDataPublic": {
                 "properties": {
@@ -10934,7 +10957,7 @@
                 ],
                 "title": "HomeFeedSummerySectionDataPublic"
             },
-            "HomeFeedSummerySectionPublic": {
+            "HomeFeedSummerySectionModel": {
                 "properties": {
                     "id": {
                         "type": "integer",
@@ -10975,7 +10998,7 @@
                     "description",
                     "data"
                 ],
-                "title": "HomeFeedSummerySectionPublic"
+                "title": "HomeFeedSummerySectionModel"
             },
             "HomeProcessStatus": {
                 "type": "string",
@@ -15894,7 +15917,8 @@
                 "required": [
                     "field"
                 ],
-                "title": "UIFormField"
+                "title": "UIFormField",
+                "description": "Union of all form field types."
             },
             "UISelectFormField": {
                 "properties": {
