@@ -18,8 +18,8 @@ class OpenApiSchema with _$OpenApiSchema {
     OpenApiSchemaVarType? type,
     @JsonKey(name: 'format') String? format,
     @JsonKey(name: 'description') String? description,
-    @JsonKey(name: 'title') String? title,
     @JsonKey(name: 'pattern') String? pattern,
+    @JsonKey(name: 'title') String? title,
     @JsonKey(name: 'default') Object? default_,
   }) = OpenApiSchemaType;
 
@@ -27,8 +27,8 @@ class OpenApiSchema with _$OpenApiSchema {
     @JsonKey(name: _refKey) String? ref,
     @JsonKey(name: 'format') String? format,
     @JsonKey(name: 'description') String? description,
-    @JsonKey(name: 'title') String? title,
     @JsonKey(name: 'pattern') String? pattern,
+    @JsonKey(name: 'title') String? title,
     @JsonKey(name: 'default') Object? default_,
   }) = OpenApiSchemaRef;
 

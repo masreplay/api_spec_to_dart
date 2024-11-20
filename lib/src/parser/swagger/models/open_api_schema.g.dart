@@ -13,8 +13,8 @@ _$OpenApiSchemaTypeImpl _$$OpenApiSchemaTypeImplFromJson(
           unknownValue: OpenApiSchemaVarType.$unknown),
       format: json['format'] as String?,
       description: json['description'] as String?,
-      title: json['title'] as String?,
       pattern: json['pattern'] as String?,
+      title: json['title'] as String?,
       default_: json['default'],
       $type: json['runtimeType'] as String?,
     );
@@ -26,8 +26,8 @@ Map<String, dynamic> _$$OpenApiSchemaTypeImplToJson(
         'type': value,
       if (instance.format case final value?) 'format': value,
       if (instance.description case final value?) 'description': value,
-      if (instance.title case final value?) 'title': value,
       if (instance.pattern case final value?) 'pattern': value,
+      if (instance.title case final value?) 'title': value,
       if (instance.default_ case final value?) 'default': value,
       'runtimeType': instance.$type,
     };
@@ -49,8 +49,8 @@ _$OpenApiSchemaRefImpl _$$OpenApiSchemaRefImplFromJson(
       ref: json[r'$ref'] as String?,
       format: json['format'] as String?,
       description: json['description'] as String?,
-      title: json['title'] as String?,
       pattern: json['pattern'] as String?,
+      title: json['title'] as String?,
       default_: json['default'],
       $type: json['runtimeType'] as String?,
     );
@@ -61,8 +61,8 @@ Map<String, dynamic> _$$OpenApiSchemaRefImplToJson(
       if (instance.ref case final value?) r'$ref': value,
       if (instance.format case final value?) 'format': value,
       if (instance.description case final value?) 'description': value,
-      if (instance.title case final value?) 'title': value,
       if (instance.pattern case final value?) 'pattern': value,
+      if (instance.title case final value?) 'title': value,
       if (instance.default_ case final value?) 'default': value,
       'runtimeType': instance.$type,
     };
