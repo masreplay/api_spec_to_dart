@@ -14,14 +14,11 @@ class BodyFilesUploadFile with _$BodyFilesUploadFile {
 
   @JsonSerializable(converters: convertors)
   const factory BodyFilesUploadFile({
-    @JsonKey(name: 'file')
-
     /// File
-    required File file,
-    @JsonKey(name: 'entity_id')
+    @JsonKey(name: 'file') required File file,
 
     /// Entity Id
-    required int? entityId,
+    @JsonKey(name: 'entity_id') required int? entityId,
     @JsonKey(name: 'collection') required FileCollectionEnum collection,
   }) = _BodyFilesUploadFile;
 

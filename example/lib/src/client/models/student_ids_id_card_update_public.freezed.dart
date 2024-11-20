@@ -21,15 +21,24 @@ StudentIdsIdCardUpdatePublic _$StudentIdsIdCardUpdatePublicFromJson(
 
 /// @nodoc
 mixin _$StudentIdsIdCardUpdatePublic {
+  /// Identification Card Number
   @JsonKey(name: 'identification_card_number')
   String get identificationCardNumber => throw _privateConstructorUsedError;
+
+  /// Identification Card Record
   @JsonKey(name: 'identification_card_record')
   String get identificationCardRecord => throw _privateConstructorUsedError;
+
+  /// Identification Card Page
   @JsonKey(name: 'identification_card_page')
   String get identificationCardPage => throw _privateConstructorUsedError;
+
+  /// Identification Card Issuing Authority
   @JsonKey(name: 'identification_card_issuing_authority')
   String get identificationCardIssuingAuthority =>
       throw _privateConstructorUsedError;
+
+  /// Identification Card Date Of Issue
   @JsonKey(name: 'identification_card_date_of_issue')
   DateTime get identificationCardDateOfIssue =>
       throw _privateConstructorUsedError;
@@ -201,18 +210,27 @@ class _$StudentIdsIdCardUpdatePublicImpl extends _StudentIdsIdCardUpdatePublic {
           Map<String, dynamic> json) =>
       _$$StudentIdsIdCardUpdatePublicImplFromJson(json);
 
+  /// Identification Card Number
   @override
   @JsonKey(name: 'identification_card_number')
   final String identificationCardNumber;
+
+  /// Identification Card Record
   @override
   @JsonKey(name: 'identification_card_record')
   final String identificationCardRecord;
+
+  /// Identification Card Page
   @override
   @JsonKey(name: 'identification_card_page')
   final String identificationCardPage;
+
+  /// Identification Card Issuing Authority
   @override
   @JsonKey(name: 'identification_card_issuing_authority')
   final String identificationCardIssuingAuthority;
+
+  /// Identification Card Date Of Issue
   @override
   @JsonKey(name: 'identification_card_date_of_issue')
   final DateTime identificationCardDateOfIssue;
@@ -292,18 +310,27 @@ abstract class _StudentIdsIdCardUpdatePublic
   factory _StudentIdsIdCardUpdatePublic.fromJson(Map<String, dynamic> json) =
       _$StudentIdsIdCardUpdatePublicImpl.fromJson;
 
+  /// Identification Card Number
   @override
   @JsonKey(name: 'identification_card_number')
   String get identificationCardNumber;
+
+  /// Identification Card Record
   @override
   @JsonKey(name: 'identification_card_record')
   String get identificationCardRecord;
+
+  /// Identification Card Page
   @override
   @JsonKey(name: 'identification_card_page')
   String get identificationCardPage;
+
+  /// Identification Card Issuing Authority
   @override
   @JsonKey(name: 'identification_card_issuing_authority')
   String get identificationCardIssuingAuthority;
+
+  /// Identification Card Date Of Issue
   @override
   @JsonKey(name: 'identification_card_date_of_issue')
   DateTime get identificationCardDateOfIssue;

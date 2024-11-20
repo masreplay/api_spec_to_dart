@@ -22,6 +22,7 @@ BaseResponseLectureHomeworksCalenderResponse
 
 /// @nodoc
 mixin _$BaseResponseLectureHomeworksCalenderResponse {
+  /// Message
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
   @JsonKey(name: 'data')
@@ -162,6 +163,7 @@ class _$BaseResponseLectureHomeworksCalenderResponseImpl
           Map<String, dynamic> json) =>
       _$$BaseResponseLectureHomeworksCalenderResponseImplFromJson(json);
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   final String? message;
@@ -220,6 +222,7 @@ abstract class _BaseResponseLectureHomeworksCalenderResponse
           Map<String, dynamic> json) =
       _$BaseResponseLectureHomeworksCalenderResponseImpl.fromJson;
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   String? get message;

@@ -22,6 +22,7 @@ BaseResponseAuthenticationStatusResponse
 
 /// @nodoc
 mixin _$BaseResponseAuthenticationStatusResponse {
+  /// Message
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
   @JsonKey(name: 'data')
@@ -158,6 +159,7 @@ class _$BaseResponseAuthenticationStatusResponseImpl
           Map<String, dynamic> json) =>
       _$$BaseResponseAuthenticationStatusResponseImplFromJson(json);
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   final String? message;
@@ -215,6 +217,7 @@ abstract class _BaseResponseAuthenticationStatusResponse
           Map<String, dynamic> json) =
       _$BaseResponseAuthenticationStatusResponseImpl.fromJson;
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   String? get message;

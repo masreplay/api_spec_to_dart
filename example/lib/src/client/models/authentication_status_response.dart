@@ -14,21 +14,19 @@ class AuthenticationStatusResponse with _$AuthenticationStatusResponse {
   const factory AuthenticationStatusResponse({
     @JsonKey(name: 'settings')
     required AuthenticationStatusOptionsResponse settings,
-    @JsonKey(name: 'is_temporary_password_changed')
 
     /// Is Temporary Password Changed
+    @JsonKey(name: 'is_temporary_password_changed')
     required bool isTemporaryPasswordChanged,
-    @JsonKey(name: 'is_account_verified')
 
     /// Is Account Verified
-    required bool isAccountVerified,
-    @JsonKey(name: 'is_ekyc_verified')
+    @JsonKey(name: 'is_account_verified') required bool isAccountVerified,
 
     /// Is Ekyc Verified
-    required bool isEkycVerified,
-    @JsonKey(name: 'is_enrollment_payment_verified')
+    @JsonKey(name: 'is_ekyc_verified') required bool isEkycVerified,
 
     /// Is Enrollment Payment Verified
+    @JsonKey(name: 'is_enrollment_payment_verified')
     required bool isEnrollmentPaymentVerified,
     @JsonKey(name: 'registration_request_status')
     required RegistrationRequestStatusResponse registrationRequestStatus,

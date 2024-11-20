@@ -13,10 +13,8 @@ class BaseResponseLectureHomeworksCalenderResponse
 
   @JsonSerializable(converters: convertors)
   const factory BaseResponseLectureHomeworksCalenderResponse({
-    @JsonKey(name: 'message')
-
     /// Message
-    required String? message,
+    @JsonKey(name: 'message') required String? message,
     @JsonKey(name: 'data') required LectureHomeworksCalenderResponse data,
   }) = _BaseResponseLectureHomeworksCalenderResponse;
 

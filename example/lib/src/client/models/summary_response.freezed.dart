@@ -20,10 +20,15 @@ SummaryResponse _$SummaryResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SummaryResponse {
+  /// Number Of Collage Subjects
   @JsonKey(name: 'number_of_collage_subjects')
   int? get numberOfCollageSubjects => throw _privateConstructorUsedError;
+
+  /// Number Of Units
   @JsonKey(name: 'number_of_units')
   int? get numberOfUnits => throw _privateConstructorUsedError;
+
+  /// Number Of Completed Units
   @JsonKey(name: 'number_of_completed_units')
   int? get numberOfCompletedUnits => throw _privateConstructorUsedError;
 
@@ -150,12 +155,17 @@ class _$SummaryResponseImpl extends _SummaryResponse {
   factory _$SummaryResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$SummaryResponseImplFromJson(json);
 
+  /// Number Of Collage Subjects
   @override
   @JsonKey(name: 'number_of_collage_subjects')
   final int? numberOfCollageSubjects;
+
+  /// Number Of Units
   @override
   @JsonKey(name: 'number_of_units')
   final int? numberOfUnits;
+
+  /// Number Of Completed Units
   @override
   @JsonKey(name: 'number_of_completed_units')
   final int? numberOfCompletedUnits;
@@ -213,12 +223,17 @@ abstract class _SummaryResponse extends SummaryResponse {
   factory _SummaryResponse.fromJson(Map<String, dynamic> json) =
       _$SummaryResponseImpl.fromJson;
 
+  /// Number Of Collage Subjects
   @override
   @JsonKey(name: 'number_of_collage_subjects')
   int? get numberOfCollageSubjects;
+
+  /// Number Of Units
   @override
   @JsonKey(name: 'number_of_units')
   int? get numberOfUnits;
+
+  /// Number Of Completed Units
   @override
   @JsonKey(name: 'number_of_completed_units')
   int? get numberOfCompletedUnits;

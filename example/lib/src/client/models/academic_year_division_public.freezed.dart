@@ -21,35 +21,64 @@ AcademicYearDivisionPublic _$AcademicYearDivisionPublicFromJson(
 
 /// @nodoc
 mixin _$AcademicYearDivisionPublic {
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+
+  /// Academic Learning Framework System Id
   @JsonKey(name: 'academic_learning_framework_system_id')
   int get academicLearningFrameworkSystemId =>
       throw _privateConstructorUsedError;
+
+  /// Enrolment Start Date
   @JsonKey(name: 'enrolment_start_date')
   DateTime get enrolmentStartDate => throw _privateConstructorUsedError;
+
+  /// Name
   @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
+
+  /// Enrolment End Date
   @JsonKey(name: 'enrolment_end_date')
   DateTime get enrolmentEndDate => throw _privateConstructorUsedError;
+
+  /// Semester Start Date
   @JsonKey(name: 'semester_start_date')
   DateTime get semesterStartDate => throw _privateConstructorUsedError;
+
+  /// Semester End Date
   @JsonKey(name: 'semester_end_date')
   DateTime get semesterEndDate => throw _privateConstructorUsedError;
+
+  /// Semester Time Period
   @JsonKey(name: 'semester_time_period')
   int get semesterTimePeriod => throw _privateConstructorUsedError;
+
+  /// Period Type
   @JsonKey(name: 'period_type')
   int get periodType => throw _privateConstructorUsedError;
+
+  /// Minimum Gpa For Success
   @JsonKey(name: 'minimum_gpa_for_success')
   num get minimumGpaForSuccess => throw _privateConstructorUsedError;
+
+  /// Minimum Course Passing Grade
   @JsonKey(name: 'minimum_course_passing_grade')
   int get minimumCoursePassingGrade => throw _privateConstructorUsedError;
+
+  /// Minimum Number Of Courses To Pass
   @JsonKey(name: 'minimum_number_of_courses_to_pass')
   int get minimumNumberOfCoursesToPass => throw _privateConstructorUsedError;
+
+  /// Minimum Number Of Courses To Fail
   @JsonKey(name: 'minimum_number_of_courses_to_fail')
   int get minimumNumberOfCoursesToFail => throw _privateConstructorUsedError;
+
+  /// Minimum Ects
   @JsonKey(name: 'minimum_ects')
   num get minimumEcts => throw _privateConstructorUsedError;
+
+  /// Maximum Ects
   @JsonKey(name: 'maximum_ects')
   num get maximumEcts => throw _privateConstructorUsedError;
 
@@ -349,48 +378,77 @@ class _$AcademicYearDivisionPublicImpl extends _AcademicYearDivisionPublic {
           Map<String, dynamic> json) =>
       _$$AcademicYearDivisionPublicImplFromJson(json);
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
+
+  /// Academic Learning Framework System Id
   @override
   @JsonKey(name: 'academic_learning_framework_system_id')
   final int academicLearningFrameworkSystemId;
+
+  /// Enrolment Start Date
   @override
   @JsonKey(name: 'enrolment_start_date')
   final DateTime enrolmentStartDate;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   final String name;
+
+  /// Enrolment End Date
   @override
   @JsonKey(name: 'enrolment_end_date')
   final DateTime enrolmentEndDate;
+
+  /// Semester Start Date
   @override
   @JsonKey(name: 'semester_start_date')
   final DateTime semesterStartDate;
+
+  /// Semester End Date
   @override
   @JsonKey(name: 'semester_end_date')
   final DateTime semesterEndDate;
+
+  /// Semester Time Period
   @override
   @JsonKey(name: 'semester_time_period')
   final int semesterTimePeriod;
+
+  /// Period Type
   @override
   @JsonKey(name: 'period_type')
   final int periodType;
+
+  /// Minimum Gpa For Success
   @override
   @JsonKey(name: 'minimum_gpa_for_success')
   final num minimumGpaForSuccess;
+
+  /// Minimum Course Passing Grade
   @override
   @JsonKey(name: 'minimum_course_passing_grade')
   final int minimumCoursePassingGrade;
+
+  /// Minimum Number Of Courses To Pass
   @override
   @JsonKey(name: 'minimum_number_of_courses_to_pass')
   final int minimumNumberOfCoursesToPass;
+
+  /// Minimum Number Of Courses To Fail
   @override
   @JsonKey(name: 'minimum_number_of_courses_to_fail')
   final int minimumNumberOfCoursesToFail;
+
+  /// Minimum Ects
   @override
   @JsonKey(name: 'minimum_ects')
   final num minimumEcts;
+
+  /// Maximum Ects
   @override
   @JsonKey(name: 'maximum_ects')
   final num maximumEcts;
@@ -512,48 +570,77 @@ abstract class _AcademicYearDivisionPublic extends AcademicYearDivisionPublic {
   factory _AcademicYearDivisionPublic.fromJson(Map<String, dynamic> json) =
       _$AcademicYearDivisionPublicImpl.fromJson;
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;
+
+  /// Academic Learning Framework System Id
   @override
   @JsonKey(name: 'academic_learning_framework_system_id')
   int get academicLearningFrameworkSystemId;
+
+  /// Enrolment Start Date
   @override
   @JsonKey(name: 'enrolment_start_date')
   DateTime get enrolmentStartDate;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   String get name;
+
+  /// Enrolment End Date
   @override
   @JsonKey(name: 'enrolment_end_date')
   DateTime get enrolmentEndDate;
+
+  /// Semester Start Date
   @override
   @JsonKey(name: 'semester_start_date')
   DateTime get semesterStartDate;
+
+  /// Semester End Date
   @override
   @JsonKey(name: 'semester_end_date')
   DateTime get semesterEndDate;
+
+  /// Semester Time Period
   @override
   @JsonKey(name: 'semester_time_period')
   int get semesterTimePeriod;
+
+  /// Period Type
   @override
   @JsonKey(name: 'period_type')
   int get periodType;
+
+  /// Minimum Gpa For Success
   @override
   @JsonKey(name: 'minimum_gpa_for_success')
   num get minimumGpaForSuccess;
+
+  /// Minimum Course Passing Grade
   @override
   @JsonKey(name: 'minimum_course_passing_grade')
   int get minimumCoursePassingGrade;
+
+  /// Minimum Number Of Courses To Pass
   @override
   @JsonKey(name: 'minimum_number_of_courses_to_pass')
   int get minimumNumberOfCoursesToPass;
+
+  /// Minimum Number Of Courses To Fail
   @override
   @JsonKey(name: 'minimum_number_of_courses_to_fail')
   int get minimumNumberOfCoursesToFail;
+
+  /// Minimum Ects
   @override
   @JsonKey(name: 'minimum_ects')
   num get minimumEcts;
+
+  /// Maximum Ects
   @override
   @JsonKey(name: 'maximum_ects')
   num get maximumEcts;

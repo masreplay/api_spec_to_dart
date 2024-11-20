@@ -22,24 +22,43 @@ StudentRegistrationSchoolInfoUpdateRequest
 
 /// @nodoc
 mixin _$StudentRegistrationSchoolInfoUpdateRequest {
+  /// School Name
   @JsonKey(name: 'school_name')
   String? get schoolName => throw _privateConstructorUsedError;
+
+  /// Exam Number
   @JsonKey(name: 'exam_number')
   String get examNumber => throw _privateConstructorUsedError;
+
+  /// Study Year Id
   @JsonKey(name: 'study_year_id')
   int? get studyYearId => throw _privateConstructorUsedError;
+
+  /// Directorate Name
   @JsonKey(name: 'directorate_name')
   String? get directorateName => throw _privateConstructorUsedError;
+
+  /// Average
   @JsonKey(name: 'average')
   num? get average => throw _privateConstructorUsedError;
+
+  /// Total
   @JsonKey(name: 'total')
   num? get total => throw _privateConstructorUsedError;
+
+  /// Round
   @JsonKey(name: 'round')
   int? get round => throw _privateConstructorUsedError;
+
+  /// Number Of Failure Years
   @JsonKey(name: 'number_of_failure_years')
   int? get numberOfFailureYears => throw _privateConstructorUsedError;
+
+  /// Governorate Id
   @JsonKey(name: 'governorate_id')
   int? get governorateId => throw _privateConstructorUsedError;
+
+  /// Specialization Id
   @JsonKey(name: 'specialization_id')
   int? get specializationId => throw _privateConstructorUsedError;
 
@@ -265,33 +284,52 @@ class _$StudentRegistrationSchoolInfoUpdateRequestImpl
           Map<String, dynamic> json) =>
       _$$StudentRegistrationSchoolInfoUpdateRequestImplFromJson(json);
 
+  /// School Name
   @override
   @JsonKey(name: 'school_name')
   final String? schoolName;
+
+  /// Exam Number
   @override
   @JsonKey(name: 'exam_number')
   final String examNumber;
+
+  /// Study Year Id
   @override
   @JsonKey(name: 'study_year_id')
   final int? studyYearId;
+
+  /// Directorate Name
   @override
   @JsonKey(name: 'directorate_name')
   final String? directorateName;
+
+  /// Average
   @override
   @JsonKey(name: 'average')
   final num? average;
+
+  /// Total
   @override
   @JsonKey(name: 'total')
   final num? total;
+
+  /// Round
   @override
   @JsonKey(name: 'round')
   final int? round;
+
+  /// Number Of Failure Years
   @override
   @JsonKey(name: 'number_of_failure_years')
   final int? numberOfFailureYears;
+
+  /// Governorate Id
   @override
   @JsonKey(name: 'governorate_id')
   final int? governorateId;
+
+  /// Specialization Id
   @override
   @JsonKey(name: 'specialization_id')
   final int? specializationId;
@@ -382,33 +420,52 @@ abstract class _StudentRegistrationSchoolInfoUpdateRequest
           Map<String, dynamic> json) =
       _$StudentRegistrationSchoolInfoUpdateRequestImpl.fromJson;
 
+  /// School Name
   @override
   @JsonKey(name: 'school_name')
   String? get schoolName;
+
+  /// Exam Number
   @override
   @JsonKey(name: 'exam_number')
   String get examNumber;
+
+  /// Study Year Id
   @override
   @JsonKey(name: 'study_year_id')
   int? get studyYearId;
+
+  /// Directorate Name
   @override
   @JsonKey(name: 'directorate_name')
   String? get directorateName;
+
+  /// Average
   @override
   @JsonKey(name: 'average')
   num? get average;
+
+  /// Total
   @override
   @JsonKey(name: 'total')
   num? get total;
+
+  /// Round
   @override
   @JsonKey(name: 'round')
   int? get round;
+
+  /// Number Of Failure Years
   @override
   @JsonKey(name: 'number_of_failure_years')
   int? get numberOfFailureYears;
+
+  /// Governorate Id
   @override
   @JsonKey(name: 'governorate_id')
   int? get governorateId;
+
+  /// Specialization Id
   @override
   @JsonKey(name: 'specialization_id')
   int? get specializationId;

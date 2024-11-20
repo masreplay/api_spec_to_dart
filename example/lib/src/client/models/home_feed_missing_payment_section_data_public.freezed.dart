@@ -22,10 +22,13 @@ HomeFeedMissingPaymentSectionDataPublic
 
 /// @nodoc
 mixin _$HomeFeedMissingPaymentSectionDataPublic {
+  /// Price
   @JsonKey(name: 'price')
   num get price => throw _privateConstructorUsedError;
   @JsonKey(name: 'currency')
   PriceCurrency get currency => throw _privateConstructorUsedError;
+
+  /// Price Formatted
   @JsonKey(name: 'price_formatted')
   String get priceFormatted => throw _privateConstructorUsedError;
 
@@ -173,12 +176,15 @@ class _$HomeFeedMissingPaymentSectionDataPublicImpl
           Map<String, dynamic> json) =>
       _$$HomeFeedMissingPaymentSectionDataPublicImplFromJson(json);
 
+  /// Price
   @override
   @JsonKey(name: 'price')
   final num price;
   @override
   @JsonKey(name: 'currency')
   final PriceCurrency currency;
+
+  /// Price Formatted
   @override
   @JsonKey(name: 'price_formatted')
   final String priceFormatted;
@@ -237,12 +243,15 @@ abstract class _HomeFeedMissingPaymentSectionDataPublic
           Map<String, dynamic> json) =
       _$HomeFeedMissingPaymentSectionDataPublicImpl.fromJson;
 
+  /// Price
   @override
   @JsonKey(name: 'price')
   num get price;
   @override
   @JsonKey(name: 'currency')
   PriceCurrency get currency;
+
+  /// Price Formatted
   @override
   @JsonKey(name: 'price_formatted')
   String get priceFormatted;

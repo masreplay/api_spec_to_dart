@@ -20,12 +20,19 @@ AttachmentResponse _$AttachmentResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AttachmentResponse {
+  /// Attachment Name
   @JsonKey(name: 'attachment_name')
   String? get attachmentName => throw _privateConstructorUsedError;
+
+  /// Sign Url
   @JsonKey(name: 'sign_url')
   String? get signUrl => throw _privateConstructorUsedError;
+
+  /// File Size
   @JsonKey(name: 'file_size')
   int? get fileSize => throw _privateConstructorUsedError;
+
+  /// File Mim Type
   @JsonKey(name: 'file_mim_type')
   String? get fileMimType => throw _privateConstructorUsedError;
 
@@ -161,15 +168,22 @@ class _$AttachmentResponseImpl extends _AttachmentResponse {
   factory _$AttachmentResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$AttachmentResponseImplFromJson(json);
 
+  /// Attachment Name
   @override
   @JsonKey(name: 'attachment_name')
   final String? attachmentName;
+
+  /// Sign Url
   @override
   @JsonKey(name: 'sign_url')
   final String? signUrl;
+
+  /// File Size
   @override
   @JsonKey(name: 'file_size')
   final int? fileSize;
+
+  /// File Mim Type
   @override
   @JsonKey(name: 'file_mim_type')
   final String? fileMimType;
@@ -227,15 +241,22 @@ abstract class _AttachmentResponse extends AttachmentResponse {
   factory _AttachmentResponse.fromJson(Map<String, dynamic> json) =
       _$AttachmentResponseImpl.fromJson;
 
+  /// Attachment Name
   @override
   @JsonKey(name: 'attachment_name')
   String? get attachmentName;
+
+  /// Sign Url
   @override
   @JsonKey(name: 'sign_url')
   String? get signUrl;
+
+  /// File Size
   @override
   @JsonKey(name: 'file_size')
   int? get fileSize;
+
+  /// File Mim Type
   @override
   @JsonKey(name: 'file_mim_type')
   String? get fileMimType;

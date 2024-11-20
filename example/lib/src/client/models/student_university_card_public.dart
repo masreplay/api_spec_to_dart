@@ -11,82 +11,62 @@ class StudentUniversityCardPublic with _$StudentUniversityCardPublic {
 
   @JsonSerializable(converters: convertors)
   const factory StudentUniversityCardPublic({
-    @JsonKey(name: 'id')
-
     /// Id
-    required int id,
-    @JsonKey(name: 'organization_ar_name')
+    @JsonKey(name: 'id') required int id,
 
     /// Organization Ar Name
-    required String? organizationArName,
-    @JsonKey(name: 'organization_en_name')
+    @JsonKey(name: 'organization_ar_name') required String? organizationArName,
 
     /// Organization En Name
-    required String? organizationEnName,
-    @JsonKey(name: 'card_number')
+    @JsonKey(name: 'organization_en_name') required String? organizationEnName,
 
     /// Card Number
-    required String? cardNumber,
-    @JsonKey(name: 'english_full_name')
+    @JsonKey(name: 'card_number') required String? cardNumber,
 
     /// English Full Name
-    required String? englishFullName,
-    @JsonKey(name: 'arabic_full_name')
+    @JsonKey(name: 'english_full_name') required String? englishFullName,
 
     /// Arabic Full Name
-    required String? arabicFullName,
-    @JsonKey(name: 'col_or_dep_en')
+    @JsonKey(name: 'arabic_full_name') required String? arabicFullName,
 
     /// Col Or Dep En
-    required String? colOrDepEn,
-    @JsonKey(name: 'col_or_dep_ar')
+    @JsonKey(name: 'col_or_dep_en') required String? colOrDepEn,
 
     /// Col Or Dep Ar
-    required String? colOrDepAr,
-    @JsonKey(name: 'stage_en')
+    @JsonKey(name: 'col_or_dep_ar') required String? colOrDepAr,
 
     /// Stage En
-    required String? stageEn,
-    @JsonKey(name: 'stage_ar')
+    @JsonKey(name: 'stage_en') required String? stageEn,
 
     /// Stage Ar
-    required String? stageAr,
-    @JsonKey(name: 'birth_date')
+    @JsonKey(name: 'stage_ar') required String? stageAr,
 
     /// Birth Date
-    required String? birthDate,
-    @JsonKey(name: 'issuing_date')
+    @JsonKey(name: 'birth_date') required String? birthDate,
 
     /// Issuing Date
-    required String? issuingDate,
-    @JsonKey(name: 'expire_date')
+    @JsonKey(name: 'issuing_date') required String? issuingDate,
 
     /// Expire Date
-    required String? expireDate,
-    @JsonKey(name: 'country_name_ar')
+    @JsonKey(name: 'expire_date') required String? expireDate,
 
     /// Country Name Ar
-    required String? countryNameAr,
-    @JsonKey(name: 'country_name_en')
+    @JsonKey(name: 'country_name_ar') required String? countryNameAr,
 
     /// Country Name En
-    required String? countryNameEn,
-    @JsonKey(name: 'ministry_name_ar')
+    @JsonKey(name: 'country_name_en') required String? countryNameEn,
 
     /// Ministry Name Ar
-    required String? ministryNameAr,
-    @JsonKey(name: 'ministry_name_en')
+    @JsonKey(name: 'ministry_name_ar') required String? ministryNameAr,
 
     /// Ministry Name En
-    required String? ministryNameEn,
-    @JsonKey(name: 'ministry_logo_url')
+    @JsonKey(name: 'ministry_name_en') required String? ministryNameEn,
 
     /// Ministry Logo Url
-    required String ministryLogoUrl,
-    @JsonKey(name: 'personal_image')
+    @JsonKey(name: 'ministry_logo_url') required String ministryLogoUrl,
 
     /// Personal Image
-    required String personalImage,
+    @JsonKey(name: 'personal_image') required String personalImage,
   }) = _StudentUniversityCardPublic;
 
   factory StudentUniversityCardPublic.fromJson(Map<String, dynamic> json) =>

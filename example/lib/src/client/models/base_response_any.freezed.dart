@@ -20,8 +20,11 @@ BaseResponseAny _$BaseResponseAnyFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$BaseResponseAny {
+  /// Message
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
+
+  /// Data
   @JsonKey(name: 'data')
   dynamic get data => throw _privateConstructorUsedError;
 
@@ -131,9 +134,12 @@ class _$BaseResponseAnyImpl extends _BaseResponseAny {
   factory _$BaseResponseAnyImpl.fromJson(Map<String, dynamic> json) =>
       _$$BaseResponseAnyImplFromJson(json);
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   final String? message;
+
+  /// Data
   @override
   @JsonKey(name: 'data')
   final dynamic data;
@@ -184,9 +190,12 @@ abstract class _BaseResponseAny extends BaseResponseAny {
   factory _BaseResponseAny.fromJson(Map<String, dynamic> json) =
       _$BaseResponseAnyImpl.fromJson;
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   String? get message;
+
+  /// Data
   @override
   @JsonKey(name: 'data')
   dynamic get data;

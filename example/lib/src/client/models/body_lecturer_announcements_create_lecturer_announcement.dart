@@ -12,14 +12,11 @@ class BodyLecturerAnnouncementsCreateLecturerAnnouncement
 
   @JsonSerializable(converters: convertors)
   const factory BodyLecturerAnnouncementsCreateLecturerAnnouncement({
-    @JsonKey(name: 'title')
-
     /// Title
-    required String title,
-    @JsonKey(name: 'description')
+    @JsonKey(name: 'title') required String title,
 
     /// Description
-    required String? description,
+    @JsonKey(name: 'description') required String? description,
   }) = _BodyLecturerAnnouncementsCreateLecturerAnnouncement;
 
   factory BodyLecturerAnnouncementsCreateLecturerAnnouncement.fromJson(

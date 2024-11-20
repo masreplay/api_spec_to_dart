@@ -20,10 +20,15 @@ AppSettingsIos _$AppSettingsIosFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AppSettingsIos {
+  /// Version
   @JsonKey(name: 'version')
   String get version => throw _privateConstructorUsedError;
+
+  /// Url
   @JsonKey(name: 'url')
   String? get url => throw _privateConstructorUsedError;
+
+  /// Message
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
 
@@ -146,12 +151,17 @@ class _$AppSettingsIosImpl extends _AppSettingsIos {
   factory _$AppSettingsIosImpl.fromJson(Map<String, dynamic> json) =>
       _$$AppSettingsIosImplFromJson(json);
 
+  /// Version
   @override
   @JsonKey(name: 'version')
   final String version;
+
+  /// Url
   @override
   @JsonKey(name: 'url')
   final String? url;
+
+  /// Message
   @override
   @JsonKey(name: 'message')
   final String? message;
@@ -203,12 +213,17 @@ abstract class _AppSettingsIos extends AppSettingsIos {
   factory _AppSettingsIos.fromJson(Map<String, dynamic> json) =
       _$AppSettingsIosImpl.fromJson;
 
+  /// Version
   @override
   @JsonKey(name: 'version')
   String get version;
+
+  /// Url
   @override
   @JsonKey(name: 'url')
   String? get url;
+
+  /// Message
   @override
   @JsonKey(name: 'message')
   String? get message;

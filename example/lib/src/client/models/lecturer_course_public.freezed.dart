@@ -20,18 +20,31 @@ LecturerCoursePublic _$LecturerCoursePublicFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$LecturerCoursePublic {
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+
+  /// Name
   @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
+
+  /// Lecturer Name
   @JsonKey(name: 'lecturer_name')
   String get lecturerName => throw _privateConstructorUsedError;
+
+  /// Collage Name
   @JsonKey(name: 'collage_name')
   String get collageName => throw _privateConstructorUsedError;
+
+  /// Division Name
   @JsonKey(name: 'division_name')
   String get divisionName => throw _privateConstructorUsedError;
+
+  /// Group Name
   @JsonKey(name: 'group_name')
   String get groupName => throw _privateConstructorUsedError;
+
+  /// Student Count
   @JsonKey(name: 'student_count')
   int? get studentCount => throw _privateConstructorUsedError;
 
@@ -207,24 +220,37 @@ class _$LecturerCoursePublicImpl extends _LecturerCoursePublic {
   factory _$LecturerCoursePublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$LecturerCoursePublicImplFromJson(json);
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   final String name;
+
+  /// Lecturer Name
   @override
   @JsonKey(name: 'lecturer_name')
   final String lecturerName;
+
+  /// Collage Name
   @override
   @JsonKey(name: 'collage_name')
   final String collageName;
+
+  /// Division Name
   @override
   @JsonKey(name: 'division_name')
   final String divisionName;
+
+  /// Group Name
   @override
   @JsonKey(name: 'group_name')
   final String groupName;
+
+  /// Student Count
   @override
   @JsonKey(name: 'student_count')
   final int? studentCount;
@@ -291,24 +317,37 @@ abstract class _LecturerCoursePublic extends LecturerCoursePublic {
   factory _LecturerCoursePublic.fromJson(Map<String, dynamic> json) =
       _$LecturerCoursePublicImpl.fromJson;
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   String get name;
+
+  /// Lecturer Name
   @override
   @JsonKey(name: 'lecturer_name')
   String get lecturerName;
+
+  /// Collage Name
   @override
   @JsonKey(name: 'collage_name')
   String get collageName;
+
+  /// Division Name
   @override
   @JsonKey(name: 'division_name')
   String get divisionName;
+
+  /// Group Name
   @override
   @JsonKey(name: 'group_name')
   String get groupName;
+
+  /// Student Count
   @override
   @JsonKey(name: 'student_count')
   int? get studentCount;

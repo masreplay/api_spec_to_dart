@@ -12,10 +12,8 @@ class BaseResponseUIForm with _$BaseResponseUIForm {
 
   @JsonSerializable(converters: convertors)
   const factory BaseResponseUIForm({
-    @JsonKey(name: 'message')
-
     /// Message
-    required String? message,
+    @JsonKey(name: 'message') required String? message,
     @JsonKey(name: 'data') required UIForm data,
   }) = _BaseResponseUIForm;
 

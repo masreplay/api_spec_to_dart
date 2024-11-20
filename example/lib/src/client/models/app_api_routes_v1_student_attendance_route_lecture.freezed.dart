@@ -22,20 +22,35 @@ AppApiRoutesV1StudentAttendanceRouteLecture
 
 /// @nodoc
 mixin _$AppApiRoutesV1StudentAttendanceRouteLecture {
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+
+  /// Subject Title
   @JsonKey(name: 'subject_title')
   String get subjectTitle => throw _privateConstructorUsedError;
+
+  /// Start Time
   @JsonKey(name: 'start_time')
   DateTime get startTime => throw _privateConstructorUsedError;
+
+  /// End Time
   @JsonKey(name: 'end_time')
   DateTime get endTime => throw _privateConstructorUsedError;
+
+  /// Group Code
   @JsonKey(name: 'group_code')
   String get groupCode => throw _privateConstructorUsedError;
+
+  /// Semester Name
   @JsonKey(name: 'semester_name')
   String get semesterName => throw _privateConstructorUsedError;
+
+  /// Room Code
   @JsonKey(name: 'room_code')
   String get roomCode => throw _privateConstructorUsedError;
+
+  /// Duration
   @JsonKey(name: 'duration')
   int get duration => throw _privateConstructorUsedError;
 
@@ -235,27 +250,42 @@ class _$AppApiRoutesV1StudentAttendanceRouteLectureImpl
           Map<String, dynamic> json) =>
       _$$AppApiRoutesV1StudentAttendanceRouteLectureImplFromJson(json);
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
+
+  /// Subject Title
   @override
   @JsonKey(name: 'subject_title')
   final String subjectTitle;
+
+  /// Start Time
   @override
   @JsonKey(name: 'start_time')
   final DateTime startTime;
+
+  /// End Time
   @override
   @JsonKey(name: 'end_time')
   final DateTime endTime;
+
+  /// Group Code
   @override
   @JsonKey(name: 'group_code')
   final String groupCode;
+
+  /// Semester Name
   @override
   @JsonKey(name: 'semester_name')
   final String semesterName;
+
+  /// Room Code
   @override
   @JsonKey(name: 'room_code')
   final String roomCode;
+
+  /// Duration
   @override
   @JsonKey(name: 'duration')
   final int duration;
@@ -329,27 +359,42 @@ abstract class _AppApiRoutesV1StudentAttendanceRouteLecture
           Map<String, dynamic> json) =
       _$AppApiRoutesV1StudentAttendanceRouteLectureImpl.fromJson;
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;
+
+  /// Subject Title
   @override
   @JsonKey(name: 'subject_title')
   String get subjectTitle;
+
+  /// Start Time
   @override
   @JsonKey(name: 'start_time')
   DateTime get startTime;
+
+  /// End Time
   @override
   @JsonKey(name: 'end_time')
   DateTime get endTime;
+
+  /// Group Code
   @override
   @JsonKey(name: 'group_code')
   String get groupCode;
+
+  /// Semester Name
   @override
   @JsonKey(name: 'semester_name')
   String get semesterName;
+
+  /// Room Code
   @override
   @JsonKey(name: 'room_code')
   String get roomCode;
+
+  /// Duration
   @override
   @JsonKey(name: 'duration')
   int get duration;

@@ -20,10 +20,15 @@ CommentUserPublic _$CommentUserPublicFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CommentUserPublic {
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+
+  /// Name
   @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
+
+  /// Avatar
   @JsonKey(name: 'avatar')
   String? get avatar => throw _privateConstructorUsedError;
 
@@ -146,12 +151,17 @@ class _$CommentUserPublicImpl extends _CommentUserPublic {
   factory _$CommentUserPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$CommentUserPublicImplFromJson(json);
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   final String name;
+
+  /// Avatar
   @override
   @JsonKey(name: 'avatar')
   final String? avatar;
@@ -203,12 +213,17 @@ abstract class _CommentUserPublic extends CommentUserPublic {
   factory _CommentUserPublic.fromJson(Map<String, dynamic> json) =
       _$CommentUserPublicImpl.fromJson;
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   String get name;
+
+  /// Avatar
   @override
   @JsonKey(name: 'avatar')
   String? get avatar;

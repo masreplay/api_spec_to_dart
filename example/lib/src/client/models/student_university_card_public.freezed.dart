@@ -21,42 +21,79 @@ StudentUniversityCardPublic _$StudentUniversityCardPublicFromJson(
 
 /// @nodoc
 mixin _$StudentUniversityCardPublic {
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+
+  /// Organization Ar Name
   @JsonKey(name: 'organization_ar_name')
   String? get organizationArName => throw _privateConstructorUsedError;
+
+  /// Organization En Name
   @JsonKey(name: 'organization_en_name')
   String? get organizationEnName => throw _privateConstructorUsedError;
+
+  /// Card Number
   @JsonKey(name: 'card_number')
   String? get cardNumber => throw _privateConstructorUsedError;
+
+  /// English Full Name
   @JsonKey(name: 'english_full_name')
   String? get englishFullName => throw _privateConstructorUsedError;
+
+  /// Arabic Full Name
   @JsonKey(name: 'arabic_full_name')
   String? get arabicFullName => throw _privateConstructorUsedError;
+
+  /// Col Or Dep En
   @JsonKey(name: 'col_or_dep_en')
   String? get colOrDepEn => throw _privateConstructorUsedError;
+
+  /// Col Or Dep Ar
   @JsonKey(name: 'col_or_dep_ar')
   String? get colOrDepAr => throw _privateConstructorUsedError;
+
+  /// Stage En
   @JsonKey(name: 'stage_en')
   String? get stageEn => throw _privateConstructorUsedError;
+
+  /// Stage Ar
   @JsonKey(name: 'stage_ar')
   String? get stageAr => throw _privateConstructorUsedError;
+
+  /// Birth Date
   @JsonKey(name: 'birth_date')
   String? get birthDate => throw _privateConstructorUsedError;
+
+  /// Issuing Date
   @JsonKey(name: 'issuing_date')
   String? get issuingDate => throw _privateConstructorUsedError;
+
+  /// Expire Date
   @JsonKey(name: 'expire_date')
   String? get expireDate => throw _privateConstructorUsedError;
+
+  /// Country Name Ar
   @JsonKey(name: 'country_name_ar')
   String? get countryNameAr => throw _privateConstructorUsedError;
+
+  /// Country Name En
   @JsonKey(name: 'country_name_en')
   String? get countryNameEn => throw _privateConstructorUsedError;
+
+  /// Ministry Name Ar
   @JsonKey(name: 'ministry_name_ar')
   String? get ministryNameAr => throw _privateConstructorUsedError;
+
+  /// Ministry Name En
   @JsonKey(name: 'ministry_name_en')
   String? get ministryNameEn => throw _privateConstructorUsedError;
+
+  /// Ministry Logo Url
   @JsonKey(name: 'ministry_logo_url')
   String get ministryLogoUrl => throw _privateConstructorUsedError;
+
+  /// Personal Image
   @JsonKey(name: 'personal_image')
   String get personalImage => throw _privateConstructorUsedError;
 
@@ -394,60 +431,97 @@ class _$StudentUniversityCardPublicImpl extends _StudentUniversityCardPublic {
           Map<String, dynamic> json) =>
       _$$StudentUniversityCardPublicImplFromJson(json);
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
+
+  /// Organization Ar Name
   @override
   @JsonKey(name: 'organization_ar_name')
   final String? organizationArName;
+
+  /// Organization En Name
   @override
   @JsonKey(name: 'organization_en_name')
   final String? organizationEnName;
+
+  /// Card Number
   @override
   @JsonKey(name: 'card_number')
   final String? cardNumber;
+
+  /// English Full Name
   @override
   @JsonKey(name: 'english_full_name')
   final String? englishFullName;
+
+  /// Arabic Full Name
   @override
   @JsonKey(name: 'arabic_full_name')
   final String? arabicFullName;
+
+  /// Col Or Dep En
   @override
   @JsonKey(name: 'col_or_dep_en')
   final String? colOrDepEn;
+
+  /// Col Or Dep Ar
   @override
   @JsonKey(name: 'col_or_dep_ar')
   final String? colOrDepAr;
+
+  /// Stage En
   @override
   @JsonKey(name: 'stage_en')
   final String? stageEn;
+
+  /// Stage Ar
   @override
   @JsonKey(name: 'stage_ar')
   final String? stageAr;
+
+  /// Birth Date
   @override
   @JsonKey(name: 'birth_date')
   final String? birthDate;
+
+  /// Issuing Date
   @override
   @JsonKey(name: 'issuing_date')
   final String? issuingDate;
+
+  /// Expire Date
   @override
   @JsonKey(name: 'expire_date')
   final String? expireDate;
+
+  /// Country Name Ar
   @override
   @JsonKey(name: 'country_name_ar')
   final String? countryNameAr;
+
+  /// Country Name En
   @override
   @JsonKey(name: 'country_name_en')
   final String? countryNameEn;
+
+  /// Ministry Name Ar
   @override
   @JsonKey(name: 'ministry_name_ar')
   final String? ministryNameAr;
+
+  /// Ministry Name En
   @override
   @JsonKey(name: 'ministry_name_en')
   final String? ministryNameEn;
+
+  /// Ministry Logo Url
   @override
   @JsonKey(name: 'ministry_logo_url')
   final String ministryLogoUrl;
+
+  /// Personal Image
   @override
   @JsonKey(name: 'personal_image')
   final String personalImage;
@@ -572,60 +646,97 @@ abstract class _StudentUniversityCardPublic
   factory _StudentUniversityCardPublic.fromJson(Map<String, dynamic> json) =
       _$StudentUniversityCardPublicImpl.fromJson;
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;
+
+  /// Organization Ar Name
   @override
   @JsonKey(name: 'organization_ar_name')
   String? get organizationArName;
+
+  /// Organization En Name
   @override
   @JsonKey(name: 'organization_en_name')
   String? get organizationEnName;
+
+  /// Card Number
   @override
   @JsonKey(name: 'card_number')
   String? get cardNumber;
+
+  /// English Full Name
   @override
   @JsonKey(name: 'english_full_name')
   String? get englishFullName;
+
+  /// Arabic Full Name
   @override
   @JsonKey(name: 'arabic_full_name')
   String? get arabicFullName;
+
+  /// Col Or Dep En
   @override
   @JsonKey(name: 'col_or_dep_en')
   String? get colOrDepEn;
+
+  /// Col Or Dep Ar
   @override
   @JsonKey(name: 'col_or_dep_ar')
   String? get colOrDepAr;
+
+  /// Stage En
   @override
   @JsonKey(name: 'stage_en')
   String? get stageEn;
+
+  /// Stage Ar
   @override
   @JsonKey(name: 'stage_ar')
   String? get stageAr;
+
+  /// Birth Date
   @override
   @JsonKey(name: 'birth_date')
   String? get birthDate;
+
+  /// Issuing Date
   @override
   @JsonKey(name: 'issuing_date')
   String? get issuingDate;
+
+  /// Expire Date
   @override
   @JsonKey(name: 'expire_date')
   String? get expireDate;
+
+  /// Country Name Ar
   @override
   @JsonKey(name: 'country_name_ar')
   String? get countryNameAr;
+
+  /// Country Name En
   @override
   @JsonKey(name: 'country_name_en')
   String? get countryNameEn;
+
+  /// Ministry Name Ar
   @override
   @JsonKey(name: 'ministry_name_ar')
   String? get ministryNameAr;
+
+  /// Ministry Name En
   @override
   @JsonKey(name: 'ministry_name_en')
   String? get ministryNameEn;
+
+  /// Ministry Logo Url
   @override
   @JsonKey(name: 'ministry_logo_url')
   String get ministryLogoUrl;
+
+  /// Personal Image
   @override
   @JsonKey(name: 'personal_image')
   String get personalImage;

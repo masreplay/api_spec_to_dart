@@ -20,6 +20,7 @@ HomeResponse _$HomeResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$HomeResponse {
+  /// Message
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
 
@@ -113,6 +114,7 @@ class _$HomeResponseImpl extends _HomeResponse {
   factory _$HomeResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$HomeResponseImplFromJson(json);
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   final String? message;
@@ -159,6 +161,7 @@ abstract class _HomeResponse extends HomeResponse {
   factory _HomeResponse.fromJson(Map<String, dynamic> json) =
       _$HomeResponseImpl.fromJson;
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   String? get message;

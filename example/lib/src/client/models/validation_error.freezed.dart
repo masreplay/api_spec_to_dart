@@ -20,10 +20,15 @@ ValidationError _$ValidationErrorFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ValidationError {
+  /// Location
   @JsonKey(name: 'loc')
   List<dynamic> get loc => throw _privateConstructorUsedError;
+
+  /// Message
   @JsonKey(name: 'msg')
   String get msg => throw _privateConstructorUsedError;
+
+  /// Error Type
   @JsonKey(name: 'type')
   String get type => throw _privateConstructorUsedError;
 
@@ -147,7 +152,10 @@ class _$ValidationErrorImpl extends _ValidationError {
   factory _$ValidationErrorImpl.fromJson(Map<String, dynamic> json) =>
       _$$ValidationErrorImplFromJson(json);
 
+  /// Location
   final List<dynamic> _loc;
+
+  /// Location
   @override
   @JsonKey(name: 'loc')
   List<dynamic> get loc {
@@ -156,9 +164,12 @@ class _$ValidationErrorImpl extends _ValidationError {
     return EqualUnmodifiableListView(_loc);
   }
 
+  /// Message
   @override
   @JsonKey(name: 'msg')
   final String msg;
+
+  /// Error Type
   @override
   @JsonKey(name: 'type')
   final String type;
@@ -211,12 +222,17 @@ abstract class _ValidationError extends ValidationError {
   factory _ValidationError.fromJson(Map<String, dynamic> json) =
       _$ValidationErrorImpl.fromJson;
 
+  /// Location
   @override
   @JsonKey(name: 'loc')
   List<dynamic> get loc;
+
+  /// Message
   @override
   @JsonKey(name: 'msg')
   String get msg;
+
+  /// Error Type
   @override
   @JsonKey(name: 'type')
   String get type;

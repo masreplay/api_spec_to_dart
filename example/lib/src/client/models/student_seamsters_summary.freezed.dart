@@ -21,22 +21,39 @@ StudentSeamstersSummary _$StudentSeamstersSummaryFromJson(
 
 /// @nodoc
 mixin _$StudentSeamstersSummary {
+  /// Id
   @JsonKey(name: 'id')
   int? get id => throw _privateConstructorUsedError;
+
+  /// Name
   @JsonKey(name: 'name')
   String? get name => throw _privateConstructorUsedError;
+
+  /// Is Active
   @JsonKey(name: 'is_active')
   bool? get isActive => throw _privateConstructorUsedError;
+
+  /// Is Enabled
   @JsonKey(name: 'is_enabled')
   bool? get isEnabled => throw _privateConstructorUsedError;
+
+  /// Total Number Of Units
   @JsonKey(name: 'total_number_of_units')
   num? get totalNumberOfUnits => throw _privateConstructorUsedError;
+
+  /// Current Number Of Units
   @JsonKey(name: 'current_number_of_units')
   int get currentNumberOfUnits => throw _privateConstructorUsedError;
+
+  /// Current Number Of Subjects
   @JsonKey(name: 'current_number_of_subjects')
   int get currentNumberOfSubjects => throw _privateConstructorUsedError;
+
+  /// Current Subjects
   @JsonKey(name: 'current_subjects')
   List<dynamic> get currentSubjects => throw _privateConstructorUsedError;
+
+  /// Previous Subjects
   @JsonKey(name: 'previous_subjects')
   List<dynamic> get previousSubjects => throw _privateConstructorUsedError;
 
@@ -247,28 +264,45 @@ class _$StudentSeamstersSummaryImpl extends _StudentSeamstersSummary {
   factory _$StudentSeamstersSummaryImpl.fromJson(Map<String, dynamic> json) =>
       _$$StudentSeamstersSummaryImplFromJson(json);
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int? id;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   final String? name;
+
+  /// Is Active
   @override
   @JsonKey(name: 'is_active')
   final bool? isActive;
+
+  /// Is Enabled
   @override
   @JsonKey(name: 'is_enabled')
   final bool? isEnabled;
+
+  /// Total Number Of Units
   @override
   @JsonKey(name: 'total_number_of_units')
   final num? totalNumberOfUnits;
+
+  /// Current Number Of Units
   @override
   @JsonKey(name: 'current_number_of_units')
   final int currentNumberOfUnits;
+
+  /// Current Number Of Subjects
   @override
   @JsonKey(name: 'current_number_of_subjects')
   final int currentNumberOfSubjects;
+
+  /// Current Subjects
   final List<dynamic> _currentSubjects;
+
+  /// Current Subjects
   @override
   @JsonKey(name: 'current_subjects')
   List<dynamic> get currentSubjects {
@@ -277,7 +311,10 @@ class _$StudentSeamstersSummaryImpl extends _StudentSeamstersSummary {
     return EqualUnmodifiableListView(_currentSubjects);
   }
 
+  /// Previous Subjects
   final List<dynamic> _previousSubjects;
+
+  /// Previous Subjects
   @override
   @JsonKey(name: 'previous_subjects')
   List<dynamic> get previousSubjects {
@@ -369,30 +406,47 @@ abstract class _StudentSeamstersSummary extends StudentSeamstersSummary {
   factory _StudentSeamstersSummary.fromJson(Map<String, dynamic> json) =
       _$StudentSeamstersSummaryImpl.fromJson;
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   int? get id;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   String? get name;
+
+  /// Is Active
   @override
   @JsonKey(name: 'is_active')
   bool? get isActive;
+
+  /// Is Enabled
   @override
   @JsonKey(name: 'is_enabled')
   bool? get isEnabled;
+
+  /// Total Number Of Units
   @override
   @JsonKey(name: 'total_number_of_units')
   num? get totalNumberOfUnits;
+
+  /// Current Number Of Units
   @override
   @JsonKey(name: 'current_number_of_units')
   int get currentNumberOfUnits;
+
+  /// Current Number Of Subjects
   @override
   @JsonKey(name: 'current_number_of_subjects')
   int get currentNumberOfSubjects;
+
+  /// Current Subjects
   @override
   @JsonKey(name: 'current_subjects')
   List<dynamic> get currentSubjects;
+
+  /// Previous Subjects
   @override
   @JsonKey(name: 'previous_subjects')
   List<dynamic> get previousSubjects;

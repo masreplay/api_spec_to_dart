@@ -21,8 +21,11 @@ BaseResponseUnionDictStrAnyNoneType
 
 /// @nodoc
 mixin _$BaseResponseUnionDictStrAnyNoneType {
+  /// Message
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
+
+  /// Data
   @JsonKey(name: 'data')
   Map<dynamic, dynamic>? get data => throw _privateConstructorUsedError;
 
@@ -142,10 +145,15 @@ class _$BaseResponseUnionDictStrAnyNoneTypeImpl
           Map<String, dynamic> json) =>
       _$$BaseResponseUnionDictStrAnyNoneTypeImplFromJson(json);
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   final String? message;
+
+  /// Data
   final Map<dynamic, dynamic>? _data;
+
+  /// Data
   @override
   @JsonKey(name: 'data')
   Map<dynamic, dynamic>? get data {
@@ -205,9 +213,12 @@ abstract class _BaseResponseUnionDictStrAnyNoneType
           Map<String, dynamic> json) =
       _$BaseResponseUnionDictStrAnyNoneTypeImpl.fromJson;
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   String? get message;
+
+  /// Data
   @override
   @JsonKey(name: 'data')
   Map<dynamic, dynamic>? get data;

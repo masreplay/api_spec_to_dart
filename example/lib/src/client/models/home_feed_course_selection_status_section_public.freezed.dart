@@ -22,12 +22,19 @@ HomeFeedCourseSelectionStatusSectionPublic
 
 /// @nodoc
 mixin _$HomeFeedCourseSelectionStatusSectionPublic {
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+
+  /// Type
   @JsonKey(name: 'type')
   String get type => throw _privateConstructorUsedError;
+
+  /// Title
   @JsonKey(name: 'title')
   String get title => throw _privateConstructorUsedError;
+
+  /// Description
   @JsonKey(name: 'description')
   String? get description => throw _privateConstructorUsedError;
   @JsonKey(name: 'data')
@@ -208,15 +215,22 @@ class _$HomeFeedCourseSelectionStatusSectionPublicImpl
           Map<String, dynamic> json) =>
       _$$HomeFeedCourseSelectionStatusSectionPublicImplFromJson(json);
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
+
+  /// Type
   @override
   @JsonKey(name: 'type')
   final String type;
+
+  /// Title
   @override
   @JsonKey(name: 'title')
   final String title;
+
+  /// Description
   @override
   @JsonKey(name: 'description')
   final String? description;
@@ -283,15 +297,22 @@ abstract class _HomeFeedCourseSelectionStatusSectionPublic
           Map<String, dynamic> json) =
       _$HomeFeedCourseSelectionStatusSectionPublicImpl.fromJson;
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;
+
+  /// Type
   @override
   @JsonKey(name: 'type')
   String get type;
+
+  /// Title
   @override
   @JsonKey(name: 'title')
   String get title;
+
+  /// Description
   @override
   @JsonKey(name: 'description')
   String? get description;

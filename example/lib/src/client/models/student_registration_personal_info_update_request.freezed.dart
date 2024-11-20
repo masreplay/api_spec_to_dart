@@ -22,32 +22,59 @@ StudentRegistrationPersonalInfoUpdateRequest
 
 /// @nodoc
 mixin _$StudentRegistrationPersonalInfoUpdateRequest {
+  /// Arabic Name1
   @JsonKey(name: 'arabic_name1')
   String get arabicName1 => throw _privateConstructorUsedError;
+
+  /// Arabic Name2
   @JsonKey(name: 'arabic_name2')
   String get arabicName2 => throw _privateConstructorUsedError;
+
+  /// Arabic Name3
   @JsonKey(name: 'arabic_name3')
   String get arabicName3 => throw _privateConstructorUsedError;
+
+  /// Arabic Name4
   @JsonKey(name: 'arabic_name4')
   String get arabicName4 => throw _privateConstructorUsedError;
+
+  /// English Name1
   @JsonKey(name: 'english_name1')
   String get englishName1 => throw _privateConstructorUsedError;
+
+  /// English Name2
   @JsonKey(name: 'english_name2')
   String get englishName2 => throw _privateConstructorUsedError;
+
+  /// English Name3
   @JsonKey(name: 'english_name3')
   String get englishName3 => throw _privateConstructorUsedError;
+
+  /// English Name4
   @JsonKey(name: 'english_name4')
   String get englishName4 => throw _privateConstructorUsedError;
+
+  /// Arabic Mother Name1
   @JsonKey(name: 'arabic_mother_name1')
   String get arabicMotherName1 => throw _privateConstructorUsedError;
+
+  /// Arabic Mother Name2
   @JsonKey(name: 'arabic_mother_name2')
   String get arabicMotherName2 => throw _privateConstructorUsedError;
+
+  /// Arabic Mother Name3
   @JsonKey(name: 'arabic_mother_name3')
   String get arabicMotherName3 => throw _privateConstructorUsedError;
+
+  /// English Mother Name1
   @JsonKey(name: 'english_mother_name1')
   String get englishMotherName1 => throw _privateConstructorUsedError;
+
+  /// English Mother Name2
   @JsonKey(name: 'english_mother_name2')
   String get englishMotherName2 => throw _privateConstructorUsedError;
+
+  /// English Mother Name3
   @JsonKey(name: 'english_mother_name3')
   String get englishMotherName3 => throw _privateConstructorUsedError;
   @JsonKey(name: 'gender')
@@ -56,18 +83,32 @@ mixin _$StudentRegistrationPersonalInfoUpdateRequest {
   CitizenshipTypeEnum get citizenshipType => throw _privateConstructorUsedError;
   @JsonKey(name: 'blood_group')
   BloodGroupEnum get bloodGroup => throw _privateConstructorUsedError;
+
+  /// Date Of Birth
   @JsonKey(name: 'date_of_birth')
   DateTime get dateOfBirth => throw _privateConstructorUsedError;
+
+  /// Governorate Id
   @JsonKey(name: 'governorate_id')
   int get governorateId => throw _privateConstructorUsedError;
+
+  /// Nationality Id
   @JsonKey(name: 'nationality_id')
   int get nationalityId => throw _privateConstructorUsedError;
+
+  /// Nationalism Id
   @JsonKey(name: 'nationalism_id')
   int get nationalismId => throw _privateConstructorUsedError;
+
+  /// Religion Id
   @JsonKey(name: 'religion_id')
   int get religionId => throw _privateConstructorUsedError;
+
+  /// Phone Number
   @JsonKey(name: 'phone_number')
   String get phoneNumber => throw _privateConstructorUsedError;
+
+  /// Email
   @JsonKey(name: 'email')
   String? get email => throw _privateConstructorUsedError;
 
@@ -516,45 +557,72 @@ class _$StudentRegistrationPersonalInfoUpdateRequestImpl
           Map<String, dynamic> json) =>
       _$$StudentRegistrationPersonalInfoUpdateRequestImplFromJson(json);
 
+  /// Arabic Name1
   @override
   @JsonKey(name: 'arabic_name1')
   final String arabicName1;
+
+  /// Arabic Name2
   @override
   @JsonKey(name: 'arabic_name2')
   final String arabicName2;
+
+  /// Arabic Name3
   @override
   @JsonKey(name: 'arabic_name3')
   final String arabicName3;
+
+  /// Arabic Name4
   @override
   @JsonKey(name: 'arabic_name4')
   final String arabicName4;
+
+  /// English Name1
   @override
   @JsonKey(name: 'english_name1')
   final String englishName1;
+
+  /// English Name2
   @override
   @JsonKey(name: 'english_name2')
   final String englishName2;
+
+  /// English Name3
   @override
   @JsonKey(name: 'english_name3')
   final String englishName3;
+
+  /// English Name4
   @override
   @JsonKey(name: 'english_name4')
   final String englishName4;
+
+  /// Arabic Mother Name1
   @override
   @JsonKey(name: 'arabic_mother_name1')
   final String arabicMotherName1;
+
+  /// Arabic Mother Name2
   @override
   @JsonKey(name: 'arabic_mother_name2')
   final String arabicMotherName2;
+
+  /// Arabic Mother Name3
   @override
   @JsonKey(name: 'arabic_mother_name3')
   final String arabicMotherName3;
+
+  /// English Mother Name1
   @override
   @JsonKey(name: 'english_mother_name1')
   final String englishMotherName1;
+
+  /// English Mother Name2
   @override
   @JsonKey(name: 'english_mother_name2')
   final String englishMotherName2;
+
+  /// English Mother Name3
   @override
   @JsonKey(name: 'english_mother_name3')
   final String englishMotherName3;
@@ -567,24 +635,38 @@ class _$StudentRegistrationPersonalInfoUpdateRequestImpl
   @override
   @JsonKey(name: 'blood_group')
   final BloodGroupEnum bloodGroup;
+
+  /// Date Of Birth
   @override
   @JsonKey(name: 'date_of_birth')
   final DateTime dateOfBirth;
+
+  /// Governorate Id
   @override
   @JsonKey(name: 'governorate_id')
   final int governorateId;
+
+  /// Nationality Id
   @override
   @JsonKey(name: 'nationality_id')
   final int nationalityId;
+
+  /// Nationalism Id
   @override
   @JsonKey(name: 'nationalism_id')
   final int nationalismId;
+
+  /// Religion Id
   @override
   @JsonKey(name: 'religion_id')
   final int religionId;
+
+  /// Phone Number
   @override
   @JsonKey(name: 'phone_number')
   final String phoneNumber;
+
+  /// Email
   @override
   @JsonKey(name: 'email')
   final String? email;
@@ -739,45 +821,72 @@ abstract class _StudentRegistrationPersonalInfoUpdateRequest
           Map<String, dynamic> json) =
       _$StudentRegistrationPersonalInfoUpdateRequestImpl.fromJson;
 
+  /// Arabic Name1
   @override
   @JsonKey(name: 'arabic_name1')
   String get arabicName1;
+
+  /// Arabic Name2
   @override
   @JsonKey(name: 'arabic_name2')
   String get arabicName2;
+
+  /// Arabic Name3
   @override
   @JsonKey(name: 'arabic_name3')
   String get arabicName3;
+
+  /// Arabic Name4
   @override
   @JsonKey(name: 'arabic_name4')
   String get arabicName4;
+
+  /// English Name1
   @override
   @JsonKey(name: 'english_name1')
   String get englishName1;
+
+  /// English Name2
   @override
   @JsonKey(name: 'english_name2')
   String get englishName2;
+
+  /// English Name3
   @override
   @JsonKey(name: 'english_name3')
   String get englishName3;
+
+  /// English Name4
   @override
   @JsonKey(name: 'english_name4')
   String get englishName4;
+
+  /// Arabic Mother Name1
   @override
   @JsonKey(name: 'arabic_mother_name1')
   String get arabicMotherName1;
+
+  /// Arabic Mother Name2
   @override
   @JsonKey(name: 'arabic_mother_name2')
   String get arabicMotherName2;
+
+  /// Arabic Mother Name3
   @override
   @JsonKey(name: 'arabic_mother_name3')
   String get arabicMotherName3;
+
+  /// English Mother Name1
   @override
   @JsonKey(name: 'english_mother_name1')
   String get englishMotherName1;
+
+  /// English Mother Name2
   @override
   @JsonKey(name: 'english_mother_name2')
   String get englishMotherName2;
+
+  /// English Mother Name3
   @override
   @JsonKey(name: 'english_mother_name3')
   String get englishMotherName3;
@@ -790,24 +899,38 @@ abstract class _StudentRegistrationPersonalInfoUpdateRequest
   @override
   @JsonKey(name: 'blood_group')
   BloodGroupEnum get bloodGroup;
+
+  /// Date Of Birth
   @override
   @JsonKey(name: 'date_of_birth')
   DateTime get dateOfBirth;
+
+  /// Governorate Id
   @override
   @JsonKey(name: 'governorate_id')
   int get governorateId;
+
+  /// Nationality Id
   @override
   @JsonKey(name: 'nationality_id')
   int get nationalityId;
+
+  /// Nationalism Id
   @override
   @JsonKey(name: 'nationalism_id')
   int get nationalismId;
+
+  /// Religion Id
   @override
   @JsonKey(name: 'religion_id')
   int get religionId;
+
+  /// Phone Number
   @override
   @JsonKey(name: 'phone_number')
   String get phoneNumber;
+
+  /// Email
   @override
   @JsonKey(name: 'email')
   String? get email;

@@ -11,14 +11,11 @@ class NationalismsPublic with _$NationalismsPublic {
 
   @JsonSerializable(converters: convertors)
   const factory NationalismsPublic({
-    @JsonKey(name: 'id')
-
     /// Id
-    required int id,
-    @JsonKey(name: 'name')
+    @JsonKey(name: 'id') required int id,
 
     /// Name
-    required String name,
+    @JsonKey(name: 'name') required String name,
   }) = _NationalismsPublic;
 
   factory NationalismsPublic.fromJson(Map<String, dynamic> json) =>

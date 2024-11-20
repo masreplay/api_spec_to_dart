@@ -20,8 +20,11 @@ FeesTypesPublic _$FeesTypesPublicFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FeesTypesPublic {
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+
+  /// Name
   @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
 
@@ -127,9 +130,12 @@ class _$FeesTypesPublicImpl extends _FeesTypesPublic {
   factory _$FeesTypesPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$FeesTypesPublicImplFromJson(json);
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   final String name;
@@ -179,9 +185,12 @@ abstract class _FeesTypesPublic extends FeesTypesPublic {
   factory _FeesTypesPublic.fromJson(Map<String, dynamic> json) =
       _$FeesTypesPublicImpl.fromJson;
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   String get name;

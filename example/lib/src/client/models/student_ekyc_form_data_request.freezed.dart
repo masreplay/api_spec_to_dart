@@ -21,6 +21,7 @@ StudentEkycFormDataRequest _$StudentEkycFormDataRequestFromJson(
 
 /// @nodoc
 mixin _$StudentEkycFormDataRequest {
+  /// Ekyc Extra
   @JsonKey(name: 'ekyc_extra')
   Map<dynamic, dynamic> get ekycExtra => throw _privateConstructorUsedError;
 
@@ -123,7 +124,10 @@ class _$StudentEkycFormDataRequestImpl extends _StudentEkycFormDataRequest {
           Map<String, dynamic> json) =>
       _$$StudentEkycFormDataRequestImplFromJson(json);
 
+  /// Ekyc Extra
   final Map<dynamic, dynamic> _ekycExtra;
+
+  /// Ekyc Extra
   @override
   @JsonKey(name: 'ekyc_extra')
   Map<dynamic, dynamic> get ekycExtra {
@@ -178,6 +182,7 @@ abstract class _StudentEkycFormDataRequest extends StudentEkycFormDataRequest {
   factory _StudentEkycFormDataRequest.fromJson(Map<String, dynamic> json) =
       _$StudentEkycFormDataRequestImpl.fromJson;
 
+  /// Ekyc Extra
   @override
   @JsonKey(name: 'ekyc_extra')
   Map<dynamic, dynamic> get ekycExtra;

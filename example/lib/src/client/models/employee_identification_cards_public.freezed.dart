@@ -21,75 +21,136 @@ EmployeeIdentificationCardsPublic _$EmployeeIdentificationCardsPublicFromJson(
 
 /// @nodoc
 mixin _$EmployeeIdentificationCardsPublic {
+  /// Employee Identifications Card Id
   @JsonKey(name: 'employee_identifications_card_id')
   int get employeeIdentificationsCardId => throw _privateConstructorUsedError;
+
+  /// Employee Id
   @JsonKey(name: 'employee_id')
   int get employeeId => throw _privateConstructorUsedError;
+
+  /// Have National Card
   @JsonKey(name: 'have_national_card')
   bool get haveNationalCard => throw _privateConstructorUsedError;
+
+  /// National Card Number
   @JsonKey(name: 'national_card_number')
   String get nationalCardNumber => throw _privateConstructorUsedError;
+
+  /// National Card Serial Number
   @JsonKey(name: 'national_card_serial_number')
   String get nationalCardSerialNumber => throw _privateConstructorUsedError;
+
+  /// National Card Issuing Authority
   @JsonKey(name: 'national_card_issuing_authority')
   String get nationalCardIssuingAuthority => throw _privateConstructorUsedError;
+
+  /// National Card Issue Date
   @JsonKey(name: 'national_card_issue_date')
   DateTime get nationalCardIssueDate => throw _privateConstructorUsedError;
+
+  /// National Card Date Of Expiry
   @JsonKey(name: 'national_card_date_of_expiry')
   DateTime get nationalCardDateOfExpiry => throw _privateConstructorUsedError;
+
+  /// National Card Family Number
   @JsonKey(name: 'national_card_family_number')
   String get nationalCardFamilyNumber => throw _privateConstructorUsedError;
+
+  /// Identification Card Number
   @JsonKey(name: 'identification_card_number')
   String get identificationCardNumber => throw _privateConstructorUsedError;
+
+  /// Identification Card Record
   @JsonKey(name: 'identification_card_record')
   String get identificationCardRecord => throw _privateConstructorUsedError;
+
+  /// Identification Card Page
   @JsonKey(name: 'identification_card_page')
   String get identificationCardPage => throw _privateConstructorUsedError;
+
+  /// Identification Card Issuing Authority
   @JsonKey(name: 'identification_card_issuing_authority')
   String get identificationCardIssuingAuthority =>
       throw _privateConstructorUsedError;
+
+  /// Identification Card Date Of Issue
   @JsonKey(name: 'identification_card_date_of_issue')
   DateTime get identificationCardDateOfIssue =>
       throw _privateConstructorUsedError;
+
+  /// Iraqi Nationality Certificate Number
   @JsonKey(name: 'iraqi_nationality_certificate_number')
   String get iraqiNationalityCertificateNumber =>
       throw _privateConstructorUsedError;
+
+  /// Iraqi Nationality Certificate Wallet Number
   @JsonKey(name: 'iraqi_nationality_certificate_wallet_number')
   String get iraqiNationalityCertificateWalletNumber =>
       throw _privateConstructorUsedError;
+
+  /// Iraqi Nationality Certificate Date Of Issue
   @JsonKey(name: 'iraqi_nationality_certificate_date_of_issue')
   DateTime get iraqiNationalityCertificateDateOfIssue =>
       throw _privateConstructorUsedError;
+
+  /// Iraqi Nationality Certificate Issuing Authority
   @JsonKey(name: 'iraqi_nationality_certificate_issuing_authority')
   String get iraqiNationalityCertificateIssuingAuthority =>
       throw _privateConstructorUsedError;
+
+  /// Information Bureau Id
   @JsonKey(name: 'information_bureau_id')
   int get informationBureauId => throw _privateConstructorUsedError;
+
+  /// Information Bureau Name
   @JsonKey(name: 'information_bureau_name')
   String get informationBureauName => throw _privateConstructorUsedError;
+
+  /// Iraqi Residence Card Home Number
   @JsonKey(name: 'iraqi_residence_card_home_number')
   String get iraqiResidenceCardHomeNumber => throw _privateConstructorUsedError;
+
+  /// Iraqi Residence Card Street Address
   @JsonKey(name: 'iraqi_residence_card_street_address')
   String get iraqiResidenceCardStreetAddress =>
       throw _privateConstructorUsedError;
+
+  /// Iraqi Residence Card Quarter Address
   @JsonKey(name: 'iraqi_residence_card_quarter_address')
   String get iraqiResidenceCardQuarterAddress =>
       throw _privateConstructorUsedError;
+
+  /// Iraqi Residence Card Form Number
   @JsonKey(name: 'iraqi_residence_card_form_number')
   String get iraqiResidenceCardFormNumber => throw _privateConstructorUsedError;
+
+  /// Iraqi Residence Card Sequence
   @JsonKey(name: 'iraqi_residence_card_sequence')
   String get iraqiResidenceCardSequence => throw _privateConstructorUsedError;
+
+  /// Iraqi Residence Card Date Of Issue
   @JsonKey(name: 'iraqi_residence_card_date_of_issue')
   DateTime get iraqiResidenceCardDateOfIssue =>
       throw _privateConstructorUsedError;
+
+  /// Passport Number
   @JsonKey(name: 'passport_number')
   String get passportNumber => throw _privateConstructorUsedError;
+
+  /// Passport Country Id
   @JsonKey(name: 'passport_country_id')
   int get passportCountryId => throw _privateConstructorUsedError;
+
+  /// Passport Country Name
   @JsonKey(name: 'passport_country_name')
   String get passportCountryName => throw _privateConstructorUsedError;
+
+  /// Passport Date Of Issue
   @JsonKey(name: 'passport_date_of_issue')
   DateTime get passportDateOfIssue => throw _privateConstructorUsedError;
+
+  /// Passport Date Of Expiry
   @JsonKey(name: 'passport_date_of_expiry')
   DateTime get passportDateOfExpiry => throw _privateConstructorUsedError;
 
@@ -656,96 +717,157 @@ class _$EmployeeIdentificationCardsPublicImpl
           Map<String, dynamic> json) =>
       _$$EmployeeIdentificationCardsPublicImplFromJson(json);
 
+  /// Employee Identifications Card Id
   @override
   @JsonKey(name: 'employee_identifications_card_id')
   final int employeeIdentificationsCardId;
+
+  /// Employee Id
   @override
   @JsonKey(name: 'employee_id')
   final int employeeId;
+
+  /// Have National Card
   @override
   @JsonKey(name: 'have_national_card')
   final bool haveNationalCard;
+
+  /// National Card Number
   @override
   @JsonKey(name: 'national_card_number')
   final String nationalCardNumber;
+
+  /// National Card Serial Number
   @override
   @JsonKey(name: 'national_card_serial_number')
   final String nationalCardSerialNumber;
+
+  /// National Card Issuing Authority
   @override
   @JsonKey(name: 'national_card_issuing_authority')
   final String nationalCardIssuingAuthority;
+
+  /// National Card Issue Date
   @override
   @JsonKey(name: 'national_card_issue_date')
   final DateTime nationalCardIssueDate;
+
+  /// National Card Date Of Expiry
   @override
   @JsonKey(name: 'national_card_date_of_expiry')
   final DateTime nationalCardDateOfExpiry;
+
+  /// National Card Family Number
   @override
   @JsonKey(name: 'national_card_family_number')
   final String nationalCardFamilyNumber;
+
+  /// Identification Card Number
   @override
   @JsonKey(name: 'identification_card_number')
   final String identificationCardNumber;
+
+  /// Identification Card Record
   @override
   @JsonKey(name: 'identification_card_record')
   final String identificationCardRecord;
+
+  /// Identification Card Page
   @override
   @JsonKey(name: 'identification_card_page')
   final String identificationCardPage;
+
+  /// Identification Card Issuing Authority
   @override
   @JsonKey(name: 'identification_card_issuing_authority')
   final String identificationCardIssuingAuthority;
+
+  /// Identification Card Date Of Issue
   @override
   @JsonKey(name: 'identification_card_date_of_issue')
   final DateTime identificationCardDateOfIssue;
+
+  /// Iraqi Nationality Certificate Number
   @override
   @JsonKey(name: 'iraqi_nationality_certificate_number')
   final String iraqiNationalityCertificateNumber;
+
+  /// Iraqi Nationality Certificate Wallet Number
   @override
   @JsonKey(name: 'iraqi_nationality_certificate_wallet_number')
   final String iraqiNationalityCertificateWalletNumber;
+
+  /// Iraqi Nationality Certificate Date Of Issue
   @override
   @JsonKey(name: 'iraqi_nationality_certificate_date_of_issue')
   final DateTime iraqiNationalityCertificateDateOfIssue;
+
+  /// Iraqi Nationality Certificate Issuing Authority
   @override
   @JsonKey(name: 'iraqi_nationality_certificate_issuing_authority')
   final String iraqiNationalityCertificateIssuingAuthority;
+
+  /// Information Bureau Id
   @override
   @JsonKey(name: 'information_bureau_id')
   final int informationBureauId;
+
+  /// Information Bureau Name
   @override
   @JsonKey(name: 'information_bureau_name')
   final String informationBureauName;
+
+  /// Iraqi Residence Card Home Number
   @override
   @JsonKey(name: 'iraqi_residence_card_home_number')
   final String iraqiResidenceCardHomeNumber;
+
+  /// Iraqi Residence Card Street Address
   @override
   @JsonKey(name: 'iraqi_residence_card_street_address')
   final String iraqiResidenceCardStreetAddress;
+
+  /// Iraqi Residence Card Quarter Address
   @override
   @JsonKey(name: 'iraqi_residence_card_quarter_address')
   final String iraqiResidenceCardQuarterAddress;
+
+  /// Iraqi Residence Card Form Number
   @override
   @JsonKey(name: 'iraqi_residence_card_form_number')
   final String iraqiResidenceCardFormNumber;
+
+  /// Iraqi Residence Card Sequence
   @override
   @JsonKey(name: 'iraqi_residence_card_sequence')
   final String iraqiResidenceCardSequence;
+
+  /// Iraqi Residence Card Date Of Issue
   @override
   @JsonKey(name: 'iraqi_residence_card_date_of_issue')
   final DateTime iraqiResidenceCardDateOfIssue;
+
+  /// Passport Number
   @override
   @JsonKey(name: 'passport_number')
   final String passportNumber;
+
+  /// Passport Country Id
   @override
   @JsonKey(name: 'passport_country_id')
   final int passportCountryId;
+
+  /// Passport Country Name
   @override
   @JsonKey(name: 'passport_country_name')
   final String passportCountryName;
+
+  /// Passport Date Of Issue
   @override
   @JsonKey(name: 'passport_date_of_issue')
   final DateTime passportDateOfIssue;
+
+  /// Passport Date Of Expiry
   @override
   @JsonKey(name: 'passport_date_of_expiry')
   final DateTime passportDateOfExpiry;
@@ -940,96 +1062,157 @@ abstract class _EmployeeIdentificationCardsPublic
           Map<String, dynamic> json) =
       _$EmployeeIdentificationCardsPublicImpl.fromJson;
 
+  /// Employee Identifications Card Id
   @override
   @JsonKey(name: 'employee_identifications_card_id')
   int get employeeIdentificationsCardId;
+
+  /// Employee Id
   @override
   @JsonKey(name: 'employee_id')
   int get employeeId;
+
+  /// Have National Card
   @override
   @JsonKey(name: 'have_national_card')
   bool get haveNationalCard;
+
+  /// National Card Number
   @override
   @JsonKey(name: 'national_card_number')
   String get nationalCardNumber;
+
+  /// National Card Serial Number
   @override
   @JsonKey(name: 'national_card_serial_number')
   String get nationalCardSerialNumber;
+
+  /// National Card Issuing Authority
   @override
   @JsonKey(name: 'national_card_issuing_authority')
   String get nationalCardIssuingAuthority;
+
+  /// National Card Issue Date
   @override
   @JsonKey(name: 'national_card_issue_date')
   DateTime get nationalCardIssueDate;
+
+  /// National Card Date Of Expiry
   @override
   @JsonKey(name: 'national_card_date_of_expiry')
   DateTime get nationalCardDateOfExpiry;
+
+  /// National Card Family Number
   @override
   @JsonKey(name: 'national_card_family_number')
   String get nationalCardFamilyNumber;
+
+  /// Identification Card Number
   @override
   @JsonKey(name: 'identification_card_number')
   String get identificationCardNumber;
+
+  /// Identification Card Record
   @override
   @JsonKey(name: 'identification_card_record')
   String get identificationCardRecord;
+
+  /// Identification Card Page
   @override
   @JsonKey(name: 'identification_card_page')
   String get identificationCardPage;
+
+  /// Identification Card Issuing Authority
   @override
   @JsonKey(name: 'identification_card_issuing_authority')
   String get identificationCardIssuingAuthority;
+
+  /// Identification Card Date Of Issue
   @override
   @JsonKey(name: 'identification_card_date_of_issue')
   DateTime get identificationCardDateOfIssue;
+
+  /// Iraqi Nationality Certificate Number
   @override
   @JsonKey(name: 'iraqi_nationality_certificate_number')
   String get iraqiNationalityCertificateNumber;
+
+  /// Iraqi Nationality Certificate Wallet Number
   @override
   @JsonKey(name: 'iraqi_nationality_certificate_wallet_number')
   String get iraqiNationalityCertificateWalletNumber;
+
+  /// Iraqi Nationality Certificate Date Of Issue
   @override
   @JsonKey(name: 'iraqi_nationality_certificate_date_of_issue')
   DateTime get iraqiNationalityCertificateDateOfIssue;
+
+  /// Iraqi Nationality Certificate Issuing Authority
   @override
   @JsonKey(name: 'iraqi_nationality_certificate_issuing_authority')
   String get iraqiNationalityCertificateIssuingAuthority;
+
+  /// Information Bureau Id
   @override
   @JsonKey(name: 'information_bureau_id')
   int get informationBureauId;
+
+  /// Information Bureau Name
   @override
   @JsonKey(name: 'information_bureau_name')
   String get informationBureauName;
+
+  /// Iraqi Residence Card Home Number
   @override
   @JsonKey(name: 'iraqi_residence_card_home_number')
   String get iraqiResidenceCardHomeNumber;
+
+  /// Iraqi Residence Card Street Address
   @override
   @JsonKey(name: 'iraqi_residence_card_street_address')
   String get iraqiResidenceCardStreetAddress;
+
+  /// Iraqi Residence Card Quarter Address
   @override
   @JsonKey(name: 'iraqi_residence_card_quarter_address')
   String get iraqiResidenceCardQuarterAddress;
+
+  /// Iraqi Residence Card Form Number
   @override
   @JsonKey(name: 'iraqi_residence_card_form_number')
   String get iraqiResidenceCardFormNumber;
+
+  /// Iraqi Residence Card Sequence
   @override
   @JsonKey(name: 'iraqi_residence_card_sequence')
   String get iraqiResidenceCardSequence;
+
+  /// Iraqi Residence Card Date Of Issue
   @override
   @JsonKey(name: 'iraqi_residence_card_date_of_issue')
   DateTime get iraqiResidenceCardDateOfIssue;
+
+  /// Passport Number
   @override
   @JsonKey(name: 'passport_number')
   String get passportNumber;
+
+  /// Passport Country Id
   @override
   @JsonKey(name: 'passport_country_id')
   int get passportCountryId;
+
+  /// Passport Country Name
   @override
   @JsonKey(name: 'passport_country_name')
   String get passportCountryName;
+
+  /// Passport Date Of Issue
   @override
   @JsonKey(name: 'passport_date_of_issue')
   DateTime get passportDateOfIssue;
+
+  /// Passport Date Of Expiry
   @override
   @JsonKey(name: 'passport_date_of_expiry')
   DateTime get passportDateOfExpiry;

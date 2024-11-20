@@ -22,26 +22,41 @@ CourseAssessmentMeasuringTypeCourseAndAssessments
 
 /// @nodoc
 mixin _$CourseAssessmentMeasuringTypeCourseAndAssessments {
+  /// Id
   @JsonKey(name: 'id')
   int? get id => throw _privateConstructorUsedError;
+
+  /// Title
   @JsonKey(name: 'title')
   String? get title => throw _privateConstructorUsedError;
+
+  /// Date
   @JsonKey(name: 'date')
   DateTime? get date => throw _privateConstructorUsedError;
+
+  /// Type
   @JsonKey(name: 'type')
   AssignmentTypeEnumString? get type => throw _privateConstructorUsedError;
   @JsonKey(name: 'status')
   AssignmentClassificationEnum? get status =>
       throw _privateConstructorUsedError;
+
+  /// Total Degree
   @JsonKey(name: 'total_degree')
   int? get totalDegree => throw _privateConstructorUsedError;
+
+  /// Final Degree
   @JsonKey(name: 'final_degree')
   int? get finalDegree => throw _privateConstructorUsedError;
+
+  /// Number Of Times
   @JsonKey(name: 'number_of_times')
   int? get numberOfTimes => throw _privateConstructorUsedError;
   @JsonKey(name: 'attendance_status')
   AttendanceStatusEnum? get attendanceStatus =>
       throw _privateConstructorUsedError;
+
+  /// Link
   @JsonKey(name: 'link')
   String? get link => throw _privateConstructorUsedError;
 
@@ -314,33 +329,48 @@ class _$CourseAssessmentMeasuringTypeCourseAndAssessmentsImpl
           Map<String, dynamic> json) =>
       _$$CourseAssessmentMeasuringTypeCourseAndAssessmentsImplFromJson(json);
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int? id;
+
+  /// Title
   @override
   @JsonKey(name: 'title')
   final String? title;
+
+  /// Date
   @override
   @JsonKey(name: 'date')
   final DateTime? date;
+
+  /// Type
   @override
   @JsonKey(name: 'type')
   final AssignmentTypeEnumString? type;
   @override
   @JsonKey(name: 'status')
   final AssignmentClassificationEnum? status;
+
+  /// Total Degree
   @override
   @JsonKey(name: 'total_degree')
   final int? totalDegree;
+
+  /// Final Degree
   @override
   @JsonKey(name: 'final_degree')
   final int? finalDegree;
+
+  /// Number Of Times
   @override
   @JsonKey(name: 'number_of_times')
   final int? numberOfTimes;
   @override
   @JsonKey(name: 'attendance_status')
   final AttendanceStatusEnum? attendanceStatus;
+
+  /// Link
   @override
   @JsonKey(name: 'link')
   final String? link;
@@ -428,33 +458,48 @@ abstract class _CourseAssessmentMeasuringTypeCourseAndAssessments
           Map<String, dynamic> json) =
       _$CourseAssessmentMeasuringTypeCourseAndAssessmentsImpl.fromJson;
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   int? get id;
+
+  /// Title
   @override
   @JsonKey(name: 'title')
   String? get title;
+
+  /// Date
   @override
   @JsonKey(name: 'date')
   DateTime? get date;
+
+  /// Type
   @override
   @JsonKey(name: 'type')
   AssignmentTypeEnumString? get type;
   @override
   @JsonKey(name: 'status')
   AssignmentClassificationEnum? get status;
+
+  /// Total Degree
   @override
   @JsonKey(name: 'total_degree')
   int? get totalDegree;
+
+  /// Final Degree
   @override
   @JsonKey(name: 'final_degree')
   int? get finalDegree;
+
+  /// Number Of Times
   @override
   @JsonKey(name: 'number_of_times')
   int? get numberOfTimes;
   @override
   @JsonKey(name: 'attendance_status')
   AttendanceStatusEnum? get attendanceStatus;
+
+  /// Link
   @override
   @JsonKey(name: 'link')
   String? get link;

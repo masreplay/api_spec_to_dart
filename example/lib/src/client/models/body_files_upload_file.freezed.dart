@@ -20,8 +20,11 @@ BodyFilesUploadFile _$BodyFilesUploadFileFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$BodyFilesUploadFile {
+  /// File
   @JsonKey(name: 'file')
   File get file => throw _privateConstructorUsedError;
+
+  /// Entity Id
   @JsonKey(name: 'entity_id')
   int? get entityId => throw _privateConstructorUsedError;
   @JsonKey(name: 'collection')
@@ -161,9 +164,12 @@ class _$BodyFilesUploadFileImpl extends _BodyFilesUploadFile {
   factory _$BodyFilesUploadFileImpl.fromJson(Map<String, dynamic> json) =>
       _$$BodyFilesUploadFileImplFromJson(json);
 
+  /// File
   @override
   @JsonKey(name: 'file')
   final File file;
+
+  /// Entity Id
   @override
   @JsonKey(name: 'entity_id')
   final int? entityId;
@@ -221,9 +227,12 @@ abstract class _BodyFilesUploadFile extends BodyFilesUploadFile {
   factory _BodyFilesUploadFile.fromJson(Map<String, dynamic> json) =
       _$BodyFilesUploadFileImpl.fromJson;
 
+  /// File
   @override
   @JsonKey(name: 'file')
   File get file;
+
+  /// Entity Id
   @override
   @JsonKey(name: 'entity_id')
   int? get entityId;

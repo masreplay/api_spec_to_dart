@@ -21,8 +21,11 @@ UpdateSelectedCourses _$UpdateSelectedCoursesFromJson(
 
 /// @nodoc
 mixin _$UpdateSelectedCourses {
+  /// Course Id
   @JsonKey(name: 'course_id')
   int get courseId => throw _privateConstructorUsedError;
+
+  /// Course Stuff Id
   @JsonKey(name: 'course_stuff_id')
   int get courseStuffId => throw _privateConstructorUsedError;
 
@@ -135,9 +138,12 @@ class _$UpdateSelectedCoursesImpl extends _UpdateSelectedCourses {
   factory _$UpdateSelectedCoursesImpl.fromJson(Map<String, dynamic> json) =>
       _$$UpdateSelectedCoursesImplFromJson(json);
 
+  /// Course Id
   @override
   @JsonKey(name: 'course_id')
   final int courseId;
+
+  /// Course Stuff Id
   @override
   @JsonKey(name: 'course_stuff_id')
   final int courseStuffId;
@@ -189,9 +195,12 @@ abstract class _UpdateSelectedCourses extends UpdateSelectedCourses {
   factory _UpdateSelectedCourses.fromJson(Map<String, dynamic> json) =
       _$UpdateSelectedCoursesImpl.fromJson;
 
+  /// Course Id
   @override
   @JsonKey(name: 'course_id')
   int get courseId;
+
+  /// Course Stuff Id
   @override
   @JsonKey(name: 'course_stuff_id')
   int get courseStuffId;

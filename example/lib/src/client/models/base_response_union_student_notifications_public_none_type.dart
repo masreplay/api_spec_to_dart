@@ -13,10 +13,8 @@ class BaseResponseUnionStudentNotificationsPublicNoneType
 
   @JsonSerializable(converters: convertors)
   const factory BaseResponseUnionStudentNotificationsPublicNoneType({
-    @JsonKey(name: 'message')
-
     /// Message
-    required String? message,
+    @JsonKey(name: 'message') required String? message,
     @JsonKey(name: 'data') required StudentNotificationsPublic? data,
   }) = _BaseResponseUnionStudentNotificationsPublicNoneType;
 

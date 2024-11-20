@@ -21,22 +21,37 @@ HomeFeedStudyProgramSectionDataPublic
 
 /// @nodoc
 mixin _$HomeFeedStudyProgramSectionDataPublic {
+  /// Study Program Id
   @JsonKey(name: 'study_program_id')
   int get studyProgramId => throw _privateConstructorUsedError;
+
+  /// Name
   @JsonKey(name: 'name')
   int get name => throw _privateConstructorUsedError;
+
+  /// Study Year
   @JsonKey(name: 'study_year')
   String get studyYear => throw _privateConstructorUsedError;
+
+  /// Study Year Formatted
   @JsonKey(name: 'study_year_formatted')
   String get studyYearFormatted => throw _privateConstructorUsedError;
   @JsonKey(name: 'study_type')
   StudyProgramType get studyType => throw _privateConstructorUsedError;
+
+  /// Study Type Formatted
   @JsonKey(name: 'study_type_formatted')
   String get studyTypeFormatted => throw _privateConstructorUsedError;
+
+  /// Semester
   @JsonKey(name: 'semester')
   String get semester => throw _privateConstructorUsedError;
+
+  /// Grade
   @JsonKey(name: 'grade')
   int get grade => throw _privateConstructorUsedError;
+
+  /// Grade Formatted
   @JsonKey(name: 'grade_formatted')
   String get gradeFormatted => throw _privateConstructorUsedError;
 
@@ -261,30 +276,45 @@ class _$HomeFeedStudyProgramSectionDataPublicImpl
           Map<String, dynamic> json) =>
       _$$HomeFeedStudyProgramSectionDataPublicImplFromJson(json);
 
+  /// Study Program Id
   @override
   @JsonKey(name: 'study_program_id')
   final int studyProgramId;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   final int name;
+
+  /// Study Year
   @override
   @JsonKey(name: 'study_year')
   final String studyYear;
+
+  /// Study Year Formatted
   @override
   @JsonKey(name: 'study_year_formatted')
   final String studyYearFormatted;
   @override
   @JsonKey(name: 'study_type')
   final StudyProgramType studyType;
+
+  /// Study Type Formatted
   @override
   @JsonKey(name: 'study_type_formatted')
   final String studyTypeFormatted;
+
+  /// Semester
   @override
   @JsonKey(name: 'semester')
   final String semester;
+
+  /// Grade
   @override
   @JsonKey(name: 'grade')
   final int grade;
+
+  /// Grade Formatted
   @override
   @JsonKey(name: 'grade_formatted')
   final String gradeFormatted;
@@ -371,30 +401,45 @@ abstract class _HomeFeedStudyProgramSectionDataPublic
           Map<String, dynamic> json) =
       _$HomeFeedStudyProgramSectionDataPublicImpl.fromJson;
 
+  /// Study Program Id
   @override
   @JsonKey(name: 'study_program_id')
   int get studyProgramId;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   int get name;
+
+  /// Study Year
   @override
   @JsonKey(name: 'study_year')
   String get studyYear;
+
+  /// Study Year Formatted
   @override
   @JsonKey(name: 'study_year_formatted')
   String get studyYearFormatted;
   @override
   @JsonKey(name: 'study_type')
   StudyProgramType get studyType;
+
+  /// Study Type Formatted
   @override
   @JsonKey(name: 'study_type_formatted')
   String get studyTypeFormatted;
+
+  /// Semester
   @override
   @JsonKey(name: 'semester')
   String get semester;
+
+  /// Grade
   @override
   @JsonKey(name: 'grade')
   int get grade;
+
+  /// Grade Formatted
   @override
   @JsonKey(name: 'grade_formatted')
   String get gradeFormatted;

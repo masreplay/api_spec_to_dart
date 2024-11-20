@@ -22,8 +22,11 @@ BodyLecturerAnnouncementsCreateLecturerAnnouncement
 
 /// @nodoc
 mixin _$BodyLecturerAnnouncementsCreateLecturerAnnouncement {
+  /// Title
   @JsonKey(name: 'title')
   String get title => throw _privateConstructorUsedError;
+
+  /// Description
   @JsonKey(name: 'description')
   String? get description => throw _privateConstructorUsedError;
 
@@ -155,9 +158,12 @@ class _$BodyLecturerAnnouncementsCreateLecturerAnnouncementImpl
           Map<String, dynamic> json) =>
       _$$BodyLecturerAnnouncementsCreateLecturerAnnouncementImplFromJson(json);
 
+  /// Title
   @override
   @JsonKey(name: 'title')
   final String title;
+
+  /// Description
   @override
   @JsonKey(name: 'description')
   final String? description;
@@ -214,9 +220,12 @@ abstract class _BodyLecturerAnnouncementsCreateLecturerAnnouncement
           Map<String, dynamic> json) =
       _$BodyLecturerAnnouncementsCreateLecturerAnnouncementImpl.fromJson;
 
+  /// Title
   @override
   @JsonKey(name: 'title')
   String get title;
+
+  /// Description
   @override
   @JsonKey(name: 'description')
   String? get description;

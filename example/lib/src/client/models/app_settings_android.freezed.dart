@@ -20,10 +20,15 @@ AppSettingsAndroid _$AppSettingsAndroidFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AppSettingsAndroid {
+  /// Version
   @JsonKey(name: 'version')
   String get version => throw _privateConstructorUsedError;
+
+  /// Url
   @JsonKey(name: 'url')
   String? get url => throw _privateConstructorUsedError;
+
+  /// Message
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
 
@@ -146,12 +151,17 @@ class _$AppSettingsAndroidImpl extends _AppSettingsAndroid {
   factory _$AppSettingsAndroidImpl.fromJson(Map<String, dynamic> json) =>
       _$$AppSettingsAndroidImplFromJson(json);
 
+  /// Version
   @override
   @JsonKey(name: 'version')
   final String version;
+
+  /// Url
   @override
   @JsonKey(name: 'url')
   final String? url;
+
+  /// Message
   @override
   @JsonKey(name: 'message')
   final String? message;
@@ -203,12 +213,17 @@ abstract class _AppSettingsAndroid extends AppSettingsAndroid {
   factory _AppSettingsAndroid.fromJson(Map<String, dynamic> json) =
       _$AppSettingsAndroidImpl.fromJson;
 
+  /// Version
   @override
   @JsonKey(name: 'version')
   String get version;
+
+  /// Url
   @override
   @JsonKey(name: 'url')
   String? get url;
+
+  /// Message
   @override
   @JsonKey(name: 'message')
   String? get message;

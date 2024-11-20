@@ -11,10 +11,8 @@ class LectureHomeworksCalenderResponse with _$LectureHomeworksCalenderResponse {
 
   @JsonSerializable(converters: convertors)
   const factory LectureHomeworksCalenderResponse({
-    @JsonKey(name: 'events')
-
     /// Events
-    required List events,
+    @JsonKey(name: 'events') required List events,
   }) = _LectureHomeworksCalenderResponse;
 
   factory LectureHomeworksCalenderResponse.fromJson(

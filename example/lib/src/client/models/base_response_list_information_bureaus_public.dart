@@ -12,14 +12,11 @@ class BaseResponseListInformationBureausPublic
 
   @JsonSerializable(converters: convertors)
   const factory BaseResponseListInformationBureausPublic({
-    @JsonKey(name: 'message')
-
     /// Message
-    required String? message,
-    @JsonKey(name: 'data')
+    @JsonKey(name: 'message') required String? message,
 
     /// Data
-    required List data,
+    @JsonKey(name: 'data') required List data,
   }) = _BaseResponseListInformationBureausPublic;
 
   factory BaseResponseListInformationBureausPublic.fromJson(

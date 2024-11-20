@@ -20,22 +20,39 @@ UICheckboxFormField _$UICheckboxFormFieldFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UICheckboxFormField {
+  /// Key
   @JsonKey(name: 'key')
   String get key => throw _privateConstructorUsedError;
+
+  /// Name
   @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
+
+  /// Hint
   @JsonKey(name: 'hint')
   String? get hint => throw _privateConstructorUsedError;
+
+  /// Is Required
   @JsonKey(name: 'is_required')
   bool get isRequired => throw _privateConstructorUsedError;
+
+  /// Read Only
   @JsonKey(name: 'read_only')
   bool get readOnly => throw _privateConstructorUsedError;
+
+  /// Doc
   @JsonKey(name: 'doc')
   String? get doc => throw _privateConstructorUsedError;
+
+  /// Type
   @JsonKey(name: 'type')
   String get type => throw _privateConstructorUsedError;
+
+  /// Default Value
   @JsonKey(name: 'default_value')
   bool get defaultValue => throw _privateConstructorUsedError;
+
+  /// Example
   @JsonKey(name: 'example')
   bool get example => throw _privateConstructorUsedError;
 
@@ -236,30 +253,47 @@ class _$UICheckboxFormFieldImpl extends _UICheckboxFormField {
   factory _$UICheckboxFormFieldImpl.fromJson(Map<String, dynamic> json) =>
       _$$UICheckboxFormFieldImplFromJson(json);
 
+  /// Key
   @override
   @JsonKey(name: 'key')
   final String key;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   final String name;
+
+  /// Hint
   @override
   @JsonKey(name: 'hint')
   final String? hint;
+
+  /// Is Required
   @override
   @JsonKey(name: 'is_required')
   final bool isRequired;
+
+  /// Read Only
   @override
   @JsonKey(name: 'read_only')
   final bool readOnly;
+
+  /// Doc
   @override
   @JsonKey(name: 'doc')
   final String? doc;
+
+  /// Type
   @override
   @JsonKey(name: 'type')
   final String type;
+
+  /// Default Value
   @override
   @JsonKey(name: 'default_value')
   final bool defaultValue;
+
+  /// Example
   @override
   @JsonKey(name: 'example')
   final bool example;
@@ -327,30 +361,47 @@ abstract class _UICheckboxFormField extends UICheckboxFormField {
   factory _UICheckboxFormField.fromJson(Map<String, dynamic> json) =
       _$UICheckboxFormFieldImpl.fromJson;
 
+  /// Key
   @override
   @JsonKey(name: 'key')
   String get key;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   String get name;
+
+  /// Hint
   @override
   @JsonKey(name: 'hint')
   String? get hint;
+
+  /// Is Required
   @override
   @JsonKey(name: 'is_required')
   bool get isRequired;
+
+  /// Read Only
   @override
   @JsonKey(name: 'read_only')
   bool get readOnly;
+
+  /// Doc
   @override
   @JsonKey(name: 'doc')
   String? get doc;
+
+  /// Type
   @override
   @JsonKey(name: 'type')
   String get type;
+
+  /// Default Value
   @override
   @JsonKey(name: 'default_value')
   bool get defaultValue;
+
+  /// Example
   @override
   @JsonKey(name: 'example')
   bool get example;

@@ -20,18 +20,29 @@ StudentOSPublic _$StudentOSPublicFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$StudentOSPublic {
+  /// Id
   @JsonKey(name: 'id')
   int? get id => throw _privateConstructorUsedError;
+
+  /// Department
   @JsonKey(name: 'department')
   String? get department => throw _privateConstructorUsedError;
+
+  /// Collage
   @JsonKey(name: 'collage')
   String? get collage => throw _privateConstructorUsedError;
   @JsonKey(name: 'year')
   StudyYearPublic? get year => throw _privateConstructorUsedError;
+
+  /// Study Type
   @JsonKey(name: 'study_type')
   int? get studyType => throw _privateConstructorUsedError;
+
+  /// Grade
   @JsonKey(name: 'grade')
   int? get grade => throw _privateConstructorUsedError;
+
+  /// Current Semester
   @JsonKey(name: 'current_semester')
   String? get currentSemester => throw _privateConstructorUsedError;
 
@@ -225,24 +236,35 @@ class _$StudentOSPublicImpl extends _StudentOSPublic {
   factory _$StudentOSPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$StudentOSPublicImplFromJson(json);
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int? id;
+
+  /// Department
   @override
   @JsonKey(name: 'department')
   final String? department;
+
+  /// Collage
   @override
   @JsonKey(name: 'collage')
   final String? collage;
   @override
   @JsonKey(name: 'year')
   final StudyYearPublic? year;
+
+  /// Study Type
   @override
   @JsonKey(name: 'study_type')
   final int? studyType;
+
+  /// Grade
   @override
   @JsonKey(name: 'grade')
   final int? grade;
+
+  /// Current Semester
   @override
   @JsonKey(name: 'current_semester')
   final String? currentSemester;
@@ -306,24 +328,35 @@ abstract class _StudentOSPublic extends StudentOSPublic {
   factory _StudentOSPublic.fromJson(Map<String, dynamic> json) =
       _$StudentOSPublicImpl.fromJson;
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   int? get id;
+
+  /// Department
   @override
   @JsonKey(name: 'department')
   String? get department;
+
+  /// Collage
   @override
   @JsonKey(name: 'collage')
   String? get collage;
   @override
   @JsonKey(name: 'year')
   StudyYearPublic? get year;
+
+  /// Study Type
   @override
   @JsonKey(name: 'study_type')
   int? get studyType;
+
+  /// Grade
   @override
   @JsonKey(name: 'grade')
   int? get grade;
+
+  /// Current Semester
   @override
   @JsonKey(name: 'current_semester')
   String? get currentSemester;

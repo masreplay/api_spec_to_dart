@@ -21,8 +21,11 @@ BaseResponseDictStrAny _$BaseResponseDictStrAnyFromJson(
 
 /// @nodoc
 mixin _$BaseResponseDictStrAny {
+  /// Message
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
+
+  /// Data
   @JsonKey(name: 'data')
   Map<dynamic, dynamic> get data => throw _privateConstructorUsedError;
 
@@ -137,10 +140,15 @@ class _$BaseResponseDictStrAnyImpl extends _BaseResponseDictStrAny {
   factory _$BaseResponseDictStrAnyImpl.fromJson(Map<String, dynamic> json) =>
       _$$BaseResponseDictStrAnyImplFromJson(json);
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   final String? message;
+
+  /// Data
   final Map<dynamic, dynamic> _data;
+
+  /// Data
   @override
   @JsonKey(name: 'data')
   Map<dynamic, dynamic> get data {
@@ -195,9 +203,12 @@ abstract class _BaseResponseDictStrAny extends BaseResponseDictStrAny {
   factory _BaseResponseDictStrAny.fromJson(Map<String, dynamic> json) =
       _$BaseResponseDictStrAnyImpl.fromJson;
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   String? get message;
+
+  /// Data
   @override
   @JsonKey(name: 'data')
   Map<dynamic, dynamic> get data;

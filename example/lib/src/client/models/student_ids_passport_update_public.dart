@@ -11,25 +11,22 @@ class StudentIdsPassportUpdatePublic with _$StudentIdsPassportUpdatePublic {
 
   @JsonSerializable(converters: convertors)
   const factory StudentIdsPassportUpdatePublic({
-    @JsonKey(name: 'passport_number')
-
     /// Passport Number
-    required String passportNumber,
-    @JsonKey(name: 'passport_country_id')
+    @JsonKey(name: 'passport_number') required String passportNumber,
 
     /// Passport Country Id
-    required int passportCountryId,
-    @JsonKey(name: 'passport_issuing_authority')
+    @JsonKey(name: 'passport_country_id') required int passportCountryId,
 
     /// Passport Issuing Authority
+    @JsonKey(name: 'passport_issuing_authority')
     required String passportIssuingAuthority,
-    @JsonKey(name: 'passport_date_of_issue')
 
     /// Passport Date Of Issue
+    @JsonKey(name: 'passport_date_of_issue')
     required DateTime passportDateOfIssue,
-    @JsonKey(name: 'passport_date_of_expiry')
 
     /// Passport Date Of Expiry
+    @JsonKey(name: 'passport_date_of_expiry')
     required DateTime passportDateOfExpiry,
   }) = _StudentIdsPassportUpdatePublic;
 

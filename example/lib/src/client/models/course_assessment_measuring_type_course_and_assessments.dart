@@ -13,41 +13,32 @@ class CourseAssessmentMeasuringTypeCourseAndAssessments
 
   @JsonSerializable(converters: convertors)
   const factory CourseAssessmentMeasuringTypeCourseAndAssessments({
-    @JsonKey(name: 'id')
-
     /// Id
-    required int? id,
-    @JsonKey(name: 'title')
+    @JsonKey(name: 'id') required int? id,
 
     /// Title
-    required String? title,
-    @JsonKey(name: 'date')
+    @JsonKey(name: 'title') required String? title,
 
     /// Date
-    required DateTime? date,
-    @JsonKey(name: 'type')
+    @JsonKey(name: 'date') required DateTime? date,
 
     /// Type
-    required AssignmentTypeEnumString? type,
+    @JsonKey(name: 'type') required AssignmentTypeEnumString? type,
     @JsonKey(name: 'status') required AssignmentClassificationEnum? status,
-    @JsonKey(name: 'total_degree')
 
     /// Total Degree
-    required int? totalDegree,
-    @JsonKey(name: 'final_degree')
+    @JsonKey(name: 'total_degree') required int? totalDegree,
 
     /// Final Degree
-    required int? finalDegree,
-    @JsonKey(name: 'number_of_times')
+    @JsonKey(name: 'final_degree') required int? finalDegree,
 
     /// Number Of Times
-    required int? numberOfTimes,
+    @JsonKey(name: 'number_of_times') required int? numberOfTimes,
     @JsonKey(name: 'attendance_status')
     required AttendanceStatusEnum? attendanceStatus,
-    @JsonKey(name: 'link')
 
     /// Link
-    required String? link,
+    @JsonKey(name: 'link') required String? link,
   }) = _CourseAssessmentMeasuringTypeCourseAndAssessments;
 
   factory CourseAssessmentMeasuringTypeCourseAndAssessments.fromJson(

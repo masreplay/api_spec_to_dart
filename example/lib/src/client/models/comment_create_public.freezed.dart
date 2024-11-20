@@ -20,6 +20,7 @@ CommentCreatePublic _$CommentCreatePublicFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CommentCreatePublic {
+  /// Content
   @JsonKey(name: 'content')
   String get content => throw _privateConstructorUsedError;
 
@@ -114,6 +115,7 @@ class _$CommentCreatePublicImpl extends _CommentCreatePublic {
   factory _$CommentCreatePublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$CommentCreatePublicImplFromJson(json);
 
+  /// Content
   @override
   @JsonKey(name: 'content')
   final String content;
@@ -161,6 +163,7 @@ abstract class _CommentCreatePublic extends CommentCreatePublic {
   factory _CommentCreatePublic.fromJson(Map<String, dynamic> json) =
       _$CommentCreatePublicImpl.fromJson;
 
+  /// Content
   @override
   @JsonKey(name: 'content')
   String get content;

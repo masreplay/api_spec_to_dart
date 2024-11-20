@@ -21,8 +21,11 @@ BodyStudentEkycUploadNfc _$BodyStudentEkycUploadNfcFromJson(
 
 /// @nodoc
 mixin _$BodyStudentEkycUploadNfc {
+  /// Data
   @JsonKey(name: 'data')
   String get data => throw _privateConstructorUsedError;
+
+  /// File
   @JsonKey(name: 'file')
   File get file => throw _privateConstructorUsedError;
 
@@ -134,9 +137,12 @@ class _$BodyStudentEkycUploadNfcImpl extends _BodyStudentEkycUploadNfc {
   factory _$BodyStudentEkycUploadNfcImpl.fromJson(Map<String, dynamic> json) =>
       _$$BodyStudentEkycUploadNfcImplFromJson(json);
 
+  /// Data
   @override
   @JsonKey(name: 'data')
   final String data;
+
+  /// File
   @override
   @JsonKey(name: 'file')
   final File file;
@@ -186,9 +192,12 @@ abstract class _BodyStudentEkycUploadNfc extends BodyStudentEkycUploadNfc {
   factory _BodyStudentEkycUploadNfc.fromJson(Map<String, dynamic> json) =
       _$BodyStudentEkycUploadNfcImpl.fromJson;
 
+  /// Data
   @override
   @JsonKey(name: 'data')
   String get data;
+
+  /// File
   @override
   @JsonKey(name: 'file')
   File get file;

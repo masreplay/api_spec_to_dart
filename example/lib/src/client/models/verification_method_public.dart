@@ -11,14 +11,11 @@ class VerificationMethodPublic with _$VerificationMethodPublic {
 
   @JsonSerializable(converters: convertors)
   const factory VerificationMethodPublic({
-    @JsonKey(name: 'name')
-
     /// Name
-    required String name,
-    @JsonKey(name: 'type')
+    @JsonKey(name: 'name') required String name,
 
     /// Type
-    required String type,
+    @JsonKey(name: 'type') required String type,
   }) = _VerificationMethodPublic;
 
   factory VerificationMethodPublic.fromJson(Map<String, dynamic> json) =>

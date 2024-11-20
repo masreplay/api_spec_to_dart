@@ -20,33 +20,60 @@ CourseStaffsTable _$CourseStaffsTableFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CourseStaffsTable {
+  /// Employee Id
   @JsonKey(name: 'employee_id')
   int get employeeId => throw _privateConstructorUsedError;
+
+  /// Employee Role
   @JsonKey(name: 'employee_role')
   int get employeeRole => throw _privateConstructorUsedError;
+
+  /// Capacity
   @JsonKey(name: 'capacity')
   int get capacity => throw _privateConstructorUsedError;
+
+  /// Close Editing Employee
   @JsonKey(name: 'close_editing_employee')
   bool get closeEditingEmployee => throw _privateConstructorUsedError;
+
+  /// Course Configuration
   @JsonKey(name: 'course_configuration')
   Map<dynamic, dynamic>? get courseConfiguration =>
       throw _privateConstructorUsedError;
+
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+
+  /// Course Id
   @JsonKey(name: 'course_id')
   int get courseId => throw _privateConstructorUsedError;
+
+  /// Creator Id
   @JsonKey(name: 'creator_id')
   int get creatorId => throw _privateConstructorUsedError;
+
+  /// Creation Time
   @JsonKey(name: 'creation_time')
   DateTime get creationTime => throw _privateConstructorUsedError;
+
+  /// Last Modifier Id
   @JsonKey(name: 'last_modifier_id')
   int? get lastModifierId => throw _privateConstructorUsedError;
+
+  /// Last Modification Time
   @JsonKey(name: 'last_modification_time')
   DateTime? get lastModificationTime => throw _privateConstructorUsedError;
+
+  /// Is Deleted
   @JsonKey(name: 'is_deleted')
   bool get isDeleted => throw _privateConstructorUsedError;
+
+  /// Deleter Id
   @JsonKey(name: 'deleter_id')
   int? get deleterId => throw _privateConstructorUsedError;
+
+  /// Deletion Time
   @JsonKey(name: 'deletion_time')
   DateTime? get deletionTime => throw _privateConstructorUsedError;
 
@@ -318,19 +345,30 @@ class _$CourseStaffsTableImpl extends _CourseStaffsTable {
   factory _$CourseStaffsTableImpl.fromJson(Map<String, dynamic> json) =>
       _$$CourseStaffsTableImplFromJson(json);
 
+  /// Employee Id
   @override
   @JsonKey(name: 'employee_id')
   final int employeeId;
+
+  /// Employee Role
   @override
   @JsonKey(name: 'employee_role')
   final int employeeRole;
+
+  /// Capacity
   @override
   @JsonKey(name: 'capacity')
   final int capacity;
+
+  /// Close Editing Employee
   @override
   @JsonKey(name: 'close_editing_employee')
   final bool closeEditingEmployee;
+
+  /// Course Configuration
   final Map<dynamic, dynamic>? _courseConfiguration;
+
+  /// Course Configuration
   @override
   @JsonKey(name: 'course_configuration')
   Map<dynamic, dynamic>? get courseConfiguration {
@@ -342,30 +380,47 @@ class _$CourseStaffsTableImpl extends _CourseStaffsTable {
     return EqualUnmodifiableMapView(value);
   }
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
+
+  /// Course Id
   @override
   @JsonKey(name: 'course_id')
   final int courseId;
+
+  /// Creator Id
   @override
   @JsonKey(name: 'creator_id')
   final int creatorId;
+
+  /// Creation Time
   @override
   @JsonKey(name: 'creation_time')
   final DateTime creationTime;
+
+  /// Last Modifier Id
   @override
   @JsonKey(name: 'last_modifier_id')
   final int? lastModifierId;
+
+  /// Last Modification Time
   @override
   @JsonKey(name: 'last_modification_time')
   final DateTime? lastModificationTime;
+
+  /// Is Deleted
   @override
   @JsonKey(name: 'is_deleted')
   final bool isDeleted;
+
+  /// Deleter Id
   @override
   @JsonKey(name: 'deleter_id')
   final int? deleterId;
+
+  /// Deletion Time
   @override
   @JsonKey(name: 'deletion_time')
   final DateTime? deletionTime;
@@ -470,45 +525,72 @@ abstract class _CourseStaffsTable extends CourseStaffsTable {
   factory _CourseStaffsTable.fromJson(Map<String, dynamic> json) =
       _$CourseStaffsTableImpl.fromJson;
 
+  /// Employee Id
   @override
   @JsonKey(name: 'employee_id')
   int get employeeId;
+
+  /// Employee Role
   @override
   @JsonKey(name: 'employee_role')
   int get employeeRole;
+
+  /// Capacity
   @override
   @JsonKey(name: 'capacity')
   int get capacity;
+
+  /// Close Editing Employee
   @override
   @JsonKey(name: 'close_editing_employee')
   bool get closeEditingEmployee;
+
+  /// Course Configuration
   @override
   @JsonKey(name: 'course_configuration')
   Map<dynamic, dynamic>? get courseConfiguration;
+
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;
+
+  /// Course Id
   @override
   @JsonKey(name: 'course_id')
   int get courseId;
+
+  /// Creator Id
   @override
   @JsonKey(name: 'creator_id')
   int get creatorId;
+
+  /// Creation Time
   @override
   @JsonKey(name: 'creation_time')
   DateTime get creationTime;
+
+  /// Last Modifier Id
   @override
   @JsonKey(name: 'last_modifier_id')
   int? get lastModifierId;
+
+  /// Last Modification Time
   @override
   @JsonKey(name: 'last_modification_time')
   DateTime? get lastModificationTime;
+
+  /// Is Deleted
   @override
   @JsonKey(name: 'is_deleted')
   bool get isDeleted;
+
+  /// Deleter Id
   @override
   @JsonKey(name: 'deleter_id')
   int? get deleterId;
+
+  /// Deletion Time
   @override
   @JsonKey(name: 'deletion_time')
   DateTime? get deletionTime;

@@ -23,6 +23,8 @@ RegistrationRequestStatusResponse _$RegistrationRequestStatusResponseFromJson(
 mixin _$RegistrationRequestStatusResponse {
   @JsonKey(name: 'status')
   StudentRequestStatus get status => throw _privateConstructorUsedError;
+
+  /// Message
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
 
@@ -158,6 +160,8 @@ class _$RegistrationRequestStatusResponseImpl
   @override
   @JsonKey(name: 'status')
   final StudentRequestStatus status;
+
+  /// Message
   @override
   @JsonKey(name: 'message')
   final String? message;
@@ -213,6 +217,8 @@ abstract class _RegistrationRequestStatusResponse
   @override
   @JsonKey(name: 'status')
   StudentRequestStatus get status;
+
+  /// Message
   @override
   @JsonKey(name: 'message')
   String? get message;

@@ -20,17 +20,28 @@ CourseStaffPublic _$CourseStaffPublicFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CourseStaffPublic {
+  /// Employee Id
   @JsonKey(name: 'employee_id')
   int get employeeId => throw _privateConstructorUsedError;
+
+  /// Employee Role
   @JsonKey(name: 'employee_role')
   int get employeeRole => throw _privateConstructorUsedError;
+
+  /// Capacity
   @JsonKey(name: 'capacity')
   int get capacity => throw _privateConstructorUsedError;
+
+  /// Close Editing Employee
   @JsonKey(name: 'close_editing_employee')
   bool get closeEditingEmployee => throw _privateConstructorUsedError;
+
+  /// Course Configuration
   @JsonKey(name: 'course_configuration')
   Map<dynamic, dynamic>? get courseConfiguration =>
       throw _privateConstructorUsedError;
+
+  /// Id
   @JsonKey(name: 'id')
   int? get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'course')
@@ -263,19 +274,30 @@ class _$CourseStaffPublicImpl extends _CourseStaffPublic {
   factory _$CourseStaffPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$CourseStaffPublicImplFromJson(json);
 
+  /// Employee Id
   @override
   @JsonKey(name: 'employee_id')
   final int employeeId;
+
+  /// Employee Role
   @override
   @JsonKey(name: 'employee_role')
   final int employeeRole;
+
+  /// Capacity
   @override
   @JsonKey(name: 'capacity')
   final int capacity;
+
+  /// Close Editing Employee
   @override
   @JsonKey(name: 'close_editing_employee')
   final bool closeEditingEmployee;
+
+  /// Course Configuration
   final Map<dynamic, dynamic>? _courseConfiguration;
+
+  /// Course Configuration
   @override
   @JsonKey(name: 'course_configuration')
   Map<dynamic, dynamic>? get courseConfiguration {
@@ -287,6 +309,7 @@ class _$CourseStaffPublicImpl extends _CourseStaffPublic {
     return EqualUnmodifiableMapView(value);
   }
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int? id;
@@ -371,21 +394,32 @@ abstract class _CourseStaffPublic extends CourseStaffPublic {
   factory _CourseStaffPublic.fromJson(Map<String, dynamic> json) =
       _$CourseStaffPublicImpl.fromJson;
 
+  /// Employee Id
   @override
   @JsonKey(name: 'employee_id')
   int get employeeId;
+
+  /// Employee Role
   @override
   @JsonKey(name: 'employee_role')
   int get employeeRole;
+
+  /// Capacity
   @override
   @JsonKey(name: 'capacity')
   int get capacity;
+
+  /// Close Editing Employee
   @override
   @JsonKey(name: 'close_editing_employee')
   bool get closeEditingEmployee;
+
+  /// Course Configuration
   @override
   @JsonKey(name: 'course_configuration')
   Map<dynamic, dynamic>? get courseConfiguration;
+
+  /// Id
   @override
   @JsonKey(name: 'id')
   int? get id;

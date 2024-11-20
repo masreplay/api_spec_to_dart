@@ -21,6 +21,7 @@ BaseResponseCommentPublic _$BaseResponseCommentPublicFromJson(
 
 /// @nodoc
 mixin _$BaseResponseCommentPublic {
+  /// Message
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
   @JsonKey(name: 'data')
@@ -151,6 +152,7 @@ class _$BaseResponseCommentPublicImpl extends _BaseResponseCommentPublic {
   factory _$BaseResponseCommentPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$BaseResponseCommentPublicImplFromJson(json);
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   final String? message;
@@ -203,6 +205,7 @@ abstract class _BaseResponseCommentPublic extends BaseResponseCommentPublic {
   factory _BaseResponseCommentPublic.fromJson(Map<String, dynamic> json) =
       _$BaseResponseCommentPublicImpl.fromJson;
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   String? get message;

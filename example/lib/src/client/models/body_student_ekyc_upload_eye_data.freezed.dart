@@ -21,6 +21,7 @@ BodyStudentEkycUploadEyeData _$BodyStudentEkycUploadEyeDataFromJson(
 
 /// @nodoc
 mixin _$BodyStudentEkycUploadEyeData {
+  /// File Raw
   @JsonKey(name: 'file_raw')
   File get fileRaw => throw _privateConstructorUsedError;
 
@@ -122,6 +123,7 @@ class _$BodyStudentEkycUploadEyeDataImpl extends _BodyStudentEkycUploadEyeData {
           Map<String, dynamic> json) =>
       _$$BodyStudentEkycUploadEyeDataImplFromJson(json);
 
+  /// File Raw
   @override
   @JsonKey(name: 'file_raw')
   final File fileRaw;
@@ -171,6 +173,7 @@ abstract class _BodyStudentEkycUploadEyeData
   factory _BodyStudentEkycUploadEyeData.fromJson(Map<String, dynamic> json) =
       _$BodyStudentEkycUploadEyeDataImpl.fromJson;
 
+  /// File Raw
   @override
   @JsonKey(name: 'file_raw')
   File get fileRaw;

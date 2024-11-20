@@ -22,12 +22,19 @@ StudentIdsIraqiNationalityCertificatePublic
 
 /// @nodoc
 mixin _$StudentIdsIraqiNationalityCertificatePublic {
+  /// Number
   @JsonKey(name: 'number')
   String? get number => throw _privateConstructorUsedError;
+
+  /// Wallet Number
   @JsonKey(name: 'wallet_number')
   String? get walletNumber => throw _privateConstructorUsedError;
+
+  /// Issuing Authority
   @JsonKey(name: 'issuing_authority')
   String? get issuingAuthority => throw _privateConstructorUsedError;
+
+  /// Date Of Issue
   @JsonKey(name: 'date_of_issue')
   DateTime? get dateOfIssue => throw _privateConstructorUsedError;
   @JsonKey(name: 'front_image')
@@ -241,15 +248,22 @@ class _$StudentIdsIraqiNationalityCertificatePublicImpl
           Map<String, dynamic> json) =>
       _$$StudentIdsIraqiNationalityCertificatePublicImplFromJson(json);
 
+  /// Number
   @override
   @JsonKey(name: 'number')
   final String? number;
+
+  /// Wallet Number
   @override
   @JsonKey(name: 'wallet_number')
   final String? walletNumber;
+
+  /// Issuing Authority
   @override
   @JsonKey(name: 'issuing_authority')
   final String? issuingAuthority;
+
+  /// Date Of Issue
   @override
   @JsonKey(name: 'date_of_issue')
   final DateTime? dateOfIssue;
@@ -325,15 +339,22 @@ abstract class _StudentIdsIraqiNationalityCertificatePublic
           Map<String, dynamic> json) =
       _$StudentIdsIraqiNationalityCertificatePublicImpl.fromJson;
 
+  /// Number
   @override
   @JsonKey(name: 'number')
   String? get number;
+
+  /// Wallet Number
   @override
   @JsonKey(name: 'wallet_number')
   String? get walletNumber;
+
+  /// Issuing Authority
   @override
   @JsonKey(name: 'issuing_authority')
   String? get issuingAuthority;
+
+  /// Date Of Issue
   @override
   @JsonKey(name: 'date_of_issue')
   DateTime? get dateOfIssue;

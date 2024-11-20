@@ -11,54 +11,41 @@ class Subject with _$Subject {
 
   @JsonSerializable(converters: convertors)
   const factory Subject({
-    @JsonKey(name: 'id')
-
     /// Id
-    required int? id,
-    @JsonKey(name: 'selected_course_id')
+    @JsonKey(name: 'id') required int? id,
 
     /// Selected Course Id
-    required int? selectedCourseId,
-    @JsonKey(name: 'name')
+    @JsonKey(name: 'selected_course_id') required int? selectedCourseId,
 
     /// Name
-    required String? name,
-    @JsonKey(name: 'arabic_name')
+    @JsonKey(name: 'name') required String? name,
 
     /// Arabic Name
-    required String? arabicName,
-    @JsonKey(name: 'english_name')
+    @JsonKey(name: 'arabic_name') required String? arabicName,
 
     /// English Name
-    required String? englishName,
-    @JsonKey(name: 'code')
+    @JsonKey(name: 'english_name') required String? englishName,
 
     /// Code
-    required String? code,
-    @JsonKey(name: 'number_of_units')
+    @JsonKey(name: 'code') required String? code,
 
     /// Number Of Units
-    required int? numberOfUnits,
-    @JsonKey(name: 'semester_id')
+    @JsonKey(name: 'number_of_units') required int? numberOfUnits,
 
     /// Semester Id
-    required int? semesterId,
-    @JsonKey(name: 'is_enrolled')
+    @JsonKey(name: 'semester_id') required int? semesterId,
 
     /// Is Enrolled
-    required bool? isEnrolled,
-    @JsonKey(name: 'is_enabled')
+    @JsonKey(name: 'is_enrolled') required bool? isEnrolled,
 
     /// Is Enabled
-    required bool? isEnabled,
-    @JsonKey(name: 'course_status')
+    @JsonKey(name: 'is_enabled') required bool? isEnabled,
 
     /// Course Status
-    required int? courseStatus,
-    @JsonKey(name: 'course_staff')
+    @JsonKey(name: 'course_status') required int? courseStatus,
 
     /// Course Staff
-    required List? courseStaff,
+    @JsonKey(name: 'course_staff') required List? courseStaff,
   }) = _Subject;
 
   factory Subject.fromJson(Map<String, dynamic> json) =>

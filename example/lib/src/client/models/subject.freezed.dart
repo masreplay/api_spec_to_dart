@@ -20,28 +20,51 @@ Subject _$SubjectFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Subject {
+  /// Id
   @JsonKey(name: 'id')
   int? get id => throw _privateConstructorUsedError;
+
+  /// Selected Course Id
   @JsonKey(name: 'selected_course_id')
   int? get selectedCourseId => throw _privateConstructorUsedError;
+
+  /// Name
   @JsonKey(name: 'name')
   String? get name => throw _privateConstructorUsedError;
+
+  /// Arabic Name
   @JsonKey(name: 'arabic_name')
   String? get arabicName => throw _privateConstructorUsedError;
+
+  /// English Name
   @JsonKey(name: 'english_name')
   String? get englishName => throw _privateConstructorUsedError;
+
+  /// Code
   @JsonKey(name: 'code')
   String? get code => throw _privateConstructorUsedError;
+
+  /// Number Of Units
   @JsonKey(name: 'number_of_units')
   int? get numberOfUnits => throw _privateConstructorUsedError;
+
+  /// Semester Id
   @JsonKey(name: 'semester_id')
   int? get semesterId => throw _privateConstructorUsedError;
+
+  /// Is Enrolled
   @JsonKey(name: 'is_enrolled')
   bool? get isEnrolled => throw _privateConstructorUsedError;
+
+  /// Is Enabled
   @JsonKey(name: 'is_enabled')
   bool? get isEnabled => throw _privateConstructorUsedError;
+
+  /// Course Status
   @JsonKey(name: 'course_status')
   int? get courseStatus => throw _privateConstructorUsedError;
+
+  /// Course Staff
   @JsonKey(name: 'course_staff')
   List<dynamic>? get courseStaff => throw _privateConstructorUsedError;
 
@@ -279,40 +302,65 @@ class _$SubjectImpl extends _Subject {
   factory _$SubjectImpl.fromJson(Map<String, dynamic> json) =>
       _$$SubjectImplFromJson(json);
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int? id;
+
+  /// Selected Course Id
   @override
   @JsonKey(name: 'selected_course_id')
   final int? selectedCourseId;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   final String? name;
+
+  /// Arabic Name
   @override
   @JsonKey(name: 'arabic_name')
   final String? arabicName;
+
+  /// English Name
   @override
   @JsonKey(name: 'english_name')
   final String? englishName;
+
+  /// Code
   @override
   @JsonKey(name: 'code')
   final String? code;
+
+  /// Number Of Units
   @override
   @JsonKey(name: 'number_of_units')
   final int? numberOfUnits;
+
+  /// Semester Id
   @override
   @JsonKey(name: 'semester_id')
   final int? semesterId;
+
+  /// Is Enrolled
   @override
   @JsonKey(name: 'is_enrolled')
   final bool? isEnrolled;
+
+  /// Is Enabled
   @override
   @JsonKey(name: 'is_enabled')
   final bool? isEnabled;
+
+  /// Course Status
   @override
   @JsonKey(name: 'course_status')
   final int? courseStatus;
+
+  /// Course Staff
   final List<dynamic>? _courseStaff;
+
+  /// Course Staff
   @override
   @JsonKey(name: 'course_staff')
   List<dynamic>? get courseStaff {
@@ -408,39 +456,62 @@ abstract class _Subject extends Subject {
 
   factory _Subject.fromJson(Map<String, dynamic> json) = _$SubjectImpl.fromJson;
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   int? get id;
+
+  /// Selected Course Id
   @override
   @JsonKey(name: 'selected_course_id')
   int? get selectedCourseId;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   String? get name;
+
+  /// Arabic Name
   @override
   @JsonKey(name: 'arabic_name')
   String? get arabicName;
+
+  /// English Name
   @override
   @JsonKey(name: 'english_name')
   String? get englishName;
+
+  /// Code
   @override
   @JsonKey(name: 'code')
   String? get code;
+
+  /// Number Of Units
   @override
   @JsonKey(name: 'number_of_units')
   int? get numberOfUnits;
+
+  /// Semester Id
   @override
   @JsonKey(name: 'semester_id')
   int? get semesterId;
+
+  /// Is Enrolled
   @override
   @JsonKey(name: 'is_enrolled')
   bool? get isEnrolled;
+
+  /// Is Enabled
   @override
   @JsonKey(name: 'is_enabled')
   bool? get isEnabled;
+
+  /// Course Status
   @override
   @JsonKey(name: 'course_status')
   int? get courseStatus;
+
+  /// Course Staff
   @override
   @JsonKey(name: 'course_staff')
   List<dynamic>? get courseStaff;

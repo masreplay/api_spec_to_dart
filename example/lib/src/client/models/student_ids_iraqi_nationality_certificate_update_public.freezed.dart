@@ -22,15 +22,22 @@ StudentIdsIraqiNationalityCertificateUpdatePublic
 
 /// @nodoc
 mixin _$StudentIdsIraqiNationalityCertificateUpdatePublic {
+  /// Iraqi Nationality Certificate Number
   @JsonKey(name: 'iraqi_nationality_certificate_number')
   String get iraqiNationalityCertificateNumber =>
       throw _privateConstructorUsedError;
+
+  /// Iraqi Nationality Certificate Wallet Number
   @JsonKey(name: 'iraqi_nationality_certificate_wallet_number')
   String get iraqiNationalityCertificateWalletNumber =>
       throw _privateConstructorUsedError;
+
+  /// Iraqi Nationality Certificate Date Of Issue
   @JsonKey(name: 'iraqi_nationality_certificate_date_of_issue')
   DateTime get iraqiNationalityCertificateDateOfIssue =>
       throw _privateConstructorUsedError;
+
+  /// Iraqi Nationality Certificate Issuing Authority
   @JsonKey(name: 'iraqi_nationality_certificate_issuing_authority')
   String get iraqiNationalityCertificateIssuingAuthority =>
       throw _privateConstructorUsedError;
@@ -207,15 +214,22 @@ class _$StudentIdsIraqiNationalityCertificateUpdatePublicImpl
           Map<String, dynamic> json) =>
       _$$StudentIdsIraqiNationalityCertificateUpdatePublicImplFromJson(json);
 
+  /// Iraqi Nationality Certificate Number
   @override
   @JsonKey(name: 'iraqi_nationality_certificate_number')
   final String iraqiNationalityCertificateNumber;
+
+  /// Iraqi Nationality Certificate Wallet Number
   @override
   @JsonKey(name: 'iraqi_nationality_certificate_wallet_number')
   final String iraqiNationalityCertificateWalletNumber;
+
+  /// Iraqi Nationality Certificate Date Of Issue
   @override
   @JsonKey(name: 'iraqi_nationality_certificate_date_of_issue')
   final DateTime iraqiNationalityCertificateDateOfIssue;
+
+  /// Iraqi Nationality Certificate Issuing Authority
   @override
   @JsonKey(name: 'iraqi_nationality_certificate_issuing_authority')
   final String iraqiNationalityCertificateIssuingAuthority;
@@ -295,15 +309,22 @@ abstract class _StudentIdsIraqiNationalityCertificateUpdatePublic
           Map<String, dynamic> json) =
       _$StudentIdsIraqiNationalityCertificateUpdatePublicImpl.fromJson;
 
+  /// Iraqi Nationality Certificate Number
   @override
   @JsonKey(name: 'iraqi_nationality_certificate_number')
   String get iraqiNationalityCertificateNumber;
+
+  /// Iraqi Nationality Certificate Wallet Number
   @override
   @JsonKey(name: 'iraqi_nationality_certificate_wallet_number')
   String get iraqiNationalityCertificateWalletNumber;
+
+  /// Iraqi Nationality Certificate Date Of Issue
   @override
   @JsonKey(name: 'iraqi_nationality_certificate_date_of_issue')
   DateTime get iraqiNationalityCertificateDateOfIssue;
+
+  /// Iraqi Nationality Certificate Issuing Authority
   @override
   @JsonKey(name: 'iraqi_nationality_certificate_issuing_authority')
   String get iraqiNationalityCertificateIssuingAuthority;

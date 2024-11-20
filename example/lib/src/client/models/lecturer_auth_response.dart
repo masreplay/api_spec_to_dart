@@ -12,26 +12,20 @@ class LecturerAuthResponse with _$LecturerAuthResponse {
 
   @JsonSerializable(converters: convertors)
   const factory LecturerAuthResponse({
-    @JsonKey(name: 'access_token')
-
     /// Access Token
-    required String accessToken,
-    @JsonKey(name: 'expires_in')
+    @JsonKey(name: 'access_token') required String accessToken,
 
     /// Expires In
-    required int expiresIn,
-    @JsonKey(name: 'refresh_token')
+    @JsonKey(name: 'expires_in') required int expiresIn,
 
     /// Refresh Token
-    required String refreshToken,
-    @JsonKey(name: 'refresh_expires_in')
+    @JsonKey(name: 'refresh_token') required String refreshToken,
 
     /// Refresh Expires In
-    required int refreshExpiresIn,
-    @JsonKey(name: 'user_id')
+    @JsonKey(name: 'refresh_expires_in') required int refreshExpiresIn,
 
     /// User Id
-    required int userId,
+    @JsonKey(name: 'user_id') required int userId,
     @Default(1) @JsonKey(name: 'user_role') required UserRole userRole,
   }) = _LecturerAuthResponse;
 

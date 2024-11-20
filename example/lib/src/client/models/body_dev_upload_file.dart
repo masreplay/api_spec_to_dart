@@ -13,10 +13,8 @@ class BodyDevUploadFile with _$BodyDevUploadFile {
 
   @JsonSerializable(converters: convertors)
   const factory BodyDevUploadFile({
-    @JsonKey(name: 'file')
-
     /// File
-    required File file,
+    @JsonKey(name: 'file') required File file,
   }) = _BodyDevUploadFile;
 
   factory BodyDevUploadFile.fromJson(Map<String, dynamic> json) =>

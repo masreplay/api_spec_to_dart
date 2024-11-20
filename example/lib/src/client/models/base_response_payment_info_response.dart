@@ -12,10 +12,8 @@ class BaseResponsePaymentInfoResponse with _$BaseResponsePaymentInfoResponse {
 
   @JsonSerializable(converters: convertors)
   const factory BaseResponsePaymentInfoResponse({
-    @JsonKey(name: 'message')
-
     /// Message
-    required String? message,
+    @JsonKey(name: 'message') required String? message,
     @JsonKey(name: 'data') required PaymentInfoResponse data,
   }) = _BaseResponsePaymentInfoResponse;
 

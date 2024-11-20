@@ -22,8 +22,11 @@ BaseResponseUnionListCourseSubjectPublicNoneType
 
 /// @nodoc
 mixin _$BaseResponseUnionListCourseSubjectPublicNoneType {
+  /// Message
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
+
+  /// Data
   @JsonKey(name: 'data')
   List<dynamic>? get data => throw _privateConstructorUsedError;
 
@@ -150,10 +153,15 @@ class _$BaseResponseUnionListCourseSubjectPublicNoneTypeImpl
           Map<String, dynamic> json) =>
       _$$BaseResponseUnionListCourseSubjectPublicNoneTypeImplFromJson(json);
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   final String? message;
+
+  /// Data
   final List<dynamic>? _data;
+
+  /// Data
   @override
   @JsonKey(name: 'data')
   List<dynamic>? get data {
@@ -215,9 +223,12 @@ abstract class _BaseResponseUnionListCourseSubjectPublicNoneType
           Map<String, dynamic> json) =
       _$BaseResponseUnionListCourseSubjectPublicNoneTypeImpl.fromJson;
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   String? get message;
+
+  /// Data
   @override
   @JsonKey(name: 'data')
   List<dynamic>? get data;

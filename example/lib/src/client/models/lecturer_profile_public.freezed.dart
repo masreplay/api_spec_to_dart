@@ -21,10 +21,15 @@ LecturerProfilePublic _$LecturerProfilePublicFromJson(
 
 /// @nodoc
 mixin _$LecturerProfilePublic {
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+
+  /// Full Name
   @JsonKey(name: 'full_name')
   String get fullName => throw _privateConstructorUsedError;
+
+  /// Image Url
   @JsonKey(name: 'image_url')
   Uri? get imageUrl => throw _privateConstructorUsedError;
 
@@ -150,12 +155,17 @@ class _$LecturerProfilePublicImpl extends _LecturerProfilePublic {
   factory _$LecturerProfilePublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$LecturerProfilePublicImplFromJson(json);
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
+
+  /// Full Name
   @override
   @JsonKey(name: 'full_name')
   final String fullName;
+
+  /// Image Url
   @override
   @JsonKey(name: 'image_url')
   final Uri? imageUrl;
@@ -209,12 +219,17 @@ abstract class _LecturerProfilePublic extends LecturerProfilePublic {
   factory _LecturerProfilePublic.fromJson(Map<String, dynamic> json) =
       _$LecturerProfilePublicImpl.fromJson;
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;
+
+  /// Full Name
   @override
   @JsonKey(name: 'full_name')
   String get fullName;
+
+  /// Image Url
   @override
   @JsonKey(name: 'image_url')
   Uri? get imageUrl;

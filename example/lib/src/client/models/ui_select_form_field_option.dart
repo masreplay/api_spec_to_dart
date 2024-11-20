@@ -11,14 +11,11 @@ class UISelectFormFieldOption with _$UISelectFormFieldOption {
 
   @JsonSerializable(converters: convertors)
   const factory UISelectFormFieldOption({
-    @JsonKey(name: 'value')
-
     /// Value
-    required String value,
-    @JsonKey(name: 'text')
+    @JsonKey(name: 'value') required String value,
 
     /// Text
-    required String text,
+    @JsonKey(name: 'text') required String text,
   }) = _UISelectFormFieldOption;
 
   factory UISelectFormFieldOption.fromJson(Map<String, dynamic> json) =>

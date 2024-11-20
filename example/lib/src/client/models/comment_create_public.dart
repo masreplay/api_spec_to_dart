@@ -11,10 +11,8 @@ class CommentCreatePublic with _$CommentCreatePublic {
 
   @JsonSerializable(converters: convertors)
   const factory CommentCreatePublic({
-    @JsonKey(name: 'content')
-
     /// Content
-    required String content,
+    @JsonKey(name: 'content') required String content,
   }) = _CommentCreatePublic;
 
   factory CommentCreatePublic.fromJson(Map<String, dynamic> json) =>

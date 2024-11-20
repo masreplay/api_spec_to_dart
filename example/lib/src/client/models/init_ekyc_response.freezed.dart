@@ -20,6 +20,7 @@ InitEkycResponse _$InitEkycResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$InitEkycResponse {
+  /// Id
   @JsonKey(name: 'id')
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'status')
@@ -146,6 +147,7 @@ class _$InitEkycResponseImpl extends _InitEkycResponse {
   factory _$InitEkycResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$InitEkycResponseImplFromJson(json);
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   final String id;
@@ -198,6 +200,7 @@ abstract class _InitEkycResponse extends InitEkycResponse {
   factory _InitEkycResponse.fromJson(Map<String, dynamic> json) =
       _$InitEkycResponseImpl.fromJson;
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   String get id;

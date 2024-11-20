@@ -21,14 +21,23 @@ AuthenticationStatusOptionsResponse
 
 /// @nodoc
 mixin _$AuthenticationStatusOptionsResponse {
+  /// Need Temporary Password Changed
   @JsonKey(name: 'need_temporary_password_changed')
   bool get needTemporaryPasswordChanged => throw _privateConstructorUsedError;
+
+  /// Need Account Verified
   @JsonKey(name: 'need_account_verified')
   bool get needAccountVerified => throw _privateConstructorUsedError;
+
+  /// Need Ekyc Verified
   @JsonKey(name: 'need_ekyc_verified')
   bool get needEkycVerified => throw _privateConstructorUsedError;
+
+  /// Need Enrollment Payment Verified
   @JsonKey(name: 'need_enrollment_payment_verified')
   bool get needEnrollmentPaymentVerified => throw _privateConstructorUsedError;
+
+  /// Need Registration Request Status
   @JsonKey(name: 'need_registration_request_status')
   bool get needRegistrationRequestStatus => throw _privateConstructorUsedError;
 
@@ -195,18 +204,27 @@ class _$AuthenticationStatusOptionsResponseImpl
           Map<String, dynamic> json) =>
       _$$AuthenticationStatusOptionsResponseImplFromJson(json);
 
+  /// Need Temporary Password Changed
   @override
   @JsonKey(name: 'need_temporary_password_changed')
   final bool needTemporaryPasswordChanged;
+
+  /// Need Account Verified
   @override
   @JsonKey(name: 'need_account_verified')
   final bool needAccountVerified;
+
+  /// Need Ekyc Verified
   @override
   @JsonKey(name: 'need_ekyc_verified')
   final bool needEkycVerified;
+
+  /// Need Enrollment Payment Verified
   @override
   @JsonKey(name: 'need_enrollment_payment_verified')
   final bool needEnrollmentPaymentVerified;
+
+  /// Need Registration Request Status
   @override
   @JsonKey(name: 'need_registration_request_status')
   final bool needRegistrationRequestStatus;
@@ -286,18 +304,27 @@ abstract class _AuthenticationStatusOptionsResponse
           Map<String, dynamic> json) =
       _$AuthenticationStatusOptionsResponseImpl.fromJson;
 
+  /// Need Temporary Password Changed
   @override
   @JsonKey(name: 'need_temporary_password_changed')
   bool get needTemporaryPasswordChanged;
+
+  /// Need Account Verified
   @override
   @JsonKey(name: 'need_account_verified')
   bool get needAccountVerified;
+
+  /// Need Ekyc Verified
   @override
   @JsonKey(name: 'need_ekyc_verified')
   bool get needEkycVerified;
+
+  /// Need Enrollment Payment Verified
   @override
   @JsonKey(name: 'need_enrollment_payment_verified')
   bool get needEnrollmentPaymentVerified;
+
+  /// Need Registration Request Status
   @override
   @JsonKey(name: 'need_registration_request_status')
   bool get needRegistrationRequestStatus;

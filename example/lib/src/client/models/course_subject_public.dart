@@ -11,26 +11,21 @@ class CourseSubjectPublic with _$CourseSubjectPublic {
 
   @JsonSerializable(converters: convertors)
   const factory CourseSubjectPublic({
-    @JsonKey(name: 'course_curriculum_id')
-
     /// Course Curriculum Id
-    required int courseCurriculumId,
-    @JsonKey(name: 'course_subject_header')
+    @JsonKey(name: 'course_curriculum_id') required int courseCurriculumId,
 
     /// Course Subject Header
-    required String courseSubjectHeader,
-    @JsonKey(name: 'course_subject_content')
+    @JsonKey(name: 'course_subject_header') required String courseSubjectHeader,
 
     /// Course Subject Content
+    @JsonKey(name: 'course_subject_content')
     required String courseSubjectContent,
-    @JsonKey(name: 'id')
 
     /// Id
-    required int id,
-    @JsonKey(name: 'attachments')
+    @JsonKey(name: 'id') required int id,
 
     /// Attachments
-    required List? attachments,
+    @JsonKey(name: 'attachments') required List? attachments,
   }) = _CourseSubjectPublic;
 
   factory CourseSubjectPublic.fromJson(Map<String, dynamic> json) =>

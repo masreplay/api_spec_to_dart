@@ -20,10 +20,15 @@ SpecializationPublic _$SpecializationPublicFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SpecializationPublic {
+  /// Major Id
   @JsonKey(name: 'major_id')
   int get majorId => throw _privateConstructorUsedError;
+
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+
+  /// Name
   @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
 
@@ -147,12 +152,17 @@ class _$SpecializationPublicImpl extends _SpecializationPublic {
   factory _$SpecializationPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$SpecializationPublicImplFromJson(json);
 
+  /// Major Id
   @override
   @JsonKey(name: 'major_id')
   final int majorId;
+
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   final String name;
@@ -205,12 +215,17 @@ abstract class _SpecializationPublic extends SpecializationPublic {
   factory _SpecializationPublic.fromJson(Map<String, dynamic> json) =
       _$SpecializationPublicImpl.fromJson;
 
+  /// Major Id
   @override
   @JsonKey(name: 'major_id')
   int get majorId;
+
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   String get name;

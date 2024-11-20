@@ -21,8 +21,11 @@ LecturerAttendanceResponse _$LecturerAttendanceResponseFromJson(
 
 /// @nodoc
 mixin _$LecturerAttendanceResponse {
+  /// Issuing Date
   @JsonKey(name: 'issuing_date')
   DateTime get issuingDate => throw _privateConstructorUsedError;
+
+  /// Expiration Date
   @JsonKey(name: 'expiration_date')
   DateTime get expirationDate => throw _privateConstructorUsedError;
 
@@ -138,9 +141,12 @@ class _$LecturerAttendanceResponseImpl extends _LecturerAttendanceResponse {
           Map<String, dynamic> json) =>
       _$$LecturerAttendanceResponseImplFromJson(json);
 
+  /// Issuing Date
   @override
   @JsonKey(name: 'issuing_date')
   final DateTime issuingDate;
+
+  /// Expiration Date
   @override
   @JsonKey(name: 'expiration_date')
   final DateTime expirationDate;
@@ -193,9 +199,12 @@ abstract class _LecturerAttendanceResponse extends LecturerAttendanceResponse {
   factory _LecturerAttendanceResponse.fromJson(Map<String, dynamic> json) =
       _$LecturerAttendanceResponseImpl.fromJson;
 
+  /// Issuing Date
   @override
   @JsonKey(name: 'issuing_date')
   DateTime get issuingDate;
+
+  /// Expiration Date
   @override
   @JsonKey(name: 'expiration_date')
   DateTime get expirationDate;

@@ -11,25 +11,22 @@ class HomeFeedSummerySectionDataPublic with _$HomeFeedSummerySectionDataPublic {
 
   @JsonSerializable(converters: convertors)
   const factory HomeFeedSummerySectionDataPublic({
-    @JsonKey(name: 'courses_count')
-
     /// Courses Count
-    required int coursesCount,
-    @JsonKey(name: 'courses_count_formatted')
+    @JsonKey(name: 'courses_count') required int coursesCount,
 
     /// Courses Count Formatted
+    @JsonKey(name: 'courses_count_formatted')
     required String coursesCountFormatted,
-    @JsonKey(name: 'courses_completed_units_count')
 
     /// Courses Completed Units Count
+    @JsonKey(name: 'courses_completed_units_count')
     required int coursesCompletedUnitsCount,
-    @JsonKey(name: 'courses_units_count')
 
     /// Courses Units Count
-    required int coursesUnitsCount,
-    @JsonKey(name: 'courses_units_formatted')
+    @JsonKey(name: 'courses_units_count') required int coursesUnitsCount,
 
     /// Courses Units Formatted
+    @JsonKey(name: 'courses_units_formatted')
     required String coursesUnitsFormatted,
   }) = _HomeFeedSummerySectionDataPublic;
 

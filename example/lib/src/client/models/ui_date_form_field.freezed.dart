@@ -20,28 +20,51 @@ UIDateFormField _$UIDateFormFieldFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UIDateFormField {
+  /// Key
   @JsonKey(name: 'key')
   String get key => throw _privateConstructorUsedError;
+
+  /// Name
   @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
+
+  /// Hint
   @JsonKey(name: 'hint')
   String? get hint => throw _privateConstructorUsedError;
+
+  /// Is Required
   @JsonKey(name: 'is_required')
   bool get isRequired => throw _privateConstructorUsedError;
+
+  /// Read Only
   @JsonKey(name: 'read_only')
   bool get readOnly => throw _privateConstructorUsedError;
+
+  /// Doc
   @JsonKey(name: 'doc')
   String? get doc => throw _privateConstructorUsedError;
+
+  /// Type
   @JsonKey(name: 'type')
   String get type => throw _privateConstructorUsedError;
+
+  /// Default Value
   @JsonKey(name: 'default_value')
   String? get defaultValue => throw _privateConstructorUsedError;
+
+  /// Format
   @JsonKey(name: 'format')
   String get format => throw _privateConstructorUsedError;
+
+  /// Example
   @JsonKey(name: 'example')
   String? get example => throw _privateConstructorUsedError;
+
+  /// Min Date
   @JsonKey(name: 'min_date')
   DateTime? get minDate => throw _privateConstructorUsedError;
+
+  /// Max Date
   @JsonKey(name: 'max_date')
   DateTime? get maxDate => throw _privateConstructorUsedError;
 
@@ -281,39 +304,62 @@ class _$UIDateFormFieldImpl extends _UIDateFormField {
   factory _$UIDateFormFieldImpl.fromJson(Map<String, dynamic> json) =>
       _$$UIDateFormFieldImplFromJson(json);
 
+  /// Key
   @override
   @JsonKey(name: 'key')
   final String key;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   final String name;
+
+  /// Hint
   @override
   @JsonKey(name: 'hint')
   final String? hint;
+
+  /// Is Required
   @override
   @JsonKey(name: 'is_required')
   final bool isRequired;
+
+  /// Read Only
   @override
   @JsonKey(name: 'read_only')
   final bool readOnly;
+
+  /// Doc
   @override
   @JsonKey(name: 'doc')
   final String? doc;
+
+  /// Type
   @override
   @JsonKey(name: 'type')
   final String type;
+
+  /// Default Value
   @override
   @JsonKey(name: 'default_value')
   final String? defaultValue;
+
+  /// Format
   @override
   @JsonKey(name: 'format')
   final String format;
+
+  /// Example
   @override
   @JsonKey(name: 'example')
   final String? example;
+
+  /// Min Date
   @override
   @JsonKey(name: 'min_date')
   final DateTime? minDate;
+
+  /// Max Date
   @override
   @JsonKey(name: 'max_date')
   final DateTime? maxDate;
@@ -387,39 +433,62 @@ abstract class _UIDateFormField extends UIDateFormField {
   factory _UIDateFormField.fromJson(Map<String, dynamic> json) =
       _$UIDateFormFieldImpl.fromJson;
 
+  /// Key
   @override
   @JsonKey(name: 'key')
   String get key;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   String get name;
+
+  /// Hint
   @override
   @JsonKey(name: 'hint')
   String? get hint;
+
+  /// Is Required
   @override
   @JsonKey(name: 'is_required')
   bool get isRequired;
+
+  /// Read Only
   @override
   @JsonKey(name: 'read_only')
   bool get readOnly;
+
+  /// Doc
   @override
   @JsonKey(name: 'doc')
   String? get doc;
+
+  /// Type
   @override
   @JsonKey(name: 'type')
   String get type;
+
+  /// Default Value
   @override
   @JsonKey(name: 'default_value')
   String? get defaultValue;
+
+  /// Format
   @override
   @JsonKey(name: 'format')
   String get format;
+
+  /// Example
   @override
   @JsonKey(name: 'example')
   String? get example;
+
+  /// Min Date
   @override
   @JsonKey(name: 'min_date')
   DateTime? get minDate;
+
+  /// Max Date
   @override
   @JsonKey(name: 'max_date')
   DateTime? get maxDate;

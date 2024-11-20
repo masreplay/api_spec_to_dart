@@ -21,6 +21,7 @@ StudentAttendanceCreate _$StudentAttendanceCreateFromJson(
 
 /// @nodoc
 mixin _$StudentAttendanceCreate {
+  /// Attendance Id
   @JsonKey(name: 'attendance_id')
   int get attendanceId => throw _privateConstructorUsedError;
 
@@ -119,6 +120,7 @@ class _$StudentAttendanceCreateImpl extends _StudentAttendanceCreate {
   factory _$StudentAttendanceCreateImpl.fromJson(Map<String, dynamic> json) =>
       _$$StudentAttendanceCreateImplFromJson(json);
 
+  /// Attendance Id
   @override
   @JsonKey(name: 'attendance_id')
   final int attendanceId;
@@ -167,6 +169,7 @@ abstract class _StudentAttendanceCreate extends StudentAttendanceCreate {
   factory _StudentAttendanceCreate.fromJson(Map<String, dynamic> json) =
       _$StudentAttendanceCreateImpl.fromJson;
 
+  /// Attendance Id
   @override
   @JsonKey(name: 'attendance_id')
   int get attendanceId;

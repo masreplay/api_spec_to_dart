@@ -21,8 +21,11 @@ SendOtpByRequestPublic _$SendOtpByRequestPublicFromJson(
 
 /// @nodoc
 mixin _$SendOtpByRequestPublic {
+  /// Credential
   @JsonKey(name: 'credential')
   String get credential => throw _privateConstructorUsedError;
+
+  /// Method
   @JsonKey(name: 'method')
   String get method => throw _privateConstructorUsedError;
 
@@ -136,9 +139,12 @@ class _$SendOtpByRequestPublicImpl extends _SendOtpByRequestPublic {
   factory _$SendOtpByRequestPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$SendOtpByRequestPublicImplFromJson(json);
 
+  /// Credential
   @override
   @JsonKey(name: 'credential')
   final String credential;
+
+  /// Method
   @override
   @JsonKey(name: 'method')
   final String method;
@@ -189,9 +195,12 @@ abstract class _SendOtpByRequestPublic extends SendOtpByRequestPublic {
   factory _SendOtpByRequestPublic.fromJson(Map<String, dynamic> json) =
       _$SendOtpByRequestPublicImpl.fromJson;
 
+  /// Credential
   @override
   @JsonKey(name: 'credential')
   String get credential;
+
+  /// Method
   @override
   @JsonKey(name: 'method')
   String get method;

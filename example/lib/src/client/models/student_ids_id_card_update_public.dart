@@ -11,25 +11,24 @@ class StudentIdsIdCardUpdatePublic with _$StudentIdsIdCardUpdatePublic {
 
   @JsonSerializable(converters: convertors)
   const factory StudentIdsIdCardUpdatePublic({
-    @JsonKey(name: 'identification_card_number')
-
     /// Identification Card Number
+    @JsonKey(name: 'identification_card_number')
     required String identificationCardNumber,
-    @JsonKey(name: 'identification_card_record')
 
     /// Identification Card Record
+    @JsonKey(name: 'identification_card_record')
     required String identificationCardRecord,
-    @JsonKey(name: 'identification_card_page')
 
     /// Identification Card Page
+    @JsonKey(name: 'identification_card_page')
     required String identificationCardPage,
-    @JsonKey(name: 'identification_card_issuing_authority')
 
     /// Identification Card Issuing Authority
+    @JsonKey(name: 'identification_card_issuing_authority')
     required String identificationCardIssuingAuthority,
-    @JsonKey(name: 'identification_card_date_of_issue')
 
     /// Identification Card Date Of Issue
+    @JsonKey(name: 'identification_card_date_of_issue')
     required DateTime identificationCardDateOfIssue,
   }) = _StudentIdsIdCardUpdatePublic;
 

@@ -11,22 +11,17 @@ class PaginationResponseCommentPublic with _$PaginationResponseCommentPublic {
 
   @JsonSerializable(converters: convertors)
   const factory PaginationResponseCommentPublic({
-    @JsonKey(name: 'page')
-
     /// Page
-    required int page,
-    @JsonKey(name: 'per_page')
+    @JsonKey(name: 'page') required int page,
 
     /// Per Page
-    required int perPage,
-    @JsonKey(name: 'total')
+    @JsonKey(name: 'per_page') required int perPage,
 
     /// Total
-    required int total,
-    @JsonKey(name: 'data')
+    @JsonKey(name: 'total') required int total,
 
     /// Data
-    required List data,
+    @JsonKey(name: 'data') required List data,
   }) = _PaginationResponseCommentPublic;
 
   factory PaginationResponseCommentPublic.fromJson(Map<String, dynamic> json) =>

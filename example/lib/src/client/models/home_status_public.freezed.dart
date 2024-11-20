@@ -20,10 +20,15 @@ HomeStatusPublic _$HomeStatusPublicFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$HomeStatusPublic {
+  /// Type
   @JsonKey(name: 'type')
   String get type => throw _privateConstructorUsedError;
+
+  /// Title
   @JsonKey(name: 'title')
   String get title => throw _privateConstructorUsedError;
+
+  /// Description
   @JsonKey(name: 'description')
   String? get description => throw _privateConstructorUsedError;
   @JsonKey(name: 'status')
@@ -176,12 +181,17 @@ class _$HomeStatusPublicImpl extends _HomeStatusPublic {
   factory _$HomeStatusPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$HomeStatusPublicImplFromJson(json);
 
+  /// Type
   @override
   @JsonKey(name: 'type')
   final String type;
+
+  /// Title
   @override
   @JsonKey(name: 'title')
   final String title;
+
+  /// Description
   @override
   @JsonKey(name: 'description')
   final String? description;
@@ -240,12 +250,17 @@ abstract class _HomeStatusPublic extends HomeStatusPublic {
   factory _HomeStatusPublic.fromJson(Map<String, dynamic> json) =
       _$HomeStatusPublicImpl.fromJson;
 
+  /// Type
   @override
   @JsonKey(name: 'type')
   String get type;
+
+  /// Title
   @override
   @JsonKey(name: 'title')
   String get title;
+
+  /// Description
   @override
   @JsonKey(name: 'description')
   String? get description;

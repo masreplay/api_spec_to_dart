@@ -20,10 +20,15 @@ PaymentInfoAmount _$PaymentInfoAmountFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PaymentInfoAmount {
+  /// Total
   @JsonKey(name: 'total')
   int get total => throw _privateConstructorUsedError;
+
+  /// Tax
   @JsonKey(name: 'tax')
   int get tax => throw _privateConstructorUsedError;
+
+  /// Cost
   @JsonKey(name: 'cost')
   int get cost => throw _privateConstructorUsedError;
 
@@ -146,12 +151,17 @@ class _$PaymentInfoAmountImpl extends _PaymentInfoAmount {
   factory _$PaymentInfoAmountImpl.fromJson(Map<String, dynamic> json) =>
       _$$PaymentInfoAmountImplFromJson(json);
 
+  /// Total
   @override
   @JsonKey(name: 'total')
   final int total;
+
+  /// Tax
   @override
   @JsonKey(name: 'tax')
   final int tax;
+
+  /// Cost
   @override
   @JsonKey(name: 'cost')
   final int cost;
@@ -203,12 +213,17 @@ abstract class _PaymentInfoAmount extends PaymentInfoAmount {
   factory _PaymentInfoAmount.fromJson(Map<String, dynamic> json) =
       _$PaymentInfoAmountImpl.fromJson;
 
+  /// Total
   @override
   @JsonKey(name: 'total')
   int get total;
+
+  /// Tax
   @override
   @JsonKey(name: 'tax')
   int get tax;
+
+  /// Cost
   @override
   @JsonKey(name: 'cost')
   int get cost;

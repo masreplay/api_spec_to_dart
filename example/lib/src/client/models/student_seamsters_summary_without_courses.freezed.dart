@@ -21,6 +21,7 @@ StudentSeamstersSummaryWithoutCourses
 
 /// @nodoc
 mixin _$StudentSeamstersSummaryWithoutCourses {
+  /// Semesters
   @JsonKey(name: 'semesters')
   List<dynamic>? get semesters => throw _privateConstructorUsedError;
   @JsonKey(name: 'year')
@@ -161,7 +162,10 @@ class _$StudentSeamstersSummaryWithoutCoursesImpl
           Map<String, dynamic> json) =>
       _$$StudentSeamstersSummaryWithoutCoursesImplFromJson(json);
 
+  /// Semesters
   final List<dynamic>? _semesters;
+
+  /// Semesters
   @override
   @JsonKey(name: 'semesters')
   List<dynamic>? get semesters {
@@ -226,6 +230,7 @@ abstract class _StudentSeamstersSummaryWithoutCourses
           Map<String, dynamic> json) =
       _$StudentSeamstersSummaryWithoutCoursesImpl.fromJson;
 
+  /// Semesters
   @override
   @JsonKey(name: 'semesters')
   List<dynamic>? get semesters;

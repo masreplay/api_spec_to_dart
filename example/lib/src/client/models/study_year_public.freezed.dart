@@ -20,8 +20,11 @@ StudyYearPublic _$StudyYearPublicFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$StudyYearPublic {
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+
+  /// Value
   @JsonKey(name: 'value')
   String get value => throw _privateConstructorUsedError;
 
@@ -129,9 +132,12 @@ class _$StudyYearPublicImpl extends _StudyYearPublic {
   factory _$StudyYearPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$StudyYearPublicImplFromJson(json);
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
+
+  /// Value
   @override
   @JsonKey(name: 'value')
   final String value;
@@ -181,9 +187,12 @@ abstract class _StudyYearPublic extends StudyYearPublic {
   factory _StudyYearPublic.fromJson(Map<String, dynamic> json) =
       _$StudyYearPublicImpl.fromJson;
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;
+
+  /// Value
   @override
   @JsonKey(name: 'value')
   String get value;

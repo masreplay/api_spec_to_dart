@@ -20,6 +20,7 @@ StudentSummery _$StudentSummeryFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$StudentSummery {
+  /// Image Url
   @JsonKey(name: 'image_url')
   String? get imageUrl => throw _privateConstructorUsedError;
 
@@ -114,6 +115,7 @@ class _$StudentSummeryImpl extends _StudentSummery {
   factory _$StudentSummeryImpl.fromJson(Map<String, dynamic> json) =>
       _$$StudentSummeryImplFromJson(json);
 
+  /// Image Url
   @override
   @JsonKey(name: 'image_url')
   final String? imageUrl;
@@ -162,6 +164,7 @@ abstract class _StudentSummery extends StudentSummery {
   factory _StudentSummery.fromJson(Map<String, dynamic> json) =
       _$StudentSummeryImpl.fromJson;
 
+  /// Image Url
   @override
   @JsonKey(name: 'image_url')
   String? get imageUrl;

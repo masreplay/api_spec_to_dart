@@ -21,28 +21,51 @@ CourseDistributionsTable _$CourseDistributionsTableFromJson(
 
 /// @nodoc
 mixin _$CourseDistributionsTable {
+  /// Academic Year Divisionid
   @JsonKey(name: 'academic_year_divisionId')
   int get academicYearDivisionId => throw _privateConstructorUsedError;
+
+  /// Study Program Id
   @JsonKey(name: 'study_program_id')
   int get studyProgramId => throw _privateConstructorUsedError;
+
+  /// Grade
   @JsonKey(name: 'grade')
   int get grade => throw _privateConstructorUsedError;
+
+  /// Course Id
   @JsonKey(name: 'course_id')
   int get courseId => throw _privateConstructorUsedError;
+
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+
+  /// Creator Id
   @JsonKey(name: 'creator_id')
   int get creatorId => throw _privateConstructorUsedError;
+
+  /// Creation Time
   @JsonKey(name: 'creation_time')
   DateTime get creationTime => throw _privateConstructorUsedError;
+
+  /// Last Modifier Id
   @JsonKey(name: 'last_modifier_id')
   int? get lastModifierId => throw _privateConstructorUsedError;
+
+  /// Last Modification Time
   @JsonKey(name: 'last_modification_time')
   DateTime? get lastModificationTime => throw _privateConstructorUsedError;
+
+  /// Is Deleted
   @JsonKey(name: 'is_deleted')
   bool get isDeleted => throw _privateConstructorUsedError;
+
+  /// Deleter Id
   @JsonKey(name: 'deleter_id')
   int? get deleterId => throw _privateConstructorUsedError;
+
+  /// Deletion Time
   @JsonKey(name: 'deletion_time')
   DateTime? get deletionTime => throw _privateConstructorUsedError;
 
@@ -288,39 +311,62 @@ class _$CourseDistributionsTableImpl extends _CourseDistributionsTable {
   factory _$CourseDistributionsTableImpl.fromJson(Map<String, dynamic> json) =>
       _$$CourseDistributionsTableImplFromJson(json);
 
+  /// Academic Year Divisionid
   @override
   @JsonKey(name: 'academic_year_divisionId')
   final int academicYearDivisionId;
+
+  /// Study Program Id
   @override
   @JsonKey(name: 'study_program_id')
   final int studyProgramId;
+
+  /// Grade
   @override
   @JsonKey(name: 'grade')
   final int grade;
+
+  /// Course Id
   @override
   @JsonKey(name: 'course_id')
   final int courseId;
+
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
+
+  /// Creator Id
   @override
   @JsonKey(name: 'creator_id')
   final int creatorId;
+
+  /// Creation Time
   @override
   @JsonKey(name: 'creation_time')
   final DateTime creationTime;
+
+  /// Last Modifier Id
   @override
   @JsonKey(name: 'last_modifier_id')
   final int? lastModifierId;
+
+  /// Last Modification Time
   @override
   @JsonKey(name: 'last_modification_time')
   final DateTime? lastModificationTime;
+
+  /// Is Deleted
   @override
   @JsonKey(name: 'is_deleted')
   final bool isDeleted;
+
+  /// Deleter Id
   @override
   @JsonKey(name: 'deleter_id')
   final int? deleterId;
+
+  /// Deletion Time
   @override
   @JsonKey(name: 'deletion_time')
   final DateTime? deletionTime;
@@ -415,39 +461,62 @@ abstract class _CourseDistributionsTable extends CourseDistributionsTable {
   factory _CourseDistributionsTable.fromJson(Map<String, dynamic> json) =
       _$CourseDistributionsTableImpl.fromJson;
 
+  /// Academic Year Divisionid
   @override
   @JsonKey(name: 'academic_year_divisionId')
   int get academicYearDivisionId;
+
+  /// Study Program Id
   @override
   @JsonKey(name: 'study_program_id')
   int get studyProgramId;
+
+  /// Grade
   @override
   @JsonKey(name: 'grade')
   int get grade;
+
+  /// Course Id
   @override
   @JsonKey(name: 'course_id')
   int get courseId;
+
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;
+
+  /// Creator Id
   @override
   @JsonKey(name: 'creator_id')
   int get creatorId;
+
+  /// Creation Time
   @override
   @JsonKey(name: 'creation_time')
   DateTime get creationTime;
+
+  /// Last Modifier Id
   @override
   @JsonKey(name: 'last_modifier_id')
   int? get lastModifierId;
+
+  /// Last Modification Time
   @override
   @JsonKey(name: 'last_modification_time')
   DateTime? get lastModificationTime;
+
+  /// Is Deleted
   @override
   @JsonKey(name: 'is_deleted')
   bool get isDeleted;
+
+  /// Deleter Id
   @override
   @JsonKey(name: 'deleter_id')
   int? get deleterId;
+
+  /// Deletion Time
   @override
   @JsonKey(name: 'deletion_time')
   DateTime? get deletionTime;

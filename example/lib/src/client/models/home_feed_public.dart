@@ -11,15 +11,11 @@ class HomeFeedPublic with _$HomeFeedPublic {
 
   @JsonSerializable(converters: convertors)
   const factory HomeFeedPublic({
-    @Default(feed)
-    @JsonKey(name: 'type')
-
     /// Type
-    required String type,
-    @JsonKey(name: 'sections')
+    @Default(feed) @JsonKey(name: 'type') required String type,
 
     /// Sections
-    required List sections,
+    @JsonKey(name: 'sections') required List sections,
   }) = _HomeFeedPublic;
 
   factory HomeFeedPublic.fromJson(Map<String, dynamic> json) =>

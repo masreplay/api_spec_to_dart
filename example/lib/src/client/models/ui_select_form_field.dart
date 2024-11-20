@@ -11,49 +11,35 @@ class UISelectFormField with _$UISelectFormField {
 
   @JsonSerializable(converters: convertors)
   const factory UISelectFormField({
-    @JsonKey(name: 'key')
-
     /// Key
-    required String key,
-    @JsonKey(name: 'name')
+    @JsonKey(name: 'key') required String key,
 
     /// Name
-    required String name,
-    @JsonKey(name: 'hint')
+    @JsonKey(name: 'name') required String name,
 
     /// Hint
-    required String? hint,
-    @JsonKey(name: 'is_required')
+    @JsonKey(name: 'hint') required String? hint,
 
     /// Is Required
-    required bool isRequired,
-    @Default(false)
-    @JsonKey(name: 'read_only')
+    @JsonKey(name: 'is_required') required bool isRequired,
 
     /// Read Only
-    required bool readOnly,
-    @JsonKey(name: 'doc')
+    @Default(false) @JsonKey(name: 'read_only') required bool readOnly,
 
     /// Doc
-    required String? doc,
-    @Default(select)
-    @JsonKey(name: 'type')
+    @JsonKey(name: 'doc') required String? doc,
 
     /// Type
-    required String type,
-    @Default([])
-    @JsonKey(name: 'options')
+    @Default(select) @JsonKey(name: 'type') required String type,
 
     /// Options
-    required List options,
-    @JsonKey(name: 'default_value')
+    @Default([]) @JsonKey(name: 'options') required List options,
 
     /// Default Value
-    required String? defaultValue,
-    @JsonKey(name: 'example')
+    @JsonKey(name: 'default_value') required String? defaultValue,
 
     /// Example
-    required String? example,
+    @JsonKey(name: 'example') required String? example,
   }) = _UISelectFormField;
 
   factory UISelectFormField.fromJson(Map<String, dynamic> json) =>

@@ -11,18 +11,14 @@ class AppSettingsAndroid with _$AppSettingsAndroid {
 
   @JsonSerializable(converters: convertors)
   const factory AppSettingsAndroid({
-    @JsonKey(name: 'version')
-
     /// Version
-    required String version,
-    @JsonKey(name: 'url')
+    @JsonKey(name: 'version') required String version,
 
     /// Url
-    required String? url,
-    @JsonKey(name: 'message')
+    @JsonKey(name: 'url') required String? url,
 
     /// Message
-    required String? message,
+    @JsonKey(name: 'message') required String? message,
   }) = _AppSettingsAndroid;
 
   factory AppSettingsAndroid.fromJson(Map<String, dynamic> json) =>

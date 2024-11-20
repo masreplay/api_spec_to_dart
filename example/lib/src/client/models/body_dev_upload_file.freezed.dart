@@ -20,6 +20,7 @@ BodyDevUploadFile _$BodyDevUploadFileFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$BodyDevUploadFile {
+  /// File
   @JsonKey(name: 'file')
   File get file => throw _privateConstructorUsedError;
 
@@ -113,6 +114,7 @@ class _$BodyDevUploadFileImpl extends _BodyDevUploadFile {
   factory _$BodyDevUploadFileImpl.fromJson(Map<String, dynamic> json) =>
       _$$BodyDevUploadFileImplFromJson(json);
 
+  /// File
   @override
   @JsonKey(name: 'file')
   final File file;
@@ -160,6 +162,7 @@ abstract class _BodyDevUploadFile extends BodyDevUploadFile {
   factory _BodyDevUploadFile.fromJson(Map<String, dynamic> json) =
       _$BodyDevUploadFileImpl.fromJson;
 
+  /// File
   @override
   @JsonKey(name: 'file')
   File get file;

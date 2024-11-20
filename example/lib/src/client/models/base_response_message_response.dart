@@ -12,10 +12,8 @@ class BaseResponseMessageResponse with _$BaseResponseMessageResponse {
 
   @JsonSerializable(converters: convertors)
   const factory BaseResponseMessageResponse({
-    @JsonKey(name: 'message')
-
     /// Message
-    required String? message,
+    @JsonKey(name: 'message') required String? message,
     @JsonKey(name: 'data') required MessageResponse data,
   }) = _BaseResponseMessageResponse;
 

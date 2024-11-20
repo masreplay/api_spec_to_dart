@@ -21,16 +21,27 @@ StudentIdsNationalCardPublic _$StudentIdsNationalCardPublicFromJson(
 
 /// @nodoc
 mixin _$StudentIdsNationalCardPublic {
+  /// Number
   @JsonKey(name: 'number')
   String? get number => throw _privateConstructorUsedError;
+
+  /// Serial Number
   @JsonKey(name: 'serial_number')
   String? get serialNumber => throw _privateConstructorUsedError;
+
+  /// Issuing Authority
   @JsonKey(name: 'issuing_authority')
   String? get issuingAuthority => throw _privateConstructorUsedError;
+
+  /// Date Of Issue
   @JsonKey(name: 'date_of_issue')
   DateTime? get dateOfIssue => throw _privateConstructorUsedError;
+
+  /// Date Of Expiry
   @JsonKey(name: 'date_of_expiry')
   DateTime? get dateOfExpiry => throw _privateConstructorUsedError;
+
+  /// Family Number
   @JsonKey(name: 'family_number')
   String? get familyNumber => throw _privateConstructorUsedError;
   @JsonKey(name: 'front_image')
@@ -265,21 +276,32 @@ class _$StudentIdsNationalCardPublicImpl extends _StudentIdsNationalCardPublic {
           Map<String, dynamic> json) =>
       _$$StudentIdsNationalCardPublicImplFromJson(json);
 
+  /// Number
   @override
   @JsonKey(name: 'number')
   final String? number;
+
+  /// Serial Number
   @override
   @JsonKey(name: 'serial_number')
   final String? serialNumber;
+
+  /// Issuing Authority
   @override
   @JsonKey(name: 'issuing_authority')
   final String? issuingAuthority;
+
+  /// Date Of Issue
   @override
   @JsonKey(name: 'date_of_issue')
   final DateTime? dateOfIssue;
+
+  /// Date Of Expiry
   @override
   @JsonKey(name: 'date_of_expiry')
   final DateTime? dateOfExpiry;
+
+  /// Family Number
   @override
   @JsonKey(name: 'family_number')
   final String? familyNumber;
@@ -367,21 +389,32 @@ abstract class _StudentIdsNationalCardPublic
   factory _StudentIdsNationalCardPublic.fromJson(Map<String, dynamic> json) =
       _$StudentIdsNationalCardPublicImpl.fromJson;
 
+  /// Number
   @override
   @JsonKey(name: 'number')
   String? get number;
+
+  /// Serial Number
   @override
   @JsonKey(name: 'serial_number')
   String? get serialNumber;
+
+  /// Issuing Authority
   @override
   @JsonKey(name: 'issuing_authority')
   String? get issuingAuthority;
+
+  /// Date Of Issue
   @override
   @JsonKey(name: 'date_of_issue')
   DateTime? get dateOfIssue;
+
+  /// Date Of Expiry
   @override
   @JsonKey(name: 'date_of_expiry')
   DateTime? get dateOfExpiry;
+
+  /// Family Number
   @override
   @JsonKey(name: 'family_number')
   String? get familyNumber;

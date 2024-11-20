@@ -11,162 +11,125 @@ class EmployeePublic with _$EmployeePublic {
 
   @JsonSerializable(converters: convertors)
   const factory EmployeePublic({
-    @JsonKey(name: 'db_user_id')
-
     /// Db User Id
-    required String? dbUserId,
-    @JsonKey(name: 'id')
+    @JsonKey(name: 'db_user_id') required String? dbUserId,
 
     /// Id
-    required int id,
-    @JsonKey(name: 'emp_ar_first_name')
+    @JsonKey(name: 'id') required int id,
 
     /// Emp Ar First Name
-    required String empArFirstName,
-    @JsonKey(name: 'emp_ar_second_name')
+    @JsonKey(name: 'emp_ar_first_name') required String empArFirstName,
 
     /// Emp Ar Second Name
-    required String empArSecondName,
-    @JsonKey(name: 'emp_ar_third_name')
+    @JsonKey(name: 'emp_ar_second_name') required String empArSecondName,
 
     /// Emp Ar Third Name
-    required String empArThirdName,
-    @JsonKey(name: 'emp_ar_fourth_name')
+    @JsonKey(name: 'emp_ar_third_name') required String empArThirdName,
 
     /// Emp Ar Fourth Name
-    required String empArFourthName,
-    @JsonKey(name: 'tribe')
+    @JsonKey(name: 'emp_ar_fourth_name') required String empArFourthName,
 
     /// Tribe
-    required String tribe,
-    @JsonKey(name: 'emp_en_first_name')
+    @JsonKey(name: 'tribe') required String tribe,
 
     /// Emp En First Name
-    required String empEnFirstName,
-    @JsonKey(name: 'emp_en_second_name')
+    @JsonKey(name: 'emp_en_first_name') required String empEnFirstName,
 
     /// Emp En Second Name
-    required String empEnSecondName,
-    @JsonKey(name: 'emp_en_third_name')
+    @JsonKey(name: 'emp_en_second_name') required String empEnSecondName,
 
     /// Emp En Third Name
-    required String empEnThirdName,
-    @JsonKey(name: 'emp_en_fourth_name')
+    @JsonKey(name: 'emp_en_third_name') required String empEnThirdName,
 
     /// Emp En Fourth Name
-    required String empEnFourthName,
-    @JsonKey(name: 'mother_first_name')
+    @JsonKey(name: 'emp_en_fourth_name') required String empEnFourthName,
 
     /// Mother First Name
-    required String? motherFirstName,
-    @JsonKey(name: 'mother_second_name')
+    @JsonKey(name: 'mother_first_name') required String? motherFirstName,
 
     /// Mother Second Name
-    required String? motherSecondName,
-    @JsonKey(name: 'mother_third_name')
+    @JsonKey(name: 'mother_second_name') required String? motherSecondName,
 
     /// Mother Third Name
-    required String? motherThirdName,
-    @JsonKey(name: 'gender')
+    @JsonKey(name: 'mother_third_name') required String? motherThirdName,
 
     /// Gender
-    required int gender,
-    @JsonKey(name: 'date_of_birth')
+    @JsonKey(name: 'gender') required int gender,
 
     /// Date Of Birth
-    required DateTime dateOfBirth,
-    @JsonKey(name: 'nationality_id')
+    @JsonKey(name: 'date_of_birth') required DateTime dateOfBirth,
 
     /// Nationality Id
-    required int nationalityId,
-    @JsonKey(name: 'citizenship_type')
+    @JsonKey(name: 'nationality_id') required int nationalityId,
 
     /// Citizenship Type
-    required int? citizenshipType,
-    @JsonKey(name: 'nationalism_id')
+    @JsonKey(name: 'citizenship_type') required int? citizenshipType,
 
     /// Nationalism Id
-    required int nationalismId,
-    @JsonKey(name: 'religion_id')
+    @JsonKey(name: 'nationalism_id') required int nationalismId,
 
     /// Religion Id
-    required int? religionId,
-    @JsonKey(name: 'blood_group')
+    @JsonKey(name: 'religion_id') required int? religionId,
 
     /// Blood Group
-    required int? bloodGroup,
-    @JsonKey(name: 'country_id')
+    @JsonKey(name: 'blood_group') required int? bloodGroup,
 
     /// Country Id
-    required int countryId,
-    @JsonKey(name: 'city_of_birth')
+    @JsonKey(name: 'country_id') required int countryId,
 
     /// City Of Birth
-    required String? cityOfBirth,
-    @JsonKey(name: 'marital_status')
+    @JsonKey(name: 'city_of_birth') required String? cityOfBirth,
 
     /// Marital Status
-    required int? maritalStatus,
-    @JsonKey(name: 'un')
+    @JsonKey(name: 'marital_status') required int? maritalStatus,
 
     /// Un
-    required String? un,
-    @JsonKey(name: 'college_id')
+    @JsonKey(name: 'un') required String? un,
 
     /// College Id
-    required int collegeId,
-    @JsonKey(name: 'is_send')
+    @JsonKey(name: 'college_id') required int collegeId,
 
     /// Is Send
-    required bool isSend,
-    @JsonKey(name: 'is_approved')
+    @JsonKey(name: 'is_send') required bool isSend,
 
     /// Is Approved
-    required bool isApproved,
-    @JsonKey(name: 'notes')
+    @JsonKey(name: 'is_approved') required bool isApproved,
 
     /// Notes
-    required String? notes,
-    @JsonKey(name: 'approved_by_id')
+    @JsonKey(name: 'notes') required String? notes,
 
     /// Approved By Id
-    required String? approvedById,
-    @JsonKey(name: 'date_of_approve')
+    @JsonKey(name: 'approved_by_id') required String? approvedById,
 
     /// Date Of Approve
-    required DateTime? dateOfApprove,
-    @JsonKey(name: 'age_official_document_id')
+    @JsonKey(name: 'date_of_approve') required DateTime? dateOfApprove,
 
     /// Age Official Document Id
+    @JsonKey(name: 'age_official_document_id')
     required int? ageOfficialDocumentId,
-    @JsonKey(name: 'date_of_employment_approval')
 
     /// Date Of Employment Approval
+    @JsonKey(name: 'date_of_employment_approval')
     required DateTime? dateOfEmploymentApproval,
-    @JsonKey(name: 'employment_approve_official_document_id')
 
     /// Employment Approve Official Document Id
+    @JsonKey(name: 'employment_approve_official_document_id')
     required int? employmentApproveOfficialDocumentId,
-    @JsonKey(name: 'modified_by')
 
     /// Modified By
-    required String modifiedBy,
-    @JsonKey(name: 'modified_date_time')
+    @JsonKey(name: 'modified_by') required String modifiedBy,
 
     /// Modified Date Time
-    required DateTime modifiedDateTime,
-    @JsonKey(name: 'deletion_time')
+    @JsonKey(name: 'modified_date_time') required DateTime modifiedDateTime,
 
     /// Deletion Time
-    required DateTime? deletionTime,
-    @JsonKey(name: 'name')
+    @JsonKey(name: 'deletion_time') required DateTime? deletionTime,
 
     /// Name
-    required String? name,
-    @JsonKey(name: 'full_name')
+    @JsonKey(name: 'name') required String? name,
 
     /// Full Name
-    required String fullName,
+    @JsonKey(name: 'full_name') required String fullName,
   }) = _EmployeePublic;
 
   factory EmployeePublic.fromJson(Map<String, dynamic> json) =>

@@ -21,8 +21,11 @@ WeeklyScheduleTeacherResponse _$WeeklyScheduleTeacherResponseFromJson(
 
 /// @nodoc
 mixin _$WeeklyScheduleTeacherResponse {
+  /// Weekday
   @JsonKey(name: 'weekday')
   int get weekday => throw _privateConstructorUsedError;
+
+  /// Lectures
   @JsonKey(name: 'lectures')
   List<dynamic> get lectures => throw _privateConstructorUsedError;
 
@@ -141,10 +144,15 @@ class _$WeeklyScheduleTeacherResponseImpl
           Map<String, dynamic> json) =>
       _$$WeeklyScheduleTeacherResponseImplFromJson(json);
 
+  /// Weekday
   @override
   @JsonKey(name: 'weekday')
   final int weekday;
+
+  /// Lectures
   final List<dynamic> _lectures;
+
+  /// Lectures
   @override
   @JsonKey(name: 'lectures')
   List<dynamic> get lectures {
@@ -201,9 +209,12 @@ abstract class _WeeklyScheduleTeacherResponse
   factory _WeeklyScheduleTeacherResponse.fromJson(Map<String, dynamic> json) =
       _$WeeklyScheduleTeacherResponseImpl.fromJson;
 
+  /// Weekday
   @override
   @JsonKey(name: 'weekday')
   int get weekday;
+
+  /// Lectures
   @override
   @JsonKey(name: 'lectures')
   List<dynamic> get lectures;

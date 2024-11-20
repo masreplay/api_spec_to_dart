@@ -20,14 +20,23 @@ LecturerAuthResponse _$LecturerAuthResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$LecturerAuthResponse {
+  /// Access Token
   @JsonKey(name: 'access_token')
   String get accessToken => throw _privateConstructorUsedError;
+
+  /// Expires In
   @JsonKey(name: 'expires_in')
   int get expiresIn => throw _privateConstructorUsedError;
+
+  /// Refresh Token
   @JsonKey(name: 'refresh_token')
   String get refreshToken => throw _privateConstructorUsedError;
+
+  /// Refresh Expires In
   @JsonKey(name: 'refresh_expires_in')
   int get refreshExpiresIn => throw _privateConstructorUsedError;
+
+  /// User Id
   @JsonKey(name: 'user_id')
   int get userId => throw _privateConstructorUsedError;
   @JsonKey(name: 'user_role')
@@ -207,18 +216,27 @@ class _$LecturerAuthResponseImpl extends _LecturerAuthResponse {
   factory _$LecturerAuthResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$LecturerAuthResponseImplFromJson(json);
 
+  /// Access Token
   @override
   @JsonKey(name: 'access_token')
   final String accessToken;
+
+  /// Expires In
   @override
   @JsonKey(name: 'expires_in')
   final int expiresIn;
+
+  /// Refresh Token
   @override
   @JsonKey(name: 'refresh_token')
   final String refreshToken;
+
+  /// Refresh Expires In
   @override
   @JsonKey(name: 'refresh_expires_in')
   final int refreshExpiresIn;
+
+  /// User Id
   @override
   @JsonKey(name: 'user_id')
   final int userId;
@@ -286,18 +304,27 @@ abstract class _LecturerAuthResponse extends LecturerAuthResponse {
   factory _LecturerAuthResponse.fromJson(Map<String, dynamic> json) =
       _$LecturerAuthResponseImpl.fromJson;
 
+  /// Access Token
   @override
   @JsonKey(name: 'access_token')
   String get accessToken;
+
+  /// Expires In
   @override
   @JsonKey(name: 'expires_in')
   int get expiresIn;
+
+  /// Refresh Token
   @override
   @JsonKey(name: 'refresh_token')
   String get refreshToken;
+
+  /// Refresh Expires In
   @override
   @JsonKey(name: 'refresh_expires_in')
   int get refreshExpiresIn;
+
+  /// User Id
   @override
   @JsonKey(name: 'user_id')
   int get userId;

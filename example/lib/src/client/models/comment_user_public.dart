@@ -11,18 +11,14 @@ class CommentUserPublic with _$CommentUserPublic {
 
   @JsonSerializable(converters: convertors)
   const factory CommentUserPublic({
-    @JsonKey(name: 'id')
-
     /// Id
-    required int id,
-    @JsonKey(name: 'name')
+    @JsonKey(name: 'id') required int id,
 
     /// Name
-    required String name,
-    @JsonKey(name: 'avatar')
+    @JsonKey(name: 'name') required String name,
 
     /// Avatar
-    required String? avatar,
+    @JsonKey(name: 'avatar') required String? avatar,
   }) = _CommentUserPublic;
 
   factory CommentUserPublic.fromJson(Map<String, dynamic> json) =>

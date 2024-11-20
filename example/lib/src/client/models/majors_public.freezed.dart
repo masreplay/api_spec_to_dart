@@ -20,10 +20,15 @@ MajorsPublic _$MajorsPublicFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MajorsPublic {
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+
+  /// Education Type Id
   @JsonKey(name: 'education_type_id')
   int get educationTypeId => throw _privateConstructorUsedError;
+
+  /// Name
   @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
 
@@ -146,12 +151,17 @@ class _$MajorsPublicImpl extends _MajorsPublic {
   factory _$MajorsPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$MajorsPublicImplFromJson(json);
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
+
+  /// Education Type Id
   @override
   @JsonKey(name: 'education_type_id')
   final int educationTypeId;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   final String name;
@@ -202,12 +212,17 @@ abstract class _MajorsPublic extends MajorsPublic {
   factory _MajorsPublic.fromJson(Map<String, dynamic> json) =
       _$MajorsPublicImpl.fromJson;
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;
+
+  /// Education Type Id
   @override
   @JsonKey(name: 'education_type_id')
   int get educationTypeId;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   String get name;

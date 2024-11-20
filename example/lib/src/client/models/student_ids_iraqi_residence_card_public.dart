@@ -13,30 +13,23 @@ class StudentIdsIraqiResidenceCardPublic
 
   @JsonSerializable(converters: convertors)
   const factory StudentIdsIraqiResidenceCardPublic({
-    @JsonKey(name: 'home_address')
-
     /// Home Address
-    required String? homeAddress,
-    @JsonKey(name: 'street_address')
+    @JsonKey(name: 'home_address') required String? homeAddress,
 
     /// Street Address
-    required String? streetAddress,
-    @JsonKey(name: 'quarter_address')
+    @JsonKey(name: 'street_address') required String? streetAddress,
 
     /// Quarter Address
-    required String? quarterAddress,
-    @JsonKey(name: 'form_number')
+    @JsonKey(name: 'quarter_address') required String? quarterAddress,
 
     /// Form Number
-    required String? formNumber,
-    @JsonKey(name: 'sequence')
+    @JsonKey(name: 'form_number') required String? formNumber,
 
     /// Sequence
-    required String? sequence,
-    @JsonKey(name: 'date_of_issue')
+    @JsonKey(name: 'sequence') required String? sequence,
 
     /// Date Of Issue
-    required DateTime? dateOfIssue,
+    @JsonKey(name: 'date_of_issue') required DateTime? dateOfIssue,
     @JsonKey(name: 'information_bureau')
     required InformationBureausPublic? informationBureau,
     @JsonKey(name: 'front_image') required FilePublic? frontImage,

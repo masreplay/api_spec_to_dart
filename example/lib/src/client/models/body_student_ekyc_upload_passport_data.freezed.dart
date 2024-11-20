@@ -21,10 +21,15 @@ BodyStudentEkycUploadPassportData _$BodyStudentEkycUploadPassportDataFromJson(
 
 /// @nodoc
 mixin _$BodyStudentEkycUploadPassportData {
+  /// Data
   @JsonKey(name: 'data')
   String get data => throw _privateConstructorUsedError;
+
+  /// File
   @JsonKey(name: 'file')
   File get file => throw _privateConstructorUsedError;
+
+  /// File Raw
   @JsonKey(name: 'file_raw')
   File get fileRaw => throw _privateConstructorUsedError;
 
@@ -155,12 +160,17 @@ class _$BodyStudentEkycUploadPassportDataImpl
           Map<String, dynamic> json) =>
       _$$BodyStudentEkycUploadPassportDataImplFromJson(json);
 
+  /// Data
   @override
   @JsonKey(name: 'data')
   final String data;
+
+  /// File
   @override
   @JsonKey(name: 'file')
   final File file;
+
+  /// File Raw
   @override
   @JsonKey(name: 'file_raw')
   final File fileRaw;
@@ -215,12 +225,17 @@ abstract class _BodyStudentEkycUploadPassportData
           Map<String, dynamic> json) =
       _$BodyStudentEkycUploadPassportDataImpl.fromJson;
 
+  /// Data
   @override
   @JsonKey(name: 'data')
   String get data;
+
+  /// File
   @override
   @JsonKey(name: 'file')
   File get file;
+
+  /// File Raw
   @override
   @JsonKey(name: 'file_raw')
   File get fileRaw;

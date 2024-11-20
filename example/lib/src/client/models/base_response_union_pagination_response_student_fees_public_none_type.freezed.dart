@@ -23,6 +23,7 @@ BaseResponseUnionPaginationResponseStudentFeesPublicNoneType
 
 /// @nodoc
 mixin _$BaseResponseUnionPaginationResponseStudentFeesPublicNoneType {
+  /// Message
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
   @JsonKey(name: 'data')
@@ -185,6 +186,7 @@ class _$BaseResponseUnionPaginationResponseStudentFeesPublicNoneTypeImpl
       _$$BaseResponseUnionPaginationResponseStudentFeesPublicNoneTypeImplFromJson(
           json);
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   final String? message;
@@ -246,6 +248,7 @@ abstract class _BaseResponseUnionPaginationResponseStudentFeesPublicNoneType
       _$BaseResponseUnionPaginationResponseStudentFeesPublicNoneTypeImpl
       .fromJson;
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   String? get message;

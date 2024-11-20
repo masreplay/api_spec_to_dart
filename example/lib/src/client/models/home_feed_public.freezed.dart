@@ -20,8 +20,11 @@ HomeFeedPublic _$HomeFeedPublicFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$HomeFeedPublic {
+  /// Type
   @JsonKey(name: 'type')
   String get type => throw _privateConstructorUsedError;
+
+  /// Sections
   @JsonKey(name: 'sections')
   List<dynamic> get sections => throw _privateConstructorUsedError;
 
@@ -132,10 +135,15 @@ class _$HomeFeedPublicImpl extends _HomeFeedPublic {
   factory _$HomeFeedPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$HomeFeedPublicImplFromJson(json);
 
+  /// Type
   @override
   @JsonKey(name: 'type')
   final String type;
+
+  /// Sections
   final List<dynamic> _sections;
+
+  /// Sections
   @override
   @JsonKey(name: 'sections')
   List<dynamic> get sections {
@@ -190,9 +198,12 @@ abstract class _HomeFeedPublic extends HomeFeedPublic {
   factory _HomeFeedPublic.fromJson(Map<String, dynamic> json) =
       _$HomeFeedPublicImpl.fromJson;
 
+  /// Type
   @override
   @JsonKey(name: 'type')
   String get type;
+
+  /// Sections
   @override
   @JsonKey(name: 'sections')
   List<dynamic> get sections;

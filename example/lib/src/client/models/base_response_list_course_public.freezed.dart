@@ -21,8 +21,11 @@ BaseResponseListCoursePublic _$BaseResponseListCoursePublicFromJson(
 
 /// @nodoc
 mixin _$BaseResponseListCoursePublic {
+  /// Message
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
+
+  /// Data
   @JsonKey(name: 'data')
   List<dynamic> get data => throw _privateConstructorUsedError;
 
@@ -140,10 +143,15 @@ class _$BaseResponseListCoursePublicImpl extends _BaseResponseListCoursePublic {
           Map<String, dynamic> json) =>
       _$$BaseResponseListCoursePublicImplFromJson(json);
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   final String? message;
+
+  /// Data
   final List<dynamic> _data;
+
+  /// Data
   @override
   @JsonKey(name: 'data')
   List<dynamic> get data {
@@ -200,9 +208,12 @@ abstract class _BaseResponseListCoursePublic
   factory _BaseResponseListCoursePublic.fromJson(Map<String, dynamic> json) =
       _$BaseResponseListCoursePublicImpl.fromJson;
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   String? get message;
+
+  /// Data
   @override
   @JsonKey(name: 'data')
   List<dynamic> get data;

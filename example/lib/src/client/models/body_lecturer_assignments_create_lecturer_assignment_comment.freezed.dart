@@ -22,6 +22,7 @@ BodyLecturerAssignmentsCreateLecturerAssignmentComment
 
 /// @nodoc
 mixin _$BodyLecturerAssignmentsCreateLecturerAssignmentComment {
+  /// Content
   @JsonKey(name: 'content')
   String get content => throw _privateConstructorUsedError;
 
@@ -140,6 +141,7 @@ class _$BodyLecturerAssignmentsCreateLecturerAssignmentCommentImpl
       _$$BodyLecturerAssignmentsCreateLecturerAssignmentCommentImplFromJson(
           json);
 
+  /// Content
   @override
   @JsonKey(name: 'content')
   final String content;
@@ -193,6 +195,7 @@ abstract class _BodyLecturerAssignmentsCreateLecturerAssignmentComment
           Map<String, dynamic> json) =
       _$BodyLecturerAssignmentsCreateLecturerAssignmentCommentImpl.fromJson;
 
+  /// Content
   @override
   @JsonKey(name: 'content')
   String get content;

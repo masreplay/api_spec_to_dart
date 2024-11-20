@@ -21,6 +21,7 @@ BaseResponsePaymentInfoResponse _$BaseResponsePaymentInfoResponseFromJson(
 
 /// @nodoc
 mixin _$BaseResponsePaymentInfoResponse {
+  /// Message
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
   @JsonKey(name: 'data')
@@ -155,6 +156,7 @@ class _$BaseResponsePaymentInfoResponseImpl
           Map<String, dynamic> json) =>
       _$$BaseResponsePaymentInfoResponseImplFromJson(json);
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   final String? message;
@@ -209,6 +211,7 @@ abstract class _BaseResponsePaymentInfoResponse
   factory _BaseResponsePaymentInfoResponse.fromJson(Map<String, dynamic> json) =
       _$BaseResponsePaymentInfoResponseImpl.fromJson;
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   String? get message;

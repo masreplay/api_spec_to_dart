@@ -21,16 +21,27 @@ StudentIdsNationalCardUpdatePublic _$StudentIdsNationalCardUpdatePublicFromJson(
 
 /// @nodoc
 mixin _$StudentIdsNationalCardUpdatePublic {
+  /// National Card Number
   @JsonKey(name: 'national_card_number')
   String get nationalCardNumber => throw _privateConstructorUsedError;
+
+  /// National Card Serial Number
   @JsonKey(name: 'national_card_serial_number')
   String get nationalCardSerialNumber => throw _privateConstructorUsedError;
+
+  /// National Card Issuing Authority
   @JsonKey(name: 'national_card_issuing_authority')
   String get nationalCardIssuingAuthority => throw _privateConstructorUsedError;
+
+  /// National Card Date Of Issue
   @JsonKey(name: 'national_card_date_of_issue')
   DateTime get nationalCardDateOfIssue => throw _privateConstructorUsedError;
+
+  /// National Card Date Of Expiry
   @JsonKey(name: 'national_card_date_of_expiry')
   DateTime get nationalCardDateOfExpiry => throw _privateConstructorUsedError;
+
+  /// National Card Family Number
   @JsonKey(name: 'national_card_family_number')
   String get nationalCardFamilyNumber => throw _privateConstructorUsedError;
 
@@ -216,21 +227,32 @@ class _$StudentIdsNationalCardUpdatePublicImpl
           Map<String, dynamic> json) =>
       _$$StudentIdsNationalCardUpdatePublicImplFromJson(json);
 
+  /// National Card Number
   @override
   @JsonKey(name: 'national_card_number')
   final String nationalCardNumber;
+
+  /// National Card Serial Number
   @override
   @JsonKey(name: 'national_card_serial_number')
   final String nationalCardSerialNumber;
+
+  /// National Card Issuing Authority
   @override
   @JsonKey(name: 'national_card_issuing_authority')
   final String nationalCardIssuingAuthority;
+
+  /// National Card Date Of Issue
   @override
   @JsonKey(name: 'national_card_date_of_issue')
   final DateTime nationalCardDateOfIssue;
+
+  /// National Card Date Of Expiry
   @override
   @JsonKey(name: 'national_card_date_of_expiry')
   final DateTime nationalCardDateOfExpiry;
+
+  /// National Card Family Number
   @override
   @JsonKey(name: 'national_card_family_number')
   final String nationalCardFamilyNumber;
@@ -316,21 +338,32 @@ abstract class _StudentIdsNationalCardUpdatePublic
           Map<String, dynamic> json) =
       _$StudentIdsNationalCardUpdatePublicImpl.fromJson;
 
+  /// National Card Number
   @override
   @JsonKey(name: 'national_card_number')
   String get nationalCardNumber;
+
+  /// National Card Serial Number
   @override
   @JsonKey(name: 'national_card_serial_number')
   String get nationalCardSerialNumber;
+
+  /// National Card Issuing Authority
   @override
   @JsonKey(name: 'national_card_issuing_authority')
   String get nationalCardIssuingAuthority;
+
+  /// National Card Date Of Issue
   @override
   @JsonKey(name: 'national_card_date_of_issue')
   DateTime get nationalCardDateOfIssue;
+
+  /// National Card Date Of Expiry
   @override
   @JsonKey(name: 'national_card_date_of_expiry')
   DateTime get nationalCardDateOfExpiry;
+
+  /// National Card Family Number
   @override
   @JsonKey(name: 'national_card_family_number')
   String get nationalCardFamilyNumber;

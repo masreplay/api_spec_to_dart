@@ -12,21 +12,20 @@ class StudentIdsIraqiNationalityCertificateUpdatePublic
 
   @JsonSerializable(converters: convertors)
   const factory StudentIdsIraqiNationalityCertificateUpdatePublic({
-    @JsonKey(name: 'iraqi_nationality_certificate_number')
-
     /// Iraqi Nationality Certificate Number
+    @JsonKey(name: 'iraqi_nationality_certificate_number')
     required String iraqiNationalityCertificateNumber,
-    @JsonKey(name: 'iraqi_nationality_certificate_wallet_number')
 
     /// Iraqi Nationality Certificate Wallet Number
+    @JsonKey(name: 'iraqi_nationality_certificate_wallet_number')
     required String iraqiNationalityCertificateWalletNumber,
-    @JsonKey(name: 'iraqi_nationality_certificate_date_of_issue')
 
     /// Iraqi Nationality Certificate Date Of Issue
+    @JsonKey(name: 'iraqi_nationality_certificate_date_of_issue')
     required DateTime iraqiNationalityCertificateDateOfIssue,
-    @JsonKey(name: 'iraqi_nationality_certificate_issuing_authority')
 
     /// Iraqi Nationality Certificate Issuing Authority
+    @JsonKey(name: 'iraqi_nationality_certificate_issuing_authority')
     required String iraqiNationalityCertificateIssuingAuthority,
   }) = _StudentIdsIraqiNationalityCertificateUpdatePublic;
 

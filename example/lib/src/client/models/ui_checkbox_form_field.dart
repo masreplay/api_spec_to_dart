@@ -11,45 +11,32 @@ class UICheckboxFormField with _$UICheckboxFormField {
 
   @JsonSerializable(converters: convertors)
   const factory UICheckboxFormField({
-    @JsonKey(name: 'key')
-
     /// Key
-    required String key,
-    @JsonKey(name: 'name')
+    @JsonKey(name: 'key') required String key,
 
     /// Name
-    required String name,
-    @JsonKey(name: 'hint')
+    @JsonKey(name: 'name') required String name,
 
     /// Hint
-    required String? hint,
-    @JsonKey(name: 'is_required')
+    @JsonKey(name: 'hint') required String? hint,
 
     /// Is Required
-    required bool isRequired,
-    @Default(false)
-    @JsonKey(name: 'read_only')
+    @JsonKey(name: 'is_required') required bool isRequired,
 
     /// Read Only
-    required bool readOnly,
-    @JsonKey(name: 'doc')
+    @Default(false) @JsonKey(name: 'read_only') required bool readOnly,
 
     /// Doc
-    required String? doc,
-    @Default(checkbox)
-    @JsonKey(name: 'type')
+    @JsonKey(name: 'doc') required String? doc,
 
     /// Type
-    required String type,
-    @Default(false)
-    @JsonKey(name: 'default_value')
+    @Default(checkbox) @JsonKey(name: 'type') required String type,
 
     /// Default Value
-    required bool defaultValue,
-    @JsonKey(name: 'example')
+    @Default(false) @JsonKey(name: 'default_value') required bool defaultValue,
 
     /// Example
-    required bool example,
+    @JsonKey(name: 'example') required bool example,
   }) = _UICheckboxFormField;
 
   factory UICheckboxFormField.fromJson(Map<String, dynamic> json) =>

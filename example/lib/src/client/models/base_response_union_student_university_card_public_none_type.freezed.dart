@@ -22,6 +22,7 @@ BaseResponseUnionStudentUniversityCardPublicNoneType
 
 /// @nodoc
 mixin _$BaseResponseUnionStudentUniversityCardPublicNoneType {
+  /// Message
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
   @JsonKey(name: 'data')
@@ -174,6 +175,7 @@ class _$BaseResponseUnionStudentUniversityCardPublicNoneTypeImpl
           Map<String, dynamic> json) =>
       _$$BaseResponseUnionStudentUniversityCardPublicNoneTypeImplFromJson(json);
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   final String? message;
@@ -233,6 +235,7 @@ abstract class _BaseResponseUnionStudentUniversityCardPublicNoneType
           Map<String, dynamic> json) =
       _$BaseResponseUnionStudentUniversityCardPublicNoneTypeImpl.fromJson;
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   String? get message;

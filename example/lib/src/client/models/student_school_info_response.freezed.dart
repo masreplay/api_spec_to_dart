@@ -21,40 +21,73 @@ StudentSchoolInfoResponse _$StudentSchoolInfoResponseFromJson(
 
 /// @nodoc
 mixin _$StudentSchoolInfoResponse {
+  /// School Name
   @JsonKey(name: 'school_name')
   String? get schoolName => throw _privateConstructorUsedError;
+
+  /// Exam Number
   @JsonKey(name: 'exam_number')
   String? get examNumber => throw _privateConstructorUsedError;
+
+  /// Study Year Id
   @JsonKey(name: 'study_year_id')
   int? get studyYearId => throw _privateConstructorUsedError;
+
+  /// Governorate Id
   @JsonKey(name: 'governorate_id')
   int? get governorateId => throw _privateConstructorUsedError;
+
+  /// Directorate Name
   @JsonKey(name: 'directorate_name')
   String? get directorateName => throw _privateConstructorUsedError;
+
+  /// Specialization Id
   @JsonKey(name: 'specialization_id')
   int? get specializationId => throw _privateConstructorUsedError;
+
+  /// Average
   @JsonKey(name: 'average')
   num? get average => throw _privateConstructorUsedError;
+
+  /// Total
   @JsonKey(name: 'total')
   num? get total => throw _privateConstructorUsedError;
+
+  /// Round
   @JsonKey(name: 'round')
   int? get round => throw _privateConstructorUsedError;
+
+  /// Number Of Failure Years
   @JsonKey(name: 'number_of_failure_years')
   int? get numberOfFailureYears => throw _privateConstructorUsedError;
+
+  /// Has The Certificate Been Verified
   @JsonKey(name: 'has_the_certificate_been_verified')
   bool get hasTheCertificateBeenVerified => throw _privateConstructorUsedError;
+
+  /// Notes
   @JsonKey(name: 'notes')
   String? get notes => throw _privateConstructorUsedError;
+
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+
+  /// University Id
   @JsonKey(name: 'university_id')
   int? get universityId => throw _privateConstructorUsedError;
+
+  /// Is Iraqi
   @JsonKey(name: 'is_iraqi')
   bool? get isIraqi => throw _privateConstructorUsedError;
+
+  /// Has National Card
   @JsonKey(name: 'has_national_card')
   bool? get hasNationalCard => throw _privateConstructorUsedError;
   @JsonKey(name: 'study_year')
   StudyYearPublic? get studyYear => throw _privateConstructorUsedError;
+
+  /// Governorate
   @JsonKey(name: 'governorate')
   StringGovernoratePublic? get governorate =>
       throw _privateConstructorUsedError;
@@ -465,57 +498,90 @@ class _$StudentSchoolInfoResponseImpl extends _StudentSchoolInfoResponse {
   factory _$StudentSchoolInfoResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$StudentSchoolInfoResponseImplFromJson(json);
 
+  /// School Name
   @override
   @JsonKey(name: 'school_name')
   final String? schoolName;
+
+  /// Exam Number
   @override
   @JsonKey(name: 'exam_number')
   final String? examNumber;
+
+  /// Study Year Id
   @override
   @JsonKey(name: 'study_year_id')
   final int? studyYearId;
+
+  /// Governorate Id
   @override
   @JsonKey(name: 'governorate_id')
   final int? governorateId;
+
+  /// Directorate Name
   @override
   @JsonKey(name: 'directorate_name')
   final String? directorateName;
+
+  /// Specialization Id
   @override
   @JsonKey(name: 'specialization_id')
   final int? specializationId;
+
+  /// Average
   @override
   @JsonKey(name: 'average')
   final num? average;
+
+  /// Total
   @override
   @JsonKey(name: 'total')
   final num? total;
+
+  /// Round
   @override
   @JsonKey(name: 'round')
   final int? round;
+
+  /// Number Of Failure Years
   @override
   @JsonKey(name: 'number_of_failure_years')
   final int? numberOfFailureYears;
+
+  /// Has The Certificate Been Verified
   @override
   @JsonKey(name: 'has_the_certificate_been_verified')
   final bool hasTheCertificateBeenVerified;
+
+  /// Notes
   @override
   @JsonKey(name: 'notes')
   final String? notes;
+
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
+
+  /// University Id
   @override
   @JsonKey(name: 'university_id')
   final int? universityId;
+
+  /// Is Iraqi
   @override
   @JsonKey(name: 'is_iraqi')
   final bool? isIraqi;
+
+  /// Has National Card
   @override
   @JsonKey(name: 'has_national_card')
   final bool? hasNationalCard;
   @override
   @JsonKey(name: 'study_year')
   final StudyYearPublic? studyYear;
+
+  /// Governorate
   @override
   @JsonKey(name: 'governorate')
   final StringGovernoratePublic? governorate;
@@ -649,57 +715,90 @@ abstract class _StudentSchoolInfoResponse extends StudentSchoolInfoResponse {
   factory _StudentSchoolInfoResponse.fromJson(Map<String, dynamic> json) =
       _$StudentSchoolInfoResponseImpl.fromJson;
 
+  /// School Name
   @override
   @JsonKey(name: 'school_name')
   String? get schoolName;
+
+  /// Exam Number
   @override
   @JsonKey(name: 'exam_number')
   String? get examNumber;
+
+  /// Study Year Id
   @override
   @JsonKey(name: 'study_year_id')
   int? get studyYearId;
+
+  /// Governorate Id
   @override
   @JsonKey(name: 'governorate_id')
   int? get governorateId;
+
+  /// Directorate Name
   @override
   @JsonKey(name: 'directorate_name')
   String? get directorateName;
+
+  /// Specialization Id
   @override
   @JsonKey(name: 'specialization_id')
   int? get specializationId;
+
+  /// Average
   @override
   @JsonKey(name: 'average')
   num? get average;
+
+  /// Total
   @override
   @JsonKey(name: 'total')
   num? get total;
+
+  /// Round
   @override
   @JsonKey(name: 'round')
   int? get round;
+
+  /// Number Of Failure Years
   @override
   @JsonKey(name: 'number_of_failure_years')
   int? get numberOfFailureYears;
+
+  /// Has The Certificate Been Verified
   @override
   @JsonKey(name: 'has_the_certificate_been_verified')
   bool get hasTheCertificateBeenVerified;
+
+  /// Notes
   @override
   @JsonKey(name: 'notes')
   String? get notes;
+
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;
+
+  /// University Id
   @override
   @JsonKey(name: 'university_id')
   int? get universityId;
+
+  /// Is Iraqi
   @override
   @JsonKey(name: 'is_iraqi')
   bool? get isIraqi;
+
+  /// Has National Card
   @override
   @JsonKey(name: 'has_national_card')
   bool? get hasNationalCard;
   @override
   @JsonKey(name: 'study_year')
   StudyYearPublic? get studyYear;
+
+  /// Governorate
   @override
   @JsonKey(name: 'governorate')
   StringGovernoratePublic? get governorate;

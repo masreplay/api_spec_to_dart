@@ -13,10 +13,8 @@ class BaseResponseStudentProfileInfoResponse
 
   @JsonSerializable(converters: convertors)
   const factory BaseResponseStudentProfileInfoResponse({
-    @JsonKey(name: 'message')
-
     /// Message
-    required String? message,
+    @JsonKey(name: 'message') required String? message,
     @JsonKey(name: 'data') required StudentProfileInfoResponse data,
   }) = _BaseResponseStudentProfileInfoResponse;
 

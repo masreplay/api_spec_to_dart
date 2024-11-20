@@ -21,14 +21,23 @@ StudentIdsIdentificationCardPublic _$StudentIdsIdentificationCardPublicFromJson(
 
 /// @nodoc
 mixin _$StudentIdsIdentificationCardPublic {
+  /// Number
   @JsonKey(name: 'number')
   String? get number => throw _privateConstructorUsedError;
+
+  /// Record
   @JsonKey(name: 'record')
   String? get record => throw _privateConstructorUsedError;
+
+  /// Page
   @JsonKey(name: 'page')
   String? get page => throw _privateConstructorUsedError;
+
+  /// Issuing Authority
   @JsonKey(name: 'issuing_authority')
   String? get issuingAuthority => throw _privateConstructorUsedError;
+
+  /// Date Of Issue
   @JsonKey(name: 'date_of_issue')
   DateTime? get dateOfIssue => throw _privateConstructorUsedError;
   @JsonKey(name: 'front_image')
@@ -252,18 +261,27 @@ class _$StudentIdsIdentificationCardPublicImpl
           Map<String, dynamic> json) =>
       _$$StudentIdsIdentificationCardPublicImplFromJson(json);
 
+  /// Number
   @override
   @JsonKey(name: 'number')
   final String? number;
+
+  /// Record
   @override
   @JsonKey(name: 'record')
   final String? record;
+
+  /// Page
   @override
   @JsonKey(name: 'page')
   final String? page;
+
+  /// Issuing Authority
   @override
   @JsonKey(name: 'issuing_authority')
   final String? issuingAuthority;
+
+  /// Date Of Issue
   @override
   @JsonKey(name: 'date_of_issue')
   final DateTime? dateOfIssue;
@@ -338,18 +356,27 @@ abstract class _StudentIdsIdentificationCardPublic
           Map<String, dynamic> json) =
       _$StudentIdsIdentificationCardPublicImpl.fromJson;
 
+  /// Number
   @override
   @JsonKey(name: 'number')
   String? get number;
+
+  /// Record
   @override
   @JsonKey(name: 'record')
   String? get record;
+
+  /// Page
   @override
   @JsonKey(name: 'page')
   String? get page;
+
+  /// Issuing Authority
   @override
   @JsonKey(name: 'issuing_authority')
   String? get issuingAuthority;
+
+  /// Date Of Issue
   @override
   @JsonKey(name: 'date_of_issue')
   DateTime? get dateOfIssue;

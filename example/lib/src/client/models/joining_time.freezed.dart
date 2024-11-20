@@ -20,6 +20,7 @@ JoiningTime _$JoiningTimeFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$JoiningTime {
+  /// Joining Time
   @JsonKey(name: 'joining_time')
   DateTime? get joiningTime => throw _privateConstructorUsedError;
 
@@ -114,6 +115,7 @@ class _$JoiningTimeImpl extends _JoiningTime {
   factory _$JoiningTimeImpl.fromJson(Map<String, dynamic> json) =>
       _$$JoiningTimeImplFromJson(json);
 
+  /// Joining Time
   @override
   @JsonKey(name: 'joining_time')
   final DateTime? joiningTime;
@@ -161,6 +163,7 @@ abstract class _JoiningTime extends JoiningTime {
   factory _JoiningTime.fromJson(Map<String, dynamic> json) =
       _$JoiningTimeImpl.fromJson;
 
+  /// Joining Time
   @override
   @JsonKey(name: 'joining_time')
   DateTime? get joiningTime;

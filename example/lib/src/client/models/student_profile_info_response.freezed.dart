@@ -21,18 +21,31 @@ StudentProfileInfoResponse _$StudentProfileInfoResponseFromJson(
 
 /// @nodoc
 mixin _$StudentProfileInfoResponse {
+  /// First Name
   @JsonKey(name: 'first_name')
   String? get firstName => throw _privateConstructorUsedError;
+
+  /// Second Name
   @JsonKey(name: 'second_name')
   String? get secondName => throw _privateConstructorUsedError;
+
+  /// Third Name
   @JsonKey(name: 'third_name')
   String? get thirdName => throw _privateConstructorUsedError;
+
+  /// Fourth Name
   @JsonKey(name: 'fourth_name')
   String? get fourthName => throw _privateConstructorUsedError;
+
+  /// Email
   @JsonKey(name: 'email')
   String? get email => throw _privateConstructorUsedError;
+
+  /// Phone Number
   @JsonKey(name: 'phone_number')
   String? get phoneNumber => throw _privateConstructorUsedError;
+
+  /// University Number
   @JsonKey(name: 'university_number')
   int? get universityNumber => throw _privateConstructorUsedError;
   @JsonKey(name: 'profile_image')
@@ -247,24 +260,37 @@ class _$StudentProfileInfoResponseImpl extends _StudentProfileInfoResponse {
           Map<String, dynamic> json) =>
       _$$StudentProfileInfoResponseImplFromJson(json);
 
+  /// First Name
   @override
   @JsonKey(name: 'first_name')
   final String? firstName;
+
+  /// Second Name
   @override
   @JsonKey(name: 'second_name')
   final String? secondName;
+
+  /// Third Name
   @override
   @JsonKey(name: 'third_name')
   final String? thirdName;
+
+  /// Fourth Name
   @override
   @JsonKey(name: 'fourth_name')
   final String? fourthName;
+
+  /// Email
   @override
   @JsonKey(name: 'email')
   final String? email;
+
+  /// Phone Number
   @override
   @JsonKey(name: 'phone_number')
   final String? phoneNumber;
+
+  /// University Number
   @override
   @JsonKey(name: 'university_number')
   final int? universityNumber;
@@ -338,24 +364,37 @@ abstract class _StudentProfileInfoResponse extends StudentProfileInfoResponse {
   factory _StudentProfileInfoResponse.fromJson(Map<String, dynamic> json) =
       _$StudentProfileInfoResponseImpl.fromJson;
 
+  /// First Name
   @override
   @JsonKey(name: 'first_name')
   String? get firstName;
+
+  /// Second Name
   @override
   @JsonKey(name: 'second_name')
   String? get secondName;
+
+  /// Third Name
   @override
   @JsonKey(name: 'third_name')
   String? get thirdName;
+
+  /// Fourth Name
   @override
   @JsonKey(name: 'fourth_name')
   String? get fourthName;
+
+  /// Email
   @override
   @JsonKey(name: 'email')
   String? get email;
+
+  /// Phone Number
   @override
   @JsonKey(name: 'phone_number')
   String? get phoneNumber;
+
+  /// University Number
   @override
   @JsonKey(name: 'university_number')
   int? get universityNumber;

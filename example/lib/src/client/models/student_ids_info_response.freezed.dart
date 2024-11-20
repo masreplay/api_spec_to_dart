@@ -21,8 +21,11 @@ StudentIdsInfoResponse _$StudentIdsInfoResponseFromJson(
 
 /// @nodoc
 mixin _$StudentIdsInfoResponse {
+  /// Is Iraqi
   @JsonKey(name: 'is_iraqi')
   bool? get isIraqi => throw _privateConstructorUsedError;
+
+  /// Have National Card
   @JsonKey(name: 'have_national_card')
   bool? get haveNationalCard => throw _privateConstructorUsedError;
   @JsonKey(name: 'national_card')
@@ -296,9 +299,12 @@ class _$StudentIdsInfoResponseImpl extends _StudentIdsInfoResponse {
   factory _$StudentIdsInfoResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$StudentIdsInfoResponseImplFromJson(json);
 
+  /// Is Iraqi
   @override
   @JsonKey(name: 'is_iraqi')
   final bool? isIraqi;
+
+  /// Have National Card
   @override
   @JsonKey(name: 'have_national_card')
   final bool? haveNationalCard;
@@ -396,9 +402,12 @@ abstract class _StudentIdsInfoResponse extends StudentIdsInfoResponse {
   factory _StudentIdsInfoResponse.fromJson(Map<String, dynamic> json) =
       _$StudentIdsInfoResponseImpl.fromJson;
 
+  /// Is Iraqi
   @override
   @JsonKey(name: 'is_iraqi')
   bool? get isIraqi;
+
+  /// Have National Card
   @override
   @JsonKey(name: 'have_national_card')
   bool? get haveNationalCard;

@@ -21,14 +21,23 @@ HomeFeedSummerySectionDataPublic _$HomeFeedSummerySectionDataPublicFromJson(
 
 /// @nodoc
 mixin _$HomeFeedSummerySectionDataPublic {
+  /// Courses Count
   @JsonKey(name: 'courses_count')
   int get coursesCount => throw _privateConstructorUsedError;
+
+  /// Courses Count Formatted
   @JsonKey(name: 'courses_count_formatted')
   String get coursesCountFormatted => throw _privateConstructorUsedError;
+
+  /// Courses Completed Units Count
   @JsonKey(name: 'courses_completed_units_count')
   int get coursesCompletedUnitsCount => throw _privateConstructorUsedError;
+
+  /// Courses Units Count
   @JsonKey(name: 'courses_units_count')
   int get coursesUnitsCount => throw _privateConstructorUsedError;
+
+  /// Courses Units Formatted
   @JsonKey(name: 'courses_units_formatted')
   String get coursesUnitsFormatted => throw _privateConstructorUsedError;
 
@@ -190,18 +199,27 @@ class _$HomeFeedSummerySectionDataPublicImpl
           Map<String, dynamic> json) =>
       _$$HomeFeedSummerySectionDataPublicImplFromJson(json);
 
+  /// Courses Count
   @override
   @JsonKey(name: 'courses_count')
   final int coursesCount;
+
+  /// Courses Count Formatted
   @override
   @JsonKey(name: 'courses_count_formatted')
   final String coursesCountFormatted;
+
+  /// Courses Completed Units Count
   @override
   @JsonKey(name: 'courses_completed_units_count')
   final int coursesCompletedUnitsCount;
+
+  /// Courses Units Count
   @override
   @JsonKey(name: 'courses_units_count')
   final int coursesUnitsCount;
+
+  /// Courses Units Formatted
   @override
   @JsonKey(name: 'courses_units_formatted')
   final String coursesUnitsFormatted;
@@ -277,18 +295,27 @@ abstract class _HomeFeedSummerySectionDataPublic
           Map<String, dynamic> json) =
       _$HomeFeedSummerySectionDataPublicImpl.fromJson;
 
+  /// Courses Count
   @override
   @JsonKey(name: 'courses_count')
   int get coursesCount;
+
+  /// Courses Count Formatted
   @override
   @JsonKey(name: 'courses_count_formatted')
   String get coursesCountFormatted;
+
+  /// Courses Completed Units Count
   @override
   @JsonKey(name: 'courses_completed_units_count')
   int get coursesCompletedUnitsCount;
+
+  /// Courses Units Count
   @override
   @JsonKey(name: 'courses_units_count')
   int get coursesUnitsCount;
+
+  /// Courses Units Formatted
   @override
   @JsonKey(name: 'courses_units_formatted')
   String get coursesUnitsFormatted;

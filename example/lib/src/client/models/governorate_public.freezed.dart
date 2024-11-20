@@ -20,10 +20,15 @@ GovernoratePublic _$GovernoratePublicFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$GovernoratePublic {
+  /// Country Id
   @JsonKey(name: 'country_id')
   int get countryId => throw _privateConstructorUsedError;
+
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+
+  /// Name
   @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
 
@@ -146,12 +151,17 @@ class _$GovernoratePublicImpl extends _GovernoratePublic {
   factory _$GovernoratePublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$GovernoratePublicImplFromJson(json);
 
+  /// Country Id
   @override
   @JsonKey(name: 'country_id')
   final int countryId;
+
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   final String name;
@@ -204,12 +214,17 @@ abstract class _GovernoratePublic extends GovernoratePublic {
   factory _GovernoratePublic.fromJson(Map<String, dynamic> json) =
       _$GovernoratePublicImpl.fromJson;
 
+  /// Country Id
   @override
   @JsonKey(name: 'country_id')
   int get countryId;
+
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   String get name;

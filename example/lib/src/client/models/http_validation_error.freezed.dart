@@ -20,6 +20,7 @@ HttpValidationError _$HttpValidationErrorFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$HttpValidationError {
+  /// Detail
   @JsonKey(name: 'detail')
   List<dynamic> get detail => throw _privateConstructorUsedError;
 
@@ -115,7 +116,10 @@ class _$HttpValidationErrorImpl extends _HttpValidationError {
   factory _$HttpValidationErrorImpl.fromJson(Map<String, dynamic> json) =>
       _$$HttpValidationErrorImplFromJson(json);
 
+  /// Detail
   final List<dynamic> _detail;
+
+  /// Detail
   @override
   @JsonKey(name: 'detail')
   List<dynamic> get detail {
@@ -168,6 +172,7 @@ abstract class _HttpValidationError extends HttpValidationError {
   factory _HttpValidationError.fromJson(Map<String, dynamic> json) =
       _$HttpValidationErrorImpl.fromJson;
 
+  /// Detail
   @override
   @JsonKey(name: 'detail')
   List<dynamic> get detail;

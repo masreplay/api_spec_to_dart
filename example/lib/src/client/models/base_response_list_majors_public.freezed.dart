@@ -21,8 +21,11 @@ BaseResponseListMajorsPublic _$BaseResponseListMajorsPublicFromJson(
 
 /// @nodoc
 mixin _$BaseResponseListMajorsPublic {
+  /// Message
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
+
+  /// Data
   @JsonKey(name: 'data')
   List<dynamic> get data => throw _privateConstructorUsedError;
 
@@ -140,10 +143,15 @@ class _$BaseResponseListMajorsPublicImpl extends _BaseResponseListMajorsPublic {
           Map<String, dynamic> json) =>
       _$$BaseResponseListMajorsPublicImplFromJson(json);
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   final String? message;
+
+  /// Data
   final List<dynamic> _data;
+
+  /// Data
   @override
   @JsonKey(name: 'data')
   List<dynamic> get data {
@@ -200,9 +208,12 @@ abstract class _BaseResponseListMajorsPublic
   factory _BaseResponseListMajorsPublic.fromJson(Map<String, dynamic> json) =
       _$BaseResponseListMajorsPublicImpl.fromJson;
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   String? get message;
+
+  /// Data
   @override
   @JsonKey(name: 'data')
   List<dynamic> get data;

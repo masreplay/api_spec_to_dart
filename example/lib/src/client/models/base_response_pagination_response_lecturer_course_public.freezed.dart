@@ -22,6 +22,7 @@ BaseResponsePaginationResponseLecturerCoursePublic
 
 /// @nodoc
 mixin _$BaseResponsePaginationResponseLecturerCoursePublic {
+  /// Message
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
   @JsonKey(name: 'data')
@@ -172,6 +173,7 @@ class _$BaseResponsePaginationResponseLecturerCoursePublicImpl
           Map<String, dynamic> json) =>
       _$$BaseResponsePaginationResponseLecturerCoursePublicImplFromJson(json);
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   final String? message;
@@ -230,6 +232,7 @@ abstract class _BaseResponsePaginationResponseLecturerCoursePublic
           Map<String, dynamic> json) =
       _$BaseResponsePaginationResponseLecturerCoursePublicImpl.fromJson;
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   String? get message;

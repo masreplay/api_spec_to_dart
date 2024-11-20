@@ -21,6 +21,7 @@ LectureHomeworksCalenderResponse _$LectureHomeworksCalenderResponseFromJson(
 
 /// @nodoc
 mixin _$LectureHomeworksCalenderResponse {
+  /// Events
   @JsonKey(name: 'events')
   List<dynamic> get events => throw _privateConstructorUsedError;
 
@@ -124,7 +125,10 @@ class _$LectureHomeworksCalenderResponseImpl
           Map<String, dynamic> json) =>
       _$$LectureHomeworksCalenderResponseImplFromJson(json);
 
+  /// Events
   final List<dynamic> _events;
+
+  /// Events
   @override
   @JsonKey(name: 'events')
   List<dynamic> get events {
@@ -180,6 +184,7 @@ abstract class _LectureHomeworksCalenderResponse
           Map<String, dynamic> json) =
       _$LectureHomeworksCalenderResponseImpl.fromJson;
 
+  /// Events
   @override
   @JsonKey(name: 'events')
   List<dynamic> get events;

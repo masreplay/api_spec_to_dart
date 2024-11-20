@@ -20,8 +20,11 @@ BaseResponseBool _$BaseResponseBoolFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$BaseResponseBool {
+  /// Message
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
+
+  /// Data
   @JsonKey(name: 'data')
   bool get data => throw _privateConstructorUsedError;
 
@@ -131,9 +134,12 @@ class _$BaseResponseBoolImpl extends _BaseResponseBool {
   factory _$BaseResponseBoolImpl.fromJson(Map<String, dynamic> json) =>
       _$$BaseResponseBoolImplFromJson(json);
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   final String? message;
+
+  /// Data
   @override
   @JsonKey(name: 'data')
   final bool data;
@@ -183,9 +189,12 @@ abstract class _BaseResponseBool extends BaseResponseBool {
   factory _BaseResponseBool.fromJson(Map<String, dynamic> json) =
       _$BaseResponseBoolImpl.fromJson;
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   String? get message;
+
+  /// Data
   @override
   @JsonKey(name: 'data')
   bool get data;

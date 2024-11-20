@@ -13,10 +13,8 @@ class BaseResponsePaginationResponseLecturerAssignmentPublic
 
   @JsonSerializable(converters: convertors)
   const factory BaseResponsePaginationResponseLecturerAssignmentPublic({
-    @JsonKey(name: 'message')
-
     /// Message
-    required String? message,
+    @JsonKey(name: 'message') required String? message,
     @JsonKey(name: 'data')
     required PaginationResponseLecturerAssignmentPublic data,
   }) = _BaseResponsePaginationResponseLecturerAssignmentPublic;

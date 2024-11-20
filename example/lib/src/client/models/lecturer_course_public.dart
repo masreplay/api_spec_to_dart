@@ -11,34 +11,26 @@ class LecturerCoursePublic with _$LecturerCoursePublic {
 
   @JsonSerializable(converters: convertors)
   const factory LecturerCoursePublic({
-    @JsonKey(name: 'id')
-
     /// Id
-    required int id,
-    @JsonKey(name: 'name')
+    @JsonKey(name: 'id') required int id,
 
     /// Name
-    required String name,
-    @JsonKey(name: 'lecturer_name')
+    @JsonKey(name: 'name') required String name,
 
     /// Lecturer Name
-    required String lecturerName,
-    @JsonKey(name: 'collage_name')
+    @JsonKey(name: 'lecturer_name') required String lecturerName,
 
     /// Collage Name
-    required String collageName,
-    @JsonKey(name: 'division_name')
+    @JsonKey(name: 'collage_name') required String collageName,
 
     /// Division Name
-    required String divisionName,
-    @JsonKey(name: 'group_name')
+    @JsonKey(name: 'division_name') required String divisionName,
 
     /// Group Name
-    required String groupName,
-    @JsonKey(name: 'student_count')
+    @JsonKey(name: 'group_name') required String groupName,
 
     /// Student Count
-    required int? studentCount,
+    @JsonKey(name: 'student_count') required int? studentCount,
   }) = _LecturerCoursePublic;
 
   factory LecturerCoursePublic.fromJson(Map<String, dynamic> json) =>

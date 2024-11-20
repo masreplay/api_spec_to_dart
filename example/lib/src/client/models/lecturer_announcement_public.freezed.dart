@@ -21,22 +21,39 @@ LecturerAnnouncementPublic _$LecturerAnnouncementPublicFromJson(
 
 /// @nodoc
 mixin _$LecturerAnnouncementPublic {
+  /// Title
   @JsonKey(name: 'title')
   String get title => throw _privateConstructorUsedError;
+
+  /// Description
   @JsonKey(name: 'description')
   String? get description => throw _privateConstructorUsedError;
+
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+
+  /// Username
   @JsonKey(name: 'username')
   String get username => throw _privateConstructorUsedError;
+
+  /// Avatar
   @JsonKey(name: 'avatar')
   String? get avatar => throw _privateConstructorUsedError;
+
+  /// Comments Count
   @JsonKey(name: 'comments_count')
   int get commentsCount => throw _privateConstructorUsedError;
+
+  /// Created At
   @JsonKey(name: 'created_at')
   DateTime get createdAt => throw _privateConstructorUsedError;
+
+  /// Created At Formatted
   @JsonKey(name: 'created_at_formatted')
   String get createdAtFormatted => throw _privateConstructorUsedError;
+
+  /// Files
   @JsonKey(name: 'files')
   List<dynamic> get files => throw _privateConstructorUsedError;
 
@@ -244,31 +261,50 @@ class _$LecturerAnnouncementPublicImpl extends _LecturerAnnouncementPublic {
           Map<String, dynamic> json) =>
       _$$LecturerAnnouncementPublicImplFromJson(json);
 
+  /// Title
   @override
   @JsonKey(name: 'title')
   final String title;
+
+  /// Description
   @override
   @JsonKey(name: 'description')
   final String? description;
+
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
+
+  /// Username
   @override
   @JsonKey(name: 'username')
   final String username;
+
+  /// Avatar
   @override
   @JsonKey(name: 'avatar')
   final String? avatar;
+
+  /// Comments Count
   @override
   @JsonKey(name: 'comments_count')
   final int commentsCount;
+
+  /// Created At
   @override
   @JsonKey(name: 'created_at')
   final DateTime createdAt;
+
+  /// Created At Formatted
   @override
   @JsonKey(name: 'created_at_formatted')
   final String createdAtFormatted;
+
+  /// Files
   final List<dynamic> _files;
+
+  /// Files
   @override
   @JsonKey(name: 'files')
   List<dynamic> get files {
@@ -352,30 +388,47 @@ abstract class _LecturerAnnouncementPublic extends LecturerAnnouncementPublic {
   factory _LecturerAnnouncementPublic.fromJson(Map<String, dynamic> json) =
       _$LecturerAnnouncementPublicImpl.fromJson;
 
+  /// Title
   @override
   @JsonKey(name: 'title')
   String get title;
+
+  /// Description
   @override
   @JsonKey(name: 'description')
   String? get description;
+
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;
+
+  /// Username
   @override
   @JsonKey(name: 'username')
   String get username;
+
+  /// Avatar
   @override
   @JsonKey(name: 'avatar')
   String? get avatar;
+
+  /// Comments Count
   @override
   @JsonKey(name: 'comments_count')
   int get commentsCount;
+
+  /// Created At
   @override
   @JsonKey(name: 'created_at')
   DateTime get createdAt;
+
+  /// Created At Formatted
   @override
   @JsonKey(name: 'created_at_formatted')
   String get createdAtFormatted;
+
+  /// Files
   @override
   @JsonKey(name: 'files')
   List<dynamic> get files;

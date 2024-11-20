@@ -12,26 +12,20 @@ class PaymentMethodPublic with _$PaymentMethodPublic {
 
   @JsonSerializable(converters: convertors)
   const factory PaymentMethodPublic({
-    @JsonKey(name: 'id')
-
     /// Id
-    required int id,
-    @JsonKey(name: 'name')
+    @JsonKey(name: 'id') required int id,
 
     /// Name
-    required String name,
-    @JsonKey(name: 'description')
+    @JsonKey(name: 'name') required String name,
 
     /// Description
-    required String description,
-    @JsonKey(name: 'url')
+    @JsonKey(name: 'description') required String description,
 
     /// Url
-    required String url,
-    @JsonKey(name: 'image')
+    @JsonKey(name: 'url') required String url,
 
     /// Image
-    required String image,
+    @JsonKey(name: 'image') required String image,
     @JsonKey(name: 'type') required PaymentMethodEnum type,
   }) = _PaymentMethodPublic;
 

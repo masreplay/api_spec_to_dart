@@ -20,83 +20,160 @@ EmployeePublic _$EmployeePublicFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$EmployeePublic {
+  /// Db User Id
   @JsonKey(name: 'db_user_id')
   String? get dbUserId => throw _privateConstructorUsedError;
+
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+
+  /// Emp Ar First Name
   @JsonKey(name: 'emp_ar_first_name')
   String get empArFirstName => throw _privateConstructorUsedError;
+
+  /// Emp Ar Second Name
   @JsonKey(name: 'emp_ar_second_name')
   String get empArSecondName => throw _privateConstructorUsedError;
+
+  /// Emp Ar Third Name
   @JsonKey(name: 'emp_ar_third_name')
   String get empArThirdName => throw _privateConstructorUsedError;
+
+  /// Emp Ar Fourth Name
   @JsonKey(name: 'emp_ar_fourth_name')
   String get empArFourthName => throw _privateConstructorUsedError;
+
+  /// Tribe
   @JsonKey(name: 'tribe')
   String get tribe => throw _privateConstructorUsedError;
+
+  /// Emp En First Name
   @JsonKey(name: 'emp_en_first_name')
   String get empEnFirstName => throw _privateConstructorUsedError;
+
+  /// Emp En Second Name
   @JsonKey(name: 'emp_en_second_name')
   String get empEnSecondName => throw _privateConstructorUsedError;
+
+  /// Emp En Third Name
   @JsonKey(name: 'emp_en_third_name')
   String get empEnThirdName => throw _privateConstructorUsedError;
+
+  /// Emp En Fourth Name
   @JsonKey(name: 'emp_en_fourth_name')
   String get empEnFourthName => throw _privateConstructorUsedError;
+
+  /// Mother First Name
   @JsonKey(name: 'mother_first_name')
   String? get motherFirstName => throw _privateConstructorUsedError;
+
+  /// Mother Second Name
   @JsonKey(name: 'mother_second_name')
   String? get motherSecondName => throw _privateConstructorUsedError;
+
+  /// Mother Third Name
   @JsonKey(name: 'mother_third_name')
   String? get motherThirdName => throw _privateConstructorUsedError;
+
+  /// Gender
   @JsonKey(name: 'gender')
   int get gender => throw _privateConstructorUsedError;
+
+  /// Date Of Birth
   @JsonKey(name: 'date_of_birth')
   DateTime get dateOfBirth => throw _privateConstructorUsedError;
+
+  /// Nationality Id
   @JsonKey(name: 'nationality_id')
   int get nationalityId => throw _privateConstructorUsedError;
+
+  /// Citizenship Type
   @JsonKey(name: 'citizenship_type')
   int? get citizenshipType => throw _privateConstructorUsedError;
+
+  /// Nationalism Id
   @JsonKey(name: 'nationalism_id')
   int get nationalismId => throw _privateConstructorUsedError;
+
+  /// Religion Id
   @JsonKey(name: 'religion_id')
   int? get religionId => throw _privateConstructorUsedError;
+
+  /// Blood Group
   @JsonKey(name: 'blood_group')
   int? get bloodGroup => throw _privateConstructorUsedError;
+
+  /// Country Id
   @JsonKey(name: 'country_id')
   int get countryId => throw _privateConstructorUsedError;
+
+  /// City Of Birth
   @JsonKey(name: 'city_of_birth')
   String? get cityOfBirth => throw _privateConstructorUsedError;
+
+  /// Marital Status
   @JsonKey(name: 'marital_status')
   int? get maritalStatus => throw _privateConstructorUsedError;
+
+  /// Un
   @JsonKey(name: 'un')
   String? get un => throw _privateConstructorUsedError;
+
+  /// College Id
   @JsonKey(name: 'college_id')
   int get collegeId => throw _privateConstructorUsedError;
+
+  /// Is Send
   @JsonKey(name: 'is_send')
   bool get isSend => throw _privateConstructorUsedError;
+
+  /// Is Approved
   @JsonKey(name: 'is_approved')
   bool get isApproved => throw _privateConstructorUsedError;
+
+  /// Notes
   @JsonKey(name: 'notes')
   String? get notes => throw _privateConstructorUsedError;
+
+  /// Approved By Id
   @JsonKey(name: 'approved_by_id')
   String? get approvedById => throw _privateConstructorUsedError;
+
+  /// Date Of Approve
   @JsonKey(name: 'date_of_approve')
   DateTime? get dateOfApprove => throw _privateConstructorUsedError;
+
+  /// Age Official Document Id
   @JsonKey(name: 'age_official_document_id')
   int? get ageOfficialDocumentId => throw _privateConstructorUsedError;
+
+  /// Date Of Employment Approval
   @JsonKey(name: 'date_of_employment_approval')
   DateTime? get dateOfEmploymentApproval => throw _privateConstructorUsedError;
+
+  /// Employment Approve Official Document Id
   @JsonKey(name: 'employment_approve_official_document_id')
   int? get employmentApproveOfficialDocumentId =>
       throw _privateConstructorUsedError;
+
+  /// Modified By
   @JsonKey(name: 'modified_by')
   String get modifiedBy => throw _privateConstructorUsedError;
+
+  /// Modified Date Time
   @JsonKey(name: 'modified_date_time')
   DateTime get modifiedDateTime => throw _privateConstructorUsedError;
+
+  /// Deletion Time
   @JsonKey(name: 'deletion_time')
   DateTime? get deletionTime => throw _privateConstructorUsedError;
+
+  /// Name
   @JsonKey(name: 'name')
   String? get name => throw _privateConstructorUsedError;
+
+  /// Full Name
   @JsonKey(name: 'full_name')
   String get fullName => throw _privateConstructorUsedError;
 
@@ -696,120 +773,197 @@ class _$EmployeePublicImpl extends _EmployeePublic {
   factory _$EmployeePublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$EmployeePublicImplFromJson(json);
 
+  /// Db User Id
   @override
   @JsonKey(name: 'db_user_id')
   final String? dbUserId;
+
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
+
+  /// Emp Ar First Name
   @override
   @JsonKey(name: 'emp_ar_first_name')
   final String empArFirstName;
+
+  /// Emp Ar Second Name
   @override
   @JsonKey(name: 'emp_ar_second_name')
   final String empArSecondName;
+
+  /// Emp Ar Third Name
   @override
   @JsonKey(name: 'emp_ar_third_name')
   final String empArThirdName;
+
+  /// Emp Ar Fourth Name
   @override
   @JsonKey(name: 'emp_ar_fourth_name')
   final String empArFourthName;
+
+  /// Tribe
   @override
   @JsonKey(name: 'tribe')
   final String tribe;
+
+  /// Emp En First Name
   @override
   @JsonKey(name: 'emp_en_first_name')
   final String empEnFirstName;
+
+  /// Emp En Second Name
   @override
   @JsonKey(name: 'emp_en_second_name')
   final String empEnSecondName;
+
+  /// Emp En Third Name
   @override
   @JsonKey(name: 'emp_en_third_name')
   final String empEnThirdName;
+
+  /// Emp En Fourth Name
   @override
   @JsonKey(name: 'emp_en_fourth_name')
   final String empEnFourthName;
+
+  /// Mother First Name
   @override
   @JsonKey(name: 'mother_first_name')
   final String? motherFirstName;
+
+  /// Mother Second Name
   @override
   @JsonKey(name: 'mother_second_name')
   final String? motherSecondName;
+
+  /// Mother Third Name
   @override
   @JsonKey(name: 'mother_third_name')
   final String? motherThirdName;
+
+  /// Gender
   @override
   @JsonKey(name: 'gender')
   final int gender;
+
+  /// Date Of Birth
   @override
   @JsonKey(name: 'date_of_birth')
   final DateTime dateOfBirth;
+
+  /// Nationality Id
   @override
   @JsonKey(name: 'nationality_id')
   final int nationalityId;
+
+  /// Citizenship Type
   @override
   @JsonKey(name: 'citizenship_type')
   final int? citizenshipType;
+
+  /// Nationalism Id
   @override
   @JsonKey(name: 'nationalism_id')
   final int nationalismId;
+
+  /// Religion Id
   @override
   @JsonKey(name: 'religion_id')
   final int? religionId;
+
+  /// Blood Group
   @override
   @JsonKey(name: 'blood_group')
   final int? bloodGroup;
+
+  /// Country Id
   @override
   @JsonKey(name: 'country_id')
   final int countryId;
+
+  /// City Of Birth
   @override
   @JsonKey(name: 'city_of_birth')
   final String? cityOfBirth;
+
+  /// Marital Status
   @override
   @JsonKey(name: 'marital_status')
   final int? maritalStatus;
+
+  /// Un
   @override
   @JsonKey(name: 'un')
   final String? un;
+
+  /// College Id
   @override
   @JsonKey(name: 'college_id')
   final int collegeId;
+
+  /// Is Send
   @override
   @JsonKey(name: 'is_send')
   final bool isSend;
+
+  /// Is Approved
   @override
   @JsonKey(name: 'is_approved')
   final bool isApproved;
+
+  /// Notes
   @override
   @JsonKey(name: 'notes')
   final String? notes;
+
+  /// Approved By Id
   @override
   @JsonKey(name: 'approved_by_id')
   final String? approvedById;
+
+  /// Date Of Approve
   @override
   @JsonKey(name: 'date_of_approve')
   final DateTime? dateOfApprove;
+
+  /// Age Official Document Id
   @override
   @JsonKey(name: 'age_official_document_id')
   final int? ageOfficialDocumentId;
+
+  /// Date Of Employment Approval
   @override
   @JsonKey(name: 'date_of_employment_approval')
   final DateTime? dateOfEmploymentApproval;
+
+  /// Employment Approve Official Document Id
   @override
   @JsonKey(name: 'employment_approve_official_document_id')
   final int? employmentApproveOfficialDocumentId;
+
+  /// Modified By
   @override
   @JsonKey(name: 'modified_by')
   final String modifiedBy;
+
+  /// Modified Date Time
   @override
   @JsonKey(name: 'modified_date_time')
   final DateTime modifiedDateTime;
+
+  /// Deletion Time
   @override
   @JsonKey(name: 'deletion_time')
   final DateTime? deletionTime;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   final String? name;
+
+  /// Full Name
   @override
   @JsonKey(name: 'full_name')
   final String fullName;
@@ -1020,120 +1174,197 @@ abstract class _EmployeePublic extends EmployeePublic {
   factory _EmployeePublic.fromJson(Map<String, dynamic> json) =
       _$EmployeePublicImpl.fromJson;
 
+  /// Db User Id
   @override
   @JsonKey(name: 'db_user_id')
   String? get dbUserId;
+
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;
+
+  /// Emp Ar First Name
   @override
   @JsonKey(name: 'emp_ar_first_name')
   String get empArFirstName;
+
+  /// Emp Ar Second Name
   @override
   @JsonKey(name: 'emp_ar_second_name')
   String get empArSecondName;
+
+  /// Emp Ar Third Name
   @override
   @JsonKey(name: 'emp_ar_third_name')
   String get empArThirdName;
+
+  /// Emp Ar Fourth Name
   @override
   @JsonKey(name: 'emp_ar_fourth_name')
   String get empArFourthName;
+
+  /// Tribe
   @override
   @JsonKey(name: 'tribe')
   String get tribe;
+
+  /// Emp En First Name
   @override
   @JsonKey(name: 'emp_en_first_name')
   String get empEnFirstName;
+
+  /// Emp En Second Name
   @override
   @JsonKey(name: 'emp_en_second_name')
   String get empEnSecondName;
+
+  /// Emp En Third Name
   @override
   @JsonKey(name: 'emp_en_third_name')
   String get empEnThirdName;
+
+  /// Emp En Fourth Name
   @override
   @JsonKey(name: 'emp_en_fourth_name')
   String get empEnFourthName;
+
+  /// Mother First Name
   @override
   @JsonKey(name: 'mother_first_name')
   String? get motherFirstName;
+
+  /// Mother Second Name
   @override
   @JsonKey(name: 'mother_second_name')
   String? get motherSecondName;
+
+  /// Mother Third Name
   @override
   @JsonKey(name: 'mother_third_name')
   String? get motherThirdName;
+
+  /// Gender
   @override
   @JsonKey(name: 'gender')
   int get gender;
+
+  /// Date Of Birth
   @override
   @JsonKey(name: 'date_of_birth')
   DateTime get dateOfBirth;
+
+  /// Nationality Id
   @override
   @JsonKey(name: 'nationality_id')
   int get nationalityId;
+
+  /// Citizenship Type
   @override
   @JsonKey(name: 'citizenship_type')
   int? get citizenshipType;
+
+  /// Nationalism Id
   @override
   @JsonKey(name: 'nationalism_id')
   int get nationalismId;
+
+  /// Religion Id
   @override
   @JsonKey(name: 'religion_id')
   int? get religionId;
+
+  /// Blood Group
   @override
   @JsonKey(name: 'blood_group')
   int? get bloodGroup;
+
+  /// Country Id
   @override
   @JsonKey(name: 'country_id')
   int get countryId;
+
+  /// City Of Birth
   @override
   @JsonKey(name: 'city_of_birth')
   String? get cityOfBirth;
+
+  /// Marital Status
   @override
   @JsonKey(name: 'marital_status')
   int? get maritalStatus;
+
+  /// Un
   @override
   @JsonKey(name: 'un')
   String? get un;
+
+  /// College Id
   @override
   @JsonKey(name: 'college_id')
   int get collegeId;
+
+  /// Is Send
   @override
   @JsonKey(name: 'is_send')
   bool get isSend;
+
+  /// Is Approved
   @override
   @JsonKey(name: 'is_approved')
   bool get isApproved;
+
+  /// Notes
   @override
   @JsonKey(name: 'notes')
   String? get notes;
+
+  /// Approved By Id
   @override
   @JsonKey(name: 'approved_by_id')
   String? get approvedById;
+
+  /// Date Of Approve
   @override
   @JsonKey(name: 'date_of_approve')
   DateTime? get dateOfApprove;
+
+  /// Age Official Document Id
   @override
   @JsonKey(name: 'age_official_document_id')
   int? get ageOfficialDocumentId;
+
+  /// Date Of Employment Approval
   @override
   @JsonKey(name: 'date_of_employment_approval')
   DateTime? get dateOfEmploymentApproval;
+
+  /// Employment Approve Official Document Id
   @override
   @JsonKey(name: 'employment_approve_official_document_id')
   int? get employmentApproveOfficialDocumentId;
+
+  /// Modified By
   @override
   @JsonKey(name: 'modified_by')
   String get modifiedBy;
+
+  /// Modified Date Time
   @override
   @JsonKey(name: 'modified_date_time')
   DateTime get modifiedDateTime;
+
+  /// Deletion Time
   @override
   @JsonKey(name: 'deletion_time')
   DateTime? get deletionTime;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   String? get name;
+
+  /// Full Name
   @override
   @JsonKey(name: 'full_name')
   String get fullName;

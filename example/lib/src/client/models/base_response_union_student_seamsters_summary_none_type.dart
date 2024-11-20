@@ -13,10 +13,8 @@ class BaseResponseUnionStudentSeamstersSummaryNoneType
 
   @JsonSerializable(converters: convertors)
   const factory BaseResponseUnionStudentSeamstersSummaryNoneType({
-    @JsonKey(name: 'message')
-
     /// Message
-    required String? message,
+    @JsonKey(name: 'message') required String? message,
     @JsonKey(name: 'data') required StudentSeamstersSummary? data,
   }) = _BaseResponseUnionStudentSeamstersSummaryNoneType;
 

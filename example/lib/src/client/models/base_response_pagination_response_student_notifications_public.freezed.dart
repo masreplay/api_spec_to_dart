@@ -23,6 +23,7 @@ BaseResponsePaginationResponseStudentNotificationsPublic
 
 /// @nodoc
 mixin _$BaseResponsePaginationResponseStudentNotificationsPublic {
+  /// Message
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
   @JsonKey(name: 'data')
@@ -181,6 +182,7 @@ class _$BaseResponsePaginationResponseStudentNotificationsPublicImpl
       _$$BaseResponsePaginationResponseStudentNotificationsPublicImplFromJson(
           json);
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   final String? message;
@@ -241,6 +243,7 @@ abstract class _BaseResponsePaginationResponseStudentNotificationsPublic
           Map<String, dynamic> json) =
       _$BaseResponsePaginationResponseStudentNotificationsPublicImpl.fromJson;
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   String? get message;

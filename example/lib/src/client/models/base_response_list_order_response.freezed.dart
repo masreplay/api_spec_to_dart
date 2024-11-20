@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'base_response_list_order_public.dart';
+part of 'base_response_list_order_response.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,35 +14,38 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-BaseResponseListOrderPublic _$BaseResponseListOrderPublicFromJson(
+BaseResponseListOrderResponse _$BaseResponseListOrderResponseFromJson(
     Map<String, dynamic> json) {
-  return _BaseResponseListOrderPublic.fromJson(json);
+  return _BaseResponseListOrderResponse.fromJson(json);
 }
 
 /// @nodoc
-mixin _$BaseResponseListOrderPublic {
+mixin _$BaseResponseListOrderResponse {
+  /// Message
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
+
+  /// Data
   @JsonKey(name: 'data')
   List<dynamic> get data => throw _privateConstructorUsedError;
 
-  /// Serializes this BaseResponseListOrderPublic to a JSON map.
+  /// Serializes this BaseResponseListOrderResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of BaseResponseListOrderPublic
+  /// Create a copy of BaseResponseListOrderResponse
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $BaseResponseListOrderPublicCopyWith<BaseResponseListOrderPublic>
+  $BaseResponseListOrderResponseCopyWith<BaseResponseListOrderResponse>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $BaseResponseListOrderPublicCopyWith<$Res> {
-  factory $BaseResponseListOrderPublicCopyWith(
-          BaseResponseListOrderPublic value,
-          $Res Function(BaseResponseListOrderPublic) then) =
-      _$BaseResponseListOrderPublicCopyWithImpl<$Res,
-          BaseResponseListOrderPublic>;
+abstract class $BaseResponseListOrderResponseCopyWith<$Res> {
+  factory $BaseResponseListOrderResponseCopyWith(
+          BaseResponseListOrderResponse value,
+          $Res Function(BaseResponseListOrderResponse) then) =
+      _$BaseResponseListOrderResponseCopyWithImpl<$Res,
+          BaseResponseListOrderResponse>;
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
@@ -50,17 +53,17 @@ abstract class $BaseResponseListOrderPublicCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$BaseResponseListOrderPublicCopyWithImpl<$Res,
-        $Val extends BaseResponseListOrderPublic>
-    implements $BaseResponseListOrderPublicCopyWith<$Res> {
-  _$BaseResponseListOrderPublicCopyWithImpl(this._value, this._then);
+class _$BaseResponseListOrderResponseCopyWithImpl<$Res,
+        $Val extends BaseResponseListOrderResponse>
+    implements $BaseResponseListOrderResponseCopyWith<$Res> {
+  _$BaseResponseListOrderResponseCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of BaseResponseListOrderPublic
+  /// Create a copy of BaseResponseListOrderResponse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -82,12 +85,12 @@ class _$BaseResponseListOrderPublicCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$BaseResponseListOrderPublicImplCopyWith<$Res>
-    implements $BaseResponseListOrderPublicCopyWith<$Res> {
-  factory _$$BaseResponseListOrderPublicImplCopyWith(
-          _$BaseResponseListOrderPublicImpl value,
-          $Res Function(_$BaseResponseListOrderPublicImpl) then) =
-      __$$BaseResponseListOrderPublicImplCopyWithImpl<$Res>;
+abstract class _$$BaseResponseListOrderResponseImplCopyWith<$Res>
+    implements $BaseResponseListOrderResponseCopyWith<$Res> {
+  factory _$$BaseResponseListOrderResponseImplCopyWith(
+          _$BaseResponseListOrderResponseImpl value,
+          $Res Function(_$BaseResponseListOrderResponseImpl) then) =
+      __$$BaseResponseListOrderResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -96,16 +99,16 @@ abstract class _$$BaseResponseListOrderPublicImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$BaseResponseListOrderPublicImplCopyWithImpl<$Res>
-    extends _$BaseResponseListOrderPublicCopyWithImpl<$Res,
-        _$BaseResponseListOrderPublicImpl>
-    implements _$$BaseResponseListOrderPublicImplCopyWith<$Res> {
-  __$$BaseResponseListOrderPublicImplCopyWithImpl(
-      _$BaseResponseListOrderPublicImpl _value,
-      $Res Function(_$BaseResponseListOrderPublicImpl) _then)
+class __$$BaseResponseListOrderResponseImplCopyWithImpl<$Res>
+    extends _$BaseResponseListOrderResponseCopyWithImpl<$Res,
+        _$BaseResponseListOrderResponseImpl>
+    implements _$$BaseResponseListOrderResponseImplCopyWith<$Res> {
+  __$$BaseResponseListOrderResponseImplCopyWithImpl(
+      _$BaseResponseListOrderResponseImpl _value,
+      $Res Function(_$BaseResponseListOrderResponseImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of BaseResponseListOrderPublic
+  /// Create a copy of BaseResponseListOrderResponse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -113,7 +116,7 @@ class __$$BaseResponseListOrderPublicImplCopyWithImpl<$Res>
     Object? message = freezed,
     Object? data = null,
   }) {
-    return _then(_$BaseResponseListOrderPublicImpl(
+    return _then(_$BaseResponseListOrderResponseImpl(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -129,21 +132,27 @@ class __$$BaseResponseListOrderPublicImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(converters: convertors)
-class _$BaseResponseListOrderPublicImpl extends _BaseResponseListOrderPublic {
-  const _$BaseResponseListOrderPublicImpl(
+class _$BaseResponseListOrderResponseImpl
+    extends _BaseResponseListOrderResponse {
+  const _$BaseResponseListOrderResponseImpl(
       {@JsonKey(name: 'message') required this.message,
       @JsonKey(name: 'data') required final List<dynamic> data})
       : _data = data,
         super._();
 
-  factory _$BaseResponseListOrderPublicImpl.fromJson(
+  factory _$BaseResponseListOrderResponseImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$BaseResponseListOrderPublicImplFromJson(json);
+      _$$BaseResponseListOrderResponseImplFromJson(json);
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   final String? message;
+
+  /// Data
   final List<dynamic> _data;
+
+  /// Data
   @override
   @JsonKey(name: 'data')
   List<dynamic> get data {
@@ -154,14 +163,14 @@ class _$BaseResponseListOrderPublicImpl extends _BaseResponseListOrderPublic {
 
   @override
   String toString() {
-    return 'BaseResponseListOrderPublic(message: $message, data: $data)';
+    return 'BaseResponseListOrderResponse(message: $message, data: $data)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BaseResponseListOrderPublicImpl &&
+            other is _$BaseResponseListOrderResponseImpl &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other._data, _data));
   }
@@ -171,45 +180,50 @@ class _$BaseResponseListOrderPublicImpl extends _BaseResponseListOrderPublic {
   int get hashCode => Object.hash(
       runtimeType, message, const DeepCollectionEquality().hash(_data));
 
-  /// Create a copy of BaseResponseListOrderPublic
+  /// Create a copy of BaseResponseListOrderResponse
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$BaseResponseListOrderPublicImplCopyWith<_$BaseResponseListOrderPublicImpl>
-      get copyWith => __$$BaseResponseListOrderPublicImplCopyWithImpl<
-          _$BaseResponseListOrderPublicImpl>(this, _$identity);
+  _$$BaseResponseListOrderResponseImplCopyWith<
+          _$BaseResponseListOrderResponseImpl>
+      get copyWith => __$$BaseResponseListOrderResponseImplCopyWithImpl<
+          _$BaseResponseListOrderResponseImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BaseResponseListOrderPublicImplToJson(
+    return _$$BaseResponseListOrderResponseImplToJson(
       this,
     );
   }
 }
 
-abstract class _BaseResponseListOrderPublic
-    extends BaseResponseListOrderPublic {
-  const factory _BaseResponseListOrderPublic(
+abstract class _BaseResponseListOrderResponse
+    extends BaseResponseListOrderResponse {
+  const factory _BaseResponseListOrderResponse(
           {@JsonKey(name: 'message') required final String? message,
           @JsonKey(name: 'data') required final List<dynamic> data}) =
-      _$BaseResponseListOrderPublicImpl;
-  const _BaseResponseListOrderPublic._() : super._();
+      _$BaseResponseListOrderResponseImpl;
+  const _BaseResponseListOrderResponse._() : super._();
 
-  factory _BaseResponseListOrderPublic.fromJson(Map<String, dynamic> json) =
-      _$BaseResponseListOrderPublicImpl.fromJson;
+  factory _BaseResponseListOrderResponse.fromJson(Map<String, dynamic> json) =
+      _$BaseResponseListOrderResponseImpl.fromJson;
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   String? get message;
+
+  /// Data
   @override
   @JsonKey(name: 'data')
   List<dynamic> get data;
 
-  /// Create a copy of BaseResponseListOrderPublic
+  /// Create a copy of BaseResponseListOrderResponse
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$BaseResponseListOrderPublicImplCopyWith<_$BaseResponseListOrderPublicImpl>
+  _$$BaseResponseListOrderResponseImplCopyWith<
+          _$BaseResponseListOrderResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

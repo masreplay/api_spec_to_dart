@@ -21,6 +21,7 @@ BaseResponseUnionFilePublicNoneType
 
 /// @nodoc
 mixin _$BaseResponseUnionFilePublicNoneType {
+  /// Message
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
   @JsonKey(name: 'data')
@@ -160,6 +161,7 @@ class _$BaseResponseUnionFilePublicNoneTypeImpl
           Map<String, dynamic> json) =>
       _$$BaseResponseUnionFilePublicNoneTypeImplFromJson(json);
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   final String? message;
@@ -215,6 +217,7 @@ abstract class _BaseResponseUnionFilePublicNoneType
           Map<String, dynamic> json) =
       _$BaseResponseUnionFilePublicNoneTypeImpl.fromJson;
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   String? get message;

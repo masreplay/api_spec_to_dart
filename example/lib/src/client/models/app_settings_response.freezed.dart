@@ -20,16 +20,25 @@ AppSettingsResponse _$AppSettingsResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AppSettingsResponse {
+  /// Language
   @JsonKey(name: 'language')
   String get language => throw _privateConstructorUsedError;
+
+  /// Privacy Policy Url
   @JsonKey(name: 'privacy_policy_url')
   String get privacyPolicyUrl => throw _privateConstructorUsedError;
+
+  /// Terms Of Service Url
   @JsonKey(name: 'terms_of_service_url')
   String get termsOfServiceUrl => throw _privateConstructorUsedError;
+
+  /// About Url
   @JsonKey(name: 'about_url')
   String get aboutUrl => throw _privateConstructorUsedError;
   @JsonKey(name: 'update')
   AppSettingsUpdate get update => throw _privateConstructorUsedError;
+
+  /// Version
   @JsonKey(name: 'version')
   String? get version => throw _privateConstructorUsedError;
 
@@ -206,21 +215,30 @@ class _$AppSettingsResponseImpl extends _AppSettingsResponse {
   factory _$AppSettingsResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$AppSettingsResponseImplFromJson(json);
 
+  /// Language
   @override
   @JsonKey(name: 'language')
   final String language;
+
+  /// Privacy Policy Url
   @override
   @JsonKey(name: 'privacy_policy_url')
   final String privacyPolicyUrl;
+
+  /// Terms Of Service Url
   @override
   @JsonKey(name: 'terms_of_service_url')
   final String termsOfServiceUrl;
+
+  /// About Url
   @override
   @JsonKey(name: 'about_url')
   final String aboutUrl;
   @override
   @JsonKey(name: 'update')
   final AppSettingsUpdate update;
+
+  /// Version
   @override
   @JsonKey(name: 'version')
   final String? version;
@@ -285,21 +303,30 @@ abstract class _AppSettingsResponse extends AppSettingsResponse {
   factory _AppSettingsResponse.fromJson(Map<String, dynamic> json) =
       _$AppSettingsResponseImpl.fromJson;
 
+  /// Language
   @override
   @JsonKey(name: 'language')
   String get language;
+
+  /// Privacy Policy Url
   @override
   @JsonKey(name: 'privacy_policy_url')
   String get privacyPolicyUrl;
+
+  /// Terms Of Service Url
   @override
   @JsonKey(name: 'terms_of_service_url')
   String get termsOfServiceUrl;
+
+  /// About Url
   @override
   @JsonKey(name: 'about_url')
   String get aboutUrl;
   @override
   @JsonKey(name: 'update')
   AppSettingsUpdate get update;
+
+  /// Version
   @override
   @JsonKey(name: 'version')
   String? get version;

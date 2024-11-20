@@ -11,44 +11,36 @@ class StudentSeamstersSummary with _$StudentSeamstersSummary {
 
   @JsonSerializable(converters: convertors)
   const factory StudentSeamstersSummary({
-    @JsonKey(name: 'id')
-
     /// Id
-    required int? id,
-    @JsonKey(name: 'name')
+    @JsonKey(name: 'id') required int? id,
 
     /// Name
-    required String? name,
-    @JsonKey(name: 'is_active')
+    @JsonKey(name: 'name') required String? name,
 
     /// Is Active
-    required bool? isActive,
-    @JsonKey(name: 'is_enabled')
+    @JsonKey(name: 'is_active') required bool? isActive,
 
     /// Is Enabled
-    required bool? isEnabled,
-    @JsonKey(name: 'total_number_of_units')
+    @JsonKey(name: 'is_enabled') required bool? isEnabled,
 
     /// Total Number Of Units
-    required num? totalNumberOfUnits,
-    @Default(0)
-    @JsonKey(name: 'current_number_of_units')
+    @JsonKey(name: 'total_number_of_units') required num? totalNumberOfUnits,
 
     /// Current Number Of Units
-    required int currentNumberOfUnits,
     @Default(0)
-    @JsonKey(name: 'current_number_of_subjects')
+    @JsonKey(name: 'current_number_of_units')
+    required int currentNumberOfUnits,
 
     /// Current Number Of Subjects
+    @Default(0)
+    @JsonKey(name: 'current_number_of_subjects')
     required int currentNumberOfSubjects,
-    @JsonKey(name: 'current_subjects')
 
     /// Current Subjects
-    required List currentSubjects,
-    @JsonKey(name: 'previous_subjects')
+    @JsonKey(name: 'current_subjects') required List currentSubjects,
 
     /// Previous Subjects
-    required List previousSubjects,
+    @JsonKey(name: 'previous_subjects') required List previousSubjects,
   }) = _StudentSeamstersSummary;
 
   factory StudentSeamstersSummary.fromJson(Map<String, dynamic> json) =>

@@ -12,60 +12,48 @@ class CoursePublic with _$CoursePublic {
 
   @JsonSerializable(converters: convertors)
   const factory CoursePublic({
-    @JsonKey(name: 'course_code')
-
     /// Course Code
-    required String courseCode,
-    @JsonKey(name: 'course_classifications')
+    @JsonKey(name: 'course_code') required String courseCode,
 
     /// Course Classifications
+    @JsonKey(name: 'course_classifications')
     required int? courseClassifications,
-    @JsonKey(name: 'total_credits')
 
     /// Total Credits
-    required int totalCredits,
-    @JsonKey(name: 'course_result_type')
+    @JsonKey(name: 'total_credits') required int totalCredits,
 
     /// Course Result Type
-    required int courseResultType,
-    @JsonKey(name: 'highest_grade')
+    @JsonKey(name: 'course_result_type') required int courseResultType,
 
     /// Highest Grade
-    required int highestGrade,
-    @JsonKey(name: 'lowest_grade')
+    @JsonKey(name: 'highest_grade') required int highestGrade,
 
     /// Lowest Grade
-    required int lowestGrade,
-    @JsonKey(name: 'prerequisite_hours')
+    @JsonKey(name: 'lowest_grade') required int lowestGrade,
 
     /// Prerequisite Hours
-    required int? prerequisiteHours,
-    @JsonKey(name: 'course_version')
+    @JsonKey(name: 'prerequisite_hours') required int? prerequisiteHours,
 
     /// Course Version
-    required String? courseVersion,
+    @JsonKey(name: 'course_version') required String? courseVersion,
     @JsonKey(name: 'course_status')
     required StudentCourseStatusEnum? courseStatus,
-    @JsonKey(name: 'course_fees')
 
     /// Course Fees
-    required int courseFees,
-    @JsonKey(name: 'course_distribution_level')
+    @JsonKey(name: 'course_fees') required int courseFees,
 
     /// Course Distribution Level
+    @JsonKey(name: 'course_distribution_level')
     required int courseDistributionLevel,
-    @JsonKey(name: 'id')
 
     /// Id
-    required int id,
-    @JsonKey(name: 'name')
+    @JsonKey(name: 'id') required int id,
 
     /// Name
-    required String? name,
-    @JsonKey(name: 'course_staffs')
+    @JsonKey(name: 'name') required String? name,
 
     /// Course Staffs
-    required List? courseStaffs,
+    @JsonKey(name: 'course_staffs') required List? courseStaffs,
     @JsonKey(name: 'seamster') required AcademicYearDivisionPublic? seamster,
   }) = _CoursePublic;
 

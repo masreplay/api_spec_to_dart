@@ -11,39 +11,29 @@ class HomeworkCalenderEventPublic with _$HomeworkCalenderEventPublic {
 
   @JsonSerializable(converters: convertors)
   const factory HomeworkCalenderEventPublic({
-    @JsonKey(name: 'id')
-
     /// Id
-    required int id,
-    @JsonKey(name: 'start_date')
+    @JsonKey(name: 'id') required int id,
 
     /// Start Date
-    required DateTime? startDate,
-    @JsonKey(name: 'start_date_formatted')
+    @JsonKey(name: 'start_date') required DateTime? startDate,
 
     /// Start Date Formatted
-    required String? startDateFormatted,
-    @JsonKey(name: 'end_date')
+    @JsonKey(name: 'start_date_formatted') required String? startDateFormatted,
 
     /// End Date
-    required DateTime? endDate,
-    @JsonKey(name: 'end_date_formatted')
+    @JsonKey(name: 'end_date') required DateTime? endDate,
 
     /// End Date Formatted
-    required String? endDateFormatted,
-    @Default(assignment)
-    @JsonKey(name: 'type')
+    @JsonKey(name: 'end_date_formatted') required String? endDateFormatted,
 
     /// Type
-    required String type,
-    @JsonKey(name: 'title')
+    @Default(assignment) @JsonKey(name: 'type') required String type,
 
     /// Title
-    required String title,
-    @JsonKey(name: 'description')
+    @JsonKey(name: 'title') required String title,
 
     /// Description
-    required String? description,
+    @JsonKey(name: 'description') required String? description,
   }) = _HomeworkCalenderEventPublic;
 
   factory HomeworkCalenderEventPublic.fromJson(Map<String, dynamic> json) =>

@@ -12,27 +12,21 @@ class AppSettingsResponse with _$AppSettingsResponse {
 
   @JsonSerializable(converters: convertors)
   const factory AppSettingsResponse({
-    @JsonKey(name: 'language')
-
     /// Language
-    required String language,
-    @JsonKey(name: 'privacy_policy_url')
+    @JsonKey(name: 'language') required String language,
 
     /// Privacy Policy Url
-    required String privacyPolicyUrl,
-    @JsonKey(name: 'terms_of_service_url')
+    @JsonKey(name: 'privacy_policy_url') required String privacyPolicyUrl,
 
     /// Terms Of Service Url
-    required String termsOfServiceUrl,
-    @JsonKey(name: 'about_url')
+    @JsonKey(name: 'terms_of_service_url') required String termsOfServiceUrl,
 
     /// About Url
-    required String aboutUrl,
+    @JsonKey(name: 'about_url') required String aboutUrl,
     @JsonKey(name: 'update') required AppSettingsUpdate update,
-    @JsonKey(name: 'version')
 
     /// Version
-    required String? version,
+    @JsonKey(name: 'version') required String? version,
   }) = _AppSettingsResponse;
 
   factory AppSettingsResponse.fromJson(Map<String, dynamic> json) =>

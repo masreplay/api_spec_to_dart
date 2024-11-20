@@ -21,20 +21,35 @@ HomeworkCalenderEventPublic _$HomeworkCalenderEventPublicFromJson(
 
 /// @nodoc
 mixin _$HomeworkCalenderEventPublic {
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+
+  /// Start Date
   @JsonKey(name: 'start_date')
   DateTime? get startDate => throw _privateConstructorUsedError;
+
+  /// Start Date Formatted
   @JsonKey(name: 'start_date_formatted')
   String? get startDateFormatted => throw _privateConstructorUsedError;
+
+  /// End Date
   @JsonKey(name: 'end_date')
   DateTime? get endDate => throw _privateConstructorUsedError;
+
+  /// End Date Formatted
   @JsonKey(name: 'end_date_formatted')
   String? get endDateFormatted => throw _privateConstructorUsedError;
+
+  /// Type
   @JsonKey(name: 'type')
   String get type => throw _privateConstructorUsedError;
+
+  /// Title
   @JsonKey(name: 'title')
   String get title => throw _privateConstructorUsedError;
+
+  /// Description
   @JsonKey(name: 'description')
   String? get description => throw _privateConstructorUsedError;
 
@@ -229,27 +244,42 @@ class _$HomeworkCalenderEventPublicImpl extends _HomeworkCalenderEventPublic {
           Map<String, dynamic> json) =>
       _$$HomeworkCalenderEventPublicImplFromJson(json);
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
+
+  /// Start Date
   @override
   @JsonKey(name: 'start_date')
   final DateTime? startDate;
+
+  /// Start Date Formatted
   @override
   @JsonKey(name: 'start_date_formatted')
   final String? startDateFormatted;
+
+  /// End Date
   @override
   @JsonKey(name: 'end_date')
   final DateTime? endDate;
+
+  /// End Date Formatted
   @override
   @JsonKey(name: 'end_date_formatted')
   final String? endDateFormatted;
+
+  /// Type
   @override
   @JsonKey(name: 'type')
   final String type;
+
+  /// Title
   @override
   @JsonKey(name: 'title')
   final String title;
+
+  /// Description
   @override
   @JsonKey(name: 'description')
   final String? description;
@@ -319,27 +349,42 @@ abstract class _HomeworkCalenderEventPublic
   factory _HomeworkCalenderEventPublic.fromJson(Map<String, dynamic> json) =
       _$HomeworkCalenderEventPublicImpl.fromJson;
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;
+
+  /// Start Date
   @override
   @JsonKey(name: 'start_date')
   DateTime? get startDate;
+
+  /// Start Date Formatted
   @override
   @JsonKey(name: 'start_date_formatted')
   String? get startDateFormatted;
+
+  /// End Date
   @override
   @JsonKey(name: 'end_date')
   DateTime? get endDate;
+
+  /// End Date Formatted
   @override
   @JsonKey(name: 'end_date_formatted')
   String? get endDateFormatted;
+
+  /// Type
   @override
   @JsonKey(name: 'type')
   String get type;
+
+  /// Title
   @override
   @JsonKey(name: 'title')
   String get title;
+
+  /// Description
   @override
   @JsonKey(name: 'description')
   String? get description;

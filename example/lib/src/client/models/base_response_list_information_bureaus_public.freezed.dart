@@ -22,8 +22,11 @@ BaseResponseListInformationBureausPublic
 
 /// @nodoc
 mixin _$BaseResponseListInformationBureausPublic {
+  /// Message
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
+
+  /// Data
   @JsonKey(name: 'data')
   List<dynamic> get data => throw _privateConstructorUsedError;
 
@@ -144,10 +147,15 @@ class _$BaseResponseListInformationBureausPublicImpl
           Map<String, dynamic> json) =>
       _$$BaseResponseListInformationBureausPublicImplFromJson(json);
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   final String? message;
+
+  /// Data
   final List<dynamic> _data;
+
+  /// Data
   @override
   @JsonKey(name: 'data')
   List<dynamic> get data {
@@ -206,9 +214,12 @@ abstract class _BaseResponseListInformationBureausPublic
           Map<String, dynamic> json) =
       _$BaseResponseListInformationBureausPublicImpl.fromJson;
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   String? get message;
+
+  /// Data
   @override
   @JsonKey(name: 'data')
   List<dynamic> get data;

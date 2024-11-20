@@ -11,14 +11,11 @@ class ChangePasswordRequestPublic with _$ChangePasswordRequestPublic {
 
   @JsonSerializable(converters: convertors)
   const factory ChangePasswordRequestPublic({
-    @JsonKey(name: 'old_password')
-
     /// Old Password
-    required String oldPassword,
-    @JsonKey(name: 'new_password')
+    @JsonKey(name: 'old_password') required String oldPassword,
 
     /// New Password
-    required String newPassword,
+    @JsonKey(name: 'new_password') required String newPassword,
   }) = _ChangePasswordRequestPublic;
 
   factory ChangePasswordRequestPublic.fromJson(Map<String, dynamic> json) =>

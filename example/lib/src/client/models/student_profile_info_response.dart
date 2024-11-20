@@ -12,34 +12,26 @@ class StudentProfileInfoResponse with _$StudentProfileInfoResponse {
 
   @JsonSerializable(converters: convertors)
   const factory StudentProfileInfoResponse({
-    @JsonKey(name: 'first_name')
-
     /// First Name
-    required String? firstName,
-    @JsonKey(name: 'second_name')
+    @JsonKey(name: 'first_name') required String? firstName,
 
     /// Second Name
-    required String? secondName,
-    @JsonKey(name: 'third_name')
+    @JsonKey(name: 'second_name') required String? secondName,
 
     /// Third Name
-    required String? thirdName,
-    @JsonKey(name: 'fourth_name')
+    @JsonKey(name: 'third_name') required String? thirdName,
 
     /// Fourth Name
-    required String? fourthName,
-    @JsonKey(name: 'email')
+    @JsonKey(name: 'fourth_name') required String? fourthName,
 
     /// Email
-    required String? email,
-    @JsonKey(name: 'phone_number')
+    @JsonKey(name: 'email') required String? email,
 
     /// Phone Number
-    required String? phoneNumber,
-    @JsonKey(name: 'university_number')
+    @JsonKey(name: 'phone_number') required String? phoneNumber,
 
     /// University Number
-    required int? universityNumber,
+    @JsonKey(name: 'university_number') required int? universityNumber,
     @JsonKey(name: 'profile_image') required FilePublic? profileImage,
   }) = _StudentProfileInfoResponse;
 

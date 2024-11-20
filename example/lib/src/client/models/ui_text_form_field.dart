@@ -11,52 +11,38 @@ class UITextFormField with _$UITextFormField {
 
   @JsonSerializable(converters: convertors)
   const factory UITextFormField({
-    @JsonKey(name: 'key')
-
     /// Key
-    required String key,
-    @JsonKey(name: 'name')
+    @JsonKey(name: 'key') required String key,
 
     /// Name
-    required String name,
-    @JsonKey(name: 'hint')
+    @JsonKey(name: 'name') required String name,
 
     /// Hint
-    required String? hint,
-    @JsonKey(name: 'is_required')
+    @JsonKey(name: 'hint') required String? hint,
 
     /// Is Required
-    required bool isRequired,
-    @Default(false)
-    @JsonKey(name: 'read_only')
+    @JsonKey(name: 'is_required') required bool isRequired,
 
     /// Read Only
-    required bool readOnly,
-    @JsonKey(name: 'doc')
+    @Default(false) @JsonKey(name: 'read_only') required bool readOnly,
 
     /// Doc
-    required String? doc,
-    @Default(text)
-    @JsonKey(name: 'type')
+    @JsonKey(name: 'doc') required String? doc,
 
     /// Type
-    required String type,
-    @JsonKey(name: 'regex')
+    @Default(text) @JsonKey(name: 'type') required String type,
 
     /// Regex
-    required String? regex,
-    @JsonKey(name: 'default_value')
+    @JsonKey(name: 'regex') required String? regex,
 
     /// Default Value
-    required String? defaultValue,
-    @JsonKey(name: 'example')
+    @JsonKey(name: 'default_value') required String? defaultValue,
 
     /// Example
-    required String? example,
-    @JsonKey(name: 'validation_message')
+    @JsonKey(name: 'example') required String? example,
 
     /// Validation Message
-    required String? validationMessage,
+    @JsonKey(name: 'validation_message') required String? validationMessage,
   }) = _UITextFormField;
 
   factory UITextFormField.fromJson(Map<String, dynamic> json) =>

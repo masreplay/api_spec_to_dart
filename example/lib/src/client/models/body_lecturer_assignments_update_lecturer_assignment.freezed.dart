@@ -22,10 +22,15 @@ BodyLecturerAssignmentsUpdateLecturerAssignment
 
 /// @nodoc
 mixin _$BodyLecturerAssignmentsUpdateLecturerAssignment {
+  /// Files
   @JsonKey(name: 'files')
   List<dynamic> get files => throw _privateConstructorUsedError;
+
+  /// Title
   @JsonKey(name: 'title')
   String get title => throw _privateConstructorUsedError;
+
+  /// Description
   @JsonKey(name: 'description')
   String? get description => throw _privateConstructorUsedError;
 
@@ -163,7 +168,10 @@ class _$BodyLecturerAssignmentsUpdateLecturerAssignmentImpl
           Map<String, dynamic> json) =>
       _$$BodyLecturerAssignmentsUpdateLecturerAssignmentImplFromJson(json);
 
+  /// Files
   final List<dynamic> _files;
+
+  /// Files
   @override
   @JsonKey(name: 'files')
   List<dynamic> get files {
@@ -172,9 +180,12 @@ class _$BodyLecturerAssignmentsUpdateLecturerAssignmentImpl
     return EqualUnmodifiableListView(_files);
   }
 
+  /// Title
   @override
   @JsonKey(name: 'title')
   final String title;
+
+  /// Description
   @override
   @JsonKey(name: 'description')
   final String? description;
@@ -233,12 +244,17 @@ abstract class _BodyLecturerAssignmentsUpdateLecturerAssignment
           Map<String, dynamic> json) =
       _$BodyLecturerAssignmentsUpdateLecturerAssignmentImpl.fromJson;
 
+  /// Files
   @override
   @JsonKey(name: 'files')
   List<dynamic> get files;
+
+  /// Title
   @override
   @JsonKey(name: 'title')
   String get title;
+
+  /// Description
   @override
   @JsonKey(name: 'description')
   String? get description;

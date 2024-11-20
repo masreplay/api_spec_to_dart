@@ -20,22 +20,39 @@ UIForm _$UIFormFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UIForm {
+  /// Key
   @JsonKey(name: 'key')
   String get key => throw _privateConstructorUsedError;
+
+  /// Fields
   @JsonKey(name: 'fields')
   List<dynamic> get fields => throw _privateConstructorUsedError;
+
+  /// Title
   @JsonKey(name: 'title')
   String get title => throw _privateConstructorUsedError;
+
+  /// Description
   @JsonKey(name: 'description')
   String? get description => throw _privateConstructorUsedError;
+
+  /// Submit Text
   @JsonKey(name: 'submit_text')
   String get submitText => throw _privateConstructorUsedError;
+
+  /// Cancel Text
   @JsonKey(name: 'cancel_text')
   String get cancelText => throw _privateConstructorUsedError;
+
+  /// Success Message
   @JsonKey(name: 'success_message')
   String get successMessage => throw _privateConstructorUsedError;
+
+  /// Error Message
   @JsonKey(name: 'error_message')
   String get errorMessage => throw _privateConstructorUsedError;
+
+  /// Doc
   @JsonKey(name: 'doc')
   String? get doc => throw _privateConstructorUsedError;
 
@@ -234,10 +251,15 @@ class _$UIFormImpl extends _UIForm {
   factory _$UIFormImpl.fromJson(Map<String, dynamic> json) =>
       _$$UIFormImplFromJson(json);
 
+  /// Key
   @override
   @JsonKey(name: 'key')
   final String key;
+
+  /// Fields
   final List<dynamic> _fields;
+
+  /// Fields
   @override
   @JsonKey(name: 'fields')
   List<dynamic> get fields {
@@ -246,24 +268,37 @@ class _$UIFormImpl extends _UIForm {
     return EqualUnmodifiableListView(_fields);
   }
 
+  /// Title
   @override
   @JsonKey(name: 'title')
   final String title;
+
+  /// Description
   @override
   @JsonKey(name: 'description')
   final String? description;
+
+  /// Submit Text
   @override
   @JsonKey(name: 'submit_text')
   final String submitText;
+
+  /// Cancel Text
   @override
   @JsonKey(name: 'cancel_text')
   final String cancelText;
+
+  /// Success Message
   @override
   @JsonKey(name: 'success_message')
   final String successMessage;
+
+  /// Error Message
   @override
   @JsonKey(name: 'error_message')
   final String errorMessage;
+
+  /// Doc
   @override
   @JsonKey(name: 'doc')
   final String? doc;
@@ -339,30 +374,47 @@ abstract class _UIForm extends UIForm {
 
   factory _UIForm.fromJson(Map<String, dynamic> json) = _$UIFormImpl.fromJson;
 
+  /// Key
   @override
   @JsonKey(name: 'key')
   String get key;
+
+  /// Fields
   @override
   @JsonKey(name: 'fields')
   List<dynamic> get fields;
+
+  /// Title
   @override
   @JsonKey(name: 'title')
   String get title;
+
+  /// Description
   @override
   @JsonKey(name: 'description')
   String? get description;
+
+  /// Submit Text
   @override
   @JsonKey(name: 'submit_text')
   String get submitText;
+
+  /// Cancel Text
   @override
   @JsonKey(name: 'cancel_text')
   String get cancelText;
+
+  /// Success Message
   @override
   @JsonKey(name: 'success_message')
   String get successMessage;
+
+  /// Error Message
   @override
   @JsonKey(name: 'error_message')
   String get errorMessage;
+
+  /// Doc
   @override
   @JsonKey(name: 'doc')
   String? get doc;

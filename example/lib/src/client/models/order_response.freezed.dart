@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'order_public.dart';
+part of 'order_response.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,63 +14,86 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-OrderPublic _$OrderPublicFromJson(Map<String, dynamic> json) {
-  return _OrderPublic.fromJson(json);
+OrderResponse _$OrderResponseFromJson(Map<String, dynamic> json) {
+  return _OrderResponse.fromJson(json);
 }
 
 /// @nodoc
-mixin _$OrderPublic {
+mixin _$OrderResponse {
+  /// Price
   @JsonKey(name: 'price')
   num? get price => throw _privateConstructorUsedError;
+
+  /// Currency
   @JsonKey(name: 'currency')
   String? get currency => throw _privateConstructorUsedError;
+
+  /// Product
   @JsonKey(name: 'product')
   dynamic get product => throw _privateConstructorUsedError;
   @JsonKey(name: 'order_type')
   OrderTypeEnum? get orderType => throw _privateConstructorUsedError;
   @JsonKey(name: 'order_status')
   OrderStatusEnum? get orderStatus => throw _privateConstructorUsedError;
+
+  /// Order Status History
   @JsonKey(name: 'order_status_history')
   Map<dynamic, dynamic>? get orderStatusHistory =>
       throw _privateConstructorUsedError;
+
+  /// Quantity
   @JsonKey(name: 'quantity')
   int? get quantity => throw _privateConstructorUsedError;
+
+  /// Payment Method
   @JsonKey(name: 'payment_method')
   String? get paymentMethod => throw _privateConstructorUsedError;
+
+  /// Payment Status
   @JsonKey(name: 'payment_status')
   String? get paymentStatus => throw _privateConstructorUsedError;
+
+  /// Shipping Address
   @JsonKey(name: 'shipping_address')
   String? get shippingAddress => throw _privateConstructorUsedError;
   @JsonKey(name: 'shipping_status')
   ShippingStatusEnum? get shippingStatus => throw _privateConstructorUsedError;
+
+  /// Discount
   @JsonKey(name: 'discount')
   num? get discount => throw _privateConstructorUsedError;
   @JsonKey(name: 'discount_type')
   DiscountTypeEnum? get discountType => throw _privateConstructorUsedError;
+
+  /// Payment Processing Id
   @JsonKey(name: 'payment_processing_id')
   String? get paymentProcessingId => throw _privateConstructorUsedError;
+
+  /// Final Price
   @JsonKey(name: 'final_price')
   num? get finalPrice => throw _privateConstructorUsedError;
+
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'student')
-  StudentTableMap? get student => throw _privateConstructorUsedError;
+  StudentTable? get student => throw _privateConstructorUsedError;
 
-  /// Serializes this OrderPublic to a JSON map.
+  /// Serializes this OrderResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of OrderPublic
+  /// Create a copy of OrderResponse
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $OrderPublicCopyWith<OrderPublic> get copyWith =>
+  $OrderResponseCopyWith<OrderResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $OrderPublicCopyWith<$Res> {
-  factory $OrderPublicCopyWith(
-          OrderPublic value, $Res Function(OrderPublic) then) =
-      _$OrderPublicCopyWithImpl<$Res, OrderPublic>;
+abstract class $OrderResponseCopyWith<$Res> {
+  factory $OrderResponseCopyWith(
+          OrderResponse value, $Res Function(OrderResponse) then) =
+      _$OrderResponseCopyWithImpl<$Res, OrderResponse>;
   @useResult
   $Res call(
       {@JsonKey(name: 'price') num? price,
@@ -90,25 +113,26 @@ abstract class $OrderPublicCopyWith<$Res> {
       @JsonKey(name: 'payment_processing_id') String? paymentProcessingId,
       @JsonKey(name: 'final_price') num? finalPrice,
       @JsonKey(name: 'id') int id,
-      @JsonKey(name: 'student') StudentTableMap? student});
+      @JsonKey(name: 'student') StudentTable? student});
 
   $OrderTypeEnumCopyWith<$Res>? get orderType;
   $OrderStatusEnumCopyWith<$Res>? get orderStatus;
   $ShippingStatusEnumCopyWith<$Res>? get shippingStatus;
   $DiscountTypeEnumCopyWith<$Res>? get discountType;
+  $StudentTableCopyWith<$Res>? get student;
 }
 
 /// @nodoc
-class _$OrderPublicCopyWithImpl<$Res, $Val extends OrderPublic>
-    implements $OrderPublicCopyWith<$Res> {
-  _$OrderPublicCopyWithImpl(this._value, this._then);
+class _$OrderResponseCopyWithImpl<$Res, $Val extends OrderResponse>
+    implements $OrderResponseCopyWith<$Res> {
+  _$OrderResponseCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of OrderPublic
+  /// Create a copy of OrderResponse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -199,11 +223,11 @@ class _$OrderPublicCopyWithImpl<$Res, $Val extends OrderPublic>
       student: freezed == student
           ? _value.student
           : student // ignore: cast_nullable_to_non_nullable
-              as StudentTableMap?,
+              as StudentTable?,
     ) as $Val);
   }
 
-  /// Create a copy of OrderPublic
+  /// Create a copy of OrderResponse
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -217,7 +241,7 @@ class _$OrderPublicCopyWithImpl<$Res, $Val extends OrderPublic>
     });
   }
 
-  /// Create a copy of OrderPublic
+  /// Create a copy of OrderResponse
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -231,7 +255,7 @@ class _$OrderPublicCopyWithImpl<$Res, $Val extends OrderPublic>
     });
   }
 
-  /// Create a copy of OrderPublic
+  /// Create a copy of OrderResponse
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -245,7 +269,7 @@ class _$OrderPublicCopyWithImpl<$Res, $Val extends OrderPublic>
     });
   }
 
-  /// Create a copy of OrderPublic
+  /// Create a copy of OrderResponse
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -258,14 +282,28 @@ class _$OrderPublicCopyWithImpl<$Res, $Val extends OrderPublic>
       return _then(_value.copyWith(discountType: value) as $Val);
     });
   }
+
+  /// Create a copy of OrderResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $StudentTableCopyWith<$Res>? get student {
+    if (_value.student == null) {
+      return null;
+    }
+
+    return $StudentTableCopyWith<$Res>(_value.student!, (value) {
+      return _then(_value.copyWith(student: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$$OrderPublicImplCopyWith<$Res>
-    implements $OrderPublicCopyWith<$Res> {
-  factory _$$OrderPublicImplCopyWith(
-          _$OrderPublicImpl value, $Res Function(_$OrderPublicImpl) then) =
-      __$$OrderPublicImplCopyWithImpl<$Res>;
+abstract class _$$OrderResponseImplCopyWith<$Res>
+    implements $OrderResponseCopyWith<$Res> {
+  factory _$$OrderResponseImplCopyWith(
+          _$OrderResponseImpl value, $Res Function(_$OrderResponseImpl) then) =
+      __$$OrderResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -286,7 +324,7 @@ abstract class _$$OrderPublicImplCopyWith<$Res>
       @JsonKey(name: 'payment_processing_id') String? paymentProcessingId,
       @JsonKey(name: 'final_price') num? finalPrice,
       @JsonKey(name: 'id') int id,
-      @JsonKey(name: 'student') StudentTableMap? student});
+      @JsonKey(name: 'student') StudentTable? student});
 
   @override
   $OrderTypeEnumCopyWith<$Res>? get orderType;
@@ -296,17 +334,19 @@ abstract class _$$OrderPublicImplCopyWith<$Res>
   $ShippingStatusEnumCopyWith<$Res>? get shippingStatus;
   @override
   $DiscountTypeEnumCopyWith<$Res>? get discountType;
+  @override
+  $StudentTableCopyWith<$Res>? get student;
 }
 
 /// @nodoc
-class __$$OrderPublicImplCopyWithImpl<$Res>
-    extends _$OrderPublicCopyWithImpl<$Res, _$OrderPublicImpl>
-    implements _$$OrderPublicImplCopyWith<$Res> {
-  __$$OrderPublicImplCopyWithImpl(
-      _$OrderPublicImpl _value, $Res Function(_$OrderPublicImpl) _then)
+class __$$OrderResponseImplCopyWithImpl<$Res>
+    extends _$OrderResponseCopyWithImpl<$Res, _$OrderResponseImpl>
+    implements _$$OrderResponseImplCopyWith<$Res> {
+  __$$OrderResponseImplCopyWithImpl(
+      _$OrderResponseImpl _value, $Res Function(_$OrderResponseImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of OrderPublic
+  /// Create a copy of OrderResponse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -329,7 +369,7 @@ class __$$OrderPublicImplCopyWithImpl<$Res>
     Object? id = null,
     Object? student = freezed,
   }) {
-    return _then(_$OrderPublicImpl(
+    return _then(_$OrderResponseImpl(
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -397,7 +437,7 @@ class __$$OrderPublicImplCopyWithImpl<$Res>
       student: freezed == student
           ? _value.student
           : student // ignore: cast_nullable_to_non_nullable
-              as StudentTableMap?,
+              as StudentTable?,
     ));
   }
 }
@@ -405,8 +445,8 @@ class __$$OrderPublicImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(converters: convertors)
-class _$OrderPublicImpl extends _OrderPublic {
-  const _$OrderPublicImpl(
+class _$OrderResponseImpl extends _OrderResponse {
+  const _$OrderResponseImpl(
       {@JsonKey(name: 'price') required this.price,
       @JsonKey(name: 'currency') required this.currency,
       @JsonKey(name: 'product') required this.product,
@@ -428,15 +468,20 @@ class _$OrderPublicImpl extends _OrderPublic {
       : _orderStatusHistory = orderStatusHistory,
         super._();
 
-  factory _$OrderPublicImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OrderPublicImplFromJson(json);
+  factory _$OrderResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OrderResponseImplFromJson(json);
 
+  /// Price
   @override
   @JsonKey(name: 'price')
   final num? price;
+
+  /// Currency
   @override
   @JsonKey(name: 'currency')
   final String? currency;
+
+  /// Product
   @override
   @JsonKey(name: 'product')
   final dynamic product;
@@ -446,7 +491,11 @@ class _$OrderPublicImpl extends _OrderPublic {
   @override
   @JsonKey(name: 'order_status')
   final OrderStatusEnum? orderStatus;
+
+  /// Order Status History
   final Map<dynamic, dynamic>? _orderStatusHistory;
+
+  /// Order Status History
   @override
   @JsonKey(name: 'order_status_history')
   Map<dynamic, dynamic>? get orderStatusHistory {
@@ -458,50 +507,65 @@ class _$OrderPublicImpl extends _OrderPublic {
     return EqualUnmodifiableMapView(value);
   }
 
+  /// Quantity
   @override
   @JsonKey(name: 'quantity')
   final int? quantity;
+
+  /// Payment Method
   @override
   @JsonKey(name: 'payment_method')
   final String? paymentMethod;
+
+  /// Payment Status
   @override
   @JsonKey(name: 'payment_status')
   final String? paymentStatus;
+
+  /// Shipping Address
   @override
   @JsonKey(name: 'shipping_address')
   final String? shippingAddress;
   @override
   @JsonKey(name: 'shipping_status')
   final ShippingStatusEnum? shippingStatus;
+
+  /// Discount
   @override
   @JsonKey(name: 'discount')
   final num? discount;
   @override
   @JsonKey(name: 'discount_type')
   final DiscountTypeEnum? discountType;
+
+  /// Payment Processing Id
   @override
   @JsonKey(name: 'payment_processing_id')
   final String? paymentProcessingId;
+
+  /// Final Price
   @override
   @JsonKey(name: 'final_price')
   final num? finalPrice;
+
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
   @override
   @JsonKey(name: 'student')
-  final StudentTableMap? student;
+  final StudentTable? student;
 
   @override
   String toString() {
-    return 'OrderPublic(price: $price, currency: $currency, product: $product, orderType: $orderType, orderStatus: $orderStatus, orderStatusHistory: $orderStatusHistory, quantity: $quantity, paymentMethod: $paymentMethod, paymentStatus: $paymentStatus, shippingAddress: $shippingAddress, shippingStatus: $shippingStatus, discount: $discount, discountType: $discountType, paymentProcessingId: $paymentProcessingId, finalPrice: $finalPrice, id: $id, student: $student)';
+    return 'OrderResponse(price: $price, currency: $currency, product: $product, orderType: $orderType, orderStatus: $orderStatus, orderStatusHistory: $orderStatusHistory, quantity: $quantity, paymentMethod: $paymentMethod, paymentStatus: $paymentStatus, shippingAddress: $shippingAddress, shippingStatus: $shippingStatus, discount: $discount, discountType: $discountType, paymentProcessingId: $paymentProcessingId, finalPrice: $finalPrice, id: $id, student: $student)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OrderPublicImpl &&
+            other is _$OrderResponseImpl &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.currency, currency) ||
                 other.currency == currency) &&
@@ -531,7 +595,7 @@ class _$OrderPublicImpl extends _OrderPublic {
             (identical(other.finalPrice, finalPrice) ||
                 other.finalPrice == finalPrice) &&
             (identical(other.id, id) || other.id == id) &&
-            const DeepCollectionEquality().equals(other.student, student));
+            (identical(other.student, student) || other.student == student));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -554,26 +618,26 @@ class _$OrderPublicImpl extends _OrderPublic {
       paymentProcessingId,
       finalPrice,
       id,
-      const DeepCollectionEquality().hash(student));
+      student);
 
-  /// Create a copy of OrderPublic
+  /// Create a copy of OrderResponse
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$OrderPublicImplCopyWith<_$OrderPublicImpl> get copyWith =>
-      __$$OrderPublicImplCopyWithImpl<_$OrderPublicImpl>(this, _$identity);
+  _$$OrderResponseImplCopyWith<_$OrderResponseImpl> get copyWith =>
+      __$$OrderResponseImplCopyWithImpl<_$OrderResponseImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$OrderPublicImplToJson(
+    return _$$OrderResponseImplToJson(
       this,
     );
   }
 }
 
-abstract class _OrderPublic extends OrderPublic {
-  const factory _OrderPublic(
+abstract class _OrderResponse extends OrderResponse {
+  const factory _OrderResponse(
       {@JsonKey(name: 'price') required final num? price,
       @JsonKey(name: 'currency') required final String? currency,
       @JsonKey(name: 'product') required final dynamic product,
@@ -596,18 +660,23 @@ abstract class _OrderPublic extends OrderPublic {
       @JsonKey(name: 'final_price') required final num? finalPrice,
       @JsonKey(name: 'id') required final int id,
       @JsonKey(name: 'student')
-      required final StudentTableMap? student}) = _$OrderPublicImpl;
-  const _OrderPublic._() : super._();
+      required final StudentTable? student}) = _$OrderResponseImpl;
+  const _OrderResponse._() : super._();
 
-  factory _OrderPublic.fromJson(Map<String, dynamic> json) =
-      _$OrderPublicImpl.fromJson;
+  factory _OrderResponse.fromJson(Map<String, dynamic> json) =
+      _$OrderResponseImpl.fromJson;
 
+  /// Price
   @override
   @JsonKey(name: 'price')
   num? get price;
+
+  /// Currency
   @override
   @JsonKey(name: 'currency')
   String? get currency;
+
+  /// Product
   @override
   @JsonKey(name: 'product')
   dynamic get product;
@@ -617,47 +686,65 @@ abstract class _OrderPublic extends OrderPublic {
   @override
   @JsonKey(name: 'order_status')
   OrderStatusEnum? get orderStatus;
+
+  /// Order Status History
   @override
   @JsonKey(name: 'order_status_history')
   Map<dynamic, dynamic>? get orderStatusHistory;
+
+  /// Quantity
   @override
   @JsonKey(name: 'quantity')
   int? get quantity;
+
+  /// Payment Method
   @override
   @JsonKey(name: 'payment_method')
   String? get paymentMethod;
+
+  /// Payment Status
   @override
   @JsonKey(name: 'payment_status')
   String? get paymentStatus;
+
+  /// Shipping Address
   @override
   @JsonKey(name: 'shipping_address')
   String? get shippingAddress;
   @override
   @JsonKey(name: 'shipping_status')
   ShippingStatusEnum? get shippingStatus;
+
+  /// Discount
   @override
   @JsonKey(name: 'discount')
   num? get discount;
   @override
   @JsonKey(name: 'discount_type')
   DiscountTypeEnum? get discountType;
+
+  /// Payment Processing Id
   @override
   @JsonKey(name: 'payment_processing_id')
   String? get paymentProcessingId;
+
+  /// Final Price
   @override
   @JsonKey(name: 'final_price')
   num? get finalPrice;
+
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;
   @override
   @JsonKey(name: 'student')
-  StudentTableMap? get student;
+  StudentTable? get student;
 
-  /// Create a copy of OrderPublic
+  /// Create a copy of OrderResponse
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OrderPublicImplCopyWith<_$OrderPublicImpl> get copyWith =>
+  _$$OrderResponseImplCopyWith<_$OrderResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

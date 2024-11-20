@@ -162,14 +162,6 @@ class ${className} with _\$${className} {
   }) {
     final buffer = StringBuffer();
 
-    // Add @Default annotation if default value is provided
-    if (freezedDefaultValue != null) {
-      buffer.writeln('@Default($freezedDefaultValue)');
-    }
-
-    // Add @JsonKey annotation
-    buffer.writeln('@JsonKey(name: \'$jsonName\')');
-
     // Add comment if title or description is provided
     if (title != null || description != null) {
       final commentParts = [
@@ -178,6 +170,14 @@ class ${className} with _\$${className} {
       ];
       buffer.writeln('/// ${commentParts.join(', ')}');
     }
+    
+    // Add @Default annotation if default value is provided
+    if (freezedDefaultValue != null) {
+      buffer.writeln('@Default($freezedDefaultValue)');
+    }
+
+    // Add @JsonKey annotation
+    buffer.writeln('@JsonKey(name: \'$jsonName\')');
 
     // Add field declaration
     buffer.write('required $propertyType $propertyName,');

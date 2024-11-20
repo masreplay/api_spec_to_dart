@@ -11,14 +11,11 @@ class WeeklyScheduleTeacherResponse with _$WeeklyScheduleTeacherResponse {
 
   @JsonSerializable(converters: convertors)
   const factory WeeklyScheduleTeacherResponse({
-    @JsonKey(name: 'weekday')
-
     /// Weekday
-    required int weekday,
-    @JsonKey(name: 'lectures')
+    @JsonKey(name: 'weekday') required int weekday,
 
     /// Lectures
-    required List lectures,
+    @JsonKey(name: 'lectures') required List lectures,
   }) = _WeeklyScheduleTeacherResponse;
 
   factory WeeklyScheduleTeacherResponse.fromJson(Map<String, dynamic> json) =>

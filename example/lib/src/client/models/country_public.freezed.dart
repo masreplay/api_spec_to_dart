@@ -20,8 +20,11 @@ CountryPublic _$CountryPublicFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CountryPublic {
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+
+  /// Name
   @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
 
@@ -127,9 +130,12 @@ class _$CountryPublicImpl extends _CountryPublic {
   factory _$CountryPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$CountryPublicImplFromJson(json);
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   final String name;
@@ -177,9 +183,12 @@ abstract class _CountryPublic extends CountryPublic {
   factory _CountryPublic.fromJson(Map<String, dynamic> json) =
       _$CountryPublicImpl.fromJson;
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   String get name;

@@ -21,8 +21,11 @@ BaseResponseListPaymentMethodPublic
 
 /// @nodoc
 mixin _$BaseResponseListPaymentMethodPublic {
+  /// Message
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
+
+  /// Data
   @JsonKey(name: 'data')
   List<dynamic> get data => throw _privateConstructorUsedError;
 
@@ -142,10 +145,15 @@ class _$BaseResponseListPaymentMethodPublicImpl
           Map<String, dynamic> json) =>
       _$$BaseResponseListPaymentMethodPublicImplFromJson(json);
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   final String? message;
+
+  /// Data
   final List<dynamic> _data;
+
+  /// Data
   @override
   @JsonKey(name: 'data')
   List<dynamic> get data {
@@ -203,9 +211,12 @@ abstract class _BaseResponseListPaymentMethodPublic
           Map<String, dynamic> json) =
       _$BaseResponseListPaymentMethodPublicImpl.fromJson;
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   String? get message;
+
+  /// Data
   @override
   @JsonKey(name: 'data')
   List<dynamic> get data;

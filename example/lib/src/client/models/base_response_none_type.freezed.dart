@@ -20,8 +20,11 @@ BaseResponseNoneType _$BaseResponseNoneTypeFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$BaseResponseNoneType {
+  /// Message
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
+
+  /// Data
   @JsonKey(name: 'data')
   dynamic get data => throw _privateConstructorUsedError;
 
@@ -132,9 +135,12 @@ class _$BaseResponseNoneTypeImpl extends _BaseResponseNoneType {
   factory _$BaseResponseNoneTypeImpl.fromJson(Map<String, dynamic> json) =>
       _$$BaseResponseNoneTypeImplFromJson(json);
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   final String? message;
+
+  /// Data
   @override
   @JsonKey(name: 'data')
   final dynamic data;
@@ -186,9 +192,12 @@ abstract class _BaseResponseNoneType extends BaseResponseNoneType {
   factory _BaseResponseNoneType.fromJson(Map<String, dynamic> json) =
       _$BaseResponseNoneTypeImpl.fromJson;
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   String? get message;
+
+  /// Data
   @override
   @JsonKey(name: 'data')
   dynamic get data;

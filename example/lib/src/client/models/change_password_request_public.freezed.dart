@@ -21,8 +21,11 @@ ChangePasswordRequestPublic _$ChangePasswordRequestPublicFromJson(
 
 /// @nodoc
 mixin _$ChangePasswordRequestPublic {
+  /// Old Password
   @JsonKey(name: 'old_password')
   String get oldPassword => throw _privateConstructorUsedError;
+
+  /// New Password
   @JsonKey(name: 'new_password')
   String get newPassword => throw _privateConstructorUsedError;
 
@@ -139,9 +142,12 @@ class _$ChangePasswordRequestPublicImpl extends _ChangePasswordRequestPublic {
           Map<String, dynamic> json) =>
       _$$ChangePasswordRequestPublicImplFromJson(json);
 
+  /// Old Password
   @override
   @JsonKey(name: 'old_password')
   final String oldPassword;
+
+  /// New Password
   @override
   @JsonKey(name: 'new_password')
   final String newPassword;
@@ -194,9 +200,12 @@ abstract class _ChangePasswordRequestPublic
   factory _ChangePasswordRequestPublic.fromJson(Map<String, dynamic> json) =
       _$ChangePasswordRequestPublicImpl.fromJson;
 
+  /// Old Password
   @override
   @JsonKey(name: 'old_password')
   String get oldPassword;
+
+  /// New Password
   @override
   @JsonKey(name: 'new_password')
   String get newPassword;

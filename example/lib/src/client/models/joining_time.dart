@@ -11,10 +11,8 @@ class JoiningTime with _$JoiningTime {
 
   @JsonSerializable(converters: convertors)
   const factory JoiningTime({
-    @JsonKey(name: 'joining_time')
-
     /// Joining Time
-    required DateTime? joiningTime,
+    @JsonKey(name: 'joining_time') required DateTime? joiningTime,
   }) = _JoiningTime;
 
   factory JoiningTime.fromJson(Map<String, dynamic> json) =>

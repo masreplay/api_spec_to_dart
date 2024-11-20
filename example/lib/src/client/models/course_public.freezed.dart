@@ -20,33 +20,58 @@ CoursePublic _$CoursePublicFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CoursePublic {
+  /// Course Code
   @JsonKey(name: 'course_code')
   String get courseCode => throw _privateConstructorUsedError;
+
+  /// Course Classifications
   @JsonKey(name: 'course_classifications')
   int? get courseClassifications => throw _privateConstructorUsedError;
+
+  /// Total Credits
   @JsonKey(name: 'total_credits')
   int get totalCredits => throw _privateConstructorUsedError;
+
+  /// Course Result Type
   @JsonKey(name: 'course_result_type')
   int get courseResultType => throw _privateConstructorUsedError;
+
+  /// Highest Grade
   @JsonKey(name: 'highest_grade')
   int get highestGrade => throw _privateConstructorUsedError;
+
+  /// Lowest Grade
   @JsonKey(name: 'lowest_grade')
   int get lowestGrade => throw _privateConstructorUsedError;
+
+  /// Prerequisite Hours
   @JsonKey(name: 'prerequisite_hours')
   int? get prerequisiteHours => throw _privateConstructorUsedError;
+
+  /// Course Version
   @JsonKey(name: 'course_version')
   String? get courseVersion => throw _privateConstructorUsedError;
   @JsonKey(name: 'course_status')
   StudentCourseStatusEnum? get courseStatus =>
       throw _privateConstructorUsedError;
+
+  /// Course Fees
   @JsonKey(name: 'course_fees')
   int get courseFees => throw _privateConstructorUsedError;
+
+  /// Course Distribution Level
   @JsonKey(name: 'course_distribution_level')
   int get courseDistributionLevel => throw _privateConstructorUsedError;
+
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+
+  /// Name
   @JsonKey(name: 'name')
   String? get name => throw _privateConstructorUsedError;
+
+  /// Course Staffs
   @JsonKey(name: 'course_staffs')
   List<dynamic>? get courseStaffs => throw _privateConstructorUsedError;
   @JsonKey(name: 'seamster')
@@ -369,46 +394,73 @@ class _$CoursePublicImpl extends _CoursePublic {
   factory _$CoursePublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$CoursePublicImplFromJson(json);
 
+  /// Course Code
   @override
   @JsonKey(name: 'course_code')
   final String courseCode;
+
+  /// Course Classifications
   @override
   @JsonKey(name: 'course_classifications')
   final int? courseClassifications;
+
+  /// Total Credits
   @override
   @JsonKey(name: 'total_credits')
   final int totalCredits;
+
+  /// Course Result Type
   @override
   @JsonKey(name: 'course_result_type')
   final int courseResultType;
+
+  /// Highest Grade
   @override
   @JsonKey(name: 'highest_grade')
   final int highestGrade;
+
+  /// Lowest Grade
   @override
   @JsonKey(name: 'lowest_grade')
   final int lowestGrade;
+
+  /// Prerequisite Hours
   @override
   @JsonKey(name: 'prerequisite_hours')
   final int? prerequisiteHours;
+
+  /// Course Version
   @override
   @JsonKey(name: 'course_version')
   final String? courseVersion;
   @override
   @JsonKey(name: 'course_status')
   final StudentCourseStatusEnum? courseStatus;
+
+  /// Course Fees
   @override
   @JsonKey(name: 'course_fees')
   final int courseFees;
+
+  /// Course Distribution Level
   @override
   @JsonKey(name: 'course_distribution_level')
   final int courseDistributionLevel;
+
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   final String? name;
+
+  /// Course Staffs
   final List<dynamic>? _courseStaffs;
+
+  /// Course Staffs
   @override
   @JsonKey(name: 'course_staffs')
   List<dynamic>? get courseStaffs {
@@ -529,45 +581,70 @@ abstract class _CoursePublic extends CoursePublic {
   factory _CoursePublic.fromJson(Map<String, dynamic> json) =
       _$CoursePublicImpl.fromJson;
 
+  /// Course Code
   @override
   @JsonKey(name: 'course_code')
   String get courseCode;
+
+  /// Course Classifications
   @override
   @JsonKey(name: 'course_classifications')
   int? get courseClassifications;
+
+  /// Total Credits
   @override
   @JsonKey(name: 'total_credits')
   int get totalCredits;
+
+  /// Course Result Type
   @override
   @JsonKey(name: 'course_result_type')
   int get courseResultType;
+
+  /// Highest Grade
   @override
   @JsonKey(name: 'highest_grade')
   int get highestGrade;
+
+  /// Lowest Grade
   @override
   @JsonKey(name: 'lowest_grade')
   int get lowestGrade;
+
+  /// Prerequisite Hours
   @override
   @JsonKey(name: 'prerequisite_hours')
   int? get prerequisiteHours;
+
+  /// Course Version
   @override
   @JsonKey(name: 'course_version')
   String? get courseVersion;
   @override
   @JsonKey(name: 'course_status')
   StudentCourseStatusEnum? get courseStatus;
+
+  /// Course Fees
   @override
   @JsonKey(name: 'course_fees')
   int get courseFees;
+
+  /// Course Distribution Level
   @override
   @JsonKey(name: 'course_distribution_level')
   int get courseDistributionLevel;
+
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   String? get name;
+
+  /// Course Staffs
   @override
   @JsonKey(name: 'course_staffs')
   List<dynamic>? get courseStaffs;

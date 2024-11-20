@@ -21,8 +21,11 @@ VerificationMethodPublic _$VerificationMethodPublicFromJson(
 
 /// @nodoc
 mixin _$VerificationMethodPublic {
+  /// Name
   @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
+
+  /// Type
   @JsonKey(name: 'type')
   String get type => throw _privateConstructorUsedError;
 
@@ -134,9 +137,12 @@ class _$VerificationMethodPublicImpl extends _VerificationMethodPublic {
   factory _$VerificationMethodPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$VerificationMethodPublicImplFromJson(json);
 
+  /// Name
   @override
   @JsonKey(name: 'name')
   final String name;
+
+  /// Type
   @override
   @JsonKey(name: 'type')
   final String type;
@@ -186,9 +192,12 @@ abstract class _VerificationMethodPublic extends VerificationMethodPublic {
   factory _VerificationMethodPublic.fromJson(Map<String, dynamic> json) =
       _$VerificationMethodPublicImpl.fromJson;
 
+  /// Name
   @override
   @JsonKey(name: 'name')
   String get name;
+
+  /// Type
   @override
   @JsonKey(name: 'type')
   String get type;

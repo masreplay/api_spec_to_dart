@@ -21,36 +21,67 @@ StudentNotificationsPublic _$StudentNotificationsPublicFromJson(
 
 /// @nodoc
 mixin _$StudentNotificationsPublic {
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+
+  /// Student Id
   @JsonKey(name: 'student_id')
   int? get studentId => throw _privateConstructorUsedError;
+
+  /// Title
   @JsonKey(name: 'title')
   Map<dynamic, dynamic> get title => throw _privateConstructorUsedError;
+
+  /// Message
   @JsonKey(name: 'message')
   Map<dynamic, dynamic> get message => throw _privateConstructorUsedError;
+
+  /// Notification Type
   @JsonKey(name: 'notification_type')
   String get notificationType => throw _privateConstructorUsedError;
+
+  /// Is Opened
   @JsonKey(name: 'is_opened')
   bool get isOpened => throw _privateConstructorUsedError;
+
+  /// Deep Link
   @JsonKey(name: 'deep_link')
   String? get deepLink => throw _privateConstructorUsedError;
+
+  /// Image Url
   @JsonKey(name: 'image_url')
   String? get imageUrl => throw _privateConstructorUsedError;
+
+  /// Extra Data
   @JsonKey(name: 'extra_data')
   Map<dynamic, dynamic>? get extraData => throw _privateConstructorUsedError;
+
+  /// Creator Id
   @JsonKey(name: 'creator_id')
   int get creatorId => throw _privateConstructorUsedError;
+
+  /// Creation Time
   @JsonKey(name: 'creation_time')
   DateTime get creationTime => throw _privateConstructorUsedError;
+
+  /// Last Modifier Id
   @JsonKey(name: 'last_modifier_id')
   int? get lastModifierId => throw _privateConstructorUsedError;
+
+  /// Last Modification Time
   @JsonKey(name: 'last_modification_time')
   DateTime? get lastModificationTime => throw _privateConstructorUsedError;
+
+  /// Is Deleted
   @JsonKey(name: 'is_deleted')
   bool get isDeleted => throw _privateConstructorUsedError;
+
+  /// Deleter Id
   @JsonKey(name: 'deleter_id')
   int? get deleterId => throw _privateConstructorUsedError;
+
+  /// Deletion Time
   @JsonKey(name: 'deletion_time')
   DateTime? get deletionTime => throw _privateConstructorUsedError;
 
@@ -353,13 +384,20 @@ class _$StudentNotificationsPublicImpl extends _StudentNotificationsPublic {
           Map<String, dynamic> json) =>
       _$$StudentNotificationsPublicImplFromJson(json);
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
+
+  /// Student Id
   @override
   @JsonKey(name: 'student_id')
   final int? studentId;
+
+  /// Title
   final Map<dynamic, dynamic> _title;
+
+  /// Title
   @override
   @JsonKey(name: 'title')
   Map<dynamic, dynamic> get title {
@@ -368,7 +406,10 @@ class _$StudentNotificationsPublicImpl extends _StudentNotificationsPublic {
     return EqualUnmodifiableMapView(_title);
   }
 
+  /// Message
   final Map<dynamic, dynamic> _message;
+
+  /// Message
   @override
   @JsonKey(name: 'message')
   Map<dynamic, dynamic> get message {
@@ -377,19 +418,30 @@ class _$StudentNotificationsPublicImpl extends _StudentNotificationsPublic {
     return EqualUnmodifiableMapView(_message);
   }
 
+  /// Notification Type
   @override
   @JsonKey(name: 'notification_type')
   final String notificationType;
+
+  /// Is Opened
   @override
   @JsonKey(name: 'is_opened')
   final bool isOpened;
+
+  /// Deep Link
   @override
   @JsonKey(name: 'deep_link')
   final String? deepLink;
+
+  /// Image Url
   @override
   @JsonKey(name: 'image_url')
   final String? imageUrl;
+
+  /// Extra Data
   final Map<dynamic, dynamic>? _extraData;
+
+  /// Extra Data
   @override
   @JsonKey(name: 'extra_data')
   Map<dynamic, dynamic>? get extraData {
@@ -400,24 +452,37 @@ class _$StudentNotificationsPublicImpl extends _StudentNotificationsPublic {
     return EqualUnmodifiableMapView(value);
   }
 
+  /// Creator Id
   @override
   @JsonKey(name: 'creator_id')
   final int creatorId;
+
+  /// Creation Time
   @override
   @JsonKey(name: 'creation_time')
   final DateTime creationTime;
+
+  /// Last Modifier Id
   @override
   @JsonKey(name: 'last_modifier_id')
   final int? lastModifierId;
+
+  /// Last Modification Time
   @override
   @JsonKey(name: 'last_modification_time')
   final DateTime? lastModificationTime;
+
+  /// Is Deleted
   @override
   @JsonKey(name: 'is_deleted')
   final bool isDeleted;
+
+  /// Deleter Id
   @override
   @JsonKey(name: 'deleter_id')
   final int? deleterId;
+
+  /// Deletion Time
   @override
   @JsonKey(name: 'deletion_time')
   final DateTime? deletionTime;
@@ -529,51 +594,82 @@ abstract class _StudentNotificationsPublic extends StudentNotificationsPublic {
   factory _StudentNotificationsPublic.fromJson(Map<String, dynamic> json) =
       _$StudentNotificationsPublicImpl.fromJson;
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;
+
+  /// Student Id
   @override
   @JsonKey(name: 'student_id')
   int? get studentId;
+
+  /// Title
   @override
   @JsonKey(name: 'title')
   Map<dynamic, dynamic> get title;
+
+  /// Message
   @override
   @JsonKey(name: 'message')
   Map<dynamic, dynamic> get message;
+
+  /// Notification Type
   @override
   @JsonKey(name: 'notification_type')
   String get notificationType;
+
+  /// Is Opened
   @override
   @JsonKey(name: 'is_opened')
   bool get isOpened;
+
+  /// Deep Link
   @override
   @JsonKey(name: 'deep_link')
   String? get deepLink;
+
+  /// Image Url
   @override
   @JsonKey(name: 'image_url')
   String? get imageUrl;
+
+  /// Extra Data
   @override
   @JsonKey(name: 'extra_data')
   Map<dynamic, dynamic>? get extraData;
+
+  /// Creator Id
   @override
   @JsonKey(name: 'creator_id')
   int get creatorId;
+
+  /// Creation Time
   @override
   @JsonKey(name: 'creation_time')
   DateTime get creationTime;
+
+  /// Last Modifier Id
   @override
   @JsonKey(name: 'last_modifier_id')
   int? get lastModifierId;
+
+  /// Last Modification Time
   @override
   @JsonKey(name: 'last_modification_time')
   DateTime? get lastModificationTime;
+
+  /// Is Deleted
   @override
   @JsonKey(name: 'is_deleted')
   bool get isDeleted;
+
+  /// Deleter Id
   @override
   @JsonKey(name: 'deleter_id')
   int? get deleterId;
+
+  /// Deletion Time
   @override
   @JsonKey(name: 'deletion_time')
   DateTime? get deletionTime;

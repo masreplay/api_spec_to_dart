@@ -20,14 +20,23 @@ CourseSubjectPublic _$CourseSubjectPublicFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CourseSubjectPublic {
+  /// Course Curriculum Id
   @JsonKey(name: 'course_curriculum_id')
   int get courseCurriculumId => throw _privateConstructorUsedError;
+
+  /// Course Subject Header
   @JsonKey(name: 'course_subject_header')
   String get courseSubjectHeader => throw _privateConstructorUsedError;
+
+  /// Course Subject Content
   @JsonKey(name: 'course_subject_content')
   String get courseSubjectContent => throw _privateConstructorUsedError;
+
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+
+  /// Attachments
   @JsonKey(name: 'attachments')
   List<dynamic>? get attachments => throw _privateConstructorUsedError;
 
@@ -178,19 +187,30 @@ class _$CourseSubjectPublicImpl extends _CourseSubjectPublic {
   factory _$CourseSubjectPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$CourseSubjectPublicImplFromJson(json);
 
+  /// Course Curriculum Id
   @override
   @JsonKey(name: 'course_curriculum_id')
   final int courseCurriculumId;
+
+  /// Course Subject Header
   @override
   @JsonKey(name: 'course_subject_header')
   final String courseSubjectHeader;
+
+  /// Course Subject Content
   @override
   @JsonKey(name: 'course_subject_content')
   final String courseSubjectContent;
+
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
+
+  /// Attachments
   final List<dynamic>? _attachments;
+
+  /// Attachments
   @override
   @JsonKey(name: 'attachments')
   List<dynamic>? get attachments {
@@ -265,18 +285,27 @@ abstract class _CourseSubjectPublic extends CourseSubjectPublic {
   factory _CourseSubjectPublic.fromJson(Map<String, dynamic> json) =
       _$CourseSubjectPublicImpl.fromJson;
 
+  /// Course Curriculum Id
   @override
   @JsonKey(name: 'course_curriculum_id')
   int get courseCurriculumId;
+
+  /// Course Subject Header
   @override
   @JsonKey(name: 'course_subject_header')
   String get courseSubjectHeader;
+
+  /// Course Subject Content
   @override
   @JsonKey(name: 'course_subject_content')
   String get courseSubjectContent;
+
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;
+
+  /// Attachments
   @override
   @JsonKey(name: 'attachments')
   List<dynamic>? get attachments;

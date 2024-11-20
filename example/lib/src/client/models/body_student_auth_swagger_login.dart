@@ -11,14 +11,11 @@ class BodyStudentAuthSwaggerLogin with _$BodyStudentAuthSwaggerLogin {
 
   @JsonSerializable(converters: convertors)
   const factory BodyStudentAuthSwaggerLogin({
-    @JsonKey(name: 'username')
-
     /// Username
-    required String username,
-    @JsonKey(name: 'password')
+    @JsonKey(name: 'username') required String username,
 
     /// Password
-    required String password,
+    @JsonKey(name: 'password') required String password,
   }) = _BodyStudentAuthSwaggerLogin;
 
   factory BodyStudentAuthSwaggerLogin.fromJson(Map<String, dynamic> json) =>

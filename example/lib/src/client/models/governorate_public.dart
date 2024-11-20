@@ -11,18 +11,14 @@ class GovernoratePublic with _$GovernoratePublic {
 
   @JsonSerializable(converters: convertors)
   const factory GovernoratePublic({
-    @JsonKey(name: 'country_id')
-
     /// Country Id
-    required int countryId,
-    @JsonKey(name: 'id')
+    @JsonKey(name: 'country_id') required int countryId,
 
     /// Id
-    required int id,
-    @JsonKey(name: 'name')
+    @JsonKey(name: 'id') required int id,
 
     /// Name
-    required String name,
+    @JsonKey(name: 'name') required String name,
   }) = _GovernoratePublic;
 
   factory GovernoratePublic.fromJson(Map<String, dynamic> json) =>

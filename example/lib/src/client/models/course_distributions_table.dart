@@ -11,54 +11,43 @@ class CourseDistributionsTable with _$CourseDistributionsTable {
 
   @JsonSerializable(converters: convertors)
   const factory CourseDistributionsTable({
-    @JsonKey(name: 'academic_year_divisionId')
-
     /// Academic Year Divisionid
+    @JsonKey(name: 'academic_year_divisionId')
     required int academicYearDivisionId,
-    @JsonKey(name: 'study_program_id')
 
     /// Study Program Id
-    required int studyProgramId,
-    @JsonKey(name: 'grade')
+    @JsonKey(name: 'study_program_id') required int studyProgramId,
 
     /// Grade
-    required int grade,
-    @JsonKey(name: 'course_id')
+    @JsonKey(name: 'grade') required int grade,
 
     /// Course Id
-    required int courseId,
-    @JsonKey(name: 'id')
+    @JsonKey(name: 'course_id') required int courseId,
 
     /// Id
-    required int id,
-    @JsonKey(name: 'creator_id')
+    @JsonKey(name: 'id') required int id,
 
     /// Creator Id
-    required int creatorId,
-    @JsonKey(name: 'creation_time')
+    @JsonKey(name: 'creator_id') required int creatorId,
 
     /// Creation Time
-    required DateTime creationTime,
-    @JsonKey(name: 'last_modifier_id')
+    @JsonKey(name: 'creation_time') required DateTime creationTime,
 
     /// Last Modifier Id
-    required int? lastModifierId,
-    @JsonKey(name: 'last_modification_time')
+    @JsonKey(name: 'last_modifier_id') required int? lastModifierId,
 
     /// Last Modification Time
+    @JsonKey(name: 'last_modification_time')
     required DateTime? lastModificationTime,
-    @JsonKey(name: 'is_deleted')
 
     /// Is Deleted
-    required bool isDeleted,
-    @JsonKey(name: 'deleter_id')
+    @JsonKey(name: 'is_deleted') required bool isDeleted,
 
     /// Deleter Id
-    required int? deleterId,
-    @JsonKey(name: 'deletion_time')
+    @JsonKey(name: 'deleter_id') required int? deleterId,
 
     /// Deletion Time
-    required DateTime? deletionTime,
+    @JsonKey(name: 'deletion_time') required DateTime? deletionTime,
   }) = _CourseDistributionsTable;
 
   factory CourseDistributionsTable.fromJson(Map<String, dynamic> json) =>

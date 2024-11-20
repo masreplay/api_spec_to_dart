@@ -11,54 +11,41 @@ class AdmissionMePublic with _$AdmissionMePublic {
 
   @JsonSerializable(converters: convertors)
   const factory AdmissionMePublic({
-    @JsonKey(name: 'is_current')
-
     /// Is Current
-    required bool? isCurrent,
-    @JsonKey(name: 'collage')
+    @JsonKey(name: 'is_current') required bool? isCurrent,
 
     /// Collage
-    required String? collage,
-    @JsonKey(name: 'department')
+    @JsonKey(name: 'collage') required String? collage,
 
     /// Department
-    required String? department,
-    @JsonKey(name: 'type')
+    @JsonKey(name: 'department') required String? department,
 
     /// Type
-    required int? type,
-    @JsonKey(name: 'year')
+    @JsonKey(name: 'type') required int? type,
 
     /// Year
-    required String? year,
-    @JsonKey(name: 'study_status')
+    @JsonKey(name: 'year') required String? year,
 
     /// Study Status
-    required String? studyStatus,
-    @JsonKey(name: 'division')
+    @JsonKey(name: 'study_status') required String? studyStatus,
 
     /// Division
-    required String? division,
-    @JsonKey(name: 'group')
+    @JsonKey(name: 'division') required String? division,
 
     /// Group
-    required String? group,
-    @JsonKey(name: 'stage')
+    @JsonKey(name: 'group') required String? group,
 
     /// Stage
-    required int? stage,
-    @JsonKey(name: 'is_direct')
+    @JsonKey(name: 'stage') required int? stage,
 
     /// Is Direct
-    required int? isDirect,
-    @JsonKey(name: 'scholarship')
+    @JsonKey(name: 'is_direct') required int? isDirect,
 
     /// Scholarship
-    required String? scholarship,
-    @JsonKey(name: 'channel')
+    @JsonKey(name: 'scholarship') required String? scholarship,
 
     /// Channel
-    required String? channel,
+    @JsonKey(name: 'channel') required String? channel,
   }) = _AdmissionMePublic;
 
   factory AdmissionMePublic.fromJson(Map<String, dynamic> json) =>

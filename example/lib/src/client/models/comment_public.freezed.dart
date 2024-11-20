@@ -20,18 +20,27 @@ CommentPublic _$CommentPublicFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CommentPublic {
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+
+  /// Content
   @JsonKey(name: 'content')
   String get content => throw _privateConstructorUsedError;
+
+  /// Created At
   @JsonKey(name: 'created_at')
   DateTime get createdAt => throw _privateConstructorUsedError;
+
+  /// Created At Formatted
   @JsonKey(name: 'created_at_formatted')
   String get createdAtFormatted => throw _privateConstructorUsedError;
   @JsonKey(name: 'user')
   CommentUserPublic get user => throw _privateConstructorUsedError;
   @JsonKey(name: 'parent')
   CommentPublic? get parent => throw _privateConstructorUsedError;
+
+  /// Replies
   @JsonKey(name: 'replies')
   List<dynamic> get replies => throw _privateConstructorUsedError;
 
@@ -239,15 +248,22 @@ class _$CommentPublicImpl extends _CommentPublic {
   factory _$CommentPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$CommentPublicImplFromJson(json);
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
+
+  /// Content
   @override
   @JsonKey(name: 'content')
   final String content;
+
+  /// Created At
   @override
   @JsonKey(name: 'created_at')
   final DateTime createdAt;
+
+  /// Created At Formatted
   @override
   @JsonKey(name: 'created_at_formatted')
   final String createdAtFormatted;
@@ -257,7 +273,11 @@ class _$CommentPublicImpl extends _CommentPublic {
   @override
   @JsonKey(name: 'parent')
   final CommentPublic? parent;
+
+  /// Replies
   final List<dynamic> _replies;
+
+  /// Replies
   @override
   @JsonKey(name: 'replies')
   List<dynamic> get replies {
@@ -331,15 +351,22 @@ abstract class _CommentPublic extends CommentPublic {
   factory _CommentPublic.fromJson(Map<String, dynamic> json) =
       _$CommentPublicImpl.fromJson;
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;
+
+  /// Content
   @override
   @JsonKey(name: 'content')
   String get content;
+
+  /// Created At
   @override
   @JsonKey(name: 'created_at')
   DateTime get createdAt;
+
+  /// Created At Formatted
   @override
   @JsonKey(name: 'created_at_formatted')
   String get createdAtFormatted;
@@ -349,6 +376,8 @@ abstract class _CommentPublic extends CommentPublic {
   @override
   @JsonKey(name: 'parent')
   CommentPublic? get parent;
+
+  /// Replies
   @override
   @JsonKey(name: 'replies')
   List<dynamic> get replies;

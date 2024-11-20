@@ -21,12 +21,19 @@ StudentAttendancePublic _$StudentAttendancePublicFromJson(
 
 /// @nodoc
 mixin _$StudentAttendancePublic {
+  /// Attendance Status
   @JsonKey(name: 'attendance_status')
   int get attendanceStatus => throw _privateConstructorUsedError;
+
+  /// Attendance Date
   @JsonKey(name: 'attendance_date')
   DateTime get attendanceDate => throw _privateConstructorUsedError;
+
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+
+  /// Weekly Schedule Id
   @JsonKey(name: 'weekly_schedule_id')
   int get weeklyScheduleId => throw _privateConstructorUsedError;
 
@@ -166,15 +173,22 @@ class _$StudentAttendancePublicImpl extends _StudentAttendancePublic {
   factory _$StudentAttendancePublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$StudentAttendancePublicImplFromJson(json);
 
+  /// Attendance Status
   @override
   @JsonKey(name: 'attendance_status')
   final int attendanceStatus;
+
+  /// Attendance Date
   @override
   @JsonKey(name: 'attendance_date')
   final DateTime attendanceDate;
+
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
+
+  /// Weekly Schedule Id
   @override
   @JsonKey(name: 'weekly_schedule_id')
   final int weeklyScheduleId;
@@ -232,15 +246,22 @@ abstract class _StudentAttendancePublic extends StudentAttendancePublic {
   factory _StudentAttendancePublic.fromJson(Map<String, dynamic> json) =
       _$StudentAttendancePublicImpl.fromJson;
 
+  /// Attendance Status
   @override
   @JsonKey(name: 'attendance_status')
   int get attendanceStatus;
+
+  /// Attendance Date
   @override
   @JsonKey(name: 'attendance_date')
   DateTime get attendanceDate;
+
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;
+
+  /// Weekly Schedule Id
   @override
   @JsonKey(name: 'weekly_schedule_id')
   int get weeklyScheduleId;

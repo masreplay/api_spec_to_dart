@@ -20,6 +20,7 @@ AppSettingsUpdate _$AppSettingsUpdateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AppSettingsUpdate {
+  /// Is Force Update
   @JsonKey(name: 'is_force_update')
   bool get isForceUpdate => throw _privateConstructorUsedError;
   @JsonKey(name: 'android')
@@ -174,6 +175,7 @@ class _$AppSettingsUpdateImpl extends _AppSettingsUpdate {
   factory _$AppSettingsUpdateImpl.fromJson(Map<String, dynamic> json) =>
       _$$AppSettingsUpdateImplFromJson(json);
 
+  /// Is Force Update
   @override
   @JsonKey(name: 'is_force_update')
   final bool isForceUpdate;
@@ -232,6 +234,7 @@ abstract class _AppSettingsUpdate extends AppSettingsUpdate {
   factory _AppSettingsUpdate.fromJson(Map<String, dynamic> json) =
       _$AppSettingsUpdateImpl.fromJson;
 
+  /// Is Force Update
   @override
   @JsonKey(name: 'is_force_update')
   bool get isForceUpdate;

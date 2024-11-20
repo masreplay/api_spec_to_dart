@@ -22,6 +22,7 @@ BaseResponseUnionEmployeeFamilyPublicNoneType
 
 /// @nodoc
 mixin _$BaseResponseUnionEmployeeFamilyPublicNoneType {
+  /// Message
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
   @JsonKey(name: 'data')
@@ -165,6 +166,7 @@ class _$BaseResponseUnionEmployeeFamilyPublicNoneTypeImpl
           Map<String, dynamic> json) =>
       _$$BaseResponseUnionEmployeeFamilyPublicNoneTypeImplFromJson(json);
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   final String? message;
@@ -222,6 +224,7 @@ abstract class _BaseResponseUnionEmployeeFamilyPublicNoneType
           Map<String, dynamic> json) =
       _$BaseResponseUnionEmployeeFamilyPublicNoneTypeImpl.fromJson;
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   String? get message;

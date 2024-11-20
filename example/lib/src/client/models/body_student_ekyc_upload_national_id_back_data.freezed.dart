@@ -22,10 +22,15 @@ BodyStudentEkycUploadNationalIdBackData
 
 /// @nodoc
 mixin _$BodyStudentEkycUploadNationalIdBackData {
+  /// Data
   @JsonKey(name: 'data')
   String get data => throw _privateConstructorUsedError;
+
+  /// File
   @JsonKey(name: 'file')
   File get file => throw _privateConstructorUsedError;
+
+  /// File Raw
   @JsonKey(name: 'file_raw')
   File get fileRaw => throw _privateConstructorUsedError;
 
@@ -158,12 +163,17 @@ class _$BodyStudentEkycUploadNationalIdBackDataImpl
           Map<String, dynamic> json) =>
       _$$BodyStudentEkycUploadNationalIdBackDataImplFromJson(json);
 
+  /// Data
   @override
   @JsonKey(name: 'data')
   final String data;
+
+  /// File
   @override
   @JsonKey(name: 'file')
   final File file;
+
+  /// File Raw
   @override
   @JsonKey(name: 'file_raw')
   final File fileRaw;
@@ -219,12 +229,17 @@ abstract class _BodyStudentEkycUploadNationalIdBackData
           Map<String, dynamic> json) =
       _$BodyStudentEkycUploadNationalIdBackDataImpl.fromJson;
 
+  /// Data
   @override
   @JsonKey(name: 'data')
   String get data;
+
+  /// File
   @override
   @JsonKey(name: 'file')
   File get file;
+
+  /// File Raw
   @override
   @JsonKey(name: 'file_raw')
   File get fileRaw;

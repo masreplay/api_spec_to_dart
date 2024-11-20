@@ -20,14 +20,23 @@ FilePublic _$FilePublicFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FilePublic {
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+
+  /// Url
   @JsonKey(name: 'url')
   Uri get url => throw _privateConstructorUsedError;
+
+  /// Name
   @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
+
+  /// Content Type
   @JsonKey(name: 'content_type')
   String get contentType => throw _privateConstructorUsedError;
+
+  /// Size
   @JsonKey(name: 'size')
   int get size => throw _privateConstructorUsedError;
 
@@ -176,18 +185,27 @@ class _$FilePublicImpl extends _FilePublic {
   factory _$FilePublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$FilePublicImplFromJson(json);
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
+
+  /// Url
   @override
   @JsonKey(name: 'url')
   final Uri url;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   final String name;
+
+  /// Content Type
   @override
   @JsonKey(name: 'content_type')
   final String contentType;
+
+  /// Size
   @override
   @JsonKey(name: 'size')
   final int size;
@@ -243,18 +261,27 @@ abstract class _FilePublic extends FilePublic {
   factory _FilePublic.fromJson(Map<String, dynamic> json) =
       _$FilePublicImpl.fromJson;
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;
+
+  /// Url
   @override
   @JsonKey(name: 'url')
   Uri get url;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   String get name;
+
+  /// Content Type
   @override
   @JsonKey(name: 'content_type')
   String get contentType;
+
+  /// Size
   @override
   @JsonKey(name: 'size')
   int get size;

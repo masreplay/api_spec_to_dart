@@ -21,12 +21,19 @@ PaginationResponseStudentFeesPublic
 
 /// @nodoc
 mixin _$PaginationResponseStudentFeesPublic {
+  /// Page
   @JsonKey(name: 'page')
   int get page => throw _privateConstructorUsedError;
+
+  /// Per Page
   @JsonKey(name: 'per_page')
   int get perPage => throw _privateConstructorUsedError;
+
+  /// Total
   @JsonKey(name: 'total')
   int get total => throw _privateConstructorUsedError;
+
+  /// Data
   @JsonKey(name: 'data')
   List<dynamic> get data => throw _privateConstructorUsedError;
 
@@ -172,16 +179,25 @@ class _$PaginationResponseStudentFeesPublicImpl
           Map<String, dynamic> json) =>
       _$$PaginationResponseStudentFeesPublicImplFromJson(json);
 
+  /// Page
   @override
   @JsonKey(name: 'page')
   final int page;
+
+  /// Per Page
   @override
   @JsonKey(name: 'per_page')
   final int perPage;
+
+  /// Total
   @override
   @JsonKey(name: 'total')
   final int total;
+
+  /// Data
   final List<dynamic> _data;
+
+  /// Data
   @override
   @JsonKey(name: 'data')
   List<dynamic> get data {
@@ -243,15 +259,22 @@ abstract class _PaginationResponseStudentFeesPublic
           Map<String, dynamic> json) =
       _$PaginationResponseStudentFeesPublicImpl.fromJson;
 
+  /// Page
   @override
   @JsonKey(name: 'page')
   int get page;
+
+  /// Per Page
   @override
   @JsonKey(name: 'per_page')
   int get perPage;
+
+  /// Total
   @override
   @JsonKey(name: 'total')
   int get total;
+
+  /// Data
   @override
   @JsonKey(name: 'data')
   List<dynamic> get data;

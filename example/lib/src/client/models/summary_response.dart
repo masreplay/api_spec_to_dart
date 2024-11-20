@@ -11,17 +11,15 @@ class SummaryResponse with _$SummaryResponse {
 
   @JsonSerializable(converters: convertors)
   const factory SummaryResponse({
-    @JsonKey(name: 'number_of_collage_subjects')
-
     /// Number Of Collage Subjects
+    @JsonKey(name: 'number_of_collage_subjects')
     required int? numberOfCollageSubjects,
-    @JsonKey(name: 'number_of_units')
 
     /// Number Of Units
-    required int? numberOfUnits,
-    @JsonKey(name: 'number_of_completed_units')
+    @JsonKey(name: 'number_of_units') required int? numberOfUnits,
 
     /// Number Of Completed Units
+    @JsonKey(name: 'number_of_completed_units')
     required int? numberOfCompletedUnits,
   }) = _SummaryResponse;
 

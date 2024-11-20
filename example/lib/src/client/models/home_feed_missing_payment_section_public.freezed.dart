@@ -21,12 +21,19 @@ HomeFeedMissingPaymentSectionPublic
 
 /// @nodoc
 mixin _$HomeFeedMissingPaymentSectionPublic {
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+
+  /// Type
   @JsonKey(name: 'type')
   String get type => throw _privateConstructorUsedError;
+
+  /// Title
   @JsonKey(name: 'title')
   String get title => throw _privateConstructorUsedError;
+
+  /// Description
   @JsonKey(name: 'description')
   String? get description => throw _privateConstructorUsedError;
   @JsonKey(name: 'data')
@@ -203,15 +210,22 @@ class _$HomeFeedMissingPaymentSectionPublicImpl
           Map<String, dynamic> json) =>
       _$$HomeFeedMissingPaymentSectionPublicImplFromJson(json);
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
+
+  /// Type
   @override
   @JsonKey(name: 'type')
   final String type;
+
+  /// Title
   @override
   @JsonKey(name: 'title')
   final String title;
+
+  /// Description
   @override
   @JsonKey(name: 'description')
   final String? description;
@@ -276,15 +290,22 @@ abstract class _HomeFeedMissingPaymentSectionPublic
           Map<String, dynamic> json) =
       _$HomeFeedMissingPaymentSectionPublicImpl.fromJson;
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;
+
+  /// Type
   @override
   @JsonKey(name: 'type')
   String get type;
+
+  /// Title
   @override
   @JsonKey(name: 'title')
   String get title;
+
+  /// Description
   @override
   @JsonKey(name: 'description')
   String? get description;

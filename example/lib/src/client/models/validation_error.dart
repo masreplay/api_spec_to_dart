@@ -11,18 +11,14 @@ class ValidationError with _$ValidationError {
 
   @JsonSerializable(converters: convertors)
   const factory ValidationError({
-    @JsonKey(name: 'loc')
-
     /// Location
-    required List loc,
-    @JsonKey(name: 'msg')
+    @JsonKey(name: 'loc') required List loc,
 
     /// Message
-    required String msg,
-    @JsonKey(name: 'type')
+    @JsonKey(name: 'msg') required String msg,
 
     /// Error Type
-    required String type,
+    @JsonKey(name: 'type') required String type,
   }) = _ValidationError;
 
   factory ValidationError.fromJson(Map<String, dynamic> json) =>

@@ -20,16 +20,27 @@ Summary _$SummaryFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Summary {
+  /// Id
   @JsonKey(name: 'id')
   int? get id => throw _privateConstructorUsedError;
+
+  /// Title
   @JsonKey(name: 'title')
   String? get title => throw _privateConstructorUsedError;
+
+  /// Is Active
   @JsonKey(name: 'is_active')
   bool? get isActive => throw _privateConstructorUsedError;
+
+  /// Total Number Of Units
   @JsonKey(name: 'total_number_of_units')
   num? get totalNumberOfUnits => throw _privateConstructorUsedError;
+
+  /// Current Number Of Units
   @JsonKey(name: 'current_number_of_units')
   int get currentNumberOfUnits => throw _privateConstructorUsedError;
+
+  /// Current Number Of Subjects
   @JsonKey(name: 'current_number_of_subjects')
   int get currentNumberOfSubjects => throw _privateConstructorUsedError;
 
@@ -192,21 +203,32 @@ class _$SummaryImpl extends _Summary {
   factory _$SummaryImpl.fromJson(Map<String, dynamic> json) =>
       _$$SummaryImplFromJson(json);
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int? id;
+
+  /// Title
   @override
   @JsonKey(name: 'title')
   final String? title;
+
+  /// Is Active
   @override
   @JsonKey(name: 'is_active')
   final bool? isActive;
+
+  /// Total Number Of Units
   @override
   @JsonKey(name: 'total_number_of_units')
   final num? totalNumberOfUnits;
+
+  /// Current Number Of Units
   @override
   @JsonKey(name: 'current_number_of_units')
   final int currentNumberOfUnits;
+
+  /// Current Number Of Subjects
   @override
   @JsonKey(name: 'current_number_of_subjects')
   final int currentNumberOfSubjects;
@@ -270,21 +292,32 @@ abstract class _Summary extends Summary {
 
   factory _Summary.fromJson(Map<String, dynamic> json) = _$SummaryImpl.fromJson;
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   int? get id;
+
+  /// Title
   @override
   @JsonKey(name: 'title')
   String? get title;
+
+  /// Is Active
   @override
   @JsonKey(name: 'is_active')
   bool? get isActive;
+
+  /// Total Number Of Units
   @override
   @JsonKey(name: 'total_number_of_units')
   num? get totalNumberOfUnits;
+
+  /// Current Number Of Units
   @override
   @JsonKey(name: 'current_number_of_units')
   int get currentNumberOfUnits;
+
+  /// Current Number Of Subjects
   @override
   @JsonKey(name: 'current_number_of_subjects')
   int get currentNumberOfSubjects;

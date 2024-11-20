@@ -20,14 +20,23 @@ StudentFeesPublic _$StudentFeesPublicFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$StudentFeesPublic {
+  /// Student Academic Status Id
   @JsonKey(name: 'student_academic_status_id')
   int get studentAcademicStatusId => throw _privateConstructorUsedError;
+
+  /// Amount
   @JsonKey(name: 'amount')
   num get amount => throw _privateConstructorUsedError;
+
+  /// Receipt Number
   @JsonKey(name: 'receipt_number')
   String get receiptNumber => throw _privateConstructorUsedError;
+
+  /// Receipt Date
   @JsonKey(name: 'receipt_date')
   DateTime get receiptDate => throw _privateConstructorUsedError;
+
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'fees_type')
@@ -212,18 +221,27 @@ class _$StudentFeesPublicImpl extends _StudentFeesPublic {
   factory _$StudentFeesPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$StudentFeesPublicImplFromJson(json);
 
+  /// Student Academic Status Id
   @override
   @JsonKey(name: 'student_academic_status_id')
   final int studentAcademicStatusId;
+
+  /// Amount
   @override
   @JsonKey(name: 'amount')
   final num amount;
+
+  /// Receipt Number
   @override
   @JsonKey(name: 'receipt_number')
   final String receiptNumber;
+
+  /// Receipt Date
   @override
   @JsonKey(name: 'receipt_date')
   final DateTime receiptDate;
+
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
@@ -292,18 +310,27 @@ abstract class _StudentFeesPublic extends StudentFeesPublic {
   factory _StudentFeesPublic.fromJson(Map<String, dynamic> json) =
       _$StudentFeesPublicImpl.fromJson;
 
+  /// Student Academic Status Id
   @override
   @JsonKey(name: 'student_academic_status_id')
   int get studentAcademicStatusId;
+
+  /// Amount
   @override
   @JsonKey(name: 'amount')
   num get amount;
+
+  /// Receipt Number
   @override
   @JsonKey(name: 'receipt_number')
   String get receiptNumber;
+
+  /// Receipt Date
   @override
   @JsonKey(name: 'receipt_date')
   DateTime get receiptDate;
+
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;

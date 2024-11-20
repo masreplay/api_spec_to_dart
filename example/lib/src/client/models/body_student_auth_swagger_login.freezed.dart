@@ -21,8 +21,11 @@ BodyStudentAuthSwaggerLogin _$BodyStudentAuthSwaggerLoginFromJson(
 
 /// @nodoc
 mixin _$BodyStudentAuthSwaggerLogin {
+  /// Username
   @JsonKey(name: 'username')
   String get username => throw _privateConstructorUsedError;
+
+  /// Password
   @JsonKey(name: 'password')
   String get password => throw _privateConstructorUsedError;
 
@@ -139,9 +142,12 @@ class _$BodyStudentAuthSwaggerLoginImpl extends _BodyStudentAuthSwaggerLogin {
           Map<String, dynamic> json) =>
       _$$BodyStudentAuthSwaggerLoginImplFromJson(json);
 
+  /// Username
   @override
   @JsonKey(name: 'username')
   final String username;
+
+  /// Password
   @override
   @JsonKey(name: 'password')
   final String password;
@@ -194,9 +200,12 @@ abstract class _BodyStudentAuthSwaggerLogin
   factory _BodyStudentAuthSwaggerLogin.fromJson(Map<String, dynamic> json) =
       _$BodyStudentAuthSwaggerLoginImpl.fromJson;
 
+  /// Username
   @override
   @JsonKey(name: 'username')
   String get username;
+
+  /// Password
   @override
   @JsonKey(name: 'password')
   String get password;

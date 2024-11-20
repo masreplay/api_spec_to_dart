@@ -12,108 +12,87 @@ class CourseTable with _$CourseTable {
 
   @JsonSerializable(converters: convertors)
   const factory CourseTable({
-    @JsonKey(name: 'course_code')
-
     /// Course Code
-    required String courseCode,
-    @JsonKey(name: 'course_classifications')
+    @JsonKey(name: 'course_code') required String courseCode,
 
     /// Course Classifications
+    @JsonKey(name: 'course_classifications')
     required int? courseClassifications,
-    @JsonKey(name: 'total_credits')
 
     /// Total Credits
-    required int totalCredits,
-    @JsonKey(name: 'course_result_type')
+    @JsonKey(name: 'total_credits') required int totalCredits,
 
     /// Course Result Type
-    required int courseResultType,
-    @JsonKey(name: 'highest_grade')
+    @JsonKey(name: 'course_result_type') required int courseResultType,
 
     /// Highest Grade
-    required int highestGrade,
-    @JsonKey(name: 'lowest_grade')
+    @JsonKey(name: 'highest_grade') required int highestGrade,
 
     /// Lowest Grade
-    required int lowestGrade,
-    @JsonKey(name: 'prerequisite_hours')
+    @JsonKey(name: 'lowest_grade') required int lowestGrade,
 
     /// Prerequisite Hours
-    required int? prerequisiteHours,
-    @JsonKey(name: 'course_version')
+    @JsonKey(name: 'prerequisite_hours') required int? prerequisiteHours,
 
     /// Course Version
-    required String? courseVersion,
+    @JsonKey(name: 'course_version') required String? courseVersion,
     @JsonKey(name: 'course_status')
     required StudentCourseStatusEnum? courseStatus,
-    @JsonKey(name: 'course_fees')
 
     /// Course Fees
-    required int courseFees,
-    @JsonKey(name: 'course_distribution_level')
+    @JsonKey(name: 'course_fees') required int courseFees,
 
     /// Course Distribution Level
+    @JsonKey(name: 'course_distribution_level')
     required int courseDistributionLevel,
-    @JsonKey(name: 'id')
 
     /// Id
-    required int id,
-    @JsonKey(name: 'arabic_name')
+    @JsonKey(name: 'id') required int id,
 
     /// Arabic Name
-    required String? arabicName,
-    @JsonKey(name: 'english_name')
+    @JsonKey(name: 'arabic_name') required String? arabicName,
 
     /// English Name
-    required String? englishName,
-    @JsonKey(name: 'organizational_structure_id')
+    @JsonKey(name: 'english_name') required String? englishName,
 
     /// Organizational Structure Id
+    @JsonKey(name: 'organizational_structure_id')
     required int organizationalStructureId,
-    @JsonKey(name: 'academic_learning_framework_system_id')
 
     /// Academic Learning Framework System Id
+    @JsonKey(name: 'academic_learning_framework_system_id')
     required int academicLearningFrameworkSystemId,
-    @JsonKey(name: 'course_leader_id')
 
     /// Course Leader Id
-    required int courseLeaderId,
-    @JsonKey(name: 'course_reviewer_id')
+    @JsonKey(name: 'course_leader_id') required int courseLeaderId,
 
     /// Course Reviewer Id
-    required int courseReviewerId,
-    @JsonKey(name: 'course_tutor_id')
+    @JsonKey(name: 'course_reviewer_id') required int courseReviewerId,
 
     /// Course Tutor Id
-    required int courseTutorId,
-    @JsonKey(name: 'creator_id')
+    @JsonKey(name: 'course_tutor_id') required int courseTutorId,
 
     /// Creator Id
-    required int creatorId,
-    @JsonKey(name: 'creation_time')
+    @JsonKey(name: 'creator_id') required int creatorId,
 
     /// Creation Time
-    required DateTime creationTime,
-    @JsonKey(name: 'last_modifier_id')
+    @JsonKey(name: 'creation_time') required DateTime creationTime,
 
     /// Last Modifier Id
-    required int? lastModifierId,
-    @JsonKey(name: 'last_modification_time')
+    @JsonKey(name: 'last_modifier_id') required int? lastModifierId,
 
     /// Last Modification Time
+    @JsonKey(name: 'last_modification_time')
     required DateTime? lastModificationTime,
-    @JsonKey(name: 'is_deleted')
 
     /// Is Deleted
-    required bool isDeleted,
-    @JsonKey(name: 'deleter_id')
+    @JsonKey(name: 'is_deleted') required bool isDeleted,
 
     /// Deleter Id
-    required int? deleterId,
-    @JsonKey(name: 'deletion_time')
+    @JsonKey(name: 'deleter_id') required int? deleterId,
 
     /// Deletion Time
-    required DateTime? deletionTime,
+    @JsonKey(name: 'deletion_time') required DateTime? deletionTime,
   }) = _CourseTable;
 
   factory CourseTable.fromJson(Map<String, dynamic> json) =>

@@ -12,14 +12,11 @@ class BaseResponseUnionDictStrAnyNoneType
 
   @JsonSerializable(converters: convertors)
   const factory BaseResponseUnionDictStrAnyNoneType({
-    @JsonKey(name: 'message')
-
     /// Message
-    required String? message,
-    @JsonKey(name: 'data')
+    @JsonKey(name: 'message') required String? message,
 
     /// Data
-    required Map? data,
+    @JsonKey(name: 'data') required Map? data,
   }) = _BaseResponseUnionDictStrAnyNoneType;
 
   factory BaseResponseUnionDictStrAnyNoneType.fromJson(

@@ -11,54 +11,41 @@ class StudentDeviceCreate with _$StudentDeviceCreate {
 
   @JsonSerializable(converters: convertors)
   const factory StudentDeviceCreate({
-    @JsonKey(name: 'device_token')
-
     /// Device Token
-    required String? deviceToken,
-    @JsonKey(name: 'os_type')
+    @JsonKey(name: 'device_token') required String? deviceToken,
 
     /// Os Type
-    required String? oSType,
-    @JsonKey(name: 'os_version')
+    @JsonKey(name: 'os_type') required String? oSType,
 
     /// Os Version
-    required String? oSVersion,
-    @JsonKey(name: 'device_id')
+    @JsonKey(name: 'os_version') required String? oSVersion,
 
     /// Device Id
-    required String? deviceId,
-    @JsonKey(name: 'device_name')
+    @JsonKey(name: 'device_id') required String? deviceId,
 
     /// Device Name
-    required String? deviceName,
-    @JsonKey(name: 'device_model')
+    @JsonKey(name: 'device_name') required String? deviceName,
 
     /// Device Model
-    required String? deviceModel,
-    @JsonKey(name: 'device_brand')
+    @JsonKey(name: 'device_model') required String? deviceModel,
 
     /// Device Brand
-    required String? deviceBrand,
-    @JsonKey(name: 'serial_number')
+    @JsonKey(name: 'device_brand') required String? deviceBrand,
 
     /// Serial Number
-    required String? serialNumber,
-    @JsonKey(name: 'device_manufacturer')
+    @JsonKey(name: 'serial_number') required String? serialNumber,
 
     /// Device Manufacturer
-    required String? deviceManufacturer,
-    @JsonKey(name: 'sdk_type')
+    @JsonKey(name: 'device_manufacturer') required String? deviceManufacturer,
 
     /// Sdk Type
-    required String? sdkType,
-    @JsonKey(name: 'extra_data')
+    @JsonKey(name: 'sdk_type') required String? sdkType,
 
     /// Extra Data
-    required Map? extraData,
-    @JsonKey(name: 'device_language')
+    @JsonKey(name: 'extra_data') required Map? extraData,
 
     /// Device Language
-    required String? deviceLanguage,
+    @JsonKey(name: 'device_language') required String? deviceLanguage,
   }) = _StudentDeviceCreate;
 
   factory StudentDeviceCreate.fromJson(Map<String, dynamic> json) =>

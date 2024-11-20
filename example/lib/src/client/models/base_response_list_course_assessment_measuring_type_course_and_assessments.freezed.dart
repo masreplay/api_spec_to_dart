@@ -23,8 +23,11 @@ BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments
 
 /// @nodoc
 mixin _$BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments {
+  /// Message
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
+
+  /// Data
   @JsonKey(name: 'data')
   List<dynamic> get data => throw _privateConstructorUsedError;
 
@@ -168,10 +171,15 @@ class _$BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessmentsImpl
       _$$BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessmentsImplFromJson(
           json);
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   final String? message;
+
+  /// Data
   final List<dynamic> _data;
+
+  /// Data
   @override
   @JsonKey(name: 'data')
   List<dynamic> get data {
@@ -234,9 +242,12 @@ abstract class _BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessment
       _$BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessmentsImpl
       .fromJson;
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   String? get message;
+
+  /// Data
   @override
   @JsonKey(name: 'data')
   List<dynamic> get data;

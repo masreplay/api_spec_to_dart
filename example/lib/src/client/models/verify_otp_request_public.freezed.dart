@@ -21,6 +21,7 @@ VerifyOtpRequestPublic _$VerifyOtpRequestPublicFromJson(
 
 /// @nodoc
 mixin _$VerifyOtpRequestPublic {
+  /// Otp
   @JsonKey(name: 'otp')
   String get otp => throw _privateConstructorUsedError;
 
@@ -118,6 +119,7 @@ class _$VerifyOtpRequestPublicImpl extends _VerifyOtpRequestPublic {
   factory _$VerifyOtpRequestPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$VerifyOtpRequestPublicImplFromJson(json);
 
+  /// Otp
   @override
   @JsonKey(name: 'otp')
   final String otp;
@@ -165,6 +167,7 @@ abstract class _VerifyOtpRequestPublic extends VerifyOtpRequestPublic {
   factory _VerifyOtpRequestPublic.fromJson(Map<String, dynamic> json) =
       _$VerifyOtpRequestPublicImpl.fromJson;
 
+  /// Otp
   @override
   @JsonKey(name: 'otp')
   String get otp;

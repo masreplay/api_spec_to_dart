@@ -21,8 +21,11 @@ UISelectFormFieldOption _$UISelectFormFieldOptionFromJson(
 
 /// @nodoc
 mixin _$UISelectFormFieldOption {
+  /// Value
   @JsonKey(name: 'value')
   String get value => throw _privateConstructorUsedError;
+
+  /// Text
   @JsonKey(name: 'text')
   String get text => throw _privateConstructorUsedError;
 
@@ -136,9 +139,12 @@ class _$UISelectFormFieldOptionImpl extends _UISelectFormFieldOption {
   factory _$UISelectFormFieldOptionImpl.fromJson(Map<String, dynamic> json) =>
       _$$UISelectFormFieldOptionImplFromJson(json);
 
+  /// Value
   @override
   @JsonKey(name: 'value')
   final String value;
+
+  /// Text
   @override
   @JsonKey(name: 'text')
   final String text;
@@ -188,9 +194,12 @@ abstract class _UISelectFormFieldOption extends UISelectFormFieldOption {
   factory _UISelectFormFieldOption.fromJson(Map<String, dynamic> json) =
       _$UISelectFormFieldOptionImpl.fromJson;
 
+  /// Value
   @override
   @JsonKey(name: 'value')
   String get value;
+
+  /// Text
   @override
   @JsonKey(name: 'text')
   String get text;

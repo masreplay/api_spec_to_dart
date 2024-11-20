@@ -20,28 +20,51 @@ StudentDeviceCreate _$StudentDeviceCreateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$StudentDeviceCreate {
+  /// Device Token
   @JsonKey(name: 'device_token')
   String? get deviceToken => throw _privateConstructorUsedError;
+
+  /// Os Type
   @JsonKey(name: 'os_type')
   String? get oSType => throw _privateConstructorUsedError;
+
+  /// Os Version
   @JsonKey(name: 'os_version')
   String? get oSVersion => throw _privateConstructorUsedError;
+
+  /// Device Id
   @JsonKey(name: 'device_id')
   String? get deviceId => throw _privateConstructorUsedError;
+
+  /// Device Name
   @JsonKey(name: 'device_name')
   String? get deviceName => throw _privateConstructorUsedError;
+
+  /// Device Model
   @JsonKey(name: 'device_model')
   String? get deviceModel => throw _privateConstructorUsedError;
+
+  /// Device Brand
   @JsonKey(name: 'device_brand')
   String? get deviceBrand => throw _privateConstructorUsedError;
+
+  /// Serial Number
   @JsonKey(name: 'serial_number')
   String? get serialNumber => throw _privateConstructorUsedError;
+
+  /// Device Manufacturer
   @JsonKey(name: 'device_manufacturer')
   String? get deviceManufacturer => throw _privateConstructorUsedError;
+
+  /// Sdk Type
   @JsonKey(name: 'sdk_type')
   String? get sdkType => throw _privateConstructorUsedError;
+
+  /// Extra Data
   @JsonKey(name: 'extra_data')
   Map<dynamic, dynamic>? get extraData => throw _privateConstructorUsedError;
+
+  /// Device Language
   @JsonKey(name: 'device_language')
   String? get deviceLanguage => throw _privateConstructorUsedError;
 
@@ -283,37 +306,60 @@ class _$StudentDeviceCreateImpl extends _StudentDeviceCreate {
   factory _$StudentDeviceCreateImpl.fromJson(Map<String, dynamic> json) =>
       _$$StudentDeviceCreateImplFromJson(json);
 
+  /// Device Token
   @override
   @JsonKey(name: 'device_token')
   final String? deviceToken;
+
+  /// Os Type
   @override
   @JsonKey(name: 'os_type')
   final String? oSType;
+
+  /// Os Version
   @override
   @JsonKey(name: 'os_version')
   final String? oSVersion;
+
+  /// Device Id
   @override
   @JsonKey(name: 'device_id')
   final String? deviceId;
+
+  /// Device Name
   @override
   @JsonKey(name: 'device_name')
   final String? deviceName;
+
+  /// Device Model
   @override
   @JsonKey(name: 'device_model')
   final String? deviceModel;
+
+  /// Device Brand
   @override
   @JsonKey(name: 'device_brand')
   final String? deviceBrand;
+
+  /// Serial Number
   @override
   @JsonKey(name: 'serial_number')
   final String? serialNumber;
+
+  /// Device Manufacturer
   @override
   @JsonKey(name: 'device_manufacturer')
   final String? deviceManufacturer;
+
+  /// Sdk Type
   @override
   @JsonKey(name: 'sdk_type')
   final String? sdkType;
+
+  /// Extra Data
   final Map<dynamic, dynamic>? _extraData;
+
+  /// Extra Data
   @override
   @JsonKey(name: 'extra_data')
   Map<dynamic, dynamic>? get extraData {
@@ -324,6 +370,7 @@ class _$StudentDeviceCreateImpl extends _StudentDeviceCreate {
     return EqualUnmodifiableMapView(value);
   }
 
+  /// Device Language
   @override
   @JsonKey(name: 'device_language')
   final String? deviceLanguage;
@@ -418,39 +465,62 @@ abstract class _StudentDeviceCreate extends StudentDeviceCreate {
   factory _StudentDeviceCreate.fromJson(Map<String, dynamic> json) =
       _$StudentDeviceCreateImpl.fromJson;
 
+  /// Device Token
   @override
   @JsonKey(name: 'device_token')
   String? get deviceToken;
+
+  /// Os Type
   @override
   @JsonKey(name: 'os_type')
   String? get oSType;
+
+  /// Os Version
   @override
   @JsonKey(name: 'os_version')
   String? get oSVersion;
+
+  /// Device Id
   @override
   @JsonKey(name: 'device_id')
   String? get deviceId;
+
+  /// Device Name
   @override
   @JsonKey(name: 'device_name')
   String? get deviceName;
+
+  /// Device Model
   @override
   @JsonKey(name: 'device_model')
   String? get deviceModel;
+
+  /// Device Brand
   @override
   @JsonKey(name: 'device_brand')
   String? get deviceBrand;
+
+  /// Serial Number
   @override
   @JsonKey(name: 'serial_number')
   String? get serialNumber;
+
+  /// Device Manufacturer
   @override
   @JsonKey(name: 'device_manufacturer')
   String? get deviceManufacturer;
+
+  /// Sdk Type
   @override
   @JsonKey(name: 'sdk_type')
   String? get sdkType;
+
+  /// Extra Data
   @override
   @JsonKey(name: 'extra_data')
   Map<dynamic, dynamic>? get extraData;
+
+  /// Device Language
   @override
   @JsonKey(name: 'device_language')
   String? get deviceLanguage;

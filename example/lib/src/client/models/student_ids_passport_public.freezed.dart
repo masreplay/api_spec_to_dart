@@ -21,12 +21,19 @@ StudentIdsPassportPublic _$StudentIdsPassportPublicFromJson(
 
 /// @nodoc
 mixin _$StudentIdsPassportPublic {
+  /// Number
   @JsonKey(name: 'number')
   String? get number => throw _privateConstructorUsedError;
+
+  /// Issuing Authority
   @JsonKey(name: 'issuing_authority')
   String? get issuingAuthority => throw _privateConstructorUsedError;
+
+  /// Date Of Issue
   @JsonKey(name: 'date_of_issue')
   DateTime? get dateOfIssue => throw _privateConstructorUsedError;
+
+  /// Date Of Expiry
   @JsonKey(name: 'date_of_expiry')
   DateTime? get dateOfExpiry => throw _privateConstructorUsedError;
   @JsonKey(name: 'country')
@@ -232,15 +239,22 @@ class _$StudentIdsPassportPublicImpl extends _StudentIdsPassportPublic {
   factory _$StudentIdsPassportPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$StudentIdsPassportPublicImplFromJson(json);
 
+  /// Number
   @override
   @JsonKey(name: 'number')
   final String? number;
+
+  /// Issuing Authority
   @override
   @JsonKey(name: 'issuing_authority')
   final String? issuingAuthority;
+
+  /// Date Of Issue
   @override
   @JsonKey(name: 'date_of_issue')
   final DateTime? dateOfIssue;
+
+  /// Date Of Expiry
   @override
   @JsonKey(name: 'date_of_expiry')
   final DateTime? dateOfExpiry;
@@ -309,15 +323,22 @@ abstract class _StudentIdsPassportPublic extends StudentIdsPassportPublic {
   factory _StudentIdsPassportPublic.fromJson(Map<String, dynamic> json) =
       _$StudentIdsPassportPublicImpl.fromJson;
 
+  /// Number
   @override
   @JsonKey(name: 'number')
   String? get number;
+
+  /// Issuing Authority
   @override
   @JsonKey(name: 'issuing_authority')
   String? get issuingAuthority;
+
+  /// Date Of Issue
   @override
   @JsonKey(name: 'date_of_issue')
   DateTime? get dateOfIssue;
+
+  /// Date Of Expiry
   @override
   @JsonKey(name: 'date_of_expiry')
   DateTime? get dateOfExpiry;

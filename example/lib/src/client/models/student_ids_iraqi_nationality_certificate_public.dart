@@ -13,22 +13,17 @@ class StudentIdsIraqiNationalityCertificatePublic
 
   @JsonSerializable(converters: convertors)
   const factory StudentIdsIraqiNationalityCertificatePublic({
-    @JsonKey(name: 'number')
-
     /// Number
-    required String? number,
-    @JsonKey(name: 'wallet_number')
+    @JsonKey(name: 'number') required String? number,
 
     /// Wallet Number
-    required String? walletNumber,
-    @JsonKey(name: 'issuing_authority')
+    @JsonKey(name: 'wallet_number') required String? walletNumber,
 
     /// Issuing Authority
-    required String? issuingAuthority,
-    @JsonKey(name: 'date_of_issue')
+    @JsonKey(name: 'issuing_authority') required String? issuingAuthority,
 
     /// Date Of Issue
-    required DateTime? dateOfIssue,
+    @JsonKey(name: 'date_of_issue') required DateTime? dateOfIssue,
     @JsonKey(name: 'front_image') required FilePublic? frontImage,
     @JsonKey(name: 'back_image') required FilePublic? backImage,
   }) = _StudentIdsIraqiNationalityCertificatePublic;

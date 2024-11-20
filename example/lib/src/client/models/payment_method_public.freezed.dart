@@ -20,14 +20,23 @@ PaymentMethodPublic _$PaymentMethodPublicFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PaymentMethodPublic {
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+
+  /// Name
   @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
+
+  /// Description
   @JsonKey(name: 'description')
   String get description => throw _privateConstructorUsedError;
+
+  /// Url
   @JsonKey(name: 'url')
   String get url => throw _privateConstructorUsedError;
+
+  /// Image
   @JsonKey(name: 'image')
   String get image => throw _privateConstructorUsedError;
   @JsonKey(name: 'type')
@@ -206,18 +215,27 @@ class _$PaymentMethodPublicImpl extends _PaymentMethodPublic {
   factory _$PaymentMethodPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$PaymentMethodPublicImplFromJson(json);
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   final String name;
+
+  /// Description
   @override
   @JsonKey(name: 'description')
   final String description;
+
+  /// Url
   @override
   @JsonKey(name: 'url')
   final String url;
+
+  /// Image
   @override
   @JsonKey(name: 'image')
   final String image;
@@ -280,18 +298,27 @@ abstract class _PaymentMethodPublic extends PaymentMethodPublic {
   factory _PaymentMethodPublic.fromJson(Map<String, dynamic> json) =
       _$PaymentMethodPublicImpl.fromJson;
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   String get name;
+
+  /// Description
   @override
   @JsonKey(name: 'description')
   String get description;
+
+  /// Url
   @override
   @JsonKey(name: 'url')
   String get url;
+
+  /// Image
   @override
   @JsonKey(name: 'image')
   String get image;

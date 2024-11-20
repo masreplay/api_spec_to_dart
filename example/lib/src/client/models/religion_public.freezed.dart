@@ -20,8 +20,11 @@ ReligionPublic _$ReligionPublicFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ReligionPublic {
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+
+  /// Name
   @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
 
@@ -127,9 +130,12 @@ class _$ReligionPublicImpl extends _ReligionPublic {
   factory _$ReligionPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$ReligionPublicImplFromJson(json);
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   final String name;
@@ -179,9 +185,12 @@ abstract class _ReligionPublic extends ReligionPublic {
   factory _ReligionPublic.fromJson(Map<String, dynamic> json) =
       _$ReligionPublicImpl.fromJson;
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   String get name;

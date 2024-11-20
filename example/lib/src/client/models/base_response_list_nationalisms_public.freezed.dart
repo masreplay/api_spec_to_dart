@@ -21,8 +21,11 @@ BaseResponseListNationalismsPublic _$BaseResponseListNationalismsPublicFromJson(
 
 /// @nodoc
 mixin _$BaseResponseListNationalismsPublic {
+  /// Message
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
+
+  /// Data
   @JsonKey(name: 'data')
   List<dynamic> get data => throw _privateConstructorUsedError;
 
@@ -142,10 +145,15 @@ class _$BaseResponseListNationalismsPublicImpl
           Map<String, dynamic> json) =>
       _$$BaseResponseListNationalismsPublicImplFromJson(json);
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   final String? message;
+
+  /// Data
   final List<dynamic> _data;
+
+  /// Data
   @override
   @JsonKey(name: 'data')
   List<dynamic> get data {
@@ -203,9 +211,12 @@ abstract class _BaseResponseListNationalismsPublic
           Map<String, dynamic> json) =
       _$BaseResponseListNationalismsPublicImpl.fromJson;
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   String? get message;
+
+  /// Data
   @override
   @JsonKey(name: 'data')
   List<dynamic> get data;

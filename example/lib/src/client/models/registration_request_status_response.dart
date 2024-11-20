@@ -14,10 +14,9 @@ class RegistrationRequestStatusResponse
   @JsonSerializable(converters: convertors)
   const factory RegistrationRequestStatusResponse({
     @JsonKey(name: 'status') required StudentRequestStatus status,
-    @JsonKey(name: 'message')
 
     /// Message
-    required String? message,
+    @JsonKey(name: 'message') required String? message,
   }) = _RegistrationRequestStatusResponse;
 
   factory RegistrationRequestStatusResponse.fromJson(

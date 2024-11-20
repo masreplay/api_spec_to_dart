@@ -21,10 +21,15 @@ InformationBureausPublic _$InformationBureausPublicFromJson(
 
 /// @nodoc
 mixin _$InformationBureausPublic {
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+
+  /// Governorate Id
   @JsonKey(name: 'governorate_id')
   int get governorateId => throw _privateConstructorUsedError;
+
+  /// Name
   @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
 
@@ -151,12 +156,17 @@ class _$InformationBureausPublicImpl extends _InformationBureausPublic {
   factory _$InformationBureausPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$InformationBureausPublicImplFromJson(json);
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
+
+  /// Governorate Id
   @override
   @JsonKey(name: 'governorate_id')
   final int governorateId;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   final String name;
@@ -209,12 +219,17 @@ abstract class _InformationBureausPublic extends InformationBureausPublic {
   factory _InformationBureausPublic.fromJson(Map<String, dynamic> json) =
       _$InformationBureausPublicImpl.fromJson;
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;
+
+  /// Governorate Id
   @override
   @JsonKey(name: 'governorate_id')
   int get governorateId;
+
+  /// Name
   @override
   @JsonKey(name: 'name')
   String get name;

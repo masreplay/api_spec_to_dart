@@ -12,62 +12,48 @@ class StudentSelectedCoursesPublic with _$StudentSelectedCoursesPublic {
 
   @JsonSerializable(converters: convertors)
   const factory StudentSelectedCoursesPublic({
-    @JsonKey(name: 'student_id')
-
     /// Student Id
-    required int studentId,
-    @JsonKey(name: 'final_grade')
+    @JsonKey(name: 'student_id') required int studentId,
 
     /// Final Grade
-    required num finalGrade,
-    @JsonKey(name: 'course_result')
+    @JsonKey(name: 'final_grade') required num finalGrade,
 
     /// Course Result
-    required int courseResult,
-    @JsonKey(name: 'attempt')
+    @JsonKey(name: 'course_result') required int courseResult,
 
     /// Attempt
-    required int attempt,
-    @JsonKey(name: 'selected_date_time')
+    @JsonKey(name: 'attempt') required int attempt,
 
     /// Selected Date Time
-    required DateTime selectedDateTime,
-    @JsonKey(name: 'student_course_status')
+    @JsonKey(name: 'selected_date_time') required DateTime selectedDateTime,
 
     /// Student Course Status
-    required int studentCourseStatus,
-    @JsonKey(name: 'academic_terms')
+    @JsonKey(name: 'student_course_status') required int studentCourseStatus,
 
     /// Academic Terms
-    required int academicTerms,
-    @JsonKey(name: 'grade')
+    @JsonKey(name: 'academic_terms') required int academicTerms,
 
     /// Grade
-    required int grade,
-    @JsonKey(name: 'study_year_id')
+    @JsonKey(name: 'grade') required int grade,
 
     /// Study Year Id
-    required int studyYearId,
-    @JsonKey(name: 'course_distribution_id')
+    @JsonKey(name: 'study_year_id') required int studyYearId,
 
     /// Course Distribution Id
-    required int courseDistributionId,
-    @JsonKey(name: 'creation_time')
+    @JsonKey(name: 'course_distribution_id') required int courseDistributionId,
 
     /// Creation Time
-    required DateTime creationTime,
-    @JsonKey(name: 'course_id')
+    @JsonKey(name: 'creation_time') required DateTime creationTime,
 
     /// Course Id
-    required int courseId,
-    @JsonKey(name: 'student_academic_status_id')
+    @JsonKey(name: 'course_id') required int courseId,
 
     /// Student Academic Status Id
+    @JsonKey(name: 'student_academic_status_id')
     required int studentAcademicStatusId,
-    @JsonKey(name: 'id')
 
     /// Id
-    required int id,
+    @JsonKey(name: 'id') required int id,
     @JsonKey(name: 'course') required CourseTable? course,
     @JsonKey(name: 'course_distribution')
     required CourseDistributionsTable? courseDistribution,

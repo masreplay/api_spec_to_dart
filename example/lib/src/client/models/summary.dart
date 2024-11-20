@@ -11,31 +11,26 @@ class Summary with _$Summary {
 
   @JsonSerializable(converters: convertors)
   const factory Summary({
-    @JsonKey(name: 'id')
-
     /// Id
-    required int? id,
-    @JsonKey(name: 'title')
+    @JsonKey(name: 'id') required int? id,
 
     /// Title
-    required String? title,
-    @JsonKey(name: 'is_active')
+    @JsonKey(name: 'title') required String? title,
 
     /// Is Active
-    required bool? isActive,
-    @JsonKey(name: 'total_number_of_units')
+    @JsonKey(name: 'is_active') required bool? isActive,
 
     /// Total Number Of Units
-    required num? totalNumberOfUnits,
-    @Default(0)
-    @JsonKey(name: 'current_number_of_units')
+    @JsonKey(name: 'total_number_of_units') required num? totalNumberOfUnits,
 
     /// Current Number Of Units
-    required int currentNumberOfUnits,
     @Default(0)
-    @JsonKey(name: 'current_number_of_subjects')
+    @JsonKey(name: 'current_number_of_units')
+    required int currentNumberOfUnits,
 
     /// Current Number Of Subjects
+    @Default(0)
+    @JsonKey(name: 'current_number_of_subjects')
     required int currentNumberOfSubjects,
   }) = _Summary;
 

@@ -12,14 +12,11 @@ class BaseResponseUnionListCourseStaffPublicNoneType
 
   @JsonSerializable(converters: convertors)
   const factory BaseResponseUnionListCourseStaffPublicNoneType({
-    @JsonKey(name: 'message')
-
     /// Message
-    required String? message,
-    @JsonKey(name: 'data')
+    @JsonKey(name: 'message') required String? message,
 
     /// Data
-    required List? data,
+    @JsonKey(name: 'data') required List? data,
   }) = _BaseResponseUnionListCourseStaffPublicNoneType;
 
   factory BaseResponseUnionListCourseStaffPublicNoneType.fromJson(

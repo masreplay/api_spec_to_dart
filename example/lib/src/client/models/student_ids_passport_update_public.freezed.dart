@@ -21,14 +21,23 @@ StudentIdsPassportUpdatePublic _$StudentIdsPassportUpdatePublicFromJson(
 
 /// @nodoc
 mixin _$StudentIdsPassportUpdatePublic {
+  /// Passport Number
   @JsonKey(name: 'passport_number')
   String get passportNumber => throw _privateConstructorUsedError;
+
+  /// Passport Country Id
   @JsonKey(name: 'passport_country_id')
   int get passportCountryId => throw _privateConstructorUsedError;
+
+  /// Passport Issuing Authority
   @JsonKey(name: 'passport_issuing_authority')
   String get passportIssuingAuthority => throw _privateConstructorUsedError;
+
+  /// Passport Date Of Issue
   @JsonKey(name: 'passport_date_of_issue')
   DateTime get passportDateOfIssue => throw _privateConstructorUsedError;
+
+  /// Passport Date Of Expiry
   @JsonKey(name: 'passport_date_of_expiry')
   DateTime get passportDateOfExpiry => throw _privateConstructorUsedError;
 
@@ -190,18 +199,27 @@ class _$StudentIdsPassportUpdatePublicImpl
           Map<String, dynamic> json) =>
       _$$StudentIdsPassportUpdatePublicImplFromJson(json);
 
+  /// Passport Number
   @override
   @JsonKey(name: 'passport_number')
   final String passportNumber;
+
+  /// Passport Country Id
   @override
   @JsonKey(name: 'passport_country_id')
   final int passportCountryId;
+
+  /// Passport Issuing Authority
   @override
   @JsonKey(name: 'passport_issuing_authority')
   final String passportIssuingAuthority;
+
+  /// Passport Date Of Issue
   @override
   @JsonKey(name: 'passport_date_of_issue')
   final DateTime passportDateOfIssue;
+
+  /// Passport Date Of Expiry
   @override
   @JsonKey(name: 'passport_date_of_expiry')
   final DateTime passportDateOfExpiry;
@@ -275,18 +293,27 @@ abstract class _StudentIdsPassportUpdatePublic
   factory _StudentIdsPassportUpdatePublic.fromJson(Map<String, dynamic> json) =
       _$StudentIdsPassportUpdatePublicImpl.fromJson;
 
+  /// Passport Number
   @override
   @JsonKey(name: 'passport_number')
   String get passportNumber;
+
+  /// Passport Country Id
   @override
   @JsonKey(name: 'passport_country_id')
   int get passportCountryId;
+
+  /// Passport Issuing Authority
   @override
   @JsonKey(name: 'passport_issuing_authority')
   String get passportIssuingAuthority;
+
+  /// Passport Date Of Issue
   @override
   @JsonKey(name: 'passport_date_of_issue')
   DateTime get passportDateOfIssue;
+
+  /// Passport Date Of Expiry
   @override
   @JsonKey(name: 'passport_date_of_expiry')
   DateTime get passportDateOfExpiry;

@@ -12,25 +12,22 @@ class AuthenticationStatusOptionsResponse
 
   @JsonSerializable(converters: convertors)
   const factory AuthenticationStatusOptionsResponse({
-    @JsonKey(name: 'need_temporary_password_changed')
-
     /// Need Temporary Password Changed
+    @JsonKey(name: 'need_temporary_password_changed')
     required bool needTemporaryPasswordChanged,
-    @JsonKey(name: 'need_account_verified')
 
     /// Need Account Verified
-    required bool needAccountVerified,
-    @JsonKey(name: 'need_ekyc_verified')
+    @JsonKey(name: 'need_account_verified') required bool needAccountVerified,
 
     /// Need Ekyc Verified
-    required bool needEkycVerified,
-    @JsonKey(name: 'need_enrollment_payment_verified')
+    @JsonKey(name: 'need_ekyc_verified') required bool needEkycVerified,
 
     /// Need Enrollment Payment Verified
+    @JsonKey(name: 'need_enrollment_payment_verified')
     required bool needEnrollmentPaymentVerified,
-    @JsonKey(name: 'need_registration_request_status')
 
     /// Need Registration Request Status
+    @JsonKey(name: 'need_registration_request_status')
     required bool needRegistrationRequestStatus,
   }) = _AuthenticationStatusOptionsResponse;
 

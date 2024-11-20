@@ -21,32 +21,59 @@ StudentSelectedCoursesPublic _$StudentSelectedCoursesPublicFromJson(
 
 /// @nodoc
 mixin _$StudentSelectedCoursesPublic {
+  /// Student Id
   @JsonKey(name: 'student_id')
   int get studentId => throw _privateConstructorUsedError;
+
+  /// Final Grade
   @JsonKey(name: 'final_grade')
   num get finalGrade => throw _privateConstructorUsedError;
+
+  /// Course Result
   @JsonKey(name: 'course_result')
   int get courseResult => throw _privateConstructorUsedError;
+
+  /// Attempt
   @JsonKey(name: 'attempt')
   int get attempt => throw _privateConstructorUsedError;
+
+  /// Selected Date Time
   @JsonKey(name: 'selected_date_time')
   DateTime get selectedDateTime => throw _privateConstructorUsedError;
+
+  /// Student Course Status
   @JsonKey(name: 'student_course_status')
   int get studentCourseStatus => throw _privateConstructorUsedError;
+
+  /// Academic Terms
   @JsonKey(name: 'academic_terms')
   int get academicTerms => throw _privateConstructorUsedError;
+
+  /// Grade
   @JsonKey(name: 'grade')
   int get grade => throw _privateConstructorUsedError;
+
+  /// Study Year Id
   @JsonKey(name: 'study_year_id')
   int get studyYearId => throw _privateConstructorUsedError;
+
+  /// Course Distribution Id
   @JsonKey(name: 'course_distribution_id')
   int get courseDistributionId => throw _privateConstructorUsedError;
+
+  /// Creation Time
   @JsonKey(name: 'creation_time')
   DateTime get creationTime => throw _privateConstructorUsedError;
+
+  /// Course Id
   @JsonKey(name: 'course_id')
   int get courseId => throw _privateConstructorUsedError;
+
+  /// Student Academic Status Id
   @JsonKey(name: 'student_academic_status_id')
   int get studentAcademicStatusId => throw _privateConstructorUsedError;
+
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'course')
@@ -419,45 +446,72 @@ class _$StudentSelectedCoursesPublicImpl extends _StudentSelectedCoursesPublic {
           Map<String, dynamic> json) =>
       _$$StudentSelectedCoursesPublicImplFromJson(json);
 
+  /// Student Id
   @override
   @JsonKey(name: 'student_id')
   final int studentId;
+
+  /// Final Grade
   @override
   @JsonKey(name: 'final_grade')
   final num finalGrade;
+
+  /// Course Result
   @override
   @JsonKey(name: 'course_result')
   final int courseResult;
+
+  /// Attempt
   @override
   @JsonKey(name: 'attempt')
   final int attempt;
+
+  /// Selected Date Time
   @override
   @JsonKey(name: 'selected_date_time')
   final DateTime selectedDateTime;
+
+  /// Student Course Status
   @override
   @JsonKey(name: 'student_course_status')
   final int studentCourseStatus;
+
+  /// Academic Terms
   @override
   @JsonKey(name: 'academic_terms')
   final int academicTerms;
+
+  /// Grade
   @override
   @JsonKey(name: 'grade')
   final int grade;
+
+  /// Study Year Id
   @override
   @JsonKey(name: 'study_year_id')
   final int studyYearId;
+
+  /// Course Distribution Id
   @override
   @JsonKey(name: 'course_distribution_id')
   final int courseDistributionId;
+
+  /// Creation Time
   @override
   @JsonKey(name: 'creation_time')
   final DateTime creationTime;
+
+  /// Course Id
   @override
   @JsonKey(name: 'course_id')
   final int courseId;
+
+  /// Student Academic Status Id
   @override
   @JsonKey(name: 'student_academic_status_id')
   final int studentAcademicStatusId;
+
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
@@ -585,45 +639,72 @@ abstract class _StudentSelectedCoursesPublic
   factory _StudentSelectedCoursesPublic.fromJson(Map<String, dynamic> json) =
       _$StudentSelectedCoursesPublicImpl.fromJson;
 
+  /// Student Id
   @override
   @JsonKey(name: 'student_id')
   int get studentId;
+
+  /// Final Grade
   @override
   @JsonKey(name: 'final_grade')
   num get finalGrade;
+
+  /// Course Result
   @override
   @JsonKey(name: 'course_result')
   int get courseResult;
+
+  /// Attempt
   @override
   @JsonKey(name: 'attempt')
   int get attempt;
+
+  /// Selected Date Time
   @override
   @JsonKey(name: 'selected_date_time')
   DateTime get selectedDateTime;
+
+  /// Student Course Status
   @override
   @JsonKey(name: 'student_course_status')
   int get studentCourseStatus;
+
+  /// Academic Terms
   @override
   @JsonKey(name: 'academic_terms')
   int get academicTerms;
+
+  /// Grade
   @override
   @JsonKey(name: 'grade')
   int get grade;
+
+  /// Study Year Id
   @override
   @JsonKey(name: 'study_year_id')
   int get studyYearId;
+
+  /// Course Distribution Id
   @override
   @JsonKey(name: 'course_distribution_id')
   int get courseDistributionId;
+
+  /// Creation Time
   @override
   @JsonKey(name: 'creation_time')
   DateTime get creationTime;
+
+  /// Course Id
   @override
   @JsonKey(name: 'course_id')
   int get courseId;
+
+  /// Student Academic Status Id
   @override
   @JsonKey(name: 'student_academic_status_id')
   int get studentAcademicStatusId;
+
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;

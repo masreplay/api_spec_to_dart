@@ -21,16 +21,27 @@ StudentIdsIraqiResidenceCardPublic _$StudentIdsIraqiResidenceCardPublicFromJson(
 
 /// @nodoc
 mixin _$StudentIdsIraqiResidenceCardPublic {
+  /// Home Address
   @JsonKey(name: 'home_address')
   String? get homeAddress => throw _privateConstructorUsedError;
+
+  /// Street Address
   @JsonKey(name: 'street_address')
   String? get streetAddress => throw _privateConstructorUsedError;
+
+  /// Quarter Address
   @JsonKey(name: 'quarter_address')
   String? get quarterAddress => throw _privateConstructorUsedError;
+
+  /// Form Number
   @JsonKey(name: 'form_number')
   String? get formNumber => throw _privateConstructorUsedError;
+
+  /// Sequence
   @JsonKey(name: 'sequence')
   String? get sequence => throw _privateConstructorUsedError;
+
+  /// Date Of Issue
   @JsonKey(name: 'date_of_issue')
   DateTime? get dateOfIssue => throw _privateConstructorUsedError;
   @JsonKey(name: 'information_bureau')
@@ -303,21 +314,32 @@ class _$StudentIdsIraqiResidenceCardPublicImpl
           Map<String, dynamic> json) =>
       _$$StudentIdsIraqiResidenceCardPublicImplFromJson(json);
 
+  /// Home Address
   @override
   @JsonKey(name: 'home_address')
   final String? homeAddress;
+
+  /// Street Address
   @override
   @JsonKey(name: 'street_address')
   final String? streetAddress;
+
+  /// Quarter Address
   @override
   @JsonKey(name: 'quarter_address')
   final String? quarterAddress;
+
+  /// Form Number
   @override
   @JsonKey(name: 'form_number')
   final String? formNumber;
+
+  /// Sequence
   @override
   @JsonKey(name: 'sequence')
   final String? sequence;
+
+  /// Date Of Issue
   @override
   @JsonKey(name: 'date_of_issue')
   final DateTime? dateOfIssue;
@@ -414,21 +436,32 @@ abstract class _StudentIdsIraqiResidenceCardPublic
           Map<String, dynamic> json) =
       _$StudentIdsIraqiResidenceCardPublicImpl.fromJson;
 
+  /// Home Address
   @override
   @JsonKey(name: 'home_address')
   String? get homeAddress;
+
+  /// Street Address
   @override
   @JsonKey(name: 'street_address')
   String? get streetAddress;
+
+  /// Quarter Address
   @override
   @JsonKey(name: 'quarter_address')
   String? get quarterAddress;
+
+  /// Form Number
   @override
   @JsonKey(name: 'form_number')
   String? get formNumber;
+
+  /// Sequence
   @override
   @JsonKey(name: 'sequence')
   String? get sequence;
+
+  /// Date Of Issue
   @override
   @JsonKey(name: 'date_of_issue')
   DateTime? get dateOfIssue;

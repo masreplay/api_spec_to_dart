@@ -12,38 +12,29 @@ class AppApiRoutesV1StudentWeeklyScheduleRouteLecture
 
   @JsonSerializable(converters: convertors)
   const factory AppApiRoutesV1StudentWeeklyScheduleRouteLecture({
-    @JsonKey(name: 'id')
-
     /// Id
-    required int? id,
-    @JsonKey(name: 'subject_title')
+    @JsonKey(name: 'id') required int? id,
 
     /// Subject Title
-    required String? subjectTitle,
-    @JsonKey(name: 'start_time')
+    @JsonKey(name: 'subject_title') required String? subjectTitle,
 
     /// Start Time
-    required DateTime? startTime,
-    @JsonKey(name: 'end_time')
+    @JsonKey(name: 'start_time') required DateTime? startTime,
 
     /// End Time
-    required DateTime? endTime,
-    @JsonKey(name: 'group_code')
+    @JsonKey(name: 'end_time') required DateTime? endTime,
 
     /// Group Code
-    required String? groupCode,
-    @JsonKey(name: 'semester_name')
+    @JsonKey(name: 'group_code') required String? groupCode,
 
     /// Semester Name
-    required String? semesterName,
-    @JsonKey(name: 'room_code')
+    @JsonKey(name: 'semester_name') required String? semesterName,
 
     /// Room Code
-    required String? roomCode,
-    @JsonKey(name: 'duration')
+    @JsonKey(name: 'room_code') required String? roomCode,
 
     /// Duration
-    required int? duration,
+    @JsonKey(name: 'duration') required int? duration,
   }) = _AppApiRoutesV1StudentWeeklyScheduleRouteLecture;
 
   factory AppApiRoutesV1StudentWeeklyScheduleRouteLecture.fromJson(

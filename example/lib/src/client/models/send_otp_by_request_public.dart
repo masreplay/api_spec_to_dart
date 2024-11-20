@@ -11,14 +11,11 @@ class SendOtpByRequestPublic with _$SendOtpByRequestPublic {
 
   @JsonSerializable(converters: convertors)
   const factory SendOtpByRequestPublic({
-    @JsonKey(name: 'credential')
-
     /// Credential
-    required String credential,
-    @JsonKey(name: 'method')
+    @JsonKey(name: 'credential') required String credential,
 
     /// Method
-    required String method,
+    @JsonKey(name: 'method') required String method,
   }) = _SendOtpByRequestPublic;
 
   factory SendOtpByRequestPublic.fromJson(Map<String, dynamic> json) =>

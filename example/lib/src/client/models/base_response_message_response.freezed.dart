@@ -21,6 +21,7 @@ BaseResponseMessageResponse _$BaseResponseMessageResponseFromJson(
 
 /// @nodoc
 mixin _$BaseResponseMessageResponse {
+  /// Message
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
   @JsonKey(name: 'data')
@@ -154,6 +155,7 @@ class _$BaseResponseMessageResponseImpl extends _BaseResponseMessageResponse {
           Map<String, dynamic> json) =>
       _$$BaseResponseMessageResponseImplFromJson(json);
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   final String? message;
@@ -207,6 +209,7 @@ abstract class _BaseResponseMessageResponse
   factory _BaseResponseMessageResponse.fromJson(Map<String, dynamic> json) =
       _$BaseResponseMessageResponseImpl.fromJson;
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   String? get message;

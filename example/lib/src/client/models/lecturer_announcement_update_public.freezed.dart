@@ -21,8 +21,11 @@ LecturerAnnouncementUpdatePublic _$LecturerAnnouncementUpdatePublicFromJson(
 
 /// @nodoc
 mixin _$LecturerAnnouncementUpdatePublic {
+  /// Title
   @JsonKey(name: 'title')
   String get title => throw _privateConstructorUsedError;
+
+  /// Description
   @JsonKey(name: 'description')
   String? get description => throw _privateConstructorUsedError;
 
@@ -140,9 +143,12 @@ class _$LecturerAnnouncementUpdatePublicImpl
           Map<String, dynamic> json) =>
       _$$LecturerAnnouncementUpdatePublicImplFromJson(json);
 
+  /// Title
   @override
   @JsonKey(name: 'title')
   final String title;
+
+  /// Description
   @override
   @JsonKey(name: 'description')
   final String? description;
@@ -196,9 +202,12 @@ abstract class _LecturerAnnouncementUpdatePublic
           Map<String, dynamic> json) =
       _$LecturerAnnouncementUpdatePublicImpl.fromJson;
 
+  /// Title
   @override
   @JsonKey(name: 'title')
   String get title;
+
+  /// Description
   @override
   @JsonKey(name: 'description')
   String? get description;

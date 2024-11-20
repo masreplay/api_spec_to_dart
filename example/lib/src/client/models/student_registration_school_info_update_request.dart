@@ -12,46 +12,36 @@ class StudentRegistrationSchoolInfoUpdateRequest
 
   @JsonSerializable(converters: convertors)
   const factory StudentRegistrationSchoolInfoUpdateRequest({
-    @JsonKey(name: 'school_name')
-
     /// School Name
-    required String? schoolName,
-    @JsonKey(name: 'exam_number')
+    @JsonKey(name: 'school_name') required String? schoolName,
 
     /// Exam Number
-    required String examNumber,
-    @JsonKey(name: 'study_year_id')
+    @JsonKey(name: 'exam_number') required String examNumber,
 
     /// Study Year Id
-    required int? studyYearId,
-    @JsonKey(name: 'directorate_name')
+    @JsonKey(name: 'study_year_id') required int? studyYearId,
 
     /// Directorate Name
-    required String? directorateName,
-    @JsonKey(name: 'average')
+    @JsonKey(name: 'directorate_name') required String? directorateName,
 
     /// Average
-    required num? average,
-    @JsonKey(name: 'total')
+    @JsonKey(name: 'average') required num? average,
 
     /// Total
-    required num? total,
-    @JsonKey(name: 'round')
+    @JsonKey(name: 'total') required num? total,
 
     /// Round
-    required int? round,
-    @JsonKey(name: 'number_of_failure_years')
+    @JsonKey(name: 'round') required int? round,
 
     /// Number Of Failure Years
+    @JsonKey(name: 'number_of_failure_years')
     required int? numberOfFailureYears,
-    @JsonKey(name: 'governorate_id')
 
     /// Governorate Id
-    required int? governorateId,
-    @JsonKey(name: 'specialization_id')
+    @JsonKey(name: 'governorate_id') required int? governorateId,
 
     /// Specialization Id
-    required int? specializationId,
+    @JsonKey(name: 'specialization_id') required int? specializationId,
   }) = _StudentRegistrationSchoolInfoUpdateRequest;
 
   factory StudentRegistrationSchoolInfoUpdateRequest.fromJson(

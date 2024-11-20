@@ -20,14 +20,23 @@ StudentAuthResponse _$StudentAuthResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$StudentAuthResponse {
+  /// Access Token
   @JsonKey(name: 'access_token')
   String get accessToken => throw _privateConstructorUsedError;
+
+  /// Expires In
   @JsonKey(name: 'expires_in')
   int get expiresIn => throw _privateConstructorUsedError;
+
+  /// Refresh Token
   @JsonKey(name: 'refresh_token')
   String get refreshToken => throw _privateConstructorUsedError;
+
+  /// Refresh Expires In
   @JsonKey(name: 'refresh_expires_in')
   int get refreshExpiresIn => throw _privateConstructorUsedError;
+
+  /// User Id
   @JsonKey(name: 'user_id')
   int get userId => throw _privateConstructorUsedError;
   @JsonKey(name: 'user_role')
@@ -234,18 +243,27 @@ class _$StudentAuthResponseImpl extends _StudentAuthResponse {
   factory _$StudentAuthResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$StudentAuthResponseImplFromJson(json);
 
+  /// Access Token
   @override
   @JsonKey(name: 'access_token')
   final String accessToken;
+
+  /// Expires In
   @override
   @JsonKey(name: 'expires_in')
   final int expiresIn;
+
+  /// Refresh Token
   @override
   @JsonKey(name: 'refresh_token')
   final String refreshToken;
+
+  /// Refresh Expires In
   @override
   @JsonKey(name: 'refresh_expires_in')
   final int refreshExpiresIn;
+
+  /// User Id
   @override
   @JsonKey(name: 'user_id')
   final int userId;
@@ -318,18 +336,27 @@ abstract class _StudentAuthResponse extends StudentAuthResponse {
   factory _StudentAuthResponse.fromJson(Map<String, dynamic> json) =
       _$StudentAuthResponseImpl.fromJson;
 
+  /// Access Token
   @override
   @JsonKey(name: 'access_token')
   String get accessToken;
+
+  /// Expires In
   @override
   @JsonKey(name: 'expires_in')
   int get expiresIn;
+
+  /// Refresh Token
   @override
   @JsonKey(name: 'refresh_token')
   String get refreshToken;
+
+  /// Refresh Expires In
   @override
   @JsonKey(name: 'refresh_expires_in')
   int get refreshExpiresIn;
+
+  /// User Id
   @override
   @JsonKey(name: 'user_id')
   int get userId;

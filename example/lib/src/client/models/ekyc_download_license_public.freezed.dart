@@ -21,6 +21,7 @@ EkycDownloadLicensePublic _$EkycDownloadLicensePublicFromJson(
 
 /// @nodoc
 mixin _$EkycDownloadLicensePublic {
+  /// Content
   @JsonKey(name: 'content')
   String get content => throw _privateConstructorUsedError;
 
@@ -119,6 +120,7 @@ class _$EkycDownloadLicensePublicImpl extends _EkycDownloadLicensePublic {
   factory _$EkycDownloadLicensePublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$EkycDownloadLicensePublicImplFromJson(json);
 
+  /// Content
   @override
   @JsonKey(name: 'content')
   final String content;
@@ -166,6 +168,7 @@ abstract class _EkycDownloadLicensePublic extends EkycDownloadLicensePublic {
   factory _EkycDownloadLicensePublic.fromJson(Map<String, dynamic> json) =
       _$EkycDownloadLicensePublicImpl.fromJson;
 
+  /// Content
   @override
   @JsonKey(name: 'content')
   String get content;

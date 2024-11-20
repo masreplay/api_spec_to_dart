@@ -22,21 +22,34 @@ StudentIdsIraqiResidenceCardUpdatePublic
 
 /// @nodoc
 mixin _$StudentIdsIraqiResidenceCardUpdatePublic {
+  /// Information Bureau Id
   @JsonKey(name: 'information_bureau_id')
   int get informationBureauId => throw _privateConstructorUsedError;
+
+  /// Iraqi Residence Card Home Address
   @JsonKey(name: 'iraqi_residence_card_home_address')
   String get iraqiResidenceCardHomeAddress =>
       throw _privateConstructorUsedError;
+
+  /// Iraqi Residence Card Street Address
   @JsonKey(name: 'iraqi_residence_card_street_address')
   String get iraqiResidenceCardStreetAddress =>
       throw _privateConstructorUsedError;
+
+  /// Iraqi Residence Card Quarter Address
   @JsonKey(name: 'iraqi_residence_card_quarter_address')
   String get iraqiResidenceCardQuarterAddress =>
       throw _privateConstructorUsedError;
+
+  /// Iraqi Residence Card Form Number
   @JsonKey(name: 'iraqi_residence_card_form_number')
   String get iraqiResidenceCardFormNumber => throw _privateConstructorUsedError;
+
+  /// Iraqi Residence Card Sequence
   @JsonKey(name: 'iraqi_residence_card_sequence')
   String get iraqiResidenceCardSequence => throw _privateConstructorUsedError;
+
+  /// Iraqi Residence Card Date Of Issue
   @JsonKey(name: 'iraqi_residence_card_date_of_issue')
   DateTime get iraqiResidenceCardDateOfIssue =>
       throw _privateConstructorUsedError;
@@ -241,24 +254,37 @@ class _$StudentIdsIraqiResidenceCardUpdatePublicImpl
           Map<String, dynamic> json) =>
       _$$StudentIdsIraqiResidenceCardUpdatePublicImplFromJson(json);
 
+  /// Information Bureau Id
   @override
   @JsonKey(name: 'information_bureau_id')
   final int informationBureauId;
+
+  /// Iraqi Residence Card Home Address
   @override
   @JsonKey(name: 'iraqi_residence_card_home_address')
   final String iraqiResidenceCardHomeAddress;
+
+  /// Iraqi Residence Card Street Address
   @override
   @JsonKey(name: 'iraqi_residence_card_street_address')
   final String iraqiResidenceCardStreetAddress;
+
+  /// Iraqi Residence Card Quarter Address
   @override
   @JsonKey(name: 'iraqi_residence_card_quarter_address')
   final String iraqiResidenceCardQuarterAddress;
+
+  /// Iraqi Residence Card Form Number
   @override
   @JsonKey(name: 'iraqi_residence_card_form_number')
   final String iraqiResidenceCardFormNumber;
+
+  /// Iraqi Residence Card Sequence
   @override
   @JsonKey(name: 'iraqi_residence_card_sequence')
   final String iraqiResidenceCardSequence;
+
+  /// Iraqi Residence Card Date Of Issue
   @override
   @JsonKey(name: 'iraqi_residence_card_date_of_issue')
   final DateTime iraqiResidenceCardDateOfIssue;
@@ -355,24 +381,37 @@ abstract class _StudentIdsIraqiResidenceCardUpdatePublic
           Map<String, dynamic> json) =
       _$StudentIdsIraqiResidenceCardUpdatePublicImpl.fromJson;
 
+  /// Information Bureau Id
   @override
   @JsonKey(name: 'information_bureau_id')
   int get informationBureauId;
+
+  /// Iraqi Residence Card Home Address
   @override
   @JsonKey(name: 'iraqi_residence_card_home_address')
   String get iraqiResidenceCardHomeAddress;
+
+  /// Iraqi Residence Card Street Address
   @override
   @JsonKey(name: 'iraqi_residence_card_street_address')
   String get iraqiResidenceCardStreetAddress;
+
+  /// Iraqi Residence Card Quarter Address
   @override
   @JsonKey(name: 'iraqi_residence_card_quarter_address')
   String get iraqiResidenceCardQuarterAddress;
+
+  /// Iraqi Residence Card Form Number
   @override
   @JsonKey(name: 'iraqi_residence_card_form_number')
   String get iraqiResidenceCardFormNumber;
+
+  /// Iraqi Residence Card Sequence
   @override
   @JsonKey(name: 'iraqi_residence_card_sequence')
   String get iraqiResidenceCardSequence;
+
+  /// Iraqi Residence Card Date Of Issue
   @override
   @JsonKey(name: 'iraqi_residence_card_date_of_issue')
   DateTime get iraqiResidenceCardDateOfIssue;

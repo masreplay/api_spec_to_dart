@@ -12,29 +12,27 @@ class StudentIdsNationalCardUpdatePublic
 
   @JsonSerializable(converters: convertors)
   const factory StudentIdsNationalCardUpdatePublic({
-    @JsonKey(name: 'national_card_number')
-
     /// National Card Number
-    required String nationalCardNumber,
-    @JsonKey(name: 'national_card_serial_number')
+    @JsonKey(name: 'national_card_number') required String nationalCardNumber,
 
     /// National Card Serial Number
+    @JsonKey(name: 'national_card_serial_number')
     required String nationalCardSerialNumber,
-    @JsonKey(name: 'national_card_issuing_authority')
 
     /// National Card Issuing Authority
+    @JsonKey(name: 'national_card_issuing_authority')
     required String nationalCardIssuingAuthority,
-    @JsonKey(name: 'national_card_date_of_issue')
 
     /// National Card Date Of Issue
+    @JsonKey(name: 'national_card_date_of_issue')
     required DateTime nationalCardDateOfIssue,
-    @JsonKey(name: 'national_card_date_of_expiry')
 
     /// National Card Date Of Expiry
+    @JsonKey(name: 'national_card_date_of_expiry')
     required DateTime nationalCardDateOfExpiry,
-    @JsonKey(name: 'national_card_family_number')
 
     /// National Card Family Number
+    @JsonKey(name: 'national_card_family_number')
     required String nationalCardFamilyNumber,
   }) = _StudentIdsNationalCardUpdatePublic;
 

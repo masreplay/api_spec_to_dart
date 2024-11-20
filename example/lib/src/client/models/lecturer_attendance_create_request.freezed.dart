@@ -21,6 +21,7 @@ LecturerAttendanceCreateRequest _$LecturerAttendanceCreateRequestFromJson(
 
 /// @nodoc
 mixin _$LecturerAttendanceCreateRequest {
+  /// Weekly Schedule Id
   @JsonKey(name: 'weekly_schedule_id')
   int get weeklyScheduleId => throw _privateConstructorUsedError;
 
@@ -123,6 +124,7 @@ class _$LecturerAttendanceCreateRequestImpl
           Map<String, dynamic> json) =>
       _$$LecturerAttendanceCreateRequestImplFromJson(json);
 
+  /// Weekly Schedule Id
   @override
   @JsonKey(name: 'weekly_schedule_id')
   final int weeklyScheduleId;
@@ -174,6 +176,7 @@ abstract class _LecturerAttendanceCreateRequest
   factory _LecturerAttendanceCreateRequest.fromJson(Map<String, dynamic> json) =
       _$LecturerAttendanceCreateRequestImpl.fromJson;
 
+  /// Weekly Schedule Id
   @override
   @JsonKey(name: 'weekly_schedule_id')
   int get weeklyScheduleId;

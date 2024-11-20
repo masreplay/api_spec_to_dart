@@ -24,12 +24,20 @@ mixin _$AuthenticationStatusResponse {
   @JsonKey(name: 'settings')
   AuthenticationStatusOptionsResponse get settings =>
       throw _privateConstructorUsedError;
+
+  /// Is Temporary Password Changed
   @JsonKey(name: 'is_temporary_password_changed')
   bool get isTemporaryPasswordChanged => throw _privateConstructorUsedError;
+
+  /// Is Account Verified
   @JsonKey(name: 'is_account_verified')
   bool get isAccountVerified => throw _privateConstructorUsedError;
+
+  /// Is Ekyc Verified
   @JsonKey(name: 'is_ekyc_verified')
   bool get isEkycVerified => throw _privateConstructorUsedError;
+
+  /// Is Enrollment Payment Verified
   @JsonKey(name: 'is_enrollment_payment_verified')
   bool get isEnrollmentPaymentVerified => throw _privateConstructorUsedError;
   @JsonKey(name: 'registration_request_status')
@@ -246,15 +254,23 @@ class _$AuthenticationStatusResponseImpl extends _AuthenticationStatusResponse {
   @override
   @JsonKey(name: 'settings')
   final AuthenticationStatusOptionsResponse settings;
+
+  /// Is Temporary Password Changed
   @override
   @JsonKey(name: 'is_temporary_password_changed')
   final bool isTemporaryPasswordChanged;
+
+  /// Is Account Verified
   @override
   @JsonKey(name: 'is_account_verified')
   final bool isAccountVerified;
+
+  /// Is Ekyc Verified
   @override
   @JsonKey(name: 'is_ekyc_verified')
   final bool isEkycVerified;
+
+  /// Is Enrollment Payment Verified
   @override
   @JsonKey(name: 'is_enrollment_payment_verified')
   final bool isEnrollmentPaymentVerified;
@@ -343,15 +359,23 @@ abstract class _AuthenticationStatusResponse
   @override
   @JsonKey(name: 'settings')
   AuthenticationStatusOptionsResponse get settings;
+
+  /// Is Temporary Password Changed
   @override
   @JsonKey(name: 'is_temporary_password_changed')
   bool get isTemporaryPasswordChanged;
+
+  /// Is Account Verified
   @override
   @JsonKey(name: 'is_account_verified')
   bool get isAccountVerified;
+
+  /// Is Ekyc Verified
   @override
   @JsonKey(name: 'is_ekyc_verified')
   bool get isEkycVerified;
+
+  /// Is Enrollment Payment Verified
   @override
   @JsonKey(name: 'is_enrollment_payment_verified')
   bool get isEnrollmentPaymentVerified;

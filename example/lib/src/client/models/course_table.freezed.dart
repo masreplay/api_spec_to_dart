@@ -20,58 +20,107 @@ CourseTable _$CourseTableFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CourseTable {
+  /// Course Code
   @JsonKey(name: 'course_code')
   String get courseCode => throw _privateConstructorUsedError;
+
+  /// Course Classifications
   @JsonKey(name: 'course_classifications')
   int? get courseClassifications => throw _privateConstructorUsedError;
+
+  /// Total Credits
   @JsonKey(name: 'total_credits')
   int get totalCredits => throw _privateConstructorUsedError;
+
+  /// Course Result Type
   @JsonKey(name: 'course_result_type')
   int get courseResultType => throw _privateConstructorUsedError;
+
+  /// Highest Grade
   @JsonKey(name: 'highest_grade')
   int get highestGrade => throw _privateConstructorUsedError;
+
+  /// Lowest Grade
   @JsonKey(name: 'lowest_grade')
   int get lowestGrade => throw _privateConstructorUsedError;
+
+  /// Prerequisite Hours
   @JsonKey(name: 'prerequisite_hours')
   int? get prerequisiteHours => throw _privateConstructorUsedError;
+
+  /// Course Version
   @JsonKey(name: 'course_version')
   String? get courseVersion => throw _privateConstructorUsedError;
   @JsonKey(name: 'course_status')
   StudentCourseStatusEnum? get courseStatus =>
       throw _privateConstructorUsedError;
+
+  /// Course Fees
   @JsonKey(name: 'course_fees')
   int get courseFees => throw _privateConstructorUsedError;
+
+  /// Course Distribution Level
   @JsonKey(name: 'course_distribution_level')
   int get courseDistributionLevel => throw _privateConstructorUsedError;
+
+  /// Id
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+
+  /// Arabic Name
   @JsonKey(name: 'arabic_name')
   String? get arabicName => throw _privateConstructorUsedError;
+
+  /// English Name
   @JsonKey(name: 'english_name')
   String? get englishName => throw _privateConstructorUsedError;
+
+  /// Organizational Structure Id
   @JsonKey(name: 'organizational_structure_id')
   int get organizationalStructureId => throw _privateConstructorUsedError;
+
+  /// Academic Learning Framework System Id
   @JsonKey(name: 'academic_learning_framework_system_id')
   int get academicLearningFrameworkSystemId =>
       throw _privateConstructorUsedError;
+
+  /// Course Leader Id
   @JsonKey(name: 'course_leader_id')
   int get courseLeaderId => throw _privateConstructorUsedError;
+
+  /// Course Reviewer Id
   @JsonKey(name: 'course_reviewer_id')
   int get courseReviewerId => throw _privateConstructorUsedError;
+
+  /// Course Tutor Id
   @JsonKey(name: 'course_tutor_id')
   int get courseTutorId => throw _privateConstructorUsedError;
+
+  /// Creator Id
   @JsonKey(name: 'creator_id')
   int get creatorId => throw _privateConstructorUsedError;
+
+  /// Creation Time
   @JsonKey(name: 'creation_time')
   DateTime get creationTime => throw _privateConstructorUsedError;
+
+  /// Last Modifier Id
   @JsonKey(name: 'last_modifier_id')
   int? get lastModifierId => throw _privateConstructorUsedError;
+
+  /// Last Modification Time
   @JsonKey(name: 'last_modification_time')
   DateTime? get lastModificationTime => throw _privateConstructorUsedError;
+
+  /// Is Deleted
   @JsonKey(name: 'is_deleted')
   bool get isDeleted => throw _privateConstructorUsedError;
+
+  /// Deleter Id
   @JsonKey(name: 'deleter_id')
   int? get deleterId => throw _privateConstructorUsedError;
+
+  /// Deletion Time
   @JsonKey(name: 'deletion_time')
   DateTime? get deletionTime => throw _privateConstructorUsedError;
 
@@ -524,81 +573,130 @@ class _$CourseTableImpl extends _CourseTable {
   factory _$CourseTableImpl.fromJson(Map<String, dynamic> json) =>
       _$$CourseTableImplFromJson(json);
 
+  /// Course Code
   @override
   @JsonKey(name: 'course_code')
   final String courseCode;
+
+  /// Course Classifications
   @override
   @JsonKey(name: 'course_classifications')
   final int? courseClassifications;
+
+  /// Total Credits
   @override
   @JsonKey(name: 'total_credits')
   final int totalCredits;
+
+  /// Course Result Type
   @override
   @JsonKey(name: 'course_result_type')
   final int courseResultType;
+
+  /// Highest Grade
   @override
   @JsonKey(name: 'highest_grade')
   final int highestGrade;
+
+  /// Lowest Grade
   @override
   @JsonKey(name: 'lowest_grade')
   final int lowestGrade;
+
+  /// Prerequisite Hours
   @override
   @JsonKey(name: 'prerequisite_hours')
   final int? prerequisiteHours;
+
+  /// Course Version
   @override
   @JsonKey(name: 'course_version')
   final String? courseVersion;
   @override
   @JsonKey(name: 'course_status')
   final StudentCourseStatusEnum? courseStatus;
+
+  /// Course Fees
   @override
   @JsonKey(name: 'course_fees')
   final int courseFees;
+
+  /// Course Distribution Level
   @override
   @JsonKey(name: 'course_distribution_level')
   final int courseDistributionLevel;
+
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int id;
+
+  /// Arabic Name
   @override
   @JsonKey(name: 'arabic_name')
   final String? arabicName;
+
+  /// English Name
   @override
   @JsonKey(name: 'english_name')
   final String? englishName;
+
+  /// Organizational Structure Id
   @override
   @JsonKey(name: 'organizational_structure_id')
   final int organizationalStructureId;
+
+  /// Academic Learning Framework System Id
   @override
   @JsonKey(name: 'academic_learning_framework_system_id')
   final int academicLearningFrameworkSystemId;
+
+  /// Course Leader Id
   @override
   @JsonKey(name: 'course_leader_id')
   final int courseLeaderId;
+
+  /// Course Reviewer Id
   @override
   @JsonKey(name: 'course_reviewer_id')
   final int courseReviewerId;
+
+  /// Course Tutor Id
   @override
   @JsonKey(name: 'course_tutor_id')
   final int courseTutorId;
+
+  /// Creator Id
   @override
   @JsonKey(name: 'creator_id')
   final int creatorId;
+
+  /// Creation Time
   @override
   @JsonKey(name: 'creation_time')
   final DateTime creationTime;
+
+  /// Last Modifier Id
   @override
   @JsonKey(name: 'last_modifier_id')
   final int? lastModifierId;
+
+  /// Last Modification Time
   @override
   @JsonKey(name: 'last_modification_time')
   final DateTime? lastModificationTime;
+
+  /// Is Deleted
   @override
   @JsonKey(name: 'is_deleted')
   final bool isDeleted;
+
+  /// Deleter Id
   @override
   @JsonKey(name: 'deleter_id')
   final int? deleterId;
+
+  /// Deletion Time
   @override
   @JsonKey(name: 'deletion_time')
   final DateTime? deletionTime;
@@ -758,81 +856,130 @@ abstract class _CourseTable extends CourseTable {
   factory _CourseTable.fromJson(Map<String, dynamic> json) =
       _$CourseTableImpl.fromJson;
 
+  /// Course Code
   @override
   @JsonKey(name: 'course_code')
   String get courseCode;
+
+  /// Course Classifications
   @override
   @JsonKey(name: 'course_classifications')
   int? get courseClassifications;
+
+  /// Total Credits
   @override
   @JsonKey(name: 'total_credits')
   int get totalCredits;
+
+  /// Course Result Type
   @override
   @JsonKey(name: 'course_result_type')
   int get courseResultType;
+
+  /// Highest Grade
   @override
   @JsonKey(name: 'highest_grade')
   int get highestGrade;
+
+  /// Lowest Grade
   @override
   @JsonKey(name: 'lowest_grade')
   int get lowestGrade;
+
+  /// Prerequisite Hours
   @override
   @JsonKey(name: 'prerequisite_hours')
   int? get prerequisiteHours;
+
+  /// Course Version
   @override
   @JsonKey(name: 'course_version')
   String? get courseVersion;
   @override
   @JsonKey(name: 'course_status')
   StudentCourseStatusEnum? get courseStatus;
+
+  /// Course Fees
   @override
   @JsonKey(name: 'course_fees')
   int get courseFees;
+
+  /// Course Distribution Level
   @override
   @JsonKey(name: 'course_distribution_level')
   int get courseDistributionLevel;
+
+  /// Id
   @override
   @JsonKey(name: 'id')
   int get id;
+
+  /// Arabic Name
   @override
   @JsonKey(name: 'arabic_name')
   String? get arabicName;
+
+  /// English Name
   @override
   @JsonKey(name: 'english_name')
   String? get englishName;
+
+  /// Organizational Structure Id
   @override
   @JsonKey(name: 'organizational_structure_id')
   int get organizationalStructureId;
+
+  /// Academic Learning Framework System Id
   @override
   @JsonKey(name: 'academic_learning_framework_system_id')
   int get academicLearningFrameworkSystemId;
+
+  /// Course Leader Id
   @override
   @JsonKey(name: 'course_leader_id')
   int get courseLeaderId;
+
+  /// Course Reviewer Id
   @override
   @JsonKey(name: 'course_reviewer_id')
   int get courseReviewerId;
+
+  /// Course Tutor Id
   @override
   @JsonKey(name: 'course_tutor_id')
   int get courseTutorId;
+
+  /// Creator Id
   @override
   @JsonKey(name: 'creator_id')
   int get creatorId;
+
+  /// Creation Time
   @override
   @JsonKey(name: 'creation_time')
   DateTime get creationTime;
+
+  /// Last Modifier Id
   @override
   @JsonKey(name: 'last_modifier_id')
   int? get lastModifierId;
+
+  /// Last Modification Time
   @override
   @JsonKey(name: 'last_modification_time')
   DateTime? get lastModificationTime;
+
+  /// Is Deleted
   @override
   @JsonKey(name: 'is_deleted')
   bool get isDeleted;
+
+  /// Deleter Id
   @override
   @JsonKey(name: 'deleter_id')
   int? get deleterId;
+
+  /// Deletion Time
   @override
   @JsonKey(name: 'deletion_time')
   DateTime? get deletionTime;

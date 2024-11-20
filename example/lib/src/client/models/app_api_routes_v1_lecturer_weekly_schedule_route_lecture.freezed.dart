@@ -22,30 +22,55 @@ AppApiRoutesV1LecturerWeeklyScheduleRouteLecture
 
 /// @nodoc
 mixin _$AppApiRoutesV1LecturerWeeklyScheduleRouteLecture {
+  /// Id
   @JsonKey(name: 'id')
   int? get id => throw _privateConstructorUsedError;
+
+  /// Subject Title
   @JsonKey(name: 'subject_title')
   String? get subjectTitle => throw _privateConstructorUsedError;
+
+  /// Start Time
   @JsonKey(name: 'start_time')
   DateTime? get startTime => throw _privateConstructorUsedError;
+
+  /// End Time
   @JsonKey(name: 'end_time')
   DateTime? get endTime => throw _privateConstructorUsedError;
+
+  /// Group Code
   @JsonKey(name: 'group_code')
   String? get groupCode => throw _privateConstructorUsedError;
+
+  /// Room Code
   @JsonKey(name: 'room_code')
   String? get roomCode => throw _privateConstructorUsedError;
+
+  /// Duration
   @JsonKey(name: 'duration')
   num? get duration => throw _privateConstructorUsedError;
+
+  /// Grade
   @JsonKey(name: 'grade')
   int? get grade => throw _privateConstructorUsedError;
+
+  /// Collage
   @JsonKey(name: 'collage')
   String? get collage => throw _privateConstructorUsedError;
+
+  /// Division
   @JsonKey(name: 'division')
   String? get division => throw _privateConstructorUsedError;
+
+  /// Members
   @JsonKey(name: 'members')
   List<dynamic> get members => throw _privateConstructorUsedError;
+
+  /// Has Code
   @JsonKey(name: 'has_code')
   bool? get hasCode => throw _privateConstructorUsedError;
+
+  /// Number Of Students
   @JsonKey(name: 'number_of_students')
   int? get numberOfStudents => throw _privateConstructorUsedError;
 
@@ -315,37 +340,60 @@ class _$AppApiRoutesV1LecturerWeeklyScheduleRouteLectureImpl
           Map<String, dynamic> json) =>
       _$$AppApiRoutesV1LecturerWeeklyScheduleRouteLectureImplFromJson(json);
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   final int? id;
+
+  /// Subject Title
   @override
   @JsonKey(name: 'subject_title')
   final String? subjectTitle;
+
+  /// Start Time
   @override
   @JsonKey(name: 'start_time')
   final DateTime? startTime;
+
+  /// End Time
   @override
   @JsonKey(name: 'end_time')
   final DateTime? endTime;
+
+  /// Group Code
   @override
   @JsonKey(name: 'group_code')
   final String? groupCode;
+
+  /// Room Code
   @override
   @JsonKey(name: 'room_code')
   final String? roomCode;
+
+  /// Duration
   @override
   @JsonKey(name: 'duration')
   final num? duration;
+
+  /// Grade
   @override
   @JsonKey(name: 'grade')
   final int? grade;
+
+  /// Collage
   @override
   @JsonKey(name: 'collage')
   final String? collage;
+
+  /// Division
   @override
   @JsonKey(name: 'division')
   final String? division;
+
+  /// Members
   final List<dynamic> _members;
+
+  /// Members
   @override
   @JsonKey(name: 'members')
   List<dynamic> get members {
@@ -354,9 +402,12 @@ class _$AppApiRoutesV1LecturerWeeklyScheduleRouteLectureImpl
     return EqualUnmodifiableListView(_members);
   }
 
+  /// Has Code
   @override
   @JsonKey(name: 'has_code')
   final bool? hasCode;
+
+  /// Number Of Students
   @override
   @JsonKey(name: 'number_of_students')
   final int? numberOfStudents;
@@ -455,42 +506,67 @@ abstract class _AppApiRoutesV1LecturerWeeklyScheduleRouteLecture
           Map<String, dynamic> json) =
       _$AppApiRoutesV1LecturerWeeklyScheduleRouteLectureImpl.fromJson;
 
+  /// Id
   @override
   @JsonKey(name: 'id')
   int? get id;
+
+  /// Subject Title
   @override
   @JsonKey(name: 'subject_title')
   String? get subjectTitle;
+
+  /// Start Time
   @override
   @JsonKey(name: 'start_time')
   DateTime? get startTime;
+
+  /// End Time
   @override
   @JsonKey(name: 'end_time')
   DateTime? get endTime;
+
+  /// Group Code
   @override
   @JsonKey(name: 'group_code')
   String? get groupCode;
+
+  /// Room Code
   @override
   @JsonKey(name: 'room_code')
   String? get roomCode;
+
+  /// Duration
   @override
   @JsonKey(name: 'duration')
   num? get duration;
+
+  /// Grade
   @override
   @JsonKey(name: 'grade')
   int? get grade;
+
+  /// Collage
   @override
   @JsonKey(name: 'collage')
   String? get collage;
+
+  /// Division
   @override
   @JsonKey(name: 'division')
   String? get division;
+
+  /// Members
   @override
   @JsonKey(name: 'members')
   List<dynamic> get members;
+
+  /// Has Code
   @override
   @JsonKey(name: 'has_code')
   bool? get hasCode;
+
+  /// Number Of Students
   @override
   @JsonKey(name: 'number_of_students')
   int? get numberOfStudents;

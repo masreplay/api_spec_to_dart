@@ -13,23 +13,19 @@ class HomeFeedCourseSelectionStatusSectionPublic
 
   @JsonSerializable(converters: convertors)
   const factory HomeFeedCourseSelectionStatusSectionPublic({
-    @JsonKey(name: 'id')
-
     /// Id
-    required int id,
-    @Default(course_selection_status)
-    @JsonKey(name: 'type')
+    @JsonKey(name: 'id') required int id,
 
     /// Type
+    @Default(course_selection_status)
+    @JsonKey(name: 'type')
     required String type,
-    @JsonKey(name: 'title')
 
     /// Title
-    required String title,
-    @JsonKey(name: 'description')
+    @JsonKey(name: 'title') required String title,
 
     /// Description
-    required String? description,
+    @JsonKey(name: 'description') required String? description,
     @JsonKey(name: 'data')
     required HomeFeedCourseSelectionStatusSectionDataPublic data,
   }) = _HomeFeedCourseSelectionStatusSectionPublic;

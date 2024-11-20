@@ -22,6 +22,8 @@ PaymentInfoResponse _$PaymentInfoResponseFromJson(Map<String, dynamic> json) {
 mixin _$PaymentInfoResponse {
   @JsonKey(name: 'amount')
   PaymentInfoAmount get amount => throw _privateConstructorUsedError;
+
+  /// Payment Methods
   @JsonKey(name: 'payment_methods')
   List<dynamic> get paymentMethods => throw _privateConstructorUsedError;
 
@@ -151,7 +153,11 @@ class _$PaymentInfoResponseImpl extends _PaymentInfoResponse {
   @override
   @JsonKey(name: 'amount')
   final PaymentInfoAmount amount;
+
+  /// Payment Methods
   final List<dynamic> _paymentMethods;
+
+  /// Payment Methods
   @override
   @JsonKey(name: 'payment_methods')
   List<dynamic> get paymentMethods {
@@ -210,6 +216,8 @@ abstract class _PaymentInfoResponse extends PaymentInfoResponse {
   @override
   @JsonKey(name: 'amount')
   PaymentInfoAmount get amount;
+
+  /// Payment Methods
   @override
   @JsonKey(name: 'payment_methods')
   List<dynamic> get paymentMethods;

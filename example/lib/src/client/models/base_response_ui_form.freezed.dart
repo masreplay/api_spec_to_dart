@@ -20,6 +20,7 @@ BaseResponseUIForm _$BaseResponseUIFormFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$BaseResponseUIForm {
+  /// Message
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
   @JsonKey(name: 'data')
@@ -146,6 +147,7 @@ class _$BaseResponseUIFormImpl extends _BaseResponseUIForm {
   factory _$BaseResponseUIFormImpl.fromJson(Map<String, dynamic> json) =>
       _$$BaseResponseUIFormImplFromJson(json);
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   final String? message;
@@ -198,6 +200,7 @@ abstract class _BaseResponseUIForm extends BaseResponseUIForm {
   factory _BaseResponseUIForm.fromJson(Map<String, dynamic> json) =
       _$BaseResponseUIFormImpl.fromJson;
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   String? get message;

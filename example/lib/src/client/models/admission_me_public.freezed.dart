@@ -20,28 +20,51 @@ AdmissionMePublic _$AdmissionMePublicFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AdmissionMePublic {
+  /// Is Current
   @JsonKey(name: 'is_current')
   bool? get isCurrent => throw _privateConstructorUsedError;
+
+  /// Collage
   @JsonKey(name: 'collage')
   String? get collage => throw _privateConstructorUsedError;
+
+  /// Department
   @JsonKey(name: 'department')
   String? get department => throw _privateConstructorUsedError;
+
+  /// Type
   @JsonKey(name: 'type')
   int? get type => throw _privateConstructorUsedError;
+
+  /// Year
   @JsonKey(name: 'year')
   String? get year => throw _privateConstructorUsedError;
+
+  /// Study Status
   @JsonKey(name: 'study_status')
   String? get studyStatus => throw _privateConstructorUsedError;
+
+  /// Division
   @JsonKey(name: 'division')
   String? get division => throw _privateConstructorUsedError;
+
+  /// Group
   @JsonKey(name: 'group')
   String? get group => throw _privateConstructorUsedError;
+
+  /// Stage
   @JsonKey(name: 'stage')
   int? get stage => throw _privateConstructorUsedError;
+
+  /// Is Direct
   @JsonKey(name: 'is_direct')
   int? get isDirect => throw _privateConstructorUsedError;
+
+  /// Scholarship
   @JsonKey(name: 'scholarship')
   String? get scholarship => throw _privateConstructorUsedError;
+
+  /// Channel
   @JsonKey(name: 'channel')
   String? get channel => throw _privateConstructorUsedError;
 
@@ -281,39 +304,62 @@ class _$AdmissionMePublicImpl extends _AdmissionMePublic {
   factory _$AdmissionMePublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$AdmissionMePublicImplFromJson(json);
 
+  /// Is Current
   @override
   @JsonKey(name: 'is_current')
   final bool? isCurrent;
+
+  /// Collage
   @override
   @JsonKey(name: 'collage')
   final String? collage;
+
+  /// Department
   @override
   @JsonKey(name: 'department')
   final String? department;
+
+  /// Type
   @override
   @JsonKey(name: 'type')
   final int? type;
+
+  /// Year
   @override
   @JsonKey(name: 'year')
   final String? year;
+
+  /// Study Status
   @override
   @JsonKey(name: 'study_status')
   final String? studyStatus;
+
+  /// Division
   @override
   @JsonKey(name: 'division')
   final String? division;
+
+  /// Group
   @override
   @JsonKey(name: 'group')
   final String? group;
+
+  /// Stage
   @override
   @JsonKey(name: 'stage')
   final int? stage;
+
+  /// Is Direct
   @override
   @JsonKey(name: 'is_direct')
   final int? isDirect;
+
+  /// Scholarship
   @override
   @JsonKey(name: 'scholarship')
   final String? scholarship;
+
+  /// Channel
   @override
   @JsonKey(name: 'channel')
   final String? channel;
@@ -402,39 +448,62 @@ abstract class _AdmissionMePublic extends AdmissionMePublic {
   factory _AdmissionMePublic.fromJson(Map<String, dynamic> json) =
       _$AdmissionMePublicImpl.fromJson;
 
+  /// Is Current
   @override
   @JsonKey(name: 'is_current')
   bool? get isCurrent;
+
+  /// Collage
   @override
   @JsonKey(name: 'collage')
   String? get collage;
+
+  /// Department
   @override
   @JsonKey(name: 'department')
   String? get department;
+
+  /// Type
   @override
   @JsonKey(name: 'type')
   int? get type;
+
+  /// Year
   @override
   @JsonKey(name: 'year')
   String? get year;
+
+  /// Study Status
   @override
   @JsonKey(name: 'study_status')
   String? get studyStatus;
+
+  /// Division
   @override
   @JsonKey(name: 'division')
   String? get division;
+
+  /// Group
   @override
   @JsonKey(name: 'group')
   String? get group;
+
+  /// Stage
   @override
   @JsonKey(name: 'stage')
   int? get stage;
+
+  /// Is Direct
   @override
   @JsonKey(name: 'is_direct')
   int? get isDirect;
+
+  /// Scholarship
   @override
   @JsonKey(name: 'scholarship')
   String? get scholarship;
+
+  /// Channel
   @override
   @JsonKey(name: 'channel')
   String? get channel;

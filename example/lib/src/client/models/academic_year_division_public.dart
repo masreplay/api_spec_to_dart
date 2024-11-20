@@ -11,66 +11,54 @@ class AcademicYearDivisionPublic with _$AcademicYearDivisionPublic {
 
   @JsonSerializable(converters: convertors)
   const factory AcademicYearDivisionPublic({
-    @JsonKey(name: 'id')
-
     /// Id
-    required int id,
-    @JsonKey(name: 'academic_learning_framework_system_id')
+    @JsonKey(name: 'id') required int id,
 
     /// Academic Learning Framework System Id
+    @JsonKey(name: 'academic_learning_framework_system_id')
     required int academicLearningFrameworkSystemId,
-    @JsonKey(name: 'enrolment_start_date')
 
     /// Enrolment Start Date
-    required DateTime enrolmentStartDate,
-    @JsonKey(name: 'name')
+    @JsonKey(name: 'enrolment_start_date') required DateTime enrolmentStartDate,
 
     /// Name
-    required String name,
-    @JsonKey(name: 'enrolment_end_date')
+    @JsonKey(name: 'name') required String name,
 
     /// Enrolment End Date
-    required DateTime enrolmentEndDate,
-    @JsonKey(name: 'semester_start_date')
+    @JsonKey(name: 'enrolment_end_date') required DateTime enrolmentEndDate,
 
     /// Semester Start Date
-    required DateTime semesterStartDate,
-    @JsonKey(name: 'semester_end_date')
+    @JsonKey(name: 'semester_start_date') required DateTime semesterStartDate,
 
     /// Semester End Date
-    required DateTime semesterEndDate,
-    @JsonKey(name: 'semester_time_period')
+    @JsonKey(name: 'semester_end_date') required DateTime semesterEndDate,
 
     /// Semester Time Period
-    required int semesterTimePeriod,
-    @JsonKey(name: 'period_type')
+    @JsonKey(name: 'semester_time_period') required int semesterTimePeriod,
 
     /// Period Type
-    required int periodType,
-    @JsonKey(name: 'minimum_gpa_for_success')
+    @JsonKey(name: 'period_type') required int periodType,
 
     /// Minimum Gpa For Success
-    required num minimumGpaForSuccess,
-    @JsonKey(name: 'minimum_course_passing_grade')
+    @JsonKey(name: 'minimum_gpa_for_success') required num minimumGpaForSuccess,
 
     /// Minimum Course Passing Grade
+    @JsonKey(name: 'minimum_course_passing_grade')
     required int minimumCoursePassingGrade,
-    @JsonKey(name: 'minimum_number_of_courses_to_pass')
 
     /// Minimum Number Of Courses To Pass
+    @JsonKey(name: 'minimum_number_of_courses_to_pass')
     required int minimumNumberOfCoursesToPass,
-    @JsonKey(name: 'minimum_number_of_courses_to_fail')
 
     /// Minimum Number Of Courses To Fail
+    @JsonKey(name: 'minimum_number_of_courses_to_fail')
     required int minimumNumberOfCoursesToFail,
-    @JsonKey(name: 'minimum_ects')
 
     /// Minimum Ects
-    required num minimumEcts,
-    @JsonKey(name: 'maximum_ects')
+    @JsonKey(name: 'minimum_ects') required num minimumEcts,
 
     /// Maximum Ects
-    required num maximumEcts,
+    @JsonKey(name: 'maximum_ects') required num maximumEcts,
   }) = _AcademicYearDivisionPublic;
 
   factory AcademicYearDivisionPublic.fromJson(Map<String, dynamic> json) =>

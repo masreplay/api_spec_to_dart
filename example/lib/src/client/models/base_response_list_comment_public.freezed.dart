@@ -21,8 +21,11 @@ BaseResponseListCommentPublic _$BaseResponseListCommentPublicFromJson(
 
 /// @nodoc
 mixin _$BaseResponseListCommentPublic {
+  /// Message
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
+
+  /// Data
   @JsonKey(name: 'data')
   List<dynamic> get data => throw _privateConstructorUsedError;
 
@@ -141,10 +144,15 @@ class _$BaseResponseListCommentPublicImpl
           Map<String, dynamic> json) =>
       _$$BaseResponseListCommentPublicImplFromJson(json);
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   final String? message;
+
+  /// Data
   final List<dynamic> _data;
+
+  /// Data
   @override
   @JsonKey(name: 'data')
   List<dynamic> get data {
@@ -201,9 +209,12 @@ abstract class _BaseResponseListCommentPublic
   factory _BaseResponseListCommentPublic.fromJson(Map<String, dynamic> json) =
       _$BaseResponseListCommentPublicImpl.fromJson;
 
+  /// Message
   @override
   @JsonKey(name: 'message')
   String? get message;
+
+  /// Data
   @override
   @JsonKey(name: 'data')
   List<dynamic> get data;
