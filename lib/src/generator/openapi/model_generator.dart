@@ -31,20 +31,43 @@ class OpenApiDartModelGenerator {
     for (final entry in (model.value.properties ?? {}).entries) {
       final propertyName = config.propertyRename(entry.key);
 
+      final isRequired = (model.value.required_?.contains(entry.key) ?? false)
+          ? 'required'
+          : '';
+
       entry.value.map(
         type: (value) {
-          final dartType = config.dartType(value.type);
-          body += //
-              '''
+          final dartType = config.dartType(value.type, value.format);
+
+          //
+          body += '''
   @JsonKey(name: \'${entry.key}\') 
-  required $dartType $propertyName,
+  $isRequired $dartType $propertyName,
 ''';
         },
         ref: (value) {
-          // TODO(mohammed.atheer): implement this
+          final dartType = value.ref!.split('/').last;
+
+          //TODO Check if the value is enum
+          final defaultValue = value.default_ == null
+              ? ''
+              : '@Default($dartType.${config.enumName(value.default_.toString())})';
+
+          body += value.ref == null
+              ? ''
+              : '''
+  $defaultValue 
+  @JsonKey(name: \'${entry.key}\')
+  $isRequired $dartType $propertyName,
+''';
         },
         anyOf: (value) {
-          // TODO(mohammed.atheer): implement this
+          final dartType = getAnyOfType(value, config);
+
+          body += '''
+  @JsonKey(name: \'${entry.key}\')
+  $isRequired $dartType $propertyName,
+''';
         },
         oneOf: (value) {
           // TODO(mohammed.atheer): implement this
@@ -72,4 +95,31 @@ class ${modelName} with _\$${modelName} {
 
     return (filename: filename, content: content);
   }
+}
+
+getAnyOfType(
+  OpenApiSchemaAnyOf value,
+  OpenApiGeneratorConfig config,
+) {
+  String text = '';
+  bool isNullable = false;
+
+  for (final schema in value.anyOf!) {
+    text += schema.map(
+      type: (value) {
+        if (value.type == OpenApiSchemaVarType.null_) {
+          isNullable = true;
+          return '';
+        } else {
+          return config.dartType(value.type, value.format);
+        }
+      },
+      ref: (value) => value.ref!.split('/').last,
+      anyOf: (value) => getAnyOfType(value, config),
+      //TODO(shahadKadhim): implement this
+      oneOf: (value) => '',
+    );
+  }
+
+  return isNullable ? '$text?' : text;
 }

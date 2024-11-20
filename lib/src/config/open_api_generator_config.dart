@@ -12,10 +12,17 @@ class OpenApiGeneratorConfig {
     return """import 'package:$packageName/src/models/models.dart';""";
   }
 
-  String dartType(OpenApiSchemaVarType? type) {
+  String dartType(OpenApiSchemaVarType? type, String? format) {
     switch (type) {
       case OpenApiSchemaVarType.string:
-        return 'String';
+        return switch (format) {
+          'date-time' => 'DateTime',
+          'binary' => 'File',
+          'uuid' => 'String',
+          'duration' => 'TimeOfDay',
+          'uri' => 'Uri',
+          _ => 'String',
+        };
       case OpenApiSchemaVarType.number:
         return 'num';
       case OpenApiSchemaVarType.integer:
@@ -34,6 +41,10 @@ class OpenApiGeneratorConfig {
   }
 
   String propertyRename(String key) {
+    return key.camelCase;
+  }
+
+  String enumName(String key) {
     return key.camelCase;
   }
 }
