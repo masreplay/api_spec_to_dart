@@ -1,30 +1,17 @@
-import 'dart:convert';
-import 'dart:io';
-
 import 'package:logger/logger.dart';
-import 'package:swagger_to_dart/swagger_to_dart.dart';
+import 'package:swagger_to_dart/src/config/open_api_generator_config.dart';
+import 'package:swagger_to_dart/src/generator/openapi/open_api_generator.dart';
 
 final logger = Logger();
 
 Future<void> main(List<String> args) async {
-  final path = './bin/example/swagger.json';
+  final config = OpenApiGeneratorConfig(
+    packageName: 'example',
+    input: 'bin/schema/swagger.json',
+    output: 'bin/generation',
+  );
 
-  final file = File(path);
+  final generator = OpenApiDartGenerator(config: config);
 
-  if (!file.existsSync()) {
-    print('File not found');
-    return;
-  }
-
-  final content = await file.readAsString();
-
-  final json = jsonDecode(content);
-
-  final openApi = OpenApi.fromJson(json);
-
-  final validatedJson = JsonFactory.instance.encode(openApi.toJson());
-
-  print(validatedJson);
-
-  File('./bin/gen.json').writeAsStringSync(validatedJson);
+  generator.generate();
 }

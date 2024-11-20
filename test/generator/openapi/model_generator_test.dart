@@ -1,5 +1,5 @@
 import 'package:swagger_to_dart/src/config/open_api_generator_config.dart';
-import 'package:swagger_to_dart/src/generator/openapi/model_generator.dart';
+import 'package:swagger_to_dart/src/generator/openapi/open_api_model_generator.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 import 'package:test/test.dart';
 
@@ -36,7 +36,7 @@ class OpenApi with _$OpenApi {
 }
 """;
 
-      final expected = generator.run(
+      final expected = generator.generator(
         MapEntry(
           'OpenApi',
           OpenApiSchemas(

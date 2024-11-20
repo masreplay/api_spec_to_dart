@@ -4,9 +4,15 @@ import 'package:swagger_to_dart/swagger_to_dart.dart';
 class OpenApiGeneratorConfig {
   const OpenApiGeneratorConfig({
     required this.packageName,
+    required this.input,
+    required this.output,
   });
 
   final String packageName;
+
+  final String input;
+
+  final String output;
 
   String get importModelsText {
     return """import 'package:$packageName/src/models/models.dart';""";

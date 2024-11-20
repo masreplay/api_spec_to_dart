@@ -22,7 +22,7 @@ class OpenApiDartModelGenerator {
     return model.key.snakeCase;
   }
 
-  ({String filename, String content}) run(OpenApiModel model) {
+  ({String filename, String content}) generator(OpenApiModel model) {
     final filename = this.filename(model);
     final modelName = className(model);
 
