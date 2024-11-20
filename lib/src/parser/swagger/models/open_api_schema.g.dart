@@ -94,6 +94,7 @@ _$OpenApiSchemaAnyOfImpl _$$OpenApiSchemaAnyOfImplFromJson(
           .toList(),
       description: json['description'] as String?,
       title: json['title'] as String?,
+      default_: json['default'],
       $type: json['runtimeType'] as String?,
     );
 
@@ -107,6 +108,7 @@ Map<String, dynamic> _$$OpenApiSchemaAnyOfImplToJson(
         'anyOf': value,
       if (instance.description case final value?) 'description': value,
       if (instance.title case final value?) 'title': value,
+      if (instance.default_ case final value?) 'default': value,
       'runtimeType': instance.$type,
     };
 

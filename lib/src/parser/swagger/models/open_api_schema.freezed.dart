@@ -60,7 +60,8 @@ mixin _$OpenApiSchema {
             @JsonKey(name: _anyOfKey)
             List<OpenApiSchema>? anyOf,
             @JsonKey(name: 'description') String? description,
-            @JsonKey(name: 'title') String? title)
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'default') Object? default_)
         anyOf,
     required TResult Function(
             @OpenApiSchemaJsonConverter()
@@ -101,7 +102,8 @@ mixin _$OpenApiSchema {
             @JsonKey(name: _anyOfKey)
             List<OpenApiSchema>? anyOf,
             @JsonKey(name: 'description') String? description,
-            @JsonKey(name: 'title') String? title)?
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'default') Object? default_)?
         anyOf,
     TResult Function(
             @OpenApiSchemaJsonConverter()
@@ -260,7 +262,8 @@ class _$OpenApiSchemaTypeImpl extends OpenApiSchemaType {
             @JsonKey(name: _anyOfKey)
             List<OpenApiSchema>? anyOf,
             @JsonKey(name: 'description') String? description,
-            @JsonKey(name: 'title') String? title)
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'default') Object? default_)
         anyOf,
     required TResult Function(
             @OpenApiSchemaJsonConverter()
@@ -304,7 +307,8 @@ class _$OpenApiSchemaTypeImpl extends OpenApiSchemaType {
             @JsonKey(name: _anyOfKey)
             List<OpenApiSchema>? anyOf,
             @JsonKey(name: 'description') String? description,
-            @JsonKey(name: 'title') String? title)?
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'default') Object? default_)?
         anyOf,
     TResult Function(
             @OpenApiSchemaJsonConverter()
@@ -448,7 +452,8 @@ class _$OpenApiSchemaRefImpl extends OpenApiSchemaRef {
             @JsonKey(name: _anyOfKey)
             List<OpenApiSchema>? anyOf,
             @JsonKey(name: 'description') String? description,
-            @JsonKey(name: 'title') String? title)
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'default') Object? default_)
         anyOf,
     required TResult Function(
             @OpenApiSchemaJsonConverter()
@@ -491,7 +496,8 @@ class _$OpenApiSchemaRefImpl extends OpenApiSchemaRef {
             @JsonKey(name: _anyOfKey)
             List<OpenApiSchema>? anyOf,
             @JsonKey(name: 'description') String? description,
-            @JsonKey(name: 'title') String? title)?
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'default') Object? default_)?
         anyOf,
     TResult Function(
             @OpenApiSchemaJsonConverter()
@@ -543,6 +549,7 @@ class _$OpenApiSchemaAnyOfImpl extends OpenApiSchemaAnyOf {
       required final List<OpenApiSchema>? anyOf,
       @JsonKey(name: 'description') this.description,
       @JsonKey(name: 'title') this.title,
+      @JsonKey(name: 'default') this.default_,
       final String? $type})
       : _anyOf = anyOf,
         $type = $type ?? 'anyOf',
@@ -569,13 +576,16 @@ class _$OpenApiSchemaAnyOfImpl extends OpenApiSchemaAnyOf {
   @override
   @JsonKey(name: 'title')
   final String? title;
+  @override
+  @JsonKey(name: 'default')
+  final Object? default_;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'OpenApiSchema.anyOf(anyOf: $anyOf, description: $description, title: $title)';
+    return 'OpenApiSchema.anyOf(anyOf: $anyOf, description: $description, title: $title, default_: $default_)';
   }
 
   @override
@@ -586,13 +596,18 @@ class _$OpenApiSchemaAnyOfImpl extends OpenApiSchemaAnyOf {
             const DeepCollectionEquality().equals(other._anyOf, _anyOf) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.title, title) || other.title == title));
+            (identical(other.title, title) || other.title == title) &&
+            const DeepCollectionEquality().equals(other.default_, default_));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_anyOf), description, title);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_anyOf),
+      description,
+      title,
+      const DeepCollectionEquality().hash(default_));
 
   @override
   @optionalTypeArgs
@@ -622,7 +637,8 @@ class _$OpenApiSchemaAnyOfImpl extends OpenApiSchemaAnyOf {
             @JsonKey(name: _anyOfKey)
             List<OpenApiSchema>? anyOf,
             @JsonKey(name: 'description') String? description,
-            @JsonKey(name: 'title') String? title)
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'default') Object? default_)
         anyOf,
     required TResult Function(
             @OpenApiSchemaJsonConverter()
@@ -634,7 +650,7 @@ class _$OpenApiSchemaAnyOfImpl extends OpenApiSchemaAnyOf {
             OpenApiSchemaOneOfDiscriminator discriminator)
         oneOf,
   }) {
-    return anyOf(this.anyOf, description, title);
+    return anyOf(this.anyOf, description, title, default_);
   }
 
   @override
@@ -665,7 +681,8 @@ class _$OpenApiSchemaAnyOfImpl extends OpenApiSchemaAnyOf {
             @JsonKey(name: _anyOfKey)
             List<OpenApiSchema>? anyOf,
             @JsonKey(name: 'description') String? description,
-            @JsonKey(name: 'title') String? title)?
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'default') Object? default_)?
         anyOf,
     TResult Function(
             @OpenApiSchemaJsonConverter()
@@ -679,7 +696,7 @@ class _$OpenApiSchemaAnyOfImpl extends OpenApiSchemaAnyOf {
     required TResult orElse(),
   }) {
     if (anyOf != null) {
-      return anyOf(this.anyOf, description, title);
+      return anyOf(this.anyOf, description, title, default_);
     }
     return orElse();
   }
@@ -694,11 +711,13 @@ class _$OpenApiSchemaAnyOfImpl extends OpenApiSchemaAnyOf {
 
 abstract class OpenApiSchemaAnyOf extends OpenApiSchema {
   const factory OpenApiSchemaAnyOf(
-      {@OpenApiSchemaJsonConverter()
-      @JsonKey(name: _anyOfKey)
-      required final List<OpenApiSchema>? anyOf,
-      @JsonKey(name: 'description') final String? description,
-      @JsonKey(name: 'title') final String? title}) = _$OpenApiSchemaAnyOfImpl;
+          {@OpenApiSchemaJsonConverter()
+          @JsonKey(name: _anyOfKey)
+          required final List<OpenApiSchema>? anyOf,
+          @JsonKey(name: 'description') final String? description,
+          @JsonKey(name: 'title') final String? title,
+          @JsonKey(name: 'default') final Object? default_}) =
+      _$OpenApiSchemaAnyOfImpl;
   const OpenApiSchemaAnyOf._() : super._();
 
   factory OpenApiSchemaAnyOf.fromJson(Map<String, dynamic> json) =
@@ -711,6 +730,8 @@ abstract class OpenApiSchemaAnyOf extends OpenApiSchema {
   String? get description;
   @JsonKey(name: 'title')
   String? get title;
+  @JsonKey(name: 'default')
+  Object? get default_;
 }
 
 /// @nodoc
@@ -811,7 +832,8 @@ class _$OpenApiSchemaOneOfImpl extends OpenApiSchemaOneOf {
             @JsonKey(name: _anyOfKey)
             List<OpenApiSchema>? anyOf,
             @JsonKey(name: 'description') String? description,
-            @JsonKey(name: 'title') String? title)
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'default') Object? default_)
         anyOf,
     required TResult Function(
             @OpenApiSchemaJsonConverter()
@@ -854,7 +876,8 @@ class _$OpenApiSchemaOneOfImpl extends OpenApiSchemaOneOf {
             @JsonKey(name: _anyOfKey)
             List<OpenApiSchema>? anyOf,
             @JsonKey(name: 'description') String? description,
-            @JsonKey(name: 'title') String? title)?
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'default') Object? default_)?
         anyOf,
     TResult Function(
             @OpenApiSchemaJsonConverter()

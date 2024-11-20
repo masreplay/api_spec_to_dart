@@ -43,6 +43,7 @@ class OpenApiSchema with _$OpenApiSchema {
     required List<OpenApiSchema>? anyOf,
     @JsonKey(name: 'description') String? description,
     @JsonKey(name: 'title') String? title,
+    @JsonKey(name: 'default') Object? default_,
   }) = OpenApiSchemaAnyOf;
 
   @FreezedUnionValue('oneOf')
