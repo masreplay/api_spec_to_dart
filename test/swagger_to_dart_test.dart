@@ -1,11 +1,4 @@
-import 'dart:convert';
-import 'dart:io';
-
-import 'package:swagger_to_dart/src/parser/swagger/models/open_api.dart';
-import 'package:swagger_to_dart/src/parser/swagger/models/open_api_components.dart';
-import 'package:swagger_to_dart/src/parser/swagger/models/open_api_info.dart';
-import 'package:swagger_to_dart/src/parser/swagger/models/open_api_paths.dart';
-import 'package:swagger_to_dart/src/parser/swagger/models/open_api_schema.dart';
+import 'package:swagger_to_dart/swagger_to_dart.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -55,6 +48,7 @@ void main() {
               ],
               responses: null,
               requestBody: null,
+              deprecated: null,
             ),
           ),
         },
@@ -65,17 +59,8 @@ void main() {
       );
 
       final value = openApi.toJson();
-      dumpJson('open_api', value);
+
       expect(value.length, 4);
     });
   });
-}
-
-Future<void> dumpJson(
-  String name,
-  Map<String, dynamic> value,
-) {
-  return File('test/dump/$name.json').writeAsString(
-    JsonEncoder.withIndent('    ').convert(value),
-  );
 }
