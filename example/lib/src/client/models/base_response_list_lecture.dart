@@ -11,8 +11,14 @@ class BaseResponseListLecture with _$BaseResponseListLecture {
 
   @JsonSerializable(converters: convertors)
   const factory BaseResponseListLecture({
-    @JsonKey(name: 'message') required String? message,
-    @JsonKey(name: 'data') required List data,
+    @JsonKey(name: 'message')
+
+    /// Message
+    required String? message,
+    @JsonKey(name: 'data')
+
+    /// Data
+    required List data,
   }) = _BaseResponseListLecture;
 
   factory BaseResponseListLecture.fromJson(Map<String, dynamic> json) =>

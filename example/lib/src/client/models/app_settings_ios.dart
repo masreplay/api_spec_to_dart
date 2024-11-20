@@ -11,9 +11,18 @@ class AppSettingsIos with _$AppSettingsIos {
 
   @JsonSerializable(converters: convertors)
   const factory AppSettingsIos({
-    @JsonKey(name: 'version') required String version,
-    @JsonKey(name: 'url') required String? url,
-    @JsonKey(name: 'message') required String? message,
+    @JsonKey(name: 'version')
+
+    /// Version
+    required String version,
+    @JsonKey(name: 'url')
+
+    /// Url
+    required String? url,
+    @JsonKey(name: 'message')
+
+    /// Message
+    required String? message,
   }) = _AppSettingsIos;
 
   factory AppSettingsIos.fromJson(Map<String, dynamic> json) =>

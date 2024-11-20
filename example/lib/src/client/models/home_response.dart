@@ -11,7 +11,10 @@ class HomeResponse with _$HomeResponse {
 
   @JsonSerializable(converters: convertors)
   const factory HomeResponse({
-    @JsonKey(name: 'message') required String? message,
+    @JsonKey(name: 'message')
+
+    /// Message
+    required String? message,
   }) = _HomeResponse;
 
   factory HomeResponse.fromJson(Map<String, dynamic> json) =>

@@ -11,7 +11,10 @@ class StudentAttendanceCreate with _$StudentAttendanceCreate {
 
   @JsonSerializable(converters: convertors)
   const factory StudentAttendanceCreate({
-    @JsonKey(name: 'attendance_id') required int attendanceId,
+    @JsonKey(name: 'attendance_id')
+
+    /// Attendance Id
+    required int attendanceId,
   }) = _StudentAttendanceCreate;
 
   factory StudentAttendanceCreate.fromJson(Map<String, dynamic> json) =>

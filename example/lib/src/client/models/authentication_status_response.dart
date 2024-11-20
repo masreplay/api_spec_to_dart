@@ -15,10 +15,20 @@ class AuthenticationStatusResponse with _$AuthenticationStatusResponse {
     @JsonKey(name: 'settings')
     required AuthenticationStatusOptionsResponse settings,
     @JsonKey(name: 'is_temporary_password_changed')
+
+    /// Is Temporary Password Changed
     required bool isTemporaryPasswordChanged,
-    @JsonKey(name: 'is_account_verified') required bool isAccountVerified,
-    @JsonKey(name: 'is_ekyc_verified') required bool isEkycVerified,
+    @JsonKey(name: 'is_account_verified')
+
+    /// Is Account Verified
+    required bool isAccountVerified,
+    @JsonKey(name: 'is_ekyc_verified')
+
+    /// Is Ekyc Verified
+    required bool isEkycVerified,
     @JsonKey(name: 'is_enrollment_payment_verified')
+
+    /// Is Enrollment Payment Verified
     required bool isEnrollmentPaymentVerified,
     @JsonKey(name: 'registration_request_status')
     required RegistrationRequestStatusResponse registrationRequestStatus,

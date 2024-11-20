@@ -13,7 +13,10 @@ class BaseResponseUnionStudentUniversityCardPublicNoneType
 
   @JsonSerializable(converters: convertors)
   const factory BaseResponseUnionStudentUniversityCardPublicNoneType({
-    @JsonKey(name: 'message') required String? message,
+    @JsonKey(name: 'message')
+
+    /// Message
+    required String? message,
     @JsonKey(name: 'data') required StudentUniversityCardPublic? data,
   }) = _BaseResponseUnionStudentUniversityCardPublicNoneType;
 

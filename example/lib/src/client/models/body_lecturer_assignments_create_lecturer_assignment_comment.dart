@@ -12,7 +12,10 @@ class BodyLecturerAssignmentsCreateLecturerAssignmentComment
 
   @JsonSerializable(converters: convertors)
   const factory BodyLecturerAssignmentsCreateLecturerAssignmentComment({
-    @JsonKey(name: 'content') required String content,
+    @JsonKey(name: 'content')
+
+    /// Content
+    required String content,
   }) = _BodyLecturerAssignmentsCreateLecturerAssignmentComment;
 
   factory BodyLecturerAssignmentsCreateLecturerAssignmentComment.fromJson(

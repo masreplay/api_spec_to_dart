@@ -11,8 +11,14 @@ class UpdateSelectedCourses with _$UpdateSelectedCourses {
 
   @JsonSerializable(converters: convertors)
   const factory UpdateSelectedCourses({
-    @JsonKey(name: 'course_id') required int courseId,
-    @JsonKey(name: 'course_stuff_id') required int courseStuffId,
+    @JsonKey(name: 'course_id')
+
+    /// Course Id
+    required int courseId,
+    @JsonKey(name: 'course_stuff_id')
+
+    /// Course Stuff Id
+    required int courseStuffId,
   }) = _UpdateSelectedCourses;
 
   factory UpdateSelectedCourses.fromJson(Map<String, dynamic> json) =>

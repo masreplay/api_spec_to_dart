@@ -12,8 +12,14 @@ class BaseResponseListStudentSelectedCoursesPublic
 
   @JsonSerializable(converters: convertors)
   const factory BaseResponseListStudentSelectedCoursesPublic({
-    @JsonKey(name: 'message') required String? message,
-    @JsonKey(name: 'data') required List data,
+    @JsonKey(name: 'message')
+
+    /// Message
+    required String? message,
+    @JsonKey(name: 'data')
+
+    /// Data
+    required List data,
   }) = _BaseResponseListStudentSelectedCoursesPublic;
 
   factory BaseResponseListStudentSelectedCoursesPublic.fromJson(

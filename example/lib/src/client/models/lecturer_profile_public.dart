@@ -11,9 +11,18 @@ class LecturerProfilePublic with _$LecturerProfilePublic {
 
   @JsonSerializable(converters: convertors)
   const factory LecturerProfilePublic({
-    @JsonKey(name: 'id') required int id,
-    @JsonKey(name: 'full_name') required String fullName,
-    @JsonKey(name: 'image_url') required Uri? imageUrl,
+    @JsonKey(name: 'id')
+
+    /// Id
+    required int id,
+    @JsonKey(name: 'full_name')
+
+    /// Full Name
+    required String fullName,
+    @JsonKey(name: 'image_url')
+
+    /// Image Url
+    required Uri? imageUrl,
   }) = _LecturerProfilePublic;
 
   factory LecturerProfilePublic.fromJson(Map<String, dynamic> json) =>

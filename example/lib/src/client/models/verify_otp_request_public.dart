@@ -11,7 +11,10 @@ class VerifyOtpRequestPublic with _$VerifyOtpRequestPublic {
 
   @JsonSerializable(converters: convertors)
   const factory VerifyOtpRequestPublic({
-    @JsonKey(name: 'otp') required String otp,
+    @JsonKey(name: 'otp')
+
+    /// Otp
+    required String otp,
   }) = _VerifyOtpRequestPublic;
 
   factory VerifyOtpRequestPublic.fromJson(Map<String, dynamic> json) =>

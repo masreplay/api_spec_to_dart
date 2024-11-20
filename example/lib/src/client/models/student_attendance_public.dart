@@ -11,10 +11,22 @@ class StudentAttendancePublic with _$StudentAttendancePublic {
 
   @JsonSerializable(converters: convertors)
   const factory StudentAttendancePublic({
-    @JsonKey(name: 'attendance_status') required int attendanceStatus,
-    @JsonKey(name: 'attendance_date') required DateTime attendanceDate,
-    @JsonKey(name: 'id') required int id,
-    @JsonKey(name: 'weekly_schedule_id') required int weeklyScheduleId,
+    @JsonKey(name: 'attendance_status')
+
+    /// Attendance Status
+    required int attendanceStatus,
+    @JsonKey(name: 'attendance_date')
+
+    /// Attendance Date
+    required DateTime attendanceDate,
+    @JsonKey(name: 'id')
+
+    /// Id
+    required int id,
+    @JsonKey(name: 'weekly_schedule_id')
+
+    /// Weekly Schedule Id
+    required int weeklyScheduleId,
   }) = _StudentAttendancePublic;
 
   factory StudentAttendancePublic.fromJson(Map<String, dynamic> json) =>

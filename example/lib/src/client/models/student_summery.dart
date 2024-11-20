@@ -11,7 +11,10 @@ class StudentSummery with _$StudentSummery {
 
   @JsonSerializable(converters: convertors)
   const factory StudentSummery({
-    @JsonKey(name: 'image_url') required String? imageUrl,
+    @JsonKey(name: 'image_url')
+
+    /// Image Url
+    required String? imageUrl,
   }) = _StudentSummery;
 
   factory StudentSummery.fromJson(Map<String, dynamic> json) =>

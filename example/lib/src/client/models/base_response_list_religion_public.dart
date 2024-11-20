@@ -11,8 +11,14 @@ class BaseResponseListReligionPublic with _$BaseResponseListReligionPublic {
 
   @JsonSerializable(converters: convertors)
   const factory BaseResponseListReligionPublic({
-    @JsonKey(name: 'message') required String? message,
-    @JsonKey(name: 'data') required List data,
+    @JsonKey(name: 'message')
+
+    /// Message
+    required String? message,
+    @JsonKey(name: 'data')
+
+    /// Data
+    required List data,
   }) = _BaseResponseListReligionPublic;
 
   factory BaseResponseListReligionPublic.fromJson(Map<String, dynamic> json) =>

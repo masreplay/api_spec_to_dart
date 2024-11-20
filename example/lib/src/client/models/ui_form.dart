@@ -11,15 +11,42 @@ class UIForm with _$UIForm {
 
   @JsonSerializable(converters: convertors)
   const factory UIForm({
-    @JsonKey(name: 'key') required String key,
-    @JsonKey(name: 'fields') required List fields,
-    @JsonKey(name: 'title') required String title,
-    @JsonKey(name: 'description') required String? description,
-    @JsonKey(name: 'submit_text') required String submitText,
-    @JsonKey(name: 'cancel_text') required String cancelText,
-    @JsonKey(name: 'success_message') required String successMessage,
-    @JsonKey(name: 'error_message') required String errorMessage,
-    @JsonKey(name: 'doc') required String? doc,
+    @JsonKey(name: 'key')
+
+    /// Key
+    required String key,
+    @JsonKey(name: 'fields')
+
+    /// Fields
+    required List fields,
+    @JsonKey(name: 'title')
+
+    /// Title
+    required String title,
+    @JsonKey(name: 'description')
+
+    /// Description
+    required String? description,
+    @JsonKey(name: 'submit_text')
+
+    /// Submit Text
+    required String submitText,
+    @JsonKey(name: 'cancel_text')
+
+    /// Cancel Text
+    required String cancelText,
+    @JsonKey(name: 'success_message')
+
+    /// Success Message
+    required String successMessage,
+    @JsonKey(name: 'error_message')
+
+    /// Error Message
+    required String errorMessage,
+    @JsonKey(name: 'doc')
+
+    /// Doc
+    required String? doc,
   }) = _UIForm;
 
   factory UIForm.fromJson(Map<String, dynamic> json) => _$UIFormFromJson(json);

@@ -12,10 +12,22 @@ class StudentIdsPassportPublic with _$StudentIdsPassportPublic {
 
   @JsonSerializable(converters: convertors)
   const factory StudentIdsPassportPublic({
-    @JsonKey(name: 'number') required String? number,
-    @JsonKey(name: 'issuing_authority') required String? issuingAuthority,
-    @JsonKey(name: 'date_of_issue') required DateTime? dateOfIssue,
-    @JsonKey(name: 'date_of_expiry') required DateTime? dateOfExpiry,
+    @JsonKey(name: 'number')
+
+    /// Number
+    required String? number,
+    @JsonKey(name: 'issuing_authority')
+
+    /// Issuing Authority
+    required String? issuingAuthority,
+    @JsonKey(name: 'date_of_issue')
+
+    /// Date Of Issue
+    required DateTime? dateOfIssue,
+    @JsonKey(name: 'date_of_expiry')
+
+    /// Date Of Expiry
+    required DateTime? dateOfExpiry,
     @JsonKey(name: 'country') required CountryPublic? country,
     @JsonKey(name: 'image') required FilePublic? image,
   }) = _StudentIdsPassportPublic;

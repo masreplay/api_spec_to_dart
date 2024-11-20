@@ -11,8 +11,14 @@ class ReligionPublic with _$ReligionPublic {
 
   @JsonSerializable(converters: convertors)
   const factory ReligionPublic({
-    @JsonKey(name: 'id') required int id,
-    @JsonKey(name: 'name') required String name,
+    @JsonKey(name: 'id')
+
+    /// Id
+    required int id,
+    @JsonKey(name: 'name')
+
+    /// Name
+    required String name,
   }) = _ReligionPublic;
 
   factory ReligionPublic.fromJson(Map<String, dynamic> json) =>

@@ -13,15 +13,39 @@ class HomeFeedStudyProgramSectionDataPublic
 
   @JsonSerializable(converters: convertors)
   const factory HomeFeedStudyProgramSectionDataPublic({
-    @JsonKey(name: 'study_program_id') required int studyProgramId,
-    @JsonKey(name: 'name') required int name,
-    @JsonKey(name: 'study_year') required String studyYear,
-    @JsonKey(name: 'study_year_formatted') required String studyYearFormatted,
+    @JsonKey(name: 'study_program_id')
+
+    /// Study Program Id
+    required int studyProgramId,
+    @JsonKey(name: 'name')
+
+    /// Name
+    required int name,
+    @JsonKey(name: 'study_year')
+
+    /// Study Year
+    required String studyYear,
+    @JsonKey(name: 'study_year_formatted')
+
+    /// Study Year Formatted
+    required String studyYearFormatted,
     @JsonKey(name: 'study_type') required StudyProgramType studyType,
-    @JsonKey(name: 'study_type_formatted') required String studyTypeFormatted,
-    @JsonKey(name: 'semester') required String semester,
-    @JsonKey(name: 'grade') required int grade,
-    @JsonKey(name: 'grade_formatted') required String gradeFormatted,
+    @JsonKey(name: 'study_type_formatted')
+
+    /// Study Type Formatted
+    required String studyTypeFormatted,
+    @JsonKey(name: 'semester')
+
+    /// Semester
+    required String semester,
+    @JsonKey(name: 'grade')
+
+    /// Grade
+    required int grade,
+    @JsonKey(name: 'grade_formatted')
+
+    /// Grade Formatted
+    required String gradeFormatted,
   }) = _HomeFeedStudyProgramSectionDataPublic;
 
   factory HomeFeedStudyProgramSectionDataPublic.fromJson(

@@ -12,13 +12,31 @@ class StudentOSPublic with _$StudentOSPublic {
 
   @JsonSerializable(converters: convertors)
   const factory StudentOSPublic({
-    @JsonKey(name: 'id') required int? id,
-    @JsonKey(name: 'department') required String? department,
-    @JsonKey(name: 'collage') required String? collage,
+    @JsonKey(name: 'id')
+
+    /// Id
+    required int? id,
+    @JsonKey(name: 'department')
+
+    /// Department
+    required String? department,
+    @JsonKey(name: 'collage')
+
+    /// Collage
+    required String? collage,
     @JsonKey(name: 'year') required StudyYearPublic? year,
-    @JsonKey(name: 'study_type') required int? studyType,
-    @JsonKey(name: 'grade') required int? grade,
-    @JsonKey(name: 'current_semester') required String? currentSemester,
+    @JsonKey(name: 'study_type')
+
+    /// Study Type
+    required int? studyType,
+    @JsonKey(name: 'grade')
+
+    /// Grade
+    required int? grade,
+    @JsonKey(name: 'current_semester')
+
+    /// Current Semester
+    required String? currentSemester,
   }) = _StudentOSPublic;
 
   factory StudentOSPublic.fromJson(Map<String, dynamic> json) =>

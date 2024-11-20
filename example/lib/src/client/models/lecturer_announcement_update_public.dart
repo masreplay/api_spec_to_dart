@@ -11,8 +11,14 @@ class LecturerAnnouncementUpdatePublic with _$LecturerAnnouncementUpdatePublic {
 
   @JsonSerializable(converters: convertors)
   const factory LecturerAnnouncementUpdatePublic({
-    @JsonKey(name: 'title') required String title,
-    @JsonKey(name: 'description') required String? description,
+    @JsonKey(name: 'title')
+
+    /// Title
+    required String title,
+    @JsonKey(name: 'description')
+
+    /// Description
+    required String? description,
   }) = _LecturerAnnouncementUpdatePublic;
 
   factory LecturerAnnouncementUpdatePublic.fromJson(

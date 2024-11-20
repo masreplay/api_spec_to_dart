@@ -11,8 +11,14 @@ class BaseResponseListCommentPublic with _$BaseResponseListCommentPublic {
 
   @JsonSerializable(converters: convertors)
   const factory BaseResponseListCommentPublic({
-    @JsonKey(name: 'message') required String? message,
-    @JsonKey(name: 'data') required List data,
+    @JsonKey(name: 'message')
+
+    /// Message
+    required String? message,
+    @JsonKey(name: 'data')
+
+    /// Data
+    required List data,
   }) = _BaseResponseListCommentPublic;
 
   factory BaseResponseListCommentPublic.fromJson(Map<String, dynamic> json) =>

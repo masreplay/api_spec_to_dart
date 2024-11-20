@@ -11,8 +11,14 @@ class BaseResponseListMajorsPublic with _$BaseResponseListMajorsPublic {
 
   @JsonSerializable(converters: convertors)
   const factory BaseResponseListMajorsPublic({
-    @JsonKey(name: 'message') required String? message,
-    @JsonKey(name: 'data') required List data,
+    @JsonKey(name: 'message')
+
+    /// Message
+    required String? message,
+    @JsonKey(name: 'data')
+
+    /// Data
+    required List data,
   }) = _BaseResponseListMajorsPublic;
 
   factory BaseResponseListMajorsPublic.fromJson(Map<String, dynamic> json) =>

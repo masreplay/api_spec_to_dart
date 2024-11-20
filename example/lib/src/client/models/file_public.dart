@@ -11,11 +11,26 @@ class FilePublic with _$FilePublic {
 
   @JsonSerializable(converters: convertors)
   const factory FilePublic({
-    @JsonKey(name: 'id') required int id,
-    @JsonKey(name: 'url') required Uri url,
-    @JsonKey(name: 'name') required String name,
-    @JsonKey(name: 'content_type') required String contentType,
-    @JsonKey(name: 'size') required int size,
+    @JsonKey(name: 'id')
+
+    /// Id
+    required int id,
+    @JsonKey(name: 'url')
+
+    /// Url
+    required Uri url,
+    @JsonKey(name: 'name')
+
+    /// Name
+    required String name,
+    @JsonKey(name: 'content_type')
+
+    /// Content Type
+    required String contentType,
+    @JsonKey(name: 'size')
+
+    /// Size
+    required int size,
   }) = _FilePublic;
 
   factory FilePublic.fromJson(Map<String, dynamic> json) =>

@@ -11,15 +11,43 @@ class LecturerAnnouncementPublic with _$LecturerAnnouncementPublic {
 
   @JsonSerializable(converters: convertors)
   const factory LecturerAnnouncementPublic({
-    @JsonKey(name: 'title') required String title,
-    @JsonKey(name: 'description') required String? description,
-    @JsonKey(name: 'id') required int id,
-    @JsonKey(name: 'username') required String username,
-    @JsonKey(name: 'avatar') required String? avatar,
-    @Default(0) @JsonKey(name: 'comments_count') required int commentsCount,
-    @JsonKey(name: 'created_at') required DateTime createdAt,
-    @JsonKey(name: 'created_at_formatted') required String createdAtFormatted,
-    @JsonKey(name: 'files') required List files,
+    @JsonKey(name: 'title')
+
+    /// Title
+    required String title,
+    @JsonKey(name: 'description')
+
+    /// Description
+    required String? description,
+    @JsonKey(name: 'id')
+
+    /// Id
+    required int id,
+    @JsonKey(name: 'username')
+
+    /// Username
+    required String username,
+    @JsonKey(name: 'avatar')
+
+    /// Avatar
+    required String? avatar,
+    @Default(0)
+    @JsonKey(name: 'comments_count')
+
+    /// Comments Count
+    required int commentsCount,
+    @JsonKey(name: 'created_at')
+
+    /// Created At
+    required DateTime createdAt,
+    @JsonKey(name: 'created_at_formatted')
+
+    /// Created At Formatted
+    required String createdAtFormatted,
+    @JsonKey(name: 'files')
+
+    /// Files
+    required List files,
   }) = _LecturerAnnouncementPublic;
 
   factory LecturerAnnouncementPublic.fromJson(Map<String, dynamic> json) =>

@@ -12,12 +12,30 @@ class CourseStaffPublic with _$CourseStaffPublic {
 
   @JsonSerializable(converters: convertors)
   const factory CourseStaffPublic({
-    @JsonKey(name: 'employee_id') required int employeeId,
-    @JsonKey(name: 'employee_role') required int employeeRole,
-    @JsonKey(name: 'capacity') required int capacity,
-    @JsonKey(name: 'close_editing_employee') required bool closeEditingEmployee,
-    @JsonKey(name: 'course_configuration') required Map? courseConfiguration,
-    @JsonKey(name: 'id') required int? id,
+    @JsonKey(name: 'employee_id')
+
+    /// Employee Id
+    required int employeeId,
+    @JsonKey(name: 'employee_role')
+
+    /// Employee Role
+    required int employeeRole,
+    @JsonKey(name: 'capacity')
+
+    /// Capacity
+    required int capacity,
+    @JsonKey(name: 'close_editing_employee')
+
+    /// Close Editing Employee
+    required bool closeEditingEmployee,
+    @JsonKey(name: 'course_configuration')
+
+    /// Course Configuration
+    required Map? courseConfiguration,
+    @JsonKey(name: 'id')
+
+    /// Id
+    required int? id,
     @JsonKey(name: 'course') required CourseTable? course,
     @JsonKey(name: 'employee') required EmployeePublic? employee,
   }) = _CourseStaffPublic;

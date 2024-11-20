@@ -13,7 +13,10 @@ class BodyStudentEkycUploadEyeData with _$BodyStudentEkycUploadEyeData {
 
   @JsonSerializable(converters: convertors)
   const factory BodyStudentEkycUploadEyeData({
-    @JsonKey(name: 'file_raw') required File fileRaw,
+    @JsonKey(name: 'file_raw')
+
+    /// File Raw
+    required File fileRaw,
   }) = _BodyStudentEkycUploadEyeData;
 
   factory BodyStudentEkycUploadEyeData.fromJson(Map<String, dynamic> json) =>

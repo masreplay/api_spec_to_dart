@@ -11,9 +11,18 @@ class PaymentInfoAmount with _$PaymentInfoAmount {
 
   @JsonSerializable(converters: convertors)
   const factory PaymentInfoAmount({
-    @JsonKey(name: 'total') required int total,
-    @JsonKey(name: 'tax') required int tax,
-    @JsonKey(name: 'cost') required int cost,
+    @JsonKey(name: 'total')
+
+    /// Total
+    required int total,
+    @JsonKey(name: 'tax')
+
+    /// Tax
+    required int tax,
+    @JsonKey(name: 'cost')
+
+    /// Cost
+    required int cost,
   }) = _PaymentInfoAmount;
 
   factory PaymentInfoAmount.fromJson(Map<String, dynamic> json) =>

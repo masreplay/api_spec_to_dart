@@ -11,7 +11,10 @@ class MessageResponse with _$MessageResponse {
 
   @JsonSerializable(converters: convertors)
   const factory MessageResponse({
-    @JsonKey(name: 'message') required String message,
+    @JsonKey(name: 'message')
+
+    /// Message
+    required String message,
   }) = _MessageResponse;
 
   factory MessageResponse.fromJson(Map<String, dynamic> json) =>

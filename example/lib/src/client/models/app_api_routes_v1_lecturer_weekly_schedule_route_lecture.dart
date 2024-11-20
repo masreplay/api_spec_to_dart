@@ -12,19 +12,58 @@ class AppApiRoutesV1LecturerWeeklyScheduleRouteLecture
 
   @JsonSerializable(converters: convertors)
   const factory AppApiRoutesV1LecturerWeeklyScheduleRouteLecture({
-    @JsonKey(name: 'id') required int? id,
-    @JsonKey(name: 'subject_title') required String? subjectTitle,
-    @JsonKey(name: 'start_time') required DateTime? startTime,
-    @JsonKey(name: 'end_time') required DateTime? endTime,
-    @JsonKey(name: 'group_code') required String? groupCode,
-    @JsonKey(name: 'room_code') required String? roomCode,
-    @JsonKey(name: 'duration') required num? duration,
-    @JsonKey(name: 'grade') required int? grade,
-    @JsonKey(name: 'collage') required String? collage,
-    @JsonKey(name: 'division') required String? division,
-    @JsonKey(name: 'members') required List members,
-    @JsonKey(name: 'has_code') required bool? hasCode,
-    @JsonKey(name: 'number_of_students') required int? numberOfStudents,
+    @JsonKey(name: 'id')
+
+    /// Id
+    required int? id,
+    @JsonKey(name: 'subject_title')
+
+    /// Subject Title
+    required String? subjectTitle,
+    @JsonKey(name: 'start_time')
+
+    /// Start Time
+    required DateTime? startTime,
+    @JsonKey(name: 'end_time')
+
+    /// End Time
+    required DateTime? endTime,
+    @JsonKey(name: 'group_code')
+
+    /// Group Code
+    required String? groupCode,
+    @JsonKey(name: 'room_code')
+
+    /// Room Code
+    required String? roomCode,
+    @JsonKey(name: 'duration')
+
+    /// Duration
+    required num? duration,
+    @JsonKey(name: 'grade')
+
+    /// Grade
+    required int? grade,
+    @JsonKey(name: 'collage')
+
+    /// Collage
+    required String? collage,
+    @JsonKey(name: 'division')
+
+    /// Division
+    required String? division,
+    @JsonKey(name: 'members')
+
+    /// Members
+    required List members,
+    @JsonKey(name: 'has_code')
+
+    /// Has Code
+    required bool? hasCode,
+    @JsonKey(name: 'number_of_students')
+
+    /// Number Of Students
+    required int? numberOfStudents,
   }) = _AppApiRoutesV1LecturerWeeklyScheduleRouteLecture;
 
   factory AppApiRoutesV1LecturerWeeklyScheduleRouteLecture.fromJson(

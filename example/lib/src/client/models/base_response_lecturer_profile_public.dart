@@ -13,7 +13,10 @@ class BaseResponseLecturerProfilePublic
 
   @JsonSerializable(converters: convertors)
   const factory BaseResponseLecturerProfilePublic({
-    @JsonKey(name: 'message') required String? message,
+    @JsonKey(name: 'message')
+
+    /// Message
+    required String? message,
     @JsonKey(name: 'data') required LecturerProfilePublic data,
   }) = _BaseResponseLecturerProfilePublic;
 

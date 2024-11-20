@@ -13,10 +13,23 @@ class HomeFeedMissingPaymentSectionPublic
 
   @JsonSerializable(converters: convertors)
   const factory HomeFeedMissingPaymentSectionPublic({
-    @JsonKey(name: 'id') required int id,
-    @Default(missing_payment) @JsonKey(name: 'type') required String type,
-    @JsonKey(name: 'title') required String title,
-    @JsonKey(name: 'description') required String? description,
+    @JsonKey(name: 'id')
+
+    /// Id
+    required int id,
+    @Default(missing_payment)
+    @JsonKey(name: 'type')
+
+    /// Type
+    required String type,
+    @JsonKey(name: 'title')
+
+    /// Title
+    required String title,
+    @JsonKey(name: 'description')
+
+    /// Description
+    required String? description,
     @JsonKey(name: 'data')
     required HomeFeedMissingPaymentSectionDataPublic data,
   }) = _HomeFeedMissingPaymentSectionPublic;

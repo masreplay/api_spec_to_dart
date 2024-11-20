@@ -12,8 +12,14 @@ class BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments
 
   @JsonSerializable(converters: convertors)
   const factory BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments({
-    @JsonKey(name: 'message') required String? message,
-    @JsonKey(name: 'data') required List data,
+    @JsonKey(name: 'message')
+
+    /// Message
+    required String? message,
+    @JsonKey(name: 'data')
+
+    /// Data
+    required List data,
   }) = _BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments;
 
   factory BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments.fromJson(

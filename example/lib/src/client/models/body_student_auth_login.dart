@@ -11,8 +11,14 @@ class BodyStudentAuthLogin with _$BodyStudentAuthLogin {
 
   @JsonSerializable(converters: convertors)
   const factory BodyStudentAuthLogin({
-    @JsonKey(name: 'username') required String username,
-    @JsonKey(name: 'password') required String password,
+    @JsonKey(name: 'username')
+
+    /// Username
+    required String username,
+    @JsonKey(name: 'password')
+
+    /// Password
+    required String password,
   }) = _BodyStudentAuthLogin;
 
   factory BodyStudentAuthLogin.fromJson(Map<String, dynamic> json) =>

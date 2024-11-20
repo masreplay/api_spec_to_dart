@@ -12,7 +12,10 @@ class BaseResponseCommentPublic with _$BaseResponseCommentPublic {
 
   @JsonSerializable(converters: convertors)
   const factory BaseResponseCommentPublic({
-    @JsonKey(name: 'message') required String? message,
+    @JsonKey(name: 'message')
+
+    /// Message
+    required String? message,
     @JsonKey(name: 'data') required CommentPublic data,
   }) = _BaseResponseCommentPublic;
 

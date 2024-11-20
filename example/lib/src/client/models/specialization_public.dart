@@ -11,9 +11,18 @@ class SpecializationPublic with _$SpecializationPublic {
 
   @JsonSerializable(converters: convertors)
   const factory SpecializationPublic({
-    @JsonKey(name: 'major_id') required int majorId,
-    @JsonKey(name: 'id') required int id,
-    @JsonKey(name: 'name') required String name,
+    @JsonKey(name: 'major_id')
+
+    /// Major Id
+    required int majorId,
+    @JsonKey(name: 'id')
+
+    /// Id
+    required int id,
+    @JsonKey(name: 'name')
+
+    /// Name
+    required String name,
   }) = _SpecializationPublic;
 
   factory SpecializationPublic.fromJson(Map<String, dynamic> json) =>

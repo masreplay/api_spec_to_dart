@@ -13,7 +13,10 @@ class BaseResponseUnionSummaryResponseNoneType
 
   @JsonSerializable(converters: convertors)
   const factory BaseResponseUnionSummaryResponseNoneType({
-    @JsonKey(name: 'message') required String? message,
+    @JsonKey(name: 'message')
+
+    /// Message
+    required String? message,
     @JsonKey(name: 'data') required SummaryResponse? data,
   }) = _BaseResponseUnionSummaryResponseNoneType;
 

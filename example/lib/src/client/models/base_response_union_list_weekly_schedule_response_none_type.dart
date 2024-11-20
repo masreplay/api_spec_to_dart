@@ -12,8 +12,14 @@ class BaseResponseUnionListWeeklyScheduleResponseNoneType
 
   @JsonSerializable(converters: convertors)
   const factory BaseResponseUnionListWeeklyScheduleResponseNoneType({
-    @JsonKey(name: 'message') required String? message,
-    @JsonKey(name: 'data') required List? data,
+    @JsonKey(name: 'message')
+
+    /// Message
+    required String? message,
+    @JsonKey(name: 'data')
+
+    /// Data
+    required List? data,
   }) = _BaseResponseUnionListWeeklyScheduleResponseNoneType;
 
   factory BaseResponseUnionListWeeklyScheduleResponseNoneType.fromJson(

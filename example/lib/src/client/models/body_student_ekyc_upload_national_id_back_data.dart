@@ -14,9 +14,18 @@ class BodyStudentEkycUploadNationalIdBackData
 
   @JsonSerializable(converters: convertors)
   const factory BodyStudentEkycUploadNationalIdBackData({
-    @JsonKey(name: 'data') required String data,
-    @JsonKey(name: 'file') required File file,
-    @JsonKey(name: 'file_raw') required File fileRaw,
+    @JsonKey(name: 'data')
+
+    /// Data
+    required String data,
+    @JsonKey(name: 'file')
+
+    /// File
+    required File file,
+    @JsonKey(name: 'file_raw')
+
+    /// File Raw
+    required File fileRaw,
   }) = _BodyStudentEkycUploadNationalIdBackData;
 
   factory BodyStudentEkycUploadNationalIdBackData.fromJson(

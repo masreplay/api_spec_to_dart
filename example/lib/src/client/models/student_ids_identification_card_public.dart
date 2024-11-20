@@ -13,11 +13,26 @@ class StudentIdsIdentificationCardPublic
 
   @JsonSerializable(converters: convertors)
   const factory StudentIdsIdentificationCardPublic({
-    @JsonKey(name: 'number') required String? number,
-    @JsonKey(name: 'record') required String? record,
-    @JsonKey(name: 'page') required String? page,
-    @JsonKey(name: 'issuing_authority') required String? issuingAuthority,
-    @JsonKey(name: 'date_of_issue') required DateTime? dateOfIssue,
+    @JsonKey(name: 'number')
+
+    /// Number
+    required String? number,
+    @JsonKey(name: 'record')
+
+    /// Record
+    required String? record,
+    @JsonKey(name: 'page')
+
+    /// Page
+    required String? page,
+    @JsonKey(name: 'issuing_authority')
+
+    /// Issuing Authority
+    required String? issuingAuthority,
+    @JsonKey(name: 'date_of_issue')
+
+    /// Date Of Issue
+    required DateTime? dateOfIssue,
     @JsonKey(name: 'front_image') required FilePublic? frontImage,
     @JsonKey(name: 'back_image') required FilePublic? backImage,
   }) = _StudentIdsIdentificationCardPublic;

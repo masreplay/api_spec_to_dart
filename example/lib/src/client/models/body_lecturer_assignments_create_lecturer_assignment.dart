@@ -12,9 +12,18 @@ class BodyLecturerAssignmentsCreateLecturerAssignment
 
   @JsonSerializable(converters: convertors)
   const factory BodyLecturerAssignmentsCreateLecturerAssignment({
-    @JsonKey(name: 'files') required List files,
-    @JsonKey(name: 'title') required String title,
-    @JsonKey(name: 'description') required String? description,
+    @JsonKey(name: 'files')
+
+    /// Files
+    required List files,
+    @JsonKey(name: 'title')
+
+    /// Title
+    required String title,
+    @JsonKey(name: 'description')
+
+    /// Description
+    required String? description,
   }) = _BodyLecturerAssignmentsCreateLecturerAssignment;
 
   factory BodyLecturerAssignmentsCreateLecturerAssignment.fromJson(

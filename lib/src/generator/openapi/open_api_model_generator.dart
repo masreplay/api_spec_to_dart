@@ -84,7 +84,8 @@ class ${className} with _\$${className} {
       jsonName: key,
       propertyName: propertyName,
       propertyType: dartType,
-      comment: value.description,
+      title: value.title,
+      description: value.description,
     );
   }
 
@@ -100,7 +101,8 @@ class ${className} with _\$${className} {
       jsonName: key,
       propertyName: propertyName,
       propertyType: dartType,
-      comment: value.description,
+      title: null,
+      description: value.description,
     );
   }
 
@@ -142,33 +144,42 @@ class ${className} with _\$${className} {
 
     return _generateField(
       freezedDefaultValue: value.default_,
-      comment: value.description,
+      title: value.title,
+      description: value.description,
       jsonName: key,
       propertyName: propertyName,
       propertyType: dartType,
     );
   }
 
-  // : '@Default(${(value.enum_?.isEmpty ?? true) ? '' : '${dartType}.'}${value.default_})';
   String _generateField({
     required String propertyName,
     required Object? freezedDefaultValue,
     required String jsonName,
     required String propertyType,
-    required String? comment,
+    String? title,
+    String? description,
   }) {
     final buffer = StringBuffer();
 
+    // Add @Default annotation if default value is provided
     if (freezedDefaultValue != null) {
-      buffer.write('@Default($freezedDefaultValue)\n');
+      buffer.writeln('@Default($freezedDefaultValue)');
     }
 
-    buffer.write('@JsonKey(name: \'$jsonName\')\n');
+    // Add @JsonKey annotation
+    buffer.writeln('@JsonKey(name: \'$jsonName\')');
 
-    if (comment != null) {
-      buffer.write('/// $comment\n');
+    // Add comment if title or description is provided
+    if (title != null || description != null) {
+      final commentParts = [
+        if (title != null) title,
+        if (description != null) description,
+      ];
+      buffer.writeln('/// ${commentParts.join(', ')}');
     }
 
+    // Add field declaration
     buffer.write('required $propertyType $propertyName,');
 
     return buffer.toString();

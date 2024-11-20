@@ -11,10 +11,22 @@ class AttachmentResponse with _$AttachmentResponse {
 
   @JsonSerializable(converters: convertors)
   const factory AttachmentResponse({
-    @JsonKey(name: 'attachment_name') required String? attachmentName,
-    @JsonKey(name: 'sign_url') required String? signUrl,
-    @JsonKey(name: 'file_size') required int? fileSize,
-    @JsonKey(name: 'file_mim_type') required String? fileMimType,
+    @JsonKey(name: 'attachment_name')
+
+    /// Attachment Name
+    required String? attachmentName,
+    @JsonKey(name: 'sign_url')
+
+    /// Sign Url
+    required String? signUrl,
+    @JsonKey(name: 'file_size')
+
+    /// File Size
+    required int? fileSize,
+    @JsonKey(name: 'file_mim_type')
+
+    /// File Mim Type
+    required String? fileMimType,
   }) = _AttachmentResponse;
 
   factory AttachmentResponse.fromJson(Map<String, dynamic> json) =>

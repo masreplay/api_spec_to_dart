@@ -13,9 +13,15 @@ class HomeFeedMissingPaymentSectionDataPublic
 
   @JsonSerializable(converters: convertors)
   const factory HomeFeedMissingPaymentSectionDataPublic({
-    @JsonKey(name: 'price') required num price,
+    @JsonKey(name: 'price')
+
+    /// Price
+    required num price,
     @JsonKey(name: 'currency') required PriceCurrency currency,
-    @JsonKey(name: 'price_formatted') required String priceFormatted,
+    @JsonKey(name: 'price_formatted')
+
+    /// Price Formatted
+    required String priceFormatted,
   }) = _HomeFeedMissingPaymentSectionDataPublic;
 
   factory HomeFeedMissingPaymentSectionDataPublic.fromJson(

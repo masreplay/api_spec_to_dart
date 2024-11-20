@@ -12,7 +12,10 @@ class InitEkycResponse with _$InitEkycResponse {
 
   @JsonSerializable(converters: convertors)
   const factory InitEkycResponse({
-    @JsonKey(name: 'id') required String id,
+    @JsonKey(name: 'id')
+
+    /// Id
+    required String id,
     @JsonKey(name: 'status') required EkycStatusEnum status,
   }) = _InitEkycResponse;
 

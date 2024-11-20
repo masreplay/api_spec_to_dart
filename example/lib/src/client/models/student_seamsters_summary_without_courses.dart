@@ -13,7 +13,10 @@ class StudentSeamstersSummaryWithoutCourses
 
   @JsonSerializable(converters: convertors)
   const factory StudentSeamstersSummaryWithoutCourses({
-    @JsonKey(name: 'semesters') required List? semesters,
+    @JsonKey(name: 'semesters')
+
+    /// Semesters
+    required List? semesters,
     @JsonKey(name: 'year') required StudyYearPublic? year,
   }) = _StudentSeamstersSummaryWithoutCourses;
 

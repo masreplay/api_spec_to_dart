@@ -13,11 +13,25 @@ class StudentFeesPublic with _$StudentFeesPublic {
   @JsonSerializable(converters: convertors)
   const factory StudentFeesPublic({
     @JsonKey(name: 'student_academic_status_id')
+
+    /// Student Academic Status Id
     required int studentAcademicStatusId,
-    @JsonKey(name: 'amount') required num amount,
-    @JsonKey(name: 'receipt_number') required String receiptNumber,
-    @JsonKey(name: 'receipt_date') required DateTime receiptDate,
-    @JsonKey(name: 'id') required int id,
+    @JsonKey(name: 'amount')
+
+    /// Amount
+    required num amount,
+    @JsonKey(name: 'receipt_number')
+
+    /// Receipt Number
+    required String receiptNumber,
+    @JsonKey(name: 'receipt_date')
+
+    /// Receipt Date
+    required DateTime receiptDate,
+    @JsonKey(name: 'id')
+
+    /// Id
+    required int id,
     @JsonKey(name: 'fees_type') required StudentFeesFeesTypesPublic? feesType,
   }) = _StudentFeesPublic;
 

@@ -12,7 +12,10 @@ class BaseResponseLecturerCoursePublic with _$BaseResponseLecturerCoursePublic {
 
   @JsonSerializable(converters: convertors)
   const factory BaseResponseLecturerCoursePublic({
-    @JsonKey(name: 'message') required String? message,
+    @JsonKey(name: 'message')
+
+    /// Message
+    required String? message,
     @JsonKey(name: 'data') required LecturerCoursePublic data,
   }) = _BaseResponseLecturerCoursePublic;
 

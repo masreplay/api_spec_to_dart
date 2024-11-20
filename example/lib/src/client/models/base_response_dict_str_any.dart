@@ -11,8 +11,14 @@ class BaseResponseDictStrAny with _$BaseResponseDictStrAny {
 
   @JsonSerializable(converters: convertors)
   const factory BaseResponseDictStrAny({
-    @JsonKey(name: 'message') required String? message,
-    @JsonKey(name: 'data') required Map data,
+    @JsonKey(name: 'message')
+
+    /// Message
+    required String? message,
+    @JsonKey(name: 'data')
+
+    /// Data
+    required Map data,
   }) = _BaseResponseDictStrAny;
 
   factory BaseResponseDictStrAny.fromJson(Map<String, dynamic> json) =>

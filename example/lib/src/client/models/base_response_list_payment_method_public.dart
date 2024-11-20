@@ -12,8 +12,14 @@ class BaseResponseListPaymentMethodPublic
 
   @JsonSerializable(converters: convertors)
   const factory BaseResponseListPaymentMethodPublic({
-    @JsonKey(name: 'message') required String? message,
-    @JsonKey(name: 'data') required List data,
+    @JsonKey(name: 'message')
+
+    /// Message
+    required String? message,
+    @JsonKey(name: 'data')
+
+    /// Data
+    required List data,
   }) = _BaseResponseListPaymentMethodPublic;
 
   factory BaseResponseListPaymentMethodPublic.fromJson(

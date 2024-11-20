@@ -11,8 +11,14 @@ class BaseResponseBool with _$BaseResponseBool {
 
   @JsonSerializable(converters: convertors)
   const factory BaseResponseBool({
-    @JsonKey(name: 'message') required String? message,
-    @JsonKey(name: 'data') required bool data,
+    @JsonKey(name: 'message')
+
+    /// Message
+    required String? message,
+    @JsonKey(name: 'data')
+
+    /// Data
+    required bool data,
   }) = _BaseResponseBool;
 
   factory BaseResponseBool.fromJson(Map<String, dynamic> json) =>

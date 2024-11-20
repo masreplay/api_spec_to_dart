@@ -13,7 +13,10 @@ class PaymentInfoResponse with _$PaymentInfoResponse {
   @JsonSerializable(converters: convertors)
   const factory PaymentInfoResponse({
     @JsonKey(name: 'amount') required PaymentInfoAmount amount,
-    @JsonKey(name: 'payment_methods') required List paymentMethods,
+    @JsonKey(name: 'payment_methods')
+
+    /// Payment Methods
+    required List paymentMethods,
   }) = _PaymentInfoResponse;
 
   factory PaymentInfoResponse.fromJson(Map<String, dynamic> json) =>

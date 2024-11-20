@@ -12,13 +12,28 @@ class CommentPublic with _$CommentPublic {
 
   @JsonSerializable(converters: convertors)
   const factory CommentPublic({
-    @JsonKey(name: 'id') required int id,
-    @JsonKey(name: 'content') required String content,
-    @JsonKey(name: 'created_at') required DateTime createdAt,
-    @JsonKey(name: 'created_at_formatted') required String createdAtFormatted,
+    @JsonKey(name: 'id')
+
+    /// Id
+    required int id,
+    @JsonKey(name: 'content')
+
+    /// Content
+    required String content,
+    @JsonKey(name: 'created_at')
+
+    /// Created At
+    required DateTime createdAt,
+    @JsonKey(name: 'created_at_formatted')
+
+    /// Created At Formatted
+    required String createdAtFormatted,
     @JsonKey(name: 'user') required CommentUserPublic user,
     @JsonKey(name: 'parent') required CommentPublic? parent,
-    @JsonKey(name: 'replies') required List replies,
+    @JsonKey(name: 'replies')
+
+    /// Replies
+    required List replies,
   }) = _CommentPublic;
 
   factory CommentPublic.fromJson(Map<String, dynamic> json) =>

@@ -13,7 +13,10 @@ class BaseResponseLecturerAttendanceResponse
 
   @JsonSerializable(converters: convertors)
   const factory BaseResponseLecturerAttendanceResponse({
-    @JsonKey(name: 'message') required String? message,
+    @JsonKey(name: 'message')
+
+    /// Message
+    required String? message,
     @JsonKey(name: 'data') required LecturerAttendanceResponse data,
   }) = _BaseResponseLecturerAttendanceResponse;
 

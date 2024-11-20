@@ -11,8 +11,14 @@ class BaseResponseNoneType with _$BaseResponseNoneType {
 
   @JsonSerializable(converters: convertors)
   const factory BaseResponseNoneType({
-    @JsonKey(name: 'message') required String? message,
-    @JsonKey(name: 'data') required dynamic data,
+    @JsonKey(name: 'message')
+
+    /// Message
+    required String? message,
+    @JsonKey(name: 'data')
+
+    /// Data
+    required dynamic data,
   }) = _BaseResponseNoneType;
 
   factory BaseResponseNoneType.fromJson(Map<String, dynamic> json) =>

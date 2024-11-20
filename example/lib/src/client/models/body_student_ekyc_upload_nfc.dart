@@ -13,8 +13,14 @@ class BodyStudentEkycUploadNfc with _$BodyStudentEkycUploadNfc {
 
   @JsonSerializable(converters: convertors)
   const factory BodyStudentEkycUploadNfc({
-    @JsonKey(name: 'data') required String data,
-    @JsonKey(name: 'file') required File file,
+    @JsonKey(name: 'data')
+
+    /// Data
+    required String data,
+    @JsonKey(name: 'file')
+
+    /// File
+    required File file,
   }) = _BodyStudentEkycUploadNfc;
 
   factory BodyStudentEkycUploadNfc.fromJson(Map<String, dynamic> json) =>

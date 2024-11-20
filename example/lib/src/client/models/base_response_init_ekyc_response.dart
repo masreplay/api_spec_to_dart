@@ -12,7 +12,10 @@ class BaseResponseInitEkycResponse with _$BaseResponseInitEkycResponse {
 
   @JsonSerializable(converters: convertors)
   const factory BaseResponseInitEkycResponse({
-    @JsonKey(name: 'message') required String? message,
+    @JsonKey(name: 'message')
+
+    /// Message
+    required String? message,
     @JsonKey(name: 'data') required InitEkycResponse data,
   }) = _BaseResponseInitEkycResponse;
 

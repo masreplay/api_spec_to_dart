@@ -13,31 +13,94 @@ class StudentRegistrationPersonalInfoUpdateRequest
 
   @JsonSerializable(converters: convertors)
   const factory StudentRegistrationPersonalInfoUpdateRequest({
-    @JsonKey(name: 'arabic_name1') required String arabicName1,
-    @JsonKey(name: 'arabic_name2') required String arabicName2,
-    @JsonKey(name: 'arabic_name3') required String arabicName3,
-    @JsonKey(name: 'arabic_name4') required String arabicName4,
-    @JsonKey(name: 'english_name1') required String englishName1,
-    @JsonKey(name: 'english_name2') required String englishName2,
-    @JsonKey(name: 'english_name3') required String englishName3,
-    @JsonKey(name: 'english_name4') required String englishName4,
-    @JsonKey(name: 'arabic_mother_name1') required String arabicMotherName1,
-    @JsonKey(name: 'arabic_mother_name2') required String arabicMotherName2,
-    @JsonKey(name: 'arabic_mother_name3') required String arabicMotherName3,
-    @JsonKey(name: 'english_mother_name1') required String englishMotherName1,
-    @JsonKey(name: 'english_mother_name2') required String englishMotherName2,
-    @JsonKey(name: 'english_mother_name3') required String englishMotherName3,
+    @JsonKey(name: 'arabic_name1')
+
+    /// Arabic Name1
+    required String arabicName1,
+    @JsonKey(name: 'arabic_name2')
+
+    /// Arabic Name2
+    required String arabicName2,
+    @JsonKey(name: 'arabic_name3')
+
+    /// Arabic Name3
+    required String arabicName3,
+    @JsonKey(name: 'arabic_name4')
+
+    /// Arabic Name4
+    required String arabicName4,
+    @JsonKey(name: 'english_name1')
+
+    /// English Name1
+    required String englishName1,
+    @JsonKey(name: 'english_name2')
+
+    /// English Name2
+    required String englishName2,
+    @JsonKey(name: 'english_name3')
+
+    /// English Name3
+    required String englishName3,
+    @JsonKey(name: 'english_name4')
+
+    /// English Name4
+    required String englishName4,
+    @JsonKey(name: 'arabic_mother_name1')
+
+    /// Arabic Mother Name1
+    required String arabicMotherName1,
+    @JsonKey(name: 'arabic_mother_name2')
+
+    /// Arabic Mother Name2
+    required String arabicMotherName2,
+    @JsonKey(name: 'arabic_mother_name3')
+
+    /// Arabic Mother Name3
+    required String arabicMotherName3,
+    @JsonKey(name: 'english_mother_name1')
+
+    /// English Mother Name1
+    required String englishMotherName1,
+    @JsonKey(name: 'english_mother_name2')
+
+    /// English Mother Name2
+    required String englishMotherName2,
+    @JsonKey(name: 'english_mother_name3')
+
+    /// English Mother Name3
+    required String englishMotherName3,
     @JsonKey(name: 'gender') required GenderEnum gender,
     @JsonKey(name: 'citizenship_type')
     required CitizenshipTypeEnum citizenshipType,
     @JsonKey(name: 'blood_group') required BloodGroupEnum bloodGroup,
-    @JsonKey(name: 'date_of_birth') required DateTime dateOfBirth,
-    @JsonKey(name: 'governorate_id') required int governorateId,
-    @JsonKey(name: 'nationality_id') required int nationalityId,
-    @JsonKey(name: 'nationalism_id') required int nationalismId,
-    @JsonKey(name: 'religion_id') required int religionId,
-    @JsonKey(name: 'phone_number') required String phoneNumber,
-    @JsonKey(name: 'email') required String? email,
+    @JsonKey(name: 'date_of_birth')
+
+    /// Date Of Birth
+    required DateTime dateOfBirth,
+    @JsonKey(name: 'governorate_id')
+
+    /// Governorate Id
+    required int governorateId,
+    @JsonKey(name: 'nationality_id')
+
+    /// Nationality Id
+    required int nationalityId,
+    @JsonKey(name: 'nationalism_id')
+
+    /// Nationalism Id
+    required int nationalismId,
+    @JsonKey(name: 'religion_id')
+
+    /// Religion Id
+    required int religionId,
+    @JsonKey(name: 'phone_number')
+
+    /// Phone Number
+    required String phoneNumber,
+    @JsonKey(name: 'email')
+
+    /// Email
+    required String? email,
   }) = _StudentRegistrationPersonalInfoUpdateRequest;
 
   factory StudentRegistrationPersonalInfoUpdateRequest.fromJson(

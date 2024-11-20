@@ -11,8 +11,14 @@ class BaseResponseAny with _$BaseResponseAny {
 
   @JsonSerializable(converters: convertors)
   const factory BaseResponseAny({
-    @JsonKey(name: 'message') required String? message,
-    @JsonKey(name: 'data') required dynamic data,
+    @JsonKey(name: 'message')
+
+    /// Message
+    required String? message,
+    @JsonKey(name: 'data')
+
+    /// Data
+    required dynamic data,
   }) = _BaseResponseAny;
 
   factory BaseResponseAny.fromJson(Map<String, dynamic> json) =>

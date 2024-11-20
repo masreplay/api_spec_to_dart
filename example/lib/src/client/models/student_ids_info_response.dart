@@ -12,8 +12,14 @@ class StudentIdsInfoResponse with _$StudentIdsInfoResponse {
 
   @JsonSerializable(converters: convertors)
   const factory StudentIdsInfoResponse({
-    @JsonKey(name: 'is_iraqi') required bool? isIraqi,
-    @JsonKey(name: 'have_national_card') required bool? haveNationalCard,
+    @JsonKey(name: 'is_iraqi')
+
+    /// Is Iraqi
+    required bool? isIraqi,
+    @JsonKey(name: 'have_national_card')
+
+    /// Have National Card
+    required bool? haveNationalCard,
     @JsonKey(name: 'national_card')
     required StudentIdsNationalCardPublic nationalCard,
     @JsonKey(name: 'identification_card')

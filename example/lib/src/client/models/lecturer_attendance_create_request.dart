@@ -11,7 +11,10 @@ class LecturerAttendanceCreateRequest with _$LecturerAttendanceCreateRequest {
 
   @JsonSerializable(converters: convertors)
   const factory LecturerAttendanceCreateRequest({
-    @JsonKey(name: 'weekly_schedule_id') required int weeklyScheduleId,
+    @JsonKey(name: 'weekly_schedule_id')
+
+    /// Weekly Schedule Id
+    required int weeklyScheduleId,
   }) = _LecturerAttendanceCreateRequest;
 
   factory LecturerAttendanceCreateRequest.fromJson(Map<String, dynamic> json) =>

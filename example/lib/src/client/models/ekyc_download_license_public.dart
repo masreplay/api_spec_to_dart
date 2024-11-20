@@ -11,7 +11,10 @@ class EkycDownloadLicensePublic with _$EkycDownloadLicensePublic {
 
   @JsonSerializable(converters: convertors)
   const factory EkycDownloadLicensePublic({
-    @JsonKey(name: 'content') required String content,
+    @JsonKey(name: 'content')
+
+    /// Content
+    required String content,
   }) = _EkycDownloadLicensePublic;
 
   factory EkycDownloadLicensePublic.fromJson(Map<String, dynamic> json) =>

@@ -13,7 +13,10 @@ class BaseResponseUnionFilePublicNoneType
 
   @JsonSerializable(converters: convertors)
   const factory BaseResponseUnionFilePublicNoneType({
-    @JsonKey(name: 'message') required String? message,
+    @JsonKey(name: 'message')
+
+    /// Message
+    required String? message,
     @JsonKey(name: 'data') required FilePublic? data,
   }) = _BaseResponseUnionFilePublicNoneType;
 

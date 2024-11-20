@@ -12,8 +12,14 @@ class BaseResponseListWeeklyScheduleTeacherResponse
 
   @JsonSerializable(converters: convertors)
   const factory BaseResponseListWeeklyScheduleTeacherResponse({
-    @JsonKey(name: 'message') required String? message,
-    @JsonKey(name: 'data') required List data,
+    @JsonKey(name: 'message')
+
+    /// Message
+    required String? message,
+    @JsonKey(name: 'data')
+
+    /// Data
+    required List data,
   }) = _BaseResponseListWeeklyScheduleTeacherResponse;
 
   factory BaseResponseListWeeklyScheduleTeacherResponse.fromJson(

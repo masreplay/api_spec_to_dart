@@ -12,7 +12,10 @@ class AppSettingsUpdate with _$AppSettingsUpdate {
 
   @JsonSerializable(converters: convertors)
   const factory AppSettingsUpdate({
-    @JsonKey(name: 'is_force_update') required bool isForceUpdate,
+    @JsonKey(name: 'is_force_update')
+
+    /// Is Force Update
+    required bool isForceUpdate,
     @JsonKey(name: 'android') required AppSettingsAndroid android,
     @JsonKey(name: 'ios') required AppSettingsIos ios,
   }) = _AppSettingsUpdate;

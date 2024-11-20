@@ -11,8 +11,14 @@ class StudyYearPublic with _$StudyYearPublic {
 
   @JsonSerializable(converters: convertors)
   const factory StudyYearPublic({
-    @JsonKey(name: 'id') required int id,
-    @JsonKey(name: 'value') required String value,
+    @JsonKey(name: 'id')
+
+    /// Id
+    required int id,
+    @JsonKey(name: 'value')
+
+    /// Value
+    required String value,
   }) = _StudyYearPublic;
 
   factory StudyYearPublic.fromJson(Map<String, dynamic> json) =>

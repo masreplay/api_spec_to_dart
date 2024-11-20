@@ -11,7 +11,10 @@ class HttpValidationError with _$HttpValidationError {
 
   @JsonSerializable(converters: convertors)
   const factory HttpValidationError({
-    @JsonKey(name: 'detail') required List detail,
+    @JsonKey(name: 'detail')
+
+    /// Detail
+    required List detail,
   }) = _HttpValidationError;
 
   factory HttpValidationError.fromJson(Map<String, dynamic> json) =>

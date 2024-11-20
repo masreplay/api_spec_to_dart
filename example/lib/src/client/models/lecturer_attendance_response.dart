@@ -11,8 +11,14 @@ class LecturerAttendanceResponse with _$LecturerAttendanceResponse {
 
   @JsonSerializable(converters: convertors)
   const factory LecturerAttendanceResponse({
-    @JsonKey(name: 'issuing_date') required DateTime issuingDate,
-    @JsonKey(name: 'expiration_date') required DateTime expirationDate,
+    @JsonKey(name: 'issuing_date')
+
+    /// Issuing Date
+    required DateTime issuingDate,
+    @JsonKey(name: 'expiration_date')
+
+    /// Expiration Date
+    required DateTime expirationDate,
   }) = _LecturerAttendanceResponse;
 
   factory LecturerAttendanceResponse.fromJson(Map<String, dynamic> json) =>
