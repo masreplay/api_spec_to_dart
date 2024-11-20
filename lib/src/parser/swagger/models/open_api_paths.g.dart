@@ -62,10 +62,10 @@ _$OpenApiPathMethodImpl _$$OpenApiPathMethodImplFromJson(
           ?.map((e) =>
               OpenApiPathMethodParameter.fromJson(e as Map<String, dynamic>))
           .toList(),
-      requestBody: json['request_body'] == null
+      requestBody: json['requestBody'] == null
           ? null
           : OpenApiPathMethodRequestBody.fromJson(
-              json['request_body'] as Map<String, dynamic>),
+              json['requestBody'] as Map<String, dynamic>),
       responses: (json['responses'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(
             k, OpenApiPathMethodResponse.fromJson(e as Map<String, dynamic>)),
@@ -84,7 +84,7 @@ Map<String, dynamic> _$$OpenApiPathMethodImplToJson(
           case final value?)
         'parameters': value,
       if (instance.requestBody?.toJson() case final value?)
-        'request_body': value,
+        'requestBody': value,
       if (instance.responses?.map((k, e) => MapEntry(k, e.toJson()))
           case final value?)
         'responses': value,
@@ -138,10 +138,12 @@ _$OpenApiPathMethodRequestBodyImpl _$$OpenApiPathMethodRequestBodyImplFromJson(
         Map<String, dynamic> json) =>
     _$OpenApiPathMethodRequestBodyImpl(
       content: OpenApiContent.fromJson(json['content'] as Map<String, dynamic>),
+      required: json['required'] as bool?,
     );
 
 Map<String, dynamic> _$$OpenApiPathMethodRequestBodyImplToJson(
         _$OpenApiPathMethodRequestBodyImpl instance) =>
     <String, dynamic>{
       'content': instance.content.toJson(),
+      if (instance.required case final value?) 'required': value,
     };

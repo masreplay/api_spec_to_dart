@@ -219,8 +219,10 @@ mixin _$OpenApiPathMethod {
   @JsonKey(name: 'parameters')
   List<OpenApiPathMethodParameter>? get parameters =>
       throw _privateConstructorUsedError;
+  @JsonKey(name: 'requestBody')
   OpenApiPathMethodRequestBody? get requestBody =>
       throw _privateConstructorUsedError;
+  @JsonKey(name: 'responses')
   Map<String, OpenApiPathMethodResponse>? get responses =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -234,7 +236,9 @@ mixin _$OpenApiPathMethod {
             List<Map<String, List<dynamic>>>? security,
             @JsonKey(name: 'parameters')
             List<OpenApiPathMethodParameter>? parameters,
+            @JsonKey(name: 'requestBody')
             OpenApiPathMethodRequestBody? requestBody,
+            @JsonKey(name: 'responses')
             Map<String, OpenApiPathMethodResponse>? responses)
         $default,
   ) =>
@@ -251,7 +255,9 @@ mixin _$OpenApiPathMethod {
             List<Map<String, List<dynamic>>>? security,
             @JsonKey(name: 'parameters')
             List<OpenApiPathMethodParameter>? parameters,
+            @JsonKey(name: 'requestBody')
             OpenApiPathMethodRequestBody? requestBody,
+            @JsonKey(name: 'responses')
             Map<String, OpenApiPathMethodResponse>? responses)?
         $default, {
     required TResult orElse(),
@@ -274,7 +280,8 @@ class _$OpenApiPathMethodImpl extends _OpenApiPathMethod {
       final List<Map<String, List<dynamic>>>? security,
       @JsonKey(name: 'parameters')
       required final List<OpenApiPathMethodParameter>? parameters,
-      required this.requestBody,
+      @JsonKey(name: 'requestBody') required this.requestBody,
+      @JsonKey(name: 'responses')
       required final Map<String, OpenApiPathMethodResponse>? responses})
       : _tags = tags,
         _security = security,
@@ -326,9 +333,11 @@ class _$OpenApiPathMethodImpl extends _OpenApiPathMethod {
   }
 
   @override
+  @JsonKey(name: 'requestBody')
   final OpenApiPathMethodRequestBody? requestBody;
   final Map<String, OpenApiPathMethodResponse>? _responses;
   @override
+  @JsonKey(name: 'responses')
   Map<String, OpenApiPathMethodResponse>? get responses {
     final value = _responses;
     if (value == null) return null;
@@ -387,7 +396,9 @@ class _$OpenApiPathMethodImpl extends _OpenApiPathMethod {
             List<Map<String, List<dynamic>>>? security,
             @JsonKey(name: 'parameters')
             List<OpenApiPathMethodParameter>? parameters,
+            @JsonKey(name: 'requestBody')
             OpenApiPathMethodRequestBody? requestBody,
+            @JsonKey(name: 'responses')
             Map<String, OpenApiPathMethodResponse>? responses)
         $default,
   ) {
@@ -407,7 +418,9 @@ class _$OpenApiPathMethodImpl extends _OpenApiPathMethod {
             List<Map<String, List<dynamic>>>? security,
             @JsonKey(name: 'parameters')
             List<OpenApiPathMethodParameter>? parameters,
+            @JsonKey(name: 'requestBody')
             OpenApiPathMethodRequestBody? requestBody,
+            @JsonKey(name: 'responses')
             Map<String, OpenApiPathMethodResponse>? responses)?
         $default, {
     required TResult orElse(),
@@ -437,7 +450,9 @@ abstract class _OpenApiPathMethod extends OpenApiPathMethod {
           final List<Map<String, List<dynamic>>>? security,
           @JsonKey(name: 'parameters')
           required final List<OpenApiPathMethodParameter>? parameters,
+          @JsonKey(name: 'requestBody')
           required final OpenApiPathMethodRequestBody? requestBody,
+          @JsonKey(name: 'responses')
           required final Map<String, OpenApiPathMethodResponse>? responses}) =
       _$OpenApiPathMethodImpl;
   const _OpenApiPathMethod._() : super._();
@@ -464,8 +479,10 @@ abstract class _OpenApiPathMethod extends OpenApiPathMethod {
   @JsonKey(name: 'parameters')
   List<OpenApiPathMethodParameter>? get parameters;
   @override
+  @JsonKey(name: 'requestBody')
   OpenApiPathMethodRequestBody? get requestBody;
   @override
+  @JsonKey(name: 'responses')
   Map<String, OpenApiPathMethodResponse>? get responses;
 }
 
@@ -789,15 +806,20 @@ OpenApiPathMethodRequestBody _$OpenApiPathMethodRequestBodyFromJson(
 mixin _$OpenApiPathMethodRequestBody {
   @JsonKey(name: 'content')
   OpenApiContent get content => throw _privateConstructorUsedError;
+  @JsonKey(name: 'required')
+  bool? get required => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(@JsonKey(name: 'content') OpenApiContent content) $default,
+    TResult Function(@JsonKey(name: 'content') OpenApiContent content,
+            @JsonKey(name: 'required') bool? required)
+        $default,
   ) =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(@JsonKey(name: 'content') OpenApiContent content)?
+    TResult Function(@JsonKey(name: 'content') OpenApiContent content,
+            @JsonKey(name: 'required') bool? required)?
         $default, {
     required TResult orElse(),
   }) =>
@@ -812,7 +834,8 @@ mixin _$OpenApiPathMethodRequestBody {
 class _$OpenApiPathMethodRequestBodyImpl
     implements _OpenApiPathMethodRequestBody {
   _$OpenApiPathMethodRequestBodyImpl(
-      {@JsonKey(name: 'content') required this.content});
+      {@JsonKey(name: 'content') required this.content,
+      @JsonKey(name: 'required') this.required});
 
   factory _$OpenApiPathMethodRequestBodyImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -821,10 +844,13 @@ class _$OpenApiPathMethodRequestBodyImpl
   @override
   @JsonKey(name: 'content')
   final OpenApiContent content;
+  @override
+  @JsonKey(name: 'required')
+  final bool? required;
 
   @override
   String toString() {
-    return 'OpenApiPathMethodRequestBody(content: $content)';
+    return 'OpenApiPathMethodRequestBody(content: $content, required: $required)';
   }
 
   @override
@@ -832,30 +858,35 @@ class _$OpenApiPathMethodRequestBodyImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OpenApiPathMethodRequestBodyImpl &&
-            (identical(other.content, content) || other.content == content));
+            (identical(other.content, content) || other.content == content) &&
+            (identical(other.required, required) ||
+                other.required == required));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, content);
+  int get hashCode => Object.hash(runtimeType, content, required);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(@JsonKey(name: 'content') OpenApiContent content) $default,
+    TResult Function(@JsonKey(name: 'content') OpenApiContent content,
+            @JsonKey(name: 'required') bool? required)
+        $default,
   ) {
-    return $default(content);
+    return $default(content, required);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(@JsonKey(name: 'content') OpenApiContent content)?
+    TResult Function(@JsonKey(name: 'content') OpenApiContent content,
+            @JsonKey(name: 'required') bool? required)?
         $default, {
     required TResult orElse(),
   }) {
     if ($default != null) {
-      return $default(content);
+      return $default(content, required);
     }
     return orElse();
   }
@@ -871,7 +902,8 @@ class _$OpenApiPathMethodRequestBodyImpl
 abstract class _OpenApiPathMethodRequestBody
     implements OpenApiPathMethodRequestBody {
   factory _OpenApiPathMethodRequestBody(
-          {@JsonKey(name: 'content') required final OpenApiContent content}) =
+          {@JsonKey(name: 'content') required final OpenApiContent content,
+          @JsonKey(name: 'required') final bool? required}) =
       _$OpenApiPathMethodRequestBodyImpl;
 
   factory _OpenApiPathMethodRequestBody.fromJson(Map<String, dynamic> json) =
@@ -880,4 +912,7 @@ abstract class _OpenApiPathMethodRequestBody
   @override
   @JsonKey(name: 'content')
   OpenApiContent get content;
+  @override
+  @JsonKey(name: 'required')
+  bool? get required;
 }

@@ -38,8 +38,9 @@ class OpenApiPathMethod with _$OpenApiPathMethod {
     @JsonKey(name: 'security') List<Map<String, List<dynamic>>>? security,
     @JsonKey(name: 'parameters')
     required OpenApiPathMethodParameters? parameters,
+    @JsonKey(name: 'requestBody')
     required OpenApiPathMethodRequestBody? requestBody,
-    required OpenApiPathMethodResponses? responses,
+    @JsonKey(name: 'responses') required OpenApiPathMethodResponses? responses,
   }) = _OpenApiPathMethod;
 
   factory OpenApiPathMethod.fromJson(Map<String, dynamic> json) =>
@@ -93,6 +94,7 @@ class OpenApiPathMethodResponse with _$OpenApiPathMethodResponse {
 class OpenApiPathMethodRequestBody with _$OpenApiPathMethodRequestBody {
   factory OpenApiPathMethodRequestBody({
     @JsonKey(name: 'content') required OpenApiContent content,
+    @JsonKey(name: 'required') bool? required,
   }) = _OpenApiPathMethodRequestBody;
 
   factory OpenApiPathMethodRequestBody.fromJson(Map<String, dynamic> json) =>
