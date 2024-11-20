@@ -922,15 +922,26 @@ OpenApiPathMethodResponseContentSchema
 
 /// @nodoc
 mixin _$OpenApiPathMethodResponseContentSchema {
+  @OpenApiSchemaJsonMapConverter()
+  @JsonKey(name: 'schema')
+  OpenApiSchema get schema => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function() $default,
+    TResult Function(
+            @OpenApiSchemaJsonMapConverter()
+            @JsonKey(name: 'schema')
+            OpenApiSchema schema)
+        $default,
   ) =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function()? $default, {
+    TResult Function(
+            @OpenApiSchemaJsonMapConverter()
+            @JsonKey(name: 'schema')
+            OpenApiSchema schema)?
+        $default, {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -943,44 +954,61 @@ mixin _$OpenApiPathMethodResponseContentSchema {
 @JsonSerializable()
 class _$OpenApiPathMethodResponseContentSchemaImpl
     implements _OpenApiPathMethodResponseContentSchema {
-  _$OpenApiPathMethodResponseContentSchemaImpl();
+  _$OpenApiPathMethodResponseContentSchemaImpl(
+      {@OpenApiSchemaJsonMapConverter()
+      @JsonKey(name: 'schema')
+      required this.schema});
 
   factory _$OpenApiPathMethodResponseContentSchemaImpl.fromJson(
           Map<String, dynamic> json) =>
       _$$OpenApiPathMethodResponseContentSchemaImplFromJson(json);
 
   @override
+  @OpenApiSchemaJsonMapConverter()
+  @JsonKey(name: 'schema')
+  final OpenApiSchema schema;
+
+  @override
   String toString() {
-    return 'OpenApiPathMethodResponseContentSchema()';
+    return 'OpenApiPathMethodResponseContentSchema(schema: $schema)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OpenApiPathMethodResponseContentSchemaImpl);
+            other is _$OpenApiPathMethodResponseContentSchemaImpl &&
+            (identical(other.schema, schema) || other.schema == schema));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, schema);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function() $default,
+    TResult Function(
+            @OpenApiSchemaJsonMapConverter()
+            @JsonKey(name: 'schema')
+            OpenApiSchema schema)
+        $default,
   ) {
-    return $default();
+    return $default(schema);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function()? $default, {
+    TResult Function(
+            @OpenApiSchemaJsonMapConverter()
+            @JsonKey(name: 'schema')
+            OpenApiSchema schema)?
+        $default, {
     required TResult orElse(),
   }) {
     if ($default != null) {
-      return $default();
+      return $default(schema);
     }
     return orElse();
   }
@@ -995,10 +1023,18 @@ class _$OpenApiPathMethodResponseContentSchemaImpl
 
 abstract class _OpenApiPathMethodResponseContentSchema
     implements OpenApiPathMethodResponseContentSchema {
-  factory _OpenApiPathMethodResponseContentSchema() =
+  factory _OpenApiPathMethodResponseContentSchema(
+          {@OpenApiSchemaJsonMapConverter()
+          @JsonKey(name: 'schema')
+          required final OpenApiSchema schema}) =
       _$OpenApiPathMethodResponseContentSchemaImpl;
 
   factory _OpenApiPathMethodResponseContentSchema.fromJson(
           Map<String, dynamic> json) =
       _$OpenApiPathMethodResponseContentSchemaImpl.fromJson;
+
+  @override
+  @OpenApiSchemaJsonMapConverter()
+  @JsonKey(name: 'schema')
+  OpenApiSchema get schema;
 }

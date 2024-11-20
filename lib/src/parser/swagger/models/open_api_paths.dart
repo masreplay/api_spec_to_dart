@@ -107,8 +107,11 @@ class OpenApiPathMethodResponseContent with _$OpenApiPathMethodResponseContent {
 @freezed
 class OpenApiPathMethodResponseContentSchema
     with _$OpenApiPathMethodResponseContentSchema {
-  factory OpenApiPathMethodResponseContentSchema() =
-      _OpenApiPathMethodResponseContentSchema;
+  factory OpenApiPathMethodResponseContentSchema({
+    @OpenApiSchemaJsonMapConverter()
+    @JsonKey(name: 'schema')
+    required OpenApiSchema schema,
+  }) = _OpenApiPathMethodResponseContentSchema;
 
   factory OpenApiPathMethodResponseContentSchema.fromJson(
     Map<String, dynamic> json,

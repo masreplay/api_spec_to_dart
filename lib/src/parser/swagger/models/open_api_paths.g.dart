@@ -157,8 +157,13 @@ Map<String, dynamic> _$$OpenApiPathMethodResponseContentImplToJson(
 _$OpenApiPathMethodResponseContentSchemaImpl
     _$$OpenApiPathMethodResponseContentSchemaImplFromJson(
             Map<String, dynamic> json) =>
-        _$OpenApiPathMethodResponseContentSchemaImpl();
+        _$OpenApiPathMethodResponseContentSchemaImpl(
+          schema: const OpenApiSchemaJsonMapConverter()
+              .fromJson(json['schema'] as Map<String, dynamic>),
+        );
 
 Map<String, dynamic> _$$OpenApiPathMethodResponseContentSchemaImplToJson(
         _$OpenApiPathMethodResponseContentSchemaImpl instance) =>
-    <String, dynamic>{};
+    <String, dynamic>{
+      'schema': const OpenApiSchemaJsonMapConverter().toJson(instance.schema),
+    };
