@@ -33,6 +33,7 @@ class OpenApiSchema with _$OpenApiSchema {
   @FreezedUnionValue('ref')
   const factory OpenApiSchema.ref({
     @JsonKey(name: _refKey) String? ref,
+    @JsonKey(name: 'description') String? description,
     @JsonKey(name: 'default') Object? default_,
   }) = OpenApiSchemaRef;
 

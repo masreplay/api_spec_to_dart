@@ -84,6 +84,7 @@ class ${className} with _\$${className} {
       jsonName: key,
       propertyName: propertyName,
       propertyType: dartType,
+      comment: value.description,
     );
   }
 
@@ -99,6 +100,7 @@ class ${className} with _\$${className} {
       jsonName: key,
       propertyName: propertyName,
       propertyType: dartType,
+      comment: value.description,
     );
   }
 
@@ -120,16 +122,15 @@ class ${className} with _\$${className} {
             if (value.type == OpenApiSchemaVarType.null_) {
               isNullable = true;
               return '';
-            } else {
-              return config.dartType(
-                type: value.type,
-                format: value.format,
-              );
             }
+
+            return config.dartType(
+              type: value.type,
+              format: value.format,
+            );
           },
           ref: (value) => config.className(value.ref!.split('/').last),
           anyOf: (value) => getAnyOfType(value, config),
-          // TODO(shahadKadhim): implement this
           oneOf: (value) => '',
         );
       }
@@ -141,6 +142,7 @@ class ${className} with _\$${className} {
 
     return _generateField(
       freezedDefaultValue: value.default_,
+      comment: value.description,
       jsonName: key,
       propertyName: propertyName,
       propertyType: dartType,
@@ -153,6 +155,7 @@ class ${className} with _\$${className} {
     required Object? freezedDefaultValue,
     required String jsonName,
     required String propertyType,
+    required String? comment,
   }) {
     final buffer = StringBuffer();
 
@@ -161,6 +164,10 @@ class ${className} with _\$${className} {
     }
 
     buffer.write('@JsonKey(name: \'$jsonName\')\n');
+
+    if (comment != null) {
+      buffer.write('/// $comment\n');
+    }
 
     buffer.write('required $propertyType $propertyName,');
 

@@ -33,6 +33,8 @@ OpenApiSchema _$OpenApiSchemaFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OpenApiSchema {
+  @JsonKey(name: 'description')
+  String? get description => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
@@ -52,7 +54,9 @@ mixin _$OpenApiSchema {
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)
         type,
-    required TResult Function(@JsonKey(name: _refKey) String? ref,
+    required TResult Function(
+            @JsonKey(name: _refKey) String? ref,
+            @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'default') Object? default_)
         ref,
     required TResult Function(
@@ -93,7 +97,9 @@ mixin _$OpenApiSchema {
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)?
         type,
-    TResult? Function(@JsonKey(name: _refKey) String? ref,
+    TResult? Function(
+            @JsonKey(name: _refKey) String? ref,
+            @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'default') Object? default_)?
         ref,
     TResult? Function(
@@ -134,7 +140,9 @@ mixin _$OpenApiSchema {
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)?
         type,
-    TResult Function(@JsonKey(name: _refKey) String? ref,
+    TResult Function(
+            @JsonKey(name: _refKey) String? ref,
+            @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'default') Object? default_)?
         ref,
     TResult Function(
@@ -185,6 +193,12 @@ mixin _$OpenApiSchema {
 
   /// Serializes this OpenApiSchema to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of OpenApiSchema
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $OpenApiSchemaCopyWith<OpenApiSchema> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -192,6 +206,8 @@ abstract class $OpenApiSchemaCopyWith<$Res> {
   factory $OpenApiSchemaCopyWith(
           OpenApiSchema value, $Res Function(OpenApiSchema) then) =
       _$OpenApiSchemaCopyWithImpl<$Res, OpenApiSchema>;
+  @useResult
+  $Res call({@JsonKey(name: 'description') String? description});
 }
 
 /// @nodoc
@@ -206,13 +222,27 @@ class _$OpenApiSchemaCopyWithImpl<$Res, $Val extends OpenApiSchema>
 
   /// Create a copy of OpenApiSchema
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? description = freezed,
+  }) {
+    return _then(_value.copyWith(
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$OpenApiSchemaTypeImplCopyWith<$Res> {
+abstract class _$$OpenApiSchemaTypeImplCopyWith<$Res>
+    implements $OpenApiSchemaCopyWith<$Res> {
   factory _$$OpenApiSchemaTypeImplCopyWith(_$OpenApiSchemaTypeImpl value,
           $Res Function(_$OpenApiSchemaTypeImpl) then) =
       __$$OpenApiSchemaTypeImplCopyWithImpl<$Res>;
+  @override
   @useResult
   $Res call(
       {@JsonKey(name: 'enum') List<String>? enum_,
@@ -456,7 +486,9 @@ class _$OpenApiSchemaTypeImpl extends OpenApiSchemaType {
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)
         type,
-    required TResult Function(@JsonKey(name: _refKey) String? ref,
+    required TResult Function(
+            @JsonKey(name: _refKey) String? ref,
+            @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'default') Object? default_)
         ref,
     required TResult Function(
@@ -501,7 +533,9 @@ class _$OpenApiSchemaTypeImpl extends OpenApiSchemaType {
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)?
         type,
-    TResult? Function(@JsonKey(name: _refKey) String? ref,
+    TResult? Function(
+            @JsonKey(name: _refKey) String? ref,
+            @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'default') Object? default_)?
         ref,
     TResult? Function(
@@ -546,7 +580,9 @@ class _$OpenApiSchemaTypeImpl extends OpenApiSchemaType {
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)?
         type,
-    TResult Function(@JsonKey(name: _refKey) String? ref,
+    TResult Function(
+            @JsonKey(name: _refKey) String? ref,
+            @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'default') Object? default_)?
         ref,
     TResult Function(
@@ -654,6 +690,7 @@ abstract class OpenApiSchemaType extends OpenApiSchema {
   int? get minLength;
   @JsonKey(name: 'format')
   String? get format;
+  @override
   @JsonKey(name: 'description')
   String? get description;
   @JsonKey(name: 'pattern')
@@ -667,19 +704,23 @@ abstract class OpenApiSchemaType extends OpenApiSchema {
 
   /// Create a copy of OpenApiSchema
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OpenApiSchemaTypeImplCopyWith<_$OpenApiSchemaTypeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$OpenApiSchemaRefImplCopyWith<$Res> {
+abstract class _$$OpenApiSchemaRefImplCopyWith<$Res>
+    implements $OpenApiSchemaCopyWith<$Res> {
   factory _$$OpenApiSchemaRefImplCopyWith(_$OpenApiSchemaRefImpl value,
           $Res Function(_$OpenApiSchemaRefImpl) then) =
       __$$OpenApiSchemaRefImplCopyWithImpl<$Res>;
+  @override
   @useResult
   $Res call(
       {@JsonKey(name: _refKey) String? ref,
+      @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'default') Object? default_});
 }
 
@@ -697,12 +738,17 @@ class __$$OpenApiSchemaRefImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? ref = freezed,
+    Object? description = freezed,
     Object? default_ = freezed,
   }) {
     return _then(_$OpenApiSchemaRefImpl(
       ref: freezed == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String?,
       default_: freezed == default_ ? _value.default_ : default_,
     ));
@@ -714,6 +760,7 @@ class __$$OpenApiSchemaRefImplCopyWithImpl<$Res>
 class _$OpenApiSchemaRefImpl extends OpenApiSchemaRef {
   const _$OpenApiSchemaRefImpl(
       {@JsonKey(name: _refKey) this.ref,
+      @JsonKey(name: 'description') this.description,
       @JsonKey(name: 'default') this.default_,
       final String? $type})
       : $type = $type ?? 'ref',
@@ -726,6 +773,9 @@ class _$OpenApiSchemaRefImpl extends OpenApiSchemaRef {
   @JsonKey(name: _refKey)
   final String? ref;
   @override
+  @JsonKey(name: 'description')
+  final String? description;
+  @override
   @JsonKey(name: 'default')
   final Object? default_;
 
@@ -734,7 +784,7 @@ class _$OpenApiSchemaRefImpl extends OpenApiSchemaRef {
 
   @override
   String toString() {
-    return 'OpenApiSchema.ref(ref: $ref, default_: $default_)';
+    return 'OpenApiSchema.ref(ref: $ref, description: $description, default_: $default_)';
   }
 
   @override
@@ -743,13 +793,15 @@ class _$OpenApiSchemaRefImpl extends OpenApiSchemaRef {
         (other.runtimeType == runtimeType &&
             other is _$OpenApiSchemaRefImpl &&
             (identical(other.ref, ref) || other.ref == ref) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             const DeepCollectionEquality().equals(other.default_, default_));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, ref, const DeepCollectionEquality().hash(default_));
+  int get hashCode => Object.hash(runtimeType, ref, description,
+      const DeepCollectionEquality().hash(default_));
 
   /// Create a copy of OpenApiSchema
   /// with the given fields replaced by the non-null parameter values.
@@ -780,7 +832,9 @@ class _$OpenApiSchemaRefImpl extends OpenApiSchemaRef {
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)
         type,
-    required TResult Function(@JsonKey(name: _refKey) String? ref,
+    required TResult Function(
+            @JsonKey(name: _refKey) String? ref,
+            @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'default') Object? default_)
         ref,
     required TResult Function(
@@ -801,7 +855,7 @@ class _$OpenApiSchemaRefImpl extends OpenApiSchemaRef {
             OpenApiSchemaOneOfDiscriminator discriminator)
         oneOf,
   }) {
-    return ref(this.ref, default_);
+    return ref(this.ref, description, default_);
   }
 
   @override
@@ -824,7 +878,9 @@ class _$OpenApiSchemaRefImpl extends OpenApiSchemaRef {
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)?
         type,
-    TResult? Function(@JsonKey(name: _refKey) String? ref,
+    TResult? Function(
+            @JsonKey(name: _refKey) String? ref,
+            @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'default') Object? default_)?
         ref,
     TResult? Function(
@@ -845,7 +901,7 @@ class _$OpenApiSchemaRefImpl extends OpenApiSchemaRef {
             OpenApiSchemaOneOfDiscriminator discriminator)?
         oneOf,
   }) {
-    return ref?.call(this.ref, default_);
+    return ref?.call(this.ref, description, default_);
   }
 
   @override
@@ -868,7 +924,9 @@ class _$OpenApiSchemaRefImpl extends OpenApiSchemaRef {
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)?
         type,
-    TResult Function(@JsonKey(name: _refKey) String? ref,
+    TResult Function(
+            @JsonKey(name: _refKey) String? ref,
+            @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'default') Object? default_)?
         ref,
     TResult Function(
@@ -891,7 +949,7 @@ class _$OpenApiSchemaRefImpl extends OpenApiSchemaRef {
     required TResult orElse(),
   }) {
     if (ref != null) {
-      return ref(this.ref, default_);
+      return ref(this.ref, description, default_);
     }
     return orElse();
   }
@@ -944,6 +1002,7 @@ class _$OpenApiSchemaRefImpl extends OpenApiSchemaRef {
 abstract class OpenApiSchemaRef extends OpenApiSchema {
   const factory OpenApiSchemaRef(
           {@JsonKey(name: _refKey) final String? ref,
+          @JsonKey(name: 'description') final String? description,
           @JsonKey(name: 'default') final Object? default_}) =
       _$OpenApiSchemaRefImpl;
   const OpenApiSchemaRef._() : super._();
@@ -953,21 +1012,27 @@ abstract class OpenApiSchemaRef extends OpenApiSchema {
 
   @JsonKey(name: _refKey)
   String? get ref;
+  @override
+  @JsonKey(name: 'description')
+  String? get description;
   @JsonKey(name: 'default')
   Object? get default_;
 
   /// Create a copy of OpenApiSchema
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OpenApiSchemaRefImplCopyWith<_$OpenApiSchemaRefImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$OpenApiSchemaAnyOfImplCopyWith<$Res> {
+abstract class _$$OpenApiSchemaAnyOfImplCopyWith<$Res>
+    implements $OpenApiSchemaCopyWith<$Res> {
   factory _$$OpenApiSchemaAnyOfImplCopyWith(_$OpenApiSchemaAnyOfImpl value,
           $Res Function(_$OpenApiSchemaAnyOfImpl) then) =
       __$$OpenApiSchemaAnyOfImplCopyWithImpl<$Res>;
+  @override
   @useResult
   $Res call(
       {@OpenApiSchemaJsonConverter()
@@ -1112,7 +1177,9 @@ class _$OpenApiSchemaAnyOfImpl extends OpenApiSchemaAnyOf {
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)
         type,
-    required TResult Function(@JsonKey(name: _refKey) String? ref,
+    required TResult Function(
+            @JsonKey(name: _refKey) String? ref,
+            @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'default') Object? default_)
         ref,
     required TResult Function(
@@ -1156,7 +1223,9 @@ class _$OpenApiSchemaAnyOfImpl extends OpenApiSchemaAnyOf {
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)?
         type,
-    TResult? Function(@JsonKey(name: _refKey) String? ref,
+    TResult? Function(
+            @JsonKey(name: _refKey) String? ref,
+            @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'default') Object? default_)?
         ref,
     TResult? Function(
@@ -1200,7 +1269,9 @@ class _$OpenApiSchemaAnyOfImpl extends OpenApiSchemaAnyOf {
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)?
         type,
-    TResult Function(@JsonKey(name: _refKey) String? ref,
+    TResult Function(
+            @JsonKey(name: _refKey) String? ref,
+            @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'default') Object? default_)?
         ref,
     TResult Function(
@@ -1290,6 +1361,7 @@ abstract class OpenApiSchemaAnyOf extends OpenApiSchema {
   @OpenApiSchemaJsonConverter()
   @JsonKey(name: _anyOfKey)
   List<OpenApiSchema>? get anyOf;
+  @override
   @JsonKey(name: 'description')
   String? get description;
   @JsonKey(name: 'title')
@@ -1299,16 +1371,19 @@ abstract class OpenApiSchemaAnyOf extends OpenApiSchema {
 
   /// Create a copy of OpenApiSchema
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OpenApiSchemaAnyOfImplCopyWith<_$OpenApiSchemaAnyOfImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$OpenApiSchemaOneOfImplCopyWith<$Res> {
+abstract class _$$OpenApiSchemaOneOfImplCopyWith<$Res>
+    implements $OpenApiSchemaCopyWith<$Res> {
   factory _$$OpenApiSchemaOneOfImplCopyWith(_$OpenApiSchemaOneOfImpl value,
           $Res Function(_$OpenApiSchemaOneOfImpl) then) =
       __$$OpenApiSchemaOneOfImplCopyWithImpl<$Res>;
+  @override
   @useResult
   $Res call(
       {@OpenApiSchemaJsonConverter()
@@ -1471,7 +1546,9 @@ class _$OpenApiSchemaOneOfImpl extends OpenApiSchemaOneOf {
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)
         type,
-    required TResult Function(@JsonKey(name: _refKey) String? ref,
+    required TResult Function(
+            @JsonKey(name: _refKey) String? ref,
+            @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'default') Object? default_)
         ref,
     required TResult Function(
@@ -1515,7 +1592,9 @@ class _$OpenApiSchemaOneOfImpl extends OpenApiSchemaOneOf {
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)?
         type,
-    TResult? Function(@JsonKey(name: _refKey) String? ref,
+    TResult? Function(
+            @JsonKey(name: _refKey) String? ref,
+            @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'default') Object? default_)?
         ref,
     TResult? Function(
@@ -1559,7 +1638,9 @@ class _$OpenApiSchemaOneOfImpl extends OpenApiSchemaOneOf {
             @JsonKey(name: 'default') Object? default_,
             @JsonKey(name: 'title') String? title)?
         type,
-    TResult Function(@JsonKey(name: _refKey) String? ref,
+    TResult Function(
+            @JsonKey(name: _refKey) String? ref,
+            @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'default') Object? default_)?
         ref,
     TResult Function(
@@ -1650,6 +1731,7 @@ abstract class OpenApiSchemaOneOf extends OpenApiSchema {
   @OpenApiSchemaJsonConverter()
   @JsonKey(name: _oneOfKey)
   List<OpenApiSchema>? get oneOf;
+  @override
   @JsonKey(name: 'description')
   String? get description;
   @JsonKey(name: 'title')
@@ -1659,6 +1741,7 @@ abstract class OpenApiSchemaOneOf extends OpenApiSchema {
 
   /// Create a copy of OpenApiSchema
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OpenApiSchemaOneOfImplCopyWith<_$OpenApiSchemaOneOfImpl> get copyWith =>
       throw _privateConstructorUsedError;
