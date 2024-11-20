@@ -130,13 +130,15 @@ class __$$BaseResponseListVerificationMethodPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$BaseResponseListVerificationMethodPublicImpl
-    implements _BaseResponseListVerificationMethodPublic {
+    extends _BaseResponseListVerificationMethodPublic {
   const _$BaseResponseListVerificationMethodPublicImpl(
       {@JsonKey(name: 'message') required this.message,
       @JsonKey(name: 'data') required final List<dynamic> data})
-      : _data = data;
+      : _data = data,
+        super._();
 
   factory _$BaseResponseListVerificationMethodPublicImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -193,11 +195,12 @@ class _$BaseResponseListVerificationMethodPublicImpl
 }
 
 abstract class _BaseResponseListVerificationMethodPublic
-    implements BaseResponseListVerificationMethodPublic {
+    extends BaseResponseListVerificationMethodPublic {
   const factory _BaseResponseListVerificationMethodPublic(
           {@JsonKey(name: 'message') required final String? message,
           @JsonKey(name: 'data') required final List<dynamic> data}) =
       _$BaseResponseListVerificationMethodPublicImpl;
+  const _BaseResponseListVerificationMethodPublic._() : super._();
 
   factory _BaseResponseListVerificationMethodPublic.fromJson(
           Map<String, dynamic> json) =

@@ -291,8 +291,9 @@ class __$$CourseStaffsTableImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$CourseStaffsTableImpl implements _CourseStaffsTable {
+
+@JsonSerializable(converters: convertors)
+class _$CourseStaffsTableImpl extends _CourseStaffsTable {
   const _$CourseStaffsTableImpl(
       {@JsonKey(name: 'employee_id') required this.employeeId,
       @JsonKey(name: 'employee_role') required this.employeeRole,
@@ -311,7 +312,8 @@ class _$CourseStaffsTableImpl implements _CourseStaffsTable {
       @JsonKey(name: 'is_deleted') required this.isDeleted,
       @JsonKey(name: 'deleter_id') required this.deleterId,
       @JsonKey(name: 'deletion_time') required this.deletionTime})
-      : _courseConfiguration = courseConfiguration;
+      : _courseConfiguration = courseConfiguration,
+        super._();
 
   factory _$CourseStaffsTableImpl.fromJson(Map<String, dynamic> json) =>
       _$$CourseStaffsTableImplFromJson(json);
@@ -443,7 +445,7 @@ class _$CourseStaffsTableImpl implements _CourseStaffsTable {
   }
 }
 
-abstract class _CourseStaffsTable implements CourseStaffsTable {
+abstract class _CourseStaffsTable extends CourseStaffsTable {
   const factory _CourseStaffsTable(
       {@JsonKey(name: 'employee_id') required final int employeeId,
       @JsonKey(name: 'employee_role') required final int employeeRole,
@@ -463,6 +465,7 @@ abstract class _CourseStaffsTable implements CourseStaffsTable {
       @JsonKey(name: 'deleter_id') required final int? deleterId,
       @JsonKey(name: 'deletion_time')
       required final DateTime? deletionTime}) = _$CourseStaffsTableImpl;
+  const _CourseStaffsTable._() : super._();
 
   factory _CourseStaffsTable.fromJson(Map<String, dynamic> json) =
       _$CourseStaffsTableImpl.fromJson;

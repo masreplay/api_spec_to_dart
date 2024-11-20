@@ -65,9 +65,10 @@ class __$$PaymentMethodEnumImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$PaymentMethodEnumImpl implements _PaymentMethodEnum {
-  const _$PaymentMethodEnumImpl();
+
+@JsonSerializable(converters: convertors)
+class _$PaymentMethodEnumImpl extends _PaymentMethodEnum {
+  const _$PaymentMethodEnumImpl() : super._();
 
   factory _$PaymentMethodEnumImpl.fromJson(Map<String, dynamic> json) =>
       _$$PaymentMethodEnumImplFromJson(json);
@@ -95,8 +96,9 @@ class _$PaymentMethodEnumImpl implements _PaymentMethodEnum {
   }
 }
 
-abstract class _PaymentMethodEnum implements PaymentMethodEnum {
+abstract class _PaymentMethodEnum extends PaymentMethodEnum {
   const factory _PaymentMethodEnum() = _$PaymentMethodEnumImpl;
+  const _PaymentMethodEnum._() : super._();
 
   factory _PaymentMethodEnum.fromJson(Map<String, dynamic> json) =
       _$PaymentMethodEnumImpl.fromJson;

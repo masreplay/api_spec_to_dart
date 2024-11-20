@@ -57,10 +57,10 @@ class _$BodyDevUploadFileCopyWithImpl<$Res, $Val extends BodyDevUploadFile>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? file = freezed,
+    Object? file = null,
   }) {
     return _then(_value.copyWith(
-      file: freezed == file
+      file: null == file
           ? _value.file
           : file // ignore: cast_nullable_to_non_nullable
               as File,
@@ -92,10 +92,10 @@ class __$$BodyDevUploadFileImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? file = freezed,
+    Object? file = null,
   }) {
     return _then(_$BodyDevUploadFileImpl(
-      file: freezed == file
+      file: null == file
           ? _value.file
           : file // ignore: cast_nullable_to_non_nullable
               as File,
@@ -104,9 +104,11 @@ class __$$BodyDevUploadFileImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$BodyDevUploadFileImpl implements _BodyDevUploadFile {
-  const _$BodyDevUploadFileImpl({@JsonKey(name: 'file') required this.file});
+
+@JsonSerializable(converters: convertors)
+class _$BodyDevUploadFileImpl extends _BodyDevUploadFile {
+  const _$BodyDevUploadFileImpl({@JsonKey(name: 'file') required this.file})
+      : super._();
 
   factory _$BodyDevUploadFileImpl.fromJson(Map<String, dynamic> json) =>
       _$$BodyDevUploadFileImplFromJson(json);
@@ -125,13 +127,12 @@ class _$BodyDevUploadFileImpl implements _BodyDevUploadFile {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BodyDevUploadFileImpl &&
-            const DeepCollectionEquality().equals(other.file, file));
+            (identical(other.file, file) || other.file == file));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(file));
+  int get hashCode => Object.hash(runtimeType, file);
 
   /// Create a copy of BodyDevUploadFile
   /// with the given fields replaced by the non-null parameter values.
@@ -150,10 +151,11 @@ class _$BodyDevUploadFileImpl implements _BodyDevUploadFile {
   }
 }
 
-abstract class _BodyDevUploadFile implements BodyDevUploadFile {
+abstract class _BodyDevUploadFile extends BodyDevUploadFile {
   const factory _BodyDevUploadFile(
           {@JsonKey(name: 'file') required final File file}) =
       _$BodyDevUploadFileImpl;
+  const _BodyDevUploadFile._() : super._();
 
   factory _BodyDevUploadFile.fromJson(Map<String, dynamic> json) =
       _$BodyDevUploadFileImpl.fromJson;

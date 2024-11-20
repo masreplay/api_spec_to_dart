@@ -1,10 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
+
 part 'subject.freezed.dart';
 part 'subject.g.dart';
 
 @freezed
 class Subject with _$Subject {
+  const Subject._();
+
+  @JsonSerializable(converters: convertors)
   const factory Subject({
     @JsonKey(name: 'id') required int? id,
     @JsonKey(name: 'selected_course_id') required int? selectedCourseId,

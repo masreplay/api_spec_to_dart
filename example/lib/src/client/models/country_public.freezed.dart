@@ -116,11 +116,13 @@ class __$$CountryPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$CountryPublicImpl implements _CountryPublic {
+
+@JsonSerializable(converters: convertors)
+class _$CountryPublicImpl extends _CountryPublic {
   const _$CountryPublicImpl(
       {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'name') required this.name});
+      @JsonKey(name: 'name') required this.name})
+      : super._();
 
   factory _$CountryPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$CountryPublicImplFromJson(json);
@@ -166,10 +168,11 @@ class _$CountryPublicImpl implements _CountryPublic {
   }
 }
 
-abstract class _CountryPublic implements CountryPublic {
+abstract class _CountryPublic extends CountryPublic {
   const factory _CountryPublic(
       {@JsonKey(name: 'id') required final int id,
       @JsonKey(name: 'name') required final String name}) = _$CountryPublicImpl;
+  const _CountryPublic._() : super._();
 
   factory _CountryPublic.fromJson(Map<String, dynamic> json) =
       _$CountryPublicImpl.fromJson;

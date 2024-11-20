@@ -224,8 +224,9 @@ class __$$LecturerAnnouncementPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$LecturerAnnouncementPublicImpl implements _LecturerAnnouncementPublic {
+
+@JsonSerializable(converters: convertors)
+class _$LecturerAnnouncementPublicImpl extends _LecturerAnnouncementPublic {
   const _$LecturerAnnouncementPublicImpl(
       {@JsonKey(name: 'title') required this.title,
       @JsonKey(name: 'description') required this.description,
@@ -236,7 +237,8 @@ class _$LecturerAnnouncementPublicImpl implements _LecturerAnnouncementPublic {
       @JsonKey(name: 'created_at') required this.createdAt,
       @JsonKey(name: 'created_at_formatted') required this.createdAtFormatted,
       @JsonKey(name: 'files') required final List<dynamic> files})
-      : _files = files;
+      : _files = files,
+        super._();
 
   factory _$LecturerAnnouncementPublicImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -332,8 +334,7 @@ class _$LecturerAnnouncementPublicImpl implements _LecturerAnnouncementPublic {
   }
 }
 
-abstract class _LecturerAnnouncementPublic
-    implements LecturerAnnouncementPublic {
+abstract class _LecturerAnnouncementPublic extends LecturerAnnouncementPublic {
   const factory _LecturerAnnouncementPublic(
           {@JsonKey(name: 'title') required final String title,
           @JsonKey(name: 'description') required final String? description,
@@ -346,6 +347,7 @@ abstract class _LecturerAnnouncementPublic
           required final String createdAtFormatted,
           @JsonKey(name: 'files') required final List<dynamic> files}) =
       _$LecturerAnnouncementPublicImpl;
+  const _LecturerAnnouncementPublic._() : super._();
 
   factory _LecturerAnnouncementPublic.fromJson(Map<String, dynamic> json) =
       _$LecturerAnnouncementPublicImpl.fromJson;

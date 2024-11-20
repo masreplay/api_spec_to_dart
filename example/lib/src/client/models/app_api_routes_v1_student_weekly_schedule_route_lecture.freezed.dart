@@ -218,9 +218,10 @@ class __$$AppApiRoutesV1StudentWeeklyScheduleRouteLectureImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$AppApiRoutesV1StudentWeeklyScheduleRouteLectureImpl
-    implements _AppApiRoutesV1StudentWeeklyScheduleRouteLecture {
+    extends _AppApiRoutesV1StudentWeeklyScheduleRouteLecture {
   const _$AppApiRoutesV1StudentWeeklyScheduleRouteLectureImpl(
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'subject_title') required this.subjectTitle,
@@ -229,7 +230,8 @@ class _$AppApiRoutesV1StudentWeeklyScheduleRouteLectureImpl
       @JsonKey(name: 'group_code') required this.groupCode,
       @JsonKey(name: 'semester_name') required this.semesterName,
       @JsonKey(name: 'room_code') required this.roomCode,
-      @JsonKey(name: 'duration') required this.duration});
+      @JsonKey(name: 'duration') required this.duration})
+      : super._();
 
   factory _$AppApiRoutesV1StudentWeeklyScheduleRouteLectureImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -312,7 +314,7 @@ class _$AppApiRoutesV1StudentWeeklyScheduleRouteLectureImpl
 }
 
 abstract class _AppApiRoutesV1StudentWeeklyScheduleRouteLecture
-    implements AppApiRoutesV1StudentWeeklyScheduleRouteLecture {
+    extends AppApiRoutesV1StudentWeeklyScheduleRouteLecture {
   const factory _AppApiRoutesV1StudentWeeklyScheduleRouteLecture(
           {@JsonKey(name: 'id') required final int? id,
           @JsonKey(name: 'subject_title') required final String? subjectTitle,
@@ -323,6 +325,7 @@ abstract class _AppApiRoutesV1StudentWeeklyScheduleRouteLecture
           @JsonKey(name: 'room_code') required final String? roomCode,
           @JsonKey(name: 'duration') required final int? duration}) =
       _$AppApiRoutesV1StudentWeeklyScheduleRouteLectureImpl;
+  const _AppApiRoutesV1StudentWeeklyScheduleRouteLecture._() : super._();
 
   factory _AppApiRoutesV1StudentWeeklyScheduleRouteLecture.fromJson(
           Map<String, dynamic> json) =

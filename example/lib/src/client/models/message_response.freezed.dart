@@ -104,10 +104,11 @@ class __$$MessageResponseImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$MessageResponseImpl implements _MessageResponse {
-  const _$MessageResponseImpl(
-      {@JsonKey(name: 'message') required this.message});
+
+@JsonSerializable(converters: convertors)
+class _$MessageResponseImpl extends _MessageResponse {
+  const _$MessageResponseImpl({@JsonKey(name: 'message') required this.message})
+      : super._();
 
   factory _$MessageResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$MessageResponseImplFromJson(json);
@@ -150,10 +151,11 @@ class _$MessageResponseImpl implements _MessageResponse {
   }
 }
 
-abstract class _MessageResponse implements MessageResponse {
+abstract class _MessageResponse extends MessageResponse {
   const factory _MessageResponse(
           {@JsonKey(name: 'message') required final String message}) =
       _$MessageResponseImpl;
+  const _MessageResponse._() : super._();
 
   factory _MessageResponse.fromJson(Map<String, dynamic> json) =
       _$MessageResponseImpl.fromJson;

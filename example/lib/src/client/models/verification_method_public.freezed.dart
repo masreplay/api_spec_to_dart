@@ -123,11 +123,13 @@ class __$$VerificationMethodPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$VerificationMethodPublicImpl implements _VerificationMethodPublic {
+
+@JsonSerializable(converters: convertors)
+class _$VerificationMethodPublicImpl extends _VerificationMethodPublic {
   const _$VerificationMethodPublicImpl(
       {@JsonKey(name: 'name') required this.name,
-      @JsonKey(name: 'type') required this.type});
+      @JsonKey(name: 'type') required this.type})
+      : super._();
 
   factory _$VerificationMethodPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$VerificationMethodPublicImplFromJson(json);
@@ -174,11 +176,12 @@ class _$VerificationMethodPublicImpl implements _VerificationMethodPublic {
   }
 }
 
-abstract class _VerificationMethodPublic implements VerificationMethodPublic {
+abstract class _VerificationMethodPublic extends VerificationMethodPublic {
   const factory _VerificationMethodPublic(
           {@JsonKey(name: 'name') required final String name,
           @JsonKey(name: 'type') required final String type}) =
       _$VerificationMethodPublicImpl;
+  const _VerificationMethodPublic._() : super._();
 
   factory _VerificationMethodPublic.fromJson(Map<String, dynamic> json) =
       _$VerificationMethodPublicImpl.fromJson;

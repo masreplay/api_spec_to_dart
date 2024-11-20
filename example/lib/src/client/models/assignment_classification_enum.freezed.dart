@@ -72,10 +72,10 @@ class __$$AssignmentClassificationEnumImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$AssignmentClassificationEnumImpl
-    implements _AssignmentClassificationEnum {
-  const _$AssignmentClassificationEnumImpl();
+
+@JsonSerializable(converters: convertors)
+class _$AssignmentClassificationEnumImpl extends _AssignmentClassificationEnum {
+  const _$AssignmentClassificationEnumImpl() : super._();
 
   factory _$AssignmentClassificationEnumImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -106,9 +106,10 @@ class _$AssignmentClassificationEnumImpl
 }
 
 abstract class _AssignmentClassificationEnum
-    implements AssignmentClassificationEnum {
+    extends AssignmentClassificationEnum {
   const factory _AssignmentClassificationEnum() =
       _$AssignmentClassificationEnumImpl;
+  const _AssignmentClassificationEnum._() : super._();
 
   factory _AssignmentClassificationEnum.fromJson(Map<String, dynamic> json) =
       _$AssignmentClassificationEnumImpl.fromJson;

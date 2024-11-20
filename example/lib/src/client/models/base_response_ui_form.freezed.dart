@@ -135,11 +135,13 @@ class __$$BaseResponseUIFormImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$BaseResponseUIFormImpl implements _BaseResponseUIForm {
+
+@JsonSerializable(converters: convertors)
+class _$BaseResponseUIFormImpl extends _BaseResponseUIForm {
   const _$BaseResponseUIFormImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required this.data});
+      @JsonKey(name: 'data') required this.data})
+      : super._();
 
   factory _$BaseResponseUIFormImpl.fromJson(Map<String, dynamic> json) =>
       _$$BaseResponseUIFormImplFromJson(json);
@@ -186,11 +188,12 @@ class _$BaseResponseUIFormImpl implements _BaseResponseUIForm {
   }
 }
 
-abstract class _BaseResponseUIForm implements BaseResponseUIForm {
+abstract class _BaseResponseUIForm extends BaseResponseUIForm {
   const factory _BaseResponseUIForm(
           {@JsonKey(name: 'message') required final String? message,
           @JsonKey(name: 'data') required final UIForm data}) =
       _$BaseResponseUIFormImpl;
+  const _BaseResponseUIForm._() : super._();
 
   factory _BaseResponseUIForm.fromJson(Map<String, dynamic> json) =
       _$BaseResponseUIFormImpl.fromJson;

@@ -136,13 +136,15 @@ class __$$BaseResponseUnionListCourseSubjectPublicNoneTypeImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$BaseResponseUnionListCourseSubjectPublicNoneTypeImpl
-    implements _BaseResponseUnionListCourseSubjectPublicNoneType {
+    extends _BaseResponseUnionListCourseSubjectPublicNoneType {
   const _$BaseResponseUnionListCourseSubjectPublicNoneTypeImpl(
       {@JsonKey(name: 'message') required this.message,
       @JsonKey(name: 'data') required final List<dynamic>? data})
-      : _data = data;
+      : _data = data,
+        super._();
 
   factory _$BaseResponseUnionListCourseSubjectPublicNoneTypeImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -202,11 +204,12 @@ class _$BaseResponseUnionListCourseSubjectPublicNoneTypeImpl
 }
 
 abstract class _BaseResponseUnionListCourseSubjectPublicNoneType
-    implements BaseResponseUnionListCourseSubjectPublicNoneType {
+    extends BaseResponseUnionListCourseSubjectPublicNoneType {
   const factory _BaseResponseUnionListCourseSubjectPublicNoneType(
           {@JsonKey(name: 'message') required final String? message,
           @JsonKey(name: 'data') required final List<dynamic>? data}) =
       _$BaseResponseUnionListCourseSubjectPublicNoneTypeImpl;
+  const _BaseResponseUnionListCourseSubjectPublicNoneType._() : super._();
 
   factory _BaseResponseUnionListCourseSubjectPublicNoneType.fromJson(
           Map<String, dynamic> json) =

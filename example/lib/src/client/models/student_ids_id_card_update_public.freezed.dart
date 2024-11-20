@@ -181,9 +181,9 @@ class __$$StudentIdsIdCardUpdatePublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$StudentIdsIdCardUpdatePublicImpl
-    implements _StudentIdsIdCardUpdatePublic {
+
+@JsonSerializable(converters: convertors)
+class _$StudentIdsIdCardUpdatePublicImpl extends _StudentIdsIdCardUpdatePublic {
   const _$StudentIdsIdCardUpdatePublicImpl(
       {@JsonKey(name: 'identification_card_number')
       required this.identificationCardNumber,
@@ -194,7 +194,8 @@ class _$StudentIdsIdCardUpdatePublicImpl
       @JsonKey(name: 'identification_card_issuing_authority')
       required this.identificationCardIssuingAuthority,
       @JsonKey(name: 'identification_card_date_of_issue')
-      required this.identificationCardDateOfIssue});
+      required this.identificationCardDateOfIssue})
+      : super._();
 
   factory _$StudentIdsIdCardUpdatePublicImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -273,7 +274,7 @@ class _$StudentIdsIdCardUpdatePublicImpl
 }
 
 abstract class _StudentIdsIdCardUpdatePublic
-    implements StudentIdsIdCardUpdatePublic {
+    extends StudentIdsIdCardUpdatePublic {
   const factory _StudentIdsIdCardUpdatePublic(
           {@JsonKey(name: 'identification_card_number')
           required final String identificationCardNumber,
@@ -286,6 +287,7 @@ abstract class _StudentIdsIdCardUpdatePublic
           @JsonKey(name: 'identification_card_date_of_issue')
           required final DateTime identificationCardDateOfIssue}) =
       _$StudentIdsIdCardUpdatePublicImpl;
+  const _StudentIdsIdCardUpdatePublic._() : super._();
 
   factory _StudentIdsIdCardUpdatePublic.fromJson(Map<String, dynamic> json) =
       _$StudentIdsIdCardUpdatePublicImpl.fromJson;

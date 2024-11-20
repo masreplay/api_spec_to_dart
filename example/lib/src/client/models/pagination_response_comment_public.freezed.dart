@@ -155,15 +155,17 @@ class __$$PaginationResponseCommentPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$PaginationResponseCommentPublicImpl
-    implements _PaginationResponseCommentPublic {
+    extends _PaginationResponseCommentPublic {
   const _$PaginationResponseCommentPublicImpl(
       {@JsonKey(name: 'page') required this.page,
       @JsonKey(name: 'per_page') required this.perPage,
       @JsonKey(name: 'total') required this.total,
       @JsonKey(name: 'data') required final List<dynamic> data})
-      : _data = data;
+      : _data = data,
+        super._();
 
   factory _$PaginationResponseCommentPublicImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -227,13 +229,14 @@ class _$PaginationResponseCommentPublicImpl
 }
 
 abstract class _PaginationResponseCommentPublic
-    implements PaginationResponseCommentPublic {
+    extends PaginationResponseCommentPublic {
   const factory _PaginationResponseCommentPublic(
           {@JsonKey(name: 'page') required final int page,
           @JsonKey(name: 'per_page') required final int perPage,
           @JsonKey(name: 'total') required final int total,
           @JsonKey(name: 'data') required final List<dynamic> data}) =
       _$PaginationResponseCommentPublicImpl;
+  const _PaginationResponseCommentPublic._() : super._();
 
   factory _PaginationResponseCommentPublic.fromJson(Map<String, dynamic> json) =
       _$PaginationResponseCommentPublicImpl.fromJson;

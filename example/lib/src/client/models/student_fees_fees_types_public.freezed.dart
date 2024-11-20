@@ -122,11 +122,13 @@ class __$$StudentFeesFeesTypesPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$StudentFeesFeesTypesPublicImpl implements _StudentFeesFeesTypesPublic {
+
+@JsonSerializable(converters: convertors)
+class _$StudentFeesFeesTypesPublicImpl extends _StudentFeesFeesTypesPublic {
   const _$StudentFeesFeesTypesPublicImpl(
       {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'name') required this.name});
+      @JsonKey(name: 'name') required this.name})
+      : super._();
 
   factory _$StudentFeesFeesTypesPublicImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -174,12 +176,12 @@ class _$StudentFeesFeesTypesPublicImpl implements _StudentFeesFeesTypesPublic {
   }
 }
 
-abstract class _StudentFeesFeesTypesPublic
-    implements StudentFeesFeesTypesPublic {
+abstract class _StudentFeesFeesTypesPublic extends StudentFeesFeesTypesPublic {
   const factory _StudentFeesFeesTypesPublic(
           {@JsonKey(name: 'id') required final int id,
           @JsonKey(name: 'name') required final String name}) =
       _$StudentFeesFeesTypesPublicImpl;
+  const _StudentFeesFeesTypesPublic._() : super._();
 
   factory _StudentFeesFeesTypesPublic.fromJson(Map<String, dynamic> json) =
       _$StudentFeesFeesTypesPublicImpl.fromJson;

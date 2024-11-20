@@ -104,10 +104,12 @@ class __$$StudentSummeryImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$StudentSummeryImpl implements _StudentSummery {
+
+@JsonSerializable(converters: convertors)
+class _$StudentSummeryImpl extends _StudentSummery {
   const _$StudentSummeryImpl(
-      {@JsonKey(name: 'image_url') required this.imageUrl});
+      {@JsonKey(name: 'image_url') required this.imageUrl})
+      : super._();
 
   factory _$StudentSummeryImpl.fromJson(Map<String, dynamic> json) =>
       _$$StudentSummeryImplFromJson(json);
@@ -151,10 +153,11 @@ class _$StudentSummeryImpl implements _StudentSummery {
   }
 }
 
-abstract class _StudentSummery implements StudentSummery {
+abstract class _StudentSummery extends StudentSummery {
   const factory _StudentSummery(
           {@JsonKey(name: 'image_url') required final String? imageUrl}) =
       _$StudentSummeryImpl;
+  const _StudentSummery._() : super._();
 
   factory _StudentSummery.fromJson(Map<String, dynamic> json) =
       _$StudentSummeryImpl.fromJson;

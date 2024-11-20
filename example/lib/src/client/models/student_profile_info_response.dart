@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
 import './models.dart';
 
 part 'student_profile_info_response.freezed.dart';
@@ -7,6 +8,9 @@ part 'student_profile_info_response.g.dart';
 
 @freezed
 class StudentProfileInfoResponse with _$StudentProfileInfoResponse {
+  const StudentProfileInfoResponse._();
+
+  @JsonSerializable(converters: convertors)
   const factory StudentProfileInfoResponse({
     @JsonKey(name: 'first_name') required String? firstName,
     @JsonKey(name: 'second_name') required String? secondName,

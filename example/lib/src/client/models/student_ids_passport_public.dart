@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
 import './models.dart';
 
 part 'student_ids_passport_public.freezed.dart';
@@ -7,6 +8,9 @@ part 'student_ids_passport_public.g.dart';
 
 @freezed
 class StudentIdsPassportPublic with _$StudentIdsPassportPublic {
+  const StudentIdsPassportPublic._();
+
+  @JsonSerializable(converters: convertors)
   const factory StudentIdsPassportPublic({
     @JsonKey(name: 'number') required String? number,
     @JsonKey(name: 'issuing_authority') required String? issuingAuthority,

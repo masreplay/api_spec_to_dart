@@ -116,11 +116,13 @@ class __$$ReligionPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$ReligionPublicImpl implements _ReligionPublic {
+
+@JsonSerializable(converters: convertors)
+class _$ReligionPublicImpl extends _ReligionPublic {
   const _$ReligionPublicImpl(
       {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'name') required this.name});
+      @JsonKey(name: 'name') required this.name})
+      : super._();
 
   factory _$ReligionPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$ReligionPublicImplFromJson(json);
@@ -167,11 +169,12 @@ class _$ReligionPublicImpl implements _ReligionPublic {
   }
 }
 
-abstract class _ReligionPublic implements ReligionPublic {
+abstract class _ReligionPublic extends ReligionPublic {
   const factory _ReligionPublic(
           {@JsonKey(name: 'id') required final int id,
           @JsonKey(name: 'name') required final String name}) =
       _$ReligionPublicImpl;
+  const _ReligionPublic._() : super._();
 
   factory _ReligionPublic.fromJson(Map<String, dynamic> json) =
       _$ReligionPublicImpl.fromJson;

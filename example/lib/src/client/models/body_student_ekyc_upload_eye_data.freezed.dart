@@ -61,10 +61,10 @@ class _$BodyStudentEkycUploadEyeDataCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? fileRaw = freezed,
+    Object? fileRaw = null,
   }) {
     return _then(_value.copyWith(
-      fileRaw: freezed == fileRaw
+      fileRaw: null == fileRaw
           ? _value.fileRaw
           : fileRaw // ignore: cast_nullable_to_non_nullable
               as File,
@@ -99,10 +99,10 @@ class __$$BodyStudentEkycUploadEyeDataImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? fileRaw = freezed,
+    Object? fileRaw = null,
   }) {
     return _then(_$BodyStudentEkycUploadEyeDataImpl(
-      fileRaw: freezed == fileRaw
+      fileRaw: null == fileRaw
           ? _value.fileRaw
           : fileRaw // ignore: cast_nullable_to_non_nullable
               as File,
@@ -111,11 +111,12 @@ class __$$BodyStudentEkycUploadEyeDataImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$BodyStudentEkycUploadEyeDataImpl
-    implements _BodyStudentEkycUploadEyeData {
+
+@JsonSerializable(converters: convertors)
+class _$BodyStudentEkycUploadEyeDataImpl extends _BodyStudentEkycUploadEyeData {
   const _$BodyStudentEkycUploadEyeDataImpl(
-      {@JsonKey(name: 'file_raw') required this.fileRaw});
+      {@JsonKey(name: 'file_raw') required this.fileRaw})
+      : super._();
 
   factory _$BodyStudentEkycUploadEyeDataImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -135,13 +136,12 @@ class _$BodyStudentEkycUploadEyeDataImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BodyStudentEkycUploadEyeDataImpl &&
-            const DeepCollectionEquality().equals(other.fileRaw, fileRaw));
+            (identical(other.fileRaw, fileRaw) || other.fileRaw == fileRaw));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(fileRaw));
+  int get hashCode => Object.hash(runtimeType, fileRaw);
 
   /// Create a copy of BodyStudentEkycUploadEyeData
   /// with the given fields replaced by the non-null parameter values.
@@ -162,10 +162,11 @@ class _$BodyStudentEkycUploadEyeDataImpl
 }
 
 abstract class _BodyStudentEkycUploadEyeData
-    implements BodyStudentEkycUploadEyeData {
+    extends BodyStudentEkycUploadEyeData {
   const factory _BodyStudentEkycUploadEyeData(
           {@JsonKey(name: 'file_raw') required final File fileRaw}) =
       _$BodyStudentEkycUploadEyeDataImpl;
+  const _BodyStudentEkycUploadEyeData._() : super._();
 
   factory _BodyStudentEkycUploadEyeData.fromJson(Map<String, dynamic> json) =
       _$BodyStudentEkycUploadEyeDataImpl.fromJson;

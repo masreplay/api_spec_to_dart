@@ -341,8 +341,9 @@ class __$$CoursePublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$CoursePublicImpl implements _CoursePublic {
+
+@JsonSerializable(converters: convertors)
+class _$CoursePublicImpl extends _CoursePublic {
   const _$CoursePublicImpl(
       {@JsonKey(name: 'course_code') required this.courseCode,
       @JsonKey(name: 'course_classifications')
@@ -362,7 +363,8 @@ class _$CoursePublicImpl implements _CoursePublic {
       @JsonKey(name: 'course_staffs')
       required final List<dynamic>? courseStaffs,
       @JsonKey(name: 'seamster') required this.seamster})
-      : _courseStaffs = courseStaffs;
+      : _courseStaffs = courseStaffs,
+        super._();
 
   factory _$CoursePublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$CoursePublicImplFromJson(json);
@@ -498,7 +500,7 @@ class _$CoursePublicImpl implements _CoursePublic {
   }
 }
 
-abstract class _CoursePublic implements CoursePublic {
+abstract class _CoursePublic extends CoursePublic {
   const factory _CoursePublic(
       {@JsonKey(name: 'course_code') required final String courseCode,
       @JsonKey(name: 'course_classifications')
@@ -522,6 +524,7 @@ abstract class _CoursePublic implements CoursePublic {
       @JsonKey(name: 'seamster')
       required final AcademicYearDivisionPublic?
           seamster}) = _$CoursePublicImpl;
+  const _CoursePublic._() : super._();
 
   factory _CoursePublic.fromJson(Map<String, dynamic> json) =
       _$CoursePublicImpl.fromJson;

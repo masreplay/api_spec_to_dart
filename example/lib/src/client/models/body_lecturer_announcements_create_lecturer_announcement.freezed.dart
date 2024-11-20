@@ -142,12 +142,14 @@ class __$$BodyLecturerAnnouncementsCreateLecturerAnnouncementImplCopyWithImpl<
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$BodyLecturerAnnouncementsCreateLecturerAnnouncementImpl
-    implements _BodyLecturerAnnouncementsCreateLecturerAnnouncement {
+    extends _BodyLecturerAnnouncementsCreateLecturerAnnouncement {
   const _$BodyLecturerAnnouncementsCreateLecturerAnnouncementImpl(
       {@JsonKey(name: 'title') required this.title,
-      @JsonKey(name: 'description') required this.description});
+      @JsonKey(name: 'description') required this.description})
+      : super._();
 
   factory _$BodyLecturerAnnouncementsCreateLecturerAnnouncementImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -201,11 +203,12 @@ class _$BodyLecturerAnnouncementsCreateLecturerAnnouncementImpl
 }
 
 abstract class _BodyLecturerAnnouncementsCreateLecturerAnnouncement
-    implements BodyLecturerAnnouncementsCreateLecturerAnnouncement {
+    extends BodyLecturerAnnouncementsCreateLecturerAnnouncement {
   const factory _BodyLecturerAnnouncementsCreateLecturerAnnouncement(
           {@JsonKey(name: 'title') required final String title,
           @JsonKey(name: 'description') required final String? description}) =
       _$BodyLecturerAnnouncementsCreateLecturerAnnouncementImpl;
+  const _BodyLecturerAnnouncementsCreateLecturerAnnouncement._() : super._();
 
   factory _BodyLecturerAnnouncementsCreateLecturerAnnouncement.fromJson(
           Map<String, dynamic> json) =

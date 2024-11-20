@@ -25,7 +25,7 @@ mixin _$BaseResponsePaginationResponseLecturerCoursePublic {
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
   @JsonKey(name: 'data')
-  PaginationResponse_LecturerCoursePublic_ get data =>
+  PaginationResponseLecturerCoursePublic get data =>
       throw _privateConstructorUsedError;
 
   /// Serializes this BaseResponsePaginationResponseLecturerCoursePublic to a JSON map.
@@ -51,7 +51,9 @@ abstract class $BaseResponsePaginationResponseLecturerCoursePublicCopyWith<
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') PaginationResponse_LecturerCoursePublic_ data});
+      @JsonKey(name: 'data') PaginationResponseLecturerCoursePublic data});
+
+  $PaginationResponseLecturerCoursePublicCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -73,18 +75,29 @@ class _$BaseResponsePaginationResponseLecturerCoursePublicCopyWithImpl<$Res,
   @override
   $Res call({
     Object? message = freezed,
-    Object? data = freezed,
+    Object? data = null,
   }) {
     return _then(_value.copyWith(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      data: freezed == data
+      data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as PaginationResponse_LecturerCoursePublic_,
+              as PaginationResponseLecturerCoursePublic,
     ) as $Val);
+  }
+
+  /// Create a copy of BaseResponsePaginationResponseLecturerCoursePublic
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PaginationResponseLecturerCoursePublicCopyWith<$Res> get data {
+    return $PaginationResponseLecturerCoursePublicCopyWith<$Res>(_value.data,
+        (value) {
+      return _then(_value.copyWith(data: value) as $Val);
+    });
   }
 }
 
@@ -104,7 +117,10 @@ abstract class _$$BaseResponsePaginationResponseLecturerCoursePublicImplCopyWith
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') PaginationResponse_LecturerCoursePublic_ data});
+      @JsonKey(name: 'data') PaginationResponseLecturerCoursePublic data});
+
+  @override
+  $PaginationResponseLecturerCoursePublicCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -127,28 +143,30 @@ class __$$BaseResponsePaginationResponseLecturerCoursePublicImplCopyWithImpl<
   @override
   $Res call({
     Object? message = freezed,
-    Object? data = freezed,
+    Object? data = null,
   }) {
     return _then(_$BaseResponsePaginationResponseLecturerCoursePublicImpl(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      data: freezed == data
+      data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as PaginationResponse_LecturerCoursePublic_,
+              as PaginationResponseLecturerCoursePublic,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$BaseResponsePaginationResponseLecturerCoursePublicImpl
-    implements _BaseResponsePaginationResponseLecturerCoursePublic {
+    extends _BaseResponsePaginationResponseLecturerCoursePublic {
   const _$BaseResponsePaginationResponseLecturerCoursePublicImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required this.data});
+      @JsonKey(name: 'data') required this.data})
+      : super._();
 
   factory _$BaseResponsePaginationResponseLecturerCoursePublicImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -159,7 +177,7 @@ class _$BaseResponsePaginationResponseLecturerCoursePublicImpl
   final String? message;
   @override
   @JsonKey(name: 'data')
-  final PaginationResponse_LecturerCoursePublic_ data;
+  final PaginationResponseLecturerCoursePublic data;
 
   @override
   String toString() {
@@ -172,13 +190,12 @@ class _$BaseResponsePaginationResponseLecturerCoursePublicImpl
         (other.runtimeType == runtimeType &&
             other is _$BaseResponsePaginationResponseLecturerCoursePublicImpl &&
             (identical(other.message, message) || other.message == message) &&
-            const DeepCollectionEquality().equals(other.data, data));
+            (identical(other.data, data) || other.data == data));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, message, const DeepCollectionEquality().hash(data));
+  int get hashCode => Object.hash(runtimeType, message, data);
 
   /// Create a copy of BaseResponsePaginationResponseLecturerCoursePublic
   /// with the given fields replaced by the non-null parameter values.
@@ -201,12 +218,13 @@ class _$BaseResponsePaginationResponseLecturerCoursePublicImpl
 }
 
 abstract class _BaseResponsePaginationResponseLecturerCoursePublic
-    implements BaseResponsePaginationResponseLecturerCoursePublic {
+    extends BaseResponsePaginationResponseLecturerCoursePublic {
   const factory _BaseResponsePaginationResponseLecturerCoursePublic(
           {@JsonKey(name: 'message') required final String? message,
           @JsonKey(name: 'data')
-          required final PaginationResponse_LecturerCoursePublic_ data}) =
+          required final PaginationResponseLecturerCoursePublic data}) =
       _$BaseResponsePaginationResponseLecturerCoursePublicImpl;
+  const _BaseResponsePaginationResponseLecturerCoursePublic._() : super._();
 
   factory _BaseResponsePaginationResponseLecturerCoursePublic.fromJson(
           Map<String, dynamic> json) =
@@ -217,7 +235,7 @@ abstract class _BaseResponsePaginationResponseLecturerCoursePublic
   String? get message;
   @override
   @JsonKey(name: 'data')
-  PaginationResponse_LecturerCoursePublic_ get data;
+  PaginationResponseLecturerCoursePublic get data;
 
   /// Create a copy of BaseResponsePaginationResponseLecturerCoursePublic
   /// with the given fields replaced by the non-null parameter values.

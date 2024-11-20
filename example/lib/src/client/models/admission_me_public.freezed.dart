@@ -260,8 +260,9 @@ class __$$AdmissionMePublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$AdmissionMePublicImpl implements _AdmissionMePublic {
+
+@JsonSerializable(converters: convertors)
+class _$AdmissionMePublicImpl extends _AdmissionMePublic {
   const _$AdmissionMePublicImpl(
       {@JsonKey(name: 'is_current') required this.isCurrent,
       @JsonKey(name: 'collage') required this.collage,
@@ -274,7 +275,8 @@ class _$AdmissionMePublicImpl implements _AdmissionMePublic {
       @JsonKey(name: 'stage') required this.stage,
       @JsonKey(name: 'is_direct') required this.isDirect,
       @JsonKey(name: 'scholarship') required this.scholarship,
-      @JsonKey(name: 'channel') required this.channel});
+      @JsonKey(name: 'channel') required this.channel})
+      : super._();
 
   factory _$AdmissionMePublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$AdmissionMePublicImplFromJson(json);
@@ -380,7 +382,7 @@ class _$AdmissionMePublicImpl implements _AdmissionMePublic {
   }
 }
 
-abstract class _AdmissionMePublic implements AdmissionMePublic {
+abstract class _AdmissionMePublic extends AdmissionMePublic {
   const factory _AdmissionMePublic(
           {@JsonKey(name: 'is_current') required final bool? isCurrent,
           @JsonKey(name: 'collage') required final String? collage,
@@ -395,6 +397,7 @@ abstract class _AdmissionMePublic implements AdmissionMePublic {
           @JsonKey(name: 'scholarship') required final String? scholarship,
           @JsonKey(name: 'channel') required final String? channel}) =
       _$AdmissionMePublicImpl;
+  const _AdmissionMePublic._() : super._();
 
   factory _AdmissionMePublic.fromJson(Map<String, dynamic> json) =
       _$AdmissionMePublicImpl.fromJson;

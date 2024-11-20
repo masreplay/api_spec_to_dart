@@ -1,10 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
+
 part 'student_ids_id_card_update_public.freezed.dart';
 part 'student_ids_id_card_update_public.g.dart';
 
 @freezed
 class StudentIdsIdCardUpdatePublic with _$StudentIdsIdCardUpdatePublic {
+  const StudentIdsIdCardUpdatePublic._();
+
+  @JsonSerializable(converters: convertors)
   const factory StudentIdsIdCardUpdatePublic({
     @JsonKey(name: 'identification_card_number')
     required String identificationCardNumber,

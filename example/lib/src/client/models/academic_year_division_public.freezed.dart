@@ -319,8 +319,9 @@ class __$$AcademicYearDivisionPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$AcademicYearDivisionPublicImpl implements _AcademicYearDivisionPublic {
+
+@JsonSerializable(converters: convertors)
+class _$AcademicYearDivisionPublicImpl extends _AcademicYearDivisionPublic {
   const _$AcademicYearDivisionPublicImpl(
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'academic_learning_framework_system_id')
@@ -341,7 +342,8 @@ class _$AcademicYearDivisionPublicImpl implements _AcademicYearDivisionPublic {
       @JsonKey(name: 'minimum_number_of_courses_to_fail')
       required this.minimumNumberOfCoursesToFail,
       @JsonKey(name: 'minimum_ects') required this.minimumEcts,
-      @JsonKey(name: 'maximum_ects') required this.maximumEcts});
+      @JsonKey(name: 'maximum_ects') required this.maximumEcts})
+      : super._();
 
   factory _$AcademicYearDivisionPublicImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -477,8 +479,7 @@ class _$AcademicYearDivisionPublicImpl implements _AcademicYearDivisionPublic {
   }
 }
 
-abstract class _AcademicYearDivisionPublic
-    implements AcademicYearDivisionPublic {
+abstract class _AcademicYearDivisionPublic extends AcademicYearDivisionPublic {
   const factory _AcademicYearDivisionPublic(
           {@JsonKey(name: 'id') required final int id,
           @JsonKey(name: 'academic_learning_framework_system_id')
@@ -506,6 +507,7 @@ abstract class _AcademicYearDivisionPublic
           @JsonKey(name: 'minimum_ects') required final num minimumEcts,
           @JsonKey(name: 'maximum_ects') required final num maximumEcts}) =
       _$AcademicYearDivisionPublicImpl;
+  const _AcademicYearDivisionPublic._() : super._();
 
   factory _AcademicYearDivisionPublic.fromJson(Map<String, dynamic> json) =
       _$AcademicYearDivisionPublicImpl.fromJson;

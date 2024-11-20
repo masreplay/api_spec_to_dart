@@ -203,13 +203,15 @@ class __$$RegistrationsStudentIdsNationalityCreateRequestImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$RegistrationsStudentIdsNationalityCreateRequestImpl
-    implements _RegistrationsStudentIdsNationalityCreateRequest {
+    extends _RegistrationsStudentIdsNationalityCreateRequest {
   const _$RegistrationsStudentIdsNationalityCreateRequestImpl(
       {@JsonKey(name: 'national_card') required this.nationalCard,
       @JsonKey(name: 'residence_card') required this.residenceCard,
-      @JsonKey(name: 'passport') required this.passport});
+      @JsonKey(name: 'passport') required this.passport})
+      : super._();
 
   factory _$RegistrationsStudentIdsNationalityCreateRequestImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -269,7 +271,7 @@ class _$RegistrationsStudentIdsNationalityCreateRequestImpl
 }
 
 abstract class _RegistrationsStudentIdsNationalityCreateRequest
-    implements RegistrationsStudentIdsNationalityCreateRequest {
+    extends RegistrationsStudentIdsNationalityCreateRequest {
   const factory _RegistrationsStudentIdsNationalityCreateRequest(
           {@JsonKey(name: 'national_card')
           required final StudentIdsNationalCardUpdatePublic nationalCard,
@@ -278,6 +280,7 @@ abstract class _RegistrationsStudentIdsNationalityCreateRequest
           @JsonKey(name: 'passport')
           required final StudentIdsPassportUpdatePublic? passport}) =
       _$RegistrationsStudentIdsNationalityCreateRequestImpl;
+  const _RegistrationsStudentIdsNationalityCreateRequest._() : super._();
 
   factory _RegistrationsStudentIdsNationalityCreateRequest.fromJson(
           Map<String, dynamic> json) =

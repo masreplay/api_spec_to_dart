@@ -65,9 +65,10 @@ class __$$EkycTypeEnumImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$EkycTypeEnumImpl implements _EkycTypeEnum {
-  const _$EkycTypeEnumImpl();
+
+@JsonSerializable(converters: convertors)
+class _$EkycTypeEnumImpl extends _EkycTypeEnum {
+  const _$EkycTypeEnumImpl() : super._();
 
   factory _$EkycTypeEnumImpl.fromJson(Map<String, dynamic> json) =>
       _$$EkycTypeEnumImplFromJson(json);
@@ -95,8 +96,9 @@ class _$EkycTypeEnumImpl implements _EkycTypeEnum {
   }
 }
 
-abstract class _EkycTypeEnum implements EkycTypeEnum {
+abstract class _EkycTypeEnum extends EkycTypeEnum {
   const factory _EkycTypeEnum() = _$EkycTypeEnumImpl;
+  const _EkycTypeEnum._() : super._();
 
   factory _EkycTypeEnum.fromJson(Map<String, dynamic> json) =
       _$EkycTypeEnumImpl.fromJson;

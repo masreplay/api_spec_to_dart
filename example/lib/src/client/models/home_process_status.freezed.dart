@@ -65,9 +65,10 @@ class __$$HomeProcessStatusImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$HomeProcessStatusImpl implements _HomeProcessStatus {
-  const _$HomeProcessStatusImpl();
+
+@JsonSerializable(converters: convertors)
+class _$HomeProcessStatusImpl extends _HomeProcessStatus {
+  const _$HomeProcessStatusImpl() : super._();
 
   factory _$HomeProcessStatusImpl.fromJson(Map<String, dynamic> json) =>
       _$$HomeProcessStatusImplFromJson(json);
@@ -95,8 +96,9 @@ class _$HomeProcessStatusImpl implements _HomeProcessStatus {
   }
 }
 
-abstract class _HomeProcessStatus implements HomeProcessStatus {
+abstract class _HomeProcessStatus extends HomeProcessStatus {
   const factory _HomeProcessStatus() = _$HomeProcessStatusImpl;
+  const _HomeProcessStatus._() : super._();
 
   factory _HomeProcessStatus.fromJson(Map<String, dynamic> json) =
       _$HomeProcessStatusImpl.fromJson;

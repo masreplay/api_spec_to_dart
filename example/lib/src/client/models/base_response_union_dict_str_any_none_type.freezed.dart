@@ -128,13 +128,15 @@ class __$$BaseResponseUnionDictStrAnyNoneTypeImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$BaseResponseUnionDictStrAnyNoneTypeImpl
-    implements _BaseResponseUnionDictStrAnyNoneType {
+    extends _BaseResponseUnionDictStrAnyNoneType {
   const _$BaseResponseUnionDictStrAnyNoneTypeImpl(
       {@JsonKey(name: 'message') required this.message,
       @JsonKey(name: 'data') required final Map<dynamic, dynamic>? data})
-      : _data = data;
+      : _data = data,
+        super._();
 
   factory _$BaseResponseUnionDictStrAnyNoneTypeImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -192,11 +194,12 @@ class _$BaseResponseUnionDictStrAnyNoneTypeImpl
 }
 
 abstract class _BaseResponseUnionDictStrAnyNoneType
-    implements BaseResponseUnionDictStrAnyNoneType {
+    extends BaseResponseUnionDictStrAnyNoneType {
   const factory _BaseResponseUnionDictStrAnyNoneType(
           {@JsonKey(name: 'message') required final String? message,
           @JsonKey(name: 'data') required final Map<dynamic, dynamic>? data}) =
       _$BaseResponseUnionDictStrAnyNoneTypeImpl;
+  const _BaseResponseUnionDictStrAnyNoneType._() : super._();
 
   factory _BaseResponseUnionDictStrAnyNoneType.fromJson(
           Map<String, dynamic> json) =

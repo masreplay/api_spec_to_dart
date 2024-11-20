@@ -163,13 +163,15 @@ class __$$HomeStatusPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$HomeStatusPublicImpl implements _HomeStatusPublic {
+
+@JsonSerializable(converters: convertors)
+class _$HomeStatusPublicImpl extends _HomeStatusPublic {
   const _$HomeStatusPublicImpl(
-      {@JsonKey(name: 'type') required this.type = String.status,
+      {@JsonKey(name: 'type') required this.type = status,
       @JsonKey(name: 'title') required this.title,
       @JsonKey(name: 'description') required this.description,
-      @JsonKey(name: 'status') required this.status = no_study_program});
+      @JsonKey(name: 'status') required this.status = no_study_program})
+      : super._();
 
   factory _$HomeStatusPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$HomeStatusPublicImplFromJson(json);
@@ -226,13 +228,14 @@ class _$HomeStatusPublicImpl implements _HomeStatusPublic {
   }
 }
 
-abstract class _HomeStatusPublic implements HomeStatusPublic {
+abstract class _HomeStatusPublic extends HomeStatusPublic {
   const factory _HomeStatusPublic(
           {@JsonKey(name: 'type') required final String type,
           @JsonKey(name: 'title') required final String title,
           @JsonKey(name: 'description') required final String? description,
           @JsonKey(name: 'status') required final HomeProcessStatus status}) =
       _$HomeStatusPublicImpl;
+  const _HomeStatusPublic._() : super._();
 
   factory _HomeStatusPublic.fromJson(Map<String, dynamic> json) =
       _$HomeStatusPublicImpl.fromJson;

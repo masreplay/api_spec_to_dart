@@ -104,9 +104,11 @@ class __$$HomeResponseImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$HomeResponseImpl implements _HomeResponse {
-  const _$HomeResponseImpl({@JsonKey(name: 'message') required this.message});
+
+@JsonSerializable(converters: convertors)
+class _$HomeResponseImpl extends _HomeResponse {
+  const _$HomeResponseImpl({@JsonKey(name: 'message') required this.message})
+      : super._();
 
   factory _$HomeResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$HomeResponseImplFromJson(json);
@@ -148,10 +150,11 @@ class _$HomeResponseImpl implements _HomeResponse {
   }
 }
 
-abstract class _HomeResponse implements HomeResponse {
+abstract class _HomeResponse extends HomeResponse {
   const factory _HomeResponse(
           {@JsonKey(name: 'message') required final String? message}) =
       _$HomeResponseImpl;
+  const _HomeResponse._() : super._();
 
   factory _HomeResponse.fromJson(Map<String, dynamic> json) =
       _$HomeResponseImpl.fromJson;

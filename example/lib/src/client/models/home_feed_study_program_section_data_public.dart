@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
 import './models.dart';
 
 part 'home_feed_study_program_section_data_public.freezed.dart';
@@ -8,6 +9,9 @@ part 'home_feed_study_program_section_data_public.g.dart';
 @freezed
 class HomeFeedStudyProgramSectionDataPublic
     with _$HomeFeedStudyProgramSectionDataPublic {
+  const HomeFeedStudyProgramSectionDataPublic._();
+
+  @JsonSerializable(converters: convertors)
   const factory HomeFeedStudyProgramSectionDataPublic({
     @JsonKey(name: 'study_program_id') required int studyProgramId,
     @JsonKey(name: 'name') required int name,

@@ -65,9 +65,10 @@ class __$$CitizenshipTypeEnumImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$CitizenshipTypeEnumImpl implements _CitizenshipTypeEnum {
-  const _$CitizenshipTypeEnumImpl();
+
+@JsonSerializable(converters: convertors)
+class _$CitizenshipTypeEnumImpl extends _CitizenshipTypeEnum {
+  const _$CitizenshipTypeEnumImpl() : super._();
 
   factory _$CitizenshipTypeEnumImpl.fromJson(Map<String, dynamic> json) =>
       _$$CitizenshipTypeEnumImplFromJson(json);
@@ -96,8 +97,9 @@ class _$CitizenshipTypeEnumImpl implements _CitizenshipTypeEnum {
   }
 }
 
-abstract class _CitizenshipTypeEnum implements CitizenshipTypeEnum {
+abstract class _CitizenshipTypeEnum extends CitizenshipTypeEnum {
   const factory _CitizenshipTypeEnum() = _$CitizenshipTypeEnumImpl;
+  const _CitizenshipTypeEnum._() : super._();
 
   factory _CitizenshipTypeEnum.fromJson(Map<String, dynamic> json) =
       _$CitizenshipTypeEnumImpl.fromJson;

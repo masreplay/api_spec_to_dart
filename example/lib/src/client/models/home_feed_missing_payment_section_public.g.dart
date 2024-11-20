@@ -11,7 +11,7 @@ _$HomeFeedMissingPaymentSectionPublicImpl
             Map<String, dynamic> json) =>
         _$HomeFeedMissingPaymentSectionPublicImpl(
           id: (json['id'] as num).toInt(),
-          type: json['type'] as String? ?? String.missing_payment,
+          type: json['type'] as String? ?? missing_payment,
           title: json['title'] as String,
           description: json['description'] as String?,
           data: HomeFeedMissingPaymentSectionDataPublic.fromJson(

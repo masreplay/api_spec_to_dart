@@ -1,11 +1,16 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
+
 part 'student_registration_school_info_update_request.freezed.dart';
 part 'student_registration_school_info_update_request.g.dart';
 
 @freezed
 class StudentRegistrationSchoolInfoUpdateRequest
     with _$StudentRegistrationSchoolInfoUpdateRequest {
+  const StudentRegistrationSchoolInfoUpdateRequest._();
+
+  @JsonSerializable(converters: convertors)
   const factory StudentRegistrationSchoolInfoUpdateRequest({
     @JsonKey(name: 'school_name') required String? schoolName,
     @JsonKey(name: 'exam_number') required String examNumber,

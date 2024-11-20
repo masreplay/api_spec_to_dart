@@ -1,11 +1,16 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
+
 part 'employee_identification_cards_public.freezed.dart';
 part 'employee_identification_cards_public.g.dart';
 
 @freezed
 class EmployeeIdentificationCardsPublic
     with _$EmployeeIdentificationCardsPublic {
+  const EmployeeIdentificationCardsPublic._();
+
+  @JsonSerializable(converters: convertors)
   const factory EmployeeIdentificationCardsPublic({
     @JsonKey(name: 'employee_identifications_card_id')
     required int employeeIdentificationsCardId,

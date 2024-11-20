@@ -1,10 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
+
 part 'weekly_schedule_teacher_response.freezed.dart';
 part 'weekly_schedule_teacher_response.g.dart';
 
 @freezed
 class WeeklyScheduleTeacherResponse with _$WeeklyScheduleTeacherResponse {
+  const WeeklyScheduleTeacherResponse._();
+
+  @JsonSerializable(converters: convertors)
   const factory WeeklyScheduleTeacherResponse({
     @JsonKey(name: 'weekday') required int weekday,
     @JsonKey(name: 'lectures') required List lectures,

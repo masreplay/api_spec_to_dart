@@ -142,12 +142,13 @@ class __$$BaseResponseInitEkycResponseImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$BaseResponseInitEkycResponseImpl
-    implements _BaseResponseInitEkycResponse {
+
+@JsonSerializable(converters: convertors)
+class _$BaseResponseInitEkycResponseImpl extends _BaseResponseInitEkycResponse {
   const _$BaseResponseInitEkycResponseImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required this.data});
+      @JsonKey(name: 'data') required this.data})
+      : super._();
 
   factory _$BaseResponseInitEkycResponseImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -197,11 +198,12 @@ class _$BaseResponseInitEkycResponseImpl
 }
 
 abstract class _BaseResponseInitEkycResponse
-    implements BaseResponseInitEkycResponse {
+    extends BaseResponseInitEkycResponse {
   const factory _BaseResponseInitEkycResponse(
           {@JsonKey(name: 'message') required final String? message,
           @JsonKey(name: 'data') required final InitEkycResponse data}) =
       _$BaseResponseInitEkycResponseImpl;
+  const _BaseResponseInitEkycResponse._() : super._();
 
   factory _BaseResponseInitEkycResponse.fromJson(Map<String, dynamic> json) =
       _$BaseResponseInitEkycResponseImpl.fromJson;

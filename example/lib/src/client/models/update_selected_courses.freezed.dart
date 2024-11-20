@@ -124,11 +124,13 @@ class __$$UpdateSelectedCoursesImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$UpdateSelectedCoursesImpl implements _UpdateSelectedCourses {
+
+@JsonSerializable(converters: convertors)
+class _$UpdateSelectedCoursesImpl extends _UpdateSelectedCourses {
   const _$UpdateSelectedCoursesImpl(
       {@JsonKey(name: 'course_id') required this.courseId,
-      @JsonKey(name: 'course_stuff_id') required this.courseStuffId});
+      @JsonKey(name: 'course_stuff_id') required this.courseStuffId})
+      : super._();
 
   factory _$UpdateSelectedCoursesImpl.fromJson(Map<String, dynamic> json) =>
       _$$UpdateSelectedCoursesImplFromJson(json);
@@ -177,11 +179,12 @@ class _$UpdateSelectedCoursesImpl implements _UpdateSelectedCourses {
   }
 }
 
-abstract class _UpdateSelectedCourses implements UpdateSelectedCourses {
+abstract class _UpdateSelectedCourses extends UpdateSelectedCourses {
   const factory _UpdateSelectedCourses(
           {@JsonKey(name: 'course_id') required final int courseId,
           @JsonKey(name: 'course_stuff_id') required final int courseStuffId}) =
       _$UpdateSelectedCoursesImpl;
+  const _UpdateSelectedCourses._() : super._();
 
   factory _UpdateSelectedCourses.fromJson(Map<String, dynamic> json) =
       _$UpdateSelectedCoursesImpl.fromJson;

@@ -147,13 +147,15 @@ class __$$StudentSeamstersSummaryWithoutCoursesImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$StudentSeamstersSummaryWithoutCoursesImpl
-    implements _StudentSeamstersSummaryWithoutCourses {
+    extends _StudentSeamstersSummaryWithoutCourses {
   const _$StudentSeamstersSummaryWithoutCoursesImpl(
       {@JsonKey(name: 'semesters') required final List<dynamic>? semesters,
       @JsonKey(name: 'year') required this.year})
-      : _semesters = semesters;
+      : _semesters = semesters,
+        super._();
 
   factory _$StudentSeamstersSummaryWithoutCoursesImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -213,11 +215,12 @@ class _$StudentSeamstersSummaryWithoutCoursesImpl
 }
 
 abstract class _StudentSeamstersSummaryWithoutCourses
-    implements StudentSeamstersSummaryWithoutCourses {
+    extends StudentSeamstersSummaryWithoutCourses {
   const factory _StudentSeamstersSummaryWithoutCourses(
           {@JsonKey(name: 'semesters') required final List<dynamic>? semesters,
           @JsonKey(name: 'year') required final StudyYearPublic? year}) =
       _$StudentSeamstersSummaryWithoutCoursesImpl;
+  const _StudentSeamstersSummaryWithoutCourses._() : super._();
 
   factory _StudentSeamstersSummaryWithoutCourses.fromJson(
           Map<String, dynamic> json) =

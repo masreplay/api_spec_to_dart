@@ -1,10 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
+
 part 'base_response_list_religion_public.freezed.dart';
 part 'base_response_list_religion_public.g.dart';
 
 @freezed
 class BaseResponseListReligionPublic with _$BaseResponseListReligionPublic {
+  const BaseResponseListReligionPublic._();
+
+  @JsonSerializable(converters: convertors)
   const factory BaseResponseListReligionPublic({
     @JsonKey(name: 'message') required String? message,
     @JsonKey(name: 'data') required List data,

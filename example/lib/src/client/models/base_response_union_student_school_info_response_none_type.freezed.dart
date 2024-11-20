@@ -161,12 +161,14 @@ class __$$BaseResponseUnionStudentSchoolInfoResponseNoneTypeImplCopyWithImpl<
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$BaseResponseUnionStudentSchoolInfoResponseNoneTypeImpl
-    implements _BaseResponseUnionStudentSchoolInfoResponseNoneType {
+    extends _BaseResponseUnionStudentSchoolInfoResponseNoneType {
   const _$BaseResponseUnionStudentSchoolInfoResponseNoneTypeImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required this.data});
+      @JsonKey(name: 'data') required this.data})
+      : super._();
 
   factory _$BaseResponseUnionStudentSchoolInfoResponseNoneTypeImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -218,12 +220,13 @@ class _$BaseResponseUnionStudentSchoolInfoResponseNoneTypeImpl
 }
 
 abstract class _BaseResponseUnionStudentSchoolInfoResponseNoneType
-    implements BaseResponseUnionStudentSchoolInfoResponseNoneType {
+    extends BaseResponseUnionStudentSchoolInfoResponseNoneType {
   const factory _BaseResponseUnionStudentSchoolInfoResponseNoneType(
           {@JsonKey(name: 'message') required final String? message,
           @JsonKey(name: 'data')
           required final StudentSchoolInfoResponse? data}) =
       _$BaseResponseUnionStudentSchoolInfoResponseNoneTypeImpl;
+  const _BaseResponseUnionStudentSchoolInfoResponseNoneType._() : super._();
 
   factory _BaseResponseUnionStudentSchoolInfoResponseNoneType.fromJson(
           Map<String, dynamic> json) =

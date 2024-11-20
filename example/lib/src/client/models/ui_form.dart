@@ -1,10 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
+
 part 'ui_form.freezed.dart';
 part 'ui_form.g.dart';
 
 @freezed
 class UIForm with _$UIForm {
+  const UIForm._();
+
+  @JsonSerializable(converters: convertors)
   const factory UIForm({
     @JsonKey(name: 'key') required String key,
     @JsonKey(name: 'fields') required List fields,

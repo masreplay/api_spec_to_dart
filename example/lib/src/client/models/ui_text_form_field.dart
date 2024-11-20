@@ -1,10 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
+
 part 'ui_text_form_field.freezed.dart';
 part 'ui_text_form_field.g.dart';
 
 @freezed
 class UITextFormField with _$UITextFormField {
+  const UITextFormField._();
+
+  @JsonSerializable(converters: convertors)
   const factory UITextFormField({
     @JsonKey(name: 'key') required String key,
     @JsonKey(name: 'name') required String name,
@@ -12,7 +17,7 @@ class UITextFormField with _$UITextFormField {
     @JsonKey(name: 'is_required') required bool isRequired,
     @Default(false) @JsonKey(name: 'read_only') required bool readOnly,
     @JsonKey(name: 'doc') required String? doc,
-    @Default(String.text) @JsonKey(name: 'type') required String type,
+    @Default(text) @JsonKey(name: 'type') required String type,
     @JsonKey(name: 'regex') required String? regex,
     @JsonKey(name: 'default_value') required String? defaultValue,
     @JsonKey(name: 'example') required String? example,

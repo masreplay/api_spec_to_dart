@@ -1,10 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
+
 part 'admission_me_public.freezed.dart';
 part 'admission_me_public.g.dart';
 
 @freezed
 class AdmissionMePublic with _$AdmissionMePublic {
+  const AdmissionMePublic._();
+
+  @JsonSerializable(converters: convertors)
   const factory AdmissionMePublic({
     @JsonKey(name: 'is_current') required bool? isCurrent,
     @JsonKey(name: 'collage') required String? collage,

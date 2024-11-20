@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
 import './models.dart';
 
 part 'course_assessment_measuring_type_course_and_assessments.freezed.dart';
@@ -8,6 +9,9 @@ part 'course_assessment_measuring_type_course_and_assessments.g.dart';
 @freezed
 class CourseAssessmentMeasuringTypeCourseAndAssessments
     with _$CourseAssessmentMeasuringTypeCourseAndAssessments {
+  const CourseAssessmentMeasuringTypeCourseAndAssessments._();
+
+  @JsonSerializable(converters: convertors)
   const factory CourseAssessmentMeasuringTypeCourseAndAssessments({
     @JsonKey(name: 'id') required int? id,
     @JsonKey(name: 'title') required String? title,

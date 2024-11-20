@@ -15,7 +15,7 @@ _$UITextFormFieldImpl _$$UITextFormFieldImplFromJson(
       isRequired: json['is_required'] as bool,
       readOnly: json['read_only'] as bool? ?? false,
       doc: json['doc'] as String?,
-      type: json['type'] as String? ?? String.text,
+      type: json['type'] as String? ?? text,
       regex: json['regex'] as String?,
       defaultValue: json['default_value'] as String?,
       example: json['example'] as String?,

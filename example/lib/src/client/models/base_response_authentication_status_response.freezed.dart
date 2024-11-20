@@ -145,12 +145,14 @@ class __$$BaseResponseAuthenticationStatusResponseImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$BaseResponseAuthenticationStatusResponseImpl
-    implements _BaseResponseAuthenticationStatusResponse {
+    extends _BaseResponseAuthenticationStatusResponse {
   const _$BaseResponseAuthenticationStatusResponseImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required this.data});
+      @JsonKey(name: 'data') required this.data})
+      : super._();
 
   factory _$BaseResponseAuthenticationStatusResponseImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -201,12 +203,13 @@ class _$BaseResponseAuthenticationStatusResponseImpl
 }
 
 abstract class _BaseResponseAuthenticationStatusResponse
-    implements BaseResponseAuthenticationStatusResponse {
+    extends BaseResponseAuthenticationStatusResponse {
   const factory _BaseResponseAuthenticationStatusResponse(
           {@JsonKey(name: 'message') required final String? message,
           @JsonKey(name: 'data')
           required final AuthenticationStatusResponse data}) =
       _$BaseResponseAuthenticationStatusResponseImpl;
+  const _BaseResponseAuthenticationStatusResponse._() : super._();
 
   factory _BaseResponseAuthenticationStatusResponse.fromJson(
           Map<String, dynamic> json) =

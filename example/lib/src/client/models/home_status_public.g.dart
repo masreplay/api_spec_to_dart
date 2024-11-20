@@ -9,7 +9,7 @@ part of 'home_status_public.dart';
 _$HomeStatusPublicImpl _$$HomeStatusPublicImplFromJson(
         Map<String, dynamic> json) =>
     _$HomeStatusPublicImpl(
-      type: json['type'] as String? ?? String.status,
+      type: json['type'] as String? ?? status,
       title: json['title'] as String,
       description: json['description'] as String?,
       status: json['status'] == null

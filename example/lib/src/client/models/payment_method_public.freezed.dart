@@ -191,15 +191,17 @@ class __$$PaymentMethodPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$PaymentMethodPublicImpl implements _PaymentMethodPublic {
+
+@JsonSerializable(converters: convertors)
+class _$PaymentMethodPublicImpl extends _PaymentMethodPublic {
   const _$PaymentMethodPublicImpl(
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'name') required this.name,
       @JsonKey(name: 'description') required this.description,
       @JsonKey(name: 'url') required this.url,
       @JsonKey(name: 'image') required this.image,
-      @JsonKey(name: 'type') required this.type});
+      @JsonKey(name: 'type') required this.type})
+      : super._();
 
   factory _$PaymentMethodPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$PaymentMethodPublicImplFromJson(json);
@@ -264,7 +266,7 @@ class _$PaymentMethodPublicImpl implements _PaymentMethodPublic {
   }
 }
 
-abstract class _PaymentMethodPublic implements PaymentMethodPublic {
+abstract class _PaymentMethodPublic extends PaymentMethodPublic {
   const factory _PaymentMethodPublic(
           {@JsonKey(name: 'id') required final int id,
           @JsonKey(name: 'name') required final String name,
@@ -273,6 +275,7 @@ abstract class _PaymentMethodPublic implements PaymentMethodPublic {
           @JsonKey(name: 'image') required final String image,
           @JsonKey(name: 'type') required final PaymentMethodEnum type}) =
       _$PaymentMethodPublicImpl;
+  const _PaymentMethodPublic._() : super._();
 
   factory _PaymentMethodPublic.fromJson(Map<String, dynamic> json) =
       _$PaymentMethodPublicImpl.fromJson;

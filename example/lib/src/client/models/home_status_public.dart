@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
 import './models.dart';
 
 part 'home_status_public.freezed.dart';
@@ -7,8 +8,11 @@ part 'home_status_public.g.dart';
 
 @freezed
 class HomeStatusPublic with _$HomeStatusPublic {
+  const HomeStatusPublic._();
+
+  @JsonSerializable(converters: convertors)
   const factory HomeStatusPublic({
-    @Default(String.status) @JsonKey(name: 'type') required String type,
+    @Default(status) @JsonKey(name: 'type') required String type,
     @JsonKey(name: 'title') required String title,
     @JsonKey(name: 'description') required String? description,
     @Default(no_study_program)

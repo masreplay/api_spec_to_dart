@@ -109,10 +109,12 @@ class __$$EkycDownloadLicensePublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$EkycDownloadLicensePublicImpl implements _EkycDownloadLicensePublic {
+
+@JsonSerializable(converters: convertors)
+class _$EkycDownloadLicensePublicImpl extends _EkycDownloadLicensePublic {
   const _$EkycDownloadLicensePublicImpl(
-      {@JsonKey(name: 'content') required this.content});
+      {@JsonKey(name: 'content') required this.content})
+      : super._();
 
   factory _$EkycDownloadLicensePublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$EkycDownloadLicensePublicImplFromJson(json);
@@ -155,10 +157,11 @@ class _$EkycDownloadLicensePublicImpl implements _EkycDownloadLicensePublic {
   }
 }
 
-abstract class _EkycDownloadLicensePublic implements EkycDownloadLicensePublic {
+abstract class _EkycDownloadLicensePublic extends EkycDownloadLicensePublic {
   const factory _EkycDownloadLicensePublic(
           {@JsonKey(name: 'content') required final String content}) =
       _$EkycDownloadLicensePublicImpl;
+  const _EkycDownloadLicensePublic._() : super._();
 
   factory _EkycDownloadLicensePublic.fromJson(Map<String, dynamic> json) =
       _$EkycDownloadLicensePublicImpl.fromJson;

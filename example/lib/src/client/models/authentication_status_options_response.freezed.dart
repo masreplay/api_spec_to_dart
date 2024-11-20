@@ -176,9 +176,10 @@ class __$$AuthenticationStatusOptionsResponseImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$AuthenticationStatusOptionsResponseImpl
-    implements _AuthenticationStatusOptionsResponse {
+    extends _AuthenticationStatusOptionsResponse {
   const _$AuthenticationStatusOptionsResponseImpl(
       {@JsonKey(name: 'need_temporary_password_changed')
       required this.needTemporaryPasswordChanged,
@@ -187,7 +188,8 @@ class _$AuthenticationStatusOptionsResponseImpl
       @JsonKey(name: 'need_enrollment_payment_verified')
       required this.needEnrollmentPaymentVerified,
       @JsonKey(name: 'need_registration_request_status')
-      required this.needRegistrationRequestStatus});
+      required this.needRegistrationRequestStatus})
+      : super._();
 
   factory _$AuthenticationStatusOptionsResponseImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -266,7 +268,7 @@ class _$AuthenticationStatusOptionsResponseImpl
 }
 
 abstract class _AuthenticationStatusOptionsResponse
-    implements AuthenticationStatusOptionsResponse {
+    extends AuthenticationStatusOptionsResponse {
   const factory _AuthenticationStatusOptionsResponse(
           {@JsonKey(name: 'need_temporary_password_changed')
           required final bool needTemporaryPasswordChanged,
@@ -278,6 +280,7 @@ abstract class _AuthenticationStatusOptionsResponse
           @JsonKey(name: 'need_registration_request_status')
           required final bool needRegistrationRequestStatus}) =
       _$AuthenticationStatusOptionsResponseImpl;
+  const _AuthenticationStatusOptionsResponse._() : super._();
 
   factory _AuthenticationStatusOptionsResponse.fromJson(
           Map<String, dynamic> json) =

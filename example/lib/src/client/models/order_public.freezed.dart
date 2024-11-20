@@ -403,8 +403,9 @@ class __$$OrderPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$OrderPublicImpl implements _OrderPublic {
+
+@JsonSerializable(converters: convertors)
+class _$OrderPublicImpl extends _OrderPublic {
   const _$OrderPublicImpl(
       {@JsonKey(name: 'price') required this.price,
       @JsonKey(name: 'currency') required this.currency,
@@ -424,7 +425,8 @@ class _$OrderPublicImpl implements _OrderPublic {
       @JsonKey(name: 'final_price') required this.finalPrice,
       @JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'student') required this.student})
-      : _orderStatusHistory = orderStatusHistory;
+      : _orderStatusHistory = orderStatusHistory,
+        super._();
 
   factory _$OrderPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$OrderPublicImplFromJson(json);
@@ -570,7 +572,7 @@ class _$OrderPublicImpl implements _OrderPublic {
   }
 }
 
-abstract class _OrderPublic implements OrderPublic {
+abstract class _OrderPublic extends OrderPublic {
   const factory _OrderPublic(
       {@JsonKey(name: 'price') required final num? price,
       @JsonKey(name: 'currency') required final String? currency,
@@ -595,6 +597,7 @@ abstract class _OrderPublic implements OrderPublic {
       @JsonKey(name: 'id') required final int id,
       @JsonKey(name: 'student')
       required final StudentTableMap? student}) = _$OrderPublicImpl;
+  const _OrderPublic._() : super._();
 
   factory _OrderPublic.fromJson(Map<String, dynamic> json) =
       _$OrderPublicImpl.fromJson;

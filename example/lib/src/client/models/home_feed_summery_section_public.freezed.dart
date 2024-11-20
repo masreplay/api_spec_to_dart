@@ -186,15 +186,16 @@ class __$$HomeFeedSummerySectionPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$HomeFeedSummerySectionPublicImpl
-    implements _HomeFeedSummerySectionPublic {
+
+@JsonSerializable(converters: convertors)
+class _$HomeFeedSummerySectionPublicImpl extends _HomeFeedSummerySectionPublic {
   const _$HomeFeedSummerySectionPublicImpl(
       {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'type') required this.type = String.summary,
+      @JsonKey(name: 'type') required this.type = summary,
       @JsonKey(name: 'title') required this.title,
       @JsonKey(name: 'description') required this.description,
-      @JsonKey(name: 'data') required this.data});
+      @JsonKey(name: 'data') required this.data})
+      : super._();
 
   factory _$HomeFeedSummerySectionPublicImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -258,7 +259,7 @@ class _$HomeFeedSummerySectionPublicImpl
 }
 
 abstract class _HomeFeedSummerySectionPublic
-    implements HomeFeedSummerySectionPublic {
+    extends HomeFeedSummerySectionPublic {
   const factory _HomeFeedSummerySectionPublic(
           {@JsonKey(name: 'id') required final int id,
           @JsonKey(name: 'type') required final String type,
@@ -267,6 +268,7 @@ abstract class _HomeFeedSummerySectionPublic
           @JsonKey(name: 'data')
           required final HomeFeedSummerySectionDataPublic data}) =
       _$HomeFeedSummerySectionPublicImpl;
+  const _HomeFeedSummerySectionPublic._() : super._();
 
   factory _HomeFeedSummerySectionPublic.fromJson(Map<String, dynamic> json) =
       _$HomeFeedSummerySectionPublicImpl.fromJson;

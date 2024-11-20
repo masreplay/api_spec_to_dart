@@ -127,13 +127,14 @@ class __$$BaseResponseListOrderPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$BaseResponseListOrderPublicImpl
-    implements _BaseResponseListOrderPublic {
+
+@JsonSerializable(converters: convertors)
+class _$BaseResponseListOrderPublicImpl extends _BaseResponseListOrderPublic {
   const _$BaseResponseListOrderPublicImpl(
       {@JsonKey(name: 'message') required this.message,
       @JsonKey(name: 'data') required final List<dynamic> data})
-      : _data = data;
+      : _data = data,
+        super._();
 
   factory _$BaseResponseListOrderPublicImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -188,11 +189,12 @@ class _$BaseResponseListOrderPublicImpl
 }
 
 abstract class _BaseResponseListOrderPublic
-    implements BaseResponseListOrderPublic {
+    extends BaseResponseListOrderPublic {
   const factory _BaseResponseListOrderPublic(
           {@JsonKey(name: 'message') required final String? message,
           @JsonKey(name: 'data') required final List<dynamic> data}) =
       _$BaseResponseListOrderPublicImpl;
+  const _BaseResponseListOrderPublic._() : super._();
 
   factory _BaseResponseListOrderPublic.fromJson(Map<String, dynamic> json) =
       _$BaseResponseListOrderPublicImpl.fromJson;

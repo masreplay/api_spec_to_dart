@@ -116,11 +116,13 @@ class __$$NationalismsPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$NationalismsPublicImpl implements _NationalismsPublic {
+
+@JsonSerializable(converters: convertors)
+class _$NationalismsPublicImpl extends _NationalismsPublic {
   const _$NationalismsPublicImpl(
       {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'name') required this.name});
+      @JsonKey(name: 'name') required this.name})
+      : super._();
 
   factory _$NationalismsPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$NationalismsPublicImplFromJson(json);
@@ -167,11 +169,12 @@ class _$NationalismsPublicImpl implements _NationalismsPublic {
   }
 }
 
-abstract class _NationalismsPublic implements NationalismsPublic {
+abstract class _NationalismsPublic extends NationalismsPublic {
   const factory _NationalismsPublic(
           {@JsonKey(name: 'id') required final int id,
           @JsonKey(name: 'name') required final String name}) =
       _$NationalismsPublicImpl;
+  const _NationalismsPublic._() : super._();
 
   factory _NationalismsPublic.fromJson(Map<String, dynamic> json) =
       _$NationalismsPublicImpl.fromJson;

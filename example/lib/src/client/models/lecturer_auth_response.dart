@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
 import './models.dart';
 
 part 'lecturer_auth_response.freezed.dart';
@@ -7,6 +8,9 @@ part 'lecturer_auth_response.g.dart';
 
 @freezed
 class LecturerAuthResponse with _$LecturerAuthResponse {
+  const LecturerAuthResponse._();
+
+  @JsonSerializable(converters: convertors)
   const factory LecturerAuthResponse({
     @JsonKey(name: 'access_token') required String accessToken,
     @JsonKey(name: 'expires_in') required int expiresIn,

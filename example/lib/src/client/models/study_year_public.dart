@@ -1,10 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
+
 part 'study_year_public.freezed.dart';
 part 'study_year_public.g.dart';
 
 @freezed
 class StudyYearPublic with _$StudyYearPublic {
+  const StudyYearPublic._();
+
+  @JsonSerializable(converters: convertors)
   const factory StudyYearPublic({
     @JsonKey(name: 'id') required int id,
     @JsonKey(name: 'value') required String value,

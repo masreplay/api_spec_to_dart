@@ -257,8 +257,9 @@ class __$$SubjectImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$SubjectImpl implements _Subject {
+
+@JsonSerializable(converters: convertors)
+class _$SubjectImpl extends _Subject {
   const _$SubjectImpl(
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'selected_course_id') required this.selectedCourseId,
@@ -272,7 +273,8 @@ class _$SubjectImpl implements _Subject {
       @JsonKey(name: 'is_enabled') required this.isEnabled,
       @JsonKey(name: 'course_status') required this.courseStatus,
       @JsonKey(name: 'course_staff') required final List<dynamic>? courseStaff})
-      : _courseStaff = courseStaff;
+      : _courseStaff = courseStaff,
+        super._();
 
   factory _$SubjectImpl.fromJson(Map<String, dynamic> json) =>
       _$$SubjectImplFromJson(json);
@@ -387,7 +389,7 @@ class _$SubjectImpl implements _Subject {
   }
 }
 
-abstract class _Subject implements Subject {
+abstract class _Subject extends Subject {
   const factory _Subject(
       {@JsonKey(name: 'id') required final int? id,
       @JsonKey(name: 'selected_course_id') required final int? selectedCourseId,
@@ -402,6 +404,7 @@ abstract class _Subject implements Subject {
       @JsonKey(name: 'course_status') required final int? courseStatus,
       @JsonKey(name: 'course_staff')
       required final List<dynamic>? courseStaff}) = _$SubjectImpl;
+  const _Subject._() : super._();
 
   factory _Subject.fromJson(Map<String, dynamic> json) = _$SubjectImpl.fromJson;
 

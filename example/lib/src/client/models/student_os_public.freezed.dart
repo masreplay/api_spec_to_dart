@@ -209,8 +209,9 @@ class __$$StudentOSPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$StudentOSPublicImpl implements _StudentOSPublic {
+
+@JsonSerializable(converters: convertors)
+class _$StudentOSPublicImpl extends _StudentOSPublic {
   const _$StudentOSPublicImpl(
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'department') required this.department,
@@ -218,7 +219,8 @@ class _$StudentOSPublicImpl implements _StudentOSPublic {
       @JsonKey(name: 'year') required this.year,
       @JsonKey(name: 'study_type') required this.studyType,
       @JsonKey(name: 'grade') required this.grade,
-      @JsonKey(name: 'current_semester') required this.currentSemester});
+      @JsonKey(name: 'current_semester') required this.currentSemester})
+      : super._();
 
   factory _$StudentOSPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$StudentOSPublicImplFromJson(json);
@@ -289,7 +291,7 @@ class _$StudentOSPublicImpl implements _StudentOSPublic {
   }
 }
 
-abstract class _StudentOSPublic implements StudentOSPublic {
+abstract class _StudentOSPublic extends StudentOSPublic {
   const factory _StudentOSPublic(
       {@JsonKey(name: 'id') required final int? id,
       @JsonKey(name: 'department') required final String? department,
@@ -299,6 +301,7 @@ abstract class _StudentOSPublic implements StudentOSPublic {
       @JsonKey(name: 'grade') required final int? grade,
       @JsonKey(name: 'current_semester')
       required final String? currentSemester}) = _$StudentOSPublicImpl;
+  const _StudentOSPublic._() : super._();
 
   factory _StudentOSPublic.fromJson(Map<String, dynamic> json) =
       _$StudentOSPublicImpl.fromJson;

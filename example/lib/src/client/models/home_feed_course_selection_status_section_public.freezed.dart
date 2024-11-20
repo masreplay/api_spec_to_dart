@@ -192,16 +192,17 @@ class __$$HomeFeedCourseSelectionStatusSectionPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$HomeFeedCourseSelectionStatusSectionPublicImpl
-    implements _HomeFeedCourseSelectionStatusSectionPublic {
+    extends _HomeFeedCourseSelectionStatusSectionPublic {
   const _$HomeFeedCourseSelectionStatusSectionPublicImpl(
       {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'type')
-      required this.type = String.course_selection_status,
+      @JsonKey(name: 'type') required this.type = course_selection_status,
       @JsonKey(name: 'title') required this.title,
       @JsonKey(name: 'description') required this.description,
-      @JsonKey(name: 'data') required this.data});
+      @JsonKey(name: 'data') required this.data})
+      : super._();
 
   factory _$HomeFeedCourseSelectionStatusSectionPublicImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -267,7 +268,7 @@ class _$HomeFeedCourseSelectionStatusSectionPublicImpl
 }
 
 abstract class _HomeFeedCourseSelectionStatusSectionPublic
-    implements HomeFeedCourseSelectionStatusSectionPublic {
+    extends HomeFeedCourseSelectionStatusSectionPublic {
   const factory _HomeFeedCourseSelectionStatusSectionPublic(
           {@JsonKey(name: 'id') required final int id,
           @JsonKey(name: 'type') required final String type,
@@ -276,6 +277,7 @@ abstract class _HomeFeedCourseSelectionStatusSectionPublic
           @JsonKey(name: 'data')
           required final HomeFeedCourseSelectionStatusSectionDataPublic data}) =
       _$HomeFeedCourseSelectionStatusSectionPublicImpl;
+  const _HomeFeedCourseSelectionStatusSectionPublic._() : super._();
 
   factory _HomeFeedCourseSelectionStatusSectionPublic.fromJson(
           Map<String, dynamic> json) =

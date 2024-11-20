@@ -66,9 +66,10 @@ class __$$StudentRequestStatusImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$StudentRequestStatusImpl implements _StudentRequestStatus {
-  const _$StudentRequestStatusImpl();
+
+@JsonSerializable(converters: convertors)
+class _$StudentRequestStatusImpl extends _StudentRequestStatus {
+  const _$StudentRequestStatusImpl() : super._();
 
   factory _$StudentRequestStatusImpl.fromJson(Map<String, dynamic> json) =>
       _$$StudentRequestStatusImplFromJson(json);
@@ -97,8 +98,9 @@ class _$StudentRequestStatusImpl implements _StudentRequestStatus {
   }
 }
 
-abstract class _StudentRequestStatus implements StudentRequestStatus {
+abstract class _StudentRequestStatus extends StudentRequestStatus {
   const factory _StudentRequestStatus() = _$StudentRequestStatusImpl;
+  const _StudentRequestStatus._() : super._();
 
   factory _StudentRequestStatus.fromJson(Map<String, dynamic> json) =
       _$StudentRequestStatusImpl.fromJson;

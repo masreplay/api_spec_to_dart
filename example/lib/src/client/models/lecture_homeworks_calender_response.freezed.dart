@@ -111,12 +111,14 @@ class __$$LectureHomeworksCalenderResponseImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$LectureHomeworksCalenderResponseImpl
-    implements _LectureHomeworksCalenderResponse {
+    extends _LectureHomeworksCalenderResponse {
   const _$LectureHomeworksCalenderResponseImpl(
       {@JsonKey(name: 'events') required final List<dynamic> events})
-      : _events = events;
+      : _events = events,
+        super._();
 
   factory _$LectureHomeworksCalenderResponseImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -168,10 +170,11 @@ class _$LectureHomeworksCalenderResponseImpl
 }
 
 abstract class _LectureHomeworksCalenderResponse
-    implements LectureHomeworksCalenderResponse {
+    extends LectureHomeworksCalenderResponse {
   const factory _LectureHomeworksCalenderResponse(
           {@JsonKey(name: 'events') required final List<dynamic> events}) =
       _$LectureHomeworksCalenderResponseImpl;
+  const _LectureHomeworksCalenderResponse._() : super._();
 
   factory _LectureHomeworksCalenderResponse.fromJson(
           Map<String, dynamic> json) =

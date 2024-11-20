@@ -156,15 +156,17 @@ class __$$PaginationResponseStudentFeesPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$PaginationResponseStudentFeesPublicImpl
-    implements _PaginationResponseStudentFeesPublic {
+    extends _PaginationResponseStudentFeesPublic {
   const _$PaginationResponseStudentFeesPublicImpl(
       {@JsonKey(name: 'page') required this.page,
       @JsonKey(name: 'per_page') required this.perPage,
       @JsonKey(name: 'total') required this.total,
       @JsonKey(name: 'data') required final List<dynamic> data})
-      : _data = data;
+      : _data = data,
+        super._();
 
   factory _$PaginationResponseStudentFeesPublicImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -228,13 +230,14 @@ class _$PaginationResponseStudentFeesPublicImpl
 }
 
 abstract class _PaginationResponseStudentFeesPublic
-    implements PaginationResponseStudentFeesPublic {
+    extends PaginationResponseStudentFeesPublic {
   const factory _PaginationResponseStudentFeesPublic(
           {@JsonKey(name: 'page') required final int page,
           @JsonKey(name: 'per_page') required final int perPage,
           @JsonKey(name: 'total') required final int total,
           @JsonKey(name: 'data') required final List<dynamic> data}) =
       _$PaginationResponseStudentFeesPublicImpl;
+  const _PaginationResponseStudentFeesPublic._() : super._();
 
   factory _PaginationResponseStudentFeesPublic.fromJson(
           Map<String, dynamic> json) =

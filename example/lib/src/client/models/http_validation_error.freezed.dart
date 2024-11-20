@@ -104,11 +104,13 @@ class __$$HttpValidationErrorImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$HttpValidationErrorImpl implements _HttpValidationError {
+
+@JsonSerializable(converters: convertors)
+class _$HttpValidationErrorImpl extends _HttpValidationError {
   const _$HttpValidationErrorImpl(
       {@JsonKey(name: 'detail') required final List<dynamic> detail})
-      : _detail = detail;
+      : _detail = detail,
+        super._();
 
   factory _$HttpValidationErrorImpl.fromJson(Map<String, dynamic> json) =>
       _$$HttpValidationErrorImplFromJson(json);
@@ -157,10 +159,11 @@ class _$HttpValidationErrorImpl implements _HttpValidationError {
   }
 }
 
-abstract class _HttpValidationError implements HttpValidationError {
+abstract class _HttpValidationError extends HttpValidationError {
   const factory _HttpValidationError(
           {@JsonKey(name: 'detail') required final List<dynamic> detail}) =
       _$HttpValidationErrorImpl;
+  const _HttpValidationError._() : super._();
 
   factory _HttpValidationError.fromJson(Map<String, dynamic> json) =
       _$HttpValidationErrorImpl.fromJson;

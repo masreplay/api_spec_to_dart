@@ -127,12 +127,13 @@ class __$$ChangePasswordRequestPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$ChangePasswordRequestPublicImpl
-    implements _ChangePasswordRequestPublic {
+
+@JsonSerializable(converters: convertors)
+class _$ChangePasswordRequestPublicImpl extends _ChangePasswordRequestPublic {
   const _$ChangePasswordRequestPublicImpl(
       {@JsonKey(name: 'old_password') required this.oldPassword,
-      @JsonKey(name: 'new_password') required this.newPassword});
+      @JsonKey(name: 'new_password') required this.newPassword})
+      : super._();
 
   factory _$ChangePasswordRequestPublicImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -183,11 +184,12 @@ class _$ChangePasswordRequestPublicImpl
 }
 
 abstract class _ChangePasswordRequestPublic
-    implements ChangePasswordRequestPublic {
+    extends ChangePasswordRequestPublic {
   const factory _ChangePasswordRequestPublic(
           {@JsonKey(name: 'old_password') required final String oldPassword,
           @JsonKey(name: 'new_password') required final String newPassword}) =
       _$ChangePasswordRequestPublicImpl;
+  const _ChangePasswordRequestPublic._() : super._();
 
   factory _ChangePasswordRequestPublic.fromJson(Map<String, dynamic> json) =
       _$ChangePasswordRequestPublicImpl.fromJson;

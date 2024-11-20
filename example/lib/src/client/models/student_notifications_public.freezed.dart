@@ -322,8 +322,9 @@ class __$$StudentNotificationsPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$StudentNotificationsPublicImpl implements _StudentNotificationsPublic {
+
+@JsonSerializable(converters: convertors)
+class _$StudentNotificationsPublicImpl extends _StudentNotificationsPublic {
   const _$StudentNotificationsPublicImpl(
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'student_id') required this.studentId,
@@ -345,7 +346,8 @@ class _$StudentNotificationsPublicImpl implements _StudentNotificationsPublic {
       @JsonKey(name: 'deletion_time') required this.deletionTime})
       : _title = title,
         _message = message,
-        _extraData = extraData;
+        _extraData = extraData,
+        super._();
 
   factory _$StudentNotificationsPublicImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -499,8 +501,7 @@ class _$StudentNotificationsPublicImpl implements _StudentNotificationsPublic {
   }
 }
 
-abstract class _StudentNotificationsPublic
-    implements StudentNotificationsPublic {
+abstract class _StudentNotificationsPublic extends StudentNotificationsPublic {
   const factory _StudentNotificationsPublic(
       {@JsonKey(name: 'id') required final int id,
       @JsonKey(name: 'student_id') required final int? studentId,
@@ -523,6 +524,7 @@ abstract class _StudentNotificationsPublic
       @JsonKey(name: 'deletion_time')
       required final DateTime?
           deletionTime}) = _$StudentNotificationsPublicImpl;
+  const _StudentNotificationsPublic._() : super._();
 
   factory _StudentNotificationsPublic.fromJson(Map<String, dynamic> json) =
       _$StudentNotificationsPublicImpl.fromJson;

@@ -65,9 +65,10 @@ class __$$StudyProgramTypeImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$StudyProgramTypeImpl implements _StudyProgramType {
-  const _$StudyProgramTypeImpl();
+
+@JsonSerializable(converters: convertors)
+class _$StudyProgramTypeImpl extends _StudyProgramType {
+  const _$StudyProgramTypeImpl() : super._();
 
   factory _$StudyProgramTypeImpl.fromJson(Map<String, dynamic> json) =>
       _$$StudyProgramTypeImplFromJson(json);
@@ -95,8 +96,9 @@ class _$StudyProgramTypeImpl implements _StudyProgramType {
   }
 }
 
-abstract class _StudyProgramType implements StudyProgramType {
+abstract class _StudyProgramType extends StudyProgramType {
   const factory _StudyProgramType() = _$StudyProgramTypeImpl;
+  const _StudyProgramType._() : super._();
 
   factory _StudyProgramType.fromJson(Map<String, dynamic> json) =
       _$StudyProgramTypeImpl.fromJson;

@@ -25,7 +25,7 @@ mixin _$BaseResponsePaginationResponseLecturerAssignmentPublic {
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
   @JsonKey(name: 'data')
-  PaginationResponse_LecturerAssignmentPublic_ get data =>
+  PaginationResponseLecturerAssignmentPublic get data =>
       throw _privateConstructorUsedError;
 
   /// Serializes this BaseResponsePaginationResponseLecturerAssignmentPublic to a JSON map.
@@ -51,8 +51,9 @@ abstract class $BaseResponsePaginationResponseLecturerAssignmentPublicCopyWith<
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data')
-      PaginationResponse_LecturerAssignmentPublic_ data});
+      @JsonKey(name: 'data') PaginationResponseLecturerAssignmentPublic data});
+
+  $PaginationResponseLecturerAssignmentPublicCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -74,18 +75,29 @@ class _$BaseResponsePaginationResponseLecturerAssignmentPublicCopyWithImpl<$Res,
   @override
   $Res call({
     Object? message = freezed,
-    Object? data = freezed,
+    Object? data = null,
   }) {
     return _then(_value.copyWith(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      data: freezed == data
+      data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as PaginationResponse_LecturerAssignmentPublic_,
+              as PaginationResponseLecturerAssignmentPublic,
     ) as $Val);
+  }
+
+  /// Create a copy of BaseResponsePaginationResponseLecturerAssignmentPublic
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PaginationResponseLecturerAssignmentPublicCopyWith<$Res> get data {
+    return $PaginationResponseLecturerAssignmentPublicCopyWith<$Res>(
+        _value.data, (value) {
+      return _then(_value.copyWith(data: value) as $Val);
+    });
   }
 }
 
@@ -105,8 +117,10 @@ abstract class _$$BaseResponsePaginationResponseLecturerAssignmentPublicImplCopy
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data')
-      PaginationResponse_LecturerAssignmentPublic_ data});
+      @JsonKey(name: 'data') PaginationResponseLecturerAssignmentPublic data});
+
+  @override
+  $PaginationResponseLecturerAssignmentPublicCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -130,28 +144,30 @@ class __$$BaseResponsePaginationResponseLecturerAssignmentPublicImplCopyWithImpl
   @override
   $Res call({
     Object? message = freezed,
-    Object? data = freezed,
+    Object? data = null,
   }) {
     return _then(_$BaseResponsePaginationResponseLecturerAssignmentPublicImpl(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      data: freezed == data
+      data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as PaginationResponse_LecturerAssignmentPublic_,
+              as PaginationResponseLecturerAssignmentPublic,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$BaseResponsePaginationResponseLecturerAssignmentPublicImpl
-    implements _BaseResponsePaginationResponseLecturerAssignmentPublic {
+    extends _BaseResponsePaginationResponseLecturerAssignmentPublic {
   const _$BaseResponsePaginationResponseLecturerAssignmentPublicImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required this.data});
+      @JsonKey(name: 'data') required this.data})
+      : super._();
 
   factory _$BaseResponsePaginationResponseLecturerAssignmentPublicImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -163,7 +179,7 @@ class _$BaseResponsePaginationResponseLecturerAssignmentPublicImpl
   final String? message;
   @override
   @JsonKey(name: 'data')
-  final PaginationResponse_LecturerAssignmentPublic_ data;
+  final PaginationResponseLecturerAssignmentPublic data;
 
   @override
   String toString() {
@@ -177,13 +193,12 @@ class _$BaseResponsePaginationResponseLecturerAssignmentPublicImpl
             other
                 is _$BaseResponsePaginationResponseLecturerAssignmentPublicImpl &&
             (identical(other.message, message) || other.message == message) &&
-            const DeepCollectionEquality().equals(other.data, data));
+            (identical(other.data, data) || other.data == data));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, message, const DeepCollectionEquality().hash(data));
+  int get hashCode => Object.hash(runtimeType, message, data);
 
   /// Create a copy of BaseResponsePaginationResponseLecturerAssignmentPublic
   /// with the given fields replaced by the non-null parameter values.
@@ -206,12 +221,13 @@ class _$BaseResponsePaginationResponseLecturerAssignmentPublicImpl
 }
 
 abstract class _BaseResponsePaginationResponseLecturerAssignmentPublic
-    implements BaseResponsePaginationResponseLecturerAssignmentPublic {
+    extends BaseResponsePaginationResponseLecturerAssignmentPublic {
   const factory _BaseResponsePaginationResponseLecturerAssignmentPublic(
           {@JsonKey(name: 'message') required final String? message,
           @JsonKey(name: 'data')
-          required final PaginationResponse_LecturerAssignmentPublic_ data}) =
+          required final PaginationResponseLecturerAssignmentPublic data}) =
       _$BaseResponsePaginationResponseLecturerAssignmentPublicImpl;
+  const _BaseResponsePaginationResponseLecturerAssignmentPublic._() : super._();
 
   factory _BaseResponsePaginationResponseLecturerAssignmentPublic.fromJson(
           Map<String, dynamic> json) =
@@ -222,7 +238,7 @@ abstract class _BaseResponsePaginationResponseLecturerAssignmentPublic
   String? get message;
   @override
   @JsonKey(name: 'data')
-  PaginationResponse_LecturerAssignmentPublic_ get data;
+  PaginationResponseLecturerAssignmentPublic get data;
 
   /// Create a copy of BaseResponsePaginationResponseLecturerAssignmentPublic
   /// with the given fields replaced by the non-null parameter values.

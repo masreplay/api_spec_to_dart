@@ -109,10 +109,12 @@ class __$$StudentAttendanceCreateImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$StudentAttendanceCreateImpl implements _StudentAttendanceCreate {
+
+@JsonSerializable(converters: convertors)
+class _$StudentAttendanceCreateImpl extends _StudentAttendanceCreate {
   const _$StudentAttendanceCreateImpl(
-      {@JsonKey(name: 'attendance_id') required this.attendanceId});
+      {@JsonKey(name: 'attendance_id') required this.attendanceId})
+      : super._();
 
   factory _$StudentAttendanceCreateImpl.fromJson(Map<String, dynamic> json) =>
       _$$StudentAttendanceCreateImplFromJson(json);
@@ -156,10 +158,11 @@ class _$StudentAttendanceCreateImpl implements _StudentAttendanceCreate {
   }
 }
 
-abstract class _StudentAttendanceCreate implements StudentAttendanceCreate {
+abstract class _StudentAttendanceCreate extends StudentAttendanceCreate {
   const factory _StudentAttendanceCreate(
           {@JsonKey(name: 'attendance_id') required final int attendanceId}) =
       _$StudentAttendanceCreateImpl;
+  const _StudentAttendanceCreate._() : super._();
 
   factory _StudentAttendanceCreate.fromJson(Map<String, dynamic> json) =
       _$StudentAttendanceCreateImpl.fromJson;

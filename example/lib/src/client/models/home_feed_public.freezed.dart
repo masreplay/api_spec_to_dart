@@ -120,12 +120,14 @@ class __$$HomeFeedPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$HomeFeedPublicImpl implements _HomeFeedPublic {
+
+@JsonSerializable(converters: convertors)
+class _$HomeFeedPublicImpl extends _HomeFeedPublic {
   const _$HomeFeedPublicImpl(
-      {@JsonKey(name: 'type') required this.type = String.feed,
+      {@JsonKey(name: 'type') required this.type = feed,
       @JsonKey(name: 'sections') required final List<dynamic> sections})
-      : _sections = sections;
+      : _sections = sections,
+        super._();
 
   factory _$HomeFeedPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$HomeFeedPublicImplFromJson(json);
@@ -178,11 +180,12 @@ class _$HomeFeedPublicImpl implements _HomeFeedPublic {
   }
 }
 
-abstract class _HomeFeedPublic implements HomeFeedPublic {
+abstract class _HomeFeedPublic extends HomeFeedPublic {
   const factory _HomeFeedPublic(
           {@JsonKey(name: 'type') required final String type,
           @JsonKey(name: 'sections') required final List<dynamic> sections}) =
       _$HomeFeedPublicImpl;
+  const _HomeFeedPublic._() : super._();
 
   factory _HomeFeedPublic.fromJson(Map<String, dynamic> json) =
       _$HomeFeedPublicImpl.fromJson;

@@ -222,8 +222,9 @@ class __$$CommentPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$CommentPublicImpl implements _CommentPublic {
+
+@JsonSerializable(converters: convertors)
+class _$CommentPublicImpl extends _CommentPublic {
   const _$CommentPublicImpl(
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'content') required this.content,
@@ -232,7 +233,8 @@ class _$CommentPublicImpl implements _CommentPublic {
       @JsonKey(name: 'user') required this.user,
       @JsonKey(name: 'parent') required this.parent,
       @JsonKey(name: 'replies') required final List<dynamic> replies})
-      : _replies = replies;
+      : _replies = replies,
+        super._();
 
   factory _$CommentPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$CommentPublicImplFromJson(json);
@@ -313,7 +315,7 @@ class _$CommentPublicImpl implements _CommentPublic {
   }
 }
 
-abstract class _CommentPublic implements CommentPublic {
+abstract class _CommentPublic extends CommentPublic {
   const factory _CommentPublic(
           {@JsonKey(name: 'id') required final int id,
           @JsonKey(name: 'content') required final String content,
@@ -324,6 +326,7 @@ abstract class _CommentPublic implements CommentPublic {
           @JsonKey(name: 'parent') required final CommentPublic? parent,
           @JsonKey(name: 'replies') required final List<dynamic> replies}) =
       _$CommentPublicImpl;
+  const _CommentPublic._() : super._();
 
   factory _CommentPublic.fromJson(Map<String, dynamic> json) =
       _$CommentPublicImpl.fromJson;

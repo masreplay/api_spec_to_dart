@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
 import './models.dart';
 
 part 'app_settings_update.freezed.dart';
@@ -7,6 +8,9 @@ part 'app_settings_update.g.dart';
 
 @freezed
 class AppSettingsUpdate with _$AppSettingsUpdate {
+  const AppSettingsUpdate._();
+
+  @JsonSerializable(converters: convertors)
   const factory AppSettingsUpdate({
     @JsonKey(name: 'is_force_update') required bool isForceUpdate,
     @JsonKey(name: 'android') required AppSettingsAndroid android,

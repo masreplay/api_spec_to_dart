@@ -127,11 +127,13 @@ class __$$BodyLecturerAssignmentsCreateLecturerAssignmentCommentImplCopyWithImpl
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$BodyLecturerAssignmentsCreateLecturerAssignmentCommentImpl
-    implements _BodyLecturerAssignmentsCreateLecturerAssignmentComment {
+    extends _BodyLecturerAssignmentsCreateLecturerAssignmentComment {
   const _$BodyLecturerAssignmentsCreateLecturerAssignmentCommentImpl(
-      {@JsonKey(name: 'content') required this.content});
+      {@JsonKey(name: 'content') required this.content})
+      : super._();
 
   factory _$BodyLecturerAssignmentsCreateLecturerAssignmentCommentImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -181,10 +183,11 @@ class _$BodyLecturerAssignmentsCreateLecturerAssignmentCommentImpl
 }
 
 abstract class _BodyLecturerAssignmentsCreateLecturerAssignmentComment
-    implements BodyLecturerAssignmentsCreateLecturerAssignmentComment {
+    extends BodyLecturerAssignmentsCreateLecturerAssignmentComment {
   const factory _BodyLecturerAssignmentsCreateLecturerAssignmentComment(
           {@JsonKey(name: 'content') required final String content}) =
       _$BodyLecturerAssignmentsCreateLecturerAssignmentCommentImpl;
+  const _BodyLecturerAssignmentsCreateLecturerAssignmentComment._() : super._();
 
   factory _BodyLecturerAssignmentsCreateLecturerAssignmentComment.fromJson(
           Map<String, dynamic> json) =

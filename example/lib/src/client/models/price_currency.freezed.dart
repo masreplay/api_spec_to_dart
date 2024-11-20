@@ -65,9 +65,10 @@ class __$$PriceCurrencyImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$PriceCurrencyImpl implements _PriceCurrency {
-  const _$PriceCurrencyImpl();
+
+@JsonSerializable(converters: convertors)
+class _$PriceCurrencyImpl extends _PriceCurrency {
+  const _$PriceCurrencyImpl() : super._();
 
   factory _$PriceCurrencyImpl.fromJson(Map<String, dynamic> json) =>
       _$$PriceCurrencyImplFromJson(json);
@@ -95,8 +96,9 @@ class _$PriceCurrencyImpl implements _PriceCurrency {
   }
 }
 
-abstract class _PriceCurrency implements PriceCurrency {
+abstract class _PriceCurrency extends PriceCurrency {
   const factory _PriceCurrency() = _$PriceCurrencyImpl;
+  const _PriceCurrency._() : super._();
 
   factory _PriceCurrency.fromJson(Map<String, dynamic> json) =
       _$PriceCurrencyImpl.fromJson;

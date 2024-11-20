@@ -126,11 +126,13 @@ class __$$LecturerAttendanceResponseImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$LecturerAttendanceResponseImpl implements _LecturerAttendanceResponse {
+
+@JsonSerializable(converters: convertors)
+class _$LecturerAttendanceResponseImpl extends _LecturerAttendanceResponse {
   const _$LecturerAttendanceResponseImpl(
       {@JsonKey(name: 'issuing_date') required this.issuingDate,
-      @JsonKey(name: 'expiration_date') required this.expirationDate});
+      @JsonKey(name: 'expiration_date') required this.expirationDate})
+      : super._();
 
   factory _$LecturerAttendanceResponseImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -180,13 +182,13 @@ class _$LecturerAttendanceResponseImpl implements _LecturerAttendanceResponse {
   }
 }
 
-abstract class _LecturerAttendanceResponse
-    implements LecturerAttendanceResponse {
+abstract class _LecturerAttendanceResponse extends LecturerAttendanceResponse {
   const factory _LecturerAttendanceResponse(
           {@JsonKey(name: 'issuing_date') required final DateTime issuingDate,
           @JsonKey(name: 'expiration_date')
           required final DateTime expirationDate}) =
       _$LecturerAttendanceResponseImpl;
+  const _LecturerAttendanceResponse._() : super._();
 
   factory _LecturerAttendanceResponse.fromJson(Map<String, dynamic> json) =
       _$LecturerAttendanceResponseImpl.fromJson;

@@ -1,10 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
+
 part 'ui_date_form_field.freezed.dart';
 part 'ui_date_form_field.g.dart';
 
 @freezed
 class UIDateFormField with _$UIDateFormField {
+  const UIDateFormField._();
+
+  @JsonSerializable(converters: convertors)
   const factory UIDateFormField({
     @JsonKey(name: 'key') required String key,
     @JsonKey(name: 'name') required String name,
@@ -12,7 +17,7 @@ class UIDateFormField with _$UIDateFormField {
     @JsonKey(name: 'is_required') required bool isRequired,
     @Default(false) @JsonKey(name: 'read_only') required bool readOnly,
     @JsonKey(name: 'doc') required String? doc,
-    @Default(String.date) @JsonKey(name: 'type') required String type,
+    @Default(date) @JsonKey(name: 'type') required String type,
     @JsonKey(name: 'default_value') required String? defaultValue,
     @JsonKey(name: 'format') required String format,
     @JsonKey(name: 'example') required String? example,

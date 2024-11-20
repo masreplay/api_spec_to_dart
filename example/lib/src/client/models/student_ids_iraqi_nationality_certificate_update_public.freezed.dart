@@ -188,9 +188,10 @@ class __$$StudentIdsIraqiNationalityCertificateUpdatePublicImplCopyWithImpl<
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$StudentIdsIraqiNationalityCertificateUpdatePublicImpl
-    implements _StudentIdsIraqiNationalityCertificateUpdatePublic {
+    extends _StudentIdsIraqiNationalityCertificateUpdatePublic {
   const _$StudentIdsIraqiNationalityCertificateUpdatePublicImpl(
       {@JsonKey(name: 'iraqi_nationality_certificate_number')
       required this.iraqiNationalityCertificateNumber,
@@ -199,7 +200,8 @@ class _$StudentIdsIraqiNationalityCertificateUpdatePublicImpl
       @JsonKey(name: 'iraqi_nationality_certificate_date_of_issue')
       required this.iraqiNationalityCertificateDateOfIssue,
       @JsonKey(name: 'iraqi_nationality_certificate_issuing_authority')
-      required this.iraqiNationalityCertificateIssuingAuthority});
+      required this.iraqiNationalityCertificateIssuingAuthority})
+      : super._();
 
   factory _$StudentIdsIraqiNationalityCertificateUpdatePublicImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -276,7 +278,7 @@ class _$StudentIdsIraqiNationalityCertificateUpdatePublicImpl
 }
 
 abstract class _StudentIdsIraqiNationalityCertificateUpdatePublic
-    implements StudentIdsIraqiNationalityCertificateUpdatePublic {
+    extends StudentIdsIraqiNationalityCertificateUpdatePublic {
   const factory _StudentIdsIraqiNationalityCertificateUpdatePublic(
           {@JsonKey(name: 'iraqi_nationality_certificate_number')
           required final String iraqiNationalityCertificateNumber,
@@ -287,6 +289,7 @@ abstract class _StudentIdsIraqiNationalityCertificateUpdatePublic
           @JsonKey(name: 'iraqi_nationality_certificate_issuing_authority')
           required final String iraqiNationalityCertificateIssuingAuthority}) =
       _$StudentIdsIraqiNationalityCertificateUpdatePublicImpl;
+  const _StudentIdsIraqiNationalityCertificateUpdatePublic._() : super._();
 
   factory _StudentIdsIraqiNationalityCertificateUpdatePublic.fromJson(
           Map<String, dynamic> json) =

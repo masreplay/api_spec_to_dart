@@ -151,12 +151,14 @@ class __$$BaseResponseUnionAppSettingsResponseNoneTypeImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$BaseResponseUnionAppSettingsResponseNoneTypeImpl
-    implements _BaseResponseUnionAppSettingsResponseNoneType {
+    extends _BaseResponseUnionAppSettingsResponseNoneType {
   const _$BaseResponseUnionAppSettingsResponseNoneTypeImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required this.data});
+      @JsonKey(name: 'data') required this.data})
+      : super._();
 
   factory _$BaseResponseUnionAppSettingsResponseNoneTypeImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -208,11 +210,12 @@ class _$BaseResponseUnionAppSettingsResponseNoneTypeImpl
 }
 
 abstract class _BaseResponseUnionAppSettingsResponseNoneType
-    implements BaseResponseUnionAppSettingsResponseNoneType {
+    extends BaseResponseUnionAppSettingsResponseNoneType {
   const factory _BaseResponseUnionAppSettingsResponseNoneType(
           {@JsonKey(name: 'message') required final String? message,
           @JsonKey(name: 'data') required final AppSettingsResponse? data}) =
       _$BaseResponseUnionAppSettingsResponseNoneTypeImpl;
+  const _BaseResponseUnionAppSettingsResponseNoneType._() : super._();
 
   factory _BaseResponseUnionAppSettingsResponseNoneType.fromJson(
           Map<String, dynamic> json) =

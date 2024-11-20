@@ -134,12 +134,14 @@ class __$$GovernoratePublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$GovernoratePublicImpl implements _GovernoratePublic {
+
+@JsonSerializable(converters: convertors)
+class _$GovernoratePublicImpl extends _GovernoratePublic {
   const _$GovernoratePublicImpl(
       {@JsonKey(name: 'country_id') required this.countryId,
       @JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'name') required this.name});
+      @JsonKey(name: 'name') required this.name})
+      : super._();
 
   factory _$GovernoratePublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$GovernoratePublicImplFromJson(json);
@@ -191,12 +193,13 @@ class _$GovernoratePublicImpl implements _GovernoratePublic {
   }
 }
 
-abstract class _GovernoratePublic implements GovernoratePublic {
+abstract class _GovernoratePublic extends GovernoratePublic {
   const factory _GovernoratePublic(
           {@JsonKey(name: 'country_id') required final int countryId,
           @JsonKey(name: 'id') required final int id,
           @JsonKey(name: 'name') required final String name}) =
       _$GovernoratePublicImpl;
+  const _GovernoratePublic._() : super._();
 
   factory _GovernoratePublic.fromJson(Map<String, dynamic> json) =
       _$GovernoratePublicImpl.fromJson;

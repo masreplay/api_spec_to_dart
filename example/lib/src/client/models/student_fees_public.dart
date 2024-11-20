@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
 import './models.dart';
 
 part 'student_fees_public.freezed.dart';
@@ -7,6 +8,9 @@ part 'student_fees_public.g.dart';
 
 @freezed
 class StudentFeesPublic with _$StudentFeesPublic {
+  const StudentFeesPublic._();
+
+  @JsonSerializable(converters: convertors)
   const factory StudentFeesPublic({
     @JsonKey(name: 'student_academic_status_id')
     required int studentAcademicStatusId,

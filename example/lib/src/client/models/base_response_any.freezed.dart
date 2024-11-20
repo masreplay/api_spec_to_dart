@@ -120,11 +120,13 @@ class __$$BaseResponseAnyImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$BaseResponseAnyImpl implements _BaseResponseAny {
+
+@JsonSerializable(converters: convertors)
+class _$BaseResponseAnyImpl extends _BaseResponseAny {
   const _$BaseResponseAnyImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required this.data});
+      @JsonKey(name: 'data') required this.data})
+      : super._();
 
   factory _$BaseResponseAnyImpl.fromJson(Map<String, dynamic> json) =>
       _$$BaseResponseAnyImplFromJson(json);
@@ -172,11 +174,12 @@ class _$BaseResponseAnyImpl implements _BaseResponseAny {
   }
 }
 
-abstract class _BaseResponseAny implements BaseResponseAny {
+abstract class _BaseResponseAny extends BaseResponseAny {
   const factory _BaseResponseAny(
           {@JsonKey(name: 'message') required final String? message,
           @JsonKey(name: 'data') required final dynamic data}) =
       _$BaseResponseAnyImpl;
+  const _BaseResponseAny._() : super._();
 
   factory _BaseResponseAny.fromJson(Map<String, dynamic> json) =
       _$BaseResponseAnyImpl.fromJson;

@@ -171,9 +171,10 @@ class __$$HomeFeedSummerySectionDataPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$HomeFeedSummerySectionDataPublicImpl
-    implements _HomeFeedSummerySectionDataPublic {
+    extends _HomeFeedSummerySectionDataPublic {
   const _$HomeFeedSummerySectionDataPublicImpl(
       {@JsonKey(name: 'courses_count') required this.coursesCount,
       @JsonKey(name: 'courses_count_formatted')
@@ -182,7 +183,8 @@ class _$HomeFeedSummerySectionDataPublicImpl
       required this.coursesCompletedUnitsCount,
       @JsonKey(name: 'courses_units_count') required this.coursesUnitsCount,
       @JsonKey(name: 'courses_units_formatted')
-      required this.coursesUnitsFormatted});
+      required this.coursesUnitsFormatted})
+      : super._();
 
   factory _$HomeFeedSummerySectionDataPublicImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -257,7 +259,7 @@ class _$HomeFeedSummerySectionDataPublicImpl
 }
 
 abstract class _HomeFeedSummerySectionDataPublic
-    implements HomeFeedSummerySectionDataPublic {
+    extends HomeFeedSummerySectionDataPublic {
   const factory _HomeFeedSummerySectionDataPublic(
           {@JsonKey(name: 'courses_count') required final int coursesCount,
           @JsonKey(name: 'courses_count_formatted')
@@ -269,6 +271,7 @@ abstract class _HomeFeedSummerySectionDataPublic
           @JsonKey(name: 'courses_units_formatted')
           required final String coursesUnitsFormatted}) =
       _$HomeFeedSummerySectionDataPublicImpl;
+  const _HomeFeedSummerySectionDataPublic._() : super._();
 
   factory _HomeFeedSummerySectionDataPublic.fromJson(
           Map<String, dynamic> json) =

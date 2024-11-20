@@ -218,8 +218,9 @@ class __$$UICheckboxFormFieldImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$UICheckboxFormFieldImpl implements _UICheckboxFormField {
+
+@JsonSerializable(converters: convertors)
+class _$UICheckboxFormFieldImpl extends _UICheckboxFormField {
   const _$UICheckboxFormFieldImpl(
       {@JsonKey(name: 'key') required this.key,
       @JsonKey(name: 'name') required this.name,
@@ -227,9 +228,10 @@ class _$UICheckboxFormFieldImpl implements _UICheckboxFormField {
       @JsonKey(name: 'is_required') required this.isRequired,
       @JsonKey(name: 'read_only') required this.readOnly = false,
       @JsonKey(name: 'doc') required this.doc,
-      @JsonKey(name: 'type') required this.type = String.checkbox,
+      @JsonKey(name: 'type') required this.type = checkbox,
       @JsonKey(name: 'default_value') required this.defaultValue = false,
-      @JsonKey(name: 'example') required this.example});
+      @JsonKey(name: 'example') required this.example})
+      : super._();
 
   factory _$UICheckboxFormFieldImpl.fromJson(Map<String, dynamic> json) =>
       _$$UICheckboxFormFieldImplFromJson(json);
@@ -308,7 +310,7 @@ class _$UICheckboxFormFieldImpl implements _UICheckboxFormField {
   }
 }
 
-abstract class _UICheckboxFormField implements UICheckboxFormField {
+abstract class _UICheckboxFormField extends UICheckboxFormField {
   const factory _UICheckboxFormField(
           {@JsonKey(name: 'key') required final String key,
           @JsonKey(name: 'name') required final String name,
@@ -320,6 +322,7 @@ abstract class _UICheckboxFormField implements UICheckboxFormField {
           @JsonKey(name: 'default_value') required final bool defaultValue,
           @JsonKey(name: 'example') required final bool example}) =
       _$UICheckboxFormFieldImpl;
+  const _UICheckboxFormField._() : super._();
 
   factory _UICheckboxFormField.fromJson(Map<String, dynamic> json) =
       _$UICheckboxFormFieldImpl.fromJson;

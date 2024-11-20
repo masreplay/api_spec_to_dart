@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
 import './models.dart';
 
 part 'order_public.freezed.dart';
@@ -7,6 +8,9 @@ part 'order_public.g.dart';
 
 @freezed
 class OrderPublic with _$OrderPublic {
+  const OrderPublic._();
+
+  @JsonSerializable(converters: convertors)
   const factory OrderPublic({
     @JsonKey(name: 'price') required num? price,
     @JsonKey(name: 'currency') required String? currency,

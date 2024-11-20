@@ -104,10 +104,12 @@ class __$$JoiningTimeImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$JoiningTimeImpl implements _JoiningTime {
+
+@JsonSerializable(converters: convertors)
+class _$JoiningTimeImpl extends _JoiningTime {
   const _$JoiningTimeImpl(
-      {@JsonKey(name: 'joining_time') required this.joiningTime});
+      {@JsonKey(name: 'joining_time') required this.joiningTime})
+      : super._();
 
   factory _$JoiningTimeImpl.fromJson(Map<String, dynamic> json) =>
       _$$JoiningTimeImplFromJson(json);
@@ -150,10 +152,11 @@ class _$JoiningTimeImpl implements _JoiningTime {
   }
 }
 
-abstract class _JoiningTime implements JoiningTime {
+abstract class _JoiningTime extends JoiningTime {
   const factory _JoiningTime(
       {@JsonKey(name: 'joining_time')
       required final DateTime? joiningTime}) = _$JoiningTimeImpl;
+  const _JoiningTime._() : super._();
 
   factory _JoiningTime.fromJson(Map<String, dynamic> json) =
       _$JoiningTimeImpl.fromJson;

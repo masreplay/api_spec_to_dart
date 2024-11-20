@@ -65,9 +65,10 @@ class __$$UIFormFieldImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$UIFormFieldImpl implements _UIFormField {
-  const _$UIFormFieldImpl();
+
+@JsonSerializable(converters: convertors)
+class _$UIFormFieldImpl extends _UIFormField {
+  const _$UIFormFieldImpl() : super._();
 
   factory _$UIFormFieldImpl.fromJson(Map<String, dynamic> json) =>
       _$$UIFormFieldImplFromJson(json);
@@ -95,8 +96,9 @@ class _$UIFormFieldImpl implements _UIFormField {
   }
 }
 
-abstract class _UIFormField implements UIFormField {
+abstract class _UIFormField extends UIFormField {
   const factory _UIFormField() = _$UIFormFieldImpl;
+  const _UIFormField._() : super._();
 
   factory _UIFormField.fromJson(Map<String, dynamic> json) =
       _$UIFormFieldImpl.fromJson;

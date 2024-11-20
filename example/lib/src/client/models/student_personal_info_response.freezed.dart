@@ -742,9 +742,9 @@ class __$$StudentPersonalInfoResponseImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$StudentPersonalInfoResponseImpl
-    implements _StudentPersonalInfoResponse {
+
+@JsonSerializable(converters: convertors)
+class _$StudentPersonalInfoResponseImpl extends _StudentPersonalInfoResponse {
   const _$StudentPersonalInfoResponseImpl(
       {@JsonKey(name: 'arabic_name1') required this.arabicName1,
       @JsonKey(name: 'arabic_name2') required this.arabicName2,
@@ -782,7 +782,8 @@ class _$StudentPersonalInfoResponseImpl
       @JsonKey(name: 'religion') required this.religion,
       @JsonKey(name: 'nationalism') required this.nationalism,
       @JsonKey(name: 'nationality') required this.nationality,
-      @JsonKey(name: 'profile_image') required this.profileImage});
+      @JsonKey(name: 'profile_image') required this.profileImage})
+      : super._();
 
   factory _$StudentPersonalInfoResponseImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -1037,7 +1038,7 @@ class _$StudentPersonalInfoResponseImpl
 }
 
 abstract class _StudentPersonalInfoResponse
-    implements StudentPersonalInfoResponse {
+    extends StudentPersonalInfoResponse {
   const factory _StudentPersonalInfoResponse(
       {@JsonKey(name: 'arabic_name1') required final String? arabicName1,
       @JsonKey(name: 'arabic_name2') required final String? arabicName2,
@@ -1088,6 +1089,7 @@ abstract class _StudentPersonalInfoResponse
       @JsonKey(name: 'profile_image')
       required final FilePublic?
           profileImage}) = _$StudentPersonalInfoResponseImpl;
+  const _StudentPersonalInfoResponse._() : super._();
 
   factory _StudentPersonalInfoResponse.fromJson(Map<String, dynamic> json) =
       _$StudentPersonalInfoResponseImpl.fromJson;

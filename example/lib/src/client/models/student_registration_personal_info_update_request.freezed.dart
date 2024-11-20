@@ -481,9 +481,10 @@ class __$$StudentRegistrationPersonalInfoUpdateRequestImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$StudentRegistrationPersonalInfoUpdateRequestImpl
-    implements _StudentRegistrationPersonalInfoUpdateRequest {
+    extends _StudentRegistrationPersonalInfoUpdateRequest {
   const _$StudentRegistrationPersonalInfoUpdateRequestImpl(
       {@JsonKey(name: 'arabic_name1') required this.arabicName1,
       @JsonKey(name: 'arabic_name2') required this.arabicName2,
@@ -508,7 +509,8 @@ class _$StudentRegistrationPersonalInfoUpdateRequestImpl
       @JsonKey(name: 'nationalism_id') required this.nationalismId,
       @JsonKey(name: 'religion_id') required this.religionId,
       @JsonKey(name: 'phone_number') required this.phoneNumber,
-      @JsonKey(name: 'email') required this.email});
+      @JsonKey(name: 'email') required this.email})
+      : super._();
 
   factory _$StudentRegistrationPersonalInfoUpdateRequestImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -696,7 +698,7 @@ class _$StudentRegistrationPersonalInfoUpdateRequestImpl
 }
 
 abstract class _StudentRegistrationPersonalInfoUpdateRequest
-    implements StudentRegistrationPersonalInfoUpdateRequest {
+    extends StudentRegistrationPersonalInfoUpdateRequest {
   const factory _StudentRegistrationPersonalInfoUpdateRequest(
       {@JsonKey(name: 'arabic_name1') required final String arabicName1,
       @JsonKey(name: 'arabic_name2') required final String arabicName2,
@@ -731,6 +733,7 @@ abstract class _StudentRegistrationPersonalInfoUpdateRequest
       @JsonKey(name: 'email')
       required final String?
           email}) = _$StudentRegistrationPersonalInfoUpdateRequestImpl;
+  const _StudentRegistrationPersonalInfoUpdateRequest._() : super._();
 
   factory _StudentRegistrationPersonalInfoUpdateRequest.fromJson(
           Map<String, dynamic> json) =

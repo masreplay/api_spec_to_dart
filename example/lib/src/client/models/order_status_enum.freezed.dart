@@ -65,9 +65,10 @@ class __$$OrderStatusEnumImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$OrderStatusEnumImpl implements _OrderStatusEnum {
-  const _$OrderStatusEnumImpl();
+
+@JsonSerializable(converters: convertors)
+class _$OrderStatusEnumImpl extends _OrderStatusEnum {
+  const _$OrderStatusEnumImpl() : super._();
 
   factory _$OrderStatusEnumImpl.fromJson(Map<String, dynamic> json) =>
       _$$OrderStatusEnumImplFromJson(json);
@@ -95,8 +96,9 @@ class _$OrderStatusEnumImpl implements _OrderStatusEnum {
   }
 }
 
-abstract class _OrderStatusEnum implements OrderStatusEnum {
+abstract class _OrderStatusEnum extends OrderStatusEnum {
   const factory _OrderStatusEnum() = _$OrderStatusEnumImpl;
+  const _OrderStatusEnum._() : super._();
 
   factory _OrderStatusEnum.fromJson(Map<String, dynamic> json) =
       _$OrderStatusEnumImpl.fromJson;

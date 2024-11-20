@@ -233,15 +233,17 @@ class __$$RegistrationsStudentIdsUpdateRequestImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$RegistrationsStudentIdsUpdateRequestImpl
-    implements _RegistrationsStudentIdsUpdateRequest {
+    extends _RegistrationsStudentIdsUpdateRequest {
   const _$RegistrationsStudentIdsUpdateRequestImpl(
       {@JsonKey(name: 'identification_card') required this.identificationCard,
       @JsonKey(name: 'iraqi_nationality_certificate')
       required this.iraqiNationalityCertificate,
       @JsonKey(name: 'residence_card') required this.residenceCard,
-      @JsonKey(name: 'passport') required this.passport});
+      @JsonKey(name: 'passport') required this.passport})
+      : super._();
 
   factory _$RegistrationsStudentIdsUpdateRequestImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -307,7 +309,7 @@ class _$RegistrationsStudentIdsUpdateRequestImpl
 }
 
 abstract class _RegistrationsStudentIdsUpdateRequest
-    implements RegistrationsStudentIdsUpdateRequest {
+    extends RegistrationsStudentIdsUpdateRequest {
   const factory _RegistrationsStudentIdsUpdateRequest(
           {@JsonKey(name: 'identification_card')
           required final StudentIdsIdCardUpdatePublic identificationCard,
@@ -319,6 +321,7 @@ abstract class _RegistrationsStudentIdsUpdateRequest
           @JsonKey(name: 'passport')
           required final StudentIdsPassportUpdatePublic? passport}) =
       _$RegistrationsStudentIdsUpdateRequestImpl;
+  const _RegistrationsStudentIdsUpdateRequest._() : super._();
 
   factory _RegistrationsStudentIdsUpdateRequest.fromJson(
           Map<String, dynamic> json) =

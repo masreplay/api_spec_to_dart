@@ -127,12 +127,13 @@ class __$$BodyLecturerAuthSwaggerLoginImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$BodyLecturerAuthSwaggerLoginImpl
-    implements _BodyLecturerAuthSwaggerLogin {
+
+@JsonSerializable(converters: convertors)
+class _$BodyLecturerAuthSwaggerLoginImpl extends _BodyLecturerAuthSwaggerLogin {
   const _$BodyLecturerAuthSwaggerLoginImpl(
       {@JsonKey(name: 'username') required this.username,
-      @JsonKey(name: 'password') required this.password});
+      @JsonKey(name: 'password') required this.password})
+      : super._();
 
   factory _$BodyLecturerAuthSwaggerLoginImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -184,11 +185,12 @@ class _$BodyLecturerAuthSwaggerLoginImpl
 }
 
 abstract class _BodyLecturerAuthSwaggerLogin
-    implements BodyLecturerAuthSwaggerLogin {
+    extends BodyLecturerAuthSwaggerLogin {
   const factory _BodyLecturerAuthSwaggerLogin(
           {@JsonKey(name: 'username') required final String username,
           @JsonKey(name: 'password') required final String password}) =
       _$BodyLecturerAuthSwaggerLoginImpl;
+  const _BodyLecturerAuthSwaggerLogin._() : super._();
 
   factory _BodyLecturerAuthSwaggerLogin.fromJson(Map<String, dynamic> json) =
       _$BodyLecturerAuthSwaggerLoginImpl.fromJson;

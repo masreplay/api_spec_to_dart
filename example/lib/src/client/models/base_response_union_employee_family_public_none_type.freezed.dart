@@ -152,12 +152,14 @@ class __$$BaseResponseUnionEmployeeFamilyPublicNoneTypeImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$BaseResponseUnionEmployeeFamilyPublicNoneTypeImpl
-    implements _BaseResponseUnionEmployeeFamilyPublicNoneType {
+    extends _BaseResponseUnionEmployeeFamilyPublicNoneType {
   const _$BaseResponseUnionEmployeeFamilyPublicNoneTypeImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required this.data});
+      @JsonKey(name: 'data') required this.data})
+      : super._();
 
   factory _$BaseResponseUnionEmployeeFamilyPublicNoneTypeImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -209,11 +211,12 @@ class _$BaseResponseUnionEmployeeFamilyPublicNoneTypeImpl
 }
 
 abstract class _BaseResponseUnionEmployeeFamilyPublicNoneType
-    implements BaseResponseUnionEmployeeFamilyPublicNoneType {
+    extends BaseResponseUnionEmployeeFamilyPublicNoneType {
   const factory _BaseResponseUnionEmployeeFamilyPublicNoneType(
           {@JsonKey(name: 'message') required final String? message,
           @JsonKey(name: 'data') required final EmployeeFamilyPublic? data}) =
       _$BaseResponseUnionEmployeeFamilyPublicNoneTypeImpl;
+  const _BaseResponseUnionEmployeeFamilyPublicNoneType._() : super._();
 
   factory _BaseResponseUnionEmployeeFamilyPublicNoneType.fromJson(
           Map<String, dynamic> json) =

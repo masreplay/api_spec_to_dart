@@ -65,9 +65,10 @@ class __$$SemesterFilterImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$SemesterFilterImpl implements _SemesterFilter {
-  const _$SemesterFilterImpl();
+
+@JsonSerializable(converters: convertors)
+class _$SemesterFilterImpl extends _SemesterFilter {
+  const _$SemesterFilterImpl() : super._();
 
   factory _$SemesterFilterImpl.fromJson(Map<String, dynamic> json) =>
       _$$SemesterFilterImplFromJson(json);
@@ -95,8 +96,9 @@ class _$SemesterFilterImpl implements _SemesterFilter {
   }
 }
 
-abstract class _SemesterFilter implements SemesterFilter {
+abstract class _SemesterFilter extends SemesterFilter {
   const factory _SemesterFilter() = _$SemesterFilterImpl;
+  const _SemesterFilter._() : super._();
 
   factory _SemesterFilter.fromJson(Map<String, dynamic> json) =
       _$SemesterFilterImpl.fromJson;

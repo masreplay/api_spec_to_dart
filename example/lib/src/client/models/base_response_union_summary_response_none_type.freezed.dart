@@ -149,12 +149,14 @@ class __$$BaseResponseUnionSummaryResponseNoneTypeImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$BaseResponseUnionSummaryResponseNoneTypeImpl
-    implements _BaseResponseUnionSummaryResponseNoneType {
+    extends _BaseResponseUnionSummaryResponseNoneType {
   const _$BaseResponseUnionSummaryResponseNoneTypeImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required this.data});
+      @JsonKey(name: 'data') required this.data})
+      : super._();
 
   factory _$BaseResponseUnionSummaryResponseNoneTypeImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -205,11 +207,12 @@ class _$BaseResponseUnionSummaryResponseNoneTypeImpl
 }
 
 abstract class _BaseResponseUnionSummaryResponseNoneType
-    implements BaseResponseUnionSummaryResponseNoneType {
+    extends BaseResponseUnionSummaryResponseNoneType {
   const factory _BaseResponseUnionSummaryResponseNoneType(
           {@JsonKey(name: 'message') required final String? message,
           @JsonKey(name: 'data') required final SummaryResponse? data}) =
       _$BaseResponseUnionSummaryResponseNoneTypeImpl;
+  const _BaseResponseUnionSummaryResponseNoneType._() : super._();
 
   factory _BaseResponseUnionSummaryResponseNoneType.fromJson(
           Map<String, dynamic> json) =

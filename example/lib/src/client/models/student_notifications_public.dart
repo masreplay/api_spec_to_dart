@@ -1,10 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
+
 part 'student_notifications_public.freezed.dart';
 part 'student_notifications_public.g.dart';
 
 @freezed
 class StudentNotificationsPublic with _$StudentNotificationsPublic {
+  const StudentNotificationsPublic._();
+
+  @JsonSerializable(converters: convertors)
   const factory StudentNotificationsPublic({
     @JsonKey(name: 'id') required int id,
     @JsonKey(name: 'student_id') required int? studentId,

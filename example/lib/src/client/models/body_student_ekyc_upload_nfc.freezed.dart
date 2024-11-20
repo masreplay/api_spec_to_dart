@@ -63,14 +63,14 @@ class _$BodyStudentEkycUploadNfcCopyWithImpl<$Res,
   @override
   $Res call({
     Object? data = null,
-    Object? file = freezed,
+    Object? file = null,
   }) {
     return _then(_value.copyWith(
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as String,
-      file: freezed == file
+      file: null == file
           ? _value.file
           : file // ignore: cast_nullable_to_non_nullable
               as File,
@@ -107,14 +107,14 @@ class __$$BodyStudentEkycUploadNfcImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = null,
-    Object? file = freezed,
+    Object? file = null,
   }) {
     return _then(_$BodyStudentEkycUploadNfcImpl(
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as String,
-      file: freezed == file
+      file: null == file
           ? _value.file
           : file // ignore: cast_nullable_to_non_nullable
               as File,
@@ -123,11 +123,13 @@ class __$$BodyStudentEkycUploadNfcImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$BodyStudentEkycUploadNfcImpl implements _BodyStudentEkycUploadNfc {
+
+@JsonSerializable(converters: convertors)
+class _$BodyStudentEkycUploadNfcImpl extends _BodyStudentEkycUploadNfc {
   const _$BodyStudentEkycUploadNfcImpl(
       {@JsonKey(name: 'data') required this.data,
-      @JsonKey(name: 'file') required this.file});
+      @JsonKey(name: 'file') required this.file})
+      : super._();
 
   factory _$BodyStudentEkycUploadNfcImpl.fromJson(Map<String, dynamic> json) =>
       _$$BodyStudentEkycUploadNfcImplFromJson(json);
@@ -150,13 +152,12 @@ class _$BodyStudentEkycUploadNfcImpl implements _BodyStudentEkycUploadNfc {
         (other.runtimeType == runtimeType &&
             other is _$BodyStudentEkycUploadNfcImpl &&
             (identical(other.data, data) || other.data == data) &&
-            const DeepCollectionEquality().equals(other.file, file));
+            (identical(other.file, file) || other.file == file));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, data, const DeepCollectionEquality().hash(file));
+  int get hashCode => Object.hash(runtimeType, data, file);
 
   /// Create a copy of BodyStudentEkycUploadNfc
   /// with the given fields replaced by the non-null parameter values.
@@ -175,11 +176,12 @@ class _$BodyStudentEkycUploadNfcImpl implements _BodyStudentEkycUploadNfc {
   }
 }
 
-abstract class _BodyStudentEkycUploadNfc implements BodyStudentEkycUploadNfc {
+abstract class _BodyStudentEkycUploadNfc extends BodyStudentEkycUploadNfc {
   const factory _BodyStudentEkycUploadNfc(
           {@JsonKey(name: 'data') required final String data,
           @JsonKey(name: 'file') required final File file}) =
       _$BodyStudentEkycUploadNfcImpl;
+  const _BodyStudentEkycUploadNfc._() : super._();
 
   factory _BodyStudentEkycUploadNfc.fromJson(Map<String, dynamic> json) =
       _$BodyStudentEkycUploadNfcImpl.fromJson;

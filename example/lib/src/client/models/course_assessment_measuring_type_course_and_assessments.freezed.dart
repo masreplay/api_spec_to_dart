@@ -293,9 +293,10 @@ class __$$CourseAssessmentMeasuringTypeCourseAndAssessmentsImplCopyWithImpl<
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$CourseAssessmentMeasuringTypeCourseAndAssessmentsImpl
-    implements _CourseAssessmentMeasuringTypeCourseAndAssessments {
+    extends _CourseAssessmentMeasuringTypeCourseAndAssessments {
   const _$CourseAssessmentMeasuringTypeCourseAndAssessmentsImpl(
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'title') required this.title,
@@ -306,7 +307,8 @@ class _$CourseAssessmentMeasuringTypeCourseAndAssessmentsImpl
       @JsonKey(name: 'final_degree') required this.finalDegree,
       @JsonKey(name: 'number_of_times') required this.numberOfTimes,
       @JsonKey(name: 'attendance_status') required this.attendanceStatus,
-      @JsonKey(name: 'link') required this.link});
+      @JsonKey(name: 'link') required this.link})
+      : super._();
 
   factory _$CourseAssessmentMeasuringTypeCourseAndAssessmentsImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -405,7 +407,7 @@ class _$CourseAssessmentMeasuringTypeCourseAndAssessmentsImpl
 }
 
 abstract class _CourseAssessmentMeasuringTypeCourseAndAssessments
-    implements CourseAssessmentMeasuringTypeCourseAndAssessments {
+    extends CourseAssessmentMeasuringTypeCourseAndAssessments {
   const factory _CourseAssessmentMeasuringTypeCourseAndAssessments(
           {@JsonKey(name: 'id') required final int? id,
           @JsonKey(name: 'title') required final String? title,
@@ -420,6 +422,7 @@ abstract class _CourseAssessmentMeasuringTypeCourseAndAssessments
           required final AttendanceStatusEnum? attendanceStatus,
           @JsonKey(name: 'link') required final String? link}) =
       _$CourseAssessmentMeasuringTypeCourseAndAssessmentsImpl;
+  const _CourseAssessmentMeasuringTypeCourseAndAssessments._() : super._();
 
   factory _CourseAssessmentMeasuringTypeCourseAndAssessments.fromJson(
           Map<String, dynamic> json) =

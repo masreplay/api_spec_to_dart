@@ -1,10 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
+
 part 'course_staffs_table.freezed.dart';
 part 'course_staffs_table.g.dart';
 
 @freezed
 class CourseStaffsTable with _$CourseStaffsTable {
+  const CourseStaffsTable._();
+
+  @JsonSerializable(converters: convertors)
   const factory CourseStaffsTable({
     @JsonKey(name: 'employee_id') required int employeeId,
     @JsonKey(name: 'employee_role') required int employeeRole,

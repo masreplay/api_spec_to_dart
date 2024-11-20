@@ -153,13 +153,15 @@ class __$$StudentAttendancePublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$StudentAttendancePublicImpl implements _StudentAttendancePublic {
+
+@JsonSerializable(converters: convertors)
+class _$StudentAttendancePublicImpl extends _StudentAttendancePublic {
   const _$StudentAttendancePublicImpl(
       {@JsonKey(name: 'attendance_status') required this.attendanceStatus,
       @JsonKey(name: 'attendance_date') required this.attendanceDate,
       @JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'weekly_schedule_id') required this.weeklyScheduleId});
+      @JsonKey(name: 'weekly_schedule_id') required this.weeklyScheduleId})
+      : super._();
 
   factory _$StudentAttendancePublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$StudentAttendancePublicImplFromJson(json);
@@ -218,13 +220,14 @@ class _$StudentAttendancePublicImpl implements _StudentAttendancePublic {
   }
 }
 
-abstract class _StudentAttendancePublic implements StudentAttendancePublic {
+abstract class _StudentAttendancePublic extends StudentAttendancePublic {
   const factory _StudentAttendancePublic(
       {@JsonKey(name: 'attendance_status') required final int attendanceStatus,
       @JsonKey(name: 'attendance_date') required final DateTime attendanceDate,
       @JsonKey(name: 'id') required final int id,
       @JsonKey(name: 'weekly_schedule_id')
       required final int weeklyScheduleId}) = _$StudentAttendancePublicImpl;
+  const _StudentAttendancePublic._() : super._();
 
   factory _StudentAttendancePublic.fromJson(Map<String, dynamic> json) =
       _$StudentAttendancePublicImpl.fromJson;

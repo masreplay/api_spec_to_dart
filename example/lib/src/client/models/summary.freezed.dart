@@ -175,8 +175,9 @@ class __$$SummaryImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$SummaryImpl implements _Summary {
+
+@JsonSerializable(converters: convertors)
+class _$SummaryImpl extends _Summary {
   const _$SummaryImpl(
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'title') required this.title,
@@ -185,7 +186,8 @@ class _$SummaryImpl implements _Summary {
       @JsonKey(name: 'current_number_of_units')
       required this.currentNumberOfUnits = 0,
       @JsonKey(name: 'current_number_of_subjects')
-      required this.currentNumberOfSubjects = 0});
+      required this.currentNumberOfSubjects = 0})
+      : super._();
 
   factory _$SummaryImpl.fromJson(Map<String, dynamic> json) =>
       _$$SummaryImplFromJson(json);
@@ -253,7 +255,7 @@ class _$SummaryImpl implements _Summary {
   }
 }
 
-abstract class _Summary implements Summary {
+abstract class _Summary extends Summary {
   const factory _Summary(
       {@JsonKey(name: 'id') required final int? id,
       @JsonKey(name: 'title') required final String? title,
@@ -264,6 +266,7 @@ abstract class _Summary implements Summary {
       required final int currentNumberOfUnits,
       @JsonKey(name: 'current_number_of_subjects')
       required final int currentNumberOfSubjects}) = _$SummaryImpl;
+  const _Summary._() : super._();
 
   factory _Summary.fromJson(Map<String, dynamic> json) = _$SummaryImpl.fromJson;
 

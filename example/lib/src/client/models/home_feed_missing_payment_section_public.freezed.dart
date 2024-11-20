@@ -187,15 +187,17 @@ class __$$HomeFeedMissingPaymentSectionPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$HomeFeedMissingPaymentSectionPublicImpl
-    implements _HomeFeedMissingPaymentSectionPublic {
+    extends _HomeFeedMissingPaymentSectionPublic {
   const _$HomeFeedMissingPaymentSectionPublicImpl(
       {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'type') required this.type = String.missing_payment,
+      @JsonKey(name: 'type') required this.type = missing_payment,
       @JsonKey(name: 'title') required this.title,
       @JsonKey(name: 'description') required this.description,
-      @JsonKey(name: 'data') required this.data});
+      @JsonKey(name: 'data') required this.data})
+      : super._();
 
   factory _$HomeFeedMissingPaymentSectionPublicImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -259,7 +261,7 @@ class _$HomeFeedMissingPaymentSectionPublicImpl
 }
 
 abstract class _HomeFeedMissingPaymentSectionPublic
-    implements HomeFeedMissingPaymentSectionPublic {
+    extends HomeFeedMissingPaymentSectionPublic {
   const factory _HomeFeedMissingPaymentSectionPublic(
           {@JsonKey(name: 'id') required final int id,
           @JsonKey(name: 'type') required final String type,
@@ -268,6 +270,7 @@ abstract class _HomeFeedMissingPaymentSectionPublic
           @JsonKey(name: 'data')
           required final HomeFeedMissingPaymentSectionDataPublic data}) =
       _$HomeFeedMissingPaymentSectionPublicImpl;
+  const _HomeFeedMissingPaymentSectionPublic._() : super._();
 
   factory _HomeFeedMissingPaymentSectionPublic.fromJson(
           Map<String, dynamic> json) =

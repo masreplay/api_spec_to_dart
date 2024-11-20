@@ -70,9 +70,10 @@ class __$$CourseSelectionStatusTypeImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$CourseSelectionStatusTypeImpl implements _CourseSelectionStatusType {
-  const _$CourseSelectionStatusTypeImpl();
+
+@JsonSerializable(converters: convertors)
+class _$CourseSelectionStatusTypeImpl extends _CourseSelectionStatusType {
+  const _$CourseSelectionStatusTypeImpl() : super._();
 
   factory _$CourseSelectionStatusTypeImpl.fromJson(Map<String, dynamic> json) =>
       _$$CourseSelectionStatusTypeImplFromJson(json);
@@ -101,8 +102,9 @@ class _$CourseSelectionStatusTypeImpl implements _CourseSelectionStatusType {
   }
 }
 
-abstract class _CourseSelectionStatusType implements CourseSelectionStatusType {
+abstract class _CourseSelectionStatusType extends CourseSelectionStatusType {
   const factory _CourseSelectionStatusType() = _$CourseSelectionStatusTypeImpl;
+  const _CourseSelectionStatusType._() : super._();
 
   factory _CourseSelectionStatusType.fromJson(Map<String, dynamic> json) =
       _$CourseSelectionStatusTypeImpl.fromJson;

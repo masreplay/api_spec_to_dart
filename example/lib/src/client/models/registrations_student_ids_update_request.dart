@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
 import './models.dart';
 
 part 'registrations_student_ids_update_request.freezed.dart';
@@ -8,6 +9,9 @@ part 'registrations_student_ids_update_request.g.dart';
 @freezed
 class RegistrationsStudentIdsUpdateRequest
     with _$RegistrationsStudentIdsUpdateRequest {
+  const RegistrationsStudentIdsUpdateRequest._();
+
+  @JsonSerializable(converters: convertors)
   const factory RegistrationsStudentIdsUpdateRequest({
     @JsonKey(name: 'identification_card')
     required StudentIdsIdCardUpdatePublic identificationCard,

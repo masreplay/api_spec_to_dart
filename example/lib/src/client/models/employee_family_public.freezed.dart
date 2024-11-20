@@ -66,9 +66,10 @@ class __$$EmployeeFamilyPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$EmployeeFamilyPublicImpl implements _EmployeeFamilyPublic {
-  const _$EmployeeFamilyPublicImpl();
+
+@JsonSerializable(converters: convertors)
+class _$EmployeeFamilyPublicImpl extends _EmployeeFamilyPublic {
+  const _$EmployeeFamilyPublicImpl() : super._();
 
   factory _$EmployeeFamilyPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$EmployeeFamilyPublicImplFromJson(json);
@@ -97,8 +98,9 @@ class _$EmployeeFamilyPublicImpl implements _EmployeeFamilyPublic {
   }
 }
 
-abstract class _EmployeeFamilyPublic implements EmployeeFamilyPublic {
+abstract class _EmployeeFamilyPublic extends EmployeeFamilyPublic {
   const factory _EmployeeFamilyPublic() = _$EmployeeFamilyPublicImpl;
+  const _EmployeeFamilyPublic._() : super._();
 
   factory _EmployeeFamilyPublic.fromJson(Map<String, dynamic> json) =
       _$EmployeeFamilyPublicImpl.fromJson;

@@ -128,13 +128,15 @@ class __$$BaseResponseListNationalitiesPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$BaseResponseListNationalitiesPublicImpl
-    implements _BaseResponseListNationalitiesPublic {
+    extends _BaseResponseListNationalitiesPublic {
   const _$BaseResponseListNationalitiesPublicImpl(
       {@JsonKey(name: 'message') required this.message,
       @JsonKey(name: 'data') required final List<dynamic> data})
-      : _data = data;
+      : _data = data,
+        super._();
 
   factory _$BaseResponseListNationalitiesPublicImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -190,11 +192,12 @@ class _$BaseResponseListNationalitiesPublicImpl
 }
 
 abstract class _BaseResponseListNationalitiesPublic
-    implements BaseResponseListNationalitiesPublic {
+    extends BaseResponseListNationalitiesPublic {
   const factory _BaseResponseListNationalitiesPublic(
           {@JsonKey(name: 'message') required final String? message,
           @JsonKey(name: 'data') required final List<dynamic> data}) =
       _$BaseResponseListNationalitiesPublicImpl;
+  const _BaseResponseListNationalitiesPublic._() : super._();
 
   factory _BaseResponseListNationalitiesPublic.fromJson(
           Map<String, dynamic> json) =

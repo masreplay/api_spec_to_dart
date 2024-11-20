@@ -1,10 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
+
 part 'course_distributions_table.freezed.dart';
 part 'course_distributions_table.g.dart';
 
 @freezed
 class CourseDistributionsTable with _$CourseDistributionsTable {
+  const CourseDistributionsTable._();
+
+  @JsonSerializable(converters: convertors)
   const factory CourseDistributionsTable({
     @JsonKey(name: 'academic_year_divisionId')
     required int academicYearDivisionId,

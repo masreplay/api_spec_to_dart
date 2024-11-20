@@ -217,15 +217,17 @@ class __$$StudentIdsPassportPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$StudentIdsPassportPublicImpl implements _StudentIdsPassportPublic {
+
+@JsonSerializable(converters: convertors)
+class _$StudentIdsPassportPublicImpl extends _StudentIdsPassportPublic {
   const _$StudentIdsPassportPublicImpl(
       {@JsonKey(name: 'number') required this.number,
       @JsonKey(name: 'issuing_authority') required this.issuingAuthority,
       @JsonKey(name: 'date_of_issue') required this.dateOfIssue,
       @JsonKey(name: 'date_of_expiry') required this.dateOfExpiry,
       @JsonKey(name: 'country') required this.country,
-      @JsonKey(name: 'image') required this.image});
+      @JsonKey(name: 'image') required this.image})
+      : super._();
 
   factory _$StudentIdsPassportPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$StudentIdsPassportPublicImplFromJson(json);
@@ -292,7 +294,7 @@ class _$StudentIdsPassportPublicImpl implements _StudentIdsPassportPublic {
   }
 }
 
-abstract class _StudentIdsPassportPublic implements StudentIdsPassportPublic {
+abstract class _StudentIdsPassportPublic extends StudentIdsPassportPublic {
   const factory _StudentIdsPassportPublic(
       {@JsonKey(name: 'number') required final String? number,
       @JsonKey(name: 'issuing_authority')
@@ -302,6 +304,7 @@ abstract class _StudentIdsPassportPublic implements StudentIdsPassportPublic {
       @JsonKey(name: 'country') required final CountryPublic? country,
       @JsonKey(name: 'image')
       required final FilePublic? image}) = _$StudentIdsPassportPublicImpl;
+  const _StudentIdsPassportPublic._() : super._();
 
   factory _StudentIdsPassportPublic.fromJson(Map<String, dynamic> json) =
       _$StudentIdsPassportPublicImpl.fromJson;

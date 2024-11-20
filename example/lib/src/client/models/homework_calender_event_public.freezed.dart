@@ -211,18 +211,19 @@ class __$$HomeworkCalenderEventPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$HomeworkCalenderEventPublicImpl
-    implements _HomeworkCalenderEventPublic {
+
+@JsonSerializable(converters: convertors)
+class _$HomeworkCalenderEventPublicImpl extends _HomeworkCalenderEventPublic {
   const _$HomeworkCalenderEventPublicImpl(
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'start_date') required this.startDate,
       @JsonKey(name: 'start_date_formatted') required this.startDateFormatted,
       @JsonKey(name: 'end_date') required this.endDate,
       @JsonKey(name: 'end_date_formatted') required this.endDateFormatted,
-      @JsonKey(name: 'type') required this.type = String.assignment,
+      @JsonKey(name: 'type') required this.type = assignment,
       @JsonKey(name: 'title') required this.title,
-      @JsonKey(name: 'description') required this.description});
+      @JsonKey(name: 'description') required this.description})
+      : super._();
 
   factory _$HomeworkCalenderEventPublicImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -300,7 +301,7 @@ class _$HomeworkCalenderEventPublicImpl
 }
 
 abstract class _HomeworkCalenderEventPublic
-    implements HomeworkCalenderEventPublic {
+    extends HomeworkCalenderEventPublic {
   const factory _HomeworkCalenderEventPublic(
           {@JsonKey(name: 'id') required final int id,
           @JsonKey(name: 'start_date') required final DateTime? startDate,
@@ -313,6 +314,7 @@ abstract class _HomeworkCalenderEventPublic
           @JsonKey(name: 'title') required final String title,
           @JsonKey(name: 'description') required final String? description}) =
       _$HomeworkCalenderEventPublicImpl;
+  const _HomeworkCalenderEventPublic._() : super._();
 
   factory _HomeworkCalenderEventPublic.fromJson(Map<String, dynamic> json) =
       _$HomeworkCalenderEventPublicImpl.fromJson;

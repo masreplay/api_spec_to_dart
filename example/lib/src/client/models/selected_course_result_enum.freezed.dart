@@ -70,9 +70,10 @@ class __$$SelectedCourseResultEnumImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$SelectedCourseResultEnumImpl implements _SelectedCourseResultEnum {
-  const _$SelectedCourseResultEnumImpl();
+
+@JsonSerializable(converters: convertors)
+class _$SelectedCourseResultEnumImpl extends _SelectedCourseResultEnum {
+  const _$SelectedCourseResultEnumImpl() : super._();
 
   factory _$SelectedCourseResultEnumImpl.fromJson(Map<String, dynamic> json) =>
       _$$SelectedCourseResultEnumImplFromJson(json);
@@ -101,8 +102,9 @@ class _$SelectedCourseResultEnumImpl implements _SelectedCourseResultEnum {
   }
 }
 
-abstract class _SelectedCourseResultEnum implements SelectedCourseResultEnum {
+abstract class _SelectedCourseResultEnum extends SelectedCourseResultEnum {
   const factory _SelectedCourseResultEnum() = _$SelectedCourseResultEnumImpl;
+  const _SelectedCourseResultEnum._() : super._();
 
   factory _SelectedCourseResultEnum.fromJson(Map<String, dynamic> json) =
       _$SelectedCourseResultEnumImpl.fromJson;

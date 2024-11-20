@@ -590,9 +590,10 @@ class __$$EmployeeIdentificationCardsPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$EmployeeIdentificationCardsPublicImpl
-    implements _EmployeeIdentificationCardsPublic {
+    extends _EmployeeIdentificationCardsPublic {
   const _$EmployeeIdentificationCardsPublicImpl(
       {@JsonKey(name: 'employee_identifications_card_id')
       required this.employeeIdentificationsCardId,
@@ -648,7 +649,8 @@ class _$EmployeeIdentificationCardsPublicImpl
       @JsonKey(name: 'passport_date_of_issue')
       required this.passportDateOfIssue,
       @JsonKey(name: 'passport_date_of_expiry')
-      required this.passportDateOfExpiry});
+      required this.passportDateOfExpiry})
+      : super._();
 
   factory _$EmployeeIdentificationCardsPublicImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -870,7 +872,7 @@ class _$EmployeeIdentificationCardsPublicImpl
 }
 
 abstract class _EmployeeIdentificationCardsPublic
-    implements EmployeeIdentificationCardsPublic {
+    extends EmployeeIdentificationCardsPublic {
   const factory _EmployeeIdentificationCardsPublic(
       {@JsonKey(name: 'employee_identifications_card_id')
       required final int employeeIdentificationsCardId,
@@ -932,6 +934,7 @@ abstract class _EmployeeIdentificationCardsPublic
       @JsonKey(name: 'passport_date_of_expiry')
       required final DateTime
           passportDateOfExpiry}) = _$EmployeeIdentificationCardsPublicImpl;
+  const _EmployeeIdentificationCardsPublic._() : super._();
 
   factory _EmployeeIdentificationCardsPublic.fromJson(
           Map<String, dynamic> json) =

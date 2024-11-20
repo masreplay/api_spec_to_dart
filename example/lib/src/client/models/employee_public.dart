@@ -1,10 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
+
 part 'employee_public.freezed.dart';
 part 'employee_public.g.dart';
 
 @freezed
 class EmployeePublic with _$EmployeePublic {
+  const EmployeePublic._();
+
+  @JsonSerializable(converters: convertors)
   const factory EmployeePublic({
     @JsonKey(name: 'db_user_id') required String? dbUserId,
     @JsonKey(name: 'id') required int id,

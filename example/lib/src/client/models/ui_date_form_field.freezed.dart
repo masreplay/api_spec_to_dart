@@ -260,8 +260,9 @@ class __$$UIDateFormFieldImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$UIDateFormFieldImpl implements _UIDateFormField {
+
+@JsonSerializable(converters: convertors)
+class _$UIDateFormFieldImpl extends _UIDateFormField {
   const _$UIDateFormFieldImpl(
       {@JsonKey(name: 'key') required this.key,
       @JsonKey(name: 'name') required this.name,
@@ -269,12 +270,13 @@ class _$UIDateFormFieldImpl implements _UIDateFormField {
       @JsonKey(name: 'is_required') required this.isRequired,
       @JsonKey(name: 'read_only') required this.readOnly = false,
       @JsonKey(name: 'doc') required this.doc,
-      @JsonKey(name: 'type') required this.type = String.date,
+      @JsonKey(name: 'type') required this.type = date,
       @JsonKey(name: 'default_value') required this.defaultValue,
       @JsonKey(name: 'format') required this.format,
       @JsonKey(name: 'example') required this.example,
       @JsonKey(name: 'min_date') required this.minDate,
-      @JsonKey(name: 'max_date') required this.maxDate});
+      @JsonKey(name: 'max_date') required this.maxDate})
+      : super._();
 
   factory _$UIDateFormFieldImpl.fromJson(Map<String, dynamic> json) =>
       _$$UIDateFormFieldImplFromJson(json);
@@ -365,7 +367,7 @@ class _$UIDateFormFieldImpl implements _UIDateFormField {
   }
 }
 
-abstract class _UIDateFormField implements UIDateFormField {
+abstract class _UIDateFormField extends UIDateFormField {
   const factory _UIDateFormField(
           {@JsonKey(name: 'key') required final String key,
           @JsonKey(name: 'name') required final String name,
@@ -380,6 +382,7 @@ abstract class _UIDateFormField implements UIDateFormField {
           @JsonKey(name: 'min_date') required final DateTime? minDate,
           @JsonKey(name: 'max_date') required final DateTime? maxDate}) =
       _$UIDateFormFieldImpl;
+  const _UIDateFormField._() : super._();
 
   factory _UIDateFormField.fromJson(Map<String, dynamic> json) =
       _$UIDateFormFieldImpl.fromJson;

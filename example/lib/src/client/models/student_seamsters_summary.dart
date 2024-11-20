@@ -1,10 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
+
 part 'student_seamsters_summary.freezed.dart';
 part 'student_seamsters_summary.g.dart';
 
 @freezed
 class StudentSeamstersSummary with _$StudentSeamstersSummary {
+  const StudentSeamstersSummary._();
+
+  @JsonSerializable(converters: convertors)
   const factory StudentSeamstersSummary({
     @JsonKey(name: 'id') required int? id,
     @JsonKey(name: 'name') required String? name,

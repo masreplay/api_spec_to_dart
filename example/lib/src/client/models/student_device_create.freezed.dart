@@ -260,8 +260,9 @@ class __$$StudentDeviceCreateImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$StudentDeviceCreateImpl implements _StudentDeviceCreate {
+
+@JsonSerializable(converters: convertors)
+class _$StudentDeviceCreateImpl extends _StudentDeviceCreate {
   const _$StudentDeviceCreateImpl(
       {@JsonKey(name: 'device_token') required this.deviceToken,
       @JsonKey(name: 'os_type') required this.oSType,
@@ -276,7 +277,8 @@ class _$StudentDeviceCreateImpl implements _StudentDeviceCreate {
       @JsonKey(name: 'extra_data')
       required final Map<dynamic, dynamic>? extraData,
       @JsonKey(name: 'device_language') required this.deviceLanguage})
-      : _extraData = extraData;
+      : _extraData = extraData,
+        super._();
 
   factory _$StudentDeviceCreateImpl.fromJson(Map<String, dynamic> json) =>
       _$$StudentDeviceCreateImplFromJson(json);
@@ -394,7 +396,7 @@ class _$StudentDeviceCreateImpl implements _StudentDeviceCreate {
   }
 }
 
-abstract class _StudentDeviceCreate implements StudentDeviceCreate {
+abstract class _StudentDeviceCreate extends StudentDeviceCreate {
   const factory _StudentDeviceCreate(
       {@JsonKey(name: 'device_token') required final String? deviceToken,
       @JsonKey(name: 'os_type') required final String? oSType,
@@ -411,6 +413,7 @@ abstract class _StudentDeviceCreate implements StudentDeviceCreate {
       required final Map<dynamic, dynamic>? extraData,
       @JsonKey(name: 'device_language')
       required final String? deviceLanguage}) = _$StudentDeviceCreateImpl;
+  const _StudentDeviceCreate._() : super._();
 
   factory _StudentDeviceCreate.fromJson(Map<String, dynamic> json) =
       _$StudentDeviceCreateImpl.fromJson;

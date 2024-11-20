@@ -116,11 +116,13 @@ class __$$FeesTypesPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$FeesTypesPublicImpl implements _FeesTypesPublic {
+
+@JsonSerializable(converters: convertors)
+class _$FeesTypesPublicImpl extends _FeesTypesPublic {
   const _$FeesTypesPublicImpl(
       {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'name') required this.name});
+      @JsonKey(name: 'name') required this.name})
+      : super._();
 
   factory _$FeesTypesPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$FeesTypesPublicImplFromJson(json);
@@ -167,11 +169,12 @@ class _$FeesTypesPublicImpl implements _FeesTypesPublic {
   }
 }
 
-abstract class _FeesTypesPublic implements FeesTypesPublic {
+abstract class _FeesTypesPublic extends FeesTypesPublic {
   const factory _FeesTypesPublic(
           {@JsonKey(name: 'id') required final int id,
           @JsonKey(name: 'name') required final String name}) =
       _$FeesTypesPublicImpl;
+  const _FeesTypesPublic._() : super._();
 
   factory _FeesTypesPublic.fromJson(Map<String, dynamic> json) =
       _$FeesTypesPublicImpl.fromJson;

@@ -645,8 +645,9 @@ class __$$EmployeePublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$EmployeePublicImpl implements _EmployeePublic {
+
+@JsonSerializable(converters: convertors)
+class _$EmployeePublicImpl extends _EmployeePublic {
   const _$EmployeePublicImpl(
       {@JsonKey(name: 'db_user_id') required this.dbUserId,
       @JsonKey(name: 'id') required this.id,
@@ -689,7 +690,8 @@ class _$EmployeePublicImpl implements _EmployeePublic {
       @JsonKey(name: 'modified_date_time') required this.modifiedDateTime,
       @JsonKey(name: 'deletion_time') required this.deletionTime,
       @JsonKey(name: 'name') required this.name,
-      @JsonKey(name: 'full_name') required this.fullName});
+      @JsonKey(name: 'full_name') required this.fullName})
+      : super._();
 
   factory _$EmployeePublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$EmployeePublicImplFromJson(json);
@@ -960,7 +962,7 @@ class _$EmployeePublicImpl implements _EmployeePublic {
   }
 }
 
-abstract class _EmployeePublic implements EmployeePublic {
+abstract class _EmployeePublic extends EmployeePublic {
   const factory _EmployeePublic(
       {@JsonKey(name: 'db_user_id') required final String? dbUserId,
       @JsonKey(name: 'id') required final int id,
@@ -1013,6 +1015,7 @@ abstract class _EmployeePublic implements EmployeePublic {
       @JsonKey(name: 'name') required final String? name,
       @JsonKey(name: 'full_name')
       required final String fullName}) = _$EmployeePublicImpl;
+  const _EmployeePublic._() : super._();
 
   factory _EmployeePublic.fromJson(Map<String, dynamic> json) =
       _$EmployeePublicImpl.fromJson;

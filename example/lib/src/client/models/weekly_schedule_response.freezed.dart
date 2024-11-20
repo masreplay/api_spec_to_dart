@@ -125,12 +125,14 @@ class __$$WeeklyScheduleResponseImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$WeeklyScheduleResponseImpl implements _WeeklyScheduleResponse {
+
+@JsonSerializable(converters: convertors)
+class _$WeeklyScheduleResponseImpl extends _WeeklyScheduleResponse {
   const _$WeeklyScheduleResponseImpl(
       {@JsonKey(name: 'weekday') required this.weekday,
       @JsonKey(name: 'lectures') required final List<dynamic> lectures})
-      : _lectures = lectures;
+      : _lectures = lectures,
+        super._();
 
   factory _$WeeklyScheduleResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$WeeklyScheduleResponseImplFromJson(json);
@@ -183,11 +185,12 @@ class _$WeeklyScheduleResponseImpl implements _WeeklyScheduleResponse {
   }
 }
 
-abstract class _WeeklyScheduleResponse implements WeeklyScheduleResponse {
+abstract class _WeeklyScheduleResponse extends WeeklyScheduleResponse {
   const factory _WeeklyScheduleResponse(
           {@JsonKey(name: 'weekday') required final int weekday,
           @JsonKey(name: 'lectures') required final List<dynamic> lectures}) =
       _$WeeklyScheduleResponseImpl;
+  const _WeeklyScheduleResponse._() : super._();
 
   factory _WeeklyScheduleResponse.fromJson(Map<String, dynamic> json) =
       _$WeeklyScheduleResponseImpl.fromJson;

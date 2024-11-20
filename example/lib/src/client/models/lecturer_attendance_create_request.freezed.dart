@@ -111,11 +111,13 @@ class __$$LecturerAttendanceCreateRequestImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$LecturerAttendanceCreateRequestImpl
-    implements _LecturerAttendanceCreateRequest {
+    extends _LecturerAttendanceCreateRequest {
   const _$LecturerAttendanceCreateRequestImpl(
-      {@JsonKey(name: 'weekly_schedule_id') required this.weeklyScheduleId});
+      {@JsonKey(name: 'weekly_schedule_id') required this.weeklyScheduleId})
+      : super._();
 
   factory _$LecturerAttendanceCreateRequestImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -162,11 +164,12 @@ class _$LecturerAttendanceCreateRequestImpl
 }
 
 abstract class _LecturerAttendanceCreateRequest
-    implements LecturerAttendanceCreateRequest {
+    extends LecturerAttendanceCreateRequest {
   const factory _LecturerAttendanceCreateRequest(
           {@JsonKey(name: 'weekly_schedule_id')
           required final int weeklyScheduleId}) =
       _$LecturerAttendanceCreateRequestImpl;
+  const _LecturerAttendanceCreateRequest._() : super._();
 
   factory _LecturerAttendanceCreateRequest.fromJson(Map<String, dynamic> json) =
       _$LecturerAttendanceCreateRequestImpl.fromJson;

@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
 import './models.dart';
 
 part 'course_table.freezed.dart';
@@ -7,6 +8,9 @@ part 'course_table.g.dart';
 
 @freezed
 class CourseTable with _$CourseTable {
+  const CourseTable._();
+
+  @JsonSerializable(converters: convertors)
   const factory CourseTable({
     @JsonKey(name: 'course_code') required String courseCode,
     @JsonKey(name: 'course_classifications')

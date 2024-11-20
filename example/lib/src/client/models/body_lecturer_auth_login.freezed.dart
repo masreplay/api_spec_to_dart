@@ -124,11 +124,13 @@ class __$$BodyLecturerAuthLoginImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$BodyLecturerAuthLoginImpl implements _BodyLecturerAuthLogin {
+
+@JsonSerializable(converters: convertors)
+class _$BodyLecturerAuthLoginImpl extends _BodyLecturerAuthLogin {
   const _$BodyLecturerAuthLoginImpl(
       {@JsonKey(name: 'username') required this.username,
-      @JsonKey(name: 'password') required this.password});
+      @JsonKey(name: 'password') required this.password})
+      : super._();
 
   factory _$BodyLecturerAuthLoginImpl.fromJson(Map<String, dynamic> json) =>
       _$$BodyLecturerAuthLoginImplFromJson(json);
@@ -177,11 +179,12 @@ class _$BodyLecturerAuthLoginImpl implements _BodyLecturerAuthLogin {
   }
 }
 
-abstract class _BodyLecturerAuthLogin implements BodyLecturerAuthLogin {
+abstract class _BodyLecturerAuthLogin extends BodyLecturerAuthLogin {
   const factory _BodyLecturerAuthLogin(
           {@JsonKey(name: 'username') required final String username,
           @JsonKey(name: 'password') required final String password}) =
       _$BodyLecturerAuthLoginImpl;
+  const _BodyLecturerAuthLogin._() : super._();
 
   factory _BodyLecturerAuthLogin.fromJson(Map<String, dynamic> json) =
       _$BodyLecturerAuthLoginImpl.fromJson;

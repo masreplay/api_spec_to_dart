@@ -246,8 +246,9 @@ class __$$UITextFormFieldImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$UITextFormFieldImpl implements _UITextFormField {
+
+@JsonSerializable(converters: convertors)
+class _$UITextFormFieldImpl extends _UITextFormField {
   const _$UITextFormFieldImpl(
       {@JsonKey(name: 'key') required this.key,
       @JsonKey(name: 'name') required this.name,
@@ -255,11 +256,12 @@ class _$UITextFormFieldImpl implements _UITextFormField {
       @JsonKey(name: 'is_required') required this.isRequired,
       @JsonKey(name: 'read_only') required this.readOnly = false,
       @JsonKey(name: 'doc') required this.doc,
-      @JsonKey(name: 'type') required this.type = String.text,
+      @JsonKey(name: 'type') required this.type = text,
       @JsonKey(name: 'regex') required this.regex,
       @JsonKey(name: 'default_value') required this.defaultValue,
       @JsonKey(name: 'example') required this.example,
-      @JsonKey(name: 'validation_message') required this.validationMessage});
+      @JsonKey(name: 'validation_message') required this.validationMessage})
+      : super._();
 
   factory _$UITextFormFieldImpl.fromJson(Map<String, dynamic> json) =>
       _$$UITextFormFieldImplFromJson(json);
@@ -347,7 +349,7 @@ class _$UITextFormFieldImpl implements _UITextFormField {
   }
 }
 
-abstract class _UITextFormField implements UITextFormField {
+abstract class _UITextFormField extends UITextFormField {
   const factory _UITextFormField(
       {@JsonKey(name: 'key') required final String key,
       @JsonKey(name: 'name') required final String name,
@@ -361,6 +363,7 @@ abstract class _UITextFormField implements UITextFormField {
       @JsonKey(name: 'example') required final String? example,
       @JsonKey(name: 'validation_message')
       required final String? validationMessage}) = _$UITextFormFieldImpl;
+  const _UITextFormField._() : super._();
 
   factory _UITextFormField.fromJson(Map<String, dynamic> json) =
       _$UITextFormFieldImpl.fromJson;

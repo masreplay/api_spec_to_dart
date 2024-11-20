@@ -1,10 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
+
 part 'student_university_card_public.freezed.dart';
 part 'student_university_card_public.g.dart';
 
 @freezed
 class StudentUniversityCardPublic with _$StudentUniversityCardPublic {
+  const StudentUniversityCardPublic._();
+
+  @JsonSerializable(converters: convertors)
   const factory StudentUniversityCardPublic({
     @JsonKey(name: 'id') required int id,
     @JsonKey(name: 'organization_ar_name') required String? organizationArName,

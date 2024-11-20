@@ -65,9 +65,10 @@ class __$$BloodGroupEnumImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$BloodGroupEnumImpl implements _BloodGroupEnum {
-  const _$BloodGroupEnumImpl();
+
+@JsonSerializable(converters: convertors)
+class _$BloodGroupEnumImpl extends _BloodGroupEnum {
+  const _$BloodGroupEnumImpl() : super._();
 
   factory _$BloodGroupEnumImpl.fromJson(Map<String, dynamic> json) =>
       _$$BloodGroupEnumImplFromJson(json);
@@ -95,8 +96,9 @@ class _$BloodGroupEnumImpl implements _BloodGroupEnum {
   }
 }
 
-abstract class _BloodGroupEnum implements BloodGroupEnum {
+abstract class _BloodGroupEnum extends BloodGroupEnum {
   const factory _BloodGroupEnum() = _$BloodGroupEnumImpl;
+  const _BloodGroupEnum._() : super._();
 
   factory _BloodGroupEnum.fromJson(Map<String, dynamic> json) =
       _$BloodGroupEnumImpl.fromJson;

@@ -215,8 +215,9 @@ class __$$UIFormImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$UIFormImpl implements _UIForm {
+
+@JsonSerializable(converters: convertors)
+class _$UIFormImpl extends _UIForm {
   const _$UIFormImpl(
       {@JsonKey(name: 'key') required this.key,
       @JsonKey(name: 'fields') required final List<dynamic> fields,
@@ -227,7 +228,8 @@ class _$UIFormImpl implements _UIForm {
       @JsonKey(name: 'success_message') required this.successMessage,
       @JsonKey(name: 'error_message') required this.errorMessage,
       @JsonKey(name: 'doc') required this.doc})
-      : _fields = fields;
+      : _fields = fields,
+        super._();
 
   factory _$UIFormImpl.fromJson(Map<String, dynamic> json) =>
       _$$UIFormImplFromJson(json);
@@ -322,7 +324,7 @@ class _$UIFormImpl implements _UIForm {
   }
 }
 
-abstract class _UIForm implements UIForm {
+abstract class _UIForm extends UIForm {
   const factory _UIForm(
       {@JsonKey(name: 'key') required final String key,
       @JsonKey(name: 'fields') required final List<dynamic> fields,
@@ -333,6 +335,7 @@ abstract class _UIForm implements UIForm {
       @JsonKey(name: 'success_message') required final String successMessage,
       @JsonKey(name: 'error_message') required final String errorMessage,
       @JsonKey(name: 'doc') required final String? doc}) = _$UIFormImpl;
+  const _UIForm._() : super._();
 
   factory _UIForm.fromJson(Map<String, dynamic> json) = _$UIFormImpl.fromJson;
 

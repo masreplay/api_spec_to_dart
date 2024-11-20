@@ -135,12 +135,14 @@ class __$$SpecializationPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$SpecializationPublicImpl implements _SpecializationPublic {
+
+@JsonSerializable(converters: convertors)
+class _$SpecializationPublicImpl extends _SpecializationPublic {
   const _$SpecializationPublicImpl(
       {@JsonKey(name: 'major_id') required this.majorId,
       @JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'name') required this.name});
+      @JsonKey(name: 'name') required this.name})
+      : super._();
 
   factory _$SpecializationPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$SpecializationPublicImplFromJson(json);
@@ -192,12 +194,13 @@ class _$SpecializationPublicImpl implements _SpecializationPublic {
   }
 }
 
-abstract class _SpecializationPublic implements SpecializationPublic {
+abstract class _SpecializationPublic extends SpecializationPublic {
   const factory _SpecializationPublic(
           {@JsonKey(name: 'major_id') required final int majorId,
           @JsonKey(name: 'id') required final int id,
           @JsonKey(name: 'name') required final String name}) =
       _$SpecializationPublicImpl;
+  const _SpecializationPublic._() : super._();
 
   factory _SpecializationPublic.fromJson(Map<String, dynamic> json) =
       _$SpecializationPublicImpl.fromJson;

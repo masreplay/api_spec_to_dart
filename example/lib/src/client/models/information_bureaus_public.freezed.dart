@@ -139,12 +139,14 @@ class __$$InformationBureausPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$InformationBureausPublicImpl implements _InformationBureausPublic {
+
+@JsonSerializable(converters: convertors)
+class _$InformationBureausPublicImpl extends _InformationBureausPublic {
   const _$InformationBureausPublicImpl(
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'governorate_id') required this.governorateId,
-      @JsonKey(name: 'name') required this.name});
+      @JsonKey(name: 'name') required this.name})
+      : super._();
 
   factory _$InformationBureausPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$InformationBureausPublicImplFromJson(json);
@@ -196,12 +198,13 @@ class _$InformationBureausPublicImpl implements _InformationBureausPublic {
   }
 }
 
-abstract class _InformationBureausPublic implements InformationBureausPublic {
+abstract class _InformationBureausPublic extends InformationBureausPublic {
   const factory _InformationBureausPublic(
           {@JsonKey(name: 'id') required final int id,
           @JsonKey(name: 'governorate_id') required final int governorateId,
           @JsonKey(name: 'name') required final String name}) =
       _$InformationBureausPublicImpl;
+  const _InformationBureausPublic._() : super._();
 
   factory _InformationBureausPublic.fromJson(Map<String, dynamic> json) =
       _$InformationBureausPublicImpl.fromJson;

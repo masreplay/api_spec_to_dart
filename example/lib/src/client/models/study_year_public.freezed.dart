@@ -118,11 +118,13 @@ class __$$StudyYearPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$StudyYearPublicImpl implements _StudyYearPublic {
+
+@JsonSerializable(converters: convertors)
+class _$StudyYearPublicImpl extends _StudyYearPublic {
   const _$StudyYearPublicImpl(
       {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'value') required this.value});
+      @JsonKey(name: 'value') required this.value})
+      : super._();
 
   factory _$StudyYearPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$StudyYearPublicImplFromJson(json);
@@ -169,11 +171,12 @@ class _$StudyYearPublicImpl implements _StudyYearPublic {
   }
 }
 
-abstract class _StudyYearPublic implements StudyYearPublic {
+abstract class _StudyYearPublic extends StudyYearPublic {
   const factory _StudyYearPublic(
           {@JsonKey(name: 'id') required final int id,
           @JsonKey(name: 'value') required final String value}) =
       _$StudyYearPublicImpl;
+  const _StudyYearPublic._() : super._();
 
   factory _StudyYearPublic.fromJson(Map<String, dynamic> json) =
       _$StudyYearPublicImpl.fromJson;

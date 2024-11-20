@@ -127,13 +127,15 @@ class __$$BaseResponseListFeesTypesPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$BaseResponseListFeesTypesPublicImpl
-    implements _BaseResponseListFeesTypesPublic {
+    extends _BaseResponseListFeesTypesPublic {
   const _$BaseResponseListFeesTypesPublicImpl(
       {@JsonKey(name: 'message') required this.message,
       @JsonKey(name: 'data') required final List<dynamic> data})
-      : _data = data;
+      : _data = data,
+        super._();
 
   factory _$BaseResponseListFeesTypesPublicImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -189,11 +191,12 @@ class _$BaseResponseListFeesTypesPublicImpl
 }
 
 abstract class _BaseResponseListFeesTypesPublic
-    implements BaseResponseListFeesTypesPublic {
+    extends BaseResponseListFeesTypesPublic {
   const factory _BaseResponseListFeesTypesPublic(
           {@JsonKey(name: 'message') required final String? message,
           @JsonKey(name: 'data') required final List<dynamic> data}) =
       _$BaseResponseListFeesTypesPublicImpl;
+  const _BaseResponseListFeesTypesPublic._() : super._();
 
   factory _BaseResponseListFeesTypesPublic.fromJson(Map<String, dynamic> json) =
       _$BaseResponseListFeesTypesPublicImpl.fromJson;

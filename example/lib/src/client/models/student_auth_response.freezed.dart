@@ -218,8 +218,9 @@ class __$$StudentAuthResponseImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$StudentAuthResponseImpl implements _StudentAuthResponse {
+
+@JsonSerializable(converters: convertors)
+class _$StudentAuthResponseImpl extends _StudentAuthResponse {
   const _$StudentAuthResponseImpl(
       {@JsonKey(name: 'access_token') required this.accessToken,
       @JsonKey(name: 'expires_in') required this.expiresIn,
@@ -227,7 +228,8 @@ class _$StudentAuthResponseImpl implements _StudentAuthResponse {
       @JsonKey(name: 'refresh_expires_in') required this.refreshExpiresIn,
       @JsonKey(name: 'user_id') required this.userId,
       @JsonKey(name: 'user_role') required this.userRole = 0,
-      @JsonKey(name: 'status') required this.status});
+      @JsonKey(name: 'status') required this.status})
+      : super._();
 
   factory _$StudentAuthResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$StudentAuthResponseImplFromJson(json);
@@ -300,7 +302,7 @@ class _$StudentAuthResponseImpl implements _StudentAuthResponse {
   }
 }
 
-abstract class _StudentAuthResponse implements StudentAuthResponse {
+abstract class _StudentAuthResponse extends StudentAuthResponse {
   const factory _StudentAuthResponse(
       {@JsonKey(name: 'access_token') required final String accessToken,
       @JsonKey(name: 'expires_in') required final int expiresIn,
@@ -311,6 +313,7 @@ abstract class _StudentAuthResponse implements StudentAuthResponse {
       @JsonKey(name: 'status')
       required final AuthenticationStatusResponse
           status}) = _$StudentAuthResponseImpl;
+  const _StudentAuthResponse._() : super._();
 
   factory _StudentAuthResponse.fromJson(Map<String, dynamic> json) =
       _$StudentAuthResponseImpl.fromJson;

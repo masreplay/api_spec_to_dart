@@ -1,10 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
+
 part 'student_device_create.freezed.dart';
 part 'student_device_create.g.dart';
 
 @freezed
 class StudentDeviceCreate with _$StudentDeviceCreate {
+  const StudentDeviceCreate._();
+
+  @JsonSerializable(converters: convertors)
   const factory StudentDeviceCreate({
     @JsonKey(name: 'device_token') required String? deviceToken,
     @JsonKey(name: 'os_type') required String? oSType,

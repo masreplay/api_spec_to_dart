@@ -1,10 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
+
 part 'app_settings_ios.freezed.dart';
 part 'app_settings_ios.g.dart';
 
 @freezed
 class AppSettingsIos with _$AppSettingsIos {
+  const AppSettingsIos._();
+
+  @JsonSerializable(converters: convertors)
   const factory AppSettingsIos({
     @JsonKey(name: 'version') required String version,
     @JsonKey(name: 'url') required String? url,

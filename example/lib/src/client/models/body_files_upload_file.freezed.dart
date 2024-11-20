@@ -66,12 +66,12 @@ class _$BodyFilesUploadFileCopyWithImpl<$Res, $Val extends BodyFilesUploadFile>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? file = freezed,
+    Object? file = null,
     Object? entityId = freezed,
     Object? collection = null,
   }) {
     return _then(_value.copyWith(
-      file: freezed == file
+      file: null == file
           ? _value.file
           : file // ignore: cast_nullable_to_non_nullable
               as File,
@@ -127,12 +127,12 @@ class __$$BodyFilesUploadFileImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? file = freezed,
+    Object? file = null,
     Object? entityId = freezed,
     Object? collection = null,
   }) {
     return _then(_$BodyFilesUploadFileImpl(
-      file: freezed == file
+      file: null == file
           ? _value.file
           : file // ignore: cast_nullable_to_non_nullable
               as File,
@@ -149,12 +149,14 @@ class __$$BodyFilesUploadFileImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$BodyFilesUploadFileImpl implements _BodyFilesUploadFile {
+
+@JsonSerializable(converters: convertors)
+class _$BodyFilesUploadFileImpl extends _BodyFilesUploadFile {
   const _$BodyFilesUploadFileImpl(
       {@JsonKey(name: 'file') required this.file,
       @JsonKey(name: 'entity_id') required this.entityId,
-      @JsonKey(name: 'collection') required this.collection});
+      @JsonKey(name: 'collection') required this.collection})
+      : super._();
 
   factory _$BodyFilesUploadFileImpl.fromJson(Map<String, dynamic> json) =>
       _$$BodyFilesUploadFileImplFromJson(json);
@@ -179,7 +181,7 @@ class _$BodyFilesUploadFileImpl implements _BodyFilesUploadFile {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BodyFilesUploadFileImpl &&
-            const DeepCollectionEquality().equals(other.file, file) &&
+            (identical(other.file, file) || other.file == file) &&
             (identical(other.entityId, entityId) ||
                 other.entityId == entityId) &&
             (identical(other.collection, collection) ||
@@ -188,8 +190,7 @@ class _$BodyFilesUploadFileImpl implements _BodyFilesUploadFile {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(file), entityId, collection);
+  int get hashCode => Object.hash(runtimeType, file, entityId, collection);
 
   /// Create a copy of BodyFilesUploadFile
   /// with the given fields replaced by the non-null parameter values.
@@ -208,13 +209,14 @@ class _$BodyFilesUploadFileImpl implements _BodyFilesUploadFile {
   }
 }
 
-abstract class _BodyFilesUploadFile implements BodyFilesUploadFile {
+abstract class _BodyFilesUploadFile extends BodyFilesUploadFile {
   const factory _BodyFilesUploadFile(
           {@JsonKey(name: 'file') required final File file,
           @JsonKey(name: 'entity_id') required final int? entityId,
           @JsonKey(name: 'collection')
           required final FileCollectionEnum collection}) =
       _$BodyFilesUploadFileImpl;
+  const _BodyFilesUploadFile._() : super._();
 
   factory _BodyFilesUploadFile.fromJson(Map<String, dynamic> json) =
       _$BodyFilesUploadFileImpl.fromJson;

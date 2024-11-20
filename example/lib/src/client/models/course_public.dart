@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
 import './models.dart';
 
 part 'course_public.freezed.dart';
@@ -7,6 +8,9 @@ part 'course_public.g.dart';
 
 @freezed
 class CoursePublic with _$CoursePublic {
+  const CoursePublic._();
+
+  @JsonSerializable(converters: convertors)
   const factory CoursePublic({
     @JsonKey(name: 'course_code') required String courseCode,
     @JsonKey(name: 'course_classifications')

@@ -265,8 +265,9 @@ class __$$CourseDistributionsTableImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$CourseDistributionsTableImpl implements _CourseDistributionsTable {
+
+@JsonSerializable(converters: convertors)
+class _$CourseDistributionsTableImpl extends _CourseDistributionsTable {
   const _$CourseDistributionsTableImpl(
       {@JsonKey(name: 'academic_year_divisionId')
       required this.academicYearDivisionId,
@@ -281,7 +282,8 @@ class _$CourseDistributionsTableImpl implements _CourseDistributionsTable {
       required this.lastModificationTime,
       @JsonKey(name: 'is_deleted') required this.isDeleted,
       @JsonKey(name: 'deleter_id') required this.deleterId,
-      @JsonKey(name: 'deletion_time') required this.deletionTime});
+      @JsonKey(name: 'deletion_time') required this.deletionTime})
+      : super._();
 
   factory _$CourseDistributionsTableImpl.fromJson(Map<String, dynamic> json) =>
       _$$CourseDistributionsTableImplFromJson(json);
@@ -391,7 +393,7 @@ class _$CourseDistributionsTableImpl implements _CourseDistributionsTable {
   }
 }
 
-abstract class _CourseDistributionsTable implements CourseDistributionsTable {
+abstract class _CourseDistributionsTable extends CourseDistributionsTable {
   const factory _CourseDistributionsTable(
       {@JsonKey(name: 'academic_year_divisionId')
       required final int academicYearDivisionId,
@@ -408,6 +410,7 @@ abstract class _CourseDistributionsTable implements CourseDistributionsTable {
       @JsonKey(name: 'deleter_id') required final int? deleterId,
       @JsonKey(name: 'deletion_time')
       required final DateTime? deletionTime}) = _$CourseDistributionsTableImpl;
+  const _CourseDistributionsTable._() : super._();
 
   factory _CourseDistributionsTable.fromJson(Map<String, dynamic> json) =
       _$CourseDistributionsTableImpl.fromJson;

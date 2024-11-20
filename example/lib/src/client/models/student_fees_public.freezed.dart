@@ -196,8 +196,9 @@ class __$$StudentFeesPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$StudentFeesPublicImpl implements _StudentFeesPublic {
+
+@JsonSerializable(converters: convertors)
+class _$StudentFeesPublicImpl extends _StudentFeesPublic {
   const _$StudentFeesPublicImpl(
       {@JsonKey(name: 'student_academic_status_id')
       required this.studentAcademicStatusId,
@@ -205,7 +206,8 @@ class _$StudentFeesPublicImpl implements _StudentFeesPublic {
       @JsonKey(name: 'receipt_number') required this.receiptNumber,
       @JsonKey(name: 'receipt_date') required this.receiptDate,
       @JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'fees_type') required this.feesType});
+      @JsonKey(name: 'fees_type') required this.feesType})
+      : super._();
 
   factory _$StudentFeesPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$StudentFeesPublicImplFromJson(json);
@@ -274,7 +276,7 @@ class _$StudentFeesPublicImpl implements _StudentFeesPublic {
   }
 }
 
-abstract class _StudentFeesPublic implements StudentFeesPublic {
+abstract class _StudentFeesPublic extends StudentFeesPublic {
   const factory _StudentFeesPublic(
           {@JsonKey(name: 'student_academic_status_id')
           required final int studentAcademicStatusId,
@@ -285,6 +287,7 @@ abstract class _StudentFeesPublic implements StudentFeesPublic {
           @JsonKey(name: 'fees_type')
           required final StudentFeesFeesTypesPublic? feesType}) =
       _$StudentFeesPublicImpl;
+  const _StudentFeesPublic._() : super._();
 
   factory _StudentFeesPublic.fromJson(Map<String, dynamic> json) =
       _$StudentFeesPublicImpl.fromJson;

@@ -109,9 +109,11 @@ class __$$VerifyOtpRequestPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$VerifyOtpRequestPublicImpl implements _VerifyOtpRequestPublic {
-  const _$VerifyOtpRequestPublicImpl({@JsonKey(name: 'otp') required this.otp});
+
+@JsonSerializable(converters: convertors)
+class _$VerifyOtpRequestPublicImpl extends _VerifyOtpRequestPublic {
+  const _$VerifyOtpRequestPublicImpl({@JsonKey(name: 'otp') required this.otp})
+      : super._();
 
   factory _$VerifyOtpRequestPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$VerifyOtpRequestPublicImplFromJson(json);
@@ -154,10 +156,11 @@ class _$VerifyOtpRequestPublicImpl implements _VerifyOtpRequestPublic {
   }
 }
 
-abstract class _VerifyOtpRequestPublic implements VerifyOtpRequestPublic {
+abstract class _VerifyOtpRequestPublic extends VerifyOtpRequestPublic {
   const factory _VerifyOtpRequestPublic(
           {@JsonKey(name: 'otp') required final String otp}) =
       _$VerifyOtpRequestPublicImpl;
+  const _VerifyOtpRequestPublic._() : super._();
 
   factory _VerifyOtpRequestPublic.fromJson(Map<String, dynamic> json) =
       _$VerifyOtpRequestPublicImpl.fromJson;

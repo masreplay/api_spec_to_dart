@@ -1,10 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
+
 part 'ui_select_form_field_option.freezed.dart';
 part 'ui_select_form_field_option.g.dart';
 
 @freezed
 class UISelectFormFieldOption with _$UISelectFormFieldOption {
+  const UISelectFormFieldOption._();
+
+  @JsonSerializable(converters: convertors)
   const factory UISelectFormFieldOption({
     @JsonKey(name: 'value') required String value,
     @JsonKey(name: 'text') required String text,

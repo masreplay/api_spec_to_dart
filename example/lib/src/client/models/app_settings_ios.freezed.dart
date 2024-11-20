@@ -134,12 +134,14 @@ class __$$AppSettingsIosImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$AppSettingsIosImpl implements _AppSettingsIos {
+
+@JsonSerializable(converters: convertors)
+class _$AppSettingsIosImpl extends _AppSettingsIos {
   const _$AppSettingsIosImpl(
       {@JsonKey(name: 'version') required this.version,
       @JsonKey(name: 'url') required this.url,
-      @JsonKey(name: 'message') required this.message});
+      @JsonKey(name: 'message') required this.message})
+      : super._();
 
   factory _$AppSettingsIosImpl.fromJson(Map<String, dynamic> json) =>
       _$$AppSettingsIosImplFromJson(json);
@@ -190,12 +192,13 @@ class _$AppSettingsIosImpl implements _AppSettingsIos {
   }
 }
 
-abstract class _AppSettingsIos implements AppSettingsIos {
+abstract class _AppSettingsIos extends AppSettingsIos {
   const factory _AppSettingsIos(
           {@JsonKey(name: 'version') required final String version,
           @JsonKey(name: 'url') required final String? url,
           @JsonKey(name: 'message') required final String? message}) =
       _$AppSettingsIosImpl;
+  const _AppSettingsIos._() : super._();
 
   factory _AppSettingsIos.fromJson(Map<String, dynamic> json) =
       _$AppSettingsIosImpl.fromJson;

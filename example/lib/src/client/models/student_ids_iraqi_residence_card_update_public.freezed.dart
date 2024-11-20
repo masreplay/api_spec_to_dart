@@ -216,9 +216,10 @@ class __$$StudentIdsIraqiResidenceCardUpdatePublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$StudentIdsIraqiResidenceCardUpdatePublicImpl
-    implements _StudentIdsIraqiResidenceCardUpdatePublic {
+    extends _StudentIdsIraqiResidenceCardUpdatePublic {
   const _$StudentIdsIraqiResidenceCardUpdatePublicImpl(
       {@JsonKey(name: 'information_bureau_id')
       required this.informationBureauId,
@@ -233,7 +234,8 @@ class _$StudentIdsIraqiResidenceCardUpdatePublicImpl
       @JsonKey(name: 'iraqi_residence_card_sequence')
       required this.iraqiResidenceCardSequence,
       @JsonKey(name: 'iraqi_residence_card_date_of_issue')
-      required this.iraqiResidenceCardDateOfIssue});
+      required this.iraqiResidenceCardDateOfIssue})
+      : super._();
 
   factory _$StudentIdsIraqiResidenceCardUpdatePublicImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -330,7 +332,7 @@ class _$StudentIdsIraqiResidenceCardUpdatePublicImpl
 }
 
 abstract class _StudentIdsIraqiResidenceCardUpdatePublic
-    implements StudentIdsIraqiResidenceCardUpdatePublic {
+    extends StudentIdsIraqiResidenceCardUpdatePublic {
   const factory _StudentIdsIraqiResidenceCardUpdatePublic(
           {@JsonKey(name: 'information_bureau_id')
           required final int informationBureauId,
@@ -347,6 +349,7 @@ abstract class _StudentIdsIraqiResidenceCardUpdatePublic
           @JsonKey(name: 'iraqi_residence_card_date_of_issue')
           required final DateTime iraqiResidenceCardDateOfIssue}) =
       _$StudentIdsIraqiResidenceCardUpdatePublicImpl;
+  const _StudentIdsIraqiResidenceCardUpdatePublic._() : super._();
 
   factory _StudentIdsIraqiResidenceCardUpdatePublic.fromJson(
           Map<String, dynamic> json) =

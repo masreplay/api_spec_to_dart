@@ -136,14 +136,16 @@ class __$$SummaryResponseImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$SummaryResponseImpl implements _SummaryResponse {
+
+@JsonSerializable(converters: convertors)
+class _$SummaryResponseImpl extends _SummaryResponse {
   const _$SummaryResponseImpl(
       {@JsonKey(name: 'number_of_collage_subjects')
       required this.numberOfCollageSubjects,
       @JsonKey(name: 'number_of_units') required this.numberOfUnits,
       @JsonKey(name: 'number_of_completed_units')
-      required this.numberOfCompletedUnits});
+      required this.numberOfCompletedUnits})
+      : super._();
 
   factory _$SummaryResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$SummaryResponseImplFromJson(json);
@@ -199,13 +201,14 @@ class _$SummaryResponseImpl implements _SummaryResponse {
   }
 }
 
-abstract class _SummaryResponse implements SummaryResponse {
+abstract class _SummaryResponse extends SummaryResponse {
   const factory _SummaryResponse(
       {@JsonKey(name: 'number_of_collage_subjects')
       required final int? numberOfCollageSubjects,
       @JsonKey(name: 'number_of_units') required final int? numberOfUnits,
       @JsonKey(name: 'number_of_completed_units')
       required final int? numberOfCompletedUnits}) = _$SummaryResponseImpl;
+  const _SummaryResponse._() : super._();
 
   factory _SummaryResponse.fromJson(Map<String, dynamic> json) =
       _$SummaryResponseImpl.fromJson;

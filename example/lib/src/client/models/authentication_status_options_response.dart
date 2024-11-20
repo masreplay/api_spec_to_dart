@@ -1,11 +1,16 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
+
 part 'authentication_status_options_response.freezed.dart';
 part 'authentication_status_options_response.g.dart';
 
 @freezed
 class AuthenticationStatusOptionsResponse
     with _$AuthenticationStatusOptionsResponse {
+  const AuthenticationStatusOptionsResponse._();
+
+  @JsonSerializable(converters: convertors)
   const factory AuthenticationStatusOptionsResponse({
     @JsonKey(name: 'need_temporary_password_changed')
     required bool needTemporaryPasswordChanged,

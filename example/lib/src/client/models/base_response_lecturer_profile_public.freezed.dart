@@ -142,12 +142,14 @@ class __$$BaseResponseLecturerProfilePublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$BaseResponseLecturerProfilePublicImpl
-    implements _BaseResponseLecturerProfilePublic {
+    extends _BaseResponseLecturerProfilePublic {
   const _$BaseResponseLecturerProfilePublicImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required this.data});
+      @JsonKey(name: 'data') required this.data})
+      : super._();
 
   factory _$BaseResponseLecturerProfilePublicImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -197,11 +199,12 @@ class _$BaseResponseLecturerProfilePublicImpl
 }
 
 abstract class _BaseResponseLecturerProfilePublic
-    implements BaseResponseLecturerProfilePublic {
+    extends BaseResponseLecturerProfilePublic {
   const factory _BaseResponseLecturerProfilePublic(
           {@JsonKey(name: 'message') required final String? message,
           @JsonKey(name: 'data') required final LecturerProfilePublic data}) =
       _$BaseResponseLecturerProfilePublicImpl;
+  const _BaseResponseLecturerProfilePublic._() : super._();
 
   factory _BaseResponseLecturerProfilePublic.fromJson(
           Map<String, dynamic> json) =

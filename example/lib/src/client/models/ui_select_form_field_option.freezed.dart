@@ -125,11 +125,13 @@ class __$$UISelectFormFieldOptionImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$UISelectFormFieldOptionImpl implements _UISelectFormFieldOption {
+
+@JsonSerializable(converters: convertors)
+class _$UISelectFormFieldOptionImpl extends _UISelectFormFieldOption {
   const _$UISelectFormFieldOptionImpl(
       {@JsonKey(name: 'value') required this.value,
-      @JsonKey(name: 'text') required this.text});
+      @JsonKey(name: 'text') required this.text})
+      : super._();
 
   factory _$UISelectFormFieldOptionImpl.fromJson(Map<String, dynamic> json) =>
       _$$UISelectFormFieldOptionImplFromJson(json);
@@ -176,11 +178,12 @@ class _$UISelectFormFieldOptionImpl implements _UISelectFormFieldOption {
   }
 }
 
-abstract class _UISelectFormFieldOption implements UISelectFormFieldOption {
+abstract class _UISelectFormFieldOption extends UISelectFormFieldOption {
   const factory _UISelectFormFieldOption(
           {@JsonKey(name: 'value') required final String value,
           @JsonKey(name: 'text') required final String text}) =
       _$UISelectFormFieldOptionImpl;
+  const _UISelectFormFieldOption._() : super._();
 
   factory _UISelectFormFieldOption.fromJson(Map<String, dynamic> json) =
       _$UISelectFormFieldOptionImpl.fromJson;

@@ -1,10 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
+
 part 'academic_year_division_public.freezed.dart';
 part 'academic_year_division_public.g.dart';
 
 @freezed
 class AcademicYearDivisionPublic with _$AcademicYearDivisionPublic {
+  const AcademicYearDivisionPublic._();
+
+  @JsonSerializable(converters: convertors)
   const factory AcademicYearDivisionPublic({
     @JsonKey(name: 'id') required int id,
     @JsonKey(name: 'academic_learning_framework_system_id')

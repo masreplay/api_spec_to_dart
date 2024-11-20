@@ -134,12 +134,14 @@ class __$$PaymentInfoAmountImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$PaymentInfoAmountImpl implements _PaymentInfoAmount {
+
+@JsonSerializable(converters: convertors)
+class _$PaymentInfoAmountImpl extends _PaymentInfoAmount {
   const _$PaymentInfoAmountImpl(
       {@JsonKey(name: 'total') required this.total,
       @JsonKey(name: 'tax') required this.tax,
-      @JsonKey(name: 'cost') required this.cost});
+      @JsonKey(name: 'cost') required this.cost})
+      : super._();
 
   factory _$PaymentInfoAmountImpl.fromJson(Map<String, dynamic> json) =>
       _$$PaymentInfoAmountImplFromJson(json);
@@ -190,12 +192,13 @@ class _$PaymentInfoAmountImpl implements _PaymentInfoAmount {
   }
 }
 
-abstract class _PaymentInfoAmount implements PaymentInfoAmount {
+abstract class _PaymentInfoAmount extends PaymentInfoAmount {
   const factory _PaymentInfoAmount(
           {@JsonKey(name: 'total') required final int total,
           @JsonKey(name: 'tax') required final int tax,
           @JsonKey(name: 'cost') required final int cost}) =
       _$PaymentInfoAmountImpl;
+  const _PaymentInfoAmount._() : super._();
 
   factory _PaymentInfoAmount.fromJson(Map<String, dynamic> json) =
       _$PaymentInfoAmountImpl.fromJson;

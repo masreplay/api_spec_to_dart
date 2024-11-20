@@ -65,9 +65,10 @@ class __$$GenderEnumImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$GenderEnumImpl implements _GenderEnum {
-  const _$GenderEnumImpl();
+
+@JsonSerializable(converters: convertors)
+class _$GenderEnumImpl extends _GenderEnum {
+  const _$GenderEnumImpl() : super._();
 
   factory _$GenderEnumImpl.fromJson(Map<String, dynamic> json) =>
       _$$GenderEnumImplFromJson(json);
@@ -95,8 +96,9 @@ class _$GenderEnumImpl implements _GenderEnum {
   }
 }
 
-abstract class _GenderEnum implements GenderEnum {
+abstract class _GenderEnum extends GenderEnum {
   const factory _GenderEnum() = _$GenderEnumImpl;
+  const _GenderEnum._() : super._();
 
   factory _GenderEnum.fromJson(Map<String, dynamic> json) =
       _$GenderEnumImpl.fromJson;

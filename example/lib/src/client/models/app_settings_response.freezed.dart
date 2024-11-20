@@ -191,15 +191,17 @@ class __$$AppSettingsResponseImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$AppSettingsResponseImpl implements _AppSettingsResponse {
+
+@JsonSerializable(converters: convertors)
+class _$AppSettingsResponseImpl extends _AppSettingsResponse {
   const _$AppSettingsResponseImpl(
       {@JsonKey(name: 'language') required this.language,
       @JsonKey(name: 'privacy_policy_url') required this.privacyPolicyUrl,
       @JsonKey(name: 'terms_of_service_url') required this.termsOfServiceUrl,
       @JsonKey(name: 'about_url') required this.aboutUrl,
       @JsonKey(name: 'update') required this.update,
-      @JsonKey(name: 'version') required this.version});
+      @JsonKey(name: 'version') required this.version})
+      : super._();
 
   factory _$AppSettingsResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$AppSettingsResponseImplFromJson(json);
@@ -267,7 +269,7 @@ class _$AppSettingsResponseImpl implements _AppSettingsResponse {
   }
 }
 
-abstract class _AppSettingsResponse implements AppSettingsResponse {
+abstract class _AppSettingsResponse extends AppSettingsResponse {
   const factory _AppSettingsResponse(
           {@JsonKey(name: 'language') required final String language,
           @JsonKey(name: 'privacy_policy_url')
@@ -278,6 +280,7 @@ abstract class _AppSettingsResponse implements AppSettingsResponse {
           @JsonKey(name: 'update') required final AppSettingsUpdate update,
           @JsonKey(name: 'version') required final String? version}) =
       _$AppSettingsResponseImpl;
+  const _AppSettingsResponse._() : super._();
 
   factory _AppSettingsResponse.fromJson(Map<String, dynamic> json) =
       _$AppSettingsResponseImpl.fromJson;

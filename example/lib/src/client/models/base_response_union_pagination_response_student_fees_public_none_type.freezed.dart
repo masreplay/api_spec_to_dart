@@ -171,12 +171,14 @@ class __$$BaseResponseUnionPaginationResponseStudentFeesPublicNoneTypeImplCopyWi
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$BaseResponseUnionPaginationResponseStudentFeesPublicNoneTypeImpl
-    implements _BaseResponseUnionPaginationResponseStudentFeesPublicNoneType {
+    extends _BaseResponseUnionPaginationResponseStudentFeesPublicNoneType {
   const _$BaseResponseUnionPaginationResponseStudentFeesPublicNoneTypeImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required this.data});
+      @JsonKey(name: 'data') required this.data})
+      : super._();
 
   factory _$BaseResponseUnionPaginationResponseStudentFeesPublicNoneTypeImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -230,12 +232,14 @@ class _$BaseResponseUnionPaginationResponseStudentFeesPublicNoneTypeImpl
 }
 
 abstract class _BaseResponseUnionPaginationResponseStudentFeesPublicNoneType
-    implements BaseResponseUnionPaginationResponseStudentFeesPublicNoneType {
+    extends BaseResponseUnionPaginationResponseStudentFeesPublicNoneType {
   const factory _BaseResponseUnionPaginationResponseStudentFeesPublicNoneType(
           {@JsonKey(name: 'message') required final String? message,
           @JsonKey(name: 'data')
           required final PaginationResponseStudentFeesPublic? data}) =
       _$BaseResponseUnionPaginationResponseStudentFeesPublicNoneTypeImpl;
+  const _BaseResponseUnionPaginationResponseStudentFeesPublicNoneType._()
+      : super._();
 
   factory _BaseResponseUnionPaginationResponseStudentFeesPublicNoneType.fromJson(
           Map<String, dynamic> json) =

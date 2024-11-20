@@ -142,12 +142,13 @@ class __$$BaseResponseStudentOSPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$BaseResponseStudentOSPublicImpl
-    implements _BaseResponseStudentOSPublic {
+
+@JsonSerializable(converters: convertors)
+class _$BaseResponseStudentOSPublicImpl extends _BaseResponseStudentOSPublic {
   const _$BaseResponseStudentOSPublicImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required this.data});
+      @JsonKey(name: 'data') required this.data})
+      : super._();
 
   factory _$BaseResponseStudentOSPublicImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -196,11 +197,12 @@ class _$BaseResponseStudentOSPublicImpl
 }
 
 abstract class _BaseResponseStudentOSPublic
-    implements BaseResponseStudentOSPublic {
+    extends BaseResponseStudentOSPublic {
   const factory _BaseResponseStudentOSPublic(
           {@JsonKey(name: 'message') required final String? message,
           @JsonKey(name: 'data') required final StudentOSPublic data}) =
       _$BaseResponseStudentOSPublicImpl;
+  const _BaseResponseStudentOSPublic._() : super._();
 
   factory _BaseResponseStudentOSPublic.fromJson(Map<String, dynamic> json) =
       _$BaseResponseStudentOSPublicImpl.fromJson;

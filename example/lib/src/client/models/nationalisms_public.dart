@@ -1,10 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
+
 part 'nationalisms_public.freezed.dart';
 part 'nationalisms_public.g.dart';
 
 @freezed
 class NationalismsPublic with _$NationalismsPublic {
+  const NationalismsPublic._();
+
+  @JsonSerializable(converters: convertors)
   const factory NationalismsPublic({
     @JsonKey(name: 'id') required int id,
     @JsonKey(name: 'name') required String name,

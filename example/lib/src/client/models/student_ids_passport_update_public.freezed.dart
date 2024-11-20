@@ -171,9 +171,10 @@ class __$$StudentIdsPassportUpdatePublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$StudentIdsPassportUpdatePublicImpl
-    implements _StudentIdsPassportUpdatePublic {
+    extends _StudentIdsPassportUpdatePublic {
   const _$StudentIdsPassportUpdatePublicImpl(
       {@JsonKey(name: 'passport_number') required this.passportNumber,
       @JsonKey(name: 'passport_country_id') required this.passportCountryId,
@@ -182,7 +183,8 @@ class _$StudentIdsPassportUpdatePublicImpl
       @JsonKey(name: 'passport_date_of_issue')
       required this.passportDateOfIssue,
       @JsonKey(name: 'passport_date_of_expiry')
-      required this.passportDateOfExpiry});
+      required this.passportDateOfExpiry})
+      : super._();
 
   factory _$StudentIdsPassportUpdatePublicImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -256,7 +258,7 @@ class _$StudentIdsPassportUpdatePublicImpl
 }
 
 abstract class _StudentIdsPassportUpdatePublic
-    implements StudentIdsPassportUpdatePublic {
+    extends StudentIdsPassportUpdatePublic {
   const factory _StudentIdsPassportUpdatePublic(
       {@JsonKey(name: 'passport_number') required final String passportNumber,
       @JsonKey(name: 'passport_country_id')
@@ -268,6 +270,7 @@ abstract class _StudentIdsPassportUpdatePublic
       @JsonKey(name: 'passport_date_of_expiry')
       required final DateTime
           passportDateOfExpiry}) = _$StudentIdsPassportUpdatePublicImpl;
+  const _StudentIdsPassportUpdatePublic._() : super._();
 
   factory _StudentIdsPassportUpdatePublic.fromJson(Map<String, dynamic> json) =
       _$StudentIdsPassportUpdatePublicImpl.fromJson;

@@ -65,9 +65,10 @@ class __$$FileCollectionEnumImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$FileCollectionEnumImpl implements _FileCollectionEnum {
-  const _$FileCollectionEnumImpl();
+
+@JsonSerializable(converters: convertors)
+class _$FileCollectionEnumImpl extends _FileCollectionEnum {
+  const _$FileCollectionEnumImpl() : super._();
 
   factory _$FileCollectionEnumImpl.fromJson(Map<String, dynamic> json) =>
       _$$FileCollectionEnumImplFromJson(json);
@@ -95,8 +96,9 @@ class _$FileCollectionEnumImpl implements _FileCollectionEnum {
   }
 }
 
-abstract class _FileCollectionEnum implements FileCollectionEnum {
+abstract class _FileCollectionEnum extends FileCollectionEnum {
   const factory _FileCollectionEnum() = _$FileCollectionEnumImpl;
+  const _FileCollectionEnum._() : super._();
 
   factory _FileCollectionEnum.fromJson(Map<String, dynamic> json) =
       _$FileCollectionEnumImpl.fromJson;

@@ -142,12 +142,14 @@ class __$$RegistrationRequestStatusResponseImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$RegistrationRequestStatusResponseImpl
-    implements _RegistrationRequestStatusResponse {
+    extends _RegistrationRequestStatusResponse {
   const _$RegistrationRequestStatusResponseImpl(
       {@JsonKey(name: 'status') required this.status,
-      @JsonKey(name: 'message') required this.message});
+      @JsonKey(name: 'message') required this.message})
+      : super._();
 
   factory _$RegistrationRequestStatusResponseImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -197,11 +199,12 @@ class _$RegistrationRequestStatusResponseImpl
 }
 
 abstract class _RegistrationRequestStatusResponse
-    implements RegistrationRequestStatusResponse {
+    extends RegistrationRequestStatusResponse {
   const factory _RegistrationRequestStatusResponse(
           {@JsonKey(name: 'status') required final StudentRequestStatus status,
           @JsonKey(name: 'message') required final String? message}) =
       _$RegistrationRequestStatusResponseImpl;
+  const _RegistrationRequestStatusResponse._() : super._();
 
   factory _RegistrationRequestStatusResponse.fromJson(
           Map<String, dynamic> json) =

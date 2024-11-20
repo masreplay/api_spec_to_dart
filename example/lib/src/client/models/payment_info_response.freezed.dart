@@ -135,13 +135,15 @@ class __$$PaymentInfoResponseImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$PaymentInfoResponseImpl implements _PaymentInfoResponse {
+
+@JsonSerializable(converters: convertors)
+class _$PaymentInfoResponseImpl extends _PaymentInfoResponse {
   const _$PaymentInfoResponseImpl(
       {@JsonKey(name: 'amount') required this.amount,
       @JsonKey(name: 'payment_methods')
       required final List<dynamic> paymentMethods})
-      : _paymentMethods = paymentMethods;
+      : _paymentMethods = paymentMethods,
+        super._();
 
   factory _$PaymentInfoResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$PaymentInfoResponseImplFromJson(json);
@@ -195,11 +197,12 @@ class _$PaymentInfoResponseImpl implements _PaymentInfoResponse {
   }
 }
 
-abstract class _PaymentInfoResponse implements PaymentInfoResponse {
+abstract class _PaymentInfoResponse extends PaymentInfoResponse {
   const factory _PaymentInfoResponse(
       {@JsonKey(name: 'amount') required final PaymentInfoAmount amount,
       @JsonKey(name: 'payment_methods')
       required final List<dynamic> paymentMethods}) = _$PaymentInfoResponseImpl;
+  const _PaymentInfoResponse._() : super._();
 
   factory _PaymentInfoResponse.fromJson(Map<String, dynamic> json) =
       _$PaymentInfoResponseImpl.fromJson;

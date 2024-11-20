@@ -192,15 +192,17 @@ class __$$LecturerAuthResponseImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$LecturerAuthResponseImpl implements _LecturerAuthResponse {
+
+@JsonSerializable(converters: convertors)
+class _$LecturerAuthResponseImpl extends _LecturerAuthResponse {
   const _$LecturerAuthResponseImpl(
       {@JsonKey(name: 'access_token') required this.accessToken,
       @JsonKey(name: 'expires_in') required this.expiresIn,
       @JsonKey(name: 'refresh_token') required this.refreshToken,
       @JsonKey(name: 'refresh_expires_in') required this.refreshExpiresIn,
       @JsonKey(name: 'user_id') required this.userId,
-      @JsonKey(name: 'user_role') required this.userRole = 1});
+      @JsonKey(name: 'user_role') required this.userRole = 1})
+      : super._();
 
   factory _$LecturerAuthResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$LecturerAuthResponseImplFromJson(json);
@@ -270,7 +272,7 @@ class _$LecturerAuthResponseImpl implements _LecturerAuthResponse {
   }
 }
 
-abstract class _LecturerAuthResponse implements LecturerAuthResponse {
+abstract class _LecturerAuthResponse extends LecturerAuthResponse {
   const factory _LecturerAuthResponse(
       {@JsonKey(name: 'access_token') required final String accessToken,
       @JsonKey(name: 'expires_in') required final int expiresIn,
@@ -279,6 +281,7 @@ abstract class _LecturerAuthResponse implements LecturerAuthResponse {
       @JsonKey(name: 'user_id') required final int userId,
       @JsonKey(name: 'user_role')
       required final UserRole userRole}) = _$LecturerAuthResponseImpl;
+  const _LecturerAuthResponse._() : super._();
 
   factory _LecturerAuthResponse.fromJson(Map<String, dynamic> json) =
       _$LecturerAuthResponseImpl.fromJson;

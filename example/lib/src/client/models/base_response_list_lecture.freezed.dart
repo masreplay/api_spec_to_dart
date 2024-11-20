@@ -125,12 +125,14 @@ class __$$BaseResponseListLectureImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$BaseResponseListLectureImpl implements _BaseResponseListLecture {
+
+@JsonSerializable(converters: convertors)
+class _$BaseResponseListLectureImpl extends _BaseResponseListLecture {
   const _$BaseResponseListLectureImpl(
       {@JsonKey(name: 'message') required this.message,
       @JsonKey(name: 'data') required final List<dynamic> data})
-      : _data = data;
+      : _data = data,
+        super._();
 
   factory _$BaseResponseListLectureImpl.fromJson(Map<String, dynamic> json) =>
       _$$BaseResponseListLectureImplFromJson(json);
@@ -183,11 +185,12 @@ class _$BaseResponseListLectureImpl implements _BaseResponseListLecture {
   }
 }
 
-abstract class _BaseResponseListLecture implements BaseResponseListLecture {
+abstract class _BaseResponseListLecture extends BaseResponseListLecture {
   const factory _BaseResponseListLecture(
           {@JsonKey(name: 'message') required final String? message,
           @JsonKey(name: 'data') required final List<dynamic> data}) =
       _$BaseResponseListLectureImpl;
+  const _BaseResponseListLecture._() : super._();
 
   factory _BaseResponseListLecture.fromJson(Map<String, dynamic> json) =
       _$BaseResponseListLectureImpl.fromJson;

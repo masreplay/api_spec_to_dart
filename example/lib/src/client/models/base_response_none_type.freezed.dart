@@ -121,11 +121,13 @@ class __$$BaseResponseNoneTypeImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$BaseResponseNoneTypeImpl implements _BaseResponseNoneType {
+
+@JsonSerializable(converters: convertors)
+class _$BaseResponseNoneTypeImpl extends _BaseResponseNoneType {
   const _$BaseResponseNoneTypeImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required this.data});
+      @JsonKey(name: 'data') required this.data})
+      : super._();
 
   factory _$BaseResponseNoneTypeImpl.fromJson(Map<String, dynamic> json) =>
       _$$BaseResponseNoneTypeImplFromJson(json);
@@ -174,11 +176,12 @@ class _$BaseResponseNoneTypeImpl implements _BaseResponseNoneType {
   }
 }
 
-abstract class _BaseResponseNoneType implements BaseResponseNoneType {
+abstract class _BaseResponseNoneType extends BaseResponseNoneType {
   const factory _BaseResponseNoneType(
           {@JsonKey(name: 'message') required final String? message,
           @JsonKey(name: 'data') required final dynamic data}) =
       _$BaseResponseNoneTypeImpl;
+  const _BaseResponseNoneType._() : super._();
 
   factory _BaseResponseNoneType.fromJson(Map<String, dynamic> json) =
       _$BaseResponseNoneTypeImpl.fromJson;

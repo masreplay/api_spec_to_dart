@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
 import './models.dart';
 
 part 'authentication_status_response.freezed.dart';
@@ -7,6 +8,9 @@ part 'authentication_status_response.g.dart';
 
 @freezed
 class AuthenticationStatusResponse with _$AuthenticationStatusResponse {
+  const AuthenticationStatusResponse._();
+
+  @JsonSerializable(converters: convertors)
   const factory AuthenticationStatusResponse({
     @JsonKey(name: 'settings')
     required AuthenticationStatusOptionsResponse settings,

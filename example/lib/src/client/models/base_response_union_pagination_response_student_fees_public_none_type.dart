@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
 import './models.dart';
 
 part 'base_response_union_pagination_response_student_fees_public_none_type.freezed.dart';
@@ -8,6 +9,9 @@ part 'base_response_union_pagination_response_student_fees_public_none_type.g.da
 @freezed
 class BaseResponseUnionPaginationResponseStudentFeesPublicNoneType
     with _$BaseResponseUnionPaginationResponseStudentFeesPublicNoneType {
+  const BaseResponseUnionPaginationResponseStudentFeesPublicNoneType._();
+
+  @JsonSerializable(converters: convertors)
   const factory BaseResponseUnionPaginationResponseStudentFeesPublicNoneType({
     @JsonKey(name: 'message') required String? message,
     @JsonKey(name: 'data') required PaginationResponseStudentFeesPublic? data,

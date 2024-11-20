@@ -1,11 +1,16 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
+
 part 'student_ids_iraqi_residence_card_update_public.freezed.dart';
 part 'student_ids_iraqi_residence_card_update_public.g.dart';
 
 @freezed
 class StudentIdsIraqiResidenceCardUpdatePublic
     with _$StudentIdsIraqiResidenceCardUpdatePublic {
+  const StudentIdsIraqiResidenceCardUpdatePublic._();
+
+  @JsonSerializable(converters: convertors)
   const factory StudentIdsIraqiResidenceCardUpdatePublic({
     @JsonKey(name: 'information_bureau_id') required int informationBureauId,
     @JsonKey(name: 'iraqi_residence_card_home_address')

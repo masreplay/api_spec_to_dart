@@ -125,11 +125,13 @@ class __$$SendOtpByRequestPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$SendOtpByRequestPublicImpl implements _SendOtpByRequestPublic {
+
+@JsonSerializable(converters: convertors)
+class _$SendOtpByRequestPublicImpl extends _SendOtpByRequestPublic {
   const _$SendOtpByRequestPublicImpl(
       {@JsonKey(name: 'credential') required this.credential,
-      @JsonKey(name: 'method') required this.method});
+      @JsonKey(name: 'method') required this.method})
+      : super._();
 
   factory _$SendOtpByRequestPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$SendOtpByRequestPublicImplFromJson(json);
@@ -177,11 +179,12 @@ class _$SendOtpByRequestPublicImpl implements _SendOtpByRequestPublic {
   }
 }
 
-abstract class _SendOtpByRequestPublic implements SendOtpByRequestPublic {
+abstract class _SendOtpByRequestPublic extends SendOtpByRequestPublic {
   const factory _SendOtpByRequestPublic(
           {@JsonKey(name: 'credential') required final String credential,
           @JsonKey(name: 'method') required final String method}) =
       _$SendOtpByRequestPublicImpl;
+  const _SendOtpByRequestPublic._() : super._();
 
   factory _SendOtpByRequestPublic.fromJson(Map<String, dynamic> json) =
       _$SendOtpByRequestPublicImpl.fromJson;

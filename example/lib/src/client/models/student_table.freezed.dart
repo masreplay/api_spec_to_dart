@@ -608,8 +608,9 @@ class __$$StudentTableImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$StudentTableImpl implements _StudentTable {
+
+@JsonSerializable(converters: convertors)
+class _$StudentTableImpl extends _StudentTable {
   const _$StudentTableImpl(
       {@JsonKey(name: 'arabic_name1') required this.arabicName1,
       @JsonKey(name: 'arabic_name2') required this.arabicName2,
@@ -644,7 +645,8 @@ class _$StudentTableImpl implements _StudentTable {
       @JsonKey(name: 'email') required this.email,
       @JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'login_credentials') required this.loginCredentials,
-      @JsonKey(name: 'creation_time') required this.creationTime});
+      @JsonKey(name: 'creation_time') required this.creationTime})
+      : super._();
 
   factory _$StudentTableImpl.fromJson(Map<String, dynamic> json) =>
       _$$StudentTableImplFromJson(json);
@@ -878,7 +880,7 @@ class _$StudentTableImpl implements _StudentTable {
   }
 }
 
-abstract class _StudentTable implements StudentTable {
+abstract class _StudentTable extends StudentTable {
   const factory _StudentTable(
       {@JsonKey(name: 'arabic_name1') required final String? arabicName1,
       @JsonKey(name: 'arabic_name2') required final String? arabicName2,
@@ -923,6 +925,7 @@ abstract class _StudentTable implements StudentTable {
       required final String? loginCredentials,
       @JsonKey(name: 'creation_time')
       required final DateTime creationTime}) = _$StudentTableImpl;
+  const _StudentTable._() : super._();
 
   factory _StudentTable.fromJson(Map<String, dynamic> json) =
       _$StudentTableImpl.fromJson;

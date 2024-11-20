@@ -132,11 +132,13 @@ class __$$HomeFeedCourseSelectionStatusSectionDataPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$HomeFeedCourseSelectionStatusSectionDataPublicImpl
-    implements _HomeFeedCourseSelectionStatusSectionDataPublic {
+    extends _HomeFeedCourseSelectionStatusSectionDataPublic {
   const _$HomeFeedCourseSelectionStatusSectionDataPublicImpl(
-      {@JsonKey(name: 'status') required this.status});
+      {@JsonKey(name: 'status') required this.status})
+      : super._();
 
   factory _$HomeFeedCourseSelectionStatusSectionDataPublicImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -184,11 +186,12 @@ class _$HomeFeedCourseSelectionStatusSectionDataPublicImpl
 }
 
 abstract class _HomeFeedCourseSelectionStatusSectionDataPublic
-    implements HomeFeedCourseSelectionStatusSectionDataPublic {
+    extends HomeFeedCourseSelectionStatusSectionDataPublic {
   const factory _HomeFeedCourseSelectionStatusSectionDataPublic(
           {@JsonKey(name: 'status')
           required final CourseSelectionStatusType status}) =
       _$HomeFeedCourseSelectionStatusSectionDataPublicImpl;
+  const _HomeFeedCourseSelectionStatusSectionDataPublic._() : super._();
 
   factory _HomeFeedCourseSelectionStatusSectionDataPublic.fromJson(
           Map<String, dynamic> json) =

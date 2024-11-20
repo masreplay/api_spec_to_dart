@@ -159,13 +159,15 @@ class __$$HomeFeedMissingPaymentSectionDataPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$HomeFeedMissingPaymentSectionDataPublicImpl
-    implements _HomeFeedMissingPaymentSectionDataPublic {
+    extends _HomeFeedMissingPaymentSectionDataPublic {
   const _$HomeFeedMissingPaymentSectionDataPublicImpl(
       {@JsonKey(name: 'price') required this.price,
       @JsonKey(name: 'currency') required this.currency,
-      @JsonKey(name: 'price_formatted') required this.priceFormatted});
+      @JsonKey(name: 'price_formatted') required this.priceFormatted})
+      : super._();
 
   factory _$HomeFeedMissingPaymentSectionDataPublicImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -222,13 +224,14 @@ class _$HomeFeedMissingPaymentSectionDataPublicImpl
 }
 
 abstract class _HomeFeedMissingPaymentSectionDataPublic
-    implements HomeFeedMissingPaymentSectionDataPublic {
+    extends HomeFeedMissingPaymentSectionDataPublic {
   const factory _HomeFeedMissingPaymentSectionDataPublic(
           {@JsonKey(name: 'price') required final num price,
           @JsonKey(name: 'currency') required final PriceCurrency currency,
           @JsonKey(name: 'price_formatted')
           required final String priceFormatted}) =
       _$HomeFeedMissingPaymentSectionDataPublicImpl;
+  const _HomeFeedMissingPaymentSectionDataPublic._() : super._();
 
   factory _HomeFeedMissingPaymentSectionDataPublic.fromJson(
           Map<String, dynamic> json) =

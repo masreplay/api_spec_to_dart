@@ -1,10 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
+
 part 'lecturer_profile_public.freezed.dart';
 part 'lecturer_profile_public.g.dart';
 
 @freezed
 class LecturerProfilePublic with _$LecturerProfilePublic {
+  const LecturerProfilePublic._();
+
+  @JsonSerializable(converters: convertors)
   const factory LecturerProfilePublic({
     @JsonKey(name: 'id') required int id,
     @JsonKey(name: 'full_name') required String fullName,

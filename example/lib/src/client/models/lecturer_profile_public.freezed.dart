@@ -138,12 +138,14 @@ class __$$LecturerProfilePublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$LecturerProfilePublicImpl implements _LecturerProfilePublic {
+
+@JsonSerializable(converters: convertors)
+class _$LecturerProfilePublicImpl extends _LecturerProfilePublic {
   const _$LecturerProfilePublicImpl(
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'full_name') required this.fullName,
-      @JsonKey(name: 'image_url') required this.imageUrl});
+      @JsonKey(name: 'image_url') required this.imageUrl})
+      : super._();
 
   factory _$LecturerProfilePublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$LecturerProfilePublicImplFromJson(json);
@@ -196,12 +198,13 @@ class _$LecturerProfilePublicImpl implements _LecturerProfilePublic {
   }
 }
 
-abstract class _LecturerProfilePublic implements LecturerProfilePublic {
+abstract class _LecturerProfilePublic extends LecturerProfilePublic {
   const factory _LecturerProfilePublic(
           {@JsonKey(name: 'id') required final int id,
           @JsonKey(name: 'full_name') required final String fullName,
           @JsonKey(name: 'image_url') required final Uri? imageUrl}) =
       _$LecturerProfilePublicImpl;
+  const _LecturerProfilePublic._() : super._();
 
   factory _LecturerProfilePublic.fromJson(Map<String, dynamic> json) =
       _$LecturerProfilePublicImpl.fromJson;

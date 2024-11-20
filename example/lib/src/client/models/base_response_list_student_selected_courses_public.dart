@@ -1,11 +1,16 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
+
 part 'base_response_list_student_selected_courses_public.freezed.dart';
 part 'base_response_list_student_selected_courses_public.g.dart';
 
 @freezed
 class BaseResponseListStudentSelectedCoursesPublic
     with _$BaseResponseListStudentSelectedCoursesPublic {
+  const BaseResponseListStudentSelectedCoursesPublic._();
+
+  @JsonSerializable(converters: convertors)
   const factory BaseResponseListStudentSelectedCoursesPublic({
     @JsonKey(name: 'message') required String? message,
     @JsonKey(name: 'data') required List data,

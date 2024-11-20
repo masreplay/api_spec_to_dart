@@ -134,12 +134,14 @@ class __$$AppSettingsAndroidImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$AppSettingsAndroidImpl implements _AppSettingsAndroid {
+
+@JsonSerializable(converters: convertors)
+class _$AppSettingsAndroidImpl extends _AppSettingsAndroid {
   const _$AppSettingsAndroidImpl(
       {@JsonKey(name: 'version') required this.version,
       @JsonKey(name: 'url') required this.url,
-      @JsonKey(name: 'message') required this.message});
+      @JsonKey(name: 'message') required this.message})
+      : super._();
 
   factory _$AppSettingsAndroidImpl.fromJson(Map<String, dynamic> json) =>
       _$$AppSettingsAndroidImplFromJson(json);
@@ -190,12 +192,13 @@ class _$AppSettingsAndroidImpl implements _AppSettingsAndroid {
   }
 }
 
-abstract class _AppSettingsAndroid implements AppSettingsAndroid {
+abstract class _AppSettingsAndroid extends AppSettingsAndroid {
   const factory _AppSettingsAndroid(
           {@JsonKey(name: 'version') required final String version,
           @JsonKey(name: 'url') required final String? url,
           @JsonKey(name: 'message') required final String? message}) =
       _$AppSettingsAndroidImpl;
+  const _AppSettingsAndroid._() : super._();
 
   factory _AppSettingsAndroid.fromJson(Map<String, dynamic> json) =
       _$AppSettingsAndroidImpl.fromJson;

@@ -232,8 +232,9 @@ class __$$UISelectFormFieldImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$UISelectFormFieldImpl implements _UISelectFormField {
+
+@JsonSerializable(converters: convertors)
+class _$UISelectFormFieldImpl extends _UISelectFormField {
   const _$UISelectFormFieldImpl(
       {@JsonKey(name: 'key') required this.key,
       @JsonKey(name: 'name') required this.name,
@@ -241,11 +242,12 @@ class _$UISelectFormFieldImpl implements _UISelectFormField {
       @JsonKey(name: 'is_required') required this.isRequired,
       @JsonKey(name: 'read_only') required this.readOnly = false,
       @JsonKey(name: 'doc') required this.doc,
-      @JsonKey(name: 'type') required this.type = String.select,
+      @JsonKey(name: 'type') required this.type = select,
       @JsonKey(name: 'options') required final List<dynamic> options = const [],
       @JsonKey(name: 'default_value') required this.defaultValue,
       @JsonKey(name: 'example') required this.example})
-      : _options = options;
+      : _options = options,
+        super._();
 
   factory _$UISelectFormFieldImpl.fromJson(Map<String, dynamic> json) =>
       _$$UISelectFormFieldImplFromJson(json);
@@ -344,7 +346,7 @@ class _$UISelectFormFieldImpl implements _UISelectFormField {
   }
 }
 
-abstract class _UISelectFormField implements UISelectFormField {
+abstract class _UISelectFormField extends UISelectFormField {
   const factory _UISelectFormField(
           {@JsonKey(name: 'key') required final String key,
           @JsonKey(name: 'name') required final String name,
@@ -357,6 +359,7 @@ abstract class _UISelectFormField implements UISelectFormField {
           @JsonKey(name: 'default_value') required final String? defaultValue,
           @JsonKey(name: 'example') required final String? example}) =
       _$UISelectFormFieldImpl;
+  const _UISelectFormField._() : super._();
 
   factory _UISelectFormField.fromJson(Map<String, dynamic> json) =
       _$UISelectFormFieldImpl.fromJson;

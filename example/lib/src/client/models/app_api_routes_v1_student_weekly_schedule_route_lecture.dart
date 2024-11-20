@@ -1,11 +1,16 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
+
 part 'app_api_routes_v1_student_weekly_schedule_route_lecture.freezed.dart';
 part 'app_api_routes_v1_student_weekly_schedule_route_lecture.g.dart';
 
 @freezed
 class AppApiRoutesV1StudentWeeklyScheduleRouteLecture
     with _$AppApiRoutesV1StudentWeeklyScheduleRouteLecture {
+  const AppApiRoutesV1StudentWeeklyScheduleRouteLecture._();
+
+  @JsonSerializable(converters: convertors)
   const factory AppApiRoutesV1StudentWeeklyScheduleRouteLecture({
     @JsonKey(name: 'id') required int? id,
     @JsonKey(name: 'subject_title') required String? subjectTitle,

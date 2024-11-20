@@ -18,7 +18,7 @@ _$HomeworkCalenderEventPublicImpl _$$HomeworkCalenderEventPublicImplFromJson(
           ? null
           : DateTime.parse(json['end_date'] as String),
       endDateFormatted: json['end_date_formatted'] as String?,
-      type: json['type'] as String? ?? String.assignment,
+      type: json['type'] as String? ?? assignment,
       title: json['title'] as String,
       description: json['description'] as String?,
     );

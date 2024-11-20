@@ -161,12 +161,14 @@ class __$$BaseResponseUnionStudentUniversityCardPublicNoneTypeImplCopyWithImpl<
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$BaseResponseUnionStudentUniversityCardPublicNoneTypeImpl
-    implements _BaseResponseUnionStudentUniversityCardPublicNoneType {
+    extends _BaseResponseUnionStudentUniversityCardPublicNoneType {
   const _$BaseResponseUnionStudentUniversityCardPublicNoneTypeImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required this.data});
+      @JsonKey(name: 'data') required this.data})
+      : super._();
 
   factory _$BaseResponseUnionStudentUniversityCardPublicNoneTypeImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -219,12 +221,13 @@ class _$BaseResponseUnionStudentUniversityCardPublicNoneTypeImpl
 }
 
 abstract class _BaseResponseUnionStudentUniversityCardPublicNoneType
-    implements BaseResponseUnionStudentUniversityCardPublicNoneType {
+    extends BaseResponseUnionStudentUniversityCardPublicNoneType {
   const factory _BaseResponseUnionStudentUniversityCardPublicNoneType(
           {@JsonKey(name: 'message') required final String? message,
           @JsonKey(name: 'data')
           required final StudentUniversityCardPublic? data}) =
       _$BaseResponseUnionStudentUniversityCardPublicNoneTypeImpl;
+  const _BaseResponseUnionStudentUniversityCardPublicNoneType._() : super._();
 
   factory _BaseResponseUnionStudentUniversityCardPublicNoneType.fromJson(
           Map<String, dynamic> json) =

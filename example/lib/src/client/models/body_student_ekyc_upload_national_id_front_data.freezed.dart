@@ -72,19 +72,19 @@ class _$BodyStudentEkycUploadNationalIdFrontDataCopyWithImpl<$Res,
   @override
   $Res call({
     Object? data = null,
-    Object? file = freezed,
-    Object? fileRaw = freezed,
+    Object? file = null,
+    Object? fileRaw = null,
   }) {
     return _then(_value.copyWith(
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as String,
-      file: freezed == file
+      file: null == file
           ? _value.file
           : file // ignore: cast_nullable_to_non_nullable
               as File,
-      fileRaw: freezed == fileRaw
+      fileRaw: null == fileRaw
           ? _value.fileRaw
           : fileRaw // ignore: cast_nullable_to_non_nullable
               as File,
@@ -123,19 +123,19 @@ class __$$BodyStudentEkycUploadNationalIdFrontDataImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = null,
-    Object? file = freezed,
-    Object? fileRaw = freezed,
+    Object? file = null,
+    Object? fileRaw = null,
   }) {
     return _then(_$BodyStudentEkycUploadNationalIdFrontDataImpl(
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as String,
-      file: freezed == file
+      file: null == file
           ? _value.file
           : file // ignore: cast_nullable_to_non_nullable
               as File,
-      fileRaw: freezed == fileRaw
+      fileRaw: null == fileRaw
           ? _value.fileRaw
           : fileRaw // ignore: cast_nullable_to_non_nullable
               as File,
@@ -144,13 +144,15 @@ class __$$BodyStudentEkycUploadNationalIdFrontDataImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$BodyStudentEkycUploadNationalIdFrontDataImpl
-    implements _BodyStudentEkycUploadNationalIdFrontData {
+    extends _BodyStudentEkycUploadNationalIdFrontData {
   const _$BodyStudentEkycUploadNationalIdFrontDataImpl(
       {@JsonKey(name: 'data') required this.data,
       @JsonKey(name: 'file') required this.file,
-      @JsonKey(name: 'file_raw') required this.fileRaw});
+      @JsonKey(name: 'file_raw') required this.fileRaw})
+      : super._();
 
   factory _$BodyStudentEkycUploadNationalIdFrontDataImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -177,17 +179,13 @@ class _$BodyStudentEkycUploadNationalIdFrontDataImpl
         (other.runtimeType == runtimeType &&
             other is _$BodyStudentEkycUploadNationalIdFrontDataImpl &&
             (identical(other.data, data) || other.data == data) &&
-            const DeepCollectionEquality().equals(other.file, file) &&
-            const DeepCollectionEquality().equals(other.fileRaw, fileRaw));
+            (identical(other.file, file) || other.file == file) &&
+            (identical(other.fileRaw, fileRaw) || other.fileRaw == fileRaw));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      data,
-      const DeepCollectionEquality().hash(file),
-      const DeepCollectionEquality().hash(fileRaw));
+  int get hashCode => Object.hash(runtimeType, data, file, fileRaw);
 
   /// Create a copy of BodyStudentEkycUploadNationalIdFrontData
   /// with the given fields replaced by the non-null parameter values.
@@ -209,12 +207,13 @@ class _$BodyStudentEkycUploadNationalIdFrontDataImpl
 }
 
 abstract class _BodyStudentEkycUploadNationalIdFrontData
-    implements BodyStudentEkycUploadNationalIdFrontData {
+    extends BodyStudentEkycUploadNationalIdFrontData {
   const factory _BodyStudentEkycUploadNationalIdFrontData(
           {@JsonKey(name: 'data') required final String data,
           @JsonKey(name: 'file') required final File file,
           @JsonKey(name: 'file_raw') required final File fileRaw}) =
       _$BodyStudentEkycUploadNationalIdFrontDataImpl;
+  const _BodyStudentEkycUploadNationalIdFrontData._() : super._();
 
   factory _BodyStudentEkycUploadNationalIdFrontData.fromJson(
           Map<String, dynamic> json) =

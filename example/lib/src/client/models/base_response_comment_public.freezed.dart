@@ -140,11 +140,13 @@ class __$$BaseResponseCommentPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$BaseResponseCommentPublicImpl implements _BaseResponseCommentPublic {
+
+@JsonSerializable(converters: convertors)
+class _$BaseResponseCommentPublicImpl extends _BaseResponseCommentPublic {
   const _$BaseResponseCommentPublicImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required this.data});
+      @JsonKey(name: 'data') required this.data})
+      : super._();
 
   factory _$BaseResponseCommentPublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$BaseResponseCommentPublicImplFromJson(json);
@@ -191,11 +193,12 @@ class _$BaseResponseCommentPublicImpl implements _BaseResponseCommentPublic {
   }
 }
 
-abstract class _BaseResponseCommentPublic implements BaseResponseCommentPublic {
+abstract class _BaseResponseCommentPublic extends BaseResponseCommentPublic {
   const factory _BaseResponseCommentPublic(
           {@JsonKey(name: 'message') required final String? message,
           @JsonKey(name: 'data') required final CommentPublic data}) =
       _$BaseResponseCommentPublicImpl;
+  const _BaseResponseCommentPublic._() : super._();
 
   factory _BaseResponseCommentPublic.fromJson(Map<String, dynamic> json) =
       _$BaseResponseCommentPublicImpl.fromJson;

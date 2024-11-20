@@ -153,14 +153,15 @@ class __$$BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessmentsImplC
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessmentsImpl
-    implements
-        _BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments {
+    extends _BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments {
   const _$BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessmentsImpl(
       {@JsonKey(name: 'message') required this.message,
       @JsonKey(name: 'data') required final List<dynamic> data})
-      : _data = data;
+      : _data = data,
+        super._();
 
   factory _$BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessmentsImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -220,12 +221,13 @@ class _$BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessmentsImpl
 }
 
 abstract class _BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments
-    implements
-        BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments {
+    extends BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments {
   const factory _BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments(
           {@JsonKey(name: 'message') required final String? message,
           @JsonKey(name: 'data') required final List<dynamic> data}) =
       _$BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessmentsImpl;
+  const _BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments._()
+      : super._();
 
   factory _BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments.fromJson(
           Map<String, dynamic> json) =

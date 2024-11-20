@@ -160,15 +160,17 @@ class __$$PaginationResponseLecturerAnnouncementPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$PaginationResponseLecturerAnnouncementPublicImpl
-    implements _PaginationResponseLecturerAnnouncementPublic {
+    extends _PaginationResponseLecturerAnnouncementPublic {
   const _$PaginationResponseLecturerAnnouncementPublicImpl(
       {@JsonKey(name: 'page') required this.page,
       @JsonKey(name: 'per_page') required this.perPage,
       @JsonKey(name: 'total') required this.total,
       @JsonKey(name: 'data') required final List<dynamic> data})
-      : _data = data;
+      : _data = data,
+        super._();
 
   factory _$PaginationResponseLecturerAnnouncementPublicImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -234,13 +236,14 @@ class _$PaginationResponseLecturerAnnouncementPublicImpl
 }
 
 abstract class _PaginationResponseLecturerAnnouncementPublic
-    implements PaginationResponseLecturerAnnouncementPublic {
+    extends PaginationResponseLecturerAnnouncementPublic {
   const factory _PaginationResponseLecturerAnnouncementPublic(
           {@JsonKey(name: 'page') required final int page,
           @JsonKey(name: 'per_page') required final int perPage,
           @JsonKey(name: 'total') required final int total,
           @JsonKey(name: 'data') required final List<dynamic> data}) =
       _$PaginationResponseLecturerAnnouncementPublicImpl;
+  const _PaginationResponseLecturerAnnouncementPublic._() : super._();
 
   factory _PaginationResponseLecturerAnnouncementPublic.fromJson(
           Map<String, dynamic> json) =

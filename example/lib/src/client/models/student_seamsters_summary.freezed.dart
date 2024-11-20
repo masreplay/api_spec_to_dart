@@ -223,8 +223,9 @@ class __$$StudentSeamstersSummaryImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$StudentSeamstersSummaryImpl implements _StudentSeamstersSummary {
+
+@JsonSerializable(converters: convertors)
+class _$StudentSeamstersSummaryImpl extends _StudentSeamstersSummary {
   const _$StudentSeamstersSummaryImpl(
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'name') required this.name,
@@ -240,7 +241,8 @@ class _$StudentSeamstersSummaryImpl implements _StudentSeamstersSummary {
       @JsonKey(name: 'previous_subjects')
       required final List<dynamic> previousSubjects})
       : _currentSubjects = currentSubjects,
-        _previousSubjects = previousSubjects;
+        _previousSubjects = previousSubjects,
+        super._();
 
   factory _$StudentSeamstersSummaryImpl.fromJson(Map<String, dynamic> json) =>
       _$$StudentSeamstersSummaryImplFromJson(json);
@@ -345,7 +347,7 @@ class _$StudentSeamstersSummaryImpl implements _StudentSeamstersSummary {
   }
 }
 
-abstract class _StudentSeamstersSummary implements StudentSeamstersSummary {
+abstract class _StudentSeamstersSummary extends StudentSeamstersSummary {
   const factory _StudentSeamstersSummary(
           {@JsonKey(name: 'id') required final int? id,
           @JsonKey(name: 'name') required final String? name,
@@ -362,6 +364,7 @@ abstract class _StudentSeamstersSummary implements StudentSeamstersSummary {
           @JsonKey(name: 'previous_subjects')
           required final List<dynamic> previousSubjects}) =
       _$StudentSeamstersSummaryImpl;
+  const _StudentSeamstersSummary._() : super._();
 
   factory _StudentSeamstersSummary.fromJson(Map<String, dynamic> json) =
       _$StudentSeamstersSummaryImpl.fromJson;

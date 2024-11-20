@@ -65,9 +65,10 @@ class __$$AssignmentTypeEnumImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$AssignmentTypeEnumImpl implements _AssignmentTypeEnum {
-  const _$AssignmentTypeEnumImpl();
+
+@JsonSerializable(converters: convertors)
+class _$AssignmentTypeEnumImpl extends _AssignmentTypeEnum {
+  const _$AssignmentTypeEnumImpl() : super._();
 
   factory _$AssignmentTypeEnumImpl.fromJson(Map<String, dynamic> json) =>
       _$$AssignmentTypeEnumImplFromJson(json);
@@ -95,8 +96,9 @@ class _$AssignmentTypeEnumImpl implements _AssignmentTypeEnum {
   }
 }
 
-abstract class _AssignmentTypeEnum implements AssignmentTypeEnum {
+abstract class _AssignmentTypeEnum extends AssignmentTypeEnum {
   const factory _AssignmentTypeEnum() = _$AssignmentTypeEnumImpl;
+  const _AssignmentTypeEnum._() : super._();
 
   factory _AssignmentTypeEnum.fromJson(Map<String, dynamic> json) =
       _$AssignmentTypeEnumImpl.fromJson;

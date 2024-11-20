@@ -65,9 +65,10 @@ class __$$EkycStatusEnumImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$EkycStatusEnumImpl implements _EkycStatusEnum {
-  const _$EkycStatusEnumImpl();
+
+@JsonSerializable(converters: convertors)
+class _$EkycStatusEnumImpl extends _EkycStatusEnum {
+  const _$EkycStatusEnumImpl() : super._();
 
   factory _$EkycStatusEnumImpl.fromJson(Map<String, dynamic> json) =>
       _$$EkycStatusEnumImplFromJson(json);
@@ -95,8 +96,9 @@ class _$EkycStatusEnumImpl implements _EkycStatusEnum {
   }
 }
 
-abstract class _EkycStatusEnum implements EkycStatusEnum {
+abstract class _EkycStatusEnum extends EkycStatusEnum {
   const factory _EkycStatusEnum() = _$EkycStatusEnumImpl;
+  const _EkycStatusEnum._() : super._();
 
   factory _EkycStatusEnum.fromJson(Map<String, dynamic> json) =
       _$EkycStatusEnumImpl.fromJson;

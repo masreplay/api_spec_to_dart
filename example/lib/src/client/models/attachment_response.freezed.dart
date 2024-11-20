@@ -148,13 +148,15 @@ class __$$AttachmentResponseImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$AttachmentResponseImpl implements _AttachmentResponse {
+
+@JsonSerializable(converters: convertors)
+class _$AttachmentResponseImpl extends _AttachmentResponse {
   const _$AttachmentResponseImpl(
       {@JsonKey(name: 'attachment_name') required this.attachmentName,
       @JsonKey(name: 'sign_url') required this.signUrl,
       @JsonKey(name: 'file_size') required this.fileSize,
-      @JsonKey(name: 'file_mim_type') required this.fileMimType});
+      @JsonKey(name: 'file_mim_type') required this.fileMimType})
+      : super._();
 
   factory _$AttachmentResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$AttachmentResponseImplFromJson(json);
@@ -213,13 +215,14 @@ class _$AttachmentResponseImpl implements _AttachmentResponse {
   }
 }
 
-abstract class _AttachmentResponse implements AttachmentResponse {
+abstract class _AttachmentResponse extends AttachmentResponse {
   const factory _AttachmentResponse(
       {@JsonKey(name: 'attachment_name') required final String? attachmentName,
       @JsonKey(name: 'sign_url') required final String? signUrl,
       @JsonKey(name: 'file_size') required final int? fileSize,
       @JsonKey(name: 'file_mim_type')
       required final String? fileMimType}) = _$AttachmentResponseImpl;
+  const _AttachmentResponse._() : super._();
 
   factory _AttachmentResponse.fromJson(Map<String, dynamic> json) =
       _$AttachmentResponseImpl.fromJson;

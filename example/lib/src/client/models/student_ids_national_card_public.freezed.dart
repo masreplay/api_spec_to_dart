@@ -247,9 +247,9 @@ class __$$StudentIdsNationalCardPublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$StudentIdsNationalCardPublicImpl
-    implements _StudentIdsNationalCardPublic {
+
+@JsonSerializable(converters: convertors)
+class _$StudentIdsNationalCardPublicImpl extends _StudentIdsNationalCardPublic {
   const _$StudentIdsNationalCardPublicImpl(
       {@JsonKey(name: 'number') required this.number,
       @JsonKey(name: 'serial_number') required this.serialNumber,
@@ -258,7 +258,8 @@ class _$StudentIdsNationalCardPublicImpl
       @JsonKey(name: 'date_of_expiry') required this.dateOfExpiry,
       @JsonKey(name: 'family_number') required this.familyNumber,
       @JsonKey(name: 'front_image') required this.frontImage,
-      @JsonKey(name: 'back_image') required this.backImage});
+      @JsonKey(name: 'back_image') required this.backImage})
+      : super._();
 
   factory _$StudentIdsNationalCardPublicImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -348,7 +349,7 @@ class _$StudentIdsNationalCardPublicImpl
 }
 
 abstract class _StudentIdsNationalCardPublic
-    implements StudentIdsNationalCardPublic {
+    extends StudentIdsNationalCardPublic {
   const factory _StudentIdsNationalCardPublic(
       {@JsonKey(name: 'number') required final String? number,
       @JsonKey(name: 'serial_number') required final String? serialNumber,
@@ -361,6 +362,7 @@ abstract class _StudentIdsNationalCardPublic
       @JsonKey(name: 'back_image')
       required final FilePublic?
           backImage}) = _$StudentIdsNationalCardPublicImpl;
+  const _StudentIdsNationalCardPublic._() : super._();
 
   factory _StudentIdsNationalCardPublic.fromJson(Map<String, dynamic> json) =
       _$StudentIdsNationalCardPublicImpl.fromJson;

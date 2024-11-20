@@ -148,14 +148,16 @@ class __$$BodyLecturerAssignmentsCreateLecturerAssignmentImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$BodyLecturerAssignmentsCreateLecturerAssignmentImpl
-    implements _BodyLecturerAssignmentsCreateLecturerAssignment {
+    extends _BodyLecturerAssignmentsCreateLecturerAssignment {
   const _$BodyLecturerAssignmentsCreateLecturerAssignmentImpl(
       {@JsonKey(name: 'files') required final List<dynamic> files,
       @JsonKey(name: 'title') required this.title,
       @JsonKey(name: 'description') required this.description})
-      : _files = files;
+      : _files = files,
+        super._();
 
   factory _$BodyLecturerAssignmentsCreateLecturerAssignmentImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -219,12 +221,13 @@ class _$BodyLecturerAssignmentsCreateLecturerAssignmentImpl
 }
 
 abstract class _BodyLecturerAssignmentsCreateLecturerAssignment
-    implements BodyLecturerAssignmentsCreateLecturerAssignment {
+    extends BodyLecturerAssignmentsCreateLecturerAssignment {
   const factory _BodyLecturerAssignmentsCreateLecturerAssignment(
           {@JsonKey(name: 'files') required final List<dynamic> files,
           @JsonKey(name: 'title') required final String title,
           @JsonKey(name: 'description') required final String? description}) =
       _$BodyLecturerAssignmentsCreateLecturerAssignmentImpl;
+  const _BodyLecturerAssignmentsCreateLecturerAssignment._() : super._();
 
   factory _BodyLecturerAssignmentsCreateLecturerAssignment.fromJson(
           Map<String, dynamic> json) =

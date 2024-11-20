@@ -25,7 +25,7 @@ mixin _$BaseResponsePaginationResponseCommentPublic {
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
   @JsonKey(name: 'data')
-  PaginationResponse_CommentPublic_ get data =>
+  PaginationResponseCommentPublic get data =>
       throw _privateConstructorUsedError;
 
   /// Serializes this BaseResponsePaginationResponseCommentPublic to a JSON map.
@@ -49,7 +49,9 @@ abstract class $BaseResponsePaginationResponseCommentPublicCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') PaginationResponse_CommentPublic_ data});
+      @JsonKey(name: 'data') PaginationResponseCommentPublic data});
+
+  $PaginationResponseCommentPublicCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -70,18 +72,28 @@ class _$BaseResponsePaginationResponseCommentPublicCopyWithImpl<$Res,
   @override
   $Res call({
     Object? message = freezed,
-    Object? data = freezed,
+    Object? data = null,
   }) {
     return _then(_value.copyWith(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      data: freezed == data
+      data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as PaginationResponse_CommentPublic_,
+              as PaginationResponseCommentPublic,
     ) as $Val);
+  }
+
+  /// Create a copy of BaseResponsePaginationResponseCommentPublic
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PaginationResponseCommentPublicCopyWith<$Res> get data {
+    return $PaginationResponseCommentPublicCopyWith<$Res>(_value.data, (value) {
+      return _then(_value.copyWith(data: value) as $Val);
+    });
   }
 }
 
@@ -97,7 +109,10 @@ abstract class _$$BaseResponsePaginationResponseCommentPublicImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') PaginationResponse_CommentPublic_ data});
+      @JsonKey(name: 'data') PaginationResponseCommentPublic data});
+
+  @override
+  $PaginationResponseCommentPublicCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -117,28 +132,30 @@ class __$$BaseResponsePaginationResponseCommentPublicImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? message = freezed,
-    Object? data = freezed,
+    Object? data = null,
   }) {
     return _then(_$BaseResponsePaginationResponseCommentPublicImpl(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      data: freezed == data
+      data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as PaginationResponse_CommentPublic_,
+              as PaginationResponseCommentPublic,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$BaseResponsePaginationResponseCommentPublicImpl
-    implements _BaseResponsePaginationResponseCommentPublic {
+    extends _BaseResponsePaginationResponseCommentPublic {
   const _$BaseResponsePaginationResponseCommentPublicImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required this.data});
+      @JsonKey(name: 'data') required this.data})
+      : super._();
 
   factory _$BaseResponsePaginationResponseCommentPublicImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -149,7 +166,7 @@ class _$BaseResponsePaginationResponseCommentPublicImpl
   final String? message;
   @override
   @JsonKey(name: 'data')
-  final PaginationResponse_CommentPublic_ data;
+  final PaginationResponseCommentPublic data;
 
   @override
   String toString() {
@@ -162,13 +179,12 @@ class _$BaseResponsePaginationResponseCommentPublicImpl
         (other.runtimeType == runtimeType &&
             other is _$BaseResponsePaginationResponseCommentPublicImpl &&
             (identical(other.message, message) || other.message == message) &&
-            const DeepCollectionEquality().equals(other.data, data));
+            (identical(other.data, data) || other.data == data));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, message, const DeepCollectionEquality().hash(data));
+  int get hashCode => Object.hash(runtimeType, message, data);
 
   /// Create a copy of BaseResponsePaginationResponseCommentPublic
   /// with the given fields replaced by the non-null parameter values.
@@ -191,12 +207,13 @@ class _$BaseResponsePaginationResponseCommentPublicImpl
 }
 
 abstract class _BaseResponsePaginationResponseCommentPublic
-    implements BaseResponsePaginationResponseCommentPublic {
+    extends BaseResponsePaginationResponseCommentPublic {
   const factory _BaseResponsePaginationResponseCommentPublic(
           {@JsonKey(name: 'message') required final String? message,
           @JsonKey(name: 'data')
-          required final PaginationResponse_CommentPublic_ data}) =
+          required final PaginationResponseCommentPublic data}) =
       _$BaseResponsePaginationResponseCommentPublicImpl;
+  const _BaseResponsePaginationResponseCommentPublic._() : super._();
 
   factory _BaseResponsePaginationResponseCommentPublic.fromJson(
           Map<String, dynamic> json) =
@@ -207,7 +224,7 @@ abstract class _BaseResponsePaginationResponseCommentPublic
   String? get message;
   @override
   @JsonKey(name: 'data')
-  PaginationResponse_CommentPublic_ get data;
+  PaginationResponseCommentPublic get data;
 
   /// Create a copy of BaseResponsePaginationResponseCommentPublic
   /// with the given fields replaced by the non-null parameter values.

@@ -1,11 +1,16 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
+
 part 'base_response_list_weekly_schedule_teacher_response.freezed.dart';
 part 'base_response_list_weekly_schedule_teacher_response.g.dart';
 
 @freezed
 class BaseResponseListWeeklyScheduleTeacherResponse
     with _$BaseResponseListWeeklyScheduleTeacherResponse {
+  const BaseResponseListWeeklyScheduleTeacherResponse._();
+
+  @JsonSerializable(converters: convertors)
   const factory BaseResponseListWeeklyScheduleTeacherResponse({
     @JsonKey(name: 'message') required String? message,
     @JsonKey(name: 'data') required List data,

@@ -12,7 +12,7 @@ class OpenApiDartModelGenerator {
 
   ({String filename, String content}) generator(OpenApiModel model) {
     final filename = config.filename(model.key);
-    final modelName = config.className(model.key);
+    final className = config.className(model.key);
 
     String body = '';
 
@@ -45,18 +45,24 @@ class OpenApiDartModelGenerator {
     final bodyText = body.isEmpty ? '' : '{\n$body  }';
 
     final content = '''
+import 'dart:io';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
 ${config.relativeImportModelsCode}
 
 part '${filename}.freezed.dart';
 part '${filename}.g.dart';
 
 @freezed
-class ${modelName} with _\$${modelName} {
-  const factory ${modelName}($bodyText) = _${modelName};
+class ${className} with _\$${className} {
+  const ${className}._();
 
-  factory ${modelName}.fromJson(Map<String, dynamic> json) => _\$${modelName}FromJson(json);
+  @JsonSerializable(converters: convertors)
+  const factory ${className}($bodyText) = _${className};
+
+  factory ${className}.fromJson(Map<String, dynamic> json) => _\$${className}FromJson(json);
 }
 ''';
 
@@ -73,15 +79,12 @@ class ${modelName} with _\$${modelName} {
       type: value.type,
     );
 
-    final defaultValue = value.default_ == null
-        ? ''
-        : '@Default(${(value.enum_?.isEmpty ?? true) ? '' : '${dartType}.'}${value.default_})';
-
-    return '''
-  $defaultValue
-  @JsonKey(name: \'${key}\') 
-  required $dartType $propertyName,
-''';
+    return _generateField(
+      freezedDefaultValue: value.default_,
+      jsonName: key,
+      propertyName: propertyName,
+      propertyType: dartType,
+    );
   }
 
   String _modelPropertyRefGenerator({
@@ -89,19 +92,14 @@ class ${modelName} with _\$${modelName} {
     required OpenApiSchemaRef value,
     required String propertyName,
   }) {
-    final dartType = value.ref!.split('/').last;
+    final dartType = config.className(value.ref!.split('/').last);
 
-    // TODO(mohammed.atheer): Check if the value is enum
-    final defaultValue =
-        value.default_ == null ? '' : '@Default(${value.default_})';
-
-    return value.ref == null
-        ? ''
-        : '''
-  $defaultValue 
-  @JsonKey(name: \'${key}\')
-  required $dartType $propertyName,
-''';
+    return _generateField(
+      freezedDefaultValue: value.default_,
+      jsonName: key,
+      propertyName: propertyName,
+      propertyType: dartType,
+    );
   }
 
   String _modelPropertyAnyOfGenerator({
@@ -131,7 +129,7 @@ class ${modelName} with _\$${modelName} {
           },
           ref: (value) => config.className(value.ref!.split('/').last),
           anyOf: (value) => getAnyOfType(value, config),
-          //TODO(shahadKadhim): implement this
+          // TODO(shahadKadhim): implement this
           oneOf: (value) => '',
         );
       }
@@ -141,14 +139,31 @@ class ${modelName} with _\$${modelName} {
 
     final dartType = getAnyOfType(value, config);
 
-    //TODO Check if the value is enum
-    final defaultValue =
-        value.default_ == null ? '' : '@Default(${value.default_})';
+    return _generateField(
+      freezedDefaultValue: value.default_,
+      jsonName: key,
+      propertyName: propertyName,
+      propertyType: dartType,
+    );
+  }
 
-    return '''
-  $defaultValue
-  @JsonKey(name: \'${key}\')
-  required $dartType $propertyName,
-''';
+  // : '@Default(${(value.enum_?.isEmpty ?? true) ? '' : '${dartType}.'}${value.default_})';
+  String _generateField({
+    required String propertyName,
+    required Object? freezedDefaultValue,
+    required String jsonName,
+    required String propertyType,
+  }) {
+    final buffer = StringBuffer();
+
+    if (freezedDefaultValue != null) {
+      buffer.write('@Default($freezedDefaultValue)\n');
+    }
+
+    buffer.write('@JsonKey(name: \'$jsonName\')\n');
+
+    buffer.write('required $propertyType $propertyName,');
+
+    return buffer.toString();
   }
 }

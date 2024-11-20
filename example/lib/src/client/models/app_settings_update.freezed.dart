@@ -162,12 +162,14 @@ class __$$AppSettingsUpdateImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$AppSettingsUpdateImpl implements _AppSettingsUpdate {
+
+@JsonSerializable(converters: convertors)
+class _$AppSettingsUpdateImpl extends _AppSettingsUpdate {
   const _$AppSettingsUpdateImpl(
       {@JsonKey(name: 'is_force_update') required this.isForceUpdate,
       @JsonKey(name: 'android') required this.android,
-      @JsonKey(name: 'ios') required this.ios});
+      @JsonKey(name: 'ios') required this.ios})
+      : super._();
 
   factory _$AppSettingsUpdateImpl.fromJson(Map<String, dynamic> json) =>
       _$$AppSettingsUpdateImplFromJson(json);
@@ -219,12 +221,13 @@ class _$AppSettingsUpdateImpl implements _AppSettingsUpdate {
   }
 }
 
-abstract class _AppSettingsUpdate implements AppSettingsUpdate {
+abstract class _AppSettingsUpdate extends AppSettingsUpdate {
   const factory _AppSettingsUpdate(
           {@JsonKey(name: 'is_force_update') required final bool isForceUpdate,
           @JsonKey(name: 'android') required final AppSettingsAndroid android,
           @JsonKey(name: 'ios') required final AppSettingsIos ios}) =
       _$AppSettingsUpdateImpl;
+  const _AppSettingsUpdate._() : super._();
 
   factory _AppSettingsUpdate.fromJson(Map<String, dynamic> json) =
       _$AppSettingsUpdateImpl.fromJson;

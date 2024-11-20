@@ -110,12 +110,14 @@ class __$$StudentEkycFormDataRequestImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$StudentEkycFormDataRequestImpl implements _StudentEkycFormDataRequest {
+
+@JsonSerializable(converters: convertors)
+class _$StudentEkycFormDataRequestImpl extends _StudentEkycFormDataRequest {
   const _$StudentEkycFormDataRequestImpl(
       {@JsonKey(name: 'ekyc_extra')
       required final Map<dynamic, dynamic> ekycExtra})
-      : _ekycExtra = ekycExtra;
+      : _ekycExtra = ekycExtra,
+        super._();
 
   factory _$StudentEkycFormDataRequestImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -166,12 +168,12 @@ class _$StudentEkycFormDataRequestImpl implements _StudentEkycFormDataRequest {
   }
 }
 
-abstract class _StudentEkycFormDataRequest
-    implements StudentEkycFormDataRequest {
+abstract class _StudentEkycFormDataRequest extends StudentEkycFormDataRequest {
   const factory _StudentEkycFormDataRequest(
           {@JsonKey(name: 'ekyc_extra')
           required final Map<dynamic, dynamic> ekycExtra}) =
       _$StudentEkycFormDataRequestImpl;
+  const _StudentEkycFormDataRequest._() : super._();
 
   factory _StudentEkycFormDataRequest.fromJson(Map<String, dynamic> json) =
       _$StudentEkycFormDataRequestImpl.fromJson;

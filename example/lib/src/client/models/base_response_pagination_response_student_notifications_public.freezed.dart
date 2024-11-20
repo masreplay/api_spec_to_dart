@@ -26,7 +26,7 @@ mixin _$BaseResponsePaginationResponseStudentNotificationsPublic {
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
   @JsonKey(name: 'data')
-  PaginationResponse_StudentNotificationsPublic_ get data =>
+  PaginationResponseStudentNotificationsPublic get data =>
       throw _privateConstructorUsedError;
 
   /// Serializes this BaseResponsePaginationResponseStudentNotificationsPublic to a JSON map.
@@ -54,7 +54,9 @@ abstract class $BaseResponsePaginationResponseStudentNotificationsPublicCopyWith
   $Res call(
       {@JsonKey(name: 'message') String? message,
       @JsonKey(name: 'data')
-      PaginationResponse_StudentNotificationsPublic_ data});
+      PaginationResponseStudentNotificationsPublic data});
+
+  $PaginationResponseStudentNotificationsPublicCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -78,18 +80,29 @@ class _$BaseResponsePaginationResponseStudentNotificationsPublicCopyWithImpl<
   @override
   $Res call({
     Object? message = freezed,
-    Object? data = freezed,
+    Object? data = null,
   }) {
     return _then(_value.copyWith(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      data: freezed == data
+      data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as PaginationResponse_StudentNotificationsPublic_,
+              as PaginationResponseStudentNotificationsPublic,
     ) as $Val);
+  }
+
+  /// Create a copy of BaseResponsePaginationResponseStudentNotificationsPublic
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PaginationResponseStudentNotificationsPublicCopyWith<$Res> get data {
+    return $PaginationResponseStudentNotificationsPublicCopyWith<$Res>(
+        _value.data, (value) {
+      return _then(_value.copyWith(data: value) as $Val);
+    });
   }
 }
 
@@ -111,7 +124,10 @@ abstract class _$$BaseResponsePaginationResponseStudentNotificationsPublicImplCo
   $Res call(
       {@JsonKey(name: 'message') String? message,
       @JsonKey(name: 'data')
-      PaginationResponse_StudentNotificationsPublic_ data});
+      PaginationResponseStudentNotificationsPublic data});
+
+  @override
+  $PaginationResponseStudentNotificationsPublicCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -135,28 +151,30 @@ class __$$BaseResponsePaginationResponseStudentNotificationsPublicImplCopyWithIm
   @override
   $Res call({
     Object? message = freezed,
-    Object? data = freezed,
+    Object? data = null,
   }) {
     return _then(_$BaseResponsePaginationResponseStudentNotificationsPublicImpl(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      data: freezed == data
+      data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as PaginationResponse_StudentNotificationsPublic_,
+              as PaginationResponseStudentNotificationsPublic,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$BaseResponsePaginationResponseStudentNotificationsPublicImpl
-    implements _BaseResponsePaginationResponseStudentNotificationsPublic {
+    extends _BaseResponsePaginationResponseStudentNotificationsPublic {
   const _$BaseResponsePaginationResponseStudentNotificationsPublicImpl(
       {@JsonKey(name: 'message') required this.message,
-      @JsonKey(name: 'data') required this.data});
+      @JsonKey(name: 'data') required this.data})
+      : super._();
 
   factory _$BaseResponsePaginationResponseStudentNotificationsPublicImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -168,7 +186,7 @@ class _$BaseResponsePaginationResponseStudentNotificationsPublicImpl
   final String? message;
   @override
   @JsonKey(name: 'data')
-  final PaginationResponse_StudentNotificationsPublic_ data;
+  final PaginationResponseStudentNotificationsPublic data;
 
   @override
   String toString() {
@@ -182,13 +200,12 @@ class _$BaseResponsePaginationResponseStudentNotificationsPublicImpl
             other
                 is _$BaseResponsePaginationResponseStudentNotificationsPublicImpl &&
             (identical(other.message, message) || other.message == message) &&
-            const DeepCollectionEquality().equals(other.data, data));
+            (identical(other.data, data) || other.data == data));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, message, const DeepCollectionEquality().hash(data));
+  int get hashCode => Object.hash(runtimeType, message, data);
 
   /// Create a copy of BaseResponsePaginationResponseStudentNotificationsPublic
   /// with the given fields replaced by the non-null parameter values.
@@ -211,12 +228,14 @@ class _$BaseResponsePaginationResponseStudentNotificationsPublicImpl
 }
 
 abstract class _BaseResponsePaginationResponseStudentNotificationsPublic
-    implements BaseResponsePaginationResponseStudentNotificationsPublic {
+    extends BaseResponsePaginationResponseStudentNotificationsPublic {
   const factory _BaseResponsePaginationResponseStudentNotificationsPublic(
           {@JsonKey(name: 'message') required final String? message,
           @JsonKey(name: 'data')
-          required final PaginationResponse_StudentNotificationsPublic_ data}) =
+          required final PaginationResponseStudentNotificationsPublic data}) =
       _$BaseResponsePaginationResponseStudentNotificationsPublicImpl;
+  const _BaseResponsePaginationResponseStudentNotificationsPublic._()
+      : super._();
 
   factory _BaseResponsePaginationResponseStudentNotificationsPublic.fromJson(
           Map<String, dynamic> json) =
@@ -227,7 +246,7 @@ abstract class _BaseResponsePaginationResponseStudentNotificationsPublic
   String? get message;
   @override
   @JsonKey(name: 'data')
-  PaginationResponse_StudentNotificationsPublic_ get data;
+  PaginationResponseStudentNotificationsPublic get data;
 
   /// Create a copy of BaseResponsePaginationResponseStudentNotificationsPublic
   /// with the given fields replaced by the non-null parameter values.

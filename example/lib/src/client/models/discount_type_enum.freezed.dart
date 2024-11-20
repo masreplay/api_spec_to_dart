@@ -65,9 +65,10 @@ class __$$DiscountTypeEnumImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$DiscountTypeEnumImpl implements _DiscountTypeEnum {
-  const _$DiscountTypeEnumImpl();
+
+@JsonSerializable(converters: convertors)
+class _$DiscountTypeEnumImpl extends _DiscountTypeEnum {
+  const _$DiscountTypeEnumImpl() : super._();
 
   factory _$DiscountTypeEnumImpl.fromJson(Map<String, dynamic> json) =>
       _$$DiscountTypeEnumImplFromJson(json);
@@ -95,8 +96,9 @@ class _$DiscountTypeEnumImpl implements _DiscountTypeEnum {
   }
 }
 
-abstract class _DiscountTypeEnum implements DiscountTypeEnum {
+abstract class _DiscountTypeEnum extends DiscountTypeEnum {
   const factory _DiscountTypeEnum() = _$DiscountTypeEnumImpl;
+  const _DiscountTypeEnum._() : super._();
 
   factory _DiscountTypeEnum.fromJson(Map<String, dynamic> json) =
       _$DiscountTypeEnumImpl.fromJson;

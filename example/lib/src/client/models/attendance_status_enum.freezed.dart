@@ -66,9 +66,10 @@ class __$$AttendanceStatusEnumImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$AttendanceStatusEnumImpl implements _AttendanceStatusEnum {
-  const _$AttendanceStatusEnumImpl();
+
+@JsonSerializable(converters: convertors)
+class _$AttendanceStatusEnumImpl extends _AttendanceStatusEnum {
+  const _$AttendanceStatusEnumImpl() : super._();
 
   factory _$AttendanceStatusEnumImpl.fromJson(Map<String, dynamic> json) =>
       _$$AttendanceStatusEnumImplFromJson(json);
@@ -97,8 +98,9 @@ class _$AttendanceStatusEnumImpl implements _AttendanceStatusEnum {
   }
 }
 
-abstract class _AttendanceStatusEnum implements AttendanceStatusEnum {
+abstract class _AttendanceStatusEnum extends AttendanceStatusEnum {
   const factory _AttendanceStatusEnum() = _$AttendanceStatusEnumImpl;
+  const _AttendanceStatusEnum._() : super._();
 
   factory _AttendanceStatusEnum.fromJson(Map<String, dynamic> json) =
       _$AttendanceStatusEnumImpl.fromJson;

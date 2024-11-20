@@ -64,9 +64,10 @@ class __$$UserRoleImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$UserRoleImpl implements _UserRole {
-  const _$UserRoleImpl();
+
+@JsonSerializable(converters: convertors)
+class _$UserRoleImpl extends _UserRole {
+  const _$UserRoleImpl() : super._();
 
   factory _$UserRoleImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserRoleImplFromJson(json);
@@ -94,8 +95,9 @@ class _$UserRoleImpl implements _UserRole {
   }
 }
 
-abstract class _UserRole implements UserRole {
+abstract class _UserRole extends UserRole {
   const factory _UserRole() = _$UserRoleImpl;
+  const _UserRole._() : super._();
 
   factory _UserRole.fromJson(Map<String, dynamic> json) =
       _$UserRoleImpl.fromJson;

@@ -1,10 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
+
 part 'comment_user_public.freezed.dart';
 part 'comment_user_public.g.dart';
 
 @freezed
 class CommentUserPublic with _$CommentUserPublic {
+  const CommentUserPublic._();
+
+  @JsonSerializable(converters: convertors)
   const factory CommentUserPublic({
     @JsonKey(name: 'id') required int id,
     @JsonKey(name: 'name') required String name,

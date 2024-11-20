@@ -142,13 +142,15 @@ class __$$BaseResponseUnionListWeeklyScheduleResponseNoneTypeImplCopyWithImpl<
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$BaseResponseUnionListWeeklyScheduleResponseNoneTypeImpl
-    implements _BaseResponseUnionListWeeklyScheduleResponseNoneType {
+    extends _BaseResponseUnionListWeeklyScheduleResponseNoneType {
   const _$BaseResponseUnionListWeeklyScheduleResponseNoneTypeImpl(
       {@JsonKey(name: 'message') required this.message,
       @JsonKey(name: 'data') required final List<dynamic>? data})
-      : _data = data;
+      : _data = data,
+        super._();
 
   factory _$BaseResponseUnionListWeeklyScheduleResponseNoneTypeImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -209,11 +211,12 @@ class _$BaseResponseUnionListWeeklyScheduleResponseNoneTypeImpl
 }
 
 abstract class _BaseResponseUnionListWeeklyScheduleResponseNoneType
-    implements BaseResponseUnionListWeeklyScheduleResponseNoneType {
+    extends BaseResponseUnionListWeeklyScheduleResponseNoneType {
   const factory _BaseResponseUnionListWeeklyScheduleResponseNoneType(
           {@JsonKey(name: 'message') required final String? message,
           @JsonKey(name: 'data') required final List<dynamic>? data}) =
       _$BaseResponseUnionListWeeklyScheduleResponseNoneTypeImpl;
+  const _BaseResponseUnionListWeeklyScheduleResponseNoneType._() : super._();
 
   factory _BaseResponseUnionListWeeklyScheduleResponseNoneType.fromJson(
           Map<String, dynamic> json) =

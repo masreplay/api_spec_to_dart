@@ -1,11 +1,16 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../convertors.dart';
+
 part 'pagination_response_student_notifications_public.freezed.dart';
 part 'pagination_response_student_notifications_public.g.dart';
 
 @freezed
 class PaginationResponseStudentNotificationsPublic
     with _$PaginationResponseStudentNotificationsPublic {
+  const PaginationResponseStudentNotificationsPublic._();
+
+  @JsonSerializable(converters: convertors)
   const factory PaginationResponseStudentNotificationsPublic({
     @JsonKey(name: 'page') required int page,
     @JsonKey(name: 'per_page') required int perPage,

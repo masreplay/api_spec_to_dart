@@ -224,16 +224,18 @@ class __$$StudentIdsIraqiNationalityCertificatePublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(converters: convertors)
 class _$StudentIdsIraqiNationalityCertificatePublicImpl
-    implements _StudentIdsIraqiNationalityCertificatePublic {
+    extends _StudentIdsIraqiNationalityCertificatePublic {
   const _$StudentIdsIraqiNationalityCertificatePublicImpl(
       {@JsonKey(name: 'number') required this.number,
       @JsonKey(name: 'wallet_number') required this.walletNumber,
       @JsonKey(name: 'issuing_authority') required this.issuingAuthority,
       @JsonKey(name: 'date_of_issue') required this.dateOfIssue,
       @JsonKey(name: 'front_image') required this.frontImage,
-      @JsonKey(name: 'back_image') required this.backImage});
+      @JsonKey(name: 'back_image') required this.backImage})
+      : super._();
 
   factory _$StudentIdsIraqiNationalityCertificatePublicImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -307,7 +309,7 @@ class _$StudentIdsIraqiNationalityCertificatePublicImpl
 }
 
 abstract class _StudentIdsIraqiNationalityCertificatePublic
-    implements StudentIdsIraqiNationalityCertificatePublic {
+    extends StudentIdsIraqiNationalityCertificatePublic {
   const factory _StudentIdsIraqiNationalityCertificatePublic(
           {@JsonKey(name: 'number') required final String? number,
           @JsonKey(name: 'wallet_number') required final String? walletNumber,
@@ -317,6 +319,7 @@ abstract class _StudentIdsIraqiNationalityCertificatePublic
           @JsonKey(name: 'front_image') required final FilePublic? frontImage,
           @JsonKey(name: 'back_image') required final FilePublic? backImage}) =
       _$StudentIdsIraqiNationalityCertificatePublicImpl;
+  const _StudentIdsIraqiNationalityCertificatePublic._() : super._();
 
   factory _StudentIdsIraqiNationalityCertificatePublic.fromJson(
           Map<String, dynamic> json) =

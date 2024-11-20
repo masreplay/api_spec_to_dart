@@ -279,8 +279,9 @@ class __$$StudentIdsInfoResponseImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$StudentIdsInfoResponseImpl implements _StudentIdsInfoResponse {
+
+@JsonSerializable(converters: convertors)
+class _$StudentIdsInfoResponseImpl extends _StudentIdsInfoResponse {
   const _$StudentIdsInfoResponseImpl(
       {@JsonKey(name: 'is_iraqi') required this.isIraqi,
       @JsonKey(name: 'have_national_card') required this.haveNationalCard,
@@ -289,7 +290,8 @@ class _$StudentIdsInfoResponseImpl implements _StudentIdsInfoResponse {
       @JsonKey(name: 'iraqi_nationality_certificate')
       required this.iraqiNationalityCertificate,
       @JsonKey(name: 'iraqi_residence_card') required this.iraqiResidenceCard,
-      @JsonKey(name: 'passport') required this.passport});
+      @JsonKey(name: 'passport') required this.passport})
+      : super._();
 
   factory _$StudentIdsInfoResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$StudentIdsInfoResponseImplFromJson(json);
@@ -372,7 +374,7 @@ class _$StudentIdsInfoResponseImpl implements _StudentIdsInfoResponse {
   }
 }
 
-abstract class _StudentIdsInfoResponse implements StudentIdsInfoResponse {
+abstract class _StudentIdsInfoResponse extends StudentIdsInfoResponse {
   const factory _StudentIdsInfoResponse(
           {@JsonKey(name: 'is_iraqi') required final bool? isIraqi,
           @JsonKey(name: 'have_national_card')
@@ -389,6 +391,7 @@ abstract class _StudentIdsInfoResponse implements StudentIdsInfoResponse {
           @JsonKey(name: 'passport')
           required final StudentIdsPassportPublic passport}) =
       _$StudentIdsInfoResponseImpl;
+  const _StudentIdsInfoResponse._() : super._();
 
   factory _StudentIdsInfoResponse.fromJson(Map<String, dynamic> json) =
       _$StudentIdsInfoResponseImpl.fromJson;

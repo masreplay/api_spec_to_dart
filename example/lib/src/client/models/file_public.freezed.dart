@@ -162,14 +162,16 @@ class __$$FilePublicImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$FilePublicImpl implements _FilePublic {
+
+@JsonSerializable(converters: convertors)
+class _$FilePublicImpl extends _FilePublic {
   const _$FilePublicImpl(
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'url') required this.url,
       @JsonKey(name: 'name') required this.name,
       @JsonKey(name: 'content_type') required this.contentType,
-      @JsonKey(name: 'size') required this.size});
+      @JsonKey(name: 'size') required this.size})
+      : super._();
 
   factory _$FilePublicImpl.fromJson(Map<String, dynamic> json) =>
       _$$FilePublicImplFromJson(json);
@@ -229,13 +231,14 @@ class _$FilePublicImpl implements _FilePublic {
   }
 }
 
-abstract class _FilePublic implements FilePublic {
+abstract class _FilePublic extends FilePublic {
   const factory _FilePublic(
       {@JsonKey(name: 'id') required final int id,
       @JsonKey(name: 'url') required final Uri url,
       @JsonKey(name: 'name') required final String name,
       @JsonKey(name: 'content_type') required final String contentType,
       @JsonKey(name: 'size') required final int size}) = _$FilePublicImpl;
+  const _FilePublic._() : super._();
 
   factory _FilePublic.fromJson(Map<String, dynamic> json) =
       _$FilePublicImpl.fromJson;
