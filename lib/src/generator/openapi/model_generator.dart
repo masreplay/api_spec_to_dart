@@ -35,49 +35,28 @@ class OpenApiDartModelGenerator {
           ? 'required'
           : '';
 
-      entry.value.map(
-        type: (value) {
-          final dartType = config.dartType(value.type, value.format);
-          final defaultValue = value.default_ == null
-              ? ''
-              : '@Default(${(value.enum_?.isEmpty ?? true) ? '' : '${dartType}.'}${value.default_})';
-
-          body += '''
-  $defaultValue
-  @JsonKey(name: \'${entry.key}\') 
-  $isRequired $dartType $propertyName,
-''';
-        },
-        ref: (value) {
-          final dartType = value.ref!.split('/').last;
-
-          //TODO Check if the value is enum
-          final defaultValue =
-              value.default_ == null ? '' : '@Default(${value.default_})';
-
-          body += value.ref == null
-              ? ''
-              : '''
-  $defaultValue 
-  @JsonKey(name: \'${entry.key}\')
-  $isRequired $dartType $propertyName,
-''';
-        },
-        anyOf: (value) {
-          final dartType = getAnyOfType(value, config);
-
-          //TODO Check if the value is enum
-          final defaultValue =
-              value.default_ == null ? '' : '@Default(${value.default_})';
-
-          body += '''
-  $defaultValue
-  @JsonKey(name: \'${entry.key}\')
-  $isRequired $dartType $propertyName,
-''';
-        },
+      body += entry.value.map(
+        type: (value) => _modelPropertyTypeGenerator(
+          key: entry.key,
+          isRequired: isRequired,
+          value: value,
+          propertyName: propertyName,
+        ),
+        ref: (value) => _modelPropertyRefGenerator(
+          key: entry.key,
+          isRequired: isRequired,
+          value: value,
+          propertyName: propertyName,
+        ),
+        anyOf: (value) => _modelPropertyAnyOfGenerator(
+          key: entry.key,
+          isRequired: isRequired,
+          value: value,
+          propertyName: propertyName,
+        ),
         oneOf: (value) {
           // TODO(mohammed.atheer): implement this
+          return '';
         },
       );
     }
@@ -102,31 +81,89 @@ class ${modelName} with _\$${modelName} {
 
     return (filename: filename, content: content);
   }
-}
 
-getAnyOfType(
-  OpenApiSchemaAnyOf value,
-  OpenApiGeneratorConfig config,
-) {
-  String text = '';
-  bool isNullable = false;
+  String _modelPropertyTypeGenerator({
+    required String key,
+    required String isRequired,
+    required OpenApiSchemaType value,
+    required String propertyName,
+  }) {
+    final dartType = config.dartType(value.type, value.format);
+    final defaultValue = value.default_ == null
+        ? ''
+        : '@Default(${(value.enum_?.isEmpty ?? true) ? '' : '${dartType}.'}${value.default_})';
 
-  for (final schema in value.anyOf!) {
-    text += schema.map(
-      type: (value) {
-        if (value.type == OpenApiSchemaVarType.null_) {
-          isNullable = true;
-          return '';
-        } else {
-          return config.dartType(value.type, value.format);
-        }
-      },
-      ref: (value) => value.ref!.split('/').last,
-      anyOf: (value) => getAnyOfType(value, config),
-      //TODO(shahadKadhim): implement this
-      oneOf: (value) => '',
-    );
+    return '''
+  $defaultValue
+  @JsonKey(name: \'${key}\') 
+  $isRequired $dartType $propertyName,
+''';
   }
 
-  return isNullable ? '$text?' : text;
+  String _modelPropertyRefGenerator({
+    required String key,
+    required String isRequired,
+    required OpenApiSchemaRef value,
+    required String propertyName,
+  }) {
+    final dartType = value.ref!.split('/').last;
+
+    //TODO Check if the value is enum
+    final defaultValue =
+        value.default_ == null ? '' : '@Default(${value.default_})';
+
+    return value.ref == null
+        ? ''
+        : '''
+  $defaultValue 
+  @JsonKey(name: \'${key}\')
+  $isRequired $dartType $propertyName,
+''';
+  }
+
+  String _modelPropertyAnyOfGenerator({
+    required String key,
+    required String isRequired,
+    required OpenApiSchemaAnyOf value,
+    required String propertyName,
+  }) {
+    getAnyOfType(
+      OpenApiSchemaAnyOf value,
+      OpenApiGeneratorConfig config,
+    ) {
+      String text = '';
+      bool isNullable = false;
+
+      for (final schema in value.anyOf!) {
+        text += schema.map(
+          type: (value) {
+            if (value.type == OpenApiSchemaVarType.null_) {
+              isNullable = true;
+              return '';
+            } else {
+              return config.dartType(value.type, value.format);
+            }
+          },
+          ref: (value) => value.ref!.split('/').last,
+          anyOf: (value) => getAnyOfType(value, config),
+          //TODO(shahadKadhim): implement this
+          oneOf: (value) => '',
+        );
+      }
+
+      return isNullable ? '$text?' : text;
+    }
+
+    final dartType = getAnyOfType(value, config);
+
+    //TODO Check if the value is enum
+    final defaultValue =
+        value.default_ == null ? '' : '@Default(${value.default_})';
+
+    return '''
+  $defaultValue
+  @JsonKey(name: \'${key}\')
+  $isRequired $dartType $propertyName,
+''';
+  }
 }
