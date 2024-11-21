@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:example/src/gen/models/models.dart';
 
 part 'dev_client.g.dart';
 
@@ -18,8 +19,9 @@ abstract class DevClient {
   );
 
   /// null
+  @MultiPart()
   @POST('/dev/upload-file/')
   Future<HttpResponse<dynamic>> uploadFile(
-    @Body() dynamic body,
+    @Body() BodyDevUploadFile body,
   );
 }

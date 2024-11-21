@@ -17,39 +17,45 @@ abstract class StudentEkycClient {
   Future<HttpResponse<dynamic>> init();
 
   /// null
+  @MultiPart()
   @PATCH('/api/v1/student/ekyc/national_id/back')
   Future<HttpResponse<dynamic>> uploadNationalIdBackData(
-    @Body() dynamic body,
+    @Body() BodyStudentEkycUploadNationalIdBackData body,
   );
 
   /// null
+  @MultiPart()
   @PATCH('/api/v1/student/ekyc/national_id/front')
   Future<HttpResponse<dynamic>> uploadNationalIdFrontData(
-    @Body() dynamic body,
+    @Body() BodyStudentEkycUploadNationalIdFrontData body,
   );
 
   /// null
+  @MultiPart()
   @PATCH('/api/v1/student/ekyc/passport')
   Future<HttpResponse<dynamic>> uploadPassportData(
-    @Body() dynamic body,
+    @Body() BodyStudentEkycUploadPassportData body,
   );
 
   /// null
+  @MultiPart()
   @PATCH('/api/v1/student/ekyc/face')
   Future<HttpResponse<dynamic>> uploadFaceData(
-    @Body() dynamic body,
+    @Body() BodyStudentEkycUploadFaceData body,
   );
 
   /// null
+  @MultiPart()
   @PATCH('/api/v1/student/ekyc/nfc')
   Future<HttpResponse<dynamic>> uploadNfc(
-    @Body() dynamic body,
+    @Body() BodyStudentEkycUploadNfc body,
   );
 
   /// null
+  @MultiPart()
   @PATCH('/api/v1/student/ekyc/face/eye')
   Future<HttpResponse<dynamic>> uploadEyeData(
-    @Body() dynamic body,
+    @Body() BodyStudentEkycUploadEyeData body,
   );
 
   /// null

@@ -67,6 +67,7 @@ class _LecturerAnnouncementsClient implements LecturerAnnouncementsClient {
       method: 'POST',
       headers: _headers,
       extra: _extra,
+      contentType: 'application/x-www-form-urlencoded',
     )
         .compose(
           _dio.options,

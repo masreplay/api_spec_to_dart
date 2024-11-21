@@ -6,6 +6,8 @@ part 'open_api_content.g.dart';
 
 @freezed
 class OpenApiContent with _$OpenApiContent {
+  const OpenApiContent._();
+
   factory OpenApiContent({
     @JsonKey(name: 'application/json')
     required OpenApiContentSchema? applicationJson,
@@ -19,6 +21,16 @@ class OpenApiContent with _$OpenApiContent {
     Map<String, dynamic> json,
   ) =>
       _$OpenApiContentFromJson(json);
+
+  MapEntry<String?, OpenApiContentSchema?> get current {
+    if (applicationXWwwFormUrlencoded != null) {
+      return MapEntry('FormUrlEncoded()', applicationXWwwFormUrlencoded);
+    }
+    if (multipartFormData != null) {
+      return MapEntry('MultiPart()', multipartFormData);
+    }
+    return MapEntry(null, applicationJson);
+  }
 }
 
 @freezed

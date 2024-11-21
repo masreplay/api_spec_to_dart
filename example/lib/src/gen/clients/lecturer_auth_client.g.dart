@@ -32,6 +32,7 @@ class _LecturerAuthClient implements LecturerAuthClient {
       method: 'POST',
       headers: _headers,
       extra: _extra,
+      contentType: 'application/x-www-form-urlencoded',
     )
         .compose(
           _dio.options,
@@ -62,6 +63,7 @@ class _LecturerAuthClient implements LecturerAuthClient {
       method: 'POST',
       headers: _headers,
       extra: _extra,
+      contentType: 'application/x-www-form-urlencoded',
     )
         .compose(
           _dio.options,

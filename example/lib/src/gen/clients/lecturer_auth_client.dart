@@ -9,12 +9,14 @@ abstract class LecturerAuthClient {
   factory LecturerAuthClient(Dio dio, {String baseUrl}) = _LecturerAuthClient;
 
   /// null
+  @FormUrlEncoded()
   @POST('/api/v1/lecturer/auth/login')
   Future<HttpResponse<dynamic>> login(
     @Body() BodyLecturerAuthLogin body,
   );
 
   /// null
+  @FormUrlEncoded()
   @POST('/api/v1/lecturer/auth/swagger/login')
   Future<HttpResponse<dynamic>> swaggerLogin(
     @Body() BodyLecturerAuthSwaggerLogin body,

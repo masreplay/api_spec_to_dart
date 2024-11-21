@@ -56,16 +56,18 @@ class _LecturerAssignmentsClient implements LecturerAssignmentsClient {
   @override
   Future<HttpResponse<dynamic>> createLecturerAssignment(
     int courseId,
-    dynamic body,
+    BodyLecturerAssignmentsCreateLecturerAssignment body,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = body;
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
     final _options = _setStreamType<HttpResponse<dynamic>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
+      contentType: 'multipart/form-data',
     )
         .compose(
           _dio.options,
@@ -115,16 +117,18 @@ class _LecturerAssignmentsClient implements LecturerAssignmentsClient {
   @override
   Future<HttpResponse<dynamic>> updateLecturerAssignment(
     int id,
-    dynamic body,
+    BodyLecturerAssignmentsUpdateLecturerAssignment body,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = body;
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
     final _options = _setStreamType<HttpResponse<dynamic>>(Options(
       method: 'PUT',
       headers: _headers,
       extra: _extra,
+      contentType: 'multipart/form-data',
     )
         .compose(
           _dio.options,
@@ -213,6 +217,7 @@ class _LecturerAssignmentsClient implements LecturerAssignmentsClient {
       method: 'POST',
       headers: _headers,
       extra: _extra,
+      contentType: 'application/x-www-form-urlencoded',
     )
         .compose(
           _dio.options,

@@ -78,15 +78,18 @@ class _StudentEkycClient implements StudentEkycClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> uploadNationalIdBackData(dynamic body) async {
+  Future<HttpResponse<dynamic>> uploadNationalIdBackData(
+      BodyStudentEkycUploadNationalIdBackData body) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = body;
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
     final _options = _setStreamType<HttpResponse<dynamic>>(Options(
       method: 'PATCH',
       headers: _headers,
       extra: _extra,
+      contentType: 'multipart/form-data',
     )
         .compose(
           _dio.options,
@@ -106,15 +109,18 @@ class _StudentEkycClient implements StudentEkycClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> uploadNationalIdFrontData(dynamic body) async {
+  Future<HttpResponse<dynamic>> uploadNationalIdFrontData(
+      BodyStudentEkycUploadNationalIdFrontData body) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = body;
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
     final _options = _setStreamType<HttpResponse<dynamic>>(Options(
       method: 'PATCH',
       headers: _headers,
       extra: _extra,
+      contentType: 'multipart/form-data',
     )
         .compose(
           _dio.options,
@@ -134,15 +140,18 @@ class _StudentEkycClient implements StudentEkycClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> uploadPassportData(dynamic body) async {
+  Future<HttpResponse<dynamic>> uploadPassportData(
+      BodyStudentEkycUploadPassportData body) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = body;
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
     final _options = _setStreamType<HttpResponse<dynamic>>(Options(
       method: 'PATCH',
       headers: _headers,
       extra: _extra,
+      contentType: 'multipart/form-data',
     )
         .compose(
           _dio.options,
@@ -162,15 +171,18 @@ class _StudentEkycClient implements StudentEkycClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> uploadFaceData(dynamic body) async {
+  Future<HttpResponse<dynamic>> uploadFaceData(
+      BodyStudentEkycUploadFaceData body) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = body;
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
     final _options = _setStreamType<HttpResponse<dynamic>>(Options(
       method: 'PATCH',
       headers: _headers,
       extra: _extra,
+      contentType: 'multipart/form-data',
     )
         .compose(
           _dio.options,
@@ -190,15 +202,17 @@ class _StudentEkycClient implements StudentEkycClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> uploadNfc(dynamic body) async {
+  Future<HttpResponse<dynamic>> uploadNfc(BodyStudentEkycUploadNfc body) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = body;
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
     final _options = _setStreamType<HttpResponse<dynamic>>(Options(
       method: 'PATCH',
       headers: _headers,
       extra: _extra,
+      contentType: 'multipart/form-data',
     )
         .compose(
           _dio.options,
@@ -218,15 +232,18 @@ class _StudentEkycClient implements StudentEkycClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> uploadEyeData(dynamic body) async {
+  Future<HttpResponse<dynamic>> uploadEyeData(
+      BodyStudentEkycUploadEyeData body) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = body;
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
     final _options = _setStreamType<HttpResponse<dynamic>>(Options(
       method: 'PATCH',
       headers: _headers,
       extra: _extra,
+      contentType: 'multipart/form-data',
     )
         .compose(
           _dio.options,

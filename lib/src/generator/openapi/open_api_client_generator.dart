@@ -47,9 +47,15 @@ class OpenApiDartClientGenerator {
         final type = function.key;
 
         final responseClassName = 'dynamic'; //
-        response.content.applicationJson;
+
+        final requestBody = function.value.requestBody?.content.current;
 
         buffer.writeln('/// ${method.delete}');
+
+        if (requestBody?.key != null) {
+          buffer.writeln('@${requestBody?.key}');
+        }
+
         buffer.writeln('@${type}(\'$entry\')');
 
         final methodName = config.renameMethod(
@@ -112,14 +118,12 @@ class OpenApiDartClientGenerator {
 
         //----------- Body -----------
 
-        final requestBody = function.value.requestBody;
         if (requestBody != null) {
-          final jsonBody = requestBody.content.applicationJson;
-          final fromUrlencoded =
-              requestBody.content.applicationXWwwFormUrlencoded;
+          final body = requestBody.value?.schema;
 
-          final dartType = jsonBody != null
-              ? jsonBody.schema.map(
+          final dartType = body == null
+              ? 'dynamic'
+              : body.map(
                   type: (value) {
                     return config.dartType(
                       type: value.type,
@@ -134,25 +138,8 @@ class OpenApiDartClientGenerator {
                       config.renameClass(value.ref!.split('/').last),
                   anyOf: (value) => getAnyOfType(value, config),
                   oneOf: (value) => '',
-                )
-              : fromUrlencoded != null
-                  ? fromUrlencoded.schema.map(
-                      type: (value) {
-                        return config.dartType(
-                          type: value.type,
-                          format: value.format,
-                          genericType: value.items?.mapOrNull(
-                            ref: (value) =>
-                                config.renameClass(value.ref!.split('/').last),
-                          ),
-                        );
-                      },
-                      ref: (value) =>
-                          config.renameClass(value.ref!.split('/').last),
-                      anyOf: (value) => getAnyOfType(value, config),
-                      oneOf: (value) => '',
-                    )
-                  : 'dynamic';
+                );
+
           buffer.writeln(
             '''@Body() $dartType body,''',
           );

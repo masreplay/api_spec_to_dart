@@ -9,12 +9,14 @@ abstract class StudentAuthClient {
   factory StudentAuthClient(Dio dio, {String baseUrl}) = _StudentAuthClient;
 
   /// null
+  @FormUrlEncoded()
   @POST('/api/v1/student/auth/login')
   Future<HttpResponse<dynamic>> login(
     @Body() BodyStudentAuthLogin body,
   );
 
   /// null
+  @FormUrlEncoded()
   @POST('/api/v1/student/auth/swagger/login')
   Future<HttpResponse<dynamic>> swaggerLogin(
     @Body() BodyStudentAuthSwaggerLogin body,

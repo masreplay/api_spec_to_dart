@@ -17,6 +17,7 @@ abstract class LecturerAnnouncementsClient {
   );
 
   /// null
+  @FormUrlEncoded()
   @POST('/api/v1/lecturer/announcements/me/{course_id}')
   Future<HttpResponse<dynamic>> createLecturerAnnouncement(
     @Path('course_id') int courseId,
