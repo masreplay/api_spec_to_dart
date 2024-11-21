@@ -156,37 +156,7 @@ String generateQueriesClass(
   final className = '${name}Queries';
 
   final params = queries.map((e) {
-    return MapEntry(
-      config.renameProperty(e.name),
-      e.schema.map(
-        type: (value) => OpenApiSchema.type(
-          type: value.type,
-          format: value.format,
-          title: value.title,
-          maxLength: value.maxLength,
-          minLength: value.minLength,
-          description: value.description,
-          pattern: value.pattern,
-          const_: value.const_,
-          default_: value.default_,
-        ),
-        ref: (value) => OpenApiSchema.ref(
-          default_: value.default_,
-          ref: value.ref,
-        ),
-        anyOf: (value) => OpenApiSchema.anyOf(
-          anyOf: value.anyOf,
-          default_: value.default_,
-          title: value.title,
-        ),
-        oneOf: (value) => OpenApiSchema.oneOf(
-          discriminator: value.discriminator,
-          oneOf: value.oneOf,
-          title: value.title,
-          description: value.description,
-        ),
-      ),
-    );
+    return MapEntry(config.renameProperty(e.name), e.schema);
   }).toList();
 
   final result = generator.run(
