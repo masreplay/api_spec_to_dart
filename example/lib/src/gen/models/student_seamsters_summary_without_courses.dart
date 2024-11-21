@@ -19,7 +19,6 @@ class StudentSeamstersSummaryWithoutCourses
   }) = _StudentSeamstersSummaryWithoutCourses;
 
   factory StudentSeamstersSummaryWithoutCourses.fromJson(
-    Map<String, dynamic> json,
-  ) =>
+          Map<String, dynamic> json) =>
       _$StudentSeamstersSummaryWithoutCoursesFromJson(json);
 }

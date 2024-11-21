@@ -50,7 +50,7 @@ class _StudentSelectedCoursesClient implements StudentSelectedCoursesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> readById() async {
+  Future<HttpResponse<dynamic>> readById(String id) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -62,7 +62,7 @@ class _StudentSelectedCoursesClient implements StudentSelectedCoursesClient {
     )
         .compose(
           _dio.options,
-          '/api/v1/student/student_selected_courses/{id}',
+          '/api/v1/student/student_selected_courses/${id}',
           queryParameters: queryParameters,
           data: _data,
         )

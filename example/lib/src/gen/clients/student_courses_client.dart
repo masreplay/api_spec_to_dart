@@ -18,9 +18,13 @@ abstract class StudentCoursesClient {
 
   /// null
   @GET('/api/v1/student/courses/staff/{id}')
-  Future<HttpResponse<dynamic>> get();
+  Future<HttpResponse<dynamic>> get(
+    @Path('id') String id,
+  );
 
   /// null
   @GET('/api/v1/student/courses/{id}')
-  Future<HttpResponse<dynamic>> readCourseById();
+  Future<HttpResponse<dynamic>> readCourseById(
+    @Path('id') String id,
+  );
 }

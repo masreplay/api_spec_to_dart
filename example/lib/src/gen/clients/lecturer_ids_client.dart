@@ -9,5 +9,7 @@ abstract class LecturerIdsClient {
 
   /// null
   @GET('/api/v1/lecturer/ids/me')
-  Future<HttpResponse<dynamic>> getEmployeeIdentificationCards();
+  Future<HttpResponse<dynamic>> getEmployeeIdentificationCards(
+    @Queries() QueriesClass queries,
+  );
 }

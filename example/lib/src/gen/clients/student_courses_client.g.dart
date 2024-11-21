@@ -78,7 +78,7 @@ class _StudentCoursesClient implements StudentCoursesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> get() async {
+  Future<HttpResponse<dynamic>> get(String id) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -90,7 +90,7 @@ class _StudentCoursesClient implements StudentCoursesClient {
     )
         .compose(
           _dio.options,
-          '/api/v1/student/courses/staff/{id}',
+          '/api/v1/student/courses/staff/${id}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -106,7 +106,7 @@ class _StudentCoursesClient implements StudentCoursesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> readCourseById() async {
+  Future<HttpResponse<dynamic>> readCourseById(String id) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -118,7 +118,7 @@ class _StudentCoursesClient implements StudentCoursesClient {
     )
         .compose(
           _dio.options,
-          '/api/v1/student/courses/{id}',
+          '/api/v1/student/courses/${id}',
           queryParameters: queryParameters,
           data: _data,
         )

@@ -10,5 +10,8 @@ abstract class StudentSemestersClient {
 
   /// null
   @GET('/api/v1/student/semesters/{id}')
-  Future<HttpResponse<dynamic>> readSemesters();
+  Future<HttpResponse<dynamic>> readSemesters(
+    @Queries() QueriesClass queries,
+    @Path('id') String id,
+  );
 }

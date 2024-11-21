@@ -22,7 +22,7 @@ class _StudentAttachmentsClient implements StudentAttachmentsClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>> getSubjectForCourses() async {
+  Future<HttpResponse<dynamic>> getSubjectForCourses(String courseId) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -34,7 +34,7 @@ class _StudentAttachmentsClient implements StudentAttachmentsClient {
     )
         .compose(
           _dio.options,
-          '/api/v1/student/attachments/{course_id}',
+          '/api/v1/student/attachments/${courseId}',
           queryParameters: queryParameters,
           data: _data,
         )

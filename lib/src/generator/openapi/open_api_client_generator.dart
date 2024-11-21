@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:swagger_to_dart/src/config/open_api_generator_config.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
@@ -50,13 +52,67 @@ class OpenApiDartClientGenerator {
         final methodName = config
             .renameMethod(method.get!.operationId.replaceAll(clientName, ''));
 
+        final parameters = method.current?.parameters;
+
+        final queries = parameters
+                ?.where((param) =>
+                    param.in_ == OpenApiPathMethodParameterType.query)
+                .toList() ??
+            [];
+
         buffer.writeln(
-          'Future<HttpResponse<$responseClassName>> $methodName();',
+          '''Future<HttpResponse<$responseClassName>> $methodName(''',
         );
+
+        if (queries.isNotEmpty) {
+          final queriesClass = generateQueriesClass(
+            queries
+              ..removeWhere(
+                (param) => param.name == 'page' || param.name == 'per_page',
+              ),
+          );
+          buffer.writeln(
+            '''@Queries() $queriesClass queries,''',
+          );
+        }
+
+        if (queries
+            .any((param) => param.name == 'page' || param.name == 'per_page')) {
+          buffer.writeln(
+            '''@Queries() PaginationQueries paginationQueries,''',
+          );
+        }
+
+        final pathParams = parameters?.where(
+              (para) => para.in_ == OpenApiPathMethodParameterType.path,
+            ) ??
+            [];
+        for (final pathParam in pathParams) {
+          final dartType = pathParam.schema.map(
+            type: (value) => 'String',
+            ref: (value) => value.ref?.split('/').last,
+            anyOf: (value) => 'anyOf',
+            oneOf: (value) => 'oneOf',
+          );
+          final paramName = config.renameProperty(pathParam.name);
+          buffer.writeln(
+            '''@Path(\'${pathParam.name}\') $dartType $paramName,''',
+          );
+        }
+
+        buffer.writeln(');');
       }
     }
 
     buffer.writeln('}');
     return (filename: fileName, content: buffer.toString());
   }
+}
+
+generatePaginationQueriesClassIfNotExists() {
+  
+}
+
+String generateQueriesClass(List<OpenApiPathMethodParameter> query) {
+  return 'QueriesClass';
 }

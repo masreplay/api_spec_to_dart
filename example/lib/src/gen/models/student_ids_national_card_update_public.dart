@@ -37,7 +37,6 @@ class StudentIdsNationalCardUpdatePublic
   }) = _StudentIdsNationalCardUpdatePublic;
 
   factory StudentIdsNationalCardUpdatePublic.fromJson(
-    Map<String, dynamic> json,
-  ) =>
+          Map<String, dynamic> json) =>
       _$StudentIdsNationalCardUpdatePublicFromJson(json);
 }

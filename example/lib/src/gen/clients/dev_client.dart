@@ -13,5 +13,7 @@ abstract class DevClient {
 
   /// null
   @GET('/dev/s3/{file_path}')
-  Future<HttpResponse<dynamic>> proxyToMinio();
+  Future<HttpResponse<dynamic>> proxyToMinio(
+    @Path('file_path') String filePath,
+  );
 }

@@ -32,7 +32,6 @@ class StudentIdsIdentificationCardPublic
   }) = _StudentIdsIdentificationCardPublic;
 
   factory StudentIdsIdentificationCardPublic.fromJson(
-    Map<String, dynamic> json,
-  ) =>
+          Map<String, dynamic> json) =>
       _$StudentIdsIdentificationCardPublicFromJson(json);
 }

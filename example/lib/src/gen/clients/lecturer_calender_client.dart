@@ -10,5 +10,7 @@ abstract class LecturerCalenderClient {
 
   /// null
   @GET('/api/v1/lecturer/calender/homework')
-  Future<HttpResponse<dynamic>> getLecturerReadHomeworkCalender();
+  Future<HttpResponse<dynamic>> getLecturerReadHomeworkCalender(
+    @Queries() QueriesClass queries,
+  );
 }

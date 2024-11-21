@@ -27,7 +27,6 @@ class PaginationResponseStudentNotificationsPublic
   }) = _PaginationResponseStudentNotificationsPublic;
 
   factory PaginationResponseStudentNotificationsPublic.fromJson(
-    Map<String, dynamic> json,
-  ) =>
+          Map<String, dynamic> json) =>
       _$PaginationResponseStudentNotificationsPublicFromJson(json);
 }

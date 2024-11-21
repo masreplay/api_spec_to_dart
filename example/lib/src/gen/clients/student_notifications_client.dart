@@ -10,9 +10,13 @@ abstract class StudentNotificationsClient {
 
   /// null
   @GET('/api/v1/student/notifications/')
-  Future<HttpResponse<dynamic>> readNotifications();
+  Future<HttpResponse<dynamic>> readNotifications(
+    @Queries() QueriesClass queries,
+  );
 
   /// null
   @GET('/api/v1/student/notifications/{id}')
-  Future<HttpResponse<dynamic>> readNotificationDetail();
+  Future<HttpResponse<dynamic>> readNotificationDetail(
+    @Path('id') String id,
+  );
 }

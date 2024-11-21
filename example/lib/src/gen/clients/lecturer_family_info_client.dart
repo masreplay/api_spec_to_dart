@@ -10,5 +10,7 @@ abstract class LecturerFamilyInfoClient {
 
   /// null
   @GET('/api/v1/lecturer/')
-  Future<HttpResponse<dynamic>> getEmployeeFamilyInfo();
+  Future<HttpResponse<dynamic>> getEmployeeFamilyInfo(
+    @Queries() QueriesClass queries,
+  );
 }

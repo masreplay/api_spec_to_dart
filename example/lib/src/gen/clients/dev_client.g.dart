@@ -50,7 +50,7 @@ class _DevClient implements DevClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> proxyToMinio() async {
+  Future<HttpResponse<dynamic>> proxyToMinio(String filePath) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -62,7 +62,7 @@ class _DevClient implements DevClient {
     )
         .compose(
           _dio.options,
-          '/dev/s3/{file_path}',
+          '/dev/s3/${filePath}',
           queryParameters: queryParameters,
           data: _data,
         )

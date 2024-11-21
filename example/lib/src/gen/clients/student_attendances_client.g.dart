@@ -78,7 +78,7 @@ class _StudentAttendancesClient implements StudentAttendancesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> readAttendanceForCourse() async {
+  Future<HttpResponse<dynamic>> readAttendanceForCourse(String courseId) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -90,7 +90,7 @@ class _StudentAttendancesClient implements StudentAttendancesClient {
     )
         .compose(
           _dio.options,
-          '/api/v1/student/attendances/{course_id}/lectures',
+          '/api/v1/student/attendances/${courseId}/lectures',
           queryParameters: queryParameters,
           data: _data,
         )

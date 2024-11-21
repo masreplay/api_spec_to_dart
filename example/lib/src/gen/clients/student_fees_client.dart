@@ -9,5 +9,7 @@ abstract class StudentFeesClient {
 
   /// null
   @GET('/api/v1/student/fees/')
-  Future<HttpResponse<dynamic>> readFees();
+  Future<HttpResponse<dynamic>> readFees(
+    @Queries() QueriesClass queries,
+  );
 }

@@ -22,7 +22,8 @@ class _StudentHomeWorksClient implements StudentHomeWorksClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>> readCourseAssessmentByCourseId() async {
+  Future<HttpResponse<dynamic>> readCourseAssessmentByCourseId(
+      String courseId) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -34,7 +35,7 @@ class _StudentHomeWorksClient implements StudentHomeWorksClient {
     )
         .compose(
           _dio.options,
-          '/api/v1/student/home_works/course/{course_id}',
+          '/api/v1/student/home_works/course/${courseId}',
           queryParameters: queryParameters,
           data: _data,
         )

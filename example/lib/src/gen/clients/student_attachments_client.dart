@@ -10,5 +10,7 @@ abstract class StudentAttachmentsClient {
 
   /// null
   @GET('/api/v1/student/attachments/{course_id}')
-  Future<HttpResponse<dynamic>> getSubjectForCourses();
+  Future<HttpResponse<dynamic>> getSubjectForCourses(
+    @Path('course_id') String courseId,
+  );
 }
