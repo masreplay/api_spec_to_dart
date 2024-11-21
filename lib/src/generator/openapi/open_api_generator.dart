@@ -30,20 +30,20 @@ class OpenApiDartGenerator {
       Directory(config.modelsOutputDirectory).createSync(recursive: true);
     }
 
-    // for (final entry in _openApi.components.schemas.entries) {
-    //   final result = modelGenerator.run(entry);
+    for (final entry in _openApi.components.schemas.entries) {
+      final result = modelGenerator.run(entry);
 
-    //   final filepath = path.join(
-    //     config.modelsOutputDirectory,
-    //     '${config.renameFile(entry.key)}.dart',
-    //   );
+      final filepath = path.join(
+        config.modelsOutputDirectory,
+        '${config.renameFile(entry.key)}.dart',
+      );
 
-    //   final file = File(filepath);
+      final file = File(filepath);
 
-    //   await file.writeAsString(result.content);
+      await file.writeAsString(result.content);
 
-    //   print('Generated: $filepath');
-    // }
+      print('Generated: $filepath');
+    }
 
     //Client generator
     final clientGenerator = OpenApiDartClientGenerator(config: config);

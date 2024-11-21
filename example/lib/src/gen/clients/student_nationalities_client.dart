@@ -1,0 +1,14 @@
+import 'package:dio/dio.dart';
+import 'package:retrofit/retrofit.dart';
+part 'student_nationalities_client.g.dart';
+
+///
+@RestApi()
+abstract class StudentNationalitiesClient {
+  factory StudentNationalitiesClient(Dio dio, {String baseUrl}) =
+      _StudentNationalitiesClient;
+
+  /// null
+  @GET('/api/v1/student/nationalities/')
+  Future<HttpResponse<dynamic>> student_nationalities_read_nationalities();
+}

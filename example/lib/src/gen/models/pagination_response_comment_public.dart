@@ -1,0 +1,30 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../convertors.dart';
+import 'package:example/src/gen/models/models.dart';
+
+part 'pagination_response_comment_public.freezed.dart';
+part 'pagination_response_comment_public.g.dart';
+
+@freezed
+class PaginationResponseCommentPublic with _$PaginationResponseCommentPublic {
+  const PaginationResponseCommentPublic._();
+
+  @JsonSerializable(converters: convertors)
+  const factory PaginationResponseCommentPublic({
+    /// Page
+    @JsonKey(name: 'page') required int page,
+
+    /// Per Page
+    @JsonKey(name: 'per_page') required int perPage,
+
+    /// Total
+    @JsonKey(name: 'total') required int total,
+
+    /// Data
+    @JsonKey(name: 'data') required List<CommentPublic> data,
+  }) = _PaginationResponseCommentPublic;
+
+  factory PaginationResponseCommentPublic.fromJson(Map<String, dynamic> json) =>
+      _$PaginationResponseCommentPublicFromJson(json);
+}
