@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:path/path.dart' as path;
 import 'package:logger/logger.dart';
+import 'package:swagger_to_dart/swagger_to_dart.dart';
 import 'package:yaml/yaml.dart';
 import 'package:swagger_to_dart/src/config/open_api_generator_config.dart';
 import 'package:swagger_to_dart/src/generator/openapi/open_api_generator.dart';
@@ -29,7 +30,13 @@ Future<void> main(List<String> args) async {
     isFlutter: false,
   );
 
+  print(JsonFactory.instance.encode(config.toJson()));
+
+  print('Generating code...');
+
   final generator = OpenApiDartGenerator(config: config);
 
-  generator.run();
+  await generator.run();
+
+  print('Code generation completed');
 }
