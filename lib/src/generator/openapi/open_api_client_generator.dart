@@ -130,57 +130,48 @@ class OpenApiClientGenerator {
     buffer.writeln('}');
     return (filename: fileName, content: buffer.toString());
   }
-}
 
-String generateQueriesClass(
-  List<OpenApiPathMethodParameter> queries,
-  String name,
-) {
-  final String dir = Directory.current.path;
+  String generateQueriesClass(
+    List<OpenApiPathMethodParameter> queries,
+    String name,
+  ) {
+    final generator = OpenApiModelGenerator(config: config);
 
-  final config = OpenApiGeneratorConfig(
-    packageName: 'example',
-    input: path.join(dir, 'schema/swagger.json'),
-    output: path.join(dir, 'lib/src/gen'),
-    isFlutter: false,
-  );
+    final className = '${name}Queries';
 
-  final generator = OpenApiDartModelGenerator(config: config);
+    final params = queries.map((e) {
+      return MapEntry(config.renameProperty(e.name), e.schema);
+    }).toList();
 
-  final className = '${name}Queries';
-
-  final params = queries.map((e) {
-    return MapEntry(config.renameProperty(e.name), e.schema);
-  }).toList();
-
-  final result = generator.run(
-    MapEntry(
-      className,
-      OpenApiSchemas(
-        type: 'object',
-        properties: Map.fromIterable(
-          params,
-          key: (e) => e.key,
-          value: (e) => e.value,
+    final result = generator.run(
+      MapEntry(
+        className,
+        OpenApiSchemas(
+          type: 'object',
+          properties: Map.fromIterable(
+            params,
+            key: (e) => e.key,
+            value: (e) => e.value,
+          ),
         ),
       ),
-    ),
-  );
+    );
 
-  if (!Directory(config.modelsOutputDirectory).existsSync()) {
-    Directory(config.modelsOutputDirectory).createSync(recursive: true);
+    if (!Directory(config.modelsOutputDirectory).existsSync()) {
+      Directory(config.modelsOutputDirectory).createSync(recursive: true);
+    }
+
+    final filepath = path.join(
+      config.modelsOutputDirectory,
+      '${config.renameFile(className)}.dart',
+    );
+
+    final file = File(filepath);
+
+    file.writeAsString(result.content);
+
+    print('Generated: $filepath');
+
+    return className;
   }
-
-  final filepath = path.join(
-    config.modelsOutputDirectory,
-    '${config.renameFile(className)}.dart',
-  );
-
-  final file = File(filepath);
-
-  file.writeAsString(result.content);
-
-  print('Generated: $filepath');
-
-  return className;
 }

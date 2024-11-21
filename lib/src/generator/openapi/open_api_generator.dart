@@ -22,7 +22,7 @@ class OpenApiDartGenerator {
   late final OpenApi _openApi;
 
   Future<void> run() async {
-    final modelGenerator = OpenApiDartModelGenerator(config: config);
+    final modelGenerator = OpenApiModelGenerator(config: config);
 
     if (!Directory(config.modelsOutputDirectory).existsSync()) {
       Directory(config.modelsOutputDirectory).createSync(recursive: true);

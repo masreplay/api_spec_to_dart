@@ -4,8 +4,8 @@ import 'convertor.dart';
 
 typedef OpenApiModel = MapEntry<String, OpenApiSchemas>;
 
-class OpenApiDartModelGenerator {
-  const OpenApiDartModelGenerator({
+class OpenApiModelGenerator {
+  const OpenApiModelGenerator({
     required this.config,
   });
 
