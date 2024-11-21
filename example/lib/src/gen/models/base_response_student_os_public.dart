@@ -19,6 +19,8 @@ class BaseResponseStudentOSPublic with _$BaseResponseStudentOSPublic {
     @JsonKey(name: 'data') required StudentOSPublic data,
   }) = _BaseResponseStudentOSPublic;
 
-  factory BaseResponseStudentOSPublic.fromJson(Map<String, dynamic> json) =>
+  factory BaseResponseStudentOSPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseStudentOSPublicFromJson(json);
 }

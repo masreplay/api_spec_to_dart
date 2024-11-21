@@ -20,6 +20,8 @@ class BaseResponseUnionDictStrAny with _$BaseResponseUnionDictStrAny {
     @JsonKey(name: 'data') required Map<String, dynamic>? data,
   }) = _BaseResponseUnionDictStrAny;
 
-  factory BaseResponseUnionDictStrAny.fromJson(Map<String, dynamic> json) =>
+  factory BaseResponseUnionDictStrAny.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseUnionDictStrAnyFromJson(json);
 }

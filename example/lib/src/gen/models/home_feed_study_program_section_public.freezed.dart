@@ -199,7 +199,7 @@ class _$HomeFeedStudyProgramSectionPublicImpl
     extends _HomeFeedStudyProgramSectionPublic {
   const _$HomeFeedStudyProgramSectionPublicImpl(
       {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'type') required this.type = 'study_program',
+      @JsonKey(name: 'type') this.type = 'study_program',
       @JsonKey(name: 'title') required this.title,
       @JsonKey(name: 'description') required this.description,
       @JsonKey(name: 'data') required this.data})
@@ -277,7 +277,7 @@ abstract class _HomeFeedStudyProgramSectionPublic
     extends HomeFeedStudyProgramSectionPublic {
   const factory _HomeFeedStudyProgramSectionPublic(
           {@JsonKey(name: 'id') required final int id,
-          @JsonKey(name: 'type') required final String type,
+          @JsonKey(name: 'type') final String type,
           @JsonKey(name: 'title') required final String title,
           @JsonKey(name: 'description') required final String? description,
           @JsonKey(name: 'data')

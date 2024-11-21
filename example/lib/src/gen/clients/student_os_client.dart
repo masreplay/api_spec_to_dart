@@ -12,5 +12,5 @@ abstract class StudentOSClient {
   /// Read Organizational Structure For Student
   @GET('/api/v1/student/os/me')
   Future<HttpResponse<BaseResponseStudentOSPublic>>
-      readOrganizationalStructureForStudent();
+      studentOSReadOrganizationalStructureForStudent();
 }

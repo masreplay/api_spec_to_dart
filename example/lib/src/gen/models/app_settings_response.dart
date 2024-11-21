@@ -31,6 +31,8 @@ class AppSettingsResponse with _$AppSettingsResponse {
     @JsonKey(name: 'version') required String? version,
   }) = _AppSettingsResponse;
 
-  factory AppSettingsResponse.fromJson(Map<String, dynamic> json) =>
+  factory AppSettingsResponse.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$AppSettingsResponseFromJson(json);
 }

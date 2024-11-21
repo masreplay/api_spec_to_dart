@@ -13,7 +13,7 @@ abstract class StudentAttachmentsClient {
   /// Get Subject For Courses
   @GET('/api/v1/student/attachments/{course_id}')
   Future<HttpResponse<BaseResponseUnionListCourseSubjectPublic>>
-      getSubjectForCourses({
+      studentAttachmentsGetSubjectForCourses({
     @Path('course_id') required int courseId,
   });
 }

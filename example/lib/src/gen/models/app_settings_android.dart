@@ -23,6 +23,8 @@ class AppSettingsAndroid with _$AppSettingsAndroid {
     @JsonKey(name: 'message') required String? message,
   }) = _AppSettingsAndroid;
 
-  factory AppSettingsAndroid.fromJson(Map<String, dynamic> json) =>
+  factory AppSettingsAndroid.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$AppSettingsAndroidFromJson(json);
 }

@@ -63,6 +63,7 @@ class OpenApiSchema with _$OpenApiSchema {
   factory OpenApiSchema.fromJson(Map<String, dynamic> json) =>
       _$OpenApiSchemaFromJson(json);
 
+  // this code must be written in the generator or the config directly
   String dartType(OpenApiGeneratorConfig config) {
     return this.map(
       type: (value) {

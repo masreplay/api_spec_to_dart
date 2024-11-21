@@ -55,12 +55,10 @@ class StudentTable with _$StudentTable {
 
     /// English Mother Name3
     @JsonKey(name: 'english_mother_name3') required String? englishMotherName3,
-    @Default(GenderEnum.value1)
-    @JsonKey(name: 'gender')
-    required GenderEnum? gender,
+    @Default(GenderEnum.value1) @JsonKey(name: 'gender') GenderEnum? gender,
     @Default(CitizenshipTypeEnum.value1)
     @JsonKey(name: 'citizenship_type')
-    required CitizenshipTypeEnum? citizenshipType,
+    CitizenshipTypeEnum? citizenshipType,
     @JsonKey(name: 'blood_group') required BloodGroupEnum? bloodGroup,
 
     /// Date Of Birth
@@ -113,6 +111,8 @@ class StudentTable with _$StudentTable {
     @JsonKey(name: 'creation_time') required DateTime creationTime,
   }) = _StudentTable;
 
-  factory StudentTable.fromJson(Map<String, dynamic> json) =>
+  factory StudentTable.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$StudentTableFromJson(json);
 }

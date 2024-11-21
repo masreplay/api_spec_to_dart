@@ -22,7 +22,8 @@ class _StudentSummaryClient implements StudentSummaryClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<BaseResponseUnionSummaryResponse>> read() async {
+  Future<HttpResponse<BaseResponseUnionSummaryResponse>>
+      studentSummaryReadStudentSummary() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -58,7 +59,7 @@ class _StudentSummaryClient implements StudentSummaryClient {
 
   @override
   Future<HttpResponse<BaseResponseUnionStudentSeamstersSummaryWithoutCourses>>
-      readStudentSeamsters() async {
+      studentSummaryReadStudentSeamsters() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -96,7 +97,7 @@ class _StudentSummaryClient implements StudentSummaryClient {
 
   @override
   Future<HttpResponse<BaseResponseUnionListStudentSeamstersSummary>>
-      readStudentSeamstersCourses() async {
+      studentSummaryReadStudentSeamstersCourses() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

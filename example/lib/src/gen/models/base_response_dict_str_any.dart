@@ -20,6 +20,8 @@ class BaseResponseDictStrAny with _$BaseResponseDictStrAny {
     @JsonKey(name: 'data') required Map<String, dynamic> data,
   }) = _BaseResponseDictStrAny;
 
-  factory BaseResponseDictStrAny.fromJson(Map<String, dynamic> json) =>
+  factory BaseResponseDictStrAny.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseDictStrAnyFromJson(json);
 }

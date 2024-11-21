@@ -23,7 +23,7 @@ class _StudentRegistrationClient implements StudentRegistrationClient {
 
   @override
   Future<HttpResponse<BaseResponseStudentPersonalInfoResponse>>
-      updateStudentPersonalInfo(
+      studentRegistrationUpdateStudentPersonalInfo(
           {required StudentRegistrationPersonalInfoUpdateRequest body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -62,7 +62,7 @@ class _StudentRegistrationClient implements StudentRegistrationClient {
 
   @override
   Future<HttpResponse<BaseResponseUnionStudentSchoolInfoResponse>>
-      updateStudentSchoolInfo(
+      studentRegistrationUpdateStudentSchoolInfo(
           {required StudentRegistrationSchoolInfoUpdateRequest body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -101,7 +101,7 @@ class _StudentRegistrationClient implements StudentRegistrationClient {
 
   @override
   Future<HttpResponse<BaseResponseMessageResponse>>
-      updateStudentIdsInfoForeigner(
+      studentRegistrationUpdateStudentIdsInfoForeigner(
           {required RegistrationStudentIdsForeignerUpdateRequest body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -139,7 +139,7 @@ class _StudentRegistrationClient implements StudentRegistrationClient {
 
   @override
   Future<HttpResponse<BaseResponseMessageResponse>>
-      updateStudentIdsInfoIdentityCard(
+      studentRegistrationUpdateStudentIdsInfoIdentityCard(
           {required RegistrationsStudentIdsUpdateRequest body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -177,7 +177,7 @@ class _StudentRegistrationClient implements StudentRegistrationClient {
 
   @override
   Future<HttpResponse<BaseResponseMessageResponse>>
-      updateStudentIdsInfoNationalityCard(
+      studentRegistrationUpdateStudentIdsInfoNationalityCard(
           {required RegistrationsStudentIdsNationalityCreateRequest
               body}) async {
     final _extra = <String, dynamic>{};

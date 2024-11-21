@@ -31,6 +31,8 @@ class HomeFeedSectionModel with _$HomeFeedSectionModel {
     HomeFeedMissingPaymentSectionPublic value,
   ) = HomeFeedSectionModelHomeFeedMissingPaymentSectionPublic;
 
-  factory HomeFeedSectionModel.fromJson(Map<String, dynamic> json) =>
+  factory HomeFeedSectionModel.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$HomeFeedSectionModelFromJson(json);
 }

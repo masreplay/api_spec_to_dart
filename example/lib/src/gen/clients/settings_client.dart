@@ -11,5 +11,6 @@ abstract class SettingsClient {
   /// settings-read_settings
   /// Read Settings
   @GET('/api/v1/common/settings/')
-  Future<HttpResponse<BaseResponseUnionAppSettingsResponse>> read();
+  Future<HttpResponse<BaseResponseUnionAppSettingsResponse>>
+      settingsReadSettings();
 }

@@ -19,6 +19,8 @@ class BaseResponseCoursePublic with _$BaseResponseCoursePublic {
     @JsonKey(name: 'data') required CoursePublic data,
   }) = _BaseResponseCoursePublic;
 
-  factory BaseResponseCoursePublic.fromJson(Map<String, dynamic> json) =>
+  factory BaseResponseCoursePublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseCoursePublicFromJson(json);
 }

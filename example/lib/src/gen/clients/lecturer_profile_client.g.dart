@@ -22,7 +22,8 @@ class _LecturerProfileClient implements LecturerProfileClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<BaseResponseLecturerProfilePublic>> get() async {
+  Future<HttpResponse<BaseResponseLecturerProfilePublic>>
+      lecturerProfileGetLecturerProfile() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

@@ -23,7 +23,7 @@ class _StudentFeesClient implements StudentFeesClient {
 
   @override
   Future<HttpResponse<BaseResponseUnionPaginationResponseStudentFeesPublic>>
-      readFees({required ReadFeesQueries queries}) async {
+      studentFeesReadFees({required StudentFeesReadFeesQueries queries}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.addAll(queries.toJson());

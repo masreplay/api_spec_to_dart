@@ -32,12 +32,12 @@ class StudentSeamstersSummary with _$StudentSeamstersSummary {
     /// Current Number Of Units
     @Default(0)
     @JsonKey(name: 'current_number_of_units')
-    required int currentNumberOfUnits,
+    int currentNumberOfUnits,
 
     /// Current Number Of Subjects
     @Default(0)
     @JsonKey(name: 'current_number_of_subjects')
-    required int currentNumberOfSubjects,
+    int currentNumberOfSubjects,
 
     /// Current Subjects
     @JsonKey(name: 'current_subjects') required List<Subject> currentSubjects,
@@ -46,6 +46,8 @@ class StudentSeamstersSummary with _$StudentSeamstersSummary {
     @JsonKey(name: 'previous_subjects') required List<Subject> previousSubjects,
   }) = _StudentSeamstersSummary;
 
-  factory StudentSeamstersSummary.fromJson(Map<String, dynamic> json) =>
+  factory StudentSeamstersSummary.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$StudentSeamstersSummaryFromJson(json);
 }

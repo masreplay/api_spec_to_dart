@@ -23,7 +23,7 @@ class _StudentEkycClient implements StudentEkycClient {
 
   @override
   Future<HttpResponse<BaseResponseEkycDownloadLicensePublic>>
-      downloadLicense() async {
+      studentEkycDownloadLicense() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -59,7 +59,7 @@ class _StudentEkycClient implements StudentEkycClient {
   }
 
   @override
-  Future<HttpResponse<BaseResponseInitEkycResponse>> init() async {
+  Future<HttpResponse<BaseResponseInitEkycResponse>> studentEkycInit() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -94,7 +94,7 @@ class _StudentEkycClient implements StudentEkycClient {
   }
 
   @override
-  Future<HttpResponse<MessageResponse>> uploadNationalIdBackData(
+  Future<HttpResponse<MessageResponse>> studentEkycUploadNationalIdBackData(
       {required BodyStudentEkycUploadNationalIdBackData body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -131,7 +131,7 @@ class _StudentEkycClient implements StudentEkycClient {
   }
 
   @override
-  Future<HttpResponse<MessageResponse>> uploadNationalIdFrontData(
+  Future<HttpResponse<MessageResponse>> studentEkycUploadNationalIdFrontData(
       {required BodyStudentEkycUploadNationalIdFrontData body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -168,7 +168,7 @@ class _StudentEkycClient implements StudentEkycClient {
   }
 
   @override
-  Future<HttpResponse<MessageResponse>> uploadPassportData(
+  Future<HttpResponse<MessageResponse>> studentEkycUploadPassportData(
       {required BodyStudentEkycUploadPassportData body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -205,7 +205,7 @@ class _StudentEkycClient implements StudentEkycClient {
   }
 
   @override
-  Future<HttpResponse<MessageResponse>> uploadFaceData(
+  Future<HttpResponse<MessageResponse>> studentEkycUploadFaceData(
       {required BodyStudentEkycUploadFaceData body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -242,7 +242,7 @@ class _StudentEkycClient implements StudentEkycClient {
   }
 
   @override
-  Future<HttpResponse<MessageResponse>> uploadNfc(
+  Future<HttpResponse<MessageResponse>> studentEkycUploadNfc(
       {required BodyStudentEkycUploadNfc body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -279,7 +279,7 @@ class _StudentEkycClient implements StudentEkycClient {
   }
 
   @override
-  Future<HttpResponse<MessageResponse>> uploadEyeData(
+  Future<HttpResponse<MessageResponse>> studentEkycUploadEyeData(
       {required BodyStudentEkycUploadEyeData body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -316,7 +316,8 @@ class _StudentEkycClient implements StudentEkycClient {
   }
 
   @override
-  Future<HttpResponse<BaseResponseUIForm>> readForm() async {
+  Future<HttpResponse<BaseResponseUIForm>>
+      studentEkycReadStudentEkycForm() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -350,7 +351,7 @@ class _StudentEkycClient implements StudentEkycClient {
   }
 
   @override
-  Future<HttpResponse<BaseResponseStr?>> uploadForm(
+  Future<HttpResponse<BaseResponseStr?>> studentEkycUploadStudentEkycForm(
       {required StudentEkycFormDataRequest body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -387,7 +388,7 @@ class _StudentEkycClient implements StudentEkycClient {
   }
 
   @override
-  Future<HttpResponse<MessageResponse>> submitEkyc() async {
+  Future<HttpResponse<MessageResponse>> studentEkycSubmitEkyc() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

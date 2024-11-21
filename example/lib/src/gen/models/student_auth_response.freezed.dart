@@ -223,7 +223,7 @@ class _$StudentAuthResponseImpl extends _StudentAuthResponse {
       @JsonKey(name: 'refresh_token') required this.refreshToken,
       @JsonKey(name: 'refresh_expires_in') required this.refreshExpiresIn,
       @JsonKey(name: 'user_id') required this.userId,
-      @JsonKey(name: 'user_role') required this.userRole = UserRole.value0,
+      @JsonKey(name: 'user_role') this.userRole = UserRole.value0,
       @JsonKey(name: 'status') required this.status})
       : super._();
 
@@ -314,7 +314,7 @@ abstract class _StudentAuthResponse extends StudentAuthResponse {
       @JsonKey(name: 'refresh_token') required final String refreshToken,
       @JsonKey(name: 'refresh_expires_in') required final int refreshExpiresIn,
       @JsonKey(name: 'user_id') required final int userId,
-      @JsonKey(name: 'user_role') required final UserRole userRole,
+      @JsonKey(name: 'user_role') final UserRole userRole,
       @JsonKey(name: 'status')
       required final AuthenticationStatusResponse
           status}) = _$StudentAuthResponseImpl;

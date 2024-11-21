@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:dio/dio.dart';
 
 import '../../convertors.dart';
 import 'package:example/src/gen/models/models.dart';
@@ -24,6 +25,8 @@ class BodyFilesUploadFile with _$BodyFilesUploadFile {
     @JsonKey(name: 'collection') required FileCollectionEnum collection,
   }) = _BodyFilesUploadFile;
 
-  factory BodyFilesUploadFile.fromJson(Map<String, dynamic> json) =>
+  factory BodyFilesUploadFile.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$BodyFilesUploadFileFromJson(json);
 }

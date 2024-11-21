@@ -12,10 +12,11 @@ abstract class StudentAdmissionsClient {
   /// student_admissions-read_admissions
   /// Read Admissions
   @GET('/api/v1/student/admissions/me')
-  Future<HttpResponse<BaseResponseListAdmissionMePublic>> readAdmissions();
+  Future<HttpResponse<BaseResponseListAdmissionMePublic>>
+      studentAdmissionsReadAdmissions();
 
   /// student_admissions-get_joining_time
   /// Get Joining Time
   @GET('/api/v1/student/admissions/me/joining-time')
-  Future<HttpResponse<JoiningTime>> getJoiningTime();
+  Future<HttpResponse<JoiningTime>> studentAdmissionsGetJoiningTime();
 }

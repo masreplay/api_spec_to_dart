@@ -29,7 +29,7 @@ class HomeworkCalenderEventPublic with _$HomeworkCalenderEventPublic {
     @JsonKey(name: 'end_date_formatted') required String? endDateFormatted,
 
     /// Type
-    @Default('assignment') @JsonKey(name: 'type') required String type,
+    @Default('assignment') @JsonKey(name: 'type') String type,
 
     /// Title
     @JsonKey(name: 'title') required String title,
@@ -38,6 +38,8 @@ class HomeworkCalenderEventPublic with _$HomeworkCalenderEventPublic {
     @JsonKey(name: 'description') required String? description,
   }) = _HomeworkCalenderEventPublic;
 
-  factory HomeworkCalenderEventPublic.fromJson(Map<String, dynamic> json) =>
+  factory HomeworkCalenderEventPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$HomeworkCalenderEventPublicFromJson(json);
 }

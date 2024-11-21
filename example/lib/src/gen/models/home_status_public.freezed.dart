@@ -157,11 +157,10 @@ class __$$HomeStatusPublicImplCopyWithImpl<$Res>
 @JsonSerializable(converters: convertors)
 class _$HomeStatusPublicImpl extends _HomeStatusPublic {
   const _$HomeStatusPublicImpl(
-      {@JsonKey(name: 'type') required this.type = 'status',
+      {@JsonKey(name: 'type') this.type = 'status',
       @JsonKey(name: 'title') required this.title,
       @JsonKey(name: 'description') required this.description,
-      @JsonKey(name: 'status')
-      required this.status = HomeProcessStatus.noStudyProgram})
+      @JsonKey(name: 'status') this.status = HomeProcessStatus.noStudyProgram})
       : super._();
 
   factory _$HomeStatusPublicImpl.fromJson(Map<String, dynamic> json) =>
@@ -226,10 +225,10 @@ class _$HomeStatusPublicImpl extends _HomeStatusPublic {
 
 abstract class _HomeStatusPublic extends HomeStatusPublic {
   const factory _HomeStatusPublic(
-          {@JsonKey(name: 'type') required final String type,
+          {@JsonKey(name: 'type') final String type,
           @JsonKey(name: 'title') required final String title,
           @JsonKey(name: 'description') required final String? description,
-          @JsonKey(name: 'status') required final HomeProcessStatus status}) =
+          @JsonKey(name: 'status') final HomeProcessStatus status}) =
       _$HomeStatusPublicImpl;
   const _HomeStatusPublic._() : super._();
 

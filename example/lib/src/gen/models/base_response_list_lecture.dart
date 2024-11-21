@@ -22,6 +22,8 @@ class BaseResponseListLecture with _$BaseResponseListLecture {
     required List<AppApiRoutesV1StudentAttendanceRouteLecture> data,
   }) = _BaseResponseListLecture;
 
-  factory BaseResponseListLecture.fromJson(Map<String, dynamic> json) =>
+  factory BaseResponseListLecture.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseListLectureFromJson(json);
 }

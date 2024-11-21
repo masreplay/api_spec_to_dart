@@ -13,5 +13,5 @@ abstract class StudentSpecializationsClient {
   /// Read Specializations
   @GET('/api/v1/student/specializations/')
   Future<HttpResponse<BaseResponseListSpecializationPublic>>
-      readSpecializations();
+      studentSpecializationsReadSpecializations();
 }

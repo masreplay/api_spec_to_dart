@@ -13,29 +13,30 @@ abstract class StudentNotificationsClient {
   /// Read Notifications
   @GET('/api/v1/student/notifications/')
   Future<HttpResponse<BaseResponsePaginationResponseStudentNotificationsPublic>>
-      readNotifications({
-    @Queries() required ReadNotificationsQueries queries,
+      studentNotificationsReadNotifications({
+    @Queries() required StudentNotificationsReadNotificationsQueries queries,
   });
 
   /// student_notifications-send_player_id
   /// Send Player Id
   @POST('/api/v1/student/notifications/token')
-  Future<HttpResponse<MessageResponse>> sendPlayerId({
+  Future<HttpResponse<MessageResponse>> studentNotificationsSendPlayerId({
     @Body() required StudentDeviceCreate body,
   });
 
   /// student_notifications-mark_as_read
   /// Mark As Read
   @PATCH('/api/v1/student/notifications/mark-as-read')
-  Future<HttpResponse<BaseResponseUnionStudentNotificationsPublic>> markAsRead({
-    @Queries() required MarkAsReadQueries queries,
+  Future<HttpResponse<BaseResponseUnionStudentNotificationsPublic>>
+      studentNotificationsMarkAsRead({
+    @Queries() required StudentNotificationsMarkAsReadQueries queries,
   });
 
   /// student_notifications-read_notification_detail
   /// Read Notification Detail
   @GET('/api/v1/student/notifications/{id}')
   Future<HttpResponse<BaseResponseUnionStudentNotificationsPublic>>
-      readNotificationDetail({
+      studentNotificationsReadNotificationDetail({
     @Path('id') required int id,
   });
 }

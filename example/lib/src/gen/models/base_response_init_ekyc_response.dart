@@ -19,6 +19,8 @@ class BaseResponseInitEkycResponse with _$BaseResponseInitEkycResponse {
     @JsonKey(name: 'data') required InitEkycResponse data,
   }) = _BaseResponseInitEkycResponse;
 
-  factory BaseResponseInitEkycResponse.fromJson(Map<String, dynamic> json) =>
+  factory BaseResponseInitEkycResponse.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseInitEkycResponseFromJson(json);
 }

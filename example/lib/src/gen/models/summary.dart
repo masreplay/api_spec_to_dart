@@ -28,14 +28,16 @@ class Summary with _$Summary {
     /// Current Number Of Units
     @Default(0)
     @JsonKey(name: 'current_number_of_units')
-    required int currentNumberOfUnits,
+    int currentNumberOfUnits,
 
     /// Current Number Of Subjects
     @Default(0)
     @JsonKey(name: 'current_number_of_subjects')
-    required int currentNumberOfSubjects,
+    int currentNumberOfSubjects,
   }) = _Summary;
 
-  factory Summary.fromJson(Map<String, dynamic> json) =>
+  factory Summary.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$SummaryFromJson(json);
 }

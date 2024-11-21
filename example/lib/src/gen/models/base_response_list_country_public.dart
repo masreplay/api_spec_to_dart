@@ -21,6 +21,8 @@ class BaseResponseListCountryPublic with _$BaseResponseListCountryPublic {
     @JsonKey(name: 'data') required List<CountryPublic> data,
   }) = _BaseResponseListCountryPublic;
 
-  factory BaseResponseListCountryPublic.fromJson(Map<String, dynamic> json) =>
+  factory BaseResponseListCountryPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseListCountryPublicFromJson(json);
 }

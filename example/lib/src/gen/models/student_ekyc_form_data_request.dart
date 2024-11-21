@@ -17,6 +17,8 @@ class StudentEkycFormDataRequest with _$StudentEkycFormDataRequest {
     @JsonKey(name: 'ekyc_extra') required Map<String, dynamic> ekycExtra,
   }) = _StudentEkycFormDataRequest;
 
-  factory StudentEkycFormDataRequest.fromJson(Map<String, dynamic> json) =>
+  factory StudentEkycFormDataRequest.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$StudentEkycFormDataRequestFromJson(json);
 }

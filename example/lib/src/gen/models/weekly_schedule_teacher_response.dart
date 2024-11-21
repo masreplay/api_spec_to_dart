@@ -22,6 +22,8 @@ class WeeklyScheduleTeacherResponse with _$WeeklyScheduleTeacherResponse {
     required List<AppApiRoutesV1LecturerWeeklyScheduleRouteLecture?> lectures,
   }) = _WeeklyScheduleTeacherResponse;
 
-  factory WeeklyScheduleTeacherResponse.fromJson(Map<String, dynamic> json) =>
+  factory WeeklyScheduleTeacherResponse.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$WeeklyScheduleTeacherResponseFromJson(json);
 }

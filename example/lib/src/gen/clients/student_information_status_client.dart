@@ -12,5 +12,6 @@ abstract class StudentInformationStatusClient {
   /// student_information_status-read_status
   /// Read Status
   @GET('/api/v1/student/information_status/')
-  Future<HttpResponse<BaseResponseAuthenticationStatusResponse>> readStatus();
+  Future<HttpResponse<BaseResponseAuthenticationStatusResponse>>
+      studentInformationStatusReadStatus();
 }

@@ -26,21 +26,23 @@ class UICheckboxFormField with _$UICheckboxFormField {
     @JsonKey(name: 'is_required') required bool isRequired,
 
     /// Read Only
-    @Default(false) @JsonKey(name: 'read_only') required bool readOnly,
+    @Default(false) @JsonKey(name: 'read_only') bool readOnly,
 
     /// Doc
     @JsonKey(name: 'doc') required String? doc,
 
     /// Type
-    @Default('checkbox') @JsonKey(name: 'type') required String type,
+    @Default('checkbox') @JsonKey(name: 'type') String type,
 
     /// Default Value
-    @Default(false) @JsonKey(name: 'default_value') required bool defaultValue,
+    @Default(false) @JsonKey(name: 'default_value') bool defaultValue,
 
     /// Example
     @JsonKey(name: 'example') required bool example,
   }) = _UICheckboxFormField;
 
-  factory UICheckboxFormField.fromJson(Map<String, dynamic> json) =>
+  factory UICheckboxFormField.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$UICheckboxFormFieldFromJson(json);
 }

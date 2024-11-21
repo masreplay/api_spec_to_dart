@@ -35,6 +35,8 @@ class StudentIdsNationalCardPublic with _$StudentIdsNationalCardPublic {
     @JsonKey(name: 'back_image') required FilePublic? backImage,
   }) = _StudentIdsNationalCardPublic;
 
-  factory StudentIdsNationalCardPublic.fromJson(Map<String, dynamic> json) =>
+  factory StudentIdsNationalCardPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$StudentIdsNationalCardPublicFromJson(json);
 }

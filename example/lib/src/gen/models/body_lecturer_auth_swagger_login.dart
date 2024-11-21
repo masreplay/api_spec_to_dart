@@ -20,6 +20,8 @@ class BodyLecturerAuthSwaggerLogin with _$BodyLecturerAuthSwaggerLogin {
     @JsonKey(name: 'password') required String password,
   }) = _BodyLecturerAuthSwaggerLogin;
 
-  factory BodyLecturerAuthSwaggerLogin.fromJson(Map<String, dynamic> json) =>
+  factory BodyLecturerAuthSwaggerLogin.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$BodyLecturerAuthSwaggerLoginFromJson(json);
 }

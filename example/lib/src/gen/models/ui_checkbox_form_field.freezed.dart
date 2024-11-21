@@ -243,10 +243,10 @@ class _$UICheckboxFormFieldImpl extends _UICheckboxFormField {
       @JsonKey(name: 'name') required this.name,
       @JsonKey(name: 'hint') required this.hint,
       @JsonKey(name: 'is_required') required this.isRequired,
-      @JsonKey(name: 'read_only') required this.readOnly = false,
+      @JsonKey(name: 'read_only') this.readOnly = false,
       @JsonKey(name: 'doc') required this.doc,
-      @JsonKey(name: 'type') required this.type = 'checkbox',
-      @JsonKey(name: 'default_value') required this.defaultValue = false,
+      @JsonKey(name: 'type') this.type = 'checkbox',
+      @JsonKey(name: 'default_value') this.defaultValue = false,
       @JsonKey(name: 'example') required this.example})
       : super._();
 
@@ -350,10 +350,10 @@ abstract class _UICheckboxFormField extends UICheckboxFormField {
           @JsonKey(name: 'name') required final String name,
           @JsonKey(name: 'hint') required final String? hint,
           @JsonKey(name: 'is_required') required final bool isRequired,
-          @JsonKey(name: 'read_only') required final bool readOnly,
+          @JsonKey(name: 'read_only') final bool readOnly,
           @JsonKey(name: 'doc') required final String? doc,
-          @JsonKey(name: 'type') required final String type,
-          @JsonKey(name: 'default_value') required final bool defaultValue,
+          @JsonKey(name: 'type') final String type,
+          @JsonKey(name: 'default_value') final bool defaultValue,
           @JsonKey(name: 'example') required final bool example}) =
       _$UICheckboxFormFieldImpl;
   const _UICheckboxFormField._() : super._();

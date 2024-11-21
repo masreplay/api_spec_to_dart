@@ -13,5 +13,5 @@ abstract class StudentWeeklySchedulesClient {
   /// Get My Weekly Schedule
   @GET('/api/v1/student/weekly_schedules/me')
   Future<HttpResponse<BaseResponseUnionListWeeklyScheduleResponse>>
-      getMyWeeklySchedule();
+      studentWeeklySchedulesGetMyWeeklySchedule();
 }

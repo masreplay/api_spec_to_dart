@@ -20,6 +20,8 @@ class StudentFeesFeesTypesPublic with _$StudentFeesFeesTypesPublic {
     @JsonKey(name: 'name') required String name,
   }) = _StudentFeesFeesTypesPublic;
 
-  factory StudentFeesFeesTypesPublic.fromJson(Map<String, dynamic> json) =>
+  factory StudentFeesFeesTypesPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$StudentFeesFeesTypesPublicFromJson(json);
 }

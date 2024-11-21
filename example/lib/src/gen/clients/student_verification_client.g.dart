@@ -23,7 +23,7 @@ class _StudentVerificationClient implements StudentVerificationClient {
 
   @override
   Future<HttpResponse<BaseResponseListVerificationMethodPublic>>
-      initOtpData() async {
+      studentVerificationInitOtpData() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -59,7 +59,7 @@ class _StudentVerificationClient implements StudentVerificationClient {
   }
 
   @override
-  Future<HttpResponse<MessageResponse>> sendOtp(
+  Future<HttpResponse<MessageResponse>> studentVerificationSendOtp(
       {required SendOtpByRequestPublic body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -95,7 +95,7 @@ class _StudentVerificationClient implements StudentVerificationClient {
   }
 
   @override
-  Future<HttpResponse<MessageResponse>> verifyOtp(
+  Future<HttpResponse<MessageResponse>> studentVerificationVerifyOtp(
       {required VerifyOtpRequestPublic body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

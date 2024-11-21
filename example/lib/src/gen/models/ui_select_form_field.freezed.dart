@@ -260,11 +260,11 @@ class _$UISelectFormFieldImpl extends _UISelectFormField {
       @JsonKey(name: 'name') required this.name,
       @JsonKey(name: 'hint') required this.hint,
       @JsonKey(name: 'is_required') required this.isRequired,
-      @JsonKey(name: 'read_only') required this.readOnly = false,
+      @JsonKey(name: 'read_only') this.readOnly = false,
       @JsonKey(name: 'doc') required this.doc,
-      @JsonKey(name: 'type') required this.type = 'select',
+      @JsonKey(name: 'type') this.type = 'select',
       @JsonKey(name: 'options')
-      required final List<UISelectFormFieldOption> options = const [],
+      final List<UISelectFormFieldOption> options = const [],
       @JsonKey(name: 'default_value') required this.defaultValue,
       @JsonKey(name: 'example') required this.example})
       : _options = options,
@@ -393,11 +393,10 @@ abstract class _UISelectFormField extends UISelectFormField {
           @JsonKey(name: 'name') required final String name,
           @JsonKey(name: 'hint') required final String? hint,
           @JsonKey(name: 'is_required') required final bool isRequired,
-          @JsonKey(name: 'read_only') required final bool readOnly,
+          @JsonKey(name: 'read_only') final bool readOnly,
           @JsonKey(name: 'doc') required final String? doc,
-          @JsonKey(name: 'type') required final String type,
-          @JsonKey(name: 'options')
-          required final List<UISelectFormFieldOption> options,
+          @JsonKey(name: 'type') final String type,
+          @JsonKey(name: 'options') final List<UISelectFormFieldOption> options,
           @JsonKey(name: 'default_value') required final String? defaultValue,
           @JsonKey(name: 'example') required final String? example}) =
       _$UISelectFormFieldImpl;

@@ -55,12 +55,10 @@ class StudentPersonalInfoResponse with _$StudentPersonalInfoResponse {
 
     /// English Mother Name3
     @JsonKey(name: 'english_mother_name3') required String? englishMotherName3,
-    @Default(GenderEnum.value1)
-    @JsonKey(name: 'gender')
-    required GenderEnum? gender,
+    @Default(GenderEnum.value1) @JsonKey(name: 'gender') GenderEnum? gender,
     @Default(CitizenshipTypeEnum.value1)
     @JsonKey(name: 'citizenship_type')
-    required CitizenshipTypeEnum? citizenshipType,
+    CitizenshipTypeEnum? citizenshipType,
     @JsonKey(name: 'blood_group') required BloodGroupEnum? bloodGroup,
 
     /// Date Of Birth
@@ -112,6 +110,8 @@ class StudentPersonalInfoResponse with _$StudentPersonalInfoResponse {
     @JsonKey(name: 'profile_image') required FilePublic? profileImage,
   }) = _StudentPersonalInfoResponse;
 
-  factory StudentPersonalInfoResponse.fromJson(Map<String, dynamic> json) =>
+  factory StudentPersonalInfoResponse.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$StudentPersonalInfoResponseFromJson(json);
 }

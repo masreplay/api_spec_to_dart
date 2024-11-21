@@ -23,8 +23,9 @@ class _LecturerFamilyInfoClient implements LecturerFamilyInfoClient {
 
   @override
   Future<HttpResponse<BaseResponseUnionEmployeeFamilyPublic>>
-      getEmployeeFamilyInfo(
-          {required GetEmployeeFamilyInfoQueries queries}) async {
+      lecturerFamilyInfoGetEmployeeFamilyInfo(
+          {required LecturerFamilyInfoGetEmployeeFamilyInfoQueries
+              queries}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.addAll(queries.toJson());

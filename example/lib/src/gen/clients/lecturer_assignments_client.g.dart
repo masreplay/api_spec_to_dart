@@ -23,8 +23,8 @@ class _LecturerAssignmentsClient implements LecturerAssignmentsClient {
 
   @override
   Future<HttpResponse<BaseResponsePaginationResponseLecturerAssignmentPublic>>
-      get({
-    required GetQueries queries,
+      lecturerAssignmentsGetLecturerAssignments({
+    required LecturerAssignmentsGetLecturerAssignmentsQueries queries,
     required int courseId,
   }) async {
     final _extra = <String, dynamic>{};
@@ -65,7 +65,7 @@ class _LecturerAssignmentsClient implements LecturerAssignmentsClient {
 
   @override
   Future<HttpResponse<BaseResponseLecturerAssignmentPublic>>
-      createLecturerAssignment({
+      lecturerAssignmentsCreateLecturerAssignment({
     required int courseId,
     required BodyLecturerAssignmentsCreateLecturerAssignment body,
   }) async {
@@ -107,7 +107,7 @@ class _LecturerAssignmentsClient implements LecturerAssignmentsClient {
 
   @override
   Future<HttpResponse<BaseResponseLecturerAssignmentPublic>>
-      getLecturerAssignment({required int id}) async {
+      lecturerAssignmentsGetLecturerAssignment({required int id}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -144,7 +144,7 @@ class _LecturerAssignmentsClient implements LecturerAssignmentsClient {
 
   @override
   Future<HttpResponse<BaseResponseLecturerAssignmentPublic>>
-      updateLecturerAssignment({
+      lecturerAssignmentsUpdateLecturerAssignment({
     required int id,
     required BodyLecturerAssignmentsUpdateLecturerAssignment body,
   }) async {
@@ -185,8 +185,8 @@ class _LecturerAssignmentsClient implements LecturerAssignmentsClient {
   }
 
   @override
-  Future<HttpResponse<MessageResponse>> deleteLecturerAssignment(
-      {required int id}) async {
+  Future<HttpResponse<MessageResponse>>
+      lecturerAssignmentsDeleteLecturerAssignment({required int id}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -221,7 +221,8 @@ class _LecturerAssignmentsClient implements LecturerAssignmentsClient {
 
   @override
   Future<HttpResponse<BaseResponseListCommentPublic>>
-      getLecturerAssignmentComments({required int id}) async {
+      lecturerAssignmentsGetLecturerAssignmentComments(
+          {required int id}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -257,7 +258,7 @@ class _LecturerAssignmentsClient implements LecturerAssignmentsClient {
 
   @override
   Future<HttpResponse<BaseResponseCommentPublic>>
-      createLecturerAssignmentComment({
+      lecturerAssignmentsCreateLecturerAssignmentComment({
     required int id,
     required BodyLecturerAssignmentsCreateLecturerAssignmentComment body,
   }) async {

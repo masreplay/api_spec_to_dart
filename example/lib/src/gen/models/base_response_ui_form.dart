@@ -19,6 +19,8 @@ class BaseResponseUIForm with _$BaseResponseUIForm {
     @JsonKey(name: 'data') required UIForm data,
   }) = _BaseResponseUIForm;
 
-  factory BaseResponseUIForm.fromJson(Map<String, dynamic> json) =>
+  factory BaseResponseUIForm.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseUIFormFromJson(json);
 }

@@ -23,8 +23,8 @@ class _LecturerAnnouncementsClient implements LecturerAnnouncementsClient {
 
   @override
   Future<HttpResponse<BaseResponsePaginationResponseLecturerAnnouncementPublic>>
-      get({
-    required GetQueries queries,
+      lecturerAnnouncementsGetLecturerAnnouncements({
+    required LecturerAnnouncementsGetLecturerAnnouncementsQueries queries,
     required int courseId,
   }) async {
     final _extra = <String, dynamic>{};
@@ -66,7 +66,7 @@ class _LecturerAnnouncementsClient implements LecturerAnnouncementsClient {
 
   @override
   Future<HttpResponse<BaseResponseLecturerAnnouncementPublic>>
-      createLecturerAnnouncement({
+      lecturerAnnouncementsCreateLecturerAnnouncement({
     required int courseId,
     required BodyLecturerAnnouncementsCreateLecturerAnnouncement body,
   }) async {
@@ -108,7 +108,7 @@ class _LecturerAnnouncementsClient implements LecturerAnnouncementsClient {
 
   @override
   Future<HttpResponse<BaseResponseLecturerAnnouncementPublic>>
-      getLecturerAnnouncement({required int id}) async {
+      lecturerAnnouncementsGetLecturerAnnouncement({required int id}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -145,7 +145,7 @@ class _LecturerAnnouncementsClient implements LecturerAnnouncementsClient {
 
   @override
   Future<HttpResponse<BaseResponseLecturerAnnouncementPublic>>
-      updateLecturerAnnouncement({
+      lecturerAnnouncementsUpdateLecturerAnnouncement({
     required int id,
     required LecturerAnnouncementUpdatePublic body,
   }) async {
@@ -185,8 +185,8 @@ class _LecturerAnnouncementsClient implements LecturerAnnouncementsClient {
   }
 
   @override
-  Future<HttpResponse<MessageResponse>> deleteLecturerAnnouncement(
-      {required int id}) async {
+  Future<HttpResponse<MessageResponse>>
+      lecturerAnnouncementsDeleteLecturerAnnouncement({required int id}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -221,8 +221,9 @@ class _LecturerAnnouncementsClient implements LecturerAnnouncementsClient {
 
   @override
   Future<HttpResponse<BaseResponsePaginationResponseCommentPublic>>
-      getLecturerAnnouncementComments({
-    required GetLecturerAnnouncementCommentsQueries queries,
+      lecturerAnnouncementsGetLecturerAnnouncementComments({
+    required LecturerAnnouncementsGetLecturerAnnouncementCommentsQueries
+        queries,
     required int id,
   }) async {
     final _extra = <String, dynamic>{};
@@ -262,7 +263,7 @@ class _LecturerAnnouncementsClient implements LecturerAnnouncementsClient {
 
   @override
   Future<HttpResponse<BaseResponseCommentPublic>>
-      createLecturerAnnouncementComment({
+      lecturerAnnouncementsCreateLecturerAnnouncementComment({
     required int id,
     required CommentCreatePublic body,
   }) async {

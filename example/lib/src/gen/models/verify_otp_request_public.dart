@@ -17,6 +17,8 @@ class VerifyOtpRequestPublic with _$VerifyOtpRequestPublic {
     @JsonKey(name: 'otp') required String otp,
   }) = _VerifyOtpRequestPublic;
 
-  factory VerifyOtpRequestPublic.fromJson(Map<String, dynamic> json) =>
+  factory VerifyOtpRequestPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$VerifyOtpRequestPublicFromJson(json);
 }

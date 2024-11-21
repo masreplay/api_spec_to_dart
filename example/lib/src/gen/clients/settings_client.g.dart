@@ -22,7 +22,8 @@ class _SettingsClient implements SettingsClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<BaseResponseUnionAppSettingsResponse>> read() async {
+  Future<HttpResponse<BaseResponseUnionAppSettingsResponse>>
+      settingsReadSettings() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

@@ -23,7 +23,7 @@ class _StudentStudyYearsClient implements StudentStudyYearsClient {
 
   @override
   Future<HttpResponse<BaseResponseListStudyYearPublic>>
-      readStudentWorkloads() async {
+      studentStudyYearsReadStudentWorkloads() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

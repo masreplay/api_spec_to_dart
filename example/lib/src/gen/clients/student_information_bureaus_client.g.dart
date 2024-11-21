@@ -24,7 +24,7 @@ class _StudentInformationBureausClient
 
   @override
   Future<HttpResponse<BaseResponseListInformationBureausPublic>>
-      readInformationBureaus() async {
+      studentInformationBureausReadInformationBureaus() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

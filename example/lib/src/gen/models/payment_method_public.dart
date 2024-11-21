@@ -31,6 +31,8 @@ class PaymentMethodPublic with _$PaymentMethodPublic {
     @JsonKey(name: 'type') required PaymentMethodEnum type,
   }) = _PaymentMethodPublic;
 
-  factory PaymentMethodPublic.fromJson(Map<String, dynamic> json) =>
+  factory PaymentMethodPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$PaymentMethodPublicFromJson(json);
 }

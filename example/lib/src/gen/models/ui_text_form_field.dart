@@ -26,13 +26,13 @@ class UITextFormField with _$UITextFormField {
     @JsonKey(name: 'is_required') required bool isRequired,
 
     /// Read Only
-    @Default(false) @JsonKey(name: 'read_only') required bool readOnly,
+    @Default(false) @JsonKey(name: 'read_only') bool readOnly,
 
     /// Doc
     @JsonKey(name: 'doc') required String? doc,
 
     /// Type
-    @Default('text') @JsonKey(name: 'type') required String type,
+    @Default('text') @JsonKey(name: 'type') String type,
 
     /// Regex
     @JsonKey(name: 'regex') required String? regex,
@@ -47,6 +47,8 @@ class UITextFormField with _$UITextFormField {
     @JsonKey(name: 'validation_message') required String? validationMessage,
   }) = _UITextFormField;
 
-  factory UITextFormField.fromJson(Map<String, dynamic> json) =>
+  factory UITextFormField.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$UITextFormFieldFromJson(json);
 }

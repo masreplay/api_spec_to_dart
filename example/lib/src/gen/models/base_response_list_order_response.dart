@@ -21,6 +21,8 @@ class BaseResponseListOrderResponse with _$BaseResponseListOrderResponse {
     @JsonKey(name: 'data') required List<OrderResponse> data,
   }) = _BaseResponseListOrderResponse;
 
-  factory BaseResponseListOrderResponse.fromJson(Map<String, dynamic> json) =>
+  factory BaseResponseListOrderResponse.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseListOrderResponseFromJson(json);
 }

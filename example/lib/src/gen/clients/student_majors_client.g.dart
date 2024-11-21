@@ -22,7 +22,8 @@ class _StudentMajorsClient implements StudentMajorsClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<BaseResponseListMajorsPublic>> readMajors() async {
+  Future<HttpResponse<BaseResponseListMajorsPublic>>
+      studentMajorsReadMajors() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

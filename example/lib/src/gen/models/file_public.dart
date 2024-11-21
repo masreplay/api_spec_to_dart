@@ -29,6 +29,8 @@ class FilePublic with _$FilePublic {
     @JsonKey(name: 'size') required int size,
   }) = _FilePublic;
 
-  factory FilePublic.fromJson(Map<String, dynamic> json) =>
+  factory FilePublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$FilePublicFromJson(json);
 }

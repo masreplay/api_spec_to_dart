@@ -23,6 +23,8 @@ class GovernoratePublic with _$GovernoratePublic {
     @JsonKey(name: 'name') required String name,
   }) = _GovernoratePublic;
 
-  factory GovernoratePublic.fromJson(Map<String, dynamic> json) =>
+  factory GovernoratePublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$GovernoratePublicFromJson(json);
 }

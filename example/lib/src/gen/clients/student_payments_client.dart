@@ -13,19 +13,21 @@ abstract class StudentPaymentsClient {
   /// Read Payment Methods
   @GET('/api/v1/student/payments/methods')
   Future<HttpResponse<BaseResponseListPaymentMethodPublic>>
-      readPaymentMethods();
+      studentPaymentsReadPaymentMethods();
 
   /// student_payments-read_payment_method
   /// Read Payment Method
   @POST('/api/v1/student/payments/methods/{id}')
-  Future<HttpResponse<BaseResponseDictStrAny>> readPaymentMethod({
+  Future<HttpResponse<BaseResponseDictStrAny>>
+      studentPaymentsReadPaymentMethod({
     @Path('id') required int id,
   });
 
   /// student_payments-read_payment_status
   /// Read Payment Status
   @POST('/api/v1/student/payments/status/{order_id}')
-  Future<HttpResponse<BaseResponseUnionDictStrAny>> readPaymentStatus({
+  Future<HttpResponse<BaseResponseUnionDictStrAny>>
+      studentPaymentsReadPaymentStatus({
     @Path('order_id') required String orderId,
   });
 
@@ -33,5 +35,5 @@ abstract class StudentPaymentsClient {
   /// Read Enrollment Payment Information
   @GET('/api/v1/student/payments/enrollment')
   Future<HttpResponse<BaseResponsePaymentInfoResponse>>
-      readEnrollmentPaymentInformation();
+      studentPaymentsReadEnrollmentPaymentInformation();
 }

@@ -426,8 +426,7 @@ class _$StudentSelectedCoursesPublicImpl extends _StudentSelectedCoursesPublic {
       @JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'course') required this.course,
       @JsonKey(name: 'course_distribution') required this.courseDistribution,
-      @JsonKey(name: 'result')
-      required this.result = SelectedCourseResultEnum.value1})
+      @JsonKey(name: 'result') this.result = SelectedCourseResultEnum.value1})
       : super._();
 
   factory _$StudentSelectedCoursesPublicImpl.fromJson(
@@ -619,8 +618,7 @@ abstract class _StudentSelectedCoursesPublic
           @JsonKey(name: 'course') required final CourseTable? course,
           @JsonKey(name: 'course_distribution')
           required final CourseDistributionsTable? courseDistribution,
-          @JsonKey(name: 'result')
-          required final SelectedCourseResultEnum result}) =
+          @JsonKey(name: 'result') final SelectedCourseResultEnum result}) =
       _$StudentSelectedCoursesPublicImpl;
   const _StudentSelectedCoursesPublic._() : super._();
 

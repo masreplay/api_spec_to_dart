@@ -17,6 +17,8 @@ class MessageResponse with _$MessageResponse {
     @JsonKey(name: 'message') required String message,
   }) = _MessageResponse;
 
-  factory MessageResponse.fromJson(Map<String, dynamic> json) =>
+  factory MessageResponse.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$MessageResponseFromJson(json);
 }

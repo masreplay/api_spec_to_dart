@@ -21,6 +21,8 @@ class BaseResponseListReligionPublic with _$BaseResponseListReligionPublic {
     @JsonKey(name: 'data') required List<ReligionPublic> data,
   }) = _BaseResponseListReligionPublic;
 
-  factory BaseResponseListReligionPublic.fromJson(Map<String, dynamic> json) =>
+  factory BaseResponseListReligionPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseListReligionPublicFromJson(json);
 }

@@ -23,7 +23,7 @@ class _StudentGovernoratesClient implements StudentGovernoratesClient {
 
   @override
   Future<HttpResponse<BaseResponseListGovernoratePublic>>
-      readGovernorates() async {
+      studentGovernoratesReadGovernorates() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

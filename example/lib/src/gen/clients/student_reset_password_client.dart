@@ -12,40 +12,41 @@ abstract class StudentResetPasswordClient {
   /// student_reset_password-init_otp_data
   /// Init Otp Data
   @POST('/api/v1/student/auth/reset-password/init')
-  Future<HttpResponse<BaseResponseListVerificationMethodPublic>> initOtpData();
+  Future<HttpResponse<BaseResponseListVerificationMethodPublic>>
+      studentResetPasswordInitOtpData();
 
   /// student_reset_password-send_otp_by_phone
   /// Send Otp By Phone
   @POST('/api/v1/student/auth/reset-password/send-phone-forgot-password')
-  Future<HttpResponse<MessageResponse>> sendOtpByPhone({
-    @Queries() required SendOtpByPhoneQueries queries,
+  Future<HttpResponse<MessageResponse>> studentResetPasswordSendOtpByPhone({
+    @Queries() required StudentResetPasswordSendOtpByPhoneQueries queries,
   });
 
   /// student_reset_password-verify_phone_otp
   /// Verify Phone Otp
   @POST('/api/v1/student/auth/reset-password/verify-phone-otp-forgot-password')
-  Future<HttpResponse<MessageResponse>> verifyPhoneOtp({
-    @Queries() required VerifyPhoneOtpQueries queries,
+  Future<HttpResponse<MessageResponse>> studentResetPasswordVerifyPhoneOtp({
+    @Queries() required StudentResetPasswordVerifyPhoneOtpQueries queries,
   });
 
   /// student_reset_password-set_password
   /// Set Password
   @POST('/api/v1/student/auth/reset-password/set-password')
-  Future<HttpResponse<BaseResponseStr>> setPassword({
-    @Queries() required SetPasswordQueries queries,
+  Future<HttpResponse<BaseResponseStr>> studentResetPasswordSetPassword({
+    @Queries() required StudentResetPasswordSetPasswordQueries queries,
   });
 
   /// student_reset_password-send_otp_email
   /// Send Otp Email
   @POST('/api/v1/student/auth/reset-password/send-email-otp-forgot-password')
-  Future<HttpResponse<MessageResponse>> sendOtpEmail({
-    @Queries() required SendOtpEmailQueries queries,
+  Future<HttpResponse<MessageResponse>> studentResetPasswordSendOtpEmail({
+    @Queries() required StudentResetPasswordSendOtpEmailQueries queries,
   });
 
   /// student_reset_password-verify_email_otp
   /// Verify Email Otp
   @POST('/api/v1/student/auth/reset-password/verify-email-otp-forgot-password')
-  Future<HttpResponse<MessageResponse>> verifyEmailOtp({
-    @Queries() required VerifyEmailOtpQueries queries,
+  Future<HttpResponse<MessageResponse>> studentResetPasswordVerifyEmailOtp({
+    @Queries() required StudentResetPasswordVerifyEmailOtpQueries queries,
   });
 }

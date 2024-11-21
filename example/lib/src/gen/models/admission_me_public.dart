@@ -50,6 +50,8 @@ class AdmissionMePublic with _$AdmissionMePublic {
     @JsonKey(name: 'channel') required String? channel,
   }) = _AdmissionMePublic;
 
-  factory AdmissionMePublic.fromJson(Map<String, dynamic> json) =>
+  factory AdmissionMePublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$AdmissionMePublicFromJson(json);
 }

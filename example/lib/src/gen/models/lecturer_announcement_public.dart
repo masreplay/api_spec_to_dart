@@ -30,7 +30,7 @@ class LecturerAnnouncementPublic with _$LecturerAnnouncementPublic {
     @JsonKey(name: 'avatar') required String? avatar,
 
     /// Comments Count
-    @Default(0) @JsonKey(name: 'comments_count') required int commentsCount,
+    @Default(0) @JsonKey(name: 'comments_count') int commentsCount,
 
     /// Created At
     @JsonKey(name: 'created_at') required DateTime createdAt,
@@ -42,6 +42,8 @@ class LecturerAnnouncementPublic with _$LecturerAnnouncementPublic {
     @JsonKey(name: 'files') required List<FilePublic> files,
   }) = _LecturerAnnouncementPublic;
 
-  factory LecturerAnnouncementPublic.fromJson(Map<String, dynamic> json) =>
+  factory LecturerAnnouncementPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$LecturerAnnouncementPublicFromJson(json);
 }

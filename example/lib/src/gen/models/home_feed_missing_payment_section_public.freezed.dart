@@ -200,7 +200,7 @@ class _$HomeFeedMissingPaymentSectionPublicImpl
     extends _HomeFeedMissingPaymentSectionPublic {
   const _$HomeFeedMissingPaymentSectionPublicImpl(
       {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'type') required this.type = 'missing_payment',
+      @JsonKey(name: 'type') this.type = 'missing_payment',
       @JsonKey(name: 'title') required this.title,
       @JsonKey(name: 'description') required this.description,
       @JsonKey(name: 'data') required this.data})
@@ -278,7 +278,7 @@ abstract class _HomeFeedMissingPaymentSectionPublic
     extends HomeFeedMissingPaymentSectionPublic {
   const factory _HomeFeedMissingPaymentSectionPublic(
           {@JsonKey(name: 'id') required final int id,
-          @JsonKey(name: 'type') required final String type,
+          @JsonKey(name: 'type') final String type,
           @JsonKey(name: 'title') required final String title,
           @JsonKey(name: 'description') required final String? description,
           @JsonKey(name: 'data')

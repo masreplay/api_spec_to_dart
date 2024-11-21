@@ -23,7 +23,7 @@ class _StudentOrdersClient implements StudentOrdersClient {
 
   @override
   Future<HttpResponse<BaseResponseListOrderResponse>>
-      readOrdersForStudent() async {
+      studentOrdersReadOrdersForStudent() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

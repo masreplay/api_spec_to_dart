@@ -20,6 +20,8 @@ class StudyYearPublic with _$StudyYearPublic {
     @JsonKey(name: 'value') required String value,
   }) = _StudyYearPublic;
 
-  factory StudyYearPublic.fromJson(Map<String, dynamic> json) =>
+  factory StudyYearPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$StudyYearPublicFromJson(json);
 }

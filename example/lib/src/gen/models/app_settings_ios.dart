@@ -23,6 +23,8 @@ class AppSettingsIos with _$AppSettingsIos {
     @JsonKey(name: 'message') required String? message,
   }) = _AppSettingsIos;
 
-  factory AppSettingsIos.fromJson(Map<String, dynamic> json) =>
+  factory AppSettingsIos.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$AppSettingsIosFromJson(json);
 }

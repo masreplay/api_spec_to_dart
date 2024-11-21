@@ -6,8 +6,6 @@ import 'package:swagger_to_dart/src/generator/openapi/open_api_model_generator.d
 import 'package:swagger_to_dart/src/utils/recase.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
-const dynamicClassName = 'dynamic';
-
 class OpenApiDartClientGenerator {
   const OpenApiDartClientGenerator({
     required this.config,
@@ -71,12 +69,7 @@ class OpenApiDartClientGenerator {
         buffer.writeln('''@${retrofitHttpMethodType}('${tagPath}')''');
 
         // method name
-        final methodName = config.renameMethod(
-          method.operationId.replaceAll(
-            RegExp(clientName, caseSensitive: false),
-            '',
-          ),
-        );
+        final methodName = config.renameMethod(method.operationId);
 
         final propertiesSnippets = <String>[];
 
@@ -127,9 +120,13 @@ class OpenApiDartClientGenerator {
           propertiesCode = '''{${propertiesSnippets.join('\n')}}''';
         }
 
-        buffer.writeln(
-          '''Future<HttpResponse<${response ?? dynamicClassName}>> $methodName($propertiesCode);''',
-        );
+        final returnType = response == null ||
+                response == 'dynamic' ||
+                response == 'Map<String, dynamic>'
+            ? 'Future<HttpResponse>'
+            : 'Future<HttpResponse<${response}>>';
+
+        buffer.writeln('''$returnType $methodName($propertiesCode);''');
       }
     }
 
@@ -191,7 +188,7 @@ String generateQueriesClass(
   return className;
 }
 
-getAnyOfType(
+String getAnyOfType(
   OpenApiSchemaAnyOf value,
   OpenApiGeneratorConfig config,
 ) {
@@ -221,5 +218,5 @@ getAnyOfType(
     );
   }
 
-  return isNullable ? '$className?' : dynamicClassName;
+  return isNullable ? '$className?' : 'dynamic';
 }

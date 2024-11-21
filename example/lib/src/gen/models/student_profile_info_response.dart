@@ -37,6 +37,8 @@ class StudentProfileInfoResponse with _$StudentProfileInfoResponse {
     @JsonKey(name: 'profile_image') required FilePublic? profileImage,
   }) = _StudentProfileInfoResponse;
 
-  factory StudentProfileInfoResponse.fromJson(Map<String, dynamic> json) =>
+  factory StudentProfileInfoResponse.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$StudentProfileInfoResponseFromJson(json);
 }

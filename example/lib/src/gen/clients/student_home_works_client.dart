@@ -15,7 +15,7 @@ abstract class StudentHomeWorksClient {
   Future<
           HttpResponse<
               BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments>>
-      readCourseAssessmentByCourseId({
+      studentHomeWorksReadCourseAssessmentByCourseId({
     @Path('course_id') required int courseId,
   });
 }

@@ -29,6 +29,8 @@ class StudentIdsPassportPublic with _$StudentIdsPassportPublic {
     @JsonKey(name: 'image') required FilePublic? image,
   }) = _StudentIdsPassportPublic;
 
-  factory StudentIdsPassportPublic.fromJson(Map<String, dynamic> json) =>
+  factory StudentIdsPassportPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$StudentIdsPassportPublicFromJson(json);
 }

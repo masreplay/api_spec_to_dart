@@ -26,13 +26,13 @@ class UIDateFormField with _$UIDateFormField {
     @JsonKey(name: 'is_required') required bool isRequired,
 
     /// Read Only
-    @Default(false) @JsonKey(name: 'read_only') required bool readOnly,
+    @Default(false) @JsonKey(name: 'read_only') bool readOnly,
 
     /// Doc
     @JsonKey(name: 'doc') required String? doc,
 
     /// Type
-    @Default('date') @JsonKey(name: 'type') required String type,
+    @Default('date') @JsonKey(name: 'type') String type,
 
     /// Default Value
     @JsonKey(name: 'default_value') required String? defaultValue,
@@ -50,6 +50,8 @@ class UIDateFormField with _$UIDateFormField {
     @JsonKey(name: 'max_date') required DateTime? maxDate,
   }) = _UIDateFormField;
 
-  factory UIDateFormField.fromJson(Map<String, dynamic> json) =>
+  factory UIDateFormField.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$UIDateFormFieldFromJson(json);
 }

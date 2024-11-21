@@ -12,7 +12,8 @@ abstract class LecturerIdsClient {
   /// Get Employee Identification Cards
   @GET('/api/v1/lecturer/ids/me')
   Future<HttpResponse<BaseResponseUnionEmployeeIdentificationCardsPublic>>
-      getEmployeeIdentificationCards({
-    @Queries() required GetEmployeeIdentificationCardsQueries queries,
+      lecturerIdsGetEmployeeIdentificationCards({
+    @Queries()
+    required LecturerIdsGetEmployeeIdentificationCardsQueries queries,
   });
 }

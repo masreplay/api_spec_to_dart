@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:dio/dio.dart';
 
 import '../../convertors.dart';
 
@@ -19,6 +20,8 @@ class BodyStudentEkycUploadEyeData with _$BodyStudentEkycUploadEyeData {
     @JsonKey(name: 'file_raw') required File fileRaw,
   }) = _BodyStudentEkycUploadEyeData;
 
-  factory BodyStudentEkycUploadEyeData.fromJson(Map<String, dynamic> json) =>
+  factory BodyStudentEkycUploadEyeData.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$BodyStudentEkycUploadEyeDataFromJson(json);
 }

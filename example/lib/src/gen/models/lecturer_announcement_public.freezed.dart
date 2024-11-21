@@ -250,7 +250,7 @@ class _$LecturerAnnouncementPublicImpl extends _LecturerAnnouncementPublic {
       @JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'username') required this.username,
       @JsonKey(name: 'avatar') required this.avatar,
-      @JsonKey(name: 'comments_count') required this.commentsCount = 0,
+      @JsonKey(name: 'comments_count') this.commentsCount = 0,
       @JsonKey(name: 'created_at') required this.createdAt,
       @JsonKey(name: 'created_at_formatted') required this.createdAtFormatted,
       @JsonKey(name: 'files') required final List<FilePublic> files})
@@ -377,7 +377,7 @@ abstract class _LecturerAnnouncementPublic extends LecturerAnnouncementPublic {
           @JsonKey(name: 'id') required final int id,
           @JsonKey(name: 'username') required final String username,
           @JsonKey(name: 'avatar') required final String? avatar,
-          @JsonKey(name: 'comments_count') required final int commentsCount,
+          @JsonKey(name: 'comments_count') final int commentsCount,
           @JsonKey(name: 'created_at') required final DateTime createdAt,
           @JsonKey(name: 'created_at_formatted')
           required final String createdAtFormatted,

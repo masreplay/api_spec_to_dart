@@ -23,6 +23,8 @@ class CommentUserPublic with _$CommentUserPublic {
     @JsonKey(name: 'avatar') required String? avatar,
   }) = _CommentUserPublic;
 
-  factory CommentUserPublic.fromJson(Map<String, dynamic> json) =>
+  factory CommentUserPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$CommentUserPublicFromJson(json);
 }

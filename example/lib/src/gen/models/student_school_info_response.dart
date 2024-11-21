@@ -70,6 +70,8 @@ class StudentSchoolInfoResponse with _$StudentSchoolInfoResponse {
     @JsonKey(name: 'front_image') required FilePublic? frontImage,
   }) = _StudentSchoolInfoResponse;
 
-  factory StudentSchoolInfoResponse.fromJson(Map<String, dynamic> json) =>
+  factory StudentSchoolInfoResponse.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$StudentSchoolInfoResponseFromJson(json);
 }

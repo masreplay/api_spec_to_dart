@@ -24,10 +24,10 @@ _$StudentPersonalInfoResponseImpl _$$StudentPersonalInfoResponseImplFromJson(
       englishMotherName2: json['english_mother_name2'] as String?,
       englishMotherName3: json['english_mother_name3'] as String?,
       gender: json['gender'] == null
-          ? GenderEnum.value1
+          ? GenderEnum?.value1
           : GenderEnum.fromJson((json['gender'] as num).toInt()),
       citizenshipType: json['citizenship_type'] == null
-          ? CitizenshipTypeEnum.value1
+          ? CitizenshipTypeEnum?.value1
           : CitizenshipTypeEnum.fromJson(
               (json['citizenship_type'] as num).toInt()),
       bloodGroup: json['blood_group'] == null

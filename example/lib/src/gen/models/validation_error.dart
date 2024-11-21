@@ -23,6 +23,8 @@ class ValidationError with _$ValidationError {
     @JsonKey(name: 'type') required String type,
   }) = _ValidationError;
 
-  factory ValidationError.fromJson(Map<String, dynamic> json) =>
+  factory ValidationError.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$ValidationErrorFromJson(json);
 }

@@ -63,6 +63,8 @@ class StudentNotificationsPublic with _$StudentNotificationsPublic {
     @JsonKey(name: 'deletion_time') required DateTime? deletionTime,
   }) = _StudentNotificationsPublic;
 
-  factory StudentNotificationsPublic.fromJson(Map<String, dynamic> json) =>
+  factory StudentNotificationsPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$StudentNotificationsPublicFromJson(json);
 }

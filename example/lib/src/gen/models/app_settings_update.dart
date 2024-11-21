@@ -20,6 +20,8 @@ class AppSettingsUpdate with _$AppSettingsUpdate {
     @JsonKey(name: 'ios') required AppSettingsIos ios,
   }) = _AppSettingsUpdate;
 
-  factory AppSettingsUpdate.fromJson(Map<String, dynamic> json) =>
+  factory AppSettingsUpdate.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$AppSettingsUpdateFromJson(json);
 }

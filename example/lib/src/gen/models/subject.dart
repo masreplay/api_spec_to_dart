@@ -52,6 +52,8 @@ class Subject with _$Subject {
     required List<CourseStaffsTable>? courseStaff,
   }) = _Subject;
 
-  factory Subject.fromJson(Map<String, dynamic> json) =>
+  factory Subject.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$SubjectFromJson(json);
 }

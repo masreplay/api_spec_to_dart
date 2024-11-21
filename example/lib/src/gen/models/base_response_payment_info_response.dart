@@ -19,6 +19,8 @@ class BaseResponsePaymentInfoResponse with _$BaseResponsePaymentInfoResponse {
     @JsonKey(name: 'data') required PaymentInfoResponse data,
   }) = _BaseResponsePaymentInfoResponse;
 
-  factory BaseResponsePaymentInfoResponse.fromJson(Map<String, dynamic> json) =>
+  factory BaseResponsePaymentInfoResponse.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponsePaymentInfoResponseFromJson(json);
 }

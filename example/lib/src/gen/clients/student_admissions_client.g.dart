@@ -23,7 +23,7 @@ class _StudentAdmissionsClient implements StudentAdmissionsClient {
 
   @override
   Future<HttpResponse<BaseResponseListAdmissionMePublic>>
-      readAdmissions() async {
+      studentAdmissionsReadAdmissions() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -58,7 +58,7 @@ class _StudentAdmissionsClient implements StudentAdmissionsClient {
   }
 
   @override
-  Future<HttpResponse<JoiningTime>> getJoiningTime() async {
+  Future<HttpResponse<JoiningTime>> studentAdmissionsGetJoiningTime() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

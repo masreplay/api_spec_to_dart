@@ -27,18 +27,18 @@ class UISelectFormField with _$UISelectFormField {
     @JsonKey(name: 'is_required') required bool isRequired,
 
     /// Read Only
-    @Default(false) @JsonKey(name: 'read_only') required bool readOnly,
+    @Default(false) @JsonKey(name: 'read_only') bool readOnly,
 
     /// Doc
     @JsonKey(name: 'doc') required String? doc,
 
     /// Type
-    @Default('select') @JsonKey(name: 'type') required String type,
+    @Default('select') @JsonKey(name: 'type') String type,
 
     /// Options
     @Default([])
     @JsonKey(name: 'options')
-    required List<UISelectFormFieldOption> options,
+    List<UISelectFormFieldOption> options,
 
     /// Default Value
     @JsonKey(name: 'default_value') required String? defaultValue,
@@ -47,6 +47,8 @@ class UISelectFormField with _$UISelectFormField {
     @JsonKey(name: 'example') required String? example,
   }) = _UISelectFormField;
 
-  factory UISelectFormField.fromJson(Map<String, dynamic> json) =>
+  factory UISelectFormField.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$UISelectFormFieldFromJson(json);
 }

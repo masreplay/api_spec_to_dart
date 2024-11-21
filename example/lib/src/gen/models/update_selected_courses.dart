@@ -20,6 +20,8 @@ class UpdateSelectedCourses with _$UpdateSelectedCourses {
     @JsonKey(name: 'course_stuff_id') required int courseStuffId,
   }) = _UpdateSelectedCourses;
 
-  factory UpdateSelectedCourses.fromJson(Map<String, dynamic> json) =>
+  factory UpdateSelectedCourses.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$UpdateSelectedCoursesFromJson(json);
 }

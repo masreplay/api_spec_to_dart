@@ -26,6 +26,8 @@ class AttachmentResponse with _$AttachmentResponse {
     @JsonKey(name: 'file_mim_type') required String? fileMimType,
   }) = _AttachmentResponse;
 
-  factory AttachmentResponse.fromJson(Map<String, dynamic> json) =>
+  factory AttachmentResponse.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$AttachmentResponseFromJson(json);
 }

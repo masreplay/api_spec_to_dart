@@ -23,7 +23,7 @@ class _StudentNationalitiesClient implements StudentNationalitiesClient {
 
   @override
   Future<HttpResponse<BaseResponseListNationalitiesPublic>>
-      readNationalities() async {
+      studentNationalitiesReadNationalities() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

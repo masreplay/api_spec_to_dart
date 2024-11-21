@@ -764,9 +764,9 @@ class _$StudentPersonalInfoResponseImpl extends _StudentPersonalInfoResponse {
       @JsonKey(name: 'english_mother_name1') required this.englishMotherName1,
       @JsonKey(name: 'english_mother_name2') required this.englishMotherName2,
       @JsonKey(name: 'english_mother_name3') required this.englishMotherName3,
-      @JsonKey(name: 'gender') required this.gender = GenderEnum.value1,
+      @JsonKey(name: 'gender') this.gender = GenderEnum?.value1,
       @JsonKey(name: 'citizenship_type')
-      required this.citizenshipType = CitizenshipTypeEnum.value1,
+      this.citizenshipType = CitizenshipTypeEnum?.value1,
       @JsonKey(name: 'blood_group') required this.bloodGroup,
       @JsonKey(name: 'date_of_birth') required this.dateOfBirth,
       @JsonKey(name: 'governorate_id') required this.governorateId,
@@ -1120,9 +1120,9 @@ abstract class _StudentPersonalInfoResponse
       required final String? englishMotherName2,
       @JsonKey(name: 'english_mother_name3')
       required final String? englishMotherName3,
-      @JsonKey(name: 'gender') required final GenderEnum? gender,
+      @JsonKey(name: 'gender') final GenderEnum? gender,
       @JsonKey(name: 'citizenship_type')
-      required final CitizenshipTypeEnum? citizenshipType,
+      final CitizenshipTypeEnum? citizenshipType,
       @JsonKey(name: 'blood_group') required final BloodGroupEnum? bloodGroup,
       @JsonKey(name: 'date_of_birth') required final DateTime? dateOfBirth,
       @JsonKey(name: 'governorate_id') required final int? governorateId,

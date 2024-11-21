@@ -23,7 +23,7 @@ class _StudentAttachmentsClient implements StudentAttachmentsClient {
 
   @override
   Future<HttpResponse<BaseResponseUnionListCourseSubjectPublic>>
-      getSubjectForCourses({required int courseId}) async {
+      studentAttachmentsGetSubjectForCourses({required int courseId}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

@@ -28,11 +28,11 @@ class LecturerAuthResponse with _$LecturerAuthResponse {
 
     /// User Id
     @JsonKey(name: 'user_id') required int userId,
-    @Default(UserRole.value1)
-    @JsonKey(name: 'user_role')
-    required UserRole userRole,
+    @Default(UserRole.value1) @JsonKey(name: 'user_role') UserRole userRole,
   }) = _LecturerAuthResponse;
 
-  factory LecturerAuthResponse.fromJson(Map<String, dynamic> json) =>
+  factory LecturerAuthResponse.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$LecturerAuthResponseFromJson(json);
 }

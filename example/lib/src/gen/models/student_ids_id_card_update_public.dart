@@ -34,6 +34,8 @@ class StudentIdsIdCardUpdatePublic with _$StudentIdsIdCardUpdatePublic {
     required DateTime identificationCardDateOfIssue,
   }) = _StudentIdsIdCardUpdatePublic;
 
-  factory StudentIdsIdCardUpdatePublic.fromJson(Map<String, dynamic> json) =>
+  factory StudentIdsIdCardUpdatePublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$StudentIdsIdCardUpdatePublicFromJson(json);
 }

@@ -13,7 +13,8 @@ abstract class LecturerCalenderClient {
   /// Get Lecturer Read Homework Calender
   @GET('/api/v1/lecturer/calender/homework')
   Future<HttpResponse<BaseResponseLectureHomeworksCalenderResponse>>
-      getLecturerReadHomeworkCalender({
-    @Queries() required GetLecturerReadHomeworkCalenderQueries queries,
+      lecturerCalenderGetLecturerReadHomeworkCalender({
+    @Queries()
+    required LecturerCalenderGetLecturerReadHomeworkCalenderQueries queries,
   });
 }

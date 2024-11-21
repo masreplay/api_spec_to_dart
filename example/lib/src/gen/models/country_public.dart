@@ -20,6 +20,8 @@ class CountryPublic with _$CountryPublic {
     @JsonKey(name: 'name') required String name,
   }) = _CountryPublic;
 
-  factory CountryPublic.fromJson(Map<String, dynamic> json) =>
+  factory CountryPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$CountryPublicFromJson(json);
 }

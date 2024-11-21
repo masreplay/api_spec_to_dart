@@ -17,6 +17,8 @@ class EkycDownloadLicensePublic with _$EkycDownloadLicensePublic {
     @JsonKey(name: 'content') required String content,
   }) = _EkycDownloadLicensePublic;
 
-  factory EkycDownloadLicensePublic.fromJson(Map<String, dynamic> json) =>
+  factory EkycDownloadLicensePublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$EkycDownloadLicensePublicFromJson(json);
 }

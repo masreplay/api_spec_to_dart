@@ -12,29 +12,29 @@ abstract class StudentProfileClient {
   /// student_profile-has_study_programs
   /// Has Study Programs
   @GET('/api/v1/student/profile/')
-  Future<HttpResponse<BaseResponseBool>> hasStudyPrograms();
+  Future<HttpResponse<BaseResponseBool>> studentProfileHasStudyPrograms();
 
   /// student_profile-read_student_personal_info
   /// Read Student Personal Info
   @GET('/api/v1/student/profile/personal')
   Future<HttpResponse<BaseResponseStudentPersonalInfoResponse>>
-      readStudentPersonalInfo();
+      studentProfileReadStudentPersonalInfo();
 
   /// student_profile-read_student_school_info
   /// Read Student School Info
   @GET('/api/v1/student/profile/school')
   Future<HttpResponse<BaseResponseUnionStudentSchoolInfoResponse>>
-      readStudentSchoolInfo();
+      studentProfileReadStudentSchoolInfo();
 
   /// student_profile-read_student_ids_info
   /// Read Student Ids Info
   @GET('/api/v1/student/profile/ids')
   Future<HttpResponse<BaseResponseUnionStudentIdsInfoResponse>>
-      readStudentIdsInfo();
+      studentProfileReadStudentIdsInfo();
 
   /// student_profile-read_student_card
   /// Read Student Card
   @GET('/api/v1/student/profile/university-card')
   Future<HttpResponse<BaseResponseUnionStudentUniversityCardPublic>>
-      readStudentCard();
+      studentProfileReadStudentCard();
 }

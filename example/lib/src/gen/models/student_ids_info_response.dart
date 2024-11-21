@@ -31,6 +31,8 @@ class StudentIdsInfoResponse with _$StudentIdsInfoResponse {
     @JsonKey(name: 'passport') required StudentIdsPassportPublic passport,
   }) = _StudentIdsInfoResponse;
 
-  factory StudentIdsInfoResponse.fromJson(Map<String, dynamic> json) =>
+  factory StudentIdsInfoResponse.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$StudentIdsInfoResponseFromJson(json);
 }

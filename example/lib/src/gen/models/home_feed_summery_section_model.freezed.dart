@@ -198,7 +198,7 @@ class __$$HomeFeedSummerySectionModelImplCopyWithImpl<$Res>
 class _$HomeFeedSummerySectionModelImpl extends _HomeFeedSummerySectionModel {
   const _$HomeFeedSummerySectionModelImpl(
       {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'type') required this.type = 'summary',
+      @JsonKey(name: 'type') this.type = 'summary',
       @JsonKey(name: 'title') required this.title,
       @JsonKey(name: 'description') required this.description,
       @JsonKey(name: 'data') required this.data})
@@ -275,7 +275,7 @@ abstract class _HomeFeedSummerySectionModel
     extends HomeFeedSummerySectionModel {
   const factory _HomeFeedSummerySectionModel(
           {@JsonKey(name: 'id') required final int id,
-          @JsonKey(name: 'type') required final String type,
+          @JsonKey(name: 'type') final String type,
           @JsonKey(name: 'title') required final String title,
           @JsonKey(name: 'description') required final String? description,
           @JsonKey(name: 'data')

@@ -27,6 +27,8 @@ class PaginationResponseCommentPublic with _$PaginationResponseCommentPublic {
     @JsonKey(name: 'data') required List<CommentPublic> data,
   }) = _PaginationResponseCommentPublic;
 
-  factory PaginationResponseCommentPublic.fromJson(Map<String, dynamic> json) =>
+  factory PaginationResponseCommentPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$PaginationResponseCommentPublicFromJson(json);
 }

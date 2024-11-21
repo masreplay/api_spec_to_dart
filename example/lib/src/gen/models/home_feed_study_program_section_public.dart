@@ -19,7 +19,7 @@ class HomeFeedStudyProgramSectionPublic
     @JsonKey(name: 'id') required int id,
 
     /// Type
-    @Default('study_program') @JsonKey(name: 'type') required String type,
+    @Default('study_program') @JsonKey(name: 'type') String type,
 
     /// Title
     @JsonKey(name: 'title') required String title,

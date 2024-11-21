@@ -22,7 +22,8 @@ class _StudentFeesTypesClient implements StudentFeesTypesClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<BaseResponseListFeesTypesPublic>> readFeesTypes() async {
+  Future<HttpResponse<BaseResponseListFeesTypesPublic>>
+      studentFeesTypesReadFeesTypes() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

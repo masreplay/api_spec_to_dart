@@ -17,6 +17,8 @@ class CommentCreatePublic with _$CommentCreatePublic {
     @JsonKey(name: 'content') required String content,
   }) = _CommentCreatePublic;
 
-  factory CommentCreatePublic.fromJson(Map<String, dynamic> json) =>
+  factory CommentCreatePublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$CommentCreatePublicFromJson(json);
 }

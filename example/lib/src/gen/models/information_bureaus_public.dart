@@ -23,6 +23,8 @@ class InformationBureausPublic with _$InformationBureausPublic {
     @JsonKey(name: 'name') required String name,
   }) = _InformationBureausPublic;
 
-  factory InformationBureausPublic.fromJson(Map<String, dynamic> json) =>
+  factory InformationBureausPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$InformationBureausPublicFromJson(json);
 }

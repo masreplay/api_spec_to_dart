@@ -34,6 +34,8 @@ class StudentOSPublic with _$StudentOSPublic {
     @JsonKey(name: 'current_semester') required String? currentSemester,
   }) = _StudentOSPublic;
 
-  factory StudentOSPublic.fromJson(Map<String, dynamic> json) =>
+  factory StudentOSPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$StudentOSPublicFromJson(json);
 }

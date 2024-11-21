@@ -22,7 +22,7 @@ class _DevClient implements DevClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>> triggerError() async {
+  Future<HttpResponse<dynamic>> devTriggerError() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -50,7 +50,8 @@ class _DevClient implements DevClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> proxyToMinio({required String filePath}) async {
+  Future<HttpResponse<dynamic>> devProxyToMinio(
+      {required String filePath}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -78,14 +79,14 @@ class _DevClient implements DevClient {
   }
 
   @override
-  Future<HttpResponse<Map<String, dynamic>>> uploadFile(
+  Future<HttpResponse<dynamic>> devUploadFile(
       {required BodyDevUploadFile body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
-    final _options = _setStreamType<HttpResponse<Map<String, dynamic>>>(Options(
+    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -102,15 +103,8 @@ class _DevClient implements DevClient {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late Map<String, dynamic> _value;
-    try {
-      _value = _result.data!.map((k, dynamic v) =>
-          MapEntry(k, dynamic.fromJson(v as Map<String, dynamic>)));
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
-      rethrow;
-    }
+    final _result = await _dio.fetch(_options);
+    final _value = _result.data;
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }

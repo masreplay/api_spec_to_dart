@@ -23,8 +23,9 @@ class _LecturerIdsClient implements LecturerIdsClient {
 
   @override
   Future<HttpResponse<BaseResponseUnionEmployeeIdentificationCardsPublic>>
-      getEmployeeIdentificationCards(
-          {required GetEmployeeIdentificationCardsQueries queries}) async {
+      lecturerIdsGetEmployeeIdentificationCards(
+          {required LecturerIdsGetEmployeeIdentificationCardsQueries
+              queries}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.addAll(queries.toJson());

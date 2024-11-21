@@ -20,6 +20,8 @@ class ReligionPublic with _$ReligionPublic {
     @JsonKey(name: 'name') required String name,
   }) = _ReligionPublic;
 
-  factory ReligionPublic.fromJson(Map<String, dynamic> json) =>
+  factory ReligionPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$ReligionPublicFromJson(json);
 }

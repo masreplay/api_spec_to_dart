@@ -20,6 +20,8 @@ class BaseResponseBool with _$BaseResponseBool {
     @JsonKey(name: 'data') required bool data,
   }) = _BaseResponseBool;
 
-  factory BaseResponseBool.fromJson(Map<String, dynamic> json) =>
+  factory BaseResponseBool.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseBoolFromJson(json);
 }

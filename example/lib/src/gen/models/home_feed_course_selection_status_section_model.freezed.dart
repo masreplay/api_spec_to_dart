@@ -204,7 +204,7 @@ class _$HomeFeedCourseSelectionStatusSectionModelImpl
     extends _HomeFeedCourseSelectionStatusSectionModel {
   const _$HomeFeedCourseSelectionStatusSectionModelImpl(
       {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'type') required this.type = 'course_selection_status',
+      @JsonKey(name: 'type') this.type = 'course_selection_status',
       @JsonKey(name: 'title') required this.title,
       @JsonKey(name: 'description') required this.description,
       @JsonKey(name: 'data') required this.data})
@@ -284,7 +284,7 @@ abstract class _HomeFeedCourseSelectionStatusSectionModel
     extends HomeFeedCourseSelectionStatusSectionModel {
   const factory _HomeFeedCourseSelectionStatusSectionModel(
           {@JsonKey(name: 'id') required final int id,
-          @JsonKey(name: 'type') required final String type,
+          @JsonKey(name: 'type') final String type,
           @JsonKey(name: 'title') required final String title,
           @JsonKey(name: 'description') required final String? description,
           @JsonKey(name: 'data')

@@ -11,12 +11,12 @@ abstract class DevClient {
   /// dev-trigger_error
   /// Trigger Error
   @GET('/dev/sentry-debug')
-  Future<HttpResponse<dynamic>> triggerError();
+  Future<HttpResponse> devTriggerError();
 
   /// dev-proxy_to_minio
   /// Proxy To Minio
   @GET('/dev/s3/{file_path}')
-  Future<HttpResponse<dynamic>> proxyToMinio({
+  Future<HttpResponse> devProxyToMinio({
     @Path('file_path') required String filePath,
   });
 
@@ -24,7 +24,7 @@ abstract class DevClient {
   /// Upload File
   @MultiPart()
   @POST('/dev/upload-file/')
-  Future<HttpResponse<Map<String, dynamic>>> uploadFile({
+  Future<HttpResponse> devUploadFile({
     @Body() required BodyDevUploadFile body,
   });
 }

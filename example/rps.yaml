@@ -1,5 +1,5 @@
 scripts:
-  s: rm -rf lib/src/gen && mkdir lib/src/gen && rps swagger && exports && rps fix-format && rps g && rps fix-format
+  s: rm -rf lib/src/gen && mkdir lib/src/gen && rps swagger && exports && rps g && rps fix-format
 
   swagger: dart run swagger_to_dart
 

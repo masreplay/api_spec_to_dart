@@ -22,8 +22,9 @@ class _LecturerCoursesClient implements LecturerCoursesClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<BaseResponsePaginationResponseLecturerCoursePublic>> get(
-      {required GetQueries queries}) async {
+  Future<HttpResponse<BaseResponsePaginationResponseLecturerCoursePublic>>
+      lecturerCoursesGetLecturerCourses(
+          {required LecturerCoursesGetLecturerCoursesQueries queries}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.addAll(queries.toJson());
@@ -61,8 +62,8 @@ class _LecturerCoursesClient implements LecturerCoursesClient {
   }
 
   @override
-  Future<HttpResponse<BaseResponseLecturerCoursePublic>> getLecturerCourse(
-      {required int id}) async {
+  Future<HttpResponse<BaseResponseLecturerCoursePublic>>
+      lecturerCoursesGetLecturerCourse({required int id}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

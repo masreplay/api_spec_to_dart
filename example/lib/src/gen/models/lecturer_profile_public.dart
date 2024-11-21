@@ -23,6 +23,8 @@ class LecturerProfilePublic with _$LecturerProfilePublic {
     @JsonKey(name: 'image_url') required Uri? imageUrl,
   }) = _LecturerProfilePublic;
 
-  factory LecturerProfilePublic.fromJson(Map<String, dynamic> json) =>
+  factory LecturerProfilePublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$LecturerProfilePublicFromJson(json);
 }

@@ -12,5 +12,6 @@ abstract class LecturerProfileClient {
   /// lecturer_profile-get_lecturer_profile
   /// Get Lecturer Profile
   @GET('/api/v1/lecturer/profile/me')
-  Future<HttpResponse<BaseResponseLecturerProfilePublic>> get();
+  Future<HttpResponse<BaseResponseLecturerProfilePublic>>
+      lecturerProfileGetLecturerProfile();
 }

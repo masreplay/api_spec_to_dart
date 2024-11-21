@@ -20,6 +20,8 @@ class LecturerAttendanceResponse with _$LecturerAttendanceResponse {
     @JsonKey(name: 'expiration_date') required DateTime expirationDate,
   }) = _LecturerAttendanceResponse;
 
-  factory LecturerAttendanceResponse.fromJson(Map<String, dynamic> json) =>
+  factory LecturerAttendanceResponse.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$LecturerAttendanceResponseFromJson(json);
 }

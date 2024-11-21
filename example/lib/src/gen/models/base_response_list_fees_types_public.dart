@@ -21,6 +21,8 @@ class BaseResponseListFeesTypesPublic with _$BaseResponseListFeesTypesPublic {
     @JsonKey(name: 'data') required List<FeesTypesPublic> data,
   }) = _BaseResponseListFeesTypesPublic;
 
-  factory BaseResponseListFeesTypesPublic.fromJson(Map<String, dynamic> json) =>
+  factory BaseResponseListFeesTypesPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseListFeesTypesPublicFromJson(json);
 }

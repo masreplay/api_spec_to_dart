@@ -12,5 +12,6 @@ abstract class StudentGovernoratesClient {
   /// student_governorates-read_governorates
   /// Read Governorates
   @GET('/api/v1/student/governorates/')
-  Future<HttpResponse<BaseResponseListGovernoratePublic>> readGovernorates();
+  Future<HttpResponse<BaseResponseListGovernoratePublic>>
+      studentGovernoratesReadGovernorates();
 }

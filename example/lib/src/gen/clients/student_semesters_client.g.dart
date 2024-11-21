@@ -22,8 +22,9 @@ class _StudentSemestersClient implements StudentSemestersClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<BaseResponseUnionStudentSeamstersSummary>> readSemesters({
-    required ReadSemestersQueries queries,
+  Future<HttpResponse<BaseResponseUnionStudentSeamstersSummary>>
+      studentSemestersReadSemesters({
+    required StudentSemestersReadSemestersQueries queries,
     required int id,
   }) async {
     final _extra = <String, dynamic>{};

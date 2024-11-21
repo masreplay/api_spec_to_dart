@@ -31,6 +31,8 @@ class UIFormField with _$UIFormField {
     UIDateFormField value,
   ) = UIFormFieldUIDateFormField;
 
-  factory UIFormField.fromJson(Map<String, dynamic> json) =>
+  factory UIFormField.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$UIFormFieldFromJson(json);
 }

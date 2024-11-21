@@ -11,5 +11,5 @@ abstract class StudentHomeClient {
   /// student_home-read_student_home
   /// Read Student Home
   @GET('/api/v1/student/home/')
-  Future<HttpResponse<HomeResponse>> read();
+  Future<HttpResponse<HomeResponse>> studentHomeReadStudentHome();
 }

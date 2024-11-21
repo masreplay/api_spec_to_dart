@@ -17,6 +17,8 @@ class StudentAttendanceCreate with _$StudentAttendanceCreate {
     @JsonKey(name: 'attendance_id') required int attendanceId,
   }) = _StudentAttendanceCreate;
 
-  factory StudentAttendanceCreate.fromJson(Map<String, dynamic> json) =>
+  factory StudentAttendanceCreate.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$StudentAttendanceCreateFromJson(json);
 }

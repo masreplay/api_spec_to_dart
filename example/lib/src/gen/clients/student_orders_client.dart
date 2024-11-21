@@ -11,5 +11,6 @@ abstract class StudentOrdersClient {
   /// student_orders-read_orders_for_student
   /// Read Orders For Student
   @GET('/api/v1/student/orders/me')
-  Future<HttpResponse<BaseResponseListOrderResponse>> readOrdersForStudent();
+  Future<HttpResponse<BaseResponseListOrderResponse>>
+      studentOrdersReadOrdersForStudent();
 }

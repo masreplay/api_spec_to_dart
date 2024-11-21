@@ -17,6 +17,8 @@ class LecturerAttendanceCreateRequest with _$LecturerAttendanceCreateRequest {
     @JsonKey(name: 'weekly_schedule_id') required int weeklyScheduleId,
   }) = _LecturerAttendanceCreateRequest;
 
-  factory LecturerAttendanceCreateRequest.fromJson(Map<String, dynamic> json) =>
+  factory LecturerAttendanceCreateRequest.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$LecturerAttendanceCreateRequestFromJson(json);
 }

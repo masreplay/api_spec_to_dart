@@ -12,5 +12,6 @@ abstract class StudentReligionsClient {
   /// student_religions-read_religions
   /// Read Religions
   @GET('/api/v1/student/religions/')
-  Future<HttpResponse<BaseResponseListReligionPublic>> readReligions();
+  Future<HttpResponse<BaseResponseListReligionPublic>>
+      studentReligionsReadReligions();
 }

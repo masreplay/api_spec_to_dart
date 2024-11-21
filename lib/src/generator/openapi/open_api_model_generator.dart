@@ -44,6 +44,7 @@ class OpenApiDartModelGenerator {
 
       final enumClassContent = '''
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:dio/dio.dart';
 
 import '../../convertors.dart';
 ${config.importModelsCode}
@@ -113,6 +114,7 @@ $type toJson() => _\$${className}EnumMap[this]!;
 import 'dart:io';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:dio/dio.dart';
 
 import '../../convertors.dart';
 ${config.importModelsCode}
@@ -129,7 +131,9 @@ class ${className} with _\$${className} {
   
   ${unionTypes.map((type) => '@FreezedUnionValue("${type}") const factory ${className}.${Recase.instance.toCamelCase(type)}(${type} value,) = ${className}$type;').join('\n\n')}
   
-  factory ${className}.fromJson(Map<String, dynamic> json) => _\$${className}FromJson(json);
+  factory ${className}.fromJson(
+    Map<String, dynamic> json,
+  ) => _\$${className}FromJson(json);
 }
 ''';
 
@@ -169,6 +173,7 @@ class ${className} with _\$${className} {
 import 'dart:io';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:dio/dio.dart';
 
 import '../../convertors.dart';
 ${config.importModelsCode}
@@ -185,7 +190,9 @@ class ${className} with _\$${className} {
   @JsonSerializable(converters: convertors)
   const factory ${className}($bodyText) = _${className};
 
-  factory ${className}.fromJson(Map<String, dynamic> json) => _\$${className}FromJson(json);
+  factory ${className}.fromJson(
+    Map<String, dynamic> json,
+  ) => _\$${className}FromJson(json);
 }
 ''';
 
@@ -347,7 +354,10 @@ class ${className} with _\$${className} {
     buffer.writeln('@JsonKey(name: \'$jsonName\')');
 
     // Add field declaration
-    buffer.write('required $propertyType $propertyName,');
+    if (freezedDefaultValue == null) {
+      buffer.write('required ');
+    }
+    buffer.write('$propertyType $propertyName,');
 
     return buffer.toString();
   }

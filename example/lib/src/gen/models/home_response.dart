@@ -21,6 +21,8 @@ class HomeResponse with _$HomeResponse {
     HomeStatusPublic value,
   ) = HomeResponseHomeStatusPublic;
 
-  factory HomeResponse.fromJson(Map<String, dynamic> json) =>
+  factory HomeResponse.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$HomeResponseFromJson(json);
 }

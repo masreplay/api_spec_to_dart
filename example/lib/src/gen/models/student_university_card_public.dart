@@ -71,6 +71,8 @@ class StudentUniversityCardPublic with _$StudentUniversityCardPublic {
     @JsonKey(name: 'personal_image') required String personalImage,
   }) = _StudentUniversityCardPublic;
 
-  factory StudentUniversityCardPublic.fromJson(Map<String, dynamic> json) =>
+  factory StudentUniversityCardPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$StudentUniversityCardPublicFromJson(json);
 }

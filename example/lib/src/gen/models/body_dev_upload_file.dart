@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:dio/dio.dart';
 
 import '../../convertors.dart';
 
@@ -19,6 +20,8 @@ class BodyDevUploadFile with _$BodyDevUploadFile {
     @JsonKey(name: 'file') required File file,
   }) = _BodyDevUploadFile;
 
-  factory BodyDevUploadFile.fromJson(Map<String, dynamic> json) =>
+  factory BodyDevUploadFile.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$BodyDevUploadFileFromJson(json);
 }

@@ -25,7 +25,8 @@ class _StudentHomeWorksClient implements StudentHomeWorksClient {
   Future<
           HttpResponse<
               BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments>>
-      readCourseAssessmentByCourseId({required int courseId}) async {
+      studentHomeWorksReadCourseAssessmentByCourseId(
+          {required int courseId}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

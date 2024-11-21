@@ -23,7 +23,7 @@ class _StudentOSClient implements StudentOSClient {
 
   @override
   Future<HttpResponse<BaseResponseStudentOSPublic>>
-      readOrganizationalStructureForStudent() async {
+      studentOSReadOrganizationalStructureForStudent() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

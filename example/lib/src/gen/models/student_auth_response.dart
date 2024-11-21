@@ -28,12 +28,12 @@ class StudentAuthResponse with _$StudentAuthResponse {
 
     /// User Id
     @JsonKey(name: 'user_id') required int userId,
-    @Default(UserRole.value0)
-    @JsonKey(name: 'user_role')
-    required UserRole userRole,
+    @Default(UserRole.value0) @JsonKey(name: 'user_role') UserRole userRole,
     @JsonKey(name: 'status') required AuthenticationStatusResponse status,
   }) = _StudentAuthResponse;
 
-  factory StudentAuthResponse.fromJson(Map<String, dynamic> json) =>
+  factory StudentAuthResponse.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$StudentAuthResponseFromJson(json);
 }

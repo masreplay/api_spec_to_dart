@@ -13,7 +13,7 @@ abstract class LecturerFamilyInfoClient {
   /// Get Employee Family Info
   @GET('/api/v1/lecturer/')
   Future<HttpResponse<BaseResponseUnionEmployeeFamilyPublic>>
-      getEmployeeFamilyInfo({
-    @Queries() required GetEmployeeFamilyInfoQueries queries,
+      lecturerFamilyInfoGetEmployeeFamilyInfo({
+    @Queries() required LecturerFamilyInfoGetEmployeeFamilyInfoQueries queries,
   });
 }

@@ -63,6 +63,8 @@ class AcademicYearDivisionPublic with _$AcademicYearDivisionPublic {
     @JsonKey(name: 'maximum_ects') required num maximumEcts,
   }) = _AcademicYearDivisionPublic;
 
-  factory AcademicYearDivisionPublic.fromJson(Map<String, dynamic> json) =>
+  factory AcademicYearDivisionPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$AcademicYearDivisionPublicFromJson(json);
 }

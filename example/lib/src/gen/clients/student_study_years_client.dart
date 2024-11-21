@@ -12,5 +12,6 @@ abstract class StudentStudyYearsClient {
   /// student_study_years-read_student_workloads
   /// Read Student Workloads
   @GET('/api/v1/student/study_years/')
-  Future<HttpResponse<BaseResponseListStudyYearPublic>> readStudentWorkloads();
+  Future<HttpResponse<BaseResponseListStudyYearPublic>>
+      studentStudyYearsReadStudentWorkloads();
 }

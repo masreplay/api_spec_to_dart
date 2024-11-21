@@ -34,6 +34,8 @@ class AuthenticationStatusResponse with _$AuthenticationStatusResponse {
     required RegistrationRequestStatusResponse registrationRequestStatus,
   }) = _AuthenticationStatusResponse;
 
-  factory AuthenticationStatusResponse.fromJson(Map<String, dynamic> json) =>
+  factory AuthenticationStatusResponse.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$AuthenticationStatusResponseFromJson(json);
 }

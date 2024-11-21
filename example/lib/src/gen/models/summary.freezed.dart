@@ -194,10 +194,9 @@ class _$SummaryImpl extends _Summary {
       @JsonKey(name: 'title') required this.title,
       @JsonKey(name: 'is_active') required this.isActive,
       @JsonKey(name: 'total_number_of_units') required this.totalNumberOfUnits,
-      @JsonKey(name: 'current_number_of_units')
-      required this.currentNumberOfUnits = 0,
+      @JsonKey(name: 'current_number_of_units') this.currentNumberOfUnits = 0,
       @JsonKey(name: 'current_number_of_subjects')
-      required this.currentNumberOfSubjects = 0})
+      this.currentNumberOfSubjects = 0})
       : super._();
 
   factory _$SummaryImpl.fromJson(Map<String, dynamic> json) =>
@@ -284,10 +283,9 @@ abstract class _Summary extends Summary {
       @JsonKey(name: 'is_active') required final bool? isActive,
       @JsonKey(name: 'total_number_of_units')
       required final num? totalNumberOfUnits,
-      @JsonKey(name: 'current_number_of_units')
-      required final int currentNumberOfUnits,
+      @JsonKey(name: 'current_number_of_units') final int currentNumberOfUnits,
       @JsonKey(name: 'current_number_of_subjects')
-      required final int currentNumberOfSubjects}) = _$SummaryImpl;
+      final int currentNumberOfSubjects}) = _$SummaryImpl;
   const _Summary._() : super._();
 
   factory _Summary.fromJson(Map<String, dynamic> json) = _$SummaryImpl.fromJson;

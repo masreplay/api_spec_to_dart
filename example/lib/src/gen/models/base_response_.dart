@@ -20,6 +20,8 @@ class BaseResponse with _$BaseResponse {
     @JsonKey(name: 'data') required dynamic data,
   }) = _BaseResponse;
 
-  factory BaseResponse.fromJson(Map<String, dynamic> json) =>
+  factory BaseResponse.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseFromJson(json);
 }

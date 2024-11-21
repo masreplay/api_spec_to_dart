@@ -13,7 +13,7 @@ abstract class StudentRegistrationClient {
   /// Update Student Personal Info
   @POST('/api/v1/student/registration/personal')
   Future<HttpResponse<BaseResponseStudentPersonalInfoResponse>>
-      updateStudentPersonalInfo({
+      studentRegistrationUpdateStudentPersonalInfo({
     @Body() required StudentRegistrationPersonalInfoUpdateRequest body,
   });
 
@@ -21,7 +21,7 @@ abstract class StudentRegistrationClient {
   /// Update Student School Info
   @POST('/api/v1/student/registration/school')
   Future<HttpResponse<BaseResponseUnionStudentSchoolInfoResponse>>
-      updateStudentSchoolInfo({
+      studentRegistrationUpdateStudentSchoolInfo({
     @Body() required StudentRegistrationSchoolInfoUpdateRequest body,
   });
 
@@ -29,7 +29,7 @@ abstract class StudentRegistrationClient {
   /// Update Student Ids Info Foreigner
   @POST('/api/v1/student/registration/ids/foreigner')
   Future<HttpResponse<BaseResponseMessageResponse>>
-      updateStudentIdsInfoForeigner({
+      studentRegistrationUpdateStudentIdsInfoForeigner({
     @Body() required RegistrationStudentIdsForeignerUpdateRequest body,
   });
 
@@ -37,7 +37,7 @@ abstract class StudentRegistrationClient {
   /// Update Student Ids Info Identity Card
   @POST('/api/v1/student/registration/ids/identity_card')
   Future<HttpResponse<BaseResponseMessageResponse>>
-      updateStudentIdsInfoIdentityCard({
+      studentRegistrationUpdateStudentIdsInfoIdentityCard({
     @Body() required RegistrationsStudentIdsUpdateRequest body,
   });
 
@@ -45,7 +45,7 @@ abstract class StudentRegistrationClient {
   /// Update Student Ids Info Nationality Card
   @POST('/api/v1/student/registration/ids/nationality_card')
   Future<HttpResponse<BaseResponseMessageResponse>>
-      updateStudentIdsInfoNationalityCard({
+      studentRegistrationUpdateStudentIdsInfoNationalityCard({
     @Body() required RegistrationsStudentIdsNationalityCreateRequest body,
   });
 }

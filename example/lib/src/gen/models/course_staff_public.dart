@@ -36,6 +36,8 @@ class CourseStaffPublic with _$CourseStaffPublic {
     @JsonKey(name: 'employee') required EmployeePublic? employee,
   }) = _CourseStaffPublic;
 
-  factory CourseStaffPublic.fromJson(Map<String, dynamic> json) =>
+  factory CourseStaffPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$CourseStaffPublicFromJson(json);
 }

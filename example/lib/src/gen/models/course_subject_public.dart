@@ -32,6 +32,8 @@ class CourseSubjectPublic with _$CourseSubjectPublic {
     required List<AttachmentResponse>? attachments,
   }) = _CourseSubjectPublic;
 
-  factory CourseSubjectPublic.fromJson(Map<String, dynamic> json) =>
+  factory CourseSubjectPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$CourseSubjectPublicFromJson(json);
 }

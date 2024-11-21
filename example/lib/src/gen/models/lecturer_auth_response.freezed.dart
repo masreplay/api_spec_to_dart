@@ -195,7 +195,7 @@ class _$LecturerAuthResponseImpl extends _LecturerAuthResponse {
       @JsonKey(name: 'refresh_token') required this.refreshToken,
       @JsonKey(name: 'refresh_expires_in') required this.refreshExpiresIn,
       @JsonKey(name: 'user_id') required this.userId,
-      @JsonKey(name: 'user_role') required this.userRole = UserRole.value1})
+      @JsonKey(name: 'user_role') this.userRole = UserRole.value1})
       : super._();
 
   factory _$LecturerAuthResponseImpl.fromJson(Map<String, dynamic> json) =>
@@ -283,7 +283,7 @@ abstract class _LecturerAuthResponse extends LecturerAuthResponse {
       @JsonKey(name: 'refresh_expires_in') required final int refreshExpiresIn,
       @JsonKey(name: 'user_id') required final int userId,
       @JsonKey(name: 'user_role')
-      required final UserRole userRole}) = _$LecturerAuthResponseImpl;
+      final UserRole userRole}) = _$LecturerAuthResponseImpl;
   const _LecturerAuthResponse._() : super._();
 
   factory _LecturerAuthResponse.fromJson(Map<String, dynamic> json) =

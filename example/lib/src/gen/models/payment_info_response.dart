@@ -21,6 +21,8 @@ class PaymentInfoResponse with _$PaymentInfoResponse {
     required List<PaymentMethodPublic> paymentMethods,
   }) = _PaymentInfoResponse;
 
-  factory PaymentInfoResponse.fromJson(Map<String, dynamic> json) =>
+  factory PaymentInfoResponse.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$PaymentInfoResponseFromJson(json);
 }

@@ -26,6 +26,8 @@ class StudentAttendancePublic with _$StudentAttendancePublic {
     @JsonKey(name: 'weekly_schedule_id') required int weeklyScheduleId,
   }) = _StudentAttendancePublic;
 
-  factory StudentAttendancePublic.fromJson(Map<String, dynamic> json) =>
+  factory StudentAttendancePublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$StudentAttendancePublicFromJson(json);
 }

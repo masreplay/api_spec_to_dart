@@ -12,5 +12,6 @@ abstract class StudentCountriesClient {
   /// student_countries-read_countries
   /// Read Countries
   @GET('/api/v1/student/countries/')
-  Future<HttpResponse<BaseResponseListCountryPublic>> readCountries();
+  Future<HttpResponse<BaseResponseListCountryPublic>>
+      studentCountriesReadCountries();
 }

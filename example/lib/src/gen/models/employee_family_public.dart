@@ -14,6 +14,8 @@ class EmployeeFamilyPublic with _$EmployeeFamilyPublic {
   @JsonSerializable(converters: convertors)
   const factory EmployeeFamilyPublic() = _EmployeeFamilyPublic;
 
-  factory EmployeeFamilyPublic.fromJson(Map<String, dynamic> json) =>
+  factory EmployeeFamilyPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$EmployeeFamilyPublicFromJson(json);
 }

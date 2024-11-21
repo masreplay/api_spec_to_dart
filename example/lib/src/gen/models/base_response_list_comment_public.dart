@@ -21,6 +21,8 @@ class BaseResponseListCommentPublic with _$BaseResponseListCommentPublic {
     @JsonKey(name: 'data') required List<CommentPublic> data,
   }) = _BaseResponseListCommentPublic;
 
-  factory BaseResponseListCommentPublic.fromJson(Map<String, dynamic> json) =>
+  factory BaseResponseListCommentPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseListCommentPublicFromJson(json);
 }

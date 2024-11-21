@@ -25,6 +25,8 @@ class SummaryResponse with _$SummaryResponse {
     required int? numberOfCompletedUnits,
   }) = _SummaryResponse;
 
-  factory SummaryResponse.fromJson(Map<String, dynamic> json) =>
+  factory SummaryResponse.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$SummaryResponseFromJson(json);
 }

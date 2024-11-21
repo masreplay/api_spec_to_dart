@@ -22,7 +22,7 @@ class _LecturerAuthClient implements LecturerAuthClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<LecturerAuthResponse>> login(
+  Future<HttpResponse<LecturerAuthResponse>> lecturerAuthLogin(
       {required BodyLecturerAuthLogin body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -59,7 +59,7 @@ class _LecturerAuthClient implements LecturerAuthClient {
   }
 
   @override
-  Future<HttpResponse<LecturerAuthResponse>> swaggerLogin(
+  Future<HttpResponse<LecturerAuthResponse>> lecturerAuthSwaggerLogin(
       {required BodyLecturerAuthSwaggerLogin body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -96,7 +96,7 @@ class _LecturerAuthClient implements LecturerAuthClient {
   }
 
   @override
-  Future<HttpResponse<LecturerAuthResponse?>> refreshToken() async {
+  Future<HttpResponse<LecturerAuthResponse?>> lecturerAuthRefreshToken() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -133,7 +133,7 @@ class _LecturerAuthClient implements LecturerAuthClient {
   }
 
   @override
-  Future<HttpResponse<MessageResponse>> logout() async {
+  Future<HttpResponse<MessageResponse>> lecturerAuthLogout() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

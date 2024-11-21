@@ -20,6 +20,8 @@ class UISelectFormFieldOption with _$UISelectFormFieldOption {
     @JsonKey(name: 'text') required String text,
   }) = _UISelectFormFieldOption;
 
-  factory UISelectFormFieldOption.fromJson(Map<String, dynamic> json) =>
+  factory UISelectFormFieldOption.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$UISelectFormFieldOptionFromJson(json);
 }

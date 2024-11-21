@@ -249,10 +249,9 @@ class _$StudentSeamstersSummaryImpl extends _StudentSeamstersSummary {
       @JsonKey(name: 'is_active') required this.isActive,
       @JsonKey(name: 'is_enabled') required this.isEnabled,
       @JsonKey(name: 'total_number_of_units') required this.totalNumberOfUnits,
-      @JsonKey(name: 'current_number_of_units')
-      required this.currentNumberOfUnits = 0,
+      @JsonKey(name: 'current_number_of_units') this.currentNumberOfUnits = 0,
       @JsonKey(name: 'current_number_of_subjects')
-      required this.currentNumberOfSubjects = 0,
+      this.currentNumberOfSubjects = 0,
       @JsonKey(name: 'current_subjects')
       required final List<Subject> currentSubjects,
       @JsonKey(name: 'previous_subjects')
@@ -386,21 +385,20 @@ class _$StudentSeamstersSummaryImpl extends _StudentSeamstersSummary {
 
 abstract class _StudentSeamstersSummary extends StudentSeamstersSummary {
   const factory _StudentSeamstersSummary(
-          {@JsonKey(name: 'id') required final int? id,
-          @JsonKey(name: 'name') required final String? name,
-          @JsonKey(name: 'is_active') required final bool? isActive,
-          @JsonKey(name: 'is_enabled') required final bool? isEnabled,
-          @JsonKey(name: 'total_number_of_units')
-          required final num? totalNumberOfUnits,
-          @JsonKey(name: 'current_number_of_units')
-          required final int currentNumberOfUnits,
-          @JsonKey(name: 'current_number_of_subjects')
-          required final int currentNumberOfSubjects,
-          @JsonKey(name: 'current_subjects')
-          required final List<Subject> currentSubjects,
-          @JsonKey(name: 'previous_subjects')
-          required final List<Subject> previousSubjects}) =
-      _$StudentSeamstersSummaryImpl;
+      {@JsonKey(name: 'id') required final int? id,
+      @JsonKey(name: 'name') required final String? name,
+      @JsonKey(name: 'is_active') required final bool? isActive,
+      @JsonKey(name: 'is_enabled') required final bool? isEnabled,
+      @JsonKey(name: 'total_number_of_units')
+      required final num? totalNumberOfUnits,
+      @JsonKey(name: 'current_number_of_units') final int currentNumberOfUnits,
+      @JsonKey(name: 'current_number_of_subjects')
+      final int currentNumberOfSubjects,
+      @JsonKey(name: 'current_subjects')
+      required final List<Subject> currentSubjects,
+      @JsonKey(name: 'previous_subjects')
+      required final List<Subject>
+          previousSubjects}) = _$StudentSeamstersSummaryImpl;
   const _StudentSeamstersSummary._() : super._();
 
   factory _StudentSeamstersSummary.fromJson(Map<String, dynamic> json) =

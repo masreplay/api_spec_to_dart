@@ -11,5 +11,5 @@ abstract class StudentMajorsClient {
   /// student_majors-read_majors
   /// Read Majors
   @GET('/api/v1/student/majors/')
-  Future<HttpResponse<BaseResponseListMajorsPublic>> readMajors();
+  Future<HttpResponse<BaseResponseListMajorsPublic>> studentMajorsReadMajors();
 }

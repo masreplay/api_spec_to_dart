@@ -23,6 +23,8 @@ class PaymentInfoAmount with _$PaymentInfoAmount {
     @JsonKey(name: 'cost') required int cost,
   }) = _PaymentInfoAmount;
 
-  factory PaymentInfoAmount.fromJson(Map<String, dynamic> json) =>
+  factory PaymentInfoAmount.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$PaymentInfoAmountFromJson(json);
 }

@@ -32,6 +32,8 @@ class CommentPublic with _$CommentPublic {
     @JsonKey(name: 'replies') required List<CommentPublic> replies,
   }) = _CommentPublic;
 
-  factory CommentPublic.fromJson(Map<String, dynamic> json) =>
+  factory CommentPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$CommentPublicFromJson(json);
 }

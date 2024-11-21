@@ -18,7 +18,7 @@ class HomeFeedSummerySectionModel with _$HomeFeedSummerySectionModel {
     @JsonKey(name: 'id') required int id,
 
     /// Type
-    @Default('summary') @JsonKey(name: 'type') required String type,
+    @Default('summary') @JsonKey(name: 'type') String type,
 
     /// Title
     @JsonKey(name: 'title') required String title,
@@ -28,6 +28,8 @@ class HomeFeedSummerySectionModel with _$HomeFeedSummerySectionModel {
     @JsonKey(name: 'data') required HomeFeedSummerySectionDataPublic data,
   }) = _HomeFeedSummerySectionModel;
 
-  factory HomeFeedSummerySectionModel.fromJson(Map<String, dynamic> json) =>
+  factory HomeFeedSummerySectionModel.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$HomeFeedSummerySectionModelFromJson(json);
 }

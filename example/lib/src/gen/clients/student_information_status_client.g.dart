@@ -24,7 +24,7 @@ class _StudentInformationStatusClient
 
   @override
   Future<HttpResponse<BaseResponseAuthenticationStatusResponse>>
-      readStatus() async {
+      studentInformationStatusReadStatus() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

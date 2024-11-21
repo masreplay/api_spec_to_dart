@@ -19,6 +19,8 @@ class BaseResponseUnionFilePublic with _$BaseResponseUnionFilePublic {
     @JsonKey(name: 'data') required FilePublic? data,
   }) = _BaseResponseUnionFilePublic;
 
-  factory BaseResponseUnionFilePublic.fromJson(Map<String, dynamic> json) =>
+  factory BaseResponseUnionFilePublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseUnionFilePublicFromJson(json);
 }

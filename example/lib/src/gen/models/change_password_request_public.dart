@@ -20,6 +20,8 @@ class ChangePasswordRequestPublic with _$ChangePasswordRequestPublic {
     @JsonKey(name: 'new_password') required String newPassword,
   }) = _ChangePasswordRequestPublic;
 
-  factory ChangePasswordRequestPublic.fromJson(Map<String, dynamic> json) =>
+  factory ChangePasswordRequestPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$ChangePasswordRequestPublicFromJson(json);
 }

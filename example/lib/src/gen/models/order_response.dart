@@ -59,6 +59,8 @@ class OrderResponse with _$OrderResponse {
     @JsonKey(name: 'student') required StudentTable? student,
   }) = _OrderResponse;
 
-  factory OrderResponse.fromJson(Map<String, dynamic> json) =>
+  factory OrderResponse.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$OrderResponseFromJson(json);
 }

@@ -42,5 +42,8 @@ class UIForm with _$UIForm {
     @JsonKey(name: 'doc') required String? doc,
   }) = _UIForm;
 
-  factory UIForm.fromJson(Map<String, dynamic> json) => _$UIFormFromJson(json);
+  factory UIForm.fromJson(
+    Map<String, dynamic> json,
+  ) =>
+      _$UIFormFromJson(json);
 }

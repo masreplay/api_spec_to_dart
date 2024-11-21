@@ -13,25 +13,26 @@ abstract class StudentAttendancesClient {
   /// Read Attendances
   @GET('/api/v1/student/attendances/')
   Future<HttpResponse<BaseResponseListStudentAttendancePublic>>
-      readAttendances();
+      studentAttendancesReadAttendances();
 
   /// student_attendances-get_my_attendance
   /// Get My Attendance
   @GET('/api/v1/student/attendances/me')
-  Future<HttpResponse<BaseResponseAny>> getMyAttendance();
+  Future<HttpResponse<BaseResponseAny>> studentAttendancesGetMyAttendance();
 
   /// student_attendances-check_in_my_attendance
   /// Check In My Attendance
   @POST('/api/v1/student/attendances/me/check-in/')
   Future<HttpResponse<BaseResponseStudentAttendancePublic>>
-      checkInMyAttendance({
+      studentAttendancesCheckInMyAttendance({
     @Body() required StudentAttendanceCreate body,
   });
 
   /// student_attendances-read_attendance_for_course
   /// Read Attendance For Course
   @GET('/api/v1/student/attendances/{course_id}/lectures')
-  Future<HttpResponse<BaseResponseListLecture>> readAttendanceForCourse({
+  Future<HttpResponse<BaseResponseListLecture>>
+      studentAttendancesReadAttendanceForCourse({
     @Path('course_id') required int courseId,
   });
 }

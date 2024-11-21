@@ -50,6 +50,8 @@ class StudentDeviceCreate with _$StudentDeviceCreate {
     @JsonKey(name: 'device_language') required String? deviceLanguage,
   }) = _StudentDeviceCreate;
 
-  factory StudentDeviceCreate.fromJson(Map<String, dynamic> json) =>
+  factory StudentDeviceCreate.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$StudentDeviceCreateFromJson(json);
 }

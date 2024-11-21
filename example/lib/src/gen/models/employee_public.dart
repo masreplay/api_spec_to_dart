@@ -134,6 +134,8 @@ class EmployeePublic with _$EmployeePublic {
     @JsonKey(name: 'full_name') required String fullName,
   }) = _EmployeePublic;
 
-  factory EmployeePublic.fromJson(Map<String, dynamic> json) =>
+  factory EmployeePublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$EmployeePublicFromJson(json);
 }

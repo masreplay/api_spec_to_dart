@@ -21,6 +21,8 @@ class BaseResponseListMajorsPublic with _$BaseResponseListMajorsPublic {
     @JsonKey(name: 'data') required List<MajorsPublic> data,
   }) = _BaseResponseListMajorsPublic;
 
-  factory BaseResponseListMajorsPublic.fromJson(Map<String, dynamic> json) =>
+  factory BaseResponseListMajorsPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseListMajorsPublicFromJson(json);
 }

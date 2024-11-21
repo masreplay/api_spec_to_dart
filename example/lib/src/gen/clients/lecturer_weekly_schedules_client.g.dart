@@ -23,7 +23,7 @@ class _LecturerWeeklySchedulesClient implements LecturerWeeklySchedulesClient {
 
   @override
   Future<HttpResponse<BaseResponseListWeeklyScheduleTeacherResponse>>
-      getWeeklySchedule() async {
+      lecturerWeeklySchedulesGetWeeklySchedule() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

@@ -15,7 +15,7 @@ class HomeStatusPublic with _$HomeStatusPublic {
   @JsonSerializable(converters: convertors)
   const factory HomeStatusPublic({
     /// Type
-    @Default('status') @JsonKey(name: 'type') required String type,
+    @Default('status') @JsonKey(name: 'type') String type,
 
     /// Title
     @JsonKey(name: 'title') required String title,
@@ -24,9 +24,11 @@ class HomeStatusPublic with _$HomeStatusPublic {
     @JsonKey(name: 'description') required String? description,
     @Default(HomeProcessStatus.noStudyProgram)
     @JsonKey(name: 'status')
-    required HomeProcessStatus status,
+    HomeProcessStatus status,
   }) = _HomeStatusPublic;
 
-  factory HomeStatusPublic.fromJson(Map<String, dynamic> json) =>
+  factory HomeStatusPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$HomeStatusPublicFromJson(json);
 }

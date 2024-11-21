@@ -17,6 +17,8 @@ class StudentSummery with _$StudentSummery {
     @JsonKey(name: 'image_url') required String? imageUrl,
   }) = _StudentSummery;
 
-  factory StudentSummery.fromJson(Map<String, dynamic> json) =>
+  factory StudentSummery.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$StudentSummeryFromJson(json);
 }

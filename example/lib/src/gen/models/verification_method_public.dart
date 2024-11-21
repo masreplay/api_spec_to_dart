@@ -20,6 +20,8 @@ class VerificationMethodPublic with _$VerificationMethodPublic {
     @JsonKey(name: 'type') required String type,
   }) = _VerificationMethodPublic;
 
-  factory VerificationMethodPublic.fromJson(Map<String, dynamic> json) =>
+  factory VerificationMethodPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$VerificationMethodPublicFromJson(json);
 }

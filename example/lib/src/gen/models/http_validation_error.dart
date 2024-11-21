@@ -18,6 +18,8 @@ class HttpValidationError with _$HttpValidationError {
     @JsonKey(name: 'detail') required List<ValidationError> detail,
   }) = _HttpValidationError;
 
-  factory HttpValidationError.fromJson(Map<String, dynamic> json) =>
+  factory HttpValidationError.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$HttpValidationErrorFromJson(json);
 }

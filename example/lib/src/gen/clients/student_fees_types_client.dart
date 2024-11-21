@@ -12,5 +12,6 @@ abstract class StudentFeesTypesClient {
   /// student_fees_types-read_fees_types
   /// Read Fees Types
   @GET('/api/v1/student/fees_types/')
-  Future<HttpResponse<BaseResponseListFeesTypesPublic>> readFeesTypes();
+  Future<HttpResponse<BaseResponseListFeesTypesPublic>>
+      studentFeesTypesReadFeesTypes();
 }

@@ -61,9 +61,11 @@ class StudentSelectedCoursesPublic with _$StudentSelectedCoursesPublic {
     required CourseDistributionsTable? courseDistribution,
     @Default(SelectedCourseResultEnum.value1)
     @JsonKey(name: 'result')
-    required SelectedCourseResultEnum result,
+    SelectedCourseResultEnum result,
   }) = _StudentSelectedCoursesPublic;
 
-  factory StudentSelectedCoursesPublic.fromJson(Map<String, dynamic> json) =>
+  factory StudentSelectedCoursesPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$StudentSelectedCoursesPublicFromJson(json);
 }

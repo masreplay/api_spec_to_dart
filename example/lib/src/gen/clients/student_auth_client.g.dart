@@ -22,7 +22,7 @@ class _StudentAuthClient implements StudentAuthClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<StudentAuthResponse>> login(
+  Future<HttpResponse<StudentAuthResponse>> studentAuthLogin(
       {required BodyStudentAuthLogin body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -59,7 +59,7 @@ class _StudentAuthClient implements StudentAuthClient {
   }
 
   @override
-  Future<HttpResponse<StudentAuthResponse>> swaggerLogin(
+  Future<HttpResponse<StudentAuthResponse>> studentAuthSwaggerLogin(
       {required BodyStudentAuthSwaggerLogin body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -96,7 +96,7 @@ class _StudentAuthClient implements StudentAuthClient {
   }
 
   @override
-  Future<HttpResponse<StudentAuthResponse?>> refreshToken() async {
+  Future<HttpResponse<StudentAuthResponse?>> studentAuthRefreshToken() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -132,7 +132,7 @@ class _StudentAuthClient implements StudentAuthClient {
   }
 
   @override
-  Future<HttpResponse<MessageResponse>> logout() async {
+  Future<HttpResponse<MessageResponse>> studentAuthLogout() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -166,7 +166,7 @@ class _StudentAuthClient implements StudentAuthClient {
   }
 
   @override
-  Future<HttpResponse<MessageResponse>> changeTemporaryPassword(
+  Future<HttpResponse<MessageResponse>> studentAuthChangeTemporaryPassword(
       {required ChangePasswordRequestPublic body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

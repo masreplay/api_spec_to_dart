@@ -20,6 +20,8 @@ class SendOtpByRequestPublic with _$SendOtpByRequestPublic {
     @JsonKey(name: 'method') required String method,
   }) = _SendOtpByRequestPublic;
 
-  factory SendOtpByRequestPublic.fromJson(Map<String, dynamic> json) =>
+  factory SendOtpByRequestPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$SendOtpByRequestPublicFromJson(json);
 }

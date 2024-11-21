@@ -52,6 +52,8 @@ class CourseDistributionsTable with _$CourseDistributionsTable {
     @JsonKey(name: 'deletion_time') required DateTime? deletionTime,
   }) = _CourseDistributionsTable;
 
-  factory CourseDistributionsTable.fromJson(Map<String, dynamic> json) =>
+  factory CourseDistributionsTable.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$CourseDistributionsTableFromJson(json);
 }

@@ -19,6 +19,8 @@ class InitEkycResponse with _$InitEkycResponse {
     @JsonKey(name: 'status') required EkycStatusEnum status,
   }) = _InitEkycResponse;
 
-  factory InitEkycResponse.fromJson(Map<String, dynamic> json) =>
+  factory InitEkycResponse.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$InitEkycResponseFromJson(json);
 }

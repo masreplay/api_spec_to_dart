@@ -59,6 +59,8 @@ class CoursePublic with _$CoursePublic {
     @JsonKey(name: 'seamster') required AcademicYearDivisionPublic? seamster,
   }) = _CoursePublic;
 
-  factory CoursePublic.fromJson(Map<String, dynamic> json) =>
+  factory CoursePublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$CoursePublicFromJson(json);
 }

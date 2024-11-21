@@ -13,8 +13,9 @@ abstract class LecturerAnnouncementsClient {
   /// Get Lecturer Announcements
   @GET('/api/v1/lecturer/announcements/me/{course_id}')
   Future<HttpResponse<BaseResponsePaginationResponseLecturerAnnouncementPublic>>
-      get({
-    @Queries() required GetQueries queries,
+      lecturerAnnouncementsGetLecturerAnnouncements({
+    @Queries()
+    required LecturerAnnouncementsGetLecturerAnnouncementsQueries queries,
     @Path('course_id') required int courseId,
   });
 
@@ -23,7 +24,7 @@ abstract class LecturerAnnouncementsClient {
   @FormUrlEncoded()
   @POST('/api/v1/lecturer/announcements/me/{course_id}')
   Future<HttpResponse<BaseResponseLecturerAnnouncementPublic>>
-      createLecturerAnnouncement({
+      lecturerAnnouncementsCreateLecturerAnnouncement({
     @Path('course_id') required int courseId,
     @Body() required BodyLecturerAnnouncementsCreateLecturerAnnouncement body,
   });
@@ -32,7 +33,7 @@ abstract class LecturerAnnouncementsClient {
   /// Get Lecturer Announcement
   @GET('/api/v1/lecturer/announcements/{id}')
   Future<HttpResponse<BaseResponseLecturerAnnouncementPublic>>
-      getLecturerAnnouncement({
+      lecturerAnnouncementsGetLecturerAnnouncement({
     @Path('id') required int id,
   });
 
@@ -40,7 +41,7 @@ abstract class LecturerAnnouncementsClient {
   /// Update Lecturer Announcement
   @PUT('/api/v1/lecturer/announcements/{id}')
   Future<HttpResponse<BaseResponseLecturerAnnouncementPublic>>
-      updateLecturerAnnouncement({
+      lecturerAnnouncementsUpdateLecturerAnnouncement({
     @Path('id') required int id,
     @Body() required LecturerAnnouncementUpdatePublic body,
   });
@@ -48,7 +49,8 @@ abstract class LecturerAnnouncementsClient {
   /// lecturer_announcements-delete_lecturer_announcement
   /// Delete Lecturer Announcement
   @DELETE('/api/v1/lecturer/announcements/{id}')
-  Future<HttpResponse<MessageResponse>> deleteLecturerAnnouncement({
+  Future<HttpResponse<MessageResponse>>
+      lecturerAnnouncementsDeleteLecturerAnnouncement({
     @Path('id') required int id,
   });
 
@@ -56,8 +58,10 @@ abstract class LecturerAnnouncementsClient {
   /// Get Lecturer Announcement Comments
   @GET('/api/v1/lecturer/announcements/{id}/comments')
   Future<HttpResponse<BaseResponsePaginationResponseCommentPublic>>
-      getLecturerAnnouncementComments({
-    @Queries() required GetLecturerAnnouncementCommentsQueries queries,
+      lecturerAnnouncementsGetLecturerAnnouncementComments({
+    @Queries()
+    required LecturerAnnouncementsGetLecturerAnnouncementCommentsQueries
+        queries,
     @Path('id') required int id,
   });
 
@@ -65,7 +69,7 @@ abstract class LecturerAnnouncementsClient {
   /// Create Lecturer Announcement Comment
   @POST('/api/v1/lecturer/announcements/{id}/comments')
   Future<HttpResponse<BaseResponseCommentPublic>>
-      createLecturerAnnouncementComment({
+      lecturerAnnouncementsCreateLecturerAnnouncementComment({
     @Path('id') required int id,
     @Body() required CommentCreatePublic body,
   });

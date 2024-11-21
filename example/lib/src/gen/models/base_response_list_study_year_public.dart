@@ -21,6 +21,8 @@ class BaseResponseListStudyYearPublic with _$BaseResponseListStudyYearPublic {
     @JsonKey(name: 'data') required List<StudyYearPublic> data,
   }) = _BaseResponseListStudyYearPublic;
 
-  factory BaseResponseListStudyYearPublic.fromJson(Map<String, dynamic> json) =>
+  factory BaseResponseListStudyYearPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseListStudyYearPublicFromJson(json);
 }

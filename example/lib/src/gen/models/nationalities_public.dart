@@ -20,6 +20,8 @@ class NationalitiesPublic with _$NationalitiesPublic {
     @JsonKey(name: 'name') required String name,
   }) = _NationalitiesPublic;
 
-  factory NationalitiesPublic.fromJson(Map<String, dynamic> json) =>
+  factory NationalitiesPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$NationalitiesPublicFromJson(json);
 }

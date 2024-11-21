@@ -17,6 +17,8 @@ class JoiningTime with _$JoiningTime {
     @JsonKey(name: 'joining_time') required DateTime? joiningTime,
   }) = _JoiningTime;
 
-  factory JoiningTime.fromJson(Map<String, dynamic> json) =>
+  factory JoiningTime.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$JoiningTimeFromJson(json);
 }

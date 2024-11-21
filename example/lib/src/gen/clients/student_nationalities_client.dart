@@ -12,5 +12,6 @@ abstract class StudentNationalitiesClient {
   /// student_nationalities-read_nationalities
   /// Read Nationalities
   @GET('/api/v1/student/nationalities/')
-  Future<HttpResponse<BaseResponseListNationalitiesPublic>> readNationalities();
+  Future<HttpResponse<BaseResponseListNationalitiesPublic>>
+      studentNationalitiesReadNationalities();
 }

@@ -32,6 +32,8 @@ class StudentIdsPassportUpdatePublic with _$StudentIdsPassportUpdatePublic {
     required DateTime passportDateOfExpiry,
   }) = _StudentIdsPassportUpdatePublic;
 
-  factory StudentIdsPassportUpdatePublic.fromJson(Map<String, dynamic> json) =>
+  factory StudentIdsPassportUpdatePublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$StudentIdsPassportUpdatePublicFromJson(json);
 }

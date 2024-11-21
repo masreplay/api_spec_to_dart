@@ -22,7 +22,8 @@ class _StudentReligionsClient implements StudentReligionsClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<BaseResponseListReligionPublic>> readReligions() async {
+  Future<HttpResponse<BaseResponseListReligionPublic>>
+      studentReligionsReadReligions() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

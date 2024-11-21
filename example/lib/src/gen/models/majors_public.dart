@@ -23,6 +23,8 @@ class MajorsPublic with _$MajorsPublic {
     @JsonKey(name: 'name') required String name,
   }) = _MajorsPublic;
 
-  factory MajorsPublic.fromJson(Map<String, dynamic> json) =>
+  factory MajorsPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$MajorsPublicFromJson(json);
 }
