@@ -1,6 +1,5 @@
 import 'package:swagger_to_dart/src/config/open_api_generator_config.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
-import 'package:collection/collection.dart';
 
 typedef OpenApiModel = MapEntry<String, OpenApiSchemas>;
 
@@ -11,36 +10,64 @@ class OpenApiDartClientGenerator {
 
   final OpenApiGeneratorConfig config;
 
-  ({String filename, String content}) generator(
-      OpenApiPaths model, List<String> functionsPaths) {
-    final List<({String tag, String path})> tagsPaths = [];
+  ({String filename, String content}) generator({
+    required OpenApiPaths model,
+    required String clientName,
+    required List<String> functionsPaths,
+  }) {
+    final buffer = StringBuffer();
 
-    for (final entry in model.entries) {
-      final tag = [
-        entry.value.post,
-        entry.value.get,
-        entry.value.put,
-        entry.value.delete,
-        entry.value.patch,
-      ].where((element) => element != null).first;
+//     import 'package:dio/dio.dart';
+// import 'package:retrofit/retrofit.dart';
+// import 'package:ums_api_client/src/model/model.dart';
 
-      final path = entry.key;
+// import 'settings_response.dart';
 
-      tagsPaths.add((tag: tag!.tags.first, path: path));
-    }
+// part 'app_client.g.dart';
 
-    final clients = groupBy(tagsPaths, (element) => element.tag);
+// /// A REST client for Settings API
+// /// This client is used to fetch settings from the server
+// @RestApi(baseUrl: '/api/v1/common/settings')
+// abstract class AppClient {
+//   factory AppClient(Dio dio, {String baseUrl}) = _AppClient;
 
-    for (final entry in clients.entries) {
-      final tag = entry.key;
-      final paths = entry.value;
+//   /// Fetches settings from the server
+//   @GET('/')
+//   Future<HttpResponse<ApiResponse<SettingsResponse>>> getSettings();
+// }
 
-      print('-----Generating client for tag: $tag');
+    buffer.writeln('import \'package:dio/dio.dart\';');
+    buffer.writeln('import \'package:retrofit/retrofit.dart\';');
+    buffer.writeln(
+        'import \'package:${config.modelsOutputDirectory}/model.dart\';');
+    buffer.writeln('import \'settings_response.dart\';');
 
-      for (final path in paths) {
-        print('---------method: ${config.renameProperty(path.tag)}');
+    buffer.writeln('part \'${config.renameFile(clientName)}Client.g.dart\';');
+
+    buffer.writeln('/// This client is used to fetch settings from the server');
+
+    buffer.writeln('@RestApi(baseUrl: \'\')');
+    buffer.writeln('abstract class ${config.renameFile(clientName)}Client {');
+
+    buffer.writeln(
+        'factory ${config.renameFile(clientName)}Client(Dio dio, {String baseUrl}) = _${config.renameFile(clientName)}Client;');
+
+    for (final entry in functionsPaths) {
+      final function = model[entry]!;
+
+      if (function.get != null) {
+        final response = function.get!.responses!['200']!;
+        buffer.writeln('/// function path $entry');
+        buffer.writeln('@GET(\'$entry\')');
+        buffer.writeln(
+            'Future<HttpResponse<ApiResponse<${config.renameFile(response.toString())}Response>>> ${config.renameFile(function.operationId)}();');
       }
     }
-    return (filename: '', content: '');
+
+    buffer.writeln('}');
+    return (
+      filename: '${config.renameFile(clientName)}Client',
+      content: buffer.toString()
+    );
   }
 }
