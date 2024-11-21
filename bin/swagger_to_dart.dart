@@ -17,7 +17,11 @@ Future<void> main(List<String> args) async {
     exit(1);
   }
 
-  final pubspecYaml = loadYaml(pubspecYamlFile.readAsStringSync());
+  print('Reading pubspec.yaml...');
+
+  final pubspecYaml = loadYaml(await pubspecYamlFile.readAsString());
+
+  print(pubspecYaml);
 
   final packageName = pubspecYaml['name'];
 
