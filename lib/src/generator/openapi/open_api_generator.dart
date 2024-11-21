@@ -3,9 +3,6 @@ import 'dart:io';
 
 import 'package:collection/collection.dart';
 import 'package:path/path.dart' as path;
-import 'package:swagger_to_dart/src/config/open_api_generator_config.dart';
-import 'package:swagger_to_dart/src/generator/openapi/open_api_client_generator.dart';
-import 'package:swagger_to_dart/src/generator/openapi/open_api_model_generator.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 class OpenApiDartGenerator {

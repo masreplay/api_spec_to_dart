@@ -1,6 +1,3 @@
-import 'package:swagger_to_dart/src/config/open_api_generator_config.dart';
-import 'package:swagger_to_dart/src/generator/openapi/open_api_client_generator.dart';
-import 'package:swagger_to_dart/src/utils/recase.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 typedef OpenApiModel = MapEntry<String, OpenApiSchemas>;

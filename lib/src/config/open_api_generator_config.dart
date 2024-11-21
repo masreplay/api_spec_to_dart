@@ -1,6 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:path/path.dart' as path;
-import 'package:swagger_to_dart/src/utils/recase.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 class OpenApiGeneratorConfig {
