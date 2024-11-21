@@ -31,7 +31,8 @@ class OpenApiPath with _$OpenApiPath {
     return get ?? post ?? put ?? delete ?? options ?? head ?? patch ?? trace;
   }
 
-  Map<String, OpenApiPathMethod> getAllMethods() {
+  /// Return all available methods
+  Map<String, OpenApiPathMethod> get methods {
     return {
       if (get case final get?) 'GET': get,
       if (post case final post?) 'POST': post,

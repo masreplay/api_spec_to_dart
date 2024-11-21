@@ -1,9 +1,10 @@
 import 'dart:io';
 
+import 'package:path/path.dart' as path;
 import 'package:swagger_to_dart/src/config/open_api_generator_config.dart';
 import 'package:swagger_to_dart/src/generator/openapi/open_api_model_generator.dart';
+import 'package:swagger_to_dart/src/utils/recase.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
-import 'package:path/path.dart' as path;
 
 class OpenApiDartClientGenerator {
   const OpenApiDartClientGenerator({
@@ -42,30 +43,35 @@ class OpenApiDartClientGenerator {
     for (final entry in functionsPaths) {
       final method = path[entry]!;
 
-      for (final function in method.getAllMethods().entries) {
-        final response = function.value.responses!['200']!;
-        final type = function.key;
+      for (final entry in method.methods.entries) {
+        final methodType = entry.key;
+        final method = entry.value;
 
-        final responseClassName = 'dynamic'; //
+        final responses = method.responses ?? {};
+        final successResponse = responses['200']!;
 
-        final requestBody = function.value.requestBody?.content.current;
+        final responseClassName = 'dynamic';
 
-        buffer.writeln('/// ${method.delete}');
+        final requestBody = method.requestBody?.content.current;
+
+        buffer.writeln('/// ${method.operationId}');
 
         if (requestBody?.key != null) {
           buffer.writeln('@${requestBody?.key}');
         }
 
-        buffer.writeln('@${type}(\'$entry\')');
+        buffer.writeln(
+          '@${Recase.instance.toScreamingSnakeCase(methodType)}(\'$entry\')',
+        );
 
         final methodName = config.renameMethod(
-          function.value.operationId.replaceAll(
+          method.operationId.replaceAll(
             RegExp(clientName, caseSensitive: false),
             '',
           ),
         );
 
-        final parameters = function.value.parameters;
+        final parameters = method.parameters;
 
         buffer.writeln(
           '''Future<HttpResponse<$responseClassName>> $methodName(''',

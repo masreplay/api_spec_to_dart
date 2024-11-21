@@ -22,6 +22,7 @@ class OpenApiContent with _$OpenApiContent {
   ) =>
       _$OpenApiContentFromJson(json);
 
+  // Don't add retrofit annotation in the generated code
   MapEntry<String?, OpenApiContentSchema?> get current {
     if (applicationXWwwFormUrlencoded != null) {
       return MapEntry('FormUrlEncoded()', applicationXWwwFormUrlencoded);
