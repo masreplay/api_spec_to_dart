@@ -50,5 +50,7 @@ class UISelectFormField with _$UISelectFormField {
   factory UISelectFormField.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$UISelectFormFieldFromJson(json);
+      _$UISelectFormFieldFromJson(
+        json,
+      );
 }

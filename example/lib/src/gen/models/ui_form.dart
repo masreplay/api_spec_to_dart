@@ -45,5 +45,7 @@ class UIForm with _$UIForm {
   factory UIForm.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$UIFormFromJson(json);
+      _$UIFormFromJson(
+        json,
+      );
 }

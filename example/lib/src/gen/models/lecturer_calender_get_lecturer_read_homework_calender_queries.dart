@@ -27,5 +27,7 @@ class LecturerCalenderGetLecturerReadHomeworkCalenderQueries
   factory LecturerCalenderGetLecturerReadHomeworkCalenderQueries.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$LecturerCalenderGetLecturerReadHomeworkCalenderQueriesFromJson(json);
+      _$LecturerCalenderGetLecturerReadHomeworkCalenderQueriesFromJson(
+        json,
+      );
 }

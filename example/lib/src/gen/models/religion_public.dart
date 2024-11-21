@@ -23,5 +23,7 @@ class ReligionPublic with _$ReligionPublic {
   factory ReligionPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$ReligionPublicFromJson(json);
+      _$ReligionPublicFromJson(
+        json,
+      );
 }

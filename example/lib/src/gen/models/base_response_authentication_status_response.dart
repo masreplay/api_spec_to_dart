@@ -23,5 +23,7 @@ class BaseResponseAuthenticationStatusResponse
   factory BaseResponseAuthenticationStatusResponse.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponseAuthenticationStatusResponseFromJson(json);
+      _$BaseResponseAuthenticationStatusResponseFromJson(
+        json,
+      );
 }

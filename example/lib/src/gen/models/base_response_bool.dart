@@ -23,5 +23,7 @@ class BaseResponseBool with _$BaseResponseBool {
   factory BaseResponseBool.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponseBoolFromJson(json);
+      _$BaseResponseBoolFromJson(
+        json,
+      );
 }

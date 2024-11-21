@@ -23,5 +23,7 @@ class StudentFeesFeesTypesPublic with _$StudentFeesFeesTypesPublic {
   factory StudentFeesFeesTypesPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$StudentFeesFeesTypesPublicFromJson(json);
+      _$StudentFeesFeesTypesPublicFromJson(
+        json,
+      );
 }

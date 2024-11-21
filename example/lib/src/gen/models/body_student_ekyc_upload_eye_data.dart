@@ -23,5 +23,7 @@ class BodyStudentEkycUploadEyeData with _$BodyStudentEkycUploadEyeData {
   factory BodyStudentEkycUploadEyeData.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BodyStudentEkycUploadEyeDataFromJson(json);
+      _$BodyStudentEkycUploadEyeDataFromJson(
+        json,
+      );
 }

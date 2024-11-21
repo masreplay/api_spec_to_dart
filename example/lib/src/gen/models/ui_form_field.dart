@@ -34,5 +34,7 @@ class UIFormField with _$UIFormField {
   factory UIFormField.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$UIFormFieldFromJson(json);
+      _$UIFormFieldFromJson(
+        json,
+      );
 }

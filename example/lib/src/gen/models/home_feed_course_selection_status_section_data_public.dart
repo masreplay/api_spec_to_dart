@@ -21,5 +21,7 @@ class HomeFeedCourseSelectionStatusSectionDataPublic
   factory HomeFeedCourseSelectionStatusSectionDataPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$HomeFeedCourseSelectionStatusSectionDataPublicFromJson(json);
+      _$HomeFeedCourseSelectionStatusSectionDataPublicFromJson(
+        json,
+      );
 }

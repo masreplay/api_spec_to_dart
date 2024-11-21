@@ -23,5 +23,7 @@ class AppSettingsUpdate with _$AppSettingsUpdate {
   factory AppSettingsUpdate.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$AppSettingsUpdateFromJson(json);
+      _$AppSettingsUpdateFromJson(
+        json,
+      );
 }

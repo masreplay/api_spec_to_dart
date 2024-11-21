@@ -30,5 +30,7 @@ class BodyStudentEkycUploadPassportData
   factory BodyStudentEkycUploadPassportData.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BodyStudentEkycUploadPassportDataFromJson(json);
+      _$BodyStudentEkycUploadPassportDataFromJson(
+        json,
+      );
 }

@@ -36,5 +36,7 @@ class AuthenticationStatusOptionsResponse
   factory AuthenticationStatusOptionsResponse.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$AuthenticationStatusOptionsResponseFromJson(json);
+      _$AuthenticationStatusOptionsResponseFromJson(
+        json,
+      );
 }

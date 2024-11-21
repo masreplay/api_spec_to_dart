@@ -50,5 +50,7 @@ class UITextFormField with _$UITextFormField {
   factory UITextFormField.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$UITextFormFieldFromJson(json);
+      _$UITextFormFieldFromJson(
+        json,
+      );
 }

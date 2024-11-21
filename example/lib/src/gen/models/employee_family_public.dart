@@ -17,5 +17,7 @@ class EmployeeFamilyPublic with _$EmployeeFamilyPublic {
   factory EmployeeFamilyPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$EmployeeFamilyPublicFromJson(json);
+      _$EmployeeFamilyPublicFromJson(
+        json,
+      );
 }

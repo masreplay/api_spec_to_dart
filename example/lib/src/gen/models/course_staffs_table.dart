@@ -61,5 +61,7 @@ class CourseStaffsTable with _$CourseStaffsTable {
   factory CourseStaffsTable.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$CourseStaffsTableFromJson(json);
+      _$CourseStaffsTableFromJson(
+        json,
+      );
 }

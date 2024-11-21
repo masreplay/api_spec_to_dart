@@ -21,5 +21,7 @@ class LectureHomeworksCalenderResponse with _$LectureHomeworksCalenderResponse {
   factory LectureHomeworksCalenderResponse.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$LectureHomeworksCalenderResponseFromJson(json);
+      _$LectureHomeworksCalenderResponseFromJson(
+        json,
+      );
 }

@@ -26,5 +26,7 @@ class PaymentInfoAmount with _$PaymentInfoAmount {
   factory PaymentInfoAmount.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$PaymentInfoAmountFromJson(json);
+      _$PaymentInfoAmountFromJson(
+        json,
+      );
 }

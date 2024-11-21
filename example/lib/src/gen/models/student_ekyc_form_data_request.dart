@@ -20,5 +20,7 @@ class StudentEkycFormDataRequest with _$StudentEkycFormDataRequest {
   factory StudentEkycFormDataRequest.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$StudentEkycFormDataRequestFromJson(json);
+      _$StudentEkycFormDataRequestFromJson(
+        json,
+      );
 }

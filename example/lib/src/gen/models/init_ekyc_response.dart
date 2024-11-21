@@ -22,5 +22,7 @@ class InitEkycResponse with _$InitEkycResponse {
   factory InitEkycResponse.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$InitEkycResponseFromJson(json);
+      _$InitEkycResponseFromJson(
+        json,
+      );
 }

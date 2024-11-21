@@ -32,5 +32,7 @@ class FilePublic with _$FilePublic {
   factory FilePublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$FilePublicFromJson(json);
+      _$FilePublicFromJson(
+        json,
+      );
 }

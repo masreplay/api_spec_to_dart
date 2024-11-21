@@ -23,5 +23,7 @@ class BaseResponse with _$BaseResponse {
   factory BaseResponse.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponseFromJson(json);
+      _$BaseResponseFromJson(
+        json,
+      );
 }

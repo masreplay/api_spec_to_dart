@@ -28,5 +28,7 @@ class SummaryResponse with _$SummaryResponse {
   factory SummaryResponse.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$SummaryResponseFromJson(json);
+      _$SummaryResponseFromJson(
+        json,
+      );
 }

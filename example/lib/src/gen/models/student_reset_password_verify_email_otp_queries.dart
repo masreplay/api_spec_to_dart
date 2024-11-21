@@ -27,5 +27,7 @@ class StudentResetPasswordVerifyEmailOtpQueries
   factory StudentResetPasswordVerifyEmailOtpQueries.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$StudentResetPasswordVerifyEmailOtpQueriesFromJson(json);
+      _$StudentResetPasswordVerifyEmailOtpQueriesFromJson(
+        json,
+      );
 }

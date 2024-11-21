@@ -35,5 +35,7 @@ class StudentIdsPassportUpdatePublic with _$StudentIdsPassportUpdatePublic {
   factory StudentIdsPassportUpdatePublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$StudentIdsPassportUpdatePublicFromJson(json);
+      _$StudentIdsPassportUpdatePublicFromJson(
+        json,
+      );
 }

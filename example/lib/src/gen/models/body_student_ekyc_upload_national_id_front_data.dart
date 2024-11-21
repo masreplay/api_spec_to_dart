@@ -30,5 +30,7 @@ class BodyStudentEkycUploadNationalIdFrontData
   factory BodyStudentEkycUploadNationalIdFrontData.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BodyStudentEkycUploadNationalIdFrontDataFromJson(json);
+      _$BodyStudentEkycUploadNationalIdFrontDataFromJson(
+        json,
+      );
 }

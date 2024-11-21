@@ -23,5 +23,7 @@ class BodyLecturerAuthLogin with _$BodyLecturerAuthLogin {
   factory BodyLecturerAuthLogin.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BodyLecturerAuthLoginFromJson(json);
+      _$BodyLecturerAuthLoginFromJson(
+        json,
+      );
 }

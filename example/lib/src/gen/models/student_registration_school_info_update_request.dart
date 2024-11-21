@@ -49,5 +49,7 @@ class StudentRegistrationSchoolInfoUpdateRequest
   factory StudentRegistrationSchoolInfoUpdateRequest.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$StudentRegistrationSchoolInfoUpdateRequestFromJson(json);
+      _$StudentRegistrationSchoolInfoUpdateRequestFromJson(
+        json,
+      );
 }

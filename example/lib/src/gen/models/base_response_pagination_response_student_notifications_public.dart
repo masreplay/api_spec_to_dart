@@ -24,5 +24,7 @@ class BaseResponsePaginationResponseStudentNotificationsPublic
   factory BaseResponsePaginationResponseStudentNotificationsPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponsePaginationResponseStudentNotificationsPublicFromJson(json);
+      _$BaseResponsePaginationResponseStudentNotificationsPublicFromJson(
+        json,
+      );
 }

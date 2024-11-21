@@ -74,5 +74,7 @@ class StudentUniversityCardPublic with _$StudentUniversityCardPublic {
   factory StudentUniversityCardPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$StudentUniversityCardPublicFromJson(json);
+      _$StudentUniversityCardPublicFromJson(
+        json,
+      );
 }

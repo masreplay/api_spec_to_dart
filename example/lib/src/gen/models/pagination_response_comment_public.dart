@@ -30,5 +30,7 @@ class PaginationResponseCommentPublic with _$PaginationResponseCommentPublic {
   factory PaginationResponseCommentPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$PaginationResponseCommentPublicFromJson(json);
+      _$PaginationResponseCommentPublicFromJson(
+        json,
+      );
 }

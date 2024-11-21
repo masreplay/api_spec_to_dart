@@ -25,5 +25,7 @@ class BaseResponseUnionListCourseSubjectPublic
   factory BaseResponseUnionListCourseSubjectPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponseUnionListCourseSubjectPublicFromJson(json);
+      _$BaseResponseUnionListCourseSubjectPublicFromJson(
+        json,
+      );
 }

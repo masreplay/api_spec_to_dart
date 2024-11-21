@@ -62,5 +62,7 @@ class OrderResponse with _$OrderResponse {
   factory OrderResponse.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$OrderResponseFromJson(json);
+      _$OrderResponseFromJson(
+        json,
+      );
 }

@@ -25,5 +25,7 @@ class BaseResponseListAdmissionMePublic
   factory BaseResponseListAdmissionMePublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponseListAdmissionMePublicFromJson(json);
+      _$BaseResponseListAdmissionMePublicFromJson(
+        json,
+      );
 }

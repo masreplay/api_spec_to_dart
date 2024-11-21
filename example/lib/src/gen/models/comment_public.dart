@@ -35,5 +35,7 @@ class CommentPublic with _$CommentPublic {
   factory CommentPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$CommentPublicFromJson(json);
+      _$CommentPublicFromJson(
+        json,
+      );
 }

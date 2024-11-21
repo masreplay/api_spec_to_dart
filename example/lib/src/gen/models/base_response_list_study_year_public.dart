@@ -24,5 +24,7 @@ class BaseResponseListStudyYearPublic with _$BaseResponseListStudyYearPublic {
   factory BaseResponseListStudyYearPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponseListStudyYearPublicFromJson(json);
+      _$BaseResponseListStudyYearPublicFromJson(
+        json,
+      );
 }

@@ -39,5 +39,7 @@ class Summary with _$Summary {
   factory Summary.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$SummaryFromJson(json);
+      _$SummaryFromJson(
+        json,
+      );
 }

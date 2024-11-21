@@ -41,5 +41,7 @@ class HomeworkCalenderEventPublic with _$HomeworkCalenderEventPublic {
   factory HomeworkCalenderEventPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$HomeworkCalenderEventPublicFromJson(json);
+      _$HomeworkCalenderEventPublicFromJson(
+        json,
+      );
 }

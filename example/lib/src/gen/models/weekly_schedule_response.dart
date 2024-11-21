@@ -25,5 +25,7 @@ class WeeklyScheduleResponse with _$WeeklyScheduleResponse {
   factory WeeklyScheduleResponse.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$WeeklyScheduleResponseFromJson(json);
+      _$WeeklyScheduleResponseFromJson(
+        json,
+      );
 }

@@ -45,5 +45,7 @@ class LecturerAssignmentPublic with _$LecturerAssignmentPublic {
   factory LecturerAssignmentPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$LecturerAssignmentPublicFromJson(json);
+      _$LecturerAssignmentPublicFromJson(
+        json,
+      );
 }

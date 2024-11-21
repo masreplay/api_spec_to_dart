@@ -34,5 +34,7 @@ class LecturerAuthResponse with _$LecturerAuthResponse {
   factory LecturerAuthResponse.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$LecturerAuthResponseFromJson(json);
+      _$LecturerAuthResponseFromJson(
+        json,
+      );
 }

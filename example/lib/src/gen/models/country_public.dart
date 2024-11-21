@@ -23,5 +23,7 @@ class CountryPublic with _$CountryPublic {
   factory CountryPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$CountryPublicFromJson(json);
+      _$CountryPublicFromJson(
+        json,
+      );
 }

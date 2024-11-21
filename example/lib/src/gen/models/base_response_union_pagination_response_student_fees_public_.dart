@@ -23,5 +23,7 @@ class BaseResponseUnionPaginationResponseStudentFeesPublic
   factory BaseResponseUnionPaginationResponseStudentFeesPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponseUnionPaginationResponseStudentFeesPublicFromJson(json);
+      _$BaseResponseUnionPaginationResponseStudentFeesPublicFromJson(
+        json,
+      );
 }

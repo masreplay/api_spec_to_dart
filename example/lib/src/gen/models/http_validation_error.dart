@@ -21,5 +21,7 @@ class HttpValidationError with _$HttpValidationError {
   factory HttpValidationError.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$HttpValidationErrorFromJson(json);
+      _$HttpValidationErrorFromJson(
+        json,
+      );
 }

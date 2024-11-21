@@ -24,5 +24,7 @@ class BaseResponseListCountryPublic with _$BaseResponseListCountryPublic {
   factory BaseResponseListCountryPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponseListCountryPublicFromJson(json);
+      _$BaseResponseListCountryPublicFromJson(
+        json,
+      );
 }

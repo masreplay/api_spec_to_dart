@@ -25,5 +25,7 @@ class BaseResponseListLecture with _$BaseResponseListLecture {
   factory BaseResponseListLecture.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponseListLectureFromJson(json);
+      _$BaseResponseListLectureFromJson(
+        json,
+      );
 }

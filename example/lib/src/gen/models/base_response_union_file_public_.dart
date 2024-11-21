@@ -22,5 +22,7 @@ class BaseResponseUnionFilePublic with _$BaseResponseUnionFilePublic {
   factory BaseResponseUnionFilePublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponseUnionFilePublicFromJson(json);
+      _$BaseResponseUnionFilePublicFromJson(
+        json,
+      );
 }

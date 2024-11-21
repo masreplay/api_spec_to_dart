@@ -44,5 +44,7 @@ class HomeFeedStudyProgramSectionDataPublic
   factory HomeFeedStudyProgramSectionDataPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$HomeFeedStudyProgramSectionDataPublicFromJson(json);
+      _$HomeFeedStudyProgramSectionDataPublicFromJson(
+        json,
+      );
 }

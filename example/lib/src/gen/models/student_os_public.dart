@@ -37,5 +37,7 @@ class StudentOSPublic with _$StudentOSPublic {
   factory StudentOSPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$StudentOSPublicFromJson(json);
+      _$StudentOSPublicFromJson(
+        json,
+      );
 }

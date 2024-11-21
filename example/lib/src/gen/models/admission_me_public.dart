@@ -53,5 +53,7 @@ class AdmissionMePublic with _$AdmissionMePublic {
   factory AdmissionMePublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$AdmissionMePublicFromJson(json);
+      _$AdmissionMePublicFromJson(
+        json,
+      );
 }

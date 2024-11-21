@@ -23,5 +23,7 @@ class LecturerAnnouncementUpdatePublic with _$LecturerAnnouncementUpdatePublic {
   factory LecturerAnnouncementUpdatePublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$LecturerAnnouncementUpdatePublicFromJson(json);
+      _$LecturerAnnouncementUpdatePublicFromJson(
+        json,
+      );
 }

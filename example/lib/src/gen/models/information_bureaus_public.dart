@@ -26,5 +26,7 @@ class InformationBureausPublic with _$InformationBureausPublic {
   factory InformationBureausPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$InformationBureausPublicFromJson(json);
+      _$InformationBureausPublicFromJson(
+        json,
+      );
 }

@@ -66,5 +66,7 @@ class StudentNotificationsPublic with _$StudentNotificationsPublic {
   factory StudentNotificationsPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$StudentNotificationsPublicFromJson(json);
+      _$StudentNotificationsPublicFromJson(
+        json,
+      );
 }

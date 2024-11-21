@@ -24,5 +24,7 @@ class BaseResponseListReligionPublic with _$BaseResponseListReligionPublic {
   factory BaseResponseListReligionPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponseListReligionPublicFromJson(json);
+      _$BaseResponseListReligionPublicFromJson(
+        json,
+      );
 }

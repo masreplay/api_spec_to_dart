@@ -22,5 +22,7 @@ class BaseResponseStudentOSPublic with _$BaseResponseStudentOSPublic {
   factory BaseResponseStudentOSPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponseStudentOSPublicFromJson(json);
+      _$BaseResponseStudentOSPublicFromJson(
+        json,
+      );
 }

@@ -23,5 +23,7 @@ class NationalitiesPublic with _$NationalitiesPublic {
   factory NationalitiesPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$NationalitiesPublicFromJson(json);
+      _$NationalitiesPublicFromJson(
+        json,
+      );
 }

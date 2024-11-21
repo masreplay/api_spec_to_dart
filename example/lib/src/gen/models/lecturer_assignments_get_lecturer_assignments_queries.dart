@@ -24,5 +24,7 @@ class LecturerAssignmentsGetLecturerAssignmentsQueries
   factory LecturerAssignmentsGetLecturerAssignmentsQueries.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$LecturerAssignmentsGetLecturerAssignmentsQueriesFromJson(json);
+      _$LecturerAssignmentsGetLecturerAssignmentsQueriesFromJson(
+        json,
+      );
 }

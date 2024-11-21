@@ -24,5 +24,7 @@ class LecturerCoursesGetLecturerCoursesQueries
   factory LecturerCoursesGetLecturerCoursesQueries.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$LecturerCoursesGetLecturerCoursesQueriesFromJson(json);
+      _$LecturerCoursesGetLecturerCoursesQueriesFromJson(
+        json,
+      );
 }

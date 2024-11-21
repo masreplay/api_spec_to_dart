@@ -21,5 +21,7 @@ class StudentSelectedCoursesUpdateSelectedCoursesQueries
   factory StudentSelectedCoursesUpdateSelectedCoursesQueries.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$StudentSelectedCoursesUpdateSelectedCoursesQueriesFromJson(json);
+      _$StudentSelectedCoursesUpdateSelectedCoursesQueriesFromJson(
+        json,
+      );
 }

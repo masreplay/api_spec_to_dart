@@ -26,5 +26,7 @@ class GovernoratePublic with _$GovernoratePublic {
   factory GovernoratePublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$GovernoratePublicFromJson(json);
+      _$GovernoratePublicFromJson(
+        json,
+      );
 }

@@ -23,5 +23,7 @@ class BodyStudentAuthSwaggerLogin with _$BodyStudentAuthSwaggerLogin {
   factory BodyStudentAuthSwaggerLogin.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BodyStudentAuthSwaggerLoginFromJson(json);
+      _$BodyStudentAuthSwaggerLoginFromJson(
+        json,
+      );
 }

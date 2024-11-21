@@ -24,5 +24,7 @@ class BaseResponseListMajorsPublic with _$BaseResponseListMajorsPublic {
   factory BaseResponseListMajorsPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponseListMajorsPublicFromJson(json);
+      _$BaseResponseListMajorsPublicFromJson(
+        json,
+      );
 }

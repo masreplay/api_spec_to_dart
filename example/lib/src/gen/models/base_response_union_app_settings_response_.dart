@@ -23,5 +23,7 @@ class BaseResponseUnionAppSettingsResponse
   factory BaseResponseUnionAppSettingsResponse.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponseUnionAppSettingsResponseFromJson(json);
+      _$BaseResponseUnionAppSettingsResponseFromJson(
+        json,
+      );
 }

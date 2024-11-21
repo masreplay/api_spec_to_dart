@@ -34,5 +34,7 @@ class StudentIdsInfoResponse with _$StudentIdsInfoResponse {
   factory StudentIdsInfoResponse.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$StudentIdsInfoResponseFromJson(json);
+      _$StudentIdsInfoResponseFromJson(
+        json,
+      );
 }

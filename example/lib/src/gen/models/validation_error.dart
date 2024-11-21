@@ -26,5 +26,7 @@ class ValidationError with _$ValidationError {
   factory ValidationError.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$ValidationErrorFromJson(json);
+      _$ValidationErrorFromJson(
+        json,
+      );
 }

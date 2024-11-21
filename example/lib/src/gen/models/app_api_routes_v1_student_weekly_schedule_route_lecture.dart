@@ -42,5 +42,7 @@ class AppApiRoutesV1StudentWeeklyScheduleRouteLecture
   factory AppApiRoutesV1StudentWeeklyScheduleRouteLecture.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$AppApiRoutesV1StudentWeeklyScheduleRouteLectureFromJson(json);
+      _$AppApiRoutesV1StudentWeeklyScheduleRouteLectureFromJson(
+        json,
+      );
 }

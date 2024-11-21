@@ -23,5 +23,7 @@ class ChangePasswordRequestPublic with _$ChangePasswordRequestPublic {
   factory ChangePasswordRequestPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$ChangePasswordRequestPublicFromJson(json);
+      _$ChangePasswordRequestPublicFromJson(
+        json,
+      );
 }

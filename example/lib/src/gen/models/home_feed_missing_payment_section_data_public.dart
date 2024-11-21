@@ -26,5 +26,7 @@ class HomeFeedMissingPaymentSectionDataPublic
   factory HomeFeedMissingPaymentSectionDataPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$HomeFeedMissingPaymentSectionDataPublicFromJson(json);
+      _$HomeFeedMissingPaymentSectionDataPublicFromJson(
+        json,
+      );
 }

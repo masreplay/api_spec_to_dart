@@ -23,5 +23,7 @@ class BaseResponseLectureHomeworksCalenderResponse
   factory BaseResponseLectureHomeworksCalenderResponse.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponseLectureHomeworksCalenderResponseFromJson(json);
+      _$BaseResponseLectureHomeworksCalenderResponseFromJson(
+        json,
+      );
 }

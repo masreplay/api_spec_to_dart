@@ -55,5 +55,7 @@ class CourseDistributionsTable with _$CourseDistributionsTable {
   factory CourseDistributionsTable.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$CourseDistributionsTableFromJson(json);
+      _$CourseDistributionsTableFromJson(
+        json,
+      );
 }

@@ -20,5 +20,7 @@ class StudentSummery with _$StudentSummery {
   factory StudentSummery.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$StudentSummeryFromJson(json);
+      _$StudentSummeryFromJson(
+        json,
+      );
 }

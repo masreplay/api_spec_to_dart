@@ -34,5 +34,7 @@ class AppSettingsResponse with _$AppSettingsResponse {
   factory AppSettingsResponse.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$AppSettingsResponseFromJson(json);
+      _$AppSettingsResponseFromJson(
+        json,
+      );
 }

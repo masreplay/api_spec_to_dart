@@ -23,5 +23,7 @@ class BaseResponseUnionDictStrAny with _$BaseResponseUnionDictStrAny {
   factory BaseResponseUnionDictStrAny.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponseUnionDictStrAnyFromJson(json);
+      _$BaseResponseUnionDictStrAnyFromJson(
+        json,
+      );
 }

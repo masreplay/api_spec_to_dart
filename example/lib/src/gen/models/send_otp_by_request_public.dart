@@ -23,5 +23,7 @@ class SendOtpByRequestPublic with _$SendOtpByRequestPublic {
   factory SendOtpByRequestPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$SendOtpByRequestPublicFromJson(json);
+      _$SendOtpByRequestPublicFromJson(
+        json,
+      );
 }

@@ -26,5 +26,7 @@ class CommentUserPublic with _$CommentUserPublic {
   factory CommentUserPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$CommentUserPublicFromJson(json);
+      _$CommentUserPublicFromJson(
+        json,
+      );
 }

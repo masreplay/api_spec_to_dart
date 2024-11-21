@@ -20,5 +20,7 @@ class MessageResponse with _$MessageResponse {
   factory MessageResponse.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$MessageResponseFromJson(json);
+      _$MessageResponseFromJson(
+        json,
+      );
 }

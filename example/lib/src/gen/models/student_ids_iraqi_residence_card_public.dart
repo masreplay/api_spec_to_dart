@@ -41,5 +41,7 @@ class StudentIdsIraqiResidenceCardPublic
   factory StudentIdsIraqiResidenceCardPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$StudentIdsIraqiResidenceCardPublicFromJson(json);
+      _$StudentIdsIraqiResidenceCardPublicFromJson(
+        json,
+      );
 }

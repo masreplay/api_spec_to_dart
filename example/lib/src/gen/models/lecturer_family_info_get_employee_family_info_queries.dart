@@ -21,5 +21,7 @@ class LecturerFamilyInfoGetEmployeeFamilyInfoQueries
   factory LecturerFamilyInfoGetEmployeeFamilyInfoQueries.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$LecturerFamilyInfoGetEmployeeFamilyInfoQueriesFromJson(json);
+      _$LecturerFamilyInfoGetEmployeeFamilyInfoQueriesFromJson(
+        json,
+      );
 }

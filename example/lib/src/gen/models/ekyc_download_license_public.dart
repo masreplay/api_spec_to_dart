@@ -20,5 +20,7 @@ class EkycDownloadLicensePublic with _$EkycDownloadLicensePublic {
   factory EkycDownloadLicensePublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$EkycDownloadLicensePublicFromJson(json);
+      _$EkycDownloadLicensePublicFromJson(
+        json,
+      );
 }

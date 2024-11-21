@@ -66,5 +66,7 @@ class AcademicYearDivisionPublic with _$AcademicYearDivisionPublic {
   factory AcademicYearDivisionPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$AcademicYearDivisionPublicFromJson(json);
+      _$AcademicYearDivisionPublicFromJson(
+        json,
+      );
 }

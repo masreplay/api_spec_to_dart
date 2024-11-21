@@ -42,5 +42,7 @@ class AppApiRoutesV1StudentAttendanceRouteLecture
   factory AppApiRoutesV1StudentAttendanceRouteLecture.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$AppApiRoutesV1StudentAttendanceRouteLectureFromJson(json);
+      _$AppApiRoutesV1StudentAttendanceRouteLectureFromJson(
+        json,
+      );
 }

@@ -31,5 +31,7 @@ class PaginationResponseStudentNotificationsPublic
   factory PaginationResponseStudentNotificationsPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$PaginationResponseStudentNotificationsPublicFromJson(json);
+      _$PaginationResponseStudentNotificationsPublicFromJson(
+        json,
+      );
 }

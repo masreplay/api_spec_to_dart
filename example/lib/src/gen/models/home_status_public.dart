@@ -30,5 +30,7 @@ class HomeStatusPublic with _$HomeStatusPublic {
   factory HomeStatusPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$HomeStatusPublicFromJson(json);
+      _$HomeStatusPublicFromJson(
+        json,
+      );
 }

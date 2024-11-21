@@ -24,5 +24,7 @@ class BaseResponseListFeesTypesPublic with _$BaseResponseListFeesTypesPublic {
   factory BaseResponseListFeesTypesPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponseListFeesTypesPublicFromJson(json);
+      _$BaseResponseListFeesTypesPublicFromJson(
+        json,
+      );
 }

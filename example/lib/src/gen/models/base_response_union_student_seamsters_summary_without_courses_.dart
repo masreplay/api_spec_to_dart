@@ -23,5 +23,7 @@ class BaseResponseUnionStudentSeamstersSummaryWithoutCourses
   factory BaseResponseUnionStudentSeamstersSummaryWithoutCourses.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponseUnionStudentSeamstersSummaryWithoutCoursesFromJson(json);
+      _$BaseResponseUnionStudentSeamstersSummaryWithoutCoursesFromJson(
+        json,
+      );
 }

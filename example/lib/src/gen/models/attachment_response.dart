@@ -29,5 +29,7 @@ class AttachmentResponse with _$AttachmentResponse {
   factory AttachmentResponse.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$AttachmentResponseFromJson(json);
+      _$AttachmentResponseFromJson(
+        json,
+      );
 }

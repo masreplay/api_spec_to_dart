@@ -27,5 +27,7 @@ class StudentNotificationsReadNotificationsQueries
   factory StudentNotificationsReadNotificationsQueries.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$StudentNotificationsReadNotificationsQueriesFromJson(json);
+      _$StudentNotificationsReadNotificationsQueriesFromJson(
+        json,
+      );
 }

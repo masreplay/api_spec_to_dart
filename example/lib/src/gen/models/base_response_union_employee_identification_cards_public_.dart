@@ -23,5 +23,7 @@ class BaseResponseUnionEmployeeIdentificationCardsPublic
   factory BaseResponseUnionEmployeeIdentificationCardsPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponseUnionEmployeeIdentificationCardsPublicFromJson(json);
+      _$BaseResponseUnionEmployeeIdentificationCardsPublicFromJson(
+        json,
+      );
 }

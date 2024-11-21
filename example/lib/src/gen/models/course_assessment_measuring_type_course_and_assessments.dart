@@ -44,5 +44,7 @@ class CourseAssessmentMeasuringTypeCourseAndAssessments
   factory CourseAssessmentMeasuringTypeCourseAndAssessments.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$CourseAssessmentMeasuringTypeCourseAndAssessmentsFromJson(json);
+      _$CourseAssessmentMeasuringTypeCourseAndAssessmentsFromJson(
+        json,
+      );
 }

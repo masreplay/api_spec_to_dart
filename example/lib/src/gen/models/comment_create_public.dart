@@ -20,5 +20,7 @@ class CommentCreatePublic with _$CommentCreatePublic {
   factory CommentCreatePublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$CommentCreatePublicFromJson(json);
+      _$CommentCreatePublicFromJson(
+        json,
+      );
 }

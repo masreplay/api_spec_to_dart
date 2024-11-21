@@ -22,5 +22,7 @@ class BaseResponseUnionSummaryResponse with _$BaseResponseUnionSummaryResponse {
   factory BaseResponseUnionSummaryResponse.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponseUnionSummaryResponseFromJson(json);
+      _$BaseResponseUnionSummaryResponseFromJson(
+        json,
+      );
 }

@@ -35,5 +35,7 @@ class CourseSubjectPublic with _$CourseSubjectPublic {
   factory CourseSubjectPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$CourseSubjectPublicFromJson(json);
+      _$CourseSubjectPublicFromJson(
+        json,
+      );
 }

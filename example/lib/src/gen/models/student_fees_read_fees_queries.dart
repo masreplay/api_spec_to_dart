@@ -29,5 +29,7 @@ class StudentFeesReadFeesQueries with _$StudentFeesReadFeesQueries {
   factory StudentFeesReadFeesQueries.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$StudentFeesReadFeesQueriesFromJson(json);
+      _$StudentFeesReadFeesQueriesFromJson(
+        json,
+      );
 }

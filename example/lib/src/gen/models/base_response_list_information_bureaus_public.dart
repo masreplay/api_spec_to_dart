@@ -25,5 +25,7 @@ class BaseResponseListInformationBureausPublic
   factory BaseResponseListInformationBureausPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponseListInformationBureausPublicFromJson(json);
+      _$BaseResponseListInformationBureausPublicFromJson(
+        json,
+      );
 }

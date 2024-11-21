@@ -21,5 +21,7 @@ class StudentSemestersReadSemestersQueries
   factory StudentSemestersReadSemestersQueries.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$StudentSemestersReadSemestersQueriesFromJson(json);
+      _$StudentSemestersReadSemestersQueriesFromJson(
+        json,
+      );
 }

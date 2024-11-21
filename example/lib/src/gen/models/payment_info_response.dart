@@ -24,5 +24,7 @@ class PaymentInfoResponse with _$PaymentInfoResponse {
   factory PaymentInfoResponse.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$PaymentInfoResponseFromJson(json);
+      _$PaymentInfoResponseFromJson(
+        json,
+      );
 }

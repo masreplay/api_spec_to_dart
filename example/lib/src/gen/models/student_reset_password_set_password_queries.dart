@@ -27,5 +27,7 @@ class StudentResetPasswordSetPasswordQueries
   factory StudentResetPasswordSetPasswordQueries.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$StudentResetPasswordSetPasswordQueriesFromJson(json);
+      _$StudentResetPasswordSetPasswordQueriesFromJson(
+        json,
+      );
 }

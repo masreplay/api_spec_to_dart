@@ -55,5 +55,7 @@ class Subject with _$Subject {
   factory Subject.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$SubjectFromJson(json);
+      _$SubjectFromJson(
+        json,
+      );
 }

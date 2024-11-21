@@ -25,5 +25,7 @@ class BaseResponseListSpecializationPublic
   factory BaseResponseListSpecializationPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponseListSpecializationPublicFromJson(json);
+      _$BaseResponseListSpecializationPublicFromJson(
+        json,
+      );
 }

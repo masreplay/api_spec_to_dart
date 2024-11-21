@@ -23,5 +23,7 @@ class BaseResponseUnionStudentUniversityCardPublic
   factory BaseResponseUnionStudentUniversityCardPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponseUnionStudentUniversityCardPublicFromJson(json);
+      _$BaseResponseUnionStudentUniversityCardPublicFromJson(
+        json,
+      );
 }

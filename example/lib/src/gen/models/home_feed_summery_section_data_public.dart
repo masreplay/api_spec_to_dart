@@ -35,5 +35,7 @@ class HomeFeedSummerySectionDataPublic with _$HomeFeedSummerySectionDataPublic {
   factory HomeFeedSummerySectionDataPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$HomeFeedSummerySectionDataPublicFromJson(json);
+      _$HomeFeedSummerySectionDataPublicFromJson(
+        json,
+      );
 }

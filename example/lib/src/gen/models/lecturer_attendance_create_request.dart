@@ -20,5 +20,7 @@ class LecturerAttendanceCreateRequest with _$LecturerAttendanceCreateRequest {
   factory LecturerAttendanceCreateRequest.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$LecturerAttendanceCreateRequestFromJson(json);
+      _$LecturerAttendanceCreateRequestFromJson(
+        json,
+      );
 }

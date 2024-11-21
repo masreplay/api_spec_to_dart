@@ -30,5 +30,7 @@ class BodyStudentEkycUploadNationalIdBackData
   factory BodyStudentEkycUploadNationalIdBackData.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BodyStudentEkycUploadNationalIdBackDataFromJson(json);
+      _$BodyStudentEkycUploadNationalIdBackDataFromJson(
+        json,
+      );
 }

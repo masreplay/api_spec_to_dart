@@ -23,5 +23,7 @@ class VerificationMethodPublic with _$VerificationMethodPublic {
   factory VerificationMethodPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$VerificationMethodPublicFromJson(json);
+      _$VerificationMethodPublicFromJson(
+        json,
+      );
 }

@@ -24,5 +24,7 @@ class HomeResponse with _$HomeResponse {
   factory HomeResponse.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$HomeResponseFromJson(json);
+      _$HomeResponseFromJson(
+        json,
+      );
 }

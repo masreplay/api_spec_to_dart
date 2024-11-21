@@ -24,5 +24,7 @@ class HomeFeedPublic with _$HomeFeedPublic {
   factory HomeFeedPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$HomeFeedPublicFromJson(json);
+      _$HomeFeedPublicFromJson(
+        json,
+      );
 }

@@ -23,5 +23,7 @@ class BaseResponseDictStrAny with _$BaseResponseDictStrAny {
   factory BaseResponseDictStrAny.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponseDictStrAnyFromJson(json);
+      _$BaseResponseDictStrAnyFromJson(
+        json,
+      );
 }

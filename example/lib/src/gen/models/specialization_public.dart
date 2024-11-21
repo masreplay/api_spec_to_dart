@@ -26,5 +26,7 @@ class SpecializationPublic with _$SpecializationPublic {
   factory SpecializationPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$SpecializationPublicFromJson(json);
+      _$SpecializationPublicFromJson(
+        json,
+      );
 }

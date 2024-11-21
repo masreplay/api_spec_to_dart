@@ -26,5 +26,7 @@ class AppSettingsIos with _$AppSettingsIos {
   factory AppSettingsIos.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$AppSettingsIosFromJson(json);
+      _$AppSettingsIosFromJson(
+        json,
+      );
 }

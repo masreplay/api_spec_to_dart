@@ -114,5 +114,7 @@ class StudentTable with _$StudentTable {
   factory StudentTable.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$StudentTableFromJson(json);
+      _$StudentTableFromJson(
+        json,
+      );
 }

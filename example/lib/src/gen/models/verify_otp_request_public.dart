@@ -20,5 +20,7 @@ class VerifyOtpRequestPublic with _$VerifyOtpRequestPublic {
   factory VerifyOtpRequestPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$VerifyOtpRequestPublicFromJson(json);
+      _$VerifyOtpRequestPublicFromJson(
+        json,
+      );
 }

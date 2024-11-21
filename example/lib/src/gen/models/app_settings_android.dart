@@ -26,5 +26,7 @@ class AppSettingsAndroid with _$AppSettingsAndroid {
   factory AppSettingsAndroid.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$AppSettingsAndroidFromJson(json);
+      _$AppSettingsAndroidFromJson(
+        json,
+      );
 }

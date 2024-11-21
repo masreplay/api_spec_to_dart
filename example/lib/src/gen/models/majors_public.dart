@@ -26,5 +26,7 @@ class MajorsPublic with _$MajorsPublic {
   factory MajorsPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$MajorsPublicFromJson(json);
+      _$MajorsPublicFromJson(
+        json,
+      );
 }

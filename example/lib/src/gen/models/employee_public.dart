@@ -137,5 +137,7 @@ class EmployeePublic with _$EmployeePublic {
   factory EmployeePublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$EmployeePublicFromJson(json);
+      _$EmployeePublicFromJson(
+        json,
+      );
 }

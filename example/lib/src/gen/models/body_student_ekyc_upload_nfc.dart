@@ -26,5 +26,7 @@ class BodyStudentEkycUploadNfc with _$BodyStudentEkycUploadNfc {
   factory BodyStudentEkycUploadNfc.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BodyStudentEkycUploadNfcFromJson(json);
+      _$BodyStudentEkycUploadNfcFromJson(
+        json,
+      );
 }

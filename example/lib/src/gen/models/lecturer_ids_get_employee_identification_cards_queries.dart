@@ -21,5 +21,7 @@ class LecturerIdsGetEmployeeIdentificationCardsQueries
   factory LecturerIdsGetEmployeeIdentificationCardsQueries.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$LecturerIdsGetEmployeeIdentificationCardsQueriesFromJson(json);
+      _$LecturerIdsGetEmployeeIdentificationCardsQueriesFromJson(
+        json,
+      );
 }

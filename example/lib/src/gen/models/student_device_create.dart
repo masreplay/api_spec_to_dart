@@ -53,5 +53,7 @@ class StudentDeviceCreate with _$StudentDeviceCreate {
   factory StudentDeviceCreate.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$StudentDeviceCreateFromJson(json);
+      _$StudentDeviceCreateFromJson(
+        json,
+      );
 }

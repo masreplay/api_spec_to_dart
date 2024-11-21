@@ -20,5 +20,7 @@ class JoiningTime with _$JoiningTime {
   factory JoiningTime.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$JoiningTimeFromJson(json);
+      _$JoiningTimeFromJson(
+        json,
+      );
 }

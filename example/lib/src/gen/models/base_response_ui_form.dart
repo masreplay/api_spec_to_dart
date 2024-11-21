@@ -22,5 +22,7 @@ class BaseResponseUIForm with _$BaseResponseUIForm {
   factory BaseResponseUIForm.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponseUIFormFromJson(json);
+      _$BaseResponseUIFormFromJson(
+        json,
+      );
 }

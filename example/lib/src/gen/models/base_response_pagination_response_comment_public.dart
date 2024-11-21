@@ -23,5 +23,7 @@ class BaseResponsePaginationResponseCommentPublic
   factory BaseResponsePaginationResponseCommentPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponsePaginationResponseCommentPublicFromJson(json);
+      _$BaseResponsePaginationResponseCommentPublicFromJson(
+        json,
+      );
 }

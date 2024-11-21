@@ -26,5 +26,7 @@ class LecturerProfilePublic with _$LecturerProfilePublic {
   factory LecturerProfilePublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$LecturerProfilePublicFromJson(json);
+      _$LecturerProfilePublicFromJson(
+        json,
+      );
 }

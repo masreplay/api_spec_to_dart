@@ -20,5 +20,7 @@ class StudentAttendanceCreate with _$StudentAttendanceCreate {
   factory StudentAttendanceCreate.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$StudentAttendanceCreateFromJson(json);
+      _$StudentAttendanceCreateFromJson(
+        json,
+      );
 }

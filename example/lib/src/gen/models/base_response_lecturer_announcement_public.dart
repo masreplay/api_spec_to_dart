@@ -23,5 +23,7 @@ class BaseResponseLecturerAnnouncementPublic
   factory BaseResponseLecturerAnnouncementPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponseLecturerAnnouncementPublicFromJson(json);
+      _$BaseResponseLecturerAnnouncementPublicFromJson(
+        json,
+      );
 }

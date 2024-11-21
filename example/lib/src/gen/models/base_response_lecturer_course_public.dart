@@ -22,5 +22,7 @@ class BaseResponseLecturerCoursePublic with _$BaseResponseLecturerCoursePublic {
   factory BaseResponseLecturerCoursePublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponseLecturerCoursePublicFromJson(json);
+      _$BaseResponseLecturerCoursePublicFromJson(
+        json,
+      );
 }

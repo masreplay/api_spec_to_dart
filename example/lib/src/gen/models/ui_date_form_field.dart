@@ -53,5 +53,7 @@ class UIDateFormField with _$UIDateFormField {
   factory UIDateFormField.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$UIDateFormFieldFromJson(json);
+      _$UIDateFormFieldFromJson(
+        json,
+      );
 }

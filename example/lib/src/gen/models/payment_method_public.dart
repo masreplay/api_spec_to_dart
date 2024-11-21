@@ -34,5 +34,7 @@ class PaymentMethodPublic with _$PaymentMethodPublic {
   factory PaymentMethodPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$PaymentMethodPublicFromJson(json);
+      _$PaymentMethodPublicFromJson(
+        json,
+      );
 }

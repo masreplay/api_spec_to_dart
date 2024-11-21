@@ -23,5 +23,7 @@ class StudyYearPublic with _$StudyYearPublic {
   factory StudyYearPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$StudyYearPublicFromJson(json);
+      _$StudyYearPublicFromJson(
+        json,
+      );
 }

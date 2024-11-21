@@ -24,5 +24,7 @@ class BaseResponseListOrderResponse with _$BaseResponseListOrderResponse {
   factory BaseResponseListOrderResponse.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponseListOrderResponseFromJson(json);
+      _$BaseResponseListOrderResponseFromJson(
+        json,
+      );
 }

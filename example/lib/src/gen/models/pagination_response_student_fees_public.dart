@@ -31,5 +31,7 @@ class PaginationResponseStudentFeesPublic
   factory PaginationResponseStudentFeesPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$PaginationResponseStudentFeesPublicFromJson(json);
+      _$PaginationResponseStudentFeesPublicFromJson(
+        json,
+      );
 }

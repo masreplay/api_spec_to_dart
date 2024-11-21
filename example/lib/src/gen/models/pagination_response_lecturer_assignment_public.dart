@@ -31,5 +31,7 @@ class PaginationResponseLecturerAssignmentPublic
   factory PaginationResponseLecturerAssignmentPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$PaginationResponseLecturerAssignmentPublicFromJson(json);
+      _$PaginationResponseLecturerAssignmentPublicFromJson(
+        json,
+      );
 }

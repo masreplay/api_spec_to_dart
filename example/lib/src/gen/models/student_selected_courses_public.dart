@@ -67,5 +67,7 @@ class StudentSelectedCoursesPublic with _$StudentSelectedCoursesPublic {
   factory StudentSelectedCoursesPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$StudentSelectedCoursesPublicFromJson(json);
+      _$StudentSelectedCoursesPublicFromJson(
+        json,
+      );
 }

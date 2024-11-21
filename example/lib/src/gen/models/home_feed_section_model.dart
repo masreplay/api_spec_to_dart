@@ -34,5 +34,7 @@ class HomeFeedSectionModel with _$HomeFeedSectionModel {
   factory HomeFeedSectionModel.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$HomeFeedSectionModelFromJson(json);
+      _$HomeFeedSectionModelFromJson(
+        json,
+      );
 }

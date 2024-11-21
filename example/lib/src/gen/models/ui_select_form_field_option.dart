@@ -23,5 +23,7 @@ class UISelectFormFieldOption with _$UISelectFormFieldOption {
   factory UISelectFormFieldOption.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$UISelectFormFieldOptionFromJson(json);
+      _$UISelectFormFieldOptionFromJson(
+        json,
+      );
 }

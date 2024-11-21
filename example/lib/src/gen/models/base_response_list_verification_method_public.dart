@@ -25,5 +25,7 @@ class BaseResponseListVerificationMethodPublic
   factory BaseResponseListVerificationMethodPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponseListVerificationMethodPublicFromJson(json);
+      _$BaseResponseListVerificationMethodPublicFromJson(
+        json,
+      );
 }

@@ -23,5 +23,7 @@ class BaseResponseLecturerAttendanceResponse
   factory BaseResponseLecturerAttendanceResponse.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponseLecturerAttendanceResponseFromJson(json);
+      _$BaseResponseLecturerAttendanceResponseFromJson(
+        json,
+      );
 }

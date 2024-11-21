@@ -44,5 +44,7 @@ class UICheckboxFormField with _$UICheckboxFormField {
   factory UICheckboxFormField.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$UICheckboxFormFieldFromJson(json);
+      _$UICheckboxFormFieldFromJson(
+        json,
+      );
 }

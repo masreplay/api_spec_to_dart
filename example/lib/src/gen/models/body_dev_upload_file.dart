@@ -23,5 +23,7 @@ class BodyDevUploadFile with _$BodyDevUploadFile {
   factory BodyDevUploadFile.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BodyDevUploadFileFromJson(json);
+      _$BodyDevUploadFileFromJson(
+        json,
+      );
 }

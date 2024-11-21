@@ -25,5 +25,7 @@ class BaseResponseListPaymentMethodPublic
   factory BaseResponseListPaymentMethodPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponseListPaymentMethodPublicFromJson(json);
+      _$BaseResponseListPaymentMethodPublicFromJson(
+        json,
+      );
 }

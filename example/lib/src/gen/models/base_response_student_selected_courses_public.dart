@@ -23,5 +23,7 @@ class BaseResponseStudentSelectedCoursesPublic
   factory BaseResponseStudentSelectedCoursesPublic.fromJson(
     Map<String, dynamic> json,
   ) =>
-      _$BaseResponseStudentSelectedCoursesPublicFromJson(json);
+      _$BaseResponseStudentSelectedCoursesPublicFromJson(
+        json,
+      );
 }

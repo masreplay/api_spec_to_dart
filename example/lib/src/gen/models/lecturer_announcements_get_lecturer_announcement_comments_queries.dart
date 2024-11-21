@@ -25,5 +25,6 @@ class LecturerAnnouncementsGetLecturerAnnouncementCommentsQueries
     Map<String, dynamic> json,
   ) =>
       _$LecturerAnnouncementsGetLecturerAnnouncementCommentsQueriesFromJson(
-          json);
+        json,
+      );
 }

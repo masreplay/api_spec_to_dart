@@ -133,7 +133,9 @@ class ${className} with _\$${className} {
   
   factory ${className}.fromJson(
     Map<String, dynamic> json,
-  ) => _\$${className}FromJson(json);
+  ) => _\$${className}FromJson(
+    json,
+  );
 }
 ''';
 
@@ -192,7 +194,9 @@ class ${className} with _\$${className} {
 
   factory ${className}.fromJson(
     Map<String, dynamic> json,
-  ) => _\$${className}FromJson(json);
+  ) => _\$${className}FromJson(
+    json,
+  );
 }
 ''';
 
