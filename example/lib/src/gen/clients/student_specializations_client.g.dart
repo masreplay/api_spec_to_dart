@@ -22,8 +22,7 @@ class _StudentSpecializationsClient implements StudentSpecializationsClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>>
-      student_specializations_read_specializations() async {
+  Future<HttpResponse<dynamic>> readSpecializations() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

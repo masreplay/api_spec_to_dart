@@ -22,7 +22,7 @@ class _StudentEkycClient implements StudentEkycClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>> student_ekyc_download_license() async {
+  Future<HttpResponse<dynamic>> downloadLicense() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -50,7 +50,7 @@ class _StudentEkycClient implements StudentEkycClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> student_ekyc_read_student_ekyc_form() async {
+  Future<HttpResponse<dynamic>> readForm() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

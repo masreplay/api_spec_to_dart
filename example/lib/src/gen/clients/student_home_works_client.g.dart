@@ -22,8 +22,7 @@ class _StudentHomeWorksClient implements StudentHomeWorksClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>>
-      student_home_works_read_course_assessment_by_course_id() async {
+  Future<HttpResponse<dynamic>> readCourseAssessmentByCourseId() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

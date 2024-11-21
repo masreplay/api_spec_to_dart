@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+
 part 'student_information_status_client.g.dart';
 
-///
 @RestApi()
 abstract class StudentInformationStatusClient {
   factory StudentInformationStatusClient(Dio dio, {String baseUrl}) =
@@ -10,5 +10,5 @@ abstract class StudentInformationStatusClient {
 
   /// null
   @GET('/api/v1/student/information_status/')
-  Future<HttpResponse<dynamic>> student_information_status_read_status();
+  Future<HttpResponse<dynamic>> readStatus();
 }

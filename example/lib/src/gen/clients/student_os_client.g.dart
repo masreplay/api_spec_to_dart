@@ -22,8 +22,7 @@ class _StudentOSClient implements StudentOSClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>>
-      student_os_read_organizational_structure_for_student() async {
+  Future<HttpResponse<dynamic>> readOrganizationalStructureForStudent() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

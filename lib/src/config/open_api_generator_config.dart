@@ -68,6 +68,10 @@ class OpenApiGeneratorConfig {
     return _renameProtect(Recase.instance.toCamelCase(key));
   }
 
+  String renameMethod(String key) {
+    return _renameProtect(Recase.instance.toCamelCase(key));
+  }
+
   String renameEnum(String key) {
     return Recase.instance.toPascalCase(key);
   }

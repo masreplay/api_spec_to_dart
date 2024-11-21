@@ -22,8 +22,7 @@ class _StudentStudyYearsClient implements StudentStudyYearsClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>>
-      student_study_years_read_student_workloads() async {
+  Future<HttpResponse<dynamic>> readStudentWorkloads() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

@@ -22,7 +22,7 @@ class _StudentProfileClient implements StudentProfileClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>> student_profile_has_study_programs() async {
+  Future<HttpResponse<dynamic>> hasStudyPrograms() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -50,8 +50,7 @@ class _StudentProfileClient implements StudentProfileClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>>
-      student_profile_read_student_personal_info() async {
+  Future<HttpResponse<dynamic>> readStudentPersonalInfo() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -79,8 +78,7 @@ class _StudentProfileClient implements StudentProfileClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>>
-      student_profile_read_student_school_info() async {
+  Future<HttpResponse<dynamic>> readStudentSchoolInfo() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -108,7 +106,7 @@ class _StudentProfileClient implements StudentProfileClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> student_profile_read_student_ids_info() async {
+  Future<HttpResponse<dynamic>> readStudentIdsInfo() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -136,7 +134,7 @@ class _StudentProfileClient implements StudentProfileClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> student_profile_read_student_card() async {
+  Future<HttpResponse<dynamic>> readStudentCard() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

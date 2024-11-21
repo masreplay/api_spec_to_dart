@@ -22,8 +22,7 @@ class _LecturerAnnouncementsClient implements LecturerAnnouncementsClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>>
-      lecturer_announcements_get_lecturer_announcements() async {
+  Future<HttpResponse<dynamic>> get() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -51,8 +50,7 @@ class _LecturerAnnouncementsClient implements LecturerAnnouncementsClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>>
-      lecturer_announcements_get_lecturer_announcement() async {
+  Future<HttpResponse<dynamic>> getLecturerAnnouncement() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -80,8 +78,7 @@ class _LecturerAnnouncementsClient implements LecturerAnnouncementsClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>>
-      lecturer_announcements_get_lecturer_announcement_comments() async {
+  Future<HttpResponse<dynamic>> getLecturerAnnouncementComments() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

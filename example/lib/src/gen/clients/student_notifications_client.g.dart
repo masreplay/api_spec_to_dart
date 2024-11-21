@@ -22,8 +22,7 @@ class _StudentNotificationsClient implements StudentNotificationsClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>>
-      student_notifications_read_notifications() async {
+  Future<HttpResponse<dynamic>> readNotifications() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -51,8 +50,7 @@ class _StudentNotificationsClient implements StudentNotificationsClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>>
-      student_notifications_read_notification_detail() async {
+  Future<HttpResponse<dynamic>> readNotificationDetail() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

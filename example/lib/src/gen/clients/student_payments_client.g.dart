@@ -22,7 +22,7 @@ class _StudentPaymentsClient implements StudentPaymentsClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>> student_payments_read_payment_methods() async {
+  Future<HttpResponse<dynamic>> readPaymentMethods() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -50,8 +50,7 @@ class _StudentPaymentsClient implements StudentPaymentsClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>>
-      student_payments_read_enrollment_payment_information() async {
+  Future<HttpResponse<dynamic>> readEnrollmentPaymentInformation() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

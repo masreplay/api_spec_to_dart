@@ -1,13 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+
 part 'settings_client.g.dart';
 
-///
 @RestApi()
 abstract class SettingsClient {
   factory SettingsClient(Dio dio, {String baseUrl}) = _SettingsClient;
 
   /// null
   @GET('/api/v1/common/settings/')
-  Future<HttpResponse<dynamic>> settings_read_settings();
+  Future<HttpResponse<dynamic>> read();
 }

@@ -22,8 +22,7 @@ class _LecturerIdsClient implements LecturerIdsClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>>
-      lecturer_ids_get_employee_identification_cards() async {
+  Future<HttpResponse<dynamic>> getEmployeeIdentificationCards() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

@@ -20,10 +20,11 @@ class OpenApiDartClientGenerator {
     buffer.writeln(config.importModelsCode);
 
     final fileName = '''${config.renameFile(clientName)}_client''';
+    buffer.writeln(''' ''');
 
     buffer.writeln('''part '$fileName.g.dart';''');
 
-    buffer.writeln('''/// ''');
+    buffer.writeln(''' ''');
 
     buffer.writeln('''@RestApi()''');
 
@@ -46,8 +47,11 @@ class OpenApiDartClientGenerator {
         buffer.writeln('/// ${method.delete}');
         buffer.writeln('@GET(\'$entry\')');
 
+        final methodName = config
+            .renameMethod(method.get!.operationId.replaceAll(clientName, ''));
+
         buffer.writeln(
-          'Future<HttpResponse<$responseClassName>> ${config.renameFile(method.get!.operationId)}();',
+          'Future<HttpResponse<$responseClassName>> $methodName();',
         );
       }
     }

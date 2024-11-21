@@ -22,7 +22,7 @@ class _StudentGovernoratesClient implements StudentGovernoratesClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>> student_governorates_read_governorates() async {
+  Future<HttpResponse<dynamic>> readGovernorates() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

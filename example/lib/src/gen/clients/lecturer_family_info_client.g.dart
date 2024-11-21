@@ -22,8 +22,7 @@ class _LecturerFamilyInfoClient implements LecturerFamilyInfoClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>>
-      lecturer_family_info_get_employee_family_info() async {
+  Future<HttpResponse<dynamic>> getEmployeeFamilyInfo() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

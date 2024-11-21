@@ -23,8 +23,7 @@ class _StudentInformationBureausClient
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>>
-      student_information_bureaus_read_information_bureaus() async {
+  Future<HttpResponse<dynamic>> readInformationBureaus() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

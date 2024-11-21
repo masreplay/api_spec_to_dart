@@ -22,8 +22,7 @@ class _StudentNationalitiesClient implements StudentNationalitiesClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>>
-      student_nationalities_read_nationalities() async {
+  Future<HttpResponse<dynamic>> readNationalities() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

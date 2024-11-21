@@ -22,8 +22,7 @@ class _StudentSelectedCoursesClient implements StudentSelectedCoursesClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>>
-      student_selected_courses_read_student_summary() async {
+  Future<HttpResponse<dynamic>> readStudentSummary() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -51,8 +50,7 @@ class _StudentSelectedCoursesClient implements StudentSelectedCoursesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>>
-      student_selected_courses_read_student_selected_courses_by_id() async {
+  Future<HttpResponse<dynamic>> readById() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

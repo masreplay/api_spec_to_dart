@@ -22,7 +22,7 @@ class _StudentAdmissionsClient implements StudentAdmissionsClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>> student_admissions_read_admissions() async {
+  Future<HttpResponse<dynamic>> readAdmissions() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -50,7 +50,7 @@ class _StudentAdmissionsClient implements StudentAdmissionsClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> student_admissions_get_joining_time() async {
+  Future<HttpResponse<dynamic>> getJoiningTime() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

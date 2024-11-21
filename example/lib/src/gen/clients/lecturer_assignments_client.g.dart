@@ -22,8 +22,7 @@ class _LecturerAssignmentsClient implements LecturerAssignmentsClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>>
-      lecturer_assignments_get_lecturer_assignments() async {
+  Future<HttpResponse<dynamic>> get() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -51,8 +50,7 @@ class _LecturerAssignmentsClient implements LecturerAssignmentsClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>>
-      lecturer_assignments_get_lecturer_assignment() async {
+  Future<HttpResponse<dynamic>> getLecturerAssignment() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -80,8 +78,7 @@ class _LecturerAssignmentsClient implements LecturerAssignmentsClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>>
-      lecturer_assignments_get_lecturer_assignment_comments() async {
+  Future<HttpResponse<dynamic>> getLecturerAssignmentComments() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

@@ -22,8 +22,7 @@ class _LecturerCalenderClient implements LecturerCalenderClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>>
-      lecturer_calender_get_lecturer_read_homework_calender() async {
+  Future<HttpResponse<dynamic>> getLecturerReadHomeworkCalender() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

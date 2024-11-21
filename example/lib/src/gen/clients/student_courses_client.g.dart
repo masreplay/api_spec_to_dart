@@ -22,7 +22,7 @@ class _StudentCoursesClient implements StudentCoursesClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>> student_courses_read_student_workloads() async {
+  Future<HttpResponse<dynamic>> readStudentWorkloads() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -50,7 +50,7 @@ class _StudentCoursesClient implements StudentCoursesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> student_courses_read_student_courses() async {
+  Future<HttpResponse<dynamic>> read() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -78,7 +78,7 @@ class _StudentCoursesClient implements StudentCoursesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> student_courses_get() async {
+  Future<HttpResponse<dynamic>> get() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -106,7 +106,7 @@ class _StudentCoursesClient implements StudentCoursesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> student_courses_read_course_by_id() async {
+  Future<HttpResponse<dynamic>> readCourseById() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

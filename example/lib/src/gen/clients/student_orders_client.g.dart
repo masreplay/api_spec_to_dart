@@ -22,7 +22,7 @@ class _StudentOrdersClient implements StudentOrdersClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>> student_orders_read_orders_for_student() async {
+  Future<HttpResponse<dynamic>> readOrdersForStudent() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

@@ -22,7 +22,7 @@ class _StudentAttendancesClient implements StudentAttendancesClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>> student_attendances_read_attendances() async {
+  Future<HttpResponse<dynamic>> readAttendances() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -50,7 +50,7 @@ class _StudentAttendancesClient implements StudentAttendancesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> student_attendances_get_my_attendance() async {
+  Future<HttpResponse<dynamic>> getMyAttendance() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -78,8 +78,7 @@ class _StudentAttendancesClient implements StudentAttendancesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>>
-      student_attendances_read_attendance_for_course() async {
+  Future<HttpResponse<dynamic>> readAttendanceForCourse() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

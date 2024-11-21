@@ -23,7 +23,7 @@ class _StudentInformationStatusClient
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>> student_information_status_read_status() async {
+  Future<HttpResponse<dynamic>> readStatus() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

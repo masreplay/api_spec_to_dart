@@ -22,8 +22,7 @@ class _LecturerWeeklySchedulesClient implements LecturerWeeklySchedulesClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>>
-      lecturer_weekly_schedules_get_weekly_schedule() async {
+  Future<HttpResponse<dynamic>> getWeeklySchedule() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

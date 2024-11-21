@@ -22,7 +22,7 @@ class _DevClient implements DevClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>> dev_trigger_error() async {
+  Future<HttpResponse<dynamic>> triggerError() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -50,7 +50,7 @@ class _DevClient implements DevClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> dev_proxy_to_minio() async {
+  Future<HttpResponse<dynamic>> proxyToMinio() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

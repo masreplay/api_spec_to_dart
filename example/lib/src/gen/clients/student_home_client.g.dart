@@ -22,7 +22,7 @@ class _StudentHomeClient implements StudentHomeClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>> student_home_read_student_home() async {
+  Future<HttpResponse<dynamic>> read() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
