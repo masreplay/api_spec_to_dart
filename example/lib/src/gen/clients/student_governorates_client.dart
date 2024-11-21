@@ -8,7 +8,7 @@ abstract class StudentGovernoratesClient {
   factory StudentGovernoratesClient(Dio dio, {String baseUrl}) =
       _StudentGovernoratesClient;
 
-  /// null
+  /// student_governorates-read_governorates
   @GET('/api/v1/student/governorates/')
   Future<HttpResponse<dynamic>> readGovernorates();
 }

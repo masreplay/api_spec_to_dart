@@ -7,7 +7,7 @@ part 'student_majors_client.g.dart';
 abstract class StudentMajorsClient {
   factory StudentMajorsClient(Dio dio, {String baseUrl}) = _StudentMajorsClient;
 
-  /// null
+  /// student_majors-read_majors
   @GET('/api/v1/student/majors/')
   Future<HttpResponse<dynamic>> readMajors();
 }

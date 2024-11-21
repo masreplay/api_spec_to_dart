@@ -8,15 +8,15 @@ abstract class StudentSummaryClient {
   factory StudentSummaryClient(Dio dio, {String baseUrl}) =
       _StudentSummaryClient;
 
-  /// null
+  /// student_summary-read_student_summary
   @GET('/api/v1/student/summary/')
   Future<HttpResponse<dynamic>> read();
 
-  /// null
+  /// student_summary-read_student_seamsters
   @GET('/api/v1/student/summary/student-seamsters')
   Future<HttpResponse<dynamic>> readStudentSeamsters();
 
-  /// null
+  /// student_summary-read_student_seamsters_courses
   @GET('/api/v1/student/summary/student-seamsters-courses')
   Future<HttpResponse<dynamic>> readStudentSeamstersCourses();
 }

@@ -9,21 +9,21 @@ abstract class StudentAttendancesClient {
   factory StudentAttendancesClient(Dio dio, {String baseUrl}) =
       _StudentAttendancesClient;
 
-  /// null
+  /// student_attendances-read_attendances
   @GET('/api/v1/student/attendances/')
   Future<HttpResponse<dynamic>> readAttendances();
 
-  /// null
+  /// student_attendances-get_my_attendance
   @GET('/api/v1/student/attendances/me')
   Future<HttpResponse<dynamic>> getMyAttendance();
 
-  /// null
+  /// student_attendances-check_in_my_attendance
   @POST('/api/v1/student/attendances/me/check-in/')
   Future<HttpResponse<dynamic>> checkInMyAttendance(
     @Body() StudentAttendanceCreate body,
   );
 
-  /// null
+  /// student_attendances-read_attendance_for_course
   @GET('/api/v1/student/attendances/{course_id}/lectures')
   Future<HttpResponse<dynamic>> readAttendanceForCourse(
     @Path('course_id') int courseId,

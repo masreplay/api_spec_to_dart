@@ -8,29 +8,29 @@ part 'student_auth_client.g.dart';
 abstract class StudentAuthClient {
   factory StudentAuthClient(Dio dio, {String baseUrl}) = _StudentAuthClient;
 
-  /// null
+  /// student_auth-login
   @FormUrlEncoded()
   @POST('/api/v1/student/auth/login')
   Future<HttpResponse<dynamic>> login(
     @Body() BodyStudentAuthLogin body,
   );
 
-  /// null
+  /// student_auth-swagger_login
   @FormUrlEncoded()
   @POST('/api/v1/student/auth/swagger/login')
   Future<HttpResponse<dynamic>> swaggerLogin(
     @Body() BodyStudentAuthSwaggerLogin body,
   );
 
-  /// null
+  /// student_auth-refresh_token
   @POST('/api/v1/student/auth/refresh_token')
   Future<HttpResponse<dynamic>> refreshToken();
 
-  /// null
+  /// student_auth-logout
   @POST('/api/v1/student/auth/logout')
   Future<HttpResponse<dynamic>> logout();
 
-  /// null
+  /// student_auth-change_temporary_password
   @POST('/api/v1/student/auth/change-temporary-password')
   Future<HttpResponse<dynamic>> changeTemporaryPassword(
     @Body() ChangePasswordRequestPublic body,

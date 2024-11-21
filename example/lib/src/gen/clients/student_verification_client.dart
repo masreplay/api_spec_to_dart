@@ -9,17 +9,17 @@ abstract class StudentVerificationClient {
   factory StudentVerificationClient(Dio dio, {String baseUrl}) =
       _StudentVerificationClient;
 
-  /// null
+  /// student_verification-init_otp_data
   @POST('/api/v1/student/auth/otp/init')
   Future<HttpResponse<dynamic>> initOtpData();
 
-  /// null
+  /// student_verification-send_otp
   @POST('/api/v1/student/auth/otp/send')
   Future<HttpResponse<dynamic>> sendOtp(
     @Body() SendOtpByRequestPublic body,
   );
 
-  /// null
+  /// student_verification-verify_otp
   @POST('/api/v1/student/auth/otp/verify')
   Future<HttpResponse<dynamic>> verifyOtp(
     @Body() VerifyOtpRequestPublic body,

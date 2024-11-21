@@ -8,7 +8,7 @@ abstract class StudentStudyYearsClient {
   factory StudentStudyYearsClient(Dio dio, {String baseUrl}) =
       _StudentStudyYearsClient;
 
-  /// null
+  /// student_study_years-read_student_workloads
   @GET('/api/v1/student/study_years/')
   Future<HttpResponse<dynamic>> readStudentWorkloads();
 }

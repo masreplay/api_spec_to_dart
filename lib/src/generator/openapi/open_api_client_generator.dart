@@ -16,7 +16,7 @@ class OpenApiDartClientGenerator {
   ({String filename, String content}) generator({
     required OpenApiPaths path,
     required String clientName,
-    required List<String> functionsPaths,
+    required List<String> tagPaths,
   }) {
     final buffer = StringBuffer();
 
@@ -40,12 +40,12 @@ class OpenApiDartClientGenerator {
       '''factory ${className}(Dio dio, {String baseUrl}) = _${className};''',
     );
 
-    for (final entry in functionsPaths) {
-      final method = path[entry]!;
+    for (final tagPath in tagPaths) {
+      final method = path[tagPath]!;
 
       for (final entry in method.methods.entries) {
-        final methodType = entry.key;
-        final method = entry.value;
+        final String methodType = entry.key;
+        final OpenApiPathMethod method = entry.value;
 
         final responses = method.responses ?? {};
         final successResponse = responses['200']!;
@@ -61,7 +61,7 @@ class OpenApiDartClientGenerator {
         }
 
         buffer.writeln(
-          '@${Recase.instance.toScreamingSnakeCase(methodType)}(\'$entry\')',
+          '''@${Recase.instance.toScreamingSnakeCase(methodType)}('${tagPath}')''',
         );
 
         final methodName = config.renameMethod(
@@ -118,7 +118,7 @@ class OpenApiDartClientGenerator {
           );
           final paramName = config.renameProperty(pathParam.name);
           buffer.writeln(
-            '''@Path(\'${pathParam.name}\') $dartType $paramName,''',
+            '''@Path('${pathParam.name}') $dartType $paramName,''',
           );
         }
 

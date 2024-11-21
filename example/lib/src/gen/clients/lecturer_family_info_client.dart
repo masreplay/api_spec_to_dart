@@ -9,7 +9,7 @@ abstract class LecturerFamilyInfoClient {
   factory LecturerFamilyInfoClient(Dio dio, {String baseUrl}) =
       _LecturerFamilyInfoClient;
 
-  /// null
+  /// lecturer_family_info-get_employee_family_info
   @GET('/api/v1/lecturer/')
   Future<HttpResponse<dynamic>> getEmployeeFamilyInfo(
     @Queries() GetEmployeeFamilyInfoQueries queries,

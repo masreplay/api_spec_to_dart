@@ -8,7 +8,7 @@ abstract class StudentNationalismsClient {
   factory StudentNationalismsClient(Dio dio, {String baseUrl}) =
       _StudentNationalismsClient;
 
-  /// null
+  /// student_nationalisms-read_nationalisms
   @GET('/api/v1/student/nationalisms/')
   Future<HttpResponse<dynamic>> readNationalisms();
 }

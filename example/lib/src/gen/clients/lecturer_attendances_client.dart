@@ -9,7 +9,7 @@ abstract class LecturerAttendancesClient {
   factory LecturerAttendancesClient(Dio dio, {String baseUrl}) =
       _LecturerAttendancesClient;
 
-  /// null
+  /// lecturer_attendances-lecturer_create_attendance
   @POST('/api/v1/lecturer/attendances/create')
   Future<HttpResponse<dynamic>> lecturerCreateAttendance(
     @Body() LecturerAttendanceCreateRequest body,

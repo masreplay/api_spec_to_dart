@@ -78,7 +78,7 @@ class OpenApiDartGenerator {
       final result = clientGenerator.generator(
         path: _openApi.paths,
         clientName: tag,
-        functionsPaths: paths.map((e) => e.path).toList(),
+        tagPaths: paths.map((e) => e.path).toList(),
       );
 
       final filepath = path.join(

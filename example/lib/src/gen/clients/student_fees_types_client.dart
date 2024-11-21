@@ -8,7 +8,7 @@ abstract class StudentFeesTypesClient {
   factory StudentFeesTypesClient(Dio dio, {String baseUrl}) =
       _StudentFeesTypesClient;
 
-  /// null
+  /// student_fees_types-read_fees_types
   @GET('/api/v1/student/fees_types/')
   Future<HttpResponse<dynamic>> readFeesTypes();
 }

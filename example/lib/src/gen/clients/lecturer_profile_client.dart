@@ -8,7 +8,7 @@ abstract class LecturerProfileClient {
   factory LecturerProfileClient(Dio dio, {String baseUrl}) =
       _LecturerProfileClient;
 
-  /// null
+  /// lecturer_profile-get_lecturer_profile
   @GET('/api/v1/lecturer/profile/me')
   Future<HttpResponse<dynamic>> get();
 }

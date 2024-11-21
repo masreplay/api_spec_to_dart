@@ -8,7 +8,7 @@ abstract class StudentInformationStatusClient {
   factory StudentInformationStatusClient(Dio dio, {String baseUrl}) =
       _StudentInformationStatusClient;
 
-  /// null
+  /// student_information_status-read_status
   @GET('/api/v1/student/information_status/')
   Future<HttpResponse<dynamic>> readStatus();
 }

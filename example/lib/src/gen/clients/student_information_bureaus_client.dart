@@ -8,7 +8,7 @@ abstract class StudentInformationBureausClient {
   factory StudentInformationBureausClient(Dio dio, {String baseUrl}) =
       _StudentInformationBureausClient;
 
-  /// null
+  /// student_information_bureaus-read_information_bureaus
   @GET('/api/v1/student/information_bureaus/')
   Future<HttpResponse<dynamic>> readInformationBureaus();
 }

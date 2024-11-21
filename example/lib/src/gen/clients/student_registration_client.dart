@@ -9,31 +9,31 @@ abstract class StudentRegistrationClient {
   factory StudentRegistrationClient(Dio dio, {String baseUrl}) =
       _StudentRegistrationClient;
 
-  /// null
+  /// student_registration-update_student_personal_info
   @POST('/api/v1/student/registration/personal')
   Future<HttpResponse<dynamic>> updateStudentPersonalInfo(
     @Body() StudentRegistrationPersonalInfoUpdateRequest body,
   );
 
-  /// null
+  /// student_registration-update_student_school_info
   @POST('/api/v1/student/registration/school')
   Future<HttpResponse<dynamic>> updateStudentSchoolInfo(
     @Body() StudentRegistrationSchoolInfoUpdateRequest body,
   );
 
-  /// null
+  /// student_registration-update_student_ids_info_foreigner
   @POST('/api/v1/student/registration/ids/foreigner')
   Future<HttpResponse<dynamic>> updateStudentIdsInfoForeigner(
     @Body() RegistrationStudentIdsForeignerUpdateRequest body,
   );
 
-  /// null
+  /// student_registration-update_student_ids_info_identity_card
   @POST('/api/v1/student/registration/ids/identity_card')
   Future<HttpResponse<dynamic>> updateStudentIdsInfoIdentityCard(
     @Body() RegistrationsStudentIdsUpdateRequest body,
   );
 
-  /// null
+  /// student_registration-update_student_ids_info_nationality_card
   @POST('/api/v1/student/registration/ids/nationality_card')
   Future<HttpResponse<dynamic>> updateStudentIdsInfoNationalityCard(
     @Body() RegistrationsStudentIdsNationalityCreateRequest body,

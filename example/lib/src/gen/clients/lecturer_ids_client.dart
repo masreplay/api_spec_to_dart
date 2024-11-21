@@ -8,7 +8,7 @@ part 'lecturer_ids_client.g.dart';
 abstract class LecturerIdsClient {
   factory LecturerIdsClient(Dio dio, {String baseUrl}) = _LecturerIdsClient;
 
-  /// null
+  /// lecturer_ids-get_employee_identification_cards
   @GET('/api/v1/lecturer/ids/me')
   Future<HttpResponse<dynamic>> getEmployeeIdentificationCards(
     @Queries() GetEmployeeIdentificationCardsQueries queries,

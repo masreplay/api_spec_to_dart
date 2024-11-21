@@ -7,7 +7,7 @@ part 'settings_client.g.dart';
 abstract class SettingsClient {
   factory SettingsClient(Dio dio, {String baseUrl}) = _SettingsClient;
 
-  /// null
+  /// settings-read_settings
   @GET('/api/v1/common/settings/')
   Future<HttpResponse<dynamic>> read();
 }

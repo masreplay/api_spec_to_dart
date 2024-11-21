@@ -8,11 +8,11 @@ abstract class StudentAdmissionsClient {
   factory StudentAdmissionsClient(Dio dio, {String baseUrl}) =
       _StudentAdmissionsClient;
 
-  /// null
+  /// student_admissions-read_admissions
   @GET('/api/v1/student/admissions/me')
   Future<HttpResponse<dynamic>> readAdmissions();
 
-  /// null
+  /// student_admissions-get_joining_time
   @GET('/api/v1/student/admissions/me/joining-time')
   Future<HttpResponse<dynamic>> getJoiningTime();
 }

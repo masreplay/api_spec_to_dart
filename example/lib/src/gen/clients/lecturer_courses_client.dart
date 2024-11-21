@@ -9,13 +9,13 @@ abstract class LecturerCoursesClient {
   factory LecturerCoursesClient(Dio dio, {String baseUrl}) =
       _LecturerCoursesClient;
 
-  /// null
+  /// lecturer_courses-get_lecturer_courses
   @GET('/api/v1/lecturer/courses/me')
   Future<HttpResponse<dynamic>> get(
     @Queries() GetQueries queries,
   );
 
-  /// null
+  /// lecturer_courses-get_lecturer_course
   @GET('/api/v1/lecturer/courses/me/{id}')
   Future<HttpResponse<dynamic>> getLecturerCourse(
     @Path('id') int id,

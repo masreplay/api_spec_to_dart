@@ -8,23 +8,23 @@ abstract class StudentProfileClient {
   factory StudentProfileClient(Dio dio, {String baseUrl}) =
       _StudentProfileClient;
 
-  /// null
+  /// student_profile-has_study_programs
   @GET('/api/v1/student/profile/')
   Future<HttpResponse<dynamic>> hasStudyPrograms();
 
-  /// null
+  /// student_profile-read_student_personal_info
   @GET('/api/v1/student/profile/personal')
   Future<HttpResponse<dynamic>> readStudentPersonalInfo();
 
-  /// null
+  /// student_profile-read_student_school_info
   @GET('/api/v1/student/profile/school')
   Future<HttpResponse<dynamic>> readStudentSchoolInfo();
 
-  /// null
+  /// student_profile-read_student_ids_info
   @GET('/api/v1/student/profile/ids')
   Future<HttpResponse<dynamic>> readStudentIdsInfo();
 
-  /// null
+  /// student_profile-read_student_card
   @GET('/api/v1/student/profile/university-card')
   Future<HttpResponse<dynamic>> readStudentCard();
 }

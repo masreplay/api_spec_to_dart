@@ -7,7 +7,7 @@ part 'student_os_client.g.dart';
 abstract class StudentOSClient {
   factory StudentOSClient(Dio dio, {String baseUrl}) = _StudentOSClient;
 
-  /// null
+  /// student_os-read_organizational_structure_for_student
   @GET('/api/v1/student/os/me')
   Future<HttpResponse<dynamic>> readOrganizationalStructureForStudent();
 }

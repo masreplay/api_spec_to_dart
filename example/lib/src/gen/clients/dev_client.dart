@@ -8,17 +8,17 @@ part 'dev_client.g.dart';
 abstract class DevClient {
   factory DevClient(Dio dio, {String baseUrl}) = _DevClient;
 
-  /// null
+  /// dev-trigger_error
   @GET('/dev/sentry-debug')
   Future<HttpResponse<dynamic>> triggerError();
 
-  /// null
+  /// dev-proxy_to_minio
   @GET('/dev/s3/{file_path}')
   Future<HttpResponse<dynamic>> proxyToMinio(
     @Path('file_path') String filePath,
   );
 
-  /// null
+  /// dev-upload_file
   @MultiPart()
   @POST('/dev/upload-file/')
   Future<HttpResponse<dynamic>> uploadFile(

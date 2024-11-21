@@ -7,7 +7,7 @@ part 'student_orders_client.g.dart';
 abstract class StudentOrdersClient {
   factory StudentOrdersClient(Dio dio, {String baseUrl}) = _StudentOrdersClient;
 
-  /// null
+  /// student_orders-read_orders_for_student
   @GET('/api/v1/student/orders/me')
   Future<HttpResponse<dynamic>> readOrdersForStudent();
 }

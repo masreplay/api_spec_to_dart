@@ -8,25 +8,25 @@ part 'lecturer_auth_client.g.dart';
 abstract class LecturerAuthClient {
   factory LecturerAuthClient(Dio dio, {String baseUrl}) = _LecturerAuthClient;
 
-  /// null
+  /// lecturer_auth-login
   @FormUrlEncoded()
   @POST('/api/v1/lecturer/auth/login')
   Future<HttpResponse<dynamic>> login(
     @Body() BodyLecturerAuthLogin body,
   );
 
-  /// null
+  /// lecturer_auth-swagger_login
   @FormUrlEncoded()
   @POST('/api/v1/lecturer/auth/swagger/login')
   Future<HttpResponse<dynamic>> swaggerLogin(
     @Body() BodyLecturerAuthSwaggerLogin body,
   );
 
-  /// null
+  /// lecturer_auth-refresh_token
   @POST('/api/v1/lecturer/auth/refresh_token')
   Future<HttpResponse<dynamic>> refreshToken();
 
-  /// null
+  /// lecturer_auth-logout
   @POST('/api/v1/lecturer/auth/logout')
   Future<HttpResponse<dynamic>> logout();
 }

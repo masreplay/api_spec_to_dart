@@ -8,7 +8,7 @@ abstract class LecturerWeeklySchedulesClient {
   factory LecturerWeeklySchedulesClient(Dio dio, {String baseUrl}) =
       _LecturerWeeklySchedulesClient;
 
-  /// null
+  /// lecturer_weekly_schedules-get_weekly_schedule
   @GET('/api/v1/lecturer/weekly_schedules/me')
   Future<HttpResponse<dynamic>> getWeeklySchedule();
 }

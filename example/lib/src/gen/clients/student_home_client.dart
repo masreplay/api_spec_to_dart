@@ -7,7 +7,7 @@ part 'student_home_client.g.dart';
 abstract class StudentHomeClient {
   factory StudentHomeClient(Dio dio, {String baseUrl}) = _StudentHomeClient;
 
-  /// null
+  /// student_home-read_student_home
   @GET('/api/v1/student/home/')
   Future<HttpResponse<dynamic>> read();
 }

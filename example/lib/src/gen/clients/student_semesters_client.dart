@@ -9,7 +9,7 @@ abstract class StudentSemestersClient {
   factory StudentSemestersClient(Dio dio, {String baseUrl}) =
       _StudentSemestersClient;
 
-  /// null
+  /// student_semesters-read_semesters
   @GET('/api/v1/student/semesters/{id}')
   Future<HttpResponse<dynamic>> readSemesters(
     @Queries() ReadSemestersQueries queries,
