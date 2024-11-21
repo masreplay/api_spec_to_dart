@@ -1,3 +1,4 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:swagger_to_dart/src/config/open_api_generator_config.dart';
 import 'package:swagger_to_dart/src/utils/recase.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
@@ -16,6 +17,54 @@ class OpenApiDartModelGenerator {
     final className = config.className(model.key);
 
     final properties = model.value.properties ?? {};
+
+    if (model.value.enum_?.isNotEmpty == true) {
+      // final dartType = switch (model.value.type) {
+      //   'number' => 'num',
+      //   'integer' => 'int',
+      //   'boolean' => 'bool',
+      //   _ => 'String',
+      // };
+      final unNamed = model.value.type == 'integer' ? true : false;
+
+      String enumValues = '';
+      for (int i = 0; i < model.value.enum_!.length; i++) {
+        final value = model.value.enum_![i];
+        final enumName = config.propertyRename(value.toString());
+        enumValues +=
+            unNamed ? 'value$i(\'$value\'),' : '  ${enumName}(\'$value\'),';
+      }
+
+      final content = '''
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../convertors.dart';
+${config.relativeImportModelsCode}
+
+part '${filename}.freezed.dart';
+part '${filename}.g.dart';
+
+@JsonEnum(valueField: 'value', alwaysCreate: true)
+enum $className {
+$enumValues
+
+;
+const $className(this.value);
+
+final int value;
+
+int toJson() => _\$${className}EnumMap[this]!;
+factory $className.fromJson(int value) {
+  return values.firstWhere(
+    (e) => e.value == value,
+    orElse: () => values.first,
+  );
+}
+}
+''';
+
+      return (filename: filename, content: content);
+    }
 
     final isUnion = properties.entries.any(
       (entry) => entry.value.maybeMap(
