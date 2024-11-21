@@ -34,7 +34,7 @@ class OpenApiGeneratorConfig {
   }
 
   String get importClientsCode {
-    return '''import 'package:example/src/gen/clients/clients.dart';''';
+    return '''import 'package:${packageName}/src/gen/clients/clients.dart';''';
   }
 
   String dartType({
