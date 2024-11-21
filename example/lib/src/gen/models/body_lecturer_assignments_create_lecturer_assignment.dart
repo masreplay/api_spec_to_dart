@@ -23,6 +23,7 @@ class BodyLecturerAssignmentsCreateLecturerAssignment
   }) = _BodyLecturerAssignmentsCreateLecturerAssignment;
 
   factory BodyLecturerAssignmentsCreateLecturerAssignment.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$BodyLecturerAssignmentsCreateLecturerAssignmentFromJson(json);
 }

@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:example/src/gen/models/models.dart';
 
 part 'student_notifications_client.g.dart';
 
@@ -11,7 +12,7 @@ abstract class StudentNotificationsClient {
   /// null
   @GET('/api/v1/student/notifications/')
   Future<HttpResponse<dynamic>> readNotifications(
-    @Queries() QueriesClass queries,
+    @Queries() ReadNotificationsQueries queries,
   );
 
   /// null

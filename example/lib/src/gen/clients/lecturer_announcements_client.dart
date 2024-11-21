@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:example/src/gen/models/models.dart';
 
 part 'lecturer_announcements_client.g.dart';
 
@@ -11,7 +12,7 @@ abstract class LecturerAnnouncementsClient {
   /// null
   @GET('/api/v1/lecturer/announcements/me/{course_id}')
   Future<HttpResponse<dynamic>> get(
-    @Queries() QueriesClass queries,
+    @Queries() GetQueries queries,
     @Path('course_id') String courseId,
   );
 
@@ -24,7 +25,7 @@ abstract class LecturerAnnouncementsClient {
   /// null
   @GET('/api/v1/lecturer/announcements/{id}/comments')
   Future<HttpResponse<dynamic>> getLecturerAnnouncementComments(
-    @Queries() QueriesClass queries,
+    @Queries() GetLecturerAnnouncementCommentsQueries queries,
     @Path('id') String id,
   );
 }

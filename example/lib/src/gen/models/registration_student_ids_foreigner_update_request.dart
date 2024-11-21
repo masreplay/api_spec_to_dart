@@ -19,6 +19,7 @@ class RegistrationStudentIdsForeignerUpdateRequest
   }) = _RegistrationStudentIdsForeignerUpdateRequest;
 
   factory RegistrationStudentIdsForeignerUpdateRequest.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$RegistrationStudentIdsForeignerUpdateRequestFromJson(json);
 }

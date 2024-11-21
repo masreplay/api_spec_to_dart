@@ -19,6 +19,7 @@ class BaseResponseUnionPaginationResponseStudentFeesPublic
   }) = _BaseResponseUnionPaginationResponseStudentFeesPublic;
 
   factory BaseResponseUnionPaginationResponseStudentFeesPublic.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseUnionPaginationResponseStudentFeesPublicFromJson(json);
 }

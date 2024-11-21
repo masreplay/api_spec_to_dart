@@ -1,7 +1,9 @@
-import 'dart:math';
+import 'dart:io';
 
 import 'package:swagger_to_dart/src/config/open_api_generator_config.dart';
+import 'package:swagger_to_dart/src/generator/openapi/open_api_model_generator.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
+import 'package:path/path.dart' as path;
 
 class OpenApiDartClientGenerator {
   const OpenApiDartClientGenerator({
@@ -54,32 +56,23 @@ class OpenApiDartClientGenerator {
 
         final parameters = method.current?.parameters;
 
-        final queries = parameters
-                ?.where((param) =>
-                    param.in_ == OpenApiPathMethodParameterType.query)
-                .toList() ??
-            [];
-
         buffer.writeln(
           '''Future<HttpResponse<$responseClassName>> $methodName(''',
         );
 
+        final queries = parameters
+                ?.where(
+                  (param) => param.in_ == OpenApiPathMethodParameterType.query,
+                )
+                .toList() ??
+            [];
         if (queries.isNotEmpty) {
           final queriesClass = generateQueriesClass(
-            queries
-              ..removeWhere(
-                (param) => param.name == 'page' || param.name == 'per_page',
-              ),
+            queries,
+            methodName,
           );
           buffer.writeln(
-            '''@Queries() $queriesClass queries,''',
-          );
-        }
-
-        if (queries
-            .any((param) => param.name == 'page' || param.name == 'per_page')) {
-          buffer.writeln(
-            '''@Queries() PaginationQueries paginationQueries,''',
+            '''@Queries() ${config.renameClass(queriesClass)} queries,''',
           );
         }
 
@@ -87,6 +80,7 @@ class OpenApiDartClientGenerator {
               (para) => para.in_ == OpenApiPathMethodParameterType.path,
             ) ??
             [];
+
         for (final pathParam in pathParams) {
           final dartType = pathParam.schema.map(
             type: (value) => 'String',
@@ -109,10 +103,85 @@ class OpenApiDartClientGenerator {
   }
 }
 
-generatePaginationQueriesClassIfNotExists() {
-  
-}
+String generateQueriesClass(
+  List<OpenApiPathMethodParameter> queries,
+  String name,
+) {
+  final String dir = Directory.current.path;
 
-String generateQueriesClass(List<OpenApiPathMethodParameter> query) {
-  return 'QueriesClass';
+  final config = OpenApiGeneratorConfig(
+    packageName: 'example',
+    input: path.join(dir, 'schema/swagger.json'),
+    output: path.join(dir, 'lib/src/gen'),
+    isFlutter: false,
+  );
+
+  final generator = OpenApiDartModelGenerator(config: config);
+
+  final className = '${name}Queries';
+
+  final params = queries.map((e) {
+    return MapEntry(
+      config.renameProperty(e.name),
+      e.schema.map(
+        type: (value) => OpenApiSchema.type(
+          type: value.type,
+          format: value.format,
+          title: value.title,
+          maxLength: value.maxLength,
+          minLength: value.minLength,
+          description: value.description,
+          pattern: value.pattern,
+          const_: value.const_,
+          default_: value.default_,
+        ),
+        ref: (value) => OpenApiSchema.ref(
+          default_: value.default_,
+          ref: value.ref,
+        ),
+        anyOf: (value) => OpenApiSchema.anyOf(
+          anyOf: value.anyOf,
+          default_: value.default_,
+          title: value.title,
+        ),
+        oneOf: (value) => OpenApiSchema.oneOf(
+          discriminator: value.discriminator,
+          oneOf: value.oneOf,
+          title: value.title,
+          description: value.description,
+        ),
+      ),
+    );
+  }).toList();
+
+  final result = generator.run(
+    MapEntry(
+      className,
+      OpenApiSchemas(
+        type: 'object',
+        properties: Map.fromIterable(
+          params,
+          key: (e) => e.key,
+          value: (e) => e.value,
+        ),
+      ),
+    ),
+  );
+
+  if (!Directory(config.modelsOutputDirectory).existsSync()) {
+    Directory(config.modelsOutputDirectory).createSync(recursive: true);
+  }
+
+  final filepath = path.join(
+    config.modelsOutputDirectory,
+    '${config.renameFile(className)}.dart',
+  );
+
+  final file = File(filepath);
+
+  file.writeAsString(result.content);
+
+  print('Generated: $filepath');
+
+  return className;
 }

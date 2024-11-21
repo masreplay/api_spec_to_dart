@@ -19,6 +19,7 @@ class BaseResponseUnionEmployeeFamilyPublic
   }) = _BaseResponseUnionEmployeeFamilyPublic;
 
   factory BaseResponseUnionEmployeeFamilyPublic.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseUnionEmployeeFamilyPublicFromJson(json);
 }

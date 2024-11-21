@@ -21,6 +21,7 @@ class BaseResponseUnionListWeeklyScheduleResponse
   }) = _BaseResponseUnionListWeeklyScheduleResponse;
 
   factory BaseResponseUnionListWeeklyScheduleResponse.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseUnionListWeeklyScheduleResponseFromJson(json);
 }

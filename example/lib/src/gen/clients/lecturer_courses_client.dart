@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:example/src/gen/models/models.dart';
 
 part 'lecturer_courses_client.g.dart';
 
@@ -11,7 +12,7 @@ abstract class LecturerCoursesClient {
   /// null
   @GET('/api/v1/lecturer/courses/me')
   Future<HttpResponse<dynamic>> get(
-    @Queries() QueriesClass queries,
+    @Queries() GetQueries queries,
   );
 
   /// null

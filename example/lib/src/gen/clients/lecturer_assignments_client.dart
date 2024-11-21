@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:example/src/gen/models/models.dart';
 
 part 'lecturer_assignments_client.g.dart';
 
@@ -11,7 +12,7 @@ abstract class LecturerAssignmentsClient {
   /// null
   @GET('/api/v1/lecturer/assignments/me/{course_id}')
   Future<HttpResponse<dynamic>> get(
-    @Queries() QueriesClass queries,
+    @Queries() GetQueries queries,
     @Path('course_id') String courseId,
   );
 

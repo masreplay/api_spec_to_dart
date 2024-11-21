@@ -131,6 +131,7 @@ class EmployeeIdentificationCardsPublic
   }) = _EmployeeIdentificationCardsPublic;
 
   factory EmployeeIdentificationCardsPublic.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$EmployeeIdentificationCardsPublicFromJson(json);
 }

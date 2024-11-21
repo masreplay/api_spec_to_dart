@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:example/src/gen/models/models.dart';
 
 part 'lecturer_ids_client.g.dart';
 
@@ -10,6 +11,6 @@ abstract class LecturerIdsClient {
   /// null
   @GET('/api/v1/lecturer/ids/me')
   Future<HttpResponse<dynamic>> getEmployeeIdentificationCards(
-    @Queries() QueriesClass queries,
+    @Queries() GetEmployeeIdentificationCardsQueries queries,
   );
 }

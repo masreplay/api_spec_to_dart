@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:example/src/gen/models/models.dart';
 
 part 'lecturer_family_info_client.g.dart';
 
@@ -11,6 +12,6 @@ abstract class LecturerFamilyInfoClient {
   /// null
   @GET('/api/v1/lecturer/')
   Future<HttpResponse<dynamic>> getEmployeeFamilyInfo(
-    @Queries() QueriesClass queries,
+    @Queries() GetEmployeeFamilyInfoQueries queries,
   );
 }

@@ -31,6 +31,7 @@ class HomeFeedCourseSelectionStatusSectionModel
   }) = _HomeFeedCourseSelectionStatusSectionModel;
 
   factory HomeFeedCourseSelectionStatusSectionModel.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$HomeFeedCourseSelectionStatusSectionModelFromJson(json);
 }

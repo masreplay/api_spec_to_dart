@@ -19,6 +19,7 @@ class BaseResponseStudentPersonalInfoResponse
   }) = _BaseResponseStudentPersonalInfoResponse;
 
   factory BaseResponseStudentPersonalInfoResponse.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseStudentPersonalInfoResponseFromJson(json);
 }
