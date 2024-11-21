@@ -8,6 +8,7 @@ class OpenApiGeneratorConfig {
     required this.input,
     required this.output,
     required this.isFlutter,
+    this.clientsClassName = 'ApiClients',
   });
 
   final String packageName;
@@ -17,6 +18,8 @@ class OpenApiGeneratorConfig {
   final String input;
 
   final String output;
+
+  final String clientsClassName;
 
   String get modelsOutputDirectory {
     return path.join(output, 'models');
@@ -28,6 +31,10 @@ class OpenApiGeneratorConfig {
 
   String get importModelsCode {
     return '''import 'package:example/src/gen/models/models.dart';''';
+  }
+
+  String get importClientsCode {
+    return '''import 'package:example/src/gen/clients/clients.dart';''';
   }
 
   String dartType({
@@ -108,6 +115,7 @@ class OpenApiGeneratorConfig {
       'isFlutter': isFlutter,
       'input': input,
       'output': output,
+      'clientClassName': clientsClassName,
     };
   }
 }

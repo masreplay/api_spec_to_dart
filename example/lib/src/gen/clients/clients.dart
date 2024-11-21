@@ -17,6 +17,7 @@ export 'student_reset_password_client.dart';
 export 'student_courses_client.dart';
 export 'lecturer_announcements_client.dart';
 export 'dev_client.dart';
+export 'api_clients.dart';
 export 'lecturer_attendances_client.dart';
 export 'lecturer_weekly_schedules_client.dart';
 export 'student_admissions_client.dart';
