@@ -51,7 +51,7 @@ class _LecturerCoursesClient implements LecturerCoursesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> getLecturerCourse(String id) async {
+  Future<HttpResponse<dynamic>> getLecturerCourse(int id) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

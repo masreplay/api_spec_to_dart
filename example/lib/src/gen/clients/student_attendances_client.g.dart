@@ -78,7 +78,7 @@ class _StudentAttendancesClient implements StudentAttendancesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> readAttendanceForCourse(String courseId) async {
+  Future<HttpResponse<dynamic>> readAttendanceForCourse(int courseId) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

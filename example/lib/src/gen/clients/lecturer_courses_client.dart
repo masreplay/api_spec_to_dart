@@ -18,6 +18,6 @@ abstract class LecturerCoursesClient {
   /// null
   @GET('/api/v1/lecturer/courses/me/{id}')
   Future<HttpResponse<dynamic>> getLecturerCourse(
-    @Path('id') String id,
+    @Path('id') int id,
   );
 }

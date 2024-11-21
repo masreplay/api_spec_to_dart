@@ -23,7 +23,7 @@ class _StudentHomeWorksClient implements StudentHomeWorksClient {
 
   @override
   Future<HttpResponse<dynamic>> readCourseAssessmentByCourseId(
-      String courseId) async {
+      int courseId) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

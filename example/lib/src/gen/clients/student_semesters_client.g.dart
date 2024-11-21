@@ -24,7 +24,7 @@ class _StudentSemestersClient implements StudentSemestersClient {
   @override
   Future<HttpResponse<dynamic>> readSemesters(
     ReadSemestersQueries queries,
-    String id,
+    int id,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

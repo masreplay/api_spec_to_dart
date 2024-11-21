@@ -19,6 +19,6 @@ abstract class StudentAttendancesClient {
   /// null
   @GET('/api/v1/student/attendances/{course_id}/lectures')
   Future<HttpResponse<dynamic>> readAttendanceForCourse(
-    @Path('course_id') String courseId,
+    @Path('course_id') int courseId,
   );
 }

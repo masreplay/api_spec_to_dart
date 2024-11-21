@@ -52,7 +52,7 @@ class _StudentNotificationsClient implements StudentNotificationsClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> readNotificationDetail(String id) async {
+  Future<HttpResponse<dynamic>> readNotificationDetail(int id) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

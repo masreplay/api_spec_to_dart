@@ -18,6 +18,6 @@ abstract class StudentNotificationsClient {
   /// null
   @GET('/api/v1/student/notifications/{id}')
   Future<HttpResponse<dynamic>> readNotificationDetail(
-    @Path('id') String id,
+    @Path('id') int id,
   );
 }

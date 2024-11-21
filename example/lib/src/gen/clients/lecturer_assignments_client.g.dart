@@ -24,7 +24,7 @@ class _LecturerAssignmentsClient implements LecturerAssignmentsClient {
   @override
   Future<HttpResponse<dynamic>> get(
     GetQueries queries,
-    String courseId,
+    int courseId,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -54,7 +54,7 @@ class _LecturerAssignmentsClient implements LecturerAssignmentsClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> getLecturerAssignment(String id) async {
+  Future<HttpResponse<dynamic>> getLecturerAssignment(int id) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -82,7 +82,7 @@ class _LecturerAssignmentsClient implements LecturerAssignmentsClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> getLecturerAssignmentComments(String id) async {
+  Future<HttpResponse<dynamic>> getLecturerAssignmentComments(int id) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

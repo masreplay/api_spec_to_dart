@@ -82,11 +82,53 @@ class OpenApiDartClientGenerator {
             [];
 
         for (final pathParam in pathParams) {
+          getAnyOfType(
+            OpenApiSchemaAnyOf value,
+            OpenApiGeneratorConfig config,
+          ) {
+            String text = '';
+            bool isNullable = false;
+
+            for (final schema in value.anyOf!) {
+              text += schema.map(
+                type: (value) {
+                  if (value.type == OpenApiSchemaVarType.null_) {
+                    isNullable = true;
+                    return '';
+                  }
+
+                  return config.dartType(
+                    type: value.type,
+                    format: value.format,
+                    genericType: value.items?.mapOrNull(
+                      ref: (value) =>
+                          config.renameClass(value.ref!.split('/').last),
+                    ),
+                  );
+                },
+                ref: (value) => config.renameClass(value.ref!.split('/').last),
+                anyOf: (value) => getAnyOfType(value, config),
+                oneOf: (value) => '',
+              );
+            }
+
+            return isNullable ? '$text?' : text;
+          }
+
           final dartType = pathParam.schema.map(
-            type: (value) => 'String',
-            ref: (value) => value.ref?.split('/').last,
-            anyOf: (value) => 'anyOf',
-            oneOf: (value) => 'oneOf',
+            type: (value) {
+              return config.dartType(
+                type: value.type,
+                format: value.format,
+                genericType: value.items?.mapOrNull(
+                  ref: (value) =>
+                      config.renameClass(value.ref!.split('/').last),
+                ),
+              );
+            },
+            ref: (value) => config.renameClass(value.ref!.split('/').last),
+            anyOf: (value) => getAnyOfType(value, config),
+            oneOf: (value) => '',
           );
           final paramName = config.renameProperty(pathParam.name);
           buffer.writeln(

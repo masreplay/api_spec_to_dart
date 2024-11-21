@@ -50,7 +50,7 @@ class _StudentSelectedCoursesClient implements StudentSelectedCoursesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> readById(String id) async {
+  Future<HttpResponse<dynamic>> readById(int id) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

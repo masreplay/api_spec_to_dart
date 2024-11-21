@@ -22,7 +22,7 @@ class _StudentAttachmentsClient implements StudentAttachmentsClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>> getSubjectForCourses(String courseId) async {
+  Future<HttpResponse<dynamic>> getSubjectForCourses(int courseId) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

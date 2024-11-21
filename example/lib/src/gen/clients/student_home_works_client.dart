@@ -11,6 +11,6 @@ abstract class StudentHomeWorksClient {
   /// null
   @GET('/api/v1/student/home_works/course/{course_id}')
   Future<HttpResponse<dynamic>> readCourseAssessmentByCourseId(
-    @Path('course_id') String courseId,
+    @Path('course_id') int courseId,
   );
 }
