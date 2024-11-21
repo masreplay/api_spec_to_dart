@@ -10,13 +10,13 @@ enum PriceCurrency {
 
   const PriceCurrency(this.value);
 
-  final String value;
-
-  String toJson() => _$PriceCurrencyEnumMap[this]!;
   factory PriceCurrency.fromJson(String value) {
     return values.firstWhere(
       (e) => e.value == value,
       orElse: () => values.first,
     );
   }
+  final String value;
+
+  String toJson() => _$PriceCurrencyEnumMap[this]!;
 }

@@ -11,13 +11,13 @@ enum OrderStatusEnum {
 
   const OrderStatusEnum(this.value);
 
-  final String value;
-
-  String toJson() => _$OrderStatusEnumEnumMap[this]!;
   factory OrderStatusEnum.fromJson(String value) {
     return values.firstWhere(
       (e) => e.value == value,
       orElse: () => values.first,
     );
   }
+  final String value;
+
+  String toJson() => _$OrderStatusEnumEnumMap[this]!;
 }

@@ -10,13 +10,13 @@ enum GenderEnum {
 
   const GenderEnum(this.value);
 
-  final int value;
-
-  int toJson() => _$GenderEnumEnumMap[this]!;
   factory GenderEnum.fromJson(int value) {
     return values.firstWhere(
       (e) => e.value == value,
       orElse: () => values.first,
     );
   }
+  final int value;
+
+  int toJson() => _$GenderEnumEnumMap[this]!;
 }

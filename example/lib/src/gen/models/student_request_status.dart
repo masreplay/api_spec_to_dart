@@ -13,13 +13,13 @@ enum StudentRequestStatus {
 
   const StudentRequestStatus(this.value);
 
-  final int value;
-
-  int toJson() => _$StudentRequestStatusEnumMap[this]!;
   factory StudentRequestStatus.fromJson(int value) {
     return values.firstWhere(
       (e) => e.value == value,
       orElse: () => values.first,
     );
   }
+  final int value;
+
+  int toJson() => _$StudentRequestStatusEnumMap[this]!;
 }

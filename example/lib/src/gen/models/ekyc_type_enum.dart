@@ -9,13 +9,13 @@ enum EkycTypeEnum {
 
   const EkycTypeEnum(this.value);
 
-  final String value;
-
-  String toJson() => _$EkycTypeEnumEnumMap[this]!;
   factory EkycTypeEnum.fromJson(String value) {
     return values.firstWhere(
       (e) => e.value == value,
       orElse: () => values.first,
     );
   }
+  final String value;
+
+  String toJson() => _$EkycTypeEnumEnumMap[this]!;
 }

@@ -11,13 +11,13 @@ enum EkycStatusEnum {
 
   const EkycStatusEnum(this.value);
 
-  final int value;
-
-  int toJson() => _$EkycStatusEnumEnumMap[this]!;
   factory EkycStatusEnum.fromJson(int value) {
     return values.firstWhere(
       (e) => e.value == value,
       orElse: () => values.first,
     );
   }
+  final int value;
+
+  int toJson() => _$EkycStatusEnumEnumMap[this]!;
 }

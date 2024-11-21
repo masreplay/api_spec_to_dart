@@ -10,13 +10,13 @@ enum CitizenshipTypeEnum {
 
   const CitizenshipTypeEnum(this.value);
 
-  final int value;
-
-  int toJson() => _$CitizenshipTypeEnumEnumMap[this]!;
   factory CitizenshipTypeEnum.fromJson(int value) {
     return values.firstWhere(
       (e) => e.value == value,
       orElse: () => values.first,
     );
   }
+  final int value;
+
+  int toJson() => _$CitizenshipTypeEnumEnumMap[this]!;
 }

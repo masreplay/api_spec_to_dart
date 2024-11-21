@@ -23,13 +23,13 @@ enum AssignmentTypeEnum {
 
   const AssignmentTypeEnum(this.value);
 
-  final int value;
-
-  int toJson() => _$AssignmentTypeEnumEnumMap[this]!;
   factory AssignmentTypeEnum.fromJson(int value) {
     return values.firstWhere(
       (e) => e.value == value,
       orElse: () => values.first,
     );
   }
+  final int value;
+
+  int toJson() => _$AssignmentTypeEnumEnumMap[this]!;
 }

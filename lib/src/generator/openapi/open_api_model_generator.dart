@@ -56,15 +56,15 @@ $enumValues
 ;
 const $className(this.value);
 
-final $type value;
-
-$type toJson() => _\$${className}EnumMap[this]!;
 factory $className.fromJson($type value) {
   return values.firstWhere(
     (e) => e.value == value,
     orElse: () => values.first,
   );
 }
+final $type value;
+
+$type toJson() => _\$${className}EnumMap[this]!;
 }
 ''';
 

@@ -14,13 +14,13 @@ enum OrderTypeEnum {
 
   const OrderTypeEnum(this.value);
 
-  final String value;
-
-  String toJson() => _$OrderTypeEnumEnumMap[this]!;
   factory OrderTypeEnum.fromJson(String value) {
     return values.firstWhere(
       (e) => e.value == value,
       orElse: () => values.first,
     );
   }
+  final String value;
+
+  String toJson() => _$OrderTypeEnumEnumMap[this]!;
 }

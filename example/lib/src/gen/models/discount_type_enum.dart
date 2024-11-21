@@ -11,13 +11,13 @@ enum DiscountTypeEnum {
 
   const DiscountTypeEnum(this.value);
 
-  final String value;
-
-  String toJson() => _$DiscountTypeEnumEnumMap[this]!;
   factory DiscountTypeEnum.fromJson(String value) {
     return values.firstWhere(
       (e) => e.value == value,
       orElse: () => values.first,
     );
   }
+  final String value;
+
+  String toJson() => _$DiscountTypeEnumEnumMap[this]!;
 }

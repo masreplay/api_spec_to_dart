@@ -10,13 +10,13 @@ enum AssignmentClassificationEnum {
 
   const AssignmentClassificationEnum(this.value);
 
-  final int value;
-
-  int toJson() => _$AssignmentClassificationEnumEnumMap[this]!;
   factory AssignmentClassificationEnum.fromJson(int value) {
     return values.firstWhere(
       (e) => e.value == value,
       orElse: () => values.first,
     );
   }
+  final int value;
+
+  int toJson() => _$AssignmentClassificationEnumEnumMap[this]!;
 }

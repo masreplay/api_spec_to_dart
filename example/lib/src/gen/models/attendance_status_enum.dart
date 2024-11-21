@@ -12,13 +12,13 @@ enum AttendanceStatusEnum {
 
   const AttendanceStatusEnum(this.value);
 
-  final int value;
-
-  int toJson() => _$AttendanceStatusEnumEnumMap[this]!;
   factory AttendanceStatusEnum.fromJson(int value) {
     return values.firstWhere(
       (e) => e.value == value,
       orElse: () => values.first,
     );
   }
+  final int value;
+
+  int toJson() => _$AttendanceStatusEnumEnumMap[this]!;
 }

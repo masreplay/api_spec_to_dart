@@ -11,8 +11,10 @@ typedef OpenApiPaths = Map<String, OpenApiPath>;
 
 @freezed
 class OpenApiPath with _$OpenApiPath {
+  factory OpenApiPath.fromJson(Map<String, dynamic> json) =>
+      _$OpenApiPathFromJson(json);
   const OpenApiPath._();
-  
+
   const factory OpenApiPath({
     OpenApiPathMethod? get,
     OpenApiPathMethod? post,
@@ -28,9 +30,6 @@ class OpenApiPath with _$OpenApiPath {
   OpenApiPathMethod? get current {
     return get ?? post ?? put ?? delete ?? options ?? head ?? patch ?? trace;
   }
-
-  factory OpenApiPath.fromJson(Map<String, dynamic> json) =>
-      _$OpenApiPathFromJson(json);
 }
 
 @freezed

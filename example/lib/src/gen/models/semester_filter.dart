@@ -11,13 +11,13 @@ enum SemesterFilter {
 
   const SemesterFilter(this.value);
 
-  final String value;
-
-  String toJson() => _$SemesterFilterEnumMap[this]!;
   factory SemesterFilter.fromJson(String value) {
     return values.firstWhere(
       (e) => e.value == value,
       orElse: () => values.first,
     );
   }
+  final String value;
+
+  String toJson() => _$SemesterFilterEnumMap[this]!;
 }

@@ -10,13 +10,13 @@ enum CourseSelectionStatusType {
 
   const CourseSelectionStatusType(this.value);
 
-  final String value;
-
-  String toJson() => _$CourseSelectionStatusTypeEnumMap[this]!;
   factory CourseSelectionStatusType.fromJson(String value) {
     return values.firstWhere(
       (e) => e.value == value,
       orElse: () => values.first,
     );
   }
+  final String value;
+
+  String toJson() => _$CourseSelectionStatusTypeEnumMap[this]!;
 }

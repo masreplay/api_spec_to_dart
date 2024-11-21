@@ -35,13 +35,13 @@ enum FileCollectionEnum {
 
   const FileCollectionEnum(this.value);
 
-  final String value;
-
-  String toJson() => _$FileCollectionEnumEnumMap[this]!;
   factory FileCollectionEnum.fromJson(String value) {
     return values.firstWhere(
       (e) => e.value == value,
       orElse: () => values.first,
     );
   }
+  final String value;
+
+  String toJson() => _$FileCollectionEnumEnumMap[this]!;
 }
