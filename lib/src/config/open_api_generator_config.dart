@@ -30,7 +30,7 @@ class OpenApiGeneratorConfig {
   }
 
   String get importModelsCode {
-    return '''import 'package:example/src/gen/models/models.dart';''';
+    return '''import 'package:${packageName}/src/gen/models/models.dart';''';
   }
 
   String get importClientsCode {
