@@ -1,6 +1,5 @@
 scripts:
-
-  swagger: rps g && rps gen
+  swagger: dart run bin/main.dart
 
   g:
     $script: rps gen build

@@ -1,0 +1,105 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'ekyc_type_enum.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+
+EkycTypeEnum _$EkycTypeEnumFromJson(Map<String, dynamic> json) {
+  return _EkycTypeEnum.fromJson(json);
+}
+
+/// @nodoc
+mixin _$EkycTypeEnum {
+  /// Serializes this EkycTypeEnum to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EkycTypeEnumCopyWith<$Res> {
+  factory $EkycTypeEnumCopyWith(
+          EkycTypeEnum value, $Res Function(EkycTypeEnum) then) =
+      _$EkycTypeEnumCopyWithImpl<$Res, EkycTypeEnum>;
+}
+
+/// @nodoc
+class _$EkycTypeEnumCopyWithImpl<$Res, $Val extends EkycTypeEnum>
+    implements $EkycTypeEnumCopyWith<$Res> {
+  _$EkycTypeEnumCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of EkycTypeEnum
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$EkycTypeEnumImplCopyWith<$Res> {
+  factory _$$EkycTypeEnumImplCopyWith(
+          _$EkycTypeEnumImpl value, $Res Function(_$EkycTypeEnumImpl) then) =
+      __$$EkycTypeEnumImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$EkycTypeEnumImplCopyWithImpl<$Res>
+    extends _$EkycTypeEnumCopyWithImpl<$Res, _$EkycTypeEnumImpl>
+    implements _$$EkycTypeEnumImplCopyWith<$Res> {
+  __$$EkycTypeEnumImplCopyWithImpl(
+      _$EkycTypeEnumImpl _value, $Res Function(_$EkycTypeEnumImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of EkycTypeEnum
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+@JsonSerializable(converters: convertors)
+class _$EkycTypeEnumImpl extends _EkycTypeEnum {
+  const _$EkycTypeEnumImpl() : super._();
+
+  factory _$EkycTypeEnumImpl.fromJson(Map<String, dynamic> json) =>
+      _$$EkycTypeEnumImplFromJson(json);
+
+  @override
+  String toString() {
+    return 'EkycTypeEnum()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$EkycTypeEnumImpl);
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$EkycTypeEnumImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _EkycTypeEnum extends EkycTypeEnum {
+  const factory _EkycTypeEnum() = _$EkycTypeEnumImpl;
+  const _EkycTypeEnum._() : super._();
+
+  factory _EkycTypeEnum.fromJson(Map<String, dynamic> json) =
+      _$EkycTypeEnumImpl.fromJson;
+}

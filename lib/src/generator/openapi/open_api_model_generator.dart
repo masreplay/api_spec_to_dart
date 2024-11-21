@@ -1,5 +1,4 @@
 import 'package:swagger_to_dart/src/config/open_api_generator_config.dart';
-import 'package:swagger_to_dart/src/utils/recase.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 typedef OpenApiModel = MapEntry<String, OpenApiSchemas>;
@@ -11,45 +10,28 @@ class OpenApiDartModelGenerator {
 
   final OpenApiGeneratorConfig config;
 
-  String className(
-    OpenApiModel model,
-  ) {
-    return Recase.instance.pascalCase(model.key);
-  }
-
-  String filename(OpenApiModel model) {
-    return Recase.instance.snakeCase(model.key);
-  }
-
   ({String filename, String content}) generator(OpenApiModel model) {
-    final filename = this.filename(model);
-    final modelName = className(model);
+    final filename = config.filename(model.key);
+    final className = config.className(model.key);
 
     String body = '';
 
     for (final entry in (model.value.properties ?? {}).entries) {
       final propertyName = config.propertyRename(entry.key);
 
-      final isRequired = (model.value.required_?.contains(entry.key) ?? false)
-          ? 'required'
-          : '';
-
       body += entry.value.map(
         type: (value) => _modelPropertyTypeGenerator(
           key: entry.key,
-          isRequired: isRequired,
           value: value,
           propertyName: propertyName,
         ),
         ref: (value) => _modelPropertyRefGenerator(
           key: entry.key,
-          isRequired: isRequired,
           value: value,
           propertyName: propertyName,
         ),
         anyOf: (value) => _modelPropertyAnyOfGenerator(
           key: entry.key,
-          isRequired: isRequired,
           value: value,
           propertyName: propertyName,
         ),
@@ -63,18 +45,24 @@ class OpenApiDartModelGenerator {
     final bodyText = body.isEmpty ? '' : '{\n$body  }';
 
     final content = '''
+import 'dart:io';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-${config.importModelsText}
+import '../../convertors.dart';
+${config.relativeImportModelsCode}
 
 part '${filename}.freezed.dart';
 part '${filename}.g.dart';
 
 @freezed
-class ${modelName} with _\$${modelName} {
-  const factory ${modelName}($bodyText) = _${modelName};
+class ${className} with _\$${className} {
+  const ${className}._();
 
-  factory ${modelName}.fromJson(Map<String, dynamic> json) => _\$${modelName}FromJson(json);
+  @JsonSerializable(converters: convertors)
+  const factory ${className}($bodyText) = _${className};
+
+  factory ${className}.fromJson(Map<String, dynamic> json) => _\$${className}FromJson(json);
 }
 ''';
 
@@ -83,47 +71,47 @@ class ${modelName} with _\$${modelName} {
 
   String _modelPropertyTypeGenerator({
     required String key,
-    required String isRequired,
     required OpenApiSchemaType value,
     required String propertyName,
   }) {
-    final dartType = config.dartType(value.type, value.format);
+    final dartType = config.dartType(
+      format: value.format,
+      type: value.type,
+      genericType: value.items?.mapOrNull(
+        // TODO(mohammed.atheer): handle type recursively
+        ref: (value) => config.className(value.ref!.split('/').last),
+      ),
+    );
 
-    final defaultValue = value.default_ == null
-        ? ''
-        : '@Default(${(value.enum_?.isEmpty ?? true) ? '' : '${dartType}.'}${value.default_})';
-
-    return '''
-  $defaultValue
-  @JsonKey(name: \'${key}\') 
-  $isRequired $dartType $propertyName,
-''';
+    return _generateField(
+      freezedDefaultValue: value.default_,
+      jsonName: key,
+      propertyName: propertyName,
+      propertyType: dartType,
+      title: value.title,
+      description: value.description,
+    );
   }
 
   String _modelPropertyRefGenerator({
     required String key,
-    required String isRequired,
     required OpenApiSchemaRef value,
     required String propertyName,
   }) {
-    final dartType = value.ref!.split('/').last;
+    final dartType = config.className(value.ref!.split('/').last);
 
-    // TODO(mohammed.atheer): Check if the value is enum
-    final defaultValue =
-        value.default_ == null ? '' : '@Default(${value.default_})';
-
-    return value.ref == null
-        ? ''
-        : '''
-  $defaultValue 
-  @JsonKey(name: \'${key}\')
-  $isRequired $dartType $propertyName,
-''';
+    return _generateField(
+      freezedDefaultValue: value.default_,
+      jsonName: key,
+      propertyName: propertyName,
+      propertyType: dartType,
+      title: null,
+      description: value.description,
+    );
   }
 
   String _modelPropertyAnyOfGenerator({
     required String key,
-    required String isRequired,
     required OpenApiSchemaAnyOf value,
     required String propertyName,
   }) {
@@ -140,13 +128,18 @@ class ${modelName} with _\$${modelName} {
             if (value.type == OpenApiSchemaVarType.null_) {
               isNullable = true;
               return '';
-            } else {
-              return config.dartType(value.type, value.format);
             }
+
+            return config.dartType(
+              type: value.type,
+              format: value.format,
+              genericType: value.items?.mapOrNull(
+                ref: (value) => config.className(value.ref!.split('/').last),
+              ),
+            );
           },
-          ref: (value) => value.ref!.split('/').last,
+          ref: (value) => config.className(value.ref!.split('/').last),
           anyOf: (value) => getAnyOfType(value, config),
-          //TODO(shahadKadhim): implement this
           oneOf: (value) => '',
         );
       }
@@ -156,14 +149,46 @@ class ${modelName} with _\$${modelName} {
 
     final dartType = getAnyOfType(value, config);
 
-    //TODO Check if the value is enum
-    final defaultValue =
-        value.default_ == null ? '' : '@Default(${value.default_})';
+    return _generateField(
+      freezedDefaultValue: value.default_,
+      title: value.title,
+      description: value.description,
+      jsonName: key,
+      propertyName: propertyName,
+      propertyType: dartType,
+    );
+  }
 
-    return '''
-  $defaultValue
-  @JsonKey(name: \'${key}\')
-  $isRequired $dartType $propertyName,
-''';
+  String _generateField({
+    required String propertyName,
+    required Object? freezedDefaultValue,
+    required String jsonName,
+    required String propertyType,
+    String? title,
+    String? description,
+  }) {
+    final buffer = StringBuffer();
+
+    // Add comment if title or description is provided
+    if (title != null || description != null) {
+      final commentParts = [
+        if (title != null) title,
+        if (description != null) description,
+      ];
+      buffer.writeln('/// ${commentParts.join(', ')}');
+    }
+
+    // Add @Default annotation if default value is provided
+    if (freezedDefaultValue != null) {
+      buffer.writeln('@Default($freezedDefaultValue)');
+    }
+
+    // Add @JsonKey annotation
+    buffer.writeln('@JsonKey(name: \'$jsonName\')');
+
+    // Add field declaration
+    buffer.write('required $propertyType $propertyName,');
+
+    return buffer.toString();
   }
 }

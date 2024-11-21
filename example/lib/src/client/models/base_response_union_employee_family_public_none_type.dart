@@ -1,0 +1,24 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../convertors.dart';
+import './models.dart';
+
+part 'base_response_union_employee_family_public_none_type.freezed.dart';
+part 'base_response_union_employee_family_public_none_type.g.dart';
+
+@freezed
+class BaseResponseUnionEmployeeFamilyPublicNoneType
+    with _$BaseResponseUnionEmployeeFamilyPublicNoneType {
+  const BaseResponseUnionEmployeeFamilyPublicNoneType._();
+
+  @JsonSerializable(converters: convertors)
+  const factory BaseResponseUnionEmployeeFamilyPublicNoneType({
+    /// Message
+    @JsonKey(name: 'message') required String? message,
+    @JsonKey(name: 'data') required EmployeeFamilyPublic? data,
+  }) = _BaseResponseUnionEmployeeFamilyPublicNoneType;
+
+  factory BaseResponseUnionEmployeeFamilyPublicNoneType.fromJson(
+          Map<String, dynamic> json) =>
+      _$BaseResponseUnionEmployeeFamilyPublicNoneTypeFromJson(json);
+}

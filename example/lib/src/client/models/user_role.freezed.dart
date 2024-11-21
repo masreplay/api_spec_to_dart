@@ -1,0 +1,104 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'user_role.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+
+UserRole _$UserRoleFromJson(Map<String, dynamic> json) {
+  return _UserRole.fromJson(json);
+}
+
+/// @nodoc
+mixin _$UserRole {
+  /// Serializes this UserRole to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UserRoleCopyWith<$Res> {
+  factory $UserRoleCopyWith(UserRole value, $Res Function(UserRole) then) =
+      _$UserRoleCopyWithImpl<$Res, UserRole>;
+}
+
+/// @nodoc
+class _$UserRoleCopyWithImpl<$Res, $Val extends UserRole>
+    implements $UserRoleCopyWith<$Res> {
+  _$UserRoleCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of UserRole
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$UserRoleImplCopyWith<$Res> {
+  factory _$$UserRoleImplCopyWith(
+          _$UserRoleImpl value, $Res Function(_$UserRoleImpl) then) =
+      __$$UserRoleImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UserRoleImplCopyWithImpl<$Res>
+    extends _$UserRoleCopyWithImpl<$Res, _$UserRoleImpl>
+    implements _$$UserRoleImplCopyWith<$Res> {
+  __$$UserRoleImplCopyWithImpl(
+      _$UserRoleImpl _value, $Res Function(_$UserRoleImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UserRole
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+@JsonSerializable(converters: convertors)
+class _$UserRoleImpl extends _UserRole {
+  const _$UserRoleImpl() : super._();
+
+  factory _$UserRoleImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserRoleImplFromJson(json);
+
+  @override
+  String toString() {
+    return 'UserRole()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UserRoleImpl);
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$UserRoleImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _UserRole extends UserRole {
+  const factory _UserRole() = _$UserRoleImpl;
+  const _UserRole._() : super._();
+
+  factory _UserRole.fromJson(Map<String, dynamic> json) =
+      _$UserRoleImpl.fromJson;
+}

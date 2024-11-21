@@ -1,15 +1,22 @@
 /// [Recase] for handling file names and class names
 class Recase {
-  /// Constructor for [Recase]
-  Recase(String text) {
-    _words = _groupIntoWords(text);
-  }
+  Recase._internal();
 
-  late final List<String> _words;
+  static final Recase _instance = Recase._internal();
+
+  static Recase get instance => _instance;
+
+  // Split text into words
+  late List<String> _words;
+
   static const _separateSymbolsList = r' #,-./@\_{}()[]<>:;`~!$%^&*+=|\';
   static final _upperCaseRegex = RegExp('[A-Z]');
   static final _lowerCaseRegex = RegExp('[a-z]');
-  final _upperCaseTwoLettersRowWords = <String>{};
+  final Set<String> _upperCaseTwoLettersRowWords = {};
+
+  void initialize(String text) {
+    _words = _groupIntoWords(text);
+  }
 
   List<String> _groupIntoWords(String text) {
     final sb = StringBuffer();
@@ -51,24 +58,6 @@ class Recase {
     return words;
   }
 
-  /// Return text formatted to camel case
-  String get camelCase {
-    var word = _words.map(_upperCaseFirstLetter).join();
-    if (word.isNotEmpty) {
-      word = word[0].toLowerCase() + word.substring(1);
-    }
-    return word;
-  }
-
-  /// Return text formatted to pascal case
-  String get pascalCase => _words.map(_upperCaseFirstLetter).join();
-
-  /// Return text formatted to snake case
-  String get snakeCase => _words.map((word) => word.toLowerCase()).join('_');
-
-  /// Return text formatted to screaming snake case
-  String get screamingSnakeCase => snakeCase.toUpperCase();
-
   String _upperCaseFirstLetter(String word) {
     if (word.length == 2) {
       final upperCase = word.toUpperCase();
@@ -76,26 +65,34 @@ class Recase {
         return upperCase;
       }
     }
-
     return '${word.substring(0, 1).toUpperCase()}${word.substring(1).toLowerCase()}';
   }
-}
 
-/// Extension to easily format String
-extension StringToCaseX on String {
-  // (!) We have to use two times, the results for the first and second
-  // application may be different, e.g. p_n_d -> PND -> Pnd
+  /// Convert text to camelCase
+  String toCamelCase(String text) {
+    initialize(text);
+    var result = _words.map(_upperCaseFirstLetter).join();
+    if (result.isNotEmpty) {
+      result = result[0].toLowerCase() + result.substring(1);
+    }
+    return result;
+  }
 
-  /// Return text formatted to camelCase
-  String get toCamel => Recase(Recase(this).camelCase).camelCase;
+  /// Convert text to PascalCase
+  String toPascalCase(String text) {
+    initialize(text);
+    return _words.map(_upperCaseFirstLetter).join();
+  }
 
-  /// Return text formatted to PascalCase
-  String get toPascal => Recase(Recase(this).pascalCase).pascalCase;
+  /// Convert text to snake_case
+  String toSnakeCase(String text) {
+    initialize(text);
+    return _words.map((word) => word.toLowerCase()).join('_');
+  }
 
-  /// Return text formatted to snake_case
-  String get toSnake => Recase(Recase(this).snakeCase).snakeCase;
-
-  /// Return text formatted to SCREAMING_SNAKE_CASE
-  String get toScreamingSnake =>
-      Recase(Recase(this).screamingSnakeCase).screamingSnakeCase;
+  /// Convert text to SCREAMING_SNAKE_CASE
+  String toScreamingSnakeCase(String text) {
+    initialize(text);
+    return toSnakeCase(text).toUpperCase();
+  }
 }

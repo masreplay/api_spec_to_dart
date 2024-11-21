@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'package:path/path.dart';
 import 'dart:io';
 
+import 'package:path/path.dart' as path;
 import 'package:swagger_to_dart/src/config/open_api_generator_config.dart';
 import 'package:swagger_to_dart/src/generator/openapi/open_api_model_generator.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
@@ -24,12 +24,16 @@ class OpenApiDartGenerator {
   Future<void> generate() async {
     final modelGenerator = OpenApiDartModelGenerator(config: config);
 
+    if (!Directory(config.modelsOutputDirectory).existsSync()) {
+      Directory(config.modelsOutputDirectory).createSync(recursive: true);
+    }
+
     for (final entry in _openApi.components.schemas.entries) {
       final result = modelGenerator.generator(entry);
 
-      final filepath = join(
-        config.output,
-        '${modelGenerator.filename(entry)}.dart',
+      final filepath = path.join(
+        config.modelsOutputDirectory,
+        '${config.filename(entry.key)}.dart',
       );
 
       final file = File(filepath);
