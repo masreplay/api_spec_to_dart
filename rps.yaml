@@ -25,3 +25,7 @@ scripts:
   fix-format:
     $script: fvm dart fix --apply && fvm dart format -o write ./lib
     $description: Fix code warnings and format code
+
+  publish:
+    $script: fvm dart pub publish --dry-run
+    $description: Publish package to pub.dev
