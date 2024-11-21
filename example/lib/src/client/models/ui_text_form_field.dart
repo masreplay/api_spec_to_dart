@@ -30,7 +30,7 @@ class UITextFormField with _$UITextFormField {
     @JsonKey(name: 'doc') required String? doc,
 
     /// Type
-    @Default(text) @JsonKey(name: 'type') required String type,
+    @Default('text') @JsonKey(name: 'type') required String type,
 
     /// Regex
     @JsonKey(name: 'regex') required String? regex,

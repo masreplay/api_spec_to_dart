@@ -13,7 +13,7 @@ class HomeFeedPublic with _$HomeFeedPublic {
   @JsonSerializable(converters: convertors)
   const factory HomeFeedPublic({
     /// Type
-    @Default(feed) @JsonKey(name: 'type') required String type,
+    @Default('feed') @JsonKey(name: 'type') required String type,
 
     /// Sections
     @JsonKey(name: 'sections') required List<HomeFeedSectionModel> sections,

@@ -31,7 +31,7 @@ class UISelectFormField with _$UISelectFormField {
     @JsonKey(name: 'doc') required String? doc,
 
     /// Type
-    @Default(select) @JsonKey(name: 'type') required String type,
+    @Default('select') @JsonKey(name: 'type') required String type,
 
     /// Options
     @Default([])

@@ -148,7 +148,11 @@ class ${className} with _\$${className} {
     );
 
     return _generateField(
-      freezedDefaultValue: value.default_,
+      freezedDefaultValue: value.default_ == null
+          ? null
+          : dartType == 'String'
+              ? '\'${value.default_}\''
+              : value.default_,
       jsonName: key,
       propertyName: propertyName,
       propertyType: dartType,
@@ -164,8 +168,15 @@ class ${className} with _\$${className} {
   }) {
     final dartType = config.className(value.ref!.split('/').last);
 
+    String? defaultValue = null;
+    if (value.default_ == 'null') {
+      defaultValue = 'null';
+    } else if (value.default_ != null) {
+      defaultValue =
+          '$dartType.${config.propertyRename(value.default_.toString())}';
+    }
     return _generateField(
-      freezedDefaultValue: value.default_,
+      freezedDefaultValue: defaultValue,
       jsonName: key,
       propertyName: propertyName,
       propertyType: dartType,
@@ -213,8 +224,14 @@ class ${className} with _\$${className} {
 
     final dartType = getAnyOfType(value, config);
 
+    String? defaultValue = null;
+    if (value.default_ == 'null') {
+      defaultValue = 'null';
+    } else if (value.default_ != null) {
+      defaultValue = '$dartType.${config.enumName(value.default_.toString())}';
+    }
     return _generateField(
-      freezedDefaultValue: value.default_,
+      freezedDefaultValue: defaultValue,
       title: value.title,
       description: value.description,
       jsonName: key,
@@ -244,7 +261,7 @@ class ${className} with _\$${className} {
 
     // Add @Default annotation if default value is provided
     if (freezedDefaultValue != null) {
-      buffer.writeln('@Default($freezedDefaultValue)');
+      buffer.writeln("@Default(${freezedDefaultValue})");
     }
 
     // Add @JsonKey annotation

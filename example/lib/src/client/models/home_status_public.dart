@@ -13,14 +13,14 @@ class HomeStatusPublic with _$HomeStatusPublic {
   @JsonSerializable(converters: convertors)
   const factory HomeStatusPublic({
     /// Type
-    @Default(status) @JsonKey(name: 'type') required String type,
+    @Default('status') @JsonKey(name: 'type') required String type,
 
     /// Title
     @JsonKey(name: 'title') required String title,
 
     /// Description
     @JsonKey(name: 'description') required String? description,
-    @Default(no_study_program)
+    @Default(HomeProcessStatus.noStudyProgram)
     @JsonKey(name: 'status')
     required HomeProcessStatus status,
   }) = _HomeStatusPublic;

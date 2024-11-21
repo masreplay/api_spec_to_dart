@@ -17,7 +17,7 @@ class HomeFeedCourseSelectionStatusSectionModel
     @JsonKey(name: 'id') required int id,
 
     /// Type
-    @Default(course_selection_status)
+    @Default('course_selection_status')
     @JsonKey(name: 'type')
     required String type,
 

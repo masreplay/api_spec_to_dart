@@ -30,7 +30,7 @@ class UICheckboxFormField with _$UICheckboxFormField {
     @JsonKey(name: 'doc') required String? doc,
 
     /// Type
-    @Default(checkbox) @JsonKey(name: 'type') required String type,
+    @Default('checkbox') @JsonKey(name: 'type') required String type,
 
     /// Default Value
     @Default(false) @JsonKey(name: 'default_value') required bool defaultValue,

@@ -30,7 +30,7 @@ class UIDateFormField with _$UIDateFormField {
     @JsonKey(name: 'doc') required String? doc,
 
     /// Type
-    @Default(date) @JsonKey(name: 'type') required String type,
+    @Default('date') @JsonKey(name: 'type') required String type,
 
     /// Default Value
     @JsonKey(name: 'default_value') required String? defaultValue,

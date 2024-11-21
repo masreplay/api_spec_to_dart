@@ -16,7 +16,7 @@ class HomeFeedSummerySectionModel with _$HomeFeedSummerySectionModel {
     @JsonKey(name: 'id') required int id,
 
     /// Type
-    @Default(summary) @JsonKey(name: 'type') required String type,
+    @Default('summary') @JsonKey(name: 'type') required String type,
 
     /// Title
     @JsonKey(name: 'title') required String title,

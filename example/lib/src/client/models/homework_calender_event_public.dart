@@ -27,7 +27,7 @@ class HomeworkCalenderEventPublic with _$HomeworkCalenderEventPublic {
     @JsonKey(name: 'end_date_formatted') required String? endDateFormatted,
 
     /// Type
-    @Default(assignment) @JsonKey(name: 'type') required String type,
+    @Default('assignment') @JsonKey(name: 'type') required String type,
 
     /// Title
     @JsonKey(name: 'title') required String title,

@@ -17,7 +17,7 @@ class HomeFeedMissingPaymentSectionPublic
     @JsonKey(name: 'id') required int id,
 
     /// Type
-    @Default(missing_payment) @JsonKey(name: 'type') required String type,
+    @Default('missing_payment') @JsonKey(name: 'type') required String type,
 
     /// Title
     @JsonKey(name: 'title') required String title,
