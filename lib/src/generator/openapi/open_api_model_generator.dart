@@ -45,7 +45,7 @@ class OpenApiDartModelGenerator {
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../convertors.dart';
-${config.relativeImportModelsCode}
+${config.importModelsCode}
 
 part '${filename}.g.dart';
 
@@ -112,7 +112,7 @@ import 'dart:io';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../convertors.dart';
-${config.relativeImportModelsCode}
+${config.importModelsCode}
 
 part '${filename}.freezed.dart';
 part '${filename}.g.dart';
@@ -166,7 +166,7 @@ import 'dart:io';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../convertors.dart';
-${config.relativeImportModelsCode}
+${config.importModelsCode}
 
 part '${filename}.freezed.dart';
 part '${filename}.g.dart';

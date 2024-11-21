@@ -21,13 +21,13 @@ class OpenApiGeneratorConfig {
   String get modelsOutputDirectory {
     return path.join(output, 'models');
   }
-  
+
   String get clientsOutputDirectory {
     return path.join(output, 'clients');
   }
 
-  String get relativeImportModelsCode {
-    return """import './models.dart';""";
+  String get importModelsCode {
+    return '''import 'package:example/src/gen/models/models.dart';''';
   }
 
   String dartType({

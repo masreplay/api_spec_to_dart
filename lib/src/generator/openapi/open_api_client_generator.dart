@@ -1,8 +1,6 @@
 import 'package:swagger_to_dart/src/config/open_api_generator_config.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
-typedef OpenApiModel = MapEntry<String, OpenApiSchemas>;
-
 class OpenApiDartClientGenerator {
   const OpenApiDartClientGenerator({
     required this.config,
@@ -11,63 +9,50 @@ class OpenApiDartClientGenerator {
   final OpenApiGeneratorConfig config;
 
   ({String filename, String content}) generator({
-    required OpenApiPaths model,
+    required OpenApiPaths path,
     required String clientName,
     required List<String> functionsPaths,
   }) {
     final buffer = StringBuffer();
 
-//     import 'package:dio/dio.dart';
-// import 'package:retrofit/retrofit.dart';
-// import 'package:ums_api_client/src/model/model.dart';
+    buffer.writeln('''import 'package:dio/dio.dart';''');
+    buffer.writeln('''import 'package:retrofit/retrofit.dart';''');
+    buffer.writeln(config.importModelsCode);
 
-// import 'settings_response.dart';
+    final fileName = '''${config.renameFile(clientName)}_client''';
 
-// part 'app_client.g.dart';
+    buffer.writeln('''part '$fileName.g.dart';''');
 
-// /// A REST client for Settings API
-// /// This client is used to fetch settings from the server
-// @RestApi(baseUrl: '/api/v1/common/settings')
-// abstract class AppClient {
-//   factory AppClient(Dio dio, {String baseUrl}) = _AppClient;
+    buffer.writeln('''/// ''');
 
-//   /// Fetches settings from the server
-//   @GET('/')
-//   Future<HttpResponse<ApiResponse<SettingsResponse>>> getSettings();
-// }
+    buffer.writeln('''@RestApi()''');
 
-    buffer.writeln('import \'package:dio/dio.dart\';');
-    buffer.writeln('import \'package:retrofit/retrofit.dart\';');
-    buffer.writeln(
-        'import \'package:${config.modelsOutputDirectory}/model.dart\';');
-    buffer.writeln('import \'settings_response.dart\';');
-
-    buffer.writeln('part \'${config.renameFile(clientName)}Client.g.dart\';');
-
-    buffer.writeln('/// This client is used to fetch settings from the server');
-
-    buffer.writeln('@RestApi(baseUrl: \'\')');
-    buffer.writeln('abstract class ${config.renameFile(clientName)}Client {');
+    final className = '${config.renameClass(clientName)}Client';
+    buffer.writeln('''abstract class ${className} {''');
 
     buffer.writeln(
-        'factory ${config.renameFile(clientName)}Client(Dio dio, {String baseUrl}) = _${config.renameFile(clientName)}Client;');
+      '''factory ${className}(Dio dio, {String baseUrl}) = _${className};''',
+    );
 
     for (final entry in functionsPaths) {
-      final function = model[entry]!;
+      final method = path[entry]!;
 
-      if (function.get != null) {
-        final response = function.get!.responses!['200']!;
-        buffer.writeln('/// function path $entry');
+      if (method.get != null) {
+        final response = method.get!.responses!['200']!;
+
+        final responseClassName = 'dynamic'; //
+        response.content.applicationJson;
+
+        buffer.writeln('/// ${method.delete}');
         buffer.writeln('@GET(\'$entry\')');
+
         buffer.writeln(
-            'Future<HttpResponse<ApiResponse<${config.renameFile(response.toString())}Response>>> ${config.renameFile(function.operationId)}();');
+          'Future<HttpResponse<$responseClassName>> ${config.renameFile(method.get!.operationId)}();',
+        );
       }
     }
 
     buffer.writeln('}');
-    return (
-      filename: '${config.renameFile(clientName)}Client',
-      content: buffer.toString()
-    );
+    return (filename: fileName, content: buffer.toString());
   }
 }

@@ -1,12 +1,12 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:collection/collection.dart';
 import 'package:path/path.dart' as path;
 import 'package:swagger_to_dart/src/config/open_api_generator_config.dart';
 import 'package:swagger_to_dart/src/generator/openapi/open_api_client_generator.dart';
 import 'package:swagger_to_dart/src/generator/openapi/open_api_model_generator.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
-import 'package:collection/collection.dart';
 
 class OpenApiDartGenerator {
   OpenApiDartGenerator({
@@ -76,7 +76,7 @@ class OpenApiDartGenerator {
       print('Generating client for tag: $tag');
 
       final result = clientGenerator.generator(
-        model: _openApi.paths,
+        path: _openApi.paths,
         clientName: tag,
         functionsPaths: paths.map((e) => e.path).toList(),
       );
