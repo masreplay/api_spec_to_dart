@@ -13,11 +13,11 @@ Future<void> main(List<String> args) async {
   final config = OpenApiGeneratorConfig(
     packageName: 'example',
     input: path.join(dir, 'schema/swagger.json'),
-    output: path.join(dir, 'lib/src/client'),
+    output: path.join(dir, 'lib/src/gen'),
     isFlutter: false,
   );
 
   final generator = OpenApiDartGenerator(config: config);
 
-  generator.generate();
+  generator.run();
 }

@@ -21,7 +21,7 @@ class OpenApiDartGenerator {
 
   late final OpenApi _openApi;
 
-  Future<void> generate() async {
+  Future<void> run() async {
     final modelGenerator = OpenApiDartModelGenerator(config: config);
 
     if (!Directory(config.modelsOutputDirectory).existsSync()) {
@@ -29,7 +29,7 @@ class OpenApiDartGenerator {
     }
 
     for (final entry in _openApi.components.schemas.entries) {
-      final result = modelGenerator.generator(entry);
+      final result = modelGenerator.run(entry);
 
       final filepath = path.join(
         config.modelsOutputDirectory,

@@ -1,7 +1,6 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:collection/collection.dart';
 import 'package:swagger_to_dart/src/config/open_api_generator_config.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
-import 'package:collection/collection.dart';
 
 typedef OpenApiModel = MapEntry<String, OpenApiSchemas>;
 
