@@ -21,9 +21,7 @@ class CourseAssessmentMeasuringTypeCourseAndAssessments
 
     /// Date
     @JsonKey(name: 'date') required DateTime? date,
-
-    /// Type
-    @JsonKey(name: 'type') required AssignmentTypeEnumString? type,
+    @JsonKey(name: 'type') required AssignmentTypeEnum? type,
     @JsonKey(name: 'status') required AssignmentClassificationEnum? status,
 
     /// Total Degree

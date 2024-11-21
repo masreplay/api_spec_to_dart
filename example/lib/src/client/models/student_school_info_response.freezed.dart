@@ -86,11 +86,8 @@ mixin _$StudentSchoolInfoResponse {
   bool? get hasNationalCard => throw _privateConstructorUsedError;
   @JsonKey(name: 'study_year')
   StudyYearPublic? get studyYear => throw _privateConstructorUsedError;
-
-  /// Governorate
   @JsonKey(name: 'governorate')
-  StringGovernoratePublic? get governorate =>
-      throw _privateConstructorUsedError;
+  GovernoratePublic? get governorate => throw _privateConstructorUsedError;
   @JsonKey(name: 'specialization')
   SpecializationPublic? get specialization =>
       throw _privateConstructorUsedError;
@@ -132,11 +129,12 @@ abstract class $StudentSchoolInfoResponseCopyWith<$Res> {
       @JsonKey(name: 'is_iraqi') bool? isIraqi,
       @JsonKey(name: 'has_national_card') bool? hasNationalCard,
       @JsonKey(name: 'study_year') StudyYearPublic? studyYear,
-      @JsonKey(name: 'governorate') StringGovernoratePublic? governorate,
+      @JsonKey(name: 'governorate') GovernoratePublic? governorate,
       @JsonKey(name: 'specialization') SpecializationPublic? specialization,
       @JsonKey(name: 'front_image') FilePublic? frontImage});
 
   $StudyYearPublicCopyWith<$Res>? get studyYear;
+  $GovernoratePublicCopyWith<$Res>? get governorate;
   $SpecializationPublicCopyWith<$Res>? get specialization;
   $FilePublicCopyWith<$Res>? get frontImage;
 }
@@ -250,7 +248,7 @@ class _$StudentSchoolInfoResponseCopyWithImpl<$Res,
       governorate: freezed == governorate
           ? _value.governorate
           : governorate // ignore: cast_nullable_to_non_nullable
-              as StringGovernoratePublic?,
+              as GovernoratePublic?,
       specialization: freezed == specialization
           ? _value.specialization
           : specialization // ignore: cast_nullable_to_non_nullable
@@ -273,6 +271,20 @@ class _$StudentSchoolInfoResponseCopyWithImpl<$Res,
 
     return $StudyYearPublicCopyWith<$Res>(_value.studyYear!, (value) {
       return _then(_value.copyWith(studyYear: value) as $Val);
+    });
+  }
+
+  /// Create a copy of StudentSchoolInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $GovernoratePublicCopyWith<$Res>? get governorate {
+    if (_value.governorate == null) {
+      return null;
+    }
+
+    return $GovernoratePublicCopyWith<$Res>(_value.governorate!, (value) {
+      return _then(_value.copyWith(governorate: value) as $Val);
     });
   }
 
@@ -333,12 +345,14 @@ abstract class _$$StudentSchoolInfoResponseImplCopyWith<$Res>
       @JsonKey(name: 'is_iraqi') bool? isIraqi,
       @JsonKey(name: 'has_national_card') bool? hasNationalCard,
       @JsonKey(name: 'study_year') StudyYearPublic? studyYear,
-      @JsonKey(name: 'governorate') StringGovernoratePublic? governorate,
+      @JsonKey(name: 'governorate') GovernoratePublic? governorate,
       @JsonKey(name: 'specialization') SpecializationPublic? specialization,
       @JsonKey(name: 'front_image') FilePublic? frontImage});
 
   @override
   $StudyYearPublicCopyWith<$Res>? get studyYear;
+  @override
+  $GovernoratePublicCopyWith<$Res>? get governorate;
   @override
   $SpecializationPublicCopyWith<$Res>? get specialization;
   @override
@@ -453,7 +467,7 @@ class __$$StudentSchoolInfoResponseImplCopyWithImpl<$Res>
       governorate: freezed == governorate
           ? _value.governorate
           : governorate // ignore: cast_nullable_to_non_nullable
-              as StringGovernoratePublic?,
+              as GovernoratePublic?,
       specialization: freezed == specialization
           ? _value.specialization
           : specialization // ignore: cast_nullable_to_non_nullable
@@ -580,11 +594,9 @@ class _$StudentSchoolInfoResponseImpl extends _StudentSchoolInfoResponse {
   @override
   @JsonKey(name: 'study_year')
   final StudyYearPublic? studyYear;
-
-  /// Governorate
   @override
   @JsonKey(name: 'governorate')
-  final StringGovernoratePublic? governorate;
+  final GovernoratePublic? governorate;
   @override
   @JsonKey(name: 'specialization')
   final SpecializationPublic? specialization;
@@ -632,8 +644,8 @@ class _$StudentSchoolInfoResponseImpl extends _StudentSchoolInfoResponse {
                 other.hasNationalCard == hasNationalCard) &&
             (identical(other.studyYear, studyYear) ||
                 other.studyYear == studyYear) &&
-            const DeepCollectionEquality()
-                .equals(other.governorate, governorate) &&
+            (identical(other.governorate, governorate) ||
+                other.governorate == governorate) &&
             (identical(other.specialization, specialization) ||
                 other.specialization == specialization) &&
             (identical(other.frontImage, frontImage) ||
@@ -661,7 +673,7 @@ class _$StudentSchoolInfoResponseImpl extends _StudentSchoolInfoResponse {
         isIraqi,
         hasNationalCard,
         studyYear,
-        const DeepCollectionEquality().hash(governorate),
+        governorate,
         specialization,
         frontImage
       ]);
@@ -705,7 +717,7 @@ abstract class _StudentSchoolInfoResponse extends StudentSchoolInfoResponse {
       @JsonKey(name: 'has_national_card') required final bool? hasNationalCard,
       @JsonKey(name: 'study_year') required final StudyYearPublic? studyYear,
       @JsonKey(name: 'governorate')
-      required final StringGovernoratePublic? governorate,
+      required final GovernoratePublic? governorate,
       @JsonKey(name: 'specialization')
       required final SpecializationPublic? specialization,
       @JsonKey(name: 'front_image')
@@ -797,11 +809,9 @@ abstract class _StudentSchoolInfoResponse extends StudentSchoolInfoResponse {
   @override
   @JsonKey(name: 'study_year')
   StudyYearPublic? get studyYear;
-
-  /// Governorate
   @override
   @JsonKey(name: 'governorate')
-  StringGovernoratePublic? get governorate;
+  GovernoratePublic? get governorate;
   @override
   @JsonKey(name: 'specialization')
   SpecializationPublic? get specialization;

@@ -33,10 +33,8 @@ mixin _$CourseAssessmentMeasuringTypeCourseAndAssessments {
   /// Date
   @JsonKey(name: 'date')
   DateTime? get date => throw _privateConstructorUsedError;
-
-  /// Type
   @JsonKey(name: 'type')
-  AssignmentTypeEnumString? get type => throw _privateConstructorUsedError;
+  AssignmentTypeEnum? get type => throw _privateConstructorUsedError;
   @JsonKey(name: 'status')
   AssignmentClassificationEnum? get status =>
       throw _privateConstructorUsedError;
@@ -85,7 +83,7 @@ abstract class $CourseAssessmentMeasuringTypeCourseAndAssessmentsCopyWith<
       {@JsonKey(name: 'id') int? id,
       @JsonKey(name: 'title') String? title,
       @JsonKey(name: 'date') DateTime? date,
-      @JsonKey(name: 'type') AssignmentTypeEnumString? type,
+      @JsonKey(name: 'type') AssignmentTypeEnum? type,
       @JsonKey(name: 'status') AssignmentClassificationEnum? status,
       @JsonKey(name: 'total_degree') int? totalDegree,
       @JsonKey(name: 'final_degree') int? finalDegree,
@@ -94,6 +92,7 @@ abstract class $CourseAssessmentMeasuringTypeCourseAndAssessmentsCopyWith<
       AttendanceStatusEnum? attendanceStatus,
       @JsonKey(name: 'link') String? link});
 
+  $AssignmentTypeEnumCopyWith<$Res>? get type;
   $AssignmentClassificationEnumCopyWith<$Res>? get status;
   $AttendanceStatusEnumCopyWith<$Res>? get attendanceStatus;
 }
@@ -143,7 +142,7 @@ class _$CourseAssessmentMeasuringTypeCourseAndAssessmentsCopyWithImpl<$Res,
       type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as AssignmentTypeEnumString?,
+              as AssignmentTypeEnum?,
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -169,6 +168,20 @@ class _$CourseAssessmentMeasuringTypeCourseAndAssessmentsCopyWithImpl<$Res,
           : link // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
+  }
+
+  /// Create a copy of CourseAssessmentMeasuringTypeCourseAndAssessments
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AssignmentTypeEnumCopyWith<$Res>? get type {
+    if (_value.type == null) {
+      return null;
+    }
+
+    return $AssignmentTypeEnumCopyWith<$Res>(_value.type!, (value) {
+      return _then(_value.copyWith(type: value) as $Val);
+    });
   }
 
   /// Create a copy of CourseAssessmentMeasuringTypeCourseAndAssessments
@@ -218,7 +231,7 @@ abstract class _$$CourseAssessmentMeasuringTypeCourseAndAssessmentsImplCopyWith<
       {@JsonKey(name: 'id') int? id,
       @JsonKey(name: 'title') String? title,
       @JsonKey(name: 'date') DateTime? date,
-      @JsonKey(name: 'type') AssignmentTypeEnumString? type,
+      @JsonKey(name: 'type') AssignmentTypeEnum? type,
       @JsonKey(name: 'status') AssignmentClassificationEnum? status,
       @JsonKey(name: 'total_degree') int? totalDegree,
       @JsonKey(name: 'final_degree') int? finalDegree,
@@ -227,6 +240,8 @@ abstract class _$$CourseAssessmentMeasuringTypeCourseAndAssessmentsImplCopyWith<
       AttendanceStatusEnum? attendanceStatus,
       @JsonKey(name: 'link') String? link});
 
+  @override
+  $AssignmentTypeEnumCopyWith<$Res>? get type;
   @override
   $AssignmentClassificationEnumCopyWith<$Res>? get status;
   @override
@@ -278,7 +293,7 @@ class __$$CourseAssessmentMeasuringTypeCourseAndAssessmentsImplCopyWithImpl<
       type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as AssignmentTypeEnumString?,
+              as AssignmentTypeEnum?,
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -343,11 +358,9 @@ class _$CourseAssessmentMeasuringTypeCourseAndAssessmentsImpl
   @override
   @JsonKey(name: 'date')
   final DateTime? date;
-
-  /// Type
   @override
   @JsonKey(name: 'type')
-  final AssignmentTypeEnumString? type;
+  final AssignmentTypeEnum? type;
   @override
   @JsonKey(name: 'status')
   final AssignmentClassificationEnum? status;
@@ -388,7 +401,7 @@ class _$CourseAssessmentMeasuringTypeCourseAndAssessmentsImpl
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.date, date) || other.date == date) &&
-            const DeepCollectionEquality().equals(other.type, type) &&
+            (identical(other.type, type) || other.type == type) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.totalDegree, totalDegree) ||
                 other.totalDegree == totalDegree) &&
@@ -403,18 +416,8 @@ class _$CourseAssessmentMeasuringTypeCourseAndAssessmentsImpl
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      title,
-      date,
-      const DeepCollectionEquality().hash(type),
-      status,
-      totalDegree,
-      finalDegree,
-      numberOfTimes,
-      attendanceStatus,
-      link);
+  int get hashCode => Object.hash(runtimeType, id, title, date, type, status,
+      totalDegree, finalDegree, numberOfTimes, attendanceStatus, link);
 
   /// Create a copy of CourseAssessmentMeasuringTypeCourseAndAssessments
   /// with the given fields replaced by the non-null parameter values.
@@ -442,7 +445,7 @@ abstract class _CourseAssessmentMeasuringTypeCourseAndAssessments
           {@JsonKey(name: 'id') required final int? id,
           @JsonKey(name: 'title') required final String? title,
           @JsonKey(name: 'date') required final DateTime? date,
-          @JsonKey(name: 'type') required final AssignmentTypeEnumString? type,
+          @JsonKey(name: 'type') required final AssignmentTypeEnum? type,
           @JsonKey(name: 'status')
           required final AssignmentClassificationEnum? status,
           @JsonKey(name: 'total_degree') required final int? totalDegree,
@@ -472,11 +475,9 @@ abstract class _CourseAssessmentMeasuringTypeCourseAndAssessments
   @override
   @JsonKey(name: 'date')
   DateTime? get date;
-
-  /// Type
   @override
   @JsonKey(name: 'type')
-  AssignmentTypeEnumString? get type;
+  AssignmentTypeEnum? get type;
   @override
   @JsonKey(name: 'status')
   AssignmentClassificationEnum? get status;

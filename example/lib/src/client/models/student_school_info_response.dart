@@ -62,9 +62,7 @@ class StudentSchoolInfoResponse with _$StudentSchoolInfoResponse {
     /// Has National Card
     @JsonKey(name: 'has_national_card') required bool? hasNationalCard,
     @JsonKey(name: 'study_year') required StudyYearPublic? studyYear,
-
-    /// Governorate
-    @JsonKey(name: 'governorate') required StringGovernoratePublic? governorate,
+    @JsonKey(name: 'governorate') required GovernoratePublic? governorate,
     @JsonKey(name: 'specialization')
     required SpecializationPublic? specialization,
     @JsonKey(name: 'front_image') required FilePublic? frontImage,

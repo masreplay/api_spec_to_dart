@@ -6760,7 +6760,8 @@
                     11,
                     12,
                     13,
-                    14
+                    14,
+                    15
                 ],
                 "title": "AssignmentTypeEnum",
                 "description": "نوع المهمة"
@@ -9210,13 +9211,9 @@
                                 "$ref": "#/components/schemas/AssignmentTypeEnum"
                             },
                             {
-                                "type": "string"
-                            },
-                            {
                                 "type": "null"
                             }
-                        ],
-                        "title": "Type"
+                        ]
                     },
                     "status": {
                         "anyOf": [
@@ -9288,7 +9285,6 @@
                     "id",
                     "title",
                     "date",
-                    "type",
                     "status",
                     "total_degree",
                     "final_degree",
@@ -14477,16 +14473,12 @@
                     "governorate": {
                         "anyOf": [
                             {
-                                "type": "string"
-                            },
-                            {
                                 "$ref": "#/components/schemas/GovernoratePublic"
                             },
                             {
                                 "type": "null"
                             }
-                        ],
-                        "title": "Governorate"
+                        ]
                     },
                     "specialization": {
                         "anyOf": [
