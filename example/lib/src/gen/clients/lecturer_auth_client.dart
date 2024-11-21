@@ -12,7 +12,7 @@ abstract class LecturerAuthClient {
   /// Login
   @FormUrlEncoded()
   @POST('/api/v1/lecturer/auth/login')
-  Future<HttpResponse<dynamic>> login({
+  Future<HttpResponse<LecturerAuthResponse>> login({
     @Body() required BodyLecturerAuthLogin body,
   });
 
@@ -20,17 +20,17 @@ abstract class LecturerAuthClient {
   /// Swagger Login
   @FormUrlEncoded()
   @POST('/api/v1/lecturer/auth/swagger/login')
-  Future<HttpResponse<dynamic>> swaggerLogin({
+  Future<HttpResponse<LecturerAuthResponse>> swaggerLogin({
     @Body() required BodyLecturerAuthSwaggerLogin body,
   });
 
   /// lecturer_auth-refresh_token
   /// Refresh Token
   @POST('/api/v1/lecturer/auth/refresh_token')
-  Future<HttpResponse<dynamic>> refreshToken();
+  Future<HttpResponse<LecturerAuthResponse?>> refreshToken();
 
   /// lecturer_auth-logout
   /// Logout
   @POST('/api/v1/lecturer/auth/logout')
-  Future<HttpResponse<dynamic>> logout();
+  Future<HttpResponse<MessageResponse>> logout();
 }

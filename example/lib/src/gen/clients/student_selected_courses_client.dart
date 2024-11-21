@@ -12,12 +12,14 @@ abstract class StudentSelectedCoursesClient {
   /// student_selected_courses-read_student_summary
   /// Read Student Summary
   @GET('/api/v1/student/student_selected_courses/me')
-  Future<HttpResponse<dynamic>> readStudentSummary();
+  Future<HttpResponse<BaseResponseListStudentSelectedCoursesPublic>>
+      readStudentSummary();
 
   /// student_selected_courses-update_selected_courses
   /// Update Selected Courses
   @PATCH('/api/v1/student/student_selected_courses/update')
-  Future<HttpResponse<dynamic>> updateSelectedCourses({
+  Future<HttpResponse<BaseResponseListStudentSelectedCoursesPublic>>
+      updateSelectedCourses({
     @Queries() required UpdateSelectedCoursesQueries queries,
     @Body() required List<UpdateSelectedCourses> body,
   });
@@ -25,7 +27,7 @@ abstract class StudentSelectedCoursesClient {
   /// student_selected_courses-read_student_selected_courses_by_id
   /// Read Student Selected Courses By Id
   @GET('/api/v1/student/student_selected_courses/{id}')
-  Future<HttpResponse<dynamic>> readById({
+  Future<HttpResponse<BaseResponseStudentSelectedCoursesPublic>> readById({
     @Path('id') required int id,
   });
 }

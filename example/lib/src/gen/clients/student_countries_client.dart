@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:example/src/gen/models/models.dart';
 
 part 'student_countries_client.g.dart';
 
@@ -11,5 +12,5 @@ abstract class StudentCountriesClient {
   /// student_countries-read_countries
   /// Read Countries
   @GET('/api/v1/student/countries/')
-  Future<HttpResponse<dynamic>> readCountries();
+  Future<HttpResponse<BaseResponseListCountryPublic>> readCountries();
 }

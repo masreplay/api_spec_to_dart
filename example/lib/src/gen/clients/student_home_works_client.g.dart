@@ -22,30 +22,43 @@ class _StudentHomeWorksClient implements StudentHomeWorksClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>> readCourseAssessmentByCourseId(
-      {required int courseId}) async {
+  Future<
+          HttpResponse<
+              BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments>>
+      readCourseAssessmentByCourseId({required int courseId}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options = _setStreamType<
+            HttpResponse<
+                BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments>>(
+        Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-          _dio.options,
-          '/api/v1/student/home_works/course/${courseId}',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+            .compose(
+              _dio.options,
+              '/api/v1/student/home_works/course/${courseId}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments
+        _value;
+    try {
+      _value = BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments
+          .fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }

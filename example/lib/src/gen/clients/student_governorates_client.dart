@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:example/src/gen/models/models.dart';
 
 part 'student_governorates_client.g.dart';
 
@@ -11,5 +12,5 @@ abstract class StudentGovernoratesClient {
   /// student_governorates-read_governorates
   /// Read Governorates
   @GET('/api/v1/student/governorates/')
-  Future<HttpResponse<dynamic>> readGovernorates();
+  Future<HttpResponse<BaseResponseListGovernoratePublic>> readGovernorates();
 }

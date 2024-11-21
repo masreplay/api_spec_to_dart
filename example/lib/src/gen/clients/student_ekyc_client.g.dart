@@ -22,70 +22,86 @@ class _StudentEkycClient implements StudentEkycClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>> downloadLicense() async {
+  Future<HttpResponse<BaseResponseEkycDownloadLicensePublic>>
+      downloadLicense() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options =
+        _setStreamType<HttpResponse<BaseResponseEkycDownloadLicensePublic>>(
+            Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-          _dio.options,
-          '/api/v1/student/ekyc/download-license',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+                .compose(
+                  _dio.options,
+                  '/api/v1/student/ekyc/download-license',
+                  queryParameters: queryParameters,
+                  data: _data,
+                )
+                .copyWith(
+                    baseUrl: _combineBaseUrls(
+                  _dio.options.baseUrl,
+                  baseUrl,
+                )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late BaseResponseEkycDownloadLicensePublic _value;
+    try {
+      _value = BaseResponseEkycDownloadLicensePublic.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 
   @override
-  Future<HttpResponse<dynamic>> init() async {
+  Future<HttpResponse<BaseResponseInitEkycResponse>> init() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options =
+        _setStreamType<HttpResponse<BaseResponseInitEkycResponse>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-          _dio.options,
-          '/api/v1/student/ekyc/init',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+            .compose(
+              _dio.options,
+              '/api/v1/student/ekyc/init',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late BaseResponseInitEkycResponse _value;
+    try {
+      _value = BaseResponseInitEkycResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 
   @override
-  Future<HttpResponse<dynamic>> uploadNationalIdBackData(
+  Future<HttpResponse<MessageResponse>> uploadNationalIdBackData(
       {required BodyStudentEkycUploadNationalIdBackData body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options = _setStreamType<HttpResponse<MessageResponse>>(Options(
       method: 'PATCH',
       headers: _headers,
       extra: _extra,
@@ -102,21 +118,27 @@ class _StudentEkycClient implements StudentEkycClient {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late MessageResponse _value;
+    try {
+      _value = MessageResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 
   @override
-  Future<HttpResponse<dynamic>> uploadNationalIdFrontData(
+  Future<HttpResponse<MessageResponse>> uploadNationalIdFrontData(
       {required BodyStudentEkycUploadNationalIdFrontData body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options = _setStreamType<HttpResponse<MessageResponse>>(Options(
       method: 'PATCH',
       headers: _headers,
       extra: _extra,
@@ -133,21 +155,27 @@ class _StudentEkycClient implements StudentEkycClient {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late MessageResponse _value;
+    try {
+      _value = MessageResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 
   @override
-  Future<HttpResponse<dynamic>> uploadPassportData(
+  Future<HttpResponse<MessageResponse>> uploadPassportData(
       {required BodyStudentEkycUploadPassportData body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options = _setStreamType<HttpResponse<MessageResponse>>(Options(
       method: 'PATCH',
       headers: _headers,
       extra: _extra,
@@ -164,21 +192,27 @@ class _StudentEkycClient implements StudentEkycClient {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late MessageResponse _value;
+    try {
+      _value = MessageResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 
   @override
-  Future<HttpResponse<dynamic>> uploadFaceData(
+  Future<HttpResponse<MessageResponse>> uploadFaceData(
       {required BodyStudentEkycUploadFaceData body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options = _setStreamType<HttpResponse<MessageResponse>>(Options(
       method: 'PATCH',
       headers: _headers,
       extra: _extra,
@@ -195,21 +229,27 @@ class _StudentEkycClient implements StudentEkycClient {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late MessageResponse _value;
+    try {
+      _value = MessageResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 
   @override
-  Future<HttpResponse<dynamic>> uploadNfc(
+  Future<HttpResponse<MessageResponse>> uploadNfc(
       {required BodyStudentEkycUploadNfc body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options = _setStreamType<HttpResponse<MessageResponse>>(Options(
       method: 'PATCH',
       headers: _headers,
       extra: _extra,
@@ -226,21 +266,27 @@ class _StudentEkycClient implements StudentEkycClient {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late MessageResponse _value;
+    try {
+      _value = MessageResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 
   @override
-  Future<HttpResponse<dynamic>> uploadEyeData(
+  Future<HttpResponse<MessageResponse>> uploadEyeData(
       {required BodyStudentEkycUploadEyeData body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options = _setStreamType<HttpResponse<MessageResponse>>(Options(
       method: 'PATCH',
       headers: _headers,
       extra: _extra,
@@ -257,19 +303,25 @@ class _StudentEkycClient implements StudentEkycClient {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late MessageResponse _value;
+    try {
+      _value = MessageResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 
   @override
-  Future<HttpResponse<dynamic>> readForm() async {
+  Future<HttpResponse<BaseResponseUIForm>> readForm() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options = _setStreamType<HttpResponse<BaseResponseUIForm>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -285,21 +337,27 @@ class _StudentEkycClient implements StudentEkycClient {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late BaseResponseUIForm _value;
+    try {
+      _value = BaseResponseUIForm.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 
   @override
-  Future<HttpResponse<dynamic>> uploadForm(
+  Future<HttpResponse<BaseResponseStr?>> uploadForm(
       {required StudentEkycFormDataRequest body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options = _setStreamType<HttpResponse<BaseResponseStr?>>(Options(
       method: 'PATCH',
       headers: _headers,
       extra: _extra,
@@ -315,19 +373,26 @@ class _StudentEkycClient implements StudentEkycClient {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+    final _result = await _dio.fetch<Map<String, dynamic>?>(_options);
+    late BaseResponseStr? _value;
+    try {
+      _value =
+          _result.data == null ? null : BaseResponseStr.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 
   @override
-  Future<HttpResponse<dynamic>> submitEkyc() async {
+  Future<HttpResponse<MessageResponse>> submitEkyc() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options = _setStreamType<HttpResponse<MessageResponse>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -343,8 +408,14 @@ class _StudentEkycClient implements StudentEkycClient {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late MessageResponse _value;
+    try {
+      _value = MessageResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }

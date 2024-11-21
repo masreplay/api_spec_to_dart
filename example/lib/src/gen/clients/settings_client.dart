@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:example/src/gen/models/models.dart';
 
 part 'settings_client.g.dart';
 
@@ -10,5 +11,5 @@ abstract class SettingsClient {
   /// settings-read_settings
   /// Read Settings
   @GET('/api/v1/common/settings/')
-  Future<HttpResponse<dynamic>> read();
+  Future<HttpResponse<BaseResponseUnionAppSettingsResponse>> read();
 }

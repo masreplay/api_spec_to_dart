@@ -22,14 +22,14 @@ class _StudentAuthClient implements StudentAuthClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>> login(
+  Future<HttpResponse<StudentAuthResponse>> login(
       {required BodyStudentAuthLogin body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options = _setStreamType<HttpResponse<StudentAuthResponse>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -46,21 +46,27 @@ class _StudentAuthClient implements StudentAuthClient {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late StudentAuthResponse _value;
+    try {
+      _value = StudentAuthResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 
   @override
-  Future<HttpResponse<dynamic>> swaggerLogin(
+  Future<HttpResponse<StudentAuthResponse>> swaggerLogin(
       {required BodyStudentAuthSwaggerLogin body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options = _setStreamType<HttpResponse<StudentAuthResponse>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -77,19 +83,25 @@ class _StudentAuthClient implements StudentAuthClient {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late StudentAuthResponse _value;
+    try {
+      _value = StudentAuthResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 
   @override
-  Future<HttpResponse<dynamic>> refreshToken() async {
+  Future<HttpResponse<StudentAuthResponse?>> refreshToken() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options = _setStreamType<HttpResponse<StudentAuthResponse?>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -105,19 +117,27 @@ class _StudentAuthClient implements StudentAuthClient {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+    final _result = await _dio.fetch<Map<String, dynamic>?>(_options);
+    late StudentAuthResponse? _value;
+    try {
+      _value = _result.data == null
+          ? null
+          : StudentAuthResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 
   @override
-  Future<HttpResponse<dynamic>> logout() async {
+  Future<HttpResponse<MessageResponse>> logout() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options = _setStreamType<HttpResponse<MessageResponse>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -133,21 +153,27 @@ class _StudentAuthClient implements StudentAuthClient {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late MessageResponse _value;
+    try {
+      _value = MessageResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 
   @override
-  Future<HttpResponse<dynamic>> changeTemporaryPassword(
+  Future<HttpResponse<MessageResponse>> changeTemporaryPassword(
       {required ChangePasswordRequestPublic body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options = _setStreamType<HttpResponse<MessageResponse>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -163,8 +189,14 @@ class _StudentAuthClient implements StudentAuthClient {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late MessageResponse _value;
+    try {
+      _value = MessageResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }

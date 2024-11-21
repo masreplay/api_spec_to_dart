@@ -22,7 +22,8 @@ class _LecturerAnnouncementsClient implements LecturerAnnouncementsClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>> get({
+  Future<HttpResponse<BaseResponsePaginationResponseLecturerAnnouncementPublic>>
+      get({
     required GetQueries queries,
     required int courseId,
   }) async {
@@ -31,7 +32,9 @@ class _LecturerAnnouncementsClient implements LecturerAnnouncementsClient {
     queryParameters.addAll(queries.toJson());
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options = _setStreamType<
+        HttpResponse<
+            BaseResponsePaginationResponseLecturerAnnouncementPublic>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -47,14 +50,23 @@ class _LecturerAnnouncementsClient implements LecturerAnnouncementsClient {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late BaseResponsePaginationResponseLecturerAnnouncementPublic _value;
+    try {
+      _value =
+          BaseResponsePaginationResponseLecturerAnnouncementPublic.fromJson(
+              _result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 
   @override
-  Future<HttpResponse<dynamic>> createLecturerAnnouncement({
+  Future<HttpResponse<BaseResponseLecturerAnnouncementPublic>>
+      createLecturerAnnouncement({
     required int courseId,
     required BodyLecturerAnnouncementsCreateLecturerAnnouncement body,
   }) async {
@@ -63,60 +75,77 @@ class _LecturerAnnouncementsClient implements LecturerAnnouncementsClient {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options =
+        _setStreamType<HttpResponse<BaseResponseLecturerAnnouncementPublic>>(
+            Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
       contentType: 'application/x-www-form-urlencoded',
     )
-        .compose(
-          _dio.options,
-          '/api/v1/lecturer/announcements/me/${courseId}',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+                .compose(
+                  _dio.options,
+                  '/api/v1/lecturer/announcements/me/${courseId}',
+                  queryParameters: queryParameters,
+                  data: _data,
+                )
+                .copyWith(
+                    baseUrl: _combineBaseUrls(
+                  _dio.options.baseUrl,
+                  baseUrl,
+                )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late BaseResponseLecturerAnnouncementPublic _value;
+    try {
+      _value = BaseResponseLecturerAnnouncementPublic.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 
   @override
-  Future<HttpResponse<dynamic>> getLecturerAnnouncement(
-      {required int id}) async {
+  Future<HttpResponse<BaseResponseLecturerAnnouncementPublic>>
+      getLecturerAnnouncement({required int id}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options =
+        _setStreamType<HttpResponse<BaseResponseLecturerAnnouncementPublic>>(
+            Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-          _dio.options,
-          '/api/v1/lecturer/announcements/${id}',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+                .compose(
+                  _dio.options,
+                  '/api/v1/lecturer/announcements/${id}',
+                  queryParameters: queryParameters,
+                  data: _data,
+                )
+                .copyWith(
+                    baseUrl: _combineBaseUrls(
+                  _dio.options.baseUrl,
+                  baseUrl,
+                )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late BaseResponseLecturerAnnouncementPublic _value;
+    try {
+      _value = BaseResponseLecturerAnnouncementPublic.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 
   @override
-  Future<HttpResponse<dynamic>> updateLecturerAnnouncement({
+  Future<HttpResponse<BaseResponseLecturerAnnouncementPublic>>
+      updateLecturerAnnouncement({
     required int id,
     required LecturerAnnouncementUpdatePublic body,
   }) async {
@@ -125,36 +154,44 @@ class _LecturerAnnouncementsClient implements LecturerAnnouncementsClient {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options =
+        _setStreamType<HttpResponse<BaseResponseLecturerAnnouncementPublic>>(
+            Options(
       method: 'PUT',
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-          _dio.options,
-          '/api/v1/lecturer/announcements/${id}',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+                .compose(
+                  _dio.options,
+                  '/api/v1/lecturer/announcements/${id}',
+                  queryParameters: queryParameters,
+                  data: _data,
+                )
+                .copyWith(
+                    baseUrl: _combineBaseUrls(
+                  _dio.options.baseUrl,
+                  baseUrl,
+                )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late BaseResponseLecturerAnnouncementPublic _value;
+    try {
+      _value = BaseResponseLecturerAnnouncementPublic.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 
   @override
-  Future<HttpResponse<dynamic>> deleteLecturerAnnouncement(
+  Future<HttpResponse<MessageResponse>> deleteLecturerAnnouncement(
       {required int id}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options = _setStreamType<HttpResponse<MessageResponse>>(Options(
       method: 'DELETE',
       headers: _headers,
       extra: _extra,
@@ -170,14 +207,21 @@ class _LecturerAnnouncementsClient implements LecturerAnnouncementsClient {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late MessageResponse _value;
+    try {
+      _value = MessageResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 
   @override
-  Future<HttpResponse<dynamic>> getLecturerAnnouncementComments({
+  Future<HttpResponse<BaseResponsePaginationResponseCommentPublic>>
+      getLecturerAnnouncementComments({
     required GetLecturerAnnouncementCommentsQueries queries,
     required int id,
   }) async {
@@ -186,7 +230,8 @@ class _LecturerAnnouncementsClient implements LecturerAnnouncementsClient {
     queryParameters.addAll(queries.toJson());
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options = _setStreamType<
+        HttpResponse<BaseResponsePaginationResponseCommentPublic>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -202,14 +247,22 @@ class _LecturerAnnouncementsClient implements LecturerAnnouncementsClient {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late BaseResponsePaginationResponseCommentPublic _value;
+    try {
+      _value =
+          BaseResponsePaginationResponseCommentPublic.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 
   @override
-  Future<HttpResponse<dynamic>> createLecturerAnnouncementComment({
+  Future<HttpResponse<BaseResponseCommentPublic>>
+      createLecturerAnnouncementComment({
     required int id,
     required CommentCreatePublic body,
   }) async {
@@ -218,24 +271,31 @@ class _LecturerAnnouncementsClient implements LecturerAnnouncementsClient {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options =
+        _setStreamType<HttpResponse<BaseResponseCommentPublic>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-          _dio.options,
-          '/api/v1/lecturer/announcements/${id}/comments',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+            .compose(
+              _dio.options,
+              '/api/v1/lecturer/announcements/${id}/comments',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late BaseResponseCommentPublic _value;
+    try {
+      _value = BaseResponseCommentPublic.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }

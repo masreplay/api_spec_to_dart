@@ -12,7 +12,8 @@ abstract class LecturerAttendancesClient {
   /// lecturer_attendances-lecturer_create_attendance
   /// Lecturer Create Attendance
   @POST('/api/v1/lecturer/attendances/create')
-  Future<HttpResponse<dynamic>> lecturerCreateAttendance({
+  Future<HttpResponse<BaseResponseLecturerAttendanceResponse>>
+      lecturerCreateAttendance({
     @Body() required LecturerAttendanceCreateRequest body,
   });
 }

@@ -22,12 +22,14 @@ class _StudentSelectedCoursesClient implements StudentSelectedCoursesClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>> readStudentSummary() async {
+  Future<HttpResponse<BaseResponseListStudentSelectedCoursesPublic>>
+      readStudentSummary() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options = _setStreamType<
+        HttpResponse<BaseResponseListStudentSelectedCoursesPublic>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -43,14 +45,22 @@ class _StudentSelectedCoursesClient implements StudentSelectedCoursesClient {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late BaseResponseListStudentSelectedCoursesPublic _value;
+    try {
+      _value =
+          BaseResponseListStudentSelectedCoursesPublic.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 
   @override
-  Future<HttpResponse<dynamic>> updateSelectedCourses({
+  Future<HttpResponse<BaseResponseListStudentSelectedCoursesPublic>>
+      updateSelectedCourses({
     required UpdateSelectedCoursesQueries queries,
     required List<UpdateSelectedCourses> body,
   }) async {
@@ -59,7 +69,8 @@ class _StudentSelectedCoursesClient implements StudentSelectedCoursesClient {
     queryParameters.addAll(queries.toJson());
     final _headers = <String, dynamic>{};
     final _data = body.map((e) => e.toJson()).toList();
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options = _setStreamType<
+        HttpResponse<BaseResponseListStudentSelectedCoursesPublic>>(Options(
       method: 'PATCH',
       headers: _headers,
       extra: _extra,
@@ -75,36 +86,52 @@ class _StudentSelectedCoursesClient implements StudentSelectedCoursesClient {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late BaseResponseListStudentSelectedCoursesPublic _value;
+    try {
+      _value =
+          BaseResponseListStudentSelectedCoursesPublic.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 
   @override
-  Future<HttpResponse<dynamic>> readById({required int id}) async {
+  Future<HttpResponse<BaseResponseStudentSelectedCoursesPublic>> readById(
+      {required int id}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options =
+        _setStreamType<HttpResponse<BaseResponseStudentSelectedCoursesPublic>>(
+            Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-          _dio.options,
-          '/api/v1/student/student_selected_courses/${id}',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+                .compose(
+                  _dio.options,
+                  '/api/v1/student/student_selected_courses/${id}',
+                  queryParameters: queryParameters,
+                  data: _data,
+                )
+                .copyWith(
+                    baseUrl: _combineBaseUrls(
+                  _dio.options.baseUrl,
+                  baseUrl,
+                )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late BaseResponseStudentSelectedCoursesPublic _value;
+    try {
+      _value = BaseResponseStudentSelectedCoursesPublic.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }

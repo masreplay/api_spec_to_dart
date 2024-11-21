@@ -22,7 +22,7 @@ class _StudentSemestersClient implements StudentSemestersClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>> readSemesters({
+  Future<HttpResponse<BaseResponseUnionStudentSeamstersSummary>> readSemesters({
     required ReadSemestersQueries queries,
     required int id,
   }) async {
@@ -31,24 +31,32 @@ class _StudentSemestersClient implements StudentSemestersClient {
     queryParameters.addAll(queries.toJson());
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options =
+        _setStreamType<HttpResponse<BaseResponseUnionStudentSeamstersSummary>>(
+            Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-          _dio.options,
-          '/api/v1/student/semesters/${id}',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+                .compose(
+                  _dio.options,
+                  '/api/v1/student/semesters/${id}',
+                  queryParameters: queryParameters,
+                  data: _data,
+                )
+                .copyWith(
+                    baseUrl: _combineBaseUrls(
+                  _dio.options.baseUrl,
+                  baseUrl,
+                )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late BaseResponseUnionStudentSeamstersSummary _value;
+    try {
+      _value = BaseResponseUnionStudentSeamstersSummary.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }

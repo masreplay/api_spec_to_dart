@@ -24,7 +24,7 @@ abstract class DevClient {
   /// Upload File
   @MultiPart()
   @POST('/dev/upload-file/')
-  Future<HttpResponse<dynamic>> uploadFile({
+  Future<HttpResponse<Map<String, dynamic>>> uploadFile({
     @Body() required BodyDevUploadFile body,
   });
 }

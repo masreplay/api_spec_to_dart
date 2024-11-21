@@ -12,14 +12,14 @@ abstract class LecturerCoursesClient {
   /// lecturer_courses-get_lecturer_courses
   /// Get Lecturer Courses
   @GET('/api/v1/lecturer/courses/me')
-  Future<HttpResponse<dynamic>> get({
+  Future<HttpResponse<BaseResponsePaginationResponseLecturerCoursePublic>> get({
     @Queries() required GetQueries queries,
   });
 
   /// lecturer_courses-get_lecturer_course
   /// Get Lecturer Course
   @GET('/api/v1/lecturer/courses/me/{id}')
-  Future<HttpResponse<dynamic>> getLecturerCourse({
+  Future<HttpResponse<BaseResponseLecturerCoursePublic>> getLecturerCourse({
     @Path('id') required int id,
   });
 }

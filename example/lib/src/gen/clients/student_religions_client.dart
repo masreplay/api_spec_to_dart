@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:example/src/gen/models/models.dart';
 
 part 'student_religions_client.g.dart';
 
@@ -11,5 +12,5 @@ abstract class StudentReligionsClient {
   /// student_religions-read_religions
   /// Read Religions
   @GET('/api/v1/student/religions/')
-  Future<HttpResponse<dynamic>> readReligions();
+  Future<HttpResponse<BaseResponseListReligionPublic>> readReligions();
 }

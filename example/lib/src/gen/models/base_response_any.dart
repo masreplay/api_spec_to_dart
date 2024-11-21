@@ -5,6 +5,7 @@ import '../../convertors.dart';
 part 'base_response_any.freezed.dart';
 part 'base_response_any.g.dart';
 
+//TODO(mohammed.atheeer): Fixed this class from backend
 @freezed
 class BaseResponseAny with _$BaseResponseAny {
   const BaseResponseAny._();

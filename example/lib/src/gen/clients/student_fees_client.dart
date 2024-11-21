@@ -11,7 +11,8 @@ abstract class StudentFeesClient {
   /// student_fees-read_fees
   /// Read Fees
   @GET('/api/v1/student/fees/')
-  Future<HttpResponse<dynamic>> readFees({
+  Future<HttpResponse<BaseResponseUnionPaginationResponseStudentFeesPublic>>
+      readFees({
     @Queries() required ReadFeesQueries queries,
   });
 }

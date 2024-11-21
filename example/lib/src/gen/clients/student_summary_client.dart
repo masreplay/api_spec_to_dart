@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:example/src/gen/models/models.dart';
 
 part 'student_summary_client.g.dart';
 
@@ -11,15 +12,17 @@ abstract class StudentSummaryClient {
   /// student_summary-read_student_summary
   /// Read Student Summary
   @GET('/api/v1/student/summary/')
-  Future<HttpResponse<dynamic>> read();
+  Future<HttpResponse<BaseResponseUnionSummaryResponse>> read();
 
   /// student_summary-read_student_seamsters
   /// Read Student Seamsters
   @GET('/api/v1/student/summary/student-seamsters')
-  Future<HttpResponse<dynamic>> readStudentSeamsters();
+  Future<HttpResponse<BaseResponseUnionStudentSeamstersSummaryWithoutCourses>>
+      readStudentSeamsters();
 
   /// student_summary-read_student_seamsters_courses
   /// Read Student Seamsters Courses
   @GET('/api/v1/student/summary/student-seamsters-courses')
-  Future<HttpResponse<dynamic>> readStudentSeamstersCourses();
+  Future<HttpResponse<BaseResponseUnionListStudentSeamstersSummary>>
+      readStudentSeamstersCourses();
 }

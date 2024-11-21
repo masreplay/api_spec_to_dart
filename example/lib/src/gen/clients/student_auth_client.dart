@@ -12,7 +12,7 @@ abstract class StudentAuthClient {
   /// Login
   @FormUrlEncoded()
   @POST('/api/v1/student/auth/login')
-  Future<HttpResponse<dynamic>> login({
+  Future<HttpResponse<StudentAuthResponse>> login({
     @Body() required BodyStudentAuthLogin body,
   });
 
@@ -20,24 +20,24 @@ abstract class StudentAuthClient {
   /// Swagger Login
   @FormUrlEncoded()
   @POST('/api/v1/student/auth/swagger/login')
-  Future<HttpResponse<dynamic>> swaggerLogin({
+  Future<HttpResponse<StudentAuthResponse>> swaggerLogin({
     @Body() required BodyStudentAuthSwaggerLogin body,
   });
 
   /// student_auth-refresh_token
   /// Refresh Token
   @POST('/api/v1/student/auth/refresh_token')
-  Future<HttpResponse<dynamic>> refreshToken();
+  Future<HttpResponse<StudentAuthResponse?>> refreshToken();
 
   /// student_auth-logout
   /// Logout
   @POST('/api/v1/student/auth/logout')
-  Future<HttpResponse<dynamic>> logout();
+  Future<HttpResponse<MessageResponse>> logout();
 
   /// student_auth-change_temporary_password
   /// Change Temporary Password
   @POST('/api/v1/student/auth/change-temporary-password')
-  Future<HttpResponse<dynamic>> changeTemporaryPassword({
+  Future<HttpResponse<MessageResponse>> changeTemporaryPassword({
     @Body() required ChangePasswordRequestPublic body,
   });
 }

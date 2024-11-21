@@ -22,40 +22,50 @@ class _StudentSummaryClient implements StudentSummaryClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>> read() async {
+  Future<HttpResponse<BaseResponseUnionSummaryResponse>> read() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options =
+        _setStreamType<HttpResponse<BaseResponseUnionSummaryResponse>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-          _dio.options,
-          '/api/v1/student/summary/',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+            .compose(
+              _dio.options,
+              '/api/v1/student/summary/',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late BaseResponseUnionSummaryResponse _value;
+    try {
+      _value = BaseResponseUnionSummaryResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 
   @override
-  Future<HttpResponse<dynamic>> readStudentSeamsters() async {
+  Future<HttpResponse<BaseResponseUnionStudentSeamstersSummaryWithoutCourses>>
+      readStudentSeamsters() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options = _setStreamType<
+        HttpResponse<
+            BaseResponseUnionStudentSeamstersSummaryWithoutCourses>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -71,19 +81,28 @@ class _StudentSummaryClient implements StudentSummaryClient {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late BaseResponseUnionStudentSeamstersSummaryWithoutCourses _value;
+    try {
+      _value = BaseResponseUnionStudentSeamstersSummaryWithoutCourses.fromJson(
+          _result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 
   @override
-  Future<HttpResponse<dynamic>> readStudentSeamstersCourses() async {
+  Future<HttpResponse<BaseResponseUnionListStudentSeamstersSummary>>
+      readStudentSeamstersCourses() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options = _setStreamType<
+        HttpResponse<BaseResponseUnionListStudentSeamstersSummary>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -99,8 +118,15 @@ class _StudentSummaryClient implements StudentSummaryClient {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late BaseResponseUnionListStudentSeamstersSummary _value;
+    try {
+      _value =
+          BaseResponseUnionListStudentSeamstersSummary.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }

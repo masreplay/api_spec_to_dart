@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:example/src/gen/models/models.dart';
 
 part 'student_specializations_client.g.dart';
 
@@ -11,5 +12,6 @@ abstract class StudentSpecializationsClient {
   /// student_specializations-read_specializations
   /// Read Specializations
   @GET('/api/v1/student/specializations/')
-  Future<HttpResponse<dynamic>> readSpecializations();
+  Future<HttpResponse<BaseResponseListSpecializationPublic>>
+      readSpecializations();
 }

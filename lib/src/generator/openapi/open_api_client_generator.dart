@@ -6,6 +6,8 @@ import 'package:swagger_to_dart/src/generator/openapi/open_api_model_generator.d
 import 'package:swagger_to_dart/src/utils/recase.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
+const dynamicClassName = 'dynamic';
+
 class OpenApiDartClientGenerator {
   const OpenApiDartClientGenerator({
     required this.config,
@@ -52,9 +54,11 @@ class OpenApiDartClientGenerator {
         buffer.writeln('/// ${method.summary}');
 
         // response / return type
-        final responseClassName = 'dynamic';
         final responses = method.responses ?? {};
         final successResponse = responses['200']!;
+
+        final response =
+            successResponse.content.current.value?.schema.dartType(config);
 
         // request type + http method type + path / annotation
         final requestBody = method.requestBody?.content.current;
@@ -97,20 +101,7 @@ class OpenApiDartClientGenerator {
         );
 
         for (final pathParam in pathParams) {
-          final dartType = pathParam.schema.map(
-            type: (value) {
-              return config.dartType(
-                type: value.type,
-                format: value.format,
-                genericType: value.items?.mapOrNull(
-                  ref: (value) => config.renameRefClass(value),
-                ),
-              );
-            },
-            ref: (value) => config.renameRefClass(value),
-            anyOf: (value) => getAnyOfType(value, config),
-            oneOf: (value) => '',
-          );
+          final dartType = pathParam.schema.dartType(config);
           final paramName = config.renameProperty(pathParam.name);
           propertiesSnippets.add(
             '''@Path('${pathParam.name}') required $dartType $paramName,''',
@@ -121,22 +112,7 @@ class OpenApiDartClientGenerator {
         if (requestBody != null) {
           final body = requestBody.value?.schema;
 
-          final dartType = body == null
-              ? 'dynamic'
-              : body.map(
-                  type: (value) {
-                    return config.dartType(
-                      type: value.type,
-                      format: value.format,
-                      genericType: value.items?.mapOrNull(
-                        ref: (value) => config.renameRefClass(value),
-                      ),
-                    );
-                  },
-                  ref: (value) => config.renameRefClass(value),
-                  anyOf: (value) => getAnyOfType(value, config),
-                  oneOf: (value) => '',
-                );
+          final dartType = body == null ? 'dynamic' : body.dartType(config);
 
           propertiesSnippets.add(
             '''@Body() required $dartType body,''',
@@ -150,7 +126,7 @@ class OpenApiDartClientGenerator {
         }
 
         buffer.writeln(
-          '''Future<HttpResponse<$responseClassName>> $methodName($propertiesCode);''',
+          '''Future<HttpResponse<${response ?? dynamicClassName}>> $methodName($propertiesCode);''',
         );
       }
     }

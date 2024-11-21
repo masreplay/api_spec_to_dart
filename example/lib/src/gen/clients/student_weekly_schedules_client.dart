@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:example/src/gen/models/models.dart';
 
 part 'student_weekly_schedules_client.g.dart';
 
@@ -11,5 +12,6 @@ abstract class StudentWeeklySchedulesClient {
   /// student_weekly_schedules-get_my_weekly_schedule
   /// Get My Weekly Schedule
   @GET('/api/v1/student/weekly_schedules/me')
-  Future<HttpResponse<dynamic>> getMyWeeklySchedule();
+  Future<HttpResponse<BaseResponseUnionListWeeklyScheduleResponse>>
+      getMyWeeklySchedule();
 }

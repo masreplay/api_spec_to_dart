@@ -12,14 +12,14 @@ abstract class FilesClient {
   /// Upload File
   @MultiPart()
   @POST('/api/v1/common/files/upload')
-  Future<HttpResponse<dynamic>> uploadFile({
+  Future<HttpResponse<BaseResponseUnionFilePublic>> uploadFile({
     @Body() required BodyFilesUploadFile body,
   });
 
   /// files-delete_file
   /// Delete File
   @DELETE('/api/v1/common/files/delete/{id}')
-  Future<HttpResponse<dynamic>> deleteFile({
+  Future<HttpResponse<BaseResponse>> deleteFile({
     @Path('id') required int id,
   });
 }

@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:example/src/gen/models/models.dart';
 
 part 'student_admissions_client.g.dart';
 
@@ -11,10 +12,10 @@ abstract class StudentAdmissionsClient {
   /// student_admissions-read_admissions
   /// Read Admissions
   @GET('/api/v1/student/admissions/me')
-  Future<HttpResponse<dynamic>> readAdmissions();
+  Future<HttpResponse<BaseResponseListAdmissionMePublic>> readAdmissions();
 
   /// student_admissions-get_joining_time
   /// Get Joining Time
   @GET('/api/v1/student/admissions/me/joining-time')
-  Future<HttpResponse<dynamic>> getJoiningTime();
+  Future<HttpResponse<JoiningTime>> getJoiningTime();
 }

@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:example/src/gen/models/models.dart';
 
 part 'student_home_client.g.dart';
 
@@ -10,5 +11,5 @@ abstract class StudentHomeClient {
   /// student_home-read_student_home
   /// Read Student Home
   @GET('/api/v1/student/home/')
-  Future<HttpResponse<dynamic>> read();
+  Future<HttpResponse<HomeResponse>> read();
 }

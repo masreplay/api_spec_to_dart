@@ -22,14 +22,16 @@ class _StudentNotificationsClient implements StudentNotificationsClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>> readNotifications(
-      {required ReadNotificationsQueries queries}) async {
+  Future<HttpResponse<BaseResponsePaginationResponseStudentNotificationsPublic>>
+      readNotifications({required ReadNotificationsQueries queries}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.addAll(queries.toJson());
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options = _setStreamType<
+        HttpResponse<
+            BaseResponsePaginationResponseStudentNotificationsPublic>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -45,21 +47,29 @@ class _StudentNotificationsClient implements StudentNotificationsClient {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late BaseResponsePaginationResponseStudentNotificationsPublic _value;
+    try {
+      _value =
+          BaseResponsePaginationResponseStudentNotificationsPublic.fromJson(
+              _result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 
   @override
-  Future<HttpResponse<dynamic>> sendPlayerId(
+  Future<HttpResponse<MessageResponse>> sendPlayerId(
       {required StudentDeviceCreate body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options = _setStreamType<HttpResponse<MessageResponse>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -75,21 +85,28 @@ class _StudentNotificationsClient implements StudentNotificationsClient {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late MessageResponse _value;
+    try {
+      _value = MessageResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 
   @override
-  Future<HttpResponse<dynamic>> markAsRead(
+  Future<HttpResponse<BaseResponseUnionStudentNotificationsPublic>> markAsRead(
       {required MarkAsReadQueries queries}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.addAll(queries.toJson());
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options = _setStreamType<
+        HttpResponse<BaseResponseUnionStudentNotificationsPublic>>(Options(
       method: 'PATCH',
       headers: _headers,
       extra: _extra,
@@ -105,20 +122,28 @@ class _StudentNotificationsClient implements StudentNotificationsClient {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late BaseResponseUnionStudentNotificationsPublic _value;
+    try {
+      _value =
+          BaseResponseUnionStudentNotificationsPublic.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 
   @override
-  Future<HttpResponse<dynamic>> readNotificationDetail(
-      {required int id}) async {
+  Future<HttpResponse<BaseResponseUnionStudentNotificationsPublic>>
+      readNotificationDetail({required int id}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+    final _options = _setStreamType<
+        HttpResponse<BaseResponseUnionStudentNotificationsPublic>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -134,8 +159,15 @@ class _StudentNotificationsClient implements StudentNotificationsClient {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late BaseResponseUnionStudentNotificationsPublic _value;
+    try {
+      _value =
+          BaseResponseUnionStudentNotificationsPublic.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }

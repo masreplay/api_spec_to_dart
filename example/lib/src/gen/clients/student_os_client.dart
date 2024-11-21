@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:example/src/gen/models/models.dart';
 
 part 'student_os_client.g.dart';
 
@@ -10,5 +11,6 @@ abstract class StudentOSClient {
   /// student_os-read_organizational_structure_for_student
   /// Read Organizational Structure For Student
   @GET('/api/v1/student/os/me')
-  Future<HttpResponse<dynamic>> readOrganizationalStructureForStudent();
+  Future<HttpResponse<BaseResponseStudentOSPublic>>
+      readOrganizationalStructureForStudent();
 }

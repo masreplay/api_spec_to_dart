@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:example/src/gen/models/models.dart';
 
 part 'student_home_works_client.g.dart';
 
@@ -11,7 +12,10 @@ abstract class StudentHomeWorksClient {
   /// student_home_works-read_course_assessment_by_course_id
   /// Read Course Assessment By Course Id
   @GET('/api/v1/student/home_works/course/{course_id}')
-  Future<HttpResponse<dynamic>> readCourseAssessmentByCourseId({
+  Future<
+          HttpResponse<
+              BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments>>
+      readCourseAssessmentByCourseId({
     @Path('course_id') required int courseId,
   });
 }

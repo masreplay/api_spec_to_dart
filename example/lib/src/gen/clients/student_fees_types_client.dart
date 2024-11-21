@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:example/src/gen/models/models.dart';
 
 part 'student_fees_types_client.g.dart';
 
@@ -11,5 +12,5 @@ abstract class StudentFeesTypesClient {
   /// student_fees_types-read_fees_types
   /// Read Fees Types
   @GET('/api/v1/student/fees_types/')
-  Future<HttpResponse<dynamic>> readFeesTypes();
+  Future<HttpResponse<BaseResponseListFeesTypesPublic>> readFeesTypes();
 }

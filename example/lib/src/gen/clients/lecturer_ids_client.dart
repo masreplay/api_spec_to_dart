@@ -11,7 +11,8 @@ abstract class LecturerIdsClient {
   /// lecturer_ids-get_employee_identification_cards
   /// Get Employee Identification Cards
   @GET('/api/v1/lecturer/ids/me')
-  Future<HttpResponse<dynamic>> getEmployeeIdentificationCards({
+  Future<HttpResponse<BaseResponseUnionEmployeeIdentificationCardsPublic>>
+      getEmployeeIdentificationCards({
     @Queries() required GetEmployeeIdentificationCardsQueries queries,
   });
 }

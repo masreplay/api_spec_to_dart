@@ -11,18 +11,18 @@ abstract class StudentEkycClient {
   /// student_ekyc-download_license
   /// Download License
   @GET('/api/v1/student/ekyc/download-license')
-  Future<HttpResponse<dynamic>> downloadLicense();
+  Future<HttpResponse<BaseResponseEkycDownloadLicensePublic>> downloadLicense();
 
   /// student_ekyc-init
   /// Init
   @POST('/api/v1/student/ekyc/init')
-  Future<HttpResponse<dynamic>> init();
+  Future<HttpResponse<BaseResponseInitEkycResponse>> init();
 
   /// student_ekyc-upload_national_id_back_data
   /// Upload National Id Back Data
   @MultiPart()
   @PATCH('/api/v1/student/ekyc/national_id/back')
-  Future<HttpResponse<dynamic>> uploadNationalIdBackData({
+  Future<HttpResponse<MessageResponse>> uploadNationalIdBackData({
     @Body() required BodyStudentEkycUploadNationalIdBackData body,
   });
 
@@ -30,7 +30,7 @@ abstract class StudentEkycClient {
   /// Upload National Id Front Data
   @MultiPart()
   @PATCH('/api/v1/student/ekyc/national_id/front')
-  Future<HttpResponse<dynamic>> uploadNationalIdFrontData({
+  Future<HttpResponse<MessageResponse>> uploadNationalIdFrontData({
     @Body() required BodyStudentEkycUploadNationalIdFrontData body,
   });
 
@@ -38,7 +38,7 @@ abstract class StudentEkycClient {
   /// Upload Passport Data
   @MultiPart()
   @PATCH('/api/v1/student/ekyc/passport')
-  Future<HttpResponse<dynamic>> uploadPassportData({
+  Future<HttpResponse<MessageResponse>> uploadPassportData({
     @Body() required BodyStudentEkycUploadPassportData body,
   });
 
@@ -46,7 +46,7 @@ abstract class StudentEkycClient {
   /// Upload Face Data
   @MultiPart()
   @PATCH('/api/v1/student/ekyc/face')
-  Future<HttpResponse<dynamic>> uploadFaceData({
+  Future<HttpResponse<MessageResponse>> uploadFaceData({
     @Body() required BodyStudentEkycUploadFaceData body,
   });
 
@@ -54,7 +54,7 @@ abstract class StudentEkycClient {
   /// Upload Nfc
   @MultiPart()
   @PATCH('/api/v1/student/ekyc/nfc')
-  Future<HttpResponse<dynamic>> uploadNfc({
+  Future<HttpResponse<MessageResponse>> uploadNfc({
     @Body() required BodyStudentEkycUploadNfc body,
   });
 
@@ -62,24 +62,24 @@ abstract class StudentEkycClient {
   /// Upload Eye Data
   @MultiPart()
   @PATCH('/api/v1/student/ekyc/face/eye')
-  Future<HttpResponse<dynamic>> uploadEyeData({
+  Future<HttpResponse<MessageResponse>> uploadEyeData({
     @Body() required BodyStudentEkycUploadEyeData body,
   });
 
   /// student_ekyc-read_student_ekyc_form
   /// Read Student Ekyc Form
   @GET('/api/v1/student/ekyc/form')
-  Future<HttpResponse<dynamic>> readForm();
+  Future<HttpResponse<BaseResponseUIForm>> readForm();
 
   /// student_ekyc-upload_student_ekyc_form
   /// Upload Student Ekyc Form
   @PATCH('/api/v1/student/ekyc/form')
-  Future<HttpResponse<dynamic>> uploadForm({
+  Future<HttpResponse<BaseResponseStr?>> uploadForm({
     @Body() required StudentEkycFormDataRequest body,
   });
 
   /// student_ekyc-submit_ekyc
   /// Submit Ekyc
   @POST('/api/v1/student/ekyc/submit')
-  Future<HttpResponse<dynamic>> submitEkyc();
+  Future<HttpResponse<MessageResponse>> submitEkyc();
 }

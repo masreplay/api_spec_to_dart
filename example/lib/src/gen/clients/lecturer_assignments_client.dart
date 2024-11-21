@@ -12,7 +12,8 @@ abstract class LecturerAssignmentsClient {
   /// lecturer_assignments-get_lecturer_assignments
   /// Get Lecturer Assignments
   @GET('/api/v1/lecturer/assignments/me/{course_id}')
-  Future<HttpResponse<dynamic>> get({
+  Future<HttpResponse<BaseResponsePaginationResponseLecturerAssignmentPublic>>
+      get({
     @Queries() required GetQueries queries,
     @Path('course_id') required int courseId,
   });
@@ -21,7 +22,8 @@ abstract class LecturerAssignmentsClient {
   /// Create Lecturer Assignment
   @MultiPart()
   @POST('/api/v1/lecturer/assignments/me/{course_id}')
-  Future<HttpResponse<dynamic>> createLecturerAssignment({
+  Future<HttpResponse<BaseResponseLecturerAssignmentPublic>>
+      createLecturerAssignment({
     @Path('course_id') required int courseId,
     @Body() required BodyLecturerAssignmentsCreateLecturerAssignment body,
   });
@@ -29,7 +31,8 @@ abstract class LecturerAssignmentsClient {
   /// lecturer_assignments-get_lecturer_assignment
   /// Get Lecturer Assignment
   @GET('/api/v1/lecturer/assignments/{id}')
-  Future<HttpResponse<dynamic>> getLecturerAssignment({
+  Future<HttpResponse<BaseResponseLecturerAssignmentPublic>>
+      getLecturerAssignment({
     @Path('id') required int id,
   });
 
@@ -37,7 +40,8 @@ abstract class LecturerAssignmentsClient {
   /// Update Lecturer Assignment
   @MultiPart()
   @PUT('/api/v1/lecturer/assignments/{id}')
-  Future<HttpResponse<dynamic>> updateLecturerAssignment({
+  Future<HttpResponse<BaseResponseLecturerAssignmentPublic>>
+      updateLecturerAssignment({
     @Path('id') required int id,
     @Body() required BodyLecturerAssignmentsUpdateLecturerAssignment body,
   });
@@ -45,14 +49,15 @@ abstract class LecturerAssignmentsClient {
   /// lecturer_assignments-delete_lecturer_assignment
   /// Delete Lecturer Assignment
   @DELETE('/api/v1/lecturer/assignments/{id}')
-  Future<HttpResponse<dynamic>> deleteLecturerAssignment({
+  Future<HttpResponse<MessageResponse>> deleteLecturerAssignment({
     @Path('id') required int id,
   });
 
   /// lecturer_assignments-get_lecturer_assignment_comments
   /// Get Lecturer Assignment Comments
   @GET('/api/v1/lecturer/assignments/{id}/comments')
-  Future<HttpResponse<dynamic>> getLecturerAssignmentComments({
+  Future<HttpResponse<BaseResponseListCommentPublic>>
+      getLecturerAssignmentComments({
     @Path('id') required int id,
   });
 
@@ -60,7 +65,8 @@ abstract class LecturerAssignmentsClient {
   /// Create Lecturer Assignment Comment
   @FormUrlEncoded()
   @POST('/api/v1/lecturer/assignments/{id}/comments')
-  Future<HttpResponse<dynamic>> createLecturerAssignmentComment({
+  Future<HttpResponse<BaseResponseCommentPublic>>
+      createLecturerAssignmentComment({
     @Path('id') required int id,
     @Body()
     required BodyLecturerAssignmentsCreateLecturerAssignmentComment body,

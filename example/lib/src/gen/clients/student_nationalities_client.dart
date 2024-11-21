@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:example/src/gen/models/models.dart';
 
 part 'student_nationalities_client.g.dart';
 
@@ -11,5 +12,5 @@ abstract class StudentNationalitiesClient {
   /// student_nationalities-read_nationalities
   /// Read Nationalities
   @GET('/api/v1/student/nationalities/')
-  Future<HttpResponse<dynamic>> readNationalities();
+  Future<HttpResponse<BaseResponseListNationalitiesPublic>> readNationalities();
 }

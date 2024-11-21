@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:example/src/gen/models/models.dart';
 
 part 'student_study_years_client.g.dart';
 
@@ -11,5 +12,5 @@ abstract class StudentStudyYearsClient {
   /// student_study_years-read_student_workloads
   /// Read Student Workloads
   @GET('/api/v1/student/study_years/')
-  Future<HttpResponse<dynamic>> readStudentWorkloads();
+  Future<HttpResponse<BaseResponseListStudyYearPublic>> readStudentWorkloads();
 }
