@@ -27,5 +27,5 @@ scripts:
     $description: Fix code warnings and format code
 
   publish:
-    $script: fvm dart pub publish --dry-run
+    $script: fvm dart pub publish
     $description: Publish package to pub.dev
