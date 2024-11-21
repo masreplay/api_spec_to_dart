@@ -1,17 +1,22 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../convertors.dart';
-
-part 'assignment_classification_enum.freezed.dart';
 part 'assignment_classification_enum.g.dart';
 
-@freezed
-class AssignmentClassificationEnum with _$AssignmentClassificationEnum {
-  const AssignmentClassificationEnum._();
+@JsonEnum(valueField: 'value', alwaysCreate: true)
+enum AssignmentClassificationEnum {
+  value0(0),
+  value1(1),
+  ;
 
-  @JsonSerializable(converters: convertors)
-  const factory AssignmentClassificationEnum() = _AssignmentClassificationEnum;
+  const AssignmentClassificationEnum(this.value);
 
-  factory AssignmentClassificationEnum.fromJson(Map<String, dynamic> json) =>
-      _$AssignmentClassificationEnumFromJson(json);
+  final int value;
+
+  int toJson() => _$AssignmentClassificationEnumEnumMap[this]!;
+  factory AssignmentClassificationEnum.fromJson(int value) {
+    return values.firstWhere(
+      (e) => e.value == value,
+      orElse: () => values.first,
+    );
+  }
 }

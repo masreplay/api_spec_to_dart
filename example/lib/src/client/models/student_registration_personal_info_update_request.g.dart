@@ -24,11 +24,11 @@ _$StudentRegistrationPersonalInfoUpdateRequestImpl
           englishMotherName1: json['english_mother_name1'] as String,
           englishMotherName2: json['english_mother_name2'] as String,
           englishMotherName3: json['english_mother_name3'] as String,
-          gender: GenderEnum.fromJson(json['gender'] as Map<String, dynamic>),
+          gender: GenderEnum.fromJson((json['gender'] as num).toInt()),
           citizenshipType: CitizenshipTypeEnum.fromJson(
-              json['citizenship_type'] as Map<String, dynamic>),
-          bloodGroup: BloodGroupEnum.fromJson(
-              json['blood_group'] as Map<String, dynamic>),
+              (json['citizenship_type'] as num).toInt()),
+          bloodGroup:
+              BloodGroupEnum.fromJson((json['blood_group'] as num).toInt()),
           dateOfBirth: DateTime.parse(json['date_of_birth'] as String),
           governorateId: (json['governorate_id'] as num).toInt(),
           nationalityId: (json['nationality_id'] as num).toInt(),

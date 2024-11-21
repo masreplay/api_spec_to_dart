@@ -32,9 +32,8 @@ _$StudentSelectedCoursesPublicImpl _$$StudentSelectedCoursesPublicImplFromJson(
           : CourseDistributionsTable.fromJson(
               json['course_distribution'] as Map<String, dynamic>),
       result: json['result'] == null
-          ? 1
-          : SelectedCourseResultEnum.fromJson(
-              json['result'] as Map<String, dynamic>),
+          ? SelectedCourseResultEnum.value1
+          : SelectedCourseResultEnum.fromJson((json['result'] as num).toInt()),
     );
 
 Map<String, dynamic> _$$StudentSelectedCoursesPublicImplToJson(

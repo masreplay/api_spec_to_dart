@@ -111,7 +111,6 @@ abstract class $CoursePublicCopyWith<$Res> {
       @JsonKey(name: 'course_staffs') List<dynamic>? courseStaffs,
       @JsonKey(name: 'seamster') AcademicYearDivisionPublic? seamster});
 
-  $StudentCourseStatusEnumCopyWith<$Res>? get courseStatus;
   $AcademicYearDivisionPublicCopyWith<$Res>? get seamster;
 }
 
@@ -214,21 +213,6 @@ class _$CoursePublicCopyWithImpl<$Res, $Val extends CoursePublic>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $StudentCourseStatusEnumCopyWith<$Res>? get courseStatus {
-    if (_value.courseStatus == null) {
-      return null;
-    }
-
-    return $StudentCourseStatusEnumCopyWith<$Res>(_value.courseStatus!,
-        (value) {
-      return _then(_value.copyWith(courseStatus: value) as $Val);
-    });
-  }
-
-  /// Create a copy of CoursePublic
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
   $AcademicYearDivisionPublicCopyWith<$Res>? get seamster {
     if (_value.seamster == null) {
       return null;
@@ -265,8 +249,6 @@ abstract class _$$CoursePublicImplCopyWith<$Res>
       @JsonKey(name: 'course_staffs') List<dynamic>? courseStaffs,
       @JsonKey(name: 'seamster') AcademicYearDivisionPublic? seamster});
 
-  @override
-  $StudentCourseStatusEnumCopyWith<$Res>? get courseStatus;
   @override
   $AcademicYearDivisionPublicCopyWith<$Res>? get seamster;
 }

@@ -15,7 +15,7 @@ _$UIDateFormFieldImpl _$$UIDateFormFieldImplFromJson(
       isRequired: json['is_required'] as bool,
       readOnly: json['read_only'] as bool? ?? false,
       doc: json['doc'] as String?,
-      type: json['type'] as String? ?? date,
+      type: json['type'] as String? ?? 'date',
       defaultValue: json['default_value'] as String?,
       format: json['format'] as String,
       example: json['example'] as String?,

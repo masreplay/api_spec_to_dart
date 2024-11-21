@@ -1,17 +1,21 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../convertors.dart';
-
-part 'ekyc_type_enum.freezed.dart';
 part 'ekyc_type_enum.g.dart';
 
-@freezed
-class EkycTypeEnum with _$EkycTypeEnum {
-  const EkycTypeEnum._();
+@JsonEnum(valueField: 'value', alwaysCreate: true)
+enum EkycTypeEnum {
+  innovatrics('innovatrics'),
+  ;
 
-  @JsonSerializable(converters: convertors)
-  const factory EkycTypeEnum() = _EkycTypeEnum;
+  const EkycTypeEnum(this.value);
 
-  factory EkycTypeEnum.fromJson(Map<String, dynamic> json) =>
-      _$EkycTypeEnumFromJson(json);
+  final String value;
+
+  String toJson() => _$EkycTypeEnumEnumMap[this]!;
+  factory EkycTypeEnum.fromJson(String value) {
+    return values.firstWhere(
+      (e) => e.value == value,
+      orElse: () => values.first,
+    );
+  }
 }

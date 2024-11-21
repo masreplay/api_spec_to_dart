@@ -55,8 +55,6 @@ abstract class $HomeFeedMissingPaymentSectionDataPublicCopyWith<$Res> {
       {@JsonKey(name: 'price') num price,
       @JsonKey(name: 'currency') PriceCurrency currency,
       @JsonKey(name: 'price_formatted') String priceFormatted});
-
-  $PriceCurrencyCopyWith<$Res> get currency;
 }
 
 /// @nodoc
@@ -95,16 +93,6 @@ class _$HomeFeedMissingPaymentSectionDataPublicCopyWithImpl<$Res,
               as String,
     ) as $Val);
   }
-
-  /// Create a copy of HomeFeedMissingPaymentSectionDataPublic
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $PriceCurrencyCopyWith<$Res> get currency {
-    return $PriceCurrencyCopyWith<$Res>(_value.currency, (value) {
-      return _then(_value.copyWith(currency: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -120,9 +108,6 @@ abstract class _$$HomeFeedMissingPaymentSectionDataPublicImplCopyWith<$Res>
       {@JsonKey(name: 'price') num price,
       @JsonKey(name: 'currency') PriceCurrency currency,
       @JsonKey(name: 'price_formatted') String priceFormatted});
-
-  @override
-  $PriceCurrencyCopyWith<$Res> get currency;
 }
 
 /// @nodoc

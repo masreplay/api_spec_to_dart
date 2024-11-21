@@ -204,7 +204,7 @@ class _$HomeFeedCourseSelectionStatusSectionModelImpl
     extends _HomeFeedCourseSelectionStatusSectionModel {
   const _$HomeFeedCourseSelectionStatusSectionModelImpl(
       {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'type') required this.type = course_selection_status,
+      @JsonKey(name: 'type') required this.type = 'course_selection_status',
       @JsonKey(name: 'title') required this.title,
       @JsonKey(name: 'description') required this.description,
       @JsonKey(name: 'data') required this.data})

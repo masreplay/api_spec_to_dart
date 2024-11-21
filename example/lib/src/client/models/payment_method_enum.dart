@@ -1,17 +1,22 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../convertors.dart';
-
-part 'payment_method_enum.freezed.dart';
 part 'payment_method_enum.g.dart';
 
-@freezed
-class PaymentMethodEnum with _$PaymentMethodEnum {
-  const PaymentMethodEnum._();
+@JsonEnum(valueField: 'value', alwaysCreate: true)
+enum PaymentMethodEnum {
+  value0(0),
+  value1(1),
+  ;
 
-  @JsonSerializable(converters: convertors)
-  const factory PaymentMethodEnum() = _PaymentMethodEnum;
+  const PaymentMethodEnum(this.value);
 
-  factory PaymentMethodEnum.fromJson(Map<String, dynamic> json) =>
-      _$PaymentMethodEnumFromJson(json);
+  final int value;
+
+  int toJson() => _$PaymentMethodEnumEnumMap[this]!;
+  factory PaymentMethodEnum.fromJson(int value) {
+    return values.firstWhere(
+      (e) => e.value == value,
+      orElse: () => values.first,
+    );
+  }
 }

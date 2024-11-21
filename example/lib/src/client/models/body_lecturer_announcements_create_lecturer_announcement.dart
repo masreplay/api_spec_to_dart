@@ -20,6 +20,7 @@ class BodyLecturerAnnouncementsCreateLecturerAnnouncement
   }) = _BodyLecturerAnnouncementsCreateLecturerAnnouncement;
 
   factory BodyLecturerAnnouncementsCreateLecturerAnnouncement.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$BodyLecturerAnnouncementsCreateLecturerAnnouncementFromJson(json);
 }

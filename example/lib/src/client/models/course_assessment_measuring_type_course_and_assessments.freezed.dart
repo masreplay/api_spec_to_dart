@@ -91,10 +91,6 @@ abstract class $CourseAssessmentMeasuringTypeCourseAndAssessmentsCopyWith<
       @JsonKey(name: 'attendance_status')
       AttendanceStatusEnum? attendanceStatus,
       @JsonKey(name: 'link') String? link});
-
-  $AssignmentTypeEnumCopyWith<$Res>? get type;
-  $AssignmentClassificationEnumCopyWith<$Res>? get status;
-  $AttendanceStatusEnumCopyWith<$Res>? get attendanceStatus;
 }
 
 /// @nodoc
@@ -169,49 +165,6 @@ class _$CourseAssessmentMeasuringTypeCourseAndAssessmentsCopyWithImpl<$Res,
               as String?,
     ) as $Val);
   }
-
-  /// Create a copy of CourseAssessmentMeasuringTypeCourseAndAssessments
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AssignmentTypeEnumCopyWith<$Res>? get type {
-    if (_value.type == null) {
-      return null;
-    }
-
-    return $AssignmentTypeEnumCopyWith<$Res>(_value.type!, (value) {
-      return _then(_value.copyWith(type: value) as $Val);
-    });
-  }
-
-  /// Create a copy of CourseAssessmentMeasuringTypeCourseAndAssessments
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AssignmentClassificationEnumCopyWith<$Res>? get status {
-    if (_value.status == null) {
-      return null;
-    }
-
-    return $AssignmentClassificationEnumCopyWith<$Res>(_value.status!, (value) {
-      return _then(_value.copyWith(status: value) as $Val);
-    });
-  }
-
-  /// Create a copy of CourseAssessmentMeasuringTypeCourseAndAssessments
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AttendanceStatusEnumCopyWith<$Res>? get attendanceStatus {
-    if (_value.attendanceStatus == null) {
-      return null;
-    }
-
-    return $AttendanceStatusEnumCopyWith<$Res>(_value.attendanceStatus!,
-        (value) {
-      return _then(_value.copyWith(attendanceStatus: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -239,13 +192,6 @@ abstract class _$$CourseAssessmentMeasuringTypeCourseAndAssessmentsImplCopyWith<
       @JsonKey(name: 'attendance_status')
       AttendanceStatusEnum? attendanceStatus,
       @JsonKey(name: 'link') String? link});
-
-  @override
-  $AssignmentTypeEnumCopyWith<$Res>? get type;
-  @override
-  $AssignmentClassificationEnumCopyWith<$Res>? get status;
-  @override
-  $AttendanceStatusEnumCopyWith<$Res>? get attendanceStatus;
 }
 
 /// @nodoc

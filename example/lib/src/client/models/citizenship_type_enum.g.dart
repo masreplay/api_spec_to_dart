@@ -6,10 +6,7 @@ part of 'citizenship_type_enum.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CitizenshipTypeEnumImpl _$$CitizenshipTypeEnumImplFromJson(
-        Map<String, dynamic> json) =>
-    _$CitizenshipTypeEnumImpl();
-
-Map<String, dynamic> _$$CitizenshipTypeEnumImplToJson(
-        _$CitizenshipTypeEnumImpl instance) =>
-    <String, dynamic>{};
+const _$CitizenshipTypeEnumEnumMap = {
+  CitizenshipTypeEnum.value0: 1,
+  CitizenshipTypeEnum.value1: 2,
+};

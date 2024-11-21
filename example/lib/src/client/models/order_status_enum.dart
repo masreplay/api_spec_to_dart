@@ -1,17 +1,23 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../convertors.dart';
-
-part 'order_status_enum.freezed.dart';
 part 'order_status_enum.g.dart';
 
-@freezed
-class OrderStatusEnum with _$OrderStatusEnum {
-  const OrderStatusEnum._();
+@JsonEnum(valueField: 'value', alwaysCreate: true)
+enum OrderStatusEnum {
+  pending('pending'),
+  approved('approved'),
+  rejected('rejected'),
+  ;
 
-  @JsonSerializable(converters: convertors)
-  const factory OrderStatusEnum() = _OrderStatusEnum;
+  const OrderStatusEnum(this.value);
 
-  factory OrderStatusEnum.fromJson(Map<String, dynamic> json) =>
-      _$OrderStatusEnumFromJson(json);
+  final String value;
+
+  String toJson() => _$OrderStatusEnumEnumMap[this]!;
+  factory OrderStatusEnum.fromJson(String value) {
+    return values.firstWhere(
+      (e) => e.value == value,
+      orElse: () => values.first,
+    );
+  }
 }

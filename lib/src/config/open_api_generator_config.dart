@@ -60,19 +60,38 @@ class OpenApiGeneratorConfig {
     }
   }
 
-  String propertyRename(String key) {
-    return Recase.instance.toCamelCase(key);
+  String renameProperty(String key) {
+    return _renameProtect(Recase.instance.toCamelCase(key));
   }
 
-  String enumName(String key) {
+  String renameEnum(String key) {
     return Recase.instance.toPascalCase(key);
   }
 
-  String className(String key) {
-    return Recase.instance.toPascalCase(key);
+  String renameClass(String key) {
+    final name = Recase.instance.toPascalCase(key);
+
+    if (name.endsWith('NoneType')) {
+      // remove then
+      return name.substring(0, name.length - 8);
+    }
+
+    return name;
   }
 
-  String filename(String key) {
-    return Recase.instance.toSnakeCase(key);
+  String renameFile(String key) {
+    final name = Recase.instance.toSnakeCase(key);
+
+    if (name.endsWith('none_type')) {
+      // remove then
+      return name.substring(0, name.length - 9);
+    }
+
+    return name;
   }
+}
+
+String _renameProtect(String name) {
+  // TODO(mohammed.atheer): handle dart keywords
+  return name;
 }

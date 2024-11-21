@@ -14,7 +14,7 @@ _$PaymentMethodPublicImpl _$$PaymentMethodPublicImplFromJson(
       description: json['description'] as String,
       url: json['url'] as String,
       image: json['image'] as String,
-      type: PaymentMethodEnum.fromJson(json['type'] as Map<String, dynamic>),
+      type: PaymentMethodEnum.fromJson((json['type'] as num).toInt()),
     );
 
 Map<String, dynamic> _$$PaymentMethodPublicImplToJson(

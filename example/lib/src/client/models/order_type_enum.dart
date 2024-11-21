@@ -1,17 +1,26 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../convertors.dart';
-
-part 'order_type_enum.freezed.dart';
 part 'order_type_enum.g.dart';
 
-@freezed
-class OrderTypeEnum with _$OrderTypeEnum {
-  const OrderTypeEnum._();
+@JsonEnum(valueField: 'value', alwaysCreate: true)
+enum OrderTypeEnum {
+  ekyc('ekyc'),
+  course('course'),
+  certificate('certificate'),
+  payment('payment'),
+  scholarship('scholarship'),
+  enrollment('enrollment'),
+  ;
 
-  @JsonSerializable(converters: convertors)
-  const factory OrderTypeEnum() = _OrderTypeEnum;
+  const OrderTypeEnum(this.value);
 
-  factory OrderTypeEnum.fromJson(Map<String, dynamic> json) =>
-      _$OrderTypeEnumFromJson(json);
+  final String value;
+
+  String toJson() => _$OrderTypeEnumEnumMap[this]!;
+  factory OrderTypeEnum.fromJson(String value) {
+    return values.firstWhere(
+      (e) => e.value == value,
+      orElse: () => values.first,
+    );
+  }
 }

@@ -200,7 +200,7 @@ class _$HomeFeedMissingPaymentSectionPublicImpl
     extends _HomeFeedMissingPaymentSectionPublic {
   const _$HomeFeedMissingPaymentSectionPublicImpl(
       {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'type') required this.type = missing_payment,
+      @JsonKey(name: 'type') required this.type = 'missing_payment',
       @JsonKey(name: 'title') required this.title,
       @JsonKey(name: 'description') required this.description,
       @JsonKey(name: 'data') required this.data})

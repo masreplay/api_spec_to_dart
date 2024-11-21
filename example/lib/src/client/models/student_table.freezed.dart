@@ -197,10 +197,6 @@ abstract class $StudentTableCopyWith<$Res> {
       @JsonKey(name: 'id') int id,
       @JsonKey(name: 'login_credentials') String? loginCredentials,
       @JsonKey(name: 'creation_time') DateTime creationTime});
-
-  $GenderEnumCopyWith<$Res>? get gender;
-  $CitizenshipTypeEnumCopyWith<$Res>? get citizenshipType;
-  $BloodGroupEnumCopyWith<$Res>? get bloodGroup;
 }
 
 /// @nodoc
@@ -387,48 +383,6 @@ class _$StudentTableCopyWithImpl<$Res, $Val extends StudentTable>
               as DateTime,
     ) as $Val);
   }
-
-  /// Create a copy of StudentTable
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $GenderEnumCopyWith<$Res>? get gender {
-    if (_value.gender == null) {
-      return null;
-    }
-
-    return $GenderEnumCopyWith<$Res>(_value.gender!, (value) {
-      return _then(_value.copyWith(gender: value) as $Val);
-    });
-  }
-
-  /// Create a copy of StudentTable
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $CitizenshipTypeEnumCopyWith<$Res>? get citizenshipType {
-    if (_value.citizenshipType == null) {
-      return null;
-    }
-
-    return $CitizenshipTypeEnumCopyWith<$Res>(_value.citizenshipType!, (value) {
-      return _then(_value.copyWith(citizenshipType: value) as $Val);
-    });
-  }
-
-  /// Create a copy of StudentTable
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $BloodGroupEnumCopyWith<$Res>? get bloodGroup {
-    if (_value.bloodGroup == null) {
-      return null;
-    }
-
-    return $BloodGroupEnumCopyWith<$Res>(_value.bloodGroup!, (value) {
-      return _then(_value.copyWith(bloodGroup: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -473,13 +427,6 @@ abstract class _$$StudentTableImplCopyWith<$Res>
       @JsonKey(name: 'id') int id,
       @JsonKey(name: 'login_credentials') String? loginCredentials,
       @JsonKey(name: 'creation_time') DateTime creationTime});
-
-  @override
-  $GenderEnumCopyWith<$Res>? get gender;
-  @override
-  $CitizenshipTypeEnumCopyWith<$Res>? get citizenshipType;
-  @override
-  $BloodGroupEnumCopyWith<$Res>? get bloodGroup;
 }
 
 /// @nodoc
@@ -685,8 +632,9 @@ class _$StudentTableImpl extends _StudentTable {
       @JsonKey(name: 'english_mother_name1') required this.englishMotherName1,
       @JsonKey(name: 'english_mother_name2') required this.englishMotherName2,
       @JsonKey(name: 'english_mother_name3') required this.englishMotherName3,
-      @JsonKey(name: 'gender') required this.gender = 1,
-      @JsonKey(name: 'citizenship_type') required this.citizenshipType = 1,
+      @JsonKey(name: 'gender') required this.gender = GenderEnum.value1,
+      @JsonKey(name: 'citizenship_type')
+      required this.citizenshipType = CitizenshipTypeEnum.value1,
       @JsonKey(name: 'blood_group') required this.bloodGroup,
       @JsonKey(name: 'date_of_birth') required this.dateOfBirth,
       @JsonKey(name: 'governorate_id') required this.governorateId,

@@ -15,8 +15,8 @@ _$StudentAuthResponseImpl _$$StudentAuthResponseImplFromJson(
       refreshExpiresIn: (json['refresh_expires_in'] as num).toInt(),
       userId: (json['user_id'] as num).toInt(),
       userRole: json['user_role'] == null
-          ? 0
-          : UserRole.fromJson(json['user_role'] as Map<String, dynamic>),
+          ? UserRole.value0
+          : UserRole.fromJson((json['user_role'] as num).toInt()),
       status: AuthenticationStatusResponse.fromJson(
           json['status'] as Map<String, dynamic>),
     );

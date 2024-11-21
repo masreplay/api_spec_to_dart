@@ -1,17 +1,23 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../convertors.dart';
-
-part 'ekyc_status_enum.freezed.dart';
 part 'ekyc_status_enum.g.dart';
 
-@freezed
-class EkycStatusEnum with _$EkycStatusEnum {
-  const EkycStatusEnum._();
+@JsonEnum(valueField: 'value', alwaysCreate: true)
+enum EkycStatusEnum {
+  value0(0),
+  value1(1),
+  value2(2),
+  ;
 
-  @JsonSerializable(converters: convertors)
-  const factory EkycStatusEnum() = _EkycStatusEnum;
+  const EkycStatusEnum(this.value);
 
-  factory EkycStatusEnum.fromJson(Map<String, dynamic> json) =>
-      _$EkycStatusEnumFromJson(json);
+  final int value;
+
+  int toJson() => _$EkycStatusEnumEnumMap[this]!;
+  factory EkycStatusEnum.fromJson(int value) {
+    return values.firstWhere(
+      (e) => e.value == value,
+      orElse: () => values.first,
+    );
+  }
 }

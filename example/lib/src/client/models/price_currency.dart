@@ -1,17 +1,22 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../convertors.dart';
-
-part 'price_currency.freezed.dart';
 part 'price_currency.g.dart';
 
-@freezed
-class PriceCurrency with _$PriceCurrency {
-  const PriceCurrency._();
+@JsonEnum(valueField: 'value', alwaysCreate: true)
+enum PriceCurrency {
+  iqd('IQD'),
+  usd('USD'),
+  ;
 
-  @JsonSerializable(converters: convertors)
-  const factory PriceCurrency() = _PriceCurrency;
+  const PriceCurrency(this.value);
 
-  factory PriceCurrency.fromJson(Map<String, dynamic> json) =>
-      _$PriceCurrencyFromJson(json);
+  final String value;
+
+  String toJson() => _$PriceCurrencyEnumMap[this]!;
+  factory PriceCurrency.fromJson(String value) {
+    return values.firstWhere(
+      (e) => e.value == value,
+      orElse: () => values.first,
+    );
+  }
 }

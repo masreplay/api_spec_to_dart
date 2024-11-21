@@ -12,8 +12,7 @@ _$BodyFilesUploadFileImpl _$$BodyFilesUploadFileImplFromJson(
       file: const FileMultipartFileJsonConverter()
           .fromJson(json['file'] as MultipartFile),
       entityId: (json['entity_id'] as num?)?.toInt(),
-      collection: FileCollectionEnum.fromJson(
-          json['collection'] as Map<String, dynamic>),
+      collection: FileCollectionEnum.fromJson(json['collection'] as String),
     );
 
 Map<String, dynamic> _$$BodyFilesUploadFileImplToJson(

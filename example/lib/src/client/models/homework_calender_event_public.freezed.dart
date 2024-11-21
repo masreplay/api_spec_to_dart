@@ -235,7 +235,7 @@ class _$HomeworkCalenderEventPublicImpl extends _HomeworkCalenderEventPublic {
       @JsonKey(name: 'start_date_formatted') required this.startDateFormatted,
       @JsonKey(name: 'end_date') required this.endDate,
       @JsonKey(name: 'end_date_formatted') required this.endDateFormatted,
-      @JsonKey(name: 'type') required this.type = assignment,
+      @JsonKey(name: 'type') required this.type = 'assignment',
       @JsonKey(name: 'title') required this.title,
       @JsonKey(name: 'description') required this.description})
       : super._();

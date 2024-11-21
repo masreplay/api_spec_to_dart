@@ -10,8 +10,7 @@ _$HomeFeedCourseSelectionStatusSectionDataPublicImpl
     _$$HomeFeedCourseSelectionStatusSectionDataPublicImplFromJson(
             Map<String, dynamic> json) =>
         _$HomeFeedCourseSelectionStatusSectionDataPublicImpl(
-          status: CourseSelectionStatusType.fromJson(
-              json['status'] as Map<String, dynamic>),
+          status: CourseSelectionStatusType.fromJson(json['status'] as String),
         );
 
 Map<String, dynamic>

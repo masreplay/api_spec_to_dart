@@ -199,7 +199,7 @@ class _$HomeFeedStudyProgramSectionPublicImpl
     extends _HomeFeedStudyProgramSectionPublic {
   const _$HomeFeedStudyProgramSectionPublicImpl(
       {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'type') required this.type = study_program,
+      @JsonKey(name: 'type') required this.type = 'study_program',
       @JsonKey(name: 'title') required this.title,
       @JsonKey(name: 'description') required this.description,
       @JsonKey(name: 'data') required this.data})

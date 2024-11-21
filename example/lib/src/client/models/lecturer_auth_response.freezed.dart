@@ -65,8 +65,6 @@ abstract class $LecturerAuthResponseCopyWith<$Res> {
       @JsonKey(name: 'refresh_expires_in') int refreshExpiresIn,
       @JsonKey(name: 'user_id') int userId,
       @JsonKey(name: 'user_role') UserRole userRole});
-
-  $UserRoleCopyWith<$Res> get userRole;
 }
 
 /// @nodoc
@@ -119,16 +117,6 @@ class _$LecturerAuthResponseCopyWithImpl<$Res,
               as UserRole,
     ) as $Val);
   }
-
-  /// Create a copy of LecturerAuthResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserRoleCopyWith<$Res> get userRole {
-    return $UserRoleCopyWith<$Res>(_value.userRole, (value) {
-      return _then(_value.copyWith(userRole: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -146,9 +134,6 @@ abstract class _$$LecturerAuthResponseImplCopyWith<$Res>
       @JsonKey(name: 'refresh_expires_in') int refreshExpiresIn,
       @JsonKey(name: 'user_id') int userId,
       @JsonKey(name: 'user_role') UserRole userRole});
-
-  @override
-  $UserRoleCopyWith<$Res> get userRole;
 }
 
 /// @nodoc
@@ -210,7 +195,7 @@ class _$LecturerAuthResponseImpl extends _LecturerAuthResponse {
       @JsonKey(name: 'refresh_token') required this.refreshToken,
       @JsonKey(name: 'refresh_expires_in') required this.refreshExpiresIn,
       @JsonKey(name: 'user_id') required this.userId,
-      @JsonKey(name: 'user_role') required this.userRole = 1})
+      @JsonKey(name: 'user_role') required this.userRole = UserRole.value1})
       : super._();
 
   factory _$LecturerAuthResponseImpl.fromJson(Map<String, dynamic> json) =>

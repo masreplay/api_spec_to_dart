@@ -15,7 +15,7 @@ _$UISelectFormFieldImpl _$$UISelectFormFieldImplFromJson(
       isRequired: json['is_required'] as bool,
       readOnly: json['read_only'] as bool? ?? false,
       doc: json['doc'] as String?,
-      type: json['type'] as String? ?? select,
+      type: json['type'] as String? ?? 'select',
       options: (json['options'] as List<dynamic>?)
               ?.map((e) =>
                   UISelectFormFieldOption.fromJson(e as Map<String, dynamic>))

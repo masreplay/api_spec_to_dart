@@ -11,7 +11,7 @@ _$HomeFeedCourseSelectionStatusSectionModelImpl
             Map<String, dynamic> json) =>
         _$HomeFeedCourseSelectionStatusSectionModelImpl(
           id: (json['id'] as num).toInt(),
-          type: json['type'] as String? ?? course_selection_status,
+          type: json['type'] as String? ?? 'course_selection_status',
           title: json['title'] as String,
           description: json['description'] as String?,
           data: HomeFeedCourseSelectionStatusSectionDataPublic.fromJson(

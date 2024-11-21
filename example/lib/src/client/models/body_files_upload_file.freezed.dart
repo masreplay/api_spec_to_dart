@@ -50,8 +50,6 @@ abstract class $BodyFilesUploadFileCopyWith<$Res> {
       {@JsonKey(name: 'file') File file,
       @JsonKey(name: 'entity_id') int? entityId,
       @JsonKey(name: 'collection') FileCollectionEnum collection});
-
-  $FileCollectionEnumCopyWith<$Res> get collection;
 }
 
 /// @nodoc
@@ -88,16 +86,6 @@ class _$BodyFilesUploadFileCopyWithImpl<$Res, $Val extends BodyFilesUploadFile>
               as FileCollectionEnum,
     ) as $Val);
   }
-
-  /// Create a copy of BodyFilesUploadFile
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $FileCollectionEnumCopyWith<$Res> get collection {
-    return $FileCollectionEnumCopyWith<$Res>(_value.collection, (value) {
-      return _then(_value.copyWith(collection: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -112,9 +100,6 @@ abstract class _$$BodyFilesUploadFileImplCopyWith<$Res>
       {@JsonKey(name: 'file') File file,
       @JsonKey(name: 'entity_id') int? entityId,
       @JsonKey(name: 'collection') FileCollectionEnum collection});
-
-  @override
-  $FileCollectionEnumCopyWith<$Res> get collection;
 }
 
 /// @nodoc

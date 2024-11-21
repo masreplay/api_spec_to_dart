@@ -1,17 +1,25 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../convertors.dart';
-
-part 'student_course_status_enum.freezed.dart';
 part 'student_course_status_enum.g.dart';
 
-@freezed
-class StudentCourseStatusEnum with _$StudentCourseStatusEnum {
-  const StudentCourseStatusEnum._();
+@JsonEnum(valueField: 'value', alwaysCreate: true)
+enum StudentCourseStatusEnum {
+  value0(0),
+  value1(1),
+  value2(2),
+  value3(3),
+  value4(4),
+  ;
 
-  @JsonSerializable(converters: convertors)
-  const factory StudentCourseStatusEnum() = _StudentCourseStatusEnum;
+  const StudentCourseStatusEnum(this.value);
 
-  factory StudentCourseStatusEnum.fromJson(Map<String, dynamic> json) =>
-      _$StudentCourseStatusEnumFromJson(json);
+  final int value;
+
+  int toJson() => _$StudentCourseStatusEnumEnumMap[this]!;
+  factory StudentCourseStatusEnum.fromJson(int value) {
+    return values.firstWhere(
+      (e) => e.value == value,
+      orElse: () => values.first,
+    );
+  }
 }

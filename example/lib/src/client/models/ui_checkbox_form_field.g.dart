@@ -15,7 +15,7 @@ _$UICheckboxFormFieldImpl _$$UICheckboxFormFieldImplFromJson(
       isRequired: json['is_required'] as bool,
       readOnly: json['read_only'] as bool? ?? false,
       doc: json['doc'] as String?,
-      type: json['type'] as String? ?? checkbox,
+      type: json['type'] as String? ?? 'checkbox',
       defaultValue: json['default_value'] as bool? ?? false,
       example: json['example'] as bool,
     );

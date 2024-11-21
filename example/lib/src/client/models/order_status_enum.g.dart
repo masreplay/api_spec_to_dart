@@ -6,10 +6,8 @@ part of 'order_status_enum.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$OrderStatusEnumImpl _$$OrderStatusEnumImplFromJson(
-        Map<String, dynamic> json) =>
-    _$OrderStatusEnumImpl();
-
-Map<String, dynamic> _$$OrderStatusEnumImplToJson(
-        _$OrderStatusEnumImpl instance) =>
-    <String, dynamic>{};
+const _$OrderStatusEnumEnumMap = {
+  OrderStatusEnum.pending: 'pending',
+  OrderStatusEnum.approved: 'approved',
+  OrderStatusEnum.rejected: 'rejected',
+};

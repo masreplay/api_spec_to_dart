@@ -115,10 +115,6 @@ abstract class $OrderResponseCopyWith<$Res> {
       @JsonKey(name: 'id') int id,
       @JsonKey(name: 'student') StudentTable? student});
 
-  $OrderTypeEnumCopyWith<$Res>? get orderType;
-  $OrderStatusEnumCopyWith<$Res>? get orderStatus;
-  $ShippingStatusEnumCopyWith<$Res>? get shippingStatus;
-  $DiscountTypeEnumCopyWith<$Res>? get discountType;
   $StudentTableCopyWith<$Res>? get student;
 }
 
@@ -231,62 +227,6 @@ class _$OrderResponseCopyWithImpl<$Res, $Val extends OrderResponse>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $OrderTypeEnumCopyWith<$Res>? get orderType {
-    if (_value.orderType == null) {
-      return null;
-    }
-
-    return $OrderTypeEnumCopyWith<$Res>(_value.orderType!, (value) {
-      return _then(_value.copyWith(orderType: value) as $Val);
-    });
-  }
-
-  /// Create a copy of OrderResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $OrderStatusEnumCopyWith<$Res>? get orderStatus {
-    if (_value.orderStatus == null) {
-      return null;
-    }
-
-    return $OrderStatusEnumCopyWith<$Res>(_value.orderStatus!, (value) {
-      return _then(_value.copyWith(orderStatus: value) as $Val);
-    });
-  }
-
-  /// Create a copy of OrderResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ShippingStatusEnumCopyWith<$Res>? get shippingStatus {
-    if (_value.shippingStatus == null) {
-      return null;
-    }
-
-    return $ShippingStatusEnumCopyWith<$Res>(_value.shippingStatus!, (value) {
-      return _then(_value.copyWith(shippingStatus: value) as $Val);
-    });
-  }
-
-  /// Create a copy of OrderResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $DiscountTypeEnumCopyWith<$Res>? get discountType {
-    if (_value.discountType == null) {
-      return null;
-    }
-
-    return $DiscountTypeEnumCopyWith<$Res>(_value.discountType!, (value) {
-      return _then(_value.copyWith(discountType: value) as $Val);
-    });
-  }
-
-  /// Create a copy of OrderResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
   $StudentTableCopyWith<$Res>? get student {
     if (_value.student == null) {
       return null;
@@ -326,14 +266,6 @@ abstract class _$$OrderResponseImplCopyWith<$Res>
       @JsonKey(name: 'id') int id,
       @JsonKey(name: 'student') StudentTable? student});
 
-  @override
-  $OrderTypeEnumCopyWith<$Res>? get orderType;
-  @override
-  $OrderStatusEnumCopyWith<$Res>? get orderStatus;
-  @override
-  $ShippingStatusEnumCopyWith<$Res>? get shippingStatus;
-  @override
-  $DiscountTypeEnumCopyWith<$Res>? get discountType;
   @override
   $StudentTableCopyWith<$Res>? get student;
 }

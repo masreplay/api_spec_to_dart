@@ -13,11 +13,10 @@ _$OrderResponseImpl _$$OrderResponseImplFromJson(Map<String, dynamic> json) =>
       product: json['product'],
       orderType: json['order_type'] == null
           ? null
-          : OrderTypeEnum.fromJson(json['order_type'] as Map<String, dynamic>),
+          : OrderTypeEnum.fromJson(json['order_type'] as String),
       orderStatus: json['order_status'] == null
           ? null
-          : OrderStatusEnum.fromJson(
-              json['order_status'] as Map<String, dynamic>),
+          : OrderStatusEnum.fromJson(json['order_status'] as String),
       orderStatusHistory: json['order_status_history'] as Map<String, dynamic>?,
       quantity: (json['quantity'] as num?)?.toInt(),
       paymentMethod: json['payment_method'] as String?,
@@ -25,13 +24,11 @@ _$OrderResponseImpl _$$OrderResponseImplFromJson(Map<String, dynamic> json) =>
       shippingAddress: json['shipping_address'] as String?,
       shippingStatus: json['shipping_status'] == null
           ? null
-          : ShippingStatusEnum.fromJson(
-              json['shipping_status'] as Map<String, dynamic>),
+          : ShippingStatusEnum.fromJson(json['shipping_status'] as String),
       discount: json['discount'] as num?,
       discountType: json['discount_type'] == null
           ? null
-          : DiscountTypeEnum.fromJson(
-              json['discount_type'] as Map<String, dynamic>),
+          : DiscountTypeEnum.fromJson(json['discount_type'] as String),
       paymentProcessingId: json['payment_processing_id'] as String?,
       finalPrice: json['final_price'] as num?,
       id: (json['id'] as num).toInt(),

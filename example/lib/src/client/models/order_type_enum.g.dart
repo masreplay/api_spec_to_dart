@@ -6,8 +6,11 @@ part of 'order_type_enum.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$OrderTypeEnumImpl _$$OrderTypeEnumImplFromJson(Map<String, dynamic> json) =>
-    _$OrderTypeEnumImpl();
-
-Map<String, dynamic> _$$OrderTypeEnumImplToJson(_$OrderTypeEnumImpl instance) =>
-    <String, dynamic>{};
+const _$OrderTypeEnumEnumMap = {
+  OrderTypeEnum.ekyc: 'ekyc',
+  OrderTypeEnum.course: 'course',
+  OrderTypeEnum.certificate: 'certificate',
+  OrderTypeEnum.payment: 'payment',
+  OrderTypeEnum.scholarship: 'scholarship',
+  OrderTypeEnum.enrollment: 'enrollment',
+};

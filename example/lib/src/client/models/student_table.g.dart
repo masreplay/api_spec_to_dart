@@ -23,16 +23,15 @@ _$StudentTableImpl _$$StudentTableImplFromJson(Map<String, dynamic> json) =>
       englishMotherName2: json['english_mother_name2'] as String?,
       englishMotherName3: json['english_mother_name3'] as String?,
       gender: json['gender'] == null
-          ? 1
-          : GenderEnum.fromJson(json['gender'] as Map<String, dynamic>),
+          ? GenderEnum.value1
+          : GenderEnum.fromJson((json['gender'] as num).toInt()),
       citizenshipType: json['citizenship_type'] == null
-          ? 1
+          ? CitizenshipTypeEnum.value1
           : CitizenshipTypeEnum.fromJson(
-              json['citizenship_type'] as Map<String, dynamic>),
+              (json['citizenship_type'] as num).toInt()),
       bloodGroup: json['blood_group'] == null
           ? null
-          : BloodGroupEnum.fromJson(
-              json['blood_group'] as Map<String, dynamic>),
+          : BloodGroupEnum.fromJson((json['blood_group'] as num).toInt()),
       dateOfBirth: json['date_of_birth'] == null
           ? null
           : DateTime.parse(json['date_of_birth'] as String),

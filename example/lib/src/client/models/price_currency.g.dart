@@ -6,8 +6,7 @@ part of 'price_currency.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PriceCurrencyImpl _$$PriceCurrencyImplFromJson(Map<String, dynamic> json) =>
-    _$PriceCurrencyImpl();
-
-Map<String, dynamic> _$$PriceCurrencyImplToJson(_$PriceCurrencyImpl instance) =>
-    <String, dynamic>{};
+const _$PriceCurrencyEnumMap = {
+  PriceCurrency.iqd: 'IQD',
+  PriceCurrency.usd: 'USD',
+};

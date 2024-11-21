@@ -69,7 +69,6 @@ abstract class $StudentAuthResponseCopyWith<$Res> {
       @JsonKey(name: 'user_role') UserRole userRole,
       @JsonKey(name: 'status') AuthenticationStatusResponse status});
 
-  $UserRoleCopyWith<$Res> get userRole;
   $AuthenticationStatusResponseCopyWith<$Res> get status;
 }
 
@@ -132,16 +131,6 @@ class _$StudentAuthResponseCopyWithImpl<$Res, $Val extends StudentAuthResponse>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $UserRoleCopyWith<$Res> get userRole {
-    return $UserRoleCopyWith<$Res>(_value.userRole, (value) {
-      return _then(_value.copyWith(userRole: value) as $Val);
-    });
-  }
-
-  /// Create a copy of StudentAuthResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
   $AuthenticationStatusResponseCopyWith<$Res> get status {
     return $AuthenticationStatusResponseCopyWith<$Res>(_value.status, (value) {
       return _then(_value.copyWith(status: value) as $Val);
@@ -166,8 +155,6 @@ abstract class _$$StudentAuthResponseImplCopyWith<$Res>
       @JsonKey(name: 'user_role') UserRole userRole,
       @JsonKey(name: 'status') AuthenticationStatusResponse status});
 
-  @override
-  $UserRoleCopyWith<$Res> get userRole;
   @override
   $AuthenticationStatusResponseCopyWith<$Res> get status;
 }
@@ -236,7 +223,7 @@ class _$StudentAuthResponseImpl extends _StudentAuthResponse {
       @JsonKey(name: 'refresh_token') required this.refreshToken,
       @JsonKey(name: 'refresh_expires_in') required this.refreshExpiresIn,
       @JsonKey(name: 'user_id') required this.userId,
-      @JsonKey(name: 'user_role') required this.userRole = 0,
+      @JsonKey(name: 'user_role') required this.userRole = UserRole.value0,
       @JsonKey(name: 'status') required this.status})
       : super._();
 

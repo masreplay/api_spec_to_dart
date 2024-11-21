@@ -21,6 +21,7 @@ class BaseResponseListNationalismsPublic
   }) = _BaseResponseListNationalismsPublic;
 
   factory BaseResponseListNationalismsPublic.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseListNationalismsPublicFromJson(json);
 }

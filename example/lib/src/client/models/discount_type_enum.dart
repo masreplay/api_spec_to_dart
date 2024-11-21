@@ -1,17 +1,23 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../convertors.dart';
-
-part 'discount_type_enum.freezed.dart';
 part 'discount_type_enum.g.dart';
 
-@freezed
-class DiscountTypeEnum with _$DiscountTypeEnum {
-  const DiscountTypeEnum._();
+@JsonEnum(valueField: 'value', alwaysCreate: true)
+enum DiscountTypeEnum {
+  percentage('percentage'),
+  amount('amount'),
+  value0('0'),
+  ;
 
-  @JsonSerializable(converters: convertors)
-  const factory DiscountTypeEnum() = _DiscountTypeEnum;
+  const DiscountTypeEnum(this.value);
 
-  factory DiscountTypeEnum.fromJson(Map<String, dynamic> json) =>
-      _$DiscountTypeEnumFromJson(json);
+  final String value;
+
+  String toJson() => _$DiscountTypeEnumEnumMap[this]!;
+  factory DiscountTypeEnum.fromJson(String value) {
+    return values.firstWhere(
+      (e) => e.value == value,
+      orElse: () => values.first,
+    );
+  }
 }

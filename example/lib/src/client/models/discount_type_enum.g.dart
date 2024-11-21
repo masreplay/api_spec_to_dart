@@ -6,10 +6,8 @@ part of 'discount_type_enum.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$DiscountTypeEnumImpl _$$DiscountTypeEnumImplFromJson(
-        Map<String, dynamic> json) =>
-    _$DiscountTypeEnumImpl();
-
-Map<String, dynamic> _$$DiscountTypeEnumImplToJson(
-        _$DiscountTypeEnumImpl instance) =>
-    <String, dynamic>{};
+const _$DiscountTypeEnumEnumMap = {
+  DiscountTypeEnum.percentage: 'percentage',
+  DiscountTypeEnum.amount: 'amount',
+  DiscountTypeEnum.value0: '0',
+};

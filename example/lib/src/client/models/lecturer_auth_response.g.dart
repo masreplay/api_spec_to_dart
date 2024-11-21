@@ -15,8 +15,8 @@ _$LecturerAuthResponseImpl _$$LecturerAuthResponseImplFromJson(
       refreshExpiresIn: (json['refresh_expires_in'] as num).toInt(),
       userId: (json['user_id'] as num).toInt(),
       userRole: json['user_role'] == null
-          ? 1
-          : UserRole.fromJson(json['user_role'] as Map<String, dynamic>),
+          ? UserRole.value1
+          : UserRole.fromJson((json['user_role'] as num).toInt()),
     );
 
 Map<String, dynamic> _$$LecturerAuthResponseImplToJson(

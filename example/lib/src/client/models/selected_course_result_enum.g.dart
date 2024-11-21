@@ -6,10 +6,11 @@ part of 'selected_course_result_enum.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SelectedCourseResultEnumImpl _$$SelectedCourseResultEnumImplFromJson(
-        Map<String, dynamic> json) =>
-    _$SelectedCourseResultEnumImpl();
-
-Map<String, dynamic> _$$SelectedCourseResultEnumImplToJson(
-        _$SelectedCourseResultEnumImpl instance) =>
-    <String, dynamic>{};
+const _$SelectedCourseResultEnumEnumMap = {
+  SelectedCourseResultEnum.value0: 1,
+  SelectedCourseResultEnum.value1: 2,
+  SelectedCourseResultEnum.value2: 3,
+  SelectedCourseResultEnum.value3: 4,
+  SelectedCourseResultEnum.value4: 5,
+  SelectedCourseResultEnum.value5: 6,
+};

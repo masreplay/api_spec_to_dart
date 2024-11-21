@@ -49,8 +49,6 @@ abstract class $RegistrationRequestStatusResponseCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'status') StudentRequestStatus status,
       @JsonKey(name: 'message') String? message});
-
-  $StudentRequestStatusCopyWith<$Res> get status;
 }
 
 /// @nodoc
@@ -83,16 +81,6 @@ class _$RegistrationRequestStatusResponseCopyWithImpl<$Res,
               as String?,
     ) as $Val);
   }
-
-  /// Create a copy of RegistrationRequestStatusResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $StudentRequestStatusCopyWith<$Res> get status {
-    return $StudentRequestStatusCopyWith<$Res>(_value.status, (value) {
-      return _then(_value.copyWith(status: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -107,9 +95,6 @@ abstract class _$$RegistrationRequestStatusResponseImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'status') StudentRequestStatus status,
       @JsonKey(name: 'message') String? message});
-
-  @override
-  $StudentRequestStatusCopyWith<$Res> get status;
 }
 
 /// @nodoc

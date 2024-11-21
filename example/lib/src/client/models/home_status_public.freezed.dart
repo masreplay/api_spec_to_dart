@@ -55,8 +55,6 @@ abstract class $HomeStatusPublicCopyWith<$Res> {
       @JsonKey(name: 'title') String title,
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'status') HomeProcessStatus status});
-
-  $HomeProcessStatusCopyWith<$Res> get status;
 }
 
 /// @nodoc
@@ -98,16 +96,6 @@ class _$HomeStatusPublicCopyWithImpl<$Res, $Val extends HomeStatusPublic>
               as HomeProcessStatus,
     ) as $Val);
   }
-
-  /// Create a copy of HomeStatusPublic
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $HomeProcessStatusCopyWith<$Res> get status {
-    return $HomeProcessStatusCopyWith<$Res>(_value.status, (value) {
-      return _then(_value.copyWith(status: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -123,9 +111,6 @@ abstract class _$$HomeStatusPublicImplCopyWith<$Res>
       @JsonKey(name: 'title') String title,
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'status') HomeProcessStatus status});
-
-  @override
-  $HomeProcessStatusCopyWith<$Res> get status;
 }
 
 /// @nodoc
@@ -172,10 +157,11 @@ class __$$HomeStatusPublicImplCopyWithImpl<$Res>
 @JsonSerializable(converters: convertors)
 class _$HomeStatusPublicImpl extends _HomeStatusPublic {
   const _$HomeStatusPublicImpl(
-      {@JsonKey(name: 'type') required this.type = status,
+      {@JsonKey(name: 'type') required this.type = 'status',
       @JsonKey(name: 'title') required this.title,
       @JsonKey(name: 'description') required this.description,
-      @JsonKey(name: 'status') required this.status = no_study_program})
+      @JsonKey(name: 'status')
+      required this.status = HomeProcessStatus.noStudyProgram})
       : super._();
 
   factory _$HomeStatusPublicImpl.fromJson(Map<String, dynamic> json) =>

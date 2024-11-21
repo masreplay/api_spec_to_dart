@@ -19,7 +19,7 @@ _$CoursePublicImpl _$$CoursePublicImplFromJson(Map<String, dynamic> json) =>
       courseStatus: json['course_status'] == null
           ? null
           : StudentCourseStatusEnum.fromJson(
-              json['course_status'] as Map<String, dynamic>),
+              (json['course_status'] as num).toInt()),
       courseFees: (json['course_fees'] as num).toInt(),
       courseDistributionLevel:
           (json['course_distribution_level'] as num).toInt(),

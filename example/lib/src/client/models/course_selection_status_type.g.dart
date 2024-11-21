@@ -6,10 +6,7 @@ part of 'course_selection_status_type.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CourseSelectionStatusTypeImpl _$$CourseSelectionStatusTypeImplFromJson(
-        Map<String, dynamic> json) =>
-    _$CourseSelectionStatusTypeImpl();
-
-Map<String, dynamic> _$$CourseSelectionStatusTypeImplToJson(
-        _$CourseSelectionStatusTypeImpl instance) =>
-    <String, dynamic>{};
+const _$CourseSelectionStatusTypeEnumMap = {
+  CourseSelectionStatusType.select: 'select',
+  CourseSelectionStatusType.edit: 'edit',
+};

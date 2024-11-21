@@ -1,17 +1,24 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../convertors.dart';
-
-part 'attendance_status_enum.freezed.dart';
 part 'attendance_status_enum.g.dart';
 
-@freezed
-class AttendanceStatusEnum with _$AttendanceStatusEnum {
-  const AttendanceStatusEnum._();
+@JsonEnum(valueField: 'value', alwaysCreate: true)
+enum AttendanceStatusEnum {
+  value0(1),
+  value1(2),
+  value2(3),
+  value3(4),
+  ;
 
-  @JsonSerializable(converters: convertors)
-  const factory AttendanceStatusEnum() = _AttendanceStatusEnum;
+  const AttendanceStatusEnum(this.value);
 
-  factory AttendanceStatusEnum.fromJson(Map<String, dynamic> json) =>
-      _$AttendanceStatusEnumFromJson(json);
+  final int value;
+
+  int toJson() => _$AttendanceStatusEnumEnumMap[this]!;
+  factory AttendanceStatusEnum.fromJson(int value) {
+    return values.firstWhere(
+      (e) => e.value == value,
+      orElse: () => values.first,
+    );
+  }
 }

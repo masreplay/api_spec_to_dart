@@ -124,7 +124,6 @@ abstract class $StudentSelectedCoursesPublicCopyWith<$Res> {
 
   $CourseTableCopyWith<$Res>? get course;
   $CourseDistributionsTableCopyWith<$Res>? get courseDistribution;
-  $SelectedCourseResultEnumCopyWith<$Res> get result;
 }
 
 /// @nodoc
@@ -261,16 +260,6 @@ class _$StudentSelectedCoursesPublicCopyWithImpl<$Res,
       return _then(_value.copyWith(courseDistribution: value) as $Val);
     });
   }
-
-  /// Create a copy of StudentSelectedCoursesPublic
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $SelectedCourseResultEnumCopyWith<$Res> get result {
-    return $SelectedCourseResultEnumCopyWith<$Res>(_value.result, (value) {
-      return _then(_value.copyWith(result: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -306,8 +295,6 @@ abstract class _$$StudentSelectedCoursesPublicImplCopyWith<$Res>
   $CourseTableCopyWith<$Res>? get course;
   @override
   $CourseDistributionsTableCopyWith<$Res>? get courseDistribution;
-  @override
-  $SelectedCourseResultEnumCopyWith<$Res> get result;
 }
 
 /// @nodoc
@@ -439,7 +426,8 @@ class _$StudentSelectedCoursesPublicImpl extends _StudentSelectedCoursesPublic {
       @JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'course') required this.course,
       @JsonKey(name: 'course_distribution') required this.courseDistribution,
-      @JsonKey(name: 'result') required this.result = 1})
+      @JsonKey(name: 'result')
+      required this.result = SelectedCourseResultEnum.value1})
       : super._();
 
   factory _$StudentSelectedCoursesPublicImpl.fromJson(

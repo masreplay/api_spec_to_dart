@@ -45,8 +45,6 @@ abstract class $InitEkycResponseCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id') String id,
       @JsonKey(name: 'status') EkycStatusEnum status});
-
-  $EkycStatusEnumCopyWith<$Res> get status;
 }
 
 /// @nodoc
@@ -78,16 +76,6 @@ class _$InitEkycResponseCopyWithImpl<$Res, $Val extends InitEkycResponse>
               as EkycStatusEnum,
     ) as $Val);
   }
-
-  /// Create a copy of InitEkycResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $EkycStatusEnumCopyWith<$Res> get status {
-    return $EkycStatusEnumCopyWith<$Res>(_value.status, (value) {
-      return _then(_value.copyWith(status: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -101,9 +89,6 @@ abstract class _$$InitEkycResponseImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'id') String id,
       @JsonKey(name: 'status') EkycStatusEnum status});
-
-  @override
-  $EkycStatusEnumCopyWith<$Res> get status;
 }
 
 /// @nodoc

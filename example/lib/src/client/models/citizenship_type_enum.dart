@@ -1,17 +1,22 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../convertors.dart';
-
-part 'citizenship_type_enum.freezed.dart';
 part 'citizenship_type_enum.g.dart';
 
-@freezed
-class CitizenshipTypeEnum with _$CitizenshipTypeEnum {
-  const CitizenshipTypeEnum._();
+@JsonEnum(valueField: 'value', alwaysCreate: true)
+enum CitizenshipTypeEnum {
+  value0(1),
+  value1(2),
+  ;
 
-  @JsonSerializable(converters: convertors)
-  const factory CitizenshipTypeEnum() = _CitizenshipTypeEnum;
+  const CitizenshipTypeEnum(this.value);
 
-  factory CitizenshipTypeEnum.fromJson(Map<String, dynamic> json) =>
-      _$CitizenshipTypeEnumFromJson(json);
+  final int value;
+
+  int toJson() => _$CitizenshipTypeEnumEnumMap[this]!;
+  factory CitizenshipTypeEnum.fromJson(int value) {
+    return values.firstWhere(
+      (e) => e.value == value,
+      orElse: () => values.first,
+    );
+  }
 }

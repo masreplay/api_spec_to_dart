@@ -1,17 +1,25 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../convertors.dart';
-
-part 'student_request_status.freezed.dart';
 part 'student_request_status.g.dart';
 
-@freezed
-class StudentRequestStatus with _$StudentRequestStatus {
-  const StudentRequestStatus._();
+@JsonEnum(valueField: 'value', alwaysCreate: true)
+enum StudentRequestStatus {
+  value0(0),
+  value1(1),
+  value2(2),
+  value3(3),
+  value4(4),
+  ;
 
-  @JsonSerializable(converters: convertors)
-  const factory StudentRequestStatus() = _StudentRequestStatus;
+  const StudentRequestStatus(this.value);
 
-  factory StudentRequestStatus.fromJson(Map<String, dynamic> json) =>
-      _$StudentRequestStatusFromJson(json);
+  final int value;
+
+  int toJson() => _$StudentRequestStatusEnumMap[this]!;
+  factory StudentRequestStatus.fromJson(int value) {
+    return values.firstWhere(
+      (e) => e.value == value,
+      orElse: () => values.first,
+    );
+  }
 }

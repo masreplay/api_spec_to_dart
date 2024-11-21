@@ -6,9 +6,8 @@ part of 'semester_filter.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SemesterFilterImpl _$$SemesterFilterImplFromJson(Map<String, dynamic> json) =>
-    _$SemesterFilterImpl();
-
-Map<String, dynamic> _$$SemesterFilterImplToJson(
-        _$SemesterFilterImpl instance) =>
-    <String, dynamic>{};
+const _$SemesterFilterEnumMap = {
+  SemesterFilter.all: 'all',
+  SemesterFilter.mySubjects: 'my_subjects',
+  SemesterFilter.unsubscribedSubjects: 'unsubscribed_subjects',
+};

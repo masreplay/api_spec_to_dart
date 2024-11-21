@@ -11,7 +11,7 @@ _$HomeFeedStudyProgramSectionPublicImpl
             Map<String, dynamic> json) =>
         _$HomeFeedStudyProgramSectionPublicImpl(
           id: (json['id'] as num).toInt(),
-          type: json['type'] as String? ?? study_program,
+          type: json['type'] as String? ?? 'study_program',
           title: json['title'] as String,
           description: json['description'] as String?,
           data: HomeFeedStudyProgramSectionDataPublic.fromJson(

@@ -262,7 +262,7 @@ class _$UISelectFormFieldImpl extends _UISelectFormField {
       @JsonKey(name: 'is_required') required this.isRequired,
       @JsonKey(name: 'read_only') required this.readOnly = false,
       @JsonKey(name: 'doc') required this.doc,
-      @JsonKey(name: 'type') required this.type = select,
+      @JsonKey(name: 'type') required this.type = 'select',
       @JsonKey(name: 'options')
       required final List<UISelectFormFieldOption> options = const [],
       @JsonKey(name: 'default_value') required this.defaultValue,

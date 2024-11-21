@@ -6,10 +6,10 @@ part of 'student_request_status.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$StudentRequestStatusImpl _$$StudentRequestStatusImplFromJson(
-        Map<String, dynamic> json) =>
-    _$StudentRequestStatusImpl();
-
-Map<String, dynamic> _$$StudentRequestStatusImplToJson(
-        _$StudentRequestStatusImpl instance) =>
-    <String, dynamic>{};
+const _$StudentRequestStatusEnumMap = {
+  StudentRequestStatus.value0: 0,
+  StudentRequestStatus.value1: 1,
+  StudentRequestStatus.value2: 2,
+  StudentRequestStatus.value3: 3,
+  StudentRequestStatus.value4: 4,
+};

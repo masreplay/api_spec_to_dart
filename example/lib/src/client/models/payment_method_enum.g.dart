@@ -6,10 +6,7 @@ part of 'payment_method_enum.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PaymentMethodEnumImpl _$$PaymentMethodEnumImplFromJson(
-        Map<String, dynamic> json) =>
-    _$PaymentMethodEnumImpl();
-
-Map<String, dynamic> _$$PaymentMethodEnumImplToJson(
-        _$PaymentMethodEnumImpl instance) =>
-    <String, dynamic>{};
+const _$PaymentMethodEnumEnumMap = {
+  PaymentMethodEnum.value0: 0,
+  PaymentMethodEnum.value1: 1,
+};

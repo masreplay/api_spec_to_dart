@@ -10,8 +10,8 @@ _$RegistrationRequestStatusResponseImpl
     _$$RegistrationRequestStatusResponseImplFromJson(
             Map<String, dynamic> json) =>
         _$RegistrationRequestStatusResponseImpl(
-          status: StudentRequestStatus.fromJson(
-              json['status'] as Map<String, dynamic>),
+          status:
+              StudentRequestStatus.fromJson((json['status'] as num).toInt()),
           message: json['message'] as String?,
         );
 

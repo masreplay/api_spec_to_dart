@@ -293,7 +293,7 @@ class _$UIDateFormFieldImpl extends _UIDateFormField {
       @JsonKey(name: 'is_required') required this.isRequired,
       @JsonKey(name: 'read_only') required this.readOnly = false,
       @JsonKey(name: 'doc') required this.doc,
-      @JsonKey(name: 'type') required this.type = date,
+      @JsonKey(name: 'type') required this.type = 'date',
       @JsonKey(name: 'default_value') required this.defaultValue,
       @JsonKey(name: 'format') required this.format,
       @JsonKey(name: 'example') required this.example,

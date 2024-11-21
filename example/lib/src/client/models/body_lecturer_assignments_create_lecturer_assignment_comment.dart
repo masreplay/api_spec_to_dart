@@ -17,6 +17,7 @@ class BodyLecturerAssignmentsCreateLecturerAssignmentComment
   }) = _BodyLecturerAssignmentsCreateLecturerAssignmentComment;
 
   factory BodyLecturerAssignmentsCreateLecturerAssignmentComment.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$BodyLecturerAssignmentsCreateLecturerAssignmentCommentFromJson(json);
 }

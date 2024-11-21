@@ -277,7 +277,7 @@ class _$UITextFormFieldImpl extends _UITextFormField {
       @JsonKey(name: 'is_required') required this.isRequired,
       @JsonKey(name: 'read_only') required this.readOnly = false,
       @JsonKey(name: 'doc') required this.doc,
-      @JsonKey(name: 'type') required this.type = text,
+      @JsonKey(name: 'type') required this.type = 'text',
       @JsonKey(name: 'regex') required this.regex,
       @JsonKey(name: 'default_value') required this.defaultValue,
       @JsonKey(name: 'example') required this.example,

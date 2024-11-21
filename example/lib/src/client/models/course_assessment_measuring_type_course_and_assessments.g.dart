@@ -17,19 +17,18 @@ _$CourseAssessmentMeasuringTypeCourseAndAssessmentsImpl
               : DateTime.parse(json['date'] as String),
           type: json['type'] == null
               ? null
-              : AssignmentTypeEnum.fromJson(
-                  json['type'] as Map<String, dynamic>),
+              : AssignmentTypeEnum.fromJson((json['type'] as num).toInt()),
           status: json['status'] == null
               ? null
               : AssignmentClassificationEnum.fromJson(
-                  json['status'] as Map<String, dynamic>),
+                  (json['status'] as num).toInt()),
           totalDegree: (json['total_degree'] as num?)?.toInt(),
           finalDegree: (json['final_degree'] as num?)?.toInt(),
           numberOfTimes: (json['number_of_times'] as num?)?.toInt(),
           attendanceStatus: json['attendance_status'] == null
               ? null
               : AttendanceStatusEnum.fromJson(
-                  json['attendance_status'] as Map<String, dynamic>),
+                  (json['attendance_status'] as num).toInt()),
           link: json['link'] as String?,
         );
 

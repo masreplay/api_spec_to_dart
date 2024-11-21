@@ -14,8 +14,7 @@ _$HomeFeedStudyProgramSectionDataPublicImpl
           name: (json['name'] as num).toInt(),
           studyYear: json['study_year'] as String,
           studyYearFormatted: json['study_year_formatted'] as String,
-          studyType: StudyProgramType.fromJson(
-              json['study_type'] as Map<String, dynamic>),
+          studyType: StudyProgramType.fromJson(json['study_type'] as String),
           studyTypeFormatted: json['study_type_formatted'] as String,
           semester: json['semester'] as String,
           grade: (json['grade'] as num).toInt(),

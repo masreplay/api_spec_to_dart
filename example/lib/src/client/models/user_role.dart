@@ -1,17 +1,22 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../convertors.dart';
-
-part 'user_role.freezed.dart';
 part 'user_role.g.dart';
 
-@freezed
-class UserRole with _$UserRole {
-  const UserRole._();
+@JsonEnum(valueField: 'value', alwaysCreate: true)
+enum UserRole {
+  value0(0),
+  value1(1),
+  ;
 
-  @JsonSerializable(converters: convertors)
-  const factory UserRole() = _UserRole;
+  const UserRole(this.value);
 
-  factory UserRole.fromJson(Map<String, dynamic> json) =>
-      _$UserRoleFromJson(json);
+  final int value;
+
+  int toJson() => _$UserRoleEnumMap[this]!;
+  factory UserRole.fromJson(int value) {
+    return values.firstWhere(
+      (e) => e.value == value,
+      orElse: () => values.first,
+    );
+  }
 }

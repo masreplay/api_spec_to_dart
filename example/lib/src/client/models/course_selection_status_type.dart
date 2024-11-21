@@ -1,17 +1,22 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../convertors.dart';
-
-part 'course_selection_status_type.freezed.dart';
 part 'course_selection_status_type.g.dart';
 
-@freezed
-class CourseSelectionStatusType with _$CourseSelectionStatusType {
-  const CourseSelectionStatusType._();
+@JsonEnum(valueField: 'value', alwaysCreate: true)
+enum CourseSelectionStatusType {
+  select('select'),
+  edit('edit'),
+  ;
 
-  @JsonSerializable(converters: convertors)
-  const factory CourseSelectionStatusType() = _CourseSelectionStatusType;
+  const CourseSelectionStatusType(this.value);
 
-  factory CourseSelectionStatusType.fromJson(Map<String, dynamic> json) =>
-      _$CourseSelectionStatusTypeFromJson(json);
+  final String value;
+
+  String toJson() => _$CourseSelectionStatusTypeEnumMap[this]!;
+  factory CourseSelectionStatusType.fromJson(String value) {
+    return values.firstWhere(
+      (e) => e.value == value,
+      orElse: () => values.first,
+    );
+  }
 }

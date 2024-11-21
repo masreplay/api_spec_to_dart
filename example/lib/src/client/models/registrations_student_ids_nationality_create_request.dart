@@ -22,6 +22,7 @@ class RegistrationsStudentIdsNationalityCreateRequest
   }) = _RegistrationsStudentIdsNationalityCreateRequest;
 
   factory RegistrationsStudentIdsNationalityCreateRequest.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$RegistrationsStudentIdsNationalityCreateRequestFromJson(json);
 }

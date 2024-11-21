@@ -10,7 +10,7 @@ _$InitEkycResponseImpl _$$InitEkycResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$InitEkycResponseImpl(
       id: json['id'] as String,
-      status: EkycStatusEnum.fromJson(json['status'] as Map<String, dynamic>),
+      status: EkycStatusEnum.fromJson((json['status'] as num).toInt()),
     );
 
 Map<String, dynamic> _$$InitEkycResponseImplToJson(

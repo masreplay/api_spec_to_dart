@@ -10,7 +10,7 @@ _$HomeFeedSummerySectionModelImpl _$$HomeFeedSummerySectionModelImplFromJson(
         Map<String, dynamic> json) =>
     _$HomeFeedSummerySectionModelImpl(
       id: (json['id'] as num).toInt(),
-      type: json['type'] as String? ?? summary,
+      type: json['type'] as String? ?? 'summary',
       title: json['title'] as String,
       description: json['description'] as String?,
       data: HomeFeedSummerySectionDataPublic.fromJson(

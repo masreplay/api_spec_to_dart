@@ -65,8 +65,6 @@ abstract class $PaymentMethodPublicCopyWith<$Res> {
       @JsonKey(name: 'url') String url,
       @JsonKey(name: 'image') String image,
       @JsonKey(name: 'type') PaymentMethodEnum type});
-
-  $PaymentMethodEnumCopyWith<$Res> get type;
 }
 
 /// @nodoc
@@ -118,16 +116,6 @@ class _$PaymentMethodPublicCopyWithImpl<$Res, $Val extends PaymentMethodPublic>
               as PaymentMethodEnum,
     ) as $Val);
   }
-
-  /// Create a copy of PaymentMethodPublic
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $PaymentMethodEnumCopyWith<$Res> get type {
-    return $PaymentMethodEnumCopyWith<$Res>(_value.type, (value) {
-      return _then(_value.copyWith(type: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -145,9 +133,6 @@ abstract class _$$PaymentMethodPublicImplCopyWith<$Res>
       @JsonKey(name: 'url') String url,
       @JsonKey(name: 'image') String image,
       @JsonKey(name: 'type') PaymentMethodEnum type});
-
-  @override
-  $PaymentMethodEnumCopyWith<$Res> get type;
 }
 
 /// @nodoc

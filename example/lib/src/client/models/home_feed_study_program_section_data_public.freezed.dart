@@ -84,8 +84,6 @@ abstract class $HomeFeedStudyProgramSectionDataPublicCopyWith<$Res> {
       @JsonKey(name: 'semester') String semester,
       @JsonKey(name: 'grade') int grade,
       @JsonKey(name: 'grade_formatted') String gradeFormatted});
-
-  $StudyProgramTypeCopyWith<$Res> get studyType;
 }
 
 /// @nodoc
@@ -153,16 +151,6 @@ class _$HomeFeedStudyProgramSectionDataPublicCopyWithImpl<$Res,
               as String,
     ) as $Val);
   }
-
-  /// Create a copy of HomeFeedStudyProgramSectionDataPublic
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $StudyProgramTypeCopyWith<$Res> get studyType {
-    return $StudyProgramTypeCopyWith<$Res>(_value.studyType, (value) {
-      return _then(_value.copyWith(studyType: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -184,9 +172,6 @@ abstract class _$$HomeFeedStudyProgramSectionDataPublicImplCopyWith<$Res>
       @JsonKey(name: 'semester') String semester,
       @JsonKey(name: 'grade') int grade,
       @JsonKey(name: 'grade_formatted') String gradeFormatted});
-
-  @override
-  $StudyProgramTypeCopyWith<$Res> get studyType;
 }
 
 /// @nodoc

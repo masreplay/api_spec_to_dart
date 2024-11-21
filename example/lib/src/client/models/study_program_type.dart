@@ -1,17 +1,22 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../convertors.dart';
-
-part 'study_program_type.freezed.dart';
 part 'study_program_type.g.dart';
 
-@freezed
-class StudyProgramType with _$StudyProgramType {
-  const StudyProgramType._();
+@JsonEnum(valueField: 'value', alwaysCreate: true)
+enum StudyProgramType {
+  daytime('daytime'),
+  evening('evening'),
+  ;
 
-  @JsonSerializable(converters: convertors)
-  const factory StudyProgramType() = _StudyProgramType;
+  const StudyProgramType(this.value);
 
-  factory StudyProgramType.fromJson(Map<String, dynamic> json) =>
-      _$StudyProgramTypeFromJson(json);
+  final String value;
+
+  String toJson() => _$StudyProgramTypeEnumMap[this]!;
+  factory StudyProgramType.fromJson(String value) {
+    return values.firstWhere(
+      (e) => e.value == value,
+      orElse: () => values.first,
+    );
+  }
 }

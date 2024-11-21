@@ -156,10 +156,6 @@ abstract class $StudentRegistrationPersonalInfoUpdateRequestCopyWith<$Res> {
       @JsonKey(name: 'religion_id') int religionId,
       @JsonKey(name: 'phone_number') String phoneNumber,
       @JsonKey(name: 'email') String? email});
-
-  $GenderEnumCopyWith<$Res> get gender;
-  $CitizenshipTypeEnumCopyWith<$Res> get citizenshipType;
-  $BloodGroupEnumCopyWith<$Res> get bloodGroup;
 }
 
 /// @nodoc
@@ -303,36 +299,6 @@ class _$StudentRegistrationPersonalInfoUpdateRequestCopyWithImpl<$Res,
               as String?,
     ) as $Val);
   }
-
-  /// Create a copy of StudentRegistrationPersonalInfoUpdateRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $GenderEnumCopyWith<$Res> get gender {
-    return $GenderEnumCopyWith<$Res>(_value.gender, (value) {
-      return _then(_value.copyWith(gender: value) as $Val);
-    });
-  }
-
-  /// Create a copy of StudentRegistrationPersonalInfoUpdateRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $CitizenshipTypeEnumCopyWith<$Res> get citizenshipType {
-    return $CitizenshipTypeEnumCopyWith<$Res>(_value.citizenshipType, (value) {
-      return _then(_value.copyWith(citizenshipType: value) as $Val);
-    });
-  }
-
-  /// Create a copy of StudentRegistrationPersonalInfoUpdateRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $BloodGroupEnumCopyWith<$Res> get bloodGroup {
-    return $BloodGroupEnumCopyWith<$Res>(_value.bloodGroup, (value) {
-      return _then(_value.copyWith(bloodGroup: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -370,13 +336,6 @@ abstract class _$$StudentRegistrationPersonalInfoUpdateRequestImplCopyWith<$Res>
       @JsonKey(name: 'religion_id') int religionId,
       @JsonKey(name: 'phone_number') String phoneNumber,
       @JsonKey(name: 'email') String? email});
-
-  @override
-  $GenderEnumCopyWith<$Res> get gender;
-  @override
-  $CitizenshipTypeEnumCopyWith<$Res> get citizenshipType;
-  @override
-  $BloodGroupEnumCopyWith<$Res> get bloodGroup;
 }
 
 /// @nodoc

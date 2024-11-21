@@ -1,17 +1,23 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../convertors.dart';
-
-part 'semester_filter.freezed.dart';
 part 'semester_filter.g.dart';
 
-@freezed
-class SemesterFilter with _$SemesterFilter {
-  const SemesterFilter._();
+@JsonEnum(valueField: 'value', alwaysCreate: true)
+enum SemesterFilter {
+  all('all'),
+  mySubjects('my_subjects'),
+  unsubscribedSubjects('unsubscribed_subjects'),
+  ;
 
-  @JsonSerializable(converters: convertors)
-  const factory SemesterFilter() = _SemesterFilter;
+  const SemesterFilter(this.value);
 
-  factory SemesterFilter.fromJson(Map<String, dynamic> json) =>
-      _$SemesterFilterFromJson(json);
+  final String value;
+
+  String toJson() => _$SemesterFilterEnumMap[this]!;
+  factory SemesterFilter.fromJson(String value) {
+    return values.firstWhere(
+      (e) => e.value == value,
+      orElse: () => values.first,
+    );
+  }
 }

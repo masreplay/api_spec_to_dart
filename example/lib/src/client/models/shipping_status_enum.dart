@@ -1,17 +1,23 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../convertors.dart';
-
-part 'shipping_status_enum.freezed.dart';
 part 'shipping_status_enum.g.dart';
 
-@freezed
-class ShippingStatusEnum with _$ShippingStatusEnum {
-  const ShippingStatusEnum._();
+@JsonEnum(valueField: 'value', alwaysCreate: true)
+enum ShippingStatusEnum {
+  pending('pending'),
+  underProcess('under_process'),
+  shipped('shipped'),
+  ;
 
-  @JsonSerializable(converters: convertors)
-  const factory ShippingStatusEnum() = _ShippingStatusEnum;
+  const ShippingStatusEnum(this.value);
 
-  factory ShippingStatusEnum.fromJson(Map<String, dynamic> json) =>
-      _$ShippingStatusEnumFromJson(json);
+  final String value;
+
+  String toJson() => _$ShippingStatusEnumEnumMap[this]!;
+  factory ShippingStatusEnum.fromJson(String value) {
+    return values.firstWhere(
+      (e) => e.value == value,
+      orElse: () => values.first,
+    );
+  }
 }

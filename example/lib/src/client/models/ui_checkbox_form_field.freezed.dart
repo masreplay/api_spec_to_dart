@@ -245,7 +245,7 @@ class _$UICheckboxFormFieldImpl extends _UICheckboxFormField {
       @JsonKey(name: 'is_required') required this.isRequired,
       @JsonKey(name: 'read_only') required this.readOnly = false,
       @JsonKey(name: 'doc') required this.doc,
-      @JsonKey(name: 'type') required this.type = checkbox,
+      @JsonKey(name: 'type') required this.type = 'checkbox',
       @JsonKey(name: 'default_value') required this.defaultValue = false,
       @JsonKey(name: 'example') required this.example})
       : super._();

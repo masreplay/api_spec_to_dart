@@ -6,9 +6,8 @@ part of 'ekyc_status_enum.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$EkycStatusEnumImpl _$$EkycStatusEnumImplFromJson(Map<String, dynamic> json) =>
-    _$EkycStatusEnumImpl();
-
-Map<String, dynamic> _$$EkycStatusEnumImplToJson(
-        _$EkycStatusEnumImpl instance) =>
-    <String, dynamic>{};
+const _$EkycStatusEnumEnumMap = {
+  EkycStatusEnum.value0: 0,
+  EkycStatusEnum.value1: 1,
+  EkycStatusEnum.value2: 2,
+};

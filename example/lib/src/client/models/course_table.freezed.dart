@@ -169,8 +169,6 @@ abstract class $CourseTableCopyWith<$Res> {
       @JsonKey(name: 'is_deleted') bool isDeleted,
       @JsonKey(name: 'deleter_id') int? deleterId,
       @JsonKey(name: 'deletion_time') DateTime? deletionTime});
-
-  $StudentCourseStatusEnumCopyWith<$Res>? get courseStatus;
 }
 
 /// @nodoc
@@ -323,21 +321,6 @@ class _$CourseTableCopyWithImpl<$Res, $Val extends CourseTable>
               as DateTime?,
     ) as $Val);
   }
-
-  /// Create a copy of CourseTable
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $StudentCourseStatusEnumCopyWith<$Res>? get courseStatus {
-    if (_value.courseStatus == null) {
-      return null;
-    }
-
-    return $StudentCourseStatusEnumCopyWith<$Res>(_value.courseStatus!,
-        (value) {
-      return _then(_value.copyWith(courseStatus: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -377,9 +360,6 @@ abstract class _$$CourseTableImplCopyWith<$Res>
       @JsonKey(name: 'is_deleted') bool isDeleted,
       @JsonKey(name: 'deleter_id') int? deleterId,
       @JsonKey(name: 'deletion_time') DateTime? deletionTime});
-
-  @override
-  $StudentCourseStatusEnumCopyWith<$Res>? get courseStatus;
 }
 
 /// @nodoc

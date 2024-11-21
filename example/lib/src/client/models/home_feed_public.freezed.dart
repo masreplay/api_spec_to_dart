@@ -127,7 +127,7 @@ class __$$HomeFeedPublicImplCopyWithImpl<$Res>
 @JsonSerializable(converters: convertors)
 class _$HomeFeedPublicImpl extends _HomeFeedPublic {
   const _$HomeFeedPublicImpl(
-      {@JsonKey(name: 'type') required this.type = feed,
+      {@JsonKey(name: 'type') required this.type = 'feed',
       @JsonKey(name: 'sections')
       required final List<HomeFeedSectionModel> sections})
       : _sections = sections,

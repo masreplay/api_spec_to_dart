@@ -45,8 +45,6 @@ abstract class $HomeFeedCourseSelectionStatusSectionDataPublicCopyWith<$Res> {
           HomeFeedCourseSelectionStatusSectionDataPublic>;
   @useResult
   $Res call({@JsonKey(name: 'status') CourseSelectionStatusType status});
-
-  $CourseSelectionStatusTypeCopyWith<$Res> get status;
 }
 
 /// @nodoc
@@ -75,16 +73,6 @@ class _$HomeFeedCourseSelectionStatusSectionDataPublicCopyWithImpl<$Res,
               as CourseSelectionStatusType,
     ) as $Val);
   }
-
-  /// Create a copy of HomeFeedCourseSelectionStatusSectionDataPublic
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $CourseSelectionStatusTypeCopyWith<$Res> get status {
-    return $CourseSelectionStatusTypeCopyWith<$Res>(_value.status, (value) {
-      return _then(_value.copyWith(status: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -99,9 +87,6 @@ abstract class _$$HomeFeedCourseSelectionStatusSectionDataPublicImplCopyWith<
   @override
   @useResult
   $Res call({@JsonKey(name: 'status') CourseSelectionStatusType status});
-
-  @override
-  $CourseSelectionStatusTypeCopyWith<$Res> get status;
 }
 
 /// @nodoc
