@@ -16,4 +16,10 @@ abstract class DevClient {
   Future<HttpResponse<dynamic>> proxyToMinio(
     @Path('file_path') String filePath,
   );
+
+  /// null
+  @POST('/dev/upload-file/')
+  Future<HttpResponse<dynamic>> uploadFile(
+    @Body() dynamic body,
+  );
 }

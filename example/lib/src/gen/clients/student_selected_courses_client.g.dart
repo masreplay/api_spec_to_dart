@@ -50,6 +50,38 @@ class _StudentSelectedCoursesClient implements StudentSelectedCoursesClient {
   }
 
   @override
+  Future<HttpResponse<dynamic>> updateSelectedCourses(
+    UpdateSelectedCoursesQueries queries,
+    List<UpdateSelectedCourses> body,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
+    final _headers = <String, dynamic>{};
+    final _data = body.map((e) => e.toJson()).toList();
+    final _options = _setStreamType<HttpResponse<dynamic>>(Options(
+      method: 'PATCH',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/api/v1/student/student_selected_courses/update',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch(_options);
+    final _value = _result.data;
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
+  }
+
+  @override
   Future<HttpResponse<dynamic>> readById(int id) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:example/src/gen/models/models.dart';
 
 part 'student_attendances_client.g.dart';
 
@@ -15,6 +16,12 @@ abstract class StudentAttendancesClient {
   /// null
   @GET('/api/v1/student/attendances/me')
   Future<HttpResponse<dynamic>> getMyAttendance();
+
+  /// null
+  @POST('/api/v1/student/attendances/me/check-in/')
+  Future<HttpResponse<dynamic>> checkInMyAttendance(
+    @Body() StudentAttendanceCreate body,
+  );
 
   /// null
   @GET('/api/v1/student/attendances/{course_id}/lectures')

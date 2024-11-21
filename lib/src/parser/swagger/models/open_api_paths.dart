@@ -30,6 +30,19 @@ class OpenApiPath with _$OpenApiPath {
   OpenApiPathMethod? get current {
     return get ?? post ?? put ?? delete ?? options ?? head ?? patch ?? trace;
   }
+
+  Map<String, OpenApiPathMethod> getAllMethods() {
+    return {
+      if (get case final get?) 'GET': get,
+      if (post case final post?) 'POST': post,
+      if (put case final put?) 'PUT': put,
+      if (delete case final delete?) 'DELETE': delete,
+      if (options case final options?) 'OPTIONS': options,
+      if (head case final head?) 'HEAD': head,
+      if (patch case final patch?) 'PATCH': patch,
+      if (trace case final trace?) 'TRACE': trace,
+    };
+  }
 }
 
 @freezed

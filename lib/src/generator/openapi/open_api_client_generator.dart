@@ -42,17 +42,18 @@ class OpenApiDartClientGenerator {
     for (final entry in functionsPaths) {
       final method = path[entry]!;
 
-      if (method.get != null) {
-        final response = method.get!.responses!['200']!;
+      for (final function in method.getAllMethods().entries) {
+        final response = function.value.responses!['200']!;
+        final type = function.key;
 
         final responseClassName = 'dynamic'; //
         response.content.applicationJson;
 
         buffer.writeln('/// ${method.delete}');
-        buffer.writeln('@GET(\'$entry\')');
+        buffer.writeln('@${type}(\'$entry\')');
 
-        final methodName = config
-            .renameMethod(method.get!.operationId.replaceAll(clientName, ''));
+        final methodName = config.renameMethod(
+            method.current!.operationId.replaceAll(clientName, ''));
 
         final parameters = method.current?.parameters;
 
@@ -60,6 +61,7 @@ class OpenApiDartClientGenerator {
           '''Future<HttpResponse<$responseClassName>> $methodName(''',
         );
 
+        /// --------- Queries -----------
         final queries = parameters
                 ?.where(
                   (param) => param.in_ == OpenApiPathMethodParameterType.query,
@@ -76,45 +78,13 @@ class OpenApiDartClientGenerator {
           );
         }
 
+        /// --------- Path -----------
         final pathParams = parameters?.where(
               (para) => para.in_ == OpenApiPathMethodParameterType.path,
             ) ??
             [];
 
         for (final pathParam in pathParams) {
-          getAnyOfType(
-            OpenApiSchemaAnyOf value,
-            OpenApiGeneratorConfig config,
-          ) {
-            String text = '';
-            bool isNullable = false;
-
-            for (final schema in value.anyOf!) {
-              text += schema.map(
-                type: (value) {
-                  if (value.type == OpenApiSchemaVarType.null_) {
-                    isNullable = true;
-                    return '';
-                  }
-
-                  return config.dartType(
-                    type: value.type,
-                    format: value.format,
-                    genericType: value.items?.mapOrNull(
-                      ref: (value) =>
-                          config.renameClass(value.ref!.split('/').last),
-                    ),
-                  );
-                },
-                ref: (value) => config.renameClass(value.ref!.split('/').last),
-                anyOf: (value) => getAnyOfType(value, config),
-                oneOf: (value) => '',
-              );
-            }
-
-            return isNullable ? '$text?' : text;
-          }
-
           final dartType = pathParam.schema.map(
             type: (value) {
               return config.dartType(
@@ -133,6 +103,54 @@ class OpenApiDartClientGenerator {
           final paramName = config.renameProperty(pathParam.name);
           buffer.writeln(
             '''@Path(\'${pathParam.name}\') $dartType $paramName,''',
+          );
+        }
+
+        //----------- Body -----------
+
+        final requestBody = method.current?.requestBody;
+        if (requestBody != null) {
+          final jsonBody = requestBody.content.applicationJson;
+          final fromUrlencoded =
+              requestBody.content.applicationXWwwFormUrlencoded;
+
+          final dartType = jsonBody != null
+              ? jsonBody.schema.map(
+                  type: (value) {
+                    return config.dartType(
+                      type: value.type,
+                      format: value.format,
+                      genericType: value.items?.mapOrNull(
+                        ref: (value) =>
+                            config.renameClass(value.ref!.split('/').last),
+                      ),
+                    );
+                  },
+                  ref: (value) =>
+                      config.renameClass(value.ref!.split('/').last),
+                  anyOf: (value) => getAnyOfType(value, config),
+                  oneOf: (value) => '',
+                )
+              : fromUrlencoded != null
+                  ? fromUrlencoded.schema.map(
+                      type: (value) {
+                        return config.dartType(
+                          type: value.type,
+                          format: value.format,
+                          genericType: value.items?.mapOrNull(
+                            ref: (value) =>
+                                config.renameClass(value.ref!.split('/').last),
+                          ),
+                        );
+                      },
+                      ref: (value) =>
+                          config.renameClass(value.ref!.split('/').last),
+                      anyOf: (value) => getAnyOfType(value, config),
+                      oneOf: (value) => '',
+                    )
+                  : 'dynamic';
+          buffer.writeln(
+            '''@Body() $dartType body,''',
           );
         }
 
@@ -226,4 +244,36 @@ String generateQueriesClass(
   print('Generated: $filepath');
 
   return className;
+}
+
+getAnyOfType(
+  OpenApiSchemaAnyOf value,
+  OpenApiGeneratorConfig config,
+) {
+  String text = '';
+  bool isNullable = false;
+
+  for (final schema in value.anyOf!) {
+    text += schema.map(
+      type: (value) {
+        if (value.type == OpenApiSchemaVarType.null_) {
+          isNullable = true;
+          return '';
+        }
+
+        return config.dartType(
+          type: value.type,
+          format: value.format,
+          genericType: value.items?.mapOrNull(
+            ref: (value) => config.renameClass(value.ref!.split('/').last),
+          ),
+        );
+      },
+      ref: (value) => config.renameClass(value.ref!.split('/').last),
+      anyOf: (value) => getAnyOfType(value, config),
+      oneOf: (value) => '',
+    );
+  }
+
+  return isNullable ? '$text?' : text;
 }

@@ -13,6 +13,18 @@ abstract class StudentPaymentsClient {
   Future<HttpResponse<dynamic>> readPaymentMethods();
 
   /// null
+  @POST('/api/v1/student/payments/methods/{id}')
+  Future<HttpResponse<dynamic>> readPaymentMethod(
+    @Path('id') int id,
+  );
+
+  /// null
+  @POST('/api/v1/student/payments/status/{order_id}')
+  Future<HttpResponse<dynamic>> readPaymentStatus(
+    @Path('order_id') String orderId,
+  );
+
+  /// null
   @GET('/api/v1/student/payments/enrollment')
   Future<HttpResponse<dynamic>> readEnrollmentPaymentInformation();
 }

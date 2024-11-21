@@ -16,6 +16,18 @@ abstract class StudentNotificationsClient {
   );
 
   /// null
+  @POST('/api/v1/student/notifications/token')
+  Future<HttpResponse<dynamic>> sendPlayerId(
+    @Body() StudentDeviceCreate body,
+  );
+
+  /// null
+  @PATCH('/api/v1/student/notifications/mark-as-read')
+  Future<HttpResponse<dynamic>> markAsRead(
+    @Queries() MarkAsReadQueries queries,
+  );
+
+  /// null
   @GET('/api/v1/student/notifications/{id}')
   Future<HttpResponse<dynamic>> readNotificationDetail(
     @Path('id') int id,
