@@ -22,9 +22,7 @@ class BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments
   }) = _BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments;
 
   factory BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments.fromJson(
-    Map<String, dynamic> json,
-  ) =>
+          Map<String, dynamic> json) =>
       _$BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessmentsFromJson(
-        json,
-      );
+          json);
 }

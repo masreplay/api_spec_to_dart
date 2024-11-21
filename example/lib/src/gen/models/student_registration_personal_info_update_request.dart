@@ -82,7 +82,6 @@ class StudentRegistrationPersonalInfoUpdateRequest
   }) = _StudentRegistrationPersonalInfoUpdateRequest;
 
   factory StudentRegistrationPersonalInfoUpdateRequest.fromJson(
-    Map<String, dynamic> json,
-  ) =>
+          Map<String, dynamic> json) =>
       _$StudentRegistrationPersonalInfoUpdateRequestFromJson(json);
 }

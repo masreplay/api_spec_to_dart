@@ -12,7 +12,7 @@ class ValidationError with _$ValidationError {
   @JsonSerializable(converters: convertors)
   const factory ValidationError({
     /// Location
-    @JsonKey(name: 'loc') required List<dynamic> loc,
+    @JsonKey(name: 'loc') required List<Stringint> loc,
 
     /// Message
     @JsonKey(name: 'msg') required String msg,

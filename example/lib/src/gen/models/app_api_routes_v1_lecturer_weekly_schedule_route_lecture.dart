@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../convertors.dart';
+import 'package:example/src/gen/models/models.dart';
 
 part 'app_api_routes_v1_lecturer_weekly_schedule_route_lecture.freezed.dart';
 part 'app_api_routes_v1_lecturer_weekly_schedule_route_lecture.g.dart';
@@ -43,7 +44,7 @@ class AppApiRoutesV1LecturerWeeklyScheduleRouteLecture
     @JsonKey(name: 'division') required String? division,
 
     /// Members
-    @JsonKey(name: 'members') required List<dynamic> members,
+    @JsonKey(name: 'members') required List<StudentSummery?> members,
 
     /// Has Code
     @JsonKey(name: 'has_code') required bool? hasCode,
@@ -53,7 +54,6 @@ class AppApiRoutesV1LecturerWeeklyScheduleRouteLecture
   }) = _AppApiRoutesV1LecturerWeeklyScheduleRouteLecture;
 
   factory AppApiRoutesV1LecturerWeeklyScheduleRouteLecture.fromJson(
-    Map<String, dynamic> json,
-  ) =>
+          Map<String, dynamic> json) =>
       _$AppApiRoutesV1LecturerWeeklyScheduleRouteLectureFromJson(json);
 }

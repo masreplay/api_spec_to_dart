@@ -23,7 +23,6 @@ class GetLecturerReadHomeworkCalenderQueries
   }) = _GetLecturerReadHomeworkCalenderQueries;
 
   factory GetLecturerReadHomeworkCalenderQueries.fromJson(
-    Map<String, dynamic> json,
-  ) =>
+          Map<String, dynamic> json) =>
       _$GetLecturerReadHomeworkCalenderQueriesFromJson(json);
 }

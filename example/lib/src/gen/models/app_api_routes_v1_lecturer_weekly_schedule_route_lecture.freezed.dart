@@ -64,7 +64,7 @@ mixin _$AppApiRoutesV1LecturerWeeklyScheduleRouteLecture {
 
   /// Members
   @JsonKey(name: 'members')
-  List<dynamic> get members => throw _privateConstructorUsedError;
+  List<StudentSummery?> get members => throw _privateConstructorUsedError;
 
   /// Has Code
   @JsonKey(name: 'has_code')
@@ -105,7 +105,7 @@ abstract class $AppApiRoutesV1LecturerWeeklyScheduleRouteLectureCopyWith<$Res> {
       @JsonKey(name: 'grade') int? grade,
       @JsonKey(name: 'collage') String? collage,
       @JsonKey(name: 'division') String? division,
-      @JsonKey(name: 'members') List<dynamic> members,
+      @JsonKey(name: 'members') List<StudentSummery?> members,
       @JsonKey(name: 'has_code') bool? hasCode,
       @JsonKey(name: 'number_of_students') int? numberOfStudents});
 }
@@ -185,7 +185,7 @@ class _$AppApiRoutesV1LecturerWeeklyScheduleRouteLectureCopyWithImpl<$Res,
       members: null == members
           ? _value.members
           : members // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<StudentSummery?>,
       hasCode: freezed == hasCode
           ? _value.hasCode
           : hasCode // ignore: cast_nullable_to_non_nullable
@@ -221,7 +221,7 @@ abstract class _$$AppApiRoutesV1LecturerWeeklyScheduleRouteLectureImplCopyWith<
       @JsonKey(name: 'grade') int? grade,
       @JsonKey(name: 'collage') String? collage,
       @JsonKey(name: 'division') String? division,
-      @JsonKey(name: 'members') List<dynamic> members,
+      @JsonKey(name: 'members') List<StudentSummery?> members,
       @JsonKey(name: 'has_code') bool? hasCode,
       @JsonKey(name: 'number_of_students') int? numberOfStudents});
 }
@@ -301,7 +301,7 @@ class __$$AppApiRoutesV1LecturerWeeklyScheduleRouteLectureImplCopyWithImpl<$Res>
       members: null == members
           ? _value._members
           : members // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<StudentSummery?>,
       hasCode: freezed == hasCode
           ? _value.hasCode
           : hasCode // ignore: cast_nullable_to_non_nullable
@@ -330,7 +330,7 @@ class _$AppApiRoutesV1LecturerWeeklyScheduleRouteLectureImpl
       @JsonKey(name: 'grade') required this.grade,
       @JsonKey(name: 'collage') required this.collage,
       @JsonKey(name: 'division') required this.division,
-      @JsonKey(name: 'members') required final List<dynamic> members,
+      @JsonKey(name: 'members') required final List<StudentSummery?> members,
       @JsonKey(name: 'has_code') required this.hasCode,
       @JsonKey(name: 'number_of_students') required this.numberOfStudents})
       : _members = members,
@@ -391,12 +391,12 @@ class _$AppApiRoutesV1LecturerWeeklyScheduleRouteLectureImpl
   final String? division;
 
   /// Members
-  final List<dynamic> _members;
+  final List<StudentSummery?> _members;
 
   /// Members
   @override
   @JsonKey(name: 'members')
-  List<dynamic> get members {
+  List<StudentSummery?> get members {
     if (_members is EqualUnmodifiableListView) return _members;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_members);
@@ -495,7 +495,7 @@ abstract class _AppApiRoutesV1LecturerWeeklyScheduleRouteLecture
           @JsonKey(name: 'grade') required final int? grade,
           @JsonKey(name: 'collage') required final String? collage,
           @JsonKey(name: 'division') required final String? division,
-          @JsonKey(name: 'members') required final List<dynamic> members,
+          @JsonKey(name: 'members') required final List<StudentSummery?> members,
           @JsonKey(name: 'has_code') required final bool? hasCode,
           @JsonKey(name: 'number_of_students')
           required final int? numberOfStudents}) =
@@ -559,7 +559,7 @@ abstract class _AppApiRoutesV1LecturerWeeklyScheduleRouteLecture
   /// Members
   @override
   @JsonKey(name: 'members')
-  List<dynamic> get members;
+  List<StudentSummery?> get members;
 
   /// Has Code
   @override

@@ -20,7 +20,6 @@ class RegistrationRequestStatusResponse
   }) = _RegistrationRequestStatusResponse;
 
   factory RegistrationRequestStatusResponse.fromJson(
-    Map<String, dynamic> json,
-  ) =>
+          Map<String, dynamic> json) =>
       _$RegistrationRequestStatusResponseFromJson(json);
 }

@@ -25,7 +25,6 @@ class BodyStudentEkycUploadPassportData
   }) = _BodyStudentEkycUploadPassportData;
 
   factory BodyStudentEkycUploadPassportData.fromJson(
-    Map<String, dynamic> json,
-  ) =>
+          Map<String, dynamic> json) =>
       _$BodyStudentEkycUploadPassportDataFromJson(json);
 }

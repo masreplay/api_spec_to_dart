@@ -71,6 +71,7 @@ class OpenApiSchema with _$OpenApiSchema {
           format: value.format,
           genericType: value.items?.mapOrNull(
             ref: (value) => config.renameRefClass(value),
+            anyOf: (value) => getAnyOfType(value, config),
           ),
         );
       },

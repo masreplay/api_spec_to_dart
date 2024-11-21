@@ -21,7 +21,6 @@ class BaseResponseListGovernoratePublic
   }) = _BaseResponseListGovernoratePublic;
 
   factory BaseResponseListGovernoratePublic.fromJson(
-    Map<String, dynamic> json,
-  ) =>
+          Map<String, dynamic> json) =>
       _$BaseResponseListGovernoratePublicFromJson(json);
 }

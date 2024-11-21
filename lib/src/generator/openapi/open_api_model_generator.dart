@@ -1,4 +1,5 @@
 import 'package:swagger_to_dart/src/config/open_api_generator_config.dart';
+import 'package:swagger_to_dart/src/generator/openapi/open_api_client_generator.dart';
 import 'package:swagger_to_dart/src/utils/recase.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
@@ -93,6 +94,7 @@ $type toJson() => _\$${className}EnumMap[this]!;
                   format: value.format,
                   genericType: value.items?.mapOrNull(
                     ref: (value) => config.renameRefClass(value),
+                    anyOf: (value) => getAnyOfType(value, config),
                   ),
                 ),
                 orElse: () => '',
@@ -196,6 +198,7 @@ class ${className} with _\$${className} {
       genericType: value.items?.mapOrNull(
         // TODO(mohammed.atheer): handle type recursively
         ref: (value) => config.renameRefClass(value),
+        anyOf: (value) => getAnyOfType(value, config),
       ),
     );
 
@@ -274,6 +277,7 @@ class ${className} with _\$${className} {
               format: value.format,
               genericType: value.items?.mapOrNull(
                 ref: (value) => config.renameRefClass(value),
+                anyOf: (value) => getAnyOfType(value, config),
               ),
             );
           },

@@ -19,7 +19,6 @@ class BaseResponseEkycDownloadLicensePublic
   }) = _BaseResponseEkycDownloadLicensePublic;
 
   factory BaseResponseEkycDownloadLicensePublic.fromJson(
-    Map<String, dynamic> json,
-  ) =>
+          Map<String, dynamic> json) =>
       _$BaseResponseEkycDownloadLicensePublicFromJson(json);
 }

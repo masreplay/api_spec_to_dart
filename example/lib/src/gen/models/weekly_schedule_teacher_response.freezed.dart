@@ -27,7 +27,8 @@ mixin _$WeeklyScheduleTeacherResponse {
 
   /// Lectures
   @JsonKey(name: 'lectures')
-  List<dynamic> get lectures => throw _privateConstructorUsedError;
+  List<AppApiRoutesV1LecturerWeeklyScheduleRouteLecture?> get lectures =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this WeeklyScheduleTeacherResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -49,7 +50,8 @@ abstract class $WeeklyScheduleTeacherResponseCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'weekday') int weekday,
-      @JsonKey(name: 'lectures') List<dynamic> lectures});
+      @JsonKey(name: 'lectures')
+      List<AppApiRoutesV1LecturerWeeklyScheduleRouteLecture?> lectures});
 }
 
 /// @nodoc
@@ -79,7 +81,7 @@ class _$WeeklyScheduleTeacherResponseCopyWithImpl<$Res,
       lectures: null == lectures
           ? _value.lectures
           : lectures // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<AppApiRoutesV1LecturerWeeklyScheduleRouteLecture?>,
     ) as $Val);
   }
 }
@@ -95,7 +97,8 @@ abstract class _$$WeeklyScheduleTeacherResponseImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'weekday') int weekday,
-      @JsonKey(name: 'lectures') List<dynamic> lectures});
+      @JsonKey(name: 'lectures')
+      List<AppApiRoutesV1LecturerWeeklyScheduleRouteLecture?> lectures});
 }
 
 /// @nodoc
@@ -124,7 +127,7 @@ class __$$WeeklyScheduleTeacherResponseImplCopyWithImpl<$Res>
       lectures: null == lectures
           ? _value._lectures
           : lectures // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<AppApiRoutesV1LecturerWeeklyScheduleRouteLecture?>,
     ));
   }
 }
@@ -136,7 +139,9 @@ class _$WeeklyScheduleTeacherResponseImpl
     extends _WeeklyScheduleTeacherResponse {
   const _$WeeklyScheduleTeacherResponseImpl(
       {@JsonKey(name: 'weekday') required this.weekday,
-      @JsonKey(name: 'lectures') required final List<dynamic> lectures})
+      @JsonKey(name: 'lectures')
+      required final List<AppApiRoutesV1LecturerWeeklyScheduleRouteLecture?>
+          lectures})
       : _lectures = lectures,
         super._();
 
@@ -150,12 +155,12 @@ class _$WeeklyScheduleTeacherResponseImpl
   final int weekday;
 
   /// Lectures
-  final List<dynamic> _lectures;
+  final List<AppApiRoutesV1LecturerWeeklyScheduleRouteLecture?> _lectures;
 
   /// Lectures
   @override
   @JsonKey(name: 'lectures')
-  List<dynamic> get lectures {
+  List<AppApiRoutesV1LecturerWeeklyScheduleRouteLecture?> get lectures {
     if (_lectures is EqualUnmodifiableListView) return _lectures;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_lectures);
@@ -201,9 +206,10 @@ class _$WeeklyScheduleTeacherResponseImpl
 abstract class _WeeklyScheduleTeacherResponse
     extends WeeklyScheduleTeacherResponse {
   const factory _WeeklyScheduleTeacherResponse(
-          {@JsonKey(name: 'weekday') required final int weekday,
-          @JsonKey(name: 'lectures') required final List<dynamic> lectures}) =
-      _$WeeklyScheduleTeacherResponseImpl;
+      {@JsonKey(name: 'weekday') required final int weekday,
+      @JsonKey(name: 'lectures')
+      required final List<AppApiRoutesV1LecturerWeeklyScheduleRouteLecture?>
+          lectures}) = _$WeeklyScheduleTeacherResponseImpl;
   const _WeeklyScheduleTeacherResponse._() : super._();
 
   factory _WeeklyScheduleTeacherResponse.fromJson(Map<String, dynamic> json) =
@@ -217,7 +223,7 @@ abstract class _WeeklyScheduleTeacherResponse
   /// Lectures
   @override
   @JsonKey(name: 'lectures')
-  List<dynamic> get lectures;
+  List<AppApiRoutesV1LecturerWeeklyScheduleRouteLecture?> get lectures;
 
   /// Create a copy of WeeklyScheduleTeacherResponse
   /// with the given fields replaced by the non-null parameter values.

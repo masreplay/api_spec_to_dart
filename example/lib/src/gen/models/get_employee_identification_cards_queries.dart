@@ -17,7 +17,6 @@ class GetEmployeeIdentificationCardsQueries
   }) = _GetEmployeeIdentificationCardsQueries;
 
   factory GetEmployeeIdentificationCardsQueries.fromJson(
-    Map<String, dynamic> json,
-  ) =>
+          Map<String, dynamic> json) =>
       _$GetEmployeeIdentificationCardsQueriesFromJson(json);
 }

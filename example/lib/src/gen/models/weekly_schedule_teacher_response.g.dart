@@ -10,7 +10,12 @@ _$WeeklyScheduleTeacherResponseImpl
     _$$WeeklyScheduleTeacherResponseImplFromJson(Map<String, dynamic> json) =>
         _$WeeklyScheduleTeacherResponseImpl(
           weekday: (json['weekday'] as num).toInt(),
-          lectures: json['lectures'] as List<dynamic>,
+          lectures: (json['lectures'] as List<dynamic>)
+              .map((e) => e == null
+                  ? null
+                  : AppApiRoutesV1LecturerWeeklyScheduleRouteLecture.fromJson(
+                      e as Map<String, dynamic>))
+              .toList(),
         );
 
 Map<String, dynamic> _$$WeeklyScheduleTeacherResponseImplToJson(

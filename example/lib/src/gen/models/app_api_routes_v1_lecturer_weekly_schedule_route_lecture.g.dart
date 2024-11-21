@@ -24,7 +24,11 @@ _$AppApiRoutesV1LecturerWeeklyScheduleRouteLectureImpl
           grade: (json['grade'] as num?)?.toInt(),
           collage: json['collage'] as String?,
           division: json['division'] as String?,
-          members: json['members'] as List<dynamic>,
+          members: (json['members'] as List<dynamic>)
+              .map((e) => e == null
+                  ? null
+                  : StudentSummery.fromJson(e as Map<String, dynamic>))
+              .toList(),
           hasCode: json['has_code'] as bool?,
           numberOfStudents: (json['number_of_students'] as num?)?.toInt(),
         );
