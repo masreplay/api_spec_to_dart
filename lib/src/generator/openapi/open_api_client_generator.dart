@@ -143,6 +143,8 @@ class OpenApiDartClientGenerator {
           );
         }
 
+        // TODO(mohammed.atheer): headers / properties
+
         String propertiesCode = '';
 
         if (propertiesSnippets.isNotEmpty) {
