@@ -8,6 +8,7 @@ abstract class StudentMajorsClient {
   factory StudentMajorsClient(Dio dio, {String baseUrl}) = _StudentMajorsClient;
 
   /// student_majors-read_majors
+  /// Read Majors
   @GET('/api/v1/student/majors/')
   Future<HttpResponse<dynamic>> readMajors();
 }

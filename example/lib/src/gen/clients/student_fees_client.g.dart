@@ -22,7 +22,8 @@ class _StudentFeesClient implements StudentFeesClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>> readFees(ReadFeesQueries queries) async {
+  Future<HttpResponse<dynamic>> readFees(
+      {required ReadFeesQueries queries}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.addAll(queries.toJson());

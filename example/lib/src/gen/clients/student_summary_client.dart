@@ -9,14 +9,17 @@ abstract class StudentSummaryClient {
       _StudentSummaryClient;
 
   /// student_summary-read_student_summary
+  /// Read Student Summary
   @GET('/api/v1/student/summary/')
   Future<HttpResponse<dynamic>> read();
 
   /// student_summary-read_student_seamsters
+  /// Read Student Seamsters
   @GET('/api/v1/student/summary/student-seamsters')
   Future<HttpResponse<dynamic>> readStudentSeamsters();
 
   /// student_summary-read_student_seamsters_courses
+  /// Read Student Seamsters Courses
   @GET('/api/v1/student/summary/student-seamsters-courses')
   Future<HttpResponse<dynamic>> readStudentSeamstersCourses();
 }

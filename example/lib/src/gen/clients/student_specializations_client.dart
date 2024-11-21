@@ -9,6 +9,7 @@ abstract class StudentSpecializationsClient {
       _StudentSpecializationsClient;
 
   /// student_specializations-read_specializations
+  /// Read Specializations
   @GET('/api/v1/student/specializations/')
   Future<HttpResponse<dynamic>> readSpecializations();
 }

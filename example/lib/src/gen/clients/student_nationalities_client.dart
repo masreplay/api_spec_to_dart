@@ -9,6 +9,7 @@ abstract class StudentNationalitiesClient {
       _StudentNationalitiesClient;
 
   /// student_nationalities-read_nationalities
+  /// Read Nationalities
   @GET('/api/v1/student/nationalities/')
   Future<HttpResponse<dynamic>> readNationalities();
 }

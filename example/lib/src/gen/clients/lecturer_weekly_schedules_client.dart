@@ -9,6 +9,7 @@ abstract class LecturerWeeklySchedulesClient {
       _LecturerWeeklySchedulesClient;
 
   /// lecturer_weekly_schedules-get_weekly_schedule
+  /// Get Weekly Schedule
   @GET('/api/v1/lecturer/weekly_schedules/me')
   Future<HttpResponse<dynamic>> getWeeklySchedule();
 }

@@ -10,50 +10,57 @@ abstract class LecturerAnnouncementsClient {
       _LecturerAnnouncementsClient;
 
   /// lecturer_announcements-get_lecturer_announcements
+  /// Get Lecturer Announcements
   @GET('/api/v1/lecturer/announcements/me/{course_id}')
-  Future<HttpResponse<dynamic>> get(
-    @Queries() GetQueries queries,
-    @Path('course_id') int courseId,
-  );
+  Future<HttpResponse<dynamic>> get({
+    @Queries() required GetQueries queries,
+    @Path('course_id') required int courseId,
+  });
 
   /// lecturer_announcements-create_lecturer_announcement
+  /// Create Lecturer Announcement
   @FormUrlEncoded()
   @POST('/api/v1/lecturer/announcements/me/{course_id}')
-  Future<HttpResponse<dynamic>> createLecturerAnnouncement(
-    @Path('course_id') int courseId,
-    @Body() BodyLecturerAnnouncementsCreateLecturerAnnouncement body,
-  );
+  Future<HttpResponse<dynamic>> createLecturerAnnouncement({
+    @Path('course_id') required int courseId,
+    @Body() required BodyLecturerAnnouncementsCreateLecturerAnnouncement body,
+  });
 
   /// lecturer_announcements-get_lecturer_announcement
+  /// Get Lecturer Announcement
   @GET('/api/v1/lecturer/announcements/{id}')
-  Future<HttpResponse<dynamic>> getLecturerAnnouncement(
-    @Path('id') int id,
-  );
+  Future<HttpResponse<dynamic>> getLecturerAnnouncement({
+    @Path('id') required int id,
+  });
 
   /// lecturer_announcements-update_lecturer_announcement
+  /// Update Lecturer Announcement
   @PUT('/api/v1/lecturer/announcements/{id}')
-  Future<HttpResponse<dynamic>> updateLecturerAnnouncement(
-    @Path('id') int id,
-    @Body() LecturerAnnouncementUpdatePublic body,
-  );
+  Future<HttpResponse<dynamic>> updateLecturerAnnouncement({
+    @Path('id') required int id,
+    @Body() required LecturerAnnouncementUpdatePublic body,
+  });
 
   /// lecturer_announcements-delete_lecturer_announcement
+  /// Delete Lecturer Announcement
   @DELETE('/api/v1/lecturer/announcements/{id}')
-  Future<HttpResponse<dynamic>> deleteLecturerAnnouncement(
-    @Path('id') int id,
-  );
+  Future<HttpResponse<dynamic>> deleteLecturerAnnouncement({
+    @Path('id') required int id,
+  });
 
   /// lecturer_announcements-get_lecturer_announcement_comments
+  /// Get Lecturer Announcement Comments
   @GET('/api/v1/lecturer/announcements/{id}/comments')
-  Future<HttpResponse<dynamic>> getLecturerAnnouncementComments(
-    @Queries() GetLecturerAnnouncementCommentsQueries queries,
-    @Path('id') int id,
-  );
+  Future<HttpResponse<dynamic>> getLecturerAnnouncementComments({
+    @Queries() required GetLecturerAnnouncementCommentsQueries queries,
+    @Path('id') required int id,
+  });
 
   /// lecturer_announcements-create_lecturer_announcement_comment
+  /// Create Lecturer Announcement Comment
   @POST('/api/v1/lecturer/announcements/{id}/comments')
-  Future<HttpResponse<dynamic>> createLecturerAnnouncementComment(
-    @Path('id') int id,
-    @Body() CommentCreatePublic body,
-  );
+  Future<HttpResponse<dynamic>> createLecturerAnnouncementComment({
+    @Path('id') required int id,
+    @Body() required CommentCreatePublic body,
+  });
 }

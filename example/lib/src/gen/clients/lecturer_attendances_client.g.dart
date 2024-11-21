@@ -23,7 +23,7 @@ class _LecturerAttendancesClient implements LecturerAttendancesClient {
 
   @override
   Future<HttpResponse<dynamic>> lecturerCreateAttendance(
-      LecturerAttendanceCreateRequest body) async {
+      {required LecturerAttendanceCreateRequest body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

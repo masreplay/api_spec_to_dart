@@ -10,18 +10,21 @@ abstract class StudentVerificationClient {
       _StudentVerificationClient;
 
   /// student_verification-init_otp_data
+  /// Init Otp Data
   @POST('/api/v1/student/auth/otp/init')
   Future<HttpResponse<dynamic>> initOtpData();
 
   /// student_verification-send_otp
+  /// Send Otp
   @POST('/api/v1/student/auth/otp/send')
-  Future<HttpResponse<dynamic>> sendOtp(
-    @Body() SendOtpByRequestPublic body,
-  );
+  Future<HttpResponse<dynamic>> sendOtp({
+    @Body() required SendOtpByRequestPublic body,
+  });
 
   /// student_verification-verify_otp
+  /// Verify Otp
   @POST('/api/v1/student/auth/otp/verify')
-  Future<HttpResponse<dynamic>> verifyOtp(
-    @Body() VerifyOtpRequestPublic body,
-  );
+  Future<HttpResponse<dynamic>> verifyOtp({
+    @Body() required VerifyOtpRequestPublic body,
+  });
 }

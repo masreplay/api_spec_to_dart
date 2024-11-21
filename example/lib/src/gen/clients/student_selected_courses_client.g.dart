@@ -50,10 +50,10 @@ class _StudentSelectedCoursesClient implements StudentSelectedCoursesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> updateSelectedCourses(
-    UpdateSelectedCoursesQueries queries,
-    List<UpdateSelectedCourses> body,
-  ) async {
+  Future<HttpResponse<dynamic>> updateSelectedCourses({
+    required UpdateSelectedCoursesQueries queries,
+    required List<UpdateSelectedCourses> body,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.addAll(queries.toJson());
@@ -82,7 +82,7 @@ class _StudentSelectedCoursesClient implements StudentSelectedCoursesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> readById(int id) async {
+  Future<HttpResponse<dynamic>> readById({required int id}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

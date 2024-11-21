@@ -50,7 +50,7 @@ class _StudentPaymentsClient implements StudentPaymentsClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> readPaymentMethod(int id) async {
+  Future<HttpResponse<dynamic>> readPaymentMethod({required int id}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -78,7 +78,8 @@ class _StudentPaymentsClient implements StudentPaymentsClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> readPaymentStatus(String orderId) async {
+  Future<HttpResponse<dynamic>> readPaymentStatus(
+      {required String orderId}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

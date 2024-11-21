@@ -9,8 +9,9 @@ abstract class LecturerIdsClient {
   factory LecturerIdsClient(Dio dio, {String baseUrl}) = _LecturerIdsClient;
 
   /// lecturer_ids-get_employee_identification_cards
+  /// Get Employee Identification Cards
   @GET('/api/v1/lecturer/ids/me')
-  Future<HttpResponse<dynamic>> getEmployeeIdentificationCards(
-    @Queries() GetEmployeeIdentificationCardsQueries queries,
-  );
+  Future<HttpResponse<dynamic>> getEmployeeIdentificationCards({
+    @Queries() required GetEmployeeIdentificationCardsQueries queries,
+  });
 }

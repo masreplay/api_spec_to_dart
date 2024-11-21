@@ -9,10 +9,12 @@ abstract class StudentAdmissionsClient {
       _StudentAdmissionsClient;
 
   /// student_admissions-read_admissions
+  /// Read Admissions
   @GET('/api/v1/student/admissions/me')
   Future<HttpResponse<dynamic>> readAdmissions();
 
   /// student_admissions-get_joining_time
+  /// Get Joining Time
   @GET('/api/v1/student/admissions/me/joining-time')
   Future<HttpResponse<dynamic>> getJoiningTime();
 }

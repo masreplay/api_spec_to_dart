@@ -78,7 +78,7 @@ class _StudentCoursesClient implements StudentCoursesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> get(int id) async {
+  Future<HttpResponse<dynamic>> get({required int id}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -106,7 +106,7 @@ class _StudentCoursesClient implements StudentCoursesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> readCourseById(int id) async {
+  Future<HttpResponse<dynamic>> readCourseById({required int id}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

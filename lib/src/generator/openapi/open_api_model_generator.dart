@@ -87,13 +87,12 @@ $type toJson() => _\$${className}EnumMap[this]!;
           oneOf: (value) {
             for (var type in value.oneOf!) {
               final typeName = type.maybeMap(
-                ref: (value) => config.renameClass(value.ref!.split('/').last),
+                ref: (value) => config.renameRefClass(value),
                 type: (value) => config.dartType(
                   type: value.type,
                   format: value.format,
                   genericType: value.items?.mapOrNull(
-                    ref: (value) =>
-                        config.renameClass(value.ref!.split('/').last),
+                    ref: (value) => config.renameRefClass(value),
                   ),
                 ),
                 orElse: () => '',
@@ -196,7 +195,7 @@ class ${className} with _\$${className} {
       type: value.type,
       genericType: value.items?.mapOrNull(
         // TODO(mohammed.atheer): handle type recursively
-        ref: (value) => config.renameClass(value.ref!.split('/').last),
+        ref: (value) => config.renameRefClass(value),
       ),
     );
 
@@ -219,7 +218,7 @@ class ${className} with _\$${className} {
     required OpenApiSchemaRef value,
     required String propertyName,
   }) {
-    final className = config.renameClass(value.ref!.split('/').last);
+    final className = config.renameRefClass(value);
 
     String? defaultValueCode;
 
@@ -274,11 +273,11 @@ class ${className} with _\$${className} {
               type: value.type,
               format: value.format,
               genericType: value.items?.mapOrNull(
-                ref: (value) => config.renameClass(value.ref!.split('/').last),
+                ref: (value) => config.renameRefClass(value),
               ),
             );
           },
-          ref: (value) => config.renameClass(value.ref!.split('/').last),
+          ref: (value) => config.renameRefClass(value),
           anyOf: (value) => getAnyOfType(value, config),
           oneOf: (value) => '',
         );

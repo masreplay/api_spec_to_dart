@@ -10,9 +10,10 @@ abstract class StudentSemestersClient {
       _StudentSemestersClient;
 
   /// student_semesters-read_semesters
+  /// Read Semesters
   @GET('/api/v1/student/semesters/{id}')
-  Future<HttpResponse<dynamic>> readSemesters(
-    @Queries() ReadSemestersQueries queries,
-    @Path('id') int id,
-  );
+  Future<HttpResponse<dynamic>> readSemesters({
+    @Queries() required ReadSemestersQueries queries,
+    @Path('id') required int id,
+  });
 }

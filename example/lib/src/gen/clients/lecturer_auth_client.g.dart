@@ -22,7 +22,8 @@ class _LecturerAuthClient implements LecturerAuthClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>> login(BodyLecturerAuthLogin body) async {
+  Future<HttpResponse<dynamic>> login(
+      {required BodyLecturerAuthLogin body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -53,7 +54,7 @@ class _LecturerAuthClient implements LecturerAuthClient {
 
   @override
   Future<HttpResponse<dynamic>> swaggerLogin(
-      BodyLecturerAuthSwaggerLogin body) async {
+      {required BodyLecturerAuthSwaggerLogin body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

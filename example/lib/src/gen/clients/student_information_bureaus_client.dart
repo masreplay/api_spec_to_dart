@@ -9,6 +9,7 @@ abstract class StudentInformationBureausClient {
       _StudentInformationBureausClient;
 
   /// student_information_bureaus-read_information_bureaus
+  /// Read Information Bureaus
   @GET('/api/v1/student/information_bureaus/')
   Future<HttpResponse<dynamic>> readInformationBureaus();
 }

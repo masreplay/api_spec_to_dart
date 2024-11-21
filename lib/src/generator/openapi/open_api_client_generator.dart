@@ -47,23 +47,26 @@ class OpenApiDartClientGenerator {
         final String methodType = entry.key;
         final OpenApiPathMethod method = entry.value;
 
+        // description / comment
+        buffer.writeln('/// ${method.operationId}');
+        buffer.writeln('/// ${method.summary}');
+
+        // response / return type
+        final responseClassName = 'dynamic';
         final responses = method.responses ?? {};
         final successResponse = responses['200']!;
 
-        final responseClassName = 'dynamic';
-
+        // request type + http method type + path / annotation
         final requestBody = method.requestBody?.content.current;
-
-        buffer.writeln('/// ${method.operationId}');
-
-        if (requestBody?.key != null) {
-          buffer.writeln('@${requestBody?.key}');
+        if (requestBody?.key case final key?) {
+          buffer.writeln('@${key}');
         }
 
-        buffer.writeln(
-          '''@${Recase.instance.toScreamingSnakeCase(methodType)}('${tagPath}')''',
-        );
+        final retrofitHttpMethodType =
+            Recase.instance.toScreamingSnakeCase(methodType);
+        buffer.writeln('''@${retrofitHttpMethodType}('${tagPath}')''');
 
+        // method name
         final methodName = config.renameMethod(
           method.operationId.replaceAll(
             RegExp(clientName, caseSensitive: false),
@@ -71,34 +74,27 @@ class OpenApiDartClientGenerator {
           ),
         );
 
-        final parameters = method.parameters;
+        final propertiesSnippets = <String>[];
 
-        buffer.writeln(
-          '''Future<HttpResponse<$responseClassName>> $methodName(''',
-        );
+        final parameters = method.parameters ?? [];
 
-        /// --------- Queries -----------
-        final queries = parameters
-                ?.where(
-                  (param) => param.in_ == OpenApiPathMethodParameterType.query,
-                )
-                .toList() ??
-            [];
-        if (queries.isNotEmpty) {
-          final queriesClass = generateQueriesClass(
-            queries,
-            methodName,
-          );
-          buffer.writeln(
-            '''@Queries() ${config.renameClass(queriesClass)} queries,''',
+        /// queries / properties
+        final queriesParams = parameters
+            .where((e) => e.in_ == OpenApiPathMethodParameterType.query)
+            .toList();
+
+        if (queriesParams.isNotEmpty) {
+          final queriesClass = generateQueriesClass(queriesParams, methodName);
+
+          propertiesSnippets.add(
+            '''@Queries() required ${config.renameClass(queriesClass)} queries,''',
           );
         }
 
-        /// --------- Path -----------
-        final pathParams = parameters?.where(
-              (para) => para.in_ == OpenApiPathMethodParameterType.path,
-            ) ??
-            [];
+        /// path params / properties
+        final pathParams = parameters.where(
+          (e) => e.in_ == OpenApiPathMethodParameterType.path,
+        );
 
         for (final pathParam in pathParams) {
           final dartType = pathParam.schema.map(
@@ -107,23 +103,21 @@ class OpenApiDartClientGenerator {
                 type: value.type,
                 format: value.format,
                 genericType: value.items?.mapOrNull(
-                  ref: (value) =>
-                      config.renameClass(value.ref!.split('/').last),
+                  ref: (value) => config.renameRefClass(value),
                 ),
               );
             },
-            ref: (value) => config.renameClass(value.ref!.split('/').last),
+            ref: (value) => config.renameRefClass(value),
             anyOf: (value) => getAnyOfType(value, config),
             oneOf: (value) => '',
           );
           final paramName = config.renameProperty(pathParam.name);
-          buffer.writeln(
-            '''@Path('${pathParam.name}') $dartType $paramName,''',
+          propertiesSnippets.add(
+            '''@Path('${pathParam.name}') required $dartType $paramName,''',
           );
         }
 
-        //----------- Body -----------
-
+        // body / properties
         if (requestBody != null) {
           final body = requestBody.value?.schema;
 
@@ -135,23 +129,29 @@ class OpenApiDartClientGenerator {
                       type: value.type,
                       format: value.format,
                       genericType: value.items?.mapOrNull(
-                        ref: (value) =>
-                            config.renameClass(value.ref!.split('/').last),
+                        ref: (value) => config.renameRefClass(value),
                       ),
                     );
                   },
-                  ref: (value) =>
-                      config.renameClass(value.ref!.split('/').last),
+                  ref: (value) => config.renameRefClass(value),
                   anyOf: (value) => getAnyOfType(value, config),
                   oneOf: (value) => '',
                 );
 
-          buffer.writeln(
-            '''@Body() $dartType body,''',
+          propertiesSnippets.add(
+            '''@Body() required $dartType body,''',
           );
         }
 
-        buffer.writeln(');');
+        String propertiesCode = '';
+
+        if (propertiesSnippets.isNotEmpty) {
+          propertiesCode = '''{${propertiesSnippets.join('\n')}}''';
+        }
+
+        buffer.writeln(
+          '''Future<HttpResponse<$responseClassName>> $methodName($propertiesCode);''',
+        );
       }
     }
 
@@ -262,11 +262,11 @@ getAnyOfType(
           type: value.type,
           format: value.format,
           genericType: value.items?.mapOrNull(
-            ref: (value) => config.renameClass(value.ref!.split('/').last),
+            ref: (value) => config.renameRefClass(value),
           ),
         );
       },
-      ref: (value) => config.renameClass(value.ref!.split('/').last),
+      ref: (value) => config.renameRefClass(value),
       anyOf: (value) => getAnyOfType(value, config),
       oneOf: (value) => '',
     );

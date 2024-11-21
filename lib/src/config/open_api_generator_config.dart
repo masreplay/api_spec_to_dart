@@ -76,6 +76,10 @@ class OpenApiGeneratorConfig {
     return Recase.instance.toPascalCase(key);
   }
 
+  String renameRefClass(OpenApiSchemaRef value) {
+    return renameClass(value.ref!.split('/').last);
+  }
+
   String renameClass(String key) {
     final name = Recase.instance.toPascalCase(key);
 

@@ -50,7 +50,7 @@ class _DevClient implements DevClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> proxyToMinio(String filePath) async {
+  Future<HttpResponse<dynamic>> proxyToMinio({required String filePath}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -78,7 +78,8 @@ class _DevClient implements DevClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> uploadFile(BodyDevUploadFile body) async {
+  Future<HttpResponse<dynamic>> uploadFile(
+      {required BodyDevUploadFile body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

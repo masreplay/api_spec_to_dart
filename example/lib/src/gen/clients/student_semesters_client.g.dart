@@ -22,10 +22,10 @@ class _StudentSemestersClient implements StudentSemestersClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>> readSemesters(
-    ReadSemestersQueries queries,
-    int id,
-  ) async {
+  Future<HttpResponse<dynamic>> readSemesters({
+    required ReadSemestersQueries queries,
+    required int id,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.addAll(queries.toJson());

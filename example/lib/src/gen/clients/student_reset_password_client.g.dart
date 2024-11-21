@@ -51,7 +51,7 @@ class _StudentResetPasswordClient implements StudentResetPasswordClient {
 
   @override
   Future<HttpResponse<dynamic>> sendOtpByPhone(
-      SendOtpByPhoneQueries queries) async {
+      {required SendOtpByPhoneQueries queries}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.addAll(queries.toJson());
@@ -81,7 +81,7 @@ class _StudentResetPasswordClient implements StudentResetPasswordClient {
 
   @override
   Future<HttpResponse<dynamic>> verifyPhoneOtp(
-      VerifyPhoneOtpQueries queries) async {
+      {required VerifyPhoneOtpQueries queries}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.addAll(queries.toJson());
@@ -110,7 +110,8 @@ class _StudentResetPasswordClient implements StudentResetPasswordClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> setPassword(SetPasswordQueries queries) async {
+  Future<HttpResponse<dynamic>> setPassword(
+      {required SetPasswordQueries queries}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.addAll(queries.toJson());
@@ -140,7 +141,7 @@ class _StudentResetPasswordClient implements StudentResetPasswordClient {
 
   @override
   Future<HttpResponse<dynamic>> sendOtpEmail(
-      SendOtpEmailQueries queries) async {
+      {required SendOtpEmailQueries queries}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.addAll(queries.toJson());
@@ -170,7 +171,7 @@ class _StudentResetPasswordClient implements StudentResetPasswordClient {
 
   @override
   Future<HttpResponse<dynamic>> verifyEmailOtp(
-      VerifyEmailOtpQueries queries) async {
+      {required VerifyEmailOtpQueries queries}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.addAll(queries.toJson());

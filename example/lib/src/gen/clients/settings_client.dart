@@ -8,6 +8,7 @@ abstract class SettingsClient {
   factory SettingsClient(Dio dio, {String baseUrl}) = _SettingsClient;
 
   /// settings-read_settings
+  /// Read Settings
   @GET('/api/v1/common/settings/')
   Future<HttpResponse<dynamic>> read();
 }

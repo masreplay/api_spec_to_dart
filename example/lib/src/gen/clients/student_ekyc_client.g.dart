@@ -79,7 +79,7 @@ class _StudentEkycClient implements StudentEkycClient {
 
   @override
   Future<HttpResponse<dynamic>> uploadNationalIdBackData(
-      BodyStudentEkycUploadNationalIdBackData body) async {
+      {required BodyStudentEkycUploadNationalIdBackData body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -110,7 +110,7 @@ class _StudentEkycClient implements StudentEkycClient {
 
   @override
   Future<HttpResponse<dynamic>> uploadNationalIdFrontData(
-      BodyStudentEkycUploadNationalIdFrontData body) async {
+      {required BodyStudentEkycUploadNationalIdFrontData body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -141,7 +141,7 @@ class _StudentEkycClient implements StudentEkycClient {
 
   @override
   Future<HttpResponse<dynamic>> uploadPassportData(
-      BodyStudentEkycUploadPassportData body) async {
+      {required BodyStudentEkycUploadPassportData body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -172,7 +172,7 @@ class _StudentEkycClient implements StudentEkycClient {
 
   @override
   Future<HttpResponse<dynamic>> uploadFaceData(
-      BodyStudentEkycUploadFaceData body) async {
+      {required BodyStudentEkycUploadFaceData body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -202,7 +202,8 @@ class _StudentEkycClient implements StudentEkycClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> uploadNfc(BodyStudentEkycUploadNfc body) async {
+  Future<HttpResponse<dynamic>> uploadNfc(
+      {required BodyStudentEkycUploadNfc body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -233,7 +234,7 @@ class _StudentEkycClient implements StudentEkycClient {
 
   @override
   Future<HttpResponse<dynamic>> uploadEyeData(
-      BodyStudentEkycUploadEyeData body) async {
+      {required BodyStudentEkycUploadEyeData body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -292,7 +293,7 @@ class _StudentEkycClient implements StudentEkycClient {
 
   @override
   Future<HttpResponse<dynamic>> uploadForm(
-      StudentEkycFormDataRequest body) async {
+      {required StudentEkycFormDataRequest body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

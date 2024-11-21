@@ -9,15 +9,17 @@ abstract class FilesClient {
   factory FilesClient(Dio dio, {String baseUrl}) = _FilesClient;
 
   /// files-upload_file
+  /// Upload File
   @MultiPart()
   @POST('/api/v1/common/files/upload')
-  Future<HttpResponse<dynamic>> uploadFile(
-    @Body() BodyFilesUploadFile body,
-  );
+  Future<HttpResponse<dynamic>> uploadFile({
+    @Body() required BodyFilesUploadFile body,
+  });
 
   /// files-delete_file
+  /// Delete File
   @DELETE('/api/v1/common/files/delete/{id}')
-  Future<HttpResponse<dynamic>> deleteFile(
-    @Path('id') int id,
-  );
+  Future<HttpResponse<dynamic>> deleteFile({
+    @Path('id') required int id,
+  });
 }

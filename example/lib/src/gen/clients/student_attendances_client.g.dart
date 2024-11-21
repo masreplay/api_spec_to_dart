@@ -79,7 +79,7 @@ class _StudentAttendancesClient implements StudentAttendancesClient {
 
   @override
   Future<HttpResponse<dynamic>> checkInMyAttendance(
-      StudentAttendanceCreate body) async {
+      {required StudentAttendanceCreate body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -108,7 +108,8 @@ class _StudentAttendancesClient implements StudentAttendancesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> readAttendanceForCourse(int courseId) async {
+  Future<HttpResponse<dynamic>> readAttendanceForCourse(
+      {required int courseId}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

@@ -22,7 +22,7 @@ class _LecturerCoursesClient implements LecturerCoursesClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>> get(GetQueries queries) async {
+  Future<HttpResponse<dynamic>> get({required GetQueries queries}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.addAll(queries.toJson());
@@ -51,7 +51,7 @@ class _LecturerCoursesClient implements LecturerCoursesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> getLecturerCourse(int id) async {
+  Future<HttpResponse<dynamic>> getLecturerCourse({required int id}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

@@ -9,22 +9,26 @@ abstract class StudentPaymentsClient {
       _StudentPaymentsClient;
 
   /// student_payments-read_payment_methods
+  /// Read Payment Methods
   @GET('/api/v1/student/payments/methods')
   Future<HttpResponse<dynamic>> readPaymentMethods();
 
   /// student_payments-read_payment_method
+  /// Read Payment Method
   @POST('/api/v1/student/payments/methods/{id}')
-  Future<HttpResponse<dynamic>> readPaymentMethod(
-    @Path('id') int id,
-  );
+  Future<HttpResponse<dynamic>> readPaymentMethod({
+    @Path('id') required int id,
+  });
 
   /// student_payments-read_payment_status
+  /// Read Payment Status
   @POST('/api/v1/student/payments/status/{order_id}')
-  Future<HttpResponse<dynamic>> readPaymentStatus(
-    @Path('order_id') String orderId,
-  );
+  Future<HttpResponse<dynamic>> readPaymentStatus({
+    @Path('order_id') required String orderId,
+  });
 
   /// student_payments-read_enrollment_payment_information
+  /// Read Enrollment Payment Information
   @GET('/api/v1/student/payments/enrollment')
   Future<HttpResponse<dynamic>> readEnrollmentPaymentInformation();
 }

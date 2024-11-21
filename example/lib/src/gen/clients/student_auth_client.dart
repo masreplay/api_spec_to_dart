@@ -9,30 +9,35 @@ abstract class StudentAuthClient {
   factory StudentAuthClient(Dio dio, {String baseUrl}) = _StudentAuthClient;
 
   /// student_auth-login
+  /// Login
   @FormUrlEncoded()
   @POST('/api/v1/student/auth/login')
-  Future<HttpResponse<dynamic>> login(
-    @Body() BodyStudentAuthLogin body,
-  );
+  Future<HttpResponse<dynamic>> login({
+    @Body() required BodyStudentAuthLogin body,
+  });
 
   /// student_auth-swagger_login
+  /// Swagger Login
   @FormUrlEncoded()
   @POST('/api/v1/student/auth/swagger/login')
-  Future<HttpResponse<dynamic>> swaggerLogin(
-    @Body() BodyStudentAuthSwaggerLogin body,
-  );
+  Future<HttpResponse<dynamic>> swaggerLogin({
+    @Body() required BodyStudentAuthSwaggerLogin body,
+  });
 
   /// student_auth-refresh_token
+  /// Refresh Token
   @POST('/api/v1/student/auth/refresh_token')
   Future<HttpResponse<dynamic>> refreshToken();
 
   /// student_auth-logout
+  /// Logout
   @POST('/api/v1/student/auth/logout')
   Future<HttpResponse<dynamic>> logout();
 
   /// student_auth-change_temporary_password
+  /// Change Temporary Password
   @POST('/api/v1/student/auth/change-temporary-password')
-  Future<HttpResponse<dynamic>> changeTemporaryPassword(
-    @Body() ChangePasswordRequestPublic body,
-  );
+  Future<HttpResponse<dynamic>> changeTemporaryPassword({
+    @Body() required ChangePasswordRequestPublic body,
+  });
 }

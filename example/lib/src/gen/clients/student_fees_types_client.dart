@@ -9,6 +9,7 @@ abstract class StudentFeesTypesClient {
       _StudentFeesTypesClient;
 
   /// student_fees_types-read_fees_types
+  /// Read Fees Types
   @GET('/api/v1/student/fees_types/')
   Future<HttpResponse<dynamic>> readFeesTypes();
 }

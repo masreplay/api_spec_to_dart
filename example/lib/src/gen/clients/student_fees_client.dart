@@ -9,8 +9,9 @@ abstract class StudentFeesClient {
   factory StudentFeesClient(Dio dio, {String baseUrl}) = _StudentFeesClient;
 
   /// student_fees-read_fees
+  /// Read Fees
   @GET('/api/v1/student/fees/')
-  Future<HttpResponse<dynamic>> readFees(
-    @Queries() ReadFeesQueries queries,
-  );
+  Future<HttpResponse<dynamic>> readFees({
+    @Queries() required ReadFeesQueries queries,
+  });
 }

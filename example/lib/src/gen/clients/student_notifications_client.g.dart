@@ -23,7 +23,7 @@ class _StudentNotificationsClient implements StudentNotificationsClient {
 
   @override
   Future<HttpResponse<dynamic>> readNotifications(
-      ReadNotificationsQueries queries) async {
+      {required ReadNotificationsQueries queries}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.addAll(queries.toJson());
@@ -52,7 +52,8 @@ class _StudentNotificationsClient implements StudentNotificationsClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> sendPlayerId(StudentDeviceCreate body) async {
+  Future<HttpResponse<dynamic>> sendPlayerId(
+      {required StudentDeviceCreate body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -81,7 +82,8 @@ class _StudentNotificationsClient implements StudentNotificationsClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> markAsRead(MarkAsReadQueries queries) async {
+  Future<HttpResponse<dynamic>> markAsRead(
+      {required MarkAsReadQueries queries}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.addAll(queries.toJson());
@@ -110,7 +112,8 @@ class _StudentNotificationsClient implements StudentNotificationsClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> readNotificationDetail(int id) async {
+  Future<HttpResponse<dynamic>> readNotificationDetail(
+      {required int id}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

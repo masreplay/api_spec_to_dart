@@ -9,8 +9,9 @@ abstract class StudentHomeWorksClient {
       _StudentHomeWorksClient;
 
   /// student_home_works-read_course_assessment_by_course_id
+  /// Read Course Assessment By Course Id
   @GET('/api/v1/student/home_works/course/{course_id}')
-  Future<HttpResponse<dynamic>> readCourseAssessmentByCourseId(
-    @Path('course_id') int courseId,
-  );
+  Future<HttpResponse<dynamic>> readCourseAssessmentByCourseId({
+    @Path('course_id') required int courseId,
+  });
 }

@@ -23,7 +23,7 @@ class _StudentRegistrationClient implements StudentRegistrationClient {
 
   @override
   Future<HttpResponse<dynamic>> updateStudentPersonalInfo(
-      StudentRegistrationPersonalInfoUpdateRequest body) async {
+      {required StudentRegistrationPersonalInfoUpdateRequest body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -53,7 +53,7 @@ class _StudentRegistrationClient implements StudentRegistrationClient {
 
   @override
   Future<HttpResponse<dynamic>> updateStudentSchoolInfo(
-      StudentRegistrationSchoolInfoUpdateRequest body) async {
+      {required StudentRegistrationSchoolInfoUpdateRequest body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -83,7 +83,7 @@ class _StudentRegistrationClient implements StudentRegistrationClient {
 
   @override
   Future<HttpResponse<dynamic>> updateStudentIdsInfoForeigner(
-      RegistrationStudentIdsForeignerUpdateRequest body) async {
+      {required RegistrationStudentIdsForeignerUpdateRequest body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -113,7 +113,7 @@ class _StudentRegistrationClient implements StudentRegistrationClient {
 
   @override
   Future<HttpResponse<dynamic>> updateStudentIdsInfoIdentityCard(
-      RegistrationsStudentIdsUpdateRequest body) async {
+      {required RegistrationsStudentIdsUpdateRequest body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -143,7 +143,7 @@ class _StudentRegistrationClient implements StudentRegistrationClient {
 
   @override
   Future<HttpResponse<dynamic>> updateStudentIdsInfoNationalityCard(
-      RegistrationsStudentIdsNationalityCreateRequest body) async {
+      {required RegistrationsStudentIdsNationalityCreateRequest body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

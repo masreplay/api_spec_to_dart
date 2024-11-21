@@ -23,7 +23,7 @@ class _LecturerCalenderClient implements LecturerCalenderClient {
 
   @override
   Future<HttpResponse<dynamic>> getLecturerReadHomeworkCalender(
-      GetLecturerReadHomeworkCalenderQueries queries) async {
+      {required GetLecturerReadHomeworkCalenderQueries queries}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.addAll(queries.toJson());

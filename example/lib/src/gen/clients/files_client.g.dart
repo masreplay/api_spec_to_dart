@@ -22,7 +22,8 @@ class _FilesClient implements FilesClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>> uploadFile(BodyFilesUploadFile body) async {
+  Future<HttpResponse<dynamic>> uploadFile(
+      {required BodyFilesUploadFile body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -52,7 +53,7 @@ class _FilesClient implements FilesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> deleteFile(int id) async {
+  Future<HttpResponse<dynamic>> deleteFile({required int id}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
