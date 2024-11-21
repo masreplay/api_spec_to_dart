@@ -11,7 +11,7 @@ class OpenApiDartModelGenerator {
 
   final OpenApiGeneratorConfig config;
 
-  ({String filename, String content}) generator(OpenApiModel model) {
+  ({String filename, String content}) run(OpenApiModel model) {
     final filename = config.renameFile(model.key);
     final className = config.renameClass(model.key);
 
