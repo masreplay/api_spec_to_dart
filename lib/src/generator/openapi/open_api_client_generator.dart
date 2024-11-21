@@ -53,9 +53,13 @@ class OpenApiDartClientGenerator {
         buffer.writeln('@${type}(\'$entry\')');
 
         final methodName = config.renameMethod(
-            method.current!.operationId.replaceAll(clientName, ''));
+          function.value.operationId.replaceAll(
+            RegExp(clientName, caseSensitive: false),
+            '',
+          ),
+        );
 
-        final parameters = method.current?.parameters;
+        final parameters = function.value.parameters;
 
         buffer.writeln(
           '''Future<HttpResponse<$responseClassName>> $methodName(''',
@@ -108,7 +112,7 @@ class OpenApiDartClientGenerator {
 
         //----------- Body -----------
 
-        final requestBody = method.current?.requestBody;
+        final requestBody = function.value.requestBody;
         if (requestBody != null) {
           final jsonBody = requestBody.content.applicationJson;
           final fromUrlencoded =

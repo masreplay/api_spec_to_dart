@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:example/src/gen/models/models.dart';
 
 part 'student_ekyc_client.g.dart';
 
@@ -57,7 +58,9 @@ abstract class StudentEkycClient {
 
   /// null
   @PATCH('/api/v1/student/ekyc/form')
-  Future<HttpResponse<dynamic>> readForm();
+  Future<HttpResponse<dynamic>> uploadForm(
+    @Body() StudentEkycFormDataRequest body,
+  );
 
   /// null
   @POST('/api/v1/student/ekyc/submit')

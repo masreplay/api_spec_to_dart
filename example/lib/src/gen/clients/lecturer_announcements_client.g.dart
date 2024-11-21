@@ -54,15 +54,15 @@ class _LecturerAnnouncementsClient implements LecturerAnnouncementsClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> get(
-    GetQueries queries,
+  Future<HttpResponse<dynamic>> createLecturerAnnouncement(
     int courseId,
+    BodyLecturerAnnouncementsCreateLecturerAnnouncement body,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    queryParameters.addAll(queries.toJson());
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
     final _options = _setStreamType<HttpResponse<dynamic>>(Options(
       method: 'POST',
       headers: _headers,
@@ -114,11 +114,15 @@ class _LecturerAnnouncementsClient implements LecturerAnnouncementsClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> getLecturerAnnouncement(int id) async {
+  Future<HttpResponse<dynamic>> updateLecturerAnnouncement(
+    int id,
+    LecturerAnnouncementUpdatePublic body,
+  ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
     final _options = _setStreamType<HttpResponse<dynamic>>(Options(
       method: 'PUT',
       headers: _headers,
@@ -142,7 +146,7 @@ class _LecturerAnnouncementsClient implements LecturerAnnouncementsClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> getLecturerAnnouncement(int id) async {
+  Future<HttpResponse<dynamic>> deleteLecturerAnnouncement(int id) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -202,15 +206,15 @@ class _LecturerAnnouncementsClient implements LecturerAnnouncementsClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> getLecturerAnnouncementComments(
-    GetLecturerAnnouncementCommentsQueries queries,
+  Future<HttpResponse<dynamic>> createLecturerAnnouncementComment(
     int id,
+    CommentCreatePublic body,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    queryParameters.addAll(queries.toJson());
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
     final _options = _setStreamType<HttpResponse<dynamic>>(Options(
       method: 'POST',
       headers: _headers,

@@ -54,15 +54,14 @@ class _LecturerAssignmentsClient implements LecturerAssignmentsClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> get(
-    GetQueries queries,
+  Future<HttpResponse<dynamic>> createLecturerAssignment(
     int courseId,
+    dynamic body,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    queryParameters.addAll(queries.toJson());
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final _data = body;
     final _options = _setStreamType<HttpResponse<dynamic>>(Options(
       method: 'POST',
       headers: _headers,
@@ -114,11 +113,14 @@ class _LecturerAssignmentsClient implements LecturerAssignmentsClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> getLecturerAssignment(int id) async {
+  Future<HttpResponse<dynamic>> updateLecturerAssignment(
+    int id,
+    dynamic body,
+  ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final _data = body;
     final _options = _setStreamType<HttpResponse<dynamic>>(Options(
       method: 'PUT',
       headers: _headers,
@@ -142,7 +144,7 @@ class _LecturerAssignmentsClient implements LecturerAssignmentsClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> getLecturerAssignment(int id) async {
+  Future<HttpResponse<dynamic>> deleteLecturerAssignment(int id) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -198,11 +200,15 @@ class _LecturerAssignmentsClient implements LecturerAssignmentsClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> getLecturerAssignmentComments(int id) async {
+  Future<HttpResponse<dynamic>> createLecturerAssignmentComment(
+    int id,
+    BodyLecturerAssignmentsCreateLecturerAssignmentComment body,
+  ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
     final _options = _setStreamType<HttpResponse<dynamic>>(Options(
       method: 'POST',
       headers: _headers,
