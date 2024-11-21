@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'nationalities_public.freezed.dart';
 part 'nationalities_public.g.dart';
 
+///NationalitiesPublic
+
 @freezed
 class NationalitiesPublic with _$NationalitiesPublic {
   const NationalitiesPublic._();

@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'authentication_status_options_response.freezed.dart';
 part 'authentication_status_options_response.g.dart';
 
+///AuthenticationStatusOptionsResponse
+
 @freezed
 class AuthenticationStatusOptionsResponse
     with _$AuthenticationStatusOptionsResponse {
@@ -32,6 +34,7 @@ class AuthenticationStatusOptionsResponse
   }) = _AuthenticationStatusOptionsResponse;
 
   factory AuthenticationStatusOptionsResponse.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$AuthenticationStatusOptionsResponseFromJson(json);
 }

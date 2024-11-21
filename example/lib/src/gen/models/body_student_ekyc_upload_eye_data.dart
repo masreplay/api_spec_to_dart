@@ -7,6 +7,8 @@ import '../../convertors.dart';
 part 'body_student_ekyc_upload_eye_data.freezed.dart';
 part 'body_student_ekyc_upload_eye_data.g.dart';
 
+///Body_student_ekyc-upload_eye_data
+
 @freezed
 class BodyStudentEkycUploadEyeData with _$BodyStudentEkycUploadEyeData {
   const BodyStudentEkycUploadEyeData._();

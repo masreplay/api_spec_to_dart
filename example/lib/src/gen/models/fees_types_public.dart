@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'fees_types_public.freezed.dart';
 part 'fees_types_public.g.dart';
 
+///FeesTypesPublic
+
 @freezed
 class FeesTypesPublic with _$FeesTypesPublic {
   const FeesTypesPublic._();

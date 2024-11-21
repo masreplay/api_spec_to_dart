@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'update_selected_courses_queries.freezed.dart';
 part 'update_selected_courses_queries.g.dart';
 
+///updateSelectedCoursesQueries
+
 @freezed
 class UpdateSelectedCoursesQueries with _$UpdateSelectedCoursesQueries {
   const UpdateSelectedCoursesQueries._();

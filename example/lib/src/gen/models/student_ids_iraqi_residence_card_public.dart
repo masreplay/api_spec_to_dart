@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'student_ids_iraqi_residence_card_public.freezed.dart';
 part 'student_ids_iraqi_residence_card_public.g.dart';
 
+///StudentIdsIraqiResidenceCardPublic
+
 @freezed
 class StudentIdsIraqiResidenceCardPublic
     with _$StudentIdsIraqiResidenceCardPublic {
@@ -37,6 +39,7 @@ class StudentIdsIraqiResidenceCardPublic
   }) = _StudentIdsIraqiResidenceCardPublic;
 
   factory StudentIdsIraqiResidenceCardPublic.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$StudentIdsIraqiResidenceCardPublicFromJson(json);
 }

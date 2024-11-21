@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'pagination_response_student_notifications_public.freezed.dart';
 part 'pagination_response_student_notifications_public.g.dart';
 
+///PaginationResponse_StudentNotificationsPublic_
+
 @freezed
 class PaginationResponseStudentNotificationsPublic
     with _$PaginationResponseStudentNotificationsPublic {
@@ -27,6 +29,7 @@ class PaginationResponseStudentNotificationsPublic
   }) = _PaginationResponseStudentNotificationsPublic;
 
   factory PaginationResponseStudentNotificationsPublic.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$PaginationResponseStudentNotificationsPublicFromJson(json);
 }

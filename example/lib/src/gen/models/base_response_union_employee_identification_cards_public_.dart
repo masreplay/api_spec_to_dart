@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'base_response_union_employee_identification_cards_public_.freezed.dart';
 part 'base_response_union_employee_identification_cards_public_.g.dart';
 
+///BaseResponse_Union_EmployeeIdentificationCardsPublic__NoneType__
+
 @freezed
 class BaseResponseUnionEmployeeIdentificationCardsPublic
     with _$BaseResponseUnionEmployeeIdentificationCardsPublic {
@@ -19,6 +21,7 @@ class BaseResponseUnionEmployeeIdentificationCardsPublic
   }) = _BaseResponseUnionEmployeeIdentificationCardsPublic;
 
   factory BaseResponseUnionEmployeeIdentificationCardsPublic.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseUnionEmployeeIdentificationCardsPublicFromJson(json);
 }

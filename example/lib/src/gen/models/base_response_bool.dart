@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'base_response_bool.freezed.dart';
 part 'base_response_bool.g.dart';
 
+///BaseResponse_bool_
+
 @freezed
 class BaseResponseBool with _$BaseResponseBool {
   const BaseResponseBool._();

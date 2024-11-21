@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'ui_select_form_field_option.freezed.dart';
 part 'ui_select_form_field_option.g.dart';
 
+///UISelectFormFieldOption
+
 @freezed
 class UISelectFormFieldOption with _$UISelectFormFieldOption {
   const UISelectFormFieldOption._();

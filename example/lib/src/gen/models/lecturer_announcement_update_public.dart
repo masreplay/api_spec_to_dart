@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'lecturer_announcement_update_public.freezed.dart';
 part 'lecturer_announcement_update_public.g.dart';
 
+///LecturerAnnouncementUpdatePublic
+
 @freezed
 class LecturerAnnouncementUpdatePublic with _$LecturerAnnouncementUpdatePublic {
   const LecturerAnnouncementUpdatePublic._();
@@ -19,6 +21,7 @@ class LecturerAnnouncementUpdatePublic with _$LecturerAnnouncementUpdatePublic {
   }) = _LecturerAnnouncementUpdatePublic;
 
   factory LecturerAnnouncementUpdatePublic.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$LecturerAnnouncementUpdatePublicFromJson(json);
 }

@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'summary.freezed.dart';
 part 'summary.g.dart';
 
+///Summary
+
 @freezed
 class Summary with _$Summary {
   const Summary._();

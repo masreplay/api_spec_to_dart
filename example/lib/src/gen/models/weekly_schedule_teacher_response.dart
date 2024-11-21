@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'weekly_schedule_teacher_response.freezed.dart';
 part 'weekly_schedule_teacher_response.g.dart';
 
+///WeeklyScheduleTeacherResponse
+
 @freezed
 class WeeklyScheduleTeacherResponse with _$WeeklyScheduleTeacherResponse {
   const WeeklyScheduleTeacherResponse._();

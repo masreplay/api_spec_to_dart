@@ -2,6 +2,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'home_process_status.g.dart';
 
+///HomeProcessStatus
+
 @JsonEnum(valueField: 'value', alwaysCreate: true)
 enum HomeProcessStatus {
   noStudyProgram('no_study_program'),

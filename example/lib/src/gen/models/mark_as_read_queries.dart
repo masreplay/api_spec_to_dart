@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'mark_as_read_queries.freezed.dart';
 part 'mark_as_read_queries.g.dart';
 
+///markAsReadQueries
+
 @freezed
 class MarkAsReadQueries with _$MarkAsReadQueries {
   const MarkAsReadQueries._();

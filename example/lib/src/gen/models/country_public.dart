@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'country_public.freezed.dart';
 part 'country_public.g.dart';
 
+///CountryPublic
+
 @freezed
 class CountryPublic with _$CountryPublic {
   const CountryPublic._();

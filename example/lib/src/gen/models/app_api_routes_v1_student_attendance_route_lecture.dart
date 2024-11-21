@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'app_api_routes_v1_student_attendance_route_lecture.freezed.dart';
 part 'app_api_routes_v1_student_attendance_route_lecture.g.dart';
 
+///app__api__routes__v1__student__attendance_route__Lecture
+
 @freezed
 class AppApiRoutesV1StudentAttendanceRouteLecture
     with _$AppApiRoutesV1StudentAttendanceRouteLecture {
@@ -38,6 +40,7 @@ class AppApiRoutesV1StudentAttendanceRouteLecture
   }) = _AppApiRoutesV1StudentAttendanceRouteLecture;
 
   factory AppApiRoutesV1StudentAttendanceRouteLecture.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$AppApiRoutesV1StudentAttendanceRouteLectureFromJson(json);
 }

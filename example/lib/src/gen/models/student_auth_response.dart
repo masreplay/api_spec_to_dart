@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'student_auth_response.freezed.dart';
 part 'student_auth_response.g.dart';
 
+///StudentAuthResponse
+
 @freezed
 class StudentAuthResponse with _$StudentAuthResponse {
   const StudentAuthResponse._();

@@ -2,6 +2,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'gender_enum.g.dart';
 
+///GenderEnum
+
 @JsonEnum(valueField: 'value', alwaysCreate: true)
 enum GenderEnum {
   value0(1),

@@ -2,6 +2,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'blood_group_enum.g.dart';
 
+///BloodGroupEnum
+
 @JsonEnum(valueField: 'value', alwaysCreate: true)
 enum BloodGroupEnum {
   value0(1),

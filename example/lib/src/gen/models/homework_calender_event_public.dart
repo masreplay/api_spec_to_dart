@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'homework_calender_event_public.freezed.dart';
 part 'homework_calender_event_public.g.dart';
 
+///HomeworkCalenderEventPublic
+
 @freezed
 class HomeworkCalenderEventPublic with _$HomeworkCalenderEventPublic {
   const HomeworkCalenderEventPublic._();

@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'get_queries.freezed.dart';
 part 'get_queries.g.dart';
 
+///getQueries
+
 @freezed
 class GetQueries with _$GetQueries {
   const GetQueries._();

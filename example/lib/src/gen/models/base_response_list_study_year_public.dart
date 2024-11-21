@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'base_response_list_study_year_public.freezed.dart';
 part 'base_response_list_study_year_public.g.dart';
 
+///BaseResponse_list_StudyYearPublic__
+
 @freezed
 class BaseResponseListStudyYearPublic with _$BaseResponseListStudyYearPublic {
   const BaseResponseListStudyYearPublic._();

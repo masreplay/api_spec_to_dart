@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'majors_public.freezed.dart';
 part 'majors_public.g.dart';
 
+///MajorsPublic
+
 @freezed
 class MajorsPublic with _$MajorsPublic {
   const MajorsPublic._();

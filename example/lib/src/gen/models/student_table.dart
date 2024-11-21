@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'student_table.freezed.dart';
 part 'student_table.g.dart';
 
+///StudentTable
+
 @freezed
 class StudentTable with _$StudentTable {
   const StudentTable._();

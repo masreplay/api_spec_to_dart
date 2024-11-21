@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'lecturer_auth_response.freezed.dart';
 part 'lecturer_auth_response.g.dart';
 
+///LecturerAuthResponse
+
 @freezed
 class LecturerAuthResponse with _$LecturerAuthResponse {
   const LecturerAuthResponse._();

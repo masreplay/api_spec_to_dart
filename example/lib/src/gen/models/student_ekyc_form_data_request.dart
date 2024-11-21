@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'student_ekyc_form_data_request.freezed.dart';
 part 'student_ekyc_form_data_request.g.dart';
 
+///StudentEkycFormDataRequest
+
 @freezed
 class StudentEkycFormDataRequest with _$StudentEkycFormDataRequest {
   const StudentEkycFormDataRequest._();

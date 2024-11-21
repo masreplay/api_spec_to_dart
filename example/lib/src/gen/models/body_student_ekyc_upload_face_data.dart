@@ -7,6 +7,8 @@ import '../../convertors.dart';
 part 'body_student_ekyc_upload_face_data.freezed.dart';
 part 'body_student_ekyc_upload_face_data.g.dart';
 
+///Body_student_ekyc-upload_face_data
+
 @freezed
 class BodyStudentEkycUploadFaceData with _$BodyStudentEkycUploadFaceData {
   const BodyStudentEkycUploadFaceData._();

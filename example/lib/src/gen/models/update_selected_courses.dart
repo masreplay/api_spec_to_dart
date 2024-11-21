@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'update_selected_courses.freezed.dart';
 part 'update_selected_courses.g.dart';
 
+///UpdateSelectedCourses
+
 @freezed
 class UpdateSelectedCourses with _$UpdateSelectedCourses {
   const UpdateSelectedCourses._();

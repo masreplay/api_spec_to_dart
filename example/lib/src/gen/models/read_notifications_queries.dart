@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'read_notifications_queries.freezed.dart';
 part 'read_notifications_queries.g.dart';
 
+///readNotificationsQueries
+
 @freezed
 class ReadNotificationsQueries with _$ReadNotificationsQueries {
   const ReadNotificationsQueries._();

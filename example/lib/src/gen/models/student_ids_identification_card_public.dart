@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'student_ids_identification_card_public.freezed.dart';
 part 'student_ids_identification_card_public.g.dart';
 
+///StudentIdsIdentificationCardPublic
+
 @freezed
 class StudentIdsIdentificationCardPublic
     with _$StudentIdsIdentificationCardPublic {
@@ -32,6 +34,7 @@ class StudentIdsIdentificationCardPublic
   }) = _StudentIdsIdentificationCardPublic;
 
   factory StudentIdsIdentificationCardPublic.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$StudentIdsIdentificationCardPublicFromJson(json);
 }

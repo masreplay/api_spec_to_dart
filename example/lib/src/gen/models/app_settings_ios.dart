@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'app_settings_ios.freezed.dart';
 part 'app_settings_ios.g.dart';
 
+///AppSettingsIos
+
 @freezed
 class AppSettingsIos with _$AppSettingsIos {
   const AppSettingsIos._();

@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'change_password_request_public.freezed.dart';
 part 'change_password_request_public.g.dart';
 
+///ChangePasswordRequestPublic
+
 @freezed
 class ChangePasswordRequestPublic with _$ChangePasswordRequestPublic {
   const ChangePasswordRequestPublic._();

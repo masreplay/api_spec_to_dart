@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'student_university_card_public.freezed.dart';
 part 'student_university_card_public.g.dart';
 
+///StudentUniversityCardPublic
+
 @freezed
 class StudentUniversityCardPublic with _$StudentUniversityCardPublic {
   const StudentUniversityCardPublic._();

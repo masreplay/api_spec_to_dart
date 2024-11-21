@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'registration_student_ids_foreigner_update_request.freezed.dart';
 part 'registration_student_ids_foreigner_update_request.g.dart';
 
+///RegistrationStudentIdsForeignerUpdateRequest
+
 @freezed
 class RegistrationStudentIdsForeignerUpdateRequest
     with _$RegistrationStudentIdsForeignerUpdateRequest {
@@ -19,6 +21,7 @@ class RegistrationStudentIdsForeignerUpdateRequest
   }) = _RegistrationStudentIdsForeignerUpdateRequest;
 
   factory RegistrationStudentIdsForeignerUpdateRequest.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$RegistrationStudentIdsForeignerUpdateRequestFromJson(json);
 }

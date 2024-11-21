@@ -22,7 +22,7 @@ ValidationError _$ValidationErrorFromJson(Map<String, dynamic> json) {
 mixin _$ValidationError {
   /// Location
   @JsonKey(name: 'loc')
-  List<Stringint> get loc => throw _privateConstructorUsedError;
+  List<dynamic> get loc => throw _privateConstructorUsedError;
 
   /// Message
   @JsonKey(name: 'msg')
@@ -49,7 +49,7 @@ abstract class $ValidationErrorCopyWith<$Res> {
       _$ValidationErrorCopyWithImpl<$Res, ValidationError>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'loc') List<Stringint> loc,
+      {@JsonKey(name: 'loc') List<dynamic> loc,
       @JsonKey(name: 'msg') String msg,
       @JsonKey(name: 'type') String type});
 }
@@ -77,7 +77,7 @@ class _$ValidationErrorCopyWithImpl<$Res, $Val extends ValidationError>
       loc: null == loc
           ? _value.loc
           : loc // ignore: cast_nullable_to_non_nullable
-              as List<Stringint>,
+              as List<dynamic>,
       msg: null == msg
           ? _value.msg
           : msg // ignore: cast_nullable_to_non_nullable
@@ -99,7 +99,7 @@ abstract class _$$ValidationErrorImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'loc') List<Stringint> loc,
+      {@JsonKey(name: 'loc') List<dynamic> loc,
       @JsonKey(name: 'msg') String msg,
       @JsonKey(name: 'type') String type});
 }
@@ -125,7 +125,7 @@ class __$$ValidationErrorImplCopyWithImpl<$Res>
       loc: null == loc
           ? _value._loc
           : loc // ignore: cast_nullable_to_non_nullable
-              as List<Stringint>,
+              as List<dynamic>,
       msg: null == msg
           ? _value.msg
           : msg // ignore: cast_nullable_to_non_nullable
@@ -143,7 +143,7 @@ class __$$ValidationErrorImplCopyWithImpl<$Res>
 @JsonSerializable(converters: convertors)
 class _$ValidationErrorImpl extends _ValidationError {
   const _$ValidationErrorImpl(
-      {@JsonKey(name: 'loc') required final List<Stringint> loc,
+      {@JsonKey(name: 'loc') required final List<dynamic> loc,
       @JsonKey(name: 'msg') required this.msg,
       @JsonKey(name: 'type') required this.type})
       : _loc = loc,
@@ -153,12 +153,12 @@ class _$ValidationErrorImpl extends _ValidationError {
       _$$ValidationErrorImplFromJson(json);
 
   /// Location
-  final List<Stringint> _loc;
+  final List<dynamic> _loc;
 
   /// Location
   @override
   @JsonKey(name: 'loc')
-  List<Stringint> get loc {
+  List<dynamic> get loc {
     if (_loc is EqualUnmodifiableListView) return _loc;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_loc);
@@ -213,7 +213,7 @@ class _$ValidationErrorImpl extends _ValidationError {
 
 abstract class _ValidationError extends ValidationError {
   const factory _ValidationError(
-          {@JsonKey(name: 'loc') required final List<Stringint> loc,
+          {@JsonKey(name: 'loc') required final List<dynamic> loc,
           @JsonKey(name: 'msg') required final String msg,
           @JsonKey(name: 'type') required final String type}) =
       _$ValidationErrorImpl;
@@ -225,7 +225,7 @@ abstract class _ValidationError extends ValidationError {
   /// Location
   @override
   @JsonKey(name: 'loc')
-  List<Stringint> get loc;
+  List<dynamic> get loc;
 
   /// Message
   @override

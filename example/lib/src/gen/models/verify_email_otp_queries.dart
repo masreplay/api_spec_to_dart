@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'verify_email_otp_queries.freezed.dart';
 part 'verify_email_otp_queries.g.dart';
 
+///verifyEmailOtpQueries
+
 @freezed
 class VerifyEmailOtpQueries with _$VerifyEmailOtpQueries {
   const VerifyEmailOtpQueries._();

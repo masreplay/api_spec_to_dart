@@ -2,6 +2,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'price_currency.g.dart';
 
+///PriceCurrency
+
 @JsonEnum(valueField: 'value', alwaysCreate: true)
 enum PriceCurrency {
   iqd('IQD'),

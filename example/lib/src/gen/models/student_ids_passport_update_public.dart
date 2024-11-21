@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'student_ids_passport_update_public.freezed.dart';
 part 'student_ids_passport_update_public.g.dart';
 
+///StudentIdsPassportUpdatePublic
+
 @freezed
 class StudentIdsPassportUpdatePublic with _$StudentIdsPassportUpdatePublic {
   const StudentIdsPassportUpdatePublic._();

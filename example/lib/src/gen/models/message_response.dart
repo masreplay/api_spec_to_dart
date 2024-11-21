@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'message_response.freezed.dart';
 part 'message_response.g.dart';
 
+///MessageResponse
+
 @freezed
 class MessageResponse with _$MessageResponse {
   const MessageResponse._();

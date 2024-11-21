@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'send_otp_by_phone_queries.freezed.dart';
 part 'send_otp_by_phone_queries.g.dart';
 
+///sendOtpByPhoneQueries
+
 @freezed
 class SendOtpByPhoneQueries with _$SendOtpByPhoneQueries {
   const SendOtpByPhoneQueries._();

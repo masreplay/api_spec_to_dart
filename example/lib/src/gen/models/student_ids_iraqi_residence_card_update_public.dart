@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'student_ids_iraqi_residence_card_update_public.freezed.dart';
 part 'student_ids_iraqi_residence_card_update_public.g.dart';
 
+///StudentIdsIraqiResidenceCardUpdatePublic
+
 @freezed
 class StudentIdsIraqiResidenceCardUpdatePublic
     with _$StudentIdsIraqiResidenceCardUpdatePublic {
@@ -41,6 +43,7 @@ class StudentIdsIraqiResidenceCardUpdatePublic
   }) = _StudentIdsIraqiResidenceCardUpdatePublic;
 
   factory StudentIdsIraqiResidenceCardUpdatePublic.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$StudentIdsIraqiResidenceCardUpdatePublicFromJson(json);
 }

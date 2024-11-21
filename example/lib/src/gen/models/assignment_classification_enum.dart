@@ -2,6 +2,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'assignment_classification_enum.g.dart';
 
+///AssignmentClassificationEnum
+
 @JsonEnum(valueField: 'value', alwaysCreate: true)
 enum AssignmentClassificationEnum {
   value0(0),

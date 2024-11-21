@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'student_attendance_public.freezed.dart';
 part 'student_attendance_public.g.dart';
 
+///StudentAttendancePublic
+
 @freezed
 class StudentAttendancePublic with _$StudentAttendancePublic {
   const StudentAttendancePublic._();

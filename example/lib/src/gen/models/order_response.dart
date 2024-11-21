@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'order_response.freezed.dart';
 part 'order_response.g.dart';
 
+///OrderResponse
+
 @freezed
 class OrderResponse with _$OrderResponse {
   const OrderResponse._();

@@ -2,6 +2,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user_role.g.dart';
 
+///UserRole
+
 @JsonEnum(valueField: 'value', alwaysCreate: true)
 enum UserRole {
   value0(0),

@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'comment_user_public.freezed.dart';
 part 'comment_user_public.g.dart';
 
+///CommentUserPublic
+
 @freezed
 class CommentUserPublic with _$CommentUserPublic {
   const CommentUserPublic._();

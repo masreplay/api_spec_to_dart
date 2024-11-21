@@ -7,6 +7,8 @@ import '../../convertors.dart';
 part 'body_student_ekyc_upload_nfc.freezed.dart';
 part 'body_student_ekyc_upload_nfc.g.dart';
 
+///Body_student_ekyc-upload_nfc
+
 @freezed
 class BodyStudentEkycUploadNfc with _$BodyStudentEkycUploadNfc {
   const BodyStudentEkycUploadNfc._();

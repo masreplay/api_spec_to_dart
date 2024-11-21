@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'get_employee_identification_cards_queries.freezed.dart';
 part 'get_employee_identification_cards_queries.g.dart';
 
+///getEmployeeIdentificationCardsQueries
+
 @freezed
 class GetEmployeeIdentificationCardsQueries
     with _$GetEmployeeIdentificationCardsQueries {
@@ -17,6 +19,7 @@ class GetEmployeeIdentificationCardsQueries
   }) = _GetEmployeeIdentificationCardsQueries;
 
   factory GetEmployeeIdentificationCardsQueries.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$GetEmployeeIdentificationCardsQueriesFromJson(json);
 }

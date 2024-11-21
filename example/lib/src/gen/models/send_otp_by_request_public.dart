@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'send_otp_by_request_public.freezed.dart';
 part 'send_otp_by_request_public.g.dart';
 
+///SendOtpByRequestPublic
+
 @freezed
 class SendOtpByRequestPublic with _$SendOtpByRequestPublic {
   const SendOtpByRequestPublic._();

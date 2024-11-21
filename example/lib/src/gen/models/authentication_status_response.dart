@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'authentication_status_response.freezed.dart';
 part 'authentication_status_response.g.dart';
 
+///AuthenticationStatusResponse
+
 @freezed
 class AuthenticationStatusResponse with _$AuthenticationStatusResponse {
   const AuthenticationStatusResponse._();

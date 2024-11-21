@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'employee_identification_cards_public.freezed.dart';
 part 'employee_identification_cards_public.g.dart';
 
+///EmployeeIdentificationCardsPublic
+
 @freezed
 class EmployeeIdentificationCardsPublic
     with _$EmployeeIdentificationCardsPublic {
@@ -131,6 +133,7 @@ class EmployeeIdentificationCardsPublic
   }) = _EmployeeIdentificationCardsPublic;
 
   factory EmployeeIdentificationCardsPublic.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$EmployeeIdentificationCardsPublicFromJson(json);
 }

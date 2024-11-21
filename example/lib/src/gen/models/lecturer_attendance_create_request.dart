@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'lecturer_attendance_create_request.freezed.dart';
 part 'lecturer_attendance_create_request.g.dart';
 
+///LecturerAttendanceCreateRequest
+
 @freezed
 class LecturerAttendanceCreateRequest with _$LecturerAttendanceCreateRequest {
   const LecturerAttendanceCreateRequest._();

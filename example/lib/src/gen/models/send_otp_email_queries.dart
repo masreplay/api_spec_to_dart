@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'send_otp_email_queries.freezed.dart';
 part 'send_otp_email_queries.g.dart';
 
+///sendOtpEmailQueries
+
 @freezed
 class SendOtpEmailQueries with _$SendOtpEmailQueries {
   const SendOtpEmailQueries._();

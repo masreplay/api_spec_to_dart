@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'base_response_dict_str_any.freezed.dart';
 part 'base_response_dict_str_any.g.dart';
 
+///BaseResponse_dict_str__Any__
+
 @freezed
 class BaseResponseDictStrAny with _$BaseResponseDictStrAny {
   const BaseResponseDictStrAny._();

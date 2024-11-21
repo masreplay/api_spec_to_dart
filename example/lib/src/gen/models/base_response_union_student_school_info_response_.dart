@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'base_response_union_student_school_info_response_.freezed.dart';
 part 'base_response_union_student_school_info_response_.g.dart';
 
+///BaseResponse_Union_StudentSchoolInfoResponse__NoneType__
+
 @freezed
 class BaseResponseUnionStudentSchoolInfoResponse
     with _$BaseResponseUnionStudentSchoolInfoResponse {
@@ -19,6 +21,7 @@ class BaseResponseUnionStudentSchoolInfoResponse
   }) = _BaseResponseUnionStudentSchoolInfoResponse;
 
   factory BaseResponseUnionStudentSchoolInfoResponse.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseUnionStudentSchoolInfoResponseFromJson(json);
 }

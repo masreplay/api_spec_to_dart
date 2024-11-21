@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'lecturer_course_public.freezed.dart';
 part 'lecturer_course_public.g.dart';
 
+///LecturerCoursePublic
+
 @freezed
 class LecturerCoursePublic with _$LecturerCoursePublic {
   const LecturerCoursePublic._();

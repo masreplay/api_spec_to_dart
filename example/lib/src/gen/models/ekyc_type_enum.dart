@@ -2,6 +2,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'ekyc_type_enum.g.dart';
 
+///EkycTypeEnum
+
 @JsonEnum(valueField: 'value', alwaysCreate: true)
 enum EkycTypeEnum {
   innovatrics('innovatrics'),

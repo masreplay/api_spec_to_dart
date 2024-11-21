@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'base_response_init_ekyc_response.freezed.dart';
 part 'base_response_init_ekyc_response.g.dart';
 
+///BaseResponse_InitEkycResponse_
+
 @freezed
 class BaseResponseInitEkycResponse with _$BaseResponseInitEkycResponse {
   const BaseResponseInitEkycResponse._();

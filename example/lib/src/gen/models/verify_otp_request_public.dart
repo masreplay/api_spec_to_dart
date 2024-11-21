@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'verify_otp_request_public.freezed.dart';
 part 'verify_otp_request_public.g.dart';
 
+///VerifyOtpRequestPublic
+
 @freezed
 class VerifyOtpRequestPublic with _$VerifyOtpRequestPublic {
   const VerifyOtpRequestPublic._();

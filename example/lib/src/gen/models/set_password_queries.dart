@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'set_password_queries.freezed.dart';
 part 'set_password_queries.g.dart';
 
+///setPasswordQueries
+
 @freezed
 class SetPasswordQueries with _$SetPasswordQueries {
   const SetPasswordQueries._();

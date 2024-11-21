@@ -2,6 +2,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'semester_filter.g.dart';
 
+///SemesterFilter
+
 @JsonEnum(valueField: 'value', alwaysCreate: true)
 enum SemesterFilter {
   all('all'),

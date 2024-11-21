@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'student_registration_school_info_update_request.freezed.dart';
 part 'student_registration_school_info_update_request.g.dart';
 
+///StudentRegistrationSchoolInfoUpdateRequest
+
 @freezed
 class StudentRegistrationSchoolInfoUpdateRequest
     with _$StudentRegistrationSchoolInfoUpdateRequest {
@@ -45,6 +47,7 @@ class StudentRegistrationSchoolInfoUpdateRequest
   }) = _StudentRegistrationSchoolInfoUpdateRequest;
 
   factory StudentRegistrationSchoolInfoUpdateRequest.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$StudentRegistrationSchoolInfoUpdateRequestFromJson(json);
 }

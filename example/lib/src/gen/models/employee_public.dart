@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'employee_public.freezed.dart';
 part 'employee_public.g.dart';
 
+///EmployeePublic
+
 @freezed
 class EmployeePublic with _$EmployeePublic {
   const EmployeePublic._();

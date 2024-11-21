@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'student_attendance_create.freezed.dart';
 part 'student_attendance_create.g.dart';
 
+///StudentAttendanceCreate
+
 @freezed
 class StudentAttendanceCreate with _$StudentAttendanceCreate {
   const StudentAttendanceCreate._();

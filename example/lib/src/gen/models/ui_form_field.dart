@@ -5,6 +5,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'ui_form_field.freezed.dart';
 part 'ui_form_field.g.dart';
 
+///UIFormField
+
 @freezed
 class UIFormField with _$UIFormField {
   const factory UIFormField.fallback() = UIFormFieldFallback;

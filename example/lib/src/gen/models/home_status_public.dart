@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'home_status_public.freezed.dart';
 part 'home_status_public.g.dart';
 
+///HomeStatusPublic
+
 @freezed
 class HomeStatusPublic with _$HomeStatusPublic {
   const HomeStatusPublic._();

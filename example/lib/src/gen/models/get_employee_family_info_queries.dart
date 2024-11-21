@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'get_employee_family_info_queries.freezed.dart';
 part 'get_employee_family_info_queries.g.dart';
 
+///getEmployeeFamilyInfoQueries
+
 @freezed
 class GetEmployeeFamilyInfoQueries with _$GetEmployeeFamilyInfoQueries {
   const GetEmployeeFamilyInfoQueries._();

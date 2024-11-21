@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'app_api_routes_v1_lecturer_weekly_schedule_route_lecture.freezed.dart';
 part 'app_api_routes_v1_lecturer_weekly_schedule_route_lecture.g.dart';
 
+///app__api__routes__v1__lecturer__weekly_schedule_route__Lecture
+
 @freezed
 class AppApiRoutesV1LecturerWeeklyScheduleRouteLecture
     with _$AppApiRoutesV1LecturerWeeklyScheduleRouteLecture {
@@ -54,6 +56,7 @@ class AppApiRoutesV1LecturerWeeklyScheduleRouteLecture
   }) = _AppApiRoutesV1LecturerWeeklyScheduleRouteLecture;
 
   factory AppApiRoutesV1LecturerWeeklyScheduleRouteLecture.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$AppApiRoutesV1LecturerWeeklyScheduleRouteLectureFromJson(json);
 }

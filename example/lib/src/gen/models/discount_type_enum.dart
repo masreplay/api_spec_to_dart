@@ -2,6 +2,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'discount_type_enum.g.dart';
 
+///DiscountTypeEnum
+
 @JsonEnum(valueField: 'value', alwaysCreate: true)
 enum DiscountTypeEnum {
   percentage('percentage'),

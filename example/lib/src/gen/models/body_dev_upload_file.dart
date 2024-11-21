@@ -7,6 +7,8 @@ import '../../convertors.dart';
 part 'body_dev_upload_file.freezed.dart';
 part 'body_dev_upload_file.g.dart';
 
+///Body_dev-upload_file
+
 @freezed
 class BodyDevUploadFile with _$BodyDevUploadFile {
   const BodyDevUploadFile._();

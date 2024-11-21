@@ -8,6 +8,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'body_files_upload_file.freezed.dart';
 part 'body_files_upload_file.g.dart';
 
+///Body_files-upload_file
+
 @freezed
 class BodyFilesUploadFile with _$BodyFilesUploadFile {
   const BodyFilesUploadFile._();

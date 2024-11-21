@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'comment_public.freezed.dart';
 part 'comment_public.g.dart';
 
+///CommentPublic
+
 @freezed
 class CommentPublic with _$CommentPublic {
   const CommentPublic._();

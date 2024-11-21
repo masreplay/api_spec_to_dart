@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'course_staff_public.freezed.dart';
 part 'course_staff_public.g.dart';
 
+///CourseStaffPublic
+
 @freezed
 class CourseStaffPublic with _$CourseStaffPublic {
   const CourseStaffPublic._();

@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'body_student_auth_swagger_login.freezed.dart';
 part 'body_student_auth_swagger_login.g.dart';
 
+///Body_student_auth-swagger_login
+
 @freezed
 class BodyStudentAuthSwaggerLogin with _$BodyStudentAuthSwaggerLogin {
   const BodyStudentAuthSwaggerLogin._();

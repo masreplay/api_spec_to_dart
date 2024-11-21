@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'ui_form.freezed.dart';
 part 'ui_form.g.dart';
 
+///UIForm
+
 @freezed
 class UIForm with _$UIForm {
   const UIForm._();

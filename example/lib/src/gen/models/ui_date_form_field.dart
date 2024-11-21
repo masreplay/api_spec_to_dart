@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'ui_date_form_field.freezed.dart';
 part 'ui_date_form_field.g.dart';
 
+///UIDateFormField
+
 @freezed
 class UIDateFormField with _$UIDateFormField {
   const UIDateFormField._();

@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'read_fees_queries.freezed.dart';
 part 'read_fees_queries.g.dart';
 
+///readFeesQueries
+
 @freezed
 class ReadFeesQueries with _$ReadFeesQueries {
   const ReadFeesQueries._();

@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'base_response_list_payment_method_public.freezed.dart';
 part 'base_response_list_payment_method_public.g.dart';
 
+///BaseResponse_list_PaymentMethodPublic__
+
 @freezed
 class BaseResponseListPaymentMethodPublic
     with _$BaseResponseListPaymentMethodPublic {
@@ -21,6 +23,7 @@ class BaseResponseListPaymentMethodPublic
   }) = _BaseResponseListPaymentMethodPublic;
 
   factory BaseResponseListPaymentMethodPublic.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseListPaymentMethodPublicFromJson(json);
 }

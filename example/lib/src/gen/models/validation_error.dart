@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'validation_error.freezed.dart';
 part 'validation_error.g.dart';
 
+///ValidationError
+
 @freezed
 class ValidationError with _$ValidationError {
   const ValidationError._();
@@ -12,7 +14,7 @@ class ValidationError with _$ValidationError {
   @JsonSerializable(converters: convertors)
   const factory ValidationError({
     /// Location
-    @JsonKey(name: 'loc') required List<Stringint> loc,
+    @JsonKey(name: 'loc') required List<dynamic> loc,
 
     /// Message
     @JsonKey(name: 'msg') required String msg,

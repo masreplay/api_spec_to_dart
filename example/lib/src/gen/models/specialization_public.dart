@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'specialization_public.freezed.dart';
 part 'specialization_public.g.dart';
 
+///SpecializationPublic
+
 @freezed
 class SpecializationPublic with _$SpecializationPublic {
   const SpecializationPublic._();

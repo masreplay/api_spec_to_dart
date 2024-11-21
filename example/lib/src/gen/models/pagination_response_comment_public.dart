@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'pagination_response_comment_public.freezed.dart';
 part 'pagination_response_comment_public.g.dart';
 
+///PaginationResponse_CommentPublic_
+
 @freezed
 class PaginationResponseCommentPublic with _$PaginationResponseCommentPublic {
   const PaginationResponseCommentPublic._();

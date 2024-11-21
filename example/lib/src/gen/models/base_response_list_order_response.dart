@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'base_response_list_order_response.freezed.dart';
 part 'base_response_list_order_response.g.dart';
 
+///BaseResponse_list_OrderResponse__
+
 @freezed
 class BaseResponseListOrderResponse with _$BaseResponseListOrderResponse {
   const BaseResponseListOrderResponse._();

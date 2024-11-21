@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'verify_phone_otp_queries.freezed.dart';
 part 'verify_phone_otp_queries.g.dart';
 
+///verifyPhoneOtpQueries
+
 @freezed
 class VerifyPhoneOtpQueries with _$VerifyPhoneOtpQueries {
   const VerifyPhoneOtpQueries._();

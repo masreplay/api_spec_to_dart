@@ -2,6 +2,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'selected_course_result_enum.g.dart';
 
+///SelectedCourseResultEnum
+
 @JsonEnum(valueField: 'value', alwaysCreate: true)
 enum SelectedCourseResultEnum {
   value0(1),

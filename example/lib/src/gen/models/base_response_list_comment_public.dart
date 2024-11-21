@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'base_response_list_comment_public.freezed.dart';
 part 'base_response_list_comment_public.g.dart';
 
+///BaseResponse_list_CommentPublic__
+
 @freezed
 class BaseResponseListCommentPublic with _$BaseResponseListCommentPublic {
   const BaseResponseListCommentPublic._();

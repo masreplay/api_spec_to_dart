@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'file_public.freezed.dart';
 part 'file_public.g.dart';
 
+///FilePublic
+
 @freezed
 class FilePublic with _$FilePublic {
   const FilePublic._();

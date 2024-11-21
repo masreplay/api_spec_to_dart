@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'base_response_list_course_assessment_measuring_type_course_and_assessments.freezed.dart';
 part 'base_response_list_course_assessment_measuring_type_course_and_assessments.g.dart';
 
+///BaseResponse_list_CourseAssessmentMeasuringTypeCourseAndAssessments__
+
 @freezed
 class BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments
     with _$BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments {
@@ -22,7 +24,9 @@ class BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments
   }) = _BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments;
 
   factory BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessments.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseListCourseAssessmentMeasuringTypeCourseAndAssessmentsFromJson(
-          json);
+        json,
+      );
 }

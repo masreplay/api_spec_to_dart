@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'home_feed_course_selection_status_section_model.freezed.dart';
 part 'home_feed_course_selection_status_section_model.g.dart';
 
+///HomeFeedCourseSelectionStatusSectionModel
+
 @freezed
 class HomeFeedCourseSelectionStatusSectionModel
     with _$HomeFeedCourseSelectionStatusSectionModel {
@@ -31,6 +33,7 @@ class HomeFeedCourseSelectionStatusSectionModel
   }) = _HomeFeedCourseSelectionStatusSectionModel;
 
   factory HomeFeedCourseSelectionStatusSectionModel.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$HomeFeedCourseSelectionStatusSectionModelFromJson(json);
 }

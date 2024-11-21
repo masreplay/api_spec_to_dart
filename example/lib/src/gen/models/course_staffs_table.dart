@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'course_staffs_table.freezed.dart';
 part 'course_staffs_table.g.dart';
 
+///CourseStaffsTable
+
 @freezed
 class CourseStaffsTable with _$CourseStaffsTable {
   const CourseStaffsTable._();

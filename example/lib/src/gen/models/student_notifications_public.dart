@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'student_notifications_public.freezed.dart';
 part 'student_notifications_public.g.dart';
 
+///StudentNotificationsPublic
+
 @freezed
 class StudentNotificationsPublic with _$StudentNotificationsPublic {
   const StudentNotificationsPublic._();

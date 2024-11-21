@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'subject.freezed.dart';
 part 'subject.g.dart';
 
+///Subject
+
 @freezed
 class Subject with _$Subject {
   const Subject._();

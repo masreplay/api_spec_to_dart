@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'home_feed_summery_section_model.freezed.dart';
 part 'home_feed_summery_section_model.g.dart';
 
+///HomeFeedSummerySectionModel
+
 @freezed
 class HomeFeedSummerySectionModel with _$HomeFeedSummerySectionModel {
   const HomeFeedSummerySectionModel._();

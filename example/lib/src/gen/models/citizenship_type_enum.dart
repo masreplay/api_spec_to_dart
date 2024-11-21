@@ -2,6 +2,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'citizenship_type_enum.g.dart';
 
+///CitizenshipTypeEnum
+
 @JsonEnum(valueField: 'value', alwaysCreate: true)
 enum CitizenshipTypeEnum {
   value0(1),

@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'base_response_ekyc_download_license_public.freezed.dart';
 part 'base_response_ekyc_download_license_public.g.dart';
 
+///BaseResponse_EkycDownloadLicensePublic_
+
 @freezed
 class BaseResponseEkycDownloadLicensePublic
     with _$BaseResponseEkycDownloadLicensePublic {
@@ -19,6 +21,7 @@ class BaseResponseEkycDownloadLicensePublic
   }) = _BaseResponseEkycDownloadLicensePublic;
 
   factory BaseResponseEkycDownloadLicensePublic.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseEkycDownloadLicensePublicFromJson(json);
 }

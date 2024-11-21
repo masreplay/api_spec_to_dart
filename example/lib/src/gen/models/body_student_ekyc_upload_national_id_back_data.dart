@@ -7,6 +7,8 @@ import '../../convertors.dart';
 part 'body_student_ekyc_upload_national_id_back_data.freezed.dart';
 part 'body_student_ekyc_upload_national_id_back_data.g.dart';
 
+///Body_student_ekyc-upload_national_id_back_data
+
 @freezed
 class BodyStudentEkycUploadNationalIdBackData
     with _$BodyStudentEkycUploadNationalIdBackData {
@@ -25,6 +27,7 @@ class BodyStudentEkycUploadNationalIdBackData
   }) = _BodyStudentEkycUploadNationalIdBackData;
 
   factory BodyStudentEkycUploadNationalIdBackData.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$BodyStudentEkycUploadNationalIdBackDataFromJson(json);
 }

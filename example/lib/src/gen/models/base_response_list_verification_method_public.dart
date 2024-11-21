@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'base_response_list_verification_method_public.freezed.dart';
 part 'base_response_list_verification_method_public.g.dart';
 
+///BaseResponse_list_VerificationMethodPublic__
+
 @freezed
 class BaseResponseListVerificationMethodPublic
     with _$BaseResponseListVerificationMethodPublic {
@@ -21,6 +23,7 @@ class BaseResponseListVerificationMethodPublic
   }) = _BaseResponseListVerificationMethodPublic;
 
   factory BaseResponseListVerificationMethodPublic.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseListVerificationMethodPublicFromJson(json);
 }

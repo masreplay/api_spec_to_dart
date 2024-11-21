@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'information_bureaus_public.freezed.dart';
 part 'information_bureaus_public.g.dart';
 
+///InformationBureausPublic
+
 @freezed
 class InformationBureausPublic with _$InformationBureausPublic {
   const InformationBureausPublic._();

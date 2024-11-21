@@ -2,6 +2,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'study_program_type.g.dart';
 
+///StudyProgramType
+
 @JsonEnum(valueField: 'value', alwaysCreate: true)
 enum StudyProgramType {
   daytime('daytime'),

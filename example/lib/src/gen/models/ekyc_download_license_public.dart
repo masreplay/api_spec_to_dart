@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'ekyc_download_license_public.freezed.dart';
 part 'ekyc_download_license_public.g.dart';
 
+///EkycDownloadLicensePublic
+
 @freezed
 class EkycDownloadLicensePublic with _$EkycDownloadLicensePublic {
   const EkycDownloadLicensePublic._();

@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'payment_method_public.freezed.dart';
 part 'payment_method_public.g.dart';
 
+///PaymentMethodPublic
+
 @freezed
 class PaymentMethodPublic with _$PaymentMethodPublic {
   const PaymentMethodPublic._();

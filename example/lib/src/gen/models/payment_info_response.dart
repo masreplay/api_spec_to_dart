@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'payment_info_response.freezed.dart';
 part 'payment_info_response.g.dart';
 
+///PaymentInfoResponse
+
 @freezed
 class PaymentInfoResponse with _$PaymentInfoResponse {
   const PaymentInfoResponse._();

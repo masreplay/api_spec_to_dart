@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'verification_method_public.freezed.dart';
 part 'verification_method_public.g.dart';
 
+///VerificationMethodPublic
+
 @freezed
 class VerificationMethodPublic with _$VerificationMethodPublic {
   const VerificationMethodPublic._();

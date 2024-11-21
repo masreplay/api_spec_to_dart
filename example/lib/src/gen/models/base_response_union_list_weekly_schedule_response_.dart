@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'base_response_union_list_weekly_schedule_response_.freezed.dart';
 part 'base_response_union_list_weekly_schedule_response_.g.dart';
 
+///BaseResponse_Union_list_WeeklyScheduleResponse___NoneType__
+
 @freezed
 class BaseResponseUnionListWeeklyScheduleResponse
     with _$BaseResponseUnionListWeeklyScheduleResponse {
@@ -21,6 +23,7 @@ class BaseResponseUnionListWeeklyScheduleResponse
   }) = _BaseResponseUnionListWeeklyScheduleResponse;
 
   factory BaseResponseUnionListWeeklyScheduleResponse.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseUnionListWeeklyScheduleResponseFromJson(json);
 }

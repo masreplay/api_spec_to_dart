@@ -5,6 +5,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'home_response.freezed.dart';
 part 'home_response.g.dart';
 
+///HomeResponse
+
 @freezed
 class HomeResponse with _$HomeResponse {
   const factory HomeResponse.fallback() = HomeResponseFallback;

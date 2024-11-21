@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'student_summery.freezed.dart';
 part 'student_summery.g.dart';
 
+///StudentSummery
+
 @freezed
 class StudentSummery with _$StudentSummery {
   const StudentSummery._();

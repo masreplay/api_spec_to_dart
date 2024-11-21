@@ -2,6 +2,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'order_status_enum.g.dart';
 
+///OrderStatusEnum
+
 @JsonEnum(valueField: 'value', alwaysCreate: true)
 enum OrderStatusEnum {
   pending('pending'),

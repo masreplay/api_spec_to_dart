@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'home_feed_summery_section_data_public.freezed.dart';
 part 'home_feed_summery_section_data_public.g.dart';
 
+///HomeFeedSummerySectionDataPublic
+
 @freezed
 class HomeFeedSummerySectionDataPublic with _$HomeFeedSummerySectionDataPublic {
   const HomeFeedSummerySectionDataPublic._();
@@ -31,6 +33,7 @@ class HomeFeedSummerySectionDataPublic with _$HomeFeedSummerySectionDataPublic {
   }) = _HomeFeedSummerySectionDataPublic;
 
   factory HomeFeedSummerySectionDataPublic.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$HomeFeedSummerySectionDataPublicFromJson(json);
 }

@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'home_feed_public.freezed.dart';
 part 'home_feed_public.g.dart';
 
+///HomeFeedPublic
+
 @freezed
 class HomeFeedPublic with _$HomeFeedPublic {
   const HomeFeedPublic._();

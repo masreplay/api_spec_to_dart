@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'base_response_ui_form.freezed.dart';
 part 'base_response_ui_form.g.dart';
 
+///BaseResponse_UIForm_
+
 @freezed
 class BaseResponseUIForm with _$BaseResponseUIForm {
   const BaseResponseUIForm._();

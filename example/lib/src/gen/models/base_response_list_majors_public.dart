@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'base_response_list_majors_public.freezed.dart';
 part 'base_response_list_majors_public.g.dart';
 
+///BaseResponse_list_MajorsPublic__
+
 @freezed
 class BaseResponseListMajorsPublic with _$BaseResponseListMajorsPublic {
   const BaseResponseListMajorsPublic._();

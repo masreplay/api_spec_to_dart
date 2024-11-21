@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'base_response_lecturer_course_public.freezed.dart';
 part 'base_response_lecturer_course_public.g.dart';
 
+///BaseResponse_LecturerCoursePublic_
+
 @freezed
 class BaseResponseLecturerCoursePublic with _$BaseResponseLecturerCoursePublic {
   const BaseResponseLecturerCoursePublic._();
@@ -18,6 +20,7 @@ class BaseResponseLecturerCoursePublic with _$BaseResponseLecturerCoursePublic {
   }) = _BaseResponseLecturerCoursePublic;
 
   factory BaseResponseLecturerCoursePublic.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseLecturerCoursePublicFromJson(json);
 }

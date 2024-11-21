@@ -195,11 +195,11 @@ getAnyOfType(
   OpenApiSchemaAnyOf value,
   OpenApiGeneratorConfig config,
 ) {
-  String text = '';
+  String className = '';
   bool isNullable = false;
 
   for (final schema in value.anyOf!) {
-    text += schema.map(
+    className += schema.map(
       type: (value) {
         if (value.type == OpenApiSchemaVarType.null_) {
           isNullable = true;
@@ -221,5 +221,5 @@ getAnyOfType(
     );
   }
 
-  return isNullable ? '$text?' : text;
+  return isNullable ? '$className?' : dynamicClassName;
 }

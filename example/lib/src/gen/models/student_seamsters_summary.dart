@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'student_seamsters_summary.freezed.dart';
 part 'student_seamsters_summary.g.dart';
 
+///StudentSeamstersSummary
+
 @freezed
 class StudentSeamstersSummary with _$StudentSeamstersSummary {
   const StudentSeamstersSummary._();

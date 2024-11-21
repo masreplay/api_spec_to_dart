@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'base_response_authentication_status_response.freezed.dart';
 part 'base_response_authentication_status_response.g.dart';
 
+///BaseResponse_AuthenticationStatusResponse_
+
 @freezed
 class BaseResponseAuthenticationStatusResponse
     with _$BaseResponseAuthenticationStatusResponse {
@@ -19,6 +21,7 @@ class BaseResponseAuthenticationStatusResponse
   }) = _BaseResponseAuthenticationStatusResponse;
 
   factory BaseResponseAuthenticationStatusResponse.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseAuthenticationStatusResponseFromJson(json);
 }

@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'religion_public.freezed.dart';
 part 'religion_public.g.dart';
 
+///ReligionPublic
+
 @freezed
 class ReligionPublic with _$ReligionPublic {
   const ReligionPublic._();

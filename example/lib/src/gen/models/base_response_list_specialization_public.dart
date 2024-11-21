@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'base_response_list_specialization_public.freezed.dart';
 part 'base_response_list_specialization_public.g.dart';
 
+///BaseResponse_list_SpecializationPublic__
+
 @freezed
 class BaseResponseListSpecializationPublic
     with _$BaseResponseListSpecializationPublic {
@@ -21,6 +23,7 @@ class BaseResponseListSpecializationPublic
   }) = _BaseResponseListSpecializationPublic;
 
   factory BaseResponseListSpecializationPublic.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseListSpecializationPublicFromJson(json);
 }

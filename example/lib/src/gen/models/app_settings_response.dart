@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'app_settings_response.freezed.dart';
 part 'app_settings_response.g.dart';
 
+///AppSettingsResponse
+
 @freezed
 class AppSettingsResponse with _$AppSettingsResponse {
   const AppSettingsResponse._();

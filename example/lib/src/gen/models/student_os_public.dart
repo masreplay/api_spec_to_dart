@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'student_os_public.freezed.dart';
 part 'student_os_public.g.dart';
 
+///StudentOSPublic
+
 @freezed
 class StudentOSPublic with _$StudentOSPublic {
   const StudentOSPublic._();

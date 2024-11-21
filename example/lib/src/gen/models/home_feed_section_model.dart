@@ -5,6 +5,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'home_feed_section_model.freezed.dart';
 part 'home_feed_section_model.g.dart';
 
+///HomeFeedSectionModel
+
 @freezed
 class HomeFeedSectionModel with _$HomeFeedSectionModel {
   const factory HomeFeedSectionModel.fallback() = HomeFeedSectionModelFallback;

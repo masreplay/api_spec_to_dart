@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'summary_response.freezed.dart';
 part 'summary_response.g.dart';
 
+///SummaryResponse
+
 @freezed
 class SummaryResponse with _$SummaryResponse {
   const SummaryResponse._();

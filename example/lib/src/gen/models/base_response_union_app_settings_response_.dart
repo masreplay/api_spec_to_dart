@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'base_response_union_app_settings_response_.freezed.dart';
 part 'base_response_union_app_settings_response_.g.dart';
 
+///BaseResponse_Union_AppSettingsResponse__NoneType__
+
 @freezed
 class BaseResponseUnionAppSettingsResponse
     with _$BaseResponseUnionAppSettingsResponse {
@@ -19,6 +21,7 @@ class BaseResponseUnionAppSettingsResponse
   }) = _BaseResponseUnionAppSettingsResponse;
 
   factory BaseResponseUnionAppSettingsResponse.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponseUnionAppSettingsResponseFromJson(json);
 }

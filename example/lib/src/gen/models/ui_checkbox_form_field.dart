@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'ui_checkbox_form_field.freezed.dart';
 part 'ui_checkbox_form_field.g.dart';
 
+///UICheckboxFormField
+
 @freezed
 class UICheckboxFormField with _$UICheckboxFormField {
   const UICheckboxFormField._();

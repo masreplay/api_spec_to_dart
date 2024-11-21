@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'body_lecturer_assignments_update_lecturer_assignment.freezed.dart';
 part 'body_lecturer_assignments_update_lecturer_assignment.g.dart';
 
+///Body_lecturer_assignments-update_lecturer_assignment
+
 @freezed
 class BodyLecturerAssignmentsUpdateLecturerAssignment
     with _$BodyLecturerAssignmentsUpdateLecturerAssignment {
@@ -23,6 +25,7 @@ class BodyLecturerAssignmentsUpdateLecturerAssignment
   }) = _BodyLecturerAssignmentsUpdateLecturerAssignment;
 
   factory BodyLecturerAssignmentsUpdateLecturerAssignment.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$BodyLecturerAssignmentsUpdateLecturerAssignmentFromJson(json);
 }

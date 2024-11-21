@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'read_semesters_queries.freezed.dart';
 part 'read_semesters_queries.g.dart';
 
+///readSemestersQueries
+
 @freezed
 class ReadSemestersQueries with _$ReadSemestersQueries {
   const ReadSemestersQueries._();

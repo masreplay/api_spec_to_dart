@@ -2,6 +2,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'course_selection_status_type.g.dart';
 
+///CourseSelectionStatusType
+
 @JsonEnum(valueField: 'value', alwaysCreate: true)
 enum CourseSelectionStatusType {
   select('select'),

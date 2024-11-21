@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'body_lecturer_assignments_create_lecturer_assignment_comment.freezed.dart';
 part 'body_lecturer_assignments_create_lecturer_assignment_comment.g.dart';
 
+///Body_lecturer_assignments-create_lecturer_assignment_comment
+
 @freezed
 class BodyLecturerAssignmentsCreateLecturerAssignmentComment
     with _$BodyLecturerAssignmentsCreateLecturerAssignmentComment {
@@ -17,6 +19,7 @@ class BodyLecturerAssignmentsCreateLecturerAssignmentComment
   }) = _BodyLecturerAssignmentsCreateLecturerAssignmentComment;
 
   factory BodyLecturerAssignmentsCreateLecturerAssignmentComment.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$BodyLecturerAssignmentsCreateLecturerAssignmentCommentFromJson(json);
 }

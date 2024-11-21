@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'body_lecturer_auth_login.freezed.dart';
 part 'body_lecturer_auth_login.g.dart';
 
+///Body_lecturer_auth-login
+
 @freezed
 class BodyLecturerAuthLogin with _$BodyLecturerAuthLogin {
   const BodyLecturerAuthLogin._();

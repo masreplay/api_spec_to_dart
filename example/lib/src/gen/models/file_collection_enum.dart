@@ -2,6 +2,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'file_collection_enum.g.dart';
 
+///FileCollectionEnum
+
 @JsonEnum(valueField: 'value', alwaysCreate: true)
 enum FileCollectionEnum {
   certificate('certificate'),

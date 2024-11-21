@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'get_lecturer_announcement_comments_queries.freezed.dart';
 part 'get_lecturer_announcement_comments_queries.g.dart';
 
+///getLecturerAnnouncementCommentsQueries
+
 @freezed
 class GetLecturerAnnouncementCommentsQueries
     with _$GetLecturerAnnouncementCommentsQueries {
@@ -20,6 +22,7 @@ class GetLecturerAnnouncementCommentsQueries
   }) = _GetLecturerAnnouncementCommentsQueries;
 
   factory GetLecturerAnnouncementCommentsQueries.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$GetLecturerAnnouncementCommentsQueriesFromJson(json);
 }

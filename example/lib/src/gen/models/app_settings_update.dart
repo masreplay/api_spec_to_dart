@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'app_settings_update.freezed.dart';
 part 'app_settings_update.g.dart';
 
+///AppSettingsUpdate
+
 @freezed
 class AppSettingsUpdate with _$AppSettingsUpdate {
   const AppSettingsUpdate._();

@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'base_response_pagination_response_comment_public.freezed.dart';
 part 'base_response_pagination_response_comment_public.g.dart';
 
+///BaseResponse_PaginationResponse_CommentPublic__
+
 @freezed
 class BaseResponsePaginationResponseCommentPublic
     with _$BaseResponsePaginationResponseCommentPublic {
@@ -19,6 +21,7 @@ class BaseResponsePaginationResponseCommentPublic
   }) = _BaseResponsePaginationResponseCommentPublic;
 
   factory BaseResponsePaginationResponseCommentPublic.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$BaseResponsePaginationResponseCommentPublicFromJson(json);
 }

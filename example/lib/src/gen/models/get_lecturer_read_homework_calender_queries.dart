@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'get_lecturer_read_homework_calender_queries.freezed.dart';
 part 'get_lecturer_read_homework_calender_queries.g.dart';
 
+///getLecturerReadHomeworkCalenderQueries
+
 @freezed
 class GetLecturerReadHomeworkCalenderQueries
     with _$GetLecturerReadHomeworkCalenderQueries {
@@ -23,6 +25,7 @@ class GetLecturerReadHomeworkCalenderQueries
   }) = _GetLecturerReadHomeworkCalenderQueries;
 
   factory GetLecturerReadHomeworkCalenderQueries.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$GetLecturerReadHomeworkCalenderQueriesFromJson(json);
 }

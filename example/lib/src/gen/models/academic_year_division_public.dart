@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'academic_year_division_public.freezed.dart';
 part 'academic_year_division_public.g.dart';
 
+///AcademicYearDivisionPublic
+
 @freezed
 class AcademicYearDivisionPublic with _$AcademicYearDivisionPublic {
   const AcademicYearDivisionPublic._();

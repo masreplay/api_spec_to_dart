@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'ui_select_form_field.freezed.dart';
 part 'ui_select_form_field.g.dart';
 
+///UISelectFormField
+
 @freezed
 class UISelectFormField with _$UISelectFormField {
   const UISelectFormField._();

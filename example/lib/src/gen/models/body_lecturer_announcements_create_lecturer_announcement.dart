@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'body_lecturer_announcements_create_lecturer_announcement.freezed.dart';
 part 'body_lecturer_announcements_create_lecturer_announcement.g.dart';
 
+///Body_lecturer_announcements-create_lecturer_announcement
+
 @freezed
 class BodyLecturerAnnouncementsCreateLecturerAnnouncement
     with _$BodyLecturerAnnouncementsCreateLecturerAnnouncement {
@@ -20,6 +22,7 @@ class BodyLecturerAnnouncementsCreateLecturerAnnouncement
   }) = _BodyLecturerAnnouncementsCreateLecturerAnnouncement;
 
   factory BodyLecturerAnnouncementsCreateLecturerAnnouncement.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$BodyLecturerAnnouncementsCreateLecturerAnnouncementFromJson(json);
 }

@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'base_response_str.freezed.dart';
 part 'base_response_str.g.dart';
 
+///BaseResponse_str_
+
 @freezed
 class BaseResponseStr with _$BaseResponseStr {
   const BaseResponseStr._();

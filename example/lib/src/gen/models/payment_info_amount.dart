@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'payment_info_amount.freezed.dart';
 part 'payment_info_amount.g.dart';
 
+///PaymentInfoAmount
+
 @freezed
 class PaymentInfoAmount with _$PaymentInfoAmount {
   const PaymentInfoAmount._();

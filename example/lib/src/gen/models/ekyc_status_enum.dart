@@ -2,6 +2,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'ekyc_status_enum.g.dart';
 
+///EkycStatusEnum
+
 @JsonEnum(valueField: 'value', alwaysCreate: true)
 enum EkycStatusEnum {
   value0(0),

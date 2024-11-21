@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'study_year_public.freezed.dart';
 part 'study_year_public.g.dart';
 
+///StudyYearPublic
+
 @freezed
 class StudyYearPublic with _$StudyYearPublic {
   const StudyYearPublic._();

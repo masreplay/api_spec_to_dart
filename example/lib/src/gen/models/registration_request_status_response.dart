@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'registration_request_status_response.freezed.dart';
 part 'registration_request_status_response.g.dart';
 
+///RegistrationRequestStatusResponse
+
 @freezed
 class RegistrationRequestStatusResponse
     with _$RegistrationRequestStatusResponse {
@@ -20,6 +22,7 @@ class RegistrationRequestStatusResponse
   }) = _RegistrationRequestStatusResponse;
 
   factory RegistrationRequestStatusResponse.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$RegistrationRequestStatusResponseFromJson(json);
 }

@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'attachment_response.freezed.dart';
 part 'attachment_response.g.dart';
 
+///AttachmentResponse
+
 @freezed
 class AttachmentResponse with _$AttachmentResponse {
   const AttachmentResponse._();

@@ -6,6 +6,8 @@ import 'package:example/src/gen/models/models.dart';
 part 'pagination_response_lecturer_assignment_public.freezed.dart';
 part 'pagination_response_lecturer_assignment_public.g.dart';
 
+///PaginationResponse_LecturerAssignmentPublic_
+
 @freezed
 class PaginationResponseLecturerAssignmentPublic
     with _$PaginationResponseLecturerAssignmentPublic {
@@ -27,6 +29,7 @@ class PaginationResponseLecturerAssignmentPublic
   }) = _PaginationResponseLecturerAssignmentPublic;
 
   factory PaginationResponseLecturerAssignmentPublic.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$PaginationResponseLecturerAssignmentPublicFromJson(json);
 }

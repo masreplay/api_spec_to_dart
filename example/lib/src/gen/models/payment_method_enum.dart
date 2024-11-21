@@ -2,6 +2,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'payment_method_enum.g.dart';
 
+///PaymentMethodEnum
+
 @JsonEnum(valueField: 'value', alwaysCreate: true)
 enum PaymentMethodEnum {
   value0(0),

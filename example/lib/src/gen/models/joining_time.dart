@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'joining_time.freezed.dart';
 part 'joining_time.g.dart';
 
+///JoiningTime
+
 @freezed
 class JoiningTime with _$JoiningTime {
   const JoiningTime._();

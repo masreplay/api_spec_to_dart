@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'lecturer_attendance_response.freezed.dart';
 part 'lecturer_attendance_response.g.dart';
 
+///LecturerAttendanceResponse
+
 @freezed
 class LecturerAttendanceResponse with _$LecturerAttendanceResponse {
   const LecturerAttendanceResponse._();

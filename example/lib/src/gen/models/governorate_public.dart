@@ -5,6 +5,8 @@ import '../../convertors.dart';
 part 'governorate_public.freezed.dart';
 part 'governorate_public.g.dart';
 
+///GovernoratePublic
+
 @freezed
 class GovernoratePublic with _$GovernoratePublic {
   const GovernoratePublic._();
