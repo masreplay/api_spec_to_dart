@@ -1,4 +1,3 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:swagger_to_dart/src/config/open_api_generator_config.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 import 'package:collection/collection.dart';
@@ -12,7 +11,8 @@ class OpenApiDartClientGenerator {
 
   final OpenApiGeneratorConfig config;
 
-  ({String filename, String content}) generator(OpenApiPaths model) {
+  ({String filename, String content}) generator(
+      OpenApiPaths model, List<String> functionsPaths) {
     final List<({String tag, String path})> tagsPaths = [];
 
     for (final entry in model.entries) {
@@ -35,13 +35,10 @@ class OpenApiDartClientGenerator {
       final tag = entry.key;
       final paths = entry.value;
 
-      print('Generating client for tag: $tag');
-
-      print('---------this client has these functions ');
+      print('-----Generating client for tag: $tag');
 
       for (final path in paths) {
-        print('---------path: ${path.path}');
-        print('---------method: ${path.tag}');
+        print('---------method: ${config.renameProperty(path.tag)}');
       }
     }
     return (filename: '', content: '');
