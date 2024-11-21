@@ -1,5 +1,7 @@
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
+import 'convertor.dart';
+
 typedef OpenApiModel = MapEntry<String, OpenApiSchemas>;
 
 class OpenApiDartModelGenerator {
@@ -94,7 +96,8 @@ $type toJson() => _\$${className}EnumMap[this]!;
                   format: value.format,
                   genericType: value.items?.mapOrNull(
                     ref: (value) => config.renameRefClass(value),
-                    anyOf: (value) => getAnyOfType(value, config),
+                    anyOf: (value) =>
+                        convertOpenApiAnyOfToDartType(value, config),
                   ),
                 ),
                 orElse: () => '',
@@ -212,7 +215,7 @@ class ${className} with _\$${className} {
       genericType: value.items?.mapOrNull(
         // TODO(mohammed.atheer): handle type recursively
         ref: (value) => config.renameRefClass(value),
-        anyOf: (value) => getAnyOfType(value, config),
+        anyOf: (value) => convertOpenApiAnyOfToDartType(value, config),
       ),
     );
 

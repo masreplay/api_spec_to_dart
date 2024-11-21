@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:collection/collection.dart';
 import 'package:path/path.dart' as path;
-import 'package:swagger_to_dart/src/generator/openapi/open_api_clients_generator.dart';
+import 'package:swagger_to_dart/src/generator/openapi/open_api_base_client_generator.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 class OpenApiDartGenerator {
@@ -44,7 +44,7 @@ class OpenApiDartGenerator {
     }
 
     //Client generator
-    final clientGenerator = OpenApiDartClientGenerator(config: config);
+    final clientGenerator = OpenApiClientGenerator(config: config);
     if (!Directory(config.clientsOutputDirectory).existsSync()) {
       Directory(config.clientsOutputDirectory).createSync(recursive: true);
     }
@@ -89,7 +89,7 @@ class OpenApiDartGenerator {
       await file.writeAsString(result.content);
     }
 
-    final clientsGenerator = OpenApiDartClientsGenerator(config: config);
+    final clientsGenerator = OpenApiBaseClientGenerator(config: config);
 
     final clientsClassContent =
         clientsGenerator.generator(clients: clients.keys.toList());

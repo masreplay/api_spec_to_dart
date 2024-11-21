@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:swagger_to_dart/src/config/open_api_generator_config.dart';
-import 'package:swagger_to_dart/src/generator/openapi/open_api_client_generator.dart';
+import 'package:swagger_to_dart/src/generator/openapi/convertor.dart';
 
 part 'open_api_schema.freezed.dart';
 part 'open_api_schema.g.dart';
@@ -72,12 +72,12 @@ class OpenApiSchema with _$OpenApiSchema {
           format: value.format,
           genericType: value.items?.mapOrNull(
             ref: (value) => config.renameRefClass(value),
-            anyOf: (value) => getAnyOfType(value, config),
+            anyOf: (value) => convertOpenApiAnyOfToDartType(value, config),
           ),
         );
       },
       ref: (value) => config.renameRefClass(value),
-      anyOf: (value) => getAnyOfType(value, config),
+      anyOf: (value) => convertOpenApiAnyOfToDartType(value, config),
       oneOf: (value) => '',
     );
   }
