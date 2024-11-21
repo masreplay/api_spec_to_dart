@@ -1,4 +1,5 @@
 import 'package:swagger_to_dart/src/config/open_api_generator_config.dart';
+import 'package:swagger_to_dart/src/utils/recase.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 typedef OpenApiModel = MapEntry<String, OpenApiSchemas>;
@@ -14,37 +15,99 @@ class OpenApiDartModelGenerator {
     final filename = config.filename(model.key);
     final className = config.className(model.key);
 
-    String body = '';
+    final properties = model.value.properties ?? {};
 
-    for (final entry in (model.value.properties ?? {}).entries) {
-      final propertyName = config.propertyRename(entry.key);
+    final isUnion = properties.entries.any(
+      (entry) => entry.value.maybeMap(
+        oneOf: (value) => true,
+        orElse: () => false,
+      ),
+    );
 
-      body += entry.value.map(
-        type: (value) => _modelPropertyTypeGenerator(
-          key: entry.key,
-          value: value,
-          propertyName: propertyName,
-        ),
-        ref: (value) => _modelPropertyRefGenerator(
-          key: entry.key,
-          value: value,
-          propertyName: propertyName,
-        ),
-        anyOf: (value) => _modelPropertyAnyOfGenerator(
-          key: entry.key,
-          value: value,
-          propertyName: propertyName,
-        ),
-        oneOf: (value) {
-          // TODO(mohammed.atheer): implement this
-          return '';
-        },
-      );
-    }
+    if (isUnion) {
+      // Generate Freezed Union Class
+      final unionTypes = <String>[];
 
-    final bodyText = body.isEmpty ? '' : '{\n$body  }';
+      for (final entry in properties.entries) {
+        entry.value.maybeMap(
+          oneOf: (value) {
+            for (var type in value.oneOf!) {
+              final typeName = type.maybeMap(
+                ref: (value) => config.className(value.ref!.split('/').last),
+                type: (value) => config.dartType(
+                  type: value.type,
+                  format: value.format,
+                  genericType: value.items?.mapOrNull(
+                    ref: (value) =>
+                        config.className(value.ref!.split('/').last),
+                  ),
+                ),
+                orElse: () => '',
+              );
 
-    final content = '''
+              unionTypes.add(typeName);
+            }
+          },
+          orElse: () {},
+        );
+      }
+
+      // Create a Freezed Union Class with all collected types
+      final content = '''
+import 'dart:io';
+
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../convertors.dart';
+${config.relativeImportModelsCode}
+
+part '${filename}.freezed.dart';
+part '${filename}.g.dart';
+
+@freezed
+class ${className} with _\$${className} {
+  const factory ${className}.fallback() = ${className}Fallback;
+
+  
+  ${unionTypes.map((type) => '@FreezedUnionValue("${type}") const factory ${className}.${Recase.instance.toCamelCase(type)}(${type} value,) = ${className}$type;').join('\n\n')}
+  
+  factory ${className}.fromJson(Map<String, dynamic> json) => _\$${className}FromJson(json);
+}
+''';
+
+      return (filename: filename, content: content);
+    } else {
+      // Handle non-union classes
+      String fields = '';
+
+      for (final entry in properties.entries) {
+        final propertyName = config.propertyRename(entry.key);
+
+        fields += entry.value.map(
+          type: (value) => _modelPropertyTypeGenerator(
+            key: entry.key,
+            value: value,
+            propertyName: propertyName,
+          ),
+          ref: (value) => _modelPropertyRefGenerator(
+            key: entry.key,
+            value: value,
+            propertyName: propertyName,
+          ),
+          anyOf: (value) => _modelPropertyAnyOfGenerator(
+            key: entry.key,
+            value: value,
+            propertyName: propertyName,
+          ),
+          oneOf: (value) {
+            throw Exception('oneOf is not supported');
+          },
+        );
+      }
+
+      final bodyText = fields.isEmpty ? '' : '{\n$fields  }';
+
+      final content = '''
 import 'dart:io';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -66,7 +129,8 @@ class ${className} with _\$${className} {
 }
 ''';
 
-    return (filename: filename, content: content);
+      return (filename: filename, content: content);
+    }
   }
 
   String _modelPropertyTypeGenerator({

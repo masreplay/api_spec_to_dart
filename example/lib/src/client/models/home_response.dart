@@ -1,19 +1,23 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../convertors.dart';
+import './models.dart';
 
 part 'home_response.freezed.dart';
 part 'home_response.g.dart';
 
 @freezed
 class HomeResponse with _$HomeResponse {
-  const HomeResponse._();
+  const factory HomeResponse.fallback() = HomeResponseFallback;
 
-  @JsonSerializable(converters: convertors)
-  const factory HomeResponse({
-    /// Message
-    @JsonKey(name: 'message') required String? message,
-  }) = _HomeResponse;
+  @FreezedUnionValue('HomeFeedPublic')
+  const factory HomeResponse.homeFeedPublic(
+    HomeFeedPublic value,
+  ) = HomeResponseHomeFeedPublic;
+
+  @FreezedUnionValue('HomeStatusPublic')
+  const factory HomeResponse.homeStatusPublic(
+    HomeStatusPublic value,
+  ) = HomeResponseHomeStatusPublic;
 
   factory HomeResponse.fromJson(Map<String, dynamic> json) =>
       _$HomeResponseFromJson(json);

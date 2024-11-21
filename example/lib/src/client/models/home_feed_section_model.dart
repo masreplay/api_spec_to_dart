@@ -1,16 +1,33 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../convertors.dart';
+import './models.dart';
 
 part 'home_feed_section_model.freezed.dart';
 part 'home_feed_section_model.g.dart';
 
 @freezed
 class HomeFeedSectionModel with _$HomeFeedSectionModel {
-  const HomeFeedSectionModel._();
+  const factory HomeFeedSectionModel.fallback() = HomeFeedSectionModelFallback;
 
-  @JsonSerializable(converters: convertors)
-  const factory HomeFeedSectionModel() = _HomeFeedSectionModel;
+  @FreezedUnionValue('HomeFeedSummerySectionModel')
+  const factory HomeFeedSectionModel.homeFeedSummerySectionModel(
+    HomeFeedSummerySectionModel value,
+  ) = HomeFeedSectionModelHomeFeedSummerySectionModel;
+
+  @FreezedUnionValue('HomeFeedStudyProgramSectionPublic')
+  const factory HomeFeedSectionModel.homeFeedStudyProgramSectionPublic(
+    HomeFeedStudyProgramSectionPublic value,
+  ) = HomeFeedSectionModelHomeFeedStudyProgramSectionPublic;
+
+  @FreezedUnionValue('HomeFeedCourseSelectionStatusSectionModel')
+  const factory HomeFeedSectionModel.homeFeedCourseSelectionStatusSectionModel(
+    HomeFeedCourseSelectionStatusSectionModel value,
+  ) = HomeFeedSectionModelHomeFeedCourseSelectionStatusSectionModel;
+
+  @FreezedUnionValue('HomeFeedMissingPaymentSectionPublic')
+  const factory HomeFeedSectionModel.homeFeedMissingPaymentSectionPublic(
+    HomeFeedMissingPaymentSectionPublic value,
+  ) = HomeFeedSectionModelHomeFeedMissingPaymentSectionPublic;
 
   factory HomeFeedSectionModel.fromJson(Map<String, dynamic> json) =>
       _$HomeFeedSectionModelFromJson(json);
