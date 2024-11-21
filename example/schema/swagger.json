@@ -5660,7 +5660,7 @@
                 "requestBody": {
                     "required": true,
                     "content": {
-                        "multipart/form-data": {
+                        "application/x-www-form-urlencoded": {
                             "schema": {
                                 "$ref": "#/components/schemas/Body_lecturer_assignments-create_lecturer_assignment"
                             }
@@ -5840,7 +5840,7 @@
                 "requestBody": {
                     "required": true,
                     "content": {
-                        "multipart/form-data": {
+                        "application/x-www-form-urlencoded": {
                             "schema": {
                                 "$ref": "#/components/schemas/Body_lecturer_assignments-update_lecturer_assignment"
                             }
@@ -8746,14 +8746,6 @@
             },
             "Body_lecturer_assignments-create_lecturer_assignment": {
                 "properties": {
-                    "files": {
-                        "items": {
-                            "type": "string",
-                            "format": "binary"
-                        },
-                        "type": "array",
-                        "title": "Files"
-                    },
                     "title": {
                         "type": "string",
                         "title": "Title"
@@ -8772,7 +8764,6 @@
                 },
                 "type": "object",
                 "required": [
-                    "files",
                     "title",
                     "description"
                 ],
@@ -8793,14 +8784,6 @@
             },
             "Body_lecturer_assignments-update_lecturer_assignment": {
                 "properties": {
-                    "files": {
-                        "items": {
-                            "type": "string",
-                            "format": "binary"
-                        },
-                        "type": "array",
-                        "title": "Files"
-                    },
                     "title": {
                         "type": "string",
                         "title": "Title"
@@ -8819,7 +8802,6 @@
                 },
                 "type": "object",
                 "required": [
-                    "files",
                     "title",
                     "description"
                 ],

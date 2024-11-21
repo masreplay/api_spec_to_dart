@@ -14,9 +14,6 @@ class BodyLecturerAssignmentsUpdateLecturerAssignment
 
   @JsonSerializable(converters: convertors)
   const factory BodyLecturerAssignmentsUpdateLecturerAssignment({
-    /// Files
-    @JsonKey(name: 'files') required List<dynamic> files,
-
     /// Title
     @JsonKey(name: 'title') required String title,
 

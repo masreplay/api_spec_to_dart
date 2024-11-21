@@ -22,10 +22,6 @@ BodyLecturerAssignmentsCreateLecturerAssignment
 
 /// @nodoc
 mixin _$BodyLecturerAssignmentsCreateLecturerAssignment {
-  /// Files
-  @JsonKey(name: 'files')
-  List<dynamic> get files => throw _privateConstructorUsedError;
-
   /// Title
   @JsonKey(name: 'title')
   String get title => throw _privateConstructorUsedError;
@@ -54,8 +50,7 @@ abstract class $BodyLecturerAssignmentsCreateLecturerAssignmentCopyWith<$Res> {
           BodyLecturerAssignmentsCreateLecturerAssignment>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'files') List<dynamic> files,
-      @JsonKey(name: 'title') String title,
+      {@JsonKey(name: 'title') String title,
       @JsonKey(name: 'description') String? description});
 }
 
@@ -76,15 +71,10 @@ class _$BodyLecturerAssignmentsCreateLecturerAssignmentCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? files = null,
     Object? title = null,
     Object? description = freezed,
   }) {
     return _then(_value.copyWith(
-      files: null == files
-          ? _value.files
-          : files // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -109,8 +99,7 @@ abstract class _$$BodyLecturerAssignmentsCreateLecturerAssignmentImplCopyWith<
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'files') List<dynamic> files,
-      @JsonKey(name: 'title') String title,
+      {@JsonKey(name: 'title') String title,
       @JsonKey(name: 'description') String? description});
 }
 
@@ -131,15 +120,10 @@ class __$$BodyLecturerAssignmentsCreateLecturerAssignmentImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? files = null,
     Object? title = null,
     Object? description = freezed,
   }) {
     return _then(_$BodyLecturerAssignmentsCreateLecturerAssignmentImpl(
-      files: null == files
-          ? _value._files
-          : files // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -158,27 +142,13 @@ class __$$BodyLecturerAssignmentsCreateLecturerAssignmentImplCopyWithImpl<$Res>
 class _$BodyLecturerAssignmentsCreateLecturerAssignmentImpl
     extends _BodyLecturerAssignmentsCreateLecturerAssignment {
   const _$BodyLecturerAssignmentsCreateLecturerAssignmentImpl(
-      {@JsonKey(name: 'files') required final List<dynamic> files,
-      @JsonKey(name: 'title') required this.title,
+      {@JsonKey(name: 'title') required this.title,
       @JsonKey(name: 'description') required this.description})
-      : _files = files,
-        super._();
+      : super._();
 
   factory _$BodyLecturerAssignmentsCreateLecturerAssignmentImpl.fromJson(
           Map<String, dynamic> json) =>
       _$$BodyLecturerAssignmentsCreateLecturerAssignmentImplFromJson(json);
-
-  /// Files
-  final List<dynamic> _files;
-
-  /// Files
-  @override
-  @JsonKey(name: 'files')
-  List<dynamic> get files {
-    if (_files is EqualUnmodifiableListView) return _files;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_files);
-  }
 
   /// Title
   @override
@@ -192,7 +162,7 @@ class _$BodyLecturerAssignmentsCreateLecturerAssignmentImpl
 
   @override
   String toString() {
-    return 'BodyLecturerAssignmentsCreateLecturerAssignment(files: $files, title: $title, description: $description)';
+    return 'BodyLecturerAssignmentsCreateLecturerAssignment(title: $title, description: $description)';
   }
 
   @override
@@ -200,7 +170,6 @@ class _$BodyLecturerAssignmentsCreateLecturerAssignmentImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BodyLecturerAssignmentsCreateLecturerAssignmentImpl &&
-            const DeepCollectionEquality().equals(other._files, _files) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
                 other.description == description));
@@ -208,8 +177,7 @@ class _$BodyLecturerAssignmentsCreateLecturerAssignmentImpl
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_files), title, description);
+  int get hashCode => Object.hash(runtimeType, title, description);
 
   /// Create a copy of BodyLecturerAssignmentsCreateLecturerAssignment
   /// with the given fields replaced by the non-null parameter values.
@@ -234,8 +202,7 @@ class _$BodyLecturerAssignmentsCreateLecturerAssignmentImpl
 abstract class _BodyLecturerAssignmentsCreateLecturerAssignment
     extends BodyLecturerAssignmentsCreateLecturerAssignment {
   const factory _BodyLecturerAssignmentsCreateLecturerAssignment(
-          {@JsonKey(name: 'files') required final List<dynamic> files,
-          @JsonKey(name: 'title') required final String title,
+          {@JsonKey(name: 'title') required final String title,
           @JsonKey(name: 'description') required final String? description}) =
       _$BodyLecturerAssignmentsCreateLecturerAssignmentImpl;
   const _BodyLecturerAssignmentsCreateLecturerAssignment._() : super._();
@@ -243,11 +210,6 @@ abstract class _BodyLecturerAssignmentsCreateLecturerAssignment
   factory _BodyLecturerAssignmentsCreateLecturerAssignment.fromJson(
           Map<String, dynamic> json) =
       _$BodyLecturerAssignmentsCreateLecturerAssignmentImpl.fromJson;
-
-  /// Files
-  @override
-  @JsonKey(name: 'files')
-  List<dynamic> get files;
 
   /// Title
   @override

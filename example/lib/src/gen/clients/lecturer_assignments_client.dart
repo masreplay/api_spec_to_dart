@@ -20,7 +20,7 @@ abstract class LecturerAssignmentsClient {
 
   /// lecturer_assignments-create_lecturer_assignment
   /// Create Lecturer Assignment
-  @MultiPart()
+  @FormUrlEncoded()
   @POST('/api/v1/lecturer/assignments/me/{course_id}')
   Future<HttpResponse<BaseResponseLecturerAssignmentPublic>>
       createLecturerAssignment({
@@ -38,7 +38,7 @@ abstract class LecturerAssignmentsClient {
 
   /// lecturer_assignments-update_lecturer_assignment
   /// Update Lecturer Assignment
-  @MultiPart()
+  @FormUrlEncoded()
   @PUT('/api/v1/lecturer/assignments/{id}')
   Future<HttpResponse<BaseResponseLecturerAssignmentPublic>>
       updateLecturerAssignment({

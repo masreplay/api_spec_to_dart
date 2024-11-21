@@ -80,7 +80,7 @@ class _LecturerAssignmentsClient implements LecturerAssignmentsClient {
       method: 'POST',
       headers: _headers,
       extra: _extra,
-      contentType: 'multipart/form-data',
+      contentType: 'application/x-www-form-urlencoded',
     )
                 .compose(
                   _dio.options,
@@ -159,7 +159,7 @@ class _LecturerAssignmentsClient implements LecturerAssignmentsClient {
       method: 'PUT',
       headers: _headers,
       extra: _extra,
-      contentType: 'multipart/form-data',
+      contentType: 'application/x-www-form-urlencoded',
     )
                 .compose(
                   _dio.options,
