@@ -26,8 +26,6 @@ Future<void> main(List<String> args) async {
 
   print(JsonFactory.instance.encode(config.toJson()));
 
-  print(JsonFactory.instance.encode(config.toJson()));
-
   print('Generating code...');
 
   final generator = OpenApiDartGenerator(config: config);

@@ -85,6 +85,21 @@ class OpenApiClientGenerator {
           );
         }
 
+        /// headers / properties
+        final headerParams = parameters
+            .where((e) => e.in_ == OpenApiPathMethodParameterType.header)
+            .toList();
+
+        for (final headerParam in headerParams) {
+          if (config.skipHeaders.contains(headerParam.name)) continue;
+          final dartType = headerParam.schema.dartType(config);
+          final paramName = config.renameProperty(headerParam.name);
+
+          propertiesSnippets.add(
+            '''@Header('${headerParam.name}') required $dartType $paramName,''',
+          );
+        }
+
         /// path params / properties
         final pathParams = parameters.where(
           (e) => e.in_ == OpenApiPathMethodParameterType.path,
