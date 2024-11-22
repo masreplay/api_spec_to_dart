@@ -30,6 +30,10 @@ Future<void> main(List<String> args) async {
     input: path.join(dir, 'schema/swagger.json'),
     output: path.join(dir, 'lib/src/gen'),
     isFlutter: false,
+    skipHeaders: [
+      'Authorization',
+      'Accept-Language',
+    ],
   );
 
   print(JsonFactory.instance.encode(config.toJson()));

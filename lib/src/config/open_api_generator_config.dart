@@ -9,6 +9,7 @@ class OpenApiGeneratorConfig {
     required this.output,
     required this.isFlutter,
     this.clientsClassName = 'ApiClients',
+    this.skipHeaders = const [],
   });
 
   final String packageName;
@@ -20,6 +21,8 @@ class OpenApiGeneratorConfig {
   final String output;
 
   final String clientsClassName;
+
+  final List<String> skipHeaders;
 
   String get modelsOutputDirectory {
     return path.join(output, 'models');

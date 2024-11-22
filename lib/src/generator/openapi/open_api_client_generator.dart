@@ -91,6 +91,7 @@ class OpenApiClientGenerator {
             .toList();
 
         for (final headerParam in headerParams) {
+          if (config.skipHeaders.contains(headerParam.name)) continue;
           final dartType = headerParam.schema.dartType(config);
           final paramName = config.renameProperty(headerParam.name);
 
