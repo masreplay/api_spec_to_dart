@@ -29,7 +29,7 @@ class OpenApiModelGenerator {
         final enumName = config.renameProperty(value.toString());
 
         if (isNumber) {
-          enumValues += '  value$i($value),';
+          enumValues += '  value$value($value),';
         } else {
           if (int.tryParse(enumName) != null) {
             enumValues += '  value${enumName}(\'$value\'),';
