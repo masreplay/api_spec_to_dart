@@ -64,7 +64,7 @@ class OpenApiSchema with _$OpenApiSchema {
       _$OpenApiSchemaFromJson(json);
 
   // this code must be written in the generator or the config directly
-  String dartType(OpenApiGeneratorConfig config) {
+  String dartType(SwaggerToDartConfig config) {
     return this.map(
       type: (value) {
         return config.dartType(

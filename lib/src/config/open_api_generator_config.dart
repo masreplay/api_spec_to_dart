@@ -1,40 +1,32 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:path/path.dart' as path;
+import 'package:swagger_to_dart/src/config/swagger_to_dart_yaml.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
-class OpenApiGeneratorConfig {
-  const OpenApiGeneratorConfig({
-    required this.packageName,
-    required this.input,
-    required this.output,
-    required this.isFlutter,
-    this.clientsClassName = 'ApiClients',
+class SwaggerToDartConfig {
+  const SwaggerToDartConfig({
+    required this.swaggerToDart,
+    required this.pubspec,
   });
 
-  final String packageName;
+  final SwaggerToDartYaml swaggerToDart;
 
-  final bool isFlutter;
-
-  final String input;
-
-  final String output;
-
-  final String clientsClassName;
+  final PubspecYaml pubspec;
 
   String get modelsOutputDirectory {
-    return path.join(output, 'models');
+    return path.join(swaggerToDart.outputDirectory, 'models');
   }
 
   String get clientsOutputDirectory {
-    return path.join(output, 'clients');
+    return path.join(swaggerToDart.outputDirectory, 'clients');
   }
 
   String get importModelsCode {
-    return '''import 'package:${packageName}/src/gen/models/models.dart';''';
+    return '''import 'package:${pubspec.name}/src/gen/models/models.dart';''';
   }
 
   String get importClientsCode {
-    return '''import 'package:${packageName}/src/gen/clients/clients.dart';''';
+    return '''import 'package:${pubspec.name}/src/gen/clients/clients.dart';''';
   }
 
   String dartType({
@@ -48,7 +40,7 @@ class OpenApiGeneratorConfig {
           'date-time' => 'DateTime',
           'binary' => 'File',
           'uuid' => 'String',
-          'duration' => isFlutter ? 'TimeOfDay' : 'DateTime',
+          'duration' => pubspec.isFlutter ? 'TimeOfDay' : 'DateTime',
           'uri' => 'Uri',
           _ => 'String',
         };
@@ -111,11 +103,8 @@ class OpenApiGeneratorConfig {
 
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
-      'packageName': packageName,
-      'isFlutter': isFlutter,
-      'input': input,
-      'output': output,
-      'clientClassName': clientsClassName,
+      'swagger_to_dart': swaggerToDart.toJson(),
+      'pubspec': pubspec.toJson(),
     };
   }
 }

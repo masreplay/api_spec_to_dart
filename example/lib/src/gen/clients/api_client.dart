@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:example/src/gen/clients/clients.dart';
 
-class ApiClients {
-  ApiClients(this._dio);
+class ApiClient {
+  ApiClient(this._dio);
 
   final Dio _dio;
 

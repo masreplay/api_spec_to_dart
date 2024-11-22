@@ -23,10 +23,11 @@ class _StudentEkycClient implements StudentEkycClient {
 
   @override
   Future<HttpResponse<BaseResponseEkycDownloadLicensePublic>>
-      studentEkycDownloadLicense() async {
+      studentEkycDownloadLicense({required String packageName}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'package-name': packageName};
+    _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
     final _options =
         _setStreamType<HttpResponse<BaseResponseEkycDownloadLicensePublic>>(
@@ -94,11 +95,14 @@ class _StudentEkycClient implements StudentEkycClient {
   }
 
   @override
-  Future<HttpResponse<MessageResponse>> studentEkycUploadNationalIdBackData(
-      {required BodyStudentEkycUploadNationalIdBackData body}) async {
+  Future<HttpResponse<MessageResponse>> studentEkycUploadNationalIdBackData({
+    required BodyStudentEkycUploadNationalIdBackData body,
+    required String ekycReportId,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'ekyc-report-id': ekycReportId};
+    _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
     final _options = _setStreamType<HttpResponse<MessageResponse>>(Options(
@@ -131,11 +135,14 @@ class _StudentEkycClient implements StudentEkycClient {
   }
 
   @override
-  Future<HttpResponse<MessageResponse>> studentEkycUploadNationalIdFrontData(
-      {required BodyStudentEkycUploadNationalIdFrontData body}) async {
+  Future<HttpResponse<MessageResponse>> studentEkycUploadNationalIdFrontData({
+    required BodyStudentEkycUploadNationalIdFrontData body,
+    required String ekycReportId,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'ekyc-report-id': ekycReportId};
+    _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
     final _options = _setStreamType<HttpResponse<MessageResponse>>(Options(
@@ -168,11 +175,14 @@ class _StudentEkycClient implements StudentEkycClient {
   }
 
   @override
-  Future<HttpResponse<MessageResponse>> studentEkycUploadPassportData(
-      {required BodyStudentEkycUploadPassportData body}) async {
+  Future<HttpResponse<MessageResponse>> studentEkycUploadPassportData({
+    required BodyStudentEkycUploadPassportData body,
+    required String ekycReportId,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'ekyc-report-id': ekycReportId};
+    _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
     final _options = _setStreamType<HttpResponse<MessageResponse>>(Options(
@@ -205,11 +215,14 @@ class _StudentEkycClient implements StudentEkycClient {
   }
 
   @override
-  Future<HttpResponse<MessageResponse>> studentEkycUploadFaceData(
-      {required BodyStudentEkycUploadFaceData body}) async {
+  Future<HttpResponse<MessageResponse>> studentEkycUploadFaceData({
+    required BodyStudentEkycUploadFaceData body,
+    required String ekycReportId,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'ekyc-report-id': ekycReportId};
+    _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
     final _options = _setStreamType<HttpResponse<MessageResponse>>(Options(
@@ -242,11 +255,14 @@ class _StudentEkycClient implements StudentEkycClient {
   }
 
   @override
-  Future<HttpResponse<MessageResponse>> studentEkycUploadNfc(
-      {required BodyStudentEkycUploadNfc body}) async {
+  Future<HttpResponse<MessageResponse>> studentEkycUploadNfc({
+    required BodyStudentEkycUploadNfc body,
+    required String ekycReportId,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'ekyc-report-id': ekycReportId};
+    _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
     final _options = _setStreamType<HttpResponse<MessageResponse>>(Options(
@@ -279,11 +295,14 @@ class _StudentEkycClient implements StudentEkycClient {
   }
 
   @override
-  Future<HttpResponse<MessageResponse>> studentEkycUploadEyeData(
-      {required BodyStudentEkycUploadEyeData body}) async {
+  Future<HttpResponse<MessageResponse>> studentEkycUploadEyeData({
+    required BodyStudentEkycUploadEyeData body,
+    required String ekycReportId,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'ekyc-report-id': ekycReportId};
+    _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
     final _options = _setStreamType<HttpResponse<MessageResponse>>(Options(
@@ -316,11 +335,12 @@ class _StudentEkycClient implements StudentEkycClient {
   }
 
   @override
-  Future<HttpResponse<BaseResponseUIForm>>
-      studentEkycReadStudentEkycForm() async {
+  Future<HttpResponse<BaseResponseUIForm>> studentEkycReadStudentEkycForm(
+      {required String ekycReportId}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'ekyc-report-id': ekycReportId};
+    _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<BaseResponseUIForm>>(Options(
       method: 'GET',
@@ -351,11 +371,14 @@ class _StudentEkycClient implements StudentEkycClient {
   }
 
   @override
-  Future<HttpResponse<BaseResponseStr?>> studentEkycUploadStudentEkycForm(
-      {required StudentEkycFormDataRequest body}) async {
+  Future<HttpResponse<BaseResponseStr?>> studentEkycUploadStudentEkycForm({
+    required StudentEkycFormDataRequest body,
+    required String ekycReportId,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'ekyc-report-id': ekycReportId};
+    _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
     final _options = _setStreamType<HttpResponse<BaseResponseStr?>>(Options(
@@ -388,10 +411,17 @@ class _StudentEkycClient implements StudentEkycClient {
   }
 
   @override
-  Future<HttpResponse<MessageResponse>> studentEkycSubmitEkyc() async {
+  Future<HttpResponse<MessageResponse>> studentEkycSubmitEkyc({
+    required String ekycReportId,
+    required EkycTypeEnum type,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{
+      r'ekyc-report-id': ekycReportId,
+      r'type': type,
+    };
+    _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<MessageResponse>>(Options(
       method: 'POST',

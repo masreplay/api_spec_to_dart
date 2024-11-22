@@ -8,7 +8,7 @@ class OpenApiClientGenerator {
     required this.config,
   });
 
-  final OpenApiGeneratorConfig config;
+  final SwaggerToDartConfig config;
 
   ({String filename, String content}) generator({
     required OpenApiPaths path,
@@ -110,6 +110,25 @@ class OpenApiClientGenerator {
         }
 
         // TODO(mohammed.atheer): headers / properties
+        /// headers / properties
+        ///
+        print(
+          "skippedParameters: ${config.swaggerToDart.skippedParameters} ${parameters.where((e) => e.in_ == OpenApiPathMethodParameterType.header).map((e) => e.name).toList().join(',')}",
+        );
+
+        final headerParams = parameters.where(
+          (e) =>
+              e.in_ == OpenApiPathMethodParameterType.header &&
+              !config.swaggerToDart.skippedParameters.contains(e.name),
+        );
+
+        for (final headerParam in headerParams) {
+          final dartType = headerParam.schema.dartType(config);
+          final paramName = config.renameProperty(headerParam.name);
+          propertiesSnippets.add(
+            '''@Header('${headerParam.name}') required $dartType $paramName,''',
+          );
+        }
 
         String propertiesCode = '';
 

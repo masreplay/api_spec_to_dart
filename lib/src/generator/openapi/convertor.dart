@@ -2,7 +2,7 @@ import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 String convertOpenApiAnyOfToDartType(
   OpenApiSchemaAnyOf value,
-  OpenApiGeneratorConfig config,
+  SwaggerToDartConfig config,
 ) {
   String className = '';
   bool isNullable = false;

@@ -12,7 +12,9 @@ abstract class StudentEkycClient {
   /// Download License
   @GET('/api/v1/student/ekyc/download-license')
   Future<HttpResponse<BaseResponseEkycDownloadLicensePublic>>
-      studentEkycDownloadLicense();
+      studentEkycDownloadLicense({
+    @Header('package-name') required String packageName,
+  });
 
   /// student_ekyc-init
   /// Init
@@ -25,6 +27,7 @@ abstract class StudentEkycClient {
   @PATCH('/api/v1/student/ekyc/national_id/back')
   Future<HttpResponse<MessageResponse>> studentEkycUploadNationalIdBackData({
     @Body() required BodyStudentEkycUploadNationalIdBackData body,
+    @Header('ekyc-report-id') required String ekycReportId,
   });
 
   /// student_ekyc-upload_national_id_front_data
@@ -33,6 +36,7 @@ abstract class StudentEkycClient {
   @PATCH('/api/v1/student/ekyc/national_id/front')
   Future<HttpResponse<MessageResponse>> studentEkycUploadNationalIdFrontData({
     @Body() required BodyStudentEkycUploadNationalIdFrontData body,
+    @Header('ekyc-report-id') required String ekycReportId,
   });
 
   /// student_ekyc-upload_passport_data
@@ -41,6 +45,7 @@ abstract class StudentEkycClient {
   @PATCH('/api/v1/student/ekyc/passport')
   Future<HttpResponse<MessageResponse>> studentEkycUploadPassportData({
     @Body() required BodyStudentEkycUploadPassportData body,
+    @Header('ekyc-report-id') required String ekycReportId,
   });
 
   /// student_ekyc-upload_face_data
@@ -49,6 +54,7 @@ abstract class StudentEkycClient {
   @PATCH('/api/v1/student/ekyc/face')
   Future<HttpResponse<MessageResponse>> studentEkycUploadFaceData({
     @Body() required BodyStudentEkycUploadFaceData body,
+    @Header('ekyc-report-id') required String ekycReportId,
   });
 
   /// student_ekyc-upload_nfc
@@ -57,6 +63,7 @@ abstract class StudentEkycClient {
   @PATCH('/api/v1/student/ekyc/nfc')
   Future<HttpResponse<MessageResponse>> studentEkycUploadNfc({
     @Body() required BodyStudentEkycUploadNfc body,
+    @Header('ekyc-report-id') required String ekycReportId,
   });
 
   /// student_ekyc-upload_eye_data
@@ -65,22 +72,29 @@ abstract class StudentEkycClient {
   @PATCH('/api/v1/student/ekyc/face/eye')
   Future<HttpResponse<MessageResponse>> studentEkycUploadEyeData({
     @Body() required BodyStudentEkycUploadEyeData body,
+    @Header('ekyc-report-id') required String ekycReportId,
   });
 
   /// student_ekyc-read_student_ekyc_form
   /// Read Student Ekyc Form
   @GET('/api/v1/student/ekyc/form')
-  Future<HttpResponse<BaseResponseUIForm>> studentEkycReadStudentEkycForm();
+  Future<HttpResponse<BaseResponseUIForm>> studentEkycReadStudentEkycForm({
+    @Header('ekyc-report-id') required String ekycReportId,
+  });
 
   /// student_ekyc-upload_student_ekyc_form
   /// Upload Student Ekyc Form
   @PATCH('/api/v1/student/ekyc/form')
   Future<HttpResponse<BaseResponseStr?>> studentEkycUploadStudentEkycForm({
     @Body() required StudentEkycFormDataRequest body,
+    @Header('ekyc-report-id') required String ekycReportId,
   });
 
   /// student_ekyc-submit_ekyc
   /// Submit Ekyc
   @POST('/api/v1/student/ekyc/submit')
-  Future<HttpResponse<MessageResponse>> studentEkycSubmitEkyc();
+  Future<HttpResponse<MessageResponse>> studentEkycSubmitEkyc({
+    @Header('ekyc-report-id') required String ekycReportId,
+    @Header('type') required EkycTypeEnum type,
+  });
 }

@@ -1,7 +1,5 @@
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
-import 'convertor.dart';
-
 typedef OpenApiModel = MapEntry<String, OpenApiSchemas>;
 
 class OpenApiModelGenerator {
@@ -9,7 +7,7 @@ class OpenApiModelGenerator {
     required this.config,
   });
 
-  final OpenApiGeneratorConfig config;
+  final SwaggerToDartConfig config;
 
   ({String filename, String content}) run(OpenApiModel model) {
     final filename = config.renameFile(model.key);
@@ -276,7 +274,7 @@ class ${className} with _\$${className} {
   }) {
     getAnyOfType(
       OpenApiSchemaAnyOf value,
-      OpenApiGeneratorConfig config,
+      SwaggerToDartConfig config,
     ) {
       String text = '';
       bool isNullable = false;

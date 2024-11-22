@@ -5,7 +5,7 @@ class OpenApiBaseClientGenerator {
     required this.config,
   });
 
-  final OpenApiGeneratorConfig config;
+  final SwaggerToDartConfig config;
 
   String generator({
     required List<String> clients,
@@ -18,12 +18,12 @@ class OpenApiBaseClientGenerator {
 
     buffer.writeln();
 
-    buffer.writeln('''class ${config.clientsClassName} {''');
+    buffer.writeln('''class ${config.swaggerToDart.apiClientClassName} {''');
 
     buffer.writeln();
 
     buffer.writeln(
-      '''${config.clientsClassName}(this._dio);''',
+      '''${config.swaggerToDart.apiClientClassName}(this._dio);''',
     );
 
     buffer.writeln();

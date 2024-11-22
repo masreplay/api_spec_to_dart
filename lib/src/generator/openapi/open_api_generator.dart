@@ -3,21 +3,20 @@ import 'dart:io';
 
 import 'package:collection/collection.dart';
 import 'package:path/path.dart' as path;
-import 'package:swagger_to_dart/src/generator/openapi/open_api_base_client_generator.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 class OpenApiDartGenerator {
   OpenApiDartGenerator({
     required this.config,
   }) {
-    final file = File(config.input);
+    final file = File(config.swaggerToDart.inputDirectory);
     final json = file.readAsStringSync();
     final map = jsonDecode(json);
 
     _openApi = OpenApi.fromJson(map);
   }
 
-  final OpenApiGeneratorConfig config;
+  final SwaggerToDartConfig config;
 
   late final OpenApi _openApi;
 
@@ -96,7 +95,7 @@ class OpenApiDartGenerator {
 
     final clientsFilepath = path.join(
       config.clientsOutputDirectory,
-      '${config.renameFile(config.clientsClassName)}.dart',
+      '${config.renameFile(config.swaggerToDart.apiClientClassName)}.dart',
     );
 
     final clientsFile = File(clientsFilepath);

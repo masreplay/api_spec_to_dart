@@ -27,12 +27,16 @@ abstract class StudentAuthClient {
   /// student_auth-refresh_token
   /// Refresh Token
   @POST('/api/v1/student/auth/refresh_token')
-  Future<HttpResponse<StudentAuthResponse?>> studentAuthRefreshToken();
+  Future<HttpResponse<StudentAuthResponse?>> studentAuthRefreshToken({
+    @Header('refresh_token') required String refreshToken,
+  });
 
   /// student_auth-logout
   /// Logout
   @POST('/api/v1/student/auth/logout')
-  Future<HttpResponse<MessageResponse>> studentAuthLogout();
+  Future<HttpResponse<MessageResponse>> studentAuthLogout({
+    @Header('refresh_token') required String refreshToken,
+  });
 
   /// student_auth-change_temporary_password
   /// Change Temporary Password

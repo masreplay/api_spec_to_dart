@@ -27,10 +27,14 @@ abstract class LecturerAuthClient {
   /// lecturer_auth-refresh_token
   /// Refresh Token
   @POST('/api/v1/lecturer/auth/refresh_token')
-  Future<HttpResponse<LecturerAuthResponse?>> lecturerAuthRefreshToken();
+  Future<HttpResponse<LecturerAuthResponse?>> lecturerAuthRefreshToken({
+    @Header('refresh_token') required String refreshToken,
+  });
 
   /// lecturer_auth-logout
   /// Logout
   @POST('/api/v1/lecturer/auth/logout')
-  Future<HttpResponse<MessageResponse>> lecturerAuthLogout();
+  Future<HttpResponse<MessageResponse>> lecturerAuthLogout({
+    @Header('refresh_token') required String refreshToken,
+  });
 }

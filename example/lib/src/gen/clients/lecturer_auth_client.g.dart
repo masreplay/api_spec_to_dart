@@ -96,10 +96,12 @@ class _LecturerAuthClient implements LecturerAuthClient {
   }
 
   @override
-  Future<HttpResponse<LecturerAuthResponse?>> lecturerAuthRefreshToken() async {
+  Future<HttpResponse<LecturerAuthResponse?>> lecturerAuthRefreshToken(
+      {required String refreshToken}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'refresh_token': refreshToken};
+    _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
     final _options =
         _setStreamType<HttpResponse<LecturerAuthResponse?>>(Options(
@@ -133,10 +135,12 @@ class _LecturerAuthClient implements LecturerAuthClient {
   }
 
   @override
-  Future<HttpResponse<MessageResponse>> lecturerAuthLogout() async {
+  Future<HttpResponse<MessageResponse>> lecturerAuthLogout(
+      {required String refreshToken}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'refresh_token': refreshToken};
+    _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<MessageResponse>>(Options(
       method: 'POST',
