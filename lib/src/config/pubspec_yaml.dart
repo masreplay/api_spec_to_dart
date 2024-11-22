@@ -23,5 +23,5 @@ class PubspecYaml with _$PubspecYaml {
   static const String filename = 'pubspec.yaml';
 
   // TODO: implement isFlutter
-  bool get isFlutter => false;
+  bool get isFlutter => true;
 }

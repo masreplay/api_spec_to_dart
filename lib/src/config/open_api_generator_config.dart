@@ -22,7 +22,9 @@ class SwaggerToDartConfig {
   }
 
   String get importModelsCode {
-    return '''import 'package:${pubspec.name}/src/gen/models/models.dart';''';
+    return '''import 'package:${pubspec.name}/src/gen/models/models.dart';
+    ${pubspec.isFlutter ? "import 'package:flutter/material.dart';" : ''} 
+    ''';
   }
 
   String get importClientsCode {
@@ -40,7 +42,7 @@ class SwaggerToDartConfig {
           'date-time' => 'DateTime',
           'binary' => 'File',
           'uuid' => 'String',
-          'duration' => pubspec.isFlutter ? 'TimeOfDay' : 'DateTime',
+          'duration' => pubspec.isFlutter ? 'TimeOfDay' : 'String',
           'uri' => 'Uri',
           _ => 'String',
         };
