@@ -37,6 +37,8 @@ class OpenApiClientGenerator {
       '''factory ${className}(Dio dio, {String baseUrl}) = _${className};''',
     );
 
+    final skippedParameters = config.swaggerToDart.skippedParameters;
+
     for (final tagPath in tagPaths) {
       final method = path[tagPath]!;
 
@@ -85,21 +87,6 @@ class OpenApiClientGenerator {
           );
         }
 
-        /// headers / properties
-        final headerParams = parameters
-            .where((e) => e.in_ == OpenApiPathMethodParameterType.header)
-            .toList();
-
-        for (final headerParam in headerParams) {
-          if (config.skipHeaders.contains(headerParam.name)) continue;
-          final dartType = headerParam.schema.dartType(config);
-          final paramName = config.renameProperty(headerParam.name);
-
-          propertiesSnippets.add(
-            '''@Header('${headerParam.name}') required $dartType $paramName,''',
-          );
-        }
-
         /// path params / properties
         final pathParams = parameters.where(
           (e) => e.in_ == OpenApiPathMethodParameterType.path,
@@ -108,6 +95,7 @@ class OpenApiClientGenerator {
         for (final pathParam in pathParams) {
           final dartType = pathParam.schema.dartType(config);
           final paramName = config.renameProperty(pathParam.name);
+
           propertiesSnippets.add(
             '''@Path('${pathParam.name}') required $dartType $paramName,''',
           );
@@ -124,18 +112,18 @@ class OpenApiClientGenerator {
           );
         }
 
-        // TODO(mohammed.atheer): headers / properties
         /// headers / properties
-        ///
         print(
-          "skippedParameters: ${config.swaggerToDart.skippedParameters} ${parameters.where((e) => e.in_ == OpenApiPathMethodParameterType.header).map((e) => e.name).toList().join(',')}",
+          "skippedParameters: ${skippedParameters} ${parameters.where((e) => e.in_ == OpenApiPathMethodParameterType.header).map((e) => e.name).toList().join(',')}",
         );
 
-        final headerParams = parameters.where(
-          (e) =>
-              e.in_ == OpenApiPathMethodParameterType.header &&
-              !config.swaggerToDart.skippedParameters.contains(e.name),
-        );
+        final headerParams = parameters
+            .where(
+              (e) =>
+                  e.in_ == OpenApiPathMethodParameterType.header &&
+                  !skippedParameters.contains(e.name),
+            )
+            .toList();
 
         for (final headerParam in headerParams) {
           final dartType = headerParam.schema.dartType(config);
