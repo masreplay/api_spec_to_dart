@@ -1,38 +1,41 @@
 import 'dart:io';
 
-import 'package:logger/logger.dart';
 import 'package:path/path.dart' as path;
-import 'package:swagger_to_dart/src/config/swagger_to_dart_yaml.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 import 'package:yaml/yaml.dart';
 
-final logger = Logger();
-
 Future<void> main(List<String> args) async {
-  final String rootDir = Directory.current.path;
+  try {
+    final String rootDir = Directory.current.path;
 
-  final pubspec = PubspecYaml.fromYaml(
-    await readYamlFile(path.join(rootDir, PubspecYaml.filename)),
-  );
+    final pubspec = PubspecYaml.fromYaml(
+      await readYamlFile(path.join(rootDir, PubspecYaml.filename)),
+    );
 
-  final swaggerToDart = SwaggerToDartYaml.fromYaml(
-    await readYamlFile(path.join(rootDir, SwaggerToDartYaml.filename)),
-  );
+    print(JsonFactory.instance.encode(pubspec.toJson()));
 
-  final config = SwaggerToDartConfig(
-    pubspec: pubspec,
-    swaggerToDart: swaggerToDart,
-  );
+    final swaggerToDart = SwaggerToDartYaml.fromYaml(
+      await readYamlFile(path.join(rootDir, SwaggerToDartYaml.filename)),
+    );
 
-  print(JsonFactory.instance.encode(config.toJson()));
+    print(JsonFactory.instance.encode(swaggerToDart.toJson()));
 
-  print('Generating code...');
+    final config = SwaggerToDartConfig(
+      pubspec: pubspec,
+      swaggerToDart: swaggerToDart,
+    );
 
-  final generator = OpenApiDartGenerator(config: config);
+    print('Generating code...');
 
-  await generator.run();
+    final generator = OpenApiDartGenerator(config: config);
 
-  print('Code generation completed');
+    await generator.run();
+
+    print('Code generation completed');
+  } catch (e, s) {
+    print(s);
+    print(e);
+  }
 }
 
 Future<Map<String, dynamic>> readYamlFile(String path) async {
@@ -41,7 +44,7 @@ Future<Map<String, dynamic>> readYamlFile(String path) async {
   final filename = path.split('/').last;
 
   if (!file.existsSync()) {
-    logger.e('${filename} not found in the current directory');
+    print('${filename} not found in the current directory');
     exit(1);
   }
 
