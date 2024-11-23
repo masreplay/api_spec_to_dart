@@ -9,3 +9,7 @@
 ## 0.0.3
 
 - Add description and documentation to the generation
+
+## 0.0.4
+
+- Fix multi line description
