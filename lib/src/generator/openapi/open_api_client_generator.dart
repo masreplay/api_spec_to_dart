@@ -48,14 +48,22 @@ class OpenApiClientGenerator {
 
         // description / comment
 
+        String commentLine(String line) {
+          return '''/// ${line.split('\n').join('\n/// ')}''';
+        }
+
         final operationId = method.operationId;
-        buffer.writeln('/// OperationId: ${operationId}');
+        buffer.writeln(commentLine('OperationId: ${operationId}'));
 
         final summary = method.summary;
-        if (summary != null) buffer.writeln('/// Title: ${summary}');
+        if (summary != null) {
+          buffer.writeln(commentLine('Summery: ${summary}'));
+        }
 
         final description = method.description;
-        if (summary != null) buffer.writeln('/// Description: ${description}');
+        if (description != null) {
+          buffer.writeln(commentLine('Description: ${description}'));
+        }
 
         // response / return type
         final responses = method.responses ?? {};
