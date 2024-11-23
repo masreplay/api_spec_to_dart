@@ -48,8 +48,8 @@ ${config.importModelsCode}
 
 part '${filename}.g.dart';
 
-///${model.key}
-
+/// ${model.key}
+/// ${model.value.description}
 @JsonEnum(valueField: 'value', alwaysCreate: true)
 enum $className {
 $enumValues
