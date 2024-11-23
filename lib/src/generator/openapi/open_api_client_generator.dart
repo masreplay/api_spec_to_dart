@@ -55,7 +55,10 @@ class OpenApiClientGenerator {
         if (summary != null) buffer.writeln('/// Title: ${summary}');
 
         final description = method.description;
-        if (summary != null) buffer.writeln('/// Description: ${description}');
+        if (summary != null)
+          buffer.writeln(
+            '/// Description: ${description?.replaceAll('\n', ' ')}',
+          );
 
         // response / return type
         final responses = method.responses ?? {};
