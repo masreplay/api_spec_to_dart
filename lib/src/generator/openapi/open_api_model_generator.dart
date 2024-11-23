@@ -25,11 +25,15 @@ class OpenApiModelGenerator {
 
       for (int i = 0; i < enum_.length; i++) {
         final value = enum_[i];
+        final description = model.value.xEnumVarnames?[i];
+        final name = description == null
+            ? 'value$value'
+            : config.renameProperty(description);
 
         final enumName = config.renameProperty(value.toString());
 
         if (isNumber) {
-          enumValues += '  value$value($value),';
+          enumValues += '''  ${name}($value), \n''';
         } else {
           if (int.tryParse(enumName) != null) {
             enumValues += '  value${enumName}(\'$value\'),';

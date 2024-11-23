@@ -39,6 +39,9 @@ _$OpenApiSchemasImpl _$$OpenApiSchemasImplFromJson(Map<String, dynamic> json) =>
       const_: json['const'],
       title: json['title'] as String?,
       description: json['description'] as String?,
+      xEnumVarnames: (json['x-enum-varnames'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$$OpenApiSchemasImplToJson(
@@ -54,4 +57,5 @@ Map<String, dynamic> _$$OpenApiSchemasImplToJson(
       if (instance.const_ case final value?) 'const': value,
       if (instance.title case final value?) 'title': value,
       if (instance.description case final value?) 'description': value,
+      if (instance.xEnumVarnames case final value?) 'x-enum-varnames': value,
     };

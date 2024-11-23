@@ -241,6 +241,8 @@ mixin _$OpenApiSchemas {
   String? get title => throw _privateConstructorUsedError;
   @JsonKey(name: 'description')
   String? get description => throw _privateConstructorUsedError;
+  @JsonKey(name: 'x-enum-varnames')
+  List<String>? get xEnumVarnames => throw _privateConstructorUsedError;
 
   /// Serializes this OpenApiSchemas to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -267,7 +269,8 @@ abstract class $OpenApiSchemasCopyWith<$Res> {
       @JsonKey(name: 'enum') List<Object>? enum_,
       @JsonKey(name: 'const') Object? const_,
       @JsonKey(name: 'title') String? title,
-      @JsonKey(name: 'description') String? description});
+      @JsonKey(name: 'description') String? description,
+      @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames});
 }
 
 /// @nodoc
@@ -292,6 +295,7 @@ class _$OpenApiSchemasCopyWithImpl<$Res, $Val extends OpenApiSchemas>
     Object? const_ = freezed,
     Object? title = freezed,
     Object? description = freezed,
+    Object? xEnumVarnames = freezed,
   }) {
     return _then(_value.copyWith(
       properties: freezed == properties
@@ -319,6 +323,10 @@ class _$OpenApiSchemasCopyWithImpl<$Res, $Val extends OpenApiSchemas>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
+      xEnumVarnames: freezed == xEnumVarnames
+          ? _value.xEnumVarnames
+          : xEnumVarnames // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ) as $Val);
   }
 }
@@ -340,7 +348,8 @@ abstract class _$$OpenApiSchemasImplCopyWith<$Res>
       @JsonKey(name: 'enum') List<Object>? enum_,
       @JsonKey(name: 'const') Object? const_,
       @JsonKey(name: 'title') String? title,
-      @JsonKey(name: 'description') String? description});
+      @JsonKey(name: 'description') String? description,
+      @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames});
 }
 
 /// @nodoc
@@ -363,6 +372,7 @@ class __$$OpenApiSchemasImplCopyWithImpl<$Res>
     Object? const_ = freezed,
     Object? title = freezed,
     Object? description = freezed,
+    Object? xEnumVarnames = freezed,
   }) {
     return _then(_$OpenApiSchemasImpl(
       properties: freezed == properties
@@ -390,6 +400,10 @@ class __$$OpenApiSchemasImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
+      xEnumVarnames: freezed == xEnumVarnames
+          ? _value._xEnumVarnames
+          : xEnumVarnames // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ));
   }
 }
@@ -406,10 +420,12 @@ class _$OpenApiSchemasImpl extends _OpenApiSchemas {
       @JsonKey(name: 'enum') final List<Object>? enum_,
       @JsonKey(name: 'const') this.const_,
       @JsonKey(name: 'title') this.title,
-      @JsonKey(name: 'description') this.description})
+      @JsonKey(name: 'description') this.description,
+      @JsonKey(name: 'x-enum-varnames') final List<String>? xEnumVarnames})
       : _properties = properties,
         _required_ = required_,
         _enum_ = enum_,
+        _xEnumVarnames = xEnumVarnames,
         super._();
 
   factory _$OpenApiSchemasImpl.fromJson(Map<String, dynamic> json) =>
@@ -461,10 +477,20 @@ class _$OpenApiSchemasImpl extends _OpenApiSchemas {
   @override
   @JsonKey(name: 'description')
   final String? description;
+  final List<String>? _xEnumVarnames;
+  @override
+  @JsonKey(name: 'x-enum-varnames')
+  List<String>? get xEnumVarnames {
+    final value = _xEnumVarnames;
+    if (value == null) return null;
+    if (_xEnumVarnames is EqualUnmodifiableListView) return _xEnumVarnames;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'OpenApiSchemas(properties: $properties, type: $type, required_: $required_, enum_: $enum_, const_: $const_, title: $title, description: $description)';
+    return 'OpenApiSchemas(properties: $properties, type: $type, required_: $required_, enum_: $enum_, const_: $const_, title: $title, description: $description, xEnumVarnames: $xEnumVarnames)';
   }
 
   @override
@@ -481,7 +507,9 @@ class _$OpenApiSchemasImpl extends _OpenApiSchemas {
             const DeepCollectionEquality().equals(other.const_, const_) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
-                other.description == description));
+                other.description == description) &&
+            const DeepCollectionEquality()
+                .equals(other._xEnumVarnames, _xEnumVarnames));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -494,7 +522,8 @@ class _$OpenApiSchemasImpl extends _OpenApiSchemas {
       const DeepCollectionEquality().hash(_enum_),
       const DeepCollectionEquality().hash(const_),
       title,
-      description);
+      description,
+      const DeepCollectionEquality().hash(_xEnumVarnames));
 
   /// Create a copy of OpenApiSchemas
   /// with the given fields replaced by the non-null parameter values.
@@ -515,16 +544,17 @@ class _$OpenApiSchemasImpl extends _OpenApiSchemas {
 
 abstract class _OpenApiSchemas extends OpenApiSchemas {
   const factory _OpenApiSchemas(
-          {@OpenApiSchemaJsonConverter()
-          @JsonKey(name: 'properties')
-          required final Map<String, OpenApiSchema>? properties,
-          @JsonKey(name: 'type') required final String type,
-          @JsonKey(name: 'required') final List<String>? required_,
-          @JsonKey(name: 'enum') final List<Object>? enum_,
-          @JsonKey(name: 'const') final Object? const_,
-          @JsonKey(name: 'title') final String? title,
-          @JsonKey(name: 'description') final String? description}) =
-      _$OpenApiSchemasImpl;
+      {@OpenApiSchemaJsonConverter()
+      @JsonKey(name: 'properties')
+      required final Map<String, OpenApiSchema>? properties,
+      @JsonKey(name: 'type') required final String type,
+      @JsonKey(name: 'required') final List<String>? required_,
+      @JsonKey(name: 'enum') final List<Object>? enum_,
+      @JsonKey(name: 'const') final Object? const_,
+      @JsonKey(name: 'title') final String? title,
+      @JsonKey(name: 'description') final String? description,
+      @JsonKey(name: 'x-enum-varnames')
+      final List<String>? xEnumVarnames}) = _$OpenApiSchemasImpl;
   const _OpenApiSchemas._() : super._();
 
   factory _OpenApiSchemas.fromJson(Map<String, dynamic> json) =
@@ -552,6 +582,9 @@ abstract class _OpenApiSchemas extends OpenApiSchemas {
   @override
   @JsonKey(name: 'description')
   String? get description;
+  @override
+  @JsonKey(name: 'x-enum-varnames')
+  List<String>? get xEnumVarnames;
 
   /// Create a copy of OpenApiSchemas
   /// with the given fields replaced by the non-null parameter values.

@@ -43,6 +43,7 @@ class OpenApiClientGenerator {
 
     final skippedParameters = config.swaggerToDart.skippedParameters;
 
+    final privateMethods = <OpenApiPathMethod>[];
     for (final tagPath in tagPaths) {
       final method = path[tagPath]!;
 
@@ -74,12 +75,16 @@ class OpenApiClientGenerator {
 
         // request type + http method type + path / annotation
         final requestBody = method.requestBody?.content.current;
+        final isMultipart = requestBody?.key == 'MultiPart()';
+        if (isMultipart) privateMethods.add(method);
+
         if (requestBody?.key case final key?) {
           buffer.writeln('@${key}');
         }
 
         final retrofitHttpMethodType =
             Recase.instance.toScreamingSnakeCase(methodType);
+
         buffer.writeln('''@${retrofitHttpMethodType}('${tagPath}')''');
 
         // method name
@@ -122,9 +127,15 @@ class OpenApiClientGenerator {
 
           final dartType = body == null ? 'dynamic' : body.dartType(config);
 
-          propertiesSnippets.add(
-            '''@Body() required $dartType body,''',
-          );
+          if (isMultipart) {
+            propertiesSnippets.add(
+              '''@Part() required Map<String, dynamic> body,''',
+            );
+          } else {
+            propertiesSnippets.add(
+              '''@Body() required $dartType body,''',
+            );
+          }
         }
 
         /// headers / properties
@@ -160,11 +171,65 @@ class OpenApiClientGenerator {
             ? 'Future<HttpResponse>'
             : 'Future<HttpResponse<${response}>>';
 
-        buffer.writeln('''$returnType $methodName($propertiesCode);''');
+        buffer.writeln(
+          '''$returnType ${isMultipart ? '_' : ''}$methodName($propertiesCode);''',
+        );
       }
     }
 
     buffer.writeln('}');
+
+    if (privateMethods.isNotEmpty) {
+      buffer.writeln('extension ${className}Extension on ${className} {');
+      for (final method in privateMethods) {
+        final methodName = config.renameMethod(method.operationId);
+
+        // response / return type
+        final responses = method.responses ?? {};
+        final successResponse = responses['200']!;
+
+        final response =
+            successResponse.content.current.value?.schema.dartType(config);
+
+        final requestBody = method.requestBody?.content.current;
+        final body = requestBody?.value?.schema;
+
+        final dartType = body == null ? 'dynamic' : body.dartType(config);
+        final parameters = method.parameters?.where((e) {
+              return !(e.in_ == OpenApiPathMethodParameterType.header &&
+                  skippedParameters.contains(e.name));
+            }) ??
+            [];
+
+        final params = StringBuffer();
+        for (final param in parameters) {
+          final dartType = param.schema.dartType(config);
+          final paramName = config.renameProperty(param.name);
+          params.writeln('required $dartType  $paramName,\n ');
+        }
+
+        final returnType = response == null ||
+                response == 'dynamic' ||
+                response == 'Map<String, dynamic>'
+            ? 'Future<HttpResponse>'
+            : 'Future<HttpResponse<${response}>>';
+
+        buffer.writeln(
+          '''$returnType $methodName(
+            {${params.toString()}
+            required $dartType body,
+            }
+           ){
+            return _$methodName(
+              body: body.toJson(),
+              ${parameters.map((e) => '${config.renameProperty(e.name)}: ${config.renameProperty(e.name)},').join(',\n')}
+            );
+          }''',
+        );
+      }
+      buffer.writeln('}');
+    }
+
     return (filename: fileName, content: buffer.toString());
   }
 
