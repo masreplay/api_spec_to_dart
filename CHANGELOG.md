@@ -4,4 +4,8 @@
 
 ## 0.0.2
 
-- add main.dart to the example
+- Add main.dart to the example
+
+## 0.0.3
+
+- Add description and documentation to the generation
