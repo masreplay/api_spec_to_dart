@@ -49,7 +49,7 @@ ${config.importModelsCode}
 part '${filename}.g.dart';
 
 /// ${model.key}
-/// ${model.value.description}
+${model.value.description == null ? '' : commentLine(model.value.description!)}
 @JsonEnum(valueField: 'value', alwaysCreate: true)
 enum $className {
 $enumValues
@@ -120,8 +120,8 @@ ${config.importModelsCode}
 part '${filename}.freezed.dart';
 part '${filename}.g.dart';
 
-///${model.key}
-
+/// ${model.key}
+${model.value.description == null ? '' : commentLine(model.value.description!)}
 @freezed
 class ${className} with _\$${className} {
   const factory ${className}.fallback() = ${className}Fallback;
@@ -181,8 +181,8 @@ ${config.importModelsCode}
 part '${filename}.freezed.dart';
 part '${filename}.g.dart';
 
-///${model.key}
-
+/// ${model.key}
+${model.value.description == null ? '' : commentLine(model.value.description!)}
 @freezed
 class ${className} with _\$${className} {
   const ${className}._();

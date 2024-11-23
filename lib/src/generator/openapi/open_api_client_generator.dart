@@ -3,6 +3,10 @@ import 'dart:io';
 import 'package:path/path.dart' as path;
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
+String commentLine(String line) {
+  return '''/// ${line.split('\n').join('\n/// ')}''';
+}
+
 class OpenApiClientGenerator {
   const OpenApiClientGenerator({
     required this.config,
@@ -47,10 +51,6 @@ class OpenApiClientGenerator {
         final OpenApiPathMethod method = entry.value;
 
         // description / comment
-
-        String commentLine(String line) {
-          return '''/// ${line.split('\n').join('\n/// ')}''';
-        }
 
         final operationId = method.operationId;
         buffer.writeln(commentLine('OperationId: ${operationId}'));
