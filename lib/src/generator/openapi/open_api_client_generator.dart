@@ -47,8 +47,15 @@ class OpenApiClientGenerator {
         final OpenApiPathMethod method = entry.value;
 
         // description / comment
-        buffer.writeln('/// ${method.operationId}');
-        buffer.writeln('/// ${method.summary}');
+
+        final operationId = method.operationId;
+        buffer.writeln('/// OperationId: ${operationId}');
+
+        final summary = method.summary;
+        if (summary != null) buffer.writeln('/// Title: ${summary}');
+
+        final description = method.description;
+        if (summary != null) buffer.writeln('/// Description: ${description}');
 
         // response / return type
         final responses = method.responses ?? {};
