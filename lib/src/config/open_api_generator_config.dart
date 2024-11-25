@@ -47,7 +47,7 @@ class SwaggerToDartConfig {
           _ => 'String',
         };
       case OpenApiSchemaVarType.number:
-        return 'float';
+        return 'double';
       case OpenApiSchemaVarType.integer:
         return 'int';
       case OpenApiSchemaVarType.boolean:
