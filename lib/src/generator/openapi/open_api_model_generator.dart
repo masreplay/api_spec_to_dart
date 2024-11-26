@@ -357,7 +357,7 @@ class ${className} with _\$${className} {
     }
 
     // Add @JsonKey annotation
-    buffer.writeln('@JsonKey(name: \'$jsonName\')');
+    buffer.writeln('@JsonKey(name: \'${Recase.instance.toSnakeCase(jsonName)}\')');
 
     // Add field declaration
     if (freezedDefaultValue == null) {
