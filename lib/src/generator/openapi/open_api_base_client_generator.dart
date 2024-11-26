@@ -23,16 +23,16 @@ class OpenApiBaseClientGenerator {
     buffer.writeln();
 
     buffer.writeln(
-      '''${config.swaggerToDart.apiClientClassName}(this._dio);''',
+      '''${config.swaggerToDart.apiClientClassName}(this.dio);''',
     );
 
     buffer.writeln();
-    buffer.writeln('''final Dio _dio;''');
+    buffer.writeln('''final Dio dio;''');
     buffer.writeln();
     for (final client in clients) {
       buffer.writeln(
         '''${config.renameClass(client)}Client get ${config.renameProperty(client)}{
-          return ${config.renameClass(client)}Client(_dio);
+          return ${config.renameClass(client)}Client(dio);
         }''',
       );
     }
