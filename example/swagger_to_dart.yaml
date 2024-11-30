@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 swagger_parser:
+=======
+swagger_to_dart:
+>>>>>>> dev
   # You must provide the file path and/or url to the OpenApi schema.
 
   # Sets the OpenApi schema path directory for api definition.
   # schema_path: schemes/openapi.json
+<<<<<<< HEAD
   schema_url: http://0.0.0.0:8004/swagger/v1/swagger.json
 
   # Required. Sets output directory for generated files (Clients and DTOs).
@@ -83,4 +88,10 @@ swagger_parser:
   # Optional. Skip parameters with names.
   skipped_parameters:
     - "X-Some-Token"
+=======
+  input_directory: schema/swagger.json
+
+  # Optional. Skip parameters with names.
+  skipped_parameters:
+>>>>>>> dev
     - "Accept-Language"

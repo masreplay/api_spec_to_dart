@@ -199,12 +199,13 @@ class __$$OpenApiContentImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$OpenApiContentImpl implements _OpenApiContent {
+class _$OpenApiContentImpl extends _OpenApiContent {
   _$OpenApiContentImpl(
       {@JsonKey(name: 'application/json') required this.applicationJson,
       @JsonKey(name: 'application/x-www-form-urlencoded')
       required this.applicationXWwwFormUrlencoded,
-      @JsonKey(name: 'multipart/form-data') required this.multipartFormData});
+      @JsonKey(name: 'multipart/form-data') required this.multipartFormData})
+      : super._();
 
   factory _$OpenApiContentImpl.fromJson(Map<String, dynamic> json) =>
       _$$OpenApiContentImplFromJson(json);
@@ -261,7 +262,7 @@ class _$OpenApiContentImpl implements _OpenApiContent {
   }
 }
 
-abstract class _OpenApiContent implements OpenApiContent {
+abstract class _OpenApiContent extends OpenApiContent {
   factory _OpenApiContent(
           {@JsonKey(name: 'application/json')
           required final OpenApiContentSchema? applicationJson,
@@ -270,6 +271,7 @@ abstract class _OpenApiContent implements OpenApiContent {
           @JsonKey(name: 'multipart/form-data')
           required final OpenApiContentSchema? multipartFormData}) =
       _$OpenApiContentImpl;
+  _OpenApiContent._() : super._();
 
   factory _OpenApiContent.fromJson(Map<String, dynamic> json) =
       _$OpenApiContentImpl.fromJson;

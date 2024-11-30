@@ -335,8 +335,8 @@ class __$$OpenApiPathImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$OpenApiPathImpl implements _OpenApiPath {
-  _$OpenApiPathImpl(
+class _$OpenApiPathImpl extends _OpenApiPath {
+  const _$OpenApiPathImpl(
       {this.get,
       this.post,
       this.put,
@@ -344,7 +344,8 @@ class _$OpenApiPathImpl implements _OpenApiPath {
       this.options,
       this.head,
       this.patch,
-      this.trace});
+      this.trace})
+      : super._();
 
   factory _$OpenApiPathImpl.fromJson(Map<String, dynamic> json) =>
       _$$OpenApiPathImplFromJson(json);
@@ -407,8 +408,8 @@ class _$OpenApiPathImpl implements _OpenApiPath {
   }
 }
 
-abstract class _OpenApiPath implements OpenApiPath {
-  factory _OpenApiPath(
+abstract class _OpenApiPath extends OpenApiPath {
+  const factory _OpenApiPath(
       {final OpenApiPathMethod? get,
       final OpenApiPathMethod? post,
       final OpenApiPathMethod? put,
@@ -417,6 +418,7 @@ abstract class _OpenApiPath implements OpenApiPath {
       final OpenApiPathMethod? head,
       final OpenApiPathMethod? patch,
       final OpenApiPathMethod? trace}) = _$OpenApiPathImpl;
+  const _OpenApiPath._() : super._();
 
   factory _OpenApiPath.fromJson(Map<String, dynamic> json) =
       _$OpenApiPathImpl.fromJson;

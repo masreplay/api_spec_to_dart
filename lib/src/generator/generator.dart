@@ -1,1 +1,1 @@
-export 'package/package.dart';
+export 'openapi/openapi.dart';

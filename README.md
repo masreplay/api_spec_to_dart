@@ -1,30 +1,37 @@
-Swagger to Dart code generator for Flutter and Dart using OpenAPI 3.0.0 specification based on freezed and retrofit.
+# Swagger to Dart
 
-## Features
+- ### Add dependencies to `pubspec.yaml` file:
+```sh
+dart pub add freezed_annotation
+dart pub add dev:build_runner
+dart pub add dev:freezed
 
-- Retrofit class support
-- Freezed class support
-- Freezed Union support
+dart pub add json_annotation
+dart pub add dev:json_serializable
 
-## Tested on
-- fastapi with pydantic models
+dart pub add dio
 
-## Getting started
+dart pub add retrofit
+dart pub add dev:retrofit_generator
 
-### Installation
-<!-- TODO -->
 
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
-```dart
-const like = 'sample';
+dart pub add dev:swagger_to_dart --path=../
 ```
 
-## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+- ### For `freezed` with `retrofit` use build.yaml file with this content:
+```yaml
+global_options:
+  freezed:
+    runs_before:
+      - json_serializable
+  json_serializable:
+    runs_before:
+      - retrofit_generator
+```
+
+- ### Run code generation with `build_runner` for `json_seializable`(`freezed`) and `retrofit` with command:
+```shell
+dart run build_runner build
+```
+- ### Clients and models are generated!

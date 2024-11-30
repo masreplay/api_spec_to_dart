@@ -1,0 +1,30 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../convertors.dart';
+import 'package:example/src/gen/models/models.dart';
+
+part 'home_feed_public.freezed.dart';
+part 'home_feed_public.g.dart';
+
+///HomeFeedPublic
+
+@freezed
+class HomeFeedPublic with _$HomeFeedPublic {
+  const HomeFeedPublic._();
+
+  @JsonSerializable(converters: convertors)
+  const factory HomeFeedPublic({
+    /// Type
+    @Default('feed') @JsonKey(name: 'type') String type,
+
+    /// Sections
+    @JsonKey(name: 'sections') required List<HomeFeedSectionModel> sections,
+  }) = _HomeFeedPublic;
+
+  factory HomeFeedPublic.fromJson(
+    Map<String, dynamic> json,
+  ) =>
+      _$HomeFeedPublicFromJson(
+        json,
+      );
+}

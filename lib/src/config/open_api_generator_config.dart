@@ -1,29 +1,34 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:path/path.dart' as path;
-import 'package:swagger_to_dart/src/utils/recase.dart';
+import 'package:swagger_to_dart/src/config/swagger_to_dart_yaml.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
-class OpenApiGeneratorConfig {
-  const OpenApiGeneratorConfig({
-    required this.packageName,
-    required this.input,
-    required this.output,
-    required this.isFlutter,
+class SwaggerToDartConfig {
+  const SwaggerToDartConfig({
+    required this.swaggerToDart,
+    required this.pubspec,
   });
 
-  final String packageName;
+  final SwaggerToDartYaml swaggerToDart;
 
-  final bool isFlutter;
-
-  final String input;
-
-  final String output;
+  final PubspecYaml pubspec;
 
   String get modelsOutputDirectory {
-    return path.join(output, 'models');
+    return path.join(swaggerToDart.outputDirectory, 'models');
   }
 
-  String get relativeImportModelsCode {
-    return """import './models.dart';""";
+  String get clientsOutputDirectory {
+    return path.join(swaggerToDart.outputDirectory, 'clients');
+  }
+
+  String get importModelsCode {
+    return '''import 'package:${pubspec.name}/src/gen/models/models.dart';
+    ${pubspec.isFlutter ? "import 'package:flutter/material.dart';" : ''} 
+    ''';
+  }
+
+  String get importClientsCode {
+    return '''import 'package:${pubspec.name}/src/gen/clients/clients.dart';''';
   }
 
   String dartType({
@@ -37,12 +42,12 @@ class OpenApiGeneratorConfig {
           'date-time' => 'DateTime',
           'binary' => 'File',
           'uuid' => 'String',
-          'duration' => isFlutter ? 'TimeOfDay' : 'DateTime',
+          'duration' => pubspec.isFlutter ? 'TimeOfDay' : 'String',
           'uri' => 'Uri',
           _ => 'String',
         };
       case OpenApiSchemaVarType.number:
-        return 'num';
+        return 'double';
       case OpenApiSchemaVarType.integer:
         return 'int';
       case OpenApiSchemaVarType.boolean:
@@ -60,19 +65,53 @@ class OpenApiGeneratorConfig {
     }
   }
 
-  String propertyRename(String key) {
-    return Recase.instance.toCamelCase(key);
+  String renameProperty(String key) {
+    return _renameProtect(Recase.instance.toCamelCase(key));
   }
 
-  String enumName(String key) {
+  String renameMethod(String key) {
+    return _renameProtect(Recase.instance.toCamelCase(key));
+  }
+
+  String renameEnum(String key) {
     return Recase.instance.toPascalCase(key);
   }
 
-  String className(String key) {
-    return Recase.instance.toPascalCase(key);
+  String renameRefClass(OpenApiSchemaRef value) {
+    return renameClass(value.ref!.split('/').last);
   }
 
-  String filename(String key) {
-    return Recase.instance.toSnakeCase(key);
+  String renameClass(String key) {
+    final name = Recase.instance.toPascalCase(key);
+
+    if (name.endsWith('NoneType')) {
+      // remove then
+      return name.substring(0, name.length - 8);
+    }
+
+    return name;
   }
+
+  String renameFile(String key) {
+    final name = Recase.instance.toSnakeCase(key);
+
+    if (name.endsWith('none_type')) {
+      // remove then
+      return name.substring(0, name.length - 9);
+    }
+
+    return name;
+  }
+
+  Map<String, dynamic> toJson() {
+    return <String, dynamic>{
+      'swagger_to_dart': swaggerToDart.toJson(),
+      'pubspec': pubspec.toJson(),
+    };
+  }
+}
+
+String _renameProtect(String name) {
+  // TODO(mohammed.atheer): handle dart keywords
+  return name;
 }

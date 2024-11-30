@@ -1,6 +1,5 @@
 scripts:
-  # remove generated files directory and regenerate them lib/src/client
-  s: rm -rf lib/src/client && mkdir lib/src/client && rps swagger && exports && rps fix-format && rps g
+  s: rm -rf lib/src/gen && mkdir lib/src/gen && rps swagger && exports && rps g && rps fix-format
 
   swagger: dart run swagger_to_dart
 

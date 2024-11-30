@@ -1,0 +1,17 @@
+import 'package:dio/dio.dart';
+import 'package:retrofit/retrofit.dart';
+import 'package:example/src/gen/models/models.dart';
+
+part 'lecturer_profile_client.g.dart';
+
+@RestApi()
+abstract class LecturerProfileClient {
+  factory LecturerProfileClient(Dio dio, {String baseUrl}) =
+      _LecturerProfileClient;
+
+  /// lecturer_profile-get_lecturer_profile
+  /// Get Lecturer Profile
+  @GET('/api/v1/lecturer/profile/me')
+  Future<HttpResponse<BaseResponseLecturerProfilePublic>>
+      lecturerProfileGetLecturerProfile();
+}

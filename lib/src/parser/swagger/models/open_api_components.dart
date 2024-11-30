@@ -32,6 +32,7 @@ class OpenApiSchemas with _$OpenApiSchemas {
     @JsonKey(name: 'const') Object? const_,
     @JsonKey(name: 'title') String? title,
     @JsonKey(name: 'description') String? description,
+    @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames,
   }) = _OpenApiSchemas;
 
   factory OpenApiSchemas.fromJson(Map<String, dynamic> json) =>
