@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 import 'dart:io';
 
 import 'package:path/path.dart' as path;
@@ -58,4 +56,3 @@ Future<Map<String, dynamic>> readYamlFile(String path) async {
 
   return map;
 }
->>>>>>> dev
