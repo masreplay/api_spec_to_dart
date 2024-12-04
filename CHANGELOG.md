@@ -21,3 +21,8 @@
 ## 0.0.6
 
 - Fix bugs
+
+## 0.0.7
+
+- Add `@deprecated` annotation
+- Fix `@JsonKey(name: '')` name, was changing the name to snake_case
