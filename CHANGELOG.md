@@ -26,3 +26,6 @@
 
 - Add `@deprecated` annotation
 - Fix `@JsonKey(name: '')` name, was changing the name to snake_case
+
+## 0.0.8
+- Fix read the `JsonKey.name` from swagger `key` instead of the `title`
