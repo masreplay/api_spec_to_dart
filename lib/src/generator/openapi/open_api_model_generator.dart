@@ -230,7 +230,7 @@ class ${className} with _\$${className} {
       jsonName: key,
       propertyName: propertyName,
       propertyType: dartType,
-      title: value.title,
+      title: key,
       description: value.description,
     );
   }
