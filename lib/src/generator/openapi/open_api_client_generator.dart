@@ -85,6 +85,9 @@ class OpenApiClientGenerator {
         final retrofitHttpMethodType =
             Recase.instance.toScreamingSnakeCase(methodType);
 
+        if (method.deprecated == true) {
+          buffer.writeln('@deprecated');
+        }
         buffer.writeln('''@${retrofitHttpMethodType}('${tagPath}')''');
 
         // method name
