@@ -5,15 +5,20 @@ import 'package:collection/collection.dart';
 import 'package:path/path.dart' as path;
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
+
+OpenApi readOpenApiFile(SwaggerToDartConfig config){
+  final file = File(config.swaggerToDart.inputDirectory);
+    final json = file.readAsStringSync();
+    final map = jsonDecode(json);
+
+    return  OpenApi.fromJson(map);
+}
+
 class OpenApiDartGenerator {
   OpenApiDartGenerator({
     required this.config,
   }) {
-    final file = File(config.swaggerToDart.inputDirectory);
-    final json = file.readAsStringSync();
-    final map = jsonDecode(json);
-
-    _openApi = OpenApi.fromJson(map);
+    _openApi = readOpenApiFile(config);
   }
 
   final SwaggerToDartConfig config;
