@@ -9,8 +9,8 @@ class OpenApiInfo with _$OpenApiInfo {
   
   const factory OpenApiInfo({
     @JsonKey(name: 'title') required String title,
-    @JsonKey(name: 'description') required String description,
-    @JsonKey(name: 'version') required String version,
+    @JsonKey(name: 'description') required String? description,
+    @JsonKey(name: 'version') required String? version,
   }) = _OpenApiInfo;
 
   factory OpenApiInfo.fromJson(Map<String, dynamic> json) =>

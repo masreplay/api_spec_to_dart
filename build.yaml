@@ -1,10 +1,4 @@
 global_options:
-  freezed:
-    runs_before:
-      - retrofit_generator
-  json_serializable:
-    runs_before:
-      - retrofit_generator
 
 targets:
   $default:

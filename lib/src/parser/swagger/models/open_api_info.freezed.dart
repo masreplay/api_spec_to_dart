@@ -23,9 +23,9 @@ mixin _$OpenApiInfo {
   @JsonKey(name: 'title')
   String get title => throw _privateConstructorUsedError;
   @JsonKey(name: 'description')
-  String get description => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
   @JsonKey(name: 'version')
-  String get version => throw _privateConstructorUsedError;
+  String? get version => throw _privateConstructorUsedError;
 
   /// Serializes this OpenApiInfo to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -45,8 +45,8 @@ abstract class $OpenApiInfoCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'title') String title,
-      @JsonKey(name: 'description') String description,
-      @JsonKey(name: 'version') String version});
+      @JsonKey(name: 'description') String? description,
+      @JsonKey(name: 'version') String? version});
 }
 
 /// @nodoc
@@ -65,22 +65,22 @@ class _$OpenApiInfoCopyWithImpl<$Res, $Val extends OpenApiInfo>
   @override
   $Res call({
     Object? title = null,
-    Object? description = null,
-    Object? version = null,
+    Object? description = freezed,
+    Object? version = freezed,
   }) {
     return _then(_value.copyWith(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      description: null == description
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      version: null == version
+              as String?,
+      version: freezed == version
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -95,8 +95,8 @@ abstract class _$$OpenApiInfoImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'title') String title,
-      @JsonKey(name: 'description') String description,
-      @JsonKey(name: 'version') String version});
+      @JsonKey(name: 'description') String? description,
+      @JsonKey(name: 'version') String? version});
 }
 
 /// @nodoc
@@ -113,22 +113,22 @@ class __$$OpenApiInfoImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? title = null,
-    Object? description = null,
-    Object? version = null,
+    Object? description = freezed,
+    Object? version = freezed,
   }) {
     return _then(_$OpenApiInfoImpl(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      description: null == description
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      version: null == version
+              as String?,
+      version: freezed == version
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -150,10 +150,10 @@ class _$OpenApiInfoImpl extends _OpenApiInfo {
   final String title;
   @override
   @JsonKey(name: 'description')
-  final String description;
+  final String? description;
   @override
   @JsonKey(name: 'version')
-  final String version;
+  final String? version;
 
   @override
   String toString() {
@@ -194,8 +194,8 @@ class _$OpenApiInfoImpl extends _OpenApiInfo {
 abstract class _OpenApiInfo extends OpenApiInfo {
   const factory _OpenApiInfo(
           {@JsonKey(name: 'title') required final String title,
-          @JsonKey(name: 'description') required final String description,
-          @JsonKey(name: 'version') required final String version}) =
+          @JsonKey(name: 'description') required final String? description,
+          @JsonKey(name: 'version') required final String? version}) =
       _$OpenApiInfoImpl;
   const _OpenApiInfo._() : super._();
 
@@ -207,10 +207,10 @@ abstract class _OpenApiInfo extends OpenApiInfo {
   String get title;
   @override
   @JsonKey(name: 'description')
-  String get description;
+  String? get description;
   @override
   @JsonKey(name: 'version')
-  String get version;
+  String? get version;
 
   /// Create a copy of OpenApiInfo
   /// with the given fields replaced by the non-null parameter values.

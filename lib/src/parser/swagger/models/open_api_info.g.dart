@@ -9,13 +9,13 @@ part of 'open_api_info.dart';
 _$OpenApiInfoImpl _$$OpenApiInfoImplFromJson(Map<String, dynamic> json) =>
     _$OpenApiInfoImpl(
       title: json['title'] as String,
-      description: json['description'] as String,
-      version: json['version'] as String,
+      description: json['description'] as String?,
+      version: json['version'] as String?,
     );
 
 Map<String, dynamic> _$$OpenApiInfoImplToJson(_$OpenApiInfoImpl instance) =>
     <String, dynamic>{
       'title': instance.title,
-      'description': instance.description,
-      'version': instance.version,
+      if (instance.description case final value?) 'description': value,
+      if (instance.version case final value?) 'version': value,
     };
