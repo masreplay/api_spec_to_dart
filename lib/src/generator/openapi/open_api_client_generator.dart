@@ -43,13 +43,21 @@ class OpenApiClientGenerator {
 
     final skippedParameters = config.swaggerToDart.skippedParameters;
 
-    final privateMethods = <OpenApiPathMethod>[];
+    final privateMethods = <({
+      String functionName,
+      OpenApiPathMethod method,
+    })>[];
     for (final tagPath in tagPaths) {
       final method = path[tagPath]!;
 
       for (final entry in method.methods.entries) {
         final String methodType = entry.key;
         final OpenApiPathMethod method = entry.value;
+
+        // method name
+        final methodName = config.renameMethod(
+          method.operationId ?? tagPath.replaceAll('/', '_'),
+        );
 
         // description / comment
 
@@ -71,12 +79,18 @@ class OpenApiClientGenerator {
         final successResponse = responses['200']!;
 
         final response =
-            successResponse.content.current.value?.schema.dartType(config);
+            successResponse.content?.current.value?.schema.dartType(config);
 
         // request type + http method type + path / annotation
         final requestBody = method.requestBody?.content.current;
         final isMultipart = requestBody?.key == 'MultiPart()';
-        if (isMultipart) privateMethods.add(method);
+        if (isMultipart)
+          privateMethods.add(
+            (
+              functionName: methodName,
+              method: method,
+            ),
+          );
 
         if (requestBody?.key case final key?) {
           buffer.writeln('@${key}');
@@ -89,9 +103,6 @@ class OpenApiClientGenerator {
           buffer.writeln('@deprecated');
         }
         buffer.writeln('''@${retrofitHttpMethodType}('${tagPath}')''');
-
-        // method name
-        final methodName = config.renameMethod(method.operationId);
 
         final propertiesSnippets = <String>[];
 
@@ -184,15 +195,17 @@ class OpenApiClientGenerator {
 
     if (privateMethods.isNotEmpty) {
       buffer.writeln('extension ${className}Extension on ${className} {');
-      for (final method in privateMethods) {
-        final methodName = config.renameMethod(method.operationId);
+      for (final entry in privateMethods) {
+        final method = entry.method;
+
+        final methodName = config.renameMethod(entry.functionName);
 
         // response / return type
         final responses = method.responses ?? {};
         final successResponse = responses['200']!;
 
         final response =
-            successResponse.content.current.value?.schema.dartType(config);
+            successResponse.content?.current.value?.schema.dartType(config);
 
         final requestBody = method.requestBody?.content.current;
         final body = requestBody?.value?.schema;
@@ -219,17 +232,18 @@ class OpenApiClientGenerator {
 
         buffer.writeln(
           '''$returnType $methodName(
-            {${params.toString()}
-            required $dartType body,
-            }
-           ){
-            return _$methodName(
-              body: body.toJson(),
-              ${parameters.map((e) => '${config.renameProperty(e.name)}: ${config.renameProperty(e.name)},').join(',\n')}
-            );
-          }''',
+      {${params.toString()}
+      required $dartType body,
+      }
+     ){
+      return _$methodName(
+        body: body.toJson(),
+        ${parameters.map((e) => '${config.renameProperty(e.name)}: ${config.renameProperty(e.name)},').join(',\n')}
+      );
+    }''',
         );
       }
+
       buffer.writeln('}');
     }
 

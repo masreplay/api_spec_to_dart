@@ -461,7 +461,7 @@ mixin _$OpenApiPathMethod {
   @JsonKey(name: 'description')
   String? get description => throw _privateConstructorUsedError;
   @JsonKey(name: 'operationId')
-  String get operationId => throw _privateConstructorUsedError;
+  String? get operationId => throw _privateConstructorUsedError;
   @JsonKey(name: 'deprecated')
   bool? get deprecated => throw _privateConstructorUsedError;
   @JsonKey(name: 'security')
@@ -497,7 +497,7 @@ abstract class $OpenApiPathMethodCopyWith<$Res> {
       {@JsonKey(name: 'tags') List<String> tags,
       @JsonKey(name: 'summary') String? summary,
       @JsonKey(name: 'description') String? description,
-      @JsonKey(name: 'operationId') String operationId,
+      @JsonKey(name: 'operationId') String? operationId,
       @JsonKey(name: 'deprecated') bool? deprecated,
       @JsonKey(name: 'security') List<Map<String, List<dynamic>>>? security,
       @JsonKey(name: 'parameters') List<OpenApiPathMethodParameter>? parameters,
@@ -526,7 +526,7 @@ class _$OpenApiPathMethodCopyWithImpl<$Res, $Val extends OpenApiPathMethod>
     Object? tags = null,
     Object? summary = freezed,
     Object? description = freezed,
-    Object? operationId = null,
+    Object? operationId = freezed,
     Object? deprecated = freezed,
     Object? security = freezed,
     Object? parameters = freezed,
@@ -546,10 +546,10 @@ class _$OpenApiPathMethodCopyWithImpl<$Res, $Val extends OpenApiPathMethod>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      operationId: null == operationId
+      operationId: freezed == operationId
           ? _value.operationId
           : operationId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       deprecated: freezed == deprecated
           ? _value.deprecated
           : deprecated // ignore: cast_nullable_to_non_nullable
@@ -601,7 +601,7 @@ abstract class _$$OpenApiPathMethodImplCopyWith<$Res>
       {@JsonKey(name: 'tags') List<String> tags,
       @JsonKey(name: 'summary') String? summary,
       @JsonKey(name: 'description') String? description,
-      @JsonKey(name: 'operationId') String operationId,
+      @JsonKey(name: 'operationId') String? operationId,
       @JsonKey(name: 'deprecated') bool? deprecated,
       @JsonKey(name: 'security') List<Map<String, List<dynamic>>>? security,
       @JsonKey(name: 'parameters') List<OpenApiPathMethodParameter>? parameters,
@@ -629,7 +629,7 @@ class __$$OpenApiPathMethodImplCopyWithImpl<$Res>
     Object? tags = null,
     Object? summary = freezed,
     Object? description = freezed,
-    Object? operationId = null,
+    Object? operationId = freezed,
     Object? deprecated = freezed,
     Object? security = freezed,
     Object? parameters = freezed,
@@ -649,10 +649,10 @@ class __$$OpenApiPathMethodImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      operationId: null == operationId
+      operationId: freezed == operationId
           ? _value.operationId
           : operationId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       deprecated: freezed == deprecated
           ? _value.deprecated
           : deprecated // ignore: cast_nullable_to_non_nullable
@@ -719,7 +719,7 @@ class _$OpenApiPathMethodImpl extends _OpenApiPathMethod {
   final String? description;
   @override
   @JsonKey(name: 'operationId')
-  final String operationId;
+  final String? operationId;
   @override
   @JsonKey(name: 'deprecated')
   final bool? deprecated;
@@ -822,7 +822,7 @@ abstract class _OpenApiPathMethod extends OpenApiPathMethod {
           {@JsonKey(name: 'tags') required final List<String> tags,
           @JsonKey(name: 'summary') required final String? summary,
           @JsonKey(name: 'description') required final String? description,
-          @JsonKey(name: 'operationId') required final String operationId,
+          @JsonKey(name: 'operationId') required final String? operationId,
           @JsonKey(name: 'deprecated') required final bool? deprecated,
           @JsonKey(name: 'security')
           final List<Map<String, List<dynamic>>>? security,
@@ -849,7 +849,7 @@ abstract class _OpenApiPathMethod extends OpenApiPathMethod {
   String? get description;
   @override
   @JsonKey(name: 'operationId')
-  String get operationId;
+  String? get operationId;
   @override
   @JsonKey(name: 'deprecated')
   bool? get deprecated;
@@ -886,7 +886,7 @@ mixin _$OpenApiPathMethodParameter {
   @JsonKey(name: 'in')
   OpenApiPathMethodParameterType get in_ => throw _privateConstructorUsedError;
   @JsonKey(name: 'required')
-  bool get required_ => throw _privateConstructorUsedError;
+  bool? get required_ => throw _privateConstructorUsedError;
   @OpenApiSchemaJsonConverter()
   @JsonKey(name: 'schema')
   OpenApiSchema get schema => throw _privateConstructorUsedError;
@@ -913,7 +913,7 @@ abstract class $OpenApiPathMethodParameterCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'name') String name,
       @JsonKey(name: 'in') OpenApiPathMethodParameterType in_,
-      @JsonKey(name: 'required') bool required_,
+      @JsonKey(name: 'required') bool? required_,
       @OpenApiSchemaJsonConverter()
       @JsonKey(name: 'schema')
       OpenApiSchema schema,
@@ -941,7 +941,7 @@ class _$OpenApiPathMethodParameterCopyWithImpl<$Res,
   $Res call({
     Object? name = null,
     Object? in_ = null,
-    Object? required_ = null,
+    Object? required_ = freezed,
     Object? schema = null,
     Object? description = freezed,
     Object? example = freezed,
@@ -955,10 +955,10 @@ class _$OpenApiPathMethodParameterCopyWithImpl<$Res,
           ? _value.in_
           : in_ // ignore: cast_nullable_to_non_nullable
               as OpenApiPathMethodParameterType,
-      required_: null == required_
+      required_: freezed == required_
           ? _value.required_
           : required_ // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
       schema: null == schema
           ? _value.schema
           : schema // ignore: cast_nullable_to_non_nullable
@@ -997,7 +997,7 @@ abstract class _$$OpenApiPathMethodParameterImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'name') String name,
       @JsonKey(name: 'in') OpenApiPathMethodParameterType in_,
-      @JsonKey(name: 'required') bool required_,
+      @JsonKey(name: 'required') bool? required_,
       @OpenApiSchemaJsonConverter()
       @JsonKey(name: 'schema')
       OpenApiSchema schema,
@@ -1025,7 +1025,7 @@ class __$$OpenApiPathMethodParameterImplCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? in_ = null,
-    Object? required_ = null,
+    Object? required_ = freezed,
     Object? schema = null,
     Object? description = freezed,
     Object? example = freezed,
@@ -1039,10 +1039,10 @@ class __$$OpenApiPathMethodParameterImplCopyWithImpl<$Res>
           ? _value.in_
           : in_ // ignore: cast_nullable_to_non_nullable
               as OpenApiPathMethodParameterType,
-      required_: null == required_
+      required_: freezed == required_
           ? _value.required_
           : required_ // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
       schema: null == schema
           ? _value.schema
           : schema // ignore: cast_nullable_to_non_nullable
@@ -1085,7 +1085,7 @@ class _$OpenApiPathMethodParameterImpl extends _OpenApiPathMethodParameter {
   final OpenApiPathMethodParameterType in_;
   @override
   @JsonKey(name: 'required')
-  final bool required_;
+  final bool? required_;
   @override
   @OpenApiSchemaJsonConverter()
   @JsonKey(name: 'schema')
@@ -1141,7 +1141,7 @@ abstract class _OpenApiPathMethodParameter extends OpenApiPathMethodParameter {
   const factory _OpenApiPathMethodParameter(
       {@JsonKey(name: 'name') required final String name,
       @JsonKey(name: 'in') required final OpenApiPathMethodParameterType in_,
-      @JsonKey(name: 'required') required final bool required_,
+      @JsonKey(name: 'required') required final bool? required_,
       @OpenApiSchemaJsonConverter()
       @JsonKey(name: 'schema')
       required final OpenApiSchema schema,
@@ -1160,7 +1160,7 @@ abstract class _OpenApiPathMethodParameter extends OpenApiPathMethodParameter {
   OpenApiPathMethodParameterType get in_;
   @override
   @JsonKey(name: 'required')
-  bool get required_;
+  bool? get required_;
   @override
   @OpenApiSchemaJsonConverter()
   @JsonKey(name: 'schema')
@@ -1188,7 +1188,7 @@ mixin _$OpenApiPathMethodResponse {
   @JsonKey(name: 'description')
   String? get description => throw _privateConstructorUsedError;
   @JsonKey(name: 'content')
-  OpenApiContent get content => throw _privateConstructorUsedError;
+  OpenApiContent? get content => throw _privateConstructorUsedError;
 
   /// Serializes this OpenApiPathMethodResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1208,9 +1208,9 @@ abstract class $OpenApiPathMethodResponseCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'description') String? description,
-      @JsonKey(name: 'content') OpenApiContent content});
+      @JsonKey(name: 'content') OpenApiContent? content});
 
-  $OpenApiContentCopyWith<$Res> get content;
+  $OpenApiContentCopyWith<$Res>? get content;
 }
 
 /// @nodoc
@@ -1230,17 +1230,17 @@ class _$OpenApiPathMethodResponseCopyWithImpl<$Res,
   @override
   $Res call({
     Object? description = freezed,
-    Object? content = null,
+    Object? content = freezed,
   }) {
     return _then(_value.copyWith(
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      content: null == content
+      content: freezed == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
-              as OpenApiContent,
+              as OpenApiContent?,
     ) as $Val);
   }
 
@@ -1248,8 +1248,12 @@ class _$OpenApiPathMethodResponseCopyWithImpl<$Res,
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $OpenApiContentCopyWith<$Res> get content {
-    return $OpenApiContentCopyWith<$Res>(_value.content, (value) {
+  $OpenApiContentCopyWith<$Res>? get content {
+    if (_value.content == null) {
+      return null;
+    }
+
+    return $OpenApiContentCopyWith<$Res>(_value.content!, (value) {
       return _then(_value.copyWith(content: value) as $Val);
     });
   }
@@ -1266,10 +1270,10 @@ abstract class _$$OpenApiPathMethodResponseImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'description') String? description,
-      @JsonKey(name: 'content') OpenApiContent content});
+      @JsonKey(name: 'content') OpenApiContent? content});
 
   @override
-  $OpenApiContentCopyWith<$Res> get content;
+  $OpenApiContentCopyWith<$Res>? get content;
 }
 
 /// @nodoc
@@ -1288,17 +1292,17 @@ class __$$OpenApiPathMethodResponseImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? description = freezed,
-    Object? content = null,
+    Object? content = freezed,
   }) {
     return _then(_$OpenApiPathMethodResponseImpl(
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      content: null == content
+      content: freezed == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
-              as OpenApiContent,
+              as OpenApiContent?,
     ));
   }
 }
@@ -1318,7 +1322,7 @@ class _$OpenApiPathMethodResponseImpl implements _OpenApiPathMethodResponse {
   final String? description;
   @override
   @JsonKey(name: 'content')
-  final OpenApiContent content;
+  final OpenApiContent? content;
 
   @override
   String toString() {
@@ -1359,7 +1363,7 @@ class _$OpenApiPathMethodResponseImpl implements _OpenApiPathMethodResponse {
 abstract class _OpenApiPathMethodResponse implements OpenApiPathMethodResponse {
   factory _OpenApiPathMethodResponse(
           {@JsonKey(name: 'description') final String? description,
-          @JsonKey(name: 'content') required final OpenApiContent content}) =
+          @JsonKey(name: 'content') required final OpenApiContent? content}) =
       _$OpenApiPathMethodResponseImpl;
 
   factory _OpenApiPathMethodResponse.fromJson(Map<String, dynamic> json) =
@@ -1370,7 +1374,7 @@ abstract class _OpenApiPathMethodResponse implements OpenApiPathMethodResponse {
   String? get description;
   @override
   @JsonKey(name: 'content')
-  OpenApiContent get content;
+  OpenApiContent? get content;
 
   /// Create a copy of OpenApiPathMethodResponse
   /// with the given fields replaced by the non-null parameter values.

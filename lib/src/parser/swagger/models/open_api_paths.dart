@@ -46,6 +46,8 @@ class OpenApiPath with _$OpenApiPath {
   }
 }
 
+typedef OpenApiPathMethodResponses = Map<String, OpenApiPathMethodResponse>;
+
 @freezed
 class OpenApiPathMethod with _$OpenApiPathMethod {
   const OpenApiPathMethod._();
@@ -54,7 +56,7 @@ class OpenApiPathMethod with _$OpenApiPathMethod {
     @JsonKey(name: 'tags') required OpenApiPathMethodTags tags,
     @JsonKey(name: 'summary') required String? summary,
     @JsonKey(name: 'description') required String? description,
-    @JsonKey(name: 'operationId') required String operationId,
+    @JsonKey(name: 'operationId') required String? operationId,
     @JsonKey(name: 'deprecated') required bool? deprecated,
     @JsonKey(name: 'security') List<Map<String, List<dynamic>>>? security,
     @JsonKey(name: 'parameters')
@@ -79,7 +81,7 @@ class OpenApiPathMethodParameter with _$OpenApiPathMethodParameter {
   const factory OpenApiPathMethodParameter({
     @JsonKey(name: 'name') required String name,
     @JsonKey(name: 'in') required OpenApiPathMethodParameterType in_,
-    @JsonKey(name: 'required') required bool required_,
+    @JsonKey(name: 'required') required bool? required_,
     @OpenApiSchemaJsonConverter()
     @JsonKey(name: 'schema')
     required OpenApiSchema schema,
@@ -98,13 +100,11 @@ enum OpenApiPathMethodParameterType {
   cookie,
 }
 
-typedef OpenApiPathMethodResponses = Map<String, OpenApiPathMethodResponse>;
-
 @freezed
 class OpenApiPathMethodResponse with _$OpenApiPathMethodResponse {
   factory OpenApiPathMethodResponse({
     @JsonKey(name: 'description') String? description,
-    @JsonKey(name: 'content') required OpenApiContent content,
+    @JsonKey(name: 'content') required OpenApiContent? content,
   }) = _OpenApiPathMethodResponse;
 
   factory OpenApiPathMethodResponse.fromJson(Map<String, dynamic> json) =>

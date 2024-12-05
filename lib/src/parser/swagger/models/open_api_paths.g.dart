@@ -52,7 +52,7 @@ _$OpenApiPathMethodImpl _$$OpenApiPathMethodImplFromJson(
       tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
       summary: json['summary'] as String?,
       description: json['description'] as String?,
-      operationId: json['operationId'] as String,
+      operationId: json['operationId'] as String?,
       deprecated: json['deprecated'] as bool?,
       security: (json['security'] as List<dynamic>?)
           ?.map((e) => (e as Map<String, dynamic>).map(
@@ -79,7 +79,7 @@ Map<String, dynamic> _$$OpenApiPathMethodImplToJson(
       'tags': instance.tags,
       if (instance.summary case final value?) 'summary': value,
       if (instance.description case final value?) 'description': value,
-      'operationId': instance.operationId,
+      if (instance.operationId case final value?) 'operationId': value,
       if (instance.deprecated case final value?) 'deprecated': value,
       if (instance.security case final value?) 'security': value,
       if (instance.parameters?.map((e) => e.toJson()).toList()
@@ -97,7 +97,7 @@ _$OpenApiPathMethodParameterImpl _$$OpenApiPathMethodParameterImplFromJson(
     _$OpenApiPathMethodParameterImpl(
       name: json['name'] as String,
       in_: $enumDecode(_$OpenApiPathMethodParameterTypeEnumMap, json['in']),
-      required_: json['required'] as bool,
+      required_: json['required'] as bool?,
       schema: const OpenApiSchemaJsonConverter()
           .fromJson(json['schema'] as Map<String, dynamic>),
       description: json['description'] as String?,
@@ -109,7 +109,7 @@ Map<String, dynamic> _$$OpenApiPathMethodParameterImplToJson(
     <String, dynamic>{
       'name': instance.name,
       'in': _$OpenApiPathMethodParameterTypeEnumMap[instance.in_]!,
-      'required': instance.required_,
+      if (instance.required_ case final value?) 'required': value,
       'schema': const OpenApiSchemaJsonConverter().toJson(instance.schema),
       if (instance.description case final value?) 'description': value,
       if (instance.example case final value?) 'example': value,
@@ -126,14 +126,16 @@ _$OpenApiPathMethodResponseImpl _$$OpenApiPathMethodResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$OpenApiPathMethodResponseImpl(
       description: json['description'] as String?,
-      content: OpenApiContent.fromJson(json['content'] as Map<String, dynamic>),
+      content: json['content'] == null
+          ? null
+          : OpenApiContent.fromJson(json['content'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$OpenApiPathMethodResponseImplToJson(
         _$OpenApiPathMethodResponseImpl instance) =>
     <String, dynamic>{
       if (instance.description case final value?) 'description': value,
-      'content': instance.content.toJson(),
+      if (instance.content?.toJson() case final value?) 'content': value,
     };
 
 _$OpenApiPathMethodRequestBodyImpl _$$OpenApiPathMethodRequestBodyImplFromJson(
