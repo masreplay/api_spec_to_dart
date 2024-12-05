@@ -21,8 +21,10 @@ class OpenApiBaseClientGenerator {
     buffer.writeln();
 
     buffer.writeln(commentLine(_openApi.info.title));
-    buffer.writeln(commentLine(_openApi.info.description));
-    buffer.writeln(commentLine(_openApi.info.version));
+    if (_openApi.info.description case final description?)
+      buffer.writeln(commentLine(description));
+    if (_openApi.info.version case final version?)
+      buffer.writeln(commentLine(version));
     buffer.writeln(commentLine(DateTime.now().toString()));
 
     final className = config.swaggerToDart.apiClientClassName;
