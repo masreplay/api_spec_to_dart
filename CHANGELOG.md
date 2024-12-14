@@ -33,8 +33,8 @@
 
 ## 0.0.9
 
-- include metadata in `ApiClient` generated class
+- Include metadata in `ApiClient` generated class
 
 ## 0.1.0
 
-- add support to `color-hex` `format` in `string` type
+- Add support to `color-hex` `format` in `string` type
