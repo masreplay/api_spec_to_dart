@@ -44,7 +44,7 @@ class OpenApiClientGenerator {
     final skippedParameters = config.swaggerToDart.skippedParameters;
 
     final privateMethods = <({
-      String functionName,
+      String methodName,
       OpenApiPathMethod method,
     })>[];
     for (final tagPath in tagPaths) {
@@ -56,7 +56,7 @@ class OpenApiClientGenerator {
 
         // method name
         final methodName = config.renameMethod(
-          method.operationId ?? tagPath.replaceAll('/', '_'),
+          method.operationId ?? "${methodType}_${tagPath.replaceAll('/', '_')}",
         );
 
         // description / comment
@@ -87,7 +87,7 @@ class OpenApiClientGenerator {
         if (isMultipart)
           privateMethods.add(
             (
-              functionName: methodName,
+              methodName: methodName,
               method: method,
             ),
           );
@@ -198,7 +198,7 @@ class OpenApiClientGenerator {
       for (final entry in privateMethods) {
         final method = entry.method;
 
-        final methodName = config.renameMethod(entry.functionName);
+        final methodName = entry.methodName;
 
         // response / return type
         final responses = method.responses ?? {};

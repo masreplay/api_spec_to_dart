@@ -39,6 +39,7 @@ class SwaggerToDartConfig {
       case OpenApiSchemaVarType.string:
         return switch (format) {
           'date-time' => 'DateTime',
+          'color-hex' => 'Color',
           'binary' => 'File',
           'uuid' => 'String',
           'duration' => pubspec.isFlutter ? 'TimeOfDay' : 'String',
