@@ -38,3 +38,7 @@
 ## 0.1.0
 
 - Add support to `color-hex` `format` in `string` type
+
+## 0.1.1
+
+- Fix query name in `@Query` annotation by @shahad999
