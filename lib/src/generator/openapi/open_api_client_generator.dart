@@ -259,7 +259,7 @@ class OpenApiClientGenerator {
     final className = '${name}Queries';
 
     final params = queries.map((e) {
-      return MapEntry(config.renameProperty(e.name), e.schema);
+      return MapEntry(e.name, e.schema);
     }).toList();
 
     final result = generator.run(
