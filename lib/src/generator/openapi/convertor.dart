@@ -27,6 +27,7 @@ String convertOpenApiAnyOfToDartType(
             oneOf: (value) =>
                 generateOpenApiOneOfToDartType(className, value, config),
           ),
+          items: value.items,
         );
       },
       ref: (value) => config.renameRefClass(value),

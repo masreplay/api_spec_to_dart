@@ -34,11 +34,13 @@ class SwaggerToDartConfig {
     required OpenApiSchemaVarType? type,
     required String? format,
     required String? genericType,
+    required OpenApiSchema? items,
   }) {
     switch (type) {
       case OpenApiSchemaVarType.string:
         return switch (format) {
           'date-time' => 'DateTime',
+          'date' => 'DateTime',
           'color-hex' => 'Color',
           'binary' => 'File',
           'uuid' => 'String',
@@ -54,9 +56,32 @@ class SwaggerToDartConfig {
       case OpenApiSchemaVarType.boolean:
         return 'bool';
       case OpenApiSchemaVarType.array:
-        if (genericType == null) return 'List<dynamic>';
+        final className = items?.map(
+          type: (value) {
+            return dartType(
+              type: value.type,
+              format: value.format,
+              genericType: value.items?.mapOrNull(
+                ref: (value) => renameRefClass(value),
+                anyOf: (value) => convertOpenApiAnyOfToDartType(value, this),
+              ),
+              items: value.items,
+            );
+          },
+          ref: (value) => renameRefClass(value),
+          anyOf: (value) => convertOpenApiAnyOfToDartType(value, this),
+          oneOf: (value) => generateOpenApiOneOfToDartType(
+            //TODO(shahadKadhim):  support list of oneOf name
 
-        return 'List<$genericType>';
+            // '${className}Union${value.title ?? 'Model'}',
+            'Union${value.title ?? 'Model'}',
+            value,
+            this,
+          ),
+        );
+        if (className == null) return 'List<dynamic>';
+
+        return 'List<$className>';
       case OpenApiSchemaVarType.object:
         if (genericType == null) return 'Map<String, dynamic>';
 

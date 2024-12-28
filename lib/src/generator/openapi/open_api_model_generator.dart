@@ -171,6 +171,7 @@ class ${className} with _\$${className} {
         ref: (value) => config.renameRefClass(value),
         anyOf: (value) => convertOpenApiAnyOfToDartType(value, config),
       ),
+      items: value.items,
     );
 
     return _generateField(
@@ -250,6 +251,7 @@ class ${className} with _\$${className} {
                 ref: (value) => config.renameRefClass(value),
                 anyOf: (value) => getAnyOfType(value, config),
               ),
+              items: value.items,
             );
           },
           ref: (value) => config.renameRefClass(value),
@@ -344,6 +346,7 @@ String modelToUnionFreezedClass({
                 ref: (value) => config.renameRefClass(value),
                 anyOf: (value) => convertOpenApiAnyOfToDartType(value, config),
               ),
+              items: value.items,
             ),
             orElse: () => '',
           );

@@ -312,6 +312,7 @@ class OpenApiClientGenerator {
             ref: (value) => config.renameRefClass(value),
             anyOf: (value) => convertOpenApiAnyOfToDartType(value, config),
           ),
+          items: value.items,
         );
       },
       ref: (value) => config.renameRefClass(value),
