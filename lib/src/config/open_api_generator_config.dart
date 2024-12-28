@@ -44,6 +44,7 @@ class SwaggerToDartConfig {
           'uuid' => 'String',
           'duration' => pubspec.isFlutter ? 'TimeOfDay' : 'String',
           'uri' => 'Uri',
+          'time' => 'TimeOfDay',
           _ => 'String',
         };
       case OpenApiSchemaVarType.number:
