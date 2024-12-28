@@ -46,3 +46,6 @@
 ## 0.1.2
 
 - Support one of as direct request body
+  
+## 0.1.3
+- Fix List type
