@@ -42,3 +42,7 @@
 ## 0.1.1
 
 - Fix query name in `@Query` annotation by @shahad999
+
+## 0.1.2
+
+- Support one of as direct request body
