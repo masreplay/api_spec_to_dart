@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:swagger_to_dart/src/config/open_api_generator_config.dart';
+import 'package:swagger_to_dart/src/generator/generator.dart';
 import 'package:swagger_to_dart/src/generator/openapi/convertor.dart';
 
 part 'open_api_schema.freezed.dart';
@@ -78,7 +79,17 @@ class OpenApiSchema with _$OpenApiSchema {
       },
       ref: (value) => config.renameRefClass(value),
       anyOf: (value) => convertOpenApiAnyOfToDartType(value, config),
-      oneOf: (value) => '',
+      oneOf: (value) {
+        final filename = config.renameFile(model.key);
+        final className = config.renameClass(model.key);
+        return modelToUnionFreezedClass(
+          filename: '',
+          className: className,
+          model: model,
+          properties: properties,
+          config: config,
+        );
+      },
     );
   }
 }
