@@ -24,6 +24,8 @@ String convertOpenApiAnyOfToDartType(
           genericType: value.items?.mapOrNull(
             ref: (value) => config.renameRefClass(value),
             anyOf: (value) => convertOpenApiAnyOfToDartType(value, config),
+            oneOf: (value) =>
+                generateOpenApiOneOfToDartType(className, value, config),
           ),
         );
       },
@@ -36,7 +38,7 @@ String convertOpenApiAnyOfToDartType(
   return isNullable ? '$className?' : 'dynamic';
 }
 
-String convertOpenApiOneOfToDartType(
+String generateOpenApiOneOfToDartType(
   String key,
   OpenApiSchemaOneOf model,
   SwaggerToDartConfig config,
