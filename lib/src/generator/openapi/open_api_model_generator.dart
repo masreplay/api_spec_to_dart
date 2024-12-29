@@ -219,6 +219,8 @@ class ${className} with _\$${className} {
         ref: (value) => config.renameRefClass(value),
         anyOf: (value) => convertOpenApiAnyOfToDartType(value, config),
       ),
+      items: value.items,
+      title: value.title,
     );
 
     return _generateField(
@@ -298,6 +300,8 @@ class ${className} with _\$${className} {
                 ref: (value) => config.renameRefClass(value),
                 anyOf: (value) => getAnyOfType(value, config),
               ),
+              items: value.items,
+              title: value.title,
             );
           },
           ref: (value) => config.renameRefClass(value),
@@ -367,4 +371,70 @@ class ${className} with _\$${className} {
 
     return buffer.toString();
   }
+}
+
+String modelToUnionFreezedClass({
+  required String filename,
+  required String className,
+  required OpenApiModel model,
+  required Map<String, OpenApiSchema> properties,
+  required SwaggerToDartConfig config,
+}) {
+  // Generate Freezed Union Class
+  final unionTypes = <String>[];
+
+  for (final entry in properties.entries) {
+    entry.value.maybeMap(
+      oneOf: (value) {
+        for (var type in value.oneOf!) {
+          final typeName = type.maybeMap(
+            ref: (value) => config.renameRefClass(value),
+            type: (value) => config.dartType(
+              type: value.type,
+              format: value.format,
+              genericType: value.items?.mapOrNull(
+                ref: (value) => config.renameRefClass(value),
+                anyOf: (value) => convertOpenApiAnyOfToDartType(value, config),
+              ),
+              items: value.items,
+              title: value.title,
+            ),
+            orElse: () => '',
+          );
+
+          unionTypes.add(typeName);
+        }
+      },
+      orElse: () {},
+    );
+  }
+
+  return '''
+import 'dart:io';
+
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:dio/dio.dart';
+
+import '../../convertors.dart';
+${config.importModelsCode}
+
+part '${filename}.freezed.dart';
+part '${filename}.g.dart';
+
+/// ${model.key}
+${model.value.description == null ? '' : commentLine(model.value.description!)}
+@freezed
+class ${className} with _\$${className} {
+  const factory ${className}.fallback() = ${className}Fallback;
+
+  
+  ${unionTypes.map((type) => '@FreezedUnionValue("${type}") const factory ${className}.${Recase.instance.toCamelCase(type)}(${type} value,) = ${className}$type;').join('\n\n')}
+  
+  factory ${className}.fromJson(
+    Map<String, dynamic> json,
+  ) => _\$${className}FromJson(
+    json,
+  );
+}
+''';
 }

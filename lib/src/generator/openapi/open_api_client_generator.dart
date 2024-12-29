@@ -293,4 +293,32 @@ class OpenApiClientGenerator {
 
     return className;
   }
+
+  String? _getDartType(
+    OpenApiSchema? model,
+    String className, // provide it if
+  ) {
+    if (model == null) return null;
+    return model.map(
+      type: (value) {
+        return config.dartType(
+          type: value.type,
+          format: value.format,
+          genericType: value.items?.mapOrNull(
+            ref: (value) => config.renameRefClass(value),
+            anyOf: (value) => convertOpenApiAnyOfToDartType(value, config),
+          ),
+          items: value.items,
+          title: value.title,
+        );
+      },
+      ref: (value) => config.renameRefClass(value),
+      anyOf: (value) => convertOpenApiAnyOfToDartType(value, config),
+      oneOf: (value) => generateOpenApiOneOfToDartType(
+        '${className}Union${value.title ?? 'Model'}',
+        value,
+        config,
+      ),
+    );
+  }
 }
