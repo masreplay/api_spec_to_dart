@@ -78,8 +78,10 @@ class OpenApiClientGenerator {
         final responses = method.responses ?? {};
         final successResponse = responses['200']!;
 
-        final response =
-            successResponse.content?.current.value?.schema.dartType(config);
+        final response = _getDartType(
+          successResponse.content?.current.value?.schema,
+          methodName,
+        );
 
         // request type + http method type + path / annotation
         final requestBody = method.requestBody?.content.current;
@@ -127,7 +129,7 @@ class OpenApiClientGenerator {
         );
 
         for (final pathParam in pathParams) {
-          final dartType = pathParam.schema.dartType(config);
+          final dartType = _getDartType(pathParam.schema, methodName);
           final paramName = config.renameProperty(pathParam.name);
 
           propertiesSnippets.add(
@@ -139,7 +141,8 @@ class OpenApiClientGenerator {
         if (requestBody != null) {
           final body = requestBody.value?.schema;
 
-          final dartType = body == null ? 'dynamic' : body.dartType(config);
+          final dartType =
+              body == null ? 'dynamic' : _getDartType(body, methodName);
 
           if (isMultipart) {
             propertiesSnippets.add(
@@ -166,7 +169,7 @@ class OpenApiClientGenerator {
             .toList();
 
         for (final headerParam in headerParams) {
-          final dartType = headerParam.schema.dartType(config);
+          final dartType = _getDartType(headerParam.schema, methodName);
           final paramName = config.renameProperty(headerParam.name);
           propertiesSnippets.add(
             '''@Header('${headerParam.name}') required $dartType $paramName,''',
@@ -204,13 +207,14 @@ class OpenApiClientGenerator {
         final responses = method.responses ?? {};
         final successResponse = responses['200']!;
 
-        final response =
-            successResponse.content?.current.value?.schema.dartType(config);
+        final response = _getDartType(
+            successResponse.content?.current.value?.schema, methodName);
 
         final requestBody = method.requestBody?.content.current;
         final body = requestBody?.value?.schema;
 
-        final dartType = body == null ? 'dynamic' : body.dartType(config);
+        final dartType =
+            body == null ? 'dynamic' : _getDartType(body, methodName);
         final parameters = method.parameters?.where((e) {
               return !(e.in_ == OpenApiPathMethodParameterType.header &&
                   skippedParameters.contains(e.name));
@@ -219,7 +223,7 @@ class OpenApiClientGenerator {
 
         final params = StringBuffer();
         for (final param in parameters) {
-          final dartType = param.schema.dartType(config);
+          final dartType = _getDartType(param.schema, methodName);
           final paramName = config.renameProperty(param.name);
           params.writeln('required $dartType  $paramName,\n ');
         }
