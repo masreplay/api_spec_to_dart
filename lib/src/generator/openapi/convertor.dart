@@ -26,8 +26,6 @@ String convertOpenApiAnyOfToDartType(
             anyOf: (value) => convertOpenApiAnyOfToDartType(value, config),
             oneOf: (value) =>
                 generateOpenApiOneOfToDartType(className, value, config),
-            oneOf: (value) =>
-                generateOpenApiOneOfToDartType(className, value, config),
           ),
           items: value.items,
           title: value.title,

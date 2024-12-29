@@ -67,15 +67,13 @@ class SwaggerToDartConfig {
                 anyOf: (value) => convertOpenApiAnyOfToDartType(value, this),
               ),
               items: value.items,
+              title: value.title,
             );
           },
           ref: (value) => renameRefClass(value),
           anyOf: (value) => convertOpenApiAnyOfToDartType(value, this),
           oneOf: (value) => generateOpenApiOneOfToDartType(
-            //TODO(shahadKadhim):  support list of oneOf name
-
-            // '${className}Union${value.title ?? 'Model'}',
-            'Union${value.title ?? 'Model'}',
+            '${value.title ?? title}UnionResponse',
             value,
             this,
           ),
