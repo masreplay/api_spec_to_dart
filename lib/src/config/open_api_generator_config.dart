@@ -34,6 +34,8 @@ class SwaggerToDartConfig {
     required OpenApiSchemaVarType? type,
     required String? format,
     required String? genericType,
+    required OpenApiSchema? items,
+    required String? title,
   }) {
     switch (type) {
       case OpenApiSchemaVarType.string:

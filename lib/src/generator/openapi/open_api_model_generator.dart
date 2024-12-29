@@ -101,6 +101,8 @@ $type toJson() => _\$${className}EnumMap[this]!;
                     anyOf: (value) =>
                         convertOpenApiAnyOfToDartType(value, config),
                   ),
+                  items: value.items,
+                  title: value.title,
                 ),
                 orElse: () => '',
               );

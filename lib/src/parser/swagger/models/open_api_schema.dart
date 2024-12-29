@@ -74,6 +74,8 @@ class OpenApiSchema with _$OpenApiSchema {
             ref: (value) => config.renameRefClass(value),
             anyOf: (value) => convertOpenApiAnyOfToDartType(value, config),
           ),
+          items: value.items,
+          title: value.title,
         );
       },
       ref: (value) => config.renameRefClass(value),
