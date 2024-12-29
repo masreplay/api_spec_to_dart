@@ -49,3 +49,6 @@
   
 ## 0.1.3
 - Fix List type
+
+## 0.1.4
+- add support to `list` of type `oneOf` by @shahad999
