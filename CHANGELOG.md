@@ -52,3 +52,6 @@
 
 ## 0.1.4
 - add support to `list` of type `oneOf` by @shahad999
+
+## 0.1.5
+- union class fields
