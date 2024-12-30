@@ -1,6 +1,11 @@
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 typedef OpenApiModel = MapEntry<String, OpenApiSchemas>;
+typedef OneOfModel = ({
+  String type,
+  String key,
+  String unionName,
+});
 
 class OpenApiModelGenerator {
   const OpenApiModelGenerator({
@@ -85,32 +90,55 @@ $type toJson() => _\$${className}EnumMap[this]!;
 
     if (isUnion) {
       // Generate Freezed Union Class
-      final unionTypes = <String>[];
+      final unionProp = <OneOfModel>[];
+      final normalProp = StringBuffer();
 
       for (final entry in properties.entries) {
-        entry.value.maybeMap(
+        entry.value.map(
           oneOf: (value) {
-            for (var type in value.oneOf!) {
-              final typeName = type.maybeMap(
-                ref: (value) => config.renameRefClass(value),
-                type: (value) => config.dartType(
-                  type: value.type,
-                  format: value.format,
-                  genericType: value.items?.mapOrNull(
-                    ref: (value) => config.renameRefClass(value),
-                    anyOf: (value) =>
-                        convertOpenApiAnyOfToDartType(value, config),
+            value.discriminator.mapping.entries.map(
+              (e) {
+                unionProp.add(
+                  (
+                    type: config.renameClass(e.value.split('/').last),
+                    key: entry.key,
+                    unionName: e.key,
                   ),
-                  items: value.items,
-                  title: value.title,
-                ),
-                orElse: () => '',
-              );
-
-              unionTypes.add(typeName);
-            }
+                );
+              },
+            ).toList();
+            // }
           },
-          orElse: () {},
+          type: (value) {
+            final typeName = config.dartType(
+              type: value.type,
+              format: value.format,
+              genericType: value.items?.mapOrNull(
+                ref: (value) => config.renameRefClass(value),
+                anyOf: (value) => convertOpenApiAnyOfToDartType(value, config),
+              ),
+              items: value.items,
+              title: value.title,
+            );
+
+            normalProp.writeln(
+              'required $typeName ${config.renameProperty(entry.key)},',
+            );
+          },
+          ref: (value) {
+            final typeName = config.renameRefClass(value);
+
+            normalProp.writeln(
+              'required $typeName ${config.renameProperty(entry.key)},',
+            );
+          },
+          anyOf: (value) {
+            final typeName = convertOpenApiAnyOfToDartType(value, config);
+
+            normalProp.writeln(
+              'required $typeName ${config.renameProperty(entry.key)},',
+            );
+          },
         );
       }
 
@@ -130,10 +158,9 @@ part '${filename}.g.dart';
 ${model.value.description == null ? '' : commentLine(model.value.description!)}
 @freezed
 class ${className} with _\$${className} {
-  const factory ${className}.fallback() = ${className}Fallback;
-
+  ${unionProp.any((e) => e.unionName == 'fallback') ? '' : 'const factory ${className}.fallback() = ${className}Fallback;'}
   
-  ${unionTypes.map((type) => '@FreezedUnionValue("${type}") const factory ${className}.${Recase.instance.toCamelCase(type)}(${type} value,) = ${className}$type;').join('\n\n')}
+  ${unionProp.map((prop) => '@FreezedUnionValue("${prop.unionName}") const factory ${className}.${Recase.instance.toCamelCase(prop.unionName)}({required ${prop.type} ${prop.key},  $normalProp   }) = ${config.renameClass('${className}_${prop.unionName}')};').join('\n\n')}
   
   factory ${className}.fromJson(
     Map<String, dynamic> json,
