@@ -43,7 +43,7 @@ class SwaggerToDartConfig {
           'date-time' => 'DateTime',
           'date' => 'DateTime',
           'color-hex' => 'Color',
-          'binary' => 'File',
+          'binary' => 'MultipartFile',
           'uuid' => 'String',
           'duration' => pubspec.isFlutter ? 'TimeOfDay' : 'String',
           'uri' => 'Uri',
