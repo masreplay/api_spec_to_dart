@@ -55,3 +55,6 @@
 
 ## 0.1.5
 - union class fields
+
+## 0.1.6
+- `MultipartFile` support instead of `File` in `part` by @shahad999
