@@ -1,3 +1,4 @@
+import 'package:swagger_to_dart/src/generator/openapi/constant_generator.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 typedef OpenApiModel = MapEntry<String, OpenApiSchemas>;
@@ -54,6 +55,7 @@ import 'package:dio/dio.dart';
 
 import '../../convertors.dart';
 ${config.importModelsCode}
+
 
 part '${filename}.g.dart';
 
@@ -149,7 +151,10 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:dio/dio.dart';
 
 import '../../convertors.dart';
+
 ${config.importModelsCode}
+
+${config.importConstantCode}
 
 part '${filename}.freezed.dart';
 part '${filename}.g.dart';
@@ -210,6 +215,8 @@ import 'package:dio/dio.dart';
 
 import '../../convertors.dart';
 ${config.importModelsCode}
+
+${config.importConstantCode}
 
 part '${filename}.freezed.dart';
 part '${filename}.g.dart';
@@ -389,8 +396,7 @@ class ${className} with _\$${className} {
       buffer.writeln('@Default(${freezedDefaultValue})');
     }
 
-    // Add @JsonKey annotation
-    buffer.writeln('@JsonKey(name: \'${jsonName}\')');
+    buffer.writeln('@JsonKey(name: ${_toJsonKey(jsonName)})');
 
     // Add field declaration
     if (freezedDefaultValue == null) {
@@ -400,6 +406,14 @@ class ${className} with _\$${className} {
 
     return buffer.toString();
   }
+}
+
+String _toJsonKey(String value) {
+  //if value is ConstantFields enum return to json else return same value
+
+  if (!ConstantFields.valuesJson.contains(value)) return '\'$value\'';
+
+  return 'APIConstants.${ConstantFields.fromJson(value).name}';
 }
 
 String modelToUnionFreezedClass({
@@ -446,6 +460,8 @@ import 'package:dio/dio.dart';
 
 import '../../convertors.dart';
 ${config.importModelsCode}
+
+${config.importConstantCode}
 
 part '${filename}.freezed.dart';
 part '${filename}.g.dart';

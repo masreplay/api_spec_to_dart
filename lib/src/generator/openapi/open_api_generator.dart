@@ -3,15 +3,15 @@ import 'dart:io';
 
 import 'package:collection/collection.dart';
 import 'package:path/path.dart' as path;
+import 'package:swagger_to_dart/src/generator/openapi/constant_generator.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
-
-OpenApi readOpenApiFile(SwaggerToDartConfig config){
+OpenApi readOpenApiFile(SwaggerToDartConfig config) {
   final file = File(config.swaggerToDart.inputDirectory);
-    final json = file.readAsStringSync();
-    final map = jsonDecode(json);
+  final json = file.readAsStringSync();
+  final map = jsonDecode(json);
 
-    return  OpenApi.fromJson(map);
+  return OpenApi.fromJson(map);
 }
 
 class OpenApiDartGenerator {
@@ -26,6 +26,7 @@ class OpenApiDartGenerator {
   late final OpenApi _openApi;
 
   Future<void> run() async {
+    //=============== Model generator ===============
     final modelGenerator = OpenApiModelGenerator(config: config);
 
     if (!Directory(config.modelsOutputDirectory).existsSync()) {
@@ -47,7 +48,9 @@ class OpenApiDartGenerator {
       print('Generated: $filepath');
     }
 
-    //Client generator
+    ///=============================================
+
+    //=============== Client generator ===============
     final clientGenerator = OpenApiClientGenerator(config: config);
     if (!Directory(config.clientsOutputDirectory).existsSync()) {
       Directory(config.clientsOutputDirectory).createSync(recursive: true);
@@ -106,5 +109,21 @@ class OpenApiDartGenerator {
     final clientsFile = File(clientsFilepath);
 
     await clientsFile.writeAsString(clientsClassContent);
+
+    ///=============================================
+
+    ///=============== constant generator ===============
+    final constantGenerator = const ConstantGenerator();
+
+    final constantPath = path.join(
+      config.swaggerToDart.outputDirectory,
+      'constants.dart',
+    );
+
+    final constantFile = File(constantPath);
+
+    await constantFile.writeAsString(constantGenerator.run());
+
+    ///=============================================
   }
 }

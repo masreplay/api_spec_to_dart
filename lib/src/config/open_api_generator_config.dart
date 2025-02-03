@@ -30,6 +30,10 @@ class SwaggerToDartConfig {
     return '''import 'package:${pubspec.name}/src/gen/clients/clients.dart';''';
   }
 
+  String get importConstantCode {
+    return '''import 'package:${pubspec.name}/src/gen/constants.dart';''';
+  }
+
   String dartType({
     required OpenApiSchemaVarType? type,
     required String? format,
