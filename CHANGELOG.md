@@ -58,3 +58,6 @@
 
 ## 0.1.6
 - `MultipartFile` support instead of `File` in `part` by @shahad999
+
+## 0.1.8
+- Add field name from the api like 'per_page' to 'perPageKey = 'per_page';' by @shahad999'
