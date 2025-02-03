@@ -64,7 +64,6 @@ import 'package:dio/dio.dart';
 
 import '../../convertors.dart';
 ${config.importModelsCode}
-${config.importConstantCode}
 
 
 part '${filename}.freezed.dart';

@@ -1,4 +1,3 @@
-import 'package:swagger_to_dart/src/generator/openapi/constant_generator.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 typedef OpenApiModel = MapEntry<String, OpenApiSchemas>;
@@ -154,7 +153,6 @@ import '../../convertors.dart';
 
 ${config.importModelsCode}
 
-${config.importConstantCode}
 
 part '${filename}.freezed.dart';
 part '${filename}.g.dart';
@@ -185,16 +183,19 @@ class ${className} with _\$${className} {
 
         fields += entry.value.map(
           type: (value) => _modelPropertyTypeGenerator(
+            className: className,
             key: entry.key,
             value: value,
             propertyName: propertyName,
           ),
           ref: (value) => _modelPropertyRefGenerator(
+            parentClassName: className,
             key: entry.key,
             value: value,
             propertyName: propertyName,
           ),
           anyOf: (value) => _modelPropertyAnyOfGenerator(
+            parentClassName: className,
             key: entry.key,
             value: value,
             propertyName: propertyName,
@@ -216,7 +217,6 @@ import 'package:dio/dio.dart';
 import '../../convertors.dart';
 ${config.importModelsCode}
 
-${config.importConstantCode}
 
 part '${filename}.freezed.dart';
 part '${filename}.g.dart';
@@ -226,6 +226,8 @@ ${model.value.description == null ? '' : commentLine(model.value.description!)}
 @freezed
 class ${className} with _\$${className} {
   const ${className}._();
+
+  ${properties.entries.map((e) => 'static const String ${(config.renameProperty(e.key))}Key = \'${e.key}\';').join('\n')}
 
   @JsonSerializable(converters: convertors)
   const factory ${className}($bodyText) = _${className};
@@ -243,6 +245,7 @@ class ${className} with _\$${className} {
   }
 
   String _modelPropertyTypeGenerator({
+    required String className,
     required String key,
     required OpenApiSchemaType value,
     required String propertyName,
@@ -260,6 +263,7 @@ class ${className} with _\$${className} {
     );
 
     return _generateField(
+      className: className,
       freezedDefaultValue: value.default_ == null
           ? null
           : dartType == 'String'
@@ -274,6 +278,7 @@ class ${className} with _\$${className} {
   }
 
   String _modelPropertyRefGenerator({
+    required String parentClassName,
     required String key,
     required OpenApiSchemaRef value,
     required String propertyName,
@@ -300,6 +305,7 @@ class ${className} with _\$${className} {
     }
 
     return _generateField(
+      className: parentClassName,
       freezedDefaultValue: defaultValueCode,
       jsonName: key,
       propertyName: propertyName,
@@ -310,6 +316,7 @@ class ${className} with _\$${className} {
   }
 
   String _modelPropertyAnyOfGenerator({
+    required String parentClassName,
     required String key,
     required OpenApiSchemaAnyOf value,
     required String propertyName,
@@ -363,6 +370,7 @@ class ${className} with _\$${className} {
     }
 
     return _generateField(
+      className: parentClassName,
       freezedDefaultValue: defaultValueCode,
       title: value.title,
       description: value.description,
@@ -373,6 +381,7 @@ class ${className} with _\$${className} {
   }
 
   String _generateField({
+    required String className,
     required String propertyName,
     required Object? freezedDefaultValue,
     required String jsonName,
@@ -396,7 +405,7 @@ class ${className} with _\$${className} {
       buffer.writeln('@Default(${freezedDefaultValue})');
     }
 
-    buffer.writeln('@JsonKey(name: ${_toJsonKey(jsonName)})');
+    buffer.writeln('@JsonKey(name: $className.${propertyName}Key)');
 
     // Add field declaration
     if (freezedDefaultValue == null) {
@@ -406,14 +415,6 @@ class ${className} with _\$${className} {
 
     return buffer.toString();
   }
-}
-
-String _toJsonKey(String value) {
-  //if value is ConstantFields enum return to json else return same value
-
-  if (!ConstantFields.valuesJson.contains(value)) return '\'$value\'';
-
-  return 'APIConstants.${ConstantFields.fromJson(value).name}';
 }
 
 String modelToUnionFreezedClass({
@@ -461,7 +462,6 @@ import 'package:dio/dio.dart';
 import '../../convertors.dart';
 ${config.importModelsCode}
 
-${config.importConstantCode}
 
 part '${filename}.freezed.dart';
 part '${filename}.g.dart';

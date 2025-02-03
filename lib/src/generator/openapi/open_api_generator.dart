@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:collection/collection.dart';
 import 'package:path/path.dart' as path;
-import 'package:swagger_to_dart/src/generator/openapi/constant_generator.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 OpenApi readOpenApiFile(SwaggerToDartConfig config) {
@@ -109,20 +108,6 @@ class OpenApiDartGenerator {
     final clientsFile = File(clientsFilepath);
 
     await clientsFile.writeAsString(clientsClassContent);
-
-    ///=============================================
-
-    ///=============== constant generator ===============
-    final constantGenerator = const ConstantGenerator();
-
-    final constantPath = path.join(
-      config.swaggerToDart.outputDirectory,
-      'constants.dart',
-    );
-
-    final constantFile = File(constantPath);
-
-    await constantFile.writeAsString(constantGenerator.run());
 
     ///=============================================
   }
