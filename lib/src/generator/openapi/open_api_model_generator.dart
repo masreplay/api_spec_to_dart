@@ -407,7 +407,7 @@ class ${className} with _\$${className} {
 
     if (description == 'deprecated') {
       buffer.writeln('@deprecated');
-      // deprecated(Use ${propertyName}Key instead);
+      // deprecated(Use {propertyName}Key instead);
     } else if (description != null &&
         description.startsWith('deprecated(') &&
         description.endsWith(')')) {
