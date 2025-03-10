@@ -46,18 +46,26 @@
 ## 0.1.2
 
 - Support one of as direct request body
-  
+
 ## 0.1.3
+
 - Fix List type
 
 ## 0.1.4
+
 - add support to `list` of type `oneOf` by @shahad999
 
 ## 0.1.5
+
 - union class fields
 
 ## 0.1.6
+
 - `MultipartFile` support instead of `File` in `part` by @shahad999
 
 ## 0.1.8
+
 - Add field name from the api like 'per_page' to 'perPageKey = 'per_page';' by @shahad999'
+
+## 0.2.0
+- If description key contains `deprecated` in the message it will be marked as deprecated by @masreplay

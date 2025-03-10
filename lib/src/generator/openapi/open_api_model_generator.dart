@@ -407,6 +407,13 @@ class ${className} with _\$${className} {
 
     if (description == 'deprecated') {
       buffer.writeln('@deprecated');
+      // deprecated(asdajnsdkhabsd)
+    } else if (description != null &&
+        description.startsWith('deprecated(') &&
+        description.endsWith(')')) {
+      buffer.writeln(
+        '@Deprecated("${description.substring(11, description.length - 1)}")',
+      );
     }
 
     buffer.writeln('@JsonKey(name: $className.${propertyName}Key)');
