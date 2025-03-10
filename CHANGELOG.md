@@ -69,3 +69,4 @@
 
 ## 0.2.0
 - If description key contains `deprecated` in the message it will be marked as deprecated by @masreplay
+- support `deprecated()` for framework that doesn't support deprecated flag in the field for example fastapi by @masreplay
