@@ -208,7 +208,9 @@ class OpenApiClientGenerator {
         final successResponse = responses['200']!;
 
         final response = _getDartType(
-            successResponse.content?.current.value?.schema, methodName);
+          successResponse.content?.current.value?.schema,
+          methodName,
+        );
 
         final requestBody = method.requestBody?.content.current;
         final body = requestBody?.value?.schema;

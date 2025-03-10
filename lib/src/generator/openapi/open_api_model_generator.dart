@@ -405,6 +405,10 @@ class ${className} with _\$${className} {
       buffer.writeln('@Default(${freezedDefaultValue})');
     }
 
+    if (description == 'deprecated') {
+      buffer.writeln('@deprecated');
+    }
+
     buffer.writeln('@JsonKey(name: $className.${propertyName}Key)');
 
     // Add field declaration

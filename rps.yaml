@@ -9,6 +9,10 @@ scripts:
     $script: rps gen watch
     $description: shortcut for gen watch
 
+  get:
+    $script: fvm flutter pub get
+    $description: Get dependencies
+
   gen:
     watch:
       $script: fvm dart run build_runner watch --delete-conflicting-outputs
