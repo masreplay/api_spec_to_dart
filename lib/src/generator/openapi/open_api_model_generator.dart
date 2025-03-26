@@ -86,52 +86,51 @@ $type toJson() => _\$${className}EnumMap[this]!;
 
     if (isUnion) {
       // Generate Freezed Union Class
-      final unionProp = <OneOfModel>[];
-      final normalProp = StringBuffer();
+      final unionProps = <OneOfModel>[];
+      final normalProps = StringBuffer();
 
       for (final entry in properties.entries) {
-        entry.value.map(
-          oneOf: (value) {
+        switch (entry.value) {
+          case OpenApiSchemaType value:
+            final typeName = config.dartType(
+              type: value.type,
+              format: value.format,
+              genericType: switch (value.items) {
+                OpenApiSchemaRef value => config.renameRefClass(value),
+                OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
+                  value,
+                  config,
+                ),
+                _ => null,
+              },
+              items: value.items,
+              title: value.title,
+            );
+
+            normalProps.writeln(
+              'required $typeName ${config.renameProperty(entry.key)},',
+            );
+          case OpenApiSchemaRef value:
+            final typeName = config.renameRefClass(value);
+
+            normalProps.writeln(
+              'required $typeName ${config.renameProperty(entry.key)},',
+            );
+          case OpenApiSchemaAnyOf value:
+            final typeName = convertOpenApiAnyOfToDartType(value, config);
+
+            normalProps.writeln(
+              'required $typeName ${config.renameProperty(entry.key)},',
+            );
+          case OpenApiSchemaOneOf value:
             value.discriminator.mapping.entries.map((e) {
-              unionProp.add((
+              unionProps.add((
                 type: config.renameClass(e.value.split('/').last),
                 key: entry.key,
                 unionName: e.key,
               ));
             }).toList();
-            // }
-          },
-          type: (value) {
-            final typeName = config.dartType(
-              type: value.type,
-              format: value.format,
-              genericType: value.items?.mapOrNull(
-                ref: (value) => config.renameRefClass(value),
-                anyOf: (value) => convertOpenApiAnyOfToDartType(value, config),
-              ),
-              items: value.items,
-              title: value.title,
-            );
-
-            normalProp.writeln(
-              'required $typeName ${config.renameProperty(entry.key)},',
-            );
-          },
-          ref: (value) {
-            final typeName = config.renameRefClass(value);
-
-            normalProp.writeln(
-              'required $typeName ${config.renameProperty(entry.key)},',
-            );
-          },
-          anyOf: (value) {
-            final typeName = convertOpenApiAnyOfToDartType(value, config);
-
-            normalProp.writeln(
-              'required $typeName ${config.renameProperty(entry.key)},',
-            );
-          },
-        );
+        }
       }
 
       final freezedUnionContent = '''
@@ -151,10 +150,10 @@ part '${filename}.g.dart';
 /// ${model.key}
 ${model.value.description == null ? '' : commentLine(model.value.description!)}
 @freezed
-abstract class ${className} with _\$${className} {
-  ${unionProp.any((e) => e.unionName == 'fallback') ? '' : 'const factory ${className}.fallback() = ${className}Fallback;'}
+sealed class ${className} with _\$${className} {
+  ${unionProps.any((e) => e.unionName == 'fallback') ? '' : 'const factory ${className}.fallback() = ${className}Fallback;'}
   
-  ${unionProp.map((prop) => '@FreezedUnionValue("${prop.unionName}") const factory ${className}.${Recase.instance.toCamelCase(prop.unionName)}({required ${prop.type} ${prop.key},  $normalProp   }) = ${config.renameClass('${className}_${prop.unionName}')};').join('\n\n')}
+  ${unionProps.map((prop) => '@FreezedUnionValue("${prop.unionName}") const factory ${className}.${Recase.instance.toCamelCase(prop.unionName)}({required ${prop.type} ${prop.key},  $normalProps   }) = ${config.renameClass('${className}_${prop.unionName}')};').join('\n\n')}
   
   factory ${className}.fromJson(
     Map<String, dynamic> json,
@@ -172,32 +171,27 @@ abstract class ${className} with _\$${className} {
       for (final entry in properties.entries) {
         final propertyName = config.renameProperty(entry.key);
 
-        fields += entry.value.map(
-          type:
-              (value) => _modelPropertyTypeGenerator(
-                className: className,
-                key: entry.key,
-                value: value,
-                propertyName: propertyName,
-              ),
-          ref:
-              (value) => _modelPropertyRefGenerator(
-                parentClassName: className,
-                key: entry.key,
-                value: value,
-                propertyName: propertyName,
-              ),
-          anyOf:
-              (value) => _modelPropertyAnyOfGenerator(
-                parentClassName: className,
-                key: entry.key,
-                value: value,
-                propertyName: propertyName,
-              ),
-          oneOf: (value) {
-            throw Exception('oneOf is not supported');
-          },
-        );
+        fields += switch (entry.value) {
+          OpenApiSchemaType value => _modelPropertyTypeGenerator(
+            className: className,
+            key: entry.key,
+            value: value,
+            propertyName: propertyName,
+          ),
+          OpenApiSchemaRef value => _modelPropertyRefGenerator(
+            parentClassName: className,
+            key: entry.key,
+            value: value,
+            propertyName: propertyName,
+          ),
+          OpenApiSchemaAnyOf value => _modelPropertyAnyOfGenerator(
+            parentClassName: className,
+            key: entry.key,
+            value: value,
+            propertyName: propertyName,
+          ),
+          OpenApiSchemaOneOf() => throw Exception('oneOf is not supported yet'),
+        };
       }
 
       final bodyText = fields.isEmpty ? '' : '{\n$fields  }';
@@ -247,11 +241,16 @@ abstract class ${className} with _\$${className} {
     final dartType = config.dartType(
       format: value.format,
       type: value.type,
-      genericType: value.items?.mapOrNull(
-        // TODO(mohammed.atheer): handle type recursively
-        ref: (value) => config.renameRefClass(value),
-        anyOf: (value) => convertOpenApiAnyOfToDartType(value, config),
-      ),
+      // TODO(mohammed.atheer): handle type recursively
+      genericType: switch (value.items) {
+        OpenApiSchemaRef value => config.renameRefClass(value),
+        OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
+          value,
+          config,
+        ),
+        _ => null,
+      },
+
       items: value.items,
       title: value.title,
     );

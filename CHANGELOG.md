@@ -73,3 +73,7 @@
 
 ## 0.3.0
 - Update flutter version to `3.29.0`
+
+## 1.0.0
+- Support flutter 3.29.0
+- Support freezed 3.0.0
