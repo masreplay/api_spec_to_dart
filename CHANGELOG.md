@@ -70,3 +70,6 @@
 ## 0.2.0
 - If description key contains `deprecated` in the message it will be marked as deprecated by @masreplay
 - support `deprecated()` for framework that doesn't support deprecated flag in the field for example fastapi by @masreplay
+
+## 0.3.0
+- Update flutter version to `3.29.0`
