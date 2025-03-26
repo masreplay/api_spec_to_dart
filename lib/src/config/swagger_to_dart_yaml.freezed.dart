@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -11,106 +12,85 @@ part of 'swagger_to_dart_yaml.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-SwaggerToDartYaml _$SwaggerToDartYamlFromJson(Map<String, dynamic> json) {
-  return _SwaggerToDartYaml.fromJson(json);
-}
-
 /// @nodoc
 mixin _$SwaggerToDartYaml {
-  String get inputDirectory => throw _privateConstructorUsedError;
-  String get outputDirectory => throw _privateConstructorUsedError;
-  String get apiClientClassName => throw _privateConstructorUsedError;
-  List<String> get skippedParameters => throw _privateConstructorUsedError;
-
-  /// Serializes this SwaggerToDartYaml to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String get inputDirectory;
+  String get outputDirectory;
+  String get apiClientClassName;
+  List<String> get skippedParameters;
+  List<String> get imports;
 
   /// Create a copy of SwaggerToDartYaml
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $SwaggerToDartYamlCopyWith<SwaggerToDartYaml> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $SwaggerToDartYamlCopyWith<$Res> {
-  factory $SwaggerToDartYamlCopyWith(
-          SwaggerToDartYaml value, $Res Function(SwaggerToDartYaml) then) =
-      _$SwaggerToDartYamlCopyWithImpl<$Res, SwaggerToDartYaml>;
-  @useResult
-  $Res call(
-      {String inputDirectory,
-      String outputDirectory,
-      String apiClientClassName,
-      List<String> skippedParameters});
-}
-
-/// @nodoc
-class _$SwaggerToDartYamlCopyWithImpl<$Res, $Val extends SwaggerToDartYaml>
-    implements $SwaggerToDartYamlCopyWith<$Res> {
-  _$SwaggerToDartYamlCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of SwaggerToDartYaml
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $SwaggerToDartYamlCopyWith<SwaggerToDartYaml> get copyWith =>
+      _$SwaggerToDartYamlCopyWithImpl<SwaggerToDartYaml>(
+        this as SwaggerToDartYaml,
+        _$identity,
+      );
+
+  /// Serializes this SwaggerToDartYaml to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? inputDirectory = null,
-    Object? outputDirectory = null,
-    Object? apiClientClassName = null,
-    Object? skippedParameters = null,
-  }) {
-    return _then(_value.copyWith(
-      inputDirectory: null == inputDirectory
-          ? _value.inputDirectory
-          : inputDirectory // ignore: cast_nullable_to_non_nullable
-              as String,
-      outputDirectory: null == outputDirectory
-          ? _value.outputDirectory
-          : outputDirectory // ignore: cast_nullable_to_non_nullable
-              as String,
-      apiClientClassName: null == apiClientClassName
-          ? _value.apiClientClassName
-          : apiClientClassName // ignore: cast_nullable_to_non_nullable
-              as String,
-      skippedParameters: null == skippedParameters
-          ? _value.skippedParameters
-          : skippedParameters // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is SwaggerToDartYaml &&
+            (identical(other.inputDirectory, inputDirectory) ||
+                other.inputDirectory == inputDirectory) &&
+            (identical(other.outputDirectory, outputDirectory) ||
+                other.outputDirectory == outputDirectory) &&
+            (identical(other.apiClientClassName, apiClientClassName) ||
+                other.apiClientClassName == apiClientClassName) &&
+            const DeepCollectionEquality().equals(
+              other.skippedParameters,
+              skippedParameters,
+            ) &&
+            const DeepCollectionEquality().equals(other.imports, imports));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+    runtimeType,
+    inputDirectory,
+    outputDirectory,
+    apiClientClassName,
+    const DeepCollectionEquality().hash(skippedParameters),
+    const DeepCollectionEquality().hash(imports),
+  );
+
+  @override
+  String toString() {
+    return 'SwaggerToDartYaml(inputDirectory: $inputDirectory, outputDirectory: $outputDirectory, apiClientClassName: $apiClientClassName, skippedParameters: $skippedParameters, imports: $imports)';
   }
 }
 
 /// @nodoc
-abstract class _$$SwaggerToDartYamlImplCopyWith<$Res>
-    implements $SwaggerToDartYamlCopyWith<$Res> {
-  factory _$$SwaggerToDartYamlImplCopyWith(_$SwaggerToDartYamlImpl value,
-          $Res Function(_$SwaggerToDartYamlImpl) then) =
-      __$$SwaggerToDartYamlImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $SwaggerToDartYamlCopyWith<$Res> {
+  factory $SwaggerToDartYamlCopyWith(
+    SwaggerToDartYaml value,
+    $Res Function(SwaggerToDartYaml) _then,
+  ) = _$SwaggerToDartYamlCopyWithImpl;
   @useResult
-  $Res call(
-      {String inputDirectory,
-      String outputDirectory,
-      String apiClientClassName,
-      List<String> skippedParameters});
+  $Res call({
+    String inputDirectory,
+    String outputDirectory,
+    String apiClientClassName,
+    List<String> skippedParameters,
+    List<String> imports,
+  });
 }
 
 /// @nodoc
-class __$$SwaggerToDartYamlImplCopyWithImpl<$Res>
-    extends _$SwaggerToDartYamlCopyWithImpl<$Res, _$SwaggerToDartYamlImpl>
-    implements _$$SwaggerToDartYamlImplCopyWith<$Res> {
-  __$$SwaggerToDartYamlImplCopyWithImpl(_$SwaggerToDartYamlImpl _value,
-      $Res Function(_$SwaggerToDartYamlImpl) _then)
-      : super(_value, _then);
+class _$SwaggerToDartYamlCopyWithImpl<$Res>
+    implements $SwaggerToDartYamlCopyWith<$Res> {
+  _$SwaggerToDartYamlCopyWithImpl(this._self, this._then);
+
+  final SwaggerToDartYaml _self;
+  final $Res Function(SwaggerToDartYaml) _then;
 
   /// Create a copy of SwaggerToDartYaml
   /// with the given fields replaced by the non-null parameter values.
@@ -121,41 +101,54 @@ class __$$SwaggerToDartYamlImplCopyWithImpl<$Res>
     Object? outputDirectory = null,
     Object? apiClientClassName = null,
     Object? skippedParameters = null,
+    Object? imports = null,
   }) {
-    return _then(_$SwaggerToDartYamlImpl(
-      inputDirectory: null == inputDirectory
-          ? _value.inputDirectory
-          : inputDirectory // ignore: cast_nullable_to_non_nullable
-              as String,
-      outputDirectory: null == outputDirectory
-          ? _value.outputDirectory
-          : outputDirectory // ignore: cast_nullable_to_non_nullable
-              as String,
-      apiClientClassName: null == apiClientClassName
-          ? _value.apiClientClassName
-          : apiClientClassName // ignore: cast_nullable_to_non_nullable
-              as String,
-      skippedParameters: null == skippedParameters
-          ? _value._skippedParameters
-          : skippedParameters // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ));
+    return _then(
+      _self.copyWith(
+        inputDirectory:
+            null == inputDirectory
+                ? _self.inputDirectory
+                : inputDirectory // ignore: cast_nullable_to_non_nullable
+                    as String,
+        outputDirectory:
+            null == outputDirectory
+                ? _self.outputDirectory
+                : outputDirectory // ignore: cast_nullable_to_non_nullable
+                    as String,
+        apiClientClassName:
+            null == apiClientClassName
+                ? _self.apiClientClassName
+                : apiClientClassName // ignore: cast_nullable_to_non_nullable
+                    as String,
+        skippedParameters:
+            null == skippedParameters
+                ? _self.skippedParameters
+                : skippedParameters // ignore: cast_nullable_to_non_nullable
+                    as List<String>,
+        imports:
+            null == imports
+                ? _self.imports
+                : imports // ignore: cast_nullable_to_non_nullable
+                    as List<String>,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$SwaggerToDartYamlImpl extends _SwaggerToDartYaml {
-  const _$SwaggerToDartYamlImpl(
-      {required this.inputDirectory,
-      required this.outputDirectory,
-      required this.apiClientClassName,
-      required final List<String> skippedParameters})
-      : _skippedParameters = skippedParameters,
-        super._();
-
-  factory _$SwaggerToDartYamlImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SwaggerToDartYamlImplFromJson(json);
+class _SwaggerToDartYaml extends SwaggerToDartYaml {
+  const _SwaggerToDartYaml({
+    required this.inputDirectory,
+    required this.outputDirectory,
+    required this.apiClientClassName,
+    required final List<String> skippedParameters,
+    required final List<String> imports,
+  }) : _skippedParameters = skippedParameters,
+       _imports = imports,
+       super._();
+  factory _SwaggerToDartYaml.fromJson(Map<String, dynamic> json) =>
+      _$SwaggerToDartYamlFromJson(json);
 
   @override
   final String inputDirectory;
@@ -172,76 +165,127 @@ class _$SwaggerToDartYamlImpl extends _SwaggerToDartYaml {
     return EqualUnmodifiableListView(_skippedParameters);
   }
 
+  final List<String> _imports;
   @override
-  String toString() {
-    return 'SwaggerToDartYaml(inputDirectory: $inputDirectory, outputDirectory: $outputDirectory, apiClientClassName: $apiClientClassName, skippedParameters: $skippedParameters)';
+  List<String> get imports {
+    if (_imports is EqualUnmodifiableListView) return _imports;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_imports);
+  }
+
+  /// Create a copy of SwaggerToDartYaml
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$SwaggerToDartYamlCopyWith<_SwaggerToDartYaml> get copyWith =>
+      __$SwaggerToDartYamlCopyWithImpl<_SwaggerToDartYaml>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$SwaggerToDartYamlToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SwaggerToDartYamlImpl &&
+            other is _SwaggerToDartYaml &&
             (identical(other.inputDirectory, inputDirectory) ||
                 other.inputDirectory == inputDirectory) &&
             (identical(other.outputDirectory, outputDirectory) ||
                 other.outputDirectory == outputDirectory) &&
             (identical(other.apiClientClassName, apiClientClassName) ||
                 other.apiClientClassName == apiClientClassName) &&
-            const DeepCollectionEquality()
-                .equals(other._skippedParameters, _skippedParameters));
+            const DeepCollectionEquality().equals(
+              other._skippedParameters,
+              _skippedParameters,
+            ) &&
+            const DeepCollectionEquality().equals(other._imports, _imports));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      inputDirectory,
-      outputDirectory,
-      apiClientClassName,
-      const DeepCollectionEquality().hash(_skippedParameters));
-
-  /// Create a copy of SwaggerToDartYaml
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SwaggerToDartYamlImplCopyWith<_$SwaggerToDartYamlImpl> get copyWith =>
-      __$$SwaggerToDartYamlImplCopyWithImpl<_$SwaggerToDartYamlImpl>(
-          this, _$identity);
+    runtimeType,
+    inputDirectory,
+    outputDirectory,
+    apiClientClassName,
+    const DeepCollectionEquality().hash(_skippedParameters),
+    const DeepCollectionEquality().hash(_imports),
+  );
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$$SwaggerToDartYamlImplToJson(
-      this,
-    );
+  String toString() {
+    return 'SwaggerToDartYaml(inputDirectory: $inputDirectory, outputDirectory: $outputDirectory, apiClientClassName: $apiClientClassName, skippedParameters: $skippedParameters, imports: $imports)';
   }
 }
 
-abstract class _SwaggerToDartYaml extends SwaggerToDartYaml {
-  const factory _SwaggerToDartYaml(
-      {required final String inputDirectory,
-      required final String outputDirectory,
-      required final String apiClientClassName,
-      required final List<String> skippedParameters}) = _$SwaggerToDartYamlImpl;
-  const _SwaggerToDartYaml._() : super._();
+/// @nodoc
+abstract mixin class _$SwaggerToDartYamlCopyWith<$Res>
+    implements $SwaggerToDartYamlCopyWith<$Res> {
+  factory _$SwaggerToDartYamlCopyWith(
+    _SwaggerToDartYaml value,
+    $Res Function(_SwaggerToDartYaml) _then,
+  ) = __$SwaggerToDartYamlCopyWithImpl;
+  @override
+  @useResult
+  $Res call({
+    String inputDirectory,
+    String outputDirectory,
+    String apiClientClassName,
+    List<String> skippedParameters,
+    List<String> imports,
+  });
+}
 
-  factory _SwaggerToDartYaml.fromJson(Map<String, dynamic> json) =
-      _$SwaggerToDartYamlImpl.fromJson;
+/// @nodoc
+class __$SwaggerToDartYamlCopyWithImpl<$Res>
+    implements _$SwaggerToDartYamlCopyWith<$Res> {
+  __$SwaggerToDartYamlCopyWithImpl(this._self, this._then);
 
-  @override
-  String get inputDirectory;
-  @override
-  String get outputDirectory;
-  @override
-  String get apiClientClassName;
-  @override
-  List<String> get skippedParameters;
+  final _SwaggerToDartYaml _self;
+  final $Res Function(_SwaggerToDartYaml) _then;
 
   /// Create a copy of SwaggerToDartYaml
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SwaggerToDartYamlImplCopyWith<_$SwaggerToDartYamlImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? inputDirectory = null,
+    Object? outputDirectory = null,
+    Object? apiClientClassName = null,
+    Object? skippedParameters = null,
+    Object? imports = null,
+  }) {
+    return _then(
+      _SwaggerToDartYaml(
+        inputDirectory:
+            null == inputDirectory
+                ? _self.inputDirectory
+                : inputDirectory // ignore: cast_nullable_to_non_nullable
+                    as String,
+        outputDirectory:
+            null == outputDirectory
+                ? _self.outputDirectory
+                : outputDirectory // ignore: cast_nullable_to_non_nullable
+                    as String,
+        apiClientClassName:
+            null == apiClientClassName
+                ? _self.apiClientClassName
+                : apiClientClassName // ignore: cast_nullable_to_non_nullable
+                    as String,
+        skippedParameters:
+            null == skippedParameters
+                ? _self._skippedParameters
+                : skippedParameters // ignore: cast_nullable_to_non_nullable
+                    as List<String>,
+        imports:
+            null == imports
+                ? _self._imports
+                : imports // ignore: cast_nullable_to_non_nullable
+                    as List<String>,
+      ),
+    );
+  }
 }

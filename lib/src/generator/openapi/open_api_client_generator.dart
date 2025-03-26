@@ -8,9 +8,7 @@ String commentLine(String line) {
 }
 
 class OpenApiClientGenerator {
-  const OpenApiClientGenerator({
-    required this.config,
-  });
+  const OpenApiClientGenerator({required this.config});
 
   final SwaggerToDartConfig config;
 
@@ -43,10 +41,7 @@ class OpenApiClientGenerator {
 
     final skippedParameters = config.swaggerToDart.skippedParameters;
 
-    final privateMethods = <({
-      String methodName,
-      OpenApiPathMethod method,
-    })>[];
+    final privateMethods = <({String methodName, OpenApiPathMethod method})>[];
     for (final tagPath in tagPaths) {
       final method = path[tagPath]!;
 
@@ -87,19 +82,15 @@ class OpenApiClientGenerator {
         final requestBody = method.requestBody?.content.current;
         final isMultipart = requestBody?.key == 'MultiPart()';
         if (isMultipart)
-          privateMethods.add(
-            (
-              methodName: methodName,
-              method: method,
-            ),
-          );
+          privateMethods.add((methodName: methodName, method: method));
 
         if (requestBody?.key case final key?) {
           buffer.writeln('@${key}');
         }
 
-        final retrofitHttpMethodType =
-            Recase.instance.toScreamingSnakeCase(methodType);
+        final retrofitHttpMethodType = Recase.instance.toScreamingSnakeCase(
+          methodType,
+        );
 
         if (method.deprecated == true) {
           buffer.writeln('@deprecated');
@@ -111,9 +102,10 @@ class OpenApiClientGenerator {
         final parameters = method.parameters ?? [];
 
         /// queries / properties
-        final queriesParams = parameters
-            .where((e) => e.in_ == OpenApiPathMethodParameterType.query)
-            .toList();
+        final queriesParams =
+            parameters
+                .where((e) => e.in_ == OpenApiPathMethodParameterType.query)
+                .toList();
 
         if (queriesParams.isNotEmpty) {
           final queriesClass = generateQueriesClass(queriesParams, methodName);
@@ -149,9 +141,7 @@ class OpenApiClientGenerator {
               '''@Part() required Map<String, dynamic> body,''',
             );
           } else {
-            propertiesSnippets.add(
-              '''@Body() required $dartType body,''',
-            );
+            propertiesSnippets.add('''@Body() required $dartType body,''');
           }
         }
 
@@ -160,13 +150,14 @@ class OpenApiClientGenerator {
           "skippedParameters: ${skippedParameters} ${parameters.where((e) => e.in_ == OpenApiPathMethodParameterType.header).map((e) => e.name).toList().join(',')}",
         );
 
-        final headerParams = parameters
-            .where(
-              (e) =>
-                  e.in_ == OpenApiPathMethodParameterType.header &&
-                  !skippedParameters.contains(e.name),
-            )
-            .toList();
+        final headerParams =
+            parameters
+                .where(
+                  (e) =>
+                      e.in_ == OpenApiPathMethodParameterType.header &&
+                      !skippedParameters.contains(e.name),
+                )
+                .toList();
 
         for (final headerParam in headerParams) {
           final dartType = _getDartType(headerParam.schema, methodName);
@@ -182,11 +173,12 @@ class OpenApiClientGenerator {
           propertiesCode = '''{${propertiesSnippets.join('\n')}}''';
         }
 
-        final returnType = response == null ||
-                response == 'dynamic' ||
-                response == 'Map<String, dynamic>'
-            ? 'Future<HttpResponse>'
-            : 'Future<HttpResponse<${response}>>';
+        final returnType =
+            response == null ||
+                    response == 'dynamic' ||
+                    response == 'Map<String, dynamic>'
+                ? 'Future<HttpResponse>'
+                : 'Future<HttpResponse<${response}>>';
 
         buffer.writeln(
           '''$returnType ${isMultipart ? '_' : ''}$methodName($propertiesCode);''',
@@ -217,7 +209,8 @@ class OpenApiClientGenerator {
 
         final dartType =
             body == null ? 'dynamic' : _getDartType(body, methodName);
-        final parameters = method.parameters?.where((e) {
+        final parameters =
+            method.parameters?.where((e) {
               return !(e.in_ == OpenApiPathMethodParameterType.header &&
                   skippedParameters.contains(e.name));
             }) ??
@@ -230,14 +223,14 @@ class OpenApiClientGenerator {
           params.writeln('required $dartType  $paramName,\n ');
         }
 
-        final returnType = response == null ||
-                response == 'dynamic' ||
-                response == 'Map<String, dynamic>'
-            ? 'Future<HttpResponse>'
-            : 'Future<HttpResponse<${response}>>';
+        final returnType =
+            response == null ||
+                    response == 'dynamic' ||
+                    response == 'Map<String, dynamic>'
+                ? 'Future<HttpResponse>'
+                : 'Future<HttpResponse<${response}>>';
 
-        buffer.writeln(
-          '''$returnType $methodName(
+        buffer.writeln('''$returnType $methodName(
       {${params.toString()}
       required $dartType body,
       }
@@ -246,8 +239,7 @@ class OpenApiClientGenerator {
         body: body.toJson(),
         ${parameters.map((e) => '${config.renameProperty(e.name)}: ${config.renameProperty(e.name)},').join(',\n')}
       );
-    }''',
-        );
+    }''');
       }
 
       buffer.writeln('}');
@@ -264,9 +256,10 @@ class OpenApiClientGenerator {
 
     final className = '${name}Queries';
 
-    final params = queries.map((e) {
-      return MapEntry(e.name, e.schema);
-    }).toList();
+    final params =
+        queries.map((e) {
+          return MapEntry(e.name, e.schema);
+        }).toList();
 
     final result = generator.run(
       MapEntry(
@@ -305,26 +298,48 @@ class OpenApiClientGenerator {
     String className, // provide it if
   ) {
     if (model == null) return null;
-    return model.map(
-      type: (value) {
-        return config.dartType(
-          type: value.type,
-          format: value.format,
-          genericType: value.items?.mapOrNull(
-            ref: (value) => config.renameRefClass(value),
-            anyOf: (value) => convertOpenApiAnyOfToDartType(value, config),
+    //   type: (value) {
+    //     return config.dartType(
+    //       type: value.type,
+    //       format: value.format,
+    //       genericType: value.items?.mapOrNull(
+    //         ref: (value) => config.renameRefClass(value),
+    //         anyOf: (value) => convertOpenApiAnyOfToDartType(value, config),
+    //       ),
+    //       items: value.items,
+    //       title: value.title,
+    //     );
+    //   },
+    //   ref: (value) => config.renameRefClass(value),
+    //   anyOf: (value) => convertOpenApiAnyOfToDartType(value, config),
+    //   oneOf: (value) => generateOpenApiOneOfToDartType(
+    //     '${className}Union${value.title ?? 'Model'}',
+    //     value,
+    //     config,
+    //   ),
+    // );
+    return switch (model) {
+      OpenApiSchemaType value => config.dartType(
+        type: value.type,
+        format: value.format,
+        genericType: switch (value.items) {
+          OpenApiSchemaRef value => config.renameRefClass(value),
+          OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
+            value,
+            config,
           ),
-          items: value.items,
-          title: value.title,
-        );
-      },
-      ref: (value) => config.renameRefClass(value),
-      anyOf: (value) => convertOpenApiAnyOfToDartType(value, config),
-      oneOf: (value) => generateOpenApiOneOfToDartType(
+          _ => null,
+        },
+        items: value.items,
+        title: value.title,
+      ),
+      OpenApiSchemaRef value => config.renameRefClass(value),
+      OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(value, config),
+      OpenApiSchemaOneOf value => generateOpenApiOneOfToDartType(
         '${className}Union${value.title ?? 'Model'}',
         value,
         config,
       ),
-    );
+    };
   }
 }

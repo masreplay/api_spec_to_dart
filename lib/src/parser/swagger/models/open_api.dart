@@ -8,7 +8,7 @@ part 'open_api.freezed.dart';
 part 'open_api.g.dart';
 
 @freezed
-class OpenApi with _$OpenApi {
+abstract class OpenApi with _$OpenApi {
   const OpenApi._();
 
   const factory OpenApi({
@@ -24,7 +24,7 @@ class OpenApi with _$OpenApi {
 }
 
 @freezed
-class OpenApiServer with _$OpenApiServer {
+abstract class OpenApiServer with _$OpenApiServer {
   const OpenApiServer._();
 
   const factory OpenApiServer({

@@ -8,16 +8,13 @@ const String _oneOfKey = 'oneOf';
 const String _refKey = '\$ref';
 
 @Freezed()
-class OpenApiSchema with _$OpenApiSchema {
+sealed class OpenApiSchema with _$OpenApiSchema {
   const OpenApiSchema._();
 
   @FreezedUnionValue('type')
   const factory OpenApiSchema.type({
     @JsonKey(name: 'enum') List<String>? enum_,
-    @JsonKey(
-      name: 'type',
-      unknownEnumValue: OpenApiSchemaVarType.$unknown,
-    )
+    @JsonKey(name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
     OpenApiSchemaVarType? type,
     @OpenApiSchemaJsonConverter() @JsonKey(name: 'items') OpenApiSchema? items,
     @JsonKey(name: 'maxLength') int? maxLength,
@@ -63,7 +60,8 @@ class OpenApiSchema with _$OpenApiSchema {
 }
 
 @freezed
-class OpenApiSchemaOneOfDiscriminator with _$OpenApiSchemaOneOfDiscriminator {
+abstract class OpenApiSchemaOneOfDiscriminator
+    with _$OpenApiSchemaOneOfDiscriminator {
   factory OpenApiSchemaOneOfDiscriminator({
     @JsonKey(name: 'propertyName') required String propertyName,
     @JsonKey(name: 'mapping') required Map<String, String> mapping,
@@ -127,16 +125,18 @@ class OpenApiSchemaJsonConverter
       }
 
       if (entry.value is Map<String, dynamic>) {
-        newJson[entry.key] =
-            _removeRuntimeType(entry.value as Map<String, dynamic>);
+        newJson[entry.key] = _removeRuntimeType(
+          entry.value as Map<String, dynamic>,
+        );
       } else if (entry.value is List) {
-        newJson[entry.key] = (entry.value as List).map((e) {
-          if (e is Map<String, dynamic>) {
-            return _removeRuntimeType(e);
-          } else {
-            return e;
-          }
-        }).toList();
+        newJson[entry.key] =
+            (entry.value as List).map((e) {
+              if (e is Map<String, dynamic>) {
+                return _removeRuntimeType(e);
+              } else {
+                return e;
+              }
+            }).toList();
       } else {
         newJson[entry.key] = entry.value;
       }

@@ -1,16 +1,10 @@
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 typedef OpenApiModel = MapEntry<String, OpenApiSchemas>;
-typedef OneOfModel = ({
-  String type,
-  String key,
-  String unionName,
-});
+typedef OneOfModel = ({String type, String key, String unionName});
 
 class OpenApiModelGenerator {
-  const OpenApiModelGenerator({
-    required this.config,
-  });
+  const OpenApiModelGenerator({required this.config});
 
   final SwaggerToDartConfig config;
 
@@ -31,9 +25,10 @@ class OpenApiModelGenerator {
       for (int i = 0; i < enum_.length; i++) {
         final value = enum_[i];
         final description = model.value.xEnumVarnames?[i];
-        final name = description == null
-            ? 'value$value'
-            : config.renameProperty(description);
+        final name =
+            description == null
+                ? 'value$value'
+                : config.renameProperty(description);
 
         final enumName = config.renameProperty(value.toString());
 
@@ -83,10 +78,10 @@ $type toJson() => _\$${className}EnumMap[this]!;
     }
 
     final isUnion = properties.entries.any(
-      (entry) => entry.value.maybeMap(
-        oneOf: (value) => true,
-        orElse: () => false,
-      ),
+      (entry) => switch (entry.value) {
+        OpenApiSchemaOneOf() => true,
+        _ => false,
+      },
     );
 
     if (isUnion) {
@@ -97,17 +92,13 @@ $type toJson() => _\$${className}EnumMap[this]!;
       for (final entry in properties.entries) {
         entry.value.map(
           oneOf: (value) {
-            value.discriminator.mapping.entries.map(
-              (e) {
-                unionProp.add(
-                  (
-                    type: config.renameClass(e.value.split('/').last),
-                    key: entry.key,
-                    unionName: e.key,
-                  ),
-                );
-              },
-            ).toList();
+            value.discriminator.mapping.entries.map((e) {
+              unionProp.add((
+                type: config.renameClass(e.value.split('/').last),
+                key: entry.key,
+                unionName: e.key,
+              ));
+            }).toList();
             // }
           },
           type: (value) {
@@ -160,7 +151,7 @@ part '${filename}.g.dart';
 /// ${model.key}
 ${model.value.description == null ? '' : commentLine(model.value.description!)}
 @freezed
-class ${className} with _\$${className} {
+abstract class ${className} with _\$${className} {
   ${unionProp.any((e) => e.unionName == 'fallback') ? '' : 'const factory ${className}.fallback() = ${className}Fallback;'}
   
   ${unionProp.map((prop) => '@FreezedUnionValue("${prop.unionName}") const factory ${className}.${Recase.instance.toCamelCase(prop.unionName)}({required ${prop.type} ${prop.key},  $normalProp   }) = ${config.renameClass('${className}_${prop.unionName}')};').join('\n\n')}
@@ -182,24 +173,27 @@ class ${className} with _\$${className} {
         final propertyName = config.renameProperty(entry.key);
 
         fields += entry.value.map(
-          type: (value) => _modelPropertyTypeGenerator(
-            className: className,
-            key: entry.key,
-            value: value,
-            propertyName: propertyName,
-          ),
-          ref: (value) => _modelPropertyRefGenerator(
-            parentClassName: className,
-            key: entry.key,
-            value: value,
-            propertyName: propertyName,
-          ),
-          anyOf: (value) => _modelPropertyAnyOfGenerator(
-            parentClassName: className,
-            key: entry.key,
-            value: value,
-            propertyName: propertyName,
-          ),
+          type:
+              (value) => _modelPropertyTypeGenerator(
+                className: className,
+                key: entry.key,
+                value: value,
+                propertyName: propertyName,
+              ),
+          ref:
+              (value) => _modelPropertyRefGenerator(
+                parentClassName: className,
+                key: entry.key,
+                value: value,
+                propertyName: propertyName,
+              ),
+          anyOf:
+              (value) => _modelPropertyAnyOfGenerator(
+                parentClassName: className,
+                key: entry.key,
+                value: value,
+                propertyName: propertyName,
+              ),
           oneOf: (value) {
             throw Exception('oneOf is not supported');
           },
@@ -224,7 +218,7 @@ part '${filename}.g.dart';
 /// ${model.key}
 ${model.value.description == null ? '' : commentLine(model.value.description!)}
 @freezed
-class ${className} with _\$${className} {
+abstract class ${className} with _\$${className} {
   const ${className}._();
 
   ${properties.entries.map((e) => 'static const String ${(config.renameProperty(e.key))}Key = \'${e.key}\';').join('\n')}
@@ -264,9 +258,10 @@ class ${className} with _\$${className} {
 
     return _generateField(
       className: className,
-      freezedDefaultValue: value.default_ == null
-          ? null
-          : dartType == 'String'
+      freezedDefaultValue:
+          value.default_ == null
+              ? null
+              : dartType == 'String'
               ? '\'${value.default_}\''
               : value.default_,
       jsonName: key,
@@ -321,37 +316,31 @@ class ${className} with _\$${className} {
     required OpenApiSchemaAnyOf value,
     required String propertyName,
   }) {
-    getAnyOfType(
-      OpenApiSchemaAnyOf value,
-      SwaggerToDartConfig config,
-    ) {
+    getAnyOfType(OpenApiSchemaAnyOf value, SwaggerToDartConfig config) {
       String text = '';
-      bool isNullable = false;
 
       for (final schema in value.anyOf!) {
-        text += schema.map(
-          type: (value) {
-            if (value.type == OpenApiSchemaVarType.null_) {
-              isNullable = true;
-              return '';
-            }
-
-            return config.dartType(
-              type: value.type,
-              format: value.format,
-              genericType: value.items?.mapOrNull(
-                ref: (value) => config.renameRefClass(value),
-                anyOf: (value) => getAnyOfType(value, config),
-              ),
-              items: value.items,
-              title: value.title,
-            );
-          },
-          ref: (value) => config.renameRefClass(value),
-          anyOf: (value) => getAnyOfType(value, config),
-          oneOf: (value) => '',
-        );
+        text += switch (schema) {
+          OpenApiSchemaType value => config.dartType(
+            type: value.type,
+            format: value.format,
+            genericType: switch (value.items) {
+              OpenApiSchemaRef value => config.renameRefClass(value),
+              OpenApiSchemaAnyOf value => getAnyOfType(value, config),
+              _ => null,
+            },
+            items: value.items,
+            title: value.title,
+          ),
+          OpenApiSchemaRef value => config.renameRefClass(value),
+          OpenApiSchemaAnyOf value => getAnyOfType(value, config),
+          _ => '',
+        };
       }
+
+      final isNullable = value.anyOf!.any(
+        (e) => e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_,
+      );
 
       return isNullable ? '$text?' : text;
     }
@@ -439,29 +428,32 @@ String modelToUnionFreezedClass({
   final unionTypes = <String>[];
 
   for (final entry in properties.entries) {
-    entry.value.maybeMap(
-      oneOf: (value) {
+    switch (entry.value) {
+      case OpenApiSchemaOneOf value:
         for (var type in value.oneOf!) {
-          final typeName = type.maybeMap(
-            ref: (value) => config.renameRefClass(value),
-            type: (value) => config.dartType(
+          final typeName = switch (type) {
+            OpenApiSchemaType value => config.dartType(
               type: value.type,
               format: value.format,
-              genericType: value.items?.mapOrNull(
-                ref: (value) => config.renameRefClass(value),
-                anyOf: (value) => convertOpenApiAnyOfToDartType(value, config),
-              ),
+              genericType: switch (value.items) {
+                OpenApiSchemaRef value => config.renameRefClass(value),
+                OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
+                  value,
+                  config,
+                ),
+                _ => null,
+              },
               items: value.items,
               title: value.title,
             ),
-            orElse: () => '',
-          );
+            OpenApiSchemaRef value => config.renameRefClass(value),
+            _ => '',
+          };
 
           unionTypes.add(typeName);
         }
-      },
-      orElse: () {},
-    );
+      case _:
+    }
   }
 
   return '''
@@ -480,7 +472,7 @@ part '${filename}.g.dart';
 /// ${model.key}
 ${model.value.description == null ? '' : commentLine(model.value.description!)}
 @freezed
-class ${className} with _\$${className} {
+abstract class ${className} with _\$${className} {
   const factory ${className}.fallback() = ${className}Fallback;
 
   

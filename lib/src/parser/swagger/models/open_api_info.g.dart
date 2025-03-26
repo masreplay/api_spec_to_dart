@@ -6,14 +6,13 @@ part of 'open_api_info.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$OpenApiInfoImpl _$$OpenApiInfoImplFromJson(Map<String, dynamic> json) =>
-    _$OpenApiInfoImpl(
-      title: json['title'] as String,
-      description: json['description'] as String?,
-      version: json['version'] as String?,
-    );
+_OpenApiInfo _$OpenApiInfoFromJson(Map<String, dynamic> json) => _OpenApiInfo(
+  title: json['title'] as String,
+  description: json['description'] as String?,
+  version: json['version'] as String?,
+);
 
-Map<String, dynamic> _$$OpenApiInfoImplToJson(_$OpenApiInfoImpl instance) =>
+Map<String, dynamic> _$OpenApiInfoToJson(_OpenApiInfo instance) =>
     <String, dynamic>{
       'title': instance.title,
       if (instance.description case final value?) 'description': value,

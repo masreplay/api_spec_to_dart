@@ -5,7 +5,7 @@ part 'open_api_components.freezed.dart';
 part 'open_api_components.g.dart';
 
 @freezed
-class OpenApiComponents with _$OpenApiComponents {
+abstract class OpenApiComponents with _$OpenApiComponents {
   const OpenApiComponents._();
 
   const factory OpenApiComponents({
@@ -19,7 +19,7 @@ class OpenApiComponents with _$OpenApiComponents {
 }
 
 @freezed
-class OpenApiSchemas with _$OpenApiSchemas {
+abstract class OpenApiSchemas with _$OpenApiSchemas {
   const OpenApiSchemas._();
 
   const factory OpenApiSchemas({

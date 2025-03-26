@@ -5,7 +5,7 @@ part 'open_api_content.freezed.dart';
 part 'open_api_content.g.dart';
 
 @freezed
-class OpenApiContent with _$OpenApiContent {
+abstract class OpenApiContent with _$OpenApiContent {
   const OpenApiContent._();
 
   factory OpenApiContent({
@@ -17,9 +17,7 @@ class OpenApiContent with _$OpenApiContent {
     required OpenApiContentSchema? multipartFormData,
   }) = _OpenApiContent;
 
-  factory OpenApiContent.fromJson(
-    Map<String, dynamic> json,
-  ) =>
+  factory OpenApiContent.fromJson(Map<String, dynamic> json) =>
       _$OpenApiContentFromJson(json);
 
   // Don't add retrofit annotation in the generated code
@@ -35,15 +33,13 @@ class OpenApiContent with _$OpenApiContent {
 }
 
 @freezed
-class OpenApiContentSchema with _$OpenApiContentSchema {
+abstract class OpenApiContentSchema with _$OpenApiContentSchema {
   factory OpenApiContentSchema({
     @OpenApiSchemaJsonConverter()
     @JsonKey(name: 'schema')
     required OpenApiSchema schema,
   }) = _OpenApiContentSchema;
 
-  factory OpenApiContentSchema.fromJson(
-    Map<String, dynamic> json,
-  ) =>
+  factory OpenApiContentSchema.fromJson(Map<String, dynamic> json) =>
       _$OpenApiContentSchemaFromJson(json);
 }

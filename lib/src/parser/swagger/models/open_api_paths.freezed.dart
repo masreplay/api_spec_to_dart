@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -11,49 +12,79 @@ part of 'open_api_paths.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-OpenApiPath _$OpenApiPathFromJson(Map<String, dynamic> json) {
-  return _OpenApiPath.fromJson(json);
-}
-
 /// @nodoc
 mixin _$OpenApiPath {
-  OpenApiPathMethod? get get => throw _privateConstructorUsedError;
-  OpenApiPathMethod? get post => throw _privateConstructorUsedError;
-  OpenApiPathMethod? get put => throw _privateConstructorUsedError;
-  OpenApiPathMethod? get delete => throw _privateConstructorUsedError;
-  OpenApiPathMethod? get options => throw _privateConstructorUsedError;
-  OpenApiPathMethod? get head => throw _privateConstructorUsedError;
-  OpenApiPathMethod? get patch => throw _privateConstructorUsedError;
-  OpenApiPathMethod? get trace => throw _privateConstructorUsedError;
-
-  /// Serializes this OpenApiPath to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  OpenApiPathMethod? get get;
+  OpenApiPathMethod? get post;
+  OpenApiPathMethod? get put;
+  OpenApiPathMethod? get delete;
+  OpenApiPathMethod? get options;
+  OpenApiPathMethod? get head;
+  OpenApiPathMethod? get patch;
+  OpenApiPathMethod? get trace;
 
   /// Create a copy of OpenApiPath
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $OpenApiPathCopyWith<OpenApiPath> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$OpenApiPathCopyWithImpl<OpenApiPath>(this as OpenApiPath, _$identity);
+
+  /// Serializes this OpenApiPath to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is OpenApiPath &&
+            (identical(other.get, get) || other.get == get) &&
+            (identical(other.post, post) || other.post == post) &&
+            (identical(other.put, put) || other.put == put) &&
+            (identical(other.delete, delete) || other.delete == delete) &&
+            (identical(other.options, options) || other.options == options) &&
+            (identical(other.head, head) || other.head == head) &&
+            (identical(other.patch, patch) || other.patch == patch) &&
+            (identical(other.trace, trace) || other.trace == trace));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+    runtimeType,
+    get,
+    post,
+    put,
+    delete,
+    options,
+    head,
+    patch,
+    trace,
+  );
+
+  @override
+  String toString() {
+    return 'OpenApiPath(get: $get, post: $post, put: $put, delete: $delete, options: $options, head: $head, patch: $patch, trace: $trace)';
+  }
 }
 
 /// @nodoc
-abstract class $OpenApiPathCopyWith<$Res> {
+abstract mixin class $OpenApiPathCopyWith<$Res> {
   factory $OpenApiPathCopyWith(
-          OpenApiPath value, $Res Function(OpenApiPath) then) =
-      _$OpenApiPathCopyWithImpl<$Res, OpenApiPath>;
+    OpenApiPath value,
+    $Res Function(OpenApiPath) _then,
+  ) = _$OpenApiPathCopyWithImpl;
   @useResult
-  $Res call(
-      {OpenApiPathMethod? get,
-      OpenApiPathMethod? post,
-      OpenApiPathMethod? put,
-      OpenApiPathMethod? delete,
-      OpenApiPathMethod? options,
-      OpenApiPathMethod? head,
-      OpenApiPathMethod? patch,
-      OpenApiPathMethod? trace});
+  $Res call({
+    OpenApiPathMethod? get,
+    OpenApiPathMethod? post,
+    OpenApiPathMethod? put,
+    OpenApiPathMethod? delete,
+    OpenApiPathMethod? options,
+    OpenApiPathMethod? head,
+    OpenApiPathMethod? patch,
+    OpenApiPathMethod? trace,
+  });
 
   $OpenApiPathMethodCopyWith<$Res>? get get;
   $OpenApiPathMethodCopyWith<$Res>? get post;
@@ -66,14 +97,11 @@ abstract class $OpenApiPathCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$OpenApiPathCopyWithImpl<$Res, $Val extends OpenApiPath>
-    implements $OpenApiPathCopyWith<$Res> {
-  _$OpenApiPathCopyWithImpl(this._value, this._then);
+class _$OpenApiPathCopyWithImpl<$Res> implements $OpenApiPathCopyWith<$Res> {
+  _$OpenApiPathCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final OpenApiPath _self;
+  final $Res Function(OpenApiPath) _then;
 
   /// Create a copy of OpenApiPath
   /// with the given fields replaced by the non-null parameter values.
@@ -89,40 +117,50 @@ class _$OpenApiPathCopyWithImpl<$Res, $Val extends OpenApiPath>
     Object? patch = freezed,
     Object? trace = freezed,
   }) {
-    return _then(_value.copyWith(
-      get: freezed == get
-          ? _value.get
-          : get // ignore: cast_nullable_to_non_nullable
-              as OpenApiPathMethod?,
-      post: freezed == post
-          ? _value.post
-          : post // ignore: cast_nullable_to_non_nullable
-              as OpenApiPathMethod?,
-      put: freezed == put
-          ? _value.put
-          : put // ignore: cast_nullable_to_non_nullable
-              as OpenApiPathMethod?,
-      delete: freezed == delete
-          ? _value.delete
-          : delete // ignore: cast_nullable_to_non_nullable
-              as OpenApiPathMethod?,
-      options: freezed == options
-          ? _value.options
-          : options // ignore: cast_nullable_to_non_nullable
-              as OpenApiPathMethod?,
-      head: freezed == head
-          ? _value.head
-          : head // ignore: cast_nullable_to_non_nullable
-              as OpenApiPathMethod?,
-      patch: freezed == patch
-          ? _value.patch
-          : patch // ignore: cast_nullable_to_non_nullable
-              as OpenApiPathMethod?,
-      trace: freezed == trace
-          ? _value.trace
-          : trace // ignore: cast_nullable_to_non_nullable
-              as OpenApiPathMethod?,
-    ) as $Val);
+    return _then(
+      _self.copyWith(
+        get:
+            freezed == get
+                ? _self.get
+                : get // ignore: cast_nullable_to_non_nullable
+                    as OpenApiPathMethod?,
+        post:
+            freezed == post
+                ? _self.post
+                : post // ignore: cast_nullable_to_non_nullable
+                    as OpenApiPathMethod?,
+        put:
+            freezed == put
+                ? _self.put
+                : put // ignore: cast_nullable_to_non_nullable
+                    as OpenApiPathMethod?,
+        delete:
+            freezed == delete
+                ? _self.delete
+                : delete // ignore: cast_nullable_to_non_nullable
+                    as OpenApiPathMethod?,
+        options:
+            freezed == options
+                ? _self.options
+                : options // ignore: cast_nullable_to_non_nullable
+                    as OpenApiPathMethod?,
+        head:
+            freezed == head
+                ? _self.head
+                : head // ignore: cast_nullable_to_non_nullable
+                    as OpenApiPathMethod?,
+        patch:
+            freezed == patch
+                ? _self.patch
+                : patch // ignore: cast_nullable_to_non_nullable
+                    as OpenApiPathMethod?,
+        trace:
+            freezed == trace
+                ? _self.trace
+                : trace // ignore: cast_nullable_to_non_nullable
+                    as OpenApiPathMethod?,
+      ),
+    );
   }
 
   /// Create a copy of OpenApiPath
@@ -130,12 +168,12 @@ class _$OpenApiPathCopyWithImpl<$Res, $Val extends OpenApiPath>
   @override
   @pragma('vm:prefer-inline')
   $OpenApiPathMethodCopyWith<$Res>? get get {
-    if (_value.get == null) {
+    if (_self.get == null) {
       return null;
     }
 
-    return $OpenApiPathMethodCopyWith<$Res>(_value.get!, (value) {
-      return _then(_value.copyWith(get: value) as $Val);
+    return $OpenApiPathMethodCopyWith<$Res>(_self.get!, (value) {
+      return _then(_self.copyWith(get: value));
     });
   }
 
@@ -144,12 +182,12 @@ class _$OpenApiPathCopyWithImpl<$Res, $Val extends OpenApiPath>
   @override
   @pragma('vm:prefer-inline')
   $OpenApiPathMethodCopyWith<$Res>? get post {
-    if (_value.post == null) {
+    if (_self.post == null) {
       return null;
     }
 
-    return $OpenApiPathMethodCopyWith<$Res>(_value.post!, (value) {
-      return _then(_value.copyWith(post: value) as $Val);
+    return $OpenApiPathMethodCopyWith<$Res>(_self.post!, (value) {
+      return _then(_self.copyWith(post: value));
     });
   }
 
@@ -158,12 +196,12 @@ class _$OpenApiPathCopyWithImpl<$Res, $Val extends OpenApiPath>
   @override
   @pragma('vm:prefer-inline')
   $OpenApiPathMethodCopyWith<$Res>? get put {
-    if (_value.put == null) {
+    if (_self.put == null) {
       return null;
     }
 
-    return $OpenApiPathMethodCopyWith<$Res>(_value.put!, (value) {
-      return _then(_value.copyWith(put: value) as $Val);
+    return $OpenApiPathMethodCopyWith<$Res>(_self.put!, (value) {
+      return _then(_self.copyWith(put: value));
     });
   }
 
@@ -172,12 +210,12 @@ class _$OpenApiPathCopyWithImpl<$Res, $Val extends OpenApiPath>
   @override
   @pragma('vm:prefer-inline')
   $OpenApiPathMethodCopyWith<$Res>? get delete {
-    if (_value.delete == null) {
+    if (_self.delete == null) {
       return null;
     }
 
-    return $OpenApiPathMethodCopyWith<$Res>(_value.delete!, (value) {
-      return _then(_value.copyWith(delete: value) as $Val);
+    return $OpenApiPathMethodCopyWith<$Res>(_self.delete!, (value) {
+      return _then(_self.copyWith(delete: value));
     });
   }
 
@@ -186,12 +224,12 @@ class _$OpenApiPathCopyWithImpl<$Res, $Val extends OpenApiPath>
   @override
   @pragma('vm:prefer-inline')
   $OpenApiPathMethodCopyWith<$Res>? get options {
-    if (_value.options == null) {
+    if (_self.options == null) {
       return null;
     }
 
-    return $OpenApiPathMethodCopyWith<$Res>(_value.options!, (value) {
-      return _then(_value.copyWith(options: value) as $Val);
+    return $OpenApiPathMethodCopyWith<$Res>(_self.options!, (value) {
+      return _then(_self.copyWith(options: value));
     });
   }
 
@@ -200,12 +238,12 @@ class _$OpenApiPathCopyWithImpl<$Res, $Val extends OpenApiPath>
   @override
   @pragma('vm:prefer-inline')
   $OpenApiPathMethodCopyWith<$Res>? get head {
-    if (_value.head == null) {
+    if (_self.head == null) {
       return null;
     }
 
-    return $OpenApiPathMethodCopyWith<$Res>(_value.head!, (value) {
-      return _then(_value.copyWith(head: value) as $Val);
+    return $OpenApiPathMethodCopyWith<$Res>(_self.head!, (value) {
+      return _then(_self.copyWith(head: value));
     });
   }
 
@@ -214,12 +252,12 @@ class _$OpenApiPathCopyWithImpl<$Res, $Val extends OpenApiPath>
   @override
   @pragma('vm:prefer-inline')
   $OpenApiPathMethodCopyWith<$Res>? get patch {
-    if (_value.patch == null) {
+    if (_self.patch == null) {
       return null;
     }
 
-    return $OpenApiPathMethodCopyWith<$Res>(_value.patch!, (value) {
-      return _then(_value.copyWith(patch: value) as $Val);
+    return $OpenApiPathMethodCopyWith<$Res>(_self.patch!, (value) {
+      return _then(_self.copyWith(patch: value));
     });
   }
 
@@ -228,127 +266,31 @@ class _$OpenApiPathCopyWithImpl<$Res, $Val extends OpenApiPath>
   @override
   @pragma('vm:prefer-inline')
   $OpenApiPathMethodCopyWith<$Res>? get trace {
-    if (_value.trace == null) {
+    if (_self.trace == null) {
       return null;
     }
 
-    return $OpenApiPathMethodCopyWith<$Res>(_value.trace!, (value) {
-      return _then(_value.copyWith(trace: value) as $Val);
+    return $OpenApiPathMethodCopyWith<$Res>(_self.trace!, (value) {
+      return _then(_self.copyWith(trace: value));
     });
   }
 }
 
 /// @nodoc
-abstract class _$$OpenApiPathImplCopyWith<$Res>
-    implements $OpenApiPathCopyWith<$Res> {
-  factory _$$OpenApiPathImplCopyWith(
-          _$OpenApiPathImpl value, $Res Function(_$OpenApiPathImpl) then) =
-      __$$OpenApiPathImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {OpenApiPathMethod? get,
-      OpenApiPathMethod? post,
-      OpenApiPathMethod? put,
-      OpenApiPathMethod? delete,
-      OpenApiPathMethod? options,
-      OpenApiPathMethod? head,
-      OpenApiPathMethod? patch,
-      OpenApiPathMethod? trace});
-
-  @override
-  $OpenApiPathMethodCopyWith<$Res>? get get;
-  @override
-  $OpenApiPathMethodCopyWith<$Res>? get post;
-  @override
-  $OpenApiPathMethodCopyWith<$Res>? get put;
-  @override
-  $OpenApiPathMethodCopyWith<$Res>? get delete;
-  @override
-  $OpenApiPathMethodCopyWith<$Res>? get options;
-  @override
-  $OpenApiPathMethodCopyWith<$Res>? get head;
-  @override
-  $OpenApiPathMethodCopyWith<$Res>? get patch;
-  @override
-  $OpenApiPathMethodCopyWith<$Res>? get trace;
-}
-
-/// @nodoc
-class __$$OpenApiPathImplCopyWithImpl<$Res>
-    extends _$OpenApiPathCopyWithImpl<$Res, _$OpenApiPathImpl>
-    implements _$$OpenApiPathImplCopyWith<$Res> {
-  __$$OpenApiPathImplCopyWithImpl(
-      _$OpenApiPathImpl _value, $Res Function(_$OpenApiPathImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of OpenApiPath
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? get = freezed,
-    Object? post = freezed,
-    Object? put = freezed,
-    Object? delete = freezed,
-    Object? options = freezed,
-    Object? head = freezed,
-    Object? patch = freezed,
-    Object? trace = freezed,
-  }) {
-    return _then(_$OpenApiPathImpl(
-      get: freezed == get
-          ? _value.get
-          : get // ignore: cast_nullable_to_non_nullable
-              as OpenApiPathMethod?,
-      post: freezed == post
-          ? _value.post
-          : post // ignore: cast_nullable_to_non_nullable
-              as OpenApiPathMethod?,
-      put: freezed == put
-          ? _value.put
-          : put // ignore: cast_nullable_to_non_nullable
-              as OpenApiPathMethod?,
-      delete: freezed == delete
-          ? _value.delete
-          : delete // ignore: cast_nullable_to_non_nullable
-              as OpenApiPathMethod?,
-      options: freezed == options
-          ? _value.options
-          : options // ignore: cast_nullable_to_non_nullable
-              as OpenApiPathMethod?,
-      head: freezed == head
-          ? _value.head
-          : head // ignore: cast_nullable_to_non_nullable
-              as OpenApiPathMethod?,
-      patch: freezed == patch
-          ? _value.patch
-          : patch // ignore: cast_nullable_to_non_nullable
-              as OpenApiPathMethod?,
-      trace: freezed == trace
-          ? _value.trace
-          : trace // ignore: cast_nullable_to_non_nullable
-              as OpenApiPathMethod?,
-    ));
-  }
-}
-
-/// @nodoc
 @JsonSerializable()
-class _$OpenApiPathImpl extends _OpenApiPath {
-  const _$OpenApiPathImpl(
-      {this.get,
-      this.post,
-      this.put,
-      this.delete,
-      this.options,
-      this.head,
-      this.patch,
-      this.trace})
-      : super._();
-
-  factory _$OpenApiPathImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OpenApiPathImplFromJson(json);
+class _OpenApiPath extends OpenApiPath {
+  const _OpenApiPath({
+    this.get,
+    this.post,
+    this.put,
+    this.delete,
+    this.options,
+    this.head,
+    this.patch,
+    this.trace,
+  }) : super._();
+  factory _OpenApiPath.fromJson(Map<String, dynamic> json) =>
+      _$OpenApiPathFromJson(json);
 
   @override
   final OpenApiPathMethod? get;
@@ -367,16 +309,24 @@ class _$OpenApiPathImpl extends _OpenApiPath {
   @override
   final OpenApiPathMethod? trace;
 
+  /// Create a copy of OpenApiPath
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'OpenApiPath(get: $get, post: $post, put: $put, delete: $delete, options: $options, head: $head, patch: $patch, trace: $trace)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$OpenApiPathCopyWith<_OpenApiPath> get copyWith =>
+      __$OpenApiPathCopyWithImpl<_OpenApiPath>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$OpenApiPathToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OpenApiPathImpl &&
+            other is _OpenApiPath &&
             (identical(other.get, get) || other.get == get) &&
             (identical(other.post, post) || other.post == post) &&
             (identical(other.put, put) || other.put == put) &&
@@ -390,133 +340,349 @@ class _$OpenApiPathImpl extends _OpenApiPath {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, get, post, put, delete, options, head, patch, trace);
+    runtimeType,
+    get,
+    post,
+    put,
+    delete,
+    options,
+    head,
+    patch,
+    trace,
+  );
 
-  /// Create a copy of OpenApiPath
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$OpenApiPathImplCopyWith<_$OpenApiPathImpl> get copyWith =>
-      __$$OpenApiPathImplCopyWithImpl<_$OpenApiPathImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$OpenApiPathImplToJson(
-      this,
-    );
+  String toString() {
+    return 'OpenApiPath(get: $get, post: $post, put: $put, delete: $delete, options: $options, head: $head, patch: $patch, trace: $trace)';
   }
 }
 
-abstract class _OpenApiPath extends OpenApiPath {
-  const factory _OpenApiPath(
-      {final OpenApiPathMethod? get,
-      final OpenApiPathMethod? post,
-      final OpenApiPathMethod? put,
-      final OpenApiPathMethod? delete,
-      final OpenApiPathMethod? options,
-      final OpenApiPathMethod? head,
-      final OpenApiPathMethod? patch,
-      final OpenApiPathMethod? trace}) = _$OpenApiPathImpl;
-  const _OpenApiPath._() : super._();
+/// @nodoc
+abstract mixin class _$OpenApiPathCopyWith<$Res>
+    implements $OpenApiPathCopyWith<$Res> {
+  factory _$OpenApiPathCopyWith(
+    _OpenApiPath value,
+    $Res Function(_OpenApiPath) _then,
+  ) = __$OpenApiPathCopyWithImpl;
+  @override
+  @useResult
+  $Res call({
+    OpenApiPathMethod? get,
+    OpenApiPathMethod? post,
+    OpenApiPathMethod? put,
+    OpenApiPathMethod? delete,
+    OpenApiPathMethod? options,
+    OpenApiPathMethod? head,
+    OpenApiPathMethod? patch,
+    OpenApiPathMethod? trace,
+  });
 
-  factory _OpenApiPath.fromJson(Map<String, dynamic> json) =
-      _$OpenApiPathImpl.fromJson;
+  @override
+  $OpenApiPathMethodCopyWith<$Res>? get get;
+  @override
+  $OpenApiPathMethodCopyWith<$Res>? get post;
+  @override
+  $OpenApiPathMethodCopyWith<$Res>? get put;
+  @override
+  $OpenApiPathMethodCopyWith<$Res>? get delete;
+  @override
+  $OpenApiPathMethodCopyWith<$Res>? get options;
+  @override
+  $OpenApiPathMethodCopyWith<$Res>? get head;
+  @override
+  $OpenApiPathMethodCopyWith<$Res>? get patch;
+  @override
+  $OpenApiPathMethodCopyWith<$Res>? get trace;
+}
 
-  @override
-  OpenApiPathMethod? get get;
-  @override
-  OpenApiPathMethod? get post;
-  @override
-  OpenApiPathMethod? get put;
-  @override
-  OpenApiPathMethod? get delete;
-  @override
-  OpenApiPathMethod? get options;
-  @override
-  OpenApiPathMethod? get head;
-  @override
-  OpenApiPathMethod? get patch;
-  @override
-  OpenApiPathMethod? get trace;
+/// @nodoc
+class __$OpenApiPathCopyWithImpl<$Res> implements _$OpenApiPathCopyWith<$Res> {
+  __$OpenApiPathCopyWithImpl(this._self, this._then);
+
+  final _OpenApiPath _self;
+  final $Res Function(_OpenApiPath) _then;
 
   /// Create a copy of OpenApiPath
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OpenApiPathImplCopyWith<_$OpenApiPathImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? get = freezed,
+    Object? post = freezed,
+    Object? put = freezed,
+    Object? delete = freezed,
+    Object? options = freezed,
+    Object? head = freezed,
+    Object? patch = freezed,
+    Object? trace = freezed,
+  }) {
+    return _then(
+      _OpenApiPath(
+        get:
+            freezed == get
+                ? _self.get
+                : get // ignore: cast_nullable_to_non_nullable
+                    as OpenApiPathMethod?,
+        post:
+            freezed == post
+                ? _self.post
+                : post // ignore: cast_nullable_to_non_nullable
+                    as OpenApiPathMethod?,
+        put:
+            freezed == put
+                ? _self.put
+                : put // ignore: cast_nullable_to_non_nullable
+                    as OpenApiPathMethod?,
+        delete:
+            freezed == delete
+                ? _self.delete
+                : delete // ignore: cast_nullable_to_non_nullable
+                    as OpenApiPathMethod?,
+        options:
+            freezed == options
+                ? _self.options
+                : options // ignore: cast_nullable_to_non_nullable
+                    as OpenApiPathMethod?,
+        head:
+            freezed == head
+                ? _self.head
+                : head // ignore: cast_nullable_to_non_nullable
+                    as OpenApiPathMethod?,
+        patch:
+            freezed == patch
+                ? _self.patch
+                : patch // ignore: cast_nullable_to_non_nullable
+                    as OpenApiPathMethod?,
+        trace:
+            freezed == trace
+                ? _self.trace
+                : trace // ignore: cast_nullable_to_non_nullable
+                    as OpenApiPathMethod?,
+      ),
+    );
+  }
 
-OpenApiPathMethod _$OpenApiPathMethodFromJson(Map<String, dynamic> json) {
-  return _OpenApiPathMethod.fromJson(json);
+  /// Create a copy of OpenApiPath
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $OpenApiPathMethodCopyWith<$Res>? get get {
+    if (_self.get == null) {
+      return null;
+    }
+
+    return $OpenApiPathMethodCopyWith<$Res>(_self.get!, (value) {
+      return _then(_self.copyWith(get: value));
+    });
+  }
+
+  /// Create a copy of OpenApiPath
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $OpenApiPathMethodCopyWith<$Res>? get post {
+    if (_self.post == null) {
+      return null;
+    }
+
+    return $OpenApiPathMethodCopyWith<$Res>(_self.post!, (value) {
+      return _then(_self.copyWith(post: value));
+    });
+  }
+
+  /// Create a copy of OpenApiPath
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $OpenApiPathMethodCopyWith<$Res>? get put {
+    if (_self.put == null) {
+      return null;
+    }
+
+    return $OpenApiPathMethodCopyWith<$Res>(_self.put!, (value) {
+      return _then(_self.copyWith(put: value));
+    });
+  }
+
+  /// Create a copy of OpenApiPath
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $OpenApiPathMethodCopyWith<$Res>? get delete {
+    if (_self.delete == null) {
+      return null;
+    }
+
+    return $OpenApiPathMethodCopyWith<$Res>(_self.delete!, (value) {
+      return _then(_self.copyWith(delete: value));
+    });
+  }
+
+  /// Create a copy of OpenApiPath
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $OpenApiPathMethodCopyWith<$Res>? get options {
+    if (_self.options == null) {
+      return null;
+    }
+
+    return $OpenApiPathMethodCopyWith<$Res>(_self.options!, (value) {
+      return _then(_self.copyWith(options: value));
+    });
+  }
+
+  /// Create a copy of OpenApiPath
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $OpenApiPathMethodCopyWith<$Res>? get head {
+    if (_self.head == null) {
+      return null;
+    }
+
+    return $OpenApiPathMethodCopyWith<$Res>(_self.head!, (value) {
+      return _then(_self.copyWith(head: value));
+    });
+  }
+
+  /// Create a copy of OpenApiPath
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $OpenApiPathMethodCopyWith<$Res>? get patch {
+    if (_self.patch == null) {
+      return null;
+    }
+
+    return $OpenApiPathMethodCopyWith<$Res>(_self.patch!, (value) {
+      return _then(_self.copyWith(patch: value));
+    });
+  }
+
+  /// Create a copy of OpenApiPath
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $OpenApiPathMethodCopyWith<$Res>? get trace {
+    if (_self.trace == null) {
+      return null;
+    }
+
+    return $OpenApiPathMethodCopyWith<$Res>(_self.trace!, (value) {
+      return _then(_self.copyWith(trace: value));
+    });
+  }
 }
 
 /// @nodoc
 mixin _$OpenApiPathMethod {
   @JsonKey(name: 'tags')
-  List<String> get tags => throw _privateConstructorUsedError;
+  OpenApiPathMethodTags get tags;
   @JsonKey(name: 'summary')
-  String? get summary => throw _privateConstructorUsedError;
+  String? get summary;
   @JsonKey(name: 'description')
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @JsonKey(name: 'operationId')
-  String? get operationId => throw _privateConstructorUsedError;
+  String? get operationId;
   @JsonKey(name: 'deprecated')
-  bool? get deprecated => throw _privateConstructorUsedError;
+  bool? get deprecated;
   @JsonKey(name: 'security')
-  List<Map<String, List<dynamic>>>? get security =>
-      throw _privateConstructorUsedError;
+  List<Map<String, List<dynamic>>>? get security;
   @JsonKey(name: 'parameters')
-  List<OpenApiPathMethodParameter>? get parameters =>
-      throw _privateConstructorUsedError;
+  OpenApiPathMethodParameters? get parameters;
   @JsonKey(name: 'requestBody')
-  OpenApiPathMethodRequestBody? get requestBody =>
-      throw _privateConstructorUsedError;
+  OpenApiPathMethodRequestBody? get requestBody;
   @JsonKey(name: 'responses')
-  Map<String, OpenApiPathMethodResponse>? get responses =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this OpenApiPathMethod to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  OpenApiPathMethodResponses? get responses;
 
   /// Create a copy of OpenApiPathMethod
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $OpenApiPathMethodCopyWith<OpenApiPathMethod> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$OpenApiPathMethodCopyWithImpl<OpenApiPathMethod>(
+        this as OpenApiPathMethod,
+        _$identity,
+      );
+
+  /// Serializes this OpenApiPathMethod to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is OpenApiPathMethod &&
+            const DeepCollectionEquality().equals(other.tags, tags) &&
+            (identical(other.summary, summary) || other.summary == summary) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.operationId, operationId) ||
+                other.operationId == operationId) &&
+            (identical(other.deprecated, deprecated) ||
+                other.deprecated == deprecated) &&
+            const DeepCollectionEquality().equals(other.security, security) &&
+            const DeepCollectionEquality().equals(
+              other.parameters,
+              parameters,
+            ) &&
+            (identical(other.requestBody, requestBody) ||
+                other.requestBody == requestBody) &&
+            const DeepCollectionEquality().equals(other.responses, responses));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+    runtimeType,
+    const DeepCollectionEquality().hash(tags),
+    summary,
+    description,
+    operationId,
+    deprecated,
+    const DeepCollectionEquality().hash(security),
+    const DeepCollectionEquality().hash(parameters),
+    requestBody,
+    const DeepCollectionEquality().hash(responses),
+  );
+
+  @override
+  String toString() {
+    return 'OpenApiPathMethod(tags: $tags, summary: $summary, description: $description, operationId: $operationId, deprecated: $deprecated, security: $security, parameters: $parameters, requestBody: $requestBody, responses: $responses)';
+  }
 }
 
 /// @nodoc
-abstract class $OpenApiPathMethodCopyWith<$Res> {
+abstract mixin class $OpenApiPathMethodCopyWith<$Res> {
   factory $OpenApiPathMethodCopyWith(
-          OpenApiPathMethod value, $Res Function(OpenApiPathMethod) then) =
-      _$OpenApiPathMethodCopyWithImpl<$Res, OpenApiPathMethod>;
+    OpenApiPathMethod value,
+    $Res Function(OpenApiPathMethod) _then,
+  ) = _$OpenApiPathMethodCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'tags') List<String> tags,
-      @JsonKey(name: 'summary') String? summary,
-      @JsonKey(name: 'description') String? description,
-      @JsonKey(name: 'operationId') String? operationId,
-      @JsonKey(name: 'deprecated') bool? deprecated,
-      @JsonKey(name: 'security') List<Map<String, List<dynamic>>>? security,
-      @JsonKey(name: 'parameters') List<OpenApiPathMethodParameter>? parameters,
-      @JsonKey(name: 'requestBody') OpenApiPathMethodRequestBody? requestBody,
-      @JsonKey(name: 'responses')
-      Map<String, OpenApiPathMethodResponse>? responses});
+  $Res call({
+    @JsonKey(name: 'tags') List<String> tags,
+    @JsonKey(name: 'summary') String? summary,
+    @JsonKey(name: 'description') String? description,
+    @JsonKey(name: 'operationId') String? operationId,
+    @JsonKey(name: 'deprecated') bool? deprecated,
+    @JsonKey(name: 'security') List<Map<String, List<dynamic>>>? security,
+    @JsonKey(name: 'parameters') List<OpenApiPathMethodParameter>? parameters,
+    @JsonKey(name: 'requestBody') OpenApiPathMethodRequestBody? requestBody,
+    @JsonKey(name: 'responses')
+    Map<String, OpenApiPathMethodResponse>? responses,
+  });
 
   $OpenApiPathMethodRequestBodyCopyWith<$Res>? get requestBody;
 }
 
 /// @nodoc
-class _$OpenApiPathMethodCopyWithImpl<$Res, $Val extends OpenApiPathMethod>
+class _$OpenApiPathMethodCopyWithImpl<$Res>
     implements $OpenApiPathMethodCopyWith<$Res> {
-  _$OpenApiPathMethodCopyWithImpl(this._value, this._then);
+  _$OpenApiPathMethodCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final OpenApiPathMethod _self;
+  final $Res Function(OpenApiPathMethod) _then;
 
   /// Create a copy of OpenApiPathMethod
   /// with the given fields replaced by the non-null parameter values.
@@ -533,44 +699,55 @@ class _$OpenApiPathMethodCopyWithImpl<$Res, $Val extends OpenApiPathMethod>
     Object? requestBody = freezed,
     Object? responses = freezed,
   }) {
-    return _then(_value.copyWith(
-      tags: null == tags
-          ? _value.tags
-          : tags // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      summary: freezed == summary
-          ? _value.summary
-          : summary // ignore: cast_nullable_to_non_nullable
-              as String?,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      operationId: freezed == operationId
-          ? _value.operationId
-          : operationId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      deprecated: freezed == deprecated
-          ? _value.deprecated
-          : deprecated // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      security: freezed == security
-          ? _value.security
-          : security // ignore: cast_nullable_to_non_nullable
-              as List<Map<String, List<dynamic>>>?,
-      parameters: freezed == parameters
-          ? _value.parameters
-          : parameters // ignore: cast_nullable_to_non_nullable
-              as List<OpenApiPathMethodParameter>?,
-      requestBody: freezed == requestBody
-          ? _value.requestBody
-          : requestBody // ignore: cast_nullable_to_non_nullable
-              as OpenApiPathMethodRequestBody?,
-      responses: freezed == responses
-          ? _value.responses
-          : responses // ignore: cast_nullable_to_non_nullable
-              as Map<String, OpenApiPathMethodResponse>?,
-    ) as $Val);
+    return _then(
+      _self.copyWith(
+        tags:
+            null == tags
+                ? _self.tags!
+                : tags // ignore: cast_nullable_to_non_nullable
+                    as List<String>,
+        summary:
+            freezed == summary
+                ? _self.summary
+                : summary // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        description:
+            freezed == description
+                ? _self.description
+                : description // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        operationId:
+            freezed == operationId
+                ? _self.operationId
+                : operationId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        deprecated:
+            freezed == deprecated
+                ? _self.deprecated
+                : deprecated // ignore: cast_nullable_to_non_nullable
+                    as bool?,
+        security:
+            freezed == security
+                ? _self.security
+                : security // ignore: cast_nullable_to_non_nullable
+                    as List<Map<String, List<dynamic>>>?,
+        parameters:
+            freezed == parameters
+                ? _self.parameters!
+                : parameters // ignore: cast_nullable_to_non_nullable
+                    as List<OpenApiPathMethodParameter>?,
+        requestBody:
+            freezed == requestBody
+                ? _self.requestBody
+                : requestBody // ignore: cast_nullable_to_non_nullable
+                    as OpenApiPathMethodRequestBody?,
+        responses:
+            freezed == responses
+                ? _self.responses!
+                : responses // ignore: cast_nullable_to_non_nullable
+                    as Map<String, OpenApiPathMethodResponse>?,
+      ),
+    );
   }
 
   /// Create a copy of OpenApiPathMethod
@@ -578,129 +755,40 @@ class _$OpenApiPathMethodCopyWithImpl<$Res, $Val extends OpenApiPathMethod>
   @override
   @pragma('vm:prefer-inline')
   $OpenApiPathMethodRequestBodyCopyWith<$Res>? get requestBody {
-    if (_value.requestBody == null) {
+    if (_self.requestBody == null) {
       return null;
     }
 
-    return $OpenApiPathMethodRequestBodyCopyWith<$Res>(_value.requestBody!,
-        (value) {
-      return _then(_value.copyWith(requestBody: value) as $Val);
+    return $OpenApiPathMethodRequestBodyCopyWith<$Res>(_self.requestBody!, (
+      value,
+    ) {
+      return _then(_self.copyWith(requestBody: value));
     });
   }
 }
 
 /// @nodoc
-abstract class _$$OpenApiPathMethodImplCopyWith<$Res>
-    implements $OpenApiPathMethodCopyWith<$Res> {
-  factory _$$OpenApiPathMethodImplCopyWith(_$OpenApiPathMethodImpl value,
-          $Res Function(_$OpenApiPathMethodImpl) then) =
-      __$$OpenApiPathMethodImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'tags') List<String> tags,
-      @JsonKey(name: 'summary') String? summary,
-      @JsonKey(name: 'description') String? description,
-      @JsonKey(name: 'operationId') String? operationId,
-      @JsonKey(name: 'deprecated') bool? deprecated,
-      @JsonKey(name: 'security') List<Map<String, List<dynamic>>>? security,
-      @JsonKey(name: 'parameters') List<OpenApiPathMethodParameter>? parameters,
-      @JsonKey(name: 'requestBody') OpenApiPathMethodRequestBody? requestBody,
-      @JsonKey(name: 'responses')
-      Map<String, OpenApiPathMethodResponse>? responses});
-
-  @override
-  $OpenApiPathMethodRequestBodyCopyWith<$Res>? get requestBody;
-}
-
-/// @nodoc
-class __$$OpenApiPathMethodImplCopyWithImpl<$Res>
-    extends _$OpenApiPathMethodCopyWithImpl<$Res, _$OpenApiPathMethodImpl>
-    implements _$$OpenApiPathMethodImplCopyWith<$Res> {
-  __$$OpenApiPathMethodImplCopyWithImpl(_$OpenApiPathMethodImpl _value,
-      $Res Function(_$OpenApiPathMethodImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of OpenApiPathMethod
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? tags = null,
-    Object? summary = freezed,
-    Object? description = freezed,
-    Object? operationId = freezed,
-    Object? deprecated = freezed,
-    Object? security = freezed,
-    Object? parameters = freezed,
-    Object? requestBody = freezed,
-    Object? responses = freezed,
-  }) {
-    return _then(_$OpenApiPathMethodImpl(
-      tags: null == tags
-          ? _value._tags
-          : tags // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      summary: freezed == summary
-          ? _value.summary
-          : summary // ignore: cast_nullable_to_non_nullable
-              as String?,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      operationId: freezed == operationId
-          ? _value.operationId
-          : operationId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      deprecated: freezed == deprecated
-          ? _value.deprecated
-          : deprecated // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      security: freezed == security
-          ? _value._security
-          : security // ignore: cast_nullable_to_non_nullable
-              as List<Map<String, List<dynamic>>>?,
-      parameters: freezed == parameters
-          ? _value._parameters
-          : parameters // ignore: cast_nullable_to_non_nullable
-              as List<OpenApiPathMethodParameter>?,
-      requestBody: freezed == requestBody
-          ? _value.requestBody
-          : requestBody // ignore: cast_nullable_to_non_nullable
-              as OpenApiPathMethodRequestBody?,
-      responses: freezed == responses
-          ? _value._responses
-          : responses // ignore: cast_nullable_to_non_nullable
-              as Map<String, OpenApiPathMethodResponse>?,
-    ));
-  }
-}
-
-/// @nodoc
 @JsonSerializable()
-class _$OpenApiPathMethodImpl extends _OpenApiPathMethod {
-  const _$OpenApiPathMethodImpl(
-      {@JsonKey(name: 'tags') required final List<String> tags,
-      @JsonKey(name: 'summary') required this.summary,
-      @JsonKey(name: 'description') required this.description,
-      @JsonKey(name: 'operationId') required this.operationId,
-      @JsonKey(name: 'deprecated') required this.deprecated,
-      @JsonKey(name: 'security')
-      final List<Map<String, List<dynamic>>>? security,
-      @JsonKey(name: 'parameters')
-      required final List<OpenApiPathMethodParameter>? parameters,
-      @JsonKey(name: 'requestBody') required this.requestBody,
-      @JsonKey(name: 'responses')
-      required final Map<String, OpenApiPathMethodResponse>? responses})
-      : _tags = tags,
-        _security = security,
-        _parameters = parameters,
-        _responses = responses,
-        super._();
-
-  factory _$OpenApiPathMethodImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OpenApiPathMethodImplFromJson(json);
+class _OpenApiPathMethod extends OpenApiPathMethod {
+  const _OpenApiPathMethod({
+    @JsonKey(name: 'tags') required final List<String> tags,
+    @JsonKey(name: 'summary') required this.summary,
+    @JsonKey(name: 'description') required this.description,
+    @JsonKey(name: 'operationId') required this.operationId,
+    @JsonKey(name: 'deprecated') required this.deprecated,
+    @JsonKey(name: 'security') final List<Map<String, List<dynamic>>>? security,
+    @JsonKey(name: 'parameters')
+    required final List<OpenApiPathMethodParameter>? parameters,
+    @JsonKey(name: 'requestBody') required this.requestBody,
+    @JsonKey(name: 'responses')
+    required final Map<String, OpenApiPathMethodResponse>? responses,
+  }) : _tags = tags,
+       _security = security,
+       _parameters = parameters,
+       _responses = responses,
+       super._();
+  factory _OpenApiPathMethod.fromJson(Map<String, dynamic> json) =>
+      _$OpenApiPathMethodFromJson(json);
 
   final List<String> _tags;
   @override
@@ -759,16 +847,24 @@ class _$OpenApiPathMethodImpl extends _OpenApiPathMethod {
     return EqualUnmodifiableMapView(value);
   }
 
+  /// Create a copy of OpenApiPathMethod
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'OpenApiPathMethod(tags: $tags, summary: $summary, description: $description, operationId: $operationId, deprecated: $deprecated, security: $security, parameters: $parameters, requestBody: $requestBody, responses: $responses)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$OpenApiPathMethodCopyWith<_OpenApiPathMethod> get copyWith =>
+      __$OpenApiPathMethodCopyWithImpl<_OpenApiPathMethod>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$OpenApiPathMethodToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OpenApiPathMethodImpl &&
+            other is _OpenApiPathMethod &&
             const DeepCollectionEquality().equals(other._tags, _tags) &&
             (identical(other.summary, summary) || other.summary == summary) &&
             (identical(other.description, description) ||
@@ -778,161 +874,243 @@ class _$OpenApiPathMethodImpl extends _OpenApiPathMethod {
             (identical(other.deprecated, deprecated) ||
                 other.deprecated == deprecated) &&
             const DeepCollectionEquality().equals(other._security, _security) &&
-            const DeepCollectionEquality()
-                .equals(other._parameters, _parameters) &&
+            const DeepCollectionEquality().equals(
+              other._parameters,
+              _parameters,
+            ) &&
             (identical(other.requestBody, requestBody) ||
                 other.requestBody == requestBody) &&
-            const DeepCollectionEquality()
-                .equals(other._responses, _responses));
+            const DeepCollectionEquality().equals(
+              other._responses,
+              _responses,
+            ));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_tags),
-      summary,
-      description,
-      operationId,
-      deprecated,
-      const DeepCollectionEquality().hash(_security),
-      const DeepCollectionEquality().hash(_parameters),
-      requestBody,
-      const DeepCollectionEquality().hash(_responses));
-
-  /// Create a copy of OpenApiPathMethod
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$OpenApiPathMethodImplCopyWith<_$OpenApiPathMethodImpl> get copyWith =>
-      __$$OpenApiPathMethodImplCopyWithImpl<_$OpenApiPathMethodImpl>(
-          this, _$identity);
+    runtimeType,
+    const DeepCollectionEquality().hash(_tags),
+    summary,
+    description,
+    operationId,
+    deprecated,
+    const DeepCollectionEquality().hash(_security),
+    const DeepCollectionEquality().hash(_parameters),
+    requestBody,
+    const DeepCollectionEquality().hash(_responses),
+  );
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$$OpenApiPathMethodImplToJson(
-      this,
-    );
+  String toString() {
+    return 'OpenApiPathMethod(tags: $tags, summary: $summary, description: $description, operationId: $operationId, deprecated: $deprecated, security: $security, parameters: $parameters, requestBody: $requestBody, responses: $responses)';
   }
 }
 
-abstract class _OpenApiPathMethod extends OpenApiPathMethod {
-  const factory _OpenApiPathMethod(
-          {@JsonKey(name: 'tags') required final List<String> tags,
-          @JsonKey(name: 'summary') required final String? summary,
-          @JsonKey(name: 'description') required final String? description,
-          @JsonKey(name: 'operationId') required final String? operationId,
-          @JsonKey(name: 'deprecated') required final bool? deprecated,
-          @JsonKey(name: 'security')
-          final List<Map<String, List<dynamic>>>? security,
-          @JsonKey(name: 'parameters')
-          required final List<OpenApiPathMethodParameter>? parameters,
-          @JsonKey(name: 'requestBody')
-          required final OpenApiPathMethodRequestBody? requestBody,
-          @JsonKey(name: 'responses')
-          required final Map<String, OpenApiPathMethodResponse>? responses}) =
-      _$OpenApiPathMethodImpl;
-  const _OpenApiPathMethod._() : super._();
+/// @nodoc
+abstract mixin class _$OpenApiPathMethodCopyWith<$Res>
+    implements $OpenApiPathMethodCopyWith<$Res> {
+  factory _$OpenApiPathMethodCopyWith(
+    _OpenApiPathMethod value,
+    $Res Function(_OpenApiPathMethod) _then,
+  ) = __$OpenApiPathMethodCopyWithImpl;
+  @override
+  @useResult
+  $Res call({
+    @JsonKey(name: 'tags') List<String> tags,
+    @JsonKey(name: 'summary') String? summary,
+    @JsonKey(name: 'description') String? description,
+    @JsonKey(name: 'operationId') String? operationId,
+    @JsonKey(name: 'deprecated') bool? deprecated,
+    @JsonKey(name: 'security') List<Map<String, List<dynamic>>>? security,
+    @JsonKey(name: 'parameters') List<OpenApiPathMethodParameter>? parameters,
+    @JsonKey(name: 'requestBody') OpenApiPathMethodRequestBody? requestBody,
+    @JsonKey(name: 'responses')
+    Map<String, OpenApiPathMethodResponse>? responses,
+  });
 
-  factory _OpenApiPathMethod.fromJson(Map<String, dynamic> json) =
-      _$OpenApiPathMethodImpl.fromJson;
+  @override
+  $OpenApiPathMethodRequestBodyCopyWith<$Res>? get requestBody;
+}
 
-  @override
-  @JsonKey(name: 'tags')
-  List<String> get tags;
-  @override
-  @JsonKey(name: 'summary')
-  String? get summary;
-  @override
-  @JsonKey(name: 'description')
-  String? get description;
-  @override
-  @JsonKey(name: 'operationId')
-  String? get operationId;
-  @override
-  @JsonKey(name: 'deprecated')
-  bool? get deprecated;
-  @override
-  @JsonKey(name: 'security')
-  List<Map<String, List<dynamic>>>? get security;
-  @override
-  @JsonKey(name: 'parameters')
-  List<OpenApiPathMethodParameter>? get parameters;
-  @override
-  @JsonKey(name: 'requestBody')
-  OpenApiPathMethodRequestBody? get requestBody;
-  @override
-  @JsonKey(name: 'responses')
-  Map<String, OpenApiPathMethodResponse>? get responses;
+/// @nodoc
+class __$OpenApiPathMethodCopyWithImpl<$Res>
+    implements _$OpenApiPathMethodCopyWith<$Res> {
+  __$OpenApiPathMethodCopyWithImpl(this._self, this._then);
+
+  final _OpenApiPathMethod _self;
+  final $Res Function(_OpenApiPathMethod) _then;
 
   /// Create a copy of OpenApiPathMethod
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OpenApiPathMethodImplCopyWith<_$OpenApiPathMethodImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? tags = null,
+    Object? summary = freezed,
+    Object? description = freezed,
+    Object? operationId = freezed,
+    Object? deprecated = freezed,
+    Object? security = freezed,
+    Object? parameters = freezed,
+    Object? requestBody = freezed,
+    Object? responses = freezed,
+  }) {
+    return _then(
+      _OpenApiPathMethod(
+        tags:
+            null == tags
+                ? _self._tags
+                : tags // ignore: cast_nullable_to_non_nullable
+                    as List<String>,
+        summary:
+            freezed == summary
+                ? _self.summary
+                : summary // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        description:
+            freezed == description
+                ? _self.description
+                : description // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        operationId:
+            freezed == operationId
+                ? _self.operationId
+                : operationId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        deprecated:
+            freezed == deprecated
+                ? _self.deprecated
+                : deprecated // ignore: cast_nullable_to_non_nullable
+                    as bool?,
+        security:
+            freezed == security
+                ? _self._security
+                : security // ignore: cast_nullable_to_non_nullable
+                    as List<Map<String, List<dynamic>>>?,
+        parameters:
+            freezed == parameters
+                ? _self._parameters
+                : parameters // ignore: cast_nullable_to_non_nullable
+                    as List<OpenApiPathMethodParameter>?,
+        requestBody:
+            freezed == requestBody
+                ? _self.requestBody
+                : requestBody // ignore: cast_nullable_to_non_nullable
+                    as OpenApiPathMethodRequestBody?,
+        responses:
+            freezed == responses
+                ? _self._responses
+                : responses // ignore: cast_nullable_to_non_nullable
+                    as Map<String, OpenApiPathMethodResponse>?,
+      ),
+    );
+  }
 
-OpenApiPathMethodParameter _$OpenApiPathMethodParameterFromJson(
-    Map<String, dynamic> json) {
-  return _OpenApiPathMethodParameter.fromJson(json);
+  /// Create a copy of OpenApiPathMethod
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $OpenApiPathMethodRequestBodyCopyWith<$Res>? get requestBody {
+    if (_self.requestBody == null) {
+      return null;
+    }
+
+    return $OpenApiPathMethodRequestBodyCopyWith<$Res>(_self.requestBody!, (
+      value,
+    ) {
+      return _then(_self.copyWith(requestBody: value));
+    });
+  }
 }
 
 /// @nodoc
 mixin _$OpenApiPathMethodParameter {
   @JsonKey(name: 'name')
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @JsonKey(name: 'in')
-  OpenApiPathMethodParameterType get in_ => throw _privateConstructorUsedError;
+  OpenApiPathMethodParameterType get in_;
   @JsonKey(name: 'required')
-  bool? get required_ => throw _privateConstructorUsedError;
+  bool? get required_;
   @OpenApiSchemaJsonConverter()
   @JsonKey(name: 'schema')
-  OpenApiSchema get schema => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
-  String? get example => throw _privateConstructorUsedError;
-
-  /// Serializes this OpenApiPathMethodParameter to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  OpenApiSchema get schema;
+  String? get description;
+  String? get example;
 
   /// Create a copy of OpenApiPathMethodParameter
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $OpenApiPathMethodParameterCopyWith<OpenApiPathMethodParameter>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith =>
+      _$OpenApiPathMethodParameterCopyWithImpl<OpenApiPathMethodParameter>(
+        this as OpenApiPathMethodParameter,
+        _$identity,
+      );
+
+  /// Serializes this OpenApiPathMethodParameter to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is OpenApiPathMethodParameter &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.in_, in_) || other.in_ == in_) &&
+            (identical(other.required_, required_) ||
+                other.required_ == required_) &&
+            (identical(other.schema, schema) || other.schema == schema) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.example, example) || other.example == example));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+    runtimeType,
+    name,
+    in_,
+    required_,
+    schema,
+    description,
+    example,
+  );
+
+  @override
+  String toString() {
+    return 'OpenApiPathMethodParameter(name: $name, in_: $in_, required_: $required_, schema: $schema, description: $description, example: $example)';
+  }
 }
 
 /// @nodoc
-abstract class $OpenApiPathMethodParameterCopyWith<$Res> {
-  factory $OpenApiPathMethodParameterCopyWith(OpenApiPathMethodParameter value,
-          $Res Function(OpenApiPathMethodParameter) then) =
-      _$OpenApiPathMethodParameterCopyWithImpl<$Res,
-          OpenApiPathMethodParameter>;
+abstract mixin class $OpenApiPathMethodParameterCopyWith<$Res> {
+  factory $OpenApiPathMethodParameterCopyWith(
+    OpenApiPathMethodParameter value,
+    $Res Function(OpenApiPathMethodParameter) _then,
+  ) = _$OpenApiPathMethodParameterCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'name') String name,
-      @JsonKey(name: 'in') OpenApiPathMethodParameterType in_,
-      @JsonKey(name: 'required') bool? required_,
-      @OpenApiSchemaJsonConverter()
-      @JsonKey(name: 'schema')
-      OpenApiSchema schema,
-      String? description,
-      String? example});
+  $Res call({
+    @JsonKey(name: 'name') String name,
+    @JsonKey(name: 'in') OpenApiPathMethodParameterType in_,
+    @JsonKey(name: 'required') bool? required_,
+    @OpenApiSchemaJsonConverter() @JsonKey(name: 'schema') OpenApiSchema schema,
+    String? description,
+    String? example,
+  });
 
   $OpenApiSchemaCopyWith<$Res> get schema;
 }
 
 /// @nodoc
-class _$OpenApiPathMethodParameterCopyWithImpl<$Res,
-        $Val extends OpenApiPathMethodParameter>
+class _$OpenApiPathMethodParameterCopyWithImpl<$Res>
     implements $OpenApiPathMethodParameterCopyWith<$Res> {
-  _$OpenApiPathMethodParameterCopyWithImpl(this._value, this._then);
+  _$OpenApiPathMethodParameterCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final OpenApiPathMethodParameter _self;
+  final $Res Function(OpenApiPathMethodParameter) _then;
 
   /// Create a copy of OpenApiPathMethodParameter
   /// with the given fields replaced by the non-null parameter values.
@@ -946,32 +1124,40 @@ class _$OpenApiPathMethodParameterCopyWithImpl<$Res,
     Object? description = freezed,
     Object? example = freezed,
   }) {
-    return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      in_: null == in_
-          ? _value.in_
-          : in_ // ignore: cast_nullable_to_non_nullable
-              as OpenApiPathMethodParameterType,
-      required_: freezed == required_
-          ? _value.required_
-          : required_ // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      schema: null == schema
-          ? _value.schema
-          : schema // ignore: cast_nullable_to_non_nullable
-              as OpenApiSchema,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      example: freezed == example
-          ? _value.example
-          : example // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _self.copyWith(
+        name:
+            null == name
+                ? _self.name
+                : name // ignore: cast_nullable_to_non_nullable
+                    as String,
+        in_:
+            null == in_
+                ? _self.in_
+                : in_ // ignore: cast_nullable_to_non_nullable
+                    as OpenApiPathMethodParameterType,
+        required_:
+            freezed == required_
+                ? _self.required_
+                : required_ // ignore: cast_nullable_to_non_nullable
+                    as bool?,
+        schema:
+            null == schema
+                ? _self.schema
+                : schema // ignore: cast_nullable_to_non_nullable
+                    as OpenApiSchema,
+        description:
+            freezed == description
+                ? _self.description
+                : description // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        example:
+            freezed == example
+                ? _self.example
+                : example // ignore: cast_nullable_to_non_nullable
+                    as String?,
+      ),
+    );
   }
 
   /// Create a copy of OpenApiPathMethodParameter
@@ -979,103 +1165,25 @@ class _$OpenApiPathMethodParameterCopyWithImpl<$Res,
   @override
   @pragma('vm:prefer-inline')
   $OpenApiSchemaCopyWith<$Res> get schema {
-    return $OpenApiSchemaCopyWith<$Res>(_value.schema, (value) {
-      return _then(_value.copyWith(schema: value) as $Val);
+    return $OpenApiSchemaCopyWith<$Res>(_self.schema, (value) {
+      return _then(_self.copyWith(schema: value));
     });
   }
 }
 
 /// @nodoc
-abstract class _$$OpenApiPathMethodParameterImplCopyWith<$Res>
-    implements $OpenApiPathMethodParameterCopyWith<$Res> {
-  factory _$$OpenApiPathMethodParameterImplCopyWith(
-          _$OpenApiPathMethodParameterImpl value,
-          $Res Function(_$OpenApiPathMethodParameterImpl) then) =
-      __$$OpenApiPathMethodParameterImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'name') String name,
-      @JsonKey(name: 'in') OpenApiPathMethodParameterType in_,
-      @JsonKey(name: 'required') bool? required_,
-      @OpenApiSchemaJsonConverter()
-      @JsonKey(name: 'schema')
-      OpenApiSchema schema,
-      String? description,
-      String? example});
-
-  @override
-  $OpenApiSchemaCopyWith<$Res> get schema;
-}
-
-/// @nodoc
-class __$$OpenApiPathMethodParameterImplCopyWithImpl<$Res>
-    extends _$OpenApiPathMethodParameterCopyWithImpl<$Res,
-        _$OpenApiPathMethodParameterImpl>
-    implements _$$OpenApiPathMethodParameterImplCopyWith<$Res> {
-  __$$OpenApiPathMethodParameterImplCopyWithImpl(
-      _$OpenApiPathMethodParameterImpl _value,
-      $Res Function(_$OpenApiPathMethodParameterImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of OpenApiPathMethodParameter
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = null,
-    Object? in_ = null,
-    Object? required_ = freezed,
-    Object? schema = null,
-    Object? description = freezed,
-    Object? example = freezed,
-  }) {
-    return _then(_$OpenApiPathMethodParameterImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      in_: null == in_
-          ? _value.in_
-          : in_ // ignore: cast_nullable_to_non_nullable
-              as OpenApiPathMethodParameterType,
-      required_: freezed == required_
-          ? _value.required_
-          : required_ // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      schema: null == schema
-          ? _value.schema
-          : schema // ignore: cast_nullable_to_non_nullable
-              as OpenApiSchema,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      example: freezed == example
-          ? _value.example
-          : example // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
 @JsonSerializable()
-class _$OpenApiPathMethodParameterImpl extends _OpenApiPathMethodParameter {
-  const _$OpenApiPathMethodParameterImpl(
-      {@JsonKey(name: 'name') required this.name,
-      @JsonKey(name: 'in') required this.in_,
-      @JsonKey(name: 'required') required this.required_,
-      @OpenApiSchemaJsonConverter()
-      @JsonKey(name: 'schema')
-      required this.schema,
-      this.description,
-      this.example})
-      : super._();
-
-  factory _$OpenApiPathMethodParameterImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$OpenApiPathMethodParameterImplFromJson(json);
+class _OpenApiPathMethodParameter extends OpenApiPathMethodParameter {
+  const _OpenApiPathMethodParameter({
+    @JsonKey(name: 'name') required this.name,
+    @JsonKey(name: 'in') required this.in_,
+    @JsonKey(name: 'required') required this.required_,
+    @OpenApiSchemaJsonConverter() @JsonKey(name: 'schema') required this.schema,
+    this.description,
+    this.example,
+  }) : super._();
+  factory _OpenApiPathMethodParameter.fromJson(Map<String, dynamic> json) =>
+      _$OpenApiPathMethodParameterFromJson(json);
 
   @override
   @JsonKey(name: 'name')
@@ -1095,16 +1203,28 @@ class _$OpenApiPathMethodParameterImpl extends _OpenApiPathMethodParameter {
   @override
   final String? example;
 
+  /// Create a copy of OpenApiPathMethodParameter
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'OpenApiPathMethodParameter(name: $name, in_: $in_, required_: $required_, schema: $schema, description: $description, example: $example)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$OpenApiPathMethodParameterCopyWith<_OpenApiPathMethodParameter>
+  get copyWith =>
+      __$OpenApiPathMethodParameterCopyWithImpl<_OpenApiPathMethodParameter>(
+        this,
+        _$identity,
+      );
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$OpenApiPathMethodParameterToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OpenApiPathMethodParameterImpl &&
+            other is _OpenApiPathMethodParameter &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.in_, in_) || other.in_ == in_) &&
             (identical(other.required_, required_) ||
@@ -1118,222 +1238,135 @@ class _$OpenApiPathMethodParameterImpl extends _OpenApiPathMethodParameter {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, name, in_, required_, schema, description, example);
+    runtimeType,
+    name,
+    in_,
+    required_,
+    schema,
+    description,
+    example,
+  );
+
+  @override
+  String toString() {
+    return 'OpenApiPathMethodParameter(name: $name, in_: $in_, required_: $required_, schema: $schema, description: $description, example: $example)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$OpenApiPathMethodParameterCopyWith<$Res>
+    implements $OpenApiPathMethodParameterCopyWith<$Res> {
+  factory _$OpenApiPathMethodParameterCopyWith(
+    _OpenApiPathMethodParameter value,
+    $Res Function(_OpenApiPathMethodParameter) _then,
+  ) = __$OpenApiPathMethodParameterCopyWithImpl;
+  @override
+  @useResult
+  $Res call({
+    @JsonKey(name: 'name') String name,
+    @JsonKey(name: 'in') OpenApiPathMethodParameterType in_,
+    @JsonKey(name: 'required') bool? required_,
+    @OpenApiSchemaJsonConverter() @JsonKey(name: 'schema') OpenApiSchema schema,
+    String? description,
+    String? example,
+  });
+
+  @override
+  $OpenApiSchemaCopyWith<$Res> get schema;
+}
+
+/// @nodoc
+class __$OpenApiPathMethodParameterCopyWithImpl<$Res>
+    implements _$OpenApiPathMethodParameterCopyWith<$Res> {
+  __$OpenApiPathMethodParameterCopyWithImpl(this._self, this._then);
+
+  final _OpenApiPathMethodParameter _self;
+  final $Res Function(_OpenApiPathMethodParameter) _then;
 
   /// Create a copy of OpenApiPathMethodParameter
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$OpenApiPathMethodParameterImplCopyWith<_$OpenApiPathMethodParameterImpl>
-      get copyWith => __$$OpenApiPathMethodParameterImplCopyWithImpl<
-          _$OpenApiPathMethodParameterImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$OpenApiPathMethodParameterImplToJson(
-      this,
+  $Res call({
+    Object? name = null,
+    Object? in_ = null,
+    Object? required_ = freezed,
+    Object? schema = null,
+    Object? description = freezed,
+    Object? example = freezed,
+  }) {
+    return _then(
+      _OpenApiPathMethodParameter(
+        name:
+            null == name
+                ? _self.name
+                : name // ignore: cast_nullable_to_non_nullable
+                    as String,
+        in_:
+            null == in_
+                ? _self.in_
+                : in_ // ignore: cast_nullable_to_non_nullable
+                    as OpenApiPathMethodParameterType,
+        required_:
+            freezed == required_
+                ? _self.required_
+                : required_ // ignore: cast_nullable_to_non_nullable
+                    as bool?,
+        schema:
+            null == schema
+                ? _self.schema
+                : schema // ignore: cast_nullable_to_non_nullable
+                    as OpenApiSchema,
+        description:
+            freezed == description
+                ? _self.description
+                : description // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        example:
+            freezed == example
+                ? _self.example
+                : example // ignore: cast_nullable_to_non_nullable
+                    as String?,
+      ),
     );
   }
-}
-
-abstract class _OpenApiPathMethodParameter extends OpenApiPathMethodParameter {
-  const factory _OpenApiPathMethodParameter(
-      {@JsonKey(name: 'name') required final String name,
-      @JsonKey(name: 'in') required final OpenApiPathMethodParameterType in_,
-      @JsonKey(name: 'required') required final bool? required_,
-      @OpenApiSchemaJsonConverter()
-      @JsonKey(name: 'schema')
-      required final OpenApiSchema schema,
-      final String? description,
-      final String? example}) = _$OpenApiPathMethodParameterImpl;
-  const _OpenApiPathMethodParameter._() : super._();
-
-  factory _OpenApiPathMethodParameter.fromJson(Map<String, dynamic> json) =
-      _$OpenApiPathMethodParameterImpl.fromJson;
-
-  @override
-  @JsonKey(name: 'name')
-  String get name;
-  @override
-  @JsonKey(name: 'in')
-  OpenApiPathMethodParameterType get in_;
-  @override
-  @JsonKey(name: 'required')
-  bool? get required_;
-  @override
-  @OpenApiSchemaJsonConverter()
-  @JsonKey(name: 'schema')
-  OpenApiSchema get schema;
-  @override
-  String? get description;
-  @override
-  String? get example;
 
   /// Create a copy of OpenApiPathMethodParameter
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OpenApiPathMethodParameterImplCopyWith<_$OpenApiPathMethodParameterImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-OpenApiPathMethodResponse _$OpenApiPathMethodResponseFromJson(
-    Map<String, dynamic> json) {
-  return _OpenApiPathMethodResponse.fromJson(json);
-}
-
-/// @nodoc
-mixin _$OpenApiPathMethodResponse {
-  @JsonKey(name: 'description')
-  String? get description => throw _privateConstructorUsedError;
-  @JsonKey(name: 'content')
-  OpenApiContent? get content => throw _privateConstructorUsedError;
-
-  /// Serializes this OpenApiPathMethodResponse to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of OpenApiPathMethodResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $OpenApiPathMethodResponseCopyWith<OpenApiPathMethodResponse> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $OpenApiPathMethodResponseCopyWith<$Res> {
-  factory $OpenApiPathMethodResponseCopyWith(OpenApiPathMethodResponse value,
-          $Res Function(OpenApiPathMethodResponse) then) =
-      _$OpenApiPathMethodResponseCopyWithImpl<$Res, OpenApiPathMethodResponse>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'description') String? description,
-      @JsonKey(name: 'content') OpenApiContent? content});
-
-  $OpenApiContentCopyWith<$Res>? get content;
-}
-
-/// @nodoc
-class _$OpenApiPathMethodResponseCopyWithImpl<$Res,
-        $Val extends OpenApiPathMethodResponse>
-    implements $OpenApiPathMethodResponseCopyWith<$Res> {
-  _$OpenApiPathMethodResponseCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of OpenApiPathMethodResponse
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? description = freezed,
-    Object? content = freezed,
-  }) {
-    return _then(_value.copyWith(
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      content: freezed == content
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
-              as OpenApiContent?,
-    ) as $Val);
-  }
-
-  /// Create a copy of OpenApiPathMethodResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $OpenApiContentCopyWith<$Res>? get content {
-    if (_value.content == null) {
-      return null;
-    }
-
-    return $OpenApiContentCopyWith<$Res>(_value.content!, (value) {
-      return _then(_value.copyWith(content: value) as $Val);
+  $OpenApiSchemaCopyWith<$Res> get schema {
+    return $OpenApiSchemaCopyWith<$Res>(_self.schema, (value) {
+      return _then(_self.copyWith(schema: value));
     });
   }
 }
 
 /// @nodoc
-abstract class _$$OpenApiPathMethodResponseImplCopyWith<$Res>
-    implements $OpenApiPathMethodResponseCopyWith<$Res> {
-  factory _$$OpenApiPathMethodResponseImplCopyWith(
-          _$OpenApiPathMethodResponseImpl value,
-          $Res Function(_$OpenApiPathMethodResponseImpl) then) =
-      __$$OpenApiPathMethodResponseImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'description') String? description,
-      @JsonKey(name: 'content') OpenApiContent? content});
-
-  @override
-  $OpenApiContentCopyWith<$Res>? get content;
-}
-
-/// @nodoc
-class __$$OpenApiPathMethodResponseImplCopyWithImpl<$Res>
-    extends _$OpenApiPathMethodResponseCopyWithImpl<$Res,
-        _$OpenApiPathMethodResponseImpl>
-    implements _$$OpenApiPathMethodResponseImplCopyWith<$Res> {
-  __$$OpenApiPathMethodResponseImplCopyWithImpl(
-      _$OpenApiPathMethodResponseImpl _value,
-      $Res Function(_$OpenApiPathMethodResponseImpl) _then)
-      : super(_value, _then);
+mixin _$OpenApiPathMethodResponse {
+  @JsonKey(name: 'description')
+  String? get description;
+  @JsonKey(name: 'content')
+  OpenApiContent? get content;
 
   /// Create a copy of OpenApiPathMethodResponse
   /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? description = freezed,
-    Object? content = freezed,
-  }) {
-    return _then(_$OpenApiPathMethodResponseImpl(
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      content: freezed == content
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
-              as OpenApiContent?,
-    ));
-  }
-}
+  $OpenApiPathMethodResponseCopyWith<OpenApiPathMethodResponse> get copyWith =>
+      _$OpenApiPathMethodResponseCopyWithImpl<OpenApiPathMethodResponse>(
+        this as OpenApiPathMethodResponse,
+        _$identity,
+      );
 
-/// @nodoc
-@JsonSerializable()
-class _$OpenApiPathMethodResponseImpl implements _OpenApiPathMethodResponse {
-  _$OpenApiPathMethodResponseImpl(
-      {@JsonKey(name: 'description') this.description,
-      @JsonKey(name: 'content') required this.content});
-
-  factory _$OpenApiPathMethodResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OpenApiPathMethodResponseImplFromJson(json);
-
-  @override
-  @JsonKey(name: 'description')
-  final String? description;
-  @override
-  @JsonKey(name: 'content')
-  final OpenApiContent? content;
-
-  @override
-  String toString() {
-    return 'OpenApiPathMethodResponse(description: $description, content: $content)';
-  }
+  /// Serializes this OpenApiPathMethodResponse to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OpenApiPathMethodResponseImpl &&
+            other is OpenApiPathMethodResponse &&
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.content, content) || other.content == content));
@@ -1343,203 +1376,213 @@ class _$OpenApiPathMethodResponseImpl implements _OpenApiPathMethodResponse {
   @override
   int get hashCode => Object.hash(runtimeType, description, content);
 
+  @override
+  String toString() {
+    return 'OpenApiPathMethodResponse(description: $description, content: $content)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $OpenApiPathMethodResponseCopyWith<$Res> {
+  factory $OpenApiPathMethodResponseCopyWith(
+    OpenApiPathMethodResponse value,
+    $Res Function(OpenApiPathMethodResponse) _then,
+  ) = _$OpenApiPathMethodResponseCopyWithImpl;
+  @useResult
+  $Res call({
+    @JsonKey(name: 'description') String? description,
+    @JsonKey(name: 'content') OpenApiContent? content,
+  });
+
+  $OpenApiContentCopyWith<$Res>? get content;
+}
+
+/// @nodoc
+class _$OpenApiPathMethodResponseCopyWithImpl<$Res>
+    implements $OpenApiPathMethodResponseCopyWith<$Res> {
+  _$OpenApiPathMethodResponseCopyWithImpl(this._self, this._then);
+
+  final OpenApiPathMethodResponse _self;
+  final $Res Function(OpenApiPathMethodResponse) _then;
+
   /// Create a copy of OpenApiPathMethodResponse
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
   @pragma('vm:prefer-inline')
-  _$$OpenApiPathMethodResponseImplCopyWith<_$OpenApiPathMethodResponseImpl>
-      get copyWith => __$$OpenApiPathMethodResponseImplCopyWithImpl<
-          _$OpenApiPathMethodResponseImpl>(this, _$identity);
-
   @override
-  Map<String, dynamic> toJson() {
-    return _$$OpenApiPathMethodResponseImplToJson(
-      this,
+  $Res call({Object? description = freezed, Object? content = freezed}) {
+    return _then(
+      _self.copyWith(
+        description:
+            freezed == description
+                ? _self.description
+                : description // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        content:
+            freezed == content
+                ? _self.content
+                : content // ignore: cast_nullable_to_non_nullable
+                    as OpenApiContent?,
+      ),
     );
   }
-}
-
-abstract class _OpenApiPathMethodResponse implements OpenApiPathMethodResponse {
-  factory _OpenApiPathMethodResponse(
-          {@JsonKey(name: 'description') final String? description,
-          @JsonKey(name: 'content') required final OpenApiContent? content}) =
-      _$OpenApiPathMethodResponseImpl;
-
-  factory _OpenApiPathMethodResponse.fromJson(Map<String, dynamic> json) =
-      _$OpenApiPathMethodResponseImpl.fromJson;
-
-  @override
-  @JsonKey(name: 'description')
-  String? get description;
-  @override
-  @JsonKey(name: 'content')
-  OpenApiContent? get content;
 
   /// Create a copy of OpenApiPathMethodResponse
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OpenApiPathMethodResponseImplCopyWith<_$OpenApiPathMethodResponseImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-OpenApiPathMethodRequestBody _$OpenApiPathMethodRequestBodyFromJson(
-    Map<String, dynamic> json) {
-  return _OpenApiPathMethodRequestBody.fromJson(json);
-}
-
-/// @nodoc
-mixin _$OpenApiPathMethodRequestBody {
-  @JsonKey(name: 'required')
-  bool? get required_ => throw _privateConstructorUsedError;
-  @JsonKey(name: 'content')
-  OpenApiContent get content => throw _privateConstructorUsedError;
-
-  /// Serializes this OpenApiPathMethodRequestBody to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of OpenApiPathMethodRequestBody
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $OpenApiPathMethodRequestBodyCopyWith<OpenApiPathMethodRequestBody>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $OpenApiPathMethodRequestBodyCopyWith<$Res> {
-  factory $OpenApiPathMethodRequestBodyCopyWith(
-          OpenApiPathMethodRequestBody value,
-          $Res Function(OpenApiPathMethodRequestBody) then) =
-      _$OpenApiPathMethodRequestBodyCopyWithImpl<$Res,
-          OpenApiPathMethodRequestBody>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'required') bool? required_,
-      @JsonKey(name: 'content') OpenApiContent content});
-
-  $OpenApiContentCopyWith<$Res> get content;
-}
-
-/// @nodoc
-class _$OpenApiPathMethodRequestBodyCopyWithImpl<$Res,
-        $Val extends OpenApiPathMethodRequestBody>
-    implements $OpenApiPathMethodRequestBodyCopyWith<$Res> {
-  _$OpenApiPathMethodRequestBodyCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of OpenApiPathMethodRequestBody
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? required_ = freezed,
-    Object? content = null,
-  }) {
-    return _then(_value.copyWith(
-      required_: freezed == required_
-          ? _value.required_
-          : required_ // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      content: null == content
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
-              as OpenApiContent,
-    ) as $Val);
-  }
+  $OpenApiContentCopyWith<$Res>? get content {
+    if (_self.content == null) {
+      return null;
+    }
 
-  /// Create a copy of OpenApiPathMethodRequestBody
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $OpenApiContentCopyWith<$Res> get content {
-    return $OpenApiContentCopyWith<$Res>(_value.content, (value) {
-      return _then(_value.copyWith(content: value) as $Val);
+    return $OpenApiContentCopyWith<$Res>(_self.content!, (value) {
+      return _then(_self.copyWith(content: value));
     });
   }
 }
 
 /// @nodoc
-abstract class _$$OpenApiPathMethodRequestBodyImplCopyWith<$Res>
-    implements $OpenApiPathMethodRequestBodyCopyWith<$Res> {
-  factory _$$OpenApiPathMethodRequestBodyImplCopyWith(
-          _$OpenApiPathMethodRequestBodyImpl value,
-          $Res Function(_$OpenApiPathMethodRequestBodyImpl) then) =
-      __$$OpenApiPathMethodRequestBodyImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'required') bool? required_,
-      @JsonKey(name: 'content') OpenApiContent content});
-
-  @override
-  $OpenApiContentCopyWith<$Res> get content;
-}
-
-/// @nodoc
-class __$$OpenApiPathMethodRequestBodyImplCopyWithImpl<$Res>
-    extends _$OpenApiPathMethodRequestBodyCopyWithImpl<$Res,
-        _$OpenApiPathMethodRequestBodyImpl>
-    implements _$$OpenApiPathMethodRequestBodyImplCopyWith<$Res> {
-  __$$OpenApiPathMethodRequestBodyImplCopyWithImpl(
-      _$OpenApiPathMethodRequestBodyImpl _value,
-      $Res Function(_$OpenApiPathMethodRequestBodyImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of OpenApiPathMethodRequestBody
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? required_ = freezed,
-    Object? content = null,
-  }) {
-    return _then(_$OpenApiPathMethodRequestBodyImpl(
-      required_: freezed == required_
-          ? _value.required_
-          : required_ // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      content: null == content
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
-              as OpenApiContent,
-    ));
-  }
-}
-
-/// @nodoc
 @JsonSerializable()
-class _$OpenApiPathMethodRequestBodyImpl
-    implements _OpenApiPathMethodRequestBody {
-  _$OpenApiPathMethodRequestBodyImpl(
-      {@JsonKey(name: 'required') this.required_,
-      @JsonKey(name: 'content') required this.content});
-
-  factory _$OpenApiPathMethodRequestBodyImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$OpenApiPathMethodRequestBodyImplFromJson(json);
+class _OpenApiPathMethodResponse implements OpenApiPathMethodResponse {
+  _OpenApiPathMethodResponse({
+    @JsonKey(name: 'description') this.description,
+    @JsonKey(name: 'content') required this.content,
+  });
+  factory _OpenApiPathMethodResponse.fromJson(Map<String, dynamic> json) =>
+      _$OpenApiPathMethodResponseFromJson(json);
 
   @override
-  @JsonKey(name: 'required')
-  final bool? required_;
+  @JsonKey(name: 'description')
+  final String? description;
   @override
   @JsonKey(name: 'content')
-  final OpenApiContent content;
+  final OpenApiContent? content;
+
+  /// Create a copy of OpenApiPathMethodResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$OpenApiPathMethodResponseCopyWith<_OpenApiPathMethodResponse>
+  get copyWith =>
+      __$OpenApiPathMethodResponseCopyWithImpl<_OpenApiPathMethodResponse>(
+        this,
+        _$identity,
+      );
 
   @override
-  String toString() {
-    return 'OpenApiPathMethodRequestBody(required_: $required_, content: $content)';
+  Map<String, dynamic> toJson() {
+    return _$OpenApiPathMethodResponseToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OpenApiPathMethodRequestBodyImpl &&
+            other is _OpenApiPathMethodResponse &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.content, content) || other.content == content));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, description, content);
+
+  @override
+  String toString() {
+    return 'OpenApiPathMethodResponse(description: $description, content: $content)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$OpenApiPathMethodResponseCopyWith<$Res>
+    implements $OpenApiPathMethodResponseCopyWith<$Res> {
+  factory _$OpenApiPathMethodResponseCopyWith(
+    _OpenApiPathMethodResponse value,
+    $Res Function(_OpenApiPathMethodResponse) _then,
+  ) = __$OpenApiPathMethodResponseCopyWithImpl;
+  @override
+  @useResult
+  $Res call({
+    @JsonKey(name: 'description') String? description,
+    @JsonKey(name: 'content') OpenApiContent? content,
+  });
+
+  @override
+  $OpenApiContentCopyWith<$Res>? get content;
+}
+
+/// @nodoc
+class __$OpenApiPathMethodResponseCopyWithImpl<$Res>
+    implements _$OpenApiPathMethodResponseCopyWith<$Res> {
+  __$OpenApiPathMethodResponseCopyWithImpl(this._self, this._then);
+
+  final _OpenApiPathMethodResponse _self;
+  final $Res Function(_OpenApiPathMethodResponse) _then;
+
+  /// Create a copy of OpenApiPathMethodResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({Object? description = freezed, Object? content = freezed}) {
+    return _then(
+      _OpenApiPathMethodResponse(
+        description:
+            freezed == description
+                ? _self.description
+                : description // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        content:
+            freezed == content
+                ? _self.content
+                : content // ignore: cast_nullable_to_non_nullable
+                    as OpenApiContent?,
+      ),
+    );
+  }
+
+  /// Create a copy of OpenApiPathMethodResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $OpenApiContentCopyWith<$Res>? get content {
+    if (_self.content == null) {
+      return null;
+    }
+
+    return $OpenApiContentCopyWith<$Res>(_self.content!, (value) {
+      return _then(_self.copyWith(content: value));
+    });
+  }
+}
+
+/// @nodoc
+mixin _$OpenApiPathMethodRequestBody {
+  @JsonKey(name: 'required')
+  bool? get required_;
+  @JsonKey(name: 'content')
+  OpenApiContent get content;
+
+  /// Create a copy of OpenApiPathMethodRequestBody
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $OpenApiPathMethodRequestBodyCopyWith<OpenApiPathMethodRequestBody>
+  get copyWith =>
+      _$OpenApiPathMethodRequestBodyCopyWithImpl<OpenApiPathMethodRequestBody>(
+        this as OpenApiPathMethodRequestBody,
+        _$identity,
+      );
+
+  /// Serializes this OpenApiPathMethodRequestBody to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is OpenApiPathMethodRequestBody &&
             (identical(other.required_, required_) ||
                 other.required_ == required_) &&
             (identical(other.content, content) || other.content == content));
@@ -1549,46 +1592,173 @@ class _$OpenApiPathMethodRequestBodyImpl
   @override
   int get hashCode => Object.hash(runtimeType, required_, content);
 
-  /// Create a copy of OpenApiPathMethodRequestBody
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$OpenApiPathMethodRequestBodyImplCopyWith<
-          _$OpenApiPathMethodRequestBodyImpl>
-      get copyWith => __$$OpenApiPathMethodRequestBodyImplCopyWithImpl<
-          _$OpenApiPathMethodRequestBodyImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$OpenApiPathMethodRequestBodyImplToJson(
-      this,
-    );
+  String toString() {
+    return 'OpenApiPathMethodRequestBody(required_: $required_, content: $content)';
   }
 }
 
-abstract class _OpenApiPathMethodRequestBody
-    implements OpenApiPathMethodRequestBody {
-  factory _OpenApiPathMethodRequestBody(
-          {@JsonKey(name: 'required') final bool? required_,
-          @JsonKey(name: 'content') required final OpenApiContent content}) =
-      _$OpenApiPathMethodRequestBodyImpl;
+/// @nodoc
+abstract mixin class $OpenApiPathMethodRequestBodyCopyWith<$Res> {
+  factory $OpenApiPathMethodRequestBodyCopyWith(
+    OpenApiPathMethodRequestBody value,
+    $Res Function(OpenApiPathMethodRequestBody) _then,
+  ) = _$OpenApiPathMethodRequestBodyCopyWithImpl;
+  @useResult
+  $Res call({
+    @JsonKey(name: 'required') bool? required_,
+    @JsonKey(name: 'content') OpenApiContent content,
+  });
 
-  factory _OpenApiPathMethodRequestBody.fromJson(Map<String, dynamic> json) =
-      _$OpenApiPathMethodRequestBodyImpl.fromJson;
+  $OpenApiContentCopyWith<$Res> get content;
+}
+
+/// @nodoc
+class _$OpenApiPathMethodRequestBodyCopyWithImpl<$Res>
+    implements $OpenApiPathMethodRequestBodyCopyWith<$Res> {
+  _$OpenApiPathMethodRequestBodyCopyWithImpl(this._self, this._then);
+
+  final OpenApiPathMethodRequestBody _self;
+  final $Res Function(OpenApiPathMethodRequestBody) _then;
+
+  /// Create a copy of OpenApiPathMethodRequestBody
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? required_ = freezed, Object? content = null}) {
+    return _then(
+      _self.copyWith(
+        required_:
+            freezed == required_
+                ? _self.required_
+                : required_ // ignore: cast_nullable_to_non_nullable
+                    as bool?,
+        content:
+            null == content
+                ? _self.content
+                : content // ignore: cast_nullable_to_non_nullable
+                    as OpenApiContent,
+      ),
+    );
+  }
+
+  /// Create a copy of OpenApiPathMethodRequestBody
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $OpenApiContentCopyWith<$Res> get content {
+    return $OpenApiContentCopyWith<$Res>(_self.content, (value) {
+      return _then(_self.copyWith(content: value));
+    });
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _OpenApiPathMethodRequestBody implements OpenApiPathMethodRequestBody {
+  _OpenApiPathMethodRequestBody({
+    @JsonKey(name: 'required') this.required_,
+    @JsonKey(name: 'content') required this.content,
+  });
+  factory _OpenApiPathMethodRequestBody.fromJson(Map<String, dynamic> json) =>
+      _$OpenApiPathMethodRequestBodyFromJson(json);
 
   @override
   @JsonKey(name: 'required')
-  bool? get required_;
+  final bool? required_;
   @override
   @JsonKey(name: 'content')
-  OpenApiContent get content;
+  final OpenApiContent content;
 
   /// Create a copy of OpenApiPathMethodRequestBody
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OpenApiPathMethodRequestBodyImplCopyWith<
-          _$OpenApiPathMethodRequestBodyImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$OpenApiPathMethodRequestBodyCopyWith<_OpenApiPathMethodRequestBody>
+  get copyWith => __$OpenApiPathMethodRequestBodyCopyWithImpl<
+    _OpenApiPathMethodRequestBody
+  >(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$OpenApiPathMethodRequestBodyToJson(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _OpenApiPathMethodRequestBody &&
+            (identical(other.required_, required_) ||
+                other.required_ == required_) &&
+            (identical(other.content, content) || other.content == content));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, required_, content);
+
+  @override
+  String toString() {
+    return 'OpenApiPathMethodRequestBody(required_: $required_, content: $content)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$OpenApiPathMethodRequestBodyCopyWith<$Res>
+    implements $OpenApiPathMethodRequestBodyCopyWith<$Res> {
+  factory _$OpenApiPathMethodRequestBodyCopyWith(
+    _OpenApiPathMethodRequestBody value,
+    $Res Function(_OpenApiPathMethodRequestBody) _then,
+  ) = __$OpenApiPathMethodRequestBodyCopyWithImpl;
+  @override
+  @useResult
+  $Res call({
+    @JsonKey(name: 'required') bool? required_,
+    @JsonKey(name: 'content') OpenApiContent content,
+  });
+
+  @override
+  $OpenApiContentCopyWith<$Res> get content;
+}
+
+/// @nodoc
+class __$OpenApiPathMethodRequestBodyCopyWithImpl<$Res>
+    implements _$OpenApiPathMethodRequestBodyCopyWith<$Res> {
+  __$OpenApiPathMethodRequestBodyCopyWithImpl(this._self, this._then);
+
+  final _OpenApiPathMethodRequestBody _self;
+  final $Res Function(_OpenApiPathMethodRequestBody) _then;
+
+  /// Create a copy of OpenApiPathMethodRequestBody
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({Object? required_ = freezed, Object? content = null}) {
+    return _then(
+      _OpenApiPathMethodRequestBody(
+        required_:
+            freezed == required_
+                ? _self.required_
+                : required_ // ignore: cast_nullable_to_non_nullable
+                    as bool?,
+        content:
+            null == content
+                ? _self.content
+                : content // ignore: cast_nullable_to_non_nullable
+                    as OpenApiContent,
+      ),
+    );
+  }
+
+  /// Create a copy of OpenApiPathMethodRequestBody
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $OpenApiContentCopyWith<$Res> get content {
+    return $OpenApiContentCopyWith<$Res>(_self.content, (value) {
+      return _then(_self.copyWith(content: value));
+    });
+  }
 }

@@ -10,7 +10,7 @@ part 'open_api_paths.g.dart';
 typedef OpenApiPaths = Map<String, OpenApiPath>;
 
 @freezed
-class OpenApiPath with _$OpenApiPath {
+abstract class OpenApiPath with _$OpenApiPath {
   factory OpenApiPath.fromJson(Map<String, dynamic> json) =>
       _$OpenApiPathFromJson(json);
   const OpenApiPath._();
@@ -49,7 +49,7 @@ class OpenApiPath with _$OpenApiPath {
 typedef OpenApiPathMethodResponses = Map<String, OpenApiPathMethodResponse>;
 
 @freezed
-class OpenApiPathMethod with _$OpenApiPathMethod {
+abstract class OpenApiPathMethod with _$OpenApiPathMethod {
   const OpenApiPathMethod._();
 
   const factory OpenApiPathMethod({
@@ -75,7 +75,7 @@ typedef OpenApiPathMethodTags = List<String>;
 typedef OpenApiPathMethodParameters = List<OpenApiPathMethodParameter>;
 
 @Freezed()
-class OpenApiPathMethodParameter with _$OpenApiPathMethodParameter {
+abstract class OpenApiPathMethodParameter with _$OpenApiPathMethodParameter {
   const OpenApiPathMethodParameter._();
 
   const factory OpenApiPathMethodParameter({
@@ -93,15 +93,10 @@ class OpenApiPathMethodParameter with _$OpenApiPathMethodParameter {
       _$OpenApiPathMethodParameterFromJson(json);
 }
 
-enum OpenApiPathMethodParameterType {
-  query,
-  path,
-  header,
-  cookie,
-}
+enum OpenApiPathMethodParameterType { query, path, header, cookie }
 
 @freezed
-class OpenApiPathMethodResponse with _$OpenApiPathMethodResponse {
+abstract class OpenApiPathMethodResponse with _$OpenApiPathMethodResponse {
   factory OpenApiPathMethodResponse({
     @JsonKey(name: 'description') String? description,
     @JsonKey(name: 'content') required OpenApiContent? content,
@@ -112,7 +107,8 @@ class OpenApiPathMethodResponse with _$OpenApiPathMethodResponse {
 }
 
 @freezed
-class OpenApiPathMethodRequestBody with _$OpenApiPathMethodRequestBody {
+abstract class OpenApiPathMethodRequestBody
+    with _$OpenApiPathMethodRequestBody {
   factory OpenApiPathMethodRequestBody({
     @JsonKey(name: 'required') bool? required_,
     @JsonKey(name: 'content') required OpenApiContent content,

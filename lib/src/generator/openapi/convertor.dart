@@ -8,33 +8,40 @@ String convertOpenApiAnyOfToDartType(
   SwaggerToDartConfig config,
 ) {
   String className = '';
-  bool isNullable = false;
+  final isNullable = value.anyOf!.any(
+    (e) => e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_,
+  );
 
   for (final schema in value.anyOf!) {
-    className += schema.map(
-      type: (value) {
-        if (value.type == OpenApiSchemaVarType.null_) {
-          isNullable = true;
-          return '';
-        }
-
-        return config.dartType(
-          type: value.type,
-          format: value.format,
-          genericType: value.items?.mapOrNull(
-            ref: (value) => config.renameRefClass(value),
-            anyOf: (value) => convertOpenApiAnyOfToDartType(value, config),
-            oneOf: (value) =>
-                generateOpenApiOneOfToDartType(className, value, config),
+    className += switch (schema) {
+      OpenApiSchemaType value => config.dartType(
+        type: value.type,
+        format: value.format,
+        genericType: switch (value.items) {
+          OpenApiSchemaRef value => config.renameRefClass(value),
+          OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
+            value,
+            config,
           ),
-          items: value.items,
-          title: value.title,
-        );
-      },
-      ref: (value) => config.renameRefClass(value),
-      anyOf: (value) => convertOpenApiAnyOfToDartType(value, config),
-      oneOf: (value) => '',
-    );
+          OpenApiSchemaOneOf value => generateOpenApiOneOfToDartType(
+            className,
+            value,
+            config,
+          ),
+
+          _ => null,
+        },
+        items: value.items,
+        title: value.title,
+      ),
+      OpenApiSchemaRef value => config.renameRefClass(value),
+      OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(value, config),
+      OpenApiSchemaOneOf value => generateOpenApiOneOfToDartType(
+        className,
+        value,
+        config,
+      ),
+    };
   }
 
   return isNullable ? '$className?' : 'dynamic';
@@ -50,11 +57,9 @@ String generateOpenApiOneOfToDartType(
 
   // Generate Freezed Union Class
   final unionTypes = <(String, String)>[];
-  model.discriminator.mapping.entries.map(
-    (e) {
-      unionTypes.add((e.key, config.renameClass(e.value.split('/').last)));
-    },
-  ).toList();
+  model.discriminator.mapping.entries.map((e) {
+    unionTypes.add((e.key, config.renameClass(e.value.split('/').last)));
+  }).toList();
 
   final content = '''
 import 'dart:io';
@@ -72,7 +77,7 @@ part '${filename}.g.dart';
 /// ${key}
 ${model.description == null ? '' : commentLine(model.description!)}
 @freezed
-class ${className} with _\$${className} {
+abstract class ${className} with _\$${className} {
   const factory ${className}.fallback() = ${className}Fallback;
 
   

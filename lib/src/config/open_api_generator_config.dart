@@ -57,27 +57,34 @@ class SwaggerToDartConfig {
       case OpenApiSchemaVarType.boolean:
         return 'bool';
       case OpenApiSchemaVarType.array:
-        final className = items?.map(
-          type: (value) {
-            return dartType(
-              type: value.type,
-              format: value.format,
-              genericType: value.items?.mapOrNull(
-                ref: (value) => renameRefClass(value),
-                anyOf: (value) => convertOpenApiAnyOfToDartType(value, this),
+        final className = switch (items) {
+          OpenApiSchemaType value => dartType(
+            type: value.type,
+            format: value.format,
+            genericType: switch (value.items) {
+              OpenApiSchemaRef value => renameRefClass(value),
+              OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
+                value,
+                this,
               ),
-              items: value.items,
-              title: value.title,
-            );
-          },
-          ref: (value) => renameRefClass(value),
-          anyOf: (value) => convertOpenApiAnyOfToDartType(value, this),
-          oneOf: (value) => generateOpenApiOneOfToDartType(
+              _ => null,
+            },
+            items: value.items,
+            title: value.title,
+          ),
+          OpenApiSchemaRef value => renameRefClass(value),
+          OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
+            value,
+            this,
+          ),
+          OpenApiSchemaOneOf value => generateOpenApiOneOfToDartType(
             '${value.title ?? title}UnionResponse',
             value,
             this,
           ),
-        );
+          null => null,
+        };
+
         if (className == null) return 'List<dynamic>';
 
         return 'List<$className>';
