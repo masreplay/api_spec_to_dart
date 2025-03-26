@@ -7,11 +7,11 @@ funding: [https://github.com/sponsors/masreplay]
 topics: [swagger, openapi, generator, freezed, retrofit]
 
 environment:
-  sdk: ">=3.5.0 <4.0.0"
+  sdk: ^3.7.0
 
 dependencies:
   collection: ^1.18.0
-  freezed_annotation: ^2.4.4
+  freezed_annotation: ^3.0.0
   json_annotation: ^4.9.0
   logger: ^2.5.0
   path: ^1.9.1
@@ -19,7 +19,7 @@ dependencies:
 
 dev_dependencies:
   build_runner: ^2.4.13
-  freezed: ^2.5.7
-  json_serializable: ^6.9.0
-  lints: ^4.0.0
+  freezed: ^3.0.4
+  json_serializable: ^6.9.4
+  lints: ^5.1.1
   test: ^1.24.0
