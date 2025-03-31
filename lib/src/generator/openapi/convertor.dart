@@ -8,7 +8,7 @@ String convertOpenApiAnyOfToDartType(
   SwaggerToDartConfig config,
 ) {
   String className = '';
-  late final bool isNullable;
+  bool isNullable = false;
 
   for (final schema in value.anyOf!) {
     switch (schema) {

@@ -61,27 +61,29 @@ Future<Map<String, dynamic>> readYamlFile(String path) async {
 
   final YamlMap yaml = loadYaml(await file.readAsString());
 
-  return yaml.toMap();
+  final map = convertYamlMapToMap(yaml);
+  return map;
 }
 
-extension on YamlMap {
-  Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
+Map<String, dynamic> convertYamlMapToMap(YamlMap yamlMap) {
+  final map = <String, dynamic>{};
 
-    for (final entry in entries) {
-      if (entry.value case final YamlMap map) {
-        map[entry.key.toString()] = map.toMap();
-      } else if (entry.value is YamlList) {
-        map[entry.key.toString()] =
-            (entry.value as YamlList)
-                .map((e) => e is YamlMap ? e.toMap() : e)
-                .toList();
-      } else if (entry.value is YamlScalar) {
-        map[entry.key.toString()] = entry.value.toString();
-      } else {
-        map[entry.key.toString()] = entry.value.toString();
-      }
+  for (final entry in yamlMap.entries) {
+    if (entry.value is YamlMap || entry.value is Map) {
+      map[entry.key.toString()] = convertYamlMapToMap(entry.value);
+    } else if (entry.value is YamlList) {
+      map[entry.key.toString()] =
+          (entry.value as YamlList)
+              .map((e) => e is YamlMap ? convertYamlMapToMap(e) : e)
+              .toList();
+    } else if (entry.value is List) {
+      map[entry.key.toString()] =
+          (entry.value as List)
+              .map((e) => e is YamlMap ? convertYamlMapToMap(e) : e)
+              .toList();
+    } else {
+      map[entry.key.toString()] = entry.value.toString();
     }
-    return map;
   }
+  return map;
 }

@@ -1,6 +1,5 @@
 scripts:
   s: |
-    fvm dart run bin/gen.dart
     fvm dart run swagger_to_dart
     exports
     rps g

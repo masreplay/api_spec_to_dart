@@ -5,6 +5,9 @@ import 'package:dio/dio.dart';
 
 import '../../convertors.dart';
 import 'package:swagger_api_client/src/gen/models/models.dart';
+     
+    
+
 
 part 'message.freezed.dart';
 part 'message.g.dart';
@@ -19,10 +22,13 @@ abstract class Message with _$Message {
 
   @JsonSerializable(converters: convertors)
   const factory Message({
-    /// message
-    @JsonKey(name: Message.messageKey) required String message,
-  }) = _Message;
+/// message
+@JsonKey(name: Message.messageKey)
+required String message,  }) = _Message;
 
-  factory Message.fromJson(Map<String, dynamic> json) =>
-      _$MessageFromJson(json);
+  factory Message.fromJson(
+    Map<String, dynamic> json,
+  ) => _$MessageFromJson(
+    json,
+  );
 }
