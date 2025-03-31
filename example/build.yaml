@@ -1,0 +1,27 @@
+global_options:
+  freezed:
+    runs_before:
+      - json_serializable
+  json_serializable:
+    runs_before:
+      - retrofit_generator
+targets:
+  $default:
+    builders:
+      json_serializable:
+        options:
+          create_factory: true
+          create_to_json: true
+          explicit_to_json: true
+          field_rename: snake
+          include_if_null: false
+      freezed:
+        options:
+          union_key: type
+          format: false
+          copy_with: true
+          map: true
+          when:
+            when: true
+            maybe_when: true
+            when_or_null: true

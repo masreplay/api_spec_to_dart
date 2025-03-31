@@ -1,0 +1,8 @@
+swagger_to_dart:
+  input_directory: schema/swagger.json
+  output_directory: lib/src/gen
+
+  skipped_parameters:
+    - "Accept-Language"
+    - "X-Language"
+    - "X-Platform"
