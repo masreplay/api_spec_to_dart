@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:path/path.dart' as path;
+import 'package:pubspec_parse/pubspec_parse.dart';
+import 'package:swagger_to_dart/pubspec.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 class SwaggerToDartConfig {
@@ -10,7 +12,7 @@ class SwaggerToDartConfig {
 
   final SwaggerToDartYaml swaggerToDart;
 
-  final PubspecYaml pubspec;
+  final Pubspec pubspec;
 
   String get modelsOutputDirectory {
     return path.join(swaggerToDart.outputDirectory, 'models');
@@ -22,7 +24,7 @@ class SwaggerToDartConfig {
 
   String get importModelsCode {
     return '''import 'package:${pubspec.name}/src/gen/models/models.dart';
-    ${pubspec.isFlutter ? "import 'package:flutter/material.dart';" : ''} 
+    ${pubspec.isFlutterProject ? "import 'package:flutter/material.dart';" : ''} 
     ''';
   }
 
@@ -45,7 +47,7 @@ class SwaggerToDartConfig {
           'color-hex' => 'Color',
           'binary' => 'MultipartFile',
           'uuid' => 'String',
-          'duration' => pubspec.isFlutter ? 'TimeOfDay' : 'String',
+          'duration' => pubspec.isFlutterProject ? 'TimeOfDay' : 'String',
           'uri' => 'Uri',
           'time' => 'TimeOfDay',
           _ => 'String',
@@ -138,7 +140,7 @@ class SwaggerToDartConfig {
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
       'swagger_to_dart': swaggerToDart.toJson(),
-      'pubspec': pubspec.toJson(),
+      'pubspec': pubspec.toString(),
     };
   }
 }
@@ -147,3 +149,75 @@ String _renameProtect(String name) {
   // TODO(mohammed.atheer): handle dart keywords
   return name;
 }
+
+const keywords = {
+  'abstract',
+  'as',
+  'assert',
+  'async',
+  'await',
+  'base',
+  'break',
+  'case',
+  'catch',
+  'class',
+  'const',
+  'continue',
+  'covariant',
+  'default',
+  'deferred',
+  'do',
+  'dynamic',
+  'else',
+  'enum',
+  'export',
+  'extends',
+  'extension',
+  'external',
+  'factory',
+  'false',
+  'var',
+  'final class',
+  'finally',
+  'for',
+  'Function',
+  'get',
+  'hide',
+  'if',
+  'implements',
+  'import',
+  'in',
+  'interface',
+  'is',
+  'late',
+  'library',
+  'mixin',
+  'new',
+  'null',
+  'of',
+  'on',
+  'operator',
+  'part',
+  'required',
+  'rethrow',
+  'return',
+  'sealed',
+  'set',
+  'show',
+  'static',
+  'super',
+  'switch',
+  'sync',
+  'this',
+  'throw',
+  'true',
+  'try',
+  'type',
+  'typedef',
+  'final',
+  'void',
+  'when',
+  'with',
+  'while',
+  'yield',
+};

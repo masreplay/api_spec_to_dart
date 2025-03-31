@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:path/path.dart' as path;
+import 'package:pubspec_parse/pubspec_parse.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 import 'package:yaml/yaml.dart';
 
@@ -8,17 +9,19 @@ Future<void> main(List<String> args) async {
   try {
     final String rootDir = Directory.current.path;
 
-    final pubspec = PubspecYaml.fromYaml(
-      await readYamlFile(path.join(rootDir, PubspecYaml.filename)),
+    final pubspecPath = path.join(rootDir, 'pubspec.yaml');
+    final pubspec = Pubspec.parse(
+      await File(pubspecPath).readAsString(),
+      sourceUrl: Uri.parse(pubspecPath),
     );
-
-    print(JsonFactory.instance.encode(pubspec.toJson()));
 
     final swaggerToDart = SwaggerToDartYaml.fromYaml(
       await readYamlFile(path.join(rootDir, SwaggerToDartYaml.filename)),
     );
 
-    print(JsonFactory.instance.encode(swaggerToDart.toJson()));
+    final genDir = Directory(swaggerToDart.outputDirectory);
+    if (genDir.existsSync()) genDir.deleteSync(recursive: true);
+    genDir.createSync(recursive: true);
 
     final config = SwaggerToDartConfig(
       pubspec: pubspec,
@@ -33,8 +36,8 @@ Future<void> main(List<String> args) async {
 
     print('Code generation completed');
   } catch (e, s) {
-    print(s);
-    print(e);
+    print('Error: $e');
+    print('Stack trace: $s');
   }
 }
 
@@ -50,9 +53,29 @@ Future<Map<String, dynamic>> readYamlFile(String path) async {
 
   print('Reading pubspec.yaml...');
 
-  final yaml = loadYaml(await file.readAsString());
+  final YamlMap yaml = loadYaml(await file.readAsString());
 
-  final map = <String, dynamic>{...yaml};
+  return yaml.toMap();
+}
 
-  return map;
+extension on YamlMap {
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+
+    for (final entry in entries) {
+      if (entry.value case final YamlMap map) {
+        map[entry.key.toString()] = map.toMap();
+      } else if (entry.value is YamlList) {
+        map[entry.key.toString()] =
+            (entry.value as YamlList)
+                .map((e) => e is YamlMap ? e.toMap() : e)
+                .toList();
+      } else if (entry.value is YamlScalar) {
+        map[entry.key.toString()] = entry.value.toString();
+      } else {
+        map[entry.key.toString()] = entry.value.toString();
+      }
+    }
+    return map;
+  }
 }

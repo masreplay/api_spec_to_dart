@@ -8,40 +8,45 @@ String convertOpenApiAnyOfToDartType(
   SwaggerToDartConfig config,
 ) {
   String className = '';
-  final isNullable = value.anyOf!.any(
-    (e) => e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_,
-  );
+  late final bool isNullable;
 
   for (final schema in value.anyOf!) {
-    className += switch (schema) {
-      OpenApiSchemaType value => config.dartType(
-        type: value.type,
-        format: value.format,
-        genericType: switch (value.items) {
-          OpenApiSchemaRef value => config.renameRefClass(value),
-          OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
-            value,
-            config,
-          ),
-          OpenApiSchemaOneOf value => generateOpenApiOneOfToDartType(
-            className,
-            value,
-            config,
-          ),
+    switch (schema) {
+      case OpenApiSchemaType value:
+        if (value.type == OpenApiSchemaVarType.null_) {
+          isNullable = true;
+          break;
+        }
+        className += config.dartType(
+          type: value.type,
+          format: value.format,
+          genericType: switch (value.items) {
+            OpenApiSchemaRef value => config.renameRefClass(value),
+            OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
+              value,
+              config,
+            ),
+            OpenApiSchemaOneOf value => generateOpenApiOneOfToDartType(
+              className,
+              value,
+              config,
+            ),
 
-          _ => null,
-        },
-        items: value.items,
-        title: value.title,
-      ),
-      OpenApiSchemaRef value => config.renameRefClass(value),
-      OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(value, config),
-      OpenApiSchemaOneOf value => generateOpenApiOneOfToDartType(
-        className,
-        value,
-        config,
-      ),
-    };
+            _ => null,
+          },
+          items: value.items,
+          title: value.title,
+        );
+      case OpenApiSchemaRef value:
+        className += config.renameRefClass(value);
+        break;
+      case OpenApiSchemaAnyOf value:
+        className += convertOpenApiAnyOfToDartType(value, config);
+        break;
+      case OpenApiSchemaOneOf value:
+        className += generateOpenApiOneOfToDartType(className, value, config);
+        break;
+    }
   }
 
   return isNullable ? '$className?' : 'dynamic';
