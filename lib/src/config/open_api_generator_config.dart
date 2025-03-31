@@ -10,7 +10,7 @@ class SwaggerToDartConfig {
     required this.pubspec,
   });
 
-  final SwaggerToDartYaml swaggerToDart;
+  final SwaggerToDart swaggerToDart;
 
   final Pubspec pubspec;
 

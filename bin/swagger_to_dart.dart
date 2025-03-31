@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:path/path.dart' as path;
@@ -15,22 +16,27 @@ Future<void> main(List<String> args) async {
       sourceUrl: Uri.parse(pubspecPath),
     );
 
-    final swaggerToDart = SwaggerToDartYaml.fromYaml(
+    final swaggerToDartYaml = SwaggerToDartYaml.fromYamlMap(
       await readYamlFile(path.join(rootDir, SwaggerToDartYaml.filename)),
     );
+    final swaggerToDart = swaggerToDartYaml.swaggerToDart;
 
     final genDir = Directory(swaggerToDart.outputDirectory);
     if (genDir.existsSync()) genDir.deleteSync(recursive: true);
     genDir.createSync(recursive: true);
 
+    print('Generating code...');
+
+    final file = File(swaggerToDart.inputDirectory);
+    final json = file.readAsStringSync();
+    final map = jsonDecode(json);
+    final openApi = OpenApi.fromJson(map);
+
     final config = SwaggerToDartConfig(
       pubspec: pubspec,
       swaggerToDart: swaggerToDart,
     );
-
-    print('Generating code...');
-
-    final generator = OpenApiDartGenerator(config: config);
+    final generator = OpenApiDartGenerator(config: config, openApi: openApi);
 
     await generator.run();
 

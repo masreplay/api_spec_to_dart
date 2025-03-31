@@ -14,15 +14,11 @@ OpenApi readOpenApiFile(SwaggerToDartConfig config) {
 }
 
 class OpenApiDartGenerator {
-  OpenApiDartGenerator({
-    required this.config,
-  }) {
-    _openApi = readOpenApiFile(config);
-  }
+  OpenApiDartGenerator({required this.config, required this.openApi});
 
   final SwaggerToDartConfig config;
 
-  late final OpenApi _openApi;
+  final OpenApi openApi;
 
   Future<void> run() async {
     //=============== Model generator ===============
@@ -32,7 +28,7 @@ class OpenApiDartGenerator {
       Directory(config.modelsOutputDirectory).createSync(recursive: true);
     }
 
-    for (final entry in _openApi.components.schemas.entries) {
+    for (final entry in openApi.components.schemas.entries) {
       final result = modelGenerator.run(entry);
 
       final filepath = path.join(
@@ -57,14 +53,15 @@ class OpenApiDartGenerator {
 
     final List<({String tag, String path})> tagsPaths = [];
 
-    for (final entry in _openApi.paths.entries) {
-      final tag = [
-        entry.value.post,
-        entry.value.get,
-        entry.value.put,
-        entry.value.delete,
-        entry.value.patch,
-      ].where((element) => element != null).first;
+    for (final entry in openApi.paths.entries) {
+      final tag =
+          [
+            entry.value.post,
+            entry.value.get,
+            entry.value.put,
+            entry.value.delete,
+            entry.value.patch,
+          ].where((element) => element != null).first;
 
       final path = entry.key;
 
@@ -80,7 +77,7 @@ class OpenApiDartGenerator {
       print('Generating client for tag: $tag');
 
       final result = clientGenerator.generator(
-        path: _openApi.paths,
+        path: openApi.paths,
         clientName: tag,
         tagPaths: paths.map((e) => e.path).toList(),
       );
@@ -95,10 +92,14 @@ class OpenApiDartGenerator {
       await file.writeAsString(result.content);
     }
 
-    final clientsGenerator = OpenApiBaseClientGenerator(config: config);
+    final clientsGenerator = OpenApiBaseClientGenerator(
+      config: config,
+      openApi: openApi,
+    );
 
-    final clientsClassContent =
-        clientsGenerator.generator(clients: clients.keys.toList());
+    final clientsClassContent = clientsGenerator.generator(
+      clients: clients.keys.toList(),
+    );
 
     final clientsFilepath = path.join(
       config.clientsOutputDirectory,

@@ -3,15 +3,13 @@ import 'package:swagger_to_dart/swagger_to_dart.dart';
 class OpenApiBaseClientGenerator {
   const OpenApiBaseClientGenerator({
     required this.config,
+    required this.openApi,
   });
 
   final SwaggerToDartConfig config;
+  final OpenApi openApi;
 
-  String generator({
-    required List<String> clients,
-  }) {
-    final _openApi = readOpenApiFile(config);
-
+  String generator({required List<String> clients}) {
     final buffer = StringBuffer();
 
     buffer.writeln('''import 'package:dio/dio.dart';''');
@@ -20,10 +18,10 @@ class OpenApiBaseClientGenerator {
 
     buffer.writeln();
 
-    buffer.writeln(commentLine(_openApi.info.title));
-    if (_openApi.info.description case final description?)
+    buffer.writeln(commentLine(openApi.info.title));
+    if (openApi.info.description case final description?)
       buffer.writeln(commentLine(description));
-    if (_openApi.info.version case final version?)
+    if (openApi.info.version case final version?)
       buffer.writeln(commentLine(version));
     buffer.writeln(commentLine(DateTime.now().toString()));
 
@@ -32,9 +30,7 @@ class OpenApiBaseClientGenerator {
 
     buffer.writeln();
 
-    buffer.writeln(
-      '''${className}(this.dio);''',
-    );
+    buffer.writeln('''${className}(this.dio);''');
 
     buffer.writeln();
     buffer.writeln('''final Dio dio;''');
