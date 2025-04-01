@@ -1,4 +1,5 @@
 import 'package:swagger_to_dart/swagger_to_dart.dart';
+import 'class_content_generator.dart';
 
 /// Type definitions to improve code readability
 typedef OpenApiModel = MapEntry<String, OpenApiSchemas>;
@@ -36,7 +37,25 @@ class FieldGenerator {
   }) {
     final buffer = StringBuffer();
 
-    // Add comment if title or description is provided
+    _writeFieldDocumentation(buffer, title, description);
+    _writeDefaultAnnotation(buffer, freezedDefaultValue);
+    _writeDeprecationAnnotation(buffer, description, propertyName);
+    _writeJsonKeyAnnotation(buffer, className, propertyName);
+    _writeFieldDeclaration(
+      buffer,
+      propertyName,
+      propertyType,
+      freezedDefaultValue,
+    );
+
+    return buffer.toString();
+  }
+
+  void _writeFieldDocumentation(
+    StringBuffer buffer,
+    String? title,
+    String? description,
+  ) {
     if (title != null || description != null) {
       final commentParts = [
         if (title != null) title,
@@ -44,26 +63,18 @@ class FieldGenerator {
       ];
       buffer.writeln('/// ${commentParts.join(', ')}');
     }
+  }
 
-    // Add @Default annotation if default value is provided
+  void _writeDefaultAnnotation(
+    StringBuffer buffer,
+    Object? freezedDefaultValue,
+  ) {
     if (freezedDefaultValue != null) {
       buffer.writeln('@Default(${freezedDefaultValue})');
     }
-
-    _addDeprecationAnnotation(buffer, description, propertyName);
-
-    buffer.writeln('@JsonKey(name: $className.${propertyName}Key)');
-
-    // Add field declaration
-    if (freezedDefaultValue == null) {
-      buffer.write('required ');
-    }
-    buffer.write('$propertyType $propertyName,');
-
-    return buffer.toString();
   }
 
-  void _addDeprecationAnnotation(
+  void _writeDeprecationAnnotation(
     StringBuffer buffer,
     String? description,
     String propertyName,
@@ -77,6 +88,26 @@ class FieldGenerator {
         '@Deprecated("${description.substring(11, description.length - 1)}")',
       );
     }
+  }
+
+  void _writeJsonKeyAnnotation(
+    StringBuffer buffer,
+    String className,
+    String propertyName,
+  ) {
+    buffer.writeln('@JsonKey(name: $className.${propertyName}Key)');
+  }
+
+  void _writeFieldDeclaration(
+    StringBuffer buffer,
+    String propertyName,
+    String propertyType,
+    Object? freezedDefaultValue,
+  ) {
+    if (freezedDefaultValue == null) {
+      buffer.write('required ');
+    }
+    buffer.write('$propertyType $propertyName,');
   }
 }
 
@@ -218,12 +249,10 @@ class AnyOfPropertyGenerator implements PropertyGeneratorStrategy {
     String className,
     String propertyName,
   ) {
-    // Check if this is a nullable type (common pattern with anyOf)
     final isNullable = value.anyOf!.any(
       (e) => e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_,
     );
 
-    // Get all non-null types
     final nonNullSchemas =
         value.anyOf!
             .where(
@@ -233,40 +262,16 @@ class AnyOfPropertyGenerator implements PropertyGeneratorStrategy {
             )
             .toList();
 
-    // If only one non-null type, it's likely a nullable version of that type
     if (nonNullSchemas.length == 1) {
       final baseType = _getSchemaType(nonNullSchemas.first);
       return isNullable ? '$baseType?' : baseType;
     }
 
-    // For multiple types, create a union type
     final unionName = '${className}${propertyName.pascalCase}Union';
     final types =
         nonNullSchemas.map((schema) => _getSchemaType(schema)).toSet().toList();
 
-    // Generate the union type class
-    final unionClass = _generateUnionClass(unionName, types);
-
-    // Add the union class to the generated content
-    // Note: You'll need to modify the generator to handle this additional class
     return isNullable ? '$unionName?' : unionName;
-  }
-
-  String _generateUnionClass(String unionName, List<String> types) {
-    final buffer = StringBuffer();
-
-    buffer.writeln('@freezed');
-    buffer.writeln('class $unionName with _\$$unionName {');
-    buffer.writeln('  const factory $unionName({');
-
-    for (final type in types) {
-      buffer.writeln('    required $type value,');
-    }
-
-    buffer.writeln('  }) = _\$$unionName;');
-    buffer.writeln('}');
-
-    return buffer.toString();
   }
 
   String _getSchemaType(OpenApiSchema schema) {
@@ -303,8 +308,10 @@ class AnyOfPropertyGenerator implements PropertyGeneratorStrategy {
 
 /// Strategy for generating enum models
 class EnumModelStrategy implements ModelGenerationStrategy {
-  EnumModelStrategy(this.config);
+  EnumModelStrategy(this.config)
+    : contentGenerator = ClassContentGenerator(config);
   final SwaggerToDartConfig config;
+  final ClassContentGenerator contentGenerator;
 
   @override
   ({String filename, String content}) generate(OpenApiModel model) {
@@ -324,35 +331,13 @@ class EnumModelStrategy implements ModelGenerationStrategy {
       isNumber,
     );
 
-    final content = '''
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dio/dio.dart';
-
-import '../../convertors.dart';
-${config.importModelsCode}
-
-part '${filename}.g.dart';
-
-/// ${model.key}
-${model.value.description == null ? '' : commentLine(model.value.description!)}
-@JsonEnum(valueField: 'value', alwaysCreate: true)
-enum $className {
-$enumValues
-
-;
-const $className(this.value);
-
-factory $className.fromJson($type value) {
-  return values.firstWhere(
-    (e) => e.value == value,
-    orElse: () => values.first,
-  );
-}
-final $type value;
-
-$type toJson() => _\$${className}EnumMap[this]!;
-}
-''';
+    final content = contentGenerator.generateEnumClassContent(
+      className: className,
+      filename: filename,
+      enumValues: enumValues,
+      type: type,
+      model: model,
+    );
 
     return (filename: filename, content: content);
   }
@@ -395,9 +380,11 @@ class UnionModelStrategy implements ModelGenerationStrategy {
         OpenApiSchemaType: TypePropertyGenerator(config),
         OpenApiSchemaRef: RefPropertyGenerator(config),
         OpenApiSchemaAnyOf: AnyOfPropertyGenerator(config),
-      };
+      },
+      contentGenerator = ClassContentGenerator(config);
   final SwaggerToDartConfig config;
   final Map<Type, PropertyGeneratorStrategy> propertyGenerators;
+  final ClassContentGenerator contentGenerator;
 
   @override
   ({String filename, String content}) generate(OpenApiModel model) {
@@ -405,7 +392,6 @@ class UnionModelStrategy implements ModelGenerationStrategy {
     final className = config.renameClass(model.key);
     final properties = model.value.properties ?? {};
 
-    // Validate that this model has at least one oneOf property
     if (!properties.entries.any((entry) => entry.value is OpenApiSchemaOneOf)) {
       throw ArgumentError('Union model must have at least one oneOf property');
     }
@@ -413,14 +399,12 @@ class UnionModelStrategy implements ModelGenerationStrategy {
     final unionProps = <OneOfModel>[];
     final normalProps = StringBuffer();
 
-    // Process each property
     for (final entry in properties.entries) {
       final key = entry.key;
       final schema = entry.value;
       final propertyName = config.renameProperty(key);
 
       if (schema is OpenApiSchemaOneOf) {
-        // Handle oneOf discriminator for union types
         for (final mapping in schema.discriminator.mapping.entries) {
           unionProps.add((
             type: config.renameClass(mapping.value.split('/').last),
@@ -429,7 +413,6 @@ class UnionModelStrategy implements ModelGenerationStrategy {
           ));
         }
       } else {
-        // Handle regular properties
         final generator = propertyGenerators[schema.runtimeType];
         if (generator != null) {
           final fieldCode = generator.generateField(
@@ -443,7 +426,7 @@ class UnionModelStrategy implements ModelGenerationStrategy {
       }
     }
 
-    final content = _generateUnionClassContent(
+    final content = contentGenerator.generateUnionClassContent(
       className: className,
       filename: filename,
       unionProps: unionProps,
@@ -452,42 +435,6 @@ class UnionModelStrategy implements ModelGenerationStrategy {
     );
 
     return (filename: filename, content: content);
-  }
-
-  String _generateUnionClassContent({
-    required String className,
-    required String filename,
-    required List<OneOfModel> unionProps,
-    required String normalProps,
-    required OpenApiModel model,
-  }) {
-    return '''
-import 'dart:io';
-
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dio/dio.dart';
-
-import '../../convertors.dart';
-${config.importModelsCode}
-
-part '${filename}.freezed.dart';
-part '${filename}.g.dart';
-
-/// ${model.key}
-${model.value.description == null ? '' : commentLine(model.value.description!)}
-@freezed
-sealed class ${className} with _\$${className} {
-  ${unionProps.any((e) => e.unionName == 'fallback') ? '' : 'const factory ${className}.fallback() = ${className}Fallback;'}
-  
-  ${unionProps.map((prop) => '@FreezedUnionValue("${prop.unionName}") const factory ${className}.${Recase.instance.toCamelCase(prop.unionName)}({required ${prop.type} ${prop.key}, $normalProps}) = ${config.renameClass('${className}_${prop.unionName}')};').join('\n\n')}
-  
-  factory ${className}.fromJson(
-    Map<String, dynamic> json,
-  ) => _\$${className}FromJson(
-    json,
-  );
-}
-''';
   }
 }
 
@@ -498,9 +445,11 @@ class RegularModelStrategy implements ModelGenerationStrategy {
         OpenApiSchemaType: TypePropertyGenerator(config),
         OpenApiSchemaRef: RefPropertyGenerator(config),
         OpenApiSchemaAnyOf: AnyOfPropertyGenerator(config),
-      };
+      },
+      contentGenerator = ClassContentGenerator(config);
   final SwaggerToDartConfig config;
   final Map<Type, PropertyGeneratorStrategy> propertyGenerators;
+  final ClassContentGenerator contentGenerator;
 
   @override
   ({String filename, String content}) generate(OpenApiModel model) {
@@ -508,8 +457,7 @@ class RegularModelStrategy implements ModelGenerationStrategy {
     final className = config.renameClass(model.key);
     final properties = model.value.properties ?? {};
 
-    String fields = '';
-
+    final fields = StringBuffer();
     for (final entry in properties.entries) {
       final key = entry.key;
       final schema = entry.value;
@@ -517,17 +465,18 @@ class RegularModelStrategy implements ModelGenerationStrategy {
 
       final generator = propertyGenerators[schema.runtimeType];
       if (generator != null) {
-        fields += generator.generateField(
+        final fieldCode = generator.generateField(
           className: className,
           propertyName: propertyName,
           key: key,
           schema: schema,
         );
+        fields.writeln(fieldCode);
       }
     }
 
-    final bodyText = fields.isEmpty ? '' : '{\n$fields  }';
-    final content = _generateClassContent(
+    final bodyText = fields.isEmpty ? '' : '{\n${fields.toString()}  }';
+    final content = contentGenerator.generateRegularClassContent(
       className: className,
       filename: filename,
       bodyText: bodyText,
@@ -537,50 +486,10 @@ class RegularModelStrategy implements ModelGenerationStrategy {
 
     return (filename: filename, content: content);
   }
-
-  String _generateClassContent({
-    required String className,
-    required String filename,
-    required String bodyText,
-    required Map<String, OpenApiSchema> properties,
-    required OpenApiModel model,
-  }) {
-    return '''
-import 'dart:io';
-
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dio/dio.dart';
-
-import '../../convertors.dart';
-${config.importModelsCode}
-
-part '${filename}.freezed.dart';
-part '${filename}.g.dart';
-
-/// ${model.key}
-${model.value.description == null ? '' : commentLine(model.value.description!)}
-@freezed
-abstract class ${className} with _\$${className} {
-  const ${className}._();
-
-  ${properties.entries.map((e) => 'static const String ${(config.renameProperty(e.key))}Key = \'${e.key}\';').join('\n')}
-
-  @JsonSerializable(converters: convertors)
-  const factory ${className}($bodyText) = _${className};
-
-  factory ${className}.fromJson(
-    Map<String, dynamic> json,
-  ) => _\$${className}FromJson(
-    json,
-  );
-}
-''';
-  }
 }
 
 /// Main OpenApiModelGenerator class using strategy pattern
 class OpenApiModelGenerator {
-  /// Constructor that initializes the different generation strategies
   OpenApiModelGenerator({required this.config})
     : strategies = {
         ModelType.enum_: EnumModelStrategy(config),
@@ -590,7 +499,6 @@ class OpenApiModelGenerator {
   final SwaggerToDartConfig config;
   final Map<ModelType, ModelGenerationStrategy> strategies;
 
-  /// Main entry point that runs the appropriate generator based on model type
   ({String filename, String content}) run(OpenApiModel model) {
     final modelType = _determineModelType(model);
     final strategy = strategies[modelType];
@@ -602,7 +510,6 @@ class OpenApiModelGenerator {
     return strategy.generate(model);
   }
 
-  /// Determines the type of model we're dealing with
   ModelType _determineModelType(OpenApiModel model) {
     final properties = model.value.properties ?? {};
     final enum_ = model.value.enum_ ?? [];
