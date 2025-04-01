@@ -21,7 +21,6 @@ class OpenApiDartGenerator {
   final OpenApi openApi;
 
   Future<void> run() async {
-    //=============== Model generator ===============
     final modelGenerator = OpenApiModelGenerator(config: config);
 
     if (!Directory(config.modelsOutputDirectory).existsSync()) {
@@ -43,9 +42,6 @@ class OpenApiDartGenerator {
       print('Generated: $filepath');
     }
 
-    ///=============================================
-
-    //=============== Client generator ===============
     final clientGenerator = OpenApiClientGenerator(config: config);
     if (!Directory(config.clientsOutputDirectory).existsSync()) {
       Directory(config.clientsOutputDirectory).createSync(recursive: true);
@@ -109,7 +105,5 @@ class OpenApiDartGenerator {
     final clientsFile = File(clientsFilepath);
 
     await clientsFile.writeAsString(clientsClassContent);
-
-    ///=============================================
   }
 }

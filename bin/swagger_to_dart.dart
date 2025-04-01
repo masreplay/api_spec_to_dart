@@ -16,8 +16,16 @@ Future<void> main(List<String> args) async {
       sourceUrl: Uri.parse(pubspecPath),
     );
 
+    final swaggerToDartYamlFile = File(SwaggerToDartYaml.filename);
+    if (!swaggerToDartYamlFile.existsSync()) {
+      exit(1);
+    }
+    final swaggerToDartYamlFileContent =
+        await swaggerToDartYamlFile.readAsString();
+    final swaggerToDartYamlMap = loadYaml(swaggerToDartYamlFileContent);
+
     final swaggerToDartYaml = SwaggerToDartYaml.fromYamlMap(
-      await readYamlFile(path.join(rootDir, SwaggerToDartYaml.filename)),
+      swaggerToDartYamlMap,
     );
     final swaggerToDart = swaggerToDartYaml.swaggerToDart;
 
@@ -28,9 +36,9 @@ Future<void> main(List<String> args) async {
     print('Generating code...');
 
     final file = File(swaggerToDart.inputDirectory);
-    final json = file.readAsStringSync();
+    final json = swaggerToDartYamlFile.readAsStringSync();
     final map = jsonDecode(json);
-    final openApi = OpenApi.fromJson(map);
+    final openApi = OpenApi.fromJson(swaggerToDartYamlMap);
 
     final config = SwaggerToDartConfig(
       pubspec: pubspec,
@@ -45,45 +53,4 @@ Future<void> main(List<String> args) async {
     print('Error: $e');
     print('Stack trace: $s');
   }
-}
-
-Future<Map<String, dynamic>> readYamlFile(String path) async {
-  final file = File(path);
-
-  final filename = path.split('/').last;
-
-  if (!file.existsSync()) {
-    print('${filename} not found in the current directory');
-    exit(1);
-  }
-
-  print('Reading pubspec.yaml...');
-
-  final YamlMap yaml = loadYaml(await file.readAsString());
-
-  final map = convertYamlMapToMap(yaml);
-  return map;
-}
-
-Map<String, dynamic> convertYamlMapToMap(YamlMap yamlMap) {
-  final map = <String, dynamic>{};
-
-  for (final entry in yamlMap.entries) {
-    if (entry.value is YamlMap || entry.value is Map) {
-      map[entry.key.toString()] = convertYamlMapToMap(entry.value);
-    } else if (entry.value is YamlList) {
-      map[entry.key.toString()] =
-          (entry.value as YamlList)
-              .map((e) => e is YamlMap ? convertYamlMapToMap(e) : e)
-              .toList();
-    } else if (entry.value is List) {
-      map[entry.key.toString()] =
-          (entry.value as List)
-              .map((e) => e is YamlMap ? convertYamlMapToMap(e) : e)
-              .toList();
-    } else {
-      map[entry.key.toString()] = entry.value.toString();
-    }
-  }
-  return map;
 }
