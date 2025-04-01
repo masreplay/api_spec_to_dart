@@ -1,10 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:collection/collection.dart';
-import 'package:path/path.dart' as path;
 import 'package:swagger_to_dart/swagger_to_dart.dart';
-import 'open_api_exports_generator.dart';
+
+import '../../parser/open_api_parser.dart';
+import '../../utils/file_handler.dart';
+import 'exports_generator.dart';
 
 OpenApi readOpenApiFile(SwaggerToDartConfig config) {
   final file = File(config.swaggerToDart.inputDirectory);
@@ -14,100 +15,84 @@ OpenApi readOpenApiFile(SwaggerToDartConfig config) {
   return OpenApi.fromJson(map);
 }
 
+/// Main generator class that orchestrates the generation process
 class OpenApiDartGenerator {
-  OpenApiDartGenerator({required this.config, required this.openApi});
+  OpenApiDartGenerator({
+    required this.config,
+    required this.openApi,
+    this.fileHandler = const FileHandler(),
+  });
 
   final SwaggerToDartConfig config;
   final OpenApi openApi;
+  final FileHandler fileHandler;
 
+  /// Runs the complete generation process
   Future<void> run() async {
+    await _generateModels();
+    await _generateClients();
+    await _generateExports();
+  }
+
+  /// Generates all models from the OpenAPI schemas
+  Future<void> _generateModels() async {
     final modelGenerator = OpenApiModelGenerator(config: config);
 
-    if (!Directory(config.modelsOutputDirectory).existsSync()) {
-      Directory(config.modelsOutputDirectory).createSync(recursive: true);
-    }
+    await fileHandler.createDirectory(config.modelsOutputDirectory);
 
     for (final entry in openApi.components.schemas.entries) {
       final result = modelGenerator.run(entry);
-
-      final filepath = path.join(
-        config.modelsOutputDirectory,
-        '${config.renameFile(entry.key)}.dart',
-      );
-
-      final file = File(filepath);
-
-      await file.writeAsString(result.content);
-
-      print('Generated: $filepath');
+      final filepath =
+          '${config.modelsOutputDirectory}/${config.renameFile(entry.key)}.dart';
+      await fileHandler.writeFile(filepath, result.content);
     }
+  }
 
+  /// Generates all clients from the OpenAPI paths
+  Future<void> _generateClients() async {
     final clientGenerator = OpenApiClientGenerator(config: config);
-    if (!Directory(config.clientsOutputDirectory).existsSync()) {
-      Directory(config.clientsOutputDirectory).createSync(recursive: true);
-    }
-
-    final List<({String tag, String path})> tagsPaths = [];
-
-    for (final entry in openApi.paths.entries) {
-      final tag =
-          [
-            entry.value.post,
-            entry.value.get,
-            entry.value.put,
-            entry.value.delete,
-            entry.value.patch,
-          ].where((element) => element != null).first;
-
-      final path = entry.key;
-
-      tagsPaths.add((tag: tag!.tags.first, path: path));
-    }
-
-    final clients = groupBy(tagsPaths, (element) => element.tag);
-
-    for (final entry in clients.entries) {
-      final tag = entry.key;
-      final paths = entry.value;
-
-      print('Generating client for tag: $tag');
-
-      final result = clientGenerator.generator(
-        path: openApi.paths,
-        clientName: tag,
-        tagPaths: paths.map((e) => e.path).toList(),
-      );
-
-      final filepath = path.join(
-        config.clientsOutputDirectory,
-        '${config.renameFile(entry.key)}_client.dart',
-      );
-
-      final file = File(filepath);
-
-      await file.writeAsString(result.content);
-    }
-
-    final clientsGenerator = OpenApiBaseClientGenerator(
+    final baseClientGenerator = OpenApiBaseClientGenerator(
       config: config,
       openApi: openApi,
     );
 
-    final clientsClassContent = clientsGenerator.generator(
-      clients: clients.keys.toList(),
+    await fileHandler.createDirectory(config.clientsOutputDirectory);
+
+    // Generate individual clients
+    final pathsByTags = OpenApiParser().extractPathsByTags(openApi.paths);
+
+    for (final entry in pathsByTags.entries) {
+      final tag = entry.key;
+      final paths = entry.value;
+
+      final result = clientGenerator.generator(
+        path: openApi.paths,
+        clientName: tag,
+        tagPaths: paths,
+      );
+
+      final filepath =
+          '${config.clientsOutputDirectory}/${config.renameFile(tag)}_client.dart';
+      await fileHandler.writeFile(filepath, result.content);
+    }
+
+    // Generate base client
+    final baseClientContent = baseClientGenerator.generator(
+      clients: pathsByTags.keys.toList(),
     );
 
-    final clientsFilepath = path.join(
-      config.clientsOutputDirectory,
-      '${config.renameFile(config.swaggerToDart.apiClientClassName)}.dart',
+    final baseClientPath =
+        '${config.clientsOutputDirectory}/${config.renameFile(config.swaggerToDart.apiClientClassName)}.dart';
+    await fileHandler.writeFile(baseClientPath, baseClientContent);
+  }
+
+  /// Generates export files for models and clients
+  Future<void> _generateExports() async {
+    final exportsGenerator = ExportsGenerator(
+      config: config,
+      fileHandler: fileHandler,
     );
 
-    final clientsFile = File(clientsFilepath);
-
-    await clientsFile.writeAsString(clientsClassContent);
-
-    // Generate exports files
-    final exportsGenerator = OpenApiExportsGenerator(config: config);
     await exportsGenerator.generateModelsExports();
     await exportsGenerator.generateClientsExports();
   }

@@ -23,4 +23,3 @@ export 'utils_client.dart';
 
 // Private clients
 export 'private_client.dart';
-
