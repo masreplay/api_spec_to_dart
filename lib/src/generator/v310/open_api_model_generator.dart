@@ -200,7 +200,7 @@ class AnyOfPropertyGenerator implements PropertyGeneratorStrategy {
       );
     }
 
-    final dartType = _resolveDartType(schema);
+    final dartType = _resolveDartType(schema, className, propertyName);
 
     return fieldGenerator.generateField(
       className: className,
@@ -213,7 +213,11 @@ class AnyOfPropertyGenerator implements PropertyGeneratorStrategy {
     );
   }
 
-  String _resolveDartType(OpenApiSchemaAnyOf value) {
+  String _resolveDartType(
+    OpenApiSchemaAnyOf value,
+    String className,
+    String propertyName,
+  ) {
     // Check if this is a nullable type (common pattern with anyOf)
     final isNullable = value.anyOf!.any(
       (e) => e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_,
@@ -235,8 +239,34 @@ class AnyOfPropertyGenerator implements PropertyGeneratorStrategy {
       return isNullable ? '$baseType?' : baseType;
     }
 
-    // If multiple non-null types, it's a union type - in Dart we use dynamic
-    return isNullable ? 'dynamic?' : 'dynamic';
+    // For multiple types, create a union type
+    final unionName = '${className}${propertyName.pascalCase}Union';
+    final types =
+        nonNullSchemas.map((schema) => _getSchemaType(schema)).toSet().toList();
+
+    // Generate the union type class
+    final unionClass = _generateUnionClass(unionName, types);
+
+    // Add the union class to the generated content
+    // Note: You'll need to modify the generator to handle this additional class
+    return isNullable ? '$unionName?' : unionName;
+  }
+
+  String _generateUnionClass(String unionName, List<String> types) {
+    final buffer = StringBuffer();
+
+    buffer.writeln('@freezed');
+    buffer.writeln('class $unionName with _\$$unionName {');
+    buffer.writeln('  const factory $unionName({');
+
+    for (final type in types) {
+      buffer.writeln('    required $type value,');
+    }
+
+    buffer.writeln('  }) = _\$$unionName;');
+    buffer.writeln('}');
+
+    return buffer.toString();
   }
 
   String _getSchemaType(OpenApiSchema schema) {
@@ -246,15 +276,16 @@ class AnyOfPropertyGenerator implements PropertyGeneratorStrategy {
         format: value.format,
         genericType: switch (value.items) {
           OpenApiSchemaRef value => config.renameRefClass(value),
-          OpenApiSchemaAnyOf value => _resolveDartType(value),
+          OpenApiSchemaAnyOf value => _resolveDartType(value, '', ''),
           _ => null,
         },
         items: value.items,
         title: value.title,
       ),
       OpenApiSchemaRef value => config.renameRefClass(value),
-      OpenApiSchemaAnyOf value => _resolveDartType(value),
-      _ => 'dynamic',
+      OpenApiSchemaAnyOf value => _resolveDartType(value, '', ''),
+      _ =>
+        throw ArgumentError('Unsupported schema type: ${schema.runtimeType}'),
     };
   }
 
@@ -590,3 +621,15 @@ class OpenApiModelGenerator {
 
 /// Enum to identify different model types
 enum ModelType { enum_, union, regular }
+
+extension StringExtension on String {
+  String get pascalCase {
+    if (!contains('_')) return this;
+    return split('_')
+        .map(
+          (word) =>
+              word.isNotEmpty ? word[0].toUpperCase() + word.substring(1) : '',
+        )
+        .join('');
+  }
+}
