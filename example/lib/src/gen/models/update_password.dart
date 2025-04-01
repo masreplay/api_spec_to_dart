@@ -1,7 +1,10 @@
+import 'dart:io';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:dio/dio.dart';
 
 import '../../convertors.dart';
+import 'package:swagger_api_client/src/gen/models/models.dart';
      
     
 
@@ -12,6 +15,10 @@ part 'update_password.g.dart';
 
 @freezed
 abstract class UpdatePassword with _$UpdatePassword {
+  const UpdatePassword._();
+
+  static const String currentPasswordKey = 'current_password';
+static const String newPasswordKey = 'new_password';
 
   @JsonSerializable(converters: convertors)
   const factory UpdatePassword({
@@ -26,8 +33,4 @@ required String newPassword,  }) = _UpdatePassword;
   ) => _$UpdatePasswordFromJson(
     json,
   );
-  const UpdatePassword._();
-
-  static const String currentPasswordKey = 'current_password';
-static const String newPasswordKey = 'new_password';
 }

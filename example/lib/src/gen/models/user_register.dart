@@ -1,7 +1,10 @@
+import 'dart:io';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:dio/dio.dart';
 
 import '../../convertors.dart';
+import 'package:swagger_api_client/src/gen/models/models.dart';
      
     
 
@@ -12,6 +15,11 @@ part 'user_register.g.dart';
 
 @freezed
 abstract class UserRegister with _$UserRegister {
+  const UserRegister._();
+
+  static const String emailKey = 'email';
+static const String passwordKey = 'password';
+static const String fullNameKey = 'full_name';
 
   @JsonSerializable(converters: convertors)
   const factory UserRegister({
@@ -28,9 +36,4 @@ required String? fullName,  }) = _UserRegister;
   ) => _$UserRegisterFromJson(
     json,
   );
-  const UserRegister._();
-
-  static const String emailKey = 'email';
-static const String passwordKey = 'password';
-static const String fullNameKey = 'full_name';
 }

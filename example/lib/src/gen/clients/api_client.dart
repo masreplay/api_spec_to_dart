@@ -3,7 +3,7 @@ import 'package:swagger_api_client/src/gen/clients/clients.dart';
 
 /// Full Stack FastAPI Project
 /// 0.1.0
-/// 2025-04-01 20:10:00.729255
+/// 2025-04-02 01:17:55.669945
 class ApiClient {
 
 ApiClient(this.dio);

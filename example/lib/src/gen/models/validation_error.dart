@@ -1,7 +1,10 @@
+import 'dart:io';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:dio/dio.dart';
 
 import '../../convertors.dart';
+import 'package:swagger_api_client/src/gen/models/models.dart';
      
     
 
@@ -12,6 +15,11 @@ part 'validation_error.g.dart';
 
 @freezed
 abstract class ValidationError with _$ValidationError {
+  const ValidationError._();
+
+  static const String locKey = 'loc';
+static const String msgKey = 'msg';
+static const String type_Key = 'type';
 
   @JsonSerializable(converters: convertors)
   const factory ValidationError({
@@ -20,17 +28,12 @@ abstract class ValidationError with _$ValidationError {
 required List<dynamic> loc,/// msg
 @JsonKey(name: ValidationError.msgKey)
 required String msg,/// type
-@JsonKey(name: ValidationError.typeKey)
-required String type,  }) = _ValidationError;
+@JsonKey(name: ValidationError.type_Key)
+required String type_,  }) = _ValidationError;
 
   factory ValidationError.fromJson(
     Map<String, dynamic> json,
   ) => _$ValidationErrorFromJson(
     json,
   );
-  const ValidationError._();
-
-  static const String locKey = 'loc';
-static const String msgKey = 'msg';
-static const String typeKey = 'type';
 }

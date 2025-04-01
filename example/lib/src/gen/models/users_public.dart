@@ -1,5 +1,7 @@
+import 'dart:io';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:dio/dio.dart';
 
 import '../../convertors.dart';
 import 'package:swagger_api_client/src/gen/models/models.dart';
@@ -13,6 +15,10 @@ part 'users_public.g.dart';
 
 @freezed
 abstract class UsersPublic with _$UsersPublic {
+  const UsersPublic._();
+
+  static const String dataKey = 'data';
+static const String countKey = 'count';
 
   @JsonSerializable(converters: convertors)
   const factory UsersPublic({
@@ -27,8 +33,4 @@ required int count,  }) = _UsersPublic;
   ) => _$UsersPublicFromJson(
     json,
   );
-  const UsersPublic._();
-
-  static const String dataKey = 'data';
-static const String countKey = 'count';
 }

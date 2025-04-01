@@ -1,7 +1,10 @@
+import 'dart:io';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:dio/dio.dart';
 
 import '../../convertors.dart';
+import 'package:swagger_api_client/src/gen/models/models.dart';
      
     
 
@@ -12,6 +15,14 @@ part 'body_login_login_access_token.g.dart';
 
 @freezed
 abstract class BodyLoginLoginAccessToken with _$BodyLoginLoginAccessToken {
+  const BodyLoginLoginAccessToken._();
+
+  static const String grantTypeKey = 'grant_type';
+static const String usernameKey = 'username';
+static const String passwordKey = 'password';
+static const String scopeKey = 'scope';
+static const String clientIdKey = 'client_id';
+static const String clientSecretKey = 'client_secret';
 
   @JsonSerializable(converters: convertors)
   const factory BodyLoginLoginAccessToken({
@@ -35,12 +46,4 @@ required String? clientSecret,  }) = _BodyLoginLoginAccessToken;
   ) => _$BodyLoginLoginAccessTokenFromJson(
     json,
   );
-  const BodyLoginLoginAccessToken._();
-
-  static const String grantTypeKey = 'grant_type';
-static const String usernameKey = 'username';
-static const String passwordKey = 'password';
-static const String scopeKey = 'scope';
-static const String clientIdKey = 'client_id';
-static const String clientSecretKey = 'client_secret';
 }

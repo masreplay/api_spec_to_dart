@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:collection/collection.dart';
 import 'package:path/path.dart' as path;
 import 'package:swagger_to_dart/swagger_to_dart.dart';
+import 'open_api_exports_generator.dart';
 
 OpenApi readOpenApiFile(SwaggerToDartConfig config) {
   final file = File(config.swaggerToDart.inputDirectory);
@@ -17,7 +18,6 @@ class OpenApiDartGenerator {
   OpenApiDartGenerator({required this.config, required this.openApi});
 
   final SwaggerToDartConfig config;
-
   final OpenApi openApi;
 
   Future<void> run() async {
@@ -105,5 +105,10 @@ class OpenApiDartGenerator {
     final clientsFile = File(clientsFilepath);
 
     await clientsFile.writeAsString(clientsClassContent);
+
+    // Generate exports files
+    final exportsGenerator = OpenApiExportsGenerator(config: config);
+    await exportsGenerator.generateModelsExports();
+    await exportsGenerator.generateClientsExports();
   }
 }

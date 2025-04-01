@@ -1,7 +1,10 @@
+import 'dart:io';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:dio/dio.dart';
 
 import '../../convertors.dart';
+import 'package:swagger_api_client/src/gen/models/models.dart';
      
     
 
@@ -12,6 +15,9 @@ part 'message.g.dart';
 
 @freezed
 abstract class Message with _$Message {
+  const Message._();
+
+  static const String messageKey = 'message';
 
   @JsonSerializable(converters: convertors)
   const factory Message({
@@ -24,7 +30,4 @@ required String message,  }) = _Message;
   ) => _$MessageFromJson(
     json,
   );
-  const Message._();
-
-  static const String messageKey = 'message';
 }

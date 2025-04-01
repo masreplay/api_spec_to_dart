@@ -1,7 +1,10 @@
+import 'dart:io';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:dio/dio.dart';
 
 import '../../convertors.dart';
+import 'package:swagger_api_client/src/gen/models/models.dart';
      
     
 
@@ -12,6 +15,13 @@ part 'user_update.g.dart';
 
 @freezed
 abstract class UserUpdate with _$UserUpdate {
+  const UserUpdate._();
+
+  static const String emailKey = 'email';
+static const String isActiveKey = 'is_active';
+static const String isSuperuserKey = 'is_superuser';
+static const String fullNameKey = 'full_name';
+static const String passwordKey = 'password';
 
   @JsonSerializable(converters: convertors)
   const factory UserUpdate({
@@ -34,11 +44,4 @@ required String? password,  }) = _UserUpdate;
   ) => _$UserUpdateFromJson(
     json,
   );
-  const UserUpdate._();
-
-  static const String emailKey = 'email';
-static const String isActiveKey = 'is_active';
-static const String isSuperuserKey = 'is_superuser';
-static const String fullNameKey = 'full_name';
-static const String passwordKey = 'password';
 }

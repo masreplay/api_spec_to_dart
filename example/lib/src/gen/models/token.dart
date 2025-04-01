@@ -1,7 +1,10 @@
+import 'dart:io';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:dio/dio.dart';
 
 import '../../convertors.dart';
+import 'package:swagger_api_client/src/gen/models/models.dart';
      
     
 
@@ -12,6 +15,10 @@ part 'token.g.dart';
 
 @freezed
 abstract class Token with _$Token {
+  const Token._();
+
+  static const String accessTokenKey = 'access_token';
+static const String tokenTypeKey = 'token_type';
 
   @JsonSerializable(converters: convertors)
   const factory Token({
@@ -27,8 +34,4 @@ String tokenType,  }) = _Token;
   ) => _$TokenFromJson(
     json,
   );
-  const Token._();
-
-  static const String accessTokenKey = 'access_token';
-static const String tokenTypeKey = 'token_type';
 }

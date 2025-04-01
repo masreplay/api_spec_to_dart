@@ -1,7 +1,10 @@
+import 'dart:io';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:dio/dio.dart';
 
 import '../../convertors.dart';
+import 'package:swagger_api_client/src/gen/models/models.dart';
      
     
 
@@ -12,6 +15,10 @@ part 'item_update.g.dart';
 
 @freezed
 abstract class ItemUpdate with _$ItemUpdate {
+  const ItemUpdate._();
+
+  static const String titleKey = 'title';
+static const String descriptionKey = 'description';
 
   @JsonSerializable(converters: convertors)
   const factory ItemUpdate({
@@ -26,8 +33,4 @@ required String? description,  }) = _ItemUpdate;
   ) => _$ItemUpdateFromJson(
     json,
   );
-  const ItemUpdate._();
-
-  static const String titleKey = 'title';
-static const String descriptionKey = 'description';
 }
