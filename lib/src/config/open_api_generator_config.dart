@@ -145,11 +145,16 @@ class SwaggerToDartConfig {
   }
 }
 
+/// Handles Dart keywords by appending an underscore if the identifier
+/// conflicts with a reserved keyword
 String _renameProtect(String name) {
-  // TODO(mohammed.atheer): handle dart keywords
+  if (keywords.contains(name)) {
+    return '${name}_';
+  }
   return name;
 }
 
+/// Set of reserved Dart keywords that can't be used as identifiers
 const keywords = {
   'abstract',
   'as',
@@ -177,7 +182,7 @@ const keywords = {
   'factory',
   'false',
   'var',
-  'final class',
+  'final',
   'finally',
   'for',
   'Function',
@@ -214,7 +219,6 @@ const keywords = {
   'try',
   'type',
   'typedef',
-  'final',
   'void',
   'when',
   'with',
