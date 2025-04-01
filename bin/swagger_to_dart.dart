@@ -36,9 +36,9 @@ Future<void> main(List<String> args) async {
     print('Generating code...');
 
     final file = File(swaggerToDart.inputDirectory);
-    final json = swaggerToDartYamlFile.readAsStringSync();
+    final json = file.readAsStringSync();
     final map = jsonDecode(json);
-    final openApi = OpenApi.fromJson(swaggerToDartYamlMap);
+    final openApi = OpenApi.fromJson(map);
 
     final config = SwaggerToDartConfig(
       pubspec: pubspec,

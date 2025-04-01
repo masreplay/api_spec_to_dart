@@ -7,6 +7,7 @@ String convertOpenApiAnyOfToDartType(
   OpenApiSchemaAnyOf value,
   SwaggerToDartConfig config,
 ) {
+  return '';
   String className = '';
   bool isNullable = false;
 
