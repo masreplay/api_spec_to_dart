@@ -1,13 +1,9 @@
-import 'dart:io';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dio/dio.dart';
 
 import '../../convertors.dart';
-import 'package:swagger_api_client/src/gen/models/models.dart';
      
     
-
 
 part 'items_read_items_queries.freezed.dart';
 part 'items_read_items_queries.g.dart';
@@ -16,10 +12,6 @@ part 'items_read_items_queries.g.dart';
 
 @freezed
 abstract class ItemsReadItemsQueries with _$ItemsReadItemsQueries {
-  const ItemsReadItemsQueries._();
-
-  static const String skipKey = 'skip';
-static const String limitKey = 'limit';
 
   @JsonSerializable(converters: convertors)
   const factory ItemsReadItemsQueries({
@@ -36,4 +28,8 @@ int limit,  }) = _ItemsReadItemsQueries;
   ) => _$ItemsReadItemsQueriesFromJson(
     json,
   );
+  const ItemsReadItemsQueries._();
+
+  static const String skipKey = 'skip';
+static const String limitKey = 'limit';
 }

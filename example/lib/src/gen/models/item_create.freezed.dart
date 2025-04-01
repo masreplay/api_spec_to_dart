@@ -18,7 +18,7 @@ mixin _$ItemCreate {
 
 /// title
 @JsonKey(name: ItemCreate.titleKey) String get title;/// Description
-@JsonKey(name: ItemCreate.descriptionKey) Stringdynamic? get description;
+@JsonKey(name: ItemCreate.descriptionKey) String? get description;
 /// Create a copy of ItemCreate
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -31,12 +31,12 @@ $ItemCreateCopyWith<ItemCreate> get copyWith => _$ItemCreateCopyWithImpl<ItemCre
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ItemCreate&&(identical(other.title, title) || other.title == title)&&const DeepCollectionEquality().equals(other.description, description));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ItemCreate&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,title,const DeepCollectionEquality().hash(description));
+int get hashCode => Object.hash(runtimeType,title,description);
 
 @override
 String toString() {
@@ -51,7 +51,7 @@ abstract mixin class $ItemCreateCopyWith<$Res>  {
   factory $ItemCreateCopyWith(ItemCreate value, $Res Function(ItemCreate) _then) = _$ItemCreateCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: ItemCreate.titleKey) String title,@JsonKey(name: ItemCreate.descriptionKey) Stringdynamic? description
+@JsonKey(name: ItemCreate.titleKey) String title,@JsonKey(name: ItemCreate.descriptionKey) String? description
 });
 
 
@@ -72,7 +72,7 @@ class _$ItemCreateCopyWithImpl<$Res>
   return _then(_self.copyWith(
 title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as Stringdynamic?,
+as String?,
   ));
 }
 
@@ -89,7 +89,7 @@ class _ItemCreate extends ItemCreate {
 /// title
 @override@JsonKey(name: ItemCreate.titleKey) final  String title;
 /// Description
-@override@JsonKey(name: ItemCreate.descriptionKey) final  Stringdynamic? description;
+@override@JsonKey(name: ItemCreate.descriptionKey) final  String? description;
 
 /// Create a copy of ItemCreate
 /// with the given fields replaced by the non-null parameter values.
@@ -104,12 +104,12 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ItemCreate&&(identical(other.title, title) || other.title == title)&&const DeepCollectionEquality().equals(other.description, description));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ItemCreate&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,title,const DeepCollectionEquality().hash(description));
+int get hashCode => Object.hash(runtimeType,title,description);
 
 @override
 String toString() {
@@ -124,7 +124,7 @@ abstract mixin class _$ItemCreateCopyWith<$Res> implements $ItemCreateCopyWith<$
   factory _$ItemCreateCopyWith(_ItemCreate value, $Res Function(_ItemCreate) _then) = __$ItemCreateCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: ItemCreate.titleKey) String title,@JsonKey(name: ItemCreate.descriptionKey) Stringdynamic? description
+@JsonKey(name: ItemCreate.titleKey) String title,@JsonKey(name: ItemCreate.descriptionKey) String? description
 });
 
 
@@ -145,7 +145,7 @@ class __$ItemCreateCopyWithImpl<$Res>
   return _then(_ItemCreate(
 title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as Stringdynamic?,
+as String?,
   ));
 }
 

@@ -7,6 +7,9 @@ const List<JsonConverter> convertors = [
   // ColorHexStringJsonConverter(),
 ];
 
+/// A converter that passes MultipartFile through without transformation.
+/// This allows MultipartFile to work with json_serializable without actual conversion.
+
 class FileMultipartFileJsonConverter
     implements JsonConverter<MultipartFile, MultipartFile> {
   const FileMultipartFileJsonConverter();

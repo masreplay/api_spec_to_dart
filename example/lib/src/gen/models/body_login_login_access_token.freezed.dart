@@ -17,12 +17,12 @@ T _$identity<T>(T value) => value;
 mixin _$BodyLoginLoginAccessToken {
 
 /// Grant Type
-@JsonKey(name: BodyLoginLoginAccessToken.grantTypeKey) Stringdynamic? get grantType;/// username
+@JsonKey(name: BodyLoginLoginAccessToken.grantTypeKey) String? get grantType;/// username
 @JsonKey(name: BodyLoginLoginAccessToken.usernameKey) String get username;/// password
 @JsonKey(name: BodyLoginLoginAccessToken.passwordKey) String get password;/// scope
 @JsonKey(name: BodyLoginLoginAccessToken.scopeKey) String get scope;/// Client Id
-@JsonKey(name: BodyLoginLoginAccessToken.clientIdKey) Stringdynamic? get clientId;/// Client Secret
-@JsonKey(name: BodyLoginLoginAccessToken.clientSecretKey) Stringdynamic? get clientSecret;
+@JsonKey(name: BodyLoginLoginAccessToken.clientIdKey) String? get clientId;/// Client Secret
+@JsonKey(name: BodyLoginLoginAccessToken.clientSecretKey) String? get clientSecret;
 /// Create a copy of BodyLoginLoginAccessToken
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -35,12 +35,12 @@ $BodyLoginLoginAccessTokenCopyWith<BodyLoginLoginAccessToken> get copyWith => _$
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is BodyLoginLoginAccessToken&&const DeepCollectionEquality().equals(other.grantType, grantType)&&(identical(other.username, username) || other.username == username)&&(identical(other.password, password) || other.password == password)&&(identical(other.scope, scope) || other.scope == scope)&&const DeepCollectionEquality().equals(other.clientId, clientId)&&const DeepCollectionEquality().equals(other.clientSecret, clientSecret));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BodyLoginLoginAccessToken&&(identical(other.grantType, grantType) || other.grantType == grantType)&&(identical(other.username, username) || other.username == username)&&(identical(other.password, password) || other.password == password)&&(identical(other.scope, scope) || other.scope == scope)&&(identical(other.clientId, clientId) || other.clientId == clientId)&&(identical(other.clientSecret, clientSecret) || other.clientSecret == clientSecret));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(grantType),username,password,scope,const DeepCollectionEquality().hash(clientId),const DeepCollectionEquality().hash(clientSecret));
+int get hashCode => Object.hash(runtimeType,grantType,username,password,scope,clientId,clientSecret);
 
 @override
 String toString() {
@@ -55,7 +55,7 @@ abstract mixin class $BodyLoginLoginAccessTokenCopyWith<$Res>  {
   factory $BodyLoginLoginAccessTokenCopyWith(BodyLoginLoginAccessToken value, $Res Function(BodyLoginLoginAccessToken) _then) = _$BodyLoginLoginAccessTokenCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: BodyLoginLoginAccessToken.grantTypeKey) Stringdynamic? grantType,@JsonKey(name: BodyLoginLoginAccessToken.usernameKey) String username,@JsonKey(name: BodyLoginLoginAccessToken.passwordKey) String password,@JsonKey(name: BodyLoginLoginAccessToken.scopeKey) String scope,@JsonKey(name: BodyLoginLoginAccessToken.clientIdKey) Stringdynamic? clientId,@JsonKey(name: BodyLoginLoginAccessToken.clientSecretKey) Stringdynamic? clientSecret
+@JsonKey(name: BodyLoginLoginAccessToken.grantTypeKey) String? grantType,@JsonKey(name: BodyLoginLoginAccessToken.usernameKey) String username,@JsonKey(name: BodyLoginLoginAccessToken.passwordKey) String password,@JsonKey(name: BodyLoginLoginAccessToken.scopeKey) String scope,@JsonKey(name: BodyLoginLoginAccessToken.clientIdKey) String? clientId,@JsonKey(name: BodyLoginLoginAccessToken.clientSecretKey) String? clientSecret
 });
 
 
@@ -75,12 +75,12 @@ class _$BodyLoginLoginAccessTokenCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? grantType = freezed,Object? username = null,Object? password = null,Object? scope = null,Object? clientId = freezed,Object? clientSecret = freezed,}) {
   return _then(_self.copyWith(
 grantType: freezed == grantType ? _self.grantType : grantType // ignore: cast_nullable_to_non_nullable
-as Stringdynamic?,username: null == username ? _self.username : username // ignore: cast_nullable_to_non_nullable
+as String?,username: null == username ? _self.username : username // ignore: cast_nullable_to_non_nullable
 as String,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
 as String,scope: null == scope ? _self.scope : scope // ignore: cast_nullable_to_non_nullable
 as String,clientId: freezed == clientId ? _self.clientId : clientId // ignore: cast_nullable_to_non_nullable
-as Stringdynamic?,clientSecret: freezed == clientSecret ? _self.clientSecret : clientSecret // ignore: cast_nullable_to_non_nullable
-as Stringdynamic?,
+as String?,clientSecret: freezed == clientSecret ? _self.clientSecret : clientSecret // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
@@ -95,7 +95,7 @@ class _BodyLoginLoginAccessToken extends BodyLoginLoginAccessToken {
   factory _BodyLoginLoginAccessToken.fromJson(Map<String, dynamic> json) => _$BodyLoginLoginAccessTokenFromJson(json);
 
 /// Grant Type
-@override@JsonKey(name: BodyLoginLoginAccessToken.grantTypeKey) final  Stringdynamic? grantType;
+@override@JsonKey(name: BodyLoginLoginAccessToken.grantTypeKey) final  String? grantType;
 /// username
 @override@JsonKey(name: BodyLoginLoginAccessToken.usernameKey) final  String username;
 /// password
@@ -103,9 +103,9 @@ class _BodyLoginLoginAccessToken extends BodyLoginLoginAccessToken {
 /// scope
 @override@JsonKey(name: BodyLoginLoginAccessToken.scopeKey) final  String scope;
 /// Client Id
-@override@JsonKey(name: BodyLoginLoginAccessToken.clientIdKey) final  Stringdynamic? clientId;
+@override@JsonKey(name: BodyLoginLoginAccessToken.clientIdKey) final  String? clientId;
 /// Client Secret
-@override@JsonKey(name: BodyLoginLoginAccessToken.clientSecretKey) final  Stringdynamic? clientSecret;
+@override@JsonKey(name: BodyLoginLoginAccessToken.clientSecretKey) final  String? clientSecret;
 
 /// Create a copy of BodyLoginLoginAccessToken
 /// with the given fields replaced by the non-null parameter values.
@@ -120,12 +120,12 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BodyLoginLoginAccessToken&&const DeepCollectionEquality().equals(other.grantType, grantType)&&(identical(other.username, username) || other.username == username)&&(identical(other.password, password) || other.password == password)&&(identical(other.scope, scope) || other.scope == scope)&&const DeepCollectionEquality().equals(other.clientId, clientId)&&const DeepCollectionEquality().equals(other.clientSecret, clientSecret));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BodyLoginLoginAccessToken&&(identical(other.grantType, grantType) || other.grantType == grantType)&&(identical(other.username, username) || other.username == username)&&(identical(other.password, password) || other.password == password)&&(identical(other.scope, scope) || other.scope == scope)&&(identical(other.clientId, clientId) || other.clientId == clientId)&&(identical(other.clientSecret, clientSecret) || other.clientSecret == clientSecret));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(grantType),username,password,scope,const DeepCollectionEquality().hash(clientId),const DeepCollectionEquality().hash(clientSecret));
+int get hashCode => Object.hash(runtimeType,grantType,username,password,scope,clientId,clientSecret);
 
 @override
 String toString() {
@@ -140,7 +140,7 @@ abstract mixin class _$BodyLoginLoginAccessTokenCopyWith<$Res> implements $BodyL
   factory _$BodyLoginLoginAccessTokenCopyWith(_BodyLoginLoginAccessToken value, $Res Function(_BodyLoginLoginAccessToken) _then) = __$BodyLoginLoginAccessTokenCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: BodyLoginLoginAccessToken.grantTypeKey) Stringdynamic? grantType,@JsonKey(name: BodyLoginLoginAccessToken.usernameKey) String username,@JsonKey(name: BodyLoginLoginAccessToken.passwordKey) String password,@JsonKey(name: BodyLoginLoginAccessToken.scopeKey) String scope,@JsonKey(name: BodyLoginLoginAccessToken.clientIdKey) Stringdynamic? clientId,@JsonKey(name: BodyLoginLoginAccessToken.clientSecretKey) Stringdynamic? clientSecret
+@JsonKey(name: BodyLoginLoginAccessToken.grantTypeKey) String? grantType,@JsonKey(name: BodyLoginLoginAccessToken.usernameKey) String username,@JsonKey(name: BodyLoginLoginAccessToken.passwordKey) String password,@JsonKey(name: BodyLoginLoginAccessToken.scopeKey) String scope,@JsonKey(name: BodyLoginLoginAccessToken.clientIdKey) String? clientId,@JsonKey(name: BodyLoginLoginAccessToken.clientSecretKey) String? clientSecret
 });
 
 
@@ -160,12 +160,12 @@ class __$BodyLoginLoginAccessTokenCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? grantType = freezed,Object? username = null,Object? password = null,Object? scope = null,Object? clientId = freezed,Object? clientSecret = freezed,}) {
   return _then(_BodyLoginLoginAccessToken(
 grantType: freezed == grantType ? _self.grantType : grantType // ignore: cast_nullable_to_non_nullable
-as Stringdynamic?,username: null == username ? _self.username : username // ignore: cast_nullable_to_non_nullable
+as String?,username: null == username ? _self.username : username // ignore: cast_nullable_to_non_nullable
 as String,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
 as String,scope: null == scope ? _self.scope : scope // ignore: cast_nullable_to_non_nullable
 as String,clientId: freezed == clientId ? _self.clientId : clientId // ignore: cast_nullable_to_non_nullable
-as Stringdynamic?,clientSecret: freezed == clientSecret ? _self.clientSecret : clientSecret // ignore: cast_nullable_to_non_nullable
-as Stringdynamic?,
+as String?,clientSecret: freezed == clientSecret ? _self.clientSecret : clientSecret // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 

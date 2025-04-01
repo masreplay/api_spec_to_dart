@@ -18,7 +18,7 @@ mixin _$ItemPublic {
 
 /// title
 @JsonKey(name: ItemPublic.titleKey) String get title;/// Description
-@JsonKey(name: ItemPublic.descriptionKey) Stringdynamic? get description;/// id
+@JsonKey(name: ItemPublic.descriptionKey) String? get description;/// id
 @JsonKey(name: ItemPublic.idKey) String get id;/// owner_id
 @JsonKey(name: ItemPublic.ownerIdKey) String get ownerId;
 /// Create a copy of ItemPublic
@@ -33,12 +33,12 @@ $ItemPublicCopyWith<ItemPublic> get copyWith => _$ItemPublicCopyWithImpl<ItemPub
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ItemPublic&&(identical(other.title, title) || other.title == title)&&const DeepCollectionEquality().equals(other.description, description)&&(identical(other.id, id) || other.id == id)&&(identical(other.ownerId, ownerId) || other.ownerId == ownerId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ItemPublic&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.id, id) || other.id == id)&&(identical(other.ownerId, ownerId) || other.ownerId == ownerId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,title,const DeepCollectionEquality().hash(description),id,ownerId);
+int get hashCode => Object.hash(runtimeType,title,description,id,ownerId);
 
 @override
 String toString() {
@@ -53,7 +53,7 @@ abstract mixin class $ItemPublicCopyWith<$Res>  {
   factory $ItemPublicCopyWith(ItemPublic value, $Res Function(ItemPublic) _then) = _$ItemPublicCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: ItemPublic.titleKey) String title,@JsonKey(name: ItemPublic.descriptionKey) Stringdynamic? description,@JsonKey(name: ItemPublic.idKey) String id,@JsonKey(name: ItemPublic.ownerIdKey) String ownerId
+@JsonKey(name: ItemPublic.titleKey) String title,@JsonKey(name: ItemPublic.descriptionKey) String? description,@JsonKey(name: ItemPublic.idKey) String id,@JsonKey(name: ItemPublic.ownerIdKey) String ownerId
 });
 
 
@@ -74,7 +74,7 @@ class _$ItemPublicCopyWithImpl<$Res>
   return _then(_self.copyWith(
 title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as Stringdynamic?,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,ownerId: null == ownerId ? _self.ownerId : ownerId // ignore: cast_nullable_to_non_nullable
 as String,
   ));
@@ -93,7 +93,7 @@ class _ItemPublic extends ItemPublic {
 /// title
 @override@JsonKey(name: ItemPublic.titleKey) final  String title;
 /// Description
-@override@JsonKey(name: ItemPublic.descriptionKey) final  Stringdynamic? description;
+@override@JsonKey(name: ItemPublic.descriptionKey) final  String? description;
 /// id
 @override@JsonKey(name: ItemPublic.idKey) final  String id;
 /// owner_id
@@ -112,12 +112,12 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ItemPublic&&(identical(other.title, title) || other.title == title)&&const DeepCollectionEquality().equals(other.description, description)&&(identical(other.id, id) || other.id == id)&&(identical(other.ownerId, ownerId) || other.ownerId == ownerId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ItemPublic&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.id, id) || other.id == id)&&(identical(other.ownerId, ownerId) || other.ownerId == ownerId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,title,const DeepCollectionEquality().hash(description),id,ownerId);
+int get hashCode => Object.hash(runtimeType,title,description,id,ownerId);
 
 @override
 String toString() {
@@ -132,7 +132,7 @@ abstract mixin class _$ItemPublicCopyWith<$Res> implements $ItemPublicCopyWith<$
   factory _$ItemPublicCopyWith(_ItemPublic value, $Res Function(_ItemPublic) _then) = __$ItemPublicCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: ItemPublic.titleKey) String title,@JsonKey(name: ItemPublic.descriptionKey) Stringdynamic? description,@JsonKey(name: ItemPublic.idKey) String id,@JsonKey(name: ItemPublic.ownerIdKey) String ownerId
+@JsonKey(name: ItemPublic.titleKey) String title,@JsonKey(name: ItemPublic.descriptionKey) String? description,@JsonKey(name: ItemPublic.idKey) String id,@JsonKey(name: ItemPublic.ownerIdKey) String ownerId
 });
 
 
@@ -153,7 +153,7 @@ class __$ItemPublicCopyWithImpl<$Res>
   return _then(_ItemPublic(
 title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as Stringdynamic?,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,ownerId: null == ownerId ? _self.ownerId : ownerId // ignore: cast_nullable_to_non_nullable
 as String,
   ));

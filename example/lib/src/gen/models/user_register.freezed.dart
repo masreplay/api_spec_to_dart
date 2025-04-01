@@ -19,7 +19,7 @@ mixin _$UserRegister {
 /// email
 @JsonKey(name: UserRegister.emailKey) String get email;/// password
 @JsonKey(name: UserRegister.passwordKey) String get password;/// Full Name
-@JsonKey(name: UserRegister.fullNameKey) Stringdynamic? get fullName;
+@JsonKey(name: UserRegister.fullNameKey) String? get fullName;
 /// Create a copy of UserRegister
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -32,12 +32,12 @@ $UserRegisterCopyWith<UserRegister> get copyWith => _$UserRegisterCopyWithImpl<U
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UserRegister&&(identical(other.email, email) || other.email == email)&&(identical(other.password, password) || other.password == password)&&const DeepCollectionEquality().equals(other.fullName, fullName));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UserRegister&&(identical(other.email, email) || other.email == email)&&(identical(other.password, password) || other.password == password)&&(identical(other.fullName, fullName) || other.fullName == fullName));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,email,password,const DeepCollectionEquality().hash(fullName));
+int get hashCode => Object.hash(runtimeType,email,password,fullName);
 
 @override
 String toString() {
@@ -52,7 +52,7 @@ abstract mixin class $UserRegisterCopyWith<$Res>  {
   factory $UserRegisterCopyWith(UserRegister value, $Res Function(UserRegister) _then) = _$UserRegisterCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: UserRegister.emailKey) String email,@JsonKey(name: UserRegister.passwordKey) String password,@JsonKey(name: UserRegister.fullNameKey) Stringdynamic? fullName
+@JsonKey(name: UserRegister.emailKey) String email,@JsonKey(name: UserRegister.passwordKey) String password,@JsonKey(name: UserRegister.fullNameKey) String? fullName
 });
 
 
@@ -74,7 +74,7 @@ class _$UserRegisterCopyWithImpl<$Res>
 email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
 as String,fullName: freezed == fullName ? _self.fullName : fullName // ignore: cast_nullable_to_non_nullable
-as Stringdynamic?,
+as String?,
   ));
 }
 
@@ -93,7 +93,7 @@ class _UserRegister extends UserRegister {
 /// password
 @override@JsonKey(name: UserRegister.passwordKey) final  String password;
 /// Full Name
-@override@JsonKey(name: UserRegister.fullNameKey) final  Stringdynamic? fullName;
+@override@JsonKey(name: UserRegister.fullNameKey) final  String? fullName;
 
 /// Create a copy of UserRegister
 /// with the given fields replaced by the non-null parameter values.
@@ -108,12 +108,12 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UserRegister&&(identical(other.email, email) || other.email == email)&&(identical(other.password, password) || other.password == password)&&const DeepCollectionEquality().equals(other.fullName, fullName));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UserRegister&&(identical(other.email, email) || other.email == email)&&(identical(other.password, password) || other.password == password)&&(identical(other.fullName, fullName) || other.fullName == fullName));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,email,password,const DeepCollectionEquality().hash(fullName));
+int get hashCode => Object.hash(runtimeType,email,password,fullName);
 
 @override
 String toString() {
@@ -128,7 +128,7 @@ abstract mixin class _$UserRegisterCopyWith<$Res> implements $UserRegisterCopyWi
   factory _$UserRegisterCopyWith(_UserRegister value, $Res Function(_UserRegister) _then) = __$UserRegisterCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: UserRegister.emailKey) String email,@JsonKey(name: UserRegister.passwordKey) String password,@JsonKey(name: UserRegister.fullNameKey) Stringdynamic? fullName
+@JsonKey(name: UserRegister.emailKey) String email,@JsonKey(name: UserRegister.passwordKey) String password,@JsonKey(name: UserRegister.fullNameKey) String? fullName
 });
 
 
@@ -150,7 +150,7 @@ class __$UserRegisterCopyWithImpl<$Res>
 email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
 as String,fullName: freezed == fullName ? _self.fullName : fullName // ignore: cast_nullable_to_non_nullable
-as Stringdynamic?,
+as String?,
   ));
 }
 

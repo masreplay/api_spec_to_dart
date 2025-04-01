@@ -1,13 +1,9 @@
-import 'dart:io';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dio/dio.dart';
 
 import '../../convertors.dart';
-import 'package:swagger_api_client/src/gen/models/models.dart';
      
     
-
 
 part 'private_user_create.freezed.dart';
 part 'private_user_create.g.dart';
@@ -16,12 +12,6 @@ part 'private_user_create.g.dart';
 
 @freezed
 abstract class PrivateUserCreate with _$PrivateUserCreate {
-  const PrivateUserCreate._();
-
-  static const String emailKey = 'email';
-static const String passwordKey = 'password';
-static const String fullNameKey = 'full_name';
-static const String isVerifiedKey = 'is_verified';
 
   @JsonSerializable(converters: convertors)
   const factory PrivateUserCreate({
@@ -41,4 +31,10 @@ bool isVerified,  }) = _PrivateUserCreate;
   ) => _$PrivateUserCreateFromJson(
     json,
   );
+  const PrivateUserCreate._();
+
+  static const String emailKey = 'email';
+static const String passwordKey = 'password';
+static const String fullNameKey = 'full_name';
+static const String isVerifiedKey = 'is_verified';
 }

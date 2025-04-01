@@ -1,374 +1,31 @@
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
+/// Type definitions to improve code readability
 typedef OpenApiModel = MapEntry<String, OpenApiSchemas>;
 typedef OneOfModel = ({String type, String key, String unionName});
 
-class OpenApiModelGenerator {
-  const OpenApiModelGenerator({required this.config});
+/// Interface for the model generation strategy
+abstract class ModelGenerationStrategy {
+  ({String filename, String content}) generate(OpenApiModel model);
+}
+
+/// Interface for property generator strategies
+abstract class PropertyGeneratorStrategy {
+  String generateField({
+    required String className,
+    required String propertyName,
+    required String key,
+    required OpenApiSchema schema,
+  });
+}
+
+/// Class responsible for generating fields with proper annotations
+class FieldGenerator {
+  FieldGenerator(this.config);
 
   final SwaggerToDartConfig config;
 
-  ({String filename, String content}) run(OpenApiModel model) {
-    final filename = config.renameFile(model.key);
-    final className = config.renameClass(model.key);
-
-    final properties = model.value.properties ?? {};
-
-    final enum_ = model.value.enum_ ?? [];
-    if (enum_.isNotEmpty) {
-      final isNumber = model.value.type == 'integer';
-
-      final type = isNumber ? 'int' : 'String';
-
-      String enumValues = '';
-
-      for (int i = 0; i < enum_.length; i++) {
-        final value = enum_[i];
-        final description = model.value.xEnumVarnames?[i];
-        final name =
-            description == null
-                ? 'value$value'
-                : config.renameProperty(description);
-
-        final enumName = config.renameProperty(value.toString());
-
-        if (isNumber) {
-          enumValues += '''  ${name}($value), \n''';
-        } else {
-          if (int.tryParse(enumName) != null) {
-            enumValues += '  value${enumName}(\'$value\'),';
-          } else {
-            enumValues += '  ${enumName}(\'$value\'),';
-          }
-        }
-      }
-
-      final enumClassContent = '''
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dio/dio.dart';
-
-import '../../convertors.dart';
-${config.importModelsCode}
-
-
-part '${filename}.g.dart';
-
-/// ${model.key}
-${model.value.description == null ? '' : commentLine(model.value.description!)}
-@JsonEnum(valueField: 'value', alwaysCreate: true)
-enum $className {
-$enumValues
-
-;
-const $className(this.value);
-
-factory $className.fromJson($type value) {
-  return values.firstWhere(
-    (e) => e.value == value,
-    orElse: () => values.first,
-  );
-}
-final $type value;
-
-$type toJson() => _\$${className}EnumMap[this]!;
-}
-''';
-
-      return (filename: filename, content: enumClassContent);
-    }
-
-    final isUnion = properties.entries.any(
-      (entry) => switch (entry.value) {
-        OpenApiSchemaOneOf() => true,
-        _ => false,
-      },
-    );
-
-    if (isUnion) {
-      // Generate Freezed Union Class
-      final unionProps = <OneOfModel>[];
-      final normalProps = StringBuffer();
-
-      for (final entry in properties.entries) {
-        switch (entry.value) {
-          case OpenApiSchemaType value:
-            final typeName = config.dartType(
-              type: value.type,
-              format: value.format,
-              genericType: switch (value.items) {
-                OpenApiSchemaRef value => config.renameRefClass(value),
-                OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
-                  value,
-                  config,
-                ),
-                _ => null,
-              },
-              items: value.items,
-              title: value.title,
-            );
-
-            normalProps.writeln(
-              'required $typeName ${config.renameProperty(entry.key)},',
-            );
-          case OpenApiSchemaRef value:
-            final typeName = config.renameRefClass(value);
-
-            normalProps.writeln(
-              'required $typeName ${config.renameProperty(entry.key)},',
-            );
-          case OpenApiSchemaAnyOf value:
-            final typeName = convertOpenApiAnyOfToDartType(value, config);
-
-            normalProps.writeln(
-              'required $typeName ${config.renameProperty(entry.key)},',
-            );
-          case OpenApiSchemaOneOf value:
-            value.discriminator.mapping.entries.map((e) {
-              unionProps.add((
-                type: config.renameClass(e.value.split('/').last),
-                key: entry.key,
-                unionName: e.key,
-              ));
-            }).toList();
-        }
-      }
-
-      final freezedUnionContent = '''
-import 'dart:io';
-
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dio/dio.dart';
-
-import '../../convertors.dart';
-
-${config.importModelsCode}
-
-
-part '${filename}.freezed.dart';
-part '${filename}.g.dart';
-
-/// ${model.key}
-${model.value.description == null ? '' : commentLine(model.value.description!)}
-@freezed
-sealed class ${className} with _\$${className} {
-  ${unionProps.any((e) => e.unionName == 'fallback') ? '' : 'const factory ${className}.fallback() = ${className}Fallback;'}
-  
-  ${unionProps.map((prop) => '@FreezedUnionValue("${prop.unionName}") const factory ${className}.${Recase.instance.toCamelCase(prop.unionName)}({required ${prop.type} ${prop.key},  $normalProps   }) = ${config.renameClass('${className}_${prop.unionName}')};').join('\n\n')}
-  
-  factory ${className}.fromJson(
-    Map<String, dynamic> json,
-  ) => _\$${className}FromJson(
-    json,
-  );
-}
-''';
-
-      return (filename: filename, content: freezedUnionContent);
-    } else {
-      // Handle non-union classes
-      String fields = '';
-
-      for (final entry in properties.entries) {
-        final propertyName = config.renameProperty(entry.key);
-
-        fields += switch (entry.value) {
-          OpenApiSchemaType value => _modelPropertyTypeGenerator(
-            className: className,
-            key: entry.key,
-            value: value,
-            propertyName: propertyName,
-          ),
-          OpenApiSchemaRef value => _modelPropertyRefGenerator(
-            parentClassName: className,
-            key: entry.key,
-            value: value,
-            propertyName: propertyName,
-          ),
-          OpenApiSchemaAnyOf value => _modelPropertyAnyOfGenerator(
-            parentClassName: className,
-            key: entry.key,
-            value: value,
-            propertyName: propertyName,
-          ),
-          OpenApiSchemaOneOf() => throw Exception('oneOf is not supported yet'),
-        };
-      }
-
-      final bodyText = fields.isEmpty ? '' : '{\n$fields  }';
-
-      final freezedNormalCLassContent = '''
-import 'dart:io';
-
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dio/dio.dart';
-
-import '../../convertors.dart';
-${config.importModelsCode}
-
-
-part '${filename}.freezed.dart';
-part '${filename}.g.dart';
-
-/// ${model.key}
-${model.value.description == null ? '' : commentLine(model.value.description!)}
-@freezed
-abstract class ${className} with _\$${className} {
-  const ${className}._();
-
-  ${properties.entries.map((e) => 'static const String ${(config.renameProperty(e.key))}Key = \'${e.key}\';').join('\n')}
-
-  @JsonSerializable(converters: convertors)
-  const factory ${className}($bodyText) = _${className};
-
-  factory ${className}.fromJson(
-    Map<String, dynamic> json,
-  ) => _\$${className}FromJson(
-    json,
-  );
-}
-''';
-
-      return (filename: filename, content: freezedNormalCLassContent);
-    }
-  }
-
-  String _modelPropertyTypeGenerator({
-    required String className,
-    required String key,
-    required OpenApiSchemaType value,
-    required String propertyName,
-  }) {
-    final dartType = config.dartType(
-      format: value.format,
-      type: value.type,
-      // TODO(mohammed.atheer): handle type recursively
-      genericType: switch (value.items) {
-        OpenApiSchemaRef value => config.renameRefClass(value),
-        OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
-          value,
-          config,
-        ),
-        _ => null,
-      },
-
-      items: value.items,
-      title: value.title,
-    );
-
-    return _generateField(
-      className: className,
-      freezedDefaultValue:
-          value.default_ == null
-              ? null
-              : dartType == 'String'
-              ? '\'${value.default_}\''
-              : value.default_,
-      jsonName: key,
-      propertyName: propertyName,
-      propertyType: dartType,
-      title: key,
-      description: value.description,
-    );
-  }
-
-  String _modelPropertyRefGenerator({
-    required String parentClassName,
-    required String key,
-    required OpenApiSchemaRef value,
-    required String propertyName,
-  }) {
-    final className = config.renameRefClass(value);
-
-    String? defaultValueCode;
-
-    print(
-      'Ref Property: '
-      'className: $className, '
-      'value: ${value.default_}, '
-      'int: ${value.default_ is int}',
-    );
-
-    if (value.default_ == 'null') {
-      defaultValueCode = 'null';
-    } else if (value.default_ != null && value.default_ is int) {
-      defaultValueCode =
-          '$className.value${config.renameProperty("${value.default_}")}';
-    } else if (value.default_ != null && value.default_ is String) {
-      defaultValueCode =
-          '$className.${config.renameProperty("${value.default_}")}';
-    }
-
-    return _generateField(
-      className: parentClassName,
-      freezedDefaultValue: defaultValueCode,
-      jsonName: key,
-      propertyName: propertyName,
-      propertyType: className,
-      title: null,
-      description: value.description,
-    );
-  }
-
-  String _modelPropertyAnyOfGenerator({
-    required String parentClassName,
-    required String key,
-    required OpenApiSchemaAnyOf value,
-    required String propertyName,
-  }) {
-    getAnyOfType(OpenApiSchemaAnyOf value, SwaggerToDartConfig config) {
-      String text = '';
-
-      for (final schema in value.anyOf!) {
-        text += switch (schema) {
-          OpenApiSchemaType value => config.dartType(
-            type: value.type,
-            format: value.format,
-            genericType: switch (value.items) {
-              OpenApiSchemaRef value => config.renameRefClass(value),
-              OpenApiSchemaAnyOf value => getAnyOfType(value, config),
-              _ => null,
-            },
-            items: value.items,
-            title: value.title,
-          ),
-          OpenApiSchemaRef value => config.renameRefClass(value),
-          OpenApiSchemaAnyOf value => getAnyOfType(value, config),
-          _ => '',
-        };
-      }
-
-      final isNullable = value.anyOf!.any(
-        (e) => e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_,
-      );
-
-      return isNullable ? '$text?' : text;
-    }
-
-    final className = getAnyOfType(value, config);
-
-    String? defaultValueCode;
-    if (value.default_ == 'null') {
-      defaultValueCode = 'null';
-    } else if (value.default_ != null && value.default_ is int) {
-      defaultValueCode =
-          '$className.value${config.renameProperty("${value.default_}")}';
-    } else if (value.default_ != null && value.default_ is String) {
-      defaultValueCode =
-          '$className.${config.renameProperty("${value.default_}")}';
-    }
-
-    return _generateField(
-      className: parentClassName,
-      freezedDefaultValue: defaultValueCode,
-      title: value.title,
-      description: value.description,
-      jsonName: key,
-      propertyName: propertyName,
-      propertyType: className,
-    );
-  }
-
-  String _generateField({
+  String generateField({
     required String className,
     required String propertyName,
     required Object? freezedDefaultValue,
@@ -393,16 +50,7 @@ abstract class ${className} with _\$${className} {
       buffer.writeln('@Default(${freezedDefaultValue})');
     }
 
-    if (description == 'deprecated') {
-      buffer.writeln('@deprecated');
-      // deprecated(Use {propertyName}Key instead);
-    } else if (description != null &&
-        description.startsWith('deprecated(') &&
-        description.endsWith(')')) {
-      buffer.writeln(
-        '@Deprecated("${description.substring(11, description.length - 1)}")',
-      );
-    }
+    _addDeprecationAnnotation(buffer, description, propertyName);
 
     buffer.writeln('@JsonKey(name: $className.${propertyName}Key)');
 
@@ -414,48 +62,375 @@ abstract class ${className} with _\$${className} {
 
     return buffer.toString();
   }
-}
 
-String modelToUnionFreezedClass({
-  required String filename,
-  required String className,
-  required OpenApiModel model,
-  required Map<String, OpenApiSchema> properties,
-  required SwaggerToDartConfig config,
-}) {
-  // Generate Freezed Union Class
-  final unionTypes = <String>[];
-
-  for (final entry in properties.entries) {
-    switch (entry.value) {
-      case OpenApiSchemaOneOf value:
-        for (var type in value.oneOf!) {
-          final typeName = switch (type) {
-            OpenApiSchemaType value => config.dartType(
-              type: value.type,
-              format: value.format,
-              genericType: switch (value.items) {
-                OpenApiSchemaRef value => config.renameRefClass(value),
-                OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
-                  value,
-                  config,
-                ),
-                _ => null,
-              },
-              items: value.items,
-              title: value.title,
-            ),
-            OpenApiSchemaRef value => config.renameRefClass(value),
-            _ => '',
-          };
-
-          unionTypes.add(typeName);
-        }
-      case _:
+  void _addDeprecationAnnotation(
+    StringBuffer buffer,
+    String? description,
+    String propertyName,
+  ) {
+    if (description == 'deprecated') {
+      buffer.writeln('@deprecated');
+    } else if (description != null &&
+        description.startsWith('deprecated(') &&
+        description.endsWith(')')) {
+      buffer.writeln(
+        '@Deprecated("${description.substring(11, description.length - 1)}")',
+      );
     }
   }
+}
 
-  return '''
+/// Strategy for generating standard type fields
+class TypePropertyGenerator implements PropertyGeneratorStrategy {
+  TypePropertyGenerator(this.config) : fieldGenerator = FieldGenerator(config);
+  final SwaggerToDartConfig config;
+  final FieldGenerator fieldGenerator;
+
+  @override
+  String generateField({
+    required String className,
+    required String propertyName,
+    required String key,
+    required OpenApiSchema schema,
+  }) {
+    if (schema is! OpenApiSchemaType) {
+      throw ArgumentError(
+        'Expected OpenApiSchemaType but got ${schema.runtimeType}',
+      );
+    }
+
+    final dartType = config.dartType(
+      format: schema.format,
+      type: schema.type,
+      genericType: _getDependentType(schema.items),
+      items: schema.items,
+      title: schema.title,
+    );
+
+    return fieldGenerator.generateField(
+      className: className,
+      freezedDefaultValue: _getTypedDefaultValue(schema.default_, dartType),
+      jsonName: key,
+      propertyName: propertyName,
+      propertyType: dartType,
+      title: key,
+      description: schema.description,
+    );
+  }
+
+  String? _getDependentType(OpenApiSchema? items) {
+    return switch (items) {
+      OpenApiSchemaRef value => config.renameRefClass(value),
+      OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(value, config),
+      _ => null,
+    };
+  }
+
+  Object? _getTypedDefaultValue(Object? defaultValue, String dartType) {
+    if (defaultValue == null) return null;
+
+    if (dartType == 'String') {
+      return '\'${defaultValue}\'';
+    }
+
+    return defaultValue;
+  }
+}
+
+/// Strategy for generating reference fields
+class RefPropertyGenerator implements PropertyGeneratorStrategy {
+  RefPropertyGenerator(this.config) : fieldGenerator = FieldGenerator(config);
+  final SwaggerToDartConfig config;
+  final FieldGenerator fieldGenerator;
+
+  @override
+  String generateField({
+    required String className,
+    required String propertyName,
+    required String key,
+    required OpenApiSchema schema,
+  }) {
+    if (schema is! OpenApiSchemaRef) {
+      throw ArgumentError(
+        'Expected OpenApiSchemaRef but got ${schema.runtimeType}',
+      );
+    }
+
+    final refClassName = config.renameRefClass(schema);
+
+    return fieldGenerator.generateField(
+      className: className,
+      freezedDefaultValue: _getDefaultValueCode(schema.default_, refClassName),
+      jsonName: key,
+      propertyName: propertyName,
+      propertyType: refClassName,
+      title: null,
+      description: schema.description,
+    );
+  }
+
+  String? _getDefaultValueCode(Object? defaultValue, String className) {
+    if (defaultValue == 'null') {
+      return 'null';
+    } else if (defaultValue != null && defaultValue is int) {
+      return '$className.value${config.renameProperty("$defaultValue")}';
+    } else if (defaultValue != null && defaultValue is String) {
+      return '$className.${config.renameProperty("$defaultValue")}';
+    }
+    return null;
+  }
+}
+
+/// Strategy for generating anyOf fields
+class AnyOfPropertyGenerator implements PropertyGeneratorStrategy {
+  AnyOfPropertyGenerator(this.config) : fieldGenerator = FieldGenerator(config);
+  final SwaggerToDartConfig config;
+  final FieldGenerator fieldGenerator;
+
+  @override
+  String generateField({
+    required String className,
+    required String propertyName,
+    required String key,
+    required OpenApiSchema schema,
+  }) {
+    if (schema is! OpenApiSchemaAnyOf) {
+      throw ArgumentError(
+        'Expected OpenApiSchemaAnyOf but got ${schema.runtimeType}',
+      );
+    }
+
+    final dartType = _resolveDartType(schema);
+
+    return fieldGenerator.generateField(
+      className: className,
+      freezedDefaultValue: _getDefaultValueCode(schema.default_, dartType),
+      title: schema.title,
+      description: schema.description,
+      jsonName: key,
+      propertyName: propertyName,
+      propertyType: dartType,
+    );
+  }
+
+  String _resolveDartType(OpenApiSchemaAnyOf value) {
+    // Check if this is a nullable type (common pattern with anyOf)
+    final isNullable = value.anyOf!.any(
+      (e) => e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_,
+    );
+
+    // Get all non-null types
+    final nonNullSchemas =
+        value.anyOf!
+            .where(
+              (e) =>
+                  !(e is OpenApiSchemaType &&
+                      e.type == OpenApiSchemaVarType.null_),
+            )
+            .toList();
+
+    // If only one non-null type, it's likely a nullable version of that type
+    if (nonNullSchemas.length == 1) {
+      final baseType = _getSchemaType(nonNullSchemas.first);
+      return isNullable ? '$baseType?' : baseType;
+    }
+
+    // If multiple non-null types, it's a union type - in Dart we use dynamic
+    return isNullable ? 'dynamic?' : 'dynamic';
+  }
+
+  String _getSchemaType(OpenApiSchema schema) {
+    return switch (schema) {
+      OpenApiSchemaType value => config.dartType(
+        type: value.type,
+        format: value.format,
+        genericType: switch (value.items) {
+          OpenApiSchemaRef value => config.renameRefClass(value),
+          OpenApiSchemaAnyOf value => _resolveDartType(value),
+          _ => null,
+        },
+        items: value.items,
+        title: value.title,
+      ),
+      OpenApiSchemaRef value => config.renameRefClass(value),
+      OpenApiSchemaAnyOf value => _resolveDartType(value),
+      _ => 'dynamic',
+    };
+  }
+
+  String? _getDefaultValueCode(Object? defaultValue, String className) {
+    if (defaultValue == 'null') {
+      return 'null';
+    } else if (defaultValue != null && defaultValue is int) {
+      return '$className.value${config.renameProperty("$defaultValue")}';
+    } else if (defaultValue != null && defaultValue is String) {
+      return '$className.${config.renameProperty("$defaultValue")}';
+    }
+    return null;
+  }
+}
+
+/// Strategy for generating enum models
+class EnumModelStrategy implements ModelGenerationStrategy {
+  EnumModelStrategy(this.config);
+  final SwaggerToDartConfig config;
+
+  @override
+  ({String filename, String content}) generate(OpenApiModel model) {
+    final filename = config.renameFile(model.key);
+    final className = config.renameClass(model.key);
+    final enum_ = model.value.enum_ ?? [];
+
+    if (enum_.isEmpty) {
+      throw ArgumentError('Cannot generate enum for model without enum values');
+    }
+
+    final isNumber = model.value.type == 'integer';
+    final type = isNumber ? 'int' : 'String';
+    final enumValues = _generateEnumValues(
+      enum_,
+      model.value.xEnumVarnames,
+      isNumber,
+    );
+
+    final content = '''
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:dio/dio.dart';
+
+import '../../convertors.dart';
+${config.importModelsCode}
+
+part '${filename}.g.dart';
+
+/// ${model.key}
+${model.value.description == null ? '' : commentLine(model.value.description!)}
+@JsonEnum(valueField: 'value', alwaysCreate: true)
+enum $className {
+$enumValues
+
+;
+const $className(this.value);
+
+factory $className.fromJson($type value) {
+  return values.firstWhere(
+    (e) => e.value == value,
+    orElse: () => values.first,
+  );
+}
+final $type value;
+
+$type toJson() => _\$${className}EnumMap[this]!;
+}
+''';
+
+    return (filename: filename, content: content);
+  }
+
+  String _generateEnumValues(
+    List<Object> enumValues,
+    List<String>? varNames,
+    bool isNumber,
+  ) {
+    final buffer = StringBuffer();
+
+    for (int i = 0; i < enumValues.length; i++) {
+      final value = enumValues[i];
+      final description = varNames?[i];
+      final name =
+          description == null
+              ? 'value$value'
+              : config.renameProperty(description);
+      final enumName = config.renameProperty(value.toString());
+
+      if (isNumber) {
+        buffer.writeln('  ${name}($value),');
+      } else {
+        if (int.tryParse(enumName) != null) {
+          buffer.writeln('  value${enumName}(\'$value\'),');
+        } else {
+          buffer.writeln('  ${enumName}(\'$value\'),');
+        }
+      }
+    }
+
+    return buffer.toString();
+  }
+}
+
+/// Strategy for generating union models
+class UnionModelStrategy implements ModelGenerationStrategy {
+  UnionModelStrategy(this.config)
+    : propertyGenerators = {
+        OpenApiSchemaType: TypePropertyGenerator(config),
+        OpenApiSchemaRef: RefPropertyGenerator(config),
+        OpenApiSchemaAnyOf: AnyOfPropertyGenerator(config),
+      };
+  final SwaggerToDartConfig config;
+  final Map<Type, PropertyGeneratorStrategy> propertyGenerators;
+
+  @override
+  ({String filename, String content}) generate(OpenApiModel model) {
+    final filename = config.renameFile(model.key);
+    final className = config.renameClass(model.key);
+    final properties = model.value.properties ?? {};
+
+    // Validate that this model has at least one oneOf property
+    if (!properties.entries.any((entry) => entry.value is OpenApiSchemaOneOf)) {
+      throw ArgumentError('Union model must have at least one oneOf property');
+    }
+
+    final unionProps = <OneOfModel>[];
+    final normalProps = StringBuffer();
+
+    // Process each property
+    for (final entry in properties.entries) {
+      final key = entry.key;
+      final schema = entry.value;
+      final propertyName = config.renameProperty(key);
+
+      if (schema is OpenApiSchemaOneOf) {
+        // Handle oneOf discriminator for union types
+        for (final mapping in schema.discriminator.mapping.entries) {
+          unionProps.add((
+            type: config.renameClass(mapping.value.split('/').last),
+            key: key,
+            unionName: mapping.key,
+          ));
+        }
+      } else {
+        // Handle regular properties
+        final generator = propertyGenerators[schema.runtimeType];
+        if (generator != null) {
+          final fieldCode = generator.generateField(
+            className: className,
+            propertyName: propertyName,
+            key: key,
+            schema: schema,
+          );
+          normalProps.writeln(fieldCode);
+        }
+      }
+    }
+
+    final content = _generateUnionClassContent(
+      className: className,
+      filename: filename,
+      unionProps: unionProps,
+      normalProps: normalProps.toString(),
+      model: model,
+    );
+
+    return (filename: filename, content: content);
+  }
+
+  String _generateUnionClassContent({
+    required String className,
+    required String filename,
+    required List<OneOfModel> unionProps,
+    required String normalProps,
+    required OpenApiModel model,
+  }) {
+    return '''
 import 'dart:io';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -464,18 +439,16 @@ import 'package:dio/dio.dart';
 import '../../convertors.dart';
 ${config.importModelsCode}
 
-
 part '${filename}.freezed.dart';
 part '${filename}.g.dart';
 
 /// ${model.key}
 ${model.value.description == null ? '' : commentLine(model.value.description!)}
 @freezed
-abstract class ${className} with _\$${className} {
-  const factory ${className}.fallback() = ${className}Fallback;
-
+sealed class ${className} with _\$${className} {
+  ${unionProps.any((e) => e.unionName == 'fallback') ? '' : 'const factory ${className}.fallback() = ${className}Fallback;'}
   
-  ${unionTypes.map((type) => '@FreezedUnionValue("${type}") const factory ${className}.${Recase.instance.toCamelCase(type)}(${type} value,) = ${className}$type;').join('\n\n')}
+  ${unionProps.map((prop) => '@FreezedUnionValue("${prop.unionName}") const factory ${className}.${Recase.instance.toCamelCase(prop.unionName)}({required ${prop.type} ${prop.key}, $normalProps}) = ${config.renameClass('${className}_${prop.unionName}')};').join('\n\n')}
   
   factory ${className}.fromJson(
     Map<String, dynamic> json,
@@ -484,4 +457,136 @@ abstract class ${className} with _\$${className} {
   );
 }
 ''';
+  }
 }
+
+/// Strategy for generating regular class models
+class RegularModelStrategy implements ModelGenerationStrategy {
+  RegularModelStrategy(this.config)
+    : propertyGenerators = {
+        OpenApiSchemaType: TypePropertyGenerator(config),
+        OpenApiSchemaRef: RefPropertyGenerator(config),
+        OpenApiSchemaAnyOf: AnyOfPropertyGenerator(config),
+      };
+  final SwaggerToDartConfig config;
+  final Map<Type, PropertyGeneratorStrategy> propertyGenerators;
+
+  @override
+  ({String filename, String content}) generate(OpenApiModel model) {
+    final filename = config.renameFile(model.key);
+    final className = config.renameClass(model.key);
+    final properties = model.value.properties ?? {};
+
+    String fields = '';
+
+    for (final entry in properties.entries) {
+      final key = entry.key;
+      final schema = entry.value;
+      final propertyName = config.renameProperty(key);
+
+      final generator = propertyGenerators[schema.runtimeType];
+      if (generator != null) {
+        fields += generator.generateField(
+          className: className,
+          propertyName: propertyName,
+          key: key,
+          schema: schema,
+        );
+      }
+    }
+
+    final bodyText = fields.isEmpty ? '' : '{\n$fields  }';
+    final content = _generateClassContent(
+      className: className,
+      filename: filename,
+      bodyText: bodyText,
+      properties: properties,
+      model: model,
+    );
+
+    return (filename: filename, content: content);
+  }
+
+  String _generateClassContent({
+    required String className,
+    required String filename,
+    required String bodyText,
+    required Map<String, OpenApiSchema> properties,
+    required OpenApiModel model,
+  }) {
+    return '''
+import 'dart:io';
+
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:dio/dio.dart';
+
+import '../../convertors.dart';
+${config.importModelsCode}
+
+part '${filename}.freezed.dart';
+part '${filename}.g.dart';
+
+/// ${model.key}
+${model.value.description == null ? '' : commentLine(model.value.description!)}
+@freezed
+abstract class ${className} with _\$${className} {
+  const ${className}._();
+
+  ${properties.entries.map((e) => 'static const String ${(config.renameProperty(e.key))}Key = \'${e.key}\';').join('\n')}
+
+  @JsonSerializable(converters: convertors)
+  const factory ${className}($bodyText) = _${className};
+
+  factory ${className}.fromJson(
+    Map<String, dynamic> json,
+  ) => _\$${className}FromJson(
+    json,
+  );
+}
+''';
+  }
+}
+
+/// Main OpenApiModelGenerator class using strategy pattern
+class OpenApiModelGenerator {
+  /// Constructor that initializes the different generation strategies
+  OpenApiModelGenerator({required this.config})
+    : strategies = {
+        ModelType.enum_: EnumModelStrategy(config),
+        ModelType.union: UnionModelStrategy(config),
+        ModelType.regular: RegularModelStrategy(config),
+      };
+  final SwaggerToDartConfig config;
+  final Map<ModelType, ModelGenerationStrategy> strategies;
+
+  /// Main entry point that runs the appropriate generator based on model type
+  ({String filename, String content}) run(OpenApiModel model) {
+    final modelType = _determineModelType(model);
+    final strategy = strategies[modelType];
+
+    if (strategy == null) {
+      throw StateError('No strategy available for model type: $modelType');
+    }
+
+    return strategy.generate(model);
+  }
+
+  /// Determines the type of model we're dealing with
+  ModelType _determineModelType(OpenApiModel model) {
+    final properties = model.value.properties ?? {};
+    final enum_ = model.value.enum_ ?? [];
+
+    if (enum_.isNotEmpty) {
+      return ModelType.enum_;
+    }
+
+    if (properties.entries.any((entry) => entry.value is OpenApiSchemaOneOf)) {
+      return ModelType.union;
+    }
+
+    return ModelType.regular;
+  }
+}
+
+/// Enum to identify different model types
+enum ModelType { enum_, union, regular }

@@ -20,7 +20,7 @@ mixin _$UserPublic {
 @JsonKey(name: UserPublic.emailKey) String get email;/// is_active
 @JsonKey(name: UserPublic.isActiveKey) bool get isActive;/// is_superuser
 @JsonKey(name: UserPublic.isSuperuserKey) bool get isSuperuser;/// Full Name
-@JsonKey(name: UserPublic.fullNameKey) Stringdynamic? get fullName;/// id
+@JsonKey(name: UserPublic.fullNameKey) String? get fullName;/// id
 @JsonKey(name: UserPublic.idKey) String get id;
 /// Create a copy of UserPublic
 /// with the given fields replaced by the non-null parameter values.
@@ -34,12 +34,12 @@ $UserPublicCopyWith<UserPublic> get copyWith => _$UserPublicCopyWithImpl<UserPub
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UserPublic&&(identical(other.email, email) || other.email == email)&&(identical(other.isActive, isActive) || other.isActive == isActive)&&(identical(other.isSuperuser, isSuperuser) || other.isSuperuser == isSuperuser)&&const DeepCollectionEquality().equals(other.fullName, fullName)&&(identical(other.id, id) || other.id == id));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UserPublic&&(identical(other.email, email) || other.email == email)&&(identical(other.isActive, isActive) || other.isActive == isActive)&&(identical(other.isSuperuser, isSuperuser) || other.isSuperuser == isSuperuser)&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.id, id) || other.id == id));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,email,isActive,isSuperuser,const DeepCollectionEquality().hash(fullName),id);
+int get hashCode => Object.hash(runtimeType,email,isActive,isSuperuser,fullName,id);
 
 @override
 String toString() {
@@ -54,7 +54,7 @@ abstract mixin class $UserPublicCopyWith<$Res>  {
   factory $UserPublicCopyWith(UserPublic value, $Res Function(UserPublic) _then) = _$UserPublicCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: UserPublic.emailKey) String email,@JsonKey(name: UserPublic.isActiveKey) bool isActive,@JsonKey(name: UserPublic.isSuperuserKey) bool isSuperuser,@JsonKey(name: UserPublic.fullNameKey) Stringdynamic? fullName,@JsonKey(name: UserPublic.idKey) String id
+@JsonKey(name: UserPublic.emailKey) String email,@JsonKey(name: UserPublic.isActiveKey) bool isActive,@JsonKey(name: UserPublic.isSuperuserKey) bool isSuperuser,@JsonKey(name: UserPublic.fullNameKey) String? fullName,@JsonKey(name: UserPublic.idKey) String id
 });
 
 
@@ -77,7 +77,7 @@ email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nulla
 as String,isActive: null == isActive ? _self.isActive : isActive // ignore: cast_nullable_to_non_nullable
 as bool,isSuperuser: null == isSuperuser ? _self.isSuperuser : isSuperuser // ignore: cast_nullable_to_non_nullable
 as bool,fullName: freezed == fullName ? _self.fullName : fullName // ignore: cast_nullable_to_non_nullable
-as Stringdynamic?,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -99,7 +99,7 @@ class _UserPublic extends UserPublic {
 /// is_superuser
 @override@JsonKey(name: UserPublic.isSuperuserKey) final  bool isSuperuser;
 /// Full Name
-@override@JsonKey(name: UserPublic.fullNameKey) final  Stringdynamic? fullName;
+@override@JsonKey(name: UserPublic.fullNameKey) final  String? fullName;
 /// id
 @override@JsonKey(name: UserPublic.idKey) final  String id;
 
@@ -116,12 +116,12 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UserPublic&&(identical(other.email, email) || other.email == email)&&(identical(other.isActive, isActive) || other.isActive == isActive)&&(identical(other.isSuperuser, isSuperuser) || other.isSuperuser == isSuperuser)&&const DeepCollectionEquality().equals(other.fullName, fullName)&&(identical(other.id, id) || other.id == id));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UserPublic&&(identical(other.email, email) || other.email == email)&&(identical(other.isActive, isActive) || other.isActive == isActive)&&(identical(other.isSuperuser, isSuperuser) || other.isSuperuser == isSuperuser)&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.id, id) || other.id == id));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,email,isActive,isSuperuser,const DeepCollectionEquality().hash(fullName),id);
+int get hashCode => Object.hash(runtimeType,email,isActive,isSuperuser,fullName,id);
 
 @override
 String toString() {
@@ -136,7 +136,7 @@ abstract mixin class _$UserPublicCopyWith<$Res> implements $UserPublicCopyWith<$
   factory _$UserPublicCopyWith(_UserPublic value, $Res Function(_UserPublic) _then) = __$UserPublicCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: UserPublic.emailKey) String email,@JsonKey(name: UserPublic.isActiveKey) bool isActive,@JsonKey(name: UserPublic.isSuperuserKey) bool isSuperuser,@JsonKey(name: UserPublic.fullNameKey) Stringdynamic? fullName,@JsonKey(name: UserPublic.idKey) String id
+@JsonKey(name: UserPublic.emailKey) String email,@JsonKey(name: UserPublic.isActiveKey) bool isActive,@JsonKey(name: UserPublic.isSuperuserKey) bool isSuperuser,@JsonKey(name: UserPublic.fullNameKey) String? fullName,@JsonKey(name: UserPublic.idKey) String id
 });
 
 
@@ -159,7 +159,7 @@ email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nulla
 as String,isActive: null == isActive ? _self.isActive : isActive // ignore: cast_nullable_to_non_nullable
 as bool,isSuperuser: null == isSuperuser ? _self.isSuperuser : isSuperuser // ignore: cast_nullable_to_non_nullable
 as bool,fullName: freezed == fullName ? _self.fullName : fullName // ignore: cast_nullable_to_non_nullable
-as Stringdynamic?,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

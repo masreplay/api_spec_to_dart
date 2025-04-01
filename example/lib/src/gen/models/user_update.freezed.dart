@@ -17,11 +17,11 @@ T _$identity<T>(T value) => value;
 mixin _$UserUpdate {
 
 /// Email
-@JsonKey(name: UserUpdate.emailKey) Stringdynamic? get email;/// is_active
+@JsonKey(name: UserUpdate.emailKey) String? get email;/// is_active
 @JsonKey(name: UserUpdate.isActiveKey) bool get isActive;/// is_superuser
 @JsonKey(name: UserUpdate.isSuperuserKey) bool get isSuperuser;/// Full Name
-@JsonKey(name: UserUpdate.fullNameKey) Stringdynamic? get fullName;/// Password
-@JsonKey(name: UserUpdate.passwordKey) Stringdynamic? get password;
+@JsonKey(name: UserUpdate.fullNameKey) String? get fullName;/// Password
+@JsonKey(name: UserUpdate.passwordKey) String? get password;
 /// Create a copy of UserUpdate
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -34,12 +34,12 @@ $UserUpdateCopyWith<UserUpdate> get copyWith => _$UserUpdateCopyWithImpl<UserUpd
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UserUpdate&&const DeepCollectionEquality().equals(other.email, email)&&(identical(other.isActive, isActive) || other.isActive == isActive)&&(identical(other.isSuperuser, isSuperuser) || other.isSuperuser == isSuperuser)&&const DeepCollectionEquality().equals(other.fullName, fullName)&&const DeepCollectionEquality().equals(other.password, password));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UserUpdate&&(identical(other.email, email) || other.email == email)&&(identical(other.isActive, isActive) || other.isActive == isActive)&&(identical(other.isSuperuser, isSuperuser) || other.isSuperuser == isSuperuser)&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.password, password) || other.password == password));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(email),isActive,isSuperuser,const DeepCollectionEquality().hash(fullName),const DeepCollectionEquality().hash(password));
+int get hashCode => Object.hash(runtimeType,email,isActive,isSuperuser,fullName,password);
 
 @override
 String toString() {
@@ -54,7 +54,7 @@ abstract mixin class $UserUpdateCopyWith<$Res>  {
   factory $UserUpdateCopyWith(UserUpdate value, $Res Function(UserUpdate) _then) = _$UserUpdateCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: UserUpdate.emailKey) Stringdynamic? email,@JsonKey(name: UserUpdate.isActiveKey) bool isActive,@JsonKey(name: UserUpdate.isSuperuserKey) bool isSuperuser,@JsonKey(name: UserUpdate.fullNameKey) Stringdynamic? fullName,@JsonKey(name: UserUpdate.passwordKey) Stringdynamic? password
+@JsonKey(name: UserUpdate.emailKey) String? email,@JsonKey(name: UserUpdate.isActiveKey) bool isActive,@JsonKey(name: UserUpdate.isSuperuserKey) bool isSuperuser,@JsonKey(name: UserUpdate.fullNameKey) String? fullName,@JsonKey(name: UserUpdate.passwordKey) String? password
 });
 
 
@@ -74,11 +74,11 @@ class _$UserUpdateCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? email = freezed,Object? isActive = null,Object? isSuperuser = null,Object? fullName = freezed,Object? password = freezed,}) {
   return _then(_self.copyWith(
 email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
-as Stringdynamic?,isActive: null == isActive ? _self.isActive : isActive // ignore: cast_nullable_to_non_nullable
+as String?,isActive: null == isActive ? _self.isActive : isActive // ignore: cast_nullable_to_non_nullable
 as bool,isSuperuser: null == isSuperuser ? _self.isSuperuser : isSuperuser // ignore: cast_nullable_to_non_nullable
 as bool,fullName: freezed == fullName ? _self.fullName : fullName // ignore: cast_nullable_to_non_nullable
-as Stringdynamic?,password: freezed == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
-as Stringdynamic?,
+as String?,password: freezed == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
@@ -93,15 +93,15 @@ class _UserUpdate extends UserUpdate {
   factory _UserUpdate.fromJson(Map<String, dynamic> json) => _$UserUpdateFromJson(json);
 
 /// Email
-@override@JsonKey(name: UserUpdate.emailKey) final  Stringdynamic? email;
+@override@JsonKey(name: UserUpdate.emailKey) final  String? email;
 /// is_active
 @override@JsonKey(name: UserUpdate.isActiveKey) final  bool isActive;
 /// is_superuser
 @override@JsonKey(name: UserUpdate.isSuperuserKey) final  bool isSuperuser;
 /// Full Name
-@override@JsonKey(name: UserUpdate.fullNameKey) final  Stringdynamic? fullName;
+@override@JsonKey(name: UserUpdate.fullNameKey) final  String? fullName;
 /// Password
-@override@JsonKey(name: UserUpdate.passwordKey) final  Stringdynamic? password;
+@override@JsonKey(name: UserUpdate.passwordKey) final  String? password;
 
 /// Create a copy of UserUpdate
 /// with the given fields replaced by the non-null parameter values.
@@ -116,12 +116,12 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UserUpdate&&const DeepCollectionEquality().equals(other.email, email)&&(identical(other.isActive, isActive) || other.isActive == isActive)&&(identical(other.isSuperuser, isSuperuser) || other.isSuperuser == isSuperuser)&&const DeepCollectionEquality().equals(other.fullName, fullName)&&const DeepCollectionEquality().equals(other.password, password));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UserUpdate&&(identical(other.email, email) || other.email == email)&&(identical(other.isActive, isActive) || other.isActive == isActive)&&(identical(other.isSuperuser, isSuperuser) || other.isSuperuser == isSuperuser)&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.password, password) || other.password == password));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(email),isActive,isSuperuser,const DeepCollectionEquality().hash(fullName),const DeepCollectionEquality().hash(password));
+int get hashCode => Object.hash(runtimeType,email,isActive,isSuperuser,fullName,password);
 
 @override
 String toString() {
@@ -136,7 +136,7 @@ abstract mixin class _$UserUpdateCopyWith<$Res> implements $UserUpdateCopyWith<$
   factory _$UserUpdateCopyWith(_UserUpdate value, $Res Function(_UserUpdate) _then) = __$UserUpdateCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: UserUpdate.emailKey) Stringdynamic? email,@JsonKey(name: UserUpdate.isActiveKey) bool isActive,@JsonKey(name: UserUpdate.isSuperuserKey) bool isSuperuser,@JsonKey(name: UserUpdate.fullNameKey) Stringdynamic? fullName,@JsonKey(name: UserUpdate.passwordKey) Stringdynamic? password
+@JsonKey(name: UserUpdate.emailKey) String? email,@JsonKey(name: UserUpdate.isActiveKey) bool isActive,@JsonKey(name: UserUpdate.isSuperuserKey) bool isSuperuser,@JsonKey(name: UserUpdate.fullNameKey) String? fullName,@JsonKey(name: UserUpdate.passwordKey) String? password
 });
 
 
@@ -156,11 +156,11 @@ class __$UserUpdateCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? email = freezed,Object? isActive = null,Object? isSuperuser = null,Object? fullName = freezed,Object? password = freezed,}) {
   return _then(_UserUpdate(
 email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
-as Stringdynamic?,isActive: null == isActive ? _self.isActive : isActive // ignore: cast_nullable_to_non_nullable
+as String?,isActive: null == isActive ? _self.isActive : isActive // ignore: cast_nullable_to_non_nullable
 as bool,isSuperuser: null == isSuperuser ? _self.isSuperuser : isSuperuser // ignore: cast_nullable_to_non_nullable
 as bool,fullName: freezed == fullName ? _self.fullName : fullName // ignore: cast_nullable_to_non_nullable
-as Stringdynamic?,password: freezed == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
-as Stringdynamic?,
+as String?,password: freezed == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 

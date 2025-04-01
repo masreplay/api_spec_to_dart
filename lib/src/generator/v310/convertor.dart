@@ -7,50 +7,58 @@ String convertOpenApiAnyOfToDartType(
   OpenApiSchemaAnyOf value,
   SwaggerToDartConfig config,
 ) {
-  return '';
-  String className = '';
-  bool isNullable = false;
+  // Check for common pattern of nullable types (anyOf with one type and null)
+  if (value.anyOf?.length == 2) {
+    // Check if one of the types is null
+    final hasNullType = value.anyOf!.any(
+      (schema) =>
+          schema is OpenApiSchemaType &&
+          schema.type == OpenApiSchemaVarType.null_,
+    );
 
-  for (final schema in value.anyOf!) {
-    switch (schema) {
-      case OpenApiSchemaType value:
-        if (value.type == OpenApiSchemaVarType.null_) {
-          isNullable = true;
-          break;
-        }
-        className += config.dartType(
-          type: value.type,
-          format: value.format,
-          genericType: switch (value.items) {
-            OpenApiSchemaRef value => config.renameRefClass(value),
-            OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
-              value,
-              config,
-            ),
-            OpenApiSchemaOneOf value => generateOpenApiOneOfToDartType(
-              className,
-              value,
-              config,
-            ),
+    if (hasNullType) {
+      // Get the non-null type
+      final nonNullSchema = value.anyOf!.firstWhere(
+        (schema) =>
+            !(schema is OpenApiSchemaType &&
+                schema.type == OpenApiSchemaVarType.null_),
+      );
 
-            _ => null,
-          },
-          items: value.items,
-          title: value.title,
-        );
-      case OpenApiSchemaRef value:
-        className += config.renameRefClass(value);
-        break;
-      case OpenApiSchemaAnyOf value:
-        className += convertOpenApiAnyOfToDartType(value, config);
-        break;
-      case OpenApiSchemaOneOf value:
-        className += generateOpenApiOneOfToDartType(className, value, config);
-        break;
+      // Return the non-null type with a ? to indicate it's nullable
+      return switch (nonNullSchema) {
+        OpenApiSchemaType value =>
+          config.dartType(
+                type: value.type,
+                format: value.format,
+                genericType: switch (value.items) {
+                  OpenApiSchemaRef value => config.renameRefClass(value),
+                  OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
+                    value,
+                    config,
+                  ),
+                  _ => null,
+                },
+                items: value.items,
+                title: value.title,
+              ) +
+              '?',
+        OpenApiSchemaRef value => config.renameRefClass(value) + '?',
+        OpenApiSchemaAnyOf value =>
+          convertOpenApiAnyOfToDartType(value, config) + '?',
+        OpenApiSchemaOneOf value =>
+          generateOpenApiOneOfToDartType(
+                value.title ?? 'UnionModel',
+                value,
+                config,
+              ) +
+              '?',
+      };
     }
   }
 
-  return isNullable ? '$className?' : 'dynamic';
+  // If it's not a simple nullable type, then it's a union of multiple types
+  // In Dart, we'll use dynamic since it can hold any of these types
+  return 'dynamic';
 }
 
 String generateOpenApiOneOfToDartType(

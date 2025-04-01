@@ -17,8 +17,8 @@ T _$identity<T>(T value) => value;
 mixin _$ItemUpdate {
 
 /// Title
-@JsonKey(name: ItemUpdate.titleKey) Stringdynamic? get title;/// Description
-@JsonKey(name: ItemUpdate.descriptionKey) Stringdynamic? get description;
+@JsonKey(name: ItemUpdate.titleKey) String? get title;/// Description
+@JsonKey(name: ItemUpdate.descriptionKey) String? get description;
 /// Create a copy of ItemUpdate
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -31,12 +31,12 @@ $ItemUpdateCopyWith<ItemUpdate> get copyWith => _$ItemUpdateCopyWithImpl<ItemUpd
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ItemUpdate&&const DeepCollectionEquality().equals(other.title, title)&&const DeepCollectionEquality().equals(other.description, description));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ItemUpdate&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(title),const DeepCollectionEquality().hash(description));
+int get hashCode => Object.hash(runtimeType,title,description);
 
 @override
 String toString() {
@@ -51,7 +51,7 @@ abstract mixin class $ItemUpdateCopyWith<$Res>  {
   factory $ItemUpdateCopyWith(ItemUpdate value, $Res Function(ItemUpdate) _then) = _$ItemUpdateCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: ItemUpdate.titleKey) Stringdynamic? title,@JsonKey(name: ItemUpdate.descriptionKey) Stringdynamic? description
+@JsonKey(name: ItemUpdate.titleKey) String? title,@JsonKey(name: ItemUpdate.descriptionKey) String? description
 });
 
 
@@ -71,8 +71,8 @@ class _$ItemUpdateCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? title = freezed,Object? description = freezed,}) {
   return _then(_self.copyWith(
 title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
-as Stringdynamic?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as Stringdynamic?,
+as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
@@ -87,9 +87,9 @@ class _ItemUpdate extends ItemUpdate {
   factory _ItemUpdate.fromJson(Map<String, dynamic> json) => _$ItemUpdateFromJson(json);
 
 /// Title
-@override@JsonKey(name: ItemUpdate.titleKey) final  Stringdynamic? title;
+@override@JsonKey(name: ItemUpdate.titleKey) final  String? title;
 /// Description
-@override@JsonKey(name: ItemUpdate.descriptionKey) final  Stringdynamic? description;
+@override@JsonKey(name: ItemUpdate.descriptionKey) final  String? description;
 
 /// Create a copy of ItemUpdate
 /// with the given fields replaced by the non-null parameter values.
@@ -104,12 +104,12 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ItemUpdate&&const DeepCollectionEquality().equals(other.title, title)&&const DeepCollectionEquality().equals(other.description, description));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ItemUpdate&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(title),const DeepCollectionEquality().hash(description));
+int get hashCode => Object.hash(runtimeType,title,description);
 
 @override
 String toString() {
@@ -124,7 +124,7 @@ abstract mixin class _$ItemUpdateCopyWith<$Res> implements $ItemUpdateCopyWith<$
   factory _$ItemUpdateCopyWith(_ItemUpdate value, $Res Function(_ItemUpdate) _then) = __$ItemUpdateCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: ItemUpdate.titleKey) Stringdynamic? title,@JsonKey(name: ItemUpdate.descriptionKey) Stringdynamic? description
+@JsonKey(name: ItemUpdate.titleKey) String? title,@JsonKey(name: ItemUpdate.descriptionKey) String? description
 });
 
 
@@ -144,8 +144,8 @@ class __$ItemUpdateCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? title = freezed,Object? description = freezed,}) {
   return _then(_ItemUpdate(
 title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
-as Stringdynamic?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as Stringdynamic?,
+as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 

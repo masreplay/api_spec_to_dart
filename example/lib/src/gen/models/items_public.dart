@@ -1,13 +1,10 @@
-import 'dart:io';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dio/dio.dart';
 
 import '../../convertors.dart';
 import 'package:swagger_api_client/src/gen/models/models.dart';
      
     
-
 
 part 'items_public.freezed.dart';
 part 'items_public.g.dart';
@@ -16,10 +13,6 @@ part 'items_public.g.dart';
 
 @freezed
 abstract class ItemsPublic with _$ItemsPublic {
-  const ItemsPublic._();
-
-  static const String dataKey = 'data';
-static const String countKey = 'count';
 
   @JsonSerializable(converters: convertors)
   const factory ItemsPublic({
@@ -34,4 +27,8 @@ required int count,  }) = _ItemsPublic;
   ) => _$ItemsPublicFromJson(
     json,
   );
+  const ItemsPublic._();
+
+  static const String dataKey = 'data';
+static const String countKey = 'count';
 }

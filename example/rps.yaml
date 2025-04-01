@@ -1,7 +1,6 @@
 scripts:
   s: |
     fvm dart run swagger_to_dart
-    exports
     rps g
 
   get: fvm flutter pub get

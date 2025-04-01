@@ -17,8 +17,8 @@ T _$identity<T>(T value) => value;
 mixin _$UserUpdateMe {
 
 /// Full Name
-@JsonKey(name: UserUpdateMe.fullNameKey) Stringdynamic? get fullName;/// Email
-@JsonKey(name: UserUpdateMe.emailKey) Stringdynamic? get email;
+@JsonKey(name: UserUpdateMe.fullNameKey) String? get fullName;/// Email
+@JsonKey(name: UserUpdateMe.emailKey) String? get email;
 /// Create a copy of UserUpdateMe
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -31,12 +31,12 @@ $UserUpdateMeCopyWith<UserUpdateMe> get copyWith => _$UserUpdateMeCopyWithImpl<U
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UserUpdateMe&&const DeepCollectionEquality().equals(other.fullName, fullName)&&const DeepCollectionEquality().equals(other.email, email));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UserUpdateMe&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.email, email) || other.email == email));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(fullName),const DeepCollectionEquality().hash(email));
+int get hashCode => Object.hash(runtimeType,fullName,email);
 
 @override
 String toString() {
@@ -51,7 +51,7 @@ abstract mixin class $UserUpdateMeCopyWith<$Res>  {
   factory $UserUpdateMeCopyWith(UserUpdateMe value, $Res Function(UserUpdateMe) _then) = _$UserUpdateMeCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: UserUpdateMe.fullNameKey) Stringdynamic? fullName,@JsonKey(name: UserUpdateMe.emailKey) Stringdynamic? email
+@JsonKey(name: UserUpdateMe.fullNameKey) String? fullName,@JsonKey(name: UserUpdateMe.emailKey) String? email
 });
 
 
@@ -71,8 +71,8 @@ class _$UserUpdateMeCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? fullName = freezed,Object? email = freezed,}) {
   return _then(_self.copyWith(
 fullName: freezed == fullName ? _self.fullName : fullName // ignore: cast_nullable_to_non_nullable
-as Stringdynamic?,email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
-as Stringdynamic?,
+as String?,email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
@@ -87,9 +87,9 @@ class _UserUpdateMe extends UserUpdateMe {
   factory _UserUpdateMe.fromJson(Map<String, dynamic> json) => _$UserUpdateMeFromJson(json);
 
 /// Full Name
-@override@JsonKey(name: UserUpdateMe.fullNameKey) final  Stringdynamic? fullName;
+@override@JsonKey(name: UserUpdateMe.fullNameKey) final  String? fullName;
 /// Email
-@override@JsonKey(name: UserUpdateMe.emailKey) final  Stringdynamic? email;
+@override@JsonKey(name: UserUpdateMe.emailKey) final  String? email;
 
 /// Create a copy of UserUpdateMe
 /// with the given fields replaced by the non-null parameter values.
@@ -104,12 +104,12 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UserUpdateMe&&const DeepCollectionEquality().equals(other.fullName, fullName)&&const DeepCollectionEquality().equals(other.email, email));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UserUpdateMe&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.email, email) || other.email == email));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(fullName),const DeepCollectionEquality().hash(email));
+int get hashCode => Object.hash(runtimeType,fullName,email);
 
 @override
 String toString() {
@@ -124,7 +124,7 @@ abstract mixin class _$UserUpdateMeCopyWith<$Res> implements $UserUpdateMeCopyWi
   factory _$UserUpdateMeCopyWith(_UserUpdateMe value, $Res Function(_UserUpdateMe) _then) = __$UserUpdateMeCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: UserUpdateMe.fullNameKey) Stringdynamic? fullName,@JsonKey(name: UserUpdateMe.emailKey) Stringdynamic? email
+@JsonKey(name: UserUpdateMe.fullNameKey) String? fullName,@JsonKey(name: UserUpdateMe.emailKey) String? email
 });
 
 
@@ -144,8 +144,8 @@ class __$UserUpdateMeCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? fullName = freezed,Object? email = freezed,}) {
   return _then(_UserUpdateMe(
 fullName: freezed == fullName ? _self.fullName : fullName // ignore: cast_nullable_to_non_nullable
-as Stringdynamic?,email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
-as Stringdynamic?,
+as String?,email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
