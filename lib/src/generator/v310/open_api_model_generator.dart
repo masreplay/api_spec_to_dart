@@ -1,5 +1,6 @@
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 import 'class_content_generator.dart';
+import 'model_type_determiner.dart';
 
 /// Type definitions to improve code readability
 typedef OpenApiModel = MapEntry<String, OpenApiSchemas>;
@@ -495,12 +496,14 @@ class OpenApiModelGenerator {
         ModelType.enum_: EnumModelStrategy(config),
         ModelType.union: UnionModelStrategy(config),
         ModelType.regular: RegularModelStrategy(config),
-      };
+      },
+      typeDeterminer = ModelTypeDeterminer();
   final SwaggerToDartConfig config;
   final Map<ModelType, ModelGenerationStrategy> strategies;
+  final ModelTypeDeterminer typeDeterminer;
 
   ({String filename, String content}) run(OpenApiModel model) {
-    final modelType = _determineModelType(model);
+    final modelType = typeDeterminer.determine(model);
     final strategy = strategies[modelType];
 
     if (strategy == null) {
@@ -508,21 +511,6 @@ class OpenApiModelGenerator {
     }
 
     return strategy.generate(model);
-  }
-
-  ModelType _determineModelType(OpenApiModel model) {
-    final properties = model.value.properties ?? {};
-    final enum_ = model.value.enum_ ?? [];
-
-    if (enum_.isNotEmpty) {
-      return ModelType.enum_;
-    }
-
-    if (properties.entries.any((entry) => entry.value is OpenApiSchemaOneOf)) {
-      return ModelType.union;
-    }
-
-    return ModelType.regular;
   }
 }
 
