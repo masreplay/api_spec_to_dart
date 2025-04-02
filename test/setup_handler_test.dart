@@ -1,10 +1,9 @@
 import 'dart:io';
-import 'package:test/test.dart';
-import 'package:swagger_to_dart/src/utils/setup_handler.dart';
-import 'package:swagger_to_dart/src/utils/file_handler.dart';
+
 import 'package:swagger_to_dart/src/config/swagger_to_dart_yaml.dart';
-import 'package:swagger_to_dart/src/config/open_api_generator_config.dart';
-import 'package:pubspec_parse/pubspec_parse.dart';
+import 'package:swagger_to_dart/src/utils/file_handler.dart';
+import 'package:swagger_to_dart/src/utils/setup_handler.dart';
+import 'package:test/test.dart';
 
 void main() {
   group('SetupHandler', () {

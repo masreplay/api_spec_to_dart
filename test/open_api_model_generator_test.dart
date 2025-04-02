@@ -1,9 +1,7 @@
-import 'package:test/test.dart';
-import 'package:swagger_to_dart/src/generator/v310/open_api_model_generator.dart';
-import 'package:swagger_to_dart/src/config/open_api_generator_config.dart';
-import 'package:swagger_to_dart/swagger_to_dart.dart';
-import 'package:pubspec_parse/pubspec_parse.dart';
 import 'package:pub_semver/pub_semver.dart';
+import 'package:pubspec_parse/pubspec_parse.dart';
+import 'package:swagger_to_dart/swagger_to_dart.dart';
+import 'package:test/test.dart';
 
 void main() {
   group('OpenApiModelGenerator', () {
