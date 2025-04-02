@@ -846,14 +846,50 @@
               "format": "uuid",
               "title": "Id"
             }
+          },
+          {
+            "name": "price",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Price"
+            }
           }
         ],
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ItemUpdate"
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/ItemUpdate"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "integer"
+                  },
+                  {},
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Item In"
               }
             }
           }

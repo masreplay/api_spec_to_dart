@@ -1,6 +1,8 @@
 import 'package:swagger_to_dart/swagger_to_dart.dart';
+
 import 'class_content_generator.dart';
 import 'model_type_determiner.dart';
+import 'union_type_generator.dart';
 
 /// Type definitions to improve code readability
 typedef OpenApiModel = MapEntry<String, OpenApiSchemas>;
@@ -215,9 +217,12 @@ class RefPropertyGenerator implements PropertyGeneratorStrategy {
 
 /// Strategy for generating anyOf fields
 class AnyOfPropertyGenerator implements PropertyGeneratorStrategy {
-  AnyOfPropertyGenerator(this.config) : fieldGenerator = FieldGenerator(config);
+  AnyOfPropertyGenerator(this.config)
+    : fieldGenerator = FieldGenerator(config),
+      unionTypeGenerator = UnionTypeGenerator(config);
   final SwaggerToDartConfig config;
   final FieldGenerator fieldGenerator;
+  final UnionTypeGenerator unionTypeGenerator;
 
   @override
   String generateField({
@@ -264,35 +269,28 @@ class AnyOfPropertyGenerator implements PropertyGeneratorStrategy {
             .toList();
 
     if (nonNullSchemas.length == 1) {
-      final baseType = _getSchemaType(nonNullSchemas.first);
+      final baseType = unionTypeGenerator.resolveDartType(nonNullSchemas.first);
       return isNullable ? '$baseType?' : baseType;
     }
 
-    final unionName = '${className}${propertyName.pascalCase}Union';
     final types =
-        nonNullSchemas.map((schema) => _getSchemaType(schema)).toSet().toList();
+        nonNullSchemas
+            .map((schema) => unionTypeGenerator.resolveDartType(schema))
+            .toList();
+    final unionClassName = unionTypeGenerator.generateUnionClassName(types);
 
-    return isNullable ? '$unionName?' : unionName;
-  }
+    // Generate the union type class
+    final unionFilename =
+        '${className.toLowerCase()}_${propertyName.toLowerCase()}_union';
+    final unionContent = unionTypeGenerator.generateUnionClassContent(
+      className: unionClassName,
+      filename: unionFilename,
+      unionTypes: types.map((type) => (type: type, value: 'value')).toList(),
+    );
 
-  String _getSchemaType(OpenApiSchema schema) {
-    return switch (schema) {
-      OpenApiSchemaType value => config.dartType(
-        type: value.type,
-        format: value.format,
-        genericType: switch (value.items) {
-          OpenApiSchemaRef value => config.renameRefClass(value),
-          OpenApiSchemaAnyOf value => _resolveDartType(value, '', ''),
-          _ => null,
-        },
-        items: value.items,
-        title: value.title,
-      ),
-      OpenApiSchemaRef value => config.renameRefClass(value),
-      OpenApiSchemaAnyOf value => _resolveDartType(value, '', ''),
-      _ =>
-        throw ArgumentError('Unsupported schema type: ${schema.runtimeType}'),
-    };
+    // Add the union class to the generated content
+    // Note: You'll need to modify the generator to handle this additional class
+    return isNullable ? '$unionClassName?' : unionClassName;
   }
 
   String? _getDefaultValueCode(Object? defaultValue, String className) {
@@ -391,12 +389,92 @@ class UnionModelStrategy implements ModelGenerationStrategy {
   ({String filename, String content}) generate(OpenApiModel model) {
     final filename = config.renameFile(model.key);
     final className = config.renameClass(model.key);
-    final properties = model.value.properties ?? {};
+    final schema = model.value;
 
-    if (!properties.entries.any((entry) => entry.value is OpenApiSchemaOneOf)) {
-      throw ArgumentError('Union model must have at least one oneOf property');
+    // Convert OpenApiSchemas to OpenApiSchema
+    final schemaJson = schema.toJson();
+    final openApiSchema = OpenApiSchema.fromJson(schemaJson);
+
+    // Handle anyOf at the schema level
+    if (openApiSchema is OpenApiSchemaAnyOf) {
+      final nonNullSchemas =
+          openApiSchema.anyOf!
+              .where(
+                (e) =>
+                    !(e is OpenApiSchemaType &&
+                        e.type == OpenApiSchemaVarType.null_),
+              )
+              .toList();
+
+      if (nonNullSchemas.length == 1) {
+        // If there's only one non-null type, treat it as a regular model
+        final regularModel = OpenApiSchemas(
+          type: 'object',
+          properties: {'value': nonNullSchemas.first},
+        );
+        return RegularModelStrategy(
+          config,
+        ).generate(MapEntry(model.key, regularModel));
+      }
+
+      // Generate union type class
+      final types =
+          nonNullSchemas.map((schema) {
+            return switch (schema) {
+              OpenApiSchemaType value => config.dartType(
+                type: value.type,
+                format: value.format,
+                genericType: switch (value.items) {
+                  OpenApiSchemaRef value => config.renameRefClass(value),
+                  OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
+                    value,
+                    config,
+                  ),
+                  _ => null,
+                },
+                items: value.items,
+                title: value.title,
+              ),
+              OpenApiSchemaRef value => config.renameRefClass(value),
+              OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
+                value,
+                config,
+              ),
+              _ =>
+                throw ArgumentError(
+                  'Unsupported schema type: ${schema.runtimeType}',
+                ),
+            };
+          }).toList();
+
+      final unionClassName = types.map((type) => type.pascalCase).join('Or');
+      final unionContent = '''
+import 'dart:io';
+
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:dio/dio.dart';
+
+import '../../convertors.dart';
+${config.importModelsCode}
+
+part '${filename}.freezed.dart';
+part '${filename}.g.dart';
+
+/// ${model.key}
+${model.value.description == null ? '' : commentLine(model.value.description!)}
+@freezed
+class $unionClassName with _\$$unionClassName {
+  ${types.map((type) => 'const factory $unionClassName.${type.toLowerCase()}(@JsonKey(name: \'value\') $type value) = _\$${unionClassName}${type.pascalCase};').join('\n\n')}
+
+  factory $unionClassName.fromJson(Map<String, dynamic> json) => _\$${unionClassName}FromJson(json);
+}
+''';
+
+      return (filename: filename, content: unionContent);
     }
 
+    // Handle regular model with union properties
+    final properties = schema.properties ?? {};
     final unionProps = <OneOfModel>[];
     final normalProps = StringBuffer();
 
@@ -412,6 +490,17 @@ class UnionModelStrategy implements ModelGenerationStrategy {
             key: key,
             unionName: mapping.key,
           ));
+        }
+      } else if (schema is OpenApiSchemaAnyOf) {
+        final generator = propertyGenerators[OpenApiSchemaAnyOf];
+        if (generator != null) {
+          final fieldCode = generator.generateField(
+            className: className,
+            propertyName: propertyName,
+            key: key,
+            schema: schema,
+          );
+          normalProps.writeln(fieldCode);
         }
       } else {
         final generator = propertyGenerators[schema.runtimeType];
