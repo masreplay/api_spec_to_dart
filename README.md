@@ -1,5 +1,13 @@
 # Swagger to Dart
 
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/logo-dark.svg" width="400">
+    <source media="(prefers-color-scheme: light)" srcset="docs/logo-light.svg" width="400">
+    <img alt="Swagger to Dart logo" src="docs/logo-light.svg" width="400">
+  </picture>
+</p>
+
 [![Pub Version](https://img.shields.io/pub/v/swagger_to_dart.svg)](https://pub.dev/packages/swagger_to_dart)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
