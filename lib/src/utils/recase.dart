@@ -26,8 +26,9 @@ class Recase {
     for (var i = 0; i < text.length; i++) {
       final char = text[i];
       if (_separateSymbolsList.contains(char)) {
+        // Skip the underscore prefix for private fields
         if (i == 0 && char == '_') {
-          words.add('private');
+          continue;
         }
         continue;
       }
@@ -56,10 +57,22 @@ class Recase {
       }
     }
 
+    // Special case: if there's just one word and it's all caps and 2-3 letters, keep it as one word
+    if (words.length == 1 &&
+        words[0].toUpperCase() == words[0] &&
+        words[0].length <= 3) {
+      _upperCaseTwoLettersRowWords.add(words[0]);
+    }
+
     return words;
   }
 
   String _upperCaseFirstLetter(String word) {
+    if (word.length <= 3 && word.toUpperCase() == word) {
+      return word; // Keep short acronyms as-is when they're already uppercase
+    }
+
+    // Handle 2-letter word that should be uppercase
     if (word.length == 2) {
       final upperCase = word.toUpperCase();
       if (_upperCaseTwoLettersRowWords.contains(upperCase)) {
@@ -72,6 +85,12 @@ class Recase {
   /// Convert text to camelCase
   String toCamelCase(String text) {
     initialize(text);
+
+    // Special case for acronyms
+    if (text.length <= 3 && text.toUpperCase() == text) {
+      return text.toLowerCase();
+    }
+
     var result = _words.map(_upperCaseFirstLetter).join();
     if (result.isNotEmpty) {
       result = result[0].toLowerCase() + result.substring(1);
@@ -82,6 +101,12 @@ class Recase {
   /// Convert text to PascalCase
   String toPascalCase(String text) {
     initialize(text);
+
+    // Special case for acronyms like "API"
+    if (text.length <= 3 && text.toUpperCase() == text) {
+      return text;
+    }
+
     return _words.map(_upperCaseFirstLetter).join();
   }
 
