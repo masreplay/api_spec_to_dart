@@ -8,9 +8,10 @@ import 'file_handler.dart';
 
 /// Handles setup and validation for the code generator
 class SetupHandler {
-  SetupHandler({required this.fileHandler});
+  SetupHandler({required this.fileHandler, this.configPath});
 
   final FileHandler fileHandler;
+  final String? configPath;
 
   /// Validates and sets up the environment for code generation
   Future<({SwaggerToDartConfig config, OpenApi openApi})> setup() async {
@@ -29,9 +30,12 @@ class SetupHandler {
       sourceUrl: Uri.parse(pubspecPath),
     );
 
-    final swaggerToDartYamlFile = File(SwaggerToDartYaml.filename);
+    // Use custom config path if provided, otherwise use default
+    final configFilePath = configPath ?? SwaggerToDartYaml.filename;
+    final swaggerToDartYamlFile = File(configFilePath);
+
     if (!swaggerToDartYamlFile.existsSync()) {
-      throw Exception('${SwaggerToDartYaml.filename} not found');
+      throw Exception('Configuration file not found: $configFilePath');
     }
 
     final swaggerToDartYamlFileContent =
@@ -49,15 +53,68 @@ class SetupHandler {
 
   /// Loads and validates the OpenAPI specification
   Future<OpenApi> _loadOpenApi(SwaggerToDartConfig config) async {
-    final inputFile = File(config.swaggerToDart.inputDirectory);
-    if (!inputFile.existsSync()) {
-      throw Exception(
-        'Input file not found: ${config.swaggerToDart.inputDirectory}',
-      );
+    final swaggerConfig = config.swaggerToDart;
+    Map<String, dynamic> map;
+
+    // Check if URL is provided
+    if (swaggerConfig.url != null && swaggerConfig.url!.isNotEmpty) {
+      // Fetch from URL
+      print('Fetching OpenAPI specification from URL: ${swaggerConfig.url}');
+
+      try {
+        final uri = Uri.parse(swaggerConfig.url!);
+        final client = HttpClient();
+        final request = await client.getUrl(uri);
+        final response = await request.close();
+
+        if (response.statusCode != 200) {
+          throw Exception(
+            'Failed to fetch OpenAPI spec from URL. Status: ${response.statusCode}',
+          );
+        }
+
+        final content = await response.transform(utf8.decoder).join();
+
+        // Parse JSON content
+        try {
+          map = jsonDecode(content);
+        } catch (e) {
+          throw Exception('Failed to parse OpenAPI spec as JSON: $e');
+        }
+
+        // Save the fetched spec locally if input_directory is provided
+        if (swaggerConfig.inputDirectory.isNotEmpty) {
+          final inputFile = File(swaggerConfig.inputDirectory);
+          await inputFile.create(recursive: true);
+          await inputFile.writeAsString(
+            JsonEncoder.withIndent('  ').convert(map),
+          );
+          print('Saved OpenAPI spec to: ${swaggerConfig.inputDirectory}');
+        }
+
+        client.close();
+      } catch (e) {
+        throw Exception('Error fetching OpenAPI spec from URL: $e');
+      }
+    } else {
+      // Fetch from file
+      final inputFile = File(swaggerConfig.inputDirectory);
+      if (!inputFile.existsSync()) {
+        throw Exception(
+          'Input file not found: ${swaggerConfig.inputDirectory}',
+        );
+      }
+
+      final content = await inputFile.readAsString();
+
+      // Parse JSON file
+      try {
+        map = jsonDecode(content);
+      } catch (e) {
+        throw Exception('Failed to parse JSON file: $e');
+      }
     }
 
-    final json = await inputFile.readAsString();
-    final map = jsonDecode(json);
     return OpenApi.fromJson(map);
   }
 

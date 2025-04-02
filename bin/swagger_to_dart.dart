@@ -1,19 +1,27 @@
-import 'dart:convert';
 import 'dart:io';
 
-import 'package:path/path.dart' as path;
-import 'package:pubspec_parse/pubspec_parse.dart';
-import 'package:yaml/yaml.dart';
+import '../lib/src/generator/v310/open_api_generator.dart';
 import '../lib/src/utils/file_handler.dart';
 import '../lib/src/utils/setup_handler.dart';
-import '../lib/src/generator/v310/open_api_generator.dart';
 
 Future<void> main(List<String> args) async {
   try {
     print('Starting code generation...');
 
+    // Parse command-line arguments
+    String? configPath;
+    for (int i = 0; i < args.length; i++) {
+      if (args[i] == '--config' && i + 1 < args.length) {
+        configPath = args[i + 1];
+        break;
+      }
+    }
+
     final fileHandler = FileHandler();
-    final setupHandler = SetupHandler(fileHandler: fileHandler);
+    final setupHandler = SetupHandler(
+      fileHandler: fileHandler,
+      configPath: configPath,
+    );
     final (config: config, openApi: openApi) = await setupHandler.setup();
 
     print('Generating code...');

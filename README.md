@@ -12,6 +12,8 @@ A powerful Dart package that auto-generates type-safe API clients and models fro
 - 🧩 Supports nested objects, enums, and complex data structures
 - 📊 Handles query parameters, path parameters, and request bodies
 - 📝 Generates documentation comments from OpenAPI descriptions
+- 🌐 Fetch OpenAPI specifications directly from URLs (JSON format)
+- 💾 Automatically saves fetched specs locally
 - 🛠️ Customizable output with configuration options
 - ⚡ Supports FastAPI, NestJS, Spring Boot, and any other framework that generates OpenAPI 3.1.0 specs
 
@@ -183,7 +185,7 @@ The package configuration is defined in a `swagger_to_dart.yaml` file. Below is 
 
 ```yaml
 swagger_to_dart:
-  # Optional: URL for directly downloading OpenAPI specification
+  # Optional: URL for directly downloading OpenAPI specification (JSON format)
   url: https://example.com/api/swagger.json
   
   # Path to your OpenAPI specification file (default: 'schema/swagger.json')
@@ -208,13 +210,12 @@ swagger_to_dart:
 
 ### Configuration Fields Explained
 
-- **url**: Optional URL to download the OpenAPI specification directly
+- **url**: Optional URL to download the OpenAPI specification directly (JSON format only)
 - **input_directory**: Path to your local OpenAPI/Swagger JSON file (defaults to 'schema/swagger.json')
 - **output_directory**: Where the generated Dart files will be placed (defaults to 'lib/src/gen')
 - **api_client_class_name**: Name of the main API client class that will be generated (defaults to 'ApiClient')
 - **imports**: Additional import statements to include in all generated files
 - **skipped_parameters**: HTTP headers or parameters that should be excluded from code generation
-
 
 ### Example Usage
 
@@ -237,47 +238,6 @@ swagger_to_dart:
   imports:
     - import 'package:dio/dio.dart';
     - import 'package:logger/logger.dart';
-```
-
-#### Configuration with Custom Import Statements
-
-```yaml
-swagger_to_dart:
-  input_directory: schema/swagger.json
-  output_directory: lib/src/gen
-  imports:
-    - import 'package:dio/dio.dart';
-    - import 'package:my_app/src/utils/api_helpers.dart';
-  skipped_parameters:
-    - Authorization
-    - X-Api-Key
-```
-
-### API Client Customization
-
-```yaml
-swagger_to_dart:
-  input_directory: schema/swagger.json
-  output_directory: lib/src/gen
-  api_client_class_name: ApiClient
-  client_options:
-    base_url_param: true # Adds a baseUrl parameter to API clients
-    add_dio_logging: true # Adds logging interceptor to the Dio instance
-    generate_client_indices: true # Generates index files for clients
-```
-
-### Authentication Support
-
-```yaml
-swagger_to_dart:
-  input_directory: schema/swagger.json
-  output_directory: lib/src/gen
-  auth_options:
-    mechanisms:
-      - bearer
-      - basic
-      - api_key
-    generate_interceptors: true
 ```
 
 ## Remote Schema Support

@@ -1,5 +1,10 @@
 swagger_to_dart:
+  # You can use a local file path:
   input_directory: schema/swagger.json
+
+  # Or you can use a URL to directly fetch the OpenAPI specification:
+  url: http://127.0.0.1:8000/openapi.json
+
   output_directory: lib/src/gen
 
   skipped_parameters:

@@ -77,3 +77,12 @@
 ## 1.0.0
 - Support flutter 3.29.0
 - Support freezed 3.0.0
+
+## 1.1.0
+
+- Vibe coding style (Claude sonnet, ChatGPT, Cursor, GitHub Copilot)
+- Added support for fetching OpenAPI specifications directly from URLs (JSON format only)
+- Added support for automatically saving fetched specs locally
+- Added support for custom configuration file path with `--config` option
+- Improved error handling for OpenAPI schema parsing
+- Removed YAML OpenAPI specification support to focus on JSON format
