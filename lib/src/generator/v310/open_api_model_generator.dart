@@ -391,64 +391,67 @@ class UnionModelStrategy implements ModelGenerationStrategy {
     final className = config.renameClass(model.key);
     final schema = model.value;
 
-    // Convert OpenApiSchemas to OpenApiSchema
+    // Convert to check for anyOf type in the schema
     final schemaJson = schema.toJson();
-    final openApiSchema = OpenApiSchema.fromJson(schemaJson);
 
-    // Handle anyOf at the schema level
-    if (openApiSchema is OpenApiSchemaAnyOf) {
-      final nonNullSchemas =
-          openApiSchema.anyOf!
-              .where(
-                (e) =>
-                    !(e is OpenApiSchemaType &&
-                        e.type == OpenApiSchemaVarType.null_),
-              )
-              .toList();
+    // Check if this is an anyOf schema by looking in the JSON
+    if (schemaJson.containsKey('anyOf')) {
+      // Convert to OpenApiSchema to properly handle anyOf
+      final openApiSchema = OpenApiSchema.fromJson(schemaJson);
 
-      if (nonNullSchemas.length == 1) {
-        // If there's only one non-null type, treat it as a regular model
-        final regularModel = OpenApiSchemas(
-          type: 'object',
-          properties: {'value': nonNullSchemas.first},
-        );
-        return RegularModelStrategy(
-          config,
-        ).generate(MapEntry(model.key, regularModel));
-      }
+      if (openApiSchema is OpenApiSchemaAnyOf) {
+        final nonNullSchemas =
+            openApiSchema.anyOf!
+                .where(
+                  (e) =>
+                      !(e is OpenApiSchemaType &&
+                          e.type == OpenApiSchemaVarType.null_),
+                )
+                .toList();
 
-      // Generate union type class
-      final types =
-          nonNullSchemas.map((schema) {
-            return switch (schema) {
-              OpenApiSchemaType value => config.dartType(
-                type: value.type,
-                format: value.format,
-                genericType: switch (value.items) {
-                  OpenApiSchemaRef value => config.renameRefClass(value),
-                  OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
-                    value,
-                    config,
-                  ),
-                  _ => null,
-                },
-                items: value.items,
-                title: value.title,
-              ),
-              OpenApiSchemaRef value => config.renameRefClass(value),
-              OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
-                value,
-                config,
-              ),
-              _ =>
-                throw ArgumentError(
-                  'Unsupported schema type: ${schema.runtimeType}',
+        if (nonNullSchemas.length == 1) {
+          // If there's only one non-null type, treat it as a regular model
+          final regularModel = OpenApiSchemas(
+            type: 'object',
+            properties: {'value': nonNullSchemas.first},
+          );
+          return RegularModelStrategy(
+            config,
+          ).generate(MapEntry(model.key, regularModel));
+        }
+
+        // Generate union type class
+        final types =
+            nonNullSchemas.map((schema) {
+              return switch (schema) {
+                OpenApiSchemaType value => config.dartType(
+                  type: value.type,
+                  format: value.format,
+                  genericType: switch (value.items) {
+                    OpenApiSchemaRef value => config.renameRefClass(value),
+                    OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
+                      value,
+                      config,
+                    ),
+                    _ => null,
+                  },
+                  items: value.items,
+                  title: value.title,
                 ),
-            };
-          }).toList();
+                OpenApiSchemaRef value => config.renameRefClass(value),
+                OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
+                  value,
+                  config,
+                ),
+                _ =>
+                  throw ArgumentError(
+                    'Unsupported schema type: ${schema.runtimeType}',
+                  ),
+              };
+            }).toList();
 
-      final unionClassName = types.map((type) => type.pascalCase).join('Or');
-      final unionContent = '''
+        final unionClassName = types.map((type) => type.pascalCase).join('Or');
+        final unionContent = '''
 import 'dart:io';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -470,7 +473,8 @@ class $unionClassName with _\$$unionClassName {
 }
 ''';
 
-      return (filename: filename, content: unionContent);
+        return (filename: filename, content: unionContent);
+      }
     }
 
     // Handle regular model with union properties
@@ -586,6 +590,7 @@ class OpenApiModelGenerator {
         ModelType.union: UnionModelStrategy(config),
         ModelType.regular: RegularModelStrategy(config),
       },
+
       typeDeterminer = ModelTypeDeterminer();
   final SwaggerToDartConfig config;
   final Map<ModelType, ModelGenerationStrategy> strategies;
@@ -593,11 +598,10 @@ class OpenApiModelGenerator {
 
   ({String filename, String content}) run(OpenApiModel model) {
     final modelType = typeDeterminer.determine(model);
-    final strategy = strategies[modelType];
-
-    if (strategy == null) {
-      throw StateError('No strategy available for model type: $modelType');
-    }
+    final strategy =
+        strategies.entries
+            .firstWhere((entry) => entry.key.name == modelType.name)
+            .value;
 
     return strategy.generate(model);
   }

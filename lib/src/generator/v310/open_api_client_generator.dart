@@ -146,9 +146,9 @@ class OpenApiClientGenerator {
         }
 
         /// headers / properties
-        print(
-          "skippedParameters: ${skippedParameters} ${parameters.where((e) => e.in_ == OpenApiPathMethodParameterType.header).map((e) => e.name).toList().join(',')}",
-        );
+        // print(
+        //   "skippedParameters: ${skippedParameters} ${parameters.where((e) => e.in_ == OpenApiPathMethodParameterType.header).map((e) => e.name).toList().join(',')}",
+        // );
 
         final headerParams =
             parameters

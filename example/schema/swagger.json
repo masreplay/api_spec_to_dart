@@ -672,6 +672,33 @@
         }
       }
     },
+    "/feed/": {
+      "get": {
+        "tags": [
+          "feed"
+        ],
+        "summary": "Read Feed",
+        "description": "Get the feed for the current user.",
+        "operationId": "feed-read_feed",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeedPublic"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
     "/items/": {
       "get": {
         "tags": [
@@ -1066,6 +1093,176 @@
           "password"
         ],
         "title": "Body_login-login_access_token"
+      },
+      "FeedItemBarChartPublic": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "bar_chart",
+            "title": "Type",
+            "default": "bar_chart"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title",
+            "description": "Title of the bar chart",
+            "default": "Bar Chart"
+          },
+          "data": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array",
+            "title": "Data",
+            "description": "Data points for the bar chart. Each value represents the height of a bar."
+          },
+          "labels": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Labels",
+            "description": "Optional labels for each bar in the chart.",
+            "default": []
+          }
+        },
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "title": "FeedItemBarChartPublic",
+        "description": "A feed item representing bar chart data."
+      },
+      "FeedItemLineChartPublic": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "line_chart",
+            "title": "Type",
+            "default": "line_chart"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title",
+            "description": "Title of the line chart",
+            "default": "Line Chart"
+          },
+          "start_date": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Start Date",
+            "description": "Start date for the line chart time series"
+          },
+          "end_date": {
+            "type": "string",
+            "format": "date-time",
+            "title": "End Date",
+            "description": "End date for the line chart time series"
+          },
+          "data": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array",
+            "title": "Data",
+            "description": "Data points for the line chart. Each value represents a point on the line."
+          },
+          "labels": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Labels",
+            "description": "Optional labels for x-axis data points.",
+            "default": []
+          }
+        },
+        "type": "object",
+        "required": [
+          "start_date",
+          "end_date",
+          "data"
+        ],
+        "title": "FeedItemLineChartPublic",
+        "description": "A feed item representing line chart data."
+      },
+      "FeedItemPieChartPublic": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "pie_chart",
+            "title": "Type",
+            "default": "pie_chart"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title",
+            "description": "Title of the pie chart",
+            "default": "Pie Chart"
+          },
+          "data": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array",
+            "title": "Data",
+            "description": "Data points for the pie chart. Each value represents a slice of the pie."
+          },
+          "labels": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Labels",
+            "description": "Optional labels for each slice of the pie chart.",
+            "default": []
+          }
+        },
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "title": "FeedItemPieChartPublic",
+        "description": "A feed item representing pie chart data."
+      },
+      "FeedPublic": {
+        "properties": {
+          "count": {
+            "type": "integer",
+            "title": "Count"
+          },
+          "data": {
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/FeedItemPieChartPublic"
+                },
+                {
+                  "$ref": "#/components/schemas/FeedItemLineChartPublic"
+                },
+                {
+                  "$ref": "#/components/schemas/FeedItemBarChartPublic"
+                }
+              ],
+              "discriminator": {
+                "propertyName": "type",
+                "mapping": {
+                  "bar_chart": "#/components/schemas/FeedItemBarChartPublic",
+                  "line_chart": "#/components/schemas/FeedItemLineChartPublic",
+                  "pie_chart": "#/components/schemas/FeedItemPieChartPublic"
+                }
+              }
+            },
+            "type": "array",
+            "title": "Data"
+          }
+        },
+        "type": "object",
+        "required": [
+          "count",
+          "data"
+        ],
+        "title": "FeedPublic"
       },
       "HTTPValidationError": {
         "properties": {

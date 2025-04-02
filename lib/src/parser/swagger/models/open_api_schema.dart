@@ -55,8 +55,21 @@ sealed class OpenApiSchema with _$OpenApiSchema {
     required OpenApiSchemaOneOfDiscriminator discriminator,
   }) = OpenApiSchemaOneOf;
 
-  factory OpenApiSchema.fromJson(Map<String, dynamic> json) =>
-      _$OpenApiSchemaFromJson(json);
+  factory OpenApiSchema.fromJson(Map<String, dynamic> json) {
+    // Add a fallback type if runtimeType is missing
+    if (!json.containsKey('runtimeType')) {
+      if (json.containsKey(_anyOfKey)) {
+        json = Map<String, dynamic>.from(json)..['runtimeType'] = 'anyOf';
+      } else if (json.containsKey(_oneOfKey)) {
+        json = Map<String, dynamic>.from(json)..['runtimeType'] = 'oneOf';
+      } else if (json.containsKey(_refKey)) {
+        json = Map<String, dynamic>.from(json)..['runtimeType'] = 'ref';
+      } else {
+        json = Map<String, dynamic>.from(json)..['runtimeType'] = 'type';
+      }
+    }
+    return _$OpenApiSchemaFromJson(json);
+  }
 }
 
 @freezed
