@@ -1,12 +1,6 @@
 import 'package:pub_semver/pub_semver.dart';
 import 'package:pubspec_parse/pubspec_parse.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
-import 'package:swagger_to_dart/src/config/open_api_generator_config.dart';
-import 'package:swagger_to_dart/src/generator/v310/open_api_client_generator.dart';
-import 'package:swagger_to_dart/src/parser/swagger/models/open_api_content.dart';
-import 'package:swagger_to_dart/src/parser/swagger/models/open_api_paths.dart';
-import 'package:swagger_to_dart/src/parser/swagger/models/open_api_schema.dart';
-import 'package:swagger_to_dart/src/parser/swagger/models/open_api_components.dart';
 import 'package:test/test.dart';
 
 void main() {
