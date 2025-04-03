@@ -1,8 +1,6 @@
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
-import 'freezed_class_content_generator.dart';
 import 'model_type_determiner.dart';
-import 'union_type_generator.dart';
 
 /// Type definitions to improve code readability
 typedef OpenApiModel = MapEntry<String, OpenApiSchemas>;

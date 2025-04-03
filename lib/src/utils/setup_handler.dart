@@ -4,7 +4,6 @@ import 'package:path/path.dart' as path;
 import 'package:pubspec_parse/pubspec_parse.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 import 'package:yaml/yaml.dart';
-import 'file_handler.dart';
 
 /// Handles setup and validation for the code generator
 class SetupHandler {

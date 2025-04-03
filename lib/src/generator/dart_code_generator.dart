@@ -1,9 +1,5 @@
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
-import '../parser/open_api_parser.dart';
-import '../utils/file_handler.dart';
-import 'exports_generator.dart';
-
 class DartCodeGenerator {
   DartCodeGenerator({
     required this.config,

@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:path/path.dart' as path;
-import 'package:swagger_to_dart/src/utils/file_handler.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 /// Class responsible for generating export files for models and clients
