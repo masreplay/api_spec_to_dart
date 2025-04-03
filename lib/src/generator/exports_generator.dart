@@ -10,12 +10,12 @@ class DartCodeExportsGenerator {
     required this.fileHandler,
   });
 
-  final SwaggerToDartConfig config;
+  final ConfigComponents config;
   final FileHandler fileHandler;
 
   /// Generates the exports.dart file for models
   Future<void> generateModelsExports() async {
-    final modelsDir = Directory(config.modelsOutputDirectory);
+    final modelsDir = Directory(config.pathConfig.modelsOutputDirectory);
     if (!modelsDir.existsSync()) {
       return;
     }
@@ -41,14 +41,14 @@ class DartCodeExportsGenerator {
     }
 
     final exportsFilePath = path.join(
-      config.modelsOutputDirectory,
+      config.pathConfig.modelsOutputDirectory,
       'models.dart',
     );
     await fileHandler.writeFile(exportsFilePath, buffer.toString());
   }
 
   Future<void> generateClientsExports() async {
-    final clientsDir = Directory(config.clientsOutputDirectory);
+    final clientsDir = Directory(config.pathConfig.clientsOutputDirectory);
     if (!clientsDir.existsSync()) {
       return;
     }
@@ -70,7 +70,7 @@ class DartCodeExportsGenerator {
     }
 
     final exportsFilePath = path.join(
-      config.clientsOutputDirectory,
+      config.pathConfig.clientsOutputDirectory,
       'clients.dart',
     );
     await fileHandler.writeFile(exportsFilePath, buffer.toString());

@@ -5,7 +5,7 @@ import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 String convertOpenApiAnyOfToDartType(
   OpenApiSchemaAnyOf value,
-  SwaggerToDartConfig config,
+  DartTypeConverter typeConverter,
 ) {
   // Check for common pattern of nullable types (anyOf with one type and null)
   if (value.anyOf?.length == 2) {
@@ -27,14 +27,15 @@ String convertOpenApiAnyOfToDartType(
       // Return the non-null type with a ? to indicate it's nullable
       return switch (nonNullSchema) {
         OpenApiSchemaType value =>
-          config.dartType(
+          typeConverter.dartType(
                 type: value.type,
                 format: value.format,
                 genericType: switch (value.items) {
-                  OpenApiSchemaRef value => config.renameRefClass(value),
+                  OpenApiSchemaRef value => typeConverter.namingUtils
+                      .renameRefClass(value),
                   OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
                     value,
-                    config,
+                    typeConverter,
                   ),
                   _ => null,
                 },
@@ -42,14 +43,15 @@ String convertOpenApiAnyOfToDartType(
                 title: value.title,
               ) +
               '?',
-        OpenApiSchemaRef value => config.renameRefClass(value) + '?',
+        OpenApiSchemaRef value =>
+          typeConverter.namingUtils.renameRefClass(value) + '?',
         OpenApiSchemaAnyOf value =>
-          convertOpenApiAnyOfToDartType(value, config) + '?',
+          convertOpenApiAnyOfToDartType(value, typeConverter) + '?',
         OpenApiSchemaOneOf value =>
           generateOpenApiOneOfToDartType(
                 value.title ?? 'UnionModel',
                 value,
-                config,
+                typeConverter,
               ) +
               '?',
       };
@@ -64,15 +66,28 @@ String convertOpenApiAnyOfToDartType(
 String generateOpenApiOneOfToDartType(
   String key,
   OpenApiSchemaOneOf model,
-  SwaggerToDartConfig config,
+  DartTypeConverter typeConverter,
 ) {
-  final filename = config.renameFile(key);
-  final className = config.renameClass(key);
+  final components = ConfigComponents(
+    baseConfig: typeConverter.baseConfig,
+    pathConfig: PathConfig(baseConfig: typeConverter.baseConfig),
+    importConfig: ImportConfig(baseConfig: typeConverter.baseConfig),
+    namingUtils: typeConverter.namingUtils,
+    dartTypeConverter: typeConverter,
+    dartKeywords: typeConverter.namingUtils.dartKeywords,
+  );
+
+  final namingUtils = typeConverter.namingUtils;
+  final importConfig = ImportConfig(baseConfig: typeConverter.baseConfig);
+  final pathConfig = PathConfig(baseConfig: typeConverter.baseConfig);
+
+  final filename = namingUtils.renameFile(key);
+  final className = namingUtils.renameClass(key);
 
   // Generate Freezed Union Class
   final unionTypes = <(String, String)>[];
   model.discriminator.mapping.entries.map((e) {
-    unionTypes.add((e.key, config.renameClass(e.value.split('/').last)));
+    unionTypes.add((e.key, namingUtils.renameClass(e.value.split('/').last)));
   }).toList();
 
   final content = '''
@@ -82,7 +97,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:dio/dio.dart';
 
 import '../../convertors.dart';
-${config.importModelsCode}
+${importConfig.importModelsCode}
 
 
 part '${filename}.freezed.dart';
@@ -95,7 +110,7 @@ abstract class ${className} with _\$${className} {
   const factory ${className}.fallback() = ${className}Fallback;
 
   
-  ${unionTypes.map((type) => '@FreezedUnionValue("${type.$1}") const factory ${className}.${Recase.instance.toCamelCase(type.$1)}(${type.$2} value,) = ${config.renameClass('${className}_${type.$1}')};').join('\n\n')}
+  ${unionTypes.map((type) => '@FreezedUnionValue("${type.$1}") const factory ${className}.${Recase.instance.toCamelCase(type.$1)}(${type.$2} value,) = ${namingUtils.renameClass('${className}_${type.$1}')};').join('\n\n')}
   
   factory ${className}.fromJson(
     Map<String, dynamic> json,
@@ -105,13 +120,13 @@ abstract class ${className} with _\$${className} {
 }
 ''';
 
-  if (!Directory(config.modelsOutputDirectory).existsSync()) {
-    Directory(config.modelsOutputDirectory).createSync(recursive: true);
+  if (!Directory(pathConfig.modelsOutputDirectory).existsSync()) {
+    Directory(pathConfig.modelsOutputDirectory).createSync(recursive: true);
   }
 
   final filepath = path.join(
-    config.modelsOutputDirectory,
-    '${config.renameFile(className)}.dart',
+    pathConfig.modelsOutputDirectory,
+    '${namingUtils.renameFile(className)}.dart',
   );
 
   final file = File(filepath);

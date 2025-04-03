@@ -4,7 +4,7 @@ import 'package:swagger_to_dart/swagger_to_dart.dart';
 class FreezedClassContentGenerator {
   FreezedClassContentGenerator(this.config);
 
-  final SwaggerToDartConfig config;
+  final ConfigComponents config;
 
   /// Generates the complete class content for a regular model
   String generateRegularClassContent({
@@ -73,7 +73,7 @@ class FreezedClassContentGenerator {
     buffer.writeln('import \'package:dio/dio.dart\';');
     buffer.writeln();
     buffer.writeln('import \'../../convertors.dart\';');
-    buffer.writeln(config.importModelsCode);
+    buffer.writeln(config.importConfig.importModelsCode);
     buffer.writeln();
     buffer.writeln('part \'$filename.freezed.dart\';');
     buffer.writeln('part \'$filename.g.dart\';');
@@ -110,7 +110,7 @@ class FreezedClassContentGenerator {
   ) {
     for (final entry in properties.entries) {
       buffer.writeln(
-        '  static const String ${(config.renameProperty(entry.key))}Key = \'${entry.key}\';',
+        '  static const String ${(config.namingUtils.renameProperty(entry.key))}Key = \'${entry.key}\';',
       );
     }
     buffer.writeln();
@@ -141,7 +141,7 @@ class FreezedClassContentGenerator {
 
     for (final prop in unionProps) {
       buffer.writeln(
-        '@FreezedUnionValue("${prop.unionName}") const factory $className.${Recase.instance.toCamelCase(prop.unionName)}({required ${prop.type} ${prop.key}, $normalProps}) = ${config.renameClass('${className}_${prop.unionName}')};',
+        '@FreezedUnionValue("${prop.unionName}") const factory $className.${Recase.instance.toCamelCase(prop.unionName)}({required ${prop.type} ${prop.key}, $normalProps}) = ${config.namingUtils.renameClass('${className}_${prop.unionName}')};',
       );
     }
     buffer.writeln();

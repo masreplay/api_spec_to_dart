@@ -3,17 +3,17 @@ import 'package:swagger_to_dart/swagger_to_dart.dart';
 /// Determines the type of model based on its properties
 class ModelTypeDeterminer {
   /// Determines the type of model from the given OpenAPI model
-  ModelType determine(OpenApiModel model) {
+  ModelTypeEnum determine(OpenApiModel model) {
     final schema = model.value;
 
     // Check for enum type first
     if (schema.enum_ != null && schema.enum_!.isNotEmpty) {
-      return ModelType.enum_;
+      return ModelTypeEnum.enum_;
     }
 
     // Check for union type at schema level
     if (schema is OpenApiSchemaAnyOf || schema is OpenApiSchemaOneOf) {
-      return ModelType.union;
+      return ModelTypeEnum.union;
     }
 
     // Check for union type in properties
@@ -23,13 +23,13 @@ class ModelTypeDeterminer {
           entry.value is OpenApiSchemaAnyOf ||
           entry.value is OpenApiSchemaOneOf,
     )) {
-      return ModelType.union;
+      return ModelTypeEnum.union;
     }
 
     // If none of the above, it's a regular model
-    return ModelType.regular;
+    return ModelTypeEnum.regular;
   }
 }
 
 /// Enum to identify different model types
-enum ModelType { enum_, union, regular }
+enum ModelTypeEnum { enum_, union, regular }

@@ -6,7 +6,7 @@ class OpenApiBaseClientGenerator {
     required this.openApi,
   });
 
-  final SwaggerToDartConfig config;
+  final ConfigComponents config;
   final OpenApi openApi;
 
   String generator({required List<String> clients}) {
@@ -14,7 +14,7 @@ class OpenApiBaseClientGenerator {
 
     buffer.writeln('''import 'package:dio/dio.dart';''');
 
-    buffer.writeln(config.importClientsCode);
+    buffer.writeln(config.importConfig.importClientsCode);
 
     buffer.writeln();
 
@@ -25,7 +25,7 @@ class OpenApiBaseClientGenerator {
       buffer.writeln(commentLine(version));
     buffer.writeln(commentLine(DateTime.now().toString()));
 
-    final className = config.swaggerToDart.apiClientClassName;
+    final className = config.baseConfig.swaggerToDart.apiClientClassName;
     buffer.writeln('''class ${className} {''');
 
     buffer.writeln();
@@ -37,8 +37,8 @@ class OpenApiBaseClientGenerator {
     buffer.writeln();
     for (final client in clients) {
       buffer.writeln(
-        '''${config.renameClass(client)}Client get ${config.renameProperty(client)}{
-          return ${config.renameClass(client)}Client(dio);
+        '''${config.namingUtils.renameClass(client)}Client get ${config.namingUtils.renameProperty(client)}{
+          return ${config.namingUtils.renameClass(client)}Client(dio);
         }''',
       );
     }

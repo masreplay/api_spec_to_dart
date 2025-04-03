@@ -13,7 +13,7 @@ class SetupHandler {
   final String? configPath;
 
   /// Validates and sets up the environment for code generation
-  Future<({SwaggerToDartConfig config, OpenApi openApi})> setup() async {
+  Future<({ConfigComponents config, OpenApi openApi})> setup() async {
     final rootDir = Directory.current.path;
     final config = await _loadConfig(rootDir);
     final openApi = await _loadOpenApi(config);
@@ -22,7 +22,7 @@ class SetupHandler {
   }
 
   /// Loads and validates the configuration
-  Future<SwaggerToDartConfig> _loadConfig(String rootDir) async {
+  Future<ConfigComponents> _loadConfig(String rootDir) async {
     final pubspecPath = path.join(rootDir, 'pubspec.yaml');
     final pubspec = Pubspec.parse(
       await File(pubspecPath).readAsString(),
@@ -44,15 +44,16 @@ class SetupHandler {
     final swaggerToDartYaml = SwaggerToDartYaml.fromYamlMap(
       swaggerToDartYamlMap,
     );
-    return SwaggerToDartConfig(
+
+    return ConfigFactory.create(
       pubspec: pubspec,
       swaggerToDart: swaggerToDartYaml.swaggerToDart,
     );
   }
 
   /// Loads and validates the OpenAPI specification
-  Future<OpenApi> _loadOpenApi(SwaggerToDartConfig config) async {
-    final swaggerConfig = config.swaggerToDart;
+  Future<OpenApi> _loadOpenApi(ConfigComponents config) async {
+    final swaggerConfig = config.baseConfig.swaggerToDart;
     Map<String, dynamic> map;
 
     // Check if URL is provided
@@ -118,8 +119,8 @@ class SetupHandler {
   }
 
   /// Sets up the output directory
-  Future<void> _setupOutputDirectory(SwaggerToDartConfig config) async {
-    final genDir = Directory(config.swaggerToDart.outputDirectory);
+  Future<void> _setupOutputDirectory(ConfigComponents config) async {
+    final genDir = Directory(config.baseConfig.swaggerToDart.outputDirectory);
     if (genDir.existsSync()) {
       await genDir.delete(recursive: true);
     }

@@ -25,7 +25,7 @@ abstract class PropertyGeneratorStrategy {
 class FieldGenerator {
   FieldGenerator(this.config);
 
-  final SwaggerToDartConfig config;
+  final ConfigComponents config;
 
   String generateField({
     required String className,
@@ -115,7 +115,7 @@ class FieldGenerator {
 /// Strategy for generating standard type fields
 class TypePropertyGenerator implements PropertyGeneratorStrategy {
   TypePropertyGenerator(this.config) : fieldGenerator = FieldGenerator(config);
-  final SwaggerToDartConfig config;
+  final ConfigComponents config;
   final FieldGenerator fieldGenerator;
 
   @override
@@ -131,7 +131,7 @@ class TypePropertyGenerator implements PropertyGeneratorStrategy {
       );
     }
 
-    final dartType = config.dartType(
+    final dartType = config.dartTypeConverter.dartType(
       format: schema.format,
       type: schema.type,
       genericType: _getDependentType(schema.items),
@@ -152,8 +152,11 @@ class TypePropertyGenerator implements PropertyGeneratorStrategy {
 
   String? _getDependentType(OpenApiSchema? items) {
     return switch (items) {
-      OpenApiSchemaRef value => config.renameRefClass(value),
-      OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(value, config),
+      OpenApiSchemaRef value => config.namingUtils.renameRefClass(value),
+      OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
+        value,
+        config.dartTypeConverter,
+      ),
       _ => null,
     };
   }
@@ -172,7 +175,7 @@ class TypePropertyGenerator implements PropertyGeneratorStrategy {
 /// Strategy for generating reference fields
 class RefPropertyGenerator implements PropertyGeneratorStrategy {
   RefPropertyGenerator(this.config) : fieldGenerator = FieldGenerator(config);
-  final SwaggerToDartConfig config;
+  final ConfigComponents config;
   final FieldGenerator fieldGenerator;
 
   @override
@@ -188,7 +191,7 @@ class RefPropertyGenerator implements PropertyGeneratorStrategy {
       );
     }
 
-    final refClassName = config.renameRefClass(schema);
+    final refClassName = config.namingUtils.renameRefClass(schema);
 
     return fieldGenerator.generateField(
       className: className,
@@ -205,9 +208,9 @@ class RefPropertyGenerator implements PropertyGeneratorStrategy {
     if (defaultValue == 'null') {
       return 'null';
     } else if (defaultValue != null && defaultValue is int) {
-      return '$className.value${config.renameProperty("$defaultValue")}';
+      return '$className.value${config.namingUtils.renameProperty("$defaultValue")}';
     } else if (defaultValue != null && defaultValue is String) {
-      return '$className.${config.renameProperty("$defaultValue")}';
+      return '$className.value${config.namingUtils.renameProperty(defaultValue)}';
     }
     return null;
   }
@@ -218,7 +221,7 @@ class AnyOfPropertyGenerator implements PropertyGeneratorStrategy {
   AnyOfPropertyGenerator(this.config)
     : fieldGenerator = FieldGenerator(config),
       unionTypeGenerator = UnionTypeGenerator(config);
-  final SwaggerToDartConfig config;
+  final ConfigComponents config;
   final FieldGenerator fieldGenerator;
   final UnionTypeGenerator unionTypeGenerator;
 
@@ -295,9 +298,9 @@ class AnyOfPropertyGenerator implements PropertyGeneratorStrategy {
     if (defaultValue == 'null') {
       return 'null';
     } else if (defaultValue != null && defaultValue is int) {
-      return '$className.value${config.renameProperty("$defaultValue")}';
+      return '$className.value${config.namingUtils.renameProperty("$defaultValue")}';
     } else if (defaultValue != null && defaultValue is String) {
-      return '$className.${config.renameProperty("$defaultValue")}';
+      return '$className.value${config.namingUtils.renameProperty(defaultValue)}';
     }
     return null;
   }
@@ -307,13 +310,13 @@ class AnyOfPropertyGenerator implements PropertyGeneratorStrategy {
 class EnumModelStrategy implements ModelGenerationStrategy {
   EnumModelStrategy(this.config)
     : contentGenerator = FreezedClassContentGenerator(config);
-  final SwaggerToDartConfig config;
+  final ConfigComponents config;
   final FreezedClassContentGenerator contentGenerator;
 
   @override
   ({String filename, String content}) generate(OpenApiModel model) {
-    final filename = config.renameFile(model.key);
-    final className = config.renameClass(model.key);
+    final filename = config.namingUtils.renameFile(model.key);
+    final className = config.namingUtils.renameClass(model.key);
     final enum_ = model.value.enum_ ?? [];
 
     if (enum_.isEmpty) {
@@ -352,8 +355,8 @@ class EnumModelStrategy implements ModelGenerationStrategy {
       final name =
           description == null
               ? 'value$value'
-              : config.renameProperty(description);
-      final enumName = config.renameProperty(value.toString());
+              : config.namingUtils.renameProperty(description);
+      final enumName = config.namingUtils.renameProperty(value.toString());
 
       if (isNumber) {
         buffer.writeln('  ${name}($value),');
@@ -380,14 +383,14 @@ class UnionModelStrategy implements ModelGenerationStrategy {
         OpenApiSchemaOneOf: AnyOfPropertyGenerator(config),
       },
       contentGenerator = FreezedClassContentGenerator(config);
-  final SwaggerToDartConfig config;
+  final ConfigComponents config;
   final Map<Type, PropertyGeneratorStrategy> propertyGenerators;
   final FreezedClassContentGenerator contentGenerator;
 
   @override
   ({String filename, String content}) generate(OpenApiModel model) {
-    final filename = config.renameFile(model.key);
-    final className = config.renameClass(model.key);
+    final filename = config.namingUtils.renameFile(model.key);
+    final className = config.namingUtils.renameClass(model.key);
     final schema = model.value;
 
     // Convert to check for anyOf type in the schema
@@ -423,24 +426,28 @@ class UnionModelStrategy implements ModelGenerationStrategy {
         final types =
             nonNullSchemas.map((schema) {
               return switch (schema) {
-                OpenApiSchemaType value => config.dartType(
+                OpenApiSchemaType value => config.dartTypeConverter.dartType(
                   type: value.type,
                   format: value.format,
                   genericType: switch (value.items) {
-                    OpenApiSchemaRef value => config.renameRefClass(value),
+                    OpenApiSchemaRef value => config.namingUtils.renameRefClass(
+                      value,
+                    ),
                     OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
                       value,
-                      config,
+                      config.dartTypeConverter,
                     ),
                     _ => null,
                   },
                   items: value.items,
                   title: value.title,
                 ),
-                OpenApiSchemaRef value => config.renameRefClass(value),
+                OpenApiSchemaRef value => config.namingUtils.renameRefClass(
+                  value,
+                ),
                 OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
                   value,
-                  config,
+                  config.dartTypeConverter,
                 ),
                 _ =>
                   throw ArgumentError(
@@ -457,7 +464,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:dio/dio.dart';
 
 import '../../convertors.dart';
-${config.importModelsCode}
+${config.importConfig.importModelsCode}
 
 part '${filename}.freezed.dart';
 part '${filename}.g.dart';
@@ -484,12 +491,12 @@ class $unionClassName with _\$$unionClassName {
     for (final entry in properties.entries) {
       final key = entry.key;
       final schema = entry.value;
-      final propertyName = config.renameProperty(key);
+      final propertyName = config.namingUtils.renameProperty(key);
 
       if (schema is OpenApiSchemaOneOf) {
         for (final mapping in schema.discriminator.mapping.entries) {
           unionProps.add((
-            type: config.renameClass(mapping.value.split('/').last),
+            type: config.namingUtils.renameClass(mapping.value.split('/').last),
             key: key,
             unionName: mapping.key,
           ));
@@ -540,21 +547,21 @@ class RegularModelStrategy implements ModelGenerationStrategy {
         OpenApiSchemaAnyOf: AnyOfPropertyGenerator(config),
       },
       contentGenerator = FreezedClassContentGenerator(config);
-  final SwaggerToDartConfig config;
+  final ConfigComponents config;
   final Map<Type, PropertyGeneratorStrategy> propertyGenerators;
   final FreezedClassContentGenerator contentGenerator;
 
   @override
   ({String filename, String content}) generate(OpenApiModel model) {
-    final filename = config.renameFile(model.key);
-    final className = config.renameClass(model.key);
+    final filename = config.namingUtils.renameFile(model.key);
+    final className = config.namingUtils.renameClass(model.key);
     final properties = model.value.properties ?? {};
 
     final fields = StringBuffer();
     for (final entry in properties.entries) {
       final key = entry.key;
       final schema = entry.value;
-      final propertyName = config.renameProperty(key);
+      final propertyName = config.namingUtils.renameProperty(key);
 
       final generator = propertyGenerators[schema.runtimeType];
       if (generator != null) {
@@ -585,14 +592,14 @@ class RegularModelStrategy implements ModelGenerationStrategy {
 class OpenApiModelGenerator {
   OpenApiModelGenerator({required this.config})
     : strategies = {
-        ModelType.enum_: EnumModelStrategy(config),
-        ModelType.union: UnionModelStrategy(config),
-        ModelType.regular: RegularModelStrategy(config),
+        ModelTypeEnum.enum_: EnumModelStrategy(config),
+        ModelTypeEnum.union: UnionModelStrategy(config),
+        ModelTypeEnum.regular: RegularModelStrategy(config),
       },
 
       typeDeterminer = ModelTypeDeterminer();
-  final SwaggerToDartConfig config;
-  final Map<ModelType, ModelGenerationStrategy> strategies;
+  final ConfigComponents config;
+  final Map<ModelTypeEnum, ModelGenerationStrategy> strategies;
   final ModelTypeDeterminer typeDeterminer;
 
   ({String filename, String content}) run(OpenApiModel model) {
@@ -605,9 +612,6 @@ class OpenApiModelGenerator {
     return strategy.generate(model);
   }
 }
-
-/// Enum to identify different model types
-enum ModelType { enum_, union, regular }
 
 extension StringExtension on String {
   String get pascalCase {

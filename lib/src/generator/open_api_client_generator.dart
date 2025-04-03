@@ -10,7 +10,7 @@ String commentLine(String line) {
 class OpenApiClientGenerator {
   const OpenApiClientGenerator({required this.config});
 
-  final SwaggerToDartConfig config;
+  final ConfigComponents config;
 
   ({String filename, String content}) generator({
     required OpenApiPaths path,
@@ -21,9 +21,9 @@ class OpenApiClientGenerator {
 
     buffer.writeln('''import 'package:dio/dio.dart';''');
     buffer.writeln('''import 'package:retrofit/retrofit.dart';''');
-    buffer.writeln(config.importModelsCode);
+    buffer.writeln(config.importConfig.importModelsCode);
 
-    final fileName = '''${config.renameFile(clientName)}_client''';
+    final fileName = '''${config.namingUtils.renameFile(clientName)}_client''';
     buffer.writeln(''' ''');
 
     buffer.writeln('''part '$fileName.g.dart';''');
@@ -32,14 +32,14 @@ class OpenApiClientGenerator {
 
     buffer.writeln('''@RestApi()''');
 
-    final className = '${config.renameClass(clientName)}Client';
+    final className = '${config.namingUtils.renameClass(clientName)}Client';
     buffer.writeln('''abstract class ${className} {''');
 
     buffer.writeln(
       '''factory ${className}(Dio dio, {String baseUrl}) = _${className};''',
     );
 
-    final skippedParameters = config.swaggerToDart.skippedParameters;
+    final skippedParameters = config.baseConfig.swaggerToDart.skippedParameters;
 
     final privateMethods = <({String methodName, OpenApiPathMethod method})>[];
     for (final tagPath in tagPaths) {
@@ -50,7 +50,7 @@ class OpenApiClientGenerator {
         final OpenApiPathMethod method = entry.value;
 
         // method name
-        final methodName = config.renameMethod(
+        final methodName = config.namingUtils.renameMethod(
           method.operationId ?? "${methodType}_${tagPath.replaceAll('/', '_')}",
         );
 
@@ -111,7 +111,7 @@ class OpenApiClientGenerator {
           final queriesClass = generateQueriesClass(queriesParams, methodName);
 
           propertiesSnippets.add(
-            '''@Queries() required ${config.renameClass(queriesClass)} queries,''',
+            '''@Queries() required ${config.namingUtils.renameClass(queriesClass)} queries,''',
           );
         }
 
@@ -122,7 +122,7 @@ class OpenApiClientGenerator {
 
         for (final pathParam in pathParams) {
           final dartType = _getDartType(pathParam.schema, methodName);
-          final paramName = config.renameProperty(pathParam.name);
+          final paramName = config.namingUtils.renameProperty(pathParam.name);
 
           propertiesSnippets.add(
             '''@Path('${pathParam.name}') required $dartType $paramName,''',
@@ -161,7 +161,7 @@ class OpenApiClientGenerator {
 
         for (final headerParam in headerParams) {
           final dartType = _getDartType(headerParam.schema, methodName);
-          final paramName = config.renameProperty(headerParam.name);
+          final paramName = config.namingUtils.renameProperty(headerParam.name);
           propertiesSnippets.add(
             '''@Header('${headerParam.name}') required $dartType $paramName,''',
           );
@@ -219,7 +219,7 @@ class OpenApiClientGenerator {
         final params = StringBuffer();
         for (final param in parameters) {
           final dartType = _getDartType(param.schema, methodName);
-          final paramName = config.renameProperty(param.name);
+          final paramName = config.namingUtils.renameProperty(param.name);
           params.writeln('required $dartType  $paramName,\n ');
         }
 
@@ -237,7 +237,7 @@ class OpenApiClientGenerator {
      ){
       return _$methodName(
         body: body.toJson(),
-        ${parameters.map((e) => '${config.renameProperty(e.name)}: ${config.renameProperty(e.name)},').join(',\n')}
+        ${parameters.map((e) => '${config.namingUtils.renameProperty(e.name)}: ${config.namingUtils.renameProperty(e.name)},').join(',\n')}
       );
     }''');
       }
@@ -275,13 +275,15 @@ class OpenApiClientGenerator {
       ),
     );
 
-    if (!Directory(config.modelsOutputDirectory).existsSync()) {
-      Directory(config.modelsOutputDirectory).createSync(recursive: true);
+    if (!Directory(config.pathConfig.modelsOutputDirectory).existsSync()) {
+      Directory(
+        config.pathConfig.modelsOutputDirectory,
+      ).createSync(recursive: true);
     }
 
     final filepath = path.join(
-      config.modelsOutputDirectory,
-      '${config.renameFile(className)}.dart',
+      config.pathConfig.modelsOutputDirectory,
+      '${config.namingUtils.renameFile(className)}.dart',
     );
 
     final file = File(filepath);
@@ -297,26 +299,29 @@ class OpenApiClientGenerator {
     if (model == null) return null;
 
     return switch (model) {
-      OpenApiSchemaType value => config.dartType(
+      OpenApiSchemaType value => config.dartTypeConverter.dartType(
         type: value.type,
         format: value.format,
         genericType: switch (value.items) {
-          OpenApiSchemaRef value => config.renameRefClass(value),
+          OpenApiSchemaRef value => config.namingUtils.renameRefClass(value),
           OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
             value,
-            config,
+            config.dartTypeConverter,
           ),
           _ => null,
         },
         items: value.items,
         title: value.title,
       ),
-      OpenApiSchemaRef value => config.renameRefClass(value),
-      OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(value, config),
+      OpenApiSchemaRef value => config.namingUtils.renameRefClass(value),
+      OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
+        value,
+        config.dartTypeConverter,
+      ),
       OpenApiSchemaOneOf value => generateOpenApiOneOfToDartType(
         '${className}Union${value.title ?? 'Model'}',
         value,
-        config,
+        config.dartTypeConverter,
       ),
     };
   }
