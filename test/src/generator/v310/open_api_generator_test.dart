@@ -7,7 +7,7 @@ import 'package:swagger_to_dart/swagger_to_dart.dart';
 import 'package:test/test.dart';
 
 void main() {
-  late OpenApiDartGenerator generator;
+  late DartCodeGenerator generator;
   late Directory testDir;
   late SwaggerToDartConfig config;
   late OpenApi openApi;
@@ -51,7 +51,7 @@ void main() {
       servers: [],
     );
 
-    generator = OpenApiDartGenerator(config: config, openApi: openApi);
+    generator = DartCodeGenerator(config: config, openApi: openApi);
   });
 
   tearDown(() async {
@@ -130,7 +130,7 @@ void main() {
         },
       );
 
-      generator = OpenApiDartGenerator(config: config, openApi: openApi);
+      generator = DartCodeGenerator(config: config, openApi: openApi);
 
       await generator.run();
 
@@ -159,7 +159,7 @@ void main() {
         servers: [],
       );
 
-      final emptyGenerator = OpenApiDartGenerator(
+      final emptyGenerator = DartCodeGenerator(
         config: config,
         openApi: emptyOpenApi,
       );

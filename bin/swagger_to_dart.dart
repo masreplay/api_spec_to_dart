@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import '../lib/src/generator/v310/open_api_generator.dart';
+import '../lib/src/generator/v310/dart_code_generator.dart';
 import '../lib/src/utils/file_handler.dart';
 import '../lib/src/utils/setup_handler.dart';
 
@@ -25,7 +25,7 @@ Future<void> main(List<String> args) async {
     final (config: config, openApi: openApi) = await setupHandler.setup();
 
     print('Generating code...');
-    final generator = OpenApiDartGenerator(
+    final generator = DartCodeGenerator(
       config: config,
       openApi: openApi,
       fileHandler: fileHandler,

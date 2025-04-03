@@ -1,23 +1,11 @@
-import 'dart:convert';
-import 'dart:io';
-
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 import '../../parser/open_api_parser.dart';
 import '../../utils/file_handler.dart';
 import 'exports_generator.dart';
 
-OpenApi readOpenApiFile(SwaggerToDartConfig config) {
-  final file = File(config.swaggerToDart.inputDirectory);
-  final json = file.readAsStringSync();
-  final map = jsonDecode(json);
-
-  return OpenApi.fromJson(map);
-}
-
-/// Main generator class that orchestrates the generation process
-class OpenApiDartGenerator {
-  OpenApiDartGenerator({
+class DartCodeGenerator {
+  DartCodeGenerator({
     required this.config,
     required this.openApi,
     this.fileHandler = const FileHandler(),
@@ -88,7 +76,7 @@ class OpenApiDartGenerator {
 
   /// Generates export files for models and clients
   Future<void> _generateExports() async {
-    final exportsGenerator = ExportsGenerator(
+    final exportsGenerator = DartCodeExportsGenerator(
       config: config,
       fileHandler: fileHandler,
     );
