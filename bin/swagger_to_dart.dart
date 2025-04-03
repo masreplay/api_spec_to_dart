@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import '../lib/src/generator/v310/dart_code_generator.dart';
+import '../lib/src/generator/dart_code_generator.dart';
 import '../lib/src/utils/file_handler.dart';
 import '../lib/src/utils/setup_handler.dart';
 

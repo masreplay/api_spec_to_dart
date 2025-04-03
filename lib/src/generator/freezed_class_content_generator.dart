@@ -1,8 +1,8 @@
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 /// Generates consistent class content for different model types
-class ClassContentGenerator {
-  ClassContentGenerator(this.config);
+class FreezedClassContentGenerator {
+  FreezedClassContentGenerator(this.config);
 
   final SwaggerToDartConfig config;
 

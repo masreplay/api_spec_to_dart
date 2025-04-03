@@ -1,6 +1,6 @@
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
-import 'class_content_generator.dart';
+import 'freezed_class_content_generator.dart';
 import 'model_type_determiner.dart';
 import 'union_type_generator.dart';
 
@@ -308,9 +308,9 @@ class AnyOfPropertyGenerator implements PropertyGeneratorStrategy {
 /// Strategy for generating enum models
 class EnumModelStrategy implements ModelGenerationStrategy {
   EnumModelStrategy(this.config)
-    : contentGenerator = ClassContentGenerator(config);
+    : contentGenerator = FreezedClassContentGenerator(config);
   final SwaggerToDartConfig config;
-  final ClassContentGenerator contentGenerator;
+  final FreezedClassContentGenerator contentGenerator;
 
   @override
   ({String filename, String content}) generate(OpenApiModel model) {
@@ -379,11 +379,12 @@ class UnionModelStrategy implements ModelGenerationStrategy {
         OpenApiSchemaType: TypePropertyGenerator(config),
         OpenApiSchemaRef: RefPropertyGenerator(config),
         OpenApiSchemaAnyOf: AnyOfPropertyGenerator(config),
+        OpenApiSchemaOneOf: AnyOfPropertyGenerator(config),
       },
-      contentGenerator = ClassContentGenerator(config);
+      contentGenerator = FreezedClassContentGenerator(config);
   final SwaggerToDartConfig config;
   final Map<Type, PropertyGeneratorStrategy> propertyGenerators;
-  final ClassContentGenerator contentGenerator;
+  final FreezedClassContentGenerator contentGenerator;
 
   @override
   ({String filename, String content}) generate(OpenApiModel model) {
@@ -540,10 +541,10 @@ class RegularModelStrategy implements ModelGenerationStrategy {
         OpenApiSchemaRef: RefPropertyGenerator(config),
         OpenApiSchemaAnyOf: AnyOfPropertyGenerator(config),
       },
-      contentGenerator = ClassContentGenerator(config);
+      contentGenerator = FreezedClassContentGenerator(config);
   final SwaggerToDartConfig config;
   final Map<Type, PropertyGeneratorStrategy> propertyGenerators;
-  final ClassContentGenerator contentGenerator;
+  final FreezedClassContentGenerator contentGenerator;
 
   @override
   ({String filename, String content}) generate(OpenApiModel model) {

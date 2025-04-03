@@ -3,10 +3,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'open_api_schema.freezed.dart';
 part 'open_api_schema.g.dart';
 
-const String _anyOfKey = 'anyOf';
-const String _oneOfKey = 'oneOf';
-const String _refKey = '\$ref';
-
 @Freezed()
 sealed class OpenApiSchema with _$OpenApiSchema {
   const OpenApiSchema._();
@@ -29,7 +25,7 @@ sealed class OpenApiSchema with _$OpenApiSchema {
 
   @FreezedUnionValue('ref')
   const factory OpenApiSchema.ref({
-    @JsonKey(name: _refKey) String? ref,
+    @JsonKey(name: r'$ref') String? ref,
     @JsonKey(name: 'description') String? description,
     @JsonKey(name: 'default') Object? default_,
   }) = OpenApiSchemaRef;
@@ -37,7 +33,7 @@ sealed class OpenApiSchema with _$OpenApiSchema {
   @FreezedUnionValue('anyOf')
   const factory OpenApiSchema.anyOf({
     @OpenApiSchemaJsonConverter()
-    @JsonKey(name: _anyOfKey)
+    @JsonKey(name: 'anyOf')
     required List<OpenApiSchema>? anyOf,
     @JsonKey(name: 'description') String? description,
     @JsonKey(name: 'title') String? title,
@@ -47,7 +43,7 @@ sealed class OpenApiSchema with _$OpenApiSchema {
   @FreezedUnionValue('oneOf')
   const factory OpenApiSchema.oneOf({
     @OpenApiSchemaJsonConverter()
-    @JsonKey(name: _oneOfKey)
+    @JsonKey(name: 'oneOf')
     required List<OpenApiSchema>? oneOf,
     @JsonKey(name: 'description') String? description,
     @JsonKey(name: 'title') String? title,
@@ -56,18 +52,6 @@ sealed class OpenApiSchema with _$OpenApiSchema {
   }) = OpenApiSchemaOneOf;
 
   factory OpenApiSchema.fromJson(Map<String, dynamic> json) {
-    // Add a fallback type if runtimeType is missing
-    if (!json.containsKey('runtimeType')) {
-      if (json.containsKey(_anyOfKey)) {
-        json = Map<String, dynamic>.from(json)..['runtimeType'] = 'anyOf';
-      } else if (json.containsKey(_oneOfKey)) {
-        json = Map<String, dynamic>.from(json)..['runtimeType'] = 'oneOf';
-      } else if (json.containsKey(_refKey)) {
-        json = Map<String, dynamic>.from(json)..['runtimeType'] = 'ref';
-      } else {
-        json = Map<String, dynamic>.from(json)..['runtimeType'] = 'type';
-      }
-    }
     return _$OpenApiSchemaFromJson(json);
   }
 }
@@ -111,11 +95,11 @@ class OpenApiSchemaJsonConverter
 
   @override
   OpenApiSchema fromJson(Map<String, dynamic> json) {
-    if (json.containsKey(_anyOfKey)) {
+    if (json.containsKey('anyOf')) {
       return OpenApiSchemaAnyOf.fromJson(json);
-    } else if (json.containsKey(_oneOfKey)) {
+    } else if (json.containsKey('oneOf')) {
       return OpenApiSchemaOneOf.fromJson(json);
-    } else if (json.containsKey(_refKey)) {
+    } else if (json.containsKey(r'$ref')) {
       return OpenApiSchemaRef.fromJson(json);
     } else {
       return OpenApiSchemaType.fromJson(json);
