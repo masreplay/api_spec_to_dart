@@ -1,0 +1,8 @@
+swagger_to_dart:
+  url: https://127.0.0.0:8000
+  input_directory: schema/swagger.json
+
+  skipped_parameters:
+    - "Accept-Language"
+    - "X-Language"
+    - "X-Platform"
