@@ -105,7 +105,7 @@ swagger_to_dart:
     - Accept-Language
     - X-Language
     - X-Platform
-  
+
   # Or you can use a URL to directly download the spec
   # url: https://example.com/api/swagger.json
 ```
@@ -163,21 +163,21 @@ import 'package:your_project/api/api.dart';
 
 void main() async {
   final dio = Dio();
-  
+
   // Add interceptors for auth, logging, etc.
   dio.interceptors.add(LogInterceptor(responseBody: true));
-  
+
   // Create API client
   final userClient = UserApi(dio, baseUrl: 'https://api.example.com');
-  
+
   try {
     // Use the generated API client
     final users = await userClient.getUsers();
     print('Users: ${users.map((u) => u.name).join(', ')}');
-    
+
     // Create a model instance
     final newUser = User(id: '123', name: 'John Doe', email: 'john@example.com');
-    
+
     // Use the model in an API call
     final createdUser = await userClient.createUser(newUser);
     print('Created user: ${createdUser.name}');
@@ -195,20 +195,20 @@ The package configuration is defined in a `swagger_to_dart.yaml` file. Below is 
 swagger_to_dart:
   # Optional: URL for directly downloading OpenAPI specification (JSON format)
   url: https://example.com/api/swagger.json
-  
+
   # Path to your OpenAPI specification file (default: 'schema/swagger.json')
   input_directory: schema/swagger.json
-  
+
   # Directory where generated files will be placed (default: 'lib/src/gen')
   output_directory: lib/src/gen
-  
+
   # Name for the main API client class (default: 'ApiClient')
   api_client_class_name: ApiClient
-  
+
   # Additional imports to include in generated files (default: [])
   imports:
     - import 'package:dio/dio.dart';
-    
+
   # Parameters to skip during generation (default: [])
   skipped_parameters:
     - Accept-Language
@@ -296,4 +296,4 @@ This package is available under the MIT License.
 
 ## Acknowledgements
 
-This package was inspired by and builds upon other great Dart packages including [freezed](https://pub.dev/packages/freezed), [retrofit](https://pub.dev/packages/retrofit), and [json_serializable](https://pub.dev/packages/json_serializable).
+This package was inspired by and builds upon other great Dart packages including [freezed](https://pub.dev/packages/freezed), [retrofit](https://pub.dev/packages/retrofit), and [json_serializable](https://pub.dev/packages/json_serializable) and [FastAPI](https://fastapi.tiangolo.com/).
