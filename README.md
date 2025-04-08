@@ -13,6 +13,14 @@
 
 A powerful Dart package that auto-generates type-safe API clients and models from OpenAPI specifications (Swagger). Currently optimized for OpenAPI 3.1.0 specifications.
 
+## Support
+- [FastAPI](https://fastapi.tiangolo.com/)
+- [NestJS](https://nestjs.com/)
+- [Spring Boot](https://spring.io/projects/spring-boot)
+- [AspNet Core](https://dotnet.microsoft.com/apps/aspnet)
+- [Flask](https://flask.palletsprojects.com/)
+- Any other framework that generates OpenAPI 3.1.0 specs with JSON format
+
 ## Features
 
 - 🚀 Generates Dart models with [freezed](https://pub.dev/packages/freezed) for immutability and serialization

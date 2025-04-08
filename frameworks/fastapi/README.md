@@ -1,0 +1,1 @@
+# FastApi Project for swagger_to_dart package
