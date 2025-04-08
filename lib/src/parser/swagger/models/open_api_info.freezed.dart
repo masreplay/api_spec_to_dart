@@ -55,15 +55,13 @@ mixin _$OpenApiInfo {
 /// @nodoc
 abstract mixin class $OpenApiInfoCopyWith<$Res> {
   factory $OpenApiInfoCopyWith(
-    OpenApiInfo value,
-    $Res Function(OpenApiInfo) _then,
-  ) = _$OpenApiInfoCopyWithImpl;
+          OpenApiInfo value, $Res Function(OpenApiInfo) _then) =
+      _$OpenApiInfoCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: 'title') String title,
-    @JsonKey(name: 'description') String? description,
-    @JsonKey(name: 'version') String? version,
-  });
+  $Res call(
+      {@JsonKey(name: 'title') String title,
+      @JsonKey(name: 'description') String? description,
+      @JsonKey(name: 'version') String? version});
 }
 
 /// @nodoc
@@ -82,36 +80,31 @@ class _$OpenApiInfoCopyWithImpl<$Res> implements $OpenApiInfoCopyWith<$Res> {
     Object? description = freezed,
     Object? version = freezed,
   }) {
-    return _then(
-      _self.copyWith(
-        title:
-            null == title
-                ? _self.title
-                : title // ignore: cast_nullable_to_non_nullable
-                    as String,
-        description:
-            freezed == description
-                ? _self.description
-                : description // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        version:
-            freezed == version
-                ? _self.version
-                : version // ignore: cast_nullable_to_non_nullable
-                    as String?,
-      ),
-    );
+    return _then(_self.copyWith(
+      title: null == title
+          ? _self.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: freezed == description
+          ? _self.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      version: freezed == version
+          ? _self.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _OpenApiInfo extends OpenApiInfo {
-  const _OpenApiInfo({
-    @JsonKey(name: 'title') required this.title,
-    @JsonKey(name: 'description') required this.description,
-    @JsonKey(name: 'version') required this.version,
-  }) : super._();
+  const _OpenApiInfo(
+      {@JsonKey(name: 'title') required this.title,
+      @JsonKey(name: 'description') required this.description,
+      @JsonKey(name: 'version') required this.version})
+      : super._();
   factory _OpenApiInfo.fromJson(Map<String, dynamic> json) =>
       _$OpenApiInfoFromJson(json);
 
@@ -135,7 +128,9 @@ class _OpenApiInfo extends OpenApiInfo {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$OpenApiInfoToJson(this);
+    return _$OpenApiInfoToJson(
+      this,
+    );
   }
 
   @override
@@ -163,16 +158,14 @@ class _OpenApiInfo extends OpenApiInfo {
 abstract mixin class _$OpenApiInfoCopyWith<$Res>
     implements $OpenApiInfoCopyWith<$Res> {
   factory _$OpenApiInfoCopyWith(
-    _OpenApiInfo value,
-    $Res Function(_OpenApiInfo) _then,
-  ) = __$OpenApiInfoCopyWithImpl;
+          _OpenApiInfo value, $Res Function(_OpenApiInfo) _then) =
+      __$OpenApiInfoCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'title') String title,
-    @JsonKey(name: 'description') String? description,
-    @JsonKey(name: 'version') String? version,
-  });
+  $Res call(
+      {@JsonKey(name: 'title') String title,
+      @JsonKey(name: 'description') String? description,
+      @JsonKey(name: 'version') String? version});
 }
 
 /// @nodoc
@@ -191,24 +184,19 @@ class __$OpenApiInfoCopyWithImpl<$Res> implements _$OpenApiInfoCopyWith<$Res> {
     Object? description = freezed,
     Object? version = freezed,
   }) {
-    return _then(
-      _OpenApiInfo(
-        title:
-            null == title
-                ? _self.title
-                : title // ignore: cast_nullable_to_non_nullable
-                    as String,
-        description:
-            freezed == description
-                ? _self.description
-                : description // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        version:
-            freezed == version
-                ? _self.version
-                : version // ignore: cast_nullable_to_non_nullable
-                    as String?,
-      ),
-    );
+    return _then(_OpenApiInfo(
+      title: null == title
+          ? _self.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: freezed == description
+          ? _self.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      version: freezed == version
+          ? _self.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }

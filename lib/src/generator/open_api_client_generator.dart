@@ -102,10 +102,9 @@ class OpenApiClientGenerator {
         final parameters = method.parameters ?? [];
 
         /// queries / properties
-        final queriesParams =
-            parameters
-                .where((e) => e.in_ == OpenApiPathMethodParameterType.query)
-                .toList();
+        final queriesParams = parameters
+            .where((e) => e.in_ == OpenApiPathMethodParameterType.query)
+            .toList();
 
         if (queriesParams.isNotEmpty) {
           final queriesClass = generateQueriesClass(queriesParams, methodName);
@@ -150,14 +149,13 @@ class OpenApiClientGenerator {
         //   "skippedParameters: ${skippedParameters} ${parameters.where((e) => e.in_ == OpenApiPathMethodParameterType.header).map((e) => e.name).toList().join(',')}",
         // );
 
-        final headerParams =
-            parameters
-                .where(
-                  (e) =>
-                      e.in_ == OpenApiPathMethodParameterType.header &&
-                      !skippedParameters.contains(e.name),
-                )
-                .toList();
+        final headerParams = parameters
+            .where(
+              (e) =>
+                  e.in_ == OpenApiPathMethodParameterType.header &&
+                  !skippedParameters.contains(e.name),
+            )
+            .toList();
 
         for (final headerParam in headerParams) {
           final dartType = _getDartType(headerParam.schema, methodName);
@@ -173,12 +171,11 @@ class OpenApiClientGenerator {
           propertiesCode = '''{${propertiesSnippets.join('\n')}}''';
         }
 
-        final returnType =
-            response == null ||
-                    response == 'dynamic' ||
-                    response == 'Map<String, dynamic>'
-                ? 'Future<HttpResponse>'
-                : 'Future<HttpResponse<${response}>>';
+        final returnType = response == null ||
+                response == 'dynamic' ||
+                response == 'Map<String, dynamic>'
+            ? 'Future<HttpResponse>'
+            : 'Future<HttpResponse<${response}>>';
 
         buffer.writeln(
           '''$returnType ${isMultipart ? '_' : ''}$methodName($propertiesCode);''',
@@ -209,8 +206,7 @@ class OpenApiClientGenerator {
 
         final dartType =
             body == null ? 'dynamic' : _getDartType(body, methodName);
-        final parameters =
-            method.parameters?.where((e) {
+        final parameters = method.parameters?.where((e) {
               return !(e.in_ == OpenApiPathMethodParameterType.header &&
                   skippedParameters.contains(e.name));
             }) ??
@@ -223,12 +219,11 @@ class OpenApiClientGenerator {
           params.writeln('required $dartType  $paramName,\n ');
         }
 
-        final returnType =
-            response == null ||
-                    response == 'dynamic' ||
-                    response == 'Map<String, dynamic>'
-                ? 'Future<HttpResponse>'
-                : 'Future<HttpResponse<${response}>>';
+        final returnType = response == null ||
+                response == 'dynamic' ||
+                response == 'Map<String, dynamic>'
+            ? 'Future<HttpResponse>'
+            : 'Future<HttpResponse<${response}>>';
 
         buffer.writeln('''$returnType $methodName(
       {${params.toString()}
@@ -256,10 +251,9 @@ class OpenApiClientGenerator {
 
     final className = '${name}Queries';
 
-    final params =
-        queries.map((e) {
-          return MapEntry(e.name, e.schema);
-        }).toList();
+    final params = queries.map((e) {
+      return MapEntry(e.name, e.schema);
+    }).toList();
 
     final result = generator.run(
       MapEntry(
@@ -300,29 +294,29 @@ class OpenApiClientGenerator {
 
     return switch (model) {
       OpenApiSchemaType value => config.dartTypeConverter.dartType(
-        type: value.type,
-        format: value.format,
-        genericType: switch (value.items) {
-          OpenApiSchemaRef value => config.namingUtils.renameRefClass(value),
-          OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
-            value,
-            config.dartTypeConverter,
-          ),
-          _ => null,
-        },
-        items: value.items,
-        title: value.title,
-      ),
+          type: value.type,
+          format: value.format,
+          genericType: switch (value.items) {
+            OpenApiSchemaRef value => config.namingUtils.renameRefClass(value),
+            OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
+                value,
+                config.dartTypeConverter,
+              ),
+            _ => null,
+          },
+          items: value.items,
+          title: value.title,
+        ),
       OpenApiSchemaRef value => config.namingUtils.renameRefClass(value),
       OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
-        value,
-        config.dartTypeConverter,
-      ),
+          value,
+          config.dartTypeConverter,
+        ),
       OpenApiSchemaOneOf value => generateOpenApiOneOfToDartType(
-        '${className}Union${value.title ?? 'Model'}',
-        value,
-        config.dartTypeConverter,
-      ),
+          '${className}Union${value.title ?? 'Model'}',
+          value,
+          config.dartTypeConverter,
+        ),
     };
   }
 }

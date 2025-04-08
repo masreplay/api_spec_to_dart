@@ -25,9 +25,7 @@ mixin _$OpenApiComponents {
   @pragma('vm:prefer-inline')
   $OpenApiComponentsCopyWith<OpenApiComponents> get copyWith =>
       _$OpenApiComponentsCopyWithImpl<OpenApiComponents>(
-        this as OpenApiComponents,
-        _$identity,
-      );
+          this as OpenApiComponents, _$identity);
 
   /// Serializes this OpenApiComponents to a JSON map.
   Map<String, dynamic> toJson();
@@ -38,19 +36,16 @@ mixin _$OpenApiComponents {
         (other.runtimeType == runtimeType &&
             other is OpenApiComponents &&
             const DeepCollectionEquality().equals(other.schemas, schemas) &&
-            const DeepCollectionEquality().equals(
-              other.securitySchemes,
-              securitySchemes,
-            ));
+            const DeepCollectionEquality()
+                .equals(other.securitySchemes, securitySchemes));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    const DeepCollectionEquality().hash(schemas),
-    const DeepCollectionEquality().hash(securitySchemes),
-  );
+      runtimeType,
+      const DeepCollectionEquality().hash(schemas),
+      const DeepCollectionEquality().hash(securitySchemes));
 
   @override
   String toString() {
@@ -61,14 +56,12 @@ mixin _$OpenApiComponents {
 /// @nodoc
 abstract mixin class $OpenApiComponentsCopyWith<$Res> {
   factory $OpenApiComponentsCopyWith(
-    OpenApiComponents value,
-    $Res Function(OpenApiComponents) _then,
-  ) = _$OpenApiComponentsCopyWithImpl;
+          OpenApiComponents value, $Res Function(OpenApiComponents) _then) =
+      _$OpenApiComponentsCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: 'schemas') Map<String, OpenApiSchemas> schemas,
-    @JsonKey(name: 'securitySchemes') Map<String, dynamic> securitySchemes,
-  });
+  $Res call(
+      {@JsonKey(name: 'schemas') Map<String, OpenApiSchemas> schemas,
+      @JsonKey(name: 'securitySchemes') Map<String, dynamic> securitySchemes});
 }
 
 /// @nodoc
@@ -83,35 +76,34 @@ class _$OpenApiComponentsCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? schemas = null, Object? securitySchemes = null}) {
-    return _then(
-      _self.copyWith(
-        schemas:
-            null == schemas
-                ? _self.schemas
-                : schemas // ignore: cast_nullable_to_non_nullable
-                    as Map<String, OpenApiSchemas>,
-        securitySchemes:
-            null == securitySchemes
-                ? _self.securitySchemes
-                : securitySchemes // ignore: cast_nullable_to_non_nullable
-                    as Map<String, dynamic>,
-      ),
-    );
+  $Res call({
+    Object? schemas = null,
+    Object? securitySchemes = null,
+  }) {
+    return _then(_self.copyWith(
+      schemas: null == schemas
+          ? _self.schemas
+          : schemas // ignore: cast_nullable_to_non_nullable
+              as Map<String, OpenApiSchemas>,
+      securitySchemes: null == securitySchemes
+          ? _self.securitySchemes
+          : securitySchemes // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _OpenApiComponents extends OpenApiComponents {
-  const _OpenApiComponents({
-    @JsonKey(name: 'schemas')
-    required final Map<String, OpenApiSchemas> schemas,
-    @JsonKey(name: 'securitySchemes')
-    required final Map<String, dynamic> securitySchemes,
-  }) : _schemas = schemas,
-       _securitySchemes = securitySchemes,
-       super._();
+  const _OpenApiComponents(
+      {@JsonKey(name: 'schemas')
+      required final Map<String, OpenApiSchemas> schemas,
+      @JsonKey(name: 'securitySchemes')
+      required final Map<String, dynamic> securitySchemes})
+      : _schemas = schemas,
+        _securitySchemes = securitySchemes,
+        super._();
   factory _OpenApiComponents.fromJson(Map<String, dynamic> json) =>
       _$OpenApiComponentsFromJson(json);
 
@@ -143,7 +135,9 @@ class _OpenApiComponents extends OpenApiComponents {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$OpenApiComponentsToJson(this);
+    return _$OpenApiComponentsToJson(
+      this,
+    );
   }
 
   @override
@@ -152,19 +146,16 @@ class _OpenApiComponents extends OpenApiComponents {
         (other.runtimeType == runtimeType &&
             other is _OpenApiComponents &&
             const DeepCollectionEquality().equals(other._schemas, _schemas) &&
-            const DeepCollectionEquality().equals(
-              other._securitySchemes,
-              _securitySchemes,
-            ));
+            const DeepCollectionEquality()
+                .equals(other._securitySchemes, _securitySchemes));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    const DeepCollectionEquality().hash(_schemas),
-    const DeepCollectionEquality().hash(_securitySchemes),
-  );
+      runtimeType,
+      const DeepCollectionEquality().hash(_schemas),
+      const DeepCollectionEquality().hash(_securitySchemes));
 
   @override
   String toString() {
@@ -176,15 +167,13 @@ class _OpenApiComponents extends OpenApiComponents {
 abstract mixin class _$OpenApiComponentsCopyWith<$Res>
     implements $OpenApiComponentsCopyWith<$Res> {
   factory _$OpenApiComponentsCopyWith(
-    _OpenApiComponents value,
-    $Res Function(_OpenApiComponents) _then,
-  ) = __$OpenApiComponentsCopyWithImpl;
+          _OpenApiComponents value, $Res Function(_OpenApiComponents) _then) =
+      __$OpenApiComponentsCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'schemas') Map<String, OpenApiSchemas> schemas,
-    @JsonKey(name: 'securitySchemes') Map<String, dynamic> securitySchemes,
-  });
+  $Res call(
+      {@JsonKey(name: 'schemas') Map<String, OpenApiSchemas> schemas,
+      @JsonKey(name: 'securitySchemes') Map<String, dynamic> securitySchemes});
 }
 
 /// @nodoc
@@ -199,21 +188,20 @@ class __$OpenApiComponentsCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? schemas = null, Object? securitySchemes = null}) {
-    return _then(
-      _OpenApiComponents(
-        schemas:
-            null == schemas
-                ? _self._schemas
-                : schemas // ignore: cast_nullable_to_non_nullable
-                    as Map<String, OpenApiSchemas>,
-        securitySchemes:
-            null == securitySchemes
-                ? _self._securitySchemes
-                : securitySchemes // ignore: cast_nullable_to_non_nullable
-                    as Map<String, dynamic>,
-      ),
-    );
+  $Res call({
+    Object? schemas = null,
+    Object? securitySchemes = null,
+  }) {
+    return _then(_OpenApiComponents(
+      schemas: null == schemas
+          ? _self._schemas
+          : schemas // ignore: cast_nullable_to_non_nullable
+              as Map<String, OpenApiSchemas>,
+      securitySchemes: null == securitySchemes
+          ? _self._securitySchemes
+          : securitySchemes // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
+    ));
   }
 }
 
@@ -243,9 +231,7 @@ mixin _$OpenApiSchemas {
   @pragma('vm:prefer-inline')
   $OpenApiSchemasCopyWith<OpenApiSchemas> get copyWith =>
       _$OpenApiSchemasCopyWithImpl<OpenApiSchemas>(
-        this as OpenApiSchemas,
-        _$identity,
-      );
+          this as OpenApiSchemas, _$identity);
 
   /// Serializes this OpenApiSchemas to a JSON map.
   Map<String, dynamic> toJson();
@@ -255,10 +241,8 @@ mixin _$OpenApiSchemas {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is OpenApiSchemas &&
-            const DeepCollectionEquality().equals(
-              other.properties,
-              properties,
-            ) &&
+            const DeepCollectionEquality()
+                .equals(other.properties, properties) &&
             (identical(other.type, type) || other.type == type) &&
             const DeepCollectionEquality().equals(other.required_, required_) &&
             const DeepCollectionEquality().equals(other.enum_, enum_) &&
@@ -266,25 +250,22 @@ mixin _$OpenApiSchemas {
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            const DeepCollectionEquality().equals(
-              other.xEnumVarnames,
-              xEnumVarnames,
-            ));
+            const DeepCollectionEquality()
+                .equals(other.xEnumVarnames, xEnumVarnames));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    const DeepCollectionEquality().hash(properties),
-    type,
-    const DeepCollectionEquality().hash(required_),
-    const DeepCollectionEquality().hash(enum_),
-    const DeepCollectionEquality().hash(const_),
-    title,
-    description,
-    const DeepCollectionEquality().hash(xEnumVarnames),
-  );
+      runtimeType,
+      const DeepCollectionEquality().hash(properties),
+      type,
+      const DeepCollectionEquality().hash(required_),
+      const DeepCollectionEquality().hash(enum_),
+      const DeepCollectionEquality().hash(const_),
+      title,
+      description,
+      const DeepCollectionEquality().hash(xEnumVarnames));
 
   @override
   String toString() {
@@ -295,22 +276,20 @@ mixin _$OpenApiSchemas {
 /// @nodoc
 abstract mixin class $OpenApiSchemasCopyWith<$Res> {
   factory $OpenApiSchemasCopyWith(
-    OpenApiSchemas value,
-    $Res Function(OpenApiSchemas) _then,
-  ) = _$OpenApiSchemasCopyWithImpl;
+          OpenApiSchemas value, $Res Function(OpenApiSchemas) _then) =
+      _$OpenApiSchemasCopyWithImpl;
   @useResult
-  $Res call({
-    @OpenApiSchemaJsonConverter()
-    @JsonKey(name: 'properties')
-    Map<String, OpenApiSchema>? properties,
-    @JsonKey(name: 'type') String type,
-    @JsonKey(name: 'required') List<String>? required_,
-    @JsonKey(name: 'enum') List<Object>? enum_,
-    @JsonKey(name: 'const') Object? const_,
-    @JsonKey(name: 'title') String? title,
-    @JsonKey(name: 'description') String? description,
-    @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames,
-  });
+  $Res call(
+      {@OpenApiSchemaJsonConverter()
+      @JsonKey(name: 'properties')
+      Map<String, OpenApiSchema>? properties,
+      @JsonKey(name: 'type') String type,
+      @JsonKey(name: 'required') List<String>? required_,
+      @JsonKey(name: 'enum') List<Object>? enum_,
+      @JsonKey(name: 'const') Object? const_,
+      @JsonKey(name: 'title') String? title,
+      @JsonKey(name: 'description') String? description,
+      @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames});
 }
 
 /// @nodoc
@@ -335,68 +314,59 @@ class _$OpenApiSchemasCopyWithImpl<$Res>
     Object? description = freezed,
     Object? xEnumVarnames = freezed,
   }) {
-    return _then(
-      _self.copyWith(
-        properties:
-            freezed == properties
-                ? _self.properties
-                : properties // ignore: cast_nullable_to_non_nullable
-                    as Map<String, OpenApiSchema>?,
-        type:
-            null == type
-                ? _self.type
-                : type // ignore: cast_nullable_to_non_nullable
-                    as String,
-        required_:
-            freezed == required_
-                ? _self.required_
-                : required_ // ignore: cast_nullable_to_non_nullable
-                    as List<String>?,
-        enum_:
-            freezed == enum_
-                ? _self.enum_
-                : enum_ // ignore: cast_nullable_to_non_nullable
-                    as List<Object>?,
-        const_: freezed == const_ ? _self.const_ : const_,
-        title:
-            freezed == title
-                ? _self.title
-                : title // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        description:
-            freezed == description
-                ? _self.description
-                : description // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        xEnumVarnames:
-            freezed == xEnumVarnames
-                ? _self.xEnumVarnames
-                : xEnumVarnames // ignore: cast_nullable_to_non_nullable
-                    as List<String>?,
-      ),
-    );
+    return _then(_self.copyWith(
+      properties: freezed == properties
+          ? _self.properties
+          : properties // ignore: cast_nullable_to_non_nullable
+              as Map<String, OpenApiSchema>?,
+      type: null == type
+          ? _self.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      required_: freezed == required_
+          ? _self.required_
+          : required_ // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      enum_: freezed == enum_
+          ? _self.enum_
+          : enum_ // ignore: cast_nullable_to_non_nullable
+              as List<Object>?,
+      const_: freezed == const_ ? _self.const_ : const_,
+      title: freezed == title
+          ? _self.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _self.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      xEnumVarnames: freezed == xEnumVarnames
+          ? _self.xEnumVarnames
+          : xEnumVarnames // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _OpenApiSchemas extends OpenApiSchemas {
-  const _OpenApiSchemas({
-    @OpenApiSchemaJsonConverter()
-    @JsonKey(name: 'properties')
-    required final Map<String, OpenApiSchema>? properties,
-    @JsonKey(name: 'type') required this.type,
-    @JsonKey(name: 'required') final List<String>? required_,
-    @JsonKey(name: 'enum') final List<Object>? enum_,
-    @JsonKey(name: 'const') this.const_,
-    @JsonKey(name: 'title') this.title,
-    @JsonKey(name: 'description') this.description,
-    @JsonKey(name: 'x-enum-varnames') final List<String>? xEnumVarnames,
-  }) : _properties = properties,
-       _required_ = required_,
-       _enum_ = enum_,
-       _xEnumVarnames = xEnumVarnames,
-       super._();
+  const _OpenApiSchemas(
+      {@OpenApiSchemaJsonConverter()
+      @JsonKey(name: 'properties')
+      required final Map<String, OpenApiSchema>? properties,
+      @JsonKey(name: 'type') required this.type,
+      @JsonKey(name: 'required') final List<String>? required_,
+      @JsonKey(name: 'enum') final List<Object>? enum_,
+      @JsonKey(name: 'const') this.const_,
+      @JsonKey(name: 'title') this.title,
+      @JsonKey(name: 'description') this.description,
+      @JsonKey(name: 'x-enum-varnames') final List<String>? xEnumVarnames})
+      : _properties = properties,
+        _required_ = required_,
+        _enum_ = enum_,
+        _xEnumVarnames = xEnumVarnames,
+        super._();
   factory _OpenApiSchemas.fromJson(Map<String, dynamic> json) =>
       _$OpenApiSchemasFromJson(json);
 
@@ -467,7 +437,9 @@ class _OpenApiSchemas extends OpenApiSchemas {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$OpenApiSchemasToJson(this);
+    return _$OpenApiSchemasToJson(
+      this,
+    );
   }
 
   @override
@@ -475,39 +447,32 @@ class _OpenApiSchemas extends OpenApiSchemas {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _OpenApiSchemas &&
-            const DeepCollectionEquality().equals(
-              other._properties,
-              _properties,
-            ) &&
+            const DeepCollectionEquality()
+                .equals(other._properties, _properties) &&
             (identical(other.type, type) || other.type == type) &&
-            const DeepCollectionEquality().equals(
-              other._required_,
-              _required_,
-            ) &&
+            const DeepCollectionEquality()
+                .equals(other._required_, _required_) &&
             const DeepCollectionEquality().equals(other._enum_, _enum_) &&
             const DeepCollectionEquality().equals(other.const_, const_) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            const DeepCollectionEquality().equals(
-              other._xEnumVarnames,
-              _xEnumVarnames,
-            ));
+            const DeepCollectionEquality()
+                .equals(other._xEnumVarnames, _xEnumVarnames));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    const DeepCollectionEquality().hash(_properties),
-    type,
-    const DeepCollectionEquality().hash(_required_),
-    const DeepCollectionEquality().hash(_enum_),
-    const DeepCollectionEquality().hash(const_),
-    title,
-    description,
-    const DeepCollectionEquality().hash(_xEnumVarnames),
-  );
+      runtimeType,
+      const DeepCollectionEquality().hash(_properties),
+      type,
+      const DeepCollectionEquality().hash(_required_),
+      const DeepCollectionEquality().hash(_enum_),
+      const DeepCollectionEquality().hash(const_),
+      title,
+      description,
+      const DeepCollectionEquality().hash(_xEnumVarnames));
 
   @override
   String toString() {
@@ -519,23 +484,21 @@ class _OpenApiSchemas extends OpenApiSchemas {
 abstract mixin class _$OpenApiSchemasCopyWith<$Res>
     implements $OpenApiSchemasCopyWith<$Res> {
   factory _$OpenApiSchemasCopyWith(
-    _OpenApiSchemas value,
-    $Res Function(_OpenApiSchemas) _then,
-  ) = __$OpenApiSchemasCopyWithImpl;
+          _OpenApiSchemas value, $Res Function(_OpenApiSchemas) _then) =
+      __$OpenApiSchemasCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @OpenApiSchemaJsonConverter()
-    @JsonKey(name: 'properties')
-    Map<String, OpenApiSchema>? properties,
-    @JsonKey(name: 'type') String type,
-    @JsonKey(name: 'required') List<String>? required_,
-    @JsonKey(name: 'enum') List<Object>? enum_,
-    @JsonKey(name: 'const') Object? const_,
-    @JsonKey(name: 'title') String? title,
-    @JsonKey(name: 'description') String? description,
-    @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames,
-  });
+  $Res call(
+      {@OpenApiSchemaJsonConverter()
+      @JsonKey(name: 'properties')
+      Map<String, OpenApiSchema>? properties,
+      @JsonKey(name: 'type') String type,
+      @JsonKey(name: 'required') List<String>? required_,
+      @JsonKey(name: 'enum') List<Object>? enum_,
+      @JsonKey(name: 'const') Object? const_,
+      @JsonKey(name: 'title') String? title,
+      @JsonKey(name: 'description') String? description,
+      @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames});
 }
 
 /// @nodoc
@@ -560,45 +523,36 @@ class __$OpenApiSchemasCopyWithImpl<$Res>
     Object? description = freezed,
     Object? xEnumVarnames = freezed,
   }) {
-    return _then(
-      _OpenApiSchemas(
-        properties:
-            freezed == properties
-                ? _self._properties
-                : properties // ignore: cast_nullable_to_non_nullable
-                    as Map<String, OpenApiSchema>?,
-        type:
-            null == type
-                ? _self.type
-                : type // ignore: cast_nullable_to_non_nullable
-                    as String,
-        required_:
-            freezed == required_
-                ? _self._required_
-                : required_ // ignore: cast_nullable_to_non_nullable
-                    as List<String>?,
-        enum_:
-            freezed == enum_
-                ? _self._enum_
-                : enum_ // ignore: cast_nullable_to_non_nullable
-                    as List<Object>?,
-        const_: freezed == const_ ? _self.const_ : const_,
-        title:
-            freezed == title
-                ? _self.title
-                : title // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        description:
-            freezed == description
-                ? _self.description
-                : description // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        xEnumVarnames:
-            freezed == xEnumVarnames
-                ? _self._xEnumVarnames
-                : xEnumVarnames // ignore: cast_nullable_to_non_nullable
-                    as List<String>?,
-      ),
-    );
+    return _then(_OpenApiSchemas(
+      properties: freezed == properties
+          ? _self._properties
+          : properties // ignore: cast_nullable_to_non_nullable
+              as Map<String, OpenApiSchema>?,
+      type: null == type
+          ? _self.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      required_: freezed == required_
+          ? _self._required_
+          : required_ // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      enum_: freezed == enum_
+          ? _self._enum_
+          : enum_ // ignore: cast_nullable_to_non_nullable
+              as List<Object>?,
+      const_: freezed == const_ ? _self.const_ : const_,
+      title: freezed == title
+          ? _self.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _self.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      xEnumVarnames: freezed == xEnumVarnames
+          ? _self._xEnumVarnames
+          : xEnumVarnames // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+    ));
   }
 }

@@ -18,14 +18,13 @@ class OpenApiParser {
     final List<({String tag, String path})> tagsPaths = [];
 
     for (final entry in paths.entries) {
-      final tag =
-          [
-            entry.value.post,
-            entry.value.get,
-            entry.value.put,
-            entry.value.delete,
-            entry.value.patch,
-          ].where((element) => element != null).first;
+      final tag = [
+        entry.value.post,
+        entry.value.get,
+        entry.value.put,
+        entry.value.delete,
+        entry.value.patch,
+      ].where((element) => element != null).first;
 
       if (tag != null) {
         tagsPaths.add((tag: tag.tags.first, path: entry.key));

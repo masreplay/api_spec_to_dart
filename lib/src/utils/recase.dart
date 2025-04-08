@@ -38,8 +38,7 @@ class Recase {
 
       sb.write(char);
 
-      final isEndOfWord =
-          nextChar == null ||
+      final isEndOfWord = nextChar == null ||
           (_upperCaseRegex.hasMatch(nextChar) &&
               !isAllCaps &&
               (!_upperCaseRegex.hasMatch(char) ||

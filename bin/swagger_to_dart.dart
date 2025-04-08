@@ -1,8 +1,6 @@
 import 'dart:io';
 
-import '../lib/src/generator/dart_code_generator.dart';
-import '../lib/src/utils/file_handler.dart';
-import '../lib/src/utils/setup_handler.dart';
+import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 Future<void> main(List<String> args) async {
   try {

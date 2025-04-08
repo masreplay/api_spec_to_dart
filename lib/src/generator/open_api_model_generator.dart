@@ -154,9 +154,9 @@ class TypePropertyGenerator implements PropertyGeneratorStrategy {
     return switch (items) {
       OpenApiSchemaRef value => config.namingUtils.renameRefClass(value),
       OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
-        value,
-        config.dartTypeConverter,
-      ),
+          value,
+          config.dartTypeConverter,
+        ),
       _ => null,
     };
   }
@@ -210,7 +210,7 @@ class RefPropertyGenerator implements PropertyGeneratorStrategy {
     } else if (defaultValue != null && defaultValue is int) {
       return '$className.value${config.namingUtils.renameProperty("$defaultValue")}';
     } else if (defaultValue != null && defaultValue is String) {
-      return '$className.value${config.namingUtils.renameProperty(defaultValue)}';
+      return '$className.${config.namingUtils.renameProperty(defaultValue)}';
     }
     return null;
   }
@@ -219,8 +219,8 @@ class RefPropertyGenerator implements PropertyGeneratorStrategy {
 /// Strategy for generating anyOf fields
 class AnyOfPropertyGenerator implements PropertyGeneratorStrategy {
   AnyOfPropertyGenerator(this.config)
-    : fieldGenerator = FieldGenerator(config),
-      unionTypeGenerator = UnionTypeGenerator(config);
+      : fieldGenerator = FieldGenerator(config),
+        unionTypeGenerator = UnionTypeGenerator(config);
   final ConfigComponents config;
   final FieldGenerator fieldGenerator;
   final UnionTypeGenerator unionTypeGenerator;
@@ -260,24 +260,21 @@ class AnyOfPropertyGenerator implements PropertyGeneratorStrategy {
       (e) => e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_,
     );
 
-    final nonNullSchemas =
-        value.anyOf!
-            .where(
-              (e) =>
-                  !(e is OpenApiSchemaType &&
-                      e.type == OpenApiSchemaVarType.null_),
-            )
-            .toList();
+    final nonNullSchemas = value.anyOf!
+        .where(
+          (e) =>
+              !(e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_),
+        )
+        .toList();
 
     if (nonNullSchemas.length == 1) {
       final baseType = unionTypeGenerator.resolveDartType(nonNullSchemas.first);
       return isNullable ? '$baseType?' : baseType;
     }
 
-    final types =
-        nonNullSchemas
-            .map((schema) => unionTypeGenerator.resolveDartType(schema))
-            .toList();
+    final types = nonNullSchemas
+        .map((schema) => unionTypeGenerator.resolveDartType(schema))
+        .toList();
     final unionClassName = unionTypeGenerator.generateUnionClassName(types);
 
     // Generate the union type class
@@ -300,7 +297,7 @@ class AnyOfPropertyGenerator implements PropertyGeneratorStrategy {
     } else if (defaultValue != null && defaultValue is int) {
       return '$className.value${config.namingUtils.renameProperty("$defaultValue")}';
     } else if (defaultValue != null && defaultValue is String) {
-      return '$className.value${config.namingUtils.renameProperty(defaultValue)}';
+      return '$className.${config.namingUtils.renameProperty(defaultValue)}';
     }
     return null;
   }
@@ -309,7 +306,7 @@ class AnyOfPropertyGenerator implements PropertyGeneratorStrategy {
 /// Strategy for generating enum models
 class EnumModelStrategy implements ModelGenerationStrategy {
   EnumModelStrategy(this.config)
-    : contentGenerator = FreezedClassContentGenerator(config);
+      : contentGenerator = FreezedClassContentGenerator(config);
   final ConfigComponents config;
   final FreezedClassContentGenerator contentGenerator;
 
@@ -352,10 +349,9 @@ class EnumModelStrategy implements ModelGenerationStrategy {
     for (int i = 0; i < enumValues.length; i++) {
       final value = enumValues[i];
       final description = varNames?[i];
-      final name =
-          description == null
-              ? 'value$value'
-              : config.namingUtils.renameProperty(description);
+      final name = description == null
+          ? 'value$value'
+          : config.namingUtils.renameProperty(description);
       final enumName = config.namingUtils.renameProperty(value.toString());
 
       if (isNumber) {
@@ -376,13 +372,13 @@ class EnumModelStrategy implements ModelGenerationStrategy {
 /// Strategy for generating union models
 class UnionModelStrategy implements ModelGenerationStrategy {
   UnionModelStrategy(this.config)
-    : propertyGenerators = {
-        OpenApiSchemaType: TypePropertyGenerator(config),
-        OpenApiSchemaRef: RefPropertyGenerator(config),
-        OpenApiSchemaAnyOf: AnyOfPropertyGenerator(config),
-        OpenApiSchemaOneOf: AnyOfPropertyGenerator(config),
-      },
-      contentGenerator = FreezedClassContentGenerator(config);
+      : propertyGenerators = {
+          OpenApiSchemaType: TypePropertyGenerator(config),
+          OpenApiSchemaRef: RefPropertyGenerator(config),
+          OpenApiSchemaAnyOf: AnyOfPropertyGenerator(config),
+          OpenApiSchemaOneOf: AnyOfPropertyGenerator(config),
+        },
+        contentGenerator = FreezedClassContentGenerator(config);
   final ConfigComponents config;
   final Map<Type, PropertyGeneratorStrategy> propertyGenerators;
   final FreezedClassContentGenerator contentGenerator;
@@ -402,14 +398,12 @@ class UnionModelStrategy implements ModelGenerationStrategy {
       final openApiSchema = OpenApiSchema.fromJson(schemaJson);
 
       if (openApiSchema is OpenApiSchemaAnyOf) {
-        final nonNullSchemas =
-            openApiSchema.anyOf!
-                .where(
-                  (e) =>
-                      !(e is OpenApiSchemaType &&
-                          e.type == OpenApiSchemaVarType.null_),
-                )
-                .toList();
+        final nonNullSchemas = openApiSchema.anyOf!
+            .where(
+              (e) => !(e is OpenApiSchemaType &&
+                  e.type == OpenApiSchemaVarType.null_),
+            )
+            .toList();
 
         if (nonNullSchemas.length == 1) {
           // If there's only one non-null type, treat it as a regular model
@@ -423,38 +417,36 @@ class UnionModelStrategy implements ModelGenerationStrategy {
         }
 
         // Generate union type class
-        final types =
-            nonNullSchemas.map((schema) {
-              return switch (schema) {
-                OpenApiSchemaType value => config.dartTypeConverter.dartType(
-                  type: value.type,
-                  format: value.format,
-                  genericType: switch (value.items) {
-                    OpenApiSchemaRef value => config.namingUtils.renameRefClass(
+        final types = nonNullSchemas.map((schema) {
+          return switch (schema) {
+            OpenApiSchemaType value => config.dartTypeConverter.dartType(
+                type: value.type,
+                format: value.format,
+                genericType: switch (value.items) {
+                  OpenApiSchemaRef value => config.namingUtils.renameRefClass(
                       value,
                     ),
-                    OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
+                  OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
                       value,
                       config.dartTypeConverter,
                     ),
-                    _ => null,
-                  },
-                  items: value.items,
-                  title: value.title,
-                ),
-                OpenApiSchemaRef value => config.namingUtils.renameRefClass(
-                  value,
-                ),
-                OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
-                  value,
-                  config.dartTypeConverter,
-                ),
-                _ =>
-                  throw ArgumentError(
-                    'Unsupported schema type: ${schema.runtimeType}',
-                  ),
-              };
-            }).toList();
+                  _ => null,
+                },
+                items: value.items,
+                title: value.title,
+              ),
+            OpenApiSchemaRef value => config.namingUtils.renameRefClass(
+                value,
+              ),
+            OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
+                value,
+                config.dartTypeConverter,
+              ),
+            _ => throw ArgumentError(
+                'Unsupported schema type: ${schema.runtimeType}',
+              ),
+          };
+        }).toList();
 
         final unionClassName = types.map((type) => type.pascalCase).join('Or');
         final unionContent = '''
@@ -495,11 +487,14 @@ class $unionClassName with _\$$unionClassName {
 
       if (schema is OpenApiSchemaOneOf) {
         for (final mapping in schema.discriminator.mapping.entries) {
-          unionProps.add((
-            type: config.namingUtils.renameClass(mapping.value.split('/').last),
-            key: key,
-            unionName: mapping.key,
-          ));
+          unionProps.add(
+            (
+              type:
+                  config.namingUtils.renameClass(mapping.value.split('/').last),
+              key: key,
+              unionName: mapping.key,
+            ),
+          );
         }
       } else if (schema is OpenApiSchemaAnyOf) {
         final generator = propertyGenerators[OpenApiSchemaAnyOf];
@@ -541,12 +536,12 @@ class $unionClassName with _\$$unionClassName {
 /// Strategy for generating regular class models
 class RegularModelStrategy implements ModelGenerationStrategy {
   RegularModelStrategy(this.config)
-    : propertyGenerators = {
-        OpenApiSchemaType: TypePropertyGenerator(config),
-        OpenApiSchemaRef: RefPropertyGenerator(config),
-        OpenApiSchemaAnyOf: AnyOfPropertyGenerator(config),
-      },
-      contentGenerator = FreezedClassContentGenerator(config);
+      : propertyGenerators = {
+          OpenApiSchemaType: TypePropertyGenerator(config),
+          OpenApiSchemaRef: RefPropertyGenerator(config),
+          OpenApiSchemaAnyOf: AnyOfPropertyGenerator(config),
+        },
+        contentGenerator = FreezedClassContentGenerator(config);
   final ConfigComponents config;
   final Map<Type, PropertyGeneratorStrategy> propertyGenerators;
   final FreezedClassContentGenerator contentGenerator;
@@ -591,23 +586,21 @@ class RegularModelStrategy implements ModelGenerationStrategy {
 /// Main OpenApiModelGenerator class using strategy pattern
 class OpenApiModelGenerator {
   OpenApiModelGenerator({required this.config})
-    : strategies = {
-        ModelTypeEnum.enum_: EnumModelStrategy(config),
-        ModelTypeEnum.union: UnionModelStrategy(config),
-        ModelTypeEnum.regular: RegularModelStrategy(config),
-      },
-
-      typeDeterminer = ModelTypeDeterminer();
+      : strategies = {
+          ModelTypeEnum.enum_: EnumModelStrategy(config),
+          ModelTypeEnum.union: UnionModelStrategy(config),
+          ModelTypeEnum.regular: RegularModelStrategy(config),
+        },
+        typeDeterminer = ModelTypeDeterminer();
   final ConfigComponents config;
   final Map<ModelTypeEnum, ModelGenerationStrategy> strategies;
   final ModelTypeDeterminer typeDeterminer;
 
   ({String filename, String content}) run(OpenApiModel model) {
     final modelType = typeDeterminer.determine(model);
-    final strategy =
-        strategies.entries
-            .firstWhere((entry) => entry.key.name == modelType.name)
-            .value;
+    final strategy = strategies.entries
+        .firstWhere((entry) => entry.key.name == modelType.name)
+        .value;
 
     return strategy.generate(model);
   }

@@ -24,17 +24,16 @@ class DartCodeExportsGenerator {
 
     buffer.writeln('// GENERATED CODE - DO NOT MODIFY BY HAND');
 
-    final modelFiles =
-        modelsDir
-            .listSync()
-            .where((entity) => entity is File && entity.path.endsWith('.dart'))
-            .map((entity) => entity as File)
-            .where(
-              (file) =>
-                  !file.path.endsWith('.g.dart') &&
-                  !file.path.endsWith('.freezed.dart'),
-            )
-            .toList();
+    final modelFiles = modelsDir
+        .listSync()
+        .where((entity) => entity is File && entity.path.endsWith('.dart'))
+        .map((entity) => entity as File)
+        .where(
+          (file) =>
+              !file.path.endsWith('.g.dart') &&
+              !file.path.endsWith('.freezed.dart'),
+        )
+        .toList();
 
     for (final file in modelFiles) {
       buffer.writeln("export '${path.basename(file.path)}';");
@@ -56,13 +55,12 @@ class DartCodeExportsGenerator {
     final buffer = StringBuffer();
     buffer.writeln('// GENERATED CODE - DO NOT MODIFY BY HAND');
 
-    final clientFiles =
-        clientsDir
-            .listSync()
-            .where((entity) => entity is File && entity.path.endsWith('.dart'))
-            .map((entity) => entity as File)
-            .where((file) => !file.path.endsWith('.g.dart'))
-            .toList();
+    final clientFiles = clientsDir
+        .listSync()
+        .where((entity) => entity is File && entity.path.endsWith('.dart'))
+        .map((entity) => entity as File)
+        .where((file) => !file.path.endsWith('.g.dart'))
+        .toList();
 
     // Write exports for each client
     for (final file in clientFiles) {

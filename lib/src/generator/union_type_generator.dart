@@ -69,16 +69,16 @@ class UnionTypeGenerator {
   String resolveDartType(OpenApiSchema schema) {
     return switch (schema) {
       OpenApiSchemaType value => config.dartTypeConverter.dartType(
-        type: value.type,
-        format: value.format,
-        genericType: switch (value.items) {
-          OpenApiSchemaRef value => config.namingUtils.renameRefClass(value),
-          OpenApiSchemaAnyOf value => _resolveAnyOfType(value),
-          _ => null,
-        },
-        items: value.items,
-        title: value.title,
-      ),
+          type: value.type,
+          format: value.format,
+          genericType: switch (value.items) {
+            OpenApiSchemaRef value => config.namingUtils.renameRefClass(value),
+            OpenApiSchemaAnyOf value => _resolveAnyOfType(value),
+            _ => null,
+          },
+          items: value.items,
+          title: value.title,
+        ),
       OpenApiSchemaRef value => config.namingUtils.renameRefClass(value),
       OpenApiSchemaAnyOf value => _resolveAnyOfType(value),
       _ =>
@@ -87,14 +87,12 @@ class UnionTypeGenerator {
   }
 
   String _resolveAnyOfType(OpenApiSchemaAnyOf value) {
-    final nonNullSchemas =
-        value.anyOf!
-            .where(
-              (e) =>
-                  !(e is OpenApiSchemaType &&
-                      e.type == OpenApiSchemaVarType.null_),
-            )
-            .toList();
+    final nonNullSchemas = value.anyOf!
+        .where(
+          (e) =>
+              !(e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_),
+        )
+        .toList();
 
     if (nonNullSchemas.length == 1) {
       return resolveDartType(nonNullSchemas.first);

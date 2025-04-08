@@ -23,12 +23,8 @@ OpenApiSchema _$OpenApiSchemaFromJson(Map<String, dynamic> json) {
       return OpenApiSchemaOneOf.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(
-        json,
-        'runtimeType',
-        'OpenApiSchema',
-        'Invalid union type "${json['runtimeType']}"!',
-      );
+      throw CheckedFromJsonException(json, 'runtimeType', 'OpenApiSchema',
+          'Invalid union type "${json['runtimeType']}"!');
   }
 }
 
@@ -43,9 +39,7 @@ mixin _$OpenApiSchema {
   @pragma('vm:prefer-inline')
   $OpenApiSchemaCopyWith<OpenApiSchema> get copyWith =>
       _$OpenApiSchemaCopyWithImpl<OpenApiSchema>(
-        this as OpenApiSchema,
-        _$identity,
-      );
+          this as OpenApiSchema, _$identity);
 
   /// Serializes this OpenApiSchema to a JSON map.
   Map<String, dynamic> toJson();
@@ -72,9 +66,8 @@ mixin _$OpenApiSchema {
 /// @nodoc
 abstract mixin class $OpenApiSchemaCopyWith<$Res> {
   factory $OpenApiSchemaCopyWith(
-    OpenApiSchema value,
-    $Res Function(OpenApiSchema) _then,
-  ) = _$OpenApiSchemaCopyWithImpl;
+          OpenApiSchema value, $Res Function(OpenApiSchema) _then) =
+      _$OpenApiSchemaCopyWithImpl;
   @useResult
   $Res call({@JsonKey(name: 'description') String? description});
 }
@@ -91,39 +84,38 @@ class _$OpenApiSchemaCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? description = freezed}) {
-    return _then(
-      _self.copyWith(
-        description:
-            freezed == description
-                ? _self.description
-                : description // ignore: cast_nullable_to_non_nullable
-                    as String?,
-      ),
-    );
+  $Res call({
+    Object? description = freezed,
+  }) {
+    return _then(_self.copyWith(
+      description: freezed == description
+          ? _self.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class OpenApiSchemaType extends OpenApiSchema {
-  const OpenApiSchemaType({
-    @JsonKey(name: 'enum') final List<String>? enum_,
-    @JsonKey(name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
-    this.type,
-    @OpenApiSchemaJsonConverter() @JsonKey(name: 'items') this.items,
-    @JsonKey(name: 'maxLength') this.maxLength,
-    @JsonKey(name: 'minLength') this.minLength,
-    @JsonKey(name: 'format') this.format,
-    @JsonKey(name: 'description') this.description,
-    @JsonKey(name: 'pattern') this.pattern,
-    @JsonKey(name: 'const') this.const_,
-    @JsonKey(name: 'default') this.default_,
-    @JsonKey(name: 'title') this.title,
-    final String? $type,
-  }) : _enum_ = enum_,
-       $type = $type ?? 'type',
-       super._();
+  const OpenApiSchemaType(
+      {@JsonKey(name: 'enum') final List<String>? enum_,
+      @JsonKey(name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
+      this.type,
+      @OpenApiSchemaJsonConverter() @JsonKey(name: 'items') this.items,
+      @JsonKey(name: 'maxLength') this.maxLength,
+      @JsonKey(name: 'minLength') this.minLength,
+      @JsonKey(name: 'format') this.format,
+      @JsonKey(name: 'description') this.description,
+      @JsonKey(name: 'pattern') this.pattern,
+      @JsonKey(name: 'const') this.const_,
+      @JsonKey(name: 'default') this.default_,
+      @JsonKey(name: 'title') this.title,
+      final String? $type})
+      : _enum_ = enum_,
+        $type = $type ?? 'type',
+        super._();
   factory OpenApiSchemaType.fromJson(Map<String, dynamic> json) =>
       _$OpenApiSchemaTypeFromJson(json);
 
@@ -173,7 +165,9 @@ class OpenApiSchemaType extends OpenApiSchema {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$OpenApiSchemaTypeToJson(this);
+    return _$OpenApiSchemaTypeToJson(
+      this,
+    );
   }
 
   @override
@@ -200,19 +194,18 @@ class OpenApiSchemaType extends OpenApiSchema {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    const DeepCollectionEquality().hash(_enum_),
-    type,
-    items,
-    maxLength,
-    minLength,
-    format,
-    description,
-    pattern,
-    const DeepCollectionEquality().hash(const_),
-    const DeepCollectionEquality().hash(default_),
-    title,
-  );
+      runtimeType,
+      const DeepCollectionEquality().hash(_enum_),
+      type,
+      items,
+      maxLength,
+      minLength,
+      format,
+      description,
+      pattern,
+      const DeepCollectionEquality().hash(const_),
+      const DeepCollectionEquality().hash(default_),
+      title);
 
   @override
   String toString() {
@@ -224,25 +217,25 @@ class OpenApiSchemaType extends OpenApiSchema {
 abstract mixin class $OpenApiSchemaTypeCopyWith<$Res>
     implements $OpenApiSchemaCopyWith<$Res> {
   factory $OpenApiSchemaTypeCopyWith(
-    OpenApiSchemaType value,
-    $Res Function(OpenApiSchemaType) _then,
-  ) = _$OpenApiSchemaTypeCopyWithImpl;
+          OpenApiSchemaType value, $Res Function(OpenApiSchemaType) _then) =
+      _$OpenApiSchemaTypeCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'enum') List<String>? enum_,
-    @JsonKey(name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
-    OpenApiSchemaVarType? type,
-    @OpenApiSchemaJsonConverter() @JsonKey(name: 'items') OpenApiSchema? items,
-    @JsonKey(name: 'maxLength') int? maxLength,
-    @JsonKey(name: 'minLength') int? minLength,
-    @JsonKey(name: 'format') String? format,
-    @JsonKey(name: 'description') String? description,
-    @JsonKey(name: 'pattern') String? pattern,
-    @JsonKey(name: 'const') Object? const_,
-    @JsonKey(name: 'default') Object? default_,
-    @JsonKey(name: 'title') String? title,
-  });
+  $Res call(
+      {@JsonKey(name: 'enum') List<String>? enum_,
+      @JsonKey(name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
+      OpenApiSchemaVarType? type,
+      @OpenApiSchemaJsonConverter()
+      @JsonKey(name: 'items')
+      OpenApiSchema? items,
+      @JsonKey(name: 'maxLength') int? maxLength,
+      @JsonKey(name: 'minLength') int? minLength,
+      @JsonKey(name: 'format') String? format,
+      @JsonKey(name: 'description') String? description,
+      @JsonKey(name: 'pattern') String? pattern,
+      @JsonKey(name: 'const') Object? const_,
+      @JsonKey(name: 'default') Object? default_,
+      @JsonKey(name: 'title') String? title});
 
   $OpenApiSchemaCopyWith<$Res>? get items;
 }
@@ -272,57 +265,46 @@ class _$OpenApiSchemaTypeCopyWithImpl<$Res>
     Object? default_ = freezed,
     Object? title = freezed,
   }) {
-    return _then(
-      OpenApiSchemaType(
-        enum_:
-            freezed == enum_
-                ? _self._enum_
-                : enum_ // ignore: cast_nullable_to_non_nullable
-                    as List<String>?,
-        type:
-            freezed == type
-                ? _self.type
-                : type // ignore: cast_nullable_to_non_nullable
-                    as OpenApiSchemaVarType?,
-        items:
-            freezed == items
-                ? _self.items
-                : items // ignore: cast_nullable_to_non_nullable
-                    as OpenApiSchema?,
-        maxLength:
-            freezed == maxLength
-                ? _self.maxLength
-                : maxLength // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        minLength:
-            freezed == minLength
-                ? _self.minLength
-                : minLength // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        format:
-            freezed == format
-                ? _self.format
-                : format // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        description:
-            freezed == description
-                ? _self.description
-                : description // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        pattern:
-            freezed == pattern
-                ? _self.pattern
-                : pattern // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        const_: freezed == const_ ? _self.const_ : const_,
-        default_: freezed == default_ ? _self.default_ : default_,
-        title:
-            freezed == title
-                ? _self.title
-                : title // ignore: cast_nullable_to_non_nullable
-                    as String?,
-      ),
-    );
+    return _then(OpenApiSchemaType(
+      enum_: freezed == enum_
+          ? _self._enum_
+          : enum_ // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      type: freezed == type
+          ? _self.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as OpenApiSchemaVarType?,
+      items: freezed == items
+          ? _self.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as OpenApiSchema?,
+      maxLength: freezed == maxLength
+          ? _self.maxLength
+          : maxLength // ignore: cast_nullable_to_non_nullable
+              as int?,
+      minLength: freezed == minLength
+          ? _self.minLength
+          : minLength // ignore: cast_nullable_to_non_nullable
+              as int?,
+      format: freezed == format
+          ? _self.format
+          : format // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _self.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pattern: freezed == pattern
+          ? _self.pattern
+          : pattern // ignore: cast_nullable_to_non_nullable
+              as String?,
+      const_: freezed == const_ ? _self.const_ : const_,
+      default_: freezed == default_ ? _self.default_ : default_,
+      title: freezed == title
+          ? _self.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 
   /// Create a copy of OpenApiSchema
@@ -343,17 +325,17 @@ class _$OpenApiSchemaTypeCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class OpenApiSchemaRef extends OpenApiSchema {
-  const OpenApiSchemaRef({
-    @JsonKey(name: _refKey) this.ref,
-    @JsonKey(name: 'description') this.description,
-    @JsonKey(name: 'default') this.default_,
-    final String? $type,
-  }) : $type = $type ?? 'ref',
-       super._();
+  const OpenApiSchemaRef(
+      {@JsonKey(name: r'$ref') this.ref,
+      @JsonKey(name: 'description') this.description,
+      @JsonKey(name: 'default') this.default_,
+      final String? $type})
+      : $type = $type ?? 'ref',
+        super._();
   factory OpenApiSchemaRef.fromJson(Map<String, dynamic> json) =>
       _$OpenApiSchemaRefFromJson(json);
 
-  @JsonKey(name: _refKey)
+  @JsonKey(name: r'$ref')
   final String? ref;
   @override
   @JsonKey(name: 'description')
@@ -374,7 +356,9 @@ class OpenApiSchemaRef extends OpenApiSchema {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$OpenApiSchemaRefToJson(this);
+    return _$OpenApiSchemaRefToJson(
+      this,
+    );
   }
 
   @override
@@ -390,12 +374,8 @@ class OpenApiSchemaRef extends OpenApiSchema {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    ref,
-    description,
-    const DeepCollectionEquality().hash(default_),
-  );
+  int get hashCode => Object.hash(runtimeType, ref, description,
+      const DeepCollectionEquality().hash(default_));
 
   @override
   String toString() {
@@ -407,16 +387,14 @@ class OpenApiSchemaRef extends OpenApiSchema {
 abstract mixin class $OpenApiSchemaRefCopyWith<$Res>
     implements $OpenApiSchemaCopyWith<$Res> {
   factory $OpenApiSchemaRefCopyWith(
-    OpenApiSchemaRef value,
-    $Res Function(OpenApiSchemaRef) _then,
-  ) = _$OpenApiSchemaRefCopyWithImpl;
+          OpenApiSchemaRef value, $Res Function(OpenApiSchemaRef) _then) =
+      _$OpenApiSchemaRefCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: _refKey) String? ref,
-    @JsonKey(name: 'description') String? description,
-    @JsonKey(name: 'default') Object? default_,
-  });
+  $Res call(
+      {@JsonKey(name: r'$ref') String? ref,
+      @JsonKey(name: 'description') String? description,
+      @JsonKey(name: 'default') Object? default_});
 }
 
 /// @nodoc
@@ -436,44 +414,40 @@ class _$OpenApiSchemaRefCopyWithImpl<$Res>
     Object? description = freezed,
     Object? default_ = freezed,
   }) {
-    return _then(
-      OpenApiSchemaRef(
-        ref:
-            freezed == ref
-                ? _self.ref
-                : ref // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        description:
-            freezed == description
-                ? _self.description
-                : description // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        default_: freezed == default_ ? _self.default_ : default_,
-      ),
-    );
+    return _then(OpenApiSchemaRef(
+      ref: freezed == ref
+          ? _self.ref
+          : ref // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _self.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      default_: freezed == default_ ? _self.default_ : default_,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class OpenApiSchemaAnyOf extends OpenApiSchema {
-  const OpenApiSchemaAnyOf({
-    @OpenApiSchemaJsonConverter()
-    @JsonKey(name: _anyOfKey)
-    required final List<OpenApiSchema>? anyOf,
-    @JsonKey(name: 'description') this.description,
-    @JsonKey(name: 'title') this.title,
-    @JsonKey(name: 'default') this.default_,
-    final String? $type,
-  }) : _anyOf = anyOf,
-       $type = $type ?? 'anyOf',
-       super._();
+  const OpenApiSchemaAnyOf(
+      {@OpenApiSchemaJsonConverter()
+      @JsonKey(name: 'anyOf')
+      required final List<OpenApiSchema>? anyOf,
+      @JsonKey(name: 'description') this.description,
+      @JsonKey(name: 'title') this.title,
+      @JsonKey(name: 'default') this.default_,
+      final String? $type})
+      : _anyOf = anyOf,
+        $type = $type ?? 'anyOf',
+        super._();
   factory OpenApiSchemaAnyOf.fromJson(Map<String, dynamic> json) =>
       _$OpenApiSchemaAnyOfFromJson(json);
 
   final List<OpenApiSchema>? _anyOf;
   @OpenApiSchemaJsonConverter()
-  @JsonKey(name: _anyOfKey)
+  @JsonKey(name: 'anyOf')
   List<OpenApiSchema>? get anyOf {
     final value = _anyOf;
     if (value == null) return null;
@@ -503,7 +477,9 @@ class OpenApiSchemaAnyOf extends OpenApiSchema {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$OpenApiSchemaAnyOfToJson(this);
+    return _$OpenApiSchemaAnyOfToJson(
+      this,
+    );
   }
 
   @override
@@ -521,12 +497,11 @@ class OpenApiSchemaAnyOf extends OpenApiSchema {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    const DeepCollectionEquality().hash(_anyOf),
-    description,
-    title,
-    const DeepCollectionEquality().hash(default_),
-  );
+      runtimeType,
+      const DeepCollectionEquality().hash(_anyOf),
+      description,
+      title,
+      const DeepCollectionEquality().hash(default_));
 
   @override
   String toString() {
@@ -538,19 +513,17 @@ class OpenApiSchemaAnyOf extends OpenApiSchema {
 abstract mixin class $OpenApiSchemaAnyOfCopyWith<$Res>
     implements $OpenApiSchemaCopyWith<$Res> {
   factory $OpenApiSchemaAnyOfCopyWith(
-    OpenApiSchemaAnyOf value,
-    $Res Function(OpenApiSchemaAnyOf) _then,
-  ) = _$OpenApiSchemaAnyOfCopyWithImpl;
+          OpenApiSchemaAnyOf value, $Res Function(OpenApiSchemaAnyOf) _then) =
+      _$OpenApiSchemaAnyOfCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @OpenApiSchemaJsonConverter()
-    @JsonKey(name: _anyOfKey)
-    List<OpenApiSchema>? anyOf,
-    @JsonKey(name: 'description') String? description,
-    @JsonKey(name: 'title') String? title,
-    @JsonKey(name: 'default') Object? default_,
-  });
+  $Res call(
+      {@OpenApiSchemaJsonConverter()
+      @JsonKey(name: 'anyOf')
+      List<OpenApiSchema>? anyOf,
+      @JsonKey(name: 'description') String? description,
+      @JsonKey(name: 'title') String? title,
+      @JsonKey(name: 'default') Object? default_});
 }
 
 /// @nodoc
@@ -571,49 +544,44 @@ class _$OpenApiSchemaAnyOfCopyWithImpl<$Res>
     Object? title = freezed,
     Object? default_ = freezed,
   }) {
-    return _then(
-      OpenApiSchemaAnyOf(
-        anyOf:
-            freezed == anyOf
-                ? _self._anyOf
-                : anyOf // ignore: cast_nullable_to_non_nullable
-                    as List<OpenApiSchema>?,
-        description:
-            freezed == description
-                ? _self.description
-                : description // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        title:
-            freezed == title
-                ? _self.title
-                : title // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        default_: freezed == default_ ? _self.default_ : default_,
-      ),
-    );
+    return _then(OpenApiSchemaAnyOf(
+      anyOf: freezed == anyOf
+          ? _self._anyOf
+          : anyOf // ignore: cast_nullable_to_non_nullable
+              as List<OpenApiSchema>?,
+      description: freezed == description
+          ? _self.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      title: freezed == title
+          ? _self.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      default_: freezed == default_ ? _self.default_ : default_,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class OpenApiSchemaOneOf extends OpenApiSchema {
-  const OpenApiSchemaOneOf({
-    @OpenApiSchemaJsonConverter()
-    @JsonKey(name: _oneOfKey)
-    required final List<OpenApiSchema>? oneOf,
-    @JsonKey(name: 'description') this.description,
-    @JsonKey(name: 'title') this.title,
-    @JsonKey(name: 'discriminator') required this.discriminator,
-    final String? $type,
-  }) : _oneOf = oneOf,
-       $type = $type ?? 'oneOf',
-       super._();
+  const OpenApiSchemaOneOf(
+      {@OpenApiSchemaJsonConverter()
+      @JsonKey(name: 'oneOf')
+      required final List<OpenApiSchema>? oneOf,
+      @JsonKey(name: 'description') this.description,
+      @JsonKey(name: 'title') this.title,
+      @JsonKey(name: 'discriminator') required this.discriminator,
+      final String? $type})
+      : _oneOf = oneOf,
+        $type = $type ?? 'oneOf',
+        super._();
   factory OpenApiSchemaOneOf.fromJson(Map<String, dynamic> json) =>
       _$OpenApiSchemaOneOfFromJson(json);
 
   final List<OpenApiSchema>? _oneOf;
   @OpenApiSchemaJsonConverter()
-  @JsonKey(name: _oneOfKey)
+  @JsonKey(name: 'oneOf')
   List<OpenApiSchema>? get oneOf {
     final value = _oneOf;
     if (value == null) return null;
@@ -643,7 +611,9 @@ class OpenApiSchemaOneOf extends OpenApiSchema {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$OpenApiSchemaOneOfToJson(this);
+    return _$OpenApiSchemaOneOfToJson(
+      this,
+    );
   }
 
   @override
@@ -662,12 +632,11 @@ class OpenApiSchemaOneOf extends OpenApiSchema {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    const DeepCollectionEquality().hash(_oneOf),
-    description,
-    title,
-    discriminator,
-  );
+      runtimeType,
+      const DeepCollectionEquality().hash(_oneOf),
+      description,
+      title,
+      discriminator);
 
   @override
   String toString() {
@@ -679,20 +648,18 @@ class OpenApiSchemaOneOf extends OpenApiSchema {
 abstract mixin class $OpenApiSchemaOneOfCopyWith<$Res>
     implements $OpenApiSchemaCopyWith<$Res> {
   factory $OpenApiSchemaOneOfCopyWith(
-    OpenApiSchemaOneOf value,
-    $Res Function(OpenApiSchemaOneOf) _then,
-  ) = _$OpenApiSchemaOneOfCopyWithImpl;
+          OpenApiSchemaOneOf value, $Res Function(OpenApiSchemaOneOf) _then) =
+      _$OpenApiSchemaOneOfCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @OpenApiSchemaJsonConverter()
-    @JsonKey(name: _oneOfKey)
-    List<OpenApiSchema>? oneOf,
-    @JsonKey(name: 'description') String? description,
-    @JsonKey(name: 'title') String? title,
-    @JsonKey(name: 'discriminator')
-    OpenApiSchemaOneOfDiscriminator discriminator,
-  });
+  $Res call(
+      {@OpenApiSchemaJsonConverter()
+      @JsonKey(name: 'oneOf')
+      List<OpenApiSchema>? oneOf,
+      @JsonKey(name: 'description') String? description,
+      @JsonKey(name: 'title') String? title,
+      @JsonKey(name: 'discriminator')
+      OpenApiSchemaOneOfDiscriminator discriminator});
 
   $OpenApiSchemaOneOfDiscriminatorCopyWith<$Res> get discriminator;
 }
@@ -715,30 +682,24 @@ class _$OpenApiSchemaOneOfCopyWithImpl<$Res>
     Object? title = freezed,
     Object? discriminator = null,
   }) {
-    return _then(
-      OpenApiSchemaOneOf(
-        oneOf:
-            freezed == oneOf
-                ? _self._oneOf
-                : oneOf // ignore: cast_nullable_to_non_nullable
-                    as List<OpenApiSchema>?,
-        description:
-            freezed == description
-                ? _self.description
-                : description // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        title:
-            freezed == title
-                ? _self.title
-                : title // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        discriminator:
-            null == discriminator
-                ? _self.discriminator
-                : discriminator // ignore: cast_nullable_to_non_nullable
-                    as OpenApiSchemaOneOfDiscriminator,
-      ),
-    );
+    return _then(OpenApiSchemaOneOf(
+      oneOf: freezed == oneOf
+          ? _self._oneOf
+          : oneOf // ignore: cast_nullable_to_non_nullable
+              as List<OpenApiSchema>?,
+      description: freezed == description
+          ? _self.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      title: freezed == title
+          ? _self.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      discriminator: null == discriminator
+          ? _self.discriminator
+          : discriminator // ignore: cast_nullable_to_non_nullable
+              as OpenApiSchemaOneOfDiscriminator,
+    ));
   }
 
   /// Create a copy of OpenApiSchema
@@ -746,9 +707,8 @@ class _$OpenApiSchemaOneOfCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $OpenApiSchemaOneOfDiscriminatorCopyWith<$Res> get discriminator {
-    return $OpenApiSchemaOneOfDiscriminatorCopyWith<$Res>(_self.discriminator, (
-      value,
-    ) {
+    return $OpenApiSchemaOneOfDiscriminatorCopyWith<$Res>(_self.discriminator,
+        (value) {
       return _then(_self.copyWith(discriminator: value));
     });
   }
@@ -766,9 +726,9 @@ mixin _$OpenApiSchemaOneOfDiscriminator {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $OpenApiSchemaOneOfDiscriminatorCopyWith<OpenApiSchemaOneOfDiscriminator>
-  get copyWith => _$OpenApiSchemaOneOfDiscriminatorCopyWithImpl<
-    OpenApiSchemaOneOfDiscriminator
-  >(this as OpenApiSchemaOneOfDiscriminator, _$identity);
+      get copyWith => _$OpenApiSchemaOneOfDiscriminatorCopyWithImpl<
+              OpenApiSchemaOneOfDiscriminator>(
+          this as OpenApiSchemaOneOfDiscriminator, _$identity);
 
   /// Serializes this OpenApiSchemaOneOfDiscriminator to a JSON map.
   Map<String, dynamic> toJson();
@@ -786,10 +746,7 @@ mixin _$OpenApiSchemaOneOfDiscriminator {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    propertyName,
-    const DeepCollectionEquality().hash(mapping),
-  );
+      runtimeType, propertyName, const DeepCollectionEquality().hash(mapping));
 
   @override
   String toString() {
@@ -800,14 +757,13 @@ mixin _$OpenApiSchemaOneOfDiscriminator {
 /// @nodoc
 abstract mixin class $OpenApiSchemaOneOfDiscriminatorCopyWith<$Res> {
   factory $OpenApiSchemaOneOfDiscriminatorCopyWith(
-    OpenApiSchemaOneOfDiscriminator value,
-    $Res Function(OpenApiSchemaOneOfDiscriminator) _then,
-  ) = _$OpenApiSchemaOneOfDiscriminatorCopyWithImpl;
+          OpenApiSchemaOneOfDiscriminator value,
+          $Res Function(OpenApiSchemaOneOfDiscriminator) _then) =
+      _$OpenApiSchemaOneOfDiscriminatorCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: 'propertyName') String propertyName,
-    @JsonKey(name: 'mapping') Map<String, String> mapping,
-  });
+  $Res call(
+      {@JsonKey(name: 'propertyName') String propertyName,
+      @JsonKey(name: 'mapping') Map<String, String> mapping});
 }
 
 /// @nodoc
@@ -822,21 +778,20 @@ class _$OpenApiSchemaOneOfDiscriminatorCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? propertyName = null, Object? mapping = null}) {
-    return _then(
-      _self.copyWith(
-        propertyName:
-            null == propertyName
-                ? _self.propertyName
-                : propertyName // ignore: cast_nullable_to_non_nullable
-                    as String,
-        mapping:
-            null == mapping
-                ? _self.mapping
-                : mapping // ignore: cast_nullable_to_non_nullable
-                    as Map<String, String>,
-      ),
-    );
+  $Res call({
+    Object? propertyName = null,
+    Object? mapping = null,
+  }) {
+    return _then(_self.copyWith(
+      propertyName: null == propertyName
+          ? _self.propertyName
+          : propertyName // ignore: cast_nullable_to_non_nullable
+              as String,
+      mapping: null == mapping
+          ? _self.mapping
+          : mapping // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>,
+    ));
   }
 }
 
@@ -844,13 +799,13 @@ class _$OpenApiSchemaOneOfDiscriminatorCopyWithImpl<$Res>
 @JsonSerializable()
 class _OpenApiSchemaOneOfDiscriminator
     implements OpenApiSchemaOneOfDiscriminator {
-  _OpenApiSchemaOneOfDiscriminator({
-    @JsonKey(name: 'propertyName') required this.propertyName,
-    @JsonKey(name: 'mapping') required final Map<String, String> mapping,
-  }) : _mapping = mapping;
+  _OpenApiSchemaOneOfDiscriminator(
+      {@JsonKey(name: 'propertyName') required this.propertyName,
+      @JsonKey(name: 'mapping') required final Map<String, String> mapping})
+      : _mapping = mapping;
   factory _OpenApiSchemaOneOfDiscriminator.fromJson(
-    Map<String, dynamic> json,
-  ) => _$OpenApiSchemaOneOfDiscriminatorFromJson(json);
+          Map<String, dynamic> json) =>
+      _$OpenApiSchemaOneOfDiscriminatorFromJson(json);
 
   @override
   @JsonKey(name: 'propertyName')
@@ -870,13 +825,14 @@ class _OpenApiSchemaOneOfDiscriminator
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$OpenApiSchemaOneOfDiscriminatorCopyWith<_OpenApiSchemaOneOfDiscriminator>
-  get copyWith => __$OpenApiSchemaOneOfDiscriminatorCopyWithImpl<
-    _OpenApiSchemaOneOfDiscriminator
-  >(this, _$identity);
+      get copyWith => __$OpenApiSchemaOneOfDiscriminatorCopyWithImpl<
+          _OpenApiSchemaOneOfDiscriminator>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$OpenApiSchemaOneOfDiscriminatorToJson(this);
+    return _$OpenApiSchemaOneOfDiscriminatorToJson(
+      this,
+    );
   }
 
   @override
@@ -892,10 +848,7 @@ class _OpenApiSchemaOneOfDiscriminator
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    propertyName,
-    const DeepCollectionEquality().hash(_mapping),
-  );
+      runtimeType, propertyName, const DeepCollectionEquality().hash(_mapping));
 
   @override
   String toString() {
@@ -907,15 +860,14 @@ class _OpenApiSchemaOneOfDiscriminator
 abstract mixin class _$OpenApiSchemaOneOfDiscriminatorCopyWith<$Res>
     implements $OpenApiSchemaOneOfDiscriminatorCopyWith<$Res> {
   factory _$OpenApiSchemaOneOfDiscriminatorCopyWith(
-    _OpenApiSchemaOneOfDiscriminator value,
-    $Res Function(_OpenApiSchemaOneOfDiscriminator) _then,
-  ) = __$OpenApiSchemaOneOfDiscriminatorCopyWithImpl;
+          _OpenApiSchemaOneOfDiscriminator value,
+          $Res Function(_OpenApiSchemaOneOfDiscriminator) _then) =
+      __$OpenApiSchemaOneOfDiscriminatorCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'propertyName') String propertyName,
-    @JsonKey(name: 'mapping') Map<String, String> mapping,
-  });
+  $Res call(
+      {@JsonKey(name: 'propertyName') String propertyName,
+      @JsonKey(name: 'mapping') Map<String, String> mapping});
 }
 
 /// @nodoc
@@ -930,20 +882,19 @@ class __$OpenApiSchemaOneOfDiscriminatorCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? propertyName = null, Object? mapping = null}) {
-    return _then(
-      _OpenApiSchemaOneOfDiscriminator(
-        propertyName:
-            null == propertyName
-                ? _self.propertyName
-                : propertyName // ignore: cast_nullable_to_non_nullable
-                    as String,
-        mapping:
-            null == mapping
-                ? _self._mapping
-                : mapping // ignore: cast_nullable_to_non_nullable
-                    as Map<String, String>,
-      ),
-    );
+  $Res call({
+    Object? propertyName = null,
+    Object? mapping = null,
+  }) {
+    return _then(_OpenApiSchemaOneOfDiscriminator(
+      propertyName: null == propertyName
+          ? _self.propertyName
+          : propertyName // ignore: cast_nullable_to_non_nullable
+              as String,
+      mapping: null == mapping
+          ? _self._mapping
+          : mapping // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>,
+    ));
   }
 }

@@ -55,16 +55,22 @@ class FreezedClassContentGenerator {
   }) {
     final buffer = StringBuffer();
 
-    _writeImports(buffer, filename);
+    _writeImports(buffer, filename, freezed: false);
     _writeClassDocumentation(buffer, model);
     _writeEnumDeclaration(buffer, className);
     _writeEnumValues(buffer, enumValues);
     _writeEnumMethods(buffer, className, type);
+    buffer.writeln('}');
 
     return buffer.toString();
   }
 
-  void _writeImports(StringBuffer buffer, String filename) {
+  void _writeImports(
+    StringBuffer buffer,
+    String filename, {
+    bool freezed = true,
+    bool json = true,
+  }) {
     buffer.writeln('import \'dart:io\';');
     buffer.writeln();
     buffer.writeln(
@@ -75,8 +81,8 @@ class FreezedClassContentGenerator {
     buffer.writeln('import \'../../convertors.dart\';');
     buffer.writeln(config.importConfig.importModelsCode);
     buffer.writeln();
-    buffer.writeln('part \'$filename.freezed.dart\';');
-    buffer.writeln('part \'$filename.g.dart\';');
+    if (freezed) buffer.writeln('part \'$filename.freezed.dart\';');
+    if (json) buffer.writeln('part \'$filename.g.dart\';');
     buffer.writeln();
   }
 

@@ -91,29 +91,29 @@ class DartTypeConverter {
       case OpenApiSchemaVarType.array:
         final className = switch (items) {
           OpenApiSchemaType value => dartType(
-            type: value.type,
-            format: value.format,
-            genericType: switch (value.items) {
-              OpenApiSchemaRef value => namingUtils.renameRefClass(value),
-              OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
-                value,
-                this,
-              ),
-              _ => null,
-            },
-            items: value.items,
-            title: value.title,
-          ),
+              type: value.type,
+              format: value.format,
+              genericType: switch (value.items) {
+                OpenApiSchemaRef value => namingUtils.renameRefClass(value),
+                OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
+                    value,
+                    this,
+                  ),
+                _ => null,
+              },
+              items: value.items,
+              title: value.title,
+            ),
           OpenApiSchemaRef value => namingUtils.renameRefClass(value),
           OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
-            value,
-            this,
-          ),
+              value,
+              this,
+            ),
           OpenApiSchemaOneOf value => generateOpenApiOneOfToDartType(
-            '${value.title ?? title}UnionResponse',
-            value,
-            this,
-          ),
+              '${value.title ?? title}UnionResponse',
+              value,
+              this,
+            ),
           null => null,
         };
 
@@ -180,7 +180,6 @@ class DartKeywords {
   /// Handles Dart keywords by appending an underscore if the identifier
   /// conflicts with a reserved keyword
   String renameProtect(String name) {
-    
     return name;
   }
 

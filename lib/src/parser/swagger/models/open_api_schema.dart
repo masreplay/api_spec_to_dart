@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'open_api_schema.freezed.dart';
 part 'open_api_schema.g.dart';
 
-@Freezed()
+@Freezed(fromJson: true, toJson: true)
 sealed class OpenApiSchema with _$OpenApiSchema {
   const OpenApiSchema._();
 
@@ -126,14 +126,13 @@ class OpenApiSchemaJsonConverter
           entry.value as Map<String, dynamic>,
         );
       } else if (entry.value is List) {
-        newJson[entry.key] =
-            (entry.value as List).map((e) {
-              if (e is Map<String, dynamic>) {
-                return _removeRuntimeType(e);
-              } else {
-                return e;
-              }
-            }).toList();
+        newJson[entry.key] = (entry.value as List).map((e) {
+          if (e is Map<String, dynamic>) {
+            return _removeRuntimeType(e);
+          } else {
+            return e;
+          }
+        }).toList();
       } else {
         newJson[entry.key] = entry.value;
       }

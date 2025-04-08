@@ -19,41 +19,38 @@ String convertOpenApiAnyOfToDartType(
     if (hasNullType) {
       // Get the non-null type
       final nonNullSchema = value.anyOf!.firstWhere(
-        (schema) =>
-            !(schema is OpenApiSchemaType &&
-                schema.type == OpenApiSchemaVarType.null_),
+        (schema) => !(schema is OpenApiSchemaType &&
+            schema.type == OpenApiSchemaVarType.null_),
       );
 
       // Return the non-null type with a ? to indicate it's nullable
       return switch (nonNullSchema) {
-        OpenApiSchemaType value =>
-          typeConverter.dartType(
-                type: value.type,
-                format: value.format,
-                genericType: switch (value.items) {
-                  OpenApiSchemaRef value => typeConverter.namingUtils
-                      .renameRefClass(value),
-                  OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
+        OpenApiSchemaType value => typeConverter.dartType(
+              type: value.type,
+              format: value.format,
+              genericType: switch (value.items) {
+                OpenApiSchemaRef value =>
+                  typeConverter.namingUtils.renameRefClass(value),
+                OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
                     value,
                     typeConverter,
                   ),
-                  _ => null,
-                },
-                items: value.items,
-                title: value.title,
-              ) +
-              '?',
+                _ => null,
+              },
+              items: value.items,
+              title: value.title,
+            ) +
+            '?',
         OpenApiSchemaRef value =>
           typeConverter.namingUtils.renameRefClass(value) + '?',
         OpenApiSchemaAnyOf value =>
           convertOpenApiAnyOfToDartType(value, typeConverter) + '?',
-        OpenApiSchemaOneOf value =>
-          generateOpenApiOneOfToDartType(
-                value.title ?? 'UnionModel',
-                value,
-                typeConverter,
-              ) +
-              '?',
+        OpenApiSchemaOneOf value => generateOpenApiOneOfToDartType(
+              value.title ?? 'UnionModel',
+              value,
+              typeConverter,
+            ) +
+            '?',
       };
     }
   }

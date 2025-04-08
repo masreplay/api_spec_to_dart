@@ -22,9 +22,7 @@ mixin _$SwaggerToDartYaml {
   @pragma('vm:prefer-inline')
   $SwaggerToDartYamlCopyWith<SwaggerToDartYaml> get copyWith =>
       _$SwaggerToDartYamlCopyWithImpl<SwaggerToDartYaml>(
-        this as SwaggerToDartYaml,
-        _$identity,
-      );
+          this as SwaggerToDartYaml, _$identity);
 
   /// Serializes this SwaggerToDartYaml to a JSON map.
   Map<String, dynamic> toJson();
@@ -51,9 +49,8 @@ mixin _$SwaggerToDartYaml {
 /// @nodoc
 abstract mixin class $SwaggerToDartYamlCopyWith<$Res> {
   factory $SwaggerToDartYamlCopyWith(
-    SwaggerToDartYaml value,
-    $Res Function(SwaggerToDartYaml) _then,
-  ) = _$SwaggerToDartYamlCopyWithImpl;
+          SwaggerToDartYaml value, $Res Function(SwaggerToDartYaml) _then) =
+      _$SwaggerToDartYamlCopyWithImpl;
   @useResult
   $Res call({SwaggerToDart swaggerToDart});
 
@@ -72,16 +69,15 @@ class _$SwaggerToDartYamlCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? swaggerToDart = null}) {
-    return _then(
-      _self.copyWith(
-        swaggerToDart:
-            null == swaggerToDart
-                ? _self.swaggerToDart
-                : swaggerToDart // ignore: cast_nullable_to_non_nullable
-                    as SwaggerToDart,
-      ),
-    );
+  $Res call({
+    Object? swaggerToDart = null,
+  }) {
+    return _then(_self.copyWith(
+      swaggerToDart: null == swaggerToDart
+          ? _self.swaggerToDart
+          : swaggerToDart // ignore: cast_nullable_to_non_nullable
+              as SwaggerToDart,
+    ));
   }
 
   /// Create a copy of SwaggerToDartYaml
@@ -116,7 +112,9 @@ class _SwaggerToDartYaml extends SwaggerToDartYaml {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$SwaggerToDartYamlToJson(this);
+    return _$SwaggerToDartYamlToJson(
+      this,
+    );
   }
 
   @override
@@ -142,9 +140,8 @@ class _SwaggerToDartYaml extends SwaggerToDartYaml {
 abstract mixin class _$SwaggerToDartYamlCopyWith<$Res>
     implements $SwaggerToDartYamlCopyWith<$Res> {
   factory _$SwaggerToDartYamlCopyWith(
-    _SwaggerToDartYaml value,
-    $Res Function(_SwaggerToDartYaml) _then,
-  ) = __$SwaggerToDartYamlCopyWithImpl;
+          _SwaggerToDartYaml value, $Res Function(_SwaggerToDartYaml) _then) =
+      __$SwaggerToDartYamlCopyWithImpl;
   @override
   @useResult
   $Res call({SwaggerToDart swaggerToDart});
@@ -165,16 +162,15 @@ class __$SwaggerToDartYamlCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? swaggerToDart = null}) {
-    return _then(
-      _SwaggerToDartYaml(
-        swaggerToDart:
-            null == swaggerToDart
-                ? _self.swaggerToDart
-                : swaggerToDart // ignore: cast_nullable_to_non_nullable
-                    as SwaggerToDart,
-      ),
-    );
+  $Res call({
+    Object? swaggerToDart = null,
+  }) {
+    return _then(_SwaggerToDartYaml(
+      swaggerToDart: null == swaggerToDart
+          ? _self.swaggerToDart
+          : swaggerToDart // ignore: cast_nullable_to_non_nullable
+              as SwaggerToDart,
+    ));
   }
 
   /// Create a copy of SwaggerToDartYaml
@@ -203,9 +199,7 @@ mixin _$SwaggerToDart {
   @pragma('vm:prefer-inline')
   $SwaggerToDartCopyWith<SwaggerToDart> get copyWith =>
       _$SwaggerToDartCopyWithImpl<SwaggerToDart>(
-        this as SwaggerToDart,
-        _$identity,
-      );
+          this as SwaggerToDart, _$identity);
 
   /// Serializes this SwaggerToDart to a JSON map.
   Map<String, dynamic> toJson();
@@ -223,23 +217,20 @@ mixin _$SwaggerToDart {
             (identical(other.apiClientClassName, apiClientClassName) ||
                 other.apiClientClassName == apiClientClassName) &&
             const DeepCollectionEquality().equals(other.imports, imports) &&
-            const DeepCollectionEquality().equals(
-              other.skippedParameters,
-              skippedParameters,
-            ));
+            const DeepCollectionEquality()
+                .equals(other.skippedParameters, skippedParameters));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    url,
-    inputDirectory,
-    outputDirectory,
-    apiClientClassName,
-    const DeepCollectionEquality().hash(imports),
-    const DeepCollectionEquality().hash(skippedParameters),
-  );
+      runtimeType,
+      url,
+      inputDirectory,
+      outputDirectory,
+      apiClientClassName,
+      const DeepCollectionEquality().hash(imports),
+      const DeepCollectionEquality().hash(skippedParameters));
 
   @override
   String toString() {
@@ -250,18 +241,16 @@ mixin _$SwaggerToDart {
 /// @nodoc
 abstract mixin class $SwaggerToDartCopyWith<$Res> {
   factory $SwaggerToDartCopyWith(
-    SwaggerToDart value,
-    $Res Function(SwaggerToDart) _then,
-  ) = _$SwaggerToDartCopyWithImpl;
+          SwaggerToDart value, $Res Function(SwaggerToDart) _then) =
+      _$SwaggerToDartCopyWithImpl;
   @useResult
-  $Res call({
-    String? url,
-    String inputDirectory,
-    String outputDirectory,
-    String apiClientClassName,
-    List<String> imports,
-    List<String> skippedParameters,
-  });
+  $Res call(
+      {String? url,
+      String inputDirectory,
+      String outputDirectory,
+      String apiClientClassName,
+      List<String> imports,
+      List<String> skippedParameters});
 }
 
 /// @nodoc
@@ -284,40 +273,32 @@ class _$SwaggerToDartCopyWithImpl<$Res>
     Object? imports = null,
     Object? skippedParameters = null,
   }) {
-    return _then(
-      _self.copyWith(
-        url:
-            freezed == url
-                ? _self.url
-                : url // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        inputDirectory:
-            null == inputDirectory
-                ? _self.inputDirectory
-                : inputDirectory // ignore: cast_nullable_to_non_nullable
-                    as String,
-        outputDirectory:
-            null == outputDirectory
-                ? _self.outputDirectory
-                : outputDirectory // ignore: cast_nullable_to_non_nullable
-                    as String,
-        apiClientClassName:
-            null == apiClientClassName
-                ? _self.apiClientClassName
-                : apiClientClassName // ignore: cast_nullable_to_non_nullable
-                    as String,
-        imports:
-            null == imports
-                ? _self.imports
-                : imports // ignore: cast_nullable_to_non_nullable
-                    as List<String>,
-        skippedParameters:
-            null == skippedParameters
-                ? _self.skippedParameters
-                : skippedParameters // ignore: cast_nullable_to_non_nullable
-                    as List<String>,
-      ),
-    );
+    return _then(_self.copyWith(
+      url: freezed == url
+          ? _self.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String?,
+      inputDirectory: null == inputDirectory
+          ? _self.inputDirectory
+          : inputDirectory // ignore: cast_nullable_to_non_nullable
+              as String,
+      outputDirectory: null == outputDirectory
+          ? _self.outputDirectory
+          : outputDirectory // ignore: cast_nullable_to_non_nullable
+              as String,
+      apiClientClassName: null == apiClientClassName
+          ? _self.apiClientClassName
+          : apiClientClassName // ignore: cast_nullable_to_non_nullable
+              as String,
+      imports: null == imports
+          ? _self.imports
+          : imports // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      skippedParameters: null == skippedParameters
+          ? _self.skippedParameters
+          : skippedParameters // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ));
   }
 }
 
@@ -325,15 +306,15 @@ class _$SwaggerToDartCopyWithImpl<$Res>
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class _SwaggerToDart implements SwaggerToDart {
-  _SwaggerToDart({
-    this.url,
-    this.inputDirectory = 'schema/swagger.json',
-    this.outputDirectory = 'lib/src/gen',
-    this.apiClientClassName = 'ApiClient',
-    final List<String> imports = const [],
-    final List<String> skippedParameters = const [],
-  }) : _imports = imports,
-       _skippedParameters = skippedParameters;
+  _SwaggerToDart(
+      {this.url,
+      this.inputDirectory = 'schema/swagger.json',
+      this.outputDirectory = 'lib/src/gen',
+      this.apiClientClassName = 'ApiClient',
+      final List<String> imports = const [],
+      final List<String> skippedParameters = const []})
+      : _imports = imports,
+        _skippedParameters = skippedParameters;
   factory _SwaggerToDart.fromJson(Map<String, dynamic> json) =>
       _$SwaggerToDartFromJson(json);
 
@@ -377,7 +358,9 @@ class _SwaggerToDart implements SwaggerToDart {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$SwaggerToDartToJson(this);
+    return _$SwaggerToDartToJson(
+      this,
+    );
   }
 
   @override
@@ -393,23 +376,20 @@ class _SwaggerToDart implements SwaggerToDart {
             (identical(other.apiClientClassName, apiClientClassName) ||
                 other.apiClientClassName == apiClientClassName) &&
             const DeepCollectionEquality().equals(other._imports, _imports) &&
-            const DeepCollectionEquality().equals(
-              other._skippedParameters,
-              _skippedParameters,
-            ));
+            const DeepCollectionEquality()
+                .equals(other._skippedParameters, _skippedParameters));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    url,
-    inputDirectory,
-    outputDirectory,
-    apiClientClassName,
-    const DeepCollectionEquality().hash(_imports),
-    const DeepCollectionEquality().hash(_skippedParameters),
-  );
+      runtimeType,
+      url,
+      inputDirectory,
+      outputDirectory,
+      apiClientClassName,
+      const DeepCollectionEquality().hash(_imports),
+      const DeepCollectionEquality().hash(_skippedParameters));
 
   @override
   String toString() {
@@ -421,19 +401,17 @@ class _SwaggerToDart implements SwaggerToDart {
 abstract mixin class _$SwaggerToDartCopyWith<$Res>
     implements $SwaggerToDartCopyWith<$Res> {
   factory _$SwaggerToDartCopyWith(
-    _SwaggerToDart value,
-    $Res Function(_SwaggerToDart) _then,
-  ) = __$SwaggerToDartCopyWithImpl;
+          _SwaggerToDart value, $Res Function(_SwaggerToDart) _then) =
+      __$SwaggerToDartCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    String? url,
-    String inputDirectory,
-    String outputDirectory,
-    String apiClientClassName,
-    List<String> imports,
-    List<String> skippedParameters,
-  });
+  $Res call(
+      {String? url,
+      String inputDirectory,
+      String outputDirectory,
+      String apiClientClassName,
+      List<String> imports,
+      List<String> skippedParameters});
 }
 
 /// @nodoc
@@ -456,39 +434,31 @@ class __$SwaggerToDartCopyWithImpl<$Res>
     Object? imports = null,
     Object? skippedParameters = null,
   }) {
-    return _then(
-      _SwaggerToDart(
-        url:
-            freezed == url
-                ? _self.url
-                : url // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        inputDirectory:
-            null == inputDirectory
-                ? _self.inputDirectory
-                : inputDirectory // ignore: cast_nullable_to_non_nullable
-                    as String,
-        outputDirectory:
-            null == outputDirectory
-                ? _self.outputDirectory
-                : outputDirectory // ignore: cast_nullable_to_non_nullable
-                    as String,
-        apiClientClassName:
-            null == apiClientClassName
-                ? _self.apiClientClassName
-                : apiClientClassName // ignore: cast_nullable_to_non_nullable
-                    as String,
-        imports:
-            null == imports
-                ? _self._imports
-                : imports // ignore: cast_nullable_to_non_nullable
-                    as List<String>,
-        skippedParameters:
-            null == skippedParameters
-                ? _self._skippedParameters
-                : skippedParameters // ignore: cast_nullable_to_non_nullable
-                    as List<String>,
-      ),
-    );
+    return _then(_SwaggerToDart(
+      url: freezed == url
+          ? _self.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String?,
+      inputDirectory: null == inputDirectory
+          ? _self.inputDirectory
+          : inputDirectory // ignore: cast_nullable_to_non_nullable
+              as String,
+      outputDirectory: null == outputDirectory
+          ? _self.outputDirectory
+          : outputDirectory // ignore: cast_nullable_to_non_nullable
+              as String,
+      apiClientClassName: null == apiClientClassName
+          ? _self.apiClientClassName
+          : apiClientClassName // ignore: cast_nullable_to_non_nullable
+              as String,
+      imports: null == imports
+          ? _self._imports
+          : imports // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      skippedParameters: null == skippedParameters
+          ? _self._skippedParameters
+          : skippedParameters // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ));
   }
 }
