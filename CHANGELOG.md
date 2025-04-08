@@ -1,4 +1,6 @@
 ## 1.1.0
+
+- Support flutter 3.29.2
 - Added support for fetching OpenAPI specifications directly from URLs (JSON format only)
 - Added support for automatically saving fetched specs locally
 - Added support for custom configuration file path with `--config` option
