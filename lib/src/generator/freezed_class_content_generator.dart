@@ -1,3 +1,4 @@
+import 'package:swagger_to_dart/pubspec.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 /// Generates consistent class content for different model types
@@ -39,6 +40,7 @@ class FreezedClassContentGenerator {
     _writeImports(buffer, filename);
     _writeClassDocumentation(buffer, model);
     _writeUnionClassDeclaration(buffer, className);
+    _writePropertyKeys(buffer, model.value.properties ?? {});
     _writeUnionConstructors(buffer, className, unionProps, normalProps);
     _writeFromJsonFactory(buffer, className);
 
@@ -77,6 +79,8 @@ class FreezedClassContentGenerator {
       'import \'package:freezed_annotation/freezed_annotation.dart\';',
     );
     buffer.writeln('import \'package:dio/dio.dart\';');
+    if (config.baseConfig.pubspec.isFlutterProject)
+      buffer.writeln('import \'package:flutter/material.dart\';');
     buffer.writeln();
     buffer.writeln('import \'../../convertors.dart\';');
     buffer.writeln(config.importConfig.importModelsCode);
