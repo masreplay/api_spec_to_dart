@@ -17,5 +17,13 @@
     "**/*.freezed.dart": true,
     "**/*.gen.dart": true
   },
-  "cSpell.language": "en,ar"
+  "cSpell.language": "en,ar",
+  "cSpell.words": [
+    "atheer",
+    "Ects",
+    "ekyc",
+    "nationalisms",
+    "recase",
+    "writeln"
+  ]
 }
