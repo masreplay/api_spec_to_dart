@@ -1,0 +1,4 @@
+scripts:
+  swagger: |
+    dart run swagger_to_dart
+    dart run build_runner watch --delete-conflicting-outputs

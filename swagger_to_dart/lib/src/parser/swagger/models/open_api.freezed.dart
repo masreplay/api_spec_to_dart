@@ -21,9 +21,9 @@ mixin _$OpenApi {
   @JsonKey(name: 'servers')
   List<OpenApiServer>? get servers;
   @JsonKey(name: 'paths')
-  OpenApiPaths get paths;
+  OpenApiPaths? get paths;
   @JsonKey(name: 'components')
-  OpenApiComponents get components;
+  OpenApiComponents? get components;
 
   /// Create a copy of OpenApi
   /// with the given fields replaced by the non-null parameter values.
@@ -73,11 +73,11 @@ abstract mixin class $OpenApiCopyWith<$Res> {
       {@JsonKey(name: 'openapi') String openapi,
       @JsonKey(name: 'info') OpenApiInfo info,
       @JsonKey(name: 'servers') List<OpenApiServer>? servers,
-      @JsonKey(name: 'paths') OpenApiPaths paths,
-      @JsonKey(name: 'components') OpenApiComponents components});
+      @JsonKey(name: 'paths') OpenApiPaths? paths,
+      @JsonKey(name: 'components') OpenApiComponents? components});
 
   $OpenApiInfoCopyWith<$Res> get info;
-  $OpenApiComponentsCopyWith<$Res> get components;
+  $OpenApiComponentsCopyWith<$Res>? get components;
 }
 
 /// @nodoc
@@ -95,8 +95,8 @@ class _$OpenApiCopyWithImpl<$Res> implements $OpenApiCopyWith<$Res> {
     Object? openapi = null,
     Object? info = null,
     Object? servers = freezed,
-    Object? paths = null,
-    Object? components = null,
+    Object? paths = freezed,
+    Object? components = freezed,
   }) {
     return _then(_self.copyWith(
       openapi: null == openapi
@@ -111,14 +111,14 @@ class _$OpenApiCopyWithImpl<$Res> implements $OpenApiCopyWith<$Res> {
           ? _self.servers
           : servers // ignore: cast_nullable_to_non_nullable
               as List<OpenApiServer>?,
-      paths: null == paths
+      paths: freezed == paths
           ? _self.paths
           : paths // ignore: cast_nullable_to_non_nullable
-              as OpenApiPaths,
-      components: null == components
+              as OpenApiPaths?,
+      components: freezed == components
           ? _self.components
           : components // ignore: cast_nullable_to_non_nullable
-              as OpenApiComponents,
+              as OpenApiComponents?,
     ));
   }
 
@@ -136,8 +136,12 @@ class _$OpenApiCopyWithImpl<$Res> implements $OpenApiCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $OpenApiComponentsCopyWith<$Res> get components {
-    return $OpenApiComponentsCopyWith<$Res>(_self.components, (value) {
+  $OpenApiComponentsCopyWith<$Res>? get components {
+    if (_self.components == null) {
+      return null;
+    }
+
+    return $OpenApiComponentsCopyWith<$Res>(_self.components!, (value) {
       return _then(_self.copyWith(components: value));
     });
   }
@@ -150,7 +154,7 @@ class _OpenApi extends OpenApi {
       {@JsonKey(name: 'openapi') required this.openapi,
       @JsonKey(name: 'info') required this.info,
       @JsonKey(name: 'servers') required final List<OpenApiServer>? servers,
-      @JsonKey(name: 'paths') required final OpenApiPaths paths,
+      @JsonKey(name: 'paths') required final OpenApiPaths? paths,
       @JsonKey(name: 'components') required this.components})
       : _servers = servers,
         _paths = paths,
@@ -175,18 +179,20 @@ class _OpenApi extends OpenApi {
     return EqualUnmodifiableListView(value);
   }
 
-  final OpenApiPaths _paths;
+  final OpenApiPaths? _paths;
   @override
   @JsonKey(name: 'paths')
-  OpenApiPaths get paths {
+  OpenApiPaths? get paths {
+    final value = _paths;
+    if (value == null) return null;
     if (_paths is EqualUnmodifiableMapView) return _paths;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_paths);
+    return EqualUnmodifiableMapView(value);
   }
 
   @override
   @JsonKey(name: 'components')
-  final OpenApiComponents components;
+  final OpenApiComponents? components;
 
   /// Create a copy of OpenApi
   /// with the given fields replaced by the non-null parameter values.
@@ -242,13 +248,13 @@ abstract mixin class _$OpenApiCopyWith<$Res> implements $OpenApiCopyWith<$Res> {
       {@JsonKey(name: 'openapi') String openapi,
       @JsonKey(name: 'info') OpenApiInfo info,
       @JsonKey(name: 'servers') List<OpenApiServer>? servers,
-      @JsonKey(name: 'paths') OpenApiPaths paths,
-      @JsonKey(name: 'components') OpenApiComponents components});
+      @JsonKey(name: 'paths') OpenApiPaths? paths,
+      @JsonKey(name: 'components') OpenApiComponents? components});
 
   @override
   $OpenApiInfoCopyWith<$Res> get info;
   @override
-  $OpenApiComponentsCopyWith<$Res> get components;
+  $OpenApiComponentsCopyWith<$Res>? get components;
 }
 
 /// @nodoc
@@ -266,8 +272,8 @@ class __$OpenApiCopyWithImpl<$Res> implements _$OpenApiCopyWith<$Res> {
     Object? openapi = null,
     Object? info = null,
     Object? servers = freezed,
-    Object? paths = null,
-    Object? components = null,
+    Object? paths = freezed,
+    Object? components = freezed,
   }) {
     return _then(_OpenApi(
       openapi: null == openapi
@@ -282,14 +288,14 @@ class __$OpenApiCopyWithImpl<$Res> implements _$OpenApiCopyWith<$Res> {
           ? _self._servers
           : servers // ignore: cast_nullable_to_non_nullable
               as List<OpenApiServer>?,
-      paths: null == paths
+      paths: freezed == paths
           ? _self._paths
           : paths // ignore: cast_nullable_to_non_nullable
-              as OpenApiPaths,
-      components: null == components
+              as OpenApiPaths?,
+      components: freezed == components
           ? _self.components
           : components // ignore: cast_nullable_to_non_nullable
-              as OpenApiComponents,
+              as OpenApiComponents?,
     ));
   }
 
@@ -307,8 +313,12 @@ class __$OpenApiCopyWithImpl<$Res> implements _$OpenApiCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $OpenApiComponentsCopyWith<$Res> get components {
-    return $OpenApiComponentsCopyWith<$Res>(_self.components, (value) {
+  $OpenApiComponentsCopyWith<$Res>? get components {
+    if (_self.components == null) {
+      return null;
+    }
+
+    return $OpenApiComponentsCopyWith<$Res>(_self.components!, (value) {
       return _then(_self.copyWith(components: value));
     });
   }

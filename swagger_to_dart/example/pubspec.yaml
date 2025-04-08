@@ -6,10 +6,17 @@ environment:
   sdk: ^3.7.2
 
 dependencies:
+  dio: ^5.8.0+1
+  freezed_annotation: ^3.0.0
+  json_annotation: ^4.9.0
+  retrofit: ^4.4.2
   #
 
 dev_dependencies:
   lints: ^5.0.0
   test: ^1.24.0
-  swagger_to_dart:
-    path: ../
+  swagger_to_dart: ^1.0.0
+  build_runner: ^2.4.15
+  freezed: ^3.0.6
+  json_serializable: ^6.9.4
+  retrofit_generator: ^9.1.9

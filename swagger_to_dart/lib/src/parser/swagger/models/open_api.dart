@@ -15,8 +15,8 @@ abstract class OpenApi with _$OpenApi {
     @JsonKey(name: 'openapi') required String openapi,
     @JsonKey(name: 'info') required OpenApiInfo info,
     @JsonKey(name: 'servers') required List<OpenApiServer>? servers,
-    @JsonKey(name: 'paths') required OpenApiPaths paths,
-    @JsonKey(name: 'components') required OpenApiComponents components,
+    @JsonKey(name: 'paths') required OpenApiPaths? paths,
+    @JsonKey(name: 'components') required OpenApiComponents? components,
   }) = _OpenApi;
 
   factory OpenApi.fromJson(Map<String, dynamic> json) =>

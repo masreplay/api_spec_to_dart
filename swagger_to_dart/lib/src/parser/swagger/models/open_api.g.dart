@@ -12,11 +12,13 @@ _OpenApi _$OpenApiFromJson(Map<String, dynamic> json) => _OpenApi(
       servers: (json['servers'] as List<dynamic>?)
           ?.map((e) => OpenApiServer.fromJson(e as Map<String, dynamic>))
           .toList(),
-      paths: (json['paths'] as Map<String, dynamic>).map(
+      paths: (json['paths'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, OpenApiPath.fromJson(e as Map<String, dynamic>)),
       ),
-      components: OpenApiComponents.fromJson(
-          json['components'] as Map<String, dynamic>),
+      components: json['components'] == null
+          ? null
+          : OpenApiComponents.fromJson(
+              json['components'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$OpenApiToJson(_OpenApi instance) => <String, dynamic>{
@@ -24,8 +26,10 @@ Map<String, dynamic> _$OpenApiToJson(_OpenApi instance) => <String, dynamic>{
       'info': instance.info.toJson(),
       if (instance.servers?.map((e) => e.toJson()).toList() case final value?)
         'servers': value,
-      'paths': instance.paths.map((k, e) => MapEntry(k, e.toJson())),
-      'components': instance.components.toJson(),
+      if (instance.paths?.map((k, e) => MapEntry(k, e.toJson()))
+          case final value?)
+        'paths': value,
+      if (instance.components?.toJson() case final value?) 'components': value,
     };
 
 _OpenApiServer _$OpenApiServerFromJson(Map<String, dynamic> json) =>

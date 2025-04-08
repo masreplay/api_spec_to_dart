@@ -19,9 +19,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": {
-                    "$ref": "#/components/schemas/JsonValue"
-                  },
+                  "additionalProperties": true,
                   "type": "object",
                   "title": "Response Ping-Ping"
                 }
@@ -30,11 +28,6 @@
           }
         }
       }
-    }
-  },
-  "components": {
-    "schemas": {
-      "JsonValue": {}
     }
   }
 }

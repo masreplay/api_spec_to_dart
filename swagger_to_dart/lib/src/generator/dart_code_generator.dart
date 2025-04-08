@@ -24,12 +24,13 @@ class SwaggerToDartDartCodeGenerator {
 
     await fileHandler.createDirectory(config.pathConfig.modelsOutputDirectory);
 
-    for (final entry in openApi.components.schemas.entries) {
-      final result = modelGenerator.run(entry);
-      final filepath =
-          '${config.pathConfig.modelsOutputDirectory}/${config.namingUtils.renameFile(entry.key)}.dart';
-      await fileHandler.writeFile(filepath, result.content);
-    }
+    if (openApi.components case final openApiComponents?)
+      for (final entry in openApiComponents.schemas.entries) {
+        final result = modelGenerator.run(entry);
+        final filepath =
+            '${config.pathConfig.modelsOutputDirectory}/${config.namingUtils.renameFile(entry.key)}.dart';
+        await fileHandler.writeFile(filepath, result.content);
+      }
   }
 
   /// Generates all clients from the OpenAPI paths
@@ -42,32 +43,34 @@ class SwaggerToDartDartCodeGenerator {
 
     await fileHandler.createDirectory(config.pathConfig.clientsOutputDirectory);
 
-    // Generate individual clients
-    final pathsByTags = OpenApiParser().extractPathsByTags(openApi.paths);
+    if (openApi.paths case final openApiPaths?) {
+      // Generate individual clients
+      final pathsByTags = OpenApiParser().extractPathsByTags(openApiPaths);
 
-    for (final entry in pathsByTags.entries) {
-      final tag = entry.key;
-      final paths = entry.value;
+      for (final entry in pathsByTags.entries) {
+        final tag = entry.key;
+        final paths = entry.value;
 
-      final result = clientGenerator.generator(
-        path: openApi.paths,
-        clientName: tag,
-        tagPaths: paths,
+        final result = clientGenerator.generator(
+          path: openApiPaths,
+          clientName: tag,
+          tagPaths: paths,
+        );
+
+        final filepath =
+            '${config.pathConfig.clientsOutputDirectory}/${config.namingUtils.renameFile(tag)}_client.dart';
+        await fileHandler.writeFile(filepath, result.content);
+      }
+
+      // Generate base client
+      final baseClientContent = baseClientGenerator.generator(
+        clients: pathsByTags.keys.toList(),
       );
 
-      final filepath =
-          '${config.pathConfig.clientsOutputDirectory}/${config.namingUtils.renameFile(tag)}_client.dart';
-      await fileHandler.writeFile(filepath, result.content);
+      final baseClientPath =
+          '${config.pathConfig.clientsOutputDirectory}/${config.namingUtils.renameFile(config.baseConfig.swaggerToDart.apiClientClassName)}.dart';
+      await fileHandler.writeFile(baseClientPath, baseClientContent);
     }
-
-    // Generate base client
-    final baseClientContent = baseClientGenerator.generator(
-      clients: pathsByTags.keys.toList(),
-    );
-
-    final baseClientPath =
-        '${config.pathConfig.clientsOutputDirectory}/${config.namingUtils.renameFile(config.baseConfig.swaggerToDart.apiClientClassName)}.dart';
-    await fileHandler.writeFile(baseClientPath, baseClientContent);
   }
 
   /// Generates export files for models and clients

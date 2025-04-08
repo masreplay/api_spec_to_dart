@@ -1,6 +1,6 @@
-from fastapi import FastAPI
-from pydantic import JsonValue
+from typing import Any
 
+from fastapi import FastAPI
 
 app = FastAPI(
     title="My API",
@@ -9,7 +9,7 @@ app = FastAPI(
 
 
 @app.get("/ping", tags=["ping"])
-def ping() -> dict[str, JsonValue]:
+def ping() -> dict[str, Any]:
     """
     Ping the server.
     """
