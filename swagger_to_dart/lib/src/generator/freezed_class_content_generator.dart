@@ -1,4 +1,4 @@
-import 'package:swagger_to_dart/pubspec.dart';
+import 'package:swagger_to_dart/src/pubspec.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 /// Generates consistent class content for different model types
