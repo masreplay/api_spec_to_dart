@@ -277,15 +277,6 @@ class AnyOfPropertyGenerator implements PropertyGeneratorStrategy {
         .toList();
     final unionClassName = unionTypeGenerator.generateUnionClassName(types);
 
-    // Generate the union type class
-    final unionFilename =
-        '${className.toLowerCase()}_${propertyName.toLowerCase()}_union';
-    final unionContent = unionTypeGenerator.generateUnionClassContent(
-      className: unionClassName,
-      filename: unionFilename,
-      unionTypes: types.map((type) => (type: type, value: 'value')).toList(),
-    );
-
     // Add the union class to the generated content
     // Note: You'll need to modify the generator to handle this additional class
     return isNullable ? '$unionClassName?' : unionClassName;

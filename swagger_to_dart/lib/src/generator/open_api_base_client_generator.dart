@@ -32,7 +32,8 @@ class OpenApiBaseClientGenerator {
     buffer.writeln();
 
     buffer.writeln(
-        '''${className}(this.dio, {this.baseUrl, this.errorLogger});''');
+      '''${className}(this.dio, {this.baseUrl, this.errorLogger});''',
+    );
 
     buffer.writeln('''final String? baseUrl;''');
 

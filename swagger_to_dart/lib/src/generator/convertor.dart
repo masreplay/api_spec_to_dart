@@ -65,15 +65,6 @@ String generateOpenApiOneOfToDartType(
   OpenApiSchemaOneOf model,
   DartTypeConverter typeConverter,
 ) {
-  final components = ConfigComponents(
-    baseConfig: typeConverter.baseConfig,
-    pathConfig: PathConfig(baseConfig: typeConverter.baseConfig),
-    importConfig: ImportConfig(baseConfig: typeConverter.baseConfig),
-    namingUtils: typeConverter.namingUtils,
-    dartTypeConverter: typeConverter,
-    dartKeywords: typeConverter.namingUtils.dartKeywords,
-  );
-
   final namingUtils = typeConverter.namingUtils;
   final importConfig = ImportConfig(baseConfig: typeConverter.baseConfig);
   final pathConfig = PathConfig(baseConfig: typeConverter.baseConfig);

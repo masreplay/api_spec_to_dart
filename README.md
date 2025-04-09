@@ -14,6 +14,7 @@
 A powerful Dart package that auto-generates type-safe API clients and models from OpenAPI specifications (Swagger). Currently optimized for OpenAPI 3.1.0 specifications.
 
 ## Support
+
 - [FastAPI](https://fastapi.tiangolo.com/)
 - [NestJS](https://nestjs.com/)
 - [Spring Boot](https://spring.io/projects/spring-boot)
@@ -57,17 +58,14 @@ dev_dependencies:
 Or use Dart CLI to add the dependencies:
 
 ```sh
-# generation tools
 dart pub add dev:swagger_to_dart
 dart pub add dev:build_runner
 
-# models
 dart pub add freezed_annotation
 dart pub add dev:freezed
 dart pub add json_annotation
 dart pub add dev:json_serializable
 
-# network
 dart pub add dio
 dart pub add retrofit
 dart pub add dev:retrofit_generator
