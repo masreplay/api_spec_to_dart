@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:retrofit/retrofit.dart';
 import 'package:example/src/gen/clients/clients.dart';
+import 'package:retrofit/retrofit.dart';
 
 /// My API
 /// 0.1.0
