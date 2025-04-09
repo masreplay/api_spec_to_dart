@@ -36,7 +36,10 @@ class OpenApiClientGenerator {
     buffer.writeln('''abstract class ${className} {''');
 
     buffer.writeln(
-      '''factory ${className}(Dio dio, {String baseUrl}) = _${className};''',
+      '''factory ${className}(Dio dio, {
+        String? baseUrl,
+        ParseErrorLogger? errorLogger,
+      }) = _${className};''',
     );
 
     final skippedParameters = config.baseConfig.swaggerToDart.skippedParameters;

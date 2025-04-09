@@ -2,29 +2,12 @@ scripts:
   swagger: dart run bin/main.dart
 
   g:
-    $script: rps gen build
+    $script: fvm dart run build_runner build --delete-conflicting-outputs
     $description: shortcut for gen build
-
-  w:
-    $script: rps gen watch
-    $description: shortcut for gen watch
 
   get:
     $script: fvm flutter pub get
     $description: Get dependencies
-
-  gen:
-    watch:
-      $script: fvm dart run build_runner watch --delete-conflicting-outputs
-      $description: Generate files on save
-
-    build:
-      $script: fvm dart run build_runner build --delete-conflicting-outputs
-      $description: Generate files
-
-    clean:
-      $script: ../../scripts/clean_generated_files.sh
-      $description: Delete generated files with confirmation
 
   fix-format:
     $script: fvm dart fix --apply && fvm dart format -o write ./lib

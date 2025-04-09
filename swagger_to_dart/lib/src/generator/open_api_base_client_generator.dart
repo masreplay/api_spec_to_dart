@@ -13,6 +13,7 @@ class OpenApiBaseClientGenerator {
     final buffer = StringBuffer();
 
     buffer.writeln('''import 'package:dio/dio.dart';''');
+    buffer.writeln('''import 'package:retrofit/retrofit.dart';''');
 
     buffer.writeln(config.importConfig.importClientsCode);
 
@@ -30,7 +31,12 @@ class OpenApiBaseClientGenerator {
 
     buffer.writeln();
 
-    buffer.writeln('''${className}(this.dio);''');
+    buffer.writeln(
+        '''${className}(this.dio, {this.baseUrl, this.errorLogger});''');
+
+    buffer.writeln('''final String? baseUrl;''');
+
+    buffer.writeln('''final ParseErrorLogger? errorLogger;''');
 
     buffer.writeln();
     buffer.writeln('''final Dio dio;''');

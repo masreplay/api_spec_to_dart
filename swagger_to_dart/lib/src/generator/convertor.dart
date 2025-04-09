@@ -1,6 +1,6 @@
 import 'dart:io';
-import 'package:path/path.dart' as path;
 
+import 'package:path/path.dart' as path;
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 String convertOpenApiAnyOfToDartType(

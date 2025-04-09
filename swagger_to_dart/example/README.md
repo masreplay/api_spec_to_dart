@@ -10,7 +10,8 @@ This is an example of how to use the swagger_to_dart package to generate Dart co
 
 ```bash
 dart run swagger_to_dart
-dart run build_runner watch --delete-conflicting-outputs
+dart run build_runner build --delete-conflicting-outputs
+dart fix --apply && dart format -o write ./lib
 ```
 
 3. The generated Dart code will be located in the `lib/src/gen` directory.
