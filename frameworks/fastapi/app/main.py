@@ -742,7 +742,7 @@ class ConditionalBody(BaseModel):
     )
 
     @classmethod
-    def __get_validators__(cls):
+    def __get_validators__(cls) -> Any:
         yield cls.validate_either_id_or_name
 
     @classmethod
@@ -771,7 +771,7 @@ def validation_conditional_body(body: ConditionalBody) -> ConditionalBody:
 
 class PositiveInt(int):
     @classmethod
-    def __get_validators__(cls):
+    def __get_validators__(cls) -> Any:
         yield cls.validate
 
     @classmethod
