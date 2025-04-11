@@ -22,6 +22,9 @@ from fastapi.security import (
     OAuth2PasswordBearer,
     OAuth2PasswordRequestForm,
 )
+
+from pydantic_extra_types_route import router
+
 from pydantic import (
     BaseModel,
     EmailStr,
@@ -49,6 +52,7 @@ app = FastAPI(
         {"name": "security", "description": "Security related endpoints"},
     ],
 )
+
 
 # --------- BASIC TYPES ---------
 
@@ -158,6 +162,23 @@ def datetime_timedelta(td: timedelta) -> dict[str, Any]:
 def special_uuid(id: UUID) -> dict[str, Any]:
     """Handle UUID parameter."""
     return {"uuid": id, "version": id.version}
+
+
+# color
+@app.get(
+    "/special/color",
+    tags=["advanced"],
+    response_model=dict[str, Any],
+    summary="Handle color parameters",
+)
+def special_color(
+    color: Color = "#FFFFFF",
+) -> dict[str, Any]:
+    """Handle hex color code parameter."""
+    return {
+        "color": color,
+        "is_valid": True if color.startswith("#") else False,
+    }
 
 
 class UserLevel(str, Enum):
@@ -771,8 +792,6 @@ def validation_conditional_body(body: ConditionalBody) -> ConditionalBody:
 # --------- CUSTOM TYPES ---------
 
 
-
-
 @app.get(
     "/custom/positive_int",
     tags=["advanced"],
@@ -1088,3 +1107,7 @@ def error_custom(
         raise HTTPException(status_code=status_code, detail=detail)
 
     return {"message": "No error occurred"}
+
+
+# --------- Extras ---------
+app.include_router(router)

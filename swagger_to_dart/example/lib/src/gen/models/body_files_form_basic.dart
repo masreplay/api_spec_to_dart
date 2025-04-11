@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:dio/dio.dart';
 
 import '../../convertors.dart';
+import 'package:example/src/gen/models/models.dart';
 
 part 'body_files_form_basic.freezed.dart';
 part 'body_files_form_basic.g.dart';

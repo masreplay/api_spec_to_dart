@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:dio/dio.dart';
 
 import '../../convertors.dart';
+import 'package:example/src/gen/models/models.dart';
 
 part 'validation_param_query_queries.freezed.dart';
 part 'validation_param_query_queries.g.dart';

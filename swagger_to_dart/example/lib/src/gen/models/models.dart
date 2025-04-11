@@ -9,6 +9,7 @@ export 'parrot.dart';
 export 'validation_error.dart';
 export 'advanced_collection_tuple_queries.dart';
 export 'models_create_animal_union_animal.dart';
+export 'convertors.dart';
 export 'user.dart';
 export 'models_response_multiple_queries.dart';
 export 'validation_constrained_string_queries.dart';
