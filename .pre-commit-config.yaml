@@ -1,5 +1,6 @@
 repos:
   - repo: local
+    # instead of ln -s because pub.dev doesn't allow symlinks
     hooks:
       - id: sync-files
         name: Sync files to subpackage
