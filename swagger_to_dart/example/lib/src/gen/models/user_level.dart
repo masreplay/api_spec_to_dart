@@ -1,9 +1,9 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import "package:freezed_annotation/freezed_annotation.dart";
 
-part 'user_level.g.dart';
+part "user_level.g.dart";
 
 /// UserLevel
-@JsonEnum(valueField: 'value', alwaysCreate: true)
+@JsonEnum(valueField: "value", alwaysCreate: true)
 enum UserLevel {
   basic('basic'),
   premium('premium'),

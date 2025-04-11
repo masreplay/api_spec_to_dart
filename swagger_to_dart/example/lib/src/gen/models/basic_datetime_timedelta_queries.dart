@@ -1,13 +1,10 @@
-import 'dart:io';
+import "package:freezed_annotation/freezed_annotation.dart";
 
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dio/dio.dart';
-
-import '../../convertors.dart';
+import "convertors.dart";
 import 'package:example/src/gen/models/models.dart';
 
-part 'basic_datetime_timedelta_queries.freezed.dart';
-part 'basic_datetime_timedelta_queries.g.dart';
+part "basic_datetime_timedelta_queries.freezed.dart";
+part "basic_datetime_timedelta_queries.g.dart";
 
 /// basicDatetimeTimedeltaQueries
 @freezed
@@ -15,7 +12,7 @@ abstract class BasicDatetimeTimedeltaQueries
     with _$BasicDatetimeTimedeltaQueries {
   const BasicDatetimeTimedeltaQueries._();
 
-  static const String tdKey = 'td';
+  static const String tdKey = "td";
 
   @JsonSerializable(converters: convertors)
   const factory BasicDatetimeTimedeltaQueries({

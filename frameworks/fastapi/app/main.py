@@ -23,7 +23,7 @@ from fastapi.security import (
     OAuth2PasswordRequestForm,
 )
 
-from pydantic_extra_types_route import router
+from .pydantic_extra_types_route import router
 
 from pydantic import (
     BaseModel,
@@ -162,23 +162,6 @@ def datetime_timedelta(td: timedelta) -> dict[str, Any]:
 def special_uuid(id: UUID) -> dict[str, Any]:
     """Handle UUID parameter."""
     return {"uuid": id, "version": id.version}
-
-
-# color
-@app.get(
-    "/special/color",
-    tags=["advanced"],
-    response_model=dict[str, Any],
-    summary="Handle color parameters",
-)
-def special_color(
-    color: Color = "#FFFFFF",
-) -> dict[str, Any]:
-    """Handle hex color code parameter."""
-    return {
-        "color": color,
-        "is_valid": True if color.startswith("#") else False,
-    }
 
 
 class UserLevel(str, Enum):

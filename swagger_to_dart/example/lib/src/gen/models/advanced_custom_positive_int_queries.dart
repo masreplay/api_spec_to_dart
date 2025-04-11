@@ -1,13 +1,10 @@
-import 'dart:io';
+import "package:freezed_annotation/freezed_annotation.dart";
 
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dio/dio.dart';
-
-import '../../convertors.dart';
+import "convertors.dart";
 import 'package:example/src/gen/models/models.dart';
 
-part 'advanced_custom_positive_int_queries.freezed.dart';
-part 'advanced_custom_positive_int_queries.g.dart';
+part "advanced_custom_positive_int_queries.freezed.dart";
+part "advanced_custom_positive_int_queries.g.dart";
 
 /// advancedCustomPositiveIntQueries
 @freezed
@@ -15,8 +12,8 @@ abstract class AdvancedCustomPositiveIntQueries
     with _$AdvancedCustomPositiveIntQueries {
   const AdvancedCustomPositiveIntQueries._();
 
-  static const String valueKey = 'value';
-  static const String value2Key = 'value2';
+  static const String valueKey = "value";
+  static const String value2Key = "value2";
 
   @JsonSerializable(converters: convertors)
   const factory AdvancedCustomPositiveIntQueries({

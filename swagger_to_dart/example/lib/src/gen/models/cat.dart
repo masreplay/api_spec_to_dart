@@ -1,22 +1,19 @@
-import 'dart:io';
+import "package:freezed_annotation/freezed_annotation.dart";
 
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dio/dio.dart';
-
-import '../../convertors.dart';
+import "convertors.dart";
 import 'package:example/src/gen/models/models.dart';
 
-part 'cat.freezed.dart';
-part 'cat.g.dart';
+part "cat.freezed.dart";
+part "cat.g.dart";
 
 /// Cat
 @freezed
 abstract class Cat with _$Cat {
   const Cat._();
 
-  static const String nameKey = 'name';
-  static const String typeKey = 'type';
-  static const String meowCutenessKey = 'meow_cuteness';
+  static const String nameKey = "name";
+  static const String typeKey = "type";
+  static const String meowCutenessKey = "meow_cuteness";
 
   @JsonSerializable(converters: convertors)
   const factory Cat({

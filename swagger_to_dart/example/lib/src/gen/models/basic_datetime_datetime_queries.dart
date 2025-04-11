@@ -1,13 +1,10 @@
-import 'dart:io';
+import "package:freezed_annotation/freezed_annotation.dart";
 
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dio/dio.dart';
-
-import '../../convertors.dart';
+import "convertors.dart";
 import 'package:example/src/gen/models/models.dart';
 
-part 'basic_datetime_datetime_queries.freezed.dart';
-part 'basic_datetime_datetime_queries.g.dart';
+part "basic_datetime_datetime_queries.freezed.dart";
+part "basic_datetime_datetime_queries.g.dart";
 
 /// basicDatetimeDatetimeQueries
 @freezed
@@ -15,7 +12,7 @@ abstract class BasicDatetimeDatetimeQueries
     with _$BasicDatetimeDatetimeQueries {
   const BasicDatetimeDatetimeQueries._();
 
-  static const String dtKey = 'dt';
+  static const String dtKey = "dt";
 
   @JsonSerializable(converters: convertors)
   const factory BasicDatetimeDatetimeQueries({

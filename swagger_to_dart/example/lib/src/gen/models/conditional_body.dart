@@ -1,21 +1,18 @@
-import 'dart:io';
+import "package:freezed_annotation/freezed_annotation.dart";
 
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dio/dio.dart';
-
-import '../../convertors.dart';
+import "convertors.dart";
 import 'package:example/src/gen/models/models.dart';
 
-part 'conditional_body.freezed.dart';
-part 'conditional_body.g.dart';
+part "conditional_body.freezed.dart";
+part "conditional_body.g.dart";
 
 /// ConditionalBody
 @freezed
 abstract class ConditionalBody with _$ConditionalBody {
   const ConditionalBody._();
 
-  static const String itemIdKey = 'item_id';
-  static const String itemNameKey = 'item_name';
+  static const String itemIdKey = "item_id";
+  static const String itemNameKey = "item_name";
 
   @JsonSerializable(converters: convertors)
   const factory ConditionalBody({

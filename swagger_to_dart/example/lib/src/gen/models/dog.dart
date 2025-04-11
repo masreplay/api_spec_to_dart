@@ -1,22 +1,19 @@
-import 'dart:io';
+import "package:freezed_annotation/freezed_annotation.dart";
 
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dio/dio.dart';
-
-import '../../convertors.dart';
+import "convertors.dart";
 import 'package:example/src/gen/models/models.dart';
 
-part 'dog.freezed.dart';
-part 'dog.g.dart';
+part "dog.freezed.dart";
+part "dog.g.dart";
 
 /// Dog
 @freezed
 abstract class Dog with _$Dog {
   const Dog._();
 
-  static const String nameKey = 'name';
-  static const String typeKey = 'type';
-  static const String barkLoudnessKey = 'bark_loudness';
+  static const String nameKey = "name";
+  static const String typeKey = "type";
+  static const String barkLoudnessKey = "bark_loudness";
 
   @JsonSerializable(converters: convertors)
   const factory Dog({

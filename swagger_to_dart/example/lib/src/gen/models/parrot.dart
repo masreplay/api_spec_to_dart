@@ -1,22 +1,19 @@
-import 'dart:io';
+import "package:freezed_annotation/freezed_annotation.dart";
 
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dio/dio.dart';
-
-import '../../convertors.dart';
+import "convertors.dart";
 import 'package:example/src/gen/models/models.dart';
 
-part 'parrot.freezed.dart';
-part 'parrot.g.dart';
+part "parrot.freezed.dart";
+part "parrot.g.dart";
 
 /// Parrot
 @freezed
 abstract class Parrot with _$Parrot {
   const Parrot._();
 
-  static const String nameKey = 'name';
-  static const String typeKey = 'type';
-  static const String phrasesKey = 'phrases';
+  static const String nameKey = "name";
+  static const String typeKey = "type";
+  static const String phrasesKey = "phrases";
 
   @JsonSerializable(converters: convertors)
   const factory Parrot({

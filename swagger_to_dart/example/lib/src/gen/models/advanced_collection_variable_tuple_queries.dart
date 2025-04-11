@@ -1,13 +1,10 @@
-import 'dart:io';
+import "package:freezed_annotation/freezed_annotation.dart";
 
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dio/dio.dart';
-
-import '../../convertors.dart';
+import "convertors.dart";
 import 'package:example/src/gen/models/models.dart';
 
-part 'advanced_collection_variable_tuple_queries.freezed.dart';
-part 'advanced_collection_variable_tuple_queries.g.dart';
+part "advanced_collection_variable_tuple_queries.freezed.dart";
+part "advanced_collection_variable_tuple_queries.g.dart";
 
 /// advancedCollectionVariableTupleQueries
 @freezed
@@ -15,7 +12,7 @@ abstract class AdvancedCollectionVariableTupleQueries
     with _$AdvancedCollectionVariableTupleQueries {
   const AdvancedCollectionVariableTupleQueries._();
 
-  static const String itemsKey = 'items';
+  static const String itemsKey = "items";
 
   @JsonSerializable(converters: convertors)
   const factory AdvancedCollectionVariableTupleQueries({

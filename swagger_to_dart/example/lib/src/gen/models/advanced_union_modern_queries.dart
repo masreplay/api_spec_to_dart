@@ -1,12 +1,12 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import "package:freezed_annotation/freezed_annotation.dart";
 
-part 'advanced_union_modern_queries.freezed.dart';
-part 'advanced_union_modern_queries.g.dart';
+part "advanced_union_modern_queries.freezed.dart";
+part "advanced_union_modern_queries.g.dart";
 
 /// advancedUnionModernQueries
 @freezed
 sealed class AdvancedUnionModernQueries with _$AdvancedUnionModernQueries {
-  static const String valueKey = 'value';
+  static const String valueKey = "value";
 
   const factory AdvancedUnionModernQueries.fallback() =
       AdvancedUnionModernQueriesFallback;

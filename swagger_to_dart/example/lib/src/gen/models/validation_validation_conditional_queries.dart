@@ -1,13 +1,10 @@
-import 'dart:io';
+import "package:freezed_annotation/freezed_annotation.dart";
 
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dio/dio.dart';
-
-import '../../convertors.dart';
+import "convertors.dart";
 import 'package:example/src/gen/models/models.dart';
 
-part 'validation_validation_conditional_queries.freezed.dart';
-part 'validation_validation_conditional_queries.g.dart';
+part "validation_validation_conditional_queries.freezed.dart";
+part "validation_validation_conditional_queries.g.dart";
 
 /// validationValidationConditionalQueries
 @freezed
@@ -15,8 +12,8 @@ abstract class ValidationValidationConditionalQueries
     with _$ValidationValidationConditionalQueries {
   const ValidationValidationConditionalQueries._();
 
-  static const String userIdKey = 'user_id';
-  static const String usernameKey = 'username';
+  static const String userIdKey = "user_id";
+  static const String usernameKey = "username";
 
   @JsonSerializable(converters: convertors)
   const factory ValidationValidationConditionalQueries({

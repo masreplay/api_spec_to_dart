@@ -1,27 +1,23 @@
-import 'dart:io';
+import "package:freezed_annotation/freezed_annotation.dart";
 
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dio/dio.dart';
-
-import '../../convertors.dart';
 import 'package:example/src/gen/models/models.dart';
 
-part 'user.freezed.dart';
-part 'user.g.dart';
+part "user.freezed.dart";
+part "user.g.dart";
 
 /// User
 @freezed
 abstract class User with _$User {
   const User._();
 
-  static const String usernameKey = 'username';
-  static const String emailKey = 'email';
-  static const String fullNameKey = 'full_name';
-  static const String idKey = 'id';
-  static const String isActiveKey = 'is_active';
-  static const String createdAtKey = 'created_at';
-  static const String locationKey = 'location';
-  static const String tagsKey = 'tags';
+  static const String usernameKey = "username";
+  static const String emailKey = "email";
+  static const String fullNameKey = "full_name";
+  static const String idKey = "id";
+  static const String isActiveKey = "is_active";
+  static const String createdAtKey = "created_at";
+  static const String locationKey = "location";
+  static const String tagsKey = "tags";
 
   @JsonSerializable(converters: convertors)
   const factory User({

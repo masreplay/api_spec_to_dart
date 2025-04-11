@@ -1,22 +1,19 @@
-import 'dart:io';
+import "package:freezed_annotation/freezed_annotation.dart";
 
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dio/dio.dart';
-
-import '../../convertors.dart';
+import "convertors.dart";
 import 'package:example/src/gen/models/models.dart';
 
-part 'body_files_form_basic.freezed.dart';
-part 'body_files_form_basic.g.dart';
+part "body_files_form_basic.freezed.dart";
+part "body_files_form_basic.g.dart";
 
 /// Body_files-form_basic
 @freezed
 abstract class BodyFilesFormBasic with _$BodyFilesFormBasic {
   const BodyFilesFormBasic._();
 
-  static const String usernameKey = 'username';
-  static const String passwordKey = 'password';
-  static const String rememberKey = 'remember';
+  static const String usernameKey = "username";
+  static const String passwordKey = "password";
+  static const String rememberKey = "remember";
 
   @JsonSerializable(converters: convertors)
   const factory BodyFilesFormBasic({

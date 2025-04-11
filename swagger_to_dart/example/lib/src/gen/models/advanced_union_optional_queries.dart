@@ -1,13 +1,10 @@
-import 'dart:io';
+import "package:freezed_annotation/freezed_annotation.dart";
 
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dio/dio.dart';
-
-import '../../convertors.dart';
+import "convertors.dart";
 import 'package:example/src/gen/models/models.dart';
 
-part 'advanced_union_optional_queries.freezed.dart';
-part 'advanced_union_optional_queries.g.dart';
+part "advanced_union_optional_queries.freezed.dart";
+part "advanced_union_optional_queries.g.dart";
 
 /// advancedUnionOptionalQueries
 @freezed
@@ -15,7 +12,7 @@ abstract class AdvancedUnionOptionalQueries
     with _$AdvancedUnionOptionalQueries {
   const AdvancedUnionOptionalQueries._();
 
-  static const String valueKey = 'value';
+  static const String valueKey = "value";
 
   @JsonSerializable(converters: convertors)
   const factory AdvancedUnionOptionalQueries({

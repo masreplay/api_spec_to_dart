@@ -1,21 +1,19 @@
-import 'dart:io';
+import "package:freezed_annotation/freezed_annotation.dart";
+import "package:dio/dio.dart";
 
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dio/dio.dart';
-
-import '../../convertors.dart';
+import "convertors.dart";
 import 'package:example/src/gen/models/models.dart';
 
-part 'body_files_files_multiple.freezed.dart';
-part 'body_files_files_multiple.g.dart';
+part "body_files_files_multiple.freezed.dart";
+part "body_files_files_multiple.g.dart";
 
 /// Body_files-files_multiple
 @freezed
 abstract class BodyFilesFilesMultiple with _$BodyFilesFilesMultiple {
   const BodyFilesFilesMultiple._();
 
-  static const String filesKey = 'files';
-  static const String notesKey = 'notes';
+  static const String filesKey = "files";
+  static const String notesKey = "notes";
 
   @JsonSerializable(converters: convertors)
   const factory BodyFilesFilesMultiple({

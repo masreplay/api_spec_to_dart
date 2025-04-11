@@ -1,22 +1,19 @@
-import 'dart:io';
+import "package:freezed_annotation/freezed_annotation.dart";
 
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dio/dio.dart';
-
-import '../../convertors.dart';
+import "convertors.dart";
 import 'package:example/src/gen/models/models.dart';
 
-part 'advanced_depends_query_queries.freezed.dart';
-part 'advanced_depends_query_queries.g.dart';
+part "advanced_depends_query_queries.freezed.dart";
+part "advanced_depends_query_queries.g.dart";
 
 /// advancedDependsQueryQueries
 @freezed
 abstract class AdvancedDependsQueryQueries with _$AdvancedDependsQueryQueries {
   const AdvancedDependsQueryQueries._();
 
-  static const String qKey = 'q';
-  static const String skipKey = 'skip';
-  static const String limitKey = 'limit';
+  static const String qKey = "q";
+  static const String skipKey = "skip";
+  static const String limitKey = "limit";
 
   @JsonSerializable(converters: convertors)
   const factory AdvancedDependsQueryQueries({

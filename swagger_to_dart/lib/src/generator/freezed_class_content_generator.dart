@@ -73,20 +73,20 @@ class FreezedClassContentGenerator {
     bool freezed = true,
     bool json = true,
   }) {
-    buffer.writeln('import \'dart:io\';');
+    buffer.writeln('import "dart:io";');
     buffer.writeln();
     buffer.writeln(
-      'import \'package:freezed_annotation/freezed_annotation.dart\';',
+      'import "package:freezed_annotation/freezed_annotation.dart";',
     );
-    buffer.writeln('import \'package:dio/dio.dart\';');
+    buffer.writeln('import "package:dio/dio.dart";');
     if (config.baseConfig.pubspec.isFlutterProject)
-      buffer.writeln('import \'package:flutter/material.dart\';');
+      buffer.writeln('import "package:flutter/material.dart";');
     buffer.writeln();
-    buffer.writeln('import \'../../convertors.dart\';');
+    buffer.writeln('import "convertors.dart";');
     buffer.writeln(config.importConfig.importModelsCode);
     buffer.writeln();
-    if (freezed) buffer.writeln('part \'$filename.freezed.dart\';');
-    if (json) buffer.writeln('part \'$filename.g.dart\';');
+    if (freezed) buffer.writeln('part "$filename.freezed.dart";');
+    if (json) buffer.writeln('part "$filename.g.dart";');
     buffer.writeln();
   }
 
@@ -110,7 +110,7 @@ class FreezedClassContentGenerator {
   }
 
   void _writeEnumDeclaration(StringBuffer buffer, String className) {
-    buffer.writeln('@JsonEnum(valueField: \'value\', alwaysCreate: true)');
+    buffer.writeln('@JsonEnum(valueField: "value", alwaysCreate: true)');
     buffer.writeln('enum $className {');
   }
 
@@ -120,7 +120,7 @@ class FreezedClassContentGenerator {
   ) {
     for (final entry in properties.entries) {
       buffer.writeln(
-        '  static const String ${(config.namingUtils.renameProperty(entry.key))}Key = \'${entry.key}\';',
+        '  static const String ${(config.namingUtils.renameProperty(entry.key))}Key = "${entry.key}";',
       );
     }
     buffer.writeln();

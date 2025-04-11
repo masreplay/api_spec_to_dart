@@ -1,5 +1,4 @@
 import 'package:swagger_to_dart/swagger_to_dart.dart';
-import 'package:path/path.dart' as path;
 
 class SwaggerToDartDartCodeGenerator {
   SwaggerToDartDartCodeGenerator({
@@ -22,10 +21,7 @@ class SwaggerToDartDartCodeGenerator {
 
   /// Generates all models from the OpenAPI schemas
   Future<void> _generateModels() async {
-    final modelGenerator = OpenApiModelGenerator(
-      config: config,
-      convertersImport: _getConvertersImport(config.pathConfig.modelsOutputDirectory),
-    );
+    final modelGenerator = OpenApiModelGenerator(config: config);
 
     await fileHandler.createDirectory(config.pathConfig.modelsOutputDirectory);
 
@@ -40,14 +36,10 @@ class SwaggerToDartDartCodeGenerator {
 
   /// Generates all clients from the OpenAPI paths
   Future<void> _generateClients() async {
-    final clientGenerator = OpenApiClientGenerator(
-      config: config,
-      convertersImport: _getConvertersImport(config.pathConfig.clientsOutputDirectory),
-    );
+    final clientGenerator = OpenApiClientGenerator(config: config);
     final baseClientGenerator = OpenApiBaseClientGenerator(
       config: config,
       openApi: openApi,
-      convertersImport: _getConvertersImport(config.pathConfig.clientsOutputDirectory),
     );
 
     await fileHandler.createDirectory(config.pathConfig.clientsOutputDirectory);
@@ -102,7 +94,7 @@ class MultipartFileJsonConverter
 }
 ''';
 
-    final convertorsDir = config.pathConfig.modelsOutputDirectory;
+    final convertorsDir = config.pathConfig.convertorOutputDirectory;
     await fileHandler.createDirectory(convertorsDir);
 
     final filePath = '$convertorsDir/convertors.dart';
@@ -110,17 +102,6 @@ class MultipartFileJsonConverter
 
     // Make sure the convertors are included in the exports
     // They'll be picked up by _generateExports() since they're in the models directory
-  }
-
-  /// Gets the appropriate import path for the converters.dart file
-  /// based on the target directory where files are being generated
-  String _getConvertersImport(String targetDirectory) {
-    final convertorsPath = path.join(config.pathConfig.modelsOutputDirectory, 'convertors.dart');
-    final targetPath = path.dirname(targetDirectory);
-    
-    // Calculate relative import path from the target directory to the converters file
-    final relativePath = path.relative(convertorsPath, from: targetPath);
-    return relativePath.startsWith('.') ? relativePath : './$relativePath';
   }
 
   /// Generates export files for models and clients

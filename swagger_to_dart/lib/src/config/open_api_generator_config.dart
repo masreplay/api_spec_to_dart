@@ -28,6 +28,10 @@ class PathConfig {
   String get modelsOutputDirectory {
     return path.join(baseConfig.swaggerToDart.outputDirectory, 'models');
   }
+  
+  String get convertorOutputDirectory {
+    return path.join(baseConfig.swaggerToDart.outputDirectory, 'models');
+  }
 
   String get clientsOutputDirectory {
     return path.join(baseConfig.swaggerToDart.outputDirectory, 'clients');

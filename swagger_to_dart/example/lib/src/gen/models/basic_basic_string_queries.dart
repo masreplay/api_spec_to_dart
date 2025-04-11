@@ -1,20 +1,17 @@
-import 'dart:io';
+import "package:freezed_annotation/freezed_annotation.dart";
 
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dio/dio.dart';
-
-import '../../convertors.dart';
+import "convertors.dart";
 import 'package:example/src/gen/models/models.dart';
 
-part 'basic_basic_string_queries.freezed.dart';
-part 'basic_basic_string_queries.g.dart';
+part "basic_basic_string_queries.freezed.dart";
+part "basic_basic_string_queries.g.dart";
 
 /// basicBasicStringQueries
 @freezed
 abstract class BasicBasicStringQueries with _$BasicBasicStringQueries {
   const BasicBasicStringQueries._();
 
-  static const String textKey = 'text';
+  static const String textKey = "text";
 
   @JsonSerializable(converters: convertors)
   const factory BasicBasicStringQueries({

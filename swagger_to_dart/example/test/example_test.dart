@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:example/src/gen/clients/api_client.dart';
+import 'package:example/src/gen/models/models.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
@@ -32,7 +33,9 @@ void main() {
       ).thenAnswer((_) async => mockResponse);
 
       // Act
-      final response = await apiClient.ping.pingPing();
+      final response = await apiClient.basic.basicBasicBoolean(
+        queries: BasicBasicBooleanQueries(flag: true),
+      );
 
       // Assert
       expect(response.data, equals('pong'));

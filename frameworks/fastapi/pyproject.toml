@@ -13,6 +13,7 @@ dependencies = [
     "pycountry>=24.6.1",
     "phonenumbers>=9.0.2",
     "python-ulid>=3.0.0",
+    "semver>=3.0.4",
 ]
 
 [tool.uv]

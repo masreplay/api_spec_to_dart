@@ -1,13 +1,10 @@
-import 'dart:io';
+import "package:freezed_annotation/freezed_annotation.dart";
 
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dio/dio.dart';
-
-import '../../convertors.dart';
+import "convertors.dart";
 import 'package:example/src/gen/models/models.dart';
 
-part 'validation_constrained_int_queries.freezed.dart';
-part 'validation_constrained_int_queries.g.dart';
+part "validation_constrained_int_queries.freezed.dart";
+part "validation_constrained_int_queries.g.dart";
 
 /// validationConstrainedIntQueries
 @freezed
@@ -15,7 +12,7 @@ abstract class ValidationConstrainedIntQueries
     with _$ValidationConstrainedIntQueries {
   const ValidationConstrainedIntQueries._();
 
-  static const String valueKey = 'value';
+  static const String valueKey = "value";
 
   @JsonSerializable(converters: convertors)
   const factory ValidationConstrainedIntQueries({

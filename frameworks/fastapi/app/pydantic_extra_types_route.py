@@ -33,6 +33,7 @@ from typing_extensions import Annotated
 
 router = APIRouter(
     prefix="/extra_types",
+    tags=["Extra Types"],
 )
 
 

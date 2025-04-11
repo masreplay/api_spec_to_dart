@@ -1,20 +1,17 @@
-import 'dart:io';
+import "package:freezed_annotation/freezed_annotation.dart";
 
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dio/dio.dart';
-
-import '../../convertors.dart';
+import "convertors.dart";
 import 'package:example/src/gen/models/models.dart';
 
-part 'advanced_special_uuid_queries.freezed.dart';
-part 'advanced_special_uuid_queries.g.dart';
+part "advanced_special_uuid_queries.freezed.dart";
+part "advanced_special_uuid_queries.g.dart";
 
 /// advancedSpecialUuidQueries
 @freezed
 abstract class AdvancedSpecialUuidQueries with _$AdvancedSpecialUuidQueries {
   const AdvancedSpecialUuidQueries._();
 
-  static const String idKey = 'id';
+  static const String idKey = "id";
 
   @JsonSerializable(converters: convertors)
   const factory AdvancedSpecialUuidQueries({
