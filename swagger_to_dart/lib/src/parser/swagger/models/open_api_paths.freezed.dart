@@ -959,7 +959,7 @@ mixin _$OpenApiPathMethodParameter {
   @JsonKey(name: 'schema')
   OpenApiSchema get schema;
   String? get description;
-  String? get example;
+  Object? get example;
 
   /// Create a copy of OpenApiPathMethodParameter
   /// with the given fields replaced by the non-null parameter values.
@@ -985,13 +985,13 @@ mixin _$OpenApiPathMethodParameter {
             (identical(other.schema, schema) || other.schema == schema) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.example, example) || other.example == example));
+            const DeepCollectionEquality().equals(other.example, example));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, name, in_, required_, schema, description, example);
+  int get hashCode => Object.hash(runtimeType, name, in_, required_, schema,
+      description, const DeepCollectionEquality().hash(example));
 
   @override
   String toString() {
@@ -1013,7 +1013,7 @@ abstract mixin class $OpenApiPathMethodParameterCopyWith<$Res> {
       @JsonKey(name: 'schema')
       OpenApiSchema schema,
       String? description,
-      String? example});
+      Object? example});
 
   $OpenApiSchemaCopyWith<$Res> get schema;
 }
@@ -1059,10 +1059,7 @@ class _$OpenApiPathMethodParameterCopyWithImpl<$Res>
           ? _self.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      example: freezed == example
-          ? _self.example
-          : example // ignore: cast_nullable_to_non_nullable
-              as String?,
+      example: freezed == example ? _self.example : example,
     ));
   }
 
@@ -1109,7 +1106,7 @@ class _OpenApiPathMethodParameter extends OpenApiPathMethodParameter {
   @override
   final String? description;
   @override
-  final String? example;
+  final Object? example;
 
   /// Create a copy of OpenApiPathMethodParameter
   /// with the given fields replaced by the non-null parameter values.
@@ -1139,13 +1136,13 @@ class _OpenApiPathMethodParameter extends OpenApiPathMethodParameter {
             (identical(other.schema, schema) || other.schema == schema) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.example, example) || other.example == example));
+            const DeepCollectionEquality().equals(other.example, example));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, name, in_, required_, schema, description, example);
+  int get hashCode => Object.hash(runtimeType, name, in_, required_, schema,
+      description, const DeepCollectionEquality().hash(example));
 
   @override
   String toString() {
@@ -1170,7 +1167,7 @@ abstract mixin class _$OpenApiPathMethodParameterCopyWith<$Res>
       @JsonKey(name: 'schema')
       OpenApiSchema schema,
       String? description,
-      String? example});
+      Object? example});
 
   @override
   $OpenApiSchemaCopyWith<$Res> get schema;
@@ -1217,10 +1214,7 @@ class __$OpenApiPathMethodParameterCopyWithImpl<$Res>
           ? _self.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      example: freezed == example
-          ? _self.example
-          : example // ignore: cast_nullable_to_non_nullable
-              as String?,
+      example: freezed == example ? _self.example : example,
     ));
   }
 

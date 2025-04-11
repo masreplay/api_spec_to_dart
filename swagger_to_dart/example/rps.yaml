@@ -3,3 +3,5 @@ scripts:
     dart run swagger_to_dart
     dart run build_runner build --delete-conflicting-outputs
     dart fix --apply && dart format -o write ./lib
+
+  s: rps swagger

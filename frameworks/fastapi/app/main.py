@@ -830,7 +830,7 @@ def constrained_float(
 )
 def constrained_string(
     value: Annotated[
-        constr(min_length=3, max_length=50, regex="^[a-zA-Z0-9_-]+$"),
+        constr(min_length=3, max_length=50, pattern="^[a-zA-Z0-9_-]+$"),
         Query(
             example="example-value",
             description="String between 3-50 chars, alphanumeric with hyphens and underscores",

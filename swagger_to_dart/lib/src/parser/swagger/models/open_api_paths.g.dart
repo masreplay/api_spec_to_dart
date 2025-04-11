@@ -98,7 +98,7 @@ _OpenApiPathMethodParameter _$OpenApiPathMethodParameterFromJson(
       schema: const OpenApiSchemaJsonConverter()
           .fromJson(json['schema'] as Map<String, dynamic>),
       description: json['description'] as String?,
-      example: json['example'] as String?,
+      example: json['example'],
     );
 
 Map<String, dynamic> _$OpenApiPathMethodParameterToJson(

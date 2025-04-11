@@ -86,7 +86,7 @@ abstract class OpenApiPathMethodParameter with _$OpenApiPathMethodParameter {
     @JsonKey(name: 'schema')
     required OpenApiSchema schema,
     String? description,
-    String? example,
+    Object? example,
   }) = _OpenApiPathMethodParameter;
 
   factory OpenApiPathMethodParameter.fromJson(Map<String, dynamic> json) =>
