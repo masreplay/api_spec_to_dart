@@ -23,7 +23,8 @@ from fastapi.security import (
     OAuth2PasswordRequestForm,
 )
 
-from .pydantic_extra_types_route import router
+from app import pydantic_extra_types_route, items_route
+
 
 from pydantic import (
     BaseModel,
@@ -1093,4 +1094,5 @@ def error_custom(
 
 
 # --------- Extras ---------
-app.include_router(router)
+app.include_router(pydantic_extra_types_route.router)
+app.include_router(items_route.router)
