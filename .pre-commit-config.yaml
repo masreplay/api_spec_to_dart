@@ -1,9 +1,3 @@
 repos:
   - repo: local
-    hooks:
-      - id: setup-symlinks
-        name: Setup symlinks for common files
-        entry: bash scripts/setup_symlinks.sh
-        language: system
-        pass_filenames: false
-        always_run: true
+    hooks: []
