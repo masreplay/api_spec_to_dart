@@ -6,17 +6,22 @@ router = APIRouter(
     prefix="/items",
     tags=["items"],
 )
+
+
 class ItemRequestBody(BaseModel):
     name: str
     description: Optional[str]
     price: float
     tax: Optional[float] = None
+
+
 class ItemResponse(BaseModel):
     id: int
     name: str
     description: Optional[str]
     price: float
     tax: Optional[float] = None
+
 
 @router.post("/create")
 def create_item(item: ItemRequestBody) -> ItemResponse:
