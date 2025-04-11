@@ -1,3 +1,7 @@
+## 1.2.0
+- Support MultipartFile in `@Part` annotation
+- Support Fastapi `pydantic-extra-types` package
+
 ## 1.1.0
 
 - Support flutter 3.29.2
