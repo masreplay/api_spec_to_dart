@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-const convertors = <JsonConverter>[];
+const convertors = <JsonConverter>[MultipartFileJsonConverter()];
 
 class MultipartFileJsonConverter
     implements JsonConverter<MultipartFile, MultipartFile> {

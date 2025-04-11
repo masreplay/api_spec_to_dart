@@ -15,6 +15,7 @@ class SwaggerToDartDartCodeGenerator {
   Future<void> run() async {
     await _generateModels();
     await _generateClients();
+    await _generateConvertors();
     await _generateExports();
   }
 
