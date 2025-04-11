@@ -1,6 +1,7 @@
 ## 1.2.0
 - Support MultipartFile in `@Part` annotation
 - Support Fastapi `pydantic-extra-types` package
+- Add Convertors
 
 ## 1.1.0
 
