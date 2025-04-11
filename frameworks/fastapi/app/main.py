@@ -27,6 +27,8 @@ from pydantic import (
     EmailStr,
     Field,
     HttpUrl,
+    NegativeInt,
+    PositiveInt,
     SecretStr,
     confloat,
     conint,
@@ -769,16 +771,6 @@ def validation_conditional_body(body: ConditionalBody) -> ConditionalBody:
 # --------- CUSTOM TYPES ---------
 
 
-class PositiveInt(int):
-    @classmethod
-    def __get_validators__(cls) -> Any:
-        yield cls.validate
-
-    @classmethod
-    def validate(cls, v):
-        if v <= 0:
-            raise ValueError("Value must be positive")
-        return v
 
 
 @app.get(
@@ -787,7 +779,7 @@ class PositiveInt(int):
     response_model=dict[str, Any],
     summary="Demonstrate custom type validation",
 )
-def custom_positive_int(value: PositiveInt) -> dict[str, Any]:
+def custom_positive_int(value: PositiveInt, value2: NegativeInt) -> dict[str, Any]:
     """Handle custom type for positive integers."""
     return {"value": value, "doubled": value * 2}
 

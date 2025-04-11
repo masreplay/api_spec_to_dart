@@ -1,0 +1,8 @@
+repos:
+  - repo: local
+    hooks:
+      - id: sync-readme
+        name: Sync README to subpackage
+        entry: bash scripts/sync_readme.sh
+        language: system
+        types: [text]
