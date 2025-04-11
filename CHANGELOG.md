@@ -3,12 +3,12 @@
 - Add `.vscode/settings.json` file to the dart example
 - Add `analysis_options.yaml` file to the dart example
 - Add `build.yaml` file to the dart example
-- Add more fastapi swagger Example
+- Add more FastAPI swagger Example
 
 ## 1.2.0
 
 - Support MultipartFile in `@Part` annotation
-- Support Fastapi `pydantic-extra-types` package
+- Support FastAPI `pydantic-extra-types` package
 - Add Convertors
 
 ## 1.1.0
@@ -32,7 +32,7 @@
 ## 0.2.0
 
 - If description key contains `deprecated` in the message it will be marked as deprecated by @masreplay
-- support `deprecated()` for framework that doesn't support deprecated flag in the field for example fastapi by @masreplay
+- support `deprecated()` for framework that doesn't support deprecated flag in the field for example FastAPI by @masreplay
 
 ## 0.1.8
 
