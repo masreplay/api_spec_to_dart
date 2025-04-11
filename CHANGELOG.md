@@ -1,4 +1,8 @@
-## Next Release
+## 1.4.0
+
+- Fix workflow
+
+## 1.3.0
 
 - Add `.vscode/settings.json` file to the dart example
 - Add `analysis_options.yaml` file to the dart example
