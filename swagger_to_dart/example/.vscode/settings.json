@@ -1,21 +1,18 @@
 {
-  "dart.flutterSdkPath": "../=.fvm/flutter_sdk",
+  "dart.flutterSdkPath": "../.fvm/flutter_sdk",
+  "dart.sdkPath": "../.fvm/flutter_sdk/bin/cache/dart-sdk",
   "dart.debugExternalPackageLibraries": true,
   "dart.debugSdkLibraries": true,
-  "editor.codeLens": false,
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
     "pubspec.yaml": ".flutter-plugins, .packages, .dart_tool, .flutter-plugins-dependencies, .metadata, .packages, pubspec.lock, build.yaml, analysis_options.yaml, all_lint_rules.yaml, scripts.yaml",
-    "l10n.yaml": "untranslated-messages-file.json, unused-messages-file.json",
     ".gitignore": ".gitattributes, .gitmodules, .gitmessage, .mailmap, .git-blame*",
     "readme.*": "authors, backers.md, changelog*, citation*, code_of_conduct.md, codeowners, contributing.md, contributors, copying, credits, governance.md, history.md, license*, maintainers, readme*, security.md, sponsors.md",
-    "*.dart": "$(capture).g.dart, $(capture).freezed.dart, $(capture).gr.dart, $(capture).data.dart",
-    "mason.yaml": "mason-lock.json"
+    "*.dart": "$(capture).g.dart, $(capture).freezed.dart, $(capture).gr.dart, $(capture).data.dart"
   },
   "search.exclude": {
     "**/*.g.dart": true,
-    "**/*.freezed.dart": true,
-    "**/*.gen.dart": true
+    "**/*.freezed.dart": true
   }
 }
