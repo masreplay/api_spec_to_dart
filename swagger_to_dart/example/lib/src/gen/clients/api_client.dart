@@ -5,7 +5,7 @@ import 'package:example/src/gen/clients/clients.dart';
 /// FastAPI Type Examples
 /// Comprehensive examples of types and routes in FastAPI
 /// 1.0.0
-/// 2025-04-11 05:02:36.486153
+/// 2025-04-11 20:26:22.127882
 class ApiClient {
   ApiClient(this.dio, {this.baseUrl, this.errorLogger});
   final String? baseUrl;
@@ -39,5 +39,9 @@ class ApiClient {
 
   ExtraTypesClient get extraTypes {
     return ExtraTypesClient(dio);
+  }
+
+  ItemsClient get items {
+    return ItemsClient(dio);
   }
 }
