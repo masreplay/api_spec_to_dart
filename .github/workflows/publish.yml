@@ -16,8 +16,11 @@ jobs:
 
       - uses: dart-lang/setup-dart@v1
 
-      - name: Copy root files to package
+      - name: Copy root files to package (overwrite symlinks if exist)
         run: |
+          rm -f packages/swagger_to_dart/README.md
+          rm -f packages/swagger_to_dart/LICENSE
+          rm -f packages/swagger_to_dart/CHANGELOG.md
           cp README.md packages/swagger_to_dart/README.md
           cp LICENSE packages/swagger_to_dart/LICENSE
           cp CHANGELOG.md packages/swagger_to_dart/CHANGELOG.md
