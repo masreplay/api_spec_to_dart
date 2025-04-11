@@ -6,17 +6,18 @@ on:
       - "v[0-9]+.[0-9]+.[0-9]+*"
 
 jobs:
-  prepare-and-publish:
+  prepare:
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-
+    outputs:
+      dir: ${{ steps.set-output.outputs.dir }}
     steps:
       - uses: actions/checkout@v4
 
-      - uses: dart-lang/setup-dart@v1
+      - name: Set working directory
+        id: set-output
+        run: echo "dir=packages/swagger_to_dart" >> "$GITHUB_OUTPUT"
 
-      - name: Copy root files to package (overwrite symlinks if exist)
+      - name: Remove symlinks and copy actual files
         run: |
           rm -f packages/swagger_to_dart/README.md
           rm -f packages/swagger_to_dart/LICENSE
@@ -25,7 +26,10 @@ jobs:
           cp LICENSE packages/swagger_to_dart/LICENSE
           cp CHANGELOG.md packages/swagger_to_dart/CHANGELOG.md
 
-      - name: Publish to pub.dev
-        uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
-        with:
-          working-directory: packages/swagger_to_dart
+  publish:
+    needs: prepare
+    permissions:
+      id-token: write
+    uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
+    with:
+      working-directory: packages/swagger_to_dart
