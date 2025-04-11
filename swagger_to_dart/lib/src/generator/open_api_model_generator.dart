@@ -141,7 +141,7 @@ class TypePropertyGenerator implements PropertyGeneratorStrategy {
 
     return fieldGenerator.generateField(
       className: className,
-      freezedDefaultValue: _getTypedDefaultValue(schema.default_, dartType),
+      freezedDefaultValue: _getTypedDefaultValue(schema, dartType),
       jsonName: key,
       propertyName: propertyName,
       propertyType: dartType,
@@ -161,14 +161,53 @@ class TypePropertyGenerator implements PropertyGeneratorStrategy {
     };
   }
 
-  Object? _getTypedDefaultValue(Object? defaultValue, String dartType) {
-    if (defaultValue == null) return null;
-
-    if (dartType == 'String') {
-      return '\'${defaultValue}\'';
+  Object? _getTypedDefaultValue(
+    OpenApiSchemaType schema,
+    String dartType,
+  ) {
+    final defaultValue = schema.default_;
+    if (defaultValue == null) {
+      return null;
     }
 
-    return defaultValue;
+    switch (schema.type) {
+      case OpenApiSchemaVarType.string:
+        return '\'${defaultValue}\'';
+      case OpenApiSchemaVarType.boolean:
+        return defaultValue.toString();
+      case OpenApiSchemaVarType.integer:
+      case OpenApiSchemaVarType.number:
+        return defaultValue.toString();
+      case OpenApiSchemaVarType.array:
+        if (defaultValue is List) {
+          // Format array items according to their type
+          final formattedItems = defaultValue.map((item) {
+            if (item is String) {
+              return '\'${item}\'';
+            } else {
+              return item.toString();
+            }
+          }).join(', ');
+          return '[$formattedItems]';
+        }
+        return null;
+      case OpenApiSchemaVarType.object:
+        if (defaultValue is Map) {
+          // Basic map serialization
+          return 'const ${defaultValue}';
+        }
+        return null;
+      case OpenApiSchemaVarType.null_:
+        return 'null';
+      default:
+        // For unknown types, try to use the dartType for guidance
+        if (dartType == 'DateTime' && defaultValue is String) {
+          return 'DateTime.parse(\'${defaultValue}\')';
+        } else if (dartType == 'Uri' && defaultValue is String) {
+          return 'Uri.parse(\'${defaultValue}\')';
+        }
+        return defaultValue.toString();
+    }
   }
 }
 

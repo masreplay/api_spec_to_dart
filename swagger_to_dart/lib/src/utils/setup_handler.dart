@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:path/path.dart' as path;
 import 'package:pubspec_parse/pubspec_parse.dart';
+import 'package:swagger_to_dart/src/pubspec.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 import 'package:yaml/yaml.dart';
 
@@ -15,6 +16,7 @@ class SetupHandler {
   /// Validates and sets up the environment for code generation
   Future<({ConfigComponents config, OpenApi openApi})> setup() async {
     final rootDir = Directory.current.path;
+    
     final config = await _loadConfig(rootDir);
     final openApi = await _loadOpenApi(config);
     await _setupOutputDirectory(config);
@@ -28,6 +30,8 @@ class SetupHandler {
       await File(pubspecPath).readAsString(),
       sourceUrl: Uri.parse(pubspecPath),
     );
+
+    print('swagger_to_dart: Flutter Project ${pubspec.isFlutterProject}');
 
     // Use custom config path if provided, otherwise use default
     final configFilePath = configPath ?? SwaggerToDartYaml.filename;

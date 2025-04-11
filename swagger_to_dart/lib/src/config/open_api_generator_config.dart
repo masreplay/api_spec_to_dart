@@ -76,10 +76,10 @@ class DartTypeConverter {
           'color-hex' => 'Color',
           'binary' => 'MultipartFile',
           'uuid' => 'String',
+          'time' ||
           'duration' =>
             baseConfig.pubspec.isFlutterProject ? 'TimeOfDay' : 'String',
           'uri' => 'Uri',
-          'time' => 'TimeOfDay',
           _ => 'String',
         };
       case OpenApiSchemaVarType.number:
