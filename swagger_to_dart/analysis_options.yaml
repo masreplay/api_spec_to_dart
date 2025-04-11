@@ -9,6 +9,3 @@ analyzer:
 
   errors:
     invalid_annotation_target: ignore
-
-  plugins:
-    - custom_lint

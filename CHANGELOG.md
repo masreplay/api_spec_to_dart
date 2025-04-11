@@ -1,4 +1,12 @@
+## Next Release
+
+- Add `.vscode/settings.json` file to the dart example
+- Add `analysis_options.yaml` file to the dart example
+- Add `build.yaml` file to the dart example
+- Add more fastapi swagger Example
+
 ## 1.2.0
+
 - Support MultipartFile in `@Part` annotation
 - Support Fastapi `pydantic-extra-types` package
 - Add Convertors

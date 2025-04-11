@@ -2,9 +2,9 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/logo-dark.svg" width="400">
-    <source media="(prefers-color-scheme: light)" srcset="docs/logo-light.svg" width="400">
-    <img alt="Swagger to Dart logo" src="docs/logo-light.svg" width="400">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/masreplay/swagger_to_dart/main/docs/logo-dark.svg" width="400">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/masreplay/swagger_to_dart/main/docs/logo-light.svg" width="400">
+    <img alt="Swagger to Dart logo" src="https://raw.githubusercontent.com/masreplay/swagger_to_dart/main/docs/logo-light.svg" width="400">
   </picture>
 </p>
 
@@ -83,6 +83,25 @@ global_options:
   json_serializable:
     runs_before:
       - retrofit_generator
+```
+
+Update the `analysis_options.yaml` file:
+
+```yaml
+linter:
+  rules:
+    prefer_single_quotes: true
+
+analyzer:
+  exclude:
+    # for retrofit and json_serializable
+    - "**/*.g.dart"
+    # for freezed
+    - "**/*.freezed.dart"
+
+  errors:
+    # for json_serializable
+    invalid_annotation_target: ignore
 ```
 
 ### Generate code from your OpenAPI specification
