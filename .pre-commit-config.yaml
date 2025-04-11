@@ -1,9 +1,9 @@
 repos:
   - repo: local
-    # instead of ln -s because pub.dev doesn't allow symlinks
     hooks:
-      - id: sync-files
-        name: Sync files to subpackage
-        entry: bash scripts/sync_files.sh
+      - id: setup-symlinks
+        name: Setup symlinks for common files
+        entry: bash scripts/setup_symlinks.sh
         language: system
-        types: [text]
+        pass_filenames: false
+        always_run: true
