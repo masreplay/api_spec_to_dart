@@ -137,6 +137,7 @@ class TypePropertyGenerator implements PropertyGeneratorStrategy {
       genericType: _getDependentType(schema.items),
       items: schema.items,
       title: schema.title,
+      parentTitle: className,
     );
 
     return fieldGenerator.generateField(
@@ -464,6 +465,7 @@ class UnionModelStrategy implements ModelGenerationStrategy {
                 },
                 items: value.items,
                 title: value.title,
+                parentTitle: schema.title,
               ),
             OpenApiSchemaRef value => config.namingUtils.renameRefClass(
                 value,

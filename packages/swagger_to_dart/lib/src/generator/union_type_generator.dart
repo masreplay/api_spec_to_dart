@@ -78,7 +78,7 @@ class UnionTypeGenerator {
           },
           items: value.items,
           title: value.title,
-        ),
+          parentTitle: schema.title),
       OpenApiSchemaRef value => config.namingUtils.renameRefClass(value),
       OpenApiSchemaAnyOf value => _resolveAnyOfType(value),
       _ =>

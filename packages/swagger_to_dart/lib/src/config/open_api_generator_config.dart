@@ -28,7 +28,7 @@ class PathConfig {
   String get modelsOutputDirectory {
     return path.join(baseConfig.swaggerToDart.outputDirectory, 'models');
   }
-  
+
   String get convertorOutputDirectory {
     return path.join(baseConfig.swaggerToDart.outputDirectory, 'models');
   }
@@ -71,6 +71,7 @@ class DartTypeConverter {
     required String? genericType,
     required OpenApiSchema? items,
     required String? title,
+    String? parentTitle,
   }) {
     switch (type) {
       case OpenApiSchemaVarType.string:
@@ -107,14 +108,14 @@ class DartTypeConverter {
               },
               items: value.items,
               title: value.title,
-            ),
+              parentTitle: parentTitle),
           OpenApiSchemaRef value => namingUtils.renameRefClass(value),
           OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
               value,
               this,
             ),
           OpenApiSchemaOneOf value => generateOpenApiOneOfToDartType(
-              '${value.title ?? title}UnionResponse',
+              '${parentTitle}${title}UnionResponse',
               value,
               this,
             ),
