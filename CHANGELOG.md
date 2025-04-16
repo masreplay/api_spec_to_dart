@@ -1,3 +1,6 @@
+## 1.5.0
+- Fix union class name duplication
+
 ## 1.4.0
 
 - Fix workflow
