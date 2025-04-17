@@ -144,13 +144,14 @@ class FreezedClassContentGenerator {
   ) {
     if (!unionProps.any((e) => e.unionName == 'fallback')) {
       buffer.writeln(
-        '  const factory $className.fallback() = ${className}Fallback;',
+        ' @JsonSerializable(converters: convertors) @FreezedUnionValue("fallback") const factory $className.fallback() = ${className}Fallback;',
       );
       buffer.writeln();
     }
 
     for (final prop in unionProps) {
       buffer.writeln(
+        '@JsonSerializable(converters: convertors) '
         '@FreezedUnionValue("${prop.unionName}") const factory $className.${Recase.instance.toCamelCase(prop.unionName)}({required ${prop.type} ${prop.key}, $normalProps}) = ${config.namingUtils.renameClass('${className}_${prop.unionName}')};',
       );
     }

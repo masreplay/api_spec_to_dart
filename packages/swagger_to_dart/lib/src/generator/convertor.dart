@@ -94,7 +94,7 @@ part '${filename}.g.dart';
 /// ${key}
 ${model.description == null ? '' : commentLine(model.description!)}
 @freezed
-abstract class ${className} with _\$${className} {
+sealed class ${className} with _\$${className} {
   const factory ${className}.fallback() = ${className}Fallback;
 
   

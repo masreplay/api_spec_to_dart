@@ -496,7 +496,7 @@ part '${filename}.g.dart';
 /// ${model.key}
 ${model.value.description == null ? '' : commentLine(model.value.description!)}
 @freezed
-class $unionClassName with _\$$unionClassName {
+sealed class $unionClassName with _\$$unionClassName {
   ${types.map((type) => 'const factory $unionClassName.${type.toLowerCase()}(@JsonKey(name: \'value\') $type value) = _\$${unionClassName}${type.pascalCase};').join('\n\n')}
 
   factory $unionClassName.fromJson(Map<String, dynamic> json) => _\$${unionClassName}FromJson(json);
@@ -517,39 +517,55 @@ class $unionClassName with _\$$unionClassName {
       final schema = entry.value;
       final propertyName = config.namingUtils.renameProperty(key);
 
-      if (schema is OpenApiSchemaOneOf) {
-        for (final mapping in schema.discriminator.mapping.entries) {
-          unionProps.add(
-            (
-              type:
-                  config.namingUtils.renameClass(mapping.value.split('/').last),
+      switch (schema) {
+        case OpenApiSchemaType():
+          final generator = propertyGenerators[schema.runtimeType];
+          if (generator != null) {
+            final fieldCode = generator.generateField(
+              className: className,
+              propertyName: propertyName,
               key: key,
-              unionName: mapping.key,
-            ),
-          );
-        }
-      } else if (schema is OpenApiSchemaAnyOf) {
-        final generator = propertyGenerators[OpenApiSchemaAnyOf];
-        if (generator != null) {
-          final fieldCode = generator.generateField(
-            className: className,
-            propertyName: propertyName,
-            key: key,
-            schema: schema,
-          );
-          normalProps.writeln(fieldCode);
-        }
-      } else {
-        final generator = propertyGenerators[schema.runtimeType];
-        if (generator != null) {
-          final fieldCode = generator.generateField(
-            className: className,
-            propertyName: propertyName,
-            key: key,
-            schema: schema,
-          );
-          normalProps.writeln(fieldCode);
-        }
+              schema: schema,
+            );
+            normalProps.writeln(fieldCode);
+          }
+          break;
+        case OpenApiSchemaRef():
+          final generator = propertyGenerators[schema.runtimeType];
+          if (generator != null) {
+            final fieldCode = generator.generateField(
+              className: className,
+              propertyName: propertyName,
+              key: key,
+              schema: schema,
+            );
+            normalProps.writeln(fieldCode);
+          }
+          break;
+        case OpenApiSchemaAnyOf():
+          final generator = propertyGenerators[OpenApiSchemaAnyOf];
+          if (generator != null) {
+            final fieldCode = generator.generateField(
+              className: className,
+              propertyName: propertyName,
+              key: key,
+              schema: schema,
+            );
+            normalProps.writeln(fieldCode);
+          }
+          break;
+        case OpenApiSchemaOneOf():
+          for (final mapping in schema.discriminator.mapping.entries) {
+            unionProps.add(
+              (
+                type: config.namingUtils
+                    .renameClass(mapping.value.split('/').last),
+                key: key,
+                unionName: mapping.key,
+              ),
+            );
+          }
+          break;
       }
     }
 

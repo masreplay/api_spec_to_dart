@@ -15,7 +15,8 @@
   "search.exclude": {
     "**/*.g.dart": true,
     "**/*.freezed.dart": true,
-    "**/*.gen.dart": true
+    "**/*.gen.dart": true,
+    "/example": true
   },
   "cSpell.language": "en,ar",
   "cSpell.words": [
