@@ -16,7 +16,7 @@ class SetupHandler {
   /// Validates and sets up the environment for code generation
   Future<({ConfigComponents config, OpenApi openApi})> setup() async {
     final rootDir = Directory.current.path;
-    
+
     final config = await _loadConfig(rootDir);
     final openApi = await _loadOpenApi(config);
     await _setupOutputDirectory(config);

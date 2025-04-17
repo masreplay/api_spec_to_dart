@@ -14,7 +14,8 @@ class ModelTypeDeterminer {
     // Check for union type in properties
     final properties = schema.properties ?? {};
     if (properties.entries.any(
-      (entry) => checkAnyOfType(entry.value) || entry.value is OpenApiSchemaOneOf,
+      (entry) =>
+          checkAnyOfType(entry.value) || entry.value is OpenApiSchemaOneOf,
     )) {
       return ModelTypeEnum.union;
     }
