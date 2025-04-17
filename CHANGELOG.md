@@ -1,3 +1,4 @@
+## 1.5.1
 ## 1.5.0
 - Fix union class name duplication
 

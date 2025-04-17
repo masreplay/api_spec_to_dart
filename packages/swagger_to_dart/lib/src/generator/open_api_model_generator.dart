@@ -481,6 +481,7 @@ class UnionModelStrategy implements ModelGenerationStrategy {
         }).toList();
 
         final unionClassName = types.map((type) => type.pascalCase).join('Or');
+        // TODO(mohammed.atheer): use content generator
         final unionContent = '''
 import 'dart:io';
 
