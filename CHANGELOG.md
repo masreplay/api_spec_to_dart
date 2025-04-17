@@ -1,5 +1,9 @@
 ## 1.5.1
+
+- Fix union feezed class generation with `abstract` instead of `sealed`
+
 ## 1.5.0
+
 - Fix union class name duplication
 
 ## 1.4.0
