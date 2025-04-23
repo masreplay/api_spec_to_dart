@@ -1,10 +1,16 @@
+import 'package:collection/collection.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 import 'model_type_determiner.dart';
 
 /// Type definitions to improve code readability
 typedef OpenApiModel = MapEntry<String, OpenApiSchemas>;
-typedef OneOfModel = ({String type, String key, String unionName});
+typedef OneOfModel = ({
+  String type,
+  String key,
+  String unionName,
+  OpenApiSchemaOneOf model,
+});
 
 /// Interface for the model generation strategy
 abstract class ModelGenerationStrategy {
@@ -562,7 +568,8 @@ sealed class $unionClassName with _\$$unionClassName {
                 type: config.namingUtils
                     .renameClass(mapping.value.split('/').last),
                 key: key,
-                unionName: mapping.key,
+                unionName: propertyName,
+                model: schema,
               ),
             );
           }
@@ -570,11 +577,32 @@ sealed class $unionClassName with _\$$unionClassName {
       }
     }
 
-    final content = contentGenerator.generateUnionClassContent(
+    final propertyGroupList = unionProps.groupListsBy(
+      (e) => e.key,
+    );
+
+    final content = contentGenerator.generateRegularClassContent(
       className: className,
       filename: filename,
-      unionProps: unionProps,
-      normalProps: normalProps.toString(),
+      properties: properties,
+      bodyText: normalProps.isEmpty && propertyGroupList.isEmpty
+          ? ''
+          : '''{\n${normalProps.toString()}  
+          ${propertyGroupList.entries.map((e) {
+                return FieldGenerator(config).generateField(
+                  className: className,
+                  propertyName: config.namingUtils.renameProperty(e.key),
+                  freezedDefaultValue: null,
+                  jsonName: e.key,
+                  propertyType: generateOpenApiOneOfToDartType(
+                    '${className}_${e.key}',
+                    e.value.first.model,
+                    config.dartTypeConverter,
+                  ),
+                );
+              }).map((e) => e).toList().join('\n')}
+      
+      }''',
       model: model,
     );
 
