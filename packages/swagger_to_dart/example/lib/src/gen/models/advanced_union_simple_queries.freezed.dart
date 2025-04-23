@@ -13,78 +13,68 @@ part of 'advanced_union_simple_queries.dart';
 // dart format off
 T _$identity<T>(T value) => value;
 AdvancedUnionSimpleQueries _$AdvancedUnionSimpleQueriesFromJson(
-  Map<String, dynamic> json
-) {
-    return AdvancedUnionSimpleQueriesFallback.fromJson(
-      json
-    );
+    Map<String, dynamic> json) {
+  return AdvancedUnionSimpleQueriesFallback.fromJson(json);
 }
 
 /// @nodoc
 mixin _$AdvancedUnionSimpleQueries {
-
-
-
   /// Serializes this AdvancedUnionSimpleQueries to a JSON map.
   Map<String, dynamic> toJson();
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is AdvancedUnionSimpleQueries);
+  }
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AdvancedUnionSimpleQueries);
-}
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => runtimeType.hashCode;
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'AdvancedUnionSimpleQueries()';
-}
-
-
+  @override
+  String toString() {
+    return 'AdvancedUnionSimpleQueries()';
+  }
 }
 
 /// @nodoc
-class $AdvancedUnionSimpleQueriesCopyWith<$Res>  {
-$AdvancedUnionSimpleQueriesCopyWith(AdvancedUnionSimpleQueries _, $Res Function(AdvancedUnionSimpleQueries) __);
+class $AdvancedUnionSimpleQueriesCopyWith<$Res> {
+  $AdvancedUnionSimpleQueriesCopyWith(AdvancedUnionSimpleQueries _,
+      $Res Function(AdvancedUnionSimpleQueries) __);
 }
-
 
 /// @nodoc
 @JsonSerializable()
-
 class AdvancedUnionSimpleQueriesFallback implements AdvancedUnionSimpleQueries {
   const AdvancedUnionSimpleQueriesFallback();
-  factory AdvancedUnionSimpleQueriesFallback.fromJson(Map<String, dynamic> json) => _$AdvancedUnionSimpleQueriesFallbackFromJson(json);
+  factory AdvancedUnionSimpleQueriesFallback.fromJson(
+          Map<String, dynamic> json) =>
+      _$AdvancedUnionSimpleQueriesFallbackFromJson(json);
 
+  @override
+  Map<String, dynamic> toJson() {
+    return _$AdvancedUnionSimpleQueriesFallbackToJson(
+      this,
+    );
+  }
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is AdvancedUnionSimpleQueriesFallback);
+  }
 
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => runtimeType.hashCode;
 
-@override
-Map<String, dynamic> toJson() {
-  return _$AdvancedUnionSimpleQueriesFallbackToJson(this, );
+  @override
+  String toString() {
+    return 'AdvancedUnionSimpleQueries.fallback()';
+  }
 }
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AdvancedUnionSimpleQueriesFallback);
-}
-
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'AdvancedUnionSimpleQueries.fallback()';
-}
-
-
-}
-
-
-
 
 // dart format on

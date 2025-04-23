@@ -8,13 +8,14 @@ part of 'advanced_special_enum_queries.dart';
 
 _AdvancedSpecialEnumQueries _$AdvancedSpecialEnumQueriesFromJson(
   Map<String, dynamic> json,
-) => _AdvancedSpecialEnumQueries(
-  level:
-      json['level'] == null
+) =>
+    _AdvancedSpecialEnumQueries(
+      level: json['level'] == null
           ? UserLevel.basic
           : UserLevel.fromJson(json['level'] as String),
-);
+    );
 
 Map<String, dynamic> _$AdvancedSpecialEnumQueriesToJson(
   _AdvancedSpecialEnumQueries instance,
-) => <String, dynamic>{'level': instance.level};
+) =>
+    <String, dynamic>{'level': instance.level};

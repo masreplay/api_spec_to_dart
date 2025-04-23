@@ -1,6 +1,4 @@
-import 'dart:io';
-
-import 'package:path/path.dart' as path;
+import 'package:code_builder/code_builder.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 String commentLine(String line) {
@@ -17,279 +15,131 @@ class OpenApiClientGenerator {
     required String clientName,
     required List<String> tagPaths,
   }) {
-    final buffer = StringBuffer();
+    final library = LibraryBuilder();
 
-    buffer.writeln('''import 'package:dio/dio.dart';''');
-    buffer.writeln('''import 'package:retrofit/retrofit.dart';''');
-    buffer.writeln(config.importConfig.importModelsCode);
+    // Add imports
+    library.directives.addAll([
+      Directive.import('package:dio/dio.dart'),
+      Directive.import('package:retrofit/retrofit.dart'),
+      ...config.importConfig.importModelsCode
+          .map((importPath) => Directive.import(importPath)),
+    ]);
 
-    final fileName = '''${config.namingUtils.renameFile(clientName)}_client''';
-    buffer.writeln(''' ''');
+    final fileName = '${config.namingUtils.renameFile(clientName)}_client';
+    library.directives.add(Directive.part('$fileName.g.dart'));
 
-    buffer.writeln('''part '$fileName.g.dart';''');
-
-    buffer.writeln(''' ''');
-
-    buffer.writeln('''@RestApi()''');
-
+    // Define the class
     final className = '${config.namingUtils.renameClass(clientName)}Client';
-    buffer.writeln('''abstract class ${className} {''');
+    final clientClass = ClassBuilder()
+      ..name = className
+      ..abstract = true
+      ..annotations.add(CodeExpression(Code('RestApi()')))
+      ..constructors.add(Constructor((b) {
+        b.factory = true;
+        b.redirect = refer('_$className');
+        b.requiredParameters.add(Parameter((p) => p
+          ..name = 'dio'
+          ..type = refer('Dio')));
+        b.optionalParameters.add(Parameter((p) => p
+          ..named = true
+          ..name = 'baseUrl'
+          ..type = refer('String?')));
+        b.optionalParameters.add(Parameter((p) => p
+          ..named = true
+          ..name = 'errorLogger'
+          ..type = refer('ParseErrorLogger?')));
+      }));
 
-    buffer.writeln(
-      '''factory ${className}(Dio dio, {
-        String? baseUrl,
-        ParseErrorLogger? errorLogger,
-      }) = _${className};''',
-    );
-
-    final skippedParameters = config.baseConfig.swaggerToDart.skippedParameters;
-
-    final privateMethods = <({String methodName, OpenApiPathMethod method})>[];
+    // Generate methods
     for (final tagPath in tagPaths) {
       final method = path[tagPath]!;
 
       for (final entry in method.methods.entries) {
-        final String methodType = entry.key;
+        final methodType = entry.key;
         final OpenApiPathMethod method = entry.value;
 
-        // method name
+        // Method name
         final methodName = config.namingUtils.renameMethod(
           method.operationId ?? "${methodType}_${tagPath.replaceAll('/', '_')}",
         );
 
-        // description / comment
+        // Define the method
+        final methodBuilder = MethodBuilder()
+          ..name = methodName
+          ..returns = _getReturnType(method.responses, methodName);
 
-        final operationId = method.operationId;
-        buffer.writeln(commentLine('OperationId: ${operationId}'));
-
-        final summary = method.summary;
-        if (summary != null) {
-          buffer.writeln(commentLine('Summery: ${summary}'));
+        // Add comments
+        if (method.operationId != null) {
+          methodBuilder.docs.add('/// OperationId: ${method.operationId}');
+        }
+        if (method.summary != null) {
+          methodBuilder.docs.add('/// Summary: ${method.summary}');
+        }
+        if (method.description != null) {
+          methodBuilder.docs.add('/// Description: ${method.description}');
         }
 
-        final description = method.description;
-        if (description != null) {
-          buffer.writeln(commentLine('Description: ${description}'));
-        }
-
-        // response / return type
-        final responses = method.responses ?? {};
-        final successResponse = responses['200']!;
-
-        final response = _getDartType(
-          successResponse.content?.current.value?.schema,
-          methodName,
-        );
-
-        // request type + http method type + path / annotation
-        final requestBody = method.requestBody?.content.current;
-        final isMultipart = requestBody?.key == 'MultiPart()';
-        if (isMultipart)
-          privateMethods.add((methodName: methodName, method: method));
-
-        if (requestBody?.key case final key?) {
-          buffer.writeln('@${key}');
-        }
-
-        final retrofitHttpMethodType = Recase.instance.toScreamingSnakeCase(
-          methodType,
-        );
-
+        // Add annotations
         if (method.deprecated == true) {
-          buffer.writeln('@deprecated');
+          methodBuilder.annotations.add(CodeExpression(Code('deprecated')));
         }
-        buffer.writeln('''@${retrofitHttpMethodType}('${tagPath}')''');
+        methodBuilder.annotations.add(CodeExpression(
+          Code('${methodType.toUpperCase()}(\'$tagPath\')'),
+        ));
 
-        final propertiesSnippets = <String>[];
-
+        // Add parameters
         final parameters = method.parameters ?? [];
-
-        /// queries / properties
-        final queriesParams = parameters
-            .where((e) => e.in_ == OpenApiPathMethodParameterType.query)
-            .toList();
-
-        if (queriesParams.isNotEmpty) {
-          final queriesClass = generateQueriesClass(queriesParams, methodName);
-
-          propertiesSnippets.add(
-            '''@Queries() required ${config.namingUtils.renameClass(queriesClass)} queries,''',
-          );
-        }
-
-        /// path params / properties
-        final pathParams = parameters.where(
-          (e) => e.in_ == OpenApiPathMethodParameterType.path,
-        );
-
-        for (final pathParam in pathParams) {
-          final dartType = _getDartType(pathParam.schema, methodName);
-          final paramName = config.namingUtils.renameProperty(pathParam.name);
-
-          propertiesSnippets.add(
-            '''@Path('${pathParam.name}') required $dartType $paramName,''',
-          );
-        }
-
-        // body / properties
-        if (requestBody != null) {
-          final body = requestBody.value?.schema;
-
-          final dartType =
-              body == null ? 'dynamic' : _getDartType(body, methodName);
-
-          if (isMultipart) {
-            propertiesSnippets.add(
-              '''@Part() required Map<String, dynamic> body,''',
-            );
-          } else {
-            propertiesSnippets.add('''@Body() required $dartType body,''');
-          }
-        }
-
-        /// headers / properties
-        // print(
-        //   "skippedParameters: ${skippedParameters} ${parameters.where((e) => e.in_ == OpenApiPathMethodParameterType.header).map((e) => e.name).toList().join(',')}",
-        // );
-
-        final headerParams = parameters
-            .where(
-              (e) =>
-                  e.in_ == OpenApiPathMethodParameterType.header &&
-                  !skippedParameters.contains(e.name),
-            )
-            .toList();
-
-        for (final headerParam in headerParams) {
-          final dartType = _getDartType(headerParam.schema, methodName);
-          final paramName = config.namingUtils.renameProperty(headerParam.name);
-          propertiesSnippets.add(
-            '''@Header('${headerParam.name}') required $dartType $paramName,''',
-          );
-        }
-
-        String propertiesCode = '';
-
-        if (propertiesSnippets.isNotEmpty) {
-          propertiesCode = '''{${propertiesSnippets.join('\n')}}''';
-        }
-
-        final returnType = response == null ||
-                response == 'dynamic' ||
-                response == 'Map<String, dynamic>'
-            ? 'Future<HttpResponse>'
-            : 'Future<HttpResponse<${response}>>';
-
-        buffer.writeln(
-          '''$returnType ${isMultipart ? '_' : ''}$methodName($propertiesCode);''',
-        );
-      }
-    }
-
-    buffer.writeln('}');
-
-    if (privateMethods.isNotEmpty) {
-      buffer.writeln('extension ${className}Extension on ${className} {');
-      for (final entry in privateMethods) {
-        final method = entry.method;
-
-        final methodName = entry.methodName;
-
-        // response / return type
-        final responses = method.responses ?? {};
-        final successResponse = responses['200']!;
-
-        final response = _getDartType(
-          successResponse.content?.current.value?.schema,
-          methodName,
-        );
-
-        final requestBody = method.requestBody?.content.current;
-        final body = requestBody?.value?.schema;
-
-        final dartType =
-            body == null ? 'dynamic' : _getDartType(body, methodName);
-        final parameters = method.parameters?.where((e) {
-              return !(e.in_ == OpenApiPathMethodParameterType.header &&
-                  skippedParameters.contains(e.name));
-            }) ??
-            [];
-
-        final params = StringBuffer();
         for (final param in parameters) {
-          final dartType = _getDartType(param.schema, methodName);
           final paramName = config.namingUtils.renameProperty(param.name);
-          params.writeln('required $dartType  $paramName,\n ');
+          final paramType = _getDartType(param.schema, methodName);
+          final annotation = _getParameterAnnotation(param);
+
+          methodBuilder.optionalParameters.add(Parameter((p) => p
+            ..name = paramName
+            ..type = refer(paramType!)
+            ..named = true
+            ..annotations.add(CodeExpression(Code(annotation)))));
         }
 
-        final returnType = response == null ||
-                response == 'dynamic' ||
-                response == 'Map<String, dynamic>'
-            ? 'Future<HttpResponse>'
-            : 'Future<HttpResponse<${response}>>';
-
-        buffer.writeln('''$returnType $methodName(
-      {${params.toString()}
-      required $dartType body,
+        // Add the method to the class
+        clientClass.methods.add(methodBuilder.build());
       }
-     ){
-      return _$methodName(
-        body: body.toJson(),
-        ${parameters.map((e) => '${config.namingUtils.renameProperty(e.name)}: ${config.namingUtils.renameProperty(e.name)},').join(',\n')}
-      );
-    }''');
-      }
-
-      buffer.writeln('}');
     }
 
-    return (filename: fileName, content: buffer.toString());
+    library.body.add(clientClass.build());
+
+    // Generate the Dart code
+    final emitter = DartEmitter.scoped(useNullSafetySyntax: true);
+    final generatedCode = library.build().accept(emitter).toString();
+
+    return (filename: fileName, content: generatedCode);
   }
 
-  String generateQueriesClass(
-    List<OpenApiPathMethodParameter> queries,
-    String name,
-  ) {
-    final generator = OpenApiModelGenerator(config: config);
-
-    final className = '${name}Queries';
-
-    final params = queries.map((e) {
-      return MapEntry(e.name, e.schema);
-    }).toList();
-
-    final result = generator.run(
-      MapEntry(
-        className,
-        OpenApiSchemas(
-          type: 'object',
-          properties: Map.fromIterable(
-            params,
-            key: (e) => e.key,
-            value: (e) => e.value,
-          ),
-        ),
-      ),
-    );
-
-    if (!Directory(config.pathConfig.modelsOutputDirectory).existsSync()) {
-      Directory(
-        config.pathConfig.modelsOutputDirectory,
-      ).createSync(recursive: true);
+  String _getParameterAnnotation(OpenApiPathMethodParameter param) {
+    switch (param.in_) {
+      case OpenApiPathMethodParameterType.query:
+        return 'Query(\'${param.name}\')';
+      case OpenApiPathMethodParameterType.path:
+        return 'Path(\'${param.name}\')';
+      case OpenApiPathMethodParameterType.header:
+        return 'Header(\'${param.name}\')';
+      default:
+        return '';
     }
+  }
 
-    final filepath = path.join(
-      config.pathConfig.modelsOutputDirectory,
-      '${config.namingUtils.renameFile(className)}.dart',
-    );
+  Reference _getReturnType(Map<String, dynamic>? responses, String methodName) {
+    final successResponse = responses?['200'];
+    final responseType = _getDartType(
+        successResponse?.content?.current.value?.schema, methodName);
 
-    final file = File(filepath);
-
-    file.writeAsString(result.content);
-
-    print('Generated: $filepath');
-
-    return className;
+    if (responseType == null ||
+        responseType == 'dynamic' ||
+        responseType == 'Map<String, dynamic>') {
+      return refer('Future<HttpResponse>');
+    } else {
+      return refer('Future<HttpResponse<$responseType>>');
+    }
   }
 
   String? _getDartType(OpenApiSchema? model, String className) {

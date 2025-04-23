@@ -8,8 +8,10 @@ part of 'advanced_error_custom_queries.dart';
 
 _AdvancedErrorCustomQueries _$AdvancedErrorCustomQueriesFromJson(
   Map<String, dynamic> json,
-) => _AdvancedErrorCustomQueries(code: (json['code'] as num).toInt());
+) =>
+    _AdvancedErrorCustomQueries(code: (json['code'] as num).toInt());
 
 Map<String, dynamic> _$AdvancedErrorCustomQueriesToJson(
   _AdvancedErrorCustomQueries instance,
-) => <String, dynamic>{'code': instance.code};
+) =>
+    <String, dynamic>{'code': instance.code};

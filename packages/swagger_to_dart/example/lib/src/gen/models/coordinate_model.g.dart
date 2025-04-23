@@ -8,8 +8,10 @@ part of 'coordinate_model.dart';
 
 CoordinateModelFallback _$CoordinateModelFallbackFromJson(
   Map<String, dynamic> json,
-) => CoordinateModelFallback();
+) =>
+    CoordinateModelFallback();
 
 Map<String, dynamic> _$CoordinateModelFallbackToJson(
   CoordinateModelFallback instance,
-) => <String, dynamic>{};
+) =>
+    <String, dynamic>{};

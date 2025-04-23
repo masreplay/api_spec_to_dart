@@ -8,8 +8,10 @@ part of 'advanced_union_simple_queries.dart';
 
 AdvancedUnionSimpleQueriesFallback _$AdvancedUnionSimpleQueriesFallbackFromJson(
   Map<String, dynamic> json,
-) => AdvancedUnionSimpleQueriesFallback();
+) =>
+    AdvancedUnionSimpleQueriesFallback();
 
 Map<String, dynamic> _$AdvancedUnionSimpleQueriesFallbackToJson(
   AdvancedUnionSimpleQueriesFallback instance,
-) => <String, dynamic>{};
+) =>
+    <String, dynamic>{};

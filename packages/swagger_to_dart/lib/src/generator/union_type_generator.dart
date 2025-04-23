@@ -1,3 +1,6 @@
+import 'package:code_builder/code_builder.dart';
+import 'package:dart_style/dart_style.dart';
+import 'package:recase/recase.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 /// Generates union types for OpenAPI anyOf schemas
@@ -17,52 +20,49 @@ class UnionTypeGenerator {
     required String filename,
     required List<({String type, String value})> unionTypes,
   }) {
-    final buffer = StringBuffer();
+    final library = Library((lib) {
+      // Add imports
+      lib.directives.addAll([
+        Directive.import('package:freezed_annotation/freezed_annotation.dart'),
+        Directive.part('$filename.freezed.dart'),
+        Directive.part('$filename.g.dart'),
+      ]);
 
-    _writeImports(buffer, filename);
-    _writeClassDeclaration(buffer, className);
-    _writeUnionConstructors(buffer, className, unionTypes);
-    _writeFromJsonFactory(buffer, className);
+      // Add the union type class
+      lib.body.add(Class((c) {
+        c.name = className;
+        c.annotations.add(CodeExpression(Code('freezed')));
+        c.mixins.add(refer('_\$$className'));
 
-    return buffer.toString();
-  }
+        // Add union constructors
+        for (final unionType in unionTypes) {
+          final constructorName = unionType.type.toLowerCase();
+          c.constructors.add(Constructor((ctr) {
+            ctr.factory = true;
+            ctr.name = constructorName;
+            ctr.redirect = refer('_\$${className}${unionType.type.pascalCase}');
+            ctr.requiredParameters.add(Parameter((p) => p
+              ..name = 'value'
+              ..type = refer(unionType.type)));
+          }));
+        }
 
-  void _writeImports(StringBuffer buffer, String filename) {
-    buffer.writeln(
-      'import \'package:freezed_annotation/freezed_annotation.dart\';',
-    );
-    buffer.writeln('part \'$filename.freezed.dart\';');
-    buffer.writeln('part \'$filename.g.dart\';');
-    buffer.writeln();
-  }
+        // Add fromJson factory method
+        c.constructors.add(Constructor((ctr) {
+          ctr.factory = true;
+          ctr.name = 'fromJson';
+          ctr.requiredParameters.add(Parameter((p) => p
+            ..name = 'json'
+            ..type = refer('Map<String, dynamic>')));
+          ctr.body = Code('return _\$${className}FromJson(json);');
+        }));
+      }));
+    });
 
-  void _writeClassDeclaration(StringBuffer buffer, String className) {
-    buffer.writeln('@freezed');
-    buffer.writeln('class $className with _\$$className {');
-  }
-
-  void _writeUnionConstructors(
-    StringBuffer buffer,
-    String className,
-    List<({String type, String value})> unionTypes,
-  ) {
-    for (final unionType in unionTypes) {
-      final constructorName = unionType.type.toLowerCase();
-      buffer.writeln(
-        '  factory $className.$constructorName(${unionType.type} value) = _\$${className}${unionType.type.pascalCase};',
-      );
-    }
-    buffer.writeln();
-  }
-
-  void _writeFromJsonFactory(StringBuffer buffer, String className) {
-    buffer.writeln('''
-  factory $className.fromJson(
-    Map<String, dynamic> json,
-  ) => _\$${className}FromJson(
-    json,
-  );
-}''');
+    // Format and return the generated code
+    final emitter = DartEmitter.scoped(useNullSafetySyntax: true);
+    return DartFormatter(languageVersion: DartFormatter.latestLanguageVersion)
+        .format('${library.accept(emitter)}');
   }
 
   /// Resolves the Dart type for a schema

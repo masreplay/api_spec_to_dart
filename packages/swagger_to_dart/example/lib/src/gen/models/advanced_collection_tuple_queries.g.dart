@@ -8,8 +8,10 @@ part of 'advanced_collection_tuple_queries.dart';
 
 _AdvancedCollectionTupleQueries _$AdvancedCollectionTupleQueriesFromJson(
   Map<String, dynamic> json,
-) => _AdvancedCollectionTupleQueries(items: json['items'] as List<dynamic>);
+) =>
+    _AdvancedCollectionTupleQueries(items: json['items'] as List<dynamic>);
 
 Map<String, dynamic> _$AdvancedCollectionTupleQueriesToJson(
   _AdvancedCollectionTupleQueries instance,
-) => <String, dynamic>{'items': instance.items};
+) =>
+    <String, dynamic>{'items': instance.items};

@@ -8,8 +8,10 @@ part of 'advanced_special_uuid_queries.dart';
 
 _AdvancedSpecialUuidQueries _$AdvancedSpecialUuidQueriesFromJson(
   Map<String, dynamic> json,
-) => _AdvancedSpecialUuidQueries(id: json['id'] as String);
+) =>
+    _AdvancedSpecialUuidQueries(id: json['id'] as String);
 
 Map<String, dynamic> _$AdvancedSpecialUuidQueriesToJson(
   _AdvancedSpecialUuidQueries instance,
-) => <String, dynamic>{'id': instance.id};
+) =>
+    <String, dynamic>{'id': instance.id};

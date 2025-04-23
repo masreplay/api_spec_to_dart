@@ -23,5 +23,6 @@ abstract class ValidationConstrainedFloatQueries
 
   factory ValidationConstrainedFloatQueries.fromJson(
     Map<String, dynamic> json,
-  ) => _$ValidationConstrainedFloatQueriesFromJson(json);
+  ) =>
+      _$ValidationConstrainedFloatQueriesFromJson(json);
 }

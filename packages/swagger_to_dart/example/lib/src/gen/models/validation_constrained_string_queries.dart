@@ -23,5 +23,6 @@ abstract class ValidationConstrainedStringQueries
 
   factory ValidationConstrainedStringQueries.fromJson(
     Map<String, dynamic> json,
-  ) => _$ValidationConstrainedStringQueriesFromJson(json);
+  ) =>
+      _$ValidationConstrainedStringQueriesFromJson(json);
 }

@@ -15,49 +15,61 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$ValidationValidationConditionalQueries {
+  /// User Id, User ID
+  @JsonKey(name: ValidationValidationConditionalQueries.userIdKey)
+  int? get userId;
 
-/// User Id, User ID
-@JsonKey(name: ValidationValidationConditionalQueries.userIdKey) int? get userId;/// Username, Username
-@JsonKey(name: ValidationValidationConditionalQueries.usernameKey) String? get username;
-/// Create a copy of ValidationValidationConditionalQueries
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$ValidationValidationConditionalQueriesCopyWith<ValidationValidationConditionalQueries> get copyWith => _$ValidationValidationConditionalQueriesCopyWithImpl<ValidationValidationConditionalQueries>(this as ValidationValidationConditionalQueries, _$identity);
+  /// Username, Username
+  @JsonKey(name: ValidationValidationConditionalQueries.usernameKey)
+  String? get username;
+
+  /// Create a copy of ValidationValidationConditionalQueries
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $ValidationValidationConditionalQueriesCopyWith<
+          ValidationValidationConditionalQueries>
+      get copyWith => _$ValidationValidationConditionalQueriesCopyWithImpl<
+              ValidationValidationConditionalQueries>(
+          this as ValidationValidationConditionalQueries, _$identity);
 
   /// Serializes this ValidationValidationConditionalQueries to a JSON map.
   Map<String, dynamic> toJson();
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ValidationValidationConditionalQueries &&
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.username, username) ||
+                other.username == username));
+  }
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ValidationValidationConditionalQueries&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.username, username) || other.username == username));
-}
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, userId, username);
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,userId,username);
-
-@override
-String toString() {
-  return 'ValidationValidationConditionalQueries(userId: $userId, username: $username)';
-}
-
-
+  @override
+  String toString() {
+    return 'ValidationValidationConditionalQueries(userId: $userId, username: $username)';
+  }
 }
 
 /// @nodoc
-abstract mixin class $ValidationValidationConditionalQueriesCopyWith<$Res>  {
-  factory $ValidationValidationConditionalQueriesCopyWith(ValidationValidationConditionalQueries value, $Res Function(ValidationValidationConditionalQueries) _then) = _$ValidationValidationConditionalQueriesCopyWithImpl;
-@useResult
-$Res call({
-@JsonKey(name: ValidationValidationConditionalQueries.userIdKey) int? userId,@JsonKey(name: ValidationValidationConditionalQueries.usernameKey) String? username
-});
-
-
-
-
+abstract mixin class $ValidationValidationConditionalQueriesCopyWith<$Res> {
+  factory $ValidationValidationConditionalQueriesCopyWith(
+          ValidationValidationConditionalQueries value,
+          $Res Function(ValidationValidationConditionalQueries) _then) =
+      _$ValidationValidationConditionalQueriesCopyWithImpl;
+  @useResult
+  $Res call(
+      {@JsonKey(name: ValidationValidationConditionalQueries.userIdKey)
+      int? userId,
+      @JsonKey(name: ValidationValidationConditionalQueries.usernameKey)
+      String? username});
 }
+
 /// @nodoc
 class _$ValidationValidationConditionalQueriesCopyWithImpl<$Res>
     implements $ValidationValidationConditionalQueriesCopyWith<$Res> {
@@ -66,71 +78,105 @@ class _$ValidationValidationConditionalQueriesCopyWithImpl<$Res>
   final ValidationValidationConditionalQueries _self;
   final $Res Function(ValidationValidationConditionalQueries) _then;
 
-/// Create a copy of ValidationValidationConditionalQueries
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? userId = freezed,Object? username = freezed,}) {
-  return _then(_self.copyWith(
-userId: freezed == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
-as int?,username: freezed == username ? _self.username : username // ignore: cast_nullable_to_non_nullable
-as String?,
-  ));
+  /// Create a copy of ValidationValidationConditionalQueries
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userId = freezed,
+    Object? username = freezed,
+  }) {
+    return _then(_self.copyWith(
+      userId: freezed == userId
+          ? _self.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      username: freezed == username
+          ? _self.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
-
-}
-
 
 /// @nodoc
 
 @JsonSerializable(converters: convertors)
-class _ValidationValidationConditionalQueries extends ValidationValidationConditionalQueries {
-  const _ValidationValidationConditionalQueries({@JsonKey(name: ValidationValidationConditionalQueries.userIdKey) required this.userId, @JsonKey(name: ValidationValidationConditionalQueries.usernameKey) required this.username}): super._();
-  factory _ValidationValidationConditionalQueries.fromJson(Map<String, dynamic> json) => _$ValidationValidationConditionalQueriesFromJson(json);
+class _ValidationValidationConditionalQueries
+    extends ValidationValidationConditionalQueries {
+  const _ValidationValidationConditionalQueries(
+      {@JsonKey(name: ValidationValidationConditionalQueries.userIdKey)
+      required this.userId,
+      @JsonKey(name: ValidationValidationConditionalQueries.usernameKey)
+      required this.username})
+      : super._();
+  factory _ValidationValidationConditionalQueries.fromJson(
+          Map<String, dynamic> json) =>
+      _$ValidationValidationConditionalQueriesFromJson(json);
 
-/// User Id, User ID
-@override@JsonKey(name: ValidationValidationConditionalQueries.userIdKey) final  int? userId;
-/// Username, Username
-@override@JsonKey(name: ValidationValidationConditionalQueries.usernameKey) final  String? username;
+  /// User Id, User ID
+  @override
+  @JsonKey(name: ValidationValidationConditionalQueries.userIdKey)
+  final int? userId;
 
-/// Create a copy of ValidationValidationConditionalQueries
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$ValidationValidationConditionalQueriesCopyWith<_ValidationValidationConditionalQueries> get copyWith => __$ValidationValidationConditionalQueriesCopyWithImpl<_ValidationValidationConditionalQueries>(this, _$identity);
+  /// Username, Username
+  @override
+  @JsonKey(name: ValidationValidationConditionalQueries.usernameKey)
+  final String? username;
 
-@override
-Map<String, dynamic> toJson() {
-  return _$ValidationValidationConditionalQueriesToJson(this, );
-}
+  /// Create a copy of ValidationValidationConditionalQueries
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ValidationValidationConditionalQueriesCopyWith<
+          _ValidationValidationConditionalQueries>
+      get copyWith => __$ValidationValidationConditionalQueriesCopyWithImpl<
+          _ValidationValidationConditionalQueries>(this, _$identity);
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ValidationValidationConditionalQueries&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.username, username) || other.username == username));
-}
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ValidationValidationConditionalQueriesToJson(
+      this,
+    );
+  }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,userId,username);
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _ValidationValidationConditionalQueries &&
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.username, username) ||
+                other.username == username));
+  }
 
-@override
-String toString() {
-  return 'ValidationValidationConditionalQueries(userId: $userId, username: $username)';
-}
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, userId, username);
 
-
+  @override
+  String toString() {
+    return 'ValidationValidationConditionalQueries(userId: $userId, username: $username)';
+  }
 }
 
 /// @nodoc
-abstract mixin class _$ValidationValidationConditionalQueriesCopyWith<$Res> implements $ValidationValidationConditionalQueriesCopyWith<$Res> {
-  factory _$ValidationValidationConditionalQueriesCopyWith(_ValidationValidationConditionalQueries value, $Res Function(_ValidationValidationConditionalQueries) _then) = __$ValidationValidationConditionalQueriesCopyWithImpl;
-@override @useResult
-$Res call({
-@JsonKey(name: ValidationValidationConditionalQueries.userIdKey) int? userId,@JsonKey(name: ValidationValidationConditionalQueries.usernameKey) String? username
-});
-
-
-
-
+abstract mixin class _$ValidationValidationConditionalQueriesCopyWith<$Res>
+    implements $ValidationValidationConditionalQueriesCopyWith<$Res> {
+  factory _$ValidationValidationConditionalQueriesCopyWith(
+          _ValidationValidationConditionalQueries value,
+          $Res Function(_ValidationValidationConditionalQueries) _then) =
+      __$ValidationValidationConditionalQueriesCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: ValidationValidationConditionalQueries.userIdKey)
+      int? userId,
+      @JsonKey(name: ValidationValidationConditionalQueries.usernameKey)
+      String? username});
 }
+
 /// @nodoc
 class __$ValidationValidationConditionalQueriesCopyWithImpl<$Res>
     implements _$ValidationValidationConditionalQueriesCopyWith<$Res> {
@@ -139,17 +185,25 @@ class __$ValidationValidationConditionalQueriesCopyWithImpl<$Res>
   final _ValidationValidationConditionalQueries _self;
   final $Res Function(_ValidationValidationConditionalQueries) _then;
 
-/// Create a copy of ValidationValidationConditionalQueries
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? userId = freezed,Object? username = freezed,}) {
-  return _then(_ValidationValidationConditionalQueries(
-userId: freezed == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
-as int?,username: freezed == username ? _self.username : username // ignore: cast_nullable_to_non_nullable
-as String?,
-  ));
-}
-
-
+  /// Create a copy of ValidationValidationConditionalQueries
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? userId = freezed,
+    Object? username = freezed,
+  }) {
+    return _then(_ValidationValidationConditionalQueries(
+      userId: freezed == userId
+          ? _self.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      username: freezed == username
+          ? _self.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 // dart format on

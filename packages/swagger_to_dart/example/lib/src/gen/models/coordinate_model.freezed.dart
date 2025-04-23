@@ -12,79 +12,65 @@ part of 'coordinate_model.dart';
 
 // dart format off
 T _$identity<T>(T value) => value;
-CoordinateModel _$CoordinateModelFromJson(
-  Map<String, dynamic> json
-) {
-    return CoordinateModelFallback.fromJson(
-      json
-    );
+CoordinateModel _$CoordinateModelFromJson(Map<String, dynamic> json) {
+  return CoordinateModelFallback.fromJson(json);
 }
 
 /// @nodoc
 mixin _$CoordinateModel {
-
-
-
   /// Serializes this CoordinateModel to a JSON map.
   Map<String, dynamic> toJson();
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is CoordinateModel);
+  }
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CoordinateModel);
-}
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => runtimeType.hashCode;
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'CoordinateModel()';
-}
-
-
+  @override
+  String toString() {
+    return 'CoordinateModel()';
+  }
 }
 
 /// @nodoc
-class $CoordinateModelCopyWith<$Res>  {
-$CoordinateModelCopyWith(CoordinateModel _, $Res Function(CoordinateModel) __);
+class $CoordinateModelCopyWith<$Res> {
+  $CoordinateModelCopyWith(
+      CoordinateModel _, $Res Function(CoordinateModel) __);
 }
-
 
 /// @nodoc
 @JsonSerializable()
-
 class CoordinateModelFallback implements CoordinateModel {
   const CoordinateModelFallback();
-  factory CoordinateModelFallback.fromJson(Map<String, dynamic> json) => _$CoordinateModelFallbackFromJson(json);
+  factory CoordinateModelFallback.fromJson(Map<String, dynamic> json) =>
+      _$CoordinateModelFallbackFromJson(json);
 
+  @override
+  Map<String, dynamic> toJson() {
+    return _$CoordinateModelFallbackToJson(
+      this,
+    );
+  }
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is CoordinateModelFallback);
+  }
 
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => runtimeType.hashCode;
 
-@override
-Map<String, dynamic> toJson() {
-  return _$CoordinateModelFallbackToJson(this, );
+  @override
+  String toString() {
+    return 'CoordinateModel.fallback()';
+  }
 }
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CoordinateModelFallback);
-}
-
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'CoordinateModel.fallback()';
-}
-
-
-}
-
-
-
 
 // dart format on

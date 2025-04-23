@@ -15,49 +15,56 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$BodyFilesFileUpload {
+  /// file, File to upload
+  @JsonKey(name: BodyFilesFileUpload.fileKey)
+  MultipartFile get file;
 
-/// file, File to upload
-@JsonKey(name: BodyFilesFileUpload.fileKey) MultipartFile get file;/// Description, File description
-@JsonKey(name: BodyFilesFileUpload.descriptionKey) String? get description;
-/// Create a copy of BodyFilesFileUpload
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$BodyFilesFileUploadCopyWith<BodyFilesFileUpload> get copyWith => _$BodyFilesFileUploadCopyWithImpl<BodyFilesFileUpload>(this as BodyFilesFileUpload, _$identity);
+  /// Description, File description
+  @JsonKey(name: BodyFilesFileUpload.descriptionKey)
+  String? get description;
+
+  /// Create a copy of BodyFilesFileUpload
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $BodyFilesFileUploadCopyWith<BodyFilesFileUpload> get copyWith =>
+      _$BodyFilesFileUploadCopyWithImpl<BodyFilesFileUpload>(
+          this as BodyFilesFileUpload, _$identity);
 
   /// Serializes this BodyFilesFileUpload to a JSON map.
   Map<String, dynamic> toJson();
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is BodyFilesFileUpload &&
+            (identical(other.file, file) || other.file == file) &&
+            (identical(other.description, description) ||
+                other.description == description));
+  }
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is BodyFilesFileUpload&&(identical(other.file, file) || other.file == file)&&(identical(other.description, description) || other.description == description));
-}
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, file, description);
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,file,description);
-
-@override
-String toString() {
-  return 'BodyFilesFileUpload(file: $file, description: $description)';
-}
-
-
+  @override
+  String toString() {
+    return 'BodyFilesFileUpload(file: $file, description: $description)';
+  }
 }
 
 /// @nodoc
-abstract mixin class $BodyFilesFileUploadCopyWith<$Res>  {
-  factory $BodyFilesFileUploadCopyWith(BodyFilesFileUpload value, $Res Function(BodyFilesFileUpload) _then) = _$BodyFilesFileUploadCopyWithImpl;
-@useResult
-$Res call({
-@JsonKey(name: BodyFilesFileUpload.fileKey) MultipartFile file,@JsonKey(name: BodyFilesFileUpload.descriptionKey) String? description
-});
-
-
-
-
+abstract mixin class $BodyFilesFileUploadCopyWith<$Res> {
+  factory $BodyFilesFileUploadCopyWith(
+          BodyFilesFileUpload value, $Res Function(BodyFilesFileUpload) _then) =
+      _$BodyFilesFileUploadCopyWithImpl;
+  @useResult
+  $Res call(
+      {@JsonKey(name: BodyFilesFileUpload.fileKey) MultipartFile file,
+      @JsonKey(name: BodyFilesFileUpload.descriptionKey) String? description});
 }
+
 /// @nodoc
 class _$BodyFilesFileUploadCopyWithImpl<$Res>
     implements $BodyFilesFileUploadCopyWith<$Res> {
@@ -66,71 +73,98 @@ class _$BodyFilesFileUploadCopyWithImpl<$Res>
   final BodyFilesFileUpload _self;
   final $Res Function(BodyFilesFileUpload) _then;
 
-/// Create a copy of BodyFilesFileUpload
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? file = null,Object? description = freezed,}) {
-  return _then(_self.copyWith(
-file: null == file ? _self.file : file // ignore: cast_nullable_to_non_nullable
-as MultipartFile,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as String?,
-  ));
+  /// Create a copy of BodyFilesFileUpload
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? file = null,
+    Object? description = freezed,
+  }) {
+    return _then(_self.copyWith(
+      file: null == file
+          ? _self.file
+          : file // ignore: cast_nullable_to_non_nullable
+              as MultipartFile,
+      description: freezed == description
+          ? _self.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
-
-}
-
 
 /// @nodoc
 
 @JsonSerializable(converters: convertors)
 class _BodyFilesFileUpload extends BodyFilesFileUpload {
-  const _BodyFilesFileUpload({@JsonKey(name: BodyFilesFileUpload.fileKey) required this.file, @JsonKey(name: BodyFilesFileUpload.descriptionKey) required this.description}): super._();
-  factory _BodyFilesFileUpload.fromJson(Map<String, dynamic> json) => _$BodyFilesFileUploadFromJson(json);
+  const _BodyFilesFileUpload(
+      {@JsonKey(name: BodyFilesFileUpload.fileKey) required this.file,
+      @JsonKey(name: BodyFilesFileUpload.descriptionKey)
+      required this.description})
+      : super._();
+  factory _BodyFilesFileUpload.fromJson(Map<String, dynamic> json) =>
+      _$BodyFilesFileUploadFromJson(json);
 
-/// file, File to upload
-@override@JsonKey(name: BodyFilesFileUpload.fileKey) final  MultipartFile file;
-/// Description, File description
-@override@JsonKey(name: BodyFilesFileUpload.descriptionKey) final  String? description;
+  /// file, File to upload
+  @override
+  @JsonKey(name: BodyFilesFileUpload.fileKey)
+  final MultipartFile file;
 
-/// Create a copy of BodyFilesFileUpload
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$BodyFilesFileUploadCopyWith<_BodyFilesFileUpload> get copyWith => __$BodyFilesFileUploadCopyWithImpl<_BodyFilesFileUpload>(this, _$identity);
+  /// Description, File description
+  @override
+  @JsonKey(name: BodyFilesFileUpload.descriptionKey)
+  final String? description;
 
-@override
-Map<String, dynamic> toJson() {
-  return _$BodyFilesFileUploadToJson(this, );
-}
+  /// Create a copy of BodyFilesFileUpload
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$BodyFilesFileUploadCopyWith<_BodyFilesFileUpload> get copyWith =>
+      __$BodyFilesFileUploadCopyWithImpl<_BodyFilesFileUpload>(
+          this, _$identity);
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BodyFilesFileUpload&&(identical(other.file, file) || other.file == file)&&(identical(other.description, description) || other.description == description));
-}
+  @override
+  Map<String, dynamic> toJson() {
+    return _$BodyFilesFileUploadToJson(
+      this,
+    );
+  }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,file,description);
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _BodyFilesFileUpload &&
+            (identical(other.file, file) || other.file == file) &&
+            (identical(other.description, description) ||
+                other.description == description));
+  }
 
-@override
-String toString() {
-  return 'BodyFilesFileUpload(file: $file, description: $description)';
-}
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, file, description);
 
-
+  @override
+  String toString() {
+    return 'BodyFilesFileUpload(file: $file, description: $description)';
+  }
 }
 
 /// @nodoc
-abstract mixin class _$BodyFilesFileUploadCopyWith<$Res> implements $BodyFilesFileUploadCopyWith<$Res> {
-  factory _$BodyFilesFileUploadCopyWith(_BodyFilesFileUpload value, $Res Function(_BodyFilesFileUpload) _then) = __$BodyFilesFileUploadCopyWithImpl;
-@override @useResult
-$Res call({
-@JsonKey(name: BodyFilesFileUpload.fileKey) MultipartFile file,@JsonKey(name: BodyFilesFileUpload.descriptionKey) String? description
-});
-
-
-
-
+abstract mixin class _$BodyFilesFileUploadCopyWith<$Res>
+    implements $BodyFilesFileUploadCopyWith<$Res> {
+  factory _$BodyFilesFileUploadCopyWith(_BodyFilesFileUpload value,
+          $Res Function(_BodyFilesFileUpload) _then) =
+      __$BodyFilesFileUploadCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: BodyFilesFileUpload.fileKey) MultipartFile file,
+      @JsonKey(name: BodyFilesFileUpload.descriptionKey) String? description});
 }
+
 /// @nodoc
 class __$BodyFilesFileUploadCopyWithImpl<$Res>
     implements _$BodyFilesFileUploadCopyWith<$Res> {
@@ -139,17 +173,25 @@ class __$BodyFilesFileUploadCopyWithImpl<$Res>
   final _BodyFilesFileUpload _self;
   final $Res Function(_BodyFilesFileUpload) _then;
 
-/// Create a copy of BodyFilesFileUpload
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? file = null,Object? description = freezed,}) {
-  return _then(_BodyFilesFileUpload(
-file: null == file ? _self.file : file // ignore: cast_nullable_to_non_nullable
-as MultipartFile,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as String?,
-  ));
-}
-
-
+  /// Create a copy of BodyFilesFileUpload
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? file = null,
+    Object? description = freezed,
+  }) {
+    return _then(_BodyFilesFileUpload(
+      file: null == file
+          ? _self.file
+          : file // ignore: cast_nullable_to_non_nullable
+              as MultipartFile,
+      description: freezed == description
+          ? _self.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 // dart format on

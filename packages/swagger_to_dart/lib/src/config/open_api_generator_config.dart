@@ -44,14 +44,21 @@ class ImportConfig {
 
   final BaseConfig baseConfig;
 
-  String get importModelsCode {
-    return '''import 'package:${baseConfig.pubspec.name}/src/gen/models/models.dart';
-    ${baseConfig.pubspec.isFlutterProject ? "import 'package:flutter/material.dart';" : ''} 
-    ''';
+  List<String> get importModelsCode {
+    return [
+      'package:${baseConfig.pubspec.name}/src/gen/models/models.dart',
+      if (baseConfig.pubspec.isFlutterProject) 'package:flutter/material.dart',
+    ];
+    // return '''import 'package:${baseConfig.pubspec.name}/src/gen/models/models.dart';
+    // ${baseConfig.pubspec.isFlutterProject ? "import 'package:flutter/material.dart';" : ''}
+    // ''';
   }
 
-  String get importClientsCode {
-    return '''import 'package:${baseConfig.pubspec.name}/src/gen/clients/clients.dart';''';
+  List<String> get importClientsCode {
+    return [
+      'package:${baseConfig.pubspec.name}/src/gen/clients/clients.dart',
+    ];
+    // return '''import 'package:${baseConfig.pubspec.name}/src/gen/clients/clients.dart';''';
   }
 }
 

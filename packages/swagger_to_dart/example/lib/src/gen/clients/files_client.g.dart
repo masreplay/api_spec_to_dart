@@ -28,11 +28,11 @@ class _FilesClient implements FilesClient {
     _data.addAll(body.toJson());
     final _options = _setStreamType<HttpResponse<dynamic>>(
       Options(
-            method: 'POST',
-            headers: _headers,
-            extra: _extra,
-            contentType: 'application/x-www-form-urlencoded',
-          )
+        method: 'POST',
+        headers: _headers,
+        extra: _extra,
+        contentType: 'application/x-www-form-urlencoded',
+      )
           .compose(
             _dio.options,
             '/forms/basic',
@@ -57,11 +57,11 @@ class _FilesClient implements FilesClient {
     final _data = FormData.fromMap(body);
     final _options = _setStreamType<HttpResponse<dynamic>>(
       Options(
-            method: 'POST',
-            headers: _headers,
-            extra: _extra,
-            contentType: 'multipart/form-data',
-          )
+        method: 'POST',
+        headers: _headers,
+        extra: _extra,
+        contentType: 'multipart/form-data',
+      )
           .compose(
             _dio.options,
             '/files/upload',
@@ -86,11 +86,11 @@ class _FilesClient implements FilesClient {
     final _data = FormData.fromMap(body);
     final _options = _setStreamType<HttpResponse<dynamic>>(
       Options(
-            method: 'POST',
-            headers: _headers,
-            extra: _extra,
-            contentType: 'multipart/form-data',
-          )
+        method: 'POST',
+        headers: _headers,
+        extra: _extra,
+        contentType: 'multipart/form-data',
+      )
           .compose(
             _dio.options,
             '/files/multiple',

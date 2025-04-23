@@ -15,51 +15,67 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$LanguageModel {
+  /// Alpha2
+  @JsonKey(name: LanguageModel.alpha2Key)
+  String? get alpha2;
 
-/// Alpha2
-@JsonKey(name: LanguageModel.alpha2Key) String? get alpha2;/// Name
-@JsonKey(name: LanguageModel.nameKey) String? get name;/// Iso639 3
-@JsonKey(name: LanguageModel.iso6393Key) String? get iso6393;/// Iso639 5
-@JsonKey(name: LanguageModel.iso6395Key) String? get iso6395;
-/// Create a copy of LanguageModel
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$LanguageModelCopyWith<LanguageModel> get copyWith => _$LanguageModelCopyWithImpl<LanguageModel>(this as LanguageModel, _$identity);
+  /// Name
+  @JsonKey(name: LanguageModel.nameKey)
+  String? get name;
+
+  /// Iso639 3
+  @JsonKey(name: LanguageModel.iso6393Key)
+  String? get iso6393;
+
+  /// Iso639 5
+  @JsonKey(name: LanguageModel.iso6395Key)
+  String? get iso6395;
+
+  /// Create a copy of LanguageModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $LanguageModelCopyWith<LanguageModel> get copyWith =>
+      _$LanguageModelCopyWithImpl<LanguageModel>(
+          this as LanguageModel, _$identity);
 
   /// Serializes this LanguageModel to a JSON map.
   Map<String, dynamic> toJson();
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is LanguageModel &&
+            (identical(other.alpha2, alpha2) || other.alpha2 == alpha2) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.iso6393, iso6393) || other.iso6393 == iso6393) &&
+            (identical(other.iso6395, iso6395) || other.iso6395 == iso6395));
+  }
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LanguageModel&&(identical(other.alpha2, alpha2) || other.alpha2 == alpha2)&&(identical(other.name, name) || other.name == name)&&(identical(other.iso6393, iso6393) || other.iso6393 == iso6393)&&(identical(other.iso6395, iso6395) || other.iso6395 == iso6395));
-}
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, alpha2, name, iso6393, iso6395);
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,alpha2,name,iso6393,iso6395);
-
-@override
-String toString() {
-  return 'LanguageModel(alpha2: $alpha2, name: $name, iso6393: $iso6393, iso6395: $iso6395)';
-}
-
-
+  @override
+  String toString() {
+    return 'LanguageModel(alpha2: $alpha2, name: $name, iso6393: $iso6393, iso6395: $iso6395)';
+  }
 }
 
 /// @nodoc
-abstract mixin class $LanguageModelCopyWith<$Res>  {
-  factory $LanguageModelCopyWith(LanguageModel value, $Res Function(LanguageModel) _then) = _$LanguageModelCopyWithImpl;
-@useResult
-$Res call({
-@JsonKey(name: LanguageModel.alpha2Key) String? alpha2,@JsonKey(name: LanguageModel.nameKey) String? name,@JsonKey(name: LanguageModel.iso6393Key) String? iso6393,@JsonKey(name: LanguageModel.iso6395Key) String? iso6395
-});
-
-
-
-
+abstract mixin class $LanguageModelCopyWith<$Res> {
+  factory $LanguageModelCopyWith(
+          LanguageModel value, $Res Function(LanguageModel) _then) =
+      _$LanguageModelCopyWithImpl;
+  @useResult
+  $Res call(
+      {@JsonKey(name: LanguageModel.alpha2Key) String? alpha2,
+      @JsonKey(name: LanguageModel.nameKey) String? name,
+      @JsonKey(name: LanguageModel.iso6393Key) String? iso6393,
+      @JsonKey(name: LanguageModel.iso6395Key) String? iso6395});
 }
+
 /// @nodoc
 class _$LanguageModelCopyWithImpl<$Res>
     implements $LanguageModelCopyWith<$Res> {
@@ -68,77 +84,121 @@ class _$LanguageModelCopyWithImpl<$Res>
   final LanguageModel _self;
   final $Res Function(LanguageModel) _then;
 
-/// Create a copy of LanguageModel
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? alpha2 = freezed,Object? name = freezed,Object? iso6393 = freezed,Object? iso6395 = freezed,}) {
-  return _then(_self.copyWith(
-alpha2: freezed == alpha2 ? _self.alpha2 : alpha2 // ignore: cast_nullable_to_non_nullable
-as String?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String?,iso6393: freezed == iso6393 ? _self.iso6393 : iso6393 // ignore: cast_nullable_to_non_nullable
-as String?,iso6395: freezed == iso6395 ? _self.iso6395 : iso6395 // ignore: cast_nullable_to_non_nullable
-as String?,
-  ));
+  /// Create a copy of LanguageModel
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? alpha2 = freezed,
+    Object? name = freezed,
+    Object? iso6393 = freezed,
+    Object? iso6395 = freezed,
+  }) {
+    return _then(_self.copyWith(
+      alpha2: freezed == alpha2
+          ? _self.alpha2
+          : alpha2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: freezed == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      iso6393: freezed == iso6393
+          ? _self.iso6393
+          : iso6393 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      iso6395: freezed == iso6395
+          ? _self.iso6395
+          : iso6395 // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
-
-}
-
 
 /// @nodoc
 
 @JsonSerializable(converters: convertors)
 class _LanguageModel extends LanguageModel {
-  const _LanguageModel({@JsonKey(name: LanguageModel.alpha2Key) required this.alpha2, @JsonKey(name: LanguageModel.nameKey) required this.name, @JsonKey(name: LanguageModel.iso6393Key) required this.iso6393, @JsonKey(name: LanguageModel.iso6395Key) required this.iso6395}): super._();
-  factory _LanguageModel.fromJson(Map<String, dynamic> json) => _$LanguageModelFromJson(json);
+  const _LanguageModel(
+      {@JsonKey(name: LanguageModel.alpha2Key) required this.alpha2,
+      @JsonKey(name: LanguageModel.nameKey) required this.name,
+      @JsonKey(name: LanguageModel.iso6393Key) required this.iso6393,
+      @JsonKey(name: LanguageModel.iso6395Key) required this.iso6395})
+      : super._();
+  factory _LanguageModel.fromJson(Map<String, dynamic> json) =>
+      _$LanguageModelFromJson(json);
 
-/// Alpha2
-@override@JsonKey(name: LanguageModel.alpha2Key) final  String? alpha2;
-/// Name
-@override@JsonKey(name: LanguageModel.nameKey) final  String? name;
-/// Iso639 3
-@override@JsonKey(name: LanguageModel.iso6393Key) final  String? iso6393;
-/// Iso639 5
-@override@JsonKey(name: LanguageModel.iso6395Key) final  String? iso6395;
+  /// Alpha2
+  @override
+  @JsonKey(name: LanguageModel.alpha2Key)
+  final String? alpha2;
 
-/// Create a copy of LanguageModel
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$LanguageModelCopyWith<_LanguageModel> get copyWith => __$LanguageModelCopyWithImpl<_LanguageModel>(this, _$identity);
+  /// Name
+  @override
+  @JsonKey(name: LanguageModel.nameKey)
+  final String? name;
 
-@override
-Map<String, dynamic> toJson() {
-  return _$LanguageModelToJson(this, );
-}
+  /// Iso639 3
+  @override
+  @JsonKey(name: LanguageModel.iso6393Key)
+  final String? iso6393;
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LanguageModel&&(identical(other.alpha2, alpha2) || other.alpha2 == alpha2)&&(identical(other.name, name) || other.name == name)&&(identical(other.iso6393, iso6393) || other.iso6393 == iso6393)&&(identical(other.iso6395, iso6395) || other.iso6395 == iso6395));
-}
+  /// Iso639 5
+  @override
+  @JsonKey(name: LanguageModel.iso6395Key)
+  final String? iso6395;
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,alpha2,name,iso6393,iso6395);
+  /// Create a copy of LanguageModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$LanguageModelCopyWith<_LanguageModel> get copyWith =>
+      __$LanguageModelCopyWithImpl<_LanguageModel>(this, _$identity);
 
-@override
-String toString() {
-  return 'LanguageModel(alpha2: $alpha2, name: $name, iso6393: $iso6393, iso6395: $iso6395)';
-}
+  @override
+  Map<String, dynamic> toJson() {
+    return _$LanguageModelToJson(
+      this,
+    );
+  }
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _LanguageModel &&
+            (identical(other.alpha2, alpha2) || other.alpha2 == alpha2) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.iso6393, iso6393) || other.iso6393 == iso6393) &&
+            (identical(other.iso6395, iso6395) || other.iso6395 == iso6395));
+  }
 
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, alpha2, name, iso6393, iso6395);
+
+  @override
+  String toString() {
+    return 'LanguageModel(alpha2: $alpha2, name: $name, iso6393: $iso6393, iso6395: $iso6395)';
+  }
 }
 
 /// @nodoc
-abstract mixin class _$LanguageModelCopyWith<$Res> implements $LanguageModelCopyWith<$Res> {
-  factory _$LanguageModelCopyWith(_LanguageModel value, $Res Function(_LanguageModel) _then) = __$LanguageModelCopyWithImpl;
-@override @useResult
-$Res call({
-@JsonKey(name: LanguageModel.alpha2Key) String? alpha2,@JsonKey(name: LanguageModel.nameKey) String? name,@JsonKey(name: LanguageModel.iso6393Key) String? iso6393,@JsonKey(name: LanguageModel.iso6395Key) String? iso6395
-});
-
-
-
-
+abstract mixin class _$LanguageModelCopyWith<$Res>
+    implements $LanguageModelCopyWith<$Res> {
+  factory _$LanguageModelCopyWith(
+          _LanguageModel value, $Res Function(_LanguageModel) _then) =
+      __$LanguageModelCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: LanguageModel.alpha2Key) String? alpha2,
+      @JsonKey(name: LanguageModel.nameKey) String? name,
+      @JsonKey(name: LanguageModel.iso6393Key) String? iso6393,
+      @JsonKey(name: LanguageModel.iso6395Key) String? iso6395});
 }
+
 /// @nodoc
 class __$LanguageModelCopyWithImpl<$Res>
     implements _$LanguageModelCopyWith<$Res> {
@@ -147,19 +207,35 @@ class __$LanguageModelCopyWithImpl<$Res>
   final _LanguageModel _self;
   final $Res Function(_LanguageModel) _then;
 
-/// Create a copy of LanguageModel
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? alpha2 = freezed,Object? name = freezed,Object? iso6393 = freezed,Object? iso6395 = freezed,}) {
-  return _then(_LanguageModel(
-alpha2: freezed == alpha2 ? _self.alpha2 : alpha2 // ignore: cast_nullable_to_non_nullable
-as String?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String?,iso6393: freezed == iso6393 ? _self.iso6393 : iso6393 // ignore: cast_nullable_to_non_nullable
-as String?,iso6395: freezed == iso6395 ? _self.iso6395 : iso6395 // ignore: cast_nullable_to_non_nullable
-as String?,
-  ));
-}
-
-
+  /// Create a copy of LanguageModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? alpha2 = freezed,
+    Object? name = freezed,
+    Object? iso6393 = freezed,
+    Object? iso6395 = freezed,
+  }) {
+    return _then(_LanguageModel(
+      alpha2: freezed == alpha2
+          ? _self.alpha2
+          : alpha2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: freezed == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      iso6393: freezed == iso6393
+          ? _self.iso6393
+          : iso6393 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      iso6395: freezed == iso6395
+          ? _self.iso6395
+          : iso6395 // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 // dart format on

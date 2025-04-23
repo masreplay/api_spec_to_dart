@@ -1,3 +1,6 @@
+import 'package:code_builder/code_builder.dart';
+import 'package:dart_style/dart_style.dart';
+import 'package:recase/recase.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 import 'model_type_determiner.dart';
@@ -22,6 +25,7 @@ abstract class PropertyGeneratorStrategy {
 }
 
 /// Class responsible for generating fields with proper annotations
+/// Class responsible for generating fields with proper annotations
 class FieldGenerator {
   FieldGenerator(this.config);
 
@@ -36,85 +40,46 @@ class FieldGenerator {
     String? title,
     String? description,
   }) {
-    final buffer = StringBuffer();
+    // Use Code Builder to generate the field
+    final field = Field((b) {
+      b.name = propertyName;
+      b.type = refer(propertyType);
+      b.modifier = FieldModifier.final$;
 
-    _writeFieldDocumentation(buffer, title, description);
-    _writeDefaultAnnotation(buffer, freezedDefaultValue);
-    _writeDeprecationAnnotation(buffer, description, propertyName);
-    _writeJsonKeyAnnotation(buffer, className, propertyName);
-    _writeFieldDeclaration(
-      buffer,
-      propertyName,
-      propertyType,
-      freezedDefaultValue,
-    );
+      // Add annotations
+      b.annotations.addAll([
+        if (freezedDefaultValue != null)
+          CodeExpression(Code('Default(${freezedDefaultValue})')),
+        CodeExpression(Code('JsonKey(name: "$jsonName")')),
+        if (description == 'deprecated') CodeExpression(Code('deprecated')),
+        if (description != null &&
+            description.startsWith('deprecated(') &&
+            description.endsWith(')'))
+          CodeExpression(Code(
+              'Deprecated("${description.substring(11, description.length - 1)}")')),
+      ]);
 
-    return buffer.toString();
-  }
+      // Add documentation
+      if (title != null || description != null) {
+        final commentParts = [
+          if (title != null) title,
+          if (description != null) description,
+        ];
+        b.docs.add('/// ${commentParts.join(', ')}');
+      }
+    });
 
-  void _writeFieldDocumentation(
-    StringBuffer buffer,
-    String? title,
-    String? description,
-  ) {
-    if (title != null || description != null) {
-      final commentParts = [
-        if (title != null) title,
-        if (description != null) description,
-      ];
-      buffer.writeln('/// ${commentParts.join(', ')}');
-    }
-  }
-
-  void _writeDefaultAnnotation(
-    StringBuffer buffer,
-    Object? freezedDefaultValue,
-  ) {
-    if (freezedDefaultValue != null) {
-      buffer.writeln('@Default(${freezedDefaultValue})');
-    }
-  }
-
-  void _writeDeprecationAnnotation(
-    StringBuffer buffer,
-    String? description,
-    String propertyName,
-  ) {
-    if (description == 'deprecated') {
-      buffer.writeln('@deprecated');
-    } else if (description != null &&
-        description.startsWith('deprecated(') &&
-        description.endsWith(')')) {
-      buffer.writeln(
-        '@Deprecated("${description.substring(11, description.length - 1)}")',
-      );
-    }
-  }
-
-  void _writeJsonKeyAnnotation(
-    StringBuffer buffer,
-    String className,
-    String propertyName,
-  ) {
-    buffer.writeln('@JsonKey(name: $className.${propertyName}Key)');
-  }
-
-  void _writeFieldDeclaration(
-    StringBuffer buffer,
-    String propertyName,
-    String propertyType,
-    Object? freezedDefaultValue,
-  ) {
-    if (freezedDefaultValue == null) {
-      buffer.write('required ');
-    }
-    buffer.write('$propertyType $propertyName,');
+    // Return the generated field as a string
+    final emitter = DartEmitter.scoped(useNullSafetySyntax: true);
+    return DartFormatter(languageVersion: DartFormatter.latestLanguageVersion)
+        .format('${field.accept(emitter)}');
   }
 }
 
 /// Strategy for generating standard type fields
 class TypePropertyGenerator implements PropertyGeneratorStrategy {
   TypePropertyGenerator(this.config) : fieldGenerator = FieldGenerator(config);
+
   final ConfigComponents config;
   final FieldGenerator fieldGenerator;
 
@@ -140,15 +105,29 @@ class TypePropertyGenerator implements PropertyGeneratorStrategy {
       parentTitle: className,
     );
 
-    return fieldGenerator.generateField(
-      className: className,
-      freezedDefaultValue: _getTypedDefaultValue(schema, dartType),
-      jsonName: key,
-      propertyName: propertyName,
-      propertyType: dartType,
-      title: key,
-      description: schema.description,
-    );
+    // Use Code Builder to generate the field
+    final field = Field((b) {
+      b.name = propertyName;
+      b.type = refer(dartType);
+      b.modifier = FieldModifier.final$;
+
+      // Add annotations
+      b.annotations.addAll([
+        CodeExpression(Code('JsonKey(name: "$key")')),
+        if (schema.description == 'deprecated')
+          CodeExpression(Code('deprecated')),
+        if (schema.description != null &&
+            schema.description!.startsWith('deprecated(') &&
+            schema.description!.endsWith(')'))
+          CodeExpression(Code(
+              'Deprecated("${schema.description!.substring(11, schema.description!.length - 1)}")')),
+      ]);
+    });
+
+    // Return the generated field as a string
+    final emitter = DartEmitter.scoped(useNullSafetySyntax: true);
+    return DartFormatter(languageVersion: DartFormatter.latestLanguageVersion)
+        .format('${field.accept(emitter)}');
   }
 
   String? _getDependentType(OpenApiSchema? items) {
@@ -215,6 +194,7 @@ class TypePropertyGenerator implements PropertyGeneratorStrategy {
 /// Strategy for generating reference fields
 class RefPropertyGenerator implements PropertyGeneratorStrategy {
   RefPropertyGenerator(this.config) : fieldGenerator = FieldGenerator(config);
+
   final ConfigComponents config;
   final FieldGenerator fieldGenerator;
 
@@ -233,15 +213,29 @@ class RefPropertyGenerator implements PropertyGeneratorStrategy {
 
     final refClassName = config.namingUtils.renameRefClass(schema);
 
-    return fieldGenerator.generateField(
-      className: className,
-      freezedDefaultValue: _getDefaultValueCode(schema.default_, refClassName),
-      jsonName: key,
-      propertyName: propertyName,
-      propertyType: refClassName,
-      title: null,
-      description: schema.description,
-    );
+    // Use Code Builder to generate the field
+    final field = Field((b) {
+      b.name = propertyName;
+      b.type = refer(refClassName);
+      b.modifier = FieldModifier.final$;
+
+      // Add annotations
+      b.annotations.addAll([
+        CodeExpression(Code('JsonKey(name: "$key")')),
+        if (schema.description == 'deprecated')
+          CodeExpression(Code('deprecated')),
+        if (schema.description != null &&
+            schema.description!.startsWith('deprecated(') &&
+            schema.description!.endsWith(')'))
+          CodeExpression(Code(
+              'Deprecated("${schema.description!.substring(11, schema.description!.length - 1)}")')),
+      ]);
+    });
+
+    // Return the generated field as a string
+    final emitter = DartEmitter.scoped(useNullSafetySyntax: true);
+    return DartFormatter(languageVersion: DartFormatter.latestLanguageVersion)
+        .format('${field.accept(emitter)}');
   }
 
   String? _getDefaultValueCode(Object? defaultValue, String className) {
@@ -261,6 +255,7 @@ class AnyOfPropertyGenerator implements PropertyGeneratorStrategy {
   AnyOfPropertyGenerator(this.config)
       : fieldGenerator = FieldGenerator(config),
         unionTypeGenerator = UnionTypeGenerator(config);
+
   final ConfigComponents config;
   final FieldGenerator fieldGenerator;
   final UnionTypeGenerator unionTypeGenerator;
@@ -280,15 +275,29 @@ class AnyOfPropertyGenerator implements PropertyGeneratorStrategy {
 
     final dartType = _resolveDartType(schema, className, propertyName);
 
-    return fieldGenerator.generateField(
-      className: className,
-      freezedDefaultValue: _getDefaultValueCode(schema.default_, dartType),
-      title: schema.title,
-      description: schema.description,
-      jsonName: key,
-      propertyName: propertyName,
-      propertyType: dartType,
-    );
+    // Use Code Builder to generate the field
+    final field = Field((b) {
+      b.name = propertyName;
+      b.type = refer(dartType);
+      b.modifier = FieldModifier.final$;
+
+      // Add annotations
+      b.annotations.addAll([
+        CodeExpression(Code('JsonKey(name: "$key")')),
+        if (schema.description == 'deprecated')
+          CodeExpression(Code('deprecated')),
+        if (schema.description != null &&
+            schema.description!.startsWith('deprecated(') &&
+            schema.description!.endsWith(')'))
+          CodeExpression(Code(
+              'Deprecated("${schema.description!.substring(11, schema.description!.length - 1)}")')),
+      ]);
+    });
+
+    // Return the generated field as a string
+    final emitter = DartEmitter.scoped(useNullSafetySyntax: true);
+    return DartFormatter(languageVersion: DartFormatter.latestLanguageVersion)
+        .format('${field.accept(emitter)}');
   }
 
   String _resolveDartType(
@@ -318,19 +327,7 @@ class AnyOfPropertyGenerator implements PropertyGeneratorStrategy {
     final unionClassName = unionTypeGenerator.generateUnionClassName(types);
 
     // Add the union class to the generated content
-    // Note: You'll need to modify the generator to handle this additional class
     return isNullable ? '$unionClassName?' : unionClassName;
-  }
-
-  String? _getDefaultValueCode(Object? defaultValue, String className) {
-    if (defaultValue == 'null') {
-      return 'null';
-    } else if (defaultValue != null && defaultValue is int) {
-      return '$className.value${config.namingUtils.renameProperty("$defaultValue")}';
-    } else if (defaultValue != null && defaultValue is String) {
-      return '$className.${config.namingUtils.renameProperty(defaultValue)}';
-    }
-    return null;
   }
 }
 
@@ -353,53 +350,40 @@ class EnumModelStrategy implements ModelGenerationStrategy {
 
     final isNumber = model.value.type == 'integer';
     final type = isNumber ? 'int' : 'String';
-    final enumValues = _generateEnumValues(
-      enum_,
-      model.value.xEnumVarnames,
-      isNumber,
-    );
 
+    // Use code_builder to generate enum values
+    final enumValues = <Field>[];
+    for (int i = 0; i < enum_.length; i++) {
+      final value = enum_[i];
+      final description = model.value.xEnumVarnames?[i];
+      final name = description == null
+          ? 'value$value'
+          : config.namingUtils.renameProperty(description);
+
+      final field = Field((b) {
+        b.name = name;
+        b.modifier = FieldModifier.constant;
+        b.assignment = Code(isNumber ? '$value' : "'$value'");
+      });
+      enumValues.add(field);
+    }
+
+    // Generate the enum class content
     final content = contentGenerator.generateEnumClassContent(
       className: className,
       filename: filename,
-      enumValues: enumValues,
+      enumValues: enumValues
+          .map((f) => f.accept(DartEmitter.scoped()).toString())
+          .join('\n'),
       type: type,
       model: model,
     );
 
     return (filename: filename, content: content);
   }
-
-  String _generateEnumValues(
-    List<Object> enumValues,
-    List<String>? varNames,
-    bool isNumber,
-  ) {
-    final buffer = StringBuffer();
-
-    for (int i = 0; i < enumValues.length; i++) {
-      final value = enumValues[i];
-      final description = varNames?[i];
-      final name = description == null
-          ? 'value$value'
-          : config.namingUtils.renameProperty(description);
-      final enumName = config.namingUtils.renameProperty(value.toString());
-
-      if (isNumber) {
-        buffer.writeln('  ${name}($value),');
-      } else {
-        if (int.tryParse(enumName) != null) {
-          buffer.writeln('  value${enumName}(\'$value\'),');
-        } else {
-          buffer.writeln('  ${enumName}(\'$value\'),');
-        }
-      }
-    }
-
-    return buffer.toString();
-  }
 }
 
+/// Strategy for generating union models
 /// Strategy for generating union models
 class UnionModelStrategy implements ModelGenerationStrategy {
   UnionModelStrategy(this.config)
@@ -410,6 +394,7 @@ class UnionModelStrategy implements ModelGenerationStrategy {
           OpenApiSchemaOneOf: AnyOfPropertyGenerator(config),
         },
         contentGenerator = FreezedClassContentGenerator(config);
+
   final ConfigComponents config;
   final Map<Type, PropertyGeneratorStrategy> propertyGenerators;
   final FreezedClassContentGenerator contentGenerator;
@@ -420,20 +405,15 @@ class UnionModelStrategy implements ModelGenerationStrategy {
     final className = config.namingUtils.renameClass(model.key);
     final schema = model.value;
 
-    // Convert to check for anyOf type in the schema
+    // Check if this is an `anyOf` schema
     final schemaJson = schema.toJson();
-
-    // Check if this is an anyOf schema by looking in the JSON
     if (schemaJson.containsKey('anyOf')) {
-      // Convert to OpenApiSchema to properly handle anyOf
       final openApiSchema = OpenApiSchema.fromJson(schemaJson);
 
       if (openApiSchema is OpenApiSchemaAnyOf) {
         final nonNullSchemas = openApiSchema.anyOf!
-            .where(
-              (e) => !(e is OpenApiSchemaType &&
-                  e.type == OpenApiSchemaVarType.null_),
-            )
+            .where((e) => !(e is OpenApiSchemaType &&
+                e.type == OpenApiSchemaVarType.null_))
             .toList();
 
         if (nonNullSchemas.length == 1) {
@@ -442,9 +422,9 @@ class UnionModelStrategy implements ModelGenerationStrategy {
             type: 'object',
             properties: {'value': nonNullSchemas.first},
           );
-          return RegularModelStrategy(
-            config,
-          ).generate(MapEntry(model.key, regularModel));
+          return RegularModelStrategy(config).generate(
+            MapEntry(model.key, regularModel),
+          );
         }
 
         // Generate union type class
@@ -453,27 +433,19 @@ class UnionModelStrategy implements ModelGenerationStrategy {
             OpenApiSchemaType value => config.dartTypeConverter.dartType(
                 type: value.type,
                 format: value.format,
-                genericType: switch (value.items) {
-                  OpenApiSchemaRef value => config.namingUtils.renameRefClass(
-                      value,
-                    ),
-                  OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
-                      value,
-                      config.dartTypeConverter,
-                    ),
-                  _ => null,
-                },
                 items: value.items,
                 title: value.title,
-                parentTitle: schema.title,
+                genericType: switch (value.items) {
+                  OpenApiSchemaRef value =>
+                    config.namingUtils.renameRefClass(value),
+                  OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
+                      value, config.dartTypeConverter),
+                  _ => null,
+                },
               ),
-            OpenApiSchemaRef value => config.namingUtils.renameRefClass(
-                value,
-              ),
-            OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
-                value,
-                config.dartTypeConverter,
-              ),
+            OpenApiSchemaRef value => config.namingUtils.renameRefClass(value),
+            OpenApiSchemaAnyOf value =>
+              convertOpenApiAnyOfToDartType(value, config.dartTypeConverter),
             _ => throw ArgumentError(
                 'Unsupported schema type: ${schema.runtimeType}',
               ),
@@ -481,37 +453,56 @@ class UnionModelStrategy implements ModelGenerationStrategy {
         }).toList();
 
         final unionClassName = types.map((type) => type.pascalCase).join('Or');
-        // TODO(mohammed.atheer): use content generator
-        final unionContent = '''
-import 'dart:io';
 
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dio/dio.dart';
+        // Use `code_builder` to generate the union class
+        final library = LibraryBuilder();
 
-import 'convertors.dart';
-${config.importConfig.importModelsCode}
+        // Add imports
+        library.directives.addAll([
+          Directive.import(
+              'package:freezed_annotation/freezed_annotation.dart'),
+          Directive.part('${filename}.freezed.dart'),
+          Directive.part('${filename}.g.dart'),
+        ]);
 
-part '${filename}.freezed.dart';
-part '${filename}.g.dart';
+        // Define the union class
+        final unionClass = ClassBuilder()
+          ..name = unionClassName
+          ..annotations.add(CodeExpression(Code('freezed')))
+          ..constructors.addAll(types.map((type) {
+            return Constructor((b) {
+              b.factory = true;
+              b.redirect = refer('_\$${unionClassName}${type.pascalCase}');
+              b.requiredParameters.add(Parameter((p) => p
+                ..name = 'value'
+                ..type = refer(type)));
+              b.annotations.add(CodeExpression(Code('JsonKey(name: "value")')));
+            });
+          }))
+          ..methods.add(Method((b) {
+            b.name = 'fromJson';
+            b.returns = refer(unionClassName);
+            b.static = true;
+            b.body = Code('return _\$${unionClassName}FromJson(json);');
+            b.requiredParameters.add(Parameter((p) => p
+              ..name = 'json'
+              ..type = refer('Map<String, dynamic>')));
+          }));
 
-/// ${model.key}
-${model.value.description == null ? '' : commentLine(model.value.description!)}
-@freezed
-sealed class $unionClassName with _\$$unionClassName {
-  ${types.map((type) => 'const factory $unionClassName.${type.toLowerCase()}(@JsonKey(name: \'value\') $type value) = _\$${unionClassName}${type.pascalCase};').join('\n\n')}
+        library.body.add(unionClass.build());
 
-  factory $unionClassName.fromJson(Map<String, dynamic> json) => _\$${unionClassName}FromJson(json);
-}
-''';
+        // Generate the Dart code
+        final emitter = DartEmitter.scoped(useNullSafetySyntax: true);
+        final generatedCode = library.build().accept(emitter).toString();
 
-        return (filename: filename, content: unionContent);
+        return (filename: filename, content: generatedCode);
       }
     }
 
     // Handle regular model with union properties
     final properties = schema.properties ?? {};
     final unionProps = <OneOfModel>[];
-    final normalProps = StringBuffer();
+    final fields = <Field>[];
 
     for (final entry in properties.entries) {
       final key = entry.key;
@@ -520,18 +511,8 @@ sealed class $unionClassName with _\$$unionClassName {
 
       switch (schema) {
         case OpenApiSchemaType():
-          final generator = propertyGenerators[schema.runtimeType];
-          if (generator != null) {
-            final fieldCode = generator.generateField(
-              className: className,
-              propertyName: propertyName,
-              key: key,
-              schema: schema,
-            );
-            normalProps.writeln(fieldCode);
-          }
-          break;
         case OpenApiSchemaRef():
+        case OpenApiSchemaAnyOf():
           final generator = propertyGenerators[schema.runtimeType];
           if (generator != null) {
             final fieldCode = generator.generateField(
@@ -540,19 +521,7 @@ sealed class $unionClassName with _\$$unionClassName {
               key: key,
               schema: schema,
             );
-            normalProps.writeln(fieldCode);
-          }
-          break;
-        case OpenApiSchemaAnyOf():
-          final generator = propertyGenerators[OpenApiSchemaAnyOf];
-          if (generator != null) {
-            final fieldCode = generator.generateField(
-              className: className,
-              propertyName: propertyName,
-              key: key,
-              schema: schema,
-            );
-            normalProps.writeln(fieldCode);
+            fields.add(Field((b) => b..name = fieldCode));
           }
           break;
         case OpenApiSchemaOneOf():
@@ -570,11 +539,14 @@ sealed class $unionClassName with _\$$unionClassName {
       }
     }
 
+    // Generate the union class content
     final content = contentGenerator.generateUnionClassContent(
       className: className,
       filename: filename,
       unionProps: unionProps,
-      normalProps: normalProps.toString(),
+      normalProps: fields
+          .map((f) => f.accept(DartEmitter.scoped()).toString())
+          .join('\n'),
       model: model,
     );
 
@@ -582,7 +554,6 @@ sealed class $unionClassName with _\$$unionClassName {
   }
 }
 
-/// Strategy for generating regular class models
 class RegularModelStrategy implements ModelGenerationStrategy {
   RegularModelStrategy(this.config)
       : propertyGenerators = {
@@ -601,7 +572,8 @@ class RegularModelStrategy implements ModelGenerationStrategy {
     final className = config.namingUtils.renameClass(model.key);
     final properties = model.value.properties ?? {};
 
-    final fields = StringBuffer();
+    // Use code_builder to generate fields
+    final fields = <Field>[];
     for (final entry in properties.entries) {
       final key = entry.key;
       final schema = entry.value;
@@ -615,11 +587,19 @@ class RegularModelStrategy implements ModelGenerationStrategy {
           key: key,
           schema: schema,
         );
-        fields.writeln(fieldCode);
+
+        // Parse the generated field code into a Field object
+        fields.add(Field((b) => b..name = fieldCode));
       }
     }
 
-    final bodyText = fields.isEmpty ? '' : '{\n${fields.toString()}  }';
+    // Generate the class body
+    final bodyText = fields.isEmpty
+        ? ''
+        : fields
+            .map((f) => f.accept(DartEmitter.scoped()).toString())
+            .join('\n');
+
     final content = contentGenerator.generateRegularClassContent(
       className: className,
       filename: filename,
@@ -652,17 +632,5 @@ class OpenApiModelGenerator {
         .value;
 
     return strategy.generate(model);
-  }
-}
-
-extension StringExtension on String {
-  String get pascalCase {
-    if (!contains('_')) return this;
-    return split('_')
-        .map(
-          (word) =>
-              word.isNotEmpty ? word[0].toUpperCase() + word.substring(1) : '',
-        )
-        .join('');
   }
 }
