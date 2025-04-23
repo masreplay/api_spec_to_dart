@@ -1,3 +1,7 @@
+## 1.5.2
+
+- Add support to union params by @Shahad-999
+
 ## 1.5.1
 
 - Fix union feezed class generation with `abstract` instead of `sealed`
