@@ -105,7 +105,7 @@ class FreezedClassContentGenerator {
   }
 
   void _writeUnionClassDeclaration(StringBuffer buffer, String className) {
-    buffer.writeln('@freezed');
+    buffer.writeln('@Freezed(fallbackUnion: "fallback")');
     buffer.writeln('sealed class $className with _\$$className {');
   }
 
@@ -144,7 +144,9 @@ class FreezedClassContentGenerator {
   ) {
     if (!unionProps.any((e) => e.unionName == 'fallback')) {
       buffer.writeln(
-        ' @JsonSerializable(converters: convertors) @FreezedUnionValue("fallback") const factory $className.fallback() = ${className}Fallback;',
+        ''' @JsonSerializable(converters: convertors) 
+        @FreezedUnionValue("fallback") 
+        const factory $className.fallback() = ${className}Fallback;''',
       );
       buffer.writeln();
     }
