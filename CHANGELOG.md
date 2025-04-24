@@ -1,3 +1,7 @@
+## 1.5.3
+
+- fix fallbacks
+
 ## 1.5.1
 
 - Fix union feezed class generation with `abstract` instead of `sealed`
