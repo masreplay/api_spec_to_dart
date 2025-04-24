@@ -1,13 +1,19 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:dart_style/dart_style.dart';
 import 'package:recase/recase.dart';
+import 'package:collection/collection.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 import 'model_type_determiner.dart';
 
 /// Type definitions to improve code readability
 typedef OpenApiModel = MapEntry<String, OpenApiSchemas>;
-typedef OneOfModel = ({String type, String key, String unionName});
+typedef OneOfModel = ({
+  String type,
+  String key,
+  String unionName,
+  OpenApiSchemaOneOf model,
+});
 
 /// Interface for the model generation strategy
 abstract class ModelGenerationStrategy {
@@ -24,7 +30,6 @@ abstract class PropertyGeneratorStrategy {
   });
 }
 
-/// Class responsible for generating fields with proper annotations
 /// Class responsible for generating fields with proper annotations
 class FieldGenerator {
   FieldGenerator(this.config);
@@ -79,7 +84,6 @@ class FieldGenerator {
 /// Strategy for generating standard type fields
 class TypePropertyGenerator implements PropertyGeneratorStrategy {
   TypePropertyGenerator(this.config) : fieldGenerator = FieldGenerator(config);
-
   final ConfigComponents config;
   final FieldGenerator fieldGenerator;
 
@@ -194,7 +198,6 @@ class TypePropertyGenerator implements PropertyGeneratorStrategy {
 /// Strategy for generating reference fields
 class RefPropertyGenerator implements PropertyGeneratorStrategy {
   RefPropertyGenerator(this.config) : fieldGenerator = FieldGenerator(config);
-
   final ConfigComponents config;
   final FieldGenerator fieldGenerator;
 
@@ -531,7 +534,8 @@ class UnionModelStrategy implements ModelGenerationStrategy {
                 type: config.namingUtils
                     .renameClass(mapping.value.split('/').last),
                 key: key,
-                unionName: mapping.key,
+                unionName: propertyName,
+                model: schema,
               ),
             );
           }
@@ -554,6 +558,7 @@ class UnionModelStrategy implements ModelGenerationStrategy {
   }
 }
 
+/// Strategy for generating regular class models
 class RegularModelStrategy implements ModelGenerationStrategy {
   RegularModelStrategy(this.config)
       : propertyGenerators = {
