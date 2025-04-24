@@ -43,7 +43,7 @@ class ImportConfig {
   const ImportConfig({required this.baseConfig});
 
   final BaseConfig baseConfig;
-
+  
   List<String> get importModelsCode {
     return [
       'package:${baseConfig.pubspec.name}/src/gen/models/models.dart',
@@ -58,7 +58,6 @@ class ImportConfig {
     return [
       'package:${baseConfig.pubspec.name}/src/gen/clients/clients.dart',
     ];
-    // return '''import 'package:${baseConfig.pubspec.name}/src/gen/clients/clients.dart';''';
   }
 }
 
