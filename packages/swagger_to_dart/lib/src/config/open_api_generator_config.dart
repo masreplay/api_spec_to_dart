@@ -44,14 +44,20 @@ class ImportConfig {
 
   final BaseConfig baseConfig;
 
+  // The output directory for the generated code
+  // Example: 'lib/src/gen' will be replaced with '/src/gen'
+  String get _outputDirectory {
+    return baseConfig.swaggerToDart.outputDirectory.replaceFirst('lib', '');
+  }
+
   String get importModelsCode {
-    return '''import 'package:${baseConfig.pubspec.name}/src/gen/models/models.dart';
+    return '''import 'package:${baseConfig.pubspec.name + _outputDirectory}/models/models.dart';
     ${baseConfig.pubspec.isFlutterProject ? "import 'package:flutter/material.dart';" : ''} 
     ''';
   }
 
   String get importClientsCode {
-    return '''import 'package:${baseConfig.pubspec.name}/src/gen/clients/clients.dart';''';
+    return '''import 'package:${baseConfig.pubspec.name + _outputDirectory}/clients/clients.dart';''';
   }
 }
 
