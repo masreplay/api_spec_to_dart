@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:swagger_to_dart/src/generator/freezed_class_content_generator.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 import 'model_type_determiner.dart';
@@ -342,10 +343,9 @@ class AnyOfPropertyGenerator implements PropertyGeneratorStrategy {
 
 /// Strategy for generating enum models
 class EnumModelStrategy implements ModelGenerationStrategy {
-  EnumModelStrategy(this.config)
-      : contentGenerator = FreezedClassContentGenerator(config);
+  EnumModelStrategy(this.config) : _freezedGenerator = FreezedClassCodeBuilder();
   final ConfigComponents config;
-  final FreezedClassContentGenerator contentGenerator;
+  final FreezedClassCodeBuilder _freezedGenerator;
 
   @override
   ({String filename, String content}) generate(OpenApiModel model) {
@@ -365,7 +365,7 @@ class EnumModelStrategy implements ModelGenerationStrategy {
       isNumber,
     );
 
-    final content = contentGenerator.generateEnumClassContent(
+    final content = _freezedGenerator.generateEnumClassContent(
       className: className,
       filename: filename,
       enumValues: enumValues,
@@ -415,10 +415,10 @@ class UnionModelStrategy implements ModelGenerationStrategy {
           OpenApiSchemaAnyOf: AnyOfPropertyGenerator(config),
           OpenApiSchemaOneOf: AnyOfPropertyGenerator(config),
         },
-        contentGenerator = FreezedClassContentGenerator(config);
+        contentGenerator = FreezedClassCodeBuilder(config);
   final ConfigComponents config;
   final Map<Type, PropertyGeneratorStrategy> propertyGenerators;
-  final FreezedClassContentGenerator contentGenerator;
+  final FreezedClassCodeBuilder contentGenerator;
 
   @override
   ({String filename, String content}) generate(OpenApiModel model) {
@@ -618,10 +618,10 @@ class RegularModelStrategy implements ModelGenerationStrategy {
           OpenApiSchemaRef: RefPropertyGenerator(config),
           OpenApiSchemaAnyOf: AnyOfPropertyGenerator(config),
         },
-        contentGenerator = FreezedClassContentGenerator(config);
+        contentGenerator = FreezedClassCodeBuilder(config);
   final ConfigComponents config;
   final Map<Type, PropertyGeneratorStrategy> propertyGenerators;
-  final FreezedClassContentGenerator contentGenerator;
+  final FreezedClassCodeBuilder contentGenerator;
 
   @override
   ({String filename, String content}) generate(OpenApiModel model) {

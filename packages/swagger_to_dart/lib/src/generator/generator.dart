@@ -6,4 +6,4 @@ export 'convertor.dart';
 export 'open_api_model_generator.dart';
 export 'exports_generator.dart';
 export 'file_writer.dart';
-export 'freezed_class_content_generator.dart';
+export 'freezed_class_code_builder.dart';
