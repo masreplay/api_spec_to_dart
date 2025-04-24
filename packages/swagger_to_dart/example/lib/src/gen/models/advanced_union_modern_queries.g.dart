@@ -8,8 +8,10 @@ part of 'advanced_union_modern_queries.dart';
 
 AdvancedUnionModernQueriesFallback _$AdvancedUnionModernQueriesFallbackFromJson(
   Map<String, dynamic> json,
-) => AdvancedUnionModernQueriesFallback();
+) =>
+    AdvancedUnionModernQueriesFallback();
 
 Map<String, dynamic> _$AdvancedUnionModernQueriesFallbackToJson(
   AdvancedUnionModernQueriesFallback instance,
-) => <String, dynamic>{};
+) =>
+    <String, dynamic>{};

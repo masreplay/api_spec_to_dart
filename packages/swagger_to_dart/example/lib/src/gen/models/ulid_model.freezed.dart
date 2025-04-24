@@ -12,79 +12,64 @@ part of 'ulid_model.dart';
 
 // dart format off
 T _$identity<T>(T value) => value;
-UlidModel _$UlidModelFromJson(
-  Map<String, dynamic> json
-) {
-    return UlidModelFallback.fromJson(
-      json
-    );
+UlidModel _$UlidModelFromJson(Map<String, dynamic> json) {
+  return UlidModelFallback.fromJson(json);
 }
 
 /// @nodoc
 mixin _$UlidModel {
-
-
-
   /// Serializes this UlidModel to a JSON map.
   Map<String, dynamic> toJson();
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is UlidModel);
+  }
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UlidModel);
-}
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => runtimeType.hashCode;
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'UlidModel()';
-}
-
-
+  @override
+  String toString() {
+    return 'UlidModel()';
+  }
 }
 
 /// @nodoc
-class $UlidModelCopyWith<$Res>  {
-$UlidModelCopyWith(UlidModel _, $Res Function(UlidModel) __);
+class $UlidModelCopyWith<$Res> {
+  $UlidModelCopyWith(UlidModel _, $Res Function(UlidModel) __);
 }
-
 
 /// @nodoc
 @JsonSerializable()
-
 class UlidModelFallback implements UlidModel {
   const UlidModelFallback();
-  factory UlidModelFallback.fromJson(Map<String, dynamic> json) => _$UlidModelFallbackFromJson(json);
+  factory UlidModelFallback.fromJson(Map<String, dynamic> json) =>
+      _$UlidModelFallbackFromJson(json);
 
+  @override
+  Map<String, dynamic> toJson() {
+    return _$UlidModelFallbackToJson(
+      this,
+    );
+  }
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is UlidModelFallback);
+  }
 
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => runtimeType.hashCode;
 
-@override
-Map<String, dynamic> toJson() {
-  return _$UlidModelFallbackToJson(this, );
+  @override
+  String toString() {
+    return 'UlidModel.fallback()';
+  }
 }
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UlidModelFallback);
-}
-
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'UlidModel.fallback()';
-}
-
-
-}
-
-
-
 
 // dart format on

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:code_builder/code_builder.dart';
 import 'package:path/path.dart' as path;
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
@@ -74,52 +75,72 @@ String generateOpenApiOneOfToDartType(
 
   // Generate Freezed Union Class
   final unionTypes = <(String, String)>[];
-  model.discriminator.mapping.entries.map((e) {
+  model.discriminator.mapping.entries.forEach((e) {
     unionTypes.add((e.key, namingUtils.renameClass(e.value.split('/').last)));
-  }).toList();
+  });
 
-  final content = '''
-import 'dart:io';
+  // Create a library builder
+  final library = LibraryBuilder();
 
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dio/dio.dart';
+  // Add imports
+  library.directives.addAll([
+    Directive.import('dart:io'),
+    Directive.import('package:freezed_annotation/freezed_annotation.dart'),
+    Directive.import('package:dio/dio.dart'),
+    Directive.import('convertors.dart'),
+    ...importConfig.importModelsCode.map(Directive.import),
+    Directive.part('${filename}.freezed.dart'),
+    Directive.part('${filename}.g.dart'),
+  ]);
 
-import 'convertors.dart';
-${importConfig.importModelsCode}
+  // Define the union class
+  final unionClass = ClassBuilder()
+    ..name = className
+    ..annotations.add(CodeExpression(Code('freezed')))
+    ..docs.add('/// $key')
+    ..constructors.add(Constructor((b) {
+      b.factory = true;
+      b.redirect = refer('${className}Fallback');
+    }))
+    ..constructors.addAll(unionTypes.map((type) {
+      return Constructor((b) {
+        b.factory = true;
+        b.redirect =
+            refer('${namingUtils.renameClass('${className}_${type.$1}')}');
+        b.requiredParameters.add(Parameter((p) => p
+          ..name = 'value'
+          ..type = refer(type.$2)));
+        b.annotations
+            .add(CodeExpression(Code('FreezedUnionValue("${type.$1}")')));
+      });
+    }).toList()) // Ensure `.toList()` is called here
+    ..methods.add(Method((b) {
+      b.name = 'fromJson';
+      b.returns = refer(className);
+      b.static = true;
+      b.body = Code('return _\$${className}FromJson(json);');
+      b.requiredParameters.add(Parameter((p) => p
+        ..name = 'json'
+        ..type = refer('Map<String, dynamic>')));
+    }));
 
+  library.body.add(unionClass.build());
 
-part '${filename}.freezed.dart';
-part '${filename}.g.dart';
+  // Generate the Dart code
+  final emitter = DartEmitter.scoped(useNullSafetySyntax: true);
+  final generatedCode = library.build().accept(emitter).toString();
 
-/// ${key}
-${model.description == null ? '' : commentLine(model.description!)}
-@freezed
-sealed class ${className} with _\$${className} {
-  const factory ${className}.fallback() = ${className}Fallback;
-
-  
-  ${unionTypes.map((type) => '@FreezedUnionValue("${type.$1}") const factory ${className}.${Recase.instance.toCamelCase(type.$1)}(${type.$2} value,) = ${namingUtils.renameClass('${className}_${type.$1}')};').join('\n\n')}
-  
-  factory ${className}.fromJson(
-    Map<String, dynamic> json,
-  ) => _\$${className}FromJson(
-    json,
-  );
-}
-''';
-
-  if (!Directory(pathConfig.modelsOutputDirectory).existsSync()) {
-    Directory(pathConfig.modelsOutputDirectory).createSync(recursive: true);
-  }
-
+  // Write the generated code to a file
   final filepath = path.join(
     pathConfig.modelsOutputDirectory,
     '${namingUtils.renameFile(className)}.dart',
   );
 
   final file = File(filepath);
-
-  file.writeAsString(content);
+  if (!file.parent.existsSync()) {
+    file.parent.createSync(recursive: true);
+  }
+  file.writeAsStringSync(generatedCode);
 
   print('Generated: $filepath');
 

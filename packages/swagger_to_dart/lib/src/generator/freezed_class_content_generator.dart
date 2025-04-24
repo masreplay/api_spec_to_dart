@@ -1,13 +1,14 @@
+import 'package:code_builder/code_builder.dart';
+import 'package:dart_style/dart_style.dart';
+import 'package:recase/recase.dart';
 import 'package:swagger_to_dart/src/pubspec.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
-/// Generates consistent class content for different model types
+/// Generates consistent class content for different model types using code_builder
 class FreezedClassContentGenerator {
   FreezedClassContentGenerator(this.config);
-
   final ConfigComponents config;
 
-  /// Generates the complete class content for a regular model
   String generateRegularClassContent({
     required String className,
     required String filename,
@@ -15,19 +16,69 @@ class FreezedClassContentGenerator {
     required Map<String, OpenApiSchema> properties,
     required OpenApiModel model,
   }) {
-    final buffer = StringBuffer();
+    final emitter = DartEmitter.scoped(useNullSafetySyntax: true);
+    final library = Library((lib) {
+      lib.directives.addAll([
+        Directive.import('package:freezed_annotation/freezed_annotation.dart'),
+        Directive.import('convertors.dart'),
+        ...config.importConfig.importModelsCode.map(Directive.import),
+        Directive.part('$filename.freezed.dart'),
+        Directive.part('$filename.g.dart'),
+      ]);
 
-    _writeImports(buffer, filename);
-    _writeClassDocumentation(buffer, model);
-    _writeClassDeclaration(buffer, className);
-    _writePropertyKeys(buffer, properties);
-    _writeFactoryConstructor(buffer, className, bodyText);
-    _writeFromJsonFactory(buffer, className);
+      lib.body.add(Class((c) {
+        // Documentation
+        c.docs.add('/// ${model.key}');
+        if (model.value.description != null) {
+          c.docs.add(model.value.description!);
+        }
 
-    return buffer.toString();
+        c.abstract = true;
+
+        // Add @freezed annotation
+        c.annotations.add(CodeExpression(Code('freezed')));
+
+        // Class name
+        c.name = className;
+
+        // Add mixin for Freezed
+        c.mixins.add(refer('_\$${className}'));
+
+        // Factory constructor
+        c.constructors.add(Constructor((ctr) {
+          ctr.constant = true;
+          ctr.factory = true;
+          ctr.annotations.add(
+            CodeExpression(
+                Code('JsonSerializable(converters: Convertors.convertors)')),
+          );
+          ctr.redirect = refer('_${className}'); // Add a valid body
+          for (final entry in properties.entries) {
+            ctr.optionalParameters.add(Parameter((p) => p
+              ..name = entry.key
+              ..named = true
+              ..required = true
+              ..type = refer(_resolvePropertyType(entry.value))));
+          }
+        }));
+
+        c.constructors.add(Constructor((ctr) {
+          ctr.factory = true;
+          ctr.name = 'fromJson';
+          ctr.requiredParameters.add(Parameter((p) => p
+            ..name = 'json'
+            ..type = refer('Map<String, dynamic>')));
+          ctr.lambda = true;
+          ctr.body = Code('_\$${className}FromJson(json)');
+        }));
+      }));
+    });
+
+    return DartFormatter(languageVersion: DartFormatter.latestLanguageVersion)
+        .format('${library.accept(emitter)}');
   }
 
-  /// Generates the complete class content for a union model
+  /// Freezed union class
   String generateUnionClassContent({
     required String className,
     required String filename,
@@ -35,19 +86,90 @@ class FreezedClassContentGenerator {
     required String normalProps,
     required OpenApiModel model,
   }) {
-    final buffer = StringBuffer();
+    final emitter = DartEmitter.scoped(useNullSafetySyntax: true);
+    final library = Library((lib) {
+      lib.directives.addAll([
+        Directive.import('dart:io'),
+        Directive.import('package:freezed_annotation/freezed_annotation.dart'),
+        Directive.import('package:dio/dio.dart'),
+        if (config.baseConfig.pubspec.isFlutterProject)
+          Directive.import('package:flutter/material.dart'),
+        Directive.import('convertors.dart'),
+        ...config.importConfig.importModelsCode.map(Directive.import),
+        Directive.part('$filename.freezed.dart'),
+        Directive.part('$filename.g.dart'),
+      ]);
 
-    _writeImports(buffer, filename);
-    _writeClassDocumentation(buffer, model);
-    _writeUnionClassDeclaration(buffer, className);
-    _writePropertyKeys(buffer, model.value.properties ?? {});
-    _writeUnionConstructors(buffer, className, unionProps, normalProps);
-    _writeFromJsonFactory(buffer, className);
+      lib.body.add(Class((c) {
+        // Docs
+        c.docs.add('/// ${model.key}');
+        if (model.value.description != null)
+          c.docs.add(model.value.description!);
 
-    return buffer.toString();
+        c.annotations.add(CodeExpression(Code('freezed')));
+        c.name = className;
+        c.mixins.add(refer('_\$$className'));
+
+        // Private constructor
+        c.constructors.add(Constructor((ctr) {
+          ctr.constant = true;
+          ctr.name = '_';
+        }));
+
+        // Fallback constructor if absent
+        if (!unionProps.any((e) => e.unionName == 'fallback')) {
+          c.constructors.add(Constructor((ctr) {
+            ctr.constant = true;
+            ctr.name = 'fallback';
+            ctr.annotations.add(
+              CodeExpression(Code('FreezedUnionValue("fallback")')),
+            );
+            ctr.redirect = refer('${className}Fallback');
+          }));
+        }
+
+        // Variant constructors
+        for (final prop in unionProps) {
+          c.constructors.add(Constructor((ctr) {
+            ctr.constant = true;
+            ctr.name = ReCase(prop.unionName).camelCase;
+            ctr.annotations.add(
+              CodeExpression(Code('JsonSerializable(converters: convertors)')),
+            );
+            ctr.annotations.add(
+              CodeExpression(Code('FreezedUnionValue("${prop.unionName}")')),
+            );
+            ctr.redirect = refer(config.namingUtils
+                .renameClass('$className\_${prop.unionName}'));
+            // Union-specific field
+            ctr.optionalParameters.add(Parameter((p) => p
+              ..name = prop.key
+              ..named = true
+              ..required = true
+              ..type = refer(prop.type)
+              ..toThis = true));
+            // TODO: handle normalProps if needed
+          }));
+        }
+
+        // fromJson factory
+        c.methods.add(Method((m) {
+          m.name = 'fromJson';
+          m.static = true;
+          m.returns = refer(className);
+          m.requiredParameters.add(Parameter((p) => p
+            ..name = 'json'
+            ..type = refer('Map<String, dynamic>')));
+          m.body = Code('return _\$${className}FromJson(json);');
+        }));
+      }));
+    });
+
+    return DartFormatter(languageVersion: DartFormatter.latestLanguageVersion)
+        .format('${library.accept(emitter)}');
   }
 
-  /// Generates the complete class content for an enum model
+  /// Freezed enum class
   String generateEnumClassContent({
     required String className,
     required String filename,
@@ -55,137 +177,113 @@ class FreezedClassContentGenerator {
     required String type,
     required OpenApiModel model,
   }) {
-    final buffer = StringBuffer();
+    final emitter = DartEmitter.scoped(useNullSafetySyntax: true);
+    final library = Library((lib) {
+      lib.directives.addAll([
+        Directive.import('package:freezed_annotation/freezed_annotation.dart'),
+        ...config.importConfig.importModelsCode.map(Directive.import),
+        Directive.part('$filename.g.dart'),
+      ]);
 
-    _writeImports(buffer, filename, freezed: false);
-    _writeClassDocumentation(buffer, model);
-    _writeEnumDeclaration(buffer, className);
-    _writeEnumValues(buffer, enumValues);
-    _writeEnumMethods(buffer, className, type);
-    buffer.writeln('}');
+      lib.body.add(Enum((en) {
+        // Docs
+        en.docs.add('/// ${model.key}');
+        en.name = className;
+        en.annotations.add(
+          CodeExpression(
+            Code('JsonEnum(valueField: "value", alwaysCreate: true)'),
+          ),
+        );
+        // Parse and add enum entries
+        for (final line in enumValues.split(',')) {
+          final match = RegExp(r'^(\w+)\(([^)]+)\)\$').firstMatch(line.trim());
+          if (match != null) {
+            en.values.add(EnumValue((ev) => ev
+              ..name = match.group(1)!
+              ..arguments.add(refer(match.group(2)!))));
+          }
+        }
+        // Value field
+        en.fields.add(Field((f) => f
+          ..name = 'value'
+          ..type = refer(type)
+          ..modifier = FieldModifier.final$));
+        // Constructor
+        en.constructors.add(Constructor((ctr) {
+          ctr.constant = true;
+          ctr.requiredParameters.add(Parameter((p) => p..name = 'this.value'));
+        }));
+        // toJson method
+        en.methods.add(Method((m) {
+          m.name = 'toJson';
+          m.returns = refer(type);
+          m.lambda = true;
+          m.body = Code('_\$${className}EnumMap[this]!');
+        }));
+      }));
+    });
 
-    return buffer.toString();
+    return DartFormatter(languageVersion: DartFormatter.latestLanguageVersion)
+        .format('${library.accept(emitter)}');
   }
 
-  void _writeImports(
-    StringBuffer buffer,
-    String filename, {
-    bool freezed = true,
-    bool json = true,
-  }) {
-    buffer.writeln('import "dart:io";');
-    buffer.writeln();
-    buffer.writeln(
-      'import "package:freezed_annotation/freezed_annotation.dart";',
-    );
-    buffer.writeln('import "package:dio/dio.dart";');
-    if (config.baseConfig.pubspec.isFlutterProject)
-      buffer.writeln('import "package:flutter/material.dart";');
-    buffer.writeln();
-    buffer.writeln('import "convertors.dart";');
-    buffer.writeln(config.importConfig.importModelsCode);
-    buffer.writeln();
-    if (freezed) buffer.writeln('part "$filename.freezed.dart";');
-    if (json) buffer.writeln('part "$filename.g.dart";');
-    buffer.writeln();
+  String _resolvePropertyType(OpenApiSchema schema) {
+    return switch (schema) {
+      // Basic types
+      OpenApiSchemaType value =>
+        _mapOpenApiTypeToDartType(value.type, value.format, items: value.items),
+
+      // Reference types
+      OpenApiSchemaRef value => config.namingUtils.renameRefClass(value),
+
+      // AnyOf types
+      OpenApiSchemaAnyOf value => _resolveAnyOfType(value),
+
+      // OneOf types
+      OpenApiSchemaOneOf value => _resolveOneOfType(value),
+    };
   }
 
-  void _writeClassDocumentation(StringBuffer buffer, OpenApiModel model) {
-    buffer.writeln('/// ${model.key}');
-    if (model.value.description != null) {
-      buffer.writeln(commentLine(model.value.description!));
+  String _mapOpenApiTypeToDartType(OpenApiSchemaVarType? type, String? format,
+      {OpenApiSchema? items}) {
+    switch (type) {
+      case OpenApiSchemaVarType.string:
+        return 'String';
+      case OpenApiSchemaVarType.number:
+        return 'double';
+      case OpenApiSchemaVarType.integer:
+        return 'int';
+      case OpenApiSchemaVarType.boolean:
+        return 'bool';
+      case OpenApiSchemaVarType.array:
+        if (items != null) {
+          // Resolve the type of the items in the array
+          final itemType = _resolvePropertyType(items);
+          return 'List<$itemType>';
+        }
+        return 'List<dynamic>'; // Fallback if items is null
+      case OpenApiSchemaVarType.object:
+        return 'Map<String, dynamic>';
+      case OpenApiSchemaVarType.null_:
+        return 'Null';
+      default:
+        return 'dynamic'; // Fallback for unknown types
     }
   }
 
-  void _writeClassDeclaration(StringBuffer buffer, String className) {
-    buffer.writeln('@freezed');
-    buffer.writeln('abstract class $className with _\$$className {');
-    buffer.writeln('  const $className._();');
-    buffer.writeln();
-  }
-
-  void _writeUnionClassDeclaration(StringBuffer buffer, String className) {
-    buffer.writeln('@freezed');
-    buffer.writeln('sealed class $className with _\$$className {');
-  }
-
-  void _writeEnumDeclaration(StringBuffer buffer, String className) {
-    buffer.writeln('@JsonEnum(valueField: "value", alwaysCreate: true)');
-    buffer.writeln('enum $className {');
-  }
-
-  void _writePropertyKeys(
-    StringBuffer buffer,
-    Map<String, OpenApiSchema> properties,
-  ) {
-    for (final entry in properties.entries) {
-      buffer.writeln(
-        '  static const String ${(config.namingUtils.renameProperty(entry.key))}Key = "${entry.key}";',
-      );
+  String _resolveAnyOfType(OpenApiSchemaAnyOf schema) {
+    final types = schema.anyOf!.map(_resolvePropertyType).toList();
+    if (types.length == 1) {
+      return types.first;
     }
-    buffer.writeln();
+    return types.join('Or'); // Example: StringOrInt
   }
 
-  void _writeFactoryConstructor(
-    StringBuffer buffer,
-    String className,
-    String bodyText,
-  ) {
-    buffer.writeln('  @JsonSerializable(converters: convertors)');
-    buffer.writeln('  const factory $className($bodyText) = _$className;');
-    buffer.writeln();
-  }
-
-  void _writeUnionConstructors(
-    StringBuffer buffer,
-    String className,
-    List<OneOfModel> unionProps,
-    String normalProps,
-  ) {
-    if (!unionProps.any((e) => e.unionName == 'fallback')) {
-      buffer.writeln(
-        ' @JsonSerializable(converters: convertors) @FreezedUnionValue("fallback") const factory $className.fallback() = ${className}Fallback;',
-      );
-      buffer.writeln();
+  String _resolveOneOfType(OpenApiSchemaOneOf schema) {
+    final types = schema.oneOf!.map(_resolvePropertyType).toList();
+    if (types.length == 1) {
+      return types.first;
     }
-
-    for (final prop in unionProps) {
-      buffer.writeln(
-        '@JsonSerializable(converters: convertors) '
-        '@FreezedUnionValue("${prop.unionName}") const factory $className.${Recase.instance.toCamelCase(prop.unionName)}({required ${prop.type} ${prop.key}, $normalProps}) = ${config.namingUtils.renameClass('${className}_${prop.unionName}')};',
-      );
-    }
-    buffer.writeln();
-  }
-
-  void _writeEnumValues(StringBuffer buffer, String enumValues) {
-    buffer.write(enumValues);
-    buffer.writeln();
-  }
-
-  void _writeEnumMethods(StringBuffer buffer, String className, String type) {
-    buffer.writeln(';');
-    buffer.writeln('const $className(this.value);');
-    buffer.writeln();
-    buffer.writeln('''
-factory $className.fromJson($type value) {
-  return values.firstWhere(
-    (e) => e.value == value,
-    orElse: () => values.first,
-  );
-}''');
-    buffer.writeln('final $type value;');
-    buffer.writeln();
-    buffer.writeln('$type toJson() => _\$${className}EnumMap[this]!;');
-  }
-
-  void _writeFromJsonFactory(StringBuffer buffer, String className) {
-    buffer.writeln('''
-  factory $className.fromJson(
-    Map<String, dynamic> json,
-  ) => _\$${className}FromJson(
-    json,
-  );
-}''');
+    return types.join('Or'); // Example: StringOrInt
   }
 }

@@ -16,7 +16,8 @@ _BodyFilesFileUpload _$BodyFilesFileUploadFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$BodyFilesFileUploadToJson(
   _BodyFilesFileUpload instance,
-) => <String, dynamic>{
-  'file': const MultipartFileJsonConverter().toJson(instance.file),
-  'description': instance.description,
-};
+) =>
+    <String, dynamic>{
+      'file': const MultipartFileJsonConverter().toJson(instance.file),
+      'description': instance.description,
+    };

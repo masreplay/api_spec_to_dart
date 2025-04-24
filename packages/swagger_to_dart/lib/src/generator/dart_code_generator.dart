@@ -1,5 +1,8 @@
+import 'package:code_builder/code_builder.dart';
+import 'package:dart_style/dart_style.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
+/// Orchestrates the Dart code generation from Swagger/OpenAPI using code_builder for convertors
 class SwaggerToDartDartCodeGenerator {
   SwaggerToDartDartCodeGenerator({
     required this.config,
@@ -22,96 +25,124 @@ class SwaggerToDartDartCodeGenerator {
   /// Generates all models from the OpenAPI schemas
   Future<void> _generateModels() async {
     final modelGenerator = OpenApiModelGenerator(config: config);
-
     await fileHandler.createDirectory(config.pathConfig.modelsOutputDirectory);
 
-    if (openApi.components case final openApiComponents?)
-      for (final entry in openApiComponents.schemas.entries) {
+    final schemas = openApi.components?.schemas;
+    if (schemas != null) {
+      for (final entry in schemas.entries) {
         final result = modelGenerator.run(entry);
-        final filepath =
-            '${config.pathConfig.modelsOutputDirectory}/${config.namingUtils.renameFile(entry.key)}.dart';
+        final filepath = '${config.pathConfig.modelsOutputDirectory}'
+            '/${config.namingUtils.renameFile(entry.key)}.dart';
         await fileHandler.writeFile(filepath, result.content);
       }
+    }
   }
 
   /// Generates all clients from the OpenAPI paths
   Future<void> _generateClients() async {
-    final clientGenerator = OpenApiClientGenerator(config: config);
-    final baseClientGenerator = OpenApiBaseClientGenerator(
-      config: config,
-      openApi: openApi,
-    );
-
+    final clientGen = OpenApiClientGenerator(config: config);
+    final baseGen =
+        OpenApiBaseClientGenerator(config: config, openApi: openApi);
     await fileHandler.createDirectory(config.pathConfig.clientsOutputDirectory);
 
-    if (openApi.paths case final openApiPaths?) {
-      // Generate individual clients
-      final pathsByTags = OpenApiParser().extractPathsByTags(openApiPaths);
-
-      for (final entry in pathsByTags.entries) {
-        final tag = entry.key;
-        final paths = entry.value;
-
-        final result = clientGenerator.generator(
-          path: openApiPaths,
+    final pathsMap = openApi.paths;
+    if (pathsMap != null) {
+      final pathsByTags = OpenApiParser().extractPathsByTags(pathsMap);
+      // Per-tag clients
+      for (final tag in pathsByTags.keys) {
+        final result = clientGen.generator(
+          path: pathsMap,
           clientName: tag,
-          tagPaths: paths,
+          tagPaths: pathsByTags[tag]!,
         );
-
-        final filepath =
-            '${config.pathConfig.clientsOutputDirectory}/${config.namingUtils.renameFile(tag)}_client.dart';
+        final filepath = '${config.pathConfig.clientsOutputDirectory}'
+            '/${config.namingUtils.renameFile(tag)}_client.dart';
         await fileHandler.writeFile(filepath, result.content);
       }
-
-      // Generate base client
-      final baseClientContent = baseClientGenerator.generator(
+      // Base client
+      final baseContent = baseGen.generator(
         clients: pathsByTags.keys.toList(),
       );
-
-      final baseClientPath =
-          '${config.pathConfig.clientsOutputDirectory}/${config.namingUtils.renameFile(config.baseConfig.swaggerToDart.apiClientClassName)}.dart';
-      await fileHandler.writeFile(baseClientPath, baseClientContent);
+      final basePath = '${config.pathConfig.clientsOutputDirectory}'
+          '/${config.namingUtils.renameFile(config.baseConfig.swaggerToDart.apiClientClassName)}.dart';
+      await fileHandler.writeFile(basePath, baseContent);
     }
   }
 
-  /// Generates convertors for handling special data types like MultipartFile
+  /// Generates convertors using code_builder instead of raw string
   Future<void> _generateConvertors() async {
-    final content = '''
-import 'package:dio/dio.dart';
-import 'package:json_annotation/json_annotation.dart';
+    // Build the library
+    final lib = Library((b) {
+      // Imports
+      b.directives.addAll([
+        Directive.import('package:dio/dio.dart'),
+        Directive.import('package:json_annotation/json_annotation.dart'),
+      ]);
 
-const convertors = <JsonConverter>[MultipartFileJsonConverter()];
+      // Converter class
+      b.body.add(Class((c) {
+        c.name = 'MultipartFileJsonConverter';
+        c.implements.add(refer('JsonConverter<MultipartFile, MultipartFile>'));
+        c.constructors.add(Constructor((ctr) => ctr.constant = true));
 
-class MultipartFileJsonConverter
-    implements JsonConverter<MultipartFile, MultipartFile> {
-  const MultipartFileJsonConverter();
+        // fromJson
+        c.methods.add(Method((m) => m
+          ..name = 'fromJson'
+          ..returns = refer('MultipartFile')
+          ..annotations.add(CodeExpression(Code('override')))
+          ..requiredParameters.add(Parameter((p) => p
+            ..name = 'json'
+            ..type = refer('MultipartFile')))
+          ..lambda = true
+          ..body = Code('json')));
 
-  @override
-  MultipartFile fromJson(MultipartFile json) => json;
+        // toJson
+        c.methods.add(Method((m) => m
+          ..name = 'toJson'
+          ..returns = refer('MultipartFile')
+          ..annotations.add(CodeExpression(Code('override')))
+          ..requiredParameters.add(Parameter((p) => p
+            ..name = 'object'
+            ..type = refer('MultipartFile')))
+          ..lambda = true
+          ..body = Code('object')));
+      }));
 
-  @override
-  MultipartFile toJson(MultipartFile object) => object;
-}
-''';
+      // Add a class to hold the convertors list
+      b.body.add(Class((c) {
+        c.name = 'Convertors';
+        c.fields.add(Field((f) => f
+          ..name = 'convertors'
+          ..modifier = FieldModifier.constant
+          ..static = true
+          ..type = TypeReference((t) => t
+            ..symbol = 'List'
+            ..types.add(refer('JsonConverter')))
+          ..assignment =
+              Code('<JsonConverter>[MultipartFileJsonConverter()]')));
+      }));
+    });
 
-    final convertorsDir = config.pathConfig.convertorOutputDirectory;
-    await fileHandler.createDirectory(convertorsDir);
+    // Format
+    final emitter = DartEmitter.scoped(useNullSafetySyntax: true);
+    final formatter = DartFormatter(
+      languageVersion: DartFormatter.latestLanguageVersion,
+    );
+    final code = formatter.format('${lib.accept(emitter)}');
 
-    final filePath = '$convertorsDir/convertors.dart';
-    await fileHandler.writeFile(filePath, content);
-
-    // Make sure the convertors are included in the exports
-    // They'll be picked up by _generateExports() since they're in the models directory
+    final outDir = config.pathConfig.convertorOutputDirectory;
+    await fileHandler.createDirectory(outDir);
+    final filePath = '$outDir/convertors.dart';
+    await fileHandler.writeFile(filePath, code);
   }
 
   /// Generates export files for models and clients
   Future<void> _generateExports() async {
-    final exportsGenerator = DartCodeExportsGenerator(
+    final exportsGen = DartCodeExportsGenerator(
       config: config,
       fileHandler: fileHandler,
     );
-
-    await exportsGenerator.generateModelsExports();
-    await exportsGenerator.generateClientsExports();
+    await exportsGen.generateModelsExports();
+    await exportsGen.generateClientsExports();
   }
 }

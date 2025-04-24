@@ -8,8 +8,10 @@ part of 'basic_datetime_timedelta_queries.dart';
 
 _BasicDatetimeTimedeltaQueries _$BasicDatetimeTimedeltaQueriesFromJson(
   Map<String, dynamic> json,
-) => _BasicDatetimeTimedeltaQueries(td: json['td'] as String);
+) =>
+    _BasicDatetimeTimedeltaQueries(td: json['td'] as String);
 
 Map<String, dynamic> _$BasicDatetimeTimedeltaQueriesToJson(
   _BasicDatetimeTimedeltaQueries instance,
-) => <String, dynamic>{'td': instance.td};
+) =>
+    <String, dynamic>{'td': instance.td};

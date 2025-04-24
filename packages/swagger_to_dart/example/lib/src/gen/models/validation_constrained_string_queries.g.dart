@@ -7,9 +7,10 @@ part of 'validation_constrained_string_queries.dart';
 // **************************************************************************
 
 _ValidationConstrainedStringQueries
-_$ValidationConstrainedStringQueriesFromJson(Map<String, dynamic> json) =>
-    _ValidationConstrainedStringQueries(value: json['value'] as String);
+    _$ValidationConstrainedStringQueriesFromJson(Map<String, dynamic> json) =>
+        _ValidationConstrainedStringQueries(value: json['value'] as String);
 
 Map<String, dynamic> _$ValidationConstrainedStringQueriesToJson(
   _ValidationConstrainedStringQueries instance,
-) => <String, dynamic>{'value': instance.value};
+) =>
+    <String, dynamic>{'value': instance.value};

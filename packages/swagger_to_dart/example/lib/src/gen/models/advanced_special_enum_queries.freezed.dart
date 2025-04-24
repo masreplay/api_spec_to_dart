@@ -15,47 +15,49 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$AdvancedSpecialEnumQueries {
+  @JsonKey(name: AdvancedSpecialEnumQueries.levelKey)
+  UserLevel get level;
 
-@JsonKey(name: AdvancedSpecialEnumQueries.levelKey) UserLevel get level;
-/// Create a copy of AdvancedSpecialEnumQueries
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$AdvancedSpecialEnumQueriesCopyWith<AdvancedSpecialEnumQueries> get copyWith => _$AdvancedSpecialEnumQueriesCopyWithImpl<AdvancedSpecialEnumQueries>(this as AdvancedSpecialEnumQueries, _$identity);
+  /// Create a copy of AdvancedSpecialEnumQueries
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $AdvancedSpecialEnumQueriesCopyWith<AdvancedSpecialEnumQueries>
+      get copyWith =>
+          _$AdvancedSpecialEnumQueriesCopyWithImpl<AdvancedSpecialEnumQueries>(
+              this as AdvancedSpecialEnumQueries, _$identity);
 
   /// Serializes this AdvancedSpecialEnumQueries to a JSON map.
   Map<String, dynamic> toJson();
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is AdvancedSpecialEnumQueries &&
+            (identical(other.level, level) || other.level == level));
+  }
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AdvancedSpecialEnumQueries&&(identical(other.level, level) || other.level == level));
-}
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, level);
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,level);
-
-@override
-String toString() {
-  return 'AdvancedSpecialEnumQueries(level: $level)';
-}
-
-
+  @override
+  String toString() {
+    return 'AdvancedSpecialEnumQueries(level: $level)';
+  }
 }
 
 /// @nodoc
-abstract mixin class $AdvancedSpecialEnumQueriesCopyWith<$Res>  {
-  factory $AdvancedSpecialEnumQueriesCopyWith(AdvancedSpecialEnumQueries value, $Res Function(AdvancedSpecialEnumQueries) _then) = _$AdvancedSpecialEnumQueriesCopyWithImpl;
-@useResult
-$Res call({
-@JsonKey(name: AdvancedSpecialEnumQueries.levelKey) UserLevel level
-});
-
-
-
-
+abstract mixin class $AdvancedSpecialEnumQueriesCopyWith<$Res> {
+  factory $AdvancedSpecialEnumQueriesCopyWith(AdvancedSpecialEnumQueries value,
+          $Res Function(AdvancedSpecialEnumQueries) _then) =
+      _$AdvancedSpecialEnumQueriesCopyWithImpl;
+  @useResult
+  $Res call(
+      {@JsonKey(name: AdvancedSpecialEnumQueries.levelKey) UserLevel level});
 }
+
 /// @nodoc
 class _$AdvancedSpecialEnumQueriesCopyWithImpl<$Res>
     implements $AdvancedSpecialEnumQueriesCopyWith<$Res> {
@@ -64,67 +66,84 @@ class _$AdvancedSpecialEnumQueriesCopyWithImpl<$Res>
   final AdvancedSpecialEnumQueries _self;
   final $Res Function(AdvancedSpecialEnumQueries) _then;
 
-/// Create a copy of AdvancedSpecialEnumQueries
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? level = null,}) {
-  return _then(_self.copyWith(
-level: null == level ? _self.level : level // ignore: cast_nullable_to_non_nullable
-as UserLevel,
-  ));
+  /// Create a copy of AdvancedSpecialEnumQueries
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? level = null,
+  }) {
+    return _then(_self.copyWith(
+      level: null == level
+          ? _self.level
+          : level // ignore: cast_nullable_to_non_nullable
+              as UserLevel,
+    ));
+  }
 }
-
-}
-
 
 /// @nodoc
 
 @JsonSerializable(converters: convertors)
 class _AdvancedSpecialEnumQueries extends AdvancedSpecialEnumQueries {
-  const _AdvancedSpecialEnumQueries({@JsonKey(name: AdvancedSpecialEnumQueries.levelKey) this.level = UserLevel.basic}): super._();
-  factory _AdvancedSpecialEnumQueries.fromJson(Map<String, dynamic> json) => _$AdvancedSpecialEnumQueriesFromJson(json);
+  const _AdvancedSpecialEnumQueries(
+      {@JsonKey(name: AdvancedSpecialEnumQueries.levelKey)
+      this.level = UserLevel.basic})
+      : super._();
+  factory _AdvancedSpecialEnumQueries.fromJson(Map<String, dynamic> json) =>
+      _$AdvancedSpecialEnumQueriesFromJson(json);
 
-@override@JsonKey(name: AdvancedSpecialEnumQueries.levelKey) final  UserLevel level;
+  @override
+  @JsonKey(name: AdvancedSpecialEnumQueries.levelKey)
+  final UserLevel level;
 
-/// Create a copy of AdvancedSpecialEnumQueries
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$AdvancedSpecialEnumQueriesCopyWith<_AdvancedSpecialEnumQueries> get copyWith => __$AdvancedSpecialEnumQueriesCopyWithImpl<_AdvancedSpecialEnumQueries>(this, _$identity);
+  /// Create a copy of AdvancedSpecialEnumQueries
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$AdvancedSpecialEnumQueriesCopyWith<_AdvancedSpecialEnumQueries>
+      get copyWith => __$AdvancedSpecialEnumQueriesCopyWithImpl<
+          _AdvancedSpecialEnumQueries>(this, _$identity);
 
-@override
-Map<String, dynamic> toJson() {
-  return _$AdvancedSpecialEnumQueriesToJson(this, );
-}
+  @override
+  Map<String, dynamic> toJson() {
+    return _$AdvancedSpecialEnumQueriesToJson(
+      this,
+    );
+  }
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AdvancedSpecialEnumQueries&&(identical(other.level, level) || other.level == level));
-}
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _AdvancedSpecialEnumQueries &&
+            (identical(other.level, level) || other.level == level));
+  }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,level);
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, level);
 
-@override
-String toString() {
-  return 'AdvancedSpecialEnumQueries(level: $level)';
-}
-
-
+  @override
+  String toString() {
+    return 'AdvancedSpecialEnumQueries(level: $level)';
+  }
 }
 
 /// @nodoc
-abstract mixin class _$AdvancedSpecialEnumQueriesCopyWith<$Res> implements $AdvancedSpecialEnumQueriesCopyWith<$Res> {
-  factory _$AdvancedSpecialEnumQueriesCopyWith(_AdvancedSpecialEnumQueries value, $Res Function(_AdvancedSpecialEnumQueries) _then) = __$AdvancedSpecialEnumQueriesCopyWithImpl;
-@override @useResult
-$Res call({
-@JsonKey(name: AdvancedSpecialEnumQueries.levelKey) UserLevel level
-});
-
-
-
-
+abstract mixin class _$AdvancedSpecialEnumQueriesCopyWith<$Res>
+    implements $AdvancedSpecialEnumQueriesCopyWith<$Res> {
+  factory _$AdvancedSpecialEnumQueriesCopyWith(
+          _AdvancedSpecialEnumQueries value,
+          $Res Function(_AdvancedSpecialEnumQueries) _then) =
+      __$AdvancedSpecialEnumQueriesCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: AdvancedSpecialEnumQueries.levelKey) UserLevel level});
 }
+
 /// @nodoc
 class __$AdvancedSpecialEnumQueriesCopyWithImpl<$Res>
     implements _$AdvancedSpecialEnumQueriesCopyWith<$Res> {
@@ -133,16 +152,20 @@ class __$AdvancedSpecialEnumQueriesCopyWithImpl<$Res>
   final _AdvancedSpecialEnumQueries _self;
   final $Res Function(_AdvancedSpecialEnumQueries) _then;
 
-/// Create a copy of AdvancedSpecialEnumQueries
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? level = null,}) {
-  return _then(_AdvancedSpecialEnumQueries(
-level: null == level ? _self.level : level // ignore: cast_nullable_to_non_nullable
-as UserLevel,
-  ));
-}
-
-
+  /// Create a copy of AdvancedSpecialEnumQueries
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? level = null,
+  }) {
+    return _then(_AdvancedSpecialEnumQueries(
+      level: null == level
+          ? _self.level
+          : level // ignore: cast_nullable_to_non_nullable
+              as UserLevel,
+    ));
+  }
 }
 
 // dart format on

@@ -8,8 +8,10 @@ part of 'basic_datetime_date_queries.dart';
 
 _BasicDatetimeDateQueries _$BasicDatetimeDateQueriesFromJson(
   Map<String, dynamic> json,
-) => _BasicDatetimeDateQueries(d: DateTime.parse(json['d'] as String));
+) =>
+    _BasicDatetimeDateQueries(d: DateTime.parse(json['d'] as String));
 
 Map<String, dynamic> _$BasicDatetimeDateQueriesToJson(
   _BasicDatetimeDateQueries instance,
-) => <String, dynamic>{'d': instance.d.toIso8601String()};
+) =>
+    <String, dynamic>{'d': instance.d.toIso8601String()};

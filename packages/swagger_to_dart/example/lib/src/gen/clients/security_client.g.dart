@@ -28,11 +28,11 @@ class _SecurityClient implements SecurityClient {
     _data.addAll(body.toJson());
     final _options = _setStreamType<HttpResponse<dynamic>>(
       Options(
-            method: 'POST',
-            headers: _headers,
-            extra: _extra,
-            contentType: 'application/x-www-form-urlencoded',
-          )
+        method: 'POST',
+        headers: _headers,
+        extra: _extra,
+        contentType: 'application/x-www-form-urlencoded',
+      )
           .compose(
             _dio.options,
             '/token',
@@ -71,7 +71,7 @@ class _SecurityClient implements SecurityClient {
 
   @override
   Future<HttpResponse<List<Map<String, dynamic>>>>
-  securityGetSecureItems() async {
+      securityGetSecureItems() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -89,13 +89,12 @@ class _SecurityClient implements SecurityClient {
     final _result = await _dio.fetch<List<dynamic>>(_options);
     late List<Map<String, dynamic>> _value;
     try {
-      _value =
-          _result.data!
-              .map(
-                (dynamic i) =>
-                    Map<String, dynamic>.fromJson(i as Map<String, dynamic>),
-              )
-              .toList();
+      _value = _result.data!
+          .map(
+            (dynamic i) =>
+                Map<String, dynamic>.fromJson(i as Map<String, dynamic>),
+          )
+          .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

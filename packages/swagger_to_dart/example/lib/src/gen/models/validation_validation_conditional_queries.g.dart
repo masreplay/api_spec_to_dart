@@ -7,15 +7,17 @@ part of 'validation_validation_conditional_queries.dart';
 // **************************************************************************
 
 _ValidationValidationConditionalQueries
-_$ValidationValidationConditionalQueriesFromJson(Map<String, dynamic> json) =>
-    _ValidationValidationConditionalQueries(
-      userId: (json['user_id'] as num?)?.toInt(),
-      username: json['username'] as String?,
-    );
+    _$ValidationValidationConditionalQueriesFromJson(
+            Map<String, dynamic> json) =>
+        _ValidationValidationConditionalQueries(
+          userId: (json['user_id'] as num?)?.toInt(),
+          username: json['username'] as String?,
+        );
 
 Map<String, dynamic> _$ValidationValidationConditionalQueriesToJson(
   _ValidationValidationConditionalQueries instance,
-) => <String, dynamic>{
-  'user_id': instance.userId,
-  'username': instance.username,
-};
+) =>
+    <String, dynamic>{
+      'user_id': instance.userId,
+      'username': instance.username,
+    };

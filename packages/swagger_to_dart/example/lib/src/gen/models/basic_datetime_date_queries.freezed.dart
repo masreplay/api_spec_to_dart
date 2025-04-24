@@ -15,48 +15,48 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$BasicDatetimeDateQueries {
+  /// d
+  @JsonKey(name: BasicDatetimeDateQueries.dKey)
+  DateTime get d;
 
-/// d
-@JsonKey(name: BasicDatetimeDateQueries.dKey) DateTime get d;
-/// Create a copy of BasicDatetimeDateQueries
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$BasicDatetimeDateQueriesCopyWith<BasicDatetimeDateQueries> get copyWith => _$BasicDatetimeDateQueriesCopyWithImpl<BasicDatetimeDateQueries>(this as BasicDatetimeDateQueries, _$identity);
+  /// Create a copy of BasicDatetimeDateQueries
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $BasicDatetimeDateQueriesCopyWith<BasicDatetimeDateQueries> get copyWith =>
+      _$BasicDatetimeDateQueriesCopyWithImpl<BasicDatetimeDateQueries>(
+          this as BasicDatetimeDateQueries, _$identity);
 
   /// Serializes this BasicDatetimeDateQueries to a JSON map.
   Map<String, dynamic> toJson();
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is BasicDatetimeDateQueries &&
+            (identical(other.d, d) || other.d == d));
+  }
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is BasicDatetimeDateQueries&&(identical(other.d, d) || other.d == d));
-}
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, d);
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,d);
-
-@override
-String toString() {
-  return 'BasicDatetimeDateQueries(d: $d)';
-}
-
-
+  @override
+  String toString() {
+    return 'BasicDatetimeDateQueries(d: $d)';
+  }
 }
 
 /// @nodoc
-abstract mixin class $BasicDatetimeDateQueriesCopyWith<$Res>  {
-  factory $BasicDatetimeDateQueriesCopyWith(BasicDatetimeDateQueries value, $Res Function(BasicDatetimeDateQueries) _then) = _$BasicDatetimeDateQueriesCopyWithImpl;
-@useResult
-$Res call({
-@JsonKey(name: BasicDatetimeDateQueries.dKey) DateTime d
-});
-
-
-
-
+abstract mixin class $BasicDatetimeDateQueriesCopyWith<$Res> {
+  factory $BasicDatetimeDateQueriesCopyWith(BasicDatetimeDateQueries value,
+          $Res Function(BasicDatetimeDateQueries) _then) =
+      _$BasicDatetimeDateQueriesCopyWithImpl;
+  @useResult
+  $Res call({@JsonKey(name: BasicDatetimeDateQueries.dKey) DateTime d});
 }
+
 /// @nodoc
 class _$BasicDatetimeDateQueriesCopyWithImpl<$Res>
     implements $BasicDatetimeDateQueriesCopyWith<$Res> {
@@ -65,68 +65,82 @@ class _$BasicDatetimeDateQueriesCopyWithImpl<$Res>
   final BasicDatetimeDateQueries _self;
   final $Res Function(BasicDatetimeDateQueries) _then;
 
-/// Create a copy of BasicDatetimeDateQueries
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? d = null,}) {
-  return _then(_self.copyWith(
-d: null == d ? _self.d : d // ignore: cast_nullable_to_non_nullable
-as DateTime,
-  ));
+  /// Create a copy of BasicDatetimeDateQueries
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? d = null,
+  }) {
+    return _then(_self.copyWith(
+      d: null == d
+          ? _self.d
+          : d // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
 }
-
-}
-
 
 /// @nodoc
 
 @JsonSerializable(converters: convertors)
 class _BasicDatetimeDateQueries extends BasicDatetimeDateQueries {
-  const _BasicDatetimeDateQueries({@JsonKey(name: BasicDatetimeDateQueries.dKey) required this.d}): super._();
-  factory _BasicDatetimeDateQueries.fromJson(Map<String, dynamic> json) => _$BasicDatetimeDateQueriesFromJson(json);
+  const _BasicDatetimeDateQueries(
+      {@JsonKey(name: BasicDatetimeDateQueries.dKey) required this.d})
+      : super._();
+  factory _BasicDatetimeDateQueries.fromJson(Map<String, dynamic> json) =>
+      _$BasicDatetimeDateQueriesFromJson(json);
 
-/// d
-@override@JsonKey(name: BasicDatetimeDateQueries.dKey) final  DateTime d;
+  /// d
+  @override
+  @JsonKey(name: BasicDatetimeDateQueries.dKey)
+  final DateTime d;
 
-/// Create a copy of BasicDatetimeDateQueries
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$BasicDatetimeDateQueriesCopyWith<_BasicDatetimeDateQueries> get copyWith => __$BasicDatetimeDateQueriesCopyWithImpl<_BasicDatetimeDateQueries>(this, _$identity);
+  /// Create a copy of BasicDatetimeDateQueries
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$BasicDatetimeDateQueriesCopyWith<_BasicDatetimeDateQueries> get copyWith =>
+      __$BasicDatetimeDateQueriesCopyWithImpl<_BasicDatetimeDateQueries>(
+          this, _$identity);
 
-@override
-Map<String, dynamic> toJson() {
-  return _$BasicDatetimeDateQueriesToJson(this, );
-}
+  @override
+  Map<String, dynamic> toJson() {
+    return _$BasicDatetimeDateQueriesToJson(
+      this,
+    );
+  }
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BasicDatetimeDateQueries&&(identical(other.d, d) || other.d == d));
-}
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _BasicDatetimeDateQueries &&
+            (identical(other.d, d) || other.d == d));
+  }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,d);
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, d);
 
-@override
-String toString() {
-  return 'BasicDatetimeDateQueries(d: $d)';
-}
-
-
+  @override
+  String toString() {
+    return 'BasicDatetimeDateQueries(d: $d)';
+  }
 }
 
 /// @nodoc
-abstract mixin class _$BasicDatetimeDateQueriesCopyWith<$Res> implements $BasicDatetimeDateQueriesCopyWith<$Res> {
-  factory _$BasicDatetimeDateQueriesCopyWith(_BasicDatetimeDateQueries value, $Res Function(_BasicDatetimeDateQueries) _then) = __$BasicDatetimeDateQueriesCopyWithImpl;
-@override @useResult
-$Res call({
-@JsonKey(name: BasicDatetimeDateQueries.dKey) DateTime d
-});
-
-
-
-
+abstract mixin class _$BasicDatetimeDateQueriesCopyWith<$Res>
+    implements $BasicDatetimeDateQueriesCopyWith<$Res> {
+  factory _$BasicDatetimeDateQueriesCopyWith(_BasicDatetimeDateQueries value,
+          $Res Function(_BasicDatetimeDateQueries) _then) =
+      __$BasicDatetimeDateQueriesCopyWithImpl;
+  @override
+  @useResult
+  $Res call({@JsonKey(name: BasicDatetimeDateQueries.dKey) DateTime d});
 }
+
 /// @nodoc
 class __$BasicDatetimeDateQueriesCopyWithImpl<$Res>
     implements _$BasicDatetimeDateQueriesCopyWith<$Res> {
@@ -135,16 +149,20 @@ class __$BasicDatetimeDateQueriesCopyWithImpl<$Res>
   final _BasicDatetimeDateQueries _self;
   final $Res Function(_BasicDatetimeDateQueries) _then;
 
-/// Create a copy of BasicDatetimeDateQueries
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? d = null,}) {
-  return _then(_BasicDatetimeDateQueries(
-d: null == d ? _self.d : d // ignore: cast_nullable_to_non_nullable
-as DateTime,
-  ));
-}
-
-
+  /// Create a copy of BasicDatetimeDateQueries
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? d = null,
+  }) {
+    return _then(_BasicDatetimeDateQueries(
+      d: null == d
+          ? _self.d
+          : d // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
 }
 
 // dart format on

@@ -8,11 +8,13 @@ part of 'advanced_custom_positive_int_queries.dart';
 
 _AdvancedCustomPositiveIntQueries _$AdvancedCustomPositiveIntQueriesFromJson(
   Map<String, dynamic> json,
-) => _AdvancedCustomPositiveIntQueries(
-  value: (json['value'] as num).toInt(),
-  value2: (json['value2'] as num).toInt(),
-);
+) =>
+    _AdvancedCustomPositiveIntQueries(
+      value: (json['value'] as num).toInt(),
+      value2: (json['value2'] as num).toInt(),
+    );
 
 Map<String, dynamic> _$AdvancedCustomPositiveIntQueriesToJson(
   _AdvancedCustomPositiveIntQueries instance,
-) => <String, dynamic>{'value': instance.value, 'value2': instance.value2};
+) =>
+    <String, dynamic>{'value': instance.value, 'value2': instance.value2};

@@ -8,8 +8,10 @@ part of 'basic_basic_boolean_queries.dart';
 
 _BasicBasicBooleanQueries _$BasicBasicBooleanQueriesFromJson(
   Map<String, dynamic> json,
-) => _BasicBasicBooleanQueries(flag: json['flag'] as bool? ?? false);
+) =>
+    _BasicBasicBooleanQueries(flag: json['flag'] as bool? ?? false);
 
 Map<String, dynamic> _$BasicBasicBooleanQueriesToJson(
   _BasicBasicBooleanQueries instance,
-) => <String, dynamic>{'flag': instance.flag};
+) =>
+    <String, dynamic>{'flag': instance.flag};

@@ -28,5 +28,6 @@ abstract class AdvancedCustomPositiveIntQueries
 
   factory AdvancedCustomPositiveIntQueries.fromJson(
     Map<String, dynamic> json,
-  ) => _$AdvancedCustomPositiveIntQueriesFromJson(json);
+  ) =>
+      _$AdvancedCustomPositiveIntQueriesFromJson(json);
 }

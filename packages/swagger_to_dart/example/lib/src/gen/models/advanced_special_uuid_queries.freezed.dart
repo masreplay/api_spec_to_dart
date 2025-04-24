@@ -15,48 +15,49 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$AdvancedSpecialUuidQueries {
+  /// id
+  @JsonKey(name: AdvancedSpecialUuidQueries.idKey)
+  String get id;
 
-/// id
-@JsonKey(name: AdvancedSpecialUuidQueries.idKey) String get id;
-/// Create a copy of AdvancedSpecialUuidQueries
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$AdvancedSpecialUuidQueriesCopyWith<AdvancedSpecialUuidQueries> get copyWith => _$AdvancedSpecialUuidQueriesCopyWithImpl<AdvancedSpecialUuidQueries>(this as AdvancedSpecialUuidQueries, _$identity);
+  /// Create a copy of AdvancedSpecialUuidQueries
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $AdvancedSpecialUuidQueriesCopyWith<AdvancedSpecialUuidQueries>
+      get copyWith =>
+          _$AdvancedSpecialUuidQueriesCopyWithImpl<AdvancedSpecialUuidQueries>(
+              this as AdvancedSpecialUuidQueries, _$identity);
 
   /// Serializes this AdvancedSpecialUuidQueries to a JSON map.
   Map<String, dynamic> toJson();
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is AdvancedSpecialUuidQueries &&
+            (identical(other.id, id) || other.id == id));
+  }
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AdvancedSpecialUuidQueries&&(identical(other.id, id) || other.id == id));
-}
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,id);
-
-@override
-String toString() {
-  return 'AdvancedSpecialUuidQueries(id: $id)';
-}
-
-
+  @override
+  String toString() {
+    return 'AdvancedSpecialUuidQueries(id: $id)';
+  }
 }
 
 /// @nodoc
-abstract mixin class $AdvancedSpecialUuidQueriesCopyWith<$Res>  {
-  factory $AdvancedSpecialUuidQueriesCopyWith(AdvancedSpecialUuidQueries value, $Res Function(AdvancedSpecialUuidQueries) _then) = _$AdvancedSpecialUuidQueriesCopyWithImpl;
-@useResult
-$Res call({
-@JsonKey(name: AdvancedSpecialUuidQueries.idKey) String id
-});
-
-
-
-
+abstract mixin class $AdvancedSpecialUuidQueriesCopyWith<$Res> {
+  factory $AdvancedSpecialUuidQueriesCopyWith(AdvancedSpecialUuidQueries value,
+          $Res Function(AdvancedSpecialUuidQueries) _then) =
+      _$AdvancedSpecialUuidQueriesCopyWithImpl;
+  @useResult
+  $Res call({@JsonKey(name: AdvancedSpecialUuidQueries.idKey) String id});
 }
+
 /// @nodoc
 class _$AdvancedSpecialUuidQueriesCopyWithImpl<$Res>
     implements $AdvancedSpecialUuidQueriesCopyWith<$Res> {
@@ -65,68 +66,83 @@ class _$AdvancedSpecialUuidQueriesCopyWithImpl<$Res>
   final AdvancedSpecialUuidQueries _self;
   final $Res Function(AdvancedSpecialUuidQueries) _then;
 
-/// Create a copy of AdvancedSpecialUuidQueries
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,}) {
-  return _then(_self.copyWith(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
+  /// Create a copy of AdvancedSpecialUuidQueries
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_self.copyWith(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
-
-}
-
 
 /// @nodoc
 
 @JsonSerializable(converters: convertors)
 class _AdvancedSpecialUuidQueries extends AdvancedSpecialUuidQueries {
-  const _AdvancedSpecialUuidQueries({@JsonKey(name: AdvancedSpecialUuidQueries.idKey) required this.id}): super._();
-  factory _AdvancedSpecialUuidQueries.fromJson(Map<String, dynamic> json) => _$AdvancedSpecialUuidQueriesFromJson(json);
+  const _AdvancedSpecialUuidQueries(
+      {@JsonKey(name: AdvancedSpecialUuidQueries.idKey) required this.id})
+      : super._();
+  factory _AdvancedSpecialUuidQueries.fromJson(Map<String, dynamic> json) =>
+      _$AdvancedSpecialUuidQueriesFromJson(json);
 
-/// id
-@override@JsonKey(name: AdvancedSpecialUuidQueries.idKey) final  String id;
+  /// id
+  @override
+  @JsonKey(name: AdvancedSpecialUuidQueries.idKey)
+  final String id;
 
-/// Create a copy of AdvancedSpecialUuidQueries
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$AdvancedSpecialUuidQueriesCopyWith<_AdvancedSpecialUuidQueries> get copyWith => __$AdvancedSpecialUuidQueriesCopyWithImpl<_AdvancedSpecialUuidQueries>(this, _$identity);
+  /// Create a copy of AdvancedSpecialUuidQueries
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$AdvancedSpecialUuidQueriesCopyWith<_AdvancedSpecialUuidQueries>
+      get copyWith => __$AdvancedSpecialUuidQueriesCopyWithImpl<
+          _AdvancedSpecialUuidQueries>(this, _$identity);
 
-@override
-Map<String, dynamic> toJson() {
-  return _$AdvancedSpecialUuidQueriesToJson(this, );
-}
+  @override
+  Map<String, dynamic> toJson() {
+    return _$AdvancedSpecialUuidQueriesToJson(
+      this,
+    );
+  }
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AdvancedSpecialUuidQueries&&(identical(other.id, id) || other.id == id));
-}
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _AdvancedSpecialUuidQueries &&
+            (identical(other.id, id) || other.id == id));
+  }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,id);
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
 
-@override
-String toString() {
-  return 'AdvancedSpecialUuidQueries(id: $id)';
-}
-
-
+  @override
+  String toString() {
+    return 'AdvancedSpecialUuidQueries(id: $id)';
+  }
 }
 
 /// @nodoc
-abstract mixin class _$AdvancedSpecialUuidQueriesCopyWith<$Res> implements $AdvancedSpecialUuidQueriesCopyWith<$Res> {
-  factory _$AdvancedSpecialUuidQueriesCopyWith(_AdvancedSpecialUuidQueries value, $Res Function(_AdvancedSpecialUuidQueries) _then) = __$AdvancedSpecialUuidQueriesCopyWithImpl;
-@override @useResult
-$Res call({
-@JsonKey(name: AdvancedSpecialUuidQueries.idKey) String id
-});
-
-
-
-
+abstract mixin class _$AdvancedSpecialUuidQueriesCopyWith<$Res>
+    implements $AdvancedSpecialUuidQueriesCopyWith<$Res> {
+  factory _$AdvancedSpecialUuidQueriesCopyWith(
+          _AdvancedSpecialUuidQueries value,
+          $Res Function(_AdvancedSpecialUuidQueries) _then) =
+      __$AdvancedSpecialUuidQueriesCopyWithImpl;
+  @override
+  @useResult
+  $Res call({@JsonKey(name: AdvancedSpecialUuidQueries.idKey) String id});
 }
+
 /// @nodoc
 class __$AdvancedSpecialUuidQueriesCopyWithImpl<$Res>
     implements _$AdvancedSpecialUuidQueriesCopyWith<$Res> {
@@ -135,16 +151,20 @@ class __$AdvancedSpecialUuidQueriesCopyWithImpl<$Res>
   final _AdvancedSpecialUuidQueries _self;
   final $Res Function(_AdvancedSpecialUuidQueries) _then;
 
-/// Create a copy of AdvancedSpecialUuidQueries
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,}) {
-  return _then(_AdvancedSpecialUuidQueries(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
-}
-
-
+  /// Create a copy of AdvancedSpecialUuidQueries
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_AdvancedSpecialUuidQueries(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 // dart format on

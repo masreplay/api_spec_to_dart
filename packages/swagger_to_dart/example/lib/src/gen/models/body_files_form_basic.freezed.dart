@@ -15,50 +15,64 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$BodyFilesFormBasic {
+  /// username, Username
+  @JsonKey(name: BodyFilesFormBasic.usernameKey)
+  String get username;
 
-/// username, Username
-@JsonKey(name: BodyFilesFormBasic.usernameKey) String get username;/// password, Password
-@JsonKey(name: BodyFilesFormBasic.passwordKey) String get password;/// remember, Remember login
-@JsonKey(name: BodyFilesFormBasic.rememberKey) bool get remember;
-/// Create a copy of BodyFilesFormBasic
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$BodyFilesFormBasicCopyWith<BodyFilesFormBasic> get copyWith => _$BodyFilesFormBasicCopyWithImpl<BodyFilesFormBasic>(this as BodyFilesFormBasic, _$identity);
+  /// password, Password
+  @JsonKey(name: BodyFilesFormBasic.passwordKey)
+  String get password;
+
+  /// remember, Remember login
+  @JsonKey(name: BodyFilesFormBasic.rememberKey)
+  bool get remember;
+
+  /// Create a copy of BodyFilesFormBasic
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $BodyFilesFormBasicCopyWith<BodyFilesFormBasic> get copyWith =>
+      _$BodyFilesFormBasicCopyWithImpl<BodyFilesFormBasic>(
+          this as BodyFilesFormBasic, _$identity);
 
   /// Serializes this BodyFilesFormBasic to a JSON map.
   Map<String, dynamic> toJson();
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is BodyFilesFormBasic &&
+            (identical(other.username, username) ||
+                other.username == username) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.remember, remember) ||
+                other.remember == remember));
+  }
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is BodyFilesFormBasic&&(identical(other.username, username) || other.username == username)&&(identical(other.password, password) || other.password == password)&&(identical(other.remember, remember) || other.remember == remember));
-}
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, username, password, remember);
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,username,password,remember);
-
-@override
-String toString() {
-  return 'BodyFilesFormBasic(username: $username, password: $password, remember: $remember)';
-}
-
-
+  @override
+  String toString() {
+    return 'BodyFilesFormBasic(username: $username, password: $password, remember: $remember)';
+  }
 }
 
 /// @nodoc
-abstract mixin class $BodyFilesFormBasicCopyWith<$Res>  {
-  factory $BodyFilesFormBasicCopyWith(BodyFilesFormBasic value, $Res Function(BodyFilesFormBasic) _then) = _$BodyFilesFormBasicCopyWithImpl;
-@useResult
-$Res call({
-@JsonKey(name: BodyFilesFormBasic.usernameKey) String username,@JsonKey(name: BodyFilesFormBasic.passwordKey) String password,@JsonKey(name: BodyFilesFormBasic.rememberKey) bool remember
-});
-
-
-
-
+abstract mixin class $BodyFilesFormBasicCopyWith<$Res> {
+  factory $BodyFilesFormBasicCopyWith(
+          BodyFilesFormBasic value, $Res Function(BodyFilesFormBasic) _then) =
+      _$BodyFilesFormBasicCopyWithImpl;
+  @useResult
+  $Res call(
+      {@JsonKey(name: BodyFilesFormBasic.usernameKey) String username,
+      @JsonKey(name: BodyFilesFormBasic.passwordKey) String password,
+      @JsonKey(name: BodyFilesFormBasic.rememberKey) bool remember});
 }
+
 /// @nodoc
 class _$BodyFilesFormBasicCopyWithImpl<$Res>
     implements $BodyFilesFormBasicCopyWith<$Res> {
@@ -67,74 +81,111 @@ class _$BodyFilesFormBasicCopyWithImpl<$Res>
   final BodyFilesFormBasic _self;
   final $Res Function(BodyFilesFormBasic) _then;
 
-/// Create a copy of BodyFilesFormBasic
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? username = null,Object? password = null,Object? remember = null,}) {
-  return _then(_self.copyWith(
-username: null == username ? _self.username : username // ignore: cast_nullable_to_non_nullable
-as String,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
-as String,remember: null == remember ? _self.remember : remember // ignore: cast_nullable_to_non_nullable
-as bool,
-  ));
+  /// Create a copy of BodyFilesFormBasic
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? username = null,
+    Object? password = null,
+    Object? remember = null,
+  }) {
+    return _then(_self.copyWith(
+      username: null == username
+          ? _self.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _self.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      remember: null == remember
+          ? _self.remember
+          : remember // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
-
-}
-
 
 /// @nodoc
 
 @JsonSerializable(converters: convertors)
 class _BodyFilesFormBasic extends BodyFilesFormBasic {
-  const _BodyFilesFormBasic({@JsonKey(name: BodyFilesFormBasic.usernameKey) required this.username, @JsonKey(name: BodyFilesFormBasic.passwordKey) required this.password, @JsonKey(name: BodyFilesFormBasic.rememberKey) this.remember = false}): super._();
-  factory _BodyFilesFormBasic.fromJson(Map<String, dynamic> json) => _$BodyFilesFormBasicFromJson(json);
+  const _BodyFilesFormBasic(
+      {@JsonKey(name: BodyFilesFormBasic.usernameKey) required this.username,
+      @JsonKey(name: BodyFilesFormBasic.passwordKey) required this.password,
+      @JsonKey(name: BodyFilesFormBasic.rememberKey) this.remember = false})
+      : super._();
+  factory _BodyFilesFormBasic.fromJson(Map<String, dynamic> json) =>
+      _$BodyFilesFormBasicFromJson(json);
 
-/// username, Username
-@override@JsonKey(name: BodyFilesFormBasic.usernameKey) final  String username;
-/// password, Password
-@override@JsonKey(name: BodyFilesFormBasic.passwordKey) final  String password;
-/// remember, Remember login
-@override@JsonKey(name: BodyFilesFormBasic.rememberKey) final  bool remember;
+  /// username, Username
+  @override
+  @JsonKey(name: BodyFilesFormBasic.usernameKey)
+  final String username;
 
-/// Create a copy of BodyFilesFormBasic
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$BodyFilesFormBasicCopyWith<_BodyFilesFormBasic> get copyWith => __$BodyFilesFormBasicCopyWithImpl<_BodyFilesFormBasic>(this, _$identity);
+  /// password, Password
+  @override
+  @JsonKey(name: BodyFilesFormBasic.passwordKey)
+  final String password;
 
-@override
-Map<String, dynamic> toJson() {
-  return _$BodyFilesFormBasicToJson(this, );
-}
+  /// remember, Remember login
+  @override
+  @JsonKey(name: BodyFilesFormBasic.rememberKey)
+  final bool remember;
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BodyFilesFormBasic&&(identical(other.username, username) || other.username == username)&&(identical(other.password, password) || other.password == password)&&(identical(other.remember, remember) || other.remember == remember));
-}
+  /// Create a copy of BodyFilesFormBasic
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$BodyFilesFormBasicCopyWith<_BodyFilesFormBasic> get copyWith =>
+      __$BodyFilesFormBasicCopyWithImpl<_BodyFilesFormBasic>(this, _$identity);
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,username,password,remember);
+  @override
+  Map<String, dynamic> toJson() {
+    return _$BodyFilesFormBasicToJson(
+      this,
+    );
+  }
 
-@override
-String toString() {
-  return 'BodyFilesFormBasic(username: $username, password: $password, remember: $remember)';
-}
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _BodyFilesFormBasic &&
+            (identical(other.username, username) ||
+                other.username == username) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.remember, remember) ||
+                other.remember == remember));
+  }
 
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, username, password, remember);
 
+  @override
+  String toString() {
+    return 'BodyFilesFormBasic(username: $username, password: $password, remember: $remember)';
+  }
 }
 
 /// @nodoc
-abstract mixin class _$BodyFilesFormBasicCopyWith<$Res> implements $BodyFilesFormBasicCopyWith<$Res> {
-  factory _$BodyFilesFormBasicCopyWith(_BodyFilesFormBasic value, $Res Function(_BodyFilesFormBasic) _then) = __$BodyFilesFormBasicCopyWithImpl;
-@override @useResult
-$Res call({
-@JsonKey(name: BodyFilesFormBasic.usernameKey) String username,@JsonKey(name: BodyFilesFormBasic.passwordKey) String password,@JsonKey(name: BodyFilesFormBasic.rememberKey) bool remember
-});
-
-
-
-
+abstract mixin class _$BodyFilesFormBasicCopyWith<$Res>
+    implements $BodyFilesFormBasicCopyWith<$Res> {
+  factory _$BodyFilesFormBasicCopyWith(
+          _BodyFilesFormBasic value, $Res Function(_BodyFilesFormBasic) _then) =
+      __$BodyFilesFormBasicCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: BodyFilesFormBasic.usernameKey) String username,
+      @JsonKey(name: BodyFilesFormBasic.passwordKey) String password,
+      @JsonKey(name: BodyFilesFormBasic.rememberKey) bool remember});
 }
+
 /// @nodoc
 class __$BodyFilesFormBasicCopyWithImpl<$Res>
     implements _$BodyFilesFormBasicCopyWith<$Res> {
@@ -143,18 +194,30 @@ class __$BodyFilesFormBasicCopyWithImpl<$Res>
   final _BodyFilesFormBasic _self;
   final $Res Function(_BodyFilesFormBasic) _then;
 
-/// Create a copy of BodyFilesFormBasic
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? username = null,Object? password = null,Object? remember = null,}) {
-  return _then(_BodyFilesFormBasic(
-username: null == username ? _self.username : username // ignore: cast_nullable_to_non_nullable
-as String,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
-as String,remember: null == remember ? _self.remember : remember // ignore: cast_nullable_to_non_nullable
-as bool,
-  ));
-}
-
-
+  /// Create a copy of BodyFilesFormBasic
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? username = null,
+    Object? password = null,
+    Object? remember = null,
+  }) {
+    return _then(_BodyFilesFormBasic(
+      username: null == username
+          ? _self.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _self.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      remember: null == remember
+          ? _self.remember
+          : remember // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 // dart format on

@@ -23,5 +23,6 @@ abstract class AdvancedCollectionVariableTupleQueries
 
   factory AdvancedCollectionVariableTupleQueries.fromJson(
     Map<String, dynamic> json,
-  ) => _$AdvancedCollectionVariableTupleQueriesFromJson(json);
+  ) =>
+      _$AdvancedCollectionVariableTupleQueriesFromJson(json);
 }

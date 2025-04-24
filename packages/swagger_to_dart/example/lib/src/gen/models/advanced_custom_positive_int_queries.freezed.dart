@@ -15,49 +15,57 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$AdvancedCustomPositiveIntQueries {
+  /// value
+  @JsonKey(name: AdvancedCustomPositiveIntQueries.valueKey)
+  int get value;
 
-/// value
-@JsonKey(name: AdvancedCustomPositiveIntQueries.valueKey) int get value;/// value2
-@JsonKey(name: AdvancedCustomPositiveIntQueries.value2Key) int get value2;
-/// Create a copy of AdvancedCustomPositiveIntQueries
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$AdvancedCustomPositiveIntQueriesCopyWith<AdvancedCustomPositiveIntQueries> get copyWith => _$AdvancedCustomPositiveIntQueriesCopyWithImpl<AdvancedCustomPositiveIntQueries>(this as AdvancedCustomPositiveIntQueries, _$identity);
+  /// value2
+  @JsonKey(name: AdvancedCustomPositiveIntQueries.value2Key)
+  int get value2;
+
+  /// Create a copy of AdvancedCustomPositiveIntQueries
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $AdvancedCustomPositiveIntQueriesCopyWith<AdvancedCustomPositiveIntQueries>
+      get copyWith => _$AdvancedCustomPositiveIntQueriesCopyWithImpl<
+              AdvancedCustomPositiveIntQueries>(
+          this as AdvancedCustomPositiveIntQueries, _$identity);
 
   /// Serializes this AdvancedCustomPositiveIntQueries to a JSON map.
   Map<String, dynamic> toJson();
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is AdvancedCustomPositiveIntQueries &&
+            (identical(other.value, value) || other.value == value) &&
+            (identical(other.value2, value2) || other.value2 == value2));
+  }
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AdvancedCustomPositiveIntQueries&&(identical(other.value, value) || other.value == value)&&(identical(other.value2, value2) || other.value2 == value2));
-}
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, value, value2);
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,value,value2);
-
-@override
-String toString() {
-  return 'AdvancedCustomPositiveIntQueries(value: $value, value2: $value2)';
-}
-
-
+  @override
+  String toString() {
+    return 'AdvancedCustomPositiveIntQueries(value: $value, value2: $value2)';
+  }
 }
 
 /// @nodoc
-abstract mixin class $AdvancedCustomPositiveIntQueriesCopyWith<$Res>  {
-  factory $AdvancedCustomPositiveIntQueriesCopyWith(AdvancedCustomPositiveIntQueries value, $Res Function(AdvancedCustomPositiveIntQueries) _then) = _$AdvancedCustomPositiveIntQueriesCopyWithImpl;
-@useResult
-$Res call({
-@JsonKey(name: AdvancedCustomPositiveIntQueries.valueKey) int value,@JsonKey(name: AdvancedCustomPositiveIntQueries.value2Key) int value2
-});
-
-
-
-
+abstract mixin class $AdvancedCustomPositiveIntQueriesCopyWith<$Res> {
+  factory $AdvancedCustomPositiveIntQueriesCopyWith(
+          AdvancedCustomPositiveIntQueries value,
+          $Res Function(AdvancedCustomPositiveIntQueries) _then) =
+      _$AdvancedCustomPositiveIntQueriesCopyWithImpl;
+  @useResult
+  $Res call(
+      {@JsonKey(name: AdvancedCustomPositiveIntQueries.valueKey) int value,
+      @JsonKey(name: AdvancedCustomPositiveIntQueries.value2Key) int value2});
 }
+
 /// @nodoc
 class _$AdvancedCustomPositiveIntQueriesCopyWithImpl<$Res>
     implements $AdvancedCustomPositiveIntQueriesCopyWith<$Res> {
@@ -66,71 +74,101 @@ class _$AdvancedCustomPositiveIntQueriesCopyWithImpl<$Res>
   final AdvancedCustomPositiveIntQueries _self;
   final $Res Function(AdvancedCustomPositiveIntQueries) _then;
 
-/// Create a copy of AdvancedCustomPositiveIntQueries
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? value = null,Object? value2 = null,}) {
-  return _then(_self.copyWith(
-value: null == value ? _self.value : value // ignore: cast_nullable_to_non_nullable
-as int,value2: null == value2 ? _self.value2 : value2 // ignore: cast_nullable_to_non_nullable
-as int,
-  ));
+  /// Create a copy of AdvancedCustomPositiveIntQueries
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+    Object? value2 = null,
+  }) {
+    return _then(_self.copyWith(
+      value: null == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as int,
+      value2: null == value2
+          ? _self.value2
+          : value2 // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
-
-}
-
 
 /// @nodoc
 
 @JsonSerializable(converters: convertors)
-class _AdvancedCustomPositiveIntQueries extends AdvancedCustomPositiveIntQueries {
-  const _AdvancedCustomPositiveIntQueries({@JsonKey(name: AdvancedCustomPositiveIntQueries.valueKey) required this.value, @JsonKey(name: AdvancedCustomPositiveIntQueries.value2Key) required this.value2}): super._();
-  factory _AdvancedCustomPositiveIntQueries.fromJson(Map<String, dynamic> json) => _$AdvancedCustomPositiveIntQueriesFromJson(json);
+class _AdvancedCustomPositiveIntQueries
+    extends AdvancedCustomPositiveIntQueries {
+  const _AdvancedCustomPositiveIntQueries(
+      {@JsonKey(name: AdvancedCustomPositiveIntQueries.valueKey)
+      required this.value,
+      @JsonKey(name: AdvancedCustomPositiveIntQueries.value2Key)
+      required this.value2})
+      : super._();
+  factory _AdvancedCustomPositiveIntQueries.fromJson(
+          Map<String, dynamic> json) =>
+      _$AdvancedCustomPositiveIntQueriesFromJson(json);
 
-/// value
-@override@JsonKey(name: AdvancedCustomPositiveIntQueries.valueKey) final  int value;
-/// value2
-@override@JsonKey(name: AdvancedCustomPositiveIntQueries.value2Key) final  int value2;
+  /// value
+  @override
+  @JsonKey(name: AdvancedCustomPositiveIntQueries.valueKey)
+  final int value;
 
-/// Create a copy of AdvancedCustomPositiveIntQueries
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$AdvancedCustomPositiveIntQueriesCopyWith<_AdvancedCustomPositiveIntQueries> get copyWith => __$AdvancedCustomPositiveIntQueriesCopyWithImpl<_AdvancedCustomPositiveIntQueries>(this, _$identity);
+  /// value2
+  @override
+  @JsonKey(name: AdvancedCustomPositiveIntQueries.value2Key)
+  final int value2;
 
-@override
-Map<String, dynamic> toJson() {
-  return _$AdvancedCustomPositiveIntQueriesToJson(this, );
-}
+  /// Create a copy of AdvancedCustomPositiveIntQueries
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$AdvancedCustomPositiveIntQueriesCopyWith<_AdvancedCustomPositiveIntQueries>
+      get copyWith => __$AdvancedCustomPositiveIntQueriesCopyWithImpl<
+          _AdvancedCustomPositiveIntQueries>(this, _$identity);
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AdvancedCustomPositiveIntQueries&&(identical(other.value, value) || other.value == value)&&(identical(other.value2, value2) || other.value2 == value2));
-}
+  @override
+  Map<String, dynamic> toJson() {
+    return _$AdvancedCustomPositiveIntQueriesToJson(
+      this,
+    );
+  }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,value,value2);
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _AdvancedCustomPositiveIntQueries &&
+            (identical(other.value, value) || other.value == value) &&
+            (identical(other.value2, value2) || other.value2 == value2));
+  }
 
-@override
-String toString() {
-  return 'AdvancedCustomPositiveIntQueries(value: $value, value2: $value2)';
-}
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, value, value2);
 
-
+  @override
+  String toString() {
+    return 'AdvancedCustomPositiveIntQueries(value: $value, value2: $value2)';
+  }
 }
 
 /// @nodoc
-abstract mixin class _$AdvancedCustomPositiveIntQueriesCopyWith<$Res> implements $AdvancedCustomPositiveIntQueriesCopyWith<$Res> {
-  factory _$AdvancedCustomPositiveIntQueriesCopyWith(_AdvancedCustomPositiveIntQueries value, $Res Function(_AdvancedCustomPositiveIntQueries) _then) = __$AdvancedCustomPositiveIntQueriesCopyWithImpl;
-@override @useResult
-$Res call({
-@JsonKey(name: AdvancedCustomPositiveIntQueries.valueKey) int value,@JsonKey(name: AdvancedCustomPositiveIntQueries.value2Key) int value2
-});
-
-
-
-
+abstract mixin class _$AdvancedCustomPositiveIntQueriesCopyWith<$Res>
+    implements $AdvancedCustomPositiveIntQueriesCopyWith<$Res> {
+  factory _$AdvancedCustomPositiveIntQueriesCopyWith(
+          _AdvancedCustomPositiveIntQueries value,
+          $Res Function(_AdvancedCustomPositiveIntQueries) _then) =
+      __$AdvancedCustomPositiveIntQueriesCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: AdvancedCustomPositiveIntQueries.valueKey) int value,
+      @JsonKey(name: AdvancedCustomPositiveIntQueries.value2Key) int value2});
 }
+
 /// @nodoc
 class __$AdvancedCustomPositiveIntQueriesCopyWithImpl<$Res>
     implements _$AdvancedCustomPositiveIntQueriesCopyWith<$Res> {
@@ -139,17 +177,25 @@ class __$AdvancedCustomPositiveIntQueriesCopyWithImpl<$Res>
   final _AdvancedCustomPositiveIntQueries _self;
   final $Res Function(_AdvancedCustomPositiveIntQueries) _then;
 
-/// Create a copy of AdvancedCustomPositiveIntQueries
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? value = null,Object? value2 = null,}) {
-  return _then(_AdvancedCustomPositiveIntQueries(
-value: null == value ? _self.value : value // ignore: cast_nullable_to_non_nullable
-as int,value2: null == value2 ? _self.value2 : value2 // ignore: cast_nullable_to_non_nullable
-as int,
-  ));
-}
-
-
+  /// Create a copy of AdvancedCustomPositiveIntQueries
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? value = null,
+    Object? value2 = null,
+  }) {
+    return _then(_AdvancedCustomPositiveIntQueries(
+      value: null == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as int,
+      value2: null == value2
+          ? _self.value2
+          : value2 // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 // dart format on

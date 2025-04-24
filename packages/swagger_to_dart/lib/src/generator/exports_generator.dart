@@ -1,9 +1,10 @@
 import 'dart:io';
-
+import 'package:code_builder/code_builder.dart';
+import 'package:dart_style/dart_style.dart';
 import 'package:path/path.dart' as path;
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
-/// Class responsible for generating export files for models and clients
+/// Generates exports.dart files using code_builder
 class DartCodeExportsGenerator {
   const DartCodeExportsGenerator({
     required this.config,
@@ -13,64 +14,64 @@ class DartCodeExportsGenerator {
   final ConfigComponents config;
   final FileHandler fileHandler;
 
-  /// Generates the exports.dart file for models
+  /// Generates the models exports file
   Future<void> generateModelsExports() async {
-    final modelsDir = Directory(config.pathConfig.modelsOutputDirectory);
-    if (!modelsDir.existsSync()) {
-      return;
-    }
+    final dirPath = config.pathConfig.modelsOutputDirectory;
+    final dir = Directory(dirPath);
+    if (!dir.existsSync()) return;
 
-    final buffer = StringBuffer();
-
-    buffer.writeln('// GENERATED CODE - DO NOT MODIFY BY HAND');
-
-    final modelFiles = modelsDir
+    final files = dir
         .listSync()
-        .where((entity) => entity is File && entity.path.endsWith('.dart'))
-        .map((entity) => entity as File)
-        .where(
-          (file) =>
-              !file.path.endsWith('.g.dart') &&
-              !file.path.endsWith('.freezed.dart'),
-        )
+        .whereType<File>()
+        .where((f) => f.path.endsWith('.dart'))
+        .where((f) =>
+            !f.path.endsWith('.g.dart') && !f.path.endsWith('.freezed.dart'))
+        .map((f) => path.basename(f.path))
         .toList();
 
-    for (final file in modelFiles) {
-      buffer.writeln("export '${path.basename(file.path)}';");
-    }
+    final lib = Library((b) {
+      b.body.add(Code('// GENERATED CODE - DO NOT MODIFY BY HAND'));
+      for (var file in files) {
+        b.directives.add(Directive.export(file));
+      }
+    });
 
-    final exportsFilePath = path.join(
-      config.pathConfig.modelsOutputDirectory,
-      'models.dart',
-    );
-    await fileHandler.writeFile(exportsFilePath, buffer.toString());
+    final emitter = DartEmitter.scoped(useNullSafetySyntax: true);
+    final formatter =
+        DartFormatter(languageVersion: DartFormatter.latestLanguageVersion);
+    final code = formatter.format('${lib.accept(emitter)}');
+
+    final outPath = path.join(dirPath, 'models.dart');
+    await fileHandler.writeFile(outPath, code);
   }
 
+  /// Generates the clients exports file
   Future<void> generateClientsExports() async {
-    final clientsDir = Directory(config.pathConfig.clientsOutputDirectory);
-    if (!clientsDir.existsSync()) {
-      return;
-    }
+    final dirPath = config.pathConfig.clientsOutputDirectory;
+    final dir = Directory(dirPath);
+    if (!dir.existsSync()) return;
 
-    final buffer = StringBuffer();
-    buffer.writeln('// GENERATED CODE - DO NOT MODIFY BY HAND');
-
-    final clientFiles = clientsDir
+    final files = dir
         .listSync()
-        .where((entity) => entity is File && entity.path.endsWith('.dart'))
-        .map((entity) => entity as File)
-        .where((file) => !file.path.endsWith('.g.dart'))
+        .whereType<File>()
+        .where((f) => f.path.endsWith('.dart'))
+        .where((f) => !f.path.endsWith('.g.dart'))
+        .map((f) => path.basename(f.path))
         .toList();
 
-    // Write exports for each client
-    for (final file in clientFiles) {
-      buffer.writeln("export '${path.basename(file.path)}';");
-    }
+    final lib = Library((b) {
+      b.body.add(Code('// GENERATED CODE - DO NOT MODIFY BY HAND'));
+      for (var file in files) {
+        b.directives.add(Directive.export(file));
+      }
+    });
 
-    final exportsFilePath = path.join(
-      config.pathConfig.clientsOutputDirectory,
-      'clients.dart',
-    );
-    await fileHandler.writeFile(exportsFilePath, buffer.toString());
+    final emitter = DartEmitter.scoped(useNullSafetySyntax: true);
+    final formatter =
+        DartFormatter(languageVersion: DartFormatter.latestLanguageVersion);
+    final code = formatter.format('${lib.accept(emitter)}');
+
+    final outPath = path.join(dirPath, 'clients.dart');
+    await fileHandler.writeFile(outPath, code);
   }
 }

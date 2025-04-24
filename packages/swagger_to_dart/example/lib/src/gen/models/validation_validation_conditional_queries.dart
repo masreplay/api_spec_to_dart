@@ -28,5 +28,6 @@ abstract class ValidationValidationConditionalQueries
 
   factory ValidationValidationConditionalQueries.fromJson(
     Map<String, dynamic> json,
-  ) => _$ValidationValidationConditionalQueriesFromJson(json);
+  ) =>
+      _$ValidationValidationConditionalQueriesFromJson(json);
 }
