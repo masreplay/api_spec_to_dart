@@ -15,20 +15,9 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$CountryModel {
-  /// Alpha2
-  @JsonKey(name: CountryModel.alpha2Key)
   String? get alpha2;
-
-  /// Alpha3
-  @JsonKey(name: CountryModel.alpha3Key)
   String? get alpha3;
-
-  /// Numeric
-  @JsonKey(name: CountryModel.numericKey)
   String? get numeric;
-
-  /// Short Name
-  @JsonKey(name: CountryModel.shortNameKey)
   String? get shortName;
 
   /// Create a copy of CountryModel
@@ -72,10 +61,7 @@ abstract mixin class $CountryModelCopyWith<$Res> {
       _$CountryModelCopyWithImpl;
   @useResult
   $Res call(
-      {@JsonKey(name: CountryModel.alpha2Key) String? alpha2,
-      @JsonKey(name: CountryModel.alpha3Key) String? alpha3,
-      @JsonKey(name: CountryModel.numericKey) String? numeric,
-      @JsonKey(name: CountryModel.shortNameKey) String? shortName});
+      {String? alpha2, String? alpha3, String? numeric, String? shortName});
 }
 
 /// @nodoc
@@ -118,35 +104,23 @@ class _$CountryModelCopyWithImpl<$Res> implements $CountryModelCopyWith<$Res> {
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
-class _CountryModel extends CountryModel {
+@JsonSerializable(converters: Convertors.convertors)
+class _CountryModel implements CountryModel {
   const _CountryModel(
-      {@JsonKey(name: CountryModel.alpha2Key) required this.alpha2,
-      @JsonKey(name: CountryModel.alpha3Key) required this.alpha3,
-      @JsonKey(name: CountryModel.numericKey) required this.numeric,
-      @JsonKey(name: CountryModel.shortNameKey) required this.shortName})
-      : super._();
+      {required this.alpha2,
+      required this.alpha3,
+      required this.numeric,
+      required this.shortName});
   factory _CountryModel.fromJson(Map<String, dynamic> json) =>
       _$CountryModelFromJson(json);
 
-  /// Alpha2
   @override
-  @JsonKey(name: CountryModel.alpha2Key)
   final String? alpha2;
-
-  /// Alpha3
   @override
-  @JsonKey(name: CountryModel.alpha3Key)
   final String? alpha3;
-
-  /// Numeric
   @override
-  @JsonKey(name: CountryModel.numericKey)
   final String? numeric;
-
-  /// Short Name
   @override
-  @JsonKey(name: CountryModel.shortNameKey)
   final String? shortName;
 
   /// Create a copy of CountryModel
@@ -196,10 +170,7 @@ abstract mixin class _$CountryModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: CountryModel.alpha2Key) String? alpha2,
-      @JsonKey(name: CountryModel.alpha3Key) String? alpha3,
-      @JsonKey(name: CountryModel.numericKey) String? numeric,
-      @JsonKey(name: CountryModel.shortNameKey) String? shortName});
+      {String? alpha2, String? alpha3, String? numeric, String? shortName});
 }
 
 /// @nodoc

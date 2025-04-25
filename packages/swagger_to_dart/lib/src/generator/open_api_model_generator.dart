@@ -327,10 +327,18 @@ class AnyOfPropertyGenerator implements PropertyGeneratorStrategy {
     final types = nonNullSchemas
         .map((schema) => unionTypeGenerator.resolveDartType(schema))
         .toList();
-    final unionClassName = unionTypeGenerator.generateUnionClassName(types);
+
+    // Generate a valid union class name by joining types with "Or"
+    final unionClassName = types.map((type) => type.pascalCase).join('Or');
+
+    // Ensure the union class name is unique and valid
+    final sanitizedUnionClassName = unionClassName
+        .replaceAll('<', '')
+        .replaceAll('>', '')
+        .replaceAll(',', '');
 
     // Add the union class to the generated content
-    return isNullable ? '$unionClassName?' : unionClassName;
+    return isNullable ? '$sanitizedUnionClassName?' : sanitizedUnionClassName;
   }
 }
 

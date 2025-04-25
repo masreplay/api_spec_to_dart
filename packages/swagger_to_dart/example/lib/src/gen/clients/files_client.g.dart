@@ -18,21 +18,13 @@ class _FilesClient implements FilesClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>> filesFormBasic({
-    required BodyFilesFormBasic body,
-  }) async {
+  Future<HttpResponse<dynamic>> filesFormBasic() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
-      Options(
-        method: 'POST',
-        headers: _headers,
-        extra: _extra,
-        contentType: 'application/x-www-form-urlencoded',
-      )
+      Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
             '/forms/basic',
@@ -48,20 +40,13 @@ class _FilesClient implements FilesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> _filesFileUpload({
-    required Map<String, dynamic> body,
-  }) async {
+  Future<HttpResponse<dynamic>> filesFileUpload() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = FormData.fromMap(body);
+    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
-      Options(
-        method: 'POST',
-        headers: _headers,
-        extra: _extra,
-        contentType: 'multipart/form-data',
-      )
+      Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
             '/files/upload',
@@ -77,20 +62,13 @@ class _FilesClient implements FilesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> _filesFilesMultiple({
-    required Map<String, dynamic> body,
-  }) async {
+  Future<HttpResponse<dynamic>> filesFilesMultiple() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = FormData.fromMap(body);
+    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
-      Options(
-        method: 'POST',
-        headers: _headers,
-        extra: _extra,
-        contentType: 'multipart/form-data',
-      )
+      Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
             '/files/multiple',

@@ -19,11 +19,10 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<dynamic>> advancedSpecialUuid({
-    required AdvancedSpecialUuidQueries queries,
+    required String id,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.addAll(queries.toJson());
+    final queryParameters = <String, dynamic>{r'id': id};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
@@ -44,11 +43,10 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<dynamic>> advancedSpecialEnum({
-    required AdvancedSpecialEnumQueries queries,
+    required UserLevel level,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.addAll(queries.toJson());
+    final queryParameters = <String, dynamic>{r'level': level.toJson()};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
@@ -69,11 +67,10 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<dynamic>> advancedSpecialLiteral({
-    required AdvancedSpecialLiteralQueries queries,
+    required String mode,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.addAll(queries.toJson());
+    final queryParameters = <String, dynamic>{r'mode': mode};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
@@ -94,11 +91,10 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<dynamic>> advancedCollectionList({
-    required AdvancedCollectionListQueries queries,
+    required List<String> items,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.addAll(queries.toJson());
+    final queryParameters = <String, dynamic>{r'items': items};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
@@ -119,11 +115,10 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<dynamic>> advancedCollectionSet({
-    required AdvancedCollectionSetQueries queries,
+    required List<int> items,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.addAll(queries.toJson());
+    final queryParameters = <String, dynamic>{r'items': items};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
@@ -143,14 +138,11 @@ class _AdvancedClient implements AdvancedClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> advancedCollectionDict({
-    required Map<String, dynamic> body,
-  }) async {
+  Future<HttpResponse<dynamic>> advancedCollectionDict() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body);
+    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
@@ -169,11 +161,10 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<dynamic>> advancedCollectionTuple({
-    required AdvancedCollectionTupleQueries queries,
+    required List<dynamic> items,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.addAll(queries.toJson());
+    final queryParameters = <String, dynamic>{r'items': items};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
@@ -194,11 +185,10 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<dynamic>> advancedCollectionVariableTuple({
-    required AdvancedCollectionVariableTupleQueries queries,
+    required List<String> items,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.addAll(queries.toJson());
+    final queryParameters = <String, dynamic>{r'items': items};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
@@ -219,11 +209,10 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<dynamic>> advancedUnionSimple({
-    required AdvancedUnionSimpleQueries queries,
+    required dynamic value,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.addAll(queries.toJson());
+    final queryParameters = <String, dynamic>{r'value': value.toJson()};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
@@ -243,12 +232,10 @@ class _AdvancedClient implements AdvancedClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> advancedUnionOptional({
-    required AdvancedUnionOptionalQueries queries,
-  }) async {
+  Future<HttpResponse<dynamic>> advancedUnionOptional({String? value}) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.addAll(queries.toJson());
+    final queryParameters = <String, dynamic>{r'value': value};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
@@ -269,11 +256,10 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<dynamic>> advancedUnionModern({
-    required AdvancedUnionModernQueries queries,
+    required dynamic value,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.addAll(queries.toJson());
+    final queryParameters = <String, dynamic>{r'value': value.toJson()};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
@@ -294,11 +280,14 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<dynamic>> advancedCustomPositiveInt({
-    required AdvancedCustomPositiveIntQueries queries,
+    required int value,
+    required int value2,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.addAll(queries.toJson());
+    final queryParameters = <String, dynamic>{
+      r'value': value,
+      r'value2': value2,
+    };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
@@ -319,11 +308,17 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<dynamic>> advancedDependsQuery({
-    required AdvancedDependsQueryQueries queries,
+    String? q,
+    required int skip,
+    required int limit,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.addAll(queries.toJson());
+    final queryParameters = <String, dynamic>{
+      r'q': q,
+      r'skip': skip,
+      r'limit': limit,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
@@ -344,11 +339,10 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<dynamic>> advancedDependsClass({
-    required AdvancedDependsClassQueries queries,
+    required String dbName,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.addAll(queries.toJson());
+    final queryParameters = <String, dynamic>{r'db_name': dbName};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
@@ -392,12 +386,9 @@ class _AdvancedClient implements AdvancedClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> advancedErrorCustom({
-    required AdvancedErrorCustomQueries queries,
-  }) async {
+  Future<HttpResponse<dynamic>> advancedErrorCustom({required int code}) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.addAll(queries.toJson());
+    final queryParameters = <String, dynamic>{r'code': code};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(

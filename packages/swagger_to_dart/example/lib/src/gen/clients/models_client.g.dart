@@ -18,14 +18,11 @@ class _ModelsClient implements ModelsClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<User>> modelsCreateUser({
-    required UserCreate body,
-  }) async {
+  Future<HttpResponse<User>> modelsCreateUser() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<User>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
@@ -49,14 +46,11 @@ class _ModelsClient implements ModelsClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> modelsGetLocation({
-    required Location body,
-  }) async {
+  Future<HttpResponse<dynamic>> modelsGetLocation() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
@@ -74,14 +68,11 @@ class _ModelsClient implements ModelsClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> modelsCreateAnimal({
-    required ModelsCreateAnimalUnionAnimal body,
-  }) async {
+  Future<HttpResponse<dynamic>> modelsCreateAnimal() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
@@ -128,11 +119,10 @@ class _ModelsClient implements ModelsClient {
 
   @override
   Future<HttpResponse<dynamic>> modelsResponseMultiple({
-    required ModelsResponseMultipleQueries queries,
+    required bool isUser,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.addAll(queries.toJson());
+    final queryParameters = <String, dynamic>{r'is_user': isUser};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(

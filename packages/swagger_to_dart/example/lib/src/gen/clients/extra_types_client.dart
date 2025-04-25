@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:example/src/gen/models/models.dart';
-
 part 'extra_types_client.g.dart';
 
 @RestApi()
@@ -13,110 +12,82 @@ abstract class ExtraTypesClient {
   }) = _ExtraTypesClient;
 
   /// OperationId: Extra Types-create_color
-  /// Summery: Create Color
+  /// Summary: Create Color
   @POST('/extra_types/color/')
-  Future<HttpResponse> extraTypesCreateColor({
-    @Body() required ColorModel body,
-  });
+  Future<HttpResponse> extraTypesCreateColor();
 
   /// OperationId: Extra Types-process_country
-  /// Summery: Process Country
+  /// Summary: Process Country
   @POST('/extra_types/country/')
-  Future<HttpResponse> extraTypesProcessCountry({
-    @Body() required CountryModel body,
-  });
+  Future<HttpResponse> extraTypesProcessCountry();
 
   /// OperationId: Extra Types-process_payment_card
-  /// Summery: Process Payment Card
+  /// Summary: Process Payment Card
   @POST('/extra_types/payment/')
-  Future<HttpResponse> extraTypesProcessPaymentCard({
-    @Body() required PaymentCardModel body,
-  });
+  Future<HttpResponse> extraTypesProcessPaymentCard();
 
   /// OperationId: Extra Types-process_phone
-  /// Summery: Process Phone
+  /// Summary: Process Phone
   @POST('/extra_types/phone/')
-  Future<HttpResponse> extraTypesProcessPhone({
-    @Body() required PhoneNumberModel body,
-  });
+  Future<HttpResponse> extraTypesProcessPhone();
 
   /// OperationId: Extra Types-process_routing
-  /// Summery: Process Routing
+  /// Summary: Process Routing
   @POST('/extra_types/routing/')
-  Future<HttpResponse> extraTypesProcessRouting({
-    @Body() required ABARoutingModel body,
-  });
+  Future<HttpResponse> extraTypesProcessRouting();
 
   /// OperationId: Extra Types-process_coordinate
-  /// Summery: Process Coordinate
+  /// Summary: Process Coordinate
   @POST('/extra_types/coordinate/')
-  Future<HttpResponse> extraTypesProcessCoordinate({
-    @Body() required CoordinateModel body,
-  });
+  Future<HttpResponse> extraTypesProcessCoordinate();
 
   /// OperationId: Extra Types-process_mac
-  /// Summery: Process Mac
+  /// Summary: Process Mac
   @POST('/extra_types/mac/')
-  Future<HttpResponse> extraTypesProcessMac({
-    @Body() required MACAddressModel body,
-  });
+  Future<HttpResponse> extraTypesProcessMac();
 
   /// OperationId: Extra Types-process_isbn
-  /// Summery: Process Isbn
+  /// Summary: Process Isbn
   @POST('/extra_types/isbn/')
-  Future<HttpResponse> extraTypesProcessIsbn({@Body() required IsbnModel body});
+  Future<HttpResponse> extraTypesProcessIsbn();
 
   /// OperationId: Extra Types-process_currency
-  /// Summery: Process Currency
+  /// Summary: Process Currency
   @POST('/extra_types/currency/')
-  Future<HttpResponse> extraTypesProcessCurrency({
-    @Body() required CurrencyModel body,
-  });
+  Future<HttpResponse> extraTypesProcessCurrency();
 
   /// OperationId: Extra Types-process_domain
-  /// Summery: Process Domain
+  /// Summary: Process Domain
   @POST('/extra_types/domain/')
-  Future<HttpResponse> extraTypesProcessDomain({
-    @Body() required DomainModel body,
-  });
+  Future<HttpResponse> extraTypesProcessDomain();
 
   /// OperationId: Extra Types-process_language
-  /// Summery: Process Language
+  /// Summary: Process Language
   @POST('/extra_types/language/')
-  Future<HttpResponse> extraTypesProcessLanguage({
-    @Body() required LanguageModel body,
-  });
+  Future<HttpResponse> extraTypesProcessLanguage();
 
   /// OperationId: Extra Types-process_script
-  /// Summery: Process Script
+  /// Summary: Process Script
   @POST('/extra_types/script/')
-  Future<HttpResponse> extraTypesProcessScript({
-    @Body() required ScriptCodeModel body,
-  });
+  Future<HttpResponse> extraTypesProcessScript();
 
   /// OperationId: Extra Types-process_version
-  /// Summery: Process Version
+  /// Summary: Process Version
   @POST('/extra_types/version/')
-  Future<HttpResponse> extraTypesProcessVersion({
-    @Body() required VersionModel body,
-  });
+  Future<HttpResponse> extraTypesProcessVersion();
 
   /// OperationId: Extra Types-process_s3_path
-  /// Summery: Process S3 Path
+  /// Summary: Process S3 Path
   @POST('/extra_types/s3/')
-  Future<HttpResponse> extraTypesProcessS3Path({
-    @Body() required S3PathModel body,
-  });
+  Future<HttpResponse> extraTypesProcessS3Path();
 
   /// OperationId: Extra Types-process_timezone
-  /// Summery: Process Timezone
+  /// Summary: Process Timezone
   @POST('/extra_types/timezone/')
-  Future<HttpResponse> extraTypesProcessTimezone({
-    @Body() required TimeZoneModel body,
-  });
+  Future<HttpResponse> extraTypesProcessTimezone();
 
   /// OperationId: Extra Types-process_ulid
-  /// Summery: Process Ulid
+  /// Summary: Process Ulid
   @POST('/extra_types/ulid/')
-  Future<HttpResponse> extraTypesProcessUlid({@Body() required UlidModel body});
+  Future<HttpResponse> extraTypesProcessUlid();
 }

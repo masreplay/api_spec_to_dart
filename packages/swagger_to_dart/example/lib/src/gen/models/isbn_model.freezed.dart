@@ -15,8 +15,6 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$IsbnModel {
-  /// isbn
-  @JsonKey(name: IsbnModel.isbnKey)
   String get isbn;
 
   /// Create a copy of IsbnModel
@@ -52,7 +50,7 @@ abstract mixin class $IsbnModelCopyWith<$Res> {
   factory $IsbnModelCopyWith(IsbnModel value, $Res Function(IsbnModel) _then) =
       _$IsbnModelCopyWithImpl;
   @useResult
-  $Res call({@JsonKey(name: IsbnModel.isbnKey) String isbn});
+  $Res call({String isbn});
 }
 
 /// @nodoc
@@ -80,16 +78,13 @@ class _$IsbnModelCopyWithImpl<$Res> implements $IsbnModelCopyWith<$Res> {
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
-class _IsbnModel extends IsbnModel {
-  const _IsbnModel({@JsonKey(name: IsbnModel.isbnKey) required this.isbn})
-      : super._();
+@JsonSerializable(converters: Convertors.convertors)
+class _IsbnModel implements IsbnModel {
+  const _IsbnModel({required this.isbn});
   factory _IsbnModel.fromJson(Map<String, dynamic> json) =>
       _$IsbnModelFromJson(json);
 
-  /// isbn
   @override
-  @JsonKey(name: IsbnModel.isbnKey)
   final String isbn;
 
   /// Create a copy of IsbnModel
@@ -133,7 +128,7 @@ abstract mixin class _$IsbnModelCopyWith<$Res>
       __$IsbnModelCopyWithImpl;
   @override
   @useResult
-  $Res call({@JsonKey(name: IsbnModel.isbnKey) String isbn});
+  $Res call({String isbn});
 }
 
 /// @nodoc

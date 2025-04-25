@@ -14,6 +14,7 @@ _HttpValidationError _$HttpValidationErrorFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$HttpValidationErrorToJson(
-  _HttpValidationError instance,
-) =>
-    <String, dynamic>{'detail': instance.detail};
+        _HttpValidationError instance) =>
+    <String, dynamic>{
+      'detail': instance.detail,
+    };

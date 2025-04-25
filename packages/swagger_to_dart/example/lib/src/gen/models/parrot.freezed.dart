@@ -15,16 +15,8 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$Parrot {
-  /// name, The animal's name
-  @JsonKey(name: Parrot.nameKey)
   String get name;
-
-  /// type
-  @JsonKey(name: Parrot.typeKey)
   String get type;
-
-  /// phrases, Phrases the parrot can say
-  @JsonKey(name: Parrot.phrasesKey)
   List<String> get phrases;
 
   /// Create a copy of Parrot
@@ -63,10 +55,7 @@ abstract mixin class $ParrotCopyWith<$Res> {
   factory $ParrotCopyWith(Parrot value, $Res Function(Parrot) _then) =
       _$ParrotCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: Parrot.nameKey) String name,
-      @JsonKey(name: Parrot.typeKey) String type,
-      @JsonKey(name: Parrot.phrasesKey) List<String> phrases});
+  $Res call({String name, String type, List<String> phrases});
 }
 
 /// @nodoc
@@ -104,32 +93,21 @@ class _$ParrotCopyWithImpl<$Res> implements $ParrotCopyWith<$Res> {
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
-class _Parrot extends Parrot {
+@JsonSerializable(converters: Convertors.convertors)
+class _Parrot implements Parrot {
   const _Parrot(
-      {@JsonKey(name: Parrot.nameKey) required this.name,
-      @JsonKey(name: Parrot.typeKey) this.type = 'parrot',
-      @JsonKey(name: Parrot.phrasesKey) required final List<String> phrases})
-      : _phrases = phrases,
-        super._();
+      {required this.name,
+      required this.type,
+      required final List<String> phrases})
+      : _phrases = phrases;
   factory _Parrot.fromJson(Map<String, dynamic> json) => _$ParrotFromJson(json);
 
-  /// name, The animal's name
   @override
-  @JsonKey(name: Parrot.nameKey)
   final String name;
-
-  /// type
   @override
-  @JsonKey(name: Parrot.typeKey)
   final String type;
-
-  /// phrases, Phrases the parrot can say
   final List<String> _phrases;
-
-  /// phrases, Phrases the parrot can say
   @override
-  @JsonKey(name: Parrot.phrasesKey)
   List<String> get phrases {
     if (_phrases is EqualUnmodifiableListView) return _phrases;
     // ignore: implicit_dynamic_type
@@ -178,10 +156,7 @@ abstract mixin class _$ParrotCopyWith<$Res> implements $ParrotCopyWith<$Res> {
       __$ParrotCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: Parrot.nameKey) String name,
-      @JsonKey(name: Parrot.typeKey) String type,
-      @JsonKey(name: Parrot.phrasesKey) List<String> phrases});
+  $Res call({String name, String type, List<String> phrases});
 }
 
 /// @nodoc

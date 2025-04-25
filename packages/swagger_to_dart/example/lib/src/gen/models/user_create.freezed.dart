@@ -15,20 +15,9 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$UserCreate {
-  /// username, Username between 3-50 characters, alphanumeric with _ and -
-  @JsonKey(name: UserCreate.usernameKey)
   String get username;
-
-  /// email, Valid email address
-  @JsonKey(name: UserCreate.emailKey)
   String get email;
-
-  /// Full Name, User's full name
-  @JsonKey(name: UserCreate.fullNameKey)
   String? get fullName;
-
-  /// password, Password with minimum 8 characters
-  @JsonKey(name: UserCreate.passwordKey)
   String get password;
 
   /// Create a copy of UserCreate
@@ -72,11 +61,7 @@ abstract mixin class $UserCreateCopyWith<$Res> {
           UserCreate value, $Res Function(UserCreate) _then) =
       _$UserCreateCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: UserCreate.usernameKey) String username,
-      @JsonKey(name: UserCreate.emailKey) String email,
-      @JsonKey(name: UserCreate.fullNameKey) String? fullName,
-      @JsonKey(name: UserCreate.passwordKey) String password});
+  $Res call({String username, String email, String? fullName, String password});
 }
 
 /// @nodoc
@@ -119,35 +104,23 @@ class _$UserCreateCopyWithImpl<$Res> implements $UserCreateCopyWith<$Res> {
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
-class _UserCreate extends UserCreate {
+@JsonSerializable(converters: Convertors.convertors)
+class _UserCreate implements UserCreate {
   const _UserCreate(
-      {@JsonKey(name: UserCreate.usernameKey) required this.username,
-      @JsonKey(name: UserCreate.emailKey) required this.email,
-      @JsonKey(name: UserCreate.fullNameKey) required this.fullName,
-      @JsonKey(name: UserCreate.passwordKey) required this.password})
-      : super._();
+      {required this.username,
+      required this.email,
+      required this.fullName,
+      required this.password});
   factory _UserCreate.fromJson(Map<String, dynamic> json) =>
       _$UserCreateFromJson(json);
 
-  /// username, Username between 3-50 characters, alphanumeric with _ and -
   @override
-  @JsonKey(name: UserCreate.usernameKey)
   final String username;
-
-  /// email, Valid email address
   @override
-  @JsonKey(name: UserCreate.emailKey)
   final String email;
-
-  /// Full Name, User's full name
   @override
-  @JsonKey(name: UserCreate.fullNameKey)
   final String? fullName;
-
-  /// password, Password with minimum 8 characters
   @override
-  @JsonKey(name: UserCreate.passwordKey)
   final String password;
 
   /// Create a copy of UserCreate
@@ -198,11 +171,7 @@ abstract mixin class _$UserCreateCopyWith<$Res>
       __$UserCreateCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: UserCreate.usernameKey) String username,
-      @JsonKey(name: UserCreate.emailKey) String email,
-      @JsonKey(name: UserCreate.fullNameKey) String? fullName,
-      @JsonKey(name: UserCreate.passwordKey) String password});
+  $Res call({String username, String email, String? fullName, String password});
 }
 
 /// @nodoc

@@ -37,7 +37,8 @@ abstract class SwaggerToDart with _$SwaggerToDart {
     @Default('schema/swagger.json') String inputDirectory,
     @Default('lib/src/gen') String outputDirectory,
     @Default('ApiClient') String apiClientClassName,
-    @Default([]) List<String> imports,
+    @Default([]) List<String> globalImports,
+    @Default({}) Map<String, List<String>> fileImports,
     @Default([]) List<String> skippedParameters,
   }) = _SwaggerToDart;
 

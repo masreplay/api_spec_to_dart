@@ -15,16 +15,8 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$UserBase {
-  /// username, Username between 3-50 characters, alphanumeric with _ and -
-  @JsonKey(name: UserBase.usernameKey)
   String get username;
-
-  /// email, Valid email address
-  @JsonKey(name: UserBase.emailKey)
   String get email;
-
-  /// Full Name, User's full name
-  @JsonKey(name: UserBase.fullNameKey)
   String? get fullName;
 
   /// Create a copy of UserBase
@@ -64,10 +56,7 @@ abstract mixin class $UserBaseCopyWith<$Res> {
   factory $UserBaseCopyWith(UserBase value, $Res Function(UserBase) _then) =
       _$UserBaseCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: UserBase.usernameKey) String username,
-      @JsonKey(name: UserBase.emailKey) String email,
-      @JsonKey(name: UserBase.fullNameKey) String? fullName});
+  $Res call({String username, String email, String? fullName});
 }
 
 /// @nodoc
@@ -105,29 +94,18 @@ class _$UserBaseCopyWithImpl<$Res> implements $UserBaseCopyWith<$Res> {
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
-class _UserBase extends UserBase {
+@JsonSerializable(converters: Convertors.convertors)
+class _UserBase implements UserBase {
   const _UserBase(
-      {@JsonKey(name: UserBase.usernameKey) required this.username,
-      @JsonKey(name: UserBase.emailKey) required this.email,
-      @JsonKey(name: UserBase.fullNameKey) required this.fullName})
-      : super._();
+      {required this.username, required this.email, required this.fullName});
   factory _UserBase.fromJson(Map<String, dynamic> json) =>
       _$UserBaseFromJson(json);
 
-  /// username, Username between 3-50 characters, alphanumeric with _ and -
   @override
-  @JsonKey(name: UserBase.usernameKey)
   final String username;
-
-  /// email, Valid email address
   @override
-  @JsonKey(name: UserBase.emailKey)
   final String email;
-
-  /// Full Name, User's full name
   @override
-  @JsonKey(name: UserBase.fullNameKey)
   final String? fullName;
 
   /// Create a copy of UserBase
@@ -174,10 +152,7 @@ abstract mixin class _$UserBaseCopyWith<$Res>
       __$UserBaseCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: UserBase.usernameKey) String username,
-      @JsonKey(name: UserBase.emailKey) String email,
-      @JsonKey(name: UserBase.fullNameKey) String? fullName});
+  $Res call({String username, String email, String? fullName});
 }
 
 /// @nodoc

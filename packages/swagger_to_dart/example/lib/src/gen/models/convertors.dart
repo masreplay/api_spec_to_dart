@@ -1,8 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-const convertors = <JsonConverter>[MultipartFileJsonConverter()];
-
 class MultipartFileJsonConverter
     implements JsonConverter<MultipartFile, MultipartFile> {
   const MultipartFileJsonConverter();
@@ -12,4 +10,10 @@ class MultipartFileJsonConverter
 
   @override
   MultipartFile toJson(MultipartFile object) => object;
+}
+
+class Convertors {
+  static const List<JsonConverter> convertors = <JsonConverter>[
+    MultipartFileJsonConverter(),
+  ];
 }

@@ -62,12 +62,9 @@ class _BasicClient implements BasicClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> basicBasicBoolean({
-    required BasicBasicBooleanQueries queries,
-  }) async {
+  Future<HttpResponse<dynamic>> basicBasicBoolean({required bool flag}) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.addAll(queries.toJson());
+    final queryParameters = <String, dynamic>{r'flag': flag};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
@@ -87,12 +84,9 @@ class _BasicClient implements BasicClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> basicBasicString({
-    required BasicBasicStringQueries queries,
-  }) async {
+  Future<HttpResponse<dynamic>> basicBasicString({required String text}) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.addAll(queries.toJson());
+    final queryParameters = <String, dynamic>{r'text': text};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
@@ -112,12 +106,9 @@ class _BasicClient implements BasicClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> basicDatetimeDate({
-    required BasicDatetimeDateQueries queries,
-  }) async {
+  Future<HttpResponse<dynamic>> basicDatetimeDate({required DateTime d}) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.addAll(queries.toJson());
+    final queryParameters = <String, dynamic>{r'd': d.toIso8601String()};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
@@ -138,11 +129,10 @@ class _BasicClient implements BasicClient {
 
   @override
   Future<HttpResponse<dynamic>> basicDatetimeDatetime({
-    required BasicDatetimeDatetimeQueries queries,
+    required DateTime dt,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.addAll(queries.toJson());
+    final queryParameters = <String, dynamic>{r'dt': dt.toIso8601String()};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
@@ -162,12 +152,9 @@ class _BasicClient implements BasicClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> basicDatetimeTime({
-    required BasicDatetimeTimeQueries queries,
-  }) async {
+  Future<HttpResponse<dynamic>> basicDatetimeTime({required String t}) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.addAll(queries.toJson());
+    final queryParameters = <String, dynamic>{r't': t};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
@@ -188,11 +175,10 @@ class _BasicClient implements BasicClient {
 
   @override
   Future<HttpResponse<dynamic>> basicDatetimeTimedelta({
-    required BasicDatetimeTimedeltaQueries queries,
+    required String td,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.addAll(queries.toJson());
+    final queryParameters = <String, dynamic>{r'td': td};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(

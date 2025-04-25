@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:example/src/gen/models/models.dart';
-
 part 'security_client.g.dart';
 
 @RestApi()
@@ -13,20 +12,19 @@ abstract class SecurityClient {
   }) = _SecurityClient;
 
   /// OperationId: security-login
-  /// Summery: Get an access token
+  /// Summary: Get an access token
   /// Description: OAuth2 compatible token login, get an access token for future requests.
-  @FormUrlEncoded()
   @POST('/token')
-  Future<HttpResponse> securityLogin({@Body() required BodySecurityLogin body});
+  Future<HttpResponse> securityLogin();
 
   /// OperationId: security-read_users_me
-  /// Summery: Get current user from token
+  /// Summary: Get current user from token
   /// Description: Get current user based on the token.
   @GET('/users/me')
   Future<HttpResponse> securityReadUsersMe();
 
   /// OperationId: security-get_secure_items
-  /// Summery: Get items using API key auth
+  /// Summary: Get items using API key auth
   /// Description: Get items using API key auth.
   @GET('/items/secure')
   Future<HttpResponse<List<Map<String, dynamic>>>> securityGetSecureItems();

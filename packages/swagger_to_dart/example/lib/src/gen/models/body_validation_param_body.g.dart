@@ -7,16 +7,14 @@ part of 'body_validation_param_body.dart';
 // **************************************************************************
 
 _BodyValidationParamBody _$BodyValidationParamBodyFromJson(
-  Map<String, dynamic> json,
-) =>
+        Map<String, dynamic> json) =>
     _BodyValidationParamBody(
       data: json['data'] as Map<String, dynamic>,
       importance: (json['importance'] as num).toInt(),
     );
 
 Map<String, dynamic> _$BodyValidationParamBodyToJson(
-  _BodyValidationParamBody instance,
-) =>
+        _BodyValidationParamBody instance) =>
     <String, dynamic>{
       'data': instance.data,
       'importance': instance.importance,

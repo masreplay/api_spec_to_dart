@@ -15,12 +15,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$Coordinate {
-  /// latitude
-  @JsonKey(name: Coordinate.latitudeKey)
   double get latitude;
-
-  /// longitude
-  @JsonKey(name: Coordinate.longitudeKey)
   double get longitude;
 
   /// Create a copy of Coordinate
@@ -60,9 +55,7 @@ abstract mixin class $CoordinateCopyWith<$Res> {
           Coordinate value, $Res Function(Coordinate) _then) =
       _$CoordinateCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: Coordinate.latitudeKey) double latitude,
-      @JsonKey(name: Coordinate.longitudeKey) double longitude});
+  $Res call({double latitude, double longitude});
 }
 
 /// @nodoc
@@ -95,23 +88,15 @@ class _$CoordinateCopyWithImpl<$Res> implements $CoordinateCopyWith<$Res> {
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
-class _Coordinate extends Coordinate {
-  const _Coordinate(
-      {@JsonKey(name: Coordinate.latitudeKey) required this.latitude,
-      @JsonKey(name: Coordinate.longitudeKey) required this.longitude})
-      : super._();
+@JsonSerializable(converters: Convertors.convertors)
+class _Coordinate implements Coordinate {
+  const _Coordinate({required this.latitude, required this.longitude});
   factory _Coordinate.fromJson(Map<String, dynamic> json) =>
       _$CoordinateFromJson(json);
 
-  /// latitude
   @override
-  @JsonKey(name: Coordinate.latitudeKey)
   final double latitude;
-
-  /// longitude
   @override
-  @JsonKey(name: Coordinate.longitudeKey)
   final double longitude;
 
   /// Create a copy of Coordinate
@@ -158,9 +143,7 @@ abstract mixin class _$CoordinateCopyWith<$Res>
       __$CoordinateCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: Coordinate.latitudeKey) double latitude,
-      @JsonKey(name: Coordinate.longitudeKey) double longitude});
+  $Res call({double latitude, double longitude});
 }
 
 /// @nodoc

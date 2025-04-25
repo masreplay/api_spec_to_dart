@@ -15,8 +15,6 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$MACAddressModel {
-  /// mac_address
-  @JsonKey(name: MACAddressModel.macAddressKey)
   String get macAddress;
 
   /// Create a copy of MACAddressModel
@@ -55,7 +53,7 @@ abstract mixin class $MACAddressModelCopyWith<$Res> {
           MACAddressModel value, $Res Function(MACAddressModel) _then) =
       _$MACAddressModelCopyWithImpl;
   @useResult
-  $Res call({@JsonKey(name: MACAddressModel.macAddressKey) String macAddress});
+  $Res call({String macAddress});
 }
 
 /// @nodoc
@@ -84,17 +82,13 @@ class _$MACAddressModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
-class _MACAddressModel extends MACAddressModel {
-  const _MACAddressModel(
-      {@JsonKey(name: MACAddressModel.macAddressKey) required this.macAddress})
-      : super._();
+@JsonSerializable(converters: Convertors.convertors)
+class _MACAddressModel implements MACAddressModel {
+  const _MACAddressModel({required this.macAddress});
   factory _MACAddressModel.fromJson(Map<String, dynamic> json) =>
       _$MACAddressModelFromJson(json);
 
-  /// mac_address
   @override
-  @JsonKey(name: MACAddressModel.macAddressKey)
   final String macAddress;
 
   /// Create a copy of MACAddressModel
@@ -139,7 +133,7 @@ abstract mixin class _$MACAddressModelCopyWith<$Res>
       __$MACAddressModelCopyWithImpl;
   @override
   @useResult
-  $Res call({@JsonKey(name: MACAddressModel.macAddressKey) String macAddress});
+  $Res call({String macAddress});
 }
 
 /// @nodoc

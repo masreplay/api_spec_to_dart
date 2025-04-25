@@ -15,8 +15,6 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$VersionModel {
-  /// version
-  @JsonKey(name: VersionModel.versionKey)
   String get version;
 
   /// Create a copy of VersionModel
@@ -54,7 +52,7 @@ abstract mixin class $VersionModelCopyWith<$Res> {
           VersionModel value, $Res Function(VersionModel) _then) =
       _$VersionModelCopyWithImpl;
   @useResult
-  $Res call({@JsonKey(name: VersionModel.versionKey) String version});
+  $Res call({String version});
 }
 
 /// @nodoc
@@ -82,17 +80,13 @@ class _$VersionModelCopyWithImpl<$Res> implements $VersionModelCopyWith<$Res> {
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
-class _VersionModel extends VersionModel {
-  const _VersionModel(
-      {@JsonKey(name: VersionModel.versionKey) required this.version})
-      : super._();
+@JsonSerializable(converters: Convertors.convertors)
+class _VersionModel implements VersionModel {
+  const _VersionModel({required this.version});
   factory _VersionModel.fromJson(Map<String, dynamic> json) =>
       _$VersionModelFromJson(json);
 
-  /// version
   @override
-  @JsonKey(name: VersionModel.versionKey)
   final String version;
 
   /// Create a copy of VersionModel
@@ -136,7 +130,7 @@ abstract mixin class _$VersionModelCopyWith<$Res>
       __$VersionModelCopyWithImpl;
   @override
   @useResult
-  $Res call({@JsonKey(name: VersionModel.versionKey) String version});
+  $Res call({String version});
 }
 
 /// @nodoc

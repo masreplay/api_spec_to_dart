@@ -15,12 +15,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$BodyValidationParamBody {
-  /// data, Arbitrary data object
-  @JsonKey(name: BodyValidationParamBody.dataKey)
   Map<String, dynamic> get data;
-
-  /// importance, Importance level from 0-10
-  @JsonKey(name: BodyValidationParamBody.importanceKey)
   int get importance;
 
   /// Create a copy of BodyValidationParamBody
@@ -61,10 +56,7 @@ abstract mixin class $BodyValidationParamBodyCopyWith<$Res> {
           $Res Function(BodyValidationParamBody) _then) =
       _$BodyValidationParamBodyCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: BodyValidationParamBody.dataKey)
-      Map<String, dynamic> data,
-      @JsonKey(name: BodyValidationParamBody.importanceKey) int importance});
+  $Res call({Map<String, dynamic> data, int importance});
 }
 
 /// @nodoc
@@ -98,33 +90,23 @@ class _$BodyValidationParamBodyCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
-class _BodyValidationParamBody extends BodyValidationParamBody {
+@JsonSerializable(converters: Convertors.convertors)
+class _BodyValidationParamBody implements BodyValidationParamBody {
   const _BodyValidationParamBody(
-      {@JsonKey(name: BodyValidationParamBody.dataKey)
-      required final Map<String, dynamic> data,
-      @JsonKey(name: BodyValidationParamBody.importanceKey)
-      required this.importance})
-      : _data = data,
-        super._();
+      {required final Map<String, dynamic> data, required this.importance})
+      : _data = data;
   factory _BodyValidationParamBody.fromJson(Map<String, dynamic> json) =>
       _$BodyValidationParamBodyFromJson(json);
 
-  /// data, Arbitrary data object
   final Map<String, dynamic> _data;
-
-  /// data, Arbitrary data object
   @override
-  @JsonKey(name: BodyValidationParamBody.dataKey)
   Map<String, dynamic> get data {
     if (_data is EqualUnmodifiableMapView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_data);
   }
 
-  /// importance, Importance level from 0-10
   @override
-  @JsonKey(name: BodyValidationParamBody.importanceKey)
   final int importance;
 
   /// Create a copy of BodyValidationParamBody
@@ -172,10 +154,7 @@ abstract mixin class _$BodyValidationParamBodyCopyWith<$Res>
       __$BodyValidationParamBodyCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: BodyValidationParamBody.dataKey)
-      Map<String, dynamic> data,
-      @JsonKey(name: BodyValidationParamBody.importanceKey) int importance});
+  $Res call({Map<String, dynamic> data, int importance});
 }
 
 /// @nodoc

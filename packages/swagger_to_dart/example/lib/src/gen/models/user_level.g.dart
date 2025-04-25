@@ -7,7 +7,7 @@ part of 'user_level.dart';
 // **************************************************************************
 
 const _$UserLevelEnumMap = {
-  UserLevel.basic: 'basic',
-  UserLevel.premium: 'premium',
-  UserLevel.admin: 'admin',
+  UserLevel.valuebasic: 'basic',
+  UserLevel.valuepremium: 'premium',
+  UserLevel.valueadmin: 'admin',
 };

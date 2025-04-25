@@ -15,16 +15,8 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$ValidationError {
-  /// loc
-  @JsonKey(name: ValidationError.locKey)
-  List<dynamic> get loc;
-
-  /// msg
-  @JsonKey(name: ValidationError.msgKey)
+  List<ValidationErrorUnionType> get loc;
   String get msg;
-
-  /// type
-  @JsonKey(name: ValidationError.typeKey)
   String get type;
 
   /// Create a copy of ValidationError
@@ -65,10 +57,7 @@ abstract mixin class $ValidationErrorCopyWith<$Res> {
           ValidationError value, $Res Function(ValidationError) _then) =
       _$ValidationErrorCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: ValidationError.locKey) List<dynamic> loc,
-      @JsonKey(name: ValidationError.msgKey) String msg,
-      @JsonKey(name: ValidationError.typeKey) String type});
+  $Res call({List<ValidationErrorUnionType> loc, String msg, String type});
 }
 
 /// @nodoc
@@ -92,7 +81,7 @@ class _$ValidationErrorCopyWithImpl<$Res>
       loc: null == loc
           ? _self.loc
           : loc // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<ValidationErrorUnionType>,
       msg: null == msg
           ? _self.msg
           : msg // ignore: cast_nullable_to_non_nullable
@@ -107,37 +96,27 @@ class _$ValidationErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
-class _ValidationError extends ValidationError {
+@JsonSerializable(converters: Convertors.convertors)
+class _ValidationError implements ValidationError {
   const _ValidationError(
-      {@JsonKey(name: ValidationError.locKey) required final List<dynamic> loc,
-      @JsonKey(name: ValidationError.msgKey) required this.msg,
-      @JsonKey(name: ValidationError.typeKey) required this.type})
-      : _loc = loc,
-        super._();
+      {required final List<ValidationErrorUnionType> loc,
+      required this.msg,
+      required this.type})
+      : _loc = loc;
   factory _ValidationError.fromJson(Map<String, dynamic> json) =>
       _$ValidationErrorFromJson(json);
 
-  /// loc
-  final List<dynamic> _loc;
-
-  /// loc
+  final List<ValidationErrorUnionType> _loc;
   @override
-  @JsonKey(name: ValidationError.locKey)
-  List<dynamic> get loc {
+  List<ValidationErrorUnionType> get loc {
     if (_loc is EqualUnmodifiableListView) return _loc;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_loc);
   }
 
-  /// msg
   @override
-  @JsonKey(name: ValidationError.msgKey)
   final String msg;
-
-  /// type
   @override
-  @JsonKey(name: ValidationError.typeKey)
   final String type;
 
   /// Create a copy of ValidationError
@@ -184,10 +163,7 @@ abstract mixin class _$ValidationErrorCopyWith<$Res>
       __$ValidationErrorCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: ValidationError.locKey) List<dynamic> loc,
-      @JsonKey(name: ValidationError.msgKey) String msg,
-      @JsonKey(name: ValidationError.typeKey) String type});
+  $Res call({List<ValidationErrorUnionType> loc, String msg, String type});
 }
 
 /// @nodoc
@@ -211,7 +187,7 @@ class __$ValidationErrorCopyWithImpl<$Res>
       loc: null == loc
           ? _self._loc
           : loc // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<ValidationErrorUnionType>,
       msg: null == msg
           ? _self.msg
           : msg // ignore: cast_nullable_to_non_nullable

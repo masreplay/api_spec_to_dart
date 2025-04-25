@@ -10,7 +10,7 @@ _BodyFilesFormBasic _$BodyFilesFormBasicFromJson(Map<String, dynamic> json) =>
     _BodyFilesFormBasic(
       username: json['username'] as String,
       password: json['password'] as String,
-      remember: json['remember'] as bool? ?? false,
+      remember: json['remember'] as bool,
     );
 
 Map<String, dynamic> _$BodyFilesFormBasicToJson(_BodyFilesFormBasic instance) =>

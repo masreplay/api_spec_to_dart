@@ -7,16 +7,15 @@ part of 'payment_card_brand.dart';
 // **************************************************************************
 
 const _$PaymentCardBrandEnumMap = {
-  PaymentCardBrand.americanExpress: 'American Express',
-  PaymentCardBrand.mastercard: 'Mastercard',
-  PaymentCardBrand.visa: 'Visa',
-  PaymentCardBrand.mir: 'Mir',
-  PaymentCardBrand.maestro: 'Maestro',
-  PaymentCardBrand.discover: 'Discover',
-  PaymentCardBrand.verve: 'Verve',
-  PaymentCardBrand.dankort: 'Dankort',
-  PaymentCardBrand.troy: 'Troy',
-  PaymentCardBrand.unionPay: 'UnionPay',
-  PaymentCardBrand.jcb: 'JCB',
-  PaymentCardBrand.other: 'other',
+  PaymentCardBrand.valueMastercard: 'Mastercard',
+  PaymentCardBrand.valueVisa: 'Visa',
+  PaymentCardBrand.valueMir: 'Mir',
+  PaymentCardBrand.valueMaestro: 'Maestro',
+  PaymentCardBrand.valueDiscover: 'Discover',
+  PaymentCardBrand.valueVerve: 'Verve',
+  PaymentCardBrand.valueDankort: 'Dankort',
+  PaymentCardBrand.valueTroy: 'Troy',
+  PaymentCardBrand.valueUnionPay: 'UnionPay',
+  PaymentCardBrand.valueJCB: 'JCB',
+  PaymentCardBrand.valueother: 'other',
 };

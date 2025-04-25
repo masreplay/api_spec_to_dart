@@ -25,10 +25,15 @@ _SwaggerToDart _$SwaggerToDartFromJson(Map<String, dynamic> json) =>
       outputDirectory: json['output_directory'] as String? ?? 'lib/src/gen',
       apiClientClassName:
           json['api_client_class_name'] as String? ?? 'ApiClient',
-      imports: (json['imports'] as List<dynamic>?)
+      globalImports: (json['global_imports'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           const [],
+      fileImports: (json['file_imports'] as Map<String, dynamic>?)?.map(
+            (k, e) => MapEntry(
+                k, (e as List<dynamic>).map((e) => e as String).toList()),
+          ) ??
+          const {},
       skippedParameters: (json['skipped_parameters'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
@@ -41,6 +46,7 @@ Map<String, dynamic> _$SwaggerToDartToJson(_SwaggerToDart instance) =>
       'input_directory': instance.inputDirectory,
       'output_directory': instance.outputDirectory,
       'api_client_class_name': instance.apiClientClassName,
-      'imports': instance.imports,
+      'global_imports': instance.globalImports,
+      'file_imports': instance.fileImports,
       'skipped_parameters': instance.skippedParameters,
     };

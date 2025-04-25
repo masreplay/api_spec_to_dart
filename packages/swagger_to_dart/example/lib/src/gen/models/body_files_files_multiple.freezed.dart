@@ -15,12 +15,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$BodyFilesFilesMultiple {
-  /// files, List of files to upload
-  @JsonKey(name: BodyFilesFilesMultiple.filesKey)
-  List<MultipartFile> get files;
-
-  /// notes, Notes about the uploads
-  @JsonKey(name: BodyFilesFilesMultiple.notesKey)
+  List<String> get files;
   String get notes;
 
   /// Create a copy of BodyFilesFilesMultiple
@@ -60,10 +55,7 @@ abstract mixin class $BodyFilesFilesMultipleCopyWith<$Res> {
           $Res Function(BodyFilesFilesMultiple) _then) =
       _$BodyFilesFilesMultipleCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: BodyFilesFilesMultiple.filesKey)
-      List<MultipartFile> files,
-      @JsonKey(name: BodyFilesFilesMultiple.notesKey) String notes});
+  $Res call({List<String> files, String notes});
 }
 
 /// @nodoc
@@ -86,7 +78,7 @@ class _$BodyFilesFilesMultipleCopyWithImpl<$Res>
       files: null == files
           ? _self.files
           : files // ignore: cast_nullable_to_non_nullable
-              as List<MultipartFile>,
+              as List<String>,
       notes: null == notes
           ? _self.notes
           : notes // ignore: cast_nullable_to_non_nullable
@@ -97,32 +89,23 @@ class _$BodyFilesFilesMultipleCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
-class _BodyFilesFilesMultiple extends BodyFilesFilesMultiple {
+@JsonSerializable(converters: Convertors.convertors)
+class _BodyFilesFilesMultiple implements BodyFilesFilesMultiple {
   const _BodyFilesFilesMultiple(
-      {@JsonKey(name: BodyFilesFilesMultiple.filesKey)
-      required final List<MultipartFile> files,
-      @JsonKey(name: BodyFilesFilesMultiple.notesKey) required this.notes})
-      : _files = files,
-        super._();
+      {required final List<String> files, required this.notes})
+      : _files = files;
   factory _BodyFilesFilesMultiple.fromJson(Map<String, dynamic> json) =>
       _$BodyFilesFilesMultipleFromJson(json);
 
-  /// files, List of files to upload
-  final List<MultipartFile> _files;
-
-  /// files, List of files to upload
+  final List<String> _files;
   @override
-  @JsonKey(name: BodyFilesFilesMultiple.filesKey)
-  List<MultipartFile> get files {
+  List<String> get files {
     if (_files is EqualUnmodifiableListView) return _files;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_files);
   }
 
-  /// notes, Notes about the uploads
   @override
-  @JsonKey(name: BodyFilesFilesMultiple.notesKey)
   final String notes;
 
   /// Create a copy of BodyFilesFilesMultiple
@@ -169,10 +152,7 @@ abstract mixin class _$BodyFilesFilesMultipleCopyWith<$Res>
       __$BodyFilesFilesMultipleCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: BodyFilesFilesMultiple.filesKey)
-      List<MultipartFile> files,
-      @JsonKey(name: BodyFilesFilesMultiple.notesKey) String notes});
+  $Res call({List<String> files, String notes});
 }
 
 /// @nodoc
@@ -195,7 +175,7 @@ class __$BodyFilesFilesMultipleCopyWithImpl<$Res>
       files: null == files
           ? _self._files
           : files // ignore: cast_nullable_to_non_nullable
-              as List<MultipartFile>,
+              as List<String>,
       notes: null == notes
           ? _self.notes
           : notes // ignore: cast_nullable_to_non_nullable

@@ -18,14 +18,11 @@ class _ExtraTypesClient implements ExtraTypesClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<dynamic>> extraTypesCreateColor({
-    required ColorModel body,
-  }) async {
+  Future<HttpResponse<dynamic>> extraTypesCreateColor() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
@@ -43,14 +40,11 @@ class _ExtraTypesClient implements ExtraTypesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> extraTypesProcessCountry({
-    required CountryModel body,
-  }) async {
+  Future<HttpResponse<dynamic>> extraTypesProcessCountry() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
@@ -68,14 +62,11 @@ class _ExtraTypesClient implements ExtraTypesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> extraTypesProcessPaymentCard({
-    required PaymentCardModel body,
-  }) async {
+  Future<HttpResponse<dynamic>> extraTypesProcessPaymentCard() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
@@ -93,14 +84,11 @@ class _ExtraTypesClient implements ExtraTypesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> extraTypesProcessPhone({
-    required PhoneNumberModel body,
-  }) async {
+  Future<HttpResponse<dynamic>> extraTypesProcessPhone() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
@@ -118,14 +106,11 @@ class _ExtraTypesClient implements ExtraTypesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> extraTypesProcessRouting({
-    required ABARoutingModel body,
-  }) async {
+  Future<HttpResponse<dynamic>> extraTypesProcessRouting() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
@@ -143,14 +128,11 @@ class _ExtraTypesClient implements ExtraTypesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> extraTypesProcessCoordinate({
-    required CoordinateModel body,
-  }) async {
+  Future<HttpResponse<dynamic>> extraTypesProcessCoordinate() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
@@ -168,14 +150,11 @@ class _ExtraTypesClient implements ExtraTypesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> extraTypesProcessMac({
-    required MACAddressModel body,
-  }) async {
+  Future<HttpResponse<dynamic>> extraTypesProcessMac() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
@@ -193,14 +172,11 @@ class _ExtraTypesClient implements ExtraTypesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> extraTypesProcessIsbn({
-    required IsbnModel body,
-  }) async {
+  Future<HttpResponse<dynamic>> extraTypesProcessIsbn() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
@@ -218,14 +194,11 @@ class _ExtraTypesClient implements ExtraTypesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> extraTypesProcessCurrency({
-    required CurrencyModel body,
-  }) async {
+  Future<HttpResponse<dynamic>> extraTypesProcessCurrency() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
@@ -243,14 +216,11 @@ class _ExtraTypesClient implements ExtraTypesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> extraTypesProcessDomain({
-    required DomainModel body,
-  }) async {
+  Future<HttpResponse<dynamic>> extraTypesProcessDomain() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
@@ -268,14 +238,11 @@ class _ExtraTypesClient implements ExtraTypesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> extraTypesProcessLanguage({
-    required LanguageModel body,
-  }) async {
+  Future<HttpResponse<dynamic>> extraTypesProcessLanguage() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
@@ -293,14 +260,11 @@ class _ExtraTypesClient implements ExtraTypesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> extraTypesProcessScript({
-    required ScriptCodeModel body,
-  }) async {
+  Future<HttpResponse<dynamic>> extraTypesProcessScript() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
@@ -318,14 +282,11 @@ class _ExtraTypesClient implements ExtraTypesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> extraTypesProcessVersion({
-    required VersionModel body,
-  }) async {
+  Future<HttpResponse<dynamic>> extraTypesProcessVersion() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
@@ -343,14 +304,11 @@ class _ExtraTypesClient implements ExtraTypesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> extraTypesProcessS3Path({
-    required S3PathModel body,
-  }) async {
+  Future<HttpResponse<dynamic>> extraTypesProcessS3Path() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
@@ -368,14 +326,11 @@ class _ExtraTypesClient implements ExtraTypesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> extraTypesProcessTimezone({
-    required TimeZoneModel body,
-  }) async {
+  Future<HttpResponse<dynamic>> extraTypesProcessTimezone() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
@@ -393,14 +348,11 @@ class _ExtraTypesClient implements ExtraTypesClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> extraTypesProcessUlid({
-    required UlidModel body,
-  }) async {
+  Future<HttpResponse<dynamic>> extraTypesProcessUlid() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(

@@ -190,7 +190,8 @@ mixin _$SwaggerToDart {
   String get inputDirectory;
   String get outputDirectory;
   String get apiClientClassName;
-  List<String> get imports;
+  List<String> get globalImports;
+  Map<String, List<String>> get fileImports;
   List<String> get skippedParameters;
 
   /// Create a copy of SwaggerToDart
@@ -216,7 +217,10 @@ mixin _$SwaggerToDart {
                 other.outputDirectory == outputDirectory) &&
             (identical(other.apiClientClassName, apiClientClassName) ||
                 other.apiClientClassName == apiClientClassName) &&
-            const DeepCollectionEquality().equals(other.imports, imports) &&
+            const DeepCollectionEquality()
+                .equals(other.globalImports, globalImports) &&
+            const DeepCollectionEquality()
+                .equals(other.fileImports, fileImports) &&
             const DeepCollectionEquality()
                 .equals(other.skippedParameters, skippedParameters));
   }
@@ -229,12 +233,13 @@ mixin _$SwaggerToDart {
       inputDirectory,
       outputDirectory,
       apiClientClassName,
-      const DeepCollectionEquality().hash(imports),
+      const DeepCollectionEquality().hash(globalImports),
+      const DeepCollectionEquality().hash(fileImports),
       const DeepCollectionEquality().hash(skippedParameters));
 
   @override
   String toString() {
-    return 'SwaggerToDart(url: $url, inputDirectory: $inputDirectory, outputDirectory: $outputDirectory, apiClientClassName: $apiClientClassName, imports: $imports, skippedParameters: $skippedParameters)';
+    return 'SwaggerToDart(url: $url, inputDirectory: $inputDirectory, outputDirectory: $outputDirectory, apiClientClassName: $apiClientClassName, globalImports: $globalImports, fileImports: $fileImports, skippedParameters: $skippedParameters)';
   }
 }
 
@@ -249,7 +254,8 @@ abstract mixin class $SwaggerToDartCopyWith<$Res> {
       String inputDirectory,
       String outputDirectory,
       String apiClientClassName,
-      List<String> imports,
+      List<String> globalImports,
+      Map<String, List<String>> fileImports,
       List<String> skippedParameters});
 }
 
@@ -270,7 +276,8 @@ class _$SwaggerToDartCopyWithImpl<$Res>
     Object? inputDirectory = null,
     Object? outputDirectory = null,
     Object? apiClientClassName = null,
-    Object? imports = null,
+    Object? globalImports = null,
+    Object? fileImports = null,
     Object? skippedParameters = null,
   }) {
     return _then(_self.copyWith(
@@ -290,10 +297,14 @@ class _$SwaggerToDartCopyWithImpl<$Res>
           ? _self.apiClientClassName
           : apiClientClassName // ignore: cast_nullable_to_non_nullable
               as String,
-      imports: null == imports
-          ? _self.imports
-          : imports // ignore: cast_nullable_to_non_nullable
+      globalImports: null == globalImports
+          ? _self.globalImports
+          : globalImports // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      fileImports: null == fileImports
+          ? _self.fileImports
+          : fileImports // ignore: cast_nullable_to_non_nullable
+              as Map<String, List<String>>,
       skippedParameters: null == skippedParameters
           ? _self.skippedParameters
           : skippedParameters // ignore: cast_nullable_to_non_nullable
@@ -311,9 +322,11 @@ class _SwaggerToDart implements SwaggerToDart {
       this.inputDirectory = 'schema/swagger.json',
       this.outputDirectory = 'lib/src/gen',
       this.apiClientClassName = 'ApiClient',
-      final List<String> imports = const [],
+      final List<String> globalImports = const [],
+      final Map<String, List<String>> fileImports = const {},
       final List<String> skippedParameters = const []})
-      : _imports = imports,
+      : _globalImports = globalImports,
+        _fileImports = fileImports,
         _skippedParameters = skippedParameters;
   factory _SwaggerToDart.fromJson(Map<String, dynamic> json) =>
       _$SwaggerToDartFromJson(json);
@@ -329,13 +342,22 @@ class _SwaggerToDart implements SwaggerToDart {
   @override
   @JsonKey()
   final String apiClientClassName;
-  final List<String> _imports;
+  final List<String> _globalImports;
   @override
   @JsonKey()
-  List<String> get imports {
-    if (_imports is EqualUnmodifiableListView) return _imports;
+  List<String> get globalImports {
+    if (_globalImports is EqualUnmodifiableListView) return _globalImports;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_imports);
+    return EqualUnmodifiableListView(_globalImports);
+  }
+
+  final Map<String, List<String>> _fileImports;
+  @override
+  @JsonKey()
+  Map<String, List<String>> get fileImports {
+    if (_fileImports is EqualUnmodifiableMapView) return _fileImports;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_fileImports);
   }
 
   final List<String> _skippedParameters;
@@ -375,7 +397,10 @@ class _SwaggerToDart implements SwaggerToDart {
                 other.outputDirectory == outputDirectory) &&
             (identical(other.apiClientClassName, apiClientClassName) ||
                 other.apiClientClassName == apiClientClassName) &&
-            const DeepCollectionEquality().equals(other._imports, _imports) &&
+            const DeepCollectionEquality()
+                .equals(other._globalImports, _globalImports) &&
+            const DeepCollectionEquality()
+                .equals(other._fileImports, _fileImports) &&
             const DeepCollectionEquality()
                 .equals(other._skippedParameters, _skippedParameters));
   }
@@ -388,12 +413,13 @@ class _SwaggerToDart implements SwaggerToDart {
       inputDirectory,
       outputDirectory,
       apiClientClassName,
-      const DeepCollectionEquality().hash(_imports),
+      const DeepCollectionEquality().hash(_globalImports),
+      const DeepCollectionEquality().hash(_fileImports),
       const DeepCollectionEquality().hash(_skippedParameters));
 
   @override
   String toString() {
-    return 'SwaggerToDart(url: $url, inputDirectory: $inputDirectory, outputDirectory: $outputDirectory, apiClientClassName: $apiClientClassName, imports: $imports, skippedParameters: $skippedParameters)';
+    return 'SwaggerToDart(url: $url, inputDirectory: $inputDirectory, outputDirectory: $outputDirectory, apiClientClassName: $apiClientClassName, globalImports: $globalImports, fileImports: $fileImports, skippedParameters: $skippedParameters)';
   }
 }
 
@@ -410,7 +436,8 @@ abstract mixin class _$SwaggerToDartCopyWith<$Res>
       String inputDirectory,
       String outputDirectory,
       String apiClientClassName,
-      List<String> imports,
+      List<String> globalImports,
+      Map<String, List<String>> fileImports,
       List<String> skippedParameters});
 }
 
@@ -431,7 +458,8 @@ class __$SwaggerToDartCopyWithImpl<$Res>
     Object? inputDirectory = null,
     Object? outputDirectory = null,
     Object? apiClientClassName = null,
-    Object? imports = null,
+    Object? globalImports = null,
+    Object? fileImports = null,
     Object? skippedParameters = null,
   }) {
     return _then(_SwaggerToDart(
@@ -451,10 +479,14 @@ class __$SwaggerToDartCopyWithImpl<$Res>
           ? _self.apiClientClassName
           : apiClientClassName // ignore: cast_nullable_to_non_nullable
               as String,
-      imports: null == imports
-          ? _self._imports
-          : imports // ignore: cast_nullable_to_non_nullable
+      globalImports: null == globalImports
+          ? _self._globalImports
+          : globalImports // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      fileImports: null == fileImports
+          ? _self._fileImports
+          : fileImports // ignore: cast_nullable_to_non_nullable
+              as Map<String, List<String>>,
       skippedParameters: null == skippedParameters
           ? _self._skippedParameters
           : skippedParameters // ignore: cast_nullable_to_non_nullable

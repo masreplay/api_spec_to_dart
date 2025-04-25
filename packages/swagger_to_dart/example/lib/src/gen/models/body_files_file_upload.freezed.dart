@@ -15,12 +15,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$BodyFilesFileUpload {
-  /// file, File to upload
-  @JsonKey(name: BodyFilesFileUpload.fileKey)
-  MultipartFile get file;
-
-  /// Description, File description
-  @JsonKey(name: BodyFilesFileUpload.descriptionKey)
+  String get file;
   String? get description;
 
   /// Create a copy of BodyFilesFileUpload
@@ -60,9 +55,7 @@ abstract mixin class $BodyFilesFileUploadCopyWith<$Res> {
           BodyFilesFileUpload value, $Res Function(BodyFilesFileUpload) _then) =
       _$BodyFilesFileUploadCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: BodyFilesFileUpload.fileKey) MultipartFile file,
-      @JsonKey(name: BodyFilesFileUpload.descriptionKey) String? description});
+  $Res call({String file, String? description});
 }
 
 /// @nodoc
@@ -85,7 +78,7 @@ class _$BodyFilesFileUploadCopyWithImpl<$Res>
       file: null == file
           ? _self.file
           : file // ignore: cast_nullable_to_non_nullable
-              as MultipartFile,
+              as String,
       description: freezed == description
           ? _self.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -96,24 +89,15 @@ class _$BodyFilesFileUploadCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
-class _BodyFilesFileUpload extends BodyFilesFileUpload {
-  const _BodyFilesFileUpload(
-      {@JsonKey(name: BodyFilesFileUpload.fileKey) required this.file,
-      @JsonKey(name: BodyFilesFileUpload.descriptionKey)
-      required this.description})
-      : super._();
+@JsonSerializable(converters: Convertors.convertors)
+class _BodyFilesFileUpload implements BodyFilesFileUpload {
+  const _BodyFilesFileUpload({required this.file, required this.description});
   factory _BodyFilesFileUpload.fromJson(Map<String, dynamic> json) =>
       _$BodyFilesFileUploadFromJson(json);
 
-  /// file, File to upload
   @override
-  @JsonKey(name: BodyFilesFileUpload.fileKey)
-  final MultipartFile file;
-
-  /// Description, File description
+  final String file;
   @override
-  @JsonKey(name: BodyFilesFileUpload.descriptionKey)
   final String? description;
 
   /// Create a copy of BodyFilesFileUpload
@@ -160,9 +144,7 @@ abstract mixin class _$BodyFilesFileUploadCopyWith<$Res>
       __$BodyFilesFileUploadCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: BodyFilesFileUpload.fileKey) MultipartFile file,
-      @JsonKey(name: BodyFilesFileUpload.descriptionKey) String? description});
+  $Res call({String file, String? description});
 }
 
 /// @nodoc
@@ -185,7 +167,7 @@ class __$BodyFilesFileUploadCopyWithImpl<$Res>
       file: null == file
           ? _self.file
           : file // ignore: cast_nullable_to_non_nullable
-              as MultipartFile,
+              as String,
       description: freezed == description
           ? _self.description
           : description // ignore: cast_nullable_to_non_nullable

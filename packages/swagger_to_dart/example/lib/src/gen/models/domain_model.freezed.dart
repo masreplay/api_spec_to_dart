@@ -15,8 +15,6 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$DomainModel {
-  /// domain
-  @JsonKey(name: DomainModel.domainKey)
   String get domain;
 
   /// Create a copy of DomainModel
@@ -53,7 +51,7 @@ abstract mixin class $DomainModelCopyWith<$Res> {
           DomainModel value, $Res Function(DomainModel) _then) =
       _$DomainModelCopyWithImpl;
   @useResult
-  $Res call({@JsonKey(name: DomainModel.domainKey) String domain});
+  $Res call({String domain});
 }
 
 /// @nodoc
@@ -81,17 +79,13 @@ class _$DomainModelCopyWithImpl<$Res> implements $DomainModelCopyWith<$Res> {
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
-class _DomainModel extends DomainModel {
-  const _DomainModel(
-      {@JsonKey(name: DomainModel.domainKey) required this.domain})
-      : super._();
+@JsonSerializable(converters: Convertors.convertors)
+class _DomainModel implements DomainModel {
+  const _DomainModel({required this.domain});
   factory _DomainModel.fromJson(Map<String, dynamic> json) =>
       _$DomainModelFromJson(json);
 
-  /// domain
   @override
-  @JsonKey(name: DomainModel.domainKey)
   final String domain;
 
   /// Create a copy of DomainModel
@@ -135,7 +129,7 @@ abstract mixin class _$DomainModelCopyWith<$Res>
       __$DomainModelCopyWithImpl;
   @override
   @useResult
-  $Res call({@JsonKey(name: DomainModel.domainKey) String domain});
+  $Res call({String domain});
 }
 
 /// @nodoc

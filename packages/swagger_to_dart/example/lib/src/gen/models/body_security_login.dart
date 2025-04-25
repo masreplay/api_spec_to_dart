@@ -1,42 +1,19 @@
-import "package:freezed_annotation/freezed_annotation.dart";
-
-import "convertors.dart";
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'convertors.dart';
 import 'package:example/src/gen/models/models.dart';
-
-part "body_security_login.freezed.dart";
-part "body_security_login.g.dart";
+part 'body_security_login.freezed.dart';
+part 'body_security_login.g.dart';
 
 /// Body_security-login
 @freezed
 abstract class BodySecurityLogin with _$BodySecurityLogin {
-  const BodySecurityLogin._();
-
-  static const String grantTypeKey = "grant_type";
-  static const String usernameKey = "username";
-  static const String passwordKey = "password";
-  static const String scopeKey = "scope";
-  static const String clientIdKey = "client_id";
-  static const String clientSecretKey = "client_secret";
-
-  @JsonSerializable(converters: convertors)
+  @JsonSerializable(converters: Convertors.convertors)
   const factory BodySecurityLogin({
-    /// Grant Type
-    @JsonKey(name: BodySecurityLogin.grantTypeKey) required String? grantType,
-
-    /// username
-    @JsonKey(name: BodySecurityLogin.usernameKey) required String username,
-
-    /// password
-    @JsonKey(name: BodySecurityLogin.passwordKey) required String password,
-
-    /// scope
-    @Default('') @JsonKey(name: BodySecurityLogin.scopeKey) String scope,
-
-    /// Client Id
-    @JsonKey(name: BodySecurityLogin.clientIdKey) required String? clientId,
-
-    /// Client Secret
-    @JsonKey(name: BodySecurityLogin.clientSecretKey)
+    required String? grantType,
+    required String username,
+    required String password,
+    required String scope,
+    required String? clientId,
     required String? clientSecret,
   }) = _BodySecurityLogin;
 

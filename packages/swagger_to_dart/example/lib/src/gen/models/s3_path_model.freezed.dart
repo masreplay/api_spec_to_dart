@@ -15,8 +15,6 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$S3PathModel {
-  /// s3_path
-  @JsonKey(name: S3PathModel.s3PathKey)
   String get s3Path;
 
   /// Create a copy of S3PathModel
@@ -53,7 +51,7 @@ abstract mixin class $S3PathModelCopyWith<$Res> {
           S3PathModel value, $Res Function(S3PathModel) _then) =
       _$S3PathModelCopyWithImpl;
   @useResult
-  $Res call({@JsonKey(name: S3PathModel.s3PathKey) String s3Path});
+  $Res call({String s3Path});
 }
 
 /// @nodoc
@@ -81,17 +79,13 @@ class _$S3PathModelCopyWithImpl<$Res> implements $S3PathModelCopyWith<$Res> {
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
-class _S3PathModel extends S3PathModel {
-  const _S3PathModel(
-      {@JsonKey(name: S3PathModel.s3PathKey) required this.s3Path})
-      : super._();
+@JsonSerializable(converters: Convertors.convertors)
+class _S3PathModel implements S3PathModel {
+  const _S3PathModel({required this.s3Path});
   factory _S3PathModel.fromJson(Map<String, dynamic> json) =>
       _$S3PathModelFromJson(json);
 
-  /// s3_path
   @override
-  @JsonKey(name: S3PathModel.s3PathKey)
   final String s3Path;
 
   /// Create a copy of S3PathModel
@@ -135,7 +129,7 @@ abstract mixin class _$S3PathModelCopyWith<$Res>
       __$S3PathModelCopyWithImpl;
   @override
   @useResult
-  $Res call({@JsonKey(name: S3PathModel.s3PathKey) String s3Path});
+  $Res call({String s3Path});
 }
 
 /// @nodoc

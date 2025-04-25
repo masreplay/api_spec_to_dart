@@ -18,14 +18,11 @@ class _ItemsClient implements ItemsClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<ItemResponse>> itemsCreateItem({
-    required ItemRequestBody body,
-  }) async {
+  Future<HttpResponse<ItemResponse>> itemsCreateItem() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<ItemResponse>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(

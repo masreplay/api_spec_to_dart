@@ -15,16 +15,8 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$Location {
-  /// lat, Latitude coordinate between -90 and 90 degrees
-  @JsonKey(name: Location.latKey)
   double get lat;
-
-  /// lng, Longitude coordinate between -180 and 180 degrees
-  @JsonKey(name: Location.lngKey)
   double get lng;
-
-  /// Name, Optional location name
-  @JsonKey(name: Location.nameKey)
   String? get name;
 
   /// Create a copy of Location
@@ -62,10 +54,7 @@ abstract mixin class $LocationCopyWith<$Res> {
   factory $LocationCopyWith(Location value, $Res Function(Location) _then) =
       _$LocationCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: Location.latKey) double lat,
-      @JsonKey(name: Location.lngKey) double lng,
-      @JsonKey(name: Location.nameKey) String? name});
+  $Res call({double lat, double lng, String? name});
 }
 
 /// @nodoc
@@ -103,29 +92,17 @@ class _$LocationCopyWithImpl<$Res> implements $LocationCopyWith<$Res> {
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
-class _Location extends Location {
-  const _Location(
-      {@JsonKey(name: Location.latKey) required this.lat,
-      @JsonKey(name: Location.lngKey) required this.lng,
-      @JsonKey(name: Location.nameKey) required this.name})
-      : super._();
+@JsonSerializable(converters: Convertors.convertors)
+class _Location implements Location {
+  const _Location({required this.lat, required this.lng, required this.name});
   factory _Location.fromJson(Map<String, dynamic> json) =>
       _$LocationFromJson(json);
 
-  /// lat, Latitude coordinate between -90 and 90 degrees
   @override
-  @JsonKey(name: Location.latKey)
   final double lat;
-
-  /// lng, Longitude coordinate between -180 and 180 degrees
   @override
-  @JsonKey(name: Location.lngKey)
   final double lng;
-
-  /// Name, Optional location name
   @override
-  @JsonKey(name: Location.nameKey)
   final String? name;
 
   /// Create a copy of Location
@@ -170,10 +147,7 @@ abstract mixin class _$LocationCopyWith<$Res>
       __$LocationCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: Location.latKey) double lat,
-      @JsonKey(name: Location.lngKey) double lng,
-      @JsonKey(name: Location.nameKey) String? name});
+  $Res call({double lat, double lng, String? name});
 }
 
 /// @nodoc

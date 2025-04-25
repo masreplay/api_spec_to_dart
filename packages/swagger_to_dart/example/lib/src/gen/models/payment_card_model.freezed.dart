@@ -15,10 +15,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$PaymentCardModel {
-  /// card_number
-  @JsonKey(name: PaymentCardModel.cardNumberKey)
   String get cardNumber;
-  @JsonKey(name: PaymentCardModel.cardBrandKey)
   PaymentCardBrand? get cardBrand;
 
   /// Create a copy of PaymentCardModel
@@ -59,10 +56,7 @@ abstract mixin class $PaymentCardModelCopyWith<$Res> {
           PaymentCardModel value, $Res Function(PaymentCardModel) _then) =
       _$PaymentCardModelCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: PaymentCardModel.cardNumberKey) String cardNumber,
-      @JsonKey(name: PaymentCardModel.cardBrandKey)
-      PaymentCardBrand? cardBrand});
+  $Res call({String cardNumber, PaymentCardBrand? cardBrand});
 }
 
 /// @nodoc
@@ -96,21 +90,15 @@ class _$PaymentCardModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
-class _PaymentCardModel extends PaymentCardModel {
-  const _PaymentCardModel(
-      {@JsonKey(name: PaymentCardModel.cardNumberKey) required this.cardNumber,
-      @JsonKey(name: PaymentCardModel.cardBrandKey) required this.cardBrand})
-      : super._();
+@JsonSerializable(converters: Convertors.convertors)
+class _PaymentCardModel implements PaymentCardModel {
+  const _PaymentCardModel({required this.cardNumber, required this.cardBrand});
   factory _PaymentCardModel.fromJson(Map<String, dynamic> json) =>
       _$PaymentCardModelFromJson(json);
 
-  /// card_number
   @override
-  @JsonKey(name: PaymentCardModel.cardNumberKey)
   final String cardNumber;
   @override
-  @JsonKey(name: PaymentCardModel.cardBrandKey)
   final PaymentCardBrand? cardBrand;
 
   /// Create a copy of PaymentCardModel
@@ -157,10 +145,7 @@ abstract mixin class _$PaymentCardModelCopyWith<$Res>
       __$PaymentCardModelCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: PaymentCardModel.cardNumberKey) String cardNumber,
-      @JsonKey(name: PaymentCardModel.cardBrandKey)
-      PaymentCardBrand? cardBrand});
+  $Res call({String cardNumber, PaymentCardBrand? cardBrand});
 }
 
 /// @nodoc

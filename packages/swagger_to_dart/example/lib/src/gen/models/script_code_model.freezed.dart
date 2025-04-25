@@ -15,8 +15,6 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$ScriptCodeModel {
-  /// script_code
-  @JsonKey(name: ScriptCodeModel.scriptCodeKey)
   String get scriptCode;
 
   /// Create a copy of ScriptCodeModel
@@ -55,7 +53,7 @@ abstract mixin class $ScriptCodeModelCopyWith<$Res> {
           ScriptCodeModel value, $Res Function(ScriptCodeModel) _then) =
       _$ScriptCodeModelCopyWithImpl;
   @useResult
-  $Res call({@JsonKey(name: ScriptCodeModel.scriptCodeKey) String scriptCode});
+  $Res call({String scriptCode});
 }
 
 /// @nodoc
@@ -84,17 +82,13 @@ class _$ScriptCodeModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
-class _ScriptCodeModel extends ScriptCodeModel {
-  const _ScriptCodeModel(
-      {@JsonKey(name: ScriptCodeModel.scriptCodeKey) required this.scriptCode})
-      : super._();
+@JsonSerializable(converters: Convertors.convertors)
+class _ScriptCodeModel implements ScriptCodeModel {
+  const _ScriptCodeModel({required this.scriptCode});
   factory _ScriptCodeModel.fromJson(Map<String, dynamic> json) =>
       _$ScriptCodeModelFromJson(json);
 
-  /// script_code
   @override
-  @JsonKey(name: ScriptCodeModel.scriptCodeKey)
   final String scriptCode;
 
   /// Create a copy of ScriptCodeModel
@@ -139,7 +133,7 @@ abstract mixin class _$ScriptCodeModelCopyWith<$Res>
       __$ScriptCodeModelCopyWithImpl;
   @override
   @useResult
-  $Res call({@JsonKey(name: ScriptCodeModel.scriptCodeKey) String scriptCode});
+  $Res call({String scriptCode});
 }
 
 /// @nodoc

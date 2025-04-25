@@ -7,24 +7,15 @@ part of 'body_files_files_multiple.dart';
 // **************************************************************************
 
 _BodyFilesFilesMultiple _$BodyFilesFilesMultipleFromJson(
-  Map<String, dynamic> json,
-) =>
+        Map<String, dynamic> json) =>
     _BodyFilesFilesMultiple(
-      files: (json['files'] as List<dynamic>)
-          .map(
-            (e) =>
-                const MultipartFileJsonConverter().fromJson(e as MultipartFile),
-          )
-          .toList(),
+      files: (json['files'] as List<dynamic>).map((e) => e as String).toList(),
       notes: json['notes'] as String,
     );
 
 Map<String, dynamic> _$BodyFilesFilesMultipleToJson(
-  _BodyFilesFilesMultiple instance,
-) =>
+        _BodyFilesFilesMultiple instance) =>
     <String, dynamic>{
-      'files': instance.files
-          .map(const MultipartFileJsonConverter().toJson)
-          .toList(),
+      'files': instance.files,
       'notes': instance.notes,
     };

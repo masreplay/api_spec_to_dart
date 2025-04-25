@@ -15,12 +15,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$ConditionalBody {
-  /// Item Id, Item ID (if provided)
-  @JsonKey(name: ConditionalBody.itemIdKey)
   int? get itemId;
-
-  /// Item Name, Item name (if provided)
-  @JsonKey(name: ConditionalBody.itemNameKey)
   String? get itemName;
 
   /// Create a copy of ConditionalBody
@@ -60,9 +55,7 @@ abstract mixin class $ConditionalBodyCopyWith<$Res> {
           ConditionalBody value, $Res Function(ConditionalBody) _then) =
       _$ConditionalBodyCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: ConditionalBody.itemIdKey) int? itemId,
-      @JsonKey(name: ConditionalBody.itemNameKey) String? itemName});
+  $Res call({int? itemId, String? itemName});
 }
 
 /// @nodoc
@@ -96,23 +89,15 @@ class _$ConditionalBodyCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
-class _ConditionalBody extends ConditionalBody {
-  const _ConditionalBody(
-      {@JsonKey(name: ConditionalBody.itemIdKey) required this.itemId,
-      @JsonKey(name: ConditionalBody.itemNameKey) required this.itemName})
-      : super._();
+@JsonSerializable(converters: Convertors.convertors)
+class _ConditionalBody implements ConditionalBody {
+  const _ConditionalBody({required this.itemId, required this.itemName});
   factory _ConditionalBody.fromJson(Map<String, dynamic> json) =>
       _$ConditionalBodyFromJson(json);
 
-  /// Item Id, Item ID (if provided)
   @override
-  @JsonKey(name: ConditionalBody.itemIdKey)
   final int? itemId;
-
-  /// Item Name, Item name (if provided)
   @override
-  @JsonKey(name: ConditionalBody.itemNameKey)
   final String? itemName;
 
   /// Create a copy of ConditionalBody
@@ -158,9 +143,7 @@ abstract mixin class _$ConditionalBodyCopyWith<$Res>
       __$ConditionalBodyCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: ConditionalBody.itemIdKey) int? itemId,
-      @JsonKey(name: ConditionalBody.itemNameKey) String? itemName});
+  $Res call({int? itemId, String? itemName});
 }
 
 /// @nodoc

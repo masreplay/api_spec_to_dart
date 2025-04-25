@@ -15,8 +15,6 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$ABARoutingModel {
-  /// routing_number
-  @JsonKey(name: ABARoutingModel.routingNumberKey)
   String get routingNumber;
 
   /// Create a copy of ABARoutingModel
@@ -55,8 +53,7 @@ abstract mixin class $ABARoutingModelCopyWith<$Res> {
           ABARoutingModel value, $Res Function(ABARoutingModel) _then) =
       _$ABARoutingModelCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: ABARoutingModel.routingNumberKey) String routingNumber});
+  $Res call({String routingNumber});
 }
 
 /// @nodoc
@@ -85,18 +82,13 @@ class _$ABARoutingModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
-class _ABARoutingModel extends ABARoutingModel {
-  const _ABARoutingModel(
-      {@JsonKey(name: ABARoutingModel.routingNumberKey)
-      required this.routingNumber})
-      : super._();
+@JsonSerializable(converters: Convertors.convertors)
+class _ABARoutingModel implements ABARoutingModel {
+  const _ABARoutingModel({required this.routingNumber});
   factory _ABARoutingModel.fromJson(Map<String, dynamic> json) =>
       _$ABARoutingModelFromJson(json);
 
-  /// routing_number
   @override
-  @JsonKey(name: ABARoutingModel.routingNumberKey)
   final String routingNumber;
 
   /// Create a copy of ABARoutingModel
@@ -141,8 +133,7 @@ abstract mixin class _$ABARoutingModelCopyWith<$Res>
       __$ABARoutingModelCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: ABARoutingModel.routingNumberKey) String routingNumber});
+  $Res call({String routingNumber});
 }
 
 /// @nodoc

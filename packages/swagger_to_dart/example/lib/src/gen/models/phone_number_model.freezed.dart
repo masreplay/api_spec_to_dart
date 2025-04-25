@@ -15,12 +15,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$PhoneNumberModel {
-  /// phone
-  @JsonKey(name: PhoneNumberModel.phoneKey)
   String get phone;
-
-  /// phone2
-  @JsonKey(name: PhoneNumberModel.phone2Key)
   String get phone2;
 
   /// Create a copy of PhoneNumberModel
@@ -59,9 +54,7 @@ abstract mixin class $PhoneNumberModelCopyWith<$Res> {
           PhoneNumberModel value, $Res Function(PhoneNumberModel) _then) =
       _$PhoneNumberModelCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: PhoneNumberModel.phoneKey) String phone,
-      @JsonKey(name: PhoneNumberModel.phone2Key) String phone2});
+  $Res call({String phone, String phone2});
 }
 
 /// @nodoc
@@ -95,23 +88,15 @@ class _$PhoneNumberModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
-class _PhoneNumberModel extends PhoneNumberModel {
-  const _PhoneNumberModel(
-      {@JsonKey(name: PhoneNumberModel.phoneKey) required this.phone,
-      @JsonKey(name: PhoneNumberModel.phone2Key) required this.phone2})
-      : super._();
+@JsonSerializable(converters: Convertors.convertors)
+class _PhoneNumberModel implements PhoneNumberModel {
+  const _PhoneNumberModel({required this.phone, required this.phone2});
   factory _PhoneNumberModel.fromJson(Map<String, dynamic> json) =>
       _$PhoneNumberModelFromJson(json);
 
-  /// phone
   @override
-  @JsonKey(name: PhoneNumberModel.phoneKey)
   final String phone;
-
-  /// phone2
   @override
-  @JsonKey(name: PhoneNumberModel.phone2Key)
   final String phone2;
 
   /// Create a copy of PhoneNumberModel
@@ -156,9 +141,7 @@ abstract mixin class _$PhoneNumberModelCopyWith<$Res>
       __$PhoneNumberModelCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: PhoneNumberModel.phoneKey) String phone,
-      @JsonKey(name: PhoneNumberModel.phone2Key) String phone2});
+  $Res call({String phone, String phone2});
 }
 
 /// @nodoc

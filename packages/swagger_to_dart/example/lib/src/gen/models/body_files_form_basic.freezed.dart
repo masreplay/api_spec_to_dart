@@ -15,16 +15,8 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$BodyFilesFormBasic {
-  /// username, Username
-  @JsonKey(name: BodyFilesFormBasic.usernameKey)
   String get username;
-
-  /// password, Password
-  @JsonKey(name: BodyFilesFormBasic.passwordKey)
   String get password;
-
-  /// remember, Remember login
-  @JsonKey(name: BodyFilesFormBasic.rememberKey)
   bool get remember;
 
   /// Create a copy of BodyFilesFormBasic
@@ -67,10 +59,7 @@ abstract mixin class $BodyFilesFormBasicCopyWith<$Res> {
           BodyFilesFormBasic value, $Res Function(BodyFilesFormBasic) _then) =
       _$BodyFilesFormBasicCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: BodyFilesFormBasic.usernameKey) String username,
-      @JsonKey(name: BodyFilesFormBasic.passwordKey) String password,
-      @JsonKey(name: BodyFilesFormBasic.rememberKey) bool remember});
+  $Res call({String username, String password, bool remember});
 }
 
 /// @nodoc
@@ -109,29 +98,18 @@ class _$BodyFilesFormBasicCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
-class _BodyFilesFormBasic extends BodyFilesFormBasic {
+@JsonSerializable(converters: Convertors.convertors)
+class _BodyFilesFormBasic implements BodyFilesFormBasic {
   const _BodyFilesFormBasic(
-      {@JsonKey(name: BodyFilesFormBasic.usernameKey) required this.username,
-      @JsonKey(name: BodyFilesFormBasic.passwordKey) required this.password,
-      @JsonKey(name: BodyFilesFormBasic.rememberKey) this.remember = false})
-      : super._();
+      {required this.username, required this.password, required this.remember});
   factory _BodyFilesFormBasic.fromJson(Map<String, dynamic> json) =>
       _$BodyFilesFormBasicFromJson(json);
 
-  /// username, Username
   @override
-  @JsonKey(name: BodyFilesFormBasic.usernameKey)
   final String username;
-
-  /// password, Password
   @override
-  @JsonKey(name: BodyFilesFormBasic.passwordKey)
   final String password;
-
-  /// remember, Remember login
   @override
-  @JsonKey(name: BodyFilesFormBasic.rememberKey)
   final bool remember;
 
   /// Create a copy of BodyFilesFormBasic
@@ -180,10 +158,7 @@ abstract mixin class _$BodyFilesFormBasicCopyWith<$Res>
       __$BodyFilesFormBasicCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: BodyFilesFormBasic.usernameKey) String username,
-      @JsonKey(name: BodyFilesFormBasic.passwordKey) String password,
-      @JsonKey(name: BodyFilesFormBasic.rememberKey) bool remember});
+  $Res call({String username, String password, bool remember});
 }
 
 /// @nodoc

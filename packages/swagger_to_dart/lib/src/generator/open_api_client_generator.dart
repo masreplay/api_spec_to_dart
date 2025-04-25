@@ -123,8 +123,8 @@ class OpenApiClientGenerator {
         return 'Path(\'${param.name}\')';
       case OpenApiPathMethodParameterType.header:
         return 'Header(\'${param.name}\')';
-      default:
-        return '';
+      case OpenApiPathMethodParameterType.cookie:
+        return 'Header(\'Cookie\')';
     }
   }
 

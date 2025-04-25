@@ -15,28 +15,11 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$BodySecurityLogin {
-  /// Grant Type
-  @JsonKey(name: BodySecurityLogin.grantTypeKey)
   String? get grantType;
-
-  /// username
-  @JsonKey(name: BodySecurityLogin.usernameKey)
   String get username;
-
-  /// password
-  @JsonKey(name: BodySecurityLogin.passwordKey)
   String get password;
-
-  /// scope
-  @JsonKey(name: BodySecurityLogin.scopeKey)
   String get scope;
-
-  /// Client Id
-  @JsonKey(name: BodySecurityLogin.clientIdKey)
   String? get clientId;
-
-  /// Client Secret
-  @JsonKey(name: BodySecurityLogin.clientSecretKey)
   String? get clientSecret;
 
   /// Create a copy of BodySecurityLogin
@@ -86,12 +69,12 @@ abstract mixin class $BodySecurityLoginCopyWith<$Res> {
       _$BodySecurityLoginCopyWithImpl;
   @useResult
   $Res call(
-      {@JsonKey(name: BodySecurityLogin.grantTypeKey) String? grantType,
-      @JsonKey(name: BodySecurityLogin.usernameKey) String username,
-      @JsonKey(name: BodySecurityLogin.passwordKey) String password,
-      @JsonKey(name: BodySecurityLogin.scopeKey) String scope,
-      @JsonKey(name: BodySecurityLogin.clientIdKey) String? clientId,
-      @JsonKey(name: BodySecurityLogin.clientSecretKey) String? clientSecret});
+      {String? grantType,
+      String username,
+      String password,
+      String scope,
+      String? clientId,
+      String? clientSecret});
 }
 
 /// @nodoc
@@ -145,48 +128,29 @@ class _$BodySecurityLoginCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
-class _BodySecurityLogin extends BodySecurityLogin {
+@JsonSerializable(converters: Convertors.convertors)
+class _BodySecurityLogin implements BodySecurityLogin {
   const _BodySecurityLogin(
-      {@JsonKey(name: BodySecurityLogin.grantTypeKey) required this.grantType,
-      @JsonKey(name: BodySecurityLogin.usernameKey) required this.username,
-      @JsonKey(name: BodySecurityLogin.passwordKey) required this.password,
-      @JsonKey(name: BodySecurityLogin.scopeKey) this.scope = '',
-      @JsonKey(name: BodySecurityLogin.clientIdKey) required this.clientId,
-      @JsonKey(name: BodySecurityLogin.clientSecretKey)
-      required this.clientSecret})
-      : super._();
+      {required this.grantType,
+      required this.username,
+      required this.password,
+      required this.scope,
+      required this.clientId,
+      required this.clientSecret});
   factory _BodySecurityLogin.fromJson(Map<String, dynamic> json) =>
       _$BodySecurityLoginFromJson(json);
 
-  /// Grant Type
   @override
-  @JsonKey(name: BodySecurityLogin.grantTypeKey)
   final String? grantType;
-
-  /// username
   @override
-  @JsonKey(name: BodySecurityLogin.usernameKey)
   final String username;
-
-  /// password
   @override
-  @JsonKey(name: BodySecurityLogin.passwordKey)
   final String password;
-
-  /// scope
   @override
-  @JsonKey(name: BodySecurityLogin.scopeKey)
   final String scope;
-
-  /// Client Id
   @override
-  @JsonKey(name: BodySecurityLogin.clientIdKey)
   final String? clientId;
-
-  /// Client Secret
   @override
-  @JsonKey(name: BodySecurityLogin.clientSecretKey)
   final String? clientSecret;
 
   /// Create a copy of BodySecurityLogin
@@ -242,12 +206,12 @@ abstract mixin class _$BodySecurityLoginCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: BodySecurityLogin.grantTypeKey) String? grantType,
-      @JsonKey(name: BodySecurityLogin.usernameKey) String username,
-      @JsonKey(name: BodySecurityLogin.passwordKey) String password,
-      @JsonKey(name: BodySecurityLogin.scopeKey) String scope,
-      @JsonKey(name: BodySecurityLogin.clientIdKey) String? clientId,
-      @JsonKey(name: BodySecurityLogin.clientSecretKey) String? clientSecret});
+      {String? grantType,
+      String username,
+      String password,
+      String scope,
+      String? clientId,
+      String? clientSecret});
 }
 
 /// @nodoc

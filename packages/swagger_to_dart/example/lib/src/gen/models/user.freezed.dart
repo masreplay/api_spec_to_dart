@@ -15,36 +15,13 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$User {
-  /// username, Username between 3-50 characters, alphanumeric with _ and -
-  @JsonKey(name: User.usernameKey)
   String get username;
-
-  /// email, Valid email address
-  @JsonKey(name: User.emailKey)
   String get email;
-
-  /// Full Name, User's full name
-  @JsonKey(name: User.fullNameKey)
   String? get fullName;
-
-  /// id, Unique user identifier
-  @JsonKey(name: User.idKey)
   int get id;
-
-  /// is_active, User account status
-  @JsonKey(name: User.isActiveKey)
   bool get isActive;
-
-  /// created_at, Account creation timestamp
-  @JsonKey(name: User.createdAtKey)
-  DateTime get createdAt;
-
-  /// User's location information
-  @JsonKey(name: User.locationKey)
+  String get createdAt;
   Location? get location;
-
-  /// tags, List of tags associated with the user
-  @JsonKey(name: User.tagsKey)
   List<String> get tags;
 
   /// Create a copy of User
@@ -94,14 +71,14 @@ abstract mixin class $UserCopyWith<$Res> {
       _$UserCopyWithImpl;
   @useResult
   $Res call(
-      {@JsonKey(name: User.usernameKey) String username,
-      @JsonKey(name: User.emailKey) String email,
-      @JsonKey(name: User.fullNameKey) String? fullName,
-      @JsonKey(name: User.idKey) int id,
-      @JsonKey(name: User.isActiveKey) bool isActive,
-      @JsonKey(name: User.createdAtKey) DateTime createdAt,
-      @JsonKey(name: User.locationKey) Location? location,
-      @JsonKey(name: User.tagsKey) List<String> tags});
+      {String username,
+      String email,
+      String? fullName,
+      int id,
+      bool isActive,
+      String createdAt,
+      Location? location,
+      List<String> tags});
 
   $LocationCopyWith<$Res>? get location;
 }
@@ -151,7 +128,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
       createdAt: null == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       location: freezed == location
           ? _self.location
           : location // ignore: cast_nullable_to_non_nullable
@@ -180,62 +157,36 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
-class _User extends User {
+@JsonSerializable(converters: Convertors.convertors)
+class _User implements User {
   const _User(
-      {@JsonKey(name: User.usernameKey) required this.username,
-      @JsonKey(name: User.emailKey) required this.email,
-      @JsonKey(name: User.fullNameKey) required this.fullName,
-      @JsonKey(name: User.idKey) required this.id,
-      @JsonKey(name: User.isActiveKey) this.isActive = true,
-      @JsonKey(name: User.createdAtKey) required this.createdAt,
-      @JsonKey(name: User.locationKey) required this.location,
-      @JsonKey(name: User.tagsKey) final List<String> tags = const []})
-      : _tags = tags,
-        super._();
+      {required this.username,
+      required this.email,
+      required this.fullName,
+      required this.id,
+      required this.isActive,
+      required this.createdAt,
+      required this.location,
+      required final List<String> tags})
+      : _tags = tags;
   factory _User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
-  /// username, Username between 3-50 characters, alphanumeric with _ and -
   @override
-  @JsonKey(name: User.usernameKey)
   final String username;
-
-  /// email, Valid email address
   @override
-  @JsonKey(name: User.emailKey)
   final String email;
-
-  /// Full Name, User's full name
   @override
-  @JsonKey(name: User.fullNameKey)
   final String? fullName;
-
-  /// id, Unique user identifier
   @override
-  @JsonKey(name: User.idKey)
   final int id;
-
-  /// is_active, User account status
   @override
-  @JsonKey(name: User.isActiveKey)
   final bool isActive;
-
-  /// created_at, Account creation timestamp
   @override
-  @JsonKey(name: User.createdAtKey)
-  final DateTime createdAt;
-
-  /// User's location information
+  final String createdAt;
   @override
-  @JsonKey(name: User.locationKey)
   final Location? location;
-
-  /// tags, List of tags associated with the user
   final List<String> _tags;
-
-  /// tags, List of tags associated with the user
   @override
-  @JsonKey(name: User.tagsKey)
   List<String> get tags {
     if (_tags is EqualUnmodifiableListView) return _tags;
     // ignore: implicit_dynamic_type
@@ -303,14 +254,14 @@ abstract mixin class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: User.usernameKey) String username,
-      @JsonKey(name: User.emailKey) String email,
-      @JsonKey(name: User.fullNameKey) String? fullName,
-      @JsonKey(name: User.idKey) int id,
-      @JsonKey(name: User.isActiveKey) bool isActive,
-      @JsonKey(name: User.createdAtKey) DateTime createdAt,
-      @JsonKey(name: User.locationKey) Location? location,
-      @JsonKey(name: User.tagsKey) List<String> tags});
+      {String username,
+      String email,
+      String? fullName,
+      int id,
+      bool isActive,
+      String createdAt,
+      Location? location,
+      List<String> tags});
 
   @override
   $LocationCopyWith<$Res>? get location;
@@ -361,7 +312,7 @@ class __$UserCopyWithImpl<$Res> implements _$UserCopyWith<$Res> {
       createdAt: null == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       location: freezed == location
           ? _self.location
           : location // ignore: cast_nullable_to_non_nullable

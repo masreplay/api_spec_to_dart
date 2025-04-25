@@ -15,8 +15,6 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$ColorModel {
-  /// color
-  @JsonKey(name: ColorModel.colorKey)
   String get color;
 
   /// Create a copy of ColorModel
@@ -53,7 +51,7 @@ abstract mixin class $ColorModelCopyWith<$Res> {
           ColorModel value, $Res Function(ColorModel) _then) =
       _$ColorModelCopyWithImpl;
   @useResult
-  $Res call({@JsonKey(name: ColorModel.colorKey) String color});
+  $Res call({String color});
 }
 
 /// @nodoc
@@ -81,16 +79,13 @@ class _$ColorModelCopyWithImpl<$Res> implements $ColorModelCopyWith<$Res> {
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
-class _ColorModel extends ColorModel {
-  const _ColorModel({@JsonKey(name: ColorModel.colorKey) required this.color})
-      : super._();
+@JsonSerializable(converters: Convertors.convertors)
+class _ColorModel implements ColorModel {
+  const _ColorModel({required this.color});
   factory _ColorModel.fromJson(Map<String, dynamic> json) =>
       _$ColorModelFromJson(json);
 
-  /// color
   @override
-  @JsonKey(name: ColorModel.colorKey)
   final String color;
 
   /// Create a copy of ColorModel
@@ -134,7 +129,7 @@ abstract mixin class _$ColorModelCopyWith<$Res>
       __$ColorModelCopyWithImpl;
   @override
   @useResult
-  $Res call({@JsonKey(name: ColorModel.colorKey) String color});
+  $Res call({String color});
 }
 
 /// @nodoc

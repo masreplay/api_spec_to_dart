@@ -15,12 +15,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$CurrencyModel {
-  /// Currency
-  @JsonKey(name: CurrencyModel.currencyKey)
   String? get currency;
-
-  /// Iso4217
-  @JsonKey(name: CurrencyModel.iso4217Key)
   String? get iso4217;
 
   /// Create a copy of CurrencyModel
@@ -60,9 +55,7 @@ abstract mixin class $CurrencyModelCopyWith<$Res> {
           CurrencyModel value, $Res Function(CurrencyModel) _then) =
       _$CurrencyModelCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: CurrencyModel.currencyKey) String? currency,
-      @JsonKey(name: CurrencyModel.iso4217Key) String? iso4217});
+  $Res call({String? currency, String? iso4217});
 }
 
 /// @nodoc
@@ -96,23 +89,15 @@ class _$CurrencyModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
-class _CurrencyModel extends CurrencyModel {
-  const _CurrencyModel(
-      {@JsonKey(name: CurrencyModel.currencyKey) required this.currency,
-      @JsonKey(name: CurrencyModel.iso4217Key) required this.iso4217})
-      : super._();
+@JsonSerializable(converters: Convertors.convertors)
+class _CurrencyModel implements CurrencyModel {
+  const _CurrencyModel({required this.currency, required this.iso4217});
   factory _CurrencyModel.fromJson(Map<String, dynamic> json) =>
       _$CurrencyModelFromJson(json);
 
-  /// Currency
   @override
-  @JsonKey(name: CurrencyModel.currencyKey)
   final String? currency;
-
-  /// Iso4217
   @override
-  @JsonKey(name: CurrencyModel.iso4217Key)
   final String? iso4217;
 
   /// Create a copy of CurrencyModel
@@ -158,9 +143,7 @@ abstract mixin class _$CurrencyModelCopyWith<$Res>
       __$CurrencyModelCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: CurrencyModel.currencyKey) String? currency,
-      @JsonKey(name: CurrencyModel.iso4217Key) String? iso4217});
+  $Res call({String? currency, String? iso4217});
 }
 
 /// @nodoc

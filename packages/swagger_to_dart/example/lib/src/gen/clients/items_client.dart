@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:example/src/gen/models/models.dart';
-
 part 'items_client.g.dart';
 
 @RestApi()
@@ -13,9 +12,7 @@ abstract class ItemsClient {
   }) = _ItemsClient;
 
   /// OperationId: items-create_item
-  /// Summery: Create Item
+  /// Summary: Create Item
   @POST('/items/create')
-  Future<HttpResponse<ItemResponse>> itemsCreateItem({
-    @Body() required ItemRequestBody body,
-  });
+  Future<HttpResponse<ItemResponse>> itemsCreateItem();
 }

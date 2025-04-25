@@ -15,8 +15,6 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$TimeZoneModel {
-  /// timezone
-  @JsonKey(name: TimeZoneModel.timezoneKey)
   String get timezone;
 
   /// Create a copy of TimeZoneModel
@@ -55,7 +53,7 @@ abstract mixin class $TimeZoneModelCopyWith<$Res> {
           TimeZoneModel value, $Res Function(TimeZoneModel) _then) =
       _$TimeZoneModelCopyWithImpl;
   @useResult
-  $Res call({@JsonKey(name: TimeZoneModel.timezoneKey) String timezone});
+  $Res call({String timezone});
 }
 
 /// @nodoc
@@ -84,17 +82,13 @@ class _$TimeZoneModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
-class _TimeZoneModel extends TimeZoneModel {
-  const _TimeZoneModel(
-      {@JsonKey(name: TimeZoneModel.timezoneKey) required this.timezone})
-      : super._();
+@JsonSerializable(converters: Convertors.convertors)
+class _TimeZoneModel implements TimeZoneModel {
+  const _TimeZoneModel({required this.timezone});
   factory _TimeZoneModel.fromJson(Map<String, dynamic> json) =>
       _$TimeZoneModelFromJson(json);
 
-  /// timezone
   @override
-  @JsonKey(name: TimeZoneModel.timezoneKey)
   final String timezone;
 
   /// Create a copy of TimeZoneModel
@@ -139,7 +133,7 @@ abstract mixin class _$TimeZoneModelCopyWith<$Res>
       __$TimeZoneModelCopyWithImpl;
   @override
   @useResult
-  $Res call({@JsonKey(name: TimeZoneModel.timezoneKey) String timezone});
+  $Res call({String timezone});
 }
 
 /// @nodoc

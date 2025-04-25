@@ -43,11 +43,17 @@ class _ValidationClient implements ValidationClient {
 
   @override
   Future<HttpResponse<dynamic>> validationParamQuery({
-    required ValidationParamQueryQueries queries,
+    String? q,
+    required int skip,
+    required int limit,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.addAll(queries.toJson());
+    final queryParameters = <String, dynamic>{
+      r'q': q,
+      r'skip': skip,
+      r'limit': limit,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
@@ -67,14 +73,11 @@ class _ValidationClient implements ValidationClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> validationParamBody({
-    required BodyValidationParamBody body,
-  }) async {
+  Future<HttpResponse<dynamic>> validationParamBody() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
@@ -92,10 +95,15 @@ class _ValidationClient implements ValidationClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> validationParamCookie() async {
+  Future<HttpResponse<dynamic>> validationParamCookie({
+    String? session,
+    String? preferences,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{r'Cookie': preferences};
+    _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
@@ -144,14 +152,12 @@ class _ValidationClient implements ValidationClient {
   }
 
   @override
-  Future<HttpResponse<AllTypesWithValidation>> validationValidationComplex({
-    required AllTypesWithValidation body,
-  }) async {
+  Future<HttpResponse<AllTypesWithValidation>>
+      validationValidationComplex() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<AllTypesWithValidation>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
@@ -176,11 +182,15 @@ class _ValidationClient implements ValidationClient {
 
   @override
   Future<HttpResponse<dynamic>> validationValidationConditional({
-    required ValidationValidationConditionalQueries queries,
+    int? userId,
+    String? username,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.addAll(queries.toJson());
+    final queryParameters = <String, dynamic>{
+      r'user_id': userId,
+      r'username': username,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
@@ -200,14 +210,12 @@ class _ValidationClient implements ValidationClient {
   }
 
   @override
-  Future<HttpResponse<ConditionalBody>> validationValidationConditionalBody({
-    required ConditionalBody body,
-  }) async {
+  Future<HttpResponse<ConditionalBody>>
+      validationValidationConditionalBody() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<ConditionalBody>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
@@ -232,11 +240,10 @@ class _ValidationClient implements ValidationClient {
 
   @override
   Future<HttpResponse<dynamic>> validationConstrainedInt({
-    required ValidationConstrainedIntQueries queries,
+    required int value,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.addAll(queries.toJson());
+    final queryParameters = <String, dynamic>{r'value': value};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
@@ -257,11 +264,10 @@ class _ValidationClient implements ValidationClient {
 
   @override
   Future<HttpResponse<dynamic>> validationConstrainedFloat({
-    required ValidationConstrainedFloatQueries queries,
+    required double value,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.addAll(queries.toJson());
+    final queryParameters = <String, dynamic>{r'value': value};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
@@ -282,11 +288,10 @@ class _ValidationClient implements ValidationClient {
 
   @override
   Future<HttpResponse<dynamic>> validationConstrainedString({
-    required ValidationConstrainedStringQueries queries,
+    required String value,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.addAll(queries.toJson());
+    final queryParameters = <String, dynamic>{r'value': value};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(

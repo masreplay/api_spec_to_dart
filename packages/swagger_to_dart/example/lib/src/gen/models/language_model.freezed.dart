@@ -15,20 +15,9 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$LanguageModel {
-  /// Alpha2
-  @JsonKey(name: LanguageModel.alpha2Key)
   String? get alpha2;
-
-  /// Name
-  @JsonKey(name: LanguageModel.nameKey)
   String? get name;
-
-  /// Iso639 3
-  @JsonKey(name: LanguageModel.iso6393Key)
   String? get iso6393;
-
-  /// Iso639 5
-  @JsonKey(name: LanguageModel.iso6395Key)
   String? get iso6395;
 
   /// Create a copy of LanguageModel
@@ -69,11 +58,7 @@ abstract mixin class $LanguageModelCopyWith<$Res> {
           LanguageModel value, $Res Function(LanguageModel) _then) =
       _$LanguageModelCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: LanguageModel.alpha2Key) String? alpha2,
-      @JsonKey(name: LanguageModel.nameKey) String? name,
-      @JsonKey(name: LanguageModel.iso6393Key) String? iso6393,
-      @JsonKey(name: LanguageModel.iso6395Key) String? iso6395});
+  $Res call({String? alpha2, String? name, String? iso6393, String? iso6395});
 }
 
 /// @nodoc
@@ -117,35 +102,23 @@ class _$LanguageModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
-class _LanguageModel extends LanguageModel {
+@JsonSerializable(converters: Convertors.convertors)
+class _LanguageModel implements LanguageModel {
   const _LanguageModel(
-      {@JsonKey(name: LanguageModel.alpha2Key) required this.alpha2,
-      @JsonKey(name: LanguageModel.nameKey) required this.name,
-      @JsonKey(name: LanguageModel.iso6393Key) required this.iso6393,
-      @JsonKey(name: LanguageModel.iso6395Key) required this.iso6395})
-      : super._();
+      {required this.alpha2,
+      required this.name,
+      required this.iso6393,
+      required this.iso6395});
   factory _LanguageModel.fromJson(Map<String, dynamic> json) =>
       _$LanguageModelFromJson(json);
 
-  /// Alpha2
   @override
-  @JsonKey(name: LanguageModel.alpha2Key)
   final String? alpha2;
-
-  /// Name
   @override
-  @JsonKey(name: LanguageModel.nameKey)
   final String? name;
-
-  /// Iso639 3
   @override
-  @JsonKey(name: LanguageModel.iso6393Key)
   final String? iso6393;
-
-  /// Iso639 5
   @override
-  @JsonKey(name: LanguageModel.iso6395Key)
   final String? iso6395;
 
   /// Create a copy of LanguageModel
@@ -192,11 +165,7 @@ abstract mixin class _$LanguageModelCopyWith<$Res>
       __$LanguageModelCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: LanguageModel.alpha2Key) String? alpha2,
-      @JsonKey(name: LanguageModel.nameKey) String? name,
-      @JsonKey(name: LanguageModel.iso6393Key) String? iso6393,
-      @JsonKey(name: LanguageModel.iso6395Key) String? iso6395});
+  $Res call({String? alpha2, String? name, String? iso6393, String? iso6395});
 }
 
 /// @nodoc

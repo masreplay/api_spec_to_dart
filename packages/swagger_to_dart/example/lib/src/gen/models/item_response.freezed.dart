@@ -15,24 +15,10 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$ItemResponse {
-  /// id
-  @JsonKey(name: ItemResponse.idKey)
   int get id;
-
-  /// name
-  @JsonKey(name: ItemResponse.nameKey)
   String get name;
-
-  /// Description
-  @JsonKey(name: ItemResponse.descriptionKey)
   String? get description;
-
-  /// price
-  @JsonKey(name: ItemResponse.priceKey)
   double get price;
-
-  /// Tax
-  @JsonKey(name: ItemResponse.taxKey)
   double? get tax;
 
   /// Create a copy of ItemResponse
@@ -77,11 +63,7 @@ abstract mixin class $ItemResponseCopyWith<$Res> {
       _$ItemResponseCopyWithImpl;
   @useResult
   $Res call(
-      {@JsonKey(name: ItemResponse.idKey) int id,
-      @JsonKey(name: ItemResponse.nameKey) String name,
-      @JsonKey(name: ItemResponse.descriptionKey) String? description,
-      @JsonKey(name: ItemResponse.priceKey) double price,
-      @JsonKey(name: ItemResponse.taxKey) double? tax});
+      {int id, String name, String? description, double price, double? tax});
 }
 
 /// @nodoc
@@ -129,41 +111,26 @@ class _$ItemResponseCopyWithImpl<$Res> implements $ItemResponseCopyWith<$Res> {
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
-class _ItemResponse extends ItemResponse {
+@JsonSerializable(converters: Convertors.convertors)
+class _ItemResponse implements ItemResponse {
   const _ItemResponse(
-      {@JsonKey(name: ItemResponse.idKey) required this.id,
-      @JsonKey(name: ItemResponse.nameKey) required this.name,
-      @JsonKey(name: ItemResponse.descriptionKey) required this.description,
-      @JsonKey(name: ItemResponse.priceKey) required this.price,
-      @JsonKey(name: ItemResponse.taxKey) required this.tax})
-      : super._();
+      {required this.id,
+      required this.name,
+      required this.description,
+      required this.price,
+      required this.tax});
   factory _ItemResponse.fromJson(Map<String, dynamic> json) =>
       _$ItemResponseFromJson(json);
 
-  /// id
   @override
-  @JsonKey(name: ItemResponse.idKey)
   final int id;
-
-  /// name
   @override
-  @JsonKey(name: ItemResponse.nameKey)
   final String name;
-
-  /// Description
   @override
-  @JsonKey(name: ItemResponse.descriptionKey)
   final String? description;
-
-  /// price
   @override
-  @JsonKey(name: ItemResponse.priceKey)
   final double price;
-
-  /// Tax
   @override
-  @JsonKey(name: ItemResponse.taxKey)
   final double? tax;
 
   /// Create a copy of ItemResponse
@@ -214,11 +181,7 @@ abstract mixin class _$ItemResponseCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: ItemResponse.idKey) int id,
-      @JsonKey(name: ItemResponse.nameKey) String name,
-      @JsonKey(name: ItemResponse.descriptionKey) String? description,
-      @JsonKey(name: ItemResponse.priceKey) double price,
-      @JsonKey(name: ItemResponse.taxKey) double? tax});
+      {int id, String name, String? description, double price, double? tax});
 }
 
 /// @nodoc

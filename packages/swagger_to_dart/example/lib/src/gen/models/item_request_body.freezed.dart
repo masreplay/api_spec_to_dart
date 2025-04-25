@@ -15,20 +15,9 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$ItemRequestBody {
-  /// name
-  @JsonKey(name: ItemRequestBody.nameKey)
   String get name;
-
-  /// Description
-  @JsonKey(name: ItemRequestBody.descriptionKey)
   String? get description;
-
-  /// price
-  @JsonKey(name: ItemRequestBody.priceKey)
   double get price;
-
-  /// Tax
-  @JsonKey(name: ItemRequestBody.taxKey)
   double? get tax;
 
   /// Create a copy of ItemRequestBody
@@ -70,11 +59,7 @@ abstract mixin class $ItemRequestBodyCopyWith<$Res> {
           ItemRequestBody value, $Res Function(ItemRequestBody) _then) =
       _$ItemRequestBodyCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: ItemRequestBody.nameKey) String name,
-      @JsonKey(name: ItemRequestBody.descriptionKey) String? description,
-      @JsonKey(name: ItemRequestBody.priceKey) double price,
-      @JsonKey(name: ItemRequestBody.taxKey) double? tax});
+  $Res call({String name, String? description, double price, double? tax});
 }
 
 /// @nodoc
@@ -118,35 +103,23 @@ class _$ItemRequestBodyCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
-class _ItemRequestBody extends ItemRequestBody {
+@JsonSerializable(converters: Convertors.convertors)
+class _ItemRequestBody implements ItemRequestBody {
   const _ItemRequestBody(
-      {@JsonKey(name: ItemRequestBody.nameKey) required this.name,
-      @JsonKey(name: ItemRequestBody.descriptionKey) required this.description,
-      @JsonKey(name: ItemRequestBody.priceKey) required this.price,
-      @JsonKey(name: ItemRequestBody.taxKey) required this.tax})
-      : super._();
+      {required this.name,
+      required this.description,
+      required this.price,
+      required this.tax});
   factory _ItemRequestBody.fromJson(Map<String, dynamic> json) =>
       _$ItemRequestBodyFromJson(json);
 
-  /// name
   @override
-  @JsonKey(name: ItemRequestBody.nameKey)
   final String name;
-
-  /// Description
   @override
-  @JsonKey(name: ItemRequestBody.descriptionKey)
   final String? description;
-
-  /// price
   @override
-  @JsonKey(name: ItemRequestBody.priceKey)
   final double price;
-
-  /// Tax
   @override
-  @JsonKey(name: ItemRequestBody.taxKey)
   final double? tax;
 
   /// Create a copy of ItemRequestBody
@@ -194,11 +167,7 @@ abstract mixin class _$ItemRequestBodyCopyWith<$Res>
       __$ItemRequestBodyCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: ItemRequestBody.nameKey) String name,
-      @JsonKey(name: ItemRequestBody.descriptionKey) String? description,
-      @JsonKey(name: ItemRequestBody.priceKey) double price,
-      @JsonKey(name: ItemRequestBody.taxKey) double? tax});
+  $Res call({String name, String? description, double price, double? tax});
 }
 
 /// @nodoc

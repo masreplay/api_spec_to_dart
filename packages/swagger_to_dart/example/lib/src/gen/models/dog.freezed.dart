@@ -15,16 +15,8 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$Dog {
-  /// name, The animal's name
-  @JsonKey(name: Dog.nameKey)
   String get name;
-
-  /// type
-  @JsonKey(name: Dog.typeKey)
   String get type;
-
-  /// bark_loudness, How loud the dog barks (0-10)
-  @JsonKey(name: Dog.barkLoudnessKey)
   int get barkLoudness;
 
   /// Create a copy of Dog
@@ -62,10 +54,7 @@ mixin _$Dog {
 abstract mixin class $DogCopyWith<$Res> {
   factory $DogCopyWith(Dog value, $Res Function(Dog) _then) = _$DogCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: Dog.nameKey) String name,
-      @JsonKey(name: Dog.typeKey) String type,
-      @JsonKey(name: Dog.barkLoudnessKey) int barkLoudness});
+  $Res call({String name, String type, int barkLoudness});
 }
 
 /// @nodoc
@@ -103,28 +92,17 @@ class _$DogCopyWithImpl<$Res> implements $DogCopyWith<$Res> {
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
-class _Dog extends Dog {
+@JsonSerializable(converters: Convertors.convertors)
+class _Dog implements Dog {
   const _Dog(
-      {@JsonKey(name: Dog.nameKey) required this.name,
-      @JsonKey(name: Dog.typeKey) this.type = 'dog',
-      @JsonKey(name: Dog.barkLoudnessKey) required this.barkLoudness})
-      : super._();
+      {required this.name, required this.type, required this.barkLoudness});
   factory _Dog.fromJson(Map<String, dynamic> json) => _$DogFromJson(json);
 
-  /// name, The animal's name
   @override
-  @JsonKey(name: Dog.nameKey)
   final String name;
-
-  /// type
   @override
-  @JsonKey(name: Dog.typeKey)
   final String type;
-
-  /// bark_loudness, How loud the dog barks (0-10)
   @override
-  @JsonKey(name: Dog.barkLoudnessKey)
   final int barkLoudness;
 
   /// Create a copy of Dog
@@ -169,10 +147,7 @@ abstract mixin class _$DogCopyWith<$Res> implements $DogCopyWith<$Res> {
       __$DogCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: Dog.nameKey) String name,
-      @JsonKey(name: Dog.typeKey) String type,
-      @JsonKey(name: Dog.barkLoudnessKey) int barkLoudness});
+  $Res call({String name, String type, int barkLoudness});
 }
 
 /// @nodoc
