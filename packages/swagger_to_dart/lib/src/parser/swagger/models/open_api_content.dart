@@ -15,6 +15,7 @@ abstract class OpenApiContent with _$OpenApiContent {
     required OpenApiContentSchema? applicationXWwwFormUrlencoded,
     @JsonKey(name: 'multipart/form-data')
     required OpenApiContentSchema? multipartFormData,
+    @JsonKey(name: '*/*') required OpenApiContentSchema? any,
   }) = _OpenApiContent;
 
   factory OpenApiContent.fromJson(Map<String, dynamic> json) =>
@@ -27,6 +28,9 @@ abstract class OpenApiContent with _$OpenApiContent {
     }
     if (multipartFormData != null) {
       return MapEntry('MultiPart()', multipartFormData);
+    }
+    if (any != null) {
+      return MapEntry('Any()', any);
     }
     return MapEntry(null, applicationJson);
   }

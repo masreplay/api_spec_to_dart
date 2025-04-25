@@ -20,6 +20,8 @@ mixin _$OpenApiContent {
   OpenApiContentSchema? get applicationXWwwFormUrlencoded;
   @JsonKey(name: 'multipart/form-data')
   OpenApiContentSchema? get multipartFormData;
+  @JsonKey(name: "*/*")
+  OpenApiContentSchema? get any;
 
   /// Create a copy of OpenApiContent
   /// with the given fields replaced by the non-null parameter values.
@@ -44,17 +46,18 @@ mixin _$OpenApiContent {
                 other.applicationXWwwFormUrlencoded ==
                     applicationXWwwFormUrlencoded) &&
             (identical(other.multipartFormData, multipartFormData) ||
-                other.multipartFormData == multipartFormData));
+                other.multipartFormData == multipartFormData) &&
+            (identical(other.any, any) || other.any == any));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, applicationJson,
-      applicationXWwwFormUrlencoded, multipartFormData);
+      applicationXWwwFormUrlencoded, multipartFormData, any);
 
   @override
   String toString() {
-    return 'OpenApiContent(applicationJson: $applicationJson, applicationXWwwFormUrlencoded: $applicationXWwwFormUrlencoded, multipartFormData: $multipartFormData)';
+    return 'OpenApiContent(applicationJson: $applicationJson, applicationXWwwFormUrlencoded: $applicationXWwwFormUrlencoded, multipartFormData: $multipartFormData, any: $any)';
   }
 }
 
@@ -69,11 +72,13 @@ abstract mixin class $OpenApiContentCopyWith<$Res> {
       @JsonKey(name: 'application/x-www-form-urlencoded')
       OpenApiContentSchema? applicationXWwwFormUrlencoded,
       @JsonKey(name: 'multipart/form-data')
-      OpenApiContentSchema? multipartFormData});
+      OpenApiContentSchema? multipartFormData,
+      @JsonKey(name: "*/*") OpenApiContentSchema? any});
 
   $OpenApiContentSchemaCopyWith<$Res>? get applicationJson;
   $OpenApiContentSchemaCopyWith<$Res>? get applicationXWwwFormUrlencoded;
   $OpenApiContentSchemaCopyWith<$Res>? get multipartFormData;
+  $OpenApiContentSchemaCopyWith<$Res>? get any;
 }
 
 /// @nodoc
@@ -92,6 +97,7 @@ class _$OpenApiContentCopyWithImpl<$Res>
     Object? applicationJson = freezed,
     Object? applicationXWwwFormUrlencoded = freezed,
     Object? multipartFormData = freezed,
+    Object? any = freezed,
   }) {
     return _then(_self.copyWith(
       applicationJson: freezed == applicationJson
@@ -105,6 +111,10 @@ class _$OpenApiContentCopyWithImpl<$Res>
       multipartFormData: freezed == multipartFormData
           ? _self.multipartFormData
           : multipartFormData // ignore: cast_nullable_to_non_nullable
+              as OpenApiContentSchema?,
+      any: freezed == any
+          ? _self.any
+          : any // ignore: cast_nullable_to_non_nullable
               as OpenApiContentSchema?,
     ));
   }
@@ -152,6 +162,20 @@ class _$OpenApiContentCopyWithImpl<$Res>
       return _then(_self.copyWith(multipartFormData: value));
     });
   }
+
+  /// Create a copy of OpenApiContent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $OpenApiContentSchemaCopyWith<$Res>? get any {
+    if (_self.any == null) {
+      return null;
+    }
+
+    return $OpenApiContentSchemaCopyWith<$Res>(_self.any!, (value) {
+      return _then(_self.copyWith(any: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -161,7 +185,8 @@ class _OpenApiContent extends OpenApiContent {
       {@JsonKey(name: 'application/json') required this.applicationJson,
       @JsonKey(name: 'application/x-www-form-urlencoded')
       required this.applicationXWwwFormUrlencoded,
-      @JsonKey(name: 'multipart/form-data') required this.multipartFormData})
+      @JsonKey(name: 'multipart/form-data') required this.multipartFormData,
+      @JsonKey(name: "*/*") required this.any})
       : super._();
   factory _OpenApiContent.fromJson(Map<String, dynamic> json) =>
       _$OpenApiContentFromJson(json);
@@ -175,6 +200,9 @@ class _OpenApiContent extends OpenApiContent {
   @override
   @JsonKey(name: 'multipart/form-data')
   final OpenApiContentSchema? multipartFormData;
+  @override
+  @JsonKey(name: "*/*")
+  final OpenApiContentSchema? any;
 
   /// Create a copy of OpenApiContent
   /// with the given fields replaced by the non-null parameter values.
@@ -203,17 +231,18 @@ class _OpenApiContent extends OpenApiContent {
                 other.applicationXWwwFormUrlencoded ==
                     applicationXWwwFormUrlencoded) &&
             (identical(other.multipartFormData, multipartFormData) ||
-                other.multipartFormData == multipartFormData));
+                other.multipartFormData == multipartFormData) &&
+            (identical(other.any, any) || other.any == any));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, applicationJson,
-      applicationXWwwFormUrlencoded, multipartFormData);
+      applicationXWwwFormUrlencoded, multipartFormData, any);
 
   @override
   String toString() {
-    return 'OpenApiContent(applicationJson: $applicationJson, applicationXWwwFormUrlencoded: $applicationXWwwFormUrlencoded, multipartFormData: $multipartFormData)';
+    return 'OpenApiContent(applicationJson: $applicationJson, applicationXWwwFormUrlencoded: $applicationXWwwFormUrlencoded, multipartFormData: $multipartFormData, any: $any)';
   }
 }
 
@@ -230,7 +259,8 @@ abstract mixin class _$OpenApiContentCopyWith<$Res>
       @JsonKey(name: 'application/x-www-form-urlencoded')
       OpenApiContentSchema? applicationXWwwFormUrlencoded,
       @JsonKey(name: 'multipart/form-data')
-      OpenApiContentSchema? multipartFormData});
+      OpenApiContentSchema? multipartFormData,
+      @JsonKey(name: "*/*") OpenApiContentSchema? any});
 
   @override
   $OpenApiContentSchemaCopyWith<$Res>? get applicationJson;
@@ -238,6 +268,8 @@ abstract mixin class _$OpenApiContentCopyWith<$Res>
   $OpenApiContentSchemaCopyWith<$Res>? get applicationXWwwFormUrlencoded;
   @override
   $OpenApiContentSchemaCopyWith<$Res>? get multipartFormData;
+  @override
+  $OpenApiContentSchemaCopyWith<$Res>? get any;
 }
 
 /// @nodoc
@@ -256,6 +288,7 @@ class __$OpenApiContentCopyWithImpl<$Res>
     Object? applicationJson = freezed,
     Object? applicationXWwwFormUrlencoded = freezed,
     Object? multipartFormData = freezed,
+    Object? any = freezed,
   }) {
     return _then(_OpenApiContent(
       applicationJson: freezed == applicationJson
@@ -269,6 +302,10 @@ class __$OpenApiContentCopyWithImpl<$Res>
       multipartFormData: freezed == multipartFormData
           ? _self.multipartFormData
           : multipartFormData // ignore: cast_nullable_to_non_nullable
+              as OpenApiContentSchema?,
+      any: freezed == any
+          ? _self.any
+          : any // ignore: cast_nullable_to_non_nullable
               as OpenApiContentSchema?,
     ));
   }
@@ -314,6 +351,20 @@ class __$OpenApiContentCopyWithImpl<$Res>
     return $OpenApiContentSchemaCopyWith<$Res>(_self.multipartFormData!,
         (value) {
       return _then(_self.copyWith(multipartFormData: value));
+    });
+  }
+
+  /// Create a copy of OpenApiContent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $OpenApiContentSchemaCopyWith<$Res>? get any {
+    if (_self.any == null) {
+      return null;
+    }
+
+    return $OpenApiContentSchemaCopyWith<$Res>(_self.any!, (value) {
+      return _then(_self.copyWith(any: value));
     });
   }
 }

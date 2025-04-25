@@ -128,7 +128,8 @@ class OpenApiClientGenerator {
     }
   }
 
-  Reference _getReturnType(Map<String, dynamic>? responses, String methodName) {
+  Reference _getReturnType(
+      Map<String, OpenApiPathMethodResponse>? responses, String methodName) {
     final successResponse = responses?['200'];
     final responseType = _getDartType(
         successResponse?.content?.current.value?.schema, methodName);

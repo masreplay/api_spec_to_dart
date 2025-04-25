@@ -22,6 +22,9 @@ _OpenApiContent _$OpenApiContentFromJson(Map<String, dynamic> json) =>
           ? null
           : OpenApiContentSchema.fromJson(
               json['multipart/form-data'] as Map<String, dynamic>),
+      any: json['*/*'] == null
+          ? null
+          : OpenApiContentSchema.fromJson(json['*/*'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$OpenApiContentToJson(_OpenApiContent instance) =>
@@ -32,6 +35,7 @@ Map<String, dynamic> _$OpenApiContentToJson(_OpenApiContent instance) =>
         'application/x-www-form-urlencoded': value,
       if (instance.multipartFormData?.toJson() case final value?)
         'multipart/form-data': value,
+      if (instance.any?.toJson() case final value?) '*/*': value,
     };
 
 _OpenApiContentSchema _$OpenApiContentSchemaFromJson(
