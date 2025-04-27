@@ -122,6 +122,7 @@ sealed class ${className} with _\$${className} {
   file.writeAsString(content);
 
   print('Generated: $filepath');
+  globalUnionClasses.add(className);
 
   return className;
 }

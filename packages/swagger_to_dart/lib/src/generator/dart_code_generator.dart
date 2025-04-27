@@ -1,4 +1,8 @@
+import 'package:swagger_to_dart/src/pubspec.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
+
+//TODO(shahadKadhim): refactor this
+final globalUnionClasses = <String>[];
 
 class SwaggerToDartDartCodeGenerator {
   SwaggerToDartDartCodeGenerator({
@@ -76,12 +80,19 @@ class SwaggerToDartDartCodeGenerator {
 
   /// Generates convertors for handling special data types like MultipartFile
   Future<void> _generateConvertors() async {
+    final isFlutterProject =
+        config.importConfig.baseConfig.pubspec.isFlutterProject;
     final content = '''
 import 'package:dio/dio.dart';
 import 'package:json_annotation/json_annotation.dart';
+${config.importConfig.importModelsCode}
+${isFlutterProject ? "import 'package:flutter/material.dart';" : ''}
 
-const convertors = <JsonConverter>[MultipartFileJsonConverter()];
-
+const convertors = <JsonConverter>[
+  MultipartFileJsonConverter(),
+  ${isFlutterProject ? 'TimeOfDayStringJsonConverter(),\n ColorHexStringJsonConverter(),\n' : ''}
+  ${globalUnionClasses.map((className) => '${className}JsonConvertor()').join(',\n')}
+];
 class MultipartFileJsonConverter
     implements JsonConverter<MultipartFile, MultipartFile> {
   const MultipartFileJsonConverter();
@@ -92,6 +103,77 @@ class MultipartFileJsonConverter
   @override
   MultipartFile toJson(MultipartFile object) => object;
 }
+
+
+${isFlutterProject ? '''
+class ColorHexStringJsonConverter implements JsonConverter<Color, String> {
+  const ColorHexStringJsonConverter();
+
+  @override
+  Color fromJson(String json) {
+    return Color(int.parse(json.substring(1), radix: 16));
+  }
+
+  @override
+  String toJson(Color? object) {
+    // ignore: deprecated_member_use
+    return '#\${object?.value.toRadixString(16)}';
+  }
+}
+
+
+/// [TimeOfDay] json converter
+/// example: PT8H30M
+class TimeOfDayStringJsonConverter implements JsonConverter<TimeOfDay, String> {
+  const TimeOfDayStringJsonConverter();
+
+  @override
+  TimeOfDay fromJson(String json) {
+    if (json.contains(':')) {
+      final time = json.split(':');
+      return TimeOfDay(hour: int.parse(time[0]), minute: int.parse(time[1]));
+    } else {
+      final regex = RegExp(r'PT(?:(\d+)H)?(?:(\d+)M)?');
+      final match = regex.firstMatch(json);
+
+      int hours = match?.group(1) != null ? int.parse(match!.group(1)!) : 0;
+      int minutes = match?.group(2) != null ? int.parse(match!.group(2)!) : 0;
+
+      return TimeOfDay(hour: hours, minute: minutes);
+    }
+  }
+
+  @override
+  String toJson(TimeOfDay object) {
+    return '\${object.hour.toString().padLeft(2, '0')}:\${object.minute.toString().padLeft(2, '0')}:00';
+  }
+}
+''' : ''}
+
+${globalUnionClasses.map((className) => '''
+class ${className}JsonConvertor implements JsonConverter<${className}, Map<String, dynamic>> {
+  const ${className}JsonConvertor();
+
+  static const String unionKey = 'value';
+   @override
+  $className fromJson(Map<String, dynamic> json) {
+    try {
+      return $className.fromJson({
+        unionKey: json,
+        ...json,
+      });
+    } catch (e) {
+      return $className.fallback();
+    }
+  }
+
+  @override
+  Map<String, dynamic> toJson($className object) {
+    return {...object.toJson()[unionKey]};
+  }
+}
+''').join('\n')}
+
 ''';
 
     final convertorsDir = config.pathConfig.convertorOutputDirectory;
