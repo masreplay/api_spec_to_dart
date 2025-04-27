@@ -45,7 +45,7 @@ String convertOpenApiAnyOfToDartType(
           typeConverter.namingUtils.renameRefClass(value) + '?',
         OpenApiSchemaAnyOf value =>
           convertOpenApiAnyOfToDartType(value, typeConverter) + '?',
-        OpenApiSchemaOneOf value => generateOpenApiOneOfToDartType(
+        OpenApiSchemaOneOf value => handleOpenApiOneOfToDartType(
               value.title ?? 'UnionModel',
               value,
               typeConverter,
@@ -60,19 +60,38 @@ String convertOpenApiAnyOfToDartType(
   return 'dynamic';
 }
 
-String generateOpenApiOneOfToDartType(
+String handleOpenApiOneOfToDartType(
   String key,
   OpenApiSchemaOneOf model,
   DartTypeConverter typeConverter,
 ) {
   final namingUtils = typeConverter.namingUtils;
+
+  final className = namingUtils.renameClass(key);
+
+  generateUnionFile(
+    key: key,
+    className: className,
+    model: model,
+    typeConverter: typeConverter,
+    namingUtils: namingUtils,
+  );
+
+  return className;
+}
+
+generateUnionFile({
+  required String key,
+  required String className,
+  required OpenApiSchemaOneOf model,
+  required DartTypeConverter typeConverter,
+  required NamingUtils namingUtils,
+}) {
+  final filename = namingUtils.renameFile(key);
+
   final importConfig = ImportConfig(baseConfig: typeConverter.baseConfig);
   final pathConfig = PathConfig(baseConfig: typeConverter.baseConfig);
 
-  final filename = namingUtils.renameFile(key);
-  final className = namingUtils.renameClass(key);
-
-  // Generate Freezed Union Class
   final unionTypes = <(String, String)>[];
   model.discriminator.mapping.entries.map((e) {
     unionTypes.add((e.key, namingUtils.renameClass(e.value.split('/').last)));
@@ -122,6 +141,4 @@ sealed class ${className} with _\$${className} {
   file.writeAsString(content);
 
   print('Generated: $filepath');
-
-  return className;
 }
