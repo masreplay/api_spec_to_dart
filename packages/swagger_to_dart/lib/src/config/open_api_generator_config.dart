@@ -120,7 +120,7 @@ class DartTypeConverter {
               value,
               this,
             ),
-          OpenApiSchemaOneOf value => generateOpenApiOneOfToDartType(
+          OpenApiSchemaOneOf value => handleOpenApiOneOfToDartType(
               '${parentTitle}${title}UnionResponse',
               value,
               this,

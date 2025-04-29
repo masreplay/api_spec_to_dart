@@ -594,7 +594,7 @@ sealed class $unionClassName with _\$$unionClassName {
                   propertyName: config.namingUtils.renameProperty(e.key),
                   freezedDefaultValue: null,
                   jsonName: e.key,
-                  propertyType: generateOpenApiOneOfToDartType(
+                  propertyType: handleOpenApiOneOfToDartType(
                     '${className}_${e.key}',
                     e.value.first.model,
                     config.dartTypeConverter,

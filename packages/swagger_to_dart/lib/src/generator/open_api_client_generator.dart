@@ -315,7 +315,7 @@ class OpenApiClientGenerator {
           value,
           config.dartTypeConverter,
         ),
-      OpenApiSchemaOneOf value => generateOpenApiOneOfToDartType(
+      OpenApiSchemaOneOf value => handleOpenApiOneOfToDartType(
           '${className}Union${value.title ?? 'Model'}',
           value,
           config.dartTypeConverter,
