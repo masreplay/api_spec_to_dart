@@ -1,3 +1,7 @@
+## 1.5.5
+
+- Support success response with 201
+
 ## 1.5.4
 
 - Update flutter version to 1.5.4
