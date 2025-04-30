@@ -74,10 +74,10 @@ class OpenApiClientGenerator {
 
         // response / return type
         final responses = method.responses ?? {};
-        final successResponse = responses['200']!;
+        final successResponse = responses['200'] ?? responses['201'];
 
         final response = _getDartType(
-          successResponse.content?.current.value?.schema,
+          successResponse?.content?.current.value?.schema,
           methodName,
         );
 
@@ -197,10 +197,10 @@ class OpenApiClientGenerator {
 
         // response / return type
         final responses = method.responses ?? {};
-        final successResponse = responses['200']!;
+        final successResponse = responses['200'] ?? responses['201'];
 
         final response = _getDartType(
-          successResponse.content?.current.value?.schema,
+          successResponse?.content?.current.value?.schema,
           methodName,
         );
 
