@@ -112,8 +112,9 @@ part '${filename}.g.dart';
 
 /// ${key}
 ${model.description == null ? '' : commentLine(model.description!)}
-@freezed
+@Freezed(fallbackUnion: 'fallback')
 sealed class ${className} with _\$${className} {
+  @FreezedUnionValue("fallback")
   const factory ${className}.fallback() = ${className}Fallback;
 
   

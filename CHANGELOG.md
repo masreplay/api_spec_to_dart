@@ -1,3 +1,7 @@
+## 1.5.3
+
+- fix fallbacks
+
 ## 1.5.2
 
 - Add support to union params by @Shahad-999
