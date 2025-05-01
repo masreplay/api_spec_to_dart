@@ -10,15 +10,6 @@
   },
   "cSpell.language": "en,ar",
   "cSpell.words": [],
-  "python.analysis.typeCheckingMode": "standard",
-  "python.analysis.diagnosticMode": "workspace",
-  "python.analysis.diagnosticSeverityOverrides": {
-    "reportUnusedImport": "error",
-    "reportUnusedClass": "warning",
-    "reportUnusedFunction": "warning",
-    "reportUnusedCallResult": "information",
-    "reportUnusedVariable": "warning",
-    "reportUnusedCoroutine": "warning",
-    "reportUnsupportedDunderAll": "warning"
-  }
+  "python.analysis.typeCheckingMode": "strict",
+  "python.analysis.diagnosticMode": "workspace"
 }
