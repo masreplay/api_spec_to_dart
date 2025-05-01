@@ -7,7 +7,7 @@ import 'package:example/src/gen/models/models.dart';
 Future<void> main(List<String> args) async {
   final dio = Dio();
 
-  dio.options.baseUrl = 'http://127.0.0.1:8000';
+  dio.options.baseUrl = 'http://0.0.0.0:8004';
 
   final apiClient = ApiClient(dio);
 

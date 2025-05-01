@@ -20,7 +20,7 @@ void main() {
       // Configure base URL
       when(
         () => mockDio.options,
-      ).thenReturn(BaseOptions(baseUrl: 'http://127.0.0.1:8000'));
+      ).thenReturn(BaseOptions(baseUrl: 'http://0.0.0.0:8004'));
     });
 
     test('pingPing returns pong', () async {
