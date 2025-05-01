@@ -31,10 +31,7 @@ from pydantic_extra_types.timezone_name import TimeZoneName
 from pydantic_extra_types.ulid import ULID
 from typing_extensions import Annotated
 
-router = APIRouter(
-    prefix="/extra_types",
-    tags=["Extra Types"],
-)
+router = APIRouter()
 
 
 # Color routes
@@ -113,7 +110,8 @@ class CoordinateModel(BaseModel):
 
 @router.post("/coordinate/", response_model=dict[str, Any])
 async def process_coordinate(coordinate_model: CoordinateModel) -> dict[str, Any]:
-    result = {}
+    result: dict[str, Any] = {}
+
     if coordinate_model.coordinate:
         result["coordinate"] = str(coordinate_model.coordinate)
     if coordinate_model.latitude:
@@ -151,7 +149,7 @@ class CurrencyModel(BaseModel):
 
 @router.post("/currency/", response_model=dict[str, Any])
 async def process_currency(currency_model: CurrencyModel) -> dict[str, Any]:
-    result = {}
+    result: dict[str, Any] = {}
     if currency_model.currency:
         result["currency"] = str(currency_model.currency)
     if currency_model.iso4217:
@@ -179,7 +177,7 @@ class LanguageModel(BaseModel):
 
 @router.post("/language/", response_model=dict[str, Any])
 async def process_language(language_model: LanguageModel) -> dict[str, Any]:
-    return {k: str(v) for k, v in language_model.dict(exclude_none=True).items()}
+    return {k: str(v) for k, v in language_model.model_dump(exclude_none=True).items()}
 
 
 # Script code route

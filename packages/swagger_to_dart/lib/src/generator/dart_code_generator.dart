@@ -8,11 +8,11 @@ class SwaggerToDartDartCodeGenerator {
   SwaggerToDartDartCodeGenerator({
     required this.config,
     required this.openApi,
-    this.fileHandler = const FileHandler(),
+    
   });
 
-  final ConfigComponents config;
   final OpenApi openApi;
+  final BaseConfig config;
   final FileHandler fileHandler;
 
   /// Runs the complete generation process
@@ -33,18 +33,14 @@ class SwaggerToDartDartCodeGenerator {
       for (final entry in openApiComponents.schemas.entries) {
         final result = modelGenerator.run(entry);
         final filepath =
-            '${config.pathConfig.modelsOutputDirectory}/${config.namingUtils.renameFile(entry.key)}.dart';
-        await fileHandler.writeFile(filepath, result.content);
+            '${config.pathConfig.modelsOutputDirectory}/${NamingUtils.instance.renameFile(entry.key)}.dart';
+        await fileHandler.writeLibrary(result.content);
       }
   }
 
   /// Generates all clients from the OpenAPI paths
   Future<void> _generateClients() async {
     final clientGenerator = OpenApiClientGenerator(config: config);
-    final baseClientGenerator = OpenApiBaseClientGenerator(
-      config: config,
-      openApi: openApi,
-    );
 
     await fileHandler.createDirectory(config.pathConfig.clientsOutputDirectory);
 
@@ -63,18 +59,18 @@ class SwaggerToDartDartCodeGenerator {
         );
 
         final filepath =
-            '${config.pathConfig.clientsOutputDirectory}/${config.namingUtils.renameFile(tag)}_client.dart';
+            '${config.pathConfig.clientsOutputDirectory}/${NamingUtils.instance.renameFile(tag)}_client.dart';
         await fileHandler.writeFile(filepath, result.content);
       }
 
       // Generate base client
-      final baseClientContent = baseClientGenerator.generator(
+      final baseClientContent = SwaggerToDartCodeBuilder.instance.class_(
+        config: config,
+        openApi: openApi,
         clients: pathsByTags.keys.toList(),
       );
 
-      final baseClientPath =
-          '${config.pathConfig.clientsOutputDirectory}/${config.namingUtils.renameFile(config.baseConfig.swaggerToDart.apiClientClassName)}.dart';
-      await fileHandler.writeFile(baseClientPath, baseClientContent);
+      await fileHandler.writeLibrary(baseClientContent);
     }
   }
 
@@ -82,10 +78,11 @@ class SwaggerToDartDartCodeGenerator {
   Future<void> _generateConvertors() async {
     final isFlutterProject =
         config.importConfig.baseConfig.pubspec.isFlutterProject;
+
     final content = '''
 import 'package:dio/dio.dart';
 import 'package:json_annotation/json_annotation.dart';
-${config.importConfig.importModelsCode}
+${config.importConfig.importModelsDirective}
 ${isFlutterProject ? "import 'package:flutter/material.dart';" : ''}
 
 const convertors = <JsonConverter>[

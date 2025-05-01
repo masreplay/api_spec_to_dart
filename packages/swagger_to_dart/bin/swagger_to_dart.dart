@@ -26,7 +26,6 @@ Future<void> main(List<String> args) async {
     final generator = SwaggerToDartDartCodeGenerator(
       config: config,
       openApi: openApi,
-      fileHandler: fileHandler,
     );
 
     await generator.run();

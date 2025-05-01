@@ -4,7 +4,7 @@ import 'package:swagger_to_dart/swagger_to_dart.dart';
 class UnionTypeGenerator {
   UnionTypeGenerator(this.config);
 
-  final ConfigComponents config;
+  final BaseConfig config;
 
   /// Generates a union type class name based on the types involved
   String generateUnionClassName(List<String> types) {
@@ -72,14 +72,14 @@ class UnionTypeGenerator {
           type: value.type,
           format: value.format,
           genericType: switch (value.items) {
-            OpenApiSchemaRef value => config.namingUtils.renameRefClass(value),
+            OpenApiSchemaRef value => NamingUtils.renameRefClass(value),
             OpenApiSchemaAnyOf value => _resolveAnyOfType(value),
             _ => null,
           },
           items: value.items,
           title: value.title,
           parentTitle: schema.title),
-      OpenApiSchemaRef value => config.namingUtils.renameRefClass(value),
+      OpenApiSchemaRef value => NamingUtils.renameRefClass(value),
       OpenApiSchemaAnyOf value => _resolveAnyOfType(value),
       _ =>
         throw ArgumentError('Unsupported schema type: ${schema.runtimeType}'),

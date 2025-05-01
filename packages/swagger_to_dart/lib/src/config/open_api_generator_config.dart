@@ -1,75 +1,14 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:path/path.dart' as path;
+import 'package:code_builder/code_builder.dart';
 import 'package:pubspec_parse/pubspec_parse.dart';
 import 'package:swagger_to_dart/src/pubspec.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
-/// Base config class that provides access to the core configuration components
-class BaseConfig {
-  const BaseConfig({required this.swaggerToDart, required this.pubspec});
-
-  final SwaggerToDart swaggerToDart;
-  final Pubspec pubspec;
-
-  Map<String, dynamic> toJson() {
-    return <String, dynamic>{
-      'swagger_to_dart': swaggerToDart.toJson(),
-      'pubspec': pubspec.toString(),
-    };
-  }
-}
-
-/// Handles output directory paths
-class PathConfig {
-  const PathConfig({required this.baseConfig});
-
-  final BaseConfig baseConfig;
-
-  String get modelsOutputDirectory {
-    return path.join(baseConfig.swaggerToDart.outputDirectory, 'models');
-  }
-
-  String get convertorOutputDirectory {
-    return path.join(baseConfig.swaggerToDart.outputDirectory, 'models');
-  }
-
-  String get clientsOutputDirectory {
-    return path.join(baseConfig.swaggerToDart.outputDirectory, 'clients');
-  }
-}
-
-/// Handles import code generation
-class ImportConfig {
-  const ImportConfig({required this.baseConfig});
-
-  final BaseConfig baseConfig;
-
-  // The output directory for the generated code
-  // Example: 'lib/src/gen' will be replaced with '/src/gen'
-  String get _outputDirectory {
-    return baseConfig.swaggerToDart.outputDirectory.replaceFirst('lib', '');
-  }
-
-  String get importModelsCode {
-    return '''import 'package:${baseConfig.pubspec.name + _outputDirectory}/models/models.dart';
-    ${baseConfig.pubspec.isFlutterProject ? "import 'package:flutter/material.dart';" : ''} 
-    ''';
-  }
-
-  String get importClientsCode {
-    return '''import 'package:${baseConfig.pubspec.name + _outputDirectory}/clients/clients.dart';''';
-  }
-}
-
-/// Converts OpenAPI schema types to Dart types
 class DartTypeConverter {
   const DartTypeConverter({
-    required this.baseConfig,
-    required this.namingUtils,
+    required this.config,
   });
 
-  final BaseConfig baseConfig;
-  final NamingUtils namingUtils;
+  final BaseConfig config;
 
   String dartType({
     required OpenApiSchemaVarType? type,
@@ -89,7 +28,7 @@ class DartTypeConverter {
           'uuid' => 'String',
           'time' ||
           'duration' =>
-            baseConfig.pubspec.isFlutterProject ? 'TimeOfDay' : 'String',
+            config.pubspec.isFlutterProject ? 'TimeOfDay' : 'String',
           'uri' => 'Uri',
           _ => 'String',
         };
@@ -105,7 +44,8 @@ class DartTypeConverter {
               type: value.type,
               format: value.format,
               genericType: switch (value.items) {
-                OpenApiSchemaRef value => namingUtils.renameRefClass(value),
+                OpenApiSchemaRef value =>
+                  NamingUtils.instance.renameRefClass(value),
                 OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
                     value,
                     this,
@@ -115,7 +55,7 @@ class DartTypeConverter {
               items: value.items,
               title: value.title,
               parentTitle: parentTitle),
-          OpenApiSchemaRef value => namingUtils.renameRefClass(value),
+          OpenApiSchemaRef value => NamingUtils.instance.renameRefClass(value),
           OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
               value,
               this,
@@ -141,18 +81,19 @@ class DartTypeConverter {
   }
 }
 
-/// Utilities for naming conventions and transformations
 class NamingUtils {
-  const NamingUtils({required this.dartKeywords});
+  const NamingUtils._();
 
-  final DartKeywords dartKeywords;
+  static NamingUtils get _instance => NamingUtils._();
+
+  static NamingUtils get instance => _instance;
 
   String renameProperty(String key) {
-    return dartKeywords.renameProtect(Recase.instance.toCamelCase(key));
+    return Recase.instance.toCamelCase(key);
   }
 
   String renameMethod(String key) {
-    return dartKeywords.renameProtect(Recase.instance.toCamelCase(key));
+    return Recase.instance.toCamelCase(key);
   }
 
   String renameEnum(String key) {
@@ -163,8 +104,8 @@ class NamingUtils {
     return renameClass(value.ref!.split('/').last);
   }
 
-  String renameClass(String key) {
-    final name = Recase.instance.toPascalCase(key);
+  String renameClass(String value) {
+    final name = Recase.instance.toPascalCase(value);
 
     if (name.endsWith('NoneType')) {
       return name.substring(0, name.length - 8);
@@ -184,137 +125,30 @@ class NamingUtils {
   }
 }
 
-/// Handles Dart keywords and reserved words
-class DartKeywords {
-  const DartKeywords();
-
-  /// Handles Dart keywords by appending an underscore if the identifier
-  /// conflicts with a reserved keyword
-  String renameProtect(String name) {
-    return name;
-  }
-
-  /// Returns the set of reserved keywords
-  Set<String> get reservedKeywords => keywords;
-}
-
-/// Set of reserved Dart keywords that can't be used as identifiers
-const keywords = {
-  'abstract',
-  'as',
-  'assert',
-  'async',
-  'await',
-  'base',
-  'break',
-  'case',
-  'catch',
-  'class',
-  'const',
-  'continue',
-  'covariant',
-  'default',
-  'deferred',
-  'do',
-  'dynamic',
-  'else',
-  'enum',
-  'export',
-  'extends',
-  'extension',
-  'external',
-  'factory',
-  'false',
-  'var',
-  'final',
-  'finally',
-  'for',
-  'Function',
-  'get',
-  'hide',
-  'if',
-  'implements',
-  'import',
-  'in',
-  'interface',
-  'is',
-  'late',
-  'library',
-  'mixin',
-  'new',
-  'null',
-  'of',
-  'on',
-  'operator',
-  'part',
-  'required',
-  'rethrow',
-  'return',
-  'sealed',
-  'set',
-  'show',
-  'static',
-  'super',
-  'switch',
-  'sync',
-  'this',
-  'throw',
-  'true',
-  'try',
-  'type',
-  'typedef',
-  'void',
-  'when',
-  'with',
-  'while',
-  'yield',
-};
-
-/// Factory class to create and initialize all config components
-class ConfigFactory {
-  static ConfigComponents create({
-    required SwaggerToDart swaggerToDart,
-    required Pubspec pubspec,
-  }) {
-    final baseConfig = BaseConfig(
-      swaggerToDart: swaggerToDart,
-      pubspec: pubspec,
-    );
-
-    final dartKeywords = const DartKeywords();
-    final namingUtils = NamingUtils(dartKeywords: dartKeywords);
-
-    return ConfigComponents(
-      baseConfig: baseConfig,
-      pathConfig: PathConfig(baseConfig: baseConfig),
-      importConfig: ImportConfig(baseConfig: baseConfig),
-      namingUtils: namingUtils,
-      dartTypeConverter: DartTypeConverter(
-        baseConfig: baseConfig,
-        namingUtils: namingUtils,
-      ),
-      dartKeywords: dartKeywords,
-    );
-  }
-}
-
-/// Container class that holds all config components
-class ConfigComponents {
-  const ConfigComponents({
-    required this.baseConfig,
-    required this.pathConfig,
-    required this.importConfig,
-    required this.namingUtils,
+class BaseConfig {
+  const BaseConfig({
+    required this.pubspec,
+    required this.swaggerToDart,
     required this.dartTypeConverter,
-    required this.dartKeywords,
   });
 
-  final BaseConfig baseConfig;
-  final PathConfig pathConfig;
-  final ImportConfig importConfig;
-  final NamingUtils namingUtils;
+  final Pubspec pubspec;
+  final SwaggerToDart swaggerToDart;
   final DartTypeConverter dartTypeConverter;
-  final DartKeywords dartKeywords;
 
-  Map<String, dynamic> toJson() => baseConfig.toJson();
+  String get _outputDirectory {
+    return swaggerToDart.outputDirectory.replaceFirst('lib', '');
+  }
+
+  Directive get importModelsDirective {
+    return Directive.import(
+      'package:${pubspec.name + _outputDirectory}/models/models.dart',
+    );
+  }
+
+  Directive get importClientsCode {
+    return Directive.import(
+      'package:${pubspec.name + _outputDirectory}/clients/clients.dart',
+    );
+  }
 }

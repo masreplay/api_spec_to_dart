@@ -1,8 +1,20 @@
 import 'dart:io';
 
-/// Handles file system operations
+import 'package:code_builder/code_builder.dart';
+import 'package:dart_style/dart_style.dart';
+
 class FileHandler {
   const FileHandler();
+
+  Future<File> writeLibrary(Library library) async {
+    final file = File(library.name!);
+    final emitter = DartEmitter.scoped();
+    final formatter = DartFormatter(
+      languageVersion: DartFormatter.latestLanguageVersion,
+    );
+
+    return file.writeAsString(formatter.format('${library.accept(emitter)}'));
+  }
 
   /// Writes content to a file
   Future<void> writeFile(String filepath, String content) async {

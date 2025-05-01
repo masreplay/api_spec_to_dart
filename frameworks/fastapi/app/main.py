@@ -22,10 +22,6 @@ from fastapi.security import (
     OAuth2PasswordBearer,
     OAuth2PasswordRequestForm,
 )
-
-from app import pydantic_extra_types_route, items_route
-
-
 from pydantic import (
     BaseModel,
     EmailStr,
@@ -38,6 +34,8 @@ from pydantic import (
     conint,
     constr,
 )
+
+from app import generic_router, items_router, pydantic_extra_types_router
 
 app = FastAPI(
     title="FastAPI Type Examples",
@@ -371,7 +369,7 @@ class User(UserBase):
     )
 
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "id": 1,
                 "username": "johndoe",
@@ -686,7 +684,7 @@ class AllTypesWithValidation(BaseModel):
     )
 
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "int_value": 42,
                 "float_value": 3.14,
@@ -744,7 +742,6 @@ class ConditionalBody(BaseModel):
     item_name: Optional[str] = Field(
         None,
         example="example_item",
-        min_length=3,
         description="Item name (if provided)",
     )
 
@@ -759,7 +756,7 @@ class ConditionalBody(BaseModel):
         return values
 
     class Config:
-        schema_extra = {"example": {"item_id": 42, "item_name": "example_item"}}
+        json_schema_extra = {"example": {"item_id": 42, "item_name": "example_item"}}
 
 
 @app.post(
@@ -1094,5 +1091,18 @@ def error_custom(
 
 
 # --------- Extras ---------
-app.include_router(pydantic_extra_types_route.router)
-app.include_router(items_route.router)
+app.include_router(
+    pydantic_extra_types_router.router,
+    prefix="/extra_types",
+    tags=["Extra Types"],
+)
+app.include_router(
+    items_router.router,
+    prefix="/items",
+    tags=["items"],
+)
+app.include_router(
+    generic_router.router,
+    prefix="/generic",
+    tags=["generic"],
+)

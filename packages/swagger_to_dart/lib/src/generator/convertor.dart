@@ -30,7 +30,7 @@ String convertOpenApiAnyOfToDartType(
               format: value.format,
               genericType: switch (value.items) {
                 OpenApiSchemaRef value =>
-                  typeConverter.namingUtils.renameRefClass(value),
+                  NamingUtils.instance.renameRefClass(value),
                 OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
                     value,
                     typeConverter,
@@ -42,7 +42,7 @@ String convertOpenApiAnyOfToDartType(
             ) +
             '?',
         OpenApiSchemaRef value =>
-          typeConverter.namingUtils.renameRefClass(value) + '?',
+          NamingUtils.instance.renameRefClass(value) + '?',
         OpenApiSchemaAnyOf value =>
           convertOpenApiAnyOfToDartType(value, typeConverter) + '?',
         OpenApiSchemaOneOf value => handleOpenApiOneOfToDartType(
@@ -65,16 +65,13 @@ String handleOpenApiOneOfToDartType(
   OpenApiSchemaOneOf model,
   DartTypeConverter typeConverter,
 ) {
-  final namingUtils = typeConverter.namingUtils;
-
-  final className = namingUtils.renameClass(key);
+  final className = NamingUtils.instance.renameClass(key);
 
   generateUnionFile(
     key: key,
     className: className,
     model: model,
     typeConverter: typeConverter,
-    namingUtils: namingUtils,
   );
 
   return className;
@@ -84,49 +81,17 @@ generateUnionFile({
   required String key,
   required String className,
   required OpenApiSchemaOneOf model,
-  required DartTypeConverter typeConverter,
-  required NamingUtils namingUtils,
+  required BaseConfig config,
 }) {
-  final filename = namingUtils.renameFile(key);
-
-  final importConfig = ImportConfig(baseConfig: typeConverter.baseConfig);
-  final pathConfig = PathConfig(baseConfig: typeConverter.baseConfig);
+  final filename = NamingUtils.instance.renameFile(key);
 
   final unionTypes = <(String, String)>[];
   model.discriminator.mapping.entries.map((e) {
-    unionTypes.add((e.key, namingUtils.renameClass(e.value.split('/').last)));
+    unionTypes.add(
+        (e.key, NamingUtils.instance.renameClass(e.value.split('/').last)));
   }).toList();
 
-  final content = '''
-import 'dart:io';
-
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dio/dio.dart';
-
-import 'convertors.dart';
-${importConfig.importModelsCode}
-
-
-part '${filename}.freezed.dart';
-part '${filename}.g.dart';
-
-/// ${key}
-${model.description == null ? '' : commentLine(model.description!)}
-@Freezed(fallbackUnion: 'fallback')
-sealed class ${className} with _\$${className} {
-  @FreezedUnionValue("fallback")
-  const factory ${className}.fallback() = ${className}Fallback;
-
-  
-  ${unionTypes.map((type) => '@FreezedUnionValue("${type.$1}") const factory ${className}.${Recase.instance.toCamelCase(type.$1)}(${type.$2} value,) = ${namingUtils.renameClass('${className}_${type.$1}')};').join('\n\n')}
-  
-  factory ${className}.fromJson(
-    Map<String, dynamic> json,
-  ) => _\$${className}FromJson(
-    json,
-  );
-}
-''';
+  // TODO: generate union file
 
   if (!Directory(pathConfig.modelsOutputDirectory).existsSync()) {
     Directory(pathConfig.modelsOutputDirectory).createSync(recursive: true);
@@ -134,7 +99,7 @@ sealed class ${className} with _\$${className} {
 
   final filepath = path.join(
     pathConfig.modelsOutputDirectory,
-    '${namingUtils.renameFile(className)}.dart',
+    '${NamingUtils.instance.renameFile(className)}.dart',
   );
 
   final file = File(filepath);

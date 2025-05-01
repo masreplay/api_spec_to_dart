@@ -14,7 +14,7 @@ class SetupHandler {
   final String? configPath;
 
   /// Validates and sets up the environment for code generation
-  Future<({ConfigComponents config, OpenApi openApi})> setup() async {
+  Future<({BaseConfig config, OpenApi openApi})> setup() async {
     final rootDir = Directory.current.path;
 
     final config = await _loadConfig(rootDir);
@@ -24,14 +24,12 @@ class SetupHandler {
   }
 
   /// Loads and validates the configuration
-  Future<ConfigComponents> _loadConfig(String rootDir) async {
+  Future<BaseConfig> _loadConfig(String rootDir) async {
     final pubspecPath = path.join(rootDir, 'pubspec.yaml');
     final pubspec = Pubspec.parse(
       await File(pubspecPath).readAsString(),
       sourceUrl: Uri.parse(pubspecPath),
     );
-
-    print('swagger_to_dart: Flutter Project ${pubspec.isFlutterProject}');
 
     // Use custom config path if provided, otherwise use default
     final configFilePath = configPath ?? SwaggerToDartYaml.filename;
@@ -56,7 +54,7 @@ class SetupHandler {
   }
 
   /// Loads and validates the OpenAPI specification
-  Future<OpenApi> _loadOpenApi(ConfigComponents config) async {
+  Future<OpenApi> _loadOpenApi(BaseConfig config) async {
     final swaggerConfig = config.baseConfig.swaggerToDart;
     Map<String, dynamic> map;
 
@@ -123,7 +121,7 @@ class SetupHandler {
   }
 
   /// Sets up the output directory
-  Future<void> _setupOutputDirectory(ConfigComponents config) async {
+  Future<void> _setupOutputDirectory(BaseConfig config) async {
     final genDir = Directory(config.baseConfig.swaggerToDart.outputDirectory);
     if (genDir.existsSync()) {
       await genDir.delete(recursive: true);

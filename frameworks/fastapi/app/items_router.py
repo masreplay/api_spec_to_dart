@@ -2,10 +2,7 @@ from typing import Optional
 from fastapi import APIRouter
 from pydantic import BaseModel
 
-router = APIRouter(
-    prefix="/items",
-    tags=["items"],
-)
+router = APIRouter()
 
 
 class ItemRequestBody(BaseModel):
@@ -23,7 +20,7 @@ class ItemResponse(BaseModel):
     tax: Optional[float] = None
 
 
-@router.post("/create")
+@router.post("/")
 def create_item(item: ItemRequestBody) -> ItemResponse:
     return ItemResponse(
         id=1,

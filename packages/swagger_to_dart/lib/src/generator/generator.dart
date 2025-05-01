@@ -1,4 +1,4 @@
-export 'open_api_base_client_generator.dart';
+export '../builder/swagger_to_dart_code_builder.dart';
 export 'open_api_client_generator.dart';
 export 'dart_code_generator.dart';
 export 'union_type_generator.dart';
@@ -6,4 +6,4 @@ export 'convertor.dart';
 export 'open_api_model_generator.dart';
 export 'exports_generator.dart';
 export 'file_writer.dart';
-export 'freezed_class_content_generator.dart';
+export '../builder/freezed_class_code_builder.dart';
