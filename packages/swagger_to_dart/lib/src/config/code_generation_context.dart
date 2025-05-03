@@ -1,10 +1,11 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:pubspec_parse/pubspec_parse.dart';
 import 'package:swagger_to_dart/src/config/open_api_to_dart_type_converter.dart';
+import 'package:swagger_to_dart/src/config/swagger_to_dart_yaml.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
-class SwaggerToDartConfig {
-  const SwaggerToDartConfig({
+class CodeGenerationContext {
+  const CodeGenerationContext({
     required this.pubspec,
     required this.swaggerToDart,
     required this.dartTypeConverter,

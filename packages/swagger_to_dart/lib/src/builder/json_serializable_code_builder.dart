@@ -10,11 +10,10 @@ class JsonSerializableCodeBuilder {
   static JsonSerializableCodeBuilder get instance => _instance;
 
   Library convertorFile_({
-    required String name,
+    required String className,
     required ({String type, String body}) from,
     required ({String type, String body}) to,
   }) {
-    final className = '${NamingUtils.instance.renameClass(name)}';
     final filename = NamingUtils.instance.renameFile(className);
 
     return Library(
@@ -29,12 +28,10 @@ class JsonSerializableCodeBuilder {
   }
 
   Class convertorClass_({
-    required String name,
+    required String className,
     required ({String type, String body}) from,
     required ({String type, String body}) to,
   }) {
-    final className = '${NamingUtils.instance.renameClass(name)}';
-
     return Class(
       (b) => b
         ..name = className
@@ -69,6 +66,43 @@ class JsonSerializableCodeBuilder {
                 Code(to.body),
               ]),
           ),
+        ]),
+    );
+  }
+
+  // enum OpenApiSchemaVarType {
+  //   @JsonValue('string')
+  //   string,
+  //   @JsonValue('number')
+  //   number,
+  //   @JsonValue('integer')
+  //   integer,
+  //   @JsonValue('boolean')
+  //   boolean,
+  //   @JsonValue('array')
+  //   array,
+  //   @JsonValue('object')
+  //   object,
+  //   @JsonValue('null')
+  //   null_,
+
+  //   $unknown,
+  // }
+
+  Enum jsonSerializableEnum_({
+    required String className,
+    required List<String> values,
+  }) {
+    return Enum(
+      (b) => b
+        ..name = className
+        ..values.addAll([
+          for (final value in values)
+            EnumValue(
+              (b) => b
+                ..annotations.add(refer('@JsonValue($value)'))
+                ..name = value,
+            ),
         ]),
     );
   }

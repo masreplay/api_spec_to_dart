@@ -10,7 +10,7 @@ class DartCodeExportsGenerator {
     required this.fileHandler,
   });
 
-  final SwaggerToDartConfig config;
+  final CodeGenerationContext config;
   final FileHandler fileHandler;
 
   /// Generates the exports.dart file for models

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:path/path.dart' as path;
+import 'package:swagger_to_dart/src/config/code_generation_context.dart';
 import 'package:swagger_to_dart/src/config/open_api_to_dart_type_converter.dart';
 import 'package:swagger_to_dart/src/utils/naming_utils.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
@@ -16,7 +17,7 @@ String handleOpenApiOneOfToDartType(
     key: key,
     className: className,
     model: model,
-    config: config,
+    context: config,
   );
 
   return className;
@@ -26,7 +27,7 @@ String generateUnionFile({
   required String key,
   required String className,
   required OpenApiSchemaOneOf model,
-  required SwaggerToDartConfig config,
+  required CodeGenerationContext context,
 }) {
   final filename = NamingUtils.instance.renameFile(key);
 
@@ -38,7 +39,7 @@ String generateUnionFile({
 
   // TODO: generate union file
 
-  if (!Directory(pathConfig.modelsOutputDirectory).existsSync()) {
+  if (!Directory(context.pathConfig.modelsOutputDirectory).existsSync()) {
     Directory(pathConfig.modelsOutputDirectory).createSync(recursive: true);
   }
 

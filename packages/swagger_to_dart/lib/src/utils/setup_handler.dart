@@ -14,7 +14,7 @@ class SetupHandler {
   final String? configPath;
 
   /// Validates and sets up the environment for code generation
-  Future<SwaggerToDartConfig> setup() async {
+  Future<CodeGenerationContext> setup() async {
     final rootDir = Directory.current.path;
 
     final swaggerToDart = await _loadSwaggerToDartYaml(rootDir);
@@ -23,7 +23,7 @@ class SetupHandler {
     await _setupOutputDirectory(swaggerToDart);
     final isFlutterProject = pubspec.dependencies.containsKey('flutter');
 
-    return SwaggerToDartConfig(
+    return CodeGenerationContext(
       swaggerToDart: swaggerToDart,
       pubspec: pubspec,
       openApi: openApi,

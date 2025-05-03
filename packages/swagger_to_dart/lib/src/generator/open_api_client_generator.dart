@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:path/path.dart' as path;
+import 'package:swagger_to_dart/src/utils/naming_utils.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 String commentLine(String line) {
@@ -10,7 +11,7 @@ String commentLine(String line) {
 class OpenApiClientGenerator {
   const OpenApiClientGenerator({required this.config});
 
-  final SwaggerToDartConfig config;
+  final CodeGenerationContext config;
 
   ({String filename, String content}) generator({
     required OpenApiPaths path,
@@ -304,7 +305,8 @@ class OpenApiClientGenerator {
           genericType: switch (value.items) {
             OpenApiSchemaRef value =>
               NamingUtils.instance.renameRefClass(value),
-            OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
+            OpenApiSchemaAnyOf value =>
+              config.dartTypeConverter.convertOpenApiAnyOfToDartType(
                 value,
                 config.dartTypeConverter,
               ),
@@ -314,7 +316,8 @@ class OpenApiClientGenerator {
           title: value.title,
         ),
       OpenApiSchemaRef value => NamingUtils.instance.renameRefClass(value),
-      OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
+      OpenApiSchemaAnyOf value =>
+        config.dartTypeConverter.convertOpenApiAnyOfToDartType(
           value,
           config.dartTypeConverter,
         ),

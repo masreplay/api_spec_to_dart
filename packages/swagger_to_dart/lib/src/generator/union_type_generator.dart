@@ -5,7 +5,7 @@ import 'package:swagger_to_dart/swagger_to_dart.dart';
 class UnionTypeGenerator {
   UnionTypeGenerator(this.config);
 
-  final SwaggerToDartConfig config;
+  final CodeGenerationContext config;
 
   /// Generates a union type class name based on the types involved
   String generateUnionClassName(List<String> types) {

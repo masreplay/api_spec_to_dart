@@ -1,5 +1,7 @@
 import 'package:code_builder/src/specs/method.dart';
 import 'package:collection/collection.dart';
+import 'package:swagger_to_dart/src/builder/json_serializable_code_builder.dart';
+import 'package:swagger_to_dart/src/config/code_generation_context.dart';
 import 'package:swagger_to_dart/src/utils/naming_utils.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
@@ -10,7 +12,7 @@ typedef OpenApiModel = MapEntry<String, OpenApiSchemas>;
 class OpenApiModelGenerator {
   OpenApiModelGenerator({required this.config});
 
-  final SwaggerToDartConfig config;
+  final CodeGenerationContext config;
 
   ({String filename, String content}) run(OpenApiModel model) {
     final schema = model.value;
@@ -39,7 +41,7 @@ class OpenApiModelGenerator {
 
 class TypePropertyGenerator {
   TypePropertyGenerator(this.config);
-  final SwaggerToDartConfig config;
+  final CodeGenerationContext config;
 
   Parameter generateField({
     required String className,
@@ -130,7 +132,7 @@ class TypePropertyGenerator {
 
 class RefPropertyGenerator {
   RefPropertyGenerator(this.config);
-  final SwaggerToDartConfig config;
+  final CodeGenerationContext config;
 
   String generateField({
     required String className,
@@ -172,7 +174,7 @@ class RefPropertyGenerator {
 class AnyOfPropertyGenerator {
   AnyOfPropertyGenerator(this.config)
       : unionTypeGenerator = UnionTypeGenerator(config);
-  final SwaggerToDartConfig config;
+  final CodeGenerationContext config;
   final UnionTypeGenerator unionTypeGenerator;
 
   String generateField({
@@ -243,7 +245,7 @@ class AnyOfPropertyGenerator {
 
 class EnumModelStrategy {
   EnumModelStrategy(this.config);
-  final SwaggerToDartConfig config;
+  final CodeGenerationContext config;
 
   ({String filename, String content}) generate(OpenApiModel model) {
     final filename = NamingUtils.instance.renameFile(model.key);
@@ -262,12 +264,9 @@ class EnumModelStrategy {
       isNumber,
     );
 
-    final content = generateEnumClassContent(
+    final content = JsonSerializableCodeBuilder.instance.jsonSerializableEnum_(
       className: className,
-      filename: filename,
-      enumValues: enumValues,
-      type: type,
-      model: model,
+      values: enumValues,
     );
 
     return (filename: filename, content: content);
@@ -311,7 +310,7 @@ class UnionModelStrategy {
           OpenApiSchemaAnyOf: AnyOfPropertyGenerator(config),
           OpenApiSchemaOneOf: AnyOfPropertyGenerator(config),
         };
-  final SwaggerToDartConfig config;
+  final CodeGenerationContext config;
   final Map<Type, PropertyGeneratorStrategy> propertyGenerators;
 
   Object generate(OpenApiModel model) {
@@ -351,7 +350,8 @@ class UnionModelStrategy {
                   OpenApiSchemaRef value => NamingUtils.instance.renameRefClass(
                       value,
                     ),
-                  OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
+                  OpenApiSchemaAnyOf value =>
+                    config.dartTypeConverter.convertOpenApiAnyOfToDartType(
                       value,
                       config.dartTypeConverter,
                     ),
@@ -364,7 +364,8 @@ class UnionModelStrategy {
             OpenApiSchemaRef value => NamingUtils.instance.renameRefClass(
                 value,
               ),
-            OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
+            OpenApiSchemaAnyOf value =>
+              config.dartTypeConverter.convertOpenApiAnyOfToDartType(
                 value,
                 config.dartTypeConverter,
               ),
@@ -471,7 +472,7 @@ class RegularModelStrategy {
           OpenApiSchemaRef: RefPropertyGenerator(config),
           OpenApiSchemaAnyOf: AnyOfPropertyGenerator(config),
         };
-  final SwaggerToDartConfig config;
+  final CodeGenerationContext config;
 
   final Map<Type, PropertyGeneratorStrategy> propertyGenerators;
 

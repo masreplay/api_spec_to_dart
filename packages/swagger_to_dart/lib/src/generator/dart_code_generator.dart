@@ -10,7 +10,7 @@ class SwaggerToDartDartCodeGenerator {
     required this.fileHandler,
   });
 
-  final SwaggerToDartConfig config;
+  final CodeGenerationContext config;
   final FileHandler fileHandler;
 
   /// Runs the complete generation process
