@@ -9,12 +9,12 @@ class JsonSerializableCodeBuilder {
 
   static JsonSerializableCodeBuilder get instance => _instance;
 
-  Library convertorClass_({
+  Library convertorFile_({
     required String name,
     required ({String type, String body}) from,
     required ({String type, String body}) to,
   }) {
-    final className = '${NamingUtils.instance.renameClass(name)}JsonConverter';
+    final className = '${NamingUtils.instance.renameClass(name)}';
     final filename = NamingUtils.instance.renameFile(className);
 
     return Library(
@@ -24,44 +24,52 @@ class JsonSerializableCodeBuilder {
           Directive.import('package:dio/dio.dart'),
           Directive.import('package:retrofit/retrofit.dart'),
         ])
-        ..body.add(
-          Class(
+        ..body.addAll([]),
+    );
+  }
+
+  Class convertorClass_({
+    required String name,
+    required ({String type, String body}) from,
+    required ({String type, String body}) to,
+  }) {
+    final className = '${NamingUtils.instance.renameClass(name)}';
+
+    return Class(
+      (b) => b
+        ..name = className
+        ..implements.add(refer('JsonConverter<${from.type}, ${to.type}>'))
+        ..constructors.addAll([
+          Constructor((b) => b..constant = true),
+        ])
+        ..methods.addAll([
+          Method(
             (b) => b
-              ..name = className
-              ..implements.add(refer('JsonConverter<${from.type}, ${to.type}>'))
-              ..constructors.addAll([
-                Constructor((b) => b..constant = true),
-              ])
-              ..methods.addAll([
-                Method(
-                  (b) => b
-                    ..returns = refer(from.type)
-                    ..name = 'fromJson'
-                    ..requiredParameters.add(
-                      Parameter((b) => b
-                        ..name = 'json'
-                        ..type = refer(from.type)),
-                    )
-                    ..body = Block.of([
-                      Code(from.body),
-                    ]),
-                ),
-                Method(
-                  (b) => b
-                    ..returns = refer(to.type)
-                    ..name = 'toJson'
-                    ..optionalParameters.add(
-                      Parameter((b) => b
-                        ..name = 'object'
-                        ..type = refer(to.type)),
-                    )
-                    ..body = Block.of([
-                      Code(to.body),
-                    ]),
-                ),
+              ..returns = refer(from.type)
+              ..name = 'fromJson'
+              ..requiredParameters.add(
+                Parameter((b) => b
+                  ..name = 'json'
+                  ..type = refer(from.type)),
+              )
+              ..body = Block.of([
+                Code(from.body),
               ]),
           ),
-        ),
+          Method(
+            (b) => b
+              ..returns = refer(to.type)
+              ..name = 'toJson'
+              ..optionalParameters.add(
+                Parameter((b) => b
+                  ..name = 'object'
+                  ..type = refer(to.type)),
+              )
+              ..body = Block.of([
+                Code(to.body),
+              ]),
+          ),
+        ]),
     );
   }
 }

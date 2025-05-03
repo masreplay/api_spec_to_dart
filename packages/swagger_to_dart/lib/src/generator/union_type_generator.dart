@@ -1,14 +1,17 @@
+import 'package:swagger_to_dart/src/utils/naming_utils.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 /// Generates union types for OpenAPI anyOf schemas
 class UnionTypeGenerator {
   UnionTypeGenerator(this.config);
 
-  final BaseConfig config;
+  final SwaggerToDartConfig config;
 
   /// Generates a union type class name based on the types involved
   String generateUnionClassName(List<String> types) {
-    return types.map((type) => type.pascalCase).join('Or');
+    return NamingUtils.instance.renameClass(
+      types.map(NamingUtils.instance.renameClass).join('Or'),
+    );
   }
 
   /// Generates the content for a union type class
@@ -49,7 +52,7 @@ class UnionTypeGenerator {
     for (final unionType in unionTypes) {
       final constructorName = unionType.type.toLowerCase();
       buffer.writeln(
-        '  factory $className.$constructorName(${unionType.type} value) = _\$${className}${unionType.type.pascalCase};',
+        '  factory $className.$constructorName(${unionType.type} value) = _\$${className}${NamingUtils.instance.renameClass(unionType.type)};',
       );
     }
     buffer.writeln();
@@ -72,14 +75,15 @@ class UnionTypeGenerator {
           type: value.type,
           format: value.format,
           genericType: switch (value.items) {
-            OpenApiSchemaRef value => NamingUtils.renameRefClass(value),
+            OpenApiSchemaRef value =>
+              NamingUtils.instance.renameRefClass(value),
             OpenApiSchemaAnyOf value => _resolveAnyOfType(value),
             _ => null,
           },
           items: value.items,
           title: value.title,
           parentTitle: schema.title),
-      OpenApiSchemaRef value => NamingUtils.renameRefClass(value),
+      OpenApiSchemaRef value => NamingUtils.instance.renameRefClass(value),
       OpenApiSchemaAnyOf value => _resolveAnyOfType(value),
       _ =>
         throw ArgumentError('Unsupported schema type: ${schema.runtimeType}'),

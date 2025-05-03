@@ -1,61 +1,65 @@
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:path/path.dart' as path;
 import 'package:pubspec_parse/pubspec_parse.dart';
-import 'package:swagger_to_dart/src/pubspec.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 import 'package:yaml/yaml.dart';
 
 /// Handles setup and validation for the code generator
 class SetupHandler {
-  SetupHandler({required this.fileHandler, this.configPath});
+  SetupHandler({this.configPath});
 
-  final FileHandler fileHandler;
   final String? configPath;
 
   /// Validates and sets up the environment for code generation
-  Future<({BaseConfig config, OpenApi openApi})> setup() async {
+  Future<SwaggerToDartConfig> setup() async {
     final rootDir = Directory.current.path;
 
-    final config = await _loadConfig(rootDir);
-    final openApi = await _loadOpenApi(config);
-    await _setupOutputDirectory(config);
-    return (config: config, openApi: openApi);
+    final swaggerToDart = await _loadSwaggerToDartYaml(rootDir);
+    final pubspec = await _loadPubspecYaml(rootDir);
+    final openApi = await _loadOpenApi(swaggerToDart);
+    await _setupOutputDirectory(swaggerToDart);
+    final isFlutterProject = pubspec.dependencies.containsKey('flutter');
+
+    return SwaggerToDartConfig(
+      swaggerToDart: swaggerToDart,
+      pubspec: pubspec,
+      openApi: openApi,
+      dartTypeConverter: DartTypeConverter(isFlutterProject: isFlutterProject),
+    );
   }
 
-  /// Loads and validates the configuration
-  Future<BaseConfig> _loadConfig(String rootDir) async {
-    final pubspecPath = path.join(rootDir, 'pubspec.yaml');
-    final pubspec = Pubspec.parse(
-      await File(pubspecPath).readAsString(),
-      sourceUrl: Uri.parse(pubspecPath),
-    );
+  Future<Pubspec> _loadPubspecYaml(String rootDir) async {
+    final filePath = path.join(rootDir, 'pubspec.yaml');
 
-    // Use custom config path if provided, otherwise use default
-    final configFilePath = configPath ?? SwaggerToDartYaml.filename;
-    final swaggerToDartYamlFile = File(configFilePath);
-
-    if (!swaggerToDartYamlFile.existsSync()) {
-      throw Exception('Configuration file not found: $configFilePath');
+    final file = File(filePath);
+    if (!file.existsSync()) {
+      throw Exception('Pubspec file not found: $filePath');
     }
 
-    final swaggerToDartYamlFileContent =
-        await swaggerToDartYamlFile.readAsString();
-    final swaggerToDartYamlMap = loadYaml(swaggerToDartYamlFileContent);
+    final content = await file.readAsString();
+    return Pubspec.parse(content);
+  }
 
-    final swaggerToDartYaml = SwaggerToDartYaml.fromYamlMap(
-      swaggerToDartYamlMap,
-    );
+  Future<SwaggerToDart> _loadSwaggerToDartYaml(String rootDir) async {
+    final filePath =
+        configPath ?? path.join(rootDir, SwaggerToDartYaml.filename);
 
-    return ConfigFactory.create(
-      pubspec: pubspec,
-      swaggerToDart: swaggerToDartYaml.swaggerToDart,
-    );
+    final file = File(filePath);
+
+    if (!file.existsSync()) {
+      throw Exception('swagger_to_dart.yaml file not found: $filePath');
+    }
+
+    final content = await file.readAsString();
+    final yaml = loadYaml(content);
+
+    return SwaggerToDartYaml.fromYamlMap(yaml).swaggerToDart;
   }
 
   /// Loads and validates the OpenAPI specification
-  Future<OpenApi> _loadOpenApi(BaseConfig config) async {
-    final swaggerConfig = config.baseConfig.swaggerToDart;
+  Future<OpenApi> _loadOpenApi(SwaggerToDart swaggerConfig) async {
     Map<String, dynamic> map;
 
     // Check if URL is provided
@@ -121,8 +125,8 @@ class SetupHandler {
   }
 
   /// Sets up the output directory
-  Future<void> _setupOutputDirectory(BaseConfig config) async {
-    final genDir = Directory(config.baseConfig.swaggerToDart.outputDirectory);
+  Future<void> _setupOutputDirectory(SwaggerToDart swaggerToDart) async {
+    final genDir = Directory(swaggerToDart.outputDirectory);
     if (genDir.existsSync()) {
       await genDir.delete(recursive: true);
     }

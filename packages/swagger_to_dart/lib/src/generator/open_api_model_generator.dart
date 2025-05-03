@@ -1,5 +1,6 @@
 import 'package:code_builder/src/specs/method.dart';
 import 'package:collection/collection.dart';
+import 'package:swagger_to_dart/src/utils/naming_utils.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 import 'model_type_determiner.dart';
@@ -9,7 +10,7 @@ typedef OpenApiModel = MapEntry<String, OpenApiSchemas>;
 class OpenApiModelGenerator {
   OpenApiModelGenerator({required this.config});
 
-  final BaseConfig config;
+  final SwaggerToDartConfig config;
 
   ({String filename, String content}) run(OpenApiModel model) {
     final schema = model.value;
@@ -38,7 +39,7 @@ class OpenApiModelGenerator {
 
 class TypePropertyGenerator {
   TypePropertyGenerator(this.config);
-  final BaseConfig config;
+  final SwaggerToDartConfig config;
 
   Parameter generateField({
     required String className,
@@ -129,7 +130,7 @@ class TypePropertyGenerator {
 
 class RefPropertyGenerator {
   RefPropertyGenerator(this.config);
-  final BaseConfig config;
+  final SwaggerToDartConfig config;
 
   String generateField({
     required String className,
@@ -171,7 +172,7 @@ class RefPropertyGenerator {
 class AnyOfPropertyGenerator {
   AnyOfPropertyGenerator(this.config)
       : unionTypeGenerator = UnionTypeGenerator(config);
-  final BaseConfig config;
+  final SwaggerToDartConfig config;
   final UnionTypeGenerator unionTypeGenerator;
 
   String generateField({
@@ -242,7 +243,7 @@ class AnyOfPropertyGenerator {
 
 class EnumModelStrategy {
   EnumModelStrategy(this.config);
-  final BaseConfig config;
+  final SwaggerToDartConfig config;
 
   ({String filename, String content}) generate(OpenApiModel model) {
     final filename = NamingUtils.renameFile(model.key);
@@ -310,7 +311,7 @@ class UnionModelStrategy {
           OpenApiSchemaAnyOf: AnyOfPropertyGenerator(config),
           OpenApiSchemaOneOf: AnyOfPropertyGenerator(config),
         };
-  final BaseConfig config;
+  final SwaggerToDartConfig config;
   final Map<Type, PropertyGeneratorStrategy> propertyGenerators;
 
   ({String filename, String content}) generate(OpenApiModel model) {
@@ -483,20 +484,20 @@ class RegularModelStrategy {
           OpenApiSchemaRef: RefPropertyGenerator(config),
           OpenApiSchemaAnyOf: AnyOfPropertyGenerator(config),
         };
-  final BaseConfig config;
+  final SwaggerToDartConfig config;
 
   final Map<Type, PropertyGeneratorStrategy> propertyGenerators;
 
   ({String filename, String content}) generate(OpenApiModel model) {
-    final filename = NamingUtils.renameFile(model.key);
-    final className = NamingUtils.renameClass(model.key);
+    final filename = NamingUtils.instance.renameFile(model.key);
+    final className = NamingUtils.instance.renameClass(model.key);
     final properties = model.value.properties ?? {};
 
     final fields = StringBuffer();
     for (final entry in properties.entries) {
       final key = entry.key;
       final schema = entry.value;
-      final propertyName = NamingUtils.renameProperty(key);
+      final propertyName = NamingUtils.instance.renameProperty(key);
 
       final generator = propertyGenerators[schema.runtimeType];
       if (generator != null) {

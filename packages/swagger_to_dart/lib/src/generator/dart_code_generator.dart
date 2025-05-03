@@ -1,4 +1,4 @@
-import 'package:swagger_to_dart/src/pubspec.dart';
+import 'package:swagger_to_dart/src/utils/naming_utils.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 //TODO(shahadKadhim): refactor this
@@ -7,12 +7,10 @@ final globalUnionClasses = <String>[];
 class SwaggerToDartDartCodeGenerator {
   SwaggerToDartDartCodeGenerator({
     required this.config,
-    required this.openApi,
-    
+    required this.fileHandler,
   });
 
-  final OpenApi openApi;
-  final BaseConfig config;
+  final SwaggerToDartConfig config;
   final FileHandler fileHandler;
 
   /// Runs the complete generation process
@@ -29,7 +27,7 @@ class SwaggerToDartDartCodeGenerator {
 
     await fileHandler.createDirectory(config.pathConfig.modelsOutputDirectory);
 
-    if (openApi.components case final openApiComponents?)
+    if (config.openApi.components case final openApiComponents?)
       for (final entry in openApiComponents.schemas.entries) {
         final result = modelGenerator.run(entry);
         final filepath =

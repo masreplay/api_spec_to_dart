@@ -8,7 +8,7 @@ class SwaggerToDartCodeBuilder {
   static SwaggerToDartCodeBuilder get instance => _instance;
 
   Library class_({
-    required BaseConfig config,
+    required SwaggerToDartConfig config,
     required OpenApi openApi,
     required List<String> clients,
   }) {

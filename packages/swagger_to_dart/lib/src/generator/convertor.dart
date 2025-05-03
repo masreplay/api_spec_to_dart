@@ -81,7 +81,7 @@ generateUnionFile({
   required String key,
   required String className,
   required OpenApiSchemaOneOf model,
-  required BaseConfig config,
+  required SwaggerToDartConfig config,
 }) {
   final filename = NamingUtils.instance.renameFile(key);
 

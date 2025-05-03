@@ -10,7 +10,7 @@ String commentLine(String line) {
 class OpenApiClientGenerator {
   const OpenApiClientGenerator({required this.config});
 
-  final BaseConfig config;
+  final SwaggerToDartConfig config;
 
   ({String filename, String content}) generator({
     required OpenApiPaths path,
