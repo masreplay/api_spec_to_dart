@@ -1,69 +1,14 @@
 import 'dart:io';
 
 import 'package:path/path.dart' as path;
+import 'package:swagger_to_dart/src/config/open_api_to_dart_type_converter.dart';
+import 'package:swagger_to_dart/src/utils/naming_utils.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
-
-String convertOpenApiAnyOfToDartType(
-  OpenApiSchemaAnyOf value,
-  DartTypeConverter typeConverter,
-) {
-  // Check for common pattern of nullable types (anyOf with one type and null)
-  if (value.anyOf?.length == 2) {
-    // Check if one of the types is null
-    final hasNullType = value.anyOf!.any(
-      (schema) =>
-          schema is OpenApiSchemaType &&
-          schema.type == OpenApiSchemaVarType.null_,
-    );
-
-    if (hasNullType) {
-      // Get the non-null type
-      final nonNullSchema = value.anyOf!.firstWhere(
-        (schema) => !(schema is OpenApiSchemaType &&
-            schema.type == OpenApiSchemaVarType.null_),
-      );
-
-      // Return the non-null type with a ? to indicate it's nullable
-      return switch (nonNullSchema) {
-        OpenApiSchemaType value => typeConverter.dartType(
-              type: value.type,
-              format: value.format,
-              genericType: switch (value.items) {
-                OpenApiSchemaRef value =>
-                  NamingUtils.instance.renameRefClass(value),
-                OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
-                    value,
-                    typeConverter,
-                  ),
-                _ => null,
-              },
-              items: value.items,
-              title: value.title,
-            ) +
-            '?',
-        OpenApiSchemaRef value =>
-          NamingUtils.instance.renameRefClass(value) + '?',
-        OpenApiSchemaAnyOf value =>
-          convertOpenApiAnyOfToDartType(value, typeConverter) + '?',
-        OpenApiSchemaOneOf value => handleOpenApiOneOfToDartType(
-              value.title ?? 'UnionModel',
-              value,
-              typeConverter,
-            ) +
-            '?',
-      };
-    }
-  }
-
-  // If it's not a simple nullable type, then it's a union of multiple types
-  // In Dart, we'll use dynamic since it can hold any of these types
-  return 'dynamic';
-}
 
 String handleOpenApiOneOfToDartType(
   String key,
   OpenApiSchemaOneOf model,
-  DartTypeConverter typeConverter,
+  OpenApiToDartTypeConverter typeConverter,
 ) {
   final className = NamingUtils.instance.renameClass(key);
 
@@ -71,13 +16,13 @@ String handleOpenApiOneOfToDartType(
     key: key,
     className: className,
     model: model,
-    typeConverter: typeConverter,
+    config: config,
   );
 
   return className;
 }
 
-generateUnionFile({
+String generateUnionFile({
   required String key,
   required String className,
   required OpenApiSchemaOneOf model,

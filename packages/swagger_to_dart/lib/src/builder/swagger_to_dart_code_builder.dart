@@ -1,4 +1,5 @@
 import 'package:code_builder/code_builder.dart';
+import 'package:swagger_to_dart/src/utils/naming_utils.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 class SwaggerToDartCodeBuilder {
