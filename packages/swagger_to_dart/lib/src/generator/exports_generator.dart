@@ -1,21 +1,22 @@
 import 'dart:io';
 
 import 'package:path/path.dart' as path;
+import 'package:swagger_to_dart/src/config/code_generation_context.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 /// Class responsible for generating export files for models and clients
 class DartCodeExportsGenerator {
   const DartCodeExportsGenerator({
-    required this.config,
+    required this.context,
     required this.fileHandler,
   });
 
-  final CodeGenerationContext config;
+  final CodeGenerationContext context;
   final FileHandler fileHandler;
 
   /// Generates the exports.dart file for models
   Future<void> generateModelsExports() async {
-    final modelsDir = Directory(config.pathConfig.modelsOutputDirectory);
+    final modelsDir = Directory(context.pathConfig.modelsOutputDirectory);
     if (!modelsDir.existsSync()) {
       return;
     }
@@ -40,14 +41,14 @@ class DartCodeExportsGenerator {
     }
 
     final exportsFilePath = path.join(
-      config.pathConfig.modelsOutputDirectory,
+      context.pathConfig.modelsOutputDirectory,
       'models.dart',
     );
     await fileHandler.writeFile(exportsFilePath, buffer.toString());
   }
 
   Future<void> generateClientsExports() async {
-    final clientsDir = Directory(config.pathConfig.clientsOutputDirectory);
+    final clientsDir = Directory(context.pathConfig.clientsOutputDirectory);
     if (!clientsDir.existsSync()) {
       return;
     }
@@ -68,7 +69,7 @@ class DartCodeExportsGenerator {
     }
 
     final exportsFilePath = path.join(
-      config.pathConfig.clientsOutputDirectory,
+      context.pathConfig.clientsOutputDirectory,
       'clients.dart',
     );
     await fileHandler.writeFile(exportsFilePath, buffer.toString());

@@ -10,12 +10,12 @@ class SwaggerToDartCodeBuilder {
   static SwaggerToDartCodeBuilder get instance => _instance;
 
   Library class_({
-    required CodeGenerationContext config,
+    required CodeGenerationContext context,
     required OpenApi openApi,
     required List<String> clients,
   }) {
     final className = NamingUtils.instance.renameClass(
-      config.swaggerToDart.apiClientClassName,
+      context.swaggerToDart.apiClientClassName,
     );
 
     final parameters = [
@@ -57,7 +57,7 @@ class SwaggerToDartCodeBuilder {
         ..directives.addAll([
           Directive.import('package:dio/dio.dart'),
           Directive.import('package:retrofit/retrofit.dart'),
-          config.importModelsDirective,
+          context.importModelsDirective,
         ])
         ..body.add(
           Class((b) => b

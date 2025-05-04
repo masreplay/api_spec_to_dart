@@ -1,3 +1,4 @@
+import 'package:code_builder/code_builder.dart';
 import 'package:code_builder/src/specs/method.dart';
 import 'package:collection/collection.dart';
 import 'package:swagger_to_dart/src/builder/json_serializable_code_builder.dart';
@@ -10,11 +11,11 @@ import 'model_type_determiner.dart';
 typedef OpenApiModel = MapEntry<String, OpenApiSchemas>;
 
 class OpenApiModelGenerator {
-  OpenApiModelGenerator({required this.config});
+  OpenApiModelGenerator(this.context);
 
-  final CodeGenerationContext config;
+  final CodeGenerationContext context;
 
-  ({String filename, String content}) run(OpenApiModel model) {
+  Library run(OpenApiModel model) {
     final schema = model.value;
 
     var type = ModelTypeEnum.regular;
@@ -35,14 +36,33 @@ class OpenApiModelGenerator {
       type = ModelTypeEnum.union;
     }
 
+    final strategy = switch (type) {
+      ModelTypeEnum.regular => RegularModelStrategy(context),
+      ModelTypeEnum.enum_ => EnumModelStrategy(context),
+      ModelTypeEnum.union => UnionModelStrategy(context),
+    };
+
     return strategy.generate(model);
   }
 }
 
-class TypePropertyGenerator {
-  TypePropertyGenerator(this.config);
-  final CodeGenerationContext config;
+// Convert OpenApiSchema to Parameter
+abstract class PropertyGeneratorStrategy {
+  PropertyGeneratorStrategy(this.context);
+  final CodeGenerationContext context;
 
+  Parameter generateField({
+    required String className,
+    required String propertyName,
+    required String key,
+    required OpenApiSchema schema,
+  });
+}
+
+class TypePropertyGenerator extends PropertyGeneratorStrategy {
+  TypePropertyGenerator(super.context);
+
+  @override
   Parameter generateField({
     required String className,
     required String propertyName,
@@ -55,7 +75,7 @@ class TypePropertyGenerator {
       );
     }
 
-    final dartType = config.dartTypeConverter.dartType(
+    final dartType = context.dartTypeConverter.dartType(
       format: schema.format,
       type: schema.type,
       genericType: _getDependentType(schema.items),
@@ -130,9 +150,9 @@ class TypePropertyGenerator {
   }
 }
 
-class RefPropertyGenerator {
-  RefPropertyGenerator(this.config);
-  final CodeGenerationContext config;
+class RefPropertyGenerator extends PropertyGeneratorStrategy {
+  RefPropertyGenerator(this.context);
+  final CodeGenerationContext context;
 
   String generateField({
     required String className,
@@ -171,10 +191,10 @@ class RefPropertyGenerator {
   }
 }
 
-class AnyOfPropertyGenerator {
-  AnyOfPropertyGenerator(this.config)
-      : unionTypeGenerator = UnionTypeGenerator(config);
-  final CodeGenerationContext config;
+class AnyOfPropertyGenerator extends PropertyGeneratorStrategy {
+  AnyOfPropertyGenerator(this.context)
+      : unionTypeGenerator = UnionTypeGenerator(context);
+  final CodeGenerationContext context;
   final UnionTypeGenerator unionTypeGenerator;
 
   String generateField({
@@ -243,11 +263,19 @@ class AnyOfPropertyGenerator {
   }
 }
 
-class EnumModelStrategy {
-  EnumModelStrategy(this.config);
-  final CodeGenerationContext config;
+// Generate Enum, Union, Regular models
+abstract class ModelStrategy {
+  const ModelStrategy(this.context);
 
-  ({String filename, String content}) generate(OpenApiModel model) {
+  final CodeGenerationContext context;
+
+  Library generate(OpenApiModel model);
+}
+
+class EnumModelStrategy extends ModelStrategy {
+  const EnumModelStrategy(super.context);
+
+  Library generate(OpenApiModel model) {
     final className = NamingUtils.instance.renameClass(model.key);
 
     final enum_ = JsonSerializableCodeBuilder.instance.jsonSerializableEnum_(
@@ -255,26 +283,22 @@ class EnumModelStrategy {
       values: model.value.xEnumVarnames?.toList() ?? [],
     );
 
-    final file_ =
-        JsonSerializableCodeBuilder.instance.jsonSerializableEnumFilter_(
+    return JsonSerializableCodeBuilder.instance.jsonSerializableEnumFilter_(
       fileName: NamingUtils.instance.renameFile(className),
       enum_: enum_,
     );
-
-    return (filename: filename, content: enum_);
   }
 }
 
-class UnionModelStrategy {
-  UnionModelStrategy(this.config);
-  final CodeGenerationContext config;
+class UnionModelStrategy extends ModelStrategy {
+  const UnionModelStrategy(super.context);
 
-  Object generate(OpenApiModel model) {
+  Library generate(OpenApiModel model) {
     final propertyGenerators = {
-      OpenApiSchemaType: TypePropertyGenerator(config),
-      OpenApiSchemaRef: RefPropertyGenerator(config),
-      OpenApiSchemaAnyOf: AnyOfPropertyGenerator(config),
-      OpenApiSchemaOneOf: AnyOfPropertyGenerator(config),
+      OpenApiSchemaType: TypePropertyGenerator(context),
+      OpenApiSchemaRef: RefPropertyGenerator(context),
+      OpenApiSchemaAnyOf: AnyOfPropertyGenerator(context),
+      OpenApiSchemaOneOf: AnyOfPropertyGenerator(context),
     };
 
     final filename = NamingUtils.instance.renameFile(model.key);
@@ -300,13 +324,13 @@ class UnionModelStrategy {
             properties: {'value': nonNullSchemas.first},
           );
           return RegularModelStrategy(
-            config,
+            context,
           ).generate(MapEntry(model.key, regularModel));
         }
 
         final types = nonNullSchemas.map((schema) {
           return switch (schema) {
-            OpenApiSchemaType value => config.dartTypeConverter.dartType(
+            OpenApiSchemaType value => context.dartTypeConverter.dartType(
                 type: value.type,
                 format: value.format,
                 genericType: switch (value.items) {
@@ -314,9 +338,9 @@ class UnionModelStrategy {
                       value,
                     ),
                   OpenApiSchemaAnyOf value =>
-                    config.dartTypeConverter.convertOpenApiAnyOfToDartType(
+                    context.dartTypeConverter.convertOpenApiAnyOfToDartType(
                       value,
-                      config.dartTypeConverter,
+                      context.dartTypeConverter,
                     ),
                   _ => null,
                 },
@@ -328,9 +352,9 @@ class UnionModelStrategy {
                 value,
               ),
             OpenApiSchemaAnyOf value =>
-              config.dartTypeConverter.convertOpenApiAnyOfToDartType(
+              context.dartTypeConverter.convertOpenApiAnyOfToDartType(
                 value,
-                config.dartTypeConverter,
+                context.dartTypeConverter,
               ),
             _ => throw ArgumentError(
                 'Unsupported schema type: ${schema.runtimeType}',
@@ -345,7 +369,7 @@ class UnionModelStrategy {
         final unionContent = FreezedClassCodeBuilder.instance.unionClass_(
           className: unionClassName,
           filename: filename,
-          unions: types,
+          unions: [],
         );
 
         return unionContent;
@@ -363,7 +387,7 @@ class UnionModelStrategy {
 
       switch (schema) {
         case OpenApiSchemaType():
-          final generator = TypePropertyGenerator(config);
+          final generator = TypePropertyGenerator(context);
 
           final fieldCode = generator.generateField(
             className: className,
@@ -401,12 +425,10 @@ class UnionModelStrategy {
         case OpenApiSchemaOneOf():
           for (final mapping in schema.discriminator.mapping.entries) {
             unionProps.add(
-              (
+              FreezedClassCodeBuilder.instance.parameter_(
                 type: NamingUtils.instance
                     .renameClass(mapping.value.split('/').last),
-                key: key,
-                unionName: propertyName,
-                model: schema,
+                name: propertyName,
               ),
             );
           }
@@ -414,28 +436,23 @@ class UnionModelStrategy {
       }
     }
 
-    final content = FreezedClassCodeBuilder.instance.unionClass_(
+    return FreezedClassCodeBuilder.instance.unionClass_(
       className: className,
       filename: filename,
       unions: [],
     );
-
-    return (filename: filename, content: content);
   }
 }
 
-class RegularModelStrategy {
-  RegularModelStrategy(this.config)
-      : propertyGenerators = {
-          OpenApiSchemaType: TypePropertyGenerator(config),
-          OpenApiSchemaRef: RefPropertyGenerator(config),
-          OpenApiSchemaAnyOf: AnyOfPropertyGenerator(config),
-        };
-  final CodeGenerationContext config;
+class RegularModelStrategy extends ModelStrategy {
+  RegularModelStrategy(super.context);
 
-  final Map<Type, PropertyGeneratorStrategy> propertyGenerators;
-
-  ({String filename, String content}) generate(OpenApiModel model) {
+  Library generate(OpenApiModel model) {
+    final propertyGenerators = <Type, PropertyGeneratorStrategy>{
+      OpenApiSchemaType: TypePropertyGenerator(context),
+      OpenApiSchemaRef: RefPropertyGenerator(context),
+      OpenApiSchemaAnyOf: AnyOfPropertyGenerator(context),
+    };
     final filename = NamingUtils.instance.renameFile(model.key);
     final className = NamingUtils.instance.renameClass(model.key);
     final properties = model.value.properties ?? {};
@@ -458,12 +475,10 @@ class RegularModelStrategy {
       }
     }
 
-    final content = FreezedClassCodeBuilder.instance.class_(
+    return FreezedClassCodeBuilder.instance.class_(
       className: className,
       filename: filename,
       parameters: [],
     );
-
-    return (filename: filename, content: formatCodeBuilder(content));
   }
 }

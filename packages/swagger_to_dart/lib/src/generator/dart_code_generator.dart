@@ -1,3 +1,4 @@
+import 'package:swagger_to_dart/src/config/code_generation_context.dart';
 import 'package:swagger_to_dart/src/utils/naming_utils.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
@@ -6,11 +7,11 @@ final globalUnionClasses = <String>[];
 
 class SwaggerToDartDartCodeGenerator {
   SwaggerToDartDartCodeGenerator({
-    required this.config,
+    required this.context,
     required this.fileHandler,
   });
 
-  final CodeGenerationContext config;
+  final CodeGenerationContext context;
   final FileHandler fileHandler;
 
   /// Runs the complete generation process
@@ -23,24 +24,25 @@ class SwaggerToDartDartCodeGenerator {
 
   /// Generates all models from the OpenAPI schemas
   Future<void> _generateModels() async {
-    final modelGenerator = OpenApiModelGenerator(config: config);
+    final modelGenerator = OpenApiModelGenerator(context: context);
 
-    await fileHandler.createDirectory(config.pathConfig.modelsOutputDirectory);
+    await fileHandler.createDirectory(context.pathConfig.modelsOutputDirectory);
 
-    if (config.openApi.components case final openApiComponents?)
+    if (context.openApi.components case final openApiComponents?)
       for (final entry in openApiComponents.schemas.entries) {
         final result = modelGenerator.run(entry);
         final filepath =
-            '${config.pathConfig.modelsOutputDirectory}/${NamingUtils.instance.renameFile(entry.key)}.dart';
+            '${context.pathConfig.modelsOutputDirectory}/${NamingUtils.instance.renameFile(entry.key)}.dart';
         await fileHandler.writeLibrary(result.content);
       }
   }
 
   /// Generates all clients from the OpenAPI paths
   Future<void> _generateClients() async {
-    final clientGenerator = OpenApiClientGenerator(config: config);
+    final clientGenerator = OpenApiClientGenerator(context: context);
 
-    await fileHandler.createDirectory(config.pathConfig.clientsOutputDirectory);
+    await fileHandler
+        .createDirectory(context.pathConfig.clientsOutputDirectory);
 
     if (openApi.paths case final openApiPaths?) {
       // Generate individual clients
@@ -57,13 +59,13 @@ class SwaggerToDartDartCodeGenerator {
         );
 
         final filepath =
-            '${config.pathConfig.clientsOutputDirectory}/${NamingUtils.instance.renameFile(tag)}_client.dart';
+            '${context.pathConfig.clientsOutputDirectory}/${NamingUtils.instance.renameFile(tag)}_client.dart';
         await fileHandler.writeFile(filepath, result.content);
       }
 
       // Generate base client
       final baseClientContent = SwaggerToDartCodeBuilder.instance.class_(
-        config: config,
+        context: context,
         openApi: openApi,
         clients: pathsByTags.keys.toList(),
       );
@@ -75,12 +77,12 @@ class SwaggerToDartDartCodeGenerator {
   /// Generates convertors for handling special data types like MultipartFile
   Future<void> _generateConvertors() async {
     final isFlutterProject =
-        config.importConfig.baseConfig.pubspec.isFlutterProject;
+        context.importConfig.baseConfig.pubspec.isFlutterProject;
 
     final content = '''
 import 'package:dio/dio.dart';
 import 'package:json_annotation/json_annotation.dart';
-${config.importConfig.importModelsDirective}
+${context.importConfig.importModelsDirective}
 ${isFlutterProject ? "import 'package:flutter/material.dart';" : ''}
 
 const convertors = <JsonConverter>[
@@ -171,7 +173,7 @@ class ${className}JsonConvertor implements JsonConverter<${className}, Map<Strin
 
 ''';
 
-    final convertorsDir = config.pathConfig.convertorOutputDirectory;
+    final convertorsDir = context.pathConfig.convertorOutputDirectory;
     await fileHandler.createDirectory(convertorsDir);
 
     final filePath = '$convertorsDir/convertors.dart';
@@ -184,7 +186,7 @@ class ${className}JsonConvertor implements JsonConverter<${className}, Map<Strin
   /// Generates export files for models and clients
   Future<void> _generateExports() async {
     final exportsGenerator = DartCodeExportsGenerator(
-      config: config,
+      context: context,
       fileHandler: fileHandler,
     );
 

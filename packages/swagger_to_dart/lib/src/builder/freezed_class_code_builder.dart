@@ -101,8 +101,8 @@ class FreezedClassCodeBuilder {
   Parameter parameter_({
     required String name,
     required String type,
-    required bool isDeprecated,
-    required Object? defaultValue,
+    Object? defaultValue = null,
+    bool isDeprecated = false,
   }) {
     return Parameter(
       (b) => b

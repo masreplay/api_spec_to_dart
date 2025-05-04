@@ -8,11 +8,12 @@ import 'package:swagger_to_dart/swagger_to_dart.dart';
 String commentLine(String line) {
   return '''/// ${line.split('\n').join('\n/// ')}''';
 }
+
 // TODO(delete):!
 class OpenApiClientGenerator {
-  const OpenApiClientGenerator({required this.config});
+  const OpenApiClientGenerator({required this.context});
 
-  final CodeGenerationContext config;
+  final CodeGenerationContext context;
 
   ({String filename, String content}) generator({
     required OpenApiPaths path,
@@ -23,7 +24,7 @@ class OpenApiClientGenerator {
 
     buffer.writeln('''import 'package:dio/dio.dart';''');
     buffer.writeln('''import 'package:retrofit/retrofit.dart';''');
-    buffer.writeln(config.importConfig.importModelDirective);
+    buffer.writeln(context.importConfig.importModelDirective);
 
     final fileName =
         '''${NamingUtils.instance.renameFile(clientName)}_client''';
@@ -45,7 +46,8 @@ class OpenApiClientGenerator {
       }) = _${className};''',
     );
 
-    final skippedParameters = config.baseConfig.swaggerToDart.skippedParameters;
+    final skippedParameters =
+        context.baseConfig.swaggerToDart.skippedParameters;
 
     final privateMethods = <({String methodName, OpenApiPathMethod method})>[];
     for (final tagPath in tagPaths) {
@@ -254,7 +256,7 @@ class OpenApiClientGenerator {
     List<OpenApiPathMethodParameter> queries,
     String name,
   ) {
-    final generator = OpenApiModelGenerator(config: config);
+    final generator = OpenApiModelGenerator(context: context);
 
     final className = '${name}Queries';
 
@@ -276,14 +278,14 @@ class OpenApiClientGenerator {
       ),
     );
 
-    if (!Directory(config.pathConfig.modelsOutputDirectory).existsSync()) {
+    if (!Directory(context.pathConfig.modelsOutputDirectory).existsSync()) {
       Directory(
-        config.pathConfig.modelsOutputDirectory,
+        context.pathConfig.modelsOutputDirectory,
       ).createSync(recursive: true);
     }
 
     final filepath = path.join(
-      config.pathConfig.modelsOutputDirectory,
+      context.pathConfig.modelsOutputDirectory,
       '${NamingUtils.instance.renameFile(className)}.dart',
     );
 
@@ -300,16 +302,16 @@ class OpenApiClientGenerator {
     if (model == null) return null;
 
     return switch (model) {
-      OpenApiSchemaType value => config.dartTypeConverter.dartType(
+      OpenApiSchemaType value => context.dartTypeConverter.dartType(
           type: value.type,
           format: value.format,
           genericType: switch (value.items) {
             OpenApiSchemaRef value =>
               NamingUtils.instance.renameRefClass(value),
             OpenApiSchemaAnyOf value =>
-              config.dartTypeConverter.convertOpenApiAnyOfToDartType(
+              context.dartTypeConverter.convertOpenApiAnyOfToDartType(
                 value,
-                config.dartTypeConverter,
+                context.dartTypeConverter,
               ),
             _ => null,
           },
@@ -318,14 +320,14 @@ class OpenApiClientGenerator {
         ),
       OpenApiSchemaRef value => NamingUtils.instance.renameRefClass(value),
       OpenApiSchemaAnyOf value =>
-        config.dartTypeConverter.convertOpenApiAnyOfToDartType(
+        context.dartTypeConverter.convertOpenApiAnyOfToDartType(
           value,
-          config.dartTypeConverter,
+          context.dartTypeConverter,
         ),
       OpenApiSchemaOneOf value => handleOpenApiOneOfToDartType(
           '${className}Union${value.title ?? 'Model'}',
           value,
-          config.dartTypeConverter,
+          context.dartTypeConverter,
         ),
     };
   }

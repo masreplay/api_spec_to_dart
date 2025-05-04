@@ -23,7 +23,7 @@ Future<void> main(List<String> args) async {
 
     print('Generating code...');
     final generator = SwaggerToDartDartCodeGenerator(
-      config: config,
+      context: config,
       fileHandler: fileHandler,
     );
 
