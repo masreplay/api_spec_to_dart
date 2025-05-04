@@ -1,7 +1,6 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:swagger_to_dart/src/config/code_generation_context.dart';
 import 'package:swagger_to_dart/src/utils/naming_utils.dart';
-import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 class SwaggerToDartCodeBuilder {
   SwaggerToDartCodeBuilder._();
@@ -11,7 +10,6 @@ class SwaggerToDartCodeBuilder {
 
   Library class_({
     required CodeGenerationContext context,
-    required OpenApi openApi,
     required List<String> clients,
   }) {
     final className = NamingUtils.instance.renameClass(
@@ -49,9 +47,10 @@ class SwaggerToDartCodeBuilder {
       (b) => b
         ..name = 'api_base_client'
         ..docs.addAll([
-          openApi.info.title,
-          if (openApi.info.description case final description?) description,
-          if (openApi.info.version case final version?) version,
+          context.openApi.info.title,
+          if (context.openApi.info.description case final description?)
+            description,
+          if (context.openApi.info.version case final version?) version,
           DateTime.now().toString(),
         ])
         ..directives.addAll([

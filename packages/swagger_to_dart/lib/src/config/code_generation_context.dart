@@ -17,6 +17,10 @@ class CodeGenerationContext {
   final SwaggerToDart swaggerToDart;
   final OpenApiToDartTypeConverter dartTypeConverter;
 
+  bool get isFlutterProject {
+    return pubspec.dependencies.containsKey('flutter');
+  }
+
   String get _outputDirectory {
     return swaggerToDart.outputDirectory.replaceFirst('lib', '');
   }

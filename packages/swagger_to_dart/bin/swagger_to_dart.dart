@@ -16,9 +16,7 @@ Future<void> main(List<String> args) async {
     }
 
     final fileHandler = FileHandler();
-    final setupHandler = SetupHandler(
-      configPath: configPath,
-    );
+    final setupHandler = SetupHandler(configPath: configPath);
     final config = await setupHandler.setup();
 
     print('Generating code...');

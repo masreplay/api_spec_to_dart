@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:code_builder/code_builder.dart';
 import 'package:path/path.dart' as path;
 import 'package:swagger_to_dart/src/config/code_generation_context.dart';
 import 'package:swagger_to_dart/src/utils/naming_utils.dart';
@@ -15,7 +16,7 @@ class OpenApiClientGenerator {
 
   final CodeGenerationContext context;
 
-  ({String filename, String content}) generator({
+  Library generate({
     required OpenApiPaths path,
     required String clientName,
     required List<String> tagPaths,

@@ -24,7 +24,7 @@ class SwaggerToDartDartCodeGenerator {
 
   /// Generates all models from the OpenAPI schemas
   Future<void> _generateModels() async {
-    final modelGenerator = OpenApiModelGenerator(context: context);
+    final modelGenerator = OpenApiModelGenerator(context);
 
     await fileHandler.createDirectory(context.pathConfig.modelsOutputDirectory);
 
@@ -44,7 +44,7 @@ class SwaggerToDartDartCodeGenerator {
     await fileHandler
         .createDirectory(context.pathConfig.clientsOutputDirectory);
 
-    if (openApi.paths case final openApiPaths?) {
+    if (context.openApi.paths case final openApiPaths?) {
       // Generate individual clients
       final pathsByTags = OpenApiParser().groupPathsByTag(openApiPaths);
 
@@ -52,7 +52,7 @@ class SwaggerToDartDartCodeGenerator {
         final tag = entry.key;
         final paths = entry.value;
 
-        final result = clientGenerator.generator(
+        final result = clientGenerator.generate(
           path: openApiPaths,
           clientName: tag,
           tagPaths: paths,
@@ -66,7 +66,6 @@ class SwaggerToDartDartCodeGenerator {
       // Generate base client
       final baseClientContent = SwaggerToDartCodeBuilder.instance.class_(
         context: context,
-        openApi: openApi,
         clients: pathsByTags.keys.toList(),
       );
 
@@ -76,8 +75,7 @@ class SwaggerToDartDartCodeGenerator {
 
   /// Generates convertors for handling special data types like MultipartFile
   Future<void> _generateConvertors() async {
-    final isFlutterProject =
-        context.importConfig.baseConfig.pubspec.isFlutterProject;
+    final isFlutterProject = context.isFlutterProject;
 
     final content = '''
 import 'package:dio/dio.dart';
