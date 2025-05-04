@@ -3,7 +3,9 @@ import 'dart:io';
 
 import 'package:path/path.dart' as path;
 import 'package:pubspec_parse/pubspec_parse.dart';
+import 'package:swagger_to_dart/src/config/code_generation_context.dart';
 import 'package:swagger_to_dart/src/config/open_api_to_dart_type_converter.dart';
+import 'package:swagger_to_dart/src/config/swagger_to_dart_yaml.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 import 'package:yaml/yaml.dart';
 
@@ -27,8 +29,9 @@ class SetupHandler {
       swaggerToDart: swaggerToDart,
       pubspec: pubspec,
       openApi: openApi,
-      dartTypeConverter:
-          OpenApiToDartTypeConverter(isFlutterProject: isFlutterProject),
+      dartTypeConverter: OpenApiToDartTypeConverter(
+        isFlutterProject: isFlutterProject,
+      ),
     );
   }
 

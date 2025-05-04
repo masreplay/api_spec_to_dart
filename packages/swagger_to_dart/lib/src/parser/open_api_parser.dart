@@ -1,30 +1,22 @@
-import 'dart:convert';
-import 'dart:io';
 import 'package:collection/collection.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 /// Parses OpenAPI/Swagger files into Dart models
 class OpenApiParser {
-  /// Reads and parses an OpenAPI file from the given path
-  OpenApi parseFile(String filePath) {
-    final file = File(filePath);
-    final json = file.readAsStringSync();
-    final map = jsonDecode(json);
-    return OpenApi.fromJson(map);
-  }
-
-  /// Extracts paths grouped by tags from OpenAPI paths
-  Map<String, List<String>> extractPathsByTags(OpenApiPaths paths) {
+  Map<String, List<String>> groupPathsByTag(OpenApiPaths paths) {
     final List<({String tag, String path})> tagsPaths = [];
 
     for (final entry in paths.entries) {
       final tag = [
-        entry.value.post,
         entry.value.get,
+        entry.value.post,
         entry.value.put,
         entry.value.delete,
+        entry.value.options,
+        entry.value.head,
         entry.value.patch,
-      ].where((element) => element != null).first;
+        entry.value.trace,
+      ].where((element) => element != null).firstOrNull;
 
       if (tag != null) {
         tagsPaths.add((tag: tag.tags.first, path: entry.key));

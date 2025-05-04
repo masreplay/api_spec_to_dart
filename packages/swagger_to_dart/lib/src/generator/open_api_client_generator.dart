@@ -1,13 +1,14 @@
 import 'dart:io';
 
 import 'package:path/path.dart' as path;
+import 'package:swagger_to_dart/src/config/code_generation_context.dart';
 import 'package:swagger_to_dart/src/utils/naming_utils.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 String commentLine(String line) {
   return '''/// ${line.split('\n').join('\n/// ')}''';
 }
-
+// TODO(delete):!
 class OpenApiClientGenerator {
   const OpenApiClientGenerator({required this.config});
 

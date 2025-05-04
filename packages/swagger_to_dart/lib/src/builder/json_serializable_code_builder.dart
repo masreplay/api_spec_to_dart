@@ -1,4 +1,5 @@
 import 'package:code_builder/code_builder.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:swagger_to_dart/src/utils/naming_utils.dart';
 
 class JsonSerializableCodeBuilder {
@@ -70,40 +71,74 @@ class JsonSerializableCodeBuilder {
     );
   }
 
-  // enum OpenApiSchemaVarType {
-  //   @JsonValue('string')
-  //   string,
-  //   @JsonValue('number')
-  //   number,
-  //   @JsonValue('integer')
-  //   integer,
-  //   @JsonValue('boolean')
-  //   boolean,
-  //   @JsonValue('array')
-  //   array,
-  //   @JsonValue('object')
-  //   object,
-  //   @JsonValue('null')
-  //   null_,
+  // QuizQuestionTypePublicEnum
+  // @JsonEnum(valueField: 'value', alwaysCreate: true)
+  // enum QuizQuestionTypePublicEnum {
+  //   shortAnswer('short_answer'),
+  //   rating('rating');
 
-  //   $unknown,
+  //   const QuizQuestionTypePublicEnum(this.value);
+
+  //   factory QuizQuestionTypePublicEnum.fromJson(String value) {
+  //     return values.firstWhere(
+  //       (e) => e.value == value,
+  //       orElse: () => values.first,
+  //     );
+  //   }
+  //   final String value;
+
+  //   String toJson() => _$QuizQuestionTypePublicEnumEnumMap[this]!;
   // }
 
   Enum jsonSerializableEnum_({
     required String className,
-    required List<String> values,
+    required List<Object> values,
   }) {
-    return Enum(
+    return Enum((b) => b
+      ..name = className
+      ..constructors.addAll([
+        Constructor(
+          (b) => b
+            ..constant = true
+            ..optionalParameters.addAll([
+              Parameter((b) => b
+                ..name = 'value'
+                ..type = refer('$String')),
+            ]),
+        ),
+      ])
+      ..values.addAll([
+        for (final value in values)
+          EnumValue(
+            (b) => b
+              ..annotations.add(_jsonValue(value))
+              ..name = value.toString()
+              ..arguments.addAll([
+                literalString(value.toString()),
+              ]),
+          ),
+      ])
+      ..methods.addAll([
+        Method(
+          (b) => b
+            ..name = 'toJson'
+            ..returns = refer('$String'),
+        ),
+      ]));
+  }
+
+  Expression _jsonValue(dynamic value) {
+    return refer('@$JsonValue($value)');
+  }
+
+  Library jsonSerializableEnumFilter_({
+    required String fileName,
+    required Enum enum_,
+  }) {
+    return Library(
       (b) => b
-        ..name = className
-        ..values.addAll([
-          for (final value in values)
-            EnumValue(
-              (b) => b
-                ..annotations.add(refer('@JsonValue($value)'))
-                ..name = value,
-            ),
-        ]),
+        ..name = fileName
+        ..body.addAll([enum_]),
     );
   }
 }

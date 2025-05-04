@@ -1,11 +1,12 @@
+import 'package:swagger_to_dart/src/config/code_generation_context.dart';
 import 'package:swagger_to_dart/src/utils/naming_utils.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 /// Generates union types for OpenAPI anyOf schemas
 class UnionTypeGenerator {
-  UnionTypeGenerator(this.config);
+  UnionTypeGenerator(this.context);
 
-  final CodeGenerationContext config;
+  final CodeGenerationContext context;
 
   /// Generates a union type class name based on the types involved
   String generateUnionClassName(List<String> types) {
@@ -71,7 +72,7 @@ class UnionTypeGenerator {
   /// Resolves the Dart type for a schema
   String resolveDartType(OpenApiSchema schema) {
     return switch (schema) {
-      OpenApiSchemaType value => config.dartTypeConverter.dartType(
+      OpenApiSchemaType value => context.dartTypeConverter.dartType(
           type: value.type,
           format: value.format,
           genericType: switch (value.items) {

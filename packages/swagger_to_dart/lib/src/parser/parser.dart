@@ -1,3 +1,2 @@
-export 'swagger/swagger.dart';
-export 'utils/utils.dart';
+export 'openapi/openapi.dart';
 export 'open_api_parser.dart';

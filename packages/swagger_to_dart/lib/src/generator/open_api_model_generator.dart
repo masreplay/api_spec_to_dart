@@ -248,72 +248,35 @@ class EnumModelStrategy {
   final CodeGenerationContext config;
 
   ({String filename, String content}) generate(OpenApiModel model) {
-    final filename = NamingUtils.instance.renameFile(model.key);
     final className = NamingUtils.instance.renameClass(model.key);
-    final enum_ = model.value.enum_ ?? [];
 
-    if (enum_.isEmpty) {
-      throw ArgumentError('Cannot generate enum for model without enum values');
-    }
-
-    final isNumber = model.value.type == 'integer';
-    final type = isNumber ? 'int' : 'String';
-    final enumValues = _generateEnumValues(
-      enum_,
-      model.value.xEnumVarnames,
-      isNumber,
-    );
-
-    final content = JsonSerializableCodeBuilder.instance.jsonSerializableEnum_(
+    final enum_ = JsonSerializableCodeBuilder.instance.jsonSerializableEnum_(
       className: className,
-      values: enumValues,
+      values: model.value.xEnumVarnames?.toList() ?? [],
     );
 
-    return (filename: filename, content: content);
-  }
+    final file_ =
+        JsonSerializableCodeBuilder.instance.jsonSerializableEnumFilter_(
+      fileName: NamingUtils.instance.renameFile(className),
+      enum_: enum_,
+    );
 
-  String _generateEnumValues(
-    List<Object> enumValues,
-    List<String>? varNames,
-    bool isNumber,
-  ) {
-    final buffer = StringBuffer();
-
-    for (int i = 0; i < enumValues.length; i++) {
-      final value = enumValues[i];
-      final description = varNames?[i];
-      final name = description == null
-          ? 'value$value'
-          : NamingUtils.instance.renameProperty(description);
-      final enumName = NamingUtils.instance.renameProperty(value.toString());
-
-      if (isNumber) {
-        buffer.writeln('  ${name}($value),');
-      } else {
-        if (int.tryParse(enumName) != null) {
-          buffer.writeln('  value${enumName}(\'$value\'),');
-        } else {
-          buffer.writeln('  ${enumName}(\'$value\'),');
-        }
-      }
-    }
-
-    return buffer.toString();
+    return (filename: filename, content: enum_);
   }
 }
 
 class UnionModelStrategy {
-  UnionModelStrategy(this.config)
-      : propertyGenerators = {
-          OpenApiSchemaType: TypePropertyGenerator(config),
-          OpenApiSchemaRef: RefPropertyGenerator(config),
-          OpenApiSchemaAnyOf: AnyOfPropertyGenerator(config),
-          OpenApiSchemaOneOf: AnyOfPropertyGenerator(config),
-        };
+  UnionModelStrategy(this.config);
   final CodeGenerationContext config;
-  final Map<Type, PropertyGeneratorStrategy> propertyGenerators;
 
   Object generate(OpenApiModel model) {
+    final propertyGenerators = {
+      OpenApiSchemaType: TypePropertyGenerator(config),
+      OpenApiSchemaRef: RefPropertyGenerator(config),
+      OpenApiSchemaAnyOf: AnyOfPropertyGenerator(config),
+      OpenApiSchemaOneOf: AnyOfPropertyGenerator(config),
+    };
+
     final filename = NamingUtils.instance.renameFile(model.key);
     final className = NamingUtils.instance.renameClass(model.key);
     final schema = model.value;
@@ -390,7 +353,7 @@ class UnionModelStrategy {
     }
 
     final properties = schema.properties ?? {};
-    final unionProps = <OneOfModel>[];
+    final unionProps = <Parameter>[];
     final normalProps = StringBuffer();
 
     for (final entry in properties.entries) {
@@ -400,16 +363,16 @@ class UnionModelStrategy {
 
       switch (schema) {
         case OpenApiSchemaType():
-          final generator = propertyGenerators[schema.runtimeType];
-          if (generator != null) {
-            final fieldCode = generator.generateField(
-              className: className,
-              propertyName: propertyName,
-              key: key,
-              schema: schema,
-            );
-            normalProps.writeln(fieldCode);
-          }
+          final generator = TypePropertyGenerator(config);
+
+          final fieldCode = generator.generateField(
+            className: className,
+            propertyName: propertyName,
+            key: key,
+            schema: schema,
+          );
+          normalProps.writeln(fieldCode);
+
           break;
         case OpenApiSchemaRef():
           final generator = propertyGenerators[schema.runtimeType];
@@ -451,14 +414,10 @@ class UnionModelStrategy {
       }
     }
 
-    final propertyGroupList = unionProps.groupListsBy(
-      (e) => e.key,
-    );
-
-    final content = contentGenerator.class_(
+    final content = FreezedClassCodeBuilder.instance.unionClass_(
       className: className,
       filename: filename,
-      parameters: [],
+      unions: [],
     );
 
     return (filename: filename, content: content);

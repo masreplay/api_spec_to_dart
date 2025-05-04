@@ -44,7 +44,7 @@ class SwaggerToDartDartCodeGenerator {
 
     if (openApi.paths case final openApiPaths?) {
       // Generate individual clients
-      final pathsByTags = OpenApiParser().extractPathsByTags(openApiPaths);
+      final pathsByTags = OpenApiParser().groupPathsByTag(openApiPaths);
 
       for (final entry in pathsByTags.entries) {
         final tag = entry.key;

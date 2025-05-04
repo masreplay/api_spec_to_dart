@@ -1,4 +1,4 @@
-import '../parser/swagger/models/models.dart';
+import '../parser/openapi/models/models.dart';
 import 'recase.dart';
 
 class NamingUtils {
