@@ -1,6 +1,4 @@
 import 'package:code_builder/code_builder.dart';
-import 'package:code_builder/src/specs/method.dart';
-import 'package:collection/collection.dart';
 import 'package:swagger_to_dart/src/builder/json_serializable_code_builder.dart';
 import 'package:swagger_to_dart/src/config/code_generation_context.dart';
 import 'package:swagger_to_dart/src/utils/naming_utils.dart';
@@ -48,7 +46,8 @@ class OpenApiModelGenerator {
 
 // Convert OpenApiSchema to Parameter
 abstract class PropertyGeneratorStrategy {
-  PropertyGeneratorStrategy(this.context);
+  const PropertyGeneratorStrategy(this.context);
+
   final CodeGenerationContext context;
 
   Parameter generateField({
@@ -95,9 +94,10 @@ class TypePropertyGenerator extends PropertyGeneratorStrategy {
   String? _getDependentType(OpenApiSchema? items) {
     return switch (items) {
       OpenApiSchemaRef value => NamingUtils.instance.renameRefClass(value),
-      OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
+      OpenApiSchemaAnyOf value =>
+        context.dartTypeConverter.convertOpenApiAnyOfToDartType(
           value,
-          config.dartTypeConverter,
+          context.dartTypeConverter,
         ),
       _ => null,
     };
@@ -151,10 +151,10 @@ class TypePropertyGenerator extends PropertyGeneratorStrategy {
 }
 
 class RefPropertyGenerator extends PropertyGeneratorStrategy {
-  RefPropertyGenerator(this.context);
-  final CodeGenerationContext context;
+  const RefPropertyGenerator(super.context);
 
-  String generateField({
+  @override
+  Parameter generateField({
     required String className,
     required String propertyName,
     required String key,
@@ -168,14 +168,11 @@ class RefPropertyGenerator extends PropertyGeneratorStrategy {
 
     final refClassName = NamingUtils.instance.renameRefClass(schema);
 
-    return fieldGenerator.generateField(
-      className: className,
-      freezedDefaultValue: _getDefaultValueCode(schema.default_, refClassName),
-      jsonName: key,
-      propertyName: propertyName,
-      parameterType: refClassName,
-      title: null,
-      description: schema.description,
+    return FreezedClassCodeBuilder.instance.parameter_(
+      name: propertyName,
+      type: refClassName,
+      isDeprecated: false,
+      defaultValue: _getDefaultValueCode(schema.default_, refClassName),
     );
   }
 
@@ -192,12 +189,13 @@ class RefPropertyGenerator extends PropertyGeneratorStrategy {
 }
 
 class AnyOfPropertyGenerator extends PropertyGeneratorStrategy {
-  AnyOfPropertyGenerator(this.context)
+  AnyOfPropertyGenerator(super.context)
       : unionTypeGenerator = UnionTypeGenerator(context);
-  final CodeGenerationContext context;
+
   final UnionTypeGenerator unionTypeGenerator;
 
-  String generateField({
+  @override
+  Parameter generateField({
     required String className,
     required String propertyName,
     required String key,
@@ -211,14 +209,10 @@ class AnyOfPropertyGenerator extends PropertyGeneratorStrategy {
 
     final dartType = _resolveDartType(schema, className, propertyName);
 
-    return fieldGenerator.generateField(
-      className: className,
-      freezedDefaultValue: _getDefaultValueCode(schema.default_, dartType),
-      title: schema.title,
-      description: schema.description,
-      jsonName: key,
-      propertyName: propertyName,
-      parameterType: dartType,
+    return FreezedClassCodeBuilder.instance.parameter_(
+      name: propertyName,
+      type: dartType,
+      defaultValue: _getDefaultValueCode(schema.default_, dartType),
     );
   }
 
