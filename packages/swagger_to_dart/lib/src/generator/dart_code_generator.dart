@@ -4,9 +4,6 @@ import 'package:path/path.dart' as path;
 import 'package:swagger_to_dart/src/config/code_generation_context.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
-//TODO(shahadKadhim): refactor this
-final globalUnionClasses = <String>[];
-
 class SwaggerToDartDartCodeGenerator {
   SwaggerToDartDartCodeGenerator({
     required this.context,
