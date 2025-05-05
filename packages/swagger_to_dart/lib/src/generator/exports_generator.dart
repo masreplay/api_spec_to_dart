@@ -16,7 +16,9 @@ class DartCodeExportsGenerator {
 
   /// Generates the exports.dart file for models
   Future<void> generateModelsExports() async {
-    final modelsDir = Directory(context.pathConfig.modelsOutputDirectory);
+    final modelsDir = Directory(
+      path.join(context.swaggerToDart.outputDirectory, 'models'),
+    );
     if (!modelsDir.existsSync()) {
       return;
     }

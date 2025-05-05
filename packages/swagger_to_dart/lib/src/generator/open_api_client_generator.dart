@@ -1,7 +1,4 @@
-import 'dart:io';
-
 import 'package:code_builder/code_builder.dart';
-import 'package:path/path.dart' as path;
 import 'package:swagger_to_dart/src/builder/retrofit_class_code_builder.dart';
 import 'package:swagger_to_dart/src/config/code_generation_context.dart';
 import 'package:swagger_to_dart/src/utils/renaming.dart';

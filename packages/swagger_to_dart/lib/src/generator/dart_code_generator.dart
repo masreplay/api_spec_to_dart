@@ -48,9 +48,10 @@ class SwaggerToDartDartCodeGenerator {
   Future<void> _generateClients() async {
     final clientGenerator = OpenApiClientGenerator(context);
 
-    await fileHandler.createDirectory(
-      context.pathConfig.clientsOutputDirectory,
+    final dir = Directory(
+      path.join(context.swaggerToDart.outputDirectory, 'clients'),
     );
+    await fileHandler.createDirectory(dir);
 
     if (context.openApi.paths case final openApiPaths?) {
       // Generate individual clients
@@ -66,9 +67,8 @@ class SwaggerToDartDartCodeGenerator {
           tagPaths: paths,
         );
 
-        final filepath =
-            '${context.pathConfig.clientsOutputDirectory}/${Renaming.instance.renameFile(tag)}_client.dart';
-        await fileHandler.writeFile(filepath, result.content);
+        final filepath = '$dir/${result.name}.dart';
+        await fileHandler.writeLibrary(result);
       }
 
       // Generate base client
@@ -88,7 +88,6 @@ class SwaggerToDartDartCodeGenerator {
     final content = '''
 import 'package:dio/dio.dart';
 import 'package:json_annotation/json_annotation.dart';
-${context.importConfig.importModelsDirective}
 ${isFlutterProject ? "import 'package:flutter/material.dart';" : ''}
 
 const convertors = <JsonConverter>[
