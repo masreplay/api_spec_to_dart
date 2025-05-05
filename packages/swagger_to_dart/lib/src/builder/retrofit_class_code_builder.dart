@@ -1,8 +1,6 @@
 import 'package:code_builder/code_builder.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:retrofit/retrofit.dart' as retrofit;
 import 'package:swagger_to_dart/src/utils/renaming.dart';
-import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 class RetrofitClassCodeBuilder {
   static const RetrofitClassCodeBuilder _instance =

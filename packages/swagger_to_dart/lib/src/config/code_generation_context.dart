@@ -8,14 +8,16 @@ class CodeGenerationContext {
   const CodeGenerationContext({
     required this.pubspec,
     required this.swaggerToDart,
-    required this.dartTypeConverter,
     required this.openApi,
   });
 
   final OpenApi openApi;
   final Pubspec pubspec;
   final SwaggerToDart swaggerToDart;
-  final OpenApiToDartTypeConverter dartTypeConverter;
+
+  OpenApiToDartTypeConverter get dartTypeConverter {
+    return OpenApiToDartTypeConverter(this);
+  }
 
   bool get isFlutterProject {
     return pubspec.dependencies.containsKey('flutter');

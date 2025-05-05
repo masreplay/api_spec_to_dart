@@ -7,7 +7,7 @@ class OpenApiToDartTypeConverter {
 
   final CodeGenerationContext context;
 
-  String dartType({
+  String getDartType({
     required OpenApiSchemaVarType? type,
     required String? format,
     required String? genericType,
@@ -37,22 +37,21 @@ class OpenApiToDartTypeConverter {
         return 'bool';
       case OpenApiSchemaVarType.array:
         final className = switch (items) {
-          OpenApiSchemaType value => dartType(
+          OpenApiSchemaType value => getDartType(
               type: value.type,
               format: value.format,
               genericType: switch (value.items) {
                 OpenApiSchemaRef value =>
                   Renaming.instance.renameRefClass(value),
                 OpenApiSchemaAnyOf value =>
-                  convertOpenApiAnyOfToDartType(value, this),
+                  convertOpenApiAnyOfToDartType(value),
                 _ => null,
               },
               items: value.items,
               title: value.title,
               parentTitle: parentTitle),
           OpenApiSchemaRef value => Renaming.instance.renameRefClass(value),
-          OpenApiSchemaAnyOf value =>
-            convertOpenApiAnyOfToDartType(value, this),
+          OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(value),
           OpenApiSchemaOneOf value => handleOpenApiOneOfToDartType(
               key: '${parentTitle}${title}UnionResponse',
               model: value,
@@ -72,10 +71,7 @@ class OpenApiToDartTypeConverter {
     }
   }
 
-  String convertOpenApiAnyOfToDartType(
-    OpenApiSchemaAnyOf value,
-    OpenApiToDartTypeConverter typeConverter,
-  ) {
+  String convertOpenApiAnyOfToDartType(OpenApiSchemaAnyOf value) {
     // Check for common pattern of nullable types (anyOf with one type and null)
     if (value.anyOf?.length == 2) {
       // Check if one of the types is null
@@ -94,16 +90,14 @@ class OpenApiToDartTypeConverter {
 
         // Return the non-null type with a ? to indicate it's nullable
         return switch (nonNullSchema) {
-          OpenApiSchemaType value => typeConverter.dartType(
+          OpenApiSchemaType value => getDartType(
                 type: value.type,
                 format: value.format,
                 genericType: switch (value.items) {
                   OpenApiSchemaRef value =>
                     Renaming.instance.renameRefClass(value),
-                  OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
-                      value,
-                      typeConverter,
-                    ),
+                  OpenApiSchemaAnyOf value =>
+                    convertOpenApiAnyOfToDartType(value),
                   _ => null,
                 },
                 items: value.items,
@@ -113,7 +107,7 @@ class OpenApiToDartTypeConverter {
           OpenApiSchemaRef value =>
             Renaming.instance.renameRefClass(value) + '?',
           OpenApiSchemaAnyOf value =>
-            convertOpenApiAnyOfToDartType(value, typeConverter) + '?',
+            convertOpenApiAnyOfToDartType(value) + '?',
           OpenApiSchemaOneOf value => handleOpenApiOneOfToDartType(
                 key: value.title ?? 'UnionModel',
                 model: value,
@@ -158,5 +152,32 @@ class OpenApiToDartTypeConverter {
     }).toList();
 
     return className;
+  }
+
+  String? _getDartType(OpenApiSchema? model, String className) {
+    if (model == null) return null;
+
+    return switch (model) {
+      OpenApiSchemaType value => context.dartTypeConverter.getDartType(
+          type: value.type,
+          format: value.format,
+          genericType: switch (value.items) {
+            OpenApiSchemaRef value => Renaming.instance.renameRefClass(value),
+            OpenApiSchemaAnyOf value =>
+              context.dartTypeConverter.convertOpenApiAnyOfToDartType(value),
+            _ => null,
+          },
+          items: value.items,
+          title: value.title,
+        ),
+      OpenApiSchemaRef value => Renaming.instance.renameRefClass(value),
+      OpenApiSchemaAnyOf value =>
+        context.dartTypeConverter.convertOpenApiAnyOfToDartType(value),
+      OpenApiSchemaOneOf value =>
+        context.dartTypeConverter.handleOpenApiOneOfToDartType(
+          key: '${className}Union${value.title ?? 'Model'}',
+          model: value,
+        ),
+    };
   }
 }

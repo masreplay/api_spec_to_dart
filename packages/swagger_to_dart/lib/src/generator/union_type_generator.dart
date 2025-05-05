@@ -72,7 +72,7 @@ class UnionTypeGenerator {
   /// Resolves the Dart type for a schema
   String resolveDartType(OpenApiSchema schema) {
     return switch (schema) {
-      OpenApiSchemaType value => context.dartTypeConverter.dartType(
+      OpenApiSchemaType value => context.dartTypeConverter.getDartType(
           type: value.type,
           format: value.format,
           genericType: switch (value.items) {

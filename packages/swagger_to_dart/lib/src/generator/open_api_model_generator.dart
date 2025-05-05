@@ -74,7 +74,7 @@ class TypePropertyGenerator extends PropertyGeneratorStrategy {
       );
     }
 
-    final dartType = context.dartTypeConverter.dartType(
+    final dartType = context.dartTypeConverter.getDartType(
       format: schema.format,
       type: schema.type,
       genericType: _getDependentType(schema.items),
@@ -95,10 +95,7 @@ class TypePropertyGenerator extends PropertyGeneratorStrategy {
     return switch (items) {
       OpenApiSchemaRef value => Renaming.instance.renameRefClass(value),
       OpenApiSchemaAnyOf value =>
-        context.dartTypeConverter.convertOpenApiAnyOfToDartType(
-          value,
-          context.dartTypeConverter,
-        ),
+        context.dartTypeConverter.convertOpenApiAnyOfToDartType(value),
       _ => null,
     };
   }
@@ -324,18 +321,15 @@ class UnionModelStrategy extends ModelStrategy {
 
         final types = nonNullSchemas.map((schema) {
           return switch (schema) {
-            OpenApiSchemaType value => context.dartTypeConverter.dartType(
+            OpenApiSchemaType value => context.dartTypeConverter.getDartType(
                 type: value.type,
                 format: value.format,
                 genericType: switch (value.items) {
                   OpenApiSchemaRef value => Renaming.instance.renameRefClass(
                       value,
                     ),
-                  OpenApiSchemaAnyOf value =>
-                    context.dartTypeConverter.convertOpenApiAnyOfToDartType(
-                      value,
-                      context.dartTypeConverter,
-                    ),
+                  OpenApiSchemaAnyOf value => context.dartTypeConverter
+                      .convertOpenApiAnyOfToDartType(value),
                   _ => null,
                 },
                 items: value.items,
@@ -346,10 +340,7 @@ class UnionModelStrategy extends ModelStrategy {
                 value,
               ),
             OpenApiSchemaAnyOf value =>
-              context.dartTypeConverter.convertOpenApiAnyOfToDartType(
-                value,
-                context.dartTypeConverter,
-              ),
+              context.dartTypeConverter.convertOpenApiAnyOfToDartType(value),
             _ => throw ArgumentError(
                 'Unsupported schema type: ${schema.runtimeType}',
               ),

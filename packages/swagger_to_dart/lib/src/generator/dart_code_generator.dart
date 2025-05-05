@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:path/path.dart' as path;
 import 'package:swagger_to_dart/src/config/code_generation_context.dart';
-import 'package:swagger_to_dart/src/utils/renaming.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 //TODO(shahadKadhim): refactor this
@@ -80,94 +79,15 @@ class SwaggerToDartDartCodeGenerator {
 
   /// Generates convertors for handling special data types like MultipartFile
   Future<String> _generateConvertors() async {
-    final isFlutterProject = context.isFlutterProject;
-
-    final buffer = StringBuffer();
-
-    buffer.writeln("import 'package:dio/dio.dart';");
-    buffer.writeln("import 'package:json_annotation/json_annotation.dart';");
-    if (isFlutterProject)
-      buffer.writeln("import 'package:flutter/material.dart';");
-
-    buffer.write('''
-const convertors = <JsonConverter>[
-  MultipartFileJsonConverter(),
-  ${isFlutterProject ? 'TimeOfDayStringJsonConverter(),\n ColorHexStringJsonConverter(),\n' : ''}
-  ${globalUnionClasses.map((className) => '${className}JsonConvertor()').join(',\n')}
-];
-''');
-
-    buffer.writeln('''
-class MultipartFileJsonConverter implements JsonConverter<MultipartFile, MultipartFile> {
-  const MultipartFileJsonConverter();
-
-  @override
-  MultipartFile fromJson(MultipartFile json) => json;
-
-  @override
-  MultipartFile toJson(MultipartFile object) => object;
-}
-''');
-
-    if (isFlutterProject) {
-      buffer.writeln('''
-class ColorHexStringJsonConverter implements JsonConverter<Color, String> {
-  const ColorHexStringJsonConverter();
-
-  @override
-  Color fromJson(String json) {
-    return Color(int.parse(json.substring(1), radix: 16));
-  }
-
-  @override
-  String toJson(Color? object) {
-    // ignore: deprecated_member_use
-    return '#\${object?.value.toRadixString(16)}';
-  }
-}
-''');
-
-      buffer.writeln('''
-/// [TimeOfDay] json converter
-/// example: PT8H30M
-class TimeOfDayStringJsonConverter implements JsonConverter<TimeOfDay, String> {
-  const TimeOfDayStringJsonConverter();
-
-  @override
-  TimeOfDay fromJson(String json) {
-    if (json.contains(':')) {
-      final time = json.split(':');
-      return TimeOfDay(hour: int.parse(time[0]), minute: int.parse(time[1]));
-    } else {
-      final regex = RegExp(r'PT(?:(\d+)H)?(?:(\d+)M)?');
-      final match = regex.firstMatch(json);
-
-      int hours = match?.group(1) != null ? int.parse(match!.group(1)!) : 0;
-      int minutes = match?.group(2) != null ? int.parse(match!.group(2)!) : 0;
-
-      return TimeOfDay(hour: hours, minute: minutes);
-    }
-  }
-
-  @override
-  String toJson(TimeOfDay object) {
-    return '\${object.hour.toString().padLeft(2, '0')}:\${object.minute.toString().padLeft(2, '0')}:00';
-  }
-}
-''');
-    }
-
-    return buffer.toString();
+    final convertors = SwaggerToDartCodeBuilder.instance.convertors(
+      context.isFlutterProject,
+    );
+    return convertors.toString();
   }
 
   /// Generates export files for models and clients
   Future<void> _generateExports() async {
-    final exportsGenerator = DartCodeExportsCodeBuilder(
-      context: context,
-      fileHandler: fileHandler,
-    );
-
-    await exportsGenerator.generateModelsExports();
-    await exportsGenerator.generateClientsExports();
+    final exports = SwaggerToDartCodeBuilder.instance.exports();
+    await fileHandler.writeLibrary(exports);
   }
 }
