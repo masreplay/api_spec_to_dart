@@ -1,5 +1,8 @@
+import 'dart:io';
+
+import 'package:path/path.dart' as path;
 import 'package:swagger_to_dart/src/config/code_generation_context.dart';
-import 'package:swagger_to_dart/src/utils/naming_utils.dart';
+import 'package:swagger_to_dart/src/utils/renaming.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 //TODO(shahadKadhim): refactor this
@@ -26,23 +29,28 @@ class SwaggerToDartDartCodeGenerator {
   Future<void> _generateModels() async {
     final modelGenerator = OpenApiModelGenerator(context);
 
-    await fileHandler.createDirectory(context.pathConfig.modelsOutputDirectory);
+    final dir = Directory(
+      path.join(context.swaggerToDart.outputDirectory, 'models'),
+    );
+    await fileHandler.createDirectory(dir);
 
     if (context.openApi.components case final openApiComponents?)
       for (final entry in openApiComponents.schemas.entries) {
         final result = modelGenerator.run(entry);
-        final filepath =
-            '${context.pathConfig.modelsOutputDirectory}/${NamingUtils.instance.renameFile(entry.key)}.dart';
-        await fileHandler.writeLibrary(result.content);
+        // final filename = '${NamingUtils.instance.renameFile(entry.key)}.dart';
+        // final filepath = '$dir/$filename';
+
+        await fileHandler.writeLibrary(result);
       }
   }
 
   /// Generates all clients from the OpenAPI paths
   Future<void> _generateClients() async {
-    final clientGenerator = OpenApiClientGenerator(context: context);
+    final clientGenerator = OpenApiClientGenerator(context);
 
-    await fileHandler
-        .createDirectory(context.pathConfig.clientsOutputDirectory);
+    await fileHandler.createDirectory(
+      context.pathConfig.clientsOutputDirectory,
+    );
 
     if (context.openApi.paths case final openApiPaths?) {
       // Generate individual clients
@@ -59,7 +67,7 @@ class SwaggerToDartDartCodeGenerator {
         );
 
         final filepath =
-            '${context.pathConfig.clientsOutputDirectory}/${NamingUtils.instance.renameFile(tag)}_client.dart';
+            '${context.pathConfig.clientsOutputDirectory}/${Renaming.instance.renameFile(tag)}_client.dart';
         await fileHandler.writeFile(filepath, result.content);
       }
 

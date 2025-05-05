@@ -1,7 +1,7 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:swagger_to_dart/src/builder/json_serializable_code_builder.dart';
 import 'package:swagger_to_dart/src/config/code_generation_context.dart';
-import 'package:swagger_to_dart/src/utils/naming_utils.dart';
+import 'package:swagger_to_dart/src/utils/renaming.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 import 'model_type_determiner.dart';
@@ -93,7 +93,7 @@ class TypePropertyGenerator extends PropertyGeneratorStrategy {
 
   String? _getDependentType(OpenApiSchema? items) {
     return switch (items) {
-      OpenApiSchemaRef value => NamingUtils.instance.renameRefClass(value),
+      OpenApiSchemaRef value => Renaming.instance.renameRefClass(value),
       OpenApiSchemaAnyOf value =>
         context.dartTypeConverter.convertOpenApiAnyOfToDartType(
           value,
@@ -166,7 +166,7 @@ class RefPropertyGenerator extends PropertyGeneratorStrategy {
       );
     }
 
-    final refClassName = NamingUtils.instance.renameRefClass(schema);
+    final refClassName = Renaming.instance.renameRefClass(schema);
 
     return FreezedClassCodeBuilder.instance.parameter_(
       name: propertyName,
@@ -180,9 +180,9 @@ class RefPropertyGenerator extends PropertyGeneratorStrategy {
     if (defaultValue == 'null') {
       return 'null';
     } else if (defaultValue != null && defaultValue is int) {
-      return '$className.value${NamingUtils.instance.renameProperty("$defaultValue")}';
+      return '$className.value${Renaming.instance.renameProperty("$defaultValue")}';
     } else if (defaultValue != null && defaultValue is String) {
-      return '$className.${NamingUtils.instance.renameProperty(defaultValue)}';
+      return '$className.${Renaming.instance.renameProperty(defaultValue)}';
     }
     return null;
   }
@@ -249,9 +249,9 @@ class AnyOfPropertyGenerator extends PropertyGeneratorStrategy {
     if (defaultValue == 'null') {
       return 'null';
     } else if (defaultValue != null && defaultValue is int) {
-      return '$className.value${NamingUtils.instance.renameProperty("$defaultValue")}';
+      return '$className.value${Renaming.instance.renameProperty("$defaultValue")}';
     } else if (defaultValue != null && defaultValue is String) {
-      return '$className.${NamingUtils.instance.renameProperty(defaultValue)}';
+      return '$className.${Renaming.instance.renameProperty(defaultValue)}';
     }
     return null;
   }
@@ -270,7 +270,7 @@ class EnumModelStrategy extends ModelStrategy {
   const EnumModelStrategy(super.context);
 
   Library generate(OpenApiModel model) {
-    final className = NamingUtils.instance.renameClass(model.key);
+    final className = Renaming.instance.renameClass(model.key);
 
     final enum_ = JsonSerializableCodeBuilder.instance.jsonSerializableEnum_(
       className: className,
@@ -278,7 +278,7 @@ class EnumModelStrategy extends ModelStrategy {
     );
 
     return JsonSerializableCodeBuilder.instance.jsonSerializableEnumFilter_(
-      fileName: NamingUtils.instance.renameFile(className),
+      fileName: Renaming.instance.renameFile(className),
       enum_: enum_,
     );
   }
@@ -295,8 +295,8 @@ class UnionModelStrategy extends ModelStrategy {
       OpenApiSchemaOneOf: AnyOfPropertyGenerator(context),
     };
 
-    final filename = NamingUtils.instance.renameFile(model.key);
-    final className = NamingUtils.instance.renameClass(model.key);
+    final filename = Renaming.instance.renameFile(model.key);
+    final className = Renaming.instance.renameClass(model.key);
     final schema = model.value;
 
     final schemaJson = schema.toJson();
@@ -328,7 +328,7 @@ class UnionModelStrategy extends ModelStrategy {
                 type: value.type,
                 format: value.format,
                 genericType: switch (value.items) {
-                  OpenApiSchemaRef value => NamingUtils.instance.renameRefClass(
+                  OpenApiSchemaRef value => Renaming.instance.renameRefClass(
                       value,
                     ),
                   OpenApiSchemaAnyOf value =>
@@ -342,7 +342,7 @@ class UnionModelStrategy extends ModelStrategy {
                 title: value.title,
                 parentTitle: schema.title,
               ),
-            OpenApiSchemaRef value => NamingUtils.instance.renameRefClass(
+            OpenApiSchemaRef value => Renaming.instance.renameRefClass(
                 value,
               ),
             OpenApiSchemaAnyOf value =>
@@ -356,9 +356,8 @@ class UnionModelStrategy extends ModelStrategy {
           };
         }).toList();
 
-        final unionClassName = types
-            .map((type) => NamingUtils.instance.renameClass(type))
-            .join('Or');
+        final unionClassName =
+            types.map((type) => Renaming.instance.renameClass(type)).join('Or');
 
         final unionContent = FreezedClassCodeBuilder.instance.unionClass_(
           className: unionClassName,
@@ -377,7 +376,7 @@ class UnionModelStrategy extends ModelStrategy {
     for (final entry in properties.entries) {
       final key = entry.key;
       final schema = entry.value;
-      final propertyName = NamingUtils.instance.renameProperty(key);
+      final propertyName = Renaming.instance.renameProperty(key);
 
       switch (schema) {
         case OpenApiSchemaType():
@@ -420,7 +419,7 @@ class UnionModelStrategy extends ModelStrategy {
           for (final mapping in schema.discriminator.mapping.entries) {
             unionProps.add(
               FreezedClassCodeBuilder.instance.parameter_(
-                type: NamingUtils.instance
+                type: Renaming.instance
                     .renameClass(mapping.value.split('/').last),
                 name: propertyName,
               ),
@@ -447,15 +446,15 @@ class RegularModelStrategy extends ModelStrategy {
       OpenApiSchemaRef: RefPropertyGenerator(context),
       OpenApiSchemaAnyOf: AnyOfPropertyGenerator(context),
     };
-    final filename = NamingUtils.instance.renameFile(model.key);
-    final className = NamingUtils.instance.renameClass(model.key);
+    final filename = Renaming.instance.renameFile(model.key);
+    final className = Renaming.instance.renameClass(model.key);
     final properties = model.value.properties ?? {};
 
     final fields = StringBuffer();
     for (final entry in properties.entries) {
       final key = entry.key;
       final schema = entry.value;
-      final propertyName = NamingUtils.instance.renameProperty(key);
+      final propertyName = Renaming.instance.renameProperty(key);
 
       final generator = propertyGenerators[schema.runtimeType];
       if (generator != null) {

@@ -1,5 +1,5 @@
 import 'package:swagger_to_dart/src/config/code_generation_context.dart';
-import 'package:swagger_to_dart/src/utils/naming_utils.dart';
+import 'package:swagger_to_dart/src/utils/renaming.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 /// Generates union types for OpenAPI anyOf schemas
@@ -10,8 +10,8 @@ class UnionTypeGenerator {
 
   /// Generates a union type class name based on the types involved
   String generateUnionClassName(List<String> types) {
-    return NamingUtils.instance.renameClass(
-      types.map(NamingUtils.instance.renameClass).join('Or'),
+    return Renaming.instance.renameClass(
+      types.map(Renaming.instance.renameClass).join('Or'),
     );
   }
 
@@ -53,7 +53,7 @@ class UnionTypeGenerator {
     for (final unionType in unionTypes) {
       final constructorName = unionType.type.toLowerCase();
       buffer.writeln(
-        '  factory $className.$constructorName(${unionType.type} value) = _\$${className}${NamingUtils.instance.renameClass(unionType.type)};',
+        '  factory $className.$constructorName(${unionType.type} value) = _\$${className}${Renaming.instance.renameClass(unionType.type)};',
       );
     }
     buffer.writeln();
@@ -76,15 +76,14 @@ class UnionTypeGenerator {
           type: value.type,
           format: value.format,
           genericType: switch (value.items) {
-            OpenApiSchemaRef value =>
-              NamingUtils.instance.renameRefClass(value),
+            OpenApiSchemaRef value => Renaming.instance.renameRefClass(value),
             OpenApiSchemaAnyOf value => _resolveAnyOfType(value),
             _ => null,
           },
           items: value.items,
           title: value.title,
           parentTitle: schema.title),
-      OpenApiSchemaRef value => NamingUtils.instance.renameRefClass(value),
+      OpenApiSchemaRef value => Renaming.instance.renameRefClass(value),
       OpenApiSchemaAnyOf value => _resolveAnyOfType(value),
       _ =>
         throw ArgumentError('Unsupported schema type: ${schema.runtimeType}'),

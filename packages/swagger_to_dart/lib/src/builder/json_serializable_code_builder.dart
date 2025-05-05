@@ -1,6 +1,6 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:swagger_to_dart/src/utils/naming_utils.dart';
+import 'package:swagger_to_dart/src/utils/renaming.dart';
 
 class JsonSerializableCodeBuilder {
   const JsonSerializableCodeBuilder._();
@@ -15,7 +15,7 @@ class JsonSerializableCodeBuilder {
     required ({String type, String body}) from,
     required ({String type, String body}) to,
   }) {
-    final filename = NamingUtils.instance.renameFile(className);
+    final filename = Renaming.instance.renameFile(className);
 
     return Library(
       (b) => b

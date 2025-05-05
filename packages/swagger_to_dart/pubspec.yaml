@@ -18,6 +18,7 @@ dependencies:
   logger: ^2.5.0
   path: ^1.9.1
   pubspec_parse: ^1.5.0
+  retrofit: ^4.4.2
   yaml: ^3.1.2
 
 dev_dependencies:

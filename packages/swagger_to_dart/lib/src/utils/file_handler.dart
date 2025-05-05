@@ -23,21 +23,20 @@ class FileHandler {
   }
 
   /// Creates a directory if it doesn't exist
-  Future<void> createDirectory(String directory) async {
-    final dir = Directory(directory);
+  Future<void> createDirectory(Directory dir) async {
     if (!dir.existsSync()) {
       await dir.create(recursive: true);
     }
   }
 
   /// Checks if a directory exists
-  bool directoryExists(String directory) {
-    return Directory(directory).existsSync();
+  bool directoryExists(Directory dir) {
+    return dir.existsSync();
   }
 
   /// Lists all Dart files in a directory, excluding generated files
-  List<File> listDartFiles(String directory) {
-    return Directory(directory)
+  List<File> listDartFiles(Directory dir) {
+    return dir
         .listSync()
         .where(
           (entity) =>

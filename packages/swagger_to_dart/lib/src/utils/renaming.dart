@@ -1,12 +1,12 @@
 import '../parser/openapi/models/models.dart';
 import 'recase.dart';
 
-class NamingUtils {
-  const NamingUtils._();
+class Renaming {
+  const Renaming._();
 
-  static NamingUtils get _instance => NamingUtils._();
+  static Renaming get _instance => const Renaming._();
 
-  static NamingUtils get instance => _instance;
+  static Renaming get instance => _instance;
 
   String renameProperty(String key) {
     return Recase.instance.toCamelCase(key);

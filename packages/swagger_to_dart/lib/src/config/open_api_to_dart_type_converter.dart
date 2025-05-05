@@ -1,4 +1,4 @@
-import 'package:swagger_to_dart/src/utils/naming_utils.dart';
+import 'package:swagger_to_dart/src/utils/renaming.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 class OpenApiToDartTypeConverter {
@@ -41,7 +41,7 @@ class OpenApiToDartTypeConverter {
               format: value.format,
               genericType: switch (value.items) {
                 OpenApiSchemaRef value =>
-                  NamingUtils.instance.renameRefClass(value),
+                  Renaming.instance.renameRefClass(value),
                 OpenApiSchemaAnyOf value =>
                   convertOpenApiAnyOfToDartType(value, this),
                 _ => null,
@@ -49,7 +49,7 @@ class OpenApiToDartTypeConverter {
               items: value.items,
               title: value.title,
               parentTitle: parentTitle),
-          OpenApiSchemaRef value => NamingUtils.instance.renameRefClass(value),
+          OpenApiSchemaRef value => Renaming.instance.renameRefClass(value),
           OpenApiSchemaAnyOf value =>
             convertOpenApiAnyOfToDartType(value, this),
           OpenApiSchemaOneOf value => handleOpenApiOneOfToDartType(
@@ -99,7 +99,7 @@ class OpenApiToDartTypeConverter {
                 format: value.format,
                 genericType: switch (value.items) {
                   OpenApiSchemaRef value =>
-                    NamingUtils.instance.renameRefClass(value),
+                    Renaming.instance.renameRefClass(value),
                   OpenApiSchemaAnyOf value => convertOpenApiAnyOfToDartType(
                       value,
                       typeConverter,
@@ -111,7 +111,7 @@ class OpenApiToDartTypeConverter {
               ) +
               '?',
           OpenApiSchemaRef value =>
-            NamingUtils.instance.renameRefClass(value) + '?',
+            Renaming.instance.renameRefClass(value) + '?',
           OpenApiSchemaAnyOf value =>
             convertOpenApiAnyOfToDartType(value, typeConverter) + '?',
           OpenApiSchemaOneOf value => handleOpenApiOneOfToDartType(

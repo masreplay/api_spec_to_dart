@@ -3,21 +3,22 @@ import 'dart:io';
 import 'package:path/path.dart' as path;
 import 'package:swagger_to_dart/src/config/code_generation_context.dart';
 import 'package:swagger_to_dart/src/config/open_api_to_dart_type_converter.dart';
-import 'package:swagger_to_dart/src/utils/naming_utils.dart';
+import 'package:swagger_to_dart/src/utils/renaming.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 String handleOpenApiOneOfToDartType(
   String key,
   OpenApiSchemaOneOf model,
   OpenApiToDartTypeConverter typeConverter,
+  CodeGenerationContext context,
 ) {
-  final className = NamingUtils.instance.renameClass(key);
+  final className = Renaming.instance.renameClass(key);
 
   generateUnionFile(
     key: key,
     className: className,
     model: model,
-    context: config,
+    context: context,
   );
 
   return className;
@@ -29,12 +30,10 @@ String generateUnionFile({
   required OpenApiSchemaOneOf model,
   required CodeGenerationContext context,
 }) {
-  final filename = NamingUtils.instance.renameFile(key);
-
   final unionTypes = <(String, String)>[];
   model.discriminator.mapping.entries.map((e) {
-    unionTypes.add(
-        (e.key, NamingUtils.instance.renameClass(e.value.split('/').last)));
+    unionTypes
+        .add((e.key, Renaming.instance.renameClass(e.value.split('/').last)));
   }).toList();
 
   // TODO: generate union file
@@ -45,7 +44,7 @@ String generateUnionFile({
 
   final filepath = path.join(
     pathConfig.modelsOutputDirectory,
-    '${NamingUtils.instance.renameFile(className)}.dart',
+    '${Renaming.instance.renameFile(className)}.dart',
   );
 
   final file = File(filepath);

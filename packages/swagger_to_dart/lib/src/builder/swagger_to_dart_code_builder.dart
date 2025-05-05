@@ -1,6 +1,6 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:swagger_to_dart/src/config/code_generation_context.dart';
-import 'package:swagger_to_dart/src/utils/naming_utils.dart';
+import 'package:swagger_to_dart/src/utils/renaming.dart';
 
 class SwaggerToDartCodeBuilder {
   SwaggerToDartCodeBuilder._();
@@ -12,7 +12,7 @@ class SwaggerToDartCodeBuilder {
     required CodeGenerationContext context,
     required List<String> clients,
   }) {
-    final className = NamingUtils.instance.renameClass(
+    final className = Renaming.instance.renameClass(
       context.swaggerToDart.apiClientClassName,
     );
 
