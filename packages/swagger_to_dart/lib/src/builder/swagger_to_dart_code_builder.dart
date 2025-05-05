@@ -85,4 +85,13 @@ class SwaggerToDartCodeBuilder {
         ),
     );
   }
+
+  Library exports() {
+    return Library((b) => b
+      ..name = 'exports'
+      ..directives.addAll([
+        Directive.export('package:models/models.dart'),
+        Directive.export('package:models/models.dart'),
+      ]));
+  }
 }

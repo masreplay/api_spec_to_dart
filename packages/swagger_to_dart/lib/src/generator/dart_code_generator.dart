@@ -79,21 +79,26 @@ class SwaggerToDartDartCodeGenerator {
   }
 
   /// Generates convertors for handling special data types like MultipartFile
-  Future<void> _generateConvertors() async {
+  Future<String> _generateConvertors() async {
     final isFlutterProject = context.isFlutterProject;
 
-    final content = '''
-import 'package:dio/dio.dart';
-import 'package:json_annotation/json_annotation.dart';
-${isFlutterProject ? "import 'package:flutter/material.dart';" : ''}
+    final buffer = StringBuffer();
 
+    buffer.writeln("import 'package:dio/dio.dart';");
+    buffer.writeln("import 'package:json_annotation/json_annotation.dart';");
+    if (isFlutterProject)
+      buffer.writeln("import 'package:flutter/material.dart';");
+
+    buffer.write('''
 const convertors = <JsonConverter>[
   MultipartFileJsonConverter(),
   ${isFlutterProject ? 'TimeOfDayStringJsonConverter(),\n ColorHexStringJsonConverter(),\n' : ''}
   ${globalUnionClasses.map((className) => '${className}JsonConvertor()').join(',\n')}
 ];
-class MultipartFileJsonConverter
-    implements JsonConverter<MultipartFile, MultipartFile> {
+''');
+
+    buffer.writeln('''
+class MultipartFileJsonConverter implements JsonConverter<MultipartFile, MultipartFile> {
   const MultipartFileJsonConverter();
 
   @override
@@ -102,9 +107,10 @@ class MultipartFileJsonConverter
   @override
   MultipartFile toJson(MultipartFile object) => object;
 }
+''');
 
-
-${isFlutterProject ? '''
+    if (isFlutterProject) {
+      buffer.writeln('''
 class ColorHexStringJsonConverter implements JsonConverter<Color, String> {
   const ColorHexStringJsonConverter();
 
@@ -119,8 +125,9 @@ class ColorHexStringJsonConverter implements JsonConverter<Color, String> {
     return '#\${object?.value.toRadixString(16)}';
   }
 }
+''');
 
-
+      buffer.writeln('''
 /// [TimeOfDay] json converter
 /// example: PT8H30M
 class TimeOfDayStringJsonConverter implements JsonConverter<TimeOfDay, String> {
@@ -147,47 +154,15 @@ class TimeOfDayStringJsonConverter implements JsonConverter<TimeOfDay, String> {
     return '\${object.hour.toString().padLeft(2, '0')}:\${object.minute.toString().padLeft(2, '0')}:00';
   }
 }
-''' : ''}
-
-${globalUnionClasses.map((className) => '''
-class ${className}JsonConvertor implements JsonConverter<${className}, Map<String, dynamic>> {
-  const ${className}JsonConvertor();
-
-  static const String unionKey = 'value';
-   @override
-  $className fromJson(Map<String, dynamic> json) {
-    try {
-      return $className.fromJson({
-        unionKey: json,
-        ...json,
-      });
-    } catch (e) {
-      return $className.fallback();
+''');
     }
-  }
 
-  @override
-  Map<String, dynamic> toJson($className object) {
-    return {...object.toJson()[unionKey]};
-  }
-}
-''').join('\n')}
-
-''';
-
-    final convertorsDir = context.pathConfig.convertorOutputDirectory;
-    await fileHandler.createDirectory(convertorsDir);
-
-    final filePath = '$convertorsDir/convertors.dart';
-    await fileHandler.writeFile(filePath, content);
-
-    // Make sure the convertors are included in the exports
-    // They'll be picked up by _generateExports() since they're in the models directory
+    return buffer.toString();
   }
 
   /// Generates export files for models and clients
   Future<void> _generateExports() async {
-    final exportsGenerator = DartCodeExportsGenerator(
+    final exportsGenerator = DartCodeExportsCodeBuilder(
       context: context,
       fileHandler: fileHandler,
     );
