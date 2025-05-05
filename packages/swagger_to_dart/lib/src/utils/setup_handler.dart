@@ -60,60 +60,54 @@ class SetupHandler {
   }
 
   /// Loads and validates the OpenAPI specification
-  Future<OpenApi> _loadOpenApi(SwaggerToDart swaggerConfig) async {
-    Map<String, dynamic> map;
+  Future<OpenApi> _loadOpenApi(SwaggerToDart config) async {
+    final file = File(config.inputDirectory);
 
-    // Check if URL is provided
-    if (swaggerConfig.url != null && swaggerConfig.url!.isNotEmpty) {
-      // Fetch from URL
-      print('Fetching OpenAPI specification from URL: \\${swaggerConfig.url}');
-
-      map = await _downloadAndParseOpenApi(swaggerConfig.url!);
-    } else {
-      // Fetch from file
-      final inputFile = File(swaggerConfig.inputDirectory);
-      if (!inputFile.existsSync()) {
-        throw Exception(
-          'Input file not found: \\${swaggerConfig.inputDirectory}',
-        );
+    // If a URL is provided
+    if (config.url case final url?) {
+      final uri = Uri.tryParse(url);
+      if (uri == null || !uri.hasAbsolutePath) {
+        throw Exception('Invalid URL: $url');
       }
 
-      final content = await inputFile.readAsString();
-
-      // Parse JSON file
       try {
-        map = jsonDecode(content);
+        print('Fetching OpenAPI specification from URL: $url');
+        final dio = Dio();
+        final response = await dio.get(url);
+
+        if (response.statusCode != 200 && response.statusCode != 201) {
+          throw Exception(
+            'Failed to fetch OpenAPI spec from URL. Status: ${response.statusCode}',
+          );
+        }
+
+        final data = response.data;
+
+        if (data is! Map<String, dynamic>) {
+          throw Exception('OpenAPI spec is not a valid JSON object');
+        }
+
+        // Cache the spec locally if file doesn't exist
+        if (!file.existsSync()) {
+          print('Writing OpenAPI specification to file: ${file.path}');
+          await file.writeAsString(jsonEncode(data));
+        }
+
+        return OpenApi.fromJson(data);
       } catch (e) {
-        throw Exception('Failed to parse JSON file: \\$e');
+        throw Exception('Error fetching OpenAPI spec from URL: $e');
       }
     }
+
+    // Otherwise, read from local file
+    if (!file.existsSync()) {
+      throw Exception('Input file not found: ${config.inputDirectory}');
+    }
+
+    final content = await file.readAsString();
+    final map = jsonDecode(content);
 
     return OpenApi.fromJson(map);
-  }
-
-  /// Downloads and parses the OpenAPI spec from a URL using Dio
-  Future<Map<String, dynamic>> _downloadAndParseOpenApi(String url) async {
-    try {
-      final dio = Dio();
-      final response = await dio.get(url);
-
-      if (response.statusCode != 200 && response.statusCode != 201) {
-        throw Exception(
-          'Failed to fetch OpenAPI spec from URL. Status: \\${response.statusCode}',
-        );
-      }
-
-      final content =
-          response.data is String ? response.data : jsonEncode(response.data);
-
-      try {
-        return jsonDecode(content);
-      } catch (e) {
-        throw Exception('Failed to parse OpenAPI spec as JSON: \\$e');
-      }
-    } catch (e) {
-      throw Exception('Error fetching OpenAPI spec from URL: \\$e');
-    }
   }
 
   /// Sets up the output directory

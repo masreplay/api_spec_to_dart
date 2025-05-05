@@ -15,15 +15,11 @@ Future<void> main(List<String> args) async {
       }
     }
 
-    final fileHandler = FileHandler();
     final setupHandler = SetupHandler(configPath: configPath);
-    final config = await setupHandler.setup();
+    final context = await setupHandler.setup();
 
     print('Generating code...');
-    final generator = SwaggerToDartDartCodeGenerator(
-      context: config,
-      fileHandler: fileHandler,
-    );
+    final generator = SwaggerToDartDartCodeGenerator(context);
 
     await generator.run();
     print('Code generation completed successfully');

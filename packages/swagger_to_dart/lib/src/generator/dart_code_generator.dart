@@ -5,13 +5,11 @@ import 'package:swagger_to_dart/src/config/code_generation_context.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 class SwaggerToDartDartCodeGenerator {
-  SwaggerToDartDartCodeGenerator({
-    required this.context,
-    required this.fileHandler,
-  });
+  const SwaggerToDartDartCodeGenerator(this.context);
 
   final CodeGenerationContext context;
-  final FileHandler fileHandler;
+
+  final FileHandler fileHandler = const FileHandler();
 
   /// Runs the complete generation process
   Future<void> run() async {
