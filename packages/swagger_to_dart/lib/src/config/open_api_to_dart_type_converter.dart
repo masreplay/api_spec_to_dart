@@ -154,7 +154,7 @@ class OpenApiToDartTypeConverter {
     return className;
   }
 
-  String? _getDartType(OpenApiSchema? model, String className) {
+  String? getModelDartType(OpenApiSchema? model, String className) {
     if (model == null) return null;
 
     return switch (model) {

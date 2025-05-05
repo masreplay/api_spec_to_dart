@@ -60,7 +60,7 @@ class SwaggerToDartDartCodeGenerator {
         final tag = entry.key;
         final paths = entry.value;
 
-        final result = clientGenerator.generate(
+        clientGenerator.generate(
           path: openApiPaths,
           clientName: tag,
           tagPaths: paths,
