@@ -1,12 +1,11 @@
+import 'package:swagger_to_dart/src/config/code_generation_context.dart';
 import 'package:swagger_to_dart/src/utils/renaming.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 class OpenApiToDartTypeConverter {
-  const OpenApiToDartTypeConverter({
-    required this.isFlutterProject,
-  });
+  const OpenApiToDartTypeConverter(this.context);
 
-  final bool isFlutterProject;
+  final CodeGenerationContext context;
 
   String dartType({
     required OpenApiSchemaVarType? type,
@@ -24,7 +23,9 @@ class OpenApiToDartTypeConverter {
           'color-hex' => 'Color',
           'binary' => 'MultipartFile',
           'uuid' => 'String',
-          'time' || 'duration' => isFlutterProject ? 'TimeOfDay' : 'String',
+          'time' ||
+          'duration' =>
+            context.isFlutterProject ? 'TimeOfDay' : 'String',
           'uri' => 'Uri',
           _ => 'String',
         };
@@ -53,9 +54,8 @@ class OpenApiToDartTypeConverter {
           OpenApiSchemaAnyOf value =>
             convertOpenApiAnyOfToDartType(value, this),
           OpenApiSchemaOneOf value => handleOpenApiOneOfToDartType(
-              '${parentTitle}${title}UnionResponse',
-              value,
-              this,
+              key: '${parentTitle}${title}UnionResponse',
+              model: value,
             ),
           null => null,
         };
@@ -115,9 +115,8 @@ class OpenApiToDartTypeConverter {
           OpenApiSchemaAnyOf value =>
             convertOpenApiAnyOfToDartType(value, typeConverter) + '?',
           OpenApiSchemaOneOf value => handleOpenApiOneOfToDartType(
-                value.title ?? 'UnionModel',
-                value,
-                typeConverter,
+                key: value.title ?? 'UnionModel',
+                model: value,
               ) +
               '?',
         };
@@ -127,5 +126,37 @@ class OpenApiToDartTypeConverter {
     // If it's not a simple nullable type, then it's a union of multiple types
     // In Dart, we'll use dynamic since it can hold any of these types
     return 'dynamic';
+  }
+
+  String handleOpenApiOneOfToDartType({
+    required String key,
+    required OpenApiSchemaOneOf model,
+  }) {
+    final className = Renaming.instance.renameClass(key);
+
+    generateUnionFile(
+      key: key,
+      className: className,
+      model: model,
+      context: context,
+    );
+
+    return className;
+  }
+
+  String generateUnionFile({
+    required String key,
+    required String className,
+    required OpenApiSchemaOneOf model,
+    required CodeGenerationContext context,
+  }) {
+    final unionTypes = <(String, String)>[];
+    model.discriminator.mapping.entries.map((e) {
+      unionTypes.add(
+        (e.key, Renaming.instance.renameClass(e.value.split('/').last)),
+      );
+    }).toList();
+
+    return className;
   }
 }

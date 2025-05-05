@@ -66,9 +66,6 @@ class SwaggerToDartDartCodeGenerator {
           clientName: tag,
           tagPaths: paths,
         );
-
-        final filepath = '$dir/${result.name}.dart';
-        await fileHandler.writeLibrary(result);
       }
 
       // Generate base client
