@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:path/path.dart' as path;
 import 'package:pubspec_parse/pubspec_parse.dart';
 import 'package:swagger_to_dart/src/config/code_generation_context.dart';
@@ -65,49 +66,15 @@ class SetupHandler {
     // Check if URL is provided
     if (swaggerConfig.url != null && swaggerConfig.url!.isNotEmpty) {
       // Fetch from URL
-      print('Fetching OpenAPI specification from URL: ${swaggerConfig.url}');
+      print('Fetching OpenAPI specification from URL: \\${swaggerConfig.url}');
 
-      try {
-        final uri = Uri.parse(swaggerConfig.url!);
-        final client = HttpClient();
-        final request = await client.getUrl(uri);
-        final response = await request.close();
-
-        if (response.statusCode != 200) {
-          throw Exception(
-            'Failed to fetch OpenAPI spec from URL. Status: ${response.statusCode}',
-          );
-        }
-
-        final content = await response.transform(utf8.decoder).join();
-
-        // Parse JSON content
-        try {
-          map = jsonDecode(content);
-        } catch (e) {
-          throw Exception('Failed to parse OpenAPI spec as JSON: $e');
-        }
-
-        // Save the fetched spec locally if input_directory is provided
-        if (swaggerConfig.inputDirectory.isNotEmpty) {
-          final inputFile = File(swaggerConfig.inputDirectory);
-          await inputFile.create(recursive: true);
-          await inputFile.writeAsString(
-            JsonEncoder.withIndent('  ').convert(map),
-          );
-          print('Saved OpenAPI spec to: ${swaggerConfig.inputDirectory}');
-        }
-
-        client.close();
-      } catch (e) {
-        throw Exception('Error fetching OpenAPI spec from URL: $e');
-      }
+      map = await _downloadAndParseOpenApi(swaggerConfig.url!);
     } else {
       // Fetch from file
       final inputFile = File(swaggerConfig.inputDirectory);
       if (!inputFile.existsSync()) {
         throw Exception(
-          'Input file not found: ${swaggerConfig.inputDirectory}',
+          'Input file not found: \\${swaggerConfig.inputDirectory}',
         );
       }
 
@@ -117,11 +84,36 @@ class SetupHandler {
       try {
         map = jsonDecode(content);
       } catch (e) {
-        throw Exception('Failed to parse JSON file: $e');
+        throw Exception('Failed to parse JSON file: \\$e');
       }
     }
 
     return OpenApi.fromJson(map);
+  }
+
+  /// Downloads and parses the OpenAPI spec from a URL using Dio
+  Future<Map<String, dynamic>> _downloadAndParseOpenApi(String url) async {
+    try {
+      final dio = Dio();
+      final response = await dio.get(url);
+
+      if (response.statusCode != 200 && response.statusCode != 201) {
+        throw Exception(
+          'Failed to fetch OpenAPI spec from URL. Status: \\${response.statusCode}',
+        );
+      }
+
+      final content =
+          response.data is String ? response.data : jsonEncode(response.data);
+
+      try {
+        return jsonDecode(content);
+      } catch (e) {
+        throw Exception('Failed to parse OpenAPI spec as JSON: \\$e');
+      }
+    } catch (e) {
+      throw Exception('Error fetching OpenAPI spec from URL: \\$e');
+    }
   }
 
   /// Sets up the output directory
