@@ -22,7 +22,6 @@ class SetupHandler {
     final swaggerToDart = await _loadSwaggerToDartYaml(rootDir);
     final pubspec = await _loadPubspecYaml(rootDir);
     final openApi = await _loadOpenApi(swaggerToDart);
-    await _setupOutputDirectory(swaggerToDart);
 
     return CodeGenerationContext(
       swaggerToDart: swaggerToDart,
@@ -108,14 +107,5 @@ class SetupHandler {
     final map = jsonDecode(content);
 
     return OpenApi.fromJson(map);
-  }
-
-  /// Sets up the output directory
-  Future<void> _setupOutputDirectory(SwaggerToDart swaggerToDart) async {
-    final genDir = Directory(swaggerToDart.outputDirectory);
-    if (genDir.existsSync()) {
-      await genDir.delete(recursive: true);
-    }
-    await genDir.create(recursive: true);
   }
 }

@@ -14,12 +14,13 @@ class OpenApiModelGenerator {
   final CodeGenerationContext context;
 
   Future<void> generate() async {
-    if (context.openApi.components case final openApiComponents?)
+    if (context.openApi.components case final openApiComponents?) {
       for (final entry in openApiComponents.schemas.entries) {
         final result = run(entry);
 
         context.addModel(result);
       }
+    }
   }
 
   Library run(OpenApiModel model) {

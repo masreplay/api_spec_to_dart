@@ -16,10 +16,10 @@ dev_dependencies:
   lints: ^5.0.0
   test: ^1.24.0
 
-  # dart pub add swagger_to_dart
-  swagger_to_dart:
-    path: ../
   build_runner: ^2.4.15
   freezed: ^3.0.6
   json_serializable: ^6.9.4
   retrofit_generator: ^9.1.9
+
+  swagger_to_dart:
+    path: ../

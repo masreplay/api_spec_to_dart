@@ -1,3 +1,7 @@
+import 'dart:io';
+
+import 'package:code_builder/code_builder.dart';
+import 'package:dart_style/dart_style.dart';
 import 'package:swagger_to_dart/src/config/code_generation_context.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
@@ -8,10 +12,22 @@ class SwaggerToDartCodeGenerator {
   final FileHandler _fileHandler = const FileHandler();
 
   Future<void> write() async {
+    final emitter = DartEmitter.scoped();
+    final formatter = DartFormatter(
+      languageVersion: DartFormatter.latestLanguageVersion,
+    );
+
     OpenApiModelGenerator(context).generate();
 
+    final dir = Directory(context.swaggerToDart.outputDirectory);
+
     for (final model in context.models) {
-      await _fileHandler.writeLibrary(model);
+      final file = File(dir.path + model.name!);
+
+      await _fileHandler.writeFile(
+        file.path,
+        formatter.format('${model.accept(emitter)}'),
+      );
     }
   }
 }
