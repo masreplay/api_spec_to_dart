@@ -9,16 +9,16 @@ import 'model_type_determiner.dart';
 typedef OpenApiModel = MapEntry<String, OpenApiSchemas>;
 
 class OpenApiModelGenerator {
-  OpenApiModelGenerator(this.generator);
+  OpenApiModelGenerator(this.context);
 
-  final CodeGenerator generator;
+  final CodeGenerationContext context;
 
   Future<void> generate() async {
-    if (generator.context.openApi.components case final openApiComponents?)
+    if (context.openApi.components case final openApiComponents?)
       for (final entry in openApiComponents.schemas.entries) {
         final result = run(entry);
 
-        generator.addToModels(result);
+        context.addModel(result);
       }
   }
 
@@ -44,9 +44,9 @@ class OpenApiModelGenerator {
     }
 
     final strategy = switch (type) {
-      ModelTypeEnum.regular => RegularModelStrategy(generator.context),
-      ModelTypeEnum.enum_ => EnumModelStrategy(generator.context),
-      ModelTypeEnum.union => UnionModelStrategy(generator.context),
+      ModelTypeEnum.regular => RegularModelStrategy(context),
+      ModelTypeEnum.enum_ => EnumModelStrategy(context),
+      ModelTypeEnum.union => UnionModelStrategy(context),
     };
 
     return strategy.generate(model);

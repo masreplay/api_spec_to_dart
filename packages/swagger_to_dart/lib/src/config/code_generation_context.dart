@@ -5,7 +5,7 @@ import 'package:swagger_to_dart/src/config/swagger_to_dart_yaml.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 class CodeGenerationContext {
-  const CodeGenerationContext({
+  CodeGenerationContext({
     required this.pubspec,
     required this.swaggerToDart,
     required this.openApi,
@@ -14,6 +14,14 @@ class CodeGenerationContext {
   final OpenApi openApi;
   final Pubspec pubspec;
   final SwaggerToDart swaggerToDart;
+
+  final List<Library> _models = <Library>[];
+
+  List<Library> get models => _models;
+
+  void addModel(Library library) {
+    _models.add(library);
+  }
 
   OpenApiToDartTypeConverter get dartTypeConverter {
     return OpenApiToDartTypeConverter(this);
