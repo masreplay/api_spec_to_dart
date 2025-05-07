@@ -4,8 +4,6 @@ import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 Future<void> main(List<String> args) async {
   try {
-    print('Starting code generation...');
-
     // Parse command-line arguments
     String? configPath;
     for (int i = 0; i < args.length; i++) {
@@ -18,16 +16,9 @@ Future<void> main(List<String> args) async {
     final setupHandler = SetupHandler(configPath: configPath);
     final context = await setupHandler.setup();
 
-    print('Generating code...');
-    final generator = SwaggerToDartDartCodeGenerator(context);
-
-    await generator.run();
-    print('Code generation completed successfully');
-  } catch (e, s) {
-    print('Error during code generation:');
-    print('$e');
-    print('\nStack trace:');
-    print('$s');
+    final generator = SwaggerToDartCodeGenerator(context);
+    await generator.write();
+  } catch (e) {
     exit(1);
   }
 }

@@ -4,9 +4,9 @@ import 'package:swagger_to_dart/src/config/code_generation_context.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 class OpenApiClientGenerator {
-  const OpenApiClientGenerator(this.context);
+  const OpenApiClientGenerator(this.generator);
 
-  final CodeGenerationContext context;
+  final SwaggerToDartCodeGenerator generator;
 
   Library generate({
     required OpenApiPaths path,
