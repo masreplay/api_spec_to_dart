@@ -13,8 +13,10 @@ class FreezedClassCodeBuilder {
     required String filename,
     required List<Parameter> parameters,
   }) {
+
     return Library(
       (b) => b
+        ..name = '${filename}.dart'
         ..directives.addAll(_directives(filename: filename))
         ..body.addAll([
           Class(

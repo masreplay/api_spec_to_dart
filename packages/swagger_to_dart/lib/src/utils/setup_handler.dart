@@ -35,6 +35,7 @@ class SetupHandler {
 
     final file = File(filePath);
     if (!file.existsSync()) {
+      print('Pubspec file not found: $filePath');
       throw Exception('Pubspec file not found: $filePath');
     }
 
@@ -49,6 +50,7 @@ class SetupHandler {
     final file = File(filePath);
 
     if (!file.existsSync()) {
+      print('swagger_to_dart.yaml file not found: $filePath');
       throw Exception('swagger_to_dart.yaml file not found: $filePath');
     }
 
@@ -66,6 +68,7 @@ class SetupHandler {
     if (config.url case final url?) {
       final uri = Uri.tryParse(url);
       if (uri == null || !uri.hasAbsolutePath) {
+        print('Invalid URL: $url');
         throw Exception('Invalid URL: $url');
       }
 
@@ -83,6 +86,7 @@ class SetupHandler {
         final data = response.data;
 
         if (data is! Map<String, dynamic>) {
+          print('OpenAPI spec is not a valid JSON object');
           throw Exception('OpenAPI spec is not a valid JSON object');
         }
 
@@ -94,13 +98,13 @@ class SetupHandler {
 
         return OpenApi.fromJson(data);
       } catch (e) {
-        throw Exception('Error fetching OpenAPI spec from URL: $e');
+        print('Error fetching OpenAPI spec from URL: $e');
       }
     }
 
     // Otherwise, read from local file
     if (!file.existsSync()) {
-      throw Exception('Input file not found: ${config.inputDirectory}');
+      print('Input file not found: ${config.inputDirectory}');
     }
 
     final content = await file.readAsString();
