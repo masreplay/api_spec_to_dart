@@ -6,8 +6,6 @@ import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 import 'model_type_determiner.dart';
 
-typedef OpenApiModel = MapEntry<String, OpenApiSchemas>;
-
 class OpenApiModelGenerator {
   OpenApiModelGenerator(this.context);
 
@@ -23,7 +21,7 @@ class OpenApiModelGenerator {
     }
   }
 
-  Library run(OpenApiModel model) {
+  Library run(MapEntry<String, OpenApiSchemas> model) {
     final schema = model.value;
 
     var type = ModelTypeEnum.regular;
@@ -270,13 +268,13 @@ abstract class ModelStrategy {
 
   final CodeGenerationContext context;
 
-  Library generate(OpenApiModel model);
+  Library generate(MapEntry<String, OpenApiSchemas> model);
 }
 
 class EnumModelStrategy extends ModelStrategy {
   const EnumModelStrategy(super.context);
 
-  Library generate(OpenApiModel model) {
+  Library generate(MapEntry<String, OpenApiSchemas> model) {
     final className = Renaming.instance.renameClass(model.key);
 
     final enum_ = JsonSerializableCodeBuilder.instance.jsonSerializableEnum_(
@@ -294,7 +292,7 @@ class EnumModelStrategy extends ModelStrategy {
 class UnionModelStrategy extends ModelStrategy {
   const UnionModelStrategy(super.context);
 
-  Library generate(OpenApiModel model) {
+  Library generate(MapEntry<String, OpenApiSchemas> model) {
     final propertyGenerators = {
       OpenApiSchemaType: TypePropertyGenerator(context),
       OpenApiSchemaRef: RefPropertyGenerator(context),
@@ -360,13 +358,11 @@ class UnionModelStrategy extends ModelStrategy {
         final unionClassName =
             types.map((type) => Renaming.instance.renameClass(type)).join('Or');
 
-        final unionContent = FreezedClassCodeBuilder.instance.unionClass_(
+        return FreezedClassCodeBuilder.instance.unionClass_(
           className: unionClassName,
           filename: filename,
           unions: [],
         );
-
-        return unionContent;
       }
     }
 
@@ -441,17 +437,17 @@ class UnionModelStrategy extends ModelStrategy {
 class RegularModelStrategy extends ModelStrategy {
   RegularModelStrategy(super.context);
 
-  Library generate(OpenApiModel model) {
+  Library generate(MapEntry<String, OpenApiSchemas> model) {
     final propertyGenerators = <Type, PropertyGeneratorStrategy>{
       OpenApiSchemaType: TypePropertyGenerator(context),
       OpenApiSchemaRef: RefPropertyGenerator(context),
       OpenApiSchemaAnyOf: AnyOfPropertyGenerator(context),
     };
-    final filename = Renaming.instance.renameFile(model.key);
     final className = Renaming.instance.renameClass(model.key);
+    final filename = Renaming.instance.renameFile(model.key);
     final properties = model.value.properties ?? {};
 
-    final fields = StringBuffer();
+    final fields = <Parameter>[];
     for (final entry in properties.entries) {
       final key = entry.key;
       final schema = entry.value;
@@ -465,14 +461,14 @@ class RegularModelStrategy extends ModelStrategy {
           key: key,
           schema: schema,
         );
-        fields.writeln(fieldCode);
+        fields.add(fieldCode);
       }
     }
 
     return FreezedClassCodeBuilder.instance.class_(
       className: className,
       filename: filename,
-      parameters: [],
+      parameters: fields,
     );
   }
 }

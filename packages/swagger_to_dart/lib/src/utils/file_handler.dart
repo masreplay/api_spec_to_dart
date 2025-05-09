@@ -15,6 +15,7 @@ class FileHandler {
   /// Creates a directory if it doesn't exist
   Future<void> createDirectory(Directory dir) async {
     if (!dir.existsSync()) {
+      print('Creating directory: ${dir.path}');
       await dir.create(recursive: true);
     }
   }

@@ -15,8 +15,8 @@ class CodeGenerationContext {
   final Pubspec pubspec;
   final SwaggerToDart swaggerToDart;
 
+  OpenApiModelGenerator get modelGenerator => OpenApiModelGenerator(this);
   final List<Library> _models = <Library>[];
-
   List<Library> get models => _models;
 
   void addModel(Library library) {

@@ -18,7 +18,7 @@ class SwaggerToDartCodeGenerator {
       languageVersion: DartFormatter.latestLanguageVersion,
     );
 
-    OpenApiModelGenerator(context).generate();
+    context.modelGenerator.generate();
 
     final dir = Directory(context.swaggerToDart.outputDirectory);
     _fileHandler.createDirectory(dir);
