@@ -15,6 +15,7 @@ class FreezedClassCodeBuilder {
   }) {
     return Library(
       (b) => b
+        ..name = className
         ..directives.addAll(_directives(filename: filename))
         ..body.addAll([
           Class(
@@ -60,6 +61,7 @@ class FreezedClassCodeBuilder {
   }) {
     return Library(
       (b) => b
+        ..name = className
         ..directives.addAll(_directives(filename: filename))
         ..body.addAll([
           Class(
@@ -115,6 +117,7 @@ class FreezedClassCodeBuilder {
           if (isDeprecated) refer('@deprecated'),
           refer('JsonKey(name: ${_keyField(name)})')
         ])
+        ..required = false
         ..name = name
         ..type = refer(type),
     );

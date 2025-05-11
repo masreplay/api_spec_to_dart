@@ -68,10 +68,10 @@ class SwaggerToDartCodeBuilder {
                     for (final item in parameters)
                       if (!item.optional) item.parameter,
                   ])
-                  ..optionalParameters.addAll([
-                    for (final item in parameters)
-                      if (item.optional) item.parameter,
-                  ]),
+                  // ..optionalParameters.addAll([
+                  //   for (final item in parameters)
+                  //     if (item.optional) item.parameter,
+                  // ]),
               ),
             ])
             ..fields.addAll([

@@ -100,9 +100,10 @@ class JsonSerializableCodeBuilder {
         Constructor(
           (b) => b
             ..constant = true
-            ..optionalParameters.addAll([
+            ..requiredParameters.addAll([
               Parameter((b) => b
                 ..name = 'value'
+                ..required = true
                 ..type = refer('$String')),
             ]),
         ),

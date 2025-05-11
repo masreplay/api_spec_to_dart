@@ -1,5 +1,4 @@
 import 'package:code_builder/code_builder.dart';
-import 'package:swagger_to_dart/src/builder/json_serializable_code_builder.dart';
 import 'package:swagger_to_dart/src/config/code_generation_context.dart';
 import 'package:swagger_to_dart/src/utils/renaming.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
@@ -7,7 +6,7 @@ import 'package:swagger_to_dart/swagger_to_dart.dart';
 import 'model_type_determiner.dart';
 
 class OpenApiModelGenerator {
-  OpenApiModelGenerator(this.context);
+  const OpenApiModelGenerator(this.context);
 
   final CodeGenerationContext context;
 
@@ -24,7 +23,7 @@ class OpenApiModelGenerator {
   Library run(MapEntry<String, OpenApiSchemas> model) {
     final schema = model.value;
 
-    var type = ModelTypeEnum.regular;
+    ModelTypeEnum type = ModelTypeEnum.regular;
 
     if (schema.enum_ != null && schema.enum_!.isNotEmpty) {
       type = ModelTypeEnum.enum_;
@@ -277,15 +276,7 @@ class EnumModelStrategy extends ModelStrategy {
   Library generate(MapEntry<String, OpenApiSchemas> model) {
     final className = Renaming.instance.renameClass(model.key);
 
-    final enum_ = JsonSerializableCodeBuilder.instance.jsonSerializableEnum_(
-      className: className,
-      values: model.value.xEnumVarnames?.toList() ?? [],
-    );
-
-    return JsonSerializableCodeBuilder.instance.jsonSerializableEnumFilter_(
-      fileName: Renaming.instance.renameFile(className),
-      enum_: enum_,
-    );
+    return Library((b) => b..name = className);
   }
 }
 
@@ -443,6 +434,7 @@ class RegularModelStrategy extends ModelStrategy {
       OpenApiSchemaRef: RefPropertyGenerator(context),
       OpenApiSchemaAnyOf: AnyOfPropertyGenerator(context),
     };
+
     final className = Renaming.instance.renameClass(model.key);
     final filename = Renaming.instance.renameFile(model.key);
     final properties = model.value.properties ?? {};

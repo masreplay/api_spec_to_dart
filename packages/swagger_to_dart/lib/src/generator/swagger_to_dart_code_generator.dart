@@ -19,16 +19,25 @@ class SwaggerToDartCodeGenerator {
     context.modelGenerator.generate();
 
     final dir = Directory(context.swaggerToDart.outputDirectory);
+    print('output directory: ${dir.path}');
     if (!dir.existsSync()) {
       await dir.create(recursive: true);
     }
 
+    print('models: ${context.models.length}');
     for (final model in context.models) {
-      final file = File(path.join(dir.path, model.name!));
+      final name = model.name;
+      if (name == null) {
+        print('name is null');
+        continue;
+      }
 
-      await file.writeAsString(
-        formatter.format('${model.accept(emitter)}'),
-      );
+      try {
+        final file = File(path.join(dir.path, '${name}.dart'));
+        await file.writeAsString(formatter.format('${model.accept(emitter)}'));
+      } catch (e) {
+        print('error: $e');
+      }
     }
   }
 }

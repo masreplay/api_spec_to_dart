@@ -1,4 +1,3 @@
 export 'json.dart';
-export 'recase.dart';
-export 'setup_handler.dart';
+export '../generator/setup_handler.dart';
 export 'yaml.dart';

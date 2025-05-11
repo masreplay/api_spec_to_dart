@@ -1,8 +1,5 @@
-
-
+import 'package:recase/recase.dart';
 import 'package:swagger_to_dart/src/parser/openapi/models/models.dart';
-
-import 'recase.dart';
 
 class Renaming {
   const Renaming._();
@@ -12,15 +9,15 @@ class Renaming {
   static Renaming get instance => _instance;
 
   String renameProperty(String key) {
-    return Recase.instance.toCamelCase(key);
+    return key.camelCase;
   }
 
   String renameMethod(String key) {
-    return Recase.instance.toCamelCase(key);
+    return key.camelCase;
   }
 
   String renameEnum(String key) {
-    return Recase.instance.toPascalCase(key);
+    return key.pascalCase;
   }
 
   String renameRefClass(OpenApiSchemaRef value) {
@@ -28,7 +25,7 @@ class Renaming {
   }
 
   String renameClass(String value) {
-    final name = Recase.instance.toPascalCase(value);
+    final name = value.pascalCase;
 
     if (name.endsWith('NoneType')) {
       return name.substring(0, name.length - 8);
@@ -38,7 +35,7 @@ class Renaming {
   }
 
   String renameFile(String key) {
-    final name = Recase.instance.toSnakeCase(key);
+    final name = key.snakeCase;
 
     if (name.endsWith('none_type')) {
       return name.substring(0, name.length - 9);
