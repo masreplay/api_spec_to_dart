@@ -1,9 +1,7 @@
 import 'package:code_builder/code_builder.dart';
+import 'package:swagger_to_dart/src/builder/builder.dart';
 import 'package:swagger_to_dart/src/config/code_generation_context.dart';
-import 'package:swagger_to_dart/src/utils/renaming.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
-
-import 'model_type_determiner.dart';
 
 class OpenApiModelGenerator {
   const OpenApiModelGenerator(this.context);

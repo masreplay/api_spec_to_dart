@@ -1,6 +1,6 @@
-import 'package:swagger_to_dart/src/config/code_generation_context.dart';
-import 'package:swagger_to_dart/src/utils/renaming.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
+
+import 'code_generation_context.dart';
 
 class OpenApiToDartTypeConverter {
   const OpenApiToDartTypeConverter(this.context);
