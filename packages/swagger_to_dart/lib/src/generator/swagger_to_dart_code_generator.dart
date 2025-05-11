@@ -19,25 +19,36 @@ class SwaggerToDartCodeGenerator {
     context.modelGenerator.generate();
 
     final dir = Directory(context.swaggerToDart.outputDirectory);
-    print('output directory: ${dir.path}');
-    if (!dir.existsSync()) {
-      await dir.create(recursive: true);
-    }
+    print('Output directory: ${dir.path}');
 
-    print('models: ${context.models.length}');
-    for (final model in context.models) {
-      final name = model.name;
-      if (name == null) {
-        print('name is null');
-        continue;
-      }
-
-      try {
-        final file = File(path.join(dir.path, '${name}.dart'));
-        await file.writeAsString(formatter.format('${model.accept(emitter)}'));
-      } catch (e) {
-        print('error: $e');
-      }
+    // Create directory if it doesn't exist, or clean it if it does
+    if (dir.existsSync()) {
+      await dir.delete(recursive: true);
     }
+    await dir.create(recursive: true);
+
+    print('Generating ${context.models.length} models...');
+
+    // Process models in parallel for better performance
+    await Future.wait(
+      context.models.map((model) async {
+        final name = model.name;
+        if (name == null) {
+          print('Warning: Skipping model with null name');
+          return;
+        }
+
+        try {
+          final file = File(path.join(dir.path, '${name}.dart'));
+          final formattedCode = formatter.format('${model.accept(emitter)}');
+          await file.writeAsString(formattedCode, flush: true);
+        } catch (e, stackTrace) {
+          print('Error generating model $name: $e');
+          print('Stack trace: $stackTrace');
+        }
+      }),
+    );
+
+    print('Code generation completed successfully');
   }
 }

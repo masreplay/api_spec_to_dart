@@ -193,10 +193,7 @@ class RefPropertyGenerator extends PropertyGeneratorStrategy {
 }
 
 class AnyOfPropertyGenerator extends PropertyGeneratorStrategy {
-  AnyOfPropertyGenerator(super.context)
-      : unionTypeGenerator = UnionTypeGenerator(context);
-
-  final UnionTypeGenerator unionTypeGenerator;
+  const AnyOfPropertyGenerator(super.context);
 
   @override
   Parameter generateField({
@@ -237,14 +234,13 @@ class AnyOfPropertyGenerator extends PropertyGeneratorStrategy {
         .toList();
 
     if (nonNullSchemas.length == 1) {
-      final baseType = unionTypeGenerator.resolveDartType(nonNullSchemas.first);
+      final baseType = resolveDartType(nonNullSchemas.first);
       return isNullable ? '$baseType?' : baseType;
     }
 
-    final types = nonNullSchemas
-        .map((schema) => unionTypeGenerator.resolveDartType(schema))
-        .toList();
-    final unionClassName = unionTypeGenerator.generateUnionClassName(types);
+    final types =
+        nonNullSchemas.map((schema) => resolveDartType(schema)).toList();
+    final unionClassName = generateUnionClassName(types);
 
     return isNullable ? '$unionClassName?' : unionClassName;
   }
@@ -258,6 +254,47 @@ class AnyOfPropertyGenerator extends PropertyGeneratorStrategy {
       return '$className.${Renaming.instance.renameProperty(defaultValue)}';
     }
     return null;
+  }
+
+  String generateUnionClassName(List<String> types) {
+    return types.map(Renaming.instance.renameClass).join('Or');
+  }
+
+  String resolveDartType(OpenApiSchema schema) {
+    return switch (schema) {
+      OpenApiSchemaType value => context.dartTypeConverter.getDartType(
+          type: value.type,
+          format: value.format,
+          genericType: switch (value.items) {
+            OpenApiSchemaRef value => Renaming.instance.renameRefClass(value),
+            OpenApiSchemaAnyOf value => _resolveAnyOfType(value),
+            _ => null,
+          },
+          items: value.items,
+          title: value.title,
+          parentTitle: schema.title),
+      OpenApiSchemaRef value => Renaming.instance.renameRefClass(value),
+      OpenApiSchemaAnyOf value => _resolveAnyOfType(value),
+      _ =>
+        throw ArgumentError('Unsupported schema type: ${schema.runtimeType}'),
+    };
+  }
+
+  String _resolveAnyOfType(OpenApiSchemaAnyOf value) {
+    final nonNullSchemas = value.anyOf!
+        .where(
+          (e) =>
+              !(e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_),
+        )
+        .toList();
+
+    if (nonNullSchemas.length == 1) {
+      return resolveDartType(nonNullSchemas.first);
+    }
+
+    final types =
+        nonNullSchemas.map((schema) => resolveDartType(schema)).toList();
+    return generateUnionClassName(types);
   }
 }
 
