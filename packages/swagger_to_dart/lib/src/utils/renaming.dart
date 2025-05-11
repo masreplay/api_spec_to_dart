@@ -1,4 +1,7 @@
-import '../parser/openapi/models/models.dart';
+
+
+import 'package:swagger_to_dart/src/parser/openapi/models/models.dart';
+
 import 'recase.dart';
 
 class Renaming {

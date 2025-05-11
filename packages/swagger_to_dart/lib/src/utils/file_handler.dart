@@ -1,7 +1,5 @@
 import 'dart:io';
-
-import 'package:code_builder/code_builder.dart';
-import 'package:dart_style/dart_style.dart';
+import 'package:path/path.dart' as path;
 
 class FileHandler {
   const FileHandler();
@@ -42,6 +40,7 @@ class FileHandler {
 
   /// Gets the filename without extension
   String getFileNameWithoutExtension(String filepath) {
-    return filepath.split('/').last.replaceAll('.dart', '');
+    final filename = path.basename(filepath);
+    return path.basenameWithoutExtension(filename);
   }
 }
