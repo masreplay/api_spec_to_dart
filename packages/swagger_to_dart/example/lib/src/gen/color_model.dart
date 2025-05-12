@@ -1,6 +1,6 @@
 library;
 
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'exports.dart';
 part 'color_model.freezed.dart';
 part 'color_model.g.dart'; // ColorModel
 
@@ -10,7 +10,7 @@ abstract class ColorModel with _$ColorModel {
 
   const factory ColorModel({
     /// color
-    @JsonKey(name: colorKey) String color,
+    @JsonKey(name: ColorModel.colorKey) required String color,
   }) = _ColorModel;
 
   factory ColorModel.fromJson(Map<String, dynamic> json) =>

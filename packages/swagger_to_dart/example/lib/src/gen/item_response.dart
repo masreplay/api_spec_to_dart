@@ -1,6 +1,6 @@
 library;
 
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'exports.dart';
 part 'item_response.freezed.dart';
 part 'item_response.g.dart'; // ItemResponse
 
@@ -10,19 +10,19 @@ abstract class ItemResponse with _$ItemResponse {
 
   const factory ItemResponse({
     /// id
-    @JsonKey(name: idKey) int id,
+    @JsonKey(name: ItemResponse.idKey) required int id,
 
     /// name
-    @JsonKey(name: nameKey) String name,
+    @JsonKey(name: ItemResponse.nameKey) required String name,
 
     /// description
-    @JsonKey(name: descriptionKey) String? description,
+    @JsonKey(name: ItemResponse.descriptionKey) required String? description,
 
     /// price
-    @JsonKey(name: priceKey) double price,
+    @JsonKey(name: ItemResponse.priceKey) required double price,
 
     /// tax
-    @JsonKey(name: taxKey) double? tax,
+    @JsonKey(name: ItemResponse.taxKey) required double? tax,
   }) = _ItemResponse;
 
   factory ItemResponse.fromJson(Map<String, dynamic> json) =>

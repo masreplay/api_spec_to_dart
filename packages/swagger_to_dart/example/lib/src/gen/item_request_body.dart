@@ -1,6 +1,6 @@
 library;
 
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'exports.dart';
 part 'item_request_body.freezed.dart';
 part 'item_request_body.g.dart'; // ItemRequestBody
 
@@ -10,16 +10,16 @@ abstract class ItemRequestBody with _$ItemRequestBody {
 
   const factory ItemRequestBody({
     /// name
-    @JsonKey(name: nameKey) String name,
+    @JsonKey(name: ItemRequestBody.nameKey) required String name,
 
     /// description
-    @JsonKey(name: descriptionKey) String? description,
+    @JsonKey(name: ItemRequestBody.descriptionKey) required String? description,
 
     /// price
-    @JsonKey(name: priceKey) double price,
+    @JsonKey(name: ItemRequestBody.priceKey) required double price,
 
     /// tax
-    @JsonKey(name: taxKey) double? tax,
+    @JsonKey(name: ItemRequestBody.taxKey) required double? tax,
   }) = _ItemRequestBody;
 
   factory ItemRequestBody.fromJson(Map<String, dynamic> json) =>

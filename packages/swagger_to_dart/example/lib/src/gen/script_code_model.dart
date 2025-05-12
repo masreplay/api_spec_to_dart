@@ -1,6 +1,6 @@
 library;
 
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'exports.dart';
 part 'script_code_model.freezed.dart';
 part 'script_code_model.g.dart'; // ScriptCodeModel
 
@@ -10,7 +10,7 @@ abstract class ScriptCodeModel with _$ScriptCodeModel {
 
   const factory ScriptCodeModel({
     /// scriptCode
-    @JsonKey(name: scriptCodeKey) String scriptCode,
+    @JsonKey(name: ScriptCodeModel.scriptCodeKey) required String scriptCode,
   }) = _ScriptCodeModel;
 
   factory ScriptCodeModel.fromJson(Map<String, dynamic> json) =>

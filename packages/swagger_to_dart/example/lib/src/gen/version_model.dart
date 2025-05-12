@@ -1,6 +1,6 @@
 library;
 
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'exports.dart';
 part 'version_model.freezed.dart';
 part 'version_model.g.dart'; // VersionModel
 
@@ -10,7 +10,7 @@ abstract class VersionModel with _$VersionModel {
 
   const factory VersionModel({
     /// version
-    @JsonKey(name: versionKey) String version,
+    @JsonKey(name: VersionModel.versionKey) required String version,
   }) = _VersionModel;
 
   factory VersionModel.fromJson(Map<String, dynamic> json) =>

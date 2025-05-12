@@ -1,6 +1,6 @@
 library;
 
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'exports.dart';
 part 'time_zone_model.freezed.dart';
 part 'time_zone_model.g.dart'; // TimeZoneModel
 
@@ -10,7 +10,7 @@ abstract class TimeZoneModel with _$TimeZoneModel {
 
   const factory TimeZoneModel({
     /// timezone
-    @JsonKey(name: timezoneKey) String timezone,
+    @JsonKey(name: TimeZoneModel.timezoneKey) required String timezone,
   }) = _TimeZoneModel;
 
   factory TimeZoneModel.fromJson(Map<String, dynamic> json) =>

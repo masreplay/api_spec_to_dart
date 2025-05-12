@@ -17,8 +17,8 @@ T _$identity<T>(T value) => value;
 mixin _$CurrencyModel {
 
 /// currency
-@JsonKey(name: currencyKey) String? get currency;/// iso4217
-@JsonKey(name: iso4217Key) String? get iso4217;
+@JsonKey(name: CurrencyModel.currencyKey) String? get currency;/// iso4217
+@JsonKey(name: CurrencyModel.iso4217Key) String? get iso4217;
 /// Create a copy of CurrencyModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -51,7 +51,7 @@ abstract mixin class $CurrencyModelCopyWith<$Res>  {
   factory $CurrencyModelCopyWith(CurrencyModel value, $Res Function(CurrencyModel) _then) = _$CurrencyModelCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: currencyKey) String? currency,@JsonKey(name: iso4217Key) String? iso4217
+@JsonKey(name: CurrencyModel.currencyKey) String? currency,@JsonKey(name: CurrencyModel.iso4217Key) String? iso4217
 });
 
 
@@ -83,13 +83,13 @@ as String?,
 @JsonSerializable()
 
 class _CurrencyModel extends CurrencyModel {
-  const _CurrencyModel({@JsonKey(name: currencyKey) this.currency, @JsonKey(name: iso4217Key) this.iso4217}): super._();
+  const _CurrencyModel({@JsonKey(name: CurrencyModel.currencyKey) required this.currency, @JsonKey(name: CurrencyModel.iso4217Key) required this.iso4217}): super._();
   factory _CurrencyModel.fromJson(Map<String, dynamic> json) => _$CurrencyModelFromJson(json);
 
 /// currency
-@override@JsonKey(name: currencyKey) final  String? currency;
+@override@JsonKey(name: CurrencyModel.currencyKey) final  String? currency;
 /// iso4217
-@override@JsonKey(name: iso4217Key) final  String? iso4217;
+@override@JsonKey(name: CurrencyModel.iso4217Key) final  String? iso4217;
 
 /// Create a copy of CurrencyModel
 /// with the given fields replaced by the non-null parameter values.
@@ -124,7 +124,7 @@ abstract mixin class _$CurrencyModelCopyWith<$Res> implements $CurrencyModelCopy
   factory _$CurrencyModelCopyWith(_CurrencyModel value, $Res Function(_CurrencyModel) _then) = __$CurrencyModelCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: currencyKey) String? currency,@JsonKey(name: iso4217Key) String? iso4217
+@JsonKey(name: CurrencyModel.currencyKey) String? currency,@JsonKey(name: CurrencyModel.iso4217Key) String? iso4217
 });
 
 

@@ -17,10 +17,10 @@ T _$identity<T>(T value) => value;
 mixin _$CountryModel {
 
 /// alpha2
-@JsonKey(name: alpha2Key) String? get alpha2;/// alpha3
-@JsonKey(name: alpha3Key) String? get alpha3;/// numeric
-@JsonKey(name: numericKey) String? get numeric;/// shortName
-@JsonKey(name: shortNameKey) String? get shortName;
+@JsonKey(name: CountryModel.alpha2Key) String? get alpha2;/// alpha3
+@JsonKey(name: CountryModel.alpha3Key) String? get alpha3;/// numeric
+@JsonKey(name: CountryModel.numericKey) String? get numeric;/// shortName
+@JsonKey(name: CountryModel.shortNameKey) String? get shortName;
 /// Create a copy of CountryModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -53,7 +53,7 @@ abstract mixin class $CountryModelCopyWith<$Res>  {
   factory $CountryModelCopyWith(CountryModel value, $Res Function(CountryModel) _then) = _$CountryModelCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: alpha2Key) String? alpha2,@JsonKey(name: alpha3Key) String? alpha3,@JsonKey(name: numericKey) String? numeric,@JsonKey(name: shortNameKey) String? shortName
+@JsonKey(name: CountryModel.alpha2Key) String? alpha2,@JsonKey(name: CountryModel.alpha3Key) String? alpha3,@JsonKey(name: CountryModel.numericKey) String? numeric,@JsonKey(name: CountryModel.shortNameKey) String? shortName
 });
 
 
@@ -87,17 +87,17 @@ as String?,
 @JsonSerializable()
 
 class _CountryModel extends CountryModel {
-  const _CountryModel({@JsonKey(name: alpha2Key) this.alpha2, @JsonKey(name: alpha3Key) this.alpha3, @JsonKey(name: numericKey) this.numeric, @JsonKey(name: shortNameKey) this.shortName}): super._();
+  const _CountryModel({@JsonKey(name: CountryModel.alpha2Key) required this.alpha2, @JsonKey(name: CountryModel.alpha3Key) required this.alpha3, @JsonKey(name: CountryModel.numericKey) required this.numeric, @JsonKey(name: CountryModel.shortNameKey) required this.shortName}): super._();
   factory _CountryModel.fromJson(Map<String, dynamic> json) => _$CountryModelFromJson(json);
 
 /// alpha2
-@override@JsonKey(name: alpha2Key) final  String? alpha2;
+@override@JsonKey(name: CountryModel.alpha2Key) final  String? alpha2;
 /// alpha3
-@override@JsonKey(name: alpha3Key) final  String? alpha3;
+@override@JsonKey(name: CountryModel.alpha3Key) final  String? alpha3;
 /// numeric
-@override@JsonKey(name: numericKey) final  String? numeric;
+@override@JsonKey(name: CountryModel.numericKey) final  String? numeric;
 /// shortName
-@override@JsonKey(name: shortNameKey) final  String? shortName;
+@override@JsonKey(name: CountryModel.shortNameKey) final  String? shortName;
 
 /// Create a copy of CountryModel
 /// with the given fields replaced by the non-null parameter values.
@@ -132,7 +132,7 @@ abstract mixin class _$CountryModelCopyWith<$Res> implements $CountryModelCopyWi
   factory _$CountryModelCopyWith(_CountryModel value, $Res Function(_CountryModel) _then) = __$CountryModelCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: alpha2Key) String? alpha2,@JsonKey(name: alpha3Key) String? alpha3,@JsonKey(name: numericKey) String? numeric,@JsonKey(name: shortNameKey) String? shortName
+@JsonKey(name: CountryModel.alpha2Key) String? alpha2,@JsonKey(name: CountryModel.alpha3Key) String? alpha3,@JsonKey(name: CountryModel.numericKey) String? numeric,@JsonKey(name: CountryModel.shortNameKey) String? shortName
 });
 
 

@@ -1,6 +1,6 @@
 library;
 
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'exports.dart';
 part 'parrot.freezed.dart';
 part 'parrot.g.dart'; // Parrot
 
@@ -10,13 +10,13 @@ abstract class Parrot with _$Parrot {
 
   const factory Parrot({
     /// name
-    @JsonKey(name: nameKey) String name,
+    @JsonKey(name: Parrot.nameKey) required String name,
 
     /// type
-    @Default('parrot') @JsonKey(name: typeKey) String type,
+    @Default('parrot') @JsonKey(name: Parrot.typeKey) String type,
 
     /// phrases
-    @JsonKey(name: phrasesKey) List<String> phrases,
+    @JsonKey(name: Parrot.phrasesKey) required List<String> phrases,
   }) = _Parrot;
 
   factory Parrot.fromJson(Map<String, dynamic> json) => _$ParrotFromJson(json);

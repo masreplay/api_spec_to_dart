@@ -1,6 +1,6 @@
 library;
 
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'exports.dart';
 part 'phone_number_model.freezed.dart';
 part 'phone_number_model.g.dart'; // PhoneNumberModel
 
@@ -10,10 +10,10 @@ abstract class PhoneNumberModel with _$PhoneNumberModel {
 
   const factory PhoneNumberModel({
     /// phone
-    @JsonKey(name: phoneKey) String phone,
+    @JsonKey(name: PhoneNumberModel.phoneKey) required String phone,
 
     /// phone2
-    @JsonKey(name: phone2Key) String phone2,
+    @JsonKey(name: PhoneNumberModel.phone2Key) required String phone2,
   }) = _PhoneNumberModel;
 
   factory PhoneNumberModel.fromJson(Map<String, dynamic> json) =>

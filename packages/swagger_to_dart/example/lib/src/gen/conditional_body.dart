@@ -1,7 +1,6 @@
 library;
 
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'models.dart';
+import 'exports.dart';
 part 'conditional_body.freezed.dart';
 part 'conditional_body.g.dart'; // ConditionalBody
 
@@ -11,10 +10,10 @@ abstract class ConditionalBody with _$ConditionalBody {
 
   const factory ConditionalBody({
     /// itemId
-    @JsonKey(name: itemIdKey) int? itemId,
+    @JsonKey(name: ConditionalBody.itemIdKey) required int? itemId,
 
     /// itemName
-    @JsonKey(name: itemNameKey) String? itemName,
+    @JsonKey(name: ConditionalBody.itemNameKey) required String? itemName,
   }) = _ConditionalBody;
 
   factory ConditionalBody.fromJson(Map<String, dynamic> json) =>

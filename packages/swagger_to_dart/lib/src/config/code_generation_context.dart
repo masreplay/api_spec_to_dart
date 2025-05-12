@@ -23,6 +23,13 @@ class CodeGenerationContext {
     _models.add(library);
   }
 
+  final List<Library> _enums = <Library>[];
+  List<Library> get enums => _enums;
+
+  void addEnum(Library library) {
+    _enums.add(library);
+  }
+
   OpenApiToDartTypeConverter get dartTypeConverter {
     return OpenApiToDartTypeConverter(this);
   }

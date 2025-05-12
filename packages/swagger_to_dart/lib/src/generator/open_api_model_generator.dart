@@ -89,6 +89,7 @@ class TypePropertyGenerator extends PropertyGeneratorStrategy {
     );
 
     return FreezedClassCodeBuilder.instance.parameter_(
+      className: className,
       name: propertyName,
       type: dartType,
       isDeprecated: false,
@@ -171,6 +172,7 @@ class RefPropertyGenerator extends PropertyGeneratorStrategy {
     final refClassName = Renaming.instance.renameRefClass(schema);
 
     return FreezedClassCodeBuilder.instance.parameter_(
+      className: className,
       name: propertyName,
       type: refClassName,
       isDeprecated: false,
@@ -209,6 +211,7 @@ class AnyOfPropertyGenerator extends PropertyGeneratorStrategy {
     final dartType = _resolveDartType(schema, className, propertyName);
 
     return FreezedClassCodeBuilder.instance.parameter_(
+      className: className,
       name: propertyName,
       type: dartType,
       defaultValue: _getDefaultValueCode(schema.default_, dartType),
@@ -480,6 +483,7 @@ class UnionModelStrategy extends ModelStrategy {
           for (final mapping in schema.discriminator.mapping.entries) {
             unionProps.add(
               FreezedClassCodeBuilder.instance.parameter_(
+                className: className,
                 type: Renaming.instance
                     .renameClass(mapping.value.split('/').last),
                 name: propertyName,
@@ -535,11 +539,7 @@ class RegularModelStrategy extends ModelStrategy {
       (b) => b
         ..name = filename
         ..directives.addAll([
-          Directive.import(
-            'package:freezed_annotation/freezed_annotation.dart',
-          ),
-          Directive.import('models.dart'),
-
+          Directive.import('exports.dart'),
           Directive.part('${filename}.freezed.dart'),
           Directive.part('${filename}.g.dart'),
         ])

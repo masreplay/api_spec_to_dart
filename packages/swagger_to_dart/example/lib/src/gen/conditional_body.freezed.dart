@@ -17,8 +17,8 @@ T _$identity<T>(T value) => value;
 mixin _$ConditionalBody {
 
 /// itemId
-@JsonKey(name: itemIdKey) int? get itemId;/// itemName
-@JsonKey(name: itemNameKey) String? get itemName;
+@JsonKey(name: ConditionalBody.itemIdKey) int? get itemId;/// itemName
+@JsonKey(name: ConditionalBody.itemNameKey) String? get itemName;
 /// Create a copy of ConditionalBody
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -51,7 +51,7 @@ abstract mixin class $ConditionalBodyCopyWith<$Res>  {
   factory $ConditionalBodyCopyWith(ConditionalBody value, $Res Function(ConditionalBody) _then) = _$ConditionalBodyCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: itemIdKey) int? itemId,@JsonKey(name: itemNameKey) String? itemName
+@JsonKey(name: ConditionalBody.itemIdKey) int? itemId,@JsonKey(name: ConditionalBody.itemNameKey) String? itemName
 });
 
 
@@ -83,13 +83,13 @@ as String?,
 @JsonSerializable()
 
 class _ConditionalBody extends ConditionalBody {
-  const _ConditionalBody({@JsonKey(name: itemIdKey) this.itemId, @JsonKey(name: itemNameKey) this.itemName}): super._();
+  const _ConditionalBody({@JsonKey(name: ConditionalBody.itemIdKey) required this.itemId, @JsonKey(name: ConditionalBody.itemNameKey) required this.itemName}): super._();
   factory _ConditionalBody.fromJson(Map<String, dynamic> json) => _$ConditionalBodyFromJson(json);
 
 /// itemId
-@override@JsonKey(name: itemIdKey) final  int? itemId;
+@override@JsonKey(name: ConditionalBody.itemIdKey) final  int? itemId;
 /// itemName
-@override@JsonKey(name: itemNameKey) final  String? itemName;
+@override@JsonKey(name: ConditionalBody.itemNameKey) final  String? itemName;
 
 /// Create a copy of ConditionalBody
 /// with the given fields replaced by the non-null parameter values.
@@ -124,7 +124,7 @@ abstract mixin class _$ConditionalBodyCopyWith<$Res> implements $ConditionalBody
   factory _$ConditionalBodyCopyWith(_ConditionalBody value, $Res Function(_ConditionalBody) _then) = __$ConditionalBodyCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: itemIdKey) int? itemId,@JsonKey(name: itemNameKey) String? itemName
+@JsonKey(name: ConditionalBody.itemIdKey) int? itemId,@JsonKey(name: ConditionalBody.itemNameKey) String? itemName
 });
 
 

@@ -17,8 +17,8 @@ T _$identity<T>(T value) => value;
 mixin _$BodyFilesFileUpload {
 
 /// file
-@JsonKey(name: fileKey) MultipartFile get file;/// description
-@JsonKey(name: descriptionKey) String? get description;
+@JsonKey(name: BodyFilesFileUpload.fileKey) MultipartFile get file;/// description
+@JsonKey(name: BodyFilesFileUpload.descriptionKey) String? get description;
 /// Create a copy of BodyFilesFileUpload
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -31,12 +31,12 @@ $BodyFilesFileUploadCopyWith<BodyFilesFileUpload> get copyWith => _$BodyFilesFil
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is BodyFilesFileUpload&&const DeepCollectionEquality().equals(other.file, file)&&(identical(other.description, description) || other.description == description));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BodyFilesFileUpload&&(identical(other.file, file) || other.file == file)&&(identical(other.description, description) || other.description == description));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(file),description);
+int get hashCode => Object.hash(runtimeType,file,description);
 
 @override
 String toString() {
@@ -51,7 +51,7 @@ abstract mixin class $BodyFilesFileUploadCopyWith<$Res>  {
   factory $BodyFilesFileUploadCopyWith(BodyFilesFileUpload value, $Res Function(BodyFilesFileUpload) _then) = _$BodyFilesFileUploadCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: fileKey) MultipartFile file,@JsonKey(name: descriptionKey) String? description
+@JsonKey(name: BodyFilesFileUpload.fileKey) MultipartFile file,@JsonKey(name: BodyFilesFileUpload.descriptionKey) String? description
 });
 
 
@@ -68,9 +68,9 @@ class _$BodyFilesFileUploadCopyWithImpl<$Res>
 
 /// Create a copy of BodyFilesFileUpload
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? file = freezed,Object? description = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? file = null,Object? description = freezed,}) {
   return _then(_self.copyWith(
-file: freezed == file ? _self.file : file // ignore: cast_nullable_to_non_nullable
+file: null == file ? _self.file : file // ignore: cast_nullable_to_non_nullable
 as MultipartFile,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
@@ -83,13 +83,13 @@ as String?,
 @JsonSerializable()
 
 class _BodyFilesFileUpload extends BodyFilesFileUpload {
-  const _BodyFilesFileUpload({@JsonKey(name: fileKey) this.file, @JsonKey(name: descriptionKey) this.description}): super._();
+  const _BodyFilesFileUpload({@JsonKey(name: BodyFilesFileUpload.fileKey) required this.file, @JsonKey(name: BodyFilesFileUpload.descriptionKey) required this.description}): super._();
   factory _BodyFilesFileUpload.fromJson(Map<String, dynamic> json) => _$BodyFilesFileUploadFromJson(json);
 
 /// file
-@override@JsonKey(name: fileKey) final  MultipartFile file;
+@override@JsonKey(name: BodyFilesFileUpload.fileKey) final  MultipartFile file;
 /// description
-@override@JsonKey(name: descriptionKey) final  String? description;
+@override@JsonKey(name: BodyFilesFileUpload.descriptionKey) final  String? description;
 
 /// Create a copy of BodyFilesFileUpload
 /// with the given fields replaced by the non-null parameter values.
@@ -104,12 +104,12 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BodyFilesFileUpload&&const DeepCollectionEquality().equals(other.file, file)&&(identical(other.description, description) || other.description == description));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BodyFilesFileUpload&&(identical(other.file, file) || other.file == file)&&(identical(other.description, description) || other.description == description));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(file),description);
+int get hashCode => Object.hash(runtimeType,file,description);
 
 @override
 String toString() {
@@ -124,7 +124,7 @@ abstract mixin class _$BodyFilesFileUploadCopyWith<$Res> implements $BodyFilesFi
   factory _$BodyFilesFileUploadCopyWith(_BodyFilesFileUpload value, $Res Function(_BodyFilesFileUpload) _then) = __$BodyFilesFileUploadCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: fileKey) MultipartFile file,@JsonKey(name: descriptionKey) String? description
+@JsonKey(name: BodyFilesFileUpload.fileKey) MultipartFile file,@JsonKey(name: BodyFilesFileUpload.descriptionKey) String? description
 });
 
 
@@ -141,9 +141,9 @@ class __$BodyFilesFileUploadCopyWithImpl<$Res>
 
 /// Create a copy of BodyFilesFileUpload
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? file = freezed,Object? description = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? file = null,Object? description = freezed,}) {
   return _then(_BodyFilesFileUpload(
-file: freezed == file ? _self.file : file // ignore: cast_nullable_to_non_nullable
+file: null == file ? _self.file : file // ignore: cast_nullable_to_non_nullable
 as MultipartFile,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String?,
   ));

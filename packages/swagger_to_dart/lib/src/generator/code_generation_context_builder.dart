@@ -10,13 +10,13 @@ import 'package:swagger_to_dart/swagger_to_dart.dart';
 import 'package:yaml/yaml.dart';
 
 /// Handles setup and validation for the code generator
-class SetupHandler {
-  SetupHandler({this.configPath});
+class CodeGenerationContextBuilder {
+  CodeGenerationContextBuilder({this.configPath});
 
   final String? configPath;
 
   /// Validates and sets up the environment for code generation
-  Future<CodeGenerationContext> setup() async {
+  Future<CodeGenerationContext> build() async {
     final rootDir = Directory.current.path;
 
     final swaggerToDart = await _loadSwaggerToDartYaml(rootDir);

@@ -1,7 +1,7 @@
 library;
 
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'models.dart';
+import 'exports.dart';
+
 part 'payment_card_model.freezed.dart';
 part 'payment_card_model.g.dart'; // PaymentCardModel
 
@@ -11,10 +11,11 @@ abstract class PaymentCardModel with _$PaymentCardModel {
 
   const factory PaymentCardModel({
     /// cardNumber
-    @JsonKey(name: cardNumberKey) String cardNumber,
+    @JsonKey(name: PaymentCardModel.cardNumberKey) required String cardNumber,
 
     /// cardBrand
-    @JsonKey(name: cardBrandKey) PaymentCardBrand? cardBrand,
+    @JsonKey(name: PaymentCardModel.cardBrandKey)
+    required PaymentCardBrand? cardBrand,
   }) = _PaymentCardModel;
 
   factory PaymentCardModel.fromJson(Map<String, dynamic> json) =>

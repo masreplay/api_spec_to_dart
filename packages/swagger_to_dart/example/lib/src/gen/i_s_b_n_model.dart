@@ -1,6 +1,6 @@
 library;
 
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'exports.dart';
 part 'i_s_b_n_model.freezed.dart';
 part 'i_s_b_n_model.g.dart'; // ISBNModel
 
@@ -10,7 +10,7 @@ abstract class ISBNModel with _$ISBNModel {
 
   const factory ISBNModel({
     /// isbn
-    @JsonKey(name: isbnKey) String isbn,
+    @JsonKey(name: ISBNModel.isbnKey) required String isbn,
   }) = _ISBNModel;
 
   factory ISBNModel.fromJson(Map<String, dynamic> json) =>

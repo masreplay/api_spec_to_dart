@@ -1,7 +1,6 @@
 library;
 
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'models.dart';
+import 'exports.dart';
 part 'currency_model.freezed.dart';
 part 'currency_model.g.dart'; // CurrencyModel
 
@@ -11,10 +10,10 @@ abstract class CurrencyModel with _$CurrencyModel {
 
   const factory CurrencyModel({
     /// currency
-    @JsonKey(name: currencyKey) String? currency,
+    @JsonKey(name: CurrencyModel.currencyKey) required String? currency,
 
     /// iso4217
-    @JsonKey(name: iso4217Key) String? iso4217,
+    @JsonKey(name: CurrencyModel.iso4217Key) required String? iso4217,
   }) = _CurrencyModel;
 
   factory CurrencyModel.fromJson(Map<String, dynamic> json) =>

@@ -17,10 +17,10 @@ T _$identity<T>(T value) => value;
 mixin _$LanguageModel {
 
 /// alpha2
-@JsonKey(name: alpha2Key) String? get alpha2;/// name
-@JsonKey(name: nameKey) String? get name;/// iso6393
-@JsonKey(name: iso6393Key) String? get iso6393;/// iso6395
-@JsonKey(name: iso6395Key) String? get iso6395;
+@JsonKey(name: LanguageModel.alpha2Key) String? get alpha2;/// name
+@JsonKey(name: LanguageModel.nameKey) String? get name;/// iso6393
+@JsonKey(name: LanguageModel.iso6393Key) String? get iso6393;/// iso6395
+@JsonKey(name: LanguageModel.iso6395Key) String? get iso6395;
 /// Create a copy of LanguageModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -53,7 +53,7 @@ abstract mixin class $LanguageModelCopyWith<$Res>  {
   factory $LanguageModelCopyWith(LanguageModel value, $Res Function(LanguageModel) _then) = _$LanguageModelCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: alpha2Key) String? alpha2,@JsonKey(name: nameKey) String? name,@JsonKey(name: iso6393Key) String? iso6393,@JsonKey(name: iso6395Key) String? iso6395
+@JsonKey(name: LanguageModel.alpha2Key) String? alpha2,@JsonKey(name: LanguageModel.nameKey) String? name,@JsonKey(name: LanguageModel.iso6393Key) String? iso6393,@JsonKey(name: LanguageModel.iso6395Key) String? iso6395
 });
 
 
@@ -87,17 +87,17 @@ as String?,
 @JsonSerializable()
 
 class _LanguageModel extends LanguageModel {
-  const _LanguageModel({@JsonKey(name: alpha2Key) this.alpha2, @JsonKey(name: nameKey) this.name, @JsonKey(name: iso6393Key) this.iso6393, @JsonKey(name: iso6395Key) this.iso6395}): super._();
+  const _LanguageModel({@JsonKey(name: LanguageModel.alpha2Key) required this.alpha2, @JsonKey(name: LanguageModel.nameKey) required this.name, @JsonKey(name: LanguageModel.iso6393Key) required this.iso6393, @JsonKey(name: LanguageModel.iso6395Key) required this.iso6395}): super._();
   factory _LanguageModel.fromJson(Map<String, dynamic> json) => _$LanguageModelFromJson(json);
 
 /// alpha2
-@override@JsonKey(name: alpha2Key) final  String? alpha2;
+@override@JsonKey(name: LanguageModel.alpha2Key) final  String? alpha2;
 /// name
-@override@JsonKey(name: nameKey) final  String? name;
+@override@JsonKey(name: LanguageModel.nameKey) final  String? name;
 /// iso6393
-@override@JsonKey(name: iso6393Key) final  String? iso6393;
+@override@JsonKey(name: LanguageModel.iso6393Key) final  String? iso6393;
 /// iso6395
-@override@JsonKey(name: iso6395Key) final  String? iso6395;
+@override@JsonKey(name: LanguageModel.iso6395Key) final  String? iso6395;
 
 /// Create a copy of LanguageModel
 /// with the given fields replaced by the non-null parameter values.
@@ -132,7 +132,7 @@ abstract mixin class _$LanguageModelCopyWith<$Res> implements $LanguageModelCopy
   factory _$LanguageModelCopyWith(_LanguageModel value, $Res Function(_LanguageModel) _then) = __$LanguageModelCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: alpha2Key) String? alpha2,@JsonKey(name: nameKey) String? name,@JsonKey(name: iso6393Key) String? iso6393,@JsonKey(name: iso6395Key) String? iso6395
+@JsonKey(name: LanguageModel.alpha2Key) String? alpha2,@JsonKey(name: LanguageModel.nameKey) String? name,@JsonKey(name: LanguageModel.iso6393Key) String? iso6393,@JsonKey(name: LanguageModel.iso6395Key) String? iso6395
 });
 
 

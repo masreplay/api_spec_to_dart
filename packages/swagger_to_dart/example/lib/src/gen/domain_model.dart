@@ -1,6 +1,6 @@
 library;
 
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'exports.dart';
 part 'domain_model.freezed.dart';
 part 'domain_model.g.dart'; // DomainModel
 
@@ -10,7 +10,7 @@ abstract class DomainModel with _$DomainModel {
 
   const factory DomainModel({
     /// domain
-    @JsonKey(name: domainKey) String domain,
+    @JsonKey(name: DomainModel.domainKey) required String domain,
   }) = _DomainModel;
 
   factory DomainModel.fromJson(Map<String, dynamic> json) =>

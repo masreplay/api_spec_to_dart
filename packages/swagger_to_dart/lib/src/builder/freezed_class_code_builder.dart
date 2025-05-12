@@ -57,6 +57,7 @@ class FreezedClassCodeBuilder {
   Parameter parameter_({
     required String name,
     required String type,
+    required String className,
     Object? defaultValue = null,
     bool isDeprecated = false,
   }) {
@@ -70,9 +71,8 @@ class FreezedClassCodeBuilder {
         ..annotations.addAll([
           if (defaultValue != null) refer('Default($defaultValue)'),
           if (isDeprecated) refer('@deprecated'),
-          refer('JsonKey(name: ${_keyField(name)})')
+          refer('JsonKey(name: $className.${_keyField(name)})')
         ])
-        ..required = false
         ..name = name
         ..type = refer(type),
     );
@@ -84,10 +84,7 @@ class FreezedClassCodeBuilder {
 
   List<Directive> _directives({required String filename}) {
     return [
-      Directive.import(
-        'package:freezed_annotation/freezed_annotation.dart',
-      ),
-      // Directive.import('convertors.dart'),
+      Directive.import('exports.dart'),
       Directive.part('${filename}.freezed.dart'),
       Directive.part('${filename}.g.dart'),
     ];

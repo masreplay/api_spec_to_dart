@@ -1,6 +1,6 @@
 library;
 
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'exports.dart';
 part 'all_types_with_validation.freezed.dart';
 part 'all_types_with_validation.g.dart'; // AllTypesWithValidation
 
@@ -10,25 +10,28 @@ abstract class AllTypesWithValidation with _$AllTypesWithValidation {
 
   const factory AllTypesWithValidation({
     /// intValue
-    @JsonKey(name: intValueKey) int intValue,
+    @JsonKey(name: AllTypesWithValidation.intValueKey) required int intValue,
 
     /// floatValue
-    @JsonKey(name: floatValueKey) double floatValue,
+    @JsonKey(name: AllTypesWithValidation.floatValueKey)
+    required double floatValue,
 
     /// strValue
-    @JsonKey(name: strValueKey) String strValue,
+    @JsonKey(name: AllTypesWithValidation.strValueKey) required String strValue,
 
     /// boolValue
-    @JsonKey(name: boolValueKey) bool boolValue,
+    @JsonKey(name: AllTypesWithValidation.boolValueKey) required bool boolValue,
 
     /// emailValue
-    @JsonKey(name: emailValueKey) String emailValue,
+    @JsonKey(name: AllTypesWithValidation.emailValueKey)
+    required String emailValue,
 
     /// urlValue
-    @JsonKey(name: urlValueKey) Uri urlValue,
+    @JsonKey(name: AllTypesWithValidation.urlValueKey) required Uri urlValue,
 
     /// listValue
-    @JsonKey(name: listValueKey) List<String> listValue,
+    @JsonKey(name: AllTypesWithValidation.listValueKey)
+    required List<String> listValue,
   }) = _AllTypesWithValidation;
 
   factory AllTypesWithValidation.fromJson(Map<String, dynamic> json) =>

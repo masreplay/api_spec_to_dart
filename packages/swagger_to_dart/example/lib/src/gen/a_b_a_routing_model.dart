@@ -1,6 +1,6 @@
 library;
 
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'exports.dart';
 part 'a_b_a_routing_model.freezed.dart';
 part 'a_b_a_routing_model.g.dart'; // ABARoutingModel
 
@@ -10,7 +10,8 @@ abstract class ABARoutingModel with _$ABARoutingModel {
 
   const factory ABARoutingModel({
     /// routingNumber
-    @JsonKey(name: routingNumberKey) String routingNumber,
+    @JsonKey(name: ABARoutingModel.routingNumberKey)
+    required String routingNumber,
   }) = _ABARoutingModel;
 
   factory ABARoutingModel.fromJson(Map<String, dynamic> json) =>

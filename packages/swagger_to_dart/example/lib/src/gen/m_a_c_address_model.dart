@@ -1,6 +1,6 @@
 library;
 
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'exports.dart';
 part 'm_a_c_address_model.freezed.dart';
 part 'm_a_c_address_model.g.dart'; // MACAddressModel
 
@@ -10,7 +10,7 @@ abstract class MACAddressModel with _$MACAddressModel {
 
   const factory MACAddressModel({
     /// macAddress
-    @JsonKey(name: macAddressKey) String macAddress,
+    @JsonKey(name: MACAddressModel.macAddressKey) required String macAddress,
   }) = _MACAddressModel;
 
   factory MACAddressModel.fromJson(Map<String, dynamic> json) =>

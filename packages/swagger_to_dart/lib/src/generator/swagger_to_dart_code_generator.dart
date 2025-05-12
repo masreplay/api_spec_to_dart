@@ -6,7 +6,7 @@ import 'package:path/path.dart' as path;
 import 'package:swagger_to_dart/src/config/code_generation_context.dart';
 
 class SwaggerToDartCodeGenerator {
-  SwaggerToDartCodeGenerator(this.context);
+  const SwaggerToDartCodeGenerator(this.context);
 
   final CodeGenerationContext context;
 
@@ -62,6 +62,38 @@ class SwaggerToDartCodeGenerator {
     final file = File(path.join(dir.path, 'models.dart'));
     await file.writeAsString(
       formatter.format('${library.accept(emitter)}'),
+      flush: true,
+    );
+
+    final exportLibrary = Library(
+      (b) => b
+        ..directives.addAll([
+          Directive.import('package:dio/dio.dart'),
+          Directive.import(
+              'package:freezed_annotation/freezed_annotation.dart'),
+          Directive.export('models.dart'),
+          Directive.export('package:dio/dio.dart'),
+          Directive.export(
+              'package:freezed_annotation/freezed_annotation.dart'),
+        ])
+        ..body.addAll([
+          CodeExpression(Code('''
+class MultipartFileJsonConverter implements JsonConverter<MultipartFile, MultipartFile> {
+  const MultipartFileJsonConverter();
+
+  @override
+  MultipartFile fromJson(MultipartFile json) => json;
+
+  @override
+  MultipartFile toJson(MultipartFile object) => object;
+}''')),
+        ]),
+    );
+
+    // export.dart file
+    final exportFile = File(path.join(dir.path, 'exports.dart'));
+    await exportFile.writeAsString(
+      formatter.format('${exportLibrary.accept(emitter)}'),
       flush: true,
     );
 
