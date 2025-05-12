@@ -1,7 +1,6 @@
-library coordinate_model;
+library;
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'convertors.dart';
 part 'coordinate_model.freezed.dart';
 part 'coordinate_model.g.dart'; // CoordinateModel
 

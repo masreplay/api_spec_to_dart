@@ -1,7 +1,6 @@
-library u_l_i_d_model;
+library;
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'convertors.dart';
 part 'u_l_i_d_model.freezed.dart';
 part 'u_l_i_d_model.g.dart'; // ULIDModel
 

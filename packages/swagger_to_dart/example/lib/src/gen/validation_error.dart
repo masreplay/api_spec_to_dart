@@ -1,7 +1,6 @@
-library validation_error;
+library;
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'convertors.dart';
 part 'validation_error.freezed.dart';
 part 'validation_error.g.dart'; // ValidationError
 
@@ -9,7 +8,7 @@ part 'validation_error.g.dart'; // ValidationError
 abstract class ValidationError with _$ValidationError {
   const ValidationError._();
 
-  const factory ValidationError(
+  const factory ValidationError({
     /// loc
     @JsonKey(name: locKey) List<dynamic> loc,
 
@@ -18,7 +17,7 @@ abstract class ValidationError with _$ValidationError {
 
     /// type
     @JsonKey(name: typeKey) String type,
-  ) = _ValidationError;
+  }) = _ValidationError;
 
   factory ValidationError.fromJson(Map<String, dynamic> json) =>
       _$ValidationErrorFromJson(json);

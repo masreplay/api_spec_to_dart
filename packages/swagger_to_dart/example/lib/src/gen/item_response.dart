@@ -1,7 +1,6 @@
-library item_response;
+library;
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'convertors.dart';
 part 'item_response.freezed.dart';
 part 'item_response.g.dart'; // ItemResponse
 
@@ -9,7 +8,7 @@ part 'item_response.g.dart'; // ItemResponse
 abstract class ItemResponse with _$ItemResponse {
   const ItemResponse._();
 
-  const factory ItemResponse(
+  const factory ItemResponse({
     /// id
     @JsonKey(name: idKey) int id,
 
@@ -24,7 +23,7 @@ abstract class ItemResponse with _$ItemResponse {
 
     /// tax
     @JsonKey(name: taxKey) double? tax,
-  ) = _ItemResponse;
+  }) = _ItemResponse;
 
   factory ItemResponse.fromJson(Map<String, dynamic> json) =>
       _$ItemResponseFromJson(json);

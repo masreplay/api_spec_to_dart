@@ -1,7 +1,7 @@
-library currency_model;
+library;
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'convertors.dart';
+import 'models.dart';
 part 'currency_model.freezed.dart';
 part 'currency_model.g.dart'; // CurrencyModel
 
@@ -9,13 +9,13 @@ part 'currency_model.g.dart'; // CurrencyModel
 abstract class CurrencyModel with _$CurrencyModel {
   const CurrencyModel._();
 
-  const factory CurrencyModel(
+  const factory CurrencyModel({
     /// currency
     @JsonKey(name: currencyKey) String? currency,
 
     /// iso4217
     @JsonKey(name: iso4217Key) String? iso4217,
-  ) = _CurrencyModel;
+  }) = _CurrencyModel;
 
   factory CurrencyModel.fromJson(Map<String, dynamic> json) =>
       _$CurrencyModelFromJson(json);

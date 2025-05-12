@@ -1,7 +1,6 @@
-library s3_path_model;
+library;
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'convertors.dart';
 part 's3_path_model.freezed.dart';
 part 's3_path_model.g.dart'; // S3PathModel
 
@@ -9,10 +8,10 @@ part 's3_path_model.g.dart'; // S3PathModel
 abstract class S3PathModel with _$S3PathModel {
   const S3PathModel._();
 
-  const factory S3PathModel(
+  const factory S3PathModel({
     /// s3Path
     @JsonKey(name: s3PathKey) String s3Path,
-  ) = _S3PathModel;
+  }) = _S3PathModel;
 
   factory S3PathModel.fromJson(Map<String, dynamic> json) =>
       _$S3PathModelFromJson(json);

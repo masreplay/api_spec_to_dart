@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:example/src/example_base.dart';
 
 /// After doing the generation command, you can use the generated client like this
 /// Check the README.md File

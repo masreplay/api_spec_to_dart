@@ -1,7 +1,6 @@
-library body_files_form_basic;
+library;
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'convertors.dart';
 part 'body_files_form_basic.freezed.dart';
 part 'body_files_form_basic.g.dart'; // BodyFilesFormBasic
 
@@ -9,7 +8,7 @@ part 'body_files_form_basic.g.dart'; // BodyFilesFormBasic
 abstract class BodyFilesFormBasic with _$BodyFilesFormBasic {
   const BodyFilesFormBasic._();
 
-  const factory BodyFilesFormBasic(
+  const factory BodyFilesFormBasic({
     /// username
     @JsonKey(name: usernameKey) String username,
 
@@ -18,7 +17,7 @@ abstract class BodyFilesFormBasic with _$BodyFilesFormBasic {
 
     /// remember
     @Default(false) @JsonKey(name: rememberKey) bool remember,
-  ) = _BodyFilesFormBasic;
+  }) = _BodyFilesFormBasic;
 
   factory BodyFilesFormBasic.fromJson(Map<String, dynamic> json) =>
       _$BodyFilesFormBasicFromJson(json);

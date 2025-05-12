@@ -538,7 +538,8 @@ class RegularModelStrategy extends ModelStrategy {
           Directive.import(
             'package:freezed_annotation/freezed_annotation.dart',
           ),
-          Directive.import('convertors.dart'),
+          Directive.import('models.dart'),
+
           Directive.part('${filename}.freezed.dart'),
           Directive.part('${filename}.g.dart'),
         ])
@@ -574,7 +575,7 @@ class RegularModelStrategy extends ModelStrategy {
                     ..constant = true
                     ..factory = true
                     ..redirect = refer('_${className}')
-                    ..requiredParameters.addAll([...parameters]),
+                    ..optionalParameters.addAll([...parameters]),
                 ),
                 Constructor(
                   (b) => b

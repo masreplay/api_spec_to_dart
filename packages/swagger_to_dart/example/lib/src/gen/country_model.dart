@@ -1,7 +1,7 @@
-library country_model;
+library;
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'convertors.dart';
+import 'models.dart';
 part 'country_model.freezed.dart';
 part 'country_model.g.dart'; // CountryModel
 
@@ -9,7 +9,7 @@ part 'country_model.g.dart'; // CountryModel
 abstract class CountryModel with _$CountryModel {
   const CountryModel._();
 
-  const factory CountryModel(
+  const factory CountryModel({
     /// alpha2
     @JsonKey(name: alpha2Key) String? alpha2,
 
@@ -21,7 +21,7 @@ abstract class CountryModel with _$CountryModel {
 
     /// shortName
     @JsonKey(name: shortNameKey) String? shortName,
-  ) = _CountryModel;
+  }) = _CountryModel;
 
   factory CountryModel.fromJson(Map<String, dynamic> json) =>
       _$CountryModelFromJson(json);

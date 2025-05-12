@@ -1,7 +1,6 @@
-library body_validation_param_body;
+library;
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'convertors.dart';
 part 'body_validation_param_body.freezed.dart';
 part 'body_validation_param_body.g.dart'; // BodyValidationParamBody
 
@@ -9,13 +8,13 @@ part 'body_validation_param_body.g.dart'; // BodyValidationParamBody
 abstract class BodyValidationParamBody with _$BodyValidationParamBody {
   const BodyValidationParamBody._();
 
-  const factory BodyValidationParamBody(
+  const factory BodyValidationParamBody({
     /// data
     @JsonKey(name: dataKey) Map<String, dynamic> data,
 
     /// importance
     @JsonKey(name: importanceKey) int importance,
-  ) = _BodyValidationParamBody;
+  }) = _BodyValidationParamBody;
 
   factory BodyValidationParamBody.fromJson(Map<String, dynamic> json) =>
       _$BodyValidationParamBodyFromJson(json);

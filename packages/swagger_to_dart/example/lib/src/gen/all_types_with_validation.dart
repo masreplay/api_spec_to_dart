@@ -1,7 +1,6 @@
-library all_types_with_validation;
+library;
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'convertors.dart';
 part 'all_types_with_validation.freezed.dart';
 part 'all_types_with_validation.g.dart'; // AllTypesWithValidation
 
@@ -9,7 +8,7 @@ part 'all_types_with_validation.g.dart'; // AllTypesWithValidation
 abstract class AllTypesWithValidation with _$AllTypesWithValidation {
   const AllTypesWithValidation._();
 
-  const factory AllTypesWithValidation(
+  const factory AllTypesWithValidation({
     /// intValue
     @JsonKey(name: intValueKey) int intValue,
 
@@ -30,7 +29,7 @@ abstract class AllTypesWithValidation with _$AllTypesWithValidation {
 
     /// listValue
     @JsonKey(name: listValueKey) List<String> listValue,
-  ) = _AllTypesWithValidation;
+  }) = _AllTypesWithValidation;
 
   factory AllTypesWithValidation.fromJson(Map<String, dynamic> json) =>
       _$AllTypesWithValidationFromJson(json);

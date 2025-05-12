@@ -1,24 +1,20 @@
-library phone_number_model;
+library;
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import 'convertors.dart';
-
 part 'phone_number_model.freezed.dart';
-part 'phone_number_model.g.dart';
-// PhoneNumberModel
+part 'phone_number_model.g.dart'; // PhoneNumberModel
 
 @freezed
 abstract class PhoneNumberModel with _$PhoneNumberModel {
   const PhoneNumberModel._();
 
-  const factory PhoneNumberModel(
+  const factory PhoneNumberModel({
     /// phone
     @JsonKey(name: phoneKey) String phone,
 
     /// phone2
     @JsonKey(name: phone2Key) String phone2,
-  ) = _PhoneNumberModel;
+  }) = _PhoneNumberModel;
 
   factory PhoneNumberModel.fromJson(Map<String, dynamic> json) =>
       _$PhoneNumberModelFromJson(json);

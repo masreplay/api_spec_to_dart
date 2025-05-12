@@ -1,7 +1,6 @@
-library time_zone_model;
+library;
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'convertors.dart';
 part 'time_zone_model.freezed.dart';
 part 'time_zone_model.g.dart'; // TimeZoneModel
 
@@ -9,10 +8,10 @@ part 'time_zone_model.g.dart'; // TimeZoneModel
 abstract class TimeZoneModel with _$TimeZoneModel {
   const TimeZoneModel._();
 
-  const factory TimeZoneModel(
+  const factory TimeZoneModel({
     /// timezone
     @JsonKey(name: timezoneKey) String timezone,
-  ) = _TimeZoneModel;
+  }) = _TimeZoneModel;
 
   factory TimeZoneModel.fromJson(Map<String, dynamic> json) =>
       _$TimeZoneModelFromJson(json);

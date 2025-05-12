@@ -1,3 +1,3 @@
-library payment_card_brand;
+library;
 
 enum payment_card_brand {}

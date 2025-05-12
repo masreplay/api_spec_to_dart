@@ -1,7 +1,6 @@
-library user_create;
+library;
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'convertors.dart';
 part 'user_create.freezed.dart';
 part 'user_create.g.dart'; // UserCreate
 
@@ -9,7 +8,7 @@ part 'user_create.g.dart'; // UserCreate
 abstract class UserCreate with _$UserCreate {
   const UserCreate._();
 
-  const factory UserCreate(
+  const factory UserCreate({
     /// username
     @JsonKey(name: usernameKey) String username,
 
@@ -21,7 +20,7 @@ abstract class UserCreate with _$UserCreate {
 
     /// password
     @JsonKey(name: passwordKey) String password,
-  ) = _UserCreate;
+  }) = _UserCreate;
 
   factory UserCreate.fromJson(Map<String, dynamic> json) =>
       _$UserCreateFromJson(json);

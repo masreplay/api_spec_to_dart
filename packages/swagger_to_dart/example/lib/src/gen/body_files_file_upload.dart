@@ -1,7 +1,7 @@
-library body_files_file_upload;
+library;
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'convertors.dart';
+import 'models.dart';
 part 'body_files_file_upload.freezed.dart';
 part 'body_files_file_upload.g.dart'; // BodyFilesFileUpload
 
@@ -9,13 +9,13 @@ part 'body_files_file_upload.g.dart'; // BodyFilesFileUpload
 abstract class BodyFilesFileUpload with _$BodyFilesFileUpload {
   const BodyFilesFileUpload._();
 
-  const factory BodyFilesFileUpload(
+  const factory BodyFilesFileUpload({
     /// file
     @JsonKey(name: fileKey) MultipartFile file,
 
     /// description
     @JsonKey(name: descriptionKey) String? description,
-  ) = _BodyFilesFileUpload;
+  }) = _BodyFilesFileUpload;
 
   factory BodyFilesFileUpload.fromJson(Map<String, dynamic> json) =>
       _$BodyFilesFileUploadFromJson(json);

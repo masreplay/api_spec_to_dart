@@ -1,3 +1,3 @@
-library user_level;
+library;
 
 enum user_level {}

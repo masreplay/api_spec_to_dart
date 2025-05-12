@@ -1,7 +1,6 @@
-library dog;
+library;
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'convertors.dart';
 part 'dog.freezed.dart';
 part 'dog.g.dart'; // Dog
 
@@ -9,7 +8,7 @@ part 'dog.g.dart'; // Dog
 abstract class Dog with _$Dog {
   const Dog._();
 
-  const factory Dog(
+  const factory Dog({
     /// name
     @JsonKey(name: nameKey) String name,
 
@@ -18,7 +17,7 @@ abstract class Dog with _$Dog {
 
     /// barkLoudness
     @JsonKey(name: barkLoudnessKey) int barkLoudness,
-  ) = _Dog;
+  }) = _Dog;
 
   factory Dog.fromJson(Map<String, dynamic> json) => _$DogFromJson(json);
 

@@ -1,7 +1,7 @@
-library h_t_t_p_validation_error;
+library;
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'convertors.dart';
+import 'models.dart';
 part 'h_t_t_p_validation_error.freezed.dart';
 part 'h_t_t_p_validation_error.g.dart'; // HTTPValidationError
 
@@ -9,10 +9,10 @@ part 'h_t_t_p_validation_error.g.dart'; // HTTPValidationError
 abstract class HTTPValidationError with _$HTTPValidationError {
   const HTTPValidationError._();
 
-  const factory HTTPValidationError(
+  const factory HTTPValidationError({
     /// detail
     @JsonKey(name: detailKey) List<ValidationError> detail,
-  ) = _HTTPValidationError;
+  }) = _HTTPValidationError;
 
   factory HTTPValidationError.fromJson(Map<String, dynamic> json) =>
       _$HTTPValidationErrorFromJson(json);

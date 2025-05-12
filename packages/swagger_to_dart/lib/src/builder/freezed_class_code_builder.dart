@@ -87,7 +87,7 @@ class FreezedClassCodeBuilder {
       Directive.import(
         'package:freezed_annotation/freezed_annotation.dart',
       ),
-      Directive.import('convertors.dart'),
+      // Directive.import('convertors.dart'),
       Directive.part('${filename}.freezed.dart'),
       Directive.part('${filename}.g.dart'),
     ];

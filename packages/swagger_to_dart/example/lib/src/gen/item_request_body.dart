@@ -1,7 +1,6 @@
-library item_request_body;
+library;
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'convertors.dart';
 part 'item_request_body.freezed.dart';
 part 'item_request_body.g.dart'; // ItemRequestBody
 
@@ -9,7 +8,7 @@ part 'item_request_body.g.dart'; // ItemRequestBody
 abstract class ItemRequestBody with _$ItemRequestBody {
   const ItemRequestBody._();
 
-  const factory ItemRequestBody(
+  const factory ItemRequestBody({
     /// name
     @JsonKey(name: nameKey) String name,
 
@@ -21,7 +20,7 @@ abstract class ItemRequestBody with _$ItemRequestBody {
 
     /// tax
     @JsonKey(name: taxKey) double? tax,
-  ) = _ItemRequestBody;
+  }) = _ItemRequestBody;
 
   factory ItemRequestBody.fromJson(Map<String, dynamic> json) =>
       _$ItemRequestBodyFromJson(json);

@@ -1,9 +1,7 @@
 scripts:
-  swagger_to_dart: dart run swagger_to_dart:swagger_to_dart --dev
+  swagger_to_dart: dart run swagger_to_dart:swagger_to_dart
 
-  swagger: |
-    rps swagger_to_dart
-    dart run build_runner build --delete-conflicting-outputs
-    dart fix --apply && dart format -o write ./lib
-
-  s: rps swagger
+  s: |
+    fvm dart run swagger_to_dart:swagger_to_dart
+    fvm dart run build_runner build --delete-conflicting-outputs
+    fvm dart fix --apply && dart format -o write ./lib

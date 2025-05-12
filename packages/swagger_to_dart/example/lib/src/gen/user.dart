@@ -1,7 +1,9 @@
-library user;
+library;
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'convertors.dart';
+
+import 'models.dart';
+
 part 'user.freezed.dart';
 part 'user.g.dart'; // User
 
@@ -9,7 +11,7 @@ part 'user.g.dart'; // User
 abstract class User with _$User {
   const User._();
 
-  const factory User(
+  const factory User({
     /// username
     @JsonKey(name: usernameKey) String username,
 
@@ -33,7 +35,7 @@ abstract class User with _$User {
 
     /// tags
     @Default([]) @JsonKey(name: tagsKey) List<String> tags,
-  ) = _User;
+  }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 

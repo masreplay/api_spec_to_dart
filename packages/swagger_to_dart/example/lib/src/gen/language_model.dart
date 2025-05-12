@@ -1,7 +1,7 @@
-library language_model;
+library;
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'convertors.dart';
+import 'models.dart';
 part 'language_model.freezed.dart';
 part 'language_model.g.dart'; // LanguageModel
 
@@ -9,7 +9,7 @@ part 'language_model.g.dart'; // LanguageModel
 abstract class LanguageModel with _$LanguageModel {
   const LanguageModel._();
 
-  const factory LanguageModel(
+  const factory LanguageModel({
     /// alpha2
     @JsonKey(name: alpha2Key) String? alpha2,
 
@@ -21,7 +21,7 @@ abstract class LanguageModel with _$LanguageModel {
 
     /// iso6395
     @JsonKey(name: iso6395Key) String? iso6395,
-  ) = _LanguageModel;
+  }) = _LanguageModel;
 
   factory LanguageModel.fromJson(Map<String, dynamic> json) =>
       _$LanguageModelFromJson(json);

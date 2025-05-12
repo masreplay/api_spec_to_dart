@@ -1,7 +1,6 @@
-library location;
+library;
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'convertors.dart';
 part 'location.freezed.dart';
 part 'location.g.dart'; // Location
 
@@ -9,7 +8,7 @@ part 'location.g.dart'; // Location
 abstract class Location with _$Location {
   const Location._();
 
-  const factory Location(
+  const factory Location({
     /// lat
     @JsonKey(name: latKey) double lat,
 
@@ -18,7 +17,7 @@ abstract class Location with _$Location {
 
     /// name
     @JsonKey(name: nameKey) String? name,
-  ) = _Location;
+  }) = _Location;
 
   factory Location.fromJson(Map<String, dynamic> json) =>
       _$LocationFromJson(json);

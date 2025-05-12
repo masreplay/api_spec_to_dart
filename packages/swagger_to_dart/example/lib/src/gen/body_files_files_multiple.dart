@@ -1,7 +1,6 @@
-library body_files_files_multiple;
+library;
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'convertors.dart';
 part 'body_files_files_multiple.freezed.dart';
 part 'body_files_files_multiple.g.dart'; // BodyFilesFilesMultiple
 
@@ -9,13 +8,13 @@ part 'body_files_files_multiple.g.dart'; // BodyFilesFilesMultiple
 abstract class BodyFilesFilesMultiple with _$BodyFilesFilesMultiple {
   const BodyFilesFilesMultiple._();
 
-  const factory BodyFilesFilesMultiple(
+  const factory BodyFilesFilesMultiple({
     /// files
     @JsonKey(name: filesKey) List<MultipartFile> files,
 
     /// notes
     @JsonKey(name: notesKey) String notes,
-  ) = _BodyFilesFilesMultiple;
+  }) = _BodyFilesFilesMultiple;
 
   factory BodyFilesFilesMultiple.fromJson(Map<String, dynamic> json) =>
       _$BodyFilesFilesMultipleFromJson(json);

@@ -1,7 +1,6 @@
-library body_security_login;
+library;
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'convertors.dart';
 part 'body_security_login.freezed.dart';
 part 'body_security_login.g.dart'; // BodySecurityLogin
 
@@ -9,7 +8,7 @@ part 'body_security_login.g.dart'; // BodySecurityLogin
 abstract class BodySecurityLogin with _$BodySecurityLogin {
   const BodySecurityLogin._();
 
-  const factory BodySecurityLogin(
+  const factory BodySecurityLogin({
     /// grantType
     @JsonKey(name: grantTypeKey) String? grantType,
 
@@ -27,7 +26,7 @@ abstract class BodySecurityLogin with _$BodySecurityLogin {
 
     /// clientSecret
     @JsonKey(name: clientSecretKey) String? clientSecret,
-  ) = _BodySecurityLogin;
+  }) = _BodySecurityLogin;
 
   factory BodySecurityLogin.fromJson(Map<String, dynamic> json) =>
       _$BodySecurityLoginFromJson(json);

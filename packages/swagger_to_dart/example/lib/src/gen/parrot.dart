@@ -1,7 +1,6 @@
-library parrot;
+library;
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'convertors.dart';
 part 'parrot.freezed.dart';
 part 'parrot.g.dart'; // Parrot
 
@@ -9,7 +8,7 @@ part 'parrot.g.dart'; // Parrot
 abstract class Parrot with _$Parrot {
   const Parrot._();
 
-  const factory Parrot(
+  const factory Parrot({
     /// name
     @JsonKey(name: nameKey) String name,
 
@@ -18,7 +17,7 @@ abstract class Parrot with _$Parrot {
 
     /// phrases
     @JsonKey(name: phrasesKey) List<String> phrases,
-  ) = _Parrot;
+  }) = _Parrot;
 
   factory Parrot.fromJson(Map<String, dynamic> json) => _$ParrotFromJson(json);
 

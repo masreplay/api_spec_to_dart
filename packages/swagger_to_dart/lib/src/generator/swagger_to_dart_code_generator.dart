@@ -41,13 +41,28 @@ class SwaggerToDartCodeGenerator {
         try {
           print('Generating model $name...');
           final file = File(path.join(dir.path, '${name}.dart'));
-          final formattedCode = formatter.format('${model.accept(emitter)}');
-          await file.writeAsString(formattedCode, flush: true);
+
+          await file.writeAsString(
+            formatter.format('${model.accept(emitter)}'),
+            flush: true,
+          );
         } catch (e, stackTrace) {
           print('Error generating model $name: $e');
           print('Stack trace: $stackTrace');
         }
       }),
+    );
+
+    final library = Library((b) => b
+      ..directives.addAll([
+        for (final model in context.models)
+          if (model.name case final name?) Directive.export('$name.dart'),
+      ]));
+
+    final file = File(path.join(dir.path, 'models.dart'));
+    await file.writeAsString(
+      formatter.format('${library.accept(emitter)}'),
+      flush: true,
     );
 
     print('Code generation completed successfully');
