@@ -1,0 +1,31 @@
+library validation_error;
+
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'convertors.dart';
+part 'validation_error.freezed.dart';
+part 'validation_error.g.dart'; // ValidationError
+
+@freezed
+abstract class ValidationError with _$ValidationError {
+  const ValidationError._();
+
+  const factory ValidationError(
+    /// loc
+    @JsonKey(name: locKey) List<dynamic> loc,
+
+    /// msg
+    @JsonKey(name: msgKey) String msg,
+
+    /// type
+    @JsonKey(name: typeKey) String type,
+  ) = _ValidationError;
+
+  factory ValidationError.fromJson(Map<String, dynamic> json) =>
+      _$ValidationErrorFromJson(json);
+
+  static const String locKey = "loc";
+
+  static const String msgKey = "msg";
+
+  static const String typeKey = "type";
+}

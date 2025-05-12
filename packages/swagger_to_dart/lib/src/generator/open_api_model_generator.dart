@@ -55,7 +55,7 @@ abstract class PropertyGeneratorStrategy {
 
   final CodeGenerationContext context;
 
-  Parameter generateField({
+  Parameter generate({
     required String className,
     required String propertyName,
     required String key,
@@ -64,10 +64,10 @@ abstract class PropertyGeneratorStrategy {
 }
 
 class TypePropertyGenerator extends PropertyGeneratorStrategy {
-  TypePropertyGenerator(super.context);
+  const TypePropertyGenerator(super.context);
 
   @override
-  Parameter generateField({
+  Parameter generate({
     required String className,
     required String propertyName,
     required String key,
@@ -156,7 +156,7 @@ class RefPropertyGenerator extends PropertyGeneratorStrategy {
   const RefPropertyGenerator(super.context);
 
   @override
-  Parameter generateField({
+  Parameter generate({
     required String className,
     required String propertyName,
     required String key,
@@ -194,7 +194,7 @@ class AnyOfPropertyGenerator extends PropertyGeneratorStrategy {
   const AnyOfPropertyGenerator(super.context);
 
   @override
-  Parameter generateField({
+  Parameter generate({
     required String className,
     required String propertyName,
     required String key,
@@ -309,9 +309,46 @@ class EnumModelStrategy extends ModelStrategy {
   const EnumModelStrategy(super.context);
 
   Library generate(MapEntry<String, OpenApiSchemas> model) {
-    final className = Renaming.instance.renameClass(model.key);
+    final className =
+        Renaming.instance.renameClass(model.value.title ?? model.key);
+    final filename = Renaming.instance.renameFile(className);
 
-    return Library((b) => b..name = className);
+    return Library((b) => b
+      ..name = filename
+      ..body.addAll([
+        Enum((b) => b
+              ..name = filename
+              // ..constructors.addAll([
+              //   Constructor(
+              //     (b) => b
+              //       ..constant = true
+              //       ..requiredParameters.addAll([
+              //         Parameter((b) => b
+              //           ..name = 'value'
+              //           ..required = true
+              //           ..type = refer('$String')),
+              //       ]),
+              //   ),
+              // ])
+              ..values.addAll([
+                for (final value in model.value.xEnumVarnames ?? [])
+                  EnumValue((b) => b
+                        ..annotations.add(refer('@JsonValue($value)'))
+                        ..name = "value${value}"
+                      // ..arguments.addAll([
+                      //   literalString(value.toString()),
+                      // ]),
+                      ),
+              ])
+            // ..methods.addAll([
+            //   Method(
+            //     (b) => b
+            //       ..name = 'toJson'
+            //       ..returns = refer('$String'),
+            //   ),
+            // ]),
+            ),
+      ]));
   }
 }
 
@@ -326,8 +363,9 @@ class UnionModelStrategy extends ModelStrategy {
       OpenApiSchemaOneOf: AnyOfPropertyGenerator(context),
     };
 
-    final filename = Renaming.instance.renameFile(model.key);
-    final className = Renaming.instance.renameClass(model.key);
+    final className =
+        Renaming.instance.renameClass(model.value.title ?? model.key);
+    final filename = Renaming.instance.renameFile(className);
     final schema = model.value;
 
     final schemaJson = schema.toJson();
@@ -405,7 +443,7 @@ class UnionModelStrategy extends ModelStrategy {
         case OpenApiSchemaType():
           final generator = TypePropertyGenerator(context);
 
-          final fieldCode = generator.generateField(
+          final fieldCode = generator.generate(
             className: className,
             propertyName: propertyName,
             key: key,
@@ -417,7 +455,7 @@ class UnionModelStrategy extends ModelStrategy {
         case OpenApiSchemaRef():
           final generator = propertyGenerators[schema.runtimeType];
           if (generator != null) {
-            final fieldCode = generator.generateField(
+            final fieldCode = generator.generate(
               className: className,
               propertyName: propertyName,
               key: key,
@@ -429,7 +467,7 @@ class UnionModelStrategy extends ModelStrategy {
         case OpenApiSchemaAnyOf():
           final generator = propertyGenerators[OpenApiSchemaAnyOf];
           if (generator != null) {
-            final fieldCode = generator.generateField(
+            final fieldCode = generator.generate(
               className: className,
               propertyName: propertyName,
               key: key,
@@ -461,7 +499,7 @@ class UnionModelStrategy extends ModelStrategy {
 }
 
 class RegularModelStrategy extends ModelStrategy {
-  RegularModelStrategy(super.context);
+  const RegularModelStrategy(super.context);
 
   Library generate(MapEntry<String, OpenApiSchemas> model) {
     final propertyGenerators = <Type, PropertyGeneratorStrategy>{
@@ -470,11 +508,12 @@ class RegularModelStrategy extends ModelStrategy {
       OpenApiSchemaAnyOf: AnyOfPropertyGenerator(context),
     };
 
-    final className = Renaming.instance.renameClass(model.key);
-    final filename = Renaming.instance.renameFile(model.key);
+    final className =
+        Renaming.instance.renameClass(model.value.title ?? model.key);
+    final filename = Renaming.instance.renameFile(className);
     final properties = model.value.properties ?? {};
 
-    final fields = <Parameter>[];
+    final parameters = <Parameter>[];
     for (final entry in properties.entries) {
       final key = entry.key;
       final schema = entry.value;
@@ -482,20 +521,76 @@ class RegularModelStrategy extends ModelStrategy {
 
       final generator = propertyGenerators[schema.runtimeType];
       if (generator != null) {
-        final fieldCode = generator.generateField(
+        final fieldCode = generator.generate(
           className: className,
           propertyName: propertyName,
           key: key,
           schema: schema,
         );
-        fields.add(fieldCode);
+        parameters.add(fieldCode);
       }
     }
 
-    return FreezedClassCodeBuilder.instance.class_(
-      className: className,
-      filename: filename,
-      parameters: fields,
+    return Library(
+      (b) => b
+        ..name = filename
+        ..directives.addAll([
+          Directive.import(
+            'package:freezed_annotation/freezed_annotation.dart',
+          ),
+          Directive.import('convertors.dart'),
+          Directive.part('${filename}.freezed.dart'),
+          Directive.part('${filename}.g.dart'),
+        ])
+        ..body.addAll([
+          Class(
+            (b) => b
+              ..docs.addAll([
+                '// ${className}',
+              ])
+              ..annotations.addAll([refer('freezed')])
+              ..abstract = true
+              ..name = className
+              ..mixins.addAll([refer('_\$${className}')])
+              ..fields.addAll([
+                for (final entry in parameters)
+                  Field(
+                    (b) => b
+                      ..static = true
+                      ..modifier = FieldModifier.constant
+                      ..name = '${entry.name}Key'
+                      ..type = refer('$String')
+                      ..assignment = Code('"${entry.name}"'),
+                  ),
+              ])
+              ..constructors.addAll([
+                Constructor(
+                  (b) => b
+                    ..constant = true
+                    ..name = '_',
+                ),
+                Constructor(
+                  (b) => b
+                    ..constant = true
+                    ..factory = true
+                    ..redirect = refer('_${className}')
+                    ..requiredParameters.addAll([...parameters]),
+                ),
+                Constructor(
+                  (b) => b
+                    ..factory = true
+                    ..name = 'fromJson'
+                    ..requiredParameters.addAll([
+                      Parameter((b) => b
+                        ..name = 'json'
+                        ..type = refer('Map<String, dynamic>')),
+                    ])
+                    ..lambda = true
+                    ..body = Code('_\$${className}FromJson(json)'),
+                )
+              ]),
+          )
+        ]),
     );
   }
 }

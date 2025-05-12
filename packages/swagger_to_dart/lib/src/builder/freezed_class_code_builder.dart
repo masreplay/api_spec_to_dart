@@ -8,52 +8,6 @@ class FreezedClassCodeBuilder {
 
   static FreezedClassCodeBuilder get instance => _instance;
 
-  Library class_({
-    required String className,
-    required String filename,
-    required List<Parameter> parameters,
-  }) {
-    return Library(
-      (b) => b
-        ..name = className
-        ..directives.addAll(_directives(filename: filename))
-        ..body.addAll([
-          Class(
-            (b) => b
-              ..docs.addAll([
-                '// ${className}',
-              ])
-              ..annotations.addAll([refer('freezed')])
-              ..abstract = true
-              ..name = className
-              ..mixins.addAll([refer('_\$${className}')])
-              ..fields.addAll([
-                for (final entry in parameters)
-                  Field(
-                    (b) => b
-                      ..static = true
-                      ..modifier = FieldModifier.constant
-                      ..name = _keyField(entry.name)
-                      ..type = refer('$String')
-                      ..assignment = Code('"${entry.name}"'),
-                  ),
-              ])
-              ..constructors.addAll([
-                _privateConstructor(className: className),
-                Constructor(
-                  (b) => b
-                    ..constant = true
-                    ..factory = true
-                    ..redirect = refer('_${className}')
-                    ..optionalParameters.addAll([...parameters]),
-                ),
-                _fromJsonFactoryConstructor(className: className)
-              ]),
-          )
-        ]),
-    );
-  }
-
   Library unionClass_({
     required String className,
     required String filename,
@@ -61,7 +15,7 @@ class FreezedClassCodeBuilder {
   }) {
     return Library(
       (b) => b
-        ..name = className
+        ..name = filename
         ..directives.addAll(_directives(filename: filename))
         ..body.addAll([
           Class(
@@ -112,6 +66,7 @@ class FreezedClassCodeBuilder {
           '/// ${name}',
         ])
         ..required = defaultValue == null
+        ..named = true
         ..annotations.addAll([
           if (defaultValue != null) refer('Default($defaultValue)'),
           if (isDeprecated) refer('@deprecated'),

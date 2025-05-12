@@ -90,47 +90,7 @@ class JsonSerializableCodeBuilder {
   //   String toJson() => _$QuizQuestionTypePublicEnumEnumMap[this]!;
   // }
 
-  Enum jsonSerializableEnum_({
-    required String className,
-    required List<Object> values,
-  }) {
-    return Enum((b) => b
-      ..name = className
-      ..constructors.addAll([
-        Constructor(
-          (b) => b
-            ..constant = true
-            ..requiredParameters.addAll([
-              Parameter((b) => b
-                ..name = 'value'
-                ..required = true
-                ..type = refer('$String')),
-            ]),
-        ),
-      ])
-      ..values.addAll([
-        for (final value in values)
-          EnumValue(
-            (b) => b
-              ..annotations.add(_jsonValue(value))
-              ..name = value.toString()
-              ..arguments.addAll([
-                literalString(value.toString()),
-              ]),
-          ),
-      ])
-      ..methods.addAll([
-        Method(
-          (b) => b
-            ..name = 'toJson'
-            ..returns = refer('$String'),
-        ),
-      ]));
-  }
-
-  Expression _jsonValue(dynamic value) {
-    return refer('@$JsonValue($value)');
-  }
+  
 
   Library jsonSerializableEnumFilter_({
     required String fileName,

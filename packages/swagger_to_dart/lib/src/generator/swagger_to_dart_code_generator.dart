@@ -39,6 +39,7 @@ class SwaggerToDartCodeGenerator {
         }
 
         try {
+          print('Generating model $name...');
           final file = File(path.join(dir.path, '${name}.dart'));
           final formattedCode = formatter.format('${model.accept(emitter)}');
           await file.writeAsString(formattedCode, flush: true);
