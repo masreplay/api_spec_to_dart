@@ -43,7 +43,7 @@ class EnumModelStrategy extends ModelStrategy {
     final className = Renaming.instance.renameClass(model.key);
     final filename = Renaming.instance.renameFile(className);
 
-    /// Can be a list of [String] or an [int].
+    // Can be a list of [String] or an [int].
     final List<Object> values = model.value.enum_ ?? [];
 
     return Library(

@@ -22,6 +22,7 @@
 library payment_card_brand;
 
 import 'exports.dart';
+
 part 'payment_card_brand.g.dart';
 
 @JsonEnum(alwaysCreate: true)
