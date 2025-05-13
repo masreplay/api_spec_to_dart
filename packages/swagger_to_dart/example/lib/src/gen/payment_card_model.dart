@@ -1,7 +1,6 @@
-library;
+library payment_card_model;
 
 import 'exports.dart';
-
 part 'payment_card_model.freezed.dart';
 part 'payment_card_model.g.dart'; // PaymentCardModel
 

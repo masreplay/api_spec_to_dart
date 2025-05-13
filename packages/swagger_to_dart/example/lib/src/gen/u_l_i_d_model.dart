@@ -1,4 +1,4 @@
-library;
+library u_l_i_d_model;
 
 import 'exports.dart';
 part 'u_l_i_d_model.freezed.dart';

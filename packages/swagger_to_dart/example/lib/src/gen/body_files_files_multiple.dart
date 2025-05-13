@@ -1,4 +1,4 @@
-library;
+library body_files_files_multiple;
 
 import 'exports.dart';
 part 'body_files_files_multiple.freezed.dart';

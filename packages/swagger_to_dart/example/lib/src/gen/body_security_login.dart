@@ -1,4 +1,4 @@
-library;
+library body_security_login;
 
 import 'exports.dart';
 part 'body_security_login.freezed.dart';

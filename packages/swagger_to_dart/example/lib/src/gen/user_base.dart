@@ -1,4 +1,4 @@
-library;
+library user_base;
 
 import 'exports.dart';
 part 'user_base.freezed.dart';

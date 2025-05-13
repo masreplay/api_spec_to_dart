@@ -1,4 +1,4 @@
-library;
+library body_validation_param_body;
 
 import 'exports.dart';
 part 'body_validation_param_body.freezed.dart';

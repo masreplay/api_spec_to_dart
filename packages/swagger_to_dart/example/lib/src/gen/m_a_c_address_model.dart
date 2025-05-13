@@ -1,4 +1,4 @@
-library;
+library m_a_c_address_model;
 
 import 'exports.dart';
 part 'm_a_c_address_model.freezed.dart';

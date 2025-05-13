@@ -1,4 +1,4 @@
-library;
+library item_request_body;
 
 import 'exports.dart';
 part 'item_request_body.freezed.dart';

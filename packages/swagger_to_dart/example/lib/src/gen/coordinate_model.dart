@@ -1,4 +1,4 @@
-library;
+library coordinate_model;
 
 import 'exports.dart';
 part 'coordinate_model.freezed.dart';

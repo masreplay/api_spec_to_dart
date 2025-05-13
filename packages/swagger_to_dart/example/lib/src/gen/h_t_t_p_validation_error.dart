@@ -1,4 +1,4 @@
-library;
+library h_t_t_p_validation_error;
 
 import 'exports.dart';
 part 'h_t_t_p_validation_error.freezed.dart';

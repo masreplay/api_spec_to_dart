@@ -1,4 +1,4 @@
-library;
+library a_b_a_routing_model;
 
 import 'exports.dart';
 part 'a_b_a_routing_model.freezed.dart';

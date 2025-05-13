@@ -1,4 +1,4 @@
-library;
+library language_model;
 
 import 'exports.dart';
 part 'language_model.freezed.dart';

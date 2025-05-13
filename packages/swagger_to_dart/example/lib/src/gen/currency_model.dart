@@ -1,4 +1,4 @@
-library;
+library currency_model;
 
 import 'exports.dart';
 part 'currency_model.freezed.dart';

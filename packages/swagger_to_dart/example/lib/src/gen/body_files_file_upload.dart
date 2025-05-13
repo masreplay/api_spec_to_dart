@@ -1,4 +1,4 @@
-library;
+library body_files_file_upload;
 
 import 'exports.dart';
 part 'body_files_file_upload.freezed.dart';

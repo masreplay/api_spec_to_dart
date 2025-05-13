@@ -1,4 +1,4 @@
-library;
+library i_s_b_n_model;
 
 import 'exports.dart';
 part 'i_s_b_n_model.freezed.dart';
