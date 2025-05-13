@@ -45,7 +45,7 @@ class TypePropertyGenerator extends PropertyGeneratorStrategy {
       parentTitle: className,
     );
 
-    return FreezedClassCodeBuilder.instance.parameter_(
+    return FreezedClassCodeBuilder.instance.parameter(
       className: className,
       name: propertyName,
       type: dartType,
@@ -128,7 +128,7 @@ class RefPropertyGenerator extends PropertyGeneratorStrategy {
 
     final refClassName = Renaming.instance.renameRefClass(schema);
 
-    return FreezedClassCodeBuilder.instance.parameter_(
+    return FreezedClassCodeBuilder.instance.parameter(
       className: className,
       name: propertyName,
       type: refClassName,
@@ -167,7 +167,7 @@ class AnyOfPropertyGenerator extends PropertyGeneratorStrategy {
 
     final dartType = _resolveDartType(schema, className, propertyName);
 
-    return FreezedClassCodeBuilder.instance.parameter_(
+    return FreezedClassCodeBuilder.instance.parameter(
       className: className,
       name: propertyName,
       type: dartType,

@@ -77,11 +77,7 @@ class UnionModelStrategy extends ModelStrategy {
         final unionClassName =
             types.map((type) => Renaming.instance.renameClass(type)).join('Or');
 
-        return FreezedClassCodeBuilder.instance.unionClass_(
-          className: unionClassName,
-          filename: filename,
-          unions: [],
-        );
+        throw Library();
       }
     }
 
@@ -134,7 +130,7 @@ class UnionModelStrategy extends ModelStrategy {
         case OpenApiSchemaOneOf():
           for (final mapping in schema.discriminator.mapping.entries) {
             unionProps.add(
-              FreezedClassCodeBuilder.instance.parameter_(
+              FreezedClassCodeBuilder.instance.parameter(
                 className: className,
                 type: Renaming.instance
                     .renameClass(mapping.value.split('/').last),
@@ -146,10 +142,63 @@ class UnionModelStrategy extends ModelStrategy {
       }
     }
 
-    return FreezedClassCodeBuilder.instance.unionClass_(
-      className: className,
-      filename: filename,
-      unions: [],
+    return Library(
+      (b) => b
+        ..name = filename
+        ..directives.addAll([
+          Directive.import('exports.dart'),
+          Directive.part('${filename}.freezed.dart'),
+          Directive.part('${filename}.g.dart'),
+        ])
+        ..body.addAll([
+          Class(
+            (b) => b
+              ..docs.addAll([
+                '// ${className}',
+              ])
+              ..annotations.addAll([refer('freezed')])
+              ..abstract = true
+              ..name = className
+              ..mixins.addAll([refer('_\$${className}')])
+              ..fields.addAll([
+                for (final entry in [].expand((e) => e.parameters))
+                  Field(
+                    (b) => b
+                      ..static = true
+                      ..modifier = FieldModifier.constant
+                      ..name = '${entry.name}Key'
+                      ..type = refer('$String')
+                      ..assignment = Code('"${entry.name}"'),
+                  ),
+              ])
+              ..constructors.addAll([
+                Constructor(
+                  (b) => b
+                    ..constant = true
+                    ..name = '_',
+                ),
+                // Constructor(
+                //   (b) => b
+                //     ..constant = true
+                //     ..factory = true
+                //     ..redirect = refer('_${className}')
+                //     ..optionalParameters.addAll([...parameters]),
+                // ),
+                Constructor(
+                  (b) => b
+                    ..factory = true
+                    ..name = 'fromJson'
+                    ..requiredParameters.addAll([
+                      Parameter((b) => b
+                        ..name = 'json'
+                        ..type = refer('Map<String, dynamic>')),
+                    ])
+                    ..lambda = true
+                    ..body = Code('_\$${className}FromJson(json)'),
+                )
+              ]),
+          )
+        ]),
     );
   }
 }
