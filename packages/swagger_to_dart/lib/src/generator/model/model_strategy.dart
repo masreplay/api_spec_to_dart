@@ -1,6 +1,6 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:swagger_to_dart/src/config/generation_context.dart';
-import 'package:swagger_to_dart/src/parser/openapi/openapi.dart';
+import 'package:swagger_to_dart/src/schema/openapi/openapi.dart';
 
 enum ModelTypeEnum { enum_, union, regular }
 

@@ -1,4 +1,4 @@
-import 'package:swagger_to_dart/src/parser/openapi/models/models.dart';
+import 'package:swagger_to_dart/src/schema/openapi/v3/v3.dart';
 
 class Renaming {
   const Renaming._();

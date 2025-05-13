@@ -1,6 +1,6 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:swagger_to_dart/src/parser/openapi/openapi.dart';
+import 'package:swagger_to_dart/src/schema/openapi/openapi.dart';
 import 'package:swagger_to_dart/src/utils/utils.dart';
 
 import 'model_strategy.dart';

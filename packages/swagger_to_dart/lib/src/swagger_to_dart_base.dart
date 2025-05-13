@@ -1,2 +1,2 @@
-export 'parser/parser.dart';
+export 'schema/schema.dart';
 export 'utils/utils.dart';
