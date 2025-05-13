@@ -1,5 +1,4 @@
 import 'package:code_builder/code_builder.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:swagger_to_dart/src/utils/renaming.dart';
 
 class JsonSerializableCodeBuilder {
@@ -89,8 +88,6 @@ class JsonSerializableCodeBuilder {
 
   //   String toJson() => _$QuizQuestionTypePublicEnumEnumMap[this]!;
   // }
-
-  
 
   Library jsonSerializableEnumFilter_({
     required String fileName,
