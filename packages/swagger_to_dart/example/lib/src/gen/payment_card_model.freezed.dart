@@ -80,8 +80,8 @@ as PaymentCardBrand?,
 
 
 /// @nodoc
-@JsonSerializable()
 
+@generationJsonSerializable
 class _PaymentCardModel extends PaymentCardModel {
   const _PaymentCardModel({@JsonKey(name: PaymentCardModel.cardNumberKey) required this.cardNumber, @JsonKey(name: PaymentCardModel.cardBrandKey) required this.cardBrand}): super._();
   factory _PaymentCardModel.fromJson(Map<String, dynamic> json) => _$PaymentCardModelFromJson(json);

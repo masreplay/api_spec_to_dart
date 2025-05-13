@@ -8094,6 +8094,7 @@ part 'language_model.g.dart'; // LanguageModel
 abstract class LanguageModel with _$LanguageModel {
   const LanguageModel._();
 
+  @generationJsonSerializable
   const factory LanguageModel({
     /// alpha2
     @JsonKey(name: LanguageModel.alpha2Key) required String? alpha2,

@@ -23,6 +23,7 @@ part 'isbn_model.g.dart'; // IsbnModel
 abstract class IsbnModel with _$IsbnModel {
   const IsbnModel._();
 
+  @generationJsonSerializable
   const factory IsbnModel({
     /// isbn
     @JsonKey(name: IsbnModel.isbnKey) required String isbn,

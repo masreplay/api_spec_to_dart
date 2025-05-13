@@ -42,6 +42,7 @@ part 'location.g.dart'; // Location
 abstract class Location with _$Location {
   const Location._();
 
+  @generationJsonSerializable
   const factory Location({
     /// lat
     @JsonKey(name: Location.latKey) required double lat,

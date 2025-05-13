@@ -84,8 +84,8 @@ as String,
 
 
 /// @nodoc
-@JsonSerializable()
 
+@generationJsonSerializable
 class _UserCreate extends UserCreate {
   const _UserCreate({@JsonKey(name: UserCreate.usernameKey) required this.username, @JsonKey(name: UserCreate.emailKey) required this.email, @JsonKey(name: UserCreate.fullNameKey) required this.fullName, @JsonKey(name: UserCreate.passwordKey) required this.password}): super._();
   factory _UserCreate.fromJson(Map<String, dynamic> json) => _$UserCreateFromJson(json);

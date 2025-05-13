@@ -80,8 +80,8 @@ as String,
 
 
 /// @nodoc
-@JsonSerializable()
 
+@generationJsonSerializable
 class _BodyFilesFilesMultiple extends BodyFilesFilesMultiple {
   const _BodyFilesFilesMultiple({@JsonKey(name: BodyFilesFilesMultiple.filesKey) required final  List<MultipartFile> files, @JsonKey(name: BodyFilesFilesMultiple.notesKey) required this.notes}): _files = files,super._();
   factory _BodyFilesFilesMultiple.fromJson(Map<String, dynamic> json) => _$BodyFilesFilesMultipleFromJson(json);

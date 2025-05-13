@@ -78,8 +78,8 @@ as String,
 
 
 /// @nodoc
-@JsonSerializable()
 
+@generationJsonSerializable
 class _TimeZoneModel extends TimeZoneModel {
   const _TimeZoneModel({@JsonKey(name: TimeZoneModel.timezoneKey) required this.timezone}): super._();
   factory _TimeZoneModel.fromJson(Map<String, dynamic> json) => _$TimeZoneModelFromJson(json);

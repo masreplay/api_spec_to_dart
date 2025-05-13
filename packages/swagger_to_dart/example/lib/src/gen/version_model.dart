@@ -24,6 +24,7 @@ part 'version_model.g.dart'; // VersionModel
 abstract class VersionModel with _$VersionModel {
   const VersionModel._();
 
+  @generationJsonSerializable
   const factory VersionModel({
     /// version
     @JsonKey(name: VersionModel.versionKey) required String version,

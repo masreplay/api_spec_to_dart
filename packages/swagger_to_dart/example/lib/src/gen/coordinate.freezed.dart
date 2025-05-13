@@ -80,8 +80,8 @@ as double,
 
 
 /// @nodoc
-@JsonSerializable()
 
+@generationJsonSerializable
 class _Coordinate extends Coordinate {
   const _Coordinate({@JsonKey(name: Coordinate.latitudeKey) required this.latitude, @JsonKey(name: Coordinate.longitudeKey) required this.longitude}): super._();
   factory _Coordinate.fromJson(Map<String, dynamic> json) => _$CoordinateFromJson(json);

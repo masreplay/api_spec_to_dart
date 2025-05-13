@@ -25,6 +25,7 @@ part 'aba_routing_model.g.dart'; // ABARoutingModel
 abstract class ABARoutingModel with _$ABARoutingModel {
   const ABARoutingModel._();
 
+  @generationJsonSerializable
   const factory ABARoutingModel({
     /// routingNumber
     @JsonKey(name: ABARoutingModel.routingNumberKey)

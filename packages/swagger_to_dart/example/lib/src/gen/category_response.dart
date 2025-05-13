@@ -28,6 +28,7 @@ part 'category_response.g.dart'; // CategoryResponse
 abstract class CategoryResponse with _$CategoryResponse {
   const CategoryResponse._();
 
+  @generationJsonSerializable
   const factory CategoryResponse({
     /// id
     @JsonKey(name: CategoryResponse.idKey) required int id,

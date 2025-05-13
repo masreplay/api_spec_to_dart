@@ -624,6 +624,7 @@ part 'time_zone_model.g.dart'; // TimeZoneModel
 abstract class TimeZoneModel with _$TimeZoneModel {
   const TimeZoneModel._();
 
+  @generationJsonSerializable
   const factory TimeZoneModel({
     /// timezone
     @JsonKey(name: TimeZoneModel.timezoneKey) required String timezone,

@@ -78,8 +78,8 @@ as List<ValidationError>,
 
 
 /// @nodoc
-@JsonSerializable()
 
+@generationJsonSerializable
 class _HttpValidationError extends HttpValidationError {
   const _HttpValidationError({@JsonKey(name: HttpValidationError.detailKey) required final  List<ValidationError> detail}): _detail = detail,super._();
   factory _HttpValidationError.fromJson(Map<String, dynamic> json) => _$HttpValidationErrorFromJson(json);

@@ -209,6 +209,7 @@ part 'script_code_model.g.dart'; // ScriptCodeModel
 abstract class ScriptCodeModel with _$ScriptCodeModel {
   const ScriptCodeModel._();
 
+  @generationJsonSerializable
   const factory ScriptCodeModel({
     /// scriptCode
     @JsonKey(name: ScriptCodeModel.scriptCodeKey) required String scriptCode,

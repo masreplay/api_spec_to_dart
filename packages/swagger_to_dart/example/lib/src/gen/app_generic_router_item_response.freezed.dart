@@ -80,8 +80,8 @@ as String,
 
 
 /// @nodoc
-@JsonSerializable()
 
+@generationJsonSerializable
 class _AppGenericRouterItemResponse extends AppGenericRouterItemResponse {
   const _AppGenericRouterItemResponse({@JsonKey(name: AppGenericRouterItemResponse.idKey) required this.id, @JsonKey(name: AppGenericRouterItemResponse.nameKey) required this.name}): super._();
   factory _AppGenericRouterItemResponse.fromJson(Map<String, dynamic> json) => _$AppGenericRouterItemResponseFromJson(json);

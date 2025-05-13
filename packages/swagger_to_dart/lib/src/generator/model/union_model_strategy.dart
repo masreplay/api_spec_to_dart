@@ -157,7 +157,7 @@ class UnionModelStrategy extends ModelStrategy {
                 '// ${className}',
               ])
               ..annotations.addAll([refer('freezed')])
-              ..abstract = true
+              ..sealed = true
               ..name = className
               ..mixins.addAll([refer('_\$${className}')])
               ..fields.addAll([
@@ -177,13 +177,20 @@ class UnionModelStrategy extends ModelStrategy {
                     ..constant = true
                     ..name = '_',
                 ),
-                // Constructor(
-                //   (b) => b
-                //     ..constant = true
-                //     ..factory = true
-                //     ..redirect = refer('_${className}')
-                //     ..optionalParameters.addAll([...parameters]),
-                // ),
+                Constructor(
+                  (b) => b
+                    ..constant = true
+                    ..factory = true
+                    ..name = 'fallback'
+                    ..redirect = refer('${className}Fallback')
+                    ..requiredParameters.addAll([
+                      Parameter(
+                        (b) => b
+                          ..name = 'value'
+                          ..type = refer('Map<String,dynamic>'),
+                      ),
+                    ]),
+                ),
                 Constructor(
                   (b) => b
                     ..factory = true

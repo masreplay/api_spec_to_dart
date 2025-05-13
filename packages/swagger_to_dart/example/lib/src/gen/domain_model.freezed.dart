@@ -78,8 +78,8 @@ as String,
 
 
 /// @nodoc
-@JsonSerializable()
 
+@generationJsonSerializable
 class _DomainModel extends DomainModel {
   const _DomainModel({@JsonKey(name: DomainModel.domainKey) required this.domain}): super._();
   factory _DomainModel.fromJson(Map<String, dynamic> json) => _$DomainModelFromJson(json);

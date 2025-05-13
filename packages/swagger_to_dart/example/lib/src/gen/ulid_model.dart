@@ -5,8 +5,11 @@ part 'ulid_model.freezed.dart';
 part 'ulid_model.g.dart'; // UlidModel
 
 @freezed
-abstract class UlidModel with _$UlidModel {
+sealed class UlidModel with _$UlidModel {
   const UlidModel._();
+
+  const factory UlidModel.fallback(Map<String, dynamic> value) =
+      UlidModelFallback;
 
   factory UlidModel.fromJson(Map<String, dynamic> json) =>
       _$UlidModelFromJson(json);

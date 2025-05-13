@@ -86,8 +86,8 @@ as int,
 
 
 /// @nodoc
-@JsonSerializable()
 
+@generationJsonSerializable
 class _PaginationResponseCategoryResponse extends PaginationResponseCategoryResponse {
   const _PaginationResponseCategoryResponse({@JsonKey(name: PaginationResponseCategoryResponse.itemsKey) required final  List<CategoryResponse> items, @JsonKey(name: PaginationResponseCategoryResponse.totalKey) required this.total, @JsonKey(name: PaginationResponseCategoryResponse.pageKey) required this.page, @JsonKey(name: PaginationResponseCategoryResponse.perPageKey) required this.perPage, @JsonKey(name: PaginationResponseCategoryResponse.totalPagesKey) required this.totalPages}): _items = items,super._();
   factory _PaginationResponseCategoryResponse.fromJson(Map<String, dynamic> json) => _$PaginationResponseCategoryResponseFromJson(json);

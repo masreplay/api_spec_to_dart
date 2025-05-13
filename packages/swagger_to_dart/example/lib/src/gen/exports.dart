@@ -14,3 +14,7 @@ class MultipartFileJsonConverter
   @override
   MultipartFile toJson(MultipartFile object) => object;
 }
+
+const generationJsonSerializable = JsonSerializable(
+  converters: [MultipartFileJsonConverter()],
+);

@@ -78,8 +78,8 @@ as String,
 
 
 /// @nodoc
-@JsonSerializable()
 
+@generationJsonSerializable
 class _ColorModel extends ColorModel {
   const _ColorModel({@JsonKey(name: ColorModel.colorKey) required this.color}): super._();
   factory _ColorModel.fromJson(Map<String, dynamic> json) => _$ColorModelFromJson(json);

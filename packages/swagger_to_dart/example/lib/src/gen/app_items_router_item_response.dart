@@ -56,6 +56,7 @@ part 'app_items_router_item_response.g.dart'; // AppItemsRouterItemResponse
 abstract class AppItemsRouterItemResponse with _$AppItemsRouterItemResponse {
   const AppItemsRouterItemResponse._();
 
+  @generationJsonSerializable
   const factory AppItemsRouterItemResponse({
     /// id
     @JsonKey(name: AppItemsRouterItemResponse.idKey) required int id,

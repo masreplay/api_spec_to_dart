@@ -46,6 +46,7 @@ part 'user_base.g.dart'; // UserBase
 abstract class UserBase with _$UserBase {
   const UserBase._();
 
+  @generationJsonSerializable
   const factory UserBase({
     /// username
     @JsonKey(name: UserBase.usernameKey) required String username,

@@ -36,6 +36,7 @@ part 'body_files_form_basic.g.dart'; // BodyFilesFormBasic
 abstract class BodyFilesFormBasic with _$BodyFilesFormBasic {
   const BodyFilesFormBasic._();
 
+  @generationJsonSerializable
   const factory BodyFilesFormBasic({
     /// username
     @JsonKey(name: BodyFilesFormBasic.usernameKey) required String username,

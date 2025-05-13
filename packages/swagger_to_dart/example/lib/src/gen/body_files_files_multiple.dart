@@ -33,6 +33,7 @@ part 'body_files_files_multiple.g.dart'; // BodyFilesFilesMultiple
 abstract class BodyFilesFilesMultiple with _$BodyFilesFilesMultiple {
   const BodyFilesFilesMultiple._();
 
+  @generationJsonSerializable
   const factory BodyFilesFilesMultiple({
     /// files
     @JsonKey(name: BodyFilesFilesMultiple.filesKey)

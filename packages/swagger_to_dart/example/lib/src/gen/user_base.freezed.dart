@@ -82,8 +82,8 @@ as String?,
 
 
 /// @nodoc
-@JsonSerializable()
 
+@generationJsonSerializable
 class _UserBase extends UserBase {
   const _UserBase({@JsonKey(name: UserBase.usernameKey) required this.username, @JsonKey(name: UserBase.emailKey) required this.email, @JsonKey(name: UserBase.fullNameKey) required this.fullName}): super._();
   factory _UserBase.fromJson(Map<String, dynamic> json) => _$UserBaseFromJson(json);

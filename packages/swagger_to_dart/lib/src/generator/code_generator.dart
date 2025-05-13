@@ -86,7 +86,13 @@ class MultipartFileJsonConverter implements JsonConverter<MultipartFile, Multipa
 
   @override
   MultipartFile toJson(MultipartFile object) => object;
-}''')),
+}
+''')),
+          CodeExpression(Code('''
+const generationJsonSerializable = JsonSerializable(
+  converters: [MultipartFileJsonConverter()],
+);
+''')),
         ]),
     );
 

@@ -104,8 +104,8 @@ $LocationCopyWith<$Res>? get location {
 
 
 /// @nodoc
-@JsonSerializable()
 
+@generationJsonSerializable
 class _User extends User {
   const _User({@JsonKey(name: User.usernameKey) required this.username, @JsonKey(name: User.emailKey) required this.email, @JsonKey(name: User.fullNameKey) required this.fullName, @JsonKey(name: User.idKey) required this.id, @JsonKey(name: User.isActiveKey) this.isActive = true, @JsonKey(name: User.createdAtKey) required this.createdAt, @JsonKey(name: User.locationKey) required this.location, @JsonKey(name: User.tagsKey) final  List<String> tags = const []}): _tags = tags,super._();
   factory _User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

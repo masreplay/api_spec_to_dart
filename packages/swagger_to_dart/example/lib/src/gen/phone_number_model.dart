@@ -30,6 +30,7 @@ part 'phone_number_model.g.dart'; // PhoneNumberModel
 abstract class PhoneNumberModel with _$PhoneNumberModel {
   const PhoneNumberModel._();
 
+  @generationJsonSerializable
   const factory PhoneNumberModel({
     /// phone
     @JsonKey(name: PhoneNumberModel.phoneKey) required String phone,

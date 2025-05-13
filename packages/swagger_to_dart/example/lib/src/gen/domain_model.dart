@@ -23,6 +23,7 @@ part 'domain_model.g.dart'; // DomainModel
 abstract class DomainModel with _$DomainModel {
   const DomainModel._();
 
+  @generationJsonSerializable
   const factory DomainModel({
     /// domain
     @JsonKey(name: DomainModel.domainKey) required String domain,

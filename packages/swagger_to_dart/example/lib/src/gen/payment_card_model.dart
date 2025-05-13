@@ -35,6 +35,7 @@ part 'payment_card_model.g.dart'; // PaymentCardModel
 abstract class PaymentCardModel with _$PaymentCardModel {
   const PaymentCardModel._();
 
+  @generationJsonSerializable
   const factory PaymentCardModel({
     /// cardNumber
     @JsonKey(name: PaymentCardModel.cardNumberKey) required String cardNumber,

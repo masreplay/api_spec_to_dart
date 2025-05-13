@@ -36,6 +36,7 @@ part 'cat.g.dart'; // Cat
 abstract class Cat with _$Cat {
   const Cat._();
 
+  @generationJsonSerializable
   const factory Cat({
     /// name
     @JsonKey(name: Cat.nameKey) required String name,

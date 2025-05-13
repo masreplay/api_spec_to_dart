@@ -82,8 +82,8 @@ as int,
 
 
 /// @nodoc
-@JsonSerializable()
 
+@generationJsonSerializable
 class _BaseResponseListItemResponse extends BaseResponseListItemResponse {
   const _BaseResponseListItemResponse({@JsonKey(name: BaseResponseListItemResponse.dataKey) required final  List<AppGenericRouterItemResponse> data, @JsonKey(name: BaseResponseListItemResponse.messageKey) required this.message, @JsonKey(name: BaseResponseListItemResponse.codeKey) required this.code}): _data = data,super._();
   factory _BaseResponseListItemResponse.fromJson(Map<String, dynamic> json) => _$BaseResponseListItemResponseFromJson(json);

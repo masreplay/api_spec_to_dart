@@ -32,6 +32,7 @@ part 'base_response_item_response.g.dart'; // BaseResponseItemResponse
 abstract class BaseResponseItemResponse with _$BaseResponseItemResponse {
   const BaseResponseItemResponse._();
 
+  @generationJsonSerializable
   const factory BaseResponseItemResponse({
     /// data
     @JsonKey(name: BaseResponseItemResponse.dataKey)

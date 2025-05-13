@@ -82,8 +82,8 @@ as String,
 
 
 /// @nodoc
-@JsonSerializable()
 
+@generationJsonSerializable
 class _ValidationError extends ValidationError {
   const _ValidationError({@JsonKey(name: ValidationError.locKey) required final  List<dynamic> loc, @JsonKey(name: ValidationError.msgKey) required this.msg, @JsonKey(name: ValidationError.typeKey) required this.type}): _loc = loc,super._();
   factory _ValidationError.fromJson(Map<String, dynamic> json) => _$ValidationErrorFromJson(json);

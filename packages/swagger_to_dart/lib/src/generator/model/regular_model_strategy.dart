@@ -79,6 +79,9 @@ class RegularModelStrategy extends ModelStrategy {
                 ),
                 Constructor(
                   (b) => b
+                    ..annotations.addAll([
+                      refer('generationJsonSerializable'),
+                    ])
                     ..constant = true
                     ..factory = true
                     ..redirect = refer('_${className}')
