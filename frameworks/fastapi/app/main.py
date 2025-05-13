@@ -464,17 +464,22 @@ class Parrot(Animal):
     )
 
 
-AnyAnimal: TypeAlias = Annotated[Dog | Cat | Parrot, Field(discriminator="type")]
+AnimalUnion = Dog | Cat | Parrot
+AnimalUnionField: TypeAlias = Annotated[AnimalUnion, Field(discriminator="type")]
+
+
+class CreateAnimalResponse(BaseModel):
+    animal: AnimalUnion
+    message: str
 
 
 @app.post(
     "/models/animal",
     tags=["models"],
-    response_model=dict[str, Any],
     summary="Create an animal based on type discriminator",
 )
-def create_animal(animal: AnyAnimal) -> AnyAnimal:
-    return animal
+def create_animal(animal: AnimalUnionField) -> CreateAnimalResponse:
+    return CreateAnimalResponse(animal=animal, message="Animal created successfully")
 
 
 # --------- PARAMETER SOURCES ---------

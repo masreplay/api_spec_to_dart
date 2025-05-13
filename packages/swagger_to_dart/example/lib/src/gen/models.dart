@@ -16,6 +16,7 @@ export 'conditional_body.dart';
 export 'coordinate.dart';
 export 'coordinate_model.dart';
 export 'country_model.dart';
+export 'create_animal_response.dart';
 export 'currency_model.dart';
 export 'dog.dart';
 export 'domain_model.dart';
