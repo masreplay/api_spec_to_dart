@@ -1,6 +1,17 @@
 from datetime import date, datetime, time, timedelta
 from enum import Enum
-from typing import Annotated, Any, Dict, List, Literal, Optional, Set, Tuple, Union
+from typing import (
+    Annotated,
+    Any,
+    Dict,
+    List,
+    Literal,
+    Optional,
+    Set,
+    Tuple,
+    TypeAlias,
+    Union,
+)
 from uuid import UUID
 
 from fastapi import (
@@ -453,7 +464,7 @@ class Parrot(Animal):
     )
 
 
-AnyAnimal = Annotated[Union[Dog, Cat, Parrot], Field(discriminator="type")]
+AnyAnimal: TypeAlias = Annotated[Dog | Cat | Parrot, Field(discriminator="type")]
 
 
 @app.post(
@@ -462,20 +473,8 @@ AnyAnimal = Annotated[Union[Dog, Cat, Parrot], Field(discriminator="type")]
     response_model=dict[str, Any],
     summary="Create an animal based on type discriminator",
 )
-def create_animal(animal: AnyAnimal) -> dict[str, Any]:
-    """Handle discriminated union of Pydantic models."""
-    animal_type = animal.type
-
-    response = {"name": animal.name, "type": animal_type}
-
-    if animal_type == "dog":
-        response["sound"] = "Woof!" * (animal.bark_loudness // 3 + 1)
-    elif animal_type == "cat":
-        response["sound"] = "Meow~" + "~" * animal.meow_cuteness
-    elif animal_type == "parrot":
-        response["sound"] = animal.phrases[0] if animal.phrases else "Squawk!"
-
-    return response
+def create_animal(animal: AnyAnimal) -> AnyAnimal:
+    return animal
 
 
 # --------- PARAMETER SOURCES ---------

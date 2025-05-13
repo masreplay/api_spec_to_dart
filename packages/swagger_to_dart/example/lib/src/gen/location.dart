@@ -34,7 +34,6 @@
 library;
 
 import 'exports.dart';
-
 part 'location.freezed.dart';
 part 'location.g.dart'; // Location
 
