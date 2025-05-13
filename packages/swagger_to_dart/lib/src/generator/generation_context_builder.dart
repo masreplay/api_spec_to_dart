@@ -4,26 +4,26 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:path/path.dart' as path;
 import 'package:pubspec_parse/pubspec_parse.dart';
-import 'package:swagger_to_dart/src/config/code_generation_context.dart';
+import 'package:swagger_to_dart/src/config/generation_context.dart';
 import 'package:swagger_to_dart/src/config/swagger_to_dart_yaml.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 import 'package:yaml/yaml.dart';
 
 /// Handles setup and validation for the code generator
-class CodeGenerationContextBuilder {
-  CodeGenerationContextBuilder({this.configPath});
+class GenerationContextBuilder {
+  GenerationContextBuilder({this.configPath});
 
   final String? configPath;
 
   /// Validates and sets up the environment for code generation
-  Future<CodeGenerationContext> build() async {
+  Future<GenerationContext> build() async {
     final rootDir = Directory.current.path;
 
     final swaggerToDart = await _loadSwaggerToDartYaml(rootDir);
     final pubspec = await _loadPubspecYaml(rootDir);
     final openApi = await _loadOpenApi(swaggerToDart);
 
-    return CodeGenerationContext(
+    return GenerationContext(
       swaggerToDart: swaggerToDart,
       pubspec: pubspec,
       openApi: openApi,

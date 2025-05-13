@@ -2,10 +2,11 @@ import 'package:code_builder/code_builder.dart';
 import 'package:pubspec_parse/pubspec_parse.dart';
 import 'package:swagger_to_dart/src/config/open_api_to_dart_type_converter.dart';
 import 'package:swagger_to_dart/src/config/swagger_to_dart_yaml.dart';
+import 'package:swagger_to_dart/src/generator/model/model_generator.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
-class CodeGenerationContext {
-  CodeGenerationContext({
+class GenerationContext {
+  GenerationContext({
     required this.pubspec,
     required this.swaggerToDart,
     required this.openApi,
@@ -15,7 +16,7 @@ class CodeGenerationContext {
   final Pubspec pubspec;
   final SwaggerToDart swaggerToDart;
 
-  OpenApiModelGenerator get modelGenerator => OpenApiModelGenerator(this);
+  ModelGenerator get modelGenerator => ModelGenerator(this);
   final List<Library> _models = <Library>[];
   List<Library> get models => _models;
 

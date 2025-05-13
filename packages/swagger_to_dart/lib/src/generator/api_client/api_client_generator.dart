@@ -1,11 +1,12 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:swagger_to_dart/src/builder/retrofit_class_code_builder.dart';
+import 'package:swagger_to_dart/src/config/generation_context.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
-class OpenApiClientGenerator {
-  const OpenApiClientGenerator(this.generator);
+class ApiClientGenerator {
+  const ApiClientGenerator(this.context);
 
-  final SwaggerToDartCodeGenerator generator;
+  final GenerationContext context;
 
   Library generate({
     required OpenApiPaths path,

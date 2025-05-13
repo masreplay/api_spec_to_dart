@@ -1,11 +1,11 @@
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
-import 'code_generation_context.dart';
+import 'generation_context.dart';
 
 class OpenApiToDartTypeConverter {
   const OpenApiToDartTypeConverter(this.context);
 
-  final CodeGenerationContext context;
+  final GenerationContext context;
 
   String getDartType({
     required OpenApiSchemaVarType? type,
@@ -142,7 +142,7 @@ class OpenApiToDartTypeConverter {
     required String key,
     required String className,
     required OpenApiSchemaOneOf model,
-    required CodeGenerationContext context,
+    required GenerationContext context,
   }) {
     final unionTypes = <(String, String)>[];
     model.discriminator.mapping.entries.map((e) {

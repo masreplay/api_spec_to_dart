@@ -3,12 +3,12 @@ import 'dart:io';
 import 'package:code_builder/code_builder.dart';
 import 'package:dart_style/dart_style.dart';
 import 'package:path/path.dart' as path;
-import 'package:swagger_to_dart/src/config/code_generation_context.dart';
+import 'package:swagger_to_dart/src/config/generation_context.dart';
 
-class SwaggerToDartCodeGenerator {
-  const SwaggerToDartCodeGenerator(this.context);
+class CodeGenerator {
+  const CodeGenerator(this.context);
 
-  final CodeGenerationContext context;
+  final GenerationContext context;
 
   Future<void> write() async {
     final emitter = DartEmitter.scoped();

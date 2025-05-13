@@ -1,5 +1,5 @@
 import 'package:code_builder/code_builder.dart';
-import 'package:swagger_to_dart/src/config/code_generation_context.dart';
+import 'package:swagger_to_dart/src/config/generation_context.dart';
 import 'package:swagger_to_dart/src/utils/renaming.dart';
 
 class SwaggerToDartCodeBuilder {
@@ -9,7 +9,7 @@ class SwaggerToDartCodeBuilder {
   static SwaggerToDartCodeBuilder get instance => _instance;
 
   Library class_({
-    required CodeGenerationContext context,
+    required GenerationContext context,
     required List<String> clients,
   }) {
     final className = Renaming.instance.renameClass(
@@ -62,17 +62,16 @@ class SwaggerToDartCodeBuilder {
           Class((b) => b
             ..name = className
             ..constructors.addAll([
-              Constructor(
-                (b) => b
-                  ..requiredParameters.addAll([
-                    for (final item in parameters)
-                      if (!item.optional) item.parameter,
-                  ])
+              Constructor((b) => b
+                    ..requiredParameters.addAll([
+                      for (final item in parameters)
+                        if (!item.optional) item.parameter,
+                    ])
                   // ..optionalParameters.addAll([
                   //   for (final item in parameters)
                   //     if (item.optional) item.parameter,
                   // ]),
-              ),
+                  ),
             ])
             ..fields.addAll([
               for (final item in parameters)
