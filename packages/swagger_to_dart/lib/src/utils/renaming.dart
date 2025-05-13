@@ -42,6 +42,15 @@ class Renaming {
 
     return name;
   }
+
+  String? renameEnumValue(Object value) {
+    if (value is String) {
+      return Recase.instance.toCamelCase(value);
+    }
+
+    // TODO(masreplay): handle int enum values
+    return null;
+  }
 }
 
 /// [Recase] for handling file names and class names

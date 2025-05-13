@@ -67,7 +67,7 @@ class EnumModelStrategy extends ModelStrategy {
                   EnumValue(
                     (b) => b
                       ..annotations.add(refer('$JsonValue("$value")'))
-                      ..name = value.toString(),
+                      ..name = Renaming.instance.renameEnumValue(value),
                   ),
               ])
               ..methods.addAll([
