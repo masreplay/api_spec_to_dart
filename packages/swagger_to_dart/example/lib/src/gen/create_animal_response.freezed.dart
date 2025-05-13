@@ -12,18 +12,13 @@ part of 'create_animal_response.dart';
 
 // dart format off
 T _$identity<T>(T value) => value;
-CreateAnimalResponse _$CreateAnimalResponseFromJson(
-  Map<String, dynamic> json
-) {
-    return CreateAnimalResponseFallback.fromJson(
-      json
-    );
-}
 
 /// @nodoc
 mixin _$CreateAnimalResponse {
 
- Map<String, dynamic> get value;
+/// animal
+@JsonKey(name: CreateAnimalResponse.animalKey) DogOrCatOrParrot get animal;/// message
+@JsonKey(name: CreateAnimalResponse.messageKey) String get message;
 /// Create a copy of CreateAnimalResponse
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -36,16 +31,16 @@ $CreateAnimalResponseCopyWith<CreateAnimalResponse> get copyWith => _$CreateAnim
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateAnimalResponse&&const DeepCollectionEquality().equals(other.value, value));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateAnimalResponse&&const DeepCollectionEquality().equals(other.animal, animal)&&(identical(other.message, message) || other.message == message));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(value));
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(animal),message);
 
 @override
 String toString() {
-  return 'CreateAnimalResponse(value: $value)';
+  return 'CreateAnimalResponse(animal: $animal, message: $message)';
 }
 
 
@@ -56,7 +51,7 @@ abstract mixin class $CreateAnimalResponseCopyWith<$Res>  {
   factory $CreateAnimalResponseCopyWith(CreateAnimalResponse value, $Res Function(CreateAnimalResponse) _then) = _$CreateAnimalResponseCopyWithImpl;
 @useResult
 $Res call({
- Map<String, dynamic> value
+@JsonKey(name: CreateAnimalResponse.animalKey) DogOrCatOrParrot animal,@JsonKey(name: CreateAnimalResponse.messageKey) String message
 });
 
 
@@ -73,10 +68,11 @@ class _$CreateAnimalResponseCopyWithImpl<$Res>
 
 /// Create a copy of CreateAnimalResponse
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? value = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? animal = freezed,Object? message = null,}) {
   return _then(_self.copyWith(
-value: null == value ? _self.value : value // ignore: cast_nullable_to_non_nullable
-as Map<String, dynamic>,
+animal: freezed == animal ? _self.animal : animal // ignore: cast_nullable_to_non_nullable
+as DogOrCatOrParrot,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 
@@ -84,54 +80,51 @@ as Map<String, dynamic>,
 
 
 /// @nodoc
-@JsonSerializable()
 
-class CreateAnimalResponseFallback extends CreateAnimalResponse {
-  const CreateAnimalResponseFallback(final  Map<String, dynamic> value): _value = value,super._();
-  factory CreateAnimalResponseFallback.fromJson(Map<String, dynamic> json) => _$CreateAnimalResponseFallbackFromJson(json);
+@generationJsonSerializable
+class _CreateAnimalResponse extends CreateAnimalResponse {
+  const _CreateAnimalResponse({@JsonKey(name: CreateAnimalResponse.animalKey) required this.animal, @JsonKey(name: CreateAnimalResponse.messageKey) required this.message}): super._();
+  factory _CreateAnimalResponse.fromJson(Map<String, dynamic> json) => _$CreateAnimalResponseFromJson(json);
 
- final  Map<String, dynamic> _value;
-@override Map<String, dynamic> get value {
-  if (_value is EqualUnmodifiableMapView) return _value;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableMapView(_value);
-}
-
+/// animal
+@override@JsonKey(name: CreateAnimalResponse.animalKey) final  DogOrCatOrParrot animal;
+/// message
+@override@JsonKey(name: CreateAnimalResponse.messageKey) final  String message;
 
 /// Create a copy of CreateAnimalResponse
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$CreateAnimalResponseFallbackCopyWith<CreateAnimalResponseFallback> get copyWith => _$CreateAnimalResponseFallbackCopyWithImpl<CreateAnimalResponseFallback>(this, _$identity);
+_$CreateAnimalResponseCopyWith<_CreateAnimalResponse> get copyWith => __$CreateAnimalResponseCopyWithImpl<_CreateAnimalResponse>(this, _$identity);
 
 @override
 Map<String, dynamic> toJson() {
-  return _$CreateAnimalResponseFallbackToJson(this, );
+  return _$CreateAnimalResponseToJson(this, );
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateAnimalResponseFallback&&const DeepCollectionEquality().equals(other._value, _value));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateAnimalResponse&&const DeepCollectionEquality().equals(other.animal, animal)&&(identical(other.message, message) || other.message == message));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_value));
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(animal),message);
 
 @override
 String toString() {
-  return 'CreateAnimalResponse.fallback(value: $value)';
+  return 'CreateAnimalResponse(animal: $animal, message: $message)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $CreateAnimalResponseFallbackCopyWith<$Res> implements $CreateAnimalResponseCopyWith<$Res> {
-  factory $CreateAnimalResponseFallbackCopyWith(CreateAnimalResponseFallback value, $Res Function(CreateAnimalResponseFallback) _then) = _$CreateAnimalResponseFallbackCopyWithImpl;
+abstract mixin class _$CreateAnimalResponseCopyWith<$Res> implements $CreateAnimalResponseCopyWith<$Res> {
+  factory _$CreateAnimalResponseCopyWith(_CreateAnimalResponse value, $Res Function(_CreateAnimalResponse) _then) = __$CreateAnimalResponseCopyWithImpl;
 @override @useResult
 $Res call({
- Map<String, dynamic> value
+@JsonKey(name: CreateAnimalResponse.animalKey) DogOrCatOrParrot animal,@JsonKey(name: CreateAnimalResponse.messageKey) String message
 });
 
 
@@ -139,19 +132,20 @@ $Res call({
 
 }
 /// @nodoc
-class _$CreateAnimalResponseFallbackCopyWithImpl<$Res>
-    implements $CreateAnimalResponseFallbackCopyWith<$Res> {
-  _$CreateAnimalResponseFallbackCopyWithImpl(this._self, this._then);
+class __$CreateAnimalResponseCopyWithImpl<$Res>
+    implements _$CreateAnimalResponseCopyWith<$Res> {
+  __$CreateAnimalResponseCopyWithImpl(this._self, this._then);
 
-  final CreateAnimalResponseFallback _self;
-  final $Res Function(CreateAnimalResponseFallback) _then;
+  final _CreateAnimalResponse _self;
+  final $Res Function(_CreateAnimalResponse) _then;
 
 /// Create a copy of CreateAnimalResponse
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? value = null,}) {
-  return _then(CreateAnimalResponseFallback(
-null == value ? _self._value : value // ignore: cast_nullable_to_non_nullable
-as Map<String, dynamic>,
+@override @pragma('vm:prefer-inline') $Res call({Object? animal = freezed,Object? message = null,}) {
+  return _then(_CreateAnimalResponse(
+animal: freezed == animal ? _self.animal : animal // ignore: cast_nullable_to_non_nullable
+as DogOrCatOrParrot,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 

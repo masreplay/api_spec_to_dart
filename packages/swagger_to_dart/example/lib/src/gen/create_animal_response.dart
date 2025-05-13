@@ -1,3 +1,32 @@
+/// CreateAnimalResponse
+/// {
+///     "properties": {
+///         "animal": {
+///             "anyOf": [
+///                 {
+///                     "$ref": "#/components/schemas/Dog"
+///                 },
+///                 {
+///                     "$ref": "#/components/schemas/Cat"
+///                 },
+///                 {
+///                     "$ref": "#/components/schemas/Parrot"
+///                 }
+///             ],
+///             "title": "Animal"
+///         },
+///         "message": {
+///             "type": "string",
+///             "title": "Message"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "animal",
+///         "message"
+///     ],
+///     "title": "CreateAnimalResponse"
+/// }
 library;
 
 import 'exports.dart';
@@ -5,12 +34,23 @@ part 'create_animal_response.freezed.dart';
 part 'create_animal_response.g.dart'; // CreateAnimalResponse
 
 @freezed
-sealed class CreateAnimalResponse with _$CreateAnimalResponse {
+abstract class CreateAnimalResponse with _$CreateAnimalResponse {
   const CreateAnimalResponse._();
 
-  const factory CreateAnimalResponse.fallback(Map<String, dynamic> value) =
-      CreateAnimalResponseFallback;
+  @generationJsonSerializable
+  const factory CreateAnimalResponse({
+    /// animal
+    @JsonKey(name: CreateAnimalResponse.animalKey)
+    required DogOrCatOrParrot animal,
+
+    /// message
+    @JsonKey(name: CreateAnimalResponse.messageKey) required String message,
+  }) = _CreateAnimalResponse;
 
   factory CreateAnimalResponse.fromJson(Map<String, dynamic> json) =>
       _$CreateAnimalResponseFromJson(json);
+
+  static const String animalKey = "animal";
+
+  static const String messageKey = "message";
 }

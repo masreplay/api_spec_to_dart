@@ -64,6 +64,7 @@ class RegularModelStrategy extends ModelStrategy {
               ..fields.addAll([
                 ...properties.entries.map((value) {
                   final name = Renaming.instance.renameProperty(value.key);
+
                   return Field(
                     (b) => b
                       ..static = true

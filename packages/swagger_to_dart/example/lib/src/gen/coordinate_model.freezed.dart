@@ -12,18 +12,14 @@ part of 'coordinate_model.dart';
 
 // dart format off
 T _$identity<T>(T value) => value;
-CoordinateModel _$CoordinateModelFromJson(
-  Map<String, dynamic> json
-) {
-    return CoordinateModelFallback.fromJson(
-      json
-    );
-}
 
 /// @nodoc
 mixin _$CoordinateModel {
 
- Map<String, dynamic> get value;
+/// coordinate
+@JsonKey(name: CoordinateModel.coordinateKey) CoordinateOrListDynamicOrString? get coordinate;/// latitude
+@JsonKey(name: CoordinateModel.latitudeKey) double? get latitude;/// longitude
+@JsonKey(name: CoordinateModel.longitudeKey) double? get longitude;
 /// Create a copy of CoordinateModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -36,16 +32,16 @@ $CoordinateModelCopyWith<CoordinateModel> get copyWith => _$CoordinateModelCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CoordinateModel&&const DeepCollectionEquality().equals(other.value, value));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CoordinateModel&&const DeepCollectionEquality().equals(other.coordinate, coordinate)&&(identical(other.latitude, latitude) || other.latitude == latitude)&&(identical(other.longitude, longitude) || other.longitude == longitude));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(value));
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(coordinate),latitude,longitude);
 
 @override
 String toString() {
-  return 'CoordinateModel(value: $value)';
+  return 'CoordinateModel(coordinate: $coordinate, latitude: $latitude, longitude: $longitude)';
 }
 
 
@@ -56,7 +52,7 @@ abstract mixin class $CoordinateModelCopyWith<$Res>  {
   factory $CoordinateModelCopyWith(CoordinateModel value, $Res Function(CoordinateModel) _then) = _$CoordinateModelCopyWithImpl;
 @useResult
 $Res call({
- Map<String, dynamic> value
+@JsonKey(name: CoordinateModel.coordinateKey) CoordinateOrListDynamicOrString? coordinate,@JsonKey(name: CoordinateModel.latitudeKey) double? latitude,@JsonKey(name: CoordinateModel.longitudeKey) double? longitude
 });
 
 
@@ -73,10 +69,12 @@ class _$CoordinateModelCopyWithImpl<$Res>
 
 /// Create a copy of CoordinateModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? value = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? coordinate = freezed,Object? latitude = freezed,Object? longitude = freezed,}) {
   return _then(_self.copyWith(
-value: null == value ? _self.value : value // ignore: cast_nullable_to_non_nullable
-as Map<String, dynamic>,
+coordinate: freezed == coordinate ? _self.coordinate : coordinate // ignore: cast_nullable_to_non_nullable
+as CoordinateOrListDynamicOrString?,latitude: freezed == latitude ? _self.latitude : latitude // ignore: cast_nullable_to_non_nullable
+as double?,longitude: freezed == longitude ? _self.longitude : longitude // ignore: cast_nullable_to_non_nullable
+as double?,
   ));
 }
 
@@ -84,54 +82,53 @@ as Map<String, dynamic>,
 
 
 /// @nodoc
-@JsonSerializable()
 
-class CoordinateModelFallback extends CoordinateModel {
-  const CoordinateModelFallback(final  Map<String, dynamic> value): _value = value,super._();
-  factory CoordinateModelFallback.fromJson(Map<String, dynamic> json) => _$CoordinateModelFallbackFromJson(json);
+@generationJsonSerializable
+class _CoordinateModel extends CoordinateModel {
+  const _CoordinateModel({@JsonKey(name: CoordinateModel.coordinateKey) required this.coordinate, @JsonKey(name: CoordinateModel.latitudeKey) required this.latitude, @JsonKey(name: CoordinateModel.longitudeKey) required this.longitude}): super._();
+  factory _CoordinateModel.fromJson(Map<String, dynamic> json) => _$CoordinateModelFromJson(json);
 
- final  Map<String, dynamic> _value;
-@override Map<String, dynamic> get value {
-  if (_value is EqualUnmodifiableMapView) return _value;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableMapView(_value);
-}
-
+/// coordinate
+@override@JsonKey(name: CoordinateModel.coordinateKey) final  CoordinateOrListDynamicOrString? coordinate;
+/// latitude
+@override@JsonKey(name: CoordinateModel.latitudeKey) final  double? latitude;
+/// longitude
+@override@JsonKey(name: CoordinateModel.longitudeKey) final  double? longitude;
 
 /// Create a copy of CoordinateModel
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$CoordinateModelFallbackCopyWith<CoordinateModelFallback> get copyWith => _$CoordinateModelFallbackCopyWithImpl<CoordinateModelFallback>(this, _$identity);
+_$CoordinateModelCopyWith<_CoordinateModel> get copyWith => __$CoordinateModelCopyWithImpl<_CoordinateModel>(this, _$identity);
 
 @override
 Map<String, dynamic> toJson() {
-  return _$CoordinateModelFallbackToJson(this, );
+  return _$CoordinateModelToJson(this, );
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CoordinateModelFallback&&const DeepCollectionEquality().equals(other._value, _value));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CoordinateModel&&const DeepCollectionEquality().equals(other.coordinate, coordinate)&&(identical(other.latitude, latitude) || other.latitude == latitude)&&(identical(other.longitude, longitude) || other.longitude == longitude));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_value));
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(coordinate),latitude,longitude);
 
 @override
 String toString() {
-  return 'CoordinateModel.fallback(value: $value)';
+  return 'CoordinateModel(coordinate: $coordinate, latitude: $latitude, longitude: $longitude)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $CoordinateModelFallbackCopyWith<$Res> implements $CoordinateModelCopyWith<$Res> {
-  factory $CoordinateModelFallbackCopyWith(CoordinateModelFallback value, $Res Function(CoordinateModelFallback) _then) = _$CoordinateModelFallbackCopyWithImpl;
+abstract mixin class _$CoordinateModelCopyWith<$Res> implements $CoordinateModelCopyWith<$Res> {
+  factory _$CoordinateModelCopyWith(_CoordinateModel value, $Res Function(_CoordinateModel) _then) = __$CoordinateModelCopyWithImpl;
 @override @useResult
 $Res call({
- Map<String, dynamic> value
+@JsonKey(name: CoordinateModel.coordinateKey) CoordinateOrListDynamicOrString? coordinate,@JsonKey(name: CoordinateModel.latitudeKey) double? latitude,@JsonKey(name: CoordinateModel.longitudeKey) double? longitude
 });
 
 
@@ -139,19 +136,21 @@ $Res call({
 
 }
 /// @nodoc
-class _$CoordinateModelFallbackCopyWithImpl<$Res>
-    implements $CoordinateModelFallbackCopyWith<$Res> {
-  _$CoordinateModelFallbackCopyWithImpl(this._self, this._then);
+class __$CoordinateModelCopyWithImpl<$Res>
+    implements _$CoordinateModelCopyWith<$Res> {
+  __$CoordinateModelCopyWithImpl(this._self, this._then);
 
-  final CoordinateModelFallback _self;
-  final $Res Function(CoordinateModelFallback) _then;
+  final _CoordinateModel _self;
+  final $Res Function(_CoordinateModel) _then;
 
 /// Create a copy of CoordinateModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? value = null,}) {
-  return _then(CoordinateModelFallback(
-null == value ? _self._value : value // ignore: cast_nullable_to_non_nullable
-as Map<String, dynamic>,
+@override @pragma('vm:prefer-inline') $Res call({Object? coordinate = freezed,Object? latitude = freezed,Object? longitude = freezed,}) {
+  return _then(_CoordinateModel(
+coordinate: freezed == coordinate ? _self.coordinate : coordinate // ignore: cast_nullable_to_non_nullable
+as CoordinateOrListDynamicOrString?,latitude: freezed == latitude ? _self.latitude : latitude // ignore: cast_nullable_to_non_nullable
+as double?,longitude: freezed == longitude ? _self.longitude : longitude // ignore: cast_nullable_to_non_nullable
+as double?,
   ));
 }
 

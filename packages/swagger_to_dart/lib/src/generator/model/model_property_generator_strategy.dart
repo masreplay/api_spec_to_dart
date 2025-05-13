@@ -19,7 +19,6 @@ abstract class PropertyGeneratorStrategy {
   });
 }
 
-
 class TypePropertyGenerator extends PropertyGeneratorStrategy {
   const TypePropertyGenerator(super.context);
 
@@ -198,7 +197,9 @@ class AnyOfPropertyGenerator extends PropertyGeneratorStrategy {
 
     final types =
         nonNullSchemas.map((schema) => resolveDartType(schema)).toList();
-    final unionClassName = generateUnionClassName(types);
+
+    // TODO(masreplay): handle the generation of the case
+    final unionClassName = types.map(Renaming.instance.renameClass).join('Or');
 
     return isNullable ? '$unionClassName?' : unionClassName;
   }
@@ -212,10 +213,6 @@ class AnyOfPropertyGenerator extends PropertyGeneratorStrategy {
       return '$className.${Renaming.instance.renameProperty(defaultValue)}';
     }
     return null;
-  }
-
-  String generateUnionClassName(List<String> types) {
-    return types.map(Renaming.instance.renameClass).join('Or');
   }
 
   String resolveDartType(OpenApiSchema schema) {
@@ -252,6 +249,6 @@ class AnyOfPropertyGenerator extends PropertyGeneratorStrategy {
 
     final types =
         nonNullSchemas.map((schema) => resolveDartType(schema)).toList();
-    return generateUnionClassName(types);
+    return types.map(Renaming.instance.renameClass).join('Or');
   }
 }

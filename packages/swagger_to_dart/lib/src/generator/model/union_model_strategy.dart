@@ -75,7 +75,7 @@ class UnionModelStrategy extends ModelStrategy {
         }).toList();
 
         final unionClassName =
-            types.map((type) => Renaming.instance.renameClass(type)).join('Or');
+            types.map(Renaming.instance.renameClass).join('Or');
 
         throw Library();
       }
@@ -144,6 +144,10 @@ class UnionModelStrategy extends ModelStrategy {
 
     return Library(
       (b) => b
+        ..comments.addAll([
+          '${model.key}',
+          ...JsonFactory.instance.encode(model.value.toJson()).split('\n'),
+        ])
         ..name = filename
         ..directives.addAll([
           Directive.import('exports.dart'),

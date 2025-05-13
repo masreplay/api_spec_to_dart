@@ -2,10 +2,8 @@ import 'package:code_builder/code_builder.dart';
 import 'package:swagger_to_dart/src/config/generation_context.dart';
 import 'package:swagger_to_dart/src/schema/openapi/openapi.dart';
 
-enum ModelTypeEnum { enum_, union, regular }
-
 ///
-/// 
+///
 ///
 abstract class ModelStrategy {
   const ModelStrategy(this.context);

@@ -28,43 +28,30 @@ class ModelGenerator {
   Library run(MapEntry<String, OpenApiSchemas> model) {
     final schema = model.value;
 
-    ModelTypeEnum type = ModelTypeEnum.regular;
+    ModelStrategy strategy = RegularModelStrategy(context);
 
-    if (schema.enum_ != null && schema.enum_!.isNotEmpty) {
-      type = ModelTypeEnum.enum_;
-    }
-
-    final properties = schema.properties ?? {};
-    if (properties.entries.any(
-      (entry) =>
-          _checkAnyOfType(entry.value) || entry.value is OpenApiSchemaOneOf,
-    )) {
-      type = ModelTypeEnum.union;
+    if (schema.enum_ != null) {
+      strategy = EnumModelStrategy(context);
     }
 
     if (schema is OpenApiSchemaAnyOf || schema is OpenApiSchemaOneOf) {
-      type = ModelTypeEnum.union;
+      strategy = UnionModelStrategy(context);
     }
-
-    final strategy = switch (type) {
-      ModelTypeEnum.regular => RegularModelStrategy(context),
-      ModelTypeEnum.enum_ => EnumModelStrategy(context),
-      ModelTypeEnum.union => UnionModelStrategy(context),
-    };
 
     return strategy.generate(model);
   }
 
-  bool _checkAnyOfType(OpenApiSchema schema) {
-    if (schema is! OpenApiSchemaAnyOf) return false;
-    final anyOf = schema.anyOf;
-    if (anyOf == null) return false;
-    if (anyOf.length == 2) {
-      if (anyOf.any(
-        (e) => e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_,
-      )) return false;
-      return true;
-    }
-    return anyOf.length > 2;
-  }
+  // bool _checkAnyOfType(OpenApiSchema schema) {
+  //   if (schema is! OpenApiSchemaAnyOf) return false;
+
+  //   final anyOf = schema.anyOf;
+  //   if (anyOf == null) return false;
+  //   if (anyOf.length == 2) {
+  //     if (anyOf.any(
+  //       (e) => e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_,
+  //     )) return false;
+  //     return true;
+  //   }
+  //   return anyOf.length > 2;
+  // }
 }
