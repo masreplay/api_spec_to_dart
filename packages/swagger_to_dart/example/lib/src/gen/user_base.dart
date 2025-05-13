@@ -36,7 +36,7 @@
 //     "title": "UserBase"
 // }
 
-library user_base;
+library;
 
 import 'exports.dart';
 part 'user_base.freezed.dart';

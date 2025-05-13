@@ -1,6 +1,7 @@
-library coordinate_model;
+library;
 
 import 'exports.dart';
+
 part 'coordinate_model.freezed.dart';
 part 'coordinate_model.g.dart'; // CoordinateModel
 

@@ -20,7 +20,7 @@
 //     "title": "Body_validation-param_body"
 // }
 
-library body_validation_param_body;
+library;
 
 import 'exports.dart';
 part 'body_validation_param_body.freezed.dart';

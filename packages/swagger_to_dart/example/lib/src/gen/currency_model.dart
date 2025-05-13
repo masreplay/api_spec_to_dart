@@ -387,7 +387,7 @@
 //     "title": "CurrencyModel"
 // }
 
-library currency_model;
+library;
 
 import 'exports.dart';
 part 'currency_model.freezed.dart';

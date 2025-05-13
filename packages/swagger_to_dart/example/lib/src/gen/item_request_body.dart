@@ -41,7 +41,7 @@
 //     "title": "ItemRequestBody"
 // }
 
-library item_request_body;
+library;
 
 import 'exports.dart';
 part 'item_request_body.freezed.dart';

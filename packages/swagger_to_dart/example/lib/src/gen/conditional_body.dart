@@ -30,7 +30,7 @@
 //     "title": "ConditionalBody"
 // }
 
-library conditional_body;
+library;
 
 import 'exports.dart';
 part 'conditional_body.freezed.dart';

@@ -18,8 +18,8 @@ class UnionModelStrategy extends ModelStrategy {
       OpenApiSchemaOneOf: AnyOfPropertyGenerator(context),
     };
 
-    final className =
-        Renaming.instance.renameClass(model.value.title ?? model.key);
+    // model.value.title ??
+    final className = Renaming.instance.renameClass(model.key);
     final filename = Renaming.instance.renameFile(className);
     final schema = model.value;
 

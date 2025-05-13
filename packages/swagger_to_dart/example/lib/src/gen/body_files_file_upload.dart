@@ -27,7 +27,7 @@
 //     "title": "Body_files-file_upload"
 // }
 
-library body_files_file_upload;
+library;
 
 import 'exports.dart';
 part 'body_files_file_upload.freezed.dart';

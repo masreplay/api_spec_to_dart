@@ -36,7 +36,7 @@
 //     "title": "PaginationResponse[CategoryResponse]"
 // }
 
-library pagination_response_category_response;
+library;
 
 import 'exports.dart';
 part 'pagination_response_category_response.freezed.dart';

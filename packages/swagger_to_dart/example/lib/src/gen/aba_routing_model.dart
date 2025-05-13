@@ -15,7 +15,7 @@
 //     "title": "ABARoutingModel"
 // }
 
-library aba_routing_model;
+library;
 
 import 'exports.dart';
 part 'aba_routing_model.freezed.dart';

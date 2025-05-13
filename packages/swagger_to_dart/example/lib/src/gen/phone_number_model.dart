@@ -20,7 +20,7 @@
 //     "title": "PhoneNumberModel"
 // }
 
-library phone_number_model;
+library;
 
 import 'exports.dart';
 part 'phone_number_model.freezed.dart';

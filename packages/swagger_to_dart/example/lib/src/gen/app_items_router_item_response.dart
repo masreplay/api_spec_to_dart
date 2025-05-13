@@ -46,35 +46,36 @@
 //     "title": "ItemResponse"
 // }
 
-library item_response;
+library;
 
 import 'exports.dart';
-part 'item_response.freezed.dart';
-part 'item_response.g.dart'; // ItemResponse
+part 'app_items_router_item_response.freezed.dart';
+part 'app_items_router_item_response.g.dart'; // AppItemsRouterItemResponse
 
 @freezed
-abstract class ItemResponse with _$ItemResponse {
-  const ItemResponse._();
+abstract class AppItemsRouterItemResponse with _$AppItemsRouterItemResponse {
+  const AppItemsRouterItemResponse._();
 
-  const factory ItemResponse({
+  const factory AppItemsRouterItemResponse({
     /// id
-    @JsonKey(name: ItemResponse.idKey) required int id,
+    @JsonKey(name: AppItemsRouterItemResponse.idKey) required int id,
 
     /// name
-    @JsonKey(name: ItemResponse.nameKey) required String name,
+    @JsonKey(name: AppItemsRouterItemResponse.nameKey) required String name,
 
     /// description
-    @JsonKey(name: ItemResponse.descriptionKey) required String? description,
+    @JsonKey(name: AppItemsRouterItemResponse.descriptionKey)
+    required String? description,
 
     /// price
-    @JsonKey(name: ItemResponse.priceKey) required double price,
+    @JsonKey(name: AppItemsRouterItemResponse.priceKey) required double price,
 
     /// tax
-    @JsonKey(name: ItemResponse.taxKey) required double? tax,
-  }) = _ItemResponse;
+    @JsonKey(name: AppItemsRouterItemResponse.taxKey) required double? tax,
+  }) = _AppItemsRouterItemResponse;
 
-  factory ItemResponse.fromJson(Map<String, dynamic> json) =>
-      _$ItemResponseFromJson(json);
+  factory AppItemsRouterItemResponse.fromJson(Map<String, dynamic> json) =>
+      _$AppItemsRouterItemResponseFromJson(json);
 
   static const String idKey = "id";
 
