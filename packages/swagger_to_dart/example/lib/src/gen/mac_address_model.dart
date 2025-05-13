@@ -1,18 +1,17 @@
-// MACAddressModel
-// {
-//     "properties": {
-//         "mac_address": {
-//             "type": "string",
-//             "title": "Mac Address"
-//         }
-//     },
-//     "type": "object",
-//     "required": [
-//         "mac_address"
-//     ],
-//     "title": "MACAddressModel"
-// }
-
+/// MACAddressModel
+/// {
+///     "properties": {
+///         "mac_address": {
+///             "type": "string",
+///             "title": "Mac Address"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "mac_address"
+///     ],
+///     "title": "MACAddressModel"
+/// }
 library;
 
 import 'exports.dart';
@@ -32,5 +31,5 @@ abstract class MACAddressModel with _$MACAddressModel {
   factory MACAddressModel.fromJson(Map<String, dynamic> json) =>
       _$MACAddressModelFromJson(json);
 
-  static const String macAddressKey = "macAddress";
+  static const String macAddressKey = "mac_address";
 }

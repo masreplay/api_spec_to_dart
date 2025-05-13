@@ -1,32 +1,31 @@
-// Body_files-file_upload
-// {
-//     "properties": {
-//         "file": {
-//             "type": "string",
-//             "format": "binary",
-//             "description": "File to upload",
-//             "title": "File"
-//         },
-//         "description": {
-//             "anyOf": [
-//                 {
-//                     "type": "string"
-//                 },
-//                 {
-//                     "type": "null"
-//                 }
-//             ],
-//             "description": "File description",
-//             "title": "Description"
-//         }
-//     },
-//     "type": "object",
-//     "required": [
-//         "file"
-//     ],
-//     "title": "Body_files-file_upload"
-// }
-
+/// Body_files-file_upload
+/// {
+///     "properties": {
+///         "file": {
+///             "type": "string",
+///             "format": "binary",
+///             "description": "File to upload",
+///             "title": "File"
+///         },
+///         "description": {
+///             "anyOf": [
+///                 {
+///                     "type": "string"
+///                 },
+///                 {
+///                     "type": "null"
+///                 }
+///             ],
+///             "description": "File description",
+///             "title": "Description"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "file"
+///     ],
+///     "title": "Body_files-file_upload"
+/// }
 library;
 
 import 'exports.dart';

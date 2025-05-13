@@ -1,23 +1,22 @@
-// CategoryResponse
-// {
-//     "properties": {
-//         "id": {
-//             "type": "integer",
-//             "title": "Id"
-//         },
-//         "name": {
-//             "type": "string",
-//             "title": "Name"
-//         }
-//     },
-//     "type": "object",
-//     "required": [
-//         "id",
-//         "name"
-//     ],
-//     "title": "CategoryResponse"
-// }
-
+/// CategoryResponse
+/// {
+///     "properties": {
+///         "id": {
+///             "type": "integer",
+///             "title": "Id"
+///         },
+///         "name": {
+///             "type": "string",
+///             "title": "Name"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "id",
+///         "name"
+///     ],
+///     "title": "CategoryResponse"
+/// }
 library;
 
 import 'exports.dart';

@@ -1,40 +1,40 @@
-// Location
-// {
-//     "properties": {
-//         "lat": {
-//             "type": "number",
-//             "description": "Latitude coordinate between -90 and 90 degrees",
-//             "title": "Latitude"
-//         },
-//         "lng": {
-//             "type": "number",
-//             "description": "Longitude coordinate between -180 and 180 degrees",
-//             "title": "Longitude"
-//         },
-//         "name": {
-//             "anyOf": [
-//                 {
-//                     "type": "string"
-//                 },
-//                 {
-//                     "type": "null"
-//                 }
-//             ],
-//             "description": "Optional location name",
-//             "title": "Name"
-//         }
-//     },
-//     "type": "object",
-//     "required": [
-//         "lat",
-//         "lng"
-//     ],
-//     "title": "Location"
-// }
-
+/// Location
+/// {
+///     "properties": {
+///         "lat": {
+///             "type": "number",
+///             "description": "Latitude coordinate between -90 and 90 degrees",
+///             "title": "Latitude"
+///         },
+///         "lng": {
+///             "type": "number",
+///             "description": "Longitude coordinate between -180 and 180 degrees",
+///             "title": "Longitude"
+///         },
+///         "name": {
+///             "anyOf": [
+///                 {
+///                     "type": "string"
+///                 },
+///                 {
+///                     "type": "null"
+///                 }
+///             ],
+///             "description": "Optional location name",
+///             "title": "Name"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "lat",
+///         "lng"
+///     ],
+///     "title": "Location"
+/// }
 library;
 
 import 'exports.dart';
+
 part 'location.freezed.dart';
 part 'location.g.dart'; // Location
 

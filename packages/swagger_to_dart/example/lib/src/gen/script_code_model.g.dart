@@ -7,7 +7,7 @@ part of 'script_code_model.dart';
 // **************************************************************************
 
 _ScriptCodeModel _$ScriptCodeModelFromJson(Map<String, dynamic> json) =>
-    _ScriptCodeModel(scriptCode: json['scriptCode'] as String);
+    _ScriptCodeModel(scriptCode: json['script_code'] as String);
 
 Map<String, dynamic> _$ScriptCodeModelToJson(_ScriptCodeModel instance) =>
-    <String, dynamic>{'scriptCode': instance.scriptCode};
+    <String, dynamic>{'script_code': instance.scriptCode};

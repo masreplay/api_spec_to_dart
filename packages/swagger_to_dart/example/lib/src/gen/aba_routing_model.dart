@@ -1,20 +1,19 @@
-// ABARoutingModel
-// {
-//     "properties": {
-//         "routing_number": {
-//             "type": "string",
-//             "maxLength": 9,
-//             "minLength": 9,
-//             "title": "Routing Number"
-//         }
-//     },
-//     "type": "object",
-//     "required": [
-//         "routing_number"
-//     ],
-//     "title": "ABARoutingModel"
-// }
-
+/// ABARoutingModel
+/// {
+///     "properties": {
+///         "routing_number": {
+///             "type": "string",
+///             "maxLength": 9,
+///             "minLength": 9,
+///             "title": "Routing Number"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "routing_number"
+///     ],
+///     "title": "ABARoutingModel"
+/// }
 library;
 
 import 'exports.dart';
@@ -35,5 +34,5 @@ abstract class ABARoutingModel with _$ABARoutingModel {
   factory ABARoutingModel.fromJson(Map<String, dynamic> json) =>
       _$ABARoutingModelFromJson(json);
 
-  static const String routingNumberKey = "routingNumber";
+  static const String routingNumberKey = "routing_number";
 }

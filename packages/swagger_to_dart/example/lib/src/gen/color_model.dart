@@ -1,19 +1,18 @@
-// ColorModel
-// {
-//     "properties": {
-//         "color": {
-//             "type": "string",
-//             "format": "color",
-//             "title": "Color"
-//         }
-//     },
-//     "type": "object",
-//     "required": [
-//         "color"
-//     ],
-//     "title": "ColorModel"
-// }
-
+/// ColorModel
+/// {
+///     "properties": {
+///         "color": {
+///             "type": "string",
+///             "format": "color",
+///             "title": "Color"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "color"
+///     ],
+///     "title": "ColorModel"
+/// }
 library;
 
 import 'exports.dart';

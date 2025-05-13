@@ -1,27 +1,26 @@
-// BaseResponse_ItemResponse_
-// {
-//     "properties": {
-//         "data": {
-//             "$ref": "#/components/schemas/app__generic_router__ItemResponse"
-//         },
-//         "message": {
-//             "type": "string",
-//             "title": "Message"
-//         },
-//         "code": {
-//             "type": "integer",
-//             "title": "Code"
-//         }
-//     },
-//     "type": "object",
-//     "required": [
-//         "data",
-//         "message",
-//         "code"
-//     ],
-//     "title": "BaseResponse[ItemResponse]"
-// }
-
+/// BaseResponse_ItemResponse_
+/// {
+///     "properties": {
+///         "data": {
+///             "$ref": "#/components/schemas/app__generic_router__ItemResponse"
+///         },
+///         "message": {
+///             "type": "string",
+///             "title": "Message"
+///         },
+///         "code": {
+///             "type": "integer",
+///             "title": "Code"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "data",
+///         "message",
+///         "code"
+///     ],
+///     "title": "BaseResponse[ItemResponse]"
+/// }
 library;
 
 import 'exports.dart';

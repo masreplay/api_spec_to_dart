@@ -1,46 +1,45 @@
-// ItemRequestBody
-// {
-//     "properties": {
-//         "name": {
-//             "type": "string",
-//             "title": "Name"
-//         },
-//         "description": {
-//             "anyOf": [
-//                 {
-//                     "type": "string"
-//                 },
-//                 {
-//                     "type": "null"
-//                 }
-//             ],
-//             "title": "Description"
-//         },
-//         "price": {
-//             "type": "number",
-//             "title": "Price"
-//         },
-//         "tax": {
-//             "anyOf": [
-//                 {
-//                     "type": "number"
-//                 },
-//                 {
-//                     "type": "null"
-//                 }
-//             ],
-//             "title": "Tax"
-//         }
-//     },
-//     "type": "object",
-//     "required": [
-//         "name",
-//         "description",
-//         "price"
-//     ],
-//     "title": "ItemRequestBody"
-// }
-
+/// ItemRequestBody
+/// {
+///     "properties": {
+///         "name": {
+///             "type": "string",
+///             "title": "Name"
+///         },
+///         "description": {
+///             "anyOf": [
+///                 {
+///                     "type": "string"
+///                 },
+///                 {
+///                     "type": "null"
+///                 }
+///             ],
+///             "title": "Description"
+///         },
+///         "price": {
+///             "type": "number",
+///             "title": "Price"
+///         },
+///         "tax": {
+///             "anyOf": [
+///                 {
+///                     "type": "number"
+///                 },
+///                 {
+///                     "type": "null"
+///                 }
+///             ],
+///             "title": "Tax"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "name",
+///         "description",
+///         "price"
+///     ],
+///     "title": "ItemRequestBody"
+/// }
 library;
 
 import 'exports.dart';

@@ -1,18 +1,17 @@
-// HTTPValidationError
-// {
-//     "properties": {
-//         "detail": {
-//             "type": "array",
-//             "items": {
-//                 "$ref": "#/components/schemas/ValidationError"
-//             },
-//             "title": "Detail"
-//         }
-//     },
-//     "type": "object",
-//     "title": "HTTPValidationError"
-// }
-
+/// HTTPValidationError
+/// {
+///     "properties": {
+///         "detail": {
+///             "type": "array",
+///             "items": {
+///                 "$ref": "#/components/schemas/ValidationError"
+///             },
+///             "title": "Detail"
+///         }
+///     },
+///     "type": "object",
+///     "title": "HTTPValidationError"
+/// }
 library;
 
 import 'exports.dart';

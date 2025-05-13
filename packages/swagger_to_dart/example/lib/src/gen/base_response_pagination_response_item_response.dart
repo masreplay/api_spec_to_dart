@@ -1,27 +1,26 @@
-// BaseResponse_PaginationResponse_ItemResponse__
-// {
-//     "properties": {
-//         "data": {
-//             "$ref": "#/components/schemas/PaginationResponse_ItemResponse_"
-//         },
-//         "message": {
-//             "type": "string",
-//             "title": "Message"
-//         },
-//         "code": {
-//             "type": "integer",
-//             "title": "Code"
-//         }
-//     },
-//     "type": "object",
-//     "required": [
-//         "data",
-//         "message",
-//         "code"
-//     ],
-//     "title": "BaseResponse[PaginationResponse[ItemResponse]]"
-// }
-
+/// BaseResponse_PaginationResponse_ItemResponse__
+/// {
+///     "properties": {
+///         "data": {
+///             "$ref": "#/components/schemas/PaginationResponse_ItemResponse_"
+///         },
+///         "message": {
+///             "type": "string",
+///             "title": "Message"
+///         },
+///         "code": {
+///             "type": "integer",
+///             "title": "Code"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "data",
+///         "message",
+///         "code"
+///     ],
+///     "title": "BaseResponse[PaginationResponse[ItemResponse]]"
+/// }
 library;
 
 import 'exports.dart';

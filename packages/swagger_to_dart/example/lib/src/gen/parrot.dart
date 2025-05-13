@@ -1,34 +1,33 @@
-// Parrot
-// {
-//     "properties": {
-//         "name": {
-//             "type": "string",
-//             "description": "The animal's name",
-//             "title": "Name"
-//         },
-//         "type": {
-//             "type": "string",
-//             "const": "parrot",
-//             "default": "parrot",
-//             "title": "Type"
-//         },
-//         "phrases": {
-//             "type": "array",
-//             "items": {
-//                 "type": "string"
-//             },
-//             "description": "Phrases the parrot can say",
-//             "title": "Phrases"
-//         }
-//     },
-//     "type": "object",
-//     "required": [
-//         "name",
-//         "phrases"
-//     ],
-//     "title": "Parrot"
-// }
-
+/// Parrot
+/// {
+///     "properties": {
+///         "name": {
+///             "type": "string",
+///             "description": "The animal's name",
+///             "title": "Name"
+///         },
+///         "type": {
+///             "type": "string",
+///             "const": "parrot",
+///             "default": "parrot",
+///             "title": "Type"
+///         },
+///         "phrases": {
+///             "type": "array",
+///             "items": {
+///                 "type": "string"
+///             },
+///             "description": "Phrases the parrot can say",
+///             "title": "Phrases"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "name",
+///         "phrases"
+///     ],
+///     "title": "Parrot"
+/// }
 library;
 
 import 'exports.dart';

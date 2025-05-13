@@ -1,31 +1,30 @@
-// Dog
-// {
-//     "properties": {
-//         "name": {
-//             "type": "string",
-//             "description": "The animal's name",
-//             "title": "Name"
-//         },
-//         "type": {
-//             "type": "string",
-//             "const": "dog",
-//             "default": "dog",
-//             "title": "Type"
-//         },
-//         "bark_loudness": {
-//             "type": "integer",
-//             "description": "How loud the dog barks (0-10)",
-//             "title": "Bark Loudness"
-//         }
-//     },
-//     "type": "object",
-//     "required": [
-//         "name",
-//         "bark_loudness"
-//     ],
-//     "title": "Dog"
-// }
-
+/// Dog
+/// {
+///     "properties": {
+///         "name": {
+///             "type": "string",
+///             "description": "The animal's name",
+///             "title": "Name"
+///         },
+///         "type": {
+///             "type": "string",
+///             "const": "dog",
+///             "default": "dog",
+///             "title": "Type"
+///         },
+///         "bark_loudness": {
+///             "type": "integer",
+///             "description": "How loud the dog barks (0-10)",
+///             "title": "Bark Loudness"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "name",
+///         "bark_loudness"
+///     ],
+///     "title": "Dog"
+/// }
 library;
 
 import 'exports.dart';
@@ -54,5 +53,5 @@ abstract class Dog with _$Dog {
 
   static const String typeKey = "type";
 
-  static const String barkLoudnessKey = "barkLoudness";
+  static const String barkLoudnessKey = "bark_loudness";
 }

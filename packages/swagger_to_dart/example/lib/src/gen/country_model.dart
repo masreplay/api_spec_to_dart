@@ -1,58 +1,57 @@
-// CountryModel
-// {
-//     "properties": {
-//         "alpha2": {
-//             "anyOf": [
-//                 {
-//                     "type": "string",
-//                     "pattern": "^\\w{2}$"
-//                 },
-//                 {
-//                     "type": "null"
-//                 }
-//             ],
-//             "title": "Alpha2"
-//         },
-//         "alpha3": {
-//             "anyOf": [
-//                 {
-//                     "type": "string",
-//                     "pattern": "^\\w{3}$"
-//                 },
-//                 {
-//                     "type": "null"
-//                 }
-//             ],
-//             "title": "Alpha3"
-//         },
-//         "numeric": {
-//             "anyOf": [
-//                 {
-//                     "type": "string",
-//                     "pattern": "^[0-9]{3}$"
-//                 },
-//                 {
-//                     "type": "null"
-//                 }
-//             ],
-//             "title": "Numeric"
-//         },
-//         "short_name": {
-//             "anyOf": [
-//                 {
-//                     "type": "string"
-//                 },
-//                 {
-//                     "type": "null"
-//                 }
-//             ],
-//             "title": "Short Name"
-//         }
-//     },
-//     "type": "object",
-//     "title": "CountryModel"
-// }
-
+/// CountryModel
+/// {
+///     "properties": {
+///         "alpha2": {
+///             "anyOf": [
+///                 {
+///                     "type": "string",
+///                     "pattern": "^\\w{2}$"
+///                 },
+///                 {
+///                     "type": "null"
+///                 }
+///             ],
+///             "title": "Alpha2"
+///         },
+///         "alpha3": {
+///             "anyOf": [
+///                 {
+///                     "type": "string",
+///                     "pattern": "^\\w{3}$"
+///                 },
+///                 {
+///                     "type": "null"
+///                 }
+///             ],
+///             "title": "Alpha3"
+///         },
+///         "numeric": {
+///             "anyOf": [
+///                 {
+///                     "type": "string",
+///                     "pattern": "^[0-9]{3}$"
+///                 },
+///                 {
+///                     "type": "null"
+///                 }
+///             ],
+///             "title": "Numeric"
+///         },
+///         "short_name": {
+///             "anyOf": [
+///                 {
+///                     "type": "string"
+///                 },
+///                 {
+///                     "type": "null"
+///                 }
+///             ],
+///             "title": "Short Name"
+///         }
+///     },
+///     "type": "object",
+///     "title": "CountryModel"
+/// }
 library;
 
 import 'exports.dart';
@@ -87,5 +86,5 @@ abstract class CountryModel with _$CountryModel {
 
   static const String numericKey = "numeric";
 
-  static const String shortNameKey = "shortName";
+  static const String shortNameKey = "short_name";
 }

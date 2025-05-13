@@ -1,38 +1,37 @@
-// ValidationError
-// {
-//     "properties": {
-//         "loc": {
-//             "type": "array",
-//             "items": {
-//                 "anyOf": [
-//                     {
-//                         "type": "string"
-//                     },
-//                     {
-//                         "type": "integer"
-//                     }
-//                 ]
-//             },
-//             "title": "Location"
-//         },
-//         "msg": {
-//             "type": "string",
-//             "title": "Message"
-//         },
-//         "type": {
-//             "type": "string",
-//             "title": "Error Type"
-//         }
-//     },
-//     "type": "object",
-//     "required": [
-//         "loc",
-//         "msg",
-//         "type"
-//     ],
-//     "title": "ValidationError"
-// }
-
+/// ValidationError
+/// {
+///     "properties": {
+///         "loc": {
+///             "type": "array",
+///             "items": {
+///                 "anyOf": [
+///                     {
+///                         "type": "string"
+///                     },
+///                     {
+///                         "type": "integer"
+///                     }
+///                 ]
+///             },
+///             "title": "Location"
+///         },
+///         "msg": {
+///             "type": "string",
+///             "title": "Message"
+///         },
+///         "type": {
+///             "type": "string",
+///             "title": "Error Type"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "loc",
+///         "msg",
+///         "type"
+///     ],
+///     "title": "ValidationError"
+/// }
 library;
 
 import 'exports.dart';

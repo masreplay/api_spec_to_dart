@@ -1,31 +1,30 @@
-// Body_files-form_basic
-// {
-//     "properties": {
-//         "username": {
-//             "type": "string",
-//             "description": "Username",
-//             "title": "Username"
-//         },
-//         "password": {
-//             "type": "string",
-//             "description": "Password",
-//             "title": "Password"
-//         },
-//         "remember": {
-//             "type": "boolean",
-//             "description": "Remember login",
-//             "default": false,
-//             "title": "Remember"
-//         }
-//     },
-//     "type": "object",
-//     "required": [
-//         "username",
-//         "password"
-//     ],
-//     "title": "Body_files-form_basic"
-// }
-
+/// Body_files-form_basic
+/// {
+///     "properties": {
+///         "username": {
+///             "type": "string",
+///             "description": "Username",
+///             "title": "Username"
+///         },
+///         "password": {
+///             "type": "string",
+///             "description": "Password",
+///             "title": "Password"
+///         },
+///         "remember": {
+///             "type": "boolean",
+///             "description": "Remember login",
+///             "default": false,
+///             "title": "Remember"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "username",
+///         "password"
+///     ],
+///     "title": "Body_files-form_basic"
+/// }
 library;
 
 import 'exports.dart';

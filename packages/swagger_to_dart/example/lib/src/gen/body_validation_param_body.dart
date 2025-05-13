@@ -1,25 +1,24 @@
-// Body_validation-param_body
-// {
-//     "properties": {
-//         "data": {
-//             "type": "object",
-//             "description": "Arbitrary data object",
-//             "title": "Data"
-//         },
-//         "importance": {
-//             "type": "integer",
-//             "description": "Importance level from 0-10",
-//             "title": "Importance"
-//         }
-//     },
-//     "type": "object",
-//     "required": [
-//         "data",
-//         "importance"
-//     ],
-//     "title": "Body_validation-param_body"
-// }
-
+/// Body_validation-param_body
+/// {
+///     "properties": {
+///         "data": {
+///             "type": "object",
+///             "description": "Arbitrary data object",
+///             "title": "Data"
+///         },
+///         "importance": {
+///             "type": "integer",
+///             "description": "Importance level from 0-10",
+///             "title": "Importance"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "data",
+///         "importance"
+///     ],
+///     "title": "Body_validation-param_body"
+/// }
 library;
 
 import 'exports.dart';

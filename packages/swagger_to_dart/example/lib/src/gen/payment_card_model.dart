@@ -1,30 +1,29 @@
-// PaymentCardModel
-// {
-//     "properties": {
-//         "card_number": {
-//             "type": "string",
-//             "maxLength": 19,
-//             "minLength": 12,
-//             "title": "Card Number"
-//         },
-//         "card_brand": {
-//             "anyOf": [
-//                 {
-//                     "$ref": "#/components/schemas/PaymentCardBrand"
-//                 },
-//                 {
-//                     "type": "null"
-//                 }
-//             ]
-//         }
-//     },
-//     "type": "object",
-//     "required": [
-//         "card_number"
-//     ],
-//     "title": "PaymentCardModel"
-// }
-
+/// PaymentCardModel
+/// {
+///     "properties": {
+///         "card_number": {
+///             "type": "string",
+///             "maxLength": 19,
+///             "minLength": 12,
+///             "title": "Card Number"
+///         },
+///         "card_brand": {
+///             "anyOf": [
+///                 {
+///                     "$ref": "#/components/schemas/PaymentCardBrand"
+///                 },
+///                 {
+///                     "type": "null"
+///                 }
+///             ]
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "card_number"
+///     ],
+///     "title": "PaymentCardModel"
+/// }
 library;
 
 import 'exports.dart';
@@ -48,7 +47,7 @@ abstract class PaymentCardModel with _$PaymentCardModel {
   factory PaymentCardModel.fromJson(Map<String, dynamic> json) =>
       _$PaymentCardModelFromJson(json);
 
-  static const String cardNumberKey = "cardNumber";
+  static const String cardNumberKey = "card_number";
 
-  static const String cardBrandKey = "cardBrand";
+  static const String cardBrandKey = "card_brand";
 }

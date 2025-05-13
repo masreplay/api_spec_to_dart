@@ -1,23 +1,22 @@
-// Coordinate
-// {
-//     "properties": {
-//         "latitude": {
-//             "type": "number",
-//             "title": "Latitude"
-//         },
-//         "longitude": {
-//             "type": "number",
-//             "title": "Longitude"
-//         }
-//     },
-//     "type": "object",
-//     "required": [
-//         "latitude",
-//         "longitude"
-//     ],
-//     "title": "Coordinate"
-// }
-
+/// Coordinate
+/// {
+///     "properties": {
+///         "latitude": {
+///             "type": "number",
+///             "title": "Latitude"
+///         },
+///         "longitude": {
+///             "type": "number",
+///             "title": "Longitude"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "latitude",
+///         "longitude"
+///     ],
+///     "title": "Coordinate"
+/// }
 library;
 
 import 'exports.dart';

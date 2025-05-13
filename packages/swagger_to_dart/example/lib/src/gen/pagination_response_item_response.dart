@@ -1,41 +1,40 @@
-// PaginationResponse_ItemResponse_
-// {
-//     "properties": {
-//         "items": {
-//             "type": "array",
-//             "items": {
-//                 "$ref": "#/components/schemas/app__generic_router__ItemResponse"
-//             },
-//             "title": "Items"
-//         },
-//         "total": {
-//             "type": "integer",
-//             "title": "Total"
-//         },
-//         "page": {
-//             "type": "integer",
-//             "title": "Page"
-//         },
-//         "per_page": {
-//             "type": "integer",
-//             "title": "Per Page"
-//         },
-//         "total_pages": {
-//             "type": "integer",
-//             "title": "Total Pages"
-//         }
-//     },
-//     "type": "object",
-//     "required": [
-//         "items",
-//         "total",
-//         "page",
-//         "per_page",
-//         "total_pages"
-//     ],
-//     "title": "PaginationResponse[ItemResponse]"
-// }
-
+/// PaginationResponse_ItemResponse_
+/// {
+///     "properties": {
+///         "items": {
+///             "type": "array",
+///             "items": {
+///                 "$ref": "#/components/schemas/app__generic_router__ItemResponse"
+///             },
+///             "title": "Items"
+///         },
+///         "total": {
+///             "type": "integer",
+///             "title": "Total"
+///         },
+///         "page": {
+///             "type": "integer",
+///             "title": "Page"
+///         },
+///         "per_page": {
+///             "type": "integer",
+///             "title": "Per Page"
+///         },
+///         "total_pages": {
+///             "type": "integer",
+///             "title": "Total Pages"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "items",
+///         "total",
+///         "page",
+///         "per_page",
+///         "total_pages"
+///     ],
+///     "title": "PaginationResponse[ItemResponse]"
+/// }
 library;
 
 import 'exports.dart';
@@ -77,7 +76,7 @@ abstract class PaginationResponseItemResponse
 
   static const String pageKey = "page";
 
-  static const String perPageKey = "perPage";
+  static const String perPageKey = "per_page";
 
-  static const String totalPagesKey = "totalPages";
+  static const String totalPagesKey = "total_pages";
 }

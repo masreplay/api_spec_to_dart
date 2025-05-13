@@ -1,19 +1,18 @@
-// S3PathModel
-// {
-//     "properties": {
-//         "s3_path": {
-//             "type": "string",
-//             "pattern": "^s3://([^/]+)/(.*?([^/]+)/?)$",
-//             "title": "S3 Path"
-//         }
-//     },
-//     "type": "object",
-//     "required": [
-//         "s3_path"
-//     ],
-//     "title": "S3PathModel"
-// }
-
+/// S3PathModel
+/// {
+///     "properties": {
+///         "s3_path": {
+///             "type": "string",
+///             "pattern": "^s3://([^/]+)/(.*?([^/]+)/?)$",
+///             "title": "S3 Path"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "s3_path"
+///     ],
+///     "title": "S3PathModel"
+/// }
 library;
 
 import 'exports.dart';
@@ -33,5 +32,5 @@ abstract class S3PathModel with _$S3PathModel {
   factory S3PathModel.fromJson(Map<String, dynamic> json) =>
       _$S3PathModelFromJson(json);
 
-  static const String s3PathKey = "s3Path";
+  static const String s3PathKey = "s3_path";
 }

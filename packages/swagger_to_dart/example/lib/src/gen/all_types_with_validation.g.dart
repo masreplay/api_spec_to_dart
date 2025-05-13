@@ -9,24 +9,24 @@ part of 'all_types_with_validation.dart';
 _AllTypesWithValidation _$AllTypesWithValidationFromJson(
   Map<String, dynamic> json,
 ) => _AllTypesWithValidation(
-  intValue: (json['intValue'] as num).toInt(),
-  floatValue: (json['floatValue'] as num).toDouble(),
-  strValue: json['strValue'] as String,
-  boolValue: json['boolValue'] as bool,
-  emailValue: json['emailValue'] as String,
-  urlValue: Uri.parse(json['urlValue'] as String),
+  intValue: (json['int_value'] as num).toInt(),
+  floatValue: (json['float_value'] as num).toDouble(),
+  strValue: json['str_value'] as String,
+  boolValue: json['bool_value'] as bool,
+  emailValue: json['email_value'] as String,
+  urlValue: Uri.parse(json['url_value'] as String),
   listValue:
-      (json['listValue'] as List<dynamic>).map((e) => e as String).toList(),
+      (json['list_value'] as List<dynamic>).map((e) => e as String).toList(),
 );
 
 Map<String, dynamic> _$AllTypesWithValidationToJson(
   _AllTypesWithValidation instance,
 ) => <String, dynamic>{
-  'intValue': instance.intValue,
-  'floatValue': instance.floatValue,
-  'strValue': instance.strValue,
-  'boolValue': instance.boolValue,
-  'emailValue': instance.emailValue,
-  'urlValue': instance.urlValue.toString(),
-  'listValue': instance.listValue,
+  'int_value': instance.intValue,
+  'float_value': instance.floatValue,
+  'str_value': instance.strValue,
+  'bool_value': instance.boolValue,
+  'email_value': instance.emailValue,
+  'url_value': instance.urlValue.toString(),
+  'list_value': instance.listValue,
 };

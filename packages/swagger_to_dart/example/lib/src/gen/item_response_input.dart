@@ -1,23 +1,22 @@
-// ItemResponse-Input
-// {
-//     "properties": {
-//         "id": {
-//             "type": "integer",
-//             "title": "Id"
-//         },
-//         "name": {
-//             "type": "string",
-//             "title": "Name"
-//         }
-//     },
-//     "type": "object",
-//     "required": [
-//         "id",
-//         "name"
-//     ],
-//     "title": "ItemResponse"
-// }
-
+/// ItemResponse-Input
+/// {
+///     "properties": {
+///         "id": {
+///             "type": "integer",
+///             "title": "Id"
+///         },
+///         "name": {
+///             "type": "string",
+///             "title": "Name"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "id",
+///         "name"
+///     ],
+///     "title": "ItemResponse"
+/// }
 library;
 
 import 'exports.dart';

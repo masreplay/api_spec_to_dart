@@ -1,18 +1,17 @@
-// DomainModel
-// {
-//     "properties": {
-//         "domain": {
-//             "type": "string",
-//             "title": "Domain"
-//         }
-//     },
-//     "type": "object",
-//     "required": [
-//         "domain"
-//     ],
-//     "title": "DomainModel"
-// }
-
+/// DomainModel
+/// {
+///     "properties": {
+///         "domain": {
+///             "type": "string",
+///             "title": "Domain"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "domain"
+///     ],
+///     "title": "DomainModel"
+/// }
 library;
 
 import 'exports.dart';

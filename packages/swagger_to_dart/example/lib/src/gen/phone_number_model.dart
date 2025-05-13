@@ -1,25 +1,24 @@
-// PhoneNumberModel
-// {
-//     "properties": {
-//         "phone": {
-//             "type": "string",
-//             "format": "phone",
-//             "title": "Phone"
-//         },
-//         "phone2": {
-//             "type": "string",
-//             "format": "phone",
-//             "title": "Phone2"
-//         }
-//     },
-//     "type": "object",
-//     "required": [
-//         "phone",
-//         "phone2"
-//     ],
-//     "title": "PhoneNumberModel"
-// }
-
+/// PhoneNumberModel
+/// {
+///     "properties": {
+///         "phone": {
+///             "type": "string",
+///             "format": "phone",
+///             "title": "Phone"
+///         },
+///         "phone2": {
+///             "type": "string",
+///             "format": "phone",
+///             "title": "Phone2"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "phone",
+///         "phone2"
+///     ],
+///     "title": "PhoneNumberModel"
+/// }
 library;
 
 import 'exports.dart';

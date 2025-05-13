@@ -1,51 +1,50 @@
-// app__items_router__ItemResponse
-// {
-//     "properties": {
-//         "id": {
-//             "type": "integer",
-//             "title": "Id"
-//         },
-//         "name": {
-//             "type": "string",
-//             "title": "Name"
-//         },
-//         "description": {
-//             "anyOf": [
-//                 {
-//                     "type": "string"
-//                 },
-//                 {
-//                     "type": "null"
-//                 }
-//             ],
-//             "title": "Description"
-//         },
-//         "price": {
-//             "type": "number",
-//             "title": "Price"
-//         },
-//         "tax": {
-//             "anyOf": [
-//                 {
-//                     "type": "number"
-//                 },
-//                 {
-//                     "type": "null"
-//                 }
-//             ],
-//             "title": "Tax"
-//         }
-//     },
-//     "type": "object",
-//     "required": [
-//         "id",
-//         "name",
-//         "description",
-//         "price"
-//     ],
-//     "title": "ItemResponse"
-// }
-
+/// app__items_router__ItemResponse
+/// {
+///     "properties": {
+///         "id": {
+///             "type": "integer",
+///             "title": "Id"
+///         },
+///         "name": {
+///             "type": "string",
+///             "title": "Name"
+///         },
+///         "description": {
+///             "anyOf": [
+///                 {
+///                     "type": "string"
+///                 },
+///                 {
+///                     "type": "null"
+///                 }
+///             ],
+///             "title": "Description"
+///         },
+///         "price": {
+///             "type": "number",
+///             "title": "Price"
+///         },
+///         "tax": {
+///             "anyOf": [
+///                 {
+///                     "type": "number"
+///                 },
+///                 {
+///                     "type": "null"
+///                 }
+///             ],
+///             "title": "Tax"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "id",
+///         "name",
+///         "description",
+///         "price"
+///     ],
+///     "title": "ItemResponse"
+/// }
 library;
 
 import 'exports.dart';

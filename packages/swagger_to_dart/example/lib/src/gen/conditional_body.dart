@@ -1,35 +1,34 @@
-// ConditionalBody
-// {
-//     "properties": {
-//         "item_id": {
-//             "anyOf": [
-//                 {
-//                     "type": "integer"
-//                 },
-//                 {
-//                     "type": "null"
-//                 }
-//             ],
-//             "description": "Item ID (if provided)",
-//             "title": "Item Id"
-//         },
-//         "item_name": {
-//             "anyOf": [
-//                 {
-//                     "type": "string"
-//                 },
-//                 {
-//                     "type": "null"
-//                 }
-//             ],
-//             "description": "Item name (if provided)",
-//             "title": "Item Name"
-//         }
-//     },
-//     "type": "object",
-//     "title": "ConditionalBody"
-// }
-
+/// ConditionalBody
+/// {
+///     "properties": {
+///         "item_id": {
+///             "anyOf": [
+///                 {
+///                     "type": "integer"
+///                 },
+///                 {
+///                     "type": "null"
+///                 }
+///             ],
+///             "description": "Item ID (if provided)",
+///             "title": "Item Id"
+///         },
+///         "item_name": {
+///             "anyOf": [
+///                 {
+///                     "type": "string"
+///                 },
+///                 {
+///                     "type": "null"
+///                 }
+///             ],
+///             "description": "Item name (if provided)",
+///             "title": "Item Name"
+///         }
+///     },
+///     "type": "object",
+///     "title": "ConditionalBody"
+/// }
 library;
 
 import 'exports.dart';
@@ -52,7 +51,7 @@ abstract class ConditionalBody with _$ConditionalBody {
   factory ConditionalBody.fromJson(Map<String, dynamic> json) =>
       _$ConditionalBodyFromJson(json);
 
-  static const String itemIdKey = "itemId";
+  static const String itemIdKey = "item_id";
 
-  static const String itemNameKey = "itemName";
+  static const String itemNameKey = "item_name";
 }

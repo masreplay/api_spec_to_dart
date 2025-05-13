@@ -1,49 +1,48 @@
-// UserCreate
-// {
-//     "properties": {
-//         "username": {
-//             "type": "string",
-//             "maxLength": 50,
-//             "minLength": 3,
-//             "description": "Username between 3-50 characters, alphanumeric with _ and -",
-//             "pattern": "^[a-zA-Z0-9_-]+$",
-//             "title": "Username"
-//         },
-//         "email": {
-//             "type": "string",
-//             "format": "email",
-//             "description": "Valid email address",
-//             "title": "Email"
-//         },
-//         "full_name": {
-//             "anyOf": [
-//                 {
-//                     "type": "string"
-//                 },
-//                 {
-//                     "type": "null"
-//                 }
-//             ],
-//             "description": "User's full name",
-//             "title": "Full Name"
-//         },
-//         "password": {
-//             "type": "string",
-//             "minLength": 8,
-//             "format": "password",
-//             "description": "Password with minimum 8 characters",
-//             "title": "Password"
-//         }
-//     },
-//     "type": "object",
-//     "required": [
-//         "username",
-//         "email",
-//         "password"
-//     ],
-//     "title": "UserCreate"
-// }
-
+/// UserCreate
+/// {
+///     "properties": {
+///         "username": {
+///             "type": "string",
+///             "maxLength": 50,
+///             "minLength": 3,
+///             "description": "Username between 3-50 characters, alphanumeric with _ and -",
+///             "pattern": "^[a-zA-Z0-9_-]+$",
+///             "title": "Username"
+///         },
+///         "email": {
+///             "type": "string",
+///             "format": "email",
+///             "description": "Valid email address",
+///             "title": "Email"
+///         },
+///         "full_name": {
+///             "anyOf": [
+///                 {
+///                     "type": "string"
+///                 },
+///                 {
+///                     "type": "null"
+///                 }
+///             ],
+///             "description": "User's full name",
+///             "title": "Full Name"
+///         },
+///         "password": {
+///             "type": "string",
+///             "minLength": 8,
+///             "format": "password",
+///             "description": "Password with minimum 8 characters",
+///             "title": "Password"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "username",
+///         "email",
+///         "password"
+///     ],
+///     "title": "UserCreate"
+/// }
 library;
 
 import 'exports.dart';
@@ -76,7 +75,7 @@ abstract class UserCreate with _$UserCreate {
 
   static const String emailKey = "email";
 
-  static const String fullNameKey = "fullName";
+  static const String fullNameKey = "full_name";
 
   static const String passwordKey = "password";
 }

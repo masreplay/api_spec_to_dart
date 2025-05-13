@@ -1,18 +1,17 @@
-// ISBNModel
-// {
-//     "properties": {
-//         "isbn": {
-//             "type": "string",
-//             "title": "Isbn"
-//         }
-//     },
-//     "type": "object",
-//     "required": [
-//         "isbn"
-//     ],
-//     "title": "ISBNModel"
-// }
-
+/// ISBNModel
+/// {
+///     "properties": {
+///         "isbn": {
+///             "type": "string",
+///             "title": "Isbn"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "isbn"
+///     ],
+///     "title": "ISBNModel"
+/// }
 library;
 
 import 'exports.dart';

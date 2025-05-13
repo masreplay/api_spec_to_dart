@@ -19,8 +19,8 @@ _PaginationResponseItemResponse _$PaginationResponseItemResponseFromJson(
           .toList(),
   total: (json['total'] as num).toInt(),
   page: (json['page'] as num).toInt(),
-  perPage: (json['perPage'] as num).toInt(),
-  totalPages: (json['totalPages'] as num).toInt(),
+  perPage: (json['per_page'] as num).toInt(),
+  totalPages: (json['total_pages'] as num).toInt(),
 );
 
 Map<String, dynamic> _$PaginationResponseItemResponseToJson(
@@ -29,6 +29,6 @@ Map<String, dynamic> _$PaginationResponseItemResponseToJson(
   'items': instance.items,
   'total': instance.total,
   'page': instance.page,
-  'perPage': instance.perPage,
-  'totalPages': instance.totalPages,
+  'per_page': instance.perPage,
+  'total_pages': instance.totalPages,
 };

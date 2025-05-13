@@ -1,19 +1,18 @@
-// VersionModel
-// {
-//     "properties": {
-//         "version": {
-//             "type": "string",
-//             "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$",
-//             "title": "Version"
-//         }
-//     },
-//     "type": "object",
-//     "required": [
-//         "version"
-//     ],
-//     "title": "VersionModel"
-// }
-
+/// VersionModel
+/// {
+///     "properties": {
+///         "version": {
+///             "type": "string",
+///             "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$",
+///             "title": "Version"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "version"
+///     ],
+///     "title": "VersionModel"
+/// }
 library;
 
 import 'exports.dart';

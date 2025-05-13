@@ -11,7 +11,7 @@ _CountryModel _$CountryModelFromJson(Map<String, dynamic> json) =>
       alpha2: json['alpha2'] as String?,
       alpha3: json['alpha3'] as String?,
       numeric: json['numeric'] as String?,
-      shortName: json['shortName'] as String?,
+      shortName: json['short_name'] as String?,
     );
 
 Map<String, dynamic> _$CountryModelToJson(_CountryModel instance) =>
@@ -19,5 +19,5 @@ Map<String, dynamic> _$CountryModelToJson(_CountryModel instance) =>
       'alpha2': instance.alpha2,
       'alpha3': instance.alpha3,
       'numeric': instance.numeric,
-      'shortName': instance.shortName,
+      'short_name': instance.shortName,
     };

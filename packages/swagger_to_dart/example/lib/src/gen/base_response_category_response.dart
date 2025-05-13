@@ -1,27 +1,26 @@
-// BaseResponse_CategoryResponse_
-// {
-//     "properties": {
-//         "data": {
-//             "$ref": "#/components/schemas/CategoryResponse"
-//         },
-//         "message": {
-//             "type": "string",
-//             "title": "Message"
-//         },
-//         "code": {
-//             "type": "integer",
-//             "title": "Code"
-//         }
-//     },
-//     "type": "object",
-//     "required": [
-//         "data",
-//         "message",
-//         "code"
-//     ],
-//     "title": "BaseResponse[CategoryResponse]"
-// }
-
+/// BaseResponse_CategoryResponse_
+/// {
+///     "properties": {
+///         "data": {
+///             "$ref": "#/components/schemas/CategoryResponse"
+///         },
+///         "message": {
+///             "type": "string",
+///             "title": "Message"
+///         },
+///         "code": {
+///             "type": "integer",
+///             "title": "Code"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "data",
+///         "message",
+///         "code"
+///     ],
+///     "title": "BaseResponse[CategoryResponse]"
+/// }
 library;
 
 import 'exports.dart';

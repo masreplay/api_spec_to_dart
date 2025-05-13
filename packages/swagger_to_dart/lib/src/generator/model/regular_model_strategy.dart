@@ -18,20 +18,18 @@ class RegularModelStrategy extends ModelStrategy {
     // model.value.title ??
     final className = Renaming.instance.renameClass(model.key);
     final filename = Renaming.instance.renameFile(className);
-    final properties = model.value.properties ?? {};
+    final Map<String, OpenApiSchema> properties = model.value.properties ?? {};
 
     final parameters = <Parameter>[];
     for (final entry in properties.entries) {
-      final key = entry.key;
       final schema = entry.value;
-      final propertyName = Renaming.instance.renameProperty(key);
 
       final generator = propertyGenerators[schema.runtimeType];
       if (generator != null) {
         final fieldCode = generator.generate(
           className: className,
-          propertyName: propertyName,
-          key: key,
+          propertyName: Renaming.instance.renameProperty(entry.key),
+          key: entry.key,
           schema: schema,
         );
         parameters.add(fieldCode);
@@ -40,15 +38,18 @@ class RegularModelStrategy extends ModelStrategy {
 
     return Library(
       (b) => b
-        ..comments.addAll([
-          '${model.key}',
-          ...JsonFactory.instance.encode(model.value.toJson()).split('\n'),
-        ])
         ..name = filename
         ..directives.addAll([
           Directive.import('exports.dart'),
           Directive.part('${filename}.freezed.dart'),
           Directive.part('${filename}.g.dart'),
+        ])
+        ..docs.addAll([
+          '/// ${model.key}',
+          ...JsonFactory.instance
+              .encode(model.value.toJson())
+              .split('\n')
+              .map((e) => '/// $e'),
         ])
         ..body.addAll([
           Class(
@@ -61,15 +62,17 @@ class RegularModelStrategy extends ModelStrategy {
               ..name = className
               ..mixins.addAll([refer('_\$${className}')])
               ..fields.addAll([
-                for (final entry in parameters)
-                  Field(
+                ...properties.entries.map((value) {
+                  final name = Renaming.instance.renameProperty(value.key);
+                  return Field(
                     (b) => b
                       ..static = true
                       ..modifier = FieldModifier.constant
-                      ..name = '${entry.name}Key'
+                      ..name = '${name}Key'
                       ..type = refer('$String')
-                      ..assignment = Code('"${entry.name}"'),
-                  ),
+                      ..assignment = Code('"${value.key}"'),
+                  );
+                })
               ])
               ..constructors.addAll([
                 Constructor(

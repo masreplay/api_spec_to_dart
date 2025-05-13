@@ -1,79 +1,78 @@
-// User
-// {
-//     "properties": {
-//         "username": {
-//             "type": "string",
-//             "maxLength": 50,
-//             "minLength": 3,
-//             "description": "Username between 3-50 characters, alphanumeric with _ and -",
-//             "pattern": "^[a-zA-Z0-9_-]+$",
-//             "title": "Username"
-//         },
-//         "email": {
-//             "type": "string",
-//             "format": "email",
-//             "description": "Valid email address",
-//             "title": "Email"
-//         },
-//         "full_name": {
-//             "anyOf": [
-//                 {
-//                     "type": "string"
-//                 },
-//                 {
-//                     "type": "null"
-//                 }
-//             ],
-//             "description": "User's full name",
-//             "title": "Full Name"
-//         },
-//         "id": {
-//             "type": "integer",
-//             "description": "Unique user identifier",
-//             "title": "Id"
-//         },
-//         "is_active": {
-//             "type": "boolean",
-//             "description": "User account status",
-//             "default": true,
-//             "title": "Is Active"
-//         },
-//         "created_at": {
-//             "type": "string",
-//             "format": "date-time",
-//             "description": "Account creation timestamp",
-//             "title": "Created At"
-//         },
-//         "location": {
-//             "anyOf": [
-//                 {
-//                     "$ref": "#/components/schemas/Location"
-//                 },
-//                 {
-//                     "type": "null"
-//                 }
-//             ],
-//             "description": "User's location information"
-//         },
-//         "tags": {
-//             "type": "array",
-//             "items": {
-//                 "type": "string"
-//             },
-//             "description": "List of tags associated with the user",
-//             "default": [],
-//             "title": "Tags"
-//         }
-//     },
-//     "type": "object",
-//     "required": [
-//         "username",
-//         "email",
-//         "id"
-//     ],
-//     "title": "User"
-// }
-
+/// User
+/// {
+///     "properties": {
+///         "username": {
+///             "type": "string",
+///             "maxLength": 50,
+///             "minLength": 3,
+///             "description": "Username between 3-50 characters, alphanumeric with _ and -",
+///             "pattern": "^[a-zA-Z0-9_-]+$",
+///             "title": "Username"
+///         },
+///         "email": {
+///             "type": "string",
+///             "format": "email",
+///             "description": "Valid email address",
+///             "title": "Email"
+///         },
+///         "full_name": {
+///             "anyOf": [
+///                 {
+///                     "type": "string"
+///                 },
+///                 {
+///                     "type": "null"
+///                 }
+///             ],
+///             "description": "User's full name",
+///             "title": "Full Name"
+///         },
+///         "id": {
+///             "type": "integer",
+///             "description": "Unique user identifier",
+///             "title": "Id"
+///         },
+///         "is_active": {
+///             "type": "boolean",
+///             "description": "User account status",
+///             "default": true,
+///             "title": "Is Active"
+///         },
+///         "created_at": {
+///             "type": "string",
+///             "format": "date-time",
+///             "description": "Account creation timestamp",
+///             "title": "Created At"
+///         },
+///         "location": {
+///             "anyOf": [
+///                 {
+///                     "$ref": "#/components/schemas/Location"
+///                 },
+///                 {
+///                     "type": "null"
+///                 }
+///             ],
+///             "description": "User's location information"
+///         },
+///         "tags": {
+///             "type": "array",
+///             "items": {
+///                 "type": "string"
+///             },
+///             "description": "List of tags associated with the user",
+///             "default": [],
+///             "title": "Tags"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "username",
+///         "email",
+///         "id"
+///     ],
+///     "title": "User"
+/// }
 library;
 
 import 'exports.dart';
@@ -117,13 +116,13 @@ abstract class User with _$User {
 
   static const String emailKey = "email";
 
-  static const String fullNameKey = "fullName";
+  static const String fullNameKey = "full_name";
 
   static const String idKey = "id";
 
-  static const String isActiveKey = "isActive";
+  static const String isActiveKey = "is_active";
 
-  static const String createdAtKey = "createdAt";
+  static const String createdAtKey = "created_at";
 
   static const String locationKey = "location";
 

@@ -1,28 +1,27 @@
-// Body_files-files_multiple
-// {
-//     "properties": {
-//         "files": {
-//             "type": "array",
-//             "items": {
-//                 "type": "string",
-//                 "format": "binary"
-//             },
-//             "description": "List of files to upload",
-//             "title": "Files"
-//         },
-//         "notes": {
-//             "type": "string",
-//             "description": "Notes about the uploads",
-//             "title": "Notes"
-//         }
-//     },
-//     "type": "object",
-//     "required": [
-//         "files"
-//     ],
-//     "title": "Body_files-files_multiple"
-// }
-
+/// Body_files-files_multiple
+/// {
+///     "properties": {
+///         "files": {
+///             "type": "array",
+///             "items": {
+///                 "type": "string",
+///                 "format": "binary"
+///             },
+///             "description": "List of files to upload",
+///             "title": "Files"
+///         },
+///         "notes": {
+///             "type": "string",
+///             "description": "Notes about the uploads",
+///             "title": "Notes"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "files"
+///     ],
+///     "title": "Body_files-files_multiple"
+/// }
 library;
 
 import 'exports.dart';

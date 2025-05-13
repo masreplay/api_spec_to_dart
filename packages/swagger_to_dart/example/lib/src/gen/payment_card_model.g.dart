@@ -8,17 +8,17 @@ part of 'payment_card_model.dart';
 
 _PaymentCardModel _$PaymentCardModelFromJson(Map<String, dynamic> json) =>
     _PaymentCardModel(
-      cardNumber: json['cardNumber'] as String,
+      cardNumber: json['card_number'] as String,
       cardBrand: $enumDecodeNullable(
         _$PaymentCardBrandEnumMap,
-        json['cardBrand'],
+        json['card_brand'],
       ),
     );
 
 Map<String, dynamic> _$PaymentCardModelToJson(_PaymentCardModel instance) =>
     <String, dynamic>{
-      'cardNumber': instance.cardNumber,
-      'cardBrand': instance.cardBrand,
+      'card_number': instance.cardNumber,
+      'card_brand': instance.cardBrand,
     };
 
 const _$PaymentCardBrandEnumMap = {

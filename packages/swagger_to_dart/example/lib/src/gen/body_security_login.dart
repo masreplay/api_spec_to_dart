@@ -1,62 +1,61 @@
-// Body_security-login
-// {
-//     "properties": {
-//         "grant_type": {
-//             "anyOf": [
-//                 {
-//                     "type": "string",
-//                     "pattern": "^password$"
-//                 },
-//                 {
-//                     "type": "null"
-//                 }
-//             ],
-//             "title": "Grant Type"
-//         },
-//         "username": {
-//             "type": "string",
-//             "title": "Username"
-//         },
-//         "password": {
-//             "type": "string",
-//             "title": "Password"
-//         },
-//         "scope": {
-//             "type": "string",
-//             "default": "",
-//             "title": "Scope"
-//         },
-//         "client_id": {
-//             "anyOf": [
-//                 {
-//                     "type": "string"
-//                 },
-//                 {
-//                     "type": "null"
-//                 }
-//             ],
-//             "title": "Client Id"
-//         },
-//         "client_secret": {
-//             "anyOf": [
-//                 {
-//                     "type": "string"
-//                 },
-//                 {
-//                     "type": "null"
-//                 }
-//             ],
-//             "title": "Client Secret"
-//         }
-//     },
-//     "type": "object",
-//     "required": [
-//         "username",
-//         "password"
-//     ],
-//     "title": "Body_security-login"
-// }
-
+/// Body_security-login
+/// {
+///     "properties": {
+///         "grant_type": {
+///             "anyOf": [
+///                 {
+///                     "type": "string",
+///                     "pattern": "^password$"
+///                 },
+///                 {
+///                     "type": "null"
+///                 }
+///             ],
+///             "title": "Grant Type"
+///         },
+///         "username": {
+///             "type": "string",
+///             "title": "Username"
+///         },
+///         "password": {
+///             "type": "string",
+///             "title": "Password"
+///         },
+///         "scope": {
+///             "type": "string",
+///             "default": "",
+///             "title": "Scope"
+///         },
+///         "client_id": {
+///             "anyOf": [
+///                 {
+///                     "type": "string"
+///                 },
+///                 {
+///                     "type": "null"
+///                 }
+///             ],
+///             "title": "Client Id"
+///         },
+///         "client_secret": {
+///             "anyOf": [
+///                 {
+///                     "type": "string"
+///                 },
+///                 {
+///                     "type": "null"
+///                 }
+///             ],
+///             "title": "Client Secret"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "username",
+///         "password"
+///     ],
+///     "title": "Body_security-login"
+/// }
 library;
 
 import 'exports.dart';
@@ -92,7 +91,7 @@ abstract class BodySecurityLogin with _$BodySecurityLogin {
   factory BodySecurityLogin.fromJson(Map<String, dynamic> json) =>
       _$BodySecurityLoginFromJson(json);
 
-  static const String grantTypeKey = "grantType";
+  static const String grantTypeKey = "grant_type";
 
   static const String usernameKey = "username";
 
@@ -100,7 +99,7 @@ abstract class BodySecurityLogin with _$BodySecurityLogin {
 
   static const String scopeKey = "scope";
 
-  static const String clientIdKey = "clientId";
+  static const String clientIdKey = "client_id";
 
-  static const String clientSecretKey = "clientSecret";
+  static const String clientSecretKey = "client_secret";
 }

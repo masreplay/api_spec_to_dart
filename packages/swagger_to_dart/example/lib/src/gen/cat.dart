@@ -1,31 +1,30 @@
-// Cat
-// {
-//     "properties": {
-//         "name": {
-//             "type": "string",
-//             "description": "The animal's name",
-//             "title": "Name"
-//         },
-//         "type": {
-//             "type": "string",
-//             "const": "cat",
-//             "default": "cat",
-//             "title": "Type"
-//         },
-//         "meow_cuteness": {
-//             "type": "integer",
-//             "description": "How cute the cat's meow is (0-10)",
-//             "title": "Meow Cuteness Level"
-//         }
-//     },
-//     "type": "object",
-//     "required": [
-//         "name",
-//         "meow_cuteness"
-//     ],
-//     "title": "Cat"
-// }
-
+/// Cat
+/// {
+///     "properties": {
+///         "name": {
+///             "type": "string",
+///             "description": "The animal's name",
+///             "title": "Name"
+///         },
+///         "type": {
+///             "type": "string",
+///             "const": "cat",
+///             "default": "cat",
+///             "title": "Type"
+///         },
+///         "meow_cuteness": {
+///             "type": "integer",
+///             "description": "How cute the cat's meow is (0-10)",
+///             "title": "Meow Cuteness Level"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "name",
+///         "meow_cuteness"
+///     ],
+///     "title": "Cat"
+/// }
 library;
 
 import 'exports.dart';
@@ -54,5 +53,5 @@ abstract class Cat with _$Cat {
 
   static const String typeKey = "type";
 
-  static const String meowCutenessKey = "meowCuteness";
+  static const String meowCutenessKey = "meow_cuteness";
 }

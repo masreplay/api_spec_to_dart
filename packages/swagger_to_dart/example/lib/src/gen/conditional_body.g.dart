@@ -8,9 +8,12 @@ part of 'conditional_body.dart';
 
 _ConditionalBody _$ConditionalBodyFromJson(Map<String, dynamic> json) =>
     _ConditionalBody(
-      itemId: (json['itemId'] as num?)?.toInt(),
-      itemName: json['itemName'] as String?,
+      itemId: (json['item_id'] as num?)?.toInt(),
+      itemName: json['item_name'] as String?,
     );
 
 Map<String, dynamic> _$ConditionalBodyToJson(_ConditionalBody instance) =>
-    <String, dynamic>{'itemId': instance.itemId, 'itemName': instance.itemName};
+    <String, dynamic>{
+      'item_id': instance.itemId,
+      'item_name': instance.itemName,
+    };
