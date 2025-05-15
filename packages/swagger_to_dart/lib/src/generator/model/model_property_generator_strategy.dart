@@ -2,6 +2,7 @@ import 'package:code_builder/code_builder.dart';
 import 'package:swagger_to_dart/src/builder/builder.dart';
 import 'package:swagger_to_dart/src/config/generation_context.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
+import 'package:meta/meta.dart';
 
 ///
 /// Convert OpenApiSchema to Parameter
@@ -11,12 +12,62 @@ abstract class PropertyGeneratorStrategy {
 
   final GenerationContext context;
 
+  /// Generate a Dart [Parameter] from an OpenAPI schema property.
   Parameter generate({
     required String className,
     required String propertyName,
     required String key,
     required OpenApiSchema schema,
   });
+
+  /// Shared default value code logic for Ref and AnyOf generators.
+  @protected
+  String? getDefaultValueCode(Object? defaultValue, String className) {
+    if (defaultValue == 'null') {
+      return 'null';
+    } else if (defaultValue != null && defaultValue is int) {
+      return '$className.value${Renaming.instance.renameProperty("$defaultValue")}';
+    } else if (defaultValue != null && defaultValue is String) {
+      return '$className.${Renaming.instance.renameProperty(defaultValue)}';
+    }
+    return null;
+  }
+
+  /// Shared Dart type resolution logic for schema types.
+  @protected
+  String resolveDartType(OpenApiSchema schema, {String? parentTitle}) {
+    return switch (schema) {
+      OpenApiSchemaType value => context.dartTypeConverter.getDartType(
+          type: value.type,
+          format: value.format,
+          genericType: switch (value.items) {
+            OpenApiSchemaRef value => Renaming.instance.renameRefClass(value),
+            OpenApiSchemaAnyOf value => _resolveAnyOfType(value),
+            _ => null,
+          },
+          items: value.items,
+          title: value.title,
+          parentTitle: parentTitle ?? value.title),
+      OpenApiSchemaRef value => Renaming.instance.renameRefClass(value),
+      OpenApiSchemaAnyOf value => _resolveAnyOfType(value),
+      _ =>
+        throw ArgumentError('Unsupported schema type: ${schema.runtimeType}'),
+    };
+  }
+
+  /// Helper for resolving union types (anyOf/oneOf).
+  @protected
+  String _resolveAnyOfType(OpenApiSchemaAnyOf value) {
+    final nonNullSchemas = value.anyOf!
+        .where((e) =>
+            !(e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_))
+        .toList();
+    if (nonNullSchemas.length == 1) {
+      return resolveDartType(nonNullSchemas.first);
+    }
+    final types = nonNullSchemas.map(resolveDartType).toList();
+    return types.map(Renaming.instance.renameClass).join('Or');
+  }
 }
 
 class TypePropertyGenerator extends PropertyGeneratorStrategy {
@@ -132,19 +183,8 @@ class RefPropertyGenerator extends PropertyGeneratorStrategy {
       name: propertyName,
       type: refClassName,
       isDeprecated: false,
-      defaultValue: _getDefaultValueCode(schema.default_, refClassName),
+      defaultValue: getDefaultValueCode(schema.default_, refClassName),
     );
-  }
-
-  String? _getDefaultValueCode(Object? defaultValue, String className) {
-    if (defaultValue == 'null') {
-      return 'null';
-    } else if (defaultValue != null && defaultValue is int) {
-      return '$className.value${Renaming.instance.renameProperty("$defaultValue")}';
-    } else if (defaultValue != null && defaultValue is String) {
-      return '$className.${Renaming.instance.renameProperty(defaultValue)}';
-    }
-    return null;
   }
 }
 
@@ -170,7 +210,7 @@ class AnyOfPropertyGenerator extends PropertyGeneratorStrategy {
       className: className,
       name: propertyName,
       type: dartType,
-      defaultValue: _getDefaultValueCode(schema.default_, dartType),
+      defaultValue: getDefaultValueCode(schema.default_, dartType),
     );
   }
 
@@ -179,76 +219,26 @@ class AnyOfPropertyGenerator extends PropertyGeneratorStrategy {
     String className,
     String propertyName,
   ) {
-    final isNullable = value.anyOf!.any(
-      (e) => e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_,
-    );
+    final schemas = value.anyOf ?? [];
 
-    final nonNullSchemas = value.anyOf!
-        .where(
-          (e) =>
-              !(e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_),
-        )
+    final nonNullSchemas = schemas
+        .where((e) =>
+            !(e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_))
         .toList();
 
+    final isNullable = nonNullSchemas.length != schemas.length;
+
     if (nonNullSchemas.length == 1) {
-      final baseType = resolveDartType(nonNullSchemas.first);
+      final baseType =
+          resolveDartType(nonNullSchemas.first, parentTitle: className);
       return isNullable ? '$baseType?' : baseType;
     }
 
-    final types =
-        nonNullSchemas.map((schema) => resolveDartType(schema)).toList();
-
-    // TODO(masreplay): handle the generation of the case
-    final unionClassName = types.map(Renaming.instance.renameClass).join('Or');
+    final unionClassName = nonNullSchemas
+        .map((s) => resolveDartType(s, parentTitle: className))
+        .map(Renaming.instance.renameClass)
+        .join('Or');
 
     return isNullable ? '$unionClassName?' : unionClassName;
-  }
-
-  String? _getDefaultValueCode(Object? defaultValue, String className) {
-    if (defaultValue == 'null') {
-      return 'null';
-    } else if (defaultValue != null && defaultValue is int) {
-      return '$className.value${Renaming.instance.renameProperty("$defaultValue")}';
-    } else if (defaultValue != null && defaultValue is String) {
-      return '$className.${Renaming.instance.renameProperty(defaultValue)}';
-    }
-    return null;
-  }
-
-  String resolveDartType(OpenApiSchema schema) {
-    return switch (schema) {
-      OpenApiSchemaType value => context.dartTypeConverter.getDartType(
-          type: value.type,
-          format: value.format,
-          genericType: switch (value.items) {
-            OpenApiSchemaRef value => Renaming.instance.renameRefClass(value),
-            OpenApiSchemaAnyOf value => _resolveAnyOfType(value),
-            _ => null,
-          },
-          items: value.items,
-          title: value.title,
-          parentTitle: schema.title),
-      OpenApiSchemaRef value => Renaming.instance.renameRefClass(value),
-      OpenApiSchemaAnyOf value => _resolveAnyOfType(value),
-      _ =>
-        throw ArgumentError('Unsupported schema type: ${schema.runtimeType}'),
-    };
-  }
-
-  String _resolveAnyOfType(OpenApiSchemaAnyOf value) {
-    final nonNullSchemas = value.anyOf!
-        .where(
-          (e) =>
-              !(e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_),
-        )
-        .toList();
-
-    if (nonNullSchemas.length == 1) {
-      return resolveDartType(nonNullSchemas.first);
-    }
-
-    final types =
-        nonNullSchemas.map((schema) => resolveDartType(schema)).toList();
-    return types.map(Renaming.instance.renameClass).join('Or');
   }
 }

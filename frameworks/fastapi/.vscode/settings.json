@@ -10,6 +10,6 @@
   },
   "cSpell.language": "en,ar",
   "cSpell.words": [],
-  "python.analysis.typeCheckingMode": "strict",
+  "python.analysis.typeCheckingMode": "basic",
   "python.analysis.diagnosticMode": "workspace"
 }

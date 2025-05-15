@@ -1,6 +1,3 @@
-# fake example no database read pagination generic and base response generic
-
-
 from typing import Generic, TypeVar
 
 from fastapi import APIRouter, Depends, Query
@@ -13,9 +10,16 @@ router = APIRouter()
 class PaginationParams(BaseModel):
     """Query parameters for pagination."""
 
-    page: int = Field(default=1, ge=1, description="Page number")
+    page: int = Field(
+        default=1,
+        ge=1,
+        description="Page number",
+    )
     per_page: int = Field(
-        default=10, ge=1, le=100, description="Number of items per page"
+        default=10,
+        ge=1,
+        le=100,
+        description="Number of items per page",
     )
 
 
