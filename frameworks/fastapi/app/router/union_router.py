@@ -56,7 +56,6 @@ class CreateAnimalResponse(BaseModel):
 
 @router.post(
     "/models/animal",
-    tags=["models"],
     summary="Create an animal based on type discriminator",
 )
 def create_animal(animal: AnimalUnionField) -> CreateAnimalResponse:

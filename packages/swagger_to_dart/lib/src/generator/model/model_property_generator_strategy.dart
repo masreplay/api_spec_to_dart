@@ -1,244 +1,81 @@
 import 'package:code_builder/code_builder.dart';
-import 'package:swagger_to_dart/src/builder/builder.dart';
+import 'package:meta/meta.dart';
 import 'package:swagger_to_dart/src/config/generation_context.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
-import 'package:meta/meta.dart';
 
-///
-/// Convert OpenApiSchema to Parameter
-///
-abstract class PropertyGeneratorStrategy {
+class PropertyGeneratorStrategy {
   const PropertyGeneratorStrategy(this.context);
 
   final GenerationContext context;
 
-  /// Generate a Dart [Parameter] from an OpenAPI schema property.
   Parameter generate({
     required String className,
     required String propertyName,
     required String key,
     required OpenApiSchema schema,
-  });
+  }) {
+    final name = propertyName;
+    final defaultValue = schema.default_;
 
-  /// Shared default value code logic for Ref and AnyOf generators.
-  @protected
-  String? getDefaultValueCode(Object? defaultValue, String className) {
-    if (defaultValue == 'null') {
-      return 'null';
-    } else if (defaultValue != null && defaultValue is int) {
-      return '$className.value${Renaming.instance.renameProperty("$defaultValue")}';
-    } else if (defaultValue != null && defaultValue is String) {
-      return '$className.${Renaming.instance.renameProperty(defaultValue)}';
-    }
-    return null;
+    final type = resolveDartType(schema);
+
+    return Parameter(
+      (b) => b
+        ..docs.add('/// $name')
+        ..required = defaultValue == null
+        ..named = true
+        ..annotations.addAll([
+          if (defaultValue != null) refer('Default($defaultValue)'),
+          refer('JsonKey(name: $className.${name}Key)'),
+        ])
+        ..name = name
+        ..type = refer(type),
+    );
   }
 
-  /// Shared Dart type resolution logic for schema types.
   @protected
-  String resolveDartType(OpenApiSchema schema, {String? parentTitle}) {
+  String resolveDartType(
+    OpenApiSchema schema, {
+    String? parentTitle,
+  }) {
     return switch (schema) {
       OpenApiSchemaType value => context.dartTypeConverter.getDartType(
           type: value.type,
           format: value.format,
-          genericType: switch (value.items) {
-            OpenApiSchemaRef value => Renaming.instance.renameRefClass(value),
-            OpenApiSchemaAnyOf value => _resolveAnyOfType(value),
-            _ => null,
-          },
+          genericType: value.items == null
+              ? null
+              : resolveDartType(value.items!, parentTitle: parentTitle),
           items: value.items,
           title: value.title,
-          parentTitle: parentTitle ?? value.title),
+          parentTitle: parentTitle ?? value.title,
+        ),
       OpenApiSchemaRef value => Renaming.instance.renameRefClass(value),
       OpenApiSchemaAnyOf value => _resolveAnyOfType(value),
-      _ =>
+      OpenApiSchemaOneOf() =>
         throw ArgumentError('Unsupported schema type: ${schema.runtimeType}'),
     };
   }
 
-  /// Helper for resolving union types (anyOf/oneOf).
   @protected
   String _resolveAnyOfType(OpenApiSchemaAnyOf value) {
-    final nonNullSchemas = value.anyOf!
-        .where((e) =>
-            !(e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_))
-        .toList();
-    if (nonNullSchemas.length == 1) {
-      return resolveDartType(nonNullSchemas.first);
-    }
-    final types = nonNullSchemas.map(resolveDartType).toList();
-    return types.map(Renaming.instance.renameClass).join('Or');
-  }
-}
-
-class TypePropertyGenerator extends PropertyGeneratorStrategy {
-  const TypePropertyGenerator(super.context);
-
-  @override
-  Parameter generate({
-    required String className,
-    required String propertyName,
-    required String key,
-    required OpenApiSchema schema,
-  }) {
-    if (schema is! OpenApiSchemaType) {
-      throw ArgumentError(
-        'Expected OpenApiSchemaType but got ${schema.runtimeType}',
-      );
-    }
-
-    final dartType = context.dartTypeConverter.getDartType(
-      format: schema.format,
-      type: schema.type,
-      genericType: _getDependentType(schema.items),
-      items: schema.items,
-      title: schema.title,
-      parentTitle: className,
-    );
-
-    return FreezedClassCodeBuilder.instance.parameter(
-      className: className,
-      name: propertyName,
-      type: dartType,
-      isDeprecated: false,
-      defaultValue: _getTypedDefaultValue(schema, dartType),
-    );
-  }
-
-  String? _getDependentType(OpenApiSchema? items) {
-    return switch (items) {
-      OpenApiSchemaRef value => Renaming.instance.renameRefClass(value),
-      OpenApiSchemaAnyOf value =>
-        context.dartTypeConverter.convertOpenApiAnyOfToDartType(value),
-      _ => null,
-    };
-  }
-
-  Object? _getTypedDefaultValue(
-    OpenApiSchemaType schema,
-    String dartType,
-  ) {
-    final defaultValue = schema.default_;
-    if (defaultValue == null) {
-      return null;
-    }
-
-    switch (schema.type) {
-      case OpenApiSchemaVarType.string:
-        return '\'${defaultValue}\'';
-      case OpenApiSchemaVarType.boolean:
-        return defaultValue.toString();
-      case OpenApiSchemaVarType.integer:
-      case OpenApiSchemaVarType.number:
-        return defaultValue.toString();
-      case OpenApiSchemaVarType.array:
-        if (defaultValue is List) {
-          final formattedItems = defaultValue.map((item) {
-            if (item is String) {
-              return '\'${item}\'';
-            } else {
-              return item.toString();
-            }
-          }).join(', ');
-          return '[$formattedItems]';
-        }
-        return null;
-      case OpenApiSchemaVarType.object:
-        if (defaultValue is Map) {
-          return 'const ${defaultValue}';
-        }
-        return null;
-      case OpenApiSchemaVarType.null_:
-        return 'null';
-      default:
-        if (dartType == 'DateTime' && defaultValue is String) {
-          return 'DateTime.parse(\'${defaultValue}\')';
-        } else if (dartType == 'Uri' && defaultValue is String) {
-          return 'Uri.parse(\'${defaultValue}\')';
-        }
-        return defaultValue.toString();
-    }
-  }
-}
-
-class RefPropertyGenerator extends PropertyGeneratorStrategy {
-  const RefPropertyGenerator(super.context);
-
-  @override
-  Parameter generate({
-    required String className,
-    required String propertyName,
-    required String key,
-    required OpenApiSchema schema,
-  }) {
-    if (schema is! OpenApiSchemaRef) {
-      throw ArgumentError(
-        'Expected OpenApiSchemaRef but got ${schema.runtimeType}',
-      );
-    }
-
-    final refClassName = Renaming.instance.renameRefClass(schema);
-
-    return FreezedClassCodeBuilder.instance.parameter(
-      className: className,
-      name: propertyName,
-      type: refClassName,
-      isDeprecated: false,
-      defaultValue: getDefaultValueCode(schema.default_, refClassName),
-    );
-  }
-}
-
-class AnyOfPropertyGenerator extends PropertyGeneratorStrategy {
-  const AnyOfPropertyGenerator(super.context);
-
-  @override
-  Parameter generate({
-    required String className,
-    required String propertyName,
-    required String key,
-    required OpenApiSchema schema,
-  }) {
-    if (schema is! OpenApiSchemaAnyOf) {
-      throw ArgumentError(
-        'Expected OpenApiSchemaAnyOf but got ${schema.runtimeType}',
-      );
-    }
-
-    final dartType = _resolveDartType(schema, className, propertyName);
-
-    return FreezedClassCodeBuilder.instance.parameter(
-      className: className,
-      name: propertyName,
-      type: dartType,
-      defaultValue: getDefaultValueCode(schema.default_, dartType),
-    );
-  }
-
-  String _resolveDartType(
-    OpenApiSchemaAnyOf value,
-    String className,
-    String propertyName,
-  ) {
     final schemas = value.anyOf ?? [];
-
     final nonNullSchemas = schemas
         .where((e) =>
             !(e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_))
         .toList();
-
     final isNullable = nonNullSchemas.length != schemas.length;
 
     if (nonNullSchemas.length == 1) {
-      final baseType =
-          resolveDartType(nonNullSchemas.first, parentTitle: className);
+      final baseType = resolveDartType(nonNullSchemas.first);
       return isNullable ? '$baseType?' : baseType;
     }
 
-    final unionClassName = nonNullSchemas
-        .map((s) => resolveDartType(s, parentTitle: className))
+    final baseTypes = nonNullSchemas
+        .map(resolveDartType)
         .map(Renaming.instance.renameClass)
-        .join('Or');
+        .toList();
 
+    final unionClassName = baseTypes.join('Or');
     return isNullable ? '$unionClassName?' : unionClassName;
   }
 }

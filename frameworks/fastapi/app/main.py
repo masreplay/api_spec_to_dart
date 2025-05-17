@@ -386,6 +386,7 @@ class User(UserBase):
 
 @app.post(
     "/models/user",
+    tags=["models"],
 )
 def create_user(user: UserCreate) -> User:
     """Create a new user from a Pydantic model."""

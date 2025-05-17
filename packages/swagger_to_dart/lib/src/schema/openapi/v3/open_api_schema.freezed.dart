@@ -32,6 +32,8 @@ OpenApiSchema _$OpenApiSchemaFromJson(Map<String, dynamic> json) {
 mixin _$OpenApiSchema {
   @JsonKey(name: 'description')
   String? get description;
+  @JsonKey(name: 'default')
+  Object? get default_;
 
   /// Create a copy of OpenApiSchema
   /// with the given fields replaced by the non-null parameter values.
@@ -50,16 +52,18 @@ mixin _$OpenApiSchema {
         (other.runtimeType == runtimeType &&
             other is OpenApiSchema &&
             (identical(other.description, description) ||
-                other.description == description));
+                other.description == description) &&
+            const DeepCollectionEquality().equals(other.default_, default_));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, description);
+  int get hashCode => Object.hash(
+      runtimeType, description, const DeepCollectionEquality().hash(default_));
 
   @override
   String toString() {
-    return 'OpenApiSchema(description: $description)';
+    return 'OpenApiSchema(description: $description, default_: $default_)';
   }
 }
 
@@ -69,7 +73,9 @@ abstract mixin class $OpenApiSchemaCopyWith<$Res> {
           OpenApiSchema value, $Res Function(OpenApiSchema) _then) =
       _$OpenApiSchemaCopyWithImpl;
   @useResult
-  $Res call({@JsonKey(name: 'description') String? description});
+  $Res call(
+      {@JsonKey(name: 'description') String? description,
+      @JsonKey(name: 'default') Object? default_});
 }
 
 /// @nodoc
@@ -86,12 +92,14 @@ class _$OpenApiSchemaCopyWithImpl<$Res>
   @override
   $Res call({
     Object? description = freezed,
+    Object? default_ = freezed,
   }) {
     return _then(_self.copyWith(
       description: freezed == description
           ? _self.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
+      default_: freezed == default_ ? _self.default_ : default_,
     ));
   }
 }
@@ -147,6 +155,7 @@ class OpenApiSchemaType extends OpenApiSchema {
   final String? pattern;
   @JsonKey(name: 'const')
   final Object? const_;
+  @override
   @JsonKey(name: 'default')
   final Object? default_;
   @JsonKey(name: 'title')
@@ -340,6 +349,7 @@ class OpenApiSchemaRef extends OpenApiSchema {
   @override
   @JsonKey(name: 'description')
   final String? description;
+  @override
   @JsonKey(name: 'default')
   final Object? default_;
 
@@ -461,6 +471,7 @@ class OpenApiSchemaAnyOf extends OpenApiSchema {
   final String? description;
   @JsonKey(name: 'title')
   final String? title;
+  @override
   @JsonKey(name: 'default')
   final Object? default_;
 
@@ -572,6 +583,7 @@ class OpenApiSchemaOneOf extends OpenApiSchema {
       @JsonKey(name: 'description') this.description,
       @JsonKey(name: 'title') this.title,
       @JsonKey(name: 'discriminator') required this.discriminator,
+      @JsonKey(name: 'default') this.default_,
       final String? $type})
       : _oneOf = oneOf,
         $type = $type ?? 'oneOf',
@@ -597,6 +609,9 @@ class OpenApiSchemaOneOf extends OpenApiSchema {
   final String? title;
   @JsonKey(name: 'discriminator')
   final OpenApiSchemaOneOfDiscriminator discriminator;
+  @override
+  @JsonKey(name: 'default')
+  final Object? default_;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -626,7 +641,8 @@ class OpenApiSchemaOneOf extends OpenApiSchema {
                 other.description == description) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.discriminator, discriminator) ||
-                other.discriminator == discriminator));
+                other.discriminator == discriminator) &&
+            const DeepCollectionEquality().equals(other.default_, default_));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -636,11 +652,12 @@ class OpenApiSchemaOneOf extends OpenApiSchema {
       const DeepCollectionEquality().hash(_oneOf),
       description,
       title,
-      discriminator);
+      discriminator,
+      const DeepCollectionEquality().hash(default_));
 
   @override
   String toString() {
-    return 'OpenApiSchema.oneOf(oneOf: $oneOf, description: $description, title: $title, discriminator: $discriminator)';
+    return 'OpenApiSchema.oneOf(oneOf: $oneOf, description: $description, title: $title, discriminator: $discriminator, default_: $default_)';
   }
 }
 
@@ -659,7 +676,8 @@ abstract mixin class $OpenApiSchemaOneOfCopyWith<$Res>
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'title') String? title,
       @JsonKey(name: 'discriminator')
-      OpenApiSchemaOneOfDiscriminator discriminator});
+      OpenApiSchemaOneOfDiscriminator discriminator,
+      @JsonKey(name: 'default') Object? default_});
 
   $OpenApiSchemaOneOfDiscriminatorCopyWith<$Res> get discriminator;
 }
@@ -681,6 +699,7 @@ class _$OpenApiSchemaOneOfCopyWithImpl<$Res>
     Object? description = freezed,
     Object? title = freezed,
     Object? discriminator = null,
+    Object? default_ = freezed,
   }) {
     return _then(OpenApiSchemaOneOf(
       oneOf: freezed == oneOf
@@ -699,6 +718,7 @@ class _$OpenApiSchemaOneOfCopyWithImpl<$Res>
           ? _self.discriminator
           : discriminator // ignore: cast_nullable_to_non_nullable
               as OpenApiSchemaOneOfDiscriminator,
+      default_: freezed == default_ ? _self.default_ : default_,
     ));
   }
 

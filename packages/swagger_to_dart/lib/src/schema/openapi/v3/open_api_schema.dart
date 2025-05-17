@@ -49,6 +49,7 @@ sealed class OpenApiSchema with _$OpenApiSchema {
     @JsonKey(name: 'title') String? title,
     @JsonKey(name: 'discriminator')
     required OpenApiSchemaOneOfDiscriminator discriminator,
+    @JsonKey(name: 'default') Object? default_,
   }) = OpenApiSchemaOneOf;
 
   factory OpenApiSchema.fromJson(Map<String, dynamic> json) {
