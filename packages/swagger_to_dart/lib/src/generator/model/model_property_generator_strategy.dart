@@ -7,7 +7,7 @@ class PropertyGeneratorStrategy {
   const PropertyGeneratorStrategy(this.context, this.model);
 
   final MapEntry<String, OpenApiSchemas> model;
-  
+
   final GenerationContext context;
 
   Parameter generate(MapEntry<String, OpenApiSchema> property) {
@@ -56,21 +56,18 @@ class PropertyGeneratorStrategy {
     final isNullable = nonNullSchemas.length != anyOf.length;
 
     if (nonNullSchemas.length == 1) {
-      final baseType = _getOpenApiSchemaDartType(nonNullSchemas.first);
-      return isNullable ? '$baseType?' : baseType;
+      final dartType = _getOpenApiSchemaDartType(nonNullSchemas.first);
+      return dartType + (isNullable ? '?' : '');
     }
 
-    final allRefs = nonNullSchemas.isNotEmpty &&
-        nonNullSchemas.every((e) => e is OpenApiSchemaRef);
-
-    if (allRefs) {
-      final baseTypes = nonNullSchemas
+    if (nonNullSchemas.every((e) => e is OpenApiSchemaRef)) {
+      final unionClassName = nonNullSchemas
           .map(_getOpenApiSchemaDartType)
           .map(Renaming.instance.renameClass)
-          .toList();
-      final unionClassName = baseTypes.join('Or');
+          .toList()
+          .join();
 
-      return isNullable ? '$unionClassName?' : unionClassName;
+      return unionClassName + (isNullable ? '?' : '');
     }
 
     return 'dynamic';

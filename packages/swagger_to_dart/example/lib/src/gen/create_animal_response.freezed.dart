@@ -17,7 +17,7 @@ T _$identity<T>(T value) => value;
 mixin _$CreateAnimalResponse {
 
 /// animal
-@JsonKey(name: CreateAnimalResponse.animalKey) DogOrCatOrParrot get animal;/// message
+@JsonKey(name: CreateAnimalResponse.animalKey) DogCatParrot get animal;/// message
 @JsonKey(name: CreateAnimalResponse.messageKey) String get message;
 /// Create a copy of CreateAnimalResponse
 /// with the given fields replaced by the non-null parameter values.
@@ -51,7 +51,7 @@ abstract mixin class $CreateAnimalResponseCopyWith<$Res>  {
   factory $CreateAnimalResponseCopyWith(CreateAnimalResponse value, $Res Function(CreateAnimalResponse) _then) = _$CreateAnimalResponseCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: CreateAnimalResponse.animalKey) DogOrCatOrParrot animal,@JsonKey(name: CreateAnimalResponse.messageKey) String message
+@JsonKey(name: CreateAnimalResponse.animalKey) DogCatParrot animal,@JsonKey(name: CreateAnimalResponse.messageKey) String message
 });
 
 
@@ -71,7 +71,7 @@ class _$CreateAnimalResponseCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? animal = freezed,Object? message = null,}) {
   return _then(_self.copyWith(
 animal: freezed == animal ? _self.animal : animal // ignore: cast_nullable_to_non_nullable
-as DogOrCatOrParrot,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as DogCatParrot,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -87,7 +87,7 @@ class _CreateAnimalResponse extends CreateAnimalResponse {
   factory _CreateAnimalResponse.fromJson(Map<String, dynamic> json) => _$CreateAnimalResponseFromJson(json);
 
 /// animal
-@override@JsonKey(name: CreateAnimalResponse.animalKey) final  DogOrCatOrParrot animal;
+@override@JsonKey(name: CreateAnimalResponse.animalKey) final  DogCatParrot animal;
 /// message
 @override@JsonKey(name: CreateAnimalResponse.messageKey) final  String message;
 
@@ -124,7 +124,7 @@ abstract mixin class _$CreateAnimalResponseCopyWith<$Res> implements $CreateAnim
   factory _$CreateAnimalResponseCopyWith(_CreateAnimalResponse value, $Res Function(_CreateAnimalResponse) _then) = __$CreateAnimalResponseCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: CreateAnimalResponse.animalKey) DogOrCatOrParrot animal,@JsonKey(name: CreateAnimalResponse.messageKey) String message
+@JsonKey(name: CreateAnimalResponse.animalKey) DogCatParrot animal,@JsonKey(name: CreateAnimalResponse.messageKey) String message
 });
 
 
@@ -144,7 +144,7 @@ class __$CreateAnimalResponseCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? animal = freezed,Object? message = null,}) {
   return _then(_CreateAnimalResponse(
 animal: freezed == animal ? _self.animal : animal // ignore: cast_nullable_to_non_nullable
-as DogOrCatOrParrot,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as DogCatParrot,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
