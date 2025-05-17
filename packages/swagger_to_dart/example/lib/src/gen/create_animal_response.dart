@@ -31,7 +31,9 @@ library;
 
 import 'exports.dart';
 part 'create_animal_response.freezed.dart';
-part 'create_animal_response.g.dart'; // CreateAnimalResponse
+part 'create_animal_response.g.dart';
+
+// CreateAnimalResponse
 
 @freezed
 abstract class CreateAnimalResponse with _$CreateAnimalResponse {

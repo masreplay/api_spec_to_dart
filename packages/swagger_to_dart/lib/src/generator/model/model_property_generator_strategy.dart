@@ -7,10 +7,12 @@ class PropertyGeneratorStrategy {
   const PropertyGeneratorStrategy(this.context, this.model);
 
   final MapEntry<String, OpenApiSchemas> model;
+  
   final GenerationContext context;
 
   Parameter generate(MapEntry<String, OpenApiSchema> property) {
     final name = Renaming.instance.renameProperty(property.key);
+
     final defaultValue = switch (property.value.default_) {
       String value => '"${value}"',
       _ => property.value.default_,
