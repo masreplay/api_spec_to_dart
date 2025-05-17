@@ -5,22 +5,24 @@ import 'package:swagger_to_dart/src/utils/utils.dart';
 import 'model_property_generator_strategy.dart';
 import 'model_strategy.dart';
 
+extension MapEntryStringOpenApiSchemas on MapEntry<String, OpenApiSchemas> {
+  String get className => Renaming.instance.renameClass(key);
+  String get filename => Renaming.instance.renameFile(className);
+}
+
 class RegularModelStrategy extends ModelStrategy {
   const RegularModelStrategy(super.context);
 
   Library generate(MapEntry<String, OpenApiSchemas> model) {
-    final className = Renaming.instance.renameClass(model.key);
-    final filename = Renaming.instance.renameFile(className);
+    final className = model.className;
+    final filename = model.filename;
 
     final properties = model.value.properties ?? {};
-    final propertyGenerator = PropertyGeneratorStrategy(context);
+    final propertyGenerator = PropertyGeneratorStrategy(context, model);
 
     final parameters = <Parameter>[];
     for (final property in properties.entries) {
-      final fieldCode = propertyGenerator.generate(
-        className: className,
-        property: property,
-      );
+      final fieldCode = propertyGenerator.generate(property);
       parameters.add(fieldCode);
     }
 
