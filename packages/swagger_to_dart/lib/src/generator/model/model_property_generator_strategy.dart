@@ -1,6 +1,8 @@
 import 'package:code_builder/code_builder.dart';
+import 'package:collection/collection.dart';
 import 'package:swagger_to_dart/src/config/generation_context.dart';
 import 'package:swagger_to_dart/src/generator/model/model.dart';
+import 'package:swagger_to_dart/src/schema/openapi/extension.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 class PropertyGeneratorStrategy {
@@ -61,13 +63,7 @@ class PropertyGeneratorStrategy {
     }
 
     if (nonNullSchemas.every((e) => e is OpenApiSchemaRef)) {
-      final unionClassName = nonNullSchemas
-          .map(_getOpenApiSchemaDartType)
-          .map(Renaming.instance.renameClass)
-          .toList()
-          .join();
-
-      return unionClassName + (isNullable ? '?' : '');
+      return createUnionClass(nonNullSchemas);
     }
 
     return 'dynamic';
@@ -123,5 +119,102 @@ class PropertyGeneratorStrategy {
       case OpenApiSchemaVarType.null_ || OpenApiSchemaVarType.$unknown || null:
         return 'dynamic';
     }
+  }
+
+  String createUnionClass(List<OpenApiSchema> value) {
+    final schemas = value.whereType<OpenApiSchemaRef>();
+    final className = schemas
+        .map(_getOpenApiSchemaDartType)
+        .map(Renaming.instance.renameClass)
+        .sorted((a, b) => a.compareTo(b))
+        .join();
+
+    final filename = Renaming.instance.renameFile(className);
+
+    final unions = [
+      for (final property in schemas)
+        if (property.ref != null)
+          Constructor(
+            (b) => b
+              ..annotations.addAll([refer('generationJsonSerializable')])
+              ..constant = true
+              ..factory = true
+              ..name =
+                  Recase.instance.toCamelCase(property.ref!.split('/').last)
+              ..redirect = refer(
+                Recase.instance.toPascalCase(property.ref!.split('/').last),
+              )
+              ..optionalParameters.addAll([
+                for (final entry in context.openApi
+                    .getOpenApiSchemasByRef(property.ref!)!
+                    .properties!
+                    .entries)
+                  generate(entry),
+              ]),
+          )
+    ];
+
+    final library = Library(
+      (b) => b
+        ..name = filename
+        ..directives.addAll([
+          Directive.import('exports.dart'),
+          Directive.part('${filename}.freezed.dart'),
+          Directive.part('${filename}.g.dart'),
+        ])
+        ..docs.addAll([
+          '/// ${model.key}',
+          ...JsonFactory.instance
+              .encode(model.value.toJson())
+              .split('\n')
+              .map((e) => '/// $e'),
+        ])
+        ..body.addAll([
+          Class(
+            (b) => b
+              ..docs.addAll([
+                '// ${className}',
+              ])
+              ..annotations.addAll([refer('freezed')])
+              ..abstract = true
+              ..name = className
+              ..fields.addAll([
+                for (final property in unions.expand((e) => e.optionalParameters))
+                  Field((b) => b
+                    ..static = true
+                    ..modifier = FieldModifier.constant
+                    ..name = '${property.name}Key'
+                    ..type = refer('String')
+                    ..assignment = Code('"${property.name}"'),
+                  ),
+              ])
+              ..mixins.addAll([refer('_\$${className}')])
+              ..constructors.addAll([
+                Constructor(
+                  (b) => b
+                    ..constant = true
+                    ..name = '_',
+                ),
+                ...unions,
+                Constructor(
+                  (b) => b
+                    ..factory = true
+                    ..name = 'fromJson'
+                    ..requiredParameters.addAll([
+                      Parameter((b) => b
+                        ..name = 'json'
+                        ..type = refer('Map<String, dynamic>')),
+                    ])
+                    ..lambda = true
+                    ..body = Code('_\$${className}FromJson(json)'),
+                )
+              ]),
+          )
+        ]),
+    );
+
+    context.addModel(library);
+
+    return className;
   }
 }

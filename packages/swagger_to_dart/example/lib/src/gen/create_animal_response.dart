@@ -40,7 +40,7 @@ abstract class CreateAnimalResponse with _$CreateAnimalResponse {
   @generationJsonSerializable
   const factory CreateAnimalResponse({
     /// animal
-    @JsonKey(name: CreateAnimalResponse.animalKey) required DogCatParrot animal,
+    @JsonKey(name: CreateAnimalResponse.animalKey) required CatDogParrot animal,
 
     /// message
     @JsonKey(name: CreateAnimalResponse.messageKey) required String message,
