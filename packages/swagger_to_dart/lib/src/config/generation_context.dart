@@ -1,6 +1,5 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:pubspec_parse/pubspec_parse.dart';
-import 'package:swagger_to_dart/src/config/open_api_to_dart_type_converter.dart';
 import 'package:swagger_to_dart/src/config/swagger_to_dart_yaml.dart';
 import 'package:swagger_to_dart/src/generator/model/model_generator.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
@@ -29,10 +28,6 @@ class GenerationContext {
 
   void addEnum(Library library) {
     _enums.add(library);
-  }
-
-  OpenApiToDartTypeConverter get dartTypeConverter {
-    return OpenApiToDartTypeConverter(this);
   }
 
   bool get isFlutterProject {

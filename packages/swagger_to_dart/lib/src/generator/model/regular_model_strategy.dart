@@ -9,22 +9,17 @@ class RegularModelStrategy extends ModelStrategy {
   const RegularModelStrategy(super.context);
 
   Library generate(MapEntry<String, OpenApiSchemas> model) {
-    final propertyGenerator = PropertyGeneratorStrategy(context);
-
-    // model.value.title ??
     final className = Renaming.instance.renameClass(model.key);
     final filename = Renaming.instance.renameFile(className);
-    final Map<String, OpenApiSchema> properties = model.value.properties ?? {};
+
+    final properties = model.value.properties ?? {};
+    final propertyGenerator = PropertyGeneratorStrategy(context);
 
     final parameters = <Parameter>[];
-    for (final entry in properties.entries) {
-      final schema = entry.value;
-
+    for (final property in properties.entries) {
       final fieldCode = propertyGenerator.generate(
         className: className,
-        propertyName: Renaming.instance.renameProperty(entry.key),
-        key: entry.key,
-        schema: schema,
+        property: property,
       );
       parameters.add(fieldCode);
     }
