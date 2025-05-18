@@ -1,4 +1,6 @@
 import 'package:code_builder/code_builder.dart';
+import 'package:swagger_to_dart/src/generator/model/model_property_generator_strategy.dart';
+import 'package:swagger_to_dart/src/schema/openapi/extension.dart';
 import 'package:swagger_to_dart/src/schema/openapi/openapi.dart';
 import 'package:swagger_to_dart/src/utils/utils.dart';
 
@@ -11,12 +13,33 @@ class UnionModelStrategy extends ModelStrategy {
     final className = Renaming.instance.renameClass(model.key);
     final filename = Renaming.instance.renameFile(className);
 
+    final refs =
+        (model.value.properties ?? {}).values.whereType<OpenApiSchemaRef>();
+    final propertyGeneratorStrategy = PropertyGeneratorStrategy(context);
+    final unions = refs.map((e) {
+      final name = e.ref!.split('/').last;
+      final schemas = context.openApi.getOpenApiSchemasByRef(e.ref!);
+      final properties = schemas?.properties ?? {};
+
+      return Constructor(
+        (b) => b
+          ..annotations.addAll([refer('generationJsonSerializable')])
+          ..constant = true
+          ..factory = true
+          ..name = Recase.instance.toCamelCase(name)
+          ..redirect = refer(className + Recase.instance.toPascalCase(name))
+          ..optionalParameters.addAll([
+            for (final entry in properties.entries)
+              propertyGeneratorStrategy.generate(
+                entry,
+                modelClassName: className,
+              ),
+          ]),
+      );
+    }).toList();
+
     return Library(
       (b) => b
-        ..comments.addAll([
-          '${model.key}',
-          ...JsonFactory.instance.encode(model.value.toJson()).split('\n'),
-        ])
         ..name = filename
         ..directives.addAll([
           Directive.import('exports.dart'),
@@ -30,40 +53,33 @@ class UnionModelStrategy extends ModelStrategy {
                 '// ${className}',
               ])
               ..annotations.addAll([refer('freezed')])
-              ..sealed = true
+              ..abstract = true
               ..name = className
-              ..mixins.addAll([refer('_\$${className}')])
               ..fields.addAll([
-                for (final entry in [].expand((e) => e.parameters))
+                for (final property in {
+                  ...unions
+                      .expand((e) => e.optionalParameters)
+                      .map((p) => p.name)
+                }.map((name) => unions
+                    .expand((e) => e.optionalParameters)
+                    .firstWhere((p) => p.name == name)))
                   Field(
                     (b) => b
                       ..static = true
                       ..modifier = FieldModifier.constant
-                      ..name = '${entry.name}Key'
-                      ..type = refer('$String')
-                      ..assignment = Code('"${entry.name}"'),
+                      ..name = '${property.name}Key'
+                      ..type = refer('String')
+                      ..assignment = Code('"${property.name}"'),
                   ),
               ])
+              ..mixins.addAll([refer('_\$${className}')])
               ..constructors.addAll([
                 Constructor(
                   (b) => b
                     ..constant = true
                     ..name = '_',
                 ),
-                Constructor(
-                  (b) => b
-                    ..constant = true
-                    ..factory = true
-                    ..name = 'fallback'
-                    ..redirect = refer('${className}Fallback')
-                    ..requiredParameters.addAll([
-                      Parameter(
-                        (b) => b
-                          ..name = 'value'
-                          ..type = refer('Map<String,dynamic>'),
-                      ),
-                    ]),
-                ),
+                ...unions,
                 Constructor(
                   (b) => b
                     ..factory = true

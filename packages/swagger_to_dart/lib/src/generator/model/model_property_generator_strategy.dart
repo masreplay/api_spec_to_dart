@@ -1,6 +1,7 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:collection/collection.dart';
 import 'package:swagger_to_dart/src/config/generation_context.dart';
+import 'package:swagger_to_dart/src/generator/model/union_model_strategy.dart';
 import 'package:swagger_to_dart/src/schema/openapi/extension.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
@@ -145,92 +146,25 @@ class PropertyGeneratorStrategy {
   String createUnionClass(String modelClassName, List<OpenApiSchema> value) {
     final className = value
         .whereType<OpenApiSchemaRef>()
-        .map((e) => _getOpenApiSchemaDartType(modelClassName, e))
+        .map((ref) => _getOpenApiSchemaDartType(modelClassName, ref))
         .map(Renaming.instance.renameClass)
         .sorted((a, b) => a.compareTo(b))
         .join();
 
-    final filename = Renaming.instance.renameFile(className);
+    final unionModelStrategy = UnionModelStrategy(context);
 
-    final unions = value.whereType<OpenApiSchemaRef>().map((e) {
-      final name = e.ref!.split('/').last;
-      final schemas = context.openApi.getOpenApiSchemasByRef(e.ref!);
-      final properties = schemas?.properties ?? {};
-
-      return Constructor(
-        (b) => b
-          ..annotations.addAll([refer('generationJsonSerializable')])
-          ..constant = true
-          ..factory = true
-          ..name = Recase.instance.toCamelCase(name)
-          ..redirect = refer(className + Recase.instance.toPascalCase(name))
-          ..optionalParameters.addAll([
-            for (final entry in properties.entries)
-              generate(entry, modelClassName: className),
-          ]),
-      );
-    });
-
-    final library = Library(
-      (b) => b
-        ..name = filename
-        ..directives.addAll([
-          Directive.import('exports.dart'),
-          Directive.part('${filename}.freezed.dart'),
-          Directive.part('${filename}.g.dart'),
-        ])
-        ..body.addAll([
-          Class(
-            (b) => b
-              ..docs.addAll([
-                '// ${className}',
-              ])
-              ..annotations.addAll([refer('freezed')])
-              ..abstract = true
-              ..name = className
-              ..fields.addAll([
-                for (final property in {
-                  ...unions
-                      .expand((e) => e.optionalParameters)
-                      .map((p) => p.name)
-                }.map((name) => unions
-                    .expand((e) => e.optionalParameters)
-                    .firstWhere((p) => p.name == name)))
-                  Field(
-                    (b) => b
-                      ..static = true
-                      ..modifier = FieldModifier.constant
-                      ..name = '${property.name}Key'
-                      ..type = refer('String')
-                      ..assignment = Code('"${property.name}"'),
-                  ),
-              ])
-              ..mixins.addAll([refer('_\$${className}')])
-              ..constructors.addAll([
-                Constructor(
-                  (b) => b
-                    ..constant = true
-                    ..name = '_',
-                ),
-                ...unions,
-                Constructor(
-                  (b) => b
-                    ..factory = true
-                    ..name = 'fromJson'
-                    ..requiredParameters.addAll([
-                      Parameter((b) => b
-                        ..name = 'json'
-                        ..type = refer('Map<String, dynamic>')),
-                    ])
-                    ..lambda = true
-                    ..body = Code('_\$${className}FromJson(json)'),
-                )
-              ]),
-          )
-        ]),
+    final unionModel = MapEntry<String, OpenApiSchemas>(
+      className,
+      OpenApiSchemas(
+        type: modelClassName,
+        properties: {
+          for (final value in value.whereType<OpenApiSchemaRef>())
+            value.ref!: OpenApiSchemaRef(ref: value.ref!),
+        },
+      ),
     );
 
-    context.addModel(library);
+    context.addModel(unionModelStrategy.generate(unionModel));
 
     return className;
   }
