@@ -52,7 +52,7 @@
 ///     "type": "object",
 ///     "title": "CountryModel"
 /// }
-library;
+library country_model;
 
 import 'exports.dart';
 part 'country_model.freezed.dart';

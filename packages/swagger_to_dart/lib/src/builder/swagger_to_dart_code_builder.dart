@@ -56,7 +56,6 @@ class SwaggerToDartCodeBuilder {
         ..directives.addAll([
           Directive.import('package:dio/dio.dart'),
           Directive.import('package:retrofit/retrofit.dart'),
-          context.importModelsDirective,
         ])
         ..body.add(
           Class((b) => b
@@ -89,7 +88,6 @@ class SwaggerToDartCodeBuilder {
     return Library((b) => b
       ..name = 'exports'
       ..directives.addAll([
-        Directive.export('package:models/models.dart'),
         Directive.export('package:models/models.dart'),
       ]));
   }

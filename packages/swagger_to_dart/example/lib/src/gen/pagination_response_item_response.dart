@@ -35,7 +35,7 @@
 ///     ],
 ///     "title": "PaginationResponse[ItemResponse]"
 /// }
-library;
+library pagination_response_item_response;
 
 import 'exports.dart';
 part 'pagination_response_item_response.freezed.dart';

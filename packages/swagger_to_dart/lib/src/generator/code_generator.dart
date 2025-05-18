@@ -53,11 +53,13 @@ class CodeGenerator {
       }),
     );
 
-    final library = Library((b) => b
-      ..directives.addAll([
-        for (final model in context.models)
-          if (model.name case final name?) Directive.export('$name.dart'),
-      ]));
+    final library = Library(
+      (b) => b
+        ..directives.addAll([
+          for (final model in context.models)
+            if (model.name != null) Directive.export('${model.name}.dart'),
+        ]),
+    );
 
     final file = File(path.join(dir.path, 'models.dart'));
     await file.writeAsString(

@@ -1,18 +1,18 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:collection/collection.dart';
 import 'package:swagger_to_dart/src/config/generation_context.dart';
-import 'package:swagger_to_dart/src/generator/model/model.dart';
 import 'package:swagger_to_dart/src/schema/openapi/extension.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 class PropertyGeneratorStrategy {
-  const PropertyGeneratorStrategy(this.context, this.model);
-
-  final MapEntry<String, OpenApiSchemas> model;
+  const PropertyGeneratorStrategy(this.context);
 
   final GenerationContext context;
 
-  Parameter generate(MapEntry<String, OpenApiSchema> property) {
+  Parameter generate(
+    MapEntry<String, OpenApiSchema> property, {
+    required String modelClassName,
+  }) {
     final name = Renaming.instance.renameProperty(property.key);
 
     final defaultValue = switch (property.value.default_) {
@@ -20,7 +20,7 @@ class PropertyGeneratorStrategy {
       _ => property.value.default_,
     };
 
-    final dartType = _getOpenApiSchemaDartType(property.value);
+    final dartType = _getOpenApiSchemaDartType(modelClassName, property.value);
 
     return Parameter(
       (b) => b
@@ -29,19 +29,25 @@ class PropertyGeneratorStrategy {
         ..named = true
         ..annotations.addAll([
           if (defaultValue != null) refer('Default($defaultValue)'),
-          refer('JsonKey(name: ${model.className}.${name}Key)'),
+          refer('JsonKey(name: $modelClassName.${name}Key)'),
         ])
         ..name = name
         ..type = refer(dartType),
     );
   }
 
-  String _getOpenApiSchemaDartType(OpenApiSchema schema) {
+  String _getOpenApiSchemaDartType(
+    String modelClassName,
+    OpenApiSchema schema,
+  ) {
     return switch (schema) {
-      OpenApiSchemaType value => _getOpenApiSchemaTypeDartType(value),
+      OpenApiSchemaType value =>
+        _getOpenApiSchemaTypeDartType(modelClassName, value),
       OpenApiSchemaRef value => _getOpenApiSchemaRefDartType(value),
-      OpenApiSchemaAnyOf value => _getOpenApiSchemaAnyOfDartType(value),
-      OpenApiSchemaOneOf value => _getOpenApiSchemaOneOfDartType(value),
+      OpenApiSchemaAnyOf value =>
+        _getOpenApiSchemaAnyOfDartType(modelClassName, value),
+      OpenApiSchemaOneOf value =>
+        _getOpenApiSchemaOneOfDartType(modelClassName, value),
     };
   }
 
@@ -49,7 +55,10 @@ class PropertyGeneratorStrategy {
     return Renaming.instance.renameRefClass(schema);
   }
 
-  String _getOpenApiSchemaAnyOfDartType(OpenApiSchemaAnyOf schema) {
+  String _getOpenApiSchemaAnyOfDartType(
+    String modelClassName,
+    OpenApiSchemaAnyOf schema,
+  ) {
     final anyOf = schema.anyOf ?? [];
     final nonNullSchemas = anyOf
         .where((e) =>
@@ -58,18 +67,24 @@ class PropertyGeneratorStrategy {
     final isNullable = nonNullSchemas.length != anyOf.length;
 
     if (nonNullSchemas.length == 1) {
-      final dartType = _getOpenApiSchemaDartType(nonNullSchemas.first);
+      final dartType = _getOpenApiSchemaDartType(
+        modelClassName,
+        nonNullSchemas.first,
+      );
       return dartType + (isNullable ? '?' : '');
     }
 
     if (nonNullSchemas.every((e) => e is OpenApiSchemaRef)) {
-      return createUnionClass(nonNullSchemas);
+      return createUnionClass(modelClassName, nonNullSchemas);
     }
 
     return 'dynamic';
   }
 
-  String _getOpenApiSchemaOneOfDartType(OpenApiSchemaOneOf schema) {
+  String _getOpenApiSchemaOneOfDartType(
+    String modelClassName,
+    OpenApiSchemaOneOf schema,
+  ) {
     final oneOf = schema.oneOf ?? [];
     final nonNullSchemas = oneOf
         .where((e) =>
@@ -77,13 +92,19 @@ class PropertyGeneratorStrategy {
         .toList();
 
     if (nonNullSchemas.length == 1) {
-      return _getOpenApiSchemaDartType(nonNullSchemas.first);
+      return _getOpenApiSchemaDartType(
+        modelClassName,
+        nonNullSchemas.first,
+      );
     }
 
     return 'dynamic';
   }
 
-  String _getOpenApiSchemaTypeDartType(OpenApiSchemaType schema) {
+  String _getOpenApiSchemaTypeDartType(
+    String modelClassName,
+    OpenApiSchemaType schema,
+  ) {
     switch (schema.type) {
       case OpenApiSchemaVarType.string:
         return switch (schema.format) {
@@ -107,7 +128,7 @@ class PropertyGeneratorStrategy {
       case OpenApiSchemaVarType.array:
         final className = schema.items == null
             ? null
-            : _getOpenApiSchemaDartType(schema.items!);
+            : _getOpenApiSchemaDartType(modelClassName, schema.items!);
 
         if (className == null) return 'List<dynamic>';
 
@@ -115,16 +136,19 @@ class PropertyGeneratorStrategy {
       case OpenApiSchemaVarType.object:
         if (schema.items == null) return 'Map<String, dynamic>';
 
-        return 'Map<String, ${model.className}>';
+        return 'Map<String, ${modelClassName}>';
       case OpenApiSchemaVarType.null_ || OpenApiSchemaVarType.$unknown || null:
         return 'dynamic';
     }
   }
 
-  String createUnionClass(List<OpenApiSchema> value) {
+  String createUnionClass(
+    String modelClassName,
+    List<OpenApiSchema> value,
+  ) {
     final schemas = value.whereType<OpenApiSchemaRef>();
     final className = schemas
-        .map(_getOpenApiSchemaDartType)
+        .map((e) => _getOpenApiSchemaDartType(modelClassName, e))
         .map(Renaming.instance.renameClass)
         .sorted((a, b) => a.compareTo(b))
         .join();
@@ -149,7 +173,10 @@ class PropertyGeneratorStrategy {
                     .getOpenApiSchemasByRef(property.ref!)!
                     .properties!
                     .entries)
-                  generate(entry),
+                  generate(
+                    entry,
+                    modelClassName: className,
+                  ),
               ]),
           )
     ];
@@ -162,13 +189,6 @@ class PropertyGeneratorStrategy {
           Directive.part('${filename}.freezed.dart'),
           Directive.part('${filename}.g.dart'),
         ])
-        ..docs.addAll([
-          '/// ${model.key}',
-          ...JsonFactory.instance
-              .encode(model.value.toJson())
-              .split('\n')
-              .map((e) => '/// $e'),
-        ])
         ..body.addAll([
           Class(
             (b) => b
@@ -179,13 +199,20 @@ class PropertyGeneratorStrategy {
               ..abstract = true
               ..name = className
               ..fields.addAll([
-                for (final property in unions.expand((e) => e.optionalParameters))
-                  Field((b) => b
-                    ..static = true
-                    ..modifier = FieldModifier.constant
-                    ..name = '${property.name}Key'
-                    ..type = refer('String')
-                    ..assignment = Code('"${property.name}"'),
+                for (final property in {
+                  ...unions
+                      .expand((e) => e.optionalParameters)
+                      .map((p) => p.name)
+                }.map((name) => unions
+                    .expand((e) => e.optionalParameters)
+                    .firstWhere((p) => p.name == name)))
+                  Field(
+                    (b) => b
+                      ..static = true
+                      ..modifier = FieldModifier.constant
+                      ..name = '${property.name}Key'
+                      ..type = refer('String')
+                      ..assignment = Code('"${property.name}"'),
                   ),
               ])
               ..mixins.addAll([refer('_\$${className}')])

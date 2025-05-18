@@ -44,8 +44,8 @@ CatDogParrot _$CatDogParrotFromJson(
 mixin _$CatDogParrot {
 
 /// name
-@JsonKey(name: CreateAnimalResponse.nameKey) String get name;/// type
-@JsonKey(name: CreateAnimalResponse.typeKey) String get type;
+@JsonKey(name: CatDogParrot.nameKey) String get name;/// type
+@JsonKey(name: CatDogParrot.typeKey) String get type;
 /// Create a copy of CatDogParrot
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -78,7 +78,7 @@ abstract mixin class $CatDogParrotCopyWith<$Res>  {
   factory $CatDogParrotCopyWith(CatDogParrot value, $Res Function(CatDogParrot) _then) = _$CatDogParrotCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: CreateAnimalResponse.nameKey) String name,@JsonKey(name: CreateAnimalResponse.typeKey) String type
+@JsonKey(name: CatDogParrot.nameKey) String name,@JsonKey(name: CatDogParrot.typeKey) String type
 });
 
 
@@ -110,15 +110,15 @@ as String,
 
 @generationJsonSerializable
 class Dog extends CatDogParrot {
-  const Dog({@JsonKey(name: CreateAnimalResponse.nameKey) required this.name, @JsonKey(name: CreateAnimalResponse.typeKey) this.type = "dog", @JsonKey(name: CreateAnimalResponse.barkLoudnessKey) required this.barkLoudness, final  String? $type}): $type = $type ?? 'dog',super._();
+  const Dog({@JsonKey(name: CatDogParrot.nameKey) required this.name, @JsonKey(name: CatDogParrot.typeKey) this.type = "dog", @JsonKey(name: CatDogParrot.barkLoudnessKey) required this.barkLoudness, final  String? $type}): $type = $type ?? 'dog',super._();
   factory Dog.fromJson(Map<String, dynamic> json) => _$DogFromJson(json);
 
 /// name
-@override@JsonKey(name: CreateAnimalResponse.nameKey) final  String name;
+@override@JsonKey(name: CatDogParrot.nameKey) final  String name;
 /// type
-@override@JsonKey(name: CreateAnimalResponse.typeKey) final  String type;
+@override@JsonKey(name: CatDogParrot.typeKey) final  String type;
 /// barkLoudness
-@JsonKey(name: CreateAnimalResponse.barkLoudnessKey) final  int barkLoudness;
+@JsonKey(name: CatDogParrot.barkLoudnessKey) final  int barkLoudness;
 
 @JsonKey(name: 'runtimeType')
 final String $type;
@@ -157,7 +157,7 @@ abstract mixin class $DogCopyWith<$Res> implements $CatDogParrotCopyWith<$Res> {
   factory $DogCopyWith(Dog value, $Res Function(Dog) _then) = _$DogCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: CreateAnimalResponse.nameKey) String name,@JsonKey(name: CreateAnimalResponse.typeKey) String type,@JsonKey(name: CreateAnimalResponse.barkLoudnessKey) int barkLoudness
+@JsonKey(name: CatDogParrot.nameKey) String name,@JsonKey(name: CatDogParrot.typeKey) String type,@JsonKey(name: CatDogParrot.barkLoudnessKey) int barkLoudness
 });
 
 
@@ -190,15 +190,15 @@ as int,
 
 @generationJsonSerializable
 class Cat extends CatDogParrot {
-  const Cat({@JsonKey(name: CreateAnimalResponse.nameKey) required this.name, @JsonKey(name: CreateAnimalResponse.typeKey) this.type = "cat", @JsonKey(name: CreateAnimalResponse.meowCutenessKey) required this.meowCuteness, final  String? $type}): $type = $type ?? 'cat',super._();
+  const Cat({@JsonKey(name: CatDogParrot.nameKey) required this.name, @JsonKey(name: CatDogParrot.typeKey) this.type = "cat", @JsonKey(name: CatDogParrot.meowCutenessKey) required this.meowCuteness, final  String? $type}): $type = $type ?? 'cat',super._();
   factory Cat.fromJson(Map<String, dynamic> json) => _$CatFromJson(json);
 
 /// name
-@override@JsonKey(name: CreateAnimalResponse.nameKey) final  String name;
+@override@JsonKey(name: CatDogParrot.nameKey) final  String name;
 /// type
-@override@JsonKey(name: CreateAnimalResponse.typeKey) final  String type;
+@override@JsonKey(name: CatDogParrot.typeKey) final  String type;
 /// meowCuteness
-@JsonKey(name: CreateAnimalResponse.meowCutenessKey) final  int meowCuteness;
+@JsonKey(name: CatDogParrot.meowCutenessKey) final  int meowCuteness;
 
 @JsonKey(name: 'runtimeType')
 final String $type;
@@ -237,7 +237,7 @@ abstract mixin class $CatCopyWith<$Res> implements $CatDogParrotCopyWith<$Res> {
   factory $CatCopyWith(Cat value, $Res Function(Cat) _then) = _$CatCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: CreateAnimalResponse.nameKey) String name,@JsonKey(name: CreateAnimalResponse.typeKey) String type,@JsonKey(name: CreateAnimalResponse.meowCutenessKey) int meowCuteness
+@JsonKey(name: CatDogParrot.nameKey) String name,@JsonKey(name: CatDogParrot.typeKey) String type,@JsonKey(name: CatDogParrot.meowCutenessKey) int meowCuteness
 });
 
 
@@ -270,17 +270,17 @@ as int,
 
 @generationJsonSerializable
 class Parrot extends CatDogParrot {
-  const Parrot({@JsonKey(name: CreateAnimalResponse.nameKey) required this.name, @JsonKey(name: CreateAnimalResponse.typeKey) this.type = "parrot", @JsonKey(name: CreateAnimalResponse.phrasesKey) required final  List<String> phrases, final  String? $type}): _phrases = phrases,$type = $type ?? 'parrot',super._();
+  const Parrot({@JsonKey(name: CatDogParrot.nameKey) required this.name, @JsonKey(name: CatDogParrot.typeKey) this.type = "parrot", @JsonKey(name: CatDogParrot.phrasesKey) required final  List<String> phrases, final  String? $type}): _phrases = phrases,$type = $type ?? 'parrot',super._();
   factory Parrot.fromJson(Map<String, dynamic> json) => _$ParrotFromJson(json);
 
 /// name
-@override@JsonKey(name: CreateAnimalResponse.nameKey) final  String name;
+@override@JsonKey(name: CatDogParrot.nameKey) final  String name;
 /// type
-@override@JsonKey(name: CreateAnimalResponse.typeKey) final  String type;
+@override@JsonKey(name: CatDogParrot.typeKey) final  String type;
 /// phrases
  final  List<String> _phrases;
 /// phrases
-@JsonKey(name: CreateAnimalResponse.phrasesKey) List<String> get phrases {
+@JsonKey(name: CatDogParrot.phrasesKey) List<String> get phrases {
   if (_phrases is EqualUnmodifiableListView) return _phrases;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_phrases);
@@ -324,7 +324,7 @@ abstract mixin class $ParrotCopyWith<$Res> implements $CatDogParrotCopyWith<$Res
   factory $ParrotCopyWith(Parrot value, $Res Function(Parrot) _then) = _$ParrotCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: CreateAnimalResponse.nameKey) String name,@JsonKey(name: CreateAnimalResponse.typeKey) String type,@JsonKey(name: CreateAnimalResponse.phrasesKey) List<String> phrases
+@JsonKey(name: CatDogParrot.nameKey) String name,@JsonKey(name: CatDogParrot.typeKey) String type,@JsonKey(name: CatDogParrot.phrasesKey) List<String> phrases
 });
 
 

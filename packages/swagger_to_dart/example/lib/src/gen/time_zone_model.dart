@@ -613,7 +613,7 @@
 ///     ],
 ///     "title": "TimeZoneModel"
 /// }
-library;
+library time_zone_model;
 
 import 'exports.dart';
 part 'time_zone_model.freezed.dart';

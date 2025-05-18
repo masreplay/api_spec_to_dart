@@ -31,12 +31,12 @@ $CreateAnimalResponseCopyWith<CreateAnimalResponse> get copyWith => _$CreateAnim
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateAnimalResponse&&(identical(other.animal, animal) || other.animal == animal)&&(identical(other.message, message) || other.message == message));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateAnimalResponse&&const DeepCollectionEquality().equals(other.animal, animal)&&(identical(other.message, message) || other.message == message));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,animal,message);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(animal),message);
 
 @override
 String toString() {
@@ -55,7 +55,7 @@ $Res call({
 });
 
 
-$CatDogParrotCopyWith<$Res> get animal;
+
 
 }
 /// @nodoc
@@ -68,23 +68,14 @@ class _$CreateAnimalResponseCopyWithImpl<$Res>
 
 /// Create a copy of CreateAnimalResponse
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? animal = null,Object? message = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? animal = freezed,Object? message = null,}) {
   return _then(_self.copyWith(
-animal: null == animal ? _self.animal : animal // ignore: cast_nullable_to_non_nullable
+animal: freezed == animal ? _self.animal : animal // ignore: cast_nullable_to_non_nullable
 as CatDogParrot,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
-/// Create a copy of CreateAnimalResponse
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$CatDogParrotCopyWith<$Res> get animal {
-  
-  return $CatDogParrotCopyWith<$Res>(_self.animal, (value) {
-    return _then(_self.copyWith(animal: value));
-  });
-}
+
 }
 
 
@@ -113,12 +104,12 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateAnimalResponse&&(identical(other.animal, animal) || other.animal == animal)&&(identical(other.message, message) || other.message == message));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateAnimalResponse&&const DeepCollectionEquality().equals(other.animal, animal)&&(identical(other.message, message) || other.message == message));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,animal,message);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(animal),message);
 
 @override
 String toString() {
@@ -137,7 +128,7 @@ $Res call({
 });
 
 
-@override $CatDogParrotCopyWith<$Res> get animal;
+
 
 }
 /// @nodoc
@@ -150,24 +141,15 @@ class __$CreateAnimalResponseCopyWithImpl<$Res>
 
 /// Create a copy of CreateAnimalResponse
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? animal = null,Object? message = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? animal = freezed,Object? message = null,}) {
   return _then(_CreateAnimalResponse(
-animal: null == animal ? _self.animal : animal // ignore: cast_nullable_to_non_nullable
+animal: freezed == animal ? _self.animal : animal // ignore: cast_nullable_to_non_nullable
 as CatDogParrot,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
 
-/// Create a copy of CreateAnimalResponse
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$CatDogParrotCopyWith<$Res> get animal {
-  
-  return $CatDogParrotCopyWith<$Res>(_self.animal, (value) {
-    return _then(_self.copyWith(animal: value));
-  });
-}
+
 }
 
 // dart format on

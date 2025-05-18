@@ -73,7 +73,7 @@
 ///     ],
 ///     "title": "User"
 /// }
-library;
+library user;
 
 import 'exports.dart';
 part 'user.freezed.dart';

@@ -17,7 +17,7 @@
 ///     ],
 ///     "title": "ItemResponse"
 /// }
-library;
+library app_router_generic_router_item_response;
 
 import 'exports.dart';
 part 'app_router_generic_router_item_response.freezed.dart';

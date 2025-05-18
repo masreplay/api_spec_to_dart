@@ -17,7 +17,7 @@ class RegularModelStrategy extends ModelStrategy {
     final className = model.className;
     final filename = model.filename;
 
-    final propertyGenerator = PropertyGeneratorStrategy(context, model);
+    final propertyGenerator = PropertyGeneratorStrategy(context);
 
     final properties = model.value.properties ?? {};
 
@@ -75,8 +75,8 @@ class RegularModelStrategy extends ModelStrategy {
                     ..factory = true
                     ..redirect = refer('_${className}')
                     ..optionalParameters.addAll([
-                      ...properties.entries
-                          .map((value) => propertyGenerator.generate(value)),
+                      ...properties.entries.map((value) => propertyGenerator
+                          .generate(value, modelClassName: className)),
                     ]),
                 ),
                 Constructor(

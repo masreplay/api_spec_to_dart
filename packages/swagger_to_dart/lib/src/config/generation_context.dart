@@ -15,38 +15,15 @@ class GenerationContext {
   final Pubspec pubspec;
   final SwaggerToDart swaggerToDart;
 
-  ModelGenerator get modelGenerator => ModelGenerator(this);
-  final List<Library> _models = <Library>[];
-  List<Library> get models => _models;
-
-  void addModel(Library library) {
-    _models.add(library);
-  }
-
-  final List<Library> _enums = <Library>[];
-  List<Library> get enums => _enums;
-
-  void addEnum(Library library) {
-    _enums.add(library);
-  }
-
   bool get isFlutterProject {
     return pubspec.dependencies.containsKey('flutter');
   }
 
-  String get _outputDirectory {
-    return swaggerToDart.outputDirectory.replaceFirst('lib', '');
-  }
+  ModelGenerator get modelGenerator => ModelGenerator(this);
+  final _models = <Library>[];
+  List<Library> get models => _models;
 
-  Directive get importModelsDirective {
-    return Directive.import(
-      'package:${pubspec.name + _outputDirectory}/models/models.dart',
-    );
-  }
-
-  Directive get importClientsCode {
-    return Directive.import(
-      'package:${pubspec.name + _outputDirectory}/clients/clients.dart',
-    );
+  void addModel(Library library) {
+    _models.add(library);
   }
 }
