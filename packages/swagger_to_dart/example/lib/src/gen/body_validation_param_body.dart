@@ -29,7 +29,7 @@ part 'body_validation_param_body.g.dart'; // BodyValidationParamBody
 abstract class BodyValidationParamBody with _$BodyValidationParamBody {
   const BodyValidationParamBody._();
 
-  @generationJsonSerializable
+  @jsonSerializable
   const factory BodyValidationParamBody({
     /// data
     @JsonKey(name: BodyValidationParamBody.dataKey)

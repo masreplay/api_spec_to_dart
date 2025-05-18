@@ -79,7 +79,7 @@ as dynamic,
 
 /// @nodoc
 
-@generationJsonSerializable
+@jsonSerializable
 class _UlidModel extends UlidModel {
   const _UlidModel({@JsonKey(name: UlidModel.ulidKey) required this.ulid}): super._();
   factory _UlidModel.fromJson(Map<String, dynamic> json) => _$UlidModelFromJson(json);

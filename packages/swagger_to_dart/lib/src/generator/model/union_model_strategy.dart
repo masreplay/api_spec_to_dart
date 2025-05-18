@@ -1,6 +1,5 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:swagger_to_dart/src/generator/model/model_property_generator_strategy.dart';
-import 'package:swagger_to_dart/src/schema/openapi/extension.dart';
 import 'package:swagger_to_dart/src/schema/openapi/openapi.dart';
 import 'package:swagger_to_dart/src/utils/utils.dart';
 
@@ -16,24 +15,25 @@ class UnionModelStrategy extends ModelStrategy {
     final refs =
         (model.value.properties ?? {}).values.whereType<OpenApiSchemaRef>();
     final propertyGeneratorStrategy = PropertyGeneratorStrategy(context);
+
     final unions = refs.map((e) {
       final name = e.ref!.split('/').last;
-      final schemas = context.openApi.getOpenApiSchemasByRef(e.ref!);
-      final properties = schemas?.properties ?? {};
 
       return Constructor(
         (b) => b
-          ..annotations.addAll([refer('generationJsonSerializable')])
+          ..annotations.addAll([
+            refer('jsonSerializable'),
+            refer('FreezedUnionValue("${Recase.instance.toCamelCase(name)}")'),
+          ])
           ..constant = true
           ..factory = true
           ..name = Recase.instance.toCamelCase(name)
           ..redirect = refer(className + Recase.instance.toPascalCase(name))
-          ..optionalParameters.addAll([
-            for (final entry in properties.entries)
-              propertyGeneratorStrategy.generate(
-                entry,
-                modelClassName: className,
-              ),
+          ..requiredParameters.addAll([
+            propertyGeneratorStrategy.generateUnionValue(
+              e,
+              modelClassName: className,
+            )
           ]),
       );
     }).toList();
@@ -53,25 +53,8 @@ class UnionModelStrategy extends ModelStrategy {
                 '// ${className}',
               ])
               ..annotations.addAll([refer('freezed')])
-              ..abstract = true
+              ..sealed = true
               ..name = className
-              ..fields.addAll([
-                for (final property in {
-                  ...unions
-                      .expand((e) => e.optionalParameters)
-                      .map((p) => p.name)
-                }.map((name) => unions
-                    .expand((e) => e.optionalParameters)
-                    .firstWhere((p) => p.name == name)))
-                  Field(
-                    (b) => b
-                      ..static = true
-                      ..modifier = FieldModifier.constant
-                      ..name = '${property.name}Key'
-                      ..type = refer('String')
-                      ..assignment = Code('"${property.name}"'),
-                  ),
-              ])
               ..mixins.addAll([refer('_\$${className}')])
               ..constructors.addAll([
                 Constructor(

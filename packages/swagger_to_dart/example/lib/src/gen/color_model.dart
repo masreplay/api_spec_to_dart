@@ -23,7 +23,7 @@ part 'color_model.g.dart'; // ColorModel
 abstract class ColorModel with _$ColorModel {
   const ColorModel._();
 
-  @generationJsonSerializable
+  @jsonSerializable
   const factory ColorModel({
     /// color
     @JsonKey(name: ColorModel.colorKey) required String color,

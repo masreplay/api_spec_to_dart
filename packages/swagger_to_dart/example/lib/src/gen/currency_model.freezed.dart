@@ -81,7 +81,7 @@ as String?,
 
 /// @nodoc
 
-@generationJsonSerializable
+@jsonSerializable
 class _CurrencyModel extends CurrencyModel {
   const _CurrencyModel({@JsonKey(name: CurrencyModel.currencyKey) required this.currency, @JsonKey(name: CurrencyModel.iso4217Key) required this.iso4217}): super._();
   factory _CurrencyModel.fromJson(Map<String, dynamic> json) => _$CurrencyModelFromJson(json);

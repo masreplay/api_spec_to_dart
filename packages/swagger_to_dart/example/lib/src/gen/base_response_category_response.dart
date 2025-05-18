@@ -32,7 +32,7 @@ abstract class BaseResponseCategoryResponse
     with _$BaseResponseCategoryResponse {
   const BaseResponseCategoryResponse._();
 
-  @generationJsonSerializable
+  @jsonSerializable
   const factory BaseResponseCategoryResponse({
     /// data
     @JsonKey(name: BaseResponseCategoryResponse.dataKey)

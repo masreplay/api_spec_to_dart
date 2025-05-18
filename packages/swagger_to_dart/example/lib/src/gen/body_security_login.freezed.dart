@@ -89,7 +89,7 @@ as String?,
 
 /// @nodoc
 
-@generationJsonSerializable
+@jsonSerializable
 class _BodySecurityLogin extends BodySecurityLogin {
   const _BodySecurityLogin({@JsonKey(name: BodySecurityLogin.grantTypeKey) required this.grantType, @JsonKey(name: BodySecurityLogin.usernameKey) required this.username, @JsonKey(name: BodySecurityLogin.passwordKey) required this.password, @JsonKey(name: BodySecurityLogin.scopeKey) this.scope = "", @JsonKey(name: BodySecurityLogin.clientIdKey) required this.clientId, @JsonKey(name: BodySecurityLogin.clientSecretKey) required this.clientSecret}): super._();
   factory _BodySecurityLogin.fromJson(Map<String, dynamic> json) => _$BodySecurityLoginFromJson(json);

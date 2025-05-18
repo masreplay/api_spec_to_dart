@@ -81,7 +81,7 @@ as String?,
 
 /// @nodoc
 
-@generationJsonSerializable
+@jsonSerializable
 class _BodyFilesFileUpload extends BodyFilesFileUpload {
   const _BodyFilesFileUpload({@JsonKey(name: BodyFilesFileUpload.fileKey) required this.file, @JsonKey(name: BodyFilesFileUpload.descriptionKey) required this.description}): super._();
   factory _BodyFilesFileUpload.fromJson(Map<String, dynamic> json) => _$BodyFilesFileUploadFromJson(json);

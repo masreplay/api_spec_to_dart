@@ -91,7 +91,7 @@ as List<String>,
 
 /// @nodoc
 
-@generationJsonSerializable
+@jsonSerializable
 class _AllTypesWithValidation extends AllTypesWithValidation {
   const _AllTypesWithValidation({@JsonKey(name: AllTypesWithValidation.intValueKey) required this.intValue, @JsonKey(name: AllTypesWithValidation.floatValueKey) required this.floatValue, @JsonKey(name: AllTypesWithValidation.strValueKey) required this.strValue, @JsonKey(name: AllTypesWithValidation.boolValueKey) required this.boolValue, @JsonKey(name: AllTypesWithValidation.emailValueKey) required this.emailValue, @JsonKey(name: AllTypesWithValidation.urlValueKey) required this.urlValue, @JsonKey(name: AllTypesWithValidation.listValueKey) required final  List<String> listValue}): _listValue = listValue,super._();
   factory _AllTypesWithValidation.fromJson(Map<String, dynamic> json) => _$AllTypesWithValidationFromJson(json);

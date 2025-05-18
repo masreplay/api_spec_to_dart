@@ -79,7 +79,7 @@ as String,
 
 /// @nodoc
 
-@generationJsonSerializable
+@jsonSerializable
 class _MACAddressModel extends MACAddressModel {
   const _MACAddressModel({@JsonKey(name: MACAddressModel.macAddressKey) required this.macAddress}): super._();
   factory _MACAddressModel.fromJson(Map<String, dynamic> json) => _$MACAddressModelFromJson(json);

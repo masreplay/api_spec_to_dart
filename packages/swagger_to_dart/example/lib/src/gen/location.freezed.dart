@@ -83,7 +83,7 @@ as String?,
 
 /// @nodoc
 
-@generationJsonSerializable
+@jsonSerializable
 class _Location extends Location {
   const _Location({@JsonKey(name: Location.latKey) required this.lat, @JsonKey(name: Location.lngKey) required this.lng, @JsonKey(name: Location.nameKey) required this.name}): super._();
   factory _Location.fromJson(Map<String, dynamic> json) => _$LocationFromJson(json);

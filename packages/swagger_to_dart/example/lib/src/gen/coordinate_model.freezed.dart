@@ -83,7 +83,7 @@ as double?,
 
 /// @nodoc
 
-@generationJsonSerializable
+@jsonSerializable
 class _CoordinateModel extends CoordinateModel {
   const _CoordinateModel({@JsonKey(name: CoordinateModel.coordinateKey) required this.coordinate, @JsonKey(name: CoordinateModel.latitudeKey) required this.latitude, @JsonKey(name: CoordinateModel.longitudeKey) required this.longitude}): super._();
   factory _CoordinateModel.fromJson(Map<String, dynamic> json) => _$CoordinateModelFromJson(json);

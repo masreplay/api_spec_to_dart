@@ -32,7 +32,7 @@ abstract class BaseResponsePaginationResponseItemResponse
     with _$BaseResponsePaginationResponseItemResponse {
   const BaseResponsePaginationResponseItemResponse._();
 
-  @generationJsonSerializable
+  @jsonSerializable
   const factory BaseResponsePaginationResponseItemResponse({
     /// data
     @JsonKey(name: BaseResponsePaginationResponseItemResponse.dataKey)

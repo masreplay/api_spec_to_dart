@@ -83,7 +83,7 @@ as bool,
 
 /// @nodoc
 
-@generationJsonSerializable
+@jsonSerializable
 class _BodyFilesFormBasic extends BodyFilesFormBasic {
   const _BodyFilesFormBasic({@JsonKey(name: BodyFilesFormBasic.usernameKey) required this.username, @JsonKey(name: BodyFilesFormBasic.passwordKey) required this.password, @JsonKey(name: BodyFilesFormBasic.rememberKey) this.remember = false}): super._();
   factory _BodyFilesFormBasic.fromJson(Map<String, dynamic> json) => _$BodyFilesFormBasicFromJson(json);

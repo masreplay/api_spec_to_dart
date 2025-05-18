@@ -85,7 +85,7 @@ as String?,
 
 /// @nodoc
 
-@generationJsonSerializable
+@jsonSerializable
 class _LanguageModel extends LanguageModel {
   const _LanguageModel({@JsonKey(name: LanguageModel.alpha2Key) required this.alpha2, @JsonKey(name: LanguageModel.nameKey) required this.name, @JsonKey(name: LanguageModel.iso6393Key) required this.iso6393, @JsonKey(name: LanguageModel.iso6395Key) required this.iso6395}): super._();
   factory _LanguageModel.fromJson(Map<String, dynamic> json) => _$LanguageModelFromJson(json);

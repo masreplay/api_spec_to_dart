@@ -87,7 +87,7 @@ as double?,
 
 /// @nodoc
 
-@generationJsonSerializable
+@jsonSerializable
 class _AppRouterItemsRouterItemResponse extends AppRouterItemsRouterItemResponse {
   const _AppRouterItemsRouterItemResponse({@JsonKey(name: AppRouterItemsRouterItemResponse.idKey) required this.id, @JsonKey(name: AppRouterItemsRouterItemResponse.nameKey) required this.name, @JsonKey(name: AppRouterItemsRouterItemResponse.descriptionKey) required this.description, @JsonKey(name: AppRouterItemsRouterItemResponse.priceKey) required this.price, @JsonKey(name: AppRouterItemsRouterItemResponse.taxKey) required this.tax}): super._();
   factory _AppRouterItemsRouterItemResponse.fromJson(Map<String, dynamic> json) => _$AppRouterItemsRouterItemResponseFromJson(json);

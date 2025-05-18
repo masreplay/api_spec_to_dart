@@ -81,7 +81,7 @@ as String,
 
 /// @nodoc
 
-@generationJsonSerializable
+@jsonSerializable
 class _PhoneNumberModel extends PhoneNumberModel {
   const _PhoneNumberModel({@JsonKey(name: PhoneNumberModel.phoneKey) required this.phone, @JsonKey(name: PhoneNumberModel.phone2Key) required this.phone2}): super._();
   factory _PhoneNumberModel.fromJson(Map<String, dynamic> json) => _$PhoneNumberModelFromJson(json);

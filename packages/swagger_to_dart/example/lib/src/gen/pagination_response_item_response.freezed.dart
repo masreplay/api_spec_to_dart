@@ -87,7 +87,7 @@ as int,
 
 /// @nodoc
 
-@generationJsonSerializable
+@jsonSerializable
 class _PaginationResponseItemResponse extends PaginationResponseItemResponse {
   const _PaginationResponseItemResponse({@JsonKey(name: PaginationResponseItemResponse.itemsKey) required final  List<AppRouterGenericRouterItemResponse> items, @JsonKey(name: PaginationResponseItemResponse.totalKey) required this.total, @JsonKey(name: PaginationResponseItemResponse.pageKey) required this.page, @JsonKey(name: PaginationResponseItemResponse.perPageKey) required this.perPage, @JsonKey(name: PaginationResponseItemResponse.totalPagesKey) required this.totalPages}): _items = items,super._();
   factory _PaginationResponseItemResponse.fromJson(Map<String, dynamic> json) => _$PaginationResponseItemResponseFromJson(json);

@@ -43,14 +43,7 @@ CatDogParrot _$CatDogParrotFromJson(
 /// @nodoc
 mixin _$CatDogParrot {
 
-/// name
-@JsonKey(name: CatDogParrot.nameKey) String get name;/// type
-@JsonKey(name: CatDogParrot.typeKey) String get type;
-/// Create a copy of CatDogParrot
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$CatDogParrotCopyWith<CatDogParrot> get copyWith => _$CatDogParrotCopyWithImpl<CatDogParrot>(this as CatDogParrot, _$identity);
+ Object get value;
 
   /// Serializes this CatDogParrot to a JSON map.
   Map<String, dynamic> toJson();
@@ -58,67 +51,35 @@ $CatDogParrotCopyWith<CatDogParrot> get copyWith => _$CatDogParrotCopyWithImpl<C
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CatDogParrot&&(identical(other.name, name) || other.name == name)&&(identical(other.type, type) || other.type == type));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CatDogParrot&&const DeepCollectionEquality().equals(other.value, value));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,type);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(value));
 
 @override
 String toString() {
-  return 'CatDogParrot(name: $name, type: $type)';
+  return 'CatDogParrot(value: $value)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $CatDogParrotCopyWith<$Res>  {
-  factory $CatDogParrotCopyWith(CatDogParrot value, $Res Function(CatDogParrot) _then) = _$CatDogParrotCopyWithImpl;
-@useResult
-$Res call({
-@JsonKey(name: CatDogParrot.nameKey) String name,@JsonKey(name: CatDogParrot.typeKey) String type
-});
-
-
-
-
-}
-/// @nodoc
-class _$CatDogParrotCopyWithImpl<$Res>
-    implements $CatDogParrotCopyWith<$Res> {
-  _$CatDogParrotCopyWithImpl(this._self, this._then);
-
-  final CatDogParrot _self;
-  final $Res Function(CatDogParrot) _then;
-
-/// Create a copy of CatDogParrot
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? type = null,}) {
-  return _then(_self.copyWith(
-name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
-}
-
+class $CatDogParrotCopyWith<$Res>  {
+$CatDogParrotCopyWith(CatDogParrot _, $Res Function(CatDogParrot) __);
 }
 
 
 /// @nodoc
 
-@generationJsonSerializable
+@jsonSerializable
 class CatDogParrotDog extends CatDogParrot {
-  const CatDogParrotDog({@JsonKey(name: CatDogParrot.nameKey) required this.name, @JsonKey(name: CatDogParrot.typeKey) this.type = "dog", @JsonKey(name: CatDogParrot.barkLoudnessKey) required this.barkLoudness, final  String? $type}): $type = $type ?? 'dog',super._();
+  const CatDogParrotDog(this.value, {final  String? $type}): $type = $type ?? 'dog',super._();
   factory CatDogParrotDog.fromJson(Map<String, dynamic> json) => _$CatDogParrotDogFromJson(json);
 
-/// name
-@override@JsonKey(name: CatDogParrot.nameKey) final  String name;
-/// type
-@override@JsonKey(name: CatDogParrot.typeKey) final  String type;
-/// barkLoudness
-@JsonKey(name: CatDogParrot.barkLoudnessKey) final  int barkLoudness;
+@override final  Dog value;
 
 @JsonKey(name: 'runtimeType')
 final String $type;
@@ -126,7 +87,7 @@ final String $type;
 
 /// Create a copy of CatDogParrot
 /// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
+@JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $CatDogParrotDogCopyWith<CatDogParrotDog> get copyWith => _$CatDogParrotDogCopyWithImpl<CatDogParrotDog>(this, _$identity);
 
@@ -137,16 +98,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CatDogParrotDog&&(identical(other.name, name) || other.name == name)&&(identical(other.type, type) || other.type == type)&&(identical(other.barkLoudness, barkLoudness) || other.barkLoudness == barkLoudness));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CatDogParrotDog&&(identical(other.value, value) || other.value == value));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,type,barkLoudness);
+int get hashCode => Object.hash(runtimeType,value);
 
 @override
 String toString() {
-  return 'CatDogParrot.dog(name: $name, type: $type, barkLoudness: $barkLoudness)';
+  return 'CatDogParrot.dog(value: $value)';
 }
 
 
@@ -155,13 +116,13 @@ String toString() {
 /// @nodoc
 abstract mixin class $CatDogParrotDogCopyWith<$Res> implements $CatDogParrotCopyWith<$Res> {
   factory $CatDogParrotDogCopyWith(CatDogParrotDog value, $Res Function(CatDogParrotDog) _then) = _$CatDogParrotDogCopyWithImpl;
-@override @useResult
+@useResult
 $Res call({
-@JsonKey(name: CatDogParrot.nameKey) String name,@JsonKey(name: CatDogParrot.typeKey) String type,@JsonKey(name: CatDogParrot.barkLoudnessKey) int barkLoudness
+ Dog value
 });
 
 
-
+$DogCopyWith<$Res> get value;
 
 }
 /// @nodoc
@@ -174,31 +135,33 @@ class _$CatDogParrotDogCopyWithImpl<$Res>
 
 /// Create a copy of CatDogParrot
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? type = null,Object? barkLoudness = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? value = null,}) {
   return _then(CatDogParrotDog(
-name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
-as String,barkLoudness: null == barkLoudness ? _self.barkLoudness : barkLoudness // ignore: cast_nullable_to_non_nullable
-as int,
+null == value ? _self.value : value // ignore: cast_nullable_to_non_nullable
+as Dog,
   ));
 }
 
-
+/// Create a copy of CatDogParrot
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$DogCopyWith<$Res> get value {
+  
+  return $DogCopyWith<$Res>(_self.value, (value) {
+    return _then(_self.copyWith(value: value));
+  });
+}
 }
 
 /// @nodoc
 
-@generationJsonSerializable
+@jsonSerializable
 class CatDogParrotCat extends CatDogParrot {
-  const CatDogParrotCat({@JsonKey(name: CatDogParrot.nameKey) required this.name, @JsonKey(name: CatDogParrot.typeKey) this.type = "cat", @JsonKey(name: CatDogParrot.meowCutenessKey) required this.meowCuteness, final  String? $type}): $type = $type ?? 'cat',super._();
+  const CatDogParrotCat(this.value, {final  String? $type}): $type = $type ?? 'cat',super._();
   factory CatDogParrotCat.fromJson(Map<String, dynamic> json) => _$CatDogParrotCatFromJson(json);
 
-/// name
-@override@JsonKey(name: CatDogParrot.nameKey) final  String name;
-/// type
-@override@JsonKey(name: CatDogParrot.typeKey) final  String type;
-/// meowCuteness
-@JsonKey(name: CatDogParrot.meowCutenessKey) final  int meowCuteness;
+@override final  Cat value;
 
 @JsonKey(name: 'runtimeType')
 final String $type;
@@ -206,7 +169,7 @@ final String $type;
 
 /// Create a copy of CatDogParrot
 /// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
+@JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $CatDogParrotCatCopyWith<CatDogParrotCat> get copyWith => _$CatDogParrotCatCopyWithImpl<CatDogParrotCat>(this, _$identity);
 
@@ -217,16 +180,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CatDogParrotCat&&(identical(other.name, name) || other.name == name)&&(identical(other.type, type) || other.type == type)&&(identical(other.meowCuteness, meowCuteness) || other.meowCuteness == meowCuteness));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CatDogParrotCat&&(identical(other.value, value) || other.value == value));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,type,meowCuteness);
+int get hashCode => Object.hash(runtimeType,value);
 
 @override
 String toString() {
-  return 'CatDogParrot.cat(name: $name, type: $type, meowCuteness: $meowCuteness)';
+  return 'CatDogParrot.cat(value: $value)';
 }
 
 
@@ -235,13 +198,13 @@ String toString() {
 /// @nodoc
 abstract mixin class $CatDogParrotCatCopyWith<$Res> implements $CatDogParrotCopyWith<$Res> {
   factory $CatDogParrotCatCopyWith(CatDogParrotCat value, $Res Function(CatDogParrotCat) _then) = _$CatDogParrotCatCopyWithImpl;
-@override @useResult
+@useResult
 $Res call({
-@JsonKey(name: CatDogParrot.nameKey) String name,@JsonKey(name: CatDogParrot.typeKey) String type,@JsonKey(name: CatDogParrot.meowCutenessKey) int meowCuteness
+ Cat value
 });
 
 
-
+$CatCopyWith<$Res> get value;
 
 }
 /// @nodoc
@@ -254,38 +217,33 @@ class _$CatDogParrotCatCopyWithImpl<$Res>
 
 /// Create a copy of CatDogParrot
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? type = null,Object? meowCuteness = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? value = null,}) {
   return _then(CatDogParrotCat(
-name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
-as String,meowCuteness: null == meowCuteness ? _self.meowCuteness : meowCuteness // ignore: cast_nullable_to_non_nullable
-as int,
+null == value ? _self.value : value // ignore: cast_nullable_to_non_nullable
+as Cat,
   ));
 }
 
-
+/// Create a copy of CatDogParrot
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$CatCopyWith<$Res> get value {
+  
+  return $CatCopyWith<$Res>(_self.value, (value) {
+    return _then(_self.copyWith(value: value));
+  });
+}
 }
 
 /// @nodoc
 
-@generationJsonSerializable
+@jsonSerializable
 class CatDogParrotParrot extends CatDogParrot {
-  const CatDogParrotParrot({@JsonKey(name: CatDogParrot.nameKey) required this.name, @JsonKey(name: CatDogParrot.typeKey) this.type = "parrot", @JsonKey(name: CatDogParrot.phrasesKey) required final  List<String> phrases, final  String? $type}): _phrases = phrases,$type = $type ?? 'parrot',super._();
+  const CatDogParrotParrot(this.value, {final  String? $type}): $type = $type ?? 'parrot',super._();
   factory CatDogParrotParrot.fromJson(Map<String, dynamic> json) => _$CatDogParrotParrotFromJson(json);
 
-/// name
-@override@JsonKey(name: CatDogParrot.nameKey) final  String name;
-/// type
-@override@JsonKey(name: CatDogParrot.typeKey) final  String type;
-/// phrases
- final  List<String> _phrases;
-/// phrases
-@JsonKey(name: CatDogParrot.phrasesKey) List<String> get phrases {
-  if (_phrases is EqualUnmodifiableListView) return _phrases;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_phrases);
-}
-
+@override final  Parrot value;
 
 @JsonKey(name: 'runtimeType')
 final String $type;
@@ -293,7 +251,7 @@ final String $type;
 
 /// Create a copy of CatDogParrot
 /// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
+@JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $CatDogParrotParrotCopyWith<CatDogParrotParrot> get copyWith => _$CatDogParrotParrotCopyWithImpl<CatDogParrotParrot>(this, _$identity);
 
@@ -304,16 +262,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CatDogParrotParrot&&(identical(other.name, name) || other.name == name)&&(identical(other.type, type) || other.type == type)&&const DeepCollectionEquality().equals(other._phrases, _phrases));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CatDogParrotParrot&&(identical(other.value, value) || other.value == value));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,type,const DeepCollectionEquality().hash(_phrases));
+int get hashCode => Object.hash(runtimeType,value);
 
 @override
 String toString() {
-  return 'CatDogParrot.parrot(name: $name, type: $type, phrases: $phrases)';
+  return 'CatDogParrot.parrot(value: $value)';
 }
 
 
@@ -322,13 +280,13 @@ String toString() {
 /// @nodoc
 abstract mixin class $CatDogParrotParrotCopyWith<$Res> implements $CatDogParrotCopyWith<$Res> {
   factory $CatDogParrotParrotCopyWith(CatDogParrotParrot value, $Res Function(CatDogParrotParrot) _then) = _$CatDogParrotParrotCopyWithImpl;
-@override @useResult
+@useResult
 $Res call({
-@JsonKey(name: CatDogParrot.nameKey) String name,@JsonKey(name: CatDogParrot.typeKey) String type,@JsonKey(name: CatDogParrot.phrasesKey) List<String> phrases
+ Parrot value
 });
 
 
-
+$ParrotCopyWith<$Res> get value;
 
 }
 /// @nodoc
@@ -341,16 +299,23 @@ class _$CatDogParrotParrotCopyWithImpl<$Res>
 
 /// Create a copy of CatDogParrot
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? type = null,Object? phrases = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? value = null,}) {
   return _then(CatDogParrotParrot(
-name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
-as String,phrases: null == phrases ? _self._phrases : phrases // ignore: cast_nullable_to_non_nullable
-as List<String>,
+null == value ? _self.value : value // ignore: cast_nullable_to_non_nullable
+as Parrot,
   ));
 }
 
-
+/// Create a copy of CatDogParrot
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ParrotCopyWith<$Res> get value {
+  
+  return $ParrotCopyWith<$Res>(_self.value, (value) {
+    return _then(_self.copyWith(value: value));
+  });
+}
 }
 
 // dart format on

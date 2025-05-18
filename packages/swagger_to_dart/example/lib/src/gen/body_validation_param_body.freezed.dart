@@ -81,7 +81,7 @@ as int,
 
 /// @nodoc
 
-@generationJsonSerializable
+@jsonSerializable
 class _BodyValidationParamBody extends BodyValidationParamBody {
   const _BodyValidationParamBody({@JsonKey(name: BodyValidationParamBody.dataKey) required final  Map<String, dynamic> data, @JsonKey(name: BodyValidationParamBody.importanceKey) required this.importance}): _data = data,super._();
   factory _BodyValidationParamBody.fromJson(Map<String, dynamic> json) => _$BodyValidationParamBodyFromJson(json);

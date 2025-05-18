@@ -56,7 +56,7 @@ abstract class AppRouterItemsRouterItemResponse
     with _$AppRouterItemsRouterItemResponse {
   const AppRouterItemsRouterItemResponse._();
 
-  @generationJsonSerializable
+  @jsonSerializable
   const factory AppRouterItemsRouterItemResponse({
     /// id
     @JsonKey(name: AppRouterItemsRouterItemResponse.idKey) required int id,

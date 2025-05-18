@@ -85,7 +85,7 @@ as double?,
 
 /// @nodoc
 
-@generationJsonSerializable
+@jsonSerializable
 class _ItemRequestBody extends ItemRequestBody {
   const _ItemRequestBody({@JsonKey(name: ItemRequestBody.nameKey) required this.name, @JsonKey(name: ItemRequestBody.descriptionKey) required this.description, @JsonKey(name: ItemRequestBody.priceKey) required this.price, @JsonKey(name: ItemRequestBody.taxKey) required this.tax}): super._();
   factory _ItemRequestBody.fromJson(Map<String, dynamic> json) => _$ItemRequestBodyFromJson(json);

@@ -22,7 +22,7 @@ part 'http_validation_error.g.dart'; // HttpValidationError
 abstract class HttpValidationError with _$HttpValidationError {
   const HttpValidationError._();
 
-  @generationJsonSerializable
+  @jsonSerializable
   const factory HttpValidationError({
     /// detail
     @JsonKey(name: HttpValidationError.detailKey)

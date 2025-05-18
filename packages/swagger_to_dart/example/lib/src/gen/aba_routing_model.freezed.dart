@@ -79,7 +79,7 @@ as String,
 
 /// @nodoc
 
-@generationJsonSerializable
+@jsonSerializable
 class _ABARoutingModel extends ABARoutingModel {
   const _ABARoutingModel({@JsonKey(name: ABARoutingModel.routingNumberKey) required this.routingNumber}): super._();
   factory _ABARoutingModel.fromJson(Map<String, dynamic> json) => _$ABARoutingModelFromJson(json);

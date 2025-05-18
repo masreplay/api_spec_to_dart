@@ -69,7 +69,7 @@ part 'all_types_with_validation.g.dart'; // AllTypesWithValidation
 abstract class AllTypesWithValidation with _$AllTypesWithValidation {
   const AllTypesWithValidation._();
 
-  @generationJsonSerializable
+  @jsonSerializable
   const factory AllTypesWithValidation({
     /// intValue
     @JsonKey(name: AllTypesWithValidation.intValueKey) required int intValue,

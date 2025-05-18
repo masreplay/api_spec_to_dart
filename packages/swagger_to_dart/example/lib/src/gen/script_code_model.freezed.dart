@@ -79,7 +79,7 @@ as String,
 
 /// @nodoc
 
-@generationJsonSerializable
+@jsonSerializable
 class _ScriptCodeModel extends ScriptCodeModel {
   const _ScriptCodeModel({@JsonKey(name: ScriptCodeModel.scriptCodeKey) required this.scriptCode}): super._();
   factory _ScriptCodeModel.fromJson(Map<String, dynamic> json) => _$ScriptCodeModelFromJson(json);

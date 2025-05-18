@@ -66,7 +66,7 @@ part 'body_security_login.g.dart'; // BodySecurityLogin
 abstract class BodySecurityLogin with _$BodySecurityLogin {
   const BodySecurityLogin._();
 
-  @generationJsonSerializable
+  @jsonSerializable
   const factory BodySecurityLogin({
     /// grantType
     @JsonKey(name: BodySecurityLogin.grantTypeKey) required String? grantType,

@@ -36,7 +36,7 @@ part 'body_files_file_upload.g.dart'; // BodyFilesFileUpload
 abstract class BodyFilesFileUpload with _$BodyFilesFileUpload {
   const BodyFilesFileUpload._();
 
-  @generationJsonSerializable
+  @jsonSerializable
   const factory BodyFilesFileUpload({
     /// file
     @JsonKey(name: BodyFilesFileUpload.fileKey) required MultipartFile file,

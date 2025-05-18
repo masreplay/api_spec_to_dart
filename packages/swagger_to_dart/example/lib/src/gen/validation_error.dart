@@ -42,7 +42,7 @@ part 'validation_error.g.dart'; // ValidationError
 abstract class ValidationError with _$ValidationError {
   const ValidationError._();
 
-  @generationJsonSerializable
+  @jsonSerializable
   const factory ValidationError({
     /// loc
     @JsonKey(name: ValidationError.locKey) required List<dynamic> loc,

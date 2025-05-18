@@ -62,7 +62,7 @@ part 'country_model.g.dart'; // CountryModel
 abstract class CountryModel with _$CountryModel {
   const CountryModel._();
 
-  @generationJsonSerializable
+  @jsonSerializable
   const factory CountryModel({
     /// alpha2
     @JsonKey(name: CountryModel.alpha2Key) required String? alpha2,

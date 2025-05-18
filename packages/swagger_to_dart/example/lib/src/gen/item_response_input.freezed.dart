@@ -81,7 +81,7 @@ as String,
 
 /// @nodoc
 
-@generationJsonSerializable
+@jsonSerializable
 class _ItemResponseInput extends ItemResponseInput {
   const _ItemResponseInput({@JsonKey(name: ItemResponseInput.idKey) required this.id, @JsonKey(name: ItemResponseInput.nameKey) required this.name}): super._();
   factory _ItemResponseInput.fromJson(Map<String, dynamic> json) => _$ItemResponseInputFromJson(json);

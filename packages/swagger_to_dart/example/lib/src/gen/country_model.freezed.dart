@@ -85,7 +85,7 @@ as String?,
 
 /// @nodoc
 
-@generationJsonSerializable
+@jsonSerializable
 class _CountryModel extends CountryModel {
   const _CountryModel({@JsonKey(name: CountryModel.alpha2Key) required this.alpha2, @JsonKey(name: CountryModel.alpha3Key) required this.alpha3, @JsonKey(name: CountryModel.numericKey) required this.numeric, @JsonKey(name: CountryModel.shortNameKey) required this.shortName}): super._();
   factory _CountryModel.fromJson(Map<String, dynamic> json) => _$CountryModelFromJson(json);

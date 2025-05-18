@@ -22,7 +22,7 @@ part 'mac_address_model.g.dart'; // MACAddressModel
 abstract class MACAddressModel with _$MACAddressModel {
   const MACAddressModel._();
 
-  @generationJsonSerializable
+  @jsonSerializable
   const factory MACAddressModel({
     /// macAddress
     @JsonKey(name: MACAddressModel.macAddressKey) required String macAddress,

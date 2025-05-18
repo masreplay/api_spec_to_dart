@@ -90,7 +90,7 @@ $CatDogParrotCopyWith<$Res> get animal {
 
 /// @nodoc
 
-@generationJsonSerializable
+@jsonSerializable
 class _CreateAnimalResponse extends CreateAnimalResponse {
   const _CreateAnimalResponse({@JsonKey(name: CreateAnimalResponse.animalKey) required this.animal, @JsonKey(name: CreateAnimalResponse.messageKey) required this.message}): super._();
   factory _CreateAnimalResponse.fromJson(Map<String, dynamic> json) => _$CreateAnimalResponseFromJson(json);

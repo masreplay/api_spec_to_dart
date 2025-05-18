@@ -79,7 +79,7 @@ as String,
 
 /// @nodoc
 
-@generationJsonSerializable
+@jsonSerializable
 class _VersionModel extends VersionModel {
   const _VersionModel({@JsonKey(name: VersionModel.versionKey) required this.version}): super._();
   factory _VersionModel.fromJson(Map<String, dynamic> json) => _$VersionModelFromJson(json);

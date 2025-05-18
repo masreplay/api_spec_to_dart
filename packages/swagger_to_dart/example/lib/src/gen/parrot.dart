@@ -38,7 +38,7 @@ part 'parrot.g.dart'; // Parrot
 abstract class Parrot with _$Parrot {
   const Parrot._();
 
-  @generationJsonSerializable
+  @jsonSerializable
   const factory Parrot({
     /// name
     @JsonKey(name: Parrot.nameKey) required String name,

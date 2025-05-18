@@ -54,7 +54,7 @@ part 'coordinate_model.g.dart'; // CoordinateModel
 abstract class CoordinateModel with _$CoordinateModel {
   const CoordinateModel._();
 
-  @generationJsonSerializable
+  @jsonSerializable
   const factory CoordinateModel({
     /// coordinate
     @JsonKey(name: CoordinateModel.coordinateKey) required dynamic coordinate,

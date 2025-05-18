@@ -37,7 +37,7 @@ part 'create_animal_response.g.dart'; // CreateAnimalResponse
 abstract class CreateAnimalResponse with _$CreateAnimalResponse {
   const CreateAnimalResponse._();
 
-  @generationJsonSerializable
+  @jsonSerializable
   const factory CreateAnimalResponse({
     /// animal
     @JsonKey(name: CreateAnimalResponse.animalKey) required CatDogParrot animal,

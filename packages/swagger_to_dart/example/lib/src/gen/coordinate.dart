@@ -27,7 +27,7 @@ part 'coordinate.g.dart'; // Coordinate
 abstract class Coordinate with _$Coordinate {
   const Coordinate._();
 
-  @generationJsonSerializable
+  @jsonSerializable
   const factory Coordinate({
     /// latitude
     @JsonKey(name: Coordinate.latitudeKey) required double latitude,

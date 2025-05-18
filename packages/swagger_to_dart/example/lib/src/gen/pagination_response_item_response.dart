@@ -46,7 +46,7 @@ abstract class PaginationResponseItemResponse
     with _$PaginationResponseItemResponse {
   const PaginationResponseItemResponse._();
 
-  @generationJsonSerializable
+  @jsonSerializable
   const factory PaginationResponseItemResponse({
     /// items
     @JsonKey(name: PaginationResponseItemResponse.itemsKey)

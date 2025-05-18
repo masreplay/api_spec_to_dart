@@ -81,7 +81,7 @@ as String?,
 
 /// @nodoc
 
-@generationJsonSerializable
+@jsonSerializable
 class _ConditionalBody extends ConditionalBody {
   const _ConditionalBody({@JsonKey(name: ConditionalBody.itemIdKey) required this.itemId, @JsonKey(name: ConditionalBody.itemNameKey) required this.itemName}): super._();
   factory _ConditionalBody.fromJson(Map<String, dynamic> json) => _$ConditionalBodyFromJson(json);

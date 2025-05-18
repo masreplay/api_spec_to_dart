@@ -50,7 +50,7 @@ part 'item_request_body.g.dart'; // ItemRequestBody
 abstract class ItemRequestBody with _$ItemRequestBody {
   const ItemRequestBody._();
 
-  @generationJsonSerializable
+  @jsonSerializable
   const factory ItemRequestBody({
     /// name
     @JsonKey(name: ItemRequestBody.nameKey) required String name,

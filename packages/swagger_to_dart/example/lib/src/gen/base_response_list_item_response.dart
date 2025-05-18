@@ -36,7 +36,7 @@ abstract class BaseResponseListItemResponse
     with _$BaseResponseListItemResponse {
   const BaseResponseListItemResponse._();
 
-  @generationJsonSerializable
+  @jsonSerializable
   const factory BaseResponseListItemResponse({
     /// data
     @JsonKey(name: BaseResponseListItemResponse.dataKey)

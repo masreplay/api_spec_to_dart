@@ -27,7 +27,7 @@ part 'item_response_input.g.dart'; // ItemResponseInput
 abstract class ItemResponseInput with _$ItemResponseInput {
   const ItemResponseInput._();
 
-  @generationJsonSerializable
+  @jsonSerializable
   const factory ItemResponseInput({
     /// id
     @JsonKey(name: ItemResponseInput.idKey) required int id,

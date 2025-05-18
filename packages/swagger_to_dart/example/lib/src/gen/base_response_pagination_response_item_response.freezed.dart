@@ -92,7 +92,7 @@ $PaginationResponseItemResponseCopyWith<$Res> get data {
 
 /// @nodoc
 
-@generationJsonSerializable
+@jsonSerializable
 class _BaseResponsePaginationResponseItemResponse extends BaseResponsePaginationResponseItemResponse {
   const _BaseResponsePaginationResponseItemResponse({@JsonKey(name: BaseResponsePaginationResponseItemResponse.dataKey) required this.data, @JsonKey(name: BaseResponsePaginationResponseItemResponse.messageKey) required this.message, @JsonKey(name: BaseResponsePaginationResponseItemResponse.codeKey) required this.code}): super._();
   factory _BaseResponsePaginationResponseItemResponse.fromJson(Map<String, dynamic> json) => _$BaseResponsePaginationResponseItemResponseFromJson(json);

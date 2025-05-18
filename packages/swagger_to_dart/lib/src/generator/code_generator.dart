@@ -91,7 +91,7 @@ class MultipartFileJsonConverter implements JsonConverter<MultipartFile, Multipa
 }
 ''')),
           CodeExpression(Code('''
-const generationJsonSerializable = JsonSerializable(
+const jsonSerializable = JsonSerializable(
   converters: [MultipartFileJsonConverter()],
 );
 ''')),

@@ -396,7 +396,7 @@ part 'currency_model.g.dart'; // CurrencyModel
 abstract class CurrencyModel with _$CurrencyModel {
   const CurrencyModel._();
 
-  @generationJsonSerializable
+  @jsonSerializable
   const factory CurrencyModel({
     /// currency
     @JsonKey(name: CurrencyModel.currencyKey) required String? currency,

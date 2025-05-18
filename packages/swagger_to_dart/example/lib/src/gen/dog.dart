@@ -35,7 +35,7 @@ part 'dog.g.dart'; // Dog
 abstract class Dog with _$Dog {
   const Dog._();
 
-  @generationJsonSerializable
+  @jsonSerializable
   const factory Dog({
     /// name
     @JsonKey(name: Dog.nameKey) required String name,

@@ -79,7 +79,7 @@ as String,
 
 /// @nodoc
 
-@generationJsonSerializable
+@jsonSerializable
 class _S3PathModel extends S3PathModel {
   const _S3PathModel({@JsonKey(name: S3PathModel.s3PathKey) required this.s3Path}): super._();
   factory _S3PathModel.fromJson(Map<String, dynamic> json) => _$S3PathModelFromJson(json);

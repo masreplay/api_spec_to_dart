@@ -81,7 +81,7 @@ as String,
 
 /// @nodoc
 
-@generationJsonSerializable
+@jsonSerializable
 class _CategoryResponse extends CategoryResponse {
   const _CategoryResponse({@JsonKey(name: CategoryResponse.idKey) required this.id, @JsonKey(name: CategoryResponse.nameKey) required this.name}): super._();
   factory _CategoryResponse.fromJson(Map<String, dynamic> json) => _$CategoryResponseFromJson(json);

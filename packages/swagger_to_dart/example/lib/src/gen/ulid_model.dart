@@ -33,7 +33,7 @@ part 'ulid_model.g.dart'; // UlidModel
 abstract class UlidModel with _$UlidModel {
   const UlidModel._();
 
-  @generationJsonSerializable
+  @jsonSerializable
   const factory UlidModel({
     /// ulid
     @JsonKey(name: UlidModel.ulidKey) required dynamic ulid,

@@ -39,7 +39,7 @@ part 'conditional_body.g.dart'; // ConditionalBody
 abstract class ConditionalBody with _$ConditionalBody {
   const ConditionalBody._();
 
-  @generationJsonSerializable
+  @jsonSerializable
   const factory ConditionalBody({
     /// itemId
     @JsonKey(name: ConditionalBody.itemIdKey) required int? itemId,
