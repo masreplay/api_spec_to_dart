@@ -13,7 +13,7 @@
 ///     ],
 ///     "title": "VersionModel"
 /// }
-library version_model;
+library;
 
 import 'exports.dart';
 part 'version_model.freezed.dart';

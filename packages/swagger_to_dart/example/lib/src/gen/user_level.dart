@@ -9,7 +9,7 @@
 //     "title": "UserLevel"
 // }
 
-library user_level;
+library;
 
 import 'exports.dart';
 part 'user_level.g.dart';

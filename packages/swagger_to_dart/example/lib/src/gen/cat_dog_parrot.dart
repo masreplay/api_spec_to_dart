@@ -1,4 +1,4 @@
-library cat_dog_parrot;
+library;
 
 import 'exports.dart';
 part 'cat_dog_parrot.freezed.dart';
@@ -18,7 +18,7 @@ abstract class CatDogParrot with _$CatDogParrot {
 
     /// barkLoudness
     @JsonKey(name: CatDogParrot.barkLoudnessKey) required int barkLoudness,
-  }) = Dog;
+  }) = CatDogParrotDog;
 
   @generationJsonSerializable
   const factory CatDogParrot.cat({
@@ -30,7 +30,7 @@ abstract class CatDogParrot with _$CatDogParrot {
 
     /// meowCuteness
     @JsonKey(name: CatDogParrot.meowCutenessKey) required int meowCuteness,
-  }) = Cat;
+  }) = CatDogParrotCat;
 
   @generationJsonSerializable
   const factory CatDogParrot.parrot({
@@ -42,7 +42,7 @@ abstract class CatDogParrot with _$CatDogParrot {
 
     /// phrases
     @JsonKey(name: CatDogParrot.phrasesKey) required List<String> phrases,
-  }) = Parrot;
+  }) = CatDogParrotParrot;
 
   factory CatDogParrot.fromJson(Map<String, dynamic> json) =>
       _$CatDogParrotFromJson(json);

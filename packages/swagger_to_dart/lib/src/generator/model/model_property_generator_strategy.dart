@@ -142,12 +142,9 @@ class PropertyGeneratorStrategy {
     }
   }
 
-  String createUnionClass(
-    String modelClassName,
-    List<OpenApiSchema> value,
-  ) {
-    final schemas = value.whereType<OpenApiSchemaRef>();
-    final className = schemas
+  String createUnionClass(String modelClassName, List<OpenApiSchema> value) {
+    final className = value
+        .whereType<OpenApiSchemaRef>()
         .map((e) => _getOpenApiSchemaDartType(modelClassName, e))
         .map(Renaming.instance.renameClass)
         .sorted((a, b) => a.compareTo(b))
@@ -155,10 +152,10 @@ class PropertyGeneratorStrategy {
 
     final filename = Renaming.instance.renameFile(className);
 
-    final unions = schemas.map((schema) {
-      final name = schema.ref!.split('/').last;
-      final schemas = context.openApi.getOpenApiSchemasByRef(schema.ref!)!;
-      final properties = schemas.properties ?? {};
+    final unions = value.whereType<OpenApiSchemaRef>().map((e) {
+      final name = e.ref!.split('/').last;
+      final schemas = context.openApi.getOpenApiSchemasByRef(e.ref!);
+      final properties = schemas?.properties ?? {};
 
       return Constructor(
         (b) => b
@@ -166,7 +163,7 @@ class PropertyGeneratorStrategy {
           ..constant = true
           ..factory = true
           ..name = Recase.instance.toCamelCase(name)
-          ..redirect = refer(Recase.instance.toPascalCase(name))
+          ..redirect = refer(className + Recase.instance.toPascalCase(name))
           ..optionalParameters.addAll([
             for (final entry in properties.entries)
               generate(entry, modelClassName: className),

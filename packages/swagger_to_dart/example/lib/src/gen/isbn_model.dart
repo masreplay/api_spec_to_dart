@@ -12,7 +12,7 @@
 ///     ],
 ///     "title": "ISBNModel"
 /// }
-library isbn_model;
+library;
 
 import 'exports.dart';
 part 'isbn_model.freezed.dart';

@@ -25,7 +25,7 @@
 ///     ],
 ///     "title": "BaseResponse[list[ItemResponse]]"
 /// }
-library base_response_list_item_response;
+library;
 
 import 'exports.dart';
 part 'base_response_list_item_response.freezed.dart';

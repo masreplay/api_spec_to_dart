@@ -4,4 +4,4 @@ scripts:
   s: |
     fvm dart run swagger_to_dart:swagger_to_dart
     fvm dart run build_runner build --delete-conflicting-outputs
-    # fvm dart fix --apply && dart format -o write ./lib
+    fvm dart fix --apply && dart format -o write ./lib

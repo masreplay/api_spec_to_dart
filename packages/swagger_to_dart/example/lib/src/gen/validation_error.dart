@@ -32,7 +32,7 @@
 ///     ],
 ///     "title": "ValidationError"
 /// }
-library validation_error;
+library;
 
 import 'exports.dart';
 part 'validation_error.freezed.dart';
