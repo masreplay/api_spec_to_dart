@@ -155,31 +155,24 @@ class PropertyGeneratorStrategy {
 
     final filename = Renaming.instance.renameFile(className);
 
-    final unions = [
-      for (final property in schemas)
-        if (property.ref != null)
-          Constructor(
-            (b) => b
-              ..annotations.addAll([refer('generationJsonSerializable')])
-              ..constant = true
-              ..factory = true
-              ..name =
-                  Recase.instance.toCamelCase(property.ref!.split('/').last)
-              ..redirect = refer(
-                Recase.instance.toPascalCase(property.ref!.split('/').last),
-              )
-              ..optionalParameters.addAll([
-                for (final entry in context.openApi
-                    .getOpenApiSchemasByRef(property.ref!)!
-                    .properties!
-                    .entries)
-                  generate(
-                    entry,
-                    modelClassName: className,
-                  ),
-              ]),
-          )
-    ];
+    final unions = schemas.map((schema) {
+      final name = schema.ref!.split('/').last;
+      final schemas = context.openApi.getOpenApiSchemasByRef(schema.ref!)!;
+      final properties = schemas.properties ?? {};
+
+      return Constructor(
+        (b) => b
+          ..annotations.addAll([refer('generationJsonSerializable')])
+          ..constant = true
+          ..factory = true
+          ..name = Recase.instance.toCamelCase(name)
+          ..redirect = refer(Recase.instance.toPascalCase(name))
+          ..optionalParameters.addAll([
+            for (final entry in properties.entries)
+              generate(entry, modelClassName: className),
+          ]),
+      );
+    });
 
     final library = Library(
       (b) => b

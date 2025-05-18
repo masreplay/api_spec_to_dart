@@ -16,7 +16,7 @@ export 'conditional_body.dart';
 export 'coordinate.dart';
 export 'coordinate_model.dart';
 export 'country_model.dart';
-export 'cat_dog_parrot.dart' show Dog, Cat, Parrot;
+export 'cat_dog_parrot.dart';
 export 'create_animal_response.dart';
 export 'currency_model.dart';
 export 'dog.dart';

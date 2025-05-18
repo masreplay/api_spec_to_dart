@@ -1,12 +1,11 @@
 library cat_dog_parrot;
 
 import 'exports.dart';
-
 part 'cat_dog_parrot.freezed.dart';
 part 'cat_dog_parrot.g.dart'; // CatDogParrot
 
 @freezed
-sealed class CatDogParrot with _$CatDogParrot {
+abstract class CatDogParrot with _$CatDogParrot {
   const CatDogParrot._();
 
   @generationJsonSerializable
