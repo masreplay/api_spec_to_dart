@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:swagger_to_dart/src/schema/openapi/openapi.dart';
 import 'package:swagger_to_dart/src/utils/utils.dart';
 
-import 'model_strategy.dart';
+import '../model_generator_strategy.dart';
 
 ///
 /// Enum Model Strategy
@@ -36,7 +36,7 @@ import 'model_strategy.dart';
 /// ```
 ///
 
-class EnumModelStrategy extends ModelStrategy {
+class EnumModelStrategy extends ModelGeneratorStrategy {
   const EnumModelStrategy(super.context);
 
   Library generate(MapEntry<String, OpenApiSchemas> model) {

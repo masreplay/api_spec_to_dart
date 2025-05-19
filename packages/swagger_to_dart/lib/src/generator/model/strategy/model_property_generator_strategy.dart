@@ -1,7 +1,7 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:collection/collection.dart';
 import 'package:swagger_to_dart/src/config/generation_context.dart';
-import 'package:swagger_to_dart/src/generator/model/union_model_strategy.dart';
+import 'package:swagger_to_dart/src/generator/model/strategy/union_model_strategy.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 class PropertyGeneratorStrategy {

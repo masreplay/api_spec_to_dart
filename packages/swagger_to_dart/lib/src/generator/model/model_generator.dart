@@ -1,11 +1,11 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:swagger_to_dart/src/config/generation_context.dart';
-import 'package:swagger_to_dart/src/generator/model/model_strategy.dart';
+import 'package:swagger_to_dart/src/generator/model/model_generator_strategy.dart';
 import 'package:swagger_to_dart/src/schema/openapi/openapi.dart';
 
-import 'enum_model_strategy.dart';
-import 'regular_model_strategy.dart';
-import 'union_model_strategy.dart';
+import 'strategy/enum_model_strategy.dart';
+import 'strategy/regular_model_strategy.dart';
+import 'strategy/union_model_strategy.dart';
 
 ///
 /// Generate Enum, Union, Regular models
@@ -25,7 +25,7 @@ class ModelGenerator {
     }
   }
 
-  ModelStrategy getStrategy(MapEntry<String, OpenApiSchemas> model) {
+  ModelGeneratorStrategy getStrategy(MapEntry<String, OpenApiSchemas> model) {
     final schema = model.value;
 
     if (schema.enum_ != null) {

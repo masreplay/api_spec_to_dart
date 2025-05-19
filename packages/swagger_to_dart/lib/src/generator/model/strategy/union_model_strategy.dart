@@ -1,12 +1,12 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:swagger_to_dart/src/generator/model/model_property_generator_strategy.dart';
+import 'package:swagger_to_dart/src/generator/model/strategy/model_property_generator_strategy.dart';
 import 'package:swagger_to_dart/src/schema/openapi/openapi.dart';
 import 'package:swagger_to_dart/src/utils/utils.dart';
 
-import 'model_strategy.dart';
+import '../model_generator_strategy.dart';
 
-class UnionModelStrategy extends ModelStrategy {
+class UnionModelStrategy extends ModelGeneratorStrategy {
   const UnionModelStrategy(super.context);
 
   Library generate(MapEntry<String, OpenApiSchemas> model) {

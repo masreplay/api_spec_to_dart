@@ -3,14 +3,14 @@ import 'package:swagger_to_dart/src/schema/schema.dart';
 import 'package:swagger_to_dart/src/utils/utils.dart';
 
 import 'model_property_generator_strategy.dart';
-import 'model_strategy.dart';
+import '../model_generator_strategy.dart';
 
 extension MapEntryStringOpenApiSchemas on MapEntry<String, OpenApiSchemas> {
   String get className => Renaming.instance.renameClass(key);
   String get filename => Renaming.instance.renameFile(className);
 }
 
-class RegularModelStrategy extends ModelStrategy {
+class RegularModelStrategy extends ModelGeneratorStrategy {
   const RegularModelStrategy(super.context);
 
   Library generate(MapEntry<String, OpenApiSchemas> model) {
