@@ -25,7 +25,9 @@ class ModelGenerator {
     }
   }
 
-  ModelGeneratorStrategy getStrategy(MapEntry<String, OpenApiSchemas> model) {
+  ModelGeneratorStrategy _getBuildStrategy(
+    MapEntry<String, OpenApiSchemas> model,
+  ) {
     final schema = model.value;
 
     if (schema.enum_ != null) {
@@ -40,7 +42,7 @@ class ModelGenerator {
   }
 
   Library build(MapEntry<String, OpenApiSchemas> model) {
-    final strategy = getStrategy(model);
+    final strategy = _getBuildStrategy(model);
 
     return strategy.build(model);
   }
