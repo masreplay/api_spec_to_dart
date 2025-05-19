@@ -1,6 +1,6 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:swagger_to_dart/src/config/generation_context.dart';
-import 'package:swagger_to_dart/src/generator/model/model_generator_strategy.dart';
+import 'package:swagger_to_dart/src/generator/model/strategy/model_generator_strategy.dart';
 import 'package:swagger_to_dart/src/schema/openapi/openapi.dart';
 
 import 'strategy/enum_model_strategy.dart';

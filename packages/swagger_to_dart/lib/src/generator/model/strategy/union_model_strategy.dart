@@ -4,7 +4,7 @@ import 'package:swagger_to_dart/src/generator/model/strategy/property_generator_
 import 'package:swagger_to_dart/src/schema/openapi/openapi.dart';
 import 'package:swagger_to_dart/src/utils/utils.dart';
 
-import '../model_generator_strategy.dart';
+import 'model_generator_strategy.dart';
 
 class UnionModelStrategy extends ModelGeneratorStrategy {
   const UnionModelStrategy(super.context);

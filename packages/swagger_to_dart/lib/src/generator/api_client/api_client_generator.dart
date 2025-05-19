@@ -7,7 +7,7 @@ class ApiClientGenerator {
 
   final GenerationContext context;
 
-  Library generate({
+  Library build({
     required OpenApiPaths path,
     required String clientName,
     required List<String> tagPaths,
