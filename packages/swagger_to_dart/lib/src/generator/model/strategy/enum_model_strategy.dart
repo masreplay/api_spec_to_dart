@@ -67,7 +67,13 @@ class EnumModelStrategy extends ModelGeneratorStrategy {
                   EnumValue(
                     (b) => b
                       ..annotations.add(refer('$JsonValue("$value")'))
-                      ..name = Renaming.instance.renameEnumValue(value),
+                      ..name = () {
+                        if (value is String) {
+                          return Recase.instance.toCamelCase(value);
+                        } else {
+                          return 'value${value}';
+                        }
+                      }(),
                   ),
               ])
               ..methods.addAll([

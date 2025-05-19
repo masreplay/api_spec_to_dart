@@ -1,6 +1,6 @@
 from typing import Generic, TypeVar
 
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, Query, WebSocket, WebSocketDisconnect
 from pydantic import BaseModel, Field
 
 
@@ -68,6 +68,36 @@ async def get_items(
         per_page=pagination.per_page,
         total_pages=1,
     )
+
+
+class ConnectManager:
+    def __init__(self) -> None:
+        self.connections: list[WebSocket] = []
+
+    async def connect(self, websocket: WebSocket) -> None:
+        await websocket.accept()
+        self.connections.append(websocket)
+
+    async def disconnect(self, websocket: WebSocket) -> None:
+        self.connections.remove(websocket)
+
+    async def send_message(self, message: str) -> None:
+        for connection in self.connections:
+            await connection.send_text(message)
+
+
+@router.websocket("/ws")
+async def websocket_endpoint(
+    websocket: WebSocket,
+    manager: ConnectManager = Depends(ConnectManager),
+) -> None:
+    await manager.connect(websocket)
+    try:
+        while True:
+            data = await websocket.receive_text()
+            await manager.send_message(f"Received: {data}")
+    except WebSocketDisconnect:
+        await manager.disconnect(websocket)
 
 
 @router.get("/categories")
