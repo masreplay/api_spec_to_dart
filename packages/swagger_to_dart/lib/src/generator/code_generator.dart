@@ -16,7 +16,7 @@ class CodeGenerator {
       languageVersion: DartFormatter.latestLanguageVersion,
     );
 
-    context.modelGenerator.generate();
+    context.modelGenerator.generateAll();
 
     final dir = Directory(context.swaggerToDart.outputDirectory);
     print('Output directory: ${dir.path}');

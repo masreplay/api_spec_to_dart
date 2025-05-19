@@ -15,43 +15,33 @@ class ModelGenerator {
 
   final GenerationContext context;
 
-  Future<void> generate() async {
+  Future<void> generateAll() async {
     if (context.openApi.components case final openApiComponents?) {
       for (final entry in openApiComponents.schemas.entries) {
-        final result = run(entry);
+        final result = generate(entry);
 
         context.addModel(result);
       }
     }
   }
 
-  Library run(MapEntry<String, OpenApiSchemas> model) {
+  ModelStrategy getStrategy(MapEntry<String, OpenApiSchemas> model) {
     final schema = model.value;
 
-    ModelStrategy strategy = RegularModelStrategy(context);
-
     if (schema.enum_ != null) {
-      strategy = EnumModelStrategy(context);
+      return EnumModelStrategy(context);
     }
 
     if (schema is OpenApiSchemaAnyOf || schema is OpenApiSchemaOneOf) {
-      strategy = UnionModelStrategy(context);
+      return UnionModelStrategy(context);
     }
+
+    return RegularModelStrategy(context);
+  }
+
+  Library generate(MapEntry<String, OpenApiSchemas> model) {
+    final strategy = getStrategy(model);
 
     return strategy.generate(model);
   }
-
-  // bool _checkAnyOfType(OpenApiSchema schema) {
-  //   if (schema is! OpenApiSchemaAnyOf) return false;
-
-  //   final anyOf = schema.anyOf;
-  //   if (anyOf == null) return false;
-  //   if (anyOf.length == 2) {
-  //     if (anyOf.any(
-  //       (e) => e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_,
-  //     )) return false;
-  //     return true;
-  //   }
-  //   return anyOf.length > 2;
-  // }
 }
