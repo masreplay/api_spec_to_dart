@@ -39,7 +39,7 @@ import '../model_generator_strategy.dart';
 class EnumModelStrategy extends ModelGeneratorStrategy {
   const EnumModelStrategy(super.context);
 
-  Library generate(MapEntry<String, OpenApiSchemas> model) {
+  Library build(MapEntry<String, OpenApiSchemas> model) {
     final className = Renaming.instance.renameClass(model.key);
     final filename = Renaming.instance.renameFile(className);
 

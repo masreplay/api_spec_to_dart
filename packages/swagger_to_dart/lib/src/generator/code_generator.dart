@@ -16,7 +16,7 @@ class CodeGenerator {
       languageVersion: DartFormatter.latestLanguageVersion,
     );
 
-    context.modelGenerator.generateAll();
+    context.modelGenerator.generate();
 
     final dir = Directory(context.swaggerToDart.outputDirectory);
     print('Output directory: ${dir.path}');
@@ -29,29 +29,26 @@ class CodeGenerator {
 
     print('Generating ${context.models.length} models...');
 
-    // Process models in parallel for better performance
-    await Future.wait(
-      context.models.map((model) async {
-        final name = model.name;
-        if (name == null) {
-          print('Warning: Skipping model with null name');
-          return;
-        }
+    for (final model in context.models) {
+      final name = model.name;
+      if (name == null) {
+        print('Warning: Skipping model with null name');
+        return;
+      }
 
-        try {
-          print('Generating model $name...');
-          final file = File(path.join(dir.path, '${name}.dart'));
+      try {
+        print('Generating model $name...');
+        final file = File(path.join(dir.path, '${name}.dart'));
 
-          await file.writeAsString(
-            formatter.format('${model.accept(emitter)}'),
-            flush: true,
-          );
-        } catch (e, stackTrace) {
-          print('Error generating model $name: $e');
-          print('Stack trace: $stackTrace');
-        }
-      }),
-    );
+        await file.writeAsString(
+          formatter.format('${model.accept(emitter)}'),
+          flush: true,
+        );
+      } catch (e, stackTrace) {
+        print('Error generating model $name: $e');
+        print('Stack trace: $stackTrace');
+      }
+    }
 
     final library = Library(
       (b) => b
@@ -79,7 +76,9 @@ class CodeGenerator {
               'package:freezed_annotation/freezed_annotation.dart'),
         ])
         ..body.addAll([
-          CodeExpression(Code('''
+          CodeExpression(
+            Code(
+              '''
 class MultipartFileJsonConverter implements JsonConverter<MultipartFile, MultipartFile> {
   const MultipartFileJsonConverter();
 
@@ -89,10 +88,14 @@ class MultipartFileJsonConverter implements JsonConverter<MultipartFile, Multipa
   @override
   MultipartFile toJson(MultipartFile object) => object;
 }
-''')),
+''',
+            ),
+          ),
           CodeExpression(Code('''
 const jsonSerializable = JsonSerializable(
-  converters: [MultipartFileJsonConverter()],
+  converters: [
+  MultipartFileJsonConverter(),
+  ],
 );
 ''')),
         ]),

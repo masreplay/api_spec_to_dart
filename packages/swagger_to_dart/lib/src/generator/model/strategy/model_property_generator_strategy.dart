@@ -180,7 +180,7 @@ class PropertyGeneratorStrategy {
       ),
     );
 
-    context.addModel(unionModelStrategy.generate(unionModel));
+    context.addModel(unionModelStrategy.build(unionModel));
 
     return className;
   }

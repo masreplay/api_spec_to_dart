@@ -15,7 +15,7 @@ class ModelGenerator {
 
   final GenerationContext context;
 
-  Future<void> generateAll() async {
+  Future<void> generate() async {
     if (context.openApi.components case final openApiComponents?) {
       for (final entry in openApiComponents.schemas.entries) {
         final result = build(entry);
@@ -42,6 +42,6 @@ class ModelGenerator {
   Library build(MapEntry<String, OpenApiSchemas> model) {
     final strategy = getStrategy(model);
 
-    return strategy.generate(model);
+    return strategy.build(model);
   }
 }

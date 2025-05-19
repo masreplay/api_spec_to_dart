@@ -10,5 +10,5 @@ abstract class ModelGeneratorStrategy {
 
   final GenerationContext context;
 
-  Library generate(MapEntry<String, OpenApiSchemas> model);
+  Library build(MapEntry<String, OpenApiSchemas> model);
 }
