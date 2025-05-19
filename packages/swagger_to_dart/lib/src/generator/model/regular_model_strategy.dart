@@ -76,7 +76,7 @@ class RegularModelStrategy extends ModelStrategy {
                     ..redirect = refer('_${className}')
                     ..optionalParameters.addAll([
                       ...properties.entries.map((value) => propertyGenerator
-                          .generate(value, modelClassName: className)),
+                          .build(value, modelClassName: className)),
                     ]),
                 ),
                 Constructor(

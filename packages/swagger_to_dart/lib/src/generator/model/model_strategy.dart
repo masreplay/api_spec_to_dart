@@ -3,7 +3,7 @@ import 'package:swagger_to_dart/src/config/generation_context.dart';
 import 'package:swagger_to_dart/src/schema/openapi/openapi.dart';
 
 ///
-///
+/// 
 ///
 abstract class ModelStrategy {
   const ModelStrategy(this.context);

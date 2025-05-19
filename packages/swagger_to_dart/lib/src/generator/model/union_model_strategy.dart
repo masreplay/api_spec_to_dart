@@ -30,7 +30,7 @@ class UnionModelStrategy extends ModelStrategy {
           ..name = Recase.instance.toCamelCase(name)
           ..redirect = refer(className + Recase.instance.toPascalCase(name))
           ..requiredParameters.addAll([
-            propertyGeneratorStrategy.generateUnionValue(
+            propertyGeneratorStrategy.buildUnionValue(
               e,
               modelClassName: className,
             )

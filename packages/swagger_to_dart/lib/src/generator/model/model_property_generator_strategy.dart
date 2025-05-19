@@ -9,7 +9,7 @@ class PropertyGeneratorStrategy {
 
   final GenerationContext context;
 
-  Parameter generate(
+  Parameter build(
     MapEntry<String, OpenApiSchema> property, {
     required String modelClassName,
     bool required = true,
@@ -37,7 +37,7 @@ class PropertyGeneratorStrategy {
     );
   }
 
-  Parameter generateUnionValue(
+  Parameter buildUnionValue(
     OpenApiSchemaRef schema, {
     required String modelClassName,
   }) {
