@@ -1,6 +1,5 @@
 import 'package:code_builder/code_builder.dart';
-import 'package:swagger_to_dart/src/builder/retrofit_class_code_builder.dart';
-import 'package:swagger_to_dart/src/config/generation_context.dart';
+import 'package:swagger_to_dart/src/builder/builder.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 class ApiClientGenerator {

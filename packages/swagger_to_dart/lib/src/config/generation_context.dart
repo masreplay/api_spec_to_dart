@@ -5,8 +5,6 @@ import 'package:code_builder/code_builder.dart';
 import 'package:dio/dio.dart';
 import 'package:path/path.dart' as path;
 import 'package:pubspec_parse/pubspec_parse.dart';
-import 'package:swagger_to_dart/src/config/swagger_to_dart_yaml.dart';
-import 'package:swagger_to_dart/src/generator/model/model_generator.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 import 'package:yaml/yaml.dart';
 
