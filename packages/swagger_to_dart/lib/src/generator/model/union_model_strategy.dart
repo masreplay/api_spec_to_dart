@@ -1,4 +1,5 @@
 import 'package:code_builder/code_builder.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:swagger_to_dart/src/generator/model/model_property_generator_strategy.dart';
 import 'package:swagger_to_dart/src/schema/openapi/openapi.dart';
 import 'package:swagger_to_dart/src/utils/utils.dart';
@@ -23,7 +24,7 @@ class UnionModelStrategy extends ModelStrategy {
         (b) => b
           ..annotations.addAll([
             refer('jsonSerializable'),
-            refer('FreezedUnionValue("${Recase.instance.toCamelCase(name)}")'),
+            refer('$FreezedUnionValue("${Recase.instance.toCamelCase(name)}")'),
           ])
           ..constant = true
           ..factory = true
@@ -70,7 +71,7 @@ class UnionModelStrategy extends ModelStrategy {
                     ..requiredParameters.addAll([
                       Parameter((b) => b
                         ..name = 'json'
-                        ..type = refer('Map<String, dynamic>')),
+                        ..type = refer('$Map<$String, dynamic>')),
                     ])
                     ..lambda = true
                     ..body = Code('_\$${className}FromJson(json)'),

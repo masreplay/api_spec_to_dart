@@ -86,7 +86,7 @@ class RegularModelStrategy extends ModelStrategy {
                     ..requiredParameters.addAll([
                       Parameter((b) => b
                         ..name = 'json'
-                        ..type = refer('Map<String, dynamic>')),
+                        ..type = refer('$Map<$String, dynamic>')),
                     ])
                     ..lambda = true
                     ..body = Code('_\$${className}FromJson(json)'),
