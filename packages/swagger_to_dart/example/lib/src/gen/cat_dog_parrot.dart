@@ -23,4 +23,3 @@ sealed class CatDogParrot with _$CatDogParrot {
   factory CatDogParrot.fromJson(Map<String, dynamic> json) =>
       _$CatDogParrotFromJson(json);
 }
-
