@@ -168,7 +168,7 @@ abstract class AdvancedClient {
   /// }
   @GET("/special/literal")
   Future<HttpResponse> advancedSpecialLiteral({
-    @Query("mode") String mode = "system",
+    @Query("mode") String mode = 'system',
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -226,7 +226,7 @@ abstract class AdvancedClient {
   /// }
   @GET("/collection/list")
   Future<HttpResponse> advancedCollectionList({
-    @Query("items") List<String> items = const ["default"],
+    @Query("items") List<String> items = const ['default'],
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -286,7 +286,7 @@ abstract class AdvancedClient {
   /// }
   @GET("/collection/set")
   Future<HttpResponse> advancedCollectionSet({
-    @Query("items") List<int> items = const ["1", "2", "3"],
+    @Query("items") List<int> items = const [1, 2, 3],
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -829,7 +829,7 @@ abstract class AdvancedClient {
   /// }
   @GET("/depends/class")
   Future<HttpResponse> advancedDependsClass({
-    @Query("db_name") String dbName = "default",
+    @Query("db_name") String dbName = 'default',
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,

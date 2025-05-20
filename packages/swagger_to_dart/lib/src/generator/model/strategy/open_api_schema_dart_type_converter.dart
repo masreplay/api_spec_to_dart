@@ -6,29 +6,45 @@ class OpenApiSchemaDartTypeConverter {
   final GenerationContext context;
 
   String? getDefaultValue(OpenApiSchema schema) {
+    final default_ = schema.default_;
     switch (schema) {
       case OpenApiSchemaType schema:
-        return switch (schema.default_) {
-          String value => '"${value}"',
-          List<dynamic> value => "const ${value.map((e) => '"${e}"').toList()}",
-          _ => schema.default_ == null ? null : schema.default_.toString(),
-        };
+        return _dartLiteral(default_);
       case OpenApiSchemaRef schema:
         final dartType = getRef(schema);
         final refSchema = context.openApi.getOpenApiSchemasByRef(schema.ref!)!;
 
-        // enum
-        if (refSchema.enum_ != null) {
-          final enumValue = refSchema.enum_!.first;
-          return '$dartType.${enumValue}';
+        if (refSchema.enum_ != null && default_ != null) {
+          return '$dartType.${default_}';
         }
 
-        return '$dartType()';
+        return default_ == null ? null : default_.toString();
       case OpenApiSchemaAnyOf schema:
-        return schema.default_ == null ? null : schema.default_.toString();
+        return default_ == null ? null : default_.toString();
       case OpenApiSchemaOneOf schema:
-        return schema.default_ == null ? null : schema.default_.toString();
+        return default_ == null ? null : default_.toString();
     }
+  }
+
+  String? _dartLiteral(Object? value) {
+    if (value == null) return null;
+    if (value is String) {
+      return "'${value.replaceAll("'", "\\'")}'";
+    }
+    if (value is num || value is bool) {
+      return value.toString();
+    }
+    if (value is List) {
+      final items = value.map(_dartLiteral).join(', ');
+      return 'const [$items]';
+    }
+    if (value is Map) {
+      final entries = value.entries
+          .map((e) => '${_dartLiteral(e.key)}: ${_dartLiteral(e.value)}')
+          .join(', ');
+      return 'const {$entries}';
+    }
+    return value.toString();
   }
 
   String get(

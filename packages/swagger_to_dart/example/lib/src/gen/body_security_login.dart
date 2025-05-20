@@ -78,7 +78,7 @@ abstract class BodySecurityLogin with _$BodySecurityLogin {
     @JsonKey(name: BodySecurityLogin.passwordKey) required String password,
 
     /// scope
-    @Default("") @JsonKey(name: BodySecurityLogin.scopeKey) String scope,
+    @Default('') @JsonKey(name: BodySecurityLogin.scopeKey) String scope,
 
     /// clientId
     @JsonKey(name: BodySecurityLogin.clientIdKey) required String? clientId,

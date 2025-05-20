@@ -85,7 +85,7 @@ as int,
 
 @jsonSerializable
 class _Dog extends Dog {
-  const _Dog({@JsonKey(name: Dog.nameKey) required this.name, @JsonKey(name: Dog.typeKey) this.type = "dog", @JsonKey(name: Dog.barkLoudnessKey) required this.barkLoudness}): super._();
+  const _Dog({@JsonKey(name: Dog.nameKey) required this.name, @JsonKey(name: Dog.typeKey) this.type = 'dog', @JsonKey(name: Dog.barkLoudnessKey) required this.barkLoudness}): super._();
   factory _Dog.fromJson(Map<String, dynamic> json) => _$DogFromJson(json);
 
 /// name

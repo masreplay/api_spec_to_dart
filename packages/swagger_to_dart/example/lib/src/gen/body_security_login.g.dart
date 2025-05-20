@@ -11,7 +11,7 @@ _BodySecurityLogin _$BodySecurityLoginFromJson(Map<String, dynamic> json) =>
       grantType: json['grant_type'] as String?,
       username: json['username'] as String,
       password: json['password'] as String,
-      scope: json['scope'] as String? ?? "",
+      scope: json['scope'] as String? ?? '',
       clientId: json['client_id'] as String?,
       clientSecret: json['client_secret'] as String?,
     );

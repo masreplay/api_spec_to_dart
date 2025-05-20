@@ -85,7 +85,7 @@ as List<String>,
 
 @jsonSerializable
 class _Parrot extends Parrot {
-  const _Parrot({@JsonKey(name: Parrot.nameKey) required this.name, @JsonKey(name: Parrot.typeKey) this.type = "parrot", @JsonKey(name: Parrot.phrasesKey) required final  List<String> phrases}): _phrases = phrases,super._();
+  const _Parrot({@JsonKey(name: Parrot.nameKey) required this.name, @JsonKey(name: Parrot.typeKey) this.type = 'parrot', @JsonKey(name: Parrot.phrasesKey) required final  List<String> phrases}): _phrases = phrases,super._();
   factory _Parrot.fromJson(Map<String, dynamic> json) => _$ParrotFromJson(json);
 
 /// name

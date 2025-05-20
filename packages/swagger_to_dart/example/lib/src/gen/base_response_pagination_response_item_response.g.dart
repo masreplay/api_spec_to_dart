@@ -10,12 +10,9 @@ _BaseResponsePaginationResponseItemResponse
 _$BaseResponsePaginationResponseItemResponseFromJson(
   Map<String, dynamic> json,
 ) => _BaseResponsePaginationResponseItemResponse(
-  data:
-      json['data'] == null
-          ? const PaginationResponseItemResponse()
-          : PaginationResponseItemResponse.fromJson(
-            json['data'] as Map<String, dynamic>,
-          ),
+  data: PaginationResponseItemResponse.fromJson(
+    json['data'] as Map<String, dynamic>,
+  ),
   message: json['message'] as String,
   code: (json['code'] as num).toInt(),
 );

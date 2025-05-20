@@ -44,7 +44,7 @@ abstract class Parrot with _$Parrot {
     @JsonKey(name: Parrot.nameKey) required String name,
 
     /// type
-    @Default("parrot") @JsonKey(name: Parrot.typeKey) String type,
+    @Default('parrot') @JsonKey(name: Parrot.typeKey) String type,
 
     /// phrases
     @JsonKey(name: Parrot.phrasesKey) required List<String> phrases,

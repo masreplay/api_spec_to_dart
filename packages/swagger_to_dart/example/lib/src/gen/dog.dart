@@ -41,7 +41,7 @@ abstract class Dog with _$Dog {
     @JsonKey(name: Dog.nameKey) required String name,
 
     /// type
-    @Default("dog") @JsonKey(name: Dog.typeKey) String type,
+    @Default('dog') @JsonKey(name: Dog.typeKey) String type,
 
     /// barkLoudness
     @JsonKey(name: Dog.barkLoudnessKey) required int barkLoudness,

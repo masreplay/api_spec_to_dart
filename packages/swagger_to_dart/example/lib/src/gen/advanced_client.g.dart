@@ -85,7 +85,7 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<dynamic>> advancedSpecialLiteral({
-    String mode = "system",
+    String mode = 'system',
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -118,7 +118,7 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<dynamic>> advancedCollectionList({
-    List<String> items = const ["default"],
+    List<String> items = const ['default'],
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -151,7 +151,7 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<dynamic>> advancedCollectionSet({
-    List<int> items = const ["1", "2", "3"],
+    List<int> items = const [1, 2, 3],
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -457,7 +457,7 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<dynamic>> advancedDependsClass({
-    String dbName = "default",
+    String dbName = 'default',
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,

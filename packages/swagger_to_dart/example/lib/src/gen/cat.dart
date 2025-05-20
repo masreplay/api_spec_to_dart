@@ -41,7 +41,7 @@ abstract class Cat with _$Cat {
     @JsonKey(name: Cat.nameKey) required String name,
 
     /// type
-    @Default("cat") @JsonKey(name: Cat.typeKey) String type,
+    @Default('cat') @JsonKey(name: Cat.typeKey) String type,
 
     /// meowCuteness
     @JsonKey(name: Cat.meowCutenessKey) required int meowCuteness,

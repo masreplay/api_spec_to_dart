@@ -9,10 +9,7 @@ part of 'base_response_category_response.dart';
 _BaseResponseCategoryResponse _$BaseResponseCategoryResponseFromJson(
   Map<String, dynamic> json,
 ) => _BaseResponseCategoryResponse(
-  data:
-      json['data'] == null
-          ? const CategoryResponse()
-          : CategoryResponse.fromJson(json['data'] as Map<String, dynamic>),
+  data: CategoryResponse.fromJson(json['data'] as Map<String, dynamic>),
   message: json['message'] as String,
   code: (json['code'] as num).toInt(),
 );
