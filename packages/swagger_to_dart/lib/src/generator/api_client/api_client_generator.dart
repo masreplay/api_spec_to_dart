@@ -315,7 +315,7 @@ class ApiClientGenerator {
                                   refer('$SendProgress()'),
                                 ])
                                 ..named = true
-                                ..name = 'sendProgress'
+                                ..name = 'onSendProgress'
                                 ..type = refer('ProgressCallback?'),
                             ),
                             Parameter(
@@ -324,7 +324,7 @@ class ApiClientGenerator {
                                   refer('$ReceiveProgress()'),
                                 ])
                                 ..named = true
-                                ..name = 'receiveProgress'
+                                ..name = 'onReceiveProgress'
                                 ..type = refer('ProgressCallback?'),
                             ),
                           ]);
