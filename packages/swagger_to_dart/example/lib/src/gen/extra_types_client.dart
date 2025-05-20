@@ -56,10 +56,10 @@ abstract class ExtraTypesClient {
   /// }
   @POST("/extra_types/color/")
   Future<HttpResponse> extraTypesCreateColor({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// post
@@ -105,10 +105,10 @@ abstract class ExtraTypesClient {
   /// }
   @POST("/extra_types/country/")
   Future<HttpResponse> extraTypesProcessCountry({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// post
@@ -154,10 +154,10 @@ abstract class ExtraTypesClient {
   /// }
   @POST("/extra_types/payment/")
   Future<HttpResponse> extraTypesProcessPaymentCard({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// post
@@ -203,10 +203,10 @@ abstract class ExtraTypesClient {
   /// }
   @POST("/extra_types/phone/")
   Future<HttpResponse> extraTypesProcessPhone({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// post
@@ -252,10 +252,10 @@ abstract class ExtraTypesClient {
   /// }
   @POST("/extra_types/routing/")
   Future<HttpResponse> extraTypesProcessRouting({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// post
@@ -301,10 +301,10 @@ abstract class ExtraTypesClient {
   /// }
   @POST("/extra_types/coordinate/")
   Future<HttpResponse> extraTypesProcessCoordinate({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// post
@@ -350,10 +350,10 @@ abstract class ExtraTypesClient {
   /// }
   @POST("/extra_types/mac/")
   Future<HttpResponse> extraTypesProcessMac({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// post
@@ -399,10 +399,10 @@ abstract class ExtraTypesClient {
   /// }
   @POST("/extra_types/isbn/")
   Future<HttpResponse> extraTypesProcessIsbn({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// post
@@ -448,10 +448,10 @@ abstract class ExtraTypesClient {
   /// }
   @POST("/extra_types/currency/")
   Future<HttpResponse> extraTypesProcessCurrency({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// post
@@ -497,10 +497,10 @@ abstract class ExtraTypesClient {
   /// }
   @POST("/extra_types/domain/")
   Future<HttpResponse> extraTypesProcessDomain({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// post
@@ -546,10 +546,10 @@ abstract class ExtraTypesClient {
   /// }
   @POST("/extra_types/language/")
   Future<HttpResponse> extraTypesProcessLanguage({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// post
@@ -595,10 +595,10 @@ abstract class ExtraTypesClient {
   /// }
   @POST("/extra_types/script/")
   Future<HttpResponse> extraTypesProcessScript({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// post
@@ -644,10 +644,10 @@ abstract class ExtraTypesClient {
   /// }
   @POST("/extra_types/version/")
   Future<HttpResponse> extraTypesProcessVersion({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// post
@@ -693,10 +693,10 @@ abstract class ExtraTypesClient {
   /// }
   @POST("/extra_types/s3/")
   Future<HttpResponse> extraTypesProcessS3Path({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// post
@@ -742,10 +742,10 @@ abstract class ExtraTypesClient {
   /// }
   @POST("/extra_types/timezone/")
   Future<HttpResponse> extraTypesProcessTimezone({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// post
@@ -791,9 +791,9 @@ abstract class ExtraTypesClient {
   /// }
   @POST("/extra_types/ulid/")
   Future<HttpResponse> extraTypesProcessUlid({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 }

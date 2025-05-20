@@ -61,11 +61,11 @@ abstract class ValidationClient {
   /// }
   @GET("/params/path/{item_id}")
   Future<HttpResponse> validationParamPath({
-    required int itemId,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Path("item_id") required int itemId,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -152,13 +152,13 @@ abstract class ValidationClient {
   /// }
   @GET("/params/query")
   Future<HttpResponse> validationParamQuery({
-    required String? q,
-    required int skip,
-    required int limit,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Query("q") required String? q,
+    @Query("skip") required int skip,
+    @Query("limit") required int limit,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// post
@@ -205,10 +205,10 @@ abstract class ValidationClient {
   /// }
   @POST("/params/body")
   Future<HttpResponse> validationParamBody({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -279,12 +279,12 @@ abstract class ValidationClient {
   /// }
   @GET("/params/cookie")
   Future<HttpResponse> validationParamCookie({
-    required String? session,
-    required String? preferences,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Header("session") required String? session,
+    @Header("preferences") required String? preferences,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -348,12 +348,12 @@ abstract class ValidationClient {
   /// }
   @GET("/params/header")
   Future<HttpResponse> validationParamHeader({
-    required String userAgent,
-    required String? xToken,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Header("user-agent") required String userAgent,
+    @Header("x-token") required String? xToken,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// post
@@ -399,10 +399,10 @@ abstract class ValidationClient {
   /// }
   @POST("/validation/complex")
   Future<HttpResponse> validationValidationComplex({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -480,12 +480,12 @@ abstract class ValidationClient {
   /// }
   @GET("/validation/conditional")
   Future<HttpResponse> validationValidationConditional({
-    required int? userId,
-    required String? username,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Query("user_id") required int? userId,
+    @Query("username") required String? username,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// post
@@ -531,10 +531,10 @@ abstract class ValidationClient {
   /// }
   @POST("/validation/conditional_body")
   Future<HttpResponse> validationValidationConditionalBody({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -584,11 +584,11 @@ abstract class ValidationClient {
   /// }
   @GET("/constrained/int")
   Future<HttpResponse> validationConstrainedInt({
-    required int value,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Query("value") required int value,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -638,11 +638,11 @@ abstract class ValidationClient {
   /// }
   @GET("/constrained/float")
   Future<HttpResponse> validationConstrainedFloat({
-    required double value,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Query("value") required double value,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -695,10 +695,10 @@ abstract class ValidationClient {
   /// }
   @GET("/constrained/string")
   Future<HttpResponse> validationConstrainedString({
-    required String value,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Query("value") required String value,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 }

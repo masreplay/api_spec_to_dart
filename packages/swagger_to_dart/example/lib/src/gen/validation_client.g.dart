@@ -21,11 +21,12 @@ class _ValidationClient implements ValidationClient {
   Future<HttpResponse<dynamic>> validationParamPath({
     required int itemId,
     Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    CancelToken? cancelToken,
+    void Function(int, int)? sendProgress,
+    void Function(int, int)? receiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
@@ -34,9 +35,12 @@ class _ValidationClient implements ValidationClient {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/params/path/{item_id}',
+            '/params/path/${itemId}',
             queryParameters: queryParameters,
             data: _data,
+            cancelToken: cancelToken,
+            onSendProgress: sendProgress,
+            onReceiveProgress: receiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -52,12 +56,17 @@ class _ValidationClient implements ValidationClient {
     required int skip,
     required int limit,
     Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    CancelToken? cancelToken,
+    void Function(int, int)? sendProgress,
+    void Function(int, int)? receiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
+    final queryParameters = <String, dynamic>{
+      r'q': q,
+      r'skip': skip,
+      r'limit': limit,
+    };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -68,6 +77,9 @@ class _ValidationClient implements ValidationClient {
             '/params/query',
             queryParameters: queryParameters,
             data: _data,
+            cancelToken: cancelToken,
+            onSendProgress: sendProgress,
+            onReceiveProgress: receiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -80,11 +92,12 @@ class _ValidationClient implements ValidationClient {
   @override
   Future<HttpResponse<dynamic>> validationParamBody({
     Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    CancelToken? cancelToken,
+    void Function(int, int)? sendProgress,
+    void Function(int, int)? receiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
@@ -96,6 +109,9 @@ class _ValidationClient implements ValidationClient {
             '/params/body',
             queryParameters: queryParameters,
             data: _data,
+            cancelToken: cancelToken,
+            onSendProgress: sendProgress,
+            onReceiveProgress: receiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -110,14 +126,19 @@ class _ValidationClient implements ValidationClient {
     String? session,
     String? preferences,
     Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    CancelToken? cancelToken,
+    void Function(int, int)? sendProgress,
+    void Function(int, int)? receiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{
+      r'session': session,
+      r'preferences': preferences,
+    };
+    _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
@@ -126,6 +147,9 @@ class _ValidationClient implements ValidationClient {
             '/params/cookie',
             queryParameters: queryParameters,
             data: _data,
+            cancelToken: cancelToken,
+            onSendProgress: sendProgress,
+            onReceiveProgress: receiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -140,14 +164,19 @@ class _ValidationClient implements ValidationClient {
     required String userAgent,
     String? xToken,
     Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    CancelToken? cancelToken,
+    void Function(int, int)? sendProgress,
+    void Function(int, int)? receiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{
+      r'user-agent': userAgent,
+      r'x-token': xToken,
+    };
+    _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<dynamic>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
@@ -156,6 +185,9 @@ class _ValidationClient implements ValidationClient {
             '/params/header',
             queryParameters: queryParameters,
             data: _data,
+            cancelToken: cancelToken,
+            onSendProgress: sendProgress,
+            onReceiveProgress: receiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -168,11 +200,12 @@ class _ValidationClient implements ValidationClient {
   @override
   Future<HttpResponse<dynamic>> validationValidationComplex({
     Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    CancelToken? cancelToken,
+    void Function(int, int)? sendProgress,
+    void Function(int, int)? receiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
@@ -184,6 +217,9 @@ class _ValidationClient implements ValidationClient {
             '/validation/complex',
             queryParameters: queryParameters,
             data: _data,
+            cancelToken: cancelToken,
+            onSendProgress: sendProgress,
+            onReceiveProgress: receiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -198,12 +234,16 @@ class _ValidationClient implements ValidationClient {
     int? userId,
     String? username,
     Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    CancelToken? cancelToken,
+    void Function(int, int)? sendProgress,
+    void Function(int, int)? receiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
+    final queryParameters = <String, dynamic>{
+      r'user_id': userId,
+      r'username': username,
+    };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -214,6 +254,9 @@ class _ValidationClient implements ValidationClient {
             '/validation/conditional',
             queryParameters: queryParameters,
             data: _data,
+            cancelToken: cancelToken,
+            onSendProgress: sendProgress,
+            onReceiveProgress: receiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -226,11 +269,12 @@ class _ValidationClient implements ValidationClient {
   @override
   Future<HttpResponse<dynamic>> validationValidationConditionalBody({
     Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    CancelToken? cancelToken,
+    void Function(int, int)? sendProgress,
+    void Function(int, int)? receiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
@@ -242,6 +286,9 @@ class _ValidationClient implements ValidationClient {
             '/validation/conditional_body',
             queryParameters: queryParameters,
             data: _data,
+            cancelToken: cancelToken,
+            onSendProgress: sendProgress,
+            onReceiveProgress: receiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -255,12 +302,13 @@ class _ValidationClient implements ValidationClient {
   Future<HttpResponse<dynamic>> validationConstrainedInt({
     required int value,
     Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    CancelToken? cancelToken,
+    void Function(int, int)? sendProgress,
+    void Function(int, int)? receiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
+    final queryParameters = <String, dynamic>{r'value': value};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -271,6 +319,9 @@ class _ValidationClient implements ValidationClient {
             '/constrained/int',
             queryParameters: queryParameters,
             data: _data,
+            cancelToken: cancelToken,
+            onSendProgress: sendProgress,
+            onReceiveProgress: receiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -284,12 +335,13 @@ class _ValidationClient implements ValidationClient {
   Future<HttpResponse<dynamic>> validationConstrainedFloat({
     required double value,
     Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    CancelToken? cancelToken,
+    void Function(int, int)? sendProgress,
+    void Function(int, int)? receiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
+    final queryParameters = <String, dynamic>{r'value': value};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -300,6 +352,9 @@ class _ValidationClient implements ValidationClient {
             '/constrained/float',
             queryParameters: queryParameters,
             data: _data,
+            cancelToken: cancelToken,
+            onSendProgress: sendProgress,
+            onReceiveProgress: receiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -313,12 +368,13 @@ class _ValidationClient implements ValidationClient {
   Future<HttpResponse<dynamic>> validationConstrainedString({
     required String value,
     Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    CancelToken? cancelToken,
+    void Function(int, int)? sendProgress,
+    void Function(int, int)? receiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
+    final queryParameters = <String, dynamic>{r'value': value};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -329,6 +385,9 @@ class _ValidationClient implements ValidationClient {
             '/constrained/string',
             queryParameters: queryParameters,
             data: _data,
+            cancelToken: cancelToken,
+            onSendProgress: sendProgress,
+            onReceiveProgress: receiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );

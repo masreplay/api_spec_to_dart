@@ -20,11 +20,12 @@ class _SecurityClient implements SecurityClient {
   @override
   Future<HttpResponse<dynamic>> securityLogin({
     Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    CancelToken? cancelToken,
+    void Function(int, int)? sendProgress,
+    void Function(int, int)? receiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
@@ -36,6 +37,9 @@ class _SecurityClient implements SecurityClient {
             '/token',
             queryParameters: queryParameters,
             data: _data,
+            cancelToken: cancelToken,
+            onSendProgress: sendProgress,
+            onReceiveProgress: receiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -48,11 +52,12 @@ class _SecurityClient implements SecurityClient {
   @override
   Future<HttpResponse<dynamic>> securityReadUsersMe({
     Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    CancelToken? cancelToken,
+    void Function(int, int)? sendProgress,
+    void Function(int, int)? receiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
@@ -64,6 +69,9 @@ class _SecurityClient implements SecurityClient {
             '/users/me',
             queryParameters: queryParameters,
             data: _data,
+            cancelToken: cancelToken,
+            onSendProgress: sendProgress,
+            onReceiveProgress: receiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -76,11 +84,12 @@ class _SecurityClient implements SecurityClient {
   @override
   Future<HttpResponse<dynamic>> securityGetSecureItems({
     Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    CancelToken? cancelToken,
+    void Function(int, int)? sendProgress,
+    void Function(int, int)? receiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
@@ -92,6 +101,9 @@ class _SecurityClient implements SecurityClient {
             '/items/secure',
             queryParameters: queryParameters,
             data: _data,
+            cancelToken: cancelToken,
+            onSendProgress: sendProgress,
+            onReceiveProgress: receiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );

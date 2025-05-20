@@ -57,10 +57,10 @@ abstract class FilesClient {
   /// }
   @POST("/forms/basic")
   Future<HttpResponse> filesFormBasic({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// post
@@ -107,10 +107,10 @@ abstract class FilesClient {
   /// }
   @POST("/files/upload")
   Future<HttpResponse> filesFileUpload({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// post
@@ -157,9 +157,9 @@ abstract class FilesClient {
   /// }
   @POST("/files/multiple")
   Future<HttpResponse> filesFilesMultiple({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 }

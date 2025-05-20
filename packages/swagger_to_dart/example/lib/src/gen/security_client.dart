@@ -57,10 +57,10 @@ abstract class SecurityClient {
   /// }
   @POST("/token")
   Future<HttpResponse> securityLogin({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -92,10 +92,10 @@ abstract class SecurityClient {
   /// }
   @GET("/users/me")
   Future<HttpResponse> securityReadUsersMe({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -130,9 +130,9 @@ abstract class SecurityClient {
   /// }
   @GET("/items/secure")
   Future<HttpResponse> securityGetSecureItems({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 }

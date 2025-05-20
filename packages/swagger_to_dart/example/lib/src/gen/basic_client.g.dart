@@ -21,11 +21,12 @@ class _BasicClient implements BasicClient {
   Future<HttpResponse<dynamic>> basicBasicNumber({
     required int num,
     Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    CancelToken? cancelToken,
+    void Function(int, int)? sendProgress,
+    void Function(int, int)? receiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
@@ -34,9 +35,12 @@ class _BasicClient implements BasicClient {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/basic/number/{num}',
+            '/basic/number/${num}',
             queryParameters: queryParameters,
             data: _data,
+            cancelToken: cancelToken,
+            onSendProgress: sendProgress,
+            onReceiveProgress: receiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -50,11 +54,12 @@ class _BasicClient implements BasicClient {
   Future<HttpResponse<dynamic>> basicBasicFloat({
     required double num,
     Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    CancelToken? cancelToken,
+    void Function(int, int)? sendProgress,
+    void Function(int, int)? receiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
@@ -63,9 +68,12 @@ class _BasicClient implements BasicClient {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/basic/float/{num}',
+            '/basic/float/${num}',
             queryParameters: queryParameters,
             data: _data,
+            cancelToken: cancelToken,
+            onSendProgress: sendProgress,
+            onReceiveProgress: receiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -79,12 +87,13 @@ class _BasicClient implements BasicClient {
   Future<HttpResponse<dynamic>> basicBasicBoolean({
     required bool flag,
     Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    CancelToken? cancelToken,
+    void Function(int, int)? sendProgress,
+    void Function(int, int)? receiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
+    final queryParameters = <String, dynamic>{r'flag': flag};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -95,6 +104,9 @@ class _BasicClient implements BasicClient {
             '/basic/boolean',
             queryParameters: queryParameters,
             data: _data,
+            cancelToken: cancelToken,
+            onSendProgress: sendProgress,
+            onReceiveProgress: receiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -108,12 +120,13 @@ class _BasicClient implements BasicClient {
   Future<HttpResponse<dynamic>> basicBasicString({
     required String text,
     Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    CancelToken? cancelToken,
+    void Function(int, int)? sendProgress,
+    void Function(int, int)? receiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
+    final queryParameters = <String, dynamic>{r'text': text};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -124,6 +137,9 @@ class _BasicClient implements BasicClient {
             '/basic/string',
             queryParameters: queryParameters,
             data: _data,
+            cancelToken: cancelToken,
+            onSendProgress: sendProgress,
+            onReceiveProgress: receiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -137,12 +153,13 @@ class _BasicClient implements BasicClient {
   Future<HttpResponse<dynamic>> basicDatetimeDate({
     required DateTime d,
     Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    CancelToken? cancelToken,
+    void Function(int, int)? sendProgress,
+    void Function(int, int)? receiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
+    final queryParameters = <String, dynamic>{r'd': d.toIso8601String()};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -153,6 +170,9 @@ class _BasicClient implements BasicClient {
             '/datetime/date',
             queryParameters: queryParameters,
             data: _data,
+            cancelToken: cancelToken,
+            onSendProgress: sendProgress,
+            onReceiveProgress: receiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -166,12 +186,13 @@ class _BasicClient implements BasicClient {
   Future<HttpResponse<dynamic>> basicDatetimeDatetime({
     required DateTime dt,
     Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    CancelToken? cancelToken,
+    void Function(int, int)? sendProgress,
+    void Function(int, int)? receiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
+    final queryParameters = <String, dynamic>{r'dt': dt.toIso8601String()};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -182,6 +203,9 @@ class _BasicClient implements BasicClient {
             '/datetime/datetime',
             queryParameters: queryParameters,
             data: _data,
+            cancelToken: cancelToken,
+            onSendProgress: sendProgress,
+            onReceiveProgress: receiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -195,12 +219,13 @@ class _BasicClient implements BasicClient {
   Future<HttpResponse<dynamic>> basicCreateDatetimeDatetime({
     required DateTime dt,
     Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    CancelToken? cancelToken,
+    void Function(int, int)? sendProgress,
+    void Function(int, int)? receiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
+    final queryParameters = <String, dynamic>{r'dt': dt.toIso8601String()};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -211,6 +236,9 @@ class _BasicClient implements BasicClient {
             '/datetime/datetime',
             queryParameters: queryParameters,
             data: _data,
+            cancelToken: cancelToken,
+            onSendProgress: sendProgress,
+            onReceiveProgress: receiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -224,12 +252,13 @@ class _BasicClient implements BasicClient {
   Future<HttpResponse<dynamic>> basicDatetimeTime({
     required String t,
     Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    CancelToken? cancelToken,
+    void Function(int, int)? sendProgress,
+    void Function(int, int)? receiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
+    final queryParameters = <String, dynamic>{r't': t};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -240,6 +269,9 @@ class _BasicClient implements BasicClient {
             '/datetime/time',
             queryParameters: queryParameters,
             data: _data,
+            cancelToken: cancelToken,
+            onSendProgress: sendProgress,
+            onReceiveProgress: receiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -253,12 +285,13 @@ class _BasicClient implements BasicClient {
   Future<HttpResponse<dynamic>> basicDatetimeTimedelta({
     required String td,
     Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    CancelToken? cancelToken,
+    void Function(int, int)? sendProgress,
+    void Function(int, int)? receiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
+    final queryParameters = <String, dynamic>{r'td': td};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -269,6 +302,9 @@ class _BasicClient implements BasicClient {
             '/datetime/timedelta',
             queryParameters: queryParameters,
             data: _data,
+            cancelToken: cancelToken,
+            onSendProgress: sendProgress,
+            onReceiveProgress: receiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );

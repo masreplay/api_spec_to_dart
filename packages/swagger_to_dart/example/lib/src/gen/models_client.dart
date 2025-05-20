@@ -56,10 +56,10 @@ abstract class ModelsClient {
   /// }
   @POST("/models/user")
   Future<HttpResponse> modelsCreateUser({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -106,10 +106,10 @@ abstract class ModelsClient {
   /// }
   @GET("/models/location")
   Future<HttpResponse> modelsGetLocation({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -135,10 +135,10 @@ abstract class ModelsClient {
   /// }
   @GET("/response/filtered")
   Future<HttpResponse> modelsResponseFiltered({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -197,11 +197,11 @@ abstract class ModelsClient {
   /// }
   @GET("/response/multiple")
   Future<HttpResponse> modelsResponseMultiple({
-    required bool isUser,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Query("is_user") required bool isUser,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -231,9 +231,9 @@ abstract class ModelsClient {
   /// }
   @GET("/response/list")
   Future<HttpResponse> modelsResponseList({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 }

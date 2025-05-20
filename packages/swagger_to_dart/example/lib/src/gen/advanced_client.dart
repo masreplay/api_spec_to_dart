@@ -58,11 +58,11 @@ abstract class AdvancedClient {
   /// }
   @GET("/special/uuid")
   Future<HttpResponse> advancedSpecialUuid({
-    required String id,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Query("id") required String id,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -110,11 +110,11 @@ abstract class AdvancedClient {
   /// }
   @GET("/special/enum")
   Future<HttpResponse> advancedSpecialEnum({
-    required UserLevel level,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Query("level") required UserLevel level,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -168,11 +168,11 @@ abstract class AdvancedClient {
   /// }
   @GET("/special/literal")
   Future<HttpResponse> advancedSpecialLiteral({
-    required String mode,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Query("mode") required String mode,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -226,11 +226,11 @@ abstract class AdvancedClient {
   /// }
   @GET("/collection/list")
   Future<HttpResponse> advancedCollectionList({
-    required List<String> items,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Query("items") required List<String> items,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -286,11 +286,11 @@ abstract class AdvancedClient {
   /// }
   @GET("/collection/set")
   Future<HttpResponse> advancedCollectionSet({
-    required List<int> items,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Query("items") required List<int> items,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -338,10 +338,10 @@ abstract class AdvancedClient {
   /// }
   @GET("/collection/dict")
   Future<HttpResponse> advancedCollectionDict({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -389,11 +389,11 @@ abstract class AdvancedClient {
   /// }
   @GET("/collection/tuple")
   Future<HttpResponse> advancedCollectionTuple({
-    required List<dynamic> items,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Query("items") required List<dynamic> items,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -444,11 +444,11 @@ abstract class AdvancedClient {
   /// }
   @GET("/collection/variable_tuple")
   Future<HttpResponse> advancedCollectionVariableTuple({
-    required List<String> items,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Query("items") required List<String> items,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -506,11 +506,11 @@ abstract class AdvancedClient {
   /// }
   @GET("/union/simple")
   Future<HttpResponse> advancedUnionSimple({
-    required dynamic value,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Query("value") required dynamic value,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -565,11 +565,11 @@ abstract class AdvancedClient {
   /// }
   @GET("/union/optional")
   Future<HttpResponse> advancedUnionOptional({
-    required String? value,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Query("value") required String? value,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -627,11 +627,11 @@ abstract class AdvancedClient {
   /// }
   @GET("/union/modern")
   Future<HttpResponse> advancedUnionModern({
-    required dynamic value,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Query("value") required dynamic value,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -688,12 +688,12 @@ abstract class AdvancedClient {
   /// }
   @GET("/custom/positive_int")
   Future<HttpResponse> advancedCustomPositiveInt({
-    required int value,
-    required int value2,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Query("value") required int value,
+    @Query("value2") required int value2,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -774,13 +774,13 @@ abstract class AdvancedClient {
   /// }
   @GET("/depends/query")
   Future<HttpResponse> advancedDependsQuery({
-    required String? q,
-    required int skip,
-    required int limit,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Query("q") required String? q,
+    @Query("skip") required int skip,
+    @Query("limit") required int limit,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -829,11 +829,11 @@ abstract class AdvancedClient {
   /// }
   @GET("/depends/class")
   Future<HttpResponse> advancedDependsClass({
-    required String dbName,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Query("db_name") required String dbName,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -881,11 +881,11 @@ abstract class AdvancedClient {
   /// }
   @GET("/errors/not_found/{item_id}")
   Future<HttpResponse> advancedErrorNotFound({
-    required int itemId,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Path("item_id") required int itemId,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -936,10 +936,10 @@ abstract class AdvancedClient {
   /// }
   @GET("/errors/custom")
   Future<HttpResponse> advancedErrorCustom({
-    required int code,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Query("code") required int code,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 }

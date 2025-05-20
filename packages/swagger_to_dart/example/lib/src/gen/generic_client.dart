@@ -67,12 +67,12 @@ abstract class GenericClient {
   /// }
   @GET("/generic/items")
   Future<HttpResponse> genericGetItems({
-    required int page,
-    required int perPage,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Query("page") required int page,
+    @Query("per_page") required int perPage,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -129,12 +129,12 @@ abstract class GenericClient {
   /// }
   @GET("/generic/categories")
   Future<HttpResponse> genericGetCategories({
-    required int page,
-    required int perPage,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Query("page") required int page,
+    @Query("per_page") required int perPage,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -179,10 +179,10 @@ abstract class GenericClient {
   /// }
   @GET("/generic/base-response-item")
   Future<HttpResponse> genericGetBaseResponseItem({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -227,10 +227,10 @@ abstract class GenericClient {
   /// }
   @GET("/generic/base-response-category")
   Future<HttpResponse> genericGetBaseResponseCategory({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -255,10 +255,10 @@ abstract class GenericClient {
   /// }
   @GET("/generic/base-response-list")
   Future<HttpResponse> genericGetBaseResponseList({
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -315,11 +315,11 @@ abstract class GenericClient {
   /// }
   @GET("/generic/nested-base-and-pagination")
   Future<HttpResponse> genericGetNestedBaseAndPagination({
-    required int page,
-    required int perPage,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Query("page") required int page,
+    @Query("per_page") required int perPage,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 }

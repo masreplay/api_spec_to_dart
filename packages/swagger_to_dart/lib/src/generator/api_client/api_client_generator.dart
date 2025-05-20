@@ -1,4 +1,5 @@
 import 'package:code_builder/code_builder.dart';
+import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart' hide Method;
 import 'package:swagger_to_dart/src/swagger_to_dart_base.dart';
 
@@ -240,66 +241,94 @@ class ApiClientGenerator {
                 for (final path in paths.entries)
                   for (final method in path.value.entries)
                     Method(
-                      (b) => b
-                        ..docs.addAll([
-                          '/// ${method.key.name}',
-                          ...JsonFactory.instance
-                              .encode(method.value.toJson())
-                              .split('\n')
-                              .map((e) => '/// $e')
-                              .toList(),
-                        ])
-                        ..annotations.addAll([
-                          refer(
-                            '${Recase.instance.toScreamingSnakeCase(method.key.name)}("${path.key}")',
-                          ),
-                        ])
-                        ..returns = refer('Future<HttpResponse>')
-                        ..name = Renaming.instance.renameMethod(
-                          method.value.operationId ?? '',
-                        )
-                        ..optionalParameters.addAll([
-                          for (final parameter in method.value.parameters ??
-                              <OpenApiPathMethodParameter>[])
+                      (b) {
+                        final parameters = method.value.parameters ?? [];
+
+                        b
+                          ..docs.addAll([
+                            '/// ${method.key.name}',
+                            ...JsonFactory.instance
+                                .encode(method.value.toJson())
+                                .split('\n')
+                                .map((e) => '/// $e')
+                                .toList(),
+                          ])
+                          ..annotations.addAll([
+                            refer(
+                              '${Recase.instance.toScreamingSnakeCase(method.key.name)}("${path.key}")',
+                            ),
+                          ])
+                          ..returns = refer('Future<HttpResponse>')
+                          ..name = Renaming.instance.renameMethod(
+                            method.value.operationId ?? '',
+                          )
+                          ..optionalParameters.addAll([
+                            for (final parameter in parameters)
+                              Parameter(
+                                (b) => b
+                                  ..annotations.addAll([
+                                    switch (parameter.in_) {
+                                      OpenApiPathMethodParameterType.query =>
+                                        refer('$Query("${parameter.name}")'),
+                                      OpenApiPathMethodParameterType.path =>
+                                        refer('$Path("${parameter.name}")'),
+                                      OpenApiPathMethodParameterType.header =>
+                                        refer('$Header("${parameter.name}")'),
+                                      OpenApiPathMethodParameterType.cookie =>
+                                        refer('$Header("${parameter.name}")'),
+                                    }
+                                  ])
+                                  ..named = true
+                                  ..name = Renaming.instance.renameProperty(
+                                    parameter.name,
+                                  )
+                                  ..required = true
+                                  ..type = refer(
+                                    OpenApiSchemaDartTypeConverter(context).get(
+                                      parameter.schema,
+                                      className: className,
+                                    ),
+                                  ),
+                              ),
                             Parameter(
                               (b) => b
+                                ..annotations.addAll([
+                                  refer('$Extras()'),
+                                ])
                                 ..named = true
-                                ..name = Renaming.instance.renameProperty(
-                                  parameter.name,
-                                )
-                                ..required = true
-                                ..type = refer(
-                                  OpenApiSchemaDartTypeConverter(context).get(
-                                    parameter.schema,
-                                    className: className,
-                                  ),
-                                ),
+                                ..name = 'extras'
+                                ..type = refer('Map<String, dynamic>?'),
                             ),
-                          Parameter(
-                            (b) => b
-                              ..named = true
-                              ..name = 'extras'
-                              ..type = refer('Map<String, dynamic>?'),
-                          ),
-                          Parameter(
-                            (b) => b
-                              ..named = true
-                              ..name = 'cancelRequest'
-                              ..type = refer('$CancelRequest?'),
-                          ),
-                          Parameter(
-                            (b) => b
-                              ..named = true
-                              ..name = 'receiveProgress'
-                              ..type = refer('$ReceiveProgress?'),
-                          ),
-                          Parameter(
-                            (b) => b
-                              ..named = true
-                              ..name = 'sendProgress'
-                              ..type = refer('$SendProgress?'),
-                          ),
-                        ]),
+                            // Future<String> sendProgress(@CancelRequest() CancelToken cancelToken, {@SendProgress() ProgressCallback? sendProgress});
+                            Parameter(
+                              (b) => b
+                                ..annotations.addAll([
+                                  refer('$CancelRequest()'),
+                                ])
+                                ..named = true
+                                ..name = 'cancelToken'
+                                ..type = refer('$CancelToken?'),
+                            ),
+                            Parameter(
+                              (b) => b
+                                ..annotations.addAll([
+                                  refer('$SendProgress()'),
+                                ])
+                                ..named = true
+                                ..name = 'sendProgress'
+                                ..type = refer('ProgressCallback?'),
+                            ),
+                            Parameter(
+                              (b) => b
+                                ..annotations.addAll([
+                                  refer('$ReceiveProgress()'),
+                                ])
+                                ..named = true
+                                ..name = 'receiveProgress'
+                                ..type = refer('ProgressCallback?'),
+                            ),
+                          ]);
+                      },
                     ),
               ]),
           ),

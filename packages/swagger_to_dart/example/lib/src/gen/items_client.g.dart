@@ -20,11 +20,12 @@ class _ItemsClient implements ItemsClient {
   @override
   Future<HttpResponse<dynamic>> itemsCreateItem({
     Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    CancelToken? cancelToken,
+    void Function(int, int)? sendProgress,
+    void Function(int, int)? receiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
+    _extra.addAll(extras ?? <String, dynamic>{});
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
@@ -36,6 +37,9 @@ class _ItemsClient implements ItemsClient {
             '/items/',
             queryParameters: queryParameters,
             data: _data,
+            cancelToken: cancelToken,
+            onSendProgress: sendProgress,
+            onReceiveProgress: receiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );

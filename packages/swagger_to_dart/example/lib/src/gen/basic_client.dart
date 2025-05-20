@@ -58,11 +58,11 @@ abstract class BasicClient {
   /// }
   @GET("/basic/number/{num}")
   Future<HttpResponse> basicBasicNumber({
-    required int num,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Path("num") required int num,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -110,11 +110,11 @@ abstract class BasicClient {
   /// }
   @GET("/basic/float/{num}")
   Future<HttpResponse> basicBasicFloat({
-    required double num,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Path("num") required double num,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -164,11 +164,11 @@ abstract class BasicClient {
   /// }
   @GET("/basic/boolean")
   Future<HttpResponse> basicBasicBoolean({
-    required bool flag,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Query("flag") required bool flag,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -219,11 +219,11 @@ abstract class BasicClient {
   /// }
   @GET("/basic/string")
   Future<HttpResponse> basicBasicString({
-    required String text,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Query("text") required String text,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -272,11 +272,11 @@ abstract class BasicClient {
   /// }
   @GET("/datetime/date")
   Future<HttpResponse> basicDatetimeDate({
-    required DateTime d,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Query("d") required DateTime d,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -325,11 +325,11 @@ abstract class BasicClient {
   /// }
   @GET("/datetime/datetime")
   Future<HttpResponse> basicDatetimeDatetime({
-    required DateTime dt,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Query("dt") required DateTime dt,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// post
@@ -378,11 +378,11 @@ abstract class BasicClient {
   /// }
   @POST("/datetime/datetime")
   Future<HttpResponse> basicCreateDatetimeDatetime({
-    required DateTime dt,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Query("dt") required DateTime dt,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -431,11 +431,11 @@ abstract class BasicClient {
   /// }
   @GET("/datetime/time")
   Future<HttpResponse> basicDatetimeTime({
-    required String t,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Query("t") required String t,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 
   /// get
@@ -484,10 +484,10 @@ abstract class BasicClient {
   /// }
   @GET("/datetime/timedelta")
   Future<HttpResponse> basicDatetimeTimedelta({
-    required String td,
-    Map<String, dynamic>? extras,
-    CancelRequest? cancelRequest,
-    ReceiveProgress? receiveProgress,
-    SendProgress? sendProgress,
+    @Query("td") required String td,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? sendProgress,
+    @ReceiveProgress() ProgressCallback? receiveProgress,
   });
 }
