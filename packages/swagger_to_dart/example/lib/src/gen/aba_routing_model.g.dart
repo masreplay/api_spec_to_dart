@@ -7,11 +7,7 @@ part of 'aba_routing_model.dart';
 // **************************************************************************
 
 _ABARoutingModel _$ABARoutingModelFromJson(Map<String, dynamic> json) =>
-    _ABARoutingModel(
-      routingNumber: json['routing_number'] as String,
-    );
+    _ABARoutingModel(routingNumber: json['routing_number'] as String);
 
 Map<String, dynamic> _$ABARoutingModelToJson(_ABARoutingModel instance) =>
-    <String, dynamic>{
-      'routing_number': instance.routingNumber,
-    };
+    <String, dynamic>{'routing_number': instance.routingNumber};

@@ -11,17 +11,11 @@ class CodeGenerator {
   final GenerationContext context;
 
   Future<void> write() async {
-    final emitter = DartEmitter.scoped();
-    final formatter = DartFormatter(
-      languageVersion: DartFormatter.latestLanguageVersion,
-    );
-
-    context.modelGenerator.generate();
+    context.generate();
 
     final dir = Directory(context.swaggerToDart.outputDirectory);
     print('Output directory: ${dir.path}');
 
-    // Create directory if it doesn't exist, or clean it if it does
     if (dir.existsSync()) {
       await dir.delete(recursive: true);
     }
@@ -31,21 +25,27 @@ class CodeGenerator {
 
     for (final model in context.models) {
       final name = model.name;
+      if (name == null) throw Exception('Model has no name');
+
+      try {
+        await writeDartFile(path.join(dir.path, '${name}.dart'), model);
+      } catch (e, stackTrace) {
+        print('Error generating model $name: $e');
+        print('Stack trace: $stackTrace');
+      }
+    }
+
+    for (final apiClient in context.apiClients) {
+      final name = apiClient.name;
       if (name == null) {
-        print('Warning: Skipping model with null name');
-        return;
+        print('Warning: Skipping api client with null name');
+        continue;
       }
 
       try {
-        print('Generating model $name...');
-        final file = File(path.join(dir.path, '${name}.dart'));
-
-        await file.writeAsString(
-          formatter.format('${model.accept(emitter)}'),
-          flush: true,
-        );
+        await writeDartFile(path.join(dir.path, '${name}.dart'), apiClient);
       } catch (e, stackTrace) {
-        print('Error generating model $name: $e');
+        print('Error generating api client $name: $e');
         print('Stack trace: $stackTrace');
       }
     }
@@ -58,11 +58,7 @@ class CodeGenerator {
         ]),
     );
 
-    final file = File(path.join(dir.path, 'models.dart'));
-    await file.writeAsString(
-      formatter.format('${library.accept(emitter)}'),
-      flush: true,
-    );
+    await writeDartFile(path.join(dir.path, 'models.dart'), library);
 
     final exportLibrary = Library(
       (b) => b
@@ -101,13 +97,21 @@ const jsonSerializable = JsonSerializable(
         ]),
     );
 
-    // export.dart file
-    final exportFile = File(path.join(dir.path, 'exports.dart'));
-    await exportFile.writeAsString(
-      formatter.format('${exportLibrary.accept(emitter)}'),
-      flush: true,
-    );
+    await writeDartFile(path.join(dir.path, 'exports.dart'), exportLibrary);
 
     print('Code generation completed successfully');
   }
+}
+
+Future<void> writeDartFile(String path, Library library) async {
+  final emitter = DartEmitter.scoped();
+  final formatter = DartFormatter(
+    languageVersion: DartFormatter.latestLanguageVersion,
+  );
+
+  final file = File(path);
+  await file.writeAsString(
+    formatter.format('${library.accept(emitter)}'),
+    flush: true,
+  );
 }

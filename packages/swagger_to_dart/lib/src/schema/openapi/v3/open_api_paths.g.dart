@@ -6,45 +6,6 @@ part of 'open_api_paths.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_OpenApiPath _$OpenApiPathFromJson(Map<String, dynamic> json) => _OpenApiPath(
-      get: json['get'] == null
-          ? null
-          : OpenApiPathMethod.fromJson(json['get'] as Map<String, dynamic>),
-      post: json['post'] == null
-          ? null
-          : OpenApiPathMethod.fromJson(json['post'] as Map<String, dynamic>),
-      put: json['put'] == null
-          ? null
-          : OpenApiPathMethod.fromJson(json['put'] as Map<String, dynamic>),
-      delete: json['delete'] == null
-          ? null
-          : OpenApiPathMethod.fromJson(json['delete'] as Map<String, dynamic>),
-      options: json['options'] == null
-          ? null
-          : OpenApiPathMethod.fromJson(json['options'] as Map<String, dynamic>),
-      head: json['head'] == null
-          ? null
-          : OpenApiPathMethod.fromJson(json['head'] as Map<String, dynamic>),
-      patch: json['patch'] == null
-          ? null
-          : OpenApiPathMethod.fromJson(json['patch'] as Map<String, dynamic>),
-      trace: json['trace'] == null
-          ? null
-          : OpenApiPathMethod.fromJson(json['trace'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$OpenApiPathToJson(_OpenApiPath instance) =>
-    <String, dynamic>{
-      if (instance.get?.toJson() case final value?) 'get': value,
-      if (instance.post?.toJson() case final value?) 'post': value,
-      if (instance.put?.toJson() case final value?) 'put': value,
-      if (instance.delete?.toJson() case final value?) 'delete': value,
-      if (instance.options?.toJson() case final value?) 'options': value,
-      if (instance.head?.toJson() case final value?) 'head': value,
-      if (instance.patch?.toJson() case final value?) 'patch': value,
-      if (instance.trace?.toJson() case final value?) 'trace': value,
-    };
-
 _OpenApiPathMethod _$OpenApiPathMethodFromJson(Map<String, dynamic> json) =>
     _OpenApiPathMethod(
       tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),

@@ -7,6 +7,9 @@ import 'open_api_paths.dart';
 part 'open_api.freezed.dart';
 part 'open_api.g.dart';
 
+typedef OpenApiPaths
+    = Map<String, Map<OpenApiPathMethodEnum, OpenApiPathMethod>>;
+
 @freezed
 abstract class OpenApi with _$OpenApi {
   const OpenApi._();
@@ -15,7 +18,7 @@ abstract class OpenApi with _$OpenApi {
     @JsonKey(name: 'openapi') required String? openapi,
     @JsonKey(name: 'info') required OpenApiInfo info,
     @JsonKey(name: 'servers') required List<OpenApiServer>? servers,
-    @JsonKey(name: 'paths') required Map<String, OpenApiPath>? paths,
+    @JsonKey(name: 'paths') required OpenApiPaths? paths,
     @JsonKey(name: 'components') required OpenApiComponents? components,
   }) = _OpenApi;
 

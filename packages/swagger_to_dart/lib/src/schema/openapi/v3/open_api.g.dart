@@ -13,7 +13,12 @@ _OpenApi _$OpenApiFromJson(Map<String, dynamic> json) => _OpenApi(
           ?.map((e) => OpenApiServer.fromJson(e as Map<String, dynamic>))
           .toList(),
       paths: (json['paths'] as Map<String, dynamic>?)?.map(
-        (k, e) => MapEntry(k, OpenApiPath.fromJson(e as Map<String, dynamic>)),
+        (k, e) => MapEntry(
+            k,
+            (e as Map<String, dynamic>).map(
+              (k, e) => MapEntry($enumDecode(_$OpenApiPathMethodEnumEnumMap, k),
+                  OpenApiPathMethod.fromJson(e as Map<String, dynamic>)),
+            )),
       ),
       components: json['components'] == null
           ? null
@@ -26,11 +31,27 @@ Map<String, dynamic> _$OpenApiToJson(_OpenApi instance) => <String, dynamic>{
       'info': instance.info.toJson(),
       if (instance.servers?.map((e) => e.toJson()).toList() case final value?)
         'servers': value,
-      if (instance.paths?.map((k, e) => MapEntry(k, e.toJson()))
+      if (instance.paths?.map((k, e) => MapEntry(
+              k,
+              e.map((k, e) =>
+                  MapEntry(_$OpenApiPathMethodEnumEnumMap[k]!, e.toJson()))))
           case final value?)
         'paths': value,
       if (instance.components?.toJson() case final value?) 'components': value,
     };
+
+const _$OpenApiPathMethodEnumEnumMap = {
+  OpenApiPathMethodEnum.get: 'get',
+  OpenApiPathMethodEnum.post: 'post',
+  OpenApiPathMethodEnum.put: 'put',
+  OpenApiPathMethodEnum.delete: 'delete',
+  OpenApiPathMethodEnum.options: 'options',
+  OpenApiPathMethodEnum.head: 'head',
+  OpenApiPathMethodEnum.patch: 'patch',
+  OpenApiPathMethodEnum.trace: 'trace',
+  OpenApiPathMethodEnum.connect: 'connect',
+  OpenApiPathMethodEnum.pat: 'pat',
+};
 
 _OpenApiServer _$OpenApiServerFromJson(Map<String, dynamic> json) =>
     _OpenApiServer(

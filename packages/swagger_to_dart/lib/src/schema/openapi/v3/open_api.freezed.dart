@@ -21,7 +21,7 @@ mixin _$OpenApi {
   @JsonKey(name: 'servers')
   List<OpenApiServer>? get servers;
   @JsonKey(name: 'paths')
-  Map<String, OpenApiPath>? get paths;
+  OpenApiPaths? get paths;
   @JsonKey(name: 'components')
   OpenApiComponents? get components;
 
@@ -73,7 +73,7 @@ abstract mixin class $OpenApiCopyWith<$Res> {
       {@JsonKey(name: 'openapi') String? openapi,
       @JsonKey(name: 'info') OpenApiInfo info,
       @JsonKey(name: 'servers') List<OpenApiServer>? servers,
-      @JsonKey(name: 'paths') Map<String, OpenApiPath>? paths,
+      @JsonKey(name: 'paths') OpenApiPaths? paths,
       @JsonKey(name: 'components') OpenApiComponents? components});
 
   $OpenApiInfoCopyWith<$Res> get info;
@@ -114,7 +114,7 @@ class _$OpenApiCopyWithImpl<$Res> implements $OpenApiCopyWith<$Res> {
       paths: freezed == paths
           ? _self.paths
           : paths // ignore: cast_nullable_to_non_nullable
-              as Map<String, OpenApiPath>?,
+              as OpenApiPaths?,
       components: freezed == components
           ? _self.components
           : components // ignore: cast_nullable_to_non_nullable
@@ -154,7 +154,7 @@ class _OpenApi extends OpenApi {
       {@JsonKey(name: 'openapi') required this.openapi,
       @JsonKey(name: 'info') required this.info,
       @JsonKey(name: 'servers') required final List<OpenApiServer>? servers,
-      @JsonKey(name: 'paths') required final Map<String, OpenApiPath>? paths,
+      @JsonKey(name: 'paths') required final OpenApiPaths? paths,
       @JsonKey(name: 'components') required this.components})
       : _servers = servers,
         _paths = paths,
@@ -179,10 +179,10 @@ class _OpenApi extends OpenApi {
     return EqualUnmodifiableListView(value);
   }
 
-  final Map<String, OpenApiPath>? _paths;
+  final OpenApiPaths? _paths;
   @override
   @JsonKey(name: 'paths')
-  Map<String, OpenApiPath>? get paths {
+  OpenApiPaths? get paths {
     final value = _paths;
     if (value == null) return null;
     if (_paths is EqualUnmodifiableMapView) return _paths;
@@ -248,7 +248,7 @@ abstract mixin class _$OpenApiCopyWith<$Res> implements $OpenApiCopyWith<$Res> {
       {@JsonKey(name: 'openapi') String? openapi,
       @JsonKey(name: 'info') OpenApiInfo info,
       @JsonKey(name: 'servers') List<OpenApiServer>? servers,
-      @JsonKey(name: 'paths') Map<String, OpenApiPath>? paths,
+      @JsonKey(name: 'paths') OpenApiPaths? paths,
       @JsonKey(name: 'components') OpenApiComponents? components});
 
   @override
@@ -291,7 +291,7 @@ class __$OpenApiCopyWithImpl<$Res> implements _$OpenApiCopyWith<$Res> {
       paths: freezed == paths
           ? _self._paths
           : paths // ignore: cast_nullable_to_non_nullable
-              as Map<String, OpenApiPath>?,
+              as OpenApiPaths?,
       components: freezed == components
           ? _self.components
           : components // ignore: cast_nullable_to_non_nullable

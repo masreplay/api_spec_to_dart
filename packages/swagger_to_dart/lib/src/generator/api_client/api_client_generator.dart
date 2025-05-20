@@ -1,15 +1,108 @@
 import 'package:code_builder/code_builder.dart';
-import 'package:swagger_to_dart/src/builder/retrofit_class_code_builder.dart';
-import 'package:swagger_to_dart/src/config/generation_context.dart';
-
-import 'package:swagger_to_dart/src/schema/openapi/openapi.dart';
+import 'package:retrofit/retrofit.dart' hide Method;
+import 'package:swagger_to_dart/src/swagger_to_dart_base.dart';
 
 /// Generated Client Code
 ///
+/// Swagger
+/// ```json
+/// "/datetime/datetime": {
+///   "get": {
+///       "tags": [
+///           "basic"
+///       ],
+///       "summary": "Handle datetime parameters",
+///       "description": "Handle datetime parameter (YYYY-MM-DDThh:mm:ss).",
+///       "operationId": "basic-datetime_datetime",
+///       "parameters": [
+///           {
+///               "name": "dt",
+///               "in": "query",
+///               "required": true,
+///               "schema": {
+///                   "type": "string",
+///                   "format": "date-time",
+///                   "title": "Dt"
+///               }
+///           }
+///       ],
+///       "responses": {
+///           "200": {
+///               "description": "Successful Response",
+///               "content": {
+///                   "application/json": {
+///                       "schema": {
+///                           "type": "object",
+///                           "additionalProperties": true,
+///                           "title": "Response Basic-Datetime Datetime"
+///                       }
+///                   }
+///               }
+///           },
+///           "422": {
+///               "description": "Validation Error",
+///               "content": {
+///                   "application/json": {
+///                       "schema": {
+///                           "$ref": "#/components/schemas/HTTPValidationError"
+///                       }
+///                   }
+///               }
+///           }
+///       }
+///   },
+///   "post": {
+///       "tags": [
+///           "basic"
+///       ],
+///       "summary": "Handle datetime parameters",
+///       "description": "Handle datetime parameter (YYYY-MM-DDThh:mm:ss).",
+///       "operationId": "basic-create_datetime_datetime",
+///       "parameters": [
+///           {
+///               "name": "dt",
+///               "in": "query",
+///               "required": true,
+///               "schema": {
+///                   "type": "string",
+///                   "format": "date-time",
+///                   "title": "Dt"
+///               }
+///           }
+///       ],
+///       "responses": {
+///           "200": {
+///               "description": "Successful Response",
+///               "content": {
+///                   "application/json": {
+///                       "schema": {
+///                           "type": "object",
+///                           "additionalProperties": true,
+///                           "title": "Response Basic-Create Datetime Datetime"
+///                       }
+///                   }
+///               }
+///           },
+///           "422": {
+///               "description": "Validation Error",
+///               "content": {
+///                   "application/json": {
+///                       "schema": {
+///                           "$ref": "#/components/schemas/HTTPValidationError"
+///                       }
+///                   }
+///               }
+///           }
+///       }
+///   }
+/// }
+/// ```
+///
+/// Generated:
 /// ```dart
 /// import 'package:dio/dio.dart';
 /// import 'package:retrofit/retrofit.dart';
-/// import 'package:api_client/src/gen/models/models.dart';
+/// import 'models.dart';
 ///
 /// part 'settings_client.g.dart';
 ///
@@ -24,9 +117,6 @@ import 'package:swagger_to_dart/src/schema/openapi/openapi.dart';
 ///   /// OperationId: settings-get_app_settings
 ///   /// Summery: Get App Settings
 ///   /// Description: **Status**: implemented
-///   /// **Ready for production**: Yes
-///   /// **Priority**: medium
-///   /// **Note**: N/A
 ///   @GET('/api/v1/common/settings/')
 ///   Future<HttpResponse<BaseResponseAppSettingsResponse>>
 ///   settingsGetAppSettings();
@@ -39,68 +129,182 @@ class ApiClientGenerator {
   final GenerationContext context;
 
   Future<void> generate() async {
-    if (context.openApi.paths case final openApiPaths?) {
-      for (final MapEntry<String, OpenApiPath> entry in openApiPaths.entries) {
-        final client = build(clientName: entry.key);
+    // <basic, </datetime/datetime, < post | get ..., OpenApiPathMethod>>>
+    final Map<String, OpenApiPaths> group = {};
 
-        context.addClient(client);
+    for (final entry in (context.openApi.paths ?? {}).entries) {
+      final path = entry.key;
+      // <post | get ..., OpenApiPathMethod>
+      final methods = entry.value;
+
+      for (final method in methods.values) {
+        if (method.tags.isEmpty) {
+          group['default'] ??= {};
+          group['default']![path] = methods;
+        } else {
+          for (final tag in method.tags) {
+            group[tag] ??= {};
+            group[tag]![path] = methods;
+          }
+        }
       }
+    }
+
+    for (final entry in group.entries) {
+      final tag = entry.key;
+      final paths = entry.value;
+
+      final apiClient = build(
+        clientName: tag,
+        paths: paths,
+      );
+
+      context.addApiClient(apiClient);
     }
   }
 
+  /// import 'package:dio/dio.dart';
+  /// import 'package:retrofit/retrofit.dart';
+  /// import 'models.dart';
+  ///
+  /// part 'settings_client.g.dart';
+  ///
+  /// @RestApi()
+  /// abstract class SettingsClient {
+  ///   factory SettingsClient(
+  ///     Dio dio, {
+  ///     String? baseUrl,
+  ///     ParseErrorLogger? errorLogger,
+  ///   }) = _SettingsClient;
+  ///
+  ///   /// OperationId: settings-get_app_settings
+  ///   /// Summery: Get App Settings
+  ///   /// Description: **Status**: implemented
+  ///   @GET('/api/v1/common/settings/')
+  ///   Future<HttpResponse<BaseResponseAppSettingsResponse>>
+  ///   settingsGetAppSettings();
   Library build({
     required String clientName,
+    required OpenApiPaths paths,
   }) {
+    final className = Renaming.instance.renameClass('${clientName}Client');
+    final fileName = Renaming.instance.renameFile(className);
+
+    final propertyGeneratorStrategy = PropertyGeneratorStrategy(context);
+
     return Library(
       (b) => b
-        ..name = filename
         ..directives.addAll([
-          Directive.import('package:retrofit/retrofit.dart'),
           Directive.import('package:dio/dio.dart'),
-          Directive.part('${filename}.g.dart'),
+          Directive.import('package:retrofit/retrofit.dart'),
+          Directive.import('exports.dart'),
+          Directive.part('${fileName}.g.dart'),
         ])
-        ..annotations.addAll([
-          generateRestApiAnnotation(retrofit.RestApi()),
-        ])
+        ..name = fileName
         ..body.addAll([
           Class(
             (b) => b
+              ..annotations.addAll([
+                refer('$RestApi()'),
+              ])
               ..abstract = true
               ..name = className
               ..constructors.addAll([
                 Constructor(
                   (b) => b
-                    ..constant = true
                     ..factory = true
-                    ..redirect = refer('_${className}')
-                    ..optionalParameters.addAll([
-                      Parameter(
-                        (b) => b
-                          ..name = 'dio'
-                          ..type = refer('Dio'),
-                      ),
-                    ])
+                    ..redirect = refer('_$className')
                     ..requiredParameters.addAll([
                       Parameter(
                         (b) => b
-                          ..name = 'baseUrl'
-                          ..type = refer('String'),
+                          ..name = 'dio'
+                          ..type = refer('Dio')
+                          ..named = true,
+                      ),
+                    ])
+                    ..optionalParameters.addAll([
+                      Parameter(
+                        (b) => b
+                          ..named = true
+                          ..name = 'errorLogger'
+                          ..type = refer('ParseErrorLogger?'),
                       ),
                       Parameter(
                         (b) => b
-                          ..name = 'errorLogger'
-                          ..type = refer('ParseErrorLogger'),
+                          ..named = true
+                          ..name = 'baseUrl'
+                          ..type = refer('String?'),
                       ),
                     ]),
                 ),
               ])
-              ..fields.addAll([])
-              ..methods.addAll([]),
-          ),
-          Extension(
-            (b) => b
-              ..name = '${className}Extension'
-              ..on = refer(className),
+              ..methods.addAll([
+                for (final path in paths.entries)
+                  for (final method in path.value.entries)
+                    Method(
+                      (b) => b
+                        ..docs.addAll([
+                          '/// ${method.key.name}',
+                          ...JsonFactory.instance
+                              .encode(method.value.toJson())
+                              .split('\n')
+                              .map((e) => '/// $e')
+                              .toList(),
+                        ])
+                        ..annotations.addAll([
+                          refer(
+                            '${Recase.instance.toScreamingSnakeCase(method.key.name)}("${path.key}")',
+                          ),
+                        ])
+                        ..returns = refer('Future<HttpResponse>')
+                        ..name = Renaming.instance.renameMethod(
+                          method.value.operationId ?? '',
+                        )
+                        ..optionalParameters.addAll([
+                          for (final parameter in method.value.parameters ??
+                              <OpenApiPathMethodParameter>[])
+                            Parameter(
+                              (b) => b
+                                ..named = true
+                                ..name = Renaming.instance.renameProperty(
+                                  parameter.name,
+                                )
+                                ..required = true
+                                ..type = refer(
+                                  propertyGeneratorStrategy
+                                      .getOpenApiSchemaDartType(
+                                    parameter.schema,
+                                    className: className,
+                                  ),
+                                ),
+                            ),
+                          Parameter(
+                            (b) => b
+                              ..named = true
+                              ..name = 'extras'
+                              ..type = refer('Map<String, dynamic>?'),
+                          ),
+                          Parameter(
+                            (b) => b
+                              ..named = true
+                              ..name = 'cancelRequest'
+                              ..type = refer('$CancelRequest?'),
+                          ),
+                          Parameter(
+                            (b) => b
+                              ..named = true
+                              ..name = 'receiveProgress'
+                              ..type = refer('$ReceiveProgress?'),
+                          ),
+                          Parameter(
+                            (b) => b
+                              ..named = true
+                              ..name = 'sendProgress'
+                              ..type = refer('$SendProgress?'),
+                          ),
+                        ]),
+                    ),
+              ]),
           ),
         ]),
     );

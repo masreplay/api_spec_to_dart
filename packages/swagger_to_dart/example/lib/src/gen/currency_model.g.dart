@@ -14,6 +14,6 @@ _CurrencyModel _$CurrencyModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$CurrencyModelToJson(_CurrencyModel instance) =>
     <String, dynamic>{
-      if (instance.currency case final value?) 'currency': value,
-      if (instance.iso4217 case final value?) 'iso4217': value,
+      'currency': instance.currency,
+      'iso4217': instance.iso4217,
     };

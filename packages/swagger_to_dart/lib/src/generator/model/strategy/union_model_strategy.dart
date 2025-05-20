@@ -33,7 +33,7 @@ class UnionModelStrategy extends ModelGeneratorStrategy {
           ..requiredParameters.addAll([
             propertyGeneratorStrategy.buildUnionValue(
               e,
-              modelClassName: className,
+              className: className,
             )
           ]),
       );

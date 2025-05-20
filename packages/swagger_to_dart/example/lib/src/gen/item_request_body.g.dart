@@ -17,7 +17,7 @@ _ItemRequestBody _$ItemRequestBodyFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$ItemRequestBodyToJson(_ItemRequestBody instance) =>
     <String, dynamic>{
       'name': instance.name,
-      if (instance.description case final value?) 'description': value,
+      'description': instance.description,
       'price': instance.price,
-      if (instance.tax case final value?) 'tax': value,
+      'tax': instance.tax,
     };

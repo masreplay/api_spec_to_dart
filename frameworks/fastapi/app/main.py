@@ -130,6 +130,15 @@ def datetime_datetime(dt: datetime) -> dict[str, Any]:
     """Handle datetime parameter (YYYY-MM-DDThh:mm:ss)."""
     return {"datetime": dt, "timestamp": dt.timestamp()}
 
+@app.post(
+    "/datetime/datetime",
+    tags=["basic"],
+    summary="Handle datetime parameters",
+)
+def create_datetime_datetime(dt: datetime) -> dict[str, Any]:
+    """Handle datetime parameter (YYYY-MM-DDThh:mm:ss)."""
+    return {"datetime": dt, "timestamp": dt.timestamp()}
+
 
 @app.get(
     "/datetime/time",

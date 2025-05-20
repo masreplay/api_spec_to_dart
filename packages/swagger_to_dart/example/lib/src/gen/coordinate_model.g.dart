@@ -15,7 +15,7 @@ _CoordinateModel _$CoordinateModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$CoordinateModelToJson(_CoordinateModel instance) =>
     <String, dynamic>{
-      if (instance.coordinate case final value?) 'coordinate': value,
-      if (instance.latitude case final value?) 'latitude': value,
-      if (instance.longitude case final value?) 'longitude': value,
+      'coordinate': instance.coordinate,
+      'latitude': instance.latitude,
+      'longitude': instance.longitude,
     };

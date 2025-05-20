@@ -6,43 +6,17 @@ import 'open_api_schema.dart';
 part 'open_api_paths.freezed.dart';
 part 'open_api_paths.g.dart';
 
-
-
-@freezed
-abstract class OpenApiPath with _$OpenApiPath {
-  factory OpenApiPath.fromJson(Map<String, dynamic> json) =>
-      _$OpenApiPathFromJson(json);
-  const OpenApiPath._();
-
-  const factory OpenApiPath({
-    OpenApiPathMethod? get,
-    OpenApiPathMethod? post,
-    OpenApiPathMethod? put,
-    OpenApiPathMethod? delete,
-    OpenApiPathMethod? options,
-    OpenApiPathMethod? head,
-    OpenApiPathMethod? patch,
-    OpenApiPathMethod? trace,
-  }) = _OpenApiPath;
-
-  // Return first non-null value
-  OpenApiPathMethod? get current {
-    return get ?? post ?? put ?? delete ?? options ?? head ?? patch ?? trace;
-  }
-
-  /// Return all available methods
-  Map<String, OpenApiPathMethod> get methods {
-    return {
-      if (get case final get?) 'GET': get,
-      if (post case final post?) 'POST': post,
-      if (put case final put?) 'PUT': put,
-      if (delete case final delete?) 'DELETE': delete,
-      if (options case final options?) 'OPTIONS': options,
-      if (head case final head?) 'HEAD': head,
-      if (patch case final patch?) 'PATCH': patch,
-      if (trace case final trace?) 'TRACE': trace,
-    };
-  }
+enum OpenApiPathMethodEnum {
+  get,
+  post,
+  put,
+  delete,
+  options,
+  head,
+  patch,
+  trace,
+  connect,
+  pat,
 }
 
 typedef OpenApiPathMethodResponses = Map<String, OpenApiPathMethodResponse>;

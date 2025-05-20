@@ -7,7 +7,9 @@ import 'package:yaml/yaml.dart';
 part 'swagger_to_dart_yaml.freezed.dart';
 part 'swagger_to_dart_yaml.g.dart';
 
-const _jsonSerializable = JsonSerializable(fieldRename: FieldRename.snake);
+const JsonSerializable _jsonSerializable = JsonSerializable(
+  fieldRename: FieldRename.snake,
+);
 
 @freezed
 abstract class SwaggerToDartYaml with _$SwaggerToDartYaml {
@@ -60,6 +62,19 @@ abstract class JsonSerializableConfig with _$JsonSerializableConfig {
 }
 
 @freezed
+abstract class ApiClientConfig with _$ApiClientConfig {
+  const ApiClientConfig._();
+
+  @_jsonSerializable
+  const factory ApiClientConfig({
+    @Default(false) bool useClassForQueryParameters,
+  }) = _ApiClientConfig;
+
+  factory ApiClientConfig.fromJson(Map<String, dynamic> json) =>
+      _$ApiClientConfigFromJson(json);
+}
+
+@freezed
 abstract class SwaggerToDart with _$SwaggerToDart {
   @_jsonSerializable
   factory SwaggerToDart({
@@ -70,6 +85,7 @@ abstract class SwaggerToDart with _$SwaggerToDart {
     @Default([]) List<String> imports,
     @Default([]) List<String> skippedParameters,
     @Default(JsonSerializableConfig()) JsonSerializableConfig jsonSerializable,
+    @Default(ApiClientConfig()) ApiClientConfig apiClient,
   }) = _SwaggerToDart;
 
   factory SwaggerToDart.fromJson(Map<String, dynamic> json) =>

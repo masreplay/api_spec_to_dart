@@ -70,8 +70,8 @@ class RegularModelStrategy extends ModelGeneratorStrategy {
                     ..factory = true
                     ..redirect = refer('_${className}')
                     ..optionalParameters.addAll([
-                      ...properties.entries.map((value) => propertyGenerator
-                          .build(value, modelClassName: className)),
+                      ...properties.entries.map((value) =>
+                          propertyGenerator.build(value, className: className)),
                     ]),
                 ),
                 Constructor(

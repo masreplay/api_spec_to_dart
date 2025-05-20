@@ -281,6 +281,50 @@
                         }
                     }
                 }
+            },
+            "post": {
+                "tags": [
+                    "basic"
+                ],
+                "summary": "Handle datetime parameters",
+                "description": "Handle datetime parameter (YYYY-MM-DDThh:mm:ss).",
+                "operationId": "basic-create_datetime_datetime",
+                "parameters": [
+                    {
+                        "name": "dt",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "date-time",
+                            "title": "Dt"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true,
+                                    "title": "Response Basic-Create Datetime Datetime"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
             }
         },
         "/datetime/time": {
