@@ -57,7 +57,7 @@ abstract class ItemsClient {
   Future<HttpResponse> itemsCreateItem({
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
-    @SendProgress() ProgressCallback? sendProgress,
-    @ReceiveProgress() ProgressCallback? receiveProgress,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
   });
 }

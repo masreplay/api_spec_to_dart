@@ -22,8 +22,8 @@ class _BasicClient implements BasicClient {
     required int num,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -39,8 +39,8 @@ class _BasicClient implements BasicClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -55,8 +55,8 @@ class _BasicClient implements BasicClient {
     required double num,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -72,8 +72,8 @@ class _BasicClient implements BasicClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -85,11 +85,11 @@ class _BasicClient implements BasicClient {
 
   @override
   Future<HttpResponse<dynamic>> basicBasicBoolean({
-    required bool flag,
+    bool flag = false,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -105,8 +105,8 @@ class _BasicClient implements BasicClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -121,8 +121,8 @@ class _BasicClient implements BasicClient {
     required String text,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -138,8 +138,8 @@ class _BasicClient implements BasicClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -154,8 +154,8 @@ class _BasicClient implements BasicClient {
     required DateTime d,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -171,8 +171,8 @@ class _BasicClient implements BasicClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -187,8 +187,8 @@ class _BasicClient implements BasicClient {
     required DateTime dt,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -204,8 +204,8 @@ class _BasicClient implements BasicClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -220,8 +220,8 @@ class _BasicClient implements BasicClient {
     required DateTime dt,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -237,8 +237,8 @@ class _BasicClient implements BasicClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -253,8 +253,8 @@ class _BasicClient implements BasicClient {
     required String t,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -270,8 +270,8 @@ class _BasicClient implements BasicClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -286,8 +286,8 @@ class _BasicClient implements BasicClient {
     required String td,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -303,8 +303,8 @@ class _BasicClient implements BasicClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );

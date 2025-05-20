@@ -61,8 +61,8 @@ abstract class BasicClient {
     @Path("num") required int num,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
-    @SendProgress() ProgressCallback? sendProgress,
-    @ReceiveProgress() ProgressCallback? receiveProgress,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
   });
 
   /// get
@@ -113,8 +113,8 @@ abstract class BasicClient {
     @Path("num") required double num,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
-    @SendProgress() ProgressCallback? sendProgress,
-    @ReceiveProgress() ProgressCallback? receiveProgress,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
   });
 
   /// get
@@ -164,11 +164,11 @@ abstract class BasicClient {
   /// }
   @GET("/basic/boolean")
   Future<HttpResponse> basicBasicBoolean({
-    @Query("flag") required bool flag,
+    @Query("flag") bool flag = false,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
-    @SendProgress() ProgressCallback? sendProgress,
-    @ReceiveProgress() ProgressCallback? receiveProgress,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
   });
 
   /// get
@@ -222,8 +222,8 @@ abstract class BasicClient {
     @Query("text") required String text,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
-    @SendProgress() ProgressCallback? sendProgress,
-    @ReceiveProgress() ProgressCallback? receiveProgress,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
   });
 
   /// get
@@ -275,8 +275,8 @@ abstract class BasicClient {
     @Query("d") required DateTime d,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
-    @SendProgress() ProgressCallback? sendProgress,
-    @ReceiveProgress() ProgressCallback? receiveProgress,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
   });
 
   /// get
@@ -328,8 +328,8 @@ abstract class BasicClient {
     @Query("dt") required DateTime dt,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
-    @SendProgress() ProgressCallback? sendProgress,
-    @ReceiveProgress() ProgressCallback? receiveProgress,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
   });
 
   /// post
@@ -381,8 +381,8 @@ abstract class BasicClient {
     @Query("dt") required DateTime dt,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
-    @SendProgress() ProgressCallback? sendProgress,
-    @ReceiveProgress() ProgressCallback? receiveProgress,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
   });
 
   /// get
@@ -434,8 +434,8 @@ abstract class BasicClient {
     @Query("t") required String t,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
-    @SendProgress() ProgressCallback? sendProgress,
-    @ReceiveProgress() ProgressCallback? receiveProgress,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
   });
 
   /// get
@@ -487,7 +487,7 @@ abstract class BasicClient {
     @Query("td") required String td,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
-    @SendProgress() ProgressCallback? sendProgress,
-    @ReceiveProgress() ProgressCallback? receiveProgress,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
   });
 }

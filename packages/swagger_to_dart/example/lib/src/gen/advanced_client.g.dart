@@ -22,8 +22,8 @@ class _AdvancedClient implements AdvancedClient {
     required String id,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -39,8 +39,8 @@ class _AdvancedClient implements AdvancedClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -52,11 +52,11 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<dynamic>> advancedSpecialEnum({
-    required UserLevel level,
+    UserLevel level = UserLevel.basic,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -72,8 +72,8 @@ class _AdvancedClient implements AdvancedClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -85,11 +85,11 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<dynamic>> advancedSpecialLiteral({
-    required String mode,
+    String mode = "system",
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -105,8 +105,8 @@ class _AdvancedClient implements AdvancedClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -118,11 +118,11 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<dynamic>> advancedCollectionList({
-    required List<String> items,
+    List<String> items = const ["default"],
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -138,8 +138,8 @@ class _AdvancedClient implements AdvancedClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -151,11 +151,11 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<dynamic>> advancedCollectionSet({
-    required List<int> items,
+    List<int> items = const ["1", "2", "3"],
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -171,8 +171,8 @@ class _AdvancedClient implements AdvancedClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -186,8 +186,8 @@ class _AdvancedClient implements AdvancedClient {
   Future<HttpResponse<dynamic>> advancedCollectionDict({
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -203,8 +203,8 @@ class _AdvancedClient implements AdvancedClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -219,8 +219,8 @@ class _AdvancedClient implements AdvancedClient {
     required List<dynamic> items,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -236,8 +236,8 @@ class _AdvancedClient implements AdvancedClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -252,8 +252,8 @@ class _AdvancedClient implements AdvancedClient {
     required List<String> items,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -269,8 +269,8 @@ class _AdvancedClient implements AdvancedClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -285,8 +285,8 @@ class _AdvancedClient implements AdvancedClient {
     required dynamic value,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -302,8 +302,8 @@ class _AdvancedClient implements AdvancedClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -318,8 +318,8 @@ class _AdvancedClient implements AdvancedClient {
     String? value,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -335,8 +335,8 @@ class _AdvancedClient implements AdvancedClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -351,8 +351,8 @@ class _AdvancedClient implements AdvancedClient {
     required dynamic value,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -368,8 +368,8 @@ class _AdvancedClient implements AdvancedClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -385,8 +385,8 @@ class _AdvancedClient implements AdvancedClient {
     required int value2,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -405,8 +405,8 @@ class _AdvancedClient implements AdvancedClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -419,12 +419,12 @@ class _AdvancedClient implements AdvancedClient {
   @override
   Future<HttpResponse<dynamic>> advancedDependsQuery({
     String? q,
-    required int skip,
-    required int limit,
+    int skip = 0,
+    int limit = 100,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -444,8 +444,8 @@ class _AdvancedClient implements AdvancedClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -457,11 +457,11 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<dynamic>> advancedDependsClass({
-    required String dbName,
+    String dbName = "default",
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -477,8 +477,8 @@ class _AdvancedClient implements AdvancedClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -493,8 +493,8 @@ class _AdvancedClient implements AdvancedClient {
     required int itemId,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -510,8 +510,8 @@ class _AdvancedClient implements AdvancedClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -526,8 +526,8 @@ class _AdvancedClient implements AdvancedClient {
     required int code,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -543,8 +543,8 @@ class _AdvancedClient implements AdvancedClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );

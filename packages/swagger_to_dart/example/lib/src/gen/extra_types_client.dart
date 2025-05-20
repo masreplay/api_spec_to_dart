@@ -58,8 +58,8 @@ abstract class ExtraTypesClient {
   Future<HttpResponse> extraTypesCreateColor({
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
-    @SendProgress() ProgressCallback? sendProgress,
-    @ReceiveProgress() ProgressCallback? receiveProgress,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
   });
 
   /// post
@@ -107,8 +107,8 @@ abstract class ExtraTypesClient {
   Future<HttpResponse> extraTypesProcessCountry({
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
-    @SendProgress() ProgressCallback? sendProgress,
-    @ReceiveProgress() ProgressCallback? receiveProgress,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
   });
 
   /// post
@@ -156,8 +156,8 @@ abstract class ExtraTypesClient {
   Future<HttpResponse> extraTypesProcessPaymentCard({
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
-    @SendProgress() ProgressCallback? sendProgress,
-    @ReceiveProgress() ProgressCallback? receiveProgress,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
   });
 
   /// post
@@ -205,8 +205,8 @@ abstract class ExtraTypesClient {
   Future<HttpResponse> extraTypesProcessPhone({
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
-    @SendProgress() ProgressCallback? sendProgress,
-    @ReceiveProgress() ProgressCallback? receiveProgress,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
   });
 
   /// post
@@ -254,8 +254,8 @@ abstract class ExtraTypesClient {
   Future<HttpResponse> extraTypesProcessRouting({
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
-    @SendProgress() ProgressCallback? sendProgress,
-    @ReceiveProgress() ProgressCallback? receiveProgress,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
   });
 
   /// post
@@ -303,8 +303,8 @@ abstract class ExtraTypesClient {
   Future<HttpResponse> extraTypesProcessCoordinate({
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
-    @SendProgress() ProgressCallback? sendProgress,
-    @ReceiveProgress() ProgressCallback? receiveProgress,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
   });
 
   /// post
@@ -352,8 +352,8 @@ abstract class ExtraTypesClient {
   Future<HttpResponse> extraTypesProcessMac({
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
-    @SendProgress() ProgressCallback? sendProgress,
-    @ReceiveProgress() ProgressCallback? receiveProgress,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
   });
 
   /// post
@@ -401,8 +401,8 @@ abstract class ExtraTypesClient {
   Future<HttpResponse> extraTypesProcessIsbn({
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
-    @SendProgress() ProgressCallback? sendProgress,
-    @ReceiveProgress() ProgressCallback? receiveProgress,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
   });
 
   /// post
@@ -450,8 +450,8 @@ abstract class ExtraTypesClient {
   Future<HttpResponse> extraTypesProcessCurrency({
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
-    @SendProgress() ProgressCallback? sendProgress,
-    @ReceiveProgress() ProgressCallback? receiveProgress,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
   });
 
   /// post
@@ -499,8 +499,8 @@ abstract class ExtraTypesClient {
   Future<HttpResponse> extraTypesProcessDomain({
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
-    @SendProgress() ProgressCallback? sendProgress,
-    @ReceiveProgress() ProgressCallback? receiveProgress,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
   });
 
   /// post
@@ -548,8 +548,8 @@ abstract class ExtraTypesClient {
   Future<HttpResponse> extraTypesProcessLanguage({
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
-    @SendProgress() ProgressCallback? sendProgress,
-    @ReceiveProgress() ProgressCallback? receiveProgress,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
   });
 
   /// post
@@ -597,8 +597,8 @@ abstract class ExtraTypesClient {
   Future<HttpResponse> extraTypesProcessScript({
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
-    @SendProgress() ProgressCallback? sendProgress,
-    @ReceiveProgress() ProgressCallback? receiveProgress,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
   });
 
   /// post
@@ -646,8 +646,8 @@ abstract class ExtraTypesClient {
   Future<HttpResponse> extraTypesProcessVersion({
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
-    @SendProgress() ProgressCallback? sendProgress,
-    @ReceiveProgress() ProgressCallback? receiveProgress,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
   });
 
   /// post
@@ -695,8 +695,8 @@ abstract class ExtraTypesClient {
   Future<HttpResponse> extraTypesProcessS3Path({
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
-    @SendProgress() ProgressCallback? sendProgress,
-    @ReceiveProgress() ProgressCallback? receiveProgress,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
   });
 
   /// post
@@ -744,8 +744,8 @@ abstract class ExtraTypesClient {
   Future<HttpResponse> extraTypesProcessTimezone({
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
-    @SendProgress() ProgressCallback? sendProgress,
-    @ReceiveProgress() ProgressCallback? receiveProgress,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
   });
 
   /// post
@@ -793,7 +793,7 @@ abstract class ExtraTypesClient {
   Future<HttpResponse> extraTypesProcessUlid({
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
-    @SendProgress() ProgressCallback? sendProgress,
-    @ReceiveProgress() ProgressCallback? receiveProgress,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
   });
 }

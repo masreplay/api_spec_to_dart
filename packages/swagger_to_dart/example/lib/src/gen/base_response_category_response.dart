@@ -35,8 +35,9 @@ abstract class BaseResponseCategoryResponse
   @jsonSerializable
   const factory BaseResponseCategoryResponse({
     /// data
+    @Default(CategoryResponse())
     @JsonKey(name: BaseResponseCategoryResponse.dataKey)
-    required CategoryResponse data,
+    CategoryResponse data,
 
     /// message
     @JsonKey(name: BaseResponseCategoryResponse.messageKey)

@@ -21,8 +21,8 @@ class _ModelsClient implements ModelsClient {
   Future<HttpResponse<dynamic>> modelsCreateUser({
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -38,8 +38,8 @@ class _ModelsClient implements ModelsClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -53,8 +53,8 @@ class _ModelsClient implements ModelsClient {
   Future<HttpResponse<dynamic>> modelsGetLocation({
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -70,8 +70,8 @@ class _ModelsClient implements ModelsClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -85,8 +85,8 @@ class _ModelsClient implements ModelsClient {
   Future<HttpResponse<dynamic>> modelsResponseFiltered({
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -102,8 +102,8 @@ class _ModelsClient implements ModelsClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -115,11 +115,11 @@ class _ModelsClient implements ModelsClient {
 
   @override
   Future<HttpResponse<dynamic>> modelsResponseMultiple({
-    required bool isUser,
+    bool isUser = true,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -135,8 +135,8 @@ class _ModelsClient implements ModelsClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -150,8 +150,8 @@ class _ModelsClient implements ModelsClient {
   Future<HttpResponse<dynamic>> modelsResponseList({
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -167,8 +167,8 @@ class _ModelsClient implements ModelsClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );

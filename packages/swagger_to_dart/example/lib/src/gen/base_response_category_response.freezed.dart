@@ -94,7 +94,7 @@ $CategoryResponseCopyWith<$Res> get data {
 
 @jsonSerializable
 class _BaseResponseCategoryResponse extends BaseResponseCategoryResponse {
-  const _BaseResponseCategoryResponse({@JsonKey(name: BaseResponseCategoryResponse.dataKey) required this.data, @JsonKey(name: BaseResponseCategoryResponse.messageKey) required this.message, @JsonKey(name: BaseResponseCategoryResponse.codeKey) required this.code}): super._();
+  const _BaseResponseCategoryResponse({@JsonKey(name: BaseResponseCategoryResponse.dataKey) this.data = const CategoryResponse(), @JsonKey(name: BaseResponseCategoryResponse.messageKey) required this.message, @JsonKey(name: BaseResponseCategoryResponse.codeKey) required this.code}): super._();
   factory _BaseResponseCategoryResponse.fromJson(Map<String, dynamic> json) => _$BaseResponseCategoryResponseFromJson(json);
 
 /// data

@@ -21,8 +21,8 @@ class _ExtraTypesClient implements ExtraTypesClient {
   Future<HttpResponse<dynamic>> extraTypesCreateColor({
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -38,8 +38,8 @@ class _ExtraTypesClient implements ExtraTypesClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -53,8 +53,8 @@ class _ExtraTypesClient implements ExtraTypesClient {
   Future<HttpResponse<dynamic>> extraTypesProcessCountry({
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -70,8 +70,8 @@ class _ExtraTypesClient implements ExtraTypesClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -85,8 +85,8 @@ class _ExtraTypesClient implements ExtraTypesClient {
   Future<HttpResponse<dynamic>> extraTypesProcessPaymentCard({
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -102,8 +102,8 @@ class _ExtraTypesClient implements ExtraTypesClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -117,8 +117,8 @@ class _ExtraTypesClient implements ExtraTypesClient {
   Future<HttpResponse<dynamic>> extraTypesProcessPhone({
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -134,8 +134,8 @@ class _ExtraTypesClient implements ExtraTypesClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -149,8 +149,8 @@ class _ExtraTypesClient implements ExtraTypesClient {
   Future<HttpResponse<dynamic>> extraTypesProcessRouting({
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -166,8 +166,8 @@ class _ExtraTypesClient implements ExtraTypesClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -181,8 +181,8 @@ class _ExtraTypesClient implements ExtraTypesClient {
   Future<HttpResponse<dynamic>> extraTypesProcessCoordinate({
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -198,8 +198,8 @@ class _ExtraTypesClient implements ExtraTypesClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -213,8 +213,8 @@ class _ExtraTypesClient implements ExtraTypesClient {
   Future<HttpResponse<dynamic>> extraTypesProcessMac({
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -230,8 +230,8 @@ class _ExtraTypesClient implements ExtraTypesClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -245,8 +245,8 @@ class _ExtraTypesClient implements ExtraTypesClient {
   Future<HttpResponse<dynamic>> extraTypesProcessIsbn({
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -262,8 +262,8 @@ class _ExtraTypesClient implements ExtraTypesClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -277,8 +277,8 @@ class _ExtraTypesClient implements ExtraTypesClient {
   Future<HttpResponse<dynamic>> extraTypesProcessCurrency({
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -294,8 +294,8 @@ class _ExtraTypesClient implements ExtraTypesClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -309,8 +309,8 @@ class _ExtraTypesClient implements ExtraTypesClient {
   Future<HttpResponse<dynamic>> extraTypesProcessDomain({
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -326,8 +326,8 @@ class _ExtraTypesClient implements ExtraTypesClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -341,8 +341,8 @@ class _ExtraTypesClient implements ExtraTypesClient {
   Future<HttpResponse<dynamic>> extraTypesProcessLanguage({
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -358,8 +358,8 @@ class _ExtraTypesClient implements ExtraTypesClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -373,8 +373,8 @@ class _ExtraTypesClient implements ExtraTypesClient {
   Future<HttpResponse<dynamic>> extraTypesProcessScript({
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -390,8 +390,8 @@ class _ExtraTypesClient implements ExtraTypesClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -405,8 +405,8 @@ class _ExtraTypesClient implements ExtraTypesClient {
   Future<HttpResponse<dynamic>> extraTypesProcessVersion({
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -422,8 +422,8 @@ class _ExtraTypesClient implements ExtraTypesClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -437,8 +437,8 @@ class _ExtraTypesClient implements ExtraTypesClient {
   Future<HttpResponse<dynamic>> extraTypesProcessS3Path({
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -454,8 +454,8 @@ class _ExtraTypesClient implements ExtraTypesClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -469,8 +469,8 @@ class _ExtraTypesClient implements ExtraTypesClient {
   Future<HttpResponse<dynamic>> extraTypesProcessTimezone({
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -486,8 +486,8 @@ class _ExtraTypesClient implements ExtraTypesClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -501,8 +501,8 @@ class _ExtraTypesClient implements ExtraTypesClient {
   Future<HttpResponse<dynamic>> extraTypesProcessUlid({
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -518,8 +518,8 @@ class _ExtraTypesClient implements ExtraTypesClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );

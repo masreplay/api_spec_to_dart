@@ -35,8 +35,9 @@ abstract class BaseResponsePaginationResponseItemResponse
   @jsonSerializable
   const factory BaseResponsePaginationResponseItemResponse({
     /// data
+    @Default(PaginationResponseItemResponse())
     @JsonKey(name: BaseResponsePaginationResponseItemResponse.dataKey)
-    required PaginationResponseItemResponse data,
+    PaginationResponseItemResponse data,
 
     /// message
     @JsonKey(name: BaseResponsePaginationResponseItemResponse.messageKey)

@@ -94,7 +94,7 @@ $AppRouterGenericRouterItemResponseCopyWith<$Res> get data {
 
 @jsonSerializable
 class _BaseResponseItemResponse extends BaseResponseItemResponse {
-  const _BaseResponseItemResponse({@JsonKey(name: BaseResponseItemResponse.dataKey) required this.data, @JsonKey(name: BaseResponseItemResponse.messageKey) required this.message, @JsonKey(name: BaseResponseItemResponse.codeKey) required this.code}): super._();
+  const _BaseResponseItemResponse({@JsonKey(name: BaseResponseItemResponse.dataKey) this.data = const AppRouterGenericRouterItemResponse(), @JsonKey(name: BaseResponseItemResponse.messageKey) required this.message, @JsonKey(name: BaseResponseItemResponse.codeKey) required this.code}): super._();
   factory _BaseResponseItemResponse.fromJson(Map<String, dynamic> json) => _$BaseResponseItemResponseFromJson(json);
 
 /// data

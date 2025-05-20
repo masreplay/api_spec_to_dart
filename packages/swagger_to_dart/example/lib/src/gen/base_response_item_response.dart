@@ -34,8 +34,9 @@ abstract class BaseResponseItemResponse with _$BaseResponseItemResponse {
   @jsonSerializable
   const factory BaseResponseItemResponse({
     /// data
+    @Default(AppRouterGenericRouterItemResponse())
     @JsonKey(name: BaseResponseItemResponse.dataKey)
-    required AppRouterGenericRouterItemResponse data,
+    AppRouterGenericRouterItemResponse data,
 
     /// message
     @JsonKey(name: BaseResponseItemResponse.messageKey) required String message,

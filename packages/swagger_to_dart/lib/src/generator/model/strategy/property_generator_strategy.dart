@@ -15,12 +15,11 @@ class PropertyGeneratorStrategy {
   }) {
     final name = Renaming.instance.renameProperty(property.key);
 
-    final defaultValue = switch (property.value.default_) {
-      String value => '"${value}"',
-      _ => property.value.default_,
-    };
+    final dartTypeConverter = OpenApiSchemaDartTypeConverter(context);
 
-    final dartType = OpenApiSchemaDartTypeConverter(context).get(
+    final defaultValue = dartTypeConverter.getDefaultValue(property.value);
+
+    final dartType = dartTypeConverter.get(
       property.value,
       className: className,
     );

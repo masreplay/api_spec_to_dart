@@ -5,6 +5,32 @@ class OpenApiSchemaDartTypeConverter {
 
   final GenerationContext context;
 
+  String? getDefaultValue(OpenApiSchema schema) {
+    switch (schema) {
+      case OpenApiSchemaType schema:
+        return switch (schema.default_) {
+          String value => '"${value}"',
+          List<dynamic> value => "const ${value.map((e) => '"${e}"').toList()}",
+          _ => schema.default_ == null ? null : schema.default_.toString(),
+        };
+      case OpenApiSchemaRef schema:
+        final dartType = getRef(schema);
+        final refSchema = context.openApi.getOpenApiSchemasByRef(schema.ref!)!;
+
+        // enum
+        if (refSchema.enum_ != null) {
+          final enumValue = refSchema.enum_!.first;
+          return '$dartType.${enumValue}';
+        }
+
+        return '$dartType()';
+      case OpenApiSchemaAnyOf schema:
+        return schema.default_ == null ? null : schema.default_.toString();
+      case OpenApiSchemaOneOf schema:
+        return schema.default_ == null ? null : schema.default_.toString();
+    }
+  }
+
   String get(
     OpenApiSchema schema, {
     required String className,

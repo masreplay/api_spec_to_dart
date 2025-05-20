@@ -21,8 +21,8 @@ class _FilesClient implements FilesClient {
   Future<HttpResponse<dynamic>> filesFormBasic({
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -38,8 +38,8 @@ class _FilesClient implements FilesClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -53,8 +53,8 @@ class _FilesClient implements FilesClient {
   Future<HttpResponse<dynamic>> filesFileUpload({
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -70,8 +70,8 @@ class _FilesClient implements FilesClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
@@ -85,8 +85,8 @@ class _FilesClient implements FilesClient {
   Future<HttpResponse<dynamic>> filesFilesMultiple({
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
-    void Function(int, int)? sendProgress,
-    void Function(int, int)? receiveProgress,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
@@ -102,8 +102,8 @@ class _FilesClient implements FilesClient {
             queryParameters: queryParameters,
             data: _data,
             cancelToken: cancelToken,
-            onSendProgress: sendProgress,
-            onReceiveProgress: receiveProgress,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
