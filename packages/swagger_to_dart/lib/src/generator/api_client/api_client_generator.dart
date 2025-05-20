@@ -51,7 +51,6 @@ class ApiClientGenerator {
   Library build({
     required String clientName,
   }) {
-
     return Library(
       (b) => b
         ..name = filename
