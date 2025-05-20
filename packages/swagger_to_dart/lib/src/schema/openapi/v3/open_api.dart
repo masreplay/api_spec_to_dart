@@ -12,10 +12,10 @@ abstract class OpenApi with _$OpenApi {
   const OpenApi._();
 
   const factory OpenApi({
-    @JsonKey(name: 'openapi') required String openapi,
+    @JsonKey(name: 'openapi') required String? openapi,
     @JsonKey(name: 'info') required OpenApiInfo info,
     @JsonKey(name: 'servers') required List<OpenApiServer>? servers,
-    @JsonKey(name: 'paths') required OpenApiPaths? paths,
+    @JsonKey(name: 'paths') required Map<String, OpenApiPath>? paths,
     @JsonKey(name: 'components') required OpenApiComponents? components,
   }) = _OpenApi;
 

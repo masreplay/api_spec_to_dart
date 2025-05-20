@@ -10,53 +10,53 @@ part of 'script_code_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$ScriptCodeModel {
+  /// scriptCode
+  @JsonKey(name: ScriptCodeModel.scriptCodeKey)
+  String get scriptCode;
 
-/// scriptCode
-@JsonKey(name: ScriptCodeModel.scriptCodeKey) String get scriptCode;
-/// Create a copy of ScriptCodeModel
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$ScriptCodeModelCopyWith<ScriptCodeModel> get copyWith => _$ScriptCodeModelCopyWithImpl<ScriptCodeModel>(this as ScriptCodeModel, _$identity);
+  /// Create a copy of ScriptCodeModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $ScriptCodeModelCopyWith<ScriptCodeModel> get copyWith =>
+      _$ScriptCodeModelCopyWithImpl<ScriptCodeModel>(
+          this as ScriptCodeModel, _$identity);
 
   /// Serializes this ScriptCodeModel to a JSON map.
   Map<String, dynamic> toJson();
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ScriptCodeModel &&
+            (identical(other.scriptCode, scriptCode) ||
+                other.scriptCode == scriptCode));
+  }
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ScriptCodeModel&&(identical(other.scriptCode, scriptCode) || other.scriptCode == scriptCode));
-}
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, scriptCode);
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,scriptCode);
-
-@override
-String toString() {
-  return 'ScriptCodeModel(scriptCode: $scriptCode)';
-}
-
-
+  @override
+  String toString() {
+    return 'ScriptCodeModel(scriptCode: $scriptCode)';
+  }
 }
 
 /// @nodoc
-abstract mixin class $ScriptCodeModelCopyWith<$Res>  {
-  factory $ScriptCodeModelCopyWith(ScriptCodeModel value, $Res Function(ScriptCodeModel) _then) = _$ScriptCodeModelCopyWithImpl;
-@useResult
-$Res call({
-@JsonKey(name: ScriptCodeModel.scriptCodeKey) String scriptCode
-});
-
-
-
-
+abstract mixin class $ScriptCodeModelCopyWith<$Res> {
+  factory $ScriptCodeModelCopyWith(
+          ScriptCodeModel value, $Res Function(ScriptCodeModel) _then) =
+      _$ScriptCodeModelCopyWithImpl;
+  @useResult
+  $Res call({@JsonKey(name: ScriptCodeModel.scriptCodeKey) String scriptCode});
 }
+
 /// @nodoc
 class _$ScriptCodeModelCopyWithImpl<$Res>
     implements $ScriptCodeModelCopyWith<$Res> {
@@ -65,68 +65,82 @@ class _$ScriptCodeModelCopyWithImpl<$Res>
   final ScriptCodeModel _self;
   final $Res Function(ScriptCodeModel) _then;
 
-/// Create a copy of ScriptCodeModel
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? scriptCode = null,}) {
-  return _then(_self.copyWith(
-scriptCode: null == scriptCode ? _self.scriptCode : scriptCode // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
+  /// Create a copy of ScriptCodeModel
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? scriptCode = null,
+  }) {
+    return _then(_self.copyWith(
+      scriptCode: null == scriptCode
+          ? _self.scriptCode
+          : scriptCode // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
-
-}
-
 
 /// @nodoc
 
 @jsonSerializable
 class _ScriptCodeModel extends ScriptCodeModel {
-  const _ScriptCodeModel({@JsonKey(name: ScriptCodeModel.scriptCodeKey) required this.scriptCode}): super._();
-  factory _ScriptCodeModel.fromJson(Map<String, dynamic> json) => _$ScriptCodeModelFromJson(json);
+  const _ScriptCodeModel(
+      {@JsonKey(name: ScriptCodeModel.scriptCodeKey) required this.scriptCode})
+      : super._();
+  factory _ScriptCodeModel.fromJson(Map<String, dynamic> json) =>
+      _$ScriptCodeModelFromJson(json);
 
-/// scriptCode
-@override@JsonKey(name: ScriptCodeModel.scriptCodeKey) final  String scriptCode;
+  /// scriptCode
+  @override
+  @JsonKey(name: ScriptCodeModel.scriptCodeKey)
+  final String scriptCode;
 
-/// Create a copy of ScriptCodeModel
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$ScriptCodeModelCopyWith<_ScriptCodeModel> get copyWith => __$ScriptCodeModelCopyWithImpl<_ScriptCodeModel>(this, _$identity);
+  /// Create a copy of ScriptCodeModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ScriptCodeModelCopyWith<_ScriptCodeModel> get copyWith =>
+      __$ScriptCodeModelCopyWithImpl<_ScriptCodeModel>(this, _$identity);
 
-@override
-Map<String, dynamic> toJson() {
-  return _$ScriptCodeModelToJson(this, );
-}
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ScriptCodeModelToJson(
+      this,
+    );
+  }
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ScriptCodeModel&&(identical(other.scriptCode, scriptCode) || other.scriptCode == scriptCode));
-}
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _ScriptCodeModel &&
+            (identical(other.scriptCode, scriptCode) ||
+                other.scriptCode == scriptCode));
+  }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,scriptCode);
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, scriptCode);
 
-@override
-String toString() {
-  return 'ScriptCodeModel(scriptCode: $scriptCode)';
-}
-
-
+  @override
+  String toString() {
+    return 'ScriptCodeModel(scriptCode: $scriptCode)';
+  }
 }
 
 /// @nodoc
-abstract mixin class _$ScriptCodeModelCopyWith<$Res> implements $ScriptCodeModelCopyWith<$Res> {
-  factory _$ScriptCodeModelCopyWith(_ScriptCodeModel value, $Res Function(_ScriptCodeModel) _then) = __$ScriptCodeModelCopyWithImpl;
-@override @useResult
-$Res call({
-@JsonKey(name: ScriptCodeModel.scriptCodeKey) String scriptCode
-});
-
-
-
-
+abstract mixin class _$ScriptCodeModelCopyWith<$Res>
+    implements $ScriptCodeModelCopyWith<$Res> {
+  factory _$ScriptCodeModelCopyWith(
+          _ScriptCodeModel value, $Res Function(_ScriptCodeModel) _then) =
+      __$ScriptCodeModelCopyWithImpl;
+  @override
+  @useResult
+  $Res call({@JsonKey(name: ScriptCodeModel.scriptCodeKey) String scriptCode});
 }
+
 /// @nodoc
 class __$ScriptCodeModelCopyWithImpl<$Res>
     implements _$ScriptCodeModelCopyWith<$Res> {
@@ -135,16 +149,18 @@ class __$ScriptCodeModelCopyWithImpl<$Res>
   final _ScriptCodeModel _self;
   final $Res Function(_ScriptCodeModel) _then;
 
-/// Create a copy of ScriptCodeModel
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? scriptCode = null,}) {
-  return _then(_ScriptCodeModel(
-scriptCode: null == scriptCode ? _self.scriptCode : scriptCode // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
+  /// Create a copy of ScriptCodeModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? scriptCode = null,
+  }) {
+    return _then(_ScriptCodeModel(
+      scriptCode: null == scriptCode
+          ? _self.scriptCode
+          : scriptCode // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
-
-
-}
-
-// dart format on

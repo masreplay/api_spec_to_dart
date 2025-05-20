@@ -24,11 +24,19 @@ class GenerationContext {
   }
 
   ModelGenerator get modelGenerator => ModelGenerator(this);
-  final _models = <Library>[];
+  final List<Library> _models = <Library>[];
   List<Library> get models => _models;
 
   void addModel(Library library) {
     _models.add(library);
+  }
+
+  ApiClientGenerator get apiClientGenerator => ApiClientGenerator(this);
+  final List<Library> _apiClients = <Library>[];
+  List<Library> get apiClients => _apiClients;
+
+  void addClient(Library library) {
+    _apiClients.add(library);
   }
 }
 

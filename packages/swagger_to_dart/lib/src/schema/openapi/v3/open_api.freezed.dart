@@ -15,13 +15,13 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$OpenApi {
   @JsonKey(name: 'openapi')
-  String get openapi;
+  String? get openapi;
   @JsonKey(name: 'info')
   OpenApiInfo get info;
   @JsonKey(name: 'servers')
   List<OpenApiServer>? get servers;
   @JsonKey(name: 'paths')
-  OpenApiPaths? get paths;
+  Map<String, OpenApiPath>? get paths;
   @JsonKey(name: 'components')
   OpenApiComponents? get components;
 
@@ -70,10 +70,10 @@ abstract mixin class $OpenApiCopyWith<$Res> {
       _$OpenApiCopyWithImpl;
   @useResult
   $Res call(
-      {@JsonKey(name: 'openapi') String openapi,
+      {@JsonKey(name: 'openapi') String? openapi,
       @JsonKey(name: 'info') OpenApiInfo info,
       @JsonKey(name: 'servers') List<OpenApiServer>? servers,
-      @JsonKey(name: 'paths') OpenApiPaths? paths,
+      @JsonKey(name: 'paths') Map<String, OpenApiPath>? paths,
       @JsonKey(name: 'components') OpenApiComponents? components});
 
   $OpenApiInfoCopyWith<$Res> get info;
@@ -92,17 +92,17 @@ class _$OpenApiCopyWithImpl<$Res> implements $OpenApiCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? openapi = null,
+    Object? openapi = freezed,
     Object? info = null,
     Object? servers = freezed,
     Object? paths = freezed,
     Object? components = freezed,
   }) {
     return _then(_self.copyWith(
-      openapi: null == openapi
+      openapi: freezed == openapi
           ? _self.openapi
           : openapi // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       info: null == info
           ? _self.info
           : info // ignore: cast_nullable_to_non_nullable
@@ -114,7 +114,7 @@ class _$OpenApiCopyWithImpl<$Res> implements $OpenApiCopyWith<$Res> {
       paths: freezed == paths
           ? _self.paths
           : paths // ignore: cast_nullable_to_non_nullable
-              as OpenApiPaths?,
+              as Map<String, OpenApiPath>?,
       components: freezed == components
           ? _self.components
           : components // ignore: cast_nullable_to_non_nullable
@@ -154,7 +154,7 @@ class _OpenApi extends OpenApi {
       {@JsonKey(name: 'openapi') required this.openapi,
       @JsonKey(name: 'info') required this.info,
       @JsonKey(name: 'servers') required final List<OpenApiServer>? servers,
-      @JsonKey(name: 'paths') required final OpenApiPaths? paths,
+      @JsonKey(name: 'paths') required final Map<String, OpenApiPath>? paths,
       @JsonKey(name: 'components') required this.components})
       : _servers = servers,
         _paths = paths,
@@ -164,7 +164,7 @@ class _OpenApi extends OpenApi {
 
   @override
   @JsonKey(name: 'openapi')
-  final String openapi;
+  final String? openapi;
   @override
   @JsonKey(name: 'info')
   final OpenApiInfo info;
@@ -179,10 +179,10 @@ class _OpenApi extends OpenApi {
     return EqualUnmodifiableListView(value);
   }
 
-  final OpenApiPaths? _paths;
+  final Map<String, OpenApiPath>? _paths;
   @override
   @JsonKey(name: 'paths')
-  OpenApiPaths? get paths {
+  Map<String, OpenApiPath>? get paths {
     final value = _paths;
     if (value == null) return null;
     if (_paths is EqualUnmodifiableMapView) return _paths;
@@ -245,10 +245,10 @@ abstract mixin class _$OpenApiCopyWith<$Res> implements $OpenApiCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'openapi') String openapi,
+      {@JsonKey(name: 'openapi') String? openapi,
       @JsonKey(name: 'info') OpenApiInfo info,
       @JsonKey(name: 'servers') List<OpenApiServer>? servers,
-      @JsonKey(name: 'paths') OpenApiPaths? paths,
+      @JsonKey(name: 'paths') Map<String, OpenApiPath>? paths,
       @JsonKey(name: 'components') OpenApiComponents? components});
 
   @override
@@ -269,17 +269,17 @@ class __$OpenApiCopyWithImpl<$Res> implements _$OpenApiCopyWith<$Res> {
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? openapi = null,
+    Object? openapi = freezed,
     Object? info = null,
     Object? servers = freezed,
     Object? paths = freezed,
     Object? components = freezed,
   }) {
     return _then(_OpenApi(
-      openapi: null == openapi
+      openapi: freezed == openapi
           ? _self.openapi
           : openapi // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       info: null == info
           ? _self.info
           : info // ignore: cast_nullable_to_non_nullable
@@ -291,7 +291,7 @@ class __$OpenApiCopyWithImpl<$Res> implements _$OpenApiCopyWith<$Res> {
       paths: freezed == paths
           ? _self._paths
           : paths // ignore: cast_nullable_to_non_nullable
-              as OpenApiPaths?,
+              as Map<String, OpenApiPath>?,
       components: freezed == components
           ? _self.components
           : components // ignore: cast_nullable_to_non_nullable

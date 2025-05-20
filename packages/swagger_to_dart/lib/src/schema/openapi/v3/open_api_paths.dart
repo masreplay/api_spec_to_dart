@@ -6,8 +6,7 @@ import 'open_api_schema.dart';
 part 'open_api_paths.freezed.dart';
 part 'open_api_paths.g.dart';
 
-/// "paths": {}
-typedef OpenApiPaths = Map<String, OpenApiPath>;
+
 
 @freezed
 abstract class OpenApiPath with _$OpenApiPath {

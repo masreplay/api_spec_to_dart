@@ -10,55 +10,68 @@ part of 'base_response_item_response.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$BaseResponseItemResponse {
+  /// data
+  @JsonKey(name: BaseResponseItemResponse.dataKey)
+  AppRouterGenericRouterItemResponse get data;
 
-/// data
-@JsonKey(name: BaseResponseItemResponse.dataKey) AppRouterGenericRouterItemResponse get data;/// message
-@JsonKey(name: BaseResponseItemResponse.messageKey) String get message;/// code
-@JsonKey(name: BaseResponseItemResponse.codeKey) int get code;
-/// Create a copy of BaseResponseItemResponse
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$BaseResponseItemResponseCopyWith<BaseResponseItemResponse> get copyWith => _$BaseResponseItemResponseCopyWithImpl<BaseResponseItemResponse>(this as BaseResponseItemResponse, _$identity);
+  /// message
+  @JsonKey(name: BaseResponseItemResponse.messageKey)
+  String get message;
+
+  /// code
+  @JsonKey(name: BaseResponseItemResponse.codeKey)
+  int get code;
+
+  /// Create a copy of BaseResponseItemResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $BaseResponseItemResponseCopyWith<BaseResponseItemResponse> get copyWith =>
+      _$BaseResponseItemResponseCopyWithImpl<BaseResponseItemResponse>(
+          this as BaseResponseItemResponse, _$identity);
 
   /// Serializes this BaseResponseItemResponse to a JSON map.
   Map<String, dynamic> toJson();
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is BaseResponseItemResponse &&
+            (identical(other.data, data) || other.data == data) &&
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.code, code) || other.code == code));
+  }
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is BaseResponseItemResponse&&(identical(other.data, data) || other.data == data)&&(identical(other.message, message) || other.message == message)&&(identical(other.code, code) || other.code == code));
-}
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, data, message, code);
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,data,message,code);
-
-@override
-String toString() {
-  return 'BaseResponseItemResponse(data: $data, message: $message, code: $code)';
-}
-
-
+  @override
+  String toString() {
+    return 'BaseResponseItemResponse(data: $data, message: $message, code: $code)';
+  }
 }
 
 /// @nodoc
-abstract mixin class $BaseResponseItemResponseCopyWith<$Res>  {
-  factory $BaseResponseItemResponseCopyWith(BaseResponseItemResponse value, $Res Function(BaseResponseItemResponse) _then) = _$BaseResponseItemResponseCopyWithImpl;
-@useResult
-$Res call({
-@JsonKey(name: BaseResponseItemResponse.dataKey) AppRouterGenericRouterItemResponse data,@JsonKey(name: BaseResponseItemResponse.messageKey) String message,@JsonKey(name: BaseResponseItemResponse.codeKey) int code
-});
+abstract mixin class $BaseResponseItemResponseCopyWith<$Res> {
+  factory $BaseResponseItemResponseCopyWith(BaseResponseItemResponse value,
+          $Res Function(BaseResponseItemResponse) _then) =
+      _$BaseResponseItemResponseCopyWithImpl;
+  @useResult
+  $Res call(
+      {@JsonKey(name: BaseResponseItemResponse.dataKey)
+      AppRouterGenericRouterItemResponse data,
+      @JsonKey(name: BaseResponseItemResponse.messageKey) String message,
+      @JsonKey(name: BaseResponseItemResponse.codeKey) int code});
 
-
-$AppRouterGenericRouterItemResponseCopyWith<$Res> get data;
-
+  $AppRouterGenericRouterItemResponseCopyWith<$Res> get data;
 }
+
 /// @nodoc
 class _$BaseResponseItemResponseCopyWithImpl<$Res>
     implements $BaseResponseItemResponseCopyWith<$Res> {
@@ -67,83 +80,124 @@ class _$BaseResponseItemResponseCopyWithImpl<$Res>
   final BaseResponseItemResponse _self;
   final $Res Function(BaseResponseItemResponse) _then;
 
-/// Create a copy of BaseResponseItemResponse
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? data = null,Object? message = null,Object? code = null,}) {
-  return _then(_self.copyWith(
-data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
-as AppRouterGenericRouterItemResponse,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
-as String,code: null == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
-as int,
-  ));
-}
-/// Create a copy of BaseResponseItemResponse
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$AppRouterGenericRouterItemResponseCopyWith<$Res> get data {
-  
-  return $AppRouterGenericRouterItemResponseCopyWith<$Res>(_self.data, (value) {
-    return _then(_self.copyWith(data: value));
-  });
-}
-}
+  /// Create a copy of BaseResponseItemResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+    Object? message = null,
+    Object? code = null,
+  }) {
+    return _then(_self.copyWith(
+      data: null == data
+          ? _self.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as AppRouterGenericRouterItemResponse,
+      message: null == message
+          ? _self.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+      code: null == code
+          ? _self.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 
+  /// Create a copy of BaseResponseItemResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AppRouterGenericRouterItemResponseCopyWith<$Res> get data {
+    return $AppRouterGenericRouterItemResponseCopyWith<$Res>(_self.data,
+        (value) {
+      return _then(_self.copyWith(data: value));
+    });
+  }
+}
 
 /// @nodoc
 
 @jsonSerializable
 class _BaseResponseItemResponse extends BaseResponseItemResponse {
-  const _BaseResponseItemResponse({@JsonKey(name: BaseResponseItemResponse.dataKey) required this.data, @JsonKey(name: BaseResponseItemResponse.messageKey) required this.message, @JsonKey(name: BaseResponseItemResponse.codeKey) required this.code}): super._();
-  factory _BaseResponseItemResponse.fromJson(Map<String, dynamic> json) => _$BaseResponseItemResponseFromJson(json);
+  const _BaseResponseItemResponse(
+      {@JsonKey(name: BaseResponseItemResponse.dataKey) required this.data,
+      @JsonKey(name: BaseResponseItemResponse.messageKey) required this.message,
+      @JsonKey(name: BaseResponseItemResponse.codeKey) required this.code})
+      : super._();
+  factory _BaseResponseItemResponse.fromJson(Map<String, dynamic> json) =>
+      _$BaseResponseItemResponseFromJson(json);
 
-/// data
-@override@JsonKey(name: BaseResponseItemResponse.dataKey) final  AppRouterGenericRouterItemResponse data;
-/// message
-@override@JsonKey(name: BaseResponseItemResponse.messageKey) final  String message;
-/// code
-@override@JsonKey(name: BaseResponseItemResponse.codeKey) final  int code;
+  /// data
+  @override
+  @JsonKey(name: BaseResponseItemResponse.dataKey)
+  final AppRouterGenericRouterItemResponse data;
 
-/// Create a copy of BaseResponseItemResponse
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$BaseResponseItemResponseCopyWith<_BaseResponseItemResponse> get copyWith => __$BaseResponseItemResponseCopyWithImpl<_BaseResponseItemResponse>(this, _$identity);
+  /// message
+  @override
+  @JsonKey(name: BaseResponseItemResponse.messageKey)
+  final String message;
 
-@override
-Map<String, dynamic> toJson() {
-  return _$BaseResponseItemResponseToJson(this, );
-}
+  /// code
+  @override
+  @JsonKey(name: BaseResponseItemResponse.codeKey)
+  final int code;
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BaseResponseItemResponse&&(identical(other.data, data) || other.data == data)&&(identical(other.message, message) || other.message == message)&&(identical(other.code, code) || other.code == code));
-}
+  /// Create a copy of BaseResponseItemResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$BaseResponseItemResponseCopyWith<_BaseResponseItemResponse> get copyWith =>
+      __$BaseResponseItemResponseCopyWithImpl<_BaseResponseItemResponse>(
+          this, _$identity);
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,data,message,code);
+  @override
+  Map<String, dynamic> toJson() {
+    return _$BaseResponseItemResponseToJson(
+      this,
+    );
+  }
 
-@override
-String toString() {
-  return 'BaseResponseItemResponse(data: $data, message: $message, code: $code)';
-}
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _BaseResponseItemResponse &&
+            (identical(other.data, data) || other.data == data) &&
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.code, code) || other.code == code));
+  }
 
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, data, message, code);
 
+  @override
+  String toString() {
+    return 'BaseResponseItemResponse(data: $data, message: $message, code: $code)';
+  }
 }
 
 /// @nodoc
-abstract mixin class _$BaseResponseItemResponseCopyWith<$Res> implements $BaseResponseItemResponseCopyWith<$Res> {
-  factory _$BaseResponseItemResponseCopyWith(_BaseResponseItemResponse value, $Res Function(_BaseResponseItemResponse) _then) = __$BaseResponseItemResponseCopyWithImpl;
-@override @useResult
-$Res call({
-@JsonKey(name: BaseResponseItemResponse.dataKey) AppRouterGenericRouterItemResponse data,@JsonKey(name: BaseResponseItemResponse.messageKey) String message,@JsonKey(name: BaseResponseItemResponse.codeKey) int code
-});
+abstract mixin class _$BaseResponseItemResponseCopyWith<$Res>
+    implements $BaseResponseItemResponseCopyWith<$Res> {
+  factory _$BaseResponseItemResponseCopyWith(_BaseResponseItemResponse value,
+          $Res Function(_BaseResponseItemResponse) _then) =
+      __$BaseResponseItemResponseCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: BaseResponseItemResponse.dataKey)
+      AppRouterGenericRouterItemResponse data,
+      @JsonKey(name: BaseResponseItemResponse.messageKey) String message,
+      @JsonKey(name: BaseResponseItemResponse.codeKey) int code});
 
-
-@override $AppRouterGenericRouterItemResponseCopyWith<$Res> get data;
-
+  @override
+  $AppRouterGenericRouterItemResponseCopyWith<$Res> get data;
 }
+
 /// @nodoc
 class __$BaseResponseItemResponseCopyWithImpl<$Res>
     implements _$BaseResponseItemResponseCopyWith<$Res> {
@@ -152,27 +206,39 @@ class __$BaseResponseItemResponseCopyWithImpl<$Res>
   final _BaseResponseItemResponse _self;
   final $Res Function(_BaseResponseItemResponse) _then;
 
-/// Create a copy of BaseResponseItemResponse
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? data = null,Object? message = null,Object? code = null,}) {
-  return _then(_BaseResponseItemResponse(
-data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
-as AppRouterGenericRouterItemResponse,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
-as String,code: null == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
-as int,
-  ));
-}
+  /// Create a copy of BaseResponseItemResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? data = null,
+    Object? message = null,
+    Object? code = null,
+  }) {
+    return _then(_BaseResponseItemResponse(
+      data: null == data
+          ? _self.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as AppRouterGenericRouterItemResponse,
+      message: null == message
+          ? _self.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+      code: null == code
+          ? _self.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 
-/// Create a copy of BaseResponseItemResponse
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$AppRouterGenericRouterItemResponseCopyWith<$Res> get data {
-  
-  return $AppRouterGenericRouterItemResponseCopyWith<$Res>(_self.data, (value) {
-    return _then(_self.copyWith(data: value));
-  });
+  /// Create a copy of BaseResponseItemResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AppRouterGenericRouterItemResponseCopyWith<$Res> get data {
+    return $AppRouterGenericRouterItemResponseCopyWith<$Res>(_self.data,
+        (value) {
+      return _then(_self.copyWith(data: value));
+    });
+  }
 }
-}
-
-// dart format on

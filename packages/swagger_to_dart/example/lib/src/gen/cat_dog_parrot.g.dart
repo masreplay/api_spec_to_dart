@@ -13,7 +13,10 @@ CatDogParrotDog _$CatDogParrotDogFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$CatDogParrotDogToJson(CatDogParrotDog instance) =>
-    <String, dynamic>{'value': instance.value, 'runtimeType': instance.$type};
+    <String, dynamic>{
+      'value': instance.value.toJson(),
+      'runtimeType': instance.$type,
+    };
 
 CatDogParrotCat _$CatDogParrotCatFromJson(Map<String, dynamic> json) =>
     CatDogParrotCat(
@@ -22,7 +25,10 @@ CatDogParrotCat _$CatDogParrotCatFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$CatDogParrotCatToJson(CatDogParrotCat instance) =>
-    <String, dynamic>{'value': instance.value, 'runtimeType': instance.$type};
+    <String, dynamic>{
+      'value': instance.value.toJson(),
+      'runtimeType': instance.$type,
+    };
 
 CatDogParrotParrot _$CatDogParrotParrotFromJson(Map<String, dynamic> json) =>
     CatDogParrotParrot(
@@ -31,4 +37,7 @@ CatDogParrotParrot _$CatDogParrotParrotFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$CatDogParrotParrotToJson(CatDogParrotParrot instance) =>
-    <String, dynamic>{'value': instance.value, 'runtimeType': instance.$type};
+    <String, dynamic>{
+      'value': instance.value.toJson(),
+      'runtimeType': instance.$type,
+    };

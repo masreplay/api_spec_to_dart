@@ -7,7 +7,7 @@ part of 'open_api.dart';
 // **************************************************************************
 
 _OpenApi _$OpenApiFromJson(Map<String, dynamic> json) => _OpenApi(
-      openapi: json['openapi'] as String,
+      openapi: json['openapi'] as String?,
       info: OpenApiInfo.fromJson(json['info'] as Map<String, dynamic>),
       servers: (json['servers'] as List<dynamic>?)
           ?.map((e) => OpenApiServer.fromJson(e as Map<String, dynamic>))
@@ -22,7 +22,7 @@ _OpenApi _$OpenApiFromJson(Map<String, dynamic> json) => _OpenApi(
     );
 
 Map<String, dynamic> _$OpenApiToJson(_OpenApi instance) => <String, dynamic>{
-      'openapi': instance.openapi,
+      if (instance.openapi case final value?) 'openapi': value,
       'info': instance.info.toJson(),
       if (instance.servers?.map((e) => e.toJson()).toList() case final value?)
         'servers': value,

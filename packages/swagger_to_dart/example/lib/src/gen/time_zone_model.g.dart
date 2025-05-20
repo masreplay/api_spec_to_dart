@@ -7,7 +7,11 @@ part of 'time_zone_model.dart';
 // **************************************************************************
 
 _TimeZoneModel _$TimeZoneModelFromJson(Map<String, dynamic> json) =>
-    _TimeZoneModel(timezone: json['timezone'] as String);
+    _TimeZoneModel(
+      timezone: json['timezone'] as String,
+    );
 
 Map<String, dynamic> _$TimeZoneModelToJson(_TimeZoneModel instance) =>
-    <String, dynamic>{'timezone': instance.timezone};
+    <String, dynamic>{
+      'timezone': instance.timezone,
+    };

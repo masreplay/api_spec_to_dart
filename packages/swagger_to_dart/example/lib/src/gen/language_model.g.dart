@@ -16,8 +16,8 @@ _LanguageModel _$LanguageModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$LanguageModelToJson(_LanguageModel instance) =>
     <String, dynamic>{
-      'alpha2': instance.alpha2,
-      'name': instance.name,
-      'iso639_3': instance.iso6393,
-      'iso639_5': instance.iso6395,
+      if (instance.alpha2 case final value?) 'alpha2': value,
+      if (instance.name case final value?) 'name': value,
+      if (instance.iso6393 case final value?) 'iso639_3': value,
+      if (instance.iso6395 case final value?) 'iso639_5': value,
     };
