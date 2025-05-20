@@ -190,8 +190,6 @@ class ApiClientGenerator {
     final className = Renaming.instance.renameClass('${clientName}Client');
     final fileName = Renaming.instance.renameFile(className);
 
-    final propertyGeneratorStrategy = PropertyGeneratorStrategy(context);
-
     return Library(
       (b) => b
         ..directives.addAll([
