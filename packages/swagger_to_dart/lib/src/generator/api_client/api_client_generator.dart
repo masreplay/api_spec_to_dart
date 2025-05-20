@@ -271,8 +271,7 @@ class ApiClientGenerator {
                                 )
                                 ..required = true
                                 ..type = refer(
-                                  propertyGeneratorStrategy
-                                      .getOpenApiSchemaDartType(
+                                  OpenApiSchemaDartTypeConverter(context).get(
                                     parameter.schema,
                                     className: className,
                                   ),
