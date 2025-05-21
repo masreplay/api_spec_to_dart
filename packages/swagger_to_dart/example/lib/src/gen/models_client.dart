@@ -1,6 +1,5 @@
 library;
 
-import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'exports.dart';
 part 'models_client.g.dart';
@@ -55,7 +54,8 @@ abstract class ModelsClient {
   ///     }
   /// }
   @POST("/models/user")
-  Future<HttpResponse> modelsCreateUser({
+  Future<HttpResponse<User>> modelsCreateUser({
+    @Body() required UserCreate requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -105,7 +105,8 @@ abstract class ModelsClient {
   ///     }
   /// }
   @GET("/models/location")
-  Future<HttpResponse> modelsGetLocation({
+  Future<HttpResponse<Map<String, dynamic>>> modelsGetLocation({
+    @Body() required Location requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -134,7 +135,7 @@ abstract class ModelsClient {
   ///     }
   /// }
   @GET("/response/filtered")
-  Future<HttpResponse> modelsResponseFiltered({
+  Future<HttpResponse<User>> modelsResponseFiltered({
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -196,7 +197,7 @@ abstract class ModelsClient {
   ///     }
   /// }
   @GET("/response/multiple")
-  Future<HttpResponse> modelsResponseMultiple({
+  Future<HttpResponse<LocationUser>> modelsResponseMultiple({
     @Query("is_user") bool isUser = true,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
@@ -230,7 +231,7 @@ abstract class ModelsClient {
   ///     }
   /// }
   @GET("/response/list")
-  Future<HttpResponse> modelsResponseList({
+  Future<HttpResponse<List<User>>> modelsResponseList({
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,

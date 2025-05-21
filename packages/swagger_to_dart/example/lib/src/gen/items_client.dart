@@ -1,6 +1,5 @@
 library;
 
-import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'exports.dart';
 part 'items_client.g.dart';
@@ -54,7 +53,8 @@ abstract class ItemsClient {
   ///     }
   /// }
   @POST("/items/")
-  Future<HttpResponse> itemsCreateItem({
+  Future<HttpResponse<AppRouterItemsRouterItemResponse>> itemsCreateItem({
+    @Body() required ItemRequestBody requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,

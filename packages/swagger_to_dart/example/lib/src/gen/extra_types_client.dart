@@ -1,6 +1,5 @@
 library;
 
-import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'exports.dart';
 part 'extra_types_client.g.dart';
@@ -55,7 +54,8 @@ abstract class ExtraTypesClient {
   ///     }
   /// }
   @POST("/extra_types/color/")
-  Future<HttpResponse> extraTypesCreateColor({
+  Future<HttpResponse<Map<String, dynamic>>> extraTypesCreateColor({
+    @Body() required ColorModel requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -104,7 +104,8 @@ abstract class ExtraTypesClient {
   ///     }
   /// }
   @POST("/extra_types/country/")
-  Future<HttpResponse> extraTypesProcessCountry({
+  Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessCountry({
+    @Body() required CountryModel requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -153,7 +154,8 @@ abstract class ExtraTypesClient {
   ///     }
   /// }
   @POST("/extra_types/payment/")
-  Future<HttpResponse> extraTypesProcessPaymentCard({
+  Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessPaymentCard({
+    @Body() required PaymentCardModel requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -202,7 +204,8 @@ abstract class ExtraTypesClient {
   ///     }
   /// }
   @POST("/extra_types/phone/")
-  Future<HttpResponse> extraTypesProcessPhone({
+  Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessPhone({
+    @Body() required PhoneNumberModel requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -251,7 +254,8 @@ abstract class ExtraTypesClient {
   ///     }
   /// }
   @POST("/extra_types/routing/")
-  Future<HttpResponse> extraTypesProcessRouting({
+  Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessRouting({
+    @Body() required ABARoutingModel requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -300,7 +304,8 @@ abstract class ExtraTypesClient {
   ///     }
   /// }
   @POST("/extra_types/coordinate/")
-  Future<HttpResponse> extraTypesProcessCoordinate({
+  Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessCoordinate({
+    @Body() required CoordinateModel requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -349,7 +354,8 @@ abstract class ExtraTypesClient {
   ///     }
   /// }
   @POST("/extra_types/mac/")
-  Future<HttpResponse> extraTypesProcessMac({
+  Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessMac({
+    @Body() required MACAddressModel requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -398,7 +404,8 @@ abstract class ExtraTypesClient {
   ///     }
   /// }
   @POST("/extra_types/isbn/")
-  Future<HttpResponse> extraTypesProcessIsbn({
+  Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessIsbn({
+    @Body() required IsbnModel requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -447,7 +454,8 @@ abstract class ExtraTypesClient {
   ///     }
   /// }
   @POST("/extra_types/currency/")
-  Future<HttpResponse> extraTypesProcessCurrency({
+  Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessCurrency({
+    @Body() required CurrencyModel requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -496,7 +504,8 @@ abstract class ExtraTypesClient {
   ///     }
   /// }
   @POST("/extra_types/domain/")
-  Future<HttpResponse> extraTypesProcessDomain({
+  Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessDomain({
+    @Body() required DomainModel requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -545,7 +554,8 @@ abstract class ExtraTypesClient {
   ///     }
   /// }
   @POST("/extra_types/language/")
-  Future<HttpResponse> extraTypesProcessLanguage({
+  Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessLanguage({
+    @Body() required LanguageModel requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -594,7 +604,8 @@ abstract class ExtraTypesClient {
   ///     }
   /// }
   @POST("/extra_types/script/")
-  Future<HttpResponse> extraTypesProcessScript({
+  Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessScript({
+    @Body() required ScriptCodeModel requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -643,7 +654,8 @@ abstract class ExtraTypesClient {
   ///     }
   /// }
   @POST("/extra_types/version/")
-  Future<HttpResponse> extraTypesProcessVersion({
+  Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessVersion({
+    @Body() required VersionModel requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -692,7 +704,8 @@ abstract class ExtraTypesClient {
   ///     }
   /// }
   @POST("/extra_types/s3/")
-  Future<HttpResponse> extraTypesProcessS3Path({
+  Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessS3Path({
+    @Body() required S3PathModel requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -741,7 +754,8 @@ abstract class ExtraTypesClient {
   ///     }
   /// }
   @POST("/extra_types/timezone/")
-  Future<HttpResponse> extraTypesProcessTimezone({
+  Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessTimezone({
+    @Body() required TimeZoneModel requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -790,7 +804,8 @@ abstract class ExtraTypesClient {
   ///     }
   /// }
   @POST("/extra_types/ulid/")
-  Future<HttpResponse> extraTypesProcessUlid({
+  Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessUlid({
+    @Body() required UlidModel requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,

@@ -1,6 +1,5 @@
 library;
 
-import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'exports.dart';
 part 'union_client.g.dart';
@@ -73,7 +72,8 @@ abstract class UnionClient {
   ///     }
   /// }
   @POST("/union/models/animal")
-  Future<HttpResponse> unionCreateAnimal({
+  Future<HttpResponse<CreateAnimalResponse>> unionCreateAnimal({
+    @Body() required CatDogParrot requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,

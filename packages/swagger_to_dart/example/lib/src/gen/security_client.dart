@@ -1,6 +1,5 @@
 library;
 
-import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'exports.dart';
 part 'security_client.g.dart';
@@ -56,7 +55,8 @@ abstract class SecurityClient {
   ///     }
   /// }
   @POST("/token")
-  Future<HttpResponse> securityLogin({
+  Future<HttpResponse<Map<String, dynamic>>> securityLogin({
+    @FormUrlEncoded() required BodySecurityLogin requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -91,7 +91,7 @@ abstract class SecurityClient {
   ///     }
   /// }
   @GET("/users/me")
-  Future<HttpResponse> securityReadUsersMe({
+  Future<HttpResponse<Map<String, dynamic>>> securityReadUsersMe({
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -129,7 +129,7 @@ abstract class SecurityClient {
   ///     }
   /// }
   @GET("/items/secure")
-  Future<HttpResponse> securityGetSecureItems({
+  Future<HttpResponse<List<Map<String, dynamic>>>> securityGetSecureItems({
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,

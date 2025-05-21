@@ -1,6 +1,5 @@
 library;
 
-import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'exports.dart';
 part 'validation_client.g.dart';
@@ -60,7 +59,7 @@ abstract class ValidationClient {
   ///     }
   /// }
   @GET("/params/path/{item_id}")
-  Future<HttpResponse> validationParamPath({
+  Future<HttpResponse<Map<String, dynamic>>> validationParamPath({
     @Path("item_id") required int itemId,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
@@ -151,7 +150,7 @@ abstract class ValidationClient {
   ///     }
   /// }
   @GET("/params/query")
-  Future<HttpResponse> validationParamQuery({
+  Future<HttpResponse<Map<String, dynamic>>> validationParamQuery({
     @Query("q") required String? q,
     @Query("skip") int skip = 0,
     @Query("limit") int limit = 10,
@@ -204,7 +203,8 @@ abstract class ValidationClient {
   ///     }
   /// }
   @POST("/params/body")
-  Future<HttpResponse> validationParamBody({
+  Future<HttpResponse<Map<String, dynamic>>> validationParamBody({
+    @Body() required BodyValidationParamBody requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -278,7 +278,7 @@ abstract class ValidationClient {
   ///     }
   /// }
   @GET("/params/cookie")
-  Future<HttpResponse> validationParamCookie({
+  Future<HttpResponse<Map<String, dynamic>>> validationParamCookie({
     @Header("session") required String? session,
     @Header("preferences") required String? preferences,
     @Extras() Map<String, dynamic>? extras,
@@ -347,7 +347,7 @@ abstract class ValidationClient {
   ///     }
   /// }
   @GET("/params/header")
-  Future<HttpResponse> validationParamHeader({
+  Future<HttpResponse<Map<String, dynamic>>> validationParamHeader({
     @Header("user-agent") required String userAgent,
     @Header("x-token") required String? xToken,
     @Extras() Map<String, dynamic>? extras,
@@ -398,7 +398,8 @@ abstract class ValidationClient {
   ///     }
   /// }
   @POST("/validation/complex")
-  Future<HttpResponse> validationValidationComplex({
+  Future<HttpResponse<AllTypesWithValidation>> validationValidationComplex({
+    @Body() required AllTypesWithValidation requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -479,7 +480,7 @@ abstract class ValidationClient {
   ///     }
   /// }
   @GET("/validation/conditional")
-  Future<HttpResponse> validationValidationConditional({
+  Future<HttpResponse<Map<String, dynamic>>> validationValidationConditional({
     @Query("user_id") required int? userId,
     @Query("username") required String? username,
     @Extras() Map<String, dynamic>? extras,
@@ -530,7 +531,8 @@ abstract class ValidationClient {
   ///     }
   /// }
   @POST("/validation/conditional_body")
-  Future<HttpResponse> validationValidationConditionalBody({
+  Future<HttpResponse<ConditionalBody>> validationValidationConditionalBody({
+    @Body() required ConditionalBody requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -583,7 +585,7 @@ abstract class ValidationClient {
   ///     }
   /// }
   @GET("/constrained/int")
-  Future<HttpResponse> validationConstrainedInt({
+  Future<HttpResponse<Map<String, dynamic>>> validationConstrainedInt({
     @Query("value") required int value,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
@@ -637,7 +639,7 @@ abstract class ValidationClient {
   ///     }
   /// }
   @GET("/constrained/float")
-  Future<HttpResponse> validationConstrainedFloat({
+  Future<HttpResponse<Map<String, dynamic>>> validationConstrainedFloat({
     @Query("value") required double value,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
@@ -694,7 +696,7 @@ abstract class ValidationClient {
   ///     }
   /// }
   @GET("/constrained/string")
-  Future<HttpResponse> validationConstrainedString({
+  Future<HttpResponse<Map<String, dynamic>>> validationConstrainedString({
     @Query("value") required String value,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,

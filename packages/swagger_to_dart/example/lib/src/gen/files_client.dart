@@ -1,6 +1,5 @@
 library;
 
-import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'exports.dart';
 part 'files_client.g.dart';
@@ -56,7 +55,8 @@ abstract class FilesClient {
   ///     }
   /// }
   @POST("/forms/basic")
-  Future<HttpResponse> filesFormBasic({
+  Future<HttpResponse<Map<String, dynamic>>> filesFormBasic({
+    @FormUrlEncoded() required BodyFilesFormBasic requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -106,7 +106,8 @@ abstract class FilesClient {
   ///     }
   /// }
   @POST("/files/upload")
-  Future<HttpResponse> filesFileUpload({
+  Future<HttpResponse<Map<String, dynamic>>> filesFileUpload({
+    @MultiPart() required BodyFilesFileUpload requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -156,7 +157,8 @@ abstract class FilesClient {
   ///     }
   /// }
   @POST("/files/multiple")
-  Future<HttpResponse> filesFilesMultiple({
+  Future<HttpResponse<Map<String, dynamic>>> filesFilesMultiple({
+    @MultiPart() required BodyFilesFilesMultiple requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,

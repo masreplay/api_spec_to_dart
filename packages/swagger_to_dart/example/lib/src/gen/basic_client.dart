@@ -57,7 +57,7 @@ abstract class BasicClient {
   ///     }
   /// }
   @GET("/basic/number/{num}")
-  Future<HttpResponse> basicBasicNumber({
+  Future<HttpResponse<Map<String, dynamic>>> basicBasicNumber({
     @Path("num") required int num,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
@@ -109,7 +109,7 @@ abstract class BasicClient {
   ///     }
   /// }
   @GET("/basic/float/{num}")
-  Future<HttpResponse> basicBasicFloat({
+  Future<HttpResponse<Map<String, dynamic>>> basicBasicFloat({
     @Path("num") required double num,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
@@ -163,7 +163,7 @@ abstract class BasicClient {
   ///     }
   /// }
   @GET("/basic/boolean")
-  Future<HttpResponse> basicBasicBoolean({
+  Future<HttpResponse<Map<String, dynamic>>> basicBasicBoolean({
     @Query("flag") bool flag = false,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
@@ -218,7 +218,7 @@ abstract class BasicClient {
   ///     }
   /// }
   @GET("/basic/string")
-  Future<HttpResponse> basicBasicString({
+  Future<HttpResponse<Map<String, dynamic>>> basicBasicString({
     @Query("text") required String text,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
@@ -271,7 +271,7 @@ abstract class BasicClient {
   ///     }
   /// }
   @GET("/datetime/date")
-  Future<HttpResponse> basicDatetimeDate({
+  Future<HttpResponse<Map<String, dynamic>>> basicDatetimeDate({
     @Query("d") required DateTime d,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
@@ -324,7 +324,7 @@ abstract class BasicClient {
   ///     }
   /// }
   @GET("/datetime/datetime")
-  Future<HttpResponse> basicDatetimeDatetime({
+  Future<HttpResponse<Map<String, dynamic>>> basicDatetimeDatetime({
     @Query("dt") required DateTime dt,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
@@ -377,7 +377,7 @@ abstract class BasicClient {
   ///     }
   /// }
   @POST("/datetime/datetime")
-  Future<HttpResponse> basicCreateDatetimeDatetime({
+  Future<HttpResponse<Map<String, dynamic>>> basicCreateDatetimeDatetime({
     @Query("dt") required DateTime dt,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
@@ -430,7 +430,7 @@ abstract class BasicClient {
   ///     }
   /// }
   @GET("/datetime/time")
-  Future<HttpResponse> basicDatetimeTime({
+  Future<HttpResponse<Map<String, dynamic>>> basicDatetimeTime({
     @Query("t") required String t,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
@@ -483,7 +483,7 @@ abstract class BasicClient {
   ///     }
   /// }
   @GET("/datetime/timedelta")
-  Future<HttpResponse> basicDatetimeTimedelta({
+  Future<HttpResponse<Map<String, dynamic>>> basicDatetimeTimedelta({
     @Query("td") required String td,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
