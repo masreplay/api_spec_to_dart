@@ -34,12 +34,20 @@ class UnionModelStrategy extends ModelGeneratorStrategy {
     final className = Renaming.instance.renameClass(model.key);
     final filename = Renaming.instance.renameFile(className);
 
-    final refs =
-        (model.value.properties ?? {}).values.whereType<OpenApiSchemaRef>();
-    final propertyGeneratorStrategy = PropertyGeneratorStrategy(context);
+    final dartTypeConverter = OpenApiSchemaDartTypeConverter(context);
 
-    final unions = refs.map((e) {
-      final name = e.ref!.split('/').last;
+    final properties = model.value.properties ?? {};
+    final refsSchema = properties.values.whereType<OpenApiSchemaRef>();
+
+    const String valueKeyName = 'value';
+
+    final unions = refsSchema.map((schema) {
+      final name = schema.ref!.split('/').last;
+
+      final type = dartTypeConverter.get(
+        schema,
+        className: className,
+      );
 
       return Constructor(
         (b) => b
@@ -52,13 +60,67 @@ class UnionModelStrategy extends ModelGeneratorStrategy {
           ..name = Recase.instance.toCamelCase(name)
           ..redirect = refer(className + Recase.instance.toPascalCase(name))
           ..requiredParameters.addAll([
-            propertyGeneratorStrategy.buildUnionValue(
-              e,
-              className: className,
+            Parameter(
+              (b) => b
+                ..named = true
+                ..name = valueKeyName
+                ..type = refer(type),
             )
           ]),
       );
     }).toList();
+
+    context.addJsonConvertor(
+      Class(
+        (b) => b
+          ..name = '${className}MapJsonConverter'
+          ..implements
+              .add(refer('JsonConverter<${className}, Map<String, dynamic>>'))
+          ..constructors.add(Constructor((b) => b..constant = true))
+          ..fields.addAll([
+            Field(
+              (b) => b
+                ..modifier = FieldModifier.constant
+                ..static = true
+                ..name = 'unionKey'
+                ..type = refer('String')
+                ..assignment = Code('"${valueKeyName}"'),
+            )
+          ])
+          ..methods.addAll([
+            Method(
+              (b) => b
+                ..annotations.addAll([
+                  refer('override'),
+                ])
+                ..returns = refer(className)
+                ..name = 'fromJson'
+                ..requiredParameters.addAll([
+                  Parameter((b) => b
+                    ..name = 'json'
+                    ..type = refer('Map<String, dynamic>')),
+                ])
+                ..body = Code(
+                    'return $className.fromJson({unionKey: json, ...json});'),
+            ),
+            Method(
+              (b) => b
+                ..annotations.addAll([
+                  refer('override'),
+                ])
+                ..returns = refer('Map<String, dynamic>')
+                ..name = 'toJson'
+                ..requiredParameters.addAll([
+                  Parameter((b) => b
+                    ..name = 'object'
+                    ..type = refer(className)),
+                ])
+                ..body = Code(
+                    'return {unionKey: object.toJson(), ...object.toJson()};'),
+            )
+          ]),
+      ),
+    );
 
     return Library(
       (b) => b

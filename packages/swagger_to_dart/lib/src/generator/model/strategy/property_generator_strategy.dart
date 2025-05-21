@@ -1,5 +1,4 @@
 import 'package:code_builder/code_builder.dart';
-import 'package:collection/collection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
@@ -34,25 +33,6 @@ class PropertyGeneratorStrategy {
           refer('JsonKey(name: $className.${name}Key)'),
         ])
         ..name = name
-        ..type = refer(dartType),
-    );
-  }
-
-  Parameter buildUnionValue(
-    OpenApiSchemaRef schema, {
-    required String className,
-  }) {
-    final dartType = OpenApiSchemaDartTypeConverter(context).get(
-      schema,
-      className: className,
-    );
-
-    const String keyName = 'value';
-
-    return Parameter(
-      (b) => b
-        ..named = true
-        ..name = keyName
         ..type = refer(dartType),
     );
   }

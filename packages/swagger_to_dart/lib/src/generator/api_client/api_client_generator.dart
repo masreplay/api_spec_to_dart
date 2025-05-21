@@ -1,6 +1,6 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:dio/dio.dart';
-import 'package:retrofit/retrofit.dart' hide Method;
+import 'package:retrofit/retrofit.dart' hide Method, Field;
 import 'package:swagger_to_dart/src/swagger_to_dart_base.dart';
 
 /// Generated Client Code
@@ -193,11 +193,13 @@ class ApiClientGenerator {
 
     final dartTypeConverter = OpenApiSchemaDartTypeConverter(context);
 
+
     return Library(
       (b) => b
         ..directives.addAll([
           Directive.import('package:dio/dio.dart'),
           Directive.import('package:retrofit/retrofit.dart'),
+          Directive.import('../models/models.dart'),
           Directive.part('${fileName}.g.dart'),
         ])
         ..name = fileName

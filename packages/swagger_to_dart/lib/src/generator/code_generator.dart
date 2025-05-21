@@ -21,7 +21,6 @@ class CodeGenerator {
     }
     await dir.create(recursive: true);
 
-    await generateJsonConvertor(dir);
     await generateModels(dir);
     await generateApiClients(dir);
 
@@ -61,6 +60,47 @@ class CodeGenerator {
       mainLibrary,
     );
 
+    final jsonConverterLibrary = Library(
+      (b) => b
+        ..name = 'json_converter'
+        ..directives.addAll([
+          Directive.import('package:dio/dio.dart'),
+          Directive.import('models.dart'),
+          Directive.import('package:json_annotation/json_annotation.dart'),
+        ])
+        ..body.addAll([
+          ...context.jsonConvertor,
+          CodeExpression(
+            Code(
+              '''
+class MultipartFileJsonConverter implements JsonConverter<MultipartFile, MultipartFile> {
+  const MultipartFileJsonConverter();
+
+  @override
+  MultipartFile fromJson(MultipartFile json) => json;
+
+  @override
+  MultipartFile toJson(MultipartFile object) => object;
+}
+''',
+            ),
+          ),
+          Code('''
+const jsonSerializable = JsonSerializable(
+  converters: [
+    MultipartFileJsonConverter(),
+    ${context.jsonConvertor.map((e) => '${e.name}()').join(',\n')}
+  ],
+);
+''')
+        ]),
+    );
+
+    await writeDartFile(
+      path.join(modelsDir.path, '${jsonConverterLibrary.name!}.dart'),
+      jsonConverterLibrary,
+    );
+
     final exportLibrary = Library(
       (b) => b
         ..directives.addAll([
@@ -69,11 +109,11 @@ class CodeGenerator {
           Directive.import(
               'package:freezed_annotation/freezed_annotation.dart'),
           Directive.export('package:dio/dio.dart'),
+          Directive.export('json_converter.dart'),
           Directive.export(
               'package:freezed_annotation/freezed_annotation.dart'),
         ]),
     );
-
     await writeDartFile(
       path.join(modelsDir.path, 'exports.dart'),
       exportLibrary,
@@ -97,21 +137,6 @@ class CodeGenerator {
         print('Stack trace: $stackTrace');
       }
     }
-  }
-
-  Future<void> generateJsonConvertor(Directory dir) async {
-    final library = Library(
-      (b) => b
-        ..directives.addAll([
-          for (final model in context.models)
-            if (model.name != null) Directive.export('${model.name}.dart'),
-        ]),
-    );
-
-    await writeDartFile(
-      path.join(dir.path, 'json_convertor/', 'json_convertor.dart'),
-      library,
-    );
   }
 }
 

@@ -24,11 +24,17 @@ class GenerationContext {
   }
 
   ModelGenerator get modelGenerator => ModelGenerator(this);
-  final List<Library> _models = <Library>[];
-  List<Library> get models => _models;
+  final Map<String, Library> _models = <String, Library>{};
+  List<Library> get models => _models.values.toList();
 
   void addModel(Library library) {
-    _models.add(library);
+    // if already exists, throw error
+    if (_models.containsKey(library.name!)) {
+      print('Model ${library.name!} already exists');
+      return;
+    }
+
+    _models[library.name!] = library;
   }
 
   ApiClientGenerator get apiClientGenerator => ApiClientGenerator(this);
@@ -39,11 +45,16 @@ class GenerationContext {
     _apiClients.add(library);
   }
 
-  final List<Class> _jsonConvertor = <Class>[];
-  List<Class> get jsonConvertor => _jsonConvertor;
+  final Map<String, Class> _jsonConvertor = <String, Class>{};
+  List<Class> get jsonConvertor => _jsonConvertor.values.toList();
 
   void addJsonConvertor(Class jsonConvertor) {
-    _jsonConvertor.add(jsonConvertor);
+    if (_jsonConvertor.containsKey(jsonConvertor.name)) {
+      print('Json convertor ${jsonConvertor.name} already exists');
+      return;
+    }
+
+    _jsonConvertor[jsonConvertor.name] = jsonConvertor;
   }
 
   void generate() {

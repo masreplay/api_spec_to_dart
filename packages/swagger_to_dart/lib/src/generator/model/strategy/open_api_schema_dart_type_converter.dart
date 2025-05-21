@@ -158,8 +158,9 @@ class OpenApiSchemaDartTypeConverter {
   }
 
   String _createUnionClass(List<OpenApiSchema> schemas) {
-    final (model, className) =
-        UnionModelStrategy(context).buildSchemas(schemas);
+    final strategy = UnionModelStrategy(context);
+
+    final (model, className) = strategy.buildSchemas(schemas);
     context.addModel(model);
 
     return className;

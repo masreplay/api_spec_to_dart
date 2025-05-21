@@ -1,7 +1,8 @@
 library;
 
+import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import 'exports.dart';
+import '../models/models.dart';
 part 'advanced_client.g.dart';
 
 @RestApi()
