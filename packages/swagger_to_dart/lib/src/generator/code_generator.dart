@@ -4,6 +4,7 @@ import 'package:code_builder/code_builder.dart';
 import 'package:dart_style/dart_style.dart';
 import 'package:path/path.dart' as path;
 import 'package:swagger_to_dart/src/config/generation_context.dart';
+import 'package:swagger_to_dart/src/generator/base_api_client_generator.dart';
 
 class CodeGenerator {
   const CodeGenerator(this.context);
@@ -137,6 +138,38 @@ const jsonSerializable = JsonSerializable(
         print('Stack trace: $stackTrace');
       }
     }
+
+    // exports
+    final exportsLibrary = Library(
+      (b) => b
+        ..directives.addAll([
+          for (final apiClient in context.apiClients)
+            Directive.export('${apiClient.name}.dart'),
+        ]),
+    );
+
+    await writeDartFile(
+      path.join(apiClientsDir.path, 'exports.dart'),
+      exportsLibrary,
+    );
+
+    await writeDartFile(
+      path.join(apiClientsDir.path, 'base_api_client.dart'),
+      BaseApiClientGenerator(context).build(),
+    );
+
+    final baseLibrary = Library(
+      (b) => b
+        ..directives.addAll([
+          Directive.import('exports.dart'),
+          Directive.export('base_api_client.dart'),
+        ]),
+    );
+
+    await writeDartFile(
+      path.join(apiClientsDir.path, 'api_client.dart'),
+      baseLibrary,
+    );
   }
 }
 
