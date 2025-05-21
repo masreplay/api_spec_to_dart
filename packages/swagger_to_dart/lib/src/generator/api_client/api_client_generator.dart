@@ -198,7 +198,6 @@ class ApiClientGenerator {
         ..directives.addAll([
           Directive.import('package:dio/dio.dart'),
           Directive.import('package:retrofit/retrofit.dart'),
-          Directive.import('exports.dart'),
           Directive.part('${fileName}.g.dart'),
         ])
         ..name = fileName

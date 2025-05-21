@@ -1,13 +1,34 @@
 import 'package:code_builder/code_builder.dart';
+import 'package:collection/collection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:swagger_to_dart/src/generator/model/strategy/property_generator_strategy.dart';
+import 'package:swagger_to_dart/src/generator/model/strategy/strategy.dart';
 import 'package:swagger_to_dart/src/schema/openapi/openapi.dart';
 import 'package:swagger_to_dart/src/utils/utils.dart';
 
-import 'model_generator_strategy.dart';
-
 class UnionModelStrategy extends ModelGeneratorStrategy {
   const UnionModelStrategy(super.context);
+
+  (Library, String) buildSchemas(List<OpenApiSchema> schemas) {
+    final className = schemas
+        .whereType<OpenApiSchemaRef>()
+        .map(OpenApiSchemaDartTypeConverter(context).getRef)
+        .map(Renaming.instance.renameClass)
+        .sorted((a, b) => a.compareTo(b))
+        .join();
+
+    final unionModel = MapEntry<String, OpenApiSchemas>(
+      className,
+      OpenApiSchemas(
+        type: 'dynamic',
+        properties: {
+          for (final value in schemas.whereType<OpenApiSchemaRef>())
+            value.ref!: OpenApiSchemaRef(ref: value.ref!),
+        },
+      ),
+    );
+
+    return (build(unionModel), className);
+  }
 
   Library build(MapEntry<String, OpenApiSchemas> model) {
     final className = Renaming.instance.renameClass(model.key);

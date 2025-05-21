@@ -10,7 +10,7 @@ class CodeGenerator {
 
   final GenerationContext context;
 
-  Future<void> write() async {
+  Future<void> generate() async {
     context.generate();
 
     final dir = Directory(context.swaggerToDart.outputDirectory);
@@ -21,35 +21,85 @@ class CodeGenerator {
     }
     await dir.create(recursive: true);
 
+    await generateJsonConvertor(dir);
+    await generateModels(dir);
+    await generateApiClients(dir);
+
+    print('Code generation completed successfully');
+  }
+
+  Future<void> generateModels(Directory dir) async {
     print('Generating ${context.models.length} models...');
 
+    final modelsDir = Directory(path.join(dir.path, 'models/'));
+
     for (final model in context.models) {
-      final name = model.name;
-      if (name == null) throw Exception('Model has no name');
+      final filename = model.name;
+      if (filename == null) throw Exception('Model has no name');
 
       try {
-        await writeDartFile(path.join(dir.path, '${name}.dart'), model);
+        await writeDartFile(
+          path.join(modelsDir.path, '${filename}.dart'),
+          model,
+        );
       } catch (e, stackTrace) {
-        print('Error generating model $name: $e');
+        print('Error generating model $filename: $e');
         print('Stack trace: $stackTrace');
       }
     }
 
+    final mainLibrary = Library(
+      (b) => b
+        ..directives.addAll([
+          for (final model in context.models)
+            if (model.name != null) Directive.export('${model.name}.dart'),
+        ]),
+    );
+
+    await writeDartFile(
+      path.join(modelsDir.path, 'models.dart'),
+      mainLibrary,
+    );
+
+    final exportLibrary = Library(
+      (b) => b
+        ..directives.addAll([
+          Directive.export('models.dart'),
+          Directive.import('package:dio/dio.dart'),
+          Directive.import(
+              'package:freezed_annotation/freezed_annotation.dart'),
+          Directive.export('package:dio/dio.dart'),
+          Directive.export(
+              'package:freezed_annotation/freezed_annotation.dart'),
+        ]),
+    );
+
+    await writeDartFile(
+      path.join(modelsDir.path, 'exports.dart'),
+      exportLibrary,
+    );
+  }
+
+  Future<void> generateApiClients(Directory dir) async {
+    print('Generating ${context.apiClients.length} api clients...');
+    final apiClientsDir = Directory(path.join(dir.path, 'api_client/'));
     for (final apiClient in context.apiClients) {
-      final name = apiClient.name;
-      if (name == null) {
-        print('Warning: Skipping api client with null name');
-        continue;
-      }
+      final filename = apiClient.name;
+      if (filename == null) throw Exception('Api client has no name');
 
       try {
-        await writeDartFile(path.join(dir.path, '${name}.dart'), apiClient);
+        await writeDartFile(
+          path.join(apiClientsDir.path, '${filename}.dart'),
+          apiClient,
+        );
       } catch (e, stackTrace) {
-        print('Error generating api client $name: $e');
+        print('Error generating api client $filename: $e');
         print('Stack trace: $stackTrace');
       }
     }
+  }
 
+  Future<void> generateJsonConvertor(Directory dir) async {
     final library = Library(
       (b) => b
         ..directives.addAll([
@@ -58,58 +108,26 @@ class CodeGenerator {
         ]),
     );
 
-    await writeDartFile(path.join(dir.path, 'models.dart'), library);
-
-    final exportLibrary = Library(
-      (b) => b
-        ..directives.addAll([
-          Directive.import('package:dio/dio.dart'),
-          Directive.import(
-              'package:freezed_annotation/freezed_annotation.dart'),
-          Directive.export('models.dart'),
-          Directive.export('package:dio/dio.dart'),
-          Directive.export(
-              'package:freezed_annotation/freezed_annotation.dart'),
-        ])
-        ..body.addAll([
-          CodeExpression(
-            Code(
-              '''
-class MultipartFileJsonConverter implements JsonConverter<MultipartFile, MultipartFile> {
-  const MultipartFileJsonConverter();
-
-  @override
-  MultipartFile fromJson(MultipartFile json) => json;
-
-  @override
-  MultipartFile toJson(MultipartFile object) => object;
-}
-''',
-            ),
-          ),
-          CodeExpression(Code('''
-const jsonSerializable = JsonSerializable(
-  converters: [
-  MultipartFileJsonConverter(),
-  ],
-);
-''')),
-        ]),
+    await writeDartFile(
+      path.join(dir.path, 'json_convertor/', 'json_convertor.dart'),
+      library,
     );
-
-    await writeDartFile(path.join(dir.path, 'exports.dart'), exportLibrary);
-
-    print('Code generation completed successfully');
   }
 }
 
-Future<void> writeDartFile(String path, Library library) async {
+Future<void> writeDartFile(String filePath, Library library) async {
   final emitter = DartEmitter.scoped();
   final formatter = DartFormatter(
     languageVersion: DartFormatter.latestLanguageVersion,
   );
 
-  final file = File(path);
+  // if dir not found created it
+  final dir = Directory(path.dirname(filePath));
+  if (!dir.existsSync()) {
+    await dir.create(recursive: true);
+  }
+
+  final file = File(filePath);
   await file.writeAsString(
     formatter.format('${library.accept(emitter)}'),
     flush: true,

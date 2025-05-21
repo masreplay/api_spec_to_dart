@@ -72,25 +72,21 @@ class OpenApiSchemaDartTypeConverter {
     required String className,
   }) {
     final anyOf = schema.anyOf;
-    final nonNullSchemas = anyOf
-        .where((e) =>
-            !(e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_))
-        .toList();
-    final isNullable = nonNullSchemas.length != anyOf.length;
+    final schemas = anyOf.where((e) {
+      return !(e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_);
+    }).toList();
+    final isNullable = schemas.length != anyOf.length;
 
-    if (nonNullSchemas.length == 1) {
+    if (schemas.length == 1) {
       final dartType = get(
-        nonNullSchemas.first,
+        schemas.first,
         className: className,
       );
       return dartType + (isNullable ? '?' : '');
     }
 
-    if (nonNullSchemas.every((e) => e is OpenApiSchemaRef)) {
-      return PropertyGeneratorStrategy(context).createUnionClass(
-        nonNullSchemas,
-        className: className,
-      );
+    if (schemas.every((e) => e is OpenApiSchemaRef)) {
+      return _createUnionClass(schemas);
     }
 
     return 'dynamic';
@@ -101,23 +97,16 @@ class OpenApiSchemaDartTypeConverter {
     required String className,
   }) {
     final oneOf = schema.oneOf;
-    final nonNullSchemas = oneOf
-        .where((e) =>
-            !(e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_))
-        .toList();
+    final schemas = oneOf.where((e) {
+      return !(e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_);
+    }).toList();
 
-    if (nonNullSchemas.length == 1) {
-      return get(
-        nonNullSchemas.first,
-        className: className,
-      );
+    if (schemas.length == 1) {
+      return get(schemas.first, className: className);
     }
 
-    if (nonNullSchemas.every((e) => e is OpenApiSchemaRef)) {
-      return PropertyGeneratorStrategy(context).createUnionClass(
-        nonNullSchemas,
-        className: className,
-      );
+    if (schemas.every((e) => e is OpenApiSchemaRef)) {
+      return _createUnionClass(schemas);
     }
 
     return 'dynamic';
@@ -166,5 +155,13 @@ class OpenApiSchemaDartTypeConverter {
       case OpenApiSchemaVarType.null_ || OpenApiSchemaVarType.$unknown || null:
         return 'dynamic';
     }
+  }
+
+  String _createUnionClass(List<OpenApiSchema> schemas) {
+    final (model, className) =
+        UnionModelStrategy(context).buildSchemas(schemas);
+    context.addModel(model);
+
+    return className;
   }
 }

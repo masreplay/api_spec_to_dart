@@ -8,7 +8,7 @@ Future<void> main() async {
     final GenerationContext context = await builder.build();
 
     final generator = CodeGenerator(context);
-    await generator.write();
+    await generator.generate();
   } catch (e) {
     exit(1);
   }

@@ -39,6 +39,13 @@ class GenerationContext {
     _apiClients.add(library);
   }
 
+  final List<Class> _jsonConvertor = <Class>[];
+  List<Class> get jsonConvertor => _jsonConvertor;
+
+  void addJsonConvertor(Class jsonConvertor) {
+    _jsonConvertor.add(jsonConvertor);
+  }
+
   void generate() {
     modelGenerator.generate();
     apiClientGenerator.generate();

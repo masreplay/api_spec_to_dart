@@ -56,33 +56,4 @@ class PropertyGeneratorStrategy {
         ..type = refer(dartType),
     );
   }
-
-  String createUnionClass(
-    List<OpenApiSchema> schemas, {
-    required String className,
-  }) {
-    final unionClassName = schemas
-        .whereType<OpenApiSchemaRef>()
-        .map(OpenApiSchemaDartTypeConverter(context).getRef)
-        .map(Renaming.instance.renameClass)
-        .sorted((a, b) => a.compareTo(b))
-        .join();
-
-    final unionModelStrategy = UnionModelStrategy(context);
-
-    final unionModel = MapEntry<String, OpenApiSchemas>(
-      unionClassName,
-      OpenApiSchemas(
-        type: className,
-        properties: {
-          for (final value in schemas.whereType<OpenApiSchemaRef>())
-            value.ref!: OpenApiSchemaRef(ref: value.ref!),
-        },
-      ),
-    );
-
-    context.addModel(unionModelStrategy.build(unionModel));
-
-    return unionClassName;
-  }
 }
