@@ -250,6 +250,69 @@ class ApiClientGenerator {
                           method.key.name,
                         );
 
+                        final responseType = method.value.responses?.values
+                            .firstOrNull?.content?.applicationJson;
+
+                        final responseTypeString = responseType == null
+                            ? null
+                            : dartTypeConverter.get(
+                                responseType.schema,
+                                className: className,
+                              );
+
+                        final Parameter? requestBody;
+
+                        if (method.value.requestBody?.content.applicationXWwwFormUrlencoded
+                            case final body?) {
+                          requestBody = Parameter((b) => b
+                            ..annotations.addAll([
+                              refer('$FormUrlEncoded()'),
+                            ])
+                            ..name = 'requestBody'
+                            ..named = true
+                            ..required = true
+                            ..type = refer(
+                              dartTypeConverter.get(
+                                body.schema,
+                                className: className,
+                              ),
+                            ));
+                        } else if (method.value.requestBody?.content
+                                .multipartFormData
+                            case final body?) {
+                          requestBody = Parameter((b) => b
+                            ..annotations.addAll([
+                              refer('$MultiPart()'),
+                            ])
+                            ..name = 'requestBody'
+                            ..named = true
+                            ..required = true
+                            ..type = refer(
+                              dartTypeConverter.get(
+                                body.schema,
+                                className: className,
+                              ),
+                            ));
+                        } else if (method.value.requestBody?.content
+                                .applicationJson
+                            case final body?) {
+                          requestBody = Parameter((b) => b
+                            ..annotations.addAll([
+                              refer('$Body()'),
+                            ])
+                            ..name = 'requestBody'
+                            ..named = true
+                            ..required = true
+                            ..type = refer(
+                              dartTypeConverter.get(
+                                body.schema,
+                                className: className,
+                              ),
+                            ));
+                        } else {
+                          requestBody = null;
+                        }
+
                         b
                           ..docs.addAll([
                             '/// ${method.key.name}',
@@ -262,11 +325,15 @@ class ApiClientGenerator {
                           ..annotations.addAll([
                             refer('$name("${path.key}")'),
                           ])
-                          ..returns = refer('Future<HttpResponse>')
+                          ..returns = responseTypeString == null
+                              ? refer('Future<HttpResponse>')
+                              : refer(
+                                  'Future<HttpResponse<${responseTypeString}>>')
                           ..name = Renaming.instance.renameMethod(
                             method.value.operationId ?? '',
                           )
                           ..optionalParameters.addAll([
+                            if (requestBody != null) requestBody,
                             ...parameters.map((p) {
                               final type = dartTypeConverter.get(
                                 p.schema,

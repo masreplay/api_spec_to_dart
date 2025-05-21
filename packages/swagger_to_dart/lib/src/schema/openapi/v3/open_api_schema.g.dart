@@ -86,9 +86,10 @@ Map<String, dynamic> _$OpenApiSchemaRefToJson(OpenApiSchemaRef instance) =>
 OpenApiSchemaAnyOf _$OpenApiSchemaAnyOfFromJson(Map<String, dynamic> json) =>
     OpenApiSchemaAnyOf(
       anyOf: (json['anyOf'] as List<dynamic>?)
-          ?.map((e) => const OpenApiSchemaJsonConverter()
-              .fromJson(e as Map<String, dynamic>))
-          .toList(),
+              ?.map((e) => const OpenApiSchemaJsonConverter()
+                  .fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
       description: json['description'] as String?,
       title: json['title'] as String?,
       default_: json['default'],
@@ -97,11 +98,9 @@ OpenApiSchemaAnyOf _$OpenApiSchemaAnyOfFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$OpenApiSchemaAnyOfToJson(OpenApiSchemaAnyOf instance) =>
     <String, dynamic>{
-      if (instance.anyOf
-              ?.map(const OpenApiSchemaJsonConverter().toJson)
-              .toList()
-          case final value?)
-        'anyOf': value,
+      'anyOf': instance.anyOf
+          .map(const OpenApiSchemaJsonConverter().toJson)
+          .toList(),
       if (instance.description case final value?) 'description': value,
       if (instance.title case final value?) 'title': value,
       if (instance.default_ case final value?) 'default': value,
@@ -111,9 +110,10 @@ Map<String, dynamic> _$OpenApiSchemaAnyOfToJson(OpenApiSchemaAnyOf instance) =>
 OpenApiSchemaOneOf _$OpenApiSchemaOneOfFromJson(Map<String, dynamic> json) =>
     OpenApiSchemaOneOf(
       oneOf: (json['oneOf'] as List<dynamic>?)
-          ?.map((e) => const OpenApiSchemaJsonConverter()
-              .fromJson(e as Map<String, dynamic>))
-          .toList(),
+              ?.map((e) => const OpenApiSchemaJsonConverter()
+                  .fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
       description: json['description'] as String?,
       title: json['title'] as String?,
       discriminator: OpenApiSchemaOneOfDiscriminator.fromJson(
@@ -124,11 +124,9 @@ OpenApiSchemaOneOf _$OpenApiSchemaOneOfFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$OpenApiSchemaOneOfToJson(OpenApiSchemaOneOf instance) =>
     <String, dynamic>{
-      if (instance.oneOf
-              ?.map(const OpenApiSchemaJsonConverter().toJson)
-              .toList()
-          case final value?)
-        'oneOf': value,
+      'oneOf': instance.oneOf
+          .map(const OpenApiSchemaJsonConverter().toJson)
+          .toList(),
       if (instance.description case final value?) 'description': value,
       if (instance.title case final value?) 'title': value,
       'discriminator': instance.discriminator.toJson(),

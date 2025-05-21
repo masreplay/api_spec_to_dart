@@ -444,7 +444,7 @@ class OpenApiSchemaAnyOf extends OpenApiSchema {
   const OpenApiSchemaAnyOf(
       {@OpenApiSchemaJsonConverter()
       @JsonKey(name: 'anyOf')
-      required final List<OpenApiSchema>? anyOf,
+      final List<OpenApiSchema> anyOf = const [],
       @JsonKey(name: 'description') this.description,
       @JsonKey(name: 'title') this.title,
       @JsonKey(name: 'default') this.default_,
@@ -455,15 +455,13 @@ class OpenApiSchemaAnyOf extends OpenApiSchema {
   factory OpenApiSchemaAnyOf.fromJson(Map<String, dynamic> json) =>
       _$OpenApiSchemaAnyOfFromJson(json);
 
-  final List<OpenApiSchema>? _anyOf;
+  final List<OpenApiSchema> _anyOf;
   @OpenApiSchemaJsonConverter()
   @JsonKey(name: 'anyOf')
-  List<OpenApiSchema>? get anyOf {
-    final value = _anyOf;
-    if (value == null) return null;
+  List<OpenApiSchema> get anyOf {
     if (_anyOf is EqualUnmodifiableListView) return _anyOf;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_anyOf);
   }
 
   @override
@@ -531,7 +529,7 @@ abstract mixin class $OpenApiSchemaAnyOfCopyWith<$Res>
   $Res call(
       {@OpenApiSchemaJsonConverter()
       @JsonKey(name: 'anyOf')
-      List<OpenApiSchema>? anyOf,
+      List<OpenApiSchema> anyOf,
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'title') String? title,
       @JsonKey(name: 'default') Object? default_});
@@ -550,16 +548,16 @@ class _$OpenApiSchemaAnyOfCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? anyOf = freezed,
+    Object? anyOf = null,
     Object? description = freezed,
     Object? title = freezed,
     Object? default_ = freezed,
   }) {
     return _then(OpenApiSchemaAnyOf(
-      anyOf: freezed == anyOf
+      anyOf: null == anyOf
           ? _self._anyOf
           : anyOf // ignore: cast_nullable_to_non_nullable
-              as List<OpenApiSchema>?,
+              as List<OpenApiSchema>,
       description: freezed == description
           ? _self.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -579,7 +577,7 @@ class OpenApiSchemaOneOf extends OpenApiSchema {
   const OpenApiSchemaOneOf(
       {@OpenApiSchemaJsonConverter()
       @JsonKey(name: 'oneOf')
-      required final List<OpenApiSchema>? oneOf,
+      final List<OpenApiSchema> oneOf = const [],
       @JsonKey(name: 'description') this.description,
       @JsonKey(name: 'title') this.title,
       @JsonKey(name: 'discriminator') required this.discriminator,
@@ -591,15 +589,13 @@ class OpenApiSchemaOneOf extends OpenApiSchema {
   factory OpenApiSchemaOneOf.fromJson(Map<String, dynamic> json) =>
       _$OpenApiSchemaOneOfFromJson(json);
 
-  final List<OpenApiSchema>? _oneOf;
+  final List<OpenApiSchema> _oneOf;
   @OpenApiSchemaJsonConverter()
   @JsonKey(name: 'oneOf')
-  List<OpenApiSchema>? get oneOf {
-    final value = _oneOf;
-    if (value == null) return null;
+  List<OpenApiSchema> get oneOf {
     if (_oneOf is EqualUnmodifiableListView) return _oneOf;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_oneOf);
   }
 
   @override
@@ -672,7 +668,7 @@ abstract mixin class $OpenApiSchemaOneOfCopyWith<$Res>
   $Res call(
       {@OpenApiSchemaJsonConverter()
       @JsonKey(name: 'oneOf')
-      List<OpenApiSchema>? oneOf,
+      List<OpenApiSchema> oneOf,
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'title') String? title,
       @JsonKey(name: 'discriminator')
@@ -695,17 +691,17 @@ class _$OpenApiSchemaOneOfCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? oneOf = freezed,
+    Object? oneOf = null,
     Object? description = freezed,
     Object? title = freezed,
     Object? discriminator = null,
     Object? default_ = freezed,
   }) {
     return _then(OpenApiSchemaOneOf(
-      oneOf: freezed == oneOf
+      oneOf: null == oneOf
           ? _self._oneOf
           : oneOf // ignore: cast_nullable_to_non_nullable
-              as List<OpenApiSchema>?,
+              as List<OpenApiSchema>,
       description: freezed == description
           ? _self.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -817,12 +813,12 @@ class _$OpenApiSchemaOneOfDiscriminatorCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _OpenApiSchemaOneOfDiscriminator
-    implements OpenApiSchemaOneOfDiscriminator {
-  _OpenApiSchemaOneOfDiscriminator(
+class _OpenApiSchemaOneOfDiscriminator extends OpenApiSchemaOneOfDiscriminator {
+  const _OpenApiSchemaOneOfDiscriminator(
       {@JsonKey(name: 'propertyName') required this.propertyName,
       @JsonKey(name: 'mapping') required final Map<String, String> mapping})
-      : _mapping = mapping;
+      : _mapping = mapping,
+        super._();
   factory _OpenApiSchemaOneOfDiscriminator.fromJson(
           Map<String, dynamic> json) =>
       _$OpenApiSchemaOneOfDiscriminatorFromJson(json);

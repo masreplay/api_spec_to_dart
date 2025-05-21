@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$OpenApiPathMethod {
   @JsonKey(name: 'tags')
-  OpenApiPathMethodTags get tags;
+  List<String> get tags;
   @JsonKey(name: 'summary')
   String? get summary;
   @JsonKey(name: 'description')
@@ -27,7 +27,7 @@ mixin _$OpenApiPathMethod {
   @JsonKey(name: 'security')
   List<Map<String, List<dynamic>>>? get security;
   @JsonKey(name: 'parameters')
-  OpenApiPathMethodParameters? get parameters;
+  List<OpenApiPathMethodParameter>? get parameters;
   @JsonKey(name: 'requestBody')
   OpenApiPathMethodRequestBody? get requestBody;
   @JsonKey(name: 'responses')
@@ -92,13 +92,13 @@ abstract mixin class $OpenApiPathMethodCopyWith<$Res> {
       _$OpenApiPathMethodCopyWithImpl;
   @useResult
   $Res call(
-      {@JsonKey(name: 'tags') OpenApiPathMethodTags tags,
+      {@JsonKey(name: 'tags') List<String> tags,
       @JsonKey(name: 'summary') String? summary,
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'operationId') String? operationId,
       @JsonKey(name: 'deprecated') bool? deprecated,
       @JsonKey(name: 'security') List<Map<String, List<dynamic>>>? security,
-      @JsonKey(name: 'parameters') OpenApiPathMethodParameters? parameters,
+      @JsonKey(name: 'parameters') List<OpenApiPathMethodParameter>? parameters,
       @JsonKey(name: 'requestBody') OpenApiPathMethodRequestBody? requestBody,
       @JsonKey(name: 'responses') OpenApiPathMethodResponses? responses});
 
@@ -132,7 +132,7 @@ class _$OpenApiPathMethodCopyWithImpl<$Res>
       tags: null == tags
           ? _self.tags
           : tags // ignore: cast_nullable_to_non_nullable
-              as OpenApiPathMethodTags,
+              as List<String>,
       summary: freezed == summary
           ? _self.summary
           : summary // ignore: cast_nullable_to_non_nullable
@@ -156,7 +156,7 @@ class _$OpenApiPathMethodCopyWithImpl<$Res>
       parameters: freezed == parameters
           ? _self.parameters
           : parameters // ignore: cast_nullable_to_non_nullable
-              as OpenApiPathMethodParameters?,
+              as List<OpenApiPathMethodParameter>?,
       requestBody: freezed == requestBody
           ? _self.requestBody
           : requestBody // ignore: cast_nullable_to_non_nullable
@@ -188,7 +188,7 @@ class _$OpenApiPathMethodCopyWithImpl<$Res>
 @JsonSerializable()
 class _OpenApiPathMethod extends OpenApiPathMethod {
   const _OpenApiPathMethod(
-      {@JsonKey(name: 'tags') required final OpenApiPathMethodTags tags,
+      {@JsonKey(name: 'tags') required final List<String> tags,
       @JsonKey(name: 'summary') required this.summary,
       @JsonKey(name: 'description') required this.description,
       @JsonKey(name: 'operationId') required this.operationId,
@@ -196,7 +196,7 @@ class _OpenApiPathMethod extends OpenApiPathMethod {
       @JsonKey(name: 'security')
       final List<Map<String, List<dynamic>>>? security,
       @JsonKey(name: 'parameters')
-      required final OpenApiPathMethodParameters? parameters,
+      required final List<OpenApiPathMethodParameter>? parameters,
       @JsonKey(name: 'requestBody') required this.requestBody,
       @JsonKey(name: 'responses')
       required final OpenApiPathMethodResponses? responses})
@@ -208,10 +208,10 @@ class _OpenApiPathMethod extends OpenApiPathMethod {
   factory _OpenApiPathMethod.fromJson(Map<String, dynamic> json) =>
       _$OpenApiPathMethodFromJson(json);
 
-  final OpenApiPathMethodTags _tags;
+  final List<String> _tags;
   @override
   @JsonKey(name: 'tags')
-  OpenApiPathMethodTags get tags {
+  List<String> get tags {
     if (_tags is EqualUnmodifiableListView) return _tags;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_tags);
@@ -240,10 +240,10 @@ class _OpenApiPathMethod extends OpenApiPathMethod {
     return EqualUnmodifiableListView(value);
   }
 
-  final OpenApiPathMethodParameters? _parameters;
+  final List<OpenApiPathMethodParameter>? _parameters;
   @override
   @JsonKey(name: 'parameters')
-  OpenApiPathMethodParameters? get parameters {
+  List<OpenApiPathMethodParameter>? get parameters {
     final value = _parameters;
     if (value == null) return null;
     if (_parameters is EqualUnmodifiableListView) return _parameters;
@@ -331,13 +331,13 @@ abstract mixin class _$OpenApiPathMethodCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'tags') OpenApiPathMethodTags tags,
+      {@JsonKey(name: 'tags') List<String> tags,
       @JsonKey(name: 'summary') String? summary,
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'operationId') String? operationId,
       @JsonKey(name: 'deprecated') bool? deprecated,
       @JsonKey(name: 'security') List<Map<String, List<dynamic>>>? security,
-      @JsonKey(name: 'parameters') OpenApiPathMethodParameters? parameters,
+      @JsonKey(name: 'parameters') List<OpenApiPathMethodParameter>? parameters,
       @JsonKey(name: 'requestBody') OpenApiPathMethodRequestBody? requestBody,
       @JsonKey(name: 'responses') OpenApiPathMethodResponses? responses});
 
@@ -372,7 +372,7 @@ class __$OpenApiPathMethodCopyWithImpl<$Res>
       tags: null == tags
           ? _self._tags
           : tags // ignore: cast_nullable_to_non_nullable
-              as OpenApiPathMethodTags,
+              as List<String>,
       summary: freezed == summary
           ? _self.summary
           : summary // ignore: cast_nullable_to_non_nullable
@@ -396,7 +396,7 @@ class __$OpenApiPathMethodCopyWithImpl<$Res>
       parameters: freezed == parameters
           ? _self._parameters
           : parameters // ignore: cast_nullable_to_non_nullable
-              as OpenApiPathMethodParameters?,
+              as List<OpenApiPathMethodParameter>?,
       requestBody: freezed == requestBody
           ? _self.requestBody
           : requestBody // ignore: cast_nullable_to_non_nullable
@@ -802,10 +802,11 @@ class _$OpenApiPathMethodResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _OpenApiPathMethodResponse implements OpenApiPathMethodResponse {
-  _OpenApiPathMethodResponse(
+class _OpenApiPathMethodResponse extends OpenApiPathMethodResponse {
+  const _OpenApiPathMethodResponse(
       {@JsonKey(name: 'description') this.description,
-      @JsonKey(name: 'content') required this.content});
+      @JsonKey(name: 'content') required this.content})
+      : super._();
   factory _OpenApiPathMethodResponse.fromJson(Map<String, dynamic> json) =>
       _$OpenApiPathMethodResponseFromJson(json);
 
@@ -1006,10 +1007,11 @@ class _$OpenApiPathMethodRequestBodyCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _OpenApiPathMethodRequestBody implements OpenApiPathMethodRequestBody {
-  _OpenApiPathMethodRequestBody(
+class _OpenApiPathMethodRequestBody extends OpenApiPathMethodRequestBody {
+  const _OpenApiPathMethodRequestBody(
       {@JsonKey(name: 'required') this.required_,
-      @JsonKey(name: 'content') required this.content});
+      @JsonKey(name: 'content') required this.content})
+      : super._();
   factory _OpenApiPathMethodRequestBody.fromJson(Map<String, dynamic> json) =>
       _$OpenApiPathMethodRequestBodyFromJson(json);
 

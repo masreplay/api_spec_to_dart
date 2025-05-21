@@ -8,7 +8,7 @@ class OpenApiSchemaDartTypeConverter {
   String? getDefaultValue(OpenApiSchema schema) {
     final default_ = schema.default_;
     switch (schema) {
-      case OpenApiSchemaType schema:
+      case OpenApiSchemaType _:
         return _dartLiteral(default_);
       case OpenApiSchemaRef schema:
         final dartType = getRef(schema);
@@ -19,9 +19,9 @@ class OpenApiSchemaDartTypeConverter {
         }
 
         return default_ == null ? null : default_.toString();
-      case OpenApiSchemaAnyOf schema:
+      case OpenApiSchemaAnyOf _:
         return default_ == null ? null : default_.toString();
-      case OpenApiSchemaOneOf schema:
+      case OpenApiSchemaOneOf _:
         return default_ == null ? null : default_.toString();
     }
   }
@@ -71,7 +71,7 @@ class OpenApiSchemaDartTypeConverter {
     OpenApiSchemaAnyOf schema, {
     required String className,
   }) {
-    final anyOf = schema.anyOf ?? [];
+    final anyOf = schema.anyOf;
     final nonNullSchemas = anyOf
         .where((e) =>
             !(e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_))
@@ -100,7 +100,7 @@ class OpenApiSchemaDartTypeConverter {
     OpenApiSchemaOneOf schema, {
     required String className,
   }) {
-    final oneOf = schema.oneOf ?? [];
+    final oneOf = schema.oneOf;
     final nonNullSchemas = oneOf
         .where((e) =>
             !(e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_))

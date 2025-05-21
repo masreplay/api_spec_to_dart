@@ -8,7 +8,7 @@ part 'open_api_content.g.dart';
 abstract class OpenApiContent with _$OpenApiContent {
   const OpenApiContent._();
 
-  factory OpenApiContent({
+  const factory OpenApiContent({
     @JsonKey(name: 'application/json')
     required OpenApiContentSchema? applicationJson,
     @JsonKey(name: 'application/x-www-form-urlencoded')
@@ -19,22 +19,13 @@ abstract class OpenApiContent with _$OpenApiContent {
 
   factory OpenApiContent.fromJson(Map<String, dynamic> json) =>
       _$OpenApiContentFromJson(json);
-
-  // Don't add retrofit annotation in the generated code
-  MapEntry<String?, OpenApiContentSchema?> get current {
-    if (applicationXWwwFormUrlencoded != null) {
-      return MapEntry('FormUrlEncoded()', applicationXWwwFormUrlencoded);
-    }
-    if (multipartFormData != null) {
-      return MapEntry('MultiPart()', multipartFormData);
-    }
-    return MapEntry(null, applicationJson);
-  }
 }
 
 @freezed
 abstract class OpenApiContentSchema with _$OpenApiContentSchema {
-  factory OpenApiContentSchema({
+  const OpenApiContentSchema._();
+
+  const factory OpenApiContentSchema({
     @OpenApiSchemaJsonConverter()
     @JsonKey(name: 'schema')
     required OpenApiSchema schema,

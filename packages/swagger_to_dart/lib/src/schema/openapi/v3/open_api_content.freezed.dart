@@ -157,7 +157,7 @@ class _$OpenApiContentCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _OpenApiContent extends OpenApiContent {
-  _OpenApiContent(
+  const _OpenApiContent(
       {@JsonKey(name: 'application/json') required this.applicationJson,
       @JsonKey(name: 'application/x-www-form-urlencoded')
       required this.applicationXWwwFormUrlencoded,
@@ -403,11 +403,12 @@ class _$OpenApiContentSchemaCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _OpenApiContentSchema implements OpenApiContentSchema {
-  _OpenApiContentSchema(
+class _OpenApiContentSchema extends OpenApiContentSchema {
+  const _OpenApiContentSchema(
       {@OpenApiSchemaJsonConverter()
       @JsonKey(name: 'schema')
-      required this.schema});
+      required this.schema})
+      : super._();
   factory _OpenApiContentSchema.fromJson(Map<String, dynamic> json) =>
       _$OpenApiContentSchemaFromJson(json);
 

@@ -26,14 +26,14 @@ abstract class OpenApiPathMethod with _$OpenApiPathMethod {
   const OpenApiPathMethod._();
 
   const factory OpenApiPathMethod({
-    @JsonKey(name: 'tags') required OpenApiPathMethodTags tags,
+    @JsonKey(name: 'tags') required List<String> tags,
     @JsonKey(name: 'summary') required String? summary,
     @JsonKey(name: 'description') required String? description,
     @JsonKey(name: 'operationId') required String? operationId,
     @JsonKey(name: 'deprecated') required bool? deprecated,
     @JsonKey(name: 'security') List<Map<String, List<dynamic>>>? security,
     @JsonKey(name: 'parameters')
-    required OpenApiPathMethodParameters? parameters,
+    required List<OpenApiPathMethodParameter>? parameters,
     @JsonKey(name: 'requestBody')
     required OpenApiPathMethodRequestBody? requestBody,
     @JsonKey(name: 'responses') required OpenApiPathMethodResponses? responses,
@@ -42,10 +42,6 @@ abstract class OpenApiPathMethod with _$OpenApiPathMethod {
   factory OpenApiPathMethod.fromJson(Map<String, dynamic> json) =>
       _$OpenApiPathMethodFromJson(json);
 }
-
-typedef OpenApiPathMethodTags = List<String>;
-
-typedef OpenApiPathMethodParameters = List<OpenApiPathMethodParameter>;
 
 @Freezed()
 abstract class OpenApiPathMethodParameter with _$OpenApiPathMethodParameter {
@@ -70,7 +66,9 @@ enum OpenApiPathMethodParameterType { query, path, header, cookie }
 
 @freezed
 abstract class OpenApiPathMethodResponse with _$OpenApiPathMethodResponse {
-  factory OpenApiPathMethodResponse({
+  const OpenApiPathMethodResponse._();
+
+  const factory OpenApiPathMethodResponse({
     @JsonKey(name: 'description') String? description,
     @JsonKey(name: 'content') required OpenApiContent? content,
   }) = _OpenApiPathMethodResponse;
@@ -82,7 +80,9 @@ abstract class OpenApiPathMethodResponse with _$OpenApiPathMethodResponse {
 @freezed
 abstract class OpenApiPathMethodRequestBody
     with _$OpenApiPathMethodRequestBody {
-  factory OpenApiPathMethodRequestBody({
+  const OpenApiPathMethodRequestBody._();
+
+  const factory OpenApiPathMethodRequestBody({
     @JsonKey(name: 'required') bool? required_,
     @JsonKey(name: 'content') required OpenApiContent content,
   }) = _OpenApiPathMethodRequestBody;

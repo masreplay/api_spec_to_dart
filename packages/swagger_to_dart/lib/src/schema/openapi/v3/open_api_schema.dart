@@ -34,7 +34,8 @@ sealed class OpenApiSchema with _$OpenApiSchema {
   const factory OpenApiSchema.anyOf({
     @OpenApiSchemaJsonConverter()
     @JsonKey(name: 'anyOf')
-    required List<OpenApiSchema>? anyOf,
+    @Default([])
+    List<OpenApiSchema> anyOf,
     @JsonKey(name: 'description') String? description,
     @JsonKey(name: 'title') String? title,
     @JsonKey(name: 'default') Object? default_,
@@ -44,7 +45,8 @@ sealed class OpenApiSchema with _$OpenApiSchema {
   const factory OpenApiSchema.oneOf({
     @OpenApiSchemaJsonConverter()
     @JsonKey(name: 'oneOf')
-    required List<OpenApiSchema>? oneOf,
+    @Default([])
+    List<OpenApiSchema> oneOf,
     @JsonKey(name: 'description') String? description,
     @JsonKey(name: 'title') String? title,
     @JsonKey(name: 'discriminator')
@@ -60,7 +62,9 @@ sealed class OpenApiSchema with _$OpenApiSchema {
 @freezed
 abstract class OpenApiSchemaOneOfDiscriminator
     with _$OpenApiSchemaOneOfDiscriminator {
-  factory OpenApiSchemaOneOfDiscriminator({
+  const OpenApiSchemaOneOfDiscriminator._();
+
+  const factory OpenApiSchemaOneOfDiscriminator({
     @JsonKey(name: 'propertyName') required String propertyName,
     @JsonKey(name: 'mapping') required Map<String, String> mapping,
   }) = _OpenApiSchemaOneOfDiscriminator;
