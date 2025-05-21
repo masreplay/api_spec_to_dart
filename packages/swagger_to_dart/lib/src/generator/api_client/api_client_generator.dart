@@ -262,7 +262,8 @@ class ApiClientGenerator {
 
                         final Parameter? requestBody;
 
-                        if (method.value.requestBody?.content.applicationXWwwFormUrlencoded
+                        if (method.value.requestBody?.content
+                                .applicationXWwwFormUrlencoded
                             case final body?) {
                           requestBody = Parameter((b) => b
                             ..annotations.addAll([
@@ -277,8 +278,8 @@ class ApiClientGenerator {
                                 className: className,
                               ),
                             ));
-                        } else if (method.value.requestBody?.content
-                                .multipartFormData
+                        } else if (method
+                                .value.requestBody?.content.multipartFormData
                             case final body?) {
                           requestBody = Parameter((b) => b
                             ..annotations.addAll([
@@ -293,8 +294,8 @@ class ApiClientGenerator {
                                 className: className,
                               ),
                             ));
-                        } else if (method.value.requestBody?.content
-                                .applicationJson
+                        } else if (method
+                                .value.requestBody?.content.applicationJson
                             case final body?) {
                           requestBody = Parameter((b) => b
                             ..annotations.addAll([

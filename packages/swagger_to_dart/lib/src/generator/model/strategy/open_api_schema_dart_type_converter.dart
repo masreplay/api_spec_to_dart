@@ -113,6 +113,13 @@ class OpenApiSchemaDartTypeConverter {
       );
     }
 
+    if (nonNullSchemas.every((e) => e is OpenApiSchemaRef)) {
+      return PropertyGeneratorStrategy(context).createUnionClass(
+        nonNullSchemas,
+        className: className,
+      );
+    }
+
     return 'dynamic';
   }
 
