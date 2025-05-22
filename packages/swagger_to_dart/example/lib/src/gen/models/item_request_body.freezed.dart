@@ -17,9 +17,9 @@ T _$identity<T>(T value) => value;
 mixin _$ItemRequestBody {
 
 /// name
-@JsonKey(name: ItemRequestBody.nameKey) String get name;/// Description
+@JsonKey(name: ItemRequestBody.nameKey) String get name;/// description
 @JsonKey(name: ItemRequestBody.descriptionKey) String? get description;/// price
-@JsonKey(name: ItemRequestBody.priceKey) double get price;/// Tax
+@JsonKey(name: ItemRequestBody.priceKey) double get price;/// tax
 @JsonKey(name: ItemRequestBody.taxKey) double? get tax;
 /// Create a copy of ItemRequestBody
 /// with the given fields replaced by the non-null parameter values.
@@ -85,18 +85,18 @@ as double?,
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
+@jsonSerializable
 class _ItemRequestBody extends ItemRequestBody {
   const _ItemRequestBody({@JsonKey(name: ItemRequestBody.nameKey) required this.name, @JsonKey(name: ItemRequestBody.descriptionKey) required this.description, @JsonKey(name: ItemRequestBody.priceKey) required this.price, @JsonKey(name: ItemRequestBody.taxKey) required this.tax}): super._();
   factory _ItemRequestBody.fromJson(Map<String, dynamic> json) => _$ItemRequestBodyFromJson(json);
 
 /// name
 @override@JsonKey(name: ItemRequestBody.nameKey) final  String name;
-/// Description
+/// description
 @override@JsonKey(name: ItemRequestBody.descriptionKey) final  String? description;
 /// price
 @override@JsonKey(name: ItemRequestBody.priceKey) final  double price;
-/// Tax
+/// tax
 @override@JsonKey(name: ItemRequestBody.taxKey) final  double? tax;
 
 /// Create a copy of ItemRequestBody

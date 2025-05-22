@@ -16,8 +16,8 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CurrencyModel {
 
-/// Currency
-@JsonKey(name: CurrencyModel.currencyKey) String? get currency;/// Iso4217
+/// currency
+@JsonKey(name: CurrencyModel.currencyKey) String? get currency;/// iso4217
 @JsonKey(name: CurrencyModel.iso4217Key) String? get iso4217;
 /// Create a copy of CurrencyModel
 /// with the given fields replaced by the non-null parameter values.
@@ -81,14 +81,14 @@ as String?,
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
+@jsonSerializable
 class _CurrencyModel extends CurrencyModel {
   const _CurrencyModel({@JsonKey(name: CurrencyModel.currencyKey) required this.currency, @JsonKey(name: CurrencyModel.iso4217Key) required this.iso4217}): super._();
   factory _CurrencyModel.fromJson(Map<String, dynamic> json) => _$CurrencyModelFromJson(json);
 
-/// Currency
+/// currency
 @override@JsonKey(name: CurrencyModel.currencyKey) final  String? currency;
-/// Iso4217
+/// iso4217
 @override@JsonKey(name: CurrencyModel.iso4217Key) final  String? iso4217;
 
 /// Create a copy of CurrencyModel

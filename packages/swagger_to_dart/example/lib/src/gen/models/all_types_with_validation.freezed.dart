@@ -16,13 +16,13 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AllTypesWithValidation {
 
-/// int_value, Integer between 1-99
-@JsonKey(name: AllTypesWithValidation.intValueKey) int get intValue;/// float_value, Pi or other values
-@JsonKey(name: AllTypesWithValidation.floatValueKey) double get floatValue;/// str_value, String with alphanumeric characters, underscores and hyphens
-@JsonKey(name: AllTypesWithValidation.strValueKey) String get strValue;/// bool_value, Boolean value
-@JsonKey(name: AllTypesWithValidation.boolValueKey) bool get boolValue;/// email_value, Valid email address
-@JsonKey(name: AllTypesWithValidation.emailValueKey) String get emailValue;/// url_value, Valid HTTP URL
-@JsonKey(name: AllTypesWithValidation.urlValueKey) Uri get urlValue;/// list_value, List with 1-5 strings
+/// intValue
+@JsonKey(name: AllTypesWithValidation.intValueKey) int get intValue;/// floatValue
+@JsonKey(name: AllTypesWithValidation.floatValueKey) double get floatValue;/// strValue
+@JsonKey(name: AllTypesWithValidation.strValueKey) String get strValue;/// boolValue
+@JsonKey(name: AllTypesWithValidation.boolValueKey) bool get boolValue;/// emailValue
+@JsonKey(name: AllTypesWithValidation.emailValueKey) String get emailValue;/// urlValue
+@JsonKey(name: AllTypesWithValidation.urlValueKey) Uri get urlValue;/// listValue
 @JsonKey(name: AllTypesWithValidation.listValueKey) List<String> get listValue;
 /// Create a copy of AllTypesWithValidation
 /// with the given fields replaced by the non-null parameter values.
@@ -91,26 +91,26 @@ as List<String>,
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
+@jsonSerializable
 class _AllTypesWithValidation extends AllTypesWithValidation {
   const _AllTypesWithValidation({@JsonKey(name: AllTypesWithValidation.intValueKey) required this.intValue, @JsonKey(name: AllTypesWithValidation.floatValueKey) required this.floatValue, @JsonKey(name: AllTypesWithValidation.strValueKey) required this.strValue, @JsonKey(name: AllTypesWithValidation.boolValueKey) required this.boolValue, @JsonKey(name: AllTypesWithValidation.emailValueKey) required this.emailValue, @JsonKey(name: AllTypesWithValidation.urlValueKey) required this.urlValue, @JsonKey(name: AllTypesWithValidation.listValueKey) required final  List<String> listValue}): _listValue = listValue,super._();
   factory _AllTypesWithValidation.fromJson(Map<String, dynamic> json) => _$AllTypesWithValidationFromJson(json);
 
-/// int_value, Integer between 1-99
+/// intValue
 @override@JsonKey(name: AllTypesWithValidation.intValueKey) final  int intValue;
-/// float_value, Pi or other values
+/// floatValue
 @override@JsonKey(name: AllTypesWithValidation.floatValueKey) final  double floatValue;
-/// str_value, String with alphanumeric characters, underscores and hyphens
+/// strValue
 @override@JsonKey(name: AllTypesWithValidation.strValueKey) final  String strValue;
-/// bool_value, Boolean value
+/// boolValue
 @override@JsonKey(name: AllTypesWithValidation.boolValueKey) final  bool boolValue;
-/// email_value, Valid email address
+/// emailValue
 @override@JsonKey(name: AllTypesWithValidation.emailValueKey) final  String emailValue;
-/// url_value, Valid HTTP URL
+/// urlValue
 @override@JsonKey(name: AllTypesWithValidation.urlValueKey) final  Uri urlValue;
-/// list_value, List with 1-5 strings
+/// listValue
  final  List<String> _listValue;
-/// list_value, List with 1-5 strings
+/// listValue
 @override@JsonKey(name: AllTypesWithValidation.listValueKey) List<String> get listValue {
   if (_listValue is EqualUnmodifiableListView) return _listValue;
   // ignore: implicit_dynamic_type

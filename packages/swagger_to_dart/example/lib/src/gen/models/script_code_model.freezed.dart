@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ScriptCodeModel {
 
-/// script_code
+/// scriptCode
 @JsonKey(name: ScriptCodeModel.scriptCodeKey) String get scriptCode;
 /// Create a copy of ScriptCodeModel
 /// with the given fields replaced by the non-null parameter values.
@@ -79,12 +79,12 @@ as String,
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
+@jsonSerializable
 class _ScriptCodeModel extends ScriptCodeModel {
   const _ScriptCodeModel({@JsonKey(name: ScriptCodeModel.scriptCodeKey) required this.scriptCode}): super._();
   factory _ScriptCodeModel.fromJson(Map<String, dynamic> json) => _$ScriptCodeModelFromJson(json);
 
-/// script_code
+/// scriptCode
 @override@JsonKey(name: ScriptCodeModel.scriptCodeKey) final  String scriptCode;
 
 /// Create a copy of ScriptCodeModel

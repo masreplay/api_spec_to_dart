@@ -1,29 +1,49 @@
-import "package:freezed_annotation/freezed_annotation.dart";
-
-import "convertors.dart";
-import 'package:example/src/gen/models/models.dart';
-
-part "body_files_form_basic.freezed.dart";
-part "body_files_form_basic.g.dart";
-
 /// Body_files-form_basic
+/// {
+///     "properties": {
+///         "username": {
+///             "type": "string",
+///             "description": "Username",
+///             "title": "Username"
+///         },
+///         "password": {
+///             "type": "string",
+///             "description": "Password",
+///             "title": "Password"
+///         },
+///         "remember": {
+///             "type": "boolean",
+///             "description": "Remember login",
+///             "default": false,
+///             "title": "Remember"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "username",
+///         "password"
+///     ],
+///     "title": "Body_files-form_basic"
+/// }
+library;
+
+import 'exports.dart';
+part 'body_files_form_basic.freezed.dart';
+part 'body_files_form_basic.g.dart'; // BodyFilesFormBasic
+
 @freezed
 abstract class BodyFilesFormBasic with _$BodyFilesFormBasic {
   const BodyFilesFormBasic._();
 
-  static const String usernameKey = "username";
-  static const String passwordKey = "password";
-  static const String rememberKey = "remember";
-
-  @JsonSerializable(converters: convertors)
+  @jsonSerializable
   const factory BodyFilesFormBasic({
-    /// username, Username
+    /// username
     @JsonKey(name: BodyFilesFormBasic.usernameKey) required String username,
 
-    /// password, Password
+    /// password
     @JsonKey(name: BodyFilesFormBasic.passwordKey) required String password,
 
-    /// remember, Remember login
+    /// remember
     @Default(false)
     @JsonKey(name: BodyFilesFormBasic.rememberKey)
     bool remember,
@@ -31,4 +51,10 @@ abstract class BodyFilesFormBasic with _$BodyFilesFormBasic {
 
   factory BodyFilesFormBasic.fromJson(Map<String, dynamic> json) =>
       _$BodyFilesFormBasicFromJson(json);
+
+  static const String usernameKey = "username";
+
+  static const String passwordKey = "password";
+
+  static const String rememberKey = "remember";
 }

@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$MACAddressModel {
 
-/// mac_address
+/// macAddress
 @JsonKey(name: MACAddressModel.macAddressKey) String get macAddress;
 /// Create a copy of MACAddressModel
 /// with the given fields replaced by the non-null parameter values.
@@ -79,12 +79,12 @@ as String,
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
+@jsonSerializable
 class _MACAddressModel extends MACAddressModel {
   const _MACAddressModel({@JsonKey(name: MACAddressModel.macAddressKey) required this.macAddress}): super._();
   factory _MACAddressModel.fromJson(Map<String, dynamic> json) => _$MACAddressModelFromJson(json);
 
-/// mac_address
+/// macAddress
 @override@JsonKey(name: MACAddressModel.macAddressKey) final  String macAddress;
 
 /// Create a copy of MACAddressModel

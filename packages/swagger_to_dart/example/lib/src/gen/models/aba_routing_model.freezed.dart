@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ABARoutingModel {
 
-/// routing_number
+/// routingNumber
 @JsonKey(name: ABARoutingModel.routingNumberKey) String get routingNumber;
 /// Create a copy of ABARoutingModel
 /// with the given fields replaced by the non-null parameter values.
@@ -79,12 +79,12 @@ as String,
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
+@jsonSerializable
 class _ABARoutingModel extends ABARoutingModel {
   const _ABARoutingModel({@JsonKey(name: ABARoutingModel.routingNumberKey) required this.routingNumber}): super._();
   factory _ABARoutingModel.fromJson(Map<String, dynamic> json) => _$ABARoutingModelFromJson(json);
 
-/// routing_number
+/// routingNumber
 @override@JsonKey(name: ABARoutingModel.routingNumberKey) final  String routingNumber;
 
 /// Create a copy of ABARoutingModel

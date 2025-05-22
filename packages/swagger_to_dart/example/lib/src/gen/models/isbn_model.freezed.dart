@@ -79,7 +79,7 @@ as String,
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
+@jsonSerializable
 class _IsbnModel extends IsbnModel {
   const _IsbnModel({@JsonKey(name: IsbnModel.isbnKey) required this.isbn}): super._();
   factory _IsbnModel.fromJson(Map<String, dynamic> json) => _$IsbnModelFromJson(json);

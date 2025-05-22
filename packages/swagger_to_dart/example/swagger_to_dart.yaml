@@ -1,6 +1,6 @@
 swagger_to_dart:
   # From FastAPI project running locally for example
-  url: http://127.0.0.1:8000/openapi.json
+  # url: http://0.0.0.0:8004/openapi.json
 
   # Where to save the openapi.json file
   input_directory: schema/swagger.json

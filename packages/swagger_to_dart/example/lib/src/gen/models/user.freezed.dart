@@ -16,14 +16,14 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$User {
 
-/// username, Username between 3-50 characters, alphanumeric with _ and -
-@JsonKey(name: User.usernameKey) String get username;/// email, Valid email address
-@JsonKey(name: User.emailKey) String get email;/// Full Name, User's full name
-@JsonKey(name: User.fullNameKey) String? get fullName;/// id, Unique user identifier
-@JsonKey(name: User.idKey) int get id;/// is_active, User account status
-@JsonKey(name: User.isActiveKey) bool get isActive;/// created_at, Account creation timestamp
-@JsonKey(name: User.createdAtKey) DateTime get createdAt;/// User's location information
-@JsonKey(name: User.locationKey) Location? get location;/// tags, List of tags associated with the user
+/// username
+@JsonKey(name: User.usernameKey) String get username;/// email
+@JsonKey(name: User.emailKey) String get email;/// fullName
+@JsonKey(name: User.fullNameKey) String? get fullName;/// id
+@JsonKey(name: User.idKey) int get id;/// isActive
+@JsonKey(name: User.isActiveKey) bool get isActive;/// createdAt
+@JsonKey(name: User.createdAtKey) DateTime get createdAt;/// location
+@JsonKey(name: User.locationKey) Location? get location;/// tags
 @JsonKey(name: User.tagsKey) List<String> get tags;
 /// Create a copy of User
 /// with the given fields replaced by the non-null parameter values.
@@ -105,28 +105,28 @@ $LocationCopyWith<$Res>? get location {
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
+@jsonSerializable
 class _User extends User {
   const _User({@JsonKey(name: User.usernameKey) required this.username, @JsonKey(name: User.emailKey) required this.email, @JsonKey(name: User.fullNameKey) required this.fullName, @JsonKey(name: User.idKey) required this.id, @JsonKey(name: User.isActiveKey) this.isActive = true, @JsonKey(name: User.createdAtKey) required this.createdAt, @JsonKey(name: User.locationKey) required this.location, @JsonKey(name: User.tagsKey) final  List<String> tags = const []}): _tags = tags,super._();
   factory _User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
-/// username, Username between 3-50 characters, alphanumeric with _ and -
+/// username
 @override@JsonKey(name: User.usernameKey) final  String username;
-/// email, Valid email address
+/// email
 @override@JsonKey(name: User.emailKey) final  String email;
-/// Full Name, User's full name
+/// fullName
 @override@JsonKey(name: User.fullNameKey) final  String? fullName;
-/// id, Unique user identifier
+/// id
 @override@JsonKey(name: User.idKey) final  int id;
-/// is_active, User account status
+/// isActive
 @override@JsonKey(name: User.isActiveKey) final  bool isActive;
-/// created_at, Account creation timestamp
+/// createdAt
 @override@JsonKey(name: User.createdAtKey) final  DateTime createdAt;
-/// User's location information
+/// location
 @override@JsonKey(name: User.locationKey) final  Location? location;
-/// tags, List of tags associated with the user
+/// tags
  final  List<String> _tags;
-/// tags, List of tags associated with the user
+/// tags
 @override@JsonKey(name: User.tagsKey) List<String> get tags {
   if (_tags is EqualUnmodifiableListView) return _tags;
   // ignore: implicit_dynamic_type

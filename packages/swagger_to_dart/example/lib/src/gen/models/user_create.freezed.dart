@@ -16,10 +16,10 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$UserCreate {
 
-/// username, Username between 3-50 characters, alphanumeric with _ and -
-@JsonKey(name: UserCreate.usernameKey) String get username;/// email, Valid email address
-@JsonKey(name: UserCreate.emailKey) String get email;/// Full Name, User's full name
-@JsonKey(name: UserCreate.fullNameKey) String? get fullName;/// password, Password with minimum 8 characters
+/// username
+@JsonKey(name: UserCreate.usernameKey) String get username;/// email
+@JsonKey(name: UserCreate.emailKey) String get email;/// fullName
+@JsonKey(name: UserCreate.fullNameKey) String? get fullName;/// password
 @JsonKey(name: UserCreate.passwordKey) String get password;
 /// Create a copy of UserCreate
 /// with the given fields replaced by the non-null parameter values.
@@ -85,18 +85,18 @@ as String,
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
+@jsonSerializable
 class _UserCreate extends UserCreate {
   const _UserCreate({@JsonKey(name: UserCreate.usernameKey) required this.username, @JsonKey(name: UserCreate.emailKey) required this.email, @JsonKey(name: UserCreate.fullNameKey) required this.fullName, @JsonKey(name: UserCreate.passwordKey) required this.password}): super._();
   factory _UserCreate.fromJson(Map<String, dynamic> json) => _$UserCreateFromJson(json);
 
-/// username, Username between 3-50 characters, alphanumeric with _ and -
+/// username
 @override@JsonKey(name: UserCreate.usernameKey) final  String username;
-/// email, Valid email address
+/// email
 @override@JsonKey(name: UserCreate.emailKey) final  String email;
-/// Full Name, User's full name
+/// fullName
 @override@JsonKey(name: UserCreate.fullNameKey) final  String? fullName;
-/// password, Password with minimum 8 characters
+/// password
 @override@JsonKey(name: UserCreate.passwordKey) final  String password;
 
 /// Create a copy of UserCreate

@@ -16,8 +16,9 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$PaymentCardModel {
 
-/// card_number
-@JsonKey(name: PaymentCardModel.cardNumberKey) String get cardNumber;@JsonKey(name: PaymentCardModel.cardBrandKey) PaymentCardBrand? get cardBrand;
+/// cardNumber
+@JsonKey(name: PaymentCardModel.cardNumberKey) String get cardNumber;/// cardBrand
+@JsonKey(name: PaymentCardModel.cardBrandKey) PaymentCardBrand? get cardBrand;
 /// Create a copy of PaymentCardModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -80,13 +81,14 @@ as PaymentCardBrand?,
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
+@jsonSerializable
 class _PaymentCardModel extends PaymentCardModel {
   const _PaymentCardModel({@JsonKey(name: PaymentCardModel.cardNumberKey) required this.cardNumber, @JsonKey(name: PaymentCardModel.cardBrandKey) required this.cardBrand}): super._();
   factory _PaymentCardModel.fromJson(Map<String, dynamic> json) => _$PaymentCardModelFromJson(json);
 
-/// card_number
+/// cardNumber
 @override@JsonKey(name: PaymentCardModel.cardNumberKey) final  String cardNumber;
+/// cardBrand
 @override@JsonKey(name: PaymentCardModel.cardBrandKey) final  PaymentCardBrand? cardBrand;
 
 /// Create a copy of PaymentCardModel

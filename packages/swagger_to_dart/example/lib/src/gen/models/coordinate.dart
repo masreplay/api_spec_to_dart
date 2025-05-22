@@ -1,20 +1,33 @@
-import "package:freezed_annotation/freezed_annotation.dart";
-
-import "convertors.dart";
-import 'package:example/src/gen/models/models.dart';
-
-part "coordinate.freezed.dart";
-part "coordinate.g.dart";
-
 /// Coordinate
+/// {
+///     "properties": {
+///         "latitude": {
+///             "type": "number",
+///             "title": "Latitude"
+///         },
+///         "longitude": {
+///             "type": "number",
+///             "title": "Longitude"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "latitude",
+///         "longitude"
+///     ],
+///     "title": "Coordinate"
+/// }
+library;
+
+import 'exports.dart';
+part 'coordinate.freezed.dart';
+part 'coordinate.g.dart'; // Coordinate
+
 @freezed
 abstract class Coordinate with _$Coordinate {
   const Coordinate._();
 
-  static const String latitudeKey = "latitude";
-  static const String longitudeKey = "longitude";
-
-  @JsonSerializable(converters: convertors)
+  @jsonSerializable
   const factory Coordinate({
     /// latitude
     @JsonKey(name: Coordinate.latitudeKey) required double latitude,
@@ -25,4 +38,8 @@ abstract class Coordinate with _$Coordinate {
 
   factory Coordinate.fromJson(Map<String, dynamic> json) =>
       _$CoordinateFromJson(json);
+
+  static const String latitudeKey = "latitude";
+
+  static const String longitudeKey = "longitude";
 }

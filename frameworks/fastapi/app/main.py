@@ -1,6 +1,6 @@
 from datetime import date, datetime, time, timedelta
 from enum import Enum
-from typing import Annotated, Any, Dict, List, Literal, Optional, Set, Tuple, Union
+from typing import Annotated, Any, Literal
 from uuid import UUID
 
 from fastapi import (
@@ -22,10 +22,6 @@ from fastapi.security import (
     OAuth2PasswordBearer,
     OAuth2PasswordRequestForm,
 )
-
-from app import pydantic_extra_types_route, items_route
-
-
 from pydantic import (
     BaseModel,
     EmailStr,
@@ -37,6 +33,13 @@ from pydantic import (
     confloat,
     conint,
     constr,
+)
+
+from app.router import (
+    generic_router,
+    items_router,
+    pydantic_extra_types_router,
+    union_router,
 )
 
 app = FastAPI(
@@ -61,7 +64,6 @@ app = FastAPI(
 @app.get(
     "/basic/number/{num}",
     tags=["basic"],
-    response_model=dict[str, Any],
     summary="Handle integer path parameter",
 )
 def basic_number(num: int) -> dict[str, Any]:
@@ -72,7 +74,6 @@ def basic_number(num: int) -> dict[str, Any]:
 @app.get(
     "/basic/float/{num}",
     tags=["basic"],
-    response_model=dict[str, Any],
     summary="Handle float path parameter",
 )
 def basic_float(num: float) -> dict[str, Any]:
@@ -83,7 +84,6 @@ def basic_float(num: float) -> dict[str, Any]:
 @app.get(
     "/basic/boolean",
     tags=["basic"],
-    response_model=dict[str, Any],
     summary="Handle boolean query parameter",
 )
 def basic_boolean(flag: bool = Query(False, example=True)) -> dict[str, Any]:
@@ -94,11 +94,15 @@ def basic_boolean(flag: bool = Query(False, example=True)) -> dict[str, Any]:
 @app.get(
     "/basic/string",
     tags=["basic"],
-    response_model=dict[str, Any],
     summary="Handle string query parameter",
 )
 def basic_string(
-    text: str = Query(None, min_length=3, max_length=50, example="example_text"),
+    text: str = Query(
+        None,
+        min_length=3,
+        max_length=50,
+        example="example_text",
+    ),
 ) -> dict[str, Any]:
     """Handle string query parameter with validation."""
     return {"value": text, "type": "string"}
@@ -110,7 +114,6 @@ def basic_string(
 @app.get(
     "/datetime/date",
     tags=["basic"],
-    response_model=dict[str, Any],
     summary="Handle date parameters",
 )
 def datetime_date(d: date) -> dict[str, Any]:
@@ -121,10 +124,18 @@ def datetime_date(d: date) -> dict[str, Any]:
 @app.get(
     "/datetime/datetime",
     tags=["basic"],
-    response_model=dict[str, Any],
     summary="Handle datetime parameters",
 )
 def datetime_datetime(dt: datetime) -> dict[str, Any]:
+    """Handle datetime parameter (YYYY-MM-DDThh:mm:ss)."""
+    return {"datetime": dt, "timestamp": dt.timestamp()}
+
+@app.post(
+    "/datetime/datetime",
+    tags=["basic"],
+    summary="Handle datetime parameters",
+)
+def create_datetime_datetime(dt: datetime) -> dict[str, Any]:
     """Handle datetime parameter (YYYY-MM-DDThh:mm:ss)."""
     return {"datetime": dt, "timestamp": dt.timestamp()}
 
@@ -132,7 +143,6 @@ def datetime_datetime(dt: datetime) -> dict[str, Any]:
 @app.get(
     "/datetime/time",
     tags=["basic"],
-    response_model=dict[str, Any],
     summary="Handle time parameters",
 )
 def datetime_time(t: time) -> dict[str, Any]:
@@ -143,7 +153,6 @@ def datetime_time(t: time) -> dict[str, Any]:
 @app.get(
     "/datetime/timedelta",
     tags=["basic"],
-    response_model=dict[str, Any],
     summary="Handle timedelta parameters",
 )
 def datetime_timedelta(td: timedelta) -> dict[str, Any]:
@@ -157,7 +166,6 @@ def datetime_timedelta(td: timedelta) -> dict[str, Any]:
 @app.get(
     "/special/uuid",
     tags=["advanced"],
-    response_model=dict[str, Any],
     summary="Handle UUID parameters",
 )
 def special_uuid(id: UUID) -> dict[str, Any]:
@@ -174,7 +182,6 @@ class UserLevel(str, Enum):
 @app.get(
     "/special/enum",
     tags=["advanced"],
-    response_model=dict[str, Any],
     summary="Handle enum parameters",
 )
 def special_enum(level: UserLevel = UserLevel.BASIC) -> dict[str, Any]:
@@ -192,7 +199,6 @@ def special_enum(level: UserLevel = UserLevel.BASIC) -> dict[str, Any]:
 @app.get(
     "/special/literal",
     tags=["advanced"],
-    response_model=dict[str, Any],
     summary="Handle literal type parameters",
 )
 def special_literal(
@@ -213,31 +219,36 @@ def special_literal(
 
 
 @app.get("/collection/list", tags=["advanced"])
-def collection_list(items: List[str] = Query(["default"])) -> dict[str, Any]:
+def collection_list(items: list[str] = Query(["default"])) -> dict[str, Any]:
     """Handle list of strings query parameter."""
     return {"items": items, "count": len(items)}
 
 
 @app.get("/collection/set", tags=["advanced"])
-def collection_set(items: Set[int] = Query({1, 2, 3})) -> dict[str, Any]:
+def collection_set(items: set[int] = Query({1, 2, 3})) -> dict[str, Any]:
     """Handle set of integers query parameter."""
-    return {"items": list(items), "unique_count": len(items)}
+    return {
+        "items": list(
+            items,
+        ),
+        "unique_count": len(items),
+    }
 
 
 @app.get("/collection/dict", tags=["advanced"])
-def collection_dict(data: Dict[str, Any] = Body(...)) -> dict[str, Any]:
+def collection_dict(data: dict[str, Any] = Body(...)) -> dict[str, Any]:
     """Handle dictionary in request body."""
     return {"data": data, "keys": list(data.keys())}
 
 
 @app.get("/collection/tuple", tags=["advanced"])
-def collection_tuple(items: Tuple[int, str, bool] = Query(...)) -> dict[str, Any]:
+def collection_tuple(items: tuple[int, str, bool] = Query(...)) -> dict[str, Any]:
     """Handle fixed-size tuple query parameter."""
     return {"items": items, "types": [type(item).__name__ for item in items]}
 
 
 @app.get("/collection/variable_tuple", tags=["advanced"])
-def collection_variable_tuple(items: Tuple[str, ...] = Query(...)) -> dict[str, Any]:
+def collection_variable_tuple(items: tuple[str, ...] = Query(...)) -> dict[str, Any]:
     """Handle variable-size tuple query parameter."""
     return {"items": items, "count": len(items)}
 
@@ -248,10 +259,9 @@ def collection_variable_tuple(items: Tuple[str, ...] = Query(...)) -> dict[str, 
 @app.get(
     "/union/simple",
     tags=["advanced"],
-    response_model=dict[str, Any],
     summary="Handle union type parameters",
 )
-def union_simple(value: Union[int, str, bool]) -> dict[str, Any]:
+def union_simple(value: int | str | bool) -> dict[str, Any]:
     """Handle union type parameter."""
     return {"value": value, "type": type(value).__name__}
 
@@ -259,10 +269,9 @@ def union_simple(value: Union[int, str, bool]) -> dict[str, Any]:
 @app.get(
     "/union/optional",
     tags=["advanced"],
-    response_model=dict[str, Any],
     summary="Handle optional parameters",
 )
-def union_optional(value: Optional[str] = None) -> dict[str, Any]:
+def union_optional(value: str | None = None) -> dict[str, Any]:
     """Handle optional type parameter."""
     return {"value": value, "is_none": value is None}
 
@@ -270,7 +279,6 @@ def union_optional(value: Optional[str] = None) -> dict[str, Any]:
 @app.get(
     "/union/modern",
     tags=["advanced"],
-    response_model=dict[str, Any],
     summary="Handle union with modern Python syntax",
 )
 def union_modern(value: int | str | None = None) -> dict[str, Any]:
@@ -290,7 +298,7 @@ class Location(BaseModel):
         Field(
             ge=-90,
             le=90,
-            example=40.7128,
+            examples=[40.7128],
             description="Latitude coordinate between -90 and 90 degrees",
             title="Latitude",
         ),
@@ -300,14 +308,14 @@ class Location(BaseModel):
         Field(
             ge=-180,
             le=180,
-            example=-74.0060,
+            examples=[-74.0060],
             description="Longitude coordinate between -180 and 180 degrees",
             title="Longitude",
         ),
     ]
-    name: Optional[str] = Field(
+    name: str | None = Field(
         None,
-        example="New York",
+        examples=["New York"],
         description="Optional location name",
     )
 
@@ -316,17 +324,17 @@ class UserBase(BaseModel):
     username: str = Field(
         min_length=3,
         max_length=50,
-        example="johndoe",
+        examples=["johndoe"],
         pattern="^[a-zA-Z0-9_-]+$",
         description="Username between 3-50 characters, alphanumeric with _ and -",
     )
     email: EmailStr = Field(
-        example="john@example.com",
+        examples=["john@example.com"],
         description="Valid email address",
     )
-    full_name: Optional[str] = Field(
+    full_name: str | None = Field(
         None,
-        example="John Doe",
+        examples=["John Doe"],
         description="User's full name",
     )
 
@@ -340,28 +348,28 @@ class UserCreate(UserBase):
 
 class User(UserBase):
     id: int = Field(
-        example=1,
+        examples=[1],
         gt=0,
         description="Unique user identifier",
     )
     is_active: bool = Field(
         True,
-        example=True,
+        examples=[True],
         description="User account status",
     )
     created_at: datetime = Field(
         default_factory=datetime.now,
-        example="2023-01-01T00:00:00",
+        examples=["2023-01-01T00:00:00"],
         description="Account creation timestamp",
     )
-    location: Optional[Location] = Field(
+    location: Location | None = Field(
         None,
         description="User's location information",
     )
-    tags: List[str] = Field(
+    tags: list[str] = Field(
         [],
-        example=["user", "customer"],
-        description="List of tags associated with the user",
+        examples=["user", "customer"],
+        description="list of tags associated with the user",
     )
 
     tmp: bool = Field(
@@ -371,7 +379,7 @@ class User(UserBase):
     )
 
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "id": 1,
                 "username": "johndoe",
@@ -386,7 +394,8 @@ class User(UserBase):
 
 
 @app.post(
-    "/models/user", response_model=User, tags=["models"], summary="Create a new user"
+    "/models/user",
+    tags=["models"],
 )
 def create_user(user: UserCreate) -> User:
     """Create a new user from a Pydantic model."""
@@ -407,7 +416,6 @@ def create_user(user: UserCreate) -> User:
 @app.get(
     "/models/location",
     tags=["models"],
-    response_model=dict[str, Any],
     summary="Process location information",
 )
 def get_location(location: Location) -> dict[str, Any]:
@@ -418,75 +426,12 @@ def get_location(location: Location) -> dict[str, Any]:
     }
 
 
-# --------- DISCRIMINATED UNIONS ---------
-
-
-class Animal(BaseModel):
-    name: str = Field(example="Fido", description="The animal's name")
-
-
-class Dog(Animal):
-    type: Literal["dog"] = Field("dog", example="dog")
-    bark_loudness: int = Field(
-        ge=0,
-        le=10,
-        example=7,
-        description="How loud the dog barks (0-10)",
-        title="Bark Loudness",
-    )
-
-
-class Cat(Animal):
-    type: Literal["cat"] = Field("cat", example="cat")
-    meow_cuteness: int = Field(
-        ge=0,
-        le=10,
-        example=9,
-        description="How cute the cat's meow is (0-10)",
-        title="Meow Cuteness Level",
-    )
-
-
-class Parrot(Animal):
-    type: Literal["parrot"] = Field("parrot", example="parrot")
-    phrases: List[str] = Field(
-        example=["Hello!", "Polly wants a cracker"],
-        description="Phrases the parrot can say",
-    )
-
-
-AnyAnimal = Annotated[Union[Dog, Cat, Parrot], Field(discriminator="type")]
-
-
-@app.post(
-    "/models/animal",
-    tags=["models"],
-    response_model=dict[str, Any],
-    summary="Create an animal based on type discriminator",
-)
-def create_animal(animal: AnyAnimal) -> dict[str, Any]:
-    """Handle discriminated union of Pydantic models."""
-    animal_type = animal.type
-
-    response = {"name": animal.name, "type": animal_type}
-
-    if animal_type == "dog":
-        response["sound"] = "Woof!" * (animal.bark_loudness // 3 + 1)
-    elif animal_type == "cat":
-        response["sound"] = "Meow~" + "~" * animal.meow_cuteness
-    elif animal_type == "parrot":
-        response["sound"] = animal.phrases[0] if animal.phrases else "Squawk!"
-
-    return response
-
-
 # --------- PARAMETER SOURCES ---------
 
 
 @app.get(
     "/params/path/{item_id}",
     tags=["validation"],
-    response_model=dict[str, Any],
     summary="Demonstrate path parameter validation",
 )
 def param_path(
@@ -504,11 +449,10 @@ def param_path(
 @app.get(
     "/params/query",
     tags=["validation"],
-    response_model=dict[str, Any],
     summary="Demonstrate query parameter validation",
 )
 def param_query(
-    q: Optional[str] = Query(
+    q: str | None = Query(
         None,
         min_length=3,
         max_length=50,
@@ -516,7 +460,12 @@ def param_query(
         example="search-term",
         description="Search query string (alphanumeric with hyphens and underscores)",
     ),
-    skip: int = Query(0, ge=0, example=0, description="Number of items to skip"),
+    skip: int = Query(
+        0,
+        ge=0,
+        example=0,
+        description="Number of items to skip",
+    ),
     limit: int = Query(
         10,
         ge=1,
@@ -532,11 +481,10 @@ def param_query(
 @app.post(
     "/params/body",
     tags=["validation"],
-    response_model=dict[str, Any],
     summary="Demonstrate body parameter validation",
 )
 def param_body(
-    data: Dict[str, Any] = Body(
+    data: dict[str, Any] = Body(
         example={"name": "Test Item", "description": "This is a test item"},
         description="Arbitrary data object",
     ),
@@ -553,8 +501,12 @@ def param_body(
 
 @app.get("/params/cookie", tags=["validation"])
 def param_cookie(
-    session: Optional[str] = Cookie(None),
-    preferences: Optional[str] = Cookie(None),
+    session: str | None = Cookie(
+        None,
+    ),
+    preferences: str | None = Cookie(
+        None,
+    ),
 ) -> dict[str, Any]:
     """Cookie parameters."""
     return {"session": session, "preferences": preferences}
@@ -562,8 +514,12 @@ def param_cookie(
 
 @app.get("/params/header", tags=["validation"])
 def param_header(
-    user_agent: str = Header(...),
-    x_token: Optional[str] = Header(None),
+    user_agent: str = Header(
+        ...,
+    ),
+    x_token: str | None = Header(
+        None,
+    ),
 ) -> dict[str, Any]:
     """Header parameters."""
     return {"user_agent": user_agent, "token": x_token}
@@ -575,18 +531,28 @@ def param_header(
 @app.post(
     "/forms/basic",
     tags=["files"],
-    response_model=dict[str, Any],
     summary="Handle basic form data",
 )
 def form_basic(
-    username: str = Form(example="johndoe", description="Username"),
-    password: str = Form(description="Password"),
-    remember: bool = Form(False, example=False, description="Remember login"),
+    username: str = Form(
+        example="johndoe",
+        description="Username",
+    ),
+    password: str = Form(
+        description="Password",
+    ),
+    remember: bool = Form(
+        False,
+        example=False,
+        description="Remember login",
+    ),
 ) -> dict[str, Any]:
     """Handle form data."""
     return {
         "username": username,
-        "password_length": len(password),
+        "password_length": len(
+            password,
+        ),
         "remember": remember,
     }
 
@@ -594,12 +560,13 @@ def form_basic(
 @app.post(
     "/files/upload",
     tags=["files"],
-    response_model=dict[str, Any],
     summary="Handle single file upload",
 )
 def file_upload(
-    file: UploadFile = File(description="File to upload"),
-    description: Optional[str] = Form(
+    file: UploadFile = File(
+        description="File to upload",
+    ),
+    description: str | None = Form(
         None,
         example="My document",
         description="File description",
@@ -616,11 +583,12 @@ def file_upload(
 @app.post(
     "/files/multiple",
     tags=["files"],
-    response_model=dict[str, Any],
     summary="Handle multiple file uploads",
 )
 def files_multiple(
-    files: List[UploadFile] = File(description="List of files to upload"),
+    files: list[UploadFile] = File(
+        description="list of files to upload",
+    ),
     notes: str = Form(
         None,
         example="Important files",
@@ -630,7 +598,9 @@ def files_multiple(
     """Handle multiple file uploads."""
     return {
         "filenames": [file.filename for file in files],
-        "total_files": len(files),
+        "total_files": len(
+            files,
+        ),
         "notes": notes,
     }
 
@@ -642,7 +612,7 @@ class AllTypesWithValidation(BaseModel):
     int_value: Annotated[
         int,
         Field(
-            example=42,
+            examples=[42],
             gt=0,
             lt=100,
             description="Integer between 1-99",
@@ -652,7 +622,7 @@ class AllTypesWithValidation(BaseModel):
     float_value: Annotated[
         float,
         Field(
-            example=3.14,
+            examples=[3.14],
             ge=0.0,
             le=10.0,
             decimal_places=2,
@@ -665,28 +635,28 @@ class AllTypesWithValidation(BaseModel):
             min_length=3,
             max_length=50,
             pattern="^[a-zA-Z0-9_-]+$",
-            example="example_value",
+            examples=["example_value"],
             description="String with alphanumeric characters, underscores and hyphens",
         ),
     ]
-    bool_value: bool = Field(example=True, description="Boolean value")
+    bool_value: bool = Field(examples=[True], description="Boolean value")
     email_value: EmailStr = Field(
-        example="user@example.com",
+        examples=["user@example.com"],
         description="Valid email address",
     )
     url_value: HttpUrl = Field(
-        example="https://example.com",
+        examples=["https://example.com"],
         description="Valid HTTP URL",
     )
-    list_value: List[str] = Field(
-        min_items=1,
-        max_items=5,
-        example=["item1", "item2"],
-        description="List with 1-5 strings",
+    list_value: list[str] = Field(
+        min_length=1,
+        max_length=5,
+        examples=["item1", "item2"],
+        description="list with 1-5 strings",
     )
 
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "int_value": 42,
                 "float_value": 3.14,
@@ -702,7 +672,6 @@ class AllTypesWithValidation(BaseModel):
 @app.post(
     "/validation/complex",
     tags=["validation"],
-    response_model=AllTypesWithValidation,
     summary="Demonstrate complex model validation",
 )
 def validation_complex(data: AllTypesWithValidation) -> AllTypesWithValidation:
@@ -713,12 +682,16 @@ def validation_complex(data: AllTypesWithValidation) -> AllTypesWithValidation:
 @app.get(
     "/validation/conditional",
     tags=["validation"],
-    response_model=dict[str, Any],
     summary="Demonstrate conditional validation",
 )
 def validation_conditional(
-    user_id: Optional[int] = Query(None, ge=1, example=123, description="User ID"),
-    username: Optional[str] = Query(
+    user_id: int | None = Query(
+        None,
+        ge=1,
+        example=123,
+        description="User ID",
+    ),
+    username: str | None = Query(
         None,
         min_length=3,
         example="johndoe",
@@ -735,16 +708,15 @@ def validation_conditional(
 
 
 class ConditionalBody(BaseModel):
-    item_id: Optional[int] = Field(
+    item_id: int | None = Field(
         None,
-        example=42,
+        examples=[42],
         gt=0,
         description="Item ID (if provided)",
     )
-    item_name: Optional[str] = Field(
+    item_name: str | None = Field(
         None,
-        example="example_item",
-        min_length=3,
+        examples=["example_item"],
         description="Item name (if provided)",
     )
 
@@ -759,13 +731,12 @@ class ConditionalBody(BaseModel):
         return values
 
     class Config:
-        schema_extra = {"example": {"item_id": 42, "item_name": "example_item"}}
+        json_schema_extra = {"example": {"item_id": 42, "item_name": "example_item"}}
 
 
 @app.post(
     "/validation/conditional_body",
     tags=["validation"],
-    response_model=ConditionalBody,
     summary="Validate a model with conditional requirements",
 )
 def validation_conditional_body(body: ConditionalBody) -> ConditionalBody:
@@ -779,7 +750,6 @@ def validation_conditional_body(body: ConditionalBody) -> ConditionalBody:
 @app.get(
     "/custom/positive_int",
     tags=["advanced"],
-    response_model=dict[str, Any],
     summary="Demonstrate custom type validation",
 )
 def custom_positive_int(value: PositiveInt, value2: NegativeInt) -> dict[str, Any]:
@@ -793,13 +763,15 @@ def custom_positive_int(value: PositiveInt, value2: NegativeInt) -> dict[str, An
 @app.get(
     "/constrained/int",
     tags=["validation"],
-    response_model=dict[str, Any],
     summary="Demonstrate constrained integer validation",
 )
 def constrained_int(
     value: Annotated[
         conint(ge=0, lt=100),
-        Query(example=42, description="Integer between 0 and 99"),
+        Query(
+            examples=[42],
+            description="Integer between 0 and 99",
+        ),
     ],
 ) -> dict[str, Any]:
     """Handle constrained integer with validation."""
@@ -812,13 +784,15 @@ def constrained_int(
 @app.get(
     "/constrained/float",
     tags=["validation"],
-    response_model=dict[str, Any],
     summary="Demonstrate constrained float validation",
 )
 def constrained_float(
     value: Annotated[
         confloat(ge=0.0, le=1.0),
-        Query(example=0.5, description="Float between 0.0 and 1.0"),
+        Query(
+            examples=[0.5],
+            description="Float between 0.0 and 1.0",
+        ),
     ],
 ) -> dict[str, Any]:
     """Handle constrained float with validation."""
@@ -828,14 +802,13 @@ def constrained_float(
 @app.get(
     "/constrained/string",
     tags=["validation"],
-    response_model=dict[str, Any],
     summary="Demonstrate constrained string validation",
 )
 def constrained_string(
     value: Annotated[
         constr(min_length=3, max_length=50, pattern="^[a-zA-Z0-9_-]+$"),
         Query(
-            example="example-value",
+            examples=["example-value"],
             description="String between 3-50 chars, alphanumeric with hyphens and underscores",
         ),
     ],
@@ -849,7 +822,6 @@ def constrained_string(
 
 @app.get(
     "/response/filtered",
-    response_model=UserBase,
     tags=["models"],
     summary="Return a filtered response model",
 )
@@ -864,14 +836,17 @@ def response_filtered() -> User:
         is_active=True,
         tags=["user", "customer"],
         created_at=datetime.now(),
-        location=Location(lat=40.7128, lng=-74.0060, name="New York"),
+        location=Location(
+            lat=40.7128,
+            lng=-74.0060,
+            name="New York",
+        ),
         tmp=False,
     )
 
 
 @app.get(
     "/response/multiple",
-    response_model=Union[User, Location],
     tags=["models"],
     summary="Return different response models based on query",
 )
@@ -881,7 +856,7 @@ def response_multiple(
         example=True,
         description="Whether to return a user or location",
     ),
-) -> Union[User, Location]:
+) -> User | Location:
     """Return different response models based on query parameters."""
     if is_user:
         return User(
@@ -890,7 +865,11 @@ def response_multiple(
             email="john@example.com",
             created_at=datetime.now(),
             is_active=True,
-            location=Location(lat=40.7128, lng=-74.0060, name="New York"),
+            location=Location(
+                lat=40.7128,
+                lng=-74.0060,
+                name="New York",
+            ),
             tags=["user", "customer"],
             tmp=False,
             full_name="John Doe",
@@ -901,11 +880,10 @@ def response_multiple(
 
 @app.get(
     "/response/list",
-    response_model=List[User],
     tags=["models"],
     summary="Return a list of models",
 )
-def response_list() -> List[User]:
+def response_list() -> list[User]:
     """Return a list of items with a response model."""
     return [
         User(
@@ -914,7 +892,11 @@ def response_list() -> List[User]:
             email="user1@example.com",
             created_at=datetime.now(),
             is_active=True,
-            location=Location(lat=40.7128, lng=-74.0060, name="New York"),
+            location=Location(
+                lat=40.7128,
+                lng=-74.0060,
+                name="New York",
+            ),
             tags=["user", "customer"],
             tmp=False,
             full_name="John Doe",
@@ -925,7 +907,11 @@ def response_list() -> List[User]:
             email="user2@example.com",
             created_at=datetime.now(),
             is_active=True,
-            location=Location(lat=40.7128, lng=-74.0060, name="New York"),
+            location=Location(
+                lat=40.7128,
+                lng=-74.0060,
+                name="New York",
+            ),
             tags=["user", "customer"],
             tmp=False,
             full_name="John Doe",
@@ -937,17 +923,22 @@ def response_list() -> List[User]:
 
 
 def common_parameters(
-    q: Optional[str] = Query(
+    q: str | None = Query(
         None,
-        example="search",
+        examples=["search"],
         description="Optional search string",
     ),
-    skip: int = Query(0, ge=0, example=0, description="Number of items to skip"),
+    skip: int = Query(
+        0,
+        ge=0,
+        examples=[0],
+        description="Number of items to skip",
+    ),
     limit: int = Query(
         100,
         ge=1,
         le=1000,
-        example=100,
+        examples=[100],
         description="Max items to return",
     ),
 ) -> dict[str, Any]:
@@ -958,11 +949,12 @@ def common_parameters(
 @app.get(
     "/depends/query",
     tags=["advanced"],
-    response_model=dict[str, Any],
     summary="Use dependency injection for common parameters",
 )
 def depends_query(
-    commons: dict[str, Any] = Depends(common_parameters),
+    commons: dict[str, Any] = Depends(
+        common_parameters,
+    ),
 ) -> dict[str, Any]:
     """Use dependency injection for common parameters."""
     return commons
@@ -973,7 +965,7 @@ class DatabaseDependency:
         self.db_name = db_name
         # In a real app, this would establish a database connection
 
-    def get_items(self, skip: int = 0, limit: int = 100) -> List[dict[str, Any]]:
+    def get_items(self, skip: int = 0, limit: int = 100) -> list[dict[str, Any]]:
         # This would normally fetch from a database
         return [{"id": i, "name": f"Item {i}"} for i in range(skip, skip + limit)]
 
@@ -981,7 +973,6 @@ class DatabaseDependency:
 @app.get(
     "/depends/class",
     tags=["advanced"],
-    response_model=dict[str, Any],
     summary="Use class-based dependency injection",
 )
 def depends_class(db: DatabaseDependency = Depends()) -> dict[str, Any]:
@@ -998,7 +989,6 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 @app.post(
     "/token",
     tags=["security"],
-    response_model=dict[str, str],
     summary="Get an access token",
 )
 def login(form_data: OAuth2PasswordRequestForm = Depends()) -> dict[str, str]:
@@ -1016,7 +1006,6 @@ def login(form_data: OAuth2PasswordRequestForm = Depends()) -> dict[str, str]:
 @app.get(
     "/users/me",
     tags=["security"],
-    response_model=dict[str, Any],
     summary="Get current user from token",
 )
 def read_users_me(token: str = Depends(oauth2_scheme)) -> dict[str, Any]:
@@ -1037,10 +1026,9 @@ api_key_header = APIKeyHeader(name="X-API-Key")
 @app.get(
     "/items/secure",
     tags=["security"],
-    response_model=List[dict[str, Any]],
     summary="Get items using API key auth",
 )
-def get_secure_items(api_key: str = Depends(api_key_header)) -> List[dict[str, Any]]:
+def get_secure_items(api_key: str = Depends(api_key_header)) -> list[dict[str, Any]]:
     """Get items using API key auth."""
     if api_key != "valid-api-key":
         raise HTTPException(
@@ -1055,7 +1043,6 @@ def get_secure_items(api_key: str = Depends(api_key_header)) -> List[dict[str, A
 @app.get(
     "/errors/not_found/{item_id}",
     tags=["advanced"],
-    response_model=dict[str, Any],
     summary="Demonstrate 404 error handling",
 )
 def error_not_found(item_id: int) -> dict[str, Any]:
@@ -1071,19 +1058,36 @@ def error_not_found(item_id: int) -> dict[str, Any]:
 @app.get(
     "/errors/custom",
     tags=["advanced"],
-    response_model=dict[str, Any],
     summary="Demonstrate custom error status codes",
 )
 def error_custom(
-    code: int = Query(example=400, description="HTTP error code to simulate"),
+    code: int = Query(
+        example=400,
+        description="HTTP error code to simulate",
+    ),
 ) -> dict[str, Any]:
     """Raise custom HTTP exceptions based on query parameters."""
     error_mapping = {
-        400: (status.HTTP_400_BAD_REQUEST, "Bad Request"),
-        401: (status.HTTP_401_UNAUTHORIZED, "Unauthorized"),
-        403: (status.HTTP_403_FORBIDDEN, "Forbidden"),
-        404: (status.HTTP_404_NOT_FOUND, "Not Found"),
-        500: (status.HTTP_500_INTERNAL_SERVER_ERROR, "Internal Server Error"),
+        400: (
+            status.HTTP_400_BAD_REQUEST,
+            "Bad Request",
+        ),
+        401: (
+            status.HTTP_401_UNAUTHORIZED,
+            "Unauthorized",
+        ),
+        403: (
+            status.HTTP_403_FORBIDDEN,
+            "Forbidden",
+        ),
+        404: (
+            status.HTTP_404_NOT_FOUND,
+            "Not Found",
+        ),
+        500: (
+            status.HTTP_500_INTERNAL_SERVER_ERROR,
+            "Internal Server Error",
+        ),
     }
 
     if code in error_mapping:
@@ -1094,5 +1098,23 @@ def error_custom(
 
 
 # --------- Extras ---------
-app.include_router(pydantic_extra_types_route.router)
-app.include_router(items_route.router)
+app.include_router(
+    pydantic_extra_types_router.router,
+    prefix="/extra_types",
+    tags=["Extra Types"],
+)
+app.include_router(
+    items_router.router,
+    prefix="/items",
+    tags=["items"],
+)
+app.include_router(
+    generic_router.router,
+    prefix="/generic",
+    tags=["generic"],
+)
+app.include_router(
+    union_router.router,
+    prefix="/union",
+    tags=["union"],
+)

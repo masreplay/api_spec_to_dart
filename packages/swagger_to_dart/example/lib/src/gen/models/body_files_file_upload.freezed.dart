@@ -16,8 +16,8 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$BodyFilesFileUpload {
 
-/// file, File to upload
-@JsonKey(name: BodyFilesFileUpload.fileKey) MultipartFile get file;/// Description, File description
+/// file
+@JsonKey(name: BodyFilesFileUpload.fileKey) MultipartFile get file;/// description
 @JsonKey(name: BodyFilesFileUpload.descriptionKey) String? get description;
 /// Create a copy of BodyFilesFileUpload
 /// with the given fields replaced by the non-null parameter values.
@@ -81,14 +81,14 @@ as String?,
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
+@jsonSerializable
 class _BodyFilesFileUpload extends BodyFilesFileUpload {
   const _BodyFilesFileUpload({@JsonKey(name: BodyFilesFileUpload.fileKey) required this.file, @JsonKey(name: BodyFilesFileUpload.descriptionKey) required this.description}): super._();
   factory _BodyFilesFileUpload.fromJson(Map<String, dynamic> json) => _$BodyFilesFileUploadFromJson(json);
 
-/// file, File to upload
+/// file
 @override@JsonKey(name: BodyFilesFileUpload.fileKey) final  MultipartFile file;
-/// Description, File description
+/// description
 @override@JsonKey(name: BodyFilesFileUpload.descriptionKey) final  String? description;
 
 /// Create a copy of BodyFilesFileUpload

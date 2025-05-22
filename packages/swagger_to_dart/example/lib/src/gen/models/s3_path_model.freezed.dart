@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$S3PathModel {
 
-/// s3_path
+/// s3Path
 @JsonKey(name: S3PathModel.s3PathKey) String get s3Path;
 /// Create a copy of S3PathModel
 /// with the given fields replaced by the non-null parameter values.
@@ -79,12 +79,12 @@ as String,
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
+@jsonSerializable
 class _S3PathModel extends S3PathModel {
   const _S3PathModel({@JsonKey(name: S3PathModel.s3PathKey) required this.s3Path}): super._();
   factory _S3PathModel.fromJson(Map<String, dynamic> json) => _$S3PathModelFromJson(json);
 
-/// s3_path
+/// s3Path
 @override@JsonKey(name: S3PathModel.s3PathKey) final  String s3Path;
 
 /// Create a copy of S3PathModel

@@ -16,8 +16,8 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ConditionalBody {
 
-/// Item Id, Item ID (if provided)
-@JsonKey(name: ConditionalBody.itemIdKey) int? get itemId;/// Item Name, Item name (if provided)
+/// itemId
+@JsonKey(name: ConditionalBody.itemIdKey) int? get itemId;/// itemName
 @JsonKey(name: ConditionalBody.itemNameKey) String? get itemName;
 /// Create a copy of ConditionalBody
 /// with the given fields replaced by the non-null parameter values.
@@ -81,14 +81,14 @@ as String?,
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
+@jsonSerializable
 class _ConditionalBody extends ConditionalBody {
   const _ConditionalBody({@JsonKey(name: ConditionalBody.itemIdKey) required this.itemId, @JsonKey(name: ConditionalBody.itemNameKey) required this.itemName}): super._();
   factory _ConditionalBody.fromJson(Map<String, dynamic> json) => _$ConditionalBodyFromJson(json);
 
-/// Item Id, Item ID (if provided)
+/// itemId
 @override@JsonKey(name: ConditionalBody.itemIdKey) final  int? itemId;
-/// Item Name, Item name (if provided)
+/// itemName
 @override@JsonKey(name: ConditionalBody.itemNameKey) final  String? itemName;
 
 /// Create a copy of ConditionalBody

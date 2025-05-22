@@ -16,10 +16,10 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$LanguageModel {
 
-/// Alpha2
-@JsonKey(name: LanguageModel.alpha2Key) String? get alpha2;/// Name
-@JsonKey(name: LanguageModel.nameKey) String? get name;/// Iso639 3
-@JsonKey(name: LanguageModel.iso6393Key) String? get iso6393;/// Iso639 5
+/// alpha2
+@JsonKey(name: LanguageModel.alpha2Key) String? get alpha2;/// name
+@JsonKey(name: LanguageModel.nameKey) String? get name;/// iso6393
+@JsonKey(name: LanguageModel.iso6393Key) String? get iso6393;/// iso6395
 @JsonKey(name: LanguageModel.iso6395Key) String? get iso6395;
 /// Create a copy of LanguageModel
 /// with the given fields replaced by the non-null parameter values.
@@ -85,18 +85,18 @@ as String?,
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
+@jsonSerializable
 class _LanguageModel extends LanguageModel {
   const _LanguageModel({@JsonKey(name: LanguageModel.alpha2Key) required this.alpha2, @JsonKey(name: LanguageModel.nameKey) required this.name, @JsonKey(name: LanguageModel.iso6393Key) required this.iso6393, @JsonKey(name: LanguageModel.iso6395Key) required this.iso6395}): super._();
   factory _LanguageModel.fromJson(Map<String, dynamic> json) => _$LanguageModelFromJson(json);
 
-/// Alpha2
+/// alpha2
 @override@JsonKey(name: LanguageModel.alpha2Key) final  String? alpha2;
-/// Name
+/// name
 @override@JsonKey(name: LanguageModel.nameKey) final  String? name;
-/// Iso639 3
+/// iso6393
 @override@JsonKey(name: LanguageModel.iso6393Key) final  String? iso6393;
-/// Iso639 5
+/// iso6395
 @override@JsonKey(name: LanguageModel.iso6395Key) final  String? iso6395;
 
 /// Create a copy of LanguageModel

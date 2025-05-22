@@ -1,19 +1,28 @@
-import "package:freezed_annotation/freezed_annotation.dart";
-
-import "convertors.dart";
-import 'package:example/src/gen/models/models.dart';
-
-part "isbn_model.freezed.dart";
-part "isbn_model.g.dart";
-
 /// ISBNModel
+/// {
+///     "properties": {
+///         "isbn": {
+///             "type": "string",
+///             "title": "Isbn"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "isbn"
+///     ],
+///     "title": "ISBNModel"
+/// }
+library;
+
+import 'exports.dart';
+part 'isbn_model.freezed.dart';
+part 'isbn_model.g.dart'; // IsbnModel
+
 @freezed
 abstract class IsbnModel with _$IsbnModel {
   const IsbnModel._();
 
-  static const String isbnKey = "isbn";
-
-  @JsonSerializable(converters: convertors)
+  @jsonSerializable
   const factory IsbnModel({
     /// isbn
     @JsonKey(name: IsbnModel.isbnKey) required String isbn,
@@ -21,4 +30,6 @@ abstract class IsbnModel with _$IsbnModel {
 
   factory IsbnModel.fromJson(Map<String, dynamic> json) =>
       _$IsbnModelFromJson(json);
+
+  static const String isbnKey = "isbn";
 }

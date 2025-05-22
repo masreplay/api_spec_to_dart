@@ -16,9 +16,9 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Cat {
 
-/// name, The animal's name
+/// name
 @JsonKey(name: Cat.nameKey) String get name;/// type
-@JsonKey(name: Cat.typeKey) String get type;/// meow_cuteness, How cute the cat's meow is (0-10)
+@JsonKey(name: Cat.typeKey) String get type;/// meowCuteness
 @JsonKey(name: Cat.meowCutenessKey) int get meowCuteness;
 /// Create a copy of Cat
 /// with the given fields replaced by the non-null parameter values.
@@ -83,16 +83,16 @@ as int,
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
+@jsonSerializable
 class _Cat extends Cat {
   const _Cat({@JsonKey(name: Cat.nameKey) required this.name, @JsonKey(name: Cat.typeKey) this.type = 'cat', @JsonKey(name: Cat.meowCutenessKey) required this.meowCuteness}): super._();
   factory _Cat.fromJson(Map<String, dynamic> json) => _$CatFromJson(json);
 
-/// name, The animal's name
+/// name
 @override@JsonKey(name: Cat.nameKey) final  String name;
 /// type
 @override@JsonKey(name: Cat.typeKey) final  String type;
-/// meow_cuteness, How cute the cat's meow is (0-10)
+/// meowCuteness
 @override@JsonKey(name: Cat.meowCutenessKey) final  int meowCuteness;
 
 /// Create a copy of Cat

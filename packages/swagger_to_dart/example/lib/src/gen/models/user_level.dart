@@ -1,23 +1,27 @@
-import "package:freezed_annotation/freezed_annotation.dart";
+// UserLevel
+// {
+//     "type": "string",
+//     "enum": [
+//         "basic",
+//         "premium",
+//         "admin"
+//     ],
+//     "title": "UserLevel"
+// }
 
-part "user_level.g.dart";
+library;
 
-/// UserLevel
-@JsonEnum(valueField: "value", alwaysCreate: true)
+import 'exports.dart';
+part 'user_level.g.dart';
+
+@JsonEnum(alwaysCreate: true)
 enum UserLevel {
-  basic('basic'),
-  premium('premium'),
-  admin('admin');
-
-  const UserLevel(this.value);
-
-  factory UserLevel.fromJson(String value) {
-    return values.firstWhere(
-      (e) => e.value == value,
-      orElse: () => values.first,
-    );
-  }
-  final String value;
+  @JsonValue("basic")
+  basic,
+  @JsonValue("premium")
+  premium,
+  @JsonValue("admin")
+  admin;
 
   String toJson() => _$UserLevelEnumMap[this]!;
 }

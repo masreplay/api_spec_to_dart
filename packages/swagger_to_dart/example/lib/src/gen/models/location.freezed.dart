@@ -16,9 +16,9 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Location {
 
-/// lat, Latitude coordinate between -90 and 90 degrees
-@JsonKey(name: Location.latKey) double get lat;/// lng, Longitude coordinate between -180 and 180 degrees
-@JsonKey(name: Location.lngKey) double get lng;/// Name, Optional location name
+/// lat
+@JsonKey(name: Location.latKey) double get lat;/// lng
+@JsonKey(name: Location.lngKey) double get lng;/// name
 @JsonKey(name: Location.nameKey) String? get name;
 /// Create a copy of Location
 /// with the given fields replaced by the non-null parameter values.
@@ -83,16 +83,16 @@ as String?,
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
+@jsonSerializable
 class _Location extends Location {
   const _Location({@JsonKey(name: Location.latKey) required this.lat, @JsonKey(name: Location.lngKey) required this.lng, @JsonKey(name: Location.nameKey) required this.name}): super._();
   factory _Location.fromJson(Map<String, dynamic> json) => _$LocationFromJson(json);
 
-/// lat, Latitude coordinate between -90 and 90 degrees
+/// lat
 @override@JsonKey(name: Location.latKey) final  double lat;
-/// lng, Longitude coordinate between -180 and 180 degrees
+/// lng
 @override@JsonKey(name: Location.lngKey) final  double lng;
-/// Name, Optional location name
+/// name
 @override@JsonKey(name: Location.nameKey) final  String? name;
 
 /// Create a copy of Location

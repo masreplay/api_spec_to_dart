@@ -16,9 +16,9 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Parrot {
 
-/// name, The animal's name
+/// name
 @JsonKey(name: Parrot.nameKey) String get name;/// type
-@JsonKey(name: Parrot.typeKey) String get type;/// phrases, Phrases the parrot can say
+@JsonKey(name: Parrot.typeKey) String get type;/// phrases
 @JsonKey(name: Parrot.phrasesKey) List<String> get phrases;
 /// Create a copy of Parrot
 /// with the given fields replaced by the non-null parameter values.
@@ -83,18 +83,18 @@ as List<String>,
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
+@jsonSerializable
 class _Parrot extends Parrot {
   const _Parrot({@JsonKey(name: Parrot.nameKey) required this.name, @JsonKey(name: Parrot.typeKey) this.type = 'parrot', @JsonKey(name: Parrot.phrasesKey) required final  List<String> phrases}): _phrases = phrases,super._();
   factory _Parrot.fromJson(Map<String, dynamic> json) => _$ParrotFromJson(json);
 
-/// name, The animal's name
+/// name
 @override@JsonKey(name: Parrot.nameKey) final  String name;
 /// type
 @override@JsonKey(name: Parrot.typeKey) final  String type;
-/// phrases, Phrases the parrot can say
+/// phrases
  final  List<String> _phrases;
-/// phrases, Phrases the parrot can say
+/// phrases
 @override@JsonKey(name: Parrot.phrasesKey) List<String> get phrases {
   if (_phrases is EqualUnmodifiableListView) return _phrases;
   // ignore: implicit_dynamic_type

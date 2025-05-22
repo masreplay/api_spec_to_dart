@@ -16,8 +16,8 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$BodyFilesFilesMultiple {
 
-/// files, List of files to upload
-@JsonKey(name: BodyFilesFilesMultiple.filesKey) List<MultipartFile> get files;/// notes, Notes about the uploads
+/// files
+@JsonKey(name: BodyFilesFilesMultiple.filesKey) List<MultipartFile> get files;/// notes
 @JsonKey(name: BodyFilesFilesMultiple.notesKey) String get notes;
 /// Create a copy of BodyFilesFilesMultiple
 /// with the given fields replaced by the non-null parameter values.
@@ -81,21 +81,21 @@ as String,
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
+@jsonSerializable
 class _BodyFilesFilesMultiple extends BodyFilesFilesMultiple {
   const _BodyFilesFilesMultiple({@JsonKey(name: BodyFilesFilesMultiple.filesKey) required final  List<MultipartFile> files, @JsonKey(name: BodyFilesFilesMultiple.notesKey) required this.notes}): _files = files,super._();
   factory _BodyFilesFilesMultiple.fromJson(Map<String, dynamic> json) => _$BodyFilesFilesMultipleFromJson(json);
 
-/// files, List of files to upload
+/// files
  final  List<MultipartFile> _files;
-/// files, List of files to upload
+/// files
 @override@JsonKey(name: BodyFilesFilesMultiple.filesKey) List<MultipartFile> get files {
   if (_files is EqualUnmodifiableListView) return _files;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_files);
 }
 
-/// notes, Notes about the uploads
+/// notes
 @override@JsonKey(name: BodyFilesFilesMultiple.notesKey) final  String notes;
 
 /// Create a copy of BodyFilesFilesMultiple

@@ -6,10 +6,16 @@ part of 'coordinate_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-CoordinateModelFallback _$CoordinateModelFallbackFromJson(
-  Map<String, dynamic> json,
-) => CoordinateModelFallback();
+_CoordinateModel _$CoordinateModelFromJson(Map<String, dynamic> json) =>
+    _CoordinateModel(
+      coordinate: json['coordinate'],
+      latitude: (json['latitude'] as num?)?.toDouble(),
+      longitude: (json['longitude'] as num?)?.toDouble(),
+    );
 
-Map<String, dynamic> _$CoordinateModelFallbackToJson(
-  CoordinateModelFallback instance,
-) => <String, dynamic>{};
+Map<String, dynamic> _$CoordinateModelToJson(_CoordinateModel instance) =>
+    <String, dynamic>{
+      'coordinate': instance.coordinate,
+      'latitude': instance.latitude,
+      'longitude': instance.longitude,
+    };

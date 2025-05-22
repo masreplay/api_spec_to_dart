@@ -16,12 +16,12 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$BodySecurityLogin {
 
-/// Grant Type
+/// grantType
 @JsonKey(name: BodySecurityLogin.grantTypeKey) String? get grantType;/// username
 @JsonKey(name: BodySecurityLogin.usernameKey) String get username;/// password
 @JsonKey(name: BodySecurityLogin.passwordKey) String get password;/// scope
-@JsonKey(name: BodySecurityLogin.scopeKey) String get scope;/// Client Id
-@JsonKey(name: BodySecurityLogin.clientIdKey) String? get clientId;/// Client Secret
+@JsonKey(name: BodySecurityLogin.scopeKey) String get scope;/// clientId
+@JsonKey(name: BodySecurityLogin.clientIdKey) String? get clientId;/// clientSecret
 @JsonKey(name: BodySecurityLogin.clientSecretKey) String? get clientSecret;
 /// Create a copy of BodySecurityLogin
 /// with the given fields replaced by the non-null parameter values.
@@ -89,12 +89,12 @@ as String?,
 
 /// @nodoc
 
-@JsonSerializable(converters: convertors)
+@jsonSerializable
 class _BodySecurityLogin extends BodySecurityLogin {
   const _BodySecurityLogin({@JsonKey(name: BodySecurityLogin.grantTypeKey) required this.grantType, @JsonKey(name: BodySecurityLogin.usernameKey) required this.username, @JsonKey(name: BodySecurityLogin.passwordKey) required this.password, @JsonKey(name: BodySecurityLogin.scopeKey) this.scope = '', @JsonKey(name: BodySecurityLogin.clientIdKey) required this.clientId, @JsonKey(name: BodySecurityLogin.clientSecretKey) required this.clientSecret}): super._();
   factory _BodySecurityLogin.fromJson(Map<String, dynamic> json) => _$BodySecurityLoginFromJson(json);
 
-/// Grant Type
+/// grantType
 @override@JsonKey(name: BodySecurityLogin.grantTypeKey) final  String? grantType;
 /// username
 @override@JsonKey(name: BodySecurityLogin.usernameKey) final  String username;
@@ -102,9 +102,9 @@ class _BodySecurityLogin extends BodySecurityLogin {
 @override@JsonKey(name: BodySecurityLogin.passwordKey) final  String password;
 /// scope
 @override@JsonKey(name: BodySecurityLogin.scopeKey) final  String scope;
-/// Client Id
+/// clientId
 @override@JsonKey(name: BodySecurityLogin.clientIdKey) final  String? clientId;
-/// Client Secret
+/// clientSecret
 @override@JsonKey(name: BodySecurityLogin.clientSecretKey) final  String? clientSecret;
 
 /// Create a copy of BodySecurityLogin

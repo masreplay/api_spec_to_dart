@@ -1,51 +1,115 @@
-import "package:freezed_annotation/freezed_annotation.dart";
-
-import "convertors.dart";
-import 'package:example/src/gen/models/models.dart';
-
-part "all_types_with_validation.freezed.dart";
-part "all_types_with_validation.g.dart";
-
 /// AllTypesWithValidation
+/// {
+///     "properties": {
+///         "int_value": {
+///             "type": "integer",
+///             "description": "Integer between 1-99",
+///             "title": "Integer Value"
+///         },
+///         "float_value": {
+///             "type": "number",
+///             "description": "Pi or other values",
+///             "title": "Float Value"
+///         },
+///         "str_value": {
+///             "type": "string",
+///             "maxLength": 50,
+///             "minLength": 3,
+///             "description": "String with alphanumeric characters, underscores and hyphens",
+///             "pattern": "^[a-zA-Z0-9_-]+$",
+///             "title": "Str Value"
+///         },
+///         "bool_value": {
+///             "type": "boolean",
+///             "description": "Boolean value",
+///             "title": "Bool Value"
+///         },
+///         "email_value": {
+///             "type": "string",
+///             "format": "email",
+///             "description": "Valid email address",
+///             "title": "Email Value"
+///         },
+///         "url_value": {
+///             "type": "string",
+///             "maxLength": 2083,
+///             "minLength": 1,
+///             "format": "uri",
+///             "description": "Valid HTTP URL",
+///             "title": "Url Value"
+///         },
+///         "list_value": {
+///             "type": "array",
+///             "items": {
+///                 "type": "string"
+///             },
+///             "description": "list with 1-5 strings",
+///             "title": "List Value"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "int_value",
+///         "float_value",
+///         "str_value",
+///         "bool_value",
+///         "email_value",
+///         "url_value",
+///         "list_value"
+///     ],
+///     "title": "AllTypesWithValidation"
+/// }
+library;
+
+import 'exports.dart';
+part 'all_types_with_validation.freezed.dart';
+part 'all_types_with_validation.g.dart'; // AllTypesWithValidation
+
 @freezed
 abstract class AllTypesWithValidation with _$AllTypesWithValidation {
   const AllTypesWithValidation._();
 
-  static const String intValueKey = "int_value";
-  static const String floatValueKey = "float_value";
-  static const String strValueKey = "str_value";
-  static const String boolValueKey = "bool_value";
-  static const String emailValueKey = "email_value";
-  static const String urlValueKey = "url_value";
-  static const String listValueKey = "list_value";
-
-  @JsonSerializable(converters: convertors)
+  @jsonSerializable
   const factory AllTypesWithValidation({
-    /// int_value, Integer between 1-99
+    /// intValue
     @JsonKey(name: AllTypesWithValidation.intValueKey) required int intValue,
 
-    /// float_value, Pi or other values
+    /// floatValue
     @JsonKey(name: AllTypesWithValidation.floatValueKey)
     required double floatValue,
 
-    /// str_value, String with alphanumeric characters, underscores and hyphens
+    /// strValue
     @JsonKey(name: AllTypesWithValidation.strValueKey) required String strValue,
 
-    /// bool_value, Boolean value
+    /// boolValue
     @JsonKey(name: AllTypesWithValidation.boolValueKey) required bool boolValue,
 
-    /// email_value, Valid email address
+    /// emailValue
     @JsonKey(name: AllTypesWithValidation.emailValueKey)
     required String emailValue,
 
-    /// url_value, Valid HTTP URL
+    /// urlValue
     @JsonKey(name: AllTypesWithValidation.urlValueKey) required Uri urlValue,
 
-    /// list_value, List with 1-5 strings
+    /// listValue
     @JsonKey(name: AllTypesWithValidation.listValueKey)
     required List<String> listValue,
   }) = _AllTypesWithValidation;
 
   factory AllTypesWithValidation.fromJson(Map<String, dynamic> json) =>
       _$AllTypesWithValidationFromJson(json);
+
+  static const String intValueKey = "int_value";
+
+  static const String floatValueKey = "float_value";
+
+  static const String strValueKey = "str_value";
+
+  static const String boolValueKey = "bool_value";
+
+  static const String emailValueKey = "email_value";
+
+  static const String urlValueKey = "url_value";
+
+  static const String listValueKey = "list_value";
 }

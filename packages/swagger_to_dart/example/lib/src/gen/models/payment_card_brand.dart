@@ -1,33 +1,55 @@
-import "package:freezed_annotation/freezed_annotation.dart";
+// PaymentCardBrand
+// {
+//     "type": "string",
+//     "enum": [
+//         "American Express",
+//         "Mastercard",
+//         "Visa",
+//         "Mir",
+//         "Maestro",
+//         "Discover",
+//         "Verve",
+//         "Dankort",
+//         "Troy",
+//         "UnionPay",
+//         "JCB",
+//         "other"
+//     ],
+//     "title": "PaymentCardBrand",
+//     "description": "Payment card brands supported by the [`PaymentCardNumber`][pydantic_extra_types.payment.PaymentCardNumber]."
+// }
 
-part "payment_card_brand.g.dart";
+library;
 
-/// PaymentCardBrand
-/// Payment card brands supported by the [`PaymentCardNumber`][pydantic_extra_types.payment.PaymentCardNumber].
-@JsonEnum(valueField: "value", alwaysCreate: true)
+import 'exports.dart';
+part 'payment_card_brand.g.dart';
+
+@JsonEnum(alwaysCreate: true)
 enum PaymentCardBrand {
-  americanExpress('American Express'),
-  mastercard('Mastercard'),
-  visa('Visa'),
-  mir('Mir'),
-  maestro('Maestro'),
-  discover('Discover'),
-  verve('Verve'),
-  dankort('Dankort'),
-  troy('Troy'),
-  unionPay('UnionPay'),
-  jcb('JCB'),
-  other('other');
-
-  const PaymentCardBrand(this.value);
-
-  factory PaymentCardBrand.fromJson(String value) {
-    return values.firstWhere(
-      (e) => e.value == value,
-      orElse: () => values.first,
-    );
-  }
-  final String value;
+  @JsonValue("American Express")
+  americanExpress,
+  @JsonValue("Mastercard")
+  mastercard,
+  @JsonValue("Visa")
+  visa,
+  @JsonValue("Mir")
+  mir,
+  @JsonValue("Maestro")
+  maestro,
+  @JsonValue("Discover")
+  discover,
+  @JsonValue("Verve")
+  verve,
+  @JsonValue("Dankort")
+  dankort,
+  @JsonValue("Troy")
+  troy,
+  @JsonValue("UnionPay")
+  unionPay,
+  @JsonValue("JCB")
+  jcb,
+  @JsonValue("other")
+  other;
 
   String toJson() => _$PaymentCardBrandEnumMap[this]!;
 }
