@@ -199,8 +199,8 @@ class _ValidationClient implements ValidationClient {
 
   @override
   Future<HttpResponse<Map<String, dynamic>>> validationParamHeader({
-    required String userAgent,
-    String? xToken,
+    required String userMinusAgent,
+    String? xMinusToken,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -211,8 +211,8 @@ class _ValidationClient implements ValidationClient {
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{
-      r'user-agent': userAgent,
-      r'x-token': xToken,
+      r'user-agent': userMinusAgent,
+      r'x-token': xMinusToken,
     };
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;

@@ -349,8 +349,8 @@ abstract class ValidationClient {
   /// }
   @GET("/params/header")
   Future<HttpResponse<Map<String, dynamic>>> validationParamHeader({
-    @Header("user-agent") required String userAgent,
-    @Header("x-token") required String? xToken,
+    @Header("user-agent") required String userMinusAgent,
+    @Header("x-token") required String? xMinusToken,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,

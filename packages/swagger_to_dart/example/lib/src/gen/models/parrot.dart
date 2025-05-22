@@ -43,8 +43,8 @@ abstract class Parrot with _$Parrot {
     /// name
     @JsonKey(name: Parrot.nameKey) required String name,
 
-    /// type
-    @Default('parrot') @JsonKey(name: Parrot.typeKey) String type,
+    /// typeAA
+    @Default('parrot') @JsonKey(name: Parrot.typeAAKey) String typeAA,
 
     /// phrases
     @JsonKey(name: Parrot.phrasesKey) required List<String> phrases,
@@ -54,7 +54,7 @@ abstract class Parrot with _$Parrot {
 
   static const String nameKey = "name";
 
-  static const String typeKey = "type";
+  static const String typeAAKey = "type";
 
   static const String phrasesKey = "phrases";
 }

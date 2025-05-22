@@ -5,10 +5,29 @@ class OpenApiSchemaDartTypeConverter {
 
   final GenerationContext context;
 
-  String? getDefaultValue(OpenApiSchema schema) {
+  String? getDefaultValue(
+    OpenApiSchema schema, {
+    OpenApiSchema? parent,
+  }) {
     final default_ = schema.default_;
     switch (schema) {
-      case OpenApiSchemaType _:
+      case OpenApiSchemaType schema:
+        if (schema.enum_ != null) {
+          final name = schema.title ?? parent?.title;
+
+          final className = Renaming.instance.renameEnum('${name}Enum');
+
+          if (schema.default_ == null) {
+            return null;
+          }
+
+          final defaultValue = Renaming.instance.renameEnumValue(
+            schema.default_.toString(),
+          );
+
+          return '${className}.${defaultValue}';
+        }
+
         return _dartLiteral(default_);
       case OpenApiSchemaRef schema:
         final dartType = getRef(schema);
@@ -133,7 +152,7 @@ class OpenApiSchemaDartTypeConverter {
               OpenApiSchemas(
                 type: 'Hello',
                 properties: {},
-                enum_: ['HI'],
+                enum_: schema.enum_,
               ),
             ),
           );

@@ -103,7 +103,7 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<Map<String, dynamic>>> advancedSpecialLiteral({
-    ModeEnum mode = 'system',
+    ModeEnum mode = ModeEnum.system,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,

@@ -80,14 +80,40 @@ class Renaming {
 
   static Renaming get instance => _instance;
 
-  String _guard(String text) {
-    final name = keywords.contains(text) ? '${text}__' : text;
+  String _guard(String text, {bool translateSpecialCharacters = false}) {
+    // TODO(masreplay): find a better way, than `AA`
+    text = keywords.contains(text.toLowerCase()) ? '${text}AA' : text;
 
-    return name.replaceAll(' ', '_');
+    if (translateSpecialCharacters) {
+      final extra = {
+        '+': 'plus',
+        '-': 'minus',
+        '*': 'star',
+        '/': 'slash',
+        '=': 'equals',
+        '|': 'pipe',
+        '&': 'ampersand',
+        '^': 'caret',
+      };
+
+      for (final entry in extra.entries) {
+        text = text.replaceAll(entry.key, '_${entry.value}_');
+      }
+    }
+
+    text = text.replaceAll(' ', '_');
+
+    return text;
   }
 
   String renameProperty(String key) {
-    return Recase.instance.toCamelCase(_guard(key));
+    return Recase.instance.toCamelCase(_guard(
+      key,
+      translateSpecialCharacters: true,
+    ));
+
+
+    
   }
 
   String renameMethod(String key) {
@@ -98,6 +124,19 @@ class Renaming {
     return Recase.instance.toPascalCase(_guard(key));
   }
 
+  String renameEnumValue(
+    Object value,
+  ) {
+    if (value is String) {
+      return Recase.instance.toCamelCase(_guard(
+        value,
+        translateSpecialCharacters: true,
+      ));
+    } else {
+      return 'value${value}';
+    }
+  }
+
   String renameRefClass(OpenApiSchemaRef value) {
     return renameClass(_guard(value.ref!.split('/').last));
   }
@@ -106,7 +145,7 @@ class Renaming {
     final name = Recase.instance.toPascalCase(_guard(value));
 
     if (name.endsWith('NoneType')) {
-      return  name.substring(0, name.length - 8);
+      return name.substring(0, name.length - 8);
     }
 
     return name;

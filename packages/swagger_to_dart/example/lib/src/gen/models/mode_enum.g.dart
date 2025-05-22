@@ -6,4 +6,8 @@ part of 'mode_enum.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-const _$ModeEnumEnumMap = {ModeEnum.hi: 'HI'};
+const _$ModeEnumEnumMap = {
+  ModeEnum.light: 'light',
+  ModeEnum.dark: 'dark',
+  ModeEnum.system: 'system',
+};

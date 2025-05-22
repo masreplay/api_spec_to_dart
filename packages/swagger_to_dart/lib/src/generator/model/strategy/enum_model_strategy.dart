@@ -44,7 +44,7 @@ class EnumModelStrategy extends ModelGeneratorStrategy {
     final filename = Renaming.instance.renameFile(className);
 
     // Can be a list of [String] or an [int].
-    final List<Object> values = model.value.enum_ ?? [];
+    final values = model.value.enum_ ?? [];
 
     return Library(
       (b) => b
@@ -67,13 +67,7 @@ class EnumModelStrategy extends ModelGeneratorStrategy {
                   EnumValue(
                     (b) => b
                       ..annotations.add(refer('$JsonValue("$value")'))
-                      ..name = () {
-                        if (value is String) {
-                          return Recase.instance.toCamelCase(value);
-                        } else {
-                          return 'value${value}';
-                        }
-                      }(),
+                      ..name = Renaming.instance.renameEnumValue(value),
                   ),
               ])
               ..methods.addAll([
