@@ -1,3 +1,7 @@
+## 2.0.0
+
+- Use code_builder package to do type safe code generation
+
 ## 1.5.5
 
 - Support success response with 201
