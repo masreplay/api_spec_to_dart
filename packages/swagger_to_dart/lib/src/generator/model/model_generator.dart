@@ -1,5 +1,5 @@
 import 'package:code_builder/code_builder.dart';
-import 'package:swagger_to_dart/src/config/generation_context.dart';
+import 'package:swagger_to_dart/src/generator/library_generator.dart';
 import 'package:swagger_to_dart/src/generator/model/strategy/model_generator_strategy.dart';
 import 'package:swagger_to_dart/src/schema/openapi/openapi.dart';
 
@@ -10,10 +10,24 @@ import 'strategy/union_model_strategy.dart';
 ///
 /// Generate Enum, Union, Regular models
 ///
-class ModelGenerator {
-  const ModelGenerator(this.context);
+class ModelGenerator
+    extends LibraryGenerator<MapEntry<String, OpenApiSchemas>> {
+  const ModelGenerator(super.context);
 
-  final GenerationContext context;
+  @override
+  Library build(MapEntry<String, OpenApiSchemas> model) {
+    final schema = model.value;
+
+    final ModelGeneratorStrategy strategy;
+
+    if (schema.enum_ != null) {
+      strategy = EnumModelStrategy(context);
+    } else {
+      strategy = RegularModelStrategy(context);
+    }
+
+    return strategy.build(model);
+  }
 
   Future<void> generate() async {
     if (context.openApi.components case final openApiComponents?) {
@@ -23,27 +37,5 @@ class ModelGenerator {
         context.addModel(model);
       }
     }
-  }
-
-  ModelGeneratorStrategy _getBuildStrategy(
-    MapEntry<String, OpenApiSchemas> model,
-  ) {
-    final schema = model.value;
-
-    if (schema.enum_ != null) {
-      return EnumModelStrategy(context);
-    }
-
-    if (schema is OpenApiSchemaAnyOf || schema is OpenApiSchemaOneOf) {
-      return UnionModelStrategy(context);
-    }
-
-    return RegularModelStrategy(context);
-  }
-
-  Library build(MapEntry<String, OpenApiSchemas> model) {
-    final strategy = _getBuildStrategy(model);
-
-    return strategy.build(model);
   }
 }

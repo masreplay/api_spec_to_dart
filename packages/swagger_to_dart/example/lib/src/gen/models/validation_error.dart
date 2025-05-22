@@ -50,8 +50,8 @@ abstract class ValidationError with _$ValidationError {
     /// msg
     @JsonKey(name: ValidationError.msgKey) required String msg,
 
-    /// type
-    @JsonKey(name: ValidationError.typeKey) required String type,
+    /// typeAA
+    @JsonKey(name: ValidationError.typeAAKey) required String typeAA,
   }) = _ValidationError;
 
   factory ValidationError.fromJson(Map<String, dynamic> json) =>
@@ -61,5 +61,5 @@ abstract class ValidationError with _$ValidationError {
 
   static const String msgKey = "msg";
 
-  static const String typeKey = "type";
+  static const String typeAAKey = "type";
 }

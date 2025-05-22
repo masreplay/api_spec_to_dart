@@ -5,10 +5,29 @@ class OpenApiSchemaDartTypeConverter {
 
   final GenerationContext context;
 
-  String? getDefaultValue(OpenApiSchema schema) {
+  String? getDefaultValue(
+    OpenApiSchema schema, {
+    OpenApiSchema? parent,
+  }) {
     final default_ = schema.default_;
     switch (schema) {
-      case OpenApiSchemaType _:
+      case OpenApiSchemaType schema:
+        if (schema.enum_ != null) {
+          final name = schema.title ?? parent?.title;
+
+          final className = Renaming.instance.renameEnum('${name}Enum');
+
+          if (schema.default_ == null) {
+            return null;
+          }
+
+          final defaultValue = Renaming.instance.renameEnumValue(
+            schema.default_.toString(),
+          );
+
+          return '${className}.${defaultValue}';
+        }
+
         return _dartLiteral(default_);
       case OpenApiSchemaRef schema:
         final dartType = getRef(schema);
@@ -50,14 +69,15 @@ class OpenApiSchemaDartTypeConverter {
   String get(
     OpenApiSchema schema, {
     required String className,
+    OpenApiSchema? parent,
   }) {
     switch (schema) {
       case OpenApiSchemaType schema:
-        return getType(schema, className: className);
+        return getType(schema, parent: parent, className: className);
       case OpenApiSchemaRef schema:
         return getRef(schema);
       case OpenApiSchemaAnyOf schema:
-        return getAny(schema, className: className);
+        return getAnyOf(schema, className: className);
       case OpenApiSchemaOneOf schema:
         return getOneOf(schema, className: className);
     }
@@ -67,7 +87,7 @@ class OpenApiSchemaDartTypeConverter {
     return Renaming.instance.renameRefClass(schema);
   }
 
-  String getAny(
+  String getAnyOf(
     OpenApiSchemaAnyOf schema, {
     required String className,
   }) {
@@ -80,6 +100,7 @@ class OpenApiSchemaDartTypeConverter {
     if (schemas.length == 1) {
       final dartType = get(
         schemas.first,
+        parent: schema,
         className: className,
       );
       return dartType + (isNullable ? '?' : '');
@@ -115,9 +136,31 @@ class OpenApiSchemaDartTypeConverter {
   String getType(
     OpenApiSchemaType schema, {
     required String className,
+    OpenApiSchema? parent,
   }) {
     switch (schema.type) {
       case OpenApiSchemaVarType.string:
+        if (schema.enum_ != null) {
+          final strategy = EnumModelStrategy(context);
+
+          final name = schema.title ?? parent?.title;
+
+          final className = Renaming.instance.renameEnum('${name}Enum');
+          final model = strategy.build(
+            MapEntry(
+              className,
+              OpenApiSchemas(
+                type: 'Hello',
+                properties: {},
+                enum_: schema.enum_,
+              ),
+            ),
+          );
+          context.addModel(model);
+
+          return className;
+        }
+
         switch (schema.format) {
           case 'date-time':
             return 'DateTime';

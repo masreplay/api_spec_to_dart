@@ -17,8 +17,8 @@ T _$identity<T>(T value) => value;
 mixin _$Dog {
 
 /// name
-@JsonKey(name: Dog.nameKey) String get name;/// type
-@JsonKey(name: Dog.typeKey) String get type;/// barkLoudness
+@JsonKey(name: Dog.nameKey) String get name;/// typeAA
+@JsonKey(name: Dog.typeAAKey) String get typeAA;/// barkLoudness
 @JsonKey(name: Dog.barkLoudnessKey) int get barkLoudness;
 /// Create a copy of Dog
 /// with the given fields replaced by the non-null parameter values.
@@ -32,16 +32,16 @@ $DogCopyWith<Dog> get copyWith => _$DogCopyWithImpl<Dog>(this as Dog, _$identity
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Dog&&(identical(other.name, name) || other.name == name)&&(identical(other.type, type) || other.type == type)&&(identical(other.barkLoudness, barkLoudness) || other.barkLoudness == barkLoudness));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Dog&&(identical(other.name, name) || other.name == name)&&(identical(other.typeAA, typeAA) || other.typeAA == typeAA)&&(identical(other.barkLoudness, barkLoudness) || other.barkLoudness == barkLoudness));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,type,barkLoudness);
+int get hashCode => Object.hash(runtimeType,name,typeAA,barkLoudness);
 
 @override
 String toString() {
-  return 'Dog(name: $name, type: $type, barkLoudness: $barkLoudness)';
+  return 'Dog(name: $name, typeAA: $typeAA, barkLoudness: $barkLoudness)';
 }
 
 
@@ -52,7 +52,7 @@ abstract mixin class $DogCopyWith<$Res>  {
   factory $DogCopyWith(Dog value, $Res Function(Dog) _then) = _$DogCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: Dog.nameKey) String name,@JsonKey(name: Dog.typeKey) String type,@JsonKey(name: Dog.barkLoudnessKey) int barkLoudness
+@JsonKey(name: Dog.nameKey) String name,@JsonKey(name: Dog.typeAAKey) String typeAA,@JsonKey(name: Dog.barkLoudnessKey) int barkLoudness
 });
 
 
@@ -69,10 +69,10 @@ class _$DogCopyWithImpl<$Res>
 
 /// Create a copy of Dog
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? type = null,Object? barkLoudness = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? typeAA = null,Object? barkLoudness = null,}) {
   return _then(_self.copyWith(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
+as String,typeAA: null == typeAA ? _self.typeAA : typeAA // ignore: cast_nullable_to_non_nullable
 as String,barkLoudness: null == barkLoudness ? _self.barkLoudness : barkLoudness // ignore: cast_nullable_to_non_nullable
 as int,
   ));
@@ -85,13 +85,13 @@ as int,
 
 @jsonSerializable
 class _Dog extends Dog {
-  const _Dog({@JsonKey(name: Dog.nameKey) required this.name, @JsonKey(name: Dog.typeKey) this.type = 'dog', @JsonKey(name: Dog.barkLoudnessKey) required this.barkLoudness}): super._();
+  const _Dog({@JsonKey(name: Dog.nameKey) required this.name, @JsonKey(name: Dog.typeAAKey) this.typeAA = 'dog', @JsonKey(name: Dog.barkLoudnessKey) required this.barkLoudness}): super._();
   factory _Dog.fromJson(Map<String, dynamic> json) => _$DogFromJson(json);
 
 /// name
 @override@JsonKey(name: Dog.nameKey) final  String name;
-/// type
-@override@JsonKey(name: Dog.typeKey) final  String type;
+/// typeAA
+@override@JsonKey(name: Dog.typeAAKey) final  String typeAA;
 /// barkLoudness
 @override@JsonKey(name: Dog.barkLoudnessKey) final  int barkLoudness;
 
@@ -108,16 +108,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Dog&&(identical(other.name, name) || other.name == name)&&(identical(other.type, type) || other.type == type)&&(identical(other.barkLoudness, barkLoudness) || other.barkLoudness == barkLoudness));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Dog&&(identical(other.name, name) || other.name == name)&&(identical(other.typeAA, typeAA) || other.typeAA == typeAA)&&(identical(other.barkLoudness, barkLoudness) || other.barkLoudness == barkLoudness));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,type,barkLoudness);
+int get hashCode => Object.hash(runtimeType,name,typeAA,barkLoudness);
 
 @override
 String toString() {
-  return 'Dog(name: $name, type: $type, barkLoudness: $barkLoudness)';
+  return 'Dog(name: $name, typeAA: $typeAA, barkLoudness: $barkLoudness)';
 }
 
 
@@ -128,7 +128,7 @@ abstract mixin class _$DogCopyWith<$Res> implements $DogCopyWith<$Res> {
   factory _$DogCopyWith(_Dog value, $Res Function(_Dog) _then) = __$DogCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: Dog.nameKey) String name,@JsonKey(name: Dog.typeKey) String type,@JsonKey(name: Dog.barkLoudnessKey) int barkLoudness
+@JsonKey(name: Dog.nameKey) String name,@JsonKey(name: Dog.typeAAKey) String typeAA,@JsonKey(name: Dog.barkLoudnessKey) int barkLoudness
 });
 
 
@@ -145,10 +145,10 @@ class __$DogCopyWithImpl<$Res>
 
 /// Create a copy of Dog
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? type = null,Object? barkLoudness = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? typeAA = null,Object? barkLoudness = null,}) {
   return _then(_Dog(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
+as String,typeAA: null == typeAA ? _self.typeAA : typeAA // ignore: cast_nullable_to_non_nullable
 as String,barkLoudness: null == barkLoudness ? _self.barkLoudness : barkLoudness // ignore: cast_nullable_to_non_nullable
 as int,
   ));

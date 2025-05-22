@@ -28,6 +28,7 @@ sealed class OpenApiSchema with _$OpenApiSchema {
     @JsonKey(name: r'$ref') String? ref,
     @JsonKey(name: 'description') String? description,
     @JsonKey(name: 'default') Object? default_,
+    @JsonKey(name: 'title') String? title,
   }) = OpenApiSchemaRef;
 
   @FreezedUnionValue('anyOf')

@@ -17,8 +17,8 @@ T _$identity<T>(T value) => value;
 mixin _$Parrot {
 
 /// name
-@JsonKey(name: Parrot.nameKey) String get name;/// type
-@JsonKey(name: Parrot.typeKey) String get type;/// phrases
+@JsonKey(name: Parrot.nameKey) String get name;/// typeAA
+@JsonKey(name: Parrot.typeAAKey) String get typeAA;/// phrases
 @JsonKey(name: Parrot.phrasesKey) List<String> get phrases;
 /// Create a copy of Parrot
 /// with the given fields replaced by the non-null parameter values.
@@ -32,16 +32,16 @@ $ParrotCopyWith<Parrot> get copyWith => _$ParrotCopyWithImpl<Parrot>(this as Par
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Parrot&&(identical(other.name, name) || other.name == name)&&(identical(other.type, type) || other.type == type)&&const DeepCollectionEquality().equals(other.phrases, phrases));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Parrot&&(identical(other.name, name) || other.name == name)&&(identical(other.typeAA, typeAA) || other.typeAA == typeAA)&&const DeepCollectionEquality().equals(other.phrases, phrases));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,type,const DeepCollectionEquality().hash(phrases));
+int get hashCode => Object.hash(runtimeType,name,typeAA,const DeepCollectionEquality().hash(phrases));
 
 @override
 String toString() {
-  return 'Parrot(name: $name, type: $type, phrases: $phrases)';
+  return 'Parrot(name: $name, typeAA: $typeAA, phrases: $phrases)';
 }
 
 
@@ -52,7 +52,7 @@ abstract mixin class $ParrotCopyWith<$Res>  {
   factory $ParrotCopyWith(Parrot value, $Res Function(Parrot) _then) = _$ParrotCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: Parrot.nameKey) String name,@JsonKey(name: Parrot.typeKey) String type,@JsonKey(name: Parrot.phrasesKey) List<String> phrases
+@JsonKey(name: Parrot.nameKey) String name,@JsonKey(name: Parrot.typeAAKey) String typeAA,@JsonKey(name: Parrot.phrasesKey) List<String> phrases
 });
 
 
@@ -69,10 +69,10 @@ class _$ParrotCopyWithImpl<$Res>
 
 /// Create a copy of Parrot
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? type = null,Object? phrases = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? typeAA = null,Object? phrases = null,}) {
   return _then(_self.copyWith(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
+as String,typeAA: null == typeAA ? _self.typeAA : typeAA // ignore: cast_nullable_to_non_nullable
 as String,phrases: null == phrases ? _self.phrases : phrases // ignore: cast_nullable_to_non_nullable
 as List<String>,
   ));
@@ -85,13 +85,13 @@ as List<String>,
 
 @jsonSerializable
 class _Parrot extends Parrot {
-  const _Parrot({@JsonKey(name: Parrot.nameKey) required this.name, @JsonKey(name: Parrot.typeKey) this.type = 'parrot', @JsonKey(name: Parrot.phrasesKey) required final  List<String> phrases}): _phrases = phrases,super._();
+  const _Parrot({@JsonKey(name: Parrot.nameKey) required this.name, @JsonKey(name: Parrot.typeAAKey) this.typeAA = 'parrot', @JsonKey(name: Parrot.phrasesKey) required final  List<String> phrases}): _phrases = phrases,super._();
   factory _Parrot.fromJson(Map<String, dynamic> json) => _$ParrotFromJson(json);
 
 /// name
 @override@JsonKey(name: Parrot.nameKey) final  String name;
-/// type
-@override@JsonKey(name: Parrot.typeKey) final  String type;
+/// typeAA
+@override@JsonKey(name: Parrot.typeAAKey) final  String typeAA;
 /// phrases
  final  List<String> _phrases;
 /// phrases
@@ -115,16 +115,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Parrot&&(identical(other.name, name) || other.name == name)&&(identical(other.type, type) || other.type == type)&&const DeepCollectionEquality().equals(other._phrases, _phrases));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Parrot&&(identical(other.name, name) || other.name == name)&&(identical(other.typeAA, typeAA) || other.typeAA == typeAA)&&const DeepCollectionEquality().equals(other._phrases, _phrases));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,type,const DeepCollectionEquality().hash(_phrases));
+int get hashCode => Object.hash(runtimeType,name,typeAA,const DeepCollectionEquality().hash(_phrases));
 
 @override
 String toString() {
-  return 'Parrot(name: $name, type: $type, phrases: $phrases)';
+  return 'Parrot(name: $name, typeAA: $typeAA, phrases: $phrases)';
 }
 
 
@@ -135,7 +135,7 @@ abstract mixin class _$ParrotCopyWith<$Res> implements $ParrotCopyWith<$Res> {
   factory _$ParrotCopyWith(_Parrot value, $Res Function(_Parrot) _then) = __$ParrotCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: Parrot.nameKey) String name,@JsonKey(name: Parrot.typeKey) String type,@JsonKey(name: Parrot.phrasesKey) List<String> phrases
+@JsonKey(name: Parrot.nameKey) String name,@JsonKey(name: Parrot.typeAAKey) String typeAA,@JsonKey(name: Parrot.phrasesKey) List<String> phrases
 });
 
 
@@ -152,10 +152,10 @@ class __$ParrotCopyWithImpl<$Res>
 
 /// Create a copy of Parrot
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? type = null,Object? phrases = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? typeAA = null,Object? phrases = null,}) {
   return _then(_Parrot(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
+as String,typeAA: null == typeAA ? _self.typeAA : typeAA // ignore: cast_nullable_to_non_nullable
 as String,phrases: null == phrases ? _self._phrases : phrases // ignore: cast_nullable_to_non_nullable
 as List<String>,
   ));

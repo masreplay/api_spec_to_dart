@@ -8,12 +8,12 @@ part of 'dog.dart';
 
 _Dog _$DogFromJson(Map<String, dynamic> json) => _Dog(
   name: json['name'] as String,
-  type: json['type'] as String? ?? 'dog',
+  typeAA: json['type'] as String? ?? 'dog',
   barkLoudness: (json['bark_loudness'] as num).toInt(),
 );
 
 Map<String, dynamic> _$DogToJson(_Dog instance) => <String, dynamic>{
   'name': instance.name,
-  'type': instance.type,
+  'type': instance.typeAA,
   'bark_loudness': instance.barkLoudness,
 };

@@ -17,8 +17,8 @@ T _$identity<T>(T value) => value;
 mixin _$CurrencyModel {
 
 /// currency
-@JsonKey(name: CurrencyModel.currencyKey) String? get currency;/// iso4217
-@JsonKey(name: CurrencyModel.iso4217Key) String? get iso4217;
+@JsonKey(name: CurrencyModel.currencyKey) CurrencyEnum? get currency;/// iso4217
+@JsonKey(name: CurrencyModel.iso4217Key) Iso4217Enum? get iso4217;
 /// Create a copy of CurrencyModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -51,7 +51,7 @@ abstract mixin class $CurrencyModelCopyWith<$Res>  {
   factory $CurrencyModelCopyWith(CurrencyModel value, $Res Function(CurrencyModel) _then) = _$CurrencyModelCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: CurrencyModel.currencyKey) String? currency,@JsonKey(name: CurrencyModel.iso4217Key) String? iso4217
+@JsonKey(name: CurrencyModel.currencyKey) CurrencyEnum? currency,@JsonKey(name: CurrencyModel.iso4217Key) Iso4217Enum? iso4217
 });
 
 
@@ -71,8 +71,8 @@ class _$CurrencyModelCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? currency = freezed,Object? iso4217 = freezed,}) {
   return _then(_self.copyWith(
 currency: freezed == currency ? _self.currency : currency // ignore: cast_nullable_to_non_nullable
-as String?,iso4217: freezed == iso4217 ? _self.iso4217 : iso4217 // ignore: cast_nullable_to_non_nullable
-as String?,
+as CurrencyEnum?,iso4217: freezed == iso4217 ? _self.iso4217 : iso4217 // ignore: cast_nullable_to_non_nullable
+as Iso4217Enum?,
   ));
 }
 
@@ -87,9 +87,9 @@ class _CurrencyModel extends CurrencyModel {
   factory _CurrencyModel.fromJson(Map<String, dynamic> json) => _$CurrencyModelFromJson(json);
 
 /// currency
-@override@JsonKey(name: CurrencyModel.currencyKey) final  String? currency;
+@override@JsonKey(name: CurrencyModel.currencyKey) final  CurrencyEnum? currency;
 /// iso4217
-@override@JsonKey(name: CurrencyModel.iso4217Key) final  String? iso4217;
+@override@JsonKey(name: CurrencyModel.iso4217Key) final  Iso4217Enum? iso4217;
 
 /// Create a copy of CurrencyModel
 /// with the given fields replaced by the non-null parameter values.
@@ -124,7 +124,7 @@ abstract mixin class _$CurrencyModelCopyWith<$Res> implements $CurrencyModelCopy
   factory _$CurrencyModelCopyWith(_CurrencyModel value, $Res Function(_CurrencyModel) _then) = __$CurrencyModelCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: CurrencyModel.currencyKey) String? currency,@JsonKey(name: CurrencyModel.iso4217Key) String? iso4217
+@JsonKey(name: CurrencyModel.currencyKey) CurrencyEnum? currency,@JsonKey(name: CurrencyModel.iso4217Key) Iso4217Enum? iso4217
 });
 
 
@@ -144,8 +144,8 @@ class __$CurrencyModelCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? currency = freezed,Object? iso4217 = freezed,}) {
   return _then(_CurrencyModel(
 currency: freezed == currency ? _self.currency : currency // ignore: cast_nullable_to_non_nullable
-as String?,iso4217: freezed == iso4217 ? _self.iso4217 : iso4217 // ignore: cast_nullable_to_non_nullable
-as String?,
+as CurrencyEnum?,iso4217: freezed == iso4217 ? _self.iso4217 : iso4217 // ignore: cast_nullable_to_non_nullable
+as Iso4217Enum?,
   ));
 }
 

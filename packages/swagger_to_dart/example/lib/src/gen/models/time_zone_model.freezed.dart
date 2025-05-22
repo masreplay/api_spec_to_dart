@@ -17,7 +17,7 @@ T _$identity<T>(T value) => value;
 mixin _$TimeZoneModel {
 
 /// timezone
-@JsonKey(name: TimeZoneModel.timezoneKey) String get timezone;
+@JsonKey(name: TimeZoneModel.timezoneKey) TimezoneEnum get timezone;
 /// Create a copy of TimeZoneModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -50,7 +50,7 @@ abstract mixin class $TimeZoneModelCopyWith<$Res>  {
   factory $TimeZoneModelCopyWith(TimeZoneModel value, $Res Function(TimeZoneModel) _then) = _$TimeZoneModelCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: TimeZoneModel.timezoneKey) String timezone
+@JsonKey(name: TimeZoneModel.timezoneKey) TimezoneEnum timezone
 });
 
 
@@ -70,7 +70,7 @@ class _$TimeZoneModelCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? timezone = null,}) {
   return _then(_self.copyWith(
 timezone: null == timezone ? _self.timezone : timezone // ignore: cast_nullable_to_non_nullable
-as String,
+as TimezoneEnum,
   ));
 }
 
@@ -85,7 +85,7 @@ class _TimeZoneModel extends TimeZoneModel {
   factory _TimeZoneModel.fromJson(Map<String, dynamic> json) => _$TimeZoneModelFromJson(json);
 
 /// timezone
-@override@JsonKey(name: TimeZoneModel.timezoneKey) final  String timezone;
+@override@JsonKey(name: TimeZoneModel.timezoneKey) final  TimezoneEnum timezone;
 
 /// Create a copy of TimeZoneModel
 /// with the given fields replaced by the non-null parameter values.
@@ -120,7 +120,7 @@ abstract mixin class _$TimeZoneModelCopyWith<$Res> implements $TimeZoneModelCopy
   factory _$TimeZoneModelCopyWith(_TimeZoneModel value, $Res Function(_TimeZoneModel) _then) = __$TimeZoneModelCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: TimeZoneModel.timezoneKey) String timezone
+@JsonKey(name: TimeZoneModel.timezoneKey) TimezoneEnum timezone
 });
 
 
@@ -140,7 +140,7 @@ class __$TimeZoneModelCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? timezone = null,}) {
   return _then(_TimeZoneModel(
 timezone: null == timezone ? _self.timezone : timezone // ignore: cast_nullable_to_non_nullable
-as String,
+as TimezoneEnum,
   ));
 }
 

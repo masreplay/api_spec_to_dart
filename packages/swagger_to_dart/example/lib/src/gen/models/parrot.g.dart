@@ -8,12 +8,12 @@ part of 'parrot.dart';
 
 _Parrot _$ParrotFromJson(Map<String, dynamic> json) => _Parrot(
   name: json['name'] as String,
-  type: json['type'] as String? ?? 'parrot',
+  typeAA: json['type'] as String? ?? 'parrot',
   phrases: (json['phrases'] as List<dynamic>).map((e) => e as String).toList(),
 );
 
 Map<String, dynamic> _$ParrotToJson(_Parrot instance) => <String, dynamic>{
   'name': instance.name,
-  'type': instance.type,
+  'type': instance.typeAA,
   'phrases': instance.phrases,
 };

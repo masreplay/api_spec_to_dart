@@ -17,7 +17,7 @@ T _$identity<T>(T value) => value;
 mixin _$ScriptCodeModel {
 
 /// scriptCode
-@JsonKey(name: ScriptCodeModel.scriptCodeKey) String get scriptCode;
+@JsonKey(name: ScriptCodeModel.scriptCodeKey) ScriptCodeEnum get scriptCode;
 /// Create a copy of ScriptCodeModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -50,7 +50,7 @@ abstract mixin class $ScriptCodeModelCopyWith<$Res>  {
   factory $ScriptCodeModelCopyWith(ScriptCodeModel value, $Res Function(ScriptCodeModel) _then) = _$ScriptCodeModelCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: ScriptCodeModel.scriptCodeKey) String scriptCode
+@JsonKey(name: ScriptCodeModel.scriptCodeKey) ScriptCodeEnum scriptCode
 });
 
 
@@ -70,7 +70,7 @@ class _$ScriptCodeModelCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? scriptCode = null,}) {
   return _then(_self.copyWith(
 scriptCode: null == scriptCode ? _self.scriptCode : scriptCode // ignore: cast_nullable_to_non_nullable
-as String,
+as ScriptCodeEnum,
   ));
 }
 
@@ -85,7 +85,7 @@ class _ScriptCodeModel extends ScriptCodeModel {
   factory _ScriptCodeModel.fromJson(Map<String, dynamic> json) => _$ScriptCodeModelFromJson(json);
 
 /// scriptCode
-@override@JsonKey(name: ScriptCodeModel.scriptCodeKey) final  String scriptCode;
+@override@JsonKey(name: ScriptCodeModel.scriptCodeKey) final  ScriptCodeEnum scriptCode;
 
 /// Create a copy of ScriptCodeModel
 /// with the given fields replaced by the non-null parameter values.
@@ -120,7 +120,7 @@ abstract mixin class _$ScriptCodeModelCopyWith<$Res> implements $ScriptCodeModel
   factory _$ScriptCodeModelCopyWith(_ScriptCodeModel value, $Res Function(_ScriptCodeModel) _then) = __$ScriptCodeModelCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: ScriptCodeModel.scriptCodeKey) String scriptCode
+@JsonKey(name: ScriptCodeModel.scriptCodeKey) ScriptCodeEnum scriptCode
 });
 
 
@@ -140,7 +140,7 @@ class __$ScriptCodeModelCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? scriptCode = null,}) {
   return _then(_ScriptCodeModel(
 scriptCode: null == scriptCode ? _self.scriptCode : scriptCode // ignore: cast_nullable_to_non_nullable
-as String,
+as ScriptCodeEnum,
   ));
 }
 
