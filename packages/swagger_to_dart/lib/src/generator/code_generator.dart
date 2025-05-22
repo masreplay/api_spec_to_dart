@@ -142,6 +142,7 @@ const jsonSerializable = JsonSerializable(
     // exports
     final exportsLibrary = Library(
       (b) => b
+        ..name = 'exports.dart'
         ..directives.addAll([
           for (final apiClient in context.apiClients)
             Directive.export('${apiClient.name}.dart'),
@@ -149,17 +150,20 @@ const jsonSerializable = JsonSerializable(
     );
 
     await writeDartFile(
-      path.join(apiClientsDir.path, 'exports.dart'),
+      path.join(apiClientsDir.path, exportsLibrary.name),
       exportsLibrary,
     );
 
+    final baseApiCLientLibrary = BaseApiClientGenerator(context).build();
+
     await writeDartFile(
-      path.join(apiClientsDir.path, 'base_api_client.dart'),
-      BaseApiClientGenerator(context).build(),
+      path.join(apiClientsDir.path, baseApiCLientLibrary.name),
+      baseApiCLientLibrary,
     );
 
     final baseLibrary = Library(
       (b) => b
+        ..name = 'api_client.dart'
         ..directives.addAll([
           Directive.import('exports.dart'),
           Directive.export('base_api_client.dart'),
@@ -167,7 +171,7 @@ const jsonSerializable = JsonSerializable(
     );
 
     await writeDartFile(
-      path.join(apiClientsDir.path, 'api_client.dart'),
+      path.join(apiClientsDir.path, baseLibrary.name),
       baseLibrary,
     );
   }
