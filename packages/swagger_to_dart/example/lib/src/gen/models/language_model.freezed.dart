@@ -19,8 +19,8 @@ mixin _$LanguageModel {
 /// alpha2
 @JsonKey(name: LanguageModel.alpha2Key) String? get alpha2;/// name
 @JsonKey(name: LanguageModel.nameKey) String? get name;/// iso6393
-@JsonKey(name: LanguageModel.iso6393Key) String? get iso6393;/// iso6395
-@JsonKey(name: LanguageModel.iso6395Key) String? get iso6395;
+@JsonKey(name: LanguageModel.iso6393Key) Iso6393Enum? get iso6393;/// iso6395
+@JsonKey(name: LanguageModel.iso6395Key) Iso6395Enum? get iso6395;
 /// Create a copy of LanguageModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -53,7 +53,7 @@ abstract mixin class $LanguageModelCopyWith<$Res>  {
   factory $LanguageModelCopyWith(LanguageModel value, $Res Function(LanguageModel) _then) = _$LanguageModelCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: LanguageModel.alpha2Key) String? alpha2,@JsonKey(name: LanguageModel.nameKey) String? name,@JsonKey(name: LanguageModel.iso6393Key) String? iso6393,@JsonKey(name: LanguageModel.iso6395Key) String? iso6395
+@JsonKey(name: LanguageModel.alpha2Key) String? alpha2,@JsonKey(name: LanguageModel.nameKey) String? name,@JsonKey(name: LanguageModel.iso6393Key) Iso6393Enum? iso6393,@JsonKey(name: LanguageModel.iso6395Key) Iso6395Enum? iso6395
 });
 
 
@@ -75,8 +75,8 @@ class _$LanguageModelCopyWithImpl<$Res>
 alpha2: freezed == alpha2 ? _self.alpha2 : alpha2 // ignore: cast_nullable_to_non_nullable
 as String?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String?,iso6393: freezed == iso6393 ? _self.iso6393 : iso6393 // ignore: cast_nullable_to_non_nullable
-as String?,iso6395: freezed == iso6395 ? _self.iso6395 : iso6395 // ignore: cast_nullable_to_non_nullable
-as String?,
+as Iso6393Enum?,iso6395: freezed == iso6395 ? _self.iso6395 : iso6395 // ignore: cast_nullable_to_non_nullable
+as Iso6395Enum?,
   ));
 }
 
@@ -95,9 +95,9 @@ class _LanguageModel extends LanguageModel {
 /// name
 @override@JsonKey(name: LanguageModel.nameKey) final  String? name;
 /// iso6393
-@override@JsonKey(name: LanguageModel.iso6393Key) final  String? iso6393;
+@override@JsonKey(name: LanguageModel.iso6393Key) final  Iso6393Enum? iso6393;
 /// iso6395
-@override@JsonKey(name: LanguageModel.iso6395Key) final  String? iso6395;
+@override@JsonKey(name: LanguageModel.iso6395Key) final  Iso6395Enum? iso6395;
 
 /// Create a copy of LanguageModel
 /// with the given fields replaced by the non-null parameter values.
@@ -132,7 +132,7 @@ abstract mixin class _$LanguageModelCopyWith<$Res> implements $LanguageModelCopy
   factory _$LanguageModelCopyWith(_LanguageModel value, $Res Function(_LanguageModel) _then) = __$LanguageModelCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: LanguageModel.alpha2Key) String? alpha2,@JsonKey(name: LanguageModel.nameKey) String? name,@JsonKey(name: LanguageModel.iso6393Key) String? iso6393,@JsonKey(name: LanguageModel.iso6395Key) String? iso6395
+@JsonKey(name: LanguageModel.alpha2Key) String? alpha2,@JsonKey(name: LanguageModel.nameKey) String? name,@JsonKey(name: LanguageModel.iso6393Key) Iso6393Enum? iso6393,@JsonKey(name: LanguageModel.iso6395Key) Iso6395Enum? iso6395
 });
 
 
@@ -154,8 +154,8 @@ class __$LanguageModelCopyWithImpl<$Res>
 alpha2: freezed == alpha2 ? _self.alpha2 : alpha2 // ignore: cast_nullable_to_non_nullable
 as String?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String?,iso6393: freezed == iso6393 ? _self.iso6393 : iso6393 // ignore: cast_nullable_to_non_nullable
-as String?,iso6395: freezed == iso6395 ? _self.iso6395 : iso6395 // ignore: cast_nullable_to_non_nullable
-as String?,
+as Iso6393Enum?,iso6395: freezed == iso6395 ? _self.iso6395 : iso6395 // ignore: cast_nullable_to_non_nullable
+as Iso6395Enum?,
   ));
 }
 

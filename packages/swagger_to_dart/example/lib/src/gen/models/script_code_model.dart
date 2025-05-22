@@ -211,7 +211,8 @@ abstract class ScriptCodeModel with _$ScriptCodeModel {
   @jsonSerializable
   const factory ScriptCodeModel({
     /// scriptCode
-    @JsonKey(name: ScriptCodeModel.scriptCodeKey) required String scriptCode,
+    @JsonKey(name: ScriptCodeModel.scriptCodeKey)
+    required ScriptCodeEnum scriptCode,
   }) = _ScriptCodeModel;
 
   factory ScriptCodeModel.fromJson(Map<String, dynamic> json) =>

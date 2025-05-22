@@ -72,6 +72,7 @@ OpenApiSchemaRef _$OpenApiSchemaRefFromJson(Map<String, dynamic> json) =>
       ref: json[r'$ref'] as String?,
       description: json['description'] as String?,
       default_: json['default'],
+      title: json['title'] as String?,
       $type: json['runtimeType'] as String?,
     );
 
@@ -80,6 +81,7 @@ Map<String, dynamic> _$OpenApiSchemaRefToJson(OpenApiSchemaRef instance) =>
       if (instance.ref case final value?) r'$ref': value,
       if (instance.description case final value?) 'description': value,
       if (instance.default_ case final value?) 'default': value,
+      if (instance.title case final value?) 'title': value,
       'runtimeType': instance.$type,
     };
 

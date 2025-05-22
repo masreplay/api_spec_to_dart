@@ -34,6 +34,8 @@ mixin _$OpenApiSchema {
   String? get description;
   @JsonKey(name: 'default')
   Object? get default_;
+  @JsonKey(name: 'title')
+  String? get title;
 
   /// Create a copy of OpenApiSchema
   /// with the given fields replaced by the non-null parameter values.
@@ -53,17 +55,18 @@ mixin _$OpenApiSchema {
             other is OpenApiSchema &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            const DeepCollectionEquality().equals(other.default_, default_));
+            const DeepCollectionEquality().equals(other.default_, default_) &&
+            (identical(other.title, title) || other.title == title));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, description, const DeepCollectionEquality().hash(default_));
+  int get hashCode => Object.hash(runtimeType, description,
+      const DeepCollectionEquality().hash(default_), title);
 
   @override
   String toString() {
-    return 'OpenApiSchema(description: $description, default_: $default_)';
+    return 'OpenApiSchema(description: $description, default_: $default_, title: $title)';
   }
 }
 
@@ -75,7 +78,8 @@ abstract mixin class $OpenApiSchemaCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'description') String? description,
-      @JsonKey(name: 'default') Object? default_});
+      @JsonKey(name: 'default') Object? default_,
+      @JsonKey(name: 'title') String? title});
 }
 
 /// @nodoc
@@ -93,6 +97,7 @@ class _$OpenApiSchemaCopyWithImpl<$Res>
   $Res call({
     Object? description = freezed,
     Object? default_ = freezed,
+    Object? title = freezed,
   }) {
     return _then(_self.copyWith(
       description: freezed == description
@@ -100,6 +105,10 @@ class _$OpenApiSchemaCopyWithImpl<$Res>
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
       default_: freezed == default_ ? _self.default_ : default_,
+      title: freezed == title
+          ? _self.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -158,6 +167,7 @@ class OpenApiSchemaType extends OpenApiSchema {
   @override
   @JsonKey(name: 'default')
   final Object? default_;
+  @override
   @JsonKey(name: 'title')
   final String? title;
 
@@ -338,6 +348,7 @@ class OpenApiSchemaRef extends OpenApiSchema {
       {@JsonKey(name: r'$ref') this.ref,
       @JsonKey(name: 'description') this.description,
       @JsonKey(name: 'default') this.default_,
+      @JsonKey(name: 'title') this.title,
       final String? $type})
       : $type = $type ?? 'ref',
         super._();
@@ -352,6 +363,9 @@ class OpenApiSchemaRef extends OpenApiSchema {
   @override
   @JsonKey(name: 'default')
   final Object? default_;
+  @override
+  @JsonKey(name: 'title')
+  final String? title;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -379,17 +393,18 @@ class OpenApiSchemaRef extends OpenApiSchema {
             (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            const DeepCollectionEquality().equals(other.default_, default_));
+            const DeepCollectionEquality().equals(other.default_, default_) &&
+            (identical(other.title, title) || other.title == title));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, ref, description,
-      const DeepCollectionEquality().hash(default_));
+      const DeepCollectionEquality().hash(default_), title);
 
   @override
   String toString() {
-    return 'OpenApiSchema.ref(ref: $ref, description: $description, default_: $default_)';
+    return 'OpenApiSchema.ref(ref: $ref, description: $description, default_: $default_, title: $title)';
   }
 }
 
@@ -404,7 +419,8 @@ abstract mixin class $OpenApiSchemaRefCopyWith<$Res>
   $Res call(
       {@JsonKey(name: r'$ref') String? ref,
       @JsonKey(name: 'description') String? description,
-      @JsonKey(name: 'default') Object? default_});
+      @JsonKey(name: 'default') Object? default_,
+      @JsonKey(name: 'title') String? title});
 }
 
 /// @nodoc
@@ -423,6 +439,7 @@ class _$OpenApiSchemaRefCopyWithImpl<$Res>
     Object? ref = freezed,
     Object? description = freezed,
     Object? default_ = freezed,
+    Object? title = freezed,
   }) {
     return _then(OpenApiSchemaRef(
       ref: freezed == ref
@@ -434,6 +451,10 @@ class _$OpenApiSchemaRefCopyWithImpl<$Res>
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
       default_: freezed == default_ ? _self.default_ : default_,
+      title: freezed == title
+          ? _self.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -467,6 +488,7 @@ class OpenApiSchemaAnyOf extends OpenApiSchema {
   @override
   @JsonKey(name: 'description')
   final String? description;
+  @override
   @JsonKey(name: 'title')
   final String? title;
   @override
@@ -601,6 +623,7 @@ class OpenApiSchemaOneOf extends OpenApiSchema {
   @override
   @JsonKey(name: 'description')
   final String? description;
+  @override
   @JsonKey(name: 'title')
   final String? title;
   @JsonKey(name: 'discriminator')

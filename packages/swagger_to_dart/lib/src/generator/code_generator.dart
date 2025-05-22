@@ -38,7 +38,7 @@ class CodeGenerator {
       if (filename == null) throw Exception('Model has no name');
 
       try {
-        await writeDartFile(
+        await writeDartLibraryFile(
           path.join(modelsDir.path, '${filename}.dart'),
           model,
         );
@@ -56,7 +56,7 @@ class CodeGenerator {
         ]),
     );
 
-    await writeDartFile(
+    await writeDartLibraryFile(
       path.join(modelsDir.path, 'models.dart'),
       mainLibrary,
     );
@@ -71,6 +71,7 @@ class CodeGenerator {
         ])
         ..body.addAll([
           ...context.jsonConvertor,
+          // TODO(masreplay): use builder
           CodeExpression(
             Code(
               '''
@@ -97,7 +98,7 @@ const jsonSerializable = JsonSerializable(
         ]),
     );
 
-    await writeDartFile(
+    await writeDartLibraryFile(
       path.join(modelsDir.path, '${jsonConverterLibrary.name!}.dart'),
       jsonConverterLibrary,
     );
@@ -115,7 +116,7 @@ const jsonSerializable = JsonSerializable(
               'package:freezed_annotation/freezed_annotation.dart'),
         ]),
     );
-    await writeDartFile(
+    await writeDartLibraryFile(
       path.join(modelsDir.path, 'exports.dart'),
       exportLibrary,
     );
@@ -129,7 +130,7 @@ const jsonSerializable = JsonSerializable(
       if (filename == null) throw Exception('Api client has no name');
 
       try {
-        await writeDartFile(
+        await writeDartLibraryFile(
           path.join(apiClientsDir.path, '${filename}.dart'),
           apiClient,
         );
@@ -149,14 +150,14 @@ const jsonSerializable = JsonSerializable(
         ]),
     );
 
-    await writeDartFile(
+    await writeDartLibraryFile(
       path.join(apiClientsDir.path, exportsLibrary.name),
       exportsLibrary,
     );
 
     final baseApiCLientLibrary = BaseApiClientGenerator(context).build();
 
-    await writeDartFile(
+    await writeDartLibraryFile(
       path.join(apiClientsDir.path, '${baseApiCLientLibrary.name}.dart'),
       baseApiCLientLibrary,
     );
@@ -170,14 +171,14 @@ const jsonSerializable = JsonSerializable(
         ]),
     );
 
-    await writeDartFile(
+    await writeDartLibraryFile(
       path.join(apiClientsDir.path, baseLibrary.name),
       baseLibrary,
     );
   }
 }
 
-Future<void> writeDartFile(String filePath, Library library) async {
+Future<void> writeDartLibraryFile(String filePath, Library library) async {
   final emitter = DartEmitter.scoped();
   final formatter = DartFormatter(
     languageVersion: DartFormatter.latestLanguageVersion,

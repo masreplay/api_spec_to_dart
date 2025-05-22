@@ -8102,10 +8102,10 @@ abstract class LanguageModel with _$LanguageModel {
     @JsonKey(name: LanguageModel.nameKey) required String? name,
 
     /// iso6393
-    @JsonKey(name: LanguageModel.iso6393Key) required String? iso6393,
+    @JsonKey(name: LanguageModel.iso6393Key) required Iso6393Enum? iso6393,
 
     /// iso6395
-    @JsonKey(name: LanguageModel.iso6395Key) required String? iso6395,
+    @JsonKey(name: LanguageModel.iso6395Key) required Iso6395Enum? iso6395,
   }) = _LanguageModel;
 
   factory LanguageModel.fromJson(Map<String, dynamic> json) =>

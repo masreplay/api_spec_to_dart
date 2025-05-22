@@ -169,7 +169,7 @@ abstract class AdvancedClient {
   /// }
   @GET("/special/literal")
   Future<HttpResponse<Map<String, dynamic>>> advancedSpecialLiteral({
-    @Query("mode") String mode = 'system',
+    @Query("mode") ModeEnum mode = 'system',
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,

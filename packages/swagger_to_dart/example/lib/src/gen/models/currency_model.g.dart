@@ -8,8 +8,8 @@ part of 'currency_model.dart';
 
 _CurrencyModel _$CurrencyModelFromJson(Map<String, dynamic> json) =>
     _CurrencyModel(
-      currency: json['currency'] as String?,
-      iso4217: json['iso4217'] as String?,
+      currency: $enumDecodeNullable(_$CurrencyEnumEnumMap, json['currency']),
+      iso4217: $enumDecodeNullable(_$Iso4217EnumEnumMap, json['iso4217']),
     );
 
 Map<String, dynamic> _$CurrencyModelToJson(_CurrencyModel instance) =>
@@ -17,3 +17,7 @@ Map<String, dynamic> _$CurrencyModelToJson(_CurrencyModel instance) =>
       'currency': instance.currency,
       'iso4217': instance.iso4217,
     };
+
+const _$CurrencyEnumEnumMap = {CurrencyEnum.hi: 'HI'};
+
+const _$Iso4217EnumEnumMap = {Iso4217Enum.hi: 'HI'};
