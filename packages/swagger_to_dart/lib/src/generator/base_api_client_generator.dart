@@ -30,7 +30,7 @@ class BaseApiClientGenerator {
 
   Library build() {
     final className = 'BaseApiClient';
-    final fileName = 'base_api_client';
+    final fileName = Renaming.instance.renameFile(className);
 
     return Library(
       (b) => b
