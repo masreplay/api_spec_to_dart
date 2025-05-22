@@ -1,3 +1,7 @@
+## 2.0.1
+
+- Fix union key for `oneOf` type
+
 ## 2.0.0
 
 - Use code_builder package to do type safe code generation
