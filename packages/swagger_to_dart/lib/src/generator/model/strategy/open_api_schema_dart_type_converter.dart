@@ -107,7 +107,12 @@ class OpenApiSchemaDartTypeConverter {
     }
 
     if (schemas.every((e) => e is OpenApiSchemaRef)) {
-      return _createUnionClass(schemas);
+      final strategy = UnionModelStrategy(context);
+
+      final (model, className) = strategy.buildAnyOf(schema);
+      context.addModel(model);
+
+      return className;
     }
 
     return 'dynamic';
@@ -127,7 +132,12 @@ class OpenApiSchemaDartTypeConverter {
     }
 
     if (schemas.every((e) => e is OpenApiSchemaRef)) {
-      return _createUnionClass(schemas);
+      final strategy = UnionModelStrategy(context);
+
+      final (model, className) = strategy.buildOneOf(schema);
+      context.addModel(model);
+
+      return className;
     }
 
     return 'dynamic';
@@ -198,14 +208,5 @@ class OpenApiSchemaDartTypeConverter {
       case OpenApiSchemaVarType.null_ || OpenApiSchemaVarType.$unknown || null:
         return 'dynamic';
     }
-  }
-
-  String _createUnionClass(List<OpenApiSchema> schemas) {
-    final strategy = UnionModelStrategy(context);
-
-    final (model, className) = strategy.buildSchemas(schemas);
-    context.addModel(model);
-
-    return className;
   }
 }

@@ -5,47 +5,35 @@ import 'package:swagger_to_dart/src/generator/model/strategy/strategy.dart';
 import 'package:swagger_to_dart/src/schema/openapi/openapi.dart';
 import 'package:swagger_to_dart/src/utils/utils.dart';
 
-class UnionModelStrategy extends ModelGeneratorStrategy {
+class UnionModelStrategyParams {
+  final String key;
+  final OpenApiSchema schema;
+  final Map<String, OpenApiSchemaRef> refSchemaMap;
+
+  const UnionModelStrategyParams({
+    required this.key,
+    required this.schema,
+    required this.refSchemaMap,
+  });
+}
+
+class UnionModelStrategy
+    extends ModelGeneratorStrategy<UnionModelStrategyParams> {
   const UnionModelStrategy(super.context);
 
-  (Library, String) buildSchemas(List<OpenApiSchema> schemas) {
-    final className = schemas
-        .whereType<OpenApiSchemaRef>()
-        .map(OpenApiSchemaDartTypeConverter(context).getRef)
-        .map(Renaming.instance.renameClass)
-        .sorted((a, b) => a.compareTo(b))
-        .join();
-
-    final unionModel = MapEntry<String, OpenApiSchemas>(
-      className,
-      OpenApiSchemas(
-        type: 'dynamic',
-        properties: {
-          for (final value in schemas.whereType<OpenApiSchemaRef>())
-            value.ref!: OpenApiSchemaRef(ref: value.ref!),
-        },
-      ),
-    );
-
-    return (build(unionModel), className);
-  }
-
-  Library build(MapEntry<String, OpenApiSchemas> model) {
-    final className = Renaming.instance.renameClass(model.key);
+  Library build(UnionModelStrategyParams params) {
+    final className = Renaming.instance.renameClass(params.key);
     final filename = Renaming.instance.renameFile(className);
 
     final dartTypeConverter = OpenApiSchemaDartTypeConverter(context);
 
-    final properties = model.value.properties ?? {};
-    final refsSchema = properties.values.whereType<OpenApiSchemaRef>();
-
     const String valueKeyName = 'value';
 
-    final unions = refsSchema.map((schema) {
-      final name = schema.ref!.split('/').last;
+    final unions = params.refSchemaMap.entries.map((entry) {
+      final name = entry.key;
 
       final type = dartTypeConverter.get(
-        schema,
+        entry.value,
         className: className,
       );
 
@@ -53,7 +41,7 @@ class UnionModelStrategy extends ModelGeneratorStrategy {
         (b) => b
           ..annotations.addAll([
             refer('jsonSerializable'),
-            refer('$FreezedUnionValue("${Recase.instance.toCamelCase(name)}")'),
+            refer('$FreezedUnionValue("$name")'),
           ])
           ..constant = true
           ..factory = true
@@ -130,6 +118,14 @@ class UnionModelStrategy extends ModelGeneratorStrategy {
           Directive.part('${filename}.freezed.dart'),
           Directive.part('${filename}.g.dart'),
         ])
+        ..docs.addAll([
+          '/// ${params.key}',
+          ...JsonFactory.instance
+              .encode(params.schema.toJson())
+              .split('\n')
+              .map((e) => '/// $e')
+              .toList(),
+        ])
         ..body.addAll([
           Class(
             (b) => b
@@ -163,5 +159,52 @@ class UnionModelStrategy extends ModelGeneratorStrategy {
           )
         ]),
     );
+  }
+
+  (Library, String) buildOneOf(OpenApiSchemaOneOf schema) {
+    final schemas = schema.oneOf;
+    final className = Renaming.instance.renameClass(
+      "${schema.discriminator.mapping.keys.join('_')}_Union",
+    );
+
+    final model = build(
+      UnionModelStrategyParams(
+        key: className,
+        schema: schema,
+        refSchemaMap: {
+          for (final (index, refSchema)
+              in schemas.whereType<OpenApiSchemaRef>().indexed)
+            schema.discriminator.mapping.keys.toList()[index]: refSchema,
+        },
+      ),
+    );
+
+    return (model, className);
+  }
+
+  (Library, String) buildAnyOf(OpenApiSchemaAnyOf schema) {
+    final dartTypeConverter = OpenApiSchemaDartTypeConverter(context);
+
+    final schemas = schema.anyOf;
+
+    final className = Renaming.instance.renameClass((schemas
+        .whereType<OpenApiSchemaRef>()
+        .map(dartTypeConverter.getRef)
+        .map(Renaming.instance.renameClass)
+        .sorted((a, b) => a.compareTo(b))
+        .join()));
+
+    final model = build(
+      UnionModelStrategyParams(
+        key: className,
+        schema: schema,
+        refSchemaMap: {
+          for (final refSchema in schemas.whereType<OpenApiSchemaRef>())
+            if (refSchema.ref case final ref?) ref: refSchema,
+        },
+      ),
+    );
+
+    return (model, className);
   }
 }

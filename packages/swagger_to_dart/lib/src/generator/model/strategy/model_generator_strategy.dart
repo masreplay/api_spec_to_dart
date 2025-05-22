@@ -1,14 +1,13 @@
-import 'package:code_builder/code_builder.dart';
+import 'package:code_builder/src/specs/library.dart';
 import 'package:swagger_to_dart/src/config/generation_context.dart';
-import 'package:swagger_to_dart/src/schema/openapi/openapi.dart';
 
 ///
 ///
 ///
-abstract class ModelGeneratorStrategy {
+abstract class ModelGeneratorStrategy<Params> {
   const ModelGeneratorStrategy(this.context);
 
   final GenerationContext context;
 
-  Library build(MapEntry<String, OpenApiSchemas> model);
+  Library build(Params params);
 }

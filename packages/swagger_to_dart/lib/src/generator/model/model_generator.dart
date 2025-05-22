@@ -5,7 +5,6 @@ import 'package:swagger_to_dart/src/schema/openapi/openapi.dart';
 
 import 'strategy/enum_model_strategy.dart';
 import 'strategy/regular_model_strategy.dart';
-import 'strategy/union_model_strategy.dart';
 
 ///
 /// Generate Enum, Union, Regular models

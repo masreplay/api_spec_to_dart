@@ -36,7 +36,8 @@ import 'model_generator_strategy.dart';
 /// ```
 ///
 
-class EnumModelStrategy extends ModelGeneratorStrategy {
+class EnumModelStrategy
+    extends ModelGeneratorStrategy<MapEntry<String, OpenApiSchemas>> {
   const EnumModelStrategy(super.context);
 
   Library build(MapEntry<String, OpenApiSchemas> model) {

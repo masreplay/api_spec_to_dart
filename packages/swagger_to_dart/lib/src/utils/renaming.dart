@@ -1,4 +1,4 @@
-import 'package:swagger_to_dart/src/schema/openapi/v3/v3.dart';
+import 'package:swagger_to_dart/src/schema/openapi/openapi.dart';
 
 import 'recase.dart';
 
@@ -64,7 +64,6 @@ final keywords = <String>{
   'throw',
   'true',
   'try',
-  'type',
   'typedef',
   'void',
   'when',
@@ -111,9 +110,6 @@ class Renaming {
       key,
       translateSpecialCharacters: true,
     ));
-
-
-    
   }
 
   String renameMethod(String key) {
@@ -138,7 +134,7 @@ class Renaming {
   }
 
   String renameRefClass(OpenApiSchemaRef value) {
-    return renameClass(_guard(value.ref!.split('/').last));
+    return renameClass(_guard(value.name));
   }
 
   String renameClass(String value) {
