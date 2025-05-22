@@ -43,6 +43,16 @@ class BaseApiClientGenerator {
         ..body.addAll([
           Class(
             (b) => b
+              ..docs.addAll([
+                if (context.openApi.info case final info?)
+                  ...JsonFactory.instance
+                      .encode(info.toJson())
+                      .split('\n')
+                      .map((e) => '/// $e')
+                      .toList(),
+                if (context.openApi.servers case final servers?)
+                  ...servers.map((e) => '/// ${e.url}').toList(),
+              ])
               ..name = className
               ..constructors.addAll([
                 Constructor(

@@ -157,7 +157,7 @@ const jsonSerializable = JsonSerializable(
     final baseApiCLientLibrary = BaseApiClientGenerator(context).build();
 
     await writeDartFile(
-      path.join(apiClientsDir.path, baseApiCLientLibrary.name),
+      path.join(apiClientsDir.path, '${baseApiCLientLibrary.name}.dart'),
       baseApiCLientLibrary,
     );
 

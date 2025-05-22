@@ -1,3 +1,5 @@
+library;
+
 export 'basic_client.dart';
 export 'advanced_client.dart';
 export 'models_client.dart';

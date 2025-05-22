@@ -47,10 +47,10 @@ class SwaggerToDartCodeBuilder {
       (b) => b
         ..name = 'api_base_client'
         ..docs.addAll([
-          context.openApi.info.title,
-          if (context.openApi.info.description case final description?)
+          context.openApi.info?.title ?? '',
+          if (context.openApi.info?.description case final description?)
             description,
-          if (context.openApi.info.version case final version?) version,
+          if (context.openApi.info?.version case final version?) version,
           DateTime.now().toString(),
         ])
         ..directives.addAll([

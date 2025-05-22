@@ -16,14 +16,28 @@ abstract class OpenApi with _$OpenApi {
 
   const factory OpenApi({
     @JsonKey(name: 'openapi') required String? openapi,
-    @JsonKey(name: 'info') required OpenApiInfo info,
+    @JsonKey(name: 'info') required OpenApiInfo? info,
     @JsonKey(name: 'servers') required List<OpenApiServer>? servers,
     @JsonKey(name: 'paths') required OpenApiPaths? paths,
     @JsonKey(name: 'components') required OpenApiComponents? components,
+    @JsonKey(name: 'tags') required List<OpenApiTag>? tags,
   }) = _OpenApi;
 
   factory OpenApi.fromJson(Map<String, dynamic> json) =>
       _$OpenApiFromJson(json);
+}
+
+@freezed
+abstract class OpenApiTag with _$OpenApiTag {
+  const OpenApiTag._();
+
+  const factory OpenApiTag({
+    @JsonKey(name: 'name') required String name,
+    @JsonKey(name: 'description') required String? description,
+  }) = _OpenApiTag;
+
+  factory OpenApiTag.fromJson(Map<String, dynamic> json) =>
+      _$OpenApiTagFromJson(json);
 }
 
 @freezed

@@ -17,13 +17,15 @@ mixin _$OpenApi {
   @JsonKey(name: 'openapi')
   String? get openapi;
   @JsonKey(name: 'info')
-  OpenApiInfo get info;
+  OpenApiInfo? get info;
   @JsonKey(name: 'servers')
   List<OpenApiServer>? get servers;
   @JsonKey(name: 'paths')
   OpenApiPaths? get paths;
   @JsonKey(name: 'components')
   OpenApiComponents? get components;
+  @JsonKey(name: 'tags')
+  List<OpenApiTag>? get tags;
 
   /// Create a copy of OpenApi
   /// with the given fields replaced by the non-null parameter values.
@@ -45,7 +47,8 @@ mixin _$OpenApi {
             const DeepCollectionEquality().equals(other.servers, servers) &&
             const DeepCollectionEquality().equals(other.paths, paths) &&
             (identical(other.components, components) ||
-                other.components == components));
+                other.components == components) &&
+            const DeepCollectionEquality().equals(other.tags, tags));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -56,11 +59,12 @@ mixin _$OpenApi {
       info,
       const DeepCollectionEquality().hash(servers),
       const DeepCollectionEquality().hash(paths),
-      components);
+      components,
+      const DeepCollectionEquality().hash(tags));
 
   @override
   String toString() {
-    return 'OpenApi(openapi: $openapi, info: $info, servers: $servers, paths: $paths, components: $components)';
+    return 'OpenApi(openapi: $openapi, info: $info, servers: $servers, paths: $paths, components: $components, tags: $tags)';
   }
 }
 
@@ -71,12 +75,13 @@ abstract mixin class $OpenApiCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'openapi') String? openapi,
-      @JsonKey(name: 'info') OpenApiInfo info,
+      @JsonKey(name: 'info') OpenApiInfo? info,
       @JsonKey(name: 'servers') List<OpenApiServer>? servers,
       @JsonKey(name: 'paths') OpenApiPaths? paths,
-      @JsonKey(name: 'components') OpenApiComponents? components});
+      @JsonKey(name: 'components') OpenApiComponents? components,
+      @JsonKey(name: 'tags') List<OpenApiTag>? tags});
 
-  $OpenApiInfoCopyWith<$Res> get info;
+  $OpenApiInfoCopyWith<$Res>? get info;
   $OpenApiComponentsCopyWith<$Res>? get components;
 }
 
@@ -93,20 +98,21 @@ class _$OpenApiCopyWithImpl<$Res> implements $OpenApiCopyWith<$Res> {
   @override
   $Res call({
     Object? openapi = freezed,
-    Object? info = null,
+    Object? info = freezed,
     Object? servers = freezed,
     Object? paths = freezed,
     Object? components = freezed,
+    Object? tags = freezed,
   }) {
     return _then(_self.copyWith(
       openapi: freezed == openapi
           ? _self.openapi
           : openapi // ignore: cast_nullable_to_non_nullable
               as String?,
-      info: null == info
+      info: freezed == info
           ? _self.info
           : info // ignore: cast_nullable_to_non_nullable
-              as OpenApiInfo,
+              as OpenApiInfo?,
       servers: freezed == servers
           ? _self.servers
           : servers // ignore: cast_nullable_to_non_nullable
@@ -119,6 +125,10 @@ class _$OpenApiCopyWithImpl<$Res> implements $OpenApiCopyWith<$Res> {
           ? _self.components
           : components // ignore: cast_nullable_to_non_nullable
               as OpenApiComponents?,
+      tags: freezed == tags
+          ? _self.tags
+          : tags // ignore: cast_nullable_to_non_nullable
+              as List<OpenApiTag>?,
     ));
   }
 
@@ -126,8 +136,12 @@ class _$OpenApiCopyWithImpl<$Res> implements $OpenApiCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $OpenApiInfoCopyWith<$Res> get info {
-    return $OpenApiInfoCopyWith<$Res>(_self.info, (value) {
+  $OpenApiInfoCopyWith<$Res>? get info {
+    if (_self.info == null) {
+      return null;
+    }
+
+    return $OpenApiInfoCopyWith<$Res>(_self.info!, (value) {
       return _then(_self.copyWith(info: value));
     });
   }
@@ -155,9 +169,11 @@ class _OpenApi extends OpenApi {
       @JsonKey(name: 'info') required this.info,
       @JsonKey(name: 'servers') required final List<OpenApiServer>? servers,
       @JsonKey(name: 'paths') required final OpenApiPaths? paths,
-      @JsonKey(name: 'components') required this.components})
+      @JsonKey(name: 'components') required this.components,
+      @JsonKey(name: 'tags') required final List<OpenApiTag>? tags})
       : _servers = servers,
         _paths = paths,
+        _tags = tags,
         super._();
   factory _OpenApi.fromJson(Map<String, dynamic> json) =>
       _$OpenApiFromJson(json);
@@ -167,7 +183,7 @@ class _OpenApi extends OpenApi {
   final String? openapi;
   @override
   @JsonKey(name: 'info')
-  final OpenApiInfo info;
+  final OpenApiInfo? info;
   final List<OpenApiServer>? _servers;
   @override
   @JsonKey(name: 'servers')
@@ -193,6 +209,16 @@ class _OpenApi extends OpenApi {
   @override
   @JsonKey(name: 'components')
   final OpenApiComponents? components;
+  final List<OpenApiTag>? _tags;
+  @override
+  @JsonKey(name: 'tags')
+  List<OpenApiTag>? get tags {
+    final value = _tags;
+    if (value == null) return null;
+    if (_tags is EqualUnmodifiableListView) return _tags;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   /// Create a copy of OpenApi
   /// with the given fields replaced by the non-null parameter values.
@@ -219,7 +245,8 @@ class _OpenApi extends OpenApi {
             const DeepCollectionEquality().equals(other._servers, _servers) &&
             const DeepCollectionEquality().equals(other._paths, _paths) &&
             (identical(other.components, components) ||
-                other.components == components));
+                other.components == components) &&
+            const DeepCollectionEquality().equals(other._tags, _tags));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -230,11 +257,12 @@ class _OpenApi extends OpenApi {
       info,
       const DeepCollectionEquality().hash(_servers),
       const DeepCollectionEquality().hash(_paths),
-      components);
+      components,
+      const DeepCollectionEquality().hash(_tags));
 
   @override
   String toString() {
-    return 'OpenApi(openapi: $openapi, info: $info, servers: $servers, paths: $paths, components: $components)';
+    return 'OpenApi(openapi: $openapi, info: $info, servers: $servers, paths: $paths, components: $components, tags: $tags)';
   }
 }
 
@@ -246,13 +274,14 @@ abstract mixin class _$OpenApiCopyWith<$Res> implements $OpenApiCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'openapi') String? openapi,
-      @JsonKey(name: 'info') OpenApiInfo info,
+      @JsonKey(name: 'info') OpenApiInfo? info,
       @JsonKey(name: 'servers') List<OpenApiServer>? servers,
       @JsonKey(name: 'paths') OpenApiPaths? paths,
-      @JsonKey(name: 'components') OpenApiComponents? components});
+      @JsonKey(name: 'components') OpenApiComponents? components,
+      @JsonKey(name: 'tags') List<OpenApiTag>? tags});
 
   @override
-  $OpenApiInfoCopyWith<$Res> get info;
+  $OpenApiInfoCopyWith<$Res>? get info;
   @override
   $OpenApiComponentsCopyWith<$Res>? get components;
 }
@@ -270,20 +299,21 @@ class __$OpenApiCopyWithImpl<$Res> implements _$OpenApiCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   $Res call({
     Object? openapi = freezed,
-    Object? info = null,
+    Object? info = freezed,
     Object? servers = freezed,
     Object? paths = freezed,
     Object? components = freezed,
+    Object? tags = freezed,
   }) {
     return _then(_OpenApi(
       openapi: freezed == openapi
           ? _self.openapi
           : openapi // ignore: cast_nullable_to_non_nullable
               as String?,
-      info: null == info
+      info: freezed == info
           ? _self.info
           : info // ignore: cast_nullable_to_non_nullable
-              as OpenApiInfo,
+              as OpenApiInfo?,
       servers: freezed == servers
           ? _self._servers
           : servers // ignore: cast_nullable_to_non_nullable
@@ -296,6 +326,10 @@ class __$OpenApiCopyWithImpl<$Res> implements _$OpenApiCopyWith<$Res> {
           ? _self.components
           : components // ignore: cast_nullable_to_non_nullable
               as OpenApiComponents?,
+      tags: freezed == tags
+          ? _self._tags
+          : tags // ignore: cast_nullable_to_non_nullable
+              as List<OpenApiTag>?,
     ));
   }
 
@@ -303,8 +337,12 @@ class __$OpenApiCopyWithImpl<$Res> implements _$OpenApiCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $OpenApiInfoCopyWith<$Res> get info {
-    return $OpenApiInfoCopyWith<$Res>(_self.info, (value) {
+  $OpenApiInfoCopyWith<$Res>? get info {
+    if (_self.info == null) {
+      return null;
+    }
+
+    return $OpenApiInfoCopyWith<$Res>(_self.info!, (value) {
       return _then(_self.copyWith(info: value));
     });
   }
@@ -321,6 +359,175 @@ class __$OpenApiCopyWithImpl<$Res> implements _$OpenApiCopyWith<$Res> {
     return $OpenApiComponentsCopyWith<$Res>(_self.components!, (value) {
       return _then(_self.copyWith(components: value));
     });
+  }
+}
+
+/// @nodoc
+mixin _$OpenApiTag {
+  @JsonKey(name: 'name')
+  String get name;
+  @JsonKey(name: 'description')
+  String? get description;
+
+  /// Create a copy of OpenApiTag
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $OpenApiTagCopyWith<OpenApiTag> get copyWith =>
+      _$OpenApiTagCopyWithImpl<OpenApiTag>(this as OpenApiTag, _$identity);
+
+  /// Serializes this OpenApiTag to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is OpenApiTag &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.description, description) ||
+                other.description == description));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, name, description);
+
+  @override
+  String toString() {
+    return 'OpenApiTag(name: $name, description: $description)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $OpenApiTagCopyWith<$Res> {
+  factory $OpenApiTagCopyWith(
+          OpenApiTag value, $Res Function(OpenApiTag) _then) =
+      _$OpenApiTagCopyWithImpl;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'name') String name,
+      @JsonKey(name: 'description') String? description});
+}
+
+/// @nodoc
+class _$OpenApiTagCopyWithImpl<$Res> implements $OpenApiTagCopyWith<$Res> {
+  _$OpenApiTagCopyWithImpl(this._self, this._then);
+
+  final OpenApiTag _self;
+  final $Res Function(OpenApiTag) _then;
+
+  /// Create a copy of OpenApiTag
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? description = freezed,
+  }) {
+    return _then(_self.copyWith(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: freezed == description
+          ? _self.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _OpenApiTag extends OpenApiTag {
+  const _OpenApiTag(
+      {@JsonKey(name: 'name') required this.name,
+      @JsonKey(name: 'description') required this.description})
+      : super._();
+  factory _OpenApiTag.fromJson(Map<String, dynamic> json) =>
+      _$OpenApiTagFromJson(json);
+
+  @override
+  @JsonKey(name: 'name')
+  final String name;
+  @override
+  @JsonKey(name: 'description')
+  final String? description;
+
+  /// Create a copy of OpenApiTag
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$OpenApiTagCopyWith<_OpenApiTag> get copyWith =>
+      __$OpenApiTagCopyWithImpl<_OpenApiTag>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$OpenApiTagToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _OpenApiTag &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.description, description) ||
+                other.description == description));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, name, description);
+
+  @override
+  String toString() {
+    return 'OpenApiTag(name: $name, description: $description)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$OpenApiTagCopyWith<$Res>
+    implements $OpenApiTagCopyWith<$Res> {
+  factory _$OpenApiTagCopyWith(
+          _OpenApiTag value, $Res Function(_OpenApiTag) _then) =
+      __$OpenApiTagCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'name') String name,
+      @JsonKey(name: 'description') String? description});
+}
+
+/// @nodoc
+class __$OpenApiTagCopyWithImpl<$Res> implements _$OpenApiTagCopyWith<$Res> {
+  __$OpenApiTagCopyWithImpl(this._self, this._then);
+
+  final _OpenApiTag _self;
+  final $Res Function(_OpenApiTag) _then;
+
+  /// Create a copy of OpenApiTag
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? name = null,
+    Object? description = freezed,
+  }) {
+    return _then(_OpenApiTag(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: freezed == description
+          ? _self.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 

@@ -4,6 +4,11 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'exports.dart';
 
+/// {
+///     "title": "FastAPI Type Examples",
+///     "description": "Comprehensive examples of types and routes in FastAPI",
+///     "version": "1.0.0"
+/// }
 class BaseApiClient {
   BaseApiClient(this.dio, {this.baseUrl, this.errorLogger});
 

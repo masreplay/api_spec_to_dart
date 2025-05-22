@@ -8,7 +8,9 @@ part of 'open_api.dart';
 
 _OpenApi _$OpenApiFromJson(Map<String, dynamic> json) => _OpenApi(
       openapi: json['openapi'] as String?,
-      info: OpenApiInfo.fromJson(json['info'] as Map<String, dynamic>),
+      info: json['info'] == null
+          ? null
+          : OpenApiInfo.fromJson(json['info'] as Map<String, dynamic>),
       servers: (json['servers'] as List<dynamic>?)
           ?.map((e) => OpenApiServer.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -24,11 +26,14 @@ _OpenApi _$OpenApiFromJson(Map<String, dynamic> json) => _OpenApi(
           ? null
           : OpenApiComponents.fromJson(
               json['components'] as Map<String, dynamic>),
+      tags: (json['tags'] as List<dynamic>?)
+          ?.map((e) => OpenApiTag.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$OpenApiToJson(_OpenApi instance) => <String, dynamic>{
       if (instance.openapi case final value?) 'openapi': value,
-      'info': instance.info.toJson(),
+      if (instance.info?.toJson() case final value?) 'info': value,
       if (instance.servers?.map((e) => e.toJson()).toList() case final value?)
         'servers': value,
       if (instance.paths?.map((k, e) => MapEntry(
@@ -38,6 +43,8 @@ Map<String, dynamic> _$OpenApiToJson(_OpenApi instance) => <String, dynamic>{
           case final value?)
         'paths': value,
       if (instance.components?.toJson() case final value?) 'components': value,
+      if (instance.tags?.map((e) => e.toJson()).toList() case final value?)
+        'tags': value,
     };
 
 const _$OpenApiPathMethodEnumEnumMap = {
@@ -52,6 +59,17 @@ const _$OpenApiPathMethodEnumEnumMap = {
   OpenApiPathMethodEnum.connect: 'connect',
   OpenApiPathMethodEnum.pat: 'pat',
 };
+
+_OpenApiTag _$OpenApiTagFromJson(Map<String, dynamic> json) => _OpenApiTag(
+      name: json['name'] as String,
+      description: json['description'] as String?,
+    );
+
+Map<String, dynamic> _$OpenApiTagToJson(_OpenApiTag instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      if (instance.description case final value?) 'description': value,
+    };
 
 _OpenApiServer _$OpenApiServerFromJson(Map<String, dynamic> json) =>
     _OpenApiServer(
