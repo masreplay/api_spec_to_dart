@@ -191,9 +191,6 @@ class ApiClientGenerator {
     final className = Renaming.instance.renameClass('${clientName}Client');
     final fileName = Renaming.instance.renameFile(className);
 
-    final useClassForQueryParameters =
-        context.config.apiClient.useClassForQueryParameters;
-
     return Library(
       (b) => b
         ..directives.addAll([
