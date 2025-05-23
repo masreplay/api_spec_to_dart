@@ -71,16 +71,13 @@ class OpenApiSchemaDartTypeConverter {
     required String className,
     OpenApiSchema? parent,
   }) {
-    switch (schema) {
-      case OpenApiSchemaType schema:
-        return getType(schema, parent: parent, className: className);
-      case OpenApiSchemaRef schema:
-        return getRef(schema);
-      case OpenApiSchemaAnyOf schema:
-        return getAnyOf(schema, className: className);
-      case OpenApiSchemaOneOf schema:
-        return getOneOf(schema, className: className);
-    }
+    return switch (schema) {
+      OpenApiSchemaType schema =>
+        getType(schema, parent: parent, className: className),
+      OpenApiSchemaRef schema => getRef(schema),
+      OpenApiSchemaAnyOf schema => getAnyOf(schema, className: className),
+      OpenApiSchemaOneOf schema => getOneOf(schema, className: className)
+    };
   }
 
   String getRef(OpenApiSchemaRef schema) {

@@ -333,25 +333,26 @@ class ApiClientGenerator {
     required String methodName,
     required String className,
   }) {
-    final useClassForQueryParameters =
-        context.config.apiClient.useClassForQueryParameters;
+    final useClass = context.config.apiClient.useClassForQueryParameters;
+
+    final queryParameters =
+        parameters.where((e) => e.in_ == OpenApiPathMethodParameterType.query);
 
     final List<Parameter> result = [];
 
-    if (useClassForQueryParameters) {
+    if (useClass && queryParameters.isNotEmpty) {
       final strategy = RegularModelStrategy(context);
 
-      final queryParametersClassName =
-          Renaming.instance.renameClass('${methodName}QueryParameters');
+      final queryParametersClassName = Renaming.instance.renameClass(
+        '${methodName}QueryParameters',
+      );
 
       final model = MapEntry<String, OpenApiSchemas>(
         queryParametersClassName,
         OpenApiSchemas(
           type: 'object',
           properties: {
-            for (final p in parameters)
-              if (p.in_ == OpenApiPathMethodParameterType.query)
-                p.name: p.schema,
+            for (final p in queryParameters) p.name: p.schema,
           },
         ),
       );
@@ -362,7 +363,9 @@ class ApiClientGenerator {
             ..annotations.addAll([
               refer('$Queries()'),
             ])
-            ..name = 'queryParameters'
+            ..name = 'queries'
+            ..required = true
+            ..named = true
             ..type = refer(queryParametersClassName),
         ),
       );
@@ -371,12 +374,11 @@ class ApiClientGenerator {
     }
 
     for (final p in parameters) {
-      if (useClassForQueryParameters &&
-          p.in_ == OpenApiPathMethodParameterType.query) {
+      if (useClass && queryParameters.contains(p)) {
         continue;
       }
 
-      final type = context.typeConverter.get(
+      final dartType = context.typeConverter.get(
         p.schema,
         className: className,
       );
@@ -404,9 +406,7 @@ class ApiClientGenerator {
             )
             ..required = defaultValue == null
             ..defaultTo = defaultValue == null ? null : Code(defaultValue)
-            ..type = refer(
-              type,
-            ),
+            ..type = refer(dartType),
         ),
       );
     }
