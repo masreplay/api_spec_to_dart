@@ -14,7 +14,7 @@ class CodeGenerator {
   Future<void> generate() async {
     context.generate();
 
-    final dir = Directory(context.swaggerToDart.outputDirectory);
+    final dir = Directory(context.config.outputDirectory);
     print('Output directory: ${dir.path}');
 
     if (dir.existsSync()) {

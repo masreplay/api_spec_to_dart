@@ -13,7 +13,7 @@ class SwaggerToDartCodeBuilder {
     required List<String> clients,
   }) {
     final className = Renaming.instance.renameClass(
-      context.swaggerToDart.apiClientClassName,
+      context.config.apiClientClassName,
     );
 
     final parameters = [

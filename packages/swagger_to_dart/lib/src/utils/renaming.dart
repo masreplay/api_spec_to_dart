@@ -112,7 +112,7 @@ class Renaming {
     ));
   }
 
-  String renameMethod(String key) {
+  String renameFunction(String key) {
     return Recase.instance.toCamelCase(_guard(key));
   }
 
