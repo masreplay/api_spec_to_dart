@@ -362,7 +362,6 @@ class ApiClientGenerator {
       result.add(
         Parameter(
           (b) => b
-
             ..annotations.addAll([
               refer('$Queries()'),
             ])
