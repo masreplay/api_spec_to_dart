@@ -164,7 +164,7 @@ class UnionModelStrategy
   (Library, String) buildOneOf(OpenApiSchemaOneOf schema) {
     final schemas = schema.oneOf;
     final className = Renaming.instance.renameClass(
-      "${schema.discriminator.mapping.keys.join('_')}_Union",
+      schema.title ?? "${schema.discriminator.mapping.keys.join('_')}_Union",
     );
 
     final model = build(
@@ -187,12 +187,15 @@ class UnionModelStrategy
 
     final schemas = schema.anyOf;
 
-    final className = Renaming.instance.renameClass((schemas
-        .whereType<OpenApiSchemaRef>()
-        .map(dartTypeConverter.getRef)
-        .map(Renaming.instance.renameClass)
-        .sorted((a, b) => a.compareTo(b))
-        .join()));
+    final className = Renaming.instance.renameClass(
+      schema.title ??
+      schemas
+          .whereType<OpenApiSchemaRef>()
+          .map(dartTypeConverter.getRef)
+          .map(Renaming.instance.renameClass)
+          .sorted((a, b) => a.compareTo(b))
+          .join(),
+    );
 
     final model = build(
       UnionModelStrategyParams(
