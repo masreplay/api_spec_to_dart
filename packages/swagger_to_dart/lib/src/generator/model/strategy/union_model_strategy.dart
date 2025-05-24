@@ -161,6 +161,33 @@ class UnionModelStrategy
     );
   }
 
+  /// {
+  ///     "oneOf": [
+  ///         {
+  ///             "$ref": "#/components/schemas/AdvertisementsHomeSectionResponse"
+  ///         },
+  ///         {
+  ///             "$ref": "#/components/schemas/CategoriesHomeSectionResponse"
+  ///         },
+  ///         {
+  ///             "$ref": "#/components/schemas/OrdersHomeSectionResponse"
+  ///         },
+  ///         {
+  ///             "$ref": "#/components/schemas/FoodItemHomeSectionResponse"
+  ///         }
+  ///     ],
+  ///     "title": "HomeSectionUnion",
+  ///     "discriminator": {
+  ///         "propertyName": "type",
+  ///         "mapping": {
+  ///             "advertisements": "#/components/schemas/AdvertisementsHomeSectionResponse",
+  ///             "categories": "#/components/schemas/CategoriesHomeSectionResponse",
+  ///             "food_items": "#/components/schemas/FoodItemHomeSectionResponse",
+  ///             "orders": "#/components/schemas/OrdersHomeSectionResponse"
+  ///         }
+  ///     },
+  ///     "runtimeType": "oneOf"
+  /// }
   (Library, String) buildOneOf(OpenApiSchemaOneOf schema) {
     final schemas = schema.oneOf;
     final className = Renaming.instance.renameClass(
@@ -172,9 +199,10 @@ class UnionModelStrategy
         key: className,
         schema: schema,
         refSchemaMap: {
-          for (final (index, refSchema)
-              in schemas.whereType<OpenApiSchemaRef>().indexed)
-            schema.discriminator.mapping.keys.toList()[index]: refSchema,
+          for (final entry in schema.discriminator.mapping.entries)
+            entry.key: schemas
+                .whereType<OpenApiSchemaRef>()
+                .firstWhere((e) => e.ref == entry.value),
         },
       ),
     );
@@ -189,12 +217,12 @@ class UnionModelStrategy
 
     final className = Renaming.instance.renameClass(
       schema.title ??
-      schemas
-          .whereType<OpenApiSchemaRef>()
-          .map(dartTypeConverter.getRef)
-          .map(Renaming.instance.renameClass)
-          .sorted((a, b) => a.compareTo(b))
-          .join(),
+          schemas
+              .whereType<OpenApiSchemaRef>()
+              .map(dartTypeConverter.getRef)
+              .map(Renaming.instance.renameClass)
+              .sorted((a, b) => a.compareTo(b))
+              .join(),
     );
 
     final model = build(
