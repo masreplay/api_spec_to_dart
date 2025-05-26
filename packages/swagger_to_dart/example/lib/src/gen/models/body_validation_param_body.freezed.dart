@@ -28,7 +28,9 @@ mixin _$BodyValidationParamBody {
   @pragma('vm:prefer-inline')
   $BodyValidationParamBodyCopyWith<BodyValidationParamBody> get copyWith =>
       _$BodyValidationParamBodyCopyWithImpl<BodyValidationParamBody>(
-          this as BodyValidationParamBody, _$identity);
+        this as BodyValidationParamBody,
+        _$identity,
+      );
 
   /// Serializes this BodyValidationParamBody to a JSON map.
   Map<String, dynamic> toJson();
@@ -46,7 +48,10 @@ mixin _$BodyValidationParamBody {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(data), importance);
+    runtimeType,
+    const DeepCollectionEquality().hash(data),
+    importance,
+  );
 
   @override
   String toString() {
@@ -56,14 +61,15 @@ mixin _$BodyValidationParamBody {
 
 /// @nodoc
 abstract mixin class $BodyValidationParamBodyCopyWith<$Res> {
-  factory $BodyValidationParamBodyCopyWith(BodyValidationParamBody value,
-          $Res Function(BodyValidationParamBody) _then) =
-      _$BodyValidationParamBodyCopyWithImpl;
+  factory $BodyValidationParamBodyCopyWith(
+    BodyValidationParamBody value,
+    $Res Function(BodyValidationParamBody) _then,
+  ) = _$BodyValidationParamBodyCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: BodyValidationParamBody.dataKey)
-      Map<String, dynamic> data,
-      @JsonKey(name: BodyValidationParamBody.importanceKey) int importance});
+  $Res call({
+    @JsonKey(name: BodyValidationParamBody.dataKey) Map<String, dynamic> data,
+    @JsonKey(name: BodyValidationParamBody.importanceKey) int importance,
+  });
 }
 
 /// @nodoc
@@ -78,20 +84,21 @@ class _$BodyValidationParamBodyCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? data = null,
-    Object? importance = null,
-  }) {
-    return _then(_self.copyWith(
-      data: null == data
-          ? _self.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
-      importance: null == importance
-          ? _self.importance
-          : importance // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+  $Res call({Object? data = null, Object? importance = null}) {
+    return _then(
+      _self.copyWith(
+        data:
+            null == data
+                ? _self.data
+                : data // ignore: cast_nullable_to_non_nullable
+                    as Map<String, dynamic>,
+        importance:
+            null == importance
+                ? _self.importance
+                : importance // ignore: cast_nullable_to_non_nullable
+                    as int,
+      ),
+    );
   }
 }
 
@@ -99,13 +106,13 @@ class _$BodyValidationParamBodyCopyWithImpl<$Res>
 
 @jsonSerializable
 class _BodyValidationParamBody extends BodyValidationParamBody {
-  const _BodyValidationParamBody(
-      {@JsonKey(name: BodyValidationParamBody.dataKey)
-      required final Map<String, dynamic> data,
-      @JsonKey(name: BodyValidationParamBody.importanceKey)
-      required this.importance})
-      : _data = data,
-        super._();
+  const _BodyValidationParamBody({
+    @JsonKey(name: BodyValidationParamBody.dataKey)
+    required final Map<String, dynamic> data,
+    @JsonKey(name: BodyValidationParamBody.importanceKey)
+    required this.importance,
+  }) : _data = data,
+       super._();
   factory _BodyValidationParamBody.fromJson(Map<String, dynamic> json) =>
       _$BodyValidationParamBodyFromJson(json);
 
@@ -133,13 +140,13 @@ class _BodyValidationParamBody extends BodyValidationParamBody {
   @pragma('vm:prefer-inline')
   _$BodyValidationParamBodyCopyWith<_BodyValidationParamBody> get copyWith =>
       __$BodyValidationParamBodyCopyWithImpl<_BodyValidationParamBody>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$BodyValidationParamBodyToJson(
-      this,
-    );
+    return _$BodyValidationParamBodyToJson(this);
   }
 
   @override
@@ -155,7 +162,10 @@ class _BodyValidationParamBody extends BodyValidationParamBody {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_data), importance);
+    runtimeType,
+    const DeepCollectionEquality().hash(_data),
+    importance,
+  );
 
   @override
   String toString() {
@@ -166,15 +176,16 @@ class _BodyValidationParamBody extends BodyValidationParamBody {
 /// @nodoc
 abstract mixin class _$BodyValidationParamBodyCopyWith<$Res>
     implements $BodyValidationParamBodyCopyWith<$Res> {
-  factory _$BodyValidationParamBodyCopyWith(_BodyValidationParamBody value,
-          $Res Function(_BodyValidationParamBody) _then) =
-      __$BodyValidationParamBodyCopyWithImpl;
+  factory _$BodyValidationParamBodyCopyWith(
+    _BodyValidationParamBody value,
+    $Res Function(_BodyValidationParamBody) _then,
+  ) = __$BodyValidationParamBodyCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: BodyValidationParamBody.dataKey)
-      Map<String, dynamic> data,
-      @JsonKey(name: BodyValidationParamBody.importanceKey) int importance});
+  $Res call({
+    @JsonKey(name: BodyValidationParamBody.dataKey) Map<String, dynamic> data,
+    @JsonKey(name: BodyValidationParamBody.importanceKey) int importance,
+  });
 }
 
 /// @nodoc
@@ -189,19 +200,20 @@ class __$BodyValidationParamBodyCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? data = null,
-    Object? importance = null,
-  }) {
-    return _then(_BodyValidationParamBody(
-      data: null == data
-          ? _self._data
-          : data // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
-      importance: null == importance
-          ? _self.importance
-          : importance // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+  $Res call({Object? data = null, Object? importance = null}) {
+    return _then(
+      _BodyValidationParamBody(
+        data:
+            null == data
+                ? _self._data
+                : data // ignore: cast_nullable_to_non_nullable
+                    as Map<String, dynamic>,
+        importance:
+            null == importance
+                ? _self.importance
+                : importance // ignore: cast_nullable_to_non_nullable
+                    as int,
+      ),
+    );
   }
 }

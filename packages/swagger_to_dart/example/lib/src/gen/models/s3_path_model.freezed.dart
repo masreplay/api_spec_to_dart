@@ -49,8 +49,9 @@ mixin _$S3PathModel {
 /// @nodoc
 abstract mixin class $S3PathModelCopyWith<$Res> {
   factory $S3PathModelCopyWith(
-          S3PathModel value, $Res Function(S3PathModel) _then) =
-      _$S3PathModelCopyWithImpl;
+    S3PathModel value,
+    $Res Function(S3PathModel) _then,
+  ) = _$S3PathModelCopyWithImpl;
   @useResult
   $Res call({@JsonKey(name: S3PathModel.s3PathKey) String s3Path});
 }
@@ -66,15 +67,16 @@ class _$S3PathModelCopyWithImpl<$Res> implements $S3PathModelCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? s3Path = null,
-  }) {
-    return _then(_self.copyWith(
-      s3Path: null == s3Path
-          ? _self.s3Path
-          : s3Path // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? s3Path = null}) {
+    return _then(
+      _self.copyWith(
+        s3Path:
+            null == s3Path
+                ? _self.s3Path
+                : s3Path // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
@@ -82,9 +84,9 @@ class _$S3PathModelCopyWithImpl<$Res> implements $S3PathModelCopyWith<$Res> {
 
 @jsonSerializable
 class _S3PathModel extends S3PathModel {
-  const _S3PathModel(
-      {@JsonKey(name: S3PathModel.s3PathKey) required this.s3Path})
-      : super._();
+  const _S3PathModel({
+    @JsonKey(name: S3PathModel.s3PathKey) required this.s3Path,
+  }) : super._();
   factory _S3PathModel.fromJson(Map<String, dynamic> json) =>
       _$S3PathModelFromJson(json);
 
@@ -103,9 +105,7 @@ class _S3PathModel extends S3PathModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$S3PathModelToJson(
-      this,
-    );
+    return _$S3PathModelToJson(this);
   }
 
   @override
@@ -130,8 +130,9 @@ class _S3PathModel extends S3PathModel {
 abstract mixin class _$S3PathModelCopyWith<$Res>
     implements $S3PathModelCopyWith<$Res> {
   factory _$S3PathModelCopyWith(
-          _S3PathModel value, $Res Function(_S3PathModel) _then) =
-      __$S3PathModelCopyWithImpl;
+    _S3PathModel value,
+    $Res Function(_S3PathModel) _then,
+  ) = __$S3PathModelCopyWithImpl;
   @override
   @useResult
   $Res call({@JsonKey(name: S3PathModel.s3PathKey) String s3Path});
@@ -148,14 +149,15 @@ class __$S3PathModelCopyWithImpl<$Res> implements _$S3PathModelCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? s3Path = null,
-  }) {
-    return _then(_S3PathModel(
-      s3Path: null == s3Path
-          ? _self.s3Path
-          : s3Path // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? s3Path = null}) {
+    return _then(
+      _S3PathModel(
+        s3Path:
+            null == s3Path
+                ? _self.s3Path
+                : s3Path // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }

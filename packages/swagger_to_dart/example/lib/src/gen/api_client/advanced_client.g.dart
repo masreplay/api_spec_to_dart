@@ -19,7 +19,7 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<Map<String, dynamic>>> advancedSpecialUuid({
-    required String id,
+    required AdvancedSpecialUuidQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -27,7 +27,8 @@ class _AdvancedClient implements AdvancedClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{r'id': id};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -61,7 +62,7 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<Map<String, dynamic>>> advancedSpecialEnum({
-    UserLevel level = UserLevel.basic,
+    required AdvancedSpecialEnumQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -69,7 +70,8 @@ class _AdvancedClient implements AdvancedClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{r'level': level.toJson()};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -103,7 +105,7 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<Map<String, dynamic>>> advancedSpecialLiteral({
-    ModeEnum mode = ModeEnum.system,
+    required AdvancedSpecialLiteralQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -111,7 +113,8 @@ class _AdvancedClient implements AdvancedClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{r'mode': mode.toJson()};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -145,7 +148,7 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<Map<String, dynamic>>> advancedCollectionList({
-    List<String> items = const ['default'],
+    required AdvancedCollectionListQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -153,7 +156,8 @@ class _AdvancedClient implements AdvancedClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{r'items': items};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -187,7 +191,7 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<Map<String, dynamic>>> advancedCollectionSet({
-    List<int> items = const [1, 2, 3],
+    required AdvancedCollectionSetQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -195,7 +199,8 @@ class _AdvancedClient implements AdvancedClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{r'items': items};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -272,7 +277,7 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<Map<String, dynamic>>> advancedCollectionTuple({
-    required List<dynamic> items,
+    required AdvancedCollectionTupleQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -280,7 +285,8 @@ class _AdvancedClient implements AdvancedClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{r'items': items};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -314,7 +320,7 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<Map<String, dynamic>>> advancedCollectionVariableTuple({
-    required List<String> items,
+    required AdvancedCollectionVariableTupleQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -322,7 +328,8 @@ class _AdvancedClient implements AdvancedClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{r'items': items};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -356,7 +363,7 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<Map<String, dynamic>>> advancedUnionSimple({
-    required dynamic value,
+    required AdvancedUnionSimpleQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -364,7 +371,8 @@ class _AdvancedClient implements AdvancedClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{r'value': value.toJson()};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -398,7 +406,7 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<Map<String, dynamic>>> advancedUnionOptional({
-    String? value,
+    required AdvancedUnionOptionalQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -406,7 +414,8 @@ class _AdvancedClient implements AdvancedClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{r'value': value};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -440,7 +449,7 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<Map<String, dynamic>>> advancedUnionModern({
-    required dynamic value,
+    required AdvancedUnionModernQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -448,7 +457,8 @@ class _AdvancedClient implements AdvancedClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{r'value': value.toJson()};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -482,8 +492,7 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<Map<String, dynamic>>> advancedCustomPositiveInt({
-    required int value,
-    required int value2,
+    required AdvancedCustomPositiveIntQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -491,10 +500,8 @@ class _AdvancedClient implements AdvancedClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{
-      r'value': value,
-      r'value2': value2,
-    };
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -528,9 +535,7 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<Map<String, dynamic>>> advancedDependsQuery({
-    String? q,
-    int skip = 0,
-    int limit = 100,
+    required AdvancedDependsQueryQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -538,11 +543,8 @@ class _AdvancedClient implements AdvancedClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{
-      r'q': q,
-      r'skip': skip,
-      r'limit': limit,
-    };
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -576,7 +578,7 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<Map<String, dynamic>>> advancedDependsClass({
-    String dbName = 'default',
+    required AdvancedDependsClassQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -584,7 +586,8 @@ class _AdvancedClient implements AdvancedClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{r'db_name': dbName};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -660,7 +663,7 @@ class _AdvancedClient implements AdvancedClient {
 
   @override
   Future<HttpResponse<Map<String, dynamic>>> advancedErrorCustom({
-    required int code,
+    required AdvancedErrorCustomQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -668,7 +671,8 @@ class _AdvancedClient implements AdvancedClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{r'code': code};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;

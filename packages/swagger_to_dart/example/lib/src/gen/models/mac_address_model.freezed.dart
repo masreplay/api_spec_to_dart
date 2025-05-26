@@ -24,7 +24,9 @@ mixin _$MACAddressModel {
   @pragma('vm:prefer-inline')
   $MACAddressModelCopyWith<MACAddressModel> get copyWith =>
       _$MACAddressModelCopyWithImpl<MACAddressModel>(
-          this as MACAddressModel, _$identity);
+        this as MACAddressModel,
+        _$identity,
+      );
 
   /// Serializes this MACAddressModel to a JSON map.
   Map<String, dynamic> toJson();
@@ -51,8 +53,9 @@ mixin _$MACAddressModel {
 /// @nodoc
 abstract mixin class $MACAddressModelCopyWith<$Res> {
   factory $MACAddressModelCopyWith(
-          MACAddressModel value, $Res Function(MACAddressModel) _then) =
-      _$MACAddressModelCopyWithImpl;
+    MACAddressModel value,
+    $Res Function(MACAddressModel) _then,
+  ) = _$MACAddressModelCopyWithImpl;
   @useResult
   $Res call({@JsonKey(name: MACAddressModel.macAddressKey) String macAddress});
 }
@@ -69,15 +72,16 @@ class _$MACAddressModelCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? macAddress = null,
-  }) {
-    return _then(_self.copyWith(
-      macAddress: null == macAddress
-          ? _self.macAddress
-          : macAddress // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? macAddress = null}) {
+    return _then(
+      _self.copyWith(
+        macAddress:
+            null == macAddress
+                ? _self.macAddress
+                : macAddress // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
@@ -85,9 +89,9 @@ class _$MACAddressModelCopyWithImpl<$Res>
 
 @jsonSerializable
 class _MACAddressModel extends MACAddressModel {
-  const _MACAddressModel(
-      {@JsonKey(name: MACAddressModel.macAddressKey) required this.macAddress})
-      : super._();
+  const _MACAddressModel({
+    @JsonKey(name: MACAddressModel.macAddressKey) required this.macAddress,
+  }) : super._();
   factory _MACAddressModel.fromJson(Map<String, dynamic> json) =>
       _$MACAddressModelFromJson(json);
 
@@ -106,9 +110,7 @@ class _MACAddressModel extends MACAddressModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$MACAddressModelToJson(
-      this,
-    );
+    return _$MACAddressModelToJson(this);
   }
 
   @override
@@ -134,8 +136,9 @@ class _MACAddressModel extends MACAddressModel {
 abstract mixin class _$MACAddressModelCopyWith<$Res>
     implements $MACAddressModelCopyWith<$Res> {
   factory _$MACAddressModelCopyWith(
-          _MACAddressModel value, $Res Function(_MACAddressModel) _then) =
-      __$MACAddressModelCopyWithImpl;
+    _MACAddressModel value,
+    $Res Function(_MACAddressModel) _then,
+  ) = __$MACAddressModelCopyWithImpl;
   @override
   @useResult
   $Res call({@JsonKey(name: MACAddressModel.macAddressKey) String macAddress});
@@ -153,14 +156,15 @@ class __$MACAddressModelCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? macAddress = null,
-  }) {
-    return _then(_MACAddressModel(
-      macAddress: null == macAddress
-          ? _self.macAddress
-          : macAddress // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? macAddress = null}) {
+    return _then(
+      _MACAddressModel(
+        macAddress:
+            null == macAddress
+                ? _self.macAddress
+                : macAddress // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }

@@ -1,7 +1,7 @@
 // Iso6395Enum
 // {
 //     "properties": {},
-//     "type": "Hello",
+//     "type": "object",
 //     "enum": [
 //         "aav",
 //         "afa",

@@ -28,7 +28,9 @@ mixin _$ConditionalBody {
   @pragma('vm:prefer-inline')
   $ConditionalBodyCopyWith<ConditionalBody> get copyWith =>
       _$ConditionalBodyCopyWithImpl<ConditionalBody>(
-          this as ConditionalBody, _$identity);
+        this as ConditionalBody,
+        _$identity,
+      );
 
   /// Serializes this ConditionalBody to a JSON map.
   Map<String, dynamic> toJson();
@@ -56,12 +58,14 @@ mixin _$ConditionalBody {
 /// @nodoc
 abstract mixin class $ConditionalBodyCopyWith<$Res> {
   factory $ConditionalBodyCopyWith(
-          ConditionalBody value, $Res Function(ConditionalBody) _then) =
-      _$ConditionalBodyCopyWithImpl;
+    ConditionalBody value,
+    $Res Function(ConditionalBody) _then,
+  ) = _$ConditionalBodyCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: ConditionalBody.itemIdKey) int? itemId,
-      @JsonKey(name: ConditionalBody.itemNameKey) String? itemName});
+  $Res call({
+    @JsonKey(name: ConditionalBody.itemIdKey) int? itemId,
+    @JsonKey(name: ConditionalBody.itemNameKey) String? itemName,
+  });
 }
 
 /// @nodoc
@@ -76,20 +80,21 @@ class _$ConditionalBodyCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? itemId = freezed,
-    Object? itemName = freezed,
-  }) {
-    return _then(_self.copyWith(
-      itemId: freezed == itemId
-          ? _self.itemId
-          : itemId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      itemName: freezed == itemName
-          ? _self.itemName
-          : itemName // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+  $Res call({Object? itemId = freezed, Object? itemName = freezed}) {
+    return _then(
+      _self.copyWith(
+        itemId:
+            freezed == itemId
+                ? _self.itemId
+                : itemId // ignore: cast_nullable_to_non_nullable
+                    as int?,
+        itemName:
+            freezed == itemName
+                ? _self.itemName
+                : itemName // ignore: cast_nullable_to_non_nullable
+                    as String?,
+      ),
+    );
   }
 }
 
@@ -97,10 +102,10 @@ class _$ConditionalBodyCopyWithImpl<$Res>
 
 @jsonSerializable
 class _ConditionalBody extends ConditionalBody {
-  const _ConditionalBody(
-      {@JsonKey(name: ConditionalBody.itemIdKey) required this.itemId,
-      @JsonKey(name: ConditionalBody.itemNameKey) required this.itemName})
-      : super._();
+  const _ConditionalBody({
+    @JsonKey(name: ConditionalBody.itemIdKey) required this.itemId,
+    @JsonKey(name: ConditionalBody.itemNameKey) required this.itemName,
+  }) : super._();
   factory _ConditionalBody.fromJson(Map<String, dynamic> json) =>
       _$ConditionalBodyFromJson(json);
 
@@ -124,9 +129,7 @@ class _ConditionalBody extends ConditionalBody {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$ConditionalBodyToJson(
-      this,
-    );
+    return _$ConditionalBodyToJson(this);
   }
 
   @override
@@ -153,13 +156,15 @@ class _ConditionalBody extends ConditionalBody {
 abstract mixin class _$ConditionalBodyCopyWith<$Res>
     implements $ConditionalBodyCopyWith<$Res> {
   factory _$ConditionalBodyCopyWith(
-          _ConditionalBody value, $Res Function(_ConditionalBody) _then) =
-      __$ConditionalBodyCopyWithImpl;
+    _ConditionalBody value,
+    $Res Function(_ConditionalBody) _then,
+  ) = __$ConditionalBodyCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: ConditionalBody.itemIdKey) int? itemId,
-      @JsonKey(name: ConditionalBody.itemNameKey) String? itemName});
+  $Res call({
+    @JsonKey(name: ConditionalBody.itemIdKey) int? itemId,
+    @JsonKey(name: ConditionalBody.itemNameKey) String? itemName,
+  });
 }
 
 /// @nodoc
@@ -174,19 +179,20 @@ class __$ConditionalBodyCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? itemId = freezed,
-    Object? itemName = freezed,
-  }) {
-    return _then(_ConditionalBody(
-      itemId: freezed == itemId
-          ? _self.itemId
-          : itemId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      itemName: freezed == itemName
-          ? _self.itemName
-          : itemName // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+  $Res call({Object? itemId = freezed, Object? itemName = freezed}) {
+    return _then(
+      _ConditionalBody(
+        itemId:
+            freezed == itemId
+                ? _self.itemId
+                : itemId // ignore: cast_nullable_to_non_nullable
+                    as int?,
+        itemName:
+            freezed == itemName
+                ? _self.itemName
+                : itemName // ignore: cast_nullable_to_non_nullable
+                    as String?,
+      ),
+    );
   }
 }

@@ -103,7 +103,7 @@ class _BasicClient implements BasicClient {
 
   @override
   Future<HttpResponse<Map<String, dynamic>>> basicBasicBoolean({
-    bool flag = false,
+    required BasicBasicBooleanQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -111,7 +111,8 @@ class _BasicClient implements BasicClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{r'flag': flag};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -145,7 +146,7 @@ class _BasicClient implements BasicClient {
 
   @override
   Future<HttpResponse<Map<String, dynamic>>> basicBasicString({
-    required String text,
+    required BasicBasicStringQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -153,7 +154,8 @@ class _BasicClient implements BasicClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{r'text': text};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -187,7 +189,7 @@ class _BasicClient implements BasicClient {
 
   @override
   Future<HttpResponse<Map<String, dynamic>>> basicDatetimeDate({
-    required DateTime d,
+    required BasicDatetimeDateQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -195,7 +197,8 @@ class _BasicClient implements BasicClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{r'd': d.toIso8601String()};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -229,7 +232,7 @@ class _BasicClient implements BasicClient {
 
   @override
   Future<HttpResponse<Map<String, dynamic>>> basicDatetimeDatetime({
-    required DateTime dt,
+    required BasicDatetimeDatetimeQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -237,7 +240,8 @@ class _BasicClient implements BasicClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{r'dt': dt.toIso8601String()};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -271,7 +275,7 @@ class _BasicClient implements BasicClient {
 
   @override
   Future<HttpResponse<Map<String, dynamic>>> basicCreateDatetimeDatetime({
-    required DateTime dt,
+    required BasicCreateDatetimeDatetimeQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -279,7 +283,8 @@ class _BasicClient implements BasicClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{r'dt': dt.toIso8601String()};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -313,7 +318,7 @@ class _BasicClient implements BasicClient {
 
   @override
   Future<HttpResponse<Map<String, dynamic>>> basicDatetimeTime({
-    required String t,
+    required BasicDatetimeTimeQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -321,7 +326,8 @@ class _BasicClient implements BasicClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{r't': t};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -355,7 +361,7 @@ class _BasicClient implements BasicClient {
 
   @override
   Future<HttpResponse<Map<String, dynamic>>> basicDatetimeTimedelta({
-    required String td,
+    required BasicDatetimeTimedeltaQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -363,7 +369,8 @@ class _BasicClient implements BasicClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{r'td': td};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;

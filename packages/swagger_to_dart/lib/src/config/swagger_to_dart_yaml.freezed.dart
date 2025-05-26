@@ -337,7 +337,7 @@ class __$JsonSerializableConfigCopyWithImpl<$Res>
 
 /// @nodoc
 mixin _$ModelConfig {
-  bool get genericArgument;
+  bool get supportGenericArguments;
   JsonSerializableConfig get jsonSerializable;
 
   /// Create a copy of ModelConfig
@@ -355,8 +355,9 @@ mixin _$ModelConfig {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is ModelConfig &&
-            (identical(other.genericArgument, genericArgument) ||
-                other.genericArgument == genericArgument) &&
+            (identical(
+                    other.supportGenericArguments, supportGenericArguments) ||
+                other.supportGenericArguments == supportGenericArguments) &&
             (identical(other.jsonSerializable, jsonSerializable) ||
                 other.jsonSerializable == jsonSerializable));
   }
@@ -364,11 +365,11 @@ mixin _$ModelConfig {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, genericArgument, jsonSerializable);
+      Object.hash(runtimeType, supportGenericArguments, jsonSerializable);
 
   @override
   String toString() {
-    return 'ModelConfig(genericArgument: $genericArgument, jsonSerializable: $jsonSerializable)';
+    return 'ModelConfig(supportGenericArguments: $supportGenericArguments, jsonSerializable: $jsonSerializable)';
   }
 }
 
@@ -378,7 +379,8 @@ abstract mixin class $ModelConfigCopyWith<$Res> {
           ModelConfig value, $Res Function(ModelConfig) _then) =
       _$ModelConfigCopyWithImpl;
   @useResult
-  $Res call({bool genericArgument, JsonSerializableConfig jsonSerializable});
+  $Res call(
+      {bool supportGenericArguments, JsonSerializableConfig jsonSerializable});
 
   $JsonSerializableConfigCopyWith<$Res> get jsonSerializable;
 }
@@ -395,13 +397,13 @@ class _$ModelConfigCopyWithImpl<$Res> implements $ModelConfigCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? genericArgument = null,
+    Object? supportGenericArguments = null,
     Object? jsonSerializable = null,
   }) {
     return _then(_self.copyWith(
-      genericArgument: null == genericArgument
-          ? _self.genericArgument
-          : genericArgument // ignore: cast_nullable_to_non_nullable
+      supportGenericArguments: null == supportGenericArguments
+          ? _self.supportGenericArguments
+          : supportGenericArguments // ignore: cast_nullable_to_non_nullable
               as bool,
       jsonSerializable: null == jsonSerializable
           ? _self.jsonSerializable
@@ -427,7 +429,7 @@ class _$ModelConfigCopyWithImpl<$Res> implements $ModelConfigCopyWith<$Res> {
 @_jsonSerializable
 class _ModelConfig extends ModelConfig {
   const _ModelConfig(
-      {this.genericArgument = false,
+      {this.supportGenericArguments = false,
       this.jsonSerializable = const JsonSerializableConfig()})
       : super._();
   factory _ModelConfig.fromJson(Map<String, dynamic> json) =>
@@ -435,7 +437,7 @@ class _ModelConfig extends ModelConfig {
 
   @override
   @JsonKey()
-  final bool genericArgument;
+  final bool supportGenericArguments;
   @override
   @JsonKey()
   final JsonSerializableConfig jsonSerializable;
@@ -460,8 +462,9 @@ class _ModelConfig extends ModelConfig {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _ModelConfig &&
-            (identical(other.genericArgument, genericArgument) ||
-                other.genericArgument == genericArgument) &&
+            (identical(
+                    other.supportGenericArguments, supportGenericArguments) ||
+                other.supportGenericArguments == supportGenericArguments) &&
             (identical(other.jsonSerializable, jsonSerializable) ||
                 other.jsonSerializable == jsonSerializable));
   }
@@ -469,11 +472,11 @@ class _ModelConfig extends ModelConfig {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, genericArgument, jsonSerializable);
+      Object.hash(runtimeType, supportGenericArguments, jsonSerializable);
 
   @override
   String toString() {
-    return 'ModelConfig(genericArgument: $genericArgument, jsonSerializable: $jsonSerializable)';
+    return 'ModelConfig(supportGenericArguments: $supportGenericArguments, jsonSerializable: $jsonSerializable)';
   }
 }
 
@@ -485,7 +488,8 @@ abstract mixin class _$ModelConfigCopyWith<$Res>
       __$ModelConfigCopyWithImpl;
   @override
   @useResult
-  $Res call({bool genericArgument, JsonSerializableConfig jsonSerializable});
+  $Res call(
+      {bool supportGenericArguments, JsonSerializableConfig jsonSerializable});
 
   @override
   $JsonSerializableConfigCopyWith<$Res> get jsonSerializable;
@@ -503,13 +507,13 @@ class __$ModelConfigCopyWithImpl<$Res> implements _$ModelConfigCopyWith<$Res> {
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? genericArgument = null,
+    Object? supportGenericArguments = null,
     Object? jsonSerializable = null,
   }) {
     return _then(_ModelConfig(
-      genericArgument: null == genericArgument
-          ? _self.genericArgument
-          : genericArgument // ignore: cast_nullable_to_non_nullable
+      supportGenericArguments: null == supportGenericArguments
+          ? _self.supportGenericArguments
+          : supportGenericArguments // ignore: cast_nullable_to_non_nullable
               as bool,
       jsonSerializable: null == jsonSerializable
           ? _self.jsonSerializable
@@ -532,9 +536,9 @@ class __$ModelConfigCopyWithImpl<$Res> implements _$ModelConfigCopyWith<$Res> {
 
 /// @nodoc
 mixin _$ApiClientConfig {
+  String get baseApiClientClassName;
   bool get useClassForQueryParameters;
   List<String> get skippedParameters;
-  String get baseApiClientClassName;
 
   /// Create a copy of ApiClientConfig
   /// with the given fields replaced by the non-null parameter values.
@@ -552,27 +556,27 @@ mixin _$ApiClientConfig {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is ApiClientConfig &&
+            (identical(other.baseApiClientClassName, baseApiClientClassName) ||
+                other.baseApiClientClassName == baseApiClientClassName) &&
             (identical(other.useClassForQueryParameters,
                     useClassForQueryParameters) ||
                 other.useClassForQueryParameters ==
                     useClassForQueryParameters) &&
             const DeepCollectionEquality()
-                .equals(other.skippedParameters, skippedParameters) &&
-            (identical(other.baseApiClientClassName, baseApiClientClassName) ||
-                other.baseApiClientClassName == baseApiClientClassName));
+                .equals(other.skippedParameters, skippedParameters));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      baseApiClientClassName,
       useClassForQueryParameters,
-      const DeepCollectionEquality().hash(skippedParameters),
-      baseApiClientClassName);
+      const DeepCollectionEquality().hash(skippedParameters));
 
   @override
   String toString() {
-    return 'ApiClientConfig(useClassForQueryParameters: $useClassForQueryParameters, skippedParameters: $skippedParameters, baseApiClientClassName: $baseApiClientClassName)';
+    return 'ApiClientConfig(baseApiClientClassName: $baseApiClientClassName, useClassForQueryParameters: $useClassForQueryParameters, skippedParameters: $skippedParameters)';
   }
 }
 
@@ -583,9 +587,9 @@ abstract mixin class $ApiClientConfigCopyWith<$Res> {
       _$ApiClientConfigCopyWithImpl;
   @useResult
   $Res call(
-      {bool useClassForQueryParameters,
-      List<String> skippedParameters,
-      String baseApiClientClassName});
+      {String baseApiClientClassName,
+      bool useClassForQueryParameters,
+      List<String> skippedParameters});
 }
 
 /// @nodoc
@@ -601,11 +605,15 @@ class _$ApiClientConfigCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? baseApiClientClassName = null,
     Object? useClassForQueryParameters = null,
     Object? skippedParameters = null,
-    Object? baseApiClientClassName = null,
   }) {
     return _then(_self.copyWith(
+      baseApiClientClassName: null == baseApiClientClassName
+          ? _self.baseApiClientClassName
+          : baseApiClientClassName // ignore: cast_nullable_to_non_nullable
+              as String,
       useClassForQueryParameters: null == useClassForQueryParameters
           ? _self.useClassForQueryParameters
           : useClassForQueryParameters // ignore: cast_nullable_to_non_nullable
@@ -614,10 +622,6 @@ class _$ApiClientConfigCopyWithImpl<$Res>
           ? _self.skippedParameters
           : skippedParameters // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      baseApiClientClassName: null == baseApiClientClassName
-          ? _self.baseApiClientClassName
-          : baseApiClientClassName // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -627,14 +631,17 @@ class _$ApiClientConfigCopyWithImpl<$Res>
 @_jsonSerializable
 class _ApiClientConfig extends ApiClientConfig {
   const _ApiClientConfig(
-      {this.useClassForQueryParameters = false,
-      final List<String> skippedParameters = const [],
-      this.baseApiClientClassName = 'BaseApiClient'})
+      {this.baseApiClientClassName = 'BaseApiClient',
+      this.useClassForQueryParameters = false,
+      final List<String> skippedParameters = const []})
       : _skippedParameters = skippedParameters,
         super._();
   factory _ApiClientConfig.fromJson(Map<String, dynamic> json) =>
       _$ApiClientConfigFromJson(json);
 
+  @override
+  @JsonKey()
+  final String baseApiClientClassName;
   @override
   @JsonKey()
   final bool useClassForQueryParameters;
@@ -647,10 +654,6 @@ class _ApiClientConfig extends ApiClientConfig {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_skippedParameters);
   }
-
-  @override
-  @JsonKey()
-  final String baseApiClientClassName;
 
   /// Create a copy of ApiClientConfig
   /// with the given fields replaced by the non-null parameter values.
@@ -672,27 +675,27 @@ class _ApiClientConfig extends ApiClientConfig {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _ApiClientConfig &&
+            (identical(other.baseApiClientClassName, baseApiClientClassName) ||
+                other.baseApiClientClassName == baseApiClientClassName) &&
             (identical(other.useClassForQueryParameters,
                     useClassForQueryParameters) ||
                 other.useClassForQueryParameters ==
                     useClassForQueryParameters) &&
             const DeepCollectionEquality()
-                .equals(other._skippedParameters, _skippedParameters) &&
-            (identical(other.baseApiClientClassName, baseApiClientClassName) ||
-                other.baseApiClientClassName == baseApiClientClassName));
+                .equals(other._skippedParameters, _skippedParameters));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      baseApiClientClassName,
       useClassForQueryParameters,
-      const DeepCollectionEquality().hash(_skippedParameters),
-      baseApiClientClassName);
+      const DeepCollectionEquality().hash(_skippedParameters));
 
   @override
   String toString() {
-    return 'ApiClientConfig(useClassForQueryParameters: $useClassForQueryParameters, skippedParameters: $skippedParameters, baseApiClientClassName: $baseApiClientClassName)';
+    return 'ApiClientConfig(baseApiClientClassName: $baseApiClientClassName, useClassForQueryParameters: $useClassForQueryParameters, skippedParameters: $skippedParameters)';
   }
 }
 
@@ -705,9 +708,9 @@ abstract mixin class _$ApiClientConfigCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {bool useClassForQueryParameters,
-      List<String> skippedParameters,
-      String baseApiClientClassName});
+      {String baseApiClientClassName,
+      bool useClassForQueryParameters,
+      List<String> skippedParameters});
 }
 
 /// @nodoc
@@ -723,11 +726,15 @@ class __$ApiClientConfigCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
+    Object? baseApiClientClassName = null,
     Object? useClassForQueryParameters = null,
     Object? skippedParameters = null,
-    Object? baseApiClientClassName = null,
   }) {
     return _then(_ApiClientConfig(
+      baseApiClientClassName: null == baseApiClientClassName
+          ? _self.baseApiClientClassName
+          : baseApiClientClassName // ignore: cast_nullable_to_non_nullable
+              as String,
       useClassForQueryParameters: null == useClassForQueryParameters
           ? _self.useClassForQueryParameters
           : useClassForQueryParameters // ignore: cast_nullable_to_non_nullable
@@ -736,10 +743,6 @@ class __$ApiClientConfigCopyWithImpl<$Res>
           ? _self._skippedParameters
           : skippedParameters // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      baseApiClientClassName: null == baseApiClientClassName
-          ? _self.baseApiClientClassName
-          : baseApiClientClassName // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }

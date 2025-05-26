@@ -18,9 +18,8 @@ class _GenericClient implements GenericClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<PaginationResponseItemResponse>> genericGetItems({
-    int page = 1,
-    int perPage = 10,
+  Future<HttpResponse<PaginationResponse<ItemResponse>>> genericGetItems({
+    required GenericGetItemsQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -28,15 +27,13 @@ class _GenericClient implements GenericClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{
-      r'page': page,
-      r'per_page': perPage,
-    };
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options =
-        _setStreamType<HttpResponse<PaginationResponseItemResponse>>(
+        _setStreamType<HttpResponse<PaginationResponse<ItemResponse>>>(
           Options(method: 'GET', headers: _headers, extra: _extra)
               .compose(
                 _dio.options,
@@ -52,9 +49,12 @@ class _GenericClient implements GenericClient {
               ),
         );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late PaginationResponseItemResponse _value;
+    late PaginationResponse<ItemResponse> _value;
     try {
-      _value = PaginationResponseItemResponse.fromJson(_result.data!);
+      _value = PaginationResponse<ItemResponse>.fromJson(
+        _result.data!,
+        (json) => ItemResponse.fromJson(json as Map<String, dynamic>),
+      );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -64,10 +64,9 @@ class _GenericClient implements GenericClient {
   }
 
   @override
-  Future<HttpResponse<PaginationResponseCategoryResponse>>
+  Future<HttpResponse<PaginationResponse<CategoryResponse>>>
   genericGetCategories({
-    int page = 1,
-    int perPage = 10,
+    required GenericGetCategoriesQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -75,15 +74,13 @@ class _GenericClient implements GenericClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{
-      r'page': page,
-      r'per_page': perPage,
-    };
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options =
-        _setStreamType<HttpResponse<PaginationResponseCategoryResponse>>(
+        _setStreamType<HttpResponse<PaginationResponse<CategoryResponse>>>(
           Options(method: 'GET', headers: _headers, extra: _extra)
               .compose(
                 _dio.options,
@@ -99,9 +96,12 @@ class _GenericClient implements GenericClient {
               ),
         );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late PaginationResponseCategoryResponse _value;
+    late PaginationResponse<CategoryResponse> _value;
     try {
-      _value = PaginationResponseCategoryResponse.fromJson(_result.data!);
+      _value = PaginationResponse<CategoryResponse>.fromJson(
+        _result.data!,
+        (json) => CategoryResponse.fromJson(json as Map<String, dynamic>),
+      );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -111,8 +111,8 @@ class _GenericClient implements GenericClient {
   }
 
   @override
-  Future<HttpResponse<BaseResponseItemResponse>> genericGetBaseResponseItem({
-    required ItemResponseInput requestBody,
+  Future<HttpResponse<BaseResponse<ItemResponse>>> genericGetBaseResponseItem({
+    required ItemResponse requestBody,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -125,7 +125,7 @@ class _GenericClient implements GenericClient {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(requestBody.toJson());
-    final _options = _setStreamType<HttpResponse<BaseResponseItemResponse>>(
+    final _options = _setStreamType<HttpResponse<BaseResponse<ItemResponse>>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -139,9 +139,12 @@ class _GenericClient implements GenericClient {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late BaseResponseItemResponse _value;
+    late BaseResponse<ItemResponse> _value;
     try {
-      _value = BaseResponseItemResponse.fromJson(_result.data!);
+      _value = BaseResponse<ItemResponse>.fromJson(
+        _result.data!,
+        (json) => ItemResponse.fromJson(json as Map<String, dynamic>),
+      );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -151,7 +154,7 @@ class _GenericClient implements GenericClient {
   }
 
   @override
-  Future<HttpResponse<BaseResponseCategoryResponse>>
+  Future<HttpResponse<BaseResponse<CategoryResponse>>>
   genericGetBaseResponseCategory({
     required CategoryResponse requestBody,
     Map<String, dynamic>? extras,
@@ -166,23 +169,29 @@ class _GenericClient implements GenericClient {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(requestBody.toJson());
-    final _options = _setStreamType<HttpResponse<BaseResponseCategoryResponse>>(
-      Options(method: 'GET', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/generic/base-response-category',
-            queryParameters: queryParameters,
-            data: _data,
-            cancelToken: cancelToken,
-            onSendProgress: onSendProgress,
-            onReceiveProgress: onReceiveProgress,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
+    final _options =
+        _setStreamType<HttpResponse<BaseResponse<CategoryResponse>>>(
+          Options(method: 'GET', headers: _headers, extra: _extra)
+              .compose(
+                _dio.options,
+                '/generic/base-response-category',
+                queryParameters: queryParameters,
+                data: _data,
+                cancelToken: cancelToken,
+                onSendProgress: onSendProgress,
+                onReceiveProgress: onReceiveProgress,
+              )
+              .copyWith(
+                baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl),
+              ),
+        );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late BaseResponseCategoryResponse _value;
+    late BaseResponse<CategoryResponse> _value;
     try {
-      _value = BaseResponseCategoryResponse.fromJson(_result.data!);
+      _value = BaseResponse<CategoryResponse>.fromJson(
+        _result.data!,
+        (json) => CategoryResponse.fromJson(json as Map<String, dynamic>),
+      );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -192,7 +201,7 @@ class _GenericClient implements GenericClient {
   }
 
   @override
-  Future<HttpResponse<BaseResponseListItemResponse>>
+  Future<HttpResponse<BaseResponse<List<ItemResponse>>>>
   genericGetBaseResponseList({
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
@@ -205,23 +214,36 @@ class _GenericClient implements GenericClient {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HttpResponse<BaseResponseListItemResponse>>(
-      Options(method: 'GET', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/generic/base-response-list',
-            queryParameters: queryParameters,
-            data: _data,
-            cancelToken: cancelToken,
-            onSendProgress: onSendProgress,
-            onReceiveProgress: onReceiveProgress,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
+    final _options =
+        _setStreamType<HttpResponse<BaseResponse<List<ItemResponse>>>>(
+          Options(method: 'GET', headers: _headers, extra: _extra)
+              .compose(
+                _dio.options,
+                '/generic/base-response-list',
+                queryParameters: queryParameters,
+                data: _data,
+                cancelToken: cancelToken,
+                onSendProgress: onSendProgress,
+                onReceiveProgress: onReceiveProgress,
+              )
+              .copyWith(
+                baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl),
+              ),
+        );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late BaseResponseListItemResponse _value;
+    late BaseResponse<List<ItemResponse>> _value;
     try {
-      _value = BaseResponseListItemResponse.fromJson(_result.data!);
+      _value = BaseResponse<List<ItemResponse>>.fromJson(
+        _result.data!,
+        (json) =>
+            json is List<dynamic>
+                ? json
+                    .map<ItemResponse>(
+                      (i) => ItemResponse.fromJson(i as Map<String, dynamic>),
+                    )
+                    .toList()
+                : List.empty(),
+      );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -231,10 +253,9 @@ class _GenericClient implements GenericClient {
   }
 
   @override
-  Future<HttpResponse<BaseResponsePaginationResponseItemResponse>>
+  Future<HttpResponse<BaseResponse<PaginationResponse<ItemResponse>>>>
   genericGetNestedBaseAndPagination({
-    int page = 1,
-    int perPage = 10,
+    required GenericGetNestedBaseAndPaginationQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -242,15 +263,13 @@ class _GenericClient implements GenericClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{
-      r'page': page,
-      r'per_page': perPage,
-    };
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<
-      HttpResponse<BaseResponsePaginationResponseItemResponse>
+      HttpResponse<BaseResponse<PaginationResponse<ItemResponse>>>
     >(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
@@ -265,10 +284,14 @@ class _GenericClient implements GenericClient {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late BaseResponsePaginationResponseItemResponse _value;
+    late BaseResponse<PaginationResponse<ItemResponse>> _value;
     try {
-      _value = BaseResponsePaginationResponseItemResponse.fromJson(
+      _value = BaseResponse<PaginationResponse<ItemResponse>>.fromJson(
         _result.data!,
+        (json) => PaginationResponse<ItemResponse>.fromJson(
+          json as Map<String, dynamic>,
+          (json) => ItemResponse.fromJson(json as Map<String, dynamic>),
+        ),
       );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);

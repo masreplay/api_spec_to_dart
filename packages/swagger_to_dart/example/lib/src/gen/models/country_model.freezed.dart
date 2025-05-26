@@ -36,7 +36,9 @@ mixin _$CountryModel {
   @pragma('vm:prefer-inline')
   $CountryModelCopyWith<CountryModel> get copyWith =>
       _$CountryModelCopyWithImpl<CountryModel>(
-          this as CountryModel, _$identity);
+        this as CountryModel,
+        _$identity,
+      );
 
   /// Serializes this CountryModel to a JSON map.
   Map<String, dynamic> toJson();
@@ -67,14 +69,16 @@ mixin _$CountryModel {
 /// @nodoc
 abstract mixin class $CountryModelCopyWith<$Res> {
   factory $CountryModelCopyWith(
-          CountryModel value, $Res Function(CountryModel) _then) =
-      _$CountryModelCopyWithImpl;
+    CountryModel value,
+    $Res Function(CountryModel) _then,
+  ) = _$CountryModelCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: CountryModel.alpha2Key) String? alpha2,
-      @JsonKey(name: CountryModel.alpha3Key) String? alpha3,
-      @JsonKey(name: CountryModel.numericKey) String? numeric,
-      @JsonKey(name: CountryModel.shortNameKey) String? shortName});
+  $Res call({
+    @JsonKey(name: CountryModel.alpha2Key) String? alpha2,
+    @JsonKey(name: CountryModel.alpha3Key) String? alpha3,
+    @JsonKey(name: CountryModel.numericKey) String? numeric,
+    @JsonKey(name: CountryModel.shortNameKey) String? shortName,
+  });
 }
 
 /// @nodoc
@@ -94,24 +98,30 @@ class _$CountryModelCopyWithImpl<$Res> implements $CountryModelCopyWith<$Res> {
     Object? numeric = freezed,
     Object? shortName = freezed,
   }) {
-    return _then(_self.copyWith(
-      alpha2: freezed == alpha2
-          ? _self.alpha2
-          : alpha2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      alpha3: freezed == alpha3
-          ? _self.alpha3
-          : alpha3 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      numeric: freezed == numeric
-          ? _self.numeric
-          : numeric // ignore: cast_nullable_to_non_nullable
-              as String?,
-      shortName: freezed == shortName
-          ? _self.shortName
-          : shortName // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _self.copyWith(
+        alpha2:
+            freezed == alpha2
+                ? _self.alpha2
+                : alpha2 // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        alpha3:
+            freezed == alpha3
+                ? _self.alpha3
+                : alpha3 // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        numeric:
+            freezed == numeric
+                ? _self.numeric
+                : numeric // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        shortName:
+            freezed == shortName
+                ? _self.shortName
+                : shortName // ignore: cast_nullable_to_non_nullable
+                    as String?,
+      ),
+    );
   }
 }
 
@@ -119,12 +129,12 @@ class _$CountryModelCopyWithImpl<$Res> implements $CountryModelCopyWith<$Res> {
 
 @jsonSerializable
 class _CountryModel extends CountryModel {
-  const _CountryModel(
-      {@JsonKey(name: CountryModel.alpha2Key) required this.alpha2,
-      @JsonKey(name: CountryModel.alpha3Key) required this.alpha3,
-      @JsonKey(name: CountryModel.numericKey) required this.numeric,
-      @JsonKey(name: CountryModel.shortNameKey) required this.shortName})
-      : super._();
+  const _CountryModel({
+    @JsonKey(name: CountryModel.alpha2Key) required this.alpha2,
+    @JsonKey(name: CountryModel.alpha3Key) required this.alpha3,
+    @JsonKey(name: CountryModel.numericKey) required this.numeric,
+    @JsonKey(name: CountryModel.shortNameKey) required this.shortName,
+  }) : super._();
   factory _CountryModel.fromJson(Map<String, dynamic> json) =>
       _$CountryModelFromJson(json);
 
@@ -158,9 +168,7 @@ class _CountryModel extends CountryModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$CountryModelToJson(
-      this,
-    );
+    return _$CountryModelToJson(this);
   }
 
   @override
@@ -190,15 +198,17 @@ class _CountryModel extends CountryModel {
 abstract mixin class _$CountryModelCopyWith<$Res>
     implements $CountryModelCopyWith<$Res> {
   factory _$CountryModelCopyWith(
-          _CountryModel value, $Res Function(_CountryModel) _then) =
-      __$CountryModelCopyWithImpl;
+    _CountryModel value,
+    $Res Function(_CountryModel) _then,
+  ) = __$CountryModelCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: CountryModel.alpha2Key) String? alpha2,
-      @JsonKey(name: CountryModel.alpha3Key) String? alpha3,
-      @JsonKey(name: CountryModel.numericKey) String? numeric,
-      @JsonKey(name: CountryModel.shortNameKey) String? shortName});
+  $Res call({
+    @JsonKey(name: CountryModel.alpha2Key) String? alpha2,
+    @JsonKey(name: CountryModel.alpha3Key) String? alpha3,
+    @JsonKey(name: CountryModel.numericKey) String? numeric,
+    @JsonKey(name: CountryModel.shortNameKey) String? shortName,
+  });
 }
 
 /// @nodoc
@@ -219,23 +229,29 @@ class __$CountryModelCopyWithImpl<$Res>
     Object? numeric = freezed,
     Object? shortName = freezed,
   }) {
-    return _then(_CountryModel(
-      alpha2: freezed == alpha2
-          ? _self.alpha2
-          : alpha2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      alpha3: freezed == alpha3
-          ? _self.alpha3
-          : alpha3 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      numeric: freezed == numeric
-          ? _self.numeric
-          : numeric // ignore: cast_nullable_to_non_nullable
-              as String?,
-      shortName: freezed == shortName
-          ? _self.shortName
-          : shortName // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _CountryModel(
+        alpha2:
+            freezed == alpha2
+                ? _self.alpha2
+                : alpha2 // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        alpha3:
+            freezed == alpha3
+                ? _self.alpha3
+                : alpha3 // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        numeric:
+            freezed == numeric
+                ? _self.numeric
+                : numeric // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        shortName:
+            freezed == shortName
+                ? _self.shortName
+                : shortName // ignore: cast_nullable_to_non_nullable
+                    as String?,
+      ),
+    );
   }
 }

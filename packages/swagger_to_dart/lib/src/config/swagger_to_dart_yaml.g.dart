@@ -41,7 +41,8 @@ const _$JsonSerializableConfigFallbackTypeEnumMap = {
 };
 
 _ModelConfig _$ModelConfigFromJson(Map<String, dynamic> json) => _ModelConfig(
-      genericArgument: json['generic_argument'] as bool? ?? false,
+      supportGenericArguments:
+          json['support_generic_arguments'] as bool? ?? false,
       jsonSerializable: json['json_serializable'] == null
           ? const JsonSerializableConfig()
           : JsonSerializableConfig.fromJson(
@@ -50,27 +51,27 @@ _ModelConfig _$ModelConfigFromJson(Map<String, dynamic> json) => _ModelConfig(
 
 Map<String, dynamic> _$ModelConfigToJson(_ModelConfig instance) =>
     <String, dynamic>{
-      'generic_argument': instance.genericArgument,
+      'support_generic_arguments': instance.supportGenericArguments,
       'json_serializable': instance.jsonSerializable.toJson(),
     };
 
 _ApiClientConfig _$ApiClientConfigFromJson(Map<String, dynamic> json) =>
     _ApiClientConfig(
+      baseApiClientClassName:
+          json['base_api_client_class_name'] as String? ?? 'BaseApiClient',
       useClassForQueryParameters:
           json['use_class_for_query_parameters'] as bool? ?? false,
       skippedParameters: (json['skipped_parameters'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           const [],
-      baseApiClientClassName:
-          json['base_api_client_class_name'] as String? ?? 'BaseApiClient',
     );
 
 Map<String, dynamic> _$ApiClientConfigToJson(_ApiClientConfig instance) =>
     <String, dynamic>{
+      'base_api_client_class_name': instance.baseApiClientClassName,
       'use_class_for_query_parameters': instance.useClassForQueryParameters,
       'skipped_parameters': instance.skippedParameters,
-      'base_api_client_class_name': instance.baseApiClientClassName,
     };
 
 _SwaggerToDart _$SwaggerToDartFromJson(Map<String, dynamic> json) =>
@@ -108,6 +109,6 @@ Map<String, dynamic> _$SwaggerToDartToJson(_SwaggerToDart instance) =>
     };
 
 const _$GenerationSourceEnumMap = {
-  GenerationSource.fastapi: 'fastapi',
+  GenerationSource.fastAPI: 'fastAPI',
   GenerationSource.dotnet: 'dotnet',
 };

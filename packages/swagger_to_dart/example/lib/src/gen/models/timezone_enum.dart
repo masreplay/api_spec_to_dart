@@ -1,7 +1,7 @@
 // TimezoneEnum
 // {
 //     "properties": {},
-//     "type": "Hello",
+//     "type": "object",
 //     "enum": [
 //         "Africa/Abidjan",
 //         "Africa/Accra",

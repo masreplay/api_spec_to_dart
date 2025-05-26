@@ -36,7 +36,9 @@ mixin _$ItemRequestBody {
   @pragma('vm:prefer-inline')
   $ItemRequestBodyCopyWith<ItemRequestBody> get copyWith =>
       _$ItemRequestBodyCopyWithImpl<ItemRequestBody>(
-          this as ItemRequestBody, _$identity);
+        this as ItemRequestBody,
+        _$identity,
+      );
 
   /// Serializes this ItemRequestBody to a JSON map.
   Map<String, dynamic> toJson();
@@ -66,14 +68,16 @@ mixin _$ItemRequestBody {
 /// @nodoc
 abstract mixin class $ItemRequestBodyCopyWith<$Res> {
   factory $ItemRequestBodyCopyWith(
-          ItemRequestBody value, $Res Function(ItemRequestBody) _then) =
-      _$ItemRequestBodyCopyWithImpl;
+    ItemRequestBody value,
+    $Res Function(ItemRequestBody) _then,
+  ) = _$ItemRequestBodyCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: ItemRequestBody.nameKey) String name,
-      @JsonKey(name: ItemRequestBody.descriptionKey) String? description,
-      @JsonKey(name: ItemRequestBody.priceKey) double price,
-      @JsonKey(name: ItemRequestBody.taxKey) double? tax});
+  $Res call({
+    @JsonKey(name: ItemRequestBody.nameKey) String name,
+    @JsonKey(name: ItemRequestBody.descriptionKey) String? description,
+    @JsonKey(name: ItemRequestBody.priceKey) double price,
+    @JsonKey(name: ItemRequestBody.taxKey) double? tax,
+  });
 }
 
 /// @nodoc
@@ -94,24 +98,30 @@ class _$ItemRequestBodyCopyWithImpl<$Res>
     Object? price = null,
     Object? tax = freezed,
   }) {
-    return _then(_self.copyWith(
-      name: null == name
-          ? _self.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: freezed == description
-          ? _self.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      price: null == price
-          ? _self.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as double,
-      tax: freezed == tax
-          ? _self.tax
-          : tax // ignore: cast_nullable_to_non_nullable
-              as double?,
-    ));
+    return _then(
+      _self.copyWith(
+        name:
+            null == name
+                ? _self.name
+                : name // ignore: cast_nullable_to_non_nullable
+                    as String,
+        description:
+            freezed == description
+                ? _self.description
+                : description // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        price:
+            null == price
+                ? _self.price
+                : price // ignore: cast_nullable_to_non_nullable
+                    as double,
+        tax:
+            freezed == tax
+                ? _self.tax
+                : tax // ignore: cast_nullable_to_non_nullable
+                    as double?,
+      ),
+    );
   }
 }
 
@@ -119,12 +129,12 @@ class _$ItemRequestBodyCopyWithImpl<$Res>
 
 @jsonSerializable
 class _ItemRequestBody extends ItemRequestBody {
-  const _ItemRequestBody(
-      {@JsonKey(name: ItemRequestBody.nameKey) required this.name,
-      @JsonKey(name: ItemRequestBody.descriptionKey) required this.description,
-      @JsonKey(name: ItemRequestBody.priceKey) required this.price,
-      @JsonKey(name: ItemRequestBody.taxKey) required this.tax})
-      : super._();
+  const _ItemRequestBody({
+    @JsonKey(name: ItemRequestBody.nameKey) required this.name,
+    @JsonKey(name: ItemRequestBody.descriptionKey) required this.description,
+    @JsonKey(name: ItemRequestBody.priceKey) required this.price,
+    @JsonKey(name: ItemRequestBody.taxKey) required this.tax,
+  }) : super._();
   factory _ItemRequestBody.fromJson(Map<String, dynamic> json) =>
       _$ItemRequestBodyFromJson(json);
 
@@ -158,9 +168,7 @@ class _ItemRequestBody extends ItemRequestBody {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$ItemRequestBodyToJson(
-      this,
-    );
+    return _$ItemRequestBodyToJson(this);
   }
 
   @override
@@ -189,15 +197,17 @@ class _ItemRequestBody extends ItemRequestBody {
 abstract mixin class _$ItemRequestBodyCopyWith<$Res>
     implements $ItemRequestBodyCopyWith<$Res> {
   factory _$ItemRequestBodyCopyWith(
-          _ItemRequestBody value, $Res Function(_ItemRequestBody) _then) =
-      __$ItemRequestBodyCopyWithImpl;
+    _ItemRequestBody value,
+    $Res Function(_ItemRequestBody) _then,
+  ) = __$ItemRequestBodyCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: ItemRequestBody.nameKey) String name,
-      @JsonKey(name: ItemRequestBody.descriptionKey) String? description,
-      @JsonKey(name: ItemRequestBody.priceKey) double price,
-      @JsonKey(name: ItemRequestBody.taxKey) double? tax});
+  $Res call({
+    @JsonKey(name: ItemRequestBody.nameKey) String name,
+    @JsonKey(name: ItemRequestBody.descriptionKey) String? description,
+    @JsonKey(name: ItemRequestBody.priceKey) double price,
+    @JsonKey(name: ItemRequestBody.taxKey) double? tax,
+  });
 }
 
 /// @nodoc
@@ -218,23 +228,29 @@ class __$ItemRequestBodyCopyWithImpl<$Res>
     Object? price = null,
     Object? tax = freezed,
   }) {
-    return _then(_ItemRequestBody(
-      name: null == name
-          ? _self.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: freezed == description
-          ? _self.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      price: null == price
-          ? _self.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as double,
-      tax: freezed == tax
-          ? _self.tax
-          : tax // ignore: cast_nullable_to_non_nullable
-              as double?,
-    ));
+    return _then(
+      _ItemRequestBody(
+        name:
+            null == name
+                ? _self.name
+                : name // ignore: cast_nullable_to_non_nullable
+                    as String,
+        description:
+            freezed == description
+                ? _self.description
+                : description // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        price:
+            null == price
+                ? _self.price
+                : price // ignore: cast_nullable_to_non_nullable
+                    as double,
+        tax:
+            freezed == tax
+                ? _self.tax
+                : tax // ignore: cast_nullable_to_non_nullable
+                    as double?,
+      ),
+    );
   }
 }

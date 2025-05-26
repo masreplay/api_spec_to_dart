@@ -1,7 +1,7 @@
 // Iso6393Enum
 // {
 //     "properties": {},
-//     "type": "Hello",
+//     "type": "object",
 //     "enum": [
 //         "aaa",
 //         "aab",

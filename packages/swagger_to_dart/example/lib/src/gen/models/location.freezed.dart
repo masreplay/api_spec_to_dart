@@ -61,10 +61,11 @@ abstract mixin class $LocationCopyWith<$Res> {
   factory $LocationCopyWith(Location value, $Res Function(Location) _then) =
       _$LocationCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: Location.latKey) double lat,
-      @JsonKey(name: Location.lngKey) double lng,
-      @JsonKey(name: Location.nameKey) String? name});
+  $Res call({
+    @JsonKey(name: Location.latKey) double lat,
+    @JsonKey(name: Location.lngKey) double lng,
+    @JsonKey(name: Location.nameKey) String? name,
+  });
 }
 
 /// @nodoc
@@ -78,25 +79,26 @@ class _$LocationCopyWithImpl<$Res> implements $LocationCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? lat = null,
-    Object? lng = null,
-    Object? name = freezed,
-  }) {
-    return _then(_self.copyWith(
-      lat: null == lat
-          ? _self.lat
-          : lat // ignore: cast_nullable_to_non_nullable
-              as double,
-      lng: null == lng
-          ? _self.lng
-          : lng // ignore: cast_nullable_to_non_nullable
-              as double,
-      name: freezed == name
-          ? _self.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+  $Res call({Object? lat = null, Object? lng = null, Object? name = freezed}) {
+    return _then(
+      _self.copyWith(
+        lat:
+            null == lat
+                ? _self.lat
+                : lat // ignore: cast_nullable_to_non_nullable
+                    as double,
+        lng:
+            null == lng
+                ? _self.lng
+                : lng // ignore: cast_nullable_to_non_nullable
+                    as double,
+        name:
+            freezed == name
+                ? _self.name
+                : name // ignore: cast_nullable_to_non_nullable
+                    as String?,
+      ),
+    );
   }
 }
 
@@ -104,11 +106,11 @@ class _$LocationCopyWithImpl<$Res> implements $LocationCopyWith<$Res> {
 
 @jsonSerializable
 class _Location extends Location {
-  const _Location(
-      {@JsonKey(name: Location.latKey) required this.lat,
-      @JsonKey(name: Location.lngKey) required this.lng,
-      @JsonKey(name: Location.nameKey) required this.name})
-      : super._();
+  const _Location({
+    @JsonKey(name: Location.latKey) required this.lat,
+    @JsonKey(name: Location.lngKey) required this.lng,
+    @JsonKey(name: Location.nameKey) required this.name,
+  }) : super._();
   factory _Location.fromJson(Map<String, dynamic> json) =>
       _$LocationFromJson(json);
 
@@ -137,9 +139,7 @@ class _Location extends Location {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$LocationToJson(
-      this,
-    );
+    return _$LocationToJson(this);
   }
 
   @override
@@ -169,10 +169,11 @@ abstract mixin class _$LocationCopyWith<$Res>
       __$LocationCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: Location.latKey) double lat,
-      @JsonKey(name: Location.lngKey) double lng,
-      @JsonKey(name: Location.nameKey) String? name});
+  $Res call({
+    @JsonKey(name: Location.latKey) double lat,
+    @JsonKey(name: Location.lngKey) double lng,
+    @JsonKey(name: Location.nameKey) String? name,
+  });
 }
 
 /// @nodoc
@@ -186,24 +187,25 @@ class __$LocationCopyWithImpl<$Res> implements _$LocationCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? lat = null,
-    Object? lng = null,
-    Object? name = freezed,
-  }) {
-    return _then(_Location(
-      lat: null == lat
-          ? _self.lat
-          : lat // ignore: cast_nullable_to_non_nullable
-              as double,
-      lng: null == lng
-          ? _self.lng
-          : lng // ignore: cast_nullable_to_non_nullable
-              as double,
-      name: freezed == name
-          ? _self.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+  $Res call({Object? lat = null, Object? lng = null, Object? name = freezed}) {
+    return _then(
+      _Location(
+        lat:
+            null == lat
+                ? _self.lat
+                : lat // ignore: cast_nullable_to_non_nullable
+                    as double,
+        lng:
+            null == lng
+                ? _self.lng
+                : lng // ignore: cast_nullable_to_non_nullable
+                    as double,
+        name:
+            freezed == name
+                ? _self.name
+                : name // ignore: cast_nullable_to_non_nullable
+                    as String?,
+      ),
+    );
   }
 }

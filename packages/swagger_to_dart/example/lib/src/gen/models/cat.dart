@@ -40,8 +40,8 @@ abstract class Cat with _$Cat {
     /// name
     @JsonKey(name: Cat.nameKey) required String name,
 
-    /// typeAA
-    @Default('cat') @JsonKey(name: Cat.typeAAKey) String typeAA,
+    /// type
+    @Default('cat') @JsonKey(name: Cat.typeKey) String type,
 
     /// meowCuteness
     @JsonKey(name: Cat.meowCutenessKey) required int meowCuteness,
@@ -51,7 +51,7 @@ abstract class Cat with _$Cat {
 
   static const String nameKey = "name";
 
-  static const String typeAAKey = "type";
+  static const String typeKey = "type";
 
   static const String meowCutenessKey = "meow_cuteness";
 }

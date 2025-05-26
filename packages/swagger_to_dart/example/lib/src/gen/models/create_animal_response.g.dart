@@ -7,16 +7,17 @@ part of 'create_animal_response.dart';
 // **************************************************************************
 
 _CreateAnimalResponse _$CreateAnimalResponseFromJson(
-        Map<String, dynamic> json) =>
-    _CreateAnimalResponse(
-      animal: const CatDogParrotMapJsonConverter()
-          .fromJson(json['animal'] as Map<String, dynamic>),
-      message: json['message'] as String,
-    );
+  Map<String, dynamic> json,
+) => _CreateAnimalResponse(
+  animal: const AnimalMapJsonConverter().fromJson(
+    json['animal'] as Map<String, dynamic>,
+  ),
+  message: json['message'] as String,
+);
 
 Map<String, dynamic> _$CreateAnimalResponseToJson(
-        _CreateAnimalResponse instance) =>
-    <String, dynamic>{
-      'animal': const CatDogParrotMapJsonConverter().toJson(instance.animal),
-      'message': instance.message,
-    };
+  _CreateAnimalResponse instance,
+) => <String, dynamic>{
+  'animal': const AnimalMapJsonConverter().toJson(instance.animal),
+  'message': instance.message,
+};

@@ -32,7 +32,9 @@ mixin _$CoordinateModel {
   @pragma('vm:prefer-inline')
   $CoordinateModelCopyWith<CoordinateModel> get copyWith =>
       _$CoordinateModelCopyWithImpl<CoordinateModel>(
-          this as CoordinateModel, _$identity);
+        this as CoordinateModel,
+        _$identity,
+      );
 
   /// Serializes this CoordinateModel to a JSON map.
   Map<String, dynamic> toJson();
@@ -42,8 +44,10 @@ mixin _$CoordinateModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is CoordinateModel &&
-            const DeepCollectionEquality()
-                .equals(other.coordinate, coordinate) &&
+            const DeepCollectionEquality().equals(
+              other.coordinate,
+              coordinate,
+            ) &&
             (identical(other.latitude, latitude) ||
                 other.latitude == latitude) &&
             (identical(other.longitude, longitude) ||
@@ -52,8 +56,12 @@ mixin _$CoordinateModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(coordinate), latitude, longitude);
+  int get hashCode => Object.hash(
+    runtimeType,
+    const DeepCollectionEquality().hash(coordinate),
+    latitude,
+    longitude,
+  );
 
   @override
   String toString() {
@@ -64,13 +72,15 @@ mixin _$CoordinateModel {
 /// @nodoc
 abstract mixin class $CoordinateModelCopyWith<$Res> {
   factory $CoordinateModelCopyWith(
-          CoordinateModel value, $Res Function(CoordinateModel) _then) =
-      _$CoordinateModelCopyWithImpl;
+    CoordinateModel value,
+    $Res Function(CoordinateModel) _then,
+  ) = _$CoordinateModelCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: CoordinateModel.coordinateKey) dynamic coordinate,
-      @JsonKey(name: CoordinateModel.latitudeKey) double? latitude,
-      @JsonKey(name: CoordinateModel.longitudeKey) double? longitude});
+  $Res call({
+    @JsonKey(name: CoordinateModel.coordinateKey) dynamic coordinate,
+    @JsonKey(name: CoordinateModel.latitudeKey) double? latitude,
+    @JsonKey(name: CoordinateModel.longitudeKey) double? longitude,
+  });
 }
 
 /// @nodoc
@@ -90,20 +100,25 @@ class _$CoordinateModelCopyWithImpl<$Res>
     Object? latitude = freezed,
     Object? longitude = freezed,
   }) {
-    return _then(_self.copyWith(
-      coordinate: freezed == coordinate
-          ? _self.coordinate
-          : coordinate // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      latitude: freezed == latitude
-          ? _self.latitude
-          : latitude // ignore: cast_nullable_to_non_nullable
-              as double?,
-      longitude: freezed == longitude
-          ? _self.longitude
-          : longitude // ignore: cast_nullable_to_non_nullable
-              as double?,
-    ));
+    return _then(
+      _self.copyWith(
+        coordinate:
+            freezed == coordinate
+                ? _self.coordinate
+                : coordinate // ignore: cast_nullable_to_non_nullable
+                    as dynamic,
+        latitude:
+            freezed == latitude
+                ? _self.latitude
+                : latitude // ignore: cast_nullable_to_non_nullable
+                    as double?,
+        longitude:
+            freezed == longitude
+                ? _self.longitude
+                : longitude // ignore: cast_nullable_to_non_nullable
+                    as double?,
+      ),
+    );
   }
 }
 
@@ -111,11 +126,11 @@ class _$CoordinateModelCopyWithImpl<$Res>
 
 @jsonSerializable
 class _CoordinateModel extends CoordinateModel {
-  const _CoordinateModel(
-      {@JsonKey(name: CoordinateModel.coordinateKey) required this.coordinate,
-      @JsonKey(name: CoordinateModel.latitudeKey) required this.latitude,
-      @JsonKey(name: CoordinateModel.longitudeKey) required this.longitude})
-      : super._();
+  const _CoordinateModel({
+    @JsonKey(name: CoordinateModel.coordinateKey) required this.coordinate,
+    @JsonKey(name: CoordinateModel.latitudeKey) required this.latitude,
+    @JsonKey(name: CoordinateModel.longitudeKey) required this.longitude,
+  }) : super._();
   factory _CoordinateModel.fromJson(Map<String, dynamic> json) =>
       _$CoordinateModelFromJson(json);
 
@@ -144,9 +159,7 @@ class _CoordinateModel extends CoordinateModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$CoordinateModelToJson(
-      this,
-    );
+    return _$CoordinateModelToJson(this);
   }
 
   @override
@@ -154,8 +167,10 @@ class _CoordinateModel extends CoordinateModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _CoordinateModel &&
-            const DeepCollectionEquality()
-                .equals(other.coordinate, coordinate) &&
+            const DeepCollectionEquality().equals(
+              other.coordinate,
+              coordinate,
+            ) &&
             (identical(other.latitude, latitude) ||
                 other.latitude == latitude) &&
             (identical(other.longitude, longitude) ||
@@ -164,8 +179,12 @@ class _CoordinateModel extends CoordinateModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(coordinate), latitude, longitude);
+  int get hashCode => Object.hash(
+    runtimeType,
+    const DeepCollectionEquality().hash(coordinate),
+    latitude,
+    longitude,
+  );
 
   @override
   String toString() {
@@ -177,14 +196,16 @@ class _CoordinateModel extends CoordinateModel {
 abstract mixin class _$CoordinateModelCopyWith<$Res>
     implements $CoordinateModelCopyWith<$Res> {
   factory _$CoordinateModelCopyWith(
-          _CoordinateModel value, $Res Function(_CoordinateModel) _then) =
-      __$CoordinateModelCopyWithImpl;
+    _CoordinateModel value,
+    $Res Function(_CoordinateModel) _then,
+  ) = __$CoordinateModelCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: CoordinateModel.coordinateKey) dynamic coordinate,
-      @JsonKey(name: CoordinateModel.latitudeKey) double? latitude,
-      @JsonKey(name: CoordinateModel.longitudeKey) double? longitude});
+  $Res call({
+    @JsonKey(name: CoordinateModel.coordinateKey) dynamic coordinate,
+    @JsonKey(name: CoordinateModel.latitudeKey) double? latitude,
+    @JsonKey(name: CoordinateModel.longitudeKey) double? longitude,
+  });
 }
 
 /// @nodoc
@@ -204,19 +225,24 @@ class __$CoordinateModelCopyWithImpl<$Res>
     Object? latitude = freezed,
     Object? longitude = freezed,
   }) {
-    return _then(_CoordinateModel(
-      coordinate: freezed == coordinate
-          ? _self.coordinate
-          : coordinate // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      latitude: freezed == latitude
-          ? _self.latitude
-          : latitude // ignore: cast_nullable_to_non_nullable
-              as double?,
-      longitude: freezed == longitude
-          ? _self.longitude
-          : longitude // ignore: cast_nullable_to_non_nullable
-              as double?,
-    ));
+    return _then(
+      _CoordinateModel(
+        coordinate:
+            freezed == coordinate
+                ? _self.coordinate
+                : coordinate // ignore: cast_nullable_to_non_nullable
+                    as dynamic,
+        latitude:
+            freezed == latitude
+                ? _self.latitude
+                : latitude // ignore: cast_nullable_to_non_nullable
+                    as double?,
+        longitude:
+            freezed == longitude
+                ? _self.longitude
+                : longitude // ignore: cast_nullable_to_non_nullable
+                    as double?,
+      ),
+    );
   }
 }

@@ -25,14 +25,12 @@ class UnionModelStrategy
     final className = Renaming.instance.renameClass(params.key);
     final filename = Renaming.instance.renameFile(className);
 
-    final dartTypeConverter = OpenApiSchemaDartTypeConverter(context);
-
     const String valueKeyName = 'value';
 
     final unions = params.refSchemaMap.entries.map((entry) {
       final name = entry.key;
 
-      final type = dartTypeConverter.get(
+      final type = context.typeConverter.get(
         entry.value,
         className: className,
       );
@@ -211,15 +209,13 @@ class UnionModelStrategy
   }
 
   (Library, String) buildAnyOf(OpenApiSchemaAnyOf schema) {
-    final dartTypeConverter = OpenApiSchemaDartTypeConverter(context);
-
     final schemas = schema.anyOf;
 
     final className = Renaming.instance.renameClass(
       schema.title ??
           schemas
               .whereType<OpenApiSchemaRef>()
-              .map(dartTypeConverter.getRef)
+              .map(context.typeConverter.getRef)
               .map(Renaming.instance.renameClass)
               .sorted((a, b) => a.compareTo(b))
               .join(),

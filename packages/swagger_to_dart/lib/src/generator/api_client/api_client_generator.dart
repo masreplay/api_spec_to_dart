@@ -360,9 +360,7 @@ class ApiClientGenerator {
       result.add(
         Parameter(
           (b) => b
-            ..annotations.addAll([
-              refer('$Queries()'),
-            ])
+            ..annotations.addAll([refer('$Queries()')])
             ..name = 'queries'
             ..required = true
             ..named = true
@@ -383,7 +381,9 @@ class ApiClientGenerator {
         className: className,
       );
 
-      final defaultValue = context.typeConverter.getDefaultValue(p.schema);
+      final defaultValue = context.typeConverter.getDefaultValue(
+        p.schema,
+      );
 
       result.add(
         Parameter(
