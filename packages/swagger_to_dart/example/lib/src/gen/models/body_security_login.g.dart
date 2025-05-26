@@ -18,10 +18,10 @@ _BodySecurityLogin _$BodySecurityLoginFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$BodySecurityLoginToJson(_BodySecurityLogin instance) =>
     <String, dynamic>{
-      'grant_type': instance.grantType,
+      if (instance.grantType case final value?) 'grant_type': value,
       'username': instance.username,
       'password': instance.password,
       'scope': instance.scope,
-      'client_id': instance.clientId,
-      'client_secret': instance.clientSecret,
+      if (instance.clientId case final value?) 'client_id': value,
+      if (instance.clientSecret case final value?) 'client_secret': value,
     };

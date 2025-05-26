@@ -29,7 +29,8 @@ class BaseApiClientGenerator {
   final GenerationContext context;
 
   Library build() {
-    final className = 'BaseApiClient';
+    final className = Renaming.instance
+        .renameClass(context.config.apiClient.baseApiClientClassName);
     final fileName = Renaming.instance.renameFile(className);
 
     return Library(

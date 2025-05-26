@@ -11,19 +11,34 @@ import 'package:yaml/yaml.dart';
 class GenerationContext {
   GenerationContext({
     required this.pubspec,
-    required this.swaggerToDart,
+    required this.config,
     required this.openApi,
   });
 
   final OpenApi openApi;
   final Pubspec pubspec;
-  final SwaggerToDart swaggerToDart;
+  final SwaggerToDart config;
 
   bool get isFlutterProject {
     return pubspec.dependencies.containsKey('flutter');
   }
 
-  ModelGenerator get modelGenerator => ModelGenerator(this);
+  PropertyGeneratorStrategy get propertyGenerator {
+    return PropertyGeneratorStrategy(this);
+  }
+
+  ApiClientGenerator get apiClientGenerator {
+    return ApiClientGenerator(this);
+  }
+
+  OpenApiSchemaDartTypeConverter get typeConverter {
+    return OpenApiSchemaDartTypeConverter(this);
+  }
+
+  ModelGenerator get modelGenerator {
+    return ModelGenerator(this);
+  }
+
   final Map<String, Library> _models = <String, Library>{};
   List<Library> get models => _models.values.toList();
 
@@ -37,7 +52,6 @@ class GenerationContext {
     _models[library.name!] = library;
   }
 
-  ApiClientGenerator get apiClientGenerator => ApiClientGenerator(this);
   final List<Library> _apiClients = <Library>[];
   List<Library> get apiClients => _apiClients;
 
@@ -78,7 +92,7 @@ class GenerationContextBuilder {
     final openApi = await _loadOpenApi(swaggerToDart);
 
     return GenerationContext(
-      swaggerToDart: swaggerToDart,
+      config: swaggerToDart,
       pubspec: pubspec,
       openApi: openApi,
     );

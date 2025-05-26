@@ -8,12 +8,12 @@ part of 'cat.dart';
 
 _Cat _$CatFromJson(Map<String, dynamic> json) => _Cat(
   name: json['name'] as String,
-  typeAA: json['type'] as String? ?? 'cat',
+  type: json['type'] as String? ?? 'cat',
   meowCuteness: (json['meow_cuteness'] as num).toInt(),
 );
 
 Map<String, dynamic> _$CatToJson(_Cat instance) => <String, dynamic>{
   'name': instance.name,
-  'type': instance.typeAA,
+  'type': instance.type,
   'meow_cuteness': instance.meowCuteness,
 };

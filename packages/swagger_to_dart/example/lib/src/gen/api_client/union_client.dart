@@ -74,7 +74,7 @@ abstract class UnionClient {
   /// }
   @POST("/union/models/animal")
   Future<HttpResponse<CreateAnimalResponse>> unionCreateAnimal({
-    @Body() required CatDogParrot requestBody,
+    @Body() required Animal requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,

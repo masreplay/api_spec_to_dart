@@ -1,7 +1,7 @@
 // CurrencyEnum
 // {
 //     "properties": {},
-//     "type": "Hello",
+//     "type": "object",
 //     "enum": [
 //         "AED",
 //         "AFN",

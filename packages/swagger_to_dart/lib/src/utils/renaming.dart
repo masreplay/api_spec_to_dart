@@ -1,5 +1,3 @@
-import 'package:swagger_to_dart/src/schema/openapi/openapi.dart';
-
 import 'recase.dart';
 
 final keywords = <String>{
@@ -112,7 +110,7 @@ class Renaming {
     ));
   }
 
-  String renameMethod(String key) {
+  String renameFunction(String key) {
     return Recase.instance.toCamelCase(_guard(key));
   }
 
@@ -131,10 +129,6 @@ class Renaming {
     } else {
       return 'value${value}';
     }
-  }
-
-  String renameRefClass(OpenApiSchemaRef value) {
-    return renameClass(_guard(value.name));
   }
 
   String renameClass(String value) {

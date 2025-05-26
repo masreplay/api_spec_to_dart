@@ -139,8 +139,8 @@ class _ModelsClient implements ModelsClient {
   }
 
   @override
-  Future<HttpResponse<LocationUser>> modelsResponseMultiple({
-    bool isUser = true,
+  Future<HttpResponse<ResponseModelsResponseMultiple>> modelsResponseMultiple({
+    required ModelsResponseMultipleQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -148,27 +148,31 @@ class _ModelsClient implements ModelsClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{r'is_user': isUser};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HttpResponse<LocationUser>>(
-      Options(method: 'GET', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/response/multiple',
-            queryParameters: queryParameters,
-            data: _data,
-            cancelToken: cancelToken,
-            onSendProgress: onSendProgress,
-            onReceiveProgress: onReceiveProgress,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
+    final _options =
+        _setStreamType<HttpResponse<ResponseModelsResponseMultiple>>(
+          Options(method: 'GET', headers: _headers, extra: _extra)
+              .compose(
+                _dio.options,
+                '/response/multiple',
+                queryParameters: queryParameters,
+                data: _data,
+                cancelToken: cancelToken,
+                onSendProgress: onSendProgress,
+                onReceiveProgress: onReceiveProgress,
+              )
+              .copyWith(
+                baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl),
+              ),
+        );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late LocationUser _value;
+    late ResponseModelsResponseMultiple _value;
     try {
-      _value = LocationUser.fromJson(_result.data!);
+      _value = ResponseModelsResponseMultiple.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

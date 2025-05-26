@@ -18,7 +18,7 @@ _PaymentCardModel _$PaymentCardModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$PaymentCardModelToJson(_PaymentCardModel instance) =>
     <String, dynamic>{
       'card_number': instance.cardNumber,
-      'card_brand': instance.cardBrand,
+      if (instance.cardBrand?.toJson() case final value?) 'card_brand': value,
     };
 
 const _$PaymentCardBrandEnumMap = {

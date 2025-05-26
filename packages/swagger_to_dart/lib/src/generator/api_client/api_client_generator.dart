@@ -191,9 +191,6 @@ class ApiClientGenerator {
     final className = Renaming.instance.renameClass('${clientName}Client');
     final fileName = Renaming.instance.renameFile(className);
 
-    final dartTypeConverter = OpenApiSchemaDartTypeConverter(context);
-
-
     return Library(
       (b) => b
         ..directives.addAll([
@@ -245,75 +242,29 @@ class ApiClientGenerator {
                   for (final method in path.value.entries)
                     Method(
                       (b) {
-                        final parameters = method.value.parameters ?? [];
-
-                        final name = Recase.instance.toScreamingSnakeCase(
+                        final methodType = Recase.instance.toScreamingSnakeCase(
                           method.key.name,
                         );
 
-                        final responseType = method.value.responses?.values
-                            .firstOrNull?.content?.applicationJson;
+                        final methodName = Renaming.instance.renameFunction(
+                          method.value.operationId ?? '',
+                        );
 
-                        final responseTypeString = responseType == null
-                            ? null
-                            : dartTypeConverter.get(
-                                responseType.schema,
-                                className: className,
-                              );
+                        final parameters = _handleParameters(
+                          method.value.parameters ?? [],
+                          className: className,
+                          methodName: methodName,
+                        );
 
-                        final Parameter? requestBody;
+                        final responseType = _handleResponseType(
+                          method.value.responses ?? {},
+                          className,
+                        );
 
-                        if (method.value.requestBody?.content
-                                .applicationXWwwFormUrlencoded
-                            case final body?) {
-                          requestBody = Parameter((b) => b
-                            ..annotations.addAll([
-                              refer('$FormUrlEncoded()'),
-                            ])
-                            ..name = 'requestBody'
-                            ..named = true
-                            ..required = true
-                            ..type = refer(
-                              dartTypeConverter.get(
-                                body.schema,
-                                className: className,
-                              ),
-                            ));
-                        } else if (method
-                                .value.requestBody?.content.multipartFormData
-                            case final body?) {
-                          requestBody = Parameter((b) => b
-                            ..annotations.addAll([
-                              refer('$MultiPart()'),
-                            ])
-                            ..name = 'requestBody'
-                            ..named = true
-                            ..required = true
-                            ..type = refer(
-                              dartTypeConverter.get(
-                                body.schema,
-                                className: className,
-                              ),
-                            ));
-                        } else if (method
-                                .value.requestBody?.content.applicationJson
-                            case final body?) {
-                          requestBody = Parameter((b) => b
-                            ..annotations.addAll([
-                              refer('$Body()'),
-                            ])
-                            ..name = 'requestBody'
-                            ..named = true
-                            ..required = true
-                            ..type = refer(
-                              dartTypeConverter.get(
-                                body.schema,
-                                className: className,
-                              ),
-                            ));
-                        } else {
-                          requestBody = null;
-                        }
+                        final requestBody = _handleRequestBody(
+                          method.value.requestBody,
+                          className,
+                        );
 
                         b
                           ..docs.addAll([
@@ -325,53 +276,13 @@ class ApiClientGenerator {
                                 .toList(),
                           ])
                           ..annotations.addAll([
-                            refer('$name("${path.key}")'),
+                            refer('$methodType("${path.key}")'),
                           ])
-                          ..returns = responseTypeString == null
-                              ? refer('Future<HttpResponse>')
-                              : refer(
-                                  'Future<HttpResponse<${responseTypeString}>>')
-                          ..name = Renaming.instance.renameMethod(
-                            method.value.operationId ?? '',
-                          )
+                          ..returns = responseType
+                          ..name = methodName
                           ..optionalParameters.addAll([
                             if (requestBody != null) requestBody,
-                            ...parameters.map((p) {
-                              final type = dartTypeConverter.get(
-                                p.schema,
-                                className: className,
-                              );
-
-                              final defaultValue =
-                                  dartTypeConverter.getDefaultValue(p.schema);
-
-                              return Parameter(
-                                (b) => b
-                                  ..annotations.addAll([
-                                    switch (p.in_) {
-                                      OpenApiPathMethodParameterType.query =>
-                                        refer('$Query("${p.name}")'),
-                                      OpenApiPathMethodParameterType.path =>
-                                        refer('$Path("${p.name}")'),
-                                      OpenApiPathMethodParameterType.header =>
-                                        refer('$Header("${p.name}")'),
-                                      OpenApiPathMethodParameterType.cookie =>
-                                        refer('$Header("${p.name}")'),
-                                    }
-                                  ])
-                                  ..named = true
-                                  ..name = Renaming.instance.renameProperty(
-                                    p.name,
-                                  )
-                                  ..required = defaultValue == null
-                                  ..defaultTo = defaultValue == null
-                                      ? null
-                                      : Code(defaultValue)
-                                  ..type = refer(
-                                    type,
-                                  ),
-                              );
-                            }),
+                            ...parameters,
                             Parameter(
                               (b) => b
                                 ..annotations.addAll([
@@ -415,5 +326,161 @@ class ApiClientGenerator {
           ),
         ]),
     );
+  }
+
+  List<Parameter> _handleParameters(
+    List<OpenApiPathMethodParameter> parameters, {
+    required String methodName,
+    required String className,
+  }) {
+    final useClass = context.config.apiClient.useClassForQueryParameters;
+
+    final queryParameters =
+        parameters.where((e) => e.in_ == OpenApiPathMethodParameterType.query);
+
+    final List<Parameter> result = [];
+
+    if (useClass && queryParameters.isNotEmpty) {
+      final strategy =
+          RegularModelStrategyGenerator(context);
+
+      final queryParametersClassName = Renaming.instance.renameClass(
+        '${methodName}QueryParameters',
+      );
+
+      final model = MapEntry<String, OpenApiSchemas>(
+        queryParametersClassName,
+        OpenApiSchemas(
+          type: 'object',
+          properties: {
+            for (final p in queryParameters) p.name: p.schema,
+          },
+        ),
+      );
+
+      result.add(
+        Parameter(
+          (b) => b
+            ..annotations.addAll([refer('$Queries()')])
+            ..name = 'queries'
+            ..required = true
+            ..named = true
+            ..type = refer(queryParametersClassName),
+        ),
+      );
+
+      context.addModel(strategy.build(model));
+    }
+
+    for (final p in parameters) {
+      if (useClass && queryParameters.contains(p)) {
+        continue;
+      }
+
+      final dartType = context.typeConverter.get(
+        p.schema,
+        className: className,
+      );
+
+      final defaultValue = context.typeConverter.getDefaultValue(
+        p.schema,
+      );
+
+      result.add(
+        Parameter(
+          (b) => b
+            ..annotations.addAll([
+              switch (p.in_) {
+                OpenApiPathMethodParameterType.query =>
+                  refer('$Query("${p.name}")'),
+                OpenApiPathMethodParameterType.path =>
+                  refer('$Path("${p.name}")'),
+                OpenApiPathMethodParameterType.header =>
+                  refer('$Header("${p.name}")'),
+                OpenApiPathMethodParameterType.cookie =>
+                  refer('$Header("${p.name}")'),
+              }
+            ])
+            ..named = true
+            ..name = Renaming.instance.renameProperty(
+              p.name,
+            )
+            ..required = defaultValue == null
+            ..defaultTo = defaultValue == null ? null : Code(defaultValue)
+            ..type = refer(dartType),
+        ),
+      );
+    }
+
+    return result;
+  }
+
+  Parameter? _handleRequestBody(
+    OpenApiPathMethodRequestBody? requestBody,
+    String className,
+  ) {
+    if (requestBody?.content.applicationXWwwFormUrlencoded case final body?) {
+      return Parameter((b) => b
+        ..annotations.addAll([
+          refer('$FormUrlEncoded()'),
+        ])
+        ..name = 'requestBody'
+        ..named = true
+        ..required = true
+        ..type = refer(
+          context.typeConverter.get(
+            body.schema,
+            className: className,
+          ),
+        ));
+    } else if (requestBody?.content.multipartFormData case final body?) {
+      return Parameter((b) => b
+        ..annotations.addAll([
+          refer('$MultiPart()'),
+        ])
+        ..name = 'requestBody'
+        ..named = true
+        ..required = true
+        ..type = refer(
+          context.typeConverter.get(
+            body.schema,
+            className: className,
+          ),
+        ));
+    } else if (requestBody?.content.applicationJson case final body?) {
+      return Parameter((b) => b
+        ..annotations.addAll([
+          refer('$Body()'),
+        ])
+        ..name = 'requestBody'
+        ..named = true
+        ..required = true
+        ..type = refer(
+          context.typeConverter.get(
+            body.schema,
+            className: className,
+          ),
+        ));
+    } else {
+      return null;
+    }
+  }
+
+  Reference _handleResponseType(
+    OpenApiPathMethodResponses responses,
+    String className,
+  ) {
+    final response = responses.values.firstOrNull?.content?.applicationJson;
+
+    final responseTypeString = response == null
+        ? null
+        : context.typeConverter.get(
+            response.schema,
+            className: className,
+          );
+
+    return responseTypeString == null
+        ? refer('Future<HttpResponse>')
+        : refer('Future<HttpResponse<${responseTypeString}>>');
   }
 }

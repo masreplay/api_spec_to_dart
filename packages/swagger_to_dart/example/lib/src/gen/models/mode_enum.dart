@@ -1,7 +1,7 @@
 // ModeEnum
 // {
 //     "properties": {},
-//     "type": "Hello",
+//     "type": "object",
 //     "enum": [
 //         "light",
 //         "dark",

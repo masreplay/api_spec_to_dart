@@ -14,8 +14,8 @@ _CurrencyModel _$CurrencyModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$CurrencyModelToJson(_CurrencyModel instance) =>
     <String, dynamic>{
-      'currency': instance.currency,
-      'iso4217': instance.iso4217,
+      if (instance.currency?.toJson() case final value?) 'currency': value,
+      if (instance.iso4217?.toJson() case final value?) 'iso4217': value,
     };
 
 const _$CurrencyEnumEnumMap = {

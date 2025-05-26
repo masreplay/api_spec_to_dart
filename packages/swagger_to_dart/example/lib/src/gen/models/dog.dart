@@ -40,8 +40,8 @@ abstract class Dog with _$Dog {
     /// name
     @JsonKey(name: Dog.nameKey) required String name,
 
-    /// typeAA
-    @Default('dog') @JsonKey(name: Dog.typeAAKey) String typeAA,
+    /// type
+    @Default('dog') @JsonKey(name: Dog.typeKey) String type,
 
     /// barkLoudness
     @JsonKey(name: Dog.barkLoudnessKey) required int barkLoudness,
@@ -51,7 +51,7 @@ abstract class Dog with _$Dog {
 
   static const String nameKey = "name";
 
-  static const String typeAAKey = "type";
+  static const String typeKey = "type";
 
   static const String barkLoudnessKey = "bark_loudness";
 }

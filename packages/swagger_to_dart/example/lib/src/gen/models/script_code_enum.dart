@@ -1,7 +1,7 @@
 // ScriptCodeEnum
 // {
 //     "properties": {},
-//     "type": "Hello",
+//     "type": "object",
 //     "enum": [
 //         "Adlm",
 //         "Afak",

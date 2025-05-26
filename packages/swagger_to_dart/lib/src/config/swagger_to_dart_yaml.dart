@@ -62,16 +62,43 @@ abstract class JsonSerializableConfig with _$JsonSerializableConfig {
 }
 
 @freezed
+abstract class ModelConfig with _$ModelConfig {
+  const ModelConfig._();
+
+  @_jsonSerializable
+  const factory ModelConfig({
+    @Default(false) bool supportGenericArguments,
+    @Default(JsonSerializableConfig()) JsonSerializableConfig jsonSerializable,
+  }) = _ModelConfig;
+
+  factory ModelConfig.fromJson(Map<String, dynamic> json) =>
+      _$ModelConfigFromJson(json);
+}
+
+@freezed
 abstract class ApiClientConfig with _$ApiClientConfig {
   const ApiClientConfig._();
 
   @_jsonSerializable
   const factory ApiClientConfig({
+    @Default('BaseApiClient') String baseApiClientClassName,
     @Default(false) bool useClassForQueryParameters,
+    @Default([]) List<String> skippedParameters,
   }) = _ApiClientConfig;
 
   factory ApiClientConfig.fromJson(Map<String, dynamic> json) =>
       _$ApiClientConfigFromJson(json);
+}
+
+/// The source of the generation
+enum GenerationSource {
+  /// The source is FastAPI
+  /// https://fastapi.tiangolo.com/
+  fastAPI,
+
+  /// The source is .NET
+  /// https://dotnet.microsoft.com
+  dotnet,
 }
 
 @freezed
@@ -79,12 +106,11 @@ abstract class SwaggerToDart with _$SwaggerToDart {
   @_jsonSerializable
   factory SwaggerToDart({
     String? url,
+    GenerationSource? generationSource,
     @Default('schema/swagger.json') String inputDirectory,
     @Default('lib/src/gen') String outputDirectory,
-    @Default('ApiClient') String apiClientClassName,
     @Default([]) List<String> imports,
-    @Default([]) List<String> skippedParameters,
-    @Default(JsonSerializableConfig()) JsonSerializableConfig jsonSerializable,
+    @Default(ModelConfig()) ModelConfig model,
     @Default(ApiClientConfig()) ApiClientConfig apiClient,
   }) = _SwaggerToDart;
 

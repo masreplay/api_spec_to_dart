@@ -17,6 +17,6 @@ Map<String, dynamic> _$UserCreateToJson(_UserCreate instance) =>
     <String, dynamic>{
       'username': instance.username,
       'email': instance.email,
-      'full_name': instance.fullName,
+      if (instance.fullName case final value?) 'full_name': value,
       'password': instance.password,
     };

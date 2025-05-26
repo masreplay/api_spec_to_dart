@@ -40,37 +40,55 @@ const _$JsonSerializableConfigFallbackTypeEnumMap = {
   JsonSerializableConfigFallbackType.throwException: 'throwException',
 };
 
+_ModelConfig _$ModelConfigFromJson(Map<String, dynamic> json) => _ModelConfig(
+      supportGenericArguments:
+          json['support_generic_arguments'] as bool? ?? false,
+      jsonSerializable: json['json_serializable'] == null
+          ? const JsonSerializableConfig()
+          : JsonSerializableConfig.fromJson(
+              json['json_serializable'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$ModelConfigToJson(_ModelConfig instance) =>
+    <String, dynamic>{
+      'support_generic_arguments': instance.supportGenericArguments,
+      'json_serializable': instance.jsonSerializable.toJson(),
+    };
+
 _ApiClientConfig _$ApiClientConfigFromJson(Map<String, dynamic> json) =>
     _ApiClientConfig(
+      baseApiClientClassName:
+          json['base_api_client_class_name'] as String? ?? 'BaseApiClient',
       useClassForQueryParameters:
           json['use_class_for_query_parameters'] as bool? ?? false,
+      skippedParameters: (json['skipped_parameters'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$ApiClientConfigToJson(_ApiClientConfig instance) =>
     <String, dynamic>{
+      'base_api_client_class_name': instance.baseApiClientClassName,
       'use_class_for_query_parameters': instance.useClassForQueryParameters,
+      'skipped_parameters': instance.skippedParameters,
     };
 
 _SwaggerToDart _$SwaggerToDartFromJson(Map<String, dynamic> json) =>
     _SwaggerToDart(
       url: json['url'] as String?,
+      generationSource: $enumDecodeNullable(
+          _$GenerationSourceEnumMap, json['generation_source']),
       inputDirectory:
           json['input_directory'] as String? ?? 'schema/swagger.json',
       outputDirectory: json['output_directory'] as String? ?? 'lib/src/gen',
-      apiClientClassName:
-          json['api_client_class_name'] as String? ?? 'ApiClient',
       imports: (json['imports'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           const [],
-      skippedParameters: (json['skipped_parameters'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          const [],
-      jsonSerializable: json['json_serializable'] == null
-          ? const JsonSerializableConfig()
-          : JsonSerializableConfig.fromJson(
-              json['json_serializable'] as Map<String, dynamic>),
+      model: json['model'] == null
+          ? const ModelConfig()
+          : ModelConfig.fromJson(json['model'] as Map<String, dynamic>),
       apiClient: json['api_client'] == null
           ? const ApiClientConfig()
           : ApiClientConfig.fromJson(
@@ -80,11 +98,17 @@ _SwaggerToDart _$SwaggerToDartFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$SwaggerToDartToJson(_SwaggerToDart instance) =>
     <String, dynamic>{
       if (instance.url case final value?) 'url': value,
+      if (_$GenerationSourceEnumMap[instance.generationSource]
+          case final value?)
+        'generation_source': value,
       'input_directory': instance.inputDirectory,
       'output_directory': instance.outputDirectory,
-      'api_client_class_name': instance.apiClientClassName,
       'imports': instance.imports,
-      'skipped_parameters': instance.skippedParameters,
-      'json_serializable': instance.jsonSerializable.toJson(),
+      'model': instance.model.toJson(),
       'api_client': instance.apiClient.toJson(),
     };
+
+const _$GenerationSourceEnumMap = {
+  GenerationSource.fastAPI: 'fastAPI',
+  GenerationSource.dotnet: 'dotnet',
+};

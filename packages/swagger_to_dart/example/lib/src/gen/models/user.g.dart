@@ -25,10 +25,10 @@ _User _$UserFromJson(Map<String, dynamic> json) => _User(
 Map<String, dynamic> _$UserToJson(_User instance) => <String, dynamic>{
   'username': instance.username,
   'email': instance.email,
-  'full_name': instance.fullName,
+  if (instance.fullName case final value?) 'full_name': value,
   'id': instance.id,
   'is_active': instance.isActive,
   'created_at': instance.createdAt.toIso8601String(),
-  'location': instance.location,
+  if (instance.location?.toJson() case final value?) 'location': value,
   'tags': instance.tags,
 };

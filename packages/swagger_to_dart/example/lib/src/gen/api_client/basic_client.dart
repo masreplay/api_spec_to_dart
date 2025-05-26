@@ -2,6 +2,7 @@ library;
 
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import '../models/models.dart';
 part 'basic_client.g.dart';
 
 @RestApi()
@@ -163,7 +164,7 @@ abstract class BasicClient {
   /// }
   @GET("/basic/boolean")
   Future<HttpResponse<Map<String, dynamic>>> basicBasicBoolean({
-    @Query("flag") bool flag = false,
+    @Queries() required BasicBasicBooleanQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -218,7 +219,7 @@ abstract class BasicClient {
   /// }
   @GET("/basic/string")
   Future<HttpResponse<Map<String, dynamic>>> basicBasicString({
-    @Query("text") required String text,
+    @Queries() required BasicBasicStringQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -271,7 +272,7 @@ abstract class BasicClient {
   /// }
   @GET("/datetime/date")
   Future<HttpResponse<Map<String, dynamic>>> basicDatetimeDate({
-    @Query("d") required DateTime d,
+    @Queries() required BasicDatetimeDateQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -324,7 +325,7 @@ abstract class BasicClient {
   /// }
   @GET("/datetime/datetime")
   Future<HttpResponse<Map<String, dynamic>>> basicDatetimeDatetime({
-    @Query("dt") required DateTime dt,
+    @Queries() required BasicDatetimeDatetimeQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -377,7 +378,7 @@ abstract class BasicClient {
   /// }
   @POST("/datetime/datetime")
   Future<HttpResponse<Map<String, dynamic>>> basicCreateDatetimeDatetime({
-    @Query("dt") required DateTime dt,
+    @Queries() required BasicCreateDatetimeDatetimeQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -430,7 +431,7 @@ abstract class BasicClient {
   /// }
   @GET("/datetime/time")
   Future<HttpResponse<Map<String, dynamic>>> basicDatetimeTime({
-    @Query("t") required String t,
+    @Queries() required BasicDatetimeTimeQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -483,7 +484,7 @@ abstract class BasicClient {
   /// }
   @GET("/datetime/timedelta")
   Future<HttpResponse<Map<String, dynamic>>> basicDatetimeTimedelta({
-    @Query("td") required String td,
+    @Queries() required BasicDatetimeTimedeltaQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,

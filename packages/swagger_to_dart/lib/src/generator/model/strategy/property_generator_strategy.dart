@@ -1,26 +1,25 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:swagger_to_dart/src/generator/generator_strategy.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
-class PropertyGeneratorStrategy {
-  const PropertyGeneratorStrategy(this.context);
-
-  final GenerationContext context;
+class PropertyGeneratorStrategy extends GeneratorStrategy {
+  const PropertyGeneratorStrategy(super.context);
 
   Parameter build(
     MapEntry<String, OpenApiSchema> property, {
     required String className,
     bool required = true,
+    Map<String, String> overrideTypes = const {},
   }) {
     final name = Renaming.instance.renameProperty(property.key);
 
-    final dartTypeConverter = OpenApiSchemaDartTypeConverter(context);
+    final defaultValue = context.typeConverter.getDefaultValue(property.value);
 
-    final defaultValue = dartTypeConverter.getDefaultValue(property.value);
-
-    final dartType = dartTypeConverter.get(
+    final dartType = context.typeConverter.get(
       property.value,
       className: className,
+      overrideTypes: overrideTypes,
     );
 
     return Parameter(

@@ -18,5 +18,5 @@ Map<String, dynamic> _$BodyFilesFileUploadToJson(
   _BodyFilesFileUpload instance,
 ) => <String, dynamic>{
   'file': const MultipartFileJsonConverter().toJson(instance.file),
-  'description': instance.description,
+  if (instance.description case final value?) 'description': value,
 };

@@ -14,6 +14,6 @@ _ConditionalBody _$ConditionalBodyFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$ConditionalBodyToJson(_ConditionalBody instance) =>
     <String, dynamic>{
-      'item_id': instance.itemId,
-      'item_name': instance.itemName,
+      if (instance.itemId case final value?) 'item_id': value,
+      if (instance.itemName case final value?) 'item_name': value,
     };

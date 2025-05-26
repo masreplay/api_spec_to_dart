@@ -1,20 +1,25 @@
 import 'package:code_builder/code_builder.dart';
-import 'package:swagger_to_dart/src/schema/schema.dart';
-import 'package:swagger_to_dart/src/utils/utils.dart';
+import 'package:swagger_to_dart/swagger_to_dart.dart';
 
-import 'model_generator_strategy.dart';
-import 'property_generator_strategy.dart';
-
-class RegularModelStrategy extends ModelGeneratorStrategy<MapEntry<String, OpenApiSchemas>> {
-  const RegularModelStrategy(super.context);
+class RegularModelStrategyGenerator
+    extends ModelGeneratorStrategy<MapEntry<String, OpenApiSchemas>> {
+  const RegularModelStrategyGenerator(super.context);
 
   Library build(MapEntry<String, OpenApiSchemas> model) {
-    final className = Renaming.instance.renameClass(model.key);
+    final title = model.value.title;
+    final properties = model.value.properties ?? {};
+    final supportGenerics = context.config.model.supportGenericArguments;
+
+    // Prefer title if present, otherwise fallback to model.key
+    final effectiveTitle = title ?? model.key;
+    final isGeneric = effectiveTitle.contains('[');
+    final className = Renaming.instance.renameClass(effectiveTitle);
     final filename = Renaming.instance.renameFile(className);
 
-    final propertyGenerator = PropertyGeneratorStrategy(context);
-
-    final properties = model.value.properties ?? {};
+    if (supportGenerics && isGeneric && title != null) {
+      final genericClass = _genericClass(title, model);
+      if (genericClass != null) return genericClass;
+    }
 
     return Library(
       (b) => b
@@ -42,8 +47,8 @@ class RegularModelStrategy extends ModelGeneratorStrategy<MapEntry<String, OpenA
               ..name = className
               ..mixins.addAll([refer('_\$${className}')])
               ..fields.addAll([
-                ...properties.entries.map((value) {
-                  final name = Renaming.instance.renameProperty(value.key);
+                ...properties.entries.map((entry) {
+                  final name = Renaming.instance.renameProperty(entry.key);
 
                   return Field(
                     (b) => b
@@ -51,7 +56,7 @@ class RegularModelStrategy extends ModelGeneratorStrategy<MapEntry<String, OpenA
                       ..modifier = FieldModifier.constant
                       ..name = '${name}Key'
                       ..type = refer('$String')
-                      ..assignment = Code('"${value.key}"'),
+                      ..assignment = Code('"${entry.key}"'),
                   );
                 })
               ])
@@ -70,8 +75,12 @@ class RegularModelStrategy extends ModelGeneratorStrategy<MapEntry<String, OpenA
                     ..factory = true
                     ..redirect = refer('_${className}')
                     ..optionalParameters.addAll([
-                      ...properties.entries.map((value) =>
-                          propertyGenerator.build(value, className: className)),
+                      ...properties.entries.map((entry) {
+                        return context.propertyGenerator.build(
+                          entry,
+                          className: className,
+                        );
+                      }),
                     ]),
                 ),
                 Constructor(
@@ -90,5 +99,113 @@ class RegularModelStrategy extends ModelGeneratorStrategy<MapEntry<String, OpenA
           )
         ]),
     );
+  }
+
+  /// "title": "BaseResponse[PaginationResponse[ItemResponse]]"
+  Library? _genericClass(
+    String title,
+    MapEntry<String, OpenApiSchemas> model,
+  ) {
+    final genericPattern = RegExp(r'^(.+?)\[(.+)\]$');
+
+    final match = genericPattern.firstMatch(title);
+    if (match == null) return null;
+
+    final baseClass = match.group(1)!;
+    final genericClass = match.group(2)!;
+    final genericType = 'T';
+
+    final className = Renaming.instance.renameClass(baseClass);
+    final filename = Renaming.instance.renameFile(className);
+
+    final properties = model.value.properties ?? {};
+
+    return Library((b) => b
+      ..name = filename
+      ..directives.addAll([
+        Directive.import('exports.dart'),
+        Directive.part('${filename}.freezed.dart'),
+        Directive.part('${filename}.g.dart'),
+      ])
+      ..docs.addAll([
+        '/// ${model.key}',
+        '/// $className',
+        ...JsonFactory.instance
+            .encode(model.value.toJson())
+            .split('\n')
+            .map((e) => '/// $e'),
+      ])
+      ..body.addAll([
+        Class((b) => b
+          ..annotations.addAll([
+            refer('Freezed(genericArgumentFactories: true)'),
+          ])
+          ..abstract = true
+          ..name = className
+          ..types.addAll([
+            refer(genericType),
+          ])
+          ..mixins.add(refer('_\$${className}<$genericType>'))
+          ..fields.addAll([
+            ...properties.entries.map((entry) {
+              final name = Renaming.instance.renameProperty(entry.key);
+
+              return Field((b) => b
+                ..static = true
+                ..modifier = FieldModifier.constant
+                ..name = '${name}Key'
+                ..type = refer('String')
+                ..assignment = Code('"${entry.key}"'));
+            }),
+          ])
+          ..constructors.addAll([
+            Constructor(
+              (b) => b
+                ..constant = true
+                ..name = '_',
+            ),
+            Constructor(
+              (b) => b
+                ..annotations.addAll([
+                  refer(
+                    'JsonSerializable(converters: jsonSerializableConverters, genericArgumentFactories: true)',
+                  ),
+                ])
+                ..constant = true
+                ..factory = true
+                ..redirect = refer('_$className<$genericType>')
+                ..optionalParameters.addAll([
+                  ...properties.entries.map((entry) {
+                    return context.propertyGenerator.build(
+                      entry,
+                      className: className,
+                      overrideTypes: {genericType: genericClass},
+                    );
+                  }),
+                ]),
+            ),
+            Constructor(
+              (b) => b
+                ..factory = true
+                ..name = 'fromJson'
+                ..lambda = true
+                ..requiredParameters.addAll([
+                  Parameter(
+                    (b) => b
+                      ..name = 'json'
+                      ..type = refer('Map<String, dynamic>'),
+                  ),
+                  Parameter(
+                    (b) => b
+                      ..name = 'fromJson$genericType'
+                      ..type = refer('${genericType} Function(Object? json)'),
+                  ),
+                ])
+                ..body = Code(
+                  '_\$${className}FromJson<$genericType>(json, fromJson${genericType})',
+                ),
+            ),
+          ]))
+      ]));
   }
 }

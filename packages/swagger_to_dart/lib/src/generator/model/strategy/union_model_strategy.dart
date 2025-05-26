@@ -25,14 +25,12 @@ class UnionModelStrategy
     final className = Renaming.instance.renameClass(params.key);
     final filename = Renaming.instance.renameFile(className);
 
-    final dartTypeConverter = OpenApiSchemaDartTypeConverter(context);
-
     const String valueKeyName = 'value';
 
     final unions = params.refSchemaMap.entries.map((entry) {
       final name = entry.key;
 
-      final type = dartTypeConverter.get(
+      final type = context.typeConverter.get(
         entry.value,
         className: className,
       );
@@ -161,10 +159,37 @@ class UnionModelStrategy
     );
   }
 
+  /// {
+  ///     "oneOf": [
+  ///         {
+  ///             "$ref": "#/components/schemas/AdvertisementsHomeSectionResponse"
+  ///         },
+  ///         {
+  ///             "$ref": "#/components/schemas/CategoriesHomeSectionResponse"
+  ///         },
+  ///         {
+  ///             "$ref": "#/components/schemas/OrdersHomeSectionResponse"
+  ///         },
+  ///         {
+  ///             "$ref": "#/components/schemas/FoodItemHomeSectionResponse"
+  ///         }
+  ///     ],
+  ///     "title": "HomeSectionUnion",
+  ///     "discriminator": {
+  ///         "propertyName": "type",
+  ///         "mapping": {
+  ///             "advertisements": "#/components/schemas/AdvertisementsHomeSectionResponse",
+  ///             "categories": "#/components/schemas/CategoriesHomeSectionResponse",
+  ///             "food_items": "#/components/schemas/FoodItemHomeSectionResponse",
+  ///             "orders": "#/components/schemas/OrdersHomeSectionResponse"
+  ///         }
+  ///     },
+  ///     "runtimeType": "oneOf"
+  /// }
   (Library, String) buildOneOf(OpenApiSchemaOneOf schema) {
     final schemas = schema.oneOf;
     final className = Renaming.instance.renameClass(
-      "${schema.discriminator.mapping.keys.join('_')}_Union",
+      schema.title ?? "${schema.discriminator.mapping.keys.join('_')}_Union",
     );
 
     final model = build(
@@ -172,9 +197,10 @@ class UnionModelStrategy
         key: className,
         schema: schema,
         refSchemaMap: {
-          for (final (index, refSchema)
-              in schemas.whereType<OpenApiSchemaRef>().indexed)
-            schema.discriminator.mapping.keys.toList()[index]: refSchema,
+          for (final entry in schema.discriminator.mapping.entries)
+            entry.key: schemas
+                .whereType<OpenApiSchemaRef>()
+                .firstWhere((e) => e.ref == entry.value),
         },
       ),
     );
@@ -183,16 +209,17 @@ class UnionModelStrategy
   }
 
   (Library, String) buildAnyOf(OpenApiSchemaAnyOf schema) {
-    final dartTypeConverter = OpenApiSchemaDartTypeConverter(context);
-
     final schemas = schema.anyOf;
 
-    final className = Renaming.instance.renameClass((schemas
-        .whereType<OpenApiSchemaRef>()
-        .map(dartTypeConverter.getRef)
-        .map(Renaming.instance.renameClass)
-        .sorted((a, b) => a.compareTo(b))
-        .join()));
+    final className = Renaming.instance.renameClass(
+      schema.title ??
+          schemas
+              .whereType<OpenApiSchemaRef>()
+              .map(context.typeConverter.getRef)
+              .map(Renaming.instance.renameClass)
+              .sorted((a, b) => a.compareTo(b))
+              .join(),
+    );
 
     final model = build(
       UnionModelStrategyParams(

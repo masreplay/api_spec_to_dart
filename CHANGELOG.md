@@ -1,3 +1,7 @@
+## NextRelease
+- Support generic `freezed` classes generation
+- Support generic Response with `retrofit`
+
 ## 2.0.1
 
 - Fix union key for `oneOf` type

@@ -1,5 +1,3 @@
-global_options:
-
 targets:
   $default:
     builders:

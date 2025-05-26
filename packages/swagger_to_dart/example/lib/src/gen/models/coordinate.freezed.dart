@@ -10,146 +10,186 @@ part of 'coordinate.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$Coordinate {
+  /// latitude
+  @JsonKey(name: Coordinate.latitudeKey)
+  double get latitude;
 
-/// latitude
-@JsonKey(name: Coordinate.latitudeKey) double get latitude;/// longitude
-@JsonKey(name: Coordinate.longitudeKey) double get longitude;
-/// Create a copy of Coordinate
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$CoordinateCopyWith<Coordinate> get copyWith => _$CoordinateCopyWithImpl<Coordinate>(this as Coordinate, _$identity);
+  /// longitude
+  @JsonKey(name: Coordinate.longitudeKey)
+  double get longitude;
+
+  /// Create a copy of Coordinate
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $CoordinateCopyWith<Coordinate> get copyWith =>
+      _$CoordinateCopyWithImpl<Coordinate>(this as Coordinate, _$identity);
 
   /// Serializes this Coordinate to a JSON map.
   Map<String, dynamic> toJson();
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Coordinate &&
+            (identical(other.latitude, latitude) ||
+                other.latitude == latitude) &&
+            (identical(other.longitude, longitude) ||
+                other.longitude == longitude));
+  }
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Coordinate&&(identical(other.latitude, latitude) || other.latitude == latitude)&&(identical(other.longitude, longitude) || other.longitude == longitude));
-}
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, latitude, longitude);
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,latitude,longitude);
-
-@override
-String toString() {
-  return 'Coordinate(latitude: $latitude, longitude: $longitude)';
-}
-
-
+  @override
+  String toString() {
+    return 'Coordinate(latitude: $latitude, longitude: $longitude)';
+  }
 }
 
 /// @nodoc
-abstract mixin class $CoordinateCopyWith<$Res>  {
-  factory $CoordinateCopyWith(Coordinate value, $Res Function(Coordinate) _then) = _$CoordinateCopyWithImpl;
-@useResult
-$Res call({
-@JsonKey(name: Coordinate.latitudeKey) double latitude,@JsonKey(name: Coordinate.longitudeKey) double longitude
-});
-
-
-
-
+abstract mixin class $CoordinateCopyWith<$Res> {
+  factory $CoordinateCopyWith(
+    Coordinate value,
+    $Res Function(Coordinate) _then,
+  ) = _$CoordinateCopyWithImpl;
+  @useResult
+  $Res call({
+    @JsonKey(name: Coordinate.latitudeKey) double latitude,
+    @JsonKey(name: Coordinate.longitudeKey) double longitude,
+  });
 }
+
 /// @nodoc
-class _$CoordinateCopyWithImpl<$Res>
-    implements $CoordinateCopyWith<$Res> {
+class _$CoordinateCopyWithImpl<$Res> implements $CoordinateCopyWith<$Res> {
   _$CoordinateCopyWithImpl(this._self, this._then);
 
   final Coordinate _self;
   final $Res Function(Coordinate) _then;
 
-/// Create a copy of Coordinate
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? latitude = null,Object? longitude = null,}) {
-  return _then(_self.copyWith(
-latitude: null == latitude ? _self.latitude : latitude // ignore: cast_nullable_to_non_nullable
-as double,longitude: null == longitude ? _self.longitude : longitude // ignore: cast_nullable_to_non_nullable
-as double,
-  ));
+  /// Create a copy of Coordinate
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? latitude = null, Object? longitude = null}) {
+    return _then(
+      _self.copyWith(
+        latitude:
+            null == latitude
+                ? _self.latitude
+                : latitude // ignore: cast_nullable_to_non_nullable
+                    as double,
+        longitude:
+            null == longitude
+                ? _self.longitude
+                : longitude // ignore: cast_nullable_to_non_nullable
+                    as double,
+      ),
+    );
+  }
 }
-
-}
-
 
 /// @nodoc
 
 @jsonSerializable
 class _Coordinate extends Coordinate {
-  const _Coordinate({@JsonKey(name: Coordinate.latitudeKey) required this.latitude, @JsonKey(name: Coordinate.longitudeKey) required this.longitude}): super._();
-  factory _Coordinate.fromJson(Map<String, dynamic> json) => _$CoordinateFromJson(json);
+  const _Coordinate({
+    @JsonKey(name: Coordinate.latitudeKey) required this.latitude,
+    @JsonKey(name: Coordinate.longitudeKey) required this.longitude,
+  }) : super._();
+  factory _Coordinate.fromJson(Map<String, dynamic> json) =>
+      _$CoordinateFromJson(json);
 
-/// latitude
-@override@JsonKey(name: Coordinate.latitudeKey) final  double latitude;
-/// longitude
-@override@JsonKey(name: Coordinate.longitudeKey) final  double longitude;
+  /// latitude
+  @override
+  @JsonKey(name: Coordinate.latitudeKey)
+  final double latitude;
 
-/// Create a copy of Coordinate
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$CoordinateCopyWith<_Coordinate> get copyWith => __$CoordinateCopyWithImpl<_Coordinate>(this, _$identity);
+  /// longitude
+  @override
+  @JsonKey(name: Coordinate.longitudeKey)
+  final double longitude;
 
-@override
-Map<String, dynamic> toJson() {
-  return _$CoordinateToJson(this, );
-}
+  /// Create a copy of Coordinate
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$CoordinateCopyWith<_Coordinate> get copyWith =>
+      __$CoordinateCopyWithImpl<_Coordinate>(this, _$identity);
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Coordinate&&(identical(other.latitude, latitude) || other.latitude == latitude)&&(identical(other.longitude, longitude) || other.longitude == longitude));
-}
+  @override
+  Map<String, dynamic> toJson() {
+    return _$CoordinateToJson(this);
+  }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,latitude,longitude);
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Coordinate &&
+            (identical(other.latitude, latitude) ||
+                other.latitude == latitude) &&
+            (identical(other.longitude, longitude) ||
+                other.longitude == longitude));
+  }
 
-@override
-String toString() {
-  return 'Coordinate(latitude: $latitude, longitude: $longitude)';
-}
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, latitude, longitude);
 
-
+  @override
+  String toString() {
+    return 'Coordinate(latitude: $latitude, longitude: $longitude)';
+  }
 }
 
 /// @nodoc
-abstract mixin class _$CoordinateCopyWith<$Res> implements $CoordinateCopyWith<$Res> {
-  factory _$CoordinateCopyWith(_Coordinate value, $Res Function(_Coordinate) _then) = __$CoordinateCopyWithImpl;
-@override @useResult
-$Res call({
-@JsonKey(name: Coordinate.latitudeKey) double latitude,@JsonKey(name: Coordinate.longitudeKey) double longitude
-});
-
-
-
-
+abstract mixin class _$CoordinateCopyWith<$Res>
+    implements $CoordinateCopyWith<$Res> {
+  factory _$CoordinateCopyWith(
+    _Coordinate value,
+    $Res Function(_Coordinate) _then,
+  ) = __$CoordinateCopyWithImpl;
+  @override
+  @useResult
+  $Res call({
+    @JsonKey(name: Coordinate.latitudeKey) double latitude,
+    @JsonKey(name: Coordinate.longitudeKey) double longitude,
+  });
 }
+
 /// @nodoc
-class __$CoordinateCopyWithImpl<$Res>
-    implements _$CoordinateCopyWith<$Res> {
+class __$CoordinateCopyWithImpl<$Res> implements _$CoordinateCopyWith<$Res> {
   __$CoordinateCopyWithImpl(this._self, this._then);
 
   final _Coordinate _self;
   final $Res Function(_Coordinate) _then;
 
-/// Create a copy of Coordinate
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? latitude = null,Object? longitude = null,}) {
-  return _then(_Coordinate(
-latitude: null == latitude ? _self.latitude : latitude // ignore: cast_nullable_to_non_nullable
-as double,longitude: null == longitude ? _self.longitude : longitude // ignore: cast_nullable_to_non_nullable
-as double,
-  ));
+  /// Create a copy of Coordinate
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({Object? latitude = null, Object? longitude = null}) {
+    return _then(
+      _Coordinate(
+        latitude:
+            null == latitude
+                ? _self.latitude
+                : latitude // ignore: cast_nullable_to_non_nullable
+                    as double,
+        longitude:
+            null == longitude
+                ? _self.longitude
+                : longitude // ignore: cast_nullable_to_non_nullable
+                    as double,
+      ),
+    );
+  }
 }
-
-
-}
-
-// dart format on

@@ -198,8 +198,8 @@ abstract class ModelsClient {
   ///     }
   /// }
   @GET("/response/multiple")
-  Future<HttpResponse<LocationUser>> modelsResponseMultiple({
-    @Query("is_user") bool isUser = true,
+  Future<HttpResponse<ResponseModelsResponseMultiple>> modelsResponseMultiple({
+    @Queries() required ModelsResponseMultipleQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
