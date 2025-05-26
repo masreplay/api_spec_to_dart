@@ -1,4 +1,4 @@
-## NextRelease
+## 2.1.0
 - Support generic `freezed` classes generation
 - Support generic Response with `retrofit`
 
