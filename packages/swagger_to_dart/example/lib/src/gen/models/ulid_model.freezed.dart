@@ -66,15 +66,16 @@ class _$UlidModelCopyWithImpl<$Res> implements $UlidModelCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? ulid = freezed,
-  }) {
-    return _then(_self.copyWith(
-      ulid: freezed == ulid
-          ? _self.ulid
-          : ulid // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-    ));
+  $Res call({Object? ulid = freezed}) {
+    return _then(
+      _self.copyWith(
+        ulid:
+            freezed == ulid
+                ? _self.ulid
+                : ulid // ignore: cast_nullable_to_non_nullable
+                    as dynamic,
+      ),
+    );
   }
 }
 
@@ -83,7 +84,7 @@ class _$UlidModelCopyWithImpl<$Res> implements $UlidModelCopyWith<$Res> {
 @jsonSerializable
 class _UlidModel extends UlidModel {
   const _UlidModel({@JsonKey(name: UlidModel.ulidKey) required this.ulid})
-      : super._();
+    : super._();
   factory _UlidModel.fromJson(Map<String, dynamic> json) =>
       _$UlidModelFromJson(json);
 
@@ -102,9 +103,7 @@ class _UlidModel extends UlidModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$UlidModelToJson(
-      this,
-    );
+    return _$UlidModelToJson(this);
   }
 
   @override
@@ -130,8 +129,9 @@ class _UlidModel extends UlidModel {
 abstract mixin class _$UlidModelCopyWith<$Res>
     implements $UlidModelCopyWith<$Res> {
   factory _$UlidModelCopyWith(
-          _UlidModel value, $Res Function(_UlidModel) _then) =
-      __$UlidModelCopyWithImpl;
+    _UlidModel value,
+    $Res Function(_UlidModel) _then,
+  ) = __$UlidModelCopyWithImpl;
   @override
   @useResult
   $Res call({@JsonKey(name: UlidModel.ulidKey) dynamic ulid});
@@ -148,14 +148,15 @@ class __$UlidModelCopyWithImpl<$Res> implements _$UlidModelCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? ulid = freezed,
-  }) {
-    return _then(_UlidModel(
-      ulid: freezed == ulid
-          ? _self.ulid
-          : ulid // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-    ));
+  $Res call({Object? ulid = freezed}) {
+    return _then(
+      _UlidModel(
+        ulid:
+            freezed == ulid
+                ? _self.ulid
+                : ulid // ignore: cast_nullable_to_non_nullable
+                    as dynamic,
+      ),
+    );
   }
 }

@@ -28,7 +28,9 @@ mixin _$BodyFilesFilesMultiple {
   @pragma('vm:prefer-inline')
   $BodyFilesFilesMultipleCopyWith<BodyFilesFilesMultiple> get copyWith =>
       _$BodyFilesFilesMultipleCopyWithImpl<BodyFilesFilesMultiple>(
-          this as BodyFilesFilesMultiple, _$identity);
+        this as BodyFilesFilesMultiple,
+        _$identity,
+      );
 
   /// Serializes this BodyFilesFilesMultiple to a JSON map.
   Map<String, dynamic> toJson();
@@ -45,7 +47,10 @@ mixin _$BodyFilesFilesMultiple {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(files), notes);
+    runtimeType,
+    const DeepCollectionEquality().hash(files),
+    notes,
+  );
 
   @override
   String toString() {
@@ -55,14 +60,15 @@ mixin _$BodyFilesFilesMultiple {
 
 /// @nodoc
 abstract mixin class $BodyFilesFilesMultipleCopyWith<$Res> {
-  factory $BodyFilesFilesMultipleCopyWith(BodyFilesFilesMultiple value,
-          $Res Function(BodyFilesFilesMultiple) _then) =
-      _$BodyFilesFilesMultipleCopyWithImpl;
+  factory $BodyFilesFilesMultipleCopyWith(
+    BodyFilesFilesMultiple value,
+    $Res Function(BodyFilesFilesMultiple) _then,
+  ) = _$BodyFilesFilesMultipleCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: BodyFilesFilesMultiple.filesKey)
-      List<MultipartFile> files,
-      @JsonKey(name: BodyFilesFilesMultiple.notesKey) String notes});
+  $Res call({
+    @JsonKey(name: BodyFilesFilesMultiple.filesKey) List<MultipartFile> files,
+    @JsonKey(name: BodyFilesFilesMultiple.notesKey) String notes,
+  });
 }
 
 /// @nodoc
@@ -77,20 +83,21 @@ class _$BodyFilesFilesMultipleCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? files = null,
-    Object? notes = null,
-  }) {
-    return _then(_self.copyWith(
-      files: null == files
-          ? _self.files
-          : files // ignore: cast_nullable_to_non_nullable
-              as List<MultipartFile>,
-      notes: null == notes
-          ? _self.notes
-          : notes // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? files = null, Object? notes = null}) {
+    return _then(
+      _self.copyWith(
+        files:
+            null == files
+                ? _self.files
+                : files // ignore: cast_nullable_to_non_nullable
+                    as List<MultipartFile>,
+        notes:
+            null == notes
+                ? _self.notes
+                : notes // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
@@ -98,12 +105,12 @@ class _$BodyFilesFilesMultipleCopyWithImpl<$Res>
 
 @jsonSerializable
 class _BodyFilesFilesMultiple extends BodyFilesFilesMultiple {
-  const _BodyFilesFilesMultiple(
-      {@JsonKey(name: BodyFilesFilesMultiple.filesKey)
-      required final List<MultipartFile> files,
-      @JsonKey(name: BodyFilesFilesMultiple.notesKey) required this.notes})
-      : _files = files,
-        super._();
+  const _BodyFilesFilesMultiple({
+    @JsonKey(name: BodyFilesFilesMultiple.filesKey)
+    required final List<MultipartFile> files,
+    @JsonKey(name: BodyFilesFilesMultiple.notesKey) required this.notes,
+  }) : _files = files,
+       super._();
   factory _BodyFilesFilesMultiple.fromJson(Map<String, dynamic> json) =>
       _$BodyFilesFilesMultipleFromJson(json);
 
@@ -131,13 +138,13 @@ class _BodyFilesFilesMultiple extends BodyFilesFilesMultiple {
   @pragma('vm:prefer-inline')
   _$BodyFilesFilesMultipleCopyWith<_BodyFilesFilesMultiple> get copyWith =>
       __$BodyFilesFilesMultipleCopyWithImpl<_BodyFilesFilesMultiple>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$BodyFilesFilesMultipleToJson(
-      this,
-    );
+    return _$BodyFilesFilesMultipleToJson(this);
   }
 
   @override
@@ -152,7 +159,10 @@ class _BodyFilesFilesMultiple extends BodyFilesFilesMultiple {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_files), notes);
+    runtimeType,
+    const DeepCollectionEquality().hash(_files),
+    notes,
+  );
 
   @override
   String toString() {
@@ -163,15 +173,16 @@ class _BodyFilesFilesMultiple extends BodyFilesFilesMultiple {
 /// @nodoc
 abstract mixin class _$BodyFilesFilesMultipleCopyWith<$Res>
     implements $BodyFilesFilesMultipleCopyWith<$Res> {
-  factory _$BodyFilesFilesMultipleCopyWith(_BodyFilesFilesMultiple value,
-          $Res Function(_BodyFilesFilesMultiple) _then) =
-      __$BodyFilesFilesMultipleCopyWithImpl;
+  factory _$BodyFilesFilesMultipleCopyWith(
+    _BodyFilesFilesMultiple value,
+    $Res Function(_BodyFilesFilesMultiple) _then,
+  ) = __$BodyFilesFilesMultipleCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: BodyFilesFilesMultiple.filesKey)
-      List<MultipartFile> files,
-      @JsonKey(name: BodyFilesFilesMultiple.notesKey) String notes});
+  $Res call({
+    @JsonKey(name: BodyFilesFilesMultiple.filesKey) List<MultipartFile> files,
+    @JsonKey(name: BodyFilesFilesMultiple.notesKey) String notes,
+  });
 }
 
 /// @nodoc
@@ -186,19 +197,20 @@ class __$BodyFilesFilesMultipleCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? files = null,
-    Object? notes = null,
-  }) {
-    return _then(_BodyFilesFilesMultiple(
-      files: null == files
-          ? _self._files
-          : files // ignore: cast_nullable_to_non_nullable
-              as List<MultipartFile>,
-      notes: null == notes
-          ? _self.notes
-          : notes // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? files = null, Object? notes = null}) {
+    return _then(
+      _BodyFilesFilesMultiple(
+        files:
+            null == files
+                ? _self._files
+                : files // ignore: cast_nullable_to_non_nullable
+                    as List<MultipartFile>,
+        notes:
+            null == notes
+                ? _self.notes
+                : notes // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }

@@ -65,15 +65,16 @@ class _$IsbnModelCopyWithImpl<$Res> implements $IsbnModelCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? isbn = null,
-  }) {
-    return _then(_self.copyWith(
-      isbn: null == isbn
-          ? _self.isbn
-          : isbn // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? isbn = null}) {
+    return _then(
+      _self.copyWith(
+        isbn:
+            null == isbn
+                ? _self.isbn
+                : isbn // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
@@ -82,7 +83,7 @@ class _$IsbnModelCopyWithImpl<$Res> implements $IsbnModelCopyWith<$Res> {
 @jsonSerializable
 class _IsbnModel extends IsbnModel {
   const _IsbnModel({@JsonKey(name: IsbnModel.isbnKey) required this.isbn})
-      : super._();
+    : super._();
   factory _IsbnModel.fromJson(Map<String, dynamic> json) =>
       _$IsbnModelFromJson(json);
 
@@ -101,9 +102,7 @@ class _IsbnModel extends IsbnModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$IsbnModelToJson(
-      this,
-    );
+    return _$IsbnModelToJson(this);
   }
 
   @override
@@ -128,8 +127,9 @@ class _IsbnModel extends IsbnModel {
 abstract mixin class _$IsbnModelCopyWith<$Res>
     implements $IsbnModelCopyWith<$Res> {
   factory _$IsbnModelCopyWith(
-          _IsbnModel value, $Res Function(_IsbnModel) _then) =
-      __$IsbnModelCopyWithImpl;
+    _IsbnModel value,
+    $Res Function(_IsbnModel) _then,
+  ) = __$IsbnModelCopyWithImpl;
   @override
   @useResult
   $Res call({@JsonKey(name: IsbnModel.isbnKey) String isbn});
@@ -146,14 +146,15 @@ class __$IsbnModelCopyWithImpl<$Res> implements _$IsbnModelCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? isbn = null,
-  }) {
-    return _then(_IsbnModel(
-      isbn: null == isbn
-          ? _self.isbn
-          : isbn // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? isbn = null}) {
+    return _then(
+      _IsbnModel(
+        isbn:
+            null == isbn
+                ? _self.isbn
+                : isbn // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }

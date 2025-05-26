@@ -39,9 +39,9 @@ mixin _$PaginationResponseItemResponse {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $PaginationResponseItemResponseCopyWith<PaginationResponseItemResponse>
-      get copyWith => _$PaginationResponseItemResponseCopyWithImpl<
-              PaginationResponseItemResponse>(
-          this as PaginationResponseItemResponse, _$identity);
+  get copyWith => _$PaginationResponseItemResponseCopyWithImpl<
+    PaginationResponseItemResponse
+  >(this as PaginationResponseItemResponse, _$identity);
 
   /// Serializes this PaginationResponseItemResponse to a JSON map.
   Map<String, dynamic> toJson();
@@ -62,12 +62,13 @@ mixin _$PaginationResponseItemResponse {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(items),
-      total,
-      page,
-      perPage,
-      totalPages);
+    runtimeType,
+    const DeepCollectionEquality().hash(items),
+    total,
+    page,
+    perPage,
+    totalPages,
+  );
 
   @override
   String toString() {
@@ -78,18 +79,18 @@ mixin _$PaginationResponseItemResponse {
 /// @nodoc
 abstract mixin class $PaginationResponseItemResponseCopyWith<$Res> {
   factory $PaginationResponseItemResponseCopyWith(
-          PaginationResponseItemResponse value,
-          $Res Function(PaginationResponseItemResponse) _then) =
-      _$PaginationResponseItemResponseCopyWithImpl;
+    PaginationResponseItemResponse value,
+    $Res Function(PaginationResponseItemResponse) _then,
+  ) = _$PaginationResponseItemResponseCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: PaginationResponseItemResponse.itemsKey)
-      List<AppRouterGenericRouterItemResponse> items,
-      @JsonKey(name: PaginationResponseItemResponse.totalKey) int total,
-      @JsonKey(name: PaginationResponseItemResponse.pageKey) int page,
-      @JsonKey(name: PaginationResponseItemResponse.perPageKey) int perPage,
-      @JsonKey(name: PaginationResponseItemResponse.totalPagesKey)
-      int totalPages});
+  $Res call({
+    @JsonKey(name: PaginationResponseItemResponse.itemsKey)
+    List<AppRouterGenericRouterItemResponse> items,
+    @JsonKey(name: PaginationResponseItemResponse.totalKey) int total,
+    @JsonKey(name: PaginationResponseItemResponse.pageKey) int page,
+    @JsonKey(name: PaginationResponseItemResponse.perPageKey) int perPage,
+    @JsonKey(name: PaginationResponseItemResponse.totalPagesKey) int totalPages,
+  });
 }
 
 /// @nodoc
@@ -111,28 +112,35 @@ class _$PaginationResponseItemResponseCopyWithImpl<$Res>
     Object? perPage = null,
     Object? totalPages = null,
   }) {
-    return _then(_self.copyWith(
-      items: null == items
-          ? _self.items
-          : items // ignore: cast_nullable_to_non_nullable
-              as List<AppRouterGenericRouterItemResponse>,
-      total: null == total
-          ? _self.total
-          : total // ignore: cast_nullable_to_non_nullable
-              as int,
-      page: null == page
-          ? _self.page
-          : page // ignore: cast_nullable_to_non_nullable
-              as int,
-      perPage: null == perPage
-          ? _self.perPage
-          : perPage // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalPages: null == totalPages
-          ? _self.totalPages
-          : totalPages // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _self.copyWith(
+        items:
+            null == items
+                ? _self.items
+                : items // ignore: cast_nullable_to_non_nullable
+                    as List<AppRouterGenericRouterItemResponse>,
+        total:
+            null == total
+                ? _self.total
+                : total // ignore: cast_nullable_to_non_nullable
+                    as int,
+        page:
+            null == page
+                ? _self.page
+                : page // ignore: cast_nullable_to_non_nullable
+                    as int,
+        perPage:
+            null == perPage
+                ? _self.perPage
+                : perPage // ignore: cast_nullable_to_non_nullable
+                    as int,
+        totalPages:
+            null == totalPages
+                ? _self.totalPages
+                : totalPages // ignore: cast_nullable_to_non_nullable
+                    as int,
+      ),
+    );
   }
 }
 
@@ -140,18 +148,17 @@ class _$PaginationResponseItemResponseCopyWithImpl<$Res>
 
 @jsonSerializable
 class _PaginationResponseItemResponse extends PaginationResponseItemResponse {
-  const _PaginationResponseItemResponse(
-      {@JsonKey(name: PaginationResponseItemResponse.itemsKey)
-      required final List<AppRouterGenericRouterItemResponse> items,
-      @JsonKey(name: PaginationResponseItemResponse.totalKey)
-      required this.total,
-      @JsonKey(name: PaginationResponseItemResponse.pageKey) required this.page,
-      @JsonKey(name: PaginationResponseItemResponse.perPageKey)
-      required this.perPage,
-      @JsonKey(name: PaginationResponseItemResponse.totalPagesKey)
-      required this.totalPages})
-      : _items = items,
-        super._();
+  const _PaginationResponseItemResponse({
+    @JsonKey(name: PaginationResponseItemResponse.itemsKey)
+    required final List<AppRouterGenericRouterItemResponse> items,
+    @JsonKey(name: PaginationResponseItemResponse.totalKey) required this.total,
+    @JsonKey(name: PaginationResponseItemResponse.pageKey) required this.page,
+    @JsonKey(name: PaginationResponseItemResponse.perPageKey)
+    required this.perPage,
+    @JsonKey(name: PaginationResponseItemResponse.totalPagesKey)
+    required this.totalPages,
+  }) : _items = items,
+       super._();
   factory _PaginationResponseItemResponse.fromJson(Map<String, dynamic> json) =>
       _$PaginationResponseItemResponseFromJson(json);
 
@@ -193,14 +200,13 @@ class _PaginationResponseItemResponse extends PaginationResponseItemResponse {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$PaginationResponseItemResponseCopyWith<_PaginationResponseItemResponse>
-      get copyWith => __$PaginationResponseItemResponseCopyWithImpl<
-          _PaginationResponseItemResponse>(this, _$identity);
+  get copyWith => __$PaginationResponseItemResponseCopyWithImpl<
+    _PaginationResponseItemResponse
+  >(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$PaginationResponseItemResponseToJson(
-      this,
-    );
+    return _$PaginationResponseItemResponseToJson(this);
   }
 
   @override
@@ -219,12 +225,13 @@ class _PaginationResponseItemResponse extends PaginationResponseItemResponse {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_items),
-      total,
-      page,
-      perPage,
-      totalPages);
+    runtimeType,
+    const DeepCollectionEquality().hash(_items),
+    total,
+    page,
+    perPage,
+    totalPages,
+  );
 
   @override
   String toString() {
@@ -236,19 +243,19 @@ class _PaginationResponseItemResponse extends PaginationResponseItemResponse {
 abstract mixin class _$PaginationResponseItemResponseCopyWith<$Res>
     implements $PaginationResponseItemResponseCopyWith<$Res> {
   factory _$PaginationResponseItemResponseCopyWith(
-          _PaginationResponseItemResponse value,
-          $Res Function(_PaginationResponseItemResponse) _then) =
-      __$PaginationResponseItemResponseCopyWithImpl;
+    _PaginationResponseItemResponse value,
+    $Res Function(_PaginationResponseItemResponse) _then,
+  ) = __$PaginationResponseItemResponseCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: PaginationResponseItemResponse.itemsKey)
-      List<AppRouterGenericRouterItemResponse> items,
-      @JsonKey(name: PaginationResponseItemResponse.totalKey) int total,
-      @JsonKey(name: PaginationResponseItemResponse.pageKey) int page,
-      @JsonKey(name: PaginationResponseItemResponse.perPageKey) int perPage,
-      @JsonKey(name: PaginationResponseItemResponse.totalPagesKey)
-      int totalPages});
+  $Res call({
+    @JsonKey(name: PaginationResponseItemResponse.itemsKey)
+    List<AppRouterGenericRouterItemResponse> items,
+    @JsonKey(name: PaginationResponseItemResponse.totalKey) int total,
+    @JsonKey(name: PaginationResponseItemResponse.pageKey) int page,
+    @JsonKey(name: PaginationResponseItemResponse.perPageKey) int perPage,
+    @JsonKey(name: PaginationResponseItemResponse.totalPagesKey) int totalPages,
+  });
 }
 
 /// @nodoc
@@ -270,27 +277,34 @@ class __$PaginationResponseItemResponseCopyWithImpl<$Res>
     Object? perPage = null,
     Object? totalPages = null,
   }) {
-    return _then(_PaginationResponseItemResponse(
-      items: null == items
-          ? _self._items
-          : items // ignore: cast_nullable_to_non_nullable
-              as List<AppRouterGenericRouterItemResponse>,
-      total: null == total
-          ? _self.total
-          : total // ignore: cast_nullable_to_non_nullable
-              as int,
-      page: null == page
-          ? _self.page
-          : page // ignore: cast_nullable_to_non_nullable
-              as int,
-      perPage: null == perPage
-          ? _self.perPage
-          : perPage // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalPages: null == totalPages
-          ? _self.totalPages
-          : totalPages // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _PaginationResponseItemResponse(
+        items:
+            null == items
+                ? _self._items
+                : items // ignore: cast_nullable_to_non_nullable
+                    as List<AppRouterGenericRouterItemResponse>,
+        total:
+            null == total
+                ? _self.total
+                : total // ignore: cast_nullable_to_non_nullable
+                    as int,
+        page:
+            null == page
+                ? _self.page
+                : page // ignore: cast_nullable_to_non_nullable
+                    as int,
+        perPage:
+            null == perPage
+                ? _self.perPage
+                : perPage // ignore: cast_nullable_to_non_nullable
+                    as int,
+        totalPages:
+            null == totalPages
+                ? _self.totalPages
+                : totalPages // ignore: cast_nullable_to_non_nullable
+                    as int,
+      ),
+    );
   }
 }

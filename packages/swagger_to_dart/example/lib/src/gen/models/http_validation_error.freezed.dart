@@ -24,7 +24,9 @@ mixin _$HttpValidationError {
   @pragma('vm:prefer-inline')
   $HttpValidationErrorCopyWith<HttpValidationError> get copyWith =>
       _$HttpValidationErrorCopyWithImpl<HttpValidationError>(
-          this as HttpValidationError, _$identity);
+        this as HttpValidationError,
+        _$identity,
+      );
 
   /// Serializes this HttpValidationError to a JSON map.
   Map<String, dynamic> toJson();
@@ -51,12 +53,13 @@ mixin _$HttpValidationError {
 /// @nodoc
 abstract mixin class $HttpValidationErrorCopyWith<$Res> {
   factory $HttpValidationErrorCopyWith(
-          HttpValidationError value, $Res Function(HttpValidationError) _then) =
-      _$HttpValidationErrorCopyWithImpl;
+    HttpValidationError value,
+    $Res Function(HttpValidationError) _then,
+  ) = _$HttpValidationErrorCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: HttpValidationError.detailKey)
-      List<ValidationError> detail});
+  $Res call({
+    @JsonKey(name: HttpValidationError.detailKey) List<ValidationError> detail,
+  });
 }
 
 /// @nodoc
@@ -71,15 +74,16 @@ class _$HttpValidationErrorCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? detail = null,
-  }) {
-    return _then(_self.copyWith(
-      detail: null == detail
-          ? _self.detail
-          : detail // ignore: cast_nullable_to_non_nullable
-              as List<ValidationError>,
-    ));
+  $Res call({Object? detail = null}) {
+    return _then(
+      _self.copyWith(
+        detail:
+            null == detail
+                ? _self.detail
+                : detail // ignore: cast_nullable_to_non_nullable
+                    as List<ValidationError>,
+      ),
+    );
   }
 }
 
@@ -87,11 +91,11 @@ class _$HttpValidationErrorCopyWithImpl<$Res>
 
 @jsonSerializable
 class _HttpValidationError extends HttpValidationError {
-  const _HttpValidationError(
-      {@JsonKey(name: HttpValidationError.detailKey)
-      required final List<ValidationError> detail})
-      : _detail = detail,
-        super._();
+  const _HttpValidationError({
+    @JsonKey(name: HttpValidationError.detailKey)
+    required final List<ValidationError> detail,
+  }) : _detail = detail,
+       super._();
   factory _HttpValidationError.fromJson(Map<String, dynamic> json) =>
       _$HttpValidationErrorFromJson(json);
 
@@ -114,13 +118,13 @@ class _HttpValidationError extends HttpValidationError {
   @pragma('vm:prefer-inline')
   _$HttpValidationErrorCopyWith<_HttpValidationError> get copyWith =>
       __$HttpValidationErrorCopyWithImpl<_HttpValidationError>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$HttpValidationErrorToJson(
-      this,
-    );
+    return _$HttpValidationErrorToJson(this);
   }
 
   @override
@@ -145,14 +149,15 @@ class _HttpValidationError extends HttpValidationError {
 /// @nodoc
 abstract mixin class _$HttpValidationErrorCopyWith<$Res>
     implements $HttpValidationErrorCopyWith<$Res> {
-  factory _$HttpValidationErrorCopyWith(_HttpValidationError value,
-          $Res Function(_HttpValidationError) _then) =
-      __$HttpValidationErrorCopyWithImpl;
+  factory _$HttpValidationErrorCopyWith(
+    _HttpValidationError value,
+    $Res Function(_HttpValidationError) _then,
+  ) = __$HttpValidationErrorCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: HttpValidationError.detailKey)
-      List<ValidationError> detail});
+  $Res call({
+    @JsonKey(name: HttpValidationError.detailKey) List<ValidationError> detail,
+  });
 }
 
 /// @nodoc
@@ -167,14 +172,15 @@ class __$HttpValidationErrorCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? detail = null,
-  }) {
-    return _then(_HttpValidationError(
-      detail: null == detail
-          ? _self._detail
-          : detail // ignore: cast_nullable_to_non_nullable
-              as List<ValidationError>,
-    ));
+  $Res call({Object? detail = null}) {
+    return _then(
+      _HttpValidationError(
+        detail:
+            null == detail
+                ? _self._detail
+                : detail // ignore: cast_nullable_to_non_nullable
+                    as List<ValidationError>,
+      ),
+    );
   }
 }

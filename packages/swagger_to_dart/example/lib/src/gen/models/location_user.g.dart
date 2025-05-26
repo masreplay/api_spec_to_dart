@@ -19,15 +19,15 @@ Map<String, dynamic> _$LocationUserUserToJson(LocationUserUser instance) =>
     };
 
 LocationUserLocation _$LocationUserLocationFromJson(
-        Map<String, dynamic> json) =>
-    LocationUserLocation(
-      Location.fromJson(json['value'] as Map<String, dynamic>),
-      $type: json['runtimeType'] as String?,
-    );
+  Map<String, dynamic> json,
+) => LocationUserLocation(
+  Location.fromJson(json['value'] as Map<String, dynamic>),
+  $type: json['runtimeType'] as String?,
+);
 
 Map<String, dynamic> _$LocationUserLocationToJson(
-        LocationUserLocation instance) =>
-    <String, dynamic>{
-      'value': instance.value.toJson(),
-      'runtimeType': instance.$type,
-    };
+  LocationUserLocation instance,
+) => <String, dynamic>{
+  'value': instance.value.toJson(),
+  'runtimeType': instance.$type,
+};

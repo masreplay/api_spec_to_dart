@@ -21,8 +21,12 @@ CatDogParrot _$CatDogParrotFromJson(Map<String, dynamic> json) {
       return CatDogParrotParrot.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'runtimeType', 'CatDogParrot',
-          'Invalid union type "${json['runtimeType']}"!');
+      throw CheckedFromJsonException(
+        json,
+        'runtimeType',
+        'CatDogParrot',
+        'Invalid union type "${json['runtimeType']}"!',
+      );
   }
 }
 
@@ -62,8 +66,8 @@ class $CatDogParrotCopyWith<$Res> {
 @jsonSerializable
 class CatDogParrotDog extends CatDogParrot {
   const CatDogParrotDog(this.value, {final String? $type})
-      : $type = $type ?? 'dog',
-        super._();
+    : $type = $type ?? 'dog',
+      super._();
   factory CatDogParrotDog.fromJson(Map<String, dynamic> json) =>
       _$CatDogParrotDogFromJson(json);
 
@@ -82,9 +86,7 @@ class CatDogParrotDog extends CatDogParrot {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$CatDogParrotDogToJson(
-      this,
-    );
+    return _$CatDogParrotDogToJson(this);
   }
 
   @override
@@ -109,8 +111,9 @@ class CatDogParrotDog extends CatDogParrot {
 abstract mixin class $CatDogParrotDogCopyWith<$Res>
     implements $CatDogParrotCopyWith<$Res> {
   factory $CatDogParrotDogCopyWith(
-          CatDogParrotDog value, $Res Function(CatDogParrotDog) _then) =
-      _$CatDogParrotDogCopyWithImpl;
+    CatDogParrotDog value,
+    $Res Function(CatDogParrotDog) _then,
+  ) = _$CatDogParrotDogCopyWithImpl;
   @useResult
   $Res call({Dog value});
 
@@ -128,15 +131,15 @@ class _$CatDogParrotDogCopyWithImpl<$Res>
   /// Create a copy of CatDogParrot
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? value = null,
-  }) {
-    return _then(CatDogParrotDog(
-      null == value
-          ? _self.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as Dog,
-    ));
+  $Res call({Object? value = null}) {
+    return _then(
+      CatDogParrotDog(
+        null == value
+            ? _self.value
+            : value // ignore: cast_nullable_to_non_nullable
+                as Dog,
+      ),
+    );
   }
 
   /// Create a copy of CatDogParrot
@@ -155,8 +158,8 @@ class _$CatDogParrotDogCopyWithImpl<$Res>
 @jsonSerializable
 class CatDogParrotCat extends CatDogParrot {
   const CatDogParrotCat(this.value, {final String? $type})
-      : $type = $type ?? 'cat',
-        super._();
+    : $type = $type ?? 'cat',
+      super._();
   factory CatDogParrotCat.fromJson(Map<String, dynamic> json) =>
       _$CatDogParrotCatFromJson(json);
 
@@ -175,9 +178,7 @@ class CatDogParrotCat extends CatDogParrot {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$CatDogParrotCatToJson(
-      this,
-    );
+    return _$CatDogParrotCatToJson(this);
   }
 
   @override
@@ -202,8 +203,9 @@ class CatDogParrotCat extends CatDogParrot {
 abstract mixin class $CatDogParrotCatCopyWith<$Res>
     implements $CatDogParrotCopyWith<$Res> {
   factory $CatDogParrotCatCopyWith(
-          CatDogParrotCat value, $Res Function(CatDogParrotCat) _then) =
-      _$CatDogParrotCatCopyWithImpl;
+    CatDogParrotCat value,
+    $Res Function(CatDogParrotCat) _then,
+  ) = _$CatDogParrotCatCopyWithImpl;
   @useResult
   $Res call({Cat value});
 
@@ -221,15 +223,15 @@ class _$CatDogParrotCatCopyWithImpl<$Res>
   /// Create a copy of CatDogParrot
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? value = null,
-  }) {
-    return _then(CatDogParrotCat(
-      null == value
-          ? _self.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as Cat,
-    ));
+  $Res call({Object? value = null}) {
+    return _then(
+      CatDogParrotCat(
+        null == value
+            ? _self.value
+            : value // ignore: cast_nullable_to_non_nullable
+                as Cat,
+      ),
+    );
   }
 
   /// Create a copy of CatDogParrot
@@ -248,8 +250,8 @@ class _$CatDogParrotCatCopyWithImpl<$Res>
 @jsonSerializable
 class CatDogParrotParrot extends CatDogParrot {
   const CatDogParrotParrot(this.value, {final String? $type})
-      : $type = $type ?? 'parrot',
-        super._();
+    : $type = $type ?? 'parrot',
+      super._();
   factory CatDogParrotParrot.fromJson(Map<String, dynamic> json) =>
       _$CatDogParrotParrotFromJson(json);
 
@@ -268,9 +270,7 @@ class CatDogParrotParrot extends CatDogParrot {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$CatDogParrotParrotToJson(
-      this,
-    );
+    return _$CatDogParrotParrotToJson(this);
   }
 
   @override
@@ -295,8 +295,9 @@ class CatDogParrotParrot extends CatDogParrot {
 abstract mixin class $CatDogParrotParrotCopyWith<$Res>
     implements $CatDogParrotCopyWith<$Res> {
   factory $CatDogParrotParrotCopyWith(
-          CatDogParrotParrot value, $Res Function(CatDogParrotParrot) _then) =
-      _$CatDogParrotParrotCopyWithImpl;
+    CatDogParrotParrot value,
+    $Res Function(CatDogParrotParrot) _then,
+  ) = _$CatDogParrotParrotCopyWithImpl;
   @useResult
   $Res call({Parrot value});
 
@@ -314,15 +315,15 @@ class _$CatDogParrotParrotCopyWithImpl<$Res>
   /// Create a copy of CatDogParrot
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? value = null,
-  }) {
-    return _then(CatDogParrotParrot(
-      null == value
-          ? _self.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as Parrot,
-    ));
+  $Res call({Object? value = null}) {
+    return _then(
+      CatDogParrotParrot(
+        null == value
+            ? _self.value
+            : value // ignore: cast_nullable_to_non_nullable
+                as Parrot,
+      ),
+    );
   }
 
   /// Create a copy of CatDogParrot

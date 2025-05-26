@@ -28,7 +28,9 @@ mixin _$BodyFilesFileUpload {
   @pragma('vm:prefer-inline')
   $BodyFilesFileUploadCopyWith<BodyFilesFileUpload> get copyWith =>
       _$BodyFilesFileUploadCopyWithImpl<BodyFilesFileUpload>(
-          this as BodyFilesFileUpload, _$identity);
+        this as BodyFilesFileUpload,
+        _$identity,
+      );
 
   /// Serializes this BodyFilesFileUpload to a JSON map.
   Map<String, dynamic> toJson();
@@ -56,12 +58,14 @@ mixin _$BodyFilesFileUpload {
 /// @nodoc
 abstract mixin class $BodyFilesFileUploadCopyWith<$Res> {
   factory $BodyFilesFileUploadCopyWith(
-          BodyFilesFileUpload value, $Res Function(BodyFilesFileUpload) _then) =
-      _$BodyFilesFileUploadCopyWithImpl;
+    BodyFilesFileUpload value,
+    $Res Function(BodyFilesFileUpload) _then,
+  ) = _$BodyFilesFileUploadCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: BodyFilesFileUpload.fileKey) MultipartFile file,
-      @JsonKey(name: BodyFilesFileUpload.descriptionKey) String? description});
+  $Res call({
+    @JsonKey(name: BodyFilesFileUpload.fileKey) MultipartFile file,
+    @JsonKey(name: BodyFilesFileUpload.descriptionKey) String? description,
+  });
 }
 
 /// @nodoc
@@ -76,20 +80,21 @@ class _$BodyFilesFileUploadCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? file = null,
-    Object? description = freezed,
-  }) {
-    return _then(_self.copyWith(
-      file: null == file
-          ? _self.file
-          : file // ignore: cast_nullable_to_non_nullable
-              as MultipartFile,
-      description: freezed == description
-          ? _self.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+  $Res call({Object? file = null, Object? description = freezed}) {
+    return _then(
+      _self.copyWith(
+        file:
+            null == file
+                ? _self.file
+                : file // ignore: cast_nullable_to_non_nullable
+                    as MultipartFile,
+        description:
+            freezed == description
+                ? _self.description
+                : description // ignore: cast_nullable_to_non_nullable
+                    as String?,
+      ),
+    );
   }
 }
 
@@ -97,11 +102,11 @@ class _$BodyFilesFileUploadCopyWithImpl<$Res>
 
 @jsonSerializable
 class _BodyFilesFileUpload extends BodyFilesFileUpload {
-  const _BodyFilesFileUpload(
-      {@JsonKey(name: BodyFilesFileUpload.fileKey) required this.file,
-      @JsonKey(name: BodyFilesFileUpload.descriptionKey)
-      required this.description})
-      : super._();
+  const _BodyFilesFileUpload({
+    @JsonKey(name: BodyFilesFileUpload.fileKey) required this.file,
+    @JsonKey(name: BodyFilesFileUpload.descriptionKey)
+    required this.description,
+  }) : super._();
   factory _BodyFilesFileUpload.fromJson(Map<String, dynamic> json) =>
       _$BodyFilesFileUploadFromJson(json);
 
@@ -122,13 +127,13 @@ class _BodyFilesFileUpload extends BodyFilesFileUpload {
   @pragma('vm:prefer-inline')
   _$BodyFilesFileUploadCopyWith<_BodyFilesFileUpload> get copyWith =>
       __$BodyFilesFileUploadCopyWithImpl<_BodyFilesFileUpload>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$BodyFilesFileUploadToJson(
-      this,
-    );
+    return _$BodyFilesFileUploadToJson(this);
   }
 
   @override
@@ -154,14 +159,16 @@ class _BodyFilesFileUpload extends BodyFilesFileUpload {
 /// @nodoc
 abstract mixin class _$BodyFilesFileUploadCopyWith<$Res>
     implements $BodyFilesFileUploadCopyWith<$Res> {
-  factory _$BodyFilesFileUploadCopyWith(_BodyFilesFileUpload value,
-          $Res Function(_BodyFilesFileUpload) _then) =
-      __$BodyFilesFileUploadCopyWithImpl;
+  factory _$BodyFilesFileUploadCopyWith(
+    _BodyFilesFileUpload value,
+    $Res Function(_BodyFilesFileUpload) _then,
+  ) = __$BodyFilesFileUploadCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: BodyFilesFileUpload.fileKey) MultipartFile file,
-      @JsonKey(name: BodyFilesFileUpload.descriptionKey) String? description});
+  $Res call({
+    @JsonKey(name: BodyFilesFileUpload.fileKey) MultipartFile file,
+    @JsonKey(name: BodyFilesFileUpload.descriptionKey) String? description,
+  });
 }
 
 /// @nodoc
@@ -176,19 +183,20 @@ class __$BodyFilesFileUploadCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? file = null,
-    Object? description = freezed,
-  }) {
-    return _then(_BodyFilesFileUpload(
-      file: null == file
-          ? _self.file
-          : file // ignore: cast_nullable_to_non_nullable
-              as MultipartFile,
-      description: freezed == description
-          ? _self.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+  $Res call({Object? file = null, Object? description = freezed}) {
+    return _then(
+      _BodyFilesFileUpload(
+        file:
+            null == file
+                ? _self.file
+                : file // ignore: cast_nullable_to_non_nullable
+                    as MultipartFile,
+        description:
+            freezed == description
+                ? _self.description
+                : description // ignore: cast_nullable_to_non_nullable
+                    as String?,
+      ),
+    );
   }
 }

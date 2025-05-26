@@ -12,9 +12,7 @@ _TimeZoneModel _$TimeZoneModelFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$TimeZoneModelToJson(_TimeZoneModel instance) =>
-    <String, dynamic>{
-      'timezone': instance.timezone.toJson(),
-    };
+    <String, dynamic>{'timezone': instance.timezone.toJson()};
 
 const _$TimezoneEnumEnumMap = {
   TimezoneEnum.africaSlashAbidjan: 'Africa/Abidjan',

@@ -31,10 +31,11 @@ mixin _$BaseResponsePaginationResponseItemResponse {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $BaseResponsePaginationResponseItemResponseCopyWith<
-          BaseResponsePaginationResponseItemResponse>
-      get copyWith => _$BaseResponsePaginationResponseItemResponseCopyWithImpl<
-              BaseResponsePaginationResponseItemResponse>(
-          this as BaseResponsePaginationResponseItemResponse, _$identity);
+    BaseResponsePaginationResponseItemResponse
+  >
+  get copyWith => _$BaseResponsePaginationResponseItemResponseCopyWithImpl<
+    BaseResponsePaginationResponseItemResponse
+  >(this as BaseResponsePaginationResponseItemResponse, _$identity);
 
   /// Serializes this BaseResponsePaginationResponseItemResponse to a JSON map.
   Map<String, dynamic> toJson();
@@ -62,17 +63,17 @@ mixin _$BaseResponsePaginationResponseItemResponse {
 /// @nodoc
 abstract mixin class $BaseResponsePaginationResponseItemResponseCopyWith<$Res> {
   factory $BaseResponsePaginationResponseItemResponseCopyWith(
-          BaseResponsePaginationResponseItemResponse value,
-          $Res Function(BaseResponsePaginationResponseItemResponse) _then) =
-      _$BaseResponsePaginationResponseItemResponseCopyWithImpl;
+    BaseResponsePaginationResponseItemResponse value,
+    $Res Function(BaseResponsePaginationResponseItemResponse) _then,
+  ) = _$BaseResponsePaginationResponseItemResponseCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: BaseResponsePaginationResponseItemResponse.dataKey)
-      PaginationResponseItemResponse data,
-      @JsonKey(name: BaseResponsePaginationResponseItemResponse.messageKey)
-      String message,
-      @JsonKey(name: BaseResponsePaginationResponseItemResponse.codeKey)
-      int code});
+  $Res call({
+    @JsonKey(name: BaseResponsePaginationResponseItemResponse.dataKey)
+    PaginationResponseItemResponse data,
+    @JsonKey(name: BaseResponsePaginationResponseItemResponse.messageKey)
+    String message,
+    @JsonKey(name: BaseResponsePaginationResponseItemResponse.codeKey) int code,
+  });
 
   $PaginationResponseItemResponseCopyWith<$Res> get data;
 }
@@ -81,7 +82,9 @@ abstract mixin class $BaseResponsePaginationResponseItemResponseCopyWith<$Res> {
 class _$BaseResponsePaginationResponseItemResponseCopyWithImpl<$Res>
     implements $BaseResponsePaginationResponseItemResponseCopyWith<$Res> {
   _$BaseResponsePaginationResponseItemResponseCopyWithImpl(
-      this._self, this._then);
+    this._self,
+    this._then,
+  );
 
   final BaseResponsePaginationResponseItemResponse _self;
   final $Res Function(BaseResponsePaginationResponseItemResponse) _then;
@@ -95,20 +98,25 @@ class _$BaseResponsePaginationResponseItemResponseCopyWithImpl<$Res>
     Object? message = null,
     Object? code = null,
   }) {
-    return _then(_self.copyWith(
-      data: null == data
-          ? _self.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as PaginationResponseItemResponse,
-      message: null == message
-          ? _self.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      code: null == code
-          ? _self.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _self.copyWith(
+        data:
+            null == data
+                ? _self.data
+                : data // ignore: cast_nullable_to_non_nullable
+                    as PaginationResponseItemResponse,
+        message:
+            null == message
+                ? _self.message
+                : message // ignore: cast_nullable_to_non_nullable
+                    as String,
+        code:
+            null == code
+                ? _self.code
+                : code // ignore: cast_nullable_to_non_nullable
+                    as int,
+      ),
+    );
   }
 
   /// Create a copy of BaseResponsePaginationResponseItemResponse
@@ -127,17 +135,17 @@ class _$BaseResponsePaginationResponseItemResponseCopyWithImpl<$Res>
 @jsonSerializable
 class _BaseResponsePaginationResponseItemResponse
     extends BaseResponsePaginationResponseItemResponse {
-  const _BaseResponsePaginationResponseItemResponse(
-      {@JsonKey(name: BaseResponsePaginationResponseItemResponse.dataKey)
-      required this.data,
-      @JsonKey(name: BaseResponsePaginationResponseItemResponse.messageKey)
-      required this.message,
-      @JsonKey(name: BaseResponsePaginationResponseItemResponse.codeKey)
-      required this.code})
-      : super._();
+  const _BaseResponsePaginationResponseItemResponse({
+    @JsonKey(name: BaseResponsePaginationResponseItemResponse.dataKey)
+    required this.data,
+    @JsonKey(name: BaseResponsePaginationResponseItemResponse.messageKey)
+    required this.message,
+    @JsonKey(name: BaseResponsePaginationResponseItemResponse.codeKey)
+    required this.code,
+  }) : super._();
   factory _BaseResponsePaginationResponseItemResponse.fromJson(
-          Map<String, dynamic> json) =>
-      _$BaseResponsePaginationResponseItemResponseFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$BaseResponsePaginationResponseItemResponseFromJson(json);
 
   /// data
   @override
@@ -160,15 +168,15 @@ class _BaseResponsePaginationResponseItemResponse
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$BaseResponsePaginationResponseItemResponseCopyWith<
-          _BaseResponsePaginationResponseItemResponse>
-      get copyWith => __$BaseResponsePaginationResponseItemResponseCopyWithImpl<
-          _BaseResponsePaginationResponseItemResponse>(this, _$identity);
+    _BaseResponsePaginationResponseItemResponse
+  >
+  get copyWith => __$BaseResponsePaginationResponseItemResponseCopyWithImpl<
+    _BaseResponsePaginationResponseItemResponse
+  >(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$BaseResponsePaginationResponseItemResponseToJson(
-      this,
-    );
+    return _$BaseResponsePaginationResponseItemResponseToJson(this);
   }
 
   @override
@@ -195,18 +203,18 @@ class _BaseResponsePaginationResponseItemResponse
 abstract mixin class _$BaseResponsePaginationResponseItemResponseCopyWith<$Res>
     implements $BaseResponsePaginationResponseItemResponseCopyWith<$Res> {
   factory _$BaseResponsePaginationResponseItemResponseCopyWith(
-          _BaseResponsePaginationResponseItemResponse value,
-          $Res Function(_BaseResponsePaginationResponseItemResponse) _then) =
-      __$BaseResponsePaginationResponseItemResponseCopyWithImpl;
+    _BaseResponsePaginationResponseItemResponse value,
+    $Res Function(_BaseResponsePaginationResponseItemResponse) _then,
+  ) = __$BaseResponsePaginationResponseItemResponseCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: BaseResponsePaginationResponseItemResponse.dataKey)
-      PaginationResponseItemResponse data,
-      @JsonKey(name: BaseResponsePaginationResponseItemResponse.messageKey)
-      String message,
-      @JsonKey(name: BaseResponsePaginationResponseItemResponse.codeKey)
-      int code});
+  $Res call({
+    @JsonKey(name: BaseResponsePaginationResponseItemResponse.dataKey)
+    PaginationResponseItemResponse data,
+    @JsonKey(name: BaseResponsePaginationResponseItemResponse.messageKey)
+    String message,
+    @JsonKey(name: BaseResponsePaginationResponseItemResponse.codeKey) int code,
+  });
 
   @override
   $PaginationResponseItemResponseCopyWith<$Res> get data;
@@ -216,7 +224,9 @@ abstract mixin class _$BaseResponsePaginationResponseItemResponseCopyWith<$Res>
 class __$BaseResponsePaginationResponseItemResponseCopyWithImpl<$Res>
     implements _$BaseResponsePaginationResponseItemResponseCopyWith<$Res> {
   __$BaseResponsePaginationResponseItemResponseCopyWithImpl(
-      this._self, this._then);
+    this._self,
+    this._then,
+  );
 
   final _BaseResponsePaginationResponseItemResponse _self;
   final $Res Function(_BaseResponsePaginationResponseItemResponse) _then;
@@ -230,20 +240,25 @@ class __$BaseResponsePaginationResponseItemResponseCopyWithImpl<$Res>
     Object? message = null,
     Object? code = null,
   }) {
-    return _then(_BaseResponsePaginationResponseItemResponse(
-      data: null == data
-          ? _self.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as PaginationResponseItemResponse,
-      message: null == message
-          ? _self.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      code: null == code
-          ? _self.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _BaseResponsePaginationResponseItemResponse(
+        data:
+            null == data
+                ? _self.data
+                : data // ignore: cast_nullable_to_non_nullable
+                    as PaginationResponseItemResponse,
+        message:
+            null == message
+                ? _self.message
+                : message // ignore: cast_nullable_to_non_nullable
+                    as String,
+        code:
+            null == code
+                ? _self.code
+                : code // ignore: cast_nullable_to_non_nullable
+                    as int,
+      ),
+    );
   }
 
   /// Create a copy of BaseResponsePaginationResponseItemResponse

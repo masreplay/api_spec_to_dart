@@ -88,11 +88,13 @@ class MultipartFileJsonConverter implements JsonConverter<MultipartFile, Multipa
             ),
           ),
           Code('''
+const jsonSerializableConverters = <JsonConverter>[
+  MultipartFileJsonConverter(),
+  ${context.jsonConvertor.map((e) => '${e.name}()').join(',\n')}
+];
+
 const jsonSerializable = JsonSerializable(
-  converters: [
-    MultipartFileJsonConverter(),
-    ${context.jsonConvertor.map((e) => '${e.name}()').join(',\n')}
-  ],
+  converters: jsonSerializableConverters,
 );
 ''')
         ]),

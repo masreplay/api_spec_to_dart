@@ -68,14 +68,16 @@ mixin _$UserCreate {
 /// @nodoc
 abstract mixin class $UserCreateCopyWith<$Res> {
   factory $UserCreateCopyWith(
-          UserCreate value, $Res Function(UserCreate) _then) =
-      _$UserCreateCopyWithImpl;
+    UserCreate value,
+    $Res Function(UserCreate) _then,
+  ) = _$UserCreateCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: UserCreate.usernameKey) String username,
-      @JsonKey(name: UserCreate.emailKey) String email,
-      @JsonKey(name: UserCreate.fullNameKey) String? fullName,
-      @JsonKey(name: UserCreate.passwordKey) String password});
+  $Res call({
+    @JsonKey(name: UserCreate.usernameKey) String username,
+    @JsonKey(name: UserCreate.emailKey) String email,
+    @JsonKey(name: UserCreate.fullNameKey) String? fullName,
+    @JsonKey(name: UserCreate.passwordKey) String password,
+  });
 }
 
 /// @nodoc
@@ -95,24 +97,30 @@ class _$UserCreateCopyWithImpl<$Res> implements $UserCreateCopyWith<$Res> {
     Object? fullName = freezed,
     Object? password = null,
   }) {
-    return _then(_self.copyWith(
-      username: null == username
-          ? _self.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
-          ? _self.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      fullName: freezed == fullName
-          ? _self.fullName
-          : fullName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      password: null == password
-          ? _self.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _self.copyWith(
+        username:
+            null == username
+                ? _self.username
+                : username // ignore: cast_nullable_to_non_nullable
+                    as String,
+        email:
+            null == email
+                ? _self.email
+                : email // ignore: cast_nullable_to_non_nullable
+                    as String,
+        fullName:
+            freezed == fullName
+                ? _self.fullName
+                : fullName // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        password:
+            null == password
+                ? _self.password
+                : password // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
@@ -120,12 +128,12 @@ class _$UserCreateCopyWithImpl<$Res> implements $UserCreateCopyWith<$Res> {
 
 @jsonSerializable
 class _UserCreate extends UserCreate {
-  const _UserCreate(
-      {@JsonKey(name: UserCreate.usernameKey) required this.username,
-      @JsonKey(name: UserCreate.emailKey) required this.email,
-      @JsonKey(name: UserCreate.fullNameKey) required this.fullName,
-      @JsonKey(name: UserCreate.passwordKey) required this.password})
-      : super._();
+  const _UserCreate({
+    @JsonKey(name: UserCreate.usernameKey) required this.username,
+    @JsonKey(name: UserCreate.emailKey) required this.email,
+    @JsonKey(name: UserCreate.fullNameKey) required this.fullName,
+    @JsonKey(name: UserCreate.passwordKey) required this.password,
+  }) : super._();
   factory _UserCreate.fromJson(Map<String, dynamic> json) =>
       _$UserCreateFromJson(json);
 
@@ -159,9 +167,7 @@ class _UserCreate extends UserCreate {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$UserCreateToJson(
-      this,
-    );
+    return _$UserCreateToJson(this);
   }
 
   @override
@@ -193,15 +199,17 @@ class _UserCreate extends UserCreate {
 abstract mixin class _$UserCreateCopyWith<$Res>
     implements $UserCreateCopyWith<$Res> {
   factory _$UserCreateCopyWith(
-          _UserCreate value, $Res Function(_UserCreate) _then) =
-      __$UserCreateCopyWithImpl;
+    _UserCreate value,
+    $Res Function(_UserCreate) _then,
+  ) = __$UserCreateCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: UserCreate.usernameKey) String username,
-      @JsonKey(name: UserCreate.emailKey) String email,
-      @JsonKey(name: UserCreate.fullNameKey) String? fullName,
-      @JsonKey(name: UserCreate.passwordKey) String password});
+  $Res call({
+    @JsonKey(name: UserCreate.usernameKey) String username,
+    @JsonKey(name: UserCreate.emailKey) String email,
+    @JsonKey(name: UserCreate.fullNameKey) String? fullName,
+    @JsonKey(name: UserCreate.passwordKey) String password,
+  });
 }
 
 /// @nodoc
@@ -221,23 +229,29 @@ class __$UserCreateCopyWithImpl<$Res> implements _$UserCreateCopyWith<$Res> {
     Object? fullName = freezed,
     Object? password = null,
   }) {
-    return _then(_UserCreate(
-      username: null == username
-          ? _self.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
-          ? _self.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      fullName: freezed == fullName
-          ? _self.fullName
-          : fullName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      password: null == password
-          ? _self.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _UserCreate(
+        username:
+            null == username
+                ? _self.username
+                : username // ignore: cast_nullable_to_non_nullable
+                    as String,
+        email:
+            null == email
+                ? _self.email
+                : email // ignore: cast_nullable_to_non_nullable
+                    as String,
+        fullName:
+            freezed == fullName
+                ? _self.fullName
+                : fullName // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        password:
+            null == password
+                ? _self.password
+                : password // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }

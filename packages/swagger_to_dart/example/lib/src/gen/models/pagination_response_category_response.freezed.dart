@@ -13,10 +13,10 @@ part of 'pagination_response_category_response.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$PaginationResponseCategoryResponse {
+mixin _$PaginationResponseCategoryResponse<T> {
   /// items
   @JsonKey(name: PaginationResponseCategoryResponse.itemsKey)
-  List<CategoryResponse> get items;
+  List<T> get items;
 
   /// total
   @JsonKey(name: PaginationResponseCategoryResponse.totalKey)
@@ -39,19 +39,22 @@ mixin _$PaginationResponseCategoryResponse {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $PaginationResponseCategoryResponseCopyWith<
-          PaginationResponseCategoryResponse>
-      get copyWith => _$PaginationResponseCategoryResponseCopyWithImpl<
-              PaginationResponseCategoryResponse>(
-          this as PaginationResponseCategoryResponse, _$identity);
+    T,
+    PaginationResponseCategoryResponse<T>
+  >
+  get copyWith => _$PaginationResponseCategoryResponseCopyWithImpl<
+    T,
+    PaginationResponseCategoryResponse<T>
+  >(this as PaginationResponseCategoryResponse<T>, _$identity);
 
   /// Serializes this PaginationResponseCategoryResponse to a JSON map.
-  Map<String, dynamic> toJson();
+  Map<String, dynamic> toJson(Object? Function(T) toJsonT);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PaginationResponseCategoryResponse &&
+            other is PaginationResponseCategoryResponse<T> &&
             const DeepCollectionEquality().equals(other.items, items) &&
             (identical(other.total, total) || other.total == total) &&
             (identical(other.page, page) || other.page == page) &&
@@ -63,43 +66,44 @@ mixin _$PaginationResponseCategoryResponse {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(items),
-      total,
-      page,
-      perPage,
-      totalPages);
+    runtimeType,
+    const DeepCollectionEquality().hash(items),
+    total,
+    page,
+    perPage,
+    totalPages,
+  );
 
   @override
   String toString() {
-    return 'PaginationResponseCategoryResponse(items: $items, total: $total, page: $page, perPage: $perPage, totalPages: $totalPages)';
+    return 'PaginationResponseCategoryResponse<$T>(items: $items, total: $total, page: $page, perPage: $perPage, totalPages: $totalPages)';
   }
 }
 
 /// @nodoc
-abstract mixin class $PaginationResponseCategoryResponseCopyWith<$Res> {
+abstract mixin class $PaginationResponseCategoryResponseCopyWith<T, $Res> {
   factory $PaginationResponseCategoryResponseCopyWith(
-          PaginationResponseCategoryResponse value,
-          $Res Function(PaginationResponseCategoryResponse) _then) =
-      _$PaginationResponseCategoryResponseCopyWithImpl;
+    PaginationResponseCategoryResponse<T> value,
+    $Res Function(PaginationResponseCategoryResponse<T>) _then,
+  ) = _$PaginationResponseCategoryResponseCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: PaginationResponseCategoryResponse.itemsKey)
-      List<CategoryResponse> items,
-      @JsonKey(name: PaginationResponseCategoryResponse.totalKey) int total,
-      @JsonKey(name: PaginationResponseCategoryResponse.pageKey) int page,
-      @JsonKey(name: PaginationResponseCategoryResponse.perPageKey) int perPage,
-      @JsonKey(name: PaginationResponseCategoryResponse.totalPagesKey)
-      int totalPages});
+  $Res call({
+    @JsonKey(name: PaginationResponseCategoryResponse.itemsKey) List<T> items,
+    @JsonKey(name: PaginationResponseCategoryResponse.totalKey) int total,
+    @JsonKey(name: PaginationResponseCategoryResponse.pageKey) int page,
+    @JsonKey(name: PaginationResponseCategoryResponse.perPageKey) int perPage,
+    @JsonKey(name: PaginationResponseCategoryResponse.totalPagesKey)
+    int totalPages,
+  });
 }
 
 /// @nodoc
-class _$PaginationResponseCategoryResponseCopyWithImpl<$Res>
-    implements $PaginationResponseCategoryResponseCopyWith<$Res> {
+class _$PaginationResponseCategoryResponseCopyWithImpl<T, $Res>
+    implements $PaginationResponseCategoryResponseCopyWith<T, $Res> {
   _$PaginationResponseCategoryResponseCopyWithImpl(this._self, this._then);
 
-  final PaginationResponseCategoryResponse _self;
-  final $Res Function(PaginationResponseCategoryResponse) _then;
+  final PaginationResponseCategoryResponse<T> _self;
+  final $Res Function(PaginationResponseCategoryResponse<T>) _then;
 
   /// Create a copy of PaginationResponseCategoryResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -112,60 +116,71 @@ class _$PaginationResponseCategoryResponseCopyWithImpl<$Res>
     Object? perPage = null,
     Object? totalPages = null,
   }) {
-    return _then(_self.copyWith(
-      items: null == items
-          ? _self.items
-          : items // ignore: cast_nullable_to_non_nullable
-              as List<CategoryResponse>,
-      total: null == total
-          ? _self.total
-          : total // ignore: cast_nullable_to_non_nullable
-              as int,
-      page: null == page
-          ? _self.page
-          : page // ignore: cast_nullable_to_non_nullable
-              as int,
-      perPage: null == perPage
-          ? _self.perPage
-          : perPage // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalPages: null == totalPages
-          ? _self.totalPages
-          : totalPages // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _self.copyWith(
+        items:
+            null == items
+                ? _self.items
+                : items // ignore: cast_nullable_to_non_nullable
+                    as List<T>,
+        total:
+            null == total
+                ? _self.total
+                : total // ignore: cast_nullable_to_non_nullable
+                    as int,
+        page:
+            null == page
+                ? _self.page
+                : page // ignore: cast_nullable_to_non_nullable
+                    as int,
+        perPage:
+            null == perPage
+                ? _self.perPage
+                : perPage // ignore: cast_nullable_to_non_nullable
+                    as int,
+        totalPages:
+            null == totalPages
+                ? _self.totalPages
+                : totalPages // ignore: cast_nullable_to_non_nullable
+                    as int,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
-@jsonSerializable
-class _PaginationResponseCategoryResponse
-    extends PaginationResponseCategoryResponse {
-  const _PaginationResponseCategoryResponse(
-      {@JsonKey(name: PaginationResponseCategoryResponse.itemsKey)
-      required final List<CategoryResponse> items,
-      @JsonKey(name: PaginationResponseCategoryResponse.totalKey)
-      required this.total,
-      @JsonKey(name: PaginationResponseCategoryResponse.pageKey)
-      required this.page,
-      @JsonKey(name: PaginationResponseCategoryResponse.perPageKey)
-      required this.perPage,
-      @JsonKey(name: PaginationResponseCategoryResponse.totalPagesKey)
-      required this.totalPages})
-      : _items = items,
-        super._();
+@JsonSerializable(
+  genericArgumentFactories: true,
+  converters: jsonSerializableConverters,
+)
+class _PaginationResponseCategoryResponse<T>
+    extends PaginationResponseCategoryResponse<T> {
+  const _PaginationResponseCategoryResponse({
+    @JsonKey(name: PaginationResponseCategoryResponse.itemsKey)
+    required final List<T> items,
+    @JsonKey(name: PaginationResponseCategoryResponse.totalKey)
+    required this.total,
+    @JsonKey(name: PaginationResponseCategoryResponse.pageKey)
+    required this.page,
+    @JsonKey(name: PaginationResponseCategoryResponse.perPageKey)
+    required this.perPage,
+    @JsonKey(name: PaginationResponseCategoryResponse.totalPagesKey)
+    required this.totalPages,
+  }) : _items = items,
+       super._();
   factory _PaginationResponseCategoryResponse.fromJson(
-          Map<String, dynamic> json) =>
-      _$PaginationResponseCategoryResponseFromJson(json);
+    Map<String, dynamic> json,
+    T Function(Object?) fromJsonT,
+  ) => _$PaginationResponseCategoryResponseFromJson(json, fromJsonT);
 
   /// items
-  final List<CategoryResponse> _items;
+  final List<T> _items;
 
   /// items
   @override
   @JsonKey(name: PaginationResponseCategoryResponse.itemsKey)
-  List<CategoryResponse> get items {
+  List<T> get items {
     if (_items is EqualUnmodifiableListView) return _items;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_items);
@@ -197,22 +212,24 @@ class _PaginationResponseCategoryResponse
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$PaginationResponseCategoryResponseCopyWith<
-          _PaginationResponseCategoryResponse>
-      get copyWith => __$PaginationResponseCategoryResponseCopyWithImpl<
-          _PaginationResponseCategoryResponse>(this, _$identity);
+    T,
+    _PaginationResponseCategoryResponse<T>
+  >
+  get copyWith => __$PaginationResponseCategoryResponseCopyWithImpl<
+    T,
+    _PaginationResponseCategoryResponse<T>
+  >(this, _$identity);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$PaginationResponseCategoryResponseToJson(
-      this,
-    );
+  Map<String, dynamic> toJson(Object? Function(T) toJsonT) {
+    return _$PaginationResponseCategoryResponseToJson<T>(this, toJsonT);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PaginationResponseCategoryResponse &&
+            other is _PaginationResponseCategoryResponse<T> &&
             const DeepCollectionEquality().equals(other._items, _items) &&
             (identical(other.total, total) || other.total == total) &&
             (identical(other.page, page) || other.page == page) &&
@@ -224,45 +241,46 @@ class _PaginationResponseCategoryResponse
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_items),
-      total,
-      page,
-      perPage,
-      totalPages);
+    runtimeType,
+    const DeepCollectionEquality().hash(_items),
+    total,
+    page,
+    perPage,
+    totalPages,
+  );
 
   @override
   String toString() {
-    return 'PaginationResponseCategoryResponse(items: $items, total: $total, page: $page, perPage: $perPage, totalPages: $totalPages)';
+    return 'PaginationResponseCategoryResponse<$T>(items: $items, total: $total, page: $page, perPage: $perPage, totalPages: $totalPages)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$PaginationResponseCategoryResponseCopyWith<$Res>
-    implements $PaginationResponseCategoryResponseCopyWith<$Res> {
+abstract mixin class _$PaginationResponseCategoryResponseCopyWith<T, $Res>
+    implements $PaginationResponseCategoryResponseCopyWith<T, $Res> {
   factory _$PaginationResponseCategoryResponseCopyWith(
-          _PaginationResponseCategoryResponse value,
-          $Res Function(_PaginationResponseCategoryResponse) _then) =
-      __$PaginationResponseCategoryResponseCopyWithImpl;
+    _PaginationResponseCategoryResponse<T> value,
+    $Res Function(_PaginationResponseCategoryResponse<T>) _then,
+  ) = __$PaginationResponseCategoryResponseCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: PaginationResponseCategoryResponse.itemsKey)
-      List<CategoryResponse> items,
-      @JsonKey(name: PaginationResponseCategoryResponse.totalKey) int total,
-      @JsonKey(name: PaginationResponseCategoryResponse.pageKey) int page,
-      @JsonKey(name: PaginationResponseCategoryResponse.perPageKey) int perPage,
-      @JsonKey(name: PaginationResponseCategoryResponse.totalPagesKey)
-      int totalPages});
+  $Res call({
+    @JsonKey(name: PaginationResponseCategoryResponse.itemsKey) List<T> items,
+    @JsonKey(name: PaginationResponseCategoryResponse.totalKey) int total,
+    @JsonKey(name: PaginationResponseCategoryResponse.pageKey) int page,
+    @JsonKey(name: PaginationResponseCategoryResponse.perPageKey) int perPage,
+    @JsonKey(name: PaginationResponseCategoryResponse.totalPagesKey)
+    int totalPages,
+  });
 }
 
 /// @nodoc
-class __$PaginationResponseCategoryResponseCopyWithImpl<$Res>
-    implements _$PaginationResponseCategoryResponseCopyWith<$Res> {
+class __$PaginationResponseCategoryResponseCopyWithImpl<T, $Res>
+    implements _$PaginationResponseCategoryResponseCopyWith<T, $Res> {
   __$PaginationResponseCategoryResponseCopyWithImpl(this._self, this._then);
 
-  final _PaginationResponseCategoryResponse _self;
-  final $Res Function(_PaginationResponseCategoryResponse) _then;
+  final _PaginationResponseCategoryResponse<T> _self;
+  final $Res Function(_PaginationResponseCategoryResponse<T>) _then;
 
   /// Create a copy of PaginationResponseCategoryResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -275,27 +293,34 @@ class __$PaginationResponseCategoryResponseCopyWithImpl<$Res>
     Object? perPage = null,
     Object? totalPages = null,
   }) {
-    return _then(_PaginationResponseCategoryResponse(
-      items: null == items
-          ? _self._items
-          : items // ignore: cast_nullable_to_non_nullable
-              as List<CategoryResponse>,
-      total: null == total
-          ? _self.total
-          : total // ignore: cast_nullable_to_non_nullable
-              as int,
-      page: null == page
-          ? _self.page
-          : page // ignore: cast_nullable_to_non_nullable
-              as int,
-      perPage: null == perPage
-          ? _self.perPage
-          : perPage // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalPages: null == totalPages
-          ? _self.totalPages
-          : totalPages // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _PaginationResponseCategoryResponse<T>(
+        items:
+            null == items
+                ? _self._items
+                : items // ignore: cast_nullable_to_non_nullable
+                    as List<T>,
+        total:
+            null == total
+                ? _self.total
+                : total // ignore: cast_nullable_to_non_nullable
+                    as int,
+        page:
+            null == page
+                ? _self.page
+                : page // ignore: cast_nullable_to_non_nullable
+                    as int,
+        perPage:
+            null == perPage
+                ? _self.perPage
+                : perPage // ignore: cast_nullable_to_non_nullable
+                    as int,
+        totalPages:
+            null == totalPages
+                ? _self.totalPages
+                : totalPages // ignore: cast_nullable_to_non_nullable
+                    as int,
+      ),
+    );
   }
 }

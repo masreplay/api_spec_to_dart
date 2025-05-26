@@ -64,7 +64,7 @@ class _GenericClient implements GenericClient {
   }
 
   @override
-  Future<HttpResponse<PaginationResponseCategoryResponse>>
+  Future<HttpResponse<PaginationResponseCategoryResponse<dynamic>>>
   genericGetCategories({
     int page = 1,
     int perPage = 10,
@@ -82,26 +82,28 @@ class _GenericClient implements GenericClient {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options =
-        _setStreamType<HttpResponse<PaginationResponseCategoryResponse>>(
-          Options(method: 'GET', headers: _headers, extra: _extra)
-              .compose(
-                _dio.options,
-                '/generic/categories',
-                queryParameters: queryParameters,
-                data: _data,
-                cancelToken: cancelToken,
-                onSendProgress: onSendProgress,
-                onReceiveProgress: onReceiveProgress,
-              )
-              .copyWith(
-                baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl),
-              ),
-        );
+    final _options = _setStreamType<
+      HttpResponse<PaginationResponseCategoryResponse<dynamic>>
+    >(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/generic/categories',
+            queryParameters: queryParameters,
+            data: _data,
+            cancelToken: cancelToken,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late PaginationResponseCategoryResponse _value;
+    late PaginationResponseCategoryResponse<dynamic> _value;
     try {
-      _value = PaginationResponseCategoryResponse.fromJson(_result.data!);
+      _value = PaginationResponseCategoryResponse<dynamic>.fromJson(
+        _result.data!,
+        (json) => json as dynamic,
+      );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

@@ -24,7 +24,9 @@ mixin _$VersionModel {
   @pragma('vm:prefer-inline')
   $VersionModelCopyWith<VersionModel> get copyWith =>
       _$VersionModelCopyWithImpl<VersionModel>(
-          this as VersionModel, _$identity);
+        this as VersionModel,
+        _$identity,
+      );
 
   /// Serializes this VersionModel to a JSON map.
   Map<String, dynamic> toJson();
@@ -50,8 +52,9 @@ mixin _$VersionModel {
 /// @nodoc
 abstract mixin class $VersionModelCopyWith<$Res> {
   factory $VersionModelCopyWith(
-          VersionModel value, $Res Function(VersionModel) _then) =
-      _$VersionModelCopyWithImpl;
+    VersionModel value,
+    $Res Function(VersionModel) _then,
+  ) = _$VersionModelCopyWithImpl;
   @useResult
   $Res call({@JsonKey(name: VersionModel.versionKey) String version});
 }
@@ -67,15 +70,16 @@ class _$VersionModelCopyWithImpl<$Res> implements $VersionModelCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? version = null,
-  }) {
-    return _then(_self.copyWith(
-      version: null == version
-          ? _self.version
-          : version // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? version = null}) {
+    return _then(
+      _self.copyWith(
+        version:
+            null == version
+                ? _self.version
+                : version // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
@@ -83,9 +87,9 @@ class _$VersionModelCopyWithImpl<$Res> implements $VersionModelCopyWith<$Res> {
 
 @jsonSerializable
 class _VersionModel extends VersionModel {
-  const _VersionModel(
-      {@JsonKey(name: VersionModel.versionKey) required this.version})
-      : super._();
+  const _VersionModel({
+    @JsonKey(name: VersionModel.versionKey) required this.version,
+  }) : super._();
   factory _VersionModel.fromJson(Map<String, dynamic> json) =>
       _$VersionModelFromJson(json);
 
@@ -104,9 +108,7 @@ class _VersionModel extends VersionModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$VersionModelToJson(
-      this,
-    );
+    return _$VersionModelToJson(this);
   }
 
   @override
@@ -131,8 +133,9 @@ class _VersionModel extends VersionModel {
 abstract mixin class _$VersionModelCopyWith<$Res>
     implements $VersionModelCopyWith<$Res> {
   factory _$VersionModelCopyWith(
-          _VersionModel value, $Res Function(_VersionModel) _then) =
-      __$VersionModelCopyWithImpl;
+    _VersionModel value,
+    $Res Function(_VersionModel) _then,
+  ) = __$VersionModelCopyWithImpl;
   @override
   @useResult
   $Res call({@JsonKey(name: VersionModel.versionKey) String version});
@@ -150,14 +153,15 @@ class __$VersionModelCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? version = null,
-  }) {
-    return _then(_VersionModel(
-      version: null == version
-          ? _self.version
-          : version // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? version = null}) {
+    return _then(
+      _VersionModel(
+        version:
+            null == version
+                ? _self.version
+                : version // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }

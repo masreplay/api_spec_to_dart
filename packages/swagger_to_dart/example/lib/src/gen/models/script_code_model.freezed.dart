@@ -24,7 +24,9 @@ mixin _$ScriptCodeModel {
   @pragma('vm:prefer-inline')
   $ScriptCodeModelCopyWith<ScriptCodeModel> get copyWith =>
       _$ScriptCodeModelCopyWithImpl<ScriptCodeModel>(
-          this as ScriptCodeModel, _$identity);
+        this as ScriptCodeModel,
+        _$identity,
+      );
 
   /// Serializes this ScriptCodeModel to a JSON map.
   Map<String, dynamic> toJson();
@@ -51,12 +53,13 @@ mixin _$ScriptCodeModel {
 /// @nodoc
 abstract mixin class $ScriptCodeModelCopyWith<$Res> {
   factory $ScriptCodeModelCopyWith(
-          ScriptCodeModel value, $Res Function(ScriptCodeModel) _then) =
-      _$ScriptCodeModelCopyWithImpl;
+    ScriptCodeModel value,
+    $Res Function(ScriptCodeModel) _then,
+  ) = _$ScriptCodeModelCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: ScriptCodeModel.scriptCodeKey)
-      ScriptCodeEnum scriptCode});
+  $Res call({
+    @JsonKey(name: ScriptCodeModel.scriptCodeKey) ScriptCodeEnum scriptCode,
+  });
 }
 
 /// @nodoc
@@ -71,15 +74,16 @@ class _$ScriptCodeModelCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? scriptCode = null,
-  }) {
-    return _then(_self.copyWith(
-      scriptCode: null == scriptCode
-          ? _self.scriptCode
-          : scriptCode // ignore: cast_nullable_to_non_nullable
-              as ScriptCodeEnum,
-    ));
+  $Res call({Object? scriptCode = null}) {
+    return _then(
+      _self.copyWith(
+        scriptCode:
+            null == scriptCode
+                ? _self.scriptCode
+                : scriptCode // ignore: cast_nullable_to_non_nullable
+                    as ScriptCodeEnum,
+      ),
+    );
   }
 }
 
@@ -87,9 +91,9 @@ class _$ScriptCodeModelCopyWithImpl<$Res>
 
 @jsonSerializable
 class _ScriptCodeModel extends ScriptCodeModel {
-  const _ScriptCodeModel(
-      {@JsonKey(name: ScriptCodeModel.scriptCodeKey) required this.scriptCode})
-      : super._();
+  const _ScriptCodeModel({
+    @JsonKey(name: ScriptCodeModel.scriptCodeKey) required this.scriptCode,
+  }) : super._();
   factory _ScriptCodeModel.fromJson(Map<String, dynamic> json) =>
       _$ScriptCodeModelFromJson(json);
 
@@ -108,9 +112,7 @@ class _ScriptCodeModel extends ScriptCodeModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$ScriptCodeModelToJson(
-      this,
-    );
+    return _$ScriptCodeModelToJson(this);
   }
 
   @override
@@ -136,13 +138,14 @@ class _ScriptCodeModel extends ScriptCodeModel {
 abstract mixin class _$ScriptCodeModelCopyWith<$Res>
     implements $ScriptCodeModelCopyWith<$Res> {
   factory _$ScriptCodeModelCopyWith(
-          _ScriptCodeModel value, $Res Function(_ScriptCodeModel) _then) =
-      __$ScriptCodeModelCopyWithImpl;
+    _ScriptCodeModel value,
+    $Res Function(_ScriptCodeModel) _then,
+  ) = __$ScriptCodeModelCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: ScriptCodeModel.scriptCodeKey)
-      ScriptCodeEnum scriptCode});
+  $Res call({
+    @JsonKey(name: ScriptCodeModel.scriptCodeKey) ScriptCodeEnum scriptCode,
+  });
 }
 
 /// @nodoc
@@ -157,14 +160,15 @@ class __$ScriptCodeModelCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? scriptCode = null,
-  }) {
-    return _then(_ScriptCodeModel(
-      scriptCode: null == scriptCode
-          ? _self.scriptCode
-          : scriptCode // ignore: cast_nullable_to_non_nullable
-              as ScriptCodeEnum,
-    ));
+  $Res call({Object? scriptCode = null}) {
+    return _then(
+      _ScriptCodeModel(
+        scriptCode:
+            null == scriptCode
+                ? _self.scriptCode
+                : scriptCode // ignore: cast_nullable_to_non_nullable
+                    as ScriptCodeEnum,
+      ),
+    );
   }
 }

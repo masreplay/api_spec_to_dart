@@ -31,9 +31,11 @@ mixin _$BaseResponseListItemResponse {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $BaseResponseListItemResponseCopyWith<BaseResponseListItemResponse>
-      get copyWith => _$BaseResponseListItemResponseCopyWithImpl<
-              BaseResponseListItemResponse>(
-          this as BaseResponseListItemResponse, _$identity);
+  get copyWith =>
+      _$BaseResponseListItemResponseCopyWithImpl<BaseResponseListItemResponse>(
+        this as BaseResponseListItemResponse,
+        _$identity,
+      );
 
   /// Serializes this BaseResponseListItemResponse to a JSON map.
   Map<String, dynamic> toJson();
@@ -51,7 +53,11 @@ mixin _$BaseResponseListItemResponse {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(data), message, code);
+    runtimeType,
+    const DeepCollectionEquality().hash(data),
+    message,
+    code,
+  );
 
   @override
   String toString() {
@@ -62,15 +68,16 @@ mixin _$BaseResponseListItemResponse {
 /// @nodoc
 abstract mixin class $BaseResponseListItemResponseCopyWith<$Res> {
   factory $BaseResponseListItemResponseCopyWith(
-          BaseResponseListItemResponse value,
-          $Res Function(BaseResponseListItemResponse) _then) =
-      _$BaseResponseListItemResponseCopyWithImpl;
+    BaseResponseListItemResponse value,
+    $Res Function(BaseResponseListItemResponse) _then,
+  ) = _$BaseResponseListItemResponseCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: BaseResponseListItemResponse.dataKey)
-      List<AppRouterGenericRouterItemResponse> data,
-      @JsonKey(name: BaseResponseListItemResponse.messageKey) String message,
-      @JsonKey(name: BaseResponseListItemResponse.codeKey) int code});
+  $Res call({
+    @JsonKey(name: BaseResponseListItemResponse.dataKey)
+    List<AppRouterGenericRouterItemResponse> data,
+    @JsonKey(name: BaseResponseListItemResponse.messageKey) String message,
+    @JsonKey(name: BaseResponseListItemResponse.codeKey) int code,
+  });
 }
 
 /// @nodoc
@@ -90,20 +97,25 @@ class _$BaseResponseListItemResponseCopyWithImpl<$Res>
     Object? message = null,
     Object? code = null,
   }) {
-    return _then(_self.copyWith(
-      data: null == data
-          ? _self.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as List<AppRouterGenericRouterItemResponse>,
-      message: null == message
-          ? _self.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      code: null == code
-          ? _self.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _self.copyWith(
+        data:
+            null == data
+                ? _self.data
+                : data // ignore: cast_nullable_to_non_nullable
+                    as List<AppRouterGenericRouterItemResponse>,
+        message:
+            null == message
+                ? _self.message
+                : message // ignore: cast_nullable_to_non_nullable
+                    as String,
+        code:
+            null == code
+                ? _self.code
+                : code // ignore: cast_nullable_to_non_nullable
+                    as int,
+      ),
+    );
   }
 }
 
@@ -111,14 +123,14 @@ class _$BaseResponseListItemResponseCopyWithImpl<$Res>
 
 @jsonSerializable
 class _BaseResponseListItemResponse extends BaseResponseListItemResponse {
-  const _BaseResponseListItemResponse(
-      {@JsonKey(name: BaseResponseListItemResponse.dataKey)
-      required final List<AppRouterGenericRouterItemResponse> data,
-      @JsonKey(name: BaseResponseListItemResponse.messageKey)
-      required this.message,
-      @JsonKey(name: BaseResponseListItemResponse.codeKey) required this.code})
-      : _data = data,
-        super._();
+  const _BaseResponseListItemResponse({
+    @JsonKey(name: BaseResponseListItemResponse.dataKey)
+    required final List<AppRouterGenericRouterItemResponse> data,
+    @JsonKey(name: BaseResponseListItemResponse.messageKey)
+    required this.message,
+    @JsonKey(name: BaseResponseListItemResponse.codeKey) required this.code,
+  }) : _data = data,
+       super._();
   factory _BaseResponseListItemResponse.fromJson(Map<String, dynamic> json) =>
       _$BaseResponseListItemResponseFromJson(json);
 
@@ -150,14 +162,13 @@ class _BaseResponseListItemResponse extends BaseResponseListItemResponse {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$BaseResponseListItemResponseCopyWith<_BaseResponseListItemResponse>
-      get copyWith => __$BaseResponseListItemResponseCopyWithImpl<
-          _BaseResponseListItemResponse>(this, _$identity);
+  get copyWith => __$BaseResponseListItemResponseCopyWithImpl<
+    _BaseResponseListItemResponse
+  >(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$BaseResponseListItemResponseToJson(
-      this,
-    );
+    return _$BaseResponseListItemResponseToJson(this);
   }
 
   @override
@@ -173,7 +184,11 @@ class _BaseResponseListItemResponse extends BaseResponseListItemResponse {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_data), message, code);
+    runtimeType,
+    const DeepCollectionEquality().hash(_data),
+    message,
+    code,
+  );
 
   @override
   String toString() {
@@ -185,16 +200,17 @@ class _BaseResponseListItemResponse extends BaseResponseListItemResponse {
 abstract mixin class _$BaseResponseListItemResponseCopyWith<$Res>
     implements $BaseResponseListItemResponseCopyWith<$Res> {
   factory _$BaseResponseListItemResponseCopyWith(
-          _BaseResponseListItemResponse value,
-          $Res Function(_BaseResponseListItemResponse) _then) =
-      __$BaseResponseListItemResponseCopyWithImpl;
+    _BaseResponseListItemResponse value,
+    $Res Function(_BaseResponseListItemResponse) _then,
+  ) = __$BaseResponseListItemResponseCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: BaseResponseListItemResponse.dataKey)
-      List<AppRouterGenericRouterItemResponse> data,
-      @JsonKey(name: BaseResponseListItemResponse.messageKey) String message,
-      @JsonKey(name: BaseResponseListItemResponse.codeKey) int code});
+  $Res call({
+    @JsonKey(name: BaseResponseListItemResponse.dataKey)
+    List<AppRouterGenericRouterItemResponse> data,
+    @JsonKey(name: BaseResponseListItemResponse.messageKey) String message,
+    @JsonKey(name: BaseResponseListItemResponse.codeKey) int code,
+  });
 }
 
 /// @nodoc
@@ -214,19 +230,24 @@ class __$BaseResponseListItemResponseCopyWithImpl<$Res>
     Object? message = null,
     Object? code = null,
   }) {
-    return _then(_BaseResponseListItemResponse(
-      data: null == data
-          ? _self._data
-          : data // ignore: cast_nullable_to_non_nullable
-              as List<AppRouterGenericRouterItemResponse>,
-      message: null == message
-          ? _self.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      code: null == code
-          ? _self.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _BaseResponseListItemResponse(
+        data:
+            null == data
+                ? _self._data
+                : data // ignore: cast_nullable_to_non_nullable
+                    as List<AppRouterGenericRouterItemResponse>,
+        message:
+            null == message
+                ? _self.message
+                : message // ignore: cast_nullable_to_non_nullable
+                    as String,
+        code:
+            null == code
+                ? _self.code
+                : code // ignore: cast_nullable_to_non_nullable
+                    as int,
+      ),
+    );
   }
 }

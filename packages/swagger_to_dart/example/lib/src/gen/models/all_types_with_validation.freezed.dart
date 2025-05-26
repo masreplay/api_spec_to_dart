@@ -48,7 +48,9 @@ mixin _$AllTypesWithValidation {
   @pragma('vm:prefer-inline')
   $AllTypesWithValidationCopyWith<AllTypesWithValidation> get copyWith =>
       _$AllTypesWithValidationCopyWithImpl<AllTypesWithValidation>(
-          this as AllTypesWithValidation, _$identity);
+        this as AllTypesWithValidation,
+        _$identity,
+      );
 
   /// Serializes this AllTypesWithValidation to a JSON map.
   Map<String, dynamic> toJson();
@@ -76,14 +78,15 @@ mixin _$AllTypesWithValidation {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      intValue,
-      floatValue,
-      strValue,
-      boolValue,
-      emailValue,
-      urlValue,
-      const DeepCollectionEquality().hash(listValue));
+    runtimeType,
+    intValue,
+    floatValue,
+    strValue,
+    boolValue,
+    emailValue,
+    urlValue,
+    const DeepCollectionEquality().hash(listValue),
+  );
 
   @override
   String toString() {
@@ -93,19 +96,20 @@ mixin _$AllTypesWithValidation {
 
 /// @nodoc
 abstract mixin class $AllTypesWithValidationCopyWith<$Res> {
-  factory $AllTypesWithValidationCopyWith(AllTypesWithValidation value,
-          $Res Function(AllTypesWithValidation) _then) =
-      _$AllTypesWithValidationCopyWithImpl;
+  factory $AllTypesWithValidationCopyWith(
+    AllTypesWithValidation value,
+    $Res Function(AllTypesWithValidation) _then,
+  ) = _$AllTypesWithValidationCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: AllTypesWithValidation.intValueKey) int intValue,
-      @JsonKey(name: AllTypesWithValidation.floatValueKey) double floatValue,
-      @JsonKey(name: AllTypesWithValidation.strValueKey) String strValue,
-      @JsonKey(name: AllTypesWithValidation.boolValueKey) bool boolValue,
-      @JsonKey(name: AllTypesWithValidation.emailValueKey) String emailValue,
-      @JsonKey(name: AllTypesWithValidation.urlValueKey) Uri urlValue,
-      @JsonKey(name: AllTypesWithValidation.listValueKey)
-      List<String> listValue});
+  $Res call({
+    @JsonKey(name: AllTypesWithValidation.intValueKey) int intValue,
+    @JsonKey(name: AllTypesWithValidation.floatValueKey) double floatValue,
+    @JsonKey(name: AllTypesWithValidation.strValueKey) String strValue,
+    @JsonKey(name: AllTypesWithValidation.boolValueKey) bool boolValue,
+    @JsonKey(name: AllTypesWithValidation.emailValueKey) String emailValue,
+    @JsonKey(name: AllTypesWithValidation.urlValueKey) Uri urlValue,
+    @JsonKey(name: AllTypesWithValidation.listValueKey) List<String> listValue,
+  });
 }
 
 /// @nodoc
@@ -129,36 +133,45 @@ class _$AllTypesWithValidationCopyWithImpl<$Res>
     Object? urlValue = null,
     Object? listValue = null,
   }) {
-    return _then(_self.copyWith(
-      intValue: null == intValue
-          ? _self.intValue
-          : intValue // ignore: cast_nullable_to_non_nullable
-              as int,
-      floatValue: null == floatValue
-          ? _self.floatValue
-          : floatValue // ignore: cast_nullable_to_non_nullable
-              as double,
-      strValue: null == strValue
-          ? _self.strValue
-          : strValue // ignore: cast_nullable_to_non_nullable
-              as String,
-      boolValue: null == boolValue
-          ? _self.boolValue
-          : boolValue // ignore: cast_nullable_to_non_nullable
-              as bool,
-      emailValue: null == emailValue
-          ? _self.emailValue
-          : emailValue // ignore: cast_nullable_to_non_nullable
-              as String,
-      urlValue: null == urlValue
-          ? _self.urlValue
-          : urlValue // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      listValue: null == listValue
-          ? _self.listValue
-          : listValue // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ));
+    return _then(
+      _self.copyWith(
+        intValue:
+            null == intValue
+                ? _self.intValue
+                : intValue // ignore: cast_nullable_to_non_nullable
+                    as int,
+        floatValue:
+            null == floatValue
+                ? _self.floatValue
+                : floatValue // ignore: cast_nullable_to_non_nullable
+                    as double,
+        strValue:
+            null == strValue
+                ? _self.strValue
+                : strValue // ignore: cast_nullable_to_non_nullable
+                    as String,
+        boolValue:
+            null == boolValue
+                ? _self.boolValue
+                : boolValue // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        emailValue:
+            null == emailValue
+                ? _self.emailValue
+                : emailValue // ignore: cast_nullable_to_non_nullable
+                    as String,
+        urlValue:
+            null == urlValue
+                ? _self.urlValue
+                : urlValue // ignore: cast_nullable_to_non_nullable
+                    as Uri,
+        listValue:
+            null == listValue
+                ? _self.listValue
+                : listValue // ignore: cast_nullable_to_non_nullable
+                    as List<String>,
+      ),
+    );
   }
 }
 
@@ -166,21 +179,19 @@ class _$AllTypesWithValidationCopyWithImpl<$Res>
 
 @jsonSerializable
 class _AllTypesWithValidation extends AllTypesWithValidation {
-  const _AllTypesWithValidation(
-      {@JsonKey(name: AllTypesWithValidation.intValueKey)
-      required this.intValue,
-      @JsonKey(name: AllTypesWithValidation.floatValueKey)
-      required this.floatValue,
-      @JsonKey(name: AllTypesWithValidation.strValueKey) required this.strValue,
-      @JsonKey(name: AllTypesWithValidation.boolValueKey)
-      required this.boolValue,
-      @JsonKey(name: AllTypesWithValidation.emailValueKey)
-      required this.emailValue,
-      @JsonKey(name: AllTypesWithValidation.urlValueKey) required this.urlValue,
-      @JsonKey(name: AllTypesWithValidation.listValueKey)
-      required final List<String> listValue})
-      : _listValue = listValue,
-        super._();
+  const _AllTypesWithValidation({
+    @JsonKey(name: AllTypesWithValidation.intValueKey) required this.intValue,
+    @JsonKey(name: AllTypesWithValidation.floatValueKey)
+    required this.floatValue,
+    @JsonKey(name: AllTypesWithValidation.strValueKey) required this.strValue,
+    @JsonKey(name: AllTypesWithValidation.boolValueKey) required this.boolValue,
+    @JsonKey(name: AllTypesWithValidation.emailValueKey)
+    required this.emailValue,
+    @JsonKey(name: AllTypesWithValidation.urlValueKey) required this.urlValue,
+    @JsonKey(name: AllTypesWithValidation.listValueKey)
+    required final List<String> listValue,
+  }) : _listValue = listValue,
+       super._();
   factory _AllTypesWithValidation.fromJson(Map<String, dynamic> json) =>
       _$AllTypesWithValidationFromJson(json);
 
@@ -233,13 +244,13 @@ class _AllTypesWithValidation extends AllTypesWithValidation {
   @pragma('vm:prefer-inline')
   _$AllTypesWithValidationCopyWith<_AllTypesWithValidation> get copyWith =>
       __$AllTypesWithValidationCopyWithImpl<_AllTypesWithValidation>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$AllTypesWithValidationToJson(
-      this,
-    );
+    return _$AllTypesWithValidationToJson(this);
   }
 
   @override
@@ -259,21 +270,24 @@ class _AllTypesWithValidation extends AllTypesWithValidation {
                 other.emailValue == emailValue) &&
             (identical(other.urlValue, urlValue) ||
                 other.urlValue == urlValue) &&
-            const DeepCollectionEquality()
-                .equals(other._listValue, _listValue));
+            const DeepCollectionEquality().equals(
+              other._listValue,
+              _listValue,
+            ));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      intValue,
-      floatValue,
-      strValue,
-      boolValue,
-      emailValue,
-      urlValue,
-      const DeepCollectionEquality().hash(_listValue));
+    runtimeType,
+    intValue,
+    floatValue,
+    strValue,
+    boolValue,
+    emailValue,
+    urlValue,
+    const DeepCollectionEquality().hash(_listValue),
+  );
 
   @override
   String toString() {
@@ -284,20 +298,21 @@ class _AllTypesWithValidation extends AllTypesWithValidation {
 /// @nodoc
 abstract mixin class _$AllTypesWithValidationCopyWith<$Res>
     implements $AllTypesWithValidationCopyWith<$Res> {
-  factory _$AllTypesWithValidationCopyWith(_AllTypesWithValidation value,
-          $Res Function(_AllTypesWithValidation) _then) =
-      __$AllTypesWithValidationCopyWithImpl;
+  factory _$AllTypesWithValidationCopyWith(
+    _AllTypesWithValidation value,
+    $Res Function(_AllTypesWithValidation) _then,
+  ) = __$AllTypesWithValidationCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: AllTypesWithValidation.intValueKey) int intValue,
-      @JsonKey(name: AllTypesWithValidation.floatValueKey) double floatValue,
-      @JsonKey(name: AllTypesWithValidation.strValueKey) String strValue,
-      @JsonKey(name: AllTypesWithValidation.boolValueKey) bool boolValue,
-      @JsonKey(name: AllTypesWithValidation.emailValueKey) String emailValue,
-      @JsonKey(name: AllTypesWithValidation.urlValueKey) Uri urlValue,
-      @JsonKey(name: AllTypesWithValidation.listValueKey)
-      List<String> listValue});
+  $Res call({
+    @JsonKey(name: AllTypesWithValidation.intValueKey) int intValue,
+    @JsonKey(name: AllTypesWithValidation.floatValueKey) double floatValue,
+    @JsonKey(name: AllTypesWithValidation.strValueKey) String strValue,
+    @JsonKey(name: AllTypesWithValidation.boolValueKey) bool boolValue,
+    @JsonKey(name: AllTypesWithValidation.emailValueKey) String emailValue,
+    @JsonKey(name: AllTypesWithValidation.urlValueKey) Uri urlValue,
+    @JsonKey(name: AllTypesWithValidation.listValueKey) List<String> listValue,
+  });
 }
 
 /// @nodoc
@@ -321,35 +336,44 @@ class __$AllTypesWithValidationCopyWithImpl<$Res>
     Object? urlValue = null,
     Object? listValue = null,
   }) {
-    return _then(_AllTypesWithValidation(
-      intValue: null == intValue
-          ? _self.intValue
-          : intValue // ignore: cast_nullable_to_non_nullable
-              as int,
-      floatValue: null == floatValue
-          ? _self.floatValue
-          : floatValue // ignore: cast_nullable_to_non_nullable
-              as double,
-      strValue: null == strValue
-          ? _self.strValue
-          : strValue // ignore: cast_nullable_to_non_nullable
-              as String,
-      boolValue: null == boolValue
-          ? _self.boolValue
-          : boolValue // ignore: cast_nullable_to_non_nullable
-              as bool,
-      emailValue: null == emailValue
-          ? _self.emailValue
-          : emailValue // ignore: cast_nullable_to_non_nullable
-              as String,
-      urlValue: null == urlValue
-          ? _self.urlValue
-          : urlValue // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      listValue: null == listValue
-          ? _self._listValue
-          : listValue // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ));
+    return _then(
+      _AllTypesWithValidation(
+        intValue:
+            null == intValue
+                ? _self.intValue
+                : intValue // ignore: cast_nullable_to_non_nullable
+                    as int,
+        floatValue:
+            null == floatValue
+                ? _self.floatValue
+                : floatValue // ignore: cast_nullable_to_non_nullable
+                    as double,
+        strValue:
+            null == strValue
+                ? _self.strValue
+                : strValue // ignore: cast_nullable_to_non_nullable
+                    as String,
+        boolValue:
+            null == boolValue
+                ? _self.boolValue
+                : boolValue // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        emailValue:
+            null == emailValue
+                ? _self.emailValue
+                : emailValue // ignore: cast_nullable_to_non_nullable
+                    as String,
+        urlValue:
+            null == urlValue
+                ? _self.urlValue
+                : urlValue // ignore: cast_nullable_to_non_nullable
+                    as Uri,
+        listValue:
+            null == listValue
+                ? _self._listValue
+                : listValue // ignore: cast_nullable_to_non_nullable
+                    as List<String>,
+      ),
+    );
   }
 }

@@ -49,7 +49,11 @@ mixin _$Parrot {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, name, typeAA, const DeepCollectionEquality().hash(phrases));
+    runtimeType,
+    name,
+    typeAA,
+    const DeepCollectionEquality().hash(phrases),
+  );
 
   @override
   String toString() {
@@ -62,10 +66,11 @@ abstract mixin class $ParrotCopyWith<$Res> {
   factory $ParrotCopyWith(Parrot value, $Res Function(Parrot) _then) =
       _$ParrotCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: Parrot.nameKey) String name,
-      @JsonKey(name: Parrot.typeAAKey) String typeAA,
-      @JsonKey(name: Parrot.phrasesKey) List<String> phrases});
+  $Res call({
+    @JsonKey(name: Parrot.nameKey) String name,
+    @JsonKey(name: Parrot.typeAAKey) String typeAA,
+    @JsonKey(name: Parrot.phrasesKey) List<String> phrases,
+  });
 }
 
 /// @nodoc
@@ -84,20 +89,25 @@ class _$ParrotCopyWithImpl<$Res> implements $ParrotCopyWith<$Res> {
     Object? typeAA = null,
     Object? phrases = null,
   }) {
-    return _then(_self.copyWith(
-      name: null == name
-          ? _self.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      typeAA: null == typeAA
-          ? _self.typeAA
-          : typeAA // ignore: cast_nullable_to_non_nullable
-              as String,
-      phrases: null == phrases
-          ? _self.phrases
-          : phrases // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ));
+    return _then(
+      _self.copyWith(
+        name:
+            null == name
+                ? _self.name
+                : name // ignore: cast_nullable_to_non_nullable
+                    as String,
+        typeAA:
+            null == typeAA
+                ? _self.typeAA
+                : typeAA // ignore: cast_nullable_to_non_nullable
+                    as String,
+        phrases:
+            null == phrases
+                ? _self.phrases
+                : phrases // ignore: cast_nullable_to_non_nullable
+                    as List<String>,
+      ),
+    );
   }
 }
 
@@ -105,12 +115,12 @@ class _$ParrotCopyWithImpl<$Res> implements $ParrotCopyWith<$Res> {
 
 @jsonSerializable
 class _Parrot extends Parrot {
-  const _Parrot(
-      {@JsonKey(name: Parrot.nameKey) required this.name,
-      @JsonKey(name: Parrot.typeAAKey) this.typeAA = 'parrot',
-      @JsonKey(name: Parrot.phrasesKey) required final List<String> phrases})
-      : _phrases = phrases,
-        super._();
+  const _Parrot({
+    @JsonKey(name: Parrot.nameKey) required this.name,
+    @JsonKey(name: Parrot.typeAAKey) this.typeAA = 'parrot',
+    @JsonKey(name: Parrot.phrasesKey) required final List<String> phrases,
+  }) : _phrases = phrases,
+       super._();
   factory _Parrot.fromJson(Map<String, dynamic> json) => _$ParrotFromJson(json);
 
   /// name
@@ -145,9 +155,7 @@ class _Parrot extends Parrot {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$ParrotToJson(
-      this,
-    );
+    return _$ParrotToJson(this);
   }
 
   @override
@@ -163,7 +171,11 @@ class _Parrot extends Parrot {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, name, typeAA, const DeepCollectionEquality().hash(_phrases));
+    runtimeType,
+    name,
+    typeAA,
+    const DeepCollectionEquality().hash(_phrases),
+  );
 
   @override
   String toString() {
@@ -177,10 +189,11 @@ abstract mixin class _$ParrotCopyWith<$Res> implements $ParrotCopyWith<$Res> {
       __$ParrotCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: Parrot.nameKey) String name,
-      @JsonKey(name: Parrot.typeAAKey) String typeAA,
-      @JsonKey(name: Parrot.phrasesKey) List<String> phrases});
+  $Res call({
+    @JsonKey(name: Parrot.nameKey) String name,
+    @JsonKey(name: Parrot.typeAAKey) String typeAA,
+    @JsonKey(name: Parrot.phrasesKey) List<String> phrases,
+  });
 }
 
 /// @nodoc
@@ -199,19 +212,24 @@ class __$ParrotCopyWithImpl<$Res> implements _$ParrotCopyWith<$Res> {
     Object? typeAA = null,
     Object? phrases = null,
   }) {
-    return _then(_Parrot(
-      name: null == name
-          ? _self.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      typeAA: null == typeAA
-          ? _self.typeAA
-          : typeAA // ignore: cast_nullable_to_non_nullable
-              as String,
-      phrases: null == phrases
-          ? _self._phrases
-          : phrases // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ));
+    return _then(
+      _Parrot(
+        name:
+            null == name
+                ? _self.name
+                : name // ignore: cast_nullable_to_non_nullable
+                    as String,
+        typeAA:
+            null == typeAA
+                ? _self.typeAA
+                : typeAA // ignore: cast_nullable_to_non_nullable
+                    as String,
+        phrases:
+            null == phrases
+                ? _self._phrases
+                : phrases // ignore: cast_nullable_to_non_nullable
+                    as List<String>,
+      ),
+    );
   }
 }

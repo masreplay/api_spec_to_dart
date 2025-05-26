@@ -19,8 +19,12 @@ LocationUser _$LocationUserFromJson(Map<String, dynamic> json) {
       return LocationUserLocation.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'runtimeType', 'LocationUser',
-          'Invalid union type "${json['runtimeType']}"!');
+      throw CheckedFromJsonException(
+        json,
+        'runtimeType',
+        'LocationUser',
+        'Invalid union type "${json['runtimeType']}"!',
+      );
   }
 }
 
@@ -60,8 +64,8 @@ class $LocationUserCopyWith<$Res> {
 @jsonSerializable
 class LocationUserUser extends LocationUser {
   const LocationUserUser(this.value, {final String? $type})
-      : $type = $type ?? 'user',
-        super._();
+    : $type = $type ?? 'user',
+      super._();
   factory LocationUserUser.fromJson(Map<String, dynamic> json) =>
       _$LocationUserUserFromJson(json);
 
@@ -80,9 +84,7 @@ class LocationUserUser extends LocationUser {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$LocationUserUserToJson(
-      this,
-    );
+    return _$LocationUserUserToJson(this);
   }
 
   @override
@@ -107,8 +109,9 @@ class LocationUserUser extends LocationUser {
 abstract mixin class $LocationUserUserCopyWith<$Res>
     implements $LocationUserCopyWith<$Res> {
   factory $LocationUserUserCopyWith(
-          LocationUserUser value, $Res Function(LocationUserUser) _then) =
-      _$LocationUserUserCopyWithImpl;
+    LocationUserUser value,
+    $Res Function(LocationUserUser) _then,
+  ) = _$LocationUserUserCopyWithImpl;
   @useResult
   $Res call({User value});
 
@@ -126,15 +129,15 @@ class _$LocationUserUserCopyWithImpl<$Res>
   /// Create a copy of LocationUser
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? value = null,
-  }) {
-    return _then(LocationUserUser(
-      null == value
-          ? _self.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as User,
-    ));
+  $Res call({Object? value = null}) {
+    return _then(
+      LocationUserUser(
+        null == value
+            ? _self.value
+            : value // ignore: cast_nullable_to_non_nullable
+                as User,
+      ),
+    );
   }
 
   /// Create a copy of LocationUser
@@ -153,8 +156,8 @@ class _$LocationUserUserCopyWithImpl<$Res>
 @jsonSerializable
 class LocationUserLocation extends LocationUser {
   const LocationUserLocation(this.value, {final String? $type})
-      : $type = $type ?? 'location',
-        super._();
+    : $type = $type ?? 'location',
+      super._();
   factory LocationUserLocation.fromJson(Map<String, dynamic> json) =>
       _$LocationUserLocationFromJson(json);
 
@@ -170,13 +173,13 @@ class LocationUserLocation extends LocationUser {
   @pragma('vm:prefer-inline')
   $LocationUserLocationCopyWith<LocationUserLocation> get copyWith =>
       _$LocationUserLocationCopyWithImpl<LocationUserLocation>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$LocationUserLocationToJson(
-      this,
-    );
+    return _$LocationUserLocationToJson(this);
   }
 
   @override
@@ -200,9 +203,10 @@ class LocationUserLocation extends LocationUser {
 /// @nodoc
 abstract mixin class $LocationUserLocationCopyWith<$Res>
     implements $LocationUserCopyWith<$Res> {
-  factory $LocationUserLocationCopyWith(LocationUserLocation value,
-          $Res Function(LocationUserLocation) _then) =
-      _$LocationUserLocationCopyWithImpl;
+  factory $LocationUserLocationCopyWith(
+    LocationUserLocation value,
+    $Res Function(LocationUserLocation) _then,
+  ) = _$LocationUserLocationCopyWithImpl;
   @useResult
   $Res call({Location value});
 
@@ -220,15 +224,15 @@ class _$LocationUserLocationCopyWithImpl<$Res>
   /// Create a copy of LocationUser
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? value = null,
-  }) {
-    return _then(LocationUserLocation(
-      null == value
-          ? _self.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as Location,
-    ));
+  $Res call({Object? value = null}) {
+    return _then(
+      LocationUserLocation(
+        null == value
+            ? _self.value
+            : value // ignore: cast_nullable_to_non_nullable
+                as Location,
+      ),
+    );
   }
 
   /// Create a copy of LocationUser

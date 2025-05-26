@@ -13,7 +13,4 @@ _ItemResponseInput _$ItemResponseInputFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$ItemResponseInputToJson(_ItemResponseInput instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-    };
+    <String, dynamic>{'id': instance.id, 'name': instance.name};

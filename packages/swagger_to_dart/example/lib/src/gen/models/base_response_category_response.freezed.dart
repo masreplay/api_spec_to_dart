@@ -31,9 +31,11 @@ mixin _$BaseResponseCategoryResponse {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $BaseResponseCategoryResponseCopyWith<BaseResponseCategoryResponse>
-      get copyWith => _$BaseResponseCategoryResponseCopyWithImpl<
-              BaseResponseCategoryResponse>(
-          this as BaseResponseCategoryResponse, _$identity);
+  get copyWith =>
+      _$BaseResponseCategoryResponseCopyWithImpl<BaseResponseCategoryResponse>(
+        this as BaseResponseCategoryResponse,
+        _$identity,
+      );
 
   /// Serializes this BaseResponseCategoryResponse to a JSON map.
   Map<String, dynamic> toJson();
@@ -61,15 +63,15 @@ mixin _$BaseResponseCategoryResponse {
 /// @nodoc
 abstract mixin class $BaseResponseCategoryResponseCopyWith<$Res> {
   factory $BaseResponseCategoryResponseCopyWith(
-          BaseResponseCategoryResponse value,
-          $Res Function(BaseResponseCategoryResponse) _then) =
-      _$BaseResponseCategoryResponseCopyWithImpl;
+    BaseResponseCategoryResponse value,
+    $Res Function(BaseResponseCategoryResponse) _then,
+  ) = _$BaseResponseCategoryResponseCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: BaseResponseCategoryResponse.dataKey)
-      CategoryResponse data,
-      @JsonKey(name: BaseResponseCategoryResponse.messageKey) String message,
-      @JsonKey(name: BaseResponseCategoryResponse.codeKey) int code});
+  $Res call({
+    @JsonKey(name: BaseResponseCategoryResponse.dataKey) CategoryResponse data,
+    @JsonKey(name: BaseResponseCategoryResponse.messageKey) String message,
+    @JsonKey(name: BaseResponseCategoryResponse.codeKey) int code,
+  });
 
   $CategoryResponseCopyWith<$Res> get data;
 }
@@ -91,20 +93,25 @@ class _$BaseResponseCategoryResponseCopyWithImpl<$Res>
     Object? message = null,
     Object? code = null,
   }) {
-    return _then(_self.copyWith(
-      data: null == data
-          ? _self.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as CategoryResponse,
-      message: null == message
-          ? _self.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      code: null == code
-          ? _self.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _self.copyWith(
+        data:
+            null == data
+                ? _self.data
+                : data // ignore: cast_nullable_to_non_nullable
+                    as CategoryResponse,
+        message:
+            null == message
+                ? _self.message
+                : message // ignore: cast_nullable_to_non_nullable
+                    as String,
+        code:
+            null == code
+                ? _self.code
+                : code // ignore: cast_nullable_to_non_nullable
+                    as int,
+      ),
+    );
   }
 
   /// Create a copy of BaseResponseCategoryResponse
@@ -122,12 +129,12 @@ class _$BaseResponseCategoryResponseCopyWithImpl<$Res>
 
 @jsonSerializable
 class _BaseResponseCategoryResponse extends BaseResponseCategoryResponse {
-  const _BaseResponseCategoryResponse(
-      {@JsonKey(name: BaseResponseCategoryResponse.dataKey) required this.data,
-      @JsonKey(name: BaseResponseCategoryResponse.messageKey)
-      required this.message,
-      @JsonKey(name: BaseResponseCategoryResponse.codeKey) required this.code})
-      : super._();
+  const _BaseResponseCategoryResponse({
+    @JsonKey(name: BaseResponseCategoryResponse.dataKey) required this.data,
+    @JsonKey(name: BaseResponseCategoryResponse.messageKey)
+    required this.message,
+    @JsonKey(name: BaseResponseCategoryResponse.codeKey) required this.code,
+  }) : super._();
   factory _BaseResponseCategoryResponse.fromJson(Map<String, dynamic> json) =>
       _$BaseResponseCategoryResponseFromJson(json);
 
@@ -152,14 +159,13 @@ class _BaseResponseCategoryResponse extends BaseResponseCategoryResponse {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$BaseResponseCategoryResponseCopyWith<_BaseResponseCategoryResponse>
-      get copyWith => __$BaseResponseCategoryResponseCopyWithImpl<
-          _BaseResponseCategoryResponse>(this, _$identity);
+  get copyWith => __$BaseResponseCategoryResponseCopyWithImpl<
+    _BaseResponseCategoryResponse
+  >(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$BaseResponseCategoryResponseToJson(
-      this,
-    );
+    return _$BaseResponseCategoryResponseToJson(this);
   }
 
   @override
@@ -186,16 +192,16 @@ class _BaseResponseCategoryResponse extends BaseResponseCategoryResponse {
 abstract mixin class _$BaseResponseCategoryResponseCopyWith<$Res>
     implements $BaseResponseCategoryResponseCopyWith<$Res> {
   factory _$BaseResponseCategoryResponseCopyWith(
-          _BaseResponseCategoryResponse value,
-          $Res Function(_BaseResponseCategoryResponse) _then) =
-      __$BaseResponseCategoryResponseCopyWithImpl;
+    _BaseResponseCategoryResponse value,
+    $Res Function(_BaseResponseCategoryResponse) _then,
+  ) = __$BaseResponseCategoryResponseCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: BaseResponseCategoryResponse.dataKey)
-      CategoryResponse data,
-      @JsonKey(name: BaseResponseCategoryResponse.messageKey) String message,
-      @JsonKey(name: BaseResponseCategoryResponse.codeKey) int code});
+  $Res call({
+    @JsonKey(name: BaseResponseCategoryResponse.dataKey) CategoryResponse data,
+    @JsonKey(name: BaseResponseCategoryResponse.messageKey) String message,
+    @JsonKey(name: BaseResponseCategoryResponse.codeKey) int code,
+  });
 
   @override
   $CategoryResponseCopyWith<$Res> get data;
@@ -218,20 +224,25 @@ class __$BaseResponseCategoryResponseCopyWithImpl<$Res>
     Object? message = null,
     Object? code = null,
   }) {
-    return _then(_BaseResponseCategoryResponse(
-      data: null == data
-          ? _self.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as CategoryResponse,
-      message: null == message
-          ? _self.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      code: null == code
-          ? _self.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _BaseResponseCategoryResponse(
+        data:
+            null == data
+                ? _self.data
+                : data // ignore: cast_nullable_to_non_nullable
+                    as CategoryResponse,
+        message:
+            null == message
+                ? _self.message
+                : message // ignore: cast_nullable_to_non_nullable
+                    as String,
+        code:
+            null == code
+                ? _self.code
+                : code // ignore: cast_nullable_to_non_nullable
+                    as int,
+      ),
+    );
   }
 
   /// Create a copy of BaseResponseCategoryResponse

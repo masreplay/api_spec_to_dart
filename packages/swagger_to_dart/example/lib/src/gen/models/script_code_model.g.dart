@@ -12,9 +12,7 @@ _ScriptCodeModel _$ScriptCodeModelFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$ScriptCodeModelToJson(_ScriptCodeModel instance) =>
-    <String, dynamic>{
-      'script_code': instance.scriptCode.toJson(),
-    };
+    <String, dynamic>{'script_code': instance.scriptCode.toJson()};
 
 const _$ScriptCodeEnumEnumMap = {
   ScriptCodeEnum.adlm: 'Adlm',

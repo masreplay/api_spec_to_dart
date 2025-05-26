@@ -90,7 +90,16 @@ abstract class ApiClientConfig with _$ApiClientConfig {
       _$ApiClientConfigFromJson(json);
 }
 
-enum GenerationSource { fastapi, dotnet }
+/// The source of the generation
+enum GenerationSource {
+  /// The source is FastAPI
+  /// https://fastapi.tiangolo.com/
+  fastAPI,
+
+  /// The source is .NET
+  /// https://dotnet.microsoft.com
+  dotnet,
+}
 
 @freezed
 abstract class SwaggerToDart with _$SwaggerToDart {

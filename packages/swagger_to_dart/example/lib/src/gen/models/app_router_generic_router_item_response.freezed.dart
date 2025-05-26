@@ -27,10 +27,11 @@ mixin _$AppRouterGenericRouterItemResponse {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $AppRouterGenericRouterItemResponseCopyWith<
-          AppRouterGenericRouterItemResponse>
-      get copyWith => _$AppRouterGenericRouterItemResponseCopyWithImpl<
-              AppRouterGenericRouterItemResponse>(
-          this as AppRouterGenericRouterItemResponse, _$identity);
+    AppRouterGenericRouterItemResponse
+  >
+  get copyWith => _$AppRouterGenericRouterItemResponseCopyWithImpl<
+    AppRouterGenericRouterItemResponse
+  >(this as AppRouterGenericRouterItemResponse, _$identity);
 
   /// Serializes this AppRouterGenericRouterItemResponse to a JSON map.
   Map<String, dynamic> toJson();
@@ -57,13 +58,14 @@ mixin _$AppRouterGenericRouterItemResponse {
 /// @nodoc
 abstract mixin class $AppRouterGenericRouterItemResponseCopyWith<$Res> {
   factory $AppRouterGenericRouterItemResponseCopyWith(
-          AppRouterGenericRouterItemResponse value,
-          $Res Function(AppRouterGenericRouterItemResponse) _then) =
-      _$AppRouterGenericRouterItemResponseCopyWithImpl;
+    AppRouterGenericRouterItemResponse value,
+    $Res Function(AppRouterGenericRouterItemResponse) _then,
+  ) = _$AppRouterGenericRouterItemResponseCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: AppRouterGenericRouterItemResponse.idKey) int id,
-      @JsonKey(name: AppRouterGenericRouterItemResponse.nameKey) String name});
+  $Res call({
+    @JsonKey(name: AppRouterGenericRouterItemResponse.idKey) int id,
+    @JsonKey(name: AppRouterGenericRouterItemResponse.nameKey) String name,
+  });
 }
 
 /// @nodoc
@@ -78,20 +80,21 @@ class _$AppRouterGenericRouterItemResponseCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? id = null,
-    Object? name = null,
-  }) {
-    return _then(_self.copyWith(
-      id: null == id
-          ? _self.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
-          ? _self.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? id = null, Object? name = null}) {
+    return _then(
+      _self.copyWith(
+        id:
+            null == id
+                ? _self.id
+                : id // ignore: cast_nullable_to_non_nullable
+                    as int,
+        name:
+            null == name
+                ? _self.name
+                : name // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
@@ -100,15 +103,14 @@ class _$AppRouterGenericRouterItemResponseCopyWithImpl<$Res>
 @jsonSerializable
 class _AppRouterGenericRouterItemResponse
     extends AppRouterGenericRouterItemResponse {
-  const _AppRouterGenericRouterItemResponse(
-      {@JsonKey(name: AppRouterGenericRouterItemResponse.idKey)
-      required this.id,
-      @JsonKey(name: AppRouterGenericRouterItemResponse.nameKey)
-      required this.name})
-      : super._();
+  const _AppRouterGenericRouterItemResponse({
+    @JsonKey(name: AppRouterGenericRouterItemResponse.idKey) required this.id,
+    @JsonKey(name: AppRouterGenericRouterItemResponse.nameKey)
+    required this.name,
+  }) : super._();
   factory _AppRouterGenericRouterItemResponse.fromJson(
-          Map<String, dynamic> json) =>
-      _$AppRouterGenericRouterItemResponseFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$AppRouterGenericRouterItemResponseFromJson(json);
 
   /// id
   @override
@@ -126,15 +128,15 @@ class _AppRouterGenericRouterItemResponse
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$AppRouterGenericRouterItemResponseCopyWith<
-          _AppRouterGenericRouterItemResponse>
-      get copyWith => __$AppRouterGenericRouterItemResponseCopyWithImpl<
-          _AppRouterGenericRouterItemResponse>(this, _$identity);
+    _AppRouterGenericRouterItemResponse
+  >
+  get copyWith => __$AppRouterGenericRouterItemResponseCopyWithImpl<
+    _AppRouterGenericRouterItemResponse
+  >(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$AppRouterGenericRouterItemResponseToJson(
-      this,
-    );
+    return _$AppRouterGenericRouterItemResponseToJson(this);
   }
 
   @override
@@ -160,14 +162,15 @@ class _AppRouterGenericRouterItemResponse
 abstract mixin class _$AppRouterGenericRouterItemResponseCopyWith<$Res>
     implements $AppRouterGenericRouterItemResponseCopyWith<$Res> {
   factory _$AppRouterGenericRouterItemResponseCopyWith(
-          _AppRouterGenericRouterItemResponse value,
-          $Res Function(_AppRouterGenericRouterItemResponse) _then) =
-      __$AppRouterGenericRouterItemResponseCopyWithImpl;
+    _AppRouterGenericRouterItemResponse value,
+    $Res Function(_AppRouterGenericRouterItemResponse) _then,
+  ) = __$AppRouterGenericRouterItemResponseCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: AppRouterGenericRouterItemResponse.idKey) int id,
-      @JsonKey(name: AppRouterGenericRouterItemResponse.nameKey) String name});
+  $Res call({
+    @JsonKey(name: AppRouterGenericRouterItemResponse.idKey) int id,
+    @JsonKey(name: AppRouterGenericRouterItemResponse.nameKey) String name,
+  });
 }
 
 /// @nodoc
@@ -182,19 +185,20 @@ class __$AppRouterGenericRouterItemResponseCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? id = null,
-    Object? name = null,
-  }) {
-    return _then(_AppRouterGenericRouterItemResponse(
-      id: null == id
-          ? _self.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
-          ? _self.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? id = null, Object? name = null}) {
+    return _then(
+      _AppRouterGenericRouterItemResponse(
+        id:
+            null == id
+                ? _self.id
+                : id // ignore: cast_nullable_to_non_nullable
+                    as int,
+        name:
+            null == name
+                ? _self.name
+                : name // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }

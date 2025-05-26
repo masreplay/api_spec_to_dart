@@ -39,9 +39,9 @@ mixin _$AppRouterItemsRouterItemResponse {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $AppRouterItemsRouterItemResponseCopyWith<AppRouterItemsRouterItemResponse>
-      get copyWith => _$AppRouterItemsRouterItemResponseCopyWithImpl<
-              AppRouterItemsRouterItemResponse>(
-          this as AppRouterItemsRouterItemResponse, _$identity);
+  get copyWith => _$AppRouterItemsRouterItemResponseCopyWithImpl<
+    AppRouterItemsRouterItemResponse
+  >(this as AppRouterItemsRouterItemResponse, _$identity);
 
   /// Serializes this AppRouterItemsRouterItemResponse to a JSON map.
   Map<String, dynamic> toJson();
@@ -73,17 +73,18 @@ mixin _$AppRouterItemsRouterItemResponse {
 /// @nodoc
 abstract mixin class $AppRouterItemsRouterItemResponseCopyWith<$Res> {
   factory $AppRouterItemsRouterItemResponseCopyWith(
-          AppRouterItemsRouterItemResponse value,
-          $Res Function(AppRouterItemsRouterItemResponse) _then) =
-      _$AppRouterItemsRouterItemResponseCopyWithImpl;
+    AppRouterItemsRouterItemResponse value,
+    $Res Function(AppRouterItemsRouterItemResponse) _then,
+  ) = _$AppRouterItemsRouterItemResponseCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: AppRouterItemsRouterItemResponse.idKey) int id,
-      @JsonKey(name: AppRouterItemsRouterItemResponse.nameKey) String name,
-      @JsonKey(name: AppRouterItemsRouterItemResponse.descriptionKey)
-      String? description,
-      @JsonKey(name: AppRouterItemsRouterItemResponse.priceKey) double price,
-      @JsonKey(name: AppRouterItemsRouterItemResponse.taxKey) double? tax});
+  $Res call({
+    @JsonKey(name: AppRouterItemsRouterItemResponse.idKey) int id,
+    @JsonKey(name: AppRouterItemsRouterItemResponse.nameKey) String name,
+    @JsonKey(name: AppRouterItemsRouterItemResponse.descriptionKey)
+    String? description,
+    @JsonKey(name: AppRouterItemsRouterItemResponse.priceKey) double price,
+    @JsonKey(name: AppRouterItemsRouterItemResponse.taxKey) double? tax,
+  });
 }
 
 /// @nodoc
@@ -105,28 +106,35 @@ class _$AppRouterItemsRouterItemResponseCopyWithImpl<$Res>
     Object? price = null,
     Object? tax = freezed,
   }) {
-    return _then(_self.copyWith(
-      id: null == id
-          ? _self.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
-          ? _self.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: freezed == description
-          ? _self.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      price: null == price
-          ? _self.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as double,
-      tax: freezed == tax
-          ? _self.tax
-          : tax // ignore: cast_nullable_to_non_nullable
-              as double?,
-    ));
+    return _then(
+      _self.copyWith(
+        id:
+            null == id
+                ? _self.id
+                : id // ignore: cast_nullable_to_non_nullable
+                    as int,
+        name:
+            null == name
+                ? _self.name
+                : name // ignore: cast_nullable_to_non_nullable
+                    as String,
+        description:
+            freezed == description
+                ? _self.description
+                : description // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        price:
+            null == price
+                ? _self.price
+                : price // ignore: cast_nullable_to_non_nullable
+                    as double,
+        tax:
+            freezed == tax
+                ? _self.tax
+                : tax // ignore: cast_nullable_to_non_nullable
+                    as double?,
+      ),
+    );
   }
 }
 
@@ -135,20 +143,18 @@ class _$AppRouterItemsRouterItemResponseCopyWithImpl<$Res>
 @jsonSerializable
 class _AppRouterItemsRouterItemResponse
     extends AppRouterItemsRouterItemResponse {
-  const _AppRouterItemsRouterItemResponse(
-      {@JsonKey(name: AppRouterItemsRouterItemResponse.idKey) required this.id,
-      @JsonKey(name: AppRouterItemsRouterItemResponse.nameKey)
-      required this.name,
-      @JsonKey(name: AppRouterItemsRouterItemResponse.descriptionKey)
-      required this.description,
-      @JsonKey(name: AppRouterItemsRouterItemResponse.priceKey)
-      required this.price,
-      @JsonKey(name: AppRouterItemsRouterItemResponse.taxKey)
-      required this.tax})
-      : super._();
+  const _AppRouterItemsRouterItemResponse({
+    @JsonKey(name: AppRouterItemsRouterItemResponse.idKey) required this.id,
+    @JsonKey(name: AppRouterItemsRouterItemResponse.nameKey) required this.name,
+    @JsonKey(name: AppRouterItemsRouterItemResponse.descriptionKey)
+    required this.description,
+    @JsonKey(name: AppRouterItemsRouterItemResponse.priceKey)
+    required this.price,
+    @JsonKey(name: AppRouterItemsRouterItemResponse.taxKey) required this.tax,
+  }) : super._();
   factory _AppRouterItemsRouterItemResponse.fromJson(
-          Map<String, dynamic> json) =>
-      _$AppRouterItemsRouterItemResponseFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$AppRouterItemsRouterItemResponseFromJson(json);
 
   /// id
   @override
@@ -181,14 +187,13 @@ class _AppRouterItemsRouterItemResponse
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$AppRouterItemsRouterItemResponseCopyWith<_AppRouterItemsRouterItemResponse>
-      get copyWith => __$AppRouterItemsRouterItemResponseCopyWithImpl<
-          _AppRouterItemsRouterItemResponse>(this, _$identity);
+  get copyWith => __$AppRouterItemsRouterItemResponseCopyWithImpl<
+    _AppRouterItemsRouterItemResponse
+  >(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$AppRouterItemsRouterItemResponseToJson(
-      this,
-    );
+    return _$AppRouterItemsRouterItemResponseToJson(this);
   }
 
   @override
@@ -219,18 +224,19 @@ class _AppRouterItemsRouterItemResponse
 abstract mixin class _$AppRouterItemsRouterItemResponseCopyWith<$Res>
     implements $AppRouterItemsRouterItemResponseCopyWith<$Res> {
   factory _$AppRouterItemsRouterItemResponseCopyWith(
-          _AppRouterItemsRouterItemResponse value,
-          $Res Function(_AppRouterItemsRouterItemResponse) _then) =
-      __$AppRouterItemsRouterItemResponseCopyWithImpl;
+    _AppRouterItemsRouterItemResponse value,
+    $Res Function(_AppRouterItemsRouterItemResponse) _then,
+  ) = __$AppRouterItemsRouterItemResponseCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: AppRouterItemsRouterItemResponse.idKey) int id,
-      @JsonKey(name: AppRouterItemsRouterItemResponse.nameKey) String name,
-      @JsonKey(name: AppRouterItemsRouterItemResponse.descriptionKey)
-      String? description,
-      @JsonKey(name: AppRouterItemsRouterItemResponse.priceKey) double price,
-      @JsonKey(name: AppRouterItemsRouterItemResponse.taxKey) double? tax});
+  $Res call({
+    @JsonKey(name: AppRouterItemsRouterItemResponse.idKey) int id,
+    @JsonKey(name: AppRouterItemsRouterItemResponse.nameKey) String name,
+    @JsonKey(name: AppRouterItemsRouterItemResponse.descriptionKey)
+    String? description,
+    @JsonKey(name: AppRouterItemsRouterItemResponse.priceKey) double price,
+    @JsonKey(name: AppRouterItemsRouterItemResponse.taxKey) double? tax,
+  });
 }
 
 /// @nodoc
@@ -252,27 +258,34 @@ class __$AppRouterItemsRouterItemResponseCopyWithImpl<$Res>
     Object? price = null,
     Object? tax = freezed,
   }) {
-    return _then(_AppRouterItemsRouterItemResponse(
-      id: null == id
-          ? _self.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
-          ? _self.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: freezed == description
-          ? _self.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      price: null == price
-          ? _self.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as double,
-      tax: freezed == tax
-          ? _self.tax
-          : tax // ignore: cast_nullable_to_non_nullable
-              as double?,
-    ));
+    return _then(
+      _AppRouterItemsRouterItemResponse(
+        id:
+            null == id
+                ? _self.id
+                : id // ignore: cast_nullable_to_non_nullable
+                    as int,
+        name:
+            null == name
+                ? _self.name
+                : name // ignore: cast_nullable_to_non_nullable
+                    as String,
+        description:
+            freezed == description
+                ? _self.description
+                : description // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        price:
+            null == price
+                ? _self.price
+                : price // ignore: cast_nullable_to_non_nullable
+                    as double,
+        tax:
+            freezed == tax
+                ? _self.tax
+                : tax // ignore: cast_nullable_to_non_nullable
+                    as double?,
+      ),
+    );
   }
 }

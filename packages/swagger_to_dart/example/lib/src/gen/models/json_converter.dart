@@ -49,10 +49,12 @@ class MultipartFileJsonConverter
   MultipartFile toJson(MultipartFile object) => object;
 }
 
+const jsonSerializableConverters = <JsonConverter>[
+  MultipartFileJsonConverter(),
+  CatDogParrotMapJsonConverter(),
+  LocationUserMapJsonConverter(),
+];
+
 const jsonSerializable = JsonSerializable(
-  converters: [
-    MultipartFileJsonConverter(),
-    CatDogParrotMapJsonConverter(),
-    LocationUserMapJsonConverter(),
-  ],
+  converters: jsonSerializableConverters,
 );

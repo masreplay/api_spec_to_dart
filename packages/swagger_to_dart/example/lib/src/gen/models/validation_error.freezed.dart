@@ -32,7 +32,9 @@ mixin _$ValidationError {
   @pragma('vm:prefer-inline')
   $ValidationErrorCopyWith<ValidationError> get copyWith =>
       _$ValidationErrorCopyWithImpl<ValidationError>(
-          this as ValidationError, _$identity);
+        this as ValidationError,
+        _$identity,
+      );
 
   /// Serializes this ValidationError to a JSON map.
   Map<String, dynamic> toJson();
@@ -50,7 +52,11 @@ mixin _$ValidationError {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(loc), msg, typeAA);
+    runtimeType,
+    const DeepCollectionEquality().hash(loc),
+    msg,
+    typeAA,
+  );
 
   @override
   String toString() {
@@ -61,13 +67,15 @@ mixin _$ValidationError {
 /// @nodoc
 abstract mixin class $ValidationErrorCopyWith<$Res> {
   factory $ValidationErrorCopyWith(
-          ValidationError value, $Res Function(ValidationError) _then) =
-      _$ValidationErrorCopyWithImpl;
+    ValidationError value,
+    $Res Function(ValidationError) _then,
+  ) = _$ValidationErrorCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: ValidationError.locKey) List<dynamic> loc,
-      @JsonKey(name: ValidationError.msgKey) String msg,
-      @JsonKey(name: ValidationError.typeAAKey) String typeAA});
+  $Res call({
+    @JsonKey(name: ValidationError.locKey) List<dynamic> loc,
+    @JsonKey(name: ValidationError.msgKey) String msg,
+    @JsonKey(name: ValidationError.typeAAKey) String typeAA,
+  });
 }
 
 /// @nodoc
@@ -82,25 +90,26 @@ class _$ValidationErrorCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? loc = null,
-    Object? msg = null,
-    Object? typeAA = null,
-  }) {
-    return _then(_self.copyWith(
-      loc: null == loc
-          ? _self.loc
-          : loc // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
-      msg: null == msg
-          ? _self.msg
-          : msg // ignore: cast_nullable_to_non_nullable
-              as String,
-      typeAA: null == typeAA
-          ? _self.typeAA
-          : typeAA // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? loc = null, Object? msg = null, Object? typeAA = null}) {
+    return _then(
+      _self.copyWith(
+        loc:
+            null == loc
+                ? _self.loc
+                : loc // ignore: cast_nullable_to_non_nullable
+                    as List<dynamic>,
+        msg:
+            null == msg
+                ? _self.msg
+                : msg // ignore: cast_nullable_to_non_nullable
+                    as String,
+        typeAA:
+            null == typeAA
+                ? _self.typeAA
+                : typeAA // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
@@ -108,12 +117,12 @@ class _$ValidationErrorCopyWithImpl<$Res>
 
 @jsonSerializable
 class _ValidationError extends ValidationError {
-  const _ValidationError(
-      {@JsonKey(name: ValidationError.locKey) required final List<dynamic> loc,
-      @JsonKey(name: ValidationError.msgKey) required this.msg,
-      @JsonKey(name: ValidationError.typeAAKey) required this.typeAA})
-      : _loc = loc,
-        super._();
+  const _ValidationError({
+    @JsonKey(name: ValidationError.locKey) required final List<dynamic> loc,
+    @JsonKey(name: ValidationError.msgKey) required this.msg,
+    @JsonKey(name: ValidationError.typeAAKey) required this.typeAA,
+  }) : _loc = loc,
+       super._();
   factory _ValidationError.fromJson(Map<String, dynamic> json) =>
       _$ValidationErrorFromJson(json);
 
@@ -149,9 +158,7 @@ class _ValidationError extends ValidationError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$ValidationErrorToJson(
-      this,
-    );
+    return _$ValidationErrorToJson(this);
   }
 
   @override
@@ -167,7 +174,11 @@ class _ValidationError extends ValidationError {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_loc), msg, typeAA);
+    runtimeType,
+    const DeepCollectionEquality().hash(_loc),
+    msg,
+    typeAA,
+  );
 
   @override
   String toString() {
@@ -179,14 +190,16 @@ class _ValidationError extends ValidationError {
 abstract mixin class _$ValidationErrorCopyWith<$Res>
     implements $ValidationErrorCopyWith<$Res> {
   factory _$ValidationErrorCopyWith(
-          _ValidationError value, $Res Function(_ValidationError) _then) =
-      __$ValidationErrorCopyWithImpl;
+    _ValidationError value,
+    $Res Function(_ValidationError) _then,
+  ) = __$ValidationErrorCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: ValidationError.locKey) List<dynamic> loc,
-      @JsonKey(name: ValidationError.msgKey) String msg,
-      @JsonKey(name: ValidationError.typeAAKey) String typeAA});
+  $Res call({
+    @JsonKey(name: ValidationError.locKey) List<dynamic> loc,
+    @JsonKey(name: ValidationError.msgKey) String msg,
+    @JsonKey(name: ValidationError.typeAAKey) String typeAA,
+  });
 }
 
 /// @nodoc
@@ -201,24 +214,25 @@ class __$ValidationErrorCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? loc = null,
-    Object? msg = null,
-    Object? typeAA = null,
-  }) {
-    return _then(_ValidationError(
-      loc: null == loc
-          ? _self._loc
-          : loc // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
-      msg: null == msg
-          ? _self.msg
-          : msg // ignore: cast_nullable_to_non_nullable
-              as String,
-      typeAA: null == typeAA
-          ? _self.typeAA
-          : typeAA // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? loc = null, Object? msg = null, Object? typeAA = null}) {
+    return _then(
+      _ValidationError(
+        loc:
+            null == loc
+                ? _self._loc
+                : loc // ignore: cast_nullable_to_non_nullable
+                    as List<dynamic>,
+        msg:
+            null == msg
+                ? _self.msg
+                : msg // ignore: cast_nullable_to_non_nullable
+                    as String,
+        typeAA:
+            null == typeAA
+                ? _self.typeAA
+                : typeAA // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }

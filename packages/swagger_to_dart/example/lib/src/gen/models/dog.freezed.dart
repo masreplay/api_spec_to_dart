@@ -61,10 +61,11 @@ mixin _$Dog {
 abstract mixin class $DogCopyWith<$Res> {
   factory $DogCopyWith(Dog value, $Res Function(Dog) _then) = _$DogCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: Dog.nameKey) String name,
-      @JsonKey(name: Dog.typeAAKey) String typeAA,
-      @JsonKey(name: Dog.barkLoudnessKey) int barkLoudness});
+  $Res call({
+    @JsonKey(name: Dog.nameKey) String name,
+    @JsonKey(name: Dog.typeAAKey) String typeAA,
+    @JsonKey(name: Dog.barkLoudnessKey) int barkLoudness,
+  });
 }
 
 /// @nodoc
@@ -83,20 +84,25 @@ class _$DogCopyWithImpl<$Res> implements $DogCopyWith<$Res> {
     Object? typeAA = null,
     Object? barkLoudness = null,
   }) {
-    return _then(_self.copyWith(
-      name: null == name
-          ? _self.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      typeAA: null == typeAA
-          ? _self.typeAA
-          : typeAA // ignore: cast_nullable_to_non_nullable
-              as String,
-      barkLoudness: null == barkLoudness
-          ? _self.barkLoudness
-          : barkLoudness // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _self.copyWith(
+        name:
+            null == name
+                ? _self.name
+                : name // ignore: cast_nullable_to_non_nullable
+                    as String,
+        typeAA:
+            null == typeAA
+                ? _self.typeAA
+                : typeAA // ignore: cast_nullable_to_non_nullable
+                    as String,
+        barkLoudness:
+            null == barkLoudness
+                ? _self.barkLoudness
+                : barkLoudness // ignore: cast_nullable_to_non_nullable
+                    as int,
+      ),
+    );
   }
 }
 
@@ -104,11 +110,11 @@ class _$DogCopyWithImpl<$Res> implements $DogCopyWith<$Res> {
 
 @jsonSerializable
 class _Dog extends Dog {
-  const _Dog(
-      {@JsonKey(name: Dog.nameKey) required this.name,
-      @JsonKey(name: Dog.typeAAKey) this.typeAA = 'dog',
-      @JsonKey(name: Dog.barkLoudnessKey) required this.barkLoudness})
-      : super._();
+  const _Dog({
+    @JsonKey(name: Dog.nameKey) required this.name,
+    @JsonKey(name: Dog.typeAAKey) this.typeAA = 'dog',
+    @JsonKey(name: Dog.barkLoudnessKey) required this.barkLoudness,
+  }) : super._();
   factory _Dog.fromJson(Map<String, dynamic> json) => _$DogFromJson(json);
 
   /// name
@@ -136,9 +142,7 @@ class _Dog extends Dog {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$DogToJson(
-      this,
-    );
+    return _$DogToJson(this);
   }
 
   @override
@@ -168,10 +172,11 @@ abstract mixin class _$DogCopyWith<$Res> implements $DogCopyWith<$Res> {
       __$DogCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: Dog.nameKey) String name,
-      @JsonKey(name: Dog.typeAAKey) String typeAA,
-      @JsonKey(name: Dog.barkLoudnessKey) int barkLoudness});
+  $Res call({
+    @JsonKey(name: Dog.nameKey) String name,
+    @JsonKey(name: Dog.typeAAKey) String typeAA,
+    @JsonKey(name: Dog.barkLoudnessKey) int barkLoudness,
+  });
 }
 
 /// @nodoc
@@ -190,19 +195,24 @@ class __$DogCopyWithImpl<$Res> implements _$DogCopyWith<$Res> {
     Object? typeAA = null,
     Object? barkLoudness = null,
   }) {
-    return _then(_Dog(
-      name: null == name
-          ? _self.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      typeAA: null == typeAA
-          ? _self.typeAA
-          : typeAA // ignore: cast_nullable_to_non_nullable
-              as String,
-      barkLoudness: null == barkLoudness
-          ? _self.barkLoudness
-          : barkLoudness // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _Dog(
+        name:
+            null == name
+                ? _self.name
+                : name // ignore: cast_nullable_to_non_nullable
+                    as String,
+        typeAA:
+            null == typeAA
+                ? _self.typeAA
+                : typeAA // ignore: cast_nullable_to_non_nullable
+                    as String,
+        barkLoudness:
+            null == barkLoudness
+                ? _self.barkLoudness
+                : barkLoudness // ignore: cast_nullable_to_non_nullable
+                    as int,
+      ),
+    );
   }
 }
