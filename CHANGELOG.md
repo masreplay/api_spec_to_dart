@@ -1,5 +1,6 @@
 ## 2.1.1
 - Support minimal sample generation
+- Support non ascii generation 
 
 ## 2.1.0
 - Support generic `freezed` classes generation
