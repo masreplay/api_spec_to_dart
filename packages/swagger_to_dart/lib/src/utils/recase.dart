@@ -15,7 +15,11 @@ class Recase {
   final Set<String> _upperCaseTwoLettersRowWords = {};
 
   void initialize(String text) {
-    _words = _groupIntoWords(text);
+    _words = _groupIntoWords(removeNonAscii(text));
+  }
+
+  String removeNonAscii(String text) {
+    return text.replaceAll(RegExp(r'[^\x00-\x7F]'), '');
   }
 
   List<String> _groupIntoWords(String text) {

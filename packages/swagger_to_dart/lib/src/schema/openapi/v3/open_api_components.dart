@@ -9,9 +9,9 @@ abstract class OpenApiComponents with _$OpenApiComponents {
   const OpenApiComponents._();
 
   const factory OpenApiComponents({
-    @JsonKey(name: 'schemas') required Map<String, OpenApiSchemas> schemas,
+    @JsonKey(name: 'schemas') Map<String, OpenApiSchemas>? schemas,
     @JsonKey(name: 'securitySchemes')
-    required Map<String, dynamic> securitySchemes,
+    required Map<String, dynamic>? securitySchemes,
   }) = _OpenApiComponents;
 
   factory OpenApiComponents.fromJson(Map<String, dynamic> json) =>

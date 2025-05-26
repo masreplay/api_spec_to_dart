@@ -15,9 +15,9 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$OpenApiComponents {
   @JsonKey(name: 'schemas')
-  Map<String, OpenApiSchemas> get schemas;
+  Map<String, OpenApiSchemas>? get schemas;
   @JsonKey(name: 'securitySchemes')
-  Map<String, dynamic> get securitySchemes;
+  Map<String, dynamic>? get securitySchemes;
 
   /// Create a copy of OpenApiComponents
   /// with the given fields replaced by the non-null parameter values.
@@ -60,8 +60,8 @@ abstract mixin class $OpenApiComponentsCopyWith<$Res> {
       _$OpenApiComponentsCopyWithImpl;
   @useResult
   $Res call(
-      {@JsonKey(name: 'schemas') Map<String, OpenApiSchemas> schemas,
-      @JsonKey(name: 'securitySchemes') Map<String, dynamic> securitySchemes});
+      {@JsonKey(name: 'schemas') Map<String, OpenApiSchemas>? schemas,
+      @JsonKey(name: 'securitySchemes') Map<String, dynamic>? securitySchemes});
 }
 
 /// @nodoc
@@ -77,18 +77,18 @@ class _$OpenApiComponentsCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? schemas = null,
-    Object? securitySchemes = null,
+    Object? schemas = freezed,
+    Object? securitySchemes = freezed,
   }) {
     return _then(_self.copyWith(
-      schemas: null == schemas
+      schemas: freezed == schemas
           ? _self.schemas
           : schemas // ignore: cast_nullable_to_non_nullable
-              as Map<String, OpenApiSchemas>,
-      securitySchemes: null == securitySchemes
+              as Map<String, OpenApiSchemas>?,
+      securitySchemes: freezed == securitySchemes
           ? _self.securitySchemes
           : securitySchemes // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
+              as Map<String, dynamic>?,
     ));
   }
 }
@@ -97,32 +97,35 @@ class _$OpenApiComponentsCopyWithImpl<$Res>
 @JsonSerializable()
 class _OpenApiComponents extends OpenApiComponents {
   const _OpenApiComponents(
-      {@JsonKey(name: 'schemas')
-      required final Map<String, OpenApiSchemas> schemas,
+      {@JsonKey(name: 'schemas') final Map<String, OpenApiSchemas>? schemas,
       @JsonKey(name: 'securitySchemes')
-      required final Map<String, dynamic> securitySchemes})
+      required final Map<String, dynamic>? securitySchemes})
       : _schemas = schemas,
         _securitySchemes = securitySchemes,
         super._();
   factory _OpenApiComponents.fromJson(Map<String, dynamic> json) =>
       _$OpenApiComponentsFromJson(json);
 
-  final Map<String, OpenApiSchemas> _schemas;
+  final Map<String, OpenApiSchemas>? _schemas;
   @override
   @JsonKey(name: 'schemas')
-  Map<String, OpenApiSchemas> get schemas {
+  Map<String, OpenApiSchemas>? get schemas {
+    final value = _schemas;
+    if (value == null) return null;
     if (_schemas is EqualUnmodifiableMapView) return _schemas;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_schemas);
+    return EqualUnmodifiableMapView(value);
   }
 
-  final Map<String, dynamic> _securitySchemes;
+  final Map<String, dynamic>? _securitySchemes;
   @override
   @JsonKey(name: 'securitySchemes')
-  Map<String, dynamic> get securitySchemes {
+  Map<String, dynamic>? get securitySchemes {
+    final value = _securitySchemes;
+    if (value == null) return null;
     if (_securitySchemes is EqualUnmodifiableMapView) return _securitySchemes;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_securitySchemes);
+    return EqualUnmodifiableMapView(value);
   }
 
   /// Create a copy of OpenApiComponents
@@ -172,8 +175,8 @@ abstract mixin class _$OpenApiComponentsCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'schemas') Map<String, OpenApiSchemas> schemas,
-      @JsonKey(name: 'securitySchemes') Map<String, dynamic> securitySchemes});
+      {@JsonKey(name: 'schemas') Map<String, OpenApiSchemas>? schemas,
+      @JsonKey(name: 'securitySchemes') Map<String, dynamic>? securitySchemes});
 }
 
 /// @nodoc
@@ -189,18 +192,18 @@ class __$OpenApiComponentsCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? schemas = null,
-    Object? securitySchemes = null,
+    Object? schemas = freezed,
+    Object? securitySchemes = freezed,
   }) {
     return _then(_OpenApiComponents(
-      schemas: null == schemas
+      schemas: freezed == schemas
           ? _self._schemas
           : schemas // ignore: cast_nullable_to_non_nullable
-              as Map<String, OpenApiSchemas>,
-      securitySchemes: null == securitySchemes
+              as Map<String, OpenApiSchemas>?,
+      securitySchemes: freezed == securitySchemes
           ? _self._securitySchemes
           : securitySchemes // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
+              as Map<String, dynamic>?,
     ));
   }
 }

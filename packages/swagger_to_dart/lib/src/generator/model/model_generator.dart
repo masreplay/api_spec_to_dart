@@ -30,7 +30,8 @@ class ModelGenerator
 
   Future<void> generate() async {
     if (context.openApi.components case final openApiComponents?) {
-      for (final entry in openApiComponents.schemas.entries) {
+      final schemas = openApiComponents.schemas ?? {};
+      for (final entry in schemas.entries) {
         final model = build(entry);
 
         context.addModel(model);

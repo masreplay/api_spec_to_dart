@@ -16,9 +16,9 @@ extension OpenApiExtension on OpenApi {
   /// }
   /// ```
   OpenApiSchemas? getOpenApiSchemasByRef(String ref) {
-    final entries = components?.schemas.entries.toList() ?? [];
+    final schemas = components?.schemas ?? {};
 
-    for (final entry in entries) {
+    for (final entry in schemas.entries) {
       if (entry.key == ref.split('/').last) {
         return entry.value;
       }

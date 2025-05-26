@@ -139,7 +139,7 @@ class ApiClientGenerator {
       final methods = entry.value;
 
       for (final method in methods.values) {
-        final tags = method.tags ?? [];
+        final tags = (method.tags ?? []).map((e) => Recase.instance.removeNonAscii(e));
         if (tags.isEmpty) {
           group['default'] ??= {};
           group['default']![path] = methods;

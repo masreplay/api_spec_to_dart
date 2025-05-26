@@ -8,17 +8,19 @@ part of 'open_api_components.dart';
 
 _OpenApiComponents _$OpenApiComponentsFromJson(Map<String, dynamic> json) =>
     _OpenApiComponents(
-      schemas: (json['schemas'] as Map<String, dynamic>).map(
+      schemas: (json['schemas'] as Map<String, dynamic>?)?.map(
         (k, e) =>
             MapEntry(k, OpenApiSchemas.fromJson(e as Map<String, dynamic>)),
       ),
-      securitySchemes: json['securitySchemes'] as Map<String, dynamic>,
+      securitySchemes: json['securitySchemes'] as Map<String, dynamic>?,
     );
 
 Map<String, dynamic> _$OpenApiComponentsToJson(_OpenApiComponents instance) =>
     <String, dynamic>{
-      'schemas': instance.schemas.map((k, e) => MapEntry(k, e.toJson())),
-      'securitySchemes': instance.securitySchemes,
+      if (instance.schemas?.map((k, e) => MapEntry(k, e.toJson()))
+          case final value?)
+        'schemas': value,
+      if (instance.securitySchemes case final value?) 'securitySchemes': value,
     };
 
 _OpenApiSchemas _$OpenApiSchemasFromJson(Map<String, dynamic> json) =>
