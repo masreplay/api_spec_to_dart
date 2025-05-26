@@ -7,6 +7,8 @@ swagger_to_dart:
 
   model:
     support_generic_arguments: true
+    use_class_for_query_parameters: true
+
   api_client:
     skipped_parameters:
       - "Accept-Language"
