@@ -1,3 +1,4 @@
+import 'package:swagger_to_dart/src/generator/model/strategy/enum_model_generator_strategy.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 class OpenApiSchemaDartTypeConverter {
@@ -148,7 +149,7 @@ class OpenApiSchemaDartTypeConverter {
     switch (schema.type) {
       case OpenApiSchemaVarType.string:
         if (schema.enum_ != null) {
-          final strategy = EnumModelStrategy(context);
+          final strategy = EnumModelGeneratorStrategy(context);
 
           final name = schema.title ?? parent?.title;
 

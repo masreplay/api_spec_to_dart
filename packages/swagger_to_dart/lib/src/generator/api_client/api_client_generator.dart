@@ -341,7 +341,7 @@ class ApiClientGenerator {
     final List<Parameter> result = [];
 
     if (useClass && queryParameters.isNotEmpty) {
-      final strategy = RegularModelStrategy(context);
+      final strategy = RegularModelGeneratorStrategy(context);
 
       final queryParametersClassName = Renaming.instance.renameClass(
         '${methodName}QueryParameters',
