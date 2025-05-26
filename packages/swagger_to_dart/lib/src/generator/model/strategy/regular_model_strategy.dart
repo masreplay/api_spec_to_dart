@@ -6,26 +6,19 @@ class RegularModelStrategyGenerator
   const RegularModelStrategyGenerator(super.context);
 
   Library build(MapEntry<String, OpenApiSchemas> model) {
-    final isGeneric = model.value.title?.contains('[') ?? false;
+    final title = model.value.title;
+    final properties = model.value.properties ?? {};
+    final supportGenerics = context.config.model.supportGenericArguments;
 
-    final className = Renaming.instance.renameClass(
-      isGeneric ? model.key : model.value.title ?? model.key,
-    );
+    // Prefer title if present, otherwise fallback to model.key
+    final effectiveTitle = title ?? model.key;
+    final isGeneric = effectiveTitle.contains('[');
+    final className = Renaming.instance.renameClass(effectiveTitle);
     final filename = Renaming.instance.renameFile(className);
 
-    final Map<String, OpenApiSchema> properties = model.value.properties ?? {};
-
-    final supportGenericArguments =
-        context.config.model.supportGenericArguments;
-
-    final title = model.value.title;
-
-    /// "title": "BaseResponse[PaginationResponse[ItemResponse]]"
-    if (supportGenericArguments && title != null) {
+    if (supportGenerics && isGeneric && title != null) {
       final genericClass = _genericClass(title, model);
-      if (genericClass != null) {
-        return genericClass;
-      }
+      if (genericClass != null) return genericClass;
     }
 
     return Library(
