@@ -22,6 +22,19 @@ class SwaggerToDartCodeGenerator {
     }
     await dir.create(recursive: true);
 
+    final genExportLibrary = Library((b) => b
+      ..name = 'gen'
+      ..directives.addAll([
+        Directive.export('api_client/base_api_client.dart'),
+        Directive.export('api_client/api_client.dart'),
+        Directive.export('models/models.dart'),
+      ]));
+
+    await writeDartLibraryFile(
+      path.join(dir.path, '${genExportLibrary.name!}.dart'),
+      genExportLibrary,
+    );
+
     await generateModels(dir);
     await generateApiClients(dir);
 
@@ -50,6 +63,7 @@ class SwaggerToDartCodeGenerator {
 
     final mainLibrary = Library(
       (b) => b
+        ..name = 'models'
         ..directives.addAll([
           for (final model in context.models)
             if (model.name != null) Directive.export('${model.name}.dart'),
@@ -57,7 +71,7 @@ class SwaggerToDartCodeGenerator {
     );
 
     await writeDartLibraryFile(
-      path.join(modelsDir.path, 'models.dart'),
+      path.join(modelsDir.path, '${mainLibrary.name}.dart'),
       mainLibrary,
     );
 
@@ -107,6 +121,7 @@ const jsonSerializable = JsonSerializable(
 
     final exportLibrary = Library(
       (b) => b
+        ..name = 'exports'
         ..directives.addAll([
           Directive.export('models.dart'),
           Directive.import('package:dio/dio.dart'),
@@ -119,7 +134,7 @@ const jsonSerializable = JsonSerializable(
         ]),
     );
     await writeDartLibraryFile(
-      path.join(modelsDir.path, 'exports.dart'),
+      path.join(modelsDir.path, '${exportLibrary.name}.dart'),
       exportLibrary,
     );
   }

@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:swagger_to_dart/src/generator/generator_strategy.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
@@ -8,14 +9,25 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
     OpenApiSchema schema, {
     required String className,
     OpenApiSchema? parent,
+    Map<String, String> overrideTypes = const {},
   }) {
-    return switch (schema) {
-      OpenApiSchemaType schema =>
-        getType(schema, parent: parent, className: className),
+    final dartType = switch (schema) {
+      OpenApiSchemaType schema => getType(
+          schema,
+          parent: parent,
+          className: className,
+          overrideTypes: overrideTypes,
+        ),
       OpenApiSchemaRef schema => getRef(schema),
       OpenApiSchemaAnyOf schema => getAnyOf(schema, className: className),
       OpenApiSchemaOneOf schema => getOneOf(schema, className: className)
     };
+
+    final override = overrideTypes.entries.firstWhereOrNull(
+      (entry) => entry.value == dartType,
+    );
+
+    return override?.key ?? dartType;
   }
 
   String getRef(OpenApiSchemaRef schema) {
@@ -128,6 +140,7 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
     OpenApiSchemaType schema, {
     required String className,
     OpenApiSchema? parent,
+    Map<String, String> overrideTypes = const {},
   }) {
     switch (schema.type) {
       case OpenApiSchemaVarType.string:
@@ -141,7 +154,7 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
             MapEntry(
               className,
               OpenApiSchemas(
-                type: 'Hello',
+                type: 'object',
                 properties: {},
                 enum_: schema.enum_,
               ),
@@ -178,14 +191,18 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
         return 'bool';
       case OpenApiSchemaVarType.array:
         final items = schema.items;
-        final dartType =
-            items == null ? null : get(items, className: className);
+        final dartType = items == null
+            ? 'dynamic'
+            : get(items, className: className, overrideTypes: overrideTypes);
 
-        return dartType == null ? 'List<dynamic>' : 'List<$dartType>';
+        return 'List<$dartType>';
       case OpenApiSchemaVarType.object:
-        if (schema.items == null) return 'Map<String, dynamic>';
+        final items = schema.items;
+        final dartType = items == null
+            ? 'dynamic'
+            : get(items, className: className, overrideTypes: overrideTypes);
 
-        return 'Map<String, ${className}>';
+        return 'Map<String, $dartType>';
       case OpenApiSchemaVarType.null_ || OpenApiSchemaVarType.$unknown || null:
         return 'dynamic';
     }

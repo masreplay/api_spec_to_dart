@@ -19,8 +19,7 @@ class _GenericClient implements GenericClient {
 
   @override
   Future<HttpResponse<PaginationResponse<ItemResponse>>> genericGetItems({
-    int page = 1,
-    int perPage = 10,
+    required GenericGetItemsQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -28,10 +27,8 @@ class _GenericClient implements GenericClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{
-      r'page': page,
-      r'per_page': perPage,
-    };
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -69,8 +66,7 @@ class _GenericClient implements GenericClient {
   @override
   Future<HttpResponse<PaginationResponse<CategoryResponse>>>
   genericGetCategories({
-    int page = 1,
-    int perPage = 10,
+    required GenericGetCategoriesQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -78,10 +74,8 @@ class _GenericClient implements GenericClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{
-      r'page': page,
-      r'per_page': perPage,
-    };
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -261,8 +255,7 @@ class _GenericClient implements GenericClient {
   @override
   Future<HttpResponse<BaseResponse<PaginationResponse<ItemResponse>>>>
   genericGetNestedBaseAndPagination({
-    int page = 1,
-    int perPage = 10,
+    required GenericGetNestedBaseAndPaginationQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -270,10 +263,8 @@ class _GenericClient implements GenericClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{
-      r'page': page,
-      r'per_page': perPage,
-    };
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;

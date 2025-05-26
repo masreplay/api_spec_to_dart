@@ -1,7 +1,7 @@
 // Iso4217Enum
 // {
 //     "properties": {},
-//     "type": "Hello",
+//     "type": "object",
 //     "enum": [
 //         "AED",
 //         "AFN",

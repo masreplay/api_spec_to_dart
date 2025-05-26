@@ -1,5 +1,5 @@
 /// BaseResponse_CategoryResponse_
-/// BaseResponse<T>
+/// BaseResponse
 /// {
 ///     "properties": {
 ///         "data": {
@@ -26,7 +26,7 @@ library;
 
 import 'exports.dart';
 part 'base_response.freezed.dart';
-part 'base_response.g.dart'; // BaseResponse<T>
+part 'base_response.g.dart';
 
 @Freezed(genericArgumentFactories: true)
 abstract class BaseResponse<T> with _$BaseResponse<T> {
@@ -38,7 +38,7 @@ abstract class BaseResponse<T> with _$BaseResponse<T> {
   )
   const factory BaseResponse({
     /// data
-    @JsonKey(name: BaseResponse.dataKey) required CategoryResponse data,
+    @JsonKey(name: BaseResponse.dataKey) required T data,
 
     /// message
     @JsonKey(name: BaseResponse.messageKey) required String message,
@@ -50,7 +50,7 @@ abstract class BaseResponse<T> with _$BaseResponse<T> {
   factory BaseResponse.fromJson(
     Map<String, dynamic> json,
     T Function(Object? json) fromJsonT,
-  ) => _$BaseResponseFromJson(json, fromJsonT);
+  ) => _$BaseResponseFromJson<T>(json, fromJsonT);
 
   static const String dataKey = "data";
 

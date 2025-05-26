@@ -152,9 +152,7 @@ abstract class ValidationClient {
   /// }
   @GET("/params/query")
   Future<HttpResponse<Map<String, dynamic>>> validationParamQuery({
-    @Query("q") required String? q,
-    @Query("skip") int skip = 0,
-    @Query("limit") int limit = 10,
+    @Queries() required ValidationParamQueryQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -482,8 +480,7 @@ abstract class ValidationClient {
   /// }
   @GET("/validation/conditional")
   Future<HttpResponse<Map<String, dynamic>>> validationValidationConditional({
-    @Query("user_id") required int? userId,
-    @Query("username") required String? username,
+    @Queries() required ValidationValidationConditionalQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -587,7 +584,7 @@ abstract class ValidationClient {
   /// }
   @GET("/constrained/int")
   Future<HttpResponse<Map<String, dynamic>>> validationConstrainedInt({
-    @Query("value") required int value,
+    @Queries() required ValidationConstrainedIntQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -641,7 +638,7 @@ abstract class ValidationClient {
   /// }
   @GET("/constrained/float")
   Future<HttpResponse<Map<String, dynamic>>> validationConstrainedFloat({
-    @Query("value") required double value,
+    @Queries() required ValidationConstrainedFloatQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -698,7 +695,7 @@ abstract class ValidationClient {
   /// }
   @GET("/constrained/string")
   Future<HttpResponse<Map<String, dynamic>>> validationConstrainedString({
-    @Query("value") required String value,
+    @Queries() required ValidationConstrainedStringQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,

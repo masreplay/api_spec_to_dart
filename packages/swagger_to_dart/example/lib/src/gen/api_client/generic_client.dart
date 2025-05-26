@@ -67,8 +67,7 @@ abstract class GenericClient {
   /// }
   @GET("/generic/items")
   Future<HttpResponse<PaginationResponse<ItemResponse>>> genericGetItems({
-    @Query("page") int page = 1,
-    @Query("per_page") int perPage = 10,
+    @Queries() required GenericGetItemsQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -130,8 +129,7 @@ abstract class GenericClient {
   @GET("/generic/categories")
   Future<HttpResponse<PaginationResponse<CategoryResponse>>>
   genericGetCategories({
-    @Query("page") int page = 1,
-    @Query("per_page") int perPage = 10,
+    @Queries() required GenericGetCategoriesQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -321,8 +319,8 @@ abstract class GenericClient {
   @GET("/generic/nested-base-and-pagination")
   Future<HttpResponse<BaseResponse<PaginationResponse<ItemResponse>>>>
   genericGetNestedBaseAndPagination({
-    @Query("page") int page = 1,
-    @Query("per_page") int perPage = 10,
+    @Queries()
+    required GenericGetNestedBaseAndPaginationQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,

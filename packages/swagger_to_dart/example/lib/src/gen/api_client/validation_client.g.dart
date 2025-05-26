@@ -61,9 +61,7 @@ class _ValidationClient implements ValidationClient {
 
   @override
   Future<HttpResponse<Map<String, dynamic>>> validationParamQuery({
-    String? q,
-    int skip = 0,
-    int limit = 10,
+    required ValidationParamQueryQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -71,11 +69,8 @@ class _ValidationClient implements ValidationClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{
-      r'q': q,
-      r'skip': skip,
-      r'limit': limit,
-    };
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -286,8 +281,7 @@ class _ValidationClient implements ValidationClient {
 
   @override
   Future<HttpResponse<Map<String, dynamic>>> validationValidationConditional({
-    int? userId,
-    String? username,
+    required ValidationValidationConditionalQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -295,10 +289,8 @@ class _ValidationClient implements ValidationClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{
-      r'user_id': userId,
-      r'username': username,
-    };
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -372,7 +364,7 @@ class _ValidationClient implements ValidationClient {
 
   @override
   Future<HttpResponse<Map<String, dynamic>>> validationConstrainedInt({
-    required int value,
+    required ValidationConstrainedIntQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -380,7 +372,8 @@ class _ValidationClient implements ValidationClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{r'value': value};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -414,7 +407,7 @@ class _ValidationClient implements ValidationClient {
 
   @override
   Future<HttpResponse<Map<String, dynamic>>> validationConstrainedFloat({
-    required double value,
+    required ValidationConstrainedFloatQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -422,7 +415,8 @@ class _ValidationClient implements ValidationClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{r'value': value};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -456,7 +450,7 @@ class _ValidationClient implements ValidationClient {
 
   @override
   Future<HttpResponse<Map<String, dynamic>>> validationConstrainedString({
-    required String value,
+    required ValidationConstrainedStringQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -464,7 +458,8 @@ class _ValidationClient implements ValidationClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{r'value': value};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;

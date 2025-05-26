@@ -140,7 +140,7 @@ class _ModelsClient implements ModelsClient {
 
   @override
   Future<HttpResponse<ResponseModelsResponseMultiple>> modelsResponseMultiple({
-    bool isUser = true,
+    required ModelsResponseMultipleQueryParameters queries,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -148,7 +148,8 @@ class _ModelsClient implements ModelsClient {
   }) async {
     final _extra = <String, dynamic>{};
     _extra.addAll(extras ?? <String, dynamic>{});
-    final queryParameters = <String, dynamic>{r'is_user': isUser};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries.toJson());
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;

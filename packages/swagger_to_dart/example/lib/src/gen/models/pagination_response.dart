@@ -1,5 +1,5 @@
 /// PaginationResponse_CategoryResponse_
-/// PaginationResponse<T>
+/// PaginationResponse
 /// {
 ///     "properties": {
 ///         "items": {
@@ -40,7 +40,7 @@ library;
 
 import 'exports.dart';
 part 'pagination_response.freezed.dart';
-part 'pagination_response.g.dart'; // PaginationResponse<T>
+part 'pagination_response.g.dart';
 
 @Freezed(genericArgumentFactories: true)
 abstract class PaginationResponse<T> with _$PaginationResponse<T> {
@@ -52,8 +52,7 @@ abstract class PaginationResponse<T> with _$PaginationResponse<T> {
   )
   const factory PaginationResponse({
     /// items
-    @JsonKey(name: PaginationResponse.itemsKey)
-    required List<CategoryResponse> items,
+    @JsonKey(name: PaginationResponse.itemsKey) required List<T> items,
 
     /// total
     @JsonKey(name: PaginationResponse.totalKey) required int total,
@@ -71,7 +70,7 @@ abstract class PaginationResponse<T> with _$PaginationResponse<T> {
   factory PaginationResponse.fromJson(
     Map<String, dynamic> json,
     T Function(Object? json) fromJsonT,
-  ) => _$PaginationResponseFromJson(json, fromJsonT);
+  ) => _$PaginationResponseFromJson<T>(json, fromJsonT);
 
   static const String itemsKey = "items";
 

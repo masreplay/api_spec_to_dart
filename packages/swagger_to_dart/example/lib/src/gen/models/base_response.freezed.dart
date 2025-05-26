@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 mixin _$BaseResponse<T> {
   /// data
   @JsonKey(name: BaseResponse.dataKey)
-  CategoryResponse get data;
+  T get data;
 
   /// message
   @JsonKey(name: BaseResponse.messageKey)
@@ -44,14 +44,19 @@ mixin _$BaseResponse<T> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is BaseResponse<T> &&
-            (identical(other.data, data) || other.data == data) &&
+            const DeepCollectionEquality().equals(other.data, data) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.code, code) || other.code == code));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, data, message, code);
+  int get hashCode => Object.hash(
+    runtimeType,
+    const DeepCollectionEquality().hash(data),
+    message,
+    code,
+  );
 
   @override
   String toString() {
@@ -67,12 +72,10 @@ abstract mixin class $BaseResponseCopyWith<T, $Res> {
   ) = _$BaseResponseCopyWithImpl;
   @useResult
   $Res call({
-    @JsonKey(name: BaseResponse.dataKey) CategoryResponse data,
+    @JsonKey(name: BaseResponse.dataKey) T data,
     @JsonKey(name: BaseResponse.messageKey) String message,
     @JsonKey(name: BaseResponse.codeKey) int code,
   });
-
-  $CategoryResponseCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -88,17 +91,17 @@ class _$BaseResponseCopyWithImpl<T, $Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? data = freezed,
     Object? message = null,
     Object? code = null,
   }) {
     return _then(
       _self.copyWith(
         data:
-            null == data
+            freezed == data
                 ? _self.data
                 : data // ignore: cast_nullable_to_non_nullable
-                    as CategoryResponse,
+                    as T,
         message:
             null == message
                 ? _self.message
@@ -111,16 +114,6 @@ class _$BaseResponseCopyWithImpl<T, $Res>
                     as int,
       ),
     );
-  }
-
-  /// Create a copy of BaseResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $CategoryResponseCopyWith<$Res> get data {
-    return $CategoryResponseCopyWith<$Res>(_self.data, (value) {
-      return _then(_self.copyWith(data: value));
-    });
   }
 }
 
@@ -144,7 +137,7 @@ class _BaseResponse<T> extends BaseResponse<T> {
   /// data
   @override
   @JsonKey(name: BaseResponse.dataKey)
-  final CategoryResponse data;
+  final T data;
 
   /// message
   @override
@@ -174,14 +167,19 @@ class _BaseResponse<T> extends BaseResponse<T> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _BaseResponse<T> &&
-            (identical(other.data, data) || other.data == data) &&
+            const DeepCollectionEquality().equals(other.data, data) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.code, code) || other.code == code));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, data, message, code);
+  int get hashCode => Object.hash(
+    runtimeType,
+    const DeepCollectionEquality().hash(data),
+    message,
+    code,
+  );
 
   @override
   String toString() {
@@ -199,13 +197,10 @@ abstract mixin class _$BaseResponseCopyWith<T, $Res>
   @override
   @useResult
   $Res call({
-    @JsonKey(name: BaseResponse.dataKey) CategoryResponse data,
+    @JsonKey(name: BaseResponse.dataKey) T data,
     @JsonKey(name: BaseResponse.messageKey) String message,
     @JsonKey(name: BaseResponse.codeKey) int code,
   });
-
-  @override
-  $CategoryResponseCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -221,17 +216,17 @@ class __$BaseResponseCopyWithImpl<T, $Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? data = null,
+    Object? data = freezed,
     Object? message = null,
     Object? code = null,
   }) {
     return _then(
       _BaseResponse<T>(
         data:
-            null == data
+            freezed == data
                 ? _self.data
                 : data // ignore: cast_nullable_to_non_nullable
-                    as CategoryResponse,
+                    as T,
         message:
             null == message
                 ? _self.message
@@ -244,15 +239,5 @@ class __$BaseResponseCopyWithImpl<T, $Res>
                     as int,
       ),
     );
-  }
-
-  /// Create a copy of BaseResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $CategoryResponseCopyWith<$Res> get data {
-    return $CategoryResponseCopyWith<$Res>(_self.data, (value) {
-      return _then(_self.copyWith(data: value));
-    });
   }
 }

@@ -1,0 +1,25 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'advanced_special_enum_query_parameters.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+_AdvancedSpecialEnumQueryParameters
+_$AdvancedSpecialEnumQueryParametersFromJson(Map<String, dynamic> json) =>
+    _AdvancedSpecialEnumQueryParameters(
+      level:
+          $enumDecodeNullable(_$UserLevelEnumMap, json['level']) ??
+          UserLevel.basic,
+    );
+
+Map<String, dynamic> _$AdvancedSpecialEnumQueryParametersToJson(
+  _AdvancedSpecialEnumQueryParameters instance,
+) => <String, dynamic>{'level': instance.level.toJson()};
+
+const _$UserLevelEnumMap = {
+  UserLevel.basic: 'basic',
+  UserLevel.premium: 'premium',
+  UserLevel.admin: 'admin',
+};

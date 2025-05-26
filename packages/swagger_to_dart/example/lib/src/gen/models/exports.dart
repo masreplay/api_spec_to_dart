@@ -1,3 +1,5 @@
+library;
+
 export 'models.dart';
 export 'package:dio/dio.dart';
 export 'json_converter.dart';

@@ -10,7 +10,7 @@ _BaseResponse<T> _$BaseResponseFromJson<T>(
   Map<String, dynamic> json,
   T Function(Object? json) fromJsonT,
 ) => _BaseResponse<T>(
-  data: CategoryResponse.fromJson(json['data'] as Map<String, dynamic>),
+  data: fromJsonT(json['data']),
   message: json['message'] as String,
   code: (json['code'] as num).toInt(),
 );
@@ -19,7 +19,7 @@ Map<String, dynamic> _$BaseResponseToJson<T>(
   _BaseResponse<T> instance,
   Object? Function(T value) toJsonT,
 ) => <String, dynamic>{
-  'data': instance.data.toJson(),
+  'data': toJsonT(instance.data),
   'message': instance.message,
   'code': instance.code,
 };

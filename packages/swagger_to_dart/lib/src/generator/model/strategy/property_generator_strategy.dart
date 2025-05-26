@@ -9,18 +9,18 @@ class PropertyGeneratorStrategy extends GeneratorStrategy {
   Parameter build(
     MapEntry<String, OpenApiSchema> property, {
     required String className,
-    String? overrideType,
     bool required = true,
+    Map<String, String> overrideTypes = const {},
   }) {
     final name = Renaming.instance.renameProperty(property.key);
 
     final defaultValue = context.typeConverter.getDefaultValue(property.value);
 
-    final dartType = overrideType ??
-        context.typeConverter.get(
-          property.value,
-          className: className,
-        );
+    final dartType = context.typeConverter.get(
+      property.value,
+      className: className,
+      overrideTypes: overrideTypes,
+    );
 
     return Parameter(
       (b) => b

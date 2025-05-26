@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 mixin _$PaginationResponse<T> {
   /// items
   @JsonKey(name: PaginationResponse.itemsKey)
-  List<CategoryResponse> get items;
+  List<T> get items;
 
   /// total
   @JsonKey(name: PaginationResponse.totalKey)
@@ -85,7 +85,7 @@ abstract mixin class $PaginationResponseCopyWith<T, $Res> {
   ) = _$PaginationResponseCopyWithImpl;
   @useResult
   $Res call({
-    @JsonKey(name: PaginationResponse.itemsKey) List<CategoryResponse> items,
+    @JsonKey(name: PaginationResponse.itemsKey) List<T> items,
     @JsonKey(name: PaginationResponse.totalKey) int total,
     @JsonKey(name: PaginationResponse.pageKey) int page,
     @JsonKey(name: PaginationResponse.perPageKey) int perPage,
@@ -118,7 +118,7 @@ class _$PaginationResponseCopyWithImpl<T, $Res>
             null == items
                 ? _self.items
                 : items // ignore: cast_nullable_to_non_nullable
-                    as List<CategoryResponse>,
+                    as List<T>,
         total:
             null == total
                 ? _self.total
@@ -152,8 +152,7 @@ class _$PaginationResponseCopyWithImpl<T, $Res>
 )
 class _PaginationResponse<T> extends PaginationResponse<T> {
   const _PaginationResponse({
-    @JsonKey(name: PaginationResponse.itemsKey)
-    required final List<CategoryResponse> items,
+    @JsonKey(name: PaginationResponse.itemsKey) required final List<T> items,
     @JsonKey(name: PaginationResponse.totalKey) required this.total,
     @JsonKey(name: PaginationResponse.pageKey) required this.page,
     @JsonKey(name: PaginationResponse.perPageKey) required this.perPage,
@@ -166,12 +165,12 @@ class _PaginationResponse<T> extends PaginationResponse<T> {
   ) => _$PaginationResponseFromJson(json, fromJsonT);
 
   /// items
-  final List<CategoryResponse> _items;
+  final List<T> _items;
 
   /// items
   @override
   @JsonKey(name: PaginationResponse.itemsKey)
-  List<CategoryResponse> get items {
+  List<T> get items {
     if (_items is EqualUnmodifiableListView) return _items;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_items);
@@ -253,7 +252,7 @@ abstract mixin class _$PaginationResponseCopyWith<T, $Res>
   @override
   @useResult
   $Res call({
-    @JsonKey(name: PaginationResponse.itemsKey) List<CategoryResponse> items,
+    @JsonKey(name: PaginationResponse.itemsKey) List<T> items,
     @JsonKey(name: PaginationResponse.totalKey) int total,
     @JsonKey(name: PaginationResponse.pageKey) int page,
     @JsonKey(name: PaginationResponse.perPageKey) int perPage,
@@ -286,7 +285,7 @@ class __$PaginationResponseCopyWithImpl<T, $Res>
             null == items
                 ? _self._items
                 : items // ignore: cast_nullable_to_non_nullable
-                    as List<CategoryResponse>,
+                    as List<T>,
         total:
             null == total
                 ? _self.total

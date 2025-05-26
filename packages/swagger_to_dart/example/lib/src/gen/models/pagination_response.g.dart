@@ -10,10 +10,7 @@ _PaginationResponse<T> _$PaginationResponseFromJson<T>(
   Map<String, dynamic> json,
   T Function(Object? json) fromJsonT,
 ) => _PaginationResponse<T>(
-  items:
-      (json['items'] as List<dynamic>)
-          .map((e) => CategoryResponse.fromJson(e as Map<String, dynamic>))
-          .toList(),
+  items: (json['items'] as List<dynamic>).map(fromJsonT).toList(),
   total: (json['total'] as num).toInt(),
   page: (json['page'] as num).toInt(),
   perPage: (json['per_page'] as num).toInt(),
@@ -24,7 +21,7 @@ Map<String, dynamic> _$PaginationResponseToJson<T>(
   _PaginationResponse<T> instance,
   Object? Function(T value) toJsonT,
 ) => <String, dynamic>{
-  'items': instance.items.map((e) => e.toJson()).toList(),
+  'items': instance.items.map(toJsonT).toList(),
   'total': instance.total,
   'page': instance.page,
   'per_page': instance.perPage,
