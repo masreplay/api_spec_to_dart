@@ -8,7 +8,7 @@ part of 'open_api_paths.dart';
 
 _OpenApiPathMethod _$OpenApiPathMethodFromJson(Map<String, dynamic> json) =>
     _OpenApiPathMethod(
-      tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
+      tags: (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList(),
       summary: json['summary'] as String?,
       description: json['description'] as String?,
       operationId: json['operationId'] as String?,
@@ -34,7 +34,7 @@ _OpenApiPathMethod _$OpenApiPathMethodFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$OpenApiPathMethodToJson(_OpenApiPathMethod instance) =>
     <String, dynamic>{
-      'tags': instance.tags,
+      if (instance.tags case final value?) 'tags': value,
       if (instance.summary case final value?) 'summary': value,
       if (instance.description case final value?) 'description': value,
       if (instance.operationId case final value?) 'operationId': value,

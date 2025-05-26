@@ -1,9 +1,9 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
-class RegularModelStrategyGenerator
+class RegularModelGeneratorStrategy
     extends ModelGeneratorStrategy<MapEntry<String, OpenApiSchemas>> {
-  const RegularModelStrategyGenerator(super.context);
+  const RegularModelGeneratorStrategy(super.context);
 
   Library build(MapEntry<String, OpenApiSchemas> model) {
     final title = model.value.title;

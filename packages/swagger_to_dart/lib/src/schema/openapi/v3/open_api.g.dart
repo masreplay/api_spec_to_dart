@@ -29,6 +29,7 @@ _OpenApi _$OpenApiFromJson(Map<String, dynamic> json) => _OpenApi(
       tags: (json['tags'] as List<dynamic>?)
           ?.map((e) => OpenApiTag.fromJson(e as Map<String, dynamic>))
           .toList(),
+      extraJson: json['extra_json'] as Map<String, dynamic>?,
     );
 
 Map<String, dynamic> _$OpenApiToJson(_OpenApi instance) => <String, dynamic>{
@@ -45,6 +46,7 @@ Map<String, dynamic> _$OpenApiToJson(_OpenApi instance) => <String, dynamic>{
       if (instance.components?.toJson() case final value?) 'components': value,
       if (instance.tags?.map((e) => e.toJson()).toList() case final value?)
         'tags': value,
+      if (instance.extraJson case final value?) 'extra_json': value,
     };
 
 const _$OpenApiPathMethodEnumEnumMap = {

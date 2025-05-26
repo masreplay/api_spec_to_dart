@@ -26,6 +26,7 @@ mixin _$OpenApi {
   OpenApiComponents? get components;
   @JsonKey(name: 'tags')
   List<OpenApiTag>? get tags;
+  Map<String, dynamic>? get extraJson;
 
   /// Create a copy of OpenApi
   /// with the given fields replaced by the non-null parameter values.
@@ -48,7 +49,8 @@ mixin _$OpenApi {
             const DeepCollectionEquality().equals(other.paths, paths) &&
             (identical(other.components, components) ||
                 other.components == components) &&
-            const DeepCollectionEquality().equals(other.tags, tags));
+            const DeepCollectionEquality().equals(other.tags, tags) &&
+            const DeepCollectionEquality().equals(other.extraJson, extraJson));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -60,11 +62,12 @@ mixin _$OpenApi {
       const DeepCollectionEquality().hash(servers),
       const DeepCollectionEquality().hash(paths),
       components,
-      const DeepCollectionEquality().hash(tags));
+      const DeepCollectionEquality().hash(tags),
+      const DeepCollectionEquality().hash(extraJson));
 
   @override
   String toString() {
-    return 'OpenApi(openapi: $openapi, info: $info, servers: $servers, paths: $paths, components: $components, tags: $tags)';
+    return 'OpenApi(openapi: $openapi, info: $info, servers: $servers, paths: $paths, components: $components, tags: $tags, extraJson: $extraJson)';
   }
 }
 
@@ -79,7 +82,8 @@ abstract mixin class $OpenApiCopyWith<$Res> {
       @JsonKey(name: 'servers') List<OpenApiServer>? servers,
       @JsonKey(name: 'paths') OpenApiPaths? paths,
       @JsonKey(name: 'components') OpenApiComponents? components,
-      @JsonKey(name: 'tags') List<OpenApiTag>? tags});
+      @JsonKey(name: 'tags') List<OpenApiTag>? tags,
+      Map<String, dynamic>? extraJson});
 
   $OpenApiInfoCopyWith<$Res>? get info;
   $OpenApiComponentsCopyWith<$Res>? get components;
@@ -103,6 +107,7 @@ class _$OpenApiCopyWithImpl<$Res> implements $OpenApiCopyWith<$Res> {
     Object? paths = freezed,
     Object? components = freezed,
     Object? tags = freezed,
+    Object? extraJson = freezed,
   }) {
     return _then(_self.copyWith(
       openapi: freezed == openapi
@@ -129,6 +134,10 @@ class _$OpenApiCopyWithImpl<$Res> implements $OpenApiCopyWith<$Res> {
           ? _self.tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<OpenApiTag>?,
+      extraJson: freezed == extraJson
+          ? _self.extraJson
+          : extraJson // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
     ));
   }
 
@@ -165,15 +174,17 @@ class _$OpenApiCopyWithImpl<$Res> implements $OpenApiCopyWith<$Res> {
 @JsonSerializable()
 class _OpenApi extends OpenApi {
   const _OpenApi(
-      {@JsonKey(name: 'openapi') required this.openapi,
-      @JsonKey(name: 'info') required this.info,
-      @JsonKey(name: 'servers') required final List<OpenApiServer>? servers,
-      @JsonKey(name: 'paths') required final OpenApiPaths? paths,
-      @JsonKey(name: 'components') required this.components,
-      @JsonKey(name: 'tags') required final List<OpenApiTag>? tags})
+      {@JsonKey(name: 'openapi') this.openapi,
+      @JsonKey(name: 'info') this.info,
+      @JsonKey(name: 'servers') final List<OpenApiServer>? servers,
+      @JsonKey(name: 'paths') final OpenApiPaths? paths,
+      @JsonKey(name: 'components') this.components,
+      @JsonKey(name: 'tags') final List<OpenApiTag>? tags,
+      final Map<String, dynamic>? extraJson})
       : _servers = servers,
         _paths = paths,
         _tags = tags,
+        _extraJson = extraJson,
         super._();
   factory _OpenApi.fromJson(Map<String, dynamic> json) =>
       _$OpenApiFromJson(json);
@@ -220,6 +231,16 @@ class _OpenApi extends OpenApi {
     return EqualUnmodifiableListView(value);
   }
 
+  final Map<String, dynamic>? _extraJson;
+  @override
+  Map<String, dynamic>? get extraJson {
+    final value = _extraJson;
+    if (value == null) return null;
+    if (_extraJson is EqualUnmodifiableMapView) return _extraJson;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
+
   /// Create a copy of OpenApi
   /// with the given fields replaced by the non-null parameter values.
   @override
@@ -246,7 +267,9 @@ class _OpenApi extends OpenApi {
             const DeepCollectionEquality().equals(other._paths, _paths) &&
             (identical(other.components, components) ||
                 other.components == components) &&
-            const DeepCollectionEquality().equals(other._tags, _tags));
+            const DeepCollectionEquality().equals(other._tags, _tags) &&
+            const DeepCollectionEquality()
+                .equals(other._extraJson, _extraJson));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -258,11 +281,12 @@ class _OpenApi extends OpenApi {
       const DeepCollectionEquality().hash(_servers),
       const DeepCollectionEquality().hash(_paths),
       components,
-      const DeepCollectionEquality().hash(_tags));
+      const DeepCollectionEquality().hash(_tags),
+      const DeepCollectionEquality().hash(_extraJson));
 
   @override
   String toString() {
-    return 'OpenApi(openapi: $openapi, info: $info, servers: $servers, paths: $paths, components: $components, tags: $tags)';
+    return 'OpenApi(openapi: $openapi, info: $info, servers: $servers, paths: $paths, components: $components, tags: $tags, extraJson: $extraJson)';
   }
 }
 
@@ -278,7 +302,8 @@ abstract mixin class _$OpenApiCopyWith<$Res> implements $OpenApiCopyWith<$Res> {
       @JsonKey(name: 'servers') List<OpenApiServer>? servers,
       @JsonKey(name: 'paths') OpenApiPaths? paths,
       @JsonKey(name: 'components') OpenApiComponents? components,
-      @JsonKey(name: 'tags') List<OpenApiTag>? tags});
+      @JsonKey(name: 'tags') List<OpenApiTag>? tags,
+      Map<String, dynamic>? extraJson});
 
   @override
   $OpenApiInfoCopyWith<$Res>? get info;
@@ -304,6 +329,7 @@ class __$OpenApiCopyWithImpl<$Res> implements _$OpenApiCopyWith<$Res> {
     Object? paths = freezed,
     Object? components = freezed,
     Object? tags = freezed,
+    Object? extraJson = freezed,
   }) {
     return _then(_OpenApi(
       openapi: freezed == openapi
@@ -330,6 +356,10 @@ class __$OpenApiCopyWithImpl<$Res> implements _$OpenApiCopyWith<$Res> {
           ? _self._tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<OpenApiTag>?,
+      extraJson: freezed == extraJson
+          ? _self._extraJson
+          : extraJson // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
     ));
   }
 

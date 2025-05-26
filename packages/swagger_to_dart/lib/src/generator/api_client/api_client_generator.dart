@@ -139,11 +139,12 @@ class ApiClientGenerator {
       final methods = entry.value;
 
       for (final method in methods.values) {
-        if (method.tags.isEmpty) {
+        final tags = method.tags ?? [];
+        if (tags.isEmpty) {
           group['default'] ??= {};
           group['default']![path] = methods;
         } else {
-          for (final tag in method.tags) {
+          for (final tag in tags) {
             group[tag] ??= {};
             group[tag]![path] = methods;
           }
@@ -247,7 +248,8 @@ class ApiClientGenerator {
                         );
 
                         final methodName = Renaming.instance.renameFunction(
-                          method.value.operationId ?? '',
+                          method.value.operationId ??
+                              '${clientName}_${path.key}_${method.key.name}',
                         );
 
                         final parameters = _handleParameters(
@@ -341,8 +343,7 @@ class ApiClientGenerator {
     final List<Parameter> result = [];
 
     if (useClass && queryParameters.isNotEmpty) {
-      final strategy =
-          RegularModelStrategyGenerator(context);
+      final strategy = RegularModelGeneratorStrategy(context);
 
       final queryParametersClassName = Renaming.instance.renameClass(
         '${methodName}QueryParameters',

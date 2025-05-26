@@ -15,12 +15,13 @@ abstract class OpenApi with _$OpenApi {
   const OpenApi._();
 
   const factory OpenApi({
-    @JsonKey(name: 'openapi') required String? openapi,
-    @JsonKey(name: 'info') required OpenApiInfo? info,
-    @JsonKey(name: 'servers') required List<OpenApiServer>? servers,
-    @JsonKey(name: 'paths') required OpenApiPaths? paths,
-    @JsonKey(name: 'components') required OpenApiComponents? components,
-    @JsonKey(name: 'tags') required List<OpenApiTag>? tags,
+    @JsonKey(name: 'openapi') String? openapi,
+    @JsonKey(name: 'info') OpenApiInfo? info,
+    @JsonKey(name: 'servers') List<OpenApiServer>? servers,
+    @JsonKey(name: 'paths') OpenApiPaths? paths,
+    @JsonKey(name: 'components') OpenApiComponents? components,
+    @JsonKey(name: 'tags') List<OpenApiTag>? tags,
+    Map<String, dynamic>? extraJson,
   }) = _OpenApi;
 
   factory OpenApi.fromJson(Map<String, dynamic> json) =>
