@@ -67,7 +67,7 @@ abstract class ModelConfig with _$ModelConfig {
 
   @_jsonSerializable
   const factory ModelConfig({
-    @Default(false) bool genericArgument,
+    @Default(false) bool supportGenericArguments,
     @Default(JsonSerializableConfig()) JsonSerializableConfig jsonSerializable,
   }) = _ModelConfig;
 
