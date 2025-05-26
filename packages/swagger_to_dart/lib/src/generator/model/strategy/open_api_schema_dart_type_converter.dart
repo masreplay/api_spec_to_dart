@@ -1,8 +1,5 @@
 import 'package:collection/collection.dart';
-import 'package:swagger_to_dart/src/generator/generator_strategy.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
-
-import 'enum_model_generator_strategy.dart';
 
 class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
   const OpenApiSchemaDartTypeConverter(super.context);
