@@ -18,5 +18,5 @@ Future<void> main(List<String> args) async {
         ),
       );
 
-  print(response.data);
+  print(response.data.data.items.firstOrNull?.name);
 }
