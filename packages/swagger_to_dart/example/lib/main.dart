@@ -19,12 +19,4 @@ Future<void> main(List<String> args) async {
       );
 
   print(response.data);
-
-  // final response = await apiClient.advancedDependsQuery(
-  //   q: 'test',
-  //   skip: 0,
-  //   limit: 10,
-  // );
-
-  // print(response.data);
 }
