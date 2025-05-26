@@ -1,4 +1,3 @@
-library api_client.dart;
+library;
 
-import 'exports.dart';
 export 'base_api_client.dart';

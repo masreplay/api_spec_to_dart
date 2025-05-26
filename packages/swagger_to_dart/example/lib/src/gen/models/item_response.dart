@@ -17,27 +17,27 @@
 ///     ],
 ///     "title": "ItemResponse"
 /// }
-library item_response_input;
+library;
 
 import 'exports.dart';
-part 'item_response_input.freezed.dart';
-part 'item_response_input.g.dart'; // ItemResponseInput
+part 'item_response.freezed.dart';
+part 'item_response.g.dart'; // ItemResponse
 
 @freezed
-abstract class ItemResponseInput with _$ItemResponseInput {
-  const ItemResponseInput._();
+abstract class ItemResponse with _$ItemResponse {
+  const ItemResponse._();
 
   @jsonSerializable
-  const factory ItemResponseInput({
+  const factory ItemResponse({
     /// id
-    @JsonKey(name: ItemResponseInput.idKey) required int id,
+    @JsonKey(name: ItemResponse.idKey) required int id,
 
     /// name
-    @JsonKey(name: ItemResponseInput.nameKey) required String name,
-  }) = _ItemResponseInput;
+    @JsonKey(name: ItemResponse.nameKey) required String name,
+  }) = _ItemResponse;
 
-  factory ItemResponseInput.fromJson(Map<String, dynamic> json) =>
-      _$ItemResponseInputFromJson(json);
+  factory ItemResponse.fromJson(Map<String, dynamic> json) =>
+      _$ItemResponseFromJson(json);
 
   static const String idKey = "id";
 

@@ -7916,7 +7916,7 @@
 //     ]
 // }
 
-library iso6393_enum;
+library;
 
 import 'exports.dart';
 part 'iso6393_enum.g.dart';

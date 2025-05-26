@@ -1,4 +1,4 @@
-library extra_types_client;
+library;
 
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';

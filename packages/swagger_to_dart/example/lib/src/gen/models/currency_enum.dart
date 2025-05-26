@@ -176,7 +176,7 @@
 //     ]
 // }
 
-library currency_enum;
+library;
 
 import 'exports.dart';
 part 'currency_enum.g.dart';

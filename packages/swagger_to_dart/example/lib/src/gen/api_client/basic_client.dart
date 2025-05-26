@@ -1,8 +1,7 @@
-library basic_client;
+library;
 
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import '../models/models.dart';
 part 'basic_client.g.dart';
 
 @RestApi()

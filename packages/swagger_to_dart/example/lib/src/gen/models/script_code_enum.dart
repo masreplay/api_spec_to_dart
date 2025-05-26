@@ -188,7 +188,7 @@
 //     ]
 // }
 
-library script_code_enum;
+library;
 
 import 'exports.dart';
 part 'script_code_enum.g.dart';

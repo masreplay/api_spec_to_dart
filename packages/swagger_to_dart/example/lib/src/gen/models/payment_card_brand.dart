@@ -19,7 +19,7 @@
 //     "description": "Payment card brands supported by the [`PaymentCardNumber`][pydantic_extra_types.payment.PaymentCardNumber]."
 // }
 
-library payment_card_brand;
+library;
 
 import 'exports.dart';
 part 'payment_card_brand.g.dart';

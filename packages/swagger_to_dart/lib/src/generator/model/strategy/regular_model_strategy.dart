@@ -6,7 +6,11 @@ class RegularModelStrategyGenerator
   const RegularModelStrategyGenerator(super.context);
 
   Library build(MapEntry<String, OpenApiSchemas> model) {
-    final className = Renaming.instance.renameClass(model.key);
+    final isGeneric = model.value.title?.contains('[') ?? false;
+
+    final className = Renaming.instance.renameClass(
+      isGeneric ? model.key : model.value.title ?? model.key,
+    );
     final filename = Renaming.instance.renameFile(className);
 
     final Map<String, OpenApiSchema> properties = model.value.properties ?? {};

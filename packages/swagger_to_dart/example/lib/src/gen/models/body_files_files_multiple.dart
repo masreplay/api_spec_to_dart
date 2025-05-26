@@ -22,7 +22,7 @@
 ///     ],
 ///     "title": "Body_files-files_multiple"
 /// }
-library body_files_files_multiple;
+library;
 
 import 'exports.dart';
 part 'body_files_files_multiple.freezed.dart';

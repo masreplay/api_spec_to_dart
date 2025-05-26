@@ -28,7 +28,7 @@
 ///     ],
 ///     "title": "Parrot"
 /// }
-library parrot;
+library;
 
 import 'exports.dart';
 part 'parrot.freezed.dart';
