@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$OpenApiPathMethod {
   @JsonKey(name: 'tags')
-  List<String> get tags;
+  List<String>? get tags;
   @JsonKey(name: 'summary')
   String? get summary;
   @JsonKey(name: 'description')
@@ -92,7 +92,7 @@ abstract mixin class $OpenApiPathMethodCopyWith<$Res> {
       _$OpenApiPathMethodCopyWithImpl;
   @useResult
   $Res call(
-      {@JsonKey(name: 'tags') List<String> tags,
+      {@JsonKey(name: 'tags') List<String>? tags,
       @JsonKey(name: 'summary') String? summary,
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'operationId') String? operationId,
@@ -118,7 +118,7 @@ class _$OpenApiPathMethodCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? tags = null,
+    Object? tags = freezed,
     Object? summary = freezed,
     Object? description = freezed,
     Object? operationId = freezed,
@@ -129,10 +129,10 @@ class _$OpenApiPathMethodCopyWithImpl<$Res>
     Object? responses = freezed,
   }) {
     return _then(_self.copyWith(
-      tags: null == tags
+      tags: freezed == tags
           ? _self.tags
           : tags // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<String>?,
       summary: freezed == summary
           ? _self.summary
           : summary // ignore: cast_nullable_to_non_nullable
@@ -188,7 +188,7 @@ class _$OpenApiPathMethodCopyWithImpl<$Res>
 @JsonSerializable()
 class _OpenApiPathMethod extends OpenApiPathMethod {
   const _OpenApiPathMethod(
-      {@JsonKey(name: 'tags') required final List<String> tags,
+      {@JsonKey(name: 'tags') final List<String>? tags,
       @JsonKey(name: 'summary') required this.summary,
       @JsonKey(name: 'description') required this.description,
       @JsonKey(name: 'operationId') required this.operationId,
@@ -208,13 +208,15 @@ class _OpenApiPathMethod extends OpenApiPathMethod {
   factory _OpenApiPathMethod.fromJson(Map<String, dynamic> json) =>
       _$OpenApiPathMethodFromJson(json);
 
-  final List<String> _tags;
+  final List<String>? _tags;
   @override
   @JsonKey(name: 'tags')
-  List<String> get tags {
+  List<String>? get tags {
+    final value = _tags;
+    if (value == null) return null;
     if (_tags is EqualUnmodifiableListView) return _tags;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_tags);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
@@ -331,7 +333,7 @@ abstract mixin class _$OpenApiPathMethodCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'tags') List<String> tags,
+      {@JsonKey(name: 'tags') List<String>? tags,
       @JsonKey(name: 'summary') String? summary,
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'operationId') String? operationId,
@@ -358,7 +360,7 @@ class __$OpenApiPathMethodCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? tags = null,
+    Object? tags = freezed,
     Object? summary = freezed,
     Object? description = freezed,
     Object? operationId = freezed,
@@ -369,10 +371,10 @@ class __$OpenApiPathMethodCopyWithImpl<$Res>
     Object? responses = freezed,
   }) {
     return _then(_OpenApiPathMethod(
-      tags: null == tags
+      tags: freezed == tags
           ? _self._tags
           : tags // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<String>?,
       summary: freezed == summary
           ? _self.summary
           : summary // ignore: cast_nullable_to_non_nullable

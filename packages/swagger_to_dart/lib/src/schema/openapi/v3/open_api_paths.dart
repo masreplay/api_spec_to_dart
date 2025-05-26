@@ -26,7 +26,7 @@ abstract class OpenApiPathMethod with _$OpenApiPathMethod {
   const OpenApiPathMethod._();
 
   const factory OpenApiPathMethod({
-    @JsonKey(name: 'tags') required List<String> tags,
+    @JsonKey(name: 'tags') List<String>? tags,
     @JsonKey(name: 'summary') required String? summary,
     @JsonKey(name: 'description') required String? description,
     @JsonKey(name: 'operationId') required String? operationId,
