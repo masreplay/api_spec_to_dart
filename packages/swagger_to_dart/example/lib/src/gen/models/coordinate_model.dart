@@ -44,7 +44,7 @@
 ///     "type": "object",
 ///     "title": "CoordinateModel"
 /// }
-library coordinate_model;
+library;
 
 import 'exports.dart';
 part 'coordinate_model.freezed.dart';

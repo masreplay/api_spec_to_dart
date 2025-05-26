@@ -187,7 +187,7 @@
 //     ]
 // }
 
-library iso4217_enum;
+library;
 
 import 'exports.dart';
 part 'iso4217_enum.g.dart';

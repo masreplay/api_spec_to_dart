@@ -81,7 +81,18 @@ class OpenApiSchemaDartTypeConverter {
   }
 
   String getRef(OpenApiSchemaRef schema) {
-    return Renaming.instance.renameRefClass(schema);
+    final String className;
+
+    final refSchema = context.openApi.getOpenApiSchemasByRef(schema.ref!);
+
+    final title = refSchema?.title;
+    if (title != null && title.contains('[')) {
+      className = title.replaceAll('[', '<').replaceAll(']', '>');
+    } else {
+      className = Renaming.instance.renameClass(title ?? schema.name);
+    }
+
+    return className;
   }
 
   String getAnyOf(

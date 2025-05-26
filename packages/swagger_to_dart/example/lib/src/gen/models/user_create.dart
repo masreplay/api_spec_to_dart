@@ -43,7 +43,7 @@
 ///     ],
 ///     "title": "UserCreate"
 /// }
-library user_create;
+library;
 
 import 'exports.dart';
 part 'user_create.freezed.dart';

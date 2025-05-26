@@ -11,7 +11,7 @@
 ///     "title": "Response Models-Response Multiple",
 ///     "runtimeType": "anyOf"
 /// }
-library response_models_response_multiple;
+library;
 
 import 'exports.dart';
 part 'response_models_response_multiple.freezed.dart';

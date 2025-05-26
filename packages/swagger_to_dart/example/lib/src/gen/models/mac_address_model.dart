@@ -12,7 +12,7 @@
 ///     ],
 ///     "title": "MACAddressModel"
 /// }
-library mac_address_model;
+library;
 
 import 'exports.dart';
 part 'mac_address_model.freezed.dart';

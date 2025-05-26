@@ -604,7 +604,7 @@
 //     ]
 // }
 
-library timezone_enum;
+library;
 
 import 'exports.dart';
 part 'timezone_enum.g.dart';

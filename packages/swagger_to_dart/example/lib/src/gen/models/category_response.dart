@@ -17,7 +17,7 @@
 ///     ],
 ///     "title": "CategoryResponse"
 /// }
-library category_response;
+library;
 
 import 'exports.dart';
 part 'category_response.freezed.dart';

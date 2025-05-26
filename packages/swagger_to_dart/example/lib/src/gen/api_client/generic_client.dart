@@ -1,4 +1,4 @@
-library generic_client;
+library;
 
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
@@ -66,7 +66,7 @@ abstract class GenericClient {
   ///     }
   /// }
   @GET("/generic/items")
-  Future<HttpResponse<PaginationResponseItemResponse>> genericGetItems({
+  Future<HttpResponse<PaginationResponse<ItemResponse>>> genericGetItems({
     @Query("page") int page = 1,
     @Query("per_page") int perPage = 10,
     @Extras() Map<String, dynamic>? extras,
@@ -128,7 +128,7 @@ abstract class GenericClient {
   ///     }
   /// }
   @GET("/generic/categories")
-  Future<HttpResponse<PaginationResponseCategoryResponse>>
+  Future<HttpResponse<PaginationResponse<CategoryResponse>>>
   genericGetCategories({
     @Query("page") int page = 1,
     @Query("per_page") int perPage = 10,
@@ -179,8 +179,8 @@ abstract class GenericClient {
   ///     }
   /// }
   @GET("/generic/base-response-item")
-  Future<HttpResponse<BaseResponseItemResponse>> genericGetBaseResponseItem({
-    @Body() required ItemResponseInput requestBody,
+  Future<HttpResponse<BaseResponse<ItemResponse>>> genericGetBaseResponseItem({
+    @Body() required ItemResponse requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -228,7 +228,7 @@ abstract class GenericClient {
   ///     }
   /// }
   @GET("/generic/base-response-category")
-  Future<HttpResponse<BaseResponseCategoryResponse>>
+  Future<HttpResponse<BaseResponse<CategoryResponse>>>
   genericGetBaseResponseCategory({
     @Body() required CategoryResponse requestBody,
     @Extras() Map<String, dynamic>? extras,
@@ -258,7 +258,7 @@ abstract class GenericClient {
   ///     }
   /// }
   @GET("/generic/base-response-list")
-  Future<HttpResponse<BaseResponseListItemResponse>>
+  Future<HttpResponse<BaseResponse<list<ItemResponse>>>>
   genericGetBaseResponseList({
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
@@ -319,7 +319,7 @@ abstract class GenericClient {
   ///     }
   /// }
   @GET("/generic/nested-base-and-pagination")
-  Future<HttpResponse<BaseResponsePaginationResponseItemResponse>>
+  Future<HttpResponse<BaseResponse<PaginationResponse<ItemResponse>>>>
   genericGetNestedBaseAndPagination({
     @Query("page") int page = 1,
     @Query("per_page") int perPage = 10,

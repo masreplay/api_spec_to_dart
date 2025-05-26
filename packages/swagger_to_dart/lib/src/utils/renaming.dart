@@ -133,10 +133,6 @@ class Renaming {
     }
   }
 
-  String renameRefClass(OpenApiSchemaRef value) {
-    return renameClass(_guard(value.name));
-  }
-
   String renameClass(String value) {
     final name = Recase.instance.toPascalCase(_guard(value));
 

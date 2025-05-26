@@ -9,7 +9,7 @@
 //     ]
 // }
 
-library mode_enum;
+library;
 
 import 'exports.dart';
 part 'mode_enum.g.dart';

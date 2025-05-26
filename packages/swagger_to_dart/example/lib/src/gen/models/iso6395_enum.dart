@@ -121,7 +121,7 @@
 //     ]
 // }
 
-library iso6395_enum;
+library;
 
 import 'exports.dart';
 part 'iso6395_enum.g.dart';

@@ -360,9 +360,7 @@ class ApiClientGenerator {
       result.add(
         Parameter(
           (b) => b
-            ..annotations.addAll([
-              refer('$Queries()'),
-            ])
+            ..annotations.addAll([refer('$Queries()')])
             ..name = 'queries'
             ..required = true
             ..named = true
