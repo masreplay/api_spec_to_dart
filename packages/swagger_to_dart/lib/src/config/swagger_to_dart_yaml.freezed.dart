@@ -336,8 +336,205 @@ class __$JsonSerializableConfigCopyWithImpl<$Res>
 }
 
 /// @nodoc
+mixin _$ModelConfig {
+  bool get genericArgument;
+  JsonSerializableConfig get jsonSerializable;
+
+  /// Create a copy of ModelConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $ModelConfigCopyWith<ModelConfig> get copyWith =>
+      _$ModelConfigCopyWithImpl<ModelConfig>(this as ModelConfig, _$identity);
+
+  /// Serializes this ModelConfig to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ModelConfig &&
+            (identical(other.genericArgument, genericArgument) ||
+                other.genericArgument == genericArgument) &&
+            (identical(other.jsonSerializable, jsonSerializable) ||
+                other.jsonSerializable == jsonSerializable));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, genericArgument, jsonSerializable);
+
+  @override
+  String toString() {
+    return 'ModelConfig(genericArgument: $genericArgument, jsonSerializable: $jsonSerializable)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $ModelConfigCopyWith<$Res> {
+  factory $ModelConfigCopyWith(
+          ModelConfig value, $Res Function(ModelConfig) _then) =
+      _$ModelConfigCopyWithImpl;
+  @useResult
+  $Res call({bool genericArgument, JsonSerializableConfig jsonSerializable});
+
+  $JsonSerializableConfigCopyWith<$Res> get jsonSerializable;
+}
+
+/// @nodoc
+class _$ModelConfigCopyWithImpl<$Res> implements $ModelConfigCopyWith<$Res> {
+  _$ModelConfigCopyWithImpl(this._self, this._then);
+
+  final ModelConfig _self;
+  final $Res Function(ModelConfig) _then;
+
+  /// Create a copy of ModelConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? genericArgument = null,
+    Object? jsonSerializable = null,
+  }) {
+    return _then(_self.copyWith(
+      genericArgument: null == genericArgument
+          ? _self.genericArgument
+          : genericArgument // ignore: cast_nullable_to_non_nullable
+              as bool,
+      jsonSerializable: null == jsonSerializable
+          ? _self.jsonSerializable
+          : jsonSerializable // ignore: cast_nullable_to_non_nullable
+              as JsonSerializableConfig,
+    ));
+  }
+
+  /// Create a copy of ModelConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $JsonSerializableConfigCopyWith<$Res> get jsonSerializable {
+    return $JsonSerializableConfigCopyWith<$Res>(_self.jsonSerializable,
+        (value) {
+      return _then(_self.copyWith(jsonSerializable: value));
+    });
+  }
+}
+
+/// @nodoc
+
+@_jsonSerializable
+class _ModelConfig extends ModelConfig {
+  const _ModelConfig(
+      {this.genericArgument = false,
+      this.jsonSerializable = const JsonSerializableConfig()})
+      : super._();
+  factory _ModelConfig.fromJson(Map<String, dynamic> json) =>
+      _$ModelConfigFromJson(json);
+
+  @override
+  @JsonKey()
+  final bool genericArgument;
+  @override
+  @JsonKey()
+  final JsonSerializableConfig jsonSerializable;
+
+  /// Create a copy of ModelConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ModelConfigCopyWith<_ModelConfig> get copyWith =>
+      __$ModelConfigCopyWithImpl<_ModelConfig>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ModelConfigToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _ModelConfig &&
+            (identical(other.genericArgument, genericArgument) ||
+                other.genericArgument == genericArgument) &&
+            (identical(other.jsonSerializable, jsonSerializable) ||
+                other.jsonSerializable == jsonSerializable));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, genericArgument, jsonSerializable);
+
+  @override
+  String toString() {
+    return 'ModelConfig(genericArgument: $genericArgument, jsonSerializable: $jsonSerializable)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$ModelConfigCopyWith<$Res>
+    implements $ModelConfigCopyWith<$Res> {
+  factory _$ModelConfigCopyWith(
+          _ModelConfig value, $Res Function(_ModelConfig) _then) =
+      __$ModelConfigCopyWithImpl;
+  @override
+  @useResult
+  $Res call({bool genericArgument, JsonSerializableConfig jsonSerializable});
+
+  @override
+  $JsonSerializableConfigCopyWith<$Res> get jsonSerializable;
+}
+
+/// @nodoc
+class __$ModelConfigCopyWithImpl<$Res> implements _$ModelConfigCopyWith<$Res> {
+  __$ModelConfigCopyWithImpl(this._self, this._then);
+
+  final _ModelConfig _self;
+  final $Res Function(_ModelConfig) _then;
+
+  /// Create a copy of ModelConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? genericArgument = null,
+    Object? jsonSerializable = null,
+  }) {
+    return _then(_ModelConfig(
+      genericArgument: null == genericArgument
+          ? _self.genericArgument
+          : genericArgument // ignore: cast_nullable_to_non_nullable
+              as bool,
+      jsonSerializable: null == jsonSerializable
+          ? _self.jsonSerializable
+          : jsonSerializable // ignore: cast_nullable_to_non_nullable
+              as JsonSerializableConfig,
+    ));
+  }
+
+  /// Create a copy of ModelConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $JsonSerializableConfigCopyWith<$Res> get jsonSerializable {
+    return $JsonSerializableConfigCopyWith<$Res>(_self.jsonSerializable,
+        (value) {
+      return _then(_self.copyWith(jsonSerializable: value));
+    });
+  }
+}
+
+/// @nodoc
 mixin _$ApiClientConfig {
   bool get useClassForQueryParameters;
+  List<String> get skippedParameters;
+  String get baseApiClientClassName;
 
   /// Create a copy of ApiClientConfig
   /// with the given fields replaced by the non-null parameter values.
@@ -358,16 +555,24 @@ mixin _$ApiClientConfig {
             (identical(other.useClassForQueryParameters,
                     useClassForQueryParameters) ||
                 other.useClassForQueryParameters ==
-                    useClassForQueryParameters));
+                    useClassForQueryParameters) &&
+            const DeepCollectionEquality()
+                .equals(other.skippedParameters, skippedParameters) &&
+            (identical(other.baseApiClientClassName, baseApiClientClassName) ||
+                other.baseApiClientClassName == baseApiClientClassName));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, useClassForQueryParameters);
+  int get hashCode => Object.hash(
+      runtimeType,
+      useClassForQueryParameters,
+      const DeepCollectionEquality().hash(skippedParameters),
+      baseApiClientClassName);
 
   @override
   String toString() {
-    return 'ApiClientConfig(useClassForQueryParameters: $useClassForQueryParameters)';
+    return 'ApiClientConfig(useClassForQueryParameters: $useClassForQueryParameters, skippedParameters: $skippedParameters, baseApiClientClassName: $baseApiClientClassName)';
   }
 }
 
@@ -377,7 +582,10 @@ abstract mixin class $ApiClientConfigCopyWith<$Res> {
           ApiClientConfig value, $Res Function(ApiClientConfig) _then) =
       _$ApiClientConfigCopyWithImpl;
   @useResult
-  $Res call({bool useClassForQueryParameters});
+  $Res call(
+      {bool useClassForQueryParameters,
+      List<String> skippedParameters,
+      String baseApiClientClassName});
 }
 
 /// @nodoc
@@ -394,12 +602,22 @@ class _$ApiClientConfigCopyWithImpl<$Res>
   @override
   $Res call({
     Object? useClassForQueryParameters = null,
+    Object? skippedParameters = null,
+    Object? baseApiClientClassName = null,
   }) {
     return _then(_self.copyWith(
       useClassForQueryParameters: null == useClassForQueryParameters
           ? _self.useClassForQueryParameters
           : useClassForQueryParameters // ignore: cast_nullable_to_non_nullable
               as bool,
+      skippedParameters: null == skippedParameters
+          ? _self.skippedParameters
+          : skippedParameters // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      baseApiClientClassName: null == baseApiClientClassName
+          ? _self.baseApiClientClassName
+          : baseApiClientClassName // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -408,13 +626,31 @@ class _$ApiClientConfigCopyWithImpl<$Res>
 
 @_jsonSerializable
 class _ApiClientConfig extends ApiClientConfig {
-  const _ApiClientConfig({this.useClassForQueryParameters = false}) : super._();
+  const _ApiClientConfig(
+      {this.useClassForQueryParameters = false,
+      final List<String> skippedParameters = const [],
+      this.baseApiClientClassName = 'BaseApiClient'})
+      : _skippedParameters = skippedParameters,
+        super._();
   factory _ApiClientConfig.fromJson(Map<String, dynamic> json) =>
       _$ApiClientConfigFromJson(json);
 
   @override
   @JsonKey()
   final bool useClassForQueryParameters;
+  final List<String> _skippedParameters;
+  @override
+  @JsonKey()
+  List<String> get skippedParameters {
+    if (_skippedParameters is EqualUnmodifiableListView)
+      return _skippedParameters;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_skippedParameters);
+  }
+
+  @override
+  @JsonKey()
+  final String baseApiClientClassName;
 
   /// Create a copy of ApiClientConfig
   /// with the given fields replaced by the non-null parameter values.
@@ -439,16 +675,24 @@ class _ApiClientConfig extends ApiClientConfig {
             (identical(other.useClassForQueryParameters,
                     useClassForQueryParameters) ||
                 other.useClassForQueryParameters ==
-                    useClassForQueryParameters));
+                    useClassForQueryParameters) &&
+            const DeepCollectionEquality()
+                .equals(other._skippedParameters, _skippedParameters) &&
+            (identical(other.baseApiClientClassName, baseApiClientClassName) ||
+                other.baseApiClientClassName == baseApiClientClassName));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, useClassForQueryParameters);
+  int get hashCode => Object.hash(
+      runtimeType,
+      useClassForQueryParameters,
+      const DeepCollectionEquality().hash(_skippedParameters),
+      baseApiClientClassName);
 
   @override
   String toString() {
-    return 'ApiClientConfig(useClassForQueryParameters: $useClassForQueryParameters)';
+    return 'ApiClientConfig(useClassForQueryParameters: $useClassForQueryParameters, skippedParameters: $skippedParameters, baseApiClientClassName: $baseApiClientClassName)';
   }
 }
 
@@ -460,7 +704,10 @@ abstract mixin class _$ApiClientConfigCopyWith<$Res>
       __$ApiClientConfigCopyWithImpl;
   @override
   @useResult
-  $Res call({bool useClassForQueryParameters});
+  $Res call(
+      {bool useClassForQueryParameters,
+      List<String> skippedParameters,
+      String baseApiClientClassName});
 }
 
 /// @nodoc
@@ -477,12 +724,22 @@ class __$ApiClientConfigCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   $Res call({
     Object? useClassForQueryParameters = null,
+    Object? skippedParameters = null,
+    Object? baseApiClientClassName = null,
   }) {
     return _then(_ApiClientConfig(
       useClassForQueryParameters: null == useClassForQueryParameters
           ? _self.useClassForQueryParameters
           : useClassForQueryParameters // ignore: cast_nullable_to_non_nullable
               as bool,
+      skippedParameters: null == skippedParameters
+          ? _self._skippedParameters
+          : skippedParameters // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      baseApiClientClassName: null == baseApiClientClassName
+          ? _self.baseApiClientClassName
+          : baseApiClientClassName // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -490,12 +747,11 @@ class __$ApiClientConfigCopyWithImpl<$Res>
 /// @nodoc
 mixin _$SwaggerToDart {
   String? get url;
+  GenerationSource? get generationSource;
   String get inputDirectory;
   String get outputDirectory;
-  String get apiClientClassName;
   List<String> get imports;
-  List<String> get skippedParameters;
-  JsonSerializableConfig get jsonSerializable;
+  ModelConfig get model;
   ApiClientConfig get apiClient;
 
   /// Create a copy of SwaggerToDart
@@ -515,17 +771,14 @@ mixin _$SwaggerToDart {
         (other.runtimeType == runtimeType &&
             other is SwaggerToDart &&
             (identical(other.url, url) || other.url == url) &&
+            (identical(other.generationSource, generationSource) ||
+                other.generationSource == generationSource) &&
             (identical(other.inputDirectory, inputDirectory) ||
                 other.inputDirectory == inputDirectory) &&
             (identical(other.outputDirectory, outputDirectory) ||
                 other.outputDirectory == outputDirectory) &&
-            (identical(other.apiClientClassName, apiClientClassName) ||
-                other.apiClientClassName == apiClientClassName) &&
             const DeepCollectionEquality().equals(other.imports, imports) &&
-            const DeepCollectionEquality()
-                .equals(other.skippedParameters, skippedParameters) &&
-            (identical(other.jsonSerializable, jsonSerializable) ||
-                other.jsonSerializable == jsonSerializable) &&
+            (identical(other.model, model) || other.model == model) &&
             (identical(other.apiClient, apiClient) ||
                 other.apiClient == apiClient));
   }
@@ -535,17 +788,16 @@ mixin _$SwaggerToDart {
   int get hashCode => Object.hash(
       runtimeType,
       url,
+      generationSource,
       inputDirectory,
       outputDirectory,
-      apiClientClassName,
       const DeepCollectionEquality().hash(imports),
-      const DeepCollectionEquality().hash(skippedParameters),
-      jsonSerializable,
+      model,
       apiClient);
 
   @override
   String toString() {
-    return 'SwaggerToDart(url: $url, inputDirectory: $inputDirectory, outputDirectory: $outputDirectory, apiClientClassName: $apiClientClassName, imports: $imports, skippedParameters: $skippedParameters, jsonSerializable: $jsonSerializable, apiClient: $apiClient)';
+    return 'SwaggerToDart(url: $url, generationSource: $generationSource, inputDirectory: $inputDirectory, outputDirectory: $outputDirectory, imports: $imports, model: $model, apiClient: $apiClient)';
   }
 }
 
@@ -557,15 +809,14 @@ abstract mixin class $SwaggerToDartCopyWith<$Res> {
   @useResult
   $Res call(
       {String? url,
+      GenerationSource? generationSource,
       String inputDirectory,
       String outputDirectory,
-      String apiClientClassName,
       List<String> imports,
-      List<String> skippedParameters,
-      JsonSerializableConfig jsonSerializable,
+      ModelConfig model,
       ApiClientConfig apiClient});
 
-  $JsonSerializableConfigCopyWith<$Res> get jsonSerializable;
+  $ModelConfigCopyWith<$Res> get model;
   $ApiClientConfigCopyWith<$Res> get apiClient;
 }
 
@@ -583,12 +834,11 @@ class _$SwaggerToDartCopyWithImpl<$Res>
   @override
   $Res call({
     Object? url = freezed,
+    Object? generationSource = freezed,
     Object? inputDirectory = null,
     Object? outputDirectory = null,
-    Object? apiClientClassName = null,
     Object? imports = null,
-    Object? skippedParameters = null,
-    Object? jsonSerializable = null,
+    Object? model = null,
     Object? apiClient = null,
   }) {
     return _then(_self.copyWith(
@@ -596,6 +846,10 @@ class _$SwaggerToDartCopyWithImpl<$Res>
           ? _self.url
           : url // ignore: cast_nullable_to_non_nullable
               as String?,
+      generationSource: freezed == generationSource
+          ? _self.generationSource
+          : generationSource // ignore: cast_nullable_to_non_nullable
+              as GenerationSource?,
       inputDirectory: null == inputDirectory
           ? _self.inputDirectory
           : inputDirectory // ignore: cast_nullable_to_non_nullable
@@ -604,22 +858,14 @@ class _$SwaggerToDartCopyWithImpl<$Res>
           ? _self.outputDirectory
           : outputDirectory // ignore: cast_nullable_to_non_nullable
               as String,
-      apiClientClassName: null == apiClientClassName
-          ? _self.apiClientClassName
-          : apiClientClassName // ignore: cast_nullable_to_non_nullable
-              as String,
       imports: null == imports
           ? _self.imports
           : imports // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      skippedParameters: null == skippedParameters
-          ? _self.skippedParameters
-          : skippedParameters // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      jsonSerializable: null == jsonSerializable
-          ? _self.jsonSerializable
-          : jsonSerializable // ignore: cast_nullable_to_non_nullable
-              as JsonSerializableConfig,
+      model: null == model
+          ? _self.model
+          : model // ignore: cast_nullable_to_non_nullable
+              as ModelConfig,
       apiClient: null == apiClient
           ? _self.apiClient
           : apiClient // ignore: cast_nullable_to_non_nullable
@@ -631,10 +877,9 @@ class _$SwaggerToDartCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $JsonSerializableConfigCopyWith<$Res> get jsonSerializable {
-    return $JsonSerializableConfigCopyWith<$Res>(_self.jsonSerializable,
-        (value) {
-      return _then(_self.copyWith(jsonSerializable: value));
+  $ModelConfigCopyWith<$Res> get model {
+    return $ModelConfigCopyWith<$Res>(_self.model, (value) {
+      return _then(_self.copyWith(model: value));
     });
   }
 
@@ -655,29 +900,26 @@ class _$SwaggerToDartCopyWithImpl<$Res>
 class _SwaggerToDart implements SwaggerToDart {
   _SwaggerToDart(
       {this.url,
+      this.generationSource,
       this.inputDirectory = 'schema/swagger.json',
       this.outputDirectory = 'lib/src/gen',
-      this.apiClientClassName = 'ApiClient',
       final List<String> imports = const [],
-      final List<String> skippedParameters = const [],
-      this.jsonSerializable = const JsonSerializableConfig(),
+      this.model = const ModelConfig(),
       this.apiClient = const ApiClientConfig()})
-      : _imports = imports,
-        _skippedParameters = skippedParameters;
+      : _imports = imports;
   factory _SwaggerToDart.fromJson(Map<String, dynamic> json) =>
       _$SwaggerToDartFromJson(json);
 
   @override
   final String? url;
   @override
+  final GenerationSource? generationSource;
+  @override
   @JsonKey()
   final String inputDirectory;
   @override
   @JsonKey()
   final String outputDirectory;
-  @override
-  @JsonKey()
-  final String apiClientClassName;
   final List<String> _imports;
   @override
   @JsonKey()
@@ -687,19 +929,9 @@ class _SwaggerToDart implements SwaggerToDart {
     return EqualUnmodifiableListView(_imports);
   }
 
-  final List<String> _skippedParameters;
   @override
   @JsonKey()
-  List<String> get skippedParameters {
-    if (_skippedParameters is EqualUnmodifiableListView)
-      return _skippedParameters;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_skippedParameters);
-  }
-
-  @override
-  @JsonKey()
-  final JsonSerializableConfig jsonSerializable;
+  final ModelConfig model;
   @override
   @JsonKey()
   final ApiClientConfig apiClient;
@@ -725,17 +957,14 @@ class _SwaggerToDart implements SwaggerToDart {
         (other.runtimeType == runtimeType &&
             other is _SwaggerToDart &&
             (identical(other.url, url) || other.url == url) &&
+            (identical(other.generationSource, generationSource) ||
+                other.generationSource == generationSource) &&
             (identical(other.inputDirectory, inputDirectory) ||
                 other.inputDirectory == inputDirectory) &&
             (identical(other.outputDirectory, outputDirectory) ||
                 other.outputDirectory == outputDirectory) &&
-            (identical(other.apiClientClassName, apiClientClassName) ||
-                other.apiClientClassName == apiClientClassName) &&
             const DeepCollectionEquality().equals(other._imports, _imports) &&
-            const DeepCollectionEquality()
-                .equals(other._skippedParameters, _skippedParameters) &&
-            (identical(other.jsonSerializable, jsonSerializable) ||
-                other.jsonSerializable == jsonSerializable) &&
+            (identical(other.model, model) || other.model == model) &&
             (identical(other.apiClient, apiClient) ||
                 other.apiClient == apiClient));
   }
@@ -745,17 +974,16 @@ class _SwaggerToDart implements SwaggerToDart {
   int get hashCode => Object.hash(
       runtimeType,
       url,
+      generationSource,
       inputDirectory,
       outputDirectory,
-      apiClientClassName,
       const DeepCollectionEquality().hash(_imports),
-      const DeepCollectionEquality().hash(_skippedParameters),
-      jsonSerializable,
+      model,
       apiClient);
 
   @override
   String toString() {
-    return 'SwaggerToDart(url: $url, inputDirectory: $inputDirectory, outputDirectory: $outputDirectory, apiClientClassName: $apiClientClassName, imports: $imports, skippedParameters: $skippedParameters, jsonSerializable: $jsonSerializable, apiClient: $apiClient)';
+    return 'SwaggerToDart(url: $url, generationSource: $generationSource, inputDirectory: $inputDirectory, outputDirectory: $outputDirectory, imports: $imports, model: $model, apiClient: $apiClient)';
   }
 }
 
@@ -769,16 +997,15 @@ abstract mixin class _$SwaggerToDartCopyWith<$Res>
   @useResult
   $Res call(
       {String? url,
+      GenerationSource? generationSource,
       String inputDirectory,
       String outputDirectory,
-      String apiClientClassName,
       List<String> imports,
-      List<String> skippedParameters,
-      JsonSerializableConfig jsonSerializable,
+      ModelConfig model,
       ApiClientConfig apiClient});
 
   @override
-  $JsonSerializableConfigCopyWith<$Res> get jsonSerializable;
+  $ModelConfigCopyWith<$Res> get model;
   @override
   $ApiClientConfigCopyWith<$Res> get apiClient;
 }
@@ -797,12 +1024,11 @@ class __$SwaggerToDartCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   $Res call({
     Object? url = freezed,
+    Object? generationSource = freezed,
     Object? inputDirectory = null,
     Object? outputDirectory = null,
-    Object? apiClientClassName = null,
     Object? imports = null,
-    Object? skippedParameters = null,
-    Object? jsonSerializable = null,
+    Object? model = null,
     Object? apiClient = null,
   }) {
     return _then(_SwaggerToDart(
@@ -810,6 +1036,10 @@ class __$SwaggerToDartCopyWithImpl<$Res>
           ? _self.url
           : url // ignore: cast_nullable_to_non_nullable
               as String?,
+      generationSource: freezed == generationSource
+          ? _self.generationSource
+          : generationSource // ignore: cast_nullable_to_non_nullable
+              as GenerationSource?,
       inputDirectory: null == inputDirectory
           ? _self.inputDirectory
           : inputDirectory // ignore: cast_nullable_to_non_nullable
@@ -818,22 +1048,14 @@ class __$SwaggerToDartCopyWithImpl<$Res>
           ? _self.outputDirectory
           : outputDirectory // ignore: cast_nullable_to_non_nullable
               as String,
-      apiClientClassName: null == apiClientClassName
-          ? _self.apiClientClassName
-          : apiClientClassName // ignore: cast_nullable_to_non_nullable
-              as String,
       imports: null == imports
           ? _self._imports
           : imports // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      skippedParameters: null == skippedParameters
-          ? _self._skippedParameters
-          : skippedParameters // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      jsonSerializable: null == jsonSerializable
-          ? _self.jsonSerializable
-          : jsonSerializable // ignore: cast_nullable_to_non_nullable
-              as JsonSerializableConfig,
+      model: null == model
+          ? _self.model
+          : model // ignore: cast_nullable_to_non_nullable
+              as ModelConfig,
       apiClient: null == apiClient
           ? _self.apiClient
           : apiClient // ignore: cast_nullable_to_non_nullable
@@ -845,10 +1067,9 @@ class __$SwaggerToDartCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $JsonSerializableConfigCopyWith<$Res> get jsonSerializable {
-    return $JsonSerializableConfigCopyWith<$Res>(_self.jsonSerializable,
-        (value) {
-      return _then(_self.copyWith(jsonSerializable: value));
+  $ModelConfigCopyWith<$Res> get model {
+    return $ModelConfigCopyWith<$Res>(_self.model, (value) {
+      return _then(_self.copyWith(model: value));
     });
   }
 

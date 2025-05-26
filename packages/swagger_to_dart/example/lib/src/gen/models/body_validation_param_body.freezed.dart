@@ -10,54 +10,62 @@ part of 'body_validation_param_body.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$BodyValidationParamBody {
+  /// data
+  @JsonKey(name: BodyValidationParamBody.dataKey)
+  Map<String, dynamic> get data;
 
-/// data
-@JsonKey(name: BodyValidationParamBody.dataKey) Map<String, dynamic> get data;/// importance
-@JsonKey(name: BodyValidationParamBody.importanceKey) int get importance;
-/// Create a copy of BodyValidationParamBody
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$BodyValidationParamBodyCopyWith<BodyValidationParamBody> get copyWith => _$BodyValidationParamBodyCopyWithImpl<BodyValidationParamBody>(this as BodyValidationParamBody, _$identity);
+  /// importance
+  @JsonKey(name: BodyValidationParamBody.importanceKey)
+  int get importance;
+
+  /// Create a copy of BodyValidationParamBody
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $BodyValidationParamBodyCopyWith<BodyValidationParamBody> get copyWith =>
+      _$BodyValidationParamBodyCopyWithImpl<BodyValidationParamBody>(
+          this as BodyValidationParamBody, _$identity);
 
   /// Serializes this BodyValidationParamBody to a JSON map.
   Map<String, dynamic> toJson();
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is BodyValidationParamBody &&
+            const DeepCollectionEquality().equals(other.data, data) &&
+            (identical(other.importance, importance) ||
+                other.importance == importance));
+  }
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is BodyValidationParamBody&&const DeepCollectionEquality().equals(other.data, data)&&(identical(other.importance, importance) || other.importance == importance));
-}
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(data), importance);
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(data),importance);
-
-@override
-String toString() {
-  return 'BodyValidationParamBody(data: $data, importance: $importance)';
-}
-
-
+  @override
+  String toString() {
+    return 'BodyValidationParamBody(data: $data, importance: $importance)';
+  }
 }
 
 /// @nodoc
-abstract mixin class $BodyValidationParamBodyCopyWith<$Res>  {
-  factory $BodyValidationParamBodyCopyWith(BodyValidationParamBody value, $Res Function(BodyValidationParamBody) _then) = _$BodyValidationParamBodyCopyWithImpl;
-@useResult
-$Res call({
-@JsonKey(name: BodyValidationParamBody.dataKey) Map<String, dynamic> data,@JsonKey(name: BodyValidationParamBody.importanceKey) int importance
-});
-
-
-
-
+abstract mixin class $BodyValidationParamBodyCopyWith<$Res> {
+  factory $BodyValidationParamBodyCopyWith(BodyValidationParamBody value,
+          $Res Function(BodyValidationParamBody) _then) =
+      _$BodyValidationParamBodyCopyWithImpl;
+  @useResult
+  $Res call(
+      {@JsonKey(name: BodyValidationParamBody.dataKey)
+      Map<String, dynamic> data,
+      @JsonKey(name: BodyValidationParamBody.importanceKey) int importance});
 }
+
 /// @nodoc
 class _$BodyValidationParamBodyCopyWithImpl<$Res>
     implements $BodyValidationParamBodyCopyWith<$Res> {
@@ -66,78 +74,109 @@ class _$BodyValidationParamBodyCopyWithImpl<$Res>
   final BodyValidationParamBody _self;
   final $Res Function(BodyValidationParamBody) _then;
 
-/// Create a copy of BodyValidationParamBody
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? data = null,Object? importance = null,}) {
-  return _then(_self.copyWith(
-data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
-as Map<String, dynamic>,importance: null == importance ? _self.importance : importance // ignore: cast_nullable_to_non_nullable
-as int,
-  ));
+  /// Create a copy of BodyValidationParamBody
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+    Object? importance = null,
+  }) {
+    return _then(_self.copyWith(
+      data: null == data
+          ? _self.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
+      importance: null == importance
+          ? _self.importance
+          : importance // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
-
-}
-
 
 /// @nodoc
 
 @jsonSerializable
 class _BodyValidationParamBody extends BodyValidationParamBody {
-  const _BodyValidationParamBody({@JsonKey(name: BodyValidationParamBody.dataKey) required final  Map<String, dynamic> data, @JsonKey(name: BodyValidationParamBody.importanceKey) required this.importance}): _data = data,super._();
-  factory _BodyValidationParamBody.fromJson(Map<String, dynamic> json) => _$BodyValidationParamBodyFromJson(json);
+  const _BodyValidationParamBody(
+      {@JsonKey(name: BodyValidationParamBody.dataKey)
+      required final Map<String, dynamic> data,
+      @JsonKey(name: BodyValidationParamBody.importanceKey)
+      required this.importance})
+      : _data = data,
+        super._();
+  factory _BodyValidationParamBody.fromJson(Map<String, dynamic> json) =>
+      _$BodyValidationParamBodyFromJson(json);
 
-/// data
- final  Map<String, dynamic> _data;
-/// data
-@override@JsonKey(name: BodyValidationParamBody.dataKey) Map<String, dynamic> get data {
-  if (_data is EqualUnmodifiableMapView) return _data;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableMapView(_data);
-}
+  /// data
+  final Map<String, dynamic> _data;
 
-/// importance
-@override@JsonKey(name: BodyValidationParamBody.importanceKey) final  int importance;
+  /// data
+  @override
+  @JsonKey(name: BodyValidationParamBody.dataKey)
+  Map<String, dynamic> get data {
+    if (_data is EqualUnmodifiableMapView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_data);
+  }
 
-/// Create a copy of BodyValidationParamBody
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$BodyValidationParamBodyCopyWith<_BodyValidationParamBody> get copyWith => __$BodyValidationParamBodyCopyWithImpl<_BodyValidationParamBody>(this, _$identity);
+  /// importance
+  @override
+  @JsonKey(name: BodyValidationParamBody.importanceKey)
+  final int importance;
 
-@override
-Map<String, dynamic> toJson() {
-  return _$BodyValidationParamBodyToJson(this, );
-}
+  /// Create a copy of BodyValidationParamBody
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$BodyValidationParamBodyCopyWith<_BodyValidationParamBody> get copyWith =>
+      __$BodyValidationParamBodyCopyWithImpl<_BodyValidationParamBody>(
+          this, _$identity);
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BodyValidationParamBody&&const DeepCollectionEquality().equals(other._data, _data)&&(identical(other.importance, importance) || other.importance == importance));
-}
+  @override
+  Map<String, dynamic> toJson() {
+    return _$BodyValidationParamBodyToJson(
+      this,
+    );
+  }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_data),importance);
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _BodyValidationParamBody &&
+            const DeepCollectionEquality().equals(other._data, _data) &&
+            (identical(other.importance, importance) ||
+                other.importance == importance));
+  }
 
-@override
-String toString() {
-  return 'BodyValidationParamBody(data: $data, importance: $importance)';
-}
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_data), importance);
 
-
+  @override
+  String toString() {
+    return 'BodyValidationParamBody(data: $data, importance: $importance)';
+  }
 }
 
 /// @nodoc
-abstract mixin class _$BodyValidationParamBodyCopyWith<$Res> implements $BodyValidationParamBodyCopyWith<$Res> {
-  factory _$BodyValidationParamBodyCopyWith(_BodyValidationParamBody value, $Res Function(_BodyValidationParamBody) _then) = __$BodyValidationParamBodyCopyWithImpl;
-@override @useResult
-$Res call({
-@JsonKey(name: BodyValidationParamBody.dataKey) Map<String, dynamic> data,@JsonKey(name: BodyValidationParamBody.importanceKey) int importance
-});
-
-
-
-
+abstract mixin class _$BodyValidationParamBodyCopyWith<$Res>
+    implements $BodyValidationParamBodyCopyWith<$Res> {
+  factory _$BodyValidationParamBodyCopyWith(_BodyValidationParamBody value,
+          $Res Function(_BodyValidationParamBody) _then) =
+      __$BodyValidationParamBodyCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: BodyValidationParamBody.dataKey)
+      Map<String, dynamic> data,
+      @JsonKey(name: BodyValidationParamBody.importanceKey) int importance});
 }
+
 /// @nodoc
 class __$BodyValidationParamBodyCopyWithImpl<$Res>
     implements _$BodyValidationParamBodyCopyWith<$Res> {
@@ -146,17 +185,23 @@ class __$BodyValidationParamBodyCopyWithImpl<$Res>
   final _BodyValidationParamBody _self;
   final $Res Function(_BodyValidationParamBody) _then;
 
-/// Create a copy of BodyValidationParamBody
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? data = null,Object? importance = null,}) {
-  return _then(_BodyValidationParamBody(
-data: null == data ? _self._data : data // ignore: cast_nullable_to_non_nullable
-as Map<String, dynamic>,importance: null == importance ? _self.importance : importance // ignore: cast_nullable_to_non_nullable
-as int,
-  ));
+  /// Create a copy of BodyValidationParamBody
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? data = null,
+    Object? importance = null,
+  }) {
+    return _then(_BodyValidationParamBody(
+      data: null == data
+          ? _self._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
+      importance: null == importance
+          ? _self.importance
+          : importance // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
-
-
-}
-
-// dart format on

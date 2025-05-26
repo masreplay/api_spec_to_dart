@@ -10,54 +10,59 @@ part of 'item_response_input.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$ItemResponseInput {
+  /// id
+  @JsonKey(name: ItemResponseInput.idKey)
+  int get id;
 
-/// id
-@JsonKey(name: ItemResponseInput.idKey) int get id;/// name
-@JsonKey(name: ItemResponseInput.nameKey) String get name;
-/// Create a copy of ItemResponseInput
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$ItemResponseInputCopyWith<ItemResponseInput> get copyWith => _$ItemResponseInputCopyWithImpl<ItemResponseInput>(this as ItemResponseInput, _$identity);
+  /// name
+  @JsonKey(name: ItemResponseInput.nameKey)
+  String get name;
+
+  /// Create a copy of ItemResponseInput
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $ItemResponseInputCopyWith<ItemResponseInput> get copyWith =>
+      _$ItemResponseInputCopyWithImpl<ItemResponseInput>(
+          this as ItemResponseInput, _$identity);
 
   /// Serializes this ItemResponseInput to a JSON map.
   Map<String, dynamic> toJson();
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ItemResponseInput &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name));
+  }
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ItemResponseInput&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name));
-}
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, name);
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,id,name);
-
-@override
-String toString() {
-  return 'ItemResponseInput(id: $id, name: $name)';
-}
-
-
+  @override
+  String toString() {
+    return 'ItemResponseInput(id: $id, name: $name)';
+  }
 }
 
 /// @nodoc
-abstract mixin class $ItemResponseInputCopyWith<$Res>  {
-  factory $ItemResponseInputCopyWith(ItemResponseInput value, $Res Function(ItemResponseInput) _then) = _$ItemResponseInputCopyWithImpl;
-@useResult
-$Res call({
-@JsonKey(name: ItemResponseInput.idKey) int id,@JsonKey(name: ItemResponseInput.nameKey) String name
-});
-
-
-
-
+abstract mixin class $ItemResponseInputCopyWith<$Res> {
+  factory $ItemResponseInputCopyWith(
+          ItemResponseInput value, $Res Function(ItemResponseInput) _then) =
+      _$ItemResponseInputCopyWithImpl;
+  @useResult
+  $Res call(
+      {@JsonKey(name: ItemResponseInput.idKey) int id,
+      @JsonKey(name: ItemResponseInput.nameKey) String name});
 }
+
 /// @nodoc
 class _$ItemResponseInputCopyWithImpl<$Res>
     implements $ItemResponseInputCopyWith<$Res> {
@@ -66,71 +71,95 @@ class _$ItemResponseInputCopyWithImpl<$Res>
   final ItemResponseInput _self;
   final $Res Function(ItemResponseInput) _then;
 
-/// Create a copy of ItemResponseInput
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,}) {
-  return _then(_self.copyWith(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
+  /// Create a copy of ItemResponseInput
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+  }) {
+    return _then(_self.copyWith(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
-
-}
-
 
 /// @nodoc
 
 @jsonSerializable
 class _ItemResponseInput extends ItemResponseInput {
-  const _ItemResponseInput({@JsonKey(name: ItemResponseInput.idKey) required this.id, @JsonKey(name: ItemResponseInput.nameKey) required this.name}): super._();
-  factory _ItemResponseInput.fromJson(Map<String, dynamic> json) => _$ItemResponseInputFromJson(json);
+  const _ItemResponseInput(
+      {@JsonKey(name: ItemResponseInput.idKey) required this.id,
+      @JsonKey(name: ItemResponseInput.nameKey) required this.name})
+      : super._();
+  factory _ItemResponseInput.fromJson(Map<String, dynamic> json) =>
+      _$ItemResponseInputFromJson(json);
 
-/// id
-@override@JsonKey(name: ItemResponseInput.idKey) final  int id;
-/// name
-@override@JsonKey(name: ItemResponseInput.nameKey) final  String name;
+  /// id
+  @override
+  @JsonKey(name: ItemResponseInput.idKey)
+  final int id;
 
-/// Create a copy of ItemResponseInput
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$ItemResponseInputCopyWith<_ItemResponseInput> get copyWith => __$ItemResponseInputCopyWithImpl<_ItemResponseInput>(this, _$identity);
+  /// name
+  @override
+  @JsonKey(name: ItemResponseInput.nameKey)
+  final String name;
 
-@override
-Map<String, dynamic> toJson() {
-  return _$ItemResponseInputToJson(this, );
-}
+  /// Create a copy of ItemResponseInput
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ItemResponseInputCopyWith<_ItemResponseInput> get copyWith =>
+      __$ItemResponseInputCopyWithImpl<_ItemResponseInput>(this, _$identity);
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ItemResponseInput&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name));
-}
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ItemResponseInputToJson(
+      this,
+    );
+  }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,id,name);
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _ItemResponseInput &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name));
+  }
 
-@override
-String toString() {
-  return 'ItemResponseInput(id: $id, name: $name)';
-}
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, name);
 
-
+  @override
+  String toString() {
+    return 'ItemResponseInput(id: $id, name: $name)';
+  }
 }
 
 /// @nodoc
-abstract mixin class _$ItemResponseInputCopyWith<$Res> implements $ItemResponseInputCopyWith<$Res> {
-  factory _$ItemResponseInputCopyWith(_ItemResponseInput value, $Res Function(_ItemResponseInput) _then) = __$ItemResponseInputCopyWithImpl;
-@override @useResult
-$Res call({
-@JsonKey(name: ItemResponseInput.idKey) int id,@JsonKey(name: ItemResponseInput.nameKey) String name
-});
-
-
-
-
+abstract mixin class _$ItemResponseInputCopyWith<$Res>
+    implements $ItemResponseInputCopyWith<$Res> {
+  factory _$ItemResponseInputCopyWith(
+          _ItemResponseInput value, $Res Function(_ItemResponseInput) _then) =
+      __$ItemResponseInputCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: ItemResponseInput.idKey) int id,
+      @JsonKey(name: ItemResponseInput.nameKey) String name});
 }
+
 /// @nodoc
 class __$ItemResponseInputCopyWithImpl<$Res>
     implements _$ItemResponseInputCopyWith<$Res> {
@@ -139,17 +168,23 @@ class __$ItemResponseInputCopyWithImpl<$Res>
   final _ItemResponseInput _self;
   final $Res Function(_ItemResponseInput) _then;
 
-/// Create a copy of ItemResponseInput
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,}) {
-  return _then(_ItemResponseInput(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
+  /// Create a copy of ItemResponseInput
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+  }) {
+    return _then(_ItemResponseInput(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
-
-
-}
-
-// dart format on

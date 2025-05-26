@@ -10,54 +10,62 @@ part of 'app_router_generic_router_item_response.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$AppRouterGenericRouterItemResponse {
+  /// id
+  @JsonKey(name: AppRouterGenericRouterItemResponse.idKey)
+  int get id;
 
-/// id
-@JsonKey(name: AppRouterGenericRouterItemResponse.idKey) int get id;/// name
-@JsonKey(name: AppRouterGenericRouterItemResponse.nameKey) String get name;
-/// Create a copy of AppRouterGenericRouterItemResponse
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$AppRouterGenericRouterItemResponseCopyWith<AppRouterGenericRouterItemResponse> get copyWith => _$AppRouterGenericRouterItemResponseCopyWithImpl<AppRouterGenericRouterItemResponse>(this as AppRouterGenericRouterItemResponse, _$identity);
+  /// name
+  @JsonKey(name: AppRouterGenericRouterItemResponse.nameKey)
+  String get name;
+
+  /// Create a copy of AppRouterGenericRouterItemResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $AppRouterGenericRouterItemResponseCopyWith<
+          AppRouterGenericRouterItemResponse>
+      get copyWith => _$AppRouterGenericRouterItemResponseCopyWithImpl<
+              AppRouterGenericRouterItemResponse>(
+          this as AppRouterGenericRouterItemResponse, _$identity);
 
   /// Serializes this AppRouterGenericRouterItemResponse to a JSON map.
   Map<String, dynamic> toJson();
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is AppRouterGenericRouterItemResponse &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name));
+  }
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AppRouterGenericRouterItemResponse&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name));
-}
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, name);
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,id,name);
-
-@override
-String toString() {
-  return 'AppRouterGenericRouterItemResponse(id: $id, name: $name)';
-}
-
-
+  @override
+  String toString() {
+    return 'AppRouterGenericRouterItemResponse(id: $id, name: $name)';
+  }
 }
 
 /// @nodoc
-abstract mixin class $AppRouterGenericRouterItemResponseCopyWith<$Res>  {
-  factory $AppRouterGenericRouterItemResponseCopyWith(AppRouterGenericRouterItemResponse value, $Res Function(AppRouterGenericRouterItemResponse) _then) = _$AppRouterGenericRouterItemResponseCopyWithImpl;
-@useResult
-$Res call({
-@JsonKey(name: AppRouterGenericRouterItemResponse.idKey) int id,@JsonKey(name: AppRouterGenericRouterItemResponse.nameKey) String name
-});
-
-
-
-
+abstract mixin class $AppRouterGenericRouterItemResponseCopyWith<$Res> {
+  factory $AppRouterGenericRouterItemResponseCopyWith(
+          AppRouterGenericRouterItemResponse value,
+          $Res Function(AppRouterGenericRouterItemResponse) _then) =
+      _$AppRouterGenericRouterItemResponseCopyWithImpl;
+  @useResult
+  $Res call(
+      {@JsonKey(name: AppRouterGenericRouterItemResponse.idKey) int id,
+      @JsonKey(name: AppRouterGenericRouterItemResponse.nameKey) String name});
 }
+
 /// @nodoc
 class _$AppRouterGenericRouterItemResponseCopyWithImpl<$Res>
     implements $AppRouterGenericRouterItemResponseCopyWith<$Res> {
@@ -66,71 +74,102 @@ class _$AppRouterGenericRouterItemResponseCopyWithImpl<$Res>
   final AppRouterGenericRouterItemResponse _self;
   final $Res Function(AppRouterGenericRouterItemResponse) _then;
 
-/// Create a copy of AppRouterGenericRouterItemResponse
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,}) {
-  return _then(_self.copyWith(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
+  /// Create a copy of AppRouterGenericRouterItemResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+  }) {
+    return _then(_self.copyWith(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
-
-}
-
 
 /// @nodoc
 
 @jsonSerializable
-class _AppRouterGenericRouterItemResponse extends AppRouterGenericRouterItemResponse {
-  const _AppRouterGenericRouterItemResponse({@JsonKey(name: AppRouterGenericRouterItemResponse.idKey) required this.id, @JsonKey(name: AppRouterGenericRouterItemResponse.nameKey) required this.name}): super._();
-  factory _AppRouterGenericRouterItemResponse.fromJson(Map<String, dynamic> json) => _$AppRouterGenericRouterItemResponseFromJson(json);
+class _AppRouterGenericRouterItemResponse
+    extends AppRouterGenericRouterItemResponse {
+  const _AppRouterGenericRouterItemResponse(
+      {@JsonKey(name: AppRouterGenericRouterItemResponse.idKey)
+      required this.id,
+      @JsonKey(name: AppRouterGenericRouterItemResponse.nameKey)
+      required this.name})
+      : super._();
+  factory _AppRouterGenericRouterItemResponse.fromJson(
+          Map<String, dynamic> json) =>
+      _$AppRouterGenericRouterItemResponseFromJson(json);
 
-/// id
-@override@JsonKey(name: AppRouterGenericRouterItemResponse.idKey) final  int id;
-/// name
-@override@JsonKey(name: AppRouterGenericRouterItemResponse.nameKey) final  String name;
+  /// id
+  @override
+  @JsonKey(name: AppRouterGenericRouterItemResponse.idKey)
+  final int id;
 
-/// Create a copy of AppRouterGenericRouterItemResponse
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$AppRouterGenericRouterItemResponseCopyWith<_AppRouterGenericRouterItemResponse> get copyWith => __$AppRouterGenericRouterItemResponseCopyWithImpl<_AppRouterGenericRouterItemResponse>(this, _$identity);
+  /// name
+  @override
+  @JsonKey(name: AppRouterGenericRouterItemResponse.nameKey)
+  final String name;
 
-@override
-Map<String, dynamic> toJson() {
-  return _$AppRouterGenericRouterItemResponseToJson(this, );
-}
+  /// Create a copy of AppRouterGenericRouterItemResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$AppRouterGenericRouterItemResponseCopyWith<
+          _AppRouterGenericRouterItemResponse>
+      get copyWith => __$AppRouterGenericRouterItemResponseCopyWithImpl<
+          _AppRouterGenericRouterItemResponse>(this, _$identity);
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AppRouterGenericRouterItemResponse&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name));
-}
+  @override
+  Map<String, dynamic> toJson() {
+    return _$AppRouterGenericRouterItemResponseToJson(
+      this,
+    );
+  }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,id,name);
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _AppRouterGenericRouterItemResponse &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name));
+  }
 
-@override
-String toString() {
-  return 'AppRouterGenericRouterItemResponse(id: $id, name: $name)';
-}
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, name);
 
-
+  @override
+  String toString() {
+    return 'AppRouterGenericRouterItemResponse(id: $id, name: $name)';
+  }
 }
 
 /// @nodoc
-abstract mixin class _$AppRouterGenericRouterItemResponseCopyWith<$Res> implements $AppRouterGenericRouterItemResponseCopyWith<$Res> {
-  factory _$AppRouterGenericRouterItemResponseCopyWith(_AppRouterGenericRouterItemResponse value, $Res Function(_AppRouterGenericRouterItemResponse) _then) = __$AppRouterGenericRouterItemResponseCopyWithImpl;
-@override @useResult
-$Res call({
-@JsonKey(name: AppRouterGenericRouterItemResponse.idKey) int id,@JsonKey(name: AppRouterGenericRouterItemResponse.nameKey) String name
-});
-
-
-
-
+abstract mixin class _$AppRouterGenericRouterItemResponseCopyWith<$Res>
+    implements $AppRouterGenericRouterItemResponseCopyWith<$Res> {
+  factory _$AppRouterGenericRouterItemResponseCopyWith(
+          _AppRouterGenericRouterItemResponse value,
+          $Res Function(_AppRouterGenericRouterItemResponse) _then) =
+      __$AppRouterGenericRouterItemResponseCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: AppRouterGenericRouterItemResponse.idKey) int id,
+      @JsonKey(name: AppRouterGenericRouterItemResponse.nameKey) String name});
 }
+
 /// @nodoc
 class __$AppRouterGenericRouterItemResponseCopyWithImpl<$Res>
     implements _$AppRouterGenericRouterItemResponseCopyWith<$Res> {
@@ -139,17 +178,23 @@ class __$AppRouterGenericRouterItemResponseCopyWithImpl<$Res>
   final _AppRouterGenericRouterItemResponse _self;
   final $Res Function(_AppRouterGenericRouterItemResponse) _then;
 
-/// Create a copy of AppRouterGenericRouterItemResponse
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,}) {
-  return _then(_AppRouterGenericRouterItemResponse(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
+  /// Create a copy of AppRouterGenericRouterItemResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+  }) {
+    return _then(_AppRouterGenericRouterItemResponse(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
-
-
-}
-
-// dart format on
