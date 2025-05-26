@@ -1,9 +1,9 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
-class RegularModelStrategy
+class RegularModelStrategyGenerator
     extends ModelGeneratorStrategy<MapEntry<String, OpenApiSchemas>> {
-  const RegularModelStrategy(super.context);
+  const RegularModelStrategyGenerator(super.context);
 
   Library build(MapEntry<String, OpenApiSchemas> model) {
     final className = Renaming.instance.renameClass(model.key);

@@ -1,5 +1,3 @@
-import 'package:swagger_to_dart/src/schema/openapi/openapi.dart';
-
 import 'recase.dart';
 
 final keywords = <String>{

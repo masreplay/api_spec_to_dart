@@ -25,7 +25,7 @@
 ///     ],
 ///     "title": "Cat"
 /// }
-library;
+library cat;
 
 import 'exports.dart';
 part 'cat.freezed.dart';

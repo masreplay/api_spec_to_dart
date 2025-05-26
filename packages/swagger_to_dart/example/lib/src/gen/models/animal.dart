@@ -14,7 +14,7 @@
 ///     "title": "Animal",
 ///     "runtimeType": "anyOf"
 /// }
-library;
+library animal;
 
 import 'exports.dart';
 part 'animal.freezed.dart';

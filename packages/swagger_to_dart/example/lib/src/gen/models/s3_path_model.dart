@@ -13,7 +13,7 @@
 ///     ],
 ///     "title": "S3PathModel"
 /// }
-library;
+library s3_path_model;
 
 import 'exports.dart';
 part 's3_path_model.freezed.dart';

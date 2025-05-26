@@ -1,4 +1,4 @@
-library;
+library json_converter;
 
 import 'package:dio/dio.dart';
 import 'models.dart';

@@ -1,4 +1,4 @@
-library;
+library exports.dart;
 
 export 'basic_client.dart';
 export 'advanced_client.dart';

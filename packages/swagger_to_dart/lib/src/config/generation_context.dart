@@ -23,10 +23,22 @@ class GenerationContext {
     return pubspec.dependencies.containsKey('flutter');
   }
 
-  OpenApiSchemaDartTypeConverter get typeConverter =>
-      OpenApiSchemaDartTypeConverter(this);
+  PropertyGeneratorStrategy get propertyGenerator {
+    return PropertyGeneratorStrategy(this);
+  }
 
-  ModelGenerator get modelGenerator => ModelGenerator(this);
+  ApiClientGenerator get apiClientGenerator {
+    return ApiClientGenerator(this);
+  }
+
+  OpenApiSchemaDartTypeConverter get typeConverter {
+    return OpenApiSchemaDartTypeConverter(this);
+  }
+
+  ModelGenerator get modelGenerator {
+    return ModelGenerator(this);
+  }
+
   final Map<String, Library> _models = <String, Library>{};
   List<Library> get models => _models.values.toList();
 
@@ -40,7 +52,6 @@ class GenerationContext {
     _models[library.name!] = library;
   }
 
-  ApiClientGenerator get apiClientGenerator => ApiClientGenerator(this);
   final List<Library> _apiClients = <Library>[];
   List<Library> get apiClients => _apiClients;
 
@@ -50,8 +61,6 @@ class GenerationContext {
 
   final Map<String, Class> _jsonConvertor = <String, Class>{};
   List<Class> get jsonConvertor => _jsonConvertor.values.toList();
-
-  PropertyGeneratorStrategy get propertyGenerator => PropertyGeneratorStrategy(this);
 
   void addJsonConvertor(Class jsonConvertor) {
     if (_jsonConvertor.containsKey(jsonConvertor.name)) {

@@ -22,7 +22,7 @@ class ModelGenerator
     if (schema.enum_ != null) {
       strategy = EnumModelStrategy(context);
     } else {
-      strategy = RegularModelStrategy(context);
+      strategy = RegularModelStrategyGenerator(context);
     }
 
     return strategy.build(model);

@@ -1,4 +1,4 @@
-library;
+library generic_client;
 
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
@@ -258,7 +258,7 @@ abstract class GenericClient {
   ///     }
   /// }
   @GET("/generic/base-response-list")
-  Future<HttpResponse<BaseResponse<list<ItemResponse>>>>
+  Future<HttpResponse<BaseResponse<List<ItemResponse>>>>
   genericGetBaseResponseList({
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,

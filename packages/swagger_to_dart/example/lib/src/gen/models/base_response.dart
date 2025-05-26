@@ -22,7 +22,7 @@
 ///     ],
 ///     "title": "BaseResponse[CategoryResponse]"
 /// }
-library;
+library base_response;
 
 import 'exports.dart';
 part 'base_response.freezed.dart';

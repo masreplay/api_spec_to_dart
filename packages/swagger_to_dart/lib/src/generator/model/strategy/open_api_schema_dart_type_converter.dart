@@ -1,70 +1,8 @@
+import 'package:swagger_to_dart/src/generator/generator_strategy.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
-class OpenApiSchemaDartTypeConverter {
-  const OpenApiSchemaDartTypeConverter(this.context);
-
-  final GenerationContext context;
-
-  String? getDefaultValue(
-    OpenApiSchema schema, {
-    OpenApiSchema? parent,
-  }) {
-    final default_ = schema.default_;
-    switch (schema) {
-      case OpenApiSchemaType schema:
-        if (schema.enum_ != null) {
-          final name = schema.title ?? parent?.title;
-
-          final className = Renaming.instance.renameEnum('${name}Enum');
-
-          if (schema.default_ == null) {
-            return null;
-          }
-
-          final defaultValue = Renaming.instance.renameEnumValue(
-            schema.default_.toString(),
-          );
-
-          return '${className}.${defaultValue}';
-        }
-
-        return _dartLiteral(default_);
-      case OpenApiSchemaRef schema:
-        final dartType = getRef(schema);
-        final refSchema = context.openApi.getOpenApiSchemasByRef(schema.ref!)!;
-
-        if (refSchema.enum_ != null && default_ != null) {
-          return '$dartType.${default_}';
-        }
-
-        return default_ == null ? null : default_.toString();
-      case OpenApiSchemaAnyOf _:
-        return default_ == null ? null : default_.toString();
-      case OpenApiSchemaOneOf _:
-        return default_ == null ? null : default_.toString();
-    }
-  }
-
-  String? _dartLiteral(Object? value) {
-    if (value == null) return null;
-    if (value is String) {
-      return "'${value.replaceAll("'", "\\'")}'";
-    }
-    if (value is num || value is bool) {
-      return value.toString();
-    }
-    if (value is List) {
-      final items = value.map(_dartLiteral).join(', ');
-      return 'const [$items]';
-    }
-    if (value is Map) {
-      final entries = value.entries
-          .map((e) => '${_dartLiteral(e.key)}: ${_dartLiteral(e.value)}')
-          .join(', ');
-      return 'const {$entries}';
-    }
-    return value.toString();
-  }
+class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
+  const OpenApiSchemaDartTypeConverter(super.context);
 
   String get(
     OpenApiSchema schema, {
@@ -81,18 +19,53 @@ class OpenApiSchemaDartTypeConverter {
   }
 
   String getRef(OpenApiSchemaRef schema) {
-    final String className;
+    final schemas = context.openApi.getOpenApiSchemasByRef(schema.ref!);
+    final title = schemas?.title ?? schema.name;
 
-    final refSchema = context.openApi.getOpenApiSchemasByRef(schema.ref!);
+    return _processGenericTitle(title);
+  }
 
-    final title = refSchema?.title;
-    if (title != null && title.contains('[')) {
-      className = title.replaceAll('[', '<').replaceAll(']', '>');
-    } else {
-      className = Renaming.instance.renameClass(title ?? schema.name);
+  String _processGenericTitle(String title) {
+    final genericStart = title.indexOf('[');
+    final genericEnd = title.lastIndexOf(']');
+
+    if (genericStart == -1 || genericEnd == -1 || genericEnd <= genericStart) {
+      return Renaming.instance.renameClass(title);
     }
 
-    return className;
+    final base = title.substring(0, genericStart);
+    final genericsContent = title.substring(genericStart + 1, genericEnd);
+    final genericTypes = _splitGenerics(genericsContent);
+
+    final processedGenerics = genericTypes
+        .map((type) => _processGenericTitle(type.trim()))
+        .join(', ');
+
+    return '${Renaming.instance.renameClass(base)}<$processedGenerics>';
+  }
+
+// Handles nested generics splitting: Pagination[Source[Item], Meta] => [Source[Item], Meta]
+  List<String> _splitGenerics(String input) {
+    final parts = <String>[];
+    final buffer = StringBuffer();
+    int depth = 0;
+
+    for (var char in input.split('')) {
+      if (char == ',' && depth == 0) {
+        parts.add(buffer.toString());
+        buffer.clear();
+      } else {
+        if (char == '[') depth++;
+        if (char == ']') depth--;
+        buffer.write(char);
+      }
+    }
+
+    if (buffer.isNotEmpty) {
+      parts.add(buffer.toString());
+    }
+
+    return parts;
   }
 
   String getAnyOf(
@@ -216,5 +189,66 @@ class OpenApiSchemaDartTypeConverter {
       case OpenApiSchemaVarType.null_ || OpenApiSchemaVarType.$unknown || null:
         return 'dynamic';
     }
+  }
+
+  String? getDefaultValue(
+    OpenApiSchema schema, {
+    OpenApiSchema? parent,
+  }) {
+    final default_ = schema.default_;
+    switch (schema) {
+      case OpenApiSchemaType schema:
+        if (schema.enum_ != null) {
+          final name = schema.title ?? parent?.title;
+
+          final className = Renaming.instance.renameEnum('${name}Enum');
+
+          if (schema.default_ == null) {
+            return null;
+          }
+
+          final defaultValue = Renaming.instance.renameEnumValue(
+            schema.default_.toString(),
+          );
+
+          return '${className}.${defaultValue}';
+        }
+
+        return _dartLiteral(default_);
+      case OpenApiSchemaRef schema:
+        final dartType = getRef(schema);
+        final refSchema = context.openApi.getOpenApiSchemasByRef(schema.ref!)!;
+
+        if (refSchema.enum_ != null && default_ != null) {
+          return '$dartType.${default_}';
+        }
+
+        return default_ == null ? null : default_.toString();
+      case OpenApiSchemaAnyOf _:
+        return default_ == null ? null : default_.toString();
+      case OpenApiSchemaOneOf _:
+        return default_ == null ? null : default_.toString();
+    }
+  }
+
+  String? _dartLiteral(Object? value) {
+    if (value == null) return null;
+    if (value is String) {
+      return "'${value.replaceAll("'", "\\'")}'";
+    }
+    if (value is num || value is bool) {
+      return value.toString();
+    }
+    if (value is List) {
+      final items = value.map(_dartLiteral).join(', ');
+      return 'const [$items]';
+    }
+    if (value is Map) {
+      final entries = value.entries
+          .map((e) => '${_dartLiteral(e.key)}: ${_dartLiteral(e.value)}')
+          .join(', ');
+      return 'const {$entries}';
+    }
+    return value.toString();
   }
 }

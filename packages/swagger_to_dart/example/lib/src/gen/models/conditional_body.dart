@@ -29,7 +29,7 @@
 ///     "type": "object",
 ///     "title": "ConditionalBody"
 /// }
-library;
+library conditional_body;
 
 import 'exports.dart';
 part 'conditional_body.freezed.dart';

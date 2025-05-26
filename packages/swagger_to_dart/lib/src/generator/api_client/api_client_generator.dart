@@ -341,7 +341,8 @@ class ApiClientGenerator {
     final List<Parameter> result = [];
 
     if (useClass && queryParameters.isNotEmpty) {
-      final strategy = RegularModelStrategy(context);
+      final strategy =
+          RegularModelStrategyGenerator(context);
 
       final queryParametersClassName = Renaming.instance.renameClass(
         '${methodName}QueryParameters',
@@ -381,7 +382,9 @@ class ApiClientGenerator {
         className: className,
       );
 
-      final defaultValue = context.typeConverter.getDefaultValue(p.schema);
+      final defaultValue = context.typeConverter.getDefaultValue(
+        p.schema,
+      );
 
       result.add(
         Parameter(

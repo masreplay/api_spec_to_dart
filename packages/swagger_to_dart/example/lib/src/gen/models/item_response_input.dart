@@ -17,7 +17,7 @@
 ///     ],
 ///     "title": "ItemResponse"
 /// }
-library;
+library item_response_input;
 
 import 'exports.dart';
 part 'item_response_input.freezed.dart';

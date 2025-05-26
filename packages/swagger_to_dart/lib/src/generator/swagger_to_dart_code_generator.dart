@@ -6,8 +6,8 @@ import 'package:path/path.dart' as path;
 import 'package:swagger_to_dart/src/config/generation_context.dart';
 import 'package:swagger_to_dart/src/generator/base_api_client_generator.dart';
 
-class CodeGenerator {
-  const CodeGenerator(this.context);
+class SwaggerToDartCodeGenerator {
+  const SwaggerToDartCodeGenerator(this.context);
 
   final GenerationContext context;
 

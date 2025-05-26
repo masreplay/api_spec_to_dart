@@ -59,7 +59,7 @@
 ///     ],
 ///     "title": "AllTypesWithValidation"
 /// }
-library;
+library all_types_with_validation;
 
 import 'exports.dart';
 part 'all_types_with_validation.freezed.dart';

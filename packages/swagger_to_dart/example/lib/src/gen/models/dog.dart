@@ -25,7 +25,7 @@
 ///     ],
 ///     "title": "Dog"
 /// }
-library;
+library dog;
 
 import 'exports.dart';
 part 'dog.freezed.dart';

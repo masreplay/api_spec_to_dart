@@ -7,9 +7,12 @@ Future<void> main() async {
     final builder = GenerationContextBuilder();
     final GenerationContext context = await builder.build();
 
-    final generator = CodeGenerator(context);
+    final generator = SwaggerToDartCodeGenerator(context);
     await generator.generate();
-  } catch (e) {
+  } catch (e, stackTrace) {
+    print(e);
+    print(stackTrace);
+
     exit(1);
   }
 }
