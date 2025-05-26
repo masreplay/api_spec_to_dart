@@ -19,7 +19,7 @@ class _UnionClient implements UnionClient {
 
   @override
   Future<HttpResponse<CreateAnimalResponse>> unionCreateAnimal({
-    required CatDogParrot requestBody,
+    required Animal requestBody,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,

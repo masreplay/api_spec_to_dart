@@ -4,7 +4,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'pagination_response_category_response.dart';
+part of 'pagination_response.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,48 +13,45 @@ part of 'pagination_response_category_response.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$PaginationResponseCategoryResponse<T> {
+mixin _$PaginationResponse<T> {
   /// items
-  @JsonKey(name: PaginationResponseCategoryResponse.itemsKey)
-  List<T> get items;
+  @JsonKey(name: PaginationResponse.itemsKey)
+  List<CategoryResponse> get items;
 
   /// total
-  @JsonKey(name: PaginationResponseCategoryResponse.totalKey)
+  @JsonKey(name: PaginationResponse.totalKey)
   int get total;
 
   /// page
-  @JsonKey(name: PaginationResponseCategoryResponse.pageKey)
+  @JsonKey(name: PaginationResponse.pageKey)
   int get page;
 
   /// perPage
-  @JsonKey(name: PaginationResponseCategoryResponse.perPageKey)
+  @JsonKey(name: PaginationResponse.perPageKey)
   int get perPage;
 
   /// totalPages
-  @JsonKey(name: PaginationResponseCategoryResponse.totalPagesKey)
+  @JsonKey(name: PaginationResponse.totalPagesKey)
   int get totalPages;
 
-  /// Create a copy of PaginationResponseCategoryResponse
+  /// Create a copy of PaginationResponse
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $PaginationResponseCategoryResponseCopyWith<
-    T,
-    PaginationResponseCategoryResponse<T>
-  >
-  get copyWith => _$PaginationResponseCategoryResponseCopyWithImpl<
-    T,
-    PaginationResponseCategoryResponse<T>
-  >(this as PaginationResponseCategoryResponse<T>, _$identity);
+  $PaginationResponseCopyWith<T, PaginationResponse<T>> get copyWith =>
+      _$PaginationResponseCopyWithImpl<T, PaginationResponse<T>>(
+        this as PaginationResponse<T>,
+        _$identity,
+      );
 
-  /// Serializes this PaginationResponseCategoryResponse to a JSON map.
+  /// Serializes this PaginationResponse to a JSON map.
   Map<String, dynamic> toJson(Object? Function(T) toJsonT);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PaginationResponseCategoryResponse<T> &&
+            other is PaginationResponse<T> &&
             const DeepCollectionEquality().equals(other.items, items) &&
             (identical(other.total, total) || other.total == total) &&
             (identical(other.page, page) || other.page == page) &&
@@ -76,36 +73,35 @@ mixin _$PaginationResponseCategoryResponse<T> {
 
   @override
   String toString() {
-    return 'PaginationResponseCategoryResponse<$T>(items: $items, total: $total, page: $page, perPage: $perPage, totalPages: $totalPages)';
+    return 'PaginationResponse<$T>(items: $items, total: $total, page: $page, perPage: $perPage, totalPages: $totalPages)';
   }
 }
 
 /// @nodoc
-abstract mixin class $PaginationResponseCategoryResponseCopyWith<T, $Res> {
-  factory $PaginationResponseCategoryResponseCopyWith(
-    PaginationResponseCategoryResponse<T> value,
-    $Res Function(PaginationResponseCategoryResponse<T>) _then,
-  ) = _$PaginationResponseCategoryResponseCopyWithImpl;
+abstract mixin class $PaginationResponseCopyWith<T, $Res> {
+  factory $PaginationResponseCopyWith(
+    PaginationResponse<T> value,
+    $Res Function(PaginationResponse<T>) _then,
+  ) = _$PaginationResponseCopyWithImpl;
   @useResult
   $Res call({
-    @JsonKey(name: PaginationResponseCategoryResponse.itemsKey) List<T> items,
-    @JsonKey(name: PaginationResponseCategoryResponse.totalKey) int total,
-    @JsonKey(name: PaginationResponseCategoryResponse.pageKey) int page,
-    @JsonKey(name: PaginationResponseCategoryResponse.perPageKey) int perPage,
-    @JsonKey(name: PaginationResponseCategoryResponse.totalPagesKey)
-    int totalPages,
+    @JsonKey(name: PaginationResponse.itemsKey) List<CategoryResponse> items,
+    @JsonKey(name: PaginationResponse.totalKey) int total,
+    @JsonKey(name: PaginationResponse.pageKey) int page,
+    @JsonKey(name: PaginationResponse.perPageKey) int perPage,
+    @JsonKey(name: PaginationResponse.totalPagesKey) int totalPages,
   });
 }
 
 /// @nodoc
-class _$PaginationResponseCategoryResponseCopyWithImpl<T, $Res>
-    implements $PaginationResponseCategoryResponseCopyWith<T, $Res> {
-  _$PaginationResponseCategoryResponseCopyWithImpl(this._self, this._then);
+class _$PaginationResponseCopyWithImpl<T, $Res>
+    implements $PaginationResponseCopyWith<T, $Res> {
+  _$PaginationResponseCopyWithImpl(this._self, this._then);
 
-  final PaginationResponseCategoryResponse<T> _self;
-  final $Res Function(PaginationResponseCategoryResponse<T>) _then;
+  final PaginationResponse<T> _self;
+  final $Res Function(PaginationResponse<T>) _then;
 
-  /// Create a copy of PaginationResponseCategoryResponse
+  /// Create a copy of PaginationResponse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -122,7 +118,7 @@ class _$PaginationResponseCategoryResponseCopyWithImpl<T, $Res>
             null == items
                 ? _self.items
                 : items // ignore: cast_nullable_to_non_nullable
-                    as List<T>,
+                    as List<CategoryResponse>,
         total:
             null == total
                 ? _self.total
@@ -151,36 +147,31 @@ class _$PaginationResponseCategoryResponseCopyWithImpl<T, $Res>
 /// @nodoc
 
 @JsonSerializable(
-  genericArgumentFactories: true,
   converters: jsonSerializableConverters,
+  genericArgumentFactories: true,
 )
-class _PaginationResponseCategoryResponse<T>
-    extends PaginationResponseCategoryResponse<T> {
-  const _PaginationResponseCategoryResponse({
-    @JsonKey(name: PaginationResponseCategoryResponse.itemsKey)
-    required final List<T> items,
-    @JsonKey(name: PaginationResponseCategoryResponse.totalKey)
-    required this.total,
-    @JsonKey(name: PaginationResponseCategoryResponse.pageKey)
-    required this.page,
-    @JsonKey(name: PaginationResponseCategoryResponse.perPageKey)
-    required this.perPage,
-    @JsonKey(name: PaginationResponseCategoryResponse.totalPagesKey)
-    required this.totalPages,
+class _PaginationResponse<T> extends PaginationResponse<T> {
+  const _PaginationResponse({
+    @JsonKey(name: PaginationResponse.itemsKey)
+    required final List<CategoryResponse> items,
+    @JsonKey(name: PaginationResponse.totalKey) required this.total,
+    @JsonKey(name: PaginationResponse.pageKey) required this.page,
+    @JsonKey(name: PaginationResponse.perPageKey) required this.perPage,
+    @JsonKey(name: PaginationResponse.totalPagesKey) required this.totalPages,
   }) : _items = items,
        super._();
-  factory _PaginationResponseCategoryResponse.fromJson(
+  factory _PaginationResponse.fromJson(
     Map<String, dynamic> json,
     T Function(Object?) fromJsonT,
-  ) => _$PaginationResponseCategoryResponseFromJson(json, fromJsonT);
+  ) => _$PaginationResponseFromJson(json, fromJsonT);
 
   /// items
-  final List<T> _items;
+  final List<CategoryResponse> _items;
 
   /// items
   @override
-  @JsonKey(name: PaginationResponseCategoryResponse.itemsKey)
-  List<T> get items {
+  @JsonKey(name: PaginationResponse.itemsKey)
+  List<CategoryResponse> get items {
     if (_items is EqualUnmodifiableListView) return _items;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_items);
@@ -188,48 +179,45 @@ class _PaginationResponseCategoryResponse<T>
 
   /// total
   @override
-  @JsonKey(name: PaginationResponseCategoryResponse.totalKey)
+  @JsonKey(name: PaginationResponse.totalKey)
   final int total;
 
   /// page
   @override
-  @JsonKey(name: PaginationResponseCategoryResponse.pageKey)
+  @JsonKey(name: PaginationResponse.pageKey)
   final int page;
 
   /// perPage
   @override
-  @JsonKey(name: PaginationResponseCategoryResponse.perPageKey)
+  @JsonKey(name: PaginationResponse.perPageKey)
   final int perPage;
 
   /// totalPages
   @override
-  @JsonKey(name: PaginationResponseCategoryResponse.totalPagesKey)
+  @JsonKey(name: PaginationResponse.totalPagesKey)
   final int totalPages;
 
-  /// Create a copy of PaginationResponseCategoryResponse
+  /// Create a copy of PaginationResponse
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$PaginationResponseCategoryResponseCopyWith<
-    T,
-    _PaginationResponseCategoryResponse<T>
-  >
-  get copyWith => __$PaginationResponseCategoryResponseCopyWithImpl<
-    T,
-    _PaginationResponseCategoryResponse<T>
-  >(this, _$identity);
+  _$PaginationResponseCopyWith<T, _PaginationResponse<T>> get copyWith =>
+      __$PaginationResponseCopyWithImpl<T, _PaginationResponse<T>>(
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson(Object? Function(T) toJsonT) {
-    return _$PaginationResponseCategoryResponseToJson<T>(this, toJsonT);
+    return _$PaginationResponseToJson<T>(this, toJsonT);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PaginationResponseCategoryResponse<T> &&
+            other is _PaginationResponse<T> &&
             const DeepCollectionEquality().equals(other._items, _items) &&
             (identical(other.total, total) || other.total == total) &&
             (identical(other.page, page) || other.page == page) &&
@@ -251,38 +239,37 @@ class _PaginationResponseCategoryResponse<T>
 
   @override
   String toString() {
-    return 'PaginationResponseCategoryResponse<$T>(items: $items, total: $total, page: $page, perPage: $perPage, totalPages: $totalPages)';
+    return 'PaginationResponse<$T>(items: $items, total: $total, page: $page, perPage: $perPage, totalPages: $totalPages)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$PaginationResponseCategoryResponseCopyWith<T, $Res>
-    implements $PaginationResponseCategoryResponseCopyWith<T, $Res> {
-  factory _$PaginationResponseCategoryResponseCopyWith(
-    _PaginationResponseCategoryResponse<T> value,
-    $Res Function(_PaginationResponseCategoryResponse<T>) _then,
-  ) = __$PaginationResponseCategoryResponseCopyWithImpl;
+abstract mixin class _$PaginationResponseCopyWith<T, $Res>
+    implements $PaginationResponseCopyWith<T, $Res> {
+  factory _$PaginationResponseCopyWith(
+    _PaginationResponse<T> value,
+    $Res Function(_PaginationResponse<T>) _then,
+  ) = __$PaginationResponseCopyWithImpl;
   @override
   @useResult
   $Res call({
-    @JsonKey(name: PaginationResponseCategoryResponse.itemsKey) List<T> items,
-    @JsonKey(name: PaginationResponseCategoryResponse.totalKey) int total,
-    @JsonKey(name: PaginationResponseCategoryResponse.pageKey) int page,
-    @JsonKey(name: PaginationResponseCategoryResponse.perPageKey) int perPage,
-    @JsonKey(name: PaginationResponseCategoryResponse.totalPagesKey)
-    int totalPages,
+    @JsonKey(name: PaginationResponse.itemsKey) List<CategoryResponse> items,
+    @JsonKey(name: PaginationResponse.totalKey) int total,
+    @JsonKey(name: PaginationResponse.pageKey) int page,
+    @JsonKey(name: PaginationResponse.perPageKey) int perPage,
+    @JsonKey(name: PaginationResponse.totalPagesKey) int totalPages,
   });
 }
 
 /// @nodoc
-class __$PaginationResponseCategoryResponseCopyWithImpl<T, $Res>
-    implements _$PaginationResponseCategoryResponseCopyWith<T, $Res> {
-  __$PaginationResponseCategoryResponseCopyWithImpl(this._self, this._then);
+class __$PaginationResponseCopyWithImpl<T, $Res>
+    implements _$PaginationResponseCopyWith<T, $Res> {
+  __$PaginationResponseCopyWithImpl(this._self, this._then);
 
-  final _PaginationResponseCategoryResponse<T> _self;
-  final $Res Function(_PaginationResponseCategoryResponse<T>) _then;
+  final _PaginationResponse<T> _self;
+  final $Res Function(_PaginationResponse<T>) _then;
 
-  /// Create a copy of PaginationResponseCategoryResponse
+  /// Create a copy of PaginationResponse
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -294,12 +281,12 @@ class __$PaginationResponseCategoryResponseCopyWithImpl<T, $Res>
     Object? totalPages = null,
   }) {
     return _then(
-      _PaginationResponseCategoryResponse<T>(
+      _PaginationResponse<T>(
         items:
             null == items
                 ? _self._items
                 : items // ignore: cast_nullable_to_non_nullable
-                    as List<T>,
+                    as List<CategoryResponse>,
         total:
             null == total
                 ? _self.total

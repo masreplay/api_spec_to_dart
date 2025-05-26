@@ -1,4 +1,4 @@
-library;
+library models_client;
 
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
@@ -198,7 +198,7 @@ abstract class ModelsClient {
   ///     }
   /// }
   @GET("/response/multiple")
-  Future<HttpResponse<LocationUser>> modelsResponseMultiple({
+  Future<HttpResponse<ResponseModelsResponseMultiple>> modelsResponseMultiple({
     @Query("is_user") bool isUser = true,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,

@@ -1,10 +1,5 @@
 import 'package:code_builder/code_builder.dart';
-import 'package:swagger_to_dart/src/schema/schema.dart';
-import 'package:swagger_to_dart/src/utils/utils.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
-
-import 'model_generator_strategy.dart';
-import 'property_generator_strategy.dart';
 
 class RegularModelStrategy
     extends ModelGeneratorStrategy<MapEntry<String, OpenApiSchemas>> {
@@ -14,9 +9,7 @@ class RegularModelStrategy
     final className = Renaming.instance.renameClass(model.key);
     final filename = Renaming.instance.renameFile(className);
 
-    final propertyGenerator = PropertyGeneratorStrategy(context);
-
-    final properties = model.value.properties ?? {};
+    final Map<String, OpenApiSchema> properties = model.value.properties ?? {};
 
     final supportGenericArguments =
         context.config.model.supportGenericArguments;
@@ -57,8 +50,8 @@ class RegularModelStrategy
               ..name = className
               ..mixins.addAll([refer('_\$${className}')])
               ..fields.addAll([
-                ...properties.entries.map((value) {
-                  final name = Renaming.instance.renameProperty(value.key);
+                ...properties.entries.map((entry) {
+                  final name = Renaming.instance.renameProperty(entry.key);
 
                   return Field(
                     (b) => b
@@ -66,7 +59,7 @@ class RegularModelStrategy
                       ..modifier = FieldModifier.constant
                       ..name = '${name}Key'
                       ..type = refer('$String')
-                      ..assignment = Code('"${value.key}"'),
+                      ..assignment = Code('"${entry.key}"'),
                   );
                 })
               ])
@@ -85,8 +78,20 @@ class RegularModelStrategy
                     ..factory = true
                     ..redirect = refer('_${className}')
                     ..optionalParameters.addAll([
-                      ...properties.entries.map((value) =>
-                          propertyGenerator.build(value, className: className)),
+                      ...properties.entries.map((entry) {
+                        final schema = entry.value;
+                        if (schema is OpenApiSchemaRef) {
+                          return context.propertyGenerator.build(
+                            entry,
+                            overrideType: 'T',
+                            className: className,
+                          );
+                        }
+                        return context.propertyGenerator.build(
+                          entry,
+                          className: className,
+                        );
+                      }),
                     ]),
                 ),
                 Constructor(
@@ -113,80 +118,107 @@ class RegularModelStrategy
     MapEntry<String, OpenApiSchemas> model,
   ) {
     final genericPattern = RegExp(r'^(.+?)\[(.+)\]$');
+
     final match = genericPattern.firstMatch(title);
+    if (match == null) return null;
 
-    if (match != null) {
-      final baseClass = match.group(1)!; // "BaseResponse"
-      final genericType = match.group(2)!; // "PaginationResponse[ItemResponse]"
+    // recall [RegularModelStrategy.build] for recursive generic class
 
-      final className = Renaming.instance.renameClass(baseClass);
-      final genericTypeName = Renaming.instance
-          .renameClass(genericType.replaceAll(RegExp(r'[\[\]]'), ''));
+    final baseClass = match.group(1)!; // "BaseResponse"
+    final genericType = match.group(2)!; // "PaginationResponse[ItemResponse]"
 
-      final filename = Renaming.instance.renameFile(className);
-      final propertyGenerator = PropertyGeneratorStrategy(context);
+    final className = Renaming.instance.renameClass(baseClass);
 
-      final genericSymbol = 'T';
+    final genericOverride = <String, String>{
+      'T': genericType,
+    };
 
-      final properties = model.value.properties ?? {};
+    final filename = Renaming.instance.renameFile(className);
+    final properties = model.value.properties ?? {};
 
-      return Library((b) => b
-        ..name = filename
-        ..directives.addAll([
-          Directive.import('exports.dart'),
-          Directive.part('${filename}.freezed.dart'),
-          Directive.part('${filename}.g.dart'),
-        ])
-        ..docs.addAll([
-          '/// ${model.key}',
-          ...JsonFactory.instance
-              .encode(model.value.toJson())
-              .split('\n')
-              .map((e) => '/// $e'),
-        ])
-        ..body.addAll([
-          Class((b) => b
-            ..docs.addAll(['// $className<$genericSymbol>'])
-            ..annotations.add(refer('freezed'))
-            ..abstract = true
-            ..name = className
-            ..types.add(refer(genericSymbol))
-            ..mixins.add(refer('_\$${className}<$genericSymbol>'))
-            ..fields.addAll([
-              ...properties.entries.map((value) {
-                final name = Renaming.instance.renameProperty(value.key);
-                return Field((b) => b
-                  ..static = true
-                  ..modifier = FieldModifier.constant
-                  ..name = '${name}Key'
-                  ..type = refer('String')
-                  ..assignment = Code('"${value.key}"'));
-              }),
-            ])
-            ..constructors.addAll([
-              Constructor((b) => b
-                ..constant = true
-                ..name = '_'),
-              Constructor((b) => b
-                ..annotations.addAll([refer('jsonSerializable')])
-                ..constant = true
-                ..factory = true
-                ..factory = true
-                ..redirect = refer('_$className<$genericSymbol>')
-                ..optionalParameters.addAll(properties.entries.map(
-                  (entry) =>
-                      propertyGenerator.build(entry, className: className),
-                ))),
-              Constructor((b) => b
+    final genericTypes = "<${genericOverride.keys.join(', ')}>";
+
+    return Library((b) => b
+      ..name = filename
+      ..directives.addAll([
+        Directive.import('exports.dart'),
+        Directive.part('${filename}.freezed.dart'),
+        Directive.part('${filename}.g.dart'),
+      ])
+      ..docs.addAll([
+        '/// ${model.key}',
+        '/// $className$genericTypes',
+        ...JsonFactory.instance
+            .encode(model.value.toJson())
+            .split('\n')
+            .map((e) => '/// $e'),
+      ])
+      ..body.addAll([
+        Class((b) => b
+          // T, keys...
+          ..docs.addAll([
+            '// $className$genericTypes',
+          ])
+          ..annotations.addAll([
+            refer('Freezed(genericArgumentFactories: true)'),
+          ])
+          ..abstract = true
+          ..name = className
+          ..types.addAll([
+            ...genericOverride.keys.map((e) => refer(e)),
+          ])
+          ..mixins.add(refer('_\$${className}$genericTypes'))
+          ..fields.addAll([
+            ...properties.entries.map((value) {
+              final name = Renaming.instance.renameProperty(value.key);
+              return Field((b) => b
+                ..static = true
+                ..modifier = FieldModifier.constant
+                ..name = '${name}Key'
+                ..type = refer('String')
+                ..assignment = Code('"${value.key}"'));
+            }),
+          ])
+          ..constructors.addAll([
+            Constructor((b) => b
+              ..constant = true
+              ..name = '_'),
+            Constructor((b) => b
+              ..annotations.addAll([
+                refer(
+                  'JsonSerializable(converters: jsonSerializableConverters, genericArgumentFactories:true)',
+                ),
+              ])
+              ..constant = true
+              ..factory = true
+              ..redirect = refer('_$className$genericTypes')
+              ..optionalParameters.addAll(properties.entries.map(
+                (entry) => context.propertyGenerator.build(
+                  entry,
+                  className: className,
+                ),
+              ))),
+            Constructor(
+              (b) => b
                 ..factory = true
                 ..name = 'fromJson'
                 ..lambda = true
-                ..requiredParameters.add(Parameter((b) => b
-                  ..name = 'json'
-                  ..type = refer('Map<String, dynamic>')))
-                ..body = Code('_\$${className}FromJson(json)')),
-            ]))
-        ]));
-    }
+                ..requiredParameters.addAll([
+                  Parameter(
+                    (b) => b
+                      ..name = 'json'
+                      ..type = refer('Map<String, dynamic>'),
+                  ),
+                  ...genericOverride.entries.map((e) => Parameter(
+                        (b) => b
+                          ..name = 'fromJson${e.key}'
+                          ..type = refer('${e.key} Function(Object? json)'),
+                      )),
+                ])
+                ..body = Code(
+                    '_\$${className}FromJson(json, ${genericOverride.entries.map((e) => 'fromJson${e.key}').join(', ')})'),
+            ),
+          ]))
+      ]));
   }
 }

@@ -31,7 +31,7 @@
 ///     ],
 ///     "title": "Location"
 /// }
-library;
+library location;
 
 import 'exports.dart';
 part 'location.freezed.dart';

@@ -5,7 +5,10 @@ swagger_to_dart:
   # Where to save the openapi.json file
   input_directory: schema/swagger.json
 
-  skipped_parameters:
-    - "Accept-Language"
-    - "X-Language"
-    - "X-Platform"
+  model:
+    support_generic_arguments: true
+  api_client:
+    skipped_parameters:
+      - "Accept-Language"
+      - "X-Language"
+      - "X-Platform"

@@ -1,39 +1,40 @@
-library;
+library json_converter;
 
 import 'package:dio/dio.dart';
 import 'models.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-class CatDogParrotMapJsonConverter
-    implements JsonConverter<CatDogParrot, Map<String, dynamic>> {
-  const CatDogParrotMapJsonConverter();
+class AnimalMapJsonConverter
+    implements JsonConverter<Animal, Map<String, dynamic>> {
+  const AnimalMapJsonConverter();
 
   static const String unionKey = "value";
 
   @override
-  CatDogParrot fromJson(Map<String, dynamic> json) {
-    return CatDogParrot.fromJson({unionKey: json, ...json});
+  Animal fromJson(Map<String, dynamic> json) {
+    return Animal.fromJson({unionKey: json, ...json});
   }
 
   @override
-  Map<String, dynamic> toJson(CatDogParrot object) {
+  Map<String, dynamic> toJson(Animal object) {
     return {unionKey: object.toJson(), ...object.toJson()};
   }
 }
 
-class LocationUserMapJsonConverter
-    implements JsonConverter<LocationUser, Map<String, dynamic>> {
-  const LocationUserMapJsonConverter();
+class ResponseModelsResponseMultipleMapJsonConverter
+    implements
+        JsonConverter<ResponseModelsResponseMultiple, Map<String, dynamic>> {
+  const ResponseModelsResponseMultipleMapJsonConverter();
 
   static const String unionKey = "value";
 
   @override
-  LocationUser fromJson(Map<String, dynamic> json) {
-    return LocationUser.fromJson({unionKey: json, ...json});
+  ResponseModelsResponseMultiple fromJson(Map<String, dynamic> json) {
+    return ResponseModelsResponseMultiple.fromJson({unionKey: json, ...json});
   }
 
   @override
-  Map<String, dynamic> toJson(LocationUser object) {
+  Map<String, dynamic> toJson(ResponseModelsResponseMultiple object) {
     return {unionKey: object.toJson(), ...object.toJson()};
   }
 }
@@ -51,8 +52,8 @@ class MultipartFileJsonConverter
 
 const jsonSerializableConverters = <JsonConverter>[
   MultipartFileJsonConverter(),
-  CatDogParrotMapJsonConverter(),
-  LocationUserMapJsonConverter(),
+  AnimalMapJsonConverter(),
+  ResponseModelsResponseMultipleMapJsonConverter(),
 ];
 
 const jsonSerializable = JsonSerializable(

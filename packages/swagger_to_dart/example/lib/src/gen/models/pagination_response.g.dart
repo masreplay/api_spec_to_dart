@@ -1,21 +1,18 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'pagination_response_item_response.dart';
+part of 'pagination_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_PaginationResponseItemResponse _$PaginationResponseItemResponseFromJson(
+_PaginationResponse<T> _$PaginationResponseFromJson<T>(
   Map<String, dynamic> json,
-) => _PaginationResponseItemResponse(
+  T Function(Object? json) fromJsonT,
+) => _PaginationResponse<T>(
   items:
       (json['items'] as List<dynamic>)
-          .map(
-            (e) => AppRouterGenericRouterItemResponse.fromJson(
-              e as Map<String, dynamic>,
-            ),
-          )
+          .map((e) => CategoryResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
   total: (json['total'] as num).toInt(),
   page: (json['page'] as num).toInt(),
@@ -23,8 +20,9 @@ _PaginationResponseItemResponse _$PaginationResponseItemResponseFromJson(
   totalPages: (json['total_pages'] as num).toInt(),
 );
 
-Map<String, dynamic> _$PaginationResponseItemResponseToJson(
-  _PaginationResponseItemResponse instance,
+Map<String, dynamic> _$PaginationResponseToJson<T>(
+  _PaginationResponse<T> instance,
+  Object? Function(T value) toJsonT,
 ) => <String, dynamic>{
   'items': instance.items.map((e) => e.toJson()).toList(),
   'total': instance.total,

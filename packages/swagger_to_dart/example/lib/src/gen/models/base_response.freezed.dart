@@ -4,7 +4,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'base_response_category_response.dart';
+part of 'base_response.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,38 +13,37 @@ part of 'base_response_category_response.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$BaseResponseCategoryResponse {
+mixin _$BaseResponse<T> {
   /// data
-  @JsonKey(name: BaseResponseCategoryResponse.dataKey)
+  @JsonKey(name: BaseResponse.dataKey)
   CategoryResponse get data;
 
   /// message
-  @JsonKey(name: BaseResponseCategoryResponse.messageKey)
+  @JsonKey(name: BaseResponse.messageKey)
   String get message;
 
   /// code
-  @JsonKey(name: BaseResponseCategoryResponse.codeKey)
+  @JsonKey(name: BaseResponse.codeKey)
   int get code;
 
-  /// Create a copy of BaseResponseCategoryResponse
+  /// Create a copy of BaseResponse
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $BaseResponseCategoryResponseCopyWith<BaseResponseCategoryResponse>
-  get copyWith =>
-      _$BaseResponseCategoryResponseCopyWithImpl<BaseResponseCategoryResponse>(
-        this as BaseResponseCategoryResponse,
+  $BaseResponseCopyWith<T, BaseResponse<T>> get copyWith =>
+      _$BaseResponseCopyWithImpl<T, BaseResponse<T>>(
+        this as BaseResponse<T>,
         _$identity,
       );
 
-  /// Serializes this BaseResponseCategoryResponse to a JSON map.
-  Map<String, dynamic> toJson();
+  /// Serializes this BaseResponse to a JSON map.
+  Map<String, dynamic> toJson(Object? Function(T) toJsonT);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is BaseResponseCategoryResponse &&
+            other is BaseResponse<T> &&
             (identical(other.data, data) || other.data == data) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.code, code) || other.code == code));
@@ -56,35 +55,35 @@ mixin _$BaseResponseCategoryResponse {
 
   @override
   String toString() {
-    return 'BaseResponseCategoryResponse(data: $data, message: $message, code: $code)';
+    return 'BaseResponse<$T>(data: $data, message: $message, code: $code)';
   }
 }
 
 /// @nodoc
-abstract mixin class $BaseResponseCategoryResponseCopyWith<$Res> {
-  factory $BaseResponseCategoryResponseCopyWith(
-    BaseResponseCategoryResponse value,
-    $Res Function(BaseResponseCategoryResponse) _then,
-  ) = _$BaseResponseCategoryResponseCopyWithImpl;
+abstract mixin class $BaseResponseCopyWith<T, $Res> {
+  factory $BaseResponseCopyWith(
+    BaseResponse<T> value,
+    $Res Function(BaseResponse<T>) _then,
+  ) = _$BaseResponseCopyWithImpl;
   @useResult
   $Res call({
-    @JsonKey(name: BaseResponseCategoryResponse.dataKey) CategoryResponse data,
-    @JsonKey(name: BaseResponseCategoryResponse.messageKey) String message,
-    @JsonKey(name: BaseResponseCategoryResponse.codeKey) int code,
+    @JsonKey(name: BaseResponse.dataKey) CategoryResponse data,
+    @JsonKey(name: BaseResponse.messageKey) String message,
+    @JsonKey(name: BaseResponse.codeKey) int code,
   });
 
   $CategoryResponseCopyWith<$Res> get data;
 }
 
 /// @nodoc
-class _$BaseResponseCategoryResponseCopyWithImpl<$Res>
-    implements $BaseResponseCategoryResponseCopyWith<$Res> {
-  _$BaseResponseCategoryResponseCopyWithImpl(this._self, this._then);
+class _$BaseResponseCopyWithImpl<T, $Res>
+    implements $BaseResponseCopyWith<T, $Res> {
+  _$BaseResponseCopyWithImpl(this._self, this._then);
 
-  final BaseResponseCategoryResponse _self;
-  final $Res Function(BaseResponseCategoryResponse) _then;
+  final BaseResponse<T> _self;
+  final $Res Function(BaseResponse<T>) _then;
 
-  /// Create a copy of BaseResponseCategoryResponse
+  /// Create a copy of BaseResponse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -114,7 +113,7 @@ class _$BaseResponseCategoryResponseCopyWithImpl<$Res>
     );
   }
 
-  /// Create a copy of BaseResponseCategoryResponse
+  /// Create a copy of BaseResponse
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -127,52 +126,54 @@ class _$BaseResponseCategoryResponseCopyWithImpl<$Res>
 
 /// @nodoc
 
-@jsonSerializable
-class _BaseResponseCategoryResponse extends BaseResponseCategoryResponse {
-  const _BaseResponseCategoryResponse({
-    @JsonKey(name: BaseResponseCategoryResponse.dataKey) required this.data,
-    @JsonKey(name: BaseResponseCategoryResponse.messageKey)
-    required this.message,
-    @JsonKey(name: BaseResponseCategoryResponse.codeKey) required this.code,
+@JsonSerializable(
+  converters: jsonSerializableConverters,
+  genericArgumentFactories: true,
+)
+class _BaseResponse<T> extends BaseResponse<T> {
+  const _BaseResponse({
+    @JsonKey(name: BaseResponse.dataKey) required this.data,
+    @JsonKey(name: BaseResponse.messageKey) required this.message,
+    @JsonKey(name: BaseResponse.codeKey) required this.code,
   }) : super._();
-  factory _BaseResponseCategoryResponse.fromJson(Map<String, dynamic> json) =>
-      _$BaseResponseCategoryResponseFromJson(json);
+  factory _BaseResponse.fromJson(
+    Map<String, dynamic> json,
+    T Function(Object?) fromJsonT,
+  ) => _$BaseResponseFromJson(json, fromJsonT);
 
   /// data
   @override
-  @JsonKey(name: BaseResponseCategoryResponse.dataKey)
+  @JsonKey(name: BaseResponse.dataKey)
   final CategoryResponse data;
 
   /// message
   @override
-  @JsonKey(name: BaseResponseCategoryResponse.messageKey)
+  @JsonKey(name: BaseResponse.messageKey)
   final String message;
 
   /// code
   @override
-  @JsonKey(name: BaseResponseCategoryResponse.codeKey)
+  @JsonKey(name: BaseResponse.codeKey)
   final int code;
 
-  /// Create a copy of BaseResponseCategoryResponse
+  /// Create a copy of BaseResponse
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$BaseResponseCategoryResponseCopyWith<_BaseResponseCategoryResponse>
-  get copyWith => __$BaseResponseCategoryResponseCopyWithImpl<
-    _BaseResponseCategoryResponse
-  >(this, _$identity);
+  _$BaseResponseCopyWith<T, _BaseResponse<T>> get copyWith =>
+      __$BaseResponseCopyWithImpl<T, _BaseResponse<T>>(this, _$identity);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$BaseResponseCategoryResponseToJson(this);
+  Map<String, dynamic> toJson(Object? Function(T) toJsonT) {
+    return _$BaseResponseToJson<T>(this, toJsonT);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _BaseResponseCategoryResponse &&
+            other is _BaseResponse<T> &&
             (identical(other.data, data) || other.data == data) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.code, code) || other.code == code));
@@ -184,23 +185,23 @@ class _BaseResponseCategoryResponse extends BaseResponseCategoryResponse {
 
   @override
   String toString() {
-    return 'BaseResponseCategoryResponse(data: $data, message: $message, code: $code)';
+    return 'BaseResponse<$T>(data: $data, message: $message, code: $code)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$BaseResponseCategoryResponseCopyWith<$Res>
-    implements $BaseResponseCategoryResponseCopyWith<$Res> {
-  factory _$BaseResponseCategoryResponseCopyWith(
-    _BaseResponseCategoryResponse value,
-    $Res Function(_BaseResponseCategoryResponse) _then,
-  ) = __$BaseResponseCategoryResponseCopyWithImpl;
+abstract mixin class _$BaseResponseCopyWith<T, $Res>
+    implements $BaseResponseCopyWith<T, $Res> {
+  factory _$BaseResponseCopyWith(
+    _BaseResponse<T> value,
+    $Res Function(_BaseResponse<T>) _then,
+  ) = __$BaseResponseCopyWithImpl;
   @override
   @useResult
   $Res call({
-    @JsonKey(name: BaseResponseCategoryResponse.dataKey) CategoryResponse data,
-    @JsonKey(name: BaseResponseCategoryResponse.messageKey) String message,
-    @JsonKey(name: BaseResponseCategoryResponse.codeKey) int code,
+    @JsonKey(name: BaseResponse.dataKey) CategoryResponse data,
+    @JsonKey(name: BaseResponse.messageKey) String message,
+    @JsonKey(name: BaseResponse.codeKey) int code,
   });
 
   @override
@@ -208,14 +209,14 @@ abstract mixin class _$BaseResponseCategoryResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$BaseResponseCategoryResponseCopyWithImpl<$Res>
-    implements _$BaseResponseCategoryResponseCopyWith<$Res> {
-  __$BaseResponseCategoryResponseCopyWithImpl(this._self, this._then);
+class __$BaseResponseCopyWithImpl<T, $Res>
+    implements _$BaseResponseCopyWith<T, $Res> {
+  __$BaseResponseCopyWithImpl(this._self, this._then);
 
-  final _BaseResponseCategoryResponse _self;
-  final $Res Function(_BaseResponseCategoryResponse) _then;
+  final _BaseResponse<T> _self;
+  final $Res Function(_BaseResponse<T>) _then;
 
-  /// Create a copy of BaseResponseCategoryResponse
+  /// Create a copy of BaseResponse
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -225,7 +226,7 @@ class __$BaseResponseCategoryResponseCopyWithImpl<$Res>
     Object? code = null,
   }) {
     return _then(
-      _BaseResponseCategoryResponse(
+      _BaseResponse<T>(
         data:
             null == data
                 ? _self.data
@@ -245,7 +246,7 @@ class __$BaseResponseCategoryResponseCopyWithImpl<$Res>
     );
   }
 
-  /// Create a copy of BaseResponseCategoryResponse
+  /// Create a copy of BaseResponse
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')

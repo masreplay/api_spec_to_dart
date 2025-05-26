@@ -18,9 +18,9 @@ mixin _$Parrot {
   @JsonKey(name: Parrot.nameKey)
   String get name;
 
-  /// typeAA
-  @JsonKey(name: Parrot.typeAAKey)
-  String get typeAA;
+  /// type
+  @JsonKey(name: Parrot.typeKey)
+  String get type;
 
   /// phrases
   @JsonKey(name: Parrot.phrasesKey)
@@ -42,7 +42,7 @@ mixin _$Parrot {
         (other.runtimeType == runtimeType &&
             other is Parrot &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.typeAA, typeAA) || other.typeAA == typeAA) &&
+            (identical(other.type, type) || other.type == type) &&
             const DeepCollectionEquality().equals(other.phrases, phrases));
   }
 
@@ -51,13 +51,13 @@ mixin _$Parrot {
   int get hashCode => Object.hash(
     runtimeType,
     name,
-    typeAA,
+    type,
     const DeepCollectionEquality().hash(phrases),
   );
 
   @override
   String toString() {
-    return 'Parrot(name: $name, typeAA: $typeAA, phrases: $phrases)';
+    return 'Parrot(name: $name, type: $type, phrases: $phrases)';
   }
 }
 
@@ -68,7 +68,7 @@ abstract mixin class $ParrotCopyWith<$Res> {
   @useResult
   $Res call({
     @JsonKey(name: Parrot.nameKey) String name,
-    @JsonKey(name: Parrot.typeAAKey) String typeAA,
+    @JsonKey(name: Parrot.typeKey) String type,
     @JsonKey(name: Parrot.phrasesKey) List<String> phrases,
   });
 }
@@ -86,7 +86,7 @@ class _$ParrotCopyWithImpl<$Res> implements $ParrotCopyWith<$Res> {
   @override
   $Res call({
     Object? name = null,
-    Object? typeAA = null,
+    Object? type = null,
     Object? phrases = null,
   }) {
     return _then(
@@ -96,10 +96,10 @@ class _$ParrotCopyWithImpl<$Res> implements $ParrotCopyWith<$Res> {
                 ? _self.name
                 : name // ignore: cast_nullable_to_non_nullable
                     as String,
-        typeAA:
-            null == typeAA
-                ? _self.typeAA
-                : typeAA // ignore: cast_nullable_to_non_nullable
+        type:
+            null == type
+                ? _self.type
+                : type // ignore: cast_nullable_to_non_nullable
                     as String,
         phrases:
             null == phrases
@@ -117,7 +117,7 @@ class _$ParrotCopyWithImpl<$Res> implements $ParrotCopyWith<$Res> {
 class _Parrot extends Parrot {
   const _Parrot({
     @JsonKey(name: Parrot.nameKey) required this.name,
-    @JsonKey(name: Parrot.typeAAKey) this.typeAA = 'parrot',
+    @JsonKey(name: Parrot.typeKey) this.type = 'parrot',
     @JsonKey(name: Parrot.phrasesKey) required final List<String> phrases,
   }) : _phrases = phrases,
        super._();
@@ -128,10 +128,10 @@ class _Parrot extends Parrot {
   @JsonKey(name: Parrot.nameKey)
   final String name;
 
-  /// typeAA
+  /// type
   @override
-  @JsonKey(name: Parrot.typeAAKey)
-  final String typeAA;
+  @JsonKey(name: Parrot.typeKey)
+  final String type;
 
   /// phrases
   final List<String> _phrases;
@@ -164,7 +164,7 @@ class _Parrot extends Parrot {
         (other.runtimeType == runtimeType &&
             other is _Parrot &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.typeAA, typeAA) || other.typeAA == typeAA) &&
+            (identical(other.type, type) || other.type == type) &&
             const DeepCollectionEquality().equals(other._phrases, _phrases));
   }
 
@@ -173,13 +173,13 @@ class _Parrot extends Parrot {
   int get hashCode => Object.hash(
     runtimeType,
     name,
-    typeAA,
+    type,
     const DeepCollectionEquality().hash(_phrases),
   );
 
   @override
   String toString() {
-    return 'Parrot(name: $name, typeAA: $typeAA, phrases: $phrases)';
+    return 'Parrot(name: $name, type: $type, phrases: $phrases)';
   }
 }
 
@@ -191,7 +191,7 @@ abstract mixin class _$ParrotCopyWith<$Res> implements $ParrotCopyWith<$Res> {
   @useResult
   $Res call({
     @JsonKey(name: Parrot.nameKey) String name,
-    @JsonKey(name: Parrot.typeAAKey) String typeAA,
+    @JsonKey(name: Parrot.typeKey) String type,
     @JsonKey(name: Parrot.phrasesKey) List<String> phrases,
   });
 }
@@ -209,7 +209,7 @@ class __$ParrotCopyWithImpl<$Res> implements _$ParrotCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   $Res call({
     Object? name = null,
-    Object? typeAA = null,
+    Object? type = null,
     Object? phrases = null,
   }) {
     return _then(
@@ -219,10 +219,10 @@ class __$ParrotCopyWithImpl<$Res> implements _$ParrotCopyWith<$Res> {
                 ? _self.name
                 : name // ignore: cast_nullable_to_non_nullable
                     as String,
-        typeAA:
-            null == typeAA
-                ? _self.typeAA
-                : typeAA // ignore: cast_nullable_to_non_nullable
+        type:
+            null == type
+                ? _self.type
+                : type // ignore: cast_nullable_to_non_nullable
                     as String,
         phrases:
             null == phrases

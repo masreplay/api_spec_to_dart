@@ -10,6 +10,7 @@ class PropertyGeneratorStrategy {
   Parameter build(
     MapEntry<String, OpenApiSchema> property, {
     required String className,
+    String? overrideType,
     bool required = true,
   }) {
     final name = Renaming.instance.renameProperty(property.key);
@@ -18,10 +19,11 @@ class PropertyGeneratorStrategy {
 
     final defaultValue = dartTypeConverter.getDefaultValue(property.value);
 
-    final dartType = dartTypeConverter.get(
-      property.value,
-      className: className,
-    );
+    final dartType = overrideType ??
+        dartTypeConverter.get(
+          property.value,
+          className: className,
+        );
 
     return Parameter(
       (b) => b

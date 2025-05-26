@@ -73,7 +73,7 @@
 ///     ],
 ///     "title": "User"
 /// }
-library;
+library user;
 
 import 'exports.dart';
 part 'user.freezed.dart';
@@ -107,7 +107,7 @@ abstract class User with _$User {
     @JsonKey(name: User.locationKey) required Location? location,
 
     /// tags
-    @Default([]) @JsonKey(name: User.tagsKey) List<String> tags,
+    @Default(const []) @JsonKey(name: User.tagsKey) List<String> tags,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

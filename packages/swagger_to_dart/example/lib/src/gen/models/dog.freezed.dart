@@ -18,9 +18,9 @@ mixin _$Dog {
   @JsonKey(name: Dog.nameKey)
   String get name;
 
-  /// typeAA
-  @JsonKey(name: Dog.typeAAKey)
-  String get typeAA;
+  /// type
+  @JsonKey(name: Dog.typeKey)
+  String get type;
 
   /// barkLoudness
   @JsonKey(name: Dog.barkLoudnessKey)
@@ -42,18 +42,18 @@ mixin _$Dog {
         (other.runtimeType == runtimeType &&
             other is Dog &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.typeAA, typeAA) || other.typeAA == typeAA) &&
+            (identical(other.type, type) || other.type == type) &&
             (identical(other.barkLoudness, barkLoudness) ||
                 other.barkLoudness == barkLoudness));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, name, typeAA, barkLoudness);
+  int get hashCode => Object.hash(runtimeType, name, type, barkLoudness);
 
   @override
   String toString() {
-    return 'Dog(name: $name, typeAA: $typeAA, barkLoudness: $barkLoudness)';
+    return 'Dog(name: $name, type: $type, barkLoudness: $barkLoudness)';
   }
 }
 
@@ -63,7 +63,7 @@ abstract mixin class $DogCopyWith<$Res> {
   @useResult
   $Res call({
     @JsonKey(name: Dog.nameKey) String name,
-    @JsonKey(name: Dog.typeAAKey) String typeAA,
+    @JsonKey(name: Dog.typeKey) String type,
     @JsonKey(name: Dog.barkLoudnessKey) int barkLoudness,
   });
 }
@@ -81,7 +81,7 @@ class _$DogCopyWithImpl<$Res> implements $DogCopyWith<$Res> {
   @override
   $Res call({
     Object? name = null,
-    Object? typeAA = null,
+    Object? type = null,
     Object? barkLoudness = null,
   }) {
     return _then(
@@ -91,10 +91,10 @@ class _$DogCopyWithImpl<$Res> implements $DogCopyWith<$Res> {
                 ? _self.name
                 : name // ignore: cast_nullable_to_non_nullable
                     as String,
-        typeAA:
-            null == typeAA
-                ? _self.typeAA
-                : typeAA // ignore: cast_nullable_to_non_nullable
+        type:
+            null == type
+                ? _self.type
+                : type // ignore: cast_nullable_to_non_nullable
                     as String,
         barkLoudness:
             null == barkLoudness
@@ -112,7 +112,7 @@ class _$DogCopyWithImpl<$Res> implements $DogCopyWith<$Res> {
 class _Dog extends Dog {
   const _Dog({
     @JsonKey(name: Dog.nameKey) required this.name,
-    @JsonKey(name: Dog.typeAAKey) this.typeAA = 'dog',
+    @JsonKey(name: Dog.typeKey) this.type = 'dog',
     @JsonKey(name: Dog.barkLoudnessKey) required this.barkLoudness,
   }) : super._();
   factory _Dog.fromJson(Map<String, dynamic> json) => _$DogFromJson(json);
@@ -122,10 +122,10 @@ class _Dog extends Dog {
   @JsonKey(name: Dog.nameKey)
   final String name;
 
-  /// typeAA
+  /// type
   @override
-  @JsonKey(name: Dog.typeAAKey)
-  final String typeAA;
+  @JsonKey(name: Dog.typeKey)
+  final String type;
 
   /// barkLoudness
   @override
@@ -151,18 +151,18 @@ class _Dog extends Dog {
         (other.runtimeType == runtimeType &&
             other is _Dog &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.typeAA, typeAA) || other.typeAA == typeAA) &&
+            (identical(other.type, type) || other.type == type) &&
             (identical(other.barkLoudness, barkLoudness) ||
                 other.barkLoudness == barkLoudness));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, name, typeAA, barkLoudness);
+  int get hashCode => Object.hash(runtimeType, name, type, barkLoudness);
 
   @override
   String toString() {
-    return 'Dog(name: $name, typeAA: $typeAA, barkLoudness: $barkLoudness)';
+    return 'Dog(name: $name, type: $type, barkLoudness: $barkLoudness)';
   }
 }
 
@@ -174,7 +174,7 @@ abstract mixin class _$DogCopyWith<$Res> implements $DogCopyWith<$Res> {
   @useResult
   $Res call({
     @JsonKey(name: Dog.nameKey) String name,
-    @JsonKey(name: Dog.typeAAKey) String typeAA,
+    @JsonKey(name: Dog.typeKey) String type,
     @JsonKey(name: Dog.barkLoudnessKey) int barkLoudness,
   });
 }
@@ -192,7 +192,7 @@ class __$DogCopyWithImpl<$Res> implements _$DogCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   $Res call({
     Object? name = null,
-    Object? typeAA = null,
+    Object? type = null,
     Object? barkLoudness = null,
   }) {
     return _then(
@@ -202,10 +202,10 @@ class __$DogCopyWithImpl<$Res> implements _$DogCopyWith<$Res> {
                 ? _self.name
                 : name // ignore: cast_nullable_to_non_nullable
                     as String,
-        typeAA:
-            null == typeAA
-                ? _self.typeAA
-                : typeAA // ignore: cast_nullable_to_non_nullable
+        type:
+            null == type
+                ? _self.type
+                : type // ignore: cast_nullable_to_non_nullable
                     as String,
         barkLoudness:
             null == barkLoudness

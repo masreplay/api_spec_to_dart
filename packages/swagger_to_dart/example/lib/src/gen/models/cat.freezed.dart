@@ -18,9 +18,9 @@ mixin _$Cat {
   @JsonKey(name: Cat.nameKey)
   String get name;
 
-  /// typeAA
-  @JsonKey(name: Cat.typeAAKey)
-  String get typeAA;
+  /// type
+  @JsonKey(name: Cat.typeKey)
+  String get type;
 
   /// meowCuteness
   @JsonKey(name: Cat.meowCutenessKey)
@@ -42,18 +42,18 @@ mixin _$Cat {
         (other.runtimeType == runtimeType &&
             other is Cat &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.typeAA, typeAA) || other.typeAA == typeAA) &&
+            (identical(other.type, type) || other.type == type) &&
             (identical(other.meowCuteness, meowCuteness) ||
                 other.meowCuteness == meowCuteness));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, name, typeAA, meowCuteness);
+  int get hashCode => Object.hash(runtimeType, name, type, meowCuteness);
 
   @override
   String toString() {
-    return 'Cat(name: $name, typeAA: $typeAA, meowCuteness: $meowCuteness)';
+    return 'Cat(name: $name, type: $type, meowCuteness: $meowCuteness)';
   }
 }
 
@@ -63,7 +63,7 @@ abstract mixin class $CatCopyWith<$Res> {
   @useResult
   $Res call({
     @JsonKey(name: Cat.nameKey) String name,
-    @JsonKey(name: Cat.typeAAKey) String typeAA,
+    @JsonKey(name: Cat.typeKey) String type,
     @JsonKey(name: Cat.meowCutenessKey) int meowCuteness,
   });
 }
@@ -81,7 +81,7 @@ class _$CatCopyWithImpl<$Res> implements $CatCopyWith<$Res> {
   @override
   $Res call({
     Object? name = null,
-    Object? typeAA = null,
+    Object? type = null,
     Object? meowCuteness = null,
   }) {
     return _then(
@@ -91,10 +91,10 @@ class _$CatCopyWithImpl<$Res> implements $CatCopyWith<$Res> {
                 ? _self.name
                 : name // ignore: cast_nullable_to_non_nullable
                     as String,
-        typeAA:
-            null == typeAA
-                ? _self.typeAA
-                : typeAA // ignore: cast_nullable_to_non_nullable
+        type:
+            null == type
+                ? _self.type
+                : type // ignore: cast_nullable_to_non_nullable
                     as String,
         meowCuteness:
             null == meowCuteness
@@ -112,7 +112,7 @@ class _$CatCopyWithImpl<$Res> implements $CatCopyWith<$Res> {
 class _Cat extends Cat {
   const _Cat({
     @JsonKey(name: Cat.nameKey) required this.name,
-    @JsonKey(name: Cat.typeAAKey) this.typeAA = 'cat',
+    @JsonKey(name: Cat.typeKey) this.type = 'cat',
     @JsonKey(name: Cat.meowCutenessKey) required this.meowCuteness,
   }) : super._();
   factory _Cat.fromJson(Map<String, dynamic> json) => _$CatFromJson(json);
@@ -122,10 +122,10 @@ class _Cat extends Cat {
   @JsonKey(name: Cat.nameKey)
   final String name;
 
-  /// typeAA
+  /// type
   @override
-  @JsonKey(name: Cat.typeAAKey)
-  final String typeAA;
+  @JsonKey(name: Cat.typeKey)
+  final String type;
 
   /// meowCuteness
   @override
@@ -151,18 +151,18 @@ class _Cat extends Cat {
         (other.runtimeType == runtimeType &&
             other is _Cat &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.typeAA, typeAA) || other.typeAA == typeAA) &&
+            (identical(other.type, type) || other.type == type) &&
             (identical(other.meowCuteness, meowCuteness) ||
                 other.meowCuteness == meowCuteness));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, name, typeAA, meowCuteness);
+  int get hashCode => Object.hash(runtimeType, name, type, meowCuteness);
 
   @override
   String toString() {
-    return 'Cat(name: $name, typeAA: $typeAA, meowCuteness: $meowCuteness)';
+    return 'Cat(name: $name, type: $type, meowCuteness: $meowCuteness)';
   }
 }
 
@@ -174,7 +174,7 @@ abstract mixin class _$CatCopyWith<$Res> implements $CatCopyWith<$Res> {
   @useResult
   $Res call({
     @JsonKey(name: Cat.nameKey) String name,
-    @JsonKey(name: Cat.typeAAKey) String typeAA,
+    @JsonKey(name: Cat.typeKey) String type,
     @JsonKey(name: Cat.meowCutenessKey) int meowCuteness,
   });
 }
@@ -192,7 +192,7 @@ class __$CatCopyWithImpl<$Res> implements _$CatCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   $Res call({
     Object? name = null,
-    Object? typeAA = null,
+    Object? type = null,
     Object? meowCuteness = null,
   }) {
     return _then(
@@ -202,10 +202,10 @@ class __$CatCopyWithImpl<$Res> implements _$CatCopyWith<$Res> {
                 ? _self.name
                 : name // ignore: cast_nullable_to_non_nullable
                     as String,
-        typeAA:
-            null == typeAA
-                ? _self.typeAA
-                : typeAA // ignore: cast_nullable_to_non_nullable
+        type:
+            null == type
+                ? _self.type
+                : type // ignore: cast_nullable_to_non_nullable
                     as String,
         meowCuteness:
             null == meowCuteness

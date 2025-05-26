@@ -51,6 +51,8 @@ class GenerationContext {
   final Map<String, Class> _jsonConvertor = <String, Class>{};
   List<Class> get jsonConvertor => _jsonConvertor.values.toList();
 
+  PropertyGeneratorStrategy get propertyGenerator => PropertyGeneratorStrategy(this);
+
   void addJsonConvertor(Class jsonConvertor) {
     if (_jsonConvertor.containsKey(jsonConvertor.name)) {
       print('Json convertor ${jsonConvertor.name} already exists');

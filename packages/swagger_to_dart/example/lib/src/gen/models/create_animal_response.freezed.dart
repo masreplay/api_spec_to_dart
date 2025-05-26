@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 mixin _$CreateAnimalResponse {
   /// animal
   @JsonKey(name: CreateAnimalResponse.animalKey)
-  CatDogParrot get animal;
+  Animal get animal;
 
   /// message
   @JsonKey(name: CreateAnimalResponse.messageKey)
@@ -62,11 +62,11 @@ abstract mixin class $CreateAnimalResponseCopyWith<$Res> {
   ) = _$CreateAnimalResponseCopyWithImpl;
   @useResult
   $Res call({
-    @JsonKey(name: CreateAnimalResponse.animalKey) CatDogParrot animal,
+    @JsonKey(name: CreateAnimalResponse.animalKey) Animal animal,
     @JsonKey(name: CreateAnimalResponse.messageKey) String message,
   });
 
-  $CatDogParrotCopyWith<$Res> get animal;
+  $AnimalCopyWith<$Res> get animal;
 }
 
 /// @nodoc
@@ -88,7 +88,7 @@ class _$CreateAnimalResponseCopyWithImpl<$Res>
             null == animal
                 ? _self.animal
                 : animal // ignore: cast_nullable_to_non_nullable
-                    as CatDogParrot,
+                    as Animal,
         message:
             null == message
                 ? _self.message
@@ -102,8 +102,8 @@ class _$CreateAnimalResponseCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $CatDogParrotCopyWith<$Res> get animal {
-    return $CatDogParrotCopyWith<$Res>(_self.animal, (value) {
+  $AnimalCopyWith<$Res> get animal {
+    return $AnimalCopyWith<$Res>(_self.animal, (value) {
       return _then(_self.copyWith(animal: value));
     });
   }
@@ -123,7 +123,7 @@ class _CreateAnimalResponse extends CreateAnimalResponse {
   /// animal
   @override
   @JsonKey(name: CreateAnimalResponse.animalKey)
-  final CatDogParrot animal;
+  final Animal animal;
 
   /// message
   @override
@@ -175,12 +175,12 @@ abstract mixin class _$CreateAnimalResponseCopyWith<$Res>
   @override
   @useResult
   $Res call({
-    @JsonKey(name: CreateAnimalResponse.animalKey) CatDogParrot animal,
+    @JsonKey(name: CreateAnimalResponse.animalKey) Animal animal,
     @JsonKey(name: CreateAnimalResponse.messageKey) String message,
   });
 
   @override
-  $CatDogParrotCopyWith<$Res> get animal;
+  $AnimalCopyWith<$Res> get animal;
 }
 
 /// @nodoc
@@ -202,7 +202,7 @@ class __$CreateAnimalResponseCopyWithImpl<$Res>
             null == animal
                 ? _self.animal
                 : animal // ignore: cast_nullable_to_non_nullable
-                    as CatDogParrot,
+                    as Animal,
         message:
             null == message
                 ? _self.message
@@ -216,8 +216,8 @@ class __$CreateAnimalResponseCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $CatDogParrotCopyWith<$Res> get animal {
-    return $CatDogParrotCopyWith<$Res>(_self.animal, (value) {
+  $AnimalCopyWith<$Res> get animal {
+    return $AnimalCopyWith<$Res>(_self.animal, (value) {
       return _then(_self.copyWith(animal: value));
     });
   }

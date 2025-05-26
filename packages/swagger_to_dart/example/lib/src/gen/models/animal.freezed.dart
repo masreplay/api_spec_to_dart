@@ -4,44 +4,44 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'cat_dog_parrot.dart';
+part of 'animal.dart';
 
 // **************************************************************************
 // FreezedGenerator
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
-CatDogParrot _$CatDogParrotFromJson(Map<String, dynamic> json) {
+Animal _$AnimalFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType']) {
-    case 'dog':
-      return CatDogParrotDog.fromJson(json);
-    case 'cat':
-      return CatDogParrotCat.fromJson(json);
-    case 'parrot':
-      return CatDogParrotParrot.fromJson(json);
+    case '#/components/schemas/Dog':
+      return AnimalComponentsSchemasDog.fromJson(json);
+    case '#/components/schemas/Cat':
+      return AnimalComponentsSchemasCat.fromJson(json);
+    case '#/components/schemas/Parrot':
+      return AnimalComponentsSchemasParrot.fromJson(json);
 
     default:
       throw CheckedFromJsonException(
         json,
         'runtimeType',
-        'CatDogParrot',
+        'Animal',
         'Invalid union type "${json['runtimeType']}"!',
       );
   }
 }
 
 /// @nodoc
-mixin _$CatDogParrot {
+mixin _$Animal {
   Object get value;
 
-  /// Serializes this CatDogParrot to a JSON map.
+  /// Serializes this Animal to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is CatDogParrot &&
+            other is Animal &&
             const DeepCollectionEquality().equals(other.value, value));
   }
 
@@ -52,24 +52,24 @@ mixin _$CatDogParrot {
 
   @override
   String toString() {
-    return 'CatDogParrot(value: $value)';
+    return 'Animal(value: $value)';
   }
 }
 
 /// @nodoc
-class $CatDogParrotCopyWith<$Res> {
-  $CatDogParrotCopyWith(CatDogParrot _, $Res Function(CatDogParrot) __);
+class $AnimalCopyWith<$Res> {
+  $AnimalCopyWith(Animal _, $Res Function(Animal) __);
 }
 
 /// @nodoc
 
 @jsonSerializable
-class CatDogParrotDog extends CatDogParrot {
-  const CatDogParrotDog(this.value, {final String? $type})
-    : $type = $type ?? 'dog',
+class AnimalComponentsSchemasDog extends Animal {
+  const AnimalComponentsSchemasDog(this.value, {final String? $type})
+    : $type = $type ?? '#/components/schemas/Dog',
       super._();
-  factory CatDogParrotDog.fromJson(Map<String, dynamic> json) =>
-      _$CatDogParrotDogFromJson(json);
+  factory AnimalComponentsSchemasDog.fromJson(Map<String, dynamic> json) =>
+      _$AnimalComponentsSchemasDogFromJson(json);
 
   @override
   final Dog value;
@@ -77,23 +77,27 @@ class CatDogParrotDog extends CatDogParrot {
   @JsonKey(name: 'runtimeType')
   final String $type;
 
-  /// Create a copy of CatDogParrot
+  /// Create a copy of Animal
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $CatDogParrotDogCopyWith<CatDogParrotDog> get copyWith =>
-      _$CatDogParrotDogCopyWithImpl<CatDogParrotDog>(this, _$identity);
+  $AnimalComponentsSchemasDogCopyWith<AnimalComponentsSchemasDog>
+  get copyWith =>
+      _$AnimalComponentsSchemasDogCopyWithImpl<AnimalComponentsSchemasDog>(
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$CatDogParrotDogToJson(this);
+    return _$AnimalComponentsSchemasDogToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is CatDogParrotDog &&
+            other is AnimalComponentsSchemasDog &&
             (identical(other.value, value) || other.value == value));
   }
 
@@ -103,17 +107,17 @@ class CatDogParrotDog extends CatDogParrot {
 
   @override
   String toString() {
-    return 'CatDogParrot.dog(value: $value)';
+    return 'Animal.componentsSchemasDog(value: $value)';
   }
 }
 
 /// @nodoc
-abstract mixin class $CatDogParrotDogCopyWith<$Res>
-    implements $CatDogParrotCopyWith<$Res> {
-  factory $CatDogParrotDogCopyWith(
-    CatDogParrotDog value,
-    $Res Function(CatDogParrotDog) _then,
-  ) = _$CatDogParrotDogCopyWithImpl;
+abstract mixin class $AnimalComponentsSchemasDogCopyWith<$Res>
+    implements $AnimalCopyWith<$Res> {
+  factory $AnimalComponentsSchemasDogCopyWith(
+    AnimalComponentsSchemasDog value,
+    $Res Function(AnimalComponentsSchemasDog) _then,
+  ) = _$AnimalComponentsSchemasDogCopyWithImpl;
   @useResult
   $Res call({Dog value});
 
@@ -121,19 +125,19 @@ abstract mixin class $CatDogParrotDogCopyWith<$Res>
 }
 
 /// @nodoc
-class _$CatDogParrotDogCopyWithImpl<$Res>
-    implements $CatDogParrotDogCopyWith<$Res> {
-  _$CatDogParrotDogCopyWithImpl(this._self, this._then);
+class _$AnimalComponentsSchemasDogCopyWithImpl<$Res>
+    implements $AnimalComponentsSchemasDogCopyWith<$Res> {
+  _$AnimalComponentsSchemasDogCopyWithImpl(this._self, this._then);
 
-  final CatDogParrotDog _self;
-  final $Res Function(CatDogParrotDog) _then;
+  final AnimalComponentsSchemasDog _self;
+  final $Res Function(AnimalComponentsSchemasDog) _then;
 
-  /// Create a copy of CatDogParrot
+  /// Create a copy of Animal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   $Res call({Object? value = null}) {
     return _then(
-      CatDogParrotDog(
+      AnimalComponentsSchemasDog(
         null == value
             ? _self.value
             : value // ignore: cast_nullable_to_non_nullable
@@ -142,7 +146,7 @@ class _$CatDogParrotDogCopyWithImpl<$Res>
     );
   }
 
-  /// Create a copy of CatDogParrot
+  /// Create a copy of Animal
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -156,12 +160,12 @@ class _$CatDogParrotDogCopyWithImpl<$Res>
 /// @nodoc
 
 @jsonSerializable
-class CatDogParrotCat extends CatDogParrot {
-  const CatDogParrotCat(this.value, {final String? $type})
-    : $type = $type ?? 'cat',
+class AnimalComponentsSchemasCat extends Animal {
+  const AnimalComponentsSchemasCat(this.value, {final String? $type})
+    : $type = $type ?? '#/components/schemas/Cat',
       super._();
-  factory CatDogParrotCat.fromJson(Map<String, dynamic> json) =>
-      _$CatDogParrotCatFromJson(json);
+  factory AnimalComponentsSchemasCat.fromJson(Map<String, dynamic> json) =>
+      _$AnimalComponentsSchemasCatFromJson(json);
 
   @override
   final Cat value;
@@ -169,23 +173,27 @@ class CatDogParrotCat extends CatDogParrot {
   @JsonKey(name: 'runtimeType')
   final String $type;
 
-  /// Create a copy of CatDogParrot
+  /// Create a copy of Animal
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $CatDogParrotCatCopyWith<CatDogParrotCat> get copyWith =>
-      _$CatDogParrotCatCopyWithImpl<CatDogParrotCat>(this, _$identity);
+  $AnimalComponentsSchemasCatCopyWith<AnimalComponentsSchemasCat>
+  get copyWith =>
+      _$AnimalComponentsSchemasCatCopyWithImpl<AnimalComponentsSchemasCat>(
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$CatDogParrotCatToJson(this);
+    return _$AnimalComponentsSchemasCatToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is CatDogParrotCat &&
+            other is AnimalComponentsSchemasCat &&
             (identical(other.value, value) || other.value == value));
   }
 
@@ -195,17 +203,17 @@ class CatDogParrotCat extends CatDogParrot {
 
   @override
   String toString() {
-    return 'CatDogParrot.cat(value: $value)';
+    return 'Animal.componentsSchemasCat(value: $value)';
   }
 }
 
 /// @nodoc
-abstract mixin class $CatDogParrotCatCopyWith<$Res>
-    implements $CatDogParrotCopyWith<$Res> {
-  factory $CatDogParrotCatCopyWith(
-    CatDogParrotCat value,
-    $Res Function(CatDogParrotCat) _then,
-  ) = _$CatDogParrotCatCopyWithImpl;
+abstract mixin class $AnimalComponentsSchemasCatCopyWith<$Res>
+    implements $AnimalCopyWith<$Res> {
+  factory $AnimalComponentsSchemasCatCopyWith(
+    AnimalComponentsSchemasCat value,
+    $Res Function(AnimalComponentsSchemasCat) _then,
+  ) = _$AnimalComponentsSchemasCatCopyWithImpl;
   @useResult
   $Res call({Cat value});
 
@@ -213,19 +221,19 @@ abstract mixin class $CatDogParrotCatCopyWith<$Res>
 }
 
 /// @nodoc
-class _$CatDogParrotCatCopyWithImpl<$Res>
-    implements $CatDogParrotCatCopyWith<$Res> {
-  _$CatDogParrotCatCopyWithImpl(this._self, this._then);
+class _$AnimalComponentsSchemasCatCopyWithImpl<$Res>
+    implements $AnimalComponentsSchemasCatCopyWith<$Res> {
+  _$AnimalComponentsSchemasCatCopyWithImpl(this._self, this._then);
 
-  final CatDogParrotCat _self;
-  final $Res Function(CatDogParrotCat) _then;
+  final AnimalComponentsSchemasCat _self;
+  final $Res Function(AnimalComponentsSchemasCat) _then;
 
-  /// Create a copy of CatDogParrot
+  /// Create a copy of Animal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   $Res call({Object? value = null}) {
     return _then(
-      CatDogParrotCat(
+      AnimalComponentsSchemasCat(
         null == value
             ? _self.value
             : value // ignore: cast_nullable_to_non_nullable
@@ -234,7 +242,7 @@ class _$CatDogParrotCatCopyWithImpl<$Res>
     );
   }
 
-  /// Create a copy of CatDogParrot
+  /// Create a copy of Animal
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -248,12 +256,12 @@ class _$CatDogParrotCatCopyWithImpl<$Res>
 /// @nodoc
 
 @jsonSerializable
-class CatDogParrotParrot extends CatDogParrot {
-  const CatDogParrotParrot(this.value, {final String? $type})
-    : $type = $type ?? 'parrot',
+class AnimalComponentsSchemasParrot extends Animal {
+  const AnimalComponentsSchemasParrot(this.value, {final String? $type})
+    : $type = $type ?? '#/components/schemas/Parrot',
       super._();
-  factory CatDogParrotParrot.fromJson(Map<String, dynamic> json) =>
-      _$CatDogParrotParrotFromJson(json);
+  factory AnimalComponentsSchemasParrot.fromJson(Map<String, dynamic> json) =>
+      _$AnimalComponentsSchemasParrotFromJson(json);
 
   @override
   final Parrot value;
@@ -261,23 +269,25 @@ class CatDogParrotParrot extends CatDogParrot {
   @JsonKey(name: 'runtimeType')
   final String $type;
 
-  /// Create a copy of CatDogParrot
+  /// Create a copy of Animal
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $CatDogParrotParrotCopyWith<CatDogParrotParrot> get copyWith =>
-      _$CatDogParrotParrotCopyWithImpl<CatDogParrotParrot>(this, _$identity);
+  $AnimalComponentsSchemasParrotCopyWith<AnimalComponentsSchemasParrot>
+  get copyWith => _$AnimalComponentsSchemasParrotCopyWithImpl<
+    AnimalComponentsSchemasParrot
+  >(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$CatDogParrotParrotToJson(this);
+    return _$AnimalComponentsSchemasParrotToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is CatDogParrotParrot &&
+            other is AnimalComponentsSchemasParrot &&
             (identical(other.value, value) || other.value == value));
   }
 
@@ -287,17 +297,17 @@ class CatDogParrotParrot extends CatDogParrot {
 
   @override
   String toString() {
-    return 'CatDogParrot.parrot(value: $value)';
+    return 'Animal.componentsSchemasParrot(value: $value)';
   }
 }
 
 /// @nodoc
-abstract mixin class $CatDogParrotParrotCopyWith<$Res>
-    implements $CatDogParrotCopyWith<$Res> {
-  factory $CatDogParrotParrotCopyWith(
-    CatDogParrotParrot value,
-    $Res Function(CatDogParrotParrot) _then,
-  ) = _$CatDogParrotParrotCopyWithImpl;
+abstract mixin class $AnimalComponentsSchemasParrotCopyWith<$Res>
+    implements $AnimalCopyWith<$Res> {
+  factory $AnimalComponentsSchemasParrotCopyWith(
+    AnimalComponentsSchemasParrot value,
+    $Res Function(AnimalComponentsSchemasParrot) _then,
+  ) = _$AnimalComponentsSchemasParrotCopyWithImpl;
   @useResult
   $Res call({Parrot value});
 
@@ -305,19 +315,19 @@ abstract mixin class $CatDogParrotParrotCopyWith<$Res>
 }
 
 /// @nodoc
-class _$CatDogParrotParrotCopyWithImpl<$Res>
-    implements $CatDogParrotParrotCopyWith<$Res> {
-  _$CatDogParrotParrotCopyWithImpl(this._self, this._then);
+class _$AnimalComponentsSchemasParrotCopyWithImpl<$Res>
+    implements $AnimalComponentsSchemasParrotCopyWith<$Res> {
+  _$AnimalComponentsSchemasParrotCopyWithImpl(this._self, this._then);
 
-  final CatDogParrotParrot _self;
-  final $Res Function(CatDogParrotParrot) _then;
+  final AnimalComponentsSchemasParrot _self;
+  final $Res Function(AnimalComponentsSchemasParrot) _then;
 
-  /// Create a copy of CatDogParrot
+  /// Create a copy of Animal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   $Res call({Object? value = null}) {
     return _then(
-      CatDogParrotParrot(
+      AnimalComponentsSchemasParrot(
         null == value
             ? _self.value
             : value // ignore: cast_nullable_to_non_nullable
@@ -326,7 +336,7 @@ class _$CatDogParrotParrotCopyWithImpl<$Res>
     );
   }
 
-  /// Create a copy of CatDogParrot
+  /// Create a copy of Animal
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')

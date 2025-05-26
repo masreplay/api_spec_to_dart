@@ -27,7 +27,7 @@
 ///     ],
 ///     "title": "CreateAnimalResponse"
 /// }
-library;
+library create_animal_response;
 
 import 'exports.dart';
 part 'create_animal_response.freezed.dart';
@@ -40,7 +40,7 @@ abstract class CreateAnimalResponse with _$CreateAnimalResponse {
   @jsonSerializable
   const factory CreateAnimalResponse({
     /// animal
-    @JsonKey(name: CreateAnimalResponse.animalKey) required CatDogParrot animal,
+    @JsonKey(name: CreateAnimalResponse.animalKey) required Animal animal,
 
     /// message
     @JsonKey(name: CreateAnimalResponse.messageKey) required String message,

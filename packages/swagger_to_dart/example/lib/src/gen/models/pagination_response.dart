@@ -1,4 +1,5 @@
 /// PaginationResponse_CategoryResponse_
+/// PaginationResponse<T>
 /// {
 ///     "properties": {
 ///         "items": {
@@ -35,47 +36,42 @@
 ///     ],
 ///     "title": "PaginationResponse[CategoryResponse]"
 /// }
-library;
+library pagination_response;
 
 import 'exports.dart';
-part 'pagination_response_category_response.freezed.dart';
-part 'pagination_response_category_response.g.dart'; // PaginationResponseCategoryResponse
+part 'pagination_response.freezed.dart';
+part 'pagination_response.g.dart'; // PaginationResponse<T>
 
 @Freezed(genericArgumentFactories: true)
-abstract class PaginationResponseCategoryResponse<T>
-    with _$PaginationResponseCategoryResponse<T> {
-  const PaginationResponseCategoryResponse._();
+abstract class PaginationResponse<T> with _$PaginationResponse<T> {
+  const PaginationResponse._();
 
   @JsonSerializable(
-    genericArgumentFactories: true,
     converters: jsonSerializableConverters,
+    genericArgumentFactories: true,
   )
-  const factory PaginationResponseCategoryResponse({
+  const factory PaginationResponse({
     /// items
-    @JsonKey(name: PaginationResponseCategoryResponse.itemsKey)
-    required List<T> items,
+    @JsonKey(name: PaginationResponse.itemsKey)
+    required List<CategoryResponse> items,
 
     /// total
-    @JsonKey(name: PaginationResponseCategoryResponse.totalKey)
-    required int total,
+    @JsonKey(name: PaginationResponse.totalKey) required int total,
 
     /// page
-    @JsonKey(name: PaginationResponseCategoryResponse.pageKey)
-    required int page,
+    @JsonKey(name: PaginationResponse.pageKey) required int page,
 
     /// perPage
-    @JsonKey(name: PaginationResponseCategoryResponse.perPageKey)
-    required int perPage,
+    @JsonKey(name: PaginationResponse.perPageKey) required int perPage,
 
     /// totalPages
-    @JsonKey(name: PaginationResponseCategoryResponse.totalPagesKey)
-    required int totalPages,
-  }) = _PaginationResponseCategoryResponse<T>;
+    @JsonKey(name: PaginationResponse.totalPagesKey) required int totalPages,
+  }) = _PaginationResponse<T>;
 
-  factory PaginationResponseCategoryResponse.fromJson(
+  factory PaginationResponse.fromJson(
     Map<String, dynamic> json,
     T Function(Object? json) fromJsonT,
-  ) => _$PaginationResponseCategoryResponseFromJson<T>(json, fromJsonT);
+  ) => _$PaginationResponseFromJson(json, fromJsonT);
 
   static const String itemsKey = "items";
 
