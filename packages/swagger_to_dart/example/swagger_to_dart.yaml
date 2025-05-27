@@ -10,8 +10,3 @@ swagger_to_dart:
 
   api_client:
     use_class_for_query_parameters: true
-
-    skipped_parameters:
-      - "Accept-Language"
-      - "X-Language"
-      - "X-Platform"

@@ -1,7 +1,10 @@
+## 2.1.4
+
+- Skip special character for string generation using `r''`
+
 ## 2.1.2
 
 - Fix class name in generation of `oneOf` classes
-
 
 ## 2.1.1
 
