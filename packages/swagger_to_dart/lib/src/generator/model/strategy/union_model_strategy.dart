@@ -1,6 +1,7 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:collection/collection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:swagger_to_dart/src/code/string.dart';
 import 'package:swagger_to_dart/src/generator/model/strategy/strategy.dart';
 import 'package:swagger_to_dart/src/schema/openapi/openapi.dart';
 import 'package:swagger_to_dart/src/utils/utils.dart';
@@ -70,7 +71,7 @@ class UnionModelStrategy
                 ..static = true
                 ..name = 'unionKey'
                 ..type = refer('String')
-                ..assignment = Code('"${valueKeyName}"'),
+                ..assignment = stringCode(valueKeyName),
             )
           ])
           ..methods.addAll([

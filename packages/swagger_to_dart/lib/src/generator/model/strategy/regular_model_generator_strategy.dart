@@ -1,4 +1,5 @@
 import 'package:code_builder/code_builder.dart';
+import 'package:swagger_to_dart/src/code/string.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 class RegularModelGeneratorStrategy
@@ -56,7 +57,7 @@ class RegularModelGeneratorStrategy
                       ..modifier = FieldModifier.constant
                       ..name = '${name}Key'
                       ..type = refer('$String')
-                      ..assignment = Code('"${entry.key}"'),
+                      ..assignment = stringCode(entry.key),
                   );
                 })
               ])
@@ -150,12 +151,14 @@ class RegularModelGeneratorStrategy
             ...properties.entries.map((entry) {
               final name = Renaming.instance.renameProperty(entry.key);
 
-              return Field((b) => b
-                ..static = true
-                ..modifier = FieldModifier.constant
-                ..name = '${name}Key'
-                ..type = refer('String')
-                ..assignment = Code('"${entry.key}"'));
+              return Field(
+                (b) => b
+                  ..static = true
+                  ..modifier = FieldModifier.constant
+                  ..name = '${name}Key'
+                  ..type = refer('String')
+                  ..assignment = stringCode(entry.key),
+              );
             }),
           ])
           ..constructors.addAll([
