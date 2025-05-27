@@ -188,20 +188,44 @@ class UnionModelStrategy
   /// }
   (Library, String) buildOneOf(OpenApiSchemaOneOf schema) {
     final schemas = schema.oneOf;
-    final className = Renaming.instance.renameClass(
-      schema.title ?? "${schema.discriminator.mapping.keys.join('_')}_Union",
-    );
+
+    final discriminator = schema.discriminator;
+
+    final String className;
+    if (schema.title case final title?) {
+      className = Renaming.instance.renameClass(title);
+    } else if (discriminator case final discriminator?) {
+      className = Renaming.instance.renameClass(
+        discriminator.mapping.keys.join('Or') + '_Union',
+      );
+    } else {
+      className = Renaming.instance.renameClass(schema.oneOf
+              .whereType<OpenApiSchemaRef>()
+              .map((e) => e.name)
+              .join('Or') +
+          '_Union');
+    }
+
+    final Map<String, OpenApiSchemaRef> refSchemaMap;
+    if (discriminator case final discriminator?) {
+      refSchemaMap = {
+        for (final entry in discriminator.mapping.entries)
+          entry.key: schemas
+              .whereType<OpenApiSchemaRef>()
+              .firstWhere((e) => e.ref == entry.value)
+      };
+    } else {
+      refSchemaMap = {
+        for (final entry in schema.oneOf.whereType<OpenApiSchemaRef>())
+          entry.name: entry,
+      };
+    }
 
     final model = build(
       UnionModelStrategyParams(
         key: className,
         schema: schema,
-        refSchemaMap: {
-          for (final entry in schema.discriminator.mapping.entries)
-            entry.key: schemas
-                .whereType<OpenApiSchemaRef>()
-                .firstWhere((e) => e.ref == entry.value),
-        },
+        refSchemaMap: refSchemaMap,
       ),
     );
 

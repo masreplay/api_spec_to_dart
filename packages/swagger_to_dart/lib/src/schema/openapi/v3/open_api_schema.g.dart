@@ -118,8 +118,10 @@ OpenApiSchemaOneOf _$OpenApiSchemaOneOfFromJson(Map<String, dynamic> json) =>
           const [],
       description: json['description'] as String?,
       title: json['title'] as String?,
-      discriminator: OpenApiSchemaOneOfDiscriminator.fromJson(
-          json['discriminator'] as Map<String, dynamic>),
+      discriminator: json['discriminator'] == null
+          ? null
+          : OpenApiSchemaOneOfDiscriminator.fromJson(
+              json['discriminator'] as Map<String, dynamic>),
       default_: json['default'],
       $type: json['runtimeType'] as String?,
     );
@@ -131,7 +133,8 @@ Map<String, dynamic> _$OpenApiSchemaOneOfToJson(OpenApiSchemaOneOf instance) =>
           .toList(),
       if (instance.description case final value?) 'description': value,
       if (instance.title case final value?) 'title': value,
-      'discriminator': instance.discriminator.toJson(),
+      if (instance.discriminator?.toJson() case final value?)
+        'discriminator': value,
       if (instance.default_ case final value?) 'default': value,
       'runtimeType': instance.$type,
     };

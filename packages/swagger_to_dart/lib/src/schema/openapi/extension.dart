@@ -29,7 +29,5 @@ extension OpenApiExtension on OpenApi {
 }
 
 extension OpenApiSchemaRefExtension on OpenApiSchemaRef {
-  String get name {
-    return ref!.split('/').last;
-  }
+  String get name => ref!.split('/').lastOrNull ?? '';
 }

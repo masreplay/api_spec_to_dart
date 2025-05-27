@@ -627,7 +627,7 @@ class OpenApiSchemaOneOf extends OpenApiSchema {
   @JsonKey(name: 'title')
   final String? title;
   @JsonKey(name: 'discriminator')
-  final OpenApiSchemaOneOfDiscriminator discriminator;
+  final OpenApiSchemaOneOfDiscriminator? discriminator;
   @override
   @JsonKey(name: 'default')
   final Object? default_;
@@ -695,10 +695,10 @@ abstract mixin class $OpenApiSchemaOneOfCopyWith<$Res>
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'title') String? title,
       @JsonKey(name: 'discriminator')
-      OpenApiSchemaOneOfDiscriminator discriminator,
+      OpenApiSchemaOneOfDiscriminator? discriminator,
       @JsonKey(name: 'default') Object? default_});
 
-  $OpenApiSchemaOneOfDiscriminatorCopyWith<$Res> get discriminator;
+  $OpenApiSchemaOneOfDiscriminatorCopyWith<$Res>? get discriminator;
 }
 
 /// @nodoc
@@ -717,7 +717,7 @@ class _$OpenApiSchemaOneOfCopyWithImpl<$Res>
     Object? oneOf = null,
     Object? description = freezed,
     Object? title = freezed,
-    Object? discriminator = null,
+    Object? discriminator = freezed,
     Object? default_ = freezed,
   }) {
     return _then(OpenApiSchemaOneOf(
@@ -733,10 +733,10 @@ class _$OpenApiSchemaOneOfCopyWithImpl<$Res>
           ? _self.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
-      discriminator: null == discriminator
+      discriminator: freezed == discriminator
           ? _self.discriminator
           : discriminator // ignore: cast_nullable_to_non_nullable
-              as OpenApiSchemaOneOfDiscriminator,
+              as OpenApiSchemaOneOfDiscriminator?,
       default_: freezed == default_ ? _self.default_ : default_,
     ));
   }
@@ -745,8 +745,12 @@ class _$OpenApiSchemaOneOfCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $OpenApiSchemaOneOfDiscriminatorCopyWith<$Res> get discriminator {
-    return $OpenApiSchemaOneOfDiscriminatorCopyWith<$Res>(_self.discriminator,
+  $OpenApiSchemaOneOfDiscriminatorCopyWith<$Res>? get discriminator {
+    if (_self.discriminator == null) {
+      return null;
+    }
+
+    return $OpenApiSchemaOneOfDiscriminatorCopyWith<$Res>(_self.discriminator!,
         (value) {
       return _then(_self.copyWith(discriminator: value));
     });

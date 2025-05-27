@@ -216,7 +216,7 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
     switch (schema) {
       case OpenApiSchemaType schema:
         if (schema.enum_ != null) {
-          final name = schema.title ?? parent?.title;
+          final name = schema.title ?? parent?.title ?? 'TemporaryEnum';
           final className = Renaming.instance.renameEnum(name!);
 
           if (schema.default_ == null) return null;
