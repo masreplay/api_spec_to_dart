@@ -337,6 +337,9 @@ class ApiClientGenerator {
     required String className,
   }) {
     final useClass = context.config.apiClient.useClassForQueryParameters;
+    final skippedParameters = context.config.apiClient.skippedParameters;
+
+    parameters = parameters.where((e) => !skippedParameters.contains(e.name)).toList();
 
     final queryParameters =
         parameters.where((e) => e.in_ == OpenApiPathMethodParameterType.query);

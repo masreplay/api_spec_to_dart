@@ -121,7 +121,9 @@ class Renaming {
   String renameEnumValue(
     Object value,
   ) {
-    if (value is String) {
+    if (int.tryParse(value.toString()) != null) {
+      return 'value${value}';
+    } else if (value is String) {
       return Recase.instance.toCamelCase(_guard(
         value,
         translateSpecialCharacters: true,

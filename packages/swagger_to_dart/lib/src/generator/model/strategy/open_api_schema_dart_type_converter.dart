@@ -141,29 +141,29 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
     OpenApiSchema? parent,
     Map<String, String> overrideTypes = const {},
   }) {
+    if (schema.enum_ != null) {
+      final strategy = EnumModelGeneratorStrategy(context);
+
+      final name = schema.title ?? parent?.title;
+
+      final className = Renaming.instance.renameEnum('${name}Enum');
+      final model = strategy.build(
+        MapEntry(
+          className,
+          OpenApiSchemas(
+            type: 'object',
+            properties: {},
+            enum_: schema.enum_,
+          ),
+        ),
+      );
+      context.addModel(model);
+
+      return className;
+    }
+
     switch (schema.type) {
       case OpenApiSchemaVarType.string:
-        if (schema.enum_ != null) {
-          final strategy = EnumModelGeneratorStrategy(context);
-
-          final name = schema.title ?? parent?.title;
-
-          final className = Renaming.instance.renameEnum('${name}Enum');
-          final model = strategy.build(
-            MapEntry(
-              className,
-              OpenApiSchemas(
-                type: 'object',
-                properties: {},
-                enum_: schema.enum_,
-              ),
-            ),
-          );
-          context.addModel(model);
-
-          return className;
-        }
-
         switch (schema.format) {
           case 'date-time':
             return 'DateTime';
@@ -212,17 +212,14 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
     OpenApiSchema? parent,
   }) {
     final default_ = schema.default_;
+
     switch (schema) {
       case OpenApiSchemaType schema:
         if (schema.enum_ != null) {
           final name = schema.title ?? parent?.title;
+          final className = Renaming.instance.renameEnum(name!);
 
-          final className = Renaming.instance.renameEnum('${name}Enum');
-
-          if (schema.default_ == null) {
-            return null;
-          }
-
+          if (schema.default_ == null) return null;
           final defaultValue = Renaming.instance.renameEnumValue(
             schema.default_.toString(),
           );
@@ -236,13 +233,20 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
         final refSchema = context.openApi.getOpenApiSchemasByRef(schema.ref!)!;
 
         if (refSchema.enum_ != null && default_ != null) {
-          return '$dartType.${default_}';
+          if (schema.default_ == null) return null;
+          final defaultValue = Renaming.instance.renameEnumValue(
+            schema.default_.toString(),
+          );
+
+          return '$dartType.${defaultValue}';
         }
 
         return default_ == null ? null : default_.toString();
-      case OpenApiSchemaAnyOf _:
+      case OpenApiSchemaAnyOf schema:
+        final default_ = schema.default_;
         return default_ == null ? null : default_.toString();
-      case OpenApiSchemaOneOf _:
+      case OpenApiSchemaOneOf schema:
+        final default_ = schema.default_;
         return default_ == null ? null : default_.toString();
     }
   }
