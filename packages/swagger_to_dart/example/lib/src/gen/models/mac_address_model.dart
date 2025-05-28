@@ -31,5 +31,5 @@ abstract class MACAddressModel with _$MACAddressModel {
   factory MACAddressModel.fromJson(Map<String, dynamic> json) =>
       _$MACAddressModelFromJson(json);
 
-  static const String macAddressKey = "mac_address";
+  static const String macAddressKey = r'mac_address';
 }

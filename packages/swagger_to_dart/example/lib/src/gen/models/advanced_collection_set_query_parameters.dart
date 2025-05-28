@@ -39,5 +39,5 @@ abstract class AdvancedCollectionSetQueryParameters
     Map<String, dynamic> json,
   ) => _$AdvancedCollectionSetQueryParametersFromJson(json);
 
-  static const String itemsKey = "items";
+  static const String itemsKey = r'items';
 }

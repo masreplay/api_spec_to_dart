@@ -146,7 +146,7 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
 
       final name = schema.title ?? parent?.title;
 
-      final className = Renaming.instance.renameEnum('${name}Enum');
+      final className = Renaming.instance.renameEnum(name!);
       final model = strategy.build(
         MapEntry(
           className,

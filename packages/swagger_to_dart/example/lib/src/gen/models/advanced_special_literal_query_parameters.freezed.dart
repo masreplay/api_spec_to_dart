@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 mixin _$AdvancedSpecialLiteralQueryParameters {
   /// mode
   @JsonKey(name: AdvancedSpecialLiteralQueryParameters.modeKey)
-  ModeEnum get mode;
+  Mode get mode;
 
   /// Create a copy of AdvancedSpecialLiteralQueryParameters
   /// with the given fields replaced by the non-null parameter values.
@@ -58,7 +58,7 @@ abstract mixin class $AdvancedSpecialLiteralQueryParametersCopyWith<$Res> {
   ) = _$AdvancedSpecialLiteralQueryParametersCopyWithImpl;
   @useResult
   $Res call({
-    @JsonKey(name: AdvancedSpecialLiteralQueryParameters.modeKey) ModeEnum mode,
+    @JsonKey(name: AdvancedSpecialLiteralQueryParameters.modeKey) Mode mode,
   });
 }
 
@@ -81,7 +81,7 @@ class _$AdvancedSpecialLiteralQueryParametersCopyWithImpl<$Res>
             null == mode
                 ? _self.mode
                 : mode // ignore: cast_nullable_to_non_nullable
-                    as ModeEnum,
+                    as Mode,
       ),
     );
   }
@@ -94,7 +94,7 @@ class _AdvancedSpecialLiteralQueryParameters
     extends AdvancedSpecialLiteralQueryParameters {
   const _AdvancedSpecialLiteralQueryParameters({
     @JsonKey(name: AdvancedSpecialLiteralQueryParameters.modeKey)
-    this.mode = ModeEnum.system,
+    this.mode = Mode.system,
   }) : super._();
   factory _AdvancedSpecialLiteralQueryParameters.fromJson(
     Map<String, dynamic> json,
@@ -103,7 +103,7 @@ class _AdvancedSpecialLiteralQueryParameters
   /// mode
   @override
   @JsonKey(name: AdvancedSpecialLiteralQueryParameters.modeKey)
-  final ModeEnum mode;
+  final Mode mode;
 
   /// Create a copy of AdvancedSpecialLiteralQueryParameters
   /// with the given fields replaced by the non-null parameter values.
@@ -150,7 +150,7 @@ abstract mixin class _$AdvancedSpecialLiteralQueryParametersCopyWith<$Res>
   @override
   @useResult
   $Res call({
-    @JsonKey(name: AdvancedSpecialLiteralQueryParameters.modeKey) ModeEnum mode,
+    @JsonKey(name: AdvancedSpecialLiteralQueryParameters.modeKey) Mode mode,
   });
 }
 
@@ -173,7 +173,7 @@ class __$AdvancedSpecialLiteralQueryParametersCopyWithImpl<$Res>
             null == mode
                 ? _self.mode
                 : mode // ignore: cast_nullable_to_non_nullable
-                    as ModeEnum,
+                    as Mode,
       ),
     );
   }

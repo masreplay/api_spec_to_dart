@@ -17,22 +17,28 @@ import 'exports.dart';
 part 'response_models_response_multiple.freezed.dart';
 part 'response_models_response_multiple.g.dart'; // ResponseModelsResponseMultiple
 
-@freezed
+@Freezed(fallbackUnion: r"fallback")
 sealed class ResponseModelsResponseMultiple
     with _$ResponseModelsResponseMultiple {
   const ResponseModelsResponseMultiple._();
 
   @jsonSerializable
-  @FreezedUnionValue("#/components/schemas/User")
+  @FreezedUnionValue(r"#/components/schemas/User")
   const factory ResponseModelsResponseMultiple.componentsSchemasUser(
     User value,
   ) = ResponseModelsResponseMultipleComponentsSchemasUser;
 
   @jsonSerializable
-  @FreezedUnionValue("#/components/schemas/Location")
+  @FreezedUnionValue(r"#/components/schemas/Location")
   const factory ResponseModelsResponseMultiple.componentsSchemasLocation(
     Location value,
   ) = ResponseModelsResponseMultipleComponentsSchemasLocation;
+
+  @jsonSerializable
+  @FreezedUnionValue(r"fallback")
+  const factory ResponseModelsResponseMultiple.fallback(
+    Map<String, dynamic>? value,
+  ) = ResponseModelsResponseMultipleFallback;
 
   factory ResponseModelsResponseMultiple.fromJson(Map<String, dynamic> json) =>
       _$ResponseModelsResponseMultipleFromJson(json);

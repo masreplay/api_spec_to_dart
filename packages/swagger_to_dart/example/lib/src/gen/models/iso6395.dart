@@ -1,4 +1,4 @@
-// Iso6395Enum
+// Iso6395
 // {
 //     "properties": {},
 //     "type": "object",
@@ -124,10 +124,10 @@
 library;
 
 import 'exports.dart';
-part 'iso6395_enum.g.dart';
+part 'iso6395.g.dart';
 
 @JsonEnum(alwaysCreate: true)
-enum Iso6395Enum {
+enum Iso6395 {
   @JsonValue("aav")
   aav,
   @JsonValue("afa")
@@ -359,5 +359,5 @@ enum Iso6395Enum {
   @JsonValue("znd")
   znd;
 
-  String toJson() => _$Iso6395EnumEnumMap[this]!;
+  String toJson() => _$Iso6395EnumMap[this]!;
 }

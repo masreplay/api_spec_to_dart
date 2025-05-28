@@ -28,14 +28,14 @@ abstract class AdvancedSpecialLiteralQueryParameters
   @jsonSerializable
   const factory AdvancedSpecialLiteralQueryParameters({
     /// mode
-    @Default(ModeEnum.system)
+    @Default(Mode.system)
     @JsonKey(name: AdvancedSpecialLiteralQueryParameters.modeKey)
-    ModeEnum mode,
+    Mode mode,
   }) = _AdvancedSpecialLiteralQueryParameters;
 
   factory AdvancedSpecialLiteralQueryParameters.fromJson(
     Map<String, dynamic> json,
   ) => _$AdvancedSpecialLiteralQueryParametersFromJson(json);
 
-  static const String modeKey = "mode";
+  static const String modeKey = r'mode';
 }

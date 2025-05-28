@@ -52,9 +52,9 @@ abstract class BodyFilesFormBasic with _$BodyFilesFormBasic {
   factory BodyFilesFormBasic.fromJson(Map<String, dynamic> json) =>
       _$BodyFilesFormBasicFromJson(json);
 
-  static const String usernameKey = "username";
+  static const String usernameKey = r'username';
 
-  static const String passwordKey = "password";
+  static const String passwordKey = r'password';
 
-  static const String rememberKey = "remember";
+  static const String rememberKey = r'remember';
 }

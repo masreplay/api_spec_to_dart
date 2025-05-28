@@ -31,5 +31,5 @@ abstract class AdvancedSpecialEnumQueryParameters
     Map<String, dynamic> json,
   ) => _$AdvancedSpecialEnumQueryParametersFromJson(json);
 
-  static const String levelKey = "level";
+  static const String levelKey = r'level';
 }

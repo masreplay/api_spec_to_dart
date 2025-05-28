@@ -99,17 +99,17 @@ abstract class AllTypesWithValidation with _$AllTypesWithValidation {
   factory AllTypesWithValidation.fromJson(Map<String, dynamic> json) =>
       _$AllTypesWithValidationFromJson(json);
 
-  static const String intValueKey = "int_value";
+  static const String intValueKey = r'int_value';
 
-  static const String floatValueKey = "float_value";
+  static const String floatValueKey = r'float_value';
 
-  static const String strValueKey = "str_value";
+  static const String strValueKey = r'str_value';
 
-  static const String boolValueKey = "bool_value";
+  static const String boolValueKey = r'bool_value';
 
-  static const String emailValueKey = "email_value";
+  static const String emailValueKey = r'email_value';
 
-  static const String urlValueKey = "url_value";
+  static const String urlValueKey = r'url_value';
 
-  static const String listValueKey = "list_value";
+  static const String listValueKey = r'list_value';
 }

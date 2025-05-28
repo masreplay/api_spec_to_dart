@@ -45,7 +45,7 @@ abstract class BodyFilesFilesMultiple with _$BodyFilesFilesMultiple {
   factory BodyFilesFilesMultiple.fromJson(Map<String, dynamic> json) =>
       _$BodyFilesFilesMultipleFromJson(json);
 
-  static const String filesKey = "files";
+  static const String filesKey = r'files';
 
-  static const String notesKey = "notes";
+  static const String notesKey = r'notes';
 }

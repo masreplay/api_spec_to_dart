@@ -43,7 +43,7 @@ abstract class BodyValidationParamBody with _$BodyValidationParamBody {
   factory BodyValidationParamBody.fromJson(Map<String, dynamic> json) =>
       _$BodyValidationParamBodyFromJson(json);
 
-  static const String dataKey = "data";
+  static const String dataKey = r'data';
 
-  static const String importanceKey = "importance";
+  static const String importanceKey = r'importance';
 }

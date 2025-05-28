@@ -1,4 +1,4 @@
-// ScriptCodeEnum
+// ScriptCode
 // {
 //     "properties": {},
 //     "type": "object",
@@ -191,10 +191,10 @@
 library;
 
 import 'exports.dart';
-part 'script_code_enum.g.dart';
+part 'script_code.g.dart';
 
 @JsonEnum(alwaysCreate: true)
-enum ScriptCodeEnum {
+enum ScriptCode {
   @JsonValue("Adlm")
   adlm,
   @JsonValue("Afak")
@@ -560,5 +560,5 @@ enum ScriptCodeEnum {
   @JsonValue("Zzzz")
   zzzz;
 
-  String toJson() => _$ScriptCodeEnumEnumMap[this]!;
+  String toJson() => _$ScriptCodeEnumMap[this]!;
 }

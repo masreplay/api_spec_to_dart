@@ -8102,20 +8102,20 @@ abstract class LanguageModel with _$LanguageModel {
     @JsonKey(name: LanguageModel.nameKey) required String? name,
 
     /// iso6393
-    @JsonKey(name: LanguageModel.iso6393Key) required Iso6393Enum? iso6393,
+    @JsonKey(name: LanguageModel.iso6393Key) required Iso6393? iso6393,
 
     /// iso6395
-    @JsonKey(name: LanguageModel.iso6395Key) required Iso6395Enum? iso6395,
+    @JsonKey(name: LanguageModel.iso6395Key) required Iso6395? iso6395,
   }) = _LanguageModel;
 
   factory LanguageModel.fromJson(Map<String, dynamic> json) =>
       _$LanguageModelFromJson(json);
 
-  static const String alpha2Key = "alpha2";
+  static const String alpha2Key = r'alpha2';
 
-  static const String nameKey = "name";
+  static const String nameKey = r'name';
 
-  static const String iso6393Key = "iso639_3";
+  static const String iso6393Key = r'iso639_3';
 
-  static const String iso6395Key = "iso639_5";
+  static const String iso6395Key = r'iso639_5';
 }

@@ -47,3 +47,15 @@ Map<String, dynamic> _$AnimalComponentsSchemasParrotToJson(
   'value': instance.value.toJson(),
   'runtimeType': instance.$type,
 };
+
+AnimalFallback _$AnimalFallbackFromJson(Map<String, dynamic> json) =>
+    AnimalFallback(
+      json['value'] as Map<String, dynamic>?,
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$AnimalFallbackToJson(AnimalFallback instance) =>
+    <String, dynamic>{
+      if (instance.value case final value?) 'value': value,
+      'runtimeType': instance.$type,
+    };

@@ -212,11 +212,11 @@ abstract class ScriptCodeModel with _$ScriptCodeModel {
   const factory ScriptCodeModel({
     /// scriptCode
     @JsonKey(name: ScriptCodeModel.scriptCodeKey)
-    required ScriptCodeEnum scriptCode,
+    required ScriptCode scriptCode,
   }) = _ScriptCodeModel;
 
   factory ScriptCodeModel.fromJson(Map<String, dynamic> json) =>
       _$ScriptCodeModelFromJson(json);
 
-  static const String scriptCodeKey = "script_code";
+  static const String scriptCodeKey = r'script_code';
 }

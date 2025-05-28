@@ -55,7 +55,7 @@ abstract class ValidationValidationConditionalQueryParameters
     Map<String, dynamic> json,
   ) => _$ValidationValidationConditionalQueryParametersFromJson(json);
 
-  static const String userIdKey = "user_id";
+  static const String userIdKey = r'user_id';
 
-  static const String usernameKey = "username";
+  static const String usernameKey = r'username';
 }

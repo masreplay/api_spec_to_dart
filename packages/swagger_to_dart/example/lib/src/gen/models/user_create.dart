@@ -71,11 +71,11 @@ abstract class UserCreate with _$UserCreate {
   factory UserCreate.fromJson(Map<String, dynamic> json) =>
       _$UserCreateFromJson(json);
 
-  static const String usernameKey = "username";
+  static const String usernameKey = r'username';
 
-  static const String emailKey = "email";
+  static const String emailKey = r'email';
 
-  static const String fullNameKey = "full_name";
+  static const String fullNameKey = r'full_name';
 
-  static const String passwordKey = "password";
+  static const String passwordKey = r'password';
 }

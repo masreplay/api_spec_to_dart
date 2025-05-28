@@ -1,4 +1,4 @@
-// ModeEnum
+// Mode
 // {
 //     "properties": {},
 //     "type": "object",
@@ -12,10 +12,10 @@
 library;
 
 import 'exports.dart';
-part 'mode_enum.g.dart';
+part 'mode.g.dart';
 
 @JsonEnum(alwaysCreate: true)
-enum ModeEnum {
+enum Mode {
   @JsonValue("light")
   light,
   @JsonValue("dark")
@@ -23,5 +23,5 @@ enum ModeEnum {
   @JsonValue("system")
   system;
 
-  String toJson() => _$ModeEnumEnumMap[this]!;
+  String toJson() => _$ModeEnumMap[this]!;
 }

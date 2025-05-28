@@ -20,24 +20,28 @@ import 'exports.dart';
 part 'animal.freezed.dart';
 part 'animal.g.dart'; // Animal
 
-@freezed
+@Freezed(fallbackUnion: r"fallback")
 sealed class Animal with _$Animal {
   const Animal._();
 
   @jsonSerializable
-  @FreezedUnionValue("#/components/schemas/Dog")
+  @FreezedUnionValue(r"#/components/schemas/Dog")
   const factory Animal.componentsSchemasDog(Dog value) =
       AnimalComponentsSchemasDog;
 
   @jsonSerializable
-  @FreezedUnionValue("#/components/schemas/Cat")
+  @FreezedUnionValue(r"#/components/schemas/Cat")
   const factory Animal.componentsSchemasCat(Cat value) =
       AnimalComponentsSchemasCat;
 
   @jsonSerializable
-  @FreezedUnionValue("#/components/schemas/Parrot")
+  @FreezedUnionValue(r"#/components/schemas/Parrot")
   const factory Animal.componentsSchemasParrot(Parrot value) =
       AnimalComponentsSchemasParrot;
+
+  @jsonSerializable
+  @FreezedUnionValue(r"fallback")
+  const factory Animal.fallback(Map<String, dynamic>? value) = AnimalFallback;
 
   factory Animal.fromJson(Map<String, dynamic> json) => _$AnimalFromJson(json);
 }

@@ -31,5 +31,5 @@ abstract class AdvancedErrorCustomQueryParameters
     Map<String, dynamic> json,
   ) => _$AdvancedErrorCustomQueryParametersFromJson(json);
 
-  static const String codeKey = "code";
+  static const String codeKey = r'code';
 }

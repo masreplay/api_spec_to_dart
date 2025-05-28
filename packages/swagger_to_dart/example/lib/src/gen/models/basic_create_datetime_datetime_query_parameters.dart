@@ -31,5 +31,5 @@ abstract class BasicCreateDatetimeDatetimeQueryParameters
     Map<String, dynamic> json,
   ) => _$BasicCreateDatetimeDatetimeQueryParametersFromJson(json);
 
-  static const String dtKey = "dt";
+  static const String dtKey = r'dt';
 }

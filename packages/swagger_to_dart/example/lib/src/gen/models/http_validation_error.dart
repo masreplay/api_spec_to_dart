@@ -32,5 +32,5 @@ abstract class HttpValidationError with _$HttpValidationError {
   factory HttpValidationError.fromJson(Map<String, dynamic> json) =>
       _$HttpValidationErrorFromJson(json);
 
-  static const String detailKey = "detail";
+  static const String detailKey = r'detail';
 }

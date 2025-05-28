@@ -16,11 +16,11 @@ T _$identity<T>(T value) => value;
 mixin _$CurrencyModel {
   /// currency
   @JsonKey(name: CurrencyModel.currencyKey)
-  CurrencyEnum? get currency;
+  Currency? get currency;
 
   /// iso4217
   @JsonKey(name: CurrencyModel.iso4217Key)
-  Iso4217Enum? get iso4217;
+  Iso4217? get iso4217;
 
   /// Create a copy of CurrencyModel
   /// with the given fields replaced by the non-null parameter values.
@@ -63,8 +63,8 @@ abstract mixin class $CurrencyModelCopyWith<$Res> {
   ) = _$CurrencyModelCopyWithImpl;
   @useResult
   $Res call({
-    @JsonKey(name: CurrencyModel.currencyKey) CurrencyEnum? currency,
-    @JsonKey(name: CurrencyModel.iso4217Key) Iso4217Enum? iso4217,
+    @JsonKey(name: CurrencyModel.currencyKey) Currency? currency,
+    @JsonKey(name: CurrencyModel.iso4217Key) Iso4217? iso4217,
   });
 }
 
@@ -87,12 +87,12 @@ class _$CurrencyModelCopyWithImpl<$Res>
             freezed == currency
                 ? _self.currency
                 : currency // ignore: cast_nullable_to_non_nullable
-                    as CurrencyEnum?,
+                    as Currency?,
         iso4217:
             freezed == iso4217
                 ? _self.iso4217
                 : iso4217 // ignore: cast_nullable_to_non_nullable
-                    as Iso4217Enum?,
+                    as Iso4217?,
       ),
     );
   }
@@ -112,12 +112,12 @@ class _CurrencyModel extends CurrencyModel {
   /// currency
   @override
   @JsonKey(name: CurrencyModel.currencyKey)
-  final CurrencyEnum? currency;
+  final Currency? currency;
 
   /// iso4217
   @override
   @JsonKey(name: CurrencyModel.iso4217Key)
-  final Iso4217Enum? iso4217;
+  final Iso4217? iso4217;
 
   /// Create a copy of CurrencyModel
   /// with the given fields replaced by the non-null parameter values.
@@ -162,8 +162,8 @@ abstract mixin class _$CurrencyModelCopyWith<$Res>
   @override
   @useResult
   $Res call({
-    @JsonKey(name: CurrencyModel.currencyKey) CurrencyEnum? currency,
-    @JsonKey(name: CurrencyModel.iso4217Key) Iso4217Enum? iso4217,
+    @JsonKey(name: CurrencyModel.currencyKey) Currency? currency,
+    @JsonKey(name: CurrencyModel.iso4217Key) Iso4217? iso4217,
   });
 }
 
@@ -186,12 +186,12 @@ class __$CurrencyModelCopyWithImpl<$Res>
             freezed == currency
                 ? _self.currency
                 : currency // ignore: cast_nullable_to_non_nullable
-                    as CurrencyEnum?,
+                    as Currency?,
         iso4217:
             freezed == iso4217
                 ? _self.iso4217
                 : iso4217 // ignore: cast_nullable_to_non_nullable
-                    as Iso4217Enum?,
+                    as Iso4217?,
       ),
     );
   }

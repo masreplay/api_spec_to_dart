@@ -91,15 +91,15 @@ abstract class BodySecurityLogin with _$BodySecurityLogin {
   factory BodySecurityLogin.fromJson(Map<String, dynamic> json) =>
       _$BodySecurityLoginFromJson(json);
 
-  static const String grantTypeKey = "grant_type";
+  static const String grantTypeKey = r'grant_type';
 
-  static const String usernameKey = "username";
+  static const String usernameKey = r'username';
 
-  static const String passwordKey = "password";
+  static const String passwordKey = r'password';
 
-  static const String scopeKey = "scope";
+  static const String scopeKey = r'scope';
 
-  static const String clientIdKey = "client_id";
+  static const String clientIdKey = r'client_id';
 
-  static const String clientSecretKey = "client_secret";
+  static const String clientSecretKey = r'client_secret';
 }

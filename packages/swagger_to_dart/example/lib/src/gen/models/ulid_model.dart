@@ -42,5 +42,5 @@ abstract class UlidModel with _$UlidModel {
   factory UlidModel.fromJson(Map<String, dynamic> json) =>
       _$UlidModelFromJson(json);
 
-  static const String ulidKey = "ulid";
+  static const String ulidKey = r'ulid';
 }

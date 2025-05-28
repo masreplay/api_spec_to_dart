@@ -42,7 +42,7 @@ abstract class GenericGetNestedBaseAndPaginationQueryParameters
     Map<String, dynamic> json,
   ) => _$GenericGetNestedBaseAndPaginationQueryParametersFromJson(json);
 
-  static const String pageKey = "page";
+  static const String pageKey = r'page';
 
-  static const String perPageKey = "per_page";
+  static const String perPageKey = r'per_page';
 }

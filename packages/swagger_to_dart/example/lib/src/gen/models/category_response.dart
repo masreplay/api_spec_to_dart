@@ -39,7 +39,7 @@ abstract class CategoryResponse with _$CategoryResponse {
   factory CategoryResponse.fromJson(Map<String, dynamic> json) =>
       _$CategoryResponseFromJson(json);
 
-  static const String idKey = "id";
+  static const String idKey = r'id';
 
-  static const String nameKey = "name";
+  static const String nameKey = r'name';
 }

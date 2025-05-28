@@ -1,12 +1,15 @@
 swagger_to_dart:
-  # From FastAPI project running locally for example
   # url: http://0.0.0.0:8004/openapi.json
-
-  # Where to save the openapi.json file
   input_directory: schema/swagger.json
+  output_directory: lib/src/gen
 
   model:
     support_generic_arguments: true
-
+    union_class_fallback_name: fallback
+    enum_fallback_type: first
   api_client:
+    base_api_client_class_name: BaseApiClient
     use_class_for_query_parameters: true
+    skipped_parameters:
+      - Language
+      - X-API-Key

@@ -37,5 +37,5 @@ abstract class AdvancedUnionOptionalQueryParameters
     Map<String, dynamic> json,
   ) => _$AdvancedUnionOptionalQueryParametersFromJson(json);
 
-  static const String valueKey = "value";
+  static const String valueKey = r'value';
 }

@@ -52,9 +52,9 @@ abstract class Parrot with _$Parrot {
 
   factory Parrot.fromJson(Map<String, dynamic> json) => _$ParrotFromJson(json);
 
-  static const String nameKey = "name";
+  static const String nameKey = r'name';
 
-  static const String typeKey = "type";
+  static const String typeKey = r'type';
 
-  static const String phrasesKey = "phrases";
+  static const String phrasesKey = r'phrases';
 }

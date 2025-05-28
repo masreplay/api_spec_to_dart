@@ -23,18 +23,13 @@ ResponseModelsResponseMultiple _$ResponseModelsResponseMultipleFromJson(
       );
 
     default:
-      throw CheckedFromJsonException(
-        json,
-        'runtimeType',
-        'ResponseModelsResponseMultiple',
-        'Invalid union type "${json['runtimeType']}"!',
-      );
+      return ResponseModelsResponseMultipleFallback.fromJson(json);
   }
 }
 
 /// @nodoc
 mixin _$ResponseModelsResponseMultiple {
-  Object get value;
+  Object? get value;
 
   /// Serializes this ResponseModelsResponseMultiple to a JSON map.
   Map<String, dynamic> toJson();
@@ -284,5 +279,102 @@ class _$ResponseModelsResponseMultipleComponentsSchemasLocationCopyWithImpl<
     return $LocationCopyWith<$Res>(_self.value, (value) {
       return _then(_self.copyWith(value: value));
     });
+  }
+}
+
+/// @nodoc
+
+@jsonSerializable
+class ResponseModelsResponseMultipleFallback
+    extends ResponseModelsResponseMultiple {
+  const ResponseModelsResponseMultipleFallback(
+    final Map<String, dynamic>? value, {
+    final String? $type,
+  }) : _value = value,
+       $type = $type ?? 'fallback',
+       super._();
+  factory ResponseModelsResponseMultipleFallback.fromJson(
+    Map<String, dynamic> json,
+  ) => _$ResponseModelsResponseMultipleFallbackFromJson(json);
+
+  final Map<String, dynamic>? _value;
+  @override
+  Map<String, dynamic>? get value {
+    final value = _value;
+    if (value == null) return null;
+    if (_value is EqualUnmodifiableMapView) return _value;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  /// Create a copy of ResponseModelsResponseMultiple
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $ResponseModelsResponseMultipleFallbackCopyWith<
+    ResponseModelsResponseMultipleFallback
+  >
+  get copyWith => _$ResponseModelsResponseMultipleFallbackCopyWithImpl<
+    ResponseModelsResponseMultipleFallback
+  >(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ResponseModelsResponseMultipleFallbackToJson(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ResponseModelsResponseMultipleFallback &&
+            const DeepCollectionEquality().equals(other._value, _value));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_value));
+
+  @override
+  String toString() {
+    return 'ResponseModelsResponseMultiple.fallback(value: $value)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $ResponseModelsResponseMultipleFallbackCopyWith<$Res>
+    implements $ResponseModelsResponseMultipleCopyWith<$Res> {
+  factory $ResponseModelsResponseMultipleFallbackCopyWith(
+    ResponseModelsResponseMultipleFallback value,
+    $Res Function(ResponseModelsResponseMultipleFallback) _then,
+  ) = _$ResponseModelsResponseMultipleFallbackCopyWithImpl;
+  @useResult
+  $Res call({Map<String, dynamic>? value});
+}
+
+/// @nodoc
+class _$ResponseModelsResponseMultipleFallbackCopyWithImpl<$Res>
+    implements $ResponseModelsResponseMultipleFallbackCopyWith<$Res> {
+  _$ResponseModelsResponseMultipleFallbackCopyWithImpl(this._self, this._then);
+
+  final ResponseModelsResponseMultipleFallback _self;
+  final $Res Function(ResponseModelsResponseMultipleFallback) _then;
+
+  /// Create a copy of ResponseModelsResponseMultiple
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({Object? value = freezed}) {
+    return _then(
+      ResponseModelsResponseMultipleFallback(
+        freezed == value
+            ? _self._value
+            : value // ignore: cast_nullable_to_non_nullable
+                as Map<String, dynamic>?,
+      ),
+    );
   }
 }

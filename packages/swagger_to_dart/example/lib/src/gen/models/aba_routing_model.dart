@@ -34,5 +34,5 @@ abstract class ABARoutingModel with _$ABARoutingModel {
   factory ABARoutingModel.fromJson(Map<String, dynamic> json) =>
       _$ABARoutingModelFromJson(json);
 
-  static const String routingNumberKey = "routing_number";
+  static const String routingNumberKey = r'routing_number';
 }

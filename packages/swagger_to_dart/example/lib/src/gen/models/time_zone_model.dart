@@ -626,11 +626,11 @@ abstract class TimeZoneModel with _$TimeZoneModel {
   @jsonSerializable
   const factory TimeZoneModel({
     /// timezone
-    @JsonKey(name: TimeZoneModel.timezoneKey) required TimezoneEnum timezone,
+    @JsonKey(name: TimeZoneModel.timezoneKey) required Timezone timezone,
   }) = _TimeZoneModel;
 
   factory TimeZoneModel.fromJson(Map<String, dynamic> json) =>
       _$TimeZoneModelFromJson(json);
 
-  static const String timezoneKey = "timezone";
+  static const String timezoneKey = r'timezone';
 }

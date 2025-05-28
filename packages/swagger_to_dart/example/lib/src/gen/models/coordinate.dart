@@ -39,7 +39,7 @@ abstract class Coordinate with _$Coordinate {
   factory Coordinate.fromJson(Map<String, dynamic> json) =>
       _$CoordinateFromJson(json);
 
-  static const String latitudeKey = "latitude";
+  static const String latitudeKey = r'latitude';
 
-  static const String longitudeKey = "longitude";
+  static const String longitudeKey = r'longitude';
 }

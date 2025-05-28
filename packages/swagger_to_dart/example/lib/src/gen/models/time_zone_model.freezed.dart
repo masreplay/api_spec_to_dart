@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 mixin _$TimeZoneModel {
   /// timezone
   @JsonKey(name: TimeZoneModel.timezoneKey)
-  TimezoneEnum get timezone;
+  Timezone get timezone;
 
   /// Create a copy of TimeZoneModel
   /// with the given fields replaced by the non-null parameter values.
@@ -57,7 +57,7 @@ abstract mixin class $TimeZoneModelCopyWith<$Res> {
     $Res Function(TimeZoneModel) _then,
   ) = _$TimeZoneModelCopyWithImpl;
   @useResult
-  $Res call({@JsonKey(name: TimeZoneModel.timezoneKey) TimezoneEnum timezone});
+  $Res call({@JsonKey(name: TimeZoneModel.timezoneKey) Timezone timezone});
 }
 
 /// @nodoc
@@ -79,7 +79,7 @@ class _$TimeZoneModelCopyWithImpl<$Res>
             null == timezone
                 ? _self.timezone
                 : timezone // ignore: cast_nullable_to_non_nullable
-                    as TimezoneEnum,
+                    as Timezone,
       ),
     );
   }
@@ -98,7 +98,7 @@ class _TimeZoneModel extends TimeZoneModel {
   /// timezone
   @override
   @JsonKey(name: TimeZoneModel.timezoneKey)
-  final TimezoneEnum timezone;
+  final Timezone timezone;
 
   /// Create a copy of TimeZoneModel
   /// with the given fields replaced by the non-null parameter values.
@@ -141,7 +141,7 @@ abstract mixin class _$TimeZoneModelCopyWith<$Res>
   ) = __$TimeZoneModelCopyWithImpl;
   @override
   @useResult
-  $Res call({@JsonKey(name: TimeZoneModel.timezoneKey) TimezoneEnum timezone});
+  $Res call({@JsonKey(name: TimeZoneModel.timezoneKey) Timezone timezone});
 }
 
 /// @nodoc
@@ -163,7 +163,7 @@ class __$TimeZoneModelCopyWithImpl<$Res>
             null == timezone
                 ? _self.timezone
                 : timezone // ignore: cast_nullable_to_non_nullable
-                    as TimezoneEnum,
+                    as Timezone,
       ),
     );
   }

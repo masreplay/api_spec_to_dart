@@ -33,5 +33,5 @@ abstract class ModelsResponseMultipleQueryParameters
     Map<String, dynamic> json,
   ) => _$ModelsResponseMultipleQueryParametersFromJson(json);
 
-  static const String isUserKey = "is_user";
+  static const String isUserKey = r'is_user';
 }

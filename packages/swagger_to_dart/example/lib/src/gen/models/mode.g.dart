@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'mode_enum.dart';
+part of 'mode.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-const _$ModeEnumEnumMap = {
-  ModeEnum.light: 'light',
-  ModeEnum.dark: 'dark',
-  ModeEnum.system: 'system',
+const _$ModeEnumMap = {
+  Mode.light: 'light',
+  Mode.dark: 'dark',
+  Mode.system: 'system',
 };

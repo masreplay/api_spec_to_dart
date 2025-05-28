@@ -51,7 +51,7 @@ abstract class ConditionalBody with _$ConditionalBody {
   factory ConditionalBody.fromJson(Map<String, dynamic> json) =>
       _$ConditionalBodyFromJson(json);
 
-  static const String itemIdKey = "item_id";
+  static const String itemIdKey = r'item_id';
 
-  static const String itemNameKey = "item_name";
+  static const String itemNameKey = r'item_name';
 }

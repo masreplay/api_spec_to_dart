@@ -69,9 +69,9 @@ abstract class CoordinateModel with _$CoordinateModel {
   factory CoordinateModel.fromJson(Map<String, dynamic> json) =>
       _$CoordinateModelFromJson(json);
 
-  static const String coordinateKey = "coordinate";
+  static const String coordinateKey = r'coordinate';
 
-  static const String latitudeKey = "latitude";
+  static const String latitudeKey = r'latitude';
 
-  static const String longitudeKey = "longitude";
+  static const String longitudeKey = r'longitude';
 }

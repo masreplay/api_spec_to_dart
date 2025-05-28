@@ -47,7 +47,7 @@ abstract class PaymentCardModel with _$PaymentCardModel {
   factory PaymentCardModel.fromJson(Map<String, dynamic> json) =>
       _$PaymentCardModelFromJson(json);
 
-  static const String cardNumberKey = "card_number";
+  static const String cardNumberKey = r'card_number';
 
-  static const String cardBrandKey = "card_brand";
+  static const String cardBrandKey = r'card_brand';
 }

@@ -49,7 +49,7 @@ abstract class CreateAnimalResponse with _$CreateAnimalResponse {
   factory CreateAnimalResponse.fromJson(Map<String, dynamic> json) =>
       _$CreateAnimalResponseFromJson(json);
 
-  static const String animalKey = "animal";
+  static const String animalKey = r'animal';
 
-  static const String messageKey = "message";
+  static const String messageKey = r'message';
 }

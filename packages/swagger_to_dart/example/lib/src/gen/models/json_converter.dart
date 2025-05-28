@@ -8,7 +8,7 @@ class AnimalMapJsonConverter
     implements JsonConverter<Animal, Map<String, dynamic>> {
   const AnimalMapJsonConverter();
 
-  static const String unionKey = "value";
+  static const String unionKey = r'value';
 
   @override
   Animal fromJson(Map<String, dynamic> json) {
@@ -26,7 +26,7 @@ class ResponseModelsResponseMultipleMapJsonConverter
         JsonConverter<ResponseModelsResponseMultiple, Map<String, dynamic>> {
   const ResponseModelsResponseMultipleMapJsonConverter();
 
-  static const String unionKey = "value";
+  static const String unionKey = r'value';
 
   @override
   ResponseModelsResponseMultiple fromJson(Map<String, dynamic> json) {

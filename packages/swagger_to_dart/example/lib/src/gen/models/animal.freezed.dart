@@ -21,18 +21,13 @@ Animal _$AnimalFromJson(Map<String, dynamic> json) {
       return AnimalComponentsSchemasParrot.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(
-        json,
-        'runtimeType',
-        'Animal',
-        'Invalid union type "${json['runtimeType']}"!',
-      );
+      return AnimalFallback.fromJson(json);
   }
 }
 
 /// @nodoc
 mixin _$Animal {
-  Object get value;
+  Object? get value;
 
   /// Serializes this Animal to a JSON map.
   Map<String, dynamic> toJson();
@@ -344,5 +339,94 @@ class _$AnimalComponentsSchemasParrotCopyWithImpl<$Res>
     return $ParrotCopyWith<$Res>(_self.value, (value) {
       return _then(_self.copyWith(value: value));
     });
+  }
+}
+
+/// @nodoc
+
+@jsonSerializable
+class AnimalFallback extends Animal {
+  const AnimalFallback(final Map<String, dynamic>? value, {final String? $type})
+    : _value = value,
+      $type = $type ?? 'fallback',
+      super._();
+  factory AnimalFallback.fromJson(Map<String, dynamic> json) =>
+      _$AnimalFallbackFromJson(json);
+
+  final Map<String, dynamic>? _value;
+  @override
+  Map<String, dynamic>? get value {
+    final value = _value;
+    if (value == null) return null;
+    if (_value is EqualUnmodifiableMapView) return _value;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  /// Create a copy of Animal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $AnimalFallbackCopyWith<AnimalFallback> get copyWith =>
+      _$AnimalFallbackCopyWithImpl<AnimalFallback>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$AnimalFallbackToJson(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is AnimalFallback &&
+            const DeepCollectionEquality().equals(other._value, _value));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_value));
+
+  @override
+  String toString() {
+    return 'Animal.fallback(value: $value)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $AnimalFallbackCopyWith<$Res>
+    implements $AnimalCopyWith<$Res> {
+  factory $AnimalFallbackCopyWith(
+    AnimalFallback value,
+    $Res Function(AnimalFallback) _then,
+  ) = _$AnimalFallbackCopyWithImpl;
+  @useResult
+  $Res call({Map<String, dynamic>? value});
+}
+
+/// @nodoc
+class _$AnimalFallbackCopyWithImpl<$Res>
+    implements $AnimalFallbackCopyWith<$Res> {
+  _$AnimalFallbackCopyWithImpl(this._self, this._then);
+
+  final AnimalFallback _self;
+  final $Res Function(AnimalFallback) _then;
+
+  /// Create a copy of Animal
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({Object? value = freezed}) {
+    return _then(
+      AnimalFallback(
+        freezed == value
+            ? _self._value
+            : value // ignore: cast_nullable_to_non_nullable
+                as Map<String, dynamic>?,
+      ),
+    );
   }
 }

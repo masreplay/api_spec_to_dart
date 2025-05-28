@@ -56,9 +56,9 @@ abstract class Location with _$Location {
   factory Location.fromJson(Map<String, dynamic> json) =>
       _$LocationFromJson(json);
 
-  static const String latKey = "lat";
+  static const String latKey = r'lat';
 
-  static const String lngKey = "lng";
+  static const String lngKey = r'lng';
 
-  static const String nameKey = "name";
+  static const String nameKey = r'name';
 }
