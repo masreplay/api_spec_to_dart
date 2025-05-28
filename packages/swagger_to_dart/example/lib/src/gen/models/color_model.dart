@@ -32,5 +32,5 @@ abstract class ColorModel with _$ColorModel {
   factory ColorModel.fromJson(Map<String, dynamic> json) =>
       _$ColorModelFromJson(json);
 
-  static const String colorKey = "color";
+  static const String colorKey = r'color';
 }

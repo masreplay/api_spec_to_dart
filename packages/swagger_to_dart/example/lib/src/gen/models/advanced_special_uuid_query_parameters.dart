@@ -30,5 +30,5 @@ abstract class AdvancedSpecialUuidQueryParameters
     Map<String, dynamic> json,
   ) => _$AdvancedSpecialUuidQueryParametersFromJson(json);
 
-  static const String idKey = "id";
+  static const String idKey = r'id';
 }

@@ -112,19 +112,19 @@ abstract class User with _$User {
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
-  static const String usernameKey = "username";
+  static const String usernameKey = r'username';
 
-  static const String emailKey = "email";
+  static const String emailKey = r'email';
 
-  static const String fullNameKey = "full_name";
+  static const String fullNameKey = r'full_name';
 
-  static const String idKey = "id";
+  static const String idKey = r'id';
 
-  static const String isActiveKey = "is_active";
+  static const String isActiveKey = r'is_active';
 
-  static const String createdAtKey = "created_at";
+  static const String createdAtKey = r'created_at';
 
-  static const String locationKey = "location";
+  static const String locationKey = r'location';
 
-  static const String tagsKey = "tags";
+  static const String tagsKey = r'tags';
 }

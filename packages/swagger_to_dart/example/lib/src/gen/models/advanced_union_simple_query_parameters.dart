@@ -40,5 +40,5 @@ abstract class AdvancedUnionSimpleQueryParameters
     Map<String, dynamic> json,
   ) => _$AdvancedUnionSimpleQueryParametersFromJson(json);
 
-  static const String valueKey = "value";
+  static const String valueKey = r'value';
 }

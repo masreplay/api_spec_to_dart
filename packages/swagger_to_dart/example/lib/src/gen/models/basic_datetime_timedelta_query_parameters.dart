@@ -31,5 +31,5 @@ abstract class BasicDatetimeTimedeltaQueryParameters
     Map<String, dynamic> json,
   ) => _$BasicDatetimeTimedeltaQueryParametersFromJson(json);
 
-  static const String tdKey = "td";
+  static const String tdKey = r'td';
 }

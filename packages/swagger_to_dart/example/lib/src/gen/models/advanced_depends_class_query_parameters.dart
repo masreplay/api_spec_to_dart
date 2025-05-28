@@ -32,5 +32,5 @@ abstract class AdvancedDependsClassQueryParameters
     Map<String, dynamic> json,
   ) => _$AdvancedDependsClassQueryParametersFromJson(json);
 
-  static const String dbNameKey = "db_name";
+  static const String dbNameKey = r'db_name';
 }

@@ -49,9 +49,9 @@ abstract class Dog with _$Dog {
 
   factory Dog.fromJson(Map<String, dynamic> json) => _$DogFromJson(json);
 
-  static const String nameKey = "name";
+  static const String nameKey = r'name';
 
-  static const String typeKey = "type";
+  static const String typeKey = r'type';
 
-  static const String barkLoudnessKey = "bark_loudness";
+  static const String barkLoudnessKey = r'bark_loudness';
 }

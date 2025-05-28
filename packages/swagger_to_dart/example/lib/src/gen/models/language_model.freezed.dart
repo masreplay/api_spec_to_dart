@@ -24,11 +24,11 @@ mixin _$LanguageModel {
 
   /// iso6393
   @JsonKey(name: LanguageModel.iso6393Key)
-  Iso6393Enum? get iso6393;
+  Iso6393? get iso6393;
 
   /// iso6395
   @JsonKey(name: LanguageModel.iso6395Key)
-  Iso6395Enum? get iso6395;
+  Iso6395? get iso6395;
 
   /// Create a copy of LanguageModel
   /// with the given fields replaced by the non-null parameter values.
@@ -74,8 +74,8 @@ abstract mixin class $LanguageModelCopyWith<$Res> {
   $Res call({
     @JsonKey(name: LanguageModel.alpha2Key) String? alpha2,
     @JsonKey(name: LanguageModel.nameKey) String? name,
-    @JsonKey(name: LanguageModel.iso6393Key) Iso6393Enum? iso6393,
-    @JsonKey(name: LanguageModel.iso6395Key) Iso6395Enum? iso6395,
+    @JsonKey(name: LanguageModel.iso6393Key) Iso6393? iso6393,
+    @JsonKey(name: LanguageModel.iso6395Key) Iso6395? iso6395,
   });
 }
 
@@ -113,12 +113,12 @@ class _$LanguageModelCopyWithImpl<$Res>
             freezed == iso6393
                 ? _self.iso6393
                 : iso6393 // ignore: cast_nullable_to_non_nullable
-                    as Iso6393Enum?,
+                    as Iso6393?,
         iso6395:
             freezed == iso6395
                 ? _self.iso6395
                 : iso6395 // ignore: cast_nullable_to_non_nullable
-                    as Iso6395Enum?,
+                    as Iso6395?,
       ),
     );
   }
@@ -150,12 +150,12 @@ class _LanguageModel extends LanguageModel {
   /// iso6393
   @override
   @JsonKey(name: LanguageModel.iso6393Key)
-  final Iso6393Enum? iso6393;
+  final Iso6393? iso6393;
 
   /// iso6395
   @override
   @JsonKey(name: LanguageModel.iso6395Key)
-  final Iso6395Enum? iso6395;
+  final Iso6395? iso6395;
 
   /// Create a copy of LanguageModel
   /// with the given fields replaced by the non-null parameter values.
@@ -203,8 +203,8 @@ abstract mixin class _$LanguageModelCopyWith<$Res>
   $Res call({
     @JsonKey(name: LanguageModel.alpha2Key) String? alpha2,
     @JsonKey(name: LanguageModel.nameKey) String? name,
-    @JsonKey(name: LanguageModel.iso6393Key) Iso6393Enum? iso6393,
-    @JsonKey(name: LanguageModel.iso6395Key) Iso6395Enum? iso6395,
+    @JsonKey(name: LanguageModel.iso6393Key) Iso6393? iso6393,
+    @JsonKey(name: LanguageModel.iso6395Key) Iso6395? iso6395,
   });
 }
 
@@ -242,12 +242,12 @@ class __$LanguageModelCopyWithImpl<$Res>
             freezed == iso6393
                 ? _self.iso6393
                 : iso6393 // ignore: cast_nullable_to_non_nullable
-                    as Iso6393Enum?,
+                    as Iso6393?,
         iso6395:
             freezed == iso6395
                 ? _self.iso6395
                 : iso6395 // ignore: cast_nullable_to_non_nullable
-                    as Iso6395Enum?,
+                    as Iso6395?,
       ),
     );
   }

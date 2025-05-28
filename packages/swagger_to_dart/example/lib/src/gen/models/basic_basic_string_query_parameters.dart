@@ -31,5 +31,5 @@ abstract class BasicBasicStringQueryParameters
   factory BasicBasicStringQueryParameters.fromJson(Map<String, dynamic> json) =>
       _$BasicBasicStringQueryParametersFromJson(json);
 
-  static const String textKey = "text";
+  static const String textKey = r'text';
 }

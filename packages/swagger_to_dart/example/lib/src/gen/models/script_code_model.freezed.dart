@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 mixin _$ScriptCodeModel {
   /// scriptCode
   @JsonKey(name: ScriptCodeModel.scriptCodeKey)
-  ScriptCodeEnum get scriptCode;
+  ScriptCode get scriptCode;
 
   /// Create a copy of ScriptCodeModel
   /// with the given fields replaced by the non-null parameter values.
@@ -58,7 +58,7 @@ abstract mixin class $ScriptCodeModelCopyWith<$Res> {
   ) = _$ScriptCodeModelCopyWithImpl;
   @useResult
   $Res call({
-    @JsonKey(name: ScriptCodeModel.scriptCodeKey) ScriptCodeEnum scriptCode,
+    @JsonKey(name: ScriptCodeModel.scriptCodeKey) ScriptCode scriptCode,
   });
 }
 
@@ -81,7 +81,7 @@ class _$ScriptCodeModelCopyWithImpl<$Res>
             null == scriptCode
                 ? _self.scriptCode
                 : scriptCode // ignore: cast_nullable_to_non_nullable
-                    as ScriptCodeEnum,
+                    as ScriptCode,
       ),
     );
   }
@@ -100,7 +100,7 @@ class _ScriptCodeModel extends ScriptCodeModel {
   /// scriptCode
   @override
   @JsonKey(name: ScriptCodeModel.scriptCodeKey)
-  final ScriptCodeEnum scriptCode;
+  final ScriptCode scriptCode;
 
   /// Create a copy of ScriptCodeModel
   /// with the given fields replaced by the non-null parameter values.
@@ -144,7 +144,7 @@ abstract mixin class _$ScriptCodeModelCopyWith<$Res>
   @override
   @useResult
   $Res call({
-    @JsonKey(name: ScriptCodeModel.scriptCodeKey) ScriptCodeEnum scriptCode,
+    @JsonKey(name: ScriptCodeModel.scriptCodeKey) ScriptCode scriptCode,
   });
 }
 
@@ -167,7 +167,7 @@ class __$ScriptCodeModelCopyWithImpl<$Res>
             null == scriptCode
                 ? _self.scriptCode
                 : scriptCode // ignore: cast_nullable_to_non_nullable
-                    as ScriptCodeEnum,
+                    as ScriptCode,
       ),
     );
   }

@@ -23,6 +23,8 @@ class UnionModelStrategy
   const UnionModelStrategy(super.context);
 
   Library build(UnionModelStrategyParams params) {
+    final unionClassFallbackName = context.config.model.unionClassFallbackName;
+
     final className = Renaming.instance.renameClass(params.key);
     final filename = Renaming.instance.renameFile(className);
 
@@ -40,7 +42,7 @@ class UnionModelStrategy
         (b) => b
           ..annotations.addAll([
             refer('jsonSerializable'),
-            refer('$FreezedUnionValue("$name")'),
+            refer('$FreezedUnionValue(r"$name")'),
           ])
           ..constant = true
           ..factory = true
@@ -61,8 +63,9 @@ class UnionModelStrategy
       Class(
         (b) => b
           ..name = '${className}MapJsonConverter'
-          ..implements
-              .add(refer('JsonConverter<${className}, Map<String, dynamic>>'))
+          ..implements.addAll([
+            refer('JsonConverter<${className}, Map<String, dynamic>>'),
+          ])
           ..constructors.add(Constructor((b) => b..constant = true))
           ..fields.addAll([
             Field(
@@ -131,7 +134,12 @@ class UnionModelStrategy
               ..docs.addAll([
                 '// ${className}',
               ])
-              ..annotations.addAll([refer('freezed')])
+              ..annotations.addAll([
+                if (unionClassFallbackName case final fallbackName?)
+                  refer('$Freezed(fallbackUnion: r"$fallbackName")')
+                else
+                  refer('Freezed()'),
+              ])
               ..sealed = true
               ..name = className
               ..mixins.addAll([refer('_\$${className}')])
@@ -142,6 +150,28 @@ class UnionModelStrategy
                     ..name = '_',
                 ),
                 ...unions,
+                if (unionClassFallbackName case final fallbackName?)
+                  Constructor(
+                    (b) => b
+                      ..annotations.addAll([
+                        refer('jsonSerializable'),
+                        refer('$FreezedUnionValue(r"$fallbackName")'),
+                      ])
+                      ..constant = true
+                      ..factory = true
+                      ..name = Recase.instance.toCamelCase(fallbackName)
+                      ..redirect = refer(
+                        className + Recase.instance.toPascalCase(fallbackName),
+                      )
+                      ..requiredParameters.addAll([
+                        Parameter(
+                          (b) => b
+                            ..named = true
+                            ..name = valueKeyName
+                            ..type = refer('Map<String,dynamic>?'),
+                        )
+                      ]),
+                  ),
                 Constructor(
                   (b) => b
                     ..factory = true

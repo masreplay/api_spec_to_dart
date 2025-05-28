@@ -32,5 +32,5 @@ abstract class S3PathModel with _$S3PathModel {
   factory S3PathModel.fromJson(Map<String, dynamic> json) =>
       _$S3PathModelFromJson(json);
 
-  static const String s3PathKey = "s3_path";
+  static const String s3PathKey = r's3_path';
 }

@@ -49,7 +49,7 @@ abstract class BodyFilesFileUpload with _$BodyFilesFileUpload {
   factory BodyFilesFileUpload.fromJson(Map<String, dynamic> json) =>
       _$BodyFilesFileUploadFromJson(json);
 
-  static const String fileKey = "file";
+  static const String fileKey = r'file';
 
-  static const String descriptionKey = "description";
+  static const String descriptionKey = r'description';
 }

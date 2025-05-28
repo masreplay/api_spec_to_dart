@@ -68,11 +68,11 @@ abstract class ItemRequestBody with _$ItemRequestBody {
   factory ItemRequestBody.fromJson(Map<String, dynamic> json) =>
       _$ItemRequestBodyFromJson(json);
 
-  static const String nameKey = "name";
+  static const String nameKey = r'name';
 
-  static const String descriptionKey = "description";
+  static const String descriptionKey = r'description';
 
-  static const String priceKey = "price";
+  static const String priceKey = r'price';
 
-  static const String taxKey = "tax";
+  static const String taxKey = r'tax';
 }

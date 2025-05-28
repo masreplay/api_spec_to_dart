@@ -1,4 +1,4 @@
-// TimezoneEnum
+// Timezone
 // {
 //     "properties": {},
 //     "type": "object",
@@ -607,10 +607,10 @@
 library;
 
 import 'exports.dart';
-part 'timezone_enum.g.dart';
+part 'timezone.g.dart';
 
 @JsonEnum(alwaysCreate: true)
-enum TimezoneEnum {
+enum Timezone {
   @JsonValue("Africa/Abidjan")
   africaSlashAbidjan,
   @JsonValue("Africa/Accra")
@@ -1808,5 +1808,5 @@ enum TimezoneEnum {
   @JsonValue("Zulu")
   zulu;
 
-  String toJson() => _$TimezoneEnumEnumMap[this]!;
+  String toJson() => _$TimezoneEnumMap[this]!;
 }

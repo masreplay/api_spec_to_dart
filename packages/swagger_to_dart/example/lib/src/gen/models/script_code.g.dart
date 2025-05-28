@@ -1,18 +1,10 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'script_code_model.dart';
+part of 'script_code.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
-
-_ScriptCodeModel _$ScriptCodeModelFromJson(Map<String, dynamic> json) =>
-    _ScriptCodeModel(
-      scriptCode: $enumDecode(_$ScriptCodeEnumMap, json['script_code']),
-    );
-
-Map<String, dynamic> _$ScriptCodeModelToJson(_ScriptCodeModel instance) =>
-    <String, dynamic>{'script_code': instance.scriptCode.toJson()};
 
 const _$ScriptCodeEnumMap = {
   ScriptCode.adlm: 'Adlm',

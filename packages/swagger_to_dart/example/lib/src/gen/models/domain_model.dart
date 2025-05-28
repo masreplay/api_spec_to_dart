@@ -31,5 +31,5 @@ abstract class DomainModel with _$DomainModel {
   factory DomainModel.fromJson(Map<String, dynamic> json) =>
       _$DomainModelFromJson(json);
 
-  static const String domainKey = "domain";
+  static const String domainKey = r'domain';
 }

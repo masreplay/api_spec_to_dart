@@ -1,4 +1,4 @@
-// Iso6393Enum
+// Iso6393
 // {
 //     "properties": {},
 //     "type": "object",
@@ -7919,10 +7919,10 @@
 library;
 
 import 'exports.dart';
-part 'iso6393_enum.g.dart';
+part 'iso6393.g.dart';
 
 @JsonEnum(alwaysCreate: true)
-enum Iso6393Enum {
+enum Iso6393 {
   @JsonValue("aaa")
   aaa,
   @JsonValue("aab")
@@ -23744,5 +23744,5 @@ enum Iso6393Enum {
   @JsonValue("zzj")
   zzj;
 
-  String toJson() => _$Iso6393EnumEnumMap[this]!;
+  String toJson() => _$Iso6393EnumMap[this]!;
 }

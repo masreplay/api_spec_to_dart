@@ -34,5 +34,5 @@ abstract class ValidationConstrainedStringQueryParameters
     Map<String, dynamic> json,
   ) => _$ValidationConstrainedStringQueryParametersFromJson(json);
 
-  static const String valueKey = "value";
+  static const String valueKey = r'value';
 }

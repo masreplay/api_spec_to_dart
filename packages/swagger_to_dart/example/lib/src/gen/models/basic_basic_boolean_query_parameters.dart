@@ -32,5 +32,5 @@ abstract class BasicBasicBooleanQueryParameters
     Map<String, dynamic> json,
   ) => _$BasicBasicBooleanQueryParametersFromJson(json);
 
-  static const String flagKey = "flag";
+  static const String flagKey = r'flag';
 }

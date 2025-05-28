@@ -39,7 +39,7 @@ abstract class ItemResponse with _$ItemResponse {
   factory ItemResponse.fromJson(Map<String, dynamic> json) =>
       _$ItemResponseFromJson(json);
 
-  static const String idKey = "id";
+  static const String idKey = r'id';
 
-  static const String nameKey = "name";
+  static const String nameKey = r'name';
 }

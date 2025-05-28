@@ -52,9 +52,9 @@ abstract class BaseResponse<T> with _$BaseResponse<T> {
     T Function(Object? json) fromJsonT,
   ) => _$BaseResponseFromJson<T>(json, fromJsonT);
 
-  static const String dataKey = "data";
+  static const String dataKey = r'data';
 
-  static const String messageKey = "message";
+  static const String messageKey = r'message';
 
-  static const String codeKey = "code";
+  static const String codeKey = r'code';
 }

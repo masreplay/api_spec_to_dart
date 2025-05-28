@@ -32,5 +32,5 @@ abstract class VersionModel with _$VersionModel {
   factory VersionModel.fromJson(Map<String, dynamic> json) =>
       _$VersionModelFromJson(json);
 
-  static const String versionKey = "version";
+  static const String versionKey = r'version';
 }

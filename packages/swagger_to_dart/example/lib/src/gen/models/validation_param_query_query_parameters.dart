@@ -62,9 +62,9 @@ abstract class ValidationParamQueryQueryParameters
     Map<String, dynamic> json,
   ) => _$ValidationParamQueryQueryParametersFromJson(json);
 
-  static const String qKey = "q";
+  static const String qKey = r'q';
 
-  static const String skipKey = "skip";
+  static const String skipKey = r'skip';
 
-  static const String limitKey = "limit";
+  static const String limitKey = r'limit';
 }

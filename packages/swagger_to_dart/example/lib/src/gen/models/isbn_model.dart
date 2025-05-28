@@ -31,5 +31,5 @@ abstract class IsbnModel with _$IsbnModel {
   factory IsbnModel.fromJson(Map<String, dynamic> json) =>
       _$IsbnModelFromJson(json);
 
-  static const String isbnKey = "isbn";
+  static const String isbnKey = r'isbn';
 }

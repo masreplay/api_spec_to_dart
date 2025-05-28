@@ -399,16 +399,16 @@ abstract class CurrencyModel with _$CurrencyModel {
   @jsonSerializable
   const factory CurrencyModel({
     /// currency
-    @JsonKey(name: CurrencyModel.currencyKey) required CurrencyEnum? currency,
+    @JsonKey(name: CurrencyModel.currencyKey) required Currency? currency,
 
     /// iso4217
-    @JsonKey(name: CurrencyModel.iso4217Key) required Iso4217Enum? iso4217,
+    @JsonKey(name: CurrencyModel.iso4217Key) required Iso4217? iso4217,
   }) = _CurrencyModel;
 
   factory CurrencyModel.fromJson(Map<String, dynamic> json) =>
       _$CurrencyModelFromJson(json);
 
-  static const String currencyKey = "currency";
+  static const String currencyKey = r'currency';
 
-  static const String iso4217Key = "iso4217";
+  static const String iso4217Key = r'iso4217';
 }

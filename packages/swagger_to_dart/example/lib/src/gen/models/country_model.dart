@@ -80,11 +80,11 @@ abstract class CountryModel with _$CountryModel {
   factory CountryModel.fromJson(Map<String, dynamic> json) =>
       _$CountryModelFromJson(json);
 
-  static const String alpha2Key = "alpha2";
+  static const String alpha2Key = r'alpha2';
 
-  static const String alpha3Key = "alpha3";
+  static const String alpha3Key = r'alpha3';
 
-  static const String numericKey = "numeric";
+  static const String numericKey = r'numeric';
 
-  static const String shortNameKey = "short_name";
+  static const String shortNameKey = r'short_name';
 }

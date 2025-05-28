@@ -57,9 +57,9 @@ abstract class ValidationError with _$ValidationError {
   factory ValidationError.fromJson(Map<String, dynamic> json) =>
       _$ValidationErrorFromJson(json);
 
-  static const String locKey = "loc";
+  static const String locKey = r'loc';
 
-  static const String msgKey = "msg";
+  static const String msgKey = r'msg';
 
-  static const String typeKey = "type";
+  static const String typeKey = r'type';
 }

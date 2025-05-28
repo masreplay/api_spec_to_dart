@@ -72,13 +72,13 @@ abstract class PaginationResponse<T> with _$PaginationResponse<T> {
     T Function(Object? json) fromJsonT,
   ) => _$PaginationResponseFromJson<T>(json, fromJsonT);
 
-  static const String itemsKey = "items";
+  static const String itemsKey = r'items';
 
-  static const String totalKey = "total";
+  static const String totalKey = r'total';
 
-  static const String pageKey = "page";
+  static const String pageKey = r'page';
 
-  static const String perPageKey = "per_page";
+  static const String perPageKey = r'per_page';
 
-  static const String totalPagesKey = "total_pages";
+  static const String totalPagesKey = r'total_pages';
 }

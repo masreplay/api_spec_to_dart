@@ -49,9 +49,9 @@ abstract class Cat with _$Cat {
 
   factory Cat.fromJson(Map<String, dynamic> json) => _$CatFromJson(json);
 
-  static const String nameKey = "name";
+  static const String nameKey = r'name';
 
-  static const String typeKey = "type";
+  static const String typeKey = r'type';
 
-  static const String meowCutenessKey = "meow_cuteness";
+  static const String meowCutenessKey = r'meow_cuteness';
 }

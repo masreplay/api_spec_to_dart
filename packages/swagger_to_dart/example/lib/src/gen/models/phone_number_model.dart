@@ -41,7 +41,7 @@ abstract class PhoneNumberModel with _$PhoneNumberModel {
   factory PhoneNumberModel.fromJson(Map<String, dynamic> json) =>
       _$PhoneNumberModelFromJson(json);
 
-  static const String phoneKey = "phone";
+  static const String phoneKey = r'phone';
 
-  static const String phone2Key = "phone2";
+  static const String phone2Key = r'phone2';
 }

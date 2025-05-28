@@ -39,7 +39,7 @@ abstract class GenericGetItemsQueryParameters
   factory GenericGetItemsQueryParameters.fromJson(Map<String, dynamic> json) =>
       _$GenericGetItemsQueryParametersFromJson(json);
 
-  static const String pageKey = "page";
+  static const String pageKey = r'page';
 
-  static const String perPageKey = "per_page";
+  static const String perPageKey = r'per_page';
 }

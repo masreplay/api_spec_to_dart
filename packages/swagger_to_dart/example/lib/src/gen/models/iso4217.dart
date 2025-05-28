@@ -1,4 +1,4 @@
-// CurrencyEnum
+// Iso4217
 // {
 //     "properties": {},
 //     "type": "object",
@@ -164,11 +164,22 @@
 //         "VUV",
 //         "WST",
 //         "XAF",
+//         "XAG",
+//         "XAU",
+//         "XBA",
+//         "XBB",
+//         "XBC",
+//         "XBD",
 //         "XCD",
+//         "XDR",
 //         "XOF",
+//         "XPD",
 //         "XPF",
+//         "XPT",
 //         "XSU",
+//         "XTS",
 //         "XUA",
+//         "XXX",
 //         "YER",
 //         "ZAR",
 //         "ZMW",
@@ -179,10 +190,10 @@
 library;
 
 import 'exports.dart';
-part 'currency_enum.g.dart';
+part 'iso4217.g.dart';
 
 @JsonEnum(alwaysCreate: true)
-enum CurrencyEnum {
+enum Iso4217 {
   @JsonValue("AED")
   aed,
   @JsonValue("AFN")
@@ -505,16 +516,38 @@ enum CurrencyEnum {
   wst,
   @JsonValue("XAF")
   xaf,
+  @JsonValue("XAG")
+  xag,
+  @JsonValue("XAU")
+  xau,
+  @JsonValue("XBA")
+  xba,
+  @JsonValue("XBB")
+  xbb,
+  @JsonValue("XBC")
+  xbc,
+  @JsonValue("XBD")
+  xbd,
   @JsonValue("XCD")
   xcd,
+  @JsonValue("XDR")
+  xdr,
   @JsonValue("XOF")
   xof,
+  @JsonValue("XPD")
+  xpd,
   @JsonValue("XPF")
   xpf,
+  @JsonValue("XPT")
+  xpt,
   @JsonValue("XSU")
   xsu,
+  @JsonValue("XTS")
+  xts,
   @JsonValue("XUA")
   xua,
+  @JsonValue("XXX")
+  xxx,
   @JsonValue("YER")
   yer,
   @JsonValue("ZAR")
@@ -524,5 +557,5 @@ enum CurrencyEnum {
   @JsonValue("ZWL")
   zwl;
 
-  String toJson() => _$CurrencyEnumEnumMap[this]!;
+  String toJson() => _$Iso4217EnumMap[this]!;
 }
