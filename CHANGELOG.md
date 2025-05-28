@@ -1,6 +1,7 @@
 ## 2.1.5
 
 - Add option to pass `fallback` union call
+
   ```yaml
   swagger_to_dart:
   # ...
@@ -8,6 +9,8 @@
     # String or null
     union_class_fallback_name: fallback
   ```
+
+- Skip special character for fallback `FreezedUnionKey`
 
 ## 2.1.4
 
