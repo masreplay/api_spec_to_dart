@@ -1,4 +1,4 @@
-## NextRelease
+## 2.1.5
 
 - Add option to pass `fallback` union call
   ```yaml

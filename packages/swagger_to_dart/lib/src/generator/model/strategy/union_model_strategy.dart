@@ -243,12 +243,12 @@ class UnionModelStrategy
         for (final entry in discriminator.mapping.entries)
           entry.key: schemas
               .whereType<OpenApiSchemaRef>()
-              .firstWhere((e) => e.ref == entry.value)
+              .firstWhere((e) => e.ref == entry.value),
       };
     } else {
       refSchemaMap = {
-        for (final entry in schema.oneOf.whereType<OpenApiSchemaRef>())
-          entry.name: entry,
+        for (final refSchema in schemas.whereType<OpenApiSchemaRef>())
+          refSchema.name: refSchema,
       };
     }
 
@@ -282,7 +282,7 @@ class UnionModelStrategy
         schema: schema,
         refSchemaMap: {
           for (final refSchema in schemas.whereType<OpenApiSchemaRef>())
-            if (refSchema.ref case final ref?) ref: refSchema,
+            refSchema.name: refSchema,
         },
       ),
     );
