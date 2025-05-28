@@ -1,3 +1,14 @@
+## NextRelease
+
+- Add option to pass `fallback` union call
+  ```yaml
+  swagger_to_dart:
+  # ...
+  model:
+    # String or null
+    union_class_fallback_name: fallback
+  ```
+
 ## 2.1.4
 
 - Skip special character for string generation using `r''`
