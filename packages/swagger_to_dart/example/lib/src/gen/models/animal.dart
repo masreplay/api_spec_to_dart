@@ -25,19 +25,16 @@ sealed class Animal with _$Animal {
   const Animal._();
 
   @jsonSerializable
-  @FreezedUnionValue(r"#/components/schemas/Dog")
-  const factory Animal.componentsSchemasDog(Dog value) =
-      AnimalComponentsSchemasDog;
+  @FreezedUnionValue(r"Dog")
+  const factory Animal.dog(Dog value) = AnimalDog;
 
   @jsonSerializable
-  @FreezedUnionValue(r"#/components/schemas/Cat")
-  const factory Animal.componentsSchemasCat(Cat value) =
-      AnimalComponentsSchemasCat;
+  @FreezedUnionValue(r"Cat")
+  const factory Animal.cat(Cat value) = AnimalCat;
 
   @jsonSerializable
-  @FreezedUnionValue(r"#/components/schemas/Parrot")
-  const factory Animal.componentsSchemasParrot(Parrot value) =
-      AnimalComponentsSchemasParrot;
+  @FreezedUnionValue(r"Parrot")
+  const factory Animal.parrot(Parrot value) = AnimalParrot;
 
   @jsonSerializable
   @FreezedUnionValue(r"fallback")

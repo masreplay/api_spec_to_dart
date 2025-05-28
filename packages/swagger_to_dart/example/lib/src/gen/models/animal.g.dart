@@ -6,47 +6,36 @@ part of 'animal.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AnimalComponentsSchemasDog _$AnimalComponentsSchemasDogFromJson(
-  Map<String, dynamic> json,
-) => AnimalComponentsSchemasDog(
+AnimalDog _$AnimalDogFromJson(Map<String, dynamic> json) => AnimalDog(
   Dog.fromJson(json['value'] as Map<String, dynamic>),
   $type: json['runtimeType'] as String?,
 );
 
-Map<String, dynamic> _$AnimalComponentsSchemasDogToJson(
-  AnimalComponentsSchemasDog instance,
-) => <String, dynamic>{
+Map<String, dynamic> _$AnimalDogToJson(AnimalDog instance) => <String, dynamic>{
   'value': instance.value.toJson(),
   'runtimeType': instance.$type,
 };
 
-AnimalComponentsSchemasCat _$AnimalComponentsSchemasCatFromJson(
-  Map<String, dynamic> json,
-) => AnimalComponentsSchemasCat(
+AnimalCat _$AnimalCatFromJson(Map<String, dynamic> json) => AnimalCat(
   Cat.fromJson(json['value'] as Map<String, dynamic>),
   $type: json['runtimeType'] as String?,
 );
 
-Map<String, dynamic> _$AnimalComponentsSchemasCatToJson(
-  AnimalComponentsSchemasCat instance,
-) => <String, dynamic>{
+Map<String, dynamic> _$AnimalCatToJson(AnimalCat instance) => <String, dynamic>{
   'value': instance.value.toJson(),
   'runtimeType': instance.$type,
 };
 
-AnimalComponentsSchemasParrot _$AnimalComponentsSchemasParrotFromJson(
-  Map<String, dynamic> json,
-) => AnimalComponentsSchemasParrot(
+AnimalParrot _$AnimalParrotFromJson(Map<String, dynamic> json) => AnimalParrot(
   Parrot.fromJson(json['value'] as Map<String, dynamic>),
   $type: json['runtimeType'] as String?,
 );
 
-Map<String, dynamic> _$AnimalComponentsSchemasParrotToJson(
-  AnimalComponentsSchemasParrot instance,
-) => <String, dynamic>{
-  'value': instance.value.toJson(),
-  'runtimeType': instance.$type,
-};
+Map<String, dynamic> _$AnimalParrotToJson(AnimalParrot instance) =>
+    <String, dynamic>{
+      'value': instance.value.toJson(),
+      'runtimeType': instance.$type,
+    };
 
 AnimalFallback _$AnimalFallbackFromJson(Map<String, dynamic> json) =>
     AnimalFallback(

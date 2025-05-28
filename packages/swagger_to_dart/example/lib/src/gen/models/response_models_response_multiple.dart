@@ -23,16 +23,14 @@ sealed class ResponseModelsResponseMultiple
   const ResponseModelsResponseMultiple._();
 
   @jsonSerializable
-  @FreezedUnionValue(r"#/components/schemas/User")
-  const factory ResponseModelsResponseMultiple.componentsSchemasUser(
-    User value,
-  ) = ResponseModelsResponseMultipleComponentsSchemasUser;
+  @FreezedUnionValue(r"User")
+  const factory ResponseModelsResponseMultiple.user(User value) =
+      ResponseModelsResponseMultipleUser;
 
   @jsonSerializable
-  @FreezedUnionValue(r"#/components/schemas/Location")
-  const factory ResponseModelsResponseMultiple.componentsSchemasLocation(
-    Location value,
-  ) = ResponseModelsResponseMultipleComponentsSchemasLocation;
+  @FreezedUnionValue(r"Location")
+  const factory ResponseModelsResponseMultiple.location(Location value) =
+      ResponseModelsResponseMultipleLocation;
 
   @jsonSerializable
   @FreezedUnionValue(r"fallback")

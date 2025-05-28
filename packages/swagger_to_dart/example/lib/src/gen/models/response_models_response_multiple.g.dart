@@ -6,33 +6,29 @@ part of 'response_models_response_multiple.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ResponseModelsResponseMultipleComponentsSchemasUser
-_$ResponseModelsResponseMultipleComponentsSchemasUserFromJson(
+ResponseModelsResponseMultipleUser _$ResponseModelsResponseMultipleUserFromJson(
   Map<String, dynamic> json,
-) => ResponseModelsResponseMultipleComponentsSchemasUser(
+) => ResponseModelsResponseMultipleUser(
   User.fromJson(json['value'] as Map<String, dynamic>),
   $type: json['runtimeType'] as String?,
 );
 
-Map<String, dynamic>
-_$ResponseModelsResponseMultipleComponentsSchemasUserToJson(
-  ResponseModelsResponseMultipleComponentsSchemasUser instance,
+Map<String, dynamic> _$ResponseModelsResponseMultipleUserToJson(
+  ResponseModelsResponseMultipleUser instance,
 ) => <String, dynamic>{
   'value': instance.value.toJson(),
   'runtimeType': instance.$type,
 };
 
-ResponseModelsResponseMultipleComponentsSchemasLocation
-_$ResponseModelsResponseMultipleComponentsSchemasLocationFromJson(
-  Map<String, dynamic> json,
-) => ResponseModelsResponseMultipleComponentsSchemasLocation(
-  Location.fromJson(json['value'] as Map<String, dynamic>),
-  $type: json['runtimeType'] as String?,
-);
+ResponseModelsResponseMultipleLocation
+_$ResponseModelsResponseMultipleLocationFromJson(Map<String, dynamic> json) =>
+    ResponseModelsResponseMultipleLocation(
+      Location.fromJson(json['value'] as Map<String, dynamic>),
+      $type: json['runtimeType'] as String?,
+    );
 
-Map<String, dynamic>
-_$ResponseModelsResponseMultipleComponentsSchemasLocationToJson(
-  ResponseModelsResponseMultipleComponentsSchemasLocation instance,
+Map<String, dynamic> _$ResponseModelsResponseMultipleLocationToJson(
+  ResponseModelsResponseMultipleLocation instance,
 ) => <String, dynamic>{
   'value': instance.value.toJson(),
   'runtimeType': instance.$type,
