@@ -120,19 +120,18 @@ Create a `swagger_to_dart.yaml` file in your project root:
 
 ```yaml
 swagger_to_dart:
-  # You can use a local file path
   input_directory: schema/swagger.json
   output_directory: lib/src/gen
-  api_client_class_name: ApiClient
-  imports:
-    - import 'package:dio/dio.dart';
-  skipped_parameters:
-    - Accept-Language
-    - X-Language
-    - X-Platform
-
-  # Or you can use a URL to directly download the spec
-  # url: https://example.com/api/swagger.json
+  model:
+    support_generic_arguments: true
+    union_class_fallback_name: fallback
+    enum_fallback_type: first
+  api_client:
+    base_api_client_class_name: BaseApiClient
+    use_class_for_query_parameters: true
+    skipped_parameters:
+      - Language
+      - X-API-Key
 ```
 
 Then run:
@@ -153,20 +152,7 @@ dart run build_runner build --delete-conflicting-outputs
 
 ### 1. Define the OpenAPI specification location
 
-Create a `swagger_to_dart.yaml` configuration file:
-
-```yaml
-swagger_to_dart:
-  input_directory: schema/swagger.json
-  output_directory: lib/src/gen
-  api_client_class_name: ApiClient
-  imports:
-    - import 'package:dio/dio.dart';
-  skipped_parameters:
-    - Accept-Language
-    - X-Language
-    - X-Platform
-```
+Create a `swagger_to_dart.yaml` configuration file
 
 ### 2. Generate code
 
@@ -214,87 +200,9 @@ void main() async {
 
 ## Configuration Options
 
-The package configuration is defined in a `swagger_to_dart.yaml` file. Below is the complete structure based on the package's internal representation:
-
-```yaml
-swagger_to_dart:
-  # Optional: URL for directly downloading OpenAPI specification (JSON format)
-  url: https://example.com/api/swagger.json
-
-  # Path to your OpenAPI specification file (default: 'schema/swagger.json')
-  input_directory: schema/swagger.json
-
-  # Directory where generated files will be placed (default: 'lib/src/gen')
-  output_directory: lib/src/gen
-
-  # Name for the main API client class (default: 'ApiClient')
-  api_client_class_name: ApiClient
-
-  # Additional imports to include in generated files (default: [])
-  imports:
-    - import 'package:dio/dio.dart';
-
-  # Parameters to skip during generation (default: [])
-  skipped_parameters:
-    - Accept-Language
-    - X-Language
-    - X-Platform
-```
+The package configuration is defined in a `swagger_to_dart.yaml` file
 
 ### Configuration Fields Explained
-
-- **url**: Optional URL to download the OpenAPI specification directly (JSON format only)
-- **input_directory**: Path to your local OpenAPI/Swagger JSON file (defaults to 'schema/swagger.json')
-- **output_directory**: Where the generated Dart files will be placed (defaults to 'lib/src/gen')
-- **api_client_class_name**: Name of the main API client class that will be generated (defaults to 'ApiClient')
-- **imports**: Additional import statements to include in all generated files
-- **skipped_parameters**: HTTP headers or parameters that should be excluded from code generation
-
-### Example Usage
-
-#### Basic Configuration
-
-```yaml
-swagger_to_dart:
-  input_directory: schema/swagger.json
-  output_directory: lib/src/gen
-  api_client_class_name: ApiClient
-```
-
-#### Configuration with Remote Source
-
-```yaml
-swagger_to_dart:
-  url: https://petstore3.swagger.io/api/v3/openapi.json
-  output_directory: lib/src/gen
-  api_client_class_name: PetStoreClient
-  imports:
-    - import 'package:dio/dio.dart';
-    - import 'package:logger/logger.dart';
-```
-
-## Remote Schema Support
-
-You can use a remote OpenAPI schema URL directly in the configuration:
-
-```yaml
-swagger_to_dart:
-  url: https://petstore3.swagger.io/api/v3/openapi.json
-  output_directory: lib/src/gen
-```
-
-Or reference multiple schemas:
-
-```yaml
-swagger_to_dart:
-  schemas:
-    - name: pet_api
-      input_directory: schema/pet_swagger.json
-      output_directory: lib/src/gen/pet
-    - name: user_api
-      input_directory: schema/user_swagger.json
-      output_directory: lib/src/gen/user
-```
 
 ## Handling Breaking Changes
 

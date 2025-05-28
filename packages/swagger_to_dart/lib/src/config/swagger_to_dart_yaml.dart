@@ -9,6 +9,9 @@ part 'swagger_to_dart_yaml.g.dart';
 
 const JsonSerializable _jsonSerializable = JsonSerializable(
   fieldRename: FieldRename.snake,
+  createJsonKeys: true,
+  createFieldMap: true,
+  createPerFieldToJson: true,
 );
 
 @freezed
@@ -33,7 +36,8 @@ abstract class SwaggerToDartYaml with _$SwaggerToDartYaml {
   static const String filename = 'swagger_to_dart.yaml';
 }
 
-enum JsonSerializableConfigFallbackType {
+@JsonEnum(alwaysCreate: true)
+enum EnumFallbackType {
   /// Create a new instance of the enum with the value 'unknown'
   unknown,
 
@@ -44,21 +48,7 @@ enum JsonSerializableConfigFallbackType {
   last,
 
   /// Throw an exception
-  throwException,
-}
-
-@freezed
-abstract class JsonSerializableConfig with _$JsonSerializableConfig {
-  const JsonSerializableConfig._();
-
-  @_jsonSerializable
-  const factory JsonSerializableConfig({
-    @Default(JsonSerializableConfigFallbackType.unknown)
-    JsonSerializableConfigFallbackType fallbackType,
-  }) = _JsonSerializableConfig;
-
-  factory JsonSerializableConfig.fromJson(Map<String, dynamic> json) =>
-      _$JsonSerializableConfigFromJson(json);
+  throwException;
 }
 
 @freezed
@@ -68,7 +58,8 @@ abstract class ModelConfig with _$ModelConfig {
   @_jsonSerializable
   const factory ModelConfig({
     @Default(false) bool supportGenericArguments,
-    @Default(JsonSerializableConfig()) JsonSerializableConfig jsonSerializable,
+    String? unionClassFallbackName,
+    @Default(EnumFallbackType.unknown) EnumFallbackType enumFallbackType,
   }) = _ModelConfig;
 
   factory ModelConfig.fromJson(Map<String, dynamic> json) =>
@@ -98,18 +89,19 @@ enum GenerationSource {
 
   /// The source is .NET
   /// https://dotnet.microsoft.com
-  dotnet,
+  dotnet;
 }
 
 @freezed
 abstract class SwaggerToDart with _$SwaggerToDart {
+  const SwaggerToDart._();
+
   @_jsonSerializable
-  factory SwaggerToDart({
+  const factory SwaggerToDart({
     String? url,
     GenerationSource? generationSource,
     @Default('schema/swagger.json') String inputDirectory,
     @Default('lib/src/gen') String outputDirectory,
-    @Default([]) List<String> imports,
     @Default(ModelConfig()) ModelConfig model,
     @Default(ApiClientConfig()) ApiClientConfig apiClient,
   }) = _SwaggerToDart;

@@ -12,48 +12,72 @@ _SwaggerToDartYaml _$SwaggerToDartYamlFromJson(Map<String, dynamic> json) =>
           json['swagger_to_dart'] as Map<String, dynamic>),
     );
 
+const _$SwaggerToDartYamlFieldMap = <String, String>{
+  'swaggerToDart': 'swagger_to_dart',
+};
+
+abstract final class _$SwaggerToDartYamlJsonKeys {
+  static const String swaggerToDart = 'swagger_to_dart';
+}
+
+// ignore: unused_element
+abstract class _$SwaggerToDartYamlPerFieldToJson {
+  // ignore: unused_element
+  static Object? swaggerToDart(SwaggerToDart instance) => instance.toJson();
+}
+
 Map<String, dynamic> _$SwaggerToDartYamlToJson(_SwaggerToDartYaml instance) =>
     <String, dynamic>{
       'swagger_to_dart': instance.swaggerToDart.toJson(),
     };
 
-_JsonSerializableConfig _$JsonSerializableConfigFromJson(
-        Map<String, dynamic> json) =>
-    _JsonSerializableConfig(
-      fallbackType: $enumDecodeNullable(
-              _$JsonSerializableConfigFallbackTypeEnumMap,
-              json['fallback_type']) ??
-          JsonSerializableConfigFallbackType.unknown,
-    );
-
-Map<String, dynamic> _$JsonSerializableConfigToJson(
-        _JsonSerializableConfig instance) =>
-    <String, dynamic>{
-      'fallback_type':
-          _$JsonSerializableConfigFallbackTypeEnumMap[instance.fallbackType]!,
-    };
-
-const _$JsonSerializableConfigFallbackTypeEnumMap = {
-  JsonSerializableConfigFallbackType.unknown: 'unknown',
-  JsonSerializableConfigFallbackType.first: 'first',
-  JsonSerializableConfigFallbackType.last: 'last',
-  JsonSerializableConfigFallbackType.throwException: 'throwException',
-};
-
 _ModelConfig _$ModelConfigFromJson(Map<String, dynamic> json) => _ModelConfig(
       supportGenericArguments:
           json['support_generic_arguments'] as bool? ?? false,
-      jsonSerializable: json['json_serializable'] == null
-          ? const JsonSerializableConfig()
-          : JsonSerializableConfig.fromJson(
-              json['json_serializable'] as Map<String, dynamic>),
+      unionClassFallbackName: json['union_class_fallback_name'] as String?,
+      enumFallbackType: $enumDecodeNullable(
+              _$EnumFallbackTypeEnumMap, json['enum_fallback_type']) ??
+          EnumFallbackType.unknown,
     );
+
+const _$ModelConfigFieldMap = <String, String>{
+  'supportGenericArguments': 'support_generic_arguments',
+  'unionClassFallbackName': 'union_class_fallback_name',
+  'enumFallbackType': 'enum_fallback_type',
+};
+
+abstract final class _$ModelConfigJsonKeys {
+  static const String supportGenericArguments = 'support_generic_arguments';
+  static const String unionClassFallbackName = 'union_class_fallback_name';
+  static const String enumFallbackType = 'enum_fallback_type';
+}
+
+// ignore: unused_element
+abstract class _$ModelConfigPerFieldToJson {
+  // ignore: unused_element
+  static Object? supportGenericArguments(bool instance) => instance;
+  // ignore: unused_element
+  static Object? unionClassFallbackName(String? instance) => instance;
+  // ignore: unused_element
+  static Object? enumFallbackType(EnumFallbackType instance) =>
+      _$EnumFallbackTypeEnumMap[instance]!;
+}
 
 Map<String, dynamic> _$ModelConfigToJson(_ModelConfig instance) =>
     <String, dynamic>{
       'support_generic_arguments': instance.supportGenericArguments,
-      'json_serializable': instance.jsonSerializable.toJson(),
+      if (instance.unionClassFallbackName case final value?)
+        'union_class_fallback_name': value,
+      'enum_fallback_type':
+          _$EnumFallbackTypeEnumMap[instance.enumFallbackType]!,
     };
+
+const _$EnumFallbackTypeEnumMap = {
+  EnumFallbackType.unknown: 'unknown',
+  EnumFallbackType.first: 'first',
+  EnumFallbackType.last: 'last',
+  EnumFallbackType.throwException: 'throwException',
+};
 
 _ApiClientConfig _$ApiClientConfigFromJson(Map<String, dynamic> json) =>
     _ApiClientConfig(
@@ -66,6 +90,29 @@ _ApiClientConfig _$ApiClientConfigFromJson(Map<String, dynamic> json) =>
               .toList() ??
           const [],
     );
+
+const _$ApiClientConfigFieldMap = <String, String>{
+  'baseApiClientClassName': 'base_api_client_class_name',
+  'useClassForQueryParameters': 'use_class_for_query_parameters',
+  'skippedParameters': 'skipped_parameters',
+};
+
+abstract final class _$ApiClientConfigJsonKeys {
+  static const String baseApiClientClassName = 'base_api_client_class_name';
+  static const String useClassForQueryParameters =
+      'use_class_for_query_parameters';
+  static const String skippedParameters = 'skipped_parameters';
+}
+
+// ignore: unused_element
+abstract class _$ApiClientConfigPerFieldToJson {
+  // ignore: unused_element
+  static Object? baseApiClientClassName(String instance) => instance;
+  // ignore: unused_element
+  static Object? useClassForQueryParameters(bool instance) => instance;
+  // ignore: unused_element
+  static Object? skippedParameters(List<String> instance) => instance;
+}
 
 Map<String, dynamic> _$ApiClientConfigToJson(_ApiClientConfig instance) =>
     <String, dynamic>{
@@ -82,10 +129,6 @@ _SwaggerToDart _$SwaggerToDartFromJson(Map<String, dynamic> json) =>
       inputDirectory:
           json['input_directory'] as String? ?? 'schema/swagger.json',
       outputDirectory: json['output_directory'] as String? ?? 'lib/src/gen',
-      imports: (json['imports'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          const [],
       model: json['model'] == null
           ? const ModelConfig()
           : ModelConfig.fromJson(json['model'] as Map<String, dynamic>),
@@ -95,6 +138,41 @@ _SwaggerToDart _$SwaggerToDartFromJson(Map<String, dynamic> json) =>
               json['api_client'] as Map<String, dynamic>),
     );
 
+const _$SwaggerToDartFieldMap = <String, String>{
+  'url': 'url',
+  'generationSource': 'generation_source',
+  'inputDirectory': 'input_directory',
+  'outputDirectory': 'output_directory',
+  'model': 'model',
+  'apiClient': 'api_client',
+};
+
+abstract final class _$SwaggerToDartJsonKeys {
+  static const String url = 'url';
+  static const String generationSource = 'generation_source';
+  static const String inputDirectory = 'input_directory';
+  static const String outputDirectory = 'output_directory';
+  static const String model = 'model';
+  static const String apiClient = 'api_client';
+}
+
+// ignore: unused_element
+abstract class _$SwaggerToDartPerFieldToJson {
+  // ignore: unused_element
+  static Object? url(String? instance) => instance;
+  // ignore: unused_element
+  static Object? generationSource(GenerationSource? instance) =>
+      _$GenerationSourceEnumMap[instance];
+  // ignore: unused_element
+  static Object? inputDirectory(String instance) => instance;
+  // ignore: unused_element
+  static Object? outputDirectory(String instance) => instance;
+  // ignore: unused_element
+  static Object? model(ModelConfig instance) => instance.toJson();
+  // ignore: unused_element
+  static Object? apiClient(ApiClientConfig instance) => instance.toJson();
+}
+
 Map<String, dynamic> _$SwaggerToDartToJson(_SwaggerToDart instance) =>
     <String, dynamic>{
       if (instance.url case final value?) 'url': value,
@@ -103,7 +181,6 @@ Map<String, dynamic> _$SwaggerToDartToJson(_SwaggerToDart instance) =>
         'generation_source': value,
       'input_directory': instance.inputDirectory,
       'output_directory': instance.outputDirectory,
-      'imports': instance.imports,
       'model': instance.model.toJson(),
       'api_client': instance.apiClient.toJson(),
     };

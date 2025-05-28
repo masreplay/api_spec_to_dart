@@ -185,160 +185,10 @@ class __$SwaggerToDartYamlCopyWithImpl<$Res>
 }
 
 /// @nodoc
-mixin _$JsonSerializableConfig {
-  JsonSerializableConfigFallbackType get fallbackType;
-
-  /// Create a copy of JsonSerializableConfig
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $JsonSerializableConfigCopyWith<JsonSerializableConfig> get copyWith =>
-      _$JsonSerializableConfigCopyWithImpl<JsonSerializableConfig>(
-          this as JsonSerializableConfig, _$identity);
-
-  /// Serializes this JsonSerializableConfig to a JSON map.
-  Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is JsonSerializableConfig &&
-            (identical(other.fallbackType, fallbackType) ||
-                other.fallbackType == fallbackType));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, fallbackType);
-
-  @override
-  String toString() {
-    return 'JsonSerializableConfig(fallbackType: $fallbackType)';
-  }
-}
-
-/// @nodoc
-abstract mixin class $JsonSerializableConfigCopyWith<$Res> {
-  factory $JsonSerializableConfigCopyWith(JsonSerializableConfig value,
-          $Res Function(JsonSerializableConfig) _then) =
-      _$JsonSerializableConfigCopyWithImpl;
-  @useResult
-  $Res call({JsonSerializableConfigFallbackType fallbackType});
-}
-
-/// @nodoc
-class _$JsonSerializableConfigCopyWithImpl<$Res>
-    implements $JsonSerializableConfigCopyWith<$Res> {
-  _$JsonSerializableConfigCopyWithImpl(this._self, this._then);
-
-  final JsonSerializableConfig _self;
-  final $Res Function(JsonSerializableConfig) _then;
-
-  /// Create a copy of JsonSerializableConfig
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? fallbackType = null,
-  }) {
-    return _then(_self.copyWith(
-      fallbackType: null == fallbackType
-          ? _self.fallbackType
-          : fallbackType // ignore: cast_nullable_to_non_nullable
-              as JsonSerializableConfigFallbackType,
-    ));
-  }
-}
-
-/// @nodoc
-
-@_jsonSerializable
-class _JsonSerializableConfig extends JsonSerializableConfig {
-  const _JsonSerializableConfig(
-      {this.fallbackType = JsonSerializableConfigFallbackType.unknown})
-      : super._();
-  factory _JsonSerializableConfig.fromJson(Map<String, dynamic> json) =>
-      _$JsonSerializableConfigFromJson(json);
-
-  @override
-  @JsonKey()
-  final JsonSerializableConfigFallbackType fallbackType;
-
-  /// Create a copy of JsonSerializableConfig
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$JsonSerializableConfigCopyWith<_JsonSerializableConfig> get copyWith =>
-      __$JsonSerializableConfigCopyWithImpl<_JsonSerializableConfig>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$JsonSerializableConfigToJson(
-      this,
-    );
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _JsonSerializableConfig &&
-            (identical(other.fallbackType, fallbackType) ||
-                other.fallbackType == fallbackType));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, fallbackType);
-
-  @override
-  String toString() {
-    return 'JsonSerializableConfig(fallbackType: $fallbackType)';
-  }
-}
-
-/// @nodoc
-abstract mixin class _$JsonSerializableConfigCopyWith<$Res>
-    implements $JsonSerializableConfigCopyWith<$Res> {
-  factory _$JsonSerializableConfigCopyWith(_JsonSerializableConfig value,
-          $Res Function(_JsonSerializableConfig) _then) =
-      __$JsonSerializableConfigCopyWithImpl;
-  @override
-  @useResult
-  $Res call({JsonSerializableConfigFallbackType fallbackType});
-}
-
-/// @nodoc
-class __$JsonSerializableConfigCopyWithImpl<$Res>
-    implements _$JsonSerializableConfigCopyWith<$Res> {
-  __$JsonSerializableConfigCopyWithImpl(this._self, this._then);
-
-  final _JsonSerializableConfig _self;
-  final $Res Function(_JsonSerializableConfig) _then;
-
-  /// Create a copy of JsonSerializableConfig
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? fallbackType = null,
-  }) {
-    return _then(_JsonSerializableConfig(
-      fallbackType: null == fallbackType
-          ? _self.fallbackType
-          : fallbackType // ignore: cast_nullable_to_non_nullable
-              as JsonSerializableConfigFallbackType,
-    ));
-  }
-}
-
-/// @nodoc
 mixin _$ModelConfig {
   bool get supportGenericArguments;
-  JsonSerializableConfig get jsonSerializable;
+  String? get unionClassFallbackName;
+  EnumFallbackType get enumFallbackType;
 
   /// Create a copy of ModelConfig
   /// with the given fields replaced by the non-null parameter values.
@@ -358,18 +208,20 @@ mixin _$ModelConfig {
             (identical(
                     other.supportGenericArguments, supportGenericArguments) ||
                 other.supportGenericArguments == supportGenericArguments) &&
-            (identical(other.jsonSerializable, jsonSerializable) ||
-                other.jsonSerializable == jsonSerializable));
+            (identical(other.unionClassFallbackName, unionClassFallbackName) ||
+                other.unionClassFallbackName == unionClassFallbackName) &&
+            (identical(other.enumFallbackType, enumFallbackType) ||
+                other.enumFallbackType == enumFallbackType));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, supportGenericArguments, jsonSerializable);
+  int get hashCode => Object.hash(runtimeType, supportGenericArguments,
+      unionClassFallbackName, enumFallbackType);
 
   @override
   String toString() {
-    return 'ModelConfig(supportGenericArguments: $supportGenericArguments, jsonSerializable: $jsonSerializable)';
+    return 'ModelConfig(supportGenericArguments: $supportGenericArguments, unionClassFallbackName: $unionClassFallbackName, enumFallbackType: $enumFallbackType)';
   }
 }
 
@@ -380,9 +232,9 @@ abstract mixin class $ModelConfigCopyWith<$Res> {
       _$ModelConfigCopyWithImpl;
   @useResult
   $Res call(
-      {bool supportGenericArguments, JsonSerializableConfig jsonSerializable});
-
-  $JsonSerializableConfigCopyWith<$Res> get jsonSerializable;
+      {bool supportGenericArguments,
+      String? unionClassFallbackName,
+      EnumFallbackType enumFallbackType});
 }
 
 /// @nodoc
@@ -398,29 +250,23 @@ class _$ModelConfigCopyWithImpl<$Res> implements $ModelConfigCopyWith<$Res> {
   @override
   $Res call({
     Object? supportGenericArguments = null,
-    Object? jsonSerializable = null,
+    Object? unionClassFallbackName = freezed,
+    Object? enumFallbackType = null,
   }) {
     return _then(_self.copyWith(
       supportGenericArguments: null == supportGenericArguments
           ? _self.supportGenericArguments
           : supportGenericArguments // ignore: cast_nullable_to_non_nullable
               as bool,
-      jsonSerializable: null == jsonSerializable
-          ? _self.jsonSerializable
-          : jsonSerializable // ignore: cast_nullable_to_non_nullable
-              as JsonSerializableConfig,
+      unionClassFallbackName: freezed == unionClassFallbackName
+          ? _self.unionClassFallbackName
+          : unionClassFallbackName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      enumFallbackType: null == enumFallbackType
+          ? _self.enumFallbackType
+          : enumFallbackType // ignore: cast_nullable_to_non_nullable
+              as EnumFallbackType,
     ));
-  }
-
-  /// Create a copy of ModelConfig
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $JsonSerializableConfigCopyWith<$Res> get jsonSerializable {
-    return $JsonSerializableConfigCopyWith<$Res>(_self.jsonSerializable,
-        (value) {
-      return _then(_self.copyWith(jsonSerializable: value));
-    });
   }
 }
 
@@ -430,7 +276,8 @@ class _$ModelConfigCopyWithImpl<$Res> implements $ModelConfigCopyWith<$Res> {
 class _ModelConfig extends ModelConfig {
   const _ModelConfig(
       {this.supportGenericArguments = false,
-      this.jsonSerializable = const JsonSerializableConfig()})
+      this.unionClassFallbackName,
+      this.enumFallbackType = EnumFallbackType.unknown})
       : super._();
   factory _ModelConfig.fromJson(Map<String, dynamic> json) =>
       _$ModelConfigFromJson(json);
@@ -439,8 +286,10 @@ class _ModelConfig extends ModelConfig {
   @JsonKey()
   final bool supportGenericArguments;
   @override
+  final String? unionClassFallbackName;
+  @override
   @JsonKey()
-  final JsonSerializableConfig jsonSerializable;
+  final EnumFallbackType enumFallbackType;
 
   /// Create a copy of ModelConfig
   /// with the given fields replaced by the non-null parameter values.
@@ -465,18 +314,20 @@ class _ModelConfig extends ModelConfig {
             (identical(
                     other.supportGenericArguments, supportGenericArguments) ||
                 other.supportGenericArguments == supportGenericArguments) &&
-            (identical(other.jsonSerializable, jsonSerializable) ||
-                other.jsonSerializable == jsonSerializable));
+            (identical(other.unionClassFallbackName, unionClassFallbackName) ||
+                other.unionClassFallbackName == unionClassFallbackName) &&
+            (identical(other.enumFallbackType, enumFallbackType) ||
+                other.enumFallbackType == enumFallbackType));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, supportGenericArguments, jsonSerializable);
+  int get hashCode => Object.hash(runtimeType, supportGenericArguments,
+      unionClassFallbackName, enumFallbackType);
 
   @override
   String toString() {
-    return 'ModelConfig(supportGenericArguments: $supportGenericArguments, jsonSerializable: $jsonSerializable)';
+    return 'ModelConfig(supportGenericArguments: $supportGenericArguments, unionClassFallbackName: $unionClassFallbackName, enumFallbackType: $enumFallbackType)';
   }
 }
 
@@ -489,10 +340,9 @@ abstract mixin class _$ModelConfigCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {bool supportGenericArguments, JsonSerializableConfig jsonSerializable});
-
-  @override
-  $JsonSerializableConfigCopyWith<$Res> get jsonSerializable;
+      {bool supportGenericArguments,
+      String? unionClassFallbackName,
+      EnumFallbackType enumFallbackType});
 }
 
 /// @nodoc
@@ -508,29 +358,23 @@ class __$ModelConfigCopyWithImpl<$Res> implements _$ModelConfigCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   $Res call({
     Object? supportGenericArguments = null,
-    Object? jsonSerializable = null,
+    Object? unionClassFallbackName = freezed,
+    Object? enumFallbackType = null,
   }) {
     return _then(_ModelConfig(
       supportGenericArguments: null == supportGenericArguments
           ? _self.supportGenericArguments
           : supportGenericArguments // ignore: cast_nullable_to_non_nullable
               as bool,
-      jsonSerializable: null == jsonSerializable
-          ? _self.jsonSerializable
-          : jsonSerializable // ignore: cast_nullable_to_non_nullable
-              as JsonSerializableConfig,
+      unionClassFallbackName: freezed == unionClassFallbackName
+          ? _self.unionClassFallbackName
+          : unionClassFallbackName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      enumFallbackType: null == enumFallbackType
+          ? _self.enumFallbackType
+          : enumFallbackType // ignore: cast_nullable_to_non_nullable
+              as EnumFallbackType,
     ));
-  }
-
-  /// Create a copy of ModelConfig
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $JsonSerializableConfigCopyWith<$Res> get jsonSerializable {
-    return $JsonSerializableConfigCopyWith<$Res>(_self.jsonSerializable,
-        (value) {
-      return _then(_self.copyWith(jsonSerializable: value));
-    });
   }
 }
 
@@ -753,7 +597,6 @@ mixin _$SwaggerToDart {
   GenerationSource? get generationSource;
   String get inputDirectory;
   String get outputDirectory;
-  List<String> get imports;
   ModelConfig get model;
   ApiClientConfig get apiClient;
 
@@ -780,7 +623,6 @@ mixin _$SwaggerToDart {
                 other.inputDirectory == inputDirectory) &&
             (identical(other.outputDirectory, outputDirectory) ||
                 other.outputDirectory == outputDirectory) &&
-            const DeepCollectionEquality().equals(other.imports, imports) &&
             (identical(other.model, model) || other.model == model) &&
             (identical(other.apiClient, apiClient) ||
                 other.apiClient == apiClient));
@@ -788,19 +630,12 @@ mixin _$SwaggerToDart {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      url,
-      generationSource,
-      inputDirectory,
-      outputDirectory,
-      const DeepCollectionEquality().hash(imports),
-      model,
-      apiClient);
+  int get hashCode => Object.hash(runtimeType, url, generationSource,
+      inputDirectory, outputDirectory, model, apiClient);
 
   @override
   String toString() {
-    return 'SwaggerToDart(url: $url, generationSource: $generationSource, inputDirectory: $inputDirectory, outputDirectory: $outputDirectory, imports: $imports, model: $model, apiClient: $apiClient)';
+    return 'SwaggerToDart(url: $url, generationSource: $generationSource, inputDirectory: $inputDirectory, outputDirectory: $outputDirectory, model: $model, apiClient: $apiClient)';
   }
 }
 
@@ -815,7 +650,6 @@ abstract mixin class $SwaggerToDartCopyWith<$Res> {
       GenerationSource? generationSource,
       String inputDirectory,
       String outputDirectory,
-      List<String> imports,
       ModelConfig model,
       ApiClientConfig apiClient});
 
@@ -840,7 +674,6 @@ class _$SwaggerToDartCopyWithImpl<$Res>
     Object? generationSource = freezed,
     Object? inputDirectory = null,
     Object? outputDirectory = null,
-    Object? imports = null,
     Object? model = null,
     Object? apiClient = null,
   }) {
@@ -861,10 +694,6 @@ class _$SwaggerToDartCopyWithImpl<$Res>
           ? _self.outputDirectory
           : outputDirectory // ignore: cast_nullable_to_non_nullable
               as String,
-      imports: null == imports
-          ? _self.imports
-          : imports // ignore: cast_nullable_to_non_nullable
-              as List<String>,
       model: null == model
           ? _self.model
           : model // ignore: cast_nullable_to_non_nullable
@@ -900,16 +729,15 @@ class _$SwaggerToDartCopyWithImpl<$Res>
 /// @nodoc
 
 @_jsonSerializable
-class _SwaggerToDart implements SwaggerToDart {
-  _SwaggerToDart(
+class _SwaggerToDart extends SwaggerToDart {
+  const _SwaggerToDart(
       {this.url,
       this.generationSource,
       this.inputDirectory = 'schema/swagger.json',
       this.outputDirectory = 'lib/src/gen',
-      final List<String> imports = const [],
       this.model = const ModelConfig(),
       this.apiClient = const ApiClientConfig()})
-      : _imports = imports;
+      : super._();
   factory _SwaggerToDart.fromJson(Map<String, dynamic> json) =>
       _$SwaggerToDartFromJson(json);
 
@@ -923,15 +751,6 @@ class _SwaggerToDart implements SwaggerToDart {
   @override
   @JsonKey()
   final String outputDirectory;
-  final List<String> _imports;
-  @override
-  @JsonKey()
-  List<String> get imports {
-    if (_imports is EqualUnmodifiableListView) return _imports;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_imports);
-  }
-
   @override
   @JsonKey()
   final ModelConfig model;
@@ -966,7 +785,6 @@ class _SwaggerToDart implements SwaggerToDart {
                 other.inputDirectory == inputDirectory) &&
             (identical(other.outputDirectory, outputDirectory) ||
                 other.outputDirectory == outputDirectory) &&
-            const DeepCollectionEquality().equals(other._imports, _imports) &&
             (identical(other.model, model) || other.model == model) &&
             (identical(other.apiClient, apiClient) ||
                 other.apiClient == apiClient));
@@ -974,19 +792,12 @@ class _SwaggerToDart implements SwaggerToDart {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      url,
-      generationSource,
-      inputDirectory,
-      outputDirectory,
-      const DeepCollectionEquality().hash(_imports),
-      model,
-      apiClient);
+  int get hashCode => Object.hash(runtimeType, url, generationSource,
+      inputDirectory, outputDirectory, model, apiClient);
 
   @override
   String toString() {
-    return 'SwaggerToDart(url: $url, generationSource: $generationSource, inputDirectory: $inputDirectory, outputDirectory: $outputDirectory, imports: $imports, model: $model, apiClient: $apiClient)';
+    return 'SwaggerToDart(url: $url, generationSource: $generationSource, inputDirectory: $inputDirectory, outputDirectory: $outputDirectory, model: $model, apiClient: $apiClient)';
   }
 }
 
@@ -1003,7 +814,6 @@ abstract mixin class _$SwaggerToDartCopyWith<$Res>
       GenerationSource? generationSource,
       String inputDirectory,
       String outputDirectory,
-      List<String> imports,
       ModelConfig model,
       ApiClientConfig apiClient});
 
@@ -1030,7 +840,6 @@ class __$SwaggerToDartCopyWithImpl<$Res>
     Object? generationSource = freezed,
     Object? inputDirectory = null,
     Object? outputDirectory = null,
-    Object? imports = null,
     Object? model = null,
     Object? apiClient = null,
   }) {
@@ -1051,10 +860,6 @@ class __$SwaggerToDartCopyWithImpl<$Res>
           ? _self.outputDirectory
           : outputDirectory // ignore: cast_nullable_to_non_nullable
               as String,
-      imports: null == imports
-          ? _self._imports
-          : imports // ignore: cast_nullable_to_non_nullable
-              as List<String>,
       model: null == model
           ? _self.model
           : model // ignore: cast_nullable_to_non_nullable
