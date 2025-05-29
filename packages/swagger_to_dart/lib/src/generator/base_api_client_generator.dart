@@ -105,12 +105,12 @@ class BaseApiClientGenerator {
                 context.apiClients.map(
                   (apiClient) {
                     final clientName =
-                        Recase.instance.toPascalCase(apiClient.name!);
+                        Renaming.instance.renameClass(apiClient.name!);
                     return Method(
                       (b) => b
                         ..type = MethodType.getter
                         ..returns = refer(clientName)
-                        ..name = Recase.instance.toCamelCase(clientName)
+                        ..name = Renaming.instance.renameFunction(clientName)
                         ..body = Code(
                           'return $clientName(dio, baseUrl: baseUrl, errorLogger: errorLogger);',
                         ),
