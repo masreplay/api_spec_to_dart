@@ -190,8 +190,8 @@ class ApiClientGenerator {
     required String clientName,
     required OpenApiPaths paths,
   }) {
-    final className = Renaming.instance.renameClass('${clientName}Client');
-    final fileName = Renaming.instance.renameFile(className);
+    final fileName = Renaming.instance.renameFile('${clientName}_client');
+    final className = Recase.instance.toPascalCase(fileName);
 
     return Library(
       (b) => b
