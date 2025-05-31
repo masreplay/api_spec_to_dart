@@ -382,12 +382,12 @@ class ApiClientGenerator {
         continue;
       }
 
-      final dartType = context.typeConverter.get(
+      final dartType = context.extension.typeConverter.get(
         p.schema,
         className: className,
       );
 
-      final defaultValue = context.typeConverter.getDefaultValue(
+      final defaultValue = context.extension.typeConverter.getDefaultValue(
         p.schema,
       );
 
@@ -433,7 +433,7 @@ class ApiClientGenerator {
         ..named = true
         ..required = true
         ..type = refer(
-          context.typeConverter.get(
+          context.extension.typeConverter.get(
             body.schema,
             className: className,
           ),
@@ -447,7 +447,7 @@ class ApiClientGenerator {
         ..named = true
         ..required = true
         ..type = refer(
-          context.typeConverter.get(
+          context.extension.typeConverter.get(
             body.schema,
             className: className,
           ),
@@ -461,7 +461,7 @@ class ApiClientGenerator {
         ..named = true
         ..required = true
         ..type = refer(
-          context.typeConverter.get(
+          context.extension.typeConverter.get(
             body.schema,
             className: className,
           ),
@@ -479,7 +479,7 @@ class ApiClientGenerator {
 
     final responseTypeString = response == null
         ? null
-        : context.typeConverter.get(
+        : context.extension.typeConverter.get(
             response.schema,
             className: className,
           );
