@@ -1,3 +1,7 @@
+## 2.2.0
+
+- Fix Client name in `BaseApiClient` from `Cms` to `Cms`
+
 ## 2.1.5
 
 - Add option to pass `fallback` union call
