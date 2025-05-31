@@ -5,6 +5,7 @@ import 'package:dart_style/dart_style.dart';
 import 'package:path/path.dart' as path;
 import 'package:swagger_to_dart/src/config/generation_context.dart';
 import 'package:swagger_to_dart/src/generator/base_api_client_generator.dart';
+import 'package:swagger_to_dart/src/generator/model/json_serialization_convertor_generator.dart';
 
 class SwaggerToDartCodeGenerator {
   const SwaggerToDartCodeGenerator(this.context);
@@ -75,8 +76,8 @@ class SwaggerToDartCodeGenerator {
       mainLibrary,
     );
 
-    final jsonConverterLibrary =
-        context.extension.jsonConvertorGenerator.build();
+    final (library: jsonConverterLibrary, directives: jsonConverterDirectives) =
+        JsonConvertorGenerator(context).build();
 
     await writeDartLibraryFile(
       path.join(modelsDir.path, '${jsonConverterLibrary.name!}.dart'),
@@ -87,6 +88,7 @@ class SwaggerToDartCodeGenerator {
       (b) => b
         ..name = 'exports'
         ..directives.addAll([
+          ...jsonConverterDirectives,
           Directive.export('models.dart'),
           Directive.import('package:dio/dio.dart'),
           Directive.import(

@@ -5,7 +5,6 @@ import 'package:code_builder/code_builder.dart';
 import 'package:dio/dio.dart';
 import 'package:path/path.dart' as path;
 import 'package:pubspec_parse/pubspec_parse.dart';
-import 'package:swagger_to_dart/src/generator/model/json_serialization_convertor_generator.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 import 'package:yaml/yaml.dart';
 
@@ -81,9 +80,6 @@ class ContextExtension {
       OpenApiSchemaDartTypeConverter(context);
 
   ModelGenerator get modelGenerator => ModelGenerator(context);
-
-  JsonConvertorGenerator get jsonConvertorGenerator =>
-      JsonConvertorGenerator(context);
 }
 
 /// Handles setup and validation for the code generator

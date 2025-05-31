@@ -1,16 +1,22 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
+typedef _CustomJsonConverter = ({
+  String className,
+  List<Directive> directives,
+  String code,
+});
+
 ///
 /// Generate Enum, Union, Regular models
 ///
 class JsonConvertorGenerator extends LibraryGenerator {
   const JsonConvertorGenerator(super.context);
 
-  Library build() {
+  ({Library library, List<Directive> directives}) build() {
     final isFlutterProject = context.isFlutterProject;
 
-    final customJsonConverters = <({String className, String code})>[];
+    final customJsonConverters = <_CustomJsonConverter>[];
 
     switch (context.config.generationSource) {
       case GenerationSource.fastAPI:
@@ -25,7 +31,7 @@ class JsonConvertorGenerator extends LibraryGenerator {
         break;
     }
 
-    return Library(
+    final library = Library(
       (b) => b
         ..name = 'json_converter'
         ..directives.addAll([
@@ -50,9 +56,17 @@ const jsonSerializable = JsonSerializable(
 ''')
         ]),
     );
+
+    return (
+      library: library,
+      directives: [
+        ...library.directives,
+        ...customJsonConverters.map((e) => Directive.export(e.className)),
+      ]
+    );
   }
 
-  ({String className, String code}) getFastAPIMultipartFileJsonConvertor() {
+  _CustomJsonConverter getFastAPIMultipartFileJsonConvertor() {
     final String className = 'MultipartFileJsonConverter';
     return (
       className: className,
@@ -70,10 +84,11 @@ class $className implements JsonConverter<MultipartFile, MultipartFile> {
     );
   }
 
-  ({String className, String code}) getTimeOfDayStringJsonConvertor() {
+  _CustomJsonConverter getTimeOfDayStringJsonConvertor() {
     final String className = 'TimeOfDayStringJsonConverter';
     return (
       className: className,
+      directives: [],
       code: '''
 class $className implements JsonConverter<TimeOfDay, String> {
   const $className();
