@@ -29,7 +29,6 @@ class SwaggerToDartCodeGenerator {
     final genExportLibrary = Library((b) => b
       ..name = 'gen'
       ..directives.addAll([
-        Directive.export('api_client/base_api_client.dart'),
         Directive.export('api_client/api_client.dart'),
         Directive.export('models/models.dart'),
       ]));
@@ -142,9 +141,10 @@ class SwaggerToDartCodeGenerator {
     );
 
     final baseApiCLientLibrary = BaseApiClientGenerator(context).build();
+    final baseApiCLientLibraryFileName = '${baseApiCLientLibrary.name}.dart';
 
     await writeDartLibraryFile(
-      path.join(apiClientsDir.path, '${baseApiCLientLibrary.name}.dart'),
+      path.join(apiClientsDir.path, baseApiCLientLibraryFileName),
       baseApiCLientLibrary,
     );
 
@@ -152,8 +152,8 @@ class SwaggerToDartCodeGenerator {
       (b) => b
         ..name = 'api_client.dart'
         ..directives.addAll([
-          Directive.import('exports.dart'),
-          Directive.export('base_api_client.dart'),
+          Directive.export('exports.dart'),
+          Directive.export(baseApiCLientLibraryFileName),
         ]),
     );
 
