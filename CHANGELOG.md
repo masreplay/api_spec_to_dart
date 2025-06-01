@@ -1,7 +1,8 @@
 ## 2.3.0
 
 - Pass `--config` flag to specify the configuration file
-- Fix `base_client_api.dart` file when passing custom name `` in the `export.dart` file
+- Fix `base_client_api.dart` file when passing custom name `exports.dart` in the `export.dart` file
+- Use custom `jsonConvertor` base on `generation_source` for example `generation_source: FastAPI` in `swagger_to_dart.yaml` file
 
 ## 2.2.0
 
