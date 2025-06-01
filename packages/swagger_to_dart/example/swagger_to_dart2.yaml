@@ -1,0 +1,15 @@
+swagger_to_dart:
+  # url: http://0.0.0.0:8004/openapi.json
+  input_directory: schema/swagger.json
+  output_directory: lib/src/gen2
+
+  model:
+    support_generic_arguments: true
+    union_class_fallback_name: fallback
+    enum_fallback_type: first
+  api_client:
+    base_api_client_class_name: BaseApiClient
+    use_class_for_query_parameters: true
+    skipped_parameters:
+      - Language
+      - X-API-Key
