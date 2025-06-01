@@ -81,14 +81,17 @@ abstract class ApiClientConfig with _$ApiClientConfig {
       _$ApiClientConfigFromJson(json);
 }
 
+@JsonEnum(alwaysCreate: true)
 /// The source of the generation
 enum GenerationSource {
   /// The source is FastAPI
   /// https://fastapi.tiangolo.com/
+  @JsonValue('FastAPI')
   fastAPI,
 
   /// The source is .NET
   /// https://dotnet.microsoft.com
+  @JsonValue('dotnet')
   dotnet;
 }
 

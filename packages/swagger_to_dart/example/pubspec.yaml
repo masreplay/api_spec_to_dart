@@ -6,6 +6,9 @@ environment:
   sdk: ^3.7.2
 
 dependencies:
+  flutter:
+    sdk: flutter
+
   dio: ^5.8.0+1
   freezed_annotation: ^3.0.0
   json_annotation: ^4.9.0
@@ -23,3 +26,6 @@ dev_dependencies:
 
   swagger_to_dart:
     path: ../
+
+flutter:
+  generate: true

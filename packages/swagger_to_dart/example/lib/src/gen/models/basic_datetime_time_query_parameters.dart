@@ -23,7 +23,7 @@ abstract class BasicDatetimeTimeQueryParameters
   @jsonSerializable
   const factory BasicDatetimeTimeQueryParameters({
     /// t
-    @JsonKey(name: BasicDatetimeTimeQueryParameters.tKey) required String t,
+    @JsonKey(name: BasicDatetimeTimeQueryParameters.tKey) required TimeOfDay t,
   }) = _BasicDatetimeTimeQueryParameters;
 
   factory BasicDatetimeTimeQueryParameters.fromJson(

@@ -24,7 +24,7 @@ abstract class BasicDatetimeTimedeltaQueryParameters
   const factory BasicDatetimeTimedeltaQueryParameters({
     /// td
     @JsonKey(name: BasicDatetimeTimedeltaQueryParameters.tdKey)
-    required String td,
+    required TimeOfDay td,
   }) = _BasicDatetimeTimedeltaQueryParameters;
 
   factory BasicDatetimeTimedeltaQueryParameters.fromJson(

@@ -3,7 +3,8 @@ import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 typedef _CustomJsonConverter = ({
   String classCall,
-  List<Directive> directives,
+  List<Directive> imports,
+  List<Directive> exports,
   String code,
 });
 
@@ -36,17 +37,16 @@ class JsonConvertorGenerator extends LibraryGenerator {
         ..name = 'json_converter'
         ..directives.addAll([
           Directive.import('package:dio/dio.dart'),
-          // TODO: check if isFlutter project
-          Directive.import('package:flutter/material.dart'),
-          Directive.import('models.dart'),
+          Directive.import('exports.dart'),
           Directive.import('package:json_annotation/json_annotation.dart'),
+          for (final entry in customJsonConverters) ...entry.imports,
         ])
         ..body.addAll([
           ...context.jsonConvertor,
           for (final entry in customJsonConverters) Code(entry.code),
           Code('''
 const jsonSerializableConverters = <JsonConverter>[
-  ${customJsonConverters.map((e) => '${e.classCall}').join(',\n')}
+  ${customJsonConverters.map((e) => '${e.classCall}').join(',\n')},
   ${context.jsonConvertor.map((e) => '${e.name}()').join(',\n')}
 ];
 
@@ -61,7 +61,7 @@ const jsonSerializable = JsonSerializable(
       library: library,
       directives: [
         ...library.directives,
-        ...customJsonConverters.expand((e) => e.directives),
+        ...customJsonConverters.expand((e) => e.exports),
       ]
     );
   }
@@ -69,9 +69,12 @@ const jsonSerializable = JsonSerializable(
   _CustomJsonConverter getFastAPIMultipartFileJsonConvertor() {
     return (
       classCall: 'MultipartFileJsonConverter()',
-      directives: [
+      imports: [
         Directive.import('package:dio/dio.dart'),
         Directive.import('package:json_annotation/json_annotation.dart'),
+      ],
+      exports: [
+        Directive.export('package:flutter/material.dart'),
       ],
       code: r'''
 class MultipartFileJsonConverter
@@ -91,9 +94,12 @@ class MultipartFileJsonConverter
   _CustomJsonConverter getTimeOfDayStringJsonConvertor() {
     return (
       classCall: 'TimeOfDayStringJsonConverter()',
-      directives: [
+      imports: [
         Directive.import('package:flutter/material.dart'),
         Directive.import('package:json_annotation/json_annotation.dart'),
+      ],
+      exports: [
+        Directive.export('package:flutter/material.dart'),
       ],
       code: r'''
 class TimeOfDayStringJsonConverter implements JsonConverter<TimeOfDay, String> {

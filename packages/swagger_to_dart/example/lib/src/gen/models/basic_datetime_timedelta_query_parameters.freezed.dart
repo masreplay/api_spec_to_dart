@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 mixin _$BasicDatetimeTimedeltaQueryParameters {
   /// td
   @JsonKey(name: BasicDatetimeTimedeltaQueryParameters.tdKey)
-  String get td;
+  TimeOfDay get td;
 
   /// Create a copy of BasicDatetimeTimedeltaQueryParameters
   /// with the given fields replaced by the non-null parameter values.
@@ -58,7 +58,7 @@ abstract mixin class $BasicDatetimeTimedeltaQueryParametersCopyWith<$Res> {
   ) = _$BasicDatetimeTimedeltaQueryParametersCopyWithImpl;
   @useResult
   $Res call({
-    @JsonKey(name: BasicDatetimeTimedeltaQueryParameters.tdKey) String td,
+    @JsonKey(name: BasicDatetimeTimedeltaQueryParameters.tdKey) TimeOfDay td,
   });
 }
 
@@ -81,7 +81,7 @@ class _$BasicDatetimeTimedeltaQueryParametersCopyWithImpl<$Res>
             null == td
                 ? _self.td
                 : td // ignore: cast_nullable_to_non_nullable
-                    as String,
+                    as TimeOfDay,
       ),
     );
   }
@@ -103,7 +103,7 @@ class _BasicDatetimeTimedeltaQueryParameters
   /// td
   @override
   @JsonKey(name: BasicDatetimeTimedeltaQueryParameters.tdKey)
-  final String td;
+  final TimeOfDay td;
 
   /// Create a copy of BasicDatetimeTimedeltaQueryParameters
   /// with the given fields replaced by the non-null parameter values.
@@ -150,7 +150,7 @@ abstract mixin class _$BasicDatetimeTimedeltaQueryParametersCopyWith<$Res>
   @override
   @useResult
   $Res call({
-    @JsonKey(name: BasicDatetimeTimedeltaQueryParameters.tdKey) String td,
+    @JsonKey(name: BasicDatetimeTimedeltaQueryParameters.tdKey) TimeOfDay td,
   });
 }
 
@@ -173,7 +173,7 @@ class __$BasicDatetimeTimedeltaQueryParametersCopyWithImpl<$Res>
             null == td
                 ? _self.td
                 : td // ignore: cast_nullable_to_non_nullable
-                    as String,
+                    as TimeOfDay,
       ),
     );
   }

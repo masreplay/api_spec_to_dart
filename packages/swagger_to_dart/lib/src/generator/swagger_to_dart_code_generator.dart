@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:code_builder/code_builder.dart';
@@ -14,6 +15,8 @@ class SwaggerToDartCodeGenerator {
 
   Future<void> generate() async {
     context.generate();
+
+    print(JsonEncoder.withIndent('  ').convert(context.config.toJson()));
 
     final dir = Directory(context.config.outputDirectory);
     print('Output directory: ${dir.path}');

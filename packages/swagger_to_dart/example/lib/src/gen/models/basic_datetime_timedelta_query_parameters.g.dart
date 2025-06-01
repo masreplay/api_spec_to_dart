@@ -8,8 +8,12 @@ part of 'basic_datetime_timedelta_query_parameters.dart';
 
 _BasicDatetimeTimedeltaQueryParameters
 _$BasicDatetimeTimedeltaQueryParametersFromJson(Map<String, dynamic> json) =>
-    _BasicDatetimeTimedeltaQueryParameters(td: json['td'] as String);
+    _BasicDatetimeTimedeltaQueryParameters(
+      td: const TimeOfDayStringJsonConverter().fromJson(json['td'] as String),
+    );
 
 Map<String, dynamic> _$BasicDatetimeTimedeltaQueryParametersToJson(
   _BasicDatetimeTimedeltaQueryParameters instance,
-) => <String, dynamic>{'td': instance.td};
+) => <String, dynamic>{
+  'td': const TimeOfDayStringJsonConverter().toJson(instance.td),
+};
