@@ -9,8 +9,8 @@ import 'exports.dart';
 ///     "description": "Comprehensive examples of types and routes in FastAPI",
 ///     "version": "1.0.0"
 /// }
-class FastApiClient {
-  FastApiClient(this.dio, {this.baseUrl, this.errorLogger});
+class CustomApiClient {
+  CustomApiClient(this.dio, {this.baseUrl, this.errorLogger});
 
   final String? baseUrl;
 

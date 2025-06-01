@@ -8,7 +8,7 @@ Future<void> main(List<String> args) async {
 
   dio.options.baseUrl = 'http://0.0.0.0:8004';
 
-  final apiClient = FastApiClient(dio);
+  final apiClient = CustomApiClient(dio);
 
   final HttpResponse<BaseResponse<PaginationResponse<ItemResponse>>> response =
       await apiClient.genericClient.genericGetNestedBaseAndPagination(

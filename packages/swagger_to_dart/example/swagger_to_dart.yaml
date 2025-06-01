@@ -10,7 +10,7 @@ swagger_to_dart:
     union_class_fallback_name: fallback
     enum_fallback_type: first
   api_client:
-    base_api_client_class_name: FastApiClient
+    base_api_client_class_name: CustomApiClient
     use_class_for_query_parameters: true
     skipped_parameters:
       - Language

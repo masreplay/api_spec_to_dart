@@ -1,3 +1,8 @@
+## 2.3.0
+
+- Pass `--config` flag to specify the configuration file
+- Fix `base_client_api.dart` file when passing custom name `` in the `export.dart` file
+
 ## 2.2.0
 
 - Fix Client name in `BaseApiClient` from `Cms` to `Cms`
