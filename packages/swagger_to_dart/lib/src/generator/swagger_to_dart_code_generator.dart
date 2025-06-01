@@ -5,6 +5,7 @@ import 'package:dart_style/dart_style.dart';
 import 'package:path/path.dart' as path;
 import 'package:swagger_to_dart/src/config/generation_context.dart';
 import 'package:swagger_to_dart/src/generator/base_api_client_generator.dart';
+import 'package:swagger_to_dart/src/utils/utils.dart';
 
 class SwaggerToDartCodeGenerator {
   const SwaggerToDartCodeGenerator(this.context);
@@ -25,7 +26,6 @@ class SwaggerToDartCodeGenerator {
     final genExportLibrary = Library((b) => b
       ..name = 'gen'
       ..directives.addAll([
-        Directive.export('api_client/base_api_client.dart'),
         Directive.export('api_client/api_client.dart'),
         Directive.export('models/models.dart'),
       ]));
@@ -178,13 +178,13 @@ const jsonSerializable = JsonSerializable(
       path.join(apiClientsDir.path, '${baseApiCLientLibrary.name}.dart'),
       baseApiCLientLibrary,
     );
-
+    final fileName = Renaming.instance.renameFile(baseApiCLientLibrary.name!);
     final baseLibrary = Library(
       (b) => b
         ..name = 'api_client.dart'
         ..directives.addAll([
           Directive.import('exports.dart'),
-          Directive.export('base_api_client.dart'),
+          Directive.export('${fileName}.dart'),
         ]),
     );
 
