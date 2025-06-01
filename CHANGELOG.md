@@ -1,3 +1,5 @@
+## Next Release
+
 ## 2.3.0
 
 - Pass `--config` flag to specify the configuration file
