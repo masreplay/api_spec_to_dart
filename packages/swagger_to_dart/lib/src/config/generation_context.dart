@@ -23,21 +23,7 @@ class GenerationContext {
     return pubspec.dependencies.containsKey('flutter');
   }
 
-  PropertyGeneratorStrategy get propertyGenerator {
-    return PropertyGeneratorStrategy(this);
-  }
-
-  ApiClientGenerator get apiClientGenerator {
-    return ApiClientGenerator(this);
-  }
-
-  OpenApiSchemaDartTypeConverter get typeConverter {
-    return OpenApiSchemaDartTypeConverter(this);
-  }
-
-  ModelGenerator get modelGenerator {
-    return ModelGenerator(this);
-  }
+  ContextExtension get extension => ContextExtension(this);
 
   final Map<String, Library> _models = <String, Library>{};
   List<Library> get models => _models.values.toList();
@@ -72,9 +58,28 @@ class GenerationContext {
   }
 
   void generate() {
-    modelGenerator.generate();
-    apiClientGenerator.generate();
+    extension.modelGenerator.generate();
+    extension.apiClientGenerator.generate();
   }
+}
+
+class ContextExtension {
+  ContextExtension(this.context);
+
+  final GenerationContext context;
+
+  PropertyGeneratorStrategy get propertyGenerator {
+    return PropertyGeneratorStrategy(context);
+  }
+
+  ApiClientGenerator get apiClientGenerator {
+    return ApiClientGenerator(context);
+  }
+
+  OpenApiSchemaDartTypeConverter get typeConverter =>
+      OpenApiSchemaDartTypeConverter(context);
+
+  ModelGenerator get modelGenerator => ModelGenerator(context);
 }
 
 /// Handles setup and validation for the code generator

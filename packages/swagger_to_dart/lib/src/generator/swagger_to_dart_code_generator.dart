@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:code_builder/code_builder.dart';
@@ -5,6 +6,7 @@ import 'package:dart_style/dart_style.dart';
 import 'package:path/path.dart' as path;
 import 'package:swagger_to_dart/src/config/generation_context.dart';
 import 'package:swagger_to_dart/src/generator/base_api_client_generator.dart';
+import 'package:swagger_to_dart/src/generator/model/json_serialization_convertor_generator.dart';
 
 class SwaggerToDartCodeGenerator {
   const SwaggerToDartCodeGenerator(this.context);
@@ -13,6 +15,8 @@ class SwaggerToDartCodeGenerator {
 
   Future<void> generate() async {
     context.generate();
+
+    print(JsonEncoder.withIndent('  ').convert(context.config.toJson()));
 
     final dir = Directory(context.config.outputDirectory);
     print('Output directory: ${dir.path}');
@@ -75,44 +79,8 @@ class SwaggerToDartCodeGenerator {
       mainLibrary,
     );
 
-    final jsonConverterLibrary = Library(
-      (b) => b
-        ..name = 'json_converter'
-        ..directives.addAll([
-          Directive.import('package:dio/dio.dart'),
-          Directive.import('models.dart'),
-          Directive.import('package:json_annotation/json_annotation.dart'),
-        ])
-        ..body.addAll([
-          ...context.jsonConvertor,
-          // TODO(masreplay): use builder
-          CodeExpression(
-            Code(
-              '''
-class MultipartFileJsonConverter implements JsonConverter<MultipartFile, MultipartFile> {
-  const MultipartFileJsonConverter();
-
-  @override
-  MultipartFile fromJson(MultipartFile json) => json;
-
-  @override
-  MultipartFile toJson(MultipartFile object) => object;
-}
-''',
-            ),
-          ),
-          Code('''
-const jsonSerializableConverters = <JsonConverter>[
-  MultipartFileJsonConverter(),
-  ${context.jsonConvertor.map((e) => '${e.name}()').join(',\n')}
-];
-
-const jsonSerializable = JsonSerializable(
-  converters: jsonSerializableConverters,
-);
-''')
-        ]),
-    );
+    final (library: jsonConverterLibrary, directives: jsonConverterDirectives) =
+        JsonConvertorGenerator(context).build();
 
     await writeDartLibraryFile(
       path.join(modelsDir.path, '${jsonConverterLibrary.name!}.dart'),
@@ -123,6 +91,7 @@ const jsonSerializable = JsonSerializable(
       (b) => b
         ..name = 'exports'
         ..directives.addAll([
+          ...jsonConverterDirectives,
           Directive.export('models.dart'),
           Directive.import('package:dio/dio.dart'),
           Directive.import(

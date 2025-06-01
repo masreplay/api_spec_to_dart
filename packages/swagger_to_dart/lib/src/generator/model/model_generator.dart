@@ -9,11 +9,9 @@ import 'strategy/regular_model_generator_strategy.dart';
 ///
 /// Generate Enum, Union, Regular models
 ///
-class ModelGenerator
-    extends LibraryGenerator<MapEntry<String, OpenApiSchemas>> {
+class ModelGenerator extends LibraryGenerator {
   const ModelGenerator(super.context);
 
-  @override
   Library build(MapEntry<String, OpenApiSchemas> model) {
     final schema = model.value;
 

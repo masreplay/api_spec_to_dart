@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 mixin _$BasicDatetimeTimeQueryParameters {
   /// t
   @JsonKey(name: BasicDatetimeTimeQueryParameters.tKey)
-  String get t;
+  TimeOfDay get t;
 
   /// Create a copy of BasicDatetimeTimeQueryParameters
   /// with the given fields replaced by the non-null parameter values.
@@ -55,7 +55,9 @@ abstract mixin class $BasicDatetimeTimeQueryParametersCopyWith<$Res> {
     $Res Function(BasicDatetimeTimeQueryParameters) _then,
   ) = _$BasicDatetimeTimeQueryParametersCopyWithImpl;
   @useResult
-  $Res call({@JsonKey(name: BasicDatetimeTimeQueryParameters.tKey) String t});
+  $Res call({
+    @JsonKey(name: BasicDatetimeTimeQueryParameters.tKey) TimeOfDay t,
+  });
 }
 
 /// @nodoc
@@ -77,7 +79,7 @@ class _$BasicDatetimeTimeQueryParametersCopyWithImpl<$Res>
             null == t
                 ? _self.t
                 : t // ignore: cast_nullable_to_non_nullable
-                    as String,
+                    as TimeOfDay,
       ),
     );
   }
@@ -98,7 +100,7 @@ class _BasicDatetimeTimeQueryParameters
   /// t
   @override
   @JsonKey(name: BasicDatetimeTimeQueryParameters.tKey)
-  final String t;
+  final TimeOfDay t;
 
   /// Create a copy of BasicDatetimeTimeQueryParameters
   /// with the given fields replaced by the non-null parameter values.
@@ -142,7 +144,9 @@ abstract mixin class _$BasicDatetimeTimeQueryParametersCopyWith<$Res>
   ) = __$BasicDatetimeTimeQueryParametersCopyWithImpl;
   @override
   @useResult
-  $Res call({@JsonKey(name: BasicDatetimeTimeQueryParameters.tKey) String t});
+  $Res call({
+    @JsonKey(name: BasicDatetimeTimeQueryParameters.tKey) TimeOfDay t,
+  });
 }
 
 /// @nodoc
@@ -164,7 +168,7 @@ class __$BasicDatetimeTimeQueryParametersCopyWithImpl<$Res>
             null == t
                 ? _self.t
                 : t // ignore: cast_nullable_to_non_nullable
-                    as String,
+                    as TimeOfDay,
       ),
     );
   }

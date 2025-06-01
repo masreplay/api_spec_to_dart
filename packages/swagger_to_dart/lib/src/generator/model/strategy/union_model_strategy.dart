@@ -33,7 +33,7 @@ class UnionModelStrategy
     final unions = params.refSchemaMap.entries.map((entry) {
       final name = entry.key;
 
-      final type = context.typeConverter.get(
+      final type = context.extension.typeConverter.get(
         entry.value,
         className: className,
       );
@@ -270,7 +270,7 @@ class UnionModelStrategy
       schema.title ??
           schemas
               .whereType<OpenApiSchemaRef>()
-              .map(context.typeConverter.getRef)
+              .map(context.extension.typeConverter.getRef)
               .map(Renaming.instance.renameClass)
               .sorted((a, b) => a.compareTo(b))
               .join(),

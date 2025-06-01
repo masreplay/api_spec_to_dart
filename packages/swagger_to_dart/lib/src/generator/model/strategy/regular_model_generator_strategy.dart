@@ -77,7 +77,7 @@ class RegularModelGeneratorStrategy
                     ..redirect = refer('_${className}')
                     ..optionalParameters.addAll([
                       ...properties.entries.map((entry) {
-                        return context.propertyGenerator.build(
+                        return context.extension.propertyGenerator.build(
                           entry,
                           className: className,
                         );
@@ -179,7 +179,7 @@ class RegularModelGeneratorStrategy
                 ..redirect = refer('_$className<$genericType>')
                 ..optionalParameters.addAll([
                   ...properties.entries.map((entry) {
-                    return context.propertyGenerator.build(
+                    return context.extension.propertyGenerator.build(
                       entry,
                       className: className,
                       overrideTypes: {genericType: genericClass},
