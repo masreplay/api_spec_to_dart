@@ -3,6 +3,8 @@ swagger_to_dart:
   input_directory: schema/swagger.json
   output_directory: lib/src/gen
 
+  generation_source: fastAPI
+
   model:
     support_generic_arguments: true
     union_class_fallback_name: fallback

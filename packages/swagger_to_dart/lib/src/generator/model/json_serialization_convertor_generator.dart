@@ -2,7 +2,7 @@ import 'package:code_builder/code_builder.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 typedef _CustomJsonConverter = ({
-  String className,
+  String classCall,
   List<Directive> directives,
   String code,
 });
@@ -46,7 +46,7 @@ class JsonConvertorGenerator extends LibraryGenerator {
           for (final entry in customJsonConverters) Code(entry.code),
           Code('''
 const jsonSerializableConverters = <JsonConverter>[
-  ${customJsonConverters.map((e) => '${e.className}()').join(',\n')}
+  ${customJsonConverters.map((e) => '${e.classCall}').join(',\n')}
   ${context.jsonConvertor.map((e) => '${e.name}()').join(',\n')}
 ];
 
@@ -61,18 +61,22 @@ const jsonSerializable = JsonSerializable(
       library: library,
       directives: [
         ...library.directives,
-        ...customJsonConverters.map((e) => Directive.export(e.className)),
+        ...customJsonConverters.expand((e) => e.directives),
       ]
     );
   }
 
   _CustomJsonConverter getFastAPIMultipartFileJsonConvertor() {
-    final String className = 'MultipartFileJsonConverter';
     return (
-      className: className,
-      code: '''
-class $className implements JsonConverter<MultipartFile, MultipartFile> {
-  const $className();
+      classCall: 'MultipartFileJsonConverter()',
+      directives: [
+        Directive.import('package:dio/dio.dart'),
+        Directive.import('package:json_annotation/json_annotation.dart'),
+      ],
+      code: r'''
+class MultipartFileJsonConverter
+    implements JsonConverter<MultipartFile, MultipartFile> {
+  const MultipartFileJsonConverter();
 
   @override
   MultipartFile fromJson(MultipartFile json) => json;
@@ -85,35 +89,52 @@ class $className implements JsonConverter<MultipartFile, MultipartFile> {
   }
 
   _CustomJsonConverter getTimeOfDayStringJsonConvertor() {
-    final String className = 'TimeOfDayStringJsonConverter';
     return (
-      className: className,
-      directives: [],
-      code: '''
-class $className implements JsonConverter<TimeOfDay, String> {
-  const $className();
+      classCall: 'TimeOfDayStringJsonConverter()',
+      directives: [
+        Directive.import('package:flutter/material.dart'),
+        Directive.import('package:json_annotation/json_annotation.dart'),
+      ],
+      code: r'''
+class TimeOfDayStringJsonConverter implements JsonConverter<TimeOfDay, String> {
+  const TimeOfDayStringJsonConverter();
 
+  // 1:30:00 -> 1:30
+  // PT1H30M -> 1:30:00
   @override
   TimeOfDay fromJson(String json) {
     if (json.contains(':')) {
       final time = json.split(':');
-      return TimeOfDay(hour: int.parse(time[0]), minute: int.parse(time[1]));
+      return TimeOfDay(
+        hour: int.tryParse(time[0]) ?? 0,
+        minute: int.tryParse(time[1]) ?? 0,
+      );
     } else {
       final regex = RegExp(r'PT(?:(\d+)H)?(?:(\d+)M)?');
       final match = regex.firstMatch(json);
 
-      int hours = match?.group(1) != null ? int.parse(match!.group(1)!) : 0;
-      int minutes = match?.group(2) != null ? int.parse(match!.group(2)!) : 0;
+      final hours =
+          match?.group(1) != null ? int.tryParse(match!.group(1)!) ?? 0 : 0;
+      final minutes =
+          match?.group(2) != null ? int.tryParse(match!.group(2)!) ?? 0 : 0;
 
-      return TimeOfDay(hour: hours, minute: minutes);
+      return TimeOfDay(
+        hour: hours,
+        minute: minutes,
+      );
     }
   }
 
+  // 1:30 -> 1:30:00
   @override
   String toJson(TimeOfDay object) {
-    return '\${object.hour.toString().padLeft(2, '0')}:\${object.minute.toString().padLeft(2, '0')}:00';
+    final hour = object.hour.toString().padLeft(2, '0');
+    final minute = object.minute.toString().padLeft(2, '0');
+    final second = '00';
+
+    return '$hour:$minute:$second';
   }
-} 
+}
 ''',
     );
   }
