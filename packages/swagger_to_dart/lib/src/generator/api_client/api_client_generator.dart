@@ -280,6 +280,16 @@ class ApiClientGenerator {
                           ])
                           ..annotations.addAll([
                             refer('$methodType("${path.key}")'),
+
+                            //if requestBody is FormUrlEncoded or MultiPart must add @FormUrlEncoded or @MultiPart
+                            if (method.value.requestBody?.content
+                                    .applicationXWwwFormUrlencoded !=
+                                null)
+                              refer('FormUrlEncoded()'),
+                            if (method.value.requestBody?.content
+                                    .multipartFormData !=
+                                null)
+                              refer('MultiPart()'),
                           ])
                           ..returns = responseType
                           ..name = methodName
@@ -339,7 +349,8 @@ class ApiClientGenerator {
     final useClass = context.config.apiClient.useClassForQueryParameters;
     final skippedParameters = context.config.apiClient.skippedParameters;
 
-    parameters = parameters.where((e) => !skippedParameters.contains(e.name)).toList();
+    parameters =
+        parameters.where((e) => !skippedParameters.contains(e.name)).toList();
 
     final queryParameters =
         parameters.where((e) => e.in_ == OpenApiPathMethodParameterType.query);
@@ -427,7 +438,7 @@ class ApiClientGenerator {
     if (requestBody?.content.applicationXWwwFormUrlencoded case final body?) {
       return Parameter((b) => b
         ..annotations.addAll([
-          refer('$FormUrlEncoded()'),
+          refer('$Body()'),
         ])
         ..name = 'requestBody'
         ..named = true
@@ -441,7 +452,7 @@ class ApiClientGenerator {
     } else if (requestBody?.content.multipartFormData case final body?) {
       return Parameter((b) => b
         ..annotations.addAll([
-          refer('$MultiPart()'),
+          refer('$Body()'),
         ])
         ..name = 'requestBody'
         ..named = true
