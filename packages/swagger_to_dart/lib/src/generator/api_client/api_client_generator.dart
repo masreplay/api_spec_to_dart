@@ -124,6 +124,13 @@ import 'package:swagger_to_dart/src/swagger_to_dart_base.dart';
 /// }
 /// ```
 
+typedef _MultipartMethodInfo = ({
+  String methodName,
+  Reference responseType,
+  List<Parameter> parameters,
+  Reference requestBodyType,
+});
+
 class ApiClientGenerator {
   const ApiClientGenerator(this.context);
 
@@ -186,12 +193,16 @@ class ApiClientGenerator {
   ///   @GET('/api/v1/common/settings/')
   ///   Future<HttpResponse<BaseResponseAppSettingsResponse>>
   ///   settingsGetAppSettings();
+
   Library build({
     required String clientName,
     required OpenApiPaths paths,
   }) {
     final fileName = Renaming.instance.renameFile('${clientName}_client');
     final className = Recase.instance.toPascalCase(fileName);
+
+    // Collect multipart methods for extension generation
+    final List<_MultipartMethodInfo> multipartMethods = [];
 
     return Library(
       (b) => b
@@ -248,10 +259,17 @@ class ApiClientGenerator {
                           method.key.name,
                         );
 
-                        final methodName = Renaming.instance.renameFunction(
+                        final baseMethodName = Renaming.instance.renameFunction(
                           method.value.operationId ??
                               '${clientName}_${path.key}_${method.key.name}',
                         );
+
+                        final isMultipart = method
+                                .value.requestBody?.content.multipartFormData !=
+                            null;
+
+                        final methodName =
+                            isMultipart ? '_$baseMethodName' : baseMethodName;
 
                         final parameters = _handleParameters(
                           method.value.parameters ?? [],
@@ -269,6 +287,24 @@ class ApiClientGenerator {
                           className,
                         );
 
+                        // Store multipart method info for extension
+                        if (isMultipart && requestBody != null) {
+                          final body = method
+                              .value.requestBody!.content.multipartFormData;
+
+                          multipartMethods.add((
+                            methodName: methodName,
+                            responseType: responseType,
+                            parameters: parameters,
+                            requestBodyType: refer(
+                              context.extension.typeConverter.get(
+                                body!.schema,
+                                className: className,
+                              ),
+                            ),
+                          ));
+                        }
+
                         b
                           ..docs.addAll([
                             '/// ${method.key.name}',
@@ -280,53 +316,60 @@ class ApiClientGenerator {
                           ])
                           ..annotations.addAll([
                             refer('$methodType("${path.key}")'),
+                            // if requestBody is FormUrlEncoded or MultiPart
+                            // must add @FormUrlEncoded or @MultiPart
+                            if (method.value.requestBody?.content
+                                    .applicationXWwwFormUrlencoded !=
+                                null)
+                              refer('FormUrlEncoded()')
+                            else if (method.value.requestBody?.content
+                                    .multipartFormData !=
+                                null)
+                              refer('MultiPart()'),
                           ])
                           ..returns = responseType
                           ..name = methodName
                           ..optionalParameters.addAll([
                             if (requestBody != null) requestBody,
                             ...parameters,
-                            Parameter(
-                              (b) => b
-                                ..annotations.addAll([
-                                  refer('$Extras()'),
-                                ])
-                                ..named = true
-                                ..name = 'extras'
-                                ..type = refer('Map<String, dynamic>?'),
-                            ),
-                            Parameter(
-                              (b) => b
-                                ..annotations.addAll([
-                                  refer('$CancelRequest()'),
-                                ])
-                                ..named = true
-                                ..name = 'cancelToken'
-                                ..type = refer('$CancelToken?'),
-                            ),
-                            Parameter(
-                              (b) => b
-                                ..annotations.addAll([
-                                  refer('$SendProgress()'),
-                                ])
-                                ..named = true
-                                ..name = 'onSendProgress'
-                                ..type = refer('ProgressCallback?'),
-                            ),
-                            Parameter(
-                              (b) => b
-                                ..annotations.addAll([
-                                  refer('$ReceiveProgress()'),
-                                ])
-                                ..named = true
-                                ..name = 'onReceiveProgress'
-                                ..type = refer('ProgressCallback?'),
-                            ),
+                            ..._optionalParameters,
                           ]);
                       },
                     ),
               ]),
           ),
+          // Add extension for multipart methods
+          if (multipartMethods.isNotEmpty)
+            Extension(
+              (b) => b
+                ..name = '${className}Extension'
+                ..on = refer(className)
+                ..methods.addAll([
+                  for (final methodInfo in multipartMethods)
+                    Method(
+                      (b) => b
+                        ..returns = methodInfo.responseType
+                        ..name = methodInfo.methodName.replaceAll('_', '')
+                        ..optionalParameters.addAll([
+                          Parameter(
+                            (b) => b
+                              ..named = true
+                              ..required = true
+                              ..name = 'requestBody'
+                              ..type = methodInfo.requestBodyType,
+                          ),
+                          ..._extensionOptionalParameters,
+                        ])
+                        ..body = Code('return ${methodInfo.methodName}('
+                            'requestBody: requestBody.toJson(), '
+                            'extras: extras, '
+                            'cancelToken: cancelToken, '
+                            'onSendProgress: onSendProgress, '
+                            'onReceiveProgress: onReceiveProgress'
+                            ');'),
+                    ),
+                ]),
+            ),
         ]),
     );
   }
@@ -339,7 +382,8 @@ class ApiClientGenerator {
     final useClass = context.config.apiClient.useClassForQueryParameters;
     final skippedParameters = context.config.apiClient.skippedParameters;
 
-    parameters = parameters.where((e) => !skippedParameters.contains(e.name)).toList();
+    parameters =
+        parameters.where((e) => !skippedParameters.contains(e.name)).toList();
 
     final queryParameters =
         parameters.where((e) => e.in_ == OpenApiPathMethodParameterType.query);
@@ -427,7 +471,7 @@ class ApiClientGenerator {
     if (requestBody?.content.applicationXWwwFormUrlencoded case final body?) {
       return Parameter((b) => b
         ..annotations.addAll([
-          refer('$FormUrlEncoded()'),
+          refer('$Body()'),
         ])
         ..name = 'requestBody'
         ..named = true
@@ -441,17 +485,12 @@ class ApiClientGenerator {
     } else if (requestBody?.content.multipartFormData case final body?) {
       return Parameter((b) => b
         ..annotations.addAll([
-          refer('$MultiPart()'),
+          refer('$Part()'),
         ])
         ..name = 'requestBody'
         ..named = true
         ..required = true
-        ..type = refer(
-          context.extension.typeConverter.get(
-            body.schema,
-            className: className,
-          ),
-        ));
+        ..type = refer('Map<String, dynamic>'));
     } else if (requestBody?.content.applicationJson case final body?) {
       return Parameter((b) => b
         ..annotations.addAll([
@@ -488,4 +527,70 @@ class ApiClientGenerator {
         ? refer('Future<HttpResponse>')
         : refer('Future<HttpResponse<${responseTypeString}>>');
   }
+
+  List<Parameter> get _optionalParameters => [
+        Parameter(
+          (b) => b
+            ..annotations.addAll([
+              refer('$Extras()'),
+            ])
+            ..named = true
+            ..name = 'extras'
+            ..type = refer('Map<String, dynamic>?'),
+        ),
+        Parameter(
+          (b) => b
+            ..annotations.addAll([
+              refer('$CancelRequest()'),
+            ])
+            ..named = true
+            ..name = 'cancelToken'
+            ..type = refer('$CancelToken?'),
+        ),
+        Parameter(
+          (b) => b
+            ..annotations.addAll([
+              refer('$SendProgress()'),
+            ])
+            ..named = true
+            ..name = 'onSendProgress'
+            ..type = refer('ProgressCallback?'),
+        ),
+        Parameter(
+          (b) => b
+            ..annotations.addAll([
+              refer('$ReceiveProgress()'),
+            ])
+            ..named = true
+            ..name = 'onReceiveProgress'
+            ..type = refer('ProgressCallback?'),
+        ),
+      ];
+
+  List<Parameter> get _extensionOptionalParameters => [
+        Parameter(
+          (b) => b
+            ..named = true
+            ..name = 'extras'
+            ..type = refer('Map<String, dynamic>?'),
+        ),
+        Parameter(
+          (b) => b
+            ..named = true
+            ..name = 'cancelToken'
+            ..type = refer('$CancelToken?'),
+        ),
+        Parameter(
+          (b) => b
+            ..named = true
+            ..name = 'onSendProgress'
+            ..type = refer('ProgressCallback?'),
+        ),
+        Parameter(
+          (b) => b
+            ..named = true
+            ..name = 'onReceiveProgress'
+            ..type = refer('ProgressCallback?'),
+        ),
+      ];
 }
