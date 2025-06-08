@@ -1,0 +1,145 @@
+{
+  "roots": [
+    "api_spec_to_dart"
+  ],
+  "packages": [
+    {
+      "name": "api_spec_to_dart",
+      "version": "1.0.0",
+      "dependencies": [
+        "postman_collection"
+      ],
+      "devDependencies": [
+        "lints"
+      ]
+    },
+    {
+      "name": "lints",
+      "version": "4.0.0",
+      "dependencies": []
+    },
+    {
+      "name": "postman_collection",
+      "version": "0.0.9",
+      "dependencies": [
+        "dio",
+        "freezed_annotation",
+        "json_annotation",
+        "retrofit"
+      ]
+    },
+    {
+      "name": "retrofit",
+      "version": "4.4.2",
+      "dependencies": [
+        "dio",
+        "meta"
+      ]
+    },
+    {
+      "name": "json_annotation",
+      "version": "4.9.0",
+      "dependencies": [
+        "meta"
+      ]
+    },
+    {
+      "name": "freezed_annotation",
+      "version": "2.4.4",
+      "dependencies": [
+        "collection",
+        "json_annotation",
+        "meta"
+      ]
+    },
+    {
+      "name": "dio",
+      "version": "5.8.0+1",
+      "dependencies": [
+        "async",
+        "collection",
+        "dio_web_adapter",
+        "http_parser",
+        "meta",
+        "path"
+      ]
+    },
+    {
+      "name": "meta",
+      "version": "1.17.0",
+      "dependencies": []
+    },
+    {
+      "name": "collection",
+      "version": "1.19.1",
+      "dependencies": []
+    },
+    {
+      "name": "dio_web_adapter",
+      "version": "2.1.1",
+      "dependencies": [
+        "dio",
+        "http_parser",
+        "meta",
+        "web"
+      ]
+    },
+    {
+      "name": "path",
+      "version": "1.9.1",
+      "dependencies": []
+    },
+    {
+      "name": "http_parser",
+      "version": "4.1.2",
+      "dependencies": [
+        "collection",
+        "source_span",
+        "string_scanner",
+        "typed_data"
+      ]
+    },
+    {
+      "name": "async",
+      "version": "2.13.0",
+      "dependencies": [
+        "collection",
+        "meta"
+      ]
+    },
+    {
+      "name": "web",
+      "version": "1.1.1",
+      "dependencies": []
+    },
+    {
+      "name": "typed_data",
+      "version": "1.4.0",
+      "dependencies": [
+        "collection"
+      ]
+    },
+    {
+      "name": "string_scanner",
+      "version": "1.4.1",
+      "dependencies": [
+        "source_span"
+      ]
+    },
+    {
+      "name": "source_span",
+      "version": "1.10.1",
+      "dependencies": [
+        "collection",
+        "path",
+        "term_glyph"
+      ]
+    },
+    {
+      "name": "term_glyph",
+      "version": "1.2.2",
+      "dependencies": []
+    }
+  ],
+  "configVersion": 1
+}
