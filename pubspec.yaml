@@ -7,9 +7,17 @@ funding: [https://github.com/sponsors/masreplay]
 topics: [swagger, openapi, postman, freezed, retrofit]
 
 environment:
-  sdk: ">=3.8.0 <4.0.0"
+  sdk: ">=3.5.0 <4.0.0"
+
+dependencies:
+  postman_collection: ^0.0.9
+  swagger_to_dart: ^2.3.0
+
+dependency_overrides:
+  postman_collection:
+    path: ./packages/swagger_to_dart
+  swagger_to_dart:
+    path: ./packages/swagger_to_dart
 
 dev_dependencies:
   lints: ^4.0.0
-dependencies:
-  postman_collection: ^0.0.9

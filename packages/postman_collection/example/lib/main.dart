@@ -59,7 +59,6 @@ class AppClientDoc with PostmanCollectionDocumentationMixin {
       item: await Future.wait([
         getAppDataDoc(),
         getUploadFileDoc(),
-
       ]),
     );
   }

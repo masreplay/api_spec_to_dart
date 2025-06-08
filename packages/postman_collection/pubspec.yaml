@@ -6,7 +6,7 @@ repository: https://github.com/masreplay/postman_collection
 topics: [postman, dio, doc, documentation, dart]
 
 environment:
-  sdk: ^3.4.0
+  sdk: ">=3.5.0 <4.0.0"
 
 dependencies:
   dio: ^5.5.0+1
