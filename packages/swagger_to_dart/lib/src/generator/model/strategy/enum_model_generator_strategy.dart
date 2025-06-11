@@ -71,6 +71,31 @@ class EnumModelGeneratorStrategy
                       ..name = Renaming.instance.renameEnumValue(value),
                   ),
               ])
+              //             factory Currency.fromJson(value) {
+              //   return values.firstWhere(
+              //     (e) => e.toJson() == value,
+              //     orElse: () => values.first,
+              //   );
+              // }
+              ..constructors.addAll([
+                Constructor(
+                  (b) => b
+                    ..factory = true
+                    ..name = 'fromJson'
+                    ..requiredParameters.addAll([
+                      Parameter(
+                        (b) => b
+                          ..name = 'json'
+                          ..type = refer('Object'),
+                      ),
+                    ])
+                    ..lambda = true
+                    // TODO(masreplay): handle value.first based on value from config
+                    ..body = Code(
+                      '''values.firstWhere((e) => e.toJson() == json, orElse: () => values.first)''',
+                    ),
+                ),
+              ])
               ..methods.addAll([
                 Method(
                   (b) => b
