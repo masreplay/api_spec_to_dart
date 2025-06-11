@@ -31,11 +31,10 @@ mixin _$ValidationParamQueryQueryParameters {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $ValidationParamQueryQueryParametersCopyWith<
-    ValidationParamQueryQueryParameters
-  >
-  get copyWith => _$ValidationParamQueryQueryParametersCopyWithImpl<
-    ValidationParamQueryQueryParameters
-  >(this as ValidationParamQueryQueryParameters, _$identity);
+          ValidationParamQueryQueryParameters>
+      get copyWith => _$ValidationParamQueryQueryParametersCopyWithImpl<
+              ValidationParamQueryQueryParameters>(
+          this as ValidationParamQueryQueryParameters, _$identity);
 
   /// Serializes this ValidationParamQueryQueryParameters to a JSON map.
   Map<String, dynamic> toJson();
@@ -63,15 +62,14 @@ mixin _$ValidationParamQueryQueryParameters {
 /// @nodoc
 abstract mixin class $ValidationParamQueryQueryParametersCopyWith<$Res> {
   factory $ValidationParamQueryQueryParametersCopyWith(
-    ValidationParamQueryQueryParameters value,
-    $Res Function(ValidationParamQueryQueryParameters) _then,
-  ) = _$ValidationParamQueryQueryParametersCopyWithImpl;
+          ValidationParamQueryQueryParameters value,
+          $Res Function(ValidationParamQueryQueryParameters) _then) =
+      _$ValidationParamQueryQueryParametersCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: ValidationParamQueryQueryParameters.qKey) String? q,
-    @JsonKey(name: ValidationParamQueryQueryParameters.skipKey) int skip,
-    @JsonKey(name: ValidationParamQueryQueryParameters.limitKey) int limit,
-  });
+  $Res call(
+      {@JsonKey(name: ValidationParamQueryQueryParameters.qKey) String? q,
+      @JsonKey(name: ValidationParamQueryQueryParameters.skipKey) int skip,
+      @JsonKey(name: ValidationParamQueryQueryParameters.limitKey) int limit});
 }
 
 /// @nodoc
@@ -86,26 +84,25 @@ class _$ValidationParamQueryQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? q = freezed, Object? skip = null, Object? limit = null}) {
-    return _then(
-      _self.copyWith(
-        q:
-            freezed == q
-                ? _self.q
-                : q // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        skip:
-            null == skip
-                ? _self.skip
-                : skip // ignore: cast_nullable_to_non_nullable
-                    as int,
-        limit:
-            null == limit
-                ? _self.limit
-                : limit // ignore: cast_nullable_to_non_nullable
-                    as int,
-      ),
-    );
+  $Res call({
+    Object? q = freezed,
+    Object? skip = null,
+    Object? limit = null,
+  }) {
+    return _then(_self.copyWith(
+      q: freezed == q
+          ? _self.q
+          : q // ignore: cast_nullable_to_non_nullable
+              as String?,
+      skip: null == skip
+          ? _self.skip
+          : skip // ignore: cast_nullable_to_non_nullable
+              as int,
+      limit: null == limit
+          ? _self.limit
+          : limit // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
@@ -114,15 +111,15 @@ class _$ValidationParamQueryQueryParametersCopyWithImpl<$Res>
 @jsonSerializable
 class _ValidationParamQueryQueryParameters
     extends ValidationParamQueryQueryParameters {
-  const _ValidationParamQueryQueryParameters({
-    @JsonKey(name: ValidationParamQueryQueryParameters.qKey) required this.q,
-    @JsonKey(name: ValidationParamQueryQueryParameters.skipKey) this.skip = 0,
-    @JsonKey(name: ValidationParamQueryQueryParameters.limitKey)
-    this.limit = 10,
-  }) : super._();
+  const _ValidationParamQueryQueryParameters(
+      {@JsonKey(name: ValidationParamQueryQueryParameters.qKey) required this.q,
+      @JsonKey(name: ValidationParamQueryQueryParameters.skipKey) this.skip = 0,
+      @JsonKey(name: ValidationParamQueryQueryParameters.limitKey)
+      this.limit = 10})
+      : super._();
   factory _ValidationParamQueryQueryParameters.fromJson(
-    Map<String, dynamic> json,
-  ) => _$ValidationParamQueryQueryParametersFromJson(json);
+          Map<String, dynamic> json) =>
+      _$ValidationParamQueryQueryParametersFromJson(json);
 
   /// q
   @override
@@ -145,15 +142,15 @@ class _ValidationParamQueryQueryParameters
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$ValidationParamQueryQueryParametersCopyWith<
-    _ValidationParamQueryQueryParameters
-  >
-  get copyWith => __$ValidationParamQueryQueryParametersCopyWithImpl<
-    _ValidationParamQueryQueryParameters
-  >(this, _$identity);
+          _ValidationParamQueryQueryParameters>
+      get copyWith => __$ValidationParamQueryQueryParametersCopyWithImpl<
+          _ValidationParamQueryQueryParameters>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$ValidationParamQueryQueryParametersToJson(this);
+    return _$ValidationParamQueryQueryParametersToJson(
+      this,
+    );
   }
 
   @override
@@ -180,16 +177,15 @@ class _ValidationParamQueryQueryParameters
 abstract mixin class _$ValidationParamQueryQueryParametersCopyWith<$Res>
     implements $ValidationParamQueryQueryParametersCopyWith<$Res> {
   factory _$ValidationParamQueryQueryParametersCopyWith(
-    _ValidationParamQueryQueryParameters value,
-    $Res Function(_ValidationParamQueryQueryParameters) _then,
-  ) = __$ValidationParamQueryQueryParametersCopyWithImpl;
+          _ValidationParamQueryQueryParameters value,
+          $Res Function(_ValidationParamQueryQueryParameters) _then) =
+      __$ValidationParamQueryQueryParametersCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: ValidationParamQueryQueryParameters.qKey) String? q,
-    @JsonKey(name: ValidationParamQueryQueryParameters.skipKey) int skip,
-    @JsonKey(name: ValidationParamQueryQueryParameters.limitKey) int limit,
-  });
+  $Res call(
+      {@JsonKey(name: ValidationParamQueryQueryParameters.qKey) String? q,
+      @JsonKey(name: ValidationParamQueryQueryParameters.skipKey) int skip,
+      @JsonKey(name: ValidationParamQueryQueryParameters.limitKey) int limit});
 }
 
 /// @nodoc
@@ -204,25 +200,24 @@ class __$ValidationParamQueryQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? q = freezed, Object? skip = null, Object? limit = null}) {
-    return _then(
-      _ValidationParamQueryQueryParameters(
-        q:
-            freezed == q
-                ? _self.q
-                : q // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        skip:
-            null == skip
-                ? _self.skip
-                : skip // ignore: cast_nullable_to_non_nullable
-                    as int,
-        limit:
-            null == limit
-                ? _self.limit
-                : limit // ignore: cast_nullable_to_non_nullable
-                    as int,
-      ),
-    );
+  $Res call({
+    Object? q = freezed,
+    Object? skip = null,
+    Object? limit = null,
+  }) {
+    return _then(_ValidationParamQueryQueryParameters(
+      q: freezed == q
+          ? _self.q
+          : q // ignore: cast_nullable_to_non_nullable
+              as String?,
+      skip: null == skip
+          ? _self.skip
+          : skip // ignore: cast_nullable_to_non_nullable
+              as int,
+      limit: null == limit
+          ? _self.limit
+          : limit // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }

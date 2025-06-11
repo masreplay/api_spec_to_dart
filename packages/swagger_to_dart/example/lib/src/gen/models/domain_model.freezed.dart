@@ -49,9 +49,8 @@ mixin _$DomainModel {
 /// @nodoc
 abstract mixin class $DomainModelCopyWith<$Res> {
   factory $DomainModelCopyWith(
-    DomainModel value,
-    $Res Function(DomainModel) _then,
-  ) = _$DomainModelCopyWithImpl;
+          DomainModel value, $Res Function(DomainModel) _then) =
+      _$DomainModelCopyWithImpl;
   @useResult
   $Res call({@JsonKey(name: DomainModel.domainKey) String domain});
 }
@@ -67,16 +66,15 @@ class _$DomainModelCopyWithImpl<$Res> implements $DomainModelCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? domain = null}) {
-    return _then(
-      _self.copyWith(
-        domain:
-            null == domain
-                ? _self.domain
-                : domain // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? domain = null,
+  }) {
+    return _then(_self.copyWith(
+      domain: null == domain
+          ? _self.domain
+          : domain // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -84,9 +82,9 @@ class _$DomainModelCopyWithImpl<$Res> implements $DomainModelCopyWith<$Res> {
 
 @jsonSerializable
 class _DomainModel extends DomainModel {
-  const _DomainModel({
-    @JsonKey(name: DomainModel.domainKey) required this.domain,
-  }) : super._();
+  const _DomainModel(
+      {@JsonKey(name: DomainModel.domainKey) required this.domain})
+      : super._();
   factory _DomainModel.fromJson(Map<String, dynamic> json) =>
       _$DomainModelFromJson(json);
 
@@ -105,7 +103,9 @@ class _DomainModel extends DomainModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$DomainModelToJson(this);
+    return _$DomainModelToJson(
+      this,
+    );
   }
 
   @override
@@ -130,9 +130,8 @@ class _DomainModel extends DomainModel {
 abstract mixin class _$DomainModelCopyWith<$Res>
     implements $DomainModelCopyWith<$Res> {
   factory _$DomainModelCopyWith(
-    _DomainModel value,
-    $Res Function(_DomainModel) _then,
-  ) = __$DomainModelCopyWithImpl;
+          _DomainModel value, $Res Function(_DomainModel) _then) =
+      __$DomainModelCopyWithImpl;
   @override
   @useResult
   $Res call({@JsonKey(name: DomainModel.domainKey) String domain});
@@ -149,15 +148,14 @@ class __$DomainModelCopyWithImpl<$Res> implements _$DomainModelCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? domain = null}) {
-    return _then(
-      _DomainModel(
-        domain:
-            null == domain
-                ? _self.domain
-                : domain // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? domain = null,
+  }) {
+    return _then(_DomainModel(
+      domain: null == domain
+          ? _self.domain
+          : domain // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }

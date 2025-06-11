@@ -23,11 +23,10 @@ mixin _$AdvancedErrorCustomQueryParameters {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $AdvancedErrorCustomQueryParametersCopyWith<
-    AdvancedErrorCustomQueryParameters
-  >
-  get copyWith => _$AdvancedErrorCustomQueryParametersCopyWithImpl<
-    AdvancedErrorCustomQueryParameters
-  >(this as AdvancedErrorCustomQueryParameters, _$identity);
+          AdvancedErrorCustomQueryParameters>
+      get copyWith => _$AdvancedErrorCustomQueryParametersCopyWithImpl<
+              AdvancedErrorCustomQueryParameters>(
+          this as AdvancedErrorCustomQueryParameters, _$identity);
 
   /// Serializes this AdvancedErrorCustomQueryParameters to a JSON map.
   Map<String, dynamic> toJson();
@@ -53,13 +52,12 @@ mixin _$AdvancedErrorCustomQueryParameters {
 /// @nodoc
 abstract mixin class $AdvancedErrorCustomQueryParametersCopyWith<$Res> {
   factory $AdvancedErrorCustomQueryParametersCopyWith(
-    AdvancedErrorCustomQueryParameters value,
-    $Res Function(AdvancedErrorCustomQueryParameters) _then,
-  ) = _$AdvancedErrorCustomQueryParametersCopyWithImpl;
+          AdvancedErrorCustomQueryParameters value,
+          $Res Function(AdvancedErrorCustomQueryParameters) _then) =
+      _$AdvancedErrorCustomQueryParametersCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: AdvancedErrorCustomQueryParameters.codeKey) int code,
-  });
+  $Res call(
+      {@JsonKey(name: AdvancedErrorCustomQueryParameters.codeKey) int code});
 }
 
 /// @nodoc
@@ -74,16 +72,15 @@ class _$AdvancedErrorCustomQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? code = null}) {
-    return _then(
-      _self.copyWith(
-        code:
-            null == code
-                ? _self.code
-                : code // ignore: cast_nullable_to_non_nullable
-                    as int,
-      ),
-    );
+  $Res call({
+    Object? code = null,
+  }) {
+    return _then(_self.copyWith(
+      code: null == code
+          ? _self.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
@@ -92,13 +89,13 @@ class _$AdvancedErrorCustomQueryParametersCopyWithImpl<$Res>
 @jsonSerializable
 class _AdvancedErrorCustomQueryParameters
     extends AdvancedErrorCustomQueryParameters {
-  const _AdvancedErrorCustomQueryParameters({
-    @JsonKey(name: AdvancedErrorCustomQueryParameters.codeKey)
-    required this.code,
-  }) : super._();
+  const _AdvancedErrorCustomQueryParameters(
+      {@JsonKey(name: AdvancedErrorCustomQueryParameters.codeKey)
+      required this.code})
+      : super._();
   factory _AdvancedErrorCustomQueryParameters.fromJson(
-    Map<String, dynamic> json,
-  ) => _$AdvancedErrorCustomQueryParametersFromJson(json);
+          Map<String, dynamic> json) =>
+      _$AdvancedErrorCustomQueryParametersFromJson(json);
 
   /// code
   @override
@@ -111,15 +108,15 @@ class _AdvancedErrorCustomQueryParameters
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$AdvancedErrorCustomQueryParametersCopyWith<
-    _AdvancedErrorCustomQueryParameters
-  >
-  get copyWith => __$AdvancedErrorCustomQueryParametersCopyWithImpl<
-    _AdvancedErrorCustomQueryParameters
-  >(this, _$identity);
+          _AdvancedErrorCustomQueryParameters>
+      get copyWith => __$AdvancedErrorCustomQueryParametersCopyWithImpl<
+          _AdvancedErrorCustomQueryParameters>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$AdvancedErrorCustomQueryParametersToJson(this);
+    return _$AdvancedErrorCustomQueryParametersToJson(
+      this,
+    );
   }
 
   @override
@@ -144,14 +141,13 @@ class _AdvancedErrorCustomQueryParameters
 abstract mixin class _$AdvancedErrorCustomQueryParametersCopyWith<$Res>
     implements $AdvancedErrorCustomQueryParametersCopyWith<$Res> {
   factory _$AdvancedErrorCustomQueryParametersCopyWith(
-    _AdvancedErrorCustomQueryParameters value,
-    $Res Function(_AdvancedErrorCustomQueryParameters) _then,
-  ) = __$AdvancedErrorCustomQueryParametersCopyWithImpl;
+          _AdvancedErrorCustomQueryParameters value,
+          $Res Function(_AdvancedErrorCustomQueryParameters) _then) =
+      __$AdvancedErrorCustomQueryParametersCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: AdvancedErrorCustomQueryParameters.codeKey) int code,
-  });
+  $Res call(
+      {@JsonKey(name: AdvancedErrorCustomQueryParameters.codeKey) int code});
 }
 
 /// @nodoc
@@ -166,15 +162,14 @@ class __$AdvancedErrorCustomQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? code = null}) {
-    return _then(
-      _AdvancedErrorCustomQueryParameters(
-        code:
-            null == code
-                ? _self.code
-                : code // ignore: cast_nullable_to_non_nullable
-                    as int,
-      ),
-    );
+  $Res call({
+    Object? code = null,
+  }) {
+    return _then(_AdvancedErrorCustomQueryParameters(
+      code: null == code
+          ? _self.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }

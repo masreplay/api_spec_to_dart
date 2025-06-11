@@ -56,14 +56,12 @@ mixin _$Coordinate {
 /// @nodoc
 abstract mixin class $CoordinateCopyWith<$Res> {
   factory $CoordinateCopyWith(
-    Coordinate value,
-    $Res Function(Coordinate) _then,
-  ) = _$CoordinateCopyWithImpl;
+          Coordinate value, $Res Function(Coordinate) _then) =
+      _$CoordinateCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: Coordinate.latitudeKey) double latitude,
-    @JsonKey(name: Coordinate.longitudeKey) double longitude,
-  });
+  $Res call(
+      {@JsonKey(name: Coordinate.latitudeKey) double latitude,
+      @JsonKey(name: Coordinate.longitudeKey) double longitude});
 }
 
 /// @nodoc
@@ -77,21 +75,20 @@ class _$CoordinateCopyWithImpl<$Res> implements $CoordinateCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? latitude = null, Object? longitude = null}) {
-    return _then(
-      _self.copyWith(
-        latitude:
-            null == latitude
-                ? _self.latitude
-                : latitude // ignore: cast_nullable_to_non_nullable
-                    as double,
-        longitude:
-            null == longitude
-                ? _self.longitude
-                : longitude // ignore: cast_nullable_to_non_nullable
-                    as double,
-      ),
-    );
+  $Res call({
+    Object? latitude = null,
+    Object? longitude = null,
+  }) {
+    return _then(_self.copyWith(
+      latitude: null == latitude
+          ? _self.latitude
+          : latitude // ignore: cast_nullable_to_non_nullable
+              as double,
+      longitude: null == longitude
+          ? _self.longitude
+          : longitude // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
   }
 }
 
@@ -99,10 +96,10 @@ class _$CoordinateCopyWithImpl<$Res> implements $CoordinateCopyWith<$Res> {
 
 @jsonSerializable
 class _Coordinate extends Coordinate {
-  const _Coordinate({
-    @JsonKey(name: Coordinate.latitudeKey) required this.latitude,
-    @JsonKey(name: Coordinate.longitudeKey) required this.longitude,
-  }) : super._();
+  const _Coordinate(
+      {@JsonKey(name: Coordinate.latitudeKey) required this.latitude,
+      @JsonKey(name: Coordinate.longitudeKey) required this.longitude})
+      : super._();
   factory _Coordinate.fromJson(Map<String, dynamic> json) =>
       _$CoordinateFromJson(json);
 
@@ -126,7 +123,9 @@ class _Coordinate extends Coordinate {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$CoordinateToJson(this);
+    return _$CoordinateToJson(
+      this,
+    );
   }
 
   @override
@@ -154,15 +153,13 @@ class _Coordinate extends Coordinate {
 abstract mixin class _$CoordinateCopyWith<$Res>
     implements $CoordinateCopyWith<$Res> {
   factory _$CoordinateCopyWith(
-    _Coordinate value,
-    $Res Function(_Coordinate) _then,
-  ) = __$CoordinateCopyWithImpl;
+          _Coordinate value, $Res Function(_Coordinate) _then) =
+      __$CoordinateCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: Coordinate.latitudeKey) double latitude,
-    @JsonKey(name: Coordinate.longitudeKey) double longitude,
-  });
+  $Res call(
+      {@JsonKey(name: Coordinate.latitudeKey) double latitude,
+      @JsonKey(name: Coordinate.longitudeKey) double longitude});
 }
 
 /// @nodoc
@@ -176,20 +173,19 @@ class __$CoordinateCopyWithImpl<$Res> implements _$CoordinateCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? latitude = null, Object? longitude = null}) {
-    return _then(
-      _Coordinate(
-        latitude:
-            null == latitude
-                ? _self.latitude
-                : latitude // ignore: cast_nullable_to_non_nullable
-                    as double,
-        longitude:
-            null == longitude
-                ? _self.longitude
-                : longitude // ignore: cast_nullable_to_non_nullable
-                    as double,
-      ),
-    );
+  $Res call({
+    Object? latitude = null,
+    Object? longitude = null,
+  }) {
+    return _then(_Coordinate(
+      latitude: null == latitude
+          ? _self.latitude
+          : latitude // ignore: cast_nullable_to_non_nullable
+              as double,
+      longitude: null == longitude
+          ? _self.longitude
+          : longitude // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
   }
 }

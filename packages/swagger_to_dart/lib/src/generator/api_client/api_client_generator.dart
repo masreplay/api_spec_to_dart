@@ -197,7 +197,7 @@ class ApiClientGenerator {
 
     final methods = <Method>[];
 
-    for (final path in paths.entries)
+    for (final path in paths.entries) {
       for (final method in path.value.entries) {
         final methodType = Recase.instance.toScreamingSnakeCase(
           method.key.name,
@@ -279,7 +279,7 @@ class ApiClientGenerator {
                   ])
                   ..body = Block.of([
                     Code(
-                        'return _${methodName}(requestBody: requestBody.toJson(), extras: extras, cancelToken: cancelToken, onSendProgress: onSendProgress, onReceiveProgress: onReceiveProgress);'),
+                        'return _$methodName(requestBody: requestBody.toJson(), extras: extras, cancelToken: cancelToken, onSendProgress: onSendProgress, onReceiveProgress: onReceiveProgress);'),
                   ]),
               ));
               break;
@@ -293,8 +293,7 @@ class ApiClientGenerator {
               ...JsonFactory.instance
                   .encode(method.value.toJson())
                   .split('\n')
-                  .map((e) => '/// $e')
-                  .toList(),
+                  .map((e) => '/// $e'),
             ])
             ..annotations.addAll([
               refer('$methodType("${path.key}")'),
@@ -315,6 +314,7 @@ class ApiClientGenerator {
             ]),
         ));
       }
+    }
 
     return Library(
       (b) => b
@@ -322,7 +322,7 @@ class ApiClientGenerator {
           Directive.import('package:dio/dio.dart'),
           Directive.import('package:retrofit/retrofit.dart'),
           Directive.import('../models/models.dart'),
-          Directive.part('${fileName}.g.dart'),
+          Directive.part('$fileName.g.dart'),
         ])
         ..name = fileName
         ..body.addAll([
@@ -481,7 +481,7 @@ class ApiClientGenerator {
 
     return responseTypeString == null
         ? refer('Future<HttpResponse>')
-        : refer('Future<HttpResponse<${responseTypeString}>>');
+        : refer('Future<HttpResponse<$responseTypeString>>');
   }
 
   List<Parameter> _extraParameters() {

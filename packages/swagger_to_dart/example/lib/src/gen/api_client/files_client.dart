@@ -55,9 +55,10 @@ abstract class FilesClient {
   ///         }
   ///     }
   /// }
-  @POST("/forms/basic")
+  @POST('/forms/basic')
+  @FormUrlEncoded()
   Future<HttpResponse<Map<String, dynamic>>> filesFormBasic({
-    @FormUrlEncoded() required BodyFilesFormBasic requestBody,
+    @Body() required BodyFilesFormBasic requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -106,9 +107,10 @@ abstract class FilesClient {
   ///         }
   ///     }
   /// }
-  @POST("/files/upload")
-  Future<HttpResponse<Map<String, dynamic>>> filesFileUpload({
-    @MultiPart() required BodyFilesFileUpload requestBody,
+  @POST('/files/upload')
+  @MultiPart()
+  Future<HttpResponse<Map<String, dynamic>>> _filesFileUpload({
+    @Part() required Map<String, dynamic> requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -157,12 +159,47 @@ abstract class FilesClient {
   ///         }
   ///     }
   /// }
-  @POST("/files/multiple")
-  Future<HttpResponse<Map<String, dynamic>>> filesFilesMultiple({
-    @MultiPart() required BodyFilesFilesMultiple requestBody,
+  @POST('/files/multiple')
+  @MultiPart()
+  Future<HttpResponse<Map<String, dynamic>>> _filesFilesMultiple({
+    @Part() required Map<String, dynamic> requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
   });
+}
+
+extension FilesClientX on FilesClient {
+  Future<HttpResponse<Map<String, dynamic>>> filesFileUpload({
+    required BodyFilesFileUpload requestBody,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+  }) {
+    return _filesFileUpload(
+      requestBody: requestBody.toJson(),
+      extras: extras,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+  }
+
+  Future<HttpResponse<Map<String, dynamic>>> filesFilesMultiple({
+    required BodyFilesFilesMultiple requestBody,
+    @Extras() Map<String, dynamic>? extras,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+  }) {
+    return _filesFilesMultiple(
+      requestBody: requestBody.toJson(),
+      extras: extras,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+  }
 }

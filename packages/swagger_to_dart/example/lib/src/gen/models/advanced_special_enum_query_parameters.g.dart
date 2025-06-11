@@ -7,19 +7,15 @@ part of 'advanced_special_enum_query_parameters.dart';
 // **************************************************************************
 
 _AdvancedSpecialEnumQueryParameters
-_$AdvancedSpecialEnumQueryParametersFromJson(Map<String, dynamic> json) =>
-    _AdvancedSpecialEnumQueryParameters(
-      level:
-          $enumDecodeNullable(_$UserLevelEnumMap, json['level']) ??
-          UserLevel.basic,
-    );
+    _$AdvancedSpecialEnumQueryParametersFromJson(Map<String, dynamic> json) =>
+        _AdvancedSpecialEnumQueryParameters(
+          level: json['level'] == null
+              ? UserLevel.basic
+              : UserLevel.fromJson(json['level'] as Object),
+        );
 
 Map<String, dynamic> _$AdvancedSpecialEnumQueryParametersToJson(
-  _AdvancedSpecialEnumQueryParameters instance,
-) => <String, dynamic>{'level': instance.level.toJson()};
-
-const _$UserLevelEnumMap = {
-  UserLevel.basic: 'basic',
-  UserLevel.premium: 'premium',
-  UserLevel.admin: 'admin',
-};
+        _AdvancedSpecialEnumQueryParameters instance) =>
+    <String, dynamic>{
+      'level': instance.level.toJson(),
+    };

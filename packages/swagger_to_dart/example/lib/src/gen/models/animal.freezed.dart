@@ -61,8 +61,8 @@ class $AnimalCopyWith<$Res> {
 @jsonSerializable
 class AnimalDog extends Animal {
   const AnimalDog(this.value, {final String? $type})
-    : $type = $type ?? 'Dog',
-      super._();
+      : $type = $type ?? 'Dog',
+        super._();
   factory AnimalDog.fromJson(Map<String, dynamic> json) =>
       _$AnimalDogFromJson(json);
 
@@ -81,7 +81,9 @@ class AnimalDog extends Animal {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$AnimalDogToJson(this);
+    return _$AnimalDogToJson(
+      this,
+    );
   }
 
   @override
@@ -122,15 +124,15 @@ class _$AnimalDogCopyWithImpl<$Res> implements $AnimalDogCopyWith<$Res> {
   /// Create a copy of Animal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  $Res call({Object? value = null}) {
-    return _then(
-      AnimalDog(
-        null == value
-            ? _self.value
-            : value // ignore: cast_nullable_to_non_nullable
-                as Dog,
-      ),
-    );
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(AnimalDog(
+      null == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as Dog,
+    ));
   }
 
   /// Create a copy of Animal
@@ -149,8 +151,8 @@ class _$AnimalDogCopyWithImpl<$Res> implements $AnimalDogCopyWith<$Res> {
 @jsonSerializable
 class AnimalCat extends Animal {
   const AnimalCat(this.value, {final String? $type})
-    : $type = $type ?? 'Cat',
-      super._();
+      : $type = $type ?? 'Cat',
+        super._();
   factory AnimalCat.fromJson(Map<String, dynamic> json) =>
       _$AnimalCatFromJson(json);
 
@@ -169,7 +171,9 @@ class AnimalCat extends Animal {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$AnimalCatToJson(this);
+    return _$AnimalCatToJson(
+      this,
+    );
   }
 
   @override
@@ -210,15 +214,15 @@ class _$AnimalCatCopyWithImpl<$Res> implements $AnimalCatCopyWith<$Res> {
   /// Create a copy of Animal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  $Res call({Object? value = null}) {
-    return _then(
-      AnimalCat(
-        null == value
-            ? _self.value
-            : value // ignore: cast_nullable_to_non_nullable
-                as Cat,
-      ),
-    );
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(AnimalCat(
+      null == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as Cat,
+    ));
   }
 
   /// Create a copy of Animal
@@ -237,8 +241,8 @@ class _$AnimalCatCopyWithImpl<$Res> implements $AnimalCatCopyWith<$Res> {
 @jsonSerializable
 class AnimalParrot extends Animal {
   const AnimalParrot(this.value, {final String? $type})
-    : $type = $type ?? 'Parrot',
-      super._();
+      : $type = $type ?? 'Parrot',
+        super._();
   factory AnimalParrot.fromJson(Map<String, dynamic> json) =>
       _$AnimalParrotFromJson(json);
 
@@ -257,7 +261,9 @@ class AnimalParrot extends Animal {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$AnimalParrotToJson(this);
+    return _$AnimalParrotToJson(
+      this,
+    );
   }
 
   @override
@@ -282,9 +288,8 @@ class AnimalParrot extends Animal {
 abstract mixin class $AnimalParrotCopyWith<$Res>
     implements $AnimalCopyWith<$Res> {
   factory $AnimalParrotCopyWith(
-    AnimalParrot value,
-    $Res Function(AnimalParrot) _then,
-  ) = _$AnimalParrotCopyWithImpl;
+          AnimalParrot value, $Res Function(AnimalParrot) _then) =
+      _$AnimalParrotCopyWithImpl;
   @useResult
   $Res call({Parrot value});
 
@@ -301,15 +306,15 @@ class _$AnimalParrotCopyWithImpl<$Res> implements $AnimalParrotCopyWith<$Res> {
   /// Create a copy of Animal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  $Res call({Object? value = null}) {
-    return _then(
-      AnimalParrot(
-        null == value
-            ? _self.value
-            : value // ignore: cast_nullable_to_non_nullable
-                as Parrot,
-      ),
-    );
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(AnimalParrot(
+      null == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as Parrot,
+    ));
   }
 
   /// Create a copy of Animal
@@ -328,9 +333,9 @@ class _$AnimalParrotCopyWithImpl<$Res> implements $AnimalParrotCopyWith<$Res> {
 @jsonSerializable
 class AnimalFallback extends Animal {
   const AnimalFallback(final Map<String, dynamic>? value, {final String? $type})
-    : _value = value,
-      $type = $type ?? 'fallback',
-      super._();
+      : _value = value,
+        $type = $type ?? 'fallback',
+        super._();
   factory AnimalFallback.fromJson(Map<String, dynamic> json) =>
       _$AnimalFallbackFromJson(json);
 
@@ -356,7 +361,9 @@ class AnimalFallback extends Animal {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$AnimalFallbackToJson(this);
+    return _$AnimalFallbackToJson(
+      this,
+    );
   }
 
   @override
@@ -382,9 +389,8 @@ class AnimalFallback extends Animal {
 abstract mixin class $AnimalFallbackCopyWith<$Res>
     implements $AnimalCopyWith<$Res> {
   factory $AnimalFallbackCopyWith(
-    AnimalFallback value,
-    $Res Function(AnimalFallback) _then,
-  ) = _$AnimalFallbackCopyWithImpl;
+          AnimalFallback value, $Res Function(AnimalFallback) _then) =
+      _$AnimalFallbackCopyWithImpl;
   @useResult
   $Res call({Map<String, dynamic>? value});
 }
@@ -400,14 +406,14 @@ class _$AnimalFallbackCopyWithImpl<$Res>
   /// Create a copy of Animal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  $Res call({Object? value = freezed}) {
-    return _then(
-      AnimalFallback(
-        freezed == value
-            ? _self._value
-            : value // ignore: cast_nullable_to_non_nullable
-                as Map<String, dynamic>?,
-      ),
-    );
+  $Res call({
+    Object? value = freezed,
+  }) {
+    return _then(AnimalFallback(
+      freezed == value
+          ? _self._value
+          : value // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
+    ));
   }
 }

@@ -23,11 +23,10 @@ mixin _$AdvancedUnionModernQueryParameters {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $AdvancedUnionModernQueryParametersCopyWith<
-    AdvancedUnionModernQueryParameters
-  >
-  get copyWith => _$AdvancedUnionModernQueryParametersCopyWithImpl<
-    AdvancedUnionModernQueryParameters
-  >(this as AdvancedUnionModernQueryParameters, _$identity);
+          AdvancedUnionModernQueryParameters>
+      get copyWith => _$AdvancedUnionModernQueryParametersCopyWithImpl<
+              AdvancedUnionModernQueryParameters>(
+          this as AdvancedUnionModernQueryParameters, _$identity);
 
   /// Serializes this AdvancedUnionModernQueryParameters to a JSON map.
   Map<String, dynamic> toJson();
@@ -54,13 +53,13 @@ mixin _$AdvancedUnionModernQueryParameters {
 /// @nodoc
 abstract mixin class $AdvancedUnionModernQueryParametersCopyWith<$Res> {
   factory $AdvancedUnionModernQueryParametersCopyWith(
-    AdvancedUnionModernQueryParameters value,
-    $Res Function(AdvancedUnionModernQueryParameters) _then,
-  ) = _$AdvancedUnionModernQueryParametersCopyWithImpl;
+          AdvancedUnionModernQueryParameters value,
+          $Res Function(AdvancedUnionModernQueryParameters) _then) =
+      _$AdvancedUnionModernQueryParametersCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: AdvancedUnionModernQueryParameters.valueKey) dynamic value,
-  });
+  $Res call(
+      {@JsonKey(name: AdvancedUnionModernQueryParameters.valueKey)
+      dynamic value});
 }
 
 /// @nodoc
@@ -75,16 +74,15 @@ class _$AdvancedUnionModernQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? value = freezed}) {
-    return _then(
-      _self.copyWith(
-        value:
-            freezed == value
-                ? _self.value
-                : value // ignore: cast_nullable_to_non_nullable
-                    as dynamic,
-      ),
-    );
+  $Res call({
+    Object? value = freezed,
+  }) {
+    return _then(_self.copyWith(
+      value: freezed == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ));
   }
 }
 
@@ -93,13 +91,13 @@ class _$AdvancedUnionModernQueryParametersCopyWithImpl<$Res>
 @jsonSerializable
 class _AdvancedUnionModernQueryParameters
     extends AdvancedUnionModernQueryParameters {
-  const _AdvancedUnionModernQueryParameters({
-    @JsonKey(name: AdvancedUnionModernQueryParameters.valueKey)
-    required this.value,
-  }) : super._();
+  const _AdvancedUnionModernQueryParameters(
+      {@JsonKey(name: AdvancedUnionModernQueryParameters.valueKey)
+      required this.value})
+      : super._();
   factory _AdvancedUnionModernQueryParameters.fromJson(
-    Map<String, dynamic> json,
-  ) => _$AdvancedUnionModernQueryParametersFromJson(json);
+          Map<String, dynamic> json) =>
+      _$AdvancedUnionModernQueryParametersFromJson(json);
 
   /// value
   @override
@@ -112,15 +110,15 @@ class _AdvancedUnionModernQueryParameters
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$AdvancedUnionModernQueryParametersCopyWith<
-    _AdvancedUnionModernQueryParameters
-  >
-  get copyWith => __$AdvancedUnionModernQueryParametersCopyWithImpl<
-    _AdvancedUnionModernQueryParameters
-  >(this, _$identity);
+          _AdvancedUnionModernQueryParameters>
+      get copyWith => __$AdvancedUnionModernQueryParametersCopyWithImpl<
+          _AdvancedUnionModernQueryParameters>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$AdvancedUnionModernQueryParametersToJson(this);
+    return _$AdvancedUnionModernQueryParametersToJson(
+      this,
+    );
   }
 
   @override
@@ -146,14 +144,14 @@ class _AdvancedUnionModernQueryParameters
 abstract mixin class _$AdvancedUnionModernQueryParametersCopyWith<$Res>
     implements $AdvancedUnionModernQueryParametersCopyWith<$Res> {
   factory _$AdvancedUnionModernQueryParametersCopyWith(
-    _AdvancedUnionModernQueryParameters value,
-    $Res Function(_AdvancedUnionModernQueryParameters) _then,
-  ) = __$AdvancedUnionModernQueryParametersCopyWithImpl;
+          _AdvancedUnionModernQueryParameters value,
+          $Res Function(_AdvancedUnionModernQueryParameters) _then) =
+      __$AdvancedUnionModernQueryParametersCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: AdvancedUnionModernQueryParameters.valueKey) dynamic value,
-  });
+  $Res call(
+      {@JsonKey(name: AdvancedUnionModernQueryParameters.valueKey)
+      dynamic value});
 }
 
 /// @nodoc
@@ -168,15 +166,14 @@ class __$AdvancedUnionModernQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? value = freezed}) {
-    return _then(
-      _AdvancedUnionModernQueryParameters(
-        value:
-            freezed == value
-                ? _self.value
-                : value // ignore: cast_nullable_to_non_nullable
-                    as dynamic,
-      ),
-    );
+  $Res call({
+    Object? value = freezed,
+  }) {
+    return _then(_AdvancedUnionModernQueryParameters(
+      value: freezed == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ));
   }
 }

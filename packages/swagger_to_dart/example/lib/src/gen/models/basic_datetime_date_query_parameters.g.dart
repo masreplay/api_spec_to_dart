@@ -7,9 +7,13 @@ part of 'basic_datetime_date_query_parameters.dart';
 // **************************************************************************
 
 _BasicDatetimeDateQueryParameters _$BasicDatetimeDateQueryParametersFromJson(
-  Map<String, dynamic> json,
-) => _BasicDatetimeDateQueryParameters(d: DateTime.parse(json['d'] as String));
+        Map<String, dynamic> json) =>
+    _BasicDatetimeDateQueryParameters(
+      d: DateTime.parse(json['d'] as String),
+    );
 
 Map<String, dynamic> _$BasicDatetimeDateQueryParametersToJson(
-  _BasicDatetimeDateQueryParameters instance,
-) => <String, dynamic>{'d': instance.d.toIso8601String()};
+        _BasicDatetimeDateQueryParameters instance) =>
+    <String, dynamic>{
+      'd': instance.d.toIso8601String(),
+    };

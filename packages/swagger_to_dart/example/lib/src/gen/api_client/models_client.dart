@@ -54,7 +54,7 @@ abstract class ModelsClient {
   ///         }
   ///     }
   /// }
-  @POST("/models/user")
+  @POST('/models/user')
   Future<HttpResponse<User>> modelsCreateUser({
     @Body() required UserCreate requestBody,
     @Extras() Map<String, dynamic>? extras,
@@ -105,7 +105,7 @@ abstract class ModelsClient {
   ///         }
   ///     }
   /// }
-  @GET("/models/location")
+  @GET('/models/location')
   Future<HttpResponse<Map<String, dynamic>>> modelsGetLocation({
     @Body() required Location requestBody,
     @Extras() Map<String, dynamic>? extras,
@@ -135,7 +135,7 @@ abstract class ModelsClient {
   ///         }
   ///     }
   /// }
-  @GET("/response/filtered")
+  @GET('/response/filtered')
   Future<HttpResponse<User>> modelsResponseFiltered({
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
@@ -197,7 +197,7 @@ abstract class ModelsClient {
   ///         }
   ///     }
   /// }
-  @GET("/response/multiple")
+  @GET('/response/multiple')
   Future<HttpResponse<ResponseModelsResponseMultiple>> modelsResponseMultiple({
     @Queries() required ModelsResponseMultipleQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
@@ -231,7 +231,7 @@ abstract class ModelsClient {
   ///         }
   ///     }
   /// }
-  @GET("/response/list")
+  @GET('/response/list')
   Future<HttpResponse<List<User>>> modelsResponseList({
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,

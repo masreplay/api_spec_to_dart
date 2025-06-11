@@ -30,9 +30,15 @@ class _FilesClient implements FilesClient {
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final _data = <String, dynamic>{};
+    _data.addAll(requestBody.toJson());
     final _options = _setStreamType<HttpResponse<Map<String, dynamic>>>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
+      Options(
+        method: 'POST',
+        headers: _headers,
+        extra: _extra,
+        contentType: 'application/x-www-form-urlencoded',
+      )
           .compose(
             _dio.options,
             '/forms/basic',
@@ -60,8 +66,8 @@ class _FilesClient implements FilesClient {
   }
 
   @override
-  Future<HttpResponse<Map<String, dynamic>>> filesFileUpload({
-    required BodyFilesFileUpload requestBody,
+  Future<HttpResponse<Map<String, dynamic>>> _filesFileUpload({
+    required Map<String, dynamic> requestBody,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -72,9 +78,14 @@ class _FilesClient implements FilesClient {
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final _data = FormData.fromMap(requestBody);
     final _options = _setStreamType<HttpResponse<Map<String, dynamic>>>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
+      Options(
+        method: 'POST',
+        headers: _headers,
+        extra: _extra,
+        contentType: 'multipart/form-data',
+      )
           .compose(
             _dio.options,
             '/files/upload',
@@ -102,8 +113,8 @@ class _FilesClient implements FilesClient {
   }
 
   @override
-  Future<HttpResponse<Map<String, dynamic>>> filesFilesMultiple({
-    required BodyFilesFilesMultiple requestBody,
+  Future<HttpResponse<Map<String, dynamic>>> _filesFilesMultiple({
+    required Map<String, dynamic> requestBody,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -114,9 +125,14 @@ class _FilesClient implements FilesClient {
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final _data = FormData.fromMap(requestBody);
     final _options = _setStreamType<HttpResponse<Map<String, dynamic>>>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
+      Options(
+        method: 'POST',
+        headers: _headers,
+        extra: _extra,
+        contentType: 'multipart/form-data',
+      )
           .compose(
             _dio.options,
             '/files/multiple',

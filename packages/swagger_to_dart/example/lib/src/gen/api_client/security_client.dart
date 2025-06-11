@@ -55,9 +55,10 @@ abstract class SecurityClient {
   ///         }
   ///     }
   /// }
-  @POST("/token")
+  @POST('/token')
+  @FormUrlEncoded()
   Future<HttpResponse<Map<String, dynamic>>> securityLogin({
-    @FormUrlEncoded() required BodySecurityLogin requestBody,
+    @Body() required BodySecurityLogin requestBody,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -91,7 +92,7 @@ abstract class SecurityClient {
   ///         }
   ///     }
   /// }
-  @GET("/users/me")
+  @GET('/users/me')
   Future<HttpResponse<Map<String, dynamic>>> securityReadUsersMe({
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
@@ -129,7 +130,7 @@ abstract class SecurityClient {
   ///         }
   ///     }
   /// }
-  @GET("/items/secure")
+  @GET('/items/secure')
   Future<HttpResponse<List<Map<String, dynamic>>>> securityGetSecureItems({
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,

@@ -54,7 +54,7 @@ abstract class ExtraTypesClient {
   ///         }
   ///     }
   /// }
-  @POST("/extra_types/color/")
+  @POST('/extra_types/color/')
   Future<HttpResponse<Map<String, dynamic>>> extraTypesCreateColor({
     @Body() required ColorModel requestBody,
     @Extras() Map<String, dynamic>? extras,
@@ -104,7 +104,7 @@ abstract class ExtraTypesClient {
   ///         }
   ///     }
   /// }
-  @POST("/extra_types/country/")
+  @POST('/extra_types/country/')
   Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessCountry({
     @Body() required CountryModel requestBody,
     @Extras() Map<String, dynamic>? extras,
@@ -154,7 +154,7 @@ abstract class ExtraTypesClient {
   ///         }
   ///     }
   /// }
-  @POST("/extra_types/payment/")
+  @POST('/extra_types/payment/')
   Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessPaymentCard({
     @Body() required PaymentCardModel requestBody,
     @Extras() Map<String, dynamic>? extras,
@@ -204,7 +204,7 @@ abstract class ExtraTypesClient {
   ///         }
   ///     }
   /// }
-  @POST("/extra_types/phone/")
+  @POST('/extra_types/phone/')
   Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessPhone({
     @Body() required PhoneNumberModel requestBody,
     @Extras() Map<String, dynamic>? extras,
@@ -254,7 +254,7 @@ abstract class ExtraTypesClient {
   ///         }
   ///     }
   /// }
-  @POST("/extra_types/routing/")
+  @POST('/extra_types/routing/')
   Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessRouting({
     @Body() required ABARoutingModel requestBody,
     @Extras() Map<String, dynamic>? extras,
@@ -304,7 +304,7 @@ abstract class ExtraTypesClient {
   ///         }
   ///     }
   /// }
-  @POST("/extra_types/coordinate/")
+  @POST('/extra_types/coordinate/')
   Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessCoordinate({
     @Body() required CoordinateModel requestBody,
     @Extras() Map<String, dynamic>? extras,
@@ -354,7 +354,7 @@ abstract class ExtraTypesClient {
   ///         }
   ///     }
   /// }
-  @POST("/extra_types/mac/")
+  @POST('/extra_types/mac/')
   Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessMac({
     @Body() required MACAddressModel requestBody,
     @Extras() Map<String, dynamic>? extras,
@@ -404,7 +404,7 @@ abstract class ExtraTypesClient {
   ///         }
   ///     }
   /// }
-  @POST("/extra_types/isbn/")
+  @POST('/extra_types/isbn/')
   Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessIsbn({
     @Body() required IsbnModel requestBody,
     @Extras() Map<String, dynamic>? extras,
@@ -454,7 +454,7 @@ abstract class ExtraTypesClient {
   ///         }
   ///     }
   /// }
-  @POST("/extra_types/currency/")
+  @POST('/extra_types/currency/')
   Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessCurrency({
     @Body() required CurrencyModel requestBody,
     @Extras() Map<String, dynamic>? extras,
@@ -504,7 +504,7 @@ abstract class ExtraTypesClient {
   ///         }
   ///     }
   /// }
-  @POST("/extra_types/domain/")
+  @POST('/extra_types/domain/')
   Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessDomain({
     @Body() required DomainModel requestBody,
     @Extras() Map<String, dynamic>? extras,
@@ -554,7 +554,7 @@ abstract class ExtraTypesClient {
   ///         }
   ///     }
   /// }
-  @POST("/extra_types/language/")
+  @POST('/extra_types/language/')
   Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessLanguage({
     @Body() required LanguageModel requestBody,
     @Extras() Map<String, dynamic>? extras,
@@ -604,7 +604,7 @@ abstract class ExtraTypesClient {
   ///         }
   ///     }
   /// }
-  @POST("/extra_types/script/")
+  @POST('/extra_types/script/')
   Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessScript({
     @Body() required ScriptCodeModel requestBody,
     @Extras() Map<String, dynamic>? extras,
@@ -654,7 +654,7 @@ abstract class ExtraTypesClient {
   ///         }
   ///     }
   /// }
-  @POST("/extra_types/version/")
+  @POST('/extra_types/version/')
   Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessVersion({
     @Body() required VersionModel requestBody,
     @Extras() Map<String, dynamic>? extras,
@@ -704,7 +704,7 @@ abstract class ExtraTypesClient {
   ///         }
   ///     }
   /// }
-  @POST("/extra_types/s3/")
+  @POST('/extra_types/s3/')
   Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessS3Path({
     @Body() required S3PathModel requestBody,
     @Extras() Map<String, dynamic>? extras,
@@ -754,7 +754,7 @@ abstract class ExtraTypesClient {
   ///         }
   ///     }
   /// }
-  @POST("/extra_types/timezone/")
+  @POST('/extra_types/timezone/')
   Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessTimezone({
     @Body() required TimeZoneModel requestBody,
     @Extras() Map<String, dynamic>? extras,
@@ -804,7 +804,7 @@ abstract class ExtraTypesClient {
   ///         }
   ///     }
   /// }
-  @POST("/extra_types/ulid/")
+  @POST('/extra_types/ulid/')
   Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessUlid({
     @Body() required UlidModel requestBody,
     @Extras() Map<String, dynamic>? extras,

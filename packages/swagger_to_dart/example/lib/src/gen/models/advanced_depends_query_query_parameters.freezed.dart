@@ -31,11 +31,10 @@ mixin _$AdvancedDependsQueryQueryParameters {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $AdvancedDependsQueryQueryParametersCopyWith<
-    AdvancedDependsQueryQueryParameters
-  >
-  get copyWith => _$AdvancedDependsQueryQueryParametersCopyWithImpl<
-    AdvancedDependsQueryQueryParameters
-  >(this as AdvancedDependsQueryQueryParameters, _$identity);
+          AdvancedDependsQueryQueryParameters>
+      get copyWith => _$AdvancedDependsQueryQueryParametersCopyWithImpl<
+              AdvancedDependsQueryQueryParameters>(
+          this as AdvancedDependsQueryQueryParameters, _$identity);
 
   /// Serializes this AdvancedDependsQueryQueryParameters to a JSON map.
   Map<String, dynamic> toJson();
@@ -63,15 +62,14 @@ mixin _$AdvancedDependsQueryQueryParameters {
 /// @nodoc
 abstract mixin class $AdvancedDependsQueryQueryParametersCopyWith<$Res> {
   factory $AdvancedDependsQueryQueryParametersCopyWith(
-    AdvancedDependsQueryQueryParameters value,
-    $Res Function(AdvancedDependsQueryQueryParameters) _then,
-  ) = _$AdvancedDependsQueryQueryParametersCopyWithImpl;
+          AdvancedDependsQueryQueryParameters value,
+          $Res Function(AdvancedDependsQueryQueryParameters) _then) =
+      _$AdvancedDependsQueryQueryParametersCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: AdvancedDependsQueryQueryParameters.qKey) String? q,
-    @JsonKey(name: AdvancedDependsQueryQueryParameters.skipKey) int skip,
-    @JsonKey(name: AdvancedDependsQueryQueryParameters.limitKey) int limit,
-  });
+  $Res call(
+      {@JsonKey(name: AdvancedDependsQueryQueryParameters.qKey) String? q,
+      @JsonKey(name: AdvancedDependsQueryQueryParameters.skipKey) int skip,
+      @JsonKey(name: AdvancedDependsQueryQueryParameters.limitKey) int limit});
 }
 
 /// @nodoc
@@ -86,26 +84,25 @@ class _$AdvancedDependsQueryQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? q = freezed, Object? skip = null, Object? limit = null}) {
-    return _then(
-      _self.copyWith(
-        q:
-            freezed == q
-                ? _self.q
-                : q // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        skip:
-            null == skip
-                ? _self.skip
-                : skip // ignore: cast_nullable_to_non_nullable
-                    as int,
-        limit:
-            null == limit
-                ? _self.limit
-                : limit // ignore: cast_nullable_to_non_nullable
-                    as int,
-      ),
-    );
+  $Res call({
+    Object? q = freezed,
+    Object? skip = null,
+    Object? limit = null,
+  }) {
+    return _then(_self.copyWith(
+      q: freezed == q
+          ? _self.q
+          : q // ignore: cast_nullable_to_non_nullable
+              as String?,
+      skip: null == skip
+          ? _self.skip
+          : skip // ignore: cast_nullable_to_non_nullable
+              as int,
+      limit: null == limit
+          ? _self.limit
+          : limit // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
@@ -114,15 +111,15 @@ class _$AdvancedDependsQueryQueryParametersCopyWithImpl<$Res>
 @jsonSerializable
 class _AdvancedDependsQueryQueryParameters
     extends AdvancedDependsQueryQueryParameters {
-  const _AdvancedDependsQueryQueryParameters({
-    @JsonKey(name: AdvancedDependsQueryQueryParameters.qKey) required this.q,
-    @JsonKey(name: AdvancedDependsQueryQueryParameters.skipKey) this.skip = 0,
-    @JsonKey(name: AdvancedDependsQueryQueryParameters.limitKey)
-    this.limit = 100,
-  }) : super._();
+  const _AdvancedDependsQueryQueryParameters(
+      {@JsonKey(name: AdvancedDependsQueryQueryParameters.qKey) required this.q,
+      @JsonKey(name: AdvancedDependsQueryQueryParameters.skipKey) this.skip = 0,
+      @JsonKey(name: AdvancedDependsQueryQueryParameters.limitKey)
+      this.limit = 100})
+      : super._();
   factory _AdvancedDependsQueryQueryParameters.fromJson(
-    Map<String, dynamic> json,
-  ) => _$AdvancedDependsQueryQueryParametersFromJson(json);
+          Map<String, dynamic> json) =>
+      _$AdvancedDependsQueryQueryParametersFromJson(json);
 
   /// q
   @override
@@ -145,15 +142,15 @@ class _AdvancedDependsQueryQueryParameters
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$AdvancedDependsQueryQueryParametersCopyWith<
-    _AdvancedDependsQueryQueryParameters
-  >
-  get copyWith => __$AdvancedDependsQueryQueryParametersCopyWithImpl<
-    _AdvancedDependsQueryQueryParameters
-  >(this, _$identity);
+          _AdvancedDependsQueryQueryParameters>
+      get copyWith => __$AdvancedDependsQueryQueryParametersCopyWithImpl<
+          _AdvancedDependsQueryQueryParameters>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$AdvancedDependsQueryQueryParametersToJson(this);
+    return _$AdvancedDependsQueryQueryParametersToJson(
+      this,
+    );
   }
 
   @override
@@ -180,16 +177,15 @@ class _AdvancedDependsQueryQueryParameters
 abstract mixin class _$AdvancedDependsQueryQueryParametersCopyWith<$Res>
     implements $AdvancedDependsQueryQueryParametersCopyWith<$Res> {
   factory _$AdvancedDependsQueryQueryParametersCopyWith(
-    _AdvancedDependsQueryQueryParameters value,
-    $Res Function(_AdvancedDependsQueryQueryParameters) _then,
-  ) = __$AdvancedDependsQueryQueryParametersCopyWithImpl;
+          _AdvancedDependsQueryQueryParameters value,
+          $Res Function(_AdvancedDependsQueryQueryParameters) _then) =
+      __$AdvancedDependsQueryQueryParametersCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: AdvancedDependsQueryQueryParameters.qKey) String? q,
-    @JsonKey(name: AdvancedDependsQueryQueryParameters.skipKey) int skip,
-    @JsonKey(name: AdvancedDependsQueryQueryParameters.limitKey) int limit,
-  });
+  $Res call(
+      {@JsonKey(name: AdvancedDependsQueryQueryParameters.qKey) String? q,
+      @JsonKey(name: AdvancedDependsQueryQueryParameters.skipKey) int skip,
+      @JsonKey(name: AdvancedDependsQueryQueryParameters.limitKey) int limit});
 }
 
 /// @nodoc
@@ -204,25 +200,24 @@ class __$AdvancedDependsQueryQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? q = freezed, Object? skip = null, Object? limit = null}) {
-    return _then(
-      _AdvancedDependsQueryQueryParameters(
-        q:
-            freezed == q
-                ? _self.q
-                : q // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        skip:
-            null == skip
-                ? _self.skip
-                : skip // ignore: cast_nullable_to_non_nullable
-                    as int,
-        limit:
-            null == limit
-                ? _self.limit
-                : limit // ignore: cast_nullable_to_non_nullable
-                    as int,
-      ),
-    );
+  $Res call({
+    Object? q = freezed,
+    Object? skip = null,
+    Object? limit = null,
+  }) {
+    return _then(_AdvancedDependsQueryQueryParameters(
+      q: freezed == q
+          ? _self.q
+          : q // ignore: cast_nullable_to_non_nullable
+              as String?,
+      skip: null == skip
+          ? _self.skip
+          : skip // ignore: cast_nullable_to_non_nullable
+              as int,
+      limit: null == limit
+          ? _self.limit
+          : limit // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }

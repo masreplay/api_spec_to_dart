@@ -1,7 +1,7 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
-typedef _CustomJsonConverter = ({
+typedef CustomJsonConverter = ({
   String classCall,
   List<Directive> imports,
   List<Directive> exports,
@@ -17,13 +17,14 @@ class JsonConvertorGenerator extends LibraryGenerator {
   ({Library library, List<Directive> directives}) build() {
     final isFlutterProject = context.isFlutterProject;
 
-    final customJsonConverters = <_CustomJsonConverter>[];
+    final customJsonConverters = <CustomJsonConverter>[];
 
     switch (context.config.generationSource) {
       case GenerationSource.fastAPI:
         customJsonConverters.add(getFastAPIMultipartFileJsonConvertor());
-        if (isFlutterProject)
+        if (isFlutterProject) {
           customJsonConverters.add(getTimeOfDayStringJsonConvertor());
+        }
         break;
       case GenerationSource.dotnet:
         customJsonConverters.add(getTimeOfDayStringJsonConvertor());
@@ -46,7 +47,7 @@ class JsonConvertorGenerator extends LibraryGenerator {
           for (final entry in customJsonConverters) Code(entry.code),
           Code('''
 const jsonSerializableConverters = <JsonConverter>[
-  ${customJsonConverters.map((e) => '${e.classCall}').join(',\n')},
+  ${customJsonConverters.map((e) => e.classCall).join(',\n')},
   ${context.jsonConvertor.map((e) => '${e.name}()').join(',\n')}
 ];
 
@@ -66,7 +67,7 @@ const jsonSerializable = JsonSerializable(
     );
   }
 
-  _CustomJsonConverter getFastAPIMultipartFileJsonConvertor() {
+  CustomJsonConverter getFastAPIMultipartFileJsonConvertor() {
     return (
       classCall: 'MultipartFileJsonConverter()',
       imports: [
@@ -91,7 +92,7 @@ class MultipartFileJsonConverter
     );
   }
 
-  _CustomJsonConverter getTimeOfDayStringJsonConvertor() {
+  CustomJsonConverter getTimeOfDayStringJsonConvertor() {
     return (
       classCall: 'TimeOfDayStringJsonConverter()',
       imports: [

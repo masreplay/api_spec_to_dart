@@ -72,7 +72,7 @@ abstract class UnionClient {
   ///         }
   ///     }
   /// }
-  @POST("/union/models/animal")
+  @POST('/union/models/animal')
   Future<HttpResponse<CreateAnimalResponse>> unionCreateAnimal({
     @Body() required Animal requestBody,
     @Extras() Map<String, dynamic>? extras,

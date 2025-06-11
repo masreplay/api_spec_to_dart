@@ -32,9 +32,7 @@ mixin _$BaseResponse<T> {
   @pragma('vm:prefer-inline')
   $BaseResponseCopyWith<T, BaseResponse<T>> get copyWith =>
       _$BaseResponseCopyWithImpl<T, BaseResponse<T>>(
-        this as BaseResponse<T>,
-        _$identity,
-      );
+          this as BaseResponse<T>, _$identity);
 
   /// Serializes this BaseResponse to a JSON map.
   Map<String, dynamic> toJson(Object? Function(T) toJsonT);
@@ -52,11 +50,7 @@ mixin _$BaseResponse<T> {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    const DeepCollectionEquality().hash(data),
-    message,
-    code,
-  );
+      runtimeType, const DeepCollectionEquality().hash(data), message, code);
 
   @override
   String toString() {
@@ -67,15 +61,13 @@ mixin _$BaseResponse<T> {
 /// @nodoc
 abstract mixin class $BaseResponseCopyWith<T, $Res> {
   factory $BaseResponseCopyWith(
-    BaseResponse<T> value,
-    $Res Function(BaseResponse<T>) _then,
-  ) = _$BaseResponseCopyWithImpl;
+          BaseResponse<T> value, $Res Function(BaseResponse<T>) _then) =
+      _$BaseResponseCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: BaseResponse.dataKey) T data,
-    @JsonKey(name: BaseResponse.messageKey) String message,
-    @JsonKey(name: BaseResponse.codeKey) int code,
-  });
+  $Res call(
+      {@JsonKey(name: BaseResponse.dataKey) T data,
+      @JsonKey(name: BaseResponse.messageKey) String message,
+      @JsonKey(name: BaseResponse.codeKey) int code});
 }
 
 /// @nodoc
@@ -95,44 +87,36 @@ class _$BaseResponseCopyWithImpl<T, $Res>
     Object? message = null,
     Object? code = null,
   }) {
-    return _then(
-      _self.copyWith(
-        data:
-            freezed == data
-                ? _self.data
-                : data // ignore: cast_nullable_to_non_nullable
-                    as T,
-        message:
-            null == message
-                ? _self.message
-                : message // ignore: cast_nullable_to_non_nullable
-                    as String,
-        code:
-            null == code
-                ? _self.code
-                : code // ignore: cast_nullable_to_non_nullable
-                    as int,
-      ),
-    );
+    return _then(_self.copyWith(
+      data: freezed == data
+          ? _self.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as T,
+      message: null == message
+          ? _self.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+      code: null == code
+          ? _self.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
 /// @nodoc
 
 @JsonSerializable(
-  converters: jsonSerializableConverters,
-  genericArgumentFactories: true,
-)
+    converters: jsonSerializableConverters, genericArgumentFactories: true)
 class _BaseResponse<T> extends BaseResponse<T> {
-  const _BaseResponse({
-    @JsonKey(name: BaseResponse.dataKey) required this.data,
-    @JsonKey(name: BaseResponse.messageKey) required this.message,
-    @JsonKey(name: BaseResponse.codeKey) required this.code,
-  }) : super._();
+  const _BaseResponse(
+      {@JsonKey(name: BaseResponse.dataKey) required this.data,
+      @JsonKey(name: BaseResponse.messageKey) required this.message,
+      @JsonKey(name: BaseResponse.codeKey) required this.code})
+      : super._();
   factory _BaseResponse.fromJson(
-    Map<String, dynamic> json,
-    T Function(Object?) fromJsonT,
-  ) => _$BaseResponseFromJson(json, fromJsonT);
+          Map<String, dynamic> json, T Function(Object?) fromJsonT) =>
+      _$BaseResponseFromJson(json, fromJsonT);
 
   /// data
   @override
@@ -175,11 +159,7 @@ class _BaseResponse<T> extends BaseResponse<T> {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    const DeepCollectionEquality().hash(data),
-    message,
-    code,
-  );
+      runtimeType, const DeepCollectionEquality().hash(data), message, code);
 
   @override
   String toString() {
@@ -191,16 +171,14 @@ class _BaseResponse<T> extends BaseResponse<T> {
 abstract mixin class _$BaseResponseCopyWith<T, $Res>
     implements $BaseResponseCopyWith<T, $Res> {
   factory _$BaseResponseCopyWith(
-    _BaseResponse<T> value,
-    $Res Function(_BaseResponse<T>) _then,
-  ) = __$BaseResponseCopyWithImpl;
+          _BaseResponse<T> value, $Res Function(_BaseResponse<T>) _then) =
+      __$BaseResponseCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: BaseResponse.dataKey) T data,
-    @JsonKey(name: BaseResponse.messageKey) String message,
-    @JsonKey(name: BaseResponse.codeKey) int code,
-  });
+  $Res call(
+      {@JsonKey(name: BaseResponse.dataKey) T data,
+      @JsonKey(name: BaseResponse.messageKey) String message,
+      @JsonKey(name: BaseResponse.codeKey) int code});
 }
 
 /// @nodoc
@@ -220,24 +198,19 @@ class __$BaseResponseCopyWithImpl<T, $Res>
     Object? message = null,
     Object? code = null,
   }) {
-    return _then(
-      _BaseResponse<T>(
-        data:
-            freezed == data
-                ? _self.data
-                : data // ignore: cast_nullable_to_non_nullable
-                    as T,
-        message:
-            null == message
-                ? _self.message
-                : message // ignore: cast_nullable_to_non_nullable
-                    as String,
-        code:
-            null == code
-                ? _self.code
-                : code // ignore: cast_nullable_to_non_nullable
-                    as int,
-      ),
-    );
+    return _then(_BaseResponse<T>(
+      data: freezed == data
+          ? _self.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as T,
+      message: null == message
+          ? _self.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+      code: null == code
+          ? _self.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }

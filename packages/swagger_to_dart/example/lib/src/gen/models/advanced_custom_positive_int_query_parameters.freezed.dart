@@ -27,11 +27,10 @@ mixin _$AdvancedCustomPositiveIntQueryParameters {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $AdvancedCustomPositiveIntQueryParametersCopyWith<
-    AdvancedCustomPositiveIntQueryParameters
-  >
-  get copyWith => _$AdvancedCustomPositiveIntQueryParametersCopyWithImpl<
-    AdvancedCustomPositiveIntQueryParameters
-  >(this as AdvancedCustomPositiveIntQueryParameters, _$identity);
+          AdvancedCustomPositiveIntQueryParameters>
+      get copyWith => _$AdvancedCustomPositiveIntQueryParametersCopyWithImpl<
+              AdvancedCustomPositiveIntQueryParameters>(
+          this as AdvancedCustomPositiveIntQueryParameters, _$identity);
 
   /// Serializes this AdvancedCustomPositiveIntQueryParameters to a JSON map.
   Map<String, dynamic> toJson();
@@ -58,24 +57,22 @@ mixin _$AdvancedCustomPositiveIntQueryParameters {
 /// @nodoc
 abstract mixin class $AdvancedCustomPositiveIntQueryParametersCopyWith<$Res> {
   factory $AdvancedCustomPositiveIntQueryParametersCopyWith(
-    AdvancedCustomPositiveIntQueryParameters value,
-    $Res Function(AdvancedCustomPositiveIntQueryParameters) _then,
-  ) = _$AdvancedCustomPositiveIntQueryParametersCopyWithImpl;
+          AdvancedCustomPositiveIntQueryParameters value,
+          $Res Function(AdvancedCustomPositiveIntQueryParameters) _then) =
+      _$AdvancedCustomPositiveIntQueryParametersCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: AdvancedCustomPositiveIntQueryParameters.valueKey) int value,
-    @JsonKey(name: AdvancedCustomPositiveIntQueryParameters.value2Key)
-    int value2,
-  });
+  $Res call(
+      {@JsonKey(name: AdvancedCustomPositiveIntQueryParameters.valueKey)
+      int value,
+      @JsonKey(name: AdvancedCustomPositiveIntQueryParameters.value2Key)
+      int value2});
 }
 
 /// @nodoc
 class _$AdvancedCustomPositiveIntQueryParametersCopyWithImpl<$Res>
     implements $AdvancedCustomPositiveIntQueryParametersCopyWith<$Res> {
   _$AdvancedCustomPositiveIntQueryParametersCopyWithImpl(
-    this._self,
-    this._then,
-  );
+      this._self, this._then);
 
   final AdvancedCustomPositiveIntQueryParameters _self;
   final $Res Function(AdvancedCustomPositiveIntQueryParameters) _then;
@@ -84,21 +81,20 @@ class _$AdvancedCustomPositiveIntQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? value = null, Object? value2 = null}) {
-    return _then(
-      _self.copyWith(
-        value:
-            null == value
-                ? _self.value
-                : value // ignore: cast_nullable_to_non_nullable
-                    as int,
-        value2:
-            null == value2
-                ? _self.value2
-                : value2 // ignore: cast_nullable_to_non_nullable
-                    as int,
-      ),
-    );
+  $Res call({
+    Object? value = null,
+    Object? value2 = null,
+  }) {
+    return _then(_self.copyWith(
+      value: null == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as int,
+      value2: null == value2
+          ? _self.value2
+          : value2 // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
@@ -107,15 +103,15 @@ class _$AdvancedCustomPositiveIntQueryParametersCopyWithImpl<$Res>
 @jsonSerializable
 class _AdvancedCustomPositiveIntQueryParameters
     extends AdvancedCustomPositiveIntQueryParameters {
-  const _AdvancedCustomPositiveIntQueryParameters({
-    @JsonKey(name: AdvancedCustomPositiveIntQueryParameters.valueKey)
-    required this.value,
-    @JsonKey(name: AdvancedCustomPositiveIntQueryParameters.value2Key)
-    required this.value2,
-  }) : super._();
+  const _AdvancedCustomPositiveIntQueryParameters(
+      {@JsonKey(name: AdvancedCustomPositiveIntQueryParameters.valueKey)
+      required this.value,
+      @JsonKey(name: AdvancedCustomPositiveIntQueryParameters.value2Key)
+      required this.value2})
+      : super._();
   factory _AdvancedCustomPositiveIntQueryParameters.fromJson(
-    Map<String, dynamic> json,
-  ) => _$AdvancedCustomPositiveIntQueryParametersFromJson(json);
+          Map<String, dynamic> json) =>
+      _$AdvancedCustomPositiveIntQueryParametersFromJson(json);
 
   /// value
   @override
@@ -133,15 +129,15 @@ class _AdvancedCustomPositiveIntQueryParameters
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$AdvancedCustomPositiveIntQueryParametersCopyWith<
-    _AdvancedCustomPositiveIntQueryParameters
-  >
-  get copyWith => __$AdvancedCustomPositiveIntQueryParametersCopyWithImpl<
-    _AdvancedCustomPositiveIntQueryParameters
-  >(this, _$identity);
+          _AdvancedCustomPositiveIntQueryParameters>
+      get copyWith => __$AdvancedCustomPositiveIntQueryParametersCopyWithImpl<
+          _AdvancedCustomPositiveIntQueryParameters>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$AdvancedCustomPositiveIntQueryParametersToJson(this);
+    return _$AdvancedCustomPositiveIntQueryParametersToJson(
+      this,
+    );
   }
 
   @override
@@ -167,25 +163,23 @@ class _AdvancedCustomPositiveIntQueryParameters
 abstract mixin class _$AdvancedCustomPositiveIntQueryParametersCopyWith<$Res>
     implements $AdvancedCustomPositiveIntQueryParametersCopyWith<$Res> {
   factory _$AdvancedCustomPositiveIntQueryParametersCopyWith(
-    _AdvancedCustomPositiveIntQueryParameters value,
-    $Res Function(_AdvancedCustomPositiveIntQueryParameters) _then,
-  ) = __$AdvancedCustomPositiveIntQueryParametersCopyWithImpl;
+          _AdvancedCustomPositiveIntQueryParameters value,
+          $Res Function(_AdvancedCustomPositiveIntQueryParameters) _then) =
+      __$AdvancedCustomPositiveIntQueryParametersCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: AdvancedCustomPositiveIntQueryParameters.valueKey) int value,
-    @JsonKey(name: AdvancedCustomPositiveIntQueryParameters.value2Key)
-    int value2,
-  });
+  $Res call(
+      {@JsonKey(name: AdvancedCustomPositiveIntQueryParameters.valueKey)
+      int value,
+      @JsonKey(name: AdvancedCustomPositiveIntQueryParameters.value2Key)
+      int value2});
 }
 
 /// @nodoc
 class __$AdvancedCustomPositiveIntQueryParametersCopyWithImpl<$Res>
     implements _$AdvancedCustomPositiveIntQueryParametersCopyWith<$Res> {
   __$AdvancedCustomPositiveIntQueryParametersCopyWithImpl(
-    this._self,
-    this._then,
-  );
+      this._self, this._then);
 
   final _AdvancedCustomPositiveIntQueryParameters _self;
   final $Res Function(_AdvancedCustomPositiveIntQueryParameters) _then;
@@ -194,20 +188,19 @@ class __$AdvancedCustomPositiveIntQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? value = null, Object? value2 = null}) {
-    return _then(
-      _AdvancedCustomPositiveIntQueryParameters(
-        value:
-            null == value
-                ? _self.value
-                : value // ignore: cast_nullable_to_non_nullable
-                    as int,
-        value2:
-            null == value2
-                ? _self.value2
-                : value2 // ignore: cast_nullable_to_non_nullable
-                    as int,
-      ),
-    );
+  $Res call({
+    Object? value = null,
+    Object? value2 = null,
+  }) {
+    return _then(_AdvancedCustomPositiveIntQueryParameters(
+      value: null == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as int,
+      value2: null == value2
+          ? _self.value2
+          : value2 // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }

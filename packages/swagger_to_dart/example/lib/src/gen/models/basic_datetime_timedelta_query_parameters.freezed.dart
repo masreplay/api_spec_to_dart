@@ -23,11 +23,10 @@ mixin _$BasicDatetimeTimedeltaQueryParameters {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $BasicDatetimeTimedeltaQueryParametersCopyWith<
-    BasicDatetimeTimedeltaQueryParameters
-  >
-  get copyWith => _$BasicDatetimeTimedeltaQueryParametersCopyWithImpl<
-    BasicDatetimeTimedeltaQueryParameters
-  >(this as BasicDatetimeTimedeltaQueryParameters, _$identity);
+          BasicDatetimeTimedeltaQueryParameters>
+      get copyWith => _$BasicDatetimeTimedeltaQueryParametersCopyWithImpl<
+              BasicDatetimeTimedeltaQueryParameters>(
+          this as BasicDatetimeTimedeltaQueryParameters, _$identity);
 
   /// Serializes this BasicDatetimeTimedeltaQueryParameters to a JSON map.
   Map<String, dynamic> toJson();
@@ -53,13 +52,13 @@ mixin _$BasicDatetimeTimedeltaQueryParameters {
 /// @nodoc
 abstract mixin class $BasicDatetimeTimedeltaQueryParametersCopyWith<$Res> {
   factory $BasicDatetimeTimedeltaQueryParametersCopyWith(
-    BasicDatetimeTimedeltaQueryParameters value,
-    $Res Function(BasicDatetimeTimedeltaQueryParameters) _then,
-  ) = _$BasicDatetimeTimedeltaQueryParametersCopyWithImpl;
+          BasicDatetimeTimedeltaQueryParameters value,
+          $Res Function(BasicDatetimeTimedeltaQueryParameters) _then) =
+      _$BasicDatetimeTimedeltaQueryParametersCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: BasicDatetimeTimedeltaQueryParameters.tdKey) TimeOfDay td,
-  });
+  $Res call(
+      {@JsonKey(name: BasicDatetimeTimedeltaQueryParameters.tdKey)
+      TimeOfDay td});
 }
 
 /// @nodoc
@@ -74,16 +73,15 @@ class _$BasicDatetimeTimedeltaQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? td = null}) {
-    return _then(
-      _self.copyWith(
-        td:
-            null == td
-                ? _self.td
-                : td // ignore: cast_nullable_to_non_nullable
-                    as TimeOfDay,
-      ),
-    );
+  $Res call({
+    Object? td = null,
+  }) {
+    return _then(_self.copyWith(
+      td: null == td
+          ? _self.td
+          : td // ignore: cast_nullable_to_non_nullable
+              as TimeOfDay,
+    ));
   }
 }
 
@@ -92,13 +90,13 @@ class _$BasicDatetimeTimedeltaQueryParametersCopyWithImpl<$Res>
 @jsonSerializable
 class _BasicDatetimeTimedeltaQueryParameters
     extends BasicDatetimeTimedeltaQueryParameters {
-  const _BasicDatetimeTimedeltaQueryParameters({
-    @JsonKey(name: BasicDatetimeTimedeltaQueryParameters.tdKey)
-    required this.td,
-  }) : super._();
+  const _BasicDatetimeTimedeltaQueryParameters(
+      {@JsonKey(name: BasicDatetimeTimedeltaQueryParameters.tdKey)
+      required this.td})
+      : super._();
   factory _BasicDatetimeTimedeltaQueryParameters.fromJson(
-    Map<String, dynamic> json,
-  ) => _$BasicDatetimeTimedeltaQueryParametersFromJson(json);
+          Map<String, dynamic> json) =>
+      _$BasicDatetimeTimedeltaQueryParametersFromJson(json);
 
   /// td
   @override
@@ -111,15 +109,15 @@ class _BasicDatetimeTimedeltaQueryParameters
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$BasicDatetimeTimedeltaQueryParametersCopyWith<
-    _BasicDatetimeTimedeltaQueryParameters
-  >
-  get copyWith => __$BasicDatetimeTimedeltaQueryParametersCopyWithImpl<
-    _BasicDatetimeTimedeltaQueryParameters
-  >(this, _$identity);
+          _BasicDatetimeTimedeltaQueryParameters>
+      get copyWith => __$BasicDatetimeTimedeltaQueryParametersCopyWithImpl<
+          _BasicDatetimeTimedeltaQueryParameters>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$BasicDatetimeTimedeltaQueryParametersToJson(this);
+    return _$BasicDatetimeTimedeltaQueryParametersToJson(
+      this,
+    );
   }
 
   @override
@@ -144,14 +142,14 @@ class _BasicDatetimeTimedeltaQueryParameters
 abstract mixin class _$BasicDatetimeTimedeltaQueryParametersCopyWith<$Res>
     implements $BasicDatetimeTimedeltaQueryParametersCopyWith<$Res> {
   factory _$BasicDatetimeTimedeltaQueryParametersCopyWith(
-    _BasicDatetimeTimedeltaQueryParameters value,
-    $Res Function(_BasicDatetimeTimedeltaQueryParameters) _then,
-  ) = __$BasicDatetimeTimedeltaQueryParametersCopyWithImpl;
+          _BasicDatetimeTimedeltaQueryParameters value,
+          $Res Function(_BasicDatetimeTimedeltaQueryParameters) _then) =
+      __$BasicDatetimeTimedeltaQueryParametersCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: BasicDatetimeTimedeltaQueryParameters.tdKey) TimeOfDay td,
-  });
+  $Res call(
+      {@JsonKey(name: BasicDatetimeTimedeltaQueryParameters.tdKey)
+      TimeOfDay td});
 }
 
 /// @nodoc
@@ -166,15 +164,14 @@ class __$BasicDatetimeTimedeltaQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? td = null}) {
-    return _then(
-      _BasicDatetimeTimedeltaQueryParameters(
-        td:
-            null == td
-                ? _self.td
-                : td // ignore: cast_nullable_to_non_nullable
-                    as TimeOfDay,
-      ),
-    );
+  $Res call({
+    Object? td = null,
+  }) {
+    return _then(_BasicDatetimeTimedeltaQueryParameters(
+      td: null == td
+          ? _self.td
+          : td // ignore: cast_nullable_to_non_nullable
+              as TimeOfDay,
+    ));
   }
 }

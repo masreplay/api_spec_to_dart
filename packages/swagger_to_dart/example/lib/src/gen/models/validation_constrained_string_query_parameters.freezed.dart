@@ -23,11 +23,10 @@ mixin _$ValidationConstrainedStringQueryParameters {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $ValidationConstrainedStringQueryParametersCopyWith<
-    ValidationConstrainedStringQueryParameters
-  >
-  get copyWith => _$ValidationConstrainedStringQueryParametersCopyWithImpl<
-    ValidationConstrainedStringQueryParameters
-  >(this as ValidationConstrainedStringQueryParameters, _$identity);
+          ValidationConstrainedStringQueryParameters>
+      get copyWith => _$ValidationConstrainedStringQueryParametersCopyWithImpl<
+              ValidationConstrainedStringQueryParameters>(
+          this as ValidationConstrainedStringQueryParameters, _$identity);
 
   /// Serializes this ValidationConstrainedStringQueryParameters to a JSON map.
   Map<String, dynamic> toJson();
@@ -53,23 +52,20 @@ mixin _$ValidationConstrainedStringQueryParameters {
 /// @nodoc
 abstract mixin class $ValidationConstrainedStringQueryParametersCopyWith<$Res> {
   factory $ValidationConstrainedStringQueryParametersCopyWith(
-    ValidationConstrainedStringQueryParameters value,
-    $Res Function(ValidationConstrainedStringQueryParameters) _then,
-  ) = _$ValidationConstrainedStringQueryParametersCopyWithImpl;
+          ValidationConstrainedStringQueryParameters value,
+          $Res Function(ValidationConstrainedStringQueryParameters) _then) =
+      _$ValidationConstrainedStringQueryParametersCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: ValidationConstrainedStringQueryParameters.valueKey)
-    String value,
-  });
+  $Res call(
+      {@JsonKey(name: ValidationConstrainedStringQueryParameters.valueKey)
+      String value});
 }
 
 /// @nodoc
 class _$ValidationConstrainedStringQueryParametersCopyWithImpl<$Res>
     implements $ValidationConstrainedStringQueryParametersCopyWith<$Res> {
   _$ValidationConstrainedStringQueryParametersCopyWithImpl(
-    this._self,
-    this._then,
-  );
+      this._self, this._then);
 
   final ValidationConstrainedStringQueryParameters _self;
   final $Res Function(ValidationConstrainedStringQueryParameters) _then;
@@ -78,16 +74,15 @@ class _$ValidationConstrainedStringQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? value = null}) {
-    return _then(
-      _self.copyWith(
-        value:
-            null == value
-                ? _self.value
-                : value // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_self.copyWith(
+      value: null == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -96,13 +91,13 @@ class _$ValidationConstrainedStringQueryParametersCopyWithImpl<$Res>
 @jsonSerializable
 class _ValidationConstrainedStringQueryParameters
     extends ValidationConstrainedStringQueryParameters {
-  const _ValidationConstrainedStringQueryParameters({
-    @JsonKey(name: ValidationConstrainedStringQueryParameters.valueKey)
-    required this.value,
-  }) : super._();
+  const _ValidationConstrainedStringQueryParameters(
+      {@JsonKey(name: ValidationConstrainedStringQueryParameters.valueKey)
+      required this.value})
+      : super._();
   factory _ValidationConstrainedStringQueryParameters.fromJson(
-    Map<String, dynamic> json,
-  ) => _$ValidationConstrainedStringQueryParametersFromJson(json);
+          Map<String, dynamic> json) =>
+      _$ValidationConstrainedStringQueryParametersFromJson(json);
 
   /// value
   @override
@@ -115,15 +110,15 @@ class _ValidationConstrainedStringQueryParameters
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$ValidationConstrainedStringQueryParametersCopyWith<
-    _ValidationConstrainedStringQueryParameters
-  >
-  get copyWith => __$ValidationConstrainedStringQueryParametersCopyWithImpl<
-    _ValidationConstrainedStringQueryParameters
-  >(this, _$identity);
+          _ValidationConstrainedStringQueryParameters>
+      get copyWith => __$ValidationConstrainedStringQueryParametersCopyWithImpl<
+          _ValidationConstrainedStringQueryParameters>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$ValidationConstrainedStringQueryParametersToJson(this);
+    return _$ValidationConstrainedStringQueryParametersToJson(
+      this,
+    );
   }
 
   @override
@@ -148,24 +143,21 @@ class _ValidationConstrainedStringQueryParameters
 abstract mixin class _$ValidationConstrainedStringQueryParametersCopyWith<$Res>
     implements $ValidationConstrainedStringQueryParametersCopyWith<$Res> {
   factory _$ValidationConstrainedStringQueryParametersCopyWith(
-    _ValidationConstrainedStringQueryParameters value,
-    $Res Function(_ValidationConstrainedStringQueryParameters) _then,
-  ) = __$ValidationConstrainedStringQueryParametersCopyWithImpl;
+          _ValidationConstrainedStringQueryParameters value,
+          $Res Function(_ValidationConstrainedStringQueryParameters) _then) =
+      __$ValidationConstrainedStringQueryParametersCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: ValidationConstrainedStringQueryParameters.valueKey)
-    String value,
-  });
+  $Res call(
+      {@JsonKey(name: ValidationConstrainedStringQueryParameters.valueKey)
+      String value});
 }
 
 /// @nodoc
 class __$ValidationConstrainedStringQueryParametersCopyWithImpl<$Res>
     implements _$ValidationConstrainedStringQueryParametersCopyWith<$Res> {
   __$ValidationConstrainedStringQueryParametersCopyWithImpl(
-    this._self,
-    this._then,
-  );
+      this._self, this._then);
 
   final _ValidationConstrainedStringQueryParameters _self;
   final $Res Function(_ValidationConstrainedStringQueryParameters) _then;
@@ -174,15 +166,14 @@ class __$ValidationConstrainedStringQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? value = null}) {
-    return _then(
-      _ValidationConstrainedStringQueryParameters(
-        value:
-            null == value
-                ? _self.value
-                : value // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_ValidationConstrainedStringQueryParameters(
+      value: null == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }

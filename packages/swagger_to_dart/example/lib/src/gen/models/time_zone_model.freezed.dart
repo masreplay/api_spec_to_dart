@@ -24,9 +24,7 @@ mixin _$TimeZoneModel {
   @pragma('vm:prefer-inline')
   $TimeZoneModelCopyWith<TimeZoneModel> get copyWith =>
       _$TimeZoneModelCopyWithImpl<TimeZoneModel>(
-        this as TimeZoneModel,
-        _$identity,
-      );
+          this as TimeZoneModel, _$identity);
 
   /// Serializes this TimeZoneModel to a JSON map.
   Map<String, dynamic> toJson();
@@ -53,9 +51,8 @@ mixin _$TimeZoneModel {
 /// @nodoc
 abstract mixin class $TimeZoneModelCopyWith<$Res> {
   factory $TimeZoneModelCopyWith(
-    TimeZoneModel value,
-    $Res Function(TimeZoneModel) _then,
-  ) = _$TimeZoneModelCopyWithImpl;
+          TimeZoneModel value, $Res Function(TimeZoneModel) _then) =
+      _$TimeZoneModelCopyWithImpl;
   @useResult
   $Res call({@JsonKey(name: TimeZoneModel.timezoneKey) Timezone timezone});
 }
@@ -72,16 +69,15 @@ class _$TimeZoneModelCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? timezone = null}) {
-    return _then(
-      _self.copyWith(
-        timezone:
-            null == timezone
-                ? _self.timezone
-                : timezone // ignore: cast_nullable_to_non_nullable
-                    as Timezone,
-      ),
-    );
+  $Res call({
+    Object? timezone = null,
+  }) {
+    return _then(_self.copyWith(
+      timezone: null == timezone
+          ? _self.timezone
+          : timezone // ignore: cast_nullable_to_non_nullable
+              as Timezone,
+    ));
   }
 }
 
@@ -89,9 +85,9 @@ class _$TimeZoneModelCopyWithImpl<$Res>
 
 @jsonSerializable
 class _TimeZoneModel extends TimeZoneModel {
-  const _TimeZoneModel({
-    @JsonKey(name: TimeZoneModel.timezoneKey) required this.timezone,
-  }) : super._();
+  const _TimeZoneModel(
+      {@JsonKey(name: TimeZoneModel.timezoneKey) required this.timezone})
+      : super._();
   factory _TimeZoneModel.fromJson(Map<String, dynamic> json) =>
       _$TimeZoneModelFromJson(json);
 
@@ -110,7 +106,9 @@ class _TimeZoneModel extends TimeZoneModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$TimeZoneModelToJson(this);
+    return _$TimeZoneModelToJson(
+      this,
+    );
   }
 
   @override
@@ -136,9 +134,8 @@ class _TimeZoneModel extends TimeZoneModel {
 abstract mixin class _$TimeZoneModelCopyWith<$Res>
     implements $TimeZoneModelCopyWith<$Res> {
   factory _$TimeZoneModelCopyWith(
-    _TimeZoneModel value,
-    $Res Function(_TimeZoneModel) _then,
-  ) = __$TimeZoneModelCopyWithImpl;
+          _TimeZoneModel value, $Res Function(_TimeZoneModel) _then) =
+      __$TimeZoneModelCopyWithImpl;
   @override
   @useResult
   $Res call({@JsonKey(name: TimeZoneModel.timezoneKey) Timezone timezone});
@@ -156,15 +153,14 @@ class __$TimeZoneModelCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? timezone = null}) {
-    return _then(
-      _TimeZoneModel(
-        timezone:
-            null == timezone
-                ? _self.timezone
-                : timezone // ignore: cast_nullable_to_non_nullable
-                    as Timezone,
-      ),
-    );
+  $Res call({
+    Object? timezone = null,
+  }) {
+    return _then(_TimeZoneModel(
+      timezone: null == timezone
+          ? _self.timezone
+          : timezone // ignore: cast_nullable_to_non_nullable
+              as Timezone,
+    ));
   }
 }

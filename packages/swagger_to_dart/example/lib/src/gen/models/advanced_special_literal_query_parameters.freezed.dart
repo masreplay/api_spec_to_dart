@@ -23,11 +23,10 @@ mixin _$AdvancedSpecialLiteralQueryParameters {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $AdvancedSpecialLiteralQueryParametersCopyWith<
-    AdvancedSpecialLiteralQueryParameters
-  >
-  get copyWith => _$AdvancedSpecialLiteralQueryParametersCopyWithImpl<
-    AdvancedSpecialLiteralQueryParameters
-  >(this as AdvancedSpecialLiteralQueryParameters, _$identity);
+          AdvancedSpecialLiteralQueryParameters>
+      get copyWith => _$AdvancedSpecialLiteralQueryParametersCopyWithImpl<
+              AdvancedSpecialLiteralQueryParameters>(
+          this as AdvancedSpecialLiteralQueryParameters, _$identity);
 
   /// Serializes this AdvancedSpecialLiteralQueryParameters to a JSON map.
   Map<String, dynamic> toJson();
@@ -53,13 +52,13 @@ mixin _$AdvancedSpecialLiteralQueryParameters {
 /// @nodoc
 abstract mixin class $AdvancedSpecialLiteralQueryParametersCopyWith<$Res> {
   factory $AdvancedSpecialLiteralQueryParametersCopyWith(
-    AdvancedSpecialLiteralQueryParameters value,
-    $Res Function(AdvancedSpecialLiteralQueryParameters) _then,
-  ) = _$AdvancedSpecialLiteralQueryParametersCopyWithImpl;
+          AdvancedSpecialLiteralQueryParameters value,
+          $Res Function(AdvancedSpecialLiteralQueryParameters) _then) =
+      _$AdvancedSpecialLiteralQueryParametersCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: AdvancedSpecialLiteralQueryParameters.modeKey) Mode mode,
-  });
+  $Res call(
+      {@JsonKey(name: AdvancedSpecialLiteralQueryParameters.modeKey)
+      Mode mode});
 }
 
 /// @nodoc
@@ -74,16 +73,15 @@ class _$AdvancedSpecialLiteralQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? mode = null}) {
-    return _then(
-      _self.copyWith(
-        mode:
-            null == mode
-                ? _self.mode
-                : mode // ignore: cast_nullable_to_non_nullable
-                    as Mode,
-      ),
-    );
+  $Res call({
+    Object? mode = null,
+  }) {
+    return _then(_self.copyWith(
+      mode: null == mode
+          ? _self.mode
+          : mode // ignore: cast_nullable_to_non_nullable
+              as Mode,
+    ));
   }
 }
 
@@ -92,13 +90,13 @@ class _$AdvancedSpecialLiteralQueryParametersCopyWithImpl<$Res>
 @jsonSerializable
 class _AdvancedSpecialLiteralQueryParameters
     extends AdvancedSpecialLiteralQueryParameters {
-  const _AdvancedSpecialLiteralQueryParameters({
-    @JsonKey(name: AdvancedSpecialLiteralQueryParameters.modeKey)
-    this.mode = Mode.system,
-  }) : super._();
+  const _AdvancedSpecialLiteralQueryParameters(
+      {@JsonKey(name: AdvancedSpecialLiteralQueryParameters.modeKey)
+      this.mode = Mode.system})
+      : super._();
   factory _AdvancedSpecialLiteralQueryParameters.fromJson(
-    Map<String, dynamic> json,
-  ) => _$AdvancedSpecialLiteralQueryParametersFromJson(json);
+          Map<String, dynamic> json) =>
+      _$AdvancedSpecialLiteralQueryParametersFromJson(json);
 
   /// mode
   @override
@@ -111,15 +109,15 @@ class _AdvancedSpecialLiteralQueryParameters
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$AdvancedSpecialLiteralQueryParametersCopyWith<
-    _AdvancedSpecialLiteralQueryParameters
-  >
-  get copyWith => __$AdvancedSpecialLiteralQueryParametersCopyWithImpl<
-    _AdvancedSpecialLiteralQueryParameters
-  >(this, _$identity);
+          _AdvancedSpecialLiteralQueryParameters>
+      get copyWith => __$AdvancedSpecialLiteralQueryParametersCopyWithImpl<
+          _AdvancedSpecialLiteralQueryParameters>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$AdvancedSpecialLiteralQueryParametersToJson(this);
+    return _$AdvancedSpecialLiteralQueryParametersToJson(
+      this,
+    );
   }
 
   @override
@@ -144,14 +142,14 @@ class _AdvancedSpecialLiteralQueryParameters
 abstract mixin class _$AdvancedSpecialLiteralQueryParametersCopyWith<$Res>
     implements $AdvancedSpecialLiteralQueryParametersCopyWith<$Res> {
   factory _$AdvancedSpecialLiteralQueryParametersCopyWith(
-    _AdvancedSpecialLiteralQueryParameters value,
-    $Res Function(_AdvancedSpecialLiteralQueryParameters) _then,
-  ) = __$AdvancedSpecialLiteralQueryParametersCopyWithImpl;
+          _AdvancedSpecialLiteralQueryParameters value,
+          $Res Function(_AdvancedSpecialLiteralQueryParameters) _then) =
+      __$AdvancedSpecialLiteralQueryParametersCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: AdvancedSpecialLiteralQueryParameters.modeKey) Mode mode,
-  });
+  $Res call(
+      {@JsonKey(name: AdvancedSpecialLiteralQueryParameters.modeKey)
+      Mode mode});
 }
 
 /// @nodoc
@@ -166,15 +164,14 @@ class __$AdvancedSpecialLiteralQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? mode = null}) {
-    return _then(
-      _AdvancedSpecialLiteralQueryParameters(
-        mode:
-            null == mode
-                ? _self.mode
-                : mode // ignore: cast_nullable_to_non_nullable
-                    as Mode,
-      ),
-    );
+  $Res call({
+    Object? mode = null,
+  }) {
+    return _then(_AdvancedSpecialLiteralQueryParameters(
+      mode: null == mode
+          ? _self.mode
+          : mode // ignore: cast_nullable_to_non_nullable
+              as Mode,
+    ));
   }
 }
