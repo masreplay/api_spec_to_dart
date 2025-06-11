@@ -280,16 +280,14 @@ class ApiClientGenerator {
                           ])
                           ..annotations.addAll([
                             refer('$methodType("${path.key}")'),
-
-                            //if requestBody is FormUrlEncoded or MultiPart must add @FormUrlEncoded or @MultiPart
                             if (method.value.requestBody?.content
                                     .applicationXWwwFormUrlencoded !=
                                 null)
-                              refer('FormUrlEncoded()'),
+                              refer('$FormUrlEncoded()'),
                             if (method.value.requestBody?.content
                                     .multipartFormData !=
                                 null)
-                              refer('MultiPart()'),
+                              refer('$MultiPart()'),
                           ])
                           ..returns = responseType
                           ..name = methodName
