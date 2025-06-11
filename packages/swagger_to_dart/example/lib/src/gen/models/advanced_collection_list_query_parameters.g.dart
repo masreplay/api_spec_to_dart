@@ -7,13 +7,17 @@ part of 'advanced_collection_list_query_parameters.dart';
 // **************************************************************************
 
 _AdvancedCollectionListQueryParameters
-_$AdvancedCollectionListQueryParametersFromJson(Map<String, dynamic> json) =>
-    _AdvancedCollectionListQueryParameters(
-      items:
-          (json['items'] as List<dynamic>?)?.map((e) => e as String).toList() ??
-          const ['default'],
-    );
+    _$AdvancedCollectionListQueryParametersFromJson(
+            Map<String, dynamic> json) =>
+        _AdvancedCollectionListQueryParameters(
+          items: (json['items'] as List<dynamic>?)
+                  ?.map((e) => e as String)
+                  .toList() ??
+              const ['default'],
+        );
 
 Map<String, dynamic> _$AdvancedCollectionListQueryParametersToJson(
-  _AdvancedCollectionListQueryParameters instance,
-) => <String, dynamic>{'items': instance.items};
+        _AdvancedCollectionListQueryParameters instance) =>
+    <String, dynamic>{
+      'items': instance.items,
+    };

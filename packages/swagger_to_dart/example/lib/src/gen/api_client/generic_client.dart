@@ -65,7 +65,7 @@ abstract class GenericClient {
   ///         }
   ///     }
   /// }
-  @GET("/generic/items")
+  @GET('/generic/items')
   Future<HttpResponse<PaginationResponse<ItemResponse>>> genericGetItems({
     @Queries() required GenericGetItemsQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
@@ -126,7 +126,7 @@ abstract class GenericClient {
   ///         }
   ///     }
   /// }
-  @GET("/generic/categories")
+  @GET('/generic/categories')
   Future<HttpResponse<PaginationResponse<CategoryResponse>>>
       genericGetCategories({
     @Queries() required GenericGetCategoriesQueryParameters queries,
@@ -176,7 +176,7 @@ abstract class GenericClient {
   ///         }
   ///     }
   /// }
-  @GET("/generic/base-response-item")
+  @GET('/generic/base-response-item')
   Future<HttpResponse<BaseResponse<ItemResponse>>> genericGetBaseResponseItem({
     @Body() required ItemResponse requestBody,
     @Extras() Map<String, dynamic>? extras,
@@ -225,7 +225,7 @@ abstract class GenericClient {
   ///         }
   ///     }
   /// }
-  @GET("/generic/base-response-category")
+  @GET('/generic/base-response-category')
   Future<HttpResponse<BaseResponse<CategoryResponse>>>
       genericGetBaseResponseCategory({
     @Body() required CategoryResponse requestBody,
@@ -255,7 +255,7 @@ abstract class GenericClient {
   ///         }
   ///     }
   /// }
-  @GET("/generic/base-response-list")
+  @GET('/generic/base-response-list')
   Future<HttpResponse<BaseResponse<List<ItemResponse>>>>
       genericGetBaseResponseList({
     @Extras() Map<String, dynamic>? extras,
@@ -316,7 +316,7 @@ abstract class GenericClient {
   ///         }
   ///     }
   /// }
-  @GET("/generic/nested-base-and-pagination")
+  @GET('/generic/nested-base-and-pagination')
   Future<HttpResponse<BaseResponse<PaginationResponse<ItemResponse>>>>
       genericGetNestedBaseAndPagination({
     @Queries()

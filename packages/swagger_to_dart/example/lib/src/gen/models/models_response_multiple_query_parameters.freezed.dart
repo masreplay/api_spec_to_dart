@@ -23,11 +23,10 @@ mixin _$ModelsResponseMultipleQueryParameters {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $ModelsResponseMultipleQueryParametersCopyWith<
-    ModelsResponseMultipleQueryParameters
-  >
-  get copyWith => _$ModelsResponseMultipleQueryParametersCopyWithImpl<
-    ModelsResponseMultipleQueryParameters
-  >(this as ModelsResponseMultipleQueryParameters, _$identity);
+          ModelsResponseMultipleQueryParameters>
+      get copyWith => _$ModelsResponseMultipleQueryParametersCopyWithImpl<
+              ModelsResponseMultipleQueryParameters>(
+          this as ModelsResponseMultipleQueryParameters, _$identity);
 
   /// Serializes this ModelsResponseMultipleQueryParameters to a JSON map.
   Map<String, dynamic> toJson();
@@ -53,13 +52,13 @@ mixin _$ModelsResponseMultipleQueryParameters {
 /// @nodoc
 abstract mixin class $ModelsResponseMultipleQueryParametersCopyWith<$Res> {
   factory $ModelsResponseMultipleQueryParametersCopyWith(
-    ModelsResponseMultipleQueryParameters value,
-    $Res Function(ModelsResponseMultipleQueryParameters) _then,
-  ) = _$ModelsResponseMultipleQueryParametersCopyWithImpl;
+          ModelsResponseMultipleQueryParameters value,
+          $Res Function(ModelsResponseMultipleQueryParameters) _then) =
+      _$ModelsResponseMultipleQueryParametersCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: ModelsResponseMultipleQueryParameters.isUserKey) bool isUser,
-  });
+  $Res call(
+      {@JsonKey(name: ModelsResponseMultipleQueryParameters.isUserKey)
+      bool isUser});
 }
 
 /// @nodoc
@@ -74,16 +73,15 @@ class _$ModelsResponseMultipleQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? isUser = null}) {
-    return _then(
-      _self.copyWith(
-        isUser:
-            null == isUser
-                ? _self.isUser
-                : isUser // ignore: cast_nullable_to_non_nullable
-                    as bool,
-      ),
-    );
+  $Res call({
+    Object? isUser = null,
+  }) {
+    return _then(_self.copyWith(
+      isUser: null == isUser
+          ? _self.isUser
+          : isUser // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
@@ -92,13 +90,13 @@ class _$ModelsResponseMultipleQueryParametersCopyWithImpl<$Res>
 @jsonSerializable
 class _ModelsResponseMultipleQueryParameters
     extends ModelsResponseMultipleQueryParameters {
-  const _ModelsResponseMultipleQueryParameters({
-    @JsonKey(name: ModelsResponseMultipleQueryParameters.isUserKey)
-    this.isUser = true,
-  }) : super._();
+  const _ModelsResponseMultipleQueryParameters(
+      {@JsonKey(name: ModelsResponseMultipleQueryParameters.isUserKey)
+      this.isUser = true})
+      : super._();
   factory _ModelsResponseMultipleQueryParameters.fromJson(
-    Map<String, dynamic> json,
-  ) => _$ModelsResponseMultipleQueryParametersFromJson(json);
+          Map<String, dynamic> json) =>
+      _$ModelsResponseMultipleQueryParametersFromJson(json);
 
   /// isUser
   @override
@@ -111,15 +109,15 @@ class _ModelsResponseMultipleQueryParameters
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$ModelsResponseMultipleQueryParametersCopyWith<
-    _ModelsResponseMultipleQueryParameters
-  >
-  get copyWith => __$ModelsResponseMultipleQueryParametersCopyWithImpl<
-    _ModelsResponseMultipleQueryParameters
-  >(this, _$identity);
+          _ModelsResponseMultipleQueryParameters>
+      get copyWith => __$ModelsResponseMultipleQueryParametersCopyWithImpl<
+          _ModelsResponseMultipleQueryParameters>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$ModelsResponseMultipleQueryParametersToJson(this);
+    return _$ModelsResponseMultipleQueryParametersToJson(
+      this,
+    );
   }
 
   @override
@@ -144,14 +142,14 @@ class _ModelsResponseMultipleQueryParameters
 abstract mixin class _$ModelsResponseMultipleQueryParametersCopyWith<$Res>
     implements $ModelsResponseMultipleQueryParametersCopyWith<$Res> {
   factory _$ModelsResponseMultipleQueryParametersCopyWith(
-    _ModelsResponseMultipleQueryParameters value,
-    $Res Function(_ModelsResponseMultipleQueryParameters) _then,
-  ) = __$ModelsResponseMultipleQueryParametersCopyWithImpl;
+          _ModelsResponseMultipleQueryParameters value,
+          $Res Function(_ModelsResponseMultipleQueryParameters) _then) =
+      __$ModelsResponseMultipleQueryParametersCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: ModelsResponseMultipleQueryParameters.isUserKey) bool isUser,
-  });
+  $Res call(
+      {@JsonKey(name: ModelsResponseMultipleQueryParameters.isUserKey)
+      bool isUser});
 }
 
 /// @nodoc
@@ -166,15 +164,14 @@ class __$ModelsResponseMultipleQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? isUser = null}) {
-    return _then(
-      _ModelsResponseMultipleQueryParameters(
-        isUser:
-            null == isUser
-                ? _self.isUser
-                : isUser // ignore: cast_nullable_to_non_nullable
-                    as bool,
-      ),
-    );
+  $Res call({
+    Object? isUser = null,
+  }) {
+    return _then(_ModelsResponseMultipleQueryParameters(
+      isUser: null == isUser
+          ? _self.isUser
+          : isUser // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }

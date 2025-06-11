@@ -27,11 +27,12 @@ mixin _$ValidationValidationConditionalQueryParameters {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $ValidationValidationConditionalQueryParametersCopyWith<
-    ValidationValidationConditionalQueryParameters
-  >
-  get copyWith => _$ValidationValidationConditionalQueryParametersCopyWithImpl<
-    ValidationValidationConditionalQueryParameters
-  >(this as ValidationValidationConditionalQueryParameters, _$identity);
+          ValidationValidationConditionalQueryParameters>
+      get copyWith =>
+          _$ValidationValidationConditionalQueryParametersCopyWithImpl<
+                  ValidationValidationConditionalQueryParameters>(
+              this as ValidationValidationConditionalQueryParameters,
+              _$identity);
 
   /// Serializes this ValidationValidationConditionalQueryParameters to a JSON map.
   Map<String, dynamic> toJson();
@@ -58,28 +59,24 @@ mixin _$ValidationValidationConditionalQueryParameters {
 
 /// @nodoc
 abstract mixin class $ValidationValidationConditionalQueryParametersCopyWith<
-  $Res
-> {
+    $Res> {
   factory $ValidationValidationConditionalQueryParametersCopyWith(
-    ValidationValidationConditionalQueryParameters value,
-    $Res Function(ValidationValidationConditionalQueryParameters) _then,
-  ) = _$ValidationValidationConditionalQueryParametersCopyWithImpl;
+          ValidationValidationConditionalQueryParameters value,
+          $Res Function(ValidationValidationConditionalQueryParameters) _then) =
+      _$ValidationValidationConditionalQueryParametersCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: ValidationValidationConditionalQueryParameters.userIdKey)
-    int? userId,
-    @JsonKey(name: ValidationValidationConditionalQueryParameters.usernameKey)
-    String? username,
-  });
+  $Res call(
+      {@JsonKey(name: ValidationValidationConditionalQueryParameters.userIdKey)
+      int? userId,
+      @JsonKey(name: ValidationValidationConditionalQueryParameters.usernameKey)
+      String? username});
 }
 
 /// @nodoc
 class _$ValidationValidationConditionalQueryParametersCopyWithImpl<$Res>
     implements $ValidationValidationConditionalQueryParametersCopyWith<$Res> {
   _$ValidationValidationConditionalQueryParametersCopyWithImpl(
-    this._self,
-    this._then,
-  );
+      this._self, this._then);
 
   final ValidationValidationConditionalQueryParameters _self;
   final $Res Function(ValidationValidationConditionalQueryParameters) _then;
@@ -88,21 +85,20 @@ class _$ValidationValidationConditionalQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? userId = freezed, Object? username = freezed}) {
-    return _then(
-      _self.copyWith(
-        userId:
-            freezed == userId
-                ? _self.userId
-                : userId // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        username:
-            freezed == username
-                ? _self.username
-                : username // ignore: cast_nullable_to_non_nullable
-                    as String?,
-      ),
-    );
+  $Res call({
+    Object? userId = freezed,
+    Object? username = freezed,
+  }) {
+    return _then(_self.copyWith(
+      userId: freezed == userId
+          ? _self.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      username: freezed == username
+          ? _self.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
@@ -111,15 +107,15 @@ class _$ValidationValidationConditionalQueryParametersCopyWithImpl<$Res>
 @jsonSerializable
 class _ValidationValidationConditionalQueryParameters
     extends ValidationValidationConditionalQueryParameters {
-  const _ValidationValidationConditionalQueryParameters({
-    @JsonKey(name: ValidationValidationConditionalQueryParameters.userIdKey)
-    required this.userId,
-    @JsonKey(name: ValidationValidationConditionalQueryParameters.usernameKey)
-    required this.username,
-  }) : super._();
+  const _ValidationValidationConditionalQueryParameters(
+      {@JsonKey(name: ValidationValidationConditionalQueryParameters.userIdKey)
+      required this.userId,
+      @JsonKey(name: ValidationValidationConditionalQueryParameters.usernameKey)
+      required this.username})
+      : super._();
   factory _ValidationValidationConditionalQueryParameters.fromJson(
-    Map<String, dynamic> json,
-  ) => _$ValidationValidationConditionalQueryParametersFromJson(json);
+          Map<String, dynamic> json) =>
+      _$ValidationValidationConditionalQueryParametersFromJson(json);
 
   /// userId
   @override
@@ -137,15 +133,17 @@ class _ValidationValidationConditionalQueryParameters
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$ValidationValidationConditionalQueryParametersCopyWith<
-    _ValidationValidationConditionalQueryParameters
-  >
-  get copyWith => __$ValidationValidationConditionalQueryParametersCopyWithImpl<
-    _ValidationValidationConditionalQueryParameters
-  >(this, _$identity);
+          _ValidationValidationConditionalQueryParameters>
+      get copyWith =>
+          __$ValidationValidationConditionalQueryParametersCopyWithImpl<
+                  _ValidationValidationConditionalQueryParameters>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$ValidationValidationConditionalQueryParametersToJson(this);
+    return _$ValidationValidationConditionalQueryParametersToJson(
+      this,
+    );
   }
 
   @override
@@ -170,30 +168,27 @@ class _ValidationValidationConditionalQueryParameters
 
 /// @nodoc
 abstract mixin class _$ValidationValidationConditionalQueryParametersCopyWith<
-  $Res
->
+        $Res>
     implements $ValidationValidationConditionalQueryParametersCopyWith<$Res> {
   factory _$ValidationValidationConditionalQueryParametersCopyWith(
-    _ValidationValidationConditionalQueryParameters value,
-    $Res Function(_ValidationValidationConditionalQueryParameters) _then,
-  ) = __$ValidationValidationConditionalQueryParametersCopyWithImpl;
+          _ValidationValidationConditionalQueryParameters value,
+          $Res Function(_ValidationValidationConditionalQueryParameters)
+              _then) =
+      __$ValidationValidationConditionalQueryParametersCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: ValidationValidationConditionalQueryParameters.userIdKey)
-    int? userId,
-    @JsonKey(name: ValidationValidationConditionalQueryParameters.usernameKey)
-    String? username,
-  });
+  $Res call(
+      {@JsonKey(name: ValidationValidationConditionalQueryParameters.userIdKey)
+      int? userId,
+      @JsonKey(name: ValidationValidationConditionalQueryParameters.usernameKey)
+      String? username});
 }
 
 /// @nodoc
 class __$ValidationValidationConditionalQueryParametersCopyWithImpl<$Res>
     implements _$ValidationValidationConditionalQueryParametersCopyWith<$Res> {
   __$ValidationValidationConditionalQueryParametersCopyWithImpl(
-    this._self,
-    this._then,
-  );
+      this._self, this._then);
 
   final _ValidationValidationConditionalQueryParameters _self;
   final $Res Function(_ValidationValidationConditionalQueryParameters) _then;
@@ -202,20 +197,19 @@ class __$ValidationValidationConditionalQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? userId = freezed, Object? username = freezed}) {
-    return _then(
-      _ValidationValidationConditionalQueryParameters(
-        userId:
-            freezed == userId
-                ? _self.userId
-                : userId // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        username:
-            freezed == username
-                ? _self.username
-                : username // ignore: cast_nullable_to_non_nullable
-                    as String?,
-      ),
-    );
+  $Res call({
+    Object? userId = freezed,
+    Object? username = freezed,
+  }) {
+    return _then(_ValidationValidationConditionalQueryParameters(
+      userId: freezed == userId
+          ? _self.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      username: freezed == username
+          ? _self.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }

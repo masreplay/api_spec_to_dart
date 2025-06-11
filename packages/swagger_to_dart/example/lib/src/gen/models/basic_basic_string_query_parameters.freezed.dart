@@ -23,9 +23,9 @@ mixin _$BasicBasicStringQueryParameters {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $BasicBasicStringQueryParametersCopyWith<BasicBasicStringQueryParameters>
-  get copyWith => _$BasicBasicStringQueryParametersCopyWithImpl<
-    BasicBasicStringQueryParameters
-  >(this as BasicBasicStringQueryParameters, _$identity);
+      get copyWith => _$BasicBasicStringQueryParametersCopyWithImpl<
+              BasicBasicStringQueryParameters>(
+          this as BasicBasicStringQueryParameters, _$identity);
 
   /// Serializes this BasicBasicStringQueryParameters to a JSON map.
   Map<String, dynamic> toJson();
@@ -51,13 +51,12 @@ mixin _$BasicBasicStringQueryParameters {
 /// @nodoc
 abstract mixin class $BasicBasicStringQueryParametersCopyWith<$Res> {
   factory $BasicBasicStringQueryParametersCopyWith(
-    BasicBasicStringQueryParameters value,
-    $Res Function(BasicBasicStringQueryParameters) _then,
-  ) = _$BasicBasicStringQueryParametersCopyWithImpl;
+          BasicBasicStringQueryParameters value,
+          $Res Function(BasicBasicStringQueryParameters) _then) =
+      _$BasicBasicStringQueryParametersCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: BasicBasicStringQueryParameters.textKey) String text,
-  });
+  $Res call(
+      {@JsonKey(name: BasicBasicStringQueryParameters.textKey) String text});
 }
 
 /// @nodoc
@@ -72,16 +71,15 @@ class _$BasicBasicStringQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? text = null}) {
-    return _then(
-      _self.copyWith(
-        text:
-            null == text
-                ? _self.text
-                : text // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? text = null,
+  }) {
+    return _then(_self.copyWith(
+      text: null == text
+          ? _self.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -89,12 +87,13 @@ class _$BasicBasicStringQueryParametersCopyWithImpl<$Res>
 
 @jsonSerializable
 class _BasicBasicStringQueryParameters extends BasicBasicStringQueryParameters {
-  const _BasicBasicStringQueryParameters({
-    @JsonKey(name: BasicBasicStringQueryParameters.textKey) required this.text,
-  }) : super._();
+  const _BasicBasicStringQueryParameters(
+      {@JsonKey(name: BasicBasicStringQueryParameters.textKey)
+      required this.text})
+      : super._();
   factory _BasicBasicStringQueryParameters.fromJson(
-    Map<String, dynamic> json,
-  ) => _$BasicBasicStringQueryParametersFromJson(json);
+          Map<String, dynamic> json) =>
+      _$BasicBasicStringQueryParametersFromJson(json);
 
   /// text
   @override
@@ -107,13 +106,14 @@ class _BasicBasicStringQueryParameters extends BasicBasicStringQueryParameters {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$BasicBasicStringQueryParametersCopyWith<_BasicBasicStringQueryParameters>
-  get copyWith => __$BasicBasicStringQueryParametersCopyWithImpl<
-    _BasicBasicStringQueryParameters
-  >(this, _$identity);
+      get copyWith => __$BasicBasicStringQueryParametersCopyWithImpl<
+          _BasicBasicStringQueryParameters>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$BasicBasicStringQueryParametersToJson(this);
+    return _$BasicBasicStringQueryParametersToJson(
+      this,
+    );
   }
 
   @override
@@ -138,14 +138,13 @@ class _BasicBasicStringQueryParameters extends BasicBasicStringQueryParameters {
 abstract mixin class _$BasicBasicStringQueryParametersCopyWith<$Res>
     implements $BasicBasicStringQueryParametersCopyWith<$Res> {
   factory _$BasicBasicStringQueryParametersCopyWith(
-    _BasicBasicStringQueryParameters value,
-    $Res Function(_BasicBasicStringQueryParameters) _then,
-  ) = __$BasicBasicStringQueryParametersCopyWithImpl;
+          _BasicBasicStringQueryParameters value,
+          $Res Function(_BasicBasicStringQueryParameters) _then) =
+      __$BasicBasicStringQueryParametersCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: BasicBasicStringQueryParameters.textKey) String text,
-  });
+  $Res call(
+      {@JsonKey(name: BasicBasicStringQueryParameters.textKey) String text});
 }
 
 /// @nodoc
@@ -160,15 +159,14 @@ class __$BasicBasicStringQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? text = null}) {
-    return _then(
-      _BasicBasicStringQueryParameters(
-        text:
-            null == text
-                ? _self.text
-                : text // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? text = null,
+  }) {
+    return _then(_BasicBasicStringQueryParameters(
+      text: null == text
+          ? _self.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }

@@ -27,11 +27,10 @@ mixin _$GenericGetCategoriesQueryParameters {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $GenericGetCategoriesQueryParametersCopyWith<
-    GenericGetCategoriesQueryParameters
-  >
-  get copyWith => _$GenericGetCategoriesQueryParametersCopyWithImpl<
-    GenericGetCategoriesQueryParameters
-  >(this as GenericGetCategoriesQueryParameters, _$identity);
+          GenericGetCategoriesQueryParameters>
+      get copyWith => _$GenericGetCategoriesQueryParametersCopyWithImpl<
+              GenericGetCategoriesQueryParameters>(
+          this as GenericGetCategoriesQueryParameters, _$identity);
 
   /// Serializes this GenericGetCategoriesQueryParameters to a JSON map.
   Map<String, dynamic> toJson();
@@ -58,14 +57,14 @@ mixin _$GenericGetCategoriesQueryParameters {
 /// @nodoc
 abstract mixin class $GenericGetCategoriesQueryParametersCopyWith<$Res> {
   factory $GenericGetCategoriesQueryParametersCopyWith(
-    GenericGetCategoriesQueryParameters value,
-    $Res Function(GenericGetCategoriesQueryParameters) _then,
-  ) = _$GenericGetCategoriesQueryParametersCopyWithImpl;
+          GenericGetCategoriesQueryParameters value,
+          $Res Function(GenericGetCategoriesQueryParameters) _then) =
+      _$GenericGetCategoriesQueryParametersCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: GenericGetCategoriesQueryParameters.pageKey) int page,
-    @JsonKey(name: GenericGetCategoriesQueryParameters.perPageKey) int perPage,
-  });
+  $Res call(
+      {@JsonKey(name: GenericGetCategoriesQueryParameters.pageKey) int page,
+      @JsonKey(name: GenericGetCategoriesQueryParameters.perPageKey)
+      int perPage});
 }
 
 /// @nodoc
@@ -80,21 +79,20 @@ class _$GenericGetCategoriesQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? page = null, Object? perPage = null}) {
-    return _then(
-      _self.copyWith(
-        page:
-            null == page
-                ? _self.page
-                : page // ignore: cast_nullable_to_non_nullable
-                    as int,
-        perPage:
-            null == perPage
-                ? _self.perPage
-                : perPage // ignore: cast_nullable_to_non_nullable
-                    as int,
-      ),
-    );
+  $Res call({
+    Object? page = null,
+    Object? perPage = null,
+  }) {
+    return _then(_self.copyWith(
+      page: null == page
+          ? _self.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
+      perPage: null == perPage
+          ? _self.perPage
+          : perPage // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
@@ -103,14 +101,15 @@ class _$GenericGetCategoriesQueryParametersCopyWithImpl<$Res>
 @jsonSerializable
 class _GenericGetCategoriesQueryParameters
     extends GenericGetCategoriesQueryParameters {
-  const _GenericGetCategoriesQueryParameters({
-    @JsonKey(name: GenericGetCategoriesQueryParameters.pageKey) this.page = 1,
-    @JsonKey(name: GenericGetCategoriesQueryParameters.perPageKey)
-    this.perPage = 10,
-  }) : super._();
+  const _GenericGetCategoriesQueryParameters(
+      {@JsonKey(name: GenericGetCategoriesQueryParameters.pageKey)
+      this.page = 1,
+      @JsonKey(name: GenericGetCategoriesQueryParameters.perPageKey)
+      this.perPage = 10})
+      : super._();
   factory _GenericGetCategoriesQueryParameters.fromJson(
-    Map<String, dynamic> json,
-  ) => _$GenericGetCategoriesQueryParametersFromJson(json);
+          Map<String, dynamic> json) =>
+      _$GenericGetCategoriesQueryParametersFromJson(json);
 
   /// page
   @override
@@ -128,15 +127,15 @@ class _GenericGetCategoriesQueryParameters
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$GenericGetCategoriesQueryParametersCopyWith<
-    _GenericGetCategoriesQueryParameters
-  >
-  get copyWith => __$GenericGetCategoriesQueryParametersCopyWithImpl<
-    _GenericGetCategoriesQueryParameters
-  >(this, _$identity);
+          _GenericGetCategoriesQueryParameters>
+      get copyWith => __$GenericGetCategoriesQueryParametersCopyWithImpl<
+          _GenericGetCategoriesQueryParameters>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$GenericGetCategoriesQueryParametersToJson(this);
+    return _$GenericGetCategoriesQueryParametersToJson(
+      this,
+    );
   }
 
   @override
@@ -162,15 +161,15 @@ class _GenericGetCategoriesQueryParameters
 abstract mixin class _$GenericGetCategoriesQueryParametersCopyWith<$Res>
     implements $GenericGetCategoriesQueryParametersCopyWith<$Res> {
   factory _$GenericGetCategoriesQueryParametersCopyWith(
-    _GenericGetCategoriesQueryParameters value,
-    $Res Function(_GenericGetCategoriesQueryParameters) _then,
-  ) = __$GenericGetCategoriesQueryParametersCopyWithImpl;
+          _GenericGetCategoriesQueryParameters value,
+          $Res Function(_GenericGetCategoriesQueryParameters) _then) =
+      __$GenericGetCategoriesQueryParametersCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: GenericGetCategoriesQueryParameters.pageKey) int page,
-    @JsonKey(name: GenericGetCategoriesQueryParameters.perPageKey) int perPage,
-  });
+  $Res call(
+      {@JsonKey(name: GenericGetCategoriesQueryParameters.pageKey) int page,
+      @JsonKey(name: GenericGetCategoriesQueryParameters.perPageKey)
+      int perPage});
 }
 
 /// @nodoc
@@ -185,20 +184,19 @@ class __$GenericGetCategoriesQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? page = null, Object? perPage = null}) {
-    return _then(
-      _GenericGetCategoriesQueryParameters(
-        page:
-            null == page
-                ? _self.page
-                : page // ignore: cast_nullable_to_non_nullable
-                    as int,
-        perPage:
-            null == perPage
-                ? _self.perPage
-                : perPage // ignore: cast_nullable_to_non_nullable
-                    as int,
-      ),
-    );
+  $Res call({
+    Object? page = null,
+    Object? perPage = null,
+  }) {
+    return _then(_GenericGetCategoriesQueryParameters(
+      page: null == page
+          ? _self.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
+      perPage: null == perPage
+          ? _self.perPage
+          : perPage // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }

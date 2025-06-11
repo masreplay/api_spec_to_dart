@@ -23,11 +23,10 @@ mixin _$AdvancedSpecialEnumQueryParameters {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $AdvancedSpecialEnumQueryParametersCopyWith<
-    AdvancedSpecialEnumQueryParameters
-  >
-  get copyWith => _$AdvancedSpecialEnumQueryParametersCopyWithImpl<
-    AdvancedSpecialEnumQueryParameters
-  >(this as AdvancedSpecialEnumQueryParameters, _$identity);
+          AdvancedSpecialEnumQueryParameters>
+      get copyWith => _$AdvancedSpecialEnumQueryParametersCopyWithImpl<
+              AdvancedSpecialEnumQueryParameters>(
+          this as AdvancedSpecialEnumQueryParameters, _$identity);
 
   /// Serializes this AdvancedSpecialEnumQueryParameters to a JSON map.
   Map<String, dynamic> toJson();
@@ -53,13 +52,13 @@ mixin _$AdvancedSpecialEnumQueryParameters {
 /// @nodoc
 abstract mixin class $AdvancedSpecialEnumQueryParametersCopyWith<$Res> {
   factory $AdvancedSpecialEnumQueryParametersCopyWith(
-    AdvancedSpecialEnumQueryParameters value,
-    $Res Function(AdvancedSpecialEnumQueryParameters) _then,
-  ) = _$AdvancedSpecialEnumQueryParametersCopyWithImpl;
+          AdvancedSpecialEnumQueryParameters value,
+          $Res Function(AdvancedSpecialEnumQueryParameters) _then) =
+      _$AdvancedSpecialEnumQueryParametersCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: AdvancedSpecialEnumQueryParameters.levelKey) UserLevel level,
-  });
+  $Res call(
+      {@JsonKey(name: AdvancedSpecialEnumQueryParameters.levelKey)
+      UserLevel level});
 }
 
 /// @nodoc
@@ -74,16 +73,15 @@ class _$AdvancedSpecialEnumQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? level = null}) {
-    return _then(
-      _self.copyWith(
-        level:
-            null == level
-                ? _self.level
-                : level // ignore: cast_nullable_to_non_nullable
-                    as UserLevel,
-      ),
-    );
+  $Res call({
+    Object? level = null,
+  }) {
+    return _then(_self.copyWith(
+      level: null == level
+          ? _self.level
+          : level // ignore: cast_nullable_to_non_nullable
+              as UserLevel,
+    ));
   }
 }
 
@@ -92,13 +90,13 @@ class _$AdvancedSpecialEnumQueryParametersCopyWithImpl<$Res>
 @jsonSerializable
 class _AdvancedSpecialEnumQueryParameters
     extends AdvancedSpecialEnumQueryParameters {
-  const _AdvancedSpecialEnumQueryParameters({
-    @JsonKey(name: AdvancedSpecialEnumQueryParameters.levelKey)
-    this.level = UserLevel.basic,
-  }) : super._();
+  const _AdvancedSpecialEnumQueryParameters(
+      {@JsonKey(name: AdvancedSpecialEnumQueryParameters.levelKey)
+      this.level = UserLevel.basic})
+      : super._();
   factory _AdvancedSpecialEnumQueryParameters.fromJson(
-    Map<String, dynamic> json,
-  ) => _$AdvancedSpecialEnumQueryParametersFromJson(json);
+          Map<String, dynamic> json) =>
+      _$AdvancedSpecialEnumQueryParametersFromJson(json);
 
   /// level
   @override
@@ -111,15 +109,15 @@ class _AdvancedSpecialEnumQueryParameters
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$AdvancedSpecialEnumQueryParametersCopyWith<
-    _AdvancedSpecialEnumQueryParameters
-  >
-  get copyWith => __$AdvancedSpecialEnumQueryParametersCopyWithImpl<
-    _AdvancedSpecialEnumQueryParameters
-  >(this, _$identity);
+          _AdvancedSpecialEnumQueryParameters>
+      get copyWith => __$AdvancedSpecialEnumQueryParametersCopyWithImpl<
+          _AdvancedSpecialEnumQueryParameters>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$AdvancedSpecialEnumQueryParametersToJson(this);
+    return _$AdvancedSpecialEnumQueryParametersToJson(
+      this,
+    );
   }
 
   @override
@@ -144,14 +142,14 @@ class _AdvancedSpecialEnumQueryParameters
 abstract mixin class _$AdvancedSpecialEnumQueryParametersCopyWith<$Res>
     implements $AdvancedSpecialEnumQueryParametersCopyWith<$Res> {
   factory _$AdvancedSpecialEnumQueryParametersCopyWith(
-    _AdvancedSpecialEnumQueryParameters value,
-    $Res Function(_AdvancedSpecialEnumQueryParameters) _then,
-  ) = __$AdvancedSpecialEnumQueryParametersCopyWithImpl;
+          _AdvancedSpecialEnumQueryParameters value,
+          $Res Function(_AdvancedSpecialEnumQueryParameters) _then) =
+      __$AdvancedSpecialEnumQueryParametersCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: AdvancedSpecialEnumQueryParameters.levelKey) UserLevel level,
-  });
+  $Res call(
+      {@JsonKey(name: AdvancedSpecialEnumQueryParameters.levelKey)
+      UserLevel level});
 }
 
 /// @nodoc
@@ -166,15 +164,14 @@ class __$AdvancedSpecialEnumQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? level = null}) {
-    return _then(
-      _AdvancedSpecialEnumQueryParameters(
-        level:
-            null == level
-                ? _self.level
-                : level // ignore: cast_nullable_to_non_nullable
-                    as UserLevel,
-      ),
-    );
+  $Res call({
+    Object? level = null,
+  }) {
+    return _then(_AdvancedSpecialEnumQueryParameters(
+      level: null == level
+          ? _self.level
+          : level // ignore: cast_nullable_to_non_nullable
+              as UserLevel,
+    ));
   }
 }

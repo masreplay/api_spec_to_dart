@@ -40,9 +40,7 @@ mixin _$PaginationResponse<T> {
   @pragma('vm:prefer-inline')
   $PaginationResponseCopyWith<T, PaginationResponse<T>> get copyWith =>
       _$PaginationResponseCopyWithImpl<T, PaginationResponse<T>>(
-        this as PaginationResponse<T>,
-        _$identity,
-      );
+          this as PaginationResponse<T>, _$identity);
 
   /// Serializes this PaginationResponse to a JSON map.
   Map<String, dynamic> toJson(Object? Function(T) toJsonT);
@@ -63,13 +61,12 @@ mixin _$PaginationResponse<T> {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    const DeepCollectionEquality().hash(items),
-    total,
-    page,
-    perPage,
-    totalPages,
-  );
+      runtimeType,
+      const DeepCollectionEquality().hash(items),
+      total,
+      page,
+      perPage,
+      totalPages);
 
   @override
   String toString() {
@@ -79,18 +76,16 @@ mixin _$PaginationResponse<T> {
 
 /// @nodoc
 abstract mixin class $PaginationResponseCopyWith<T, $Res> {
-  factory $PaginationResponseCopyWith(
-    PaginationResponse<T> value,
-    $Res Function(PaginationResponse<T>) _then,
-  ) = _$PaginationResponseCopyWithImpl;
+  factory $PaginationResponseCopyWith(PaginationResponse<T> value,
+          $Res Function(PaginationResponse<T>) _then) =
+      _$PaginationResponseCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: PaginationResponse.itemsKey) List<T> items,
-    @JsonKey(name: PaginationResponse.totalKey) int total,
-    @JsonKey(name: PaginationResponse.pageKey) int page,
-    @JsonKey(name: PaginationResponse.perPageKey) int perPage,
-    @JsonKey(name: PaginationResponse.totalPagesKey) int totalPages,
-  });
+  $Res call(
+      {@JsonKey(name: PaginationResponse.itemsKey) List<T> items,
+      @JsonKey(name: PaginationResponse.totalKey) int total,
+      @JsonKey(name: PaginationResponse.pageKey) int page,
+      @JsonKey(name: PaginationResponse.perPageKey) int perPage,
+      @JsonKey(name: PaginationResponse.totalPagesKey) int totalPages});
 }
 
 /// @nodoc
@@ -112,57 +107,48 @@ class _$PaginationResponseCopyWithImpl<T, $Res>
     Object? perPage = null,
     Object? totalPages = null,
   }) {
-    return _then(
-      _self.copyWith(
-        items:
-            null == items
-                ? _self.items
-                : items // ignore: cast_nullable_to_non_nullable
-                    as List<T>,
-        total:
-            null == total
-                ? _self.total
-                : total // ignore: cast_nullable_to_non_nullable
-                    as int,
-        page:
-            null == page
-                ? _self.page
-                : page // ignore: cast_nullable_to_non_nullable
-                    as int,
-        perPage:
-            null == perPage
-                ? _self.perPage
-                : perPage // ignore: cast_nullable_to_non_nullable
-                    as int,
-        totalPages:
-            null == totalPages
-                ? _self.totalPages
-                : totalPages // ignore: cast_nullable_to_non_nullable
-                    as int,
-      ),
-    );
+    return _then(_self.copyWith(
+      items: null == items
+          ? _self.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<T>,
+      total: null == total
+          ? _self.total
+          : total // ignore: cast_nullable_to_non_nullable
+              as int,
+      page: null == page
+          ? _self.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
+      perPage: null == perPage
+          ? _self.perPage
+          : perPage // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalPages: null == totalPages
+          ? _self.totalPages
+          : totalPages // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
 /// @nodoc
 
 @JsonSerializable(
-  converters: jsonSerializableConverters,
-  genericArgumentFactories: true,
-)
+    converters: jsonSerializableConverters, genericArgumentFactories: true)
 class _PaginationResponse<T> extends PaginationResponse<T> {
-  const _PaginationResponse({
-    @JsonKey(name: PaginationResponse.itemsKey) required final List<T> items,
-    @JsonKey(name: PaginationResponse.totalKey) required this.total,
-    @JsonKey(name: PaginationResponse.pageKey) required this.page,
-    @JsonKey(name: PaginationResponse.perPageKey) required this.perPage,
-    @JsonKey(name: PaginationResponse.totalPagesKey) required this.totalPages,
-  }) : _items = items,
-       super._();
+  const _PaginationResponse(
+      {@JsonKey(name: PaginationResponse.itemsKey) required final List<T> items,
+      @JsonKey(name: PaginationResponse.totalKey) required this.total,
+      @JsonKey(name: PaginationResponse.pageKey) required this.page,
+      @JsonKey(name: PaginationResponse.perPageKey) required this.perPage,
+      @JsonKey(name: PaginationResponse.totalPagesKey)
+      required this.totalPages})
+      : _items = items,
+        super._();
   factory _PaginationResponse.fromJson(
-    Map<String, dynamic> json,
-    T Function(Object?) fromJsonT,
-  ) => _$PaginationResponseFromJson(json, fromJsonT);
+          Map<String, dynamic> json, T Function(Object?) fromJsonT) =>
+      _$PaginationResponseFromJson(json, fromJsonT);
 
   /// items
   final List<T> _items;
@@ -203,9 +189,7 @@ class _PaginationResponse<T> extends PaginationResponse<T> {
   @pragma('vm:prefer-inline')
   _$PaginationResponseCopyWith<T, _PaginationResponse<T>> get copyWith =>
       __$PaginationResponseCopyWithImpl<T, _PaginationResponse<T>>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson(Object? Function(T) toJsonT) {
@@ -228,13 +212,12 @@ class _PaginationResponse<T> extends PaginationResponse<T> {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    const DeepCollectionEquality().hash(_items),
-    total,
-    page,
-    perPage,
-    totalPages,
-  );
+      runtimeType,
+      const DeepCollectionEquality().hash(_items),
+      total,
+      page,
+      perPage,
+      totalPages);
 
   @override
   String toString() {
@@ -245,19 +228,17 @@ class _PaginationResponse<T> extends PaginationResponse<T> {
 /// @nodoc
 abstract mixin class _$PaginationResponseCopyWith<T, $Res>
     implements $PaginationResponseCopyWith<T, $Res> {
-  factory _$PaginationResponseCopyWith(
-    _PaginationResponse<T> value,
-    $Res Function(_PaginationResponse<T>) _then,
-  ) = __$PaginationResponseCopyWithImpl;
+  factory _$PaginationResponseCopyWith(_PaginationResponse<T> value,
+          $Res Function(_PaginationResponse<T>) _then) =
+      __$PaginationResponseCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: PaginationResponse.itemsKey) List<T> items,
-    @JsonKey(name: PaginationResponse.totalKey) int total,
-    @JsonKey(name: PaginationResponse.pageKey) int page,
-    @JsonKey(name: PaginationResponse.perPageKey) int perPage,
-    @JsonKey(name: PaginationResponse.totalPagesKey) int totalPages,
-  });
+  $Res call(
+      {@JsonKey(name: PaginationResponse.itemsKey) List<T> items,
+      @JsonKey(name: PaginationResponse.totalKey) int total,
+      @JsonKey(name: PaginationResponse.pageKey) int page,
+      @JsonKey(name: PaginationResponse.perPageKey) int perPage,
+      @JsonKey(name: PaginationResponse.totalPagesKey) int totalPages});
 }
 
 /// @nodoc
@@ -279,34 +260,27 @@ class __$PaginationResponseCopyWithImpl<T, $Res>
     Object? perPage = null,
     Object? totalPages = null,
   }) {
-    return _then(
-      _PaginationResponse<T>(
-        items:
-            null == items
-                ? _self._items
-                : items // ignore: cast_nullable_to_non_nullable
-                    as List<T>,
-        total:
-            null == total
-                ? _self.total
-                : total // ignore: cast_nullable_to_non_nullable
-                    as int,
-        page:
-            null == page
-                ? _self.page
-                : page // ignore: cast_nullable_to_non_nullable
-                    as int,
-        perPage:
-            null == perPage
-                ? _self.perPage
-                : perPage // ignore: cast_nullable_to_non_nullable
-                    as int,
-        totalPages:
-            null == totalPages
-                ? _self.totalPages
-                : totalPages // ignore: cast_nullable_to_non_nullable
-                    as int,
-      ),
-    );
+    return _then(_PaginationResponse<T>(
+      items: null == items
+          ? _self._items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<T>,
+      total: null == total
+          ? _self.total
+          : total // ignore: cast_nullable_to_non_nullable
+              as int,
+      page: null == page
+          ? _self.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
+      perPage: null == perPage
+          ? _self.perPage
+          : perPage // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalPages: null == totalPages
+          ? _self.totalPages
+          : totalPages // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }

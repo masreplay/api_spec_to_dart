@@ -23,9 +23,9 @@ mixin _$BasicBasicBooleanQueryParameters {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $BasicBasicBooleanQueryParametersCopyWith<BasicBasicBooleanQueryParameters>
-  get copyWith => _$BasicBasicBooleanQueryParametersCopyWithImpl<
-    BasicBasicBooleanQueryParameters
-  >(this as BasicBasicBooleanQueryParameters, _$identity);
+      get copyWith => _$BasicBasicBooleanQueryParametersCopyWithImpl<
+              BasicBasicBooleanQueryParameters>(
+          this as BasicBasicBooleanQueryParameters, _$identity);
 
   /// Serializes this BasicBasicBooleanQueryParameters to a JSON map.
   Map<String, dynamic> toJson();
@@ -51,13 +51,12 @@ mixin _$BasicBasicBooleanQueryParameters {
 /// @nodoc
 abstract mixin class $BasicBasicBooleanQueryParametersCopyWith<$Res> {
   factory $BasicBasicBooleanQueryParametersCopyWith(
-    BasicBasicBooleanQueryParameters value,
-    $Res Function(BasicBasicBooleanQueryParameters) _then,
-  ) = _$BasicBasicBooleanQueryParametersCopyWithImpl;
+          BasicBasicBooleanQueryParameters value,
+          $Res Function(BasicBasicBooleanQueryParameters) _then) =
+      _$BasicBasicBooleanQueryParametersCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: BasicBasicBooleanQueryParameters.flagKey) bool flag,
-  });
+  $Res call(
+      {@JsonKey(name: BasicBasicBooleanQueryParameters.flagKey) bool flag});
 }
 
 /// @nodoc
@@ -72,16 +71,15 @@ class _$BasicBasicBooleanQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? flag = null}) {
-    return _then(
-      _self.copyWith(
-        flag:
-            null == flag
-                ? _self.flag
-                : flag // ignore: cast_nullable_to_non_nullable
-                    as bool,
-      ),
-    );
+  $Res call({
+    Object? flag = null,
+  }) {
+    return _then(_self.copyWith(
+      flag: null == flag
+          ? _self.flag
+          : flag // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
@@ -90,12 +88,13 @@ class _$BasicBasicBooleanQueryParametersCopyWithImpl<$Res>
 @jsonSerializable
 class _BasicBasicBooleanQueryParameters
     extends BasicBasicBooleanQueryParameters {
-  const _BasicBasicBooleanQueryParameters({
-    @JsonKey(name: BasicBasicBooleanQueryParameters.flagKey) this.flag = false,
-  }) : super._();
+  const _BasicBasicBooleanQueryParameters(
+      {@JsonKey(name: BasicBasicBooleanQueryParameters.flagKey)
+      this.flag = false})
+      : super._();
   factory _BasicBasicBooleanQueryParameters.fromJson(
-    Map<String, dynamic> json,
-  ) => _$BasicBasicBooleanQueryParametersFromJson(json);
+          Map<String, dynamic> json) =>
+      _$BasicBasicBooleanQueryParametersFromJson(json);
 
   /// flag
   @override
@@ -108,13 +107,14 @@ class _BasicBasicBooleanQueryParameters
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$BasicBasicBooleanQueryParametersCopyWith<_BasicBasicBooleanQueryParameters>
-  get copyWith => __$BasicBasicBooleanQueryParametersCopyWithImpl<
-    _BasicBasicBooleanQueryParameters
-  >(this, _$identity);
+      get copyWith => __$BasicBasicBooleanQueryParametersCopyWithImpl<
+          _BasicBasicBooleanQueryParameters>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$BasicBasicBooleanQueryParametersToJson(this);
+    return _$BasicBasicBooleanQueryParametersToJson(
+      this,
+    );
   }
 
   @override
@@ -139,14 +139,13 @@ class _BasicBasicBooleanQueryParameters
 abstract mixin class _$BasicBasicBooleanQueryParametersCopyWith<$Res>
     implements $BasicBasicBooleanQueryParametersCopyWith<$Res> {
   factory _$BasicBasicBooleanQueryParametersCopyWith(
-    _BasicBasicBooleanQueryParameters value,
-    $Res Function(_BasicBasicBooleanQueryParameters) _then,
-  ) = __$BasicBasicBooleanQueryParametersCopyWithImpl;
+          _BasicBasicBooleanQueryParameters value,
+          $Res Function(_BasicBasicBooleanQueryParameters) _then) =
+      __$BasicBasicBooleanQueryParametersCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: BasicBasicBooleanQueryParameters.flagKey) bool flag,
-  });
+  $Res call(
+      {@JsonKey(name: BasicBasicBooleanQueryParameters.flagKey) bool flag});
 }
 
 /// @nodoc
@@ -161,15 +160,14 @@ class __$BasicBasicBooleanQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? flag = null}) {
-    return _then(
-      _BasicBasicBooleanQueryParameters(
-        flag:
-            null == flag
-                ? _self.flag
-                : flag // ignore: cast_nullable_to_non_nullable
-                    as bool,
-      ),
-    );
+  $Res call({
+    Object? flag = null,
+  }) {
+    return _then(_BasicBasicBooleanQueryParameters(
+      flag: null == flag
+          ? _self.flag
+          : flag // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }

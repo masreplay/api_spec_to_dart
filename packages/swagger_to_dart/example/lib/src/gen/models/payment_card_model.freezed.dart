@@ -28,9 +28,7 @@ mixin _$PaymentCardModel {
   @pragma('vm:prefer-inline')
   $PaymentCardModelCopyWith<PaymentCardModel> get copyWith =>
       _$PaymentCardModelCopyWithImpl<PaymentCardModel>(
-        this as PaymentCardModel,
-        _$identity,
-      );
+          this as PaymentCardModel, _$identity);
 
   /// Serializes this PaymentCardModel to a JSON map.
   Map<String, dynamic> toJson();
@@ -59,14 +57,13 @@ mixin _$PaymentCardModel {
 /// @nodoc
 abstract mixin class $PaymentCardModelCopyWith<$Res> {
   factory $PaymentCardModelCopyWith(
-    PaymentCardModel value,
-    $Res Function(PaymentCardModel) _then,
-  ) = _$PaymentCardModelCopyWithImpl;
+          PaymentCardModel value, $Res Function(PaymentCardModel) _then) =
+      _$PaymentCardModelCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: PaymentCardModel.cardNumberKey) String cardNumber,
-    @JsonKey(name: PaymentCardModel.cardBrandKey) PaymentCardBrand? cardBrand,
-  });
+  $Res call(
+      {@JsonKey(name: PaymentCardModel.cardNumberKey) String cardNumber,
+      @JsonKey(name: PaymentCardModel.cardBrandKey)
+      PaymentCardBrand? cardBrand});
 }
 
 /// @nodoc
@@ -81,21 +78,20 @@ class _$PaymentCardModelCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? cardNumber = null, Object? cardBrand = freezed}) {
-    return _then(
-      _self.copyWith(
-        cardNumber:
-            null == cardNumber
-                ? _self.cardNumber
-                : cardNumber // ignore: cast_nullable_to_non_nullable
-                    as String,
-        cardBrand:
-            freezed == cardBrand
-                ? _self.cardBrand
-                : cardBrand // ignore: cast_nullable_to_non_nullable
-                    as PaymentCardBrand?,
-      ),
-    );
+  $Res call({
+    Object? cardNumber = null,
+    Object? cardBrand = freezed,
+  }) {
+    return _then(_self.copyWith(
+      cardNumber: null == cardNumber
+          ? _self.cardNumber
+          : cardNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      cardBrand: freezed == cardBrand
+          ? _self.cardBrand
+          : cardBrand // ignore: cast_nullable_to_non_nullable
+              as PaymentCardBrand?,
+    ));
   }
 }
 
@@ -103,10 +99,10 @@ class _$PaymentCardModelCopyWithImpl<$Res>
 
 @jsonSerializable
 class _PaymentCardModel extends PaymentCardModel {
-  const _PaymentCardModel({
-    @JsonKey(name: PaymentCardModel.cardNumberKey) required this.cardNumber,
-    @JsonKey(name: PaymentCardModel.cardBrandKey) required this.cardBrand,
-  }) : super._();
+  const _PaymentCardModel(
+      {@JsonKey(name: PaymentCardModel.cardNumberKey) required this.cardNumber,
+      @JsonKey(name: PaymentCardModel.cardBrandKey) required this.cardBrand})
+      : super._();
   factory _PaymentCardModel.fromJson(Map<String, dynamic> json) =>
       _$PaymentCardModelFromJson(json);
 
@@ -130,7 +126,9 @@ class _PaymentCardModel extends PaymentCardModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$PaymentCardModelToJson(this);
+    return _$PaymentCardModelToJson(
+      this,
+    );
   }
 
   @override
@@ -158,15 +156,14 @@ class _PaymentCardModel extends PaymentCardModel {
 abstract mixin class _$PaymentCardModelCopyWith<$Res>
     implements $PaymentCardModelCopyWith<$Res> {
   factory _$PaymentCardModelCopyWith(
-    _PaymentCardModel value,
-    $Res Function(_PaymentCardModel) _then,
-  ) = __$PaymentCardModelCopyWithImpl;
+          _PaymentCardModel value, $Res Function(_PaymentCardModel) _then) =
+      __$PaymentCardModelCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: PaymentCardModel.cardNumberKey) String cardNumber,
-    @JsonKey(name: PaymentCardModel.cardBrandKey) PaymentCardBrand? cardBrand,
-  });
+  $Res call(
+      {@JsonKey(name: PaymentCardModel.cardNumberKey) String cardNumber,
+      @JsonKey(name: PaymentCardModel.cardBrandKey)
+      PaymentCardBrand? cardBrand});
 }
 
 /// @nodoc
@@ -181,20 +178,19 @@ class __$PaymentCardModelCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? cardNumber = null, Object? cardBrand = freezed}) {
-    return _then(
-      _PaymentCardModel(
-        cardNumber:
-            null == cardNumber
-                ? _self.cardNumber
-                : cardNumber // ignore: cast_nullable_to_non_nullable
-                    as String,
-        cardBrand:
-            freezed == cardBrand
-                ? _self.cardBrand
-                : cardBrand // ignore: cast_nullable_to_non_nullable
-                    as PaymentCardBrand?,
-      ),
-    );
+  $Res call({
+    Object? cardNumber = null,
+    Object? cardBrand = freezed,
+  }) {
+    return _then(_PaymentCardModel(
+      cardNumber: null == cardNumber
+          ? _self.cardNumber
+          : cardNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      cardBrand: freezed == cardBrand
+          ? _self.cardBrand
+          : cardBrand // ignore: cast_nullable_to_non_nullable
+              as PaymentCardBrand?,
+    ));
   }
 }

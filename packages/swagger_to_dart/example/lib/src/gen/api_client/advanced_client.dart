@@ -57,7 +57,7 @@ abstract class AdvancedClient {
   ///         }
   ///     }
   /// }
-  @GET("/special/uuid")
+  @GET('/special/uuid')
   Future<HttpResponse<Map<String, dynamic>>> advancedSpecialUuid({
     @Queries() required AdvancedSpecialUuidQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
@@ -109,7 +109,7 @@ abstract class AdvancedClient {
   ///         }
   ///     }
   /// }
-  @GET("/special/enum")
+  @GET('/special/enum')
   Future<HttpResponse<Map<String, dynamic>>> advancedSpecialEnum({
     @Queries() required AdvancedSpecialEnumQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
@@ -167,7 +167,7 @@ abstract class AdvancedClient {
   ///         }
   ///     }
   /// }
-  @GET("/special/literal")
+  @GET('/special/literal')
   Future<HttpResponse<Map<String, dynamic>>> advancedSpecialLiteral({
     @Queries() required AdvancedSpecialLiteralQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
@@ -225,7 +225,7 @@ abstract class AdvancedClient {
   ///         }
   ///     }
   /// }
-  @GET("/collection/list")
+  @GET('/collection/list')
   Future<HttpResponse<Map<String, dynamic>>> advancedCollectionList({
     @Queries() required AdvancedCollectionListQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
@@ -285,7 +285,7 @@ abstract class AdvancedClient {
   ///         }
   ///     }
   /// }
-  @GET("/collection/set")
+  @GET('/collection/set')
   Future<HttpResponse<Map<String, dynamic>>> advancedCollectionSet({
     @Queries() required AdvancedCollectionSetQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
@@ -337,7 +337,7 @@ abstract class AdvancedClient {
   ///         }
   ///     }
   /// }
-  @GET("/collection/dict")
+  @GET('/collection/dict')
   Future<HttpResponse<Map<String, dynamic>>> advancedCollectionDict({
     @Body() required Map<String, dynamic> requestBody,
     @Extras() Map<String, dynamic>? extras,
@@ -389,7 +389,7 @@ abstract class AdvancedClient {
   ///         }
   ///     }
   /// }
-  @GET("/collection/tuple")
+  @GET('/collection/tuple')
   Future<HttpResponse<Map<String, dynamic>>> advancedCollectionTuple({
     @Queries() required AdvancedCollectionTupleQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
@@ -444,7 +444,7 @@ abstract class AdvancedClient {
   ///         }
   ///     }
   /// }
-  @GET("/collection/variable_tuple")
+  @GET('/collection/variable_tuple')
   Future<HttpResponse<Map<String, dynamic>>> advancedCollectionVariableTuple({
     @Queries() required AdvancedCollectionVariableTupleQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
@@ -506,7 +506,7 @@ abstract class AdvancedClient {
   ///         }
   ///     }
   /// }
-  @GET("/union/simple")
+  @GET('/union/simple')
   Future<HttpResponse<Map<String, dynamic>>> advancedUnionSimple({
     @Queries() required AdvancedUnionSimpleQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
@@ -565,7 +565,7 @@ abstract class AdvancedClient {
   ///         }
   ///     }
   /// }
-  @GET("/union/optional")
+  @GET('/union/optional')
   Future<HttpResponse<Map<String, dynamic>>> advancedUnionOptional({
     @Queries() required AdvancedUnionOptionalQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
@@ -627,7 +627,7 @@ abstract class AdvancedClient {
   ///         }
   ///     }
   /// }
-  @GET("/union/modern")
+  @GET('/union/modern')
   Future<HttpResponse<Map<String, dynamic>>> advancedUnionModern({
     @Queries() required AdvancedUnionModernQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
@@ -688,7 +688,7 @@ abstract class AdvancedClient {
   ///         }
   ///     }
   /// }
-  @GET("/custom/positive_int")
+  @GET('/custom/positive_int')
   Future<HttpResponse<Map<String, dynamic>>> advancedCustomPositiveInt({
     @Queries() required AdvancedCustomPositiveIntQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
@@ -773,7 +773,7 @@ abstract class AdvancedClient {
   ///         }
   ///     }
   /// }
-  @GET("/depends/query")
+  @GET('/depends/query')
   Future<HttpResponse<Map<String, dynamic>>> advancedDependsQuery({
     @Queries() required AdvancedDependsQueryQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
@@ -826,7 +826,7 @@ abstract class AdvancedClient {
   ///         }
   ///     }
   /// }
-  @GET("/depends/class")
+  @GET('/depends/class')
   Future<HttpResponse<Map<String, dynamic>>> advancedDependsClass({
     @Queries() required AdvancedDependsClassQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
@@ -878,9 +878,9 @@ abstract class AdvancedClient {
   ///         }
   ///     }
   /// }
-  @GET("/errors/not_found/{item_id}")
+  @GET('/errors/not_found/{item_id}')
   Future<HttpResponse<Map<String, dynamic>>> advancedErrorNotFound({
-    @Path("item_id") required int itemId,
+    @Path('item_id') required int itemId,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -933,7 +933,7 @@ abstract class AdvancedClient {
   ///         }
   ///     }
   /// }
-  @GET("/errors/custom")
+  @GET('/errors/custom')
   Future<HttpResponse<Map<String, dynamic>>> advancedErrorCustom({
     @Queries() required AdvancedErrorCustomQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,

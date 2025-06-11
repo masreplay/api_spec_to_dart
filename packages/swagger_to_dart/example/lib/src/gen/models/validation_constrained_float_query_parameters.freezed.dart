@@ -23,11 +23,10 @@ mixin _$ValidationConstrainedFloatQueryParameters {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $ValidationConstrainedFloatQueryParametersCopyWith<
-    ValidationConstrainedFloatQueryParameters
-  >
-  get copyWith => _$ValidationConstrainedFloatQueryParametersCopyWithImpl<
-    ValidationConstrainedFloatQueryParameters
-  >(this as ValidationConstrainedFloatQueryParameters, _$identity);
+          ValidationConstrainedFloatQueryParameters>
+      get copyWith => _$ValidationConstrainedFloatQueryParametersCopyWithImpl<
+              ValidationConstrainedFloatQueryParameters>(
+          this as ValidationConstrainedFloatQueryParameters, _$identity);
 
   /// Serializes this ValidationConstrainedFloatQueryParameters to a JSON map.
   Map<String, dynamic> toJson();
@@ -53,23 +52,20 @@ mixin _$ValidationConstrainedFloatQueryParameters {
 /// @nodoc
 abstract mixin class $ValidationConstrainedFloatQueryParametersCopyWith<$Res> {
   factory $ValidationConstrainedFloatQueryParametersCopyWith(
-    ValidationConstrainedFloatQueryParameters value,
-    $Res Function(ValidationConstrainedFloatQueryParameters) _then,
-  ) = _$ValidationConstrainedFloatQueryParametersCopyWithImpl;
+          ValidationConstrainedFloatQueryParameters value,
+          $Res Function(ValidationConstrainedFloatQueryParameters) _then) =
+      _$ValidationConstrainedFloatQueryParametersCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: ValidationConstrainedFloatQueryParameters.valueKey)
-    double value,
-  });
+  $Res call(
+      {@JsonKey(name: ValidationConstrainedFloatQueryParameters.valueKey)
+      double value});
 }
 
 /// @nodoc
 class _$ValidationConstrainedFloatQueryParametersCopyWithImpl<$Res>
     implements $ValidationConstrainedFloatQueryParametersCopyWith<$Res> {
   _$ValidationConstrainedFloatQueryParametersCopyWithImpl(
-    this._self,
-    this._then,
-  );
+      this._self, this._then);
 
   final ValidationConstrainedFloatQueryParameters _self;
   final $Res Function(ValidationConstrainedFloatQueryParameters) _then;
@@ -78,16 +74,15 @@ class _$ValidationConstrainedFloatQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? value = null}) {
-    return _then(
-      _self.copyWith(
-        value:
-            null == value
-                ? _self.value
-                : value // ignore: cast_nullable_to_non_nullable
-                    as double,
-      ),
-    );
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_self.copyWith(
+      value: null == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
   }
 }
 
@@ -96,13 +91,13 @@ class _$ValidationConstrainedFloatQueryParametersCopyWithImpl<$Res>
 @jsonSerializable
 class _ValidationConstrainedFloatQueryParameters
     extends ValidationConstrainedFloatQueryParameters {
-  const _ValidationConstrainedFloatQueryParameters({
-    @JsonKey(name: ValidationConstrainedFloatQueryParameters.valueKey)
-    required this.value,
-  }) : super._();
+  const _ValidationConstrainedFloatQueryParameters(
+      {@JsonKey(name: ValidationConstrainedFloatQueryParameters.valueKey)
+      required this.value})
+      : super._();
   factory _ValidationConstrainedFloatQueryParameters.fromJson(
-    Map<String, dynamic> json,
-  ) => _$ValidationConstrainedFloatQueryParametersFromJson(json);
+          Map<String, dynamic> json) =>
+      _$ValidationConstrainedFloatQueryParametersFromJson(json);
 
   /// value
   @override
@@ -115,15 +110,15 @@ class _ValidationConstrainedFloatQueryParameters
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$ValidationConstrainedFloatQueryParametersCopyWith<
-    _ValidationConstrainedFloatQueryParameters
-  >
-  get copyWith => __$ValidationConstrainedFloatQueryParametersCopyWithImpl<
-    _ValidationConstrainedFloatQueryParameters
-  >(this, _$identity);
+          _ValidationConstrainedFloatQueryParameters>
+      get copyWith => __$ValidationConstrainedFloatQueryParametersCopyWithImpl<
+          _ValidationConstrainedFloatQueryParameters>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$ValidationConstrainedFloatQueryParametersToJson(this);
+    return _$ValidationConstrainedFloatQueryParametersToJson(
+      this,
+    );
   }
 
   @override
@@ -148,24 +143,21 @@ class _ValidationConstrainedFloatQueryParameters
 abstract mixin class _$ValidationConstrainedFloatQueryParametersCopyWith<$Res>
     implements $ValidationConstrainedFloatQueryParametersCopyWith<$Res> {
   factory _$ValidationConstrainedFloatQueryParametersCopyWith(
-    _ValidationConstrainedFloatQueryParameters value,
-    $Res Function(_ValidationConstrainedFloatQueryParameters) _then,
-  ) = __$ValidationConstrainedFloatQueryParametersCopyWithImpl;
+          _ValidationConstrainedFloatQueryParameters value,
+          $Res Function(_ValidationConstrainedFloatQueryParameters) _then) =
+      __$ValidationConstrainedFloatQueryParametersCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: ValidationConstrainedFloatQueryParameters.valueKey)
-    double value,
-  });
+  $Res call(
+      {@JsonKey(name: ValidationConstrainedFloatQueryParameters.valueKey)
+      double value});
 }
 
 /// @nodoc
 class __$ValidationConstrainedFloatQueryParametersCopyWithImpl<$Res>
     implements _$ValidationConstrainedFloatQueryParametersCopyWith<$Res> {
   __$ValidationConstrainedFloatQueryParametersCopyWithImpl(
-    this._self,
-    this._then,
-  );
+      this._self, this._then);
 
   final _ValidationConstrainedFloatQueryParameters _self;
   final $Res Function(_ValidationConstrainedFloatQueryParameters) _then;
@@ -174,15 +166,14 @@ class __$ValidationConstrainedFloatQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? value = null}) {
-    return _then(
-      _ValidationConstrainedFloatQueryParameters(
-        value:
-            null == value
-                ? _self.value
-                : value // ignore: cast_nullable_to_non_nullable
-                    as double,
-      ),
-    );
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_ValidationConstrainedFloatQueryParameters(
+      value: null == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
   }
 }

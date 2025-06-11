@@ -78,17 +78,8 @@ mixin _$User {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    username,
-    email,
-    fullName,
-    id,
-    isActive,
-    createdAt,
-    location,
-    const DeepCollectionEquality().hash(tags),
-  );
+  int get hashCode => Object.hash(runtimeType, username, email, fullName, id,
+      isActive, createdAt, location, const DeepCollectionEquality().hash(tags));
 
   @override
   String toString() {
@@ -101,16 +92,15 @@ abstract mixin class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) _then) =
       _$UserCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: User.usernameKey) String username,
-    @JsonKey(name: User.emailKey) String email,
-    @JsonKey(name: User.fullNameKey) String? fullName,
-    @JsonKey(name: User.idKey) int id,
-    @JsonKey(name: User.isActiveKey) bool isActive,
-    @JsonKey(name: User.createdAtKey) DateTime createdAt,
-    @JsonKey(name: User.locationKey) Location? location,
-    @JsonKey(name: User.tagsKey) List<String> tags,
-  });
+  $Res call(
+      {@JsonKey(name: User.usernameKey) String username,
+      @JsonKey(name: User.emailKey) String email,
+      @JsonKey(name: User.fullNameKey) String? fullName,
+      @JsonKey(name: User.idKey) int id,
+      @JsonKey(name: User.isActiveKey) bool isActive,
+      @JsonKey(name: User.createdAtKey) DateTime createdAt,
+      @JsonKey(name: User.locationKey) Location? location,
+      @JsonKey(name: User.tagsKey) List<String> tags});
 
   $LocationCopyWith<$Res>? get location;
 }
@@ -136,50 +126,40 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object? location = freezed,
     Object? tags = null,
   }) {
-    return _then(
-      _self.copyWith(
-        username:
-            null == username
-                ? _self.username
-                : username // ignore: cast_nullable_to_non_nullable
-                    as String,
-        email:
-            null == email
-                ? _self.email
-                : email // ignore: cast_nullable_to_non_nullable
-                    as String,
-        fullName:
-            freezed == fullName
-                ? _self.fullName
-                : fullName // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        id:
-            null == id
-                ? _self.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as int,
-        isActive:
-            null == isActive
-                ? _self.isActive
-                : isActive // ignore: cast_nullable_to_non_nullable
-                    as bool,
-        createdAt:
-            null == createdAt
-                ? _self.createdAt
-                : createdAt // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        location:
-            freezed == location
-                ? _self.location
-                : location // ignore: cast_nullable_to_non_nullable
-                    as Location?,
-        tags:
-            null == tags
-                ? _self.tags
-                : tags // ignore: cast_nullable_to_non_nullable
-                    as List<String>,
-      ),
-    );
+    return _then(_self.copyWith(
+      username: null == username
+          ? _self.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _self.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      fullName: freezed == fullName
+          ? _self.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      isActive: null == isActive
+          ? _self.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool,
+      createdAt: null == createdAt
+          ? _self.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      location: freezed == location
+          ? _self.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as Location?,
+      tags: null == tags
+          ? _self.tags
+          : tags // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ));
   }
 
   /// Create a copy of User
@@ -201,17 +181,17 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
 
 @jsonSerializable
 class _User extends User {
-  const _User({
-    @JsonKey(name: User.usernameKey) required this.username,
-    @JsonKey(name: User.emailKey) required this.email,
-    @JsonKey(name: User.fullNameKey) required this.fullName,
-    @JsonKey(name: User.idKey) required this.id,
-    @JsonKey(name: User.isActiveKey) this.isActive = true,
-    @JsonKey(name: User.createdAtKey) required this.createdAt,
-    @JsonKey(name: User.locationKey) required this.location,
-    @JsonKey(name: User.tagsKey) final List<String> tags = const [],
-  }) : _tags = tags,
-       super._();
+  const _User(
+      {@JsonKey(name: User.usernameKey) required this.username,
+      @JsonKey(name: User.emailKey) required this.email,
+      @JsonKey(name: User.fullNameKey) required this.fullName,
+      @JsonKey(name: User.idKey) required this.id,
+      @JsonKey(name: User.isActiveKey) this.isActive = true,
+      @JsonKey(name: User.createdAtKey) required this.createdAt,
+      @JsonKey(name: User.locationKey) required this.location,
+      @JsonKey(name: User.tagsKey) final List<String> tags = const []})
+      : _tags = tags,
+        super._();
   factory _User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
   /// username
@@ -271,7 +251,9 @@ class _User extends User {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$UserToJson(this);
+    return _$UserToJson(
+      this,
+    );
   }
 
   @override
@@ -297,16 +279,15 @@ class _User extends User {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    username,
-    email,
-    fullName,
-    id,
-    isActive,
-    createdAt,
-    location,
-    const DeepCollectionEquality().hash(_tags),
-  );
+      runtimeType,
+      username,
+      email,
+      fullName,
+      id,
+      isActive,
+      createdAt,
+      location,
+      const DeepCollectionEquality().hash(_tags));
 
   @override
   String toString() {
@@ -320,16 +301,15 @@ abstract mixin class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$UserCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: User.usernameKey) String username,
-    @JsonKey(name: User.emailKey) String email,
-    @JsonKey(name: User.fullNameKey) String? fullName,
-    @JsonKey(name: User.idKey) int id,
-    @JsonKey(name: User.isActiveKey) bool isActive,
-    @JsonKey(name: User.createdAtKey) DateTime createdAt,
-    @JsonKey(name: User.locationKey) Location? location,
-    @JsonKey(name: User.tagsKey) List<String> tags,
-  });
+  $Res call(
+      {@JsonKey(name: User.usernameKey) String username,
+      @JsonKey(name: User.emailKey) String email,
+      @JsonKey(name: User.fullNameKey) String? fullName,
+      @JsonKey(name: User.idKey) int id,
+      @JsonKey(name: User.isActiveKey) bool isActive,
+      @JsonKey(name: User.createdAtKey) DateTime createdAt,
+      @JsonKey(name: User.locationKey) Location? location,
+      @JsonKey(name: User.tagsKey) List<String> tags});
 
   @override
   $LocationCopyWith<$Res>? get location;
@@ -356,50 +336,40 @@ class __$UserCopyWithImpl<$Res> implements _$UserCopyWith<$Res> {
     Object? location = freezed,
     Object? tags = null,
   }) {
-    return _then(
-      _User(
-        username:
-            null == username
-                ? _self.username
-                : username // ignore: cast_nullable_to_non_nullable
-                    as String,
-        email:
-            null == email
-                ? _self.email
-                : email // ignore: cast_nullable_to_non_nullable
-                    as String,
-        fullName:
-            freezed == fullName
-                ? _self.fullName
-                : fullName // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        id:
-            null == id
-                ? _self.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as int,
-        isActive:
-            null == isActive
-                ? _self.isActive
-                : isActive // ignore: cast_nullable_to_non_nullable
-                    as bool,
-        createdAt:
-            null == createdAt
-                ? _self.createdAt
-                : createdAt // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        location:
-            freezed == location
-                ? _self.location
-                : location // ignore: cast_nullable_to_non_nullable
-                    as Location?,
-        tags:
-            null == tags
-                ? _self._tags
-                : tags // ignore: cast_nullable_to_non_nullable
-                    as List<String>,
-      ),
-    );
+    return _then(_User(
+      username: null == username
+          ? _self.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _self.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      fullName: freezed == fullName
+          ? _self.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      isActive: null == isActive
+          ? _self.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool,
+      createdAt: null == createdAt
+          ? _self.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      location: freezed == location
+          ? _self.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as Location?,
+      tags: null == tags
+          ? _self._tags
+          : tags // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ));
   }
 
   /// Create a copy of User

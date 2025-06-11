@@ -55,7 +55,7 @@ class SwaggerToDartCodeGenerator {
 
       try {
         await writeDartLibraryFile(
-          path.join(modelsDir.path, '${filename}.dart'),
+          path.join(modelsDir.path, '$filename.dart'),
           model,
         );
       } catch (e, stackTrace) {
@@ -116,7 +116,7 @@ class SwaggerToDartCodeGenerator {
 
       try {
         await writeDartLibraryFile(
-          path.join(apiClientsDir.path, '${filename}.dart'),
+          path.join(apiClientsDir.path, '$filename.dart'),
           apiClient,
         );
       } catch (e, stackTrace) {

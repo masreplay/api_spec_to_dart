@@ -59,9 +59,9 @@ abstract class ValidationClient {
   ///         }
   ///     }
   /// }
-  @GET("/params/path/{item_id}")
+  @GET('/params/path/{item_id}')
   Future<HttpResponse<Map<String, dynamic>>> validationParamPath({
-    @Path("item_id") required int itemId,
+    @Path('item_id') required int itemId,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -150,7 +150,7 @@ abstract class ValidationClient {
   ///         }
   ///     }
   /// }
-  @GET("/params/query")
+  @GET('/params/query')
   Future<HttpResponse<Map<String, dynamic>>> validationParamQuery({
     @Queries() required ValidationParamQueryQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
@@ -201,7 +201,7 @@ abstract class ValidationClient {
   ///         }
   ///     }
   /// }
-  @POST("/params/body")
+  @POST('/params/body')
   Future<HttpResponse<Map<String, dynamic>>> validationParamBody({
     @Body() required BodyValidationParamBody requestBody,
     @Extras() Map<String, dynamic>? extras,
@@ -276,10 +276,10 @@ abstract class ValidationClient {
   ///         }
   ///     }
   /// }
-  @GET("/params/cookie")
+  @GET('/params/cookie')
   Future<HttpResponse<Map<String, dynamic>>> validationParamCookie({
-    @Header("session") required String? session,
-    @Header("preferences") required String? preferences,
+    @Header('session') required String? session,
+    @Header('preferences') required String? preferences,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -345,10 +345,10 @@ abstract class ValidationClient {
   ///         }
   ///     }
   /// }
-  @GET("/params/header")
+  @GET('/params/header')
   Future<HttpResponse<Map<String, dynamic>>> validationParamHeader({
-    @Header("user-agent") required String userMinusAgent,
-    @Header("x-token") required String? xMinusToken,
+    @Header('user-agent') required String userMinusAgent,
+    @Header('x-token') required String? xMinusToken,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -396,7 +396,7 @@ abstract class ValidationClient {
   ///         }
   ///     }
   /// }
-  @POST("/validation/complex")
+  @POST('/validation/complex')
   Future<HttpResponse<AllTypesWithValidation>> validationValidationComplex({
     @Body() required AllTypesWithValidation requestBody,
     @Extras() Map<String, dynamic>? extras,
@@ -478,7 +478,7 @@ abstract class ValidationClient {
   ///         }
   ///     }
   /// }
-  @GET("/validation/conditional")
+  @GET('/validation/conditional')
   Future<HttpResponse<Map<String, dynamic>>> validationValidationConditional({
     @Queries() required ValidationValidationConditionalQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
@@ -528,7 +528,7 @@ abstract class ValidationClient {
   ///         }
   ///     }
   /// }
-  @POST("/validation/conditional_body")
+  @POST('/validation/conditional_body')
   Future<HttpResponse<ConditionalBody>> validationValidationConditionalBody({
     @Body() required ConditionalBody requestBody,
     @Extras() Map<String, dynamic>? extras,
@@ -582,7 +582,7 @@ abstract class ValidationClient {
   ///         }
   ///     }
   /// }
-  @GET("/constrained/int")
+  @GET('/constrained/int')
   Future<HttpResponse<Map<String, dynamic>>> validationConstrainedInt({
     @Queries() required ValidationConstrainedIntQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
@@ -636,7 +636,7 @@ abstract class ValidationClient {
   ///         }
   ///     }
   /// }
-  @GET("/constrained/float")
+  @GET('/constrained/float')
   Future<HttpResponse<Map<String, dynamic>>> validationConstrainedFloat({
     @Queries() required ValidationConstrainedFloatQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
@@ -693,7 +693,7 @@ abstract class ValidationClient {
   ///         }
   ///     }
   /// }
-  @GET("/constrained/string")
+  @GET('/constrained/string')
   Future<HttpResponse<Map<String, dynamic>>> validationConstrainedString({
     @Queries() required ValidationConstrainedStringQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,

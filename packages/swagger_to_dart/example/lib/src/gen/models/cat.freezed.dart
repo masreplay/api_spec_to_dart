@@ -61,11 +61,10 @@ mixin _$Cat {
 abstract mixin class $CatCopyWith<$Res> {
   factory $CatCopyWith(Cat value, $Res Function(Cat) _then) = _$CatCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: Cat.nameKey) String name,
-    @JsonKey(name: Cat.typeKey) String type,
-    @JsonKey(name: Cat.meowCutenessKey) int meowCuteness,
-  });
+  $Res call(
+      {@JsonKey(name: Cat.nameKey) String name,
+      @JsonKey(name: Cat.typeKey) String type,
+      @JsonKey(name: Cat.meowCutenessKey) int meowCuteness});
 }
 
 /// @nodoc
@@ -84,25 +83,20 @@ class _$CatCopyWithImpl<$Res> implements $CatCopyWith<$Res> {
     Object? type = null,
     Object? meowCuteness = null,
   }) {
-    return _then(
-      _self.copyWith(
-        name:
-            null == name
-                ? _self.name
-                : name // ignore: cast_nullable_to_non_nullable
-                    as String,
-        type:
-            null == type
-                ? _self.type
-                : type // ignore: cast_nullable_to_non_nullable
-                    as String,
-        meowCuteness:
-            null == meowCuteness
-                ? _self.meowCuteness
-                : meowCuteness // ignore: cast_nullable_to_non_nullable
-                    as int,
-      ),
-    );
+    return _then(_self.copyWith(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: null == type
+          ? _self.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      meowCuteness: null == meowCuteness
+          ? _self.meowCuteness
+          : meowCuteness // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
@@ -110,11 +104,11 @@ class _$CatCopyWithImpl<$Res> implements $CatCopyWith<$Res> {
 
 @jsonSerializable
 class _Cat extends Cat {
-  const _Cat({
-    @JsonKey(name: Cat.nameKey) required this.name,
-    @JsonKey(name: Cat.typeKey) this.type = 'cat',
-    @JsonKey(name: Cat.meowCutenessKey) required this.meowCuteness,
-  }) : super._();
+  const _Cat(
+      {@JsonKey(name: Cat.nameKey) required this.name,
+      @JsonKey(name: Cat.typeKey) this.type = 'cat',
+      @JsonKey(name: Cat.meowCutenessKey) required this.meowCuteness})
+      : super._();
   factory _Cat.fromJson(Map<String, dynamic> json) => _$CatFromJson(json);
 
   /// name
@@ -142,7 +136,9 @@ class _Cat extends Cat {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$CatToJson(this);
+    return _$CatToJson(
+      this,
+    );
   }
 
   @override
@@ -172,11 +168,10 @@ abstract mixin class _$CatCopyWith<$Res> implements $CatCopyWith<$Res> {
       __$CatCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: Cat.nameKey) String name,
-    @JsonKey(name: Cat.typeKey) String type,
-    @JsonKey(name: Cat.meowCutenessKey) int meowCuteness,
-  });
+  $Res call(
+      {@JsonKey(name: Cat.nameKey) String name,
+      @JsonKey(name: Cat.typeKey) String type,
+      @JsonKey(name: Cat.meowCutenessKey) int meowCuteness});
 }
 
 /// @nodoc
@@ -195,24 +190,19 @@ class __$CatCopyWithImpl<$Res> implements _$CatCopyWith<$Res> {
     Object? type = null,
     Object? meowCuteness = null,
   }) {
-    return _then(
-      _Cat(
-        name:
-            null == name
-                ? _self.name
-                : name // ignore: cast_nullable_to_non_nullable
-                    as String,
-        type:
-            null == type
-                ? _self.type
-                : type // ignore: cast_nullable_to_non_nullable
-                    as String,
-        meowCuteness:
-            null == meowCuteness
-                ? _self.meowCuteness
-                : meowCuteness // ignore: cast_nullable_to_non_nullable
-                    as int,
-      ),
-    );
+    return _then(_Cat(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: null == type
+          ? _self.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      meowCuteness: null == meowCuteness
+          ? _self.meowCuteness
+          : meowCuteness // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }

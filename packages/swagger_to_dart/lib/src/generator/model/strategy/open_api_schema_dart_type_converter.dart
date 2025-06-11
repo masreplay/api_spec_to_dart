@@ -225,7 +225,7 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
             schema.default_.toString(),
           );
 
-          return '${className}.${defaultValue}';
+          return '$className.$defaultValue';
         }
 
         return _dartLiteral(default_);
@@ -239,16 +239,16 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
             schema.default_.toString(),
           );
 
-          return '$dartType.${defaultValue}';
+          return '$dartType.$defaultValue';
         }
 
-        return default_ == null ? null : default_.toString();
+        return default_?.toString();
       case OpenApiSchemaAnyOf schema:
         final default_ = schema.default_;
-        return default_ == null ? null : default_.toString();
+        return default_?.toString();
       case OpenApiSchemaOneOf schema:
         final default_ = schema.default_;
-        return default_ == null ? null : default_.toString();
+        return default_?.toString();
     }
   }
 

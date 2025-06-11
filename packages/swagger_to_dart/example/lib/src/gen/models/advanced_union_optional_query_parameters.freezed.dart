@@ -23,11 +23,10 @@ mixin _$AdvancedUnionOptionalQueryParameters {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $AdvancedUnionOptionalQueryParametersCopyWith<
-    AdvancedUnionOptionalQueryParameters
-  >
-  get copyWith => _$AdvancedUnionOptionalQueryParametersCopyWithImpl<
-    AdvancedUnionOptionalQueryParameters
-  >(this as AdvancedUnionOptionalQueryParameters, _$identity);
+          AdvancedUnionOptionalQueryParameters>
+      get copyWith => _$AdvancedUnionOptionalQueryParametersCopyWithImpl<
+              AdvancedUnionOptionalQueryParameters>(
+          this as AdvancedUnionOptionalQueryParameters, _$identity);
 
   /// Serializes this AdvancedUnionOptionalQueryParameters to a JSON map.
   Map<String, dynamic> toJson();
@@ -53,13 +52,13 @@ mixin _$AdvancedUnionOptionalQueryParameters {
 /// @nodoc
 abstract mixin class $AdvancedUnionOptionalQueryParametersCopyWith<$Res> {
   factory $AdvancedUnionOptionalQueryParametersCopyWith(
-    AdvancedUnionOptionalQueryParameters value,
-    $Res Function(AdvancedUnionOptionalQueryParameters) _then,
-  ) = _$AdvancedUnionOptionalQueryParametersCopyWithImpl;
+          AdvancedUnionOptionalQueryParameters value,
+          $Res Function(AdvancedUnionOptionalQueryParameters) _then) =
+      _$AdvancedUnionOptionalQueryParametersCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: AdvancedUnionOptionalQueryParameters.valueKey) String? value,
-  });
+  $Res call(
+      {@JsonKey(name: AdvancedUnionOptionalQueryParameters.valueKey)
+      String? value});
 }
 
 /// @nodoc
@@ -74,16 +73,15 @@ class _$AdvancedUnionOptionalQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? value = freezed}) {
-    return _then(
-      _self.copyWith(
-        value:
-            freezed == value
-                ? _self.value
-                : value // ignore: cast_nullable_to_non_nullable
-                    as String?,
-      ),
-    );
+  $Res call({
+    Object? value = freezed,
+  }) {
+    return _then(_self.copyWith(
+      value: freezed == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
@@ -92,13 +90,13 @@ class _$AdvancedUnionOptionalQueryParametersCopyWithImpl<$Res>
 @jsonSerializable
 class _AdvancedUnionOptionalQueryParameters
     extends AdvancedUnionOptionalQueryParameters {
-  const _AdvancedUnionOptionalQueryParameters({
-    @JsonKey(name: AdvancedUnionOptionalQueryParameters.valueKey)
-    required this.value,
-  }) : super._();
+  const _AdvancedUnionOptionalQueryParameters(
+      {@JsonKey(name: AdvancedUnionOptionalQueryParameters.valueKey)
+      required this.value})
+      : super._();
   factory _AdvancedUnionOptionalQueryParameters.fromJson(
-    Map<String, dynamic> json,
-  ) => _$AdvancedUnionOptionalQueryParametersFromJson(json);
+          Map<String, dynamic> json) =>
+      _$AdvancedUnionOptionalQueryParametersFromJson(json);
 
   /// value
   @override
@@ -111,15 +109,15 @@ class _AdvancedUnionOptionalQueryParameters
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$AdvancedUnionOptionalQueryParametersCopyWith<
-    _AdvancedUnionOptionalQueryParameters
-  >
-  get copyWith => __$AdvancedUnionOptionalQueryParametersCopyWithImpl<
-    _AdvancedUnionOptionalQueryParameters
-  >(this, _$identity);
+          _AdvancedUnionOptionalQueryParameters>
+      get copyWith => __$AdvancedUnionOptionalQueryParametersCopyWithImpl<
+          _AdvancedUnionOptionalQueryParameters>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$AdvancedUnionOptionalQueryParametersToJson(this);
+    return _$AdvancedUnionOptionalQueryParametersToJson(
+      this,
+    );
   }
 
   @override
@@ -144,14 +142,14 @@ class _AdvancedUnionOptionalQueryParameters
 abstract mixin class _$AdvancedUnionOptionalQueryParametersCopyWith<$Res>
     implements $AdvancedUnionOptionalQueryParametersCopyWith<$Res> {
   factory _$AdvancedUnionOptionalQueryParametersCopyWith(
-    _AdvancedUnionOptionalQueryParameters value,
-    $Res Function(_AdvancedUnionOptionalQueryParameters) _then,
-  ) = __$AdvancedUnionOptionalQueryParametersCopyWithImpl;
+          _AdvancedUnionOptionalQueryParameters value,
+          $Res Function(_AdvancedUnionOptionalQueryParameters) _then) =
+      __$AdvancedUnionOptionalQueryParametersCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: AdvancedUnionOptionalQueryParameters.valueKey) String? value,
-  });
+  $Res call(
+      {@JsonKey(name: AdvancedUnionOptionalQueryParameters.valueKey)
+      String? value});
 }
 
 /// @nodoc
@@ -166,15 +164,14 @@ class __$AdvancedUnionOptionalQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? value = freezed}) {
-    return _then(
-      _AdvancedUnionOptionalQueryParameters(
-        value:
-            freezed == value
-                ? _self.value
-                : value // ignore: cast_nullable_to_non_nullable
-                    as String?,
-      ),
-    );
+  $Res call({
+    Object? value = freezed,
+  }) {
+    return _then(_AdvancedUnionOptionalQueryParameters(
+      value: freezed == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }

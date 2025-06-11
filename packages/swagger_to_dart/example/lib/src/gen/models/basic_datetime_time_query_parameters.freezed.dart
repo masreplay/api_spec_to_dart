@@ -23,9 +23,9 @@ mixin _$BasicDatetimeTimeQueryParameters {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $BasicDatetimeTimeQueryParametersCopyWith<BasicDatetimeTimeQueryParameters>
-  get copyWith => _$BasicDatetimeTimeQueryParametersCopyWithImpl<
-    BasicDatetimeTimeQueryParameters
-  >(this as BasicDatetimeTimeQueryParameters, _$identity);
+      get copyWith => _$BasicDatetimeTimeQueryParametersCopyWithImpl<
+              BasicDatetimeTimeQueryParameters>(
+          this as BasicDatetimeTimeQueryParameters, _$identity);
 
   /// Serializes this BasicDatetimeTimeQueryParameters to a JSON map.
   Map<String, dynamic> toJson();
@@ -51,13 +51,12 @@ mixin _$BasicDatetimeTimeQueryParameters {
 /// @nodoc
 abstract mixin class $BasicDatetimeTimeQueryParametersCopyWith<$Res> {
   factory $BasicDatetimeTimeQueryParametersCopyWith(
-    BasicDatetimeTimeQueryParameters value,
-    $Res Function(BasicDatetimeTimeQueryParameters) _then,
-  ) = _$BasicDatetimeTimeQueryParametersCopyWithImpl;
+          BasicDatetimeTimeQueryParameters value,
+          $Res Function(BasicDatetimeTimeQueryParameters) _then) =
+      _$BasicDatetimeTimeQueryParametersCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: BasicDatetimeTimeQueryParameters.tKey) TimeOfDay t,
-  });
+  $Res call(
+      {@JsonKey(name: BasicDatetimeTimeQueryParameters.tKey) TimeOfDay t});
 }
 
 /// @nodoc
@@ -72,16 +71,15 @@ class _$BasicDatetimeTimeQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? t = null}) {
-    return _then(
-      _self.copyWith(
-        t:
-            null == t
-                ? _self.t
-                : t // ignore: cast_nullable_to_non_nullable
-                    as TimeOfDay,
-      ),
-    );
+  $Res call({
+    Object? t = null,
+  }) {
+    return _then(_self.copyWith(
+      t: null == t
+          ? _self.t
+          : t // ignore: cast_nullable_to_non_nullable
+              as TimeOfDay,
+    ));
   }
 }
 
@@ -90,12 +88,12 @@ class _$BasicDatetimeTimeQueryParametersCopyWithImpl<$Res>
 @jsonSerializable
 class _BasicDatetimeTimeQueryParameters
     extends BasicDatetimeTimeQueryParameters {
-  const _BasicDatetimeTimeQueryParameters({
-    @JsonKey(name: BasicDatetimeTimeQueryParameters.tKey) required this.t,
-  }) : super._();
+  const _BasicDatetimeTimeQueryParameters(
+      {@JsonKey(name: BasicDatetimeTimeQueryParameters.tKey) required this.t})
+      : super._();
   factory _BasicDatetimeTimeQueryParameters.fromJson(
-    Map<String, dynamic> json,
-  ) => _$BasicDatetimeTimeQueryParametersFromJson(json);
+          Map<String, dynamic> json) =>
+      _$BasicDatetimeTimeQueryParametersFromJson(json);
 
   /// t
   @override
@@ -108,13 +106,14 @@ class _BasicDatetimeTimeQueryParameters
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$BasicDatetimeTimeQueryParametersCopyWith<_BasicDatetimeTimeQueryParameters>
-  get copyWith => __$BasicDatetimeTimeQueryParametersCopyWithImpl<
-    _BasicDatetimeTimeQueryParameters
-  >(this, _$identity);
+      get copyWith => __$BasicDatetimeTimeQueryParametersCopyWithImpl<
+          _BasicDatetimeTimeQueryParameters>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$BasicDatetimeTimeQueryParametersToJson(this);
+    return _$BasicDatetimeTimeQueryParametersToJson(
+      this,
+    );
   }
 
   @override
@@ -139,14 +138,13 @@ class _BasicDatetimeTimeQueryParameters
 abstract mixin class _$BasicDatetimeTimeQueryParametersCopyWith<$Res>
     implements $BasicDatetimeTimeQueryParametersCopyWith<$Res> {
   factory _$BasicDatetimeTimeQueryParametersCopyWith(
-    _BasicDatetimeTimeQueryParameters value,
-    $Res Function(_BasicDatetimeTimeQueryParameters) _then,
-  ) = __$BasicDatetimeTimeQueryParametersCopyWithImpl;
+          _BasicDatetimeTimeQueryParameters value,
+          $Res Function(_BasicDatetimeTimeQueryParameters) _then) =
+      __$BasicDatetimeTimeQueryParametersCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: BasicDatetimeTimeQueryParameters.tKey) TimeOfDay t,
-  });
+  $Res call(
+      {@JsonKey(name: BasicDatetimeTimeQueryParameters.tKey) TimeOfDay t});
 }
 
 /// @nodoc
@@ -161,15 +159,14 @@ class __$BasicDatetimeTimeQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? t = null}) {
-    return _then(
-      _BasicDatetimeTimeQueryParameters(
-        t:
-            null == t
-                ? _self.t
-                : t // ignore: cast_nullable_to_non_nullable
-                    as TimeOfDay,
-      ),
-    );
+  $Res call({
+    Object? t = null,
+  }) {
+    return _then(_BasicDatetimeTimeQueryParameters(
+      t: null == t
+          ? _self.t
+          : t // ignore: cast_nullable_to_non_nullable
+              as TimeOfDay,
+    ));
   }
 }

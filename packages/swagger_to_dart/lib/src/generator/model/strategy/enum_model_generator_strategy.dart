@@ -40,6 +40,7 @@ class EnumModelGeneratorStrategy
     extends ModelGeneratorStrategy<MapEntry<String, OpenApiSchemas>> {
   const EnumModelGeneratorStrategy(super.context);
 
+  @override
   Library build(MapEntry<String, OpenApiSchemas> model) {
     final className = Renaming.instance.renameClass(model.key);
     final filename = Renaming.instance.renameFile(className);
@@ -50,13 +51,13 @@ class EnumModelGeneratorStrategy
     return Library(
       (b) => b
         ..comments.addAll([
-          '${model.key}',
+          model.key,
           ...JsonFactory.instance.encode(model.value.toJson()).split('\n'),
         ])
         ..name = filename
         ..directives.addAll([
           Directive.import('exports.dart'),
-          Directive.part('${filename}.g.dart'),
+          Directive.part('$filename.g.dart'),
         ])
         ..body.addAll([
           Enum(
@@ -99,7 +100,9 @@ class EnumModelGeneratorStrategy
               ..methods.addAll([
                 Method(
                   (b) => b
-                    ..returns = refer('$String')
+                    // if value is a string, return the string
+                    // if value is a number, return the number
+                    ..returns = refer('Object')
                     ..name = 'toJson'
                     ..lambda = true
                     ..body = Code('_\$${className}EnumMap[this]!'),

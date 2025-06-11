@@ -28,9 +28,7 @@ mixin _$ItemResponse {
   @pragma('vm:prefer-inline')
   $ItemResponseCopyWith<ItemResponse> get copyWith =>
       _$ItemResponseCopyWithImpl<ItemResponse>(
-        this as ItemResponse,
-        _$identity,
-      );
+          this as ItemResponse, _$identity);
 
   /// Serializes this ItemResponse to a JSON map.
   Map<String, dynamic> toJson();
@@ -57,14 +55,12 @@ mixin _$ItemResponse {
 /// @nodoc
 abstract mixin class $ItemResponseCopyWith<$Res> {
   factory $ItemResponseCopyWith(
-    ItemResponse value,
-    $Res Function(ItemResponse) _then,
-  ) = _$ItemResponseCopyWithImpl;
+          ItemResponse value, $Res Function(ItemResponse) _then) =
+      _$ItemResponseCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: ItemResponse.idKey) int id,
-    @JsonKey(name: ItemResponse.nameKey) String name,
-  });
+  $Res call(
+      {@JsonKey(name: ItemResponse.idKey) int id,
+      @JsonKey(name: ItemResponse.nameKey) String name});
 }
 
 /// @nodoc
@@ -78,21 +74,20 @@ class _$ItemResponseCopyWithImpl<$Res> implements $ItemResponseCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? id = null, Object? name = null}) {
-    return _then(
-      _self.copyWith(
-        id:
-            null == id
-                ? _self.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as int,
-        name:
-            null == name
-                ? _self.name
-                : name // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+  }) {
+    return _then(_self.copyWith(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -100,10 +95,10 @@ class _$ItemResponseCopyWithImpl<$Res> implements $ItemResponseCopyWith<$Res> {
 
 @jsonSerializable
 class _ItemResponse extends ItemResponse {
-  const _ItemResponse({
-    @JsonKey(name: ItemResponse.idKey) required this.id,
-    @JsonKey(name: ItemResponse.nameKey) required this.name,
-  }) : super._();
+  const _ItemResponse(
+      {@JsonKey(name: ItemResponse.idKey) required this.id,
+      @JsonKey(name: ItemResponse.nameKey) required this.name})
+      : super._();
   factory _ItemResponse.fromJson(Map<String, dynamic> json) =>
       _$ItemResponseFromJson(json);
 
@@ -127,7 +122,9 @@ class _ItemResponse extends ItemResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$ItemResponseToJson(this);
+    return _$ItemResponseToJson(
+      this,
+    );
   }
 
   @override
@@ -153,15 +150,13 @@ class _ItemResponse extends ItemResponse {
 abstract mixin class _$ItemResponseCopyWith<$Res>
     implements $ItemResponseCopyWith<$Res> {
   factory _$ItemResponseCopyWith(
-    _ItemResponse value,
-    $Res Function(_ItemResponse) _then,
-  ) = __$ItemResponseCopyWithImpl;
+          _ItemResponse value, $Res Function(_ItemResponse) _then) =
+      __$ItemResponseCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: ItemResponse.idKey) int id,
-    @JsonKey(name: ItemResponse.nameKey) String name,
-  });
+  $Res call(
+      {@JsonKey(name: ItemResponse.idKey) int id,
+      @JsonKey(name: ItemResponse.nameKey) String name});
 }
 
 /// @nodoc
@@ -176,20 +171,19 @@ class __$ItemResponseCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? id = null, Object? name = null}) {
-    return _then(
-      _ItemResponse(
-        id:
-            null == id
-                ? _self.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as int,
-        name:
-            null == name
-                ? _self.name
-                : name // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+  }) {
+    return _then(_ItemResponse(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }

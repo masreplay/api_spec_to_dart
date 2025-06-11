@@ -7,9 +7,13 @@ part of 'advanced_union_modern_query_parameters.dart';
 // **************************************************************************
 
 _AdvancedUnionModernQueryParameters
-_$AdvancedUnionModernQueryParametersFromJson(Map<String, dynamic> json) =>
-    _AdvancedUnionModernQueryParameters(value: json['value']);
+    _$AdvancedUnionModernQueryParametersFromJson(Map<String, dynamic> json) =>
+        _AdvancedUnionModernQueryParameters(
+          value: json['value'],
+        );
 
 Map<String, dynamic> _$AdvancedUnionModernQueryParametersToJson(
-  _AdvancedUnionModernQueryParameters instance,
-) => <String, dynamic>{if (instance.value case final value?) 'value': value};
+        _AdvancedUnionModernQueryParameters instance) =>
+    <String, dynamic>{
+      if (instance.value case final value?) 'value': value,
+    };

@@ -16,12 +16,15 @@ part 'mode.g.dart';
 
 @JsonEnum(alwaysCreate: true)
 enum Mode {
-  @JsonValue("light")
+  @JsonValue('light')
   light,
-  @JsonValue("dark")
+  @JsonValue('dark')
   dark,
-  @JsonValue("system")
+  @JsonValue('system')
   system;
 
-  String toJson() => _$ModeEnumMap[this]!;
+  factory Mode.fromJson(Object json) =>
+      values.firstWhere((e) => e.toJson() == json, orElse: () => values.first);
+
+  Object toJson() => _$ModeEnumMap[this]!;
 }

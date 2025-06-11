@@ -7,11 +7,14 @@ part of 'validation_constrained_int_query_parameters.dart';
 // **************************************************************************
 
 _ValidationConstrainedIntQueryParameters
-_$ValidationConstrainedIntQueryParametersFromJson(Map<String, dynamic> json) =>
-    _ValidationConstrainedIntQueryParameters(
-      value: (json['value'] as num).toInt(),
-    );
+    _$ValidationConstrainedIntQueryParametersFromJson(
+            Map<String, dynamic> json) =>
+        _ValidationConstrainedIntQueryParameters(
+          value: (json['value'] as num).toInt(),
+        );
 
 Map<String, dynamic> _$ValidationConstrainedIntQueryParametersToJson(
-  _ValidationConstrainedIntQueryParameters instance,
-) => <String, dynamic>{'value': instance.value};
+        _ValidationConstrainedIntQueryParameters instance) =>
+    <String, dynamic>{
+      'value': instance.value,
+    };

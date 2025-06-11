@@ -24,9 +24,7 @@ mixin _$ABARoutingModel {
   @pragma('vm:prefer-inline')
   $ABARoutingModelCopyWith<ABARoutingModel> get copyWith =>
       _$ABARoutingModelCopyWithImpl<ABARoutingModel>(
-        this as ABARoutingModel,
-        _$identity,
-      );
+          this as ABARoutingModel, _$identity);
 
   /// Serializes this ABARoutingModel to a JSON map.
   Map<String, dynamic> toJson();
@@ -53,13 +51,11 @@ mixin _$ABARoutingModel {
 /// @nodoc
 abstract mixin class $ABARoutingModelCopyWith<$Res> {
   factory $ABARoutingModelCopyWith(
-    ABARoutingModel value,
-    $Res Function(ABARoutingModel) _then,
-  ) = _$ABARoutingModelCopyWithImpl;
+          ABARoutingModel value, $Res Function(ABARoutingModel) _then) =
+      _$ABARoutingModelCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: ABARoutingModel.routingNumberKey) String routingNumber,
-  });
+  $Res call(
+      {@JsonKey(name: ABARoutingModel.routingNumberKey) String routingNumber});
 }
 
 /// @nodoc
@@ -74,16 +70,15 @@ class _$ABARoutingModelCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? routingNumber = null}) {
-    return _then(
-      _self.copyWith(
-        routingNumber:
-            null == routingNumber
-                ? _self.routingNumber
-                : routingNumber // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? routingNumber = null,
+  }) {
+    return _then(_self.copyWith(
+      routingNumber: null == routingNumber
+          ? _self.routingNumber
+          : routingNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -91,10 +86,10 @@ class _$ABARoutingModelCopyWithImpl<$Res>
 
 @jsonSerializable
 class _ABARoutingModel extends ABARoutingModel {
-  const _ABARoutingModel({
-    @JsonKey(name: ABARoutingModel.routingNumberKey)
-    required this.routingNumber,
-  }) : super._();
+  const _ABARoutingModel(
+      {@JsonKey(name: ABARoutingModel.routingNumberKey)
+      required this.routingNumber})
+      : super._();
   factory _ABARoutingModel.fromJson(Map<String, dynamic> json) =>
       _$ABARoutingModelFromJson(json);
 
@@ -113,7 +108,9 @@ class _ABARoutingModel extends ABARoutingModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$ABARoutingModelToJson(this);
+    return _$ABARoutingModelToJson(
+      this,
+    );
   }
 
   @override
@@ -139,14 +136,12 @@ class _ABARoutingModel extends ABARoutingModel {
 abstract mixin class _$ABARoutingModelCopyWith<$Res>
     implements $ABARoutingModelCopyWith<$Res> {
   factory _$ABARoutingModelCopyWith(
-    _ABARoutingModel value,
-    $Res Function(_ABARoutingModel) _then,
-  ) = __$ABARoutingModelCopyWithImpl;
+          _ABARoutingModel value, $Res Function(_ABARoutingModel) _then) =
+      __$ABARoutingModelCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: ABARoutingModel.routingNumberKey) String routingNumber,
-  });
+  $Res call(
+      {@JsonKey(name: ABARoutingModel.routingNumberKey) String routingNumber});
 }
 
 /// @nodoc
@@ -161,15 +156,14 @@ class __$ABARoutingModelCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? routingNumber = null}) {
-    return _then(
-      _ABARoutingModel(
-        routingNumber:
-            null == routingNumber
-                ? _self.routingNumber
-                : routingNumber // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? routingNumber = null,
+  }) {
+    return _then(_ABARoutingModel(
+      routingNumber: null == routingNumber
+          ? _self.routingNumber
+          : routingNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }

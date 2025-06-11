@@ -1,4 +1,18 @@
-include: package:flutter_lints/flutter.yaml
+include: package:lints/recommended.yaml
 
 linter:
   rules:
+    prefer_single_quotes: true
+    prefer_relative_imports: false
+    sort_constructors_first: true
+
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+
+  errors:
+    invalid_annotation_target: ignore
+
+formatter:
+  trailing_commas: preserve

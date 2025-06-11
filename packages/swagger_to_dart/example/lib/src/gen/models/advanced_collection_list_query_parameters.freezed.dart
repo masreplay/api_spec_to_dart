@@ -23,11 +23,10 @@ mixin _$AdvancedCollectionListQueryParameters {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $AdvancedCollectionListQueryParametersCopyWith<
-    AdvancedCollectionListQueryParameters
-  >
-  get copyWith => _$AdvancedCollectionListQueryParametersCopyWithImpl<
-    AdvancedCollectionListQueryParameters
-  >(this as AdvancedCollectionListQueryParameters, _$identity);
+          AdvancedCollectionListQueryParameters>
+      get copyWith => _$AdvancedCollectionListQueryParametersCopyWithImpl<
+              AdvancedCollectionListQueryParameters>(
+          this as AdvancedCollectionListQueryParameters, _$identity);
 
   /// Serializes this AdvancedCollectionListQueryParameters to a JSON map.
   Map<String, dynamic> toJson();
@@ -54,14 +53,13 @@ mixin _$AdvancedCollectionListQueryParameters {
 /// @nodoc
 abstract mixin class $AdvancedCollectionListQueryParametersCopyWith<$Res> {
   factory $AdvancedCollectionListQueryParametersCopyWith(
-    AdvancedCollectionListQueryParameters value,
-    $Res Function(AdvancedCollectionListQueryParameters) _then,
-  ) = _$AdvancedCollectionListQueryParametersCopyWithImpl;
+          AdvancedCollectionListQueryParameters value,
+          $Res Function(AdvancedCollectionListQueryParameters) _then) =
+      _$AdvancedCollectionListQueryParametersCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: AdvancedCollectionListQueryParameters.itemsKey)
-    List<String> items,
-  });
+  $Res call(
+      {@JsonKey(name: AdvancedCollectionListQueryParameters.itemsKey)
+      List<String> items});
 }
 
 /// @nodoc
@@ -76,16 +74,15 @@ class _$AdvancedCollectionListQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? items = null}) {
-    return _then(
-      _self.copyWith(
-        items:
-            null == items
-                ? _self.items
-                : items // ignore: cast_nullable_to_non_nullable
-                    as List<String>,
-      ),
-    );
+  $Res call({
+    Object? items = null,
+  }) {
+    return _then(_self.copyWith(
+      items: null == items
+          ? _self.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ));
   }
 }
 
@@ -94,14 +91,14 @@ class _$AdvancedCollectionListQueryParametersCopyWithImpl<$Res>
 @jsonSerializable
 class _AdvancedCollectionListQueryParameters
     extends AdvancedCollectionListQueryParameters {
-  const _AdvancedCollectionListQueryParameters({
-    @JsonKey(name: AdvancedCollectionListQueryParameters.itemsKey)
-    final List<String> items = const ['default'],
-  }) : _items = items,
-       super._();
+  const _AdvancedCollectionListQueryParameters(
+      {@JsonKey(name: AdvancedCollectionListQueryParameters.itemsKey)
+      final List<String> items = const ['default']})
+      : _items = items,
+        super._();
   factory _AdvancedCollectionListQueryParameters.fromJson(
-    Map<String, dynamic> json,
-  ) => _$AdvancedCollectionListQueryParametersFromJson(json);
+          Map<String, dynamic> json) =>
+      _$AdvancedCollectionListQueryParametersFromJson(json);
 
   /// items
   final List<String> _items;
@@ -121,15 +118,15 @@ class _AdvancedCollectionListQueryParameters
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$AdvancedCollectionListQueryParametersCopyWith<
-    _AdvancedCollectionListQueryParameters
-  >
-  get copyWith => __$AdvancedCollectionListQueryParametersCopyWithImpl<
-    _AdvancedCollectionListQueryParameters
-  >(this, _$identity);
+          _AdvancedCollectionListQueryParameters>
+      get copyWith => __$AdvancedCollectionListQueryParametersCopyWithImpl<
+          _AdvancedCollectionListQueryParameters>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$AdvancedCollectionListQueryParametersToJson(this);
+    return _$AdvancedCollectionListQueryParametersToJson(
+      this,
+    );
   }
 
   @override
@@ -155,15 +152,14 @@ class _AdvancedCollectionListQueryParameters
 abstract mixin class _$AdvancedCollectionListQueryParametersCopyWith<$Res>
     implements $AdvancedCollectionListQueryParametersCopyWith<$Res> {
   factory _$AdvancedCollectionListQueryParametersCopyWith(
-    _AdvancedCollectionListQueryParameters value,
-    $Res Function(_AdvancedCollectionListQueryParameters) _then,
-  ) = __$AdvancedCollectionListQueryParametersCopyWithImpl;
+          _AdvancedCollectionListQueryParameters value,
+          $Res Function(_AdvancedCollectionListQueryParameters) _then) =
+      __$AdvancedCollectionListQueryParametersCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: AdvancedCollectionListQueryParameters.itemsKey)
-    List<String> items,
-  });
+  $Res call(
+      {@JsonKey(name: AdvancedCollectionListQueryParameters.itemsKey)
+      List<String> items});
 }
 
 /// @nodoc
@@ -178,15 +174,14 @@ class __$AdvancedCollectionListQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? items = null}) {
-    return _then(
-      _AdvancedCollectionListQueryParameters(
-        items:
-            null == items
-                ? _self._items
-                : items // ignore: cast_nullable_to_non_nullable
-                    as List<String>,
-      ),
-    );
+  $Res call({
+    Object? items = null,
+  }) {
+    return _then(_AdvancedCollectionListQueryParameters(
+      items: null == items
+          ? _self._items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ));
   }
 }
