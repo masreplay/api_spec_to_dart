@@ -38,7 +38,8 @@ abstract class AdvancedUnionSimpleQueryParameters
 
   factory AdvancedUnionSimpleQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) => _$AdvancedUnionSimpleQueryParametersFromJson(json);
+  ) =>
+      _$AdvancedUnionSimpleQueryParametersFromJson(json);
 
   static const String valueKey = r'value';
 }

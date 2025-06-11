@@ -12,11 +12,11 @@ Future<void> main(List<String> args) async {
 
   final HttpResponse<BaseResponse<PaginationResponse<ItemResponse>>> response =
       await apiClient.genericClient.genericGetNestedBaseAndPagination(
-        queries: GenericGetNestedBaseAndPaginationQueryParameters(
-          page: 1,
-          perPage: 10,
-        ),
-      );
+    queries: GenericGetNestedBaseAndPaginationQueryParameters(
+      page: 1,
+      perPage: 10,
+    ),
+  );
 
   print(response.data.data.items.firstOrNull?.name);
 }

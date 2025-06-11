@@ -74,6 +74,7 @@ abstract class ApiClientConfig with _$ApiClientConfig {
   const factory ApiClientConfig({
     @Default('BaseApiClient') String baseApiClientClassName,
     @Default(false) bool useClassForQueryParameters,
+    @Default(false) bool useClassForMultipartFormData,
     @Default([]) List<String> skippedParameters,
   }) = _ApiClientConfig;
 

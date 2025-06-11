@@ -733,12 +733,13 @@ mixin _$OpenApiPathMethodResponse {
             other is OpenApiPathMethodResponse &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.content, content) || other.content == content));
+            const DeepCollectionEquality().equals(other.content, content));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, description, content);
+  int get hashCode => Object.hash(
+      runtimeType, description, const DeepCollectionEquality().hash(content));
 
   @override
   String toString() {
@@ -755,8 +756,6 @@ abstract mixin class $OpenApiPathMethodResponseCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'description') String? description,
       @JsonKey(name: 'content') OpenApiContent? content});
-
-  $OpenApiContentCopyWith<$Res>? get content;
 }
 
 /// @nodoc
@@ -786,20 +785,6 @@ class _$OpenApiPathMethodResponseCopyWithImpl<$Res>
               as OpenApiContent?,
     ));
   }
-
-  /// Create a copy of OpenApiPathMethodResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $OpenApiContentCopyWith<$Res>? get content {
-    if (_self.content == null) {
-      return null;
-    }
-
-    return $OpenApiContentCopyWith<$Res>(_self.content!, (value) {
-      return _then(_self.copyWith(content: value));
-    });
-  }
 }
 
 /// @nodoc
@@ -807,17 +792,25 @@ class _$OpenApiPathMethodResponseCopyWithImpl<$Res>
 class _OpenApiPathMethodResponse extends OpenApiPathMethodResponse {
   const _OpenApiPathMethodResponse(
       {@JsonKey(name: 'description') this.description,
-      @JsonKey(name: 'content') required this.content})
-      : super._();
+      @JsonKey(name: 'content') required final OpenApiContent? content})
+      : _content = content,
+        super._();
   factory _OpenApiPathMethodResponse.fromJson(Map<String, dynamic> json) =>
       _$OpenApiPathMethodResponseFromJson(json);
 
   @override
   @JsonKey(name: 'description')
   final String? description;
+  final OpenApiContent? _content;
   @override
   @JsonKey(name: 'content')
-  final OpenApiContent? content;
+  OpenApiContent? get content {
+    final value = _content;
+    if (value == null) return null;
+    if (_content is EqualUnmodifiableMapView) return _content;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
 
   /// Create a copy of OpenApiPathMethodResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -843,12 +836,13 @@ class _OpenApiPathMethodResponse extends OpenApiPathMethodResponse {
             other is _OpenApiPathMethodResponse &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.content, content) || other.content == content));
+            const DeepCollectionEquality().equals(other._content, _content));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, description, content);
+  int get hashCode => Object.hash(
+      runtimeType, description, const DeepCollectionEquality().hash(_content));
 
   @override
   String toString() {
@@ -867,9 +861,6 @@ abstract mixin class _$OpenApiPathMethodResponseCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'description') String? description,
       @JsonKey(name: 'content') OpenApiContent? content});
-
-  @override
-  $OpenApiContentCopyWith<$Res>? get content;
 }
 
 /// @nodoc
@@ -894,24 +885,10 @@ class __$OpenApiPathMethodResponseCopyWithImpl<$Res>
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
       content: freezed == content
-          ? _self.content
+          ? _self._content
           : content // ignore: cast_nullable_to_non_nullable
               as OpenApiContent?,
     ));
-  }
-
-  /// Create a copy of OpenApiPathMethodResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $OpenApiContentCopyWith<$Res>? get content {
-    if (_self.content == null) {
-      return null;
-    }
-
-    return $OpenApiContentCopyWith<$Res>(_self.content!, (value) {
-      return _then(_self.copyWith(content: value));
-    });
   }
 }
 
@@ -941,12 +918,13 @@ mixin _$OpenApiPathMethodRequestBody {
             other is OpenApiPathMethodRequestBody &&
             (identical(other.required_, required_) ||
                 other.required_ == required_) &&
-            (identical(other.content, content) || other.content == content));
+            const DeepCollectionEquality().equals(other.content, content));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, required_, content);
+  int get hashCode => Object.hash(
+      runtimeType, required_, const DeepCollectionEquality().hash(content));
 
   @override
   String toString() {
@@ -964,8 +942,6 @@ abstract mixin class $OpenApiPathMethodRequestBodyCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'required') bool? required_,
       @JsonKey(name: 'content') OpenApiContent content});
-
-  $OpenApiContentCopyWith<$Res> get content;
 }
 
 /// @nodoc
@@ -995,16 +971,6 @@ class _$OpenApiPathMethodRequestBodyCopyWithImpl<$Res>
               as OpenApiContent,
     ));
   }
-
-  /// Create a copy of OpenApiPathMethodRequestBody
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $OpenApiContentCopyWith<$Res> get content {
-    return $OpenApiContentCopyWith<$Res>(_self.content, (value) {
-      return _then(_self.copyWith(content: value));
-    });
-  }
 }
 
 /// @nodoc
@@ -1012,17 +978,23 @@ class _$OpenApiPathMethodRequestBodyCopyWithImpl<$Res>
 class _OpenApiPathMethodRequestBody extends OpenApiPathMethodRequestBody {
   const _OpenApiPathMethodRequestBody(
       {@JsonKey(name: 'required') this.required_,
-      @JsonKey(name: 'content') required this.content})
-      : super._();
+      @JsonKey(name: 'content') required final OpenApiContent content})
+      : _content = content,
+        super._();
   factory _OpenApiPathMethodRequestBody.fromJson(Map<String, dynamic> json) =>
       _$OpenApiPathMethodRequestBodyFromJson(json);
 
   @override
   @JsonKey(name: 'required')
   final bool? required_;
+  final OpenApiContent _content;
   @override
   @JsonKey(name: 'content')
-  final OpenApiContent content;
+  OpenApiContent get content {
+    if (_content is EqualUnmodifiableMapView) return _content;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_content);
+  }
 
   /// Create a copy of OpenApiPathMethodRequestBody
   /// with the given fields replaced by the non-null parameter values.
@@ -1047,12 +1019,13 @@ class _OpenApiPathMethodRequestBody extends OpenApiPathMethodRequestBody {
             other is _OpenApiPathMethodRequestBody &&
             (identical(other.required_, required_) ||
                 other.required_ == required_) &&
-            (identical(other.content, content) || other.content == content));
+            const DeepCollectionEquality().equals(other._content, _content));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, required_, content);
+  int get hashCode => Object.hash(
+      runtimeType, required_, const DeepCollectionEquality().hash(_content));
 
   @override
   String toString() {
@@ -1072,9 +1045,6 @@ abstract mixin class _$OpenApiPathMethodRequestBodyCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'required') bool? required_,
       @JsonKey(name: 'content') OpenApiContent content});
-
-  @override
-  $OpenApiContentCopyWith<$Res> get content;
 }
 
 /// @nodoc
@@ -1099,19 +1069,9 @@ class __$OpenApiPathMethodRequestBodyCopyWithImpl<$Res>
           : required_ // ignore: cast_nullable_to_non_nullable
               as bool?,
       content: null == content
-          ? _self.content
+          ? _self._content
           : content // ignore: cast_nullable_to_non_nullable
               as OpenApiContent,
     ));
-  }
-
-  /// Create a copy of OpenApiPathMethodRequestBody
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $OpenApiContentCopyWith<$Res> get content {
-    return $OpenApiContentCopyWith<$Res>(_self.content, (value) {
-      return _then(_self.copyWith(content: value));
-    });
   }
 }

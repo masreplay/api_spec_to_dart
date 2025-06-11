@@ -30,7 +30,8 @@ abstract class AdvancedDependsClassQueryParameters
 
   factory AdvancedDependsClassQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) => _$AdvancedDependsClassQueryParametersFromJson(json);
+  ) =>
+      _$AdvancedDependsClassQueryParametersFromJson(json);
 
   static const String dbNameKey = r'db_name';
 }

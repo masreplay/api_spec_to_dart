@@ -29,7 +29,8 @@ abstract class BasicCreateDatetimeDatetimeQueryParameters
 
   factory BasicCreateDatetimeDatetimeQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) => _$BasicCreateDatetimeDatetimeQueryParametersFromJson(json);
+  ) =>
+      _$BasicCreateDatetimeDatetimeQueryParametersFromJson(json);
 
   static const String dtKey = r'dt';
 }

@@ -29,7 +29,8 @@ abstract class ValidationConstrainedFloatQueryParameters
 
   factory ValidationConstrainedFloatQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) => _$ValidationConstrainedFloatQueryParametersFromJson(json);
+  ) =>
+      _$ValidationConstrainedFloatQueryParametersFromJson(json);
 
   static const String valueKey = r'value';
 }

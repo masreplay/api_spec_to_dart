@@ -29,7 +29,8 @@ abstract class AdvancedErrorCustomQueryParameters
 
   factory AdvancedErrorCustomQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) => _$AdvancedErrorCustomQueryParametersFromJson(json);
+  ) =>
+      _$AdvancedErrorCustomQueryParametersFromJson(json);
 
   static const String codeKey = r'code';
 }

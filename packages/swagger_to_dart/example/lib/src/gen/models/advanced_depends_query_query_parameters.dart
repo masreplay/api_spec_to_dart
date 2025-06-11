@@ -57,7 +57,8 @@ abstract class AdvancedDependsQueryQueryParameters
 
   factory AdvancedDependsQueryQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) => _$AdvancedDependsQueryQueryParametersFromJson(json);
+  ) =>
+      _$AdvancedDependsQueryQueryParametersFromJson(json);
 
   static const String qKey = r'q';
 

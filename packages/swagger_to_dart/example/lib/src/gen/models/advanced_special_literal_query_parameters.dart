@@ -35,7 +35,8 @@ abstract class AdvancedSpecialLiteralQueryParameters
 
   factory AdvancedSpecialLiteralQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) => _$AdvancedSpecialLiteralQueryParametersFromJson(json);
+  ) =>
+      _$AdvancedSpecialLiteralQueryParametersFromJson(json);
 
   static const String modeKey = r'mode';
 }

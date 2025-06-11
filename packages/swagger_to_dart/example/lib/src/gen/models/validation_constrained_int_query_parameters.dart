@@ -29,7 +29,8 @@ abstract class ValidationConstrainedIntQueryParameters
 
   factory ValidationConstrainedIntQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) => _$ValidationConstrainedIntQueryParametersFromJson(json);
+  ) =>
+      _$ValidationConstrainedIntQueryParametersFromJson(json);
 
   static const String valueKey = r'value';
 }
