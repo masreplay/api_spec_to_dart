@@ -29,7 +29,8 @@ abstract class AdvancedSpecialEnumQueryParameters
 
   factory AdvancedSpecialEnumQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) => _$AdvancedSpecialEnumQueryParametersFromJson(json);
+  ) =>
+      _$AdvancedSpecialEnumQueryParametersFromJson(json);
 
   static const String levelKey = r'level';
 }

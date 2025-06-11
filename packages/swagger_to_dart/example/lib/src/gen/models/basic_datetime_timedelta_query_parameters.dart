@@ -29,7 +29,8 @@ abstract class BasicDatetimeTimedeltaQueryParameters
 
   factory BasicDatetimeTimedeltaQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) => _$BasicDatetimeTimedeltaQueryParametersFromJson(json);
+  ) =>
+      _$BasicDatetimeTimedeltaQueryParametersFromJson(json);
 
   static const String tdKey = r'td';
 }

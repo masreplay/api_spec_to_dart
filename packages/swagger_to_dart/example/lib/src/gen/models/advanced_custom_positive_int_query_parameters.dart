@@ -36,7 +36,8 @@ abstract class AdvancedCustomPositiveIntQueryParameters
 
   factory AdvancedCustomPositiveIntQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) => _$AdvancedCustomPositiveIntQueryParametersFromJson(json);
+  ) =>
+      _$AdvancedCustomPositiveIntQueryParametersFromJson(json);
 
   static const String valueKey = r'value';
 

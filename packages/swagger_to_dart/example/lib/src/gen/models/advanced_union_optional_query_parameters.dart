@@ -35,7 +35,8 @@ abstract class AdvancedUnionOptionalQueryParameters
 
   factory AdvancedUnionOptionalQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) => _$AdvancedUnionOptionalQueryParametersFromJson(json);
+  ) =>
+      _$AdvancedUnionOptionalQueryParametersFromJson(json);
 
   static const String valueKey = r'value';
 }

@@ -28,7 +28,8 @@ abstract class AdvancedSpecialUuidQueryParameters
 
   factory AdvancedSpecialUuidQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) => _$AdvancedSpecialUuidQueryParametersFromJson(json);
+  ) =>
+      _$AdvancedSpecialUuidQueryParametersFromJson(json);
 
   static const String idKey = r'id';
 }

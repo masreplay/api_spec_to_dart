@@ -31,7 +31,8 @@ abstract class AdvancedCollectionVariableTupleQueryParameters
 
   factory AdvancedCollectionVariableTupleQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) => _$AdvancedCollectionVariableTupleQueryParametersFromJson(json);
+  ) =>
+      _$AdvancedCollectionVariableTupleQueryParametersFromJson(json);
 
   static const String itemsKey = r'items';
 }

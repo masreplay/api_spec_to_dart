@@ -53,7 +53,8 @@ abstract class ValidationValidationConditionalQueryParameters
 
   factory ValidationValidationConditionalQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) => _$ValidationValidationConditionalQueryParametersFromJson(json);
+  ) =>
+      _$ValidationValidationConditionalQueryParametersFromJson(json);
 
   static const String userIdKey = r'user_id';
 

@@ -31,7 +31,8 @@ abstract class ModelsResponseMultipleQueryParameters
 
   factory ModelsResponseMultipleQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) => _$ModelsResponseMultipleQueryParametersFromJson(json);
+  ) =>
+      _$ModelsResponseMultipleQueryParametersFromJson(json);
 
   static const String isUserKey = r'is_user';
 }

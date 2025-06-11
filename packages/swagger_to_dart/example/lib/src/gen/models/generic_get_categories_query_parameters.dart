@@ -40,7 +40,8 @@ abstract class GenericGetCategoriesQueryParameters
 
   factory GenericGetCategoriesQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) => _$GenericGetCategoriesQueryParametersFromJson(json);
+  ) =>
+      _$GenericGetCategoriesQueryParametersFromJson(json);
 
   static const String pageKey = r'page';
 

@@ -35,7 +35,8 @@ abstract class AdvancedCollectionListQueryParameters
 
   factory AdvancedCollectionListQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) => _$AdvancedCollectionListQueryParametersFromJson(json);
+  ) =>
+      _$AdvancedCollectionListQueryParametersFromJson(json);
 
   static const String itemsKey = r'items';
 }

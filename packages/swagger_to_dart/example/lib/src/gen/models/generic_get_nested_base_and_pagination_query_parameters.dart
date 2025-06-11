@@ -40,7 +40,8 @@ abstract class GenericGetNestedBaseAndPaginationQueryParameters
 
   factory GenericGetNestedBaseAndPaginationQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) => _$GenericGetNestedBaseAndPaginationQueryParametersFromJson(json);
+  ) =>
+      _$GenericGetNestedBaseAndPaginationQueryParametersFromJson(json);
 
   static const String pageKey = r'page';
 

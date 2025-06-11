@@ -70,7 +70,8 @@ abstract class PaginationResponse<T> with _$PaginationResponse<T> {
   factory PaginationResponse.fromJson(
     Map<String, dynamic> json,
     T Function(Object? json) fromJsonT,
-  ) => _$PaginationResponseFromJson<T>(json, fromJsonT);
+  ) =>
+      _$PaginationResponseFromJson<T>(json, fromJsonT);
 
   static const String itemsKey = r'items';
 

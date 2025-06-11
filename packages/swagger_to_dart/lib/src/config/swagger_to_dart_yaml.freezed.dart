@@ -382,6 +382,7 @@ class __$ModelConfigCopyWithImpl<$Res> implements _$ModelConfigCopyWith<$Res> {
 mixin _$ApiClientConfig {
   String get baseApiClientClassName;
   bool get useClassForQueryParameters;
+  bool get useClassForMultipartFormData;
   List<String> get skippedParameters;
 
   /// Create a copy of ApiClientConfig
@@ -406,6 +407,10 @@ mixin _$ApiClientConfig {
                     useClassForQueryParameters) ||
                 other.useClassForQueryParameters ==
                     useClassForQueryParameters) &&
+            (identical(other.useClassForMultipartFormData,
+                    useClassForMultipartFormData) ||
+                other.useClassForMultipartFormData ==
+                    useClassForMultipartFormData) &&
             const DeepCollectionEquality()
                 .equals(other.skippedParameters, skippedParameters));
   }
@@ -416,11 +421,12 @@ mixin _$ApiClientConfig {
       runtimeType,
       baseApiClientClassName,
       useClassForQueryParameters,
+      useClassForMultipartFormData,
       const DeepCollectionEquality().hash(skippedParameters));
 
   @override
   String toString() {
-    return 'ApiClientConfig(baseApiClientClassName: $baseApiClientClassName, useClassForQueryParameters: $useClassForQueryParameters, skippedParameters: $skippedParameters)';
+    return 'ApiClientConfig(baseApiClientClassName: $baseApiClientClassName, useClassForQueryParameters: $useClassForQueryParameters, useClassForMultipartFormData: $useClassForMultipartFormData, skippedParameters: $skippedParameters)';
   }
 }
 
@@ -433,6 +439,7 @@ abstract mixin class $ApiClientConfigCopyWith<$Res> {
   $Res call(
       {String baseApiClientClassName,
       bool useClassForQueryParameters,
+      bool useClassForMultipartFormData,
       List<String> skippedParameters});
 }
 
@@ -451,6 +458,7 @@ class _$ApiClientConfigCopyWithImpl<$Res>
   $Res call({
     Object? baseApiClientClassName = null,
     Object? useClassForQueryParameters = null,
+    Object? useClassForMultipartFormData = null,
     Object? skippedParameters = null,
   }) {
     return _then(_self.copyWith(
@@ -461,6 +469,10 @@ class _$ApiClientConfigCopyWithImpl<$Res>
       useClassForQueryParameters: null == useClassForQueryParameters
           ? _self.useClassForQueryParameters
           : useClassForQueryParameters // ignore: cast_nullable_to_non_nullable
+              as bool,
+      useClassForMultipartFormData: null == useClassForMultipartFormData
+          ? _self.useClassForMultipartFormData
+          : useClassForMultipartFormData // ignore: cast_nullable_to_non_nullable
               as bool,
       skippedParameters: null == skippedParameters
           ? _self.skippedParameters
@@ -477,6 +489,7 @@ class _ApiClientConfig extends ApiClientConfig {
   const _ApiClientConfig(
       {this.baseApiClientClassName = 'BaseApiClient',
       this.useClassForQueryParameters = false,
+      this.useClassForMultipartFormData = false,
       final List<String> skippedParameters = const []})
       : _skippedParameters = skippedParameters,
         super._();
@@ -489,6 +502,9 @@ class _ApiClientConfig extends ApiClientConfig {
   @override
   @JsonKey()
   final bool useClassForQueryParameters;
+  @override
+  @JsonKey()
+  final bool useClassForMultipartFormData;
   final List<String> _skippedParameters;
   @override
   @JsonKey()
@@ -525,6 +541,10 @@ class _ApiClientConfig extends ApiClientConfig {
                     useClassForQueryParameters) ||
                 other.useClassForQueryParameters ==
                     useClassForQueryParameters) &&
+            (identical(other.useClassForMultipartFormData,
+                    useClassForMultipartFormData) ||
+                other.useClassForMultipartFormData ==
+                    useClassForMultipartFormData) &&
             const DeepCollectionEquality()
                 .equals(other._skippedParameters, _skippedParameters));
   }
@@ -535,11 +555,12 @@ class _ApiClientConfig extends ApiClientConfig {
       runtimeType,
       baseApiClientClassName,
       useClassForQueryParameters,
+      useClassForMultipartFormData,
       const DeepCollectionEquality().hash(_skippedParameters));
 
   @override
   String toString() {
-    return 'ApiClientConfig(baseApiClientClassName: $baseApiClientClassName, useClassForQueryParameters: $useClassForQueryParameters, skippedParameters: $skippedParameters)';
+    return 'ApiClientConfig(baseApiClientClassName: $baseApiClientClassName, useClassForQueryParameters: $useClassForQueryParameters, useClassForMultipartFormData: $useClassForMultipartFormData, skippedParameters: $skippedParameters)';
   }
 }
 
@@ -554,6 +575,7 @@ abstract mixin class _$ApiClientConfigCopyWith<$Res>
   $Res call(
       {String baseApiClientClassName,
       bool useClassForQueryParameters,
+      bool useClassForMultipartFormData,
       List<String> skippedParameters});
 }
 
@@ -572,6 +594,7 @@ class __$ApiClientConfigCopyWithImpl<$Res>
   $Res call({
     Object? baseApiClientClassName = null,
     Object? useClassForQueryParameters = null,
+    Object? useClassForMultipartFormData = null,
     Object? skippedParameters = null,
   }) {
     return _then(_ApiClientConfig(
@@ -582,6 +605,10 @@ class __$ApiClientConfigCopyWithImpl<$Res>
       useClassForQueryParameters: null == useClassForQueryParameters
           ? _self.useClassForQueryParameters
           : useClassForQueryParameters // ignore: cast_nullable_to_non_nullable
+              as bool,
+      useClassForMultipartFormData: null == useClassForMultipartFormData
+          ? _self.useClassForMultipartFormData
+          : useClassForMultipartFormData // ignore: cast_nullable_to_non_nullable
               as bool,
       skippedParameters: null == skippedParameters
           ? _self._skippedParameters

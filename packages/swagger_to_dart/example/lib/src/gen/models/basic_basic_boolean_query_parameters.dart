@@ -30,7 +30,8 @@ abstract class BasicBasicBooleanQueryParameters
 
   factory BasicBasicBooleanQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) => _$BasicBasicBooleanQueryParametersFromJson(json);
+  ) =>
+      _$BasicBasicBooleanQueryParametersFromJson(json);
 
   static const String flagKey = r'flag';
 }

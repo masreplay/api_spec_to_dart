@@ -60,7 +60,8 @@ abstract class ValidationParamQueryQueryParameters
 
   factory ValidationParamQueryQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) => _$ValidationParamQueryQueryParametersFromJson(json);
+  ) =>
+      _$ValidationParamQueryQueryParametersFromJson(json);
 
   static const String qKey = r'q';
 

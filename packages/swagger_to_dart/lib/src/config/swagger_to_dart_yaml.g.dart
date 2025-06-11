@@ -85,6 +85,8 @@ _ApiClientConfig _$ApiClientConfigFromJson(Map<String, dynamic> json) =>
           json['base_api_client_class_name'] as String? ?? 'BaseApiClient',
       useClassForQueryParameters:
           json['use_class_for_query_parameters'] as bool? ?? false,
+      useClassForMultipartFormData:
+          json['use_class_for_multipart_form_data'] as bool? ?? false,
       skippedParameters: (json['skipped_parameters'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
@@ -94,6 +96,7 @@ _ApiClientConfig _$ApiClientConfigFromJson(Map<String, dynamic> json) =>
 const _$ApiClientConfigFieldMap = <String, String>{
   'baseApiClientClassName': 'base_api_client_class_name',
   'useClassForQueryParameters': 'use_class_for_query_parameters',
+  'useClassForMultipartFormData': 'use_class_for_multipart_form_data',
   'skippedParameters': 'skipped_parameters',
 };
 
@@ -101,6 +104,8 @@ abstract final class _$ApiClientConfigJsonKeys {
   static const String baseApiClientClassName = 'base_api_client_class_name';
   static const String useClassForQueryParameters =
       'use_class_for_query_parameters';
+  static const String useClassForMultipartFormData =
+      'use_class_for_multipart_form_data';
   static const String skippedParameters = 'skipped_parameters';
 }
 
@@ -111,6 +116,8 @@ abstract class _$ApiClientConfigPerFieldToJson {
   // ignore: unused_element
   static Object? useClassForQueryParameters(bool instance) => instance;
   // ignore: unused_element
+  static Object? useClassForMultipartFormData(bool instance) => instance;
+  // ignore: unused_element
   static Object? skippedParameters(List<String> instance) => instance;
 }
 
@@ -118,6 +125,8 @@ Map<String, dynamic> _$ApiClientConfigToJson(_ApiClientConfig instance) =>
     <String, dynamic>{
       'base_api_client_class_name': instance.baseApiClientClassName,
       'use_class_for_query_parameters': instance.useClassForQueryParameters,
+      'use_class_for_multipart_form_data':
+          instance.useClassForMultipartFormData,
       'skipped_parameters': instance.skippedParameters,
     };
 
