@@ -1,4 +1,6 @@
-## Next Release
+## 2.4.0
+- Fix issue with `Multipart` and `FormUrlEncoded`
+- Support `fromJson` in enum classes
 
 ## 2.3.0
 
