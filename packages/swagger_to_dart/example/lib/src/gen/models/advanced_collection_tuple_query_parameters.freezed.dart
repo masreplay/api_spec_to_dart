@@ -23,11 +23,10 @@ mixin _$AdvancedCollectionTupleQueryParameters {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $AdvancedCollectionTupleQueryParametersCopyWith<
-    AdvancedCollectionTupleQueryParameters
-  >
-  get copyWith => _$AdvancedCollectionTupleQueryParametersCopyWithImpl<
-    AdvancedCollectionTupleQueryParameters
-  >(this as AdvancedCollectionTupleQueryParameters, _$identity);
+          AdvancedCollectionTupleQueryParameters>
+      get copyWith => _$AdvancedCollectionTupleQueryParametersCopyWithImpl<
+              AdvancedCollectionTupleQueryParameters>(
+          this as AdvancedCollectionTupleQueryParameters, _$identity);
 
   /// Serializes this AdvancedCollectionTupleQueryParameters to a JSON map.
   Map<String, dynamic> toJson();
@@ -54,14 +53,13 @@ mixin _$AdvancedCollectionTupleQueryParameters {
 /// @nodoc
 abstract mixin class $AdvancedCollectionTupleQueryParametersCopyWith<$Res> {
   factory $AdvancedCollectionTupleQueryParametersCopyWith(
-    AdvancedCollectionTupleQueryParameters value,
-    $Res Function(AdvancedCollectionTupleQueryParameters) _then,
-  ) = _$AdvancedCollectionTupleQueryParametersCopyWithImpl;
+          AdvancedCollectionTupleQueryParameters value,
+          $Res Function(AdvancedCollectionTupleQueryParameters) _then) =
+      _$AdvancedCollectionTupleQueryParametersCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: AdvancedCollectionTupleQueryParameters.itemsKey)
-    List<dynamic> items,
-  });
+  $Res call(
+      {@JsonKey(name: AdvancedCollectionTupleQueryParameters.itemsKey)
+      List<dynamic> items});
 }
 
 /// @nodoc
@@ -76,16 +74,15 @@ class _$AdvancedCollectionTupleQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? items = null}) {
-    return _then(
-      _self.copyWith(
-        items:
-            null == items
-                ? _self.items
-                : items // ignore: cast_nullable_to_non_nullable
-                    as List<dynamic>,
-      ),
-    );
+  $Res call({
+    Object? items = null,
+  }) {
+    return _then(_self.copyWith(
+      items: null == items
+          ? _self.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
+    ));
   }
 }
 
@@ -94,14 +91,14 @@ class _$AdvancedCollectionTupleQueryParametersCopyWithImpl<$Res>
 @jsonSerializable
 class _AdvancedCollectionTupleQueryParameters
     extends AdvancedCollectionTupleQueryParameters {
-  const _AdvancedCollectionTupleQueryParameters({
-    @JsonKey(name: AdvancedCollectionTupleQueryParameters.itemsKey)
-    required final List<dynamic> items,
-  }) : _items = items,
-       super._();
+  const _AdvancedCollectionTupleQueryParameters(
+      {@JsonKey(name: AdvancedCollectionTupleQueryParameters.itemsKey)
+      required final List<dynamic> items})
+      : _items = items,
+        super._();
   factory _AdvancedCollectionTupleQueryParameters.fromJson(
-    Map<String, dynamic> json,
-  ) => _$AdvancedCollectionTupleQueryParametersFromJson(json);
+          Map<String, dynamic> json) =>
+      _$AdvancedCollectionTupleQueryParametersFromJson(json);
 
   /// items
   final List<dynamic> _items;
@@ -121,15 +118,15 @@ class _AdvancedCollectionTupleQueryParameters
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$AdvancedCollectionTupleQueryParametersCopyWith<
-    _AdvancedCollectionTupleQueryParameters
-  >
-  get copyWith => __$AdvancedCollectionTupleQueryParametersCopyWithImpl<
-    _AdvancedCollectionTupleQueryParameters
-  >(this, _$identity);
+          _AdvancedCollectionTupleQueryParameters>
+      get copyWith => __$AdvancedCollectionTupleQueryParametersCopyWithImpl<
+          _AdvancedCollectionTupleQueryParameters>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$AdvancedCollectionTupleQueryParametersToJson(this);
+    return _$AdvancedCollectionTupleQueryParametersToJson(
+      this,
+    );
   }
 
   @override
@@ -155,15 +152,14 @@ class _AdvancedCollectionTupleQueryParameters
 abstract mixin class _$AdvancedCollectionTupleQueryParametersCopyWith<$Res>
     implements $AdvancedCollectionTupleQueryParametersCopyWith<$Res> {
   factory _$AdvancedCollectionTupleQueryParametersCopyWith(
-    _AdvancedCollectionTupleQueryParameters value,
-    $Res Function(_AdvancedCollectionTupleQueryParameters) _then,
-  ) = __$AdvancedCollectionTupleQueryParametersCopyWithImpl;
+          _AdvancedCollectionTupleQueryParameters value,
+          $Res Function(_AdvancedCollectionTupleQueryParameters) _then) =
+      __$AdvancedCollectionTupleQueryParametersCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: AdvancedCollectionTupleQueryParameters.itemsKey)
-    List<dynamic> items,
-  });
+  $Res call(
+      {@JsonKey(name: AdvancedCollectionTupleQueryParameters.itemsKey)
+      List<dynamic> items});
 }
 
 /// @nodoc
@@ -178,15 +174,14 @@ class __$AdvancedCollectionTupleQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? items = null}) {
-    return _then(
-      _AdvancedCollectionTupleQueryParameters(
-        items:
-            null == items
-                ? _self._items
-                : items // ignore: cast_nullable_to_non_nullable
-                    as List<dynamic>,
-      ),
-    );
+  $Res call({
+    Object? items = null,
+  }) {
+    return _then(_AdvancedCollectionTupleQueryParameters(
+      items: null == items
+          ? _self._items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
+    ));
   }
 }

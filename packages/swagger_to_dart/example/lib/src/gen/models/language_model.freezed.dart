@@ -36,9 +36,7 @@ mixin _$LanguageModel {
   @pragma('vm:prefer-inline')
   $LanguageModelCopyWith<LanguageModel> get copyWith =>
       _$LanguageModelCopyWithImpl<LanguageModel>(
-        this as LanguageModel,
-        _$identity,
-      );
+          this as LanguageModel, _$identity);
 
   /// Serializes this LanguageModel to a JSON map.
   Map<String, dynamic> toJson();
@@ -67,16 +65,14 @@ mixin _$LanguageModel {
 /// @nodoc
 abstract mixin class $LanguageModelCopyWith<$Res> {
   factory $LanguageModelCopyWith(
-    LanguageModel value,
-    $Res Function(LanguageModel) _then,
-  ) = _$LanguageModelCopyWithImpl;
+          LanguageModel value, $Res Function(LanguageModel) _then) =
+      _$LanguageModelCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: LanguageModel.alpha2Key) String? alpha2,
-    @JsonKey(name: LanguageModel.nameKey) String? name,
-    @JsonKey(name: LanguageModel.iso6393Key) Iso6393? iso6393,
-    @JsonKey(name: LanguageModel.iso6395Key) Iso6395? iso6395,
-  });
+  $Res call(
+      {@JsonKey(name: LanguageModel.alpha2Key) String? alpha2,
+      @JsonKey(name: LanguageModel.nameKey) String? name,
+      @JsonKey(name: LanguageModel.iso6393Key) Iso6393? iso6393,
+      @JsonKey(name: LanguageModel.iso6395Key) Iso6395? iso6395});
 }
 
 /// @nodoc
@@ -97,30 +93,24 @@ class _$LanguageModelCopyWithImpl<$Res>
     Object? iso6393 = freezed,
     Object? iso6395 = freezed,
   }) {
-    return _then(
-      _self.copyWith(
-        alpha2:
-            freezed == alpha2
-                ? _self.alpha2
-                : alpha2 // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        name:
-            freezed == name
-                ? _self.name
-                : name // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        iso6393:
-            freezed == iso6393
-                ? _self.iso6393
-                : iso6393 // ignore: cast_nullable_to_non_nullable
-                    as Iso6393?,
-        iso6395:
-            freezed == iso6395
-                ? _self.iso6395
-                : iso6395 // ignore: cast_nullable_to_non_nullable
-                    as Iso6395?,
-      ),
-    );
+    return _then(_self.copyWith(
+      alpha2: freezed == alpha2
+          ? _self.alpha2
+          : alpha2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: freezed == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      iso6393: freezed == iso6393
+          ? _self.iso6393
+          : iso6393 // ignore: cast_nullable_to_non_nullable
+              as Iso6393?,
+      iso6395: freezed == iso6395
+          ? _self.iso6395
+          : iso6395 // ignore: cast_nullable_to_non_nullable
+              as Iso6395?,
+    ));
   }
 }
 
@@ -128,12 +118,12 @@ class _$LanguageModelCopyWithImpl<$Res>
 
 @jsonSerializable
 class _LanguageModel extends LanguageModel {
-  const _LanguageModel({
-    @JsonKey(name: LanguageModel.alpha2Key) required this.alpha2,
-    @JsonKey(name: LanguageModel.nameKey) required this.name,
-    @JsonKey(name: LanguageModel.iso6393Key) required this.iso6393,
-    @JsonKey(name: LanguageModel.iso6395Key) required this.iso6395,
-  }) : super._();
+  const _LanguageModel(
+      {@JsonKey(name: LanguageModel.alpha2Key) required this.alpha2,
+      @JsonKey(name: LanguageModel.nameKey) required this.name,
+      @JsonKey(name: LanguageModel.iso6393Key) required this.iso6393,
+      @JsonKey(name: LanguageModel.iso6395Key) required this.iso6395})
+      : super._();
   factory _LanguageModel.fromJson(Map<String, dynamic> json) =>
       _$LanguageModelFromJson(json);
 
@@ -167,7 +157,9 @@ class _LanguageModel extends LanguageModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$LanguageModelToJson(this);
+    return _$LanguageModelToJson(
+      this,
+    );
   }
 
   @override
@@ -195,17 +187,15 @@ class _LanguageModel extends LanguageModel {
 abstract mixin class _$LanguageModelCopyWith<$Res>
     implements $LanguageModelCopyWith<$Res> {
   factory _$LanguageModelCopyWith(
-    _LanguageModel value,
-    $Res Function(_LanguageModel) _then,
-  ) = __$LanguageModelCopyWithImpl;
+          _LanguageModel value, $Res Function(_LanguageModel) _then) =
+      __$LanguageModelCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: LanguageModel.alpha2Key) String? alpha2,
-    @JsonKey(name: LanguageModel.nameKey) String? name,
-    @JsonKey(name: LanguageModel.iso6393Key) Iso6393? iso6393,
-    @JsonKey(name: LanguageModel.iso6395Key) Iso6395? iso6395,
-  });
+  $Res call(
+      {@JsonKey(name: LanguageModel.alpha2Key) String? alpha2,
+      @JsonKey(name: LanguageModel.nameKey) String? name,
+      @JsonKey(name: LanguageModel.iso6393Key) Iso6393? iso6393,
+      @JsonKey(name: LanguageModel.iso6395Key) Iso6395? iso6395});
 }
 
 /// @nodoc
@@ -226,29 +216,23 @@ class __$LanguageModelCopyWithImpl<$Res>
     Object? iso6393 = freezed,
     Object? iso6395 = freezed,
   }) {
-    return _then(
-      _LanguageModel(
-        alpha2:
-            freezed == alpha2
-                ? _self.alpha2
-                : alpha2 // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        name:
-            freezed == name
-                ? _self.name
-                : name // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        iso6393:
-            freezed == iso6393
-                ? _self.iso6393
-                : iso6393 // ignore: cast_nullable_to_non_nullable
-                    as Iso6393?,
-        iso6395:
-            freezed == iso6395
-                ? _self.iso6395
-                : iso6395 // ignore: cast_nullable_to_non_nullable
-                    as Iso6395?,
-      ),
-    );
+    return _then(_LanguageModel(
+      alpha2: freezed == alpha2
+          ? _self.alpha2
+          : alpha2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: freezed == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      iso6393: freezed == iso6393
+          ? _self.iso6393
+          : iso6393 // ignore: cast_nullable_to_non_nullable
+              as Iso6393?,
+      iso6395: freezed == iso6395
+          ? _self.iso6395
+          : iso6395 // ignore: cast_nullable_to_non_nullable
+              as Iso6395?,
+    ));
   }
 }

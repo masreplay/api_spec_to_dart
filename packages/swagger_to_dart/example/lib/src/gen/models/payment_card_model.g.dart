@@ -9,10 +9,9 @@ part of 'payment_card_model.dart';
 _PaymentCardModel _$PaymentCardModelFromJson(Map<String, dynamic> json) =>
     _PaymentCardModel(
       cardNumber: json['card_number'] as String,
-      cardBrand: $enumDecodeNullable(
-        _$PaymentCardBrandEnumMap,
-        json['card_brand'],
-      ),
+      cardBrand: json['card_brand'] == null
+          ? null
+          : PaymentCardBrand.fromJson(json['card_brand'] as Object),
     );
 
 Map<String, dynamic> _$PaymentCardModelToJson(_PaymentCardModel instance) =>
@@ -20,18 +19,3 @@ Map<String, dynamic> _$PaymentCardModelToJson(_PaymentCardModel instance) =>
       'card_number': instance.cardNumber,
       if (instance.cardBrand?.toJson() case final value?) 'card_brand': value,
     };
-
-const _$PaymentCardBrandEnumMap = {
-  PaymentCardBrand.americanExpress: 'American Express',
-  PaymentCardBrand.mastercard: 'Mastercard',
-  PaymentCardBrand.visa: 'Visa',
-  PaymentCardBrand.mir: 'Mir',
-  PaymentCardBrand.maestro: 'Maestro',
-  PaymentCardBrand.discover: 'Discover',
-  PaymentCardBrand.verve: 'Verve',
-  PaymentCardBrand.dankort: 'Dankort',
-  PaymentCardBrand.troy: 'Troy',
-  PaymentCardBrand.unionPay: 'UnionPay',
-  PaymentCardBrand.jcb: 'JCB',
-  PaymentCardBrand.other: 'other',
-};

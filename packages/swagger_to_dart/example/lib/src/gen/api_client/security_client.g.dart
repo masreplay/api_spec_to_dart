@@ -30,9 +30,15 @@ class _SecurityClient implements SecurityClient {
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final _data = <String, dynamic>{};
+    _data.addAll(requestBody.toJson());
     final _options = _setStreamType<HttpResponse<Map<String, dynamic>>>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
+      Options(
+        method: 'POST',
+        headers: _headers,
+        extra: _extra,
+        contentType: 'application/x-www-form-urlencoded',
+      )
           .compose(
             _dio.options,
             '/token',
@@ -129,13 +135,12 @@ class _SecurityClient implements SecurityClient {
     final _result = await _dio.fetch<List<dynamic>>(_options);
     late List<Map<String, dynamic>> _value;
     try {
-      _value =
-          _result.data!
-              .map(
-                (dynamic i) =>
-                    Map<String, dynamic>.fromJson(i as Map<String, dynamic>),
-              )
-              .toList();
+      _value = _result.data!
+          .map(
+            (dynamic i) =>
+                Map<String, dynamic>.fromJson(i as Map<String, dynamic>),
+          )
+          .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

@@ -23,11 +23,10 @@ mixin _$AdvancedDependsClassQueryParameters {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $AdvancedDependsClassQueryParametersCopyWith<
-    AdvancedDependsClassQueryParameters
-  >
-  get copyWith => _$AdvancedDependsClassQueryParametersCopyWithImpl<
-    AdvancedDependsClassQueryParameters
-  >(this as AdvancedDependsClassQueryParameters, _$identity);
+          AdvancedDependsClassQueryParameters>
+      get copyWith => _$AdvancedDependsClassQueryParametersCopyWithImpl<
+              AdvancedDependsClassQueryParameters>(
+          this as AdvancedDependsClassQueryParameters, _$identity);
 
   /// Serializes this AdvancedDependsClassQueryParameters to a JSON map.
   Map<String, dynamic> toJson();
@@ -53,13 +52,13 @@ mixin _$AdvancedDependsClassQueryParameters {
 /// @nodoc
 abstract mixin class $AdvancedDependsClassQueryParametersCopyWith<$Res> {
   factory $AdvancedDependsClassQueryParametersCopyWith(
-    AdvancedDependsClassQueryParameters value,
-    $Res Function(AdvancedDependsClassQueryParameters) _then,
-  ) = _$AdvancedDependsClassQueryParametersCopyWithImpl;
+          AdvancedDependsClassQueryParameters value,
+          $Res Function(AdvancedDependsClassQueryParameters) _then) =
+      _$AdvancedDependsClassQueryParametersCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: AdvancedDependsClassQueryParameters.dbNameKey) String dbName,
-  });
+  $Res call(
+      {@JsonKey(name: AdvancedDependsClassQueryParameters.dbNameKey)
+      String dbName});
 }
 
 /// @nodoc
@@ -74,16 +73,15 @@ class _$AdvancedDependsClassQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? dbName = null}) {
-    return _then(
-      _self.copyWith(
-        dbName:
-            null == dbName
-                ? _self.dbName
-                : dbName // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? dbName = null,
+  }) {
+    return _then(_self.copyWith(
+      dbName: null == dbName
+          ? _self.dbName
+          : dbName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -92,13 +90,13 @@ class _$AdvancedDependsClassQueryParametersCopyWithImpl<$Res>
 @jsonSerializable
 class _AdvancedDependsClassQueryParameters
     extends AdvancedDependsClassQueryParameters {
-  const _AdvancedDependsClassQueryParameters({
-    @JsonKey(name: AdvancedDependsClassQueryParameters.dbNameKey)
-    this.dbName = 'default',
-  }) : super._();
+  const _AdvancedDependsClassQueryParameters(
+      {@JsonKey(name: AdvancedDependsClassQueryParameters.dbNameKey)
+      this.dbName = 'default'})
+      : super._();
   factory _AdvancedDependsClassQueryParameters.fromJson(
-    Map<String, dynamic> json,
-  ) => _$AdvancedDependsClassQueryParametersFromJson(json);
+          Map<String, dynamic> json) =>
+      _$AdvancedDependsClassQueryParametersFromJson(json);
 
   /// dbName
   @override
@@ -111,15 +109,15 @@ class _AdvancedDependsClassQueryParameters
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$AdvancedDependsClassQueryParametersCopyWith<
-    _AdvancedDependsClassQueryParameters
-  >
-  get copyWith => __$AdvancedDependsClassQueryParametersCopyWithImpl<
-    _AdvancedDependsClassQueryParameters
-  >(this, _$identity);
+          _AdvancedDependsClassQueryParameters>
+      get copyWith => __$AdvancedDependsClassQueryParametersCopyWithImpl<
+          _AdvancedDependsClassQueryParameters>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$AdvancedDependsClassQueryParametersToJson(this);
+    return _$AdvancedDependsClassQueryParametersToJson(
+      this,
+    );
   }
 
   @override
@@ -144,14 +142,14 @@ class _AdvancedDependsClassQueryParameters
 abstract mixin class _$AdvancedDependsClassQueryParametersCopyWith<$Res>
     implements $AdvancedDependsClassQueryParametersCopyWith<$Res> {
   factory _$AdvancedDependsClassQueryParametersCopyWith(
-    _AdvancedDependsClassQueryParameters value,
-    $Res Function(_AdvancedDependsClassQueryParameters) _then,
-  ) = __$AdvancedDependsClassQueryParametersCopyWithImpl;
+          _AdvancedDependsClassQueryParameters value,
+          $Res Function(_AdvancedDependsClassQueryParameters) _then) =
+      __$AdvancedDependsClassQueryParametersCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: AdvancedDependsClassQueryParameters.dbNameKey) String dbName,
-  });
+  $Res call(
+      {@JsonKey(name: AdvancedDependsClassQueryParameters.dbNameKey)
+      String dbName});
 }
 
 /// @nodoc
@@ -166,15 +164,14 @@ class __$AdvancedDependsClassQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? dbName = null}) {
-    return _then(
-      _AdvancedDependsClassQueryParameters(
-        dbName:
-            null == dbName
-                ? _self.dbName
-                : dbName // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? dbName = null,
+  }) {
+    return _then(_AdvancedDependsClassQueryParameters(
+      dbName: null == dbName
+          ? _self.dbName
+          : dbName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }

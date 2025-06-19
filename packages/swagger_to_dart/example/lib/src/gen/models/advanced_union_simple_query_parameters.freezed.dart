@@ -23,11 +23,10 @@ mixin _$AdvancedUnionSimpleQueryParameters {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $AdvancedUnionSimpleQueryParametersCopyWith<
-    AdvancedUnionSimpleQueryParameters
-  >
-  get copyWith => _$AdvancedUnionSimpleQueryParametersCopyWithImpl<
-    AdvancedUnionSimpleQueryParameters
-  >(this as AdvancedUnionSimpleQueryParameters, _$identity);
+          AdvancedUnionSimpleQueryParameters>
+      get copyWith => _$AdvancedUnionSimpleQueryParametersCopyWithImpl<
+              AdvancedUnionSimpleQueryParameters>(
+          this as AdvancedUnionSimpleQueryParameters, _$identity);
 
   /// Serializes this AdvancedUnionSimpleQueryParameters to a JSON map.
   Map<String, dynamic> toJson();
@@ -54,13 +53,13 @@ mixin _$AdvancedUnionSimpleQueryParameters {
 /// @nodoc
 abstract mixin class $AdvancedUnionSimpleQueryParametersCopyWith<$Res> {
   factory $AdvancedUnionSimpleQueryParametersCopyWith(
-    AdvancedUnionSimpleQueryParameters value,
-    $Res Function(AdvancedUnionSimpleQueryParameters) _then,
-  ) = _$AdvancedUnionSimpleQueryParametersCopyWithImpl;
+          AdvancedUnionSimpleQueryParameters value,
+          $Res Function(AdvancedUnionSimpleQueryParameters) _then) =
+      _$AdvancedUnionSimpleQueryParametersCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: AdvancedUnionSimpleQueryParameters.valueKey) dynamic value,
-  });
+  $Res call(
+      {@JsonKey(name: AdvancedUnionSimpleQueryParameters.valueKey)
+      dynamic value});
 }
 
 /// @nodoc
@@ -75,16 +74,15 @@ class _$AdvancedUnionSimpleQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? value = freezed}) {
-    return _then(
-      _self.copyWith(
-        value:
-            freezed == value
-                ? _self.value
-                : value // ignore: cast_nullable_to_non_nullable
-                    as dynamic,
-      ),
-    );
+  $Res call({
+    Object? value = freezed,
+  }) {
+    return _then(_self.copyWith(
+      value: freezed == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ));
   }
 }
 
@@ -93,13 +91,13 @@ class _$AdvancedUnionSimpleQueryParametersCopyWithImpl<$Res>
 @jsonSerializable
 class _AdvancedUnionSimpleQueryParameters
     extends AdvancedUnionSimpleQueryParameters {
-  const _AdvancedUnionSimpleQueryParameters({
-    @JsonKey(name: AdvancedUnionSimpleQueryParameters.valueKey)
-    required this.value,
-  }) : super._();
+  const _AdvancedUnionSimpleQueryParameters(
+      {@JsonKey(name: AdvancedUnionSimpleQueryParameters.valueKey)
+      required this.value})
+      : super._();
   factory _AdvancedUnionSimpleQueryParameters.fromJson(
-    Map<String, dynamic> json,
-  ) => _$AdvancedUnionSimpleQueryParametersFromJson(json);
+          Map<String, dynamic> json) =>
+      _$AdvancedUnionSimpleQueryParametersFromJson(json);
 
   /// value
   @override
@@ -112,15 +110,15 @@ class _AdvancedUnionSimpleQueryParameters
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$AdvancedUnionSimpleQueryParametersCopyWith<
-    _AdvancedUnionSimpleQueryParameters
-  >
-  get copyWith => __$AdvancedUnionSimpleQueryParametersCopyWithImpl<
-    _AdvancedUnionSimpleQueryParameters
-  >(this, _$identity);
+          _AdvancedUnionSimpleQueryParameters>
+      get copyWith => __$AdvancedUnionSimpleQueryParametersCopyWithImpl<
+          _AdvancedUnionSimpleQueryParameters>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$AdvancedUnionSimpleQueryParametersToJson(this);
+    return _$AdvancedUnionSimpleQueryParametersToJson(
+      this,
+    );
   }
 
   @override
@@ -146,14 +144,14 @@ class _AdvancedUnionSimpleQueryParameters
 abstract mixin class _$AdvancedUnionSimpleQueryParametersCopyWith<$Res>
     implements $AdvancedUnionSimpleQueryParametersCopyWith<$Res> {
   factory _$AdvancedUnionSimpleQueryParametersCopyWith(
-    _AdvancedUnionSimpleQueryParameters value,
-    $Res Function(_AdvancedUnionSimpleQueryParameters) _then,
-  ) = __$AdvancedUnionSimpleQueryParametersCopyWithImpl;
+          _AdvancedUnionSimpleQueryParameters value,
+          $Res Function(_AdvancedUnionSimpleQueryParameters) _then) =
+      __$AdvancedUnionSimpleQueryParametersCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: AdvancedUnionSimpleQueryParameters.valueKey) dynamic value,
-  });
+  $Res call(
+      {@JsonKey(name: AdvancedUnionSimpleQueryParameters.valueKey)
+      dynamic value});
 }
 
 /// @nodoc
@@ -168,15 +166,14 @@ class __$AdvancedUnionSimpleQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? value = freezed}) {
-    return _then(
-      _AdvancedUnionSimpleQueryParameters(
-        value:
-            freezed == value
-                ? _self.value
-                : value // ignore: cast_nullable_to_non_nullable
-                    as dynamic,
-      ),
-    );
+  $Res call({
+    Object? value = freezed,
+  }) {
+    return _then(_AdvancedUnionSimpleQueryParameters(
+      value: freezed == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ));
   }
 }

@@ -12,8 +12,7 @@ part of 'response_models_response_multiple.dart';
 
 T _$identity<T>(T value) => value;
 ResponseModelsResponseMultiple _$ResponseModelsResponseMultipleFromJson(
-  Map<String, dynamic> json,
-) {
+    Map<String, dynamic> json) {
   switch (json['runtimeType']) {
     case 'User':
       return ResponseModelsResponseMultipleUser.fromJson(json);
@@ -53,10 +52,8 @@ mixin _$ResponseModelsResponseMultiple {
 
 /// @nodoc
 class $ResponseModelsResponseMultipleCopyWith<$Res> {
-  $ResponseModelsResponseMultipleCopyWith(
-    ResponseModelsResponseMultiple _,
-    $Res Function(ResponseModelsResponseMultiple) __,
-  );
+  $ResponseModelsResponseMultipleCopyWith(ResponseModelsResponseMultiple _,
+      $Res Function(ResponseModelsResponseMultiple) __);
 }
 
 /// @nodoc
@@ -65,11 +62,11 @@ class $ResponseModelsResponseMultipleCopyWith<$Res> {
 class ResponseModelsResponseMultipleUser
     extends ResponseModelsResponseMultiple {
   const ResponseModelsResponseMultipleUser(this.value, {final String? $type})
-    : $type = $type ?? 'User',
-      super._();
+      : $type = $type ?? 'User',
+        super._();
   factory ResponseModelsResponseMultipleUser.fromJson(
-    Map<String, dynamic> json,
-  ) => _$ResponseModelsResponseMultipleUserFromJson(json);
+          Map<String, dynamic> json) =>
+      _$ResponseModelsResponseMultipleUserFromJson(json);
 
   @override
   final User value;
@@ -82,15 +79,15 @@ class ResponseModelsResponseMultipleUser
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $ResponseModelsResponseMultipleUserCopyWith<
-    ResponseModelsResponseMultipleUser
-  >
-  get copyWith => _$ResponseModelsResponseMultipleUserCopyWithImpl<
-    ResponseModelsResponseMultipleUser
-  >(this, _$identity);
+          ResponseModelsResponseMultipleUser>
+      get copyWith => _$ResponseModelsResponseMultipleUserCopyWithImpl<
+          ResponseModelsResponseMultipleUser>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$ResponseModelsResponseMultipleUserToJson(this);
+    return _$ResponseModelsResponseMultipleUserToJson(
+      this,
+    );
   }
 
   @override
@@ -115,9 +112,9 @@ class ResponseModelsResponseMultipleUser
 abstract mixin class $ResponseModelsResponseMultipleUserCopyWith<$Res>
     implements $ResponseModelsResponseMultipleCopyWith<$Res> {
   factory $ResponseModelsResponseMultipleUserCopyWith(
-    ResponseModelsResponseMultipleUser value,
-    $Res Function(ResponseModelsResponseMultipleUser) _then,
-  ) = _$ResponseModelsResponseMultipleUserCopyWithImpl;
+          ResponseModelsResponseMultipleUser value,
+          $Res Function(ResponseModelsResponseMultipleUser) _then) =
+      _$ResponseModelsResponseMultipleUserCopyWithImpl;
   @useResult
   $Res call({User value});
 
@@ -135,15 +132,15 @@ class _$ResponseModelsResponseMultipleUserCopyWithImpl<$Res>
   /// Create a copy of ResponseModelsResponseMultiple
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  $Res call({Object? value = null}) {
-    return _then(
-      ResponseModelsResponseMultipleUser(
-        null == value
-            ? _self.value
-            : value // ignore: cast_nullable_to_non_nullable
-                as User,
-      ),
-    );
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(ResponseModelsResponseMultipleUser(
+      null == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as User,
+    ));
   }
 
   /// Create a copy of ResponseModelsResponseMultiple
@@ -162,14 +159,13 @@ class _$ResponseModelsResponseMultipleUserCopyWithImpl<$Res>
 @jsonSerializable
 class ResponseModelsResponseMultipleLocation
     extends ResponseModelsResponseMultiple {
-  const ResponseModelsResponseMultipleLocation(
-    this.value, {
-    final String? $type,
-  }) : $type = $type ?? 'Location',
-       super._();
+  const ResponseModelsResponseMultipleLocation(this.value,
+      {final String? $type})
+      : $type = $type ?? 'Location',
+        super._();
   factory ResponseModelsResponseMultipleLocation.fromJson(
-    Map<String, dynamic> json,
-  ) => _$ResponseModelsResponseMultipleLocationFromJson(json);
+          Map<String, dynamic> json) =>
+      _$ResponseModelsResponseMultipleLocationFromJson(json);
 
   @override
   final Location value;
@@ -182,15 +178,15 @@ class ResponseModelsResponseMultipleLocation
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $ResponseModelsResponseMultipleLocationCopyWith<
-    ResponseModelsResponseMultipleLocation
-  >
-  get copyWith => _$ResponseModelsResponseMultipleLocationCopyWithImpl<
-    ResponseModelsResponseMultipleLocation
-  >(this, _$identity);
+          ResponseModelsResponseMultipleLocation>
+      get copyWith => _$ResponseModelsResponseMultipleLocationCopyWithImpl<
+          ResponseModelsResponseMultipleLocation>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$ResponseModelsResponseMultipleLocationToJson(this);
+    return _$ResponseModelsResponseMultipleLocationToJson(
+      this,
+    );
   }
 
   @override
@@ -215,9 +211,9 @@ class ResponseModelsResponseMultipleLocation
 abstract mixin class $ResponseModelsResponseMultipleLocationCopyWith<$Res>
     implements $ResponseModelsResponseMultipleCopyWith<$Res> {
   factory $ResponseModelsResponseMultipleLocationCopyWith(
-    ResponseModelsResponseMultipleLocation value,
-    $Res Function(ResponseModelsResponseMultipleLocation) _then,
-  ) = _$ResponseModelsResponseMultipleLocationCopyWithImpl;
+          ResponseModelsResponseMultipleLocation value,
+          $Res Function(ResponseModelsResponseMultipleLocation) _then) =
+      _$ResponseModelsResponseMultipleLocationCopyWithImpl;
   @useResult
   $Res call({Location value});
 
@@ -235,15 +231,15 @@ class _$ResponseModelsResponseMultipleLocationCopyWithImpl<$Res>
   /// Create a copy of ResponseModelsResponseMultiple
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  $Res call({Object? value = null}) {
-    return _then(
-      ResponseModelsResponseMultipleLocation(
-        null == value
-            ? _self.value
-            : value // ignore: cast_nullable_to_non_nullable
-                as Location,
-      ),
-    );
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(ResponseModelsResponseMultipleLocation(
+      null == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as Location,
+    ));
   }
 
   /// Create a copy of ResponseModelsResponseMultiple
@@ -263,14 +259,14 @@ class _$ResponseModelsResponseMultipleLocationCopyWithImpl<$Res>
 class ResponseModelsResponseMultipleFallback
     extends ResponseModelsResponseMultiple {
   const ResponseModelsResponseMultipleFallback(
-    final Map<String, dynamic>? value, {
-    final String? $type,
-  }) : _value = value,
-       $type = $type ?? 'fallback',
-       super._();
+      final Map<String, dynamic>? value,
+      {final String? $type})
+      : _value = value,
+        $type = $type ?? 'fallback',
+        super._();
   factory ResponseModelsResponseMultipleFallback.fromJson(
-    Map<String, dynamic> json,
-  ) => _$ResponseModelsResponseMultipleFallbackFromJson(json);
+          Map<String, dynamic> json) =>
+      _$ResponseModelsResponseMultipleFallbackFromJson(json);
 
   final Map<String, dynamic>? _value;
   @override
@@ -290,15 +286,15 @@ class ResponseModelsResponseMultipleFallback
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $ResponseModelsResponseMultipleFallbackCopyWith<
-    ResponseModelsResponseMultipleFallback
-  >
-  get copyWith => _$ResponseModelsResponseMultipleFallbackCopyWithImpl<
-    ResponseModelsResponseMultipleFallback
-  >(this, _$identity);
+          ResponseModelsResponseMultipleFallback>
+      get copyWith => _$ResponseModelsResponseMultipleFallbackCopyWithImpl<
+          ResponseModelsResponseMultipleFallback>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$ResponseModelsResponseMultipleFallbackToJson(this);
+    return _$ResponseModelsResponseMultipleFallbackToJson(
+      this,
+    );
   }
 
   @override
@@ -324,9 +320,9 @@ class ResponseModelsResponseMultipleFallback
 abstract mixin class $ResponseModelsResponseMultipleFallbackCopyWith<$Res>
     implements $ResponseModelsResponseMultipleCopyWith<$Res> {
   factory $ResponseModelsResponseMultipleFallbackCopyWith(
-    ResponseModelsResponseMultipleFallback value,
-    $Res Function(ResponseModelsResponseMultipleFallback) _then,
-  ) = _$ResponseModelsResponseMultipleFallbackCopyWithImpl;
+          ResponseModelsResponseMultipleFallback value,
+          $Res Function(ResponseModelsResponseMultipleFallback) _then) =
+      _$ResponseModelsResponseMultipleFallbackCopyWithImpl;
   @useResult
   $Res call({Map<String, dynamic>? value});
 }
@@ -342,14 +338,14 @@ class _$ResponseModelsResponseMultipleFallbackCopyWithImpl<$Res>
   /// Create a copy of ResponseModelsResponseMultiple
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  $Res call({Object? value = freezed}) {
-    return _then(
-      ResponseModelsResponseMultipleFallback(
-        freezed == value
-            ? _self._value
-            : value // ignore: cast_nullable_to_non_nullable
-                as Map<String, dynamic>?,
-      ),
-    );
+  $Res call({
+    Object? value = freezed,
+  }) {
+    return _then(ResponseModelsResponseMultipleFallback(
+      freezed == value
+          ? _self._value
+          : value // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
+    ));
   }
 }

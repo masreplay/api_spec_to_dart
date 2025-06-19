@@ -1,0 +1,138 @@
+{
+  "info": {
+    "name": "flutter2024-07-18 11:46:48.321102",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "version": {
+      "major": 1,
+      "minor": 0,
+      "patch": 0
+    }
+  },
+  "item": [
+    {
+      "name": "App Client Doc",
+      "item": [
+        {
+          "name": "Get App Data",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "en"
+              },
+              {
+                "key": "content-type",
+                "value": "application/json"
+              },
+              {
+                "key": "content-length",
+                "value": "37"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"date\": \"2024-07-18T11:46:48.326561\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://baseurl.com/app/android?version=1.0.1",
+              "host": "https://baseurl.com",
+              "path": "/app/android",
+              "query": [
+                {
+                  "key": "version",
+                  "value": "1.0.1"
+                }
+              ]
+            },
+            "description": "GET"
+          },
+          "response": [
+            {
+              "name": "Default",
+              "_postman_previewlanguage": "json",
+              "body": "{\n  \"name\": \"Postman\",\n  \"version\": \"1.0.0\"\n}",
+              "status": "200"
+            },
+            {
+              "name": "Error",
+              "_postman_previewlanguage": "json",
+              "body": "{\n  \"message\": \"Bad Request\"\n}",
+              "status": "400"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "User Client Doc",
+      "item": [
+        {
+          "name": "Get",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://baseurl.com/users/",
+              "host": "https://baseurl.com",
+              "path": "/users/",
+              "query": []
+            },
+            "description": "GET"
+          },
+          "response": [
+            {
+              "name": "Default",
+              "_postman_previewlanguage": "json",
+              "body": "[\n  {\n    \"name\": \"John Doe\",\n    \"email\": \"johndoe@email.com\"\n  }\n]",
+              "status": "200"
+            }
+          ]
+        },
+        {
+          "name": "Get Detail",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://baseurl.com/users/1",
+              "host": "https://baseurl.com",
+              "path": "/users/1",
+              "query": []
+            },
+            "description": "GET"
+          },
+          "response": [
+            {
+              "name": "Default",
+              "_postman_previewlanguage": "json",
+              "body": "{\n  \"name\": \"John Doe\",\n  \"email\": \"johndoe@email.com\"\n}",
+              "status": "200"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -53,7 +53,7 @@ abstract class ItemsClient {
   ///         }
   ///     }
   /// }
-  @POST("/items/")
+  @POST('/items/')
   Future<HttpResponse<ItemResponse>> itemsCreateItem({
     @Body() required ItemRequestBody requestBody,
     @Extras() Map<String, dynamic>? extras,

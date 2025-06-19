@@ -13,4 +13,7 @@ _ItemResponse _$ItemResponseFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$ItemResponseToJson(_ItemResponse instance) =>
-    <String, dynamic>{'id': instance.id, 'name': instance.name};
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+    };

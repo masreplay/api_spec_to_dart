@@ -28,9 +28,7 @@ mixin _$CategoryResponse {
   @pragma('vm:prefer-inline')
   $CategoryResponseCopyWith<CategoryResponse> get copyWith =>
       _$CategoryResponseCopyWithImpl<CategoryResponse>(
-        this as CategoryResponse,
-        _$identity,
-      );
+          this as CategoryResponse, _$identity);
 
   /// Serializes this CategoryResponse to a JSON map.
   Map<String, dynamic> toJson();
@@ -57,14 +55,12 @@ mixin _$CategoryResponse {
 /// @nodoc
 abstract mixin class $CategoryResponseCopyWith<$Res> {
   factory $CategoryResponseCopyWith(
-    CategoryResponse value,
-    $Res Function(CategoryResponse) _then,
-  ) = _$CategoryResponseCopyWithImpl;
+          CategoryResponse value, $Res Function(CategoryResponse) _then) =
+      _$CategoryResponseCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: CategoryResponse.idKey) int id,
-    @JsonKey(name: CategoryResponse.nameKey) String name,
-  });
+  $Res call(
+      {@JsonKey(name: CategoryResponse.idKey) int id,
+      @JsonKey(name: CategoryResponse.nameKey) String name});
 }
 
 /// @nodoc
@@ -79,21 +75,20 @@ class _$CategoryResponseCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? id = null, Object? name = null}) {
-    return _then(
-      _self.copyWith(
-        id:
-            null == id
-                ? _self.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as int,
-        name:
-            null == name
-                ? _self.name
-                : name // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+  }) {
+    return _then(_self.copyWith(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -101,10 +96,10 @@ class _$CategoryResponseCopyWithImpl<$Res>
 
 @jsonSerializable
 class _CategoryResponse extends CategoryResponse {
-  const _CategoryResponse({
-    @JsonKey(name: CategoryResponse.idKey) required this.id,
-    @JsonKey(name: CategoryResponse.nameKey) required this.name,
-  }) : super._();
+  const _CategoryResponse(
+      {@JsonKey(name: CategoryResponse.idKey) required this.id,
+      @JsonKey(name: CategoryResponse.nameKey) required this.name})
+      : super._();
   factory _CategoryResponse.fromJson(Map<String, dynamic> json) =>
       _$CategoryResponseFromJson(json);
 
@@ -128,7 +123,9 @@ class _CategoryResponse extends CategoryResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$CategoryResponseToJson(this);
+    return _$CategoryResponseToJson(
+      this,
+    );
   }
 
   @override
@@ -154,15 +151,13 @@ class _CategoryResponse extends CategoryResponse {
 abstract mixin class _$CategoryResponseCopyWith<$Res>
     implements $CategoryResponseCopyWith<$Res> {
   factory _$CategoryResponseCopyWith(
-    _CategoryResponse value,
-    $Res Function(_CategoryResponse) _then,
-  ) = __$CategoryResponseCopyWithImpl;
+          _CategoryResponse value, $Res Function(_CategoryResponse) _then) =
+      __$CategoryResponseCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: CategoryResponse.idKey) int id,
-    @JsonKey(name: CategoryResponse.nameKey) String name,
-  });
+  $Res call(
+      {@JsonKey(name: CategoryResponse.idKey) int id,
+      @JsonKey(name: CategoryResponse.nameKey) String name});
 }
 
 /// @nodoc
@@ -177,20 +172,19 @@ class __$CategoryResponseCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? id = null, Object? name = null}) {
-    return _then(
-      _CategoryResponse(
-        id:
-            null == id
-                ? _self.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as int,
-        name:
-            null == name
-                ? _self.name
-                : name // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+  }) {
+    return _then(_CategoryResponse(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }

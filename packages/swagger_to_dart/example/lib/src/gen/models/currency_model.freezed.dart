@@ -28,9 +28,7 @@ mixin _$CurrencyModel {
   @pragma('vm:prefer-inline')
   $CurrencyModelCopyWith<CurrencyModel> get copyWith =>
       _$CurrencyModelCopyWithImpl<CurrencyModel>(
-        this as CurrencyModel,
-        _$identity,
-      );
+          this as CurrencyModel, _$identity);
 
   /// Serializes this CurrencyModel to a JSON map.
   Map<String, dynamic> toJson();
@@ -58,14 +56,12 @@ mixin _$CurrencyModel {
 /// @nodoc
 abstract mixin class $CurrencyModelCopyWith<$Res> {
   factory $CurrencyModelCopyWith(
-    CurrencyModel value,
-    $Res Function(CurrencyModel) _then,
-  ) = _$CurrencyModelCopyWithImpl;
+          CurrencyModel value, $Res Function(CurrencyModel) _then) =
+      _$CurrencyModelCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: CurrencyModel.currencyKey) Currency? currency,
-    @JsonKey(name: CurrencyModel.iso4217Key) Iso4217? iso4217,
-  });
+  $Res call(
+      {@JsonKey(name: CurrencyModel.currencyKey) Currency? currency,
+      @JsonKey(name: CurrencyModel.iso4217Key) Iso4217? iso4217});
 }
 
 /// @nodoc
@@ -80,21 +76,20 @@ class _$CurrencyModelCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? currency = freezed, Object? iso4217 = freezed}) {
-    return _then(
-      _self.copyWith(
-        currency:
-            freezed == currency
-                ? _self.currency
-                : currency // ignore: cast_nullable_to_non_nullable
-                    as Currency?,
-        iso4217:
-            freezed == iso4217
-                ? _self.iso4217
-                : iso4217 // ignore: cast_nullable_to_non_nullable
-                    as Iso4217?,
-      ),
-    );
+  $Res call({
+    Object? currency = freezed,
+    Object? iso4217 = freezed,
+  }) {
+    return _then(_self.copyWith(
+      currency: freezed == currency
+          ? _self.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as Currency?,
+      iso4217: freezed == iso4217
+          ? _self.iso4217
+          : iso4217 // ignore: cast_nullable_to_non_nullable
+              as Iso4217?,
+    ));
   }
 }
 
@@ -102,10 +97,10 @@ class _$CurrencyModelCopyWithImpl<$Res>
 
 @jsonSerializable
 class _CurrencyModel extends CurrencyModel {
-  const _CurrencyModel({
-    @JsonKey(name: CurrencyModel.currencyKey) required this.currency,
-    @JsonKey(name: CurrencyModel.iso4217Key) required this.iso4217,
-  }) : super._();
+  const _CurrencyModel(
+      {@JsonKey(name: CurrencyModel.currencyKey) required this.currency,
+      @JsonKey(name: CurrencyModel.iso4217Key) required this.iso4217})
+      : super._();
   factory _CurrencyModel.fromJson(Map<String, dynamic> json) =>
       _$CurrencyModelFromJson(json);
 
@@ -129,7 +124,9 @@ class _CurrencyModel extends CurrencyModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$CurrencyModelToJson(this);
+    return _$CurrencyModelToJson(
+      this,
+    );
   }
 
   @override
@@ -156,15 +153,13 @@ class _CurrencyModel extends CurrencyModel {
 abstract mixin class _$CurrencyModelCopyWith<$Res>
     implements $CurrencyModelCopyWith<$Res> {
   factory _$CurrencyModelCopyWith(
-    _CurrencyModel value,
-    $Res Function(_CurrencyModel) _then,
-  ) = __$CurrencyModelCopyWithImpl;
+          _CurrencyModel value, $Res Function(_CurrencyModel) _then) =
+      __$CurrencyModelCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: CurrencyModel.currencyKey) Currency? currency,
-    @JsonKey(name: CurrencyModel.iso4217Key) Iso4217? iso4217,
-  });
+  $Res call(
+      {@JsonKey(name: CurrencyModel.currencyKey) Currency? currency,
+      @JsonKey(name: CurrencyModel.iso4217Key) Iso4217? iso4217});
 }
 
 /// @nodoc
@@ -179,20 +174,19 @@ class __$CurrencyModelCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? currency = freezed, Object? iso4217 = freezed}) {
-    return _then(
-      _CurrencyModel(
-        currency:
-            freezed == currency
-                ? _self.currency
-                : currency // ignore: cast_nullable_to_non_nullable
-                    as Currency?,
-        iso4217:
-            freezed == iso4217
-                ? _self.iso4217
-                : iso4217 // ignore: cast_nullable_to_non_nullable
-                    as Iso4217?,
-      ),
-    );
+  $Res call({
+    Object? currency = freezed,
+    Object? iso4217 = freezed,
+  }) {
+    return _then(_CurrencyModel(
+      currency: freezed == currency
+          ? _self.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as Currency?,
+      iso4217: freezed == iso4217
+          ? _self.iso4217
+          : iso4217 // ignore: cast_nullable_to_non_nullable
+              as Iso4217?,
+    ));
   }
 }

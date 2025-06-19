@@ -27,12 +27,12 @@ mixin _$GenericGetNestedBaseAndPaginationQueryParameters {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $GenericGetNestedBaseAndPaginationQueryParametersCopyWith<
-    GenericGetNestedBaseAndPaginationQueryParameters
-  >
-  get copyWith =>
-      _$GenericGetNestedBaseAndPaginationQueryParametersCopyWithImpl<
-        GenericGetNestedBaseAndPaginationQueryParameters
-      >(this as GenericGetNestedBaseAndPaginationQueryParameters, _$identity);
+          GenericGetNestedBaseAndPaginationQueryParameters>
+      get copyWith =>
+          _$GenericGetNestedBaseAndPaginationQueryParametersCopyWithImpl<
+                  GenericGetNestedBaseAndPaginationQueryParameters>(
+              this as GenericGetNestedBaseAndPaginationQueryParameters,
+              _$identity);
 
   /// Serializes this GenericGetNestedBaseAndPaginationQueryParameters to a JSON map.
   Map<String, dynamic> toJson();
@@ -58,28 +58,26 @@ mixin _$GenericGetNestedBaseAndPaginationQueryParameters {
 
 /// @nodoc
 abstract mixin class $GenericGetNestedBaseAndPaginationQueryParametersCopyWith<
-  $Res
-> {
+    $Res> {
   factory $GenericGetNestedBaseAndPaginationQueryParametersCopyWith(
-    GenericGetNestedBaseAndPaginationQueryParameters value,
-    $Res Function(GenericGetNestedBaseAndPaginationQueryParameters) _then,
-  ) = _$GenericGetNestedBaseAndPaginationQueryParametersCopyWithImpl;
+          GenericGetNestedBaseAndPaginationQueryParameters value,
+          $Res Function(GenericGetNestedBaseAndPaginationQueryParameters)
+              _then) =
+      _$GenericGetNestedBaseAndPaginationQueryParametersCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: GenericGetNestedBaseAndPaginationQueryParameters.pageKey)
-    int page,
-    @JsonKey(name: GenericGetNestedBaseAndPaginationQueryParameters.perPageKey)
-    int perPage,
-  });
+  $Res call(
+      {@JsonKey(name: GenericGetNestedBaseAndPaginationQueryParameters.pageKey)
+      int page,
+      @JsonKey(
+          name: GenericGetNestedBaseAndPaginationQueryParameters.perPageKey)
+      int perPage});
 }
 
 /// @nodoc
 class _$GenericGetNestedBaseAndPaginationQueryParametersCopyWithImpl<$Res>
     implements $GenericGetNestedBaseAndPaginationQueryParametersCopyWith<$Res> {
   _$GenericGetNestedBaseAndPaginationQueryParametersCopyWithImpl(
-    this._self,
-    this._then,
-  );
+      this._self, this._then);
 
   final GenericGetNestedBaseAndPaginationQueryParameters _self;
   final $Res Function(GenericGetNestedBaseAndPaginationQueryParameters) _then;
@@ -88,21 +86,20 @@ class _$GenericGetNestedBaseAndPaginationQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? page = null, Object? perPage = null}) {
-    return _then(
-      _self.copyWith(
-        page:
-            null == page
-                ? _self.page
-                : page // ignore: cast_nullable_to_non_nullable
-                    as int,
-        perPage:
-            null == perPage
-                ? _self.perPage
-                : perPage // ignore: cast_nullable_to_non_nullable
-                    as int,
-      ),
-    );
+  $Res call({
+    Object? page = null,
+    Object? perPage = null,
+  }) {
+    return _then(_self.copyWith(
+      page: null == page
+          ? _self.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
+      perPage: null == perPage
+          ? _self.perPage
+          : perPage // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
@@ -111,15 +108,16 @@ class _$GenericGetNestedBaseAndPaginationQueryParametersCopyWithImpl<$Res>
 @jsonSerializable
 class _GenericGetNestedBaseAndPaginationQueryParameters
     extends GenericGetNestedBaseAndPaginationQueryParameters {
-  const _GenericGetNestedBaseAndPaginationQueryParameters({
-    @JsonKey(name: GenericGetNestedBaseAndPaginationQueryParameters.pageKey)
-    this.page = 1,
-    @JsonKey(name: GenericGetNestedBaseAndPaginationQueryParameters.perPageKey)
-    this.perPage = 10,
-  }) : super._();
+  const _GenericGetNestedBaseAndPaginationQueryParameters(
+      {@JsonKey(name: GenericGetNestedBaseAndPaginationQueryParameters.pageKey)
+      this.page = 1,
+      @JsonKey(
+          name: GenericGetNestedBaseAndPaginationQueryParameters.perPageKey)
+      this.perPage = 10})
+      : super._();
   factory _GenericGetNestedBaseAndPaginationQueryParameters.fromJson(
-    Map<String, dynamic> json,
-  ) => _$GenericGetNestedBaseAndPaginationQueryParametersFromJson(json);
+          Map<String, dynamic> json) =>
+      _$GenericGetNestedBaseAndPaginationQueryParametersFromJson(json);
 
   /// page
   @override
@@ -137,16 +135,17 @@ class _GenericGetNestedBaseAndPaginationQueryParameters
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$GenericGetNestedBaseAndPaginationQueryParametersCopyWith<
-    _GenericGetNestedBaseAndPaginationQueryParameters
-  >
-  get copyWith =>
-      __$GenericGetNestedBaseAndPaginationQueryParametersCopyWithImpl<
-        _GenericGetNestedBaseAndPaginationQueryParameters
-      >(this, _$identity);
+          _GenericGetNestedBaseAndPaginationQueryParameters>
+      get copyWith =>
+          __$GenericGetNestedBaseAndPaginationQueryParametersCopyWithImpl<
+                  _GenericGetNestedBaseAndPaginationQueryParameters>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$GenericGetNestedBaseAndPaginationQueryParametersToJson(this);
+    return _$GenericGetNestedBaseAndPaginationQueryParametersToJson(
+      this,
+    );
   }
 
   @override
@@ -170,21 +169,21 @@ class _GenericGetNestedBaseAndPaginationQueryParameters
 
 /// @nodoc
 abstract mixin class _$GenericGetNestedBaseAndPaginationQueryParametersCopyWith<
-  $Res
->
+        $Res>
     implements $GenericGetNestedBaseAndPaginationQueryParametersCopyWith<$Res> {
   factory _$GenericGetNestedBaseAndPaginationQueryParametersCopyWith(
-    _GenericGetNestedBaseAndPaginationQueryParameters value,
-    $Res Function(_GenericGetNestedBaseAndPaginationQueryParameters) _then,
-  ) = __$GenericGetNestedBaseAndPaginationQueryParametersCopyWithImpl;
+          _GenericGetNestedBaseAndPaginationQueryParameters value,
+          $Res Function(_GenericGetNestedBaseAndPaginationQueryParameters)
+              _then) =
+      __$GenericGetNestedBaseAndPaginationQueryParametersCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: GenericGetNestedBaseAndPaginationQueryParameters.pageKey)
-    int page,
-    @JsonKey(name: GenericGetNestedBaseAndPaginationQueryParameters.perPageKey)
-    int perPage,
-  });
+  $Res call(
+      {@JsonKey(name: GenericGetNestedBaseAndPaginationQueryParameters.pageKey)
+      int page,
+      @JsonKey(
+          name: GenericGetNestedBaseAndPaginationQueryParameters.perPageKey)
+      int perPage});
 }
 
 /// @nodoc
@@ -192,9 +191,7 @@ class __$GenericGetNestedBaseAndPaginationQueryParametersCopyWithImpl<$Res>
     implements
         _$GenericGetNestedBaseAndPaginationQueryParametersCopyWith<$Res> {
   __$GenericGetNestedBaseAndPaginationQueryParametersCopyWithImpl(
-    this._self,
-    this._then,
-  );
+      this._self, this._then);
 
   final _GenericGetNestedBaseAndPaginationQueryParameters _self;
   final $Res Function(_GenericGetNestedBaseAndPaginationQueryParameters) _then;
@@ -203,20 +200,19 @@ class __$GenericGetNestedBaseAndPaginationQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? page = null, Object? perPage = null}) {
-    return _then(
-      _GenericGetNestedBaseAndPaginationQueryParameters(
-        page:
-            null == page
-                ? _self.page
-                : page // ignore: cast_nullable_to_non_nullable
-                    as int,
-        perPage:
-            null == perPage
-                ? _self.perPage
-                : perPage // ignore: cast_nullable_to_non_nullable
-                    as int,
-      ),
-    );
+  $Res call({
+    Object? page = null,
+    Object? perPage = null,
+  }) {
+    return _then(_GenericGetNestedBaseAndPaginationQueryParameters(
+      page: null == page
+          ? _self.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
+      perPage: null == perPage
+          ? _self.perPage
+          : perPage // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }

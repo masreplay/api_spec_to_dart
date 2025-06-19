@@ -56,9 +56,9 @@ abstract class BasicClient {
   ///         }
   ///     }
   /// }
-  @GET("/basic/number/{num}")
+  @GET('/basic/number/{num}')
   Future<HttpResponse<Map<String, dynamic>>> basicBasicNumber({
-    @Path("num") required int num,
+    @Path('num') required int num,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -108,9 +108,9 @@ abstract class BasicClient {
   ///         }
   ///     }
   /// }
-  @GET("/basic/float/{num}")
+  @GET('/basic/float/{num}')
   Future<HttpResponse<Map<String, dynamic>>> basicBasicFloat({
-    @Path("num") required double num,
+    @Path('num') required double num,
     @Extras() Map<String, dynamic>? extras,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -162,7 +162,7 @@ abstract class BasicClient {
   ///         }
   ///     }
   /// }
-  @GET("/basic/boolean")
+  @GET('/basic/boolean')
   Future<HttpResponse<Map<String, dynamic>>> basicBasicBoolean({
     @Queries() required BasicBasicBooleanQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
@@ -217,7 +217,7 @@ abstract class BasicClient {
   ///         }
   ///     }
   /// }
-  @GET("/basic/string")
+  @GET('/basic/string')
   Future<HttpResponse<Map<String, dynamic>>> basicBasicString({
     @Queries() required BasicBasicStringQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
@@ -270,7 +270,7 @@ abstract class BasicClient {
   ///         }
   ///     }
   /// }
-  @GET("/datetime/date")
+  @GET('/datetime/date')
   Future<HttpResponse<Map<String, dynamic>>> basicDatetimeDate({
     @Queries() required BasicDatetimeDateQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
@@ -323,7 +323,7 @@ abstract class BasicClient {
   ///         }
   ///     }
   /// }
-  @GET("/datetime/datetime")
+  @GET('/datetime/datetime')
   Future<HttpResponse<Map<String, dynamic>>> basicDatetimeDatetime({
     @Queries() required BasicDatetimeDatetimeQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
@@ -376,7 +376,7 @@ abstract class BasicClient {
   ///         }
   ///     }
   /// }
-  @POST("/datetime/datetime")
+  @POST('/datetime/datetime')
   Future<HttpResponse<Map<String, dynamic>>> basicCreateDatetimeDatetime({
     @Queries() required BasicCreateDatetimeDatetimeQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
@@ -429,7 +429,7 @@ abstract class BasicClient {
   ///         }
   ///     }
   /// }
-  @GET("/datetime/time")
+  @GET('/datetime/time')
   Future<HttpResponse<Map<String, dynamic>>> basicDatetimeTime({
     @Queries() required BasicDatetimeTimeQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,
@@ -482,7 +482,7 @@ abstract class BasicClient {
   ///         }
   ///     }
   /// }
-  @GET("/datetime/timedelta")
+  @GET('/datetime/timedelta')
   Future<HttpResponse<Map<String, dynamic>>> basicDatetimeTimedelta({
     @Queries() required BasicDatetimeTimedeltaQueryParameters queries,
     @Extras() Map<String, dynamic>? extras,

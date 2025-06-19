@@ -23,11 +23,10 @@ mixin _$ValidationConstrainedIntQueryParameters {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $ValidationConstrainedIntQueryParametersCopyWith<
-    ValidationConstrainedIntQueryParameters
-  >
-  get copyWith => _$ValidationConstrainedIntQueryParametersCopyWithImpl<
-    ValidationConstrainedIntQueryParameters
-  >(this as ValidationConstrainedIntQueryParameters, _$identity);
+          ValidationConstrainedIntQueryParameters>
+      get copyWith => _$ValidationConstrainedIntQueryParametersCopyWithImpl<
+              ValidationConstrainedIntQueryParameters>(
+          this as ValidationConstrainedIntQueryParameters, _$identity);
 
   /// Serializes this ValidationConstrainedIntQueryParameters to a JSON map.
   Map<String, dynamic> toJson();
@@ -53,13 +52,13 @@ mixin _$ValidationConstrainedIntQueryParameters {
 /// @nodoc
 abstract mixin class $ValidationConstrainedIntQueryParametersCopyWith<$Res> {
   factory $ValidationConstrainedIntQueryParametersCopyWith(
-    ValidationConstrainedIntQueryParameters value,
-    $Res Function(ValidationConstrainedIntQueryParameters) _then,
-  ) = _$ValidationConstrainedIntQueryParametersCopyWithImpl;
+          ValidationConstrainedIntQueryParameters value,
+          $Res Function(ValidationConstrainedIntQueryParameters) _then) =
+      _$ValidationConstrainedIntQueryParametersCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: ValidationConstrainedIntQueryParameters.valueKey) int value,
-  });
+  $Res call(
+      {@JsonKey(name: ValidationConstrainedIntQueryParameters.valueKey)
+      int value});
 }
 
 /// @nodoc
@@ -74,16 +73,15 @@ class _$ValidationConstrainedIntQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? value = null}) {
-    return _then(
-      _self.copyWith(
-        value:
-            null == value
-                ? _self.value
-                : value // ignore: cast_nullable_to_non_nullable
-                    as int,
-      ),
-    );
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_self.copyWith(
+      value: null == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
@@ -92,13 +90,13 @@ class _$ValidationConstrainedIntQueryParametersCopyWithImpl<$Res>
 @jsonSerializable
 class _ValidationConstrainedIntQueryParameters
     extends ValidationConstrainedIntQueryParameters {
-  const _ValidationConstrainedIntQueryParameters({
-    @JsonKey(name: ValidationConstrainedIntQueryParameters.valueKey)
-    required this.value,
-  }) : super._();
+  const _ValidationConstrainedIntQueryParameters(
+      {@JsonKey(name: ValidationConstrainedIntQueryParameters.valueKey)
+      required this.value})
+      : super._();
   factory _ValidationConstrainedIntQueryParameters.fromJson(
-    Map<String, dynamic> json,
-  ) => _$ValidationConstrainedIntQueryParametersFromJson(json);
+          Map<String, dynamic> json) =>
+      _$ValidationConstrainedIntQueryParametersFromJson(json);
 
   /// value
   @override
@@ -111,15 +109,15 @@ class _ValidationConstrainedIntQueryParameters
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$ValidationConstrainedIntQueryParametersCopyWith<
-    _ValidationConstrainedIntQueryParameters
-  >
-  get copyWith => __$ValidationConstrainedIntQueryParametersCopyWithImpl<
-    _ValidationConstrainedIntQueryParameters
-  >(this, _$identity);
+          _ValidationConstrainedIntQueryParameters>
+      get copyWith => __$ValidationConstrainedIntQueryParametersCopyWithImpl<
+          _ValidationConstrainedIntQueryParameters>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$ValidationConstrainedIntQueryParametersToJson(this);
+    return _$ValidationConstrainedIntQueryParametersToJson(
+      this,
+    );
   }
 
   @override
@@ -144,23 +142,21 @@ class _ValidationConstrainedIntQueryParameters
 abstract mixin class _$ValidationConstrainedIntQueryParametersCopyWith<$Res>
     implements $ValidationConstrainedIntQueryParametersCopyWith<$Res> {
   factory _$ValidationConstrainedIntQueryParametersCopyWith(
-    _ValidationConstrainedIntQueryParameters value,
-    $Res Function(_ValidationConstrainedIntQueryParameters) _then,
-  ) = __$ValidationConstrainedIntQueryParametersCopyWithImpl;
+          _ValidationConstrainedIntQueryParameters value,
+          $Res Function(_ValidationConstrainedIntQueryParameters) _then) =
+      __$ValidationConstrainedIntQueryParametersCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: ValidationConstrainedIntQueryParameters.valueKey) int value,
-  });
+  $Res call(
+      {@JsonKey(name: ValidationConstrainedIntQueryParameters.valueKey)
+      int value});
 }
 
 /// @nodoc
 class __$ValidationConstrainedIntQueryParametersCopyWithImpl<$Res>
     implements _$ValidationConstrainedIntQueryParametersCopyWith<$Res> {
   __$ValidationConstrainedIntQueryParametersCopyWithImpl(
-    this._self,
-    this._then,
-  );
+      this._self, this._then);
 
   final _ValidationConstrainedIntQueryParameters _self;
   final $Res Function(_ValidationConstrainedIntQueryParameters) _then;
@@ -169,15 +165,14 @@ class __$ValidationConstrainedIntQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? value = null}) {
-    return _then(
-      _ValidationConstrainedIntQueryParameters(
-        value:
-            null == value
-                ? _self.value
-                : value // ignore: cast_nullable_to_non_nullable
-                    as int,
-      ),
-    );
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_ValidationConstrainedIntQueryParameters(
+      value: null == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }

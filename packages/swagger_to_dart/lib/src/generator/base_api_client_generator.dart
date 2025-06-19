@@ -49,10 +49,9 @@ class BaseApiClientGenerator {
                   ...JsonFactory.instance
                       .encode(info.toJson())
                       .split('\n')
-                      .map((e) => '/// $e')
-                      .toList(),
+                      .map((e) => '/// $e'),
                 if (context.openApi.servers case final servers?)
-                  ...servers.map((e) => '/// ${e.url}').toList(),
+                  ...servers.map((e) => '/// ${e.url}'),
               ])
               ..name = className
               ..constructors.addAll([

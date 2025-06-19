@@ -23,11 +23,10 @@ mixin _$AdvancedSpecialUuidQueryParameters {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $AdvancedSpecialUuidQueryParametersCopyWith<
-    AdvancedSpecialUuidQueryParameters
-  >
-  get copyWith => _$AdvancedSpecialUuidQueryParametersCopyWithImpl<
-    AdvancedSpecialUuidQueryParameters
-  >(this as AdvancedSpecialUuidQueryParameters, _$identity);
+          AdvancedSpecialUuidQueryParameters>
+      get copyWith => _$AdvancedSpecialUuidQueryParametersCopyWithImpl<
+              AdvancedSpecialUuidQueryParameters>(
+          this as AdvancedSpecialUuidQueryParameters, _$identity);
 
   /// Serializes this AdvancedSpecialUuidQueryParameters to a JSON map.
   Map<String, dynamic> toJson();
@@ -53,13 +52,12 @@ mixin _$AdvancedSpecialUuidQueryParameters {
 /// @nodoc
 abstract mixin class $AdvancedSpecialUuidQueryParametersCopyWith<$Res> {
   factory $AdvancedSpecialUuidQueryParametersCopyWith(
-    AdvancedSpecialUuidQueryParameters value,
-    $Res Function(AdvancedSpecialUuidQueryParameters) _then,
-  ) = _$AdvancedSpecialUuidQueryParametersCopyWithImpl;
+          AdvancedSpecialUuidQueryParameters value,
+          $Res Function(AdvancedSpecialUuidQueryParameters) _then) =
+      _$AdvancedSpecialUuidQueryParametersCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: AdvancedSpecialUuidQueryParameters.idKey) String id,
-  });
+  $Res call(
+      {@JsonKey(name: AdvancedSpecialUuidQueryParameters.idKey) String id});
 }
 
 /// @nodoc
@@ -74,16 +72,15 @@ class _$AdvancedSpecialUuidQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? id = null}) {
-    return _then(
-      _self.copyWith(
-        id:
-            null == id
-                ? _self.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_self.copyWith(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -92,12 +89,13 @@ class _$AdvancedSpecialUuidQueryParametersCopyWithImpl<$Res>
 @jsonSerializable
 class _AdvancedSpecialUuidQueryParameters
     extends AdvancedSpecialUuidQueryParameters {
-  const _AdvancedSpecialUuidQueryParameters({
-    @JsonKey(name: AdvancedSpecialUuidQueryParameters.idKey) required this.id,
-  }) : super._();
+  const _AdvancedSpecialUuidQueryParameters(
+      {@JsonKey(name: AdvancedSpecialUuidQueryParameters.idKey)
+      required this.id})
+      : super._();
   factory _AdvancedSpecialUuidQueryParameters.fromJson(
-    Map<String, dynamic> json,
-  ) => _$AdvancedSpecialUuidQueryParametersFromJson(json);
+          Map<String, dynamic> json) =>
+      _$AdvancedSpecialUuidQueryParametersFromJson(json);
 
   /// id
   @override
@@ -110,15 +108,15 @@ class _AdvancedSpecialUuidQueryParameters
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$AdvancedSpecialUuidQueryParametersCopyWith<
-    _AdvancedSpecialUuidQueryParameters
-  >
-  get copyWith => __$AdvancedSpecialUuidQueryParametersCopyWithImpl<
-    _AdvancedSpecialUuidQueryParameters
-  >(this, _$identity);
+          _AdvancedSpecialUuidQueryParameters>
+      get copyWith => __$AdvancedSpecialUuidQueryParametersCopyWithImpl<
+          _AdvancedSpecialUuidQueryParameters>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$AdvancedSpecialUuidQueryParametersToJson(this);
+    return _$AdvancedSpecialUuidQueryParametersToJson(
+      this,
+    );
   }
 
   @override
@@ -143,14 +141,13 @@ class _AdvancedSpecialUuidQueryParameters
 abstract mixin class _$AdvancedSpecialUuidQueryParametersCopyWith<$Res>
     implements $AdvancedSpecialUuidQueryParametersCopyWith<$Res> {
   factory _$AdvancedSpecialUuidQueryParametersCopyWith(
-    _AdvancedSpecialUuidQueryParameters value,
-    $Res Function(_AdvancedSpecialUuidQueryParameters) _then,
-  ) = __$AdvancedSpecialUuidQueryParametersCopyWithImpl;
+          _AdvancedSpecialUuidQueryParameters value,
+          $Res Function(_AdvancedSpecialUuidQueryParameters) _then) =
+      __$AdvancedSpecialUuidQueryParametersCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: AdvancedSpecialUuidQueryParameters.idKey) String id,
-  });
+  $Res call(
+      {@JsonKey(name: AdvancedSpecialUuidQueryParameters.idKey) String id});
 }
 
 /// @nodoc
@@ -165,15 +162,14 @@ class __$AdvancedSpecialUuidQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? id = null}) {
-    return _then(
-      _AdvancedSpecialUuidQueryParameters(
-        id:
-            null == id
-                ? _self.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_AdvancedSpecialUuidQueryParameters(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }

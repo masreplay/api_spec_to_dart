@@ -7,11 +7,14 @@ part of 'advanced_collection_tuple_query_parameters.dart';
 // **************************************************************************
 
 _AdvancedCollectionTupleQueryParameters
-_$AdvancedCollectionTupleQueryParametersFromJson(Map<String, dynamic> json) =>
-    _AdvancedCollectionTupleQueryParameters(
-      items: json['items'] as List<dynamic>,
-    );
+    _$AdvancedCollectionTupleQueryParametersFromJson(
+            Map<String, dynamic> json) =>
+        _AdvancedCollectionTupleQueryParameters(
+          items: json['items'] as List<dynamic>,
+        );
 
 Map<String, dynamic> _$AdvancedCollectionTupleQueryParametersToJson(
-  _AdvancedCollectionTupleQueryParameters instance,
-) => <String, dynamic>{'items': instance.items};
+        _AdvancedCollectionTupleQueryParameters instance) =>
+    <String, dynamic>{
+      'items': instance.items,
+    };

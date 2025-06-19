@@ -49,9 +49,8 @@ mixin _$ColorModel {
 /// @nodoc
 abstract mixin class $ColorModelCopyWith<$Res> {
   factory $ColorModelCopyWith(
-    ColorModel value,
-    $Res Function(ColorModel) _then,
-  ) = _$ColorModelCopyWithImpl;
+          ColorModel value, $Res Function(ColorModel) _then) =
+      _$ColorModelCopyWithImpl;
   @useResult
   $Res call({@JsonKey(name: ColorModel.colorKey) String color});
 }
@@ -67,16 +66,15 @@ class _$ColorModelCopyWithImpl<$Res> implements $ColorModelCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? color = null}) {
-    return _then(
-      _self.copyWith(
-        color:
-            null == color
-                ? _self.color
-                : color // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? color = null,
+  }) {
+    return _then(_self.copyWith(
+      color: null == color
+          ? _self.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -85,7 +83,7 @@ class _$ColorModelCopyWithImpl<$Res> implements $ColorModelCopyWith<$Res> {
 @jsonSerializable
 class _ColorModel extends ColorModel {
   const _ColorModel({@JsonKey(name: ColorModel.colorKey) required this.color})
-    : super._();
+      : super._();
   factory _ColorModel.fromJson(Map<String, dynamic> json) =>
       _$ColorModelFromJson(json);
 
@@ -104,7 +102,9 @@ class _ColorModel extends ColorModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$ColorModelToJson(this);
+    return _$ColorModelToJson(
+      this,
+    );
   }
 
   @override
@@ -129,9 +129,8 @@ class _ColorModel extends ColorModel {
 abstract mixin class _$ColorModelCopyWith<$Res>
     implements $ColorModelCopyWith<$Res> {
   factory _$ColorModelCopyWith(
-    _ColorModel value,
-    $Res Function(_ColorModel) _then,
-  ) = __$ColorModelCopyWithImpl;
+          _ColorModel value, $Res Function(_ColorModel) _then) =
+      __$ColorModelCopyWithImpl;
   @override
   @useResult
   $Res call({@JsonKey(name: ColorModel.colorKey) String color});
@@ -148,15 +147,14 @@ class __$ColorModelCopyWithImpl<$Res> implements _$ColorModelCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? color = null}) {
-    return _then(
-      _ColorModel(
-        color:
-            null == color
-                ? _self.color
-                : color // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? color = null,
+  }) {
+    return _then(_ColorModel(
+      color: null == color
+          ? _self.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }

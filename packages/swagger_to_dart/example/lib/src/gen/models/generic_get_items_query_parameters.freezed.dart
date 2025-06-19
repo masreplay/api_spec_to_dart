@@ -27,9 +27,9 @@ mixin _$GenericGetItemsQueryParameters {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $GenericGetItemsQueryParametersCopyWith<GenericGetItemsQueryParameters>
-  get copyWith => _$GenericGetItemsQueryParametersCopyWithImpl<
-    GenericGetItemsQueryParameters
-  >(this as GenericGetItemsQueryParameters, _$identity);
+      get copyWith => _$GenericGetItemsQueryParametersCopyWithImpl<
+              GenericGetItemsQueryParameters>(
+          this as GenericGetItemsQueryParameters, _$identity);
 
   /// Serializes this GenericGetItemsQueryParameters to a JSON map.
   Map<String, dynamic> toJson();
@@ -56,14 +56,13 @@ mixin _$GenericGetItemsQueryParameters {
 /// @nodoc
 abstract mixin class $GenericGetItemsQueryParametersCopyWith<$Res> {
   factory $GenericGetItemsQueryParametersCopyWith(
-    GenericGetItemsQueryParameters value,
-    $Res Function(GenericGetItemsQueryParameters) _then,
-  ) = _$GenericGetItemsQueryParametersCopyWithImpl;
+          GenericGetItemsQueryParameters value,
+          $Res Function(GenericGetItemsQueryParameters) _then) =
+      _$GenericGetItemsQueryParametersCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: GenericGetItemsQueryParameters.pageKey) int page,
-    @JsonKey(name: GenericGetItemsQueryParameters.perPageKey) int perPage,
-  });
+  $Res call(
+      {@JsonKey(name: GenericGetItemsQueryParameters.pageKey) int page,
+      @JsonKey(name: GenericGetItemsQueryParameters.perPageKey) int perPage});
 }
 
 /// @nodoc
@@ -78,21 +77,20 @@ class _$GenericGetItemsQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? page = null, Object? perPage = null}) {
-    return _then(
-      _self.copyWith(
-        page:
-            null == page
-                ? _self.page
-                : page // ignore: cast_nullable_to_non_nullable
-                    as int,
-        perPage:
-            null == perPage
-                ? _self.perPage
-                : perPage // ignore: cast_nullable_to_non_nullable
-                    as int,
-      ),
-    );
+  $Res call({
+    Object? page = null,
+    Object? perPage = null,
+  }) {
+    return _then(_self.copyWith(
+      page: null == page
+          ? _self.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
+      perPage: null == perPage
+          ? _self.perPage
+          : perPage // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
@@ -100,10 +98,11 @@ class _$GenericGetItemsQueryParametersCopyWithImpl<$Res>
 
 @jsonSerializable
 class _GenericGetItemsQueryParameters extends GenericGetItemsQueryParameters {
-  const _GenericGetItemsQueryParameters({
-    @JsonKey(name: GenericGetItemsQueryParameters.pageKey) this.page = 1,
-    @JsonKey(name: GenericGetItemsQueryParameters.perPageKey) this.perPage = 10,
-  }) : super._();
+  const _GenericGetItemsQueryParameters(
+      {@JsonKey(name: GenericGetItemsQueryParameters.pageKey) this.page = 1,
+      @JsonKey(name: GenericGetItemsQueryParameters.perPageKey)
+      this.perPage = 10})
+      : super._();
   factory _GenericGetItemsQueryParameters.fromJson(Map<String, dynamic> json) =>
       _$GenericGetItemsQueryParametersFromJson(json);
 
@@ -123,13 +122,14 @@ class _GenericGetItemsQueryParameters extends GenericGetItemsQueryParameters {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$GenericGetItemsQueryParametersCopyWith<_GenericGetItemsQueryParameters>
-  get copyWith => __$GenericGetItemsQueryParametersCopyWithImpl<
-    _GenericGetItemsQueryParameters
-  >(this, _$identity);
+      get copyWith => __$GenericGetItemsQueryParametersCopyWithImpl<
+          _GenericGetItemsQueryParameters>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$GenericGetItemsQueryParametersToJson(this);
+    return _$GenericGetItemsQueryParametersToJson(
+      this,
+    );
   }
 
   @override
@@ -155,15 +155,14 @@ class _GenericGetItemsQueryParameters extends GenericGetItemsQueryParameters {
 abstract mixin class _$GenericGetItemsQueryParametersCopyWith<$Res>
     implements $GenericGetItemsQueryParametersCopyWith<$Res> {
   factory _$GenericGetItemsQueryParametersCopyWith(
-    _GenericGetItemsQueryParameters value,
-    $Res Function(_GenericGetItemsQueryParameters) _then,
-  ) = __$GenericGetItemsQueryParametersCopyWithImpl;
+          _GenericGetItemsQueryParameters value,
+          $Res Function(_GenericGetItemsQueryParameters) _then) =
+      __$GenericGetItemsQueryParametersCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: GenericGetItemsQueryParameters.pageKey) int page,
-    @JsonKey(name: GenericGetItemsQueryParameters.perPageKey) int perPage,
-  });
+  $Res call(
+      {@JsonKey(name: GenericGetItemsQueryParameters.pageKey) int page,
+      @JsonKey(name: GenericGetItemsQueryParameters.perPageKey) int perPage});
 }
 
 /// @nodoc
@@ -178,20 +177,19 @@ class __$GenericGetItemsQueryParametersCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? page = null, Object? perPage = null}) {
-    return _then(
-      _GenericGetItemsQueryParameters(
-        page:
-            null == page
-                ? _self.page
-                : page // ignore: cast_nullable_to_non_nullable
-                    as int,
-        perPage:
-            null == perPage
-                ? _self.perPage
-                : perPage // ignore: cast_nullable_to_non_nullable
-                    as int,
-      ),
-    );
+  $Res call({
+    Object? page = null,
+    Object? perPage = null,
+  }) {
+    return _then(_GenericGetItemsQueryParameters(
+      page: null == page
+          ? _self.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
+      perPage: null == perPage
+          ? _self.perPage
+          : perPage // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }

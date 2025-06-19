@@ -13,4 +13,7 @@ _PhoneNumberModel _$PhoneNumberModelFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$PhoneNumberModelToJson(_PhoneNumberModel instance) =>
-    <String, dynamic>{'phone': instance.phone, 'phone2': instance.phone2};
+    <String, dynamic>{
+      'phone': instance.phone,
+      'phone2': instance.phone2,
+    };

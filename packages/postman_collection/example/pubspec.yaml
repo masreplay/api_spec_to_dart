@@ -1,0 +1,22 @@
+name: example
+description: A starting point for Dart libraries or applications.
+version: 1.0.0
+publish_to: "none"
+
+environment:
+  sdk: ">=3.5.0 <4.0.0"
+
+dependencies:
+  dio: ^5.5.0+1
+  retrofit: ^4.1.0
+
+  postman_collection:
+    path: ../
+  yaml: ^3.1.2
+
+dev_dependencies:
+  test: ^1.24.0
+  lints: ^3.0.0
+
+  build_runner: ^2.4.11
+  retrofit_generator: ^8.1.2

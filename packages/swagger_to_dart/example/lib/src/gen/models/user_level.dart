@@ -16,12 +16,15 @@ part 'user_level.g.dart';
 
 @JsonEnum(alwaysCreate: true)
 enum UserLevel {
-  @JsonValue("basic")
+  @JsonValue('basic')
   basic,
-  @JsonValue("premium")
+  @JsonValue('premium')
   premium,
-  @JsonValue("admin")
+  @JsonValue('admin')
   admin;
 
-  String toJson() => _$UserLevelEnumMap[this]!;
+  factory UserLevel.fromJson(Object json) =>
+      values.firstWhere((e) => e.toJson() == json, orElse: () => values.first);
+
+  Object toJson() => _$UserLevelEnumMap[this]!;
 }

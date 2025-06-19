@@ -26,30 +26,33 @@ part 'payment_card_brand.g.dart';
 
 @JsonEnum(alwaysCreate: true)
 enum PaymentCardBrand {
-  @JsonValue("American Express")
+  @JsonValue('American Express')
   americanExpress,
-  @JsonValue("Mastercard")
+  @JsonValue('Mastercard')
   mastercard,
-  @JsonValue("Visa")
+  @JsonValue('Visa')
   visa,
-  @JsonValue("Mir")
+  @JsonValue('Mir')
   mir,
-  @JsonValue("Maestro")
+  @JsonValue('Maestro')
   maestro,
-  @JsonValue("Discover")
+  @JsonValue('Discover')
   discover,
-  @JsonValue("Verve")
+  @JsonValue('Verve')
   verve,
-  @JsonValue("Dankort")
+  @JsonValue('Dankort')
   dankort,
-  @JsonValue("Troy")
+  @JsonValue('Troy')
   troy,
-  @JsonValue("UnionPay")
+  @JsonValue('UnionPay')
   unionPay,
-  @JsonValue("JCB")
+  @JsonValue('JCB')
   jcb,
-  @JsonValue("other")
+  @JsonValue('other')
   other;
 
-  String toJson() => _$PaymentCardBrandEnumMap[this]!;
+  factory PaymentCardBrand.fromJson(Object json) =>
+      values.firstWhere((e) => e.toJson() == json, orElse: () => values.first);
+
+  Object toJson() => _$PaymentCardBrandEnumMap[this]!;
 }

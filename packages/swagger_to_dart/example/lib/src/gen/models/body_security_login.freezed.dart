@@ -44,9 +44,7 @@ mixin _$BodySecurityLogin {
   @pragma('vm:prefer-inline')
   $BodySecurityLoginCopyWith<BodySecurityLogin> get copyWith =>
       _$BodySecurityLoginCopyWithImpl<BodySecurityLogin>(
-        this as BodySecurityLogin,
-        _$identity,
-      );
+          this as BodySecurityLogin, _$identity);
 
   /// Serializes this BodySecurityLogin to a JSON map.
   Map<String, dynamic> toJson();
@@ -71,15 +69,8 @@ mixin _$BodySecurityLogin {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    grantType,
-    username,
-    password,
-    scope,
-    clientId,
-    clientSecret,
-  );
+  int get hashCode => Object.hash(runtimeType, grantType, username, password,
+      scope, clientId, clientSecret);
 
   @override
   String toString() {
@@ -90,18 +81,16 @@ mixin _$BodySecurityLogin {
 /// @nodoc
 abstract mixin class $BodySecurityLoginCopyWith<$Res> {
   factory $BodySecurityLoginCopyWith(
-    BodySecurityLogin value,
-    $Res Function(BodySecurityLogin) _then,
-  ) = _$BodySecurityLoginCopyWithImpl;
+          BodySecurityLogin value, $Res Function(BodySecurityLogin) _then) =
+      _$BodySecurityLoginCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: BodySecurityLogin.grantTypeKey) String? grantType,
-    @JsonKey(name: BodySecurityLogin.usernameKey) String username,
-    @JsonKey(name: BodySecurityLogin.passwordKey) String password,
-    @JsonKey(name: BodySecurityLogin.scopeKey) String scope,
-    @JsonKey(name: BodySecurityLogin.clientIdKey) String? clientId,
-    @JsonKey(name: BodySecurityLogin.clientSecretKey) String? clientSecret,
-  });
+  $Res call(
+      {@JsonKey(name: BodySecurityLogin.grantTypeKey) String? grantType,
+      @JsonKey(name: BodySecurityLogin.usernameKey) String username,
+      @JsonKey(name: BodySecurityLogin.passwordKey) String password,
+      @JsonKey(name: BodySecurityLogin.scopeKey) String scope,
+      @JsonKey(name: BodySecurityLogin.clientIdKey) String? clientId,
+      @JsonKey(name: BodySecurityLogin.clientSecretKey) String? clientSecret});
 }
 
 /// @nodoc
@@ -124,40 +113,32 @@ class _$BodySecurityLoginCopyWithImpl<$Res>
     Object? clientId = freezed,
     Object? clientSecret = freezed,
   }) {
-    return _then(
-      _self.copyWith(
-        grantType:
-            freezed == grantType
-                ? _self.grantType
-                : grantType // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        username:
-            null == username
-                ? _self.username
-                : username // ignore: cast_nullable_to_non_nullable
-                    as String,
-        password:
-            null == password
-                ? _self.password
-                : password // ignore: cast_nullable_to_non_nullable
-                    as String,
-        scope:
-            null == scope
-                ? _self.scope
-                : scope // ignore: cast_nullable_to_non_nullable
-                    as String,
-        clientId:
-            freezed == clientId
-                ? _self.clientId
-                : clientId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        clientSecret:
-            freezed == clientSecret
-                ? _self.clientSecret
-                : clientSecret // ignore: cast_nullable_to_non_nullable
-                    as String?,
-      ),
-    );
+    return _then(_self.copyWith(
+      grantType: freezed == grantType
+          ? _self.grantType
+          : grantType // ignore: cast_nullable_to_non_nullable
+              as String?,
+      username: null == username
+          ? _self.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _self.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      scope: null == scope
+          ? _self.scope
+          : scope // ignore: cast_nullable_to_non_nullable
+              as String,
+      clientId: freezed == clientId
+          ? _self.clientId
+          : clientId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clientSecret: freezed == clientSecret
+          ? _self.clientSecret
+          : clientSecret // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
@@ -165,15 +146,15 @@ class _$BodySecurityLoginCopyWithImpl<$Res>
 
 @jsonSerializable
 class _BodySecurityLogin extends BodySecurityLogin {
-  const _BodySecurityLogin({
-    @JsonKey(name: BodySecurityLogin.grantTypeKey) required this.grantType,
-    @JsonKey(name: BodySecurityLogin.usernameKey) required this.username,
-    @JsonKey(name: BodySecurityLogin.passwordKey) required this.password,
-    @JsonKey(name: BodySecurityLogin.scopeKey) this.scope = '',
-    @JsonKey(name: BodySecurityLogin.clientIdKey) required this.clientId,
-    @JsonKey(name: BodySecurityLogin.clientSecretKey)
-    required this.clientSecret,
-  }) : super._();
+  const _BodySecurityLogin(
+      {@JsonKey(name: BodySecurityLogin.grantTypeKey) required this.grantType,
+      @JsonKey(name: BodySecurityLogin.usernameKey) required this.username,
+      @JsonKey(name: BodySecurityLogin.passwordKey) required this.password,
+      @JsonKey(name: BodySecurityLogin.scopeKey) this.scope = '',
+      @JsonKey(name: BodySecurityLogin.clientIdKey) required this.clientId,
+      @JsonKey(name: BodySecurityLogin.clientSecretKey)
+      required this.clientSecret})
+      : super._();
   factory _BodySecurityLogin.fromJson(Map<String, dynamic> json) =>
       _$BodySecurityLoginFromJson(json);
 
@@ -217,7 +198,9 @@ class _BodySecurityLogin extends BodySecurityLogin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$BodySecurityLoginToJson(this);
+    return _$BodySecurityLoginToJson(
+      this,
+    );
   }
 
   @override
@@ -240,15 +223,8 @@ class _BodySecurityLogin extends BodySecurityLogin {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    grantType,
-    username,
-    password,
-    scope,
-    clientId,
-    clientSecret,
-  );
+  int get hashCode => Object.hash(runtimeType, grantType, username, password,
+      scope, clientId, clientSecret);
 
   @override
   String toString() {
@@ -260,19 +236,17 @@ class _BodySecurityLogin extends BodySecurityLogin {
 abstract mixin class _$BodySecurityLoginCopyWith<$Res>
     implements $BodySecurityLoginCopyWith<$Res> {
   factory _$BodySecurityLoginCopyWith(
-    _BodySecurityLogin value,
-    $Res Function(_BodySecurityLogin) _then,
-  ) = __$BodySecurityLoginCopyWithImpl;
+          _BodySecurityLogin value, $Res Function(_BodySecurityLogin) _then) =
+      __$BodySecurityLoginCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: BodySecurityLogin.grantTypeKey) String? grantType,
-    @JsonKey(name: BodySecurityLogin.usernameKey) String username,
-    @JsonKey(name: BodySecurityLogin.passwordKey) String password,
-    @JsonKey(name: BodySecurityLogin.scopeKey) String scope,
-    @JsonKey(name: BodySecurityLogin.clientIdKey) String? clientId,
-    @JsonKey(name: BodySecurityLogin.clientSecretKey) String? clientSecret,
-  });
+  $Res call(
+      {@JsonKey(name: BodySecurityLogin.grantTypeKey) String? grantType,
+      @JsonKey(name: BodySecurityLogin.usernameKey) String username,
+      @JsonKey(name: BodySecurityLogin.passwordKey) String password,
+      @JsonKey(name: BodySecurityLogin.scopeKey) String scope,
+      @JsonKey(name: BodySecurityLogin.clientIdKey) String? clientId,
+      @JsonKey(name: BodySecurityLogin.clientSecretKey) String? clientSecret});
 }
 
 /// @nodoc
@@ -295,39 +269,31 @@ class __$BodySecurityLoginCopyWithImpl<$Res>
     Object? clientId = freezed,
     Object? clientSecret = freezed,
   }) {
-    return _then(
-      _BodySecurityLogin(
-        grantType:
-            freezed == grantType
-                ? _self.grantType
-                : grantType // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        username:
-            null == username
-                ? _self.username
-                : username // ignore: cast_nullable_to_non_nullable
-                    as String,
-        password:
-            null == password
-                ? _self.password
-                : password // ignore: cast_nullable_to_non_nullable
-                    as String,
-        scope:
-            null == scope
-                ? _self.scope
-                : scope // ignore: cast_nullable_to_non_nullable
-                    as String,
-        clientId:
-            freezed == clientId
-                ? _self.clientId
-                : clientId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        clientSecret:
-            freezed == clientSecret
-                ? _self.clientSecret
-                : clientSecret // ignore: cast_nullable_to_non_nullable
-                    as String?,
-      ),
-    );
+    return _then(_BodySecurityLogin(
+      grantType: freezed == grantType
+          ? _self.grantType
+          : grantType // ignore: cast_nullable_to_non_nullable
+              as String?,
+      username: null == username
+          ? _self.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _self.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      scope: null == scope
+          ? _self.scope
+          : scope // ignore: cast_nullable_to_non_nullable
+              as String,
+      clientId: freezed == clientId
+          ? _self.clientId
+          : clientId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clientSecret: freezed == clientSecret
+          ? _self.clientSecret
+          : clientSecret // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }

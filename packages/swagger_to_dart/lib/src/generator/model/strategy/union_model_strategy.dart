@@ -7,21 +7,22 @@ import 'package:swagger_to_dart/src/schema/openapi/openapi.dart';
 import 'package:swagger_to_dart/src/utils/utils.dart';
 
 class UnionModelStrategyParams {
-  final String key;
-  final OpenApiSchema schema;
-  final Map<String, OpenApiSchemaRef> refSchemaMap;
-
   const UnionModelStrategyParams({
     required this.key,
     required this.schema,
     required this.refSchemaMap,
   });
+
+  final String key;
+  final OpenApiSchema schema;
+  final Map<String, OpenApiSchemaRef> refSchemaMap;
 }
 
 class UnionModelStrategy
     extends ModelGeneratorStrategy<UnionModelStrategyParams> {
   const UnionModelStrategy(super.context);
 
+  @override
   Library build(UnionModelStrategyParams params) {
     final unionClassFallbackName = context.config.model.unionClassFallbackName;
 
@@ -64,7 +65,7 @@ class UnionModelStrategy
         (b) => b
           ..name = '${className}MapJsonConverter'
           ..implements.addAll([
-            refer('JsonConverter<${className}, Map<String, dynamic>>'),
+            refer('JsonConverter<$className, Map<String, dynamic>>'),
           ])
           ..constructors.add(Constructor((b) => b..constant = true))
           ..fields.addAll([
@@ -117,22 +118,21 @@ class UnionModelStrategy
         ..name = filename
         ..directives.addAll([
           Directive.import('exports.dart'),
-          Directive.part('${filename}.freezed.dart'),
-          Directive.part('${filename}.g.dart'),
+          Directive.part('$filename.freezed.dart'),
+          Directive.part('$filename.g.dart'),
         ])
         ..docs.addAll([
           '/// ${params.key}',
           ...JsonFactory.instance
               .encode(params.schema.toJson())
               .split('\n')
-              .map((e) => '/// $e')
-              .toList(),
+              .map((e) => '/// $e'),
         ])
         ..body.addAll([
           Class(
             (b) => b
               ..docs.addAll([
-                '// ${className}',
+                '// $className',
               ])
               ..annotations.addAll([
                 if (unionClassFallbackName case final fallbackName?)
@@ -142,7 +142,7 @@ class UnionModelStrategy
               ])
               ..sealed = true
               ..name = className
-              ..mixins.addAll([refer('_\$${className}')])
+              ..mixins.addAll([refer('_\$$className')])
               ..constructors.addAll([
                 Constructor(
                   (b) => b
@@ -227,14 +227,12 @@ class UnionModelStrategy
       className = Renaming.instance.renameClass(title);
     } else if (discriminator case final discriminator?) {
       className = Renaming.instance.renameClass(
-        discriminator.mapping.keys.join('Or') + '_Union',
+        '${discriminator.mapping.keys.join('Or')}_Union',
       );
     } else {
-      className = Renaming.instance.renameClass(schema.oneOf
-              .whereType<OpenApiSchemaRef>()
-              .map((e) => e.name)
-              .join('Or') +
-          '_Union');
+      className = Renaming.instance.renameClass(
+        '${schema.oneOf.whereType<OpenApiSchemaRef>().map((e) => e.name).join('Or')}_Union',
+      );
     }
 
     final Map<String, OpenApiSchemaRef> refSchemaMap;

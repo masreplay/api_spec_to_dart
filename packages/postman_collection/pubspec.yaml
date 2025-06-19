@@ -1,0 +1,30 @@
+name: postman_collection
+description: postman collection schema with freezed and json_serializable
+version: 0.0.9
+homepage: https://pub.dev/packages/postman_collection
+repository: https://github.com/masreplay/postman_collection
+topics: [postman, dio, doc, documentation, dart]
+
+environment:
+  sdk: ">=3.5.0 <4.0.0"
+
+dependencies:
+  dio: ^5.5.0+1
+  freezed_annotation: ^2.4.3
+  json_annotation: ^4.9.0
+  retrofit: ^4.1.0
+
+dev_dependencies:
+  test: ^1.24.0
+  lints: ^3.0.0
+
+  build_runner: ^2.4.11
+  freezed: ^2.5.6
+  retrofit_generator: ^8.1.2
+  json_serializable: ^6.8.0
+
+scripts:
+  w: dart run build_runner watch --delete-conflicting-outputs
+  g: dart run build_runner build --delete-conflicting-outputs
+
+  publish: flutter pub publish --force

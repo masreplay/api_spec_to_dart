@@ -28,9 +28,7 @@ mixin _$PhoneNumberModel {
   @pragma('vm:prefer-inline')
   $PhoneNumberModelCopyWith<PhoneNumberModel> get copyWith =>
       _$PhoneNumberModelCopyWithImpl<PhoneNumberModel>(
-        this as PhoneNumberModel,
-        _$identity,
-      );
+          this as PhoneNumberModel, _$identity);
 
   /// Serializes this PhoneNumberModel to a JSON map.
   Map<String, dynamic> toJson();
@@ -57,14 +55,12 @@ mixin _$PhoneNumberModel {
 /// @nodoc
 abstract mixin class $PhoneNumberModelCopyWith<$Res> {
   factory $PhoneNumberModelCopyWith(
-    PhoneNumberModel value,
-    $Res Function(PhoneNumberModel) _then,
-  ) = _$PhoneNumberModelCopyWithImpl;
+          PhoneNumberModel value, $Res Function(PhoneNumberModel) _then) =
+      _$PhoneNumberModelCopyWithImpl;
   @useResult
-  $Res call({
-    @JsonKey(name: PhoneNumberModel.phoneKey) String phone,
-    @JsonKey(name: PhoneNumberModel.phone2Key) String phone2,
-  });
+  $Res call(
+      {@JsonKey(name: PhoneNumberModel.phoneKey) String phone,
+      @JsonKey(name: PhoneNumberModel.phone2Key) String phone2});
 }
 
 /// @nodoc
@@ -79,21 +75,20 @@ class _$PhoneNumberModelCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? phone = null, Object? phone2 = null}) {
-    return _then(
-      _self.copyWith(
-        phone:
-            null == phone
-                ? _self.phone
-                : phone // ignore: cast_nullable_to_non_nullable
-                    as String,
-        phone2:
-            null == phone2
-                ? _self.phone2
-                : phone2 // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? phone = null,
+    Object? phone2 = null,
+  }) {
+    return _then(_self.copyWith(
+      phone: null == phone
+          ? _self.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      phone2: null == phone2
+          ? _self.phone2
+          : phone2 // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -101,10 +96,10 @@ class _$PhoneNumberModelCopyWithImpl<$Res>
 
 @jsonSerializable
 class _PhoneNumberModel extends PhoneNumberModel {
-  const _PhoneNumberModel({
-    @JsonKey(name: PhoneNumberModel.phoneKey) required this.phone,
-    @JsonKey(name: PhoneNumberModel.phone2Key) required this.phone2,
-  }) : super._();
+  const _PhoneNumberModel(
+      {@JsonKey(name: PhoneNumberModel.phoneKey) required this.phone,
+      @JsonKey(name: PhoneNumberModel.phone2Key) required this.phone2})
+      : super._();
   factory _PhoneNumberModel.fromJson(Map<String, dynamic> json) =>
       _$PhoneNumberModelFromJson(json);
 
@@ -128,7 +123,9 @@ class _PhoneNumberModel extends PhoneNumberModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$PhoneNumberModelToJson(this);
+    return _$PhoneNumberModelToJson(
+      this,
+    );
   }
 
   @override
@@ -154,15 +151,13 @@ class _PhoneNumberModel extends PhoneNumberModel {
 abstract mixin class _$PhoneNumberModelCopyWith<$Res>
     implements $PhoneNumberModelCopyWith<$Res> {
   factory _$PhoneNumberModelCopyWith(
-    _PhoneNumberModel value,
-    $Res Function(_PhoneNumberModel) _then,
-  ) = __$PhoneNumberModelCopyWithImpl;
+          _PhoneNumberModel value, $Res Function(_PhoneNumberModel) _then) =
+      __$PhoneNumberModelCopyWithImpl;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: PhoneNumberModel.phoneKey) String phone,
-    @JsonKey(name: PhoneNumberModel.phone2Key) String phone2,
-  });
+  $Res call(
+      {@JsonKey(name: PhoneNumberModel.phoneKey) String phone,
+      @JsonKey(name: PhoneNumberModel.phone2Key) String phone2});
 }
 
 /// @nodoc
@@ -177,20 +172,19 @@ class __$PhoneNumberModelCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? phone = null, Object? phone2 = null}) {
-    return _then(
-      _PhoneNumberModel(
-        phone:
-            null == phone
-                ? _self.phone
-                : phone // ignore: cast_nullable_to_non_nullable
-                    as String,
-        phone2:
-            null == phone2
-                ? _self.phone2
-                : phone2 // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? phone = null,
+    Object? phone2 = null,
+  }) {
+    return _then(_PhoneNumberModel(
+      phone: null == phone
+          ? _self.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      phone2: null == phone2
+          ? _self.phone2
+          : phone2 // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }

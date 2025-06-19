@@ -6,6 +6,7 @@ class RegularModelGeneratorStrategy
     extends ModelGeneratorStrategy<MapEntry<String, OpenApiSchemas>> {
   const RegularModelGeneratorStrategy(super.context);
 
+  @override
   Library build(MapEntry<String, OpenApiSchemas> model) {
     final title = model.value.title;
     final properties = model.value.properties ?? {};
@@ -27,8 +28,8 @@ class RegularModelGeneratorStrategy
         ..name = filename
         ..directives.addAll([
           Directive.import('exports.dart'),
-          Directive.part('${filename}.freezed.dart'),
-          Directive.part('${filename}.g.dart'),
+          Directive.part('$filename.freezed.dart'),
+          Directive.part('$filename.g.dart'),
         ])
         ..docs.addAll([
           '/// ${model.key}',
@@ -41,12 +42,12 @@ class RegularModelGeneratorStrategy
           Class(
             (b) => b
               ..docs.addAll([
-                '// ${className}',
+                '// $className',
               ])
               ..annotations.addAll([refer('freezed')])
               ..abstract = true
               ..name = className
-              ..mixins.addAll([refer('_\$${className}')])
+              ..mixins.addAll([refer('_\$$className')])
               ..fields.addAll([
                 ...properties.entries.map((entry) {
                   final name = Renaming.instance.renameProperty(entry.key);
@@ -74,7 +75,7 @@ class RegularModelGeneratorStrategy
                     ])
                     ..constant = true
                     ..factory = true
-                    ..redirect = refer('_${className}')
+                    ..redirect = refer('_$className')
                     ..optionalParameters.addAll([
                       ...properties.entries.map((entry) {
                         return context.extension.propertyGenerator.build(
@@ -125,8 +126,8 @@ class RegularModelGeneratorStrategy
       ..name = filename
       ..directives.addAll([
         Directive.import('exports.dart'),
-        Directive.part('${filename}.freezed.dart'),
-        Directive.part('${filename}.g.dart'),
+        Directive.part('$filename.freezed.dart'),
+        Directive.part('$filename.g.dart'),
       ])
       ..docs.addAll([
         '/// ${model.key}',
@@ -146,7 +147,7 @@ class RegularModelGeneratorStrategy
           ..types.addAll([
             refer(genericType),
           ])
-          ..mixins.add(refer('_\$${className}<$genericType>'))
+          ..mixins.add(refer('_\$$className<$genericType>'))
           ..fields.addAll([
             ...properties.entries.map((entry) {
               final name = Renaming.instance.renameProperty(entry.key);
@@ -201,11 +202,11 @@ class RegularModelGeneratorStrategy
                   Parameter(
                     (b) => b
                       ..name = 'fromJson$genericType'
-                      ..type = refer('${genericType} Function(Object? json)'),
+                      ..type = refer('$genericType Function(Object? json)'),
                   ),
                 ])
                 ..body = Code(
-                  '_\$${className}FromJson<$genericType>(json, fromJson${genericType})',
+                  '_\$${className}FromJson<$genericType>(json, fromJson$genericType)',
                 ),
             ),
           ]))
