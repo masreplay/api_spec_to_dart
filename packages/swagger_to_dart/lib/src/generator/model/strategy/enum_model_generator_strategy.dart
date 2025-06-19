@@ -49,8 +49,8 @@ class EnumModelGeneratorStrategy
 
     final orElseCallback = switch (enumFallbackType) {
       EnumFallbackType.unknown => 'throw ArgumentError("Invalid $className")',
-      EnumFallbackType.first => '${className}.values.first',
-      EnumFallbackType.last => '${className}.values.last',
+      EnumFallbackType.first => '$className.values.first',
+      EnumFallbackType.last => '$className.values.last',
       EnumFallbackType.throwException =>
         'throw ArgumentError("Invalid $className")',
     };
@@ -97,7 +97,7 @@ class EnumModelGeneratorStrategy
                   ..factory = true
                   ..name = 'fromJson'
                   ..body = Code(
-                      '${className}.values.firstWhere((e) => e.toJson() == json, orElse: () => $orElseCallback)'),
+                      '$className.values.firstWhere((e) => e.toJson() == json, orElse: () => $orElseCallback)'),
               ),
             ])
             ..methods.addAll([
