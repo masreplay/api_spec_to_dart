@@ -1,7 +1,8 @@
 ## 2.5.0
 
-- Support `int`, `String` in enum
-- Support multiple type of fallback in enum
+- Support `int`, `String` enum's value
+- Support multiple type of fallback in enum generation
+- Upgrade `build_runner: ^2.5.2` version
 
 ## 2.4.0
 

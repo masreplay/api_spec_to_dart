@@ -36,12 +36,13 @@ mixin _$BasicDatetimeTimedeltaQueryParameters {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is BasicDatetimeTimedeltaQueryParameters &&
-            (identical(other.td, td) || other.td == td));
+            const DeepCollectionEquality().equals(other.td, td));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, td);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(td));
 
   @override
   String toString() {
@@ -74,10 +75,10 @@ class _$BasicDatetimeTimedeltaQueryParametersCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? td = null,
+    Object? td = freezed,
   }) {
     return _then(_self.copyWith(
-      td: null == td
+      td: freezed == td
           ? _self.td
           : td // ignore: cast_nullable_to_non_nullable
               as TimeOfDay,
@@ -125,12 +126,13 @@ class _BasicDatetimeTimedeltaQueryParameters
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _BasicDatetimeTimedeltaQueryParameters &&
-            (identical(other.td, td) || other.td == td));
+            const DeepCollectionEquality().equals(other.td, td));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, td);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(td));
 
   @override
   String toString() {
@@ -165,10 +167,10 @@ class __$BasicDatetimeTimedeltaQueryParametersCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? td = null,
+    Object? td = freezed,
   }) {
     return _then(_BasicDatetimeTimedeltaQueryParameters(
-      td: null == td
+      td: freezed == td
           ? _self.td
           : td // ignore: cast_nullable_to_non_nullable
               as TimeOfDay,
