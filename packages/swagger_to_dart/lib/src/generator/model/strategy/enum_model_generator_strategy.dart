@@ -78,7 +78,7 @@ class EnumModelGeneratorStrategy
             ..values.addAll([
               for (final value in values)
                 EnumValue(
-                  (b) => b //\$
+                  (b) => b
                     ..annotations.add(refer(
                         '$JsonValue(${enumType == OpenApiSchemaVarType.integer ? '$value' : '"$value"'})'))
                     ..name = '${Renaming.instance.renameEnumValue(value)}',
