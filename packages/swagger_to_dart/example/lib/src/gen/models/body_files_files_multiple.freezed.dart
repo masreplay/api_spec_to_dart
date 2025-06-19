@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 mixin _$BodyFilesFilesMultiple {
   /// files
   @JsonKey(name: BodyFilesFilesMultiple.filesKey)
-  List<MultipartFile> get files;
+  List<String> get files;
 
   /// notes
   @JsonKey(name: BodyFilesFilesMultiple.notesKey)
@@ -60,8 +60,7 @@ abstract mixin class $BodyFilesFilesMultipleCopyWith<$Res> {
       _$BodyFilesFilesMultipleCopyWithImpl;
   @useResult
   $Res call(
-      {@JsonKey(name: BodyFilesFilesMultiple.filesKey)
-      List<MultipartFile> files,
+      {@JsonKey(name: BodyFilesFilesMultiple.filesKey) List<String> files,
       @JsonKey(name: BodyFilesFilesMultiple.notesKey) String notes});
 }
 
@@ -85,7 +84,7 @@ class _$BodyFilesFilesMultipleCopyWithImpl<$Res>
       files: null == files
           ? _self.files
           : files // ignore: cast_nullable_to_non_nullable
-              as List<MultipartFile>,
+              as List<String>,
       notes: null == notes
           ? _self.notes
           : notes // ignore: cast_nullable_to_non_nullable
@@ -100,7 +99,7 @@ class _$BodyFilesFilesMultipleCopyWithImpl<$Res>
 class _BodyFilesFilesMultiple extends BodyFilesFilesMultiple {
   const _BodyFilesFilesMultiple(
       {@JsonKey(name: BodyFilesFilesMultiple.filesKey)
-      required final List<MultipartFile> files,
+      required final List<String> files,
       @JsonKey(name: BodyFilesFilesMultiple.notesKey) required this.notes})
       : _files = files,
         super._();
@@ -108,12 +107,12 @@ class _BodyFilesFilesMultiple extends BodyFilesFilesMultiple {
       _$BodyFilesFilesMultipleFromJson(json);
 
   /// files
-  final List<MultipartFile> _files;
+  final List<String> _files;
 
   /// files
   @override
   @JsonKey(name: BodyFilesFilesMultiple.filesKey)
-  List<MultipartFile> get files {
+  List<String> get files {
     if (_files is EqualUnmodifiableListView) return _files;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_files);
@@ -169,8 +168,7 @@ abstract mixin class _$BodyFilesFilesMultipleCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: BodyFilesFilesMultiple.filesKey)
-      List<MultipartFile> files,
+      {@JsonKey(name: BodyFilesFilesMultiple.filesKey) List<String> files,
       @JsonKey(name: BodyFilesFilesMultiple.notesKey) String notes});
 }
 
@@ -194,7 +192,7 @@ class __$BodyFilesFilesMultipleCopyWithImpl<$Res>
       files: null == files
           ? _self._files
           : files // ignore: cast_nullable_to_non_nullable
-              as List<MultipartFile>,
+              as List<String>,
       notes: null == notes
           ? _self.notes
           : notes // ignore: cast_nullable_to_non_nullable

@@ -1,4 +1,4 @@
-## 2.5.0
+## 3.0.0
 
 - Support `int`, `String` enum's value
 - Support multiple type of fallback in enum generation

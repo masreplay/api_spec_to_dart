@@ -524,8 +524,10 @@ enum Currency {
   @JsonValue('ZWL')
   zwl;
 
-  factory Currency.fromJson(Object json) =>
-      values.firstWhere((e) => e.toJson() == json, orElse: () => values.first);
+  factory Currency.fromJson(String json) => Currency.values.firstWhere(
+        (e) => e.toJson() == json,
+        orElse: () => Currency.values.first,
+      );
 
-  Object toJson() => _$CurrencyEnumMap[this]!;
+  String toJson() => _$CurrencyEnumMap[this]!;
 }

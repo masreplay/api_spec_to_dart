@@ -8,7 +8,7 @@ part of 'time_zone_model.dart';
 
 _TimeZoneModel _$TimeZoneModelFromJson(Map<String, dynamic> json) =>
     _TimeZoneModel(
-      timezone: Timezone.fromJson(json['timezone'] as Object),
+      timezone: Timezone.fromJson(json['timezone'] as String),
     );
 
 Map<String, dynamic> _$TimeZoneModelToJson(_TimeZoneModel instance) =>

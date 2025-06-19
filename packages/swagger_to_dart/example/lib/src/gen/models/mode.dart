@@ -23,8 +23,10 @@ enum Mode {
   @JsonValue('system')
   system;
 
-  factory Mode.fromJson(Object json) =>
-      values.firstWhere((e) => e.toJson() == json, orElse: () => values.first);
+  factory Mode.fromJson(String json) => Mode.values.firstWhere(
+        (e) => e.toJson() == json,
+        orElse: () => Mode.values.first,
+      );
 
-  Object toJson() => _$ModeEnumMap[this]!;
+  String toJson() => _$ModeEnumMap[this]!;
 }

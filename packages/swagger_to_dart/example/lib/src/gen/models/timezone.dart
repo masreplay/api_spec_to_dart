@@ -1808,8 +1808,10 @@ enum Timezone {
   @JsonValue('Zulu')
   zulu;
 
-  factory Timezone.fromJson(Object json) =>
-      values.firstWhere((e) => e.toJson() == json, orElse: () => values.first);
+  factory Timezone.fromJson(String json) => Timezone.values.firstWhere(
+        (e) => e.toJson() == json,
+        orElse: () => Timezone.values.first,
+      );
 
-  Object toJson() => _$TimezoneEnumMap[this]!;
+  String toJson() => _$TimezoneEnumMap[this]!;
 }

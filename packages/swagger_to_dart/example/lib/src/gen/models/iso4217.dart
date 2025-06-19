@@ -557,8 +557,10 @@ enum Iso4217 {
   @JsonValue('ZWL')
   zwl;
 
-  factory Iso4217.fromJson(Object json) =>
-      values.firstWhere((e) => e.toJson() == json, orElse: () => values.first);
+  factory Iso4217.fromJson(String json) => Iso4217.values.firstWhere(
+        (e) => e.toJson() == json,
+        orElse: () => Iso4217.values.first,
+      );
 
-  Object toJson() => _$Iso4217EnumMap[this]!;
+  String toJson() => _$Iso4217EnumMap[this]!;
 }

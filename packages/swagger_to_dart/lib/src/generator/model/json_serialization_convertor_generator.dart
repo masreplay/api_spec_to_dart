@@ -33,6 +33,24 @@ class JsonConvertorGenerator extends LibraryGenerator {
         break;
     }
 
+    final buffer = StringBuffer();
+    buffer.write('''
+const jsonSerializableConverters = <JsonConverter>[
+''');
+    if (customJsonConverters.isNotEmpty) {
+      buffer.write(customJsonConverters.map((e) => e.classCall).join(',\n'));
+      buffer.write(',\n');
+    }
+    if (context.jsonConvertor.isNotEmpty) {
+      buffer.write(context.jsonConvertor.map((e) => '${e.name}()').join(',\n'));
+    }
+    buffer.write('];\n');
+    buffer.write('''
+const jsonSerializable = JsonSerializable(
+  converters: jsonSerializableConverters,
+);
+''');
+
     final library = Library(
       (b) => b
         ..name = 'json_converter'
@@ -45,16 +63,7 @@ class JsonConvertorGenerator extends LibraryGenerator {
         ..body.addAll([
           ...context.jsonConvertor,
           for (final entry in customJsonConverters) Code(entry.code),
-          Code('''
-const jsonSerializableConverters = <JsonConverter>[
-  ${customJsonConverters.map((e) => e.classCall).join(',\n')},
-  ${context.jsonConvertor.map((e) => '${e.name}()').join(',\n')}
-];
-
-const jsonSerializable = JsonSerializable(
-  converters: jsonSerializableConverters,
-);
-''')
+          Code(buffer.toString()),
         ]),
     );
 

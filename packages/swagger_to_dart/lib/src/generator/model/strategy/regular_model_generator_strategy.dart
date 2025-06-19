@@ -126,6 +126,7 @@ class RegularModelGeneratorStrategy
       ..name = filename
       ..directives.addAll([
         Directive.import('exports.dart'),
+        
         Directive.part('$filename.freezed.dart'),
         Directive.part('$filename.g.dart'),
       ])

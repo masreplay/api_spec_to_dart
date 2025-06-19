@@ -11,7 +11,7 @@ _PaymentCardModel _$PaymentCardModelFromJson(Map<String, dynamic> json) =>
       cardNumber: json['card_number'] as String,
       cardBrand: json['card_brand'] == null
           ? null
-          : PaymentCardBrand.fromJson(json['card_brand'] as Object),
+          : PaymentCardBrand.fromJson(json['card_brand'] as String),
     );
 
 Map<String, dynamic> _$PaymentCardModelToJson(_PaymentCardModel instance) =>

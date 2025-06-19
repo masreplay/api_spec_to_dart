@@ -91,11 +91,11 @@ class SwaggerToDartCodeGenerator {
         ..name = 'exports'
         ..directives.addAll([
           ...jsonConverterDirectives,
+          Directive.export('dart:typed_data'),
           Directive.export('models.dart'),
-          Directive.import('package:dio/dio.dart'),
-          Directive.import(
-              'package:freezed_annotation/freezed_annotation.dart'),
           Directive.export('package:dio/dio.dart'),
+          Directive.export(
+              'package:freezed_annotation/freezed_annotation.dart'),
           Directive.export('json_converter.dart'),
           Directive.export(
               'package:freezed_annotation/freezed_annotation.dart'),
@@ -130,6 +130,7 @@ class SwaggerToDartCodeGenerator {
       (b) => b
         ..name = 'exports.dart'
         ..directives.addAll([
+          Directive.export('dart:typed_data'),
           for (final apiClient in context.apiClients)
             Directive.export('${apiClient.name}.dart'),
         ]),

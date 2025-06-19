@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 mixin _$BasicDatetimeTimedeltaQueryParameters {
   /// td
   @JsonKey(name: BasicDatetimeTimedeltaQueryParameters.tdKey)
-  TimeOfDay get td;
+  String get td;
 
   /// Create a copy of BasicDatetimeTimedeltaQueryParameters
   /// with the given fields replaced by the non-null parameter values.
@@ -36,13 +36,12 @@ mixin _$BasicDatetimeTimedeltaQueryParameters {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is BasicDatetimeTimedeltaQueryParameters &&
-            const DeepCollectionEquality().equals(other.td, td));
+            (identical(other.td, td) || other.td == td));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(td));
+  int get hashCode => Object.hash(runtimeType, td);
 
   @override
   String toString() {
@@ -58,8 +57,7 @@ abstract mixin class $BasicDatetimeTimedeltaQueryParametersCopyWith<$Res> {
       _$BasicDatetimeTimedeltaQueryParametersCopyWithImpl;
   @useResult
   $Res call(
-      {@JsonKey(name: BasicDatetimeTimedeltaQueryParameters.tdKey)
-      TimeOfDay td});
+      {@JsonKey(name: BasicDatetimeTimedeltaQueryParameters.tdKey) String td});
 }
 
 /// @nodoc
@@ -75,13 +73,13 @@ class _$BasicDatetimeTimedeltaQueryParametersCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? td = freezed,
+    Object? td = null,
   }) {
     return _then(_self.copyWith(
-      td: freezed == td
+      td: null == td
           ? _self.td
           : td // ignore: cast_nullable_to_non_nullable
-              as TimeOfDay,
+              as String,
     ));
   }
 }
@@ -102,7 +100,7 @@ class _BasicDatetimeTimedeltaQueryParameters
   /// td
   @override
   @JsonKey(name: BasicDatetimeTimedeltaQueryParameters.tdKey)
-  final TimeOfDay td;
+  final String td;
 
   /// Create a copy of BasicDatetimeTimedeltaQueryParameters
   /// with the given fields replaced by the non-null parameter values.
@@ -126,13 +124,12 @@ class _BasicDatetimeTimedeltaQueryParameters
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _BasicDatetimeTimedeltaQueryParameters &&
-            const DeepCollectionEquality().equals(other.td, td));
+            (identical(other.td, td) || other.td == td));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(td));
+  int get hashCode => Object.hash(runtimeType, td);
 
   @override
   String toString() {
@@ -150,8 +147,7 @@ abstract mixin class _$BasicDatetimeTimedeltaQueryParametersCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: BasicDatetimeTimedeltaQueryParameters.tdKey)
-      TimeOfDay td});
+      {@JsonKey(name: BasicDatetimeTimedeltaQueryParameters.tdKey) String td});
 }
 
 /// @nodoc
@@ -167,13 +163,13 @@ class __$BasicDatetimeTimedeltaQueryParametersCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? td = freezed,
+    Object? td = null,
   }) {
     return _then(_BasicDatetimeTimedeltaQueryParameters(
-      td: freezed == td
+      td: null == td
           ? _self.td
           : td // ignore: cast_nullable_to_non_nullable
-              as TimeOfDay,
+              as String,
     ));
   }
 }

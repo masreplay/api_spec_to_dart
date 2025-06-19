@@ -35,8 +35,7 @@ abstract class BodyFilesFilesMultiple with _$BodyFilesFilesMultiple {
   @jsonSerializable
   const factory BodyFilesFilesMultiple({
     /// files
-    @JsonKey(name: BodyFilesFilesMultiple.filesKey)
-    required List<MultipartFile> files,
+    @JsonKey(name: BodyFilesFilesMultiple.filesKey) required List<String> files,
 
     /// notes
     @JsonKey(name: BodyFilesFilesMultiple.notesKey) required String notes,

@@ -23744,8 +23744,10 @@ enum Iso6393 {
   @JsonValue('zzj')
   zzj;
 
-  factory Iso6393.fromJson(Object json) =>
-      values.firstWhere((e) => e.toJson() == json, orElse: () => values.first);
+  factory Iso6393.fromJson(String json) => Iso6393.values.firstWhere(
+        (e) => e.toJson() == json,
+        orElse: () => Iso6393.values.first,
+      );
 
-  Object toJson() => _$Iso6393EnumMap[this]!;
+  String toJson() => _$Iso6393EnumMap[this]!;
 }

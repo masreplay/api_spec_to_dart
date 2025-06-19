@@ -10,10 +10,10 @@ _CurrencyModel _$CurrencyModelFromJson(Map<String, dynamic> json) =>
     _CurrencyModel(
       currency: json['currency'] == null
           ? null
-          : Currency.fromJson(json['currency'] as Object),
+          : Currency.fromJson(json['currency'] as String),
       iso4217: json['iso4217'] == null
           ? null
-          : Iso4217.fromJson(json['iso4217'] as Object),
+          : Iso4217.fromJson(json['iso4217'] as String),
     );
 
 Map<String, dynamic> _$CurrencyModelToJson(_CurrencyModel instance) =>

@@ -51,8 +51,11 @@ enum PaymentCardBrand {
   @JsonValue('other')
   other;
 
-  factory PaymentCardBrand.fromJson(Object json) =>
-      values.firstWhere((e) => e.toJson() == json, orElse: () => values.first);
+  factory PaymentCardBrand.fromJson(String json) =>
+      PaymentCardBrand.values.firstWhere(
+        (e) => e.toJson() == json,
+        orElse: () => PaymentCardBrand.values.first,
+      );
 
-  Object toJson() => _$PaymentCardBrandEnumMap[this]!;
+  String toJson() => _$PaymentCardBrandEnumMap[this]!;
 }

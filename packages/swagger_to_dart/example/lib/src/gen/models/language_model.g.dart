@@ -12,10 +12,10 @@ _LanguageModel _$LanguageModelFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String?,
       iso6393: json['iso639_3'] == null
           ? null
-          : Iso6393.fromJson(json['iso639_3'] as Object),
+          : Iso6393.fromJson(json['iso639_3'] as String),
       iso6395: json['iso639_5'] == null
           ? null
-          : Iso6395.fromJson(json['iso639_5'] as Object),
+          : Iso6395.fromJson(json['iso639_5'] as String),
     );
 
 Map<String, dynamic> _$LanguageModelToJson(_LanguageModel instance) =>

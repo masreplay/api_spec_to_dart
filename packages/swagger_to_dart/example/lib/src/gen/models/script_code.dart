@@ -560,8 +560,10 @@ enum ScriptCode {
   @JsonValue('Zzzz')
   zzzz;
 
-  factory ScriptCode.fromJson(Object json) =>
-      values.firstWhere((e) => e.toJson() == json, orElse: () => values.first);
+  factory ScriptCode.fromJson(String json) => ScriptCode.values.firstWhere(
+        (e) => e.toJson() == json,
+        orElse: () => ScriptCode.values.first,
+      );
 
-  Object toJson() => _$ScriptCodeEnumMap[this]!;
+  String toJson() => _$ScriptCodeEnumMap[this]!;
 }

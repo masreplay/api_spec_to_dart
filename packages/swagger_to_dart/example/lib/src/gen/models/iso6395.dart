@@ -359,8 +359,10 @@ enum Iso6395 {
   @JsonValue('znd')
   znd;
 
-  factory Iso6395.fromJson(Object json) =>
-      values.firstWhere((e) => e.toJson() == json, orElse: () => values.first);
+  factory Iso6395.fromJson(String json) => Iso6395.values.firstWhere(
+        (e) => e.toJson() == json,
+        orElse: () => Iso6395.values.first,
+      );
 
-  Object toJson() => _$Iso6395EnumMap[this]!;
+  String toJson() => _$Iso6395EnumMap[this]!;
 }

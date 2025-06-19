@@ -3,7 +3,7 @@ swagger_to_dart:
   input_directory: schema/swagger.json
   output_directory: lib/src/gen
 
-  generation_source: FastAPI
+  # generation_source: FastAPI
 
   model:
     support_generic_arguments: true

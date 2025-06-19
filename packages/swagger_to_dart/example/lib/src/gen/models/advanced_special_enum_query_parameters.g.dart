@@ -11,7 +11,7 @@ _AdvancedSpecialEnumQueryParameters
         _AdvancedSpecialEnumQueryParameters(
           level: json['level'] == null
               ? UserLevel.basic
-              : UserLevel.fromJson(json['level'] as Object),
+              : UserLevel.fromJson(json['level'] as String),
         );
 
 Map<String, dynamic> _$AdvancedSpecialEnumQueryParametersToJson(

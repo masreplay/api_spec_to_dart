@@ -23,8 +23,10 @@ enum UserLevel {
   @JsonValue('admin')
   admin;
 
-  factory UserLevel.fromJson(Object json) =>
-      values.firstWhere((e) => e.toJson() == json, orElse: () => values.first);
+  factory UserLevel.fromJson(String json) => UserLevel.values.firstWhere(
+        (e) => e.toJson() == json,
+        orElse: () => UserLevel.values.first,
+      );
 
-  Object toJson() => _$UserLevelEnumMap[this]!;
+  String toJson() => _$UserLevelEnumMap[this]!;
 }

@@ -12,7 +12,7 @@ _AdvancedSpecialLiteralQueryParameters
         _AdvancedSpecialLiteralQueryParameters(
           mode: json['mode'] == null
               ? Mode.system
-              : Mode.fromJson(json['mode'] as Object),
+              : Mode.fromJson(json['mode'] as String),
         );
 
 Map<String, dynamic> _$AdvancedSpecialLiteralQueryParametersToJson(

@@ -172,11 +172,21 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
           case 'color-hex':
             return 'Color';
           case 'binary':
-            return 'MultipartFile';
+            if (context.isFlutterProject &&
+                context.config.generationSource == GenerationSource.fastAPI) {
+              return 'MultipartFile';
+            }
+
+            return 'String';
           case 'uuid':
             return 'String';
           case 'time' || 'duration':
-            return context.isFlutterProject ? 'TimeOfDay' : 'String';
+            if (context.isFlutterProject &&
+                context.config.generationSource == GenerationSource.fastAPI) {
+              return 'TimeOfDay';
+            }
+
+            return 'String';
           case 'uri':
             return 'Uri';
           default:
