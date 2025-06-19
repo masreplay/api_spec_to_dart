@@ -1,4 +1,10 @@
+## 2.5.0
+
+- Support `int`, `String` in enum
+- Support multiple type of fallback in enum
+
 ## 2.4.0
+
 - Fix issue with `Multipart` and `FormUrlEncoded`
 - Support `fromJson` in enum classes
 
