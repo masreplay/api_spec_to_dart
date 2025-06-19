@@ -3,6 +3,21 @@
 - Support `int`, `String` enum's value
 - Support multiple type of fallback in enum generation
 - Upgrade `build_runner: ^2.5.2` version
+- Fix default generation config
+
+  ```yaml
+  swagger_to_dart:
+  url: http://localhost/openapi.json
+  input_directory: schema/swagger.json
+  output_directory: lib/src/gen
+
+  model:
+    support_generic_arguments: true
+    union_class_fallback_name: fallback
+    enum_fallback_type: first
+  api_client:
+    use_class_for_query_parameters: true
+  ```
 
 ## 2.4.0
 
