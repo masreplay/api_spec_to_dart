@@ -122,7 +122,13 @@ class Renaming {
     Object value,
   ) {
     if (int.tryParse(value.toString()) != null) {
-      return 'value$value';
+      final intValue = int.parse(value.toString());
+      if(intValue < 0) {
+        // Handle negative integers by replacing minus with "Minus"
+        return 'valueMinus${intValue.abs()}';
+      } else {
+        return 'value$value';
+      }
     } else if (value is String) {
       return Recase.instance.toCamelCase(_guard(
         value,
