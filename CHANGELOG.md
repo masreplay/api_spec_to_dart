@@ -1,3 +1,7 @@
+## 3.1.0
+
+- Support `Color` from String `color` and `color-hex` format
+
 ## 3.0.0
 
 - Support `int`, `String` enum's value

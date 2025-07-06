@@ -24,6 +24,7 @@ class JsonConvertorGenerator extends LibraryGenerator {
         customJsonConverters.add(getFastAPIMultipartFileJsonConvertor());
         if (isFlutterProject) {
           customJsonConverters.add(getTimeOfDayStringJsonConvertor());
+          customJsonConverters.add(getColorStringJsonConvertor());
         }
         break;
       case GenerationSource.dotnet:
@@ -149,6 +150,42 @@ class TimeOfDayStringJsonConverter implements JsonConverter<TimeOfDay, String> {
     final second = '00';
 
     return '$hour:$minute:$second';
+  }
+}
+''',
+    );
+  }
+
+  CustomJsonConverter getColorStringJsonConvertor() {
+    return (
+      classCall: 'ColorStringJsonConverter()',
+      imports: [
+        Directive.import('package:flutter/material.dart'),
+        Directive.import('package:json_annotation/json_annotation.dart'),
+      ],
+      exports: [
+        Directive.export('package:flutter/material.dart'),
+      ],
+      code: r'''
+class ColorStringJsonConverter implements JsonConverter<Color, String> {
+  const ColorStringJsonConverter();
+
+  // #000000 -> Color(0xFF000000)
+  // #00000000 -> Color(0x00000000)
+  @override
+  Color fromJson(String json) {
+    if (json.startsWith('#')) {
+      return Color(int.parse(json.substring(1), radix: 16));
+    } else {
+      return Color(int.parse(json, radix: 16));
+    }
+  }
+
+  // #000000 -> Color(0xFF000000)
+  // #00000000 -> Color(0x00000000)
+  @override
+  String toJson(Color object) {
+    return '#${object.toARGB32().toRadixString(16).padLeft(8, '0')}';
   }
 }
 ''',

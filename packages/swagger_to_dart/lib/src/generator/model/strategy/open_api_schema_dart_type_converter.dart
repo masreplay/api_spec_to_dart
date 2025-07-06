@@ -169,7 +169,7 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
             return 'DateTime';
           case 'date':
             return 'DateTime';
-          case 'color-hex':
+          case 'color-hex' || 'color':
             return 'Color';
           case 'binary':
             if (context.isFlutterProject &&
