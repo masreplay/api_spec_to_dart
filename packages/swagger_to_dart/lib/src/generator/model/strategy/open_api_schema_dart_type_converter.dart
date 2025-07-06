@@ -41,7 +41,7 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
     final genericEnd = title.lastIndexOf(']');
 
     if (genericStart == -1 || genericEnd == -1 || genericEnd <= genericStart) {
-      return Renaming.instance.renameClass(title);
+      return _convertPrimitiveType(title);
     }
 
     final base = title.substring(0, genericStart);
@@ -53,6 +53,24 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
         .join(', ');
 
     return '${Renaming.instance.renameClass(base)}<$processedGenerics>';
+  }
+
+  String _convertPrimitiveType(String type) {
+    switch (type.toLowerCase()) {
+      case 'bool':
+      case 'boolean':
+        return 'bool';
+      case 'int':
+      case 'integer':
+        return 'int';
+      case 'double':
+      case 'number':
+        return 'double';
+      case 'string':
+        return 'String';
+      default:
+        return Renaming.instance.renameClass(type);
+    }
   }
 
 // Handles nested generics splitting: Pagination[Source[Item], Meta] => [Source[Item], Meta]

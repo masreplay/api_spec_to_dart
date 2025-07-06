@@ -1,6 +1,7 @@
 ## 3.1.0
 
 - Support `Color` from String `color` and `color-hex` format
+- Fix nested primitives generic type `Parent<Bool>` -> `Parent<bool>`
 
 ## 3.0.0
 
