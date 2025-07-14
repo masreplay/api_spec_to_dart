@@ -1,3 +1,7 @@
+## 3.1.1
+
+- Add support to `nullable` flag in `schema`
+
 ## 3.1.0
 
 - Support `Color` from String `color` and `color-hex` format
