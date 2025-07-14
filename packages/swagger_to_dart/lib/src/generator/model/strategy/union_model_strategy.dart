@@ -11,11 +11,13 @@ class UnionModelStrategyParams {
     required this.key,
     required this.schema,
     required this.refSchemaMap,
+    required this.discriminator,
   });
 
   final String key;
   final OpenApiSchema schema;
   final Map<String, OpenApiSchemaRef> refSchemaMap;
+  final OpenApiSchemaOneOfDiscriminator? discriminator;
 }
 
 class UnionModelStrategy
@@ -135,10 +137,10 @@ class UnionModelStrategy
                 '// $className',
               ])
               ..annotations.addAll([
-                if (unionClassFallbackName case final fallbackName?)
-                  refer('$Freezed(fallbackUnion: r"$fallbackName")')
-                else
-                  refer('Freezed()'),
+                _freezedAnnotation(
+                  unionClassFallbackName: unionClassFallbackName,
+                  unionKey: params.discriminator?.propertyName,
+                ),
               ])
               ..sealed = true
               ..name = className
@@ -255,6 +257,7 @@ class UnionModelStrategy
         key: className,
         schema: schema,
         refSchemaMap: refSchemaMap,
+        discriminator: discriminator,
       ),
     );
 
@@ -282,9 +285,31 @@ class UnionModelStrategy
           for (final refSchema in schemas.whereType<OpenApiSchemaRef>())
             refSchema.name: refSchema,
         },
+        discriminator: null,
       ),
     );
 
     return (model, className);
+  }
+
+  Reference _freezedAnnotation({
+    required String? unionClassFallbackName,
+    required String? unionKey,
+  }) {
+    final string = StringBuffer();
+
+    string.write('$Freezed(');
+
+    if (unionClassFallbackName != null) {
+      string.write('fallbackUnion: r"$unionClassFallbackName"');
+    }
+
+    if (unionKey != null) {
+      string.write('unionKey: r"$unionKey"');
+    }
+
+    string.write(')');
+
+    return refer(string.toString());
   }
 }
