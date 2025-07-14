@@ -17,6 +17,8 @@ mixin _$OpenApiContentSchema {
   @OpenApiSchemaJsonConverter()
   @JsonKey(name: 'schema')
   OpenApiSchema get schema;
+  @JsonKey(name: 'example')
+  Object? get example;
 
   /// Create a copy of OpenApiContentSchema
   /// with the given fields replaced by the non-null parameter values.
@@ -34,16 +36,18 @@ mixin _$OpenApiContentSchema {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is OpenApiContentSchema &&
-            (identical(other.schema, schema) || other.schema == schema));
+            (identical(other.schema, schema) || other.schema == schema) &&
+            const DeepCollectionEquality().equals(other.example, example));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, schema);
+  int get hashCode => Object.hash(
+      runtimeType, schema, const DeepCollectionEquality().hash(example));
 
   @override
   String toString() {
-    return 'OpenApiContentSchema(schema: $schema)';
+    return 'OpenApiContentSchema(schema: $schema, example: $example)';
   }
 }
 
@@ -56,7 +60,8 @@ abstract mixin class $OpenApiContentSchemaCopyWith<$Res> {
   $Res call(
       {@OpenApiSchemaJsonConverter()
       @JsonKey(name: 'schema')
-      OpenApiSchema schema});
+      OpenApiSchema schema,
+      @JsonKey(name: 'example') Object? example});
 
   $OpenApiSchemaCopyWith<$Res> get schema;
 }
@@ -75,12 +80,14 @@ class _$OpenApiContentSchemaCopyWithImpl<$Res>
   @override
   $Res call({
     Object? schema = null,
+    Object? example = freezed,
   }) {
     return _then(_self.copyWith(
       schema: null == schema
           ? _self.schema
           : schema // ignore: cast_nullable_to_non_nullable
               as OpenApiSchema,
+      example: freezed == example ? _self.example : example,
     ));
   }
 
@@ -101,7 +108,8 @@ class _OpenApiContentSchema extends OpenApiContentSchema {
   const _OpenApiContentSchema(
       {@OpenApiSchemaJsonConverter()
       @JsonKey(name: 'schema')
-      required this.schema})
+      required this.schema,
+      @JsonKey(name: 'example') this.example})
       : super._();
   factory _OpenApiContentSchema.fromJson(Map<String, dynamic> json) =>
       _$OpenApiContentSchemaFromJson(json);
@@ -110,6 +118,9 @@ class _OpenApiContentSchema extends OpenApiContentSchema {
   @OpenApiSchemaJsonConverter()
   @JsonKey(name: 'schema')
   final OpenApiSchema schema;
+  @override
+  @JsonKey(name: 'example')
+  final Object? example;
 
   /// Create a copy of OpenApiContentSchema
   /// with the given fields replaced by the non-null parameter values.
@@ -132,16 +143,18 @@ class _OpenApiContentSchema extends OpenApiContentSchema {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _OpenApiContentSchema &&
-            (identical(other.schema, schema) || other.schema == schema));
+            (identical(other.schema, schema) || other.schema == schema) &&
+            const DeepCollectionEquality().equals(other.example, example));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, schema);
+  int get hashCode => Object.hash(
+      runtimeType, schema, const DeepCollectionEquality().hash(example));
 
   @override
   String toString() {
-    return 'OpenApiContentSchema(schema: $schema)';
+    return 'OpenApiContentSchema(schema: $schema, example: $example)';
   }
 }
 
@@ -156,7 +169,8 @@ abstract mixin class _$OpenApiContentSchemaCopyWith<$Res>
   $Res call(
       {@OpenApiSchemaJsonConverter()
       @JsonKey(name: 'schema')
-      OpenApiSchema schema});
+      OpenApiSchema schema,
+      @JsonKey(name: 'example') Object? example});
 
   @override
   $OpenApiSchemaCopyWith<$Res> get schema;
@@ -176,12 +190,14 @@ class __$OpenApiContentSchemaCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   $Res call({
     Object? schema = null,
+    Object? example = freezed,
   }) {
     return _then(_OpenApiContentSchema(
       schema: null == schema
           ? _self.schema
           : schema // ignore: cast_nullable_to_non_nullable
               as OpenApiSchema,
+      example: freezed == example ? _self.example : example,
     ));
   }
 

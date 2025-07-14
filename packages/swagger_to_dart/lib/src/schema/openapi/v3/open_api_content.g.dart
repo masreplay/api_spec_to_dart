@@ -11,12 +11,14 @@ _OpenApiContentSchema _$OpenApiContentSchemaFromJson(
     _OpenApiContentSchema(
       schema: const OpenApiSchemaJsonConverter()
           .fromJson(json['schema'] as Map<String, dynamic>),
+      example: json['example'],
     );
 
 Map<String, dynamic> _$OpenApiContentSchemaToJson(
         _OpenApiContentSchema instance) =>
     <String, dynamic>{
       'schema': const OpenApiSchemaJsonConverter().toJson(instance.schema),
+      if (instance.example case final value?) 'example': value,
     };
 
 const _$OpenApiContentTypeEnumMap = {

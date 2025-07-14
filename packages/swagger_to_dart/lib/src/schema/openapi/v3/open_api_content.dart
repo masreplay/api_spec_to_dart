@@ -24,6 +24,7 @@ abstract class OpenApiContentSchema with _$OpenApiContentSchema {
     @OpenApiSchemaJsonConverter()
     @JsonKey(name: 'schema')
     required OpenApiSchema schema,
+    @JsonKey(name: 'example') Object? example,
   }) = _OpenApiContentSchema;
 
   factory OpenApiContentSchema.fromJson(Map<String, dynamic> json) =>
