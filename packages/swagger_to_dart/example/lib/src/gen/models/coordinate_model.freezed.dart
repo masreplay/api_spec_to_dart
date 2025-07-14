@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 mixin _$CoordinateModel {
   /// coordinate
   @JsonKey(name: CoordinateModel.coordinateKey)
-  dynamic get coordinate;
+  dynamic? get coordinate;
 
   /// latitude
   @JsonKey(name: CoordinateModel.latitudeKey)
@@ -68,7 +68,7 @@ abstract mixin class $CoordinateModelCopyWith<$Res> {
       _$CoordinateModelCopyWithImpl;
   @useResult
   $Res call(
-      {@JsonKey(name: CoordinateModel.coordinateKey) dynamic coordinate,
+      {@JsonKey(name: CoordinateModel.coordinateKey) dynamic? coordinate,
       @JsonKey(name: CoordinateModel.latitudeKey) double? latitude,
       @JsonKey(name: CoordinateModel.longitudeKey) double? longitude});
 }
@@ -94,7 +94,7 @@ class _$CoordinateModelCopyWithImpl<$Res>
       coordinate: freezed == coordinate
           ? _self.coordinate
           : coordinate // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as dynamic?,
       latitude: freezed == latitude
           ? _self.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
@@ -122,7 +122,7 @@ class _CoordinateModel extends CoordinateModel {
   /// coordinate
   @override
   @JsonKey(name: CoordinateModel.coordinateKey)
-  final dynamic coordinate;
+  final dynamic? coordinate;
 
   /// latitude
   @override
@@ -182,7 +182,7 @@ abstract mixin class _$CoordinateModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: CoordinateModel.coordinateKey) dynamic coordinate,
+      {@JsonKey(name: CoordinateModel.coordinateKey) dynamic? coordinate,
       @JsonKey(name: CoordinateModel.latitudeKey) double? latitude,
       @JsonKey(name: CoordinateModel.longitudeKey) double? longitude});
 }
@@ -208,7 +208,7 @@ class __$CoordinateModelCopyWithImpl<$Res>
       coordinate: freezed == coordinate
           ? _self.coordinate
           : coordinate // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as dynamic?,
       latitude: freezed == latitude
           ? _self.latitude
           : latitude // ignore: cast_nullable_to_non_nullable

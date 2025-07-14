@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 mixin _$ColorModel {
   /// color
   @JsonKey(name: ColorModel.colorKey)
-  String get color;
+  Color get color;
 
   /// Create a copy of ColorModel
   /// with the given fields replaced by the non-null parameter values.
@@ -52,7 +52,7 @@ abstract mixin class $ColorModelCopyWith<$Res> {
           ColorModel value, $Res Function(ColorModel) _then) =
       _$ColorModelCopyWithImpl;
   @useResult
-  $Res call({@JsonKey(name: ColorModel.colorKey) String color});
+  $Res call({@JsonKey(name: ColorModel.colorKey) Color color});
 }
 
 /// @nodoc
@@ -73,7 +73,7 @@ class _$ColorModelCopyWithImpl<$Res> implements $ColorModelCopyWith<$Res> {
       color: null == color
           ? _self.color
           : color // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Color,
     ));
   }
 }
@@ -90,7 +90,7 @@ class _ColorModel extends ColorModel {
   /// color
   @override
   @JsonKey(name: ColorModel.colorKey)
-  final String color;
+  final Color color;
 
   /// Create a copy of ColorModel
   /// with the given fields replaced by the non-null parameter values.
@@ -133,7 +133,7 @@ abstract mixin class _$ColorModelCopyWith<$Res>
       __$ColorModelCopyWithImpl;
   @override
   @useResult
-  $Res call({@JsonKey(name: ColorModel.colorKey) String color});
+  $Res call({@JsonKey(name: ColorModel.colorKey) Color color});
 }
 
 /// @nodoc
@@ -154,7 +154,7 @@ class __$ColorModelCopyWithImpl<$Res> implements _$ColorModelCopyWith<$Res> {
       color: null == color
           ? _self.color
           : color // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Color,
     ));
   }
 }

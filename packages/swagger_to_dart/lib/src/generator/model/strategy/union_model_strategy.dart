@@ -285,7 +285,7 @@ class UnionModelStrategy
           for (final refSchema in schemas.whereType<OpenApiSchemaRef>())
             refSchema.name: refSchema,
         },
-        discriminator: null,
+        discriminator: schema.discriminator,
       ),
     );
 

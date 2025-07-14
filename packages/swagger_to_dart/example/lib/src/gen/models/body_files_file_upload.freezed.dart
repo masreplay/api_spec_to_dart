@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 mixin _$BodyFilesFileUpload {
   /// file
   @JsonKey(name: BodyFilesFileUpload.fileKey)
-  String get file;
+  MultipartFile get file;
 
   /// description
   @JsonKey(name: BodyFilesFileUpload.descriptionKey)
@@ -60,7 +60,7 @@ abstract mixin class $BodyFilesFileUploadCopyWith<$Res> {
       _$BodyFilesFileUploadCopyWithImpl;
   @useResult
   $Res call(
-      {@JsonKey(name: BodyFilesFileUpload.fileKey) String file,
+      {@JsonKey(name: BodyFilesFileUpload.fileKey) MultipartFile file,
       @JsonKey(name: BodyFilesFileUpload.descriptionKey) String? description});
 }
 
@@ -84,7 +84,7 @@ class _$BodyFilesFileUploadCopyWithImpl<$Res>
       file: null == file
           ? _self.file
           : file // ignore: cast_nullable_to_non_nullable
-              as String,
+              as MultipartFile,
       description: freezed == description
           ? _self.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -108,7 +108,7 @@ class _BodyFilesFileUpload extends BodyFilesFileUpload {
   /// file
   @override
   @JsonKey(name: BodyFilesFileUpload.fileKey)
-  final String file;
+  final MultipartFile file;
 
   /// description
   @override
@@ -160,7 +160,7 @@ abstract mixin class _$BodyFilesFileUploadCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: BodyFilesFileUpload.fileKey) String file,
+      {@JsonKey(name: BodyFilesFileUpload.fileKey) MultipartFile file,
       @JsonKey(name: BodyFilesFileUpload.descriptionKey) String? description});
 }
 
@@ -184,7 +184,7 @@ class __$BodyFilesFileUploadCopyWithImpl<$Res>
       file: null == file
           ? _self.file
           : file // ignore: cast_nullable_to_non_nullable
-              as String,
+              as MultipartFile,
       description: freezed == description
           ? _self.description
           : description // ignore: cast_nullable_to_non_nullable
