@@ -26,7 +26,41 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
       (entry) => entry.value == dartType,
     );
 
-    return override?.key ?? dartType;
+    final finalType = override?.key ?? dartType;
+
+    if (_isNullable(schema)) {
+      return _makeNullable(finalType);
+    }
+
+    return finalType;
+  }
+
+  bool _isNullable(OpenApiSchema schema) {
+    return switch (schema) {
+      OpenApiSchemaType schema => schema.nullable == true,
+      OpenApiSchemaRef schema => schema.nullable == true,
+      OpenApiSchemaAnyOf schema =>
+        schema.nullable == true || _hasNullInAnyOf(schema.anyOf),
+      OpenApiSchemaOneOf schema =>
+        schema.nullable == true || _hasNullInOneOf(schema.oneOf),
+    };
+  }
+
+  bool _hasNullInAnyOf(List<OpenApiSchema> schemas) {
+    return schemas.any(
+        (e) => e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_);
+  }
+
+  bool _hasNullInOneOf(List<OpenApiSchema> schemas) {
+    return schemas.any(
+        (e) => e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_);
+  }
+
+  String _makeNullable(String dartType) {
+    if (dartType.endsWith('?')) {
+      return dartType;
+    }
+    return '$dartType?';
   }
 
   String getRef(OpenApiSchemaRef schema) {
@@ -73,7 +107,6 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
     }
   }
 
-// Handles nested generics splitting: Pagination[Source[Item], Meta] => [Source[Item], Meta]
   List<String> _splitGenerics(String input) {
     final parts = <String>[];
     final buffer = StringBuffer();
@@ -105,15 +138,13 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
     final schemas = anyOf.where((e) {
       return !(e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_);
     }).toList();
-    final isNullable = schemas.length != anyOf.length;
 
     if (schemas.length == 1) {
-      final dartType = get(
+      return get(
         schemas.first,
         parent: schema,
         className: className,
       );
-      return dartType + (isNullable ? '?' : '');
     }
 
     if (schemas.every((e) => e is OpenApiSchemaRef)) {
@@ -244,7 +275,6 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
     switch (schema) {
       case OpenApiSchemaType schema:
         if (schema.enum_ != null) {
-          // TODO(masreplay): fix enum name
           final name = schema.title ?? parent?.title ?? 'TemporaryEnum';
           final className = Renaming.instance.renameEnum(name);
 

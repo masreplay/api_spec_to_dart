@@ -21,6 +21,7 @@ sealed class OpenApiSchema with _$OpenApiSchema {
     @JsonKey(name: 'const') Object? const_,
     @JsonKey(name: 'default') Object? default_,
     @JsonKey(name: 'title') String? title,
+    @JsonKey(name: 'nullable') bool? nullable,  
   }) = OpenApiSchemaType;
 
   @FreezedUnionValue('ref')
@@ -29,6 +30,7 @@ sealed class OpenApiSchema with _$OpenApiSchema {
     @JsonKey(name: 'description') String? description,
     @JsonKey(name: 'default') Object? default_,
     @JsonKey(name: 'title') String? title,
+    @JsonKey(name: 'nullable') bool? nullable,
   }) = OpenApiSchemaRef;
 
   @FreezedUnionValue('anyOf')
@@ -40,6 +42,7 @@ sealed class OpenApiSchema with _$OpenApiSchema {
     @JsonKey(name: 'description') String? description,
     @JsonKey(name: 'title') String? title,
     @JsonKey(name: 'default') Object? default_,
+    @JsonKey(name: 'nullable') bool? nullable,
   }) = OpenApiSchemaAnyOf;
 
   @FreezedUnionValue('oneOf')
@@ -53,6 +56,7 @@ sealed class OpenApiSchema with _$OpenApiSchema {
     @JsonKey(name: 'discriminator')
     required OpenApiSchemaOneOfDiscriminator? discriminator,
     @JsonKey(name: 'default') Object? default_,
+    @JsonKey(name: 'nullable') bool? nullable,
   }) = OpenApiSchemaOneOf;
 
   factory OpenApiSchema.fromJson(Map<String, dynamic> json) {

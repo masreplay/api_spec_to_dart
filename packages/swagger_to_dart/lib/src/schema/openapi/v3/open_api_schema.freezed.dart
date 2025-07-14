@@ -36,6 +36,8 @@ mixin _$OpenApiSchema {
   Object? get default_;
   @JsonKey(name: 'title')
   String? get title;
+  @JsonKey(name: 'nullable')
+  bool? get nullable;
 
   /// Create a copy of OpenApiSchema
   /// with the given fields replaced by the non-null parameter values.
@@ -56,17 +58,19 @@ mixin _$OpenApiSchema {
             (identical(other.description, description) ||
                 other.description == description) &&
             const DeepCollectionEquality().equals(other.default_, default_) &&
-            (identical(other.title, title) || other.title == title));
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.nullable, nullable) ||
+                other.nullable == nullable));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, description,
-      const DeepCollectionEquality().hash(default_), title);
+      const DeepCollectionEquality().hash(default_), title, nullable);
 
   @override
   String toString() {
-    return 'OpenApiSchema(description: $description, default_: $default_, title: $title)';
+    return 'OpenApiSchema(description: $description, default_: $default_, title: $title, nullable: $nullable)';
   }
 }
 
@@ -79,7 +83,8 @@ abstract mixin class $OpenApiSchemaCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'description') String? description,
       @JsonKey(name: 'default') Object? default_,
-      @JsonKey(name: 'title') String? title});
+      @JsonKey(name: 'title') String? title,
+      @JsonKey(name: 'nullable') bool? nullable});
 }
 
 /// @nodoc
@@ -98,6 +103,7 @@ class _$OpenApiSchemaCopyWithImpl<$Res>
     Object? description = freezed,
     Object? default_ = freezed,
     Object? title = freezed,
+    Object? nullable = freezed,
   }) {
     return _then(_self.copyWith(
       description: freezed == description
@@ -109,6 +115,10 @@ class _$OpenApiSchemaCopyWithImpl<$Res>
           ? _self.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
+      nullable: freezed == nullable
+          ? _self.nullable
+          : nullable // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -129,6 +139,7 @@ class OpenApiSchemaType extends OpenApiSchema {
       @JsonKey(name: 'const') this.const_,
       @JsonKey(name: 'default') this.default_,
       @JsonKey(name: 'title') this.title,
+      @JsonKey(name: 'nullable') this.nullable,
       final String? $type})
       : _enum_ = enum_,
         $type = $type ?? 'type',
@@ -170,6 +181,9 @@ class OpenApiSchemaType extends OpenApiSchema {
   @override
   @JsonKey(name: 'title')
   final String? title;
+  @override
+  @JsonKey(name: 'nullable')
+  final bool? nullable;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -207,7 +221,9 @@ class OpenApiSchemaType extends OpenApiSchema {
             (identical(other.pattern, pattern) || other.pattern == pattern) &&
             const DeepCollectionEquality().equals(other.const_, const_) &&
             const DeepCollectionEquality().equals(other.default_, default_) &&
-            (identical(other.title, title) || other.title == title));
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.nullable, nullable) ||
+                other.nullable == nullable));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -224,11 +240,12 @@ class OpenApiSchemaType extends OpenApiSchema {
       pattern,
       const DeepCollectionEquality().hash(const_),
       const DeepCollectionEquality().hash(default_),
-      title);
+      title,
+      nullable);
 
   @override
   String toString() {
-    return 'OpenApiSchema.type(enum_: $enum_, type: $type, items: $items, maxLength: $maxLength, minLength: $minLength, format: $format, description: $description, pattern: $pattern, const_: $const_, default_: $default_, title: $title)';
+    return 'OpenApiSchema.type(enum_: $enum_, type: $type, items: $items, maxLength: $maxLength, minLength: $minLength, format: $format, description: $description, pattern: $pattern, const_: $const_, default_: $default_, title: $title, nullable: $nullable)';
   }
 }
 
@@ -254,7 +271,8 @@ abstract mixin class $OpenApiSchemaTypeCopyWith<$Res>
       @JsonKey(name: 'pattern') String? pattern,
       @JsonKey(name: 'const') Object? const_,
       @JsonKey(name: 'default') Object? default_,
-      @JsonKey(name: 'title') String? title});
+      @JsonKey(name: 'title') String? title,
+      @JsonKey(name: 'nullable') bool? nullable});
 
   $OpenApiSchemaCopyWith<$Res>? get items;
 }
@@ -283,6 +301,7 @@ class _$OpenApiSchemaTypeCopyWithImpl<$Res>
     Object? const_ = freezed,
     Object? default_ = freezed,
     Object? title = freezed,
+    Object? nullable = freezed,
   }) {
     return _then(OpenApiSchemaType(
       enum_: freezed == enum_
@@ -323,6 +342,10 @@ class _$OpenApiSchemaTypeCopyWithImpl<$Res>
           ? _self.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
+      nullable: freezed == nullable
+          ? _self.nullable
+          : nullable // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 
@@ -349,6 +372,7 @@ class OpenApiSchemaRef extends OpenApiSchema {
       @JsonKey(name: 'description') this.description,
       @JsonKey(name: 'default') this.default_,
       @JsonKey(name: 'title') this.title,
+      @JsonKey(name: 'nullable') this.nullable,
       final String? $type})
       : $type = $type ?? 'ref',
         super._();
@@ -366,6 +390,9 @@ class OpenApiSchemaRef extends OpenApiSchema {
   @override
   @JsonKey(name: 'title')
   final String? title;
+  @override
+  @JsonKey(name: 'nullable')
+  final bool? nullable;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -394,17 +421,19 @@ class OpenApiSchemaRef extends OpenApiSchema {
             (identical(other.description, description) ||
                 other.description == description) &&
             const DeepCollectionEquality().equals(other.default_, default_) &&
-            (identical(other.title, title) || other.title == title));
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.nullable, nullable) ||
+                other.nullable == nullable));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, ref, description,
-      const DeepCollectionEquality().hash(default_), title);
+      const DeepCollectionEquality().hash(default_), title, nullable);
 
   @override
   String toString() {
-    return 'OpenApiSchema.ref(ref: $ref, description: $description, default_: $default_, title: $title)';
+    return 'OpenApiSchema.ref(ref: $ref, description: $description, default_: $default_, title: $title, nullable: $nullable)';
   }
 }
 
@@ -420,7 +449,8 @@ abstract mixin class $OpenApiSchemaRefCopyWith<$Res>
       {@JsonKey(name: r'$ref') String? ref,
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'default') Object? default_,
-      @JsonKey(name: 'title') String? title});
+      @JsonKey(name: 'title') String? title,
+      @JsonKey(name: 'nullable') bool? nullable});
 }
 
 /// @nodoc
@@ -440,6 +470,7 @@ class _$OpenApiSchemaRefCopyWithImpl<$Res>
     Object? description = freezed,
     Object? default_ = freezed,
     Object? title = freezed,
+    Object? nullable = freezed,
   }) {
     return _then(OpenApiSchemaRef(
       ref: freezed == ref
@@ -455,6 +486,10 @@ class _$OpenApiSchemaRefCopyWithImpl<$Res>
           ? _self.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
+      nullable: freezed == nullable
+          ? _self.nullable
+          : nullable // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -469,6 +504,7 @@ class OpenApiSchemaAnyOf extends OpenApiSchema {
       @JsonKey(name: 'description') this.description,
       @JsonKey(name: 'title') this.title,
       @JsonKey(name: 'default') this.default_,
+      @JsonKey(name: 'nullable') this.nullable,
       final String? $type})
       : _anyOf = anyOf,
         $type = $type ?? 'anyOf',
@@ -494,6 +530,9 @@ class OpenApiSchemaAnyOf extends OpenApiSchema {
   @override
   @JsonKey(name: 'default')
   final Object? default_;
+  @override
+  @JsonKey(name: 'nullable')
+  final bool? nullable;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -522,7 +561,9 @@ class OpenApiSchemaAnyOf extends OpenApiSchema {
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.title, title) || other.title == title) &&
-            const DeepCollectionEquality().equals(other.default_, default_));
+            const DeepCollectionEquality().equals(other.default_, default_) &&
+            (identical(other.nullable, nullable) ||
+                other.nullable == nullable));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -532,11 +573,12 @@ class OpenApiSchemaAnyOf extends OpenApiSchema {
       const DeepCollectionEquality().hash(_anyOf),
       description,
       title,
-      const DeepCollectionEquality().hash(default_));
+      const DeepCollectionEquality().hash(default_),
+      nullable);
 
   @override
   String toString() {
-    return 'OpenApiSchema.anyOf(anyOf: $anyOf, description: $description, title: $title, default_: $default_)';
+    return 'OpenApiSchema.anyOf(anyOf: $anyOf, description: $description, title: $title, default_: $default_, nullable: $nullable)';
   }
 }
 
@@ -554,7 +596,8 @@ abstract mixin class $OpenApiSchemaAnyOfCopyWith<$Res>
       List<OpenApiSchema> anyOf,
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'title') String? title,
-      @JsonKey(name: 'default') Object? default_});
+      @JsonKey(name: 'default') Object? default_,
+      @JsonKey(name: 'nullable') bool? nullable});
 }
 
 /// @nodoc
@@ -574,6 +617,7 @@ class _$OpenApiSchemaAnyOfCopyWithImpl<$Res>
     Object? description = freezed,
     Object? title = freezed,
     Object? default_ = freezed,
+    Object? nullable = freezed,
   }) {
     return _then(OpenApiSchemaAnyOf(
       anyOf: null == anyOf
@@ -589,6 +633,10 @@ class _$OpenApiSchemaAnyOfCopyWithImpl<$Res>
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
       default_: freezed == default_ ? _self.default_ : default_,
+      nullable: freezed == nullable
+          ? _self.nullable
+          : nullable // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -604,6 +652,7 @@ class OpenApiSchemaOneOf extends OpenApiSchema {
       @JsonKey(name: 'title') this.title,
       @JsonKey(name: 'discriminator') required this.discriminator,
       @JsonKey(name: 'default') this.default_,
+      @JsonKey(name: 'nullable') this.nullable,
       final String? $type})
       : _oneOf = oneOf,
         $type = $type ?? 'oneOf',
@@ -631,6 +680,9 @@ class OpenApiSchemaOneOf extends OpenApiSchema {
   @override
   @JsonKey(name: 'default')
   final Object? default_;
+  @override
+  @JsonKey(name: 'nullable')
+  final bool? nullable;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -661,7 +713,9 @@ class OpenApiSchemaOneOf extends OpenApiSchema {
             (identical(other.title, title) || other.title == title) &&
             (identical(other.discriminator, discriminator) ||
                 other.discriminator == discriminator) &&
-            const DeepCollectionEquality().equals(other.default_, default_));
+            const DeepCollectionEquality().equals(other.default_, default_) &&
+            (identical(other.nullable, nullable) ||
+                other.nullable == nullable));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -672,11 +726,12 @@ class OpenApiSchemaOneOf extends OpenApiSchema {
       description,
       title,
       discriminator,
-      const DeepCollectionEquality().hash(default_));
+      const DeepCollectionEquality().hash(default_),
+      nullable);
 
   @override
   String toString() {
-    return 'OpenApiSchema.oneOf(oneOf: $oneOf, description: $description, title: $title, discriminator: $discriminator, default_: $default_)';
+    return 'OpenApiSchema.oneOf(oneOf: $oneOf, description: $description, title: $title, discriminator: $discriminator, default_: $default_, nullable: $nullable)';
   }
 }
 
@@ -696,7 +751,8 @@ abstract mixin class $OpenApiSchemaOneOfCopyWith<$Res>
       @JsonKey(name: 'title') String? title,
       @JsonKey(name: 'discriminator')
       OpenApiSchemaOneOfDiscriminator? discriminator,
-      @JsonKey(name: 'default') Object? default_});
+      @JsonKey(name: 'default') Object? default_,
+      @JsonKey(name: 'nullable') bool? nullable});
 
   $OpenApiSchemaOneOfDiscriminatorCopyWith<$Res>? get discriminator;
 }
@@ -719,6 +775,7 @@ class _$OpenApiSchemaOneOfCopyWithImpl<$Res>
     Object? title = freezed,
     Object? discriminator = freezed,
     Object? default_ = freezed,
+    Object? nullable = freezed,
   }) {
     return _then(OpenApiSchemaOneOf(
       oneOf: null == oneOf
@@ -738,6 +795,10 @@ class _$OpenApiSchemaOneOfCopyWithImpl<$Res>
           : discriminator // ignore: cast_nullable_to_non_nullable
               as OpenApiSchemaOneOfDiscriminator?,
       default_: freezed == default_ ? _self.default_ : default_,
+      nullable: freezed == nullable
+          ? _self.nullable
+          : nullable // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 

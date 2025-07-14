@@ -21,6 +21,7 @@ OpenApiSchemaType _$OpenApiSchemaTypeFromJson(Map<String, dynamic> json) =>
       const_: json['const'],
       default_: json['default'],
       title: json['title'] as String?,
+      nullable: json['nullable'] as bool?,
       $type: json['runtimeType'] as String?,
     );
 
@@ -41,6 +42,7 @@ Map<String, dynamic> _$OpenApiSchemaTypeToJson(OpenApiSchemaType instance) =>
       if (instance.const_ case final value?) 'const': value,
       if (instance.default_ case final value?) 'default': value,
       if (instance.title case final value?) 'title': value,
+      if (instance.nullable case final value?) 'nullable': value,
       'runtimeType': instance.$type,
     };
 
@@ -73,6 +75,7 @@ OpenApiSchemaRef _$OpenApiSchemaRefFromJson(Map<String, dynamic> json) =>
       description: json['description'] as String?,
       default_: json['default'],
       title: json['title'] as String?,
+      nullable: json['nullable'] as bool?,
       $type: json['runtimeType'] as String?,
     );
 
@@ -82,6 +85,7 @@ Map<String, dynamic> _$OpenApiSchemaRefToJson(OpenApiSchemaRef instance) =>
       if (instance.description case final value?) 'description': value,
       if (instance.default_ case final value?) 'default': value,
       if (instance.title case final value?) 'title': value,
+      if (instance.nullable case final value?) 'nullable': value,
       'runtimeType': instance.$type,
     };
 
@@ -95,6 +99,7 @@ OpenApiSchemaAnyOf _$OpenApiSchemaAnyOfFromJson(Map<String, dynamic> json) =>
       description: json['description'] as String?,
       title: json['title'] as String?,
       default_: json['default'],
+      nullable: json['nullable'] as bool?,
       $type: json['runtimeType'] as String?,
     );
 
@@ -106,6 +111,7 @@ Map<String, dynamic> _$OpenApiSchemaAnyOfToJson(OpenApiSchemaAnyOf instance) =>
       if (instance.description case final value?) 'description': value,
       if (instance.title case final value?) 'title': value,
       if (instance.default_ case final value?) 'default': value,
+      if (instance.nullable case final value?) 'nullable': value,
       'runtimeType': instance.$type,
     };
 
@@ -123,6 +129,7 @@ OpenApiSchemaOneOf _$OpenApiSchemaOneOfFromJson(Map<String, dynamic> json) =>
           : OpenApiSchemaOneOfDiscriminator.fromJson(
               json['discriminator'] as Map<String, dynamic>),
       default_: json['default'],
+      nullable: json['nullable'] as bool?,
       $type: json['runtimeType'] as String?,
     );
 
@@ -136,6 +143,7 @@ Map<String, dynamic> _$OpenApiSchemaOneOfToJson(OpenApiSchemaOneOf instance) =>
       if (instance.discriminator?.toJson() case final value?)
         'discriminator': value,
       if (instance.default_ case final value?) 'default': value,
+      if (instance.nullable case final value?) 'nullable': value,
       'runtimeType': instance.$type,
     };
 
