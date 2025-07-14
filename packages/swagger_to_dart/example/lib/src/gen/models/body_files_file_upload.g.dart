@@ -8,13 +8,14 @@ part of 'body_files_file_upload.dart';
 
 _BodyFilesFileUpload _$BodyFilesFileUploadFromJson(Map<String, dynamic> json) =>
     _BodyFilesFileUpload(
-      file: json['file'] as String,
+      file: const MultipartFileJsonConverter()
+          .fromJson(json['file'] as MultipartFile),
       description: json['description'] as String?,
     );
 
 Map<String, dynamic> _$BodyFilesFileUploadToJson(
         _BodyFilesFileUpload instance) =>
     <String, dynamic>{
-      'file': instance.file,
+      'file': const MultipartFileJsonConverter().toJson(instance.file),
       if (instance.description case final value?) 'description': value,
     };

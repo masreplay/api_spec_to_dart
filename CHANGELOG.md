@@ -1,3 +1,7 @@
+## 3.2.0
+
+- Add support `discriminator` in `anyOf` and `oneOf` and use `propertyName` for freezed `unionKey`
+
 ## 3.1.1
 
 - Add support to `nullable` flag in `schema`

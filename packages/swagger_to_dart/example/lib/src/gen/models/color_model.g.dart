@@ -7,10 +7,10 @@ part of 'color_model.dart';
 // **************************************************************************
 
 _ColorModel _$ColorModelFromJson(Map<String, dynamic> json) => _ColorModel(
-      color: json['color'] as String,
+      color: const ColorStringJsonConverter().fromJson(json['color'] as String),
     );
 
 Map<String, dynamic> _$ColorModelToJson(_ColorModel instance) =>
     <String, dynamic>{
-      'color': instance.color,
+      'color': const ColorStringJsonConverter().toJson(instance.color),
     };

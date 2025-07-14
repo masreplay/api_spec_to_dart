@@ -100,6 +100,10 @@ OpenApiSchemaAnyOf _$OpenApiSchemaAnyOfFromJson(Map<String, dynamic> json) =>
       title: json['title'] as String?,
       default_: json['default'],
       nullable: json['nullable'] as bool?,
+      discriminator: json['discriminator'] == null
+          ? null
+          : OpenApiSchemaOneOfDiscriminator.fromJson(
+              json['discriminator'] as Map<String, dynamic>),
       $type: json['runtimeType'] as String?,
     );
 
@@ -112,6 +116,8 @@ Map<String, dynamic> _$OpenApiSchemaAnyOfToJson(OpenApiSchemaAnyOf instance) =>
       if (instance.title case final value?) 'title': value,
       if (instance.default_ case final value?) 'default': value,
       if (instance.nullable case final value?) 'nullable': value,
+      if (instance.discriminator?.toJson() case final value?)
+        'discriminator': value,
       'runtimeType': instance.$type,
     };
 

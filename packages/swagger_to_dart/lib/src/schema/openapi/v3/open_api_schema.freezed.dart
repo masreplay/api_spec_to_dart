@@ -505,6 +505,7 @@ class OpenApiSchemaAnyOf extends OpenApiSchema {
       @JsonKey(name: 'title') this.title,
       @JsonKey(name: 'default') this.default_,
       @JsonKey(name: 'nullable') this.nullable,
+      @JsonKey(name: 'discriminator') required this.discriminator,
       final String? $type})
       : _anyOf = anyOf,
         $type = $type ?? 'anyOf',
@@ -533,6 +534,8 @@ class OpenApiSchemaAnyOf extends OpenApiSchema {
   @override
   @JsonKey(name: 'nullable')
   final bool? nullable;
+  @JsonKey(name: 'discriminator')
+  final OpenApiSchemaOneOfDiscriminator? discriminator;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -563,7 +566,9 @@ class OpenApiSchemaAnyOf extends OpenApiSchema {
             (identical(other.title, title) || other.title == title) &&
             const DeepCollectionEquality().equals(other.default_, default_) &&
             (identical(other.nullable, nullable) ||
-                other.nullable == nullable));
+                other.nullable == nullable) &&
+            (identical(other.discriminator, discriminator) ||
+                other.discriminator == discriminator));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -574,11 +579,12 @@ class OpenApiSchemaAnyOf extends OpenApiSchema {
       description,
       title,
       const DeepCollectionEquality().hash(default_),
-      nullable);
+      nullable,
+      discriminator);
 
   @override
   String toString() {
-    return 'OpenApiSchema.anyOf(anyOf: $anyOf, description: $description, title: $title, default_: $default_, nullable: $nullable)';
+    return 'OpenApiSchema.anyOf(anyOf: $anyOf, description: $description, title: $title, default_: $default_, nullable: $nullable, discriminator: $discriminator)';
   }
 }
 
@@ -597,7 +603,11 @@ abstract mixin class $OpenApiSchemaAnyOfCopyWith<$Res>
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'title') String? title,
       @JsonKey(name: 'default') Object? default_,
-      @JsonKey(name: 'nullable') bool? nullable});
+      @JsonKey(name: 'nullable') bool? nullable,
+      @JsonKey(name: 'discriminator')
+      OpenApiSchemaOneOfDiscriminator? discriminator});
+
+  $OpenApiSchemaOneOfDiscriminatorCopyWith<$Res>? get discriminator;
 }
 
 /// @nodoc
@@ -618,6 +628,7 @@ class _$OpenApiSchemaAnyOfCopyWithImpl<$Res>
     Object? title = freezed,
     Object? default_ = freezed,
     Object? nullable = freezed,
+    Object? discriminator = freezed,
   }) {
     return _then(OpenApiSchemaAnyOf(
       anyOf: null == anyOf
@@ -637,7 +648,26 @@ class _$OpenApiSchemaAnyOfCopyWithImpl<$Res>
           ? _self.nullable
           : nullable // ignore: cast_nullable_to_non_nullable
               as bool?,
+      discriminator: freezed == discriminator
+          ? _self.discriminator
+          : discriminator // ignore: cast_nullable_to_non_nullable
+              as OpenApiSchemaOneOfDiscriminator?,
     ));
+  }
+
+  /// Create a copy of OpenApiSchema
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $OpenApiSchemaOneOfDiscriminatorCopyWith<$Res>? get discriminator {
+    if (_self.discriminator == null) {
+      return null;
+    }
+
+    return $OpenApiSchemaOneOfDiscriminatorCopyWith<$Res>(_self.discriminator!,
+        (value) {
+      return _then(_self.copyWith(discriminator: value));
+    });
   }
 }
 

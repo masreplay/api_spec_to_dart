@@ -43,6 +43,8 @@ sealed class OpenApiSchema with _$OpenApiSchema {
     @JsonKey(name: 'title') String? title,
     @JsonKey(name: 'default') Object? default_,
     @JsonKey(name: 'nullable') bool? nullable,
+    @JsonKey(name: 'discriminator')
+    required OpenApiSchemaOneOfDiscriminator? discriminator,
   }) = OpenApiSchemaAnyOf;
 
   @FreezedUnionValue('oneOf')
