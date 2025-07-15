@@ -301,11 +301,11 @@ class UnionModelStrategy
     string.write('$Freezed(');
 
     if (unionClassFallbackName != null) {
-      string.write('fallbackUnion: r"$unionClassFallbackName"');
+      string.write('fallbackUnion: r"$unionClassFallbackName", ');
     }
 
     if (unionKey != null) {
-      string.write('unionKey: r"$unionKey"');
+      string.write('unionKey: r"$unionKey", ');
     }
 
     string.write(')');
