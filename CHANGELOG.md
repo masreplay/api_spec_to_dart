@@ -1,3 +1,7 @@
+## 3.2.0
+
+- Allow nullable `schema` in method parameters
+
 ## 3.1.1
 
 - Add support to `nullable` flag in `schema`
