@@ -1,4 +1,4 @@
-## 3.3.1
+## 3.4.0
 
 - Fix names ends with `?` prefix renamed to `Nullable` for file and class
 

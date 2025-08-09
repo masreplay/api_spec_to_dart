@@ -4,5 +4,8 @@ g:
 s:
 	make -C example s
 
+delete-tag:
+	git tag -d v$(shell yq e '.version' pubspec.yaml)
+
 publish:
-	git tag -fa "v$(yq -r .version pubspec.yaml)" -m "Release" && git push --tag
+	git tag -fa v$(shell yq e '.version' pubspec.yaml) -m "Release" && git push --tags -f
