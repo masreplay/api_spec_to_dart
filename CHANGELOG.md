@@ -1,6 +1,14 @@
-## 3.2.0
+## 3.3.0
 
 - Allow nullable `schema` in method parameters
+
+## 3.2.1
+
+- Fix `Freezed` annotation with union freezed classes
+
+## 3.2.0
+
+- Add support `discriminator` in `anyOf` and `oneOf` and use `propertyName` for freezed `unionKey`
 
 ## 3.1.1
 
