@@ -91,6 +91,8 @@ class Renaming {
         '|': 'pipe',
         '&': 'ampersand',
         '^': 'caret',
+        '?': 'nullable',
+        '!': 'not_null',
       };
 
       for (final entry in extra.entries) {
