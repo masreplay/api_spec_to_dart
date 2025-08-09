@@ -39,7 +39,7 @@ abstract class BodyFilesFileUpload with _$BodyFilesFileUpload {
   @jsonSerializable
   const factory BodyFilesFileUpload({
     /// file
-    @JsonKey(name: BodyFilesFileUpload.fileKey) required String file,
+    @JsonKey(name: BodyFilesFileUpload.fileKey) required MultipartFile file,
 
     /// description
     @JsonKey(name: BodyFilesFileUpload.descriptionKey)

@@ -10,11 +10,12 @@ _BasicDatetimeTimedeltaQueryParameters
     _$BasicDatetimeTimedeltaQueryParametersFromJson(
             Map<String, dynamic> json) =>
         _BasicDatetimeTimedeltaQueryParameters(
-          td: json['td'] as String,
+          td: const TimeOfDayStringJsonConverter()
+              .fromJson(json['td'] as String),
         );
 
 Map<String, dynamic> _$BasicDatetimeTimedeltaQueryParametersToJson(
         _BasicDatetimeTimedeltaQueryParameters instance) =>
     <String, dynamic>{
-      'td': instance.td,
+      'td': const TimeOfDayStringJsonConverter().toJson(instance.td),
     };

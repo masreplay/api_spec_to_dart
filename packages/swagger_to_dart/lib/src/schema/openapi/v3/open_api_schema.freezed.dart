@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -120,6 +119,381 @@ class _$OpenApiSchemaCopyWithImpl<$Res>
           : nullable // ignore: cast_nullable_to_non_nullable
               as bool?,
     ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [OpenApiSchema].
+extension OpenApiSchemaPatterns on OpenApiSchema {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(OpenApiSchemaType value)? type,
+    TResult Function(OpenApiSchemaRef value)? ref,
+    TResult Function(OpenApiSchemaAnyOf value)? anyOf,
+    TResult Function(OpenApiSchemaOneOf value)? oneOf,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case OpenApiSchemaType() when type != null:
+        return type(_that);
+      case OpenApiSchemaRef() when ref != null:
+        return ref(_that);
+      case OpenApiSchemaAnyOf() when anyOf != null:
+        return anyOf(_that);
+      case OpenApiSchemaOneOf() when oneOf != null:
+        return oneOf(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(OpenApiSchemaType value) type,
+    required TResult Function(OpenApiSchemaRef value) ref,
+    required TResult Function(OpenApiSchemaAnyOf value) anyOf,
+    required TResult Function(OpenApiSchemaOneOf value) oneOf,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case OpenApiSchemaType():
+        return type(_that);
+      case OpenApiSchemaRef():
+        return ref(_that);
+      case OpenApiSchemaAnyOf():
+        return anyOf(_that);
+      case OpenApiSchemaOneOf():
+        return oneOf(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OpenApiSchemaType value)? type,
+    TResult? Function(OpenApiSchemaRef value)? ref,
+    TResult? Function(OpenApiSchemaAnyOf value)? anyOf,
+    TResult? Function(OpenApiSchemaOneOf value)? oneOf,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case OpenApiSchemaType() when type != null:
+        return type(_that);
+      case OpenApiSchemaRef() when ref != null:
+        return ref(_that);
+      case OpenApiSchemaAnyOf() when anyOf != null:
+        return anyOf(_that);
+      case OpenApiSchemaOneOf() when oneOf != null:
+        return oneOf(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            @JsonKey(name: 'enum') List<String>? enum_,
+            @JsonKey(
+                name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
+            OpenApiSchemaVarType? type,
+            @OpenApiSchemaJsonConverter()
+            @JsonKey(name: 'items')
+            OpenApiSchema? items,
+            @JsonKey(name: 'maxLength') int? maxLength,
+            @JsonKey(name: 'minLength') int? minLength,
+            @JsonKey(name: 'format') String? format,
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'pattern') String? pattern,
+            @JsonKey(name: 'const') Object? const_,
+            @JsonKey(name: 'default') Object? default_,
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'nullable') bool? nullable)?
+        type,
+    TResult Function(
+            @JsonKey(name: r'$ref') String? ref,
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'default') Object? default_,
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'nullable') bool? nullable)?
+        ref,
+    TResult Function(
+            @OpenApiSchemaJsonConverter()
+            @JsonKey(name: 'anyOf')
+            List<OpenApiSchema> anyOf,
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'default') Object? default_,
+            @JsonKey(name: 'nullable') bool? nullable)?
+        anyOf,
+    TResult Function(
+            @OpenApiSchemaJsonConverter()
+            @JsonKey(name: 'oneOf')
+            List<OpenApiSchema> oneOf,
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'discriminator')
+            OpenApiSchemaOneOfDiscriminator? discriminator,
+            @JsonKey(name: 'default') Object? default_,
+            @JsonKey(name: 'nullable') bool? nullable)?
+        oneOf,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case OpenApiSchemaType() when type != null:
+        return type(
+            _that.enum_,
+            _that.type,
+            _that.items,
+            _that.maxLength,
+            _that.minLength,
+            _that.format,
+            _that.description,
+            _that.pattern,
+            _that.const_,
+            _that.default_,
+            _that.title,
+            _that.nullable);
+      case OpenApiSchemaRef() when ref != null:
+        return ref(_that.ref, _that.description, _that.default_, _that.title,
+            _that.nullable);
+      case OpenApiSchemaAnyOf() when anyOf != null:
+        return anyOf(_that.anyOf, _that.description, _that.title,
+            _that.default_, _that.nullable);
+      case OpenApiSchemaOneOf() when oneOf != null:
+        return oneOf(_that.oneOf, _that.description, _that.title,
+            _that.discriminator, _that.default_, _that.nullable);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            @JsonKey(name: 'enum') List<String>? enum_,
+            @JsonKey(
+                name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
+            OpenApiSchemaVarType? type,
+            @OpenApiSchemaJsonConverter()
+            @JsonKey(name: 'items')
+            OpenApiSchema? items,
+            @JsonKey(name: 'maxLength') int? maxLength,
+            @JsonKey(name: 'minLength') int? minLength,
+            @JsonKey(name: 'format') String? format,
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'pattern') String? pattern,
+            @JsonKey(name: 'const') Object? const_,
+            @JsonKey(name: 'default') Object? default_,
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'nullable') bool? nullable)
+        type,
+    required TResult Function(
+            @JsonKey(name: r'$ref') String? ref,
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'default') Object? default_,
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'nullable') bool? nullable)
+        ref,
+    required TResult Function(
+            @OpenApiSchemaJsonConverter()
+            @JsonKey(name: 'anyOf')
+            List<OpenApiSchema> anyOf,
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'default') Object? default_,
+            @JsonKey(name: 'nullable') bool? nullable)
+        anyOf,
+    required TResult Function(
+            @OpenApiSchemaJsonConverter()
+            @JsonKey(name: 'oneOf')
+            List<OpenApiSchema> oneOf,
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'discriminator')
+            OpenApiSchemaOneOfDiscriminator? discriminator,
+            @JsonKey(name: 'default') Object? default_,
+            @JsonKey(name: 'nullable') bool? nullable)
+        oneOf,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case OpenApiSchemaType():
+        return type(
+            _that.enum_,
+            _that.type,
+            _that.items,
+            _that.maxLength,
+            _that.minLength,
+            _that.format,
+            _that.description,
+            _that.pattern,
+            _that.const_,
+            _that.default_,
+            _that.title,
+            _that.nullable);
+      case OpenApiSchemaRef():
+        return ref(_that.ref, _that.description, _that.default_, _that.title,
+            _that.nullable);
+      case OpenApiSchemaAnyOf():
+        return anyOf(_that.anyOf, _that.description, _that.title,
+            _that.default_, _that.nullable);
+      case OpenApiSchemaOneOf():
+        return oneOf(_that.oneOf, _that.description, _that.title,
+            _that.discriminator, _that.default_, _that.nullable);
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            @JsonKey(name: 'enum') List<String>? enum_,
+            @JsonKey(
+                name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
+            OpenApiSchemaVarType? type,
+            @OpenApiSchemaJsonConverter()
+            @JsonKey(name: 'items')
+            OpenApiSchema? items,
+            @JsonKey(name: 'maxLength') int? maxLength,
+            @JsonKey(name: 'minLength') int? minLength,
+            @JsonKey(name: 'format') String? format,
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'pattern') String? pattern,
+            @JsonKey(name: 'const') Object? const_,
+            @JsonKey(name: 'default') Object? default_,
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'nullable') bool? nullable)?
+        type,
+    TResult? Function(
+            @JsonKey(name: r'$ref') String? ref,
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'default') Object? default_,
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'nullable') bool? nullable)?
+        ref,
+    TResult? Function(
+            @OpenApiSchemaJsonConverter()
+            @JsonKey(name: 'anyOf')
+            List<OpenApiSchema> anyOf,
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'default') Object? default_,
+            @JsonKey(name: 'nullable') bool? nullable)?
+        anyOf,
+    TResult? Function(
+            @OpenApiSchemaJsonConverter()
+            @JsonKey(name: 'oneOf')
+            List<OpenApiSchema> oneOf,
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'discriminator')
+            OpenApiSchemaOneOfDiscriminator? discriminator,
+            @JsonKey(name: 'default') Object? default_,
+            @JsonKey(name: 'nullable') bool? nullable)?
+        oneOf,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case OpenApiSchemaType() when type != null:
+        return type(
+            _that.enum_,
+            _that.type,
+            _that.items,
+            _that.maxLength,
+            _that.minLength,
+            _that.format,
+            _that.description,
+            _that.pattern,
+            _that.const_,
+            _that.default_,
+            _that.title,
+            _that.nullable);
+      case OpenApiSchemaRef() when ref != null:
+        return ref(_that.ref, _that.description, _that.default_, _that.title,
+            _that.nullable);
+      case OpenApiSchemaAnyOf() when anyOf != null:
+        return anyOf(_that.anyOf, _that.description, _that.title,
+            _that.default_, _that.nullable);
+      case OpenApiSchemaOneOf() when oneOf != null:
+        return oneOf(_that.oneOf, _that.description, _that.title,
+            _that.discriminator, _that.default_, _that.nullable);
+      case _:
+        return null;
+    }
   }
 }
 
@@ -896,6 +1270,170 @@ class _$OpenApiSchemaOneOfDiscriminatorCopyWithImpl<$Res>
           : mapping // ignore: cast_nullable_to_non_nullable
               as Map<String, String>,
     ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [OpenApiSchemaOneOfDiscriminator].
+extension OpenApiSchemaOneOfDiscriminatorPatterns
+    on OpenApiSchemaOneOfDiscriminator {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_OpenApiSchemaOneOfDiscriminator value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _OpenApiSchemaOneOfDiscriminator() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_OpenApiSchemaOneOfDiscriminator value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _OpenApiSchemaOneOfDiscriminator():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_OpenApiSchemaOneOfDiscriminator value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _OpenApiSchemaOneOfDiscriminator() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(@JsonKey(name: 'propertyName') String propertyName,
+            @JsonKey(name: 'mapping') Map<String, String> mapping)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _OpenApiSchemaOneOfDiscriminator() when $default != null:
+        return $default(_that.propertyName, _that.mapping);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(@JsonKey(name: 'propertyName') String propertyName,
+            @JsonKey(name: 'mapping') Map<String, String> mapping)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _OpenApiSchemaOneOfDiscriminator():
+        return $default(_that.propertyName, _that.mapping);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(@JsonKey(name: 'propertyName') String propertyName,
+            @JsonKey(name: 'mapping') Map<String, String> mapping)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _OpenApiSchemaOneOfDiscriminator() when $default != null:
+        return $default(_that.propertyName, _that.mapping);
+      case _:
+        return null;
+    }
   }
 }
 

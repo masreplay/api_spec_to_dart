@@ -26,7 +26,7 @@ abstract class ColorModel with _$ColorModel {
   @jsonSerializable
   const factory ColorModel({
     /// color
-    @JsonKey(name: ColorModel.colorKey) required String color,
+    @JsonKey(name: ColorModel.colorKey) required Color color,
   }) = _ColorModel;
 
   factory ColorModel.fromJson(Map<String, dynamic> json) =>

@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -16,7 +15,7 @@ T _$identity<T>(T value) => value;
 mixin _$ColorModel {
   /// color
   @JsonKey(name: ColorModel.colorKey)
-  String get color;
+  Color get color;
 
   /// Create a copy of ColorModel
   /// with the given fields replaced by the non-null parameter values.
@@ -52,7 +51,7 @@ abstract mixin class $ColorModelCopyWith<$Res> {
           ColorModel value, $Res Function(ColorModel) _then) =
       _$ColorModelCopyWithImpl;
   @useResult
-  $Res call({@JsonKey(name: ColorModel.colorKey) String color});
+  $Res call({@JsonKey(name: ColorModel.colorKey) Color color});
 }
 
 /// @nodoc
@@ -73,8 +72,167 @@ class _$ColorModelCopyWithImpl<$Res> implements $ColorModelCopyWith<$Res> {
       color: null == color
           ? _self.color
           : color // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Color,
     ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [ColorModel].
+extension ColorModelPatterns on ColorModel {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_ColorModel value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _ColorModel() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ColorModel value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ColorModel():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_ColorModel value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ColorModel() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(@JsonKey(name: ColorModel.colorKey) Color color)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _ColorModel() when $default != null:
+        return $default(_that.color);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(@JsonKey(name: ColorModel.colorKey) Color color) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ColorModel():
+        return $default(_that.color);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(@JsonKey(name: ColorModel.colorKey) Color color)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ColorModel() when $default != null:
+        return $default(_that.color);
+      case _:
+        return null;
+    }
   }
 }
 
@@ -90,7 +248,7 @@ class _ColorModel extends ColorModel {
   /// color
   @override
   @JsonKey(name: ColorModel.colorKey)
-  final String color;
+  final Color color;
 
   /// Create a copy of ColorModel
   /// with the given fields replaced by the non-null parameter values.
@@ -133,7 +291,7 @@ abstract mixin class _$ColorModelCopyWith<$Res>
       __$ColorModelCopyWithImpl;
   @override
   @useResult
-  $Res call({@JsonKey(name: ColorModel.colorKey) String color});
+  $Res call({@JsonKey(name: ColorModel.colorKey) Color color});
 }
 
 /// @nodoc
@@ -154,7 +312,7 @@ class __$ColorModelCopyWithImpl<$Res> implements _$ColorModelCopyWith<$Res> {
       color: null == color
           ? _self.color
           : color // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Color,
     ));
   }
 }

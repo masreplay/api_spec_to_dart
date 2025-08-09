@@ -6,7 +6,7 @@ part of 'validation_client.dart';
 // RetrofitGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations
+// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter
 
 class _ValidationClient implements ValidationClient {
   _ValidationClient(this._dio, {this.baseUrl, this.errorLogger});
@@ -147,8 +147,8 @@ class _ValidationClient implements ValidationClient {
 
   @override
   Future<HttpResponse<Map<String, dynamic>>> validationParamCookie({
-    String? session,
-    String? preferences,
+    required String? session,
+    required String? preferences,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
@@ -195,7 +195,7 @@ class _ValidationClient implements ValidationClient {
   @override
   Future<HttpResponse<Map<String, dynamic>>> validationParamHeader({
     required String userMinusAgent,
-    String? xMinusToken,
+    required String? xMinusToken,
     Map<String, dynamic>? extras,
     CancelToken? cancelToken,
     void Function(int, int)? onSendProgress,

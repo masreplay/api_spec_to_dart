@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -16,7 +15,7 @@ T _$identity<T>(T value) => value;
 mixin _$CoordinateModel {
   /// coordinate
   @JsonKey(name: CoordinateModel.coordinateKey)
-  dynamic get coordinate;
+  dynamic? get coordinate;
 
   /// latitude
   @JsonKey(name: CoordinateModel.latitudeKey)
@@ -68,7 +67,7 @@ abstract mixin class $CoordinateModelCopyWith<$Res> {
       _$CoordinateModelCopyWithImpl;
   @useResult
   $Res call(
-      {@JsonKey(name: CoordinateModel.coordinateKey) dynamic coordinate,
+      {@JsonKey(name: CoordinateModel.coordinateKey) dynamic? coordinate,
       @JsonKey(name: CoordinateModel.latitudeKey) double? latitude,
       @JsonKey(name: CoordinateModel.longitudeKey) double? longitude});
 }
@@ -94,7 +93,7 @@ class _$CoordinateModelCopyWithImpl<$Res>
       coordinate: freezed == coordinate
           ? _self.coordinate
           : coordinate // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as dynamic?,
       latitude: freezed == latitude
           ? _self.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
@@ -104,6 +103,175 @@ class _$CoordinateModelCopyWithImpl<$Res>
           : longitude // ignore: cast_nullable_to_non_nullable
               as double?,
     ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [CoordinateModel].
+extension CoordinateModelPatterns on CoordinateModel {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_CoordinateModel value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _CoordinateModel() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_CoordinateModel value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _CoordinateModel():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_CoordinateModel value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _CoordinateModel() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: CoordinateModel.coordinateKey) dynamic? coordinate,
+            @JsonKey(name: CoordinateModel.latitudeKey) double? latitude,
+            @JsonKey(name: CoordinateModel.longitudeKey) double? longitude)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _CoordinateModel() when $default != null:
+        return $default(_that.coordinate, _that.latitude, _that.longitude);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: CoordinateModel.coordinateKey) dynamic? coordinate,
+            @JsonKey(name: CoordinateModel.latitudeKey) double? latitude,
+            @JsonKey(name: CoordinateModel.longitudeKey) double? longitude)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _CoordinateModel():
+        return $default(_that.coordinate, _that.latitude, _that.longitude);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            @JsonKey(name: CoordinateModel.coordinateKey) dynamic? coordinate,
+            @JsonKey(name: CoordinateModel.latitudeKey) double? latitude,
+            @JsonKey(name: CoordinateModel.longitudeKey) double? longitude)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _CoordinateModel() when $default != null:
+        return $default(_that.coordinate, _that.latitude, _that.longitude);
+      case _:
+        return null;
+    }
   }
 }
 
@@ -122,7 +290,7 @@ class _CoordinateModel extends CoordinateModel {
   /// coordinate
   @override
   @JsonKey(name: CoordinateModel.coordinateKey)
-  final dynamic coordinate;
+  final dynamic? coordinate;
 
   /// latitude
   @override
@@ -182,7 +350,7 @@ abstract mixin class _$CoordinateModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: CoordinateModel.coordinateKey) dynamic coordinate,
+      {@JsonKey(name: CoordinateModel.coordinateKey) dynamic? coordinate,
       @JsonKey(name: CoordinateModel.latitudeKey) double? latitude,
       @JsonKey(name: CoordinateModel.longitudeKey) double? longitude});
 }
@@ -208,7 +376,7 @@ class __$CoordinateModelCopyWithImpl<$Res>
       coordinate: freezed == coordinate
           ? _self.coordinate
           : coordinate // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as dynamic?,
       latitude: freezed == latitude
           ? _self.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
