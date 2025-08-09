@@ -91,8 +91,6 @@ class Renaming {
         '|': 'pipe',
         '&': 'ampersand',
         '^': 'caret',
-        '?': 'nullable',
-        '!': 'not_null',
       };
 
       for (final entry in extra.entries) {
@@ -125,7 +123,7 @@ class Renaming {
   ) {
     if (int.tryParse(value.toString()) != null) {
       final intValue = int.parse(value.toString());
-      if(intValue < 0) {
+      if (intValue < 0) {
         // Handle negative integers by replacing minus with "Minus"
         return 'valueMinus${intValue.abs()}';
       } else {
