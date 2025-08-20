@@ -403,7 +403,8 @@ class ApiClientGenerator {
         OpenApiSchemas(
           type: 'object',
           properties: {
-            for (final p in queryParameters) p.name: p.schema,
+            for (final p in queryParameters)
+              if (p.schema case final schema?) p.name: schema,
           },
         ),
       );

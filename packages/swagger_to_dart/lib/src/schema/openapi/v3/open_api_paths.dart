@@ -53,7 +53,7 @@ abstract class OpenApiPathMethodParameter with _$OpenApiPathMethodParameter {
     @JsonKey(name: 'required') required bool? required_,
     @OpenApiSchemaJsonConverter()
     @JsonKey(name: 'schema')
-    required OpenApiSchema schema,
+    required OpenApiSchema? schema,
     String? description,
     Object? example,
   }) = _OpenApiPathMethodParameter;

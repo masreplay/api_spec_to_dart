@@ -5,11 +5,15 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
   const OpenApiSchemaDartTypeConverter(super.context);
 
   String get(
-    OpenApiSchema schema, {
+    OpenApiSchema? schema, {
     required String className,
     OpenApiSchema? parent,
     Map<String, String> overrideTypes = const {},
   }) {
+    if (schema == null) {
+      return 'dynamic';
+    }
+
     final dartType = switch (schema) {
       OpenApiSchemaType schema => getType(
           schema,
@@ -267,9 +271,13 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
   }
 
   String? getDefaultValue(
-    OpenApiSchema schema, {
+    OpenApiSchema? schema, {
     OpenApiSchema? parent,
   }) {
+    if (schema == null) {
+      return null;
+    }
+
     final default_ = schema.default_;
 
     switch (schema) {

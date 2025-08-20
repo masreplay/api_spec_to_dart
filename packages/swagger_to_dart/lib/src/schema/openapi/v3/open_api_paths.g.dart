@@ -56,8 +56,8 @@ _OpenApiPathMethodParameter _$OpenApiPathMethodParameterFromJson(
       name: json['name'] as String,
       in_: $enumDecode(_$OpenApiPathMethodParameterTypeEnumMap, json['in']),
       required_: json['required'] as bool?,
-      schema: const OpenApiSchemaJsonConverter()
-          .fromJson(json['schema'] as Map<String, dynamic>),
+      schema: _$JsonConverterFromJson<Map<String, dynamic>, OpenApiSchema>(
+          json['schema'], const OpenApiSchemaJsonConverter().fromJson),
       description: json['description'] as String?,
       example: json['example'],
     );
@@ -68,7 +68,10 @@ Map<String, dynamic> _$OpenApiPathMethodParameterToJson(
       'name': instance.name,
       'in': _$OpenApiPathMethodParameterTypeEnumMap[instance.in_]!,
       if (instance.required_ case final value?) 'required': value,
-      'schema': const OpenApiSchemaJsonConverter().toJson(instance.schema),
+      if (_$JsonConverterToJson<Map<String, dynamic>, OpenApiSchema>(
+              instance.schema, const OpenApiSchemaJsonConverter().toJson)
+          case final value?)
+        'schema': value,
       if (instance.description case final value?) 'description': value,
       if (instance.example case final value?) 'example': value,
     };
@@ -79,6 +82,18 @@ const _$OpenApiPathMethodParameterTypeEnumMap = {
   OpenApiPathMethodParameterType.header: 'header',
   OpenApiPathMethodParameterType.cookie: 'cookie',
 };
+
+Value? _$JsonConverterFromJson<Json, Value>(
+  Object? json,
+  Value? Function(Json json) fromJson,
+) =>
+    json == null ? null : fromJson(json as Json);
+
+Json? _$JsonConverterToJson<Json, Value>(
+  Value? value,
+  Json? Function(Value value) toJson,
+) =>
+    value == null ? null : toJson(value);
 
 _OpenApiPathMethodResponse _$OpenApiPathMethodResponseFromJson(
         Map<String, dynamic> json) =>

@@ -123,7 +123,7 @@ class Renaming {
   ) {
     if (int.tryParse(value.toString()) != null) {
       final intValue = int.parse(value.toString());
-      if(intValue < 0) {
+      if (intValue < 0) {
         // Handle negative integers by replacing minus with "Minus"
         return 'valueMinus${intValue.abs()}';
       } else {
@@ -140,6 +140,13 @@ class Renaming {
   }
 
   String renameClass(String value) {
+    // Handle nullable types ending with '?'
+    if (value.endsWith('?')) {
+      final baseValue = value.substring(0, value.length - 1);
+      final baseName = Recase.instance.toPascalCase(_guard(baseValue));
+      return '${baseName}Nullable';
+    }
+
     final name = Recase.instance.toPascalCase(_guard(value));
 
     if (name.endsWith('NoneType')) {
@@ -150,6 +157,13 @@ class Renaming {
   }
 
   String renameFile(String key) {
+    // Handle nullable types ending with '?'
+    if (key.endsWith('?')) {
+      final baseKey = key.substring(0, key.length - 1);
+      final baseName = Recase.instance.toSnakeCase(_guard(baseKey));
+      return '${baseName}_nullable';
+    }
+
     final name = Recase.instance.toSnakeCase(_guard(key));
 
     if (name.endsWith('none_type')) {

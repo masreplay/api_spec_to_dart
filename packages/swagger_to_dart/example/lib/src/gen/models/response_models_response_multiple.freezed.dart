@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -54,6 +53,198 @@ mixin _$ResponseModelsResponseMultiple {
 class $ResponseModelsResponseMultipleCopyWith<$Res> {
   $ResponseModelsResponseMultipleCopyWith(ResponseModelsResponseMultiple _,
       $Res Function(ResponseModelsResponseMultiple) __);
+}
+
+/// Adds pattern-matching-related methods to [ResponseModelsResponseMultiple].
+extension ResponseModelsResponseMultiplePatterns
+    on ResponseModelsResponseMultiple {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ResponseModelsResponseMultipleUser value)? user,
+    TResult Function(ResponseModelsResponseMultipleLocation value)? location,
+    TResult Function(ResponseModelsResponseMultipleFallback value)? fallback,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case ResponseModelsResponseMultipleUser() when user != null:
+        return user(_that);
+      case ResponseModelsResponseMultipleLocation() when location != null:
+        return location(_that);
+      case ResponseModelsResponseMultipleFallback() when fallback != null:
+        return fallback(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ResponseModelsResponseMultipleUser value) user,
+    required TResult Function(ResponseModelsResponseMultipleLocation value)
+        location,
+    required TResult Function(ResponseModelsResponseMultipleFallback value)
+        fallback,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case ResponseModelsResponseMultipleUser():
+        return user(_that);
+      case ResponseModelsResponseMultipleLocation():
+        return location(_that);
+      case ResponseModelsResponseMultipleFallback():
+        return fallback(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ResponseModelsResponseMultipleUser value)? user,
+    TResult? Function(ResponseModelsResponseMultipleLocation value)? location,
+    TResult? Function(ResponseModelsResponseMultipleFallback value)? fallback,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case ResponseModelsResponseMultipleUser() when user != null:
+        return user(_that);
+      case ResponseModelsResponseMultipleLocation() when location != null:
+        return location(_that);
+      case ResponseModelsResponseMultipleFallback() when fallback != null:
+        return fallback(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(User value)? user,
+    TResult Function(Location value)? location,
+    TResult Function(Map<String, dynamic>? value)? fallback,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case ResponseModelsResponseMultipleUser() when user != null:
+        return user(_that.value);
+      case ResponseModelsResponseMultipleLocation() when location != null:
+        return location(_that.value);
+      case ResponseModelsResponseMultipleFallback() when fallback != null:
+        return fallback(_that.value);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(User value) user,
+    required TResult Function(Location value) location,
+    required TResult Function(Map<String, dynamic>? value) fallback,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case ResponseModelsResponseMultipleUser():
+        return user(_that.value);
+      case ResponseModelsResponseMultipleLocation():
+        return location(_that.value);
+      case ResponseModelsResponseMultipleFallback():
+        return fallback(_that.value);
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(User value)? user,
+    TResult? Function(Location value)? location,
+    TResult? Function(Map<String, dynamic>? value)? fallback,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case ResponseModelsResponseMultipleUser() when user != null:
+        return user(_that.value);
+      case ResponseModelsResponseMultipleLocation() when location != null:
+        return location(_that.value);
+      case ResponseModelsResponseMultipleFallback() when fallback != null:
+        return fallback(_that.value);
+      case _:
+        return null;
+    }
+  }
 }
 
 /// @nodoc

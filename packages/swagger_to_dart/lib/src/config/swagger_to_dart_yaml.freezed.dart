@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -88,6 +87,163 @@ class _$SwaggerToDartYamlCopyWithImpl<$Res>
     return $SwaggerToDartCopyWith<$Res>(_self.swaggerToDart, (value) {
       return _then(_self.copyWith(swaggerToDart: value));
     });
+  }
+}
+
+/// Adds pattern-matching-related methods to [SwaggerToDartYaml].
+extension SwaggerToDartYamlPatterns on SwaggerToDartYaml {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_SwaggerToDartYaml value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _SwaggerToDartYaml() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_SwaggerToDartYaml value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SwaggerToDartYaml():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_SwaggerToDartYaml value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SwaggerToDartYaml() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(SwaggerToDart swaggerToDart)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _SwaggerToDartYaml() when $default != null:
+        return $default(_that.swaggerToDart);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(SwaggerToDart swaggerToDart) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SwaggerToDartYaml():
+        return $default(_that.swaggerToDart);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(SwaggerToDart swaggerToDart)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SwaggerToDartYaml() when $default != null:
+        return $default(_that.swaggerToDart);
+      case _:
+        return null;
+    }
   }
 }
 
@@ -267,6 +423,172 @@ class _$ModelConfigCopyWithImpl<$Res> implements $ModelConfigCopyWith<$Res> {
           : enumFallbackType // ignore: cast_nullable_to_non_nullable
               as EnumFallbackType,
     ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [ModelConfig].
+extension ModelConfigPatterns on ModelConfig {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_ModelConfig value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _ModelConfig() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ModelConfig value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ModelConfig():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_ModelConfig value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ModelConfig() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(bool supportGenericArguments,
+            String? unionClassFallbackName, EnumFallbackType enumFallbackType)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _ModelConfig() when $default != null:
+        return $default(_that.supportGenericArguments,
+            _that.unionClassFallbackName, _that.enumFallbackType);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(bool supportGenericArguments,
+            String? unionClassFallbackName, EnumFallbackType enumFallbackType)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ModelConfig():
+        return $default(_that.supportGenericArguments,
+            _that.unionClassFallbackName, _that.enumFallbackType);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(bool supportGenericArguments,
+            String? unionClassFallbackName, EnumFallbackType enumFallbackType)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ModelConfig() when $default != null:
+        return $default(_that.supportGenericArguments,
+            _that.unionClassFallbackName, _that.enumFallbackType);
+      case _:
+        return null;
+    }
   }
 }
 
@@ -479,6 +801,190 @@ class _$ApiClientConfigCopyWithImpl<$Res>
           : skippedParameters // ignore: cast_nullable_to_non_nullable
               as List<String>,
     ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [ApiClientConfig].
+extension ApiClientConfigPatterns on ApiClientConfig {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_ApiClientConfig value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _ApiClientConfig() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ApiClientConfig value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ApiClientConfig():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_ApiClientConfig value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ApiClientConfig() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            String baseApiClientClassName,
+            bool useClassForQueryParameters,
+            bool useClassForMultipartFormData,
+            List<String> skippedParameters)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _ApiClientConfig() when $default != null:
+        return $default(
+            _that.baseApiClientClassName,
+            _that.useClassForQueryParameters,
+            _that.useClassForMultipartFormData,
+            _that.skippedParameters);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            String baseApiClientClassName,
+            bool useClassForQueryParameters,
+            bool useClassForMultipartFormData,
+            List<String> skippedParameters)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ApiClientConfig():
+        return $default(
+            _that.baseApiClientClassName,
+            _that.useClassForQueryParameters,
+            _that.useClassForMultipartFormData,
+            _that.skippedParameters);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            String baseApiClientClassName,
+            bool useClassForQueryParameters,
+            bool useClassForMultipartFormData,
+            List<String> skippedParameters)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ApiClientConfig() when $default != null:
+        return $default(
+            _that.baseApiClientClassName,
+            _that.useClassForQueryParameters,
+            _that.useClassForMultipartFormData,
+            _that.skippedParameters);
+      case _:
+        return null;
+    }
   }
 }
 
@@ -750,6 +1256,187 @@ class _$SwaggerToDartCopyWithImpl<$Res>
     return $ApiClientConfigCopyWith<$Res>(_self.apiClient, (value) {
       return _then(_self.copyWith(apiClient: value));
     });
+  }
+}
+
+/// Adds pattern-matching-related methods to [SwaggerToDart].
+extension SwaggerToDartPatterns on SwaggerToDart {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_SwaggerToDart value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _SwaggerToDart() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_SwaggerToDart value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SwaggerToDart():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_SwaggerToDart value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SwaggerToDart() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            String? url,
+            GenerationSource? generationSource,
+            String inputDirectory,
+            String outputDirectory,
+            ModelConfig model,
+            ApiClientConfig apiClient)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _SwaggerToDart() when $default != null:
+        return $default(_that.url, _that.generationSource, _that.inputDirectory,
+            _that.outputDirectory, _that.model, _that.apiClient);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            String? url,
+            GenerationSource? generationSource,
+            String inputDirectory,
+            String outputDirectory,
+            ModelConfig model,
+            ApiClientConfig apiClient)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SwaggerToDart():
+        return $default(_that.url, _that.generationSource, _that.inputDirectory,
+            _that.outputDirectory, _that.model, _that.apiClient);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            String? url,
+            GenerationSource? generationSource,
+            String inputDirectory,
+            String outputDirectory,
+            ModelConfig model,
+            ApiClientConfig apiClient)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SwaggerToDart() when $default != null:
+        return $default(_that.url, _that.generationSource, _that.inputDirectory,
+            _that.outputDirectory, _that.model, _that.apiClient);
+      case _:
+        return null;
+    }
   }
 }
 

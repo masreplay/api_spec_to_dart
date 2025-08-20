@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -90,6 +89,175 @@ class _$OpenApiComponentsCopyWithImpl<$Res>
           : securitySchemes // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>?,
     ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [OpenApiComponents].
+extension OpenApiComponentsPatterns on OpenApiComponents {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_OpenApiComponents value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _OpenApiComponents() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_OpenApiComponents value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _OpenApiComponents():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_OpenApiComponents value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _OpenApiComponents() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'schemas') Map<String, OpenApiSchemas>? schemas,
+            @JsonKey(name: 'securitySchemes')
+            Map<String, dynamic>? securitySchemes)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _OpenApiComponents() when $default != null:
+        return $default(_that.schemas, _that.securitySchemes);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'schemas') Map<String, OpenApiSchemas>? schemas,
+            @JsonKey(name: 'securitySchemes')
+            Map<String, dynamic>? securitySchemes)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _OpenApiComponents():
+        return $default(_that.schemas, _that.securitySchemes);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            @JsonKey(name: 'schemas') Map<String, OpenApiSchemas>? schemas,
+            @JsonKey(name: 'securitySchemes')
+            Map<String, dynamic>? securitySchemes)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _OpenApiComponents() when $default != null:
+        return $default(_that.schemas, _that.securitySchemes);
+      case _:
+        return null;
+    }
   }
 }
 
@@ -348,6 +516,220 @@ class _$OpenApiSchemasCopyWithImpl<$Res>
           : xEnumVarnames // ignore: cast_nullable_to_non_nullable
               as List<String>?,
     ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [OpenApiSchemas].
+extension OpenApiSchemasPatterns on OpenApiSchemas {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_OpenApiSchemas value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _OpenApiSchemas() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_OpenApiSchemas value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _OpenApiSchemas():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_OpenApiSchemas value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _OpenApiSchemas() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            @OpenApiSchemaJsonConverter()
+            @JsonKey(name: 'properties')
+            Map<String, OpenApiSchema>? properties,
+            @JsonKey(name: 'type') String type,
+            @JsonKey(name: 'required') List<String>? required_,
+            @JsonKey(name: 'enum') List<Object>? enum_,
+            @JsonKey(name: 'const') Object? const_,
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _OpenApiSchemas() when $default != null:
+        return $default(
+            _that.properties,
+            _that.type,
+            _that.required_,
+            _that.enum_,
+            _that.const_,
+            _that.title,
+            _that.description,
+            _that.xEnumVarnames);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            @OpenApiSchemaJsonConverter()
+            @JsonKey(name: 'properties')
+            Map<String, OpenApiSchema>? properties,
+            @JsonKey(name: 'type') String type,
+            @JsonKey(name: 'required') List<String>? required_,
+            @JsonKey(name: 'enum') List<Object>? enum_,
+            @JsonKey(name: 'const') Object? const_,
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _OpenApiSchemas():
+        return $default(
+            _that.properties,
+            _that.type,
+            _that.required_,
+            _that.enum_,
+            _that.const_,
+            _that.title,
+            _that.description,
+            _that.xEnumVarnames);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            @OpenApiSchemaJsonConverter()
+            @JsonKey(name: 'properties')
+            Map<String, OpenApiSchema>? properties,
+            @JsonKey(name: 'type') String type,
+            @JsonKey(name: 'required') List<String>? required_,
+            @JsonKey(name: 'enum') List<Object>? enum_,
+            @JsonKey(name: 'const') Object? const_,
+            @JsonKey(name: 'title') String? title,
+            @JsonKey(name: 'description') String? description,
+            @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _OpenApiSchemas() when $default != null:
+        return $default(
+            _that.properties,
+            _that.type,
+            _that.required_,
+            _that.enum_,
+            _that.const_,
+            _that.title,
+            _that.description,
+            _that.xEnumVarnames);
+      case _:
+        return null;
+    }
   }
 }
 

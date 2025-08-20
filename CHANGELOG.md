@@ -1,4 +1,13 @@
+## 3.4.0
+
+- Fix names ends with `?` prefix renamed to `Nullable` for file and class
+
+## 3.3.0
+
+- Allow nullable `schema` in method parameters
+
 ## 3.2.1
+
 - Fix `Freezed` annotation with union freezed classes
 
 ## 3.2.0
@@ -8,7 +17,7 @@
 ## 3.1.1
 
 - Add support to `nullable` flag in `schema`
-
+****
 ## 3.1.0
 
 - Support `Color` from String `color` and `color-hex` format

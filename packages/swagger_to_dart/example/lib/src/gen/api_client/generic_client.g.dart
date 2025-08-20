@@ -6,7 +6,7 @@ part of 'generic_client.dart';
 // RetrofitGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations
+// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter
 
 class _GenericClient implements GenericClient {
   _GenericClient(this._dio, {this.baseUrl, this.errorLogger});
@@ -279,7 +279,9 @@ class _GenericClient implements GenericClient {
             onSendProgress: onSendProgress,
             onReceiveProgress: onReceiveProgress,
           )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+          .copyWith(
+            baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl),
+          ),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late BaseResponse<PaginationResponse<ItemResponse>> _value;
