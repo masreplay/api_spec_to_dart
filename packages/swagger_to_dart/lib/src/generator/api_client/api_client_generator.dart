@@ -402,6 +402,10 @@ class ApiClientGenerator {
         queryParametersClassName,
         OpenApiSchemas(
           type: 'object',
+          required_: queryParameters
+              .where((e) => e.required_ == true)
+              .map((e) => e.name)
+              .toList(),
           properties: {
             for (final p in queryParameters)
               if (p.schema case final schema?) p.name: schema,

@@ -81,6 +81,8 @@ class RegularModelGeneratorStrategy
                         return context.extension.propertyGenerator.build(
                           entry,
                           className: className,
+                          required:
+                              (model.value.required_ ?? []).contains(entry.key),
                         );
                       }),
                     ]),
@@ -126,7 +128,6 @@ class RegularModelGeneratorStrategy
       ..name = filename
       ..directives.addAll([
         Directive.import('exports.dart'),
-        
         Directive.part('$filename.freezed.dart'),
         Directive.part('$filename.g.dart'),
       ])

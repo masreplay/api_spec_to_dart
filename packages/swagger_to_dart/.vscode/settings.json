@@ -16,7 +16,6 @@
     "**/*.g.dart": true,
     "**/*.freezed.dart": true,
     "**/*.gen.dart": true,
-    "/example": true
   },
   "cSpell.language": "en,ar",
   "cSpell.words": [
@@ -25,6 +24,7 @@
     "ekyc",
     "nationalisms",
     "recase",
+    "varnames",
     "writeln"
   ]
 }
