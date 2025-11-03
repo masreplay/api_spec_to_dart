@@ -1,3 +1,11 @@
+## 3.7.0
+
+- Update CHANGELOG.md
+
+## 3.6.0
+
+- Add support to all content type
+
 ## 3.5.0
 
 - Add support to `text/plain` content type
