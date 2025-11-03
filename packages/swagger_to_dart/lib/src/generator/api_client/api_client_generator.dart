@@ -228,23 +228,6 @@ class ApiClientGenerator {
 
             switch (contentType) {
               case OpenApiContentType.textPlain:
-                requestBody.add(
-                  Parameter(
-                    (b) => b
-                      ..annotations.addAll([
-                        refer('$Body()'),
-                      ])
-                      ..name = 'requestBody'
-                      ..named = true
-                      ..required = true
-                      ..type = refer(
-                        context.extension.typeConverter.get(
-                          entry.value.schema,
-                          className: className,
-                        ),
-                      ),
-                  ),
-                );
               case OpenApiContentType.applicationJson:
               case OpenApiContentType.applicationXWwwFormUrlencoded:
                 requestBody.add(
@@ -300,13 +283,29 @@ class ApiClientGenerator {
                     ])
                     ..body = Block.of([
                       Code(
-                          'return _$methodName(requestBody: requestBody.toJson(), extras: extras, cancelToken: cancelToken, onSendProgress: onSendProgress, onReceiveProgress: onReceiveProgress);'),
+                          'return ${methodName}_(requestBody: requestBody.toJson(), extras: extras, cancelToken: cancelToken, onSendProgress: onSendProgress, onReceiveProgress: onReceiveProgress);'),
                     ]),
                 ));
                 break;
             }
           } catch (e) {
-            throw Exception('Invalid content type: ${entry.key}');
+            requestBody.add(
+              Parameter(
+                (b) => b
+                  ..annotations.addAll([
+                    refer('$Body()'),
+                  ])
+                  ..name = 'requestBody'
+                  ..named = true
+                  ..required = true
+                  ..type = refer(
+                    context.extension.typeConverter.get(
+                      entry.value.schema,
+                      className: className,
+                    ),
+                  ),
+              ),
+            );
           }
         }
 
@@ -332,7 +331,7 @@ class ApiClientGenerator {
             ..returns = responseType
             ..name =
                 content[OpenApiContentType.multipartFormData.toJson()] != null
-                    ? '_$methodName'
+                    ? '${methodName}_'
                     : methodName
             ..optionalParameters.addAll([
               ...requestBody,
