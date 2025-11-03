@@ -1,3 +1,7 @@
+## 3.8.0
+
+- Update CHANGELOG.md
+
 ## 3.7.0
 
 - Update CHANGELOG.md
