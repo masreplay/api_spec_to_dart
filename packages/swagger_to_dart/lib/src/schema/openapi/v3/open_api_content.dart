@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:swagger_to_dart/swagger_to_dart.dart';
+import 'open_api_schema.dart';
 
 part 'open_api_content.freezed.dart';
 part 'open_api_content.g.dart';
@@ -10,11 +10,21 @@ enum OpenApiContentType {
   applicationJson,
   @JsonValue('application/x-www-form-urlencoded')
   applicationXWwwFormUrlencoded,
+  @JsonValue('text/plain')
+  textPlain,
   @JsonValue('multipart/form-data')
   multipartFormData;
+
+  factory OpenApiContentType.fromJson(String value) {
+    return _$OpenApiContentTypeEnumMap.entries
+        .firstWhere((e) => e.value == value)
+        .key;
+  }
+
+  String toJson() => _$OpenApiContentTypeEnumMap[this]!;
 }
 
-typedef OpenApiContent = Map<OpenApiContentType, OpenApiContentSchema>;
+typedef OpenApiContent = Map<String, OpenApiContentSchema>;
 
 @freezed
 abstract class OpenApiContentSchema with _$OpenApiContentSchema {

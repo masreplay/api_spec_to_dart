@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:swagger_to_dart/swagger_to_dart.dart';
+import 'open_api_schema.dart';
 
 part 'open_api_components.freezed.dart';
 part 'open_api_components.g.dart';

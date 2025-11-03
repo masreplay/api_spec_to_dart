@@ -100,8 +100,8 @@ _OpenApiPathMethodResponse _$OpenApiPathMethodResponseFromJson(
     _OpenApiPathMethodResponse(
       description: json['description'] as String?,
       content: (json['content'] as Map<String, dynamic>?)?.map(
-        (k, e) => MapEntry($enumDecode(_$OpenApiContentTypeEnumMap, k),
-            OpenApiContentSchema.fromJson(e as Map<String, dynamic>)),
+        (k, e) => MapEntry(
+            k, OpenApiContentSchema.fromJson(e as Map<String, dynamic>)),
       ),
     );
 
@@ -109,26 +109,18 @@ Map<String, dynamic> _$OpenApiPathMethodResponseToJson(
         _OpenApiPathMethodResponse instance) =>
     <String, dynamic>{
       if (instance.description case final value?) 'description': value,
-      if (instance.content?.map(
-              (k, e) => MapEntry(_$OpenApiContentTypeEnumMap[k]!, e.toJson()))
+      if (instance.content?.map((k, e) => MapEntry(k, e.toJson()))
           case final value?)
         'content': value,
     };
-
-const _$OpenApiContentTypeEnumMap = {
-  OpenApiContentType.applicationJson: 'application/json',
-  OpenApiContentType.applicationXWwwFormUrlencoded:
-      'application/x-www-form-urlencoded',
-  OpenApiContentType.multipartFormData: 'multipart/form-data',
-};
 
 _OpenApiPathMethodRequestBody _$OpenApiPathMethodRequestBodyFromJson(
         Map<String, dynamic> json) =>
     _OpenApiPathMethodRequestBody(
       required_: json['required'] as bool?,
       content: (json['content'] as Map<String, dynamic>).map(
-        (k, e) => MapEntry($enumDecode(_$OpenApiContentTypeEnumMap, k),
-            OpenApiContentSchema.fromJson(e as Map<String, dynamic>)),
+        (k, e) => MapEntry(
+            k, OpenApiContentSchema.fromJson(e as Map<String, dynamic>)),
       ),
     );
 
@@ -136,6 +128,5 @@ Map<String, dynamic> _$OpenApiPathMethodRequestBodyToJson(
         _OpenApiPathMethodRequestBody instance) =>
     <String, dynamic>{
       if (instance.required_ case final value?) 'required': value,
-      'content': instance.content
-          .map((k, e) => MapEntry(_$OpenApiContentTypeEnumMap[k]!, e.toJson())),
+      'content': instance.content.map((k, e) => MapEntry(k, e.toJson())),
     };

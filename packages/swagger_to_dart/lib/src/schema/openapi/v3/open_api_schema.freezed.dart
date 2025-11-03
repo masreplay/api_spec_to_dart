@@ -272,7 +272,9 @@ extension OpenApiSchemaPatterns on OpenApiSchema {
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'title') String? title,
             @JsonKey(name: 'default') Object? default_,
-            @JsonKey(name: 'nullable') bool? nullable)?
+            @JsonKey(name: 'nullable') bool? nullable,
+            @JsonKey(name: 'discriminator')
+            OpenApiSchemaOneOfDiscriminator? discriminator)?
         anyOf,
     TResult Function(
             @OpenApiSchemaJsonConverter()
@@ -308,7 +310,7 @@ extension OpenApiSchemaPatterns on OpenApiSchema {
             _that.nullable);
       case OpenApiSchemaAnyOf() when anyOf != null:
         return anyOf(_that.anyOf, _that.description, _that.title,
-            _that.default_, _that.nullable);
+            _that.default_, _that.nullable, _that.discriminator);
       case OpenApiSchemaOneOf() when oneOf != null:
         return oneOf(_that.oneOf, _that.description, _that.title,
             _that.discriminator, _that.default_, _that.nullable);
@@ -364,7 +366,9 @@ extension OpenApiSchemaPatterns on OpenApiSchema {
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'title') String? title,
             @JsonKey(name: 'default') Object? default_,
-            @JsonKey(name: 'nullable') bool? nullable)
+            @JsonKey(name: 'nullable') bool? nullable,
+            @JsonKey(name: 'discriminator')
+            OpenApiSchemaOneOfDiscriminator? discriminator)
         anyOf,
     required TResult Function(
             @OpenApiSchemaJsonConverter()
@@ -399,7 +403,7 @@ extension OpenApiSchemaPatterns on OpenApiSchema {
             _that.nullable);
       case OpenApiSchemaAnyOf():
         return anyOf(_that.anyOf, _that.description, _that.title,
-            _that.default_, _that.nullable);
+            _that.default_, _that.nullable, _that.discriminator);
       case OpenApiSchemaOneOf():
         return oneOf(_that.oneOf, _that.description, _that.title,
             _that.discriminator, _that.default_, _that.nullable);
@@ -452,7 +456,9 @@ extension OpenApiSchemaPatterns on OpenApiSchema {
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'title') String? title,
             @JsonKey(name: 'default') Object? default_,
-            @JsonKey(name: 'nullable') bool? nullable)?
+            @JsonKey(name: 'nullable') bool? nullable,
+            @JsonKey(name: 'discriminator')
+            OpenApiSchemaOneOfDiscriminator? discriminator)?
         anyOf,
     TResult? Function(
             @OpenApiSchemaJsonConverter()
@@ -487,7 +493,7 @@ extension OpenApiSchemaPatterns on OpenApiSchema {
             _that.nullable);
       case OpenApiSchemaAnyOf() when anyOf != null:
         return anyOf(_that.anyOf, _that.description, _that.title,
-            _that.default_, _that.nullable);
+            _that.default_, _that.nullable, _that.discriminator);
       case OpenApiSchemaOneOf() when oneOf != null:
         return oneOf(_that.oneOf, _that.description, _that.title,
             _that.discriminator, _that.default_, _that.nullable);

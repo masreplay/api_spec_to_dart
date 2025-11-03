@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 mixin _$AdvancedUnionModernQueryParameters {
   /// value
   @JsonKey(name: AdvancedUnionModernQueryParameters.valueKey)
-  dynamic? get value;
+  dynamic get value;
 
   /// Create a copy of AdvancedUnionModernQueryParameters
   /// with the given fields replaced by the non-null parameter values.
@@ -58,7 +58,7 @@ abstract mixin class $AdvancedUnionModernQueryParametersCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: AdvancedUnionModernQueryParameters.valueKey)
-      dynamic? value});
+      dynamic value});
 }
 
 /// @nodoc
@@ -80,7 +80,7 @@ class _$AdvancedUnionModernQueryParametersCopyWithImpl<$Res>
       value: freezed == value
           ? _self.value
           : value // ignore: cast_nullable_to_non_nullable
-              as dynamic?,
+              as dynamic,
     ));
   }
 }
@@ -181,7 +181,7 @@ extension AdvancedUnionModernQueryParametersPatterns
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
             @JsonKey(name: AdvancedUnionModernQueryParameters.valueKey)
-            dynamic? value)?
+            dynamic value)?
         $default, {
     required TResult orElse(),
   }) {
@@ -211,7 +211,7 @@ extension AdvancedUnionModernQueryParametersPatterns
   TResult when<TResult extends Object?>(
     TResult Function(
             @JsonKey(name: AdvancedUnionModernQueryParameters.valueKey)
-            dynamic? value)
+            dynamic value)
         $default,
   ) {
     final _that = this;
@@ -239,7 +239,7 @@ extension AdvancedUnionModernQueryParametersPatterns
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
             @JsonKey(name: AdvancedUnionModernQueryParameters.valueKey)
-            dynamic? value)?
+            dynamic value)?
         $default,
   ) {
     final _that = this;
@@ -268,7 +268,7 @@ class _AdvancedUnionModernQueryParameters
   /// value
   @override
   @JsonKey(name: AdvancedUnionModernQueryParameters.valueKey)
-  final dynamic? value;
+  final dynamic value;
 
   /// Create a copy of AdvancedUnionModernQueryParameters
   /// with the given fields replaced by the non-null parameter values.
@@ -317,7 +317,7 @@ abstract mixin class _$AdvancedUnionModernQueryParametersCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: AdvancedUnionModernQueryParameters.valueKey)
-      dynamic? value});
+      dynamic value});
 }
 
 /// @nodoc
@@ -339,7 +339,7 @@ class __$AdvancedUnionModernQueryParametersCopyWithImpl<$Res>
       value: freezed == value
           ? _self.value
           : value // ignore: cast_nullable_to_non_nullable
-              as dynamic?,
+              as dynamic,
     ));
   }
 }

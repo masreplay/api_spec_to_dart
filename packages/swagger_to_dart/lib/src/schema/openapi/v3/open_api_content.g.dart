@@ -25,5 +25,6 @@ const _$OpenApiContentTypeEnumMap = {
   OpenApiContentType.applicationJson: 'application/json',
   OpenApiContentType.applicationXWwwFormUrlencoded:
       'application/x-www-form-urlencoded',
+  OpenApiContentType.textPlain: 'text/plain',
   OpenApiContentType.multipartFormData: 'multipart/form-data',
 };
