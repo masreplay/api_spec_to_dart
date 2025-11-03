@@ -321,16 +321,19 @@ class ApiClientGenerator {
             ])
             ..annotations.addAll([
               refer('$methodType("${path.key}")'),
-              if (content[OpenApiContentType.applicationXWwwFormUrlencoded] !=
+              if (content[OpenApiContentType.applicationXWwwFormUrlencoded
+                      .toJson()] !=
                   null)
                 refer('$FormUrlEncoded()'),
-              if (content[OpenApiContentType.multipartFormData] != null)
+              if (content[OpenApiContentType.multipartFormData.toJson()] !=
+                  null)
                 refer('$MultiPart()'),
             ])
             ..returns = responseType
-            ..name = content[OpenApiContentType.multipartFormData] != null
-                ? '_$methodName'
-                : methodName
+            ..name =
+                content[OpenApiContentType.multipartFormData.toJson()] != null
+                    ? '_$methodName'
+                    : methodName
             ..optionalParameters.addAll([
               ...requestBody,
               ...parameters,
@@ -498,8 +501,8 @@ class ApiClientGenerator {
     OpenApiPathMethodResponses responses,
     String className,
   ) {
-    final response = responses
-        .values.firstOrNull?.content?[OpenApiContentType.applicationJson];
+    final response = responses.values.firstOrNull
+        ?.content?[OpenApiContentType.applicationJson.toJson()];
 
     final responseTypeString = response == null
         ? null
