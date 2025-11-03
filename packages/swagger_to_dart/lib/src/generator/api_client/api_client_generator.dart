@@ -223,89 +223,75 @@ class ApiClientGenerator {
         final content = method.value.requestBody?.content ?? {};
 
         for (final entry in content.entries) {
+          OpenApiContentType? contentType;
           try {
-            final contentType = OpenApiContentType.fromJson(entry.key);
-
-            switch (contentType) {
-              case OpenApiContentType.textPlain:
-              case OpenApiContentType.applicationJson:
-              case OpenApiContentType.applicationXWwwFormUrlencoded:
-                requestBody.add(
-                  Parameter(
-                    (b) => b
-                      ..annotations.addAll([
-                        refer('$Body()'),
-                      ])
-                      ..name = 'requestBody'
-                      ..named = true
-                      ..required = true
-                      ..type = refer(
-                        context.extension.typeConverter.get(
-                          entry.value.schema,
-                          className: className,
-                        ),
-                      ),
-                  ),
-                );
-              case OpenApiContentType.multipartFormData:
-                requestBody.add(
-                  Parameter(
-                    (b) => b
-                      ..annotations.addAll([
-                        refer('$Part()'),
-                      ])
-                      ..name = 'requestBody'
-                      ..named = true
-                      ..required = true
-                      ..type = refer('Map<String, dynamic>'),
-                  ),
-                );
-
-                // WORKAROUND for sending class as request body in `multipart/form-data`
-                extensionMethods.add(Method(
-                  (b) => b
-                    ..name = methodName
-                    ..returns = responseType
-                    ..optionalParameters.addAll([
-                      Parameter(
-                        (b) => b
-                          ..name = 'requestBody'
-                          ..required = true
-                          ..type = refer(
-                            context.extension.typeConverter.get(
-                              entry.value.schema,
-                              className: className,
-                            ),
-                          ),
-                      ),
-                      ...parameters,
-                      ..._extraParameters(),
-                    ])
-                    ..body = Block.of([
-                      Code(
-                          'return ${methodName}_(requestBody: requestBody.toJson(), extras: extras, cancelToken: cancelToken, onSendProgress: onSendProgress, onReceiveProgress: onReceiveProgress);'),
-                    ]),
-                ));
-                break;
-            }
+            contentType = OpenApiContentType.fromJson(entry.key);
           } catch (e) {
-            requestBody.add(
-              Parameter(
-                (b) => b
-                  ..annotations.addAll([
-                    refer('$Body()'),
-                  ])
-                  ..name = 'requestBody'
-                  ..named = true
-                  ..required = true
-                  ..type = refer(
-                    context.extension.typeConverter.get(
-                      entry.value.schema,
-                      className: className,
+            print('Invalid content type: ${entry.key}');
+          }
+
+          switch (contentType) {
+            case null:
+              continue;
+            case OpenApiContentType.applicationJson:
+            case OpenApiContentType.applicationXWwwFormUrlencoded:
+              requestBody.add(
+                Parameter(
+                  (b) => b
+                    ..annotations.addAll([
+                      refer('$Body()'),
+                    ])
+                    ..name = 'requestBody'
+                    ..named = true
+                    ..required = true
+                    ..type = refer(
+                      context.extension.typeConverter.get(
+                        entry.value.schema,
+                        className: className,
+                      ),
                     ),
-                  ),
-              ),
-            );
+                ),
+              );
+            case OpenApiContentType.multipartFormData:
+              requestBody.add(
+                Parameter(
+                  (b) => b
+                    ..annotations.addAll([
+                      refer('$Part()'),
+                    ])
+                    ..name = 'requestBody'
+                    ..named = true
+                    ..required = true
+                    ..type = refer('Map<String, dynamic>'),
+                ),
+              );
+
+              // WORKAROUND for sending class as request body in `multipart/form-data`
+              extensionMethods.add(Method(
+                (b) => b
+                  ..name = methodName
+                  ..returns = responseType
+                  ..optionalParameters.addAll([
+                    Parameter(
+                      (b) => b
+                        ..name = 'requestBody'
+                        ..required = true
+                        ..type = refer(
+                          context.extension.typeConverter.get(
+                            entry.value.schema,
+                            className: className,
+                          ),
+                        ),
+                    ),
+                    ...parameters,
+                    ..._extraParameters(),
+                  ])
+                  ..body = Block.of([
+                    Code(
+                        'return ${methodName}_(requestBody: requestBody.toJson(), extras: extras, cancelToken: cancelToken, onSendProgress: onSendProgress, onReceiveProgress: onReceiveProgress);'),
+                  ]),
+              ));
+              break;
           }
         }
 

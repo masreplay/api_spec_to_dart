@@ -42,6 +42,7 @@ _OpenApiSchemas _$OpenApiSchemasFromJson(Map<String, dynamic> json) =>
       xEnumVarnames: (json['x-enum-varnames'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
+      additionalProperties: json['additionalProperties'] as bool?,
     );
 
 Map<String, dynamic> _$OpenApiSchemasToJson(_OpenApiSchemas instance) =>
@@ -57,4 +58,6 @@ Map<String, dynamic> _$OpenApiSchemasToJson(_OpenApiSchemas instance) =>
       if (instance.title case final value?) 'title': value,
       if (instance.description case final value?) 'description': value,
       if (instance.xEnumVarnames case final value?) 'x-enum-varnames': value,
+      if (instance.additionalProperties case final value?)
+        'additionalProperties': value,
     };

@@ -10,8 +10,6 @@ enum OpenApiContentType {
   applicationJson,
   @JsonValue('application/x-www-form-urlencoded')
   applicationXWwwFormUrlencoded,
-  @JsonValue('text/plain')
-  textPlain,
   @JsonValue('multipart/form-data')
   multipartFormData;
 

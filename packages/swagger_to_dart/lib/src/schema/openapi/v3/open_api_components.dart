@@ -33,6 +33,7 @@ abstract class OpenApiSchemas with _$OpenApiSchemas {
     @JsonKey(name: 'title') String? title,
     @JsonKey(name: 'description') String? description,
     @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames,
+    @JsonKey(name: 'additionalProperties') bool? additionalProperties,
   }) = _OpenApiSchemas;
 
   factory OpenApiSchemas.fromJson(Map<String, dynamic> json) =>

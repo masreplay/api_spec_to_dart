@@ -395,6 +395,8 @@ mixin _$OpenApiSchemas {
   String? get description;
   @JsonKey(name: 'x-enum-varnames')
   List<String>? get xEnumVarnames;
+  @JsonKey(name: 'additionalProperties')
+  bool? get additionalProperties;
 
   /// Create a copy of OpenApiSchemas
   /// with the given fields replaced by the non-null parameter values.
@@ -422,7 +424,9 @@ mixin _$OpenApiSchemas {
             (identical(other.description, description) ||
                 other.description == description) &&
             const DeepCollectionEquality()
-                .equals(other.xEnumVarnames, xEnumVarnames));
+                .equals(other.xEnumVarnames, xEnumVarnames) &&
+            (identical(other.additionalProperties, additionalProperties) ||
+                other.additionalProperties == additionalProperties));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -436,11 +440,12 @@ mixin _$OpenApiSchemas {
       const DeepCollectionEquality().hash(const_),
       title,
       description,
-      const DeepCollectionEquality().hash(xEnumVarnames));
+      const DeepCollectionEquality().hash(xEnumVarnames),
+      additionalProperties);
 
   @override
   String toString() {
-    return 'OpenApiSchemas(properties: $properties, type: $type, required_: $required_, enum_: $enum_, const_: $const_, title: $title, description: $description, xEnumVarnames: $xEnumVarnames)';
+    return 'OpenApiSchemas(properties: $properties, type: $type, required_: $required_, enum_: $enum_, const_: $const_, title: $title, description: $description, xEnumVarnames: $xEnumVarnames, additionalProperties: $additionalProperties)';
   }
 }
 
@@ -460,7 +465,8 @@ abstract mixin class $OpenApiSchemasCopyWith<$Res> {
       @JsonKey(name: 'const') Object? const_,
       @JsonKey(name: 'title') String? title,
       @JsonKey(name: 'description') String? description,
-      @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames});
+      @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames,
+      @JsonKey(name: 'additionalProperties') bool? additionalProperties});
 }
 
 /// @nodoc
@@ -484,6 +490,7 @@ class _$OpenApiSchemasCopyWithImpl<$Res>
     Object? title = freezed,
     Object? description = freezed,
     Object? xEnumVarnames = freezed,
+    Object? additionalProperties = freezed,
   }) {
     return _then(_self.copyWith(
       properties: freezed == properties
@@ -515,6 +522,10 @@ class _$OpenApiSchemasCopyWithImpl<$Res>
           ? _self.xEnumVarnames
           : xEnumVarnames // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      additionalProperties: freezed == additionalProperties
+          ? _self.additionalProperties
+          : additionalProperties // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -622,7 +633,8 @@ extension OpenApiSchemasPatterns on OpenApiSchemas {
             @JsonKey(name: 'const') Object? const_,
             @JsonKey(name: 'title') String? title,
             @JsonKey(name: 'description') String? description,
-            @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames)?
+            @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames,
+            @JsonKey(name: 'additionalProperties') bool? additionalProperties)?
         $default, {
     required TResult orElse(),
   }) {
@@ -637,7 +649,8 @@ extension OpenApiSchemasPatterns on OpenApiSchemas {
             _that.const_,
             _that.title,
             _that.description,
-            _that.xEnumVarnames);
+            _that.xEnumVarnames,
+            _that.additionalProperties);
       case _:
         return orElse();
     }
@@ -668,7 +681,8 @@ extension OpenApiSchemasPatterns on OpenApiSchemas {
             @JsonKey(name: 'const') Object? const_,
             @JsonKey(name: 'title') String? title,
             @JsonKey(name: 'description') String? description,
-            @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames)
+            @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames,
+            @JsonKey(name: 'additionalProperties') bool? additionalProperties)
         $default,
   ) {
     final _that = this;
@@ -682,7 +696,8 @@ extension OpenApiSchemasPatterns on OpenApiSchemas {
             _that.const_,
             _that.title,
             _that.description,
-            _that.xEnumVarnames);
+            _that.xEnumVarnames,
+            _that.additionalProperties);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -712,7 +727,8 @@ extension OpenApiSchemasPatterns on OpenApiSchemas {
             @JsonKey(name: 'const') Object? const_,
             @JsonKey(name: 'title') String? title,
             @JsonKey(name: 'description') String? description,
-            @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames)?
+            @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames,
+            @JsonKey(name: 'additionalProperties') bool? additionalProperties)?
         $default,
   ) {
     final _that = this;
@@ -726,7 +742,8 @@ extension OpenApiSchemasPatterns on OpenApiSchemas {
             _that.const_,
             _that.title,
             _that.description,
-            _that.xEnumVarnames);
+            _that.xEnumVarnames,
+            _that.additionalProperties);
       case _:
         return null;
     }
@@ -746,7 +763,8 @@ class _OpenApiSchemas extends OpenApiSchemas {
       @JsonKey(name: 'const') this.const_,
       @JsonKey(name: 'title') this.title,
       @JsonKey(name: 'description') this.description,
-      @JsonKey(name: 'x-enum-varnames') final List<String>? xEnumVarnames})
+      @JsonKey(name: 'x-enum-varnames') final List<String>? xEnumVarnames,
+      @JsonKey(name: 'additionalProperties') this.additionalProperties})
       : _properties = properties,
         _required_ = required_,
         _enum_ = enum_,
@@ -812,6 +830,10 @@ class _OpenApiSchemas extends OpenApiSchemas {
     return EqualUnmodifiableListView(value);
   }
 
+  @override
+  @JsonKey(name: 'additionalProperties')
+  final bool? additionalProperties;
+
   /// Create a copy of OpenApiSchemas
   /// with the given fields replaced by the non-null parameter values.
   @override
@@ -843,7 +865,9 @@ class _OpenApiSchemas extends OpenApiSchemas {
             (identical(other.description, description) ||
                 other.description == description) &&
             const DeepCollectionEquality()
-                .equals(other._xEnumVarnames, _xEnumVarnames));
+                .equals(other._xEnumVarnames, _xEnumVarnames) &&
+            (identical(other.additionalProperties, additionalProperties) ||
+                other.additionalProperties == additionalProperties));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -857,11 +881,12 @@ class _OpenApiSchemas extends OpenApiSchemas {
       const DeepCollectionEquality().hash(const_),
       title,
       description,
-      const DeepCollectionEquality().hash(_xEnumVarnames));
+      const DeepCollectionEquality().hash(_xEnumVarnames),
+      additionalProperties);
 
   @override
   String toString() {
-    return 'OpenApiSchemas(properties: $properties, type: $type, required_: $required_, enum_: $enum_, const_: $const_, title: $title, description: $description, xEnumVarnames: $xEnumVarnames)';
+    return 'OpenApiSchemas(properties: $properties, type: $type, required_: $required_, enum_: $enum_, const_: $const_, title: $title, description: $description, xEnumVarnames: $xEnumVarnames, additionalProperties: $additionalProperties)';
   }
 }
 
@@ -883,7 +908,8 @@ abstract mixin class _$OpenApiSchemasCopyWith<$Res>
       @JsonKey(name: 'const') Object? const_,
       @JsonKey(name: 'title') String? title,
       @JsonKey(name: 'description') String? description,
-      @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames});
+      @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames,
+      @JsonKey(name: 'additionalProperties') bool? additionalProperties});
 }
 
 /// @nodoc
@@ -907,6 +933,7 @@ class __$OpenApiSchemasCopyWithImpl<$Res>
     Object? title = freezed,
     Object? description = freezed,
     Object? xEnumVarnames = freezed,
+    Object? additionalProperties = freezed,
   }) {
     return _then(_OpenApiSchemas(
       properties: freezed == properties
@@ -938,6 +965,10 @@ class __$OpenApiSchemasCopyWithImpl<$Res>
           ? _self._xEnumVarnames
           : xEnumVarnames // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      additionalProperties: freezed == additionalProperties
+          ? _self.additionalProperties
+          : additionalProperties // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
