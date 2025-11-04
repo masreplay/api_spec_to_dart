@@ -1,4 +1,6 @@
 import 'package:collection/collection.dart';
+import 'package:swagger_to_dart/src/config/abp_generic_parser.dart';
+import 'package:swagger_to_dart/src/config/fastapi_generic_parser.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
@@ -75,15 +77,29 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
   }
 
   String _processGenericTitle(String title) {
-    final genericStart = title.indexOf('[');
-    final genericEnd = title.lastIndexOf(']');
-
-    if (genericStart == -1 || genericEnd == -1 || genericEnd <= genericStart) {
-      return _convertPrimitiveType(title);
+    // Convert ABP or FastAPI format to standard format if needed
+    var processedTitle = title;
+    if (AbpGenericParser.isAbpFormat(title)) {
+      final converted = AbpGenericParser.toStandardFormat(title);
+      if (converted != null) {
+        processedTitle = converted;
+      }
+    } else if (FastApiGenericParser.isFastApiFormat(title)) {
+      final converted = FastApiGenericParser.toStandardFormat(title);
+      if (converted != null) {
+        processedTitle = converted;
+      }
     }
 
-    final base = title.substring(0, genericStart);
-    final genericsContent = title.substring(genericStart + 1, genericEnd);
+    final genericStart = processedTitle.indexOf('<');
+    final genericEnd = processedTitle.lastIndexOf('>');
+
+    if (genericStart == -1 || genericEnd == -1 || genericEnd <= genericStart) {
+      return _convertPrimitiveType(processedTitle);
+    }
+
+    final base = processedTitle.substring(0, genericStart);
+    final genericsContent = processedTitle.substring(genericStart + 1, genericEnd);
     final genericTypes = _splitGenerics(genericsContent);
 
     final prefixes = context.config.model.removeModelPrefixes;
@@ -124,8 +140,8 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
         parts.add(buffer.toString());
         buffer.clear();
       } else {
-        if (char == '[') depth++;
-        if (char == ']') depth--;
+        if (char == '[' || char == '<') depth++;
+        if (char == ']' || char == '>') depth--;
         buffer.write(char);
       }
     }
