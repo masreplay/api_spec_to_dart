@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:swagger_to_dart/src/generator/model/strategy/generic_parser_factory.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
@@ -75,19 +76,9 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
   }
 
   String _processGenericTitle(String title) {
-    // Convert ABP or FastAPI format to standard format if needed
-    var processedTitle = title;
-    if (AbpGenericParser.instance.isAbpFormat(title)) {
-      final converted = AbpGenericParser.instance.toStandardFormat(title);
-      if (converted != null) {
-        processedTitle = converted;
-      }
-    } else if (FastApiGenericParser.instance.isFastApiFormat(title)) {
-      final converted = FastApiGenericParser.instance.toStandardFormat(title);
-      if (converted != null) {
-        processedTitle = converted;
-      }
-    }
+    // Convert ABP, FastAPI, or .NET format to standard format if needed
+    final parser = GenericParserFactory.instance.detectParser(title);
+    final processedTitle = parser?.toStandardFormat(title) ?? title;
 
     final genericStart = processedTitle.indexOf('<');
     final genericEnd = processedTitle.lastIndexOf('>');

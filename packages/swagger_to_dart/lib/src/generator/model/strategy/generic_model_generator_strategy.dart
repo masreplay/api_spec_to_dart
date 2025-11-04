@@ -1,7 +1,5 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:swagger_to_dart/src/code/string.dart';
-import 'package:swagger_to_dart/src/generator/model/strategy/abp_generic_parser.dart';
-import 'package:swagger_to_dart/src/generator/model/strategy/generic_parser_base.dart';
 import 'package:swagger_to_dart/src/generator/model/strategy/generic_parser_factory.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
@@ -38,17 +36,19 @@ class GenericModelGeneratorStrategy
       _debug('abpIO.generic.standardTitle: $standardTitle');
     }
 
-    return _buildGenericClass(standardTitle, model, parser);
+    return _buildGenericClass(standardTitle, model);
   }
 
   Library _buildGenericClass(
     String title,
     MapEntry<String, OpenApiSchemas> model,
-    GenericParserBase parser,
   ) {
     _debug('buildGenericClass: $title');
 
-    if (!parser.isFormat(title)) {
+    // Standard format uses angle brackets <>, so we can use DotNet parser
+    // or detect which parser can handle the standard format
+    final parser = GenericParserFactory.instance.detectParser(title);
+    if (parser == null) {
       throw ArgumentError(
           'Title is not in a recognized generic format: $title');
     }
@@ -70,7 +70,7 @@ class GenericModelGeneratorStrategy
       genericTypeParams.add(genericType);
 
       final genericArg = genericArguments[i];
-      final resolvedType = _resolveGenericType(genericArg, parser);
+      final resolvedType = _resolveGenericType(genericArg);
 
       final finalResolvedType = resolvedType ?? genericArg;
       overrideTypes[finalResolvedType] = genericType;
@@ -179,12 +179,16 @@ class GenericModelGeneratorStrategy
       ]));
   }
 
-  String? _resolveGenericType(String genericArg, GenericParserBase parser) {
+  String? _resolveGenericType(String genericArg) {
     final schemas = context.openApi.components?.schemas ?? {};
-    final isAbpParser = parser is AbpGenericParser;
+    final generationSource = context.config.generationSource;
+    final isAbpSource = generationSource == GenerationSource.abpIO;
 
     for (final entry in schemas.entries) {
-      final matches = isAbpParser
+      // For ABP source, use endsWith matching since generic args are short names
+      // extracted from full type names (e.g., "Agent" from "Elitesoft.SuperApp.Gateway.Auth.Agent")
+      // For other sources, use contains matching
+      final matches = isAbpSource
           ? (entry.key == genericArg ||
               entry.value.title == genericArg ||
               entry.key.endsWith(genericArg.split('.').last))
