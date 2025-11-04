@@ -1,10 +1,5 @@
 import 'package:code_builder/code_builder.dart';
-import 'package:swagger_to_dart/src/generator/library_generator.dart';
-import 'package:swagger_to_dart/src/generator/model/strategy/enum_model_generator_strategy.dart';
-import 'package:swagger_to_dart/src/generator/model/strategy/model_generator_strategy.dart';
-import 'package:swagger_to_dart/src/schema/openapi/openapi.dart';
-
-import 'strategy/regular_model_generator_strategy.dart';
+import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 ///
 /// Generate Enum, Union, Regular models
@@ -19,6 +14,9 @@ class ModelGenerator extends LibraryGenerator {
 
     if (schema.enum_ != null) {
       strategy = EnumModelGeneratorStrategy(context);
+    } else if (GenericModelGeneratorStrategy(context)
+        .shouldUseGenericStrategy(model)) {
+      strategy = GenericModelGeneratorStrategy(context);
     } else {
       strategy = RegularModelGeneratorStrategy(context);
     }
