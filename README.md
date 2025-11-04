@@ -16,6 +16,7 @@ A powerful Dart package that auto-generates type-safe API clients and models fro
 ## Support
 
 - [FastAPI](https://fastapi.tiangolo.com/)
+- [abpIO](https://abp.io/)
 - [NestJS](https://nestjs.com/)
 - [Spring Boot](https://spring.io/projects/spring-boot)
 - [AspNet Core](https://dotnet.microsoft.com/apps/aspnet)

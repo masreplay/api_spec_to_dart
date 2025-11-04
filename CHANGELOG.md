@@ -1,3 +1,6 @@
+## 4.0.0
+- Add support to abp.io framework
+
 ## 3.8.0
 
 - Update CHANGELOG.md
