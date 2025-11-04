@@ -162,7 +162,7 @@ class GenericModelGeneratorStrategy
               (b) => b
                 ..factory = true
                 ..name = 'fromJson'
-                ..lambda = false
+                ..lambda = true
                 ..requiredParameters.addAll([
                   Parameter(
                     (b) => b
@@ -172,7 +172,7 @@ class GenericModelGeneratorStrategy
                   ...fromJsonParams,
                 ])
                 ..body = Code(
-                  '_\$${className}FromJson<$genericTypesString>(json, ${fromJsonParams.map((p) => p.name).join(', ')})',
+                  '_\$${className}FromJson<$genericTypesString>(json${fromJsonParams.isEmpty ? '' : ', '}${fromJsonParams.map((p) => p.name).join(', ')})',
                 ),
             ),
           ]))
