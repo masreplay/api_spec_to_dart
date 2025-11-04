@@ -77,13 +77,13 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
   String _processGenericTitle(String title) {
     // Convert ABP or FastAPI format to standard format if needed
     var processedTitle = title;
-    if (AbpGenericParser.isAbpFormat(title)) {
-      final converted = AbpGenericParser.toStandardFormat(title);
+    if (AbpGenericParser.instance.isAbpFormat(title)) {
+      final converted = AbpGenericParser.instance.toStandardFormat(title);
       if (converted != null) {
         processedTitle = converted;
       }
-    } else if (FastApiGenericParser.isFastApiFormat(title)) {
-      final converted = FastApiGenericParser.toStandardFormat(title);
+    } else if (FastApiGenericParser.instance.isFastApiFormat(title)) {
+      final converted = FastApiGenericParser.instance.toStandardFormat(title);
       if (converted != null) {
         processedTitle = converted;
       }
