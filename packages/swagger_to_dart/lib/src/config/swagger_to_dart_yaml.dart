@@ -20,7 +20,7 @@ abstract class SwaggerToDartYaml with _$SwaggerToDartYaml {
 
   @_jsonSerializable
   const factory SwaggerToDartYaml({
-    required SwaggerToDart swaggerToDart,
+    @JsonKey(name: 'swagger_to_dart') required SwaggerToDart swaggerToDart,
   }) = _SwaggerToDartYaml;
 
   factory SwaggerToDartYaml.fromJson(Map<String, dynamic> json) =>
@@ -58,10 +58,16 @@ abstract class ModelConfig with _$ModelConfig {
 
   @_jsonSerializable
   const factory ModelConfig({
-    @Default(false) bool supportGenericArguments,
-    String? unionClassFallbackName,
-    @Default(EnumFallbackType.unknown) EnumFallbackType enumFallbackType,
-    @Default([]) List<String> removeModelPrefixes,
+    @Default(false)
+    @JsonKey(name: 'support_generic_arguments')
+    bool supportGenericArguments,
+    @JsonKey(name: 'union_class_fallback_name') String? unionClassFallbackName,
+    @Default(EnumFallbackType.unknown)
+    @JsonKey(name: 'enum_fallback_type')
+    EnumFallbackType enumFallbackType,
+    @Default([])
+    @JsonKey(name: 'remove_model_prefixes')
+    List<String> removeModelPrefixes,
   }) = _ModelConfig;
 
   factory ModelConfig.fromJson(Map<String, dynamic> json) =>
@@ -74,10 +80,18 @@ abstract class ApiClientConfig with _$ApiClientConfig {
 
   @_jsonSerializable
   const factory ApiClientConfig({
-    @Default('BaseApiClient') String baseApiClientClassName,
-    @Default(false) bool useClassForQueryParameters,
-    @Default(false) bool useClassForMultipartFormData,
-    @Default([]) List<String> skippedParameters,
+    @Default('BaseApiClient')
+    @JsonKey(name: 'base_api_client_class_name')
+    String baseApiClientClassName,
+    @Default(false)
+    @JsonKey(name: 'use_class_for_query_parameters')
+    bool useClassForQueryParameters,
+    @Default(false)
+    @JsonKey(name: 'use_class_for_multipart_form_data')
+    bool useClassForMultipartFormData,
+    @Default([])
+    @JsonKey(name: 'skipped_parameters')
+    List<String> skippedParameters,
   }) = _ApiClientConfig;
 
   factory ApiClientConfig.fromJson(Map<String, dynamic> json) =>
@@ -102,6 +116,14 @@ enum GenerationSource {
   /// https://abp.io/
   @JsonValue('abp.io')
   abpIO;
+
+  factory GenerationSource.fromJson(String value) {
+    return _$GenerationSourceEnumMap.entries
+        .firstWhere((e) => e.value == value)
+        .key;
+  }
+
+  String toJson() => _$GenerationSourceEnumMap[this]!;
 }
 
 @freezed
@@ -110,12 +132,18 @@ abstract class SwaggerToDart with _$SwaggerToDart {
 
   @_jsonSerializable
   const factory SwaggerToDart({
-    String? url,
-    GenerationSource? generationSource,
-    @Default('schema/swagger.json') String inputDirectory,
-    @Default('lib/src/gen') String outputDirectory,
-    @Default(ModelConfig()) ModelConfig model,
-    @Default(ApiClientConfig()) ApiClientConfig apiClient,
+    @JsonKey(name: 'url') String? url,
+    @JsonKey(name: 'generation_source') GenerationSource? generationSource,
+    @Default('schema/swagger.json')
+    @JsonKey(name: 'input_directory')
+    String inputDirectory,
+    @Default('lib/src/gen')
+    @JsonKey(name: 'output_directory')
+    String outputDirectory,
+    @Default(ModelConfig()) @JsonKey(name: 'model') ModelConfig model,
+    @Default(ApiClientConfig())
+    @JsonKey(name: 'api_client')
+    ApiClientConfig apiClient,
   }) = _SwaggerToDart;
 
   factory SwaggerToDart.fromJson(Map<String, dynamic> json) =>

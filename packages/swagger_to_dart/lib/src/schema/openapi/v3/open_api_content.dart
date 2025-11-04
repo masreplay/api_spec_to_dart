@@ -22,6 +22,7 @@ enum OpenApiContentType {
   String toJson() => _$OpenApiContentTypeEnumMap[this]!;
 }
 
+/// 
 typedef OpenApiContent = Map<String, OpenApiContentSchema>;
 
 @freezed
