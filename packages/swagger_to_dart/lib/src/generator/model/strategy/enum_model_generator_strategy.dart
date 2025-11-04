@@ -42,7 +42,7 @@ class EnumModelGeneratorStrategy
     final prefixes = context.config.model.removeModelPrefixes;
     final className = Renaming.instance.renameClass(
       model.key,
-      prefixes: prefixes.isNotEmpty ? prefixes : null,
+      removePrefixes: prefixes.isNotEmpty ? prefixes : null,
     );
     final filename = Renaming.instance.renameFile(className);
 

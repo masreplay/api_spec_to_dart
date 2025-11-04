@@ -12,53 +12,37 @@ class RegularModelGeneratorStrategy
   Library build(MapEntry<String, OpenApiSchemas> model) {
     final title = model.value.title;
     final properties = model.value.properties ?? {};
-    final supportGenericArguments =
-        context.config.model.supportGenericArguments;
 
     String effectiveTitle = title ?? model.key;
 
-    switch (context.config.generationSource) {
-      case GenerationSource.abpIO:
-        effectiveTitle =
-            AbpGenericParser.toStandardFormat(effectiveTitle) ?? effectiveTitle;
-        break;
-      case GenerationSource.fastAPI:
-        effectiveTitle =
-            FastApiGenericParser.toStandardFormat(effectiveTitle) ??
-                effectiveTitle;
-        break;
-      default:
-    }
-
-    final isAbpGeneric = AbpGenericParser.isAbpFormat(effectiveTitle);
-    final isFastApiGeneric =
-        !isAbpGeneric && FastApiGenericParser.isFastApiFormat(effectiveTitle);
-
-    if (isAbpGeneric) {
-      final converted = AbpGenericParser.toStandardFormat(effectiveTitle);
-      if (converted != null) {
-        effectiveTitle = converted;
+    if (context.config.model.supportGenericArguments) {
+      if (context.config.generationSource == GenerationSource.abpIO &&
+          AbpGenericParser.isAbpFormat(effectiveTitle)) {
+        if (AbpGenericParser.toStandardFormat(effectiveTitle)
+            case final title?) {
+          if (_genericClass(title, model) case final genericClass?) {
+            return genericClass;
+          }
+        }
       }
-    } else if (isFastApiGeneric) {
-      final converted = FastApiGenericParser.toStandardFormat(effectiveTitle);
-      if (converted != null) {
-        effectiveTitle = converted;
+      if (context.config.generationSource == GenerationSource.fastAPI &&
+          FastApiGenericParser.isFastApiFormat(effectiveTitle)) {
+        if (FastApiGenericParser.toStandardFormat(effectiveTitle)
+            case final title?) {
+          if (_genericClass(title, model) case final genericClass?) {
+            return genericClass;
+          }
+        }
       }
     }
 
     final prefixes = context.config.model.removeModelPrefixes;
     final className = Renaming.instance.renameClass(
       effectiveTitle,
-      prefixes: prefixes.isNotEmpty ? prefixes : null,
+      removePrefixes: prefixes.isNotEmpty ? prefixes : null,
     );
-    final filename = Renaming.instance.renameFile(className);
 
-    if (supportGenericArguments && title != null) {
-      if (isAbpGeneric || isFastApiGeneric) {
-        final genericClass = _genericClass(effectiveTitle, model);
-        if (genericClass != null) return genericClass;
-      }
-    }
+    final filename = Renaming.instance.renameFile(className);
 
     return Library(
       (b) => b
@@ -142,8 +126,6 @@ class RegularModelGeneratorStrategy
     );
   }
 
-  /// "title": "BaseResponse[PaginationResponse[ItemResponse]]"
-  /// or for ABP: "Volo.Abp.Application.Dtos.PagedResultDto`1[[Elitesoft.SuperApp.Gateway.CardRequests.AgentDto, ...]]"
   Library? _genericClass(
     String title,
     MapEntry<String, OpenApiSchemas> model,
@@ -156,7 +138,6 @@ class RegularModelGeneratorStrategy
       return null;
     }
 
-    // Extract base class name
     String? baseClass;
     List<String> genericArguments;
 
@@ -172,9 +153,6 @@ class RegularModelGeneratorStrategy
       return null;
     }
 
-    // Map generic type names to their corresponding refs in the schema
-    // For ABP, we need to match full type names like "Elitesoft.SuperApp.Gateway.CardRequests.AgentDto"
-    // to refs like "#/components/schemas/Elitesoft.SuperApp.Gateway.CardRequests.AgentDto"
     final overrideTypes = <String, String>{};
     final genericTypeParams = <String>[];
     final fromJsonParams = <Parameter>[];
@@ -184,15 +162,11 @@ class RegularModelGeneratorStrategy
       genericTypeParams.add(genericType);
 
       final genericArg = genericArguments[i];
-      // Try to find the schema ref for this type
       String? resolvedType;
 
       if (isAbpGeneric) {
-        // For ABP, the generic argument is the full type name
-        // Try to find it in the schemas
         final schemas = context.openApi.components?.schemas ?? {};
         for (final entry in schemas.entries) {
-          // Match by full type name or by short name
           if (entry.key == genericArg ||
               entry.value.title == genericArg ||
               entry.key.endsWith(genericArg.split('.').last)) {
@@ -203,7 +177,6 @@ class RegularModelGeneratorStrategy
           }
         }
       } else {
-        // For FastAPI, the generic argument might already be a simple name
         final schemas = context.openApi.components?.schemas ?? {};
         for (final entry in schemas.entries) {
           if (entry.key == genericArg ||
@@ -217,11 +190,9 @@ class RegularModelGeneratorStrategy
         }
       }
 
-      // If not found, use the generic argument as-is (might be a nested generic)
       resolvedType ??= genericArg;
-      overrideTypes[genericType] = resolvedType;
+      overrideTypes[resolvedType] = genericType;
 
-      // Add fromJson parameter
       fromJsonParams.add(
         Parameter(
           (b) => b
@@ -234,7 +205,7 @@ class RegularModelGeneratorStrategy
     final prefixes = context.config.model.removeModelPrefixes;
     final className = Renaming.instance.renameClass(
       baseClass,
-      prefixes: prefixes.isNotEmpty ? prefixes : null,
+      removePrefixes: prefixes.isNotEmpty ? prefixes : null,
     );
     final filename = Renaming.instance.renameFile(className);
 
@@ -289,7 +260,7 @@ class RegularModelGeneratorStrategy
               (b) => b
                 ..annotations.addAll([
                   refer(
-                    'JsonSerializable(converters: jsonSerializableConverters, genericArgumentFactories: true)',
+                    'JsonSerializable(converters: jsonSerializableConverters, genericArgumentFactories: true, createFieldMap: true)',
                   ),
                 ])
                 ..constant = true

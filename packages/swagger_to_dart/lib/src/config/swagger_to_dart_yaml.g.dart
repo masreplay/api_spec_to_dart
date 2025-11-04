@@ -142,8 +142,9 @@ Map<String, dynamic> _$ApiClientConfigToJson(_ApiClientConfig instance) =>
 _SwaggerToDart _$SwaggerToDartFromJson(Map<String, dynamic> json) =>
     _SwaggerToDart(
       url: json['url'] as String?,
-      generationSource: $enumDecodeNullable(
-          _$GenerationSourceEnumMap, json['generation_source']),
+      generationSource: json['generation_source'] == null
+          ? null
+          : GenerationSource.fromJson(json['generation_source'] as String),
       inputDirectory:
           json['input_directory'] as String? ?? 'schema/swagger.json',
       outputDirectory: json['output_directory'] as String? ?? 'lib/src/gen',
@@ -180,7 +181,7 @@ abstract class _$SwaggerToDartPerFieldToJson {
   static Object? url(String? instance) => instance;
   // ignore: unused_element
   static Object? generationSource(GenerationSource? instance) =>
-      _$GenerationSourceEnumMap[instance];
+      instance?.toJson();
   // ignore: unused_element
   static Object? inputDirectory(String instance) => instance;
   // ignore: unused_element
@@ -194,8 +195,7 @@ abstract class _$SwaggerToDartPerFieldToJson {
 Map<String, dynamic> _$SwaggerToDartToJson(_SwaggerToDart instance) =>
     <String, dynamic>{
       if (instance.url case final value?) 'url': value,
-      if (_$GenerationSourceEnumMap[instance.generationSource]
-          case final value?)
+      if (instance.generationSource?.toJson() case final value?)
         'generation_source': value,
       'input_directory': instance.inputDirectory,
       'output_directory': instance.outputDirectory,

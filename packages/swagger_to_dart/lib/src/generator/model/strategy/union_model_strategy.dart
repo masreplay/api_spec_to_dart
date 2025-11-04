@@ -31,7 +31,7 @@ class UnionModelStrategy
 
     final className = Renaming.instance.renameClass(
       params.key,
-      prefixes: prefixes.isNotEmpty ? prefixes : null,
+      removePrefixes: prefixes.isNotEmpty ? prefixes : null,
     );
     final filename = Renaming.instance.renameFile(className);
 
@@ -233,17 +233,17 @@ class UnionModelStrategy
     if (schema.title case final title?) {
       className = Renaming.instance.renameClass(
         title,
-        prefixes: prefixes.isNotEmpty ? prefixes : null,
+        removePrefixes: prefixes.isNotEmpty ? prefixes : null,
       );
     } else if (discriminator case final discriminator?) {
       className = Renaming.instance.renameClass(
         '${discriminator.mapping.keys.join('Or')}_Union',
-        prefixes: prefixes.isNotEmpty ? prefixes : null,
+        removePrefixes: prefixes.isNotEmpty ? prefixes : null,
       );
     } else {
       className = Renaming.instance.renameClass(
         '${schema.oneOf.whereType<OpenApiSchemaRef>().map((e) => e.name).join('Or')}_Union',
-        prefixes: prefixes.isNotEmpty ? prefixes : null,
+        removePrefixes: prefixes.isNotEmpty ? prefixes : null,
       );
     }
 
@@ -285,11 +285,11 @@ class UnionModelStrategy
               .map(context.extension.typeConverter.getRef)
               .map((name) => Renaming.instance.renameClass(
                     name,
-                    prefixes: prefixes.isNotEmpty ? prefixes : null,
+                    removePrefixes: prefixes.isNotEmpty ? prefixes : null,
                   ))
               .sorted((a, b) => a.compareTo(b))
               .join(),
-      prefixes: prefixes.isNotEmpty ? prefixes : null,
+      removePrefixes: prefixes.isNotEmpty ? prefixes : null,
     );
 
     final model = build(
