@@ -1,6 +1,4 @@
 import 'package:collection/collection.dart';
-import 'package:swagger_to_dart/src/config/abp_generic_parser.dart';
-import 'package:swagger_to_dart/src/config/fastapi_generic_parser.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
