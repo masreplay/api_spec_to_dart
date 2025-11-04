@@ -197,4 +197,5 @@ Map<String, dynamic> _$SwaggerToDartToJson(_SwaggerToDart instance) =>
 const _$GenerationSourceEnumMap = {
   GenerationSource.fastAPI: 'FastAPI',
   GenerationSource.dotnet: 'dotnet',
+  GenerationSource.abpIO: 'abp.io',
 };

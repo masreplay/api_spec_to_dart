@@ -3,6 +3,8 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart' hide Method, Field;
 import 'package:swagger_to_dart/src/swagger_to_dart_base.dart';
 
+const _requestBodyName = 'requestBody';
+
 /// Generated Client Code
 ///
 /// Swagger
@@ -241,7 +243,7 @@ class ApiClientGenerator {
                     ..annotations.addAll([
                       refer('$Body()'),
                     ])
-                    ..name = 'requestBody'
+                    ..name = _requestBodyName
                     ..named = true
                     ..required = true
                     ..type = refer(
@@ -259,7 +261,7 @@ class ApiClientGenerator {
                     ..annotations.addAll([
                       refer('$Part()'),
                     ])
-                    ..name = 'requestBody'
+                    ..name = _requestBodyName
                     ..named = true
                     ..required = true
                     ..type = refer('Map<String, dynamic>'),
@@ -267,6 +269,12 @@ class ApiClientGenerator {
               );
 
               // WORKAROUND for sending class as request body in `multipart/form-data`
+              final dartType = context.extension.typeConverter.get(
+                entry.value.schema,
+                className: className,
+              );
+
+              final canToJson = dartType != 'Map<String, dynamic>';
               extensionMethods.add(Method(
                 (b) => b
                   ..name = methodName
@@ -274,21 +282,16 @@ class ApiClientGenerator {
                   ..optionalParameters.addAll([
                     Parameter(
                       (b) => b
-                        ..name = 'requestBody'
+                        ..name = _requestBodyName
                         ..required = true
-                        ..type = refer(
-                          context.extension.typeConverter.get(
-                            entry.value.schema,
-                            className: className,
-                          ),
-                        ),
+                        ..type = refer(dartType),
                     ),
                     ...parameters,
                     ..._extraParameters(),
                   ])
                   ..body = Block.of([
                     Code(
-                        'return ${methodName}_(requestBody: requestBody.toJson(), extras: extras, cancelToken: cancelToken, onSendProgress: onSendProgress, onReceiveProgress: onReceiveProgress);'),
+                        '''return ${methodName}_($_requestBodyName: $_requestBodyName${canToJson ? '.toJson()' : ''}, extras: extras, cancelToken: cancelToken, onSendProgress: onSendProgress, onReceiveProgress: onReceiveProgress);'''),
                   ]),
               ));
               break;

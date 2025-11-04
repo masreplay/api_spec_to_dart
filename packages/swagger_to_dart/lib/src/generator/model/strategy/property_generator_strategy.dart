@@ -22,17 +22,27 @@ class PropertyGeneratorStrategy extends GeneratorStrategy {
       overrideTypes: overrideTypes,
     );
 
+    final isRequired = defaultValue == null && required;
+
+    final isNullable = dartType.endsWith('?');
+    final hasDefaultValue = defaultValue != null;
+
+    final adjustedDartType = (!hasDefaultValue && !isNullable && !isRequired)
+        ? '$dartType?'
+        : dartType;
+
     return Parameter(
       (b) => b
         ..docs.add('/// $name')
-        ..required = defaultValue == null && required
         ..named = true
+        ..required = isRequired
         ..annotations.addAll([
-          if (defaultValue != null) refer('$Default($defaultValue)'),
-          refer('JsonKey(name: $className.${name}Key)'),
+          if (hasDefaultValue) refer('$Default($defaultValue)'),
+          refer(
+              'JsonKey(name: $className.${RegularModelGeneratorStrategy.getKey(name)})'),
         ])
         ..name = name
-        ..type = refer(dartType),
+        ..type = refer(adjustedDartType),
     );
   }
 }

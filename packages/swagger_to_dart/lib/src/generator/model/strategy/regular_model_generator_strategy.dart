@@ -56,7 +56,7 @@ class RegularModelGeneratorStrategy
                     (b) => b
                       ..static = true
                       ..modifier = FieldModifier.constant
-                      ..name = '${name}Key'
+                      ..name = getKey(name)
                       ..type = refer('$String')
                       ..assignment = stringCode(entry.key),
                   );
@@ -158,7 +158,7 @@ class RegularModelGeneratorStrategy
                 (b) => b
                   ..static = true
                   ..modifier = FieldModifier.constant
-                  ..name = '${name}Key'
+                  ..name = getKey(name)
                   ..type = refer('String')
                   ..assignment = stringCode(entry.key),
               );
@@ -214,4 +214,6 @@ class RegularModelGeneratorStrategy
           ]))
       ]));
   }
+
+  static String? getKey(String name) => '${name}Key_';
 }

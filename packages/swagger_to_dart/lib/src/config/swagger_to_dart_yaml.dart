@@ -94,7 +94,12 @@ enum GenerationSource {
   /// The source is .NET
   /// https://dotnet.microsoft.com
   @JsonValue('dotnet')
-  dotnet;
+  dotnet,
+
+  /// The source is abp.io
+  /// https://abp.io/
+  @JsonValue('abp.io')
+  abpIO;
 }
 
 @freezed
