@@ -139,7 +139,21 @@ class Renaming {
     }
   }
 
-  String renameClass(String value) {
+  String renameClass(String value, {List<String>? prefixes}) {
+    // Remove prefixes if provided
+    if (prefixes != null && prefixes.isNotEmpty) {
+      // Sort prefixes by length (longest first) to match the longest prefix first
+      final sortedPrefixes = List<String>.from(prefixes)
+        ..sort((a, b) => b.length.compareTo(a.length));
+
+      for (final prefix in sortedPrefixes) {
+        if (value.startsWith(prefix)) {
+          value = value.substring(prefix.length);
+          break; // Remove only the first (longest) matching prefix
+        }
+      }
+    }
+
     // Handle nullable types ending with '?'
     if (value.endsWith('?')) {
       final baseValue = value.substring(0, value.length - 1);

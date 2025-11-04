@@ -345,6 +345,7 @@ mixin _$ModelConfig {
   bool get supportGenericArguments;
   String? get unionClassFallbackName;
   EnumFallbackType get enumFallbackType;
+  List<String> get removeModelPrefixes;
 
   /// Create a copy of ModelConfig
   /// with the given fields replaced by the non-null parameter values.
@@ -367,17 +368,23 @@ mixin _$ModelConfig {
             (identical(other.unionClassFallbackName, unionClassFallbackName) ||
                 other.unionClassFallbackName == unionClassFallbackName) &&
             (identical(other.enumFallbackType, enumFallbackType) ||
-                other.enumFallbackType == enumFallbackType));
+                other.enumFallbackType == enumFallbackType) &&
+            const DeepCollectionEquality()
+                .equals(other.removeModelPrefixes, removeModelPrefixes));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, supportGenericArguments,
-      unionClassFallbackName, enumFallbackType);
+  int get hashCode => Object.hash(
+      runtimeType,
+      supportGenericArguments,
+      unionClassFallbackName,
+      enumFallbackType,
+      const DeepCollectionEquality().hash(removeModelPrefixes));
 
   @override
   String toString() {
-    return 'ModelConfig(supportGenericArguments: $supportGenericArguments, unionClassFallbackName: $unionClassFallbackName, enumFallbackType: $enumFallbackType)';
+    return 'ModelConfig(supportGenericArguments: $supportGenericArguments, unionClassFallbackName: $unionClassFallbackName, enumFallbackType: $enumFallbackType, removeModelPrefixes: $removeModelPrefixes)';
   }
 }
 
@@ -390,7 +397,8 @@ abstract mixin class $ModelConfigCopyWith<$Res> {
   $Res call(
       {bool supportGenericArguments,
       String? unionClassFallbackName,
-      EnumFallbackType enumFallbackType});
+      EnumFallbackType enumFallbackType,
+      List<String> removeModelPrefixes});
 }
 
 /// @nodoc
@@ -408,6 +416,7 @@ class _$ModelConfigCopyWithImpl<$Res> implements $ModelConfigCopyWith<$Res> {
     Object? supportGenericArguments = null,
     Object? unionClassFallbackName = freezed,
     Object? enumFallbackType = null,
+    Object? removeModelPrefixes = null,
   }) {
     return _then(_self.copyWith(
       supportGenericArguments: null == supportGenericArguments
@@ -422,6 +431,10 @@ class _$ModelConfigCopyWithImpl<$Res> implements $ModelConfigCopyWith<$Res> {
           ? _self.enumFallbackType
           : enumFallbackType // ignore: cast_nullable_to_non_nullable
               as EnumFallbackType,
+      removeModelPrefixes: null == removeModelPrefixes
+          ? _self.removeModelPrefixes
+          : removeModelPrefixes // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -519,16 +532,22 @@ extension ModelConfigPatterns on ModelConfig {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(bool supportGenericArguments,
-            String? unionClassFallbackName, EnumFallbackType enumFallbackType)?
+    TResult Function(
+            bool supportGenericArguments,
+            String? unionClassFallbackName,
+            EnumFallbackType enumFallbackType,
+            List<String> removeModelPrefixes)?
         $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _ModelConfig() when $default != null:
-        return $default(_that.supportGenericArguments,
-            _that.unionClassFallbackName, _that.enumFallbackType);
+        return $default(
+            _that.supportGenericArguments,
+            _that.unionClassFallbackName,
+            _that.enumFallbackType,
+            _that.removeModelPrefixes);
       case _:
         return orElse();
     }
@@ -549,15 +568,21 @@ extension ModelConfigPatterns on ModelConfig {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(bool supportGenericArguments,
-            String? unionClassFallbackName, EnumFallbackType enumFallbackType)
+    TResult Function(
+            bool supportGenericArguments,
+            String? unionClassFallbackName,
+            EnumFallbackType enumFallbackType,
+            List<String> removeModelPrefixes)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _ModelConfig():
-        return $default(_that.supportGenericArguments,
-            _that.unionClassFallbackName, _that.enumFallbackType);
+        return $default(
+            _that.supportGenericArguments,
+            _that.unionClassFallbackName,
+            _that.enumFallbackType,
+            _that.removeModelPrefixes);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -577,15 +602,21 @@ extension ModelConfigPatterns on ModelConfig {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(bool supportGenericArguments,
-            String? unionClassFallbackName, EnumFallbackType enumFallbackType)?
+    TResult? Function(
+            bool supportGenericArguments,
+            String? unionClassFallbackName,
+            EnumFallbackType enumFallbackType,
+            List<String> removeModelPrefixes)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _ModelConfig() when $default != null:
-        return $default(_that.supportGenericArguments,
-            _that.unionClassFallbackName, _that.enumFallbackType);
+        return $default(
+            _that.supportGenericArguments,
+            _that.unionClassFallbackName,
+            _that.enumFallbackType,
+            _that.removeModelPrefixes);
       case _:
         return null;
     }
@@ -599,8 +630,10 @@ class _ModelConfig extends ModelConfig {
   const _ModelConfig(
       {this.supportGenericArguments = false,
       this.unionClassFallbackName,
-      this.enumFallbackType = EnumFallbackType.unknown})
-      : super._();
+      this.enumFallbackType = EnumFallbackType.unknown,
+      final List<String> removeModelPrefixes = const []})
+      : _removeModelPrefixes = removeModelPrefixes,
+        super._();
   factory _ModelConfig.fromJson(Map<String, dynamic> json) =>
       _$ModelConfigFromJson(json);
 
@@ -612,6 +645,15 @@ class _ModelConfig extends ModelConfig {
   @override
   @JsonKey()
   final EnumFallbackType enumFallbackType;
+  final List<String> _removeModelPrefixes;
+  @override
+  @JsonKey()
+  List<String> get removeModelPrefixes {
+    if (_removeModelPrefixes is EqualUnmodifiableListView)
+      return _removeModelPrefixes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_removeModelPrefixes);
+  }
 
   /// Create a copy of ModelConfig
   /// with the given fields replaced by the non-null parameter values.
@@ -639,17 +681,23 @@ class _ModelConfig extends ModelConfig {
             (identical(other.unionClassFallbackName, unionClassFallbackName) ||
                 other.unionClassFallbackName == unionClassFallbackName) &&
             (identical(other.enumFallbackType, enumFallbackType) ||
-                other.enumFallbackType == enumFallbackType));
+                other.enumFallbackType == enumFallbackType) &&
+            const DeepCollectionEquality()
+                .equals(other._removeModelPrefixes, _removeModelPrefixes));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, supportGenericArguments,
-      unionClassFallbackName, enumFallbackType);
+  int get hashCode => Object.hash(
+      runtimeType,
+      supportGenericArguments,
+      unionClassFallbackName,
+      enumFallbackType,
+      const DeepCollectionEquality().hash(_removeModelPrefixes));
 
   @override
   String toString() {
-    return 'ModelConfig(supportGenericArguments: $supportGenericArguments, unionClassFallbackName: $unionClassFallbackName, enumFallbackType: $enumFallbackType)';
+    return 'ModelConfig(supportGenericArguments: $supportGenericArguments, unionClassFallbackName: $unionClassFallbackName, enumFallbackType: $enumFallbackType, removeModelPrefixes: $removeModelPrefixes)';
   }
 }
 
@@ -664,7 +712,8 @@ abstract mixin class _$ModelConfigCopyWith<$Res>
   $Res call(
       {bool supportGenericArguments,
       String? unionClassFallbackName,
-      EnumFallbackType enumFallbackType});
+      EnumFallbackType enumFallbackType,
+      List<String> removeModelPrefixes});
 }
 
 /// @nodoc
@@ -682,6 +731,7 @@ class __$ModelConfigCopyWithImpl<$Res> implements _$ModelConfigCopyWith<$Res> {
     Object? supportGenericArguments = null,
     Object? unionClassFallbackName = freezed,
     Object? enumFallbackType = null,
+    Object? removeModelPrefixes = null,
   }) {
     return _then(_ModelConfig(
       supportGenericArguments: null == supportGenericArguments
@@ -696,6 +746,10 @@ class __$ModelConfigCopyWithImpl<$Res> implements _$ModelConfigCopyWith<$Res> {
           ? _self.enumFallbackType
           : enumFallbackType // ignore: cast_nullable_to_non_nullable
               as EnumFallbackType,
+      removeModelPrefixes: null == removeModelPrefixes
+          ? _self._removeModelPrefixes
+          : removeModelPrefixes // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }

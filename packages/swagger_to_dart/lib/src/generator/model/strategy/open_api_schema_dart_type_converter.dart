@@ -86,11 +86,12 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
     final genericsContent = title.substring(genericStart + 1, genericEnd);
     final genericTypes = _splitGenerics(genericsContent);
 
+    final prefixes = context.config.model.removeModelPrefixes;
     final processedGenerics = genericTypes
         .map((type) => _processGenericTitle(type.trim()))
         .join(', ');
 
-    return '${Renaming.instance.renameClass(base)}<$processedGenerics>';
+    return '${Renaming.instance.renameClass(base, prefixes: prefixes.isNotEmpty ? prefixes : null)}<$processedGenerics>';
   }
 
   String _convertPrimitiveType(String type) {
@@ -107,7 +108,9 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
       case 'string':
         return 'String';
       default:
-        return Renaming.instance.renameClass(type);
+        final prefixes = context.config.model.removeModelPrefixes;
+        return Renaming.instance
+            .renameClass(type, prefixes: prefixes.isNotEmpty ? prefixes : null);
     }
   }
 

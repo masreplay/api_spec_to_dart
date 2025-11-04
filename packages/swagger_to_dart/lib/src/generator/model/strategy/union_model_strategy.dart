@@ -27,8 +27,12 @@ class UnionModelStrategy
   @override
   Library build(UnionModelStrategyParams params) {
     final unionClassFallbackName = context.config.model.unionClassFallbackName;
+    final prefixes = context.config.model.removeModelPrefixes;
 
-    final className = Renaming.instance.renameClass(params.key);
+    final className = Renaming.instance.renameClass(
+      params.key,
+      prefixes: prefixes.isNotEmpty ? prefixes : null,
+    );
     final filename = Renaming.instance.renameFile(className);
 
     const String valueKeyName = 'value';
@@ -224,16 +228,22 @@ class UnionModelStrategy
 
     final discriminator = schema.discriminator;
 
+    final prefixes = context.config.model.removeModelPrefixes;
     final String className;
     if (schema.title case final title?) {
-      className = Renaming.instance.renameClass(title);
+      className = Renaming.instance.renameClass(
+        title,
+        prefixes: prefixes.isNotEmpty ? prefixes : null,
+      );
     } else if (discriminator case final discriminator?) {
       className = Renaming.instance.renameClass(
         '${discriminator.mapping.keys.join('Or')}_Union',
+        prefixes: prefixes.isNotEmpty ? prefixes : null,
       );
     } else {
       className = Renaming.instance.renameClass(
         '${schema.oneOf.whereType<OpenApiSchemaRef>().map((e) => e.name).join('Or')}_Union',
+        prefixes: prefixes.isNotEmpty ? prefixes : null,
       );
     }
 
@@ -266,15 +276,20 @@ class UnionModelStrategy
 
   (Library, String) buildAnyOf(OpenApiSchemaAnyOf schema) {
     final schemas = schema.anyOf;
+    final prefixes = context.config.model.removeModelPrefixes;
 
     final className = Renaming.instance.renameClass(
       schema.title ??
           schemas
               .whereType<OpenApiSchemaRef>()
               .map(context.extension.typeConverter.getRef)
-              .map(Renaming.instance.renameClass)
+              .map((name) => Renaming.instance.renameClass(
+                    name,
+                    prefixes: prefixes.isNotEmpty ? prefixes : null,
+                  ))
               .sorted((a, b) => a.compareTo(b))
               .join(),
+      prefixes: prefixes.isNotEmpty ? prefixes : null,
     );
 
     final model = build(

@@ -39,7 +39,11 @@ class EnumModelGeneratorStrategy
 
   @override
   Library build(MapEntry<String, OpenApiSchemas> model) {
-    final className = Renaming.instance.renameClass(model.key);
+    final prefixes = context.config.model.removeModelPrefixes;
+    final className = Renaming.instance.renameClass(
+      model.key,
+      prefixes: prefixes.isNotEmpty ? prefixes : null,
+    );
     final filename = Renaming.instance.renameFile(className);
 
     // Can be a list of [String] or an [int].

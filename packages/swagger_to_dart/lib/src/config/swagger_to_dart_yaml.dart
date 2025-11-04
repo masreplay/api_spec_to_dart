@@ -19,8 +19,9 @@ abstract class SwaggerToDartYaml with _$SwaggerToDartYaml {
   const SwaggerToDartYaml._();
 
   @_jsonSerializable
-  const factory SwaggerToDartYaml({required SwaggerToDart swaggerToDart}) =
-      _SwaggerToDartYaml;
+  const factory SwaggerToDartYaml({
+    required SwaggerToDart swaggerToDart,
+  }) = _SwaggerToDartYaml;
 
   factory SwaggerToDartYaml.fromJson(Map<String, dynamic> json) =>
       _$SwaggerToDartYamlFromJson(json);
@@ -60,6 +61,7 @@ abstract class ModelConfig with _$ModelConfig {
     @Default(false) bool supportGenericArguments,
     String? unionClassFallbackName,
     @Default(EnumFallbackType.unknown) EnumFallbackType enumFallbackType,
+    @Default([]) List<String> removeModelPrefixes,
   }) = _ModelConfig;
 
   factory ModelConfig.fromJson(Map<String, dynamic> json) =>

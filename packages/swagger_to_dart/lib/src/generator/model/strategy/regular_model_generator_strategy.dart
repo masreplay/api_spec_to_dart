@@ -10,15 +10,20 @@ class RegularModelGeneratorStrategy
   Library build(MapEntry<String, OpenApiSchemas> model) {
     final title = model.value.title;
     final properties = model.value.properties ?? {};
-    final supportGenerics = context.config.model.supportGenericArguments;
+    final supportGenericArguments =
+        context.config.model.supportGenericArguments;
 
     // Prefer title if present, otherwise fallback to model.key
     final effectiveTitle = title ?? model.key;
     final isGeneric = effectiveTitle.contains('[');
-    final className = Renaming.instance.renameClass(effectiveTitle);
+    final prefixes = context.config.model.removeModelPrefixes;
+    final className = Renaming.instance.renameClass(
+      effectiveTitle,
+      prefixes: prefixes.isNotEmpty ? prefixes : null,
+    );
     final filename = Renaming.instance.renameFile(className);
 
-    if (supportGenerics && isGeneric && title != null) {
+    if (supportGenericArguments && isGeneric && title != null) {
       final genericClass = _genericClass(title, model);
       if (genericClass != null) return genericClass;
     }
@@ -119,7 +124,11 @@ class RegularModelGeneratorStrategy
     final genericClass = match.group(2)!;
     final genericType = 'T';
 
-    final className = Renaming.instance.renameClass(baseClass);
+    final prefixes = context.config.model.removeModelPrefixes;
+    final className = Renaming.instance.renameClass(
+      baseClass,
+      prefixes: prefixes.isNotEmpty ? prefixes : null,
+    );
     final filename = Renaming.instance.renameFile(className);
 
     final properties = model.value.properties ?? {};
