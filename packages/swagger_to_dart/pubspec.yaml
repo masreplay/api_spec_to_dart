@@ -1,6 +1,6 @@
 name: swagger_to_dart
 description: Convert Swagger to Dart using freezed and retrofit support only 3.1.0 openApi
-version: 3.8.0
+version: 4.0.0
 homepage: https://github.com/masreplay/api_spec_to_dart
 issue_tracker: https://github.com/masreplay/api_spec_to_dart/issues
 funding: [https://github.com/sponsors/masreplay]
