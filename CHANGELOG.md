@@ -1,3 +1,21 @@
+## 4.1.0 - 2025-12-03
+
+### Added
+
+- Added OpenAPI metadata support in API client extra parameters, allowing default metadata to be included in generated client methods
+- Enhanced query parameter handling with improved code organization and formatting
+
+### Changed
+
+- Refactored `_extraParameters` method to accept `openapiMetadata` parameter and use it for default extras values
+- Improved code formatting and organization in `ApiClientGenerator` class
+- Removed debug print statements from `AbpGenericParser` for cleaner code output
+- Removed unused debug method from `GenericModelGeneratorStrategy`
+
+### Fixed
+
+- Fixed parameter ordering in `_extraParameters` method (moved `extras` parameter to end with default value)
+
 ## 4.0.0
 
 - Add support to abp.io framework
