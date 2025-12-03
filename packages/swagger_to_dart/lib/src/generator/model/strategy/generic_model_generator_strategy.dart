@@ -181,20 +181,11 @@ class GenericModelGeneratorStrategy
 
   String? _resolveGenericType(String genericArg) {
     final schemas = context.openApi.components?.schemas ?? {};
-    final generationSource = context.config.generationSource;
-    final isAbpSource = generationSource == GenerationSource.abpIO;
 
     for (final entry in schemas.entries) {
-      // For ABP source, use endsWith matching since generic args are short names
-      // extracted from full type names (e.g., "Agent" from "Elitesoft.SuperApp.Gateway.Auth.Agent")
-      // For other sources, use contains matching
-      final matches = isAbpSource
-          ? (entry.key == genericArg ||
-              entry.value.title == genericArg ||
-              entry.key.endsWith(genericArg.split('.').last))
-          : (entry.key == genericArg ||
-              entry.value.title == genericArg ||
-              entry.key.contains(genericArg));
+      final matches = (entry.key == genericArg ||
+          entry.value.title == genericArg ||
+          entry.key.contains(genericArg));
 
       if (matches) {
         return context.extension.typeConverter.getRef(

@@ -226,7 +226,6 @@ class AbpGenericParser with DebugMixin implements GenericParserBase {
   }
 
   String _extractShortClassName(String fullName) {
-    final parts = fullName.split('.');
-    return parts.isNotEmpty ? parts.last : fullName;
+    return fullName;
   }
 }

@@ -1,9 +1,11 @@
 import 'package:code_builder/code_builder.dart';
+import 'package:collection/collection.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart' hide Method, Field;
 import 'package:swagger_to_dart/src/swagger_to_dart_base.dart';
 
 const _requestBodyName = 'requestBody';
+const _queriesParameterName = 'queries';
 
 /// Generated Client Code
 ///
@@ -291,7 +293,13 @@ class ApiClientGenerator {
                   ])
                   ..body = Block.of([
                     Code(
-                        '''return ${methodName}_($_requestBodyName: $_requestBodyName${canToJson ? '.toJson()' : ''}, extras: extras, cancelToken: cancelToken, onSendProgress: onSendProgress, onReceiveProgress: onReceiveProgress);'''),
+                      '''return ${methodName}_($_requestBodyName: $_requestBodyName${canToJson ? '.toJson()' : ''}, extras: extras,
+                      ${parameters.firstWhereOrNull((e) => e.name == _queriesParameterName) != null ? 'queries: queries,' : ''}
+                      cancelToken: cancelToken,
+                      onSendProgress: onSendProgress,
+                      onReceiveProgress: onReceiveProgress
+                      );''',
+                    ),
                   ]),
               ));
               break;
@@ -432,7 +440,7 @@ class ApiClientGenerator {
         Parameter(
           (b) => b
             ..annotations.addAll([refer('$Queries()')])
-            ..name = 'queries'
+            ..name = _queriesParameterName
             ..required = true
             ..named = true
             ..type = refer(queryParametersClassName),
