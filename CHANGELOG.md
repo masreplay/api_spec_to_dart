@@ -1,19 +1,3 @@
-## 4.1.0 - 2025-12-03
-
-### Added
-
-- Added support for global imports configuration via `SwaggerToDartImport` class, allowing users to specify imports that will be automatically added to all generated API client and model files
-- Added `imports.global` configuration option in `swagger_to_dart.yaml` for managing global imports across generated code
-
-### Changed
-
-- Updated Flutter SDK version requirement to 3.38.3
-
-### Fixed
-
-- Refactored and simplified class name extraction logic in `AbpGenericParser`
-- Removed unused `abp_generic_parser` code to improve maintainability
-
 ## 4.0.0
 
 - Add support to abp.io framework
