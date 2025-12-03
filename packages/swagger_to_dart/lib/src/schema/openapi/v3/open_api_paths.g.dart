@@ -30,6 +30,7 @@ _OpenApiPathMethod _$OpenApiPathMethodFromJson(Map<String, dynamic> json) =>
         (k, e) => MapEntry(
             k, OpenApiPathMethodResponse.fromJson(e as Map<String, dynamic>)),
       ),
+      json: _jsonReadValue(json, 'json') as Map<String, dynamic>?,
     );
 
 Map<String, dynamic> _$OpenApiPathMethodToJson(_OpenApiPathMethod instance) =>
@@ -48,6 +49,7 @@ Map<String, dynamic> _$OpenApiPathMethodToJson(_OpenApiPathMethod instance) =>
       if (instance.responses?.map((k, e) => MapEntry(k, e.toJson()))
           case final value?)
         'responses': value,
+      if (instance.json case final value?) 'json': value,
     };
 
 _OpenApiPathMethodParameter _$OpenApiPathMethodParameterFromJson(

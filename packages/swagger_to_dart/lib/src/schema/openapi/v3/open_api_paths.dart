@@ -37,11 +37,15 @@ abstract class OpenApiPathMethod with _$OpenApiPathMethod {
     @JsonKey(name: 'requestBody')
     required OpenApiPathMethodRequestBody? requestBody,
     @JsonKey(name: 'responses') required OpenApiPathMethodResponses? responses,
+    @JsonKey(readValue: _jsonReadValue) Map<String, dynamic>? json,
   }) = _OpenApiPathMethod;
 
   factory OpenApiPathMethod.fromJson(Map<String, dynamic> json) =>
       _$OpenApiPathMethodFromJson(json);
 }
+
+Map<String, dynamic> _jsonReadValue(Map map, String key) =>
+    map as Map<String, dynamic>;
 
 @Freezed()
 abstract class OpenApiPathMethodParameter with _$OpenApiPathMethodParameter {

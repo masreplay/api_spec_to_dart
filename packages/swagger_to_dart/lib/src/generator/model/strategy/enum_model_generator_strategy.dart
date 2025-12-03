@@ -73,6 +73,8 @@ class EnumModelGeneratorStrategy
         ])
         ..name = filename
         ..directives.addAll([
+          for (final import in context.config.imports?.globalImports ?? [])
+            Directive.import(import),
           Directive.import('exports.dart'),
           Directive.part('$filename.g.dart'),
         ])

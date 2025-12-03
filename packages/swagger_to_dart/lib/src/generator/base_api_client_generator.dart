@@ -37,6 +37,8 @@ class BaseApiClientGenerator {
       (b) => b
         ..name = fileName
         ..directives.addAll([
+          for (final import in context.config.imports?.globalImports ?? [])
+            Directive.import(import),
           Directive.import('package:dio/dio.dart'),
           Directive.import('package:retrofit/retrofit.dart'),
           Directive.import('exports.dart')

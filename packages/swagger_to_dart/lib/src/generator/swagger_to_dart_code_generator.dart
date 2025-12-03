@@ -29,6 +29,8 @@ class SwaggerToDartCodeGenerator {
     final genExportLibrary = Library((b) => b
       ..name = 'gen'
       ..directives.addAll([
+        for (final import in context.config.imports?.globalImports ?? [])
+          Directive.import(import),
         Directive.export('api_client/api_client.dart'),
         Directive.export('models/models.dart'),
       ]));
@@ -68,6 +70,8 @@ class SwaggerToDartCodeGenerator {
       (b) => b
         ..name = 'models'
         ..directives.addAll([
+          for (final import in context.config.imports?.globalImports ?? [])
+            Directive.import(import),
           for (final model in context.models)
             if (model.name != null) Directive.export('${model.name}.dart'),
         ]),
@@ -90,6 +94,8 @@ class SwaggerToDartCodeGenerator {
       (b) => b
         ..name = 'exports'
         ..directives.addAll([
+          for (final import in context.config.imports?.globalImports ?? [])
+            Directive.import(import),
           ...jsonConverterDirectives,
           Directive.export('dart:typed_data'),
           Directive.export('models.dart'),
@@ -130,6 +136,8 @@ class SwaggerToDartCodeGenerator {
       (b) => b
         ..name = 'exports.dart'
         ..directives.addAll([
+          for (final import in context.config.imports?.globalImports ?? [])
+            Directive.import(import),
           Directive.export('dart:typed_data'),
           for (final apiClient in context.apiClients)
             Directive.export('${apiClient.name}.dart'),
@@ -153,6 +161,8 @@ class SwaggerToDartCodeGenerator {
       (b) => b
         ..name = 'api_client.dart'
         ..directives.addAll([
+          for (final import in context.config.imports?.globalImports ?? [])
+            Directive.import(import),
           Directive.export('exports.dart'),
           Directive.export(baseApiCLientLibraryFileName),
         ]),

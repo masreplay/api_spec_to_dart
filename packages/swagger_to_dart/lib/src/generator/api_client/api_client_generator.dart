@@ -316,6 +316,7 @@ class ApiClientGenerator {
                   .map((e) => '/// $e'),
             ])
             ..annotations.addAll([
+              if (method.value.json case final json?) refer('Headers($json)'),
               refer('$methodType("${path.key}")'),
               if (content[OpenApiContentType.applicationXWwwFormUrlencoded
                       .toJson()] !=
@@ -342,7 +343,9 @@ class ApiClientGenerator {
     return Library(
       (b) => b
         ..directives.addAll([
-          Directive.import('package:dio/dio.dart'),
+          for (final import in context.config.imports?.globalImports ?? [])
+            Directive.import(import),
+          Directive.import('package:dio/dio.dart', hide: ['Headers']),
           Directive.import('package:retrofit/retrofit.dart'),
           Directive.import('../models/models.dart'),
           Directive.part('$fileName.g.dart'),
