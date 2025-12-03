@@ -1238,6 +1238,325 @@ class __$ApiClientConfigCopyWithImpl<$Res>
 }
 
 /// @nodoc
+mixin _$SwaggerToDartImport {
+  @JsonKey(name: 'global')
+  List<String> get globalImports;
+
+  /// Create a copy of SwaggerToDartImport
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $SwaggerToDartImportCopyWith<SwaggerToDartImport> get copyWith =>
+      _$SwaggerToDartImportCopyWithImpl<SwaggerToDartImport>(
+          this as SwaggerToDartImport, _$identity);
+
+  /// Serializes this SwaggerToDartImport to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is SwaggerToDartImport &&
+            const DeepCollectionEquality()
+                .equals(other.globalImports, globalImports));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(globalImports));
+
+  @override
+  String toString() {
+    return 'SwaggerToDartImport(globalImports: $globalImports)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $SwaggerToDartImportCopyWith<$Res> {
+  factory $SwaggerToDartImportCopyWith(
+          SwaggerToDartImport value, $Res Function(SwaggerToDartImport) _then) =
+      _$SwaggerToDartImportCopyWithImpl;
+  @useResult
+  $Res call({@JsonKey(name: 'global') List<String> globalImports});
+}
+
+/// @nodoc
+class _$SwaggerToDartImportCopyWithImpl<$Res>
+    implements $SwaggerToDartImportCopyWith<$Res> {
+  _$SwaggerToDartImportCopyWithImpl(this._self, this._then);
+
+  final SwaggerToDartImport _self;
+  final $Res Function(SwaggerToDartImport) _then;
+
+  /// Create a copy of SwaggerToDartImport
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? globalImports = null,
+  }) {
+    return _then(_self.copyWith(
+      globalImports: null == globalImports
+          ? _self.globalImports
+          : globalImports // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [SwaggerToDartImport].
+extension SwaggerToDartImportPatterns on SwaggerToDartImport {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_SwaggerToDartImport value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _SwaggerToDartImport() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_SwaggerToDartImport value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SwaggerToDartImport():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_SwaggerToDartImport value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SwaggerToDartImport() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(@JsonKey(name: 'global') List<String> globalImports)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _SwaggerToDartImport() when $default != null:
+        return $default(_that.globalImports);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(@JsonKey(name: 'global') List<String> globalImports)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SwaggerToDartImport():
+        return $default(_that.globalImports);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(@JsonKey(name: 'global') List<String> globalImports)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SwaggerToDartImport() when $default != null:
+        return $default(_that.globalImports);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _SwaggerToDartImport extends SwaggerToDartImport {
+  const _SwaggerToDartImport(
+      {@JsonKey(name: 'global') final List<String> globalImports = const []})
+      : _globalImports = globalImports,
+        super._();
+  factory _SwaggerToDartImport.fromJson(Map<String, dynamic> json) =>
+      _$SwaggerToDartImportFromJson(json);
+
+  final List<String> _globalImports;
+  @override
+  @JsonKey(name: 'global')
+  List<String> get globalImports {
+    if (_globalImports is EqualUnmodifiableListView) return _globalImports;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_globalImports);
+  }
+
+  /// Create a copy of SwaggerToDartImport
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$SwaggerToDartImportCopyWith<_SwaggerToDartImport> get copyWith =>
+      __$SwaggerToDartImportCopyWithImpl<_SwaggerToDartImport>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$SwaggerToDartImportToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _SwaggerToDartImport &&
+            const DeepCollectionEquality()
+                .equals(other._globalImports, _globalImports));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_globalImports));
+
+  @override
+  String toString() {
+    return 'SwaggerToDartImport(globalImports: $globalImports)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$SwaggerToDartImportCopyWith<$Res>
+    implements $SwaggerToDartImportCopyWith<$Res> {
+  factory _$SwaggerToDartImportCopyWith(_SwaggerToDartImport value,
+          $Res Function(_SwaggerToDartImport) _then) =
+      __$SwaggerToDartImportCopyWithImpl;
+  @override
+  @useResult
+  $Res call({@JsonKey(name: 'global') List<String> globalImports});
+}
+
+/// @nodoc
+class __$SwaggerToDartImportCopyWithImpl<$Res>
+    implements _$SwaggerToDartImportCopyWith<$Res> {
+  __$SwaggerToDartImportCopyWithImpl(this._self, this._then);
+
+  final _SwaggerToDartImport _self;
+  final $Res Function(_SwaggerToDartImport) _then;
+
+  /// Create a copy of SwaggerToDartImport
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? globalImports = null,
+  }) {
+    return _then(_SwaggerToDartImport(
+      globalImports: null == globalImports
+          ? _self._globalImports
+          : globalImports // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ));
+  }
+}
+
+/// @nodoc
 mixin _$SwaggerToDart {
   @JsonKey(name: 'url')
   String? get url;
@@ -1251,6 +1570,8 @@ mixin _$SwaggerToDart {
   ModelConfig get model;
   @JsonKey(name: 'api_client')
   ApiClientConfig get apiClient;
+  @JsonKey(name: 'imports')
+  SwaggerToDartImport? get imports;
 
   /// Create a copy of SwaggerToDart
   /// with the given fields replaced by the non-null parameter values.
@@ -1277,17 +1598,18 @@ mixin _$SwaggerToDart {
                 other.outputDirectory == outputDirectory) &&
             (identical(other.model, model) || other.model == model) &&
             (identical(other.apiClient, apiClient) ||
-                other.apiClient == apiClient));
+                other.apiClient == apiClient) &&
+            (identical(other.imports, imports) || other.imports == imports));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, url, generationSource,
-      inputDirectory, outputDirectory, model, apiClient);
+      inputDirectory, outputDirectory, model, apiClient, imports);
 
   @override
   String toString() {
-    return 'SwaggerToDart(url: $url, generationSource: $generationSource, inputDirectory: $inputDirectory, outputDirectory: $outputDirectory, model: $model, apiClient: $apiClient)';
+    return 'SwaggerToDart(url: $url, generationSource: $generationSource, inputDirectory: $inputDirectory, outputDirectory: $outputDirectory, model: $model, apiClient: $apiClient, imports: $imports)';
   }
 }
 
@@ -1303,10 +1625,12 @@ abstract mixin class $SwaggerToDartCopyWith<$Res> {
       @JsonKey(name: 'input_directory') String inputDirectory,
       @JsonKey(name: 'output_directory') String outputDirectory,
       @JsonKey(name: 'model') ModelConfig model,
-      @JsonKey(name: 'api_client') ApiClientConfig apiClient});
+      @JsonKey(name: 'api_client') ApiClientConfig apiClient,
+      @JsonKey(name: 'imports') SwaggerToDartImport? imports});
 
   $ModelConfigCopyWith<$Res> get model;
   $ApiClientConfigCopyWith<$Res> get apiClient;
+  $SwaggerToDartImportCopyWith<$Res>? get imports;
 }
 
 /// @nodoc
@@ -1328,6 +1652,7 @@ class _$SwaggerToDartCopyWithImpl<$Res>
     Object? outputDirectory = null,
     Object? model = null,
     Object? apiClient = null,
+    Object? imports = freezed,
   }) {
     return _then(_self.copyWith(
       url: freezed == url
@@ -1354,6 +1679,10 @@ class _$SwaggerToDartCopyWithImpl<$Res>
           ? _self.apiClient
           : apiClient // ignore: cast_nullable_to_non_nullable
               as ApiClientConfig,
+      imports: freezed == imports
+          ? _self.imports
+          : imports // ignore: cast_nullable_to_non_nullable
+              as SwaggerToDartImport?,
     ));
   }
 
@@ -1374,6 +1703,20 @@ class _$SwaggerToDartCopyWithImpl<$Res>
   $ApiClientConfigCopyWith<$Res> get apiClient {
     return $ApiClientConfigCopyWith<$Res>(_self.apiClient, (value) {
       return _then(_self.copyWith(apiClient: value));
+    });
+  }
+
+  /// Create a copy of SwaggerToDart
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $SwaggerToDartImportCopyWith<$Res>? get imports {
+    if (_self.imports == null) {
+      return null;
+    }
+
+    return $SwaggerToDartImportCopyWith<$Res>(_self.imports!, (value) {
+      return _then(_self.copyWith(imports: value));
     });
   }
 }
@@ -1478,7 +1821,8 @@ extension SwaggerToDartPatterns on SwaggerToDart {
             @JsonKey(name: 'input_directory') String inputDirectory,
             @JsonKey(name: 'output_directory') String outputDirectory,
             @JsonKey(name: 'model') ModelConfig model,
-            @JsonKey(name: 'api_client') ApiClientConfig apiClient)?
+            @JsonKey(name: 'api_client') ApiClientConfig apiClient,
+            @JsonKey(name: 'imports') SwaggerToDartImport? imports)?
         $default, {
     required TResult orElse(),
   }) {
@@ -1486,7 +1830,7 @@ extension SwaggerToDartPatterns on SwaggerToDart {
     switch (_that) {
       case _SwaggerToDart() when $default != null:
         return $default(_that.url, _that.generationSource, _that.inputDirectory,
-            _that.outputDirectory, _that.model, _that.apiClient);
+            _that.outputDirectory, _that.model, _that.apiClient, _that.imports);
       case _:
         return orElse();
     }
@@ -1514,14 +1858,15 @@ extension SwaggerToDartPatterns on SwaggerToDart {
             @JsonKey(name: 'input_directory') String inputDirectory,
             @JsonKey(name: 'output_directory') String outputDirectory,
             @JsonKey(name: 'model') ModelConfig model,
-            @JsonKey(name: 'api_client') ApiClientConfig apiClient)
+            @JsonKey(name: 'api_client') ApiClientConfig apiClient,
+            @JsonKey(name: 'imports') SwaggerToDartImport? imports)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _SwaggerToDart():
         return $default(_that.url, _that.generationSource, _that.inputDirectory,
-            _that.outputDirectory, _that.model, _that.apiClient);
+            _that.outputDirectory, _that.model, _that.apiClient, _that.imports);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -1548,14 +1893,15 @@ extension SwaggerToDartPatterns on SwaggerToDart {
             @JsonKey(name: 'input_directory') String inputDirectory,
             @JsonKey(name: 'output_directory') String outputDirectory,
             @JsonKey(name: 'model') ModelConfig model,
-            @JsonKey(name: 'api_client') ApiClientConfig apiClient)?
+            @JsonKey(name: 'api_client') ApiClientConfig apiClient,
+            @JsonKey(name: 'imports') SwaggerToDartImport? imports)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _SwaggerToDart() when $default != null:
         return $default(_that.url, _that.generationSource, _that.inputDirectory,
-            _that.outputDirectory, _that.model, _that.apiClient);
+            _that.outputDirectory, _that.model, _that.apiClient, _that.imports);
       case _:
         return null;
     }
@@ -1573,7 +1919,8 @@ class _SwaggerToDart extends SwaggerToDart {
       this.inputDirectory = 'schema/swagger.json',
       @JsonKey(name: 'output_directory') this.outputDirectory = 'lib/src/gen',
       @JsonKey(name: 'model') this.model = const ModelConfig(),
-      @JsonKey(name: 'api_client') this.apiClient = const ApiClientConfig()})
+      @JsonKey(name: 'api_client') this.apiClient = const ApiClientConfig(),
+      @JsonKey(name: 'imports') this.imports})
       : super._();
   factory _SwaggerToDart.fromJson(Map<String, dynamic> json) =>
       _$SwaggerToDartFromJson(json);
@@ -1596,6 +1943,9 @@ class _SwaggerToDart extends SwaggerToDart {
   @override
   @JsonKey(name: 'api_client')
   final ApiClientConfig apiClient;
+  @override
+  @JsonKey(name: 'imports')
+  final SwaggerToDartImport? imports;
 
   /// Create a copy of SwaggerToDart
   /// with the given fields replaced by the non-null parameter values.
@@ -1626,17 +1976,18 @@ class _SwaggerToDart extends SwaggerToDart {
                 other.outputDirectory == outputDirectory) &&
             (identical(other.model, model) || other.model == model) &&
             (identical(other.apiClient, apiClient) ||
-                other.apiClient == apiClient));
+                other.apiClient == apiClient) &&
+            (identical(other.imports, imports) || other.imports == imports));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, url, generationSource,
-      inputDirectory, outputDirectory, model, apiClient);
+      inputDirectory, outputDirectory, model, apiClient, imports);
 
   @override
   String toString() {
-    return 'SwaggerToDart(url: $url, generationSource: $generationSource, inputDirectory: $inputDirectory, outputDirectory: $outputDirectory, model: $model, apiClient: $apiClient)';
+    return 'SwaggerToDart(url: $url, generationSource: $generationSource, inputDirectory: $inputDirectory, outputDirectory: $outputDirectory, model: $model, apiClient: $apiClient, imports: $imports)';
   }
 }
 
@@ -1654,12 +2005,15 @@ abstract mixin class _$SwaggerToDartCopyWith<$Res>
       @JsonKey(name: 'input_directory') String inputDirectory,
       @JsonKey(name: 'output_directory') String outputDirectory,
       @JsonKey(name: 'model') ModelConfig model,
-      @JsonKey(name: 'api_client') ApiClientConfig apiClient});
+      @JsonKey(name: 'api_client') ApiClientConfig apiClient,
+      @JsonKey(name: 'imports') SwaggerToDartImport? imports});
 
   @override
   $ModelConfigCopyWith<$Res> get model;
   @override
   $ApiClientConfigCopyWith<$Res> get apiClient;
+  @override
+  $SwaggerToDartImportCopyWith<$Res>? get imports;
 }
 
 /// @nodoc
@@ -1681,6 +2035,7 @@ class __$SwaggerToDartCopyWithImpl<$Res>
     Object? outputDirectory = null,
     Object? model = null,
     Object? apiClient = null,
+    Object? imports = freezed,
   }) {
     return _then(_SwaggerToDart(
       url: freezed == url
@@ -1707,6 +2062,10 @@ class __$SwaggerToDartCopyWithImpl<$Res>
           ? _self.apiClient
           : apiClient // ignore: cast_nullable_to_non_nullable
               as ApiClientConfig,
+      imports: freezed == imports
+          ? _self.imports
+          : imports // ignore: cast_nullable_to_non_nullable
+              as SwaggerToDartImport?,
     ));
   }
 
@@ -1727,6 +2086,20 @@ class __$SwaggerToDartCopyWithImpl<$Res>
   $ApiClientConfigCopyWith<$Res> get apiClient {
     return $ApiClientConfigCopyWith<$Res>(_self.apiClient, (value) {
       return _then(_self.copyWith(apiClient: value));
+    });
+  }
+
+  /// Create a copy of SwaggerToDart
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $SwaggerToDartImportCopyWith<$Res>? get imports {
+    if (_self.imports == null) {
+      return null;
+    }
+
+    return $SwaggerToDartImportCopyWith<$Res>(_self.imports!, (value) {
+      return _then(_self.copyWith(imports: value));
     });
   }
 }

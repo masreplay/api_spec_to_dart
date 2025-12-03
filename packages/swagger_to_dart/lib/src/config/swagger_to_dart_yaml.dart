@@ -126,6 +126,24 @@ enum GenerationSource {
   String toJson() => _$GenerationSourceEnumMap[this]!;
 }
 
+/// ```yaml`
+/// imports:
+///   global:
+///       - "import 'package:retrofit/retrofit.dart';"
+/// ```
+
+@freezed
+abstract class SwaggerToDartImport with _$SwaggerToDartImport {
+  const SwaggerToDartImport._();
+
+  const factory SwaggerToDartImport({
+    @Default([]) @JsonKey(name: 'global') List<String> globalImports,
+  }) = _SwaggerToDartImport;
+
+  factory SwaggerToDartImport.fromJson(Map<String, dynamic> json) =>
+      _$SwaggerToDartImportFromJson(json);
+}
+
 @freezed
 abstract class SwaggerToDart with _$SwaggerToDart {
   const SwaggerToDart._();
@@ -144,6 +162,7 @@ abstract class SwaggerToDart with _$SwaggerToDart {
     @Default(ApiClientConfig())
     @JsonKey(name: 'api_client')
     ApiClientConfig apiClient,
+    @JsonKey(name: 'imports') SwaggerToDartImport? imports,
   }) = _SwaggerToDart;
 
   factory SwaggerToDart.fromJson(Map<String, dynamic> json) =>

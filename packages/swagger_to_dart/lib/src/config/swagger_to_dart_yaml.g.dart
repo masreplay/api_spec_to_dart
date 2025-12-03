@@ -139,6 +139,20 @@ Map<String, dynamic> _$ApiClientConfigToJson(_ApiClientConfig instance) =>
       'skipped_parameters': instance.skippedParameters,
     };
 
+_SwaggerToDartImport _$SwaggerToDartImportFromJson(Map<String, dynamic> json) =>
+    _SwaggerToDartImport(
+      globalImports: (json['global'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
+    );
+
+Map<String, dynamic> _$SwaggerToDartImportToJson(
+        _SwaggerToDartImport instance) =>
+    <String, dynamic>{
+      'global': instance.globalImports,
+    };
+
 _SwaggerToDart _$SwaggerToDartFromJson(Map<String, dynamic> json) =>
     _SwaggerToDart(
       url: json['url'] as String?,
@@ -155,6 +169,10 @@ _SwaggerToDart _$SwaggerToDartFromJson(Map<String, dynamic> json) =>
           ? const ApiClientConfig()
           : ApiClientConfig.fromJson(
               json['api_client'] as Map<String, dynamic>),
+      imports: json['imports'] == null
+          ? null
+          : SwaggerToDartImport.fromJson(
+              json['imports'] as Map<String, dynamic>),
     );
 
 const _$SwaggerToDartFieldMap = <String, String>{
@@ -164,6 +182,7 @@ const _$SwaggerToDartFieldMap = <String, String>{
   'outputDirectory': 'output_directory',
   'model': 'model',
   'apiClient': 'api_client',
+  'imports': 'imports',
 };
 
 abstract final class _$SwaggerToDartJsonKeys {
@@ -173,6 +192,7 @@ abstract final class _$SwaggerToDartJsonKeys {
   static const String outputDirectory = 'output_directory';
   static const String model = 'model';
   static const String apiClient = 'api_client';
+  static const String imports = 'imports';
 }
 
 // ignore: unused_element
@@ -190,6 +210,8 @@ abstract class _$SwaggerToDartPerFieldToJson {
   static Object? model(ModelConfig instance) => instance.toJson();
   // ignore: unused_element
   static Object? apiClient(ApiClientConfig instance) => instance.toJson();
+  // ignore: unused_element
+  static Object? imports(SwaggerToDartImport? instance) => instance?.toJson();
 }
 
 Map<String, dynamic> _$SwaggerToDartToJson(_SwaggerToDart instance) =>
@@ -201,6 +223,7 @@ Map<String, dynamic> _$SwaggerToDartToJson(_SwaggerToDart instance) =>
       'output_directory': instance.outputDirectory,
       'model': instance.model.toJson(),
       'api_client': instance.apiClient.toJson(),
+      if (instance.imports?.toJson() case final value?) 'imports': value,
     };
 
 const _$GenerationSourceEnumMap = {
