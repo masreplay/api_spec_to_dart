@@ -143,8 +143,9 @@ class ApiClientGenerator {
       final methods = entry.value;
 
       for (final method in methods.values) {
-        final tags =
-            (method.tags ?? []).map((e) => Recase.instance.removeNonAscii(e));
+        final tags = (method.tags ?? []).map(
+          (e) => Recase.instance.removeNonAscii(e),
+        );
         if (tags.isEmpty) {
           group['default'] ??= {};
           group['default']![path] = methods;
@@ -161,10 +162,7 @@ class ApiClientGenerator {
       final tag = entry.key;
       final paths = entry.value;
 
-      final apiClient = build(
-        clientName: tag,
-        paths: paths,
-      );
+      final apiClient = build(clientName: tag, paths: paths);
 
       context.addApiClient(apiClient);
     }
@@ -190,10 +188,7 @@ class ApiClientGenerator {
   ///   @GET('/api/v1/common/settings/')
   ///   Future<HttpResponse<BaseResponseAppSettingsResponse>>
   ///   settingsGetAppSettings();
-  Library build({
-    required String clientName,
-    required OpenApiPaths paths,
-  }) {
+  Library build({required String clientName, required OpenApiPaths paths}) {
     final fileName = Renaming.instance.renameFile('${clientName}_client');
     final className = Recase.instance.toPascalCase(fileName);
 
@@ -242,9 +237,7 @@ class ApiClientGenerator {
               requestBody.add(
                 Parameter(
                   (b) => b
-                    ..annotations.addAll([
-                      refer('$Body()'),
-                    ])
+                    ..annotations.addAll([refer('$Body()')])
                     ..name = _requestBodyName
                     ..named = true
                     ..required = true
@@ -260,9 +253,7 @@ class ApiClientGenerator {
               requestBody.add(
                 Parameter(
                   (b) => b
-                    ..annotations.addAll([
-                      refer('$Part()'),
-                    ])
+                    ..annotations.addAll([refer('$Part()')])
                     ..name = _requestBodyName
                     ..named = true
                     ..required = true
@@ -277,66 +268,69 @@ class ApiClientGenerator {
               );
 
               final canToJson = dartType != 'Map<String, dynamic>';
-              extensionMethods.add(Method(
-                (b) => b
-                  ..name = methodName
-                  ..returns = responseType
-                  ..optionalParameters.addAll([
-                    Parameter(
-                      (b) => b
-                        ..name = _requestBodyName
-                        ..required = true
-                        ..type = refer(dartType),
-                    ),
-                    ...parameters,
-                    ..._extraParameters(),
-                  ])
-                  ..body = Block.of([
-                    Code(
-                      '''return ${methodName}_($_requestBodyName: $_requestBodyName${canToJson ? '.toJson()' : ''}, extras: extras,
+              extensionMethods.add(
+                Method(
+                  (b) => b
+                    ..name = methodName
+                    ..returns = responseType
+                    ..optionalParameters.addAll([
+                      Parameter(
+                        (b) => b
+                          ..name = _requestBodyName
+                          ..required = true
+                          ..type = refer(dartType),
+                      ),
+                      ...parameters,
+                      ..._extraParameters(openapiMetadata: method.value.json),
+                    ])
+                    ..body = Block.of([
+                      Code(
+                        '''return ${methodName}_($_requestBodyName: $_requestBodyName${canToJson ? '.toJson()' : ''}, extras: extras,
                       ${parameters.firstWhereOrNull((e) => e.name == _queriesParameterName) != null ? 'queries: queries,' : ''}
                       cancelToken: cancelToken,
                       onSendProgress: onSendProgress,
                       onReceiveProgress: onReceiveProgress
                       );''',
-                    ),
-                  ]),
-              ));
+                      ),
+                    ]),
+                ),
+              );
               break;
           }
         }
 
-        methods.add(Method(
-          (b) => b
-            ..docs.addAll([
-              '/// ${method.key.name}',
-              ...JsonFactory.instance
-                  .encode(method.value.toJson())
-                  .split('\n')
-                  .map((e) => '/// $e'),
-            ])
-            ..annotations.addAll([
-              if (method.value.json case final json?) refer('Headers($json)'),
-              refer('$methodType("${path.key}")'),
-              if (content[OpenApiContentType.applicationXWwwFormUrlencoded
-                      .toJson()] !=
-                  null)
-                refer('$FormUrlEncoded()'),
-              if (content[OpenApiContentType.multipartFormData.toJson()] !=
-                  null)
-                refer('$MultiPart()'),
-            ])
-            ..returns = responseType
-            ..name =
-                content[OpenApiContentType.multipartFormData.toJson()] != null
-                    ? '${methodName}_'
-                    : methodName
-            ..optionalParameters.addAll([
-              ...requestBody,
-              ...parameters,
-              ..._extraParameters(),
-            ]),
-        ));
+        methods.add(
+          Method(
+            (b) => b
+              // ..docs.addAll([
+              //  '/// ${method.key.name}',
+              //  ...JsonFactory.instance
+              //      .encode(method.value.toJson())
+              //      .split('\n')
+              //      .map((e) => '/// $e'),
+              // ])
+              ..annotations.addAll([
+                refer('$methodType("${path.key}")'),
+                if (content[OpenApiContentType.applicationXWwwFormUrlencoded
+                        .toJson()] !=
+                    null)
+                  refer('$FormUrlEncoded()'),
+                if (content[OpenApiContentType.multipartFormData.toJson()] !=
+                    null)
+                  refer('$MultiPart()'),
+              ])
+              ..returns = responseType
+              ..name =
+                  content[OpenApiContentType.multipartFormData.toJson()] != null
+                      ? '${methodName}_'
+                      : methodName
+              ..optionalParameters.addAll([
+                ...requestBody,
+                ...parameters,
+                ..._extraParameters(openapiMetadata: method.value.json),
+              ]),
+          ),
+        );
       }
     }
 
@@ -354,9 +348,7 @@ class ApiClientGenerator {
         ..body.addAll([
           Class(
             (b) => b
-              ..annotations.addAll([
-                refer('$RestApi()'),
-              ])
+              ..annotations.addAll([refer('$RestApi()')])
               ..abstract = true
               ..name = className
               ..constructors.addAll([
@@ -412,8 +404,9 @@ class ApiClientGenerator {
     parameters =
         parameters.where((e) => !skippedParameters.contains(e.name)).toList();
 
-    final queryParameters =
-        parameters.where((e) => e.in_ == OpenApiPathMethodParameterType.query);
+    final queryParameters = parameters.where(
+      (e) => e.in_ == OpenApiPathMethodParameterType.query,
+    );
 
     final List<Parameter> result = [];
 
@@ -472,20 +465,22 @@ class ApiClientGenerator {
           (b) => b
             ..annotations.addAll([
               switch (p.in_) {
-                OpenApiPathMethodParameterType.query =>
-                  refer('$Query("${p.name}")'),
-                OpenApiPathMethodParameterType.path =>
-                  refer('$Path("${p.name}")'),
-                OpenApiPathMethodParameterType.header =>
-                  refer('$Header("${p.name}")'),
-                OpenApiPathMethodParameterType.cookie =>
-                  refer('$Header("${p.name}")'),
-              }
+                OpenApiPathMethodParameterType.query => refer(
+                    '$Query("${p.name}")',
+                  ),
+                OpenApiPathMethodParameterType.path => refer(
+                    '$Path("${p.name}")',
+                  ),
+                OpenApiPathMethodParameterType.header => refer(
+                    '$Header("${p.name}")',
+                  ),
+                OpenApiPathMethodParameterType.cookie => refer(
+                    '$Header("${p.name}")',
+                  ),
+              },
             ])
             ..named = true
-            ..name = Renaming.instance.renameProperty(
-              p.name,
-            )
+            ..name = Renaming.instance.renameProperty(p.name)
             ..required = defaultValue == null
             ..defaultTo = defaultValue == null ? null : Code(defaultValue)
             ..type = refer(dartType),
@@ -515,44 +510,67 @@ class ApiClientGenerator {
         : refer('Future<HttpResponse<$responseTypeString>>');
   }
 
-  List<Parameter> _extraParameters() {
+  List<Parameter> _extraParameters({
+    required Map<String, dynamic>? openapiMetadata,
+  }) {
     return [
       Parameter(
         (b) => b
-          ..annotations.addAll([
-            refer('$Extras()'),
-          ])
-          ..named = true
-          ..name = 'extras'
-          ..type = refer('Map<String, dynamic>?'),
-      ),
-      Parameter(
-        (b) => b
-          ..annotations.addAll([
-            refer('$CancelRequest()'),
-          ])
+          ..annotations.addAll([refer('$CancelRequest()')])
           ..named = true
           ..name = 'cancelToken'
           ..type = refer('$CancelToken?'),
       ),
       Parameter(
         (b) => b
-          ..annotations.addAll([
-            refer('$SendProgress()'),
-          ])
+          ..annotations.addAll([refer('$SendProgress()')])
           ..named = true
           ..name = 'onSendProgress'
           ..type = refer('ProgressCallback?'),
       ),
       Parameter(
         (b) => b
-          ..annotations.addAll([
-            refer('$ReceiveProgress()'),
-          ])
+          ..annotations.addAll([refer('$ReceiveProgress()')])
           ..named = true
           ..name = 'onReceiveProgress'
           ..type = refer('ProgressCallback?'),
       ),
+      Parameter(
+        (b) => b
+          ..annotations.addAll([refer('$Extras()')])
+          ..named = true
+          ..name = 'extras'
+          ..defaultTo = Code('const ${encodeWithRawKeys(openapiMetadata)}')
+          ..type = refer('Map<String, dynamic>?'),
+      ),
     ];
   }
+}
+
+String encodeWithRawKeys(dynamic value) {
+  String escapeForRaw(String s) => s.replaceAll('"', r'\"');
+
+  if (value is Map) {
+    final buffer = StringBuffer('{');
+    var first = true;
+    value.forEach((key, val) {
+      if (!first) buffer.write(', ');
+      first = false;
+
+      final keyLiteral = "r'${escapeForRaw(key.toString())}'";
+      buffer.write('$keyLiteral: ${encodeWithRawKeys(val)}');
+    });
+    buffer.write('}');
+    return buffer.toString();
+  }
+
+  if (value is List) {
+    return '[${value.map(encodeWithRawKeys).join(', ')}]';
+  }
+
+  if (value is String) {
+    return "r'${escapeForRaw(value)}'";
+  }
+
+  return value.toString();
 }

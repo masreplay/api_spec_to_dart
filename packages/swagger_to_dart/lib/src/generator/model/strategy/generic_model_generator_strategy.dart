@@ -23,17 +23,9 @@ class GenericModelGeneratorStrategy
           'Cannot generate generic model for title: $effectiveTitle');
     }
 
-    if (generationSource == GenerationSource.abpIO) {
-      _debug('abpIO: $effectiveTitle');
-    }
-
     final standardTitle = parser.toStandardFormat(effectiveTitle);
     if (standardTitle == null) {
       throw ArgumentError('Cannot convert to standard format: $effectiveTitle');
-    }
-
-    if (generationSource == GenerationSource.abpIO) {
-      _debug('abpIO.generic.standardTitle: $standardTitle');
     }
 
     return _buildGenericClass(standardTitle, model);
@@ -43,8 +35,6 @@ class GenericModelGeneratorStrategy
     String title,
     MapEntry<String, OpenApiSchemas> model,
   ) {
-    _debug('buildGenericClass: $title');
-
     // Standard format uses angle brackets <>, so we can use DotNet parser
     // or detect which parser can handle the standard format
     final parser = GenericParserFactory.instance.detectParser(title);
@@ -200,10 +190,6 @@ class GenericModelGeneratorStrategy
   }
 
   static String? _getKey(String name) => '${name}Key_';
-
-  void _debug(String s) {
-    print('GenericModelGeneratorStrategy._debug: $s');
-  }
 
   bool shouldUseGenericStrategy(MapEntry<String, OpenApiSchemas> model) {
     final supportGenericArguments =

@@ -28,50 +28,42 @@ class AbpGenericParser with DebugMixin implements GenericParserBase {
     // Find the backtick
     final backtickIndex = input.indexOf('`');
     if (backtickIndex == -1) {
-      print('DEBUG: No backtick found.');
       return null;
     }
 
     // Extract base class name (everything before the backtick)
     final baseClassName = input.substring(0, backtickIndex);
-    print('DEBUG: baseClassName = $baseClassName');
 
     // Find the opening bracket after the backtick
     final bracketStart = input.indexOf('[[', backtickIndex);
     if (bracketStart == -1) {
       // No generics, just return the base class name
-      print(
-          'DEBUG: No generic [[ found. Returning short class name for $baseClassName');
+
       return _extractShortClassName(baseClassName);
     }
 
     // Extract everything after the first `[[`
     final genericsContent = input.substring(bracketStart + 2);
-    print('DEBUG: genericsContent = $genericsContent');
 
     // Parse generic arguments
     final genericTypes = _parseGenericArguments(genericsContent);
-    print('DEBUG: genericTypes = $genericTypes');
 
     if (genericTypes.isEmpty) {
-      print(
-          'DEBUG: No generic types found. Returning short class name for $baseClassName');
       return _extractShortClassName(baseClassName);
     }
 
     // Extract short names from full type names
     final shortGenericTypes = genericTypes.map((type) {
       final short = _extractShortClassName(type);
-      print('DEBUG: Short generic type from $type = $short');
+
       return short;
     }).toList();
 
     // Combine base class name with generics
     final shortBaseClassName = _extractShortClassName(baseClassName);
-    print(
-        'DEBUG: shortBaseClassName = $shortBaseClassName, shortGenericTypes = $shortGenericTypes');
+
     final result = '$shortBaseClassName<${shortGenericTypes.join(', ')}>';
-    print('DEBUG: Resulting standard format = $result');
+
     return result;
   }
 
