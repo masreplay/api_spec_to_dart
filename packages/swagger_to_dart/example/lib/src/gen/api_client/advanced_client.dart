@@ -1,4 +1,4 @@
-library advanced_client;
+library;
 
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
@@ -13,14 +13,13 @@ abstract class AdvancedClient {
     String? baseUrl,
   }) = _AdvancedClient;
 
-  @GET("/special/uuid")
+  @GET('/special/uuid')
   Future<HttpResponse<Map<String, dynamic>>> advancedSpecialUuid({
     @Queries() required AdvancedSpecialUuidQueryParameters queries,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras()
-    Map<String, dynamic>? extras = const {
+    @Extras() Map<String, dynamic>? extras = const {
       r'tags': [r'advanced'],
       r'summary': r'Handle UUID parameters',
       r'description': r'Handle UUID parameter.',
@@ -57,14 +56,13 @@ abstract class AdvancedClient {
       },
     },
   });
-  @GET("/special/enum")
+  @GET('/special/enum')
   Future<HttpResponse<Map<String, dynamic>>> advancedSpecialEnum({
     @Queries() required AdvancedSpecialEnumQueryParameters queries,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras()
-    Map<String, dynamic>? extras = const {
+    @Extras() Map<String, dynamic>? extras = const {
       r'tags': [r'advanced'],
       r'summary': r'Handle enum parameters',
       r'description': r'Handle Enum parameter.',
@@ -104,14 +102,13 @@ abstract class AdvancedClient {
       },
     },
   });
-  @GET("/special/literal")
+  @GET('/special/literal')
   Future<HttpResponse<Map<String, dynamic>>> advancedSpecialLiteral({
     @Queries() required AdvancedSpecialLiteralQueryParameters queries,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras()
-    Map<String, dynamic>? extras = const {
+    @Extras() Map<String, dynamic>? extras = const {
       r'tags': [r'advanced'],
       r'summary': r'Handle literal type parameters',
       r'description': r'Handle Literal type parameter.',
@@ -153,14 +150,13 @@ abstract class AdvancedClient {
       },
     },
   });
-  @GET("/collection/list")
+  @GET('/collection/list')
   Future<HttpResponse<Map<String, dynamic>>> advancedCollectionList({
     @Queries() required AdvancedCollectionListQueryParameters queries,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras()
-    Map<String, dynamic>? extras = const {
+    @Extras() Map<String, dynamic>? extras = const {
       r'tags': [r'advanced'],
       r'summary': r'Collection List',
       r'description': r'Handle list of strings query parameter.',
@@ -202,14 +198,13 @@ abstract class AdvancedClient {
       },
     },
   });
-  @GET("/collection/set")
+  @GET('/collection/set')
   Future<HttpResponse<Map<String, dynamic>>> advancedCollectionSet({
     @Queries() required AdvancedCollectionSetQueryParameters queries,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras()
-    Map<String, dynamic>? extras = const {
+    @Extras() Map<String, dynamic>? extras = const {
       r'tags': [r'advanced'],
       r'summary': r'Collection Set',
       r'description': r'Handle set of integers query parameter.',
@@ -252,14 +247,13 @@ abstract class AdvancedClient {
       },
     },
   });
-  @GET("/collection/dict")
+  @GET('/collection/dict')
   Future<HttpResponse<Map<String, dynamic>>> advancedCollectionDict({
     @Body() required Map<String, dynamic> requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras()
-    Map<String, dynamic>? extras = const {
+    @Extras() Map<String, dynamic>? extras = const {
       r'tags': [r'advanced'],
       r'summary': r'Collection Dict',
       r'description': r'Handle dictionary in request body.',
@@ -300,14 +294,13 @@ abstract class AdvancedClient {
       },
     },
   });
-  @GET("/collection/tuple")
+  @GET('/collection/tuple')
   Future<HttpResponse<Map<String, dynamic>>> advancedCollectionTuple({
     @Queries() required AdvancedCollectionTupleQueryParameters queries,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras()
-    Map<String, dynamic>? extras = const {
+    @Extras() Map<String, dynamic>? extras = const {
       r'tags': [r'advanced'],
       r'summary': r'Collection Tuple',
       r'description': r'Handle fixed-size tuple query parameter.',
@@ -354,14 +347,13 @@ abstract class AdvancedClient {
       },
     },
   });
-  @GET("/collection/variable_tuple")
+  @GET('/collection/variable_tuple')
   Future<HttpResponse<Map<String, dynamic>>> advancedCollectionVariableTuple({
     @Queries() required AdvancedCollectionVariableTupleQueryParameters queries,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras()
-    Map<String, dynamic>? extras = const {
+    @Extras() Map<String, dynamic>? extras = const {
       r'tags': [r'advanced'],
       r'summary': r'Collection Variable Tuple',
       r'description': r'Handle variable-size tuple query parameter.',
@@ -402,14 +394,13 @@ abstract class AdvancedClient {
       },
     },
   });
-  @GET("/union/simple")
+  @GET('/union/simple')
   Future<HttpResponse<Map<String, dynamic>>> advancedUnionSimple({
     @Queries() required AdvancedUnionSimpleQueryParameters queries,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras()
-    Map<String, dynamic>? extras = const {
+    @Extras() Map<String, dynamic>? extras = const {
       r'tags': [r'advanced'],
       r'summary': r'Handle union type parameters',
       r'description': r'Handle union type parameter.',
@@ -453,14 +444,13 @@ abstract class AdvancedClient {
       },
     },
   });
-  @GET("/union/optional")
+  @GET('/union/optional')
   Future<HttpResponse<Map<String, dynamic>>> advancedUnionOptional({
     @Queries() required AdvancedUnionOptionalQueryParameters queries,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras()
-    Map<String, dynamic>? extras = const {
+    @Extras() Map<String, dynamic>? extras = const {
       r'tags': [r'advanced'],
       r'summary': r'Handle optional parameters',
       r'description': r'Handle optional type parameter.',
@@ -503,14 +493,13 @@ abstract class AdvancedClient {
       },
     },
   });
-  @GET("/union/modern")
+  @GET('/union/modern')
   Future<HttpResponse<Map<String, dynamic>>> advancedUnionModern({
     @Queries() required AdvancedUnionModernQueryParameters queries,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras()
-    Map<String, dynamic>? extras = const {
+    @Extras() Map<String, dynamic>? extras = const {
       r'tags': [r'advanced'],
       r'summary': r'Handle union with modern Python syntax',
       r'description': r'Handle union with modern Python syntax (Python 3.10+).',
@@ -554,14 +543,13 @@ abstract class AdvancedClient {
       },
     },
   });
-  @GET("/custom/positive_int")
+  @GET('/custom/positive_int')
   Future<HttpResponse<Map<String, dynamic>>> advancedCustomPositiveInt({
     @Queries() required AdvancedCustomPositiveIntQueryParameters queries,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras()
-    Map<String, dynamic>? extras = const {
+    @Extras() Map<String, dynamic>? extras = const {
       r'tags': [r'advanced'],
       r'summary': r'Demonstrate custom type validation',
       r'description': r'Handle custom type for positive integers.',
@@ -612,14 +600,13 @@ abstract class AdvancedClient {
       },
     },
   });
-  @GET("/depends/query")
+  @GET('/depends/query')
   Future<HttpResponse<Map<String, dynamic>>> advancedDependsQuery({
     @Queries() required AdvancedDependsQueryQueryParameters queries,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras()
-    Map<String, dynamic>? extras = const {
+    @Extras() Map<String, dynamic>? extras = const {
       r'tags': [r'advanced'],
       r'summary': r'Use dependency injection for common parameters',
       r'description': r'Use dependency injection for common parameters.',
@@ -694,14 +681,13 @@ abstract class AdvancedClient {
       },
     },
   });
-  @GET("/depends/class")
+  @GET('/depends/class')
   Future<HttpResponse<Map<String, dynamic>>> advancedDependsClass({
     @Queries() required AdvancedDependsClassQueryParameters queries,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras()
-    Map<String, dynamic>? extras = const {
+    @Extras() Map<String, dynamic>? extras = const {
       r'tags': [r'advanced'],
       r'summary': r'Use class-based dependency injection',
       r'description': r'Use class-based dependency injection.',
@@ -742,14 +728,13 @@ abstract class AdvancedClient {
       },
     },
   });
-  @GET("/errors/not_found/{item_id}")
+  @GET('/errors/not_found/{item_id}')
   Future<HttpResponse<Map<String, dynamic>>> advancedErrorNotFound({
-    @Path("item_id") required int itemId,
+    @Path('item_id') required int itemId,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras()
-    Map<String, dynamic>? extras = const {
+    @Extras() Map<String, dynamic>? extras = const {
       r'tags': [r'advanced'],
       r'summary': r'Demonstrate 404 error handling',
       r'description': r'Raise an HTTP exception if the item is not found.',
@@ -786,14 +771,13 @@ abstract class AdvancedClient {
       },
     },
   });
-  @GET("/errors/custom")
+  @GET('/errors/custom')
   Future<HttpResponse<Map<String, dynamic>>> advancedErrorCustom({
     @Queries() required AdvancedErrorCustomQueryParameters queries,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras()
-    Map<String, dynamic>? extras = const {
+    @Extras() Map<String, dynamic>? extras = const {
       r'tags': [r'advanced'],
       r'summary': r'Demonstrate custom error status codes',
       r'description':

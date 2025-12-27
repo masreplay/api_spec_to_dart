@@ -29,7 +29,7 @@
 ///     "type": "object",
 ///     "required": []
 /// }
-library advanced_depends_query_query_parameters;
+library;
 
 import 'exports.dart';
 part 'advanced_depends_query_query_parameters.freezed.dart';
@@ -58,7 +58,8 @@ abstract class AdvancedDependsQueryQueryParameters
 
   factory AdvancedDependsQueryQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) => _$AdvancedDependsQueryQueryParametersFromJson(json);
+  ) =>
+      _$AdvancedDependsQueryQueryParametersFromJson(json);
 
   static const String qKey_ = r'q';
 

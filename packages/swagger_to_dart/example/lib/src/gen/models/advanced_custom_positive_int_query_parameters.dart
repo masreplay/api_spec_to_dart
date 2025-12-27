@@ -16,7 +16,7 @@
 ///         "value2"
 ///     ]
 /// }
-library advanced_custom_positive_int_query_parameters;
+library;
 
 import 'exports.dart';
 part 'advanced_custom_positive_int_query_parameters.freezed.dart';
@@ -40,7 +40,8 @@ abstract class AdvancedCustomPositiveIntQueryParameters
 
   factory AdvancedCustomPositiveIntQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) => _$AdvancedCustomPositiveIntQueryParametersFromJson(json);
+  ) =>
+      _$AdvancedCustomPositiveIntQueryParametersFromJson(json);
 
   static const String valueKey_ = r'value';
 

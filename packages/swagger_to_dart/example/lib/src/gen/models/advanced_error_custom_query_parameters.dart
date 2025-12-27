@@ -12,7 +12,7 @@
 ///         "code"
 ///     ]
 /// }
-library advanced_error_custom_query_parameters;
+library;
 
 import 'exports.dart';
 part 'advanced_error_custom_query_parameters.freezed.dart';
@@ -32,7 +32,8 @@ abstract class AdvancedErrorCustomQueryParameters
 
   factory AdvancedErrorCustomQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) => _$AdvancedErrorCustomQueryParametersFromJson(json);
+  ) =>
+      _$AdvancedErrorCustomQueryParametersFromJson(json);
 
   static const String codeKey_ = r'code';
 }

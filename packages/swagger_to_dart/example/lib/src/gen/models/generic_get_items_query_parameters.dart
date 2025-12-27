@@ -15,7 +15,7 @@
 ///     "type": "object",
 ///     "required": []
 /// }
-library generic_get_items_query_parameters;
+library;
 
 import 'exports.dart';
 part 'generic_get_items_query_parameters.freezed.dart';

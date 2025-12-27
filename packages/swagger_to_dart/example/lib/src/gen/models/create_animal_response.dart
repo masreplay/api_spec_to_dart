@@ -27,7 +27,7 @@
 ///     ],
 ///     "title": "CreateAnimalResponse"
 /// }
-library create_animal_response;
+library;
 
 import 'exports.dart';
 part 'create_animal_response.freezed.dart';

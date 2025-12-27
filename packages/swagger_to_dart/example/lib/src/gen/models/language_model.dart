@@ -8083,7 +8083,7 @@
 ///     "type": "object",
 ///     "title": "LanguageModel"
 /// }
-library language_model;
+library;
 
 import 'exports.dart';
 part 'language_model.freezed.dart';

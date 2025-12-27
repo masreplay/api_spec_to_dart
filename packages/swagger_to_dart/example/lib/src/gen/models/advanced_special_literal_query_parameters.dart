@@ -15,7 +15,7 @@
 ///     "type": "object",
 ///     "required": []
 /// }
-library advanced_special_literal_query_parameters;
+library;
 
 import 'exports.dart';
 part 'advanced_special_literal_query_parameters.freezed.dart';
@@ -36,7 +36,8 @@ abstract class AdvancedSpecialLiteralQueryParameters
 
   factory AdvancedSpecialLiteralQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) => _$AdvancedSpecialLiteralQueryParametersFromJson(json);
+  ) =>
+      _$AdvancedSpecialLiteralQueryParametersFromJson(json);
 
   static const String modeKey_ = r'mode';
 }

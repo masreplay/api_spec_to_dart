@@ -9,7 +9,7 @@
 ///     "type": "object",
 ///     "required": []
 /// }
-library advanced_special_enum_query_parameters;
+library;
 
 import 'exports.dart';
 part 'advanced_special_enum_query_parameters.freezed.dart';
@@ -30,7 +30,8 @@ abstract class AdvancedSpecialEnumQueryParameters
 
   factory AdvancedSpecialEnumQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) => _$AdvancedSpecialEnumQueryParametersFromJson(json);
+  ) =>
+      _$AdvancedSpecialEnumQueryParametersFromJson(json);
 
   static const String levelKey_ = r'level';
 }

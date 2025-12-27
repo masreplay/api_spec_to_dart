@@ -30,7 +30,7 @@
 ///     "type": "object",
 ///     "required": []
 /// }
-library validation_validation_conditional_query_parameters;
+library;
 
 import 'exports.dart';
 part 'validation_validation_conditional_query_parameters.freezed.dart';
@@ -54,7 +54,8 @@ abstract class ValidationValidationConditionalQueryParameters
 
   factory ValidationValidationConditionalQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) => _$ValidationValidationConditionalQueryParametersFromJson(json);
+  ) =>
+      _$ValidationValidationConditionalQueryParametersFromJson(json);
 
   static const String userIdKey_ = r'user_id';
 

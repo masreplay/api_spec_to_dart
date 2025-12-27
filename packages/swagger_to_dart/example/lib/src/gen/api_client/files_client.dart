@@ -1,4 +1,4 @@
-library files_client;
+library;
 
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
@@ -13,15 +13,14 @@ abstract class FilesClient {
     String? baseUrl,
   }) = _FilesClient;
 
-  @POST("/forms/basic")
+  @POST('/forms/basic')
   @FormUrlEncoded()
   Future<HttpResponse<Map<String, dynamic>>> filesFormBasic({
     @Body() required BodyFilesFormBasic requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras()
-    Map<String, dynamic>? extras = const {
+    @Extras() Map<String, dynamic>? extras = const {
       r'tags': [r'files'],
       r'summary': r'Handle basic form data',
       r'description': r'Handle form data.',
@@ -58,15 +57,14 @@ abstract class FilesClient {
       },
     },
   });
-  @POST("/files/upload")
+  @POST('/files/upload')
   @MultiPart()
   Future<HttpResponse<Map<String, dynamic>>> filesFileUpload_({
     @Part() required Map<String, dynamic> requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras()
-    Map<String, dynamic>? extras = const {
+    @Extras() Map<String, dynamic>? extras = const {
       r'tags': [r'files'],
       r'summary': r'Handle single file upload',
       r'description': r'Handle file upload.',
@@ -105,15 +103,14 @@ abstract class FilesClient {
       },
     },
   });
-  @POST("/files/multiple")
+  @POST('/files/multiple')
   @MultiPart()
   Future<HttpResponse<Map<String, dynamic>>> filesFilesMultiple_({
     @Part() required Map<String, dynamic> requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras()
-    Map<String, dynamic>? extras = const {
+    @Extras() Map<String, dynamic>? extras = const {
       r'tags': [r'files'],
       r'summary': r'Handle multiple file uploads',
       r'description': r'Handle multiple file uploads.',
@@ -160,8 +157,7 @@ extension FilesClientX on FilesClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras()
-    Map<String, dynamic>? extras = const {
+    @Extras() Map<String, dynamic>? extras = const {
       r'tags': [r'files'],
       r'summary': r'Handle single file upload',
       r'description': r'Handle file upload.',
@@ -203,7 +199,6 @@ extension FilesClientX on FilesClient {
     return filesFileUpload_(
       requestBody: requestBody.toJson(),
       extras: extras,
-
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
@@ -215,8 +210,7 @@ extension FilesClientX on FilesClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras()
-    Map<String, dynamic>? extras = const {
+    @Extras() Map<String, dynamic>? extras = const {
       r'tags': [r'files'],
       r'summary': r'Handle multiple file uploads',
       r'description': r'Handle multiple file uploads.',
@@ -258,7 +252,6 @@ extension FilesClientX on FilesClient {
     return filesFilesMultiple_(
       requestBody: requestBody.toJson(),
       extras: extras,
-
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,

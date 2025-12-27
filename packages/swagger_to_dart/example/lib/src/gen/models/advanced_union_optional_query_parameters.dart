@@ -16,7 +16,7 @@
 ///     "type": "object",
 ///     "required": []
 /// }
-library advanced_union_optional_query_parameters;
+library;
 
 import 'exports.dart';
 part 'advanced_union_optional_query_parameters.freezed.dart';
@@ -36,7 +36,8 @@ abstract class AdvancedUnionOptionalQueryParameters
 
   factory AdvancedUnionOptionalQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) => _$AdvancedUnionOptionalQueryParametersFromJson(json);
+  ) =>
+      _$AdvancedUnionOptionalQueryParametersFromJson(json);
 
   static const String valueKey_ = r'value';
 }

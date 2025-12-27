@@ -10,7 +10,7 @@
 ///     "type": "object",
 ///     "required": []
 /// }
-library basic_basic_boolean_query_parameters;
+library;
 
 import 'exports.dart';
 part 'basic_basic_boolean_query_parameters.freezed.dart';
@@ -31,7 +31,8 @@ abstract class BasicBasicBooleanQueryParameters
 
   factory BasicBasicBooleanQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) => _$BasicBasicBooleanQueryParametersFromJson(json);
+  ) =>
+      _$BasicBasicBooleanQueryParametersFromJson(json);
 
   static const String flagKey_ = r'flag';
 }

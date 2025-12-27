@@ -10,7 +10,7 @@
 ///     "type": "object",
 ///     "required": []
 /// }
-library advanced_depends_class_query_parameters;
+library;
 
 import 'exports.dart';
 part 'advanced_depends_class_query_parameters.freezed.dart';
@@ -31,7 +31,8 @@ abstract class AdvancedDependsClassQueryParameters
 
   factory AdvancedDependsClassQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) => _$AdvancedDependsClassQueryParametersFromJson(json);
+  ) =>
+      _$AdvancedDependsClassQueryParametersFromJson(json);
 
   static const String dbNameKey_ = r'db_name';
 }

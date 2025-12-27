@@ -1,4 +1,4 @@
-library generic_client;
+library;
 
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
@@ -13,14 +13,13 @@ abstract class GenericClient {
     String? baseUrl,
   }) = _GenericClient;
 
-  @GET("/generic/items")
+  @GET('/generic/items')
   Future<HttpResponse<PaginationResponse<ItemResponse>>> genericGetItems({
     @Queries() required GenericGetItemsQueryParameters queries,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras()
-    Map<String, dynamic>? extras = const {
+    @Extras() Map<String, dynamic>? extras = const {
       r'tags': [r'generic'],
       r'summary': r'Get Items',
       r'operationId': r'generic-get_items',
@@ -72,15 +71,14 @@ abstract class GenericClient {
       },
     },
   });
-  @GET("/generic/categories")
+  @GET('/generic/categories')
   Future<HttpResponse<PaginationResponse<CategoryResponse>>>
-  genericGetCategories({
+      genericGetCategories({
     @Queries() required GenericGetCategoriesQueryParameters queries,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras()
-    Map<String, dynamic>? extras = const {
+    @Extras() Map<String, dynamic>? extras = const {
       r'tags': [r'generic'],
       r'summary': r'Get Categories',
       r'operationId': r'generic-get_categories',
@@ -132,14 +130,13 @@ abstract class GenericClient {
       },
     },
   });
-  @GET("/generic/base-response-item")
+  @GET('/generic/base-response-item')
   Future<HttpResponse<BaseResponse<ItemResponse>>> genericGetBaseResponseItem({
     @Body() required ItemResponse requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras()
-    Map<String, dynamic>? extras = const {
+    @Extras() Map<String, dynamic>? extras = const {
       r'tags': [r'generic'],
       r'summary': r'Get Base Response Item',
       r'operationId': r'generic-get_base_response_item',
@@ -173,15 +170,14 @@ abstract class GenericClient {
       },
     },
   });
-  @GET("/generic/base-response-category")
+  @GET('/generic/base-response-category')
   Future<HttpResponse<BaseResponse<CategoryResponse>>>
-  genericGetBaseResponseCategory({
+      genericGetBaseResponseCategory({
     @Body() required CategoryResponse requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras()
-    Map<String, dynamic>? extras = const {
+    @Extras() Map<String, dynamic>? extras = const {
       r'tags': [r'generic'],
       r'summary': r'Get Base Response Category',
       r'operationId': r'generic-get_base_response_category',
@@ -215,14 +211,13 @@ abstract class GenericClient {
       },
     },
   });
-  @GET("/generic/base-response-list")
+  @GET('/generic/base-response-list')
   Future<HttpResponse<BaseResponse<List<ItemResponse>>>>
-  genericGetBaseResponseList({
+      genericGetBaseResponseList({
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras()
-    Map<String, dynamic>? extras = const {
+    @Extras() Map<String, dynamic>? extras = const {
       r'tags': [r'generic'],
       r'summary': r'Get Base Response List',
       r'operationId': r'generic-get_base_response_list',
@@ -241,16 +236,15 @@ abstract class GenericClient {
       },
     },
   });
-  @GET("/generic/nested-base-and-pagination")
+  @GET('/generic/nested-base-and-pagination')
   Future<HttpResponse<BaseResponse<PaginationResponse<ItemResponse>>>>
-  genericGetNestedBaseAndPagination({
+      genericGetNestedBaseAndPagination({
     @Queries()
     required GenericGetNestedBaseAndPaginationQueryParameters queries,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras()
-    Map<String, dynamic>? extras = const {
+    @Extras() Map<String, dynamic>? extras = const {
       r'tags': [r'generic'],
       r'summary': r'Get Nested Base And Pagination',
       r'operationId': r'generic-get_nested_base_and_pagination',
