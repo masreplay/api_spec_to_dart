@@ -58,7 +58,6 @@ class UnionModelStrategy
           ..requiredParameters.addAll([
             Parameter(
               (b) => b
-                ..named = true
                 ..name = valueKeyName
                 ..type = refer(type),
             )
@@ -174,7 +173,6 @@ class UnionModelStrategy
                       ..requiredParameters.addAll([
                         Parameter(
                           (b) => b
-                            ..named = true
                             ..name = valueKeyName
                             ..type = refer('Map<String,dynamic>?'),
                         )
