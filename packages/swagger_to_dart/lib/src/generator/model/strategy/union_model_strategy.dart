@@ -1,6 +1,7 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:collection/collection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:swagger_to_dart/src/code/string.dart';
 import 'package:swagger_to_dart/src/generator/model/strategy/strategy.dart';
 import 'package:swagger_to_dart/src/schema/openapi/openapi.dart';
 import 'package:swagger_to_dart/src/utils/utils.dart';
@@ -23,6 +24,9 @@ class UnionModelStrategy
     extends ModelGeneratorStrategy<UnionModelStrategyParams> {
   const UnionModelStrategy(super.context);
 
+  /// Helper to generate a key field name (e.g., 'productIdKey_')
+  static String getKey(String name) => '${name}Key_';
+
   @override
   Library build(UnionModelStrategyParams params) {
     final unionClassFallbackName = context.config.model.unionClassFallbackName;
@@ -34,6 +38,38 @@ class UnionModelStrategy
     );
     final filename = Renaming.instance.renameFile(className);
 
+    // First pass: collect all unique property keys across all union cases
+    // Map from original JSON key -> renamed Dart property name
+    final Map<String, String> allPropertyKeys = {};
+    
+    for (final entry in params.refSchemaMap.entries) {
+      final refSchema = entry.value;
+      final referencedSchema = context.openApi.getOpenApiSchemasByRef(refSchema.ref!);
+      final properties = referencedSchema?.properties ?? {};
+      
+      for (final propEntry in properties.entries) {
+        final originalKey = propEntry.key;
+        final propName = Renaming.instance.renameProperty(originalKey);
+        allPropertyKeys[originalKey] = propName;
+      }
+    }
+
+    // Generate static const String fields for all unique property keys
+    final keyFields = allPropertyKeys.entries.map((entry) {
+      final originalKey = entry.key;
+      final propName = entry.value;
+      
+      return Field(
+        (b) => b
+          ..static = true
+          ..modifier = FieldModifier.constant
+          ..name = getKey(propName)
+          ..type = refer('$String')
+          ..assignment = stringCode(originalKey),
+      );
+    }).toList();
+
+    // Second pass: generate union constructors with proper key references
     final unions = params.refSchemaMap.entries.map((entry) {
       final name = entry.key;
       final refSchema = entry.value;
@@ -65,7 +101,7 @@ class UnionModelStrategy
             ..required = isRequired
             ..annotations.addAll([
               if (hasDefaultValue) refer('$Default($defaultValue)'),
-              refer('JsonKey(name: r\'${propEntry.key}\')'),
+              refer('JsonKey(name: $className.${getKey(propName)})'),
             ])
             ..name = propName
             ..type = refer(adjustedDartType),
@@ -160,6 +196,7 @@ class UnionModelStrategy
               ..sealed = true
               ..name = className
               ..mixins.addAll([refer('_\$$className')])
+              ..fields.addAll(keyFields)
               ..constructors.addAll([
                 Constructor(
                   (b) => b
