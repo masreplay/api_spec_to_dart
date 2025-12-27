@@ -397,6 +397,11 @@ mixin _$OpenApiSchemas {
   List<String>? get xEnumVarnames;
   @JsonKey(name: 'additionalProperties')
   bool? get additionalProperties;
+  @OpenApiSchemaJsonConverter()
+  @JsonKey(name: 'oneOf')
+  List<OpenApiSchema>? get oneOf;
+  @JsonKey(name: 'discriminator')
+  OpenApiSchemaOneOfDiscriminator? get discriminator;
 
   /// Create a copy of OpenApiSchemas
   /// with the given fields replaced by the non-null parameter values.
@@ -426,7 +431,10 @@ mixin _$OpenApiSchemas {
             const DeepCollectionEquality()
                 .equals(other.xEnumVarnames, xEnumVarnames) &&
             (identical(other.additionalProperties, additionalProperties) ||
-                other.additionalProperties == additionalProperties));
+                other.additionalProperties == additionalProperties) &&
+            const DeepCollectionEquality().equals(other.oneOf, oneOf) &&
+            (identical(other.discriminator, discriminator) ||
+                other.discriminator == discriminator));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -441,11 +449,13 @@ mixin _$OpenApiSchemas {
       title,
       description,
       const DeepCollectionEquality().hash(xEnumVarnames),
-      additionalProperties);
+      additionalProperties,
+      const DeepCollectionEquality().hash(oneOf),
+      discriminator);
 
   @override
   String toString() {
-    return 'OpenApiSchemas(properties: $properties, type: $type, required_: $required_, enum_: $enum_, const_: $const_, title: $title, description: $description, xEnumVarnames: $xEnumVarnames, additionalProperties: $additionalProperties)';
+    return 'OpenApiSchemas(properties: $properties, type: $type, required_: $required_, enum_: $enum_, const_: $const_, title: $title, description: $description, xEnumVarnames: $xEnumVarnames, additionalProperties: $additionalProperties, oneOf: $oneOf, discriminator: $discriminator)';
   }
 }
 
@@ -466,7 +476,14 @@ abstract mixin class $OpenApiSchemasCopyWith<$Res> {
       @JsonKey(name: 'title') String? title,
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames,
-      @JsonKey(name: 'additionalProperties') bool? additionalProperties});
+      @JsonKey(name: 'additionalProperties') bool? additionalProperties,
+      @OpenApiSchemaJsonConverter()
+      @JsonKey(name: 'oneOf')
+      List<OpenApiSchema>? oneOf,
+      @JsonKey(name: 'discriminator')
+      OpenApiSchemaOneOfDiscriminator? discriminator});
+
+  $OpenApiSchemaOneOfDiscriminatorCopyWith<$Res>? get discriminator;
 }
 
 /// @nodoc
@@ -491,6 +508,8 @@ class _$OpenApiSchemasCopyWithImpl<$Res>
     Object? description = freezed,
     Object? xEnumVarnames = freezed,
     Object? additionalProperties = freezed,
+    Object? oneOf = freezed,
+    Object? discriminator = freezed,
   }) {
     return _then(_self.copyWith(
       properties: freezed == properties
@@ -526,7 +545,30 @@ class _$OpenApiSchemasCopyWithImpl<$Res>
           ? _self.additionalProperties
           : additionalProperties // ignore: cast_nullable_to_non_nullable
               as bool?,
+      oneOf: freezed == oneOf
+          ? _self.oneOf
+          : oneOf // ignore: cast_nullable_to_non_nullable
+              as List<OpenApiSchema>?,
+      discriminator: freezed == discriminator
+          ? _self.discriminator
+          : discriminator // ignore: cast_nullable_to_non_nullable
+              as OpenApiSchemaOneOfDiscriminator?,
     ));
+  }
+
+  /// Create a copy of OpenApiSchemas
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $OpenApiSchemaOneOfDiscriminatorCopyWith<$Res>? get discriminator {
+    if (_self.discriminator == null) {
+      return null;
+    }
+
+    return $OpenApiSchemaOneOfDiscriminatorCopyWith<$Res>(_self.discriminator!,
+        (value) {
+      return _then(_self.copyWith(discriminator: value));
+    });
   }
 }
 
@@ -634,7 +676,12 @@ extension OpenApiSchemasPatterns on OpenApiSchemas {
             @JsonKey(name: 'title') String? title,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames,
-            @JsonKey(name: 'additionalProperties') bool? additionalProperties)?
+            @JsonKey(name: 'additionalProperties') bool? additionalProperties,
+            @OpenApiSchemaJsonConverter()
+            @JsonKey(name: 'oneOf')
+            List<OpenApiSchema>? oneOf,
+            @JsonKey(name: 'discriminator')
+            OpenApiSchemaOneOfDiscriminator? discriminator)?
         $default, {
     required TResult orElse(),
   }) {
@@ -650,7 +697,9 @@ extension OpenApiSchemasPatterns on OpenApiSchemas {
             _that.title,
             _that.description,
             _that.xEnumVarnames,
-            _that.additionalProperties);
+            _that.additionalProperties,
+            _that.oneOf,
+            _that.discriminator);
       case _:
         return orElse();
     }
@@ -682,7 +731,12 @@ extension OpenApiSchemasPatterns on OpenApiSchemas {
             @JsonKey(name: 'title') String? title,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames,
-            @JsonKey(name: 'additionalProperties') bool? additionalProperties)
+            @JsonKey(name: 'additionalProperties') bool? additionalProperties,
+            @OpenApiSchemaJsonConverter()
+            @JsonKey(name: 'oneOf')
+            List<OpenApiSchema>? oneOf,
+            @JsonKey(name: 'discriminator')
+            OpenApiSchemaOneOfDiscriminator? discriminator)
         $default,
   ) {
     final _that = this;
@@ -697,7 +751,9 @@ extension OpenApiSchemasPatterns on OpenApiSchemas {
             _that.title,
             _that.description,
             _that.xEnumVarnames,
-            _that.additionalProperties);
+            _that.additionalProperties,
+            _that.oneOf,
+            _that.discriminator);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -728,7 +784,12 @@ extension OpenApiSchemasPatterns on OpenApiSchemas {
             @JsonKey(name: 'title') String? title,
             @JsonKey(name: 'description') String? description,
             @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames,
-            @JsonKey(name: 'additionalProperties') bool? additionalProperties)?
+            @JsonKey(name: 'additionalProperties') bool? additionalProperties,
+            @OpenApiSchemaJsonConverter()
+            @JsonKey(name: 'oneOf')
+            List<OpenApiSchema>? oneOf,
+            @JsonKey(name: 'discriminator')
+            OpenApiSchemaOneOfDiscriminator? discriminator)?
         $default,
   ) {
     final _that = this;
@@ -743,7 +804,9 @@ extension OpenApiSchemasPatterns on OpenApiSchemas {
             _that.title,
             _that.description,
             _that.xEnumVarnames,
-            _that.additionalProperties);
+            _that.additionalProperties,
+            _that.oneOf,
+            _that.discriminator);
       case _:
         return null;
     }
@@ -764,11 +827,16 @@ class _OpenApiSchemas extends OpenApiSchemas {
       @JsonKey(name: 'title') this.title,
       @JsonKey(name: 'description') this.description,
       @JsonKey(name: 'x-enum-varnames') final List<String>? xEnumVarnames,
-      @JsonKey(name: 'additionalProperties') this.additionalProperties})
+      @JsonKey(name: 'additionalProperties') this.additionalProperties,
+      @OpenApiSchemaJsonConverter()
+      @JsonKey(name: 'oneOf')
+      final List<OpenApiSchema>? oneOf,
+      @JsonKey(name: 'discriminator') this.discriminator})
       : _properties = properties,
         _required_ = required_,
         _enum_ = enum_,
         _xEnumVarnames = xEnumVarnames,
+        _oneOf = oneOf,
         super._();
   factory _OpenApiSchemas.fromJson(Map<String, dynamic> json) =>
       _$OpenApiSchemasFromJson(json);
@@ -833,6 +901,21 @@ class _OpenApiSchemas extends OpenApiSchemas {
   @override
   @JsonKey(name: 'additionalProperties')
   final bool? additionalProperties;
+  final List<OpenApiSchema>? _oneOf;
+  @override
+  @OpenApiSchemaJsonConverter()
+  @JsonKey(name: 'oneOf')
+  List<OpenApiSchema>? get oneOf {
+    final value = _oneOf;
+    if (value == null) return null;
+    if (_oneOf is EqualUnmodifiableListView) return _oneOf;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  @JsonKey(name: 'discriminator')
+  final OpenApiSchemaOneOfDiscriminator? discriminator;
 
   /// Create a copy of OpenApiSchemas
   /// with the given fields replaced by the non-null parameter values.
@@ -867,7 +950,10 @@ class _OpenApiSchemas extends OpenApiSchemas {
             const DeepCollectionEquality()
                 .equals(other._xEnumVarnames, _xEnumVarnames) &&
             (identical(other.additionalProperties, additionalProperties) ||
-                other.additionalProperties == additionalProperties));
+                other.additionalProperties == additionalProperties) &&
+            const DeepCollectionEquality().equals(other._oneOf, _oneOf) &&
+            (identical(other.discriminator, discriminator) ||
+                other.discriminator == discriminator));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -882,11 +968,13 @@ class _OpenApiSchemas extends OpenApiSchemas {
       title,
       description,
       const DeepCollectionEquality().hash(_xEnumVarnames),
-      additionalProperties);
+      additionalProperties,
+      const DeepCollectionEquality().hash(_oneOf),
+      discriminator);
 
   @override
   String toString() {
-    return 'OpenApiSchemas(properties: $properties, type: $type, required_: $required_, enum_: $enum_, const_: $const_, title: $title, description: $description, xEnumVarnames: $xEnumVarnames, additionalProperties: $additionalProperties)';
+    return 'OpenApiSchemas(properties: $properties, type: $type, required_: $required_, enum_: $enum_, const_: $const_, title: $title, description: $description, xEnumVarnames: $xEnumVarnames, additionalProperties: $additionalProperties, oneOf: $oneOf, discriminator: $discriminator)';
   }
 }
 
@@ -909,7 +997,15 @@ abstract mixin class _$OpenApiSchemasCopyWith<$Res>
       @JsonKey(name: 'title') String? title,
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames,
-      @JsonKey(name: 'additionalProperties') bool? additionalProperties});
+      @JsonKey(name: 'additionalProperties') bool? additionalProperties,
+      @OpenApiSchemaJsonConverter()
+      @JsonKey(name: 'oneOf')
+      List<OpenApiSchema>? oneOf,
+      @JsonKey(name: 'discriminator')
+      OpenApiSchemaOneOfDiscriminator? discriminator});
+
+  @override
+  $OpenApiSchemaOneOfDiscriminatorCopyWith<$Res>? get discriminator;
 }
 
 /// @nodoc
@@ -934,6 +1030,8 @@ class __$OpenApiSchemasCopyWithImpl<$Res>
     Object? description = freezed,
     Object? xEnumVarnames = freezed,
     Object? additionalProperties = freezed,
+    Object? oneOf = freezed,
+    Object? discriminator = freezed,
   }) {
     return _then(_OpenApiSchemas(
       properties: freezed == properties
@@ -969,6 +1067,29 @@ class __$OpenApiSchemasCopyWithImpl<$Res>
           ? _self.additionalProperties
           : additionalProperties // ignore: cast_nullable_to_non_nullable
               as bool?,
+      oneOf: freezed == oneOf
+          ? _self._oneOf
+          : oneOf // ignore: cast_nullable_to_non_nullable
+              as List<OpenApiSchema>?,
+      discriminator: freezed == discriminator
+          ? _self.discriminator
+          : discriminator // ignore: cast_nullable_to_non_nullable
+              as OpenApiSchemaOneOfDiscriminator?,
     ));
+  }
+
+  /// Create a copy of OpenApiSchemas
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $OpenApiSchemaOneOfDiscriminatorCopyWith<$Res>? get discriminator {
+    if (_self.discriminator == null) {
+      return null;
+    }
+
+    return $OpenApiSchemaOneOfDiscriminatorCopyWith<$Res>(_self.discriminator!,
+        (value) {
+      return _then(_self.copyWith(discriminator: value));
+    });
   }
 }

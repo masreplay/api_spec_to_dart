@@ -10,6 +10,16 @@ class ModelGenerator extends LibraryGenerator {
   Library build(MapEntry<String, OpenApiSchemas> model) {
     final schema = model.value;
 
+    // Check if this is a top-level oneOf schema
+    if (schema.oneOf != null && schema.oneOf!.isNotEmpty) {
+      // Check if all oneOf items are references (refs)
+      final oneOf = schema.oneOf!;
+      if (oneOf.every((e) => e is OpenApiSchemaRef)) {
+        final strategy = UnionModelStrategy(context);
+        return strategy.buildFromTopLevelSchema(model);
+      }
+    }
+
     final ModelGeneratorStrategy strategy;
 
     if (schema.enum_ != null) {
