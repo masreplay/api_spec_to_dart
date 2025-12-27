@@ -11,7 +11,7 @@
 ///     "type": "object",
 ///     "required": []
 /// }
-library;
+library basic_basic_string_query_parameters;
 
 import 'exports.dart';
 part 'basic_basic_string_query_parameters.freezed.dart';

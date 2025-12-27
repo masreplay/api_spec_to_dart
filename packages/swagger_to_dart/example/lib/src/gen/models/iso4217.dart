@@ -187,380 +187,380 @@
 //     ]
 // }
 
-library;
+library iso4217;
 
 import 'exports.dart';
 part 'iso4217.g.dart';
 
 @JsonEnum(alwaysCreate: true)
 enum Iso4217 {
-  @JsonValue('AED')
+  @JsonValue("AED")
   aed,
-  @JsonValue('AFN')
+  @JsonValue("AFN")
   afn,
-  @JsonValue('ALL')
+  @JsonValue("ALL")
   all,
-  @JsonValue('AMD')
+  @JsonValue("AMD")
   amd,
-  @JsonValue('ANG')
+  @JsonValue("ANG")
   ang,
-  @JsonValue('AOA')
+  @JsonValue("AOA")
   aoa,
-  @JsonValue('ARS')
+  @JsonValue("ARS")
   ars,
-  @JsonValue('AUD')
+  @JsonValue("AUD")
   aud,
-  @JsonValue('AWG')
+  @JsonValue("AWG")
   awg,
-  @JsonValue('AZN')
+  @JsonValue("AZN")
   azn,
-  @JsonValue('BAM')
+  @JsonValue("BAM")
   bam,
-  @JsonValue('BBD')
+  @JsonValue("BBD")
   bbd,
-  @JsonValue('BDT')
+  @JsonValue("BDT")
   bdt,
-  @JsonValue('BGN')
+  @JsonValue("BGN")
   bgn,
-  @JsonValue('BHD')
+  @JsonValue("BHD")
   bhd,
-  @JsonValue('BIF')
+  @JsonValue("BIF")
   bif,
-  @JsonValue('BMD')
+  @JsonValue("BMD")
   bmd,
-  @JsonValue('BND')
+  @JsonValue("BND")
   bnd,
-  @JsonValue('BOB')
+  @JsonValue("BOB")
   bob,
-  @JsonValue('BOV')
+  @JsonValue("BOV")
   bov,
-  @JsonValue('BRL')
+  @JsonValue("BRL")
   brl,
-  @JsonValue('BSD')
+  @JsonValue("BSD")
   bsd,
-  @JsonValue('BTN')
+  @JsonValue("BTN")
   btn,
-  @JsonValue('BWP')
+  @JsonValue("BWP")
   bwp,
-  @JsonValue('BYN')
+  @JsonValue("BYN")
   byn,
-  @JsonValue('BZD')
+  @JsonValue("BZD")
   bzd,
-  @JsonValue('CAD')
+  @JsonValue("CAD")
   cad,
-  @JsonValue('CDF')
+  @JsonValue("CDF")
   cdf,
-  @JsonValue('CHE')
+  @JsonValue("CHE")
   che,
-  @JsonValue('CHF')
+  @JsonValue("CHF")
   chf,
-  @JsonValue('CHW')
+  @JsonValue("CHW")
   chw,
-  @JsonValue('CLF')
+  @JsonValue("CLF")
   clf,
-  @JsonValue('CLP')
+  @JsonValue("CLP")
   clp,
-  @JsonValue('CNY')
+  @JsonValue("CNY")
   cny,
-  @JsonValue('COP')
+  @JsonValue("COP")
   cop,
-  @JsonValue('COU')
+  @JsonValue("COU")
   cou,
-  @JsonValue('CRC')
+  @JsonValue("CRC")
   crc,
-  @JsonValue('CUC')
+  @JsonValue("CUC")
   cuc,
-  @JsonValue('CUP')
+  @JsonValue("CUP")
   cup,
-  @JsonValue('CVE')
+  @JsonValue("CVE")
   cve,
-  @JsonValue('CZK')
+  @JsonValue("CZK")
   czk,
-  @JsonValue('DJF')
+  @JsonValue("DJF")
   djf,
-  @JsonValue('DKK')
+  @JsonValue("DKK")
   dkk,
-  @JsonValue('DOP')
+  @JsonValue("DOP")
   dop,
-  @JsonValue('DZD')
+  @JsonValue("DZD")
   dzd,
-  @JsonValue('EGP')
+  @JsonValue("EGP")
   egp,
-  @JsonValue('ERN')
+  @JsonValue("ERN")
   ern,
-  @JsonValue('ETB')
+  @JsonValue("ETB")
   etb,
-  @JsonValue('EUR')
+  @JsonValue("EUR")
   eur,
-  @JsonValue('FJD')
+  @JsonValue("FJD")
   fjd,
-  @JsonValue('FKP')
+  @JsonValue("FKP")
   fkp,
-  @JsonValue('GBP')
+  @JsonValue("GBP")
   gbp,
-  @JsonValue('GEL')
+  @JsonValue("GEL")
   gel,
-  @JsonValue('GHS')
+  @JsonValue("GHS")
   ghs,
-  @JsonValue('GIP')
+  @JsonValue("GIP")
   gip,
-  @JsonValue('GMD')
+  @JsonValue("GMD")
   gmd,
-  @JsonValue('GNF')
+  @JsonValue("GNF")
   gnf,
-  @JsonValue('GTQ')
+  @JsonValue("GTQ")
   gtq,
-  @JsonValue('GYD')
+  @JsonValue("GYD")
   gyd,
-  @JsonValue('HKD')
+  @JsonValue("HKD")
   hkd,
-  @JsonValue('HNL')
+  @JsonValue("HNL")
   hnl,
-  @JsonValue('HRK')
+  @JsonValue("HRK")
   hrk,
-  @JsonValue('HTG')
+  @JsonValue("HTG")
   htg,
-  @JsonValue('HUF')
+  @JsonValue("HUF")
   huf,
-  @JsonValue('IDR')
+  @JsonValue("IDR")
   idr,
-  @JsonValue('ILS')
+  @JsonValue("ILS")
   ils,
-  @JsonValue('INR')
+  @JsonValue("INR")
   inr,
-  @JsonValue('IQD')
+  @JsonValue("IQD")
   iqd,
-  @JsonValue('IRR')
+  @JsonValue("IRR")
   irr,
-  @JsonValue('ISK')
+  @JsonValue("ISK")
   isk,
-  @JsonValue('JMD')
+  @JsonValue("JMD")
   jmd,
-  @JsonValue('JOD')
+  @JsonValue("JOD")
   jod,
-  @JsonValue('JPY')
+  @JsonValue("JPY")
   jpy,
-  @JsonValue('KES')
+  @JsonValue("KES")
   kes,
-  @JsonValue('KGS')
+  @JsonValue("KGS")
   kgs,
-  @JsonValue('KHR')
+  @JsonValue("KHR")
   khr,
-  @JsonValue('KMF')
+  @JsonValue("KMF")
   kmf,
-  @JsonValue('KPW')
+  @JsonValue("KPW")
   kpw,
-  @JsonValue('KRW')
+  @JsonValue("KRW")
   krw,
-  @JsonValue('KWD')
+  @JsonValue("KWD")
   kwd,
-  @JsonValue('KYD')
+  @JsonValue("KYD")
   kyd,
-  @JsonValue('KZT')
+  @JsonValue("KZT")
   kzt,
-  @JsonValue('LAK')
+  @JsonValue("LAK")
   lak,
-  @JsonValue('LBP')
+  @JsonValue("LBP")
   lbp,
-  @JsonValue('LKR')
+  @JsonValue("LKR")
   lkr,
-  @JsonValue('LRD')
+  @JsonValue("LRD")
   lrd,
-  @JsonValue('LSL')
+  @JsonValue("LSL")
   lsl,
-  @JsonValue('LYD')
+  @JsonValue("LYD")
   lyd,
-  @JsonValue('MAD')
+  @JsonValue("MAD")
   mad,
-  @JsonValue('MDL')
+  @JsonValue("MDL")
   mdl,
-  @JsonValue('MGA')
+  @JsonValue("MGA")
   mga,
-  @JsonValue('MKD')
+  @JsonValue("MKD")
   mkd,
-  @JsonValue('MMK')
+  @JsonValue("MMK")
   mmk,
-  @JsonValue('MNT')
+  @JsonValue("MNT")
   mnt,
-  @JsonValue('MOP')
+  @JsonValue("MOP")
   mop,
-  @JsonValue('MRU')
+  @JsonValue("MRU")
   mru,
-  @JsonValue('MUR')
+  @JsonValue("MUR")
   mur,
-  @JsonValue('MVR')
+  @JsonValue("MVR")
   mvr,
-  @JsonValue('MWK')
+  @JsonValue("MWK")
   mwk,
-  @JsonValue('MXN')
+  @JsonValue("MXN")
   mxn,
-  @JsonValue('MXV')
+  @JsonValue("MXV")
   mxv,
-  @JsonValue('MYR')
+  @JsonValue("MYR")
   myr,
-  @JsonValue('MZN')
+  @JsonValue("MZN")
   mzn,
-  @JsonValue('NAD')
+  @JsonValue("NAD")
   nad,
-  @JsonValue('NGN')
+  @JsonValue("NGN")
   ngn,
-  @JsonValue('NIO')
+  @JsonValue("NIO")
   nio,
-  @JsonValue('NOK')
+  @JsonValue("NOK")
   nok,
-  @JsonValue('NPR')
+  @JsonValue("NPR")
   npr,
-  @JsonValue('NZD')
+  @JsonValue("NZD")
   nzd,
-  @JsonValue('OMR')
+  @JsonValue("OMR")
   omr,
-  @JsonValue('PAB')
+  @JsonValue("PAB")
   pab,
-  @JsonValue('PEN')
+  @JsonValue("PEN")
   pen,
-  @JsonValue('PGK')
+  @JsonValue("PGK")
   pgk,
-  @JsonValue('PHP')
+  @JsonValue("PHP")
   php,
-  @JsonValue('PKR')
+  @JsonValue("PKR")
   pkr,
-  @JsonValue('PLN')
+  @JsonValue("PLN")
   pln,
-  @JsonValue('PYG')
+  @JsonValue("PYG")
   pyg,
-  @JsonValue('QAR')
+  @JsonValue("QAR")
   qar,
-  @JsonValue('RON')
+  @JsonValue("RON")
   ron,
-  @JsonValue('RSD')
+  @JsonValue("RSD")
   rsd,
-  @JsonValue('RUB')
+  @JsonValue("RUB")
   rub,
-  @JsonValue('RWF')
+  @JsonValue("RWF")
   rwf,
-  @JsonValue('SAR')
+  @JsonValue("SAR")
   sar,
-  @JsonValue('SBD')
+  @JsonValue("SBD")
   sbd,
-  @JsonValue('SCR')
+  @JsonValue("SCR")
   scr,
-  @JsonValue('SDG')
+  @JsonValue("SDG")
   sdg,
-  @JsonValue('SEK')
+  @JsonValue("SEK")
   sek,
-  @JsonValue('SGD')
+  @JsonValue("SGD")
   sgd,
-  @JsonValue('SHP')
+  @JsonValue("SHP")
   shp,
-  @JsonValue('SLE')
+  @JsonValue("SLE")
   sle,
-  @JsonValue('SLL')
+  @JsonValue("SLL")
   sll,
-  @JsonValue('SOS')
+  @JsonValue("SOS")
   sos,
-  @JsonValue('SRD')
+  @JsonValue("SRD")
   srd,
-  @JsonValue('SSP')
+  @JsonValue("SSP")
   ssp,
-  @JsonValue('STN')
+  @JsonValue("STN")
   stn,
-  @JsonValue('SVC')
+  @JsonValue("SVC")
   svc,
-  @JsonValue('SYP')
+  @JsonValue("SYP")
   syp,
-  @JsonValue('SZL')
+  @JsonValue("SZL")
   szl,
-  @JsonValue('THB')
+  @JsonValue("THB")
   thb,
-  @JsonValue('TJS')
+  @JsonValue("TJS")
   tjs,
-  @JsonValue('TMT')
+  @JsonValue("TMT")
   tmt,
-  @JsonValue('TND')
+  @JsonValue("TND")
   tnd,
-  @JsonValue('TOP')
+  @JsonValue("TOP")
   top,
-  @JsonValue('TRY')
+  @JsonValue("TRY")
   tryaa,
-  @JsonValue('TTD')
+  @JsonValue("TTD")
   ttd,
-  @JsonValue('TWD')
+  @JsonValue("TWD")
   twd,
-  @JsonValue('TZS')
+  @JsonValue("TZS")
   tzs,
-  @JsonValue('UAH')
+  @JsonValue("UAH")
   uah,
-  @JsonValue('UGX')
+  @JsonValue("UGX")
   ugx,
-  @JsonValue('USD')
+  @JsonValue("USD")
   usd,
-  @JsonValue('USN')
+  @JsonValue("USN")
   usn,
-  @JsonValue('UYI')
+  @JsonValue("UYI")
   uyi,
-  @JsonValue('UYU')
+  @JsonValue("UYU")
   uyu,
-  @JsonValue('UYW')
+  @JsonValue("UYW")
   uyw,
-  @JsonValue('UZS')
+  @JsonValue("UZS")
   uzs,
-  @JsonValue('VED')
+  @JsonValue("VED")
   ved,
-  @JsonValue('VES')
+  @JsonValue("VES")
   ves,
-  @JsonValue('VND')
+  @JsonValue("VND")
   vnd,
-  @JsonValue('VUV')
+  @JsonValue("VUV")
   vuv,
-  @JsonValue('WST')
+  @JsonValue("WST")
   wst,
-  @JsonValue('XAF')
+  @JsonValue("XAF")
   xaf,
-  @JsonValue('XAG')
+  @JsonValue("XAG")
   xag,
-  @JsonValue('XAU')
+  @JsonValue("XAU")
   xau,
-  @JsonValue('XBA')
+  @JsonValue("XBA")
   xba,
-  @JsonValue('XBB')
+  @JsonValue("XBB")
   xbb,
-  @JsonValue('XBC')
+  @JsonValue("XBC")
   xbc,
-  @JsonValue('XBD')
+  @JsonValue("XBD")
   xbd,
-  @JsonValue('XCD')
+  @JsonValue("XCD")
   xcd,
-  @JsonValue('XDR')
+  @JsonValue("XDR")
   xdr,
-  @JsonValue('XOF')
+  @JsonValue("XOF")
   xof,
-  @JsonValue('XPD')
+  @JsonValue("XPD")
   xpd,
-  @JsonValue('XPF')
+  @JsonValue("XPF")
   xpf,
-  @JsonValue('XPT')
+  @JsonValue("XPT")
   xpt,
-  @JsonValue('XSU')
+  @JsonValue("XSU")
   xsu,
-  @JsonValue('XTS')
+  @JsonValue("XTS")
   xts,
-  @JsonValue('XUA')
+  @JsonValue("XUA")
   xua,
-  @JsonValue('XXX')
+  @JsonValue("XXX")
   xxx,
-  @JsonValue('YER')
+  @JsonValue("YER")
   yer,
-  @JsonValue('ZAR')
+  @JsonValue("ZAR")
   zar,
-  @JsonValue('ZMW')
+  @JsonValue("ZMW")
   zmw,
-  @JsonValue('ZWL')
+  @JsonValue("ZWL")
   zwl;
 
   factory Iso4217.fromJson(String json) => Iso4217.values.firstWhere(
-        (e) => e.toJson() == json,
-        orElse: () => Iso4217.values.first,
-      );
+    (e) => e.toJson() == json,
+    orElse: () => Iso4217.values.first,
+  );
 
   String toJson() => _$Iso4217EnumMap[this]!;
 }

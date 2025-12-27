@@ -9,24 +9,24 @@
 //     ]
 // }
 
-library;
+library mode;
 
 import 'exports.dart';
 part 'mode.g.dart';
 
 @JsonEnum(alwaysCreate: true)
 enum Mode {
-  @JsonValue('light')
+  @JsonValue("light")
   light,
-  @JsonValue('dark')
+  @JsonValue("dark")
   dark,
-  @JsonValue('system')
+  @JsonValue("system")
   system;
 
   factory Mode.fromJson(String json) => Mode.values.firstWhere(
-        (e) => e.toJson() == json,
-        orElse: () => Mode.values.first,
-      );
+    (e) => e.toJson() == json,
+    orElse: () => Mode.values.first,
+  );
 
   String toJson() => _$ModeEnumMap[this]!;
 }

@@ -13,7 +13,7 @@
 ///     ],
 ///     "title": "ColorModel"
 /// }
-library;
+library color_model;
 
 import 'exports.dart';
 part 'color_model.freezed.dart';

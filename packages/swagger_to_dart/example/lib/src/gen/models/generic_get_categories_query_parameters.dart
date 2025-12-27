@@ -15,7 +15,7 @@
 ///     "type": "object",
 ///     "required": []
 /// }
-library;
+library generic_get_categories_query_parameters;
 
 import 'exports.dart';
 part 'generic_get_categories_query_parameters.freezed.dart';
@@ -41,8 +41,7 @@ abstract class GenericGetCategoriesQueryParameters
 
   factory GenericGetCategoriesQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$GenericGetCategoriesQueryParametersFromJson(json);
+  ) => _$GenericGetCategoriesQueryParametersFromJson(json);
 
   static const String pageKey_ = r'page';
 

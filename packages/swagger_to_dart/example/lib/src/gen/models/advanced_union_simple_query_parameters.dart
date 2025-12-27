@@ -21,7 +21,7 @@
 ///         "value"
 ///     ]
 /// }
-library;
+library advanced_union_simple_query_parameters;
 
 import 'exports.dart';
 part 'advanced_union_simple_query_parameters.freezed.dart';
@@ -41,8 +41,7 @@ abstract class AdvancedUnionSimpleQueryParameters
 
   factory AdvancedUnionSimpleQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$AdvancedUnionSimpleQueryParametersFromJson(json);
+  ) => _$AdvancedUnionSimpleQueryParametersFromJson(json);
 
   static const String valueKey_ = r'value';
 }

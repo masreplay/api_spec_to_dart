@@ -1,10 +1,20 @@
-library;
+library exports;
 
-export 'dart:typed_data';
-
-export 'package:dio/dio.dart';
+import 'package:dio/dio.dart';
+import 'exports.dart';
+import 'package:json_annotation/json_annotation.dart';
+import 'package:dio/dio.dart';
+import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/material.dart';
+import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/material.dart';
+import 'package:json_annotation/json_annotation.dart';
 export 'package:flutter/material.dart';
-export 'package:freezed_annotation/freezed_annotation.dart';
-
-export 'json_converter.dart';
+export 'package:flutter/material.dart';
+export 'package:flutter/material.dart';
+export 'dart:typed_data';
 export 'models.dart';
+export 'package:dio/dio.dart';
+export 'package:freezed_annotation/freezed_annotation.dart';
+export 'json_converter.dart';
+export 'package:freezed_annotation/freezed_annotation.dart';

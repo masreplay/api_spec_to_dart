@@ -13997,6 +13997,125 @@
                     "price"
                 ],
                 "title": "ItemResponse"
+            },
+            "OrderLineChange": {
+                "type": "object",
+                "oneOf": [
+                    {
+                        "$ref": "#/components/schemas/CreateOrderLine"
+                    },
+                    {
+                        "$ref": "#/components/schemas/UpdateOrderLine"
+                    },
+                    {
+                        "$ref": "#/components/schemas/DeleteOrderLine"
+                    }
+                ],
+                "additionalProperties": false,
+                "discriminator": {
+                    "propertyName": "type",
+                    "mapping": {
+                        "create": "#/components/schemas/CreateOrderLine",
+                        "update": "#/components/schemas/UpdateOrderLine",
+                        "delete": "#/components/schemas/DeleteOrderLine"
+                    }
+                }
+            },
+            "CreateOrderLine": {
+                "type": "object",
+                "required": [
+                    "product_id",
+                    "quantity",
+                    "type"
+                ],
+                "properties": {
+                    "product_id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "quantity": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "sale_price": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "type": {
+                        "type": "string",
+                        "default": "create"
+                    }
+                },
+                "additionalProperties": false,
+                "title": "CreateOrderLine"
+            },
+            "UpdateOrderLine": {
+                "type": "object",
+                "required": [
+                    "id",
+                    "type"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "quantity": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "sale_price": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "type": {
+                        "type": "string",
+                        "default": "update"
+                    }
+                },
+                "additionalProperties": false,
+                "title": "UpdateOrderLine"
+            },
+            "DeleteOrderLine": {
+                "type": "object",
+                "required": [
+                    "id",
+                    "type"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "type": {
+                        "type": "string",
+                        "default": "delete"
+                    }
+                },
+                "additionalProperties": false,
+                "title": "DeleteOrderLine"
+            },
+            "UpdateOrderCommand": {
+                "type": "object",
+                "properties": {
+                    "customer_id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "nullable": true
+                    },
+                    "lines": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/OrderLineChange"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false,
+                "title": "UpdateOrderCommand"
             }
         },
         "securitySchemes": {

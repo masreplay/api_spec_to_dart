@@ -19,36 +19,36 @@
 //     "description": "Payment card brands supported by the [`PaymentCardNumber`][pydantic_extra_types.payment.PaymentCardNumber]."
 // }
 
-library;
+library payment_card_brand;
 
 import 'exports.dart';
 part 'payment_card_brand.g.dart';
 
 @JsonEnum(alwaysCreate: true)
 enum PaymentCardBrand {
-  @JsonValue('American Express')
+  @JsonValue("American Express")
   americanExpress,
-  @JsonValue('Mastercard')
+  @JsonValue("Mastercard")
   mastercard,
-  @JsonValue('Visa')
+  @JsonValue("Visa")
   visa,
-  @JsonValue('Mir')
+  @JsonValue("Mir")
   mir,
-  @JsonValue('Maestro')
+  @JsonValue("Maestro")
   maestro,
-  @JsonValue('Discover')
+  @JsonValue("Discover")
   discover,
-  @JsonValue('Verve')
+  @JsonValue("Verve")
   verve,
-  @JsonValue('Dankort')
+  @JsonValue("Dankort")
   dankort,
-  @JsonValue('Troy')
+  @JsonValue("Troy")
   troy,
-  @JsonValue('UnionPay')
+  @JsonValue("UnionPay")
   unionPay,
-  @JsonValue('JCB')
+  @JsonValue("JCB")
   jcb,
-  @JsonValue('other')
+  @JsonValue("other")
   other;
 
   factory PaymentCardBrand.fromJson(String json) =>

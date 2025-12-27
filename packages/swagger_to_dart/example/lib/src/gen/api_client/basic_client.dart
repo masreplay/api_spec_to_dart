@@ -1,4 +1,4 @@
-library;
+library basic_client;
 
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
@@ -13,13 +13,14 @@ abstract class BasicClient {
     String? baseUrl,
   }) = _BasicClient;
 
-  @GET('/basic/number/{num}')
+  @GET("/basic/number/{num}")
   Future<HttpResponse<Map<String, dynamic>>> basicBasicNumber({
-    @Path('num') required int num,
+    @Path("num") required int num,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'basic'],
       r'summary': r'Handle integer path parameter',
       r'description': r'Handle integer path parameter.',
@@ -56,13 +57,14 @@ abstract class BasicClient {
       },
     },
   });
-  @GET('/basic/float/{num}')
+  @GET("/basic/float/{num}")
   Future<HttpResponse<Map<String, dynamic>>> basicBasicFloat({
-    @Path('num') required double num,
+    @Path("num") required double num,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'basic'],
       r'summary': r'Handle float path parameter',
       r'description': r'Handle float path parameter.',
@@ -99,13 +101,14 @@ abstract class BasicClient {
       },
     },
   });
-  @GET('/basic/boolean')
+  @GET("/basic/boolean")
   Future<HttpResponse<Map<String, dynamic>>> basicBasicBoolean({
     @Queries() required BasicBasicBooleanQueryParameters queries,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'basic'],
       r'summary': r'Handle boolean query parameter',
       r'description': r'Handle boolean query parameter with default value.',
@@ -147,13 +150,14 @@ abstract class BasicClient {
       },
     },
   });
-  @GET('/basic/string')
+  @GET("/basic/string")
   Future<HttpResponse<Map<String, dynamic>>> basicBasicString({
     @Queries() required BasicBasicStringQueryParameters queries,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'basic'],
       r'summary': r'Handle string query parameter',
       r'description': r'Handle string query parameter with validation.',
@@ -196,13 +200,14 @@ abstract class BasicClient {
       },
     },
   });
-  @GET('/datetime/date')
+  @GET("/datetime/date")
   Future<HttpResponse<Map<String, dynamic>>> basicDatetimeDate({
     @Queries() required BasicDatetimeDateQueryParameters queries,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'basic'],
       r'summary': r'Handle date parameters',
       r'description': r'Handle date parameter (YYYY-MM-DD).',
@@ -239,13 +244,14 @@ abstract class BasicClient {
       },
     },
   });
-  @GET('/datetime/datetime')
+  @GET("/datetime/datetime")
   Future<HttpResponse<Map<String, dynamic>>> basicDatetimeDatetime({
     @Queries() required BasicDatetimeDatetimeQueryParameters queries,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'basic'],
       r'summary': r'Handle datetime parameters',
       r'description': r'Handle datetime parameter (YYYY-MM-DDThh:mm:ss).',
@@ -286,13 +292,14 @@ abstract class BasicClient {
       },
     },
   });
-  @POST('/datetime/datetime')
+  @POST("/datetime/datetime")
   Future<HttpResponse<Map<String, dynamic>>> basicCreateDatetimeDatetime({
     @Queries() required BasicCreateDatetimeDatetimeQueryParameters queries,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'basic'],
       r'summary': r'Handle datetime parameters',
       r'description': r'Handle datetime parameter (YYYY-MM-DDThh:mm:ss).',
@@ -333,13 +340,14 @@ abstract class BasicClient {
       },
     },
   });
-  @GET('/datetime/time')
+  @GET("/datetime/time")
   Future<HttpResponse<Map<String, dynamic>>> basicDatetimeTime({
     @Queries() required BasicDatetimeTimeQueryParameters queries,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'basic'],
       r'summary': r'Handle time parameters',
       r'description': r'Handle time parameter (hh:mm:ss).',
@@ -376,13 +384,14 @@ abstract class BasicClient {
       },
     },
   });
-  @GET('/datetime/timedelta')
+  @GET("/datetime/timedelta")
   Future<HttpResponse<Map<String, dynamic>>> basicDatetimeTimedelta({
     @Queries() required BasicDatetimeTimedeltaQueryParameters queries,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'basic'],
       r'summary': r'Handle timedelta parameters',
       r'description': r'Handle timedelta parameter (in seconds).',

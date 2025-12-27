@@ -12,7 +12,7 @@
 ///         "td"
 ///     ]
 /// }
-library;
+library basic_datetime_timedelta_query_parameters;
 
 import 'exports.dart';
 part 'basic_datetime_timedelta_query_parameters.freezed.dart';
@@ -32,8 +32,7 @@ abstract class BasicDatetimeTimedeltaQueryParameters
 
   factory BasicDatetimeTimedeltaQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$BasicDatetimeTimedeltaQueryParametersFromJson(json);
+  ) => _$BasicDatetimeTimedeltaQueryParametersFromJson(json);
 
   static const String tdKey_ = r'td';
 }

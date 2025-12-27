@@ -1,6 +1,14 @@
-library;
+library json_converter;
 
+import 'package:dio/dio.dart';
 import 'exports.dart';
+import 'package:json_annotation/json_annotation.dart';
+import 'package:dio/dio.dart';
+import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/material.dart';
+import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/material.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 class AnimalMapJsonConverter
     implements JsonConverter<Animal, Map<String, dynamic>> {
@@ -15,6 +23,23 @@ class AnimalMapJsonConverter
 
   @override
   Map<String, dynamic> toJson(Animal object) {
+    return {unionKey: object.toJson(), ...object.toJson()};
+  }
+}
+
+class OrderLineChangeMapJsonConverter
+    implements JsonConverter<OrderLineChange, Map<String, dynamic>> {
+  const OrderLineChangeMapJsonConverter();
+
+  static const String unionKey = r'value';
+
+  @override
+  OrderLineChange fromJson(Map<String, dynamic> json) {
+    return OrderLineChange.fromJson({unionKey: json, ...json});
+  }
+
+  @override
+  Map<String, dynamic> toJson(OrderLineChange object) {
     return {unionKey: object.toJson(), ...object.toJson()};
   }
 }
@@ -65,10 +90,12 @@ class TimeOfDayStringJsonConverter implements JsonConverter<TimeOfDay, String> {
       final regex = RegExp(r'PT(?:(\d+)H)?(?:(\d+)M)?');
       final match = regex.firstMatch(json);
 
-      final hours =
-          match?.group(1) != null ? int.tryParse(match!.group(1)!) ?? 0 : 0;
-      final minutes =
-          match?.group(2) != null ? int.tryParse(match!.group(2)!) ?? 0 : 0;
+      final hours = match?.group(1) != null
+          ? int.tryParse(match!.group(1)!) ?? 0
+          : 0;
+      final minutes = match?.group(2) != null
+          ? int.tryParse(match!.group(2)!) ?? 0
+          : 0;
 
       return TimeOfDay(hour: hours, minute: minutes);
     }
@@ -112,6 +139,7 @@ const jsonSerializableConverters = <JsonConverter>[
   TimeOfDayStringJsonConverter(),
   ColorStringJsonConverter(),
   AnimalMapJsonConverter(),
+  OrderLineChangeMapJsonConverter(),
   ResponseModelsResponseMultipleMapJsonConverter(),
 ];
 const jsonSerializable = JsonSerializable(

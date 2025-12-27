@@ -14,7 +14,7 @@
 ///         "items"
 ///     ]
 /// }
-library;
+library advanced_collection_variable_tuple_query_parameters;
 
 import 'exports.dart';
 part 'advanced_collection_variable_tuple_query_parameters.freezed.dart';
@@ -34,8 +34,7 @@ abstract class AdvancedCollectionVariableTupleQueryParameters
 
   factory AdvancedCollectionVariableTupleQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$AdvancedCollectionVariableTupleQueryParametersFromJson(json);
+  ) => _$AdvancedCollectionVariableTupleQueryParametersFromJson(json);
 
   static const String itemsKey_ = r'items';
 }

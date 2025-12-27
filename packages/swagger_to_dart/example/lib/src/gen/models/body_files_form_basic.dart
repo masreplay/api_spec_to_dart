@@ -25,7 +25,7 @@
 ///     ],
 ///     "title": "Body_files-form_basic"
 /// }
-library;
+library body_files_form_basic;
 
 import 'exports.dart';
 part 'body_files_form_basic.freezed.dart';

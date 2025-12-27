@@ -19,7 +19,7 @@
 ///     ],
 ///     "title": "PhoneNumberModel"
 /// }
-library;
+library phone_number_model;
 
 import 'exports.dart';
 part 'phone_number_model.freezed.dart';

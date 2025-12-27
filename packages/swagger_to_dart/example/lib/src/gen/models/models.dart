@@ -1,4 +1,4 @@
-library;
+library models;
 
 export 'aba_routing_model.dart';
 export 'all_types_with_validation.dart';
@@ -47,6 +47,11 @@ export 'user_create.dart';
 export 'user_level.dart';
 export 'validation_error.dart';
 export 'version_model.dart';
+export 'order_line_change.dart';
+export 'create_order_line.dart';
+export 'update_order_line.dart';
+export 'delete_order_line.dart';
+export 'update_order_command.dart';
 export 'basic_basic_boolean_query_parameters.dart';
 export 'basic_basic_string_query_parameters.dart';
 export 'basic_datetime_date_query_parameters.dart';

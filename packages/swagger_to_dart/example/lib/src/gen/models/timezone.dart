@@ -604,1214 +604,1214 @@
 //     ]
 // }
 
-library;
+library timezone;
 
 import 'exports.dart';
 part 'timezone.g.dart';
 
 @JsonEnum(alwaysCreate: true)
 enum Timezone {
-  @JsonValue('Africa/Abidjan')
+  @JsonValue("Africa/Abidjan")
   africaSlashAbidjan,
-  @JsonValue('Africa/Accra')
+  @JsonValue("Africa/Accra")
   africaSlashAccra,
-  @JsonValue('Africa/Addis_Ababa')
+  @JsonValue("Africa/Addis_Ababa")
   africaSlashAddisAbaba,
-  @JsonValue('Africa/Algiers')
+  @JsonValue("Africa/Algiers")
   africaSlashAlgiers,
-  @JsonValue('Africa/Asmara')
+  @JsonValue("Africa/Asmara")
   africaSlashAsmara,
-  @JsonValue('Africa/Asmera')
+  @JsonValue("Africa/Asmera")
   africaSlashAsmera,
-  @JsonValue('Africa/Bamako')
+  @JsonValue("Africa/Bamako")
   africaSlashBamako,
-  @JsonValue('Africa/Bangui')
+  @JsonValue("Africa/Bangui")
   africaSlashBangui,
-  @JsonValue('Africa/Banjul')
+  @JsonValue("Africa/Banjul")
   africaSlashBanjul,
-  @JsonValue('Africa/Bissau')
+  @JsonValue("Africa/Bissau")
   africaSlashBissau,
-  @JsonValue('Africa/Blantyre')
+  @JsonValue("Africa/Blantyre")
   africaSlashBlantyre,
-  @JsonValue('Africa/Brazzaville')
+  @JsonValue("Africa/Brazzaville")
   africaSlashBrazzaville,
-  @JsonValue('Africa/Bujumbura')
+  @JsonValue("Africa/Bujumbura")
   africaSlashBujumbura,
-  @JsonValue('Africa/Cairo')
+  @JsonValue("Africa/Cairo")
   africaSlashCairo,
-  @JsonValue('Africa/Casablanca')
+  @JsonValue("Africa/Casablanca")
   africaSlashCasablanca,
-  @JsonValue('Africa/Ceuta')
+  @JsonValue("Africa/Ceuta")
   africaSlashCeuta,
-  @JsonValue('Africa/Conakry')
+  @JsonValue("Africa/Conakry")
   africaSlashConakry,
-  @JsonValue('Africa/Dakar')
+  @JsonValue("Africa/Dakar")
   africaSlashDakar,
-  @JsonValue('Africa/Dar_es_Salaam')
+  @JsonValue("Africa/Dar_es_Salaam")
   africaSlashDarEsSalaam,
-  @JsonValue('Africa/Djibouti')
+  @JsonValue("Africa/Djibouti")
   africaSlashDjibouti,
-  @JsonValue('Africa/Douala')
+  @JsonValue("Africa/Douala")
   africaSlashDouala,
-  @JsonValue('Africa/El_Aaiun')
+  @JsonValue("Africa/El_Aaiun")
   africaSlashElAaiun,
-  @JsonValue('Africa/Freetown')
+  @JsonValue("Africa/Freetown")
   africaSlashFreetown,
-  @JsonValue('Africa/Gaborone')
+  @JsonValue("Africa/Gaborone")
   africaSlashGaborone,
-  @JsonValue('Africa/Harare')
+  @JsonValue("Africa/Harare")
   africaSlashHarare,
-  @JsonValue('Africa/Johannesburg')
+  @JsonValue("Africa/Johannesburg")
   africaSlashJohannesburg,
-  @JsonValue('Africa/Juba')
+  @JsonValue("Africa/Juba")
   africaSlashJuba,
-  @JsonValue('Africa/Kampala')
+  @JsonValue("Africa/Kampala")
   africaSlashKampala,
-  @JsonValue('Africa/Khartoum')
+  @JsonValue("Africa/Khartoum")
   africaSlashKhartoum,
-  @JsonValue('Africa/Kigali')
+  @JsonValue("Africa/Kigali")
   africaSlashKigali,
-  @JsonValue('Africa/Kinshasa')
+  @JsonValue("Africa/Kinshasa")
   africaSlashKinshasa,
-  @JsonValue('Africa/Lagos')
+  @JsonValue("Africa/Lagos")
   africaSlashLagos,
-  @JsonValue('Africa/Libreville')
+  @JsonValue("Africa/Libreville")
   africaSlashLibreville,
-  @JsonValue('Africa/Lome')
+  @JsonValue("Africa/Lome")
   africaSlashLome,
-  @JsonValue('Africa/Luanda')
+  @JsonValue("Africa/Luanda")
   africaSlashLuanda,
-  @JsonValue('Africa/Lubumbashi')
+  @JsonValue("Africa/Lubumbashi")
   africaSlashLubumbashi,
-  @JsonValue('Africa/Lusaka')
+  @JsonValue("Africa/Lusaka")
   africaSlashLusaka,
-  @JsonValue('Africa/Malabo')
+  @JsonValue("Africa/Malabo")
   africaSlashMalabo,
-  @JsonValue('Africa/Maputo')
+  @JsonValue("Africa/Maputo")
   africaSlashMaputo,
-  @JsonValue('Africa/Maseru')
+  @JsonValue("Africa/Maseru")
   africaSlashMaseru,
-  @JsonValue('Africa/Mbabane')
+  @JsonValue("Africa/Mbabane")
   africaSlashMbabane,
-  @JsonValue('Africa/Mogadishu')
+  @JsonValue("Africa/Mogadishu")
   africaSlashMogadishu,
-  @JsonValue('Africa/Monrovia')
+  @JsonValue("Africa/Monrovia")
   africaSlashMonrovia,
-  @JsonValue('Africa/Nairobi')
+  @JsonValue("Africa/Nairobi")
   africaSlashNairobi,
-  @JsonValue('Africa/Ndjamena')
+  @JsonValue("Africa/Ndjamena")
   africaSlashNdjamena,
-  @JsonValue('Africa/Niamey')
+  @JsonValue("Africa/Niamey")
   africaSlashNiamey,
-  @JsonValue('Africa/Nouakchott')
+  @JsonValue("Africa/Nouakchott")
   africaSlashNouakchott,
-  @JsonValue('Africa/Ouagadougou')
+  @JsonValue("Africa/Ouagadougou")
   africaSlashOuagadougou,
-  @JsonValue('Africa/Porto-Novo')
+  @JsonValue("Africa/Porto-Novo")
   africaSlashPortoMinusNovo,
-  @JsonValue('Africa/Sao_Tome')
+  @JsonValue("Africa/Sao_Tome")
   africaSlashSaoTome,
-  @JsonValue('Africa/Timbuktu')
+  @JsonValue("Africa/Timbuktu")
   africaSlashTimbuktu,
-  @JsonValue('Africa/Tripoli')
+  @JsonValue("Africa/Tripoli")
   africaSlashTripoli,
-  @JsonValue('Africa/Tunis')
+  @JsonValue("Africa/Tunis")
   africaSlashTunis,
-  @JsonValue('Africa/Windhoek')
+  @JsonValue("Africa/Windhoek")
   africaSlashWindhoek,
-  @JsonValue('America/Adak')
+  @JsonValue("America/Adak")
   americaSlashAdak,
-  @JsonValue('America/Anchorage')
+  @JsonValue("America/Anchorage")
   americaSlashAnchorage,
-  @JsonValue('America/Anguilla')
+  @JsonValue("America/Anguilla")
   americaSlashAnguilla,
-  @JsonValue('America/Antigua')
+  @JsonValue("America/Antigua")
   americaSlashAntigua,
-  @JsonValue('America/Araguaina')
+  @JsonValue("America/Araguaina")
   americaSlashAraguaina,
-  @JsonValue('America/Argentina/Buenos_Aires')
+  @JsonValue("America/Argentina/Buenos_Aires")
   americaSlashArgentinaSlashBuenosAires,
-  @JsonValue('America/Argentina/Catamarca')
+  @JsonValue("America/Argentina/Catamarca")
   americaSlashArgentinaSlashCatamarca,
-  @JsonValue('America/Argentina/ComodRivadavia')
+  @JsonValue("America/Argentina/ComodRivadavia")
   americaSlashArgentinaSlashComodRivadavia,
-  @JsonValue('America/Argentina/Cordoba')
+  @JsonValue("America/Argentina/Cordoba")
   americaSlashArgentinaSlashCordoba,
-  @JsonValue('America/Argentina/Jujuy')
+  @JsonValue("America/Argentina/Jujuy")
   americaSlashArgentinaSlashJujuy,
-  @JsonValue('America/Argentina/La_Rioja')
+  @JsonValue("America/Argentina/La_Rioja")
   americaSlashArgentinaSlashLaRioja,
-  @JsonValue('America/Argentina/Mendoza')
+  @JsonValue("America/Argentina/Mendoza")
   americaSlashArgentinaSlashMendoza,
-  @JsonValue('America/Argentina/Rio_Gallegos')
+  @JsonValue("America/Argentina/Rio_Gallegos")
   americaSlashArgentinaSlashRioGallegos,
-  @JsonValue('America/Argentina/Salta')
+  @JsonValue("America/Argentina/Salta")
   americaSlashArgentinaSlashSalta,
-  @JsonValue('America/Argentina/San_Juan')
+  @JsonValue("America/Argentina/San_Juan")
   americaSlashArgentinaSlashSanJuan,
-  @JsonValue('America/Argentina/San_Luis')
+  @JsonValue("America/Argentina/San_Luis")
   americaSlashArgentinaSlashSanLuis,
-  @JsonValue('America/Argentina/Tucuman')
+  @JsonValue("America/Argentina/Tucuman")
   americaSlashArgentinaSlashTucuman,
-  @JsonValue('America/Argentina/Ushuaia')
+  @JsonValue("America/Argentina/Ushuaia")
   americaSlashArgentinaSlashUshuaia,
-  @JsonValue('America/Aruba')
+  @JsonValue("America/Aruba")
   americaSlashAruba,
-  @JsonValue('America/Asuncion')
+  @JsonValue("America/Asuncion")
   americaSlashAsuncion,
-  @JsonValue('America/Atikokan')
+  @JsonValue("America/Atikokan")
   americaSlashAtikokan,
-  @JsonValue('America/Atka')
+  @JsonValue("America/Atka")
   americaSlashAtka,
-  @JsonValue('America/Bahia')
+  @JsonValue("America/Bahia")
   americaSlashBahia,
-  @JsonValue('America/Bahia_Banderas')
+  @JsonValue("America/Bahia_Banderas")
   americaSlashBahiaBanderas,
-  @JsonValue('America/Barbados')
+  @JsonValue("America/Barbados")
   americaSlashBarbados,
-  @JsonValue('America/Belem')
+  @JsonValue("America/Belem")
   americaSlashBelem,
-  @JsonValue('America/Belize')
+  @JsonValue("America/Belize")
   americaSlashBelize,
-  @JsonValue('America/Blanc-Sablon')
+  @JsonValue("America/Blanc-Sablon")
   americaSlashBlancMinusSablon,
-  @JsonValue('America/Boa_Vista')
+  @JsonValue("America/Boa_Vista")
   americaSlashBoaVista,
-  @JsonValue('America/Bogota')
+  @JsonValue("America/Bogota")
   americaSlashBogota,
-  @JsonValue('America/Boise')
+  @JsonValue("America/Boise")
   americaSlashBoise,
-  @JsonValue('America/Buenos_Aires')
+  @JsonValue("America/Buenos_Aires")
   americaSlashBuenosAires,
-  @JsonValue('America/Cambridge_Bay')
+  @JsonValue("America/Cambridge_Bay")
   americaSlashCambridgeBay,
-  @JsonValue('America/Campo_Grande')
+  @JsonValue("America/Campo_Grande")
   americaSlashCampoGrande,
-  @JsonValue('America/Cancun')
+  @JsonValue("America/Cancun")
   americaSlashCancun,
-  @JsonValue('America/Caracas')
+  @JsonValue("America/Caracas")
   americaSlashCaracas,
-  @JsonValue('America/Catamarca')
+  @JsonValue("America/Catamarca")
   americaSlashCatamarca,
-  @JsonValue('America/Cayenne')
+  @JsonValue("America/Cayenne")
   americaSlashCayenne,
-  @JsonValue('America/Cayman')
+  @JsonValue("America/Cayman")
   americaSlashCayman,
-  @JsonValue('America/Chicago')
+  @JsonValue("America/Chicago")
   americaSlashChicago,
-  @JsonValue('America/Chihuahua')
+  @JsonValue("America/Chihuahua")
   americaSlashChihuahua,
-  @JsonValue('America/Ciudad_Juarez')
+  @JsonValue("America/Ciudad_Juarez")
   americaSlashCiudadJuarez,
-  @JsonValue('America/Coral_Harbour')
+  @JsonValue("America/Coral_Harbour")
   americaSlashCoralHarbour,
-  @JsonValue('America/Cordoba')
+  @JsonValue("America/Cordoba")
   americaSlashCordoba,
-  @JsonValue('America/Costa_Rica')
+  @JsonValue("America/Costa_Rica")
   americaSlashCostaRica,
-  @JsonValue('America/Coyhaique')
+  @JsonValue("America/Coyhaique")
   americaSlashCoyhaique,
-  @JsonValue('America/Creston')
+  @JsonValue("America/Creston")
   americaSlashCreston,
-  @JsonValue('America/Cuiaba')
+  @JsonValue("America/Cuiaba")
   americaSlashCuiaba,
-  @JsonValue('America/Curacao')
+  @JsonValue("America/Curacao")
   americaSlashCuracao,
-  @JsonValue('America/Danmarkshavn')
+  @JsonValue("America/Danmarkshavn")
   americaSlashDanmarkshavn,
-  @JsonValue('America/Dawson')
+  @JsonValue("America/Dawson")
   americaSlashDawson,
-  @JsonValue('America/Dawson_Creek')
+  @JsonValue("America/Dawson_Creek")
   americaSlashDawsonCreek,
-  @JsonValue('America/Denver')
+  @JsonValue("America/Denver")
   americaSlashDenver,
-  @JsonValue('America/Detroit')
+  @JsonValue("America/Detroit")
   americaSlashDetroit,
-  @JsonValue('America/Dominica')
+  @JsonValue("America/Dominica")
   americaSlashDominica,
-  @JsonValue('America/Edmonton')
+  @JsonValue("America/Edmonton")
   americaSlashEdmonton,
-  @JsonValue('America/Eirunepe')
+  @JsonValue("America/Eirunepe")
   americaSlashEirunepe,
-  @JsonValue('America/El_Salvador')
+  @JsonValue("America/El_Salvador")
   americaSlashElSalvador,
-  @JsonValue('America/Ensenada')
+  @JsonValue("America/Ensenada")
   americaSlashEnsenada,
-  @JsonValue('America/Fort_Nelson')
+  @JsonValue("America/Fort_Nelson")
   americaSlashFortNelson,
-  @JsonValue('America/Fort_Wayne')
+  @JsonValue("America/Fort_Wayne")
   americaSlashFortWayne,
-  @JsonValue('America/Fortaleza')
+  @JsonValue("America/Fortaleza")
   americaSlashFortaleza,
-  @JsonValue('America/Glace_Bay')
+  @JsonValue("America/Glace_Bay")
   americaSlashGlaceBay,
-  @JsonValue('America/Godthab')
+  @JsonValue("America/Godthab")
   americaSlashGodthab,
-  @JsonValue('America/Goose_Bay')
+  @JsonValue("America/Goose_Bay")
   americaSlashGooseBay,
-  @JsonValue('America/Grand_Turk')
+  @JsonValue("America/Grand_Turk")
   americaSlashGrandTurk,
-  @JsonValue('America/Grenada')
+  @JsonValue("America/Grenada")
   americaSlashGrenada,
-  @JsonValue('America/Guadeloupe')
+  @JsonValue("America/Guadeloupe")
   americaSlashGuadeloupe,
-  @JsonValue('America/Guatemala')
+  @JsonValue("America/Guatemala")
   americaSlashGuatemala,
-  @JsonValue('America/Guayaquil')
+  @JsonValue("America/Guayaquil")
   americaSlashGuayaquil,
-  @JsonValue('America/Guyana')
+  @JsonValue("America/Guyana")
   americaSlashGuyana,
-  @JsonValue('America/Halifax')
+  @JsonValue("America/Halifax")
   americaSlashHalifax,
-  @JsonValue('America/Havana')
+  @JsonValue("America/Havana")
   americaSlashHavana,
-  @JsonValue('America/Hermosillo')
+  @JsonValue("America/Hermosillo")
   americaSlashHermosillo,
-  @JsonValue('America/Indiana/Indianapolis')
+  @JsonValue("America/Indiana/Indianapolis")
   americaSlashIndianaSlashIndianapolis,
-  @JsonValue('America/Indiana/Knox')
+  @JsonValue("America/Indiana/Knox")
   americaSlashIndianaSlashKnox,
-  @JsonValue('America/Indiana/Marengo')
+  @JsonValue("America/Indiana/Marengo")
   americaSlashIndianaSlashMarengo,
-  @JsonValue('America/Indiana/Petersburg')
+  @JsonValue("America/Indiana/Petersburg")
   americaSlashIndianaSlashPetersburg,
-  @JsonValue('America/Indiana/Tell_City')
+  @JsonValue("America/Indiana/Tell_City")
   americaSlashIndianaSlashTellCity,
-  @JsonValue('America/Indiana/Vevay')
+  @JsonValue("America/Indiana/Vevay")
   americaSlashIndianaSlashVevay,
-  @JsonValue('America/Indiana/Vincennes')
+  @JsonValue("America/Indiana/Vincennes")
   americaSlashIndianaSlashVincennes,
-  @JsonValue('America/Indiana/Winamac')
+  @JsonValue("America/Indiana/Winamac")
   americaSlashIndianaSlashWinamac,
-  @JsonValue('America/Indianapolis')
+  @JsonValue("America/Indianapolis")
   americaSlashIndianapolis,
-  @JsonValue('America/Inuvik')
+  @JsonValue("America/Inuvik")
   americaSlashInuvik,
-  @JsonValue('America/Iqaluit')
+  @JsonValue("America/Iqaluit")
   americaSlashIqaluit,
-  @JsonValue('America/Jamaica')
+  @JsonValue("America/Jamaica")
   americaSlashJamaica,
-  @JsonValue('America/Jujuy')
+  @JsonValue("America/Jujuy")
   americaSlashJujuy,
-  @JsonValue('America/Juneau')
+  @JsonValue("America/Juneau")
   americaSlashJuneau,
-  @JsonValue('America/Kentucky/Louisville')
+  @JsonValue("America/Kentucky/Louisville")
   americaSlashKentuckySlashLouisville,
-  @JsonValue('America/Kentucky/Monticello')
+  @JsonValue("America/Kentucky/Monticello")
   americaSlashKentuckySlashMonticello,
-  @JsonValue('America/Knox_IN')
+  @JsonValue("America/Knox_IN")
   americaSlashKnoxIN,
-  @JsonValue('America/Kralendijk')
+  @JsonValue("America/Kralendijk")
   americaSlashKralendijk,
-  @JsonValue('America/La_Paz')
+  @JsonValue("America/La_Paz")
   americaSlashLaPaz,
-  @JsonValue('America/Lima')
+  @JsonValue("America/Lima")
   americaSlashLima,
-  @JsonValue('America/Los_Angeles')
+  @JsonValue("America/Los_Angeles")
   americaSlashLosAngeles,
-  @JsonValue('America/Louisville')
+  @JsonValue("America/Louisville")
   americaSlashLouisville,
-  @JsonValue('America/Lower_Princes')
+  @JsonValue("America/Lower_Princes")
   americaSlashLowerPrinces,
-  @JsonValue('America/Maceio')
+  @JsonValue("America/Maceio")
   americaSlashMaceio,
-  @JsonValue('America/Managua')
+  @JsonValue("America/Managua")
   americaSlashManagua,
-  @JsonValue('America/Manaus')
+  @JsonValue("America/Manaus")
   americaSlashManaus,
-  @JsonValue('America/Marigot')
+  @JsonValue("America/Marigot")
   americaSlashMarigot,
-  @JsonValue('America/Martinique')
+  @JsonValue("America/Martinique")
   americaSlashMartinique,
-  @JsonValue('America/Matamoros')
+  @JsonValue("America/Matamoros")
   americaSlashMatamoros,
-  @JsonValue('America/Mazatlan')
+  @JsonValue("America/Mazatlan")
   americaSlashMazatlan,
-  @JsonValue('America/Mendoza')
+  @JsonValue("America/Mendoza")
   americaSlashMendoza,
-  @JsonValue('America/Menominee')
+  @JsonValue("America/Menominee")
   americaSlashMenominee,
-  @JsonValue('America/Merida')
+  @JsonValue("America/Merida")
   americaSlashMerida,
-  @JsonValue('America/Metlakatla')
+  @JsonValue("America/Metlakatla")
   americaSlashMetlakatla,
-  @JsonValue('America/Mexico_City')
+  @JsonValue("America/Mexico_City")
   americaSlashMexicoCity,
-  @JsonValue('America/Miquelon')
+  @JsonValue("America/Miquelon")
   americaSlashMiquelon,
-  @JsonValue('America/Moncton')
+  @JsonValue("America/Moncton")
   americaSlashMoncton,
-  @JsonValue('America/Monterrey')
+  @JsonValue("America/Monterrey")
   americaSlashMonterrey,
-  @JsonValue('America/Montevideo')
+  @JsonValue("America/Montevideo")
   americaSlashMontevideo,
-  @JsonValue('America/Montreal')
+  @JsonValue("America/Montreal")
   americaSlashMontreal,
-  @JsonValue('America/Montserrat')
+  @JsonValue("America/Montserrat")
   americaSlashMontserrat,
-  @JsonValue('America/Nassau')
+  @JsonValue("America/Nassau")
   americaSlashNassau,
-  @JsonValue('America/New_York')
+  @JsonValue("America/New_York")
   americaSlashNewYork,
-  @JsonValue('America/Nipigon')
+  @JsonValue("America/Nipigon")
   americaSlashNipigon,
-  @JsonValue('America/Nome')
+  @JsonValue("America/Nome")
   americaSlashNome,
-  @JsonValue('America/Noronha')
+  @JsonValue("America/Noronha")
   americaSlashNoronha,
-  @JsonValue('America/North_Dakota/Beulah')
+  @JsonValue("America/North_Dakota/Beulah")
   americaSlashNorthDakotaSlashBeulah,
-  @JsonValue('America/North_Dakota/Center')
+  @JsonValue("America/North_Dakota/Center")
   americaSlashNorthDakotaSlashCenter,
-  @JsonValue('America/North_Dakota/New_Salem')
+  @JsonValue("America/North_Dakota/New_Salem")
   americaSlashNorthDakotaSlashNewSalem,
-  @JsonValue('America/Nuuk')
+  @JsonValue("America/Nuuk")
   americaSlashNuuk,
-  @JsonValue('America/Ojinaga')
+  @JsonValue("America/Ojinaga")
   americaSlashOjinaga,
-  @JsonValue('America/Panama')
+  @JsonValue("America/Panama")
   americaSlashPanama,
-  @JsonValue('America/Pangnirtung')
+  @JsonValue("America/Pangnirtung")
   americaSlashPangnirtung,
-  @JsonValue('America/Paramaribo')
+  @JsonValue("America/Paramaribo")
   americaSlashParamaribo,
-  @JsonValue('America/Phoenix')
+  @JsonValue("America/Phoenix")
   americaSlashPhoenix,
-  @JsonValue('America/Port-au-Prince')
+  @JsonValue("America/Port-au-Prince")
   americaSlashPortMinusAuMinusPrince,
-  @JsonValue('America/Port_of_Spain')
+  @JsonValue("America/Port_of_Spain")
   americaSlashPortOfSpain,
-  @JsonValue('America/Porto_Acre')
+  @JsonValue("America/Porto_Acre")
   americaSlashPortoAcre,
-  @JsonValue('America/Porto_Velho')
+  @JsonValue("America/Porto_Velho")
   americaSlashPortoVelho,
-  @JsonValue('America/Puerto_Rico')
+  @JsonValue("America/Puerto_Rico")
   americaSlashPuertoRico,
-  @JsonValue('America/Punta_Arenas')
+  @JsonValue("America/Punta_Arenas")
   americaSlashPuntaArenas,
-  @JsonValue('America/Rainy_River')
+  @JsonValue("America/Rainy_River")
   americaSlashRainyRiver,
-  @JsonValue('America/Rankin_Inlet')
+  @JsonValue("America/Rankin_Inlet")
   americaSlashRankinInlet,
-  @JsonValue('America/Recife')
+  @JsonValue("America/Recife")
   americaSlashRecife,
-  @JsonValue('America/Regina')
+  @JsonValue("America/Regina")
   americaSlashRegina,
-  @JsonValue('America/Resolute')
+  @JsonValue("America/Resolute")
   americaSlashResolute,
-  @JsonValue('America/Rio_Branco')
+  @JsonValue("America/Rio_Branco")
   americaSlashRioBranco,
-  @JsonValue('America/Rosario')
+  @JsonValue("America/Rosario")
   americaSlashRosario,
-  @JsonValue('America/Santa_Isabel')
+  @JsonValue("America/Santa_Isabel")
   americaSlashSantaIsabel,
-  @JsonValue('America/Santarem')
+  @JsonValue("America/Santarem")
   americaSlashSantarem,
-  @JsonValue('America/Santiago')
+  @JsonValue("America/Santiago")
   americaSlashSantiago,
-  @JsonValue('America/Santo_Domingo')
+  @JsonValue("America/Santo_Domingo")
   americaSlashSantoDomingo,
-  @JsonValue('America/Sao_Paulo')
+  @JsonValue("America/Sao_Paulo")
   americaSlashSaoPaulo,
-  @JsonValue('America/Scoresbysund')
+  @JsonValue("America/Scoresbysund")
   americaSlashScoresbysund,
-  @JsonValue('America/Shiprock')
+  @JsonValue("America/Shiprock")
   americaSlashShiprock,
-  @JsonValue('America/Sitka')
+  @JsonValue("America/Sitka")
   americaSlashSitka,
-  @JsonValue('America/St_Barthelemy')
+  @JsonValue("America/St_Barthelemy")
   americaSlashStBarthelemy,
-  @JsonValue('America/St_Johns')
+  @JsonValue("America/St_Johns")
   americaSlashStJohns,
-  @JsonValue('America/St_Kitts')
+  @JsonValue("America/St_Kitts")
   americaSlashStKitts,
-  @JsonValue('America/St_Lucia')
+  @JsonValue("America/St_Lucia")
   americaSlashStLucia,
-  @JsonValue('America/St_Thomas')
+  @JsonValue("America/St_Thomas")
   americaSlashStThomas,
-  @JsonValue('America/St_Vincent')
+  @JsonValue("America/St_Vincent")
   americaSlashStVincent,
-  @JsonValue('America/Swift_Current')
+  @JsonValue("America/Swift_Current")
   americaSlashSwiftCurrent,
-  @JsonValue('America/Tegucigalpa')
+  @JsonValue("America/Tegucigalpa")
   americaSlashTegucigalpa,
-  @JsonValue('America/Thule')
+  @JsonValue("America/Thule")
   americaSlashThule,
-  @JsonValue('America/Thunder_Bay')
+  @JsonValue("America/Thunder_Bay")
   americaSlashThunderBay,
-  @JsonValue('America/Tijuana')
+  @JsonValue("America/Tijuana")
   americaSlashTijuana,
-  @JsonValue('America/Toronto')
+  @JsonValue("America/Toronto")
   americaSlashToronto,
-  @JsonValue('America/Tortola')
+  @JsonValue("America/Tortola")
   americaSlashTortola,
-  @JsonValue('America/Vancouver')
+  @JsonValue("America/Vancouver")
   americaSlashVancouver,
-  @JsonValue('America/Virgin')
+  @JsonValue("America/Virgin")
   americaSlashVirgin,
-  @JsonValue('America/Whitehorse')
+  @JsonValue("America/Whitehorse")
   americaSlashWhitehorse,
-  @JsonValue('America/Winnipeg')
+  @JsonValue("America/Winnipeg")
   americaSlashWinnipeg,
-  @JsonValue('America/Yakutat')
+  @JsonValue("America/Yakutat")
   americaSlashYakutat,
-  @JsonValue('America/Yellowknife')
+  @JsonValue("America/Yellowknife")
   americaSlashYellowknife,
-  @JsonValue('Antarctica/Casey')
+  @JsonValue("Antarctica/Casey")
   antarcticaSlashCasey,
-  @JsonValue('Antarctica/Davis')
+  @JsonValue("Antarctica/Davis")
   antarcticaSlashDavis,
-  @JsonValue('Antarctica/DumontDUrville')
+  @JsonValue("Antarctica/DumontDUrville")
   antarcticaSlashDumontDUrville,
-  @JsonValue('Antarctica/Macquarie')
+  @JsonValue("Antarctica/Macquarie")
   antarcticaSlashMacquarie,
-  @JsonValue('Antarctica/Mawson')
+  @JsonValue("Antarctica/Mawson")
   antarcticaSlashMawson,
-  @JsonValue('Antarctica/McMurdo')
+  @JsonValue("Antarctica/McMurdo")
   antarcticaSlashMcMurdo,
-  @JsonValue('Antarctica/Palmer')
+  @JsonValue("Antarctica/Palmer")
   antarcticaSlashPalmer,
-  @JsonValue('Antarctica/Rothera')
+  @JsonValue("Antarctica/Rothera")
   antarcticaSlashRothera,
-  @JsonValue('Antarctica/South_Pole')
+  @JsonValue("Antarctica/South_Pole")
   antarcticaSlashSouthPole,
-  @JsonValue('Antarctica/Syowa')
+  @JsonValue("Antarctica/Syowa")
   antarcticaSlashSyowa,
-  @JsonValue('Antarctica/Troll')
+  @JsonValue("Antarctica/Troll")
   antarcticaSlashTroll,
-  @JsonValue('Antarctica/Vostok')
+  @JsonValue("Antarctica/Vostok")
   antarcticaSlashVostok,
-  @JsonValue('Arctic/Longyearbyen')
+  @JsonValue("Arctic/Longyearbyen")
   arcticSlashLongyearbyen,
-  @JsonValue('Asia/Aden')
+  @JsonValue("Asia/Aden")
   asiaSlashAden,
-  @JsonValue('Asia/Almaty')
+  @JsonValue("Asia/Almaty")
   asiaSlashAlmaty,
-  @JsonValue('Asia/Amman')
+  @JsonValue("Asia/Amman")
   asiaSlashAmman,
-  @JsonValue('Asia/Anadyr')
+  @JsonValue("Asia/Anadyr")
   asiaSlashAnadyr,
-  @JsonValue('Asia/Aqtau')
+  @JsonValue("Asia/Aqtau")
   asiaSlashAqtau,
-  @JsonValue('Asia/Aqtobe')
+  @JsonValue("Asia/Aqtobe")
   asiaSlashAqtobe,
-  @JsonValue('Asia/Ashgabat')
+  @JsonValue("Asia/Ashgabat")
   asiaSlashAshgabat,
-  @JsonValue('Asia/Ashkhabad')
+  @JsonValue("Asia/Ashkhabad")
   asiaSlashAshkhabad,
-  @JsonValue('Asia/Atyrau')
+  @JsonValue("Asia/Atyrau")
   asiaSlashAtyrau,
-  @JsonValue('Asia/Baghdad')
+  @JsonValue("Asia/Baghdad")
   asiaSlashBaghdad,
-  @JsonValue('Asia/Bahrain')
+  @JsonValue("Asia/Bahrain")
   asiaSlashBahrain,
-  @JsonValue('Asia/Baku')
+  @JsonValue("Asia/Baku")
   asiaSlashBaku,
-  @JsonValue('Asia/Bangkok')
+  @JsonValue("Asia/Bangkok")
   asiaSlashBangkok,
-  @JsonValue('Asia/Barnaul')
+  @JsonValue("Asia/Barnaul")
   asiaSlashBarnaul,
-  @JsonValue('Asia/Beirut')
+  @JsonValue("Asia/Beirut")
   asiaSlashBeirut,
-  @JsonValue('Asia/Bishkek')
+  @JsonValue("Asia/Bishkek")
   asiaSlashBishkek,
-  @JsonValue('Asia/Brunei')
+  @JsonValue("Asia/Brunei")
   asiaSlashBrunei,
-  @JsonValue('Asia/Calcutta')
+  @JsonValue("Asia/Calcutta")
   asiaSlashCalcutta,
-  @JsonValue('Asia/Chita')
+  @JsonValue("Asia/Chita")
   asiaSlashChita,
-  @JsonValue('Asia/Choibalsan')
+  @JsonValue("Asia/Choibalsan")
   asiaSlashChoibalsan,
-  @JsonValue('Asia/Chongqing')
+  @JsonValue("Asia/Chongqing")
   asiaSlashChongqing,
-  @JsonValue('Asia/Chungking')
+  @JsonValue("Asia/Chungking")
   asiaSlashChungking,
-  @JsonValue('Asia/Colombo')
+  @JsonValue("Asia/Colombo")
   asiaSlashColombo,
-  @JsonValue('Asia/Dacca')
+  @JsonValue("Asia/Dacca")
   asiaSlashDacca,
-  @JsonValue('Asia/Damascus')
+  @JsonValue("Asia/Damascus")
   asiaSlashDamascus,
-  @JsonValue('Asia/Dhaka')
+  @JsonValue("Asia/Dhaka")
   asiaSlashDhaka,
-  @JsonValue('Asia/Dili')
+  @JsonValue("Asia/Dili")
   asiaSlashDili,
-  @JsonValue('Asia/Dubai')
+  @JsonValue("Asia/Dubai")
   asiaSlashDubai,
-  @JsonValue('Asia/Dushanbe')
+  @JsonValue("Asia/Dushanbe")
   asiaSlashDushanbe,
-  @JsonValue('Asia/Famagusta')
+  @JsonValue("Asia/Famagusta")
   asiaSlashFamagusta,
-  @JsonValue('Asia/Gaza')
+  @JsonValue("Asia/Gaza")
   asiaSlashGaza,
-  @JsonValue('Asia/Harbin')
+  @JsonValue("Asia/Harbin")
   asiaSlashHarbin,
-  @JsonValue('Asia/Hebron')
+  @JsonValue("Asia/Hebron")
   asiaSlashHebron,
-  @JsonValue('Asia/Ho_Chi_Minh')
+  @JsonValue("Asia/Ho_Chi_Minh")
   asiaSlashHoChiMinh,
-  @JsonValue('Asia/Hong_Kong')
+  @JsonValue("Asia/Hong_Kong")
   asiaSlashHongKong,
-  @JsonValue('Asia/Hovd')
+  @JsonValue("Asia/Hovd")
   asiaSlashHovd,
-  @JsonValue('Asia/Irkutsk')
+  @JsonValue("Asia/Irkutsk")
   asiaSlashIrkutsk,
-  @JsonValue('Asia/Istanbul')
+  @JsonValue("Asia/Istanbul")
   asiaSlashIstanbul,
-  @JsonValue('Asia/Jakarta')
+  @JsonValue("Asia/Jakarta")
   asiaSlashJakarta,
-  @JsonValue('Asia/Jayapura')
+  @JsonValue("Asia/Jayapura")
   asiaSlashJayapura,
-  @JsonValue('Asia/Jerusalem')
+  @JsonValue("Asia/Jerusalem")
   asiaSlashJerusalem,
-  @JsonValue('Asia/Kabul')
+  @JsonValue("Asia/Kabul")
   asiaSlashKabul,
-  @JsonValue('Asia/Kamchatka')
+  @JsonValue("Asia/Kamchatka")
   asiaSlashKamchatka,
-  @JsonValue('Asia/Karachi')
+  @JsonValue("Asia/Karachi")
   asiaSlashKarachi,
-  @JsonValue('Asia/Kashgar')
+  @JsonValue("Asia/Kashgar")
   asiaSlashKashgar,
-  @JsonValue('Asia/Kathmandu')
+  @JsonValue("Asia/Kathmandu")
   asiaSlashKathmandu,
-  @JsonValue('Asia/Katmandu')
+  @JsonValue("Asia/Katmandu")
   asiaSlashKatmandu,
-  @JsonValue('Asia/Khandyga')
+  @JsonValue("Asia/Khandyga")
   asiaSlashKhandyga,
-  @JsonValue('Asia/Kolkata')
+  @JsonValue("Asia/Kolkata")
   asiaSlashKolkata,
-  @JsonValue('Asia/Krasnoyarsk')
+  @JsonValue("Asia/Krasnoyarsk")
   asiaSlashKrasnoyarsk,
-  @JsonValue('Asia/Kuala_Lumpur')
+  @JsonValue("Asia/Kuala_Lumpur")
   asiaSlashKualaLumpur,
-  @JsonValue('Asia/Kuching')
+  @JsonValue("Asia/Kuching")
   asiaSlashKuching,
-  @JsonValue('Asia/Kuwait')
+  @JsonValue("Asia/Kuwait")
   asiaSlashKuwait,
-  @JsonValue('Asia/Macao')
+  @JsonValue("Asia/Macao")
   asiaSlashMacao,
-  @JsonValue('Asia/Macau')
+  @JsonValue("Asia/Macau")
   asiaSlashMacau,
-  @JsonValue('Asia/Magadan')
+  @JsonValue("Asia/Magadan")
   asiaSlashMagadan,
-  @JsonValue('Asia/Makassar')
+  @JsonValue("Asia/Makassar")
   asiaSlashMakassar,
-  @JsonValue('Asia/Manila')
+  @JsonValue("Asia/Manila")
   asiaSlashManila,
-  @JsonValue('Asia/Muscat')
+  @JsonValue("Asia/Muscat")
   asiaSlashMuscat,
-  @JsonValue('Asia/Nicosia')
+  @JsonValue("Asia/Nicosia")
   asiaSlashNicosia,
-  @JsonValue('Asia/Novokuznetsk')
+  @JsonValue("Asia/Novokuznetsk")
   asiaSlashNovokuznetsk,
-  @JsonValue('Asia/Novosibirsk')
+  @JsonValue("Asia/Novosibirsk")
   asiaSlashNovosibirsk,
-  @JsonValue('Asia/Omsk')
+  @JsonValue("Asia/Omsk")
   asiaSlashOmsk,
-  @JsonValue('Asia/Oral')
+  @JsonValue("Asia/Oral")
   asiaSlashOral,
-  @JsonValue('Asia/Phnom_Penh')
+  @JsonValue("Asia/Phnom_Penh")
   asiaSlashPhnomPenh,
-  @JsonValue('Asia/Pontianak')
+  @JsonValue("Asia/Pontianak")
   asiaSlashPontianak,
-  @JsonValue('Asia/Pyongyang')
+  @JsonValue("Asia/Pyongyang")
   asiaSlashPyongyang,
-  @JsonValue('Asia/Qatar')
+  @JsonValue("Asia/Qatar")
   asiaSlashQatar,
-  @JsonValue('Asia/Qostanay')
+  @JsonValue("Asia/Qostanay")
   asiaSlashQostanay,
-  @JsonValue('Asia/Qyzylorda')
+  @JsonValue("Asia/Qyzylorda")
   asiaSlashQyzylorda,
-  @JsonValue('Asia/Rangoon')
+  @JsonValue("Asia/Rangoon")
   asiaSlashRangoon,
-  @JsonValue('Asia/Riyadh')
+  @JsonValue("Asia/Riyadh")
   asiaSlashRiyadh,
-  @JsonValue('Asia/Saigon')
+  @JsonValue("Asia/Saigon")
   asiaSlashSaigon,
-  @JsonValue('Asia/Sakhalin')
+  @JsonValue("Asia/Sakhalin")
   asiaSlashSakhalin,
-  @JsonValue('Asia/Samarkand')
+  @JsonValue("Asia/Samarkand")
   asiaSlashSamarkand,
-  @JsonValue('Asia/Seoul')
+  @JsonValue("Asia/Seoul")
   asiaSlashSeoul,
-  @JsonValue('Asia/Shanghai')
+  @JsonValue("Asia/Shanghai")
   asiaSlashShanghai,
-  @JsonValue('Asia/Singapore')
+  @JsonValue("Asia/Singapore")
   asiaSlashSingapore,
-  @JsonValue('Asia/Srednekolymsk')
+  @JsonValue("Asia/Srednekolymsk")
   asiaSlashSrednekolymsk,
-  @JsonValue('Asia/Taipei')
+  @JsonValue("Asia/Taipei")
   asiaSlashTaipei,
-  @JsonValue('Asia/Tashkent')
+  @JsonValue("Asia/Tashkent")
   asiaSlashTashkent,
-  @JsonValue('Asia/Tbilisi')
+  @JsonValue("Asia/Tbilisi")
   asiaSlashTbilisi,
-  @JsonValue('Asia/Tehran')
+  @JsonValue("Asia/Tehran")
   asiaSlashTehran,
-  @JsonValue('Asia/Tel_Aviv')
+  @JsonValue("Asia/Tel_Aviv")
   asiaSlashTelAviv,
-  @JsonValue('Asia/Thimbu')
+  @JsonValue("Asia/Thimbu")
   asiaSlashThimbu,
-  @JsonValue('Asia/Thimphu')
+  @JsonValue("Asia/Thimphu")
   asiaSlashThimphu,
-  @JsonValue('Asia/Tokyo')
+  @JsonValue("Asia/Tokyo")
   asiaSlashTokyo,
-  @JsonValue('Asia/Tomsk')
+  @JsonValue("Asia/Tomsk")
   asiaSlashTomsk,
-  @JsonValue('Asia/Ujung_Pandang')
+  @JsonValue("Asia/Ujung_Pandang")
   asiaSlashUjungPandang,
-  @JsonValue('Asia/Ulaanbaatar')
+  @JsonValue("Asia/Ulaanbaatar")
   asiaSlashUlaanbaatar,
-  @JsonValue('Asia/Ulan_Bator')
+  @JsonValue("Asia/Ulan_Bator")
   asiaSlashUlanBator,
-  @JsonValue('Asia/Urumqi')
+  @JsonValue("Asia/Urumqi")
   asiaSlashUrumqi,
-  @JsonValue('Asia/Ust-Nera')
+  @JsonValue("Asia/Ust-Nera")
   asiaSlashUstMinusNera,
-  @JsonValue('Asia/Vientiane')
+  @JsonValue("Asia/Vientiane")
   asiaSlashVientiane,
-  @JsonValue('Asia/Vladivostok')
+  @JsonValue("Asia/Vladivostok")
   asiaSlashVladivostok,
-  @JsonValue('Asia/Yakutsk')
+  @JsonValue("Asia/Yakutsk")
   asiaSlashYakutsk,
-  @JsonValue('Asia/Yangon')
+  @JsonValue("Asia/Yangon")
   asiaSlashYangon,
-  @JsonValue('Asia/Yekaterinburg')
+  @JsonValue("Asia/Yekaterinburg")
   asiaSlashYekaterinburg,
-  @JsonValue('Asia/Yerevan')
+  @JsonValue("Asia/Yerevan")
   asiaSlashYerevan,
-  @JsonValue('Atlantic/Azores')
+  @JsonValue("Atlantic/Azores")
   atlanticSlashAzores,
-  @JsonValue('Atlantic/Bermuda')
+  @JsonValue("Atlantic/Bermuda")
   atlanticSlashBermuda,
-  @JsonValue('Atlantic/Canary')
+  @JsonValue("Atlantic/Canary")
   atlanticSlashCanary,
-  @JsonValue('Atlantic/Cape_Verde')
+  @JsonValue("Atlantic/Cape_Verde")
   atlanticSlashCapeVerde,
-  @JsonValue('Atlantic/Faeroe')
+  @JsonValue("Atlantic/Faeroe")
   atlanticSlashFaeroe,
-  @JsonValue('Atlantic/Faroe')
+  @JsonValue("Atlantic/Faroe")
   atlanticSlashFaroe,
-  @JsonValue('Atlantic/Jan_Mayen')
+  @JsonValue("Atlantic/Jan_Mayen")
   atlanticSlashJanMayen,
-  @JsonValue('Atlantic/Madeira')
+  @JsonValue("Atlantic/Madeira")
   atlanticSlashMadeira,
-  @JsonValue('Atlantic/Reykjavik')
+  @JsonValue("Atlantic/Reykjavik")
   atlanticSlashReykjavik,
-  @JsonValue('Atlantic/South_Georgia')
+  @JsonValue("Atlantic/South_Georgia")
   atlanticSlashSouthGeorgia,
-  @JsonValue('Atlantic/St_Helena')
+  @JsonValue("Atlantic/St_Helena")
   atlanticSlashStHelena,
-  @JsonValue('Atlantic/Stanley')
+  @JsonValue("Atlantic/Stanley")
   atlanticSlashStanley,
-  @JsonValue('Australia/ACT')
+  @JsonValue("Australia/ACT")
   australiaSlashACT,
-  @JsonValue('Australia/Adelaide')
+  @JsonValue("Australia/Adelaide")
   australiaSlashAdelaide,
-  @JsonValue('Australia/Brisbane')
+  @JsonValue("Australia/Brisbane")
   australiaSlashBrisbane,
-  @JsonValue('Australia/Broken_Hill')
+  @JsonValue("Australia/Broken_Hill")
   australiaSlashBrokenHill,
-  @JsonValue('Australia/Canberra')
+  @JsonValue("Australia/Canberra")
   australiaSlashCanberra,
-  @JsonValue('Australia/Currie')
+  @JsonValue("Australia/Currie")
   australiaSlashCurrie,
-  @JsonValue('Australia/Darwin')
+  @JsonValue("Australia/Darwin")
   australiaSlashDarwin,
-  @JsonValue('Australia/Eucla')
+  @JsonValue("Australia/Eucla")
   australiaSlashEucla,
-  @JsonValue('Australia/Hobart')
+  @JsonValue("Australia/Hobart")
   australiaSlashHobart,
-  @JsonValue('Australia/LHI')
+  @JsonValue("Australia/LHI")
   australiaSlashLHI,
-  @JsonValue('Australia/Lindeman')
+  @JsonValue("Australia/Lindeman")
   australiaSlashLindeman,
-  @JsonValue('Australia/Lord_Howe')
+  @JsonValue("Australia/Lord_Howe")
   australiaSlashLordHowe,
-  @JsonValue('Australia/Melbourne')
+  @JsonValue("Australia/Melbourne")
   australiaSlashMelbourne,
-  @JsonValue('Australia/NSW')
+  @JsonValue("Australia/NSW")
   australiaSlashNSW,
-  @JsonValue('Australia/North')
+  @JsonValue("Australia/North")
   australiaSlashNorth,
-  @JsonValue('Australia/Perth')
+  @JsonValue("Australia/Perth")
   australiaSlashPerth,
-  @JsonValue('Australia/Queensland')
+  @JsonValue("Australia/Queensland")
   australiaSlashQueensland,
-  @JsonValue('Australia/South')
+  @JsonValue("Australia/South")
   australiaSlashSouth,
-  @JsonValue('Australia/Sydney')
+  @JsonValue("Australia/Sydney")
   australiaSlashSydney,
-  @JsonValue('Australia/Tasmania')
+  @JsonValue("Australia/Tasmania")
   australiaSlashTasmania,
-  @JsonValue('Australia/Victoria')
+  @JsonValue("Australia/Victoria")
   australiaSlashVictoria,
-  @JsonValue('Australia/West')
+  @JsonValue("Australia/West")
   australiaSlashWest,
-  @JsonValue('Australia/Yancowinna')
+  @JsonValue("Australia/Yancowinna")
   australiaSlashYancowinna,
-  @JsonValue('Brazil/Acre')
+  @JsonValue("Brazil/Acre")
   brazilSlashAcre,
-  @JsonValue('Brazil/DeNoronha')
+  @JsonValue("Brazil/DeNoronha")
   brazilSlashDeNoronha,
-  @JsonValue('Brazil/East')
+  @JsonValue("Brazil/East")
   brazilSlashEast,
-  @JsonValue('Brazil/West')
+  @JsonValue("Brazil/West")
   brazilSlashWest,
-  @JsonValue('CET')
+  @JsonValue("CET")
   cet,
-  @JsonValue('CST6CDT')
+  @JsonValue("CST6CDT")
   cst6cdt,
-  @JsonValue('Canada/Atlantic')
+  @JsonValue("Canada/Atlantic")
   canadaSlashAtlantic,
-  @JsonValue('Canada/Central')
+  @JsonValue("Canada/Central")
   canadaSlashCentral,
-  @JsonValue('Canada/Eastern')
+  @JsonValue("Canada/Eastern")
   canadaSlashEastern,
-  @JsonValue('Canada/Mountain')
+  @JsonValue("Canada/Mountain")
   canadaSlashMountain,
-  @JsonValue('Canada/Newfoundland')
+  @JsonValue("Canada/Newfoundland")
   canadaSlashNewfoundland,
-  @JsonValue('Canada/Pacific')
+  @JsonValue("Canada/Pacific")
   canadaSlashPacific,
-  @JsonValue('Canada/Saskatchewan')
+  @JsonValue("Canada/Saskatchewan")
   canadaSlashSaskatchewan,
-  @JsonValue('Canada/Yukon')
+  @JsonValue("Canada/Yukon")
   canadaSlashYukon,
-  @JsonValue('Chile/Continental')
+  @JsonValue("Chile/Continental")
   chileSlashContinental,
-  @JsonValue('Chile/EasterIsland')
+  @JsonValue("Chile/EasterIsland")
   chileSlashEasterIsland,
-  @JsonValue('Cuba')
+  @JsonValue("Cuba")
   cuba,
-  @JsonValue('EET')
+  @JsonValue("EET")
   eet,
-  @JsonValue('EST')
+  @JsonValue("EST")
   est,
-  @JsonValue('EST5EDT')
+  @JsonValue("EST5EDT")
   est5edt,
-  @JsonValue('Egypt')
+  @JsonValue("Egypt")
   egypt,
-  @JsonValue('Eire')
+  @JsonValue("Eire")
   eire,
-  @JsonValue('Etc/GMT')
+  @JsonValue("Etc/GMT")
   etcSlashGMT,
-  @JsonValue('Etc/GMT+0')
+  @JsonValue("Etc/GMT+0")
   etcSlashGMTPlus0,
-  @JsonValue('Etc/GMT+1')
+  @JsonValue("Etc/GMT+1")
   etcSlashGMTPlus1,
-  @JsonValue('Etc/GMT+10')
+  @JsonValue("Etc/GMT+10")
   etcSlashGMTPlus10,
-  @JsonValue('Etc/GMT+11')
+  @JsonValue("Etc/GMT+11")
   etcSlashGMTPlus11,
-  @JsonValue('Etc/GMT+12')
+  @JsonValue("Etc/GMT+12")
   etcSlashGMTPlus12,
-  @JsonValue('Etc/GMT+2')
+  @JsonValue("Etc/GMT+2")
   etcSlashGMTPlus2,
-  @JsonValue('Etc/GMT+3')
+  @JsonValue("Etc/GMT+3")
   etcSlashGMTPlus3,
-  @JsonValue('Etc/GMT+4')
+  @JsonValue("Etc/GMT+4")
   etcSlashGMTPlus4,
-  @JsonValue('Etc/GMT+5')
+  @JsonValue("Etc/GMT+5")
   etcSlashGMTPlus5,
-  @JsonValue('Etc/GMT+6')
+  @JsonValue("Etc/GMT+6")
   etcSlashGMTPlus6,
-  @JsonValue('Etc/GMT+7')
+  @JsonValue("Etc/GMT+7")
   etcSlashGMTPlus7,
-  @JsonValue('Etc/GMT+8')
+  @JsonValue("Etc/GMT+8")
   etcSlashGMTPlus8,
-  @JsonValue('Etc/GMT+9')
+  @JsonValue("Etc/GMT+9")
   etcSlashGMTPlus9,
-  @JsonValue('Etc/GMT-0')
+  @JsonValue("Etc/GMT-0")
   etcSlashGMTMinus0,
-  @JsonValue('Etc/GMT-1')
+  @JsonValue("Etc/GMT-1")
   etcSlashGMTMinus1,
-  @JsonValue('Etc/GMT-10')
+  @JsonValue("Etc/GMT-10")
   etcSlashGMTMinus10,
-  @JsonValue('Etc/GMT-11')
+  @JsonValue("Etc/GMT-11")
   etcSlashGMTMinus11,
-  @JsonValue('Etc/GMT-12')
+  @JsonValue("Etc/GMT-12")
   etcSlashGMTMinus12,
-  @JsonValue('Etc/GMT-13')
+  @JsonValue("Etc/GMT-13")
   etcSlashGMTMinus13,
-  @JsonValue('Etc/GMT-14')
+  @JsonValue("Etc/GMT-14")
   etcSlashGMTMinus14,
-  @JsonValue('Etc/GMT-2')
+  @JsonValue("Etc/GMT-2")
   etcSlashGMTMinus2,
-  @JsonValue('Etc/GMT-3')
+  @JsonValue("Etc/GMT-3")
   etcSlashGMTMinus3,
-  @JsonValue('Etc/GMT-4')
+  @JsonValue("Etc/GMT-4")
   etcSlashGMTMinus4,
-  @JsonValue('Etc/GMT-5')
+  @JsonValue("Etc/GMT-5")
   etcSlashGMTMinus5,
-  @JsonValue('Etc/GMT-6')
+  @JsonValue("Etc/GMT-6")
   etcSlashGMTMinus6,
-  @JsonValue('Etc/GMT-7')
+  @JsonValue("Etc/GMT-7")
   etcSlashGMTMinus7,
-  @JsonValue('Etc/GMT-8')
+  @JsonValue("Etc/GMT-8")
   etcSlashGMTMinus8,
-  @JsonValue('Etc/GMT-9')
+  @JsonValue("Etc/GMT-9")
   etcSlashGMTMinus9,
-  @JsonValue('Etc/GMT0')
+  @JsonValue("Etc/GMT0")
   etcSlashGmt0,
-  @JsonValue('Etc/Greenwich')
+  @JsonValue("Etc/Greenwich")
   etcSlashGreenwich,
-  @JsonValue('Etc/UCT')
+  @JsonValue("Etc/UCT")
   etcSlashUCT,
-  @JsonValue('Etc/UTC')
+  @JsonValue("Etc/UTC")
   etcSlashUTC,
-  @JsonValue('Etc/Universal')
+  @JsonValue("Etc/Universal")
   etcSlashUniversal,
-  @JsonValue('Etc/Zulu')
+  @JsonValue("Etc/Zulu")
   etcSlashZulu,
-  @JsonValue('Europe/Amsterdam')
+  @JsonValue("Europe/Amsterdam")
   europeSlashAmsterdam,
-  @JsonValue('Europe/Andorra')
+  @JsonValue("Europe/Andorra")
   europeSlashAndorra,
-  @JsonValue('Europe/Astrakhan')
+  @JsonValue("Europe/Astrakhan")
   europeSlashAstrakhan,
-  @JsonValue('Europe/Athens')
+  @JsonValue("Europe/Athens")
   europeSlashAthens,
-  @JsonValue('Europe/Belfast')
+  @JsonValue("Europe/Belfast")
   europeSlashBelfast,
-  @JsonValue('Europe/Belgrade')
+  @JsonValue("Europe/Belgrade")
   europeSlashBelgrade,
-  @JsonValue('Europe/Berlin')
+  @JsonValue("Europe/Berlin")
   europeSlashBerlin,
-  @JsonValue('Europe/Bratislava')
+  @JsonValue("Europe/Bratislava")
   europeSlashBratislava,
-  @JsonValue('Europe/Brussels')
+  @JsonValue("Europe/Brussels")
   europeSlashBrussels,
-  @JsonValue('Europe/Bucharest')
+  @JsonValue("Europe/Bucharest")
   europeSlashBucharest,
-  @JsonValue('Europe/Budapest')
+  @JsonValue("Europe/Budapest")
   europeSlashBudapest,
-  @JsonValue('Europe/Busingen')
+  @JsonValue("Europe/Busingen")
   europeSlashBusingen,
-  @JsonValue('Europe/Chisinau')
+  @JsonValue("Europe/Chisinau")
   europeSlashChisinau,
-  @JsonValue('Europe/Copenhagen')
+  @JsonValue("Europe/Copenhagen")
   europeSlashCopenhagen,
-  @JsonValue('Europe/Dublin')
+  @JsonValue("Europe/Dublin")
   europeSlashDublin,
-  @JsonValue('Europe/Gibraltar')
+  @JsonValue("Europe/Gibraltar")
   europeSlashGibraltar,
-  @JsonValue('Europe/Guernsey')
+  @JsonValue("Europe/Guernsey")
   europeSlashGuernsey,
-  @JsonValue('Europe/Helsinki')
+  @JsonValue("Europe/Helsinki")
   europeSlashHelsinki,
-  @JsonValue('Europe/Isle_of_Man')
+  @JsonValue("Europe/Isle_of_Man")
   europeSlashIsleOfMan,
-  @JsonValue('Europe/Istanbul')
+  @JsonValue("Europe/Istanbul")
   europeSlashIstanbul,
-  @JsonValue('Europe/Jersey')
+  @JsonValue("Europe/Jersey")
   europeSlashJersey,
-  @JsonValue('Europe/Kaliningrad')
+  @JsonValue("Europe/Kaliningrad")
   europeSlashKaliningrad,
-  @JsonValue('Europe/Kiev')
+  @JsonValue("Europe/Kiev")
   europeSlashKiev,
-  @JsonValue('Europe/Kirov')
+  @JsonValue("Europe/Kirov")
   europeSlashKirov,
-  @JsonValue('Europe/Kyiv')
+  @JsonValue("Europe/Kyiv")
   europeSlashKyiv,
-  @JsonValue('Europe/Lisbon')
+  @JsonValue("Europe/Lisbon")
   europeSlashLisbon,
-  @JsonValue('Europe/Ljubljana')
+  @JsonValue("Europe/Ljubljana")
   europeSlashLjubljana,
-  @JsonValue('Europe/London')
+  @JsonValue("Europe/London")
   europeSlashLondon,
-  @JsonValue('Europe/Luxembourg')
+  @JsonValue("Europe/Luxembourg")
   europeSlashLuxembourg,
-  @JsonValue('Europe/Madrid')
+  @JsonValue("Europe/Madrid")
   europeSlashMadrid,
-  @JsonValue('Europe/Malta')
+  @JsonValue("Europe/Malta")
   europeSlashMalta,
-  @JsonValue('Europe/Mariehamn')
+  @JsonValue("Europe/Mariehamn")
   europeSlashMariehamn,
-  @JsonValue('Europe/Minsk')
+  @JsonValue("Europe/Minsk")
   europeSlashMinsk,
-  @JsonValue('Europe/Monaco')
+  @JsonValue("Europe/Monaco")
   europeSlashMonaco,
-  @JsonValue('Europe/Moscow')
+  @JsonValue("Europe/Moscow")
   europeSlashMoscow,
-  @JsonValue('Europe/Nicosia')
+  @JsonValue("Europe/Nicosia")
   europeSlashNicosia,
-  @JsonValue('Europe/Oslo')
+  @JsonValue("Europe/Oslo")
   europeSlashOslo,
-  @JsonValue('Europe/Paris')
+  @JsonValue("Europe/Paris")
   europeSlashParis,
-  @JsonValue('Europe/Podgorica')
+  @JsonValue("Europe/Podgorica")
   europeSlashPodgorica,
-  @JsonValue('Europe/Prague')
+  @JsonValue("Europe/Prague")
   europeSlashPrague,
-  @JsonValue('Europe/Riga')
+  @JsonValue("Europe/Riga")
   europeSlashRiga,
-  @JsonValue('Europe/Rome')
+  @JsonValue("Europe/Rome")
   europeSlashRome,
-  @JsonValue('Europe/Samara')
+  @JsonValue("Europe/Samara")
   europeSlashSamara,
-  @JsonValue('Europe/San_Marino')
+  @JsonValue("Europe/San_Marino")
   europeSlashSanMarino,
-  @JsonValue('Europe/Sarajevo')
+  @JsonValue("Europe/Sarajevo")
   europeSlashSarajevo,
-  @JsonValue('Europe/Saratov')
+  @JsonValue("Europe/Saratov")
   europeSlashSaratov,
-  @JsonValue('Europe/Simferopol')
+  @JsonValue("Europe/Simferopol")
   europeSlashSimferopol,
-  @JsonValue('Europe/Skopje')
+  @JsonValue("Europe/Skopje")
   europeSlashSkopje,
-  @JsonValue('Europe/Sofia')
+  @JsonValue("Europe/Sofia")
   europeSlashSofia,
-  @JsonValue('Europe/Stockholm')
+  @JsonValue("Europe/Stockholm")
   europeSlashStockholm,
-  @JsonValue('Europe/Tallinn')
+  @JsonValue("Europe/Tallinn")
   europeSlashTallinn,
-  @JsonValue('Europe/Tirane')
+  @JsonValue("Europe/Tirane")
   europeSlashTirane,
-  @JsonValue('Europe/Tiraspol')
+  @JsonValue("Europe/Tiraspol")
   europeSlashTiraspol,
-  @JsonValue('Europe/Ulyanovsk')
+  @JsonValue("Europe/Ulyanovsk")
   europeSlashUlyanovsk,
-  @JsonValue('Europe/Uzhgorod')
+  @JsonValue("Europe/Uzhgorod")
   europeSlashUzhgorod,
-  @JsonValue('Europe/Vaduz')
+  @JsonValue("Europe/Vaduz")
   europeSlashVaduz,
-  @JsonValue('Europe/Vatican')
+  @JsonValue("Europe/Vatican")
   europeSlashVatican,
-  @JsonValue('Europe/Vienna')
+  @JsonValue("Europe/Vienna")
   europeSlashVienna,
-  @JsonValue('Europe/Vilnius')
+  @JsonValue("Europe/Vilnius")
   europeSlashVilnius,
-  @JsonValue('Europe/Volgograd')
+  @JsonValue("Europe/Volgograd")
   europeSlashVolgograd,
-  @JsonValue('Europe/Warsaw')
+  @JsonValue("Europe/Warsaw")
   europeSlashWarsaw,
-  @JsonValue('Europe/Zagreb')
+  @JsonValue("Europe/Zagreb")
   europeSlashZagreb,
-  @JsonValue('Europe/Zaporozhye')
+  @JsonValue("Europe/Zaporozhye")
   europeSlashZaporozhye,
-  @JsonValue('Europe/Zurich')
+  @JsonValue("Europe/Zurich")
   europeSlashZurich,
-  @JsonValue('Factory')
+  @JsonValue("Factory")
   factoryAA,
-  @JsonValue('GB')
+  @JsonValue("GB")
   gb,
-  @JsonValue('GB-Eire')
+  @JsonValue("GB-Eire")
   gBMinusEire,
-  @JsonValue('GMT')
+  @JsonValue("GMT")
   gmt,
-  @JsonValue('GMT+0')
+  @JsonValue("GMT+0")
   gMTPlus0,
-  @JsonValue('GMT-0')
+  @JsonValue("GMT-0")
   gMTMinus0,
-  @JsonValue('GMT0')
+  @JsonValue("GMT0")
   gmt0,
-  @JsonValue('Greenwich')
+  @JsonValue("Greenwich")
   greenwich,
-  @JsonValue('HST')
+  @JsonValue("HST")
   hst,
-  @JsonValue('Hongkong')
+  @JsonValue("Hongkong")
   hongkong,
-  @JsonValue('Iceland')
+  @JsonValue("Iceland")
   iceland,
-  @JsonValue('Indian/Antananarivo')
+  @JsonValue("Indian/Antananarivo")
   indianSlashAntananarivo,
-  @JsonValue('Indian/Chagos')
+  @JsonValue("Indian/Chagos")
   indianSlashChagos,
-  @JsonValue('Indian/Christmas')
+  @JsonValue("Indian/Christmas")
   indianSlashChristmas,
-  @JsonValue('Indian/Cocos')
+  @JsonValue("Indian/Cocos")
   indianSlashCocos,
-  @JsonValue('Indian/Comoro')
+  @JsonValue("Indian/Comoro")
   indianSlashComoro,
-  @JsonValue('Indian/Kerguelen')
+  @JsonValue("Indian/Kerguelen")
   indianSlashKerguelen,
-  @JsonValue('Indian/Mahe')
+  @JsonValue("Indian/Mahe")
   indianSlashMahe,
-  @JsonValue('Indian/Maldives')
+  @JsonValue("Indian/Maldives")
   indianSlashMaldives,
-  @JsonValue('Indian/Mauritius')
+  @JsonValue("Indian/Mauritius")
   indianSlashMauritius,
-  @JsonValue('Indian/Mayotte')
+  @JsonValue("Indian/Mayotte")
   indianSlashMayotte,
-  @JsonValue('Indian/Reunion')
+  @JsonValue("Indian/Reunion")
   indianSlashReunion,
-  @JsonValue('Iran')
+  @JsonValue("Iran")
   iran,
-  @JsonValue('Israel')
+  @JsonValue("Israel")
   israel,
-  @JsonValue('Jamaica')
+  @JsonValue("Jamaica")
   jamaica,
-  @JsonValue('Japan')
+  @JsonValue("Japan")
   japan,
-  @JsonValue('Kwajalein')
+  @JsonValue("Kwajalein")
   kwajalein,
-  @JsonValue('Libya')
+  @JsonValue("Libya")
   libya,
-  @JsonValue('MET')
+  @JsonValue("MET")
   met,
-  @JsonValue('MST')
+  @JsonValue("MST")
   mst,
-  @JsonValue('MST7MDT')
+  @JsonValue("MST7MDT")
   mst7mdt,
-  @JsonValue('Mexico/BajaNorte')
+  @JsonValue("Mexico/BajaNorte")
   mexicoSlashBajaNorte,
-  @JsonValue('Mexico/BajaSur')
+  @JsonValue("Mexico/BajaSur")
   mexicoSlashBajaSur,
-  @JsonValue('Mexico/General')
+  @JsonValue("Mexico/General")
   mexicoSlashGeneral,
-  @JsonValue('NZ')
+  @JsonValue("NZ")
   nz,
-  @JsonValue('NZ-CHAT')
+  @JsonValue("NZ-CHAT")
   nZMinusChat,
-  @JsonValue('Navajo')
+  @JsonValue("Navajo")
   navajo,
-  @JsonValue('PRC')
+  @JsonValue("PRC")
   prc,
-  @JsonValue('PST8PDT')
+  @JsonValue("PST8PDT")
   pst8pdt,
-  @JsonValue('Pacific/Apia')
+  @JsonValue("Pacific/Apia")
   pacificSlashApia,
-  @JsonValue('Pacific/Auckland')
+  @JsonValue("Pacific/Auckland")
   pacificSlashAuckland,
-  @JsonValue('Pacific/Bougainville')
+  @JsonValue("Pacific/Bougainville")
   pacificSlashBougainville,
-  @JsonValue('Pacific/Chatham')
+  @JsonValue("Pacific/Chatham")
   pacificSlashChatham,
-  @JsonValue('Pacific/Chuuk')
+  @JsonValue("Pacific/Chuuk")
   pacificSlashChuuk,
-  @JsonValue('Pacific/Easter')
+  @JsonValue("Pacific/Easter")
   pacificSlashEaster,
-  @JsonValue('Pacific/Efate')
+  @JsonValue("Pacific/Efate")
   pacificSlashEfate,
-  @JsonValue('Pacific/Enderbury')
+  @JsonValue("Pacific/Enderbury")
   pacificSlashEnderbury,
-  @JsonValue('Pacific/Fakaofo')
+  @JsonValue("Pacific/Fakaofo")
   pacificSlashFakaofo,
-  @JsonValue('Pacific/Fiji')
+  @JsonValue("Pacific/Fiji")
   pacificSlashFiji,
-  @JsonValue('Pacific/Funafuti')
+  @JsonValue("Pacific/Funafuti")
   pacificSlashFunafuti,
-  @JsonValue('Pacific/Galapagos')
+  @JsonValue("Pacific/Galapagos")
   pacificSlashGalapagos,
-  @JsonValue('Pacific/Gambier')
+  @JsonValue("Pacific/Gambier")
   pacificSlashGambier,
-  @JsonValue('Pacific/Guadalcanal')
+  @JsonValue("Pacific/Guadalcanal")
   pacificSlashGuadalcanal,
-  @JsonValue('Pacific/Guam')
+  @JsonValue("Pacific/Guam")
   pacificSlashGuam,
-  @JsonValue('Pacific/Honolulu')
+  @JsonValue("Pacific/Honolulu")
   pacificSlashHonolulu,
-  @JsonValue('Pacific/Johnston')
+  @JsonValue("Pacific/Johnston")
   pacificSlashJohnston,
-  @JsonValue('Pacific/Kanton')
+  @JsonValue("Pacific/Kanton")
   pacificSlashKanton,
-  @JsonValue('Pacific/Kiritimati')
+  @JsonValue("Pacific/Kiritimati")
   pacificSlashKiritimati,
-  @JsonValue('Pacific/Kosrae')
+  @JsonValue("Pacific/Kosrae")
   pacificSlashKosrae,
-  @JsonValue('Pacific/Kwajalein')
+  @JsonValue("Pacific/Kwajalein")
   pacificSlashKwajalein,
-  @JsonValue('Pacific/Majuro')
+  @JsonValue("Pacific/Majuro")
   pacificSlashMajuro,
-  @JsonValue('Pacific/Marquesas')
+  @JsonValue("Pacific/Marquesas")
   pacificSlashMarquesas,
-  @JsonValue('Pacific/Midway')
+  @JsonValue("Pacific/Midway")
   pacificSlashMidway,
-  @JsonValue('Pacific/Nauru')
+  @JsonValue("Pacific/Nauru")
   pacificSlashNauru,
-  @JsonValue('Pacific/Niue')
+  @JsonValue("Pacific/Niue")
   pacificSlashNiue,
-  @JsonValue('Pacific/Norfolk')
+  @JsonValue("Pacific/Norfolk")
   pacificSlashNorfolk,
-  @JsonValue('Pacific/Noumea')
+  @JsonValue("Pacific/Noumea")
   pacificSlashNoumea,
-  @JsonValue('Pacific/Pago_Pago')
+  @JsonValue("Pacific/Pago_Pago")
   pacificSlashPagoPago,
-  @JsonValue('Pacific/Palau')
+  @JsonValue("Pacific/Palau")
   pacificSlashPalau,
-  @JsonValue('Pacific/Pitcairn')
+  @JsonValue("Pacific/Pitcairn")
   pacificSlashPitcairn,
-  @JsonValue('Pacific/Pohnpei')
+  @JsonValue("Pacific/Pohnpei")
   pacificSlashPohnpei,
-  @JsonValue('Pacific/Ponape')
+  @JsonValue("Pacific/Ponape")
   pacificSlashPonape,
-  @JsonValue('Pacific/Port_Moresby')
+  @JsonValue("Pacific/Port_Moresby")
   pacificSlashPortMoresby,
-  @JsonValue('Pacific/Rarotonga')
+  @JsonValue("Pacific/Rarotonga")
   pacificSlashRarotonga,
-  @JsonValue('Pacific/Saipan')
+  @JsonValue("Pacific/Saipan")
   pacificSlashSaipan,
-  @JsonValue('Pacific/Samoa')
+  @JsonValue("Pacific/Samoa")
   pacificSlashSamoa,
-  @JsonValue('Pacific/Tahiti')
+  @JsonValue("Pacific/Tahiti")
   pacificSlashTahiti,
-  @JsonValue('Pacific/Tarawa')
+  @JsonValue("Pacific/Tarawa")
   pacificSlashTarawa,
-  @JsonValue('Pacific/Tongatapu')
+  @JsonValue("Pacific/Tongatapu")
   pacificSlashTongatapu,
-  @JsonValue('Pacific/Truk')
+  @JsonValue("Pacific/Truk")
   pacificSlashTruk,
-  @JsonValue('Pacific/Wake')
+  @JsonValue("Pacific/Wake")
   pacificSlashWake,
-  @JsonValue('Pacific/Wallis')
+  @JsonValue("Pacific/Wallis")
   pacificSlashWallis,
-  @JsonValue('Pacific/Yap')
+  @JsonValue("Pacific/Yap")
   pacificSlashYap,
-  @JsonValue('Poland')
+  @JsonValue("Poland")
   poland,
-  @JsonValue('Portugal')
+  @JsonValue("Portugal")
   portugal,
-  @JsonValue('ROC')
+  @JsonValue("ROC")
   roc,
-  @JsonValue('ROK')
+  @JsonValue("ROK")
   rok,
-  @JsonValue('Singapore')
+  @JsonValue("Singapore")
   singapore,
-  @JsonValue('Turkey')
+  @JsonValue("Turkey")
   turkey,
-  @JsonValue('UCT')
+  @JsonValue("UCT")
   uct,
-  @JsonValue('US/Alaska')
+  @JsonValue("US/Alaska")
   uSSlashAlaska,
-  @JsonValue('US/Aleutian')
+  @JsonValue("US/Aleutian")
   uSSlashAleutian,
-  @JsonValue('US/Arizona')
+  @JsonValue("US/Arizona")
   uSSlashArizona,
-  @JsonValue('US/Central')
+  @JsonValue("US/Central")
   uSSlashCentral,
-  @JsonValue('US/East-Indiana')
+  @JsonValue("US/East-Indiana")
   uSSlashEastMinusIndiana,
-  @JsonValue('US/Eastern')
+  @JsonValue("US/Eastern")
   uSSlashEastern,
-  @JsonValue('US/Hawaii')
+  @JsonValue("US/Hawaii")
   uSSlashHawaii,
-  @JsonValue('US/Indiana-Starke')
+  @JsonValue("US/Indiana-Starke")
   uSSlashIndianaMinusStarke,
-  @JsonValue('US/Michigan')
+  @JsonValue("US/Michigan")
   uSSlashMichigan,
-  @JsonValue('US/Mountain')
+  @JsonValue("US/Mountain")
   uSSlashMountain,
-  @JsonValue('US/Pacific')
+  @JsonValue("US/Pacific")
   uSSlashPacific,
-  @JsonValue('US/Samoa')
+  @JsonValue("US/Samoa")
   uSSlashSamoa,
-  @JsonValue('UTC')
+  @JsonValue("UTC")
   utc,
-  @JsonValue('Universal')
+  @JsonValue("Universal")
   universal,
-  @JsonValue('W-SU')
+  @JsonValue("W-SU")
   wMinusSU,
-  @JsonValue('WET')
+  @JsonValue("WET")
   wet,
-  @JsonValue('Zulu')
+  @JsonValue("Zulu")
   zulu;
 
   factory Timezone.fromJson(String json) => Timezone.values.firstWhere(
-        (e) => e.toJson() == json,
-        orElse: () => Timezone.values.first,
-      );
+    (e) => e.toJson() == json,
+    orElse: () => Timezone.values.first,
+  );
 
   String toJson() => _$TimezoneEnumMap[this]!;
 }

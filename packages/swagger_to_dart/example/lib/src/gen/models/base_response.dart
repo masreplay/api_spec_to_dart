@@ -22,7 +22,7 @@
 ///     ],
 ///     "title": "BaseResponse[CategoryResponse]"
 /// }
-library;
+library base_response;
 
 import 'exports.dart';
 part 'base_response.freezed.dart';
@@ -51,8 +51,7 @@ abstract class BaseResponse<T> with _$BaseResponse<T> {
   factory BaseResponse.fromJson(
     Map<String, dynamic> json,
     T Function(Object? json) fromJsonT,
-  ) =>
-      _$BaseResponseFromJson<T>(json, fromJsonT);
+  ) => _$BaseResponseFromJson<T>(json, fromJsonT);
 
   static const String dataKey_ = r'data';
 

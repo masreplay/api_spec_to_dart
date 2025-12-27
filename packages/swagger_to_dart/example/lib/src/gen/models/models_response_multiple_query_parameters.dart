@@ -11,7 +11,7 @@
 ///     "type": "object",
 ///     "required": []
 /// }
-library;
+library models_response_multiple_query_parameters;
 
 import 'exports.dart';
 part 'models_response_multiple_query_parameters.freezed.dart';
@@ -32,8 +32,7 @@ abstract class ModelsResponseMultipleQueryParameters
 
   factory ModelsResponseMultipleQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$ModelsResponseMultipleQueryParametersFromJson(json);
+  ) => _$ModelsResponseMultipleQueryParametersFromJson(json);
 
   static const String isUserKey_ = r'is_user';
 }

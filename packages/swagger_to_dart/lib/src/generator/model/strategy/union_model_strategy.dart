@@ -309,6 +309,54 @@ class UnionModelStrategy
     return (model, className);
   }
 
+  /// Build a union model from a top-level schema (OpenApiSchemas) that has oneOf.
+  /// This handles the case when oneOf/discriminator are defined at the schema level
+  /// rather than as a nested property.
+  Library buildFromTopLevelSchema(MapEntry<String, OpenApiSchemas> entry) {
+    final schemaName = entry.key;
+    final schema = entry.value;
+    final oneOf = schema.oneOf!;
+    final discriminator = schema.discriminator;
+
+    final prefixes = context.config.model.removeModelPrefixes;
+    final String className = Renaming.instance.renameClass(
+      schema.title ?? schemaName,
+      removePrefixes: prefixes.isNotEmpty ? prefixes : null,
+    );
+
+    final Map<String, OpenApiSchemaRef> refSchemaMap;
+    if (discriminator case final discriminator?) {
+      refSchemaMap = {
+        for (final mapEntry in discriminator.mapping.entries)
+          mapEntry.key: oneOf
+              .whereType<OpenApiSchemaRef>()
+              .firstWhere((e) => e.ref == mapEntry.value),
+      };
+    } else {
+      refSchemaMap = {
+        for (final refSchema in oneOf.whereType<OpenApiSchemaRef>())
+          refSchema.name: refSchema,
+      };
+    }
+
+    // Create an OpenApiSchemaOneOf to pass to the build method
+    final oneOfSchema = OpenApiSchemaOneOf(
+      oneOf: oneOf,
+      title: schema.title ?? schemaName,
+      discriminator: discriminator,
+      description: schema.description,
+    );
+
+    return build(
+      UnionModelStrategyParams(
+        key: className,
+        schema: oneOfSchema,
+        refSchemaMap: refSchemaMap,
+        discriminator: discriminator,
+      ),
+    );
+  }
+
   Reference _freezedAnnotation({
     required String? unionClassFallbackName,
     required String? unionKey,
