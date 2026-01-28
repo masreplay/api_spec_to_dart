@@ -1,3 +1,16 @@
+## 4.2.0 - 2026-01-28
+
+### Added
+
+- Added support for `text/plain` content type with `binary` format in ABP framework
+- Added automatic `@DioResponseType(ResponseType.bytes)` annotation for binary responses in ABP
+- Added `Uint8List` return type support for binary content responses
+
+### Changed
+
+- Refactored `_handleResponseType` method to return a record with type and binary response flag
+- Enhanced response type detection to check for ABP-specific binary format patterns
+
 ## 4.1.0 - 2025-12-03
 
 ### Added
