@@ -213,10 +213,12 @@ class ApiClientGenerator {
           methodName: methodName,
         );
 
-        final responseType = _handleResponseType(
+        final responseTypeResult = _handleResponseType(
           method.value.responses ?? {},
           className,
         );
+        final responseType = responseTypeResult.type;
+        final isBinaryResponse = responseTypeResult.isBinaryResponse;
 
         final requestBody = <Parameter>[];
         final content = method.value.requestBody?.content ?? {};
@@ -318,6 +320,8 @@ class ApiClientGenerator {
                 if (content[OpenApiContentType.multipartFormData.toJson()] !=
                     null)
                   refer('$MultiPart()'),
+                if (isBinaryResponse)
+                  refer('DioResponseType(ResponseType.bytes)'),
               ])
               ..returns = responseType
               ..name =
@@ -491,10 +495,28 @@ class ApiClientGenerator {
     return result;
   }
 
-  Reference _handleResponseType(
+  ({Reference type, bool isBinaryResponse}) _handleResponseType(
     OpenApiPathMethodResponses responses,
     String className,
   ) {
+    // Check for text/plain with binary format (for ABP framework)
+    final textPlainResponse = responses.values.firstOrNull
+        ?.content?['text/plain'];
+    
+    final isAbpFramework = context.config.generationSource == GenerationSource.abpIO;
+    final isBinaryFormat = textPlainResponse != null &&
+        textPlainResponse.schema is OpenApiSchemaType &&
+        (textPlainResponse.schema as OpenApiSchemaType).type == OpenApiSchemaVarType.string &&
+        (textPlainResponse.schema as OpenApiSchemaType).format == 'binary';
+
+    if (isAbpFramework && isBinaryFormat) {
+      return (
+        type: refer('Future<HttpResponse<Uint8List>>'),
+        isBinaryResponse: true,
+      );
+    }
+
+    // Default: check for application/json
     final response = responses.values.firstOrNull
         ?.content?[OpenApiContentType.applicationJson.toJson()];
 
@@ -505,9 +527,12 @@ class ApiClientGenerator {
             className: className,
           );
 
-    return responseTypeString == null
-        ? refer('Future<HttpResponse>')
-        : refer('Future<HttpResponse<$responseTypeString>>');
+    return (
+      type: responseTypeString == null
+          ? refer('Future<HttpResponse>')
+          : refer('Future<HttpResponse<$responseTypeString>>'),
+      isBinaryResponse: false,
+    );
   }
 
   List<Parameter> _extraParameters({
