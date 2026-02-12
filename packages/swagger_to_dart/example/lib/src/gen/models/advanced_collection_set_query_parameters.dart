@@ -17,7 +17,7 @@
 ///     "type": "object",
 ///     "required": []
 /// }
-library;
+library advanced_collection_set_query_parameters;
 
 import 'exports.dart';
 part 'advanced_collection_set_query_parameters.freezed.dart';
@@ -31,15 +31,14 @@ abstract class AdvancedCollectionSetQueryParameters
   @jsonSerializable
   const factory AdvancedCollectionSetQueryParameters({
     /// items
-    @Default([1, 2, 3])
+    @Default(const [1, 2, 3])
     @JsonKey(name: AdvancedCollectionSetQueryParameters.itemsKey_)
     List<int> items,
   }) = _AdvancedCollectionSetQueryParameters;
 
   factory AdvancedCollectionSetQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$AdvancedCollectionSetQueryParametersFromJson(json);
+  ) => _$AdvancedCollectionSetQueryParametersFromJson(json);
 
   static const String itemsKey_ = r'items';
 }

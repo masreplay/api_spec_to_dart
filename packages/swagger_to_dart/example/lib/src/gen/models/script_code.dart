@@ -188,382 +188,382 @@
 //     ]
 // }
 
-library;
+library script_code;
 
 import 'exports.dart';
 part 'script_code.g.dart';
 
 @JsonEnum(alwaysCreate: true)
 enum ScriptCode {
-  @JsonValue('Adlm')
+  @JsonValue("Adlm")
   adlm,
-  @JsonValue('Afak')
+  @JsonValue("Afak")
   afak,
-  @JsonValue('Aghb')
+  @JsonValue("Aghb")
   aghb,
-  @JsonValue('Ahom')
+  @JsonValue("Ahom")
   ahom,
-  @JsonValue('Arab')
+  @JsonValue("Arab")
   arab,
-  @JsonValue('Aran')
+  @JsonValue("Aran")
   aran,
-  @JsonValue('Armi')
+  @JsonValue("Armi")
   armi,
-  @JsonValue('Armn')
+  @JsonValue("Armn")
   armn,
-  @JsonValue('Avst')
+  @JsonValue("Avst")
   avst,
-  @JsonValue('Bali')
+  @JsonValue("Bali")
   bali,
-  @JsonValue('Bamu')
+  @JsonValue("Bamu")
   bamu,
-  @JsonValue('Bass')
+  @JsonValue("Bass")
   bass,
-  @JsonValue('Batk')
+  @JsonValue("Batk")
   batk,
-  @JsonValue('Beng')
+  @JsonValue("Beng")
   beng,
-  @JsonValue('Bhks')
+  @JsonValue("Bhks")
   bhks,
-  @JsonValue('Blis')
+  @JsonValue("Blis")
   blis,
-  @JsonValue('Bopo')
+  @JsonValue("Bopo")
   bopo,
-  @JsonValue('Brah')
+  @JsonValue("Brah")
   brah,
-  @JsonValue('Brai')
+  @JsonValue("Brai")
   brai,
-  @JsonValue('Bugi')
+  @JsonValue("Bugi")
   bugi,
-  @JsonValue('Buhd')
+  @JsonValue("Buhd")
   buhd,
-  @JsonValue('Cakm')
+  @JsonValue("Cakm")
   cakm,
-  @JsonValue('Cans')
+  @JsonValue("Cans")
   cans,
-  @JsonValue('Cari')
+  @JsonValue("Cari")
   cari,
-  @JsonValue('Cham')
+  @JsonValue("Cham")
   cham,
-  @JsonValue('Cher')
+  @JsonValue("Cher")
   cher,
-  @JsonValue('Cirt')
+  @JsonValue("Cirt")
   cirt,
-  @JsonValue('Copt')
+  @JsonValue("Copt")
   copt,
-  @JsonValue('Cprt')
+  @JsonValue("Cprt")
   cprt,
-  @JsonValue('Cyrl')
+  @JsonValue("Cyrl")
   cyrl,
-  @JsonValue('Cyrs')
+  @JsonValue("Cyrs")
   cyrs,
-  @JsonValue('Deva')
+  @JsonValue("Deva")
   deva,
-  @JsonValue('Dsrt')
+  @JsonValue("Dsrt")
   dsrt,
-  @JsonValue('Dupl')
+  @JsonValue("Dupl")
   dupl,
-  @JsonValue('Egyd')
+  @JsonValue("Egyd")
   egyd,
-  @JsonValue('Egyh')
+  @JsonValue("Egyh")
   egyh,
-  @JsonValue('Egyp')
+  @JsonValue("Egyp")
   egyp,
-  @JsonValue('Elba')
+  @JsonValue("Elba")
   elba,
-  @JsonValue('Ethi')
+  @JsonValue("Ethi")
   ethi,
-  @JsonValue('Geok')
+  @JsonValue("Geok")
   geok,
-  @JsonValue('Geor')
+  @JsonValue("Geor")
   geor,
-  @JsonValue('Glag')
+  @JsonValue("Glag")
   glag,
-  @JsonValue('Goth')
+  @JsonValue("Goth")
   goth,
-  @JsonValue('Gran')
+  @JsonValue("Gran")
   gran,
-  @JsonValue('Grek')
+  @JsonValue("Grek")
   grek,
-  @JsonValue('Gujr')
+  @JsonValue("Gujr")
   gujr,
-  @JsonValue('Guru')
+  @JsonValue("Guru")
   guru,
-  @JsonValue('Hanb')
+  @JsonValue("Hanb")
   hanb,
-  @JsonValue('Hang')
+  @JsonValue("Hang")
   hang,
-  @JsonValue('Hani')
+  @JsonValue("Hani")
   hani,
-  @JsonValue('Hano')
+  @JsonValue("Hano")
   hano,
-  @JsonValue('Hans')
+  @JsonValue("Hans")
   hans,
-  @JsonValue('Hant')
+  @JsonValue("Hant")
   hant,
-  @JsonValue('Hatr')
+  @JsonValue("Hatr")
   hatr,
-  @JsonValue('Hebr')
+  @JsonValue("Hebr")
   hebr,
-  @JsonValue('Hira')
+  @JsonValue("Hira")
   hira,
-  @JsonValue('Hluw')
+  @JsonValue("Hluw")
   hluw,
-  @JsonValue('Hmng')
+  @JsonValue("Hmng")
   hmng,
-  @JsonValue('Hrkt')
+  @JsonValue("Hrkt")
   hrkt,
-  @JsonValue('Hung')
+  @JsonValue("Hung")
   hung,
-  @JsonValue('Inds')
+  @JsonValue("Inds")
   inds,
-  @JsonValue('Ital')
+  @JsonValue("Ital")
   ital,
-  @JsonValue('Jamo')
+  @JsonValue("Jamo")
   jamo,
-  @JsonValue('Java')
+  @JsonValue("Java")
   java,
-  @JsonValue('Jpan')
+  @JsonValue("Jpan")
   jpan,
-  @JsonValue('Jurc')
+  @JsonValue("Jurc")
   jurc,
-  @JsonValue('Kali')
+  @JsonValue("Kali")
   kali,
-  @JsonValue('Kana')
+  @JsonValue("Kana")
   kana,
-  @JsonValue('Khar')
+  @JsonValue("Khar")
   khar,
-  @JsonValue('Khmr')
+  @JsonValue("Khmr")
   khmr,
-  @JsonValue('Khoj')
+  @JsonValue("Khoj")
   khoj,
-  @JsonValue('Kitl')
+  @JsonValue("Kitl")
   kitl,
-  @JsonValue('Kits')
+  @JsonValue("Kits")
   kits,
-  @JsonValue('Knda')
+  @JsonValue("Knda")
   knda,
-  @JsonValue('Kore')
+  @JsonValue("Kore")
   kore,
-  @JsonValue('Kpel')
+  @JsonValue("Kpel")
   kpel,
-  @JsonValue('Kthi')
+  @JsonValue("Kthi")
   kthi,
-  @JsonValue('Lana')
+  @JsonValue("Lana")
   lana,
-  @JsonValue('Laoo')
+  @JsonValue("Laoo")
   laoo,
-  @JsonValue('Latf')
+  @JsonValue("Latf")
   latf,
-  @JsonValue('Latg')
+  @JsonValue("Latg")
   latg,
-  @JsonValue('Latn')
+  @JsonValue("Latn")
   latn,
-  @JsonValue('Leke')
+  @JsonValue("Leke")
   leke,
-  @JsonValue('Lepc')
+  @JsonValue("Lepc")
   lepc,
-  @JsonValue('Limb')
+  @JsonValue("Limb")
   limb,
-  @JsonValue('Lina')
+  @JsonValue("Lina")
   lina,
-  @JsonValue('Linb')
+  @JsonValue("Linb")
   linb,
-  @JsonValue('Lisu')
+  @JsonValue("Lisu")
   lisu,
-  @JsonValue('Loma')
+  @JsonValue("Loma")
   loma,
-  @JsonValue('Lyci')
+  @JsonValue("Lyci")
   lyci,
-  @JsonValue('Lydi')
+  @JsonValue("Lydi")
   lydi,
-  @JsonValue('Mahj')
+  @JsonValue("Mahj")
   mahj,
-  @JsonValue('Mand')
+  @JsonValue("Mand")
   mand,
-  @JsonValue('Mani')
+  @JsonValue("Mani")
   mani,
-  @JsonValue('Marc')
+  @JsonValue("Marc")
   marc,
-  @JsonValue('Maya')
+  @JsonValue("Maya")
   maya,
-  @JsonValue('Mend')
+  @JsonValue("Mend")
   mend,
-  @JsonValue('Merc')
+  @JsonValue("Merc")
   merc,
-  @JsonValue('Mero')
+  @JsonValue("Mero")
   mero,
-  @JsonValue('Mlym')
+  @JsonValue("Mlym")
   mlym,
-  @JsonValue('Modi')
+  @JsonValue("Modi")
   modi,
-  @JsonValue('Mong')
+  @JsonValue("Mong")
   mong,
-  @JsonValue('Moon')
+  @JsonValue("Moon")
   moon,
-  @JsonValue('Mroo')
+  @JsonValue("Mroo")
   mroo,
-  @JsonValue('Mtei')
+  @JsonValue("Mtei")
   mtei,
-  @JsonValue('Mult')
+  @JsonValue("Mult")
   mult,
-  @JsonValue('Mymr')
+  @JsonValue("Mymr")
   mymr,
-  @JsonValue('Narb')
+  @JsonValue("Narb")
   narb,
-  @JsonValue('Nbat')
+  @JsonValue("Nbat")
   nbat,
-  @JsonValue('Newa')
+  @JsonValue("Newa")
   newa,
-  @JsonValue('Nkgb')
+  @JsonValue("Nkgb")
   nkgb,
-  @JsonValue('Nkoo')
+  @JsonValue("Nkoo")
   nkoo,
-  @JsonValue('Nshu')
+  @JsonValue("Nshu")
   nshu,
-  @JsonValue('Ogam')
+  @JsonValue("Ogam")
   ogam,
-  @JsonValue('Olck')
+  @JsonValue("Olck")
   olck,
-  @JsonValue('Orkh')
+  @JsonValue("Orkh")
   orkh,
-  @JsonValue('Orya')
+  @JsonValue("Orya")
   orya,
-  @JsonValue('Osge')
+  @JsonValue("Osge")
   osge,
-  @JsonValue('Osma')
+  @JsonValue("Osma")
   osma,
-  @JsonValue('Palm')
+  @JsonValue("Palm")
   palm,
-  @JsonValue('Pauc')
+  @JsonValue("Pauc")
   pauc,
-  @JsonValue('Perm')
+  @JsonValue("Perm")
   perm,
-  @JsonValue('Phag')
+  @JsonValue("Phag")
   phag,
-  @JsonValue('Phli')
+  @JsonValue("Phli")
   phli,
-  @JsonValue('Phlp')
+  @JsonValue("Phlp")
   phlp,
-  @JsonValue('Phlv')
+  @JsonValue("Phlv")
   phlv,
-  @JsonValue('Phnx')
+  @JsonValue("Phnx")
   phnx,
-  @JsonValue('Piqd')
+  @JsonValue("Piqd")
   piqd,
-  @JsonValue('Plrd')
+  @JsonValue("Plrd")
   plrd,
-  @JsonValue('Prti')
+  @JsonValue("Prti")
   prti,
-  @JsonValue('Qaaa')
+  @JsonValue("Qaaa")
   qaaa,
-  @JsonValue('Qabx')
+  @JsonValue("Qabx")
   qabx,
-  @JsonValue('Rjng')
+  @JsonValue("Rjng")
   rjng,
-  @JsonValue('Roro')
+  @JsonValue("Roro")
   roro,
-  @JsonValue('Runr')
+  @JsonValue("Runr")
   runr,
-  @JsonValue('Samr')
+  @JsonValue("Samr")
   samr,
-  @JsonValue('Sara')
+  @JsonValue("Sara")
   sara,
-  @JsonValue('Sarb')
+  @JsonValue("Sarb")
   sarb,
-  @JsonValue('Saur')
+  @JsonValue("Saur")
   saur,
-  @JsonValue('Sgnw')
+  @JsonValue("Sgnw")
   sgnw,
-  @JsonValue('Shaw')
+  @JsonValue("Shaw")
   shaw,
-  @JsonValue('Shrd')
+  @JsonValue("Shrd")
   shrd,
-  @JsonValue('Sidd')
+  @JsonValue("Sidd")
   sidd,
-  @JsonValue('Sind')
+  @JsonValue("Sind")
   sind,
-  @JsonValue('Sinh')
+  @JsonValue("Sinh")
   sinh,
-  @JsonValue('Sora')
+  @JsonValue("Sora")
   sora,
-  @JsonValue('Sund')
+  @JsonValue("Sund")
   sund,
-  @JsonValue('Sylo')
+  @JsonValue("Sylo")
   sylo,
-  @JsonValue('Syrc')
+  @JsonValue("Syrc")
   syrc,
-  @JsonValue('Syre')
+  @JsonValue("Syre")
   syre,
-  @JsonValue('Syrj')
+  @JsonValue("Syrj")
   syrj,
-  @JsonValue('Syrn')
+  @JsonValue("Syrn")
   syrn,
-  @JsonValue('Tagb')
+  @JsonValue("Tagb")
   tagb,
-  @JsonValue('Takr')
+  @JsonValue("Takr")
   takr,
-  @JsonValue('Tale')
+  @JsonValue("Tale")
   tale,
-  @JsonValue('Talu')
+  @JsonValue("Talu")
   talu,
-  @JsonValue('Taml')
+  @JsonValue("Taml")
   taml,
-  @JsonValue('Tang')
+  @JsonValue("Tang")
   tang,
-  @JsonValue('Tavt')
+  @JsonValue("Tavt")
   tavt,
-  @JsonValue('Telu')
+  @JsonValue("Telu")
   telu,
-  @JsonValue('Teng')
+  @JsonValue("Teng")
   teng,
-  @JsonValue('Tfng')
+  @JsonValue("Tfng")
   tfng,
-  @JsonValue('Tglg')
+  @JsonValue("Tglg")
   tglg,
-  @JsonValue('Thaa')
+  @JsonValue("Thaa")
   thaa,
-  @JsonValue('Thai')
+  @JsonValue("Thai")
   thai,
-  @JsonValue('Tibt')
+  @JsonValue("Tibt")
   tibt,
-  @JsonValue('Tirh')
+  @JsonValue("Tirh")
   tirh,
-  @JsonValue('Ugar')
+  @JsonValue("Ugar")
   ugar,
-  @JsonValue('Vaii')
+  @JsonValue("Vaii")
   vaii,
-  @JsonValue('Visp')
+  @JsonValue("Visp")
   visp,
-  @JsonValue('Wara')
+  @JsonValue("Wara")
   wara,
-  @JsonValue('Wole')
+  @JsonValue("Wole")
   wole,
-  @JsonValue('Xpeo')
+  @JsonValue("Xpeo")
   xpeo,
-  @JsonValue('Xsux')
+  @JsonValue("Xsux")
   xsux,
-  @JsonValue('Yiii')
+  @JsonValue("Yiii")
   yiii,
-  @JsonValue('Zinh')
+  @JsonValue("Zinh")
   zinh,
-  @JsonValue('Zmth')
+  @JsonValue("Zmth")
   zmth,
-  @JsonValue('Zsye')
+  @JsonValue("Zsye")
   zsye,
-  @JsonValue('Zsym')
+  @JsonValue("Zsym")
   zsym,
-  @JsonValue('Zxxx')
+  @JsonValue("Zxxx")
   zxxx,
-  @JsonValue('Zyyy')
+  @JsonValue("Zyyy")
   zyyy,
-  @JsonValue('Zzzz')
+  @JsonValue("Zzzz")
   zzzz;
 
   factory ScriptCode.fromJson(String json) => ScriptCode.values.firstWhere(
-        (e) => e.toJson() == json,
-        orElse: () => ScriptCode.values.first,
-      );
+    (e) => e.toJson() == json,
+    orElse: () => ScriptCode.values.first,
+  );
 
   String toJson() => _$ScriptCodeEnumMap[this]!;
 }

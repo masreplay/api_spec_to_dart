@@ -12,7 +12,7 @@
 ///     "type": "object",
 ///     "title": "HTTPValidationError"
 /// }
-library;
+library http_validation_error;
 
 import 'exports.dart';
 part 'http_validation_error.freezed.dart';

@@ -12,7 +12,7 @@
 ///         "dt"
 ///     ]
 /// }
-library;
+library basic_create_datetime_datetime_query_parameters;
 
 import 'exports.dart';
 part 'basic_create_datetime_datetime_query_parameters.freezed.dart';
@@ -32,8 +32,7 @@ abstract class BasicCreateDatetimeDatetimeQueryParameters
 
   factory BasicCreateDatetimeDatetimeQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$BasicCreateDatetimeDatetimeQueryParametersFromJson(json);
+  ) => _$BasicCreateDatetimeDatetimeQueryParametersFromJson(json);
 
   static const String dtKey_ = r'dt';
 }

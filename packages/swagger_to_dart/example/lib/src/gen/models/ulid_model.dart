@@ -23,7 +23,7 @@
 ///     ],
 ///     "title": "ULIDModel"
 /// }
-library;
+library ulid_model;
 
 import 'exports.dart';
 part 'ulid_model.freezed.dart';

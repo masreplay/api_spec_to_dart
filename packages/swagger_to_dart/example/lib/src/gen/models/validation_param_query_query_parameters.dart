@@ -32,7 +32,7 @@
 ///     "type": "object",
 ///     "required": []
 /// }
-library;
+library validation_param_query_query_parameters;
 
 import 'exports.dart';
 part 'validation_param_query_query_parameters.freezed.dart';
@@ -61,8 +61,7 @@ abstract class ValidationParamQueryQueryParameters
 
   factory ValidationParamQueryQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$ValidationParamQueryQueryParametersFromJson(json);
+  ) => _$ValidationParamQueryQueryParametersFromJson(json);
 
   static const String qKey_ = r'q';
 

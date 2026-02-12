@@ -121,248 +121,248 @@
 //     ]
 // }
 
-library;
+library iso6395;
 
 import 'exports.dart';
 part 'iso6395.g.dart';
 
 @JsonEnum(alwaysCreate: true)
 enum Iso6395 {
-  @JsonValue('aav')
+  @JsonValue("aav")
   aav,
-  @JsonValue('afa')
+  @JsonValue("afa")
   afa,
-  @JsonValue('alg')
+  @JsonValue("alg")
   alg,
-  @JsonValue('alv')
+  @JsonValue("alv")
   alv,
-  @JsonValue('apa')
+  @JsonValue("apa")
   apa,
-  @JsonValue('aqa')
+  @JsonValue("aqa")
   aqa,
-  @JsonValue('aql')
+  @JsonValue("aql")
   aql,
-  @JsonValue('art')
+  @JsonValue("art")
   art,
-  @JsonValue('ath')
+  @JsonValue("ath")
   ath,
-  @JsonValue('auf')
+  @JsonValue("auf")
   auf,
-  @JsonValue('aus')
+  @JsonValue("aus")
   aus,
-  @JsonValue('awd')
+  @JsonValue("awd")
   awd,
-  @JsonValue('azc')
+  @JsonValue("azc")
   azc,
-  @JsonValue('bad')
+  @JsonValue("bad")
   bad,
-  @JsonValue('bai')
+  @JsonValue("bai")
   bai,
-  @JsonValue('bat')
+  @JsonValue("bat")
   bat,
-  @JsonValue('ber')
+  @JsonValue("ber")
   ber,
-  @JsonValue('bih')
+  @JsonValue("bih")
   bih,
-  @JsonValue('bnt')
+  @JsonValue("bnt")
   bnt,
-  @JsonValue('btk')
+  @JsonValue("btk")
   btk,
-  @JsonValue('cai')
+  @JsonValue("cai")
   cai,
-  @JsonValue('cau')
+  @JsonValue("cau")
   cau,
-  @JsonValue('cba')
+  @JsonValue("cba")
   cba,
-  @JsonValue('ccn')
+  @JsonValue("ccn")
   ccn,
-  @JsonValue('ccs')
+  @JsonValue("ccs")
   ccs,
-  @JsonValue('cdc')
+  @JsonValue("cdc")
   cdc,
-  @JsonValue('cdd')
+  @JsonValue("cdd")
   cdd,
-  @JsonValue('cel')
+  @JsonValue("cel")
   cel,
-  @JsonValue('cmc')
+  @JsonValue("cmc")
   cmc,
-  @JsonValue('cpe')
+  @JsonValue("cpe")
   cpe,
-  @JsonValue('cpf')
+  @JsonValue("cpf")
   cpf,
-  @JsonValue('cpp')
+  @JsonValue("cpp")
   cpp,
-  @JsonValue('crp')
+  @JsonValue("crp")
   crp,
-  @JsonValue('csu')
+  @JsonValue("csu")
   csu,
-  @JsonValue('cus')
+  @JsonValue("cus")
   cus,
-  @JsonValue('day')
+  @JsonValue("day")
   day,
-  @JsonValue('dmn')
+  @JsonValue("dmn")
   dmn,
-  @JsonValue('dra')
+  @JsonValue("dra")
   dra,
-  @JsonValue('egx')
+  @JsonValue("egx")
   egx,
-  @JsonValue('esx')
+  @JsonValue("esx")
   esx,
-  @JsonValue('euq')
+  @JsonValue("euq")
   euq,
-  @JsonValue('fiu')
+  @JsonValue("fiu")
   fiu,
-  @JsonValue('fox')
+  @JsonValue("fox")
   fox,
-  @JsonValue('gem')
+  @JsonValue("gem")
   gem,
-  @JsonValue('gme')
+  @JsonValue("gme")
   gme,
-  @JsonValue('gmq')
+  @JsonValue("gmq")
   gmq,
-  @JsonValue('gmw')
+  @JsonValue("gmw")
   gmw,
-  @JsonValue('grk')
+  @JsonValue("grk")
   grk,
-  @JsonValue('hmx')
+  @JsonValue("hmx")
   hmx,
-  @JsonValue('hok')
+  @JsonValue("hok")
   hok,
-  @JsonValue('hyx')
+  @JsonValue("hyx")
   hyx,
-  @JsonValue('iir')
+  @JsonValue("iir")
   iir,
-  @JsonValue('ijo')
+  @JsonValue("ijo")
   ijo,
-  @JsonValue('inc')
+  @JsonValue("inc")
   inc,
-  @JsonValue('ine')
+  @JsonValue("ine")
   ine,
-  @JsonValue('ira')
+  @JsonValue("ira")
   ira,
-  @JsonValue('iro')
+  @JsonValue("iro")
   iro,
-  @JsonValue('itc')
+  @JsonValue("itc")
   itc,
-  @JsonValue('jpx')
+  @JsonValue("jpx")
   jpx,
-  @JsonValue('kar')
+  @JsonValue("kar")
   kar,
-  @JsonValue('kdo')
+  @JsonValue("kdo")
   kdo,
-  @JsonValue('khi')
+  @JsonValue("khi")
   khi,
-  @JsonValue('kro')
+  @JsonValue("kro")
   kro,
-  @JsonValue('map')
+  @JsonValue("map")
   map,
-  @JsonValue('mkh')
+  @JsonValue("mkh")
   mkh,
-  @JsonValue('mno')
+  @JsonValue("mno")
   mno,
-  @JsonValue('mun')
+  @JsonValue("mun")
   mun,
-  @JsonValue('myn')
+  @JsonValue("myn")
   myn,
-  @JsonValue('nah')
+  @JsonValue("nah")
   nah,
-  @JsonValue('nai')
+  @JsonValue("nai")
   nai,
-  @JsonValue('ngf')
+  @JsonValue("ngf")
   ngf,
-  @JsonValue('nic')
+  @JsonValue("nic")
   nic,
-  @JsonValue('nub')
+  @JsonValue("nub")
   nub,
-  @JsonValue('omq')
+  @JsonValue("omq")
   omq,
-  @JsonValue('omv')
+  @JsonValue("omv")
   omv,
-  @JsonValue('oto')
+  @JsonValue("oto")
   oto,
-  @JsonValue('paa')
+  @JsonValue("paa")
   paa,
-  @JsonValue('phi')
+  @JsonValue("phi")
   phi,
-  @JsonValue('plf')
+  @JsonValue("plf")
   plf,
-  @JsonValue('poz')
+  @JsonValue("poz")
   poz,
-  @JsonValue('pqe')
+  @JsonValue("pqe")
   pqe,
-  @JsonValue('pqw')
+  @JsonValue("pqw")
   pqw,
-  @JsonValue('pra')
+  @JsonValue("pra")
   pra,
-  @JsonValue('qwe')
+  @JsonValue("qwe")
   qwe,
-  @JsonValue('roa')
+  @JsonValue("roa")
   roa,
-  @JsonValue('sai')
+  @JsonValue("sai")
   sai,
-  @JsonValue('sal')
+  @JsonValue("sal")
   sal,
-  @JsonValue('sdv')
+  @JsonValue("sdv")
   sdv,
-  @JsonValue('sem')
+  @JsonValue("sem")
   sem,
-  @JsonValue('sgn')
+  @JsonValue("sgn")
   sgn,
-  @JsonValue('sio')
+  @JsonValue("sio")
   sio,
-  @JsonValue('sit')
+  @JsonValue("sit")
   sit,
-  @JsonValue('sla')
+  @JsonValue("sla")
   sla,
-  @JsonValue('smi')
+  @JsonValue("smi")
   smi,
-  @JsonValue('son')
+  @JsonValue("son")
   son,
-  @JsonValue('sqj')
+  @JsonValue("sqj")
   sqj,
-  @JsonValue('ssa')
+  @JsonValue("ssa")
   ssa,
-  @JsonValue('syd')
+  @JsonValue("syd")
   syd,
-  @JsonValue('tai')
+  @JsonValue("tai")
   tai,
-  @JsonValue('tbq')
+  @JsonValue("tbq")
   tbq,
-  @JsonValue('trk')
+  @JsonValue("trk")
   trk,
-  @JsonValue('tup')
+  @JsonValue("tup")
   tup,
-  @JsonValue('tut')
+  @JsonValue("tut")
   tut,
-  @JsonValue('tuw')
+  @JsonValue("tuw")
   tuw,
-  @JsonValue('urj')
+  @JsonValue("urj")
   urj,
-  @JsonValue('wak')
+  @JsonValue("wak")
   wak,
-  @JsonValue('wen')
+  @JsonValue("wen")
   wen,
-  @JsonValue('xgn')
+  @JsonValue("xgn")
   xgn,
-  @JsonValue('xnd')
+  @JsonValue("xnd")
   xnd,
-  @JsonValue('ypk')
+  @JsonValue("ypk")
   ypk,
-  @JsonValue('zhx')
+  @JsonValue("zhx")
   zhx,
-  @JsonValue('zle')
+  @JsonValue("zle")
   zle,
-  @JsonValue('zls')
+  @JsonValue("zls")
   zls,
-  @JsonValue('zlw')
+  @JsonValue("zlw")
   zlw,
-  @JsonValue('znd')
+  @JsonValue("znd")
   znd;
 
   factory Iso6395.fromJson(String json) => Iso6395.values.firstWhere(
-        (e) => e.toJson() == json,
-        orElse: () => Iso6395.values.first,
-      );
+    (e) => e.toJson() == json,
+    orElse: () => Iso6395.values.first,
+  );
 
   String toJson() => _$Iso6395EnumMap[this]!;
 }

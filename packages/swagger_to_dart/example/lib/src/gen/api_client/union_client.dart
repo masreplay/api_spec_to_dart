@@ -1,4 +1,4 @@
-library;
+library union_client;
 
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
@@ -13,13 +13,14 @@ abstract class UnionClient {
     String? baseUrl,
   }) = _UnionClient;
 
-  @POST('/union/models/animal')
+  @POST("/union/models/animal")
   Future<HttpResponse<CreateAnimalResponse>> unionCreateAnimal({
     @Body() required Animal requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'union'],
       r'summary': r'Create an animal based on type discriminator',
       r'operationId': r'union-create_animal',

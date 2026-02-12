@@ -198,7 +198,7 @@
 ///     ],
 ///     "title": "ScriptCodeModel"
 /// }
-library;
+library script_code_model;
 
 import 'exports.dart';
 part 'script_code_model.freezed.dart';

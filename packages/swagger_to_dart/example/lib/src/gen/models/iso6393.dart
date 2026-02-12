@@ -7916,15838 +7916,15838 @@
 //     ]
 // }
 
-library;
+library iso6393;
 
 import 'exports.dart';
 part 'iso6393.g.dart';
 
 @JsonEnum(alwaysCreate: true)
 enum Iso6393 {
-  @JsonValue('aaa')
+  @JsonValue("aaa")
   aaa,
-  @JsonValue('aab')
+  @JsonValue("aab")
   aab,
-  @JsonValue('aac')
+  @JsonValue("aac")
   aac,
-  @JsonValue('aad')
+  @JsonValue("aad")
   aad,
-  @JsonValue('aae')
+  @JsonValue("aae")
   aae,
-  @JsonValue('aaf')
+  @JsonValue("aaf")
   aaf,
-  @JsonValue('aag')
+  @JsonValue("aag")
   aag,
-  @JsonValue('aah')
+  @JsonValue("aah")
   aah,
-  @JsonValue('aai')
+  @JsonValue("aai")
   aai,
-  @JsonValue('aak')
+  @JsonValue("aak")
   aak,
-  @JsonValue('aal')
+  @JsonValue("aal")
   aal,
-  @JsonValue('aan')
+  @JsonValue("aan")
   aan,
-  @JsonValue('aao')
+  @JsonValue("aao")
   aao,
-  @JsonValue('aap')
+  @JsonValue("aap")
   aap,
-  @JsonValue('aaq')
+  @JsonValue("aaq")
   aaq,
-  @JsonValue('aar')
+  @JsonValue("aar")
   aar,
-  @JsonValue('aas')
+  @JsonValue("aas")
   aas,
-  @JsonValue('aat')
+  @JsonValue("aat")
   aat,
-  @JsonValue('aau')
+  @JsonValue("aau")
   aau,
-  @JsonValue('aaw')
+  @JsonValue("aaw")
   aaw,
-  @JsonValue('aax')
+  @JsonValue("aax")
   aax,
-  @JsonValue('aaz')
+  @JsonValue("aaz")
   aaz,
-  @JsonValue('aba')
+  @JsonValue("aba")
   aba,
-  @JsonValue('abb')
+  @JsonValue("abb")
   abb,
-  @JsonValue('abc')
+  @JsonValue("abc")
   abc,
-  @JsonValue('abd')
+  @JsonValue("abd")
   abd,
-  @JsonValue('abe')
+  @JsonValue("abe")
   abe,
-  @JsonValue('abf')
+  @JsonValue("abf")
   abf,
-  @JsonValue('abg')
+  @JsonValue("abg")
   abg,
-  @JsonValue('abh')
+  @JsonValue("abh")
   abh,
-  @JsonValue('abi')
+  @JsonValue("abi")
   abi,
-  @JsonValue('abj')
+  @JsonValue("abj")
   abj,
-  @JsonValue('abk')
+  @JsonValue("abk")
   abk,
-  @JsonValue('abl')
+  @JsonValue("abl")
   abl,
-  @JsonValue('abm')
+  @JsonValue("abm")
   abm,
-  @JsonValue('abn')
+  @JsonValue("abn")
   abn,
-  @JsonValue('abo')
+  @JsonValue("abo")
   abo,
-  @JsonValue('abp')
+  @JsonValue("abp")
   abp,
-  @JsonValue('abq')
+  @JsonValue("abq")
   abq,
-  @JsonValue('abr')
+  @JsonValue("abr")
   abr,
-  @JsonValue('abs')
+  @JsonValue("abs")
   abs,
-  @JsonValue('abt')
+  @JsonValue("abt")
   abt,
-  @JsonValue('abu')
+  @JsonValue("abu")
   abu,
-  @JsonValue('abv')
+  @JsonValue("abv")
   abv,
-  @JsonValue('abw')
+  @JsonValue("abw")
   abw,
-  @JsonValue('abx')
+  @JsonValue("abx")
   abx,
-  @JsonValue('aby')
+  @JsonValue("aby")
   aby,
-  @JsonValue('abz')
+  @JsonValue("abz")
   abz,
-  @JsonValue('aca')
+  @JsonValue("aca")
   aca,
-  @JsonValue('acb')
+  @JsonValue("acb")
   acb,
-  @JsonValue('acd')
+  @JsonValue("acd")
   acd,
-  @JsonValue('ace')
+  @JsonValue("ace")
   ace,
-  @JsonValue('acf')
+  @JsonValue("acf")
   acf,
-  @JsonValue('ach')
+  @JsonValue("ach")
   ach,
-  @JsonValue('aci')
+  @JsonValue("aci")
   aci,
-  @JsonValue('ack')
+  @JsonValue("ack")
   ack,
-  @JsonValue('acl')
+  @JsonValue("acl")
   acl,
-  @JsonValue('acm')
+  @JsonValue("acm")
   acm,
-  @JsonValue('acn')
+  @JsonValue("acn")
   acn,
-  @JsonValue('acp')
+  @JsonValue("acp")
   acp,
-  @JsonValue('acq')
+  @JsonValue("acq")
   acq,
-  @JsonValue('acr')
+  @JsonValue("acr")
   acr,
-  @JsonValue('acs')
+  @JsonValue("acs")
   acs,
-  @JsonValue('act')
+  @JsonValue("act")
   act,
-  @JsonValue('acu')
+  @JsonValue("acu")
   acu,
-  @JsonValue('acv')
+  @JsonValue("acv")
   acv,
-  @JsonValue('acw')
+  @JsonValue("acw")
   acw,
-  @JsonValue('acx')
+  @JsonValue("acx")
   acx,
-  @JsonValue('acy')
+  @JsonValue("acy")
   acy,
-  @JsonValue('acz')
+  @JsonValue("acz")
   acz,
-  @JsonValue('ada')
+  @JsonValue("ada")
   ada,
-  @JsonValue('adb')
+  @JsonValue("adb")
   adb,
-  @JsonValue('add')
+  @JsonValue("add")
   add,
-  @JsonValue('ade')
+  @JsonValue("ade")
   ade,
-  @JsonValue('adf')
+  @JsonValue("adf")
   adf,
-  @JsonValue('adg')
+  @JsonValue("adg")
   adg,
-  @JsonValue('adh')
+  @JsonValue("adh")
   adh,
-  @JsonValue('adi')
+  @JsonValue("adi")
   adi,
-  @JsonValue('adj')
+  @JsonValue("adj")
   adj,
-  @JsonValue('adl')
+  @JsonValue("adl")
   adl,
-  @JsonValue('adn')
+  @JsonValue("adn")
   adn,
-  @JsonValue('ado')
+  @JsonValue("ado")
   ado,
-  @JsonValue('adq')
+  @JsonValue("adq")
   adq,
-  @JsonValue('adr')
+  @JsonValue("adr")
   adr,
-  @JsonValue('ads')
+  @JsonValue("ads")
   ads,
-  @JsonValue('adt')
+  @JsonValue("adt")
   adt,
-  @JsonValue('adu')
+  @JsonValue("adu")
   adu,
-  @JsonValue('adw')
+  @JsonValue("adw")
   adw,
-  @JsonValue('adx')
+  @JsonValue("adx")
   adx,
-  @JsonValue('ady')
+  @JsonValue("ady")
   ady,
-  @JsonValue('adz')
+  @JsonValue("adz")
   adz,
-  @JsonValue('aea')
+  @JsonValue("aea")
   aea,
-  @JsonValue('aeb')
+  @JsonValue("aeb")
   aeb,
-  @JsonValue('aec')
+  @JsonValue("aec")
   aec,
-  @JsonValue('aed')
+  @JsonValue("aed")
   aed,
-  @JsonValue('aee')
+  @JsonValue("aee")
   aee,
-  @JsonValue('aek')
+  @JsonValue("aek")
   aek,
-  @JsonValue('ael')
+  @JsonValue("ael")
   ael,
-  @JsonValue('aem')
+  @JsonValue("aem")
   aem,
-  @JsonValue('aen')
+  @JsonValue("aen")
   aen,
-  @JsonValue('aeq')
+  @JsonValue("aeq")
   aeq,
-  @JsonValue('aer')
+  @JsonValue("aer")
   aer,
-  @JsonValue('aes')
+  @JsonValue("aes")
   aes,
-  @JsonValue('aeu')
+  @JsonValue("aeu")
   aeu,
-  @JsonValue('aew')
+  @JsonValue("aew")
   aew,
-  @JsonValue('aey')
+  @JsonValue("aey")
   aey,
-  @JsonValue('aez')
+  @JsonValue("aez")
   aez,
-  @JsonValue('afb')
+  @JsonValue("afb")
   afb,
-  @JsonValue('afd')
+  @JsonValue("afd")
   afd,
-  @JsonValue('afe')
+  @JsonValue("afe")
   afe,
-  @JsonValue('afg')
+  @JsonValue("afg")
   afg,
-  @JsonValue('afh')
+  @JsonValue("afh")
   afh,
-  @JsonValue('afi')
+  @JsonValue("afi")
   afi,
-  @JsonValue('afk')
+  @JsonValue("afk")
   afk,
-  @JsonValue('afn')
+  @JsonValue("afn")
   afn,
-  @JsonValue('afo')
+  @JsonValue("afo")
   afo,
-  @JsonValue('afp')
+  @JsonValue("afp")
   afp,
-  @JsonValue('afr')
+  @JsonValue("afr")
   afr,
-  @JsonValue('afs')
+  @JsonValue("afs")
   afs,
-  @JsonValue('aft')
+  @JsonValue("aft")
   aft,
-  @JsonValue('afu')
+  @JsonValue("afu")
   afu,
-  @JsonValue('afz')
+  @JsonValue("afz")
   afz,
-  @JsonValue('aga')
+  @JsonValue("aga")
   aga,
-  @JsonValue('agb')
+  @JsonValue("agb")
   agb,
-  @JsonValue('agc')
+  @JsonValue("agc")
   agc,
-  @JsonValue('agd')
+  @JsonValue("agd")
   agd,
-  @JsonValue('age')
+  @JsonValue("age")
   age,
-  @JsonValue('agf')
+  @JsonValue("agf")
   agf,
-  @JsonValue('agg')
+  @JsonValue("agg")
   agg,
-  @JsonValue('agh')
+  @JsonValue("agh")
   agh,
-  @JsonValue('agi')
+  @JsonValue("agi")
   agi,
-  @JsonValue('agj')
+  @JsonValue("agj")
   agj,
-  @JsonValue('agk')
+  @JsonValue("agk")
   agk,
-  @JsonValue('agl')
+  @JsonValue("agl")
   agl,
-  @JsonValue('agm')
+  @JsonValue("agm")
   agm,
-  @JsonValue('agn')
+  @JsonValue("agn")
   agn,
-  @JsonValue('ago')
+  @JsonValue("ago")
   ago,
-  @JsonValue('agq')
+  @JsonValue("agq")
   agq,
-  @JsonValue('agr')
+  @JsonValue("agr")
   agr,
-  @JsonValue('ags')
+  @JsonValue("ags")
   ags,
-  @JsonValue('agt')
+  @JsonValue("agt")
   agt,
-  @JsonValue('agu')
+  @JsonValue("agu")
   agu,
-  @JsonValue('agv')
+  @JsonValue("agv")
   agv,
-  @JsonValue('agw')
+  @JsonValue("agw")
   agw,
-  @JsonValue('agx')
+  @JsonValue("agx")
   agx,
-  @JsonValue('agy')
+  @JsonValue("agy")
   agy,
-  @JsonValue('agz')
+  @JsonValue("agz")
   agz,
-  @JsonValue('aha')
+  @JsonValue("aha")
   aha,
-  @JsonValue('ahb')
+  @JsonValue("ahb")
   ahb,
-  @JsonValue('ahg')
+  @JsonValue("ahg")
   ahg,
-  @JsonValue('ahh')
+  @JsonValue("ahh")
   ahh,
-  @JsonValue('ahi')
+  @JsonValue("ahi")
   ahi,
-  @JsonValue('ahk')
+  @JsonValue("ahk")
   ahk,
-  @JsonValue('ahl')
+  @JsonValue("ahl")
   ahl,
-  @JsonValue('ahm')
+  @JsonValue("ahm")
   ahm,
-  @JsonValue('ahn')
+  @JsonValue("ahn")
   ahn,
-  @JsonValue('aho')
+  @JsonValue("aho")
   aho,
-  @JsonValue('ahp')
+  @JsonValue("ahp")
   ahp,
-  @JsonValue('ahr')
+  @JsonValue("ahr")
   ahr,
-  @JsonValue('ahs')
+  @JsonValue("ahs")
   ahs,
-  @JsonValue('aht')
+  @JsonValue("aht")
   aht,
-  @JsonValue('aia')
+  @JsonValue("aia")
   aia,
-  @JsonValue('aib')
+  @JsonValue("aib")
   aib,
-  @JsonValue('aic')
+  @JsonValue("aic")
   aic,
-  @JsonValue('aid')
+  @JsonValue("aid")
   aid,
-  @JsonValue('aie')
+  @JsonValue("aie")
   aie,
-  @JsonValue('aif')
+  @JsonValue("aif")
   aif,
-  @JsonValue('aig')
+  @JsonValue("aig")
   aig,
-  @JsonValue('aih')
+  @JsonValue("aih")
   aih,
-  @JsonValue('aii')
+  @JsonValue("aii")
   aii,
-  @JsonValue('aij')
+  @JsonValue("aij")
   aij,
-  @JsonValue('aik')
+  @JsonValue("aik")
   aik,
-  @JsonValue('ail')
+  @JsonValue("ail")
   ail,
-  @JsonValue('aim')
+  @JsonValue("aim")
   aim,
-  @JsonValue('ain')
+  @JsonValue("ain")
   ain,
-  @JsonValue('aio')
+  @JsonValue("aio")
   aio,
-  @JsonValue('aip')
+  @JsonValue("aip")
   aip,
-  @JsonValue('aiq')
+  @JsonValue("aiq")
   aiq,
-  @JsonValue('air')
+  @JsonValue("air")
   air,
-  @JsonValue('ait')
+  @JsonValue("ait")
   ait,
-  @JsonValue('aiw')
+  @JsonValue("aiw")
   aiw,
-  @JsonValue('aix')
+  @JsonValue("aix")
   aix,
-  @JsonValue('aiy')
+  @JsonValue("aiy")
   aiy,
-  @JsonValue('aja')
+  @JsonValue("aja")
   aja,
-  @JsonValue('ajg')
+  @JsonValue("ajg")
   ajg,
-  @JsonValue('aji')
+  @JsonValue("aji")
   aji,
-  @JsonValue('ajn')
+  @JsonValue("ajn")
   ajn,
-  @JsonValue('ajp')
+  @JsonValue("ajp")
   ajp,
-  @JsonValue('ajs')
+  @JsonValue("ajs")
   ajs,
-  @JsonValue('aju')
+  @JsonValue("aju")
   aju,
-  @JsonValue('ajw')
+  @JsonValue("ajw")
   ajw,
-  @JsonValue('ajz')
+  @JsonValue("ajz")
   ajz,
-  @JsonValue('aka')
+  @JsonValue("aka")
   aka,
-  @JsonValue('akb')
+  @JsonValue("akb")
   akb,
-  @JsonValue('akc')
+  @JsonValue("akc")
   akc,
-  @JsonValue('akd')
+  @JsonValue("akd")
   akd,
-  @JsonValue('ake')
+  @JsonValue("ake")
   ake,
-  @JsonValue('akf')
+  @JsonValue("akf")
   akf,
-  @JsonValue('akg')
+  @JsonValue("akg")
   akg,
-  @JsonValue('akh')
+  @JsonValue("akh")
   akh,
-  @JsonValue('aki')
+  @JsonValue("aki")
   aki,
-  @JsonValue('akj')
+  @JsonValue("akj")
   akj,
-  @JsonValue('akk')
+  @JsonValue("akk")
   akk,
-  @JsonValue('akl')
+  @JsonValue("akl")
   akl,
-  @JsonValue('akm')
+  @JsonValue("akm")
   akm,
-  @JsonValue('ako')
+  @JsonValue("ako")
   ako,
-  @JsonValue('akp')
+  @JsonValue("akp")
   akp,
-  @JsonValue('akq')
+  @JsonValue("akq")
   akq,
-  @JsonValue('akr')
+  @JsonValue("akr")
   akr,
-  @JsonValue('aks')
+  @JsonValue("aks")
   aks,
-  @JsonValue('akt')
+  @JsonValue("akt")
   akt,
-  @JsonValue('aku')
+  @JsonValue("aku")
   aku,
-  @JsonValue('akv')
+  @JsonValue("akv")
   akv,
-  @JsonValue('akw')
+  @JsonValue("akw")
   akw,
-  @JsonValue('akx')
+  @JsonValue("akx")
   akx,
-  @JsonValue('aky')
+  @JsonValue("aky")
   aky,
-  @JsonValue('akz')
+  @JsonValue("akz")
   akz,
-  @JsonValue('ala')
+  @JsonValue("ala")
   ala,
-  @JsonValue('alc')
+  @JsonValue("alc")
   alc,
-  @JsonValue('ald')
+  @JsonValue("ald")
   ald,
-  @JsonValue('ale')
+  @JsonValue("ale")
   ale,
-  @JsonValue('alf')
+  @JsonValue("alf")
   alf,
-  @JsonValue('alh')
+  @JsonValue("alh")
   alh,
-  @JsonValue('ali')
+  @JsonValue("ali")
   ali,
-  @JsonValue('alj')
+  @JsonValue("alj")
   alj,
-  @JsonValue('alk')
+  @JsonValue("alk")
   alk,
-  @JsonValue('all')
+  @JsonValue("all")
   all,
-  @JsonValue('alm')
+  @JsonValue("alm")
   alm,
-  @JsonValue('aln')
+  @JsonValue("aln")
   aln,
-  @JsonValue('alo')
+  @JsonValue("alo")
   alo,
-  @JsonValue('alp')
+  @JsonValue("alp")
   alp,
-  @JsonValue('alq')
+  @JsonValue("alq")
   alq,
-  @JsonValue('alr')
+  @JsonValue("alr")
   alr,
-  @JsonValue('als')
+  @JsonValue("als")
   als,
-  @JsonValue('alt')
+  @JsonValue("alt")
   alt,
-  @JsonValue('alu')
+  @JsonValue("alu")
   alu,
-  @JsonValue('alw')
+  @JsonValue("alw")
   alw,
-  @JsonValue('alx')
+  @JsonValue("alx")
   alx,
-  @JsonValue('aly')
+  @JsonValue("aly")
   aly,
-  @JsonValue('alz')
+  @JsonValue("alz")
   alz,
-  @JsonValue('ama')
+  @JsonValue("ama")
   ama,
-  @JsonValue('amb')
+  @JsonValue("amb")
   amb,
-  @JsonValue('amc')
+  @JsonValue("amc")
   amc,
-  @JsonValue('ame')
+  @JsonValue("ame")
   ame,
-  @JsonValue('amf')
+  @JsonValue("amf")
   amf,
-  @JsonValue('amg')
+  @JsonValue("amg")
   amg,
-  @JsonValue('amh')
+  @JsonValue("amh")
   amh,
-  @JsonValue('ami')
+  @JsonValue("ami")
   ami,
-  @JsonValue('amj')
+  @JsonValue("amj")
   amj,
-  @JsonValue('amk')
+  @JsonValue("amk")
   amk,
-  @JsonValue('aml')
+  @JsonValue("aml")
   aml,
-  @JsonValue('amm')
+  @JsonValue("amm")
   amm,
-  @JsonValue('amn')
+  @JsonValue("amn")
   amn,
-  @JsonValue('amo')
+  @JsonValue("amo")
   amo,
-  @JsonValue('amp')
+  @JsonValue("amp")
   amp,
-  @JsonValue('amq')
+  @JsonValue("amq")
   amq,
-  @JsonValue('amr')
+  @JsonValue("amr")
   amr,
-  @JsonValue('ams')
+  @JsonValue("ams")
   ams,
-  @JsonValue('amt')
+  @JsonValue("amt")
   amt,
-  @JsonValue('amu')
+  @JsonValue("amu")
   amu,
-  @JsonValue('amv')
+  @JsonValue("amv")
   amv,
-  @JsonValue('amw')
+  @JsonValue("amw")
   amw,
-  @JsonValue('amx')
+  @JsonValue("amx")
   amx,
-  @JsonValue('amy')
+  @JsonValue("amy")
   amy,
-  @JsonValue('amz')
+  @JsonValue("amz")
   amz,
-  @JsonValue('ana')
+  @JsonValue("ana")
   ana,
-  @JsonValue('anb')
+  @JsonValue("anb")
   anb,
-  @JsonValue('anc')
+  @JsonValue("anc")
   anc,
-  @JsonValue('and')
+  @JsonValue("and")
   and,
-  @JsonValue('ane')
+  @JsonValue("ane")
   ane,
-  @JsonValue('anf')
+  @JsonValue("anf")
   anf,
-  @JsonValue('ang')
+  @JsonValue("ang")
   ang,
-  @JsonValue('anh')
+  @JsonValue("anh")
   anh,
-  @JsonValue('ani')
+  @JsonValue("ani")
   ani,
-  @JsonValue('anj')
+  @JsonValue("anj")
   anj,
-  @JsonValue('ank')
+  @JsonValue("ank")
   ank,
-  @JsonValue('anl')
+  @JsonValue("anl")
   anl,
-  @JsonValue('anm')
+  @JsonValue("anm")
   anm,
-  @JsonValue('ann')
+  @JsonValue("ann")
   ann,
-  @JsonValue('ano')
+  @JsonValue("ano")
   ano,
-  @JsonValue('anp')
+  @JsonValue("anp")
   anp,
-  @JsonValue('anq')
+  @JsonValue("anq")
   anq,
-  @JsonValue('anr')
+  @JsonValue("anr")
   anr,
-  @JsonValue('ans')
+  @JsonValue("ans")
   ans,
-  @JsonValue('ant')
+  @JsonValue("ant")
   ant,
-  @JsonValue('anu')
+  @JsonValue("anu")
   anu,
-  @JsonValue('anv')
+  @JsonValue("anv")
   anv,
-  @JsonValue('anw')
+  @JsonValue("anw")
   anw,
-  @JsonValue('anx')
+  @JsonValue("anx")
   anx,
-  @JsonValue('any')
+  @JsonValue("any")
   any,
-  @JsonValue('anz')
+  @JsonValue("anz")
   anz,
-  @JsonValue('aoa')
+  @JsonValue("aoa")
   aoa,
-  @JsonValue('aob')
+  @JsonValue("aob")
   aob,
-  @JsonValue('aoc')
+  @JsonValue("aoc")
   aoc,
-  @JsonValue('aod')
+  @JsonValue("aod")
   aod,
-  @JsonValue('aoe')
+  @JsonValue("aoe")
   aoe,
-  @JsonValue('aof')
+  @JsonValue("aof")
   aof,
-  @JsonValue('aog')
+  @JsonValue("aog")
   aog,
-  @JsonValue('aoi')
+  @JsonValue("aoi")
   aoi,
-  @JsonValue('aoj')
+  @JsonValue("aoj")
   aoj,
-  @JsonValue('aok')
+  @JsonValue("aok")
   aok,
-  @JsonValue('aol')
+  @JsonValue("aol")
   aol,
-  @JsonValue('aom')
+  @JsonValue("aom")
   aom,
-  @JsonValue('aon')
+  @JsonValue("aon")
   aon,
-  @JsonValue('aor')
+  @JsonValue("aor")
   aor,
-  @JsonValue('aos')
+  @JsonValue("aos")
   aos,
-  @JsonValue('aot')
+  @JsonValue("aot")
   aot,
-  @JsonValue('aou')
+  @JsonValue("aou")
   aou,
-  @JsonValue('aox')
+  @JsonValue("aox")
   aox,
-  @JsonValue('aoz')
+  @JsonValue("aoz")
   aoz,
-  @JsonValue('apb')
+  @JsonValue("apb")
   apb,
-  @JsonValue('apc')
+  @JsonValue("apc")
   apc,
-  @JsonValue('apd')
+  @JsonValue("apd")
   apd,
-  @JsonValue('ape')
+  @JsonValue("ape")
   ape,
-  @JsonValue('apf')
+  @JsonValue("apf")
   apf,
-  @JsonValue('apg')
+  @JsonValue("apg")
   apg,
-  @JsonValue('aph')
+  @JsonValue("aph")
   aph,
-  @JsonValue('api')
+  @JsonValue("api")
   api,
-  @JsonValue('apj')
+  @JsonValue("apj")
   apj,
-  @JsonValue('apk')
+  @JsonValue("apk")
   apk,
-  @JsonValue('apl')
+  @JsonValue("apl")
   apl,
-  @JsonValue('apm')
+  @JsonValue("apm")
   apm,
-  @JsonValue('apn')
+  @JsonValue("apn")
   apn,
-  @JsonValue('apo')
+  @JsonValue("apo")
   apo,
-  @JsonValue('app')
+  @JsonValue("app")
   app,
-  @JsonValue('apq')
+  @JsonValue("apq")
   apq,
-  @JsonValue('apr')
+  @JsonValue("apr")
   apr,
-  @JsonValue('aps')
+  @JsonValue("aps")
   aps,
-  @JsonValue('apt')
+  @JsonValue("apt")
   apt,
-  @JsonValue('apu')
+  @JsonValue("apu")
   apu,
-  @JsonValue('apv')
+  @JsonValue("apv")
   apv,
-  @JsonValue('apw')
+  @JsonValue("apw")
   apw,
-  @JsonValue('apx')
+  @JsonValue("apx")
   apx,
-  @JsonValue('apy')
+  @JsonValue("apy")
   apy,
-  @JsonValue('apz')
+  @JsonValue("apz")
   apz,
-  @JsonValue('aqc')
+  @JsonValue("aqc")
   aqc,
-  @JsonValue('aqd')
+  @JsonValue("aqd")
   aqd,
-  @JsonValue('aqg')
+  @JsonValue("aqg")
   aqg,
-  @JsonValue('aqk')
+  @JsonValue("aqk")
   aqk,
-  @JsonValue('aqm')
+  @JsonValue("aqm")
   aqm,
-  @JsonValue('aqn')
+  @JsonValue("aqn")
   aqn,
-  @JsonValue('aqp')
+  @JsonValue("aqp")
   aqp,
-  @JsonValue('aqr')
+  @JsonValue("aqr")
   aqr,
-  @JsonValue('aqt')
+  @JsonValue("aqt")
   aqt,
-  @JsonValue('aqz')
+  @JsonValue("aqz")
   aqz,
-  @JsonValue('ara')
+  @JsonValue("ara")
   ara,
-  @JsonValue('arb')
+  @JsonValue("arb")
   arb,
-  @JsonValue('arc')
+  @JsonValue("arc")
   arc,
-  @JsonValue('ard')
+  @JsonValue("ard")
   ard,
-  @JsonValue('are')
+  @JsonValue("are")
   are,
-  @JsonValue('arg')
+  @JsonValue("arg")
   arg,
-  @JsonValue('arh')
+  @JsonValue("arh")
   arh,
-  @JsonValue('ari')
+  @JsonValue("ari")
   ari,
-  @JsonValue('arj')
+  @JsonValue("arj")
   arj,
-  @JsonValue('ark')
+  @JsonValue("ark")
   ark,
-  @JsonValue('arl')
+  @JsonValue("arl")
   arl,
-  @JsonValue('arn')
+  @JsonValue("arn")
   arn,
-  @JsonValue('aro')
+  @JsonValue("aro")
   aro,
-  @JsonValue('arp')
+  @JsonValue("arp")
   arp,
-  @JsonValue('arq')
+  @JsonValue("arq")
   arq,
-  @JsonValue('arr')
+  @JsonValue("arr")
   arr,
-  @JsonValue('ars')
+  @JsonValue("ars")
   ars,
-  @JsonValue('aru')
+  @JsonValue("aru")
   aru,
-  @JsonValue('arv')
+  @JsonValue("arv")
   arv,
-  @JsonValue('arw')
+  @JsonValue("arw")
   arw,
-  @JsonValue('arx')
+  @JsonValue("arx")
   arx,
-  @JsonValue('ary')
+  @JsonValue("ary")
   ary,
-  @JsonValue('arz')
+  @JsonValue("arz")
   arz,
-  @JsonValue('asa')
+  @JsonValue("asa")
   asa,
-  @JsonValue('asb')
+  @JsonValue("asb")
   asb,
-  @JsonValue('asc')
+  @JsonValue("asc")
   asc,
-  @JsonValue('ase')
+  @JsonValue("ase")
   ase,
-  @JsonValue('asf')
+  @JsonValue("asf")
   asf,
-  @JsonValue('asg')
+  @JsonValue("asg")
   asg,
-  @JsonValue('ash')
+  @JsonValue("ash")
   ash,
-  @JsonValue('asi')
+  @JsonValue("asi")
   asi,
-  @JsonValue('asj')
+  @JsonValue("asj")
   asj,
-  @JsonValue('ask')
+  @JsonValue("ask")
   ask,
-  @JsonValue('asl')
+  @JsonValue("asl")
   asl,
-  @JsonValue('asm')
+  @JsonValue("asm")
   asm,
-  @JsonValue('asn')
+  @JsonValue("asn")
   asn,
-  @JsonValue('aso')
+  @JsonValue("aso")
   aso,
-  @JsonValue('asp')
+  @JsonValue("asp")
   asp,
-  @JsonValue('asq')
+  @JsonValue("asq")
   asq,
-  @JsonValue('asr')
+  @JsonValue("asr")
   asr,
-  @JsonValue('ass')
+  @JsonValue("ass")
   ass,
-  @JsonValue('ast')
+  @JsonValue("ast")
   ast,
-  @JsonValue('asu')
+  @JsonValue("asu")
   asu,
-  @JsonValue('asv')
+  @JsonValue("asv")
   asv,
-  @JsonValue('asw')
+  @JsonValue("asw")
   asw,
-  @JsonValue('asx')
+  @JsonValue("asx")
   asx,
-  @JsonValue('asy')
+  @JsonValue("asy")
   asy,
-  @JsonValue('asz')
+  @JsonValue("asz")
   asz,
-  @JsonValue('ata')
+  @JsonValue("ata")
   ata,
-  @JsonValue('atb')
+  @JsonValue("atb")
   atb,
-  @JsonValue('atc')
+  @JsonValue("atc")
   atc,
-  @JsonValue('atd')
+  @JsonValue("atd")
   atd,
-  @JsonValue('ate')
+  @JsonValue("ate")
   ate,
-  @JsonValue('atg')
+  @JsonValue("atg")
   atg,
-  @JsonValue('ati')
+  @JsonValue("ati")
   ati,
-  @JsonValue('atj')
+  @JsonValue("atj")
   atj,
-  @JsonValue('atk')
+  @JsonValue("atk")
   atk,
-  @JsonValue('atl')
+  @JsonValue("atl")
   atl,
-  @JsonValue('atm')
+  @JsonValue("atm")
   atm,
-  @JsonValue('atn')
+  @JsonValue("atn")
   atn,
-  @JsonValue('ato')
+  @JsonValue("ato")
   ato,
-  @JsonValue('atp')
+  @JsonValue("atp")
   atp,
-  @JsonValue('atq')
+  @JsonValue("atq")
   atq,
-  @JsonValue('atr')
+  @JsonValue("atr")
   atr,
-  @JsonValue('ats')
+  @JsonValue("ats")
   ats,
-  @JsonValue('att')
+  @JsonValue("att")
   att,
-  @JsonValue('atu')
+  @JsonValue("atu")
   atu,
-  @JsonValue('atv')
+  @JsonValue("atv")
   atv,
-  @JsonValue('atw')
+  @JsonValue("atw")
   atw,
-  @JsonValue('atx')
+  @JsonValue("atx")
   atx,
-  @JsonValue('aty')
+  @JsonValue("aty")
   aty,
-  @JsonValue('atz')
+  @JsonValue("atz")
   atz,
-  @JsonValue('aua')
+  @JsonValue("aua")
   aua,
-  @JsonValue('aub')
+  @JsonValue("aub")
   aub,
-  @JsonValue('auc')
+  @JsonValue("auc")
   auc,
-  @JsonValue('aud')
+  @JsonValue("aud")
   aud,
-  @JsonValue('aug')
+  @JsonValue("aug")
   aug,
-  @JsonValue('auh')
+  @JsonValue("auh")
   auh,
-  @JsonValue('aui')
+  @JsonValue("aui")
   aui,
-  @JsonValue('auj')
+  @JsonValue("auj")
   auj,
-  @JsonValue('auk')
+  @JsonValue("auk")
   auk,
-  @JsonValue('aul')
+  @JsonValue("aul")
   aul,
-  @JsonValue('aum')
+  @JsonValue("aum")
   aum,
-  @JsonValue('aun')
+  @JsonValue("aun")
   aun,
-  @JsonValue('auo')
+  @JsonValue("auo")
   auo,
-  @JsonValue('aup')
+  @JsonValue("aup")
   aup,
-  @JsonValue('auq')
+  @JsonValue("auq")
   auq,
-  @JsonValue('aur')
+  @JsonValue("aur")
   aur,
-  @JsonValue('aut')
+  @JsonValue("aut")
   aut,
-  @JsonValue('auu')
+  @JsonValue("auu")
   auu,
-  @JsonValue('auw')
+  @JsonValue("auw")
   auw,
-  @JsonValue('aux')
+  @JsonValue("aux")
   aux,
-  @JsonValue('auy')
+  @JsonValue("auy")
   auy,
-  @JsonValue('auz')
+  @JsonValue("auz")
   auz,
-  @JsonValue('ava')
+  @JsonValue("ava")
   ava,
-  @JsonValue('avb')
+  @JsonValue("avb")
   avb,
-  @JsonValue('avd')
+  @JsonValue("avd")
   avd,
-  @JsonValue('ave')
+  @JsonValue("ave")
   ave,
-  @JsonValue('avi')
+  @JsonValue("avi")
   avi,
-  @JsonValue('avk')
+  @JsonValue("avk")
   avk,
-  @JsonValue('avl')
+  @JsonValue("avl")
   avl,
-  @JsonValue('avm')
+  @JsonValue("avm")
   avm,
-  @JsonValue('avn')
+  @JsonValue("avn")
   avn,
-  @JsonValue('avo')
+  @JsonValue("avo")
   avo,
-  @JsonValue('avs')
+  @JsonValue("avs")
   avs,
-  @JsonValue('avt')
+  @JsonValue("avt")
   avt,
-  @JsonValue('avu')
+  @JsonValue("avu")
   avu,
-  @JsonValue('avv')
+  @JsonValue("avv")
   avv,
-  @JsonValue('awa')
+  @JsonValue("awa")
   awa,
-  @JsonValue('awb')
+  @JsonValue("awb")
   awb,
-  @JsonValue('awc')
+  @JsonValue("awc")
   awc,
-  @JsonValue('awe')
+  @JsonValue("awe")
   awe,
-  @JsonValue('awg')
+  @JsonValue("awg")
   awg,
-  @JsonValue('awh')
+  @JsonValue("awh")
   awh,
-  @JsonValue('awi')
+  @JsonValue("awi")
   awi,
-  @JsonValue('awk')
+  @JsonValue("awk")
   awk,
-  @JsonValue('awm')
+  @JsonValue("awm")
   awm,
-  @JsonValue('awn')
+  @JsonValue("awn")
   awn,
-  @JsonValue('awo')
+  @JsonValue("awo")
   awo,
-  @JsonValue('awr')
+  @JsonValue("awr")
   awr,
-  @JsonValue('aws')
+  @JsonValue("aws")
   aws,
-  @JsonValue('awt')
+  @JsonValue("awt")
   awt,
-  @JsonValue('awu')
+  @JsonValue("awu")
   awu,
-  @JsonValue('awv')
+  @JsonValue("awv")
   awv,
-  @JsonValue('aww')
+  @JsonValue("aww")
   aww,
-  @JsonValue('awx')
+  @JsonValue("awx")
   awx,
-  @JsonValue('awy')
+  @JsonValue("awy")
   awy,
-  @JsonValue('axb')
+  @JsonValue("axb")
   axb,
-  @JsonValue('axe')
+  @JsonValue("axe")
   axe,
-  @JsonValue('axg')
+  @JsonValue("axg")
   axg,
-  @JsonValue('axk')
+  @JsonValue("axk")
   axk,
-  @JsonValue('axl')
+  @JsonValue("axl")
   axl,
-  @JsonValue('axm')
+  @JsonValue("axm")
   axm,
-  @JsonValue('axx')
+  @JsonValue("axx")
   axx,
-  @JsonValue('aya')
+  @JsonValue("aya")
   aya,
-  @JsonValue('ayb')
+  @JsonValue("ayb")
   ayb,
-  @JsonValue('ayc')
+  @JsonValue("ayc")
   ayc,
-  @JsonValue('ayd')
+  @JsonValue("ayd")
   ayd,
-  @JsonValue('aye')
+  @JsonValue("aye")
   aye,
-  @JsonValue('ayg')
+  @JsonValue("ayg")
   ayg,
-  @JsonValue('ayh')
+  @JsonValue("ayh")
   ayh,
-  @JsonValue('ayi')
+  @JsonValue("ayi")
   ayi,
-  @JsonValue('ayk')
+  @JsonValue("ayk")
   ayk,
-  @JsonValue('ayl')
+  @JsonValue("ayl")
   ayl,
-  @JsonValue('aym')
+  @JsonValue("aym")
   aym,
-  @JsonValue('ayn')
+  @JsonValue("ayn")
   ayn,
-  @JsonValue('ayo')
+  @JsonValue("ayo")
   ayo,
-  @JsonValue('ayp')
+  @JsonValue("ayp")
   ayp,
-  @JsonValue('ayq')
+  @JsonValue("ayq")
   ayq,
-  @JsonValue('ayr')
+  @JsonValue("ayr")
   ayr,
-  @JsonValue('ays')
+  @JsonValue("ays")
   ays,
-  @JsonValue('ayt')
+  @JsonValue("ayt")
   ayt,
-  @JsonValue('ayu')
+  @JsonValue("ayu")
   ayu,
-  @JsonValue('ayz')
+  @JsonValue("ayz")
   ayz,
-  @JsonValue('aza')
+  @JsonValue("aza")
   aza,
-  @JsonValue('azb')
+  @JsonValue("azb")
   azb,
-  @JsonValue('azd')
+  @JsonValue("azd")
   azd,
-  @JsonValue('aze')
+  @JsonValue("aze")
   aze,
-  @JsonValue('azg')
+  @JsonValue("azg")
   azg,
-  @JsonValue('azj')
+  @JsonValue("azj")
   azj,
-  @JsonValue('azm')
+  @JsonValue("azm")
   azm,
-  @JsonValue('azn')
+  @JsonValue("azn")
   azn,
-  @JsonValue('azo')
+  @JsonValue("azo")
   azo,
-  @JsonValue('azt')
+  @JsonValue("azt")
   azt,
-  @JsonValue('azz')
+  @JsonValue("azz")
   azz,
-  @JsonValue('baa')
+  @JsonValue("baa")
   baa,
-  @JsonValue('bab')
+  @JsonValue("bab")
   bab,
-  @JsonValue('bac')
+  @JsonValue("bac")
   bac,
-  @JsonValue('bae')
+  @JsonValue("bae")
   bae,
-  @JsonValue('baf')
+  @JsonValue("baf")
   baf,
-  @JsonValue('bag')
+  @JsonValue("bag")
   bag,
-  @JsonValue('bah')
+  @JsonValue("bah")
   bah,
-  @JsonValue('baj')
+  @JsonValue("baj")
   baj,
-  @JsonValue('bak')
+  @JsonValue("bak")
   bak,
-  @JsonValue('bal')
+  @JsonValue("bal")
   bal,
-  @JsonValue('bam')
+  @JsonValue("bam")
   bam,
-  @JsonValue('ban')
+  @JsonValue("ban")
   ban,
-  @JsonValue('bao')
+  @JsonValue("bao")
   bao,
-  @JsonValue('bap')
+  @JsonValue("bap")
   bap,
-  @JsonValue('bar')
+  @JsonValue("bar")
   bar,
-  @JsonValue('bas')
+  @JsonValue("bas")
   bas,
-  @JsonValue('bau')
+  @JsonValue("bau")
   bau,
-  @JsonValue('bav')
+  @JsonValue("bav")
   bav,
-  @JsonValue('baw')
+  @JsonValue("baw")
   baw,
-  @JsonValue('bax')
+  @JsonValue("bax")
   bax,
-  @JsonValue('bay')
+  @JsonValue("bay")
   bay,
-  @JsonValue('bba')
+  @JsonValue("bba")
   bba,
-  @JsonValue('bbb')
+  @JsonValue("bbb")
   bbb,
-  @JsonValue('bbc')
+  @JsonValue("bbc")
   bbc,
-  @JsonValue('bbd')
+  @JsonValue("bbd")
   bbd,
-  @JsonValue('bbe')
+  @JsonValue("bbe")
   bbe,
-  @JsonValue('bbf')
+  @JsonValue("bbf")
   bbf,
-  @JsonValue('bbg')
+  @JsonValue("bbg")
   bbg,
-  @JsonValue('bbh')
+  @JsonValue("bbh")
   bbh,
-  @JsonValue('bbi')
+  @JsonValue("bbi")
   bbi,
-  @JsonValue('bbj')
+  @JsonValue("bbj")
   bbj,
-  @JsonValue('bbk')
+  @JsonValue("bbk")
   bbk,
-  @JsonValue('bbl')
+  @JsonValue("bbl")
   bbl,
-  @JsonValue('bbm')
+  @JsonValue("bbm")
   bbm,
-  @JsonValue('bbn')
+  @JsonValue("bbn")
   bbn,
-  @JsonValue('bbo')
+  @JsonValue("bbo")
   bbo,
-  @JsonValue('bbp')
+  @JsonValue("bbp")
   bbp,
-  @JsonValue('bbq')
+  @JsonValue("bbq")
   bbq,
-  @JsonValue('bbr')
+  @JsonValue("bbr")
   bbr,
-  @JsonValue('bbs')
+  @JsonValue("bbs")
   bbs,
-  @JsonValue('bbt')
+  @JsonValue("bbt")
   bbt,
-  @JsonValue('bbu')
+  @JsonValue("bbu")
   bbu,
-  @JsonValue('bbv')
+  @JsonValue("bbv")
   bbv,
-  @JsonValue('bbw')
+  @JsonValue("bbw")
   bbw,
-  @JsonValue('bbx')
+  @JsonValue("bbx")
   bbx,
-  @JsonValue('bby')
+  @JsonValue("bby")
   bby,
-  @JsonValue('bca')
+  @JsonValue("bca")
   bca,
-  @JsonValue('bcb')
+  @JsonValue("bcb")
   bcb,
-  @JsonValue('bcc')
+  @JsonValue("bcc")
   bcc,
-  @JsonValue('bcd')
+  @JsonValue("bcd")
   bcd,
-  @JsonValue('bce')
+  @JsonValue("bce")
   bce,
-  @JsonValue('bcf')
+  @JsonValue("bcf")
   bcf,
-  @JsonValue('bcg')
+  @JsonValue("bcg")
   bcg,
-  @JsonValue('bch')
+  @JsonValue("bch")
   bch,
-  @JsonValue('bci')
+  @JsonValue("bci")
   bci,
-  @JsonValue('bcj')
+  @JsonValue("bcj")
   bcj,
-  @JsonValue('bck')
+  @JsonValue("bck")
   bck,
-  @JsonValue('bcl')
+  @JsonValue("bcl")
   bcl,
-  @JsonValue('bcm')
+  @JsonValue("bcm")
   bcm,
-  @JsonValue('bcn')
+  @JsonValue("bcn")
   bcn,
-  @JsonValue('bco')
+  @JsonValue("bco")
   bco,
-  @JsonValue('bcp')
+  @JsonValue("bcp")
   bcp,
-  @JsonValue('bcq')
+  @JsonValue("bcq")
   bcq,
-  @JsonValue('bcr')
+  @JsonValue("bcr")
   bcr,
-  @JsonValue('bcs')
+  @JsonValue("bcs")
   bcs,
-  @JsonValue('bct')
+  @JsonValue("bct")
   bct,
-  @JsonValue('bcu')
+  @JsonValue("bcu")
   bcu,
-  @JsonValue('bcv')
+  @JsonValue("bcv")
   bcv,
-  @JsonValue('bcw')
+  @JsonValue("bcw")
   bcw,
-  @JsonValue('bcy')
+  @JsonValue("bcy")
   bcy,
-  @JsonValue('bcz')
+  @JsonValue("bcz")
   bcz,
-  @JsonValue('bda')
+  @JsonValue("bda")
   bda,
-  @JsonValue('bdb')
+  @JsonValue("bdb")
   bdb,
-  @JsonValue('bdc')
+  @JsonValue("bdc")
   bdc,
-  @JsonValue('bdd')
+  @JsonValue("bdd")
   bdd,
-  @JsonValue('bde')
+  @JsonValue("bde")
   bde,
-  @JsonValue('bdf')
+  @JsonValue("bdf")
   bdf,
-  @JsonValue('bdg')
+  @JsonValue("bdg")
   bdg,
-  @JsonValue('bdh')
+  @JsonValue("bdh")
   bdh,
-  @JsonValue('bdi')
+  @JsonValue("bdi")
   bdi,
-  @JsonValue('bdj')
+  @JsonValue("bdj")
   bdj,
-  @JsonValue('bdk')
+  @JsonValue("bdk")
   bdk,
-  @JsonValue('bdl')
+  @JsonValue("bdl")
   bdl,
-  @JsonValue('bdm')
+  @JsonValue("bdm")
   bdm,
-  @JsonValue('bdn')
+  @JsonValue("bdn")
   bdn,
-  @JsonValue('bdo')
+  @JsonValue("bdo")
   bdo,
-  @JsonValue('bdp')
+  @JsonValue("bdp")
   bdp,
-  @JsonValue('bdq')
+  @JsonValue("bdq")
   bdq,
-  @JsonValue('bdr')
+  @JsonValue("bdr")
   bdr,
-  @JsonValue('bds')
+  @JsonValue("bds")
   bds,
-  @JsonValue('bdt')
+  @JsonValue("bdt")
   bdt,
-  @JsonValue('bdu')
+  @JsonValue("bdu")
   bdu,
-  @JsonValue('bdv')
+  @JsonValue("bdv")
   bdv,
-  @JsonValue('bdw')
+  @JsonValue("bdw")
   bdw,
-  @JsonValue('bdx')
+  @JsonValue("bdx")
   bdx,
-  @JsonValue('bdy')
+  @JsonValue("bdy")
   bdy,
-  @JsonValue('bdz')
+  @JsonValue("bdz")
   bdz,
-  @JsonValue('bea')
+  @JsonValue("bea")
   bea,
-  @JsonValue('beb')
+  @JsonValue("beb")
   beb,
-  @JsonValue('bec')
+  @JsonValue("bec")
   bec,
-  @JsonValue('bed')
+  @JsonValue("bed")
   bed,
-  @JsonValue('bee')
+  @JsonValue("bee")
   bee,
-  @JsonValue('bef')
+  @JsonValue("bef")
   bef,
-  @JsonValue('beg')
+  @JsonValue("beg")
   beg,
-  @JsonValue('beh')
+  @JsonValue("beh")
   beh,
-  @JsonValue('bei')
+  @JsonValue("bei")
   bei,
-  @JsonValue('bej')
+  @JsonValue("bej")
   bej,
-  @JsonValue('bek')
+  @JsonValue("bek")
   bek,
-  @JsonValue('bel')
+  @JsonValue("bel")
   bel,
-  @JsonValue('bem')
+  @JsonValue("bem")
   bem,
-  @JsonValue('ben')
+  @JsonValue("ben")
   ben,
-  @JsonValue('beo')
+  @JsonValue("beo")
   beo,
-  @JsonValue('bep')
+  @JsonValue("bep")
   bep,
-  @JsonValue('beq')
+  @JsonValue("beq")
   beq,
-  @JsonValue('bes')
+  @JsonValue("bes")
   bes,
-  @JsonValue('bet')
+  @JsonValue("bet")
   bet,
-  @JsonValue('beu')
+  @JsonValue("beu")
   beu,
-  @JsonValue('bev')
+  @JsonValue("bev")
   bev,
-  @JsonValue('bew')
+  @JsonValue("bew")
   bew,
-  @JsonValue('bex')
+  @JsonValue("bex")
   bex,
-  @JsonValue('bey')
+  @JsonValue("bey")
   bey,
-  @JsonValue('bez')
+  @JsonValue("bez")
   bez,
-  @JsonValue('bfa')
+  @JsonValue("bfa")
   bfa,
-  @JsonValue('bfb')
+  @JsonValue("bfb")
   bfb,
-  @JsonValue('bfc')
+  @JsonValue("bfc")
   bfc,
-  @JsonValue('bfd')
+  @JsonValue("bfd")
   bfd,
-  @JsonValue('bfe')
+  @JsonValue("bfe")
   bfe,
-  @JsonValue('bff')
+  @JsonValue("bff")
   bff,
-  @JsonValue('bfg')
+  @JsonValue("bfg")
   bfg,
-  @JsonValue('bfh')
+  @JsonValue("bfh")
   bfh,
-  @JsonValue('bfi')
+  @JsonValue("bfi")
   bfi,
-  @JsonValue('bfj')
+  @JsonValue("bfj")
   bfj,
-  @JsonValue('bfk')
+  @JsonValue("bfk")
   bfk,
-  @JsonValue('bfl')
+  @JsonValue("bfl")
   bfl,
-  @JsonValue('bfm')
+  @JsonValue("bfm")
   bfm,
-  @JsonValue('bfn')
+  @JsonValue("bfn")
   bfn,
-  @JsonValue('bfo')
+  @JsonValue("bfo")
   bfo,
-  @JsonValue('bfp')
+  @JsonValue("bfp")
   bfp,
-  @JsonValue('bfq')
+  @JsonValue("bfq")
   bfq,
-  @JsonValue('bfr')
+  @JsonValue("bfr")
   bfr,
-  @JsonValue('bfs')
+  @JsonValue("bfs")
   bfs,
-  @JsonValue('bft')
+  @JsonValue("bft")
   bft,
-  @JsonValue('bfu')
+  @JsonValue("bfu")
   bfu,
-  @JsonValue('bfw')
+  @JsonValue("bfw")
   bfw,
-  @JsonValue('bfx')
+  @JsonValue("bfx")
   bfx,
-  @JsonValue('bfy')
+  @JsonValue("bfy")
   bfy,
-  @JsonValue('bfz')
+  @JsonValue("bfz")
   bfz,
-  @JsonValue('bga')
+  @JsonValue("bga")
   bga,
-  @JsonValue('bgb')
+  @JsonValue("bgb")
   bgb,
-  @JsonValue('bgc')
+  @JsonValue("bgc")
   bgc,
-  @JsonValue('bgd')
+  @JsonValue("bgd")
   bgd,
-  @JsonValue('bge')
+  @JsonValue("bge")
   bge,
-  @JsonValue('bgf')
+  @JsonValue("bgf")
   bgf,
-  @JsonValue('bgg')
+  @JsonValue("bgg")
   bgg,
-  @JsonValue('bgi')
+  @JsonValue("bgi")
   bgi,
-  @JsonValue('bgj')
+  @JsonValue("bgj")
   bgj,
-  @JsonValue('bgk')
+  @JsonValue("bgk")
   bgk,
-  @JsonValue('bgl')
+  @JsonValue("bgl")
   bgl,
-  @JsonValue('bgn')
+  @JsonValue("bgn")
   bgn,
-  @JsonValue('bgo')
+  @JsonValue("bgo")
   bgo,
-  @JsonValue('bgp')
+  @JsonValue("bgp")
   bgp,
-  @JsonValue('bgq')
+  @JsonValue("bgq")
   bgq,
-  @JsonValue('bgr')
+  @JsonValue("bgr")
   bgr,
-  @JsonValue('bgs')
+  @JsonValue("bgs")
   bgs,
-  @JsonValue('bgt')
+  @JsonValue("bgt")
   bgt,
-  @JsonValue('bgu')
+  @JsonValue("bgu")
   bgu,
-  @JsonValue('bgv')
+  @JsonValue("bgv")
   bgv,
-  @JsonValue('bgw')
+  @JsonValue("bgw")
   bgw,
-  @JsonValue('bgx')
+  @JsonValue("bgx")
   bgx,
-  @JsonValue('bgy')
+  @JsonValue("bgy")
   bgy,
-  @JsonValue('bgz')
+  @JsonValue("bgz")
   bgz,
-  @JsonValue('bha')
+  @JsonValue("bha")
   bha,
-  @JsonValue('bhb')
+  @JsonValue("bhb")
   bhb,
-  @JsonValue('bhc')
+  @JsonValue("bhc")
   bhc,
-  @JsonValue('bhd')
+  @JsonValue("bhd")
   bhd,
-  @JsonValue('bhe')
+  @JsonValue("bhe")
   bhe,
-  @JsonValue('bhf')
+  @JsonValue("bhf")
   bhf,
-  @JsonValue('bhg')
+  @JsonValue("bhg")
   bhg,
-  @JsonValue('bhh')
+  @JsonValue("bhh")
   bhh,
-  @JsonValue('bhi')
+  @JsonValue("bhi")
   bhi,
-  @JsonValue('bhj')
+  @JsonValue("bhj")
   bhj,
-  @JsonValue('bhl')
+  @JsonValue("bhl")
   bhl,
-  @JsonValue('bhm')
+  @JsonValue("bhm")
   bhm,
-  @JsonValue('bhn')
+  @JsonValue("bhn")
   bhn,
-  @JsonValue('bho')
+  @JsonValue("bho")
   bho,
-  @JsonValue('bhp')
+  @JsonValue("bhp")
   bhp,
-  @JsonValue('bhq')
+  @JsonValue("bhq")
   bhq,
-  @JsonValue('bhr')
+  @JsonValue("bhr")
   bhr,
-  @JsonValue('bhs')
+  @JsonValue("bhs")
   bhs,
-  @JsonValue('bht')
+  @JsonValue("bht")
   bht,
-  @JsonValue('bhu')
+  @JsonValue("bhu")
   bhu,
-  @JsonValue('bhv')
+  @JsonValue("bhv")
   bhv,
-  @JsonValue('bhw')
+  @JsonValue("bhw")
   bhw,
-  @JsonValue('bhx')
+  @JsonValue("bhx")
   bhx,
-  @JsonValue('bhy')
+  @JsonValue("bhy")
   bhy,
-  @JsonValue('bhz')
+  @JsonValue("bhz")
   bhz,
-  @JsonValue('bia')
+  @JsonValue("bia")
   bia,
-  @JsonValue('bib')
+  @JsonValue("bib")
   bib,
-  @JsonValue('bid')
+  @JsonValue("bid")
   bid,
-  @JsonValue('bie')
+  @JsonValue("bie")
   bie,
-  @JsonValue('bif')
+  @JsonValue("bif")
   bif,
-  @JsonValue('big')
+  @JsonValue("big")
   big,
-  @JsonValue('bik')
+  @JsonValue("bik")
   bik,
-  @JsonValue('bil')
+  @JsonValue("bil")
   bil,
-  @JsonValue('bim')
+  @JsonValue("bim")
   bim,
-  @JsonValue('bin')
+  @JsonValue("bin")
   bin,
-  @JsonValue('bio')
+  @JsonValue("bio")
   bio,
-  @JsonValue('bip')
+  @JsonValue("bip")
   bip,
-  @JsonValue('biq')
+  @JsonValue("biq")
   biq,
-  @JsonValue('bir')
+  @JsonValue("bir")
   bir,
-  @JsonValue('bis')
+  @JsonValue("bis")
   bis,
-  @JsonValue('bit')
+  @JsonValue("bit")
   bit,
-  @JsonValue('biu')
+  @JsonValue("biu")
   biu,
-  @JsonValue('biv')
+  @JsonValue("biv")
   biv,
-  @JsonValue('biw')
+  @JsonValue("biw")
   biw,
-  @JsonValue('bix')
+  @JsonValue("bix")
   bix,
-  @JsonValue('biy')
+  @JsonValue("biy")
   biy,
-  @JsonValue('biz')
+  @JsonValue("biz")
   biz,
-  @JsonValue('bja')
+  @JsonValue("bja")
   bja,
-  @JsonValue('bjb')
+  @JsonValue("bjb")
   bjb,
-  @JsonValue('bjc')
+  @JsonValue("bjc")
   bjc,
-  @JsonValue('bje')
+  @JsonValue("bje")
   bje,
-  @JsonValue('bjf')
+  @JsonValue("bjf")
   bjf,
-  @JsonValue('bjg')
+  @JsonValue("bjg")
   bjg,
-  @JsonValue('bjh')
+  @JsonValue("bjh")
   bjh,
-  @JsonValue('bji')
+  @JsonValue("bji")
   bji,
-  @JsonValue('bjj')
+  @JsonValue("bjj")
   bjj,
-  @JsonValue('bjk')
+  @JsonValue("bjk")
   bjk,
-  @JsonValue('bjl')
+  @JsonValue("bjl")
   bjl,
-  @JsonValue('bjm')
+  @JsonValue("bjm")
   bjm,
-  @JsonValue('bjn')
+  @JsonValue("bjn")
   bjn,
-  @JsonValue('bjo')
+  @JsonValue("bjo")
   bjo,
-  @JsonValue('bjp')
+  @JsonValue("bjp")
   bjp,
-  @JsonValue('bjr')
+  @JsonValue("bjr")
   bjr,
-  @JsonValue('bjs')
+  @JsonValue("bjs")
   bjs,
-  @JsonValue('bjt')
+  @JsonValue("bjt")
   bjt,
-  @JsonValue('bju')
+  @JsonValue("bju")
   bju,
-  @JsonValue('bjv')
+  @JsonValue("bjv")
   bjv,
-  @JsonValue('bjw')
+  @JsonValue("bjw")
   bjw,
-  @JsonValue('bjx')
+  @JsonValue("bjx")
   bjx,
-  @JsonValue('bjy')
+  @JsonValue("bjy")
   bjy,
-  @JsonValue('bjz')
+  @JsonValue("bjz")
   bjz,
-  @JsonValue('bka')
+  @JsonValue("bka")
   bka,
-  @JsonValue('bkc')
+  @JsonValue("bkc")
   bkc,
-  @JsonValue('bkd')
+  @JsonValue("bkd")
   bkd,
-  @JsonValue('bkf')
+  @JsonValue("bkf")
   bkf,
-  @JsonValue('bkg')
+  @JsonValue("bkg")
   bkg,
-  @JsonValue('bkh')
+  @JsonValue("bkh")
   bkh,
-  @JsonValue('bki')
+  @JsonValue("bki")
   bki,
-  @JsonValue('bkj')
+  @JsonValue("bkj")
   bkj,
-  @JsonValue('bkk')
+  @JsonValue("bkk")
   bkk,
-  @JsonValue('bkl')
+  @JsonValue("bkl")
   bkl,
-  @JsonValue('bkm')
+  @JsonValue("bkm")
   bkm,
-  @JsonValue('bkn')
+  @JsonValue("bkn")
   bkn,
-  @JsonValue('bko')
+  @JsonValue("bko")
   bko,
-  @JsonValue('bkp')
+  @JsonValue("bkp")
   bkp,
-  @JsonValue('bkq')
+  @JsonValue("bkq")
   bkq,
-  @JsonValue('bkr')
+  @JsonValue("bkr")
   bkr,
-  @JsonValue('bks')
+  @JsonValue("bks")
   bks,
-  @JsonValue('bkt')
+  @JsonValue("bkt")
   bkt,
-  @JsonValue('bku')
+  @JsonValue("bku")
   bku,
-  @JsonValue('bkv')
+  @JsonValue("bkv")
   bkv,
-  @JsonValue('bkw')
+  @JsonValue("bkw")
   bkw,
-  @JsonValue('bkx')
+  @JsonValue("bkx")
   bkx,
-  @JsonValue('bky')
+  @JsonValue("bky")
   bky,
-  @JsonValue('bkz')
+  @JsonValue("bkz")
   bkz,
-  @JsonValue('bla')
+  @JsonValue("bla")
   bla,
-  @JsonValue('blb')
+  @JsonValue("blb")
   blb,
-  @JsonValue('blc')
+  @JsonValue("blc")
   blc,
-  @JsonValue('bld')
+  @JsonValue("bld")
   bld,
-  @JsonValue('ble')
+  @JsonValue("ble")
   ble,
-  @JsonValue('blf')
+  @JsonValue("blf")
   blf,
-  @JsonValue('blh')
+  @JsonValue("blh")
   blh,
-  @JsonValue('bli')
+  @JsonValue("bli")
   bli,
-  @JsonValue('blj')
+  @JsonValue("blj")
   blj,
-  @JsonValue('blk')
+  @JsonValue("blk")
   blk,
-  @JsonValue('bll')
+  @JsonValue("bll")
   bll,
-  @JsonValue('blm')
+  @JsonValue("blm")
   blm,
-  @JsonValue('bln')
+  @JsonValue("bln")
   bln,
-  @JsonValue('blo')
+  @JsonValue("blo")
   blo,
-  @JsonValue('blp')
+  @JsonValue("blp")
   blp,
-  @JsonValue('blq')
+  @JsonValue("blq")
   blq,
-  @JsonValue('blr')
+  @JsonValue("blr")
   blr,
-  @JsonValue('bls')
+  @JsonValue("bls")
   bls,
-  @JsonValue('blt')
+  @JsonValue("blt")
   blt,
-  @JsonValue('blv')
+  @JsonValue("blv")
   blv,
-  @JsonValue('blw')
+  @JsonValue("blw")
   blw,
-  @JsonValue('blx')
+  @JsonValue("blx")
   blx,
-  @JsonValue('bly')
+  @JsonValue("bly")
   bly,
-  @JsonValue('blz')
+  @JsonValue("blz")
   blz,
-  @JsonValue('bma')
+  @JsonValue("bma")
   bma,
-  @JsonValue('bmb')
+  @JsonValue("bmb")
   bmb,
-  @JsonValue('bmc')
+  @JsonValue("bmc")
   bmc,
-  @JsonValue('bmd')
+  @JsonValue("bmd")
   bmd,
-  @JsonValue('bme')
+  @JsonValue("bme")
   bme,
-  @JsonValue('bmf')
+  @JsonValue("bmf")
   bmf,
-  @JsonValue('bmg')
+  @JsonValue("bmg")
   bmg,
-  @JsonValue('bmh')
+  @JsonValue("bmh")
   bmh,
-  @JsonValue('bmi')
+  @JsonValue("bmi")
   bmi,
-  @JsonValue('bmj')
+  @JsonValue("bmj")
   bmj,
-  @JsonValue('bmk')
+  @JsonValue("bmk")
   bmk,
-  @JsonValue('bml')
+  @JsonValue("bml")
   bml,
-  @JsonValue('bmm')
+  @JsonValue("bmm")
   bmm,
-  @JsonValue('bmn')
+  @JsonValue("bmn")
   bmn,
-  @JsonValue('bmo')
+  @JsonValue("bmo")
   bmo,
-  @JsonValue('bmp')
+  @JsonValue("bmp")
   bmp,
-  @JsonValue('bmq')
+  @JsonValue("bmq")
   bmq,
-  @JsonValue('bmr')
+  @JsonValue("bmr")
   bmr,
-  @JsonValue('bms')
+  @JsonValue("bms")
   bms,
-  @JsonValue('bmt')
+  @JsonValue("bmt")
   bmt,
-  @JsonValue('bmu')
+  @JsonValue("bmu")
   bmu,
-  @JsonValue('bmv')
+  @JsonValue("bmv")
   bmv,
-  @JsonValue('bmw')
+  @JsonValue("bmw")
   bmw,
-  @JsonValue('bmx')
+  @JsonValue("bmx")
   bmx,
-  @JsonValue('bmz')
+  @JsonValue("bmz")
   bmz,
-  @JsonValue('bna')
+  @JsonValue("bna")
   bna,
-  @JsonValue('bnb')
+  @JsonValue("bnb")
   bnb,
-  @JsonValue('bnc')
+  @JsonValue("bnc")
   bnc,
-  @JsonValue('bnd')
+  @JsonValue("bnd")
   bnd,
-  @JsonValue('bne')
+  @JsonValue("bne")
   bne,
-  @JsonValue('bnf')
+  @JsonValue("bnf")
   bnf,
-  @JsonValue('bng')
+  @JsonValue("bng")
   bng,
-  @JsonValue('bni')
+  @JsonValue("bni")
   bni,
-  @JsonValue('bnj')
+  @JsonValue("bnj")
   bnj,
-  @JsonValue('bnk')
+  @JsonValue("bnk")
   bnk,
-  @JsonValue('bnl')
+  @JsonValue("bnl")
   bnl,
-  @JsonValue('bnm')
+  @JsonValue("bnm")
   bnm,
-  @JsonValue('bnn')
+  @JsonValue("bnn")
   bnn,
-  @JsonValue('bno')
+  @JsonValue("bno")
   bno,
-  @JsonValue('bnp')
+  @JsonValue("bnp")
   bnp,
-  @JsonValue('bnq')
+  @JsonValue("bnq")
   bnq,
-  @JsonValue('bnr')
+  @JsonValue("bnr")
   bnr,
-  @JsonValue('bns')
+  @JsonValue("bns")
   bns,
-  @JsonValue('bnu')
+  @JsonValue("bnu")
   bnu,
-  @JsonValue('bnv')
+  @JsonValue("bnv")
   bnv,
-  @JsonValue('bnw')
+  @JsonValue("bnw")
   bnw,
-  @JsonValue('bnx')
+  @JsonValue("bnx")
   bnx,
-  @JsonValue('bny')
+  @JsonValue("bny")
   bny,
-  @JsonValue('bnz')
+  @JsonValue("bnz")
   bnz,
-  @JsonValue('boa')
+  @JsonValue("boa")
   boa,
-  @JsonValue('bob')
+  @JsonValue("bob")
   bob,
-  @JsonValue('bod')
+  @JsonValue("bod")
   bod,
-  @JsonValue('boe')
+  @JsonValue("boe")
   boe,
-  @JsonValue('bof')
+  @JsonValue("bof")
   bof,
-  @JsonValue('bog')
+  @JsonValue("bog")
   bog,
-  @JsonValue('boh')
+  @JsonValue("boh")
   boh,
-  @JsonValue('boi')
+  @JsonValue("boi")
   boi,
-  @JsonValue('boj')
+  @JsonValue("boj")
   boj,
-  @JsonValue('bok')
+  @JsonValue("bok")
   bok,
-  @JsonValue('bol')
+  @JsonValue("bol")
   bol,
-  @JsonValue('bom')
+  @JsonValue("bom")
   bom,
-  @JsonValue('bon')
+  @JsonValue("bon")
   bon,
-  @JsonValue('boo')
+  @JsonValue("boo")
   boo,
-  @JsonValue('bop')
+  @JsonValue("bop")
   bop,
-  @JsonValue('boq')
+  @JsonValue("boq")
   boq,
-  @JsonValue('bor')
+  @JsonValue("bor")
   bor,
-  @JsonValue('bos')
+  @JsonValue("bos")
   bos,
-  @JsonValue('bot')
+  @JsonValue("bot")
   bot,
-  @JsonValue('bou')
+  @JsonValue("bou")
   bou,
-  @JsonValue('bov')
+  @JsonValue("bov")
   bov,
-  @JsonValue('bow')
+  @JsonValue("bow")
   bow,
-  @JsonValue('box')
+  @JsonValue("box")
   box,
-  @JsonValue('boy')
+  @JsonValue("boy")
   boy,
-  @JsonValue('boz')
+  @JsonValue("boz")
   boz,
-  @JsonValue('bpa')
+  @JsonValue("bpa")
   bpa,
-  @JsonValue('bpc')
+  @JsonValue("bpc")
   bpc,
-  @JsonValue('bpd')
+  @JsonValue("bpd")
   bpd,
-  @JsonValue('bpe')
+  @JsonValue("bpe")
   bpe,
-  @JsonValue('bpg')
+  @JsonValue("bpg")
   bpg,
-  @JsonValue('bph')
+  @JsonValue("bph")
   bph,
-  @JsonValue('bpi')
+  @JsonValue("bpi")
   bpi,
-  @JsonValue('bpj')
+  @JsonValue("bpj")
   bpj,
-  @JsonValue('bpk')
+  @JsonValue("bpk")
   bpk,
-  @JsonValue('bpl')
+  @JsonValue("bpl")
   bpl,
-  @JsonValue('bpm')
+  @JsonValue("bpm")
   bpm,
-  @JsonValue('bpn')
+  @JsonValue("bpn")
   bpn,
-  @JsonValue('bpo')
+  @JsonValue("bpo")
   bpo,
-  @JsonValue('bpp')
+  @JsonValue("bpp")
   bpp,
-  @JsonValue('bpq')
+  @JsonValue("bpq")
   bpq,
-  @JsonValue('bpr')
+  @JsonValue("bpr")
   bpr,
-  @JsonValue('bps')
+  @JsonValue("bps")
   bps,
-  @JsonValue('bpt')
+  @JsonValue("bpt")
   bpt,
-  @JsonValue('bpu')
+  @JsonValue("bpu")
   bpu,
-  @JsonValue('bpv')
+  @JsonValue("bpv")
   bpv,
-  @JsonValue('bpw')
+  @JsonValue("bpw")
   bpw,
-  @JsonValue('bpx')
+  @JsonValue("bpx")
   bpx,
-  @JsonValue('bpy')
+  @JsonValue("bpy")
   bpy,
-  @JsonValue('bpz')
+  @JsonValue("bpz")
   bpz,
-  @JsonValue('bqa')
+  @JsonValue("bqa")
   bqa,
-  @JsonValue('bqb')
+  @JsonValue("bqb")
   bqb,
-  @JsonValue('bqc')
+  @JsonValue("bqc")
   bqc,
-  @JsonValue('bqd')
+  @JsonValue("bqd")
   bqd,
-  @JsonValue('bqf')
+  @JsonValue("bqf")
   bqf,
-  @JsonValue('bqg')
+  @JsonValue("bqg")
   bqg,
-  @JsonValue('bqh')
+  @JsonValue("bqh")
   bqh,
-  @JsonValue('bqi')
+  @JsonValue("bqi")
   bqi,
-  @JsonValue('bqj')
+  @JsonValue("bqj")
   bqj,
-  @JsonValue('bqk')
+  @JsonValue("bqk")
   bqk,
-  @JsonValue('bql')
+  @JsonValue("bql")
   bql,
-  @JsonValue('bqm')
+  @JsonValue("bqm")
   bqm,
-  @JsonValue('bqn')
+  @JsonValue("bqn")
   bqn,
-  @JsonValue('bqo')
+  @JsonValue("bqo")
   bqo,
-  @JsonValue('bqp')
+  @JsonValue("bqp")
   bqp,
-  @JsonValue('bqq')
+  @JsonValue("bqq")
   bqq,
-  @JsonValue('bqr')
+  @JsonValue("bqr")
   bqr,
-  @JsonValue('bqs')
+  @JsonValue("bqs")
   bqs,
-  @JsonValue('bqt')
+  @JsonValue("bqt")
   bqt,
-  @JsonValue('bqu')
+  @JsonValue("bqu")
   bqu,
-  @JsonValue('bqv')
+  @JsonValue("bqv")
   bqv,
-  @JsonValue('bqw')
+  @JsonValue("bqw")
   bqw,
-  @JsonValue('bqx')
+  @JsonValue("bqx")
   bqx,
-  @JsonValue('bqy')
+  @JsonValue("bqy")
   bqy,
-  @JsonValue('bqz')
+  @JsonValue("bqz")
   bqz,
-  @JsonValue('bra')
+  @JsonValue("bra")
   bra,
-  @JsonValue('brb')
+  @JsonValue("brb")
   brb,
-  @JsonValue('brc')
+  @JsonValue("brc")
   brc,
-  @JsonValue('brd')
+  @JsonValue("brd")
   brd,
-  @JsonValue('bre')
+  @JsonValue("bre")
   bre,
-  @JsonValue('brf')
+  @JsonValue("brf")
   brf,
-  @JsonValue('brg')
+  @JsonValue("brg")
   brg,
-  @JsonValue('brh')
+  @JsonValue("brh")
   brh,
-  @JsonValue('bri')
+  @JsonValue("bri")
   bri,
-  @JsonValue('brj')
+  @JsonValue("brj")
   brj,
-  @JsonValue('brk')
+  @JsonValue("brk")
   brk,
-  @JsonValue('brl')
+  @JsonValue("brl")
   brl,
-  @JsonValue('brm')
+  @JsonValue("brm")
   brm,
-  @JsonValue('brn')
+  @JsonValue("brn")
   brn,
-  @JsonValue('bro')
+  @JsonValue("bro")
   bro,
-  @JsonValue('brp')
+  @JsonValue("brp")
   brp,
-  @JsonValue('brq')
+  @JsonValue("brq")
   brq,
-  @JsonValue('brr')
+  @JsonValue("brr")
   brr,
-  @JsonValue('brs')
+  @JsonValue("brs")
   brs,
-  @JsonValue('brt')
+  @JsonValue("brt")
   brt,
-  @JsonValue('bru')
+  @JsonValue("bru")
   bru,
-  @JsonValue('brv')
+  @JsonValue("brv")
   brv,
-  @JsonValue('brw')
+  @JsonValue("brw")
   brw,
-  @JsonValue('brx')
+  @JsonValue("brx")
   brx,
-  @JsonValue('bry')
+  @JsonValue("bry")
   bry,
-  @JsonValue('brz')
+  @JsonValue("brz")
   brz,
-  @JsonValue('bsa')
+  @JsonValue("bsa")
   bsa,
-  @JsonValue('bsb')
+  @JsonValue("bsb")
   bsb,
-  @JsonValue('bsc')
+  @JsonValue("bsc")
   bsc,
-  @JsonValue('bse')
+  @JsonValue("bse")
   bse,
-  @JsonValue('bsf')
+  @JsonValue("bsf")
   bsf,
-  @JsonValue('bsg')
+  @JsonValue("bsg")
   bsg,
-  @JsonValue('bsh')
+  @JsonValue("bsh")
   bsh,
-  @JsonValue('bsi')
+  @JsonValue("bsi")
   bsi,
-  @JsonValue('bsj')
+  @JsonValue("bsj")
   bsj,
-  @JsonValue('bsk')
+  @JsonValue("bsk")
   bsk,
-  @JsonValue('bsl')
+  @JsonValue("bsl")
   bsl,
-  @JsonValue('bsm')
+  @JsonValue("bsm")
   bsm,
-  @JsonValue('bsn')
+  @JsonValue("bsn")
   bsn,
-  @JsonValue('bso')
+  @JsonValue("bso")
   bso,
-  @JsonValue('bsp')
+  @JsonValue("bsp")
   bsp,
-  @JsonValue('bsq')
+  @JsonValue("bsq")
   bsq,
-  @JsonValue('bsr')
+  @JsonValue("bsr")
   bsr,
-  @JsonValue('bss')
+  @JsonValue("bss")
   bss,
-  @JsonValue('bst')
+  @JsonValue("bst")
   bst,
-  @JsonValue('bsu')
+  @JsonValue("bsu")
   bsu,
-  @JsonValue('bsv')
+  @JsonValue("bsv")
   bsv,
-  @JsonValue('bsw')
+  @JsonValue("bsw")
   bsw,
-  @JsonValue('bsx')
+  @JsonValue("bsx")
   bsx,
-  @JsonValue('bsy')
+  @JsonValue("bsy")
   bsy,
-  @JsonValue('bta')
+  @JsonValue("bta")
   bta,
-  @JsonValue('btc')
+  @JsonValue("btc")
   btc,
-  @JsonValue('btd')
+  @JsonValue("btd")
   btd,
-  @JsonValue('bte')
+  @JsonValue("bte")
   bte,
-  @JsonValue('btf')
+  @JsonValue("btf")
   btf,
-  @JsonValue('btg')
+  @JsonValue("btg")
   btg,
-  @JsonValue('bth')
+  @JsonValue("bth")
   bth,
-  @JsonValue('bti')
+  @JsonValue("bti")
   bti,
-  @JsonValue('btj')
+  @JsonValue("btj")
   btj,
-  @JsonValue('btm')
+  @JsonValue("btm")
   btm,
-  @JsonValue('btn')
+  @JsonValue("btn")
   btn,
-  @JsonValue('bto')
+  @JsonValue("bto")
   bto,
-  @JsonValue('btp')
+  @JsonValue("btp")
   btp,
-  @JsonValue('btq')
+  @JsonValue("btq")
   btq,
-  @JsonValue('btr')
+  @JsonValue("btr")
   btr,
-  @JsonValue('bts')
+  @JsonValue("bts")
   bts,
-  @JsonValue('btt')
+  @JsonValue("btt")
   btt,
-  @JsonValue('btu')
+  @JsonValue("btu")
   btu,
-  @JsonValue('btv')
+  @JsonValue("btv")
   btv,
-  @JsonValue('btw')
+  @JsonValue("btw")
   btw,
-  @JsonValue('btx')
+  @JsonValue("btx")
   btx,
-  @JsonValue('bty')
+  @JsonValue("bty")
   bty,
-  @JsonValue('btz')
+  @JsonValue("btz")
   btz,
-  @JsonValue('bua')
+  @JsonValue("bua")
   bua,
-  @JsonValue('bub')
+  @JsonValue("bub")
   bub,
-  @JsonValue('buc')
+  @JsonValue("buc")
   buc,
-  @JsonValue('bud')
+  @JsonValue("bud")
   bud,
-  @JsonValue('bue')
+  @JsonValue("bue")
   bue,
-  @JsonValue('buf')
+  @JsonValue("buf")
   buf,
-  @JsonValue('bug')
+  @JsonValue("bug")
   bug,
-  @JsonValue('buh')
+  @JsonValue("buh")
   buh,
-  @JsonValue('bui')
+  @JsonValue("bui")
   bui,
-  @JsonValue('buj')
+  @JsonValue("buj")
   buj,
-  @JsonValue('buk')
+  @JsonValue("buk")
   buk,
-  @JsonValue('bul')
+  @JsonValue("bul")
   bul,
-  @JsonValue('bum')
+  @JsonValue("bum")
   bum,
-  @JsonValue('bun')
+  @JsonValue("bun")
   bun,
-  @JsonValue('buo')
+  @JsonValue("buo")
   buo,
-  @JsonValue('bup')
+  @JsonValue("bup")
   bup,
-  @JsonValue('buq')
+  @JsonValue("buq")
   buq,
-  @JsonValue('bus')
+  @JsonValue("bus")
   bus,
-  @JsonValue('but')
+  @JsonValue("but")
   but,
-  @JsonValue('buu')
+  @JsonValue("buu")
   buu,
-  @JsonValue('buv')
+  @JsonValue("buv")
   buv,
-  @JsonValue('buw')
+  @JsonValue("buw")
   buw,
-  @JsonValue('bux')
+  @JsonValue("bux")
   bux,
-  @JsonValue('buy')
+  @JsonValue("buy")
   buy,
-  @JsonValue('buz')
+  @JsonValue("buz")
   buz,
-  @JsonValue('bva')
+  @JsonValue("bva")
   bva,
-  @JsonValue('bvb')
+  @JsonValue("bvb")
   bvb,
-  @JsonValue('bvc')
+  @JsonValue("bvc")
   bvc,
-  @JsonValue('bvd')
+  @JsonValue("bvd")
   bvd,
-  @JsonValue('bve')
+  @JsonValue("bve")
   bve,
-  @JsonValue('bvf')
+  @JsonValue("bvf")
   bvf,
-  @JsonValue('bvg')
+  @JsonValue("bvg")
   bvg,
-  @JsonValue('bvh')
+  @JsonValue("bvh")
   bvh,
-  @JsonValue('bvi')
+  @JsonValue("bvi")
   bvi,
-  @JsonValue('bvj')
+  @JsonValue("bvj")
   bvj,
-  @JsonValue('bvk')
+  @JsonValue("bvk")
   bvk,
-  @JsonValue('bvl')
+  @JsonValue("bvl")
   bvl,
-  @JsonValue('bvm')
+  @JsonValue("bvm")
   bvm,
-  @JsonValue('bvn')
+  @JsonValue("bvn")
   bvn,
-  @JsonValue('bvo')
+  @JsonValue("bvo")
   bvo,
-  @JsonValue('bvp')
+  @JsonValue("bvp")
   bvp,
-  @JsonValue('bvq')
+  @JsonValue("bvq")
   bvq,
-  @JsonValue('bvr')
+  @JsonValue("bvr")
   bvr,
-  @JsonValue('bvt')
+  @JsonValue("bvt")
   bvt,
-  @JsonValue('bvu')
+  @JsonValue("bvu")
   bvu,
-  @JsonValue('bvv')
+  @JsonValue("bvv")
   bvv,
-  @JsonValue('bvw')
+  @JsonValue("bvw")
   bvw,
-  @JsonValue('bvx')
+  @JsonValue("bvx")
   bvx,
-  @JsonValue('bvy')
+  @JsonValue("bvy")
   bvy,
-  @JsonValue('bvz')
+  @JsonValue("bvz")
   bvz,
-  @JsonValue('bwa')
+  @JsonValue("bwa")
   bwa,
-  @JsonValue('bwb')
+  @JsonValue("bwb")
   bwb,
-  @JsonValue('bwc')
+  @JsonValue("bwc")
   bwc,
-  @JsonValue('bwd')
+  @JsonValue("bwd")
   bwd,
-  @JsonValue('bwe')
+  @JsonValue("bwe")
   bwe,
-  @JsonValue('bwf')
+  @JsonValue("bwf")
   bwf,
-  @JsonValue('bwg')
+  @JsonValue("bwg")
   bwg,
-  @JsonValue('bwh')
+  @JsonValue("bwh")
   bwh,
-  @JsonValue('bwi')
+  @JsonValue("bwi")
   bwi,
-  @JsonValue('bwj')
+  @JsonValue("bwj")
   bwj,
-  @JsonValue('bwk')
+  @JsonValue("bwk")
   bwk,
-  @JsonValue('bwl')
+  @JsonValue("bwl")
   bwl,
-  @JsonValue('bwm')
+  @JsonValue("bwm")
   bwm,
-  @JsonValue('bwn')
+  @JsonValue("bwn")
   bwn,
-  @JsonValue('bwo')
+  @JsonValue("bwo")
   bwo,
-  @JsonValue('bwp')
+  @JsonValue("bwp")
   bwp,
-  @JsonValue('bwq')
+  @JsonValue("bwq")
   bwq,
-  @JsonValue('bwr')
+  @JsonValue("bwr")
   bwr,
-  @JsonValue('bws')
+  @JsonValue("bws")
   bws,
-  @JsonValue('bwt')
+  @JsonValue("bwt")
   bwt,
-  @JsonValue('bwu')
+  @JsonValue("bwu")
   bwu,
-  @JsonValue('bww')
+  @JsonValue("bww")
   bww,
-  @JsonValue('bwx')
+  @JsonValue("bwx")
   bwx,
-  @JsonValue('bwy')
+  @JsonValue("bwy")
   bwy,
-  @JsonValue('bwz')
+  @JsonValue("bwz")
   bwz,
-  @JsonValue('bxa')
+  @JsonValue("bxa")
   bxa,
-  @JsonValue('bxb')
+  @JsonValue("bxb")
   bxb,
-  @JsonValue('bxc')
+  @JsonValue("bxc")
   bxc,
-  @JsonValue('bxd')
+  @JsonValue("bxd")
   bxd,
-  @JsonValue('bxe')
+  @JsonValue("bxe")
   bxe,
-  @JsonValue('bxf')
+  @JsonValue("bxf")
   bxf,
-  @JsonValue('bxg')
+  @JsonValue("bxg")
   bxg,
-  @JsonValue('bxh')
+  @JsonValue("bxh")
   bxh,
-  @JsonValue('bxi')
+  @JsonValue("bxi")
   bxi,
-  @JsonValue('bxj')
+  @JsonValue("bxj")
   bxj,
-  @JsonValue('bxk')
+  @JsonValue("bxk")
   bxk,
-  @JsonValue('bxl')
+  @JsonValue("bxl")
   bxl,
-  @JsonValue('bxm')
+  @JsonValue("bxm")
   bxm,
-  @JsonValue('bxn')
+  @JsonValue("bxn")
   bxn,
-  @JsonValue('bxo')
+  @JsonValue("bxo")
   bxo,
-  @JsonValue('bxp')
+  @JsonValue("bxp")
   bxp,
-  @JsonValue('bxq')
+  @JsonValue("bxq")
   bxq,
-  @JsonValue('bxr')
+  @JsonValue("bxr")
   bxr,
-  @JsonValue('bxs')
+  @JsonValue("bxs")
   bxs,
-  @JsonValue('bxu')
+  @JsonValue("bxu")
   bxu,
-  @JsonValue('bxv')
+  @JsonValue("bxv")
   bxv,
-  @JsonValue('bxw')
+  @JsonValue("bxw")
   bxw,
-  @JsonValue('bxz')
+  @JsonValue("bxz")
   bxz,
-  @JsonValue('bya')
+  @JsonValue("bya")
   bya,
-  @JsonValue('byb')
+  @JsonValue("byb")
   byb,
-  @JsonValue('byc')
+  @JsonValue("byc")
   byc,
-  @JsonValue('byd')
+  @JsonValue("byd")
   byd,
-  @JsonValue('bye')
+  @JsonValue("bye")
   bye,
-  @JsonValue('byf')
+  @JsonValue("byf")
   byf,
-  @JsonValue('byg')
+  @JsonValue("byg")
   byg,
-  @JsonValue('byh')
+  @JsonValue("byh")
   byh,
-  @JsonValue('byi')
+  @JsonValue("byi")
   byi,
-  @JsonValue('byj')
+  @JsonValue("byj")
   byj,
-  @JsonValue('byk')
+  @JsonValue("byk")
   byk,
-  @JsonValue('byl')
+  @JsonValue("byl")
   byl,
-  @JsonValue('bym')
+  @JsonValue("bym")
   bym,
-  @JsonValue('byn')
+  @JsonValue("byn")
   byn,
-  @JsonValue('byo')
+  @JsonValue("byo")
   byo,
-  @JsonValue('byp')
+  @JsonValue("byp")
   byp,
-  @JsonValue('byq')
+  @JsonValue("byq")
   byq,
-  @JsonValue('byr')
+  @JsonValue("byr")
   byr,
-  @JsonValue('bys')
+  @JsonValue("bys")
   bys,
-  @JsonValue('byt')
+  @JsonValue("byt")
   byt,
-  @JsonValue('byv')
+  @JsonValue("byv")
   byv,
-  @JsonValue('byw')
+  @JsonValue("byw")
   byw,
-  @JsonValue('byx')
+  @JsonValue("byx")
   byx,
-  @JsonValue('byz')
+  @JsonValue("byz")
   byz,
-  @JsonValue('bza')
+  @JsonValue("bza")
   bza,
-  @JsonValue('bzb')
+  @JsonValue("bzb")
   bzb,
-  @JsonValue('bzc')
+  @JsonValue("bzc")
   bzc,
-  @JsonValue('bzd')
+  @JsonValue("bzd")
   bzd,
-  @JsonValue('bze')
+  @JsonValue("bze")
   bze,
-  @JsonValue('bzf')
+  @JsonValue("bzf")
   bzf,
-  @JsonValue('bzg')
+  @JsonValue("bzg")
   bzg,
-  @JsonValue('bzh')
+  @JsonValue("bzh")
   bzh,
-  @JsonValue('bzi')
+  @JsonValue("bzi")
   bzi,
-  @JsonValue('bzj')
+  @JsonValue("bzj")
   bzj,
-  @JsonValue('bzk')
+  @JsonValue("bzk")
   bzk,
-  @JsonValue('bzl')
+  @JsonValue("bzl")
   bzl,
-  @JsonValue('bzm')
+  @JsonValue("bzm")
   bzm,
-  @JsonValue('bzn')
+  @JsonValue("bzn")
   bzn,
-  @JsonValue('bzo')
+  @JsonValue("bzo")
   bzo,
-  @JsonValue('bzp')
+  @JsonValue("bzp")
   bzp,
-  @JsonValue('bzq')
+  @JsonValue("bzq")
   bzq,
-  @JsonValue('bzr')
+  @JsonValue("bzr")
   bzr,
-  @JsonValue('bzs')
+  @JsonValue("bzs")
   bzs,
-  @JsonValue('bzt')
+  @JsonValue("bzt")
   bzt,
-  @JsonValue('bzu')
+  @JsonValue("bzu")
   bzu,
-  @JsonValue('bzv')
+  @JsonValue("bzv")
   bzv,
-  @JsonValue('bzw')
+  @JsonValue("bzw")
   bzw,
-  @JsonValue('bzx')
+  @JsonValue("bzx")
   bzx,
-  @JsonValue('bzy')
+  @JsonValue("bzy")
   bzy,
-  @JsonValue('bzz')
+  @JsonValue("bzz")
   bzz,
-  @JsonValue('caa')
+  @JsonValue("caa")
   caa,
-  @JsonValue('cab')
+  @JsonValue("cab")
   cab,
-  @JsonValue('cac')
+  @JsonValue("cac")
   cac,
-  @JsonValue('cad')
+  @JsonValue("cad")
   cad,
-  @JsonValue('cae')
+  @JsonValue("cae")
   cae,
-  @JsonValue('caf')
+  @JsonValue("caf")
   caf,
-  @JsonValue('cag')
+  @JsonValue("cag")
   cag,
-  @JsonValue('cah')
+  @JsonValue("cah")
   cah,
-  @JsonValue('caj')
+  @JsonValue("caj")
   caj,
-  @JsonValue('cak')
+  @JsonValue("cak")
   cak,
-  @JsonValue('cal')
+  @JsonValue("cal")
   cal,
-  @JsonValue('cam')
+  @JsonValue("cam")
   cam,
-  @JsonValue('can')
+  @JsonValue("can")
   can,
-  @JsonValue('cao')
+  @JsonValue("cao")
   cao,
-  @JsonValue('cap')
+  @JsonValue("cap")
   cap,
-  @JsonValue('caq')
+  @JsonValue("caq")
   caq,
-  @JsonValue('car')
+  @JsonValue("car")
   car,
-  @JsonValue('cas')
+  @JsonValue("cas")
   cas,
-  @JsonValue('cat')
+  @JsonValue("cat")
   cat,
-  @JsonValue('cav')
+  @JsonValue("cav")
   cav,
-  @JsonValue('caw')
+  @JsonValue("caw")
   caw,
-  @JsonValue('cax')
+  @JsonValue("cax")
   cax,
-  @JsonValue('cay')
+  @JsonValue("cay")
   cay,
-  @JsonValue('caz')
+  @JsonValue("caz")
   caz,
-  @JsonValue('cbb')
+  @JsonValue("cbb")
   cbb,
-  @JsonValue('cbc')
+  @JsonValue("cbc")
   cbc,
-  @JsonValue('cbd')
+  @JsonValue("cbd")
   cbd,
-  @JsonValue('cbg')
+  @JsonValue("cbg")
   cbg,
-  @JsonValue('cbi')
+  @JsonValue("cbi")
   cbi,
-  @JsonValue('cbj')
+  @JsonValue("cbj")
   cbj,
-  @JsonValue('cbk')
+  @JsonValue("cbk")
   cbk,
-  @JsonValue('cbl')
+  @JsonValue("cbl")
   cbl,
-  @JsonValue('cbn')
+  @JsonValue("cbn")
   cbn,
-  @JsonValue('cbo')
+  @JsonValue("cbo")
   cbo,
-  @JsonValue('cbq')
+  @JsonValue("cbq")
   cbq,
-  @JsonValue('cbr')
+  @JsonValue("cbr")
   cbr,
-  @JsonValue('cbs')
+  @JsonValue("cbs")
   cbs,
-  @JsonValue('cbt')
+  @JsonValue("cbt")
   cbt,
-  @JsonValue('cbu')
+  @JsonValue("cbu")
   cbu,
-  @JsonValue('cbv')
+  @JsonValue("cbv")
   cbv,
-  @JsonValue('cbw')
+  @JsonValue("cbw")
   cbw,
-  @JsonValue('cby')
+  @JsonValue("cby")
   cby,
-  @JsonValue('ccc')
+  @JsonValue("ccc")
   ccc,
-  @JsonValue('ccd')
+  @JsonValue("ccd")
   ccd,
-  @JsonValue('cce')
+  @JsonValue("cce")
   cce,
-  @JsonValue('ccg')
+  @JsonValue("ccg")
   ccg,
-  @JsonValue('cch')
+  @JsonValue("cch")
   cch,
-  @JsonValue('ccj')
+  @JsonValue("ccj")
   ccj,
-  @JsonValue('ccl')
+  @JsonValue("ccl")
   ccl,
-  @JsonValue('ccm')
+  @JsonValue("ccm")
   ccm,
-  @JsonValue('cco')
+  @JsonValue("cco")
   cco,
-  @JsonValue('ccp')
+  @JsonValue("ccp")
   ccp,
-  @JsonValue('ccr')
+  @JsonValue("ccr")
   ccr,
-  @JsonValue('cda')
+  @JsonValue("cda")
   cda,
-  @JsonValue('cde')
+  @JsonValue("cde")
   cde,
-  @JsonValue('cdf')
+  @JsonValue("cdf")
   cdf,
-  @JsonValue('cdh')
+  @JsonValue("cdh")
   cdh,
-  @JsonValue('cdi')
+  @JsonValue("cdi")
   cdi,
-  @JsonValue('cdj')
+  @JsonValue("cdj")
   cdj,
-  @JsonValue('cdm')
+  @JsonValue("cdm")
   cdm,
-  @JsonValue('cdn')
+  @JsonValue("cdn")
   cdn,
-  @JsonValue('cdo')
+  @JsonValue("cdo")
   cdo,
-  @JsonValue('cdr')
+  @JsonValue("cdr")
   cdr,
-  @JsonValue('cds')
+  @JsonValue("cds")
   cds,
-  @JsonValue('cdy')
+  @JsonValue("cdy")
   cdy,
-  @JsonValue('cdz')
+  @JsonValue("cdz")
   cdz,
-  @JsonValue('cea')
+  @JsonValue("cea")
   cea,
-  @JsonValue('ceb')
+  @JsonValue("ceb")
   ceb,
-  @JsonValue('ceg')
+  @JsonValue("ceg")
   ceg,
-  @JsonValue('cek')
+  @JsonValue("cek")
   cek,
-  @JsonValue('cen')
+  @JsonValue("cen")
   cen,
-  @JsonValue('ces')
+  @JsonValue("ces")
   ces,
-  @JsonValue('cet')
+  @JsonValue("cet")
   cet,
-  @JsonValue('cey')
+  @JsonValue("cey")
   cey,
-  @JsonValue('cfa')
+  @JsonValue("cfa")
   cfa,
-  @JsonValue('cfd')
+  @JsonValue("cfd")
   cfd,
-  @JsonValue('cfg')
+  @JsonValue("cfg")
   cfg,
-  @JsonValue('cfm')
+  @JsonValue("cfm")
   cfm,
-  @JsonValue('cga')
+  @JsonValue("cga")
   cga,
-  @JsonValue('cgc')
+  @JsonValue("cgc")
   cgc,
-  @JsonValue('cgg')
+  @JsonValue("cgg")
   cgg,
-  @JsonValue('cgk')
+  @JsonValue("cgk")
   cgk,
-  @JsonValue('cha')
+  @JsonValue("cha")
   cha,
-  @JsonValue('chb')
+  @JsonValue("chb")
   chb,
-  @JsonValue('chc')
+  @JsonValue("chc")
   chc,
-  @JsonValue('chd')
+  @JsonValue("chd")
   chd,
-  @JsonValue('che')
+  @JsonValue("che")
   che,
-  @JsonValue('chf')
+  @JsonValue("chf")
   chf,
-  @JsonValue('chg')
+  @JsonValue("chg")
   chg,
-  @JsonValue('chh')
+  @JsonValue("chh")
   chh,
-  @JsonValue('chj')
+  @JsonValue("chj")
   chj,
-  @JsonValue('chk')
+  @JsonValue("chk")
   chk,
-  @JsonValue('chl')
+  @JsonValue("chl")
   chl,
-  @JsonValue('chm')
+  @JsonValue("chm")
   chm,
-  @JsonValue('chn')
+  @JsonValue("chn")
   chn,
-  @JsonValue('cho')
+  @JsonValue("cho")
   cho,
-  @JsonValue('chp')
+  @JsonValue("chp")
   chp,
-  @JsonValue('chq')
+  @JsonValue("chq")
   chq,
-  @JsonValue('chr')
+  @JsonValue("chr")
   chr,
-  @JsonValue('cht')
+  @JsonValue("cht")
   cht,
-  @JsonValue('chu')
+  @JsonValue("chu")
   chu,
-  @JsonValue('chv')
+  @JsonValue("chv")
   chv,
-  @JsonValue('chw')
+  @JsonValue("chw")
   chw,
-  @JsonValue('chx')
+  @JsonValue("chx")
   chx,
-  @JsonValue('chy')
+  @JsonValue("chy")
   chy,
-  @JsonValue('chz')
+  @JsonValue("chz")
   chz,
-  @JsonValue('cia')
+  @JsonValue("cia")
   cia,
-  @JsonValue('cib')
+  @JsonValue("cib")
   cib,
-  @JsonValue('cic')
+  @JsonValue("cic")
   cic,
-  @JsonValue('cid')
+  @JsonValue("cid")
   cid,
-  @JsonValue('cie')
+  @JsonValue("cie")
   cie,
-  @JsonValue('cih')
+  @JsonValue("cih")
   cih,
-  @JsonValue('cik')
+  @JsonValue("cik")
   cik,
-  @JsonValue('cim')
+  @JsonValue("cim")
   cim,
-  @JsonValue('cin')
+  @JsonValue("cin")
   cin,
-  @JsonValue('cip')
+  @JsonValue("cip")
   cip,
-  @JsonValue('cir')
+  @JsonValue("cir")
   cir,
-  @JsonValue('ciw')
+  @JsonValue("ciw")
   ciw,
-  @JsonValue('ciy')
+  @JsonValue("ciy")
   ciy,
-  @JsonValue('cja')
+  @JsonValue("cja")
   cja,
-  @JsonValue('cje')
+  @JsonValue("cje")
   cje,
-  @JsonValue('cjh')
+  @JsonValue("cjh")
   cjh,
-  @JsonValue('cji')
+  @JsonValue("cji")
   cji,
-  @JsonValue('cjk')
+  @JsonValue("cjk")
   cjk,
-  @JsonValue('cjm')
+  @JsonValue("cjm")
   cjm,
-  @JsonValue('cjn')
+  @JsonValue("cjn")
   cjn,
-  @JsonValue('cjo')
+  @JsonValue("cjo")
   cjo,
-  @JsonValue('cjp')
+  @JsonValue("cjp")
   cjp,
-  @JsonValue('cjs')
+  @JsonValue("cjs")
   cjs,
-  @JsonValue('cjv')
+  @JsonValue("cjv")
   cjv,
-  @JsonValue('cjy')
+  @JsonValue("cjy")
   cjy,
-  @JsonValue('ckb')
+  @JsonValue("ckb")
   ckb,
-  @JsonValue('ckh')
+  @JsonValue("ckh")
   ckh,
-  @JsonValue('ckl')
+  @JsonValue("ckl")
   ckl,
-  @JsonValue('ckm')
+  @JsonValue("ckm")
   ckm,
-  @JsonValue('ckn')
+  @JsonValue("ckn")
   ckn,
-  @JsonValue('cko')
+  @JsonValue("cko")
   cko,
-  @JsonValue('ckq')
+  @JsonValue("ckq")
   ckq,
-  @JsonValue('ckr')
+  @JsonValue("ckr")
   ckr,
-  @JsonValue('cks')
+  @JsonValue("cks")
   cks,
-  @JsonValue('ckt')
+  @JsonValue("ckt")
   ckt,
-  @JsonValue('cku')
+  @JsonValue("cku")
   cku,
-  @JsonValue('ckv')
+  @JsonValue("ckv")
   ckv,
-  @JsonValue('ckx')
+  @JsonValue("ckx")
   ckx,
-  @JsonValue('cky')
+  @JsonValue("cky")
   cky,
-  @JsonValue('ckz')
+  @JsonValue("ckz")
   ckz,
-  @JsonValue('cla')
+  @JsonValue("cla")
   cla,
-  @JsonValue('clc')
+  @JsonValue("clc")
   clc,
-  @JsonValue('cld')
+  @JsonValue("cld")
   cld,
-  @JsonValue('cle')
+  @JsonValue("cle")
   cle,
-  @JsonValue('clh')
+  @JsonValue("clh")
   clh,
-  @JsonValue('cli')
+  @JsonValue("cli")
   cli,
-  @JsonValue('clj')
+  @JsonValue("clj")
   clj,
-  @JsonValue('clk')
+  @JsonValue("clk")
   clk,
-  @JsonValue('cll')
+  @JsonValue("cll")
   cll,
-  @JsonValue('clm')
+  @JsonValue("clm")
   clm,
-  @JsonValue('clo')
+  @JsonValue("clo")
   clo,
-  @JsonValue('clt')
+  @JsonValue("clt")
   clt,
-  @JsonValue('clu')
+  @JsonValue("clu")
   clu,
-  @JsonValue('clw')
+  @JsonValue("clw")
   clw,
-  @JsonValue('cly')
+  @JsonValue("cly")
   cly,
-  @JsonValue('cma')
+  @JsonValue("cma")
   cma,
-  @JsonValue('cme')
+  @JsonValue("cme")
   cme,
-  @JsonValue('cmg')
+  @JsonValue("cmg")
   cmg,
-  @JsonValue('cmi')
+  @JsonValue("cmi")
   cmi,
-  @JsonValue('cml')
+  @JsonValue("cml")
   cml,
-  @JsonValue('cmm')
+  @JsonValue("cmm")
   cmm,
-  @JsonValue('cmn')
+  @JsonValue("cmn")
   cmn,
-  @JsonValue('cmo')
+  @JsonValue("cmo")
   cmo,
-  @JsonValue('cmr')
+  @JsonValue("cmr")
   cmr,
-  @JsonValue('cms')
+  @JsonValue("cms")
   cms,
-  @JsonValue('cmt')
+  @JsonValue("cmt")
   cmt,
-  @JsonValue('cna')
+  @JsonValue("cna")
   cna,
-  @JsonValue('cnb')
+  @JsonValue("cnb")
   cnb,
-  @JsonValue('cnc')
+  @JsonValue("cnc")
   cnc,
-  @JsonValue('cng')
+  @JsonValue("cng")
   cng,
-  @JsonValue('cnh')
+  @JsonValue("cnh")
   cnh,
-  @JsonValue('cni')
+  @JsonValue("cni")
   cni,
-  @JsonValue('cnk')
+  @JsonValue("cnk")
   cnk,
-  @JsonValue('cnl')
+  @JsonValue("cnl")
   cnl,
-  @JsonValue('cno')
+  @JsonValue("cno")
   cno,
-  @JsonValue('cnp')
+  @JsonValue("cnp")
   cnp,
-  @JsonValue('cnq')
+  @JsonValue("cnq")
   cnq,
-  @JsonValue('cnr')
+  @JsonValue("cnr")
   cnr,
-  @JsonValue('cns')
+  @JsonValue("cns")
   cns,
-  @JsonValue('cnt')
+  @JsonValue("cnt")
   cnt,
-  @JsonValue('cnu')
+  @JsonValue("cnu")
   cnu,
-  @JsonValue('cnw')
+  @JsonValue("cnw")
   cnw,
-  @JsonValue('cnx')
+  @JsonValue("cnx")
   cnx,
-  @JsonValue('coa')
+  @JsonValue("coa")
   coa,
-  @JsonValue('cob')
+  @JsonValue("cob")
   cob,
-  @JsonValue('coc')
+  @JsonValue("coc")
   coc,
-  @JsonValue('cod')
+  @JsonValue("cod")
   cod,
-  @JsonValue('coe')
+  @JsonValue("coe")
   coe,
-  @JsonValue('cof')
+  @JsonValue("cof")
   cof,
-  @JsonValue('cog')
+  @JsonValue("cog")
   cog,
-  @JsonValue('coh')
+  @JsonValue("coh")
   coh,
-  @JsonValue('coj')
+  @JsonValue("coj")
   coj,
-  @JsonValue('cok')
+  @JsonValue("cok")
   cok,
-  @JsonValue('col')
+  @JsonValue("col")
   col,
-  @JsonValue('com')
+  @JsonValue("com")
   com,
-  @JsonValue('con')
+  @JsonValue("con")
   con,
-  @JsonValue('coo')
+  @JsonValue("coo")
   coo,
-  @JsonValue('cop')
+  @JsonValue("cop")
   cop,
-  @JsonValue('coq')
+  @JsonValue("coq")
   coq,
-  @JsonValue('cor')
+  @JsonValue("cor")
   cor,
-  @JsonValue('cos')
+  @JsonValue("cos")
   cos,
-  @JsonValue('cot')
+  @JsonValue("cot")
   cot,
-  @JsonValue('cou')
+  @JsonValue("cou")
   cou,
-  @JsonValue('cov')
+  @JsonValue("cov")
   cov,
-  @JsonValue('cow')
+  @JsonValue("cow")
   cow,
-  @JsonValue('cox')
+  @JsonValue("cox")
   cox,
-  @JsonValue('coz')
+  @JsonValue("coz")
   coz,
-  @JsonValue('cpa')
+  @JsonValue("cpa")
   cpa,
-  @JsonValue('cpb')
+  @JsonValue("cpb")
   cpb,
-  @JsonValue('cpc')
+  @JsonValue("cpc")
   cpc,
-  @JsonValue('cpg')
+  @JsonValue("cpg")
   cpg,
-  @JsonValue('cpi')
+  @JsonValue("cpi")
   cpi,
-  @JsonValue('cpn')
+  @JsonValue("cpn")
   cpn,
-  @JsonValue('cpo')
+  @JsonValue("cpo")
   cpo,
-  @JsonValue('cps')
+  @JsonValue("cps")
   cps,
-  @JsonValue('cpu')
+  @JsonValue("cpu")
   cpu,
-  @JsonValue('cpx')
+  @JsonValue("cpx")
   cpx,
-  @JsonValue('cpy')
+  @JsonValue("cpy")
   cpy,
-  @JsonValue('cqd')
+  @JsonValue("cqd")
   cqd,
-  @JsonValue('cra')
+  @JsonValue("cra")
   cra,
-  @JsonValue('crb')
+  @JsonValue("crb")
   crb,
-  @JsonValue('crc')
+  @JsonValue("crc")
   crc,
-  @JsonValue('crd')
+  @JsonValue("crd")
   crd,
-  @JsonValue('cre')
+  @JsonValue("cre")
   cre,
-  @JsonValue('crf')
+  @JsonValue("crf")
   crf,
-  @JsonValue('crg')
+  @JsonValue("crg")
   crg,
-  @JsonValue('crh')
+  @JsonValue("crh")
   crh,
-  @JsonValue('cri')
+  @JsonValue("cri")
   cri,
-  @JsonValue('crj')
+  @JsonValue("crj")
   crj,
-  @JsonValue('crk')
+  @JsonValue("crk")
   crk,
-  @JsonValue('crl')
+  @JsonValue("crl")
   crl,
-  @JsonValue('crm')
+  @JsonValue("crm")
   crm,
-  @JsonValue('crn')
+  @JsonValue("crn")
   crn,
-  @JsonValue('cro')
+  @JsonValue("cro")
   cro,
-  @JsonValue('crq')
+  @JsonValue("crq")
   crq,
-  @JsonValue('crr')
+  @JsonValue("crr")
   crr,
-  @JsonValue('crs')
+  @JsonValue("crs")
   crs,
-  @JsonValue('crt')
+  @JsonValue("crt")
   crt,
-  @JsonValue('crv')
+  @JsonValue("crv")
   crv,
-  @JsonValue('crw')
+  @JsonValue("crw")
   crw,
-  @JsonValue('crx')
+  @JsonValue("crx")
   crx,
-  @JsonValue('cry')
+  @JsonValue("cry")
   cry,
-  @JsonValue('crz')
+  @JsonValue("crz")
   crz,
-  @JsonValue('csa')
+  @JsonValue("csa")
   csa,
-  @JsonValue('csb')
+  @JsonValue("csb")
   csb,
-  @JsonValue('csc')
+  @JsonValue("csc")
   csc,
-  @JsonValue('csd')
+  @JsonValue("csd")
   csd,
-  @JsonValue('cse')
+  @JsonValue("cse")
   cse,
-  @JsonValue('csf')
+  @JsonValue("csf")
   csf,
-  @JsonValue('csg')
+  @JsonValue("csg")
   csg,
-  @JsonValue('csh')
+  @JsonValue("csh")
   csh,
-  @JsonValue('csi')
+  @JsonValue("csi")
   csi,
-  @JsonValue('csj')
+  @JsonValue("csj")
   csj,
-  @JsonValue('csk')
+  @JsonValue("csk")
   csk,
-  @JsonValue('csl')
+  @JsonValue("csl")
   csl,
-  @JsonValue('csm')
+  @JsonValue("csm")
   csm,
-  @JsonValue('csn')
+  @JsonValue("csn")
   csn,
-  @JsonValue('cso')
+  @JsonValue("cso")
   cso,
-  @JsonValue('csp')
+  @JsonValue("csp")
   csp,
-  @JsonValue('csq')
+  @JsonValue("csq")
   csq,
-  @JsonValue('csr')
+  @JsonValue("csr")
   csr,
-  @JsonValue('css')
+  @JsonValue("css")
   css,
-  @JsonValue('cst')
+  @JsonValue("cst")
   cst,
-  @JsonValue('csv')
+  @JsonValue("csv")
   csv,
-  @JsonValue('csw')
+  @JsonValue("csw")
   csw,
-  @JsonValue('csx')
+  @JsonValue("csx")
   csx,
-  @JsonValue('csy')
+  @JsonValue("csy")
   csy,
-  @JsonValue('csz')
+  @JsonValue("csz")
   csz,
-  @JsonValue('cta')
+  @JsonValue("cta")
   cta,
-  @JsonValue('ctc')
+  @JsonValue("ctc")
   ctc,
-  @JsonValue('ctd')
+  @JsonValue("ctd")
   ctd,
-  @JsonValue('cte')
+  @JsonValue("cte")
   cte,
-  @JsonValue('ctg')
+  @JsonValue("ctg")
   ctg,
-  @JsonValue('cth')
+  @JsonValue("cth")
   cth,
-  @JsonValue('ctl')
+  @JsonValue("ctl")
   ctl,
-  @JsonValue('ctm')
+  @JsonValue("ctm")
   ctm,
-  @JsonValue('ctn')
+  @JsonValue("ctn")
   ctn,
-  @JsonValue('cto')
+  @JsonValue("cto")
   cto,
-  @JsonValue('ctp')
+  @JsonValue("ctp")
   ctp,
-  @JsonValue('cts')
+  @JsonValue("cts")
   cts,
-  @JsonValue('ctt')
+  @JsonValue("ctt")
   ctt,
-  @JsonValue('ctu')
+  @JsonValue("ctu")
   ctu,
-  @JsonValue('cty')
+  @JsonValue("cty")
   cty,
-  @JsonValue('ctz')
+  @JsonValue("ctz")
   ctz,
-  @JsonValue('cua')
+  @JsonValue("cua")
   cua,
-  @JsonValue('cub')
+  @JsonValue("cub")
   cub,
-  @JsonValue('cuc')
+  @JsonValue("cuc")
   cuc,
-  @JsonValue('cuh')
+  @JsonValue("cuh")
   cuh,
-  @JsonValue('cui')
+  @JsonValue("cui")
   cui,
-  @JsonValue('cuj')
+  @JsonValue("cuj")
   cuj,
-  @JsonValue('cuk')
+  @JsonValue("cuk")
   cuk,
-  @JsonValue('cul')
+  @JsonValue("cul")
   cul,
-  @JsonValue('cuo')
+  @JsonValue("cuo")
   cuo,
-  @JsonValue('cup')
+  @JsonValue("cup")
   cup,
-  @JsonValue('cuq')
+  @JsonValue("cuq")
   cuq,
-  @JsonValue('cur')
+  @JsonValue("cur")
   cur,
-  @JsonValue('cut')
+  @JsonValue("cut")
   cut,
-  @JsonValue('cuu')
+  @JsonValue("cuu")
   cuu,
-  @JsonValue('cuv')
+  @JsonValue("cuv")
   cuv,
-  @JsonValue('cuw')
+  @JsonValue("cuw")
   cuw,
-  @JsonValue('cux')
+  @JsonValue("cux")
   cux,
-  @JsonValue('cuy')
+  @JsonValue("cuy")
   cuy,
-  @JsonValue('cvg')
+  @JsonValue("cvg")
   cvg,
-  @JsonValue('cvn')
+  @JsonValue("cvn")
   cvn,
-  @JsonValue('cwa')
+  @JsonValue("cwa")
   cwa,
-  @JsonValue('cwb')
+  @JsonValue("cwb")
   cwb,
-  @JsonValue('cwd')
+  @JsonValue("cwd")
   cwd,
-  @JsonValue('cwe')
+  @JsonValue("cwe")
   cwe,
-  @JsonValue('cwg')
+  @JsonValue("cwg")
   cwg,
-  @JsonValue('cwt')
+  @JsonValue("cwt")
   cwt,
-  @JsonValue('cya')
+  @JsonValue("cya")
   cya,
-  @JsonValue('cyb')
+  @JsonValue("cyb")
   cyb,
-  @JsonValue('cym')
+  @JsonValue("cym")
   cym,
-  @JsonValue('cyo')
+  @JsonValue("cyo")
   cyo,
-  @JsonValue('czh')
+  @JsonValue("czh")
   czh,
-  @JsonValue('czk')
+  @JsonValue("czk")
   czk,
-  @JsonValue('czn')
+  @JsonValue("czn")
   czn,
-  @JsonValue('czo')
+  @JsonValue("czo")
   czo,
-  @JsonValue('czt')
+  @JsonValue("czt")
   czt,
-  @JsonValue('daa')
+  @JsonValue("daa")
   daa,
-  @JsonValue('dac')
+  @JsonValue("dac")
   dac,
-  @JsonValue('dad')
+  @JsonValue("dad")
   dad,
-  @JsonValue('dae')
+  @JsonValue("dae")
   dae,
-  @JsonValue('dag')
+  @JsonValue("dag")
   dag,
-  @JsonValue('dah')
+  @JsonValue("dah")
   dah,
-  @JsonValue('dai')
+  @JsonValue("dai")
   dai,
-  @JsonValue('daj')
+  @JsonValue("daj")
   daj,
-  @JsonValue('dak')
+  @JsonValue("dak")
   dak,
-  @JsonValue('dal')
+  @JsonValue("dal")
   dal,
-  @JsonValue('dam')
+  @JsonValue("dam")
   dam,
-  @JsonValue('dan')
+  @JsonValue("dan")
   dan,
-  @JsonValue('dao')
+  @JsonValue("dao")
   dao,
-  @JsonValue('daq')
+  @JsonValue("daq")
   daq,
-  @JsonValue('dar')
+  @JsonValue("dar")
   dar,
-  @JsonValue('das')
+  @JsonValue("das")
   das,
-  @JsonValue('dau')
+  @JsonValue("dau")
   dau,
-  @JsonValue('dav')
+  @JsonValue("dav")
   dav,
-  @JsonValue('daw')
+  @JsonValue("daw")
   daw,
-  @JsonValue('dax')
+  @JsonValue("dax")
   dax,
-  @JsonValue('daz')
+  @JsonValue("daz")
   daz,
-  @JsonValue('dba')
+  @JsonValue("dba")
   dba,
-  @JsonValue('dbb')
+  @JsonValue("dbb")
   dbb,
-  @JsonValue('dbd')
+  @JsonValue("dbd")
   dbd,
-  @JsonValue('dbe')
+  @JsonValue("dbe")
   dbe,
-  @JsonValue('dbf')
+  @JsonValue("dbf")
   dbf,
-  @JsonValue('dbg')
+  @JsonValue("dbg")
   dbg,
-  @JsonValue('dbi')
+  @JsonValue("dbi")
   dbi,
-  @JsonValue('dbj')
+  @JsonValue("dbj")
   dbj,
-  @JsonValue('dbl')
+  @JsonValue("dbl")
   dbl,
-  @JsonValue('dbm')
+  @JsonValue("dbm")
   dbm,
-  @JsonValue('dbn')
+  @JsonValue("dbn")
   dbn,
-  @JsonValue('dbo')
+  @JsonValue("dbo")
   dbo,
-  @JsonValue('dbp')
+  @JsonValue("dbp")
   dbp,
-  @JsonValue('dbq')
+  @JsonValue("dbq")
   dbq,
-  @JsonValue('dbr')
+  @JsonValue("dbr")
   dbr,
-  @JsonValue('dbt')
+  @JsonValue("dbt")
   dbt,
-  @JsonValue('dbu')
+  @JsonValue("dbu")
   dbu,
-  @JsonValue('dbv')
+  @JsonValue("dbv")
   dbv,
-  @JsonValue('dbw')
+  @JsonValue("dbw")
   dbw,
-  @JsonValue('dby')
+  @JsonValue("dby")
   dby,
-  @JsonValue('dcc')
+  @JsonValue("dcc")
   dcc,
-  @JsonValue('dcr')
+  @JsonValue("dcr")
   dcr,
-  @JsonValue('dda')
+  @JsonValue("dda")
   dda,
-  @JsonValue('ddd')
+  @JsonValue("ddd")
   ddd,
-  @JsonValue('dde')
+  @JsonValue("dde")
   dde,
-  @JsonValue('ddg')
+  @JsonValue("ddg")
   ddg,
-  @JsonValue('ddi')
+  @JsonValue("ddi")
   ddi,
-  @JsonValue('ddj')
+  @JsonValue("ddj")
   ddj,
-  @JsonValue('ddn')
+  @JsonValue("ddn")
   ddn,
-  @JsonValue('ddo')
+  @JsonValue("ddo")
   ddo,
-  @JsonValue('ddr')
+  @JsonValue("ddr")
   ddr,
-  @JsonValue('dds')
+  @JsonValue("dds")
   dds,
-  @JsonValue('ddw')
+  @JsonValue("ddw")
   ddw,
-  @JsonValue('dec')
+  @JsonValue("dec")
   dec,
-  @JsonValue('ded')
+  @JsonValue("ded")
   ded,
-  @JsonValue('dee')
+  @JsonValue("dee")
   dee,
-  @JsonValue('def')
+  @JsonValue("def")
   def,
-  @JsonValue('deg')
+  @JsonValue("deg")
   deg,
-  @JsonValue('deh')
+  @JsonValue("deh")
   deh,
-  @JsonValue('dei')
+  @JsonValue("dei")
   dei,
-  @JsonValue('dek')
+  @JsonValue("dek")
   dek,
-  @JsonValue('del')
+  @JsonValue("del")
   del,
-  @JsonValue('dem')
+  @JsonValue("dem")
   dem,
-  @JsonValue('den')
+  @JsonValue("den")
   den,
-  @JsonValue('dep')
+  @JsonValue("dep")
   dep,
-  @JsonValue('deq')
+  @JsonValue("deq")
   deq,
-  @JsonValue('der')
+  @JsonValue("der")
   der,
-  @JsonValue('des')
+  @JsonValue("des")
   des,
-  @JsonValue('deu')
+  @JsonValue("deu")
   deu,
-  @JsonValue('dev')
+  @JsonValue("dev")
   dev,
-  @JsonValue('dez')
+  @JsonValue("dez")
   dez,
-  @JsonValue('dga')
+  @JsonValue("dga")
   dga,
-  @JsonValue('dgb')
+  @JsonValue("dgb")
   dgb,
-  @JsonValue('dgc')
+  @JsonValue("dgc")
   dgc,
-  @JsonValue('dgd')
+  @JsonValue("dgd")
   dgd,
-  @JsonValue('dge')
+  @JsonValue("dge")
   dge,
-  @JsonValue('dgg')
+  @JsonValue("dgg")
   dgg,
-  @JsonValue('dgh')
+  @JsonValue("dgh")
   dgh,
-  @JsonValue('dgi')
+  @JsonValue("dgi")
   dgi,
-  @JsonValue('dgk')
+  @JsonValue("dgk")
   dgk,
-  @JsonValue('dgl')
+  @JsonValue("dgl")
   dgl,
-  @JsonValue('dgn')
+  @JsonValue("dgn")
   dgn,
-  @JsonValue('dgo')
+  @JsonValue("dgo")
   dgo,
-  @JsonValue('dgr')
+  @JsonValue("dgr")
   dgr,
-  @JsonValue('dgs')
+  @JsonValue("dgs")
   dgs,
-  @JsonValue('dgt')
+  @JsonValue("dgt")
   dgt,
-  @JsonValue('dgw')
+  @JsonValue("dgw")
   dgw,
-  @JsonValue('dgx')
+  @JsonValue("dgx")
   dgx,
-  @JsonValue('dgz')
+  @JsonValue("dgz")
   dgz,
-  @JsonValue('dhd')
+  @JsonValue("dhd")
   dhd,
-  @JsonValue('dhg')
+  @JsonValue("dhg")
   dhg,
-  @JsonValue('dhi')
+  @JsonValue("dhi")
   dhi,
-  @JsonValue('dhl')
+  @JsonValue("dhl")
   dhl,
-  @JsonValue('dhm')
+  @JsonValue("dhm")
   dhm,
-  @JsonValue('dhn')
+  @JsonValue("dhn")
   dhn,
-  @JsonValue('dho')
+  @JsonValue("dho")
   dho,
-  @JsonValue('dhr')
+  @JsonValue("dhr")
   dhr,
-  @JsonValue('dhs')
+  @JsonValue("dhs")
   dhs,
-  @JsonValue('dhu')
+  @JsonValue("dhu")
   dhu,
-  @JsonValue('dhv')
+  @JsonValue("dhv")
   dhv,
-  @JsonValue('dhw')
+  @JsonValue("dhw")
   dhw,
-  @JsonValue('dhx')
+  @JsonValue("dhx")
   dhx,
-  @JsonValue('dia')
+  @JsonValue("dia")
   dia,
-  @JsonValue('dib')
+  @JsonValue("dib")
   dib,
-  @JsonValue('dic')
+  @JsonValue("dic")
   dic,
-  @JsonValue('did')
+  @JsonValue("did")
   did,
-  @JsonValue('dif')
+  @JsonValue("dif")
   dif,
-  @JsonValue('dig')
+  @JsonValue("dig")
   dig,
-  @JsonValue('dih')
+  @JsonValue("dih")
   dih,
-  @JsonValue('dii')
+  @JsonValue("dii")
   dii,
-  @JsonValue('dij')
+  @JsonValue("dij")
   dij,
-  @JsonValue('dik')
+  @JsonValue("dik")
   dik,
-  @JsonValue('dil')
+  @JsonValue("dil")
   dil,
-  @JsonValue('dim')
+  @JsonValue("dim")
   dim,
-  @JsonValue('din')
+  @JsonValue("din")
   din,
-  @JsonValue('dio')
+  @JsonValue("dio")
   dio,
-  @JsonValue('dip')
+  @JsonValue("dip")
   dip,
-  @JsonValue('diq')
+  @JsonValue("diq")
   diq,
-  @JsonValue('dir')
+  @JsonValue("dir")
   dir,
-  @JsonValue('dis')
+  @JsonValue("dis")
   dis,
-  @JsonValue('diu')
+  @JsonValue("diu")
   diu,
-  @JsonValue('div')
+  @JsonValue("div")
   div,
-  @JsonValue('diw')
+  @JsonValue("diw")
   diw,
-  @JsonValue('dix')
+  @JsonValue("dix")
   dix,
-  @JsonValue('diy')
+  @JsonValue("diy")
   diy,
-  @JsonValue('diz')
+  @JsonValue("diz")
   diz,
-  @JsonValue('dja')
+  @JsonValue("dja")
   dja,
-  @JsonValue('djb')
+  @JsonValue("djb")
   djb,
-  @JsonValue('djc')
+  @JsonValue("djc")
   djc,
-  @JsonValue('djd')
+  @JsonValue("djd")
   djd,
-  @JsonValue('dje')
+  @JsonValue("dje")
   dje,
-  @JsonValue('djf')
+  @JsonValue("djf")
   djf,
-  @JsonValue('dji')
+  @JsonValue("dji")
   dji,
-  @JsonValue('djj')
+  @JsonValue("djj")
   djj,
-  @JsonValue('djk')
+  @JsonValue("djk")
   djk,
-  @JsonValue('djm')
+  @JsonValue("djm")
   djm,
-  @JsonValue('djn')
+  @JsonValue("djn")
   djn,
-  @JsonValue('djo')
+  @JsonValue("djo")
   djo,
-  @JsonValue('djr')
+  @JsonValue("djr")
   djr,
-  @JsonValue('dju')
+  @JsonValue("dju")
   dju,
-  @JsonValue('djw')
+  @JsonValue("djw")
   djw,
-  @JsonValue('dka')
+  @JsonValue("dka")
   dka,
-  @JsonValue('dkg')
+  @JsonValue("dkg")
   dkg,
-  @JsonValue('dkk')
+  @JsonValue("dkk")
   dkk,
-  @JsonValue('dkr')
+  @JsonValue("dkr")
   dkr,
-  @JsonValue('dks')
+  @JsonValue("dks")
   dks,
-  @JsonValue('dkx')
+  @JsonValue("dkx")
   dkx,
-  @JsonValue('dlg')
+  @JsonValue("dlg")
   dlg,
-  @JsonValue('dlk')
+  @JsonValue("dlk")
   dlk,
-  @JsonValue('dlm')
+  @JsonValue("dlm")
   dlm,
-  @JsonValue('dln')
+  @JsonValue("dln")
   dln,
-  @JsonValue('dma')
+  @JsonValue("dma")
   dma,
-  @JsonValue('dmb')
+  @JsonValue("dmb")
   dmb,
-  @JsonValue('dmc')
+  @JsonValue("dmc")
   dmc,
-  @JsonValue('dmd')
+  @JsonValue("dmd")
   dmd,
-  @JsonValue('dme')
+  @JsonValue("dme")
   dme,
-  @JsonValue('dmf')
+  @JsonValue("dmf")
   dmf,
-  @JsonValue('dmg')
+  @JsonValue("dmg")
   dmg,
-  @JsonValue('dmk')
+  @JsonValue("dmk")
   dmk,
-  @JsonValue('dml')
+  @JsonValue("dml")
   dml,
-  @JsonValue('dmm')
+  @JsonValue("dmm")
   dmm,
-  @JsonValue('dmo')
+  @JsonValue("dmo")
   dmo,
-  @JsonValue('dmr')
+  @JsonValue("dmr")
   dmr,
-  @JsonValue('dms')
+  @JsonValue("dms")
   dms,
-  @JsonValue('dmu')
+  @JsonValue("dmu")
   dmu,
-  @JsonValue('dmv')
+  @JsonValue("dmv")
   dmv,
-  @JsonValue('dmw')
+  @JsonValue("dmw")
   dmw,
-  @JsonValue('dmx')
+  @JsonValue("dmx")
   dmx,
-  @JsonValue('dmy')
+  @JsonValue("dmy")
   dmy,
-  @JsonValue('dna')
+  @JsonValue("dna")
   dna,
-  @JsonValue('dnd')
+  @JsonValue("dnd")
   dnd,
-  @JsonValue('dne')
+  @JsonValue("dne")
   dne,
-  @JsonValue('dng')
+  @JsonValue("dng")
   dng,
-  @JsonValue('dni')
+  @JsonValue("dni")
   dni,
-  @JsonValue('dnj')
+  @JsonValue("dnj")
   dnj,
-  @JsonValue('dnk')
+  @JsonValue("dnk")
   dnk,
-  @JsonValue('dnn')
+  @JsonValue("dnn")
   dnn,
-  @JsonValue('dno')
+  @JsonValue("dno")
   dno,
-  @JsonValue('dnr')
+  @JsonValue("dnr")
   dnr,
-  @JsonValue('dnt')
+  @JsonValue("dnt")
   dnt,
-  @JsonValue('dnu')
+  @JsonValue("dnu")
   dnu,
-  @JsonValue('dnv')
+  @JsonValue("dnv")
   dnv,
-  @JsonValue('dnw')
+  @JsonValue("dnw")
   dnw,
-  @JsonValue('dny')
+  @JsonValue("dny")
   dny,
-  @JsonValue('doa')
+  @JsonValue("doa")
   doa,
-  @JsonValue('dob')
+  @JsonValue("dob")
   dob,
-  @JsonValue('doc')
+  @JsonValue("doc")
   doc,
-  @JsonValue('doe')
+  @JsonValue("doe")
   doe,
-  @JsonValue('dof')
+  @JsonValue("dof")
   dof,
-  @JsonValue('doh')
+  @JsonValue("doh")
   doh,
-  @JsonValue('doi')
+  @JsonValue("doi")
   doi,
-  @JsonValue('dok')
+  @JsonValue("dok")
   dok,
-  @JsonValue('dol')
+  @JsonValue("dol")
   dol,
-  @JsonValue('don')
+  @JsonValue("don")
   don,
-  @JsonValue('doo')
+  @JsonValue("doo")
   doo,
-  @JsonValue('dop')
+  @JsonValue("dop")
   dop,
-  @JsonValue('doq')
+  @JsonValue("doq")
   doq,
-  @JsonValue('dor')
+  @JsonValue("dor")
   dor,
-  @JsonValue('dos')
+  @JsonValue("dos")
   dos,
-  @JsonValue('dot')
+  @JsonValue("dot")
   dot,
-  @JsonValue('dov')
+  @JsonValue("dov")
   dov,
-  @JsonValue('dow')
+  @JsonValue("dow")
   dow,
-  @JsonValue('dox')
+  @JsonValue("dox")
   dox,
-  @JsonValue('doy')
+  @JsonValue("doy")
   doy,
-  @JsonValue('doz')
+  @JsonValue("doz")
   doz,
-  @JsonValue('dpp')
+  @JsonValue("dpp")
   dpp,
-  @JsonValue('drb')
+  @JsonValue("drb")
   drb,
-  @JsonValue('drc')
+  @JsonValue("drc")
   drc,
-  @JsonValue('drd')
+  @JsonValue("drd")
   drd,
-  @JsonValue('dre')
+  @JsonValue("dre")
   dre,
-  @JsonValue('drg')
+  @JsonValue("drg")
   drg,
-  @JsonValue('dri')
+  @JsonValue("dri")
   dri,
-  @JsonValue('drl')
+  @JsonValue("drl")
   drl,
-  @JsonValue('drn')
+  @JsonValue("drn")
   drn,
-  @JsonValue('dro')
+  @JsonValue("dro")
   dro,
-  @JsonValue('drq')
+  @JsonValue("drq")
   drq,
-  @JsonValue('drs')
+  @JsonValue("drs")
   drs,
-  @JsonValue('drt')
+  @JsonValue("drt")
   drt,
-  @JsonValue('dru')
+  @JsonValue("dru")
   dru,
-  @JsonValue('dry')
+  @JsonValue("dry")
   dry,
-  @JsonValue('dsb')
+  @JsonValue("dsb")
   dsb,
-  @JsonValue('dse')
+  @JsonValue("dse")
   dse,
-  @JsonValue('dsh')
+  @JsonValue("dsh")
   dsh,
-  @JsonValue('dsi')
+  @JsonValue("dsi")
   dsi,
-  @JsonValue('dsl')
+  @JsonValue("dsl")
   dsl,
-  @JsonValue('dsn')
+  @JsonValue("dsn")
   dsn,
-  @JsonValue('dso')
+  @JsonValue("dso")
   dso,
-  @JsonValue('dsq')
+  @JsonValue("dsq")
   dsq,
-  @JsonValue('dsz')
+  @JsonValue("dsz")
   dsz,
-  @JsonValue('dta')
+  @JsonValue("dta")
   dta,
-  @JsonValue('dtb')
+  @JsonValue("dtb")
   dtb,
-  @JsonValue('dtd')
+  @JsonValue("dtd")
   dtd,
-  @JsonValue('dth')
+  @JsonValue("dth")
   dth,
-  @JsonValue('dti')
+  @JsonValue("dti")
   dti,
-  @JsonValue('dtk')
+  @JsonValue("dtk")
   dtk,
-  @JsonValue('dtm')
+  @JsonValue("dtm")
   dtm,
-  @JsonValue('dtn')
+  @JsonValue("dtn")
   dtn,
-  @JsonValue('dto')
+  @JsonValue("dto")
   dto,
-  @JsonValue('dtp')
+  @JsonValue("dtp")
   dtp,
-  @JsonValue('dtr')
+  @JsonValue("dtr")
   dtr,
-  @JsonValue('dts')
+  @JsonValue("dts")
   dts,
-  @JsonValue('dtt')
+  @JsonValue("dtt")
   dtt,
-  @JsonValue('dtu')
+  @JsonValue("dtu")
   dtu,
-  @JsonValue('dty')
+  @JsonValue("dty")
   dty,
-  @JsonValue('dua')
+  @JsonValue("dua")
   dua,
-  @JsonValue('dub')
+  @JsonValue("dub")
   dub,
-  @JsonValue('duc')
+  @JsonValue("duc")
   duc,
-  @JsonValue('due')
+  @JsonValue("due")
   due,
-  @JsonValue('duf')
+  @JsonValue("duf")
   duf,
-  @JsonValue('dug')
+  @JsonValue("dug")
   dug,
-  @JsonValue('duh')
+  @JsonValue("duh")
   duh,
-  @JsonValue('dui')
+  @JsonValue("dui")
   dui,
-  @JsonValue('duk')
+  @JsonValue("duk")
   duk,
-  @JsonValue('dul')
+  @JsonValue("dul")
   dul,
-  @JsonValue('dum')
+  @JsonValue("dum")
   dum,
-  @JsonValue('dun')
+  @JsonValue("dun")
   dun,
-  @JsonValue('duo')
+  @JsonValue("duo")
   duo,
-  @JsonValue('dup')
+  @JsonValue("dup")
   dup,
-  @JsonValue('duq')
+  @JsonValue("duq")
   duq,
-  @JsonValue('dur')
+  @JsonValue("dur")
   dur,
-  @JsonValue('dus')
+  @JsonValue("dus")
   dus,
-  @JsonValue('duu')
+  @JsonValue("duu")
   duu,
-  @JsonValue('duv')
+  @JsonValue("duv")
   duv,
-  @JsonValue('duw')
+  @JsonValue("duw")
   duw,
-  @JsonValue('dux')
+  @JsonValue("dux")
   dux,
-  @JsonValue('duy')
+  @JsonValue("duy")
   duy,
-  @JsonValue('duz')
+  @JsonValue("duz")
   duz,
-  @JsonValue('dva')
+  @JsonValue("dva")
   dva,
-  @JsonValue('dwa')
+  @JsonValue("dwa")
   dwa,
-  @JsonValue('dwk')
+  @JsonValue("dwk")
   dwk,
-  @JsonValue('dwr')
+  @JsonValue("dwr")
   dwr,
-  @JsonValue('dws')
+  @JsonValue("dws")
   dws,
-  @JsonValue('dwu')
+  @JsonValue("dwu")
   dwu,
-  @JsonValue('dww')
+  @JsonValue("dww")
   dww,
-  @JsonValue('dwy')
+  @JsonValue("dwy")
   dwy,
-  @JsonValue('dwz')
+  @JsonValue("dwz")
   dwz,
-  @JsonValue('dya')
+  @JsonValue("dya")
   dya,
-  @JsonValue('dyb')
+  @JsonValue("dyb")
   dyb,
-  @JsonValue('dyd')
+  @JsonValue("dyd")
   dyd,
-  @JsonValue('dyg')
+  @JsonValue("dyg")
   dyg,
-  @JsonValue('dyi')
+  @JsonValue("dyi")
   dyi,
-  @JsonValue('dym')
+  @JsonValue("dym")
   dym,
-  @JsonValue('dyn')
+  @JsonValue("dyn")
   dyn,
-  @JsonValue('dyo')
+  @JsonValue("dyo")
   dyo,
-  @JsonValue('dyu')
+  @JsonValue("dyu")
   dyu,
-  @JsonValue('dyy')
+  @JsonValue("dyy")
   dyy,
-  @JsonValue('dza')
+  @JsonValue("dza")
   dza,
-  @JsonValue('dze')
+  @JsonValue("dze")
   dze,
-  @JsonValue('dzg')
+  @JsonValue("dzg")
   dzg,
-  @JsonValue('dzl')
+  @JsonValue("dzl")
   dzl,
-  @JsonValue('dzn')
+  @JsonValue("dzn")
   dzn,
-  @JsonValue('dzo')
+  @JsonValue("dzo")
   dzo,
-  @JsonValue('eaa')
+  @JsonValue("eaa")
   eaa,
-  @JsonValue('ebc')
+  @JsonValue("ebc")
   ebc,
-  @JsonValue('ebg')
+  @JsonValue("ebg")
   ebg,
-  @JsonValue('ebk')
+  @JsonValue("ebk")
   ebk,
-  @JsonValue('ebo')
+  @JsonValue("ebo")
   ebo,
-  @JsonValue('ebr')
+  @JsonValue("ebr")
   ebr,
-  @JsonValue('ebu')
+  @JsonValue("ebu")
   ebu,
-  @JsonValue('ecr')
+  @JsonValue("ecr")
   ecr,
-  @JsonValue('ecs')
+  @JsonValue("ecs")
   ecs,
-  @JsonValue('ecy')
+  @JsonValue("ecy")
   ecy,
-  @JsonValue('eee')
+  @JsonValue("eee")
   eee,
-  @JsonValue('efa')
+  @JsonValue("efa")
   efa,
-  @JsonValue('efe')
+  @JsonValue("efe")
   efe,
-  @JsonValue('efi')
+  @JsonValue("efi")
   efi,
-  @JsonValue('ega')
+  @JsonValue("ega")
   ega,
-  @JsonValue('egl')
+  @JsonValue("egl")
   egl,
-  @JsonValue('egm')
+  @JsonValue("egm")
   egm,
-  @JsonValue('ego')
+  @JsonValue("ego")
   ego,
-  @JsonValue('egy')
+  @JsonValue("egy")
   egy,
-  @JsonValue('ehs')
+  @JsonValue("ehs")
   ehs,
-  @JsonValue('ehu')
+  @JsonValue("ehu")
   ehu,
-  @JsonValue('eip')
+  @JsonValue("eip")
   eip,
-  @JsonValue('eit')
+  @JsonValue("eit")
   eit,
-  @JsonValue('eiv')
+  @JsonValue("eiv")
   eiv,
-  @JsonValue('eja')
+  @JsonValue("eja")
   eja,
-  @JsonValue('eka')
+  @JsonValue("eka")
   eka,
-  @JsonValue('eke')
+  @JsonValue("eke")
   eke,
-  @JsonValue('ekg')
+  @JsonValue("ekg")
   ekg,
-  @JsonValue('eki')
+  @JsonValue("eki")
   eki,
-  @JsonValue('ekk')
+  @JsonValue("ekk")
   ekk,
-  @JsonValue('ekl')
+  @JsonValue("ekl")
   ekl,
-  @JsonValue('ekm')
+  @JsonValue("ekm")
   ekm,
-  @JsonValue('eko')
+  @JsonValue("eko")
   eko,
-  @JsonValue('ekp')
+  @JsonValue("ekp")
   ekp,
-  @JsonValue('ekr')
+  @JsonValue("ekr")
   ekr,
-  @JsonValue('eky')
+  @JsonValue("eky")
   eky,
-  @JsonValue('ele')
+  @JsonValue("ele")
   ele,
-  @JsonValue('elh')
+  @JsonValue("elh")
   elh,
-  @JsonValue('eli')
+  @JsonValue("eli")
   eli,
-  @JsonValue('elk')
+  @JsonValue("elk")
   elk,
-  @JsonValue('ell')
+  @JsonValue("ell")
   ell,
-  @JsonValue('elm')
+  @JsonValue("elm")
   elm,
-  @JsonValue('elo')
+  @JsonValue("elo")
   elo,
-  @JsonValue('elu')
+  @JsonValue("elu")
   elu,
-  @JsonValue('elx')
+  @JsonValue("elx")
   elx,
-  @JsonValue('ema')
+  @JsonValue("ema")
   ema,
-  @JsonValue('emb')
+  @JsonValue("emb")
   emb,
-  @JsonValue('eme')
+  @JsonValue("eme")
   eme,
-  @JsonValue('emg')
+  @JsonValue("emg")
   emg,
-  @JsonValue('emi')
+  @JsonValue("emi")
   emi,
-  @JsonValue('emk')
+  @JsonValue("emk")
   emk,
-  @JsonValue('emm')
+  @JsonValue("emm")
   emm,
-  @JsonValue('emn')
+  @JsonValue("emn")
   emn,
-  @JsonValue('emp')
+  @JsonValue("emp")
   emp,
-  @JsonValue('emq')
+  @JsonValue("emq")
   emq,
-  @JsonValue('ems')
+  @JsonValue("ems")
   ems,
-  @JsonValue('emu')
+  @JsonValue("emu")
   emu,
-  @JsonValue('emw')
+  @JsonValue("emw")
   emw,
-  @JsonValue('emx')
+  @JsonValue("emx")
   emx,
-  @JsonValue('emy')
+  @JsonValue("emy")
   emy,
-  @JsonValue('emz')
+  @JsonValue("emz")
   emz,
-  @JsonValue('ena')
+  @JsonValue("ena")
   ena,
-  @JsonValue('enb')
+  @JsonValue("enb")
   enb,
-  @JsonValue('enc')
+  @JsonValue("enc")
   enc,
-  @JsonValue('end')
+  @JsonValue("end")
   end,
-  @JsonValue('enf')
+  @JsonValue("enf")
   enf,
-  @JsonValue('eng')
+  @JsonValue("eng")
   eng,
-  @JsonValue('enh')
+  @JsonValue("enh")
   enh,
-  @JsonValue('enl')
+  @JsonValue("enl")
   enl,
-  @JsonValue('enm')
+  @JsonValue("enm")
   enm,
-  @JsonValue('enn')
+  @JsonValue("enn")
   enn,
-  @JsonValue('eno')
+  @JsonValue("eno")
   eno,
-  @JsonValue('enq')
+  @JsonValue("enq")
   enq,
-  @JsonValue('enr')
+  @JsonValue("enr")
   enr,
-  @JsonValue('enu')
+  @JsonValue("enu")
   enu,
-  @JsonValue('env')
+  @JsonValue("env")
   env,
-  @JsonValue('enw')
+  @JsonValue("enw")
   enw,
-  @JsonValue('enx')
+  @JsonValue("enx")
   enx,
-  @JsonValue('eot')
+  @JsonValue("eot")
   eot,
-  @JsonValue('epi')
+  @JsonValue("epi")
   epi,
-  @JsonValue('epo')
+  @JsonValue("epo")
   epo,
-  @JsonValue('era')
+  @JsonValue("era")
   era,
-  @JsonValue('erg')
+  @JsonValue("erg")
   erg,
-  @JsonValue('erh')
+  @JsonValue("erh")
   erh,
-  @JsonValue('eri')
+  @JsonValue("eri")
   eri,
-  @JsonValue('erk')
+  @JsonValue("erk")
   erk,
-  @JsonValue('ero')
+  @JsonValue("ero")
   ero,
-  @JsonValue('err')
+  @JsonValue("err")
   err,
-  @JsonValue('ers')
+  @JsonValue("ers")
   ers,
-  @JsonValue('ert')
+  @JsonValue("ert")
   ert,
-  @JsonValue('erw')
+  @JsonValue("erw")
   erw,
-  @JsonValue('ese')
+  @JsonValue("ese")
   ese,
-  @JsonValue('esg')
+  @JsonValue("esg")
   esg,
-  @JsonValue('esh')
+  @JsonValue("esh")
   esh,
-  @JsonValue('esi')
+  @JsonValue("esi")
   esi,
-  @JsonValue('esk')
+  @JsonValue("esk")
   esk,
-  @JsonValue('esl')
+  @JsonValue("esl")
   esl,
-  @JsonValue('esm')
+  @JsonValue("esm")
   esm,
-  @JsonValue('esn')
+  @JsonValue("esn")
   esn,
-  @JsonValue('eso')
+  @JsonValue("eso")
   eso,
-  @JsonValue('esq')
+  @JsonValue("esq")
   esq,
-  @JsonValue('ess')
+  @JsonValue("ess")
   ess,
-  @JsonValue('est')
+  @JsonValue("est")
   est,
-  @JsonValue('esu')
+  @JsonValue("esu")
   esu,
-  @JsonValue('esy')
+  @JsonValue("esy")
   esy,
-  @JsonValue('etb')
+  @JsonValue("etb")
   etb,
-  @JsonValue('etc')
+  @JsonValue("etc")
   etc,
-  @JsonValue('eth')
+  @JsonValue("eth")
   eth,
-  @JsonValue('etn')
+  @JsonValue("etn")
   etn,
-  @JsonValue('eto')
+  @JsonValue("eto")
   eto,
-  @JsonValue('etr')
+  @JsonValue("etr")
   etr,
-  @JsonValue('ets')
+  @JsonValue("ets")
   ets,
-  @JsonValue('ett')
+  @JsonValue("ett")
   ett,
-  @JsonValue('etu')
+  @JsonValue("etu")
   etu,
-  @JsonValue('etx')
+  @JsonValue("etx")
   etx,
-  @JsonValue('etz')
+  @JsonValue("etz")
   etz,
-  @JsonValue('eus')
+  @JsonValue("eus")
   eus,
-  @JsonValue('eve')
+  @JsonValue("eve")
   eve,
-  @JsonValue('evh')
+  @JsonValue("evh")
   evh,
-  @JsonValue('evn')
+  @JsonValue("evn")
   evn,
-  @JsonValue('ewe')
+  @JsonValue("ewe")
   ewe,
-  @JsonValue('ewo')
+  @JsonValue("ewo")
   ewo,
-  @JsonValue('ext')
+  @JsonValue("ext")
   ext,
-  @JsonValue('eya')
+  @JsonValue("eya")
   eya,
-  @JsonValue('eyo')
+  @JsonValue("eyo")
   eyo,
-  @JsonValue('eza')
+  @JsonValue("eza")
   eza,
-  @JsonValue('eze')
+  @JsonValue("eze")
   eze,
-  @JsonValue('faa')
+  @JsonValue("faa")
   faa,
-  @JsonValue('fab')
+  @JsonValue("fab")
   fab,
-  @JsonValue('fad')
+  @JsonValue("fad")
   fad,
-  @JsonValue('faf')
+  @JsonValue("faf")
   faf,
-  @JsonValue('fag')
+  @JsonValue("fag")
   fag,
-  @JsonValue('fah')
+  @JsonValue("fah")
   fah,
-  @JsonValue('fai')
+  @JsonValue("fai")
   fai,
-  @JsonValue('faj')
+  @JsonValue("faj")
   faj,
-  @JsonValue('fak')
+  @JsonValue("fak")
   fak,
-  @JsonValue('fal')
+  @JsonValue("fal")
   fal,
-  @JsonValue('fam')
+  @JsonValue("fam")
   fam,
-  @JsonValue('fan')
+  @JsonValue("fan")
   fan,
-  @JsonValue('fao')
+  @JsonValue("fao")
   fao,
-  @JsonValue('fap')
+  @JsonValue("fap")
   fap,
-  @JsonValue('far')
+  @JsonValue("far")
   far,
-  @JsonValue('fas')
+  @JsonValue("fas")
   fas,
-  @JsonValue('fat')
+  @JsonValue("fat")
   fat,
-  @JsonValue('fau')
+  @JsonValue("fau")
   fau,
-  @JsonValue('fax')
+  @JsonValue("fax")
   fax,
-  @JsonValue('fay')
+  @JsonValue("fay")
   fay,
-  @JsonValue('faz')
+  @JsonValue("faz")
   faz,
-  @JsonValue('fbl')
+  @JsonValue("fbl")
   fbl,
-  @JsonValue('fcs')
+  @JsonValue("fcs")
   fcs,
-  @JsonValue('fer')
+  @JsonValue("fer")
   fer,
-  @JsonValue('ffi')
+  @JsonValue("ffi")
   ffi,
-  @JsonValue('ffm')
+  @JsonValue("ffm")
   ffm,
-  @JsonValue('fgr')
+  @JsonValue("fgr")
   fgr,
-  @JsonValue('fia')
+  @JsonValue("fia")
   fia,
-  @JsonValue('fie')
+  @JsonValue("fie")
   fie,
-  @JsonValue('fif')
+  @JsonValue("fif")
   fif,
-  @JsonValue('fij')
+  @JsonValue("fij")
   fij,
-  @JsonValue('fil')
+  @JsonValue("fil")
   fil,
-  @JsonValue('fin')
+  @JsonValue("fin")
   fin,
-  @JsonValue('fip')
+  @JsonValue("fip")
   fip,
-  @JsonValue('fir')
+  @JsonValue("fir")
   fir,
-  @JsonValue('fit')
+  @JsonValue("fit")
   fit,
-  @JsonValue('fiw')
+  @JsonValue("fiw")
   fiw,
-  @JsonValue('fkk')
+  @JsonValue("fkk")
   fkk,
-  @JsonValue('fkv')
+  @JsonValue("fkv")
   fkv,
-  @JsonValue('fla')
+  @JsonValue("fla")
   fla,
-  @JsonValue('flh')
+  @JsonValue("flh")
   flh,
-  @JsonValue('fli')
+  @JsonValue("fli")
   fli,
-  @JsonValue('fll')
+  @JsonValue("fll")
   fll,
-  @JsonValue('fln')
+  @JsonValue("fln")
   fln,
-  @JsonValue('flr')
+  @JsonValue("flr")
   flr,
-  @JsonValue('fly')
+  @JsonValue("fly")
   fly,
-  @JsonValue('fmp')
+  @JsonValue("fmp")
   fmp,
-  @JsonValue('fmu')
+  @JsonValue("fmu")
   fmu,
-  @JsonValue('fnb')
+  @JsonValue("fnb")
   fnb,
-  @JsonValue('fng')
+  @JsonValue("fng")
   fng,
-  @JsonValue('fni')
+  @JsonValue("fni")
   fni,
-  @JsonValue('fod')
+  @JsonValue("fod")
   fod,
-  @JsonValue('foi')
+  @JsonValue("foi")
   foi,
-  @JsonValue('fom')
+  @JsonValue("fom")
   fom,
-  @JsonValue('fon')
+  @JsonValue("fon")
   fon,
-  @JsonValue('for')
+  @JsonValue("for")
   forAA,
-  @JsonValue('fos')
+  @JsonValue("fos")
   fos,
-  @JsonValue('fpe')
+  @JsonValue("fpe")
   fpe,
-  @JsonValue('fqs')
+  @JsonValue("fqs")
   fqs,
-  @JsonValue('fra')
+  @JsonValue("fra")
   fra,
-  @JsonValue('frc')
+  @JsonValue("frc")
   frc,
-  @JsonValue('frd')
+  @JsonValue("frd")
   frd,
-  @JsonValue('frk')
+  @JsonValue("frk")
   frk,
-  @JsonValue('frm')
+  @JsonValue("frm")
   frm,
-  @JsonValue('fro')
+  @JsonValue("fro")
   fro,
-  @JsonValue('frp')
+  @JsonValue("frp")
   frp,
-  @JsonValue('frq')
+  @JsonValue("frq")
   frq,
-  @JsonValue('frr')
+  @JsonValue("frr")
   frr,
-  @JsonValue('frs')
+  @JsonValue("frs")
   frs,
-  @JsonValue('frt')
+  @JsonValue("frt")
   frt,
-  @JsonValue('fry')
+  @JsonValue("fry")
   fry,
-  @JsonValue('fse')
+  @JsonValue("fse")
   fse,
-  @JsonValue('fsl')
+  @JsonValue("fsl")
   fsl,
-  @JsonValue('fss')
+  @JsonValue("fss")
   fss,
-  @JsonValue('fub')
+  @JsonValue("fub")
   fub,
-  @JsonValue('fuc')
+  @JsonValue("fuc")
   fuc,
-  @JsonValue('fud')
+  @JsonValue("fud")
   fud,
-  @JsonValue('fue')
+  @JsonValue("fue")
   fue,
-  @JsonValue('fuf')
+  @JsonValue("fuf")
   fuf,
-  @JsonValue('fuh')
+  @JsonValue("fuh")
   fuh,
-  @JsonValue('fui')
+  @JsonValue("fui")
   fui,
-  @JsonValue('fuj')
+  @JsonValue("fuj")
   fuj,
-  @JsonValue('ful')
+  @JsonValue("ful")
   ful,
-  @JsonValue('fum')
+  @JsonValue("fum")
   fum,
-  @JsonValue('fun')
+  @JsonValue("fun")
   fun,
-  @JsonValue('fuq')
+  @JsonValue("fuq")
   fuq,
-  @JsonValue('fur')
+  @JsonValue("fur")
   fur,
-  @JsonValue('fut')
+  @JsonValue("fut")
   fut,
-  @JsonValue('fuu')
+  @JsonValue("fuu")
   fuu,
-  @JsonValue('fuv')
+  @JsonValue("fuv")
   fuv,
-  @JsonValue('fuy')
+  @JsonValue("fuy")
   fuy,
-  @JsonValue('fvr')
+  @JsonValue("fvr")
   fvr,
-  @JsonValue('fwa')
+  @JsonValue("fwa")
   fwa,
-  @JsonValue('fwe')
+  @JsonValue("fwe")
   fwe,
-  @JsonValue('gaa')
+  @JsonValue("gaa")
   gaa,
-  @JsonValue('gab')
+  @JsonValue("gab")
   gab,
-  @JsonValue('gac')
+  @JsonValue("gac")
   gac,
-  @JsonValue('gad')
+  @JsonValue("gad")
   gad,
-  @JsonValue('gae')
+  @JsonValue("gae")
   gae,
-  @JsonValue('gaf')
+  @JsonValue("gaf")
   gaf,
-  @JsonValue('gag')
+  @JsonValue("gag")
   gag,
-  @JsonValue('gah')
+  @JsonValue("gah")
   gah,
-  @JsonValue('gai')
+  @JsonValue("gai")
   gai,
-  @JsonValue('gaj')
+  @JsonValue("gaj")
   gaj,
-  @JsonValue('gak')
+  @JsonValue("gak")
   gak,
-  @JsonValue('gal')
+  @JsonValue("gal")
   gal,
-  @JsonValue('gam')
+  @JsonValue("gam")
   gam,
-  @JsonValue('gan')
+  @JsonValue("gan")
   gan,
-  @JsonValue('gao')
+  @JsonValue("gao")
   gao,
-  @JsonValue('gap')
+  @JsonValue("gap")
   gap,
-  @JsonValue('gaq')
+  @JsonValue("gaq")
   gaq,
-  @JsonValue('gar')
+  @JsonValue("gar")
   gar,
-  @JsonValue('gas')
+  @JsonValue("gas")
   gas,
-  @JsonValue('gat')
+  @JsonValue("gat")
   gat,
-  @JsonValue('gau')
+  @JsonValue("gau")
   gau,
-  @JsonValue('gaw')
+  @JsonValue("gaw")
   gaw,
-  @JsonValue('gax')
+  @JsonValue("gax")
   gax,
-  @JsonValue('gay')
+  @JsonValue("gay")
   gay,
-  @JsonValue('gaz')
+  @JsonValue("gaz")
   gaz,
-  @JsonValue('gba')
+  @JsonValue("gba")
   gba,
-  @JsonValue('gbb')
+  @JsonValue("gbb")
   gbb,
-  @JsonValue('gbd')
+  @JsonValue("gbd")
   gbd,
-  @JsonValue('gbe')
+  @JsonValue("gbe")
   gbe,
-  @JsonValue('gbf')
+  @JsonValue("gbf")
   gbf,
-  @JsonValue('gbg')
+  @JsonValue("gbg")
   gbg,
-  @JsonValue('gbh')
+  @JsonValue("gbh")
   gbh,
-  @JsonValue('gbi')
+  @JsonValue("gbi")
   gbi,
-  @JsonValue('gbj')
+  @JsonValue("gbj")
   gbj,
-  @JsonValue('gbk')
+  @JsonValue("gbk")
   gbk,
-  @JsonValue('gbl')
+  @JsonValue("gbl")
   gbl,
-  @JsonValue('gbm')
+  @JsonValue("gbm")
   gbm,
-  @JsonValue('gbn')
+  @JsonValue("gbn")
   gbn,
-  @JsonValue('gbo')
+  @JsonValue("gbo")
   gbo,
-  @JsonValue('gbp')
+  @JsonValue("gbp")
   gbp,
-  @JsonValue('gbq')
+  @JsonValue("gbq")
   gbq,
-  @JsonValue('gbr')
+  @JsonValue("gbr")
   gbr,
-  @JsonValue('gbs')
+  @JsonValue("gbs")
   gbs,
-  @JsonValue('gbu')
+  @JsonValue("gbu")
   gbu,
-  @JsonValue('gbv')
+  @JsonValue("gbv")
   gbv,
-  @JsonValue('gbw')
+  @JsonValue("gbw")
   gbw,
-  @JsonValue('gbx')
+  @JsonValue("gbx")
   gbx,
-  @JsonValue('gby')
+  @JsonValue("gby")
   gby,
-  @JsonValue('gbz')
+  @JsonValue("gbz")
   gbz,
-  @JsonValue('gcc')
+  @JsonValue("gcc")
   gcc,
-  @JsonValue('gcd')
+  @JsonValue("gcd")
   gcd,
-  @JsonValue('gce')
+  @JsonValue("gce")
   gce,
-  @JsonValue('gcf')
+  @JsonValue("gcf")
   gcf,
-  @JsonValue('gcl')
+  @JsonValue("gcl")
   gcl,
-  @JsonValue('gcn')
+  @JsonValue("gcn")
   gcn,
-  @JsonValue('gcr')
+  @JsonValue("gcr")
   gcr,
-  @JsonValue('gct')
+  @JsonValue("gct")
   gct,
-  @JsonValue('gda')
+  @JsonValue("gda")
   gda,
-  @JsonValue('gdb')
+  @JsonValue("gdb")
   gdb,
-  @JsonValue('gdc')
+  @JsonValue("gdc")
   gdc,
-  @JsonValue('gdd')
+  @JsonValue("gdd")
   gdd,
-  @JsonValue('gde')
+  @JsonValue("gde")
   gde,
-  @JsonValue('gdf')
+  @JsonValue("gdf")
   gdf,
-  @JsonValue('gdg')
+  @JsonValue("gdg")
   gdg,
-  @JsonValue('gdh')
+  @JsonValue("gdh")
   gdh,
-  @JsonValue('gdi')
+  @JsonValue("gdi")
   gdi,
-  @JsonValue('gdj')
+  @JsonValue("gdj")
   gdj,
-  @JsonValue('gdk')
+  @JsonValue("gdk")
   gdk,
-  @JsonValue('gdl')
+  @JsonValue("gdl")
   gdl,
-  @JsonValue('gdm')
+  @JsonValue("gdm")
   gdm,
-  @JsonValue('gdn')
+  @JsonValue("gdn")
   gdn,
-  @JsonValue('gdo')
+  @JsonValue("gdo")
   gdo,
-  @JsonValue('gdq')
+  @JsonValue("gdq")
   gdq,
-  @JsonValue('gdr')
+  @JsonValue("gdr")
   gdr,
-  @JsonValue('gds')
+  @JsonValue("gds")
   gds,
-  @JsonValue('gdt')
+  @JsonValue("gdt")
   gdt,
-  @JsonValue('gdu')
+  @JsonValue("gdu")
   gdu,
-  @JsonValue('gdx')
+  @JsonValue("gdx")
   gdx,
-  @JsonValue('gea')
+  @JsonValue("gea")
   gea,
-  @JsonValue('geb')
+  @JsonValue("geb")
   geb,
-  @JsonValue('gec')
+  @JsonValue("gec")
   gec,
-  @JsonValue('ged')
+  @JsonValue("ged")
   ged,
-  @JsonValue('gef')
+  @JsonValue("gef")
   gef,
-  @JsonValue('geg')
+  @JsonValue("geg")
   geg,
-  @JsonValue('geh')
+  @JsonValue("geh")
   geh,
-  @JsonValue('gei')
+  @JsonValue("gei")
   gei,
-  @JsonValue('gej')
+  @JsonValue("gej")
   gej,
-  @JsonValue('gek')
+  @JsonValue("gek")
   gek,
-  @JsonValue('gel')
+  @JsonValue("gel")
   gel,
-  @JsonValue('geq')
+  @JsonValue("geq")
   geq,
-  @JsonValue('ges')
+  @JsonValue("ges")
   ges,
-  @JsonValue('gev')
+  @JsonValue("gev")
   gev,
-  @JsonValue('gew')
+  @JsonValue("gew")
   gew,
-  @JsonValue('gex')
+  @JsonValue("gex")
   gex,
-  @JsonValue('gey')
+  @JsonValue("gey")
   gey,
-  @JsonValue('gez')
+  @JsonValue("gez")
   gez,
-  @JsonValue('gfk')
+  @JsonValue("gfk")
   gfk,
-  @JsonValue('gft')
+  @JsonValue("gft")
   gft,
-  @JsonValue('gga')
+  @JsonValue("gga")
   gga,
-  @JsonValue('ggb')
+  @JsonValue("ggb")
   ggb,
-  @JsonValue('ggd')
+  @JsonValue("ggd")
   ggd,
-  @JsonValue('gge')
+  @JsonValue("gge")
   gge,
-  @JsonValue('ggg')
+  @JsonValue("ggg")
   ggg,
-  @JsonValue('ggk')
+  @JsonValue("ggk")
   ggk,
-  @JsonValue('ggl')
+  @JsonValue("ggl")
   ggl,
-  @JsonValue('ggt')
+  @JsonValue("ggt")
   ggt,
-  @JsonValue('ggu')
+  @JsonValue("ggu")
   ggu,
-  @JsonValue('ggw')
+  @JsonValue("ggw")
   ggw,
-  @JsonValue('gha')
+  @JsonValue("gha")
   gha,
-  @JsonValue('ghc')
+  @JsonValue("ghc")
   ghc,
-  @JsonValue('ghe')
+  @JsonValue("ghe")
   ghe,
-  @JsonValue('ghh')
+  @JsonValue("ghh")
   ghh,
-  @JsonValue('ghk')
+  @JsonValue("ghk")
   ghk,
-  @JsonValue('ghl')
+  @JsonValue("ghl")
   ghl,
-  @JsonValue('ghn')
+  @JsonValue("ghn")
   ghn,
-  @JsonValue('gho')
+  @JsonValue("gho")
   gho,
-  @JsonValue('ghr')
+  @JsonValue("ghr")
   ghr,
-  @JsonValue('ghs')
+  @JsonValue("ghs")
   ghs,
-  @JsonValue('ght')
+  @JsonValue("ght")
   ght,
-  @JsonValue('gia')
+  @JsonValue("gia")
   gia,
-  @JsonValue('gib')
+  @JsonValue("gib")
   gib,
-  @JsonValue('gic')
+  @JsonValue("gic")
   gic,
-  @JsonValue('gid')
+  @JsonValue("gid")
   gid,
-  @JsonValue('gie')
+  @JsonValue("gie")
   gie,
-  @JsonValue('gig')
+  @JsonValue("gig")
   gig,
-  @JsonValue('gih')
+  @JsonValue("gih")
   gih,
-  @JsonValue('gii')
+  @JsonValue("gii")
   gii,
-  @JsonValue('gil')
+  @JsonValue("gil")
   gil,
-  @JsonValue('gim')
+  @JsonValue("gim")
   gim,
-  @JsonValue('gin')
+  @JsonValue("gin")
   gin,
-  @JsonValue('gip')
+  @JsonValue("gip")
   gip,
-  @JsonValue('giq')
+  @JsonValue("giq")
   giq,
-  @JsonValue('gir')
+  @JsonValue("gir")
   gir,
-  @JsonValue('gis')
+  @JsonValue("gis")
   gis,
-  @JsonValue('git')
+  @JsonValue("git")
   git,
-  @JsonValue('giu')
+  @JsonValue("giu")
   giu,
-  @JsonValue('giw')
+  @JsonValue("giw")
   giw,
-  @JsonValue('gix')
+  @JsonValue("gix")
   gix,
-  @JsonValue('giy')
+  @JsonValue("giy")
   giy,
-  @JsonValue('giz')
+  @JsonValue("giz")
   giz,
-  @JsonValue('gjk')
+  @JsonValue("gjk")
   gjk,
-  @JsonValue('gjm')
+  @JsonValue("gjm")
   gjm,
-  @JsonValue('gjn')
+  @JsonValue("gjn")
   gjn,
-  @JsonValue('gjr')
+  @JsonValue("gjr")
   gjr,
-  @JsonValue('gju')
+  @JsonValue("gju")
   gju,
-  @JsonValue('gka')
+  @JsonValue("gka")
   gka,
-  @JsonValue('gkd')
+  @JsonValue("gkd")
   gkd,
-  @JsonValue('gke')
+  @JsonValue("gke")
   gke,
-  @JsonValue('gkn')
+  @JsonValue("gkn")
   gkn,
-  @JsonValue('gko')
+  @JsonValue("gko")
   gko,
-  @JsonValue('gkp')
+  @JsonValue("gkp")
   gkp,
-  @JsonValue('gku')
+  @JsonValue("gku")
   gku,
-  @JsonValue('gla')
+  @JsonValue("gla")
   gla,
-  @JsonValue('glb')
+  @JsonValue("glb")
   glb,
-  @JsonValue('glc')
+  @JsonValue("glc")
   glc,
-  @JsonValue('gld')
+  @JsonValue("gld")
   gld,
-  @JsonValue('gle')
+  @JsonValue("gle")
   gle,
-  @JsonValue('glg')
+  @JsonValue("glg")
   glg,
-  @JsonValue('glh')
+  @JsonValue("glh")
   glh,
-  @JsonValue('glj')
+  @JsonValue("glj")
   glj,
-  @JsonValue('glk')
+  @JsonValue("glk")
   glk,
-  @JsonValue('gll')
+  @JsonValue("gll")
   gll,
-  @JsonValue('glo')
+  @JsonValue("glo")
   glo,
-  @JsonValue('glr')
+  @JsonValue("glr")
   glr,
-  @JsonValue('glu')
+  @JsonValue("glu")
   glu,
-  @JsonValue('glv')
+  @JsonValue("glv")
   glv,
-  @JsonValue('glw')
+  @JsonValue("glw")
   glw,
-  @JsonValue('gly')
+  @JsonValue("gly")
   gly,
-  @JsonValue('gma')
+  @JsonValue("gma")
   gma,
-  @JsonValue('gmb')
+  @JsonValue("gmb")
   gmb,
-  @JsonValue('gmd')
+  @JsonValue("gmd")
   gmd,
-  @JsonValue('gmg')
+  @JsonValue("gmg")
   gmg,
-  @JsonValue('gmh')
+  @JsonValue("gmh")
   gmh,
-  @JsonValue('gml')
+  @JsonValue("gml")
   gml,
-  @JsonValue('gmm')
+  @JsonValue("gmm")
   gmm,
-  @JsonValue('gmn')
+  @JsonValue("gmn")
   gmn,
-  @JsonValue('gmr')
+  @JsonValue("gmr")
   gmr,
-  @JsonValue('gmu')
+  @JsonValue("gmu")
   gmu,
-  @JsonValue('gmv')
+  @JsonValue("gmv")
   gmv,
-  @JsonValue('gmx')
+  @JsonValue("gmx")
   gmx,
-  @JsonValue('gmy')
+  @JsonValue("gmy")
   gmy,
-  @JsonValue('gmz')
+  @JsonValue("gmz")
   gmz,
-  @JsonValue('gna')
+  @JsonValue("gna")
   gna,
-  @JsonValue('gnb')
+  @JsonValue("gnb")
   gnb,
-  @JsonValue('gnc')
+  @JsonValue("gnc")
   gnc,
-  @JsonValue('gnd')
+  @JsonValue("gnd")
   gnd,
-  @JsonValue('gne')
+  @JsonValue("gne")
   gne,
-  @JsonValue('gng')
+  @JsonValue("gng")
   gng,
-  @JsonValue('gnh')
+  @JsonValue("gnh")
   gnh,
-  @JsonValue('gni')
+  @JsonValue("gni")
   gni,
-  @JsonValue('gnj')
+  @JsonValue("gnj")
   gnj,
-  @JsonValue('gnk')
+  @JsonValue("gnk")
   gnk,
-  @JsonValue('gnl')
+  @JsonValue("gnl")
   gnl,
-  @JsonValue('gnm')
+  @JsonValue("gnm")
   gnm,
-  @JsonValue('gnn')
+  @JsonValue("gnn")
   gnn,
-  @JsonValue('gno')
+  @JsonValue("gno")
   gno,
-  @JsonValue('gnq')
+  @JsonValue("gnq")
   gnq,
-  @JsonValue('gnr')
+  @JsonValue("gnr")
   gnr,
-  @JsonValue('gnt')
+  @JsonValue("gnt")
   gnt,
-  @JsonValue('gnu')
+  @JsonValue("gnu")
   gnu,
-  @JsonValue('gnw')
+  @JsonValue("gnw")
   gnw,
-  @JsonValue('gnz')
+  @JsonValue("gnz")
   gnz,
-  @JsonValue('goa')
+  @JsonValue("goa")
   goa,
-  @JsonValue('gob')
+  @JsonValue("gob")
   gob,
-  @JsonValue('goc')
+  @JsonValue("goc")
   goc,
-  @JsonValue('god')
+  @JsonValue("god")
   god,
-  @JsonValue('goe')
+  @JsonValue("goe")
   goe,
-  @JsonValue('gof')
+  @JsonValue("gof")
   gof,
-  @JsonValue('gog')
+  @JsonValue("gog")
   gog,
-  @JsonValue('goh')
+  @JsonValue("goh")
   goh,
-  @JsonValue('goi')
+  @JsonValue("goi")
   goi,
-  @JsonValue('goj')
+  @JsonValue("goj")
   goj,
-  @JsonValue('gok')
+  @JsonValue("gok")
   gok,
-  @JsonValue('gol')
+  @JsonValue("gol")
   gol,
-  @JsonValue('gom')
+  @JsonValue("gom")
   gom,
-  @JsonValue('gon')
+  @JsonValue("gon")
   gon,
-  @JsonValue('goo')
+  @JsonValue("goo")
   goo,
-  @JsonValue('gop')
+  @JsonValue("gop")
   gop,
-  @JsonValue('goq')
+  @JsonValue("goq")
   goq,
-  @JsonValue('gor')
+  @JsonValue("gor")
   gor,
-  @JsonValue('gos')
+  @JsonValue("gos")
   gos,
-  @JsonValue('got')
+  @JsonValue("got")
   got,
-  @JsonValue('gou')
+  @JsonValue("gou")
   gou,
-  @JsonValue('gov')
+  @JsonValue("gov")
   gov,
-  @JsonValue('gow')
+  @JsonValue("gow")
   gow,
-  @JsonValue('gox')
+  @JsonValue("gox")
   gox,
-  @JsonValue('goy')
+  @JsonValue("goy")
   goy,
-  @JsonValue('goz')
+  @JsonValue("goz")
   goz,
-  @JsonValue('gpa')
+  @JsonValue("gpa")
   gpa,
-  @JsonValue('gpe')
+  @JsonValue("gpe")
   gpe,
-  @JsonValue('gpn')
+  @JsonValue("gpn")
   gpn,
-  @JsonValue('gqa')
+  @JsonValue("gqa")
   gqa,
-  @JsonValue('gqi')
+  @JsonValue("gqi")
   gqi,
-  @JsonValue('gqn')
+  @JsonValue("gqn")
   gqn,
-  @JsonValue('gqr')
+  @JsonValue("gqr")
   gqr,
-  @JsonValue('gqu')
+  @JsonValue("gqu")
   gqu,
-  @JsonValue('gra')
+  @JsonValue("gra")
   gra,
-  @JsonValue('grb')
+  @JsonValue("grb")
   grb,
-  @JsonValue('grc')
+  @JsonValue("grc")
   grc,
-  @JsonValue('grd')
+  @JsonValue("grd")
   grd,
-  @JsonValue('grg')
+  @JsonValue("grg")
   grg,
-  @JsonValue('grh')
+  @JsonValue("grh")
   grh,
-  @JsonValue('gri')
+  @JsonValue("gri")
   gri,
-  @JsonValue('grj')
+  @JsonValue("grj")
   grj,
-  @JsonValue('grm')
+  @JsonValue("grm")
   grm,
-  @JsonValue('grn')
+  @JsonValue("grn")
   grn,
-  @JsonValue('gro')
+  @JsonValue("gro")
   gro,
-  @JsonValue('grq')
+  @JsonValue("grq")
   grq,
-  @JsonValue('grr')
+  @JsonValue("grr")
   grr,
-  @JsonValue('grs')
+  @JsonValue("grs")
   grs,
-  @JsonValue('grt')
+  @JsonValue("grt")
   grt,
-  @JsonValue('gru')
+  @JsonValue("gru")
   gru,
-  @JsonValue('grv')
+  @JsonValue("grv")
   grv,
-  @JsonValue('grw')
+  @JsonValue("grw")
   grw,
-  @JsonValue('grx')
+  @JsonValue("grx")
   grx,
-  @JsonValue('gry')
+  @JsonValue("gry")
   gry,
-  @JsonValue('grz')
+  @JsonValue("grz")
   grz,
-  @JsonValue('gse')
+  @JsonValue("gse")
   gse,
-  @JsonValue('gsg')
+  @JsonValue("gsg")
   gsg,
-  @JsonValue('gsl')
+  @JsonValue("gsl")
   gsl,
-  @JsonValue('gsm')
+  @JsonValue("gsm")
   gsm,
-  @JsonValue('gsn')
+  @JsonValue("gsn")
   gsn,
-  @JsonValue('gso')
+  @JsonValue("gso")
   gso,
-  @JsonValue('gsp')
+  @JsonValue("gsp")
   gsp,
-  @JsonValue('gss')
+  @JsonValue("gss")
   gss,
-  @JsonValue('gsw')
+  @JsonValue("gsw")
   gsw,
-  @JsonValue('gta')
+  @JsonValue("gta")
   gta,
-  @JsonValue('gtu')
+  @JsonValue("gtu")
   gtu,
-  @JsonValue('gua')
+  @JsonValue("gua")
   gua,
-  @JsonValue('gub')
+  @JsonValue("gub")
   gub,
-  @JsonValue('guc')
+  @JsonValue("guc")
   guc,
-  @JsonValue('gud')
+  @JsonValue("gud")
   gud,
-  @JsonValue('gue')
+  @JsonValue("gue")
   gue,
-  @JsonValue('guf')
+  @JsonValue("guf")
   guf,
-  @JsonValue('gug')
+  @JsonValue("gug")
   gug,
-  @JsonValue('guh')
+  @JsonValue("guh")
   guh,
-  @JsonValue('gui')
+  @JsonValue("gui")
   gui,
-  @JsonValue('guj')
+  @JsonValue("guj")
   guj,
-  @JsonValue('guk')
+  @JsonValue("guk")
   guk,
-  @JsonValue('gul')
+  @JsonValue("gul")
   gul,
-  @JsonValue('gum')
+  @JsonValue("gum")
   gum,
-  @JsonValue('gun')
+  @JsonValue("gun")
   gun,
-  @JsonValue('guo')
+  @JsonValue("guo")
   guo,
-  @JsonValue('gup')
+  @JsonValue("gup")
   gup,
-  @JsonValue('guq')
+  @JsonValue("guq")
   guq,
-  @JsonValue('gur')
+  @JsonValue("gur")
   gur,
-  @JsonValue('gus')
+  @JsonValue("gus")
   gus,
-  @JsonValue('gut')
+  @JsonValue("gut")
   gut,
-  @JsonValue('guu')
+  @JsonValue("guu")
   guu,
-  @JsonValue('guw')
+  @JsonValue("guw")
   guw,
-  @JsonValue('gux')
+  @JsonValue("gux")
   gux,
-  @JsonValue('guz')
+  @JsonValue("guz")
   guz,
-  @JsonValue('gva')
+  @JsonValue("gva")
   gva,
-  @JsonValue('gvc')
+  @JsonValue("gvc")
   gvc,
-  @JsonValue('gve')
+  @JsonValue("gve")
   gve,
-  @JsonValue('gvf')
+  @JsonValue("gvf")
   gvf,
-  @JsonValue('gvj')
+  @JsonValue("gvj")
   gvj,
-  @JsonValue('gvl')
+  @JsonValue("gvl")
   gvl,
-  @JsonValue('gvm')
+  @JsonValue("gvm")
   gvm,
-  @JsonValue('gvn')
+  @JsonValue("gvn")
   gvn,
-  @JsonValue('gvo')
+  @JsonValue("gvo")
   gvo,
-  @JsonValue('gvp')
+  @JsonValue("gvp")
   gvp,
-  @JsonValue('gvr')
+  @JsonValue("gvr")
   gvr,
-  @JsonValue('gvs')
+  @JsonValue("gvs")
   gvs,
-  @JsonValue('gvy')
+  @JsonValue("gvy")
   gvy,
-  @JsonValue('gwa')
+  @JsonValue("gwa")
   gwa,
-  @JsonValue('gwb')
+  @JsonValue("gwb")
   gwb,
-  @JsonValue('gwc')
+  @JsonValue("gwc")
   gwc,
-  @JsonValue('gwd')
+  @JsonValue("gwd")
   gwd,
-  @JsonValue('gwe')
+  @JsonValue("gwe")
   gwe,
-  @JsonValue('gwf')
+  @JsonValue("gwf")
   gwf,
-  @JsonValue('gwg')
+  @JsonValue("gwg")
   gwg,
-  @JsonValue('gwi')
+  @JsonValue("gwi")
   gwi,
-  @JsonValue('gwj')
+  @JsonValue("gwj")
   gwj,
-  @JsonValue('gwm')
+  @JsonValue("gwm")
   gwm,
-  @JsonValue('gwn')
+  @JsonValue("gwn")
   gwn,
-  @JsonValue('gwr')
+  @JsonValue("gwr")
   gwr,
-  @JsonValue('gwt')
+  @JsonValue("gwt")
   gwt,
-  @JsonValue('gwu')
+  @JsonValue("gwu")
   gwu,
-  @JsonValue('gww')
+  @JsonValue("gww")
   gww,
-  @JsonValue('gwx')
+  @JsonValue("gwx")
   gwx,
-  @JsonValue('gxx')
+  @JsonValue("gxx")
   gxx,
-  @JsonValue('gya')
+  @JsonValue("gya")
   gya,
-  @JsonValue('gyb')
+  @JsonValue("gyb")
   gyb,
-  @JsonValue('gyd')
+  @JsonValue("gyd")
   gyd,
-  @JsonValue('gye')
+  @JsonValue("gye")
   gye,
-  @JsonValue('gyf')
+  @JsonValue("gyf")
   gyf,
-  @JsonValue('gyg')
+  @JsonValue("gyg")
   gyg,
-  @JsonValue('gyi')
+  @JsonValue("gyi")
   gyi,
-  @JsonValue('gyl')
+  @JsonValue("gyl")
   gyl,
-  @JsonValue('gym')
+  @JsonValue("gym")
   gym,
-  @JsonValue('gyn')
+  @JsonValue("gyn")
   gyn,
-  @JsonValue('gyo')
+  @JsonValue("gyo")
   gyo,
-  @JsonValue('gyr')
+  @JsonValue("gyr")
   gyr,
-  @JsonValue('gyy')
+  @JsonValue("gyy")
   gyy,
-  @JsonValue('gyz')
+  @JsonValue("gyz")
   gyz,
-  @JsonValue('gza')
+  @JsonValue("gza")
   gza,
-  @JsonValue('gzi')
+  @JsonValue("gzi")
   gzi,
-  @JsonValue('gzn')
+  @JsonValue("gzn")
   gzn,
-  @JsonValue('haa')
+  @JsonValue("haa")
   haa,
-  @JsonValue('hab')
+  @JsonValue("hab")
   hab,
-  @JsonValue('hac')
+  @JsonValue("hac")
   hac,
-  @JsonValue('had')
+  @JsonValue("had")
   had,
-  @JsonValue('hae')
+  @JsonValue("hae")
   hae,
-  @JsonValue('haf')
+  @JsonValue("haf")
   haf,
-  @JsonValue('hag')
+  @JsonValue("hag")
   hag,
-  @JsonValue('hah')
+  @JsonValue("hah")
   hah,
-  @JsonValue('hai')
+  @JsonValue("hai")
   hai,
-  @JsonValue('haj')
+  @JsonValue("haj")
   haj,
-  @JsonValue('hak')
+  @JsonValue("hak")
   hak,
-  @JsonValue('hal')
+  @JsonValue("hal")
   hal,
-  @JsonValue('ham')
+  @JsonValue("ham")
   ham,
-  @JsonValue('han')
+  @JsonValue("han")
   han,
-  @JsonValue('hao')
+  @JsonValue("hao")
   hao,
-  @JsonValue('hap')
+  @JsonValue("hap")
   hap,
-  @JsonValue('haq')
+  @JsonValue("haq")
   haq,
-  @JsonValue('har')
+  @JsonValue("har")
   har,
-  @JsonValue('has')
+  @JsonValue("has")
   has,
-  @JsonValue('hat')
+  @JsonValue("hat")
   hat,
-  @JsonValue('hau')
+  @JsonValue("hau")
   hau,
-  @JsonValue('hav')
+  @JsonValue("hav")
   hav,
-  @JsonValue('haw')
+  @JsonValue("haw")
   haw,
-  @JsonValue('hax')
+  @JsonValue("hax")
   hax,
-  @JsonValue('hay')
+  @JsonValue("hay")
   hay,
-  @JsonValue('haz')
+  @JsonValue("haz")
   haz,
-  @JsonValue('hba')
+  @JsonValue("hba")
   hba,
-  @JsonValue('hbb')
+  @JsonValue("hbb")
   hbb,
-  @JsonValue('hbn')
+  @JsonValue("hbn")
   hbn,
-  @JsonValue('hbo')
+  @JsonValue("hbo")
   hbo,
-  @JsonValue('hbs')
+  @JsonValue("hbs")
   hbs,
-  @JsonValue('hbu')
+  @JsonValue("hbu")
   hbu,
-  @JsonValue('hca')
+  @JsonValue("hca")
   hca,
-  @JsonValue('hch')
+  @JsonValue("hch")
   hch,
-  @JsonValue('hdn')
+  @JsonValue("hdn")
   hdn,
-  @JsonValue('hds')
+  @JsonValue("hds")
   hds,
-  @JsonValue('hdy')
+  @JsonValue("hdy")
   hdy,
-  @JsonValue('hea')
+  @JsonValue("hea")
   hea,
-  @JsonValue('heb')
+  @JsonValue("heb")
   heb,
-  @JsonValue('hed')
+  @JsonValue("hed")
   hed,
-  @JsonValue('heg')
+  @JsonValue("heg")
   heg,
-  @JsonValue('heh')
+  @JsonValue("heh")
   heh,
-  @JsonValue('hei')
+  @JsonValue("hei")
   hei,
-  @JsonValue('hem')
+  @JsonValue("hem")
   hem,
-  @JsonValue('her')
+  @JsonValue("her")
   her,
-  @JsonValue('hgm')
+  @JsonValue("hgm")
   hgm,
-  @JsonValue('hgw')
+  @JsonValue("hgw")
   hgw,
-  @JsonValue('hhi')
+  @JsonValue("hhi")
   hhi,
-  @JsonValue('hhr')
+  @JsonValue("hhr")
   hhr,
-  @JsonValue('hhy')
+  @JsonValue("hhy")
   hhy,
-  @JsonValue('hia')
+  @JsonValue("hia")
   hia,
-  @JsonValue('hib')
+  @JsonValue("hib")
   hib,
-  @JsonValue('hid')
+  @JsonValue("hid")
   hid,
-  @JsonValue('hif')
+  @JsonValue("hif")
   hif,
-  @JsonValue('hig')
+  @JsonValue("hig")
   hig,
-  @JsonValue('hih')
+  @JsonValue("hih")
   hih,
-  @JsonValue('hii')
+  @JsonValue("hii")
   hii,
-  @JsonValue('hij')
+  @JsonValue("hij")
   hij,
-  @JsonValue('hik')
+  @JsonValue("hik")
   hik,
-  @JsonValue('hil')
+  @JsonValue("hil")
   hil,
-  @JsonValue('hin')
+  @JsonValue("hin")
   hin,
-  @JsonValue('hio')
+  @JsonValue("hio")
   hio,
-  @JsonValue('hir')
+  @JsonValue("hir")
   hir,
-  @JsonValue('hit')
+  @JsonValue("hit")
   hit,
-  @JsonValue('hiw')
+  @JsonValue("hiw")
   hiw,
-  @JsonValue('hix')
+  @JsonValue("hix")
   hix,
-  @JsonValue('hji')
+  @JsonValue("hji")
   hji,
-  @JsonValue('hka')
+  @JsonValue("hka")
   hka,
-  @JsonValue('hke')
+  @JsonValue("hke")
   hke,
-  @JsonValue('hkh')
+  @JsonValue("hkh")
   hkh,
-  @JsonValue('hkk')
+  @JsonValue("hkk")
   hkk,
-  @JsonValue('hkn')
+  @JsonValue("hkn")
   hkn,
-  @JsonValue('hks')
+  @JsonValue("hks")
   hks,
-  @JsonValue('hla')
+  @JsonValue("hla")
   hla,
-  @JsonValue('hlb')
+  @JsonValue("hlb")
   hlb,
-  @JsonValue('hld')
+  @JsonValue("hld")
   hld,
-  @JsonValue('hle')
+  @JsonValue("hle")
   hle,
-  @JsonValue('hlt')
+  @JsonValue("hlt")
   hlt,
-  @JsonValue('hlu')
+  @JsonValue("hlu")
   hlu,
-  @JsonValue('hma')
+  @JsonValue("hma")
   hma,
-  @JsonValue('hmb')
+  @JsonValue("hmb")
   hmb,
-  @JsonValue('hmc')
+  @JsonValue("hmc")
   hmc,
-  @JsonValue('hmd')
+  @JsonValue("hmd")
   hmd,
-  @JsonValue('hme')
+  @JsonValue("hme")
   hme,
-  @JsonValue('hmf')
+  @JsonValue("hmf")
   hmf,
-  @JsonValue('hmg')
+  @JsonValue("hmg")
   hmg,
-  @JsonValue('hmh')
+  @JsonValue("hmh")
   hmh,
-  @JsonValue('hmi')
+  @JsonValue("hmi")
   hmi,
-  @JsonValue('hmj')
+  @JsonValue("hmj")
   hmj,
-  @JsonValue('hmk')
+  @JsonValue("hmk")
   hmk,
-  @JsonValue('hml')
+  @JsonValue("hml")
   hml,
-  @JsonValue('hmm')
+  @JsonValue("hmm")
   hmm,
-  @JsonValue('hmn')
+  @JsonValue("hmn")
   hmn,
-  @JsonValue('hmo')
+  @JsonValue("hmo")
   hmo,
-  @JsonValue('hmp')
+  @JsonValue("hmp")
   hmp,
-  @JsonValue('hmq')
+  @JsonValue("hmq")
   hmq,
-  @JsonValue('hmr')
+  @JsonValue("hmr")
   hmr,
-  @JsonValue('hms')
+  @JsonValue("hms")
   hms,
-  @JsonValue('hmt')
+  @JsonValue("hmt")
   hmt,
-  @JsonValue('hmu')
+  @JsonValue("hmu")
   hmu,
-  @JsonValue('hmv')
+  @JsonValue("hmv")
   hmv,
-  @JsonValue('hmw')
+  @JsonValue("hmw")
   hmw,
-  @JsonValue('hmy')
+  @JsonValue("hmy")
   hmy,
-  @JsonValue('hmz')
+  @JsonValue("hmz")
   hmz,
-  @JsonValue('hna')
+  @JsonValue("hna")
   hna,
-  @JsonValue('hnd')
+  @JsonValue("hnd")
   hnd,
-  @JsonValue('hne')
+  @JsonValue("hne")
   hne,
-  @JsonValue('hng')
+  @JsonValue("hng")
   hng,
-  @JsonValue('hnh')
+  @JsonValue("hnh")
   hnh,
-  @JsonValue('hni')
+  @JsonValue("hni")
   hni,
-  @JsonValue('hnj')
+  @JsonValue("hnj")
   hnj,
-  @JsonValue('hnn')
+  @JsonValue("hnn")
   hnn,
-  @JsonValue('hno')
+  @JsonValue("hno")
   hno,
-  @JsonValue('hns')
+  @JsonValue("hns")
   hns,
-  @JsonValue('hnu')
+  @JsonValue("hnu")
   hnu,
-  @JsonValue('hoa')
+  @JsonValue("hoa")
   hoa,
-  @JsonValue('hob')
+  @JsonValue("hob")
   hob,
-  @JsonValue('hoc')
+  @JsonValue("hoc")
   hoc,
-  @JsonValue('hod')
+  @JsonValue("hod")
   hod,
-  @JsonValue('hoe')
+  @JsonValue("hoe")
   hoe,
-  @JsonValue('hoh')
+  @JsonValue("hoh")
   hoh,
-  @JsonValue('hoi')
+  @JsonValue("hoi")
   hoi,
-  @JsonValue('hoj')
+  @JsonValue("hoj")
   hoj,
-  @JsonValue('hol')
+  @JsonValue("hol")
   hol,
-  @JsonValue('hom')
+  @JsonValue("hom")
   hom,
-  @JsonValue('hoo')
+  @JsonValue("hoo")
   hoo,
-  @JsonValue('hop')
+  @JsonValue("hop")
   hop,
-  @JsonValue('hor')
+  @JsonValue("hor")
   hor,
-  @JsonValue('hos')
+  @JsonValue("hos")
   hos,
-  @JsonValue('hot')
+  @JsonValue("hot")
   hot,
-  @JsonValue('hov')
+  @JsonValue("hov")
   hov,
-  @JsonValue('how')
+  @JsonValue("how")
   how,
-  @JsonValue('hoy')
+  @JsonValue("hoy")
   hoy,
-  @JsonValue('hoz')
+  @JsonValue("hoz")
   hoz,
-  @JsonValue('hpo')
+  @JsonValue("hpo")
   hpo,
-  @JsonValue('hps')
+  @JsonValue("hps")
   hps,
-  @JsonValue('hra')
+  @JsonValue("hra")
   hra,
-  @JsonValue('hrc')
+  @JsonValue("hrc")
   hrc,
-  @JsonValue('hre')
+  @JsonValue("hre")
   hre,
-  @JsonValue('hrk')
+  @JsonValue("hrk")
   hrk,
-  @JsonValue('hrm')
+  @JsonValue("hrm")
   hrm,
-  @JsonValue('hro')
+  @JsonValue("hro")
   hro,
-  @JsonValue('hrp')
+  @JsonValue("hrp")
   hrp,
-  @JsonValue('hrt')
+  @JsonValue("hrt")
   hrt,
-  @JsonValue('hru')
+  @JsonValue("hru")
   hru,
-  @JsonValue('hrv')
+  @JsonValue("hrv")
   hrv,
-  @JsonValue('hrw')
+  @JsonValue("hrw")
   hrw,
-  @JsonValue('hrx')
+  @JsonValue("hrx")
   hrx,
-  @JsonValue('hrz')
+  @JsonValue("hrz")
   hrz,
-  @JsonValue('hsb')
+  @JsonValue("hsb")
   hsb,
-  @JsonValue('hsh')
+  @JsonValue("hsh")
   hsh,
-  @JsonValue('hsl')
+  @JsonValue("hsl")
   hsl,
-  @JsonValue('hsn')
+  @JsonValue("hsn")
   hsn,
-  @JsonValue('hss')
+  @JsonValue("hss")
   hss,
-  @JsonValue('hti')
+  @JsonValue("hti")
   hti,
-  @JsonValue('hto')
+  @JsonValue("hto")
   hto,
-  @JsonValue('hts')
+  @JsonValue("hts")
   hts,
-  @JsonValue('htu')
+  @JsonValue("htu")
   htu,
-  @JsonValue('htx')
+  @JsonValue("htx")
   htx,
-  @JsonValue('hub')
+  @JsonValue("hub")
   hub,
-  @JsonValue('huc')
+  @JsonValue("huc")
   huc,
-  @JsonValue('hud')
+  @JsonValue("hud")
   hud,
-  @JsonValue('hue')
+  @JsonValue("hue")
   hue,
-  @JsonValue('huf')
+  @JsonValue("huf")
   huf,
-  @JsonValue('hug')
+  @JsonValue("hug")
   hug,
-  @JsonValue('huh')
+  @JsonValue("huh")
   huh,
-  @JsonValue('hui')
+  @JsonValue("hui")
   hui,
-  @JsonValue('huj')
+  @JsonValue("huj")
   huj,
-  @JsonValue('huk')
+  @JsonValue("huk")
   huk,
-  @JsonValue('hul')
+  @JsonValue("hul")
   hul,
-  @JsonValue('hum')
+  @JsonValue("hum")
   hum,
-  @JsonValue('hun')
+  @JsonValue("hun")
   hun,
-  @JsonValue('huo')
+  @JsonValue("huo")
   huo,
-  @JsonValue('hup')
+  @JsonValue("hup")
   hup,
-  @JsonValue('huq')
+  @JsonValue("huq")
   huq,
-  @JsonValue('hur')
+  @JsonValue("hur")
   hur,
-  @JsonValue('hus')
+  @JsonValue("hus")
   hus,
-  @JsonValue('hut')
+  @JsonValue("hut")
   hut,
-  @JsonValue('huu')
+  @JsonValue("huu")
   huu,
-  @JsonValue('huv')
+  @JsonValue("huv")
   huv,
-  @JsonValue('huw')
+  @JsonValue("huw")
   huw,
-  @JsonValue('hux')
+  @JsonValue("hux")
   hux,
-  @JsonValue('huy')
+  @JsonValue("huy")
   huy,
-  @JsonValue('huz')
+  @JsonValue("huz")
   huz,
-  @JsonValue('hvc')
+  @JsonValue("hvc")
   hvc,
-  @JsonValue('hve')
+  @JsonValue("hve")
   hve,
-  @JsonValue('hvk')
+  @JsonValue("hvk")
   hvk,
-  @JsonValue('hvn')
+  @JsonValue("hvn")
   hvn,
-  @JsonValue('hvv')
+  @JsonValue("hvv")
   hvv,
-  @JsonValue('hwa')
+  @JsonValue("hwa")
   hwa,
-  @JsonValue('hwc')
+  @JsonValue("hwc")
   hwc,
-  @JsonValue('hwo')
+  @JsonValue("hwo")
   hwo,
-  @JsonValue('hya')
+  @JsonValue("hya")
   hya,
-  @JsonValue('hye')
+  @JsonValue("hye")
   hye,
-  @JsonValue('hyw')
+  @JsonValue("hyw")
   hyw,
-  @JsonValue('iai')
+  @JsonValue("iai")
   iai,
-  @JsonValue('ian')
+  @JsonValue("ian")
   ian,
-  @JsonValue('iar')
+  @JsonValue("iar")
   iar,
-  @JsonValue('iba')
+  @JsonValue("iba")
   iba,
-  @JsonValue('ibb')
+  @JsonValue("ibb")
   ibb,
-  @JsonValue('ibd')
+  @JsonValue("ibd")
   ibd,
-  @JsonValue('ibe')
+  @JsonValue("ibe")
   ibe,
-  @JsonValue('ibg')
+  @JsonValue("ibg")
   ibg,
-  @JsonValue('ibh')
+  @JsonValue("ibh")
   ibh,
-  @JsonValue('ibl')
+  @JsonValue("ibl")
   ibl,
-  @JsonValue('ibm')
+  @JsonValue("ibm")
   ibm,
-  @JsonValue('ibn')
+  @JsonValue("ibn")
   ibn,
-  @JsonValue('ibo')
+  @JsonValue("ibo")
   ibo,
-  @JsonValue('ibr')
+  @JsonValue("ibr")
   ibr,
-  @JsonValue('ibu')
+  @JsonValue("ibu")
   ibu,
-  @JsonValue('iby')
+  @JsonValue("iby")
   iby,
-  @JsonValue('ica')
+  @JsonValue("ica")
   ica,
-  @JsonValue('ich')
+  @JsonValue("ich")
   ich,
-  @JsonValue('icl')
+  @JsonValue("icl")
   icl,
-  @JsonValue('icr')
+  @JsonValue("icr")
   icr,
-  @JsonValue('ida')
+  @JsonValue("ida")
   ida,
-  @JsonValue('idb')
+  @JsonValue("idb")
   idb,
-  @JsonValue('idc')
+  @JsonValue("idc")
   idc,
-  @JsonValue('idd')
+  @JsonValue("idd")
   idd,
-  @JsonValue('ide')
+  @JsonValue("ide")
   ide,
-  @JsonValue('idi')
+  @JsonValue("idi")
   idi,
-  @JsonValue('ido')
+  @JsonValue("ido")
   ido,
-  @JsonValue('idr')
+  @JsonValue("idr")
   idr,
-  @JsonValue('ids')
+  @JsonValue("ids")
   ids,
-  @JsonValue('idt')
+  @JsonValue("idt")
   idt,
-  @JsonValue('idu')
+  @JsonValue("idu")
   idu,
-  @JsonValue('ifa')
+  @JsonValue("ifa")
   ifa,
-  @JsonValue('ifb')
+  @JsonValue("ifb")
   ifb,
-  @JsonValue('ife')
+  @JsonValue("ife")
   ife,
-  @JsonValue('iff')
+  @JsonValue("iff")
   iff,
-  @JsonValue('ifk')
+  @JsonValue("ifk")
   ifk,
-  @JsonValue('ifm')
+  @JsonValue("ifm")
   ifm,
-  @JsonValue('ifu')
+  @JsonValue("ifu")
   ifu,
-  @JsonValue('ify')
+  @JsonValue("ify")
   ify,
-  @JsonValue('igb')
+  @JsonValue("igb")
   igb,
-  @JsonValue('ige')
+  @JsonValue("ige")
   ige,
-  @JsonValue('igg')
+  @JsonValue("igg")
   igg,
-  @JsonValue('igl')
+  @JsonValue("igl")
   igl,
-  @JsonValue('igm')
+  @JsonValue("igm")
   igm,
-  @JsonValue('ign')
+  @JsonValue("ign")
   ign,
-  @JsonValue('igo')
+  @JsonValue("igo")
   igo,
-  @JsonValue('igs')
+  @JsonValue("igs")
   igs,
-  @JsonValue('igw')
+  @JsonValue("igw")
   igw,
-  @JsonValue('ihb')
+  @JsonValue("ihb")
   ihb,
-  @JsonValue('ihi')
+  @JsonValue("ihi")
   ihi,
-  @JsonValue('ihp')
+  @JsonValue("ihp")
   ihp,
-  @JsonValue('ihw')
+  @JsonValue("ihw")
   ihw,
-  @JsonValue('iii')
+  @JsonValue("iii")
   iii,
-  @JsonValue('iin')
+  @JsonValue("iin")
   iin,
-  @JsonValue('ijc')
+  @JsonValue("ijc")
   ijc,
-  @JsonValue('ije')
+  @JsonValue("ije")
   ije,
-  @JsonValue('ijj')
+  @JsonValue("ijj")
   ijj,
-  @JsonValue('ijn')
+  @JsonValue("ijn")
   ijn,
-  @JsonValue('ijs')
+  @JsonValue("ijs")
   ijs,
-  @JsonValue('ike')
+  @JsonValue("ike")
   ike,
-  @JsonValue('iki')
+  @JsonValue("iki")
   iki,
-  @JsonValue('ikk')
+  @JsonValue("ikk")
   ikk,
-  @JsonValue('ikl')
+  @JsonValue("ikl")
   ikl,
-  @JsonValue('iko')
+  @JsonValue("iko")
   iko,
-  @JsonValue('ikp')
+  @JsonValue("ikp")
   ikp,
-  @JsonValue('ikr')
+  @JsonValue("ikr")
   ikr,
-  @JsonValue('iks')
+  @JsonValue("iks")
   iks,
-  @JsonValue('ikt')
+  @JsonValue("ikt")
   ikt,
-  @JsonValue('iku')
+  @JsonValue("iku")
   iku,
-  @JsonValue('ikv')
+  @JsonValue("ikv")
   ikv,
-  @JsonValue('ikw')
+  @JsonValue("ikw")
   ikw,
-  @JsonValue('ikx')
+  @JsonValue("ikx")
   ikx,
-  @JsonValue('ikz')
+  @JsonValue("ikz")
   ikz,
-  @JsonValue('ila')
+  @JsonValue("ila")
   ila,
-  @JsonValue('ilb')
+  @JsonValue("ilb")
   ilb,
-  @JsonValue('ile')
+  @JsonValue("ile")
   ile,
-  @JsonValue('ilg')
+  @JsonValue("ilg")
   ilg,
-  @JsonValue('ili')
+  @JsonValue("ili")
   ili,
-  @JsonValue('ilk')
+  @JsonValue("ilk")
   ilk,
-  @JsonValue('ilm')
+  @JsonValue("ilm")
   ilm,
-  @JsonValue('ilo')
+  @JsonValue("ilo")
   ilo,
-  @JsonValue('ilp')
+  @JsonValue("ilp")
   ilp,
-  @JsonValue('ils')
+  @JsonValue("ils")
   ils,
-  @JsonValue('ilu')
+  @JsonValue("ilu")
   ilu,
-  @JsonValue('ilv')
+  @JsonValue("ilv")
   ilv,
-  @JsonValue('ima')
+  @JsonValue("ima")
   ima,
-  @JsonValue('imi')
+  @JsonValue("imi")
   imi,
-  @JsonValue('iml')
+  @JsonValue("iml")
   iml,
-  @JsonValue('imn')
+  @JsonValue("imn")
   imn,
-  @JsonValue('imo')
+  @JsonValue("imo")
   imo,
-  @JsonValue('imr')
+  @JsonValue("imr")
   imr,
-  @JsonValue('ims')
+  @JsonValue("ims")
   ims,
-  @JsonValue('imt')
+  @JsonValue("imt")
   imt,
-  @JsonValue('imy')
+  @JsonValue("imy")
   imy,
-  @JsonValue('ina')
+  @JsonValue("ina")
   ina,
-  @JsonValue('inb')
+  @JsonValue("inb")
   inb,
-  @JsonValue('ind')
+  @JsonValue("ind")
   ind,
-  @JsonValue('ing')
+  @JsonValue("ing")
   ing,
-  @JsonValue('inh')
+  @JsonValue("inh")
   inh,
-  @JsonValue('inj')
+  @JsonValue("inj")
   inj,
-  @JsonValue('inl')
+  @JsonValue("inl")
   inl,
-  @JsonValue('inm')
+  @JsonValue("inm")
   inm,
-  @JsonValue('inn')
+  @JsonValue("inn")
   inn,
-  @JsonValue('ino')
+  @JsonValue("ino")
   ino,
-  @JsonValue('inp')
+  @JsonValue("inp")
   inp,
-  @JsonValue('ins')
+  @JsonValue("ins")
   ins,
-  @JsonValue('int')
+  @JsonValue("int")
   int,
-  @JsonValue('inz')
+  @JsonValue("inz")
   inz,
-  @JsonValue('ior')
+  @JsonValue("ior")
   ior,
-  @JsonValue('iou')
+  @JsonValue("iou")
   iou,
-  @JsonValue('iow')
+  @JsonValue("iow")
   iow,
-  @JsonValue('ipi')
+  @JsonValue("ipi")
   ipi,
-  @JsonValue('ipk')
+  @JsonValue("ipk")
   ipk,
-  @JsonValue('ipo')
+  @JsonValue("ipo")
   ipo,
-  @JsonValue('iqu')
+  @JsonValue("iqu")
   iqu,
-  @JsonValue('iqw')
+  @JsonValue("iqw")
   iqw,
-  @JsonValue('ire')
+  @JsonValue("ire")
   ire,
-  @JsonValue('irh')
+  @JsonValue("irh")
   irh,
-  @JsonValue('iri')
+  @JsonValue("iri")
   iri,
-  @JsonValue('irk')
+  @JsonValue("irk")
   irk,
-  @JsonValue('irn')
+  @JsonValue("irn")
   irn,
-  @JsonValue('irr')
+  @JsonValue("irr")
   irr,
-  @JsonValue('iru')
+  @JsonValue("iru")
   iru,
-  @JsonValue('irx')
+  @JsonValue("irx")
   irx,
-  @JsonValue('iry')
+  @JsonValue("iry")
   iry,
-  @JsonValue('isa')
+  @JsonValue("isa")
   isa,
-  @JsonValue('isc')
+  @JsonValue("isc")
   isc,
-  @JsonValue('isd')
+  @JsonValue("isd")
   isd,
-  @JsonValue('ise')
+  @JsonValue("ise")
   ise,
-  @JsonValue('isg')
+  @JsonValue("isg")
   isg,
-  @JsonValue('ish')
+  @JsonValue("ish")
   ish,
-  @JsonValue('isi')
+  @JsonValue("isi")
   isi,
-  @JsonValue('isk')
+  @JsonValue("isk")
   isk,
-  @JsonValue('isl')
+  @JsonValue("isl")
   isl,
-  @JsonValue('ism')
+  @JsonValue("ism")
   ism,
-  @JsonValue('isn')
+  @JsonValue("isn")
   isn,
-  @JsonValue('iso')
+  @JsonValue("iso")
   iso,
-  @JsonValue('isr')
+  @JsonValue("isr")
   isr,
-  @JsonValue('ist')
+  @JsonValue("ist")
   ist,
-  @JsonValue('isu')
+  @JsonValue("isu")
   isu,
-  @JsonValue('ita')
+  @JsonValue("ita")
   ita,
-  @JsonValue('itb')
+  @JsonValue("itb")
   itb,
-  @JsonValue('itd')
+  @JsonValue("itd")
   itd,
-  @JsonValue('ite')
+  @JsonValue("ite")
   ite,
-  @JsonValue('iti')
+  @JsonValue("iti")
   iti,
-  @JsonValue('itk')
+  @JsonValue("itk")
   itk,
-  @JsonValue('itl')
+  @JsonValue("itl")
   itl,
-  @JsonValue('itm')
+  @JsonValue("itm")
   itm,
-  @JsonValue('ito')
+  @JsonValue("ito")
   ito,
-  @JsonValue('itr')
+  @JsonValue("itr")
   itr,
-  @JsonValue('its')
+  @JsonValue("its")
   its,
-  @JsonValue('itt')
+  @JsonValue("itt")
   itt,
-  @JsonValue('itv')
+  @JsonValue("itv")
   itv,
-  @JsonValue('itw')
+  @JsonValue("itw")
   itw,
-  @JsonValue('itx')
+  @JsonValue("itx")
   itx,
-  @JsonValue('ity')
+  @JsonValue("ity")
   ity,
-  @JsonValue('itz')
+  @JsonValue("itz")
   itz,
-  @JsonValue('ium')
+  @JsonValue("ium")
   ium,
-  @JsonValue('ivb')
+  @JsonValue("ivb")
   ivb,
-  @JsonValue('ivv')
+  @JsonValue("ivv")
   ivv,
-  @JsonValue('iwk')
+  @JsonValue("iwk")
   iwk,
-  @JsonValue('iwm')
+  @JsonValue("iwm")
   iwm,
-  @JsonValue('iwo')
+  @JsonValue("iwo")
   iwo,
-  @JsonValue('iws')
+  @JsonValue("iws")
   iws,
-  @JsonValue('ixc')
+  @JsonValue("ixc")
   ixc,
-  @JsonValue('ixl')
+  @JsonValue("ixl")
   ixl,
-  @JsonValue('iya')
+  @JsonValue("iya")
   iya,
-  @JsonValue('iyo')
+  @JsonValue("iyo")
   iyo,
-  @JsonValue('iyx')
+  @JsonValue("iyx")
   iyx,
-  @JsonValue('izh')
+  @JsonValue("izh")
   izh,
-  @JsonValue('izr')
+  @JsonValue("izr")
   izr,
-  @JsonValue('izz')
+  @JsonValue("izz")
   izz,
-  @JsonValue('jaa')
+  @JsonValue("jaa")
   jaa,
-  @JsonValue('jab')
+  @JsonValue("jab")
   jab,
-  @JsonValue('jac')
+  @JsonValue("jac")
   jac,
-  @JsonValue('jad')
+  @JsonValue("jad")
   jad,
-  @JsonValue('jae')
+  @JsonValue("jae")
   jae,
-  @JsonValue('jaf')
+  @JsonValue("jaf")
   jaf,
-  @JsonValue('jah')
+  @JsonValue("jah")
   jah,
-  @JsonValue('jaj')
+  @JsonValue("jaj")
   jaj,
-  @JsonValue('jak')
+  @JsonValue("jak")
   jak,
-  @JsonValue('jal')
+  @JsonValue("jal")
   jal,
-  @JsonValue('jam')
+  @JsonValue("jam")
   jam,
-  @JsonValue('jan')
+  @JsonValue("jan")
   jan,
-  @JsonValue('jao')
+  @JsonValue("jao")
   jao,
-  @JsonValue('jaq')
+  @JsonValue("jaq")
   jaq,
-  @JsonValue('jas')
+  @JsonValue("jas")
   jas,
-  @JsonValue('jat')
+  @JsonValue("jat")
   jat,
-  @JsonValue('jau')
+  @JsonValue("jau")
   jau,
-  @JsonValue('jav')
+  @JsonValue("jav")
   jav,
-  @JsonValue('jax')
+  @JsonValue("jax")
   jax,
-  @JsonValue('jay')
+  @JsonValue("jay")
   jay,
-  @JsonValue('jaz')
+  @JsonValue("jaz")
   jaz,
-  @JsonValue('jbe')
+  @JsonValue("jbe")
   jbe,
-  @JsonValue('jbi')
+  @JsonValue("jbi")
   jbi,
-  @JsonValue('jbj')
+  @JsonValue("jbj")
   jbj,
-  @JsonValue('jbk')
+  @JsonValue("jbk")
   jbk,
-  @JsonValue('jbm')
+  @JsonValue("jbm")
   jbm,
-  @JsonValue('jbn')
+  @JsonValue("jbn")
   jbn,
-  @JsonValue('jbo')
+  @JsonValue("jbo")
   jbo,
-  @JsonValue('jbr')
+  @JsonValue("jbr")
   jbr,
-  @JsonValue('jbt')
+  @JsonValue("jbt")
   jbt,
-  @JsonValue('jbu')
+  @JsonValue("jbu")
   jbu,
-  @JsonValue('jbw')
+  @JsonValue("jbw")
   jbw,
-  @JsonValue('jcs')
+  @JsonValue("jcs")
   jcs,
-  @JsonValue('jct')
+  @JsonValue("jct")
   jct,
-  @JsonValue('jda')
+  @JsonValue("jda")
   jda,
-  @JsonValue('jdg')
+  @JsonValue("jdg")
   jdg,
-  @JsonValue('jdt')
+  @JsonValue("jdt")
   jdt,
-  @JsonValue('jeb')
+  @JsonValue("jeb")
   jeb,
-  @JsonValue('jee')
+  @JsonValue("jee")
   jee,
-  @JsonValue('jeh')
+  @JsonValue("jeh")
   jeh,
-  @JsonValue('jei')
+  @JsonValue("jei")
   jei,
-  @JsonValue('jek')
+  @JsonValue("jek")
   jek,
-  @JsonValue('jel')
+  @JsonValue("jel")
   jel,
-  @JsonValue('jen')
+  @JsonValue("jen")
   jen,
-  @JsonValue('jer')
+  @JsonValue("jer")
   jer,
-  @JsonValue('jet')
+  @JsonValue("jet")
   jet,
-  @JsonValue('jeu')
+  @JsonValue("jeu")
   jeu,
-  @JsonValue('jgb')
+  @JsonValue("jgb")
   jgb,
-  @JsonValue('jge')
+  @JsonValue("jge")
   jge,
-  @JsonValue('jgk')
+  @JsonValue("jgk")
   jgk,
-  @JsonValue('jgo')
+  @JsonValue("jgo")
   jgo,
-  @JsonValue('jhi')
+  @JsonValue("jhi")
   jhi,
-  @JsonValue('jhs')
+  @JsonValue("jhs")
   jhs,
-  @JsonValue('jia')
+  @JsonValue("jia")
   jia,
-  @JsonValue('jib')
+  @JsonValue("jib")
   jib,
-  @JsonValue('jic')
+  @JsonValue("jic")
   jic,
-  @JsonValue('jid')
+  @JsonValue("jid")
   jid,
-  @JsonValue('jie')
+  @JsonValue("jie")
   jie,
-  @JsonValue('jig')
+  @JsonValue("jig")
   jig,
-  @JsonValue('jih')
+  @JsonValue("jih")
   jih,
-  @JsonValue('jii')
+  @JsonValue("jii")
   jii,
-  @JsonValue('jil')
+  @JsonValue("jil")
   jil,
-  @JsonValue('jim')
+  @JsonValue("jim")
   jim,
-  @JsonValue('jio')
+  @JsonValue("jio")
   jio,
-  @JsonValue('jiq')
+  @JsonValue("jiq")
   jiq,
-  @JsonValue('jit')
+  @JsonValue("jit")
   jit,
-  @JsonValue('jiu')
+  @JsonValue("jiu")
   jiu,
-  @JsonValue('jiv')
+  @JsonValue("jiv")
   jiv,
-  @JsonValue('jiy')
+  @JsonValue("jiy")
   jiy,
-  @JsonValue('jje')
+  @JsonValue("jje")
   jje,
-  @JsonValue('jjr')
+  @JsonValue("jjr")
   jjr,
-  @JsonValue('jka')
+  @JsonValue("jka")
   jka,
-  @JsonValue('jkm')
+  @JsonValue("jkm")
   jkm,
-  @JsonValue('jko')
+  @JsonValue("jko")
   jko,
-  @JsonValue('jkp')
+  @JsonValue("jkp")
   jkp,
-  @JsonValue('jkr')
+  @JsonValue("jkr")
   jkr,
-  @JsonValue('jks')
+  @JsonValue("jks")
   jks,
-  @JsonValue('jku')
+  @JsonValue("jku")
   jku,
-  @JsonValue('jle')
+  @JsonValue("jle")
   jle,
-  @JsonValue('jls')
+  @JsonValue("jls")
   jls,
-  @JsonValue('jma')
+  @JsonValue("jma")
   jma,
-  @JsonValue('jmb')
+  @JsonValue("jmb")
   jmb,
-  @JsonValue('jmc')
+  @JsonValue("jmc")
   jmc,
-  @JsonValue('jmd')
+  @JsonValue("jmd")
   jmd,
-  @JsonValue('jmi')
+  @JsonValue("jmi")
   jmi,
-  @JsonValue('jml')
+  @JsonValue("jml")
   jml,
-  @JsonValue('jmn')
+  @JsonValue("jmn")
   jmn,
-  @JsonValue('jmr')
+  @JsonValue("jmr")
   jmr,
-  @JsonValue('jms')
+  @JsonValue("jms")
   jms,
-  @JsonValue('jmw')
+  @JsonValue("jmw")
   jmw,
-  @JsonValue('jmx')
+  @JsonValue("jmx")
   jmx,
-  @JsonValue('jna')
+  @JsonValue("jna")
   jna,
-  @JsonValue('jnd')
+  @JsonValue("jnd")
   jnd,
-  @JsonValue('jng')
+  @JsonValue("jng")
   jng,
-  @JsonValue('jni')
+  @JsonValue("jni")
   jni,
-  @JsonValue('jnj')
+  @JsonValue("jnj")
   jnj,
-  @JsonValue('jnl')
+  @JsonValue("jnl")
   jnl,
-  @JsonValue('jns')
+  @JsonValue("jns")
   jns,
-  @JsonValue('job')
+  @JsonValue("job")
   job,
-  @JsonValue('jod')
+  @JsonValue("jod")
   jod,
-  @JsonValue('jog')
+  @JsonValue("jog")
   jog,
-  @JsonValue('jor')
+  @JsonValue("jor")
   jor,
-  @JsonValue('jos')
+  @JsonValue("jos")
   jos,
-  @JsonValue('jow')
+  @JsonValue("jow")
   jow,
-  @JsonValue('jpa')
+  @JsonValue("jpa")
   jpa,
-  @JsonValue('jpn')
+  @JsonValue("jpn")
   jpn,
-  @JsonValue('jpr')
+  @JsonValue("jpr")
   jpr,
-  @JsonValue('jqr')
+  @JsonValue("jqr")
   jqr,
-  @JsonValue('jra')
+  @JsonValue("jra")
   jra,
-  @JsonValue('jrb')
+  @JsonValue("jrb")
   jrb,
-  @JsonValue('jrr')
+  @JsonValue("jrr")
   jrr,
-  @JsonValue('jrt')
+  @JsonValue("jrt")
   jrt,
-  @JsonValue('jru')
+  @JsonValue("jru")
   jru,
-  @JsonValue('jsl')
+  @JsonValue("jsl")
   jsl,
-  @JsonValue('jua')
+  @JsonValue("jua")
   jua,
-  @JsonValue('jub')
+  @JsonValue("jub")
   jub,
-  @JsonValue('juc')
+  @JsonValue("juc")
   juc,
-  @JsonValue('jud')
+  @JsonValue("jud")
   jud,
-  @JsonValue('juh')
+  @JsonValue("juh")
   juh,
-  @JsonValue('jui')
+  @JsonValue("jui")
   jui,
-  @JsonValue('juk')
+  @JsonValue("juk")
   juk,
-  @JsonValue('jul')
+  @JsonValue("jul")
   jul,
-  @JsonValue('jum')
+  @JsonValue("jum")
   jum,
-  @JsonValue('jun')
+  @JsonValue("jun")
   jun,
-  @JsonValue('juo')
+  @JsonValue("juo")
   juo,
-  @JsonValue('jup')
+  @JsonValue("jup")
   jup,
-  @JsonValue('jur')
+  @JsonValue("jur")
   jur,
-  @JsonValue('jus')
+  @JsonValue("jus")
   jus,
-  @JsonValue('jut')
+  @JsonValue("jut")
   jut,
-  @JsonValue('juu')
+  @JsonValue("juu")
   juu,
-  @JsonValue('juw')
+  @JsonValue("juw")
   juw,
-  @JsonValue('juy')
+  @JsonValue("juy")
   juy,
-  @JsonValue('jvd')
+  @JsonValue("jvd")
   jvd,
-  @JsonValue('jvn')
+  @JsonValue("jvn")
   jvn,
-  @JsonValue('jwi')
+  @JsonValue("jwi")
   jwi,
-  @JsonValue('jya')
+  @JsonValue("jya")
   jya,
-  @JsonValue('jye')
+  @JsonValue("jye")
   jye,
-  @JsonValue('jyy')
+  @JsonValue("jyy")
   jyy,
-  @JsonValue('kaa')
+  @JsonValue("kaa")
   kaa,
-  @JsonValue('kab')
+  @JsonValue("kab")
   kab,
-  @JsonValue('kac')
+  @JsonValue("kac")
   kac,
-  @JsonValue('kad')
+  @JsonValue("kad")
   kad,
-  @JsonValue('kae')
+  @JsonValue("kae")
   kae,
-  @JsonValue('kaf')
+  @JsonValue("kaf")
   kaf,
-  @JsonValue('kag')
+  @JsonValue("kag")
   kag,
-  @JsonValue('kah')
+  @JsonValue("kah")
   kah,
-  @JsonValue('kai')
+  @JsonValue("kai")
   kai,
-  @JsonValue('kaj')
+  @JsonValue("kaj")
   kaj,
-  @JsonValue('kak')
+  @JsonValue("kak")
   kak,
-  @JsonValue('kal')
+  @JsonValue("kal")
   kal,
-  @JsonValue('kam')
+  @JsonValue("kam")
   kam,
-  @JsonValue('kan')
+  @JsonValue("kan")
   kan,
-  @JsonValue('kao')
+  @JsonValue("kao")
   kao,
-  @JsonValue('kap')
+  @JsonValue("kap")
   kap,
-  @JsonValue('kaq')
+  @JsonValue("kaq")
   kaq,
-  @JsonValue('kas')
+  @JsonValue("kas")
   kas,
-  @JsonValue('kat')
+  @JsonValue("kat")
   kat,
-  @JsonValue('kau')
+  @JsonValue("kau")
   kau,
-  @JsonValue('kav')
+  @JsonValue("kav")
   kav,
-  @JsonValue('kaw')
+  @JsonValue("kaw")
   kaw,
-  @JsonValue('kax')
+  @JsonValue("kax")
   kax,
-  @JsonValue('kay')
+  @JsonValue("kay")
   kay,
-  @JsonValue('kaz')
+  @JsonValue("kaz")
   kaz,
-  @JsonValue('kba')
+  @JsonValue("kba")
   kba,
-  @JsonValue('kbb')
+  @JsonValue("kbb")
   kbb,
-  @JsonValue('kbc')
+  @JsonValue("kbc")
   kbc,
-  @JsonValue('kbd')
+  @JsonValue("kbd")
   kbd,
-  @JsonValue('kbe')
+  @JsonValue("kbe")
   kbe,
-  @JsonValue('kbg')
+  @JsonValue("kbg")
   kbg,
-  @JsonValue('kbh')
+  @JsonValue("kbh")
   kbh,
-  @JsonValue('kbi')
+  @JsonValue("kbi")
   kbi,
-  @JsonValue('kbj')
+  @JsonValue("kbj")
   kbj,
-  @JsonValue('kbk')
+  @JsonValue("kbk")
   kbk,
-  @JsonValue('kbl')
+  @JsonValue("kbl")
   kbl,
-  @JsonValue('kbm')
+  @JsonValue("kbm")
   kbm,
-  @JsonValue('kbn')
+  @JsonValue("kbn")
   kbn,
-  @JsonValue('kbo')
+  @JsonValue("kbo")
   kbo,
-  @JsonValue('kbp')
+  @JsonValue("kbp")
   kbp,
-  @JsonValue('kbq')
+  @JsonValue("kbq")
   kbq,
-  @JsonValue('kbr')
+  @JsonValue("kbr")
   kbr,
-  @JsonValue('kbs')
+  @JsonValue("kbs")
   kbs,
-  @JsonValue('kbt')
+  @JsonValue("kbt")
   kbt,
-  @JsonValue('kbu')
+  @JsonValue("kbu")
   kbu,
-  @JsonValue('kbv')
+  @JsonValue("kbv")
   kbv,
-  @JsonValue('kbw')
+  @JsonValue("kbw")
   kbw,
-  @JsonValue('kbx')
+  @JsonValue("kbx")
   kbx,
-  @JsonValue('kby')
+  @JsonValue("kby")
   kby,
-  @JsonValue('kbz')
+  @JsonValue("kbz")
   kbz,
-  @JsonValue('kca')
+  @JsonValue("kca")
   kca,
-  @JsonValue('kcb')
+  @JsonValue("kcb")
   kcb,
-  @JsonValue('kcc')
+  @JsonValue("kcc")
   kcc,
-  @JsonValue('kcd')
+  @JsonValue("kcd")
   kcd,
-  @JsonValue('kce')
+  @JsonValue("kce")
   kce,
-  @JsonValue('kcf')
+  @JsonValue("kcf")
   kcf,
-  @JsonValue('kcg')
+  @JsonValue("kcg")
   kcg,
-  @JsonValue('kch')
+  @JsonValue("kch")
   kch,
-  @JsonValue('kci')
+  @JsonValue("kci")
   kci,
-  @JsonValue('kcj')
+  @JsonValue("kcj")
   kcj,
-  @JsonValue('kck')
+  @JsonValue("kck")
   kck,
-  @JsonValue('kcl')
+  @JsonValue("kcl")
   kcl,
-  @JsonValue('kcm')
+  @JsonValue("kcm")
   kcm,
-  @JsonValue('kcn')
+  @JsonValue("kcn")
   kcn,
-  @JsonValue('kco')
+  @JsonValue("kco")
   kco,
-  @JsonValue('kcp')
+  @JsonValue("kcp")
   kcp,
-  @JsonValue('kcq')
+  @JsonValue("kcq")
   kcq,
-  @JsonValue('kcr')
+  @JsonValue("kcr")
   kcr,
-  @JsonValue('kcs')
+  @JsonValue("kcs")
   kcs,
-  @JsonValue('kct')
+  @JsonValue("kct")
   kct,
-  @JsonValue('kcu')
+  @JsonValue("kcu")
   kcu,
-  @JsonValue('kcv')
+  @JsonValue("kcv")
   kcv,
-  @JsonValue('kcw')
+  @JsonValue("kcw")
   kcw,
-  @JsonValue('kcx')
+  @JsonValue("kcx")
   kcx,
-  @JsonValue('kcy')
+  @JsonValue("kcy")
   kcy,
-  @JsonValue('kcz')
+  @JsonValue("kcz")
   kcz,
-  @JsonValue('kda')
+  @JsonValue("kda")
   kda,
-  @JsonValue('kdc')
+  @JsonValue("kdc")
   kdc,
-  @JsonValue('kdd')
+  @JsonValue("kdd")
   kdd,
-  @JsonValue('kde')
+  @JsonValue("kde")
   kde,
-  @JsonValue('kdf')
+  @JsonValue("kdf")
   kdf,
-  @JsonValue('kdg')
+  @JsonValue("kdg")
   kdg,
-  @JsonValue('kdh')
+  @JsonValue("kdh")
   kdh,
-  @JsonValue('kdi')
+  @JsonValue("kdi")
   kdi,
-  @JsonValue('kdj')
+  @JsonValue("kdj")
   kdj,
-  @JsonValue('kdk')
+  @JsonValue("kdk")
   kdk,
-  @JsonValue('kdl')
+  @JsonValue("kdl")
   kdl,
-  @JsonValue('kdm')
+  @JsonValue("kdm")
   kdm,
-  @JsonValue('kdn')
+  @JsonValue("kdn")
   kdn,
-  @JsonValue('kdp')
+  @JsonValue("kdp")
   kdp,
-  @JsonValue('kdq')
+  @JsonValue("kdq")
   kdq,
-  @JsonValue('kdr')
+  @JsonValue("kdr")
   kdr,
-  @JsonValue('kdt')
+  @JsonValue("kdt")
   kdt,
-  @JsonValue('kdu')
+  @JsonValue("kdu")
   kdu,
-  @JsonValue('kdw')
+  @JsonValue("kdw")
   kdw,
-  @JsonValue('kdx')
+  @JsonValue("kdx")
   kdx,
-  @JsonValue('kdy')
+  @JsonValue("kdy")
   kdy,
-  @JsonValue('kdz')
+  @JsonValue("kdz")
   kdz,
-  @JsonValue('kea')
+  @JsonValue("kea")
   kea,
-  @JsonValue('keb')
+  @JsonValue("keb")
   keb,
-  @JsonValue('kec')
+  @JsonValue("kec")
   kec,
-  @JsonValue('ked')
+  @JsonValue("ked")
   ked,
-  @JsonValue('kee')
+  @JsonValue("kee")
   kee,
-  @JsonValue('kef')
+  @JsonValue("kef")
   kef,
-  @JsonValue('keg')
+  @JsonValue("keg")
   keg,
-  @JsonValue('keh')
+  @JsonValue("keh")
   keh,
-  @JsonValue('kei')
+  @JsonValue("kei")
   kei,
-  @JsonValue('kej')
+  @JsonValue("kej")
   kej,
-  @JsonValue('kek')
+  @JsonValue("kek")
   kek,
-  @JsonValue('kel')
+  @JsonValue("kel")
   kel,
-  @JsonValue('kem')
+  @JsonValue("kem")
   kem,
-  @JsonValue('ken')
+  @JsonValue("ken")
   ken,
-  @JsonValue('keo')
+  @JsonValue("keo")
   keo,
-  @JsonValue('kep')
+  @JsonValue("kep")
   kep,
-  @JsonValue('keq')
+  @JsonValue("keq")
   keq,
-  @JsonValue('ker')
+  @JsonValue("ker")
   ker,
-  @JsonValue('kes')
+  @JsonValue("kes")
   kes,
-  @JsonValue('ket')
+  @JsonValue("ket")
   ket,
-  @JsonValue('keu')
+  @JsonValue("keu")
   keu,
-  @JsonValue('kev')
+  @JsonValue("kev")
   kev,
-  @JsonValue('kew')
+  @JsonValue("kew")
   kew,
-  @JsonValue('kex')
+  @JsonValue("kex")
   kex,
-  @JsonValue('key')
+  @JsonValue("key")
   key,
-  @JsonValue('kez')
+  @JsonValue("kez")
   kez,
-  @JsonValue('kfa')
+  @JsonValue("kfa")
   kfa,
-  @JsonValue('kfb')
+  @JsonValue("kfb")
   kfb,
-  @JsonValue('kfc')
+  @JsonValue("kfc")
   kfc,
-  @JsonValue('kfd')
+  @JsonValue("kfd")
   kfd,
-  @JsonValue('kfe')
+  @JsonValue("kfe")
   kfe,
-  @JsonValue('kff')
+  @JsonValue("kff")
   kff,
-  @JsonValue('kfg')
+  @JsonValue("kfg")
   kfg,
-  @JsonValue('kfh')
+  @JsonValue("kfh")
   kfh,
-  @JsonValue('kfi')
+  @JsonValue("kfi")
   kfi,
-  @JsonValue('kfj')
+  @JsonValue("kfj")
   kfj,
-  @JsonValue('kfk')
+  @JsonValue("kfk")
   kfk,
-  @JsonValue('kfl')
+  @JsonValue("kfl")
   kfl,
-  @JsonValue('kfm')
+  @JsonValue("kfm")
   kfm,
-  @JsonValue('kfn')
+  @JsonValue("kfn")
   kfn,
-  @JsonValue('kfo')
+  @JsonValue("kfo")
   kfo,
-  @JsonValue('kfp')
+  @JsonValue("kfp")
   kfp,
-  @JsonValue('kfq')
+  @JsonValue("kfq")
   kfq,
-  @JsonValue('kfr')
+  @JsonValue("kfr")
   kfr,
-  @JsonValue('kfs')
+  @JsonValue("kfs")
   kfs,
-  @JsonValue('kft')
+  @JsonValue("kft")
   kft,
-  @JsonValue('kfu')
+  @JsonValue("kfu")
   kfu,
-  @JsonValue('kfv')
+  @JsonValue("kfv")
   kfv,
-  @JsonValue('kfw')
+  @JsonValue("kfw")
   kfw,
-  @JsonValue('kfx')
+  @JsonValue("kfx")
   kfx,
-  @JsonValue('kfy')
+  @JsonValue("kfy")
   kfy,
-  @JsonValue('kfz')
+  @JsonValue("kfz")
   kfz,
-  @JsonValue('kga')
+  @JsonValue("kga")
   kga,
-  @JsonValue('kgb')
+  @JsonValue("kgb")
   kgb,
-  @JsonValue('kge')
+  @JsonValue("kge")
   kge,
-  @JsonValue('kgf')
+  @JsonValue("kgf")
   kgf,
-  @JsonValue('kgg')
+  @JsonValue("kgg")
   kgg,
-  @JsonValue('kgi')
+  @JsonValue("kgi")
   kgi,
-  @JsonValue('kgj')
+  @JsonValue("kgj")
   kgj,
-  @JsonValue('kgk')
+  @JsonValue("kgk")
   kgk,
-  @JsonValue('kgl')
+  @JsonValue("kgl")
   kgl,
-  @JsonValue('kgm')
+  @JsonValue("kgm")
   kgm,
-  @JsonValue('kgn')
+  @JsonValue("kgn")
   kgn,
-  @JsonValue('kgo')
+  @JsonValue("kgo")
   kgo,
-  @JsonValue('kgp')
+  @JsonValue("kgp")
   kgp,
-  @JsonValue('kgq')
+  @JsonValue("kgq")
   kgq,
-  @JsonValue('kgr')
+  @JsonValue("kgr")
   kgr,
-  @JsonValue('kgs')
+  @JsonValue("kgs")
   kgs,
-  @JsonValue('kgt')
+  @JsonValue("kgt")
   kgt,
-  @JsonValue('kgu')
+  @JsonValue("kgu")
   kgu,
-  @JsonValue('kgv')
+  @JsonValue("kgv")
   kgv,
-  @JsonValue('kgw')
+  @JsonValue("kgw")
   kgw,
-  @JsonValue('kgx')
+  @JsonValue("kgx")
   kgx,
-  @JsonValue('kgy')
+  @JsonValue("kgy")
   kgy,
-  @JsonValue('kha')
+  @JsonValue("kha")
   kha,
-  @JsonValue('khb')
+  @JsonValue("khb")
   khb,
-  @JsonValue('khc')
+  @JsonValue("khc")
   khc,
-  @JsonValue('khd')
+  @JsonValue("khd")
   khd,
-  @JsonValue('khe')
+  @JsonValue("khe")
   khe,
-  @JsonValue('khf')
+  @JsonValue("khf")
   khf,
-  @JsonValue('khg')
+  @JsonValue("khg")
   khg,
-  @JsonValue('khh')
+  @JsonValue("khh")
   khh,
-  @JsonValue('khj')
+  @JsonValue("khj")
   khj,
-  @JsonValue('khk')
+  @JsonValue("khk")
   khk,
-  @JsonValue('khl')
+  @JsonValue("khl")
   khl,
-  @JsonValue('khm')
+  @JsonValue("khm")
   khm,
-  @JsonValue('khn')
+  @JsonValue("khn")
   khn,
-  @JsonValue('kho')
+  @JsonValue("kho")
   kho,
-  @JsonValue('khp')
+  @JsonValue("khp")
   khp,
-  @JsonValue('khq')
+  @JsonValue("khq")
   khq,
-  @JsonValue('khr')
+  @JsonValue("khr")
   khr,
-  @JsonValue('khs')
+  @JsonValue("khs")
   khs,
-  @JsonValue('kht')
+  @JsonValue("kht")
   kht,
-  @JsonValue('khu')
+  @JsonValue("khu")
   khu,
-  @JsonValue('khv')
+  @JsonValue("khv")
   khv,
-  @JsonValue('khw')
+  @JsonValue("khw")
   khw,
-  @JsonValue('khx')
+  @JsonValue("khx")
   khx,
-  @JsonValue('khy')
+  @JsonValue("khy")
   khy,
-  @JsonValue('khz')
+  @JsonValue("khz")
   khz,
-  @JsonValue('kia')
+  @JsonValue("kia")
   kia,
-  @JsonValue('kib')
+  @JsonValue("kib")
   kib,
-  @JsonValue('kic')
+  @JsonValue("kic")
   kic,
-  @JsonValue('kid')
+  @JsonValue("kid")
   kid,
-  @JsonValue('kie')
+  @JsonValue("kie")
   kie,
-  @JsonValue('kif')
+  @JsonValue("kif")
   kif,
-  @JsonValue('kig')
+  @JsonValue("kig")
   kig,
-  @JsonValue('kih')
+  @JsonValue("kih")
   kih,
-  @JsonValue('kii')
+  @JsonValue("kii")
   kii,
-  @JsonValue('kij')
+  @JsonValue("kij")
   kij,
-  @JsonValue('kik')
+  @JsonValue("kik")
   kik,
-  @JsonValue('kil')
+  @JsonValue("kil")
   kil,
-  @JsonValue('kim')
+  @JsonValue("kim")
   kim,
-  @JsonValue('kin')
+  @JsonValue("kin")
   kin,
-  @JsonValue('kio')
+  @JsonValue("kio")
   kio,
-  @JsonValue('kip')
+  @JsonValue("kip")
   kip,
-  @JsonValue('kiq')
+  @JsonValue("kiq")
   kiq,
-  @JsonValue('kir')
+  @JsonValue("kir")
   kir,
-  @JsonValue('kis')
+  @JsonValue("kis")
   kis,
-  @JsonValue('kit')
+  @JsonValue("kit")
   kit,
-  @JsonValue('kiu')
+  @JsonValue("kiu")
   kiu,
-  @JsonValue('kiv')
+  @JsonValue("kiv")
   kiv,
-  @JsonValue('kiw')
+  @JsonValue("kiw")
   kiw,
-  @JsonValue('kix')
+  @JsonValue("kix")
   kix,
-  @JsonValue('kiy')
+  @JsonValue("kiy")
   kiy,
-  @JsonValue('kiz')
+  @JsonValue("kiz")
   kiz,
-  @JsonValue('kja')
+  @JsonValue("kja")
   kja,
-  @JsonValue('kjb')
+  @JsonValue("kjb")
   kjb,
-  @JsonValue('kjc')
+  @JsonValue("kjc")
   kjc,
-  @JsonValue('kjd')
+  @JsonValue("kjd")
   kjd,
-  @JsonValue('kje')
+  @JsonValue("kje")
   kje,
-  @JsonValue('kjg')
+  @JsonValue("kjg")
   kjg,
-  @JsonValue('kjh')
+  @JsonValue("kjh")
   kjh,
-  @JsonValue('kji')
+  @JsonValue("kji")
   kji,
-  @JsonValue('kjj')
+  @JsonValue("kjj")
   kjj,
-  @JsonValue('kjk')
+  @JsonValue("kjk")
   kjk,
-  @JsonValue('kjl')
+  @JsonValue("kjl")
   kjl,
-  @JsonValue('kjm')
+  @JsonValue("kjm")
   kjm,
-  @JsonValue('kjn')
+  @JsonValue("kjn")
   kjn,
-  @JsonValue('kjo')
+  @JsonValue("kjo")
   kjo,
-  @JsonValue('kjp')
+  @JsonValue("kjp")
   kjp,
-  @JsonValue('kjq')
+  @JsonValue("kjq")
   kjq,
-  @JsonValue('kjr')
+  @JsonValue("kjr")
   kjr,
-  @JsonValue('kjs')
+  @JsonValue("kjs")
   kjs,
-  @JsonValue('kjt')
+  @JsonValue("kjt")
   kjt,
-  @JsonValue('kju')
+  @JsonValue("kju")
   kju,
-  @JsonValue('kjv')
+  @JsonValue("kjv")
   kjv,
-  @JsonValue('kjx')
+  @JsonValue("kjx")
   kjx,
-  @JsonValue('kjy')
+  @JsonValue("kjy")
   kjy,
-  @JsonValue('kjz')
+  @JsonValue("kjz")
   kjz,
-  @JsonValue('kka')
+  @JsonValue("kka")
   kka,
-  @JsonValue('kkb')
+  @JsonValue("kkb")
   kkb,
-  @JsonValue('kkc')
+  @JsonValue("kkc")
   kkc,
-  @JsonValue('kkd')
+  @JsonValue("kkd")
   kkd,
-  @JsonValue('kke')
+  @JsonValue("kke")
   kke,
-  @JsonValue('kkf')
+  @JsonValue("kkf")
   kkf,
-  @JsonValue('kkg')
+  @JsonValue("kkg")
   kkg,
-  @JsonValue('kkh')
+  @JsonValue("kkh")
   kkh,
-  @JsonValue('kki')
+  @JsonValue("kki")
   kki,
-  @JsonValue('kkj')
+  @JsonValue("kkj")
   kkj,
-  @JsonValue('kkk')
+  @JsonValue("kkk")
   kkk,
-  @JsonValue('kkl')
+  @JsonValue("kkl")
   kkl,
-  @JsonValue('kkm')
+  @JsonValue("kkm")
   kkm,
-  @JsonValue('kkn')
+  @JsonValue("kkn")
   kkn,
-  @JsonValue('kko')
+  @JsonValue("kko")
   kko,
-  @JsonValue('kkp')
+  @JsonValue("kkp")
   kkp,
-  @JsonValue('kkq')
+  @JsonValue("kkq")
   kkq,
-  @JsonValue('kkr')
+  @JsonValue("kkr")
   kkr,
-  @JsonValue('kks')
+  @JsonValue("kks")
   kks,
-  @JsonValue('kkt')
+  @JsonValue("kkt")
   kkt,
-  @JsonValue('kku')
+  @JsonValue("kku")
   kku,
-  @JsonValue('kkv')
+  @JsonValue("kkv")
   kkv,
-  @JsonValue('kkw')
+  @JsonValue("kkw")
   kkw,
-  @JsonValue('kkx')
+  @JsonValue("kkx")
   kkx,
-  @JsonValue('kky')
+  @JsonValue("kky")
   kky,
-  @JsonValue('kkz')
+  @JsonValue("kkz")
   kkz,
-  @JsonValue('kla')
+  @JsonValue("kla")
   kla,
-  @JsonValue('klb')
+  @JsonValue("klb")
   klb,
-  @JsonValue('klc')
+  @JsonValue("klc")
   klc,
-  @JsonValue('kld')
+  @JsonValue("kld")
   kld,
-  @JsonValue('kle')
+  @JsonValue("kle")
   kle,
-  @JsonValue('klf')
+  @JsonValue("klf")
   klf,
-  @JsonValue('klg')
+  @JsonValue("klg")
   klg,
-  @JsonValue('klh')
+  @JsonValue("klh")
   klh,
-  @JsonValue('kli')
+  @JsonValue("kli")
   kli,
-  @JsonValue('klj')
+  @JsonValue("klj")
   klj,
-  @JsonValue('klk')
+  @JsonValue("klk")
   klk,
-  @JsonValue('kll')
+  @JsonValue("kll")
   kll,
-  @JsonValue('klm')
+  @JsonValue("klm")
   klm,
-  @JsonValue('kln')
+  @JsonValue("kln")
   kln,
-  @JsonValue('klo')
+  @JsonValue("klo")
   klo,
-  @JsonValue('klp')
+  @JsonValue("klp")
   klp,
-  @JsonValue('klq')
+  @JsonValue("klq")
   klq,
-  @JsonValue('klr')
+  @JsonValue("klr")
   klr,
-  @JsonValue('kls')
+  @JsonValue("kls")
   kls,
-  @JsonValue('klt')
+  @JsonValue("klt")
   klt,
-  @JsonValue('klu')
+  @JsonValue("klu")
   klu,
-  @JsonValue('klv')
+  @JsonValue("klv")
   klv,
-  @JsonValue('klw')
+  @JsonValue("klw")
   klw,
-  @JsonValue('klx')
+  @JsonValue("klx")
   klx,
-  @JsonValue('kly')
+  @JsonValue("kly")
   kly,
-  @JsonValue('klz')
+  @JsonValue("klz")
   klz,
-  @JsonValue('kma')
+  @JsonValue("kma")
   kma,
-  @JsonValue('kmb')
+  @JsonValue("kmb")
   kmb,
-  @JsonValue('kmc')
+  @JsonValue("kmc")
   kmc,
-  @JsonValue('kmd')
+  @JsonValue("kmd")
   kmd,
-  @JsonValue('kme')
+  @JsonValue("kme")
   kme,
-  @JsonValue('kmf')
+  @JsonValue("kmf")
   kmf,
-  @JsonValue('kmg')
+  @JsonValue("kmg")
   kmg,
-  @JsonValue('kmh')
+  @JsonValue("kmh")
   kmh,
-  @JsonValue('kmi')
+  @JsonValue("kmi")
   kmi,
-  @JsonValue('kmj')
+  @JsonValue("kmj")
   kmj,
-  @JsonValue('kmk')
+  @JsonValue("kmk")
   kmk,
-  @JsonValue('kml')
+  @JsonValue("kml")
   kml,
-  @JsonValue('kmm')
+  @JsonValue("kmm")
   kmm,
-  @JsonValue('kmn')
+  @JsonValue("kmn")
   kmn,
-  @JsonValue('kmo')
+  @JsonValue("kmo")
   kmo,
-  @JsonValue('kmp')
+  @JsonValue("kmp")
   kmp,
-  @JsonValue('kmq')
+  @JsonValue("kmq")
   kmq,
-  @JsonValue('kmr')
+  @JsonValue("kmr")
   kmr,
-  @JsonValue('kms')
+  @JsonValue("kms")
   kms,
-  @JsonValue('kmt')
+  @JsonValue("kmt")
   kmt,
-  @JsonValue('kmu')
+  @JsonValue("kmu")
   kmu,
-  @JsonValue('kmv')
+  @JsonValue("kmv")
   kmv,
-  @JsonValue('kmw')
+  @JsonValue("kmw")
   kmw,
-  @JsonValue('kmx')
+  @JsonValue("kmx")
   kmx,
-  @JsonValue('kmy')
+  @JsonValue("kmy")
   kmy,
-  @JsonValue('kmz')
+  @JsonValue("kmz")
   kmz,
-  @JsonValue('kna')
+  @JsonValue("kna")
   kna,
-  @JsonValue('knb')
+  @JsonValue("knb")
   knb,
-  @JsonValue('knc')
+  @JsonValue("knc")
   knc,
-  @JsonValue('knd')
+  @JsonValue("knd")
   knd,
-  @JsonValue('kne')
+  @JsonValue("kne")
   kne,
-  @JsonValue('knf')
+  @JsonValue("knf")
   knf,
-  @JsonValue('kng')
+  @JsonValue("kng")
   kng,
-  @JsonValue('kni')
+  @JsonValue("kni")
   kni,
-  @JsonValue('knj')
+  @JsonValue("knj")
   knj,
-  @JsonValue('knk')
+  @JsonValue("knk")
   knk,
-  @JsonValue('knl')
+  @JsonValue("knl")
   knl,
-  @JsonValue('knm')
+  @JsonValue("knm")
   knm,
-  @JsonValue('knn')
+  @JsonValue("knn")
   knn,
-  @JsonValue('kno')
+  @JsonValue("kno")
   kno,
-  @JsonValue('knp')
+  @JsonValue("knp")
   knp,
-  @JsonValue('knq')
+  @JsonValue("knq")
   knq,
-  @JsonValue('knr')
+  @JsonValue("knr")
   knr,
-  @JsonValue('kns')
+  @JsonValue("kns")
   kns,
-  @JsonValue('knt')
+  @JsonValue("knt")
   knt,
-  @JsonValue('knu')
+  @JsonValue("knu")
   knu,
-  @JsonValue('knv')
+  @JsonValue("knv")
   knv,
-  @JsonValue('knw')
+  @JsonValue("knw")
   knw,
-  @JsonValue('knx')
+  @JsonValue("knx")
   knx,
-  @JsonValue('kny')
+  @JsonValue("kny")
   kny,
-  @JsonValue('knz')
+  @JsonValue("knz")
   knz,
-  @JsonValue('koa')
+  @JsonValue("koa")
   koa,
-  @JsonValue('koc')
+  @JsonValue("koc")
   koc,
-  @JsonValue('kod')
+  @JsonValue("kod")
   kod,
-  @JsonValue('koe')
+  @JsonValue("koe")
   koe,
-  @JsonValue('kof')
+  @JsonValue("kof")
   kof,
-  @JsonValue('kog')
+  @JsonValue("kog")
   kog,
-  @JsonValue('koh')
+  @JsonValue("koh")
   koh,
-  @JsonValue('koi')
+  @JsonValue("koi")
   koi,
-  @JsonValue('kok')
+  @JsonValue("kok")
   kok,
-  @JsonValue('kol')
+  @JsonValue("kol")
   kol,
-  @JsonValue('kom')
+  @JsonValue("kom")
   kom,
-  @JsonValue('kon')
+  @JsonValue("kon")
   kon,
-  @JsonValue('koo')
+  @JsonValue("koo")
   koo,
-  @JsonValue('kop')
+  @JsonValue("kop")
   kop,
-  @JsonValue('koq')
+  @JsonValue("koq")
   koq,
-  @JsonValue('kor')
+  @JsonValue("kor")
   kor,
-  @JsonValue('kos')
+  @JsonValue("kos")
   kos,
-  @JsonValue('kot')
+  @JsonValue("kot")
   kot,
-  @JsonValue('kou')
+  @JsonValue("kou")
   kou,
-  @JsonValue('kov')
+  @JsonValue("kov")
   kov,
-  @JsonValue('kow')
+  @JsonValue("kow")
   kow,
-  @JsonValue('koy')
+  @JsonValue("koy")
   koy,
-  @JsonValue('koz')
+  @JsonValue("koz")
   koz,
-  @JsonValue('kpa')
+  @JsonValue("kpa")
   kpa,
-  @JsonValue('kpb')
+  @JsonValue("kpb")
   kpb,
-  @JsonValue('kpc')
+  @JsonValue("kpc")
   kpc,
-  @JsonValue('kpd')
+  @JsonValue("kpd")
   kpd,
-  @JsonValue('kpe')
+  @JsonValue("kpe")
   kpe,
-  @JsonValue('kpf')
+  @JsonValue("kpf")
   kpf,
-  @JsonValue('kpg')
+  @JsonValue("kpg")
   kpg,
-  @JsonValue('kph')
+  @JsonValue("kph")
   kph,
-  @JsonValue('kpi')
+  @JsonValue("kpi")
   kpi,
-  @JsonValue('kpj')
+  @JsonValue("kpj")
   kpj,
-  @JsonValue('kpk')
+  @JsonValue("kpk")
   kpk,
-  @JsonValue('kpl')
+  @JsonValue("kpl")
   kpl,
-  @JsonValue('kpm')
+  @JsonValue("kpm")
   kpm,
-  @JsonValue('kpn')
+  @JsonValue("kpn")
   kpn,
-  @JsonValue('kpo')
+  @JsonValue("kpo")
   kpo,
-  @JsonValue('kpq')
+  @JsonValue("kpq")
   kpq,
-  @JsonValue('kpr')
+  @JsonValue("kpr")
   kpr,
-  @JsonValue('kps')
+  @JsonValue("kps")
   kps,
-  @JsonValue('kpt')
+  @JsonValue("kpt")
   kpt,
-  @JsonValue('kpu')
+  @JsonValue("kpu")
   kpu,
-  @JsonValue('kpv')
+  @JsonValue("kpv")
   kpv,
-  @JsonValue('kpw')
+  @JsonValue("kpw")
   kpw,
-  @JsonValue('kpx')
+  @JsonValue("kpx")
   kpx,
-  @JsonValue('kpy')
+  @JsonValue("kpy")
   kpy,
-  @JsonValue('kpz')
+  @JsonValue("kpz")
   kpz,
-  @JsonValue('kqa')
+  @JsonValue("kqa")
   kqa,
-  @JsonValue('kqb')
+  @JsonValue("kqb")
   kqb,
-  @JsonValue('kqc')
+  @JsonValue("kqc")
   kqc,
-  @JsonValue('kqd')
+  @JsonValue("kqd")
   kqd,
-  @JsonValue('kqe')
+  @JsonValue("kqe")
   kqe,
-  @JsonValue('kqf')
+  @JsonValue("kqf")
   kqf,
-  @JsonValue('kqg')
+  @JsonValue("kqg")
   kqg,
-  @JsonValue('kqh')
+  @JsonValue("kqh")
   kqh,
-  @JsonValue('kqi')
+  @JsonValue("kqi")
   kqi,
-  @JsonValue('kqj')
+  @JsonValue("kqj")
   kqj,
-  @JsonValue('kqk')
+  @JsonValue("kqk")
   kqk,
-  @JsonValue('kql')
+  @JsonValue("kql")
   kql,
-  @JsonValue('kqm')
+  @JsonValue("kqm")
   kqm,
-  @JsonValue('kqn')
+  @JsonValue("kqn")
   kqn,
-  @JsonValue('kqo')
+  @JsonValue("kqo")
   kqo,
-  @JsonValue('kqp')
+  @JsonValue("kqp")
   kqp,
-  @JsonValue('kqq')
+  @JsonValue("kqq")
   kqq,
-  @JsonValue('kqr')
+  @JsonValue("kqr")
   kqr,
-  @JsonValue('kqs')
+  @JsonValue("kqs")
   kqs,
-  @JsonValue('kqt')
+  @JsonValue("kqt")
   kqt,
-  @JsonValue('kqu')
+  @JsonValue("kqu")
   kqu,
-  @JsonValue('kqv')
+  @JsonValue("kqv")
   kqv,
-  @JsonValue('kqw')
+  @JsonValue("kqw")
   kqw,
-  @JsonValue('kqx')
+  @JsonValue("kqx")
   kqx,
-  @JsonValue('kqy')
+  @JsonValue("kqy")
   kqy,
-  @JsonValue('kqz')
+  @JsonValue("kqz")
   kqz,
-  @JsonValue('kra')
+  @JsonValue("kra")
   kra,
-  @JsonValue('krb')
+  @JsonValue("krb")
   krb,
-  @JsonValue('krc')
+  @JsonValue("krc")
   krc,
-  @JsonValue('krd')
+  @JsonValue("krd")
   krd,
-  @JsonValue('kre')
+  @JsonValue("kre")
   kre,
-  @JsonValue('krf')
+  @JsonValue("krf")
   krf,
-  @JsonValue('krh')
+  @JsonValue("krh")
   krh,
-  @JsonValue('kri')
+  @JsonValue("kri")
   kri,
-  @JsonValue('krj')
+  @JsonValue("krj")
   krj,
-  @JsonValue('krk')
+  @JsonValue("krk")
   krk,
-  @JsonValue('krl')
+  @JsonValue("krl")
   krl,
-  @JsonValue('krn')
+  @JsonValue("krn")
   krn,
-  @JsonValue('krp')
+  @JsonValue("krp")
   krp,
-  @JsonValue('krr')
+  @JsonValue("krr")
   krr,
-  @JsonValue('krs')
+  @JsonValue("krs")
   krs,
-  @JsonValue('krt')
+  @JsonValue("krt")
   krt,
-  @JsonValue('kru')
+  @JsonValue("kru")
   kru,
-  @JsonValue('krv')
+  @JsonValue("krv")
   krv,
-  @JsonValue('krw')
+  @JsonValue("krw")
   krw,
-  @JsonValue('krx')
+  @JsonValue("krx")
   krx,
-  @JsonValue('kry')
+  @JsonValue("kry")
   kry,
-  @JsonValue('krz')
+  @JsonValue("krz")
   krz,
-  @JsonValue('ksa')
+  @JsonValue("ksa")
   ksa,
-  @JsonValue('ksb')
+  @JsonValue("ksb")
   ksb,
-  @JsonValue('ksc')
+  @JsonValue("ksc")
   ksc,
-  @JsonValue('ksd')
+  @JsonValue("ksd")
   ksd,
-  @JsonValue('kse')
+  @JsonValue("kse")
   kse,
-  @JsonValue('ksf')
+  @JsonValue("ksf")
   ksf,
-  @JsonValue('ksg')
+  @JsonValue("ksg")
   ksg,
-  @JsonValue('ksh')
+  @JsonValue("ksh")
   ksh,
-  @JsonValue('ksi')
+  @JsonValue("ksi")
   ksi,
-  @JsonValue('ksj')
+  @JsonValue("ksj")
   ksj,
-  @JsonValue('ksk')
+  @JsonValue("ksk")
   ksk,
-  @JsonValue('ksl')
+  @JsonValue("ksl")
   ksl,
-  @JsonValue('ksm')
+  @JsonValue("ksm")
   ksm,
-  @JsonValue('ksn')
+  @JsonValue("ksn")
   ksn,
-  @JsonValue('kso')
+  @JsonValue("kso")
   kso,
-  @JsonValue('ksp')
+  @JsonValue("ksp")
   ksp,
-  @JsonValue('ksq')
+  @JsonValue("ksq")
   ksq,
-  @JsonValue('ksr')
+  @JsonValue("ksr")
   ksr,
-  @JsonValue('kss')
+  @JsonValue("kss")
   kss,
-  @JsonValue('kst')
+  @JsonValue("kst")
   kst,
-  @JsonValue('ksu')
+  @JsonValue("ksu")
   ksu,
-  @JsonValue('ksv')
+  @JsonValue("ksv")
   ksv,
-  @JsonValue('ksw')
+  @JsonValue("ksw")
   ksw,
-  @JsonValue('ksx')
+  @JsonValue("ksx")
   ksx,
-  @JsonValue('ksy')
+  @JsonValue("ksy")
   ksy,
-  @JsonValue('ksz')
+  @JsonValue("ksz")
   ksz,
-  @JsonValue('kta')
+  @JsonValue("kta")
   kta,
-  @JsonValue('ktb')
+  @JsonValue("ktb")
   ktb,
-  @JsonValue('ktc')
+  @JsonValue("ktc")
   ktc,
-  @JsonValue('ktd')
+  @JsonValue("ktd")
   ktd,
-  @JsonValue('kte')
+  @JsonValue("kte")
   kte,
-  @JsonValue('ktf')
+  @JsonValue("ktf")
   ktf,
-  @JsonValue('ktg')
+  @JsonValue("ktg")
   ktg,
-  @JsonValue('kth')
+  @JsonValue("kth")
   kth,
-  @JsonValue('kti')
+  @JsonValue("kti")
   kti,
-  @JsonValue('ktj')
+  @JsonValue("ktj")
   ktj,
-  @JsonValue('ktk')
+  @JsonValue("ktk")
   ktk,
-  @JsonValue('ktl')
+  @JsonValue("ktl")
   ktl,
-  @JsonValue('ktm')
+  @JsonValue("ktm")
   ktm,
-  @JsonValue('ktn')
+  @JsonValue("ktn")
   ktn,
-  @JsonValue('kto')
+  @JsonValue("kto")
   kto,
-  @JsonValue('ktp')
+  @JsonValue("ktp")
   ktp,
-  @JsonValue('ktq')
+  @JsonValue("ktq")
   ktq,
-  @JsonValue('kts')
+  @JsonValue("kts")
   kts,
-  @JsonValue('ktt')
+  @JsonValue("ktt")
   ktt,
-  @JsonValue('ktu')
+  @JsonValue("ktu")
   ktu,
-  @JsonValue('ktv')
+  @JsonValue("ktv")
   ktv,
-  @JsonValue('ktw')
+  @JsonValue("ktw")
   ktw,
-  @JsonValue('ktx')
+  @JsonValue("ktx")
   ktx,
-  @JsonValue('kty')
+  @JsonValue("kty")
   kty,
-  @JsonValue('ktz')
+  @JsonValue("ktz")
   ktz,
-  @JsonValue('kua')
+  @JsonValue("kua")
   kua,
-  @JsonValue('kub')
+  @JsonValue("kub")
   kub,
-  @JsonValue('kuc')
+  @JsonValue("kuc")
   kuc,
-  @JsonValue('kud')
+  @JsonValue("kud")
   kud,
-  @JsonValue('kue')
+  @JsonValue("kue")
   kue,
-  @JsonValue('kuf')
+  @JsonValue("kuf")
   kuf,
-  @JsonValue('kug')
+  @JsonValue("kug")
   kug,
-  @JsonValue('kuh')
+  @JsonValue("kuh")
   kuh,
-  @JsonValue('kui')
+  @JsonValue("kui")
   kui,
-  @JsonValue('kuj')
+  @JsonValue("kuj")
   kuj,
-  @JsonValue('kuk')
+  @JsonValue("kuk")
   kuk,
-  @JsonValue('kul')
+  @JsonValue("kul")
   kul,
-  @JsonValue('kum')
+  @JsonValue("kum")
   kum,
-  @JsonValue('kun')
+  @JsonValue("kun")
   kun,
-  @JsonValue('kuo')
+  @JsonValue("kuo")
   kuo,
-  @JsonValue('kup')
+  @JsonValue("kup")
   kup,
-  @JsonValue('kuq')
+  @JsonValue("kuq")
   kuq,
-  @JsonValue('kur')
+  @JsonValue("kur")
   kur,
-  @JsonValue('kus')
+  @JsonValue("kus")
   kus,
-  @JsonValue('kut')
+  @JsonValue("kut")
   kut,
-  @JsonValue('kuu')
+  @JsonValue("kuu")
   kuu,
-  @JsonValue('kuv')
+  @JsonValue("kuv")
   kuv,
-  @JsonValue('kuw')
+  @JsonValue("kuw")
   kuw,
-  @JsonValue('kux')
+  @JsonValue("kux")
   kux,
-  @JsonValue('kuy')
+  @JsonValue("kuy")
   kuy,
-  @JsonValue('kuz')
+  @JsonValue("kuz")
   kuz,
-  @JsonValue('kva')
+  @JsonValue("kva")
   kva,
-  @JsonValue('kvb')
+  @JsonValue("kvb")
   kvb,
-  @JsonValue('kvc')
+  @JsonValue("kvc")
   kvc,
-  @JsonValue('kvd')
+  @JsonValue("kvd")
   kvd,
-  @JsonValue('kve')
+  @JsonValue("kve")
   kve,
-  @JsonValue('kvf')
+  @JsonValue("kvf")
   kvf,
-  @JsonValue('kvg')
+  @JsonValue("kvg")
   kvg,
-  @JsonValue('kvh')
+  @JsonValue("kvh")
   kvh,
-  @JsonValue('kvi')
+  @JsonValue("kvi")
   kvi,
-  @JsonValue('kvj')
+  @JsonValue("kvj")
   kvj,
-  @JsonValue('kvk')
+  @JsonValue("kvk")
   kvk,
-  @JsonValue('kvl')
+  @JsonValue("kvl")
   kvl,
-  @JsonValue('kvm')
+  @JsonValue("kvm")
   kvm,
-  @JsonValue('kvn')
+  @JsonValue("kvn")
   kvn,
-  @JsonValue('kvo')
+  @JsonValue("kvo")
   kvo,
-  @JsonValue('kvp')
+  @JsonValue("kvp")
   kvp,
-  @JsonValue('kvq')
+  @JsonValue("kvq")
   kvq,
-  @JsonValue('kvr')
+  @JsonValue("kvr")
   kvr,
-  @JsonValue('kvt')
+  @JsonValue("kvt")
   kvt,
-  @JsonValue('kvu')
+  @JsonValue("kvu")
   kvu,
-  @JsonValue('kvv')
+  @JsonValue("kvv")
   kvv,
-  @JsonValue('kvw')
+  @JsonValue("kvw")
   kvw,
-  @JsonValue('kvx')
+  @JsonValue("kvx")
   kvx,
-  @JsonValue('kvy')
+  @JsonValue("kvy")
   kvy,
-  @JsonValue('kvz')
+  @JsonValue("kvz")
   kvz,
-  @JsonValue('kwa')
+  @JsonValue("kwa")
   kwa,
-  @JsonValue('kwb')
+  @JsonValue("kwb")
   kwb,
-  @JsonValue('kwc')
+  @JsonValue("kwc")
   kwc,
-  @JsonValue('kwd')
+  @JsonValue("kwd")
   kwd,
-  @JsonValue('kwe')
+  @JsonValue("kwe")
   kwe,
-  @JsonValue('kwf')
+  @JsonValue("kwf")
   kwf,
-  @JsonValue('kwg')
+  @JsonValue("kwg")
   kwg,
-  @JsonValue('kwh')
+  @JsonValue("kwh")
   kwh,
-  @JsonValue('kwi')
+  @JsonValue("kwi")
   kwi,
-  @JsonValue('kwj')
+  @JsonValue("kwj")
   kwj,
-  @JsonValue('kwk')
+  @JsonValue("kwk")
   kwk,
-  @JsonValue('kwl')
+  @JsonValue("kwl")
   kwl,
-  @JsonValue('kwm')
+  @JsonValue("kwm")
   kwm,
-  @JsonValue('kwn')
+  @JsonValue("kwn")
   kwn,
-  @JsonValue('kwo')
+  @JsonValue("kwo")
   kwo,
-  @JsonValue('kwp')
+  @JsonValue("kwp")
   kwp,
-  @JsonValue('kwr')
+  @JsonValue("kwr")
   kwr,
-  @JsonValue('kws')
+  @JsonValue("kws")
   kws,
-  @JsonValue('kwt')
+  @JsonValue("kwt")
   kwt,
-  @JsonValue('kwu')
+  @JsonValue("kwu")
   kwu,
-  @JsonValue('kwv')
+  @JsonValue("kwv")
   kwv,
-  @JsonValue('kww')
+  @JsonValue("kww")
   kww,
-  @JsonValue('kwx')
+  @JsonValue("kwx")
   kwx,
-  @JsonValue('kwy')
+  @JsonValue("kwy")
   kwy,
-  @JsonValue('kwz')
+  @JsonValue("kwz")
   kwz,
-  @JsonValue('kxa')
+  @JsonValue("kxa")
   kxa,
-  @JsonValue('kxb')
+  @JsonValue("kxb")
   kxb,
-  @JsonValue('kxc')
+  @JsonValue("kxc")
   kxc,
-  @JsonValue('kxd')
+  @JsonValue("kxd")
   kxd,
-  @JsonValue('kxf')
+  @JsonValue("kxf")
   kxf,
-  @JsonValue('kxh')
+  @JsonValue("kxh")
   kxh,
-  @JsonValue('kxi')
+  @JsonValue("kxi")
   kxi,
-  @JsonValue('kxj')
+  @JsonValue("kxj")
   kxj,
-  @JsonValue('kxk')
+  @JsonValue("kxk")
   kxk,
-  @JsonValue('kxm')
+  @JsonValue("kxm")
   kxm,
-  @JsonValue('kxn')
+  @JsonValue("kxn")
   kxn,
-  @JsonValue('kxo')
+  @JsonValue("kxo")
   kxo,
-  @JsonValue('kxp')
+  @JsonValue("kxp")
   kxp,
-  @JsonValue('kxq')
+  @JsonValue("kxq")
   kxq,
-  @JsonValue('kxr')
+  @JsonValue("kxr")
   kxr,
-  @JsonValue('kxs')
+  @JsonValue("kxs")
   kxs,
-  @JsonValue('kxt')
+  @JsonValue("kxt")
   kxt,
-  @JsonValue('kxv')
+  @JsonValue("kxv")
   kxv,
-  @JsonValue('kxw')
+  @JsonValue("kxw")
   kxw,
-  @JsonValue('kxx')
+  @JsonValue("kxx")
   kxx,
-  @JsonValue('kxy')
+  @JsonValue("kxy")
   kxy,
-  @JsonValue('kxz')
+  @JsonValue("kxz")
   kxz,
-  @JsonValue('kya')
+  @JsonValue("kya")
   kya,
-  @JsonValue('kyb')
+  @JsonValue("kyb")
   kyb,
-  @JsonValue('kyc')
+  @JsonValue("kyc")
   kyc,
-  @JsonValue('kyd')
+  @JsonValue("kyd")
   kyd,
-  @JsonValue('kye')
+  @JsonValue("kye")
   kye,
-  @JsonValue('kyf')
+  @JsonValue("kyf")
   kyf,
-  @JsonValue('kyg')
+  @JsonValue("kyg")
   kyg,
-  @JsonValue('kyh')
+  @JsonValue("kyh")
   kyh,
-  @JsonValue('kyi')
+  @JsonValue("kyi")
   kyi,
-  @JsonValue('kyj')
+  @JsonValue("kyj")
   kyj,
-  @JsonValue('kyk')
+  @JsonValue("kyk")
   kyk,
-  @JsonValue('kyl')
+  @JsonValue("kyl")
   kyl,
-  @JsonValue('kym')
+  @JsonValue("kym")
   kym,
-  @JsonValue('kyn')
+  @JsonValue("kyn")
   kyn,
-  @JsonValue('kyo')
+  @JsonValue("kyo")
   kyo,
-  @JsonValue('kyp')
+  @JsonValue("kyp")
   kyp,
-  @JsonValue('kyq')
+  @JsonValue("kyq")
   kyq,
-  @JsonValue('kyr')
+  @JsonValue("kyr")
   kyr,
-  @JsonValue('kys')
+  @JsonValue("kys")
   kys,
-  @JsonValue('kyt')
+  @JsonValue("kyt")
   kyt,
-  @JsonValue('kyu')
+  @JsonValue("kyu")
   kyu,
-  @JsonValue('kyv')
+  @JsonValue("kyv")
   kyv,
-  @JsonValue('kyw')
+  @JsonValue("kyw")
   kyw,
-  @JsonValue('kyx')
+  @JsonValue("kyx")
   kyx,
-  @JsonValue('kyy')
+  @JsonValue("kyy")
   kyy,
-  @JsonValue('kyz')
+  @JsonValue("kyz")
   kyz,
-  @JsonValue('kza')
+  @JsonValue("kza")
   kza,
-  @JsonValue('kzb')
+  @JsonValue("kzb")
   kzb,
-  @JsonValue('kzc')
+  @JsonValue("kzc")
   kzc,
-  @JsonValue('kzd')
+  @JsonValue("kzd")
   kzd,
-  @JsonValue('kze')
+  @JsonValue("kze")
   kze,
-  @JsonValue('kzf')
+  @JsonValue("kzf")
   kzf,
-  @JsonValue('kzg')
+  @JsonValue("kzg")
   kzg,
-  @JsonValue('kzi')
+  @JsonValue("kzi")
   kzi,
-  @JsonValue('kzk')
+  @JsonValue("kzk")
   kzk,
-  @JsonValue('kzl')
+  @JsonValue("kzl")
   kzl,
-  @JsonValue('kzm')
+  @JsonValue("kzm")
   kzm,
-  @JsonValue('kzn')
+  @JsonValue("kzn")
   kzn,
-  @JsonValue('kzo')
+  @JsonValue("kzo")
   kzo,
-  @JsonValue('kzp')
+  @JsonValue("kzp")
   kzp,
-  @JsonValue('kzq')
+  @JsonValue("kzq")
   kzq,
-  @JsonValue('kzr')
+  @JsonValue("kzr")
   kzr,
-  @JsonValue('kzs')
+  @JsonValue("kzs")
   kzs,
-  @JsonValue('kzu')
+  @JsonValue("kzu")
   kzu,
-  @JsonValue('kzv')
+  @JsonValue("kzv")
   kzv,
-  @JsonValue('kzw')
+  @JsonValue("kzw")
   kzw,
-  @JsonValue('kzx')
+  @JsonValue("kzx")
   kzx,
-  @JsonValue('kzy')
+  @JsonValue("kzy")
   kzy,
-  @JsonValue('kzz')
+  @JsonValue("kzz")
   kzz,
-  @JsonValue('laa')
+  @JsonValue("laa")
   laa,
-  @JsonValue('lab')
+  @JsonValue("lab")
   lab,
-  @JsonValue('lac')
+  @JsonValue("lac")
   lac,
-  @JsonValue('lad')
+  @JsonValue("lad")
   lad,
-  @JsonValue('lae')
+  @JsonValue("lae")
   lae,
-  @JsonValue('laf')
+  @JsonValue("laf")
   laf,
-  @JsonValue('lag')
+  @JsonValue("lag")
   lag,
-  @JsonValue('lah')
+  @JsonValue("lah")
   lah,
-  @JsonValue('lai')
+  @JsonValue("lai")
   lai,
-  @JsonValue('laj')
+  @JsonValue("laj")
   laj,
-  @JsonValue('lal')
+  @JsonValue("lal")
   lal,
-  @JsonValue('lam')
+  @JsonValue("lam")
   lam,
-  @JsonValue('lan')
+  @JsonValue("lan")
   lan,
-  @JsonValue('lao')
+  @JsonValue("lao")
   lao,
-  @JsonValue('lap')
+  @JsonValue("lap")
   lap,
-  @JsonValue('laq')
+  @JsonValue("laq")
   laq,
-  @JsonValue('lar')
+  @JsonValue("lar")
   lar,
-  @JsonValue('las')
+  @JsonValue("las")
   las,
-  @JsonValue('lat')
+  @JsonValue("lat")
   lat,
-  @JsonValue('lau')
+  @JsonValue("lau")
   lau,
-  @JsonValue('lav')
+  @JsonValue("lav")
   lav,
-  @JsonValue('law')
+  @JsonValue("law")
   law,
-  @JsonValue('lax')
+  @JsonValue("lax")
   lax,
-  @JsonValue('lay')
+  @JsonValue("lay")
   lay,
-  @JsonValue('laz')
+  @JsonValue("laz")
   laz,
-  @JsonValue('lbb')
+  @JsonValue("lbb")
   lbb,
-  @JsonValue('lbc')
+  @JsonValue("lbc")
   lbc,
-  @JsonValue('lbe')
+  @JsonValue("lbe")
   lbe,
-  @JsonValue('lbf')
+  @JsonValue("lbf")
   lbf,
-  @JsonValue('lbg')
+  @JsonValue("lbg")
   lbg,
-  @JsonValue('lbi')
+  @JsonValue("lbi")
   lbi,
-  @JsonValue('lbj')
+  @JsonValue("lbj")
   lbj,
-  @JsonValue('lbk')
+  @JsonValue("lbk")
   lbk,
-  @JsonValue('lbl')
+  @JsonValue("lbl")
   lbl,
-  @JsonValue('lbm')
+  @JsonValue("lbm")
   lbm,
-  @JsonValue('lbn')
+  @JsonValue("lbn")
   lbn,
-  @JsonValue('lbo')
+  @JsonValue("lbo")
   lbo,
-  @JsonValue('lbq')
+  @JsonValue("lbq")
   lbq,
-  @JsonValue('lbr')
+  @JsonValue("lbr")
   lbr,
-  @JsonValue('lbs')
+  @JsonValue("lbs")
   lbs,
-  @JsonValue('lbt')
+  @JsonValue("lbt")
   lbt,
-  @JsonValue('lbu')
+  @JsonValue("lbu")
   lbu,
-  @JsonValue('lbv')
+  @JsonValue("lbv")
   lbv,
-  @JsonValue('lbw')
+  @JsonValue("lbw")
   lbw,
-  @JsonValue('lbx')
+  @JsonValue("lbx")
   lbx,
-  @JsonValue('lby')
+  @JsonValue("lby")
   lby,
-  @JsonValue('lbz')
+  @JsonValue("lbz")
   lbz,
-  @JsonValue('lcc')
+  @JsonValue("lcc")
   lcc,
-  @JsonValue('lcd')
+  @JsonValue("lcd")
   lcd,
-  @JsonValue('lce')
+  @JsonValue("lce")
   lce,
-  @JsonValue('lcf')
+  @JsonValue("lcf")
   lcf,
-  @JsonValue('lch')
+  @JsonValue("lch")
   lch,
-  @JsonValue('lcl')
+  @JsonValue("lcl")
   lcl,
-  @JsonValue('lcm')
+  @JsonValue("lcm")
   lcm,
-  @JsonValue('lcp')
+  @JsonValue("lcp")
   lcp,
-  @JsonValue('lcq')
+  @JsonValue("lcq")
   lcq,
-  @JsonValue('lcs')
+  @JsonValue("lcs")
   lcs,
-  @JsonValue('lda')
+  @JsonValue("lda")
   lda,
-  @JsonValue('ldb')
+  @JsonValue("ldb")
   ldb,
-  @JsonValue('ldd')
+  @JsonValue("ldd")
   ldd,
-  @JsonValue('ldg')
+  @JsonValue("ldg")
   ldg,
-  @JsonValue('ldh')
+  @JsonValue("ldh")
   ldh,
-  @JsonValue('ldi')
+  @JsonValue("ldi")
   ldi,
-  @JsonValue('ldj')
+  @JsonValue("ldj")
   ldj,
-  @JsonValue('ldk')
+  @JsonValue("ldk")
   ldk,
-  @JsonValue('ldl')
+  @JsonValue("ldl")
   ldl,
-  @JsonValue('ldm')
+  @JsonValue("ldm")
   ldm,
-  @JsonValue('ldn')
+  @JsonValue("ldn")
   ldn,
-  @JsonValue('ldo')
+  @JsonValue("ldo")
   ldo,
-  @JsonValue('ldp')
+  @JsonValue("ldp")
   ldp,
-  @JsonValue('ldq')
+  @JsonValue("ldq")
   ldq,
-  @JsonValue('lea')
+  @JsonValue("lea")
   lea,
-  @JsonValue('leb')
+  @JsonValue("leb")
   leb,
-  @JsonValue('lec')
+  @JsonValue("lec")
   lec,
-  @JsonValue('led')
+  @JsonValue("led")
   led,
-  @JsonValue('lee')
+  @JsonValue("lee")
   lee,
-  @JsonValue('lef')
+  @JsonValue("lef")
   lef,
-  @JsonValue('leh')
+  @JsonValue("leh")
   leh,
-  @JsonValue('lei')
+  @JsonValue("lei")
   lei,
-  @JsonValue('lej')
+  @JsonValue("lej")
   lej,
-  @JsonValue('lek')
+  @JsonValue("lek")
   lek,
-  @JsonValue('lel')
+  @JsonValue("lel")
   lel,
-  @JsonValue('lem')
+  @JsonValue("lem")
   lem,
-  @JsonValue('len')
+  @JsonValue("len")
   len,
-  @JsonValue('leo')
+  @JsonValue("leo")
   leo,
-  @JsonValue('lep')
+  @JsonValue("lep")
   lep,
-  @JsonValue('leq')
+  @JsonValue("leq")
   leq,
-  @JsonValue('ler')
+  @JsonValue("ler")
   ler,
-  @JsonValue('les')
+  @JsonValue("les")
   les,
-  @JsonValue('let')
+  @JsonValue("let")
   let,
-  @JsonValue('leu')
+  @JsonValue("leu")
   leu,
-  @JsonValue('lev')
+  @JsonValue("lev")
   lev,
-  @JsonValue('lew')
+  @JsonValue("lew")
   lew,
-  @JsonValue('lex')
+  @JsonValue("lex")
   lex,
-  @JsonValue('ley')
+  @JsonValue("ley")
   ley,
-  @JsonValue('lez')
+  @JsonValue("lez")
   lez,
-  @JsonValue('lfa')
+  @JsonValue("lfa")
   lfa,
-  @JsonValue('lfn')
+  @JsonValue("lfn")
   lfn,
-  @JsonValue('lga')
+  @JsonValue("lga")
   lga,
-  @JsonValue('lgb')
+  @JsonValue("lgb")
   lgb,
-  @JsonValue('lgg')
+  @JsonValue("lgg")
   lgg,
-  @JsonValue('lgh')
+  @JsonValue("lgh")
   lgh,
-  @JsonValue('lgi')
+  @JsonValue("lgi")
   lgi,
-  @JsonValue('lgk')
+  @JsonValue("lgk")
   lgk,
-  @JsonValue('lgl')
+  @JsonValue("lgl")
   lgl,
-  @JsonValue('lgm')
+  @JsonValue("lgm")
   lgm,
-  @JsonValue('lgn')
+  @JsonValue("lgn")
   lgn,
-  @JsonValue('lgo')
+  @JsonValue("lgo")
   lgo,
-  @JsonValue('lgq')
+  @JsonValue("lgq")
   lgq,
-  @JsonValue('lgr')
+  @JsonValue("lgr")
   lgr,
-  @JsonValue('lgt')
+  @JsonValue("lgt")
   lgt,
-  @JsonValue('lgu')
+  @JsonValue("lgu")
   lgu,
-  @JsonValue('lgz')
+  @JsonValue("lgz")
   lgz,
-  @JsonValue('lha')
+  @JsonValue("lha")
   lha,
-  @JsonValue('lhh')
+  @JsonValue("lhh")
   lhh,
-  @JsonValue('lhi')
+  @JsonValue("lhi")
   lhi,
-  @JsonValue('lhl')
+  @JsonValue("lhl")
   lhl,
-  @JsonValue('lhm')
+  @JsonValue("lhm")
   lhm,
-  @JsonValue('lhn')
+  @JsonValue("lhn")
   lhn,
-  @JsonValue('lhp')
+  @JsonValue("lhp")
   lhp,
-  @JsonValue('lhs')
+  @JsonValue("lhs")
   lhs,
-  @JsonValue('lht')
+  @JsonValue("lht")
   lht,
-  @JsonValue('lhu')
+  @JsonValue("lhu")
   lhu,
-  @JsonValue('lia')
+  @JsonValue("lia")
   lia,
-  @JsonValue('lib')
+  @JsonValue("lib")
   lib,
-  @JsonValue('lic')
+  @JsonValue("lic")
   lic,
-  @JsonValue('lid')
+  @JsonValue("lid")
   lid,
-  @JsonValue('lie')
+  @JsonValue("lie")
   lie,
-  @JsonValue('lif')
+  @JsonValue("lif")
   lif,
-  @JsonValue('lig')
+  @JsonValue("lig")
   lig,
-  @JsonValue('lih')
+  @JsonValue("lih")
   lih,
-  @JsonValue('lij')
+  @JsonValue("lij")
   lij,
-  @JsonValue('lik')
+  @JsonValue("lik")
   lik,
-  @JsonValue('lil')
+  @JsonValue("lil")
   lil,
-  @JsonValue('lim')
+  @JsonValue("lim")
   lim,
-  @JsonValue('lin')
+  @JsonValue("lin")
   lin,
-  @JsonValue('lio')
+  @JsonValue("lio")
   lio,
-  @JsonValue('lip')
+  @JsonValue("lip")
   lip,
-  @JsonValue('liq')
+  @JsonValue("liq")
   liq,
-  @JsonValue('lir')
+  @JsonValue("lir")
   lir,
-  @JsonValue('lis')
+  @JsonValue("lis")
   lis,
-  @JsonValue('lit')
+  @JsonValue("lit")
   lit,
-  @JsonValue('liu')
+  @JsonValue("liu")
   liu,
-  @JsonValue('liv')
+  @JsonValue("liv")
   liv,
-  @JsonValue('liw')
+  @JsonValue("liw")
   liw,
-  @JsonValue('lix')
+  @JsonValue("lix")
   lix,
-  @JsonValue('liy')
+  @JsonValue("liy")
   liy,
-  @JsonValue('liz')
+  @JsonValue("liz")
   liz,
-  @JsonValue('lja')
+  @JsonValue("lja")
   lja,
-  @JsonValue('lje')
+  @JsonValue("lje")
   lje,
-  @JsonValue('lji')
+  @JsonValue("lji")
   lji,
-  @JsonValue('ljl')
+  @JsonValue("ljl")
   ljl,
-  @JsonValue('ljp')
+  @JsonValue("ljp")
   ljp,
-  @JsonValue('ljw')
+  @JsonValue("ljw")
   ljw,
-  @JsonValue('ljx')
+  @JsonValue("ljx")
   ljx,
-  @JsonValue('lka')
+  @JsonValue("lka")
   lka,
-  @JsonValue('lkb')
+  @JsonValue("lkb")
   lkb,
-  @JsonValue('lkc')
+  @JsonValue("lkc")
   lkc,
-  @JsonValue('lkd')
+  @JsonValue("lkd")
   lkd,
-  @JsonValue('lke')
+  @JsonValue("lke")
   lke,
-  @JsonValue('lkh')
+  @JsonValue("lkh")
   lkh,
-  @JsonValue('lki')
+  @JsonValue("lki")
   lki,
-  @JsonValue('lkj')
+  @JsonValue("lkj")
   lkj,
-  @JsonValue('lkl')
+  @JsonValue("lkl")
   lkl,
-  @JsonValue('lkm')
+  @JsonValue("lkm")
   lkm,
-  @JsonValue('lkn')
+  @JsonValue("lkn")
   lkn,
-  @JsonValue('lko')
+  @JsonValue("lko")
   lko,
-  @JsonValue('lkr')
+  @JsonValue("lkr")
   lkr,
-  @JsonValue('lks')
+  @JsonValue("lks")
   lks,
-  @JsonValue('lkt')
+  @JsonValue("lkt")
   lkt,
-  @JsonValue('lku')
+  @JsonValue("lku")
   lku,
-  @JsonValue('lky')
+  @JsonValue("lky")
   lky,
-  @JsonValue('lla')
+  @JsonValue("lla")
   lla,
-  @JsonValue('llb')
+  @JsonValue("llb")
   llb,
-  @JsonValue('llc')
+  @JsonValue("llc")
   llc,
-  @JsonValue('lld')
+  @JsonValue("lld")
   lld,
-  @JsonValue('lle')
+  @JsonValue("lle")
   lle,
-  @JsonValue('llf')
+  @JsonValue("llf")
   llf,
-  @JsonValue('llg')
+  @JsonValue("llg")
   llg,
-  @JsonValue('llh')
+  @JsonValue("llh")
   llh,
-  @JsonValue('lli')
+  @JsonValue("lli")
   lli,
-  @JsonValue('llj')
+  @JsonValue("llj")
   llj,
-  @JsonValue('llk')
+  @JsonValue("llk")
   llk,
-  @JsonValue('lll')
+  @JsonValue("lll")
   lll,
-  @JsonValue('llm')
+  @JsonValue("llm")
   llm,
-  @JsonValue('lln')
+  @JsonValue("lln")
   lln,
-  @JsonValue('llp')
+  @JsonValue("llp")
   llp,
-  @JsonValue('llq')
+  @JsonValue("llq")
   llq,
-  @JsonValue('lls')
+  @JsonValue("lls")
   lls,
-  @JsonValue('llu')
+  @JsonValue("llu")
   llu,
-  @JsonValue('llx')
+  @JsonValue("llx")
   llx,
-  @JsonValue('lma')
+  @JsonValue("lma")
   lma,
-  @JsonValue('lmb')
+  @JsonValue("lmb")
   lmb,
-  @JsonValue('lmc')
+  @JsonValue("lmc")
   lmc,
-  @JsonValue('lmd')
+  @JsonValue("lmd")
   lmd,
-  @JsonValue('lme')
+  @JsonValue("lme")
   lme,
-  @JsonValue('lmf')
+  @JsonValue("lmf")
   lmf,
-  @JsonValue('lmg')
+  @JsonValue("lmg")
   lmg,
-  @JsonValue('lmh')
+  @JsonValue("lmh")
   lmh,
-  @JsonValue('lmi')
+  @JsonValue("lmi")
   lmi,
-  @JsonValue('lmj')
+  @JsonValue("lmj")
   lmj,
-  @JsonValue('lmk')
+  @JsonValue("lmk")
   lmk,
-  @JsonValue('lml')
+  @JsonValue("lml")
   lml,
-  @JsonValue('lmn')
+  @JsonValue("lmn")
   lmn,
-  @JsonValue('lmo')
+  @JsonValue("lmo")
   lmo,
-  @JsonValue('lmp')
+  @JsonValue("lmp")
   lmp,
-  @JsonValue('lmq')
+  @JsonValue("lmq")
   lmq,
-  @JsonValue('lmr')
+  @JsonValue("lmr")
   lmr,
-  @JsonValue('lmu')
+  @JsonValue("lmu")
   lmu,
-  @JsonValue('lmv')
+  @JsonValue("lmv")
   lmv,
-  @JsonValue('lmw')
+  @JsonValue("lmw")
   lmw,
-  @JsonValue('lmx')
+  @JsonValue("lmx")
   lmx,
-  @JsonValue('lmy')
+  @JsonValue("lmy")
   lmy,
-  @JsonValue('lna')
+  @JsonValue("lna")
   lna,
-  @JsonValue('lnb')
+  @JsonValue("lnb")
   lnb,
-  @JsonValue('lnd')
+  @JsonValue("lnd")
   lnd,
-  @JsonValue('lng')
+  @JsonValue("lng")
   lng,
-  @JsonValue('lnh')
+  @JsonValue("lnh")
   lnh,
-  @JsonValue('lni')
+  @JsonValue("lni")
   lni,
-  @JsonValue('lnj')
+  @JsonValue("lnj")
   lnj,
-  @JsonValue('lnl')
+  @JsonValue("lnl")
   lnl,
-  @JsonValue('lnm')
+  @JsonValue("lnm")
   lnm,
-  @JsonValue('lnn')
+  @JsonValue("lnn")
   lnn,
-  @JsonValue('lns')
+  @JsonValue("lns")
   lns,
-  @JsonValue('lnu')
+  @JsonValue("lnu")
   lnu,
-  @JsonValue('lnw')
+  @JsonValue("lnw")
   lnw,
-  @JsonValue('lnz')
+  @JsonValue("lnz")
   lnz,
-  @JsonValue('loa')
+  @JsonValue("loa")
   loa,
-  @JsonValue('lob')
+  @JsonValue("lob")
   lob,
-  @JsonValue('loc')
+  @JsonValue("loc")
   loc,
-  @JsonValue('loe')
+  @JsonValue("loe")
   loe,
-  @JsonValue('lof')
+  @JsonValue("lof")
   lof,
-  @JsonValue('log')
+  @JsonValue("log")
   log,
-  @JsonValue('loh')
+  @JsonValue("loh")
   loh,
-  @JsonValue('loi')
+  @JsonValue("loi")
   loi,
-  @JsonValue('loj')
+  @JsonValue("loj")
   loj,
-  @JsonValue('lok')
+  @JsonValue("lok")
   lok,
-  @JsonValue('lol')
+  @JsonValue("lol")
   lol,
-  @JsonValue('lom')
+  @JsonValue("lom")
   lom,
-  @JsonValue('lon')
+  @JsonValue("lon")
   lon,
-  @JsonValue('loo')
+  @JsonValue("loo")
   loo,
-  @JsonValue('lop')
+  @JsonValue("lop")
   lop,
-  @JsonValue('loq')
+  @JsonValue("loq")
   loq,
-  @JsonValue('lor')
+  @JsonValue("lor")
   lor,
-  @JsonValue('los')
+  @JsonValue("los")
   los,
-  @JsonValue('lot')
+  @JsonValue("lot")
   lot,
-  @JsonValue('lou')
+  @JsonValue("lou")
   lou,
-  @JsonValue('lov')
+  @JsonValue("lov")
   lov,
-  @JsonValue('low')
+  @JsonValue("low")
   low,
-  @JsonValue('lox')
+  @JsonValue("lox")
   lox,
-  @JsonValue('loy')
+  @JsonValue("loy")
   loy,
-  @JsonValue('loz')
+  @JsonValue("loz")
   loz,
-  @JsonValue('lpa')
+  @JsonValue("lpa")
   lpa,
-  @JsonValue('lpe')
+  @JsonValue("lpe")
   lpe,
-  @JsonValue('lpn')
+  @JsonValue("lpn")
   lpn,
-  @JsonValue('lpo')
+  @JsonValue("lpo")
   lpo,
-  @JsonValue('lpx')
+  @JsonValue("lpx")
   lpx,
-  @JsonValue('lqr')
+  @JsonValue("lqr")
   lqr,
-  @JsonValue('lra')
+  @JsonValue("lra")
   lra,
-  @JsonValue('lrc')
+  @JsonValue("lrc")
   lrc,
-  @JsonValue('lre')
+  @JsonValue("lre")
   lre,
-  @JsonValue('lrg')
+  @JsonValue("lrg")
   lrg,
-  @JsonValue('lri')
+  @JsonValue("lri")
   lri,
-  @JsonValue('lrk')
+  @JsonValue("lrk")
   lrk,
-  @JsonValue('lrl')
+  @JsonValue("lrl")
   lrl,
-  @JsonValue('lrm')
+  @JsonValue("lrm")
   lrm,
-  @JsonValue('lrn')
+  @JsonValue("lrn")
   lrn,
-  @JsonValue('lro')
+  @JsonValue("lro")
   lro,
-  @JsonValue('lrr')
+  @JsonValue("lrr")
   lrr,
-  @JsonValue('lrt')
+  @JsonValue("lrt")
   lrt,
-  @JsonValue('lrv')
+  @JsonValue("lrv")
   lrv,
-  @JsonValue('lrz')
+  @JsonValue("lrz")
   lrz,
-  @JsonValue('lsa')
+  @JsonValue("lsa")
   lsa,
-  @JsonValue('lsb')
+  @JsonValue("lsb")
   lsb,
-  @JsonValue('lsc')
+  @JsonValue("lsc")
   lsc,
-  @JsonValue('lsd')
+  @JsonValue("lsd")
   lsd,
-  @JsonValue('lse')
+  @JsonValue("lse")
   lse,
-  @JsonValue('lsh')
+  @JsonValue("lsh")
   lsh,
-  @JsonValue('lsi')
+  @JsonValue("lsi")
   lsi,
-  @JsonValue('lsl')
+  @JsonValue("lsl")
   lsl,
-  @JsonValue('lsm')
+  @JsonValue("lsm")
   lsm,
-  @JsonValue('lsn')
+  @JsonValue("lsn")
   lsn,
-  @JsonValue('lso')
+  @JsonValue("lso")
   lso,
-  @JsonValue('lsp')
+  @JsonValue("lsp")
   lsp,
-  @JsonValue('lsr')
+  @JsonValue("lsr")
   lsr,
-  @JsonValue('lss')
+  @JsonValue("lss")
   lss,
-  @JsonValue('lst')
+  @JsonValue("lst")
   lst,
-  @JsonValue('lsv')
+  @JsonValue("lsv")
   lsv,
-  @JsonValue('lsw')
+  @JsonValue("lsw")
   lsw,
-  @JsonValue('lsy')
+  @JsonValue("lsy")
   lsy,
-  @JsonValue('ltc')
+  @JsonValue("ltc")
   ltc,
-  @JsonValue('ltg')
+  @JsonValue("ltg")
   ltg,
-  @JsonValue('lth')
+  @JsonValue("lth")
   lth,
-  @JsonValue('lti')
+  @JsonValue("lti")
   lti,
-  @JsonValue('ltn')
+  @JsonValue("ltn")
   ltn,
-  @JsonValue('lto')
+  @JsonValue("lto")
   lto,
-  @JsonValue('lts')
+  @JsonValue("lts")
   lts,
-  @JsonValue('ltu')
+  @JsonValue("ltu")
   ltu,
-  @JsonValue('ltz')
+  @JsonValue("ltz")
   ltz,
-  @JsonValue('lua')
+  @JsonValue("lua")
   lua,
-  @JsonValue('lub')
+  @JsonValue("lub")
   lub,
-  @JsonValue('luc')
+  @JsonValue("luc")
   luc,
-  @JsonValue('lud')
+  @JsonValue("lud")
   lud,
-  @JsonValue('lue')
+  @JsonValue("lue")
   lue,
-  @JsonValue('luf')
+  @JsonValue("luf")
   luf,
-  @JsonValue('lug')
+  @JsonValue("lug")
   lug,
-  @JsonValue('lui')
+  @JsonValue("lui")
   lui,
-  @JsonValue('luj')
+  @JsonValue("luj")
   luj,
-  @JsonValue('luk')
+  @JsonValue("luk")
   luk,
-  @JsonValue('lul')
+  @JsonValue("lul")
   lul,
-  @JsonValue('lum')
+  @JsonValue("lum")
   lum,
-  @JsonValue('lun')
+  @JsonValue("lun")
   lun,
-  @JsonValue('luo')
+  @JsonValue("luo")
   luo,
-  @JsonValue('lup')
+  @JsonValue("lup")
   lup,
-  @JsonValue('luq')
+  @JsonValue("luq")
   luq,
-  @JsonValue('lur')
+  @JsonValue("lur")
   lur,
-  @JsonValue('lus')
+  @JsonValue("lus")
   lus,
-  @JsonValue('lut')
+  @JsonValue("lut")
   lut,
-  @JsonValue('luu')
+  @JsonValue("luu")
   luu,
-  @JsonValue('luv')
+  @JsonValue("luv")
   luv,
-  @JsonValue('luw')
+  @JsonValue("luw")
   luw,
-  @JsonValue('luy')
+  @JsonValue("luy")
   luy,
-  @JsonValue('luz')
+  @JsonValue("luz")
   luz,
-  @JsonValue('lva')
+  @JsonValue("lva")
   lva,
-  @JsonValue('lvi')
+  @JsonValue("lvi")
   lvi,
-  @JsonValue('lvk')
+  @JsonValue("lvk")
   lvk,
-  @JsonValue('lvs')
+  @JsonValue("lvs")
   lvs,
-  @JsonValue('lvu')
+  @JsonValue("lvu")
   lvu,
-  @JsonValue('lwa')
+  @JsonValue("lwa")
   lwa,
-  @JsonValue('lwe')
+  @JsonValue("lwe")
   lwe,
-  @JsonValue('lwg')
+  @JsonValue("lwg")
   lwg,
-  @JsonValue('lwh')
+  @JsonValue("lwh")
   lwh,
-  @JsonValue('lwl')
+  @JsonValue("lwl")
   lwl,
-  @JsonValue('lwm')
+  @JsonValue("lwm")
   lwm,
-  @JsonValue('lwo')
+  @JsonValue("lwo")
   lwo,
-  @JsonValue('lws')
+  @JsonValue("lws")
   lws,
-  @JsonValue('lwt')
+  @JsonValue("lwt")
   lwt,
-  @JsonValue('lwu')
+  @JsonValue("lwu")
   lwu,
-  @JsonValue('lww')
+  @JsonValue("lww")
   lww,
-  @JsonValue('lxm')
+  @JsonValue("lxm")
   lxm,
-  @JsonValue('lya')
+  @JsonValue("lya")
   lya,
-  @JsonValue('lyg')
+  @JsonValue("lyg")
   lyg,
-  @JsonValue('lyn')
+  @JsonValue("lyn")
   lyn,
-  @JsonValue('lzh')
+  @JsonValue("lzh")
   lzh,
-  @JsonValue('lzl')
+  @JsonValue("lzl")
   lzl,
-  @JsonValue('lzn')
+  @JsonValue("lzn")
   lzn,
-  @JsonValue('lzz')
+  @JsonValue("lzz")
   lzz,
-  @JsonValue('maa')
+  @JsonValue("maa")
   maa,
-  @JsonValue('mab')
+  @JsonValue("mab")
   mab,
-  @JsonValue('mad')
+  @JsonValue("mad")
   mad,
-  @JsonValue('mae')
+  @JsonValue("mae")
   mae,
-  @JsonValue('maf')
+  @JsonValue("maf")
   maf,
-  @JsonValue('mag')
+  @JsonValue("mag")
   mag,
-  @JsonValue('mah')
+  @JsonValue("mah")
   mah,
-  @JsonValue('mai')
+  @JsonValue("mai")
   mai,
-  @JsonValue('maj')
+  @JsonValue("maj")
   maj,
-  @JsonValue('mak')
+  @JsonValue("mak")
   mak,
-  @JsonValue('mal')
+  @JsonValue("mal")
   mal,
-  @JsonValue('mam')
+  @JsonValue("mam")
   mam,
-  @JsonValue('man')
+  @JsonValue("man")
   man,
-  @JsonValue('maq')
+  @JsonValue("maq")
   maq,
-  @JsonValue('mar')
+  @JsonValue("mar")
   mar,
-  @JsonValue('mas')
+  @JsonValue("mas")
   mas,
-  @JsonValue('mat')
+  @JsonValue("mat")
   mat,
-  @JsonValue('mau')
+  @JsonValue("mau")
   mau,
-  @JsonValue('mav')
+  @JsonValue("mav")
   mav,
-  @JsonValue('maw')
+  @JsonValue("maw")
   maw,
-  @JsonValue('max')
+  @JsonValue("max")
   max,
-  @JsonValue('maz')
+  @JsonValue("maz")
   maz,
-  @JsonValue('mba')
+  @JsonValue("mba")
   mba,
-  @JsonValue('mbb')
+  @JsonValue("mbb")
   mbb,
-  @JsonValue('mbc')
+  @JsonValue("mbc")
   mbc,
-  @JsonValue('mbd')
+  @JsonValue("mbd")
   mbd,
-  @JsonValue('mbe')
+  @JsonValue("mbe")
   mbe,
-  @JsonValue('mbf')
+  @JsonValue("mbf")
   mbf,
-  @JsonValue('mbh')
+  @JsonValue("mbh")
   mbh,
-  @JsonValue('mbi')
+  @JsonValue("mbi")
   mbi,
-  @JsonValue('mbj')
+  @JsonValue("mbj")
   mbj,
-  @JsonValue('mbk')
+  @JsonValue("mbk")
   mbk,
-  @JsonValue('mbl')
+  @JsonValue("mbl")
   mbl,
-  @JsonValue('mbm')
+  @JsonValue("mbm")
   mbm,
-  @JsonValue('mbn')
+  @JsonValue("mbn")
   mbn,
-  @JsonValue('mbo')
+  @JsonValue("mbo")
   mbo,
-  @JsonValue('mbp')
+  @JsonValue("mbp")
   mbp,
-  @JsonValue('mbq')
+  @JsonValue("mbq")
   mbq,
-  @JsonValue('mbr')
+  @JsonValue("mbr")
   mbr,
-  @JsonValue('mbs')
+  @JsonValue("mbs")
   mbs,
-  @JsonValue('mbt')
+  @JsonValue("mbt")
   mbt,
-  @JsonValue('mbu')
+  @JsonValue("mbu")
   mbu,
-  @JsonValue('mbv')
+  @JsonValue("mbv")
   mbv,
-  @JsonValue('mbw')
+  @JsonValue("mbw")
   mbw,
-  @JsonValue('mbx')
+  @JsonValue("mbx")
   mbx,
-  @JsonValue('mby')
+  @JsonValue("mby")
   mby,
-  @JsonValue('mbz')
+  @JsonValue("mbz")
   mbz,
-  @JsonValue('mca')
+  @JsonValue("mca")
   mca,
-  @JsonValue('mcb')
+  @JsonValue("mcb")
   mcb,
-  @JsonValue('mcc')
+  @JsonValue("mcc")
   mcc,
-  @JsonValue('mcd')
+  @JsonValue("mcd")
   mcd,
-  @JsonValue('mce')
+  @JsonValue("mce")
   mce,
-  @JsonValue('mcf')
+  @JsonValue("mcf")
   mcf,
-  @JsonValue('mcg')
+  @JsonValue("mcg")
   mcg,
-  @JsonValue('mch')
+  @JsonValue("mch")
   mch,
-  @JsonValue('mci')
+  @JsonValue("mci")
   mci,
-  @JsonValue('mcj')
+  @JsonValue("mcj")
   mcj,
-  @JsonValue('mck')
+  @JsonValue("mck")
   mck,
-  @JsonValue('mcl')
+  @JsonValue("mcl")
   mcl,
-  @JsonValue('mcm')
+  @JsonValue("mcm")
   mcm,
-  @JsonValue('mcn')
+  @JsonValue("mcn")
   mcn,
-  @JsonValue('mco')
+  @JsonValue("mco")
   mco,
-  @JsonValue('mcp')
+  @JsonValue("mcp")
   mcp,
-  @JsonValue('mcq')
+  @JsonValue("mcq")
   mcq,
-  @JsonValue('mcr')
+  @JsonValue("mcr")
   mcr,
-  @JsonValue('mcs')
+  @JsonValue("mcs")
   mcs,
-  @JsonValue('mct')
+  @JsonValue("mct")
   mct,
-  @JsonValue('mcu')
+  @JsonValue("mcu")
   mcu,
-  @JsonValue('mcv')
+  @JsonValue("mcv")
   mcv,
-  @JsonValue('mcw')
+  @JsonValue("mcw")
   mcw,
-  @JsonValue('mcx')
+  @JsonValue("mcx")
   mcx,
-  @JsonValue('mcy')
+  @JsonValue("mcy")
   mcy,
-  @JsonValue('mcz')
+  @JsonValue("mcz")
   mcz,
-  @JsonValue('mda')
+  @JsonValue("mda")
   mda,
-  @JsonValue('mdb')
+  @JsonValue("mdb")
   mdb,
-  @JsonValue('mdc')
+  @JsonValue("mdc")
   mdc,
-  @JsonValue('mdd')
+  @JsonValue("mdd")
   mdd,
-  @JsonValue('mde')
+  @JsonValue("mde")
   mde,
-  @JsonValue('mdf')
+  @JsonValue("mdf")
   mdf,
-  @JsonValue('mdg')
+  @JsonValue("mdg")
   mdg,
-  @JsonValue('mdh')
+  @JsonValue("mdh")
   mdh,
-  @JsonValue('mdi')
+  @JsonValue("mdi")
   mdi,
-  @JsonValue('mdj')
+  @JsonValue("mdj")
   mdj,
-  @JsonValue('mdk')
+  @JsonValue("mdk")
   mdk,
-  @JsonValue('mdl')
+  @JsonValue("mdl")
   mdl,
-  @JsonValue('mdm')
+  @JsonValue("mdm")
   mdm,
-  @JsonValue('mdn')
+  @JsonValue("mdn")
   mdn,
-  @JsonValue('mdp')
+  @JsonValue("mdp")
   mdp,
-  @JsonValue('mdq')
+  @JsonValue("mdq")
   mdq,
-  @JsonValue('mdr')
+  @JsonValue("mdr")
   mdr,
-  @JsonValue('mds')
+  @JsonValue("mds")
   mds,
-  @JsonValue('mdt')
+  @JsonValue("mdt")
   mdt,
-  @JsonValue('mdu')
+  @JsonValue("mdu")
   mdu,
-  @JsonValue('mdv')
+  @JsonValue("mdv")
   mdv,
-  @JsonValue('mdw')
+  @JsonValue("mdw")
   mdw,
-  @JsonValue('mdx')
+  @JsonValue("mdx")
   mdx,
-  @JsonValue('mdy')
+  @JsonValue("mdy")
   mdy,
-  @JsonValue('mdz')
+  @JsonValue("mdz")
   mdz,
-  @JsonValue('mea')
+  @JsonValue("mea")
   mea,
-  @JsonValue('meb')
+  @JsonValue("meb")
   meb,
-  @JsonValue('mec')
+  @JsonValue("mec")
   mec,
-  @JsonValue('med')
+  @JsonValue("med")
   med,
-  @JsonValue('mee')
+  @JsonValue("mee")
   mee,
-  @JsonValue('mef')
+  @JsonValue("mef")
   mef,
-  @JsonValue('meh')
+  @JsonValue("meh")
   meh,
-  @JsonValue('mei')
+  @JsonValue("mei")
   mei,
-  @JsonValue('mej')
+  @JsonValue("mej")
   mej,
-  @JsonValue('mek')
+  @JsonValue("mek")
   mek,
-  @JsonValue('mel')
+  @JsonValue("mel")
   mel,
-  @JsonValue('mem')
+  @JsonValue("mem")
   mem,
-  @JsonValue('men')
+  @JsonValue("men")
   men,
-  @JsonValue('meo')
+  @JsonValue("meo")
   meo,
-  @JsonValue('mep')
+  @JsonValue("mep")
   mep,
-  @JsonValue('meq')
+  @JsonValue("meq")
   meq,
-  @JsonValue('mer')
+  @JsonValue("mer")
   mer,
-  @JsonValue('mes')
+  @JsonValue("mes")
   mes,
-  @JsonValue('met')
+  @JsonValue("met")
   met,
-  @JsonValue('meu')
+  @JsonValue("meu")
   meu,
-  @JsonValue('mev')
+  @JsonValue("mev")
   mev,
-  @JsonValue('mew')
+  @JsonValue("mew")
   mew,
-  @JsonValue('mey')
+  @JsonValue("mey")
   mey,
-  @JsonValue('mez')
+  @JsonValue("mez")
   mez,
-  @JsonValue('mfa')
+  @JsonValue("mfa")
   mfa,
-  @JsonValue('mfb')
+  @JsonValue("mfb")
   mfb,
-  @JsonValue('mfc')
+  @JsonValue("mfc")
   mfc,
-  @JsonValue('mfd')
+  @JsonValue("mfd")
   mfd,
-  @JsonValue('mfe')
+  @JsonValue("mfe")
   mfe,
-  @JsonValue('mff')
+  @JsonValue("mff")
   mff,
-  @JsonValue('mfg')
+  @JsonValue("mfg")
   mfg,
-  @JsonValue('mfh')
+  @JsonValue("mfh")
   mfh,
-  @JsonValue('mfi')
+  @JsonValue("mfi")
   mfi,
-  @JsonValue('mfj')
+  @JsonValue("mfj")
   mfj,
-  @JsonValue('mfk')
+  @JsonValue("mfk")
   mfk,
-  @JsonValue('mfl')
+  @JsonValue("mfl")
   mfl,
-  @JsonValue('mfm')
+  @JsonValue("mfm")
   mfm,
-  @JsonValue('mfn')
+  @JsonValue("mfn")
   mfn,
-  @JsonValue('mfo')
+  @JsonValue("mfo")
   mfo,
-  @JsonValue('mfp')
+  @JsonValue("mfp")
   mfp,
-  @JsonValue('mfq')
+  @JsonValue("mfq")
   mfq,
-  @JsonValue('mfr')
+  @JsonValue("mfr")
   mfr,
-  @JsonValue('mfs')
+  @JsonValue("mfs")
   mfs,
-  @JsonValue('mft')
+  @JsonValue("mft")
   mft,
-  @JsonValue('mfu')
+  @JsonValue("mfu")
   mfu,
-  @JsonValue('mfv')
+  @JsonValue("mfv")
   mfv,
-  @JsonValue('mfw')
+  @JsonValue("mfw")
   mfw,
-  @JsonValue('mfx')
+  @JsonValue("mfx")
   mfx,
-  @JsonValue('mfy')
+  @JsonValue("mfy")
   mfy,
-  @JsonValue('mfz')
+  @JsonValue("mfz")
   mfz,
-  @JsonValue('mga')
+  @JsonValue("mga")
   mga,
-  @JsonValue('mgb')
+  @JsonValue("mgb")
   mgb,
-  @JsonValue('mgc')
+  @JsonValue("mgc")
   mgc,
-  @JsonValue('mgd')
+  @JsonValue("mgd")
   mgd,
-  @JsonValue('mge')
+  @JsonValue("mge")
   mge,
-  @JsonValue('mgf')
+  @JsonValue("mgf")
   mgf,
-  @JsonValue('mgg')
+  @JsonValue("mgg")
   mgg,
-  @JsonValue('mgh')
+  @JsonValue("mgh")
   mgh,
-  @JsonValue('mgi')
+  @JsonValue("mgi")
   mgi,
-  @JsonValue('mgj')
+  @JsonValue("mgj")
   mgj,
-  @JsonValue('mgk')
+  @JsonValue("mgk")
   mgk,
-  @JsonValue('mgl')
+  @JsonValue("mgl")
   mgl,
-  @JsonValue('mgm')
+  @JsonValue("mgm")
   mgm,
-  @JsonValue('mgn')
+  @JsonValue("mgn")
   mgn,
-  @JsonValue('mgo')
+  @JsonValue("mgo")
   mgo,
-  @JsonValue('mgp')
+  @JsonValue("mgp")
   mgp,
-  @JsonValue('mgq')
+  @JsonValue("mgq")
   mgq,
-  @JsonValue('mgr')
+  @JsonValue("mgr")
   mgr,
-  @JsonValue('mgs')
+  @JsonValue("mgs")
   mgs,
-  @JsonValue('mgt')
+  @JsonValue("mgt")
   mgt,
-  @JsonValue('mgu')
+  @JsonValue("mgu")
   mgu,
-  @JsonValue('mgv')
+  @JsonValue("mgv")
   mgv,
-  @JsonValue('mgw')
+  @JsonValue("mgw")
   mgw,
-  @JsonValue('mgy')
+  @JsonValue("mgy")
   mgy,
-  @JsonValue('mgz')
+  @JsonValue("mgz")
   mgz,
-  @JsonValue('mha')
+  @JsonValue("mha")
   mha,
-  @JsonValue('mhb')
+  @JsonValue("mhb")
   mhb,
-  @JsonValue('mhc')
+  @JsonValue("mhc")
   mhc,
-  @JsonValue('mhd')
+  @JsonValue("mhd")
   mhd,
-  @JsonValue('mhe')
+  @JsonValue("mhe")
   mhe,
-  @JsonValue('mhf')
+  @JsonValue("mhf")
   mhf,
-  @JsonValue('mhg')
+  @JsonValue("mhg")
   mhg,
-  @JsonValue('mhi')
+  @JsonValue("mhi")
   mhi,
-  @JsonValue('mhj')
+  @JsonValue("mhj")
   mhj,
-  @JsonValue('mhk')
+  @JsonValue("mhk")
   mhk,
-  @JsonValue('mhl')
+  @JsonValue("mhl")
   mhl,
-  @JsonValue('mhm')
+  @JsonValue("mhm")
   mhm,
-  @JsonValue('mhn')
+  @JsonValue("mhn")
   mhn,
-  @JsonValue('mho')
+  @JsonValue("mho")
   mho,
-  @JsonValue('mhp')
+  @JsonValue("mhp")
   mhp,
-  @JsonValue('mhq')
+  @JsonValue("mhq")
   mhq,
-  @JsonValue('mhr')
+  @JsonValue("mhr")
   mhr,
-  @JsonValue('mhs')
+  @JsonValue("mhs")
   mhs,
-  @JsonValue('mht')
+  @JsonValue("mht")
   mht,
-  @JsonValue('mhu')
+  @JsonValue("mhu")
   mhu,
-  @JsonValue('mhw')
+  @JsonValue("mhw")
   mhw,
-  @JsonValue('mhx')
+  @JsonValue("mhx")
   mhx,
-  @JsonValue('mhy')
+  @JsonValue("mhy")
   mhy,
-  @JsonValue('mhz')
+  @JsonValue("mhz")
   mhz,
-  @JsonValue('mia')
+  @JsonValue("mia")
   mia,
-  @JsonValue('mib')
+  @JsonValue("mib")
   mib,
-  @JsonValue('mic')
+  @JsonValue("mic")
   mic,
-  @JsonValue('mid')
+  @JsonValue("mid")
   mid,
-  @JsonValue('mie')
+  @JsonValue("mie")
   mie,
-  @JsonValue('mif')
+  @JsonValue("mif")
   mif,
-  @JsonValue('mig')
+  @JsonValue("mig")
   mig,
-  @JsonValue('mih')
+  @JsonValue("mih")
   mih,
-  @JsonValue('mii')
+  @JsonValue("mii")
   mii,
-  @JsonValue('mij')
+  @JsonValue("mij")
   mij,
-  @JsonValue('mik')
+  @JsonValue("mik")
   mik,
-  @JsonValue('mil')
+  @JsonValue("mil")
   mil,
-  @JsonValue('mim')
+  @JsonValue("mim")
   mim,
-  @JsonValue('min')
+  @JsonValue("min")
   min,
-  @JsonValue('mio')
+  @JsonValue("mio")
   mio,
-  @JsonValue('mip')
+  @JsonValue("mip")
   mip,
-  @JsonValue('miq')
+  @JsonValue("miq")
   miq,
-  @JsonValue('mir')
+  @JsonValue("mir")
   mir,
-  @JsonValue('mis')
+  @JsonValue("mis")
   mis,
-  @JsonValue('mit')
+  @JsonValue("mit")
   mit,
-  @JsonValue('miu')
+  @JsonValue("miu")
   miu,
-  @JsonValue('miw')
+  @JsonValue("miw")
   miw,
-  @JsonValue('mix')
+  @JsonValue("mix")
   mix,
-  @JsonValue('miy')
+  @JsonValue("miy")
   miy,
-  @JsonValue('miz')
+  @JsonValue("miz")
   miz,
-  @JsonValue('mjb')
+  @JsonValue("mjb")
   mjb,
-  @JsonValue('mjc')
+  @JsonValue("mjc")
   mjc,
-  @JsonValue('mjd')
+  @JsonValue("mjd")
   mjd,
-  @JsonValue('mje')
+  @JsonValue("mje")
   mje,
-  @JsonValue('mjg')
+  @JsonValue("mjg")
   mjg,
-  @JsonValue('mjh')
+  @JsonValue("mjh")
   mjh,
-  @JsonValue('mji')
+  @JsonValue("mji")
   mji,
-  @JsonValue('mjj')
+  @JsonValue("mjj")
   mjj,
-  @JsonValue('mjk')
+  @JsonValue("mjk")
   mjk,
-  @JsonValue('mjl')
+  @JsonValue("mjl")
   mjl,
-  @JsonValue('mjm')
+  @JsonValue("mjm")
   mjm,
-  @JsonValue('mjn')
+  @JsonValue("mjn")
   mjn,
-  @JsonValue('mjo')
+  @JsonValue("mjo")
   mjo,
-  @JsonValue('mjp')
+  @JsonValue("mjp")
   mjp,
-  @JsonValue('mjq')
+  @JsonValue("mjq")
   mjq,
-  @JsonValue('mjr')
+  @JsonValue("mjr")
   mjr,
-  @JsonValue('mjs')
+  @JsonValue("mjs")
   mjs,
-  @JsonValue('mjt')
+  @JsonValue("mjt")
   mjt,
-  @JsonValue('mju')
+  @JsonValue("mju")
   mju,
-  @JsonValue('mjv')
+  @JsonValue("mjv")
   mjv,
-  @JsonValue('mjw')
+  @JsonValue("mjw")
   mjw,
-  @JsonValue('mjx')
+  @JsonValue("mjx")
   mjx,
-  @JsonValue('mjy')
+  @JsonValue("mjy")
   mjy,
-  @JsonValue('mjz')
+  @JsonValue("mjz")
   mjz,
-  @JsonValue('mka')
+  @JsonValue("mka")
   mka,
-  @JsonValue('mkb')
+  @JsonValue("mkb")
   mkb,
-  @JsonValue('mkc')
+  @JsonValue("mkc")
   mkc,
-  @JsonValue('mkd')
+  @JsonValue("mkd")
   mkd,
-  @JsonValue('mke')
+  @JsonValue("mke")
   mke,
-  @JsonValue('mkf')
+  @JsonValue("mkf")
   mkf,
-  @JsonValue('mkg')
+  @JsonValue("mkg")
   mkg,
-  @JsonValue('mki')
+  @JsonValue("mki")
   mki,
-  @JsonValue('mkj')
+  @JsonValue("mkj")
   mkj,
-  @JsonValue('mkk')
+  @JsonValue("mkk")
   mkk,
-  @JsonValue('mkl')
+  @JsonValue("mkl")
   mkl,
-  @JsonValue('mkm')
+  @JsonValue("mkm")
   mkm,
-  @JsonValue('mkn')
+  @JsonValue("mkn")
   mkn,
-  @JsonValue('mko')
+  @JsonValue("mko")
   mko,
-  @JsonValue('mkp')
+  @JsonValue("mkp")
   mkp,
-  @JsonValue('mkq')
+  @JsonValue("mkq")
   mkq,
-  @JsonValue('mkr')
+  @JsonValue("mkr")
   mkr,
-  @JsonValue('mks')
+  @JsonValue("mks")
   mks,
-  @JsonValue('mkt')
+  @JsonValue("mkt")
   mkt,
-  @JsonValue('mku')
+  @JsonValue("mku")
   mku,
-  @JsonValue('mkv')
+  @JsonValue("mkv")
   mkv,
-  @JsonValue('mkw')
+  @JsonValue("mkw")
   mkw,
-  @JsonValue('mkx')
+  @JsonValue("mkx")
   mkx,
-  @JsonValue('mky')
+  @JsonValue("mky")
   mky,
-  @JsonValue('mkz')
+  @JsonValue("mkz")
   mkz,
-  @JsonValue('mla')
+  @JsonValue("mla")
   mla,
-  @JsonValue('mlb')
+  @JsonValue("mlb")
   mlb,
-  @JsonValue('mlc')
+  @JsonValue("mlc")
   mlc,
-  @JsonValue('mle')
+  @JsonValue("mle")
   mle,
-  @JsonValue('mlf')
+  @JsonValue("mlf")
   mlf,
-  @JsonValue('mlg')
+  @JsonValue("mlg")
   mlg,
-  @JsonValue('mlh')
+  @JsonValue("mlh")
   mlh,
-  @JsonValue('mli')
+  @JsonValue("mli")
   mli,
-  @JsonValue('mlj')
+  @JsonValue("mlj")
   mlj,
-  @JsonValue('mlk')
+  @JsonValue("mlk")
   mlk,
-  @JsonValue('mll')
+  @JsonValue("mll")
   mll,
-  @JsonValue('mlm')
+  @JsonValue("mlm")
   mlm,
-  @JsonValue('mln')
+  @JsonValue("mln")
   mln,
-  @JsonValue('mlo')
+  @JsonValue("mlo")
   mlo,
-  @JsonValue('mlp')
+  @JsonValue("mlp")
   mlp,
-  @JsonValue('mlq')
+  @JsonValue("mlq")
   mlq,
-  @JsonValue('mlr')
+  @JsonValue("mlr")
   mlr,
-  @JsonValue('mls')
+  @JsonValue("mls")
   mls,
-  @JsonValue('mlt')
+  @JsonValue("mlt")
   mlt,
-  @JsonValue('mlu')
+  @JsonValue("mlu")
   mlu,
-  @JsonValue('mlv')
+  @JsonValue("mlv")
   mlv,
-  @JsonValue('mlw')
+  @JsonValue("mlw")
   mlw,
-  @JsonValue('mlx')
+  @JsonValue("mlx")
   mlx,
-  @JsonValue('mlz')
+  @JsonValue("mlz")
   mlz,
-  @JsonValue('mma')
+  @JsonValue("mma")
   mma,
-  @JsonValue('mmb')
+  @JsonValue("mmb")
   mmb,
-  @JsonValue('mmc')
+  @JsonValue("mmc")
   mmc,
-  @JsonValue('mmd')
+  @JsonValue("mmd")
   mmd,
-  @JsonValue('mme')
+  @JsonValue("mme")
   mme,
-  @JsonValue('mmf')
+  @JsonValue("mmf")
   mmf,
-  @JsonValue('mmg')
+  @JsonValue("mmg")
   mmg,
-  @JsonValue('mmh')
+  @JsonValue("mmh")
   mmh,
-  @JsonValue('mmi')
+  @JsonValue("mmi")
   mmi,
-  @JsonValue('mmj')
+  @JsonValue("mmj")
   mmj,
-  @JsonValue('mmk')
+  @JsonValue("mmk")
   mmk,
-  @JsonValue('mml')
+  @JsonValue("mml")
   mml,
-  @JsonValue('mmm')
+  @JsonValue("mmm")
   mmm,
-  @JsonValue('mmn')
+  @JsonValue("mmn")
   mmn,
-  @JsonValue('mmo')
+  @JsonValue("mmo")
   mmo,
-  @JsonValue('mmp')
+  @JsonValue("mmp")
   mmp,
-  @JsonValue('mmq')
+  @JsonValue("mmq")
   mmq,
-  @JsonValue('mmr')
+  @JsonValue("mmr")
   mmr,
-  @JsonValue('mmt')
+  @JsonValue("mmt")
   mmt,
-  @JsonValue('mmu')
+  @JsonValue("mmu")
   mmu,
-  @JsonValue('mmv')
+  @JsonValue("mmv")
   mmv,
-  @JsonValue('mmw')
+  @JsonValue("mmw")
   mmw,
-  @JsonValue('mmx')
+  @JsonValue("mmx")
   mmx,
-  @JsonValue('mmy')
+  @JsonValue("mmy")
   mmy,
-  @JsonValue('mmz')
+  @JsonValue("mmz")
   mmz,
-  @JsonValue('mna')
+  @JsonValue("mna")
   mna,
-  @JsonValue('mnb')
+  @JsonValue("mnb")
   mnb,
-  @JsonValue('mnc')
+  @JsonValue("mnc")
   mnc,
-  @JsonValue('mnd')
+  @JsonValue("mnd")
   mnd,
-  @JsonValue('mne')
+  @JsonValue("mne")
   mne,
-  @JsonValue('mnf')
+  @JsonValue("mnf")
   mnf,
-  @JsonValue('mng')
+  @JsonValue("mng")
   mng,
-  @JsonValue('mnh')
+  @JsonValue("mnh")
   mnh,
-  @JsonValue('mni')
+  @JsonValue("mni")
   mni,
-  @JsonValue('mnj')
+  @JsonValue("mnj")
   mnj,
-  @JsonValue('mnk')
+  @JsonValue("mnk")
   mnk,
-  @JsonValue('mnl')
+  @JsonValue("mnl")
   mnl,
-  @JsonValue('mnm')
+  @JsonValue("mnm")
   mnm,
-  @JsonValue('mnn')
+  @JsonValue("mnn")
   mnn,
-  @JsonValue('mnp')
+  @JsonValue("mnp")
   mnp,
-  @JsonValue('mnq')
+  @JsonValue("mnq")
   mnq,
-  @JsonValue('mnr')
+  @JsonValue("mnr")
   mnr,
-  @JsonValue('mns')
+  @JsonValue("mns")
   mns,
-  @JsonValue('mnu')
+  @JsonValue("mnu")
   mnu,
-  @JsonValue('mnv')
+  @JsonValue("mnv")
   mnv,
-  @JsonValue('mnw')
+  @JsonValue("mnw")
   mnw,
-  @JsonValue('mnx')
+  @JsonValue("mnx")
   mnx,
-  @JsonValue('mny')
+  @JsonValue("mny")
   mny,
-  @JsonValue('mnz')
+  @JsonValue("mnz")
   mnz,
-  @JsonValue('moa')
+  @JsonValue("moa")
   moa,
-  @JsonValue('moc')
+  @JsonValue("moc")
   moc,
-  @JsonValue('mod')
+  @JsonValue("mod")
   mod,
-  @JsonValue('moe')
+  @JsonValue("moe")
   moe,
-  @JsonValue('mog')
+  @JsonValue("mog")
   mog,
-  @JsonValue('moh')
+  @JsonValue("moh")
   moh,
-  @JsonValue('moi')
+  @JsonValue("moi")
   moi,
-  @JsonValue('moj')
+  @JsonValue("moj")
   moj,
-  @JsonValue('mok')
+  @JsonValue("mok")
   mok,
-  @JsonValue('mom')
+  @JsonValue("mom")
   mom,
-  @JsonValue('mon')
+  @JsonValue("mon")
   mon,
-  @JsonValue('moo')
+  @JsonValue("moo")
   moo,
-  @JsonValue('mop')
+  @JsonValue("mop")
   mop,
-  @JsonValue('moq')
+  @JsonValue("moq")
   moq,
-  @JsonValue('mor')
+  @JsonValue("mor")
   mor,
-  @JsonValue('mos')
+  @JsonValue("mos")
   mos,
-  @JsonValue('mot')
+  @JsonValue("mot")
   mot,
-  @JsonValue('mou')
+  @JsonValue("mou")
   mou,
-  @JsonValue('mov')
+  @JsonValue("mov")
   mov,
-  @JsonValue('mow')
+  @JsonValue("mow")
   mow,
-  @JsonValue('mox')
+  @JsonValue("mox")
   mox,
-  @JsonValue('moy')
+  @JsonValue("moy")
   moy,
-  @JsonValue('moz')
+  @JsonValue("moz")
   moz,
-  @JsonValue('mpa')
+  @JsonValue("mpa")
   mpa,
-  @JsonValue('mpb')
+  @JsonValue("mpb")
   mpb,
-  @JsonValue('mpc')
+  @JsonValue("mpc")
   mpc,
-  @JsonValue('mpd')
+  @JsonValue("mpd")
   mpd,
-  @JsonValue('mpe')
+  @JsonValue("mpe")
   mpe,
-  @JsonValue('mpg')
+  @JsonValue("mpg")
   mpg,
-  @JsonValue('mph')
+  @JsonValue("mph")
   mph,
-  @JsonValue('mpi')
+  @JsonValue("mpi")
   mpi,
-  @JsonValue('mpj')
+  @JsonValue("mpj")
   mpj,
-  @JsonValue('mpk')
+  @JsonValue("mpk")
   mpk,
-  @JsonValue('mpl')
+  @JsonValue("mpl")
   mpl,
-  @JsonValue('mpm')
+  @JsonValue("mpm")
   mpm,
-  @JsonValue('mpn')
+  @JsonValue("mpn")
   mpn,
-  @JsonValue('mpo')
+  @JsonValue("mpo")
   mpo,
-  @JsonValue('mpp')
+  @JsonValue("mpp")
   mpp,
-  @JsonValue('mpq')
+  @JsonValue("mpq")
   mpq,
-  @JsonValue('mpr')
+  @JsonValue("mpr")
   mpr,
-  @JsonValue('mps')
+  @JsonValue("mps")
   mps,
-  @JsonValue('mpt')
+  @JsonValue("mpt")
   mpt,
-  @JsonValue('mpu')
+  @JsonValue("mpu")
   mpu,
-  @JsonValue('mpv')
+  @JsonValue("mpv")
   mpv,
-  @JsonValue('mpw')
+  @JsonValue("mpw")
   mpw,
-  @JsonValue('mpx')
+  @JsonValue("mpx")
   mpx,
-  @JsonValue('mpy')
+  @JsonValue("mpy")
   mpy,
-  @JsonValue('mpz')
+  @JsonValue("mpz")
   mpz,
-  @JsonValue('mqa')
+  @JsonValue("mqa")
   mqa,
-  @JsonValue('mqb')
+  @JsonValue("mqb")
   mqb,
-  @JsonValue('mqc')
+  @JsonValue("mqc")
   mqc,
-  @JsonValue('mqe')
+  @JsonValue("mqe")
   mqe,
-  @JsonValue('mqf')
+  @JsonValue("mqf")
   mqf,
-  @JsonValue('mqg')
+  @JsonValue("mqg")
   mqg,
-  @JsonValue('mqh')
+  @JsonValue("mqh")
   mqh,
-  @JsonValue('mqi')
+  @JsonValue("mqi")
   mqi,
-  @JsonValue('mqj')
+  @JsonValue("mqj")
   mqj,
-  @JsonValue('mqk')
+  @JsonValue("mqk")
   mqk,
-  @JsonValue('mql')
+  @JsonValue("mql")
   mql,
-  @JsonValue('mqm')
+  @JsonValue("mqm")
   mqm,
-  @JsonValue('mqn')
+  @JsonValue("mqn")
   mqn,
-  @JsonValue('mqo')
+  @JsonValue("mqo")
   mqo,
-  @JsonValue('mqp')
+  @JsonValue("mqp")
   mqp,
-  @JsonValue('mqq')
+  @JsonValue("mqq")
   mqq,
-  @JsonValue('mqr')
+  @JsonValue("mqr")
   mqr,
-  @JsonValue('mqs')
+  @JsonValue("mqs")
   mqs,
-  @JsonValue('mqt')
+  @JsonValue("mqt")
   mqt,
-  @JsonValue('mqu')
+  @JsonValue("mqu")
   mqu,
-  @JsonValue('mqv')
+  @JsonValue("mqv")
   mqv,
-  @JsonValue('mqw')
+  @JsonValue("mqw")
   mqw,
-  @JsonValue('mqx')
+  @JsonValue("mqx")
   mqx,
-  @JsonValue('mqy')
+  @JsonValue("mqy")
   mqy,
-  @JsonValue('mqz')
+  @JsonValue("mqz")
   mqz,
-  @JsonValue('mra')
+  @JsonValue("mra")
   mra,
-  @JsonValue('mrb')
+  @JsonValue("mrb")
   mrb,
-  @JsonValue('mrc')
+  @JsonValue("mrc")
   mrc,
-  @JsonValue('mrd')
+  @JsonValue("mrd")
   mrd,
-  @JsonValue('mre')
+  @JsonValue("mre")
   mre,
-  @JsonValue('mrf')
+  @JsonValue("mrf")
   mrf,
-  @JsonValue('mrg')
+  @JsonValue("mrg")
   mrg,
-  @JsonValue('mrh')
+  @JsonValue("mrh")
   mrh,
-  @JsonValue('mri')
+  @JsonValue("mri")
   mri,
-  @JsonValue('mrj')
+  @JsonValue("mrj")
   mrj,
-  @JsonValue('mrk')
+  @JsonValue("mrk")
   mrk,
-  @JsonValue('mrl')
+  @JsonValue("mrl")
   mrl,
-  @JsonValue('mrm')
+  @JsonValue("mrm")
   mrm,
-  @JsonValue('mrn')
+  @JsonValue("mrn")
   mrn,
-  @JsonValue('mro')
+  @JsonValue("mro")
   mro,
-  @JsonValue('mrp')
+  @JsonValue("mrp")
   mrp,
-  @JsonValue('mrq')
+  @JsonValue("mrq")
   mrq,
-  @JsonValue('mrr')
+  @JsonValue("mrr")
   mrr,
-  @JsonValue('mrs')
+  @JsonValue("mrs")
   mrs,
-  @JsonValue('mrt')
+  @JsonValue("mrt")
   mrt,
-  @JsonValue('mru')
+  @JsonValue("mru")
   mru,
-  @JsonValue('mrv')
+  @JsonValue("mrv")
   mrv,
-  @JsonValue('mrw')
+  @JsonValue("mrw")
   mrw,
-  @JsonValue('mrx')
+  @JsonValue("mrx")
   mrx,
-  @JsonValue('mry')
+  @JsonValue("mry")
   mry,
-  @JsonValue('mrz')
+  @JsonValue("mrz")
   mrz,
-  @JsonValue('msa')
+  @JsonValue("msa")
   msa,
-  @JsonValue('msb')
+  @JsonValue("msb")
   msb,
-  @JsonValue('msc')
+  @JsonValue("msc")
   msc,
-  @JsonValue('msd')
+  @JsonValue("msd")
   msd,
-  @JsonValue('mse')
+  @JsonValue("mse")
   mse,
-  @JsonValue('msf')
+  @JsonValue("msf")
   msf,
-  @JsonValue('msg')
+  @JsonValue("msg")
   msg,
-  @JsonValue('msh')
+  @JsonValue("msh")
   msh,
-  @JsonValue('msi')
+  @JsonValue("msi")
   msi,
-  @JsonValue('msj')
+  @JsonValue("msj")
   msj,
-  @JsonValue('msk')
+  @JsonValue("msk")
   msk,
-  @JsonValue('msl')
+  @JsonValue("msl")
   msl,
-  @JsonValue('msm')
+  @JsonValue("msm")
   msm,
-  @JsonValue('msn')
+  @JsonValue("msn")
   msn,
-  @JsonValue('mso')
+  @JsonValue("mso")
   mso,
-  @JsonValue('msp')
+  @JsonValue("msp")
   msp,
-  @JsonValue('msq')
+  @JsonValue("msq")
   msq,
-  @JsonValue('msr')
+  @JsonValue("msr")
   msr,
-  @JsonValue('mss')
+  @JsonValue("mss")
   mss,
-  @JsonValue('msu')
+  @JsonValue("msu")
   msu,
-  @JsonValue('msv')
+  @JsonValue("msv")
   msv,
-  @JsonValue('msw')
+  @JsonValue("msw")
   msw,
-  @JsonValue('msx')
+  @JsonValue("msx")
   msx,
-  @JsonValue('msy')
+  @JsonValue("msy")
   msy,
-  @JsonValue('msz')
+  @JsonValue("msz")
   msz,
-  @JsonValue('mta')
+  @JsonValue("mta")
   mta,
-  @JsonValue('mtb')
+  @JsonValue("mtb")
   mtb,
-  @JsonValue('mtc')
+  @JsonValue("mtc")
   mtc,
-  @JsonValue('mtd')
+  @JsonValue("mtd")
   mtd,
-  @JsonValue('mte')
+  @JsonValue("mte")
   mte,
-  @JsonValue('mtf')
+  @JsonValue("mtf")
   mtf,
-  @JsonValue('mtg')
+  @JsonValue("mtg")
   mtg,
-  @JsonValue('mth')
+  @JsonValue("mth")
   mth,
-  @JsonValue('mti')
+  @JsonValue("mti")
   mti,
-  @JsonValue('mtj')
+  @JsonValue("mtj")
   mtj,
-  @JsonValue('mtk')
+  @JsonValue("mtk")
   mtk,
-  @JsonValue('mtl')
+  @JsonValue("mtl")
   mtl,
-  @JsonValue('mtm')
+  @JsonValue("mtm")
   mtm,
-  @JsonValue('mtn')
+  @JsonValue("mtn")
   mtn,
-  @JsonValue('mto')
+  @JsonValue("mto")
   mto,
-  @JsonValue('mtp')
+  @JsonValue("mtp")
   mtp,
-  @JsonValue('mtq')
+  @JsonValue("mtq")
   mtq,
-  @JsonValue('mtr')
+  @JsonValue("mtr")
   mtr,
-  @JsonValue('mts')
+  @JsonValue("mts")
   mts,
-  @JsonValue('mtt')
+  @JsonValue("mtt")
   mtt,
-  @JsonValue('mtu')
+  @JsonValue("mtu")
   mtu,
-  @JsonValue('mtv')
+  @JsonValue("mtv")
   mtv,
-  @JsonValue('mtw')
+  @JsonValue("mtw")
   mtw,
-  @JsonValue('mtx')
+  @JsonValue("mtx")
   mtx,
-  @JsonValue('mty')
+  @JsonValue("mty")
   mty,
-  @JsonValue('mua')
+  @JsonValue("mua")
   mua,
-  @JsonValue('mub')
+  @JsonValue("mub")
   mub,
-  @JsonValue('muc')
+  @JsonValue("muc")
   muc,
-  @JsonValue('mud')
+  @JsonValue("mud")
   mud,
-  @JsonValue('mue')
+  @JsonValue("mue")
   mue,
-  @JsonValue('mug')
+  @JsonValue("mug")
   mug,
-  @JsonValue('muh')
+  @JsonValue("muh")
   muh,
-  @JsonValue('mui')
+  @JsonValue("mui")
   mui,
-  @JsonValue('muj')
+  @JsonValue("muj")
   muj,
-  @JsonValue('muk')
+  @JsonValue("muk")
   muk,
-  @JsonValue('mul')
+  @JsonValue("mul")
   mul,
-  @JsonValue('mum')
+  @JsonValue("mum")
   mum,
-  @JsonValue('muo')
+  @JsonValue("muo")
   muo,
-  @JsonValue('mup')
+  @JsonValue("mup")
   mup,
-  @JsonValue('muq')
+  @JsonValue("muq")
   muq,
-  @JsonValue('mur')
+  @JsonValue("mur")
   mur,
-  @JsonValue('mus')
+  @JsonValue("mus")
   mus,
-  @JsonValue('mut')
+  @JsonValue("mut")
   mut,
-  @JsonValue('muu')
+  @JsonValue("muu")
   muu,
-  @JsonValue('muv')
+  @JsonValue("muv")
   muv,
-  @JsonValue('mux')
+  @JsonValue("mux")
   mux,
-  @JsonValue('muy')
+  @JsonValue("muy")
   muy,
-  @JsonValue('muz')
+  @JsonValue("muz")
   muz,
-  @JsonValue('mva')
+  @JsonValue("mva")
   mva,
-  @JsonValue('mvb')
+  @JsonValue("mvb")
   mvb,
-  @JsonValue('mvd')
+  @JsonValue("mvd")
   mvd,
-  @JsonValue('mve')
+  @JsonValue("mve")
   mve,
-  @JsonValue('mvf')
+  @JsonValue("mvf")
   mvf,
-  @JsonValue('mvg')
+  @JsonValue("mvg")
   mvg,
-  @JsonValue('mvh')
+  @JsonValue("mvh")
   mvh,
-  @JsonValue('mvi')
+  @JsonValue("mvi")
   mvi,
-  @JsonValue('mvk')
+  @JsonValue("mvk")
   mvk,
-  @JsonValue('mvl')
+  @JsonValue("mvl")
   mvl,
-  @JsonValue('mvn')
+  @JsonValue("mvn")
   mvn,
-  @JsonValue('mvo')
+  @JsonValue("mvo")
   mvo,
-  @JsonValue('mvp')
+  @JsonValue("mvp")
   mvp,
-  @JsonValue('mvq')
+  @JsonValue("mvq")
   mvq,
-  @JsonValue('mvr')
+  @JsonValue("mvr")
   mvr,
-  @JsonValue('mvs')
+  @JsonValue("mvs")
   mvs,
-  @JsonValue('mvt')
+  @JsonValue("mvt")
   mvt,
-  @JsonValue('mvu')
+  @JsonValue("mvu")
   mvu,
-  @JsonValue('mvv')
+  @JsonValue("mvv")
   mvv,
-  @JsonValue('mvw')
+  @JsonValue("mvw")
   mvw,
-  @JsonValue('mvx')
+  @JsonValue("mvx")
   mvx,
-  @JsonValue('mvy')
+  @JsonValue("mvy")
   mvy,
-  @JsonValue('mvz')
+  @JsonValue("mvz")
   mvz,
-  @JsonValue('mwa')
+  @JsonValue("mwa")
   mwa,
-  @JsonValue('mwb')
+  @JsonValue("mwb")
   mwb,
-  @JsonValue('mwc')
+  @JsonValue("mwc")
   mwc,
-  @JsonValue('mwe')
+  @JsonValue("mwe")
   mwe,
-  @JsonValue('mwf')
+  @JsonValue("mwf")
   mwf,
-  @JsonValue('mwg')
+  @JsonValue("mwg")
   mwg,
-  @JsonValue('mwh')
+  @JsonValue("mwh")
   mwh,
-  @JsonValue('mwi')
+  @JsonValue("mwi")
   mwi,
-  @JsonValue('mwk')
+  @JsonValue("mwk")
   mwk,
-  @JsonValue('mwl')
+  @JsonValue("mwl")
   mwl,
-  @JsonValue('mwm')
+  @JsonValue("mwm")
   mwm,
-  @JsonValue('mwn')
+  @JsonValue("mwn")
   mwn,
-  @JsonValue('mwo')
+  @JsonValue("mwo")
   mwo,
-  @JsonValue('mwp')
+  @JsonValue("mwp")
   mwp,
-  @JsonValue('mwq')
+  @JsonValue("mwq")
   mwq,
-  @JsonValue('mwr')
+  @JsonValue("mwr")
   mwr,
-  @JsonValue('mws')
+  @JsonValue("mws")
   mws,
-  @JsonValue('mwt')
+  @JsonValue("mwt")
   mwt,
-  @JsonValue('mwu')
+  @JsonValue("mwu")
   mwu,
-  @JsonValue('mwv')
+  @JsonValue("mwv")
   mwv,
-  @JsonValue('mww')
+  @JsonValue("mww")
   mww,
-  @JsonValue('mwz')
+  @JsonValue("mwz")
   mwz,
-  @JsonValue('mxa')
+  @JsonValue("mxa")
   mxa,
-  @JsonValue('mxb')
+  @JsonValue("mxb")
   mxb,
-  @JsonValue('mxc')
+  @JsonValue("mxc")
   mxc,
-  @JsonValue('mxd')
+  @JsonValue("mxd")
   mxd,
-  @JsonValue('mxe')
+  @JsonValue("mxe")
   mxe,
-  @JsonValue('mxf')
+  @JsonValue("mxf")
   mxf,
-  @JsonValue('mxg')
+  @JsonValue("mxg")
   mxg,
-  @JsonValue('mxh')
+  @JsonValue("mxh")
   mxh,
-  @JsonValue('mxi')
+  @JsonValue("mxi")
   mxi,
-  @JsonValue('mxj')
+  @JsonValue("mxj")
   mxj,
-  @JsonValue('mxk')
+  @JsonValue("mxk")
   mxk,
-  @JsonValue('mxl')
+  @JsonValue("mxl")
   mxl,
-  @JsonValue('mxm')
+  @JsonValue("mxm")
   mxm,
-  @JsonValue('mxn')
+  @JsonValue("mxn")
   mxn,
-  @JsonValue('mxo')
+  @JsonValue("mxo")
   mxo,
-  @JsonValue('mxp')
+  @JsonValue("mxp")
   mxp,
-  @JsonValue('mxq')
+  @JsonValue("mxq")
   mxq,
-  @JsonValue('mxr')
+  @JsonValue("mxr")
   mxr,
-  @JsonValue('mxs')
+  @JsonValue("mxs")
   mxs,
-  @JsonValue('mxt')
+  @JsonValue("mxt")
   mxt,
-  @JsonValue('mxu')
+  @JsonValue("mxu")
   mxu,
-  @JsonValue('mxv')
+  @JsonValue("mxv")
   mxv,
-  @JsonValue('mxw')
+  @JsonValue("mxw")
   mxw,
-  @JsonValue('mxx')
+  @JsonValue("mxx")
   mxx,
-  @JsonValue('mxy')
+  @JsonValue("mxy")
   mxy,
-  @JsonValue('mxz')
+  @JsonValue("mxz")
   mxz,
-  @JsonValue('mya')
+  @JsonValue("mya")
   mya,
-  @JsonValue('myb')
+  @JsonValue("myb")
   myb,
-  @JsonValue('myc')
+  @JsonValue("myc")
   myc,
-  @JsonValue('mye')
+  @JsonValue("mye")
   mye,
-  @JsonValue('myf')
+  @JsonValue("myf")
   myf,
-  @JsonValue('myg')
+  @JsonValue("myg")
   myg,
-  @JsonValue('myh')
+  @JsonValue("myh")
   myh,
-  @JsonValue('myj')
+  @JsonValue("myj")
   myj,
-  @JsonValue('myk')
+  @JsonValue("myk")
   myk,
-  @JsonValue('myl')
+  @JsonValue("myl")
   myl,
-  @JsonValue('mym')
+  @JsonValue("mym")
   mym,
-  @JsonValue('myo')
+  @JsonValue("myo")
   myo,
-  @JsonValue('myp')
+  @JsonValue("myp")
   myp,
-  @JsonValue('myr')
+  @JsonValue("myr")
   myr,
-  @JsonValue('mys')
+  @JsonValue("mys")
   mys,
-  @JsonValue('myu')
+  @JsonValue("myu")
   myu,
-  @JsonValue('myv')
+  @JsonValue("myv")
   myv,
-  @JsonValue('myw')
+  @JsonValue("myw")
   myw,
-  @JsonValue('myx')
+  @JsonValue("myx")
   myx,
-  @JsonValue('myy')
+  @JsonValue("myy")
   myy,
-  @JsonValue('myz')
+  @JsonValue("myz")
   myz,
-  @JsonValue('mza')
+  @JsonValue("mza")
   mza,
-  @JsonValue('mzb')
+  @JsonValue("mzb")
   mzb,
-  @JsonValue('mzc')
+  @JsonValue("mzc")
   mzc,
-  @JsonValue('mzd')
+  @JsonValue("mzd")
   mzd,
-  @JsonValue('mze')
+  @JsonValue("mze")
   mze,
-  @JsonValue('mzg')
+  @JsonValue("mzg")
   mzg,
-  @JsonValue('mzh')
+  @JsonValue("mzh")
   mzh,
-  @JsonValue('mzi')
+  @JsonValue("mzi")
   mzi,
-  @JsonValue('mzj')
+  @JsonValue("mzj")
   mzj,
-  @JsonValue('mzk')
+  @JsonValue("mzk")
   mzk,
-  @JsonValue('mzl')
+  @JsonValue("mzl")
   mzl,
-  @JsonValue('mzm')
+  @JsonValue("mzm")
   mzm,
-  @JsonValue('mzn')
+  @JsonValue("mzn")
   mzn,
-  @JsonValue('mzo')
+  @JsonValue("mzo")
   mzo,
-  @JsonValue('mzp')
+  @JsonValue("mzp")
   mzp,
-  @JsonValue('mzq')
+  @JsonValue("mzq")
   mzq,
-  @JsonValue('mzr')
+  @JsonValue("mzr")
   mzr,
-  @JsonValue('mzs')
+  @JsonValue("mzs")
   mzs,
-  @JsonValue('mzt')
+  @JsonValue("mzt")
   mzt,
-  @JsonValue('mzu')
+  @JsonValue("mzu")
   mzu,
-  @JsonValue('mzv')
+  @JsonValue("mzv")
   mzv,
-  @JsonValue('mzw')
+  @JsonValue("mzw")
   mzw,
-  @JsonValue('mzx')
+  @JsonValue("mzx")
   mzx,
-  @JsonValue('mzy')
+  @JsonValue("mzy")
   mzy,
-  @JsonValue('mzz')
+  @JsonValue("mzz")
   mzz,
-  @JsonValue('naa')
+  @JsonValue("naa")
   naa,
-  @JsonValue('nab')
+  @JsonValue("nab")
   nab,
-  @JsonValue('nac')
+  @JsonValue("nac")
   nac,
-  @JsonValue('nae')
+  @JsonValue("nae")
   nae,
-  @JsonValue('naf')
+  @JsonValue("naf")
   naf,
-  @JsonValue('nag')
+  @JsonValue("nag")
   nag,
-  @JsonValue('naj')
+  @JsonValue("naj")
   naj,
-  @JsonValue('nak')
+  @JsonValue("nak")
   nak,
-  @JsonValue('nal')
+  @JsonValue("nal")
   nal,
-  @JsonValue('nam')
+  @JsonValue("nam")
   nam,
-  @JsonValue('nan')
+  @JsonValue("nan")
   nan,
-  @JsonValue('nao')
+  @JsonValue("nao")
   nao,
-  @JsonValue('nap')
+  @JsonValue("nap")
   nap,
-  @JsonValue('naq')
+  @JsonValue("naq")
   naq,
-  @JsonValue('nar')
+  @JsonValue("nar")
   nar,
-  @JsonValue('nas')
+  @JsonValue("nas")
   nas,
-  @JsonValue('nat')
+  @JsonValue("nat")
   nat,
-  @JsonValue('nau')
+  @JsonValue("nau")
   nau,
-  @JsonValue('nav')
+  @JsonValue("nav")
   nav,
-  @JsonValue('naw')
+  @JsonValue("naw")
   naw,
-  @JsonValue('nax')
+  @JsonValue("nax")
   nax,
-  @JsonValue('nay')
+  @JsonValue("nay")
   nay,
-  @JsonValue('naz')
+  @JsonValue("naz")
   naz,
-  @JsonValue('nba')
+  @JsonValue("nba")
   nba,
-  @JsonValue('nbb')
+  @JsonValue("nbb")
   nbb,
-  @JsonValue('nbc')
+  @JsonValue("nbc")
   nbc,
-  @JsonValue('nbd')
+  @JsonValue("nbd")
   nbd,
-  @JsonValue('nbe')
+  @JsonValue("nbe")
   nbe,
-  @JsonValue('nbg')
+  @JsonValue("nbg")
   nbg,
-  @JsonValue('nbh')
+  @JsonValue("nbh")
   nbh,
-  @JsonValue('nbi')
+  @JsonValue("nbi")
   nbi,
-  @JsonValue('nbj')
+  @JsonValue("nbj")
   nbj,
-  @JsonValue('nbk')
+  @JsonValue("nbk")
   nbk,
-  @JsonValue('nbl')
+  @JsonValue("nbl")
   nbl,
-  @JsonValue('nbm')
+  @JsonValue("nbm")
   nbm,
-  @JsonValue('nbn')
+  @JsonValue("nbn")
   nbn,
-  @JsonValue('nbo')
+  @JsonValue("nbo")
   nbo,
-  @JsonValue('nbp')
+  @JsonValue("nbp")
   nbp,
-  @JsonValue('nbq')
+  @JsonValue("nbq")
   nbq,
-  @JsonValue('nbr')
+  @JsonValue("nbr")
   nbr,
-  @JsonValue('nbs')
+  @JsonValue("nbs")
   nbs,
-  @JsonValue('nbt')
+  @JsonValue("nbt")
   nbt,
-  @JsonValue('nbu')
+  @JsonValue("nbu")
   nbu,
-  @JsonValue('nbv')
+  @JsonValue("nbv")
   nbv,
-  @JsonValue('nbw')
+  @JsonValue("nbw")
   nbw,
-  @JsonValue('nby')
+  @JsonValue("nby")
   nby,
-  @JsonValue('nca')
+  @JsonValue("nca")
   nca,
-  @JsonValue('ncb')
+  @JsonValue("ncb")
   ncb,
-  @JsonValue('ncc')
+  @JsonValue("ncc")
   ncc,
-  @JsonValue('ncd')
+  @JsonValue("ncd")
   ncd,
-  @JsonValue('nce')
+  @JsonValue("nce")
   nce,
-  @JsonValue('ncf')
+  @JsonValue("ncf")
   ncf,
-  @JsonValue('ncg')
+  @JsonValue("ncg")
   ncg,
-  @JsonValue('nch')
+  @JsonValue("nch")
   nch,
-  @JsonValue('nci')
+  @JsonValue("nci")
   nci,
-  @JsonValue('ncj')
+  @JsonValue("ncj")
   ncj,
-  @JsonValue('nck')
+  @JsonValue("nck")
   nck,
-  @JsonValue('ncl')
+  @JsonValue("ncl")
   ncl,
-  @JsonValue('ncm')
+  @JsonValue("ncm")
   ncm,
-  @JsonValue('ncn')
+  @JsonValue("ncn")
   ncn,
-  @JsonValue('nco')
+  @JsonValue("nco")
   nco,
-  @JsonValue('ncq')
+  @JsonValue("ncq")
   ncq,
-  @JsonValue('ncr')
+  @JsonValue("ncr")
   ncr,
-  @JsonValue('ncs')
+  @JsonValue("ncs")
   ncs,
-  @JsonValue('nct')
+  @JsonValue("nct")
   nct,
-  @JsonValue('ncu')
+  @JsonValue("ncu")
   ncu,
-  @JsonValue('ncx')
+  @JsonValue("ncx")
   ncx,
-  @JsonValue('ncz')
+  @JsonValue("ncz")
   ncz,
-  @JsonValue('nda')
+  @JsonValue("nda")
   nda,
-  @JsonValue('ndb')
+  @JsonValue("ndb")
   ndb,
-  @JsonValue('ndc')
+  @JsonValue("ndc")
   ndc,
-  @JsonValue('ndd')
+  @JsonValue("ndd")
   ndd,
-  @JsonValue('nde')
+  @JsonValue("nde")
   nde,
-  @JsonValue('ndf')
+  @JsonValue("ndf")
   ndf,
-  @JsonValue('ndg')
+  @JsonValue("ndg")
   ndg,
-  @JsonValue('ndh')
+  @JsonValue("ndh")
   ndh,
-  @JsonValue('ndi')
+  @JsonValue("ndi")
   ndi,
-  @JsonValue('ndj')
+  @JsonValue("ndj")
   ndj,
-  @JsonValue('ndk')
+  @JsonValue("ndk")
   ndk,
-  @JsonValue('ndl')
+  @JsonValue("ndl")
   ndl,
-  @JsonValue('ndm')
+  @JsonValue("ndm")
   ndm,
-  @JsonValue('ndn')
+  @JsonValue("ndn")
   ndn,
-  @JsonValue('ndo')
+  @JsonValue("ndo")
   ndo,
-  @JsonValue('ndp')
+  @JsonValue("ndp")
   ndp,
-  @JsonValue('ndq')
+  @JsonValue("ndq")
   ndq,
-  @JsonValue('ndr')
+  @JsonValue("ndr")
   ndr,
-  @JsonValue('nds')
+  @JsonValue("nds")
   nds,
-  @JsonValue('ndt')
+  @JsonValue("ndt")
   ndt,
-  @JsonValue('ndu')
+  @JsonValue("ndu")
   ndu,
-  @JsonValue('ndv')
+  @JsonValue("ndv")
   ndv,
-  @JsonValue('ndw')
+  @JsonValue("ndw")
   ndw,
-  @JsonValue('ndx')
+  @JsonValue("ndx")
   ndx,
-  @JsonValue('ndy')
+  @JsonValue("ndy")
   ndy,
-  @JsonValue('ndz')
+  @JsonValue("ndz")
   ndz,
-  @JsonValue('nea')
+  @JsonValue("nea")
   nea,
-  @JsonValue('neb')
+  @JsonValue("neb")
   neb,
-  @JsonValue('nec')
+  @JsonValue("nec")
   nec,
-  @JsonValue('ned')
+  @JsonValue("ned")
   ned,
-  @JsonValue('nee')
+  @JsonValue("nee")
   nee,
-  @JsonValue('nef')
+  @JsonValue("nef")
   nef,
-  @JsonValue('neg')
+  @JsonValue("neg")
   neg,
-  @JsonValue('neh')
+  @JsonValue("neh")
   neh,
-  @JsonValue('nei')
+  @JsonValue("nei")
   nei,
-  @JsonValue('nej')
+  @JsonValue("nej")
   nej,
-  @JsonValue('nek')
+  @JsonValue("nek")
   nek,
-  @JsonValue('nem')
+  @JsonValue("nem")
   nem,
-  @JsonValue('nen')
+  @JsonValue("nen")
   nen,
-  @JsonValue('neo')
+  @JsonValue("neo")
   neo,
-  @JsonValue('nep')
+  @JsonValue("nep")
   nep,
-  @JsonValue('neq')
+  @JsonValue("neq")
   neq,
-  @JsonValue('ner')
+  @JsonValue("ner")
   ner,
-  @JsonValue('nes')
+  @JsonValue("nes")
   nes,
-  @JsonValue('net')
+  @JsonValue("net")
   net,
-  @JsonValue('neu')
+  @JsonValue("neu")
   neu,
-  @JsonValue('nev')
+  @JsonValue("nev")
   nev,
-  @JsonValue('new')
+  @JsonValue("new")
   newAA,
-  @JsonValue('nex')
+  @JsonValue("nex")
   nex,
-  @JsonValue('ney')
+  @JsonValue("ney")
   ney,
-  @JsonValue('nez')
+  @JsonValue("nez")
   nez,
-  @JsonValue('nfa')
+  @JsonValue("nfa")
   nfa,
-  @JsonValue('nfd')
+  @JsonValue("nfd")
   nfd,
-  @JsonValue('nfl')
+  @JsonValue("nfl")
   nfl,
-  @JsonValue('nfr')
+  @JsonValue("nfr")
   nfr,
-  @JsonValue('nfu')
+  @JsonValue("nfu")
   nfu,
-  @JsonValue('nga')
+  @JsonValue("nga")
   nga,
-  @JsonValue('ngb')
+  @JsonValue("ngb")
   ngb,
-  @JsonValue('ngc')
+  @JsonValue("ngc")
   ngc,
-  @JsonValue('ngd')
+  @JsonValue("ngd")
   ngd,
-  @JsonValue('nge')
+  @JsonValue("nge")
   nge,
-  @JsonValue('ngg')
+  @JsonValue("ngg")
   ngg,
-  @JsonValue('ngh')
+  @JsonValue("ngh")
   ngh,
-  @JsonValue('ngi')
+  @JsonValue("ngi")
   ngi,
-  @JsonValue('ngj')
+  @JsonValue("ngj")
   ngj,
-  @JsonValue('ngk')
+  @JsonValue("ngk")
   ngk,
-  @JsonValue('ngl')
+  @JsonValue("ngl")
   ngl,
-  @JsonValue('ngm')
+  @JsonValue("ngm")
   ngm,
-  @JsonValue('ngn')
+  @JsonValue("ngn")
   ngn,
-  @JsonValue('ngp')
+  @JsonValue("ngp")
   ngp,
-  @JsonValue('ngq')
+  @JsonValue("ngq")
   ngq,
-  @JsonValue('ngr')
+  @JsonValue("ngr")
   ngr,
-  @JsonValue('ngs')
+  @JsonValue("ngs")
   ngs,
-  @JsonValue('ngt')
+  @JsonValue("ngt")
   ngt,
-  @JsonValue('ngu')
+  @JsonValue("ngu")
   ngu,
-  @JsonValue('ngv')
+  @JsonValue("ngv")
   ngv,
-  @JsonValue('ngw')
+  @JsonValue("ngw")
   ngw,
-  @JsonValue('ngx')
+  @JsonValue("ngx")
   ngx,
-  @JsonValue('ngy')
+  @JsonValue("ngy")
   ngy,
-  @JsonValue('ngz')
+  @JsonValue("ngz")
   ngz,
-  @JsonValue('nha')
+  @JsonValue("nha")
   nha,
-  @JsonValue('nhb')
+  @JsonValue("nhb")
   nhb,
-  @JsonValue('nhc')
+  @JsonValue("nhc")
   nhc,
-  @JsonValue('nhd')
+  @JsonValue("nhd")
   nhd,
-  @JsonValue('nhe')
+  @JsonValue("nhe")
   nhe,
-  @JsonValue('nhf')
+  @JsonValue("nhf")
   nhf,
-  @JsonValue('nhg')
+  @JsonValue("nhg")
   nhg,
-  @JsonValue('nhh')
+  @JsonValue("nhh")
   nhh,
-  @JsonValue('nhi')
+  @JsonValue("nhi")
   nhi,
-  @JsonValue('nhk')
+  @JsonValue("nhk")
   nhk,
-  @JsonValue('nhm')
+  @JsonValue("nhm")
   nhm,
-  @JsonValue('nhn')
+  @JsonValue("nhn")
   nhn,
-  @JsonValue('nho')
+  @JsonValue("nho")
   nho,
-  @JsonValue('nhp')
+  @JsonValue("nhp")
   nhp,
-  @JsonValue('nhq')
+  @JsonValue("nhq")
   nhq,
-  @JsonValue('nhr')
+  @JsonValue("nhr")
   nhr,
-  @JsonValue('nht')
+  @JsonValue("nht")
   nht,
-  @JsonValue('nhu')
+  @JsonValue("nhu")
   nhu,
-  @JsonValue('nhv')
+  @JsonValue("nhv")
   nhv,
-  @JsonValue('nhw')
+  @JsonValue("nhw")
   nhw,
-  @JsonValue('nhx')
+  @JsonValue("nhx")
   nhx,
-  @JsonValue('nhy')
+  @JsonValue("nhy")
   nhy,
-  @JsonValue('nhz')
+  @JsonValue("nhz")
   nhz,
-  @JsonValue('nia')
+  @JsonValue("nia")
   nia,
-  @JsonValue('nib')
+  @JsonValue("nib")
   nib,
-  @JsonValue('nid')
+  @JsonValue("nid")
   nid,
-  @JsonValue('nie')
+  @JsonValue("nie")
   nie,
-  @JsonValue('nif')
+  @JsonValue("nif")
   nif,
-  @JsonValue('nig')
+  @JsonValue("nig")
   nig,
-  @JsonValue('nih')
+  @JsonValue("nih")
   nih,
-  @JsonValue('nii')
+  @JsonValue("nii")
   nii,
-  @JsonValue('nij')
+  @JsonValue("nij")
   nij,
-  @JsonValue('nik')
+  @JsonValue("nik")
   nik,
-  @JsonValue('nil')
+  @JsonValue("nil")
   nil,
-  @JsonValue('nim')
+  @JsonValue("nim")
   nim,
-  @JsonValue('nin')
+  @JsonValue("nin")
   nin,
-  @JsonValue('nio')
+  @JsonValue("nio")
   nio,
-  @JsonValue('niq')
+  @JsonValue("niq")
   niq,
-  @JsonValue('nir')
+  @JsonValue("nir")
   nir,
-  @JsonValue('nis')
+  @JsonValue("nis")
   nis,
-  @JsonValue('nit')
+  @JsonValue("nit")
   nit,
-  @JsonValue('niu')
+  @JsonValue("niu")
   niu,
-  @JsonValue('niv')
+  @JsonValue("niv")
   niv,
-  @JsonValue('niw')
+  @JsonValue("niw")
   niw,
-  @JsonValue('nix')
+  @JsonValue("nix")
   nix,
-  @JsonValue('niy')
+  @JsonValue("niy")
   niy,
-  @JsonValue('niz')
+  @JsonValue("niz")
   niz,
-  @JsonValue('nja')
+  @JsonValue("nja")
   nja,
-  @JsonValue('njb')
+  @JsonValue("njb")
   njb,
-  @JsonValue('njd')
+  @JsonValue("njd")
   njd,
-  @JsonValue('njh')
+  @JsonValue("njh")
   njh,
-  @JsonValue('nji')
+  @JsonValue("nji")
   nji,
-  @JsonValue('njj')
+  @JsonValue("njj")
   njj,
-  @JsonValue('njl')
+  @JsonValue("njl")
   njl,
-  @JsonValue('njm')
+  @JsonValue("njm")
   njm,
-  @JsonValue('njn')
+  @JsonValue("njn")
   njn,
-  @JsonValue('njo')
+  @JsonValue("njo")
   njo,
-  @JsonValue('njr')
+  @JsonValue("njr")
   njr,
-  @JsonValue('njs')
+  @JsonValue("njs")
   njs,
-  @JsonValue('njt')
+  @JsonValue("njt")
   njt,
-  @JsonValue('nju')
+  @JsonValue("nju")
   nju,
-  @JsonValue('njx')
+  @JsonValue("njx")
   njx,
-  @JsonValue('njy')
+  @JsonValue("njy")
   njy,
-  @JsonValue('njz')
+  @JsonValue("njz")
   njz,
-  @JsonValue('nka')
+  @JsonValue("nka")
   nka,
-  @JsonValue('nkb')
+  @JsonValue("nkb")
   nkb,
-  @JsonValue('nkc')
+  @JsonValue("nkc")
   nkc,
-  @JsonValue('nkd')
+  @JsonValue("nkd")
   nkd,
-  @JsonValue('nke')
+  @JsonValue("nke")
   nke,
-  @JsonValue('nkf')
+  @JsonValue("nkf")
   nkf,
-  @JsonValue('nkg')
+  @JsonValue("nkg")
   nkg,
-  @JsonValue('nkh')
+  @JsonValue("nkh")
   nkh,
-  @JsonValue('nki')
+  @JsonValue("nki")
   nki,
-  @JsonValue('nkj')
+  @JsonValue("nkj")
   nkj,
-  @JsonValue('nkk')
+  @JsonValue("nkk")
   nkk,
-  @JsonValue('nkm')
+  @JsonValue("nkm")
   nkm,
-  @JsonValue('nkn')
+  @JsonValue("nkn")
   nkn,
-  @JsonValue('nko')
+  @JsonValue("nko")
   nko,
-  @JsonValue('nkp')
+  @JsonValue("nkp")
   nkp,
-  @JsonValue('nkq')
+  @JsonValue("nkq")
   nkq,
-  @JsonValue('nkr')
+  @JsonValue("nkr")
   nkr,
-  @JsonValue('nks')
+  @JsonValue("nks")
   nks,
-  @JsonValue('nkt')
+  @JsonValue("nkt")
   nkt,
-  @JsonValue('nku')
+  @JsonValue("nku")
   nku,
-  @JsonValue('nkv')
+  @JsonValue("nkv")
   nkv,
-  @JsonValue('nkw')
+  @JsonValue("nkw")
   nkw,
-  @JsonValue('nkx')
+  @JsonValue("nkx")
   nkx,
-  @JsonValue('nkz')
+  @JsonValue("nkz")
   nkz,
-  @JsonValue('nla')
+  @JsonValue("nla")
   nla,
-  @JsonValue('nlc')
+  @JsonValue("nlc")
   nlc,
-  @JsonValue('nld')
+  @JsonValue("nld")
   nld,
-  @JsonValue('nle')
+  @JsonValue("nle")
   nle,
-  @JsonValue('nlg')
+  @JsonValue("nlg")
   nlg,
-  @JsonValue('nli')
+  @JsonValue("nli")
   nli,
-  @JsonValue('nlj')
+  @JsonValue("nlj")
   nlj,
-  @JsonValue('nlk')
+  @JsonValue("nlk")
   nlk,
-  @JsonValue('nll')
+  @JsonValue("nll")
   nll,
-  @JsonValue('nlm')
+  @JsonValue("nlm")
   nlm,
-  @JsonValue('nlo')
+  @JsonValue("nlo")
   nlo,
-  @JsonValue('nlq')
+  @JsonValue("nlq")
   nlq,
-  @JsonValue('nlu')
+  @JsonValue("nlu")
   nlu,
-  @JsonValue('nlv')
+  @JsonValue("nlv")
   nlv,
-  @JsonValue('nlw')
+  @JsonValue("nlw")
   nlw,
-  @JsonValue('nlx')
+  @JsonValue("nlx")
   nlx,
-  @JsonValue('nly')
+  @JsonValue("nly")
   nly,
-  @JsonValue('nlz')
+  @JsonValue("nlz")
   nlz,
-  @JsonValue('nma')
+  @JsonValue("nma")
   nma,
-  @JsonValue('nmb')
+  @JsonValue("nmb")
   nmb,
-  @JsonValue('nmc')
+  @JsonValue("nmc")
   nmc,
-  @JsonValue('nmd')
+  @JsonValue("nmd")
   nmd,
-  @JsonValue('nme')
+  @JsonValue("nme")
   nme,
-  @JsonValue('nmf')
+  @JsonValue("nmf")
   nmf,
-  @JsonValue('nmg')
+  @JsonValue("nmg")
   nmg,
-  @JsonValue('nmh')
+  @JsonValue("nmh")
   nmh,
-  @JsonValue('nmi')
+  @JsonValue("nmi")
   nmi,
-  @JsonValue('nmj')
+  @JsonValue("nmj")
   nmj,
-  @JsonValue('nmk')
+  @JsonValue("nmk")
   nmk,
-  @JsonValue('nml')
+  @JsonValue("nml")
   nml,
-  @JsonValue('nmm')
+  @JsonValue("nmm")
   nmm,
-  @JsonValue('nmn')
+  @JsonValue("nmn")
   nmn,
-  @JsonValue('nmo')
+  @JsonValue("nmo")
   nmo,
-  @JsonValue('nmp')
+  @JsonValue("nmp")
   nmp,
-  @JsonValue('nmq')
+  @JsonValue("nmq")
   nmq,
-  @JsonValue('nmr')
+  @JsonValue("nmr")
   nmr,
-  @JsonValue('nms')
+  @JsonValue("nms")
   nms,
-  @JsonValue('nmt')
+  @JsonValue("nmt")
   nmt,
-  @JsonValue('nmu')
+  @JsonValue("nmu")
   nmu,
-  @JsonValue('nmv')
+  @JsonValue("nmv")
   nmv,
-  @JsonValue('nmw')
+  @JsonValue("nmw")
   nmw,
-  @JsonValue('nmx')
+  @JsonValue("nmx")
   nmx,
-  @JsonValue('nmy')
+  @JsonValue("nmy")
   nmy,
-  @JsonValue('nmz')
+  @JsonValue("nmz")
   nmz,
-  @JsonValue('nna')
+  @JsonValue("nna")
   nna,
-  @JsonValue('nnb')
+  @JsonValue("nnb")
   nnb,
-  @JsonValue('nnc')
+  @JsonValue("nnc")
   nnc,
-  @JsonValue('nnd')
+  @JsonValue("nnd")
   nnd,
-  @JsonValue('nne')
+  @JsonValue("nne")
   nne,
-  @JsonValue('nnf')
+  @JsonValue("nnf")
   nnf,
-  @JsonValue('nng')
+  @JsonValue("nng")
   nng,
-  @JsonValue('nnh')
+  @JsonValue("nnh")
   nnh,
-  @JsonValue('nni')
+  @JsonValue("nni")
   nni,
-  @JsonValue('nnj')
+  @JsonValue("nnj")
   nnj,
-  @JsonValue('nnk')
+  @JsonValue("nnk")
   nnk,
-  @JsonValue('nnl')
+  @JsonValue("nnl")
   nnl,
-  @JsonValue('nnm')
+  @JsonValue("nnm")
   nnm,
-  @JsonValue('nnn')
+  @JsonValue("nnn")
   nnn,
-  @JsonValue('nno')
+  @JsonValue("nno")
   nno,
-  @JsonValue('nnp')
+  @JsonValue("nnp")
   nnp,
-  @JsonValue('nnq')
+  @JsonValue("nnq")
   nnq,
-  @JsonValue('nnr')
+  @JsonValue("nnr")
   nnr,
-  @JsonValue('nnt')
+  @JsonValue("nnt")
   nnt,
-  @JsonValue('nnu')
+  @JsonValue("nnu")
   nnu,
-  @JsonValue('nnv')
+  @JsonValue("nnv")
   nnv,
-  @JsonValue('nnw')
+  @JsonValue("nnw")
   nnw,
-  @JsonValue('nny')
+  @JsonValue("nny")
   nny,
-  @JsonValue('nnz')
+  @JsonValue("nnz")
   nnz,
-  @JsonValue('noa')
+  @JsonValue("noa")
   noa,
-  @JsonValue('nob')
+  @JsonValue("nob")
   nob,
-  @JsonValue('noc')
+  @JsonValue("noc")
   noc,
-  @JsonValue('nod')
+  @JsonValue("nod")
   nod,
-  @JsonValue('noe')
+  @JsonValue("noe")
   noe,
-  @JsonValue('nof')
+  @JsonValue("nof")
   nof,
-  @JsonValue('nog')
+  @JsonValue("nog")
   nog,
-  @JsonValue('noh')
+  @JsonValue("noh")
   noh,
-  @JsonValue('noi')
+  @JsonValue("noi")
   noi,
-  @JsonValue('noj')
+  @JsonValue("noj")
   noj,
-  @JsonValue('nok')
+  @JsonValue("nok")
   nok,
-  @JsonValue('nol')
+  @JsonValue("nol")
   nol,
-  @JsonValue('nom')
+  @JsonValue("nom")
   nom,
-  @JsonValue('non')
+  @JsonValue("non")
   non,
-  @JsonValue('nop')
+  @JsonValue("nop")
   nop,
-  @JsonValue('noq')
+  @JsonValue("noq")
   noq,
-  @JsonValue('nor')
+  @JsonValue("nor")
   nor,
-  @JsonValue('nos')
+  @JsonValue("nos")
   nos,
-  @JsonValue('not')
+  @JsonValue("not")
   not,
-  @JsonValue('nou')
+  @JsonValue("nou")
   nou,
-  @JsonValue('nov')
+  @JsonValue("nov")
   nov,
-  @JsonValue('now')
+  @JsonValue("now")
   now,
-  @JsonValue('noy')
+  @JsonValue("noy")
   noy,
-  @JsonValue('noz')
+  @JsonValue("noz")
   noz,
-  @JsonValue('npa')
+  @JsonValue("npa")
   npa,
-  @JsonValue('npb')
+  @JsonValue("npb")
   npb,
-  @JsonValue('npg')
+  @JsonValue("npg")
   npg,
-  @JsonValue('nph')
+  @JsonValue("nph")
   nph,
-  @JsonValue('npi')
+  @JsonValue("npi")
   npi,
-  @JsonValue('npl')
+  @JsonValue("npl")
   npl,
-  @JsonValue('npn')
+  @JsonValue("npn")
   npn,
-  @JsonValue('npo')
+  @JsonValue("npo")
   npo,
-  @JsonValue('nps')
+  @JsonValue("nps")
   nps,
-  @JsonValue('npu')
+  @JsonValue("npu")
   npu,
-  @JsonValue('npx')
+  @JsonValue("npx")
   npx,
-  @JsonValue('npy')
+  @JsonValue("npy")
   npy,
-  @JsonValue('nqg')
+  @JsonValue("nqg")
   nqg,
-  @JsonValue('nqk')
+  @JsonValue("nqk")
   nqk,
-  @JsonValue('nql')
+  @JsonValue("nql")
   nql,
-  @JsonValue('nqm')
+  @JsonValue("nqm")
   nqm,
-  @JsonValue('nqn')
+  @JsonValue("nqn")
   nqn,
-  @JsonValue('nqo')
+  @JsonValue("nqo")
   nqo,
-  @JsonValue('nqq')
+  @JsonValue("nqq")
   nqq,
-  @JsonValue('nqt')
+  @JsonValue("nqt")
   nqt,
-  @JsonValue('nqy')
+  @JsonValue("nqy")
   nqy,
-  @JsonValue('nra')
+  @JsonValue("nra")
   nra,
-  @JsonValue('nrb')
+  @JsonValue("nrb")
   nrb,
-  @JsonValue('nrc')
+  @JsonValue("nrc")
   nrc,
-  @JsonValue('nre')
+  @JsonValue("nre")
   nre,
-  @JsonValue('nrf')
+  @JsonValue("nrf")
   nrf,
-  @JsonValue('nrg')
+  @JsonValue("nrg")
   nrg,
-  @JsonValue('nri')
+  @JsonValue("nri")
   nri,
-  @JsonValue('nrk')
+  @JsonValue("nrk")
   nrk,
-  @JsonValue('nrl')
+  @JsonValue("nrl")
   nrl,
-  @JsonValue('nrm')
+  @JsonValue("nrm")
   nrm,
-  @JsonValue('nrn')
+  @JsonValue("nrn")
   nrn,
-  @JsonValue('nrp')
+  @JsonValue("nrp")
   nrp,
-  @JsonValue('nrr')
+  @JsonValue("nrr")
   nrr,
-  @JsonValue('nrt')
+  @JsonValue("nrt")
   nrt,
-  @JsonValue('nru')
+  @JsonValue("nru")
   nru,
-  @JsonValue('nrx')
+  @JsonValue("nrx")
   nrx,
-  @JsonValue('nrz')
+  @JsonValue("nrz")
   nrz,
-  @JsonValue('nsa')
+  @JsonValue("nsa")
   nsa,
-  @JsonValue('nsb')
+  @JsonValue("nsb")
   nsb,
-  @JsonValue('nsc')
+  @JsonValue("nsc")
   nsc,
-  @JsonValue('nsd')
+  @JsonValue("nsd")
   nsd,
-  @JsonValue('nse')
+  @JsonValue("nse")
   nse,
-  @JsonValue('nsf')
+  @JsonValue("nsf")
   nsf,
-  @JsonValue('nsg')
+  @JsonValue("nsg")
   nsg,
-  @JsonValue('nsh')
+  @JsonValue("nsh")
   nsh,
-  @JsonValue('nsi')
+  @JsonValue("nsi")
   nsi,
-  @JsonValue('nsk')
+  @JsonValue("nsk")
   nsk,
-  @JsonValue('nsl')
+  @JsonValue("nsl")
   nsl,
-  @JsonValue('nsm')
+  @JsonValue("nsm")
   nsm,
-  @JsonValue('nsn')
+  @JsonValue("nsn")
   nsn,
-  @JsonValue('nso')
+  @JsonValue("nso")
   nso,
-  @JsonValue('nsp')
+  @JsonValue("nsp")
   nsp,
-  @JsonValue('nsq')
+  @JsonValue("nsq")
   nsq,
-  @JsonValue('nsr')
+  @JsonValue("nsr")
   nsr,
-  @JsonValue('nss')
+  @JsonValue("nss")
   nss,
-  @JsonValue('nst')
+  @JsonValue("nst")
   nst,
-  @JsonValue('nsu')
+  @JsonValue("nsu")
   nsu,
-  @JsonValue('nsv')
+  @JsonValue("nsv")
   nsv,
-  @JsonValue('nsw')
+  @JsonValue("nsw")
   nsw,
-  @JsonValue('nsx')
+  @JsonValue("nsx")
   nsx,
-  @JsonValue('nsy')
+  @JsonValue("nsy")
   nsy,
-  @JsonValue('nsz')
+  @JsonValue("nsz")
   nsz,
-  @JsonValue('ntd')
+  @JsonValue("ntd")
   ntd,
-  @JsonValue('nte')
+  @JsonValue("nte")
   nte,
-  @JsonValue('ntg')
+  @JsonValue("ntg")
   ntg,
-  @JsonValue('nti')
+  @JsonValue("nti")
   nti,
-  @JsonValue('ntj')
+  @JsonValue("ntj")
   ntj,
-  @JsonValue('ntk')
+  @JsonValue("ntk")
   ntk,
-  @JsonValue('ntm')
+  @JsonValue("ntm")
   ntm,
-  @JsonValue('nto')
+  @JsonValue("nto")
   nto,
-  @JsonValue('ntp')
+  @JsonValue("ntp")
   ntp,
-  @JsonValue('ntr')
+  @JsonValue("ntr")
   ntr,
-  @JsonValue('ntu')
+  @JsonValue("ntu")
   ntu,
-  @JsonValue('ntw')
+  @JsonValue("ntw")
   ntw,
-  @JsonValue('ntx')
+  @JsonValue("ntx")
   ntx,
-  @JsonValue('nty')
+  @JsonValue("nty")
   nty,
-  @JsonValue('ntz')
+  @JsonValue("ntz")
   ntz,
-  @JsonValue('nua')
+  @JsonValue("nua")
   nua,
-  @JsonValue('nuc')
+  @JsonValue("nuc")
   nuc,
-  @JsonValue('nud')
+  @JsonValue("nud")
   nud,
-  @JsonValue('nue')
+  @JsonValue("nue")
   nue,
-  @JsonValue('nuf')
+  @JsonValue("nuf")
   nuf,
-  @JsonValue('nug')
+  @JsonValue("nug")
   nug,
-  @JsonValue('nuh')
+  @JsonValue("nuh")
   nuh,
-  @JsonValue('nui')
+  @JsonValue("nui")
   nui,
-  @JsonValue('nuj')
+  @JsonValue("nuj")
   nuj,
-  @JsonValue('nuk')
+  @JsonValue("nuk")
   nuk,
-  @JsonValue('nul')
+  @JsonValue("nul")
   nul,
-  @JsonValue('num')
+  @JsonValue("num")
   num,
-  @JsonValue('nun')
+  @JsonValue("nun")
   nun,
-  @JsonValue('nuo')
+  @JsonValue("nuo")
   nuo,
-  @JsonValue('nup')
+  @JsonValue("nup")
   nup,
-  @JsonValue('nuq')
+  @JsonValue("nuq")
   nuq,
-  @JsonValue('nur')
+  @JsonValue("nur")
   nur,
-  @JsonValue('nus')
+  @JsonValue("nus")
   nus,
-  @JsonValue('nut')
+  @JsonValue("nut")
   nut,
-  @JsonValue('nuu')
+  @JsonValue("nuu")
   nuu,
-  @JsonValue('nuv')
+  @JsonValue("nuv")
   nuv,
-  @JsonValue('nuw')
+  @JsonValue("nuw")
   nuw,
-  @JsonValue('nux')
+  @JsonValue("nux")
   nux,
-  @JsonValue('nuy')
+  @JsonValue("nuy")
   nuy,
-  @JsonValue('nuz')
+  @JsonValue("nuz")
   nuz,
-  @JsonValue('nvh')
+  @JsonValue("nvh")
   nvh,
-  @JsonValue('nvm')
+  @JsonValue("nvm")
   nvm,
-  @JsonValue('nvo')
+  @JsonValue("nvo")
   nvo,
-  @JsonValue('nwa')
+  @JsonValue("nwa")
   nwa,
-  @JsonValue('nwb')
+  @JsonValue("nwb")
   nwb,
-  @JsonValue('nwc')
+  @JsonValue("nwc")
   nwc,
-  @JsonValue('nwe')
+  @JsonValue("nwe")
   nwe,
-  @JsonValue('nwg')
+  @JsonValue("nwg")
   nwg,
-  @JsonValue('nwi')
+  @JsonValue("nwi")
   nwi,
-  @JsonValue('nwm')
+  @JsonValue("nwm")
   nwm,
-  @JsonValue('nwo')
+  @JsonValue("nwo")
   nwo,
-  @JsonValue('nwr')
+  @JsonValue("nwr")
   nwr,
-  @JsonValue('nww')
+  @JsonValue("nww")
   nww,
-  @JsonValue('nwx')
+  @JsonValue("nwx")
   nwx,
-  @JsonValue('nwy')
+  @JsonValue("nwy")
   nwy,
-  @JsonValue('nxa')
+  @JsonValue("nxa")
   nxa,
-  @JsonValue('nxd')
+  @JsonValue("nxd")
   nxd,
-  @JsonValue('nxe')
+  @JsonValue("nxe")
   nxe,
-  @JsonValue('nxg')
+  @JsonValue("nxg")
   nxg,
-  @JsonValue('nxi')
+  @JsonValue("nxi")
   nxi,
-  @JsonValue('nxk')
+  @JsonValue("nxk")
   nxk,
-  @JsonValue('nxl')
+  @JsonValue("nxl")
   nxl,
-  @JsonValue('nxm')
+  @JsonValue("nxm")
   nxm,
-  @JsonValue('nxn')
+  @JsonValue("nxn")
   nxn,
-  @JsonValue('nxo')
+  @JsonValue("nxo")
   nxo,
-  @JsonValue('nxq')
+  @JsonValue("nxq")
   nxq,
-  @JsonValue('nxr')
+  @JsonValue("nxr")
   nxr,
-  @JsonValue('nxx')
+  @JsonValue("nxx")
   nxx,
-  @JsonValue('nya')
+  @JsonValue("nya")
   nya,
-  @JsonValue('nyb')
+  @JsonValue("nyb")
   nyb,
-  @JsonValue('nyc')
+  @JsonValue("nyc")
   nyc,
-  @JsonValue('nyd')
+  @JsonValue("nyd")
   nyd,
-  @JsonValue('nye')
+  @JsonValue("nye")
   nye,
-  @JsonValue('nyf')
+  @JsonValue("nyf")
   nyf,
-  @JsonValue('nyg')
+  @JsonValue("nyg")
   nyg,
-  @JsonValue('nyh')
+  @JsonValue("nyh")
   nyh,
-  @JsonValue('nyi')
+  @JsonValue("nyi")
   nyi,
-  @JsonValue('nyj')
+  @JsonValue("nyj")
   nyj,
-  @JsonValue('nyk')
+  @JsonValue("nyk")
   nyk,
-  @JsonValue('nyl')
+  @JsonValue("nyl")
   nyl,
-  @JsonValue('nym')
+  @JsonValue("nym")
   nym,
-  @JsonValue('nyn')
+  @JsonValue("nyn")
   nyn,
-  @JsonValue('nyo')
+  @JsonValue("nyo")
   nyo,
-  @JsonValue('nyp')
+  @JsonValue("nyp")
   nyp,
-  @JsonValue('nyq')
+  @JsonValue("nyq")
   nyq,
-  @JsonValue('nyr')
+  @JsonValue("nyr")
   nyr,
-  @JsonValue('nys')
+  @JsonValue("nys")
   nys,
-  @JsonValue('nyt')
+  @JsonValue("nyt")
   nyt,
-  @JsonValue('nyu')
+  @JsonValue("nyu")
   nyu,
-  @JsonValue('nyv')
+  @JsonValue("nyv")
   nyv,
-  @JsonValue('nyw')
+  @JsonValue("nyw")
   nyw,
-  @JsonValue('nyx')
+  @JsonValue("nyx")
   nyx,
-  @JsonValue('nyy')
+  @JsonValue("nyy")
   nyy,
-  @JsonValue('nza')
+  @JsonValue("nza")
   nza,
-  @JsonValue('nzb')
+  @JsonValue("nzb")
   nzb,
-  @JsonValue('nzd')
+  @JsonValue("nzd")
   nzd,
-  @JsonValue('nzi')
+  @JsonValue("nzi")
   nzi,
-  @JsonValue('nzk')
+  @JsonValue("nzk")
   nzk,
-  @JsonValue('nzm')
+  @JsonValue("nzm")
   nzm,
-  @JsonValue('nzs')
+  @JsonValue("nzs")
   nzs,
-  @JsonValue('nzu')
+  @JsonValue("nzu")
   nzu,
-  @JsonValue('nzy')
+  @JsonValue("nzy")
   nzy,
-  @JsonValue('nzz')
+  @JsonValue("nzz")
   nzz,
-  @JsonValue('oaa')
+  @JsonValue("oaa")
   oaa,
-  @JsonValue('oac')
+  @JsonValue("oac")
   oac,
-  @JsonValue('oar')
+  @JsonValue("oar")
   oar,
-  @JsonValue('oav')
+  @JsonValue("oav")
   oav,
-  @JsonValue('obi')
+  @JsonValue("obi")
   obi,
-  @JsonValue('obk')
+  @JsonValue("obk")
   obk,
-  @JsonValue('obl')
+  @JsonValue("obl")
   obl,
-  @JsonValue('obm')
+  @JsonValue("obm")
   obm,
-  @JsonValue('obo')
+  @JsonValue("obo")
   obo,
-  @JsonValue('obr')
+  @JsonValue("obr")
   obr,
-  @JsonValue('obt')
+  @JsonValue("obt")
   obt,
-  @JsonValue('obu')
+  @JsonValue("obu")
   obu,
-  @JsonValue('oca')
+  @JsonValue("oca")
   oca,
-  @JsonValue('och')
+  @JsonValue("och")
   och,
-  @JsonValue('oci')
+  @JsonValue("oci")
   oci,
-  @JsonValue('ocm')
+  @JsonValue("ocm")
   ocm,
-  @JsonValue('oco')
+  @JsonValue("oco")
   oco,
-  @JsonValue('ocu')
+  @JsonValue("ocu")
   ocu,
-  @JsonValue('oda')
+  @JsonValue("oda")
   oda,
-  @JsonValue('odk')
+  @JsonValue("odk")
   odk,
-  @JsonValue('odt')
+  @JsonValue("odt")
   odt,
-  @JsonValue('odu')
+  @JsonValue("odu")
   odu,
-  @JsonValue('ofo')
+  @JsonValue("ofo")
   ofo,
-  @JsonValue('ofs')
+  @JsonValue("ofs")
   ofs,
-  @JsonValue('ofu')
+  @JsonValue("ofu")
   ofu,
-  @JsonValue('ogb')
+  @JsonValue("ogb")
   ogb,
-  @JsonValue('ogc')
+  @JsonValue("ogc")
   ogc,
-  @JsonValue('oge')
+  @JsonValue("oge")
   oge,
-  @JsonValue('ogg')
+  @JsonValue("ogg")
   ogg,
-  @JsonValue('ogo')
+  @JsonValue("ogo")
   ogo,
-  @JsonValue('ogu')
+  @JsonValue("ogu")
   ogu,
-  @JsonValue('oht')
+  @JsonValue("oht")
   oht,
-  @JsonValue('ohu')
+  @JsonValue("ohu")
   ohu,
-  @JsonValue('oia')
+  @JsonValue("oia")
   oia,
-  @JsonValue('oie')
+  @JsonValue("oie")
   oie,
-  @JsonValue('oin')
+  @JsonValue("oin")
   oin,
-  @JsonValue('ojb')
+  @JsonValue("ojb")
   ojb,
-  @JsonValue('ojc')
+  @JsonValue("ojc")
   ojc,
-  @JsonValue('ojg')
+  @JsonValue("ojg")
   ojg,
-  @JsonValue('oji')
+  @JsonValue("oji")
   oji,
-  @JsonValue('ojp')
+  @JsonValue("ojp")
   ojp,
-  @JsonValue('ojs')
+  @JsonValue("ojs")
   ojs,
-  @JsonValue('ojv')
+  @JsonValue("ojv")
   ojv,
-  @JsonValue('ojw')
+  @JsonValue("ojw")
   ojw,
-  @JsonValue('oka')
+  @JsonValue("oka")
   oka,
-  @JsonValue('okb')
+  @JsonValue("okb")
   okb,
-  @JsonValue('okc')
+  @JsonValue("okc")
   okc,
-  @JsonValue('okd')
+  @JsonValue("okd")
   okd,
-  @JsonValue('oke')
+  @JsonValue("oke")
   oke,
-  @JsonValue('okg')
+  @JsonValue("okg")
   okg,
-  @JsonValue('okh')
+  @JsonValue("okh")
   okh,
-  @JsonValue('oki')
+  @JsonValue("oki")
   oki,
-  @JsonValue('okj')
+  @JsonValue("okj")
   okj,
-  @JsonValue('okk')
+  @JsonValue("okk")
   okk,
-  @JsonValue('okl')
+  @JsonValue("okl")
   okl,
-  @JsonValue('okm')
+  @JsonValue("okm")
   okm,
-  @JsonValue('okn')
+  @JsonValue("okn")
   okn,
-  @JsonValue('oko')
+  @JsonValue("oko")
   oko,
-  @JsonValue('okr')
+  @JsonValue("okr")
   okr,
-  @JsonValue('oks')
+  @JsonValue("oks")
   oks,
-  @JsonValue('oku')
+  @JsonValue("oku")
   oku,
-  @JsonValue('okv')
+  @JsonValue("okv")
   okv,
-  @JsonValue('okx')
+  @JsonValue("okx")
   okx,
-  @JsonValue('okz')
+  @JsonValue("okz")
   okz,
-  @JsonValue('ola')
+  @JsonValue("ola")
   ola,
-  @JsonValue('old')
+  @JsonValue("old")
   old,
-  @JsonValue('ole')
+  @JsonValue("ole")
   ole,
-  @JsonValue('olk')
+  @JsonValue("olk")
   olk,
-  @JsonValue('olm')
+  @JsonValue("olm")
   olm,
-  @JsonValue('olo')
+  @JsonValue("olo")
   olo,
-  @JsonValue('olr')
+  @JsonValue("olr")
   olr,
-  @JsonValue('olt')
+  @JsonValue("olt")
   olt,
-  @JsonValue('olu')
+  @JsonValue("olu")
   olu,
-  @JsonValue('oma')
+  @JsonValue("oma")
   oma,
-  @JsonValue('omb')
+  @JsonValue("omb")
   omb,
-  @JsonValue('omc')
+  @JsonValue("omc")
   omc,
-  @JsonValue('omg')
+  @JsonValue("omg")
   omg,
-  @JsonValue('omi')
+  @JsonValue("omi")
   omi,
-  @JsonValue('omk')
+  @JsonValue("omk")
   omk,
-  @JsonValue('oml')
+  @JsonValue("oml")
   oml,
-  @JsonValue('omn')
+  @JsonValue("omn")
   omn,
-  @JsonValue('omo')
+  @JsonValue("omo")
   omo,
-  @JsonValue('omp')
+  @JsonValue("omp")
   omp,
-  @JsonValue('omr')
+  @JsonValue("omr")
   omr,
-  @JsonValue('omt')
+  @JsonValue("omt")
   omt,
-  @JsonValue('omu')
+  @JsonValue("omu")
   omu,
-  @JsonValue('omw')
+  @JsonValue("omw")
   omw,
-  @JsonValue('omx')
+  @JsonValue("omx")
   omx,
-  @JsonValue('omy')
+  @JsonValue("omy")
   omy,
-  @JsonValue('ona')
+  @JsonValue("ona")
   ona,
-  @JsonValue('onb')
+  @JsonValue("onb")
   onb,
-  @JsonValue('one')
+  @JsonValue("one")
   one,
-  @JsonValue('ong')
+  @JsonValue("ong")
   ong,
-  @JsonValue('oni')
+  @JsonValue("oni")
   oni,
-  @JsonValue('onj')
+  @JsonValue("onj")
   onj,
-  @JsonValue('onk')
+  @JsonValue("onk")
   onk,
-  @JsonValue('onn')
+  @JsonValue("onn")
   onn,
-  @JsonValue('ono')
+  @JsonValue("ono")
   ono,
-  @JsonValue('onp')
+  @JsonValue("onp")
   onp,
-  @JsonValue('onr')
+  @JsonValue("onr")
   onr,
-  @JsonValue('ons')
+  @JsonValue("ons")
   ons,
-  @JsonValue('ont')
+  @JsonValue("ont")
   ont,
-  @JsonValue('onu')
+  @JsonValue("onu")
   onu,
-  @JsonValue('onw')
+  @JsonValue("onw")
   onw,
-  @JsonValue('onx')
+  @JsonValue("onx")
   onx,
-  @JsonValue('ood')
+  @JsonValue("ood")
   ood,
-  @JsonValue('oog')
+  @JsonValue("oog")
   oog,
-  @JsonValue('oon')
+  @JsonValue("oon")
   oon,
-  @JsonValue('oor')
+  @JsonValue("oor")
   oor,
-  @JsonValue('oos')
+  @JsonValue("oos")
   oos,
-  @JsonValue('opa')
+  @JsonValue("opa")
   opa,
-  @JsonValue('opk')
+  @JsonValue("opk")
   opk,
-  @JsonValue('opm')
+  @JsonValue("opm")
   opm,
-  @JsonValue('opo')
+  @JsonValue("opo")
   opo,
-  @JsonValue('opt')
+  @JsonValue("opt")
   opt,
-  @JsonValue('opy')
+  @JsonValue("opy")
   opy,
-  @JsonValue('ora')
+  @JsonValue("ora")
   ora,
-  @JsonValue('orc')
+  @JsonValue("orc")
   orc,
-  @JsonValue('ore')
+  @JsonValue("ore")
   ore,
-  @JsonValue('org')
+  @JsonValue("org")
   org,
-  @JsonValue('orh')
+  @JsonValue("orh")
   orh,
-  @JsonValue('ori')
+  @JsonValue("ori")
   ori,
-  @JsonValue('orm')
+  @JsonValue("orm")
   orm,
-  @JsonValue('orn')
+  @JsonValue("orn")
   orn,
-  @JsonValue('oro')
+  @JsonValue("oro")
   oro,
-  @JsonValue('orr')
+  @JsonValue("orr")
   orr,
-  @JsonValue('ors')
+  @JsonValue("ors")
   ors,
-  @JsonValue('ort')
+  @JsonValue("ort")
   ort,
-  @JsonValue('oru')
+  @JsonValue("oru")
   oru,
-  @JsonValue('orv')
+  @JsonValue("orv")
   orv,
-  @JsonValue('orw')
+  @JsonValue("orw")
   orw,
-  @JsonValue('orx')
+  @JsonValue("orx")
   orx,
-  @JsonValue('ory')
+  @JsonValue("ory")
   ory,
-  @JsonValue('orz')
+  @JsonValue("orz")
   orz,
-  @JsonValue('osa')
+  @JsonValue("osa")
   osa,
-  @JsonValue('osc')
+  @JsonValue("osc")
   osc,
-  @JsonValue('osi')
+  @JsonValue("osi")
   osi,
-  @JsonValue('osn')
+  @JsonValue("osn")
   osn,
-  @JsonValue('oso')
+  @JsonValue("oso")
   oso,
-  @JsonValue('osp')
+  @JsonValue("osp")
   osp,
-  @JsonValue('oss')
+  @JsonValue("oss")
   oss,
-  @JsonValue('ost')
+  @JsonValue("ost")
   ost,
-  @JsonValue('osu')
+  @JsonValue("osu")
   osu,
-  @JsonValue('osx')
+  @JsonValue("osx")
   osx,
-  @JsonValue('ota')
+  @JsonValue("ota")
   ota,
-  @JsonValue('otb')
+  @JsonValue("otb")
   otb,
-  @JsonValue('otd')
+  @JsonValue("otd")
   otd,
-  @JsonValue('ote')
+  @JsonValue("ote")
   ote,
-  @JsonValue('oti')
+  @JsonValue("oti")
   oti,
-  @JsonValue('otk')
+  @JsonValue("otk")
   otk,
-  @JsonValue('otl')
+  @JsonValue("otl")
   otl,
-  @JsonValue('otm')
+  @JsonValue("otm")
   otm,
-  @JsonValue('otn')
+  @JsonValue("otn")
   otn,
-  @JsonValue('otq')
+  @JsonValue("otq")
   otq,
-  @JsonValue('otr')
+  @JsonValue("otr")
   otr,
-  @JsonValue('ots')
+  @JsonValue("ots")
   ots,
-  @JsonValue('ott')
+  @JsonValue("ott")
   ott,
-  @JsonValue('otu')
+  @JsonValue("otu")
   otu,
-  @JsonValue('otw')
+  @JsonValue("otw")
   otw,
-  @JsonValue('otx')
+  @JsonValue("otx")
   otx,
-  @JsonValue('oty')
+  @JsonValue("oty")
   oty,
-  @JsonValue('otz')
+  @JsonValue("otz")
   otz,
-  @JsonValue('oua')
+  @JsonValue("oua")
   oua,
-  @JsonValue('oub')
+  @JsonValue("oub")
   oub,
-  @JsonValue('oue')
+  @JsonValue("oue")
   oue,
-  @JsonValue('oui')
+  @JsonValue("oui")
   oui,
-  @JsonValue('oum')
+  @JsonValue("oum")
   oum,
-  @JsonValue('ovd')
+  @JsonValue("ovd")
   ovd,
-  @JsonValue('owi')
+  @JsonValue("owi")
   owi,
-  @JsonValue('owl')
+  @JsonValue("owl")
   owl,
-  @JsonValue('oyb')
+  @JsonValue("oyb")
   oyb,
-  @JsonValue('oyd')
+  @JsonValue("oyd")
   oyd,
-  @JsonValue('oym')
+  @JsonValue("oym")
   oym,
-  @JsonValue('oyy')
+  @JsonValue("oyy")
   oyy,
-  @JsonValue('ozm')
+  @JsonValue("ozm")
   ozm,
-  @JsonValue('pab')
+  @JsonValue("pab")
   pab,
-  @JsonValue('pac')
+  @JsonValue("pac")
   pac,
-  @JsonValue('pad')
+  @JsonValue("pad")
   pad,
-  @JsonValue('pae')
+  @JsonValue("pae")
   pae,
-  @JsonValue('paf')
+  @JsonValue("paf")
   paf,
-  @JsonValue('pag')
+  @JsonValue("pag")
   pag,
-  @JsonValue('pah')
+  @JsonValue("pah")
   pah,
-  @JsonValue('pai')
+  @JsonValue("pai")
   pai,
-  @JsonValue('pak')
+  @JsonValue("pak")
   pak,
-  @JsonValue('pal')
+  @JsonValue("pal")
   pal,
-  @JsonValue('pam')
+  @JsonValue("pam")
   pam,
-  @JsonValue('pan')
+  @JsonValue("pan")
   pan,
-  @JsonValue('pao')
+  @JsonValue("pao")
   pao,
-  @JsonValue('pap')
+  @JsonValue("pap")
   pap,
-  @JsonValue('paq')
+  @JsonValue("paq")
   paq,
-  @JsonValue('par')
+  @JsonValue("par")
   par,
-  @JsonValue('pas')
+  @JsonValue("pas")
   pas,
-  @JsonValue('pau')
+  @JsonValue("pau")
   pau,
-  @JsonValue('pav')
+  @JsonValue("pav")
   pav,
-  @JsonValue('paw')
+  @JsonValue("paw")
   paw,
-  @JsonValue('pax')
+  @JsonValue("pax")
   pax,
-  @JsonValue('pay')
+  @JsonValue("pay")
   pay,
-  @JsonValue('paz')
+  @JsonValue("paz")
   paz,
-  @JsonValue('pbb')
+  @JsonValue("pbb")
   pbb,
-  @JsonValue('pbc')
+  @JsonValue("pbc")
   pbc,
-  @JsonValue('pbe')
+  @JsonValue("pbe")
   pbe,
-  @JsonValue('pbf')
+  @JsonValue("pbf")
   pbf,
-  @JsonValue('pbg')
+  @JsonValue("pbg")
   pbg,
-  @JsonValue('pbh')
+  @JsonValue("pbh")
   pbh,
-  @JsonValue('pbi')
+  @JsonValue("pbi")
   pbi,
-  @JsonValue('pbl')
+  @JsonValue("pbl")
   pbl,
-  @JsonValue('pbm')
+  @JsonValue("pbm")
   pbm,
-  @JsonValue('pbn')
+  @JsonValue("pbn")
   pbn,
-  @JsonValue('pbo')
+  @JsonValue("pbo")
   pbo,
-  @JsonValue('pbp')
+  @JsonValue("pbp")
   pbp,
-  @JsonValue('pbr')
+  @JsonValue("pbr")
   pbr,
-  @JsonValue('pbs')
+  @JsonValue("pbs")
   pbs,
-  @JsonValue('pbt')
+  @JsonValue("pbt")
   pbt,
-  @JsonValue('pbu')
+  @JsonValue("pbu")
   pbu,
-  @JsonValue('pbv')
+  @JsonValue("pbv")
   pbv,
-  @JsonValue('pby')
+  @JsonValue("pby")
   pby,
-  @JsonValue('pca')
+  @JsonValue("pca")
   pca,
-  @JsonValue('pcb')
+  @JsonValue("pcb")
   pcb,
-  @JsonValue('pcc')
+  @JsonValue("pcc")
   pcc,
-  @JsonValue('pcd')
+  @JsonValue("pcd")
   pcd,
-  @JsonValue('pce')
+  @JsonValue("pce")
   pce,
-  @JsonValue('pcf')
+  @JsonValue("pcf")
   pcf,
-  @JsonValue('pcg')
+  @JsonValue("pcg")
   pcg,
-  @JsonValue('pch')
+  @JsonValue("pch")
   pch,
-  @JsonValue('pci')
+  @JsonValue("pci")
   pci,
-  @JsonValue('pcj')
+  @JsonValue("pcj")
   pcj,
-  @JsonValue('pck')
+  @JsonValue("pck")
   pck,
-  @JsonValue('pcl')
+  @JsonValue("pcl")
   pcl,
-  @JsonValue('pcm')
+  @JsonValue("pcm")
   pcm,
-  @JsonValue('pcn')
+  @JsonValue("pcn")
   pcn,
-  @JsonValue('pcp')
+  @JsonValue("pcp")
   pcp,
-  @JsonValue('pcw')
+  @JsonValue("pcw")
   pcw,
-  @JsonValue('pda')
+  @JsonValue("pda")
   pda,
-  @JsonValue('pdc')
+  @JsonValue("pdc")
   pdc,
-  @JsonValue('pdi')
+  @JsonValue("pdi")
   pdi,
-  @JsonValue('pdn')
+  @JsonValue("pdn")
   pdn,
-  @JsonValue('pdo')
+  @JsonValue("pdo")
   pdo,
-  @JsonValue('pdt')
+  @JsonValue("pdt")
   pdt,
-  @JsonValue('pdu')
+  @JsonValue("pdu")
   pdu,
-  @JsonValue('pea')
+  @JsonValue("pea")
   pea,
-  @JsonValue('peb')
+  @JsonValue("peb")
   peb,
-  @JsonValue('ped')
+  @JsonValue("ped")
   ped,
-  @JsonValue('pee')
+  @JsonValue("pee")
   pee,
-  @JsonValue('pef')
+  @JsonValue("pef")
   pef,
-  @JsonValue('peg')
+  @JsonValue("peg")
   peg,
-  @JsonValue('peh')
+  @JsonValue("peh")
   peh,
-  @JsonValue('pei')
+  @JsonValue("pei")
   pei,
-  @JsonValue('pej')
+  @JsonValue("pej")
   pej,
-  @JsonValue('pek')
+  @JsonValue("pek")
   pek,
-  @JsonValue('pel')
+  @JsonValue("pel")
   pel,
-  @JsonValue('pem')
+  @JsonValue("pem")
   pem,
-  @JsonValue('peo')
+  @JsonValue("peo")
   peo,
-  @JsonValue('pep')
+  @JsonValue("pep")
   pep,
-  @JsonValue('peq')
+  @JsonValue("peq")
   peq,
-  @JsonValue('pes')
+  @JsonValue("pes")
   pes,
-  @JsonValue('pev')
+  @JsonValue("pev")
   pev,
-  @JsonValue('pex')
+  @JsonValue("pex")
   pex,
-  @JsonValue('pey')
+  @JsonValue("pey")
   pey,
-  @JsonValue('pez')
+  @JsonValue("pez")
   pez,
-  @JsonValue('pfa')
+  @JsonValue("pfa")
   pfa,
-  @JsonValue('pfe')
+  @JsonValue("pfe")
   pfe,
-  @JsonValue('pfl')
+  @JsonValue("pfl")
   pfl,
-  @JsonValue('pga')
+  @JsonValue("pga")
   pga,
-  @JsonValue('pgd')
+  @JsonValue("pgd")
   pgd,
-  @JsonValue('pgg')
+  @JsonValue("pgg")
   pgg,
-  @JsonValue('pgi')
+  @JsonValue("pgi")
   pgi,
-  @JsonValue('pgk')
+  @JsonValue("pgk")
   pgk,
-  @JsonValue('pgl')
+  @JsonValue("pgl")
   pgl,
-  @JsonValue('pgn')
+  @JsonValue("pgn")
   pgn,
-  @JsonValue('pgs')
+  @JsonValue("pgs")
   pgs,
-  @JsonValue('pgu')
+  @JsonValue("pgu")
   pgu,
-  @JsonValue('pgz')
+  @JsonValue("pgz")
   pgz,
-  @JsonValue('pha')
+  @JsonValue("pha")
   pha,
-  @JsonValue('phd')
+  @JsonValue("phd")
   phd,
-  @JsonValue('phg')
+  @JsonValue("phg")
   phg,
-  @JsonValue('phh')
+  @JsonValue("phh")
   phh,
-  @JsonValue('phj')
+  @JsonValue("phj")
   phj,
-  @JsonValue('phk')
+  @JsonValue("phk")
   phk,
-  @JsonValue('phl')
+  @JsonValue("phl")
   phl,
-  @JsonValue('phm')
+  @JsonValue("phm")
   phm,
-  @JsonValue('phn')
+  @JsonValue("phn")
   phn,
-  @JsonValue('pho')
+  @JsonValue("pho")
   pho,
-  @JsonValue('phq')
+  @JsonValue("phq")
   phq,
-  @JsonValue('phr')
+  @JsonValue("phr")
   phr,
-  @JsonValue('pht')
+  @JsonValue("pht")
   pht,
-  @JsonValue('phu')
+  @JsonValue("phu")
   phu,
-  @JsonValue('phv')
+  @JsonValue("phv")
   phv,
-  @JsonValue('phw')
+  @JsonValue("phw")
   phw,
-  @JsonValue('pia')
+  @JsonValue("pia")
   pia,
-  @JsonValue('pib')
+  @JsonValue("pib")
   pib,
-  @JsonValue('pic')
+  @JsonValue("pic")
   pic,
-  @JsonValue('pid')
+  @JsonValue("pid")
   pid,
-  @JsonValue('pie')
+  @JsonValue("pie")
   pie,
-  @JsonValue('pif')
+  @JsonValue("pif")
   pif,
-  @JsonValue('pig')
+  @JsonValue("pig")
   pig,
-  @JsonValue('pih')
+  @JsonValue("pih")
   pih,
-  @JsonValue('pij')
+  @JsonValue("pij")
   pij,
-  @JsonValue('pil')
+  @JsonValue("pil")
   pil,
-  @JsonValue('pim')
+  @JsonValue("pim")
   pim,
-  @JsonValue('pin')
+  @JsonValue("pin")
   pin,
-  @JsonValue('pio')
+  @JsonValue("pio")
   pio,
-  @JsonValue('pip')
+  @JsonValue("pip")
   pip,
-  @JsonValue('pir')
+  @JsonValue("pir")
   pir,
-  @JsonValue('pis')
+  @JsonValue("pis")
   pis,
-  @JsonValue('pit')
+  @JsonValue("pit")
   pit,
-  @JsonValue('piu')
+  @JsonValue("piu")
   piu,
-  @JsonValue('piv')
+  @JsonValue("piv")
   piv,
-  @JsonValue('piw')
+  @JsonValue("piw")
   piw,
-  @JsonValue('pix')
+  @JsonValue("pix")
   pix,
-  @JsonValue('piy')
+  @JsonValue("piy")
   piy,
-  @JsonValue('piz')
+  @JsonValue("piz")
   piz,
-  @JsonValue('pjt')
+  @JsonValue("pjt")
   pjt,
-  @JsonValue('pka')
+  @JsonValue("pka")
   pka,
-  @JsonValue('pkb')
+  @JsonValue("pkb")
   pkb,
-  @JsonValue('pkc')
+  @JsonValue("pkc")
   pkc,
-  @JsonValue('pkg')
+  @JsonValue("pkg")
   pkg,
-  @JsonValue('pkh')
+  @JsonValue("pkh")
   pkh,
-  @JsonValue('pkn')
+  @JsonValue("pkn")
   pkn,
-  @JsonValue('pko')
+  @JsonValue("pko")
   pko,
-  @JsonValue('pkp')
+  @JsonValue("pkp")
   pkp,
-  @JsonValue('pkr')
+  @JsonValue("pkr")
   pkr,
-  @JsonValue('pks')
+  @JsonValue("pks")
   pks,
-  @JsonValue('pkt')
+  @JsonValue("pkt")
   pkt,
-  @JsonValue('pku')
+  @JsonValue("pku")
   pku,
-  @JsonValue('pla')
+  @JsonValue("pla")
   pla,
-  @JsonValue('plb')
+  @JsonValue("plb")
   plb,
-  @JsonValue('plc')
+  @JsonValue("plc")
   plc,
-  @JsonValue('pld')
+  @JsonValue("pld")
   pld,
-  @JsonValue('ple')
+  @JsonValue("ple")
   ple,
-  @JsonValue('plg')
+  @JsonValue("plg")
   plg,
-  @JsonValue('plh')
+  @JsonValue("plh")
   plh,
-  @JsonValue('pli')
+  @JsonValue("pli")
   pli,
-  @JsonValue('plj')
+  @JsonValue("plj")
   plj,
-  @JsonValue('plk')
+  @JsonValue("plk")
   plk,
-  @JsonValue('pll')
+  @JsonValue("pll")
   pll,
-  @JsonValue('pln')
+  @JsonValue("pln")
   pln,
-  @JsonValue('plo')
+  @JsonValue("plo")
   plo,
-  @JsonValue('plq')
+  @JsonValue("plq")
   plq,
-  @JsonValue('plr')
+  @JsonValue("plr")
   plr,
-  @JsonValue('pls')
+  @JsonValue("pls")
   pls,
-  @JsonValue('plt')
+  @JsonValue("plt")
   plt,
-  @JsonValue('plu')
+  @JsonValue("plu")
   plu,
-  @JsonValue('plv')
+  @JsonValue("plv")
   plv,
-  @JsonValue('plw')
+  @JsonValue("plw")
   plw,
-  @JsonValue('ply')
+  @JsonValue("ply")
   ply,
-  @JsonValue('plz')
+  @JsonValue("plz")
   plz,
-  @JsonValue('pma')
+  @JsonValue("pma")
   pma,
-  @JsonValue('pmb')
+  @JsonValue("pmb")
   pmb,
-  @JsonValue('pmd')
+  @JsonValue("pmd")
   pmd,
-  @JsonValue('pme')
+  @JsonValue("pme")
   pme,
-  @JsonValue('pmf')
+  @JsonValue("pmf")
   pmf,
-  @JsonValue('pmh')
+  @JsonValue("pmh")
   pmh,
-  @JsonValue('pmi')
+  @JsonValue("pmi")
   pmi,
-  @JsonValue('pmj')
+  @JsonValue("pmj")
   pmj,
-  @JsonValue('pmk')
+  @JsonValue("pmk")
   pmk,
-  @JsonValue('pml')
+  @JsonValue("pml")
   pml,
-  @JsonValue('pmm')
+  @JsonValue("pmm")
   pmm,
-  @JsonValue('pmn')
+  @JsonValue("pmn")
   pmn,
-  @JsonValue('pmo')
+  @JsonValue("pmo")
   pmo,
-  @JsonValue('pmq')
+  @JsonValue("pmq")
   pmq,
-  @JsonValue('pmr')
+  @JsonValue("pmr")
   pmr,
-  @JsonValue('pms')
+  @JsonValue("pms")
   pms,
-  @JsonValue('pmt')
+  @JsonValue("pmt")
   pmt,
-  @JsonValue('pmw')
+  @JsonValue("pmw")
   pmw,
-  @JsonValue('pmx')
+  @JsonValue("pmx")
   pmx,
-  @JsonValue('pmy')
+  @JsonValue("pmy")
   pmy,
-  @JsonValue('pmz')
+  @JsonValue("pmz")
   pmz,
-  @JsonValue('pna')
+  @JsonValue("pna")
   pna,
-  @JsonValue('pnb')
+  @JsonValue("pnb")
   pnb,
-  @JsonValue('pnc')
+  @JsonValue("pnc")
   pnc,
-  @JsonValue('pnd')
+  @JsonValue("pnd")
   pnd,
-  @JsonValue('pne')
+  @JsonValue("pne")
   pne,
-  @JsonValue('png')
+  @JsonValue("png")
   png,
-  @JsonValue('pnh')
+  @JsonValue("pnh")
   pnh,
-  @JsonValue('pni')
+  @JsonValue("pni")
   pni,
-  @JsonValue('pnj')
+  @JsonValue("pnj")
   pnj,
-  @JsonValue('pnk')
+  @JsonValue("pnk")
   pnk,
-  @JsonValue('pnl')
+  @JsonValue("pnl")
   pnl,
-  @JsonValue('pnm')
+  @JsonValue("pnm")
   pnm,
-  @JsonValue('pnn')
+  @JsonValue("pnn")
   pnn,
-  @JsonValue('pno')
+  @JsonValue("pno")
   pno,
-  @JsonValue('pnp')
+  @JsonValue("pnp")
   pnp,
-  @JsonValue('pnq')
+  @JsonValue("pnq")
   pnq,
-  @JsonValue('pnr')
+  @JsonValue("pnr")
   pnr,
-  @JsonValue('pns')
+  @JsonValue("pns")
   pns,
-  @JsonValue('pnt')
+  @JsonValue("pnt")
   pnt,
-  @JsonValue('pnu')
+  @JsonValue("pnu")
   pnu,
-  @JsonValue('pnv')
+  @JsonValue("pnv")
   pnv,
-  @JsonValue('pnw')
+  @JsonValue("pnw")
   pnw,
-  @JsonValue('pnx')
+  @JsonValue("pnx")
   pnx,
-  @JsonValue('pny')
+  @JsonValue("pny")
   pny,
-  @JsonValue('pnz')
+  @JsonValue("pnz")
   pnz,
-  @JsonValue('poc')
+  @JsonValue("poc")
   poc,
-  @JsonValue('poe')
+  @JsonValue("poe")
   poe,
-  @JsonValue('pof')
+  @JsonValue("pof")
   pof,
-  @JsonValue('pog')
+  @JsonValue("pog")
   pog,
-  @JsonValue('poh')
+  @JsonValue("poh")
   poh,
-  @JsonValue('poi')
+  @JsonValue("poi")
   poi,
-  @JsonValue('pok')
+  @JsonValue("pok")
   pok,
-  @JsonValue('pol')
+  @JsonValue("pol")
   pol,
-  @JsonValue('pom')
+  @JsonValue("pom")
   pom,
-  @JsonValue('pon')
+  @JsonValue("pon")
   pon,
-  @JsonValue('poo')
+  @JsonValue("poo")
   poo,
-  @JsonValue('pop')
+  @JsonValue("pop")
   pop,
-  @JsonValue('poq')
+  @JsonValue("poq")
   poq,
-  @JsonValue('por')
+  @JsonValue("por")
   por,
-  @JsonValue('pos')
+  @JsonValue("pos")
   pos,
-  @JsonValue('pot')
+  @JsonValue("pot")
   pot,
-  @JsonValue('pov')
+  @JsonValue("pov")
   pov,
-  @JsonValue('pow')
+  @JsonValue("pow")
   pow,
-  @JsonValue('pox')
+  @JsonValue("pox")
   pox,
-  @JsonValue('poy')
+  @JsonValue("poy")
   poy,
-  @JsonValue('ppe')
+  @JsonValue("ppe")
   ppe,
-  @JsonValue('ppi')
+  @JsonValue("ppi")
   ppi,
-  @JsonValue('ppk')
+  @JsonValue("ppk")
   ppk,
-  @JsonValue('ppl')
+  @JsonValue("ppl")
   ppl,
-  @JsonValue('ppm')
+  @JsonValue("ppm")
   ppm,
-  @JsonValue('ppn')
+  @JsonValue("ppn")
   ppn,
-  @JsonValue('ppo')
+  @JsonValue("ppo")
   ppo,
-  @JsonValue('ppp')
+  @JsonValue("ppp")
   ppp,
-  @JsonValue('ppq')
+  @JsonValue("ppq")
   ppq,
-  @JsonValue('pps')
+  @JsonValue("pps")
   pps,
-  @JsonValue('ppt')
+  @JsonValue("ppt")
   ppt,
-  @JsonValue('ppu')
+  @JsonValue("ppu")
   ppu,
-  @JsonValue('pqa')
+  @JsonValue("pqa")
   pqa,
-  @JsonValue('pqm')
+  @JsonValue("pqm")
   pqm,
-  @JsonValue('prc')
+  @JsonValue("prc")
   prc,
-  @JsonValue('prd')
+  @JsonValue("prd")
   prd,
-  @JsonValue('pre')
+  @JsonValue("pre")
   pre,
-  @JsonValue('prf')
+  @JsonValue("prf")
   prf,
-  @JsonValue('prg')
+  @JsonValue("prg")
   prg,
-  @JsonValue('prh')
+  @JsonValue("prh")
   prh,
-  @JsonValue('pri')
+  @JsonValue("pri")
   pri,
-  @JsonValue('prk')
+  @JsonValue("prk")
   prk,
-  @JsonValue('prl')
+  @JsonValue("prl")
   prl,
-  @JsonValue('prm')
+  @JsonValue("prm")
   prm,
-  @JsonValue('prn')
+  @JsonValue("prn")
   prn,
-  @JsonValue('pro')
+  @JsonValue("pro")
   pro,
-  @JsonValue('prp')
+  @JsonValue("prp")
   prp,
-  @JsonValue('prq')
+  @JsonValue("prq")
   prq,
-  @JsonValue('prr')
+  @JsonValue("prr")
   prr,
-  @JsonValue('prs')
+  @JsonValue("prs")
   prs,
-  @JsonValue('prt')
+  @JsonValue("prt")
   prt,
-  @JsonValue('pru')
+  @JsonValue("pru")
   pru,
-  @JsonValue('prw')
+  @JsonValue("prw")
   prw,
-  @JsonValue('prx')
+  @JsonValue("prx")
   prx,
-  @JsonValue('prz')
+  @JsonValue("prz")
   prz,
-  @JsonValue('psa')
+  @JsonValue("psa")
   psa,
-  @JsonValue('psc')
+  @JsonValue("psc")
   psc,
-  @JsonValue('psd')
+  @JsonValue("psd")
   psd,
-  @JsonValue('pse')
+  @JsonValue("pse")
   pse,
-  @JsonValue('psg')
+  @JsonValue("psg")
   psg,
-  @JsonValue('psh')
+  @JsonValue("psh")
   psh,
-  @JsonValue('psi')
+  @JsonValue("psi")
   psi,
-  @JsonValue('psl')
+  @JsonValue("psl")
   psl,
-  @JsonValue('psm')
+  @JsonValue("psm")
   psm,
-  @JsonValue('psn')
+  @JsonValue("psn")
   psn,
-  @JsonValue('pso')
+  @JsonValue("pso")
   pso,
-  @JsonValue('psp')
+  @JsonValue("psp")
   psp,
-  @JsonValue('psq')
+  @JsonValue("psq")
   psq,
-  @JsonValue('psr')
+  @JsonValue("psr")
   psr,
-  @JsonValue('pss')
+  @JsonValue("pss")
   pss,
-  @JsonValue('pst')
+  @JsonValue("pst")
   pst,
-  @JsonValue('psu')
+  @JsonValue("psu")
   psu,
-  @JsonValue('psw')
+  @JsonValue("psw")
   psw,
-  @JsonValue('psy')
+  @JsonValue("psy")
   psy,
-  @JsonValue('pta')
+  @JsonValue("pta")
   pta,
-  @JsonValue('pth')
+  @JsonValue("pth")
   pth,
-  @JsonValue('pti')
+  @JsonValue("pti")
   pti,
-  @JsonValue('ptn')
+  @JsonValue("ptn")
   ptn,
-  @JsonValue('pto')
+  @JsonValue("pto")
   pto,
-  @JsonValue('ptp')
+  @JsonValue("ptp")
   ptp,
-  @JsonValue('ptq')
+  @JsonValue("ptq")
   ptq,
-  @JsonValue('ptr')
+  @JsonValue("ptr")
   ptr,
-  @JsonValue('ptt')
+  @JsonValue("ptt")
   ptt,
-  @JsonValue('ptu')
+  @JsonValue("ptu")
   ptu,
-  @JsonValue('ptv')
+  @JsonValue("ptv")
   ptv,
-  @JsonValue('ptw')
+  @JsonValue("ptw")
   ptw,
-  @JsonValue('pty')
+  @JsonValue("pty")
   pty,
-  @JsonValue('pua')
+  @JsonValue("pua")
   pua,
-  @JsonValue('pub')
+  @JsonValue("pub")
   pub,
-  @JsonValue('puc')
+  @JsonValue("puc")
   puc,
-  @JsonValue('pud')
+  @JsonValue("pud")
   pud,
-  @JsonValue('pue')
+  @JsonValue("pue")
   pue,
-  @JsonValue('puf')
+  @JsonValue("puf")
   puf,
-  @JsonValue('pug')
+  @JsonValue("pug")
   pug,
-  @JsonValue('pui')
+  @JsonValue("pui")
   pui,
-  @JsonValue('puj')
+  @JsonValue("puj")
   puj,
-  @JsonValue('pum')
+  @JsonValue("pum")
   pum,
-  @JsonValue('puo')
+  @JsonValue("puo")
   puo,
-  @JsonValue('pup')
+  @JsonValue("pup")
   pup,
-  @JsonValue('puq')
+  @JsonValue("puq")
   puq,
-  @JsonValue('pur')
+  @JsonValue("pur")
   pur,
-  @JsonValue('pus')
+  @JsonValue("pus")
   pus,
-  @JsonValue('put')
+  @JsonValue("put")
   put,
-  @JsonValue('puu')
+  @JsonValue("puu")
   puu,
-  @JsonValue('puw')
+  @JsonValue("puw")
   puw,
-  @JsonValue('pux')
+  @JsonValue("pux")
   pux,
-  @JsonValue('puy')
+  @JsonValue("puy")
   puy,
-  @JsonValue('pwa')
+  @JsonValue("pwa")
   pwa,
-  @JsonValue('pwb')
+  @JsonValue("pwb")
   pwb,
-  @JsonValue('pwg')
+  @JsonValue("pwg")
   pwg,
-  @JsonValue('pwi')
+  @JsonValue("pwi")
   pwi,
-  @JsonValue('pwm')
+  @JsonValue("pwm")
   pwm,
-  @JsonValue('pwn')
+  @JsonValue("pwn")
   pwn,
-  @JsonValue('pwo')
+  @JsonValue("pwo")
   pwo,
-  @JsonValue('pwr')
+  @JsonValue("pwr")
   pwr,
-  @JsonValue('pww')
+  @JsonValue("pww")
   pww,
-  @JsonValue('pxm')
+  @JsonValue("pxm")
   pxm,
-  @JsonValue('pye')
+  @JsonValue("pye")
   pye,
-  @JsonValue('pym')
+  @JsonValue("pym")
   pym,
-  @JsonValue('pyn')
+  @JsonValue("pyn")
   pyn,
-  @JsonValue('pys')
+  @JsonValue("pys")
   pys,
-  @JsonValue('pyu')
+  @JsonValue("pyu")
   pyu,
-  @JsonValue('pyx')
+  @JsonValue("pyx")
   pyx,
-  @JsonValue('pyy')
+  @JsonValue("pyy")
   pyy,
-  @JsonValue('pzh')
+  @JsonValue("pzh")
   pzh,
-  @JsonValue('pzn')
+  @JsonValue("pzn")
   pzn,
-  @JsonValue('qua')
+  @JsonValue("qua")
   qua,
-  @JsonValue('qub')
+  @JsonValue("qub")
   qub,
-  @JsonValue('quc')
+  @JsonValue("quc")
   quc,
-  @JsonValue('qud')
+  @JsonValue("qud")
   qud,
-  @JsonValue('que')
+  @JsonValue("que")
   que,
-  @JsonValue('quf')
+  @JsonValue("quf")
   quf,
-  @JsonValue('qug')
+  @JsonValue("qug")
   qug,
-  @JsonValue('quh')
+  @JsonValue("quh")
   quh,
-  @JsonValue('qui')
+  @JsonValue("qui")
   qui,
-  @JsonValue('quk')
+  @JsonValue("quk")
   quk,
-  @JsonValue('qul')
+  @JsonValue("qul")
   qul,
-  @JsonValue('qum')
+  @JsonValue("qum")
   qum,
-  @JsonValue('qun')
+  @JsonValue("qun")
   qun,
-  @JsonValue('qup')
+  @JsonValue("qup")
   qup,
-  @JsonValue('quq')
+  @JsonValue("quq")
   quq,
-  @JsonValue('qur')
+  @JsonValue("qur")
   qur,
-  @JsonValue('qus')
+  @JsonValue("qus")
   qus,
-  @JsonValue('quv')
+  @JsonValue("quv")
   quv,
-  @JsonValue('quw')
+  @JsonValue("quw")
   quw,
-  @JsonValue('qux')
+  @JsonValue("qux")
   qux,
-  @JsonValue('quy')
+  @JsonValue("quy")
   quy,
-  @JsonValue('quz')
+  @JsonValue("quz")
   quz,
-  @JsonValue('qva')
+  @JsonValue("qva")
   qva,
-  @JsonValue('qvc')
+  @JsonValue("qvc")
   qvc,
-  @JsonValue('qve')
+  @JsonValue("qve")
   qve,
-  @JsonValue('qvh')
+  @JsonValue("qvh")
   qvh,
-  @JsonValue('qvi')
+  @JsonValue("qvi")
   qvi,
-  @JsonValue('qvj')
+  @JsonValue("qvj")
   qvj,
-  @JsonValue('qvl')
+  @JsonValue("qvl")
   qvl,
-  @JsonValue('qvm')
+  @JsonValue("qvm")
   qvm,
-  @JsonValue('qvn')
+  @JsonValue("qvn")
   qvn,
-  @JsonValue('qvo')
+  @JsonValue("qvo")
   qvo,
-  @JsonValue('qvp')
+  @JsonValue("qvp")
   qvp,
-  @JsonValue('qvs')
+  @JsonValue("qvs")
   qvs,
-  @JsonValue('qvw')
+  @JsonValue("qvw")
   qvw,
-  @JsonValue('qvy')
+  @JsonValue("qvy")
   qvy,
-  @JsonValue('qvz')
+  @JsonValue("qvz")
   qvz,
-  @JsonValue('qwa')
+  @JsonValue("qwa")
   qwa,
-  @JsonValue('qwc')
+  @JsonValue("qwc")
   qwc,
-  @JsonValue('qwh')
+  @JsonValue("qwh")
   qwh,
-  @JsonValue('qwm')
+  @JsonValue("qwm")
   qwm,
-  @JsonValue('qws')
+  @JsonValue("qws")
   qws,
-  @JsonValue('qwt')
+  @JsonValue("qwt")
   qwt,
-  @JsonValue('qxa')
+  @JsonValue("qxa")
   qxa,
-  @JsonValue('qxc')
+  @JsonValue("qxc")
   qxc,
-  @JsonValue('qxh')
+  @JsonValue("qxh")
   qxh,
-  @JsonValue('qxl')
+  @JsonValue("qxl")
   qxl,
-  @JsonValue('qxn')
+  @JsonValue("qxn")
   qxn,
-  @JsonValue('qxo')
+  @JsonValue("qxo")
   qxo,
-  @JsonValue('qxp')
+  @JsonValue("qxp")
   qxp,
-  @JsonValue('qxq')
+  @JsonValue("qxq")
   qxq,
-  @JsonValue('qxr')
+  @JsonValue("qxr")
   qxr,
-  @JsonValue('qxs')
+  @JsonValue("qxs")
   qxs,
-  @JsonValue('qxt')
+  @JsonValue("qxt")
   qxt,
-  @JsonValue('qxu')
+  @JsonValue("qxu")
   qxu,
-  @JsonValue('qxw')
+  @JsonValue("qxw")
   qxw,
-  @JsonValue('qya')
+  @JsonValue("qya")
   qya,
-  @JsonValue('qyp')
+  @JsonValue("qyp")
   qyp,
-  @JsonValue('raa')
+  @JsonValue("raa")
   raa,
-  @JsonValue('rab')
+  @JsonValue("rab")
   rab,
-  @JsonValue('rac')
+  @JsonValue("rac")
   rac,
-  @JsonValue('rad')
+  @JsonValue("rad")
   rad,
-  @JsonValue('raf')
+  @JsonValue("raf")
   raf,
-  @JsonValue('rag')
+  @JsonValue("rag")
   rag,
-  @JsonValue('rah')
+  @JsonValue("rah")
   rah,
-  @JsonValue('rai')
+  @JsonValue("rai")
   rai,
-  @JsonValue('raj')
+  @JsonValue("raj")
   raj,
-  @JsonValue('rak')
+  @JsonValue("rak")
   rak,
-  @JsonValue('ral')
+  @JsonValue("ral")
   ral,
-  @JsonValue('ram')
+  @JsonValue("ram")
   ram,
-  @JsonValue('ran')
+  @JsonValue("ran")
   ran,
-  @JsonValue('rao')
+  @JsonValue("rao")
   rao,
-  @JsonValue('rap')
+  @JsonValue("rap")
   rap,
-  @JsonValue('raq')
+  @JsonValue("raq")
   raq,
-  @JsonValue('rar')
+  @JsonValue("rar")
   rar,
-  @JsonValue('ras')
+  @JsonValue("ras")
   ras,
-  @JsonValue('rat')
+  @JsonValue("rat")
   rat,
-  @JsonValue('rau')
+  @JsonValue("rau")
   rau,
-  @JsonValue('rav')
+  @JsonValue("rav")
   rav,
-  @JsonValue('raw')
+  @JsonValue("raw")
   raw,
-  @JsonValue('rax')
+  @JsonValue("rax")
   rax,
-  @JsonValue('ray')
+  @JsonValue("ray")
   ray,
-  @JsonValue('raz')
+  @JsonValue("raz")
   raz,
-  @JsonValue('rbb')
+  @JsonValue("rbb")
   rbb,
-  @JsonValue('rbk')
+  @JsonValue("rbk")
   rbk,
-  @JsonValue('rbl')
+  @JsonValue("rbl")
   rbl,
-  @JsonValue('rbp')
+  @JsonValue("rbp")
   rbp,
-  @JsonValue('rcf')
+  @JsonValue("rcf")
   rcf,
-  @JsonValue('rdb')
+  @JsonValue("rdb")
   rdb,
-  @JsonValue('rea')
+  @JsonValue("rea")
   rea,
-  @JsonValue('reb')
+  @JsonValue("reb")
   reb,
-  @JsonValue('ree')
+  @JsonValue("ree")
   ree,
-  @JsonValue('reg')
+  @JsonValue("reg")
   reg,
-  @JsonValue('rei')
+  @JsonValue("rei")
   rei,
-  @JsonValue('rej')
+  @JsonValue("rej")
   rej,
-  @JsonValue('rel')
+  @JsonValue("rel")
   rel,
-  @JsonValue('rem')
+  @JsonValue("rem")
   rem,
-  @JsonValue('ren')
+  @JsonValue("ren")
   ren,
-  @JsonValue('rer')
+  @JsonValue("rer")
   rer,
-  @JsonValue('res')
+  @JsonValue("res")
   res,
-  @JsonValue('ret')
+  @JsonValue("ret")
   ret,
-  @JsonValue('rey')
+  @JsonValue("rey")
   rey,
-  @JsonValue('rga')
+  @JsonValue("rga")
   rga,
-  @JsonValue('rge')
+  @JsonValue("rge")
   rge,
-  @JsonValue('rgk')
+  @JsonValue("rgk")
   rgk,
-  @JsonValue('rgn')
+  @JsonValue("rgn")
   rgn,
-  @JsonValue('rgr')
+  @JsonValue("rgr")
   rgr,
-  @JsonValue('rgs')
+  @JsonValue("rgs")
   rgs,
-  @JsonValue('rgu')
+  @JsonValue("rgu")
   rgu,
-  @JsonValue('rhg')
+  @JsonValue("rhg")
   rhg,
-  @JsonValue('rhp')
+  @JsonValue("rhp")
   rhp,
-  @JsonValue('ria')
+  @JsonValue("ria")
   ria,
-  @JsonValue('rib')
+  @JsonValue("rib")
   rib,
-  @JsonValue('rif')
+  @JsonValue("rif")
   rif,
-  @JsonValue('ril')
+  @JsonValue("ril")
   ril,
-  @JsonValue('rim')
+  @JsonValue("rim")
   rim,
-  @JsonValue('rin')
+  @JsonValue("rin")
   rin,
-  @JsonValue('rir')
+  @JsonValue("rir")
   rir,
-  @JsonValue('rit')
+  @JsonValue("rit")
   rit,
-  @JsonValue('riu')
+  @JsonValue("riu")
   riu,
-  @JsonValue('rjg')
+  @JsonValue("rjg")
   rjg,
-  @JsonValue('rji')
+  @JsonValue("rji")
   rji,
-  @JsonValue('rjs')
+  @JsonValue("rjs")
   rjs,
-  @JsonValue('rka')
+  @JsonValue("rka")
   rka,
-  @JsonValue('rkb')
+  @JsonValue("rkb")
   rkb,
-  @JsonValue('rkh')
+  @JsonValue("rkh")
   rkh,
-  @JsonValue('rki')
+  @JsonValue("rki")
   rki,
-  @JsonValue('rkm')
+  @JsonValue("rkm")
   rkm,
-  @JsonValue('rkt')
+  @JsonValue("rkt")
   rkt,
-  @JsonValue('rkw')
+  @JsonValue("rkw")
   rkw,
-  @JsonValue('rma')
+  @JsonValue("rma")
   rma,
-  @JsonValue('rmb')
+  @JsonValue("rmb")
   rmb,
-  @JsonValue('rmc')
+  @JsonValue("rmc")
   rmc,
-  @JsonValue('rmd')
+  @JsonValue("rmd")
   rmd,
-  @JsonValue('rme')
+  @JsonValue("rme")
   rme,
-  @JsonValue('rmf')
+  @JsonValue("rmf")
   rmf,
-  @JsonValue('rmg')
+  @JsonValue("rmg")
   rmg,
-  @JsonValue('rmh')
+  @JsonValue("rmh")
   rmh,
-  @JsonValue('rmi')
+  @JsonValue("rmi")
   rmi,
-  @JsonValue('rmk')
+  @JsonValue("rmk")
   rmk,
-  @JsonValue('rml')
+  @JsonValue("rml")
   rml,
-  @JsonValue('rmm')
+  @JsonValue("rmm")
   rmm,
-  @JsonValue('rmn')
+  @JsonValue("rmn")
   rmn,
-  @JsonValue('rmo')
+  @JsonValue("rmo")
   rmo,
-  @JsonValue('rmp')
+  @JsonValue("rmp")
   rmp,
-  @JsonValue('rmq')
+  @JsonValue("rmq")
   rmq,
-  @JsonValue('rms')
+  @JsonValue("rms")
   rms,
-  @JsonValue('rmt')
+  @JsonValue("rmt")
   rmt,
-  @JsonValue('rmu')
+  @JsonValue("rmu")
   rmu,
-  @JsonValue('rmv')
+  @JsonValue("rmv")
   rmv,
-  @JsonValue('rmw')
+  @JsonValue("rmw")
   rmw,
-  @JsonValue('rmx')
+  @JsonValue("rmx")
   rmx,
-  @JsonValue('rmy')
+  @JsonValue("rmy")
   rmy,
-  @JsonValue('rmz')
+  @JsonValue("rmz")
   rmz,
-  @JsonValue('rnb')
+  @JsonValue("rnb")
   rnb,
-  @JsonValue('rnd')
+  @JsonValue("rnd")
   rnd,
-  @JsonValue('rng')
+  @JsonValue("rng")
   rng,
-  @JsonValue('rnl')
+  @JsonValue("rnl")
   rnl,
-  @JsonValue('rnn')
+  @JsonValue("rnn")
   rnn,
-  @JsonValue('rnp')
+  @JsonValue("rnp")
   rnp,
-  @JsonValue('rnr')
+  @JsonValue("rnr")
   rnr,
-  @JsonValue('rnw')
+  @JsonValue("rnw")
   rnw,
-  @JsonValue('rob')
+  @JsonValue("rob")
   rob,
-  @JsonValue('roc')
+  @JsonValue("roc")
   roc,
-  @JsonValue('rod')
+  @JsonValue("rod")
   rod,
-  @JsonValue('roe')
+  @JsonValue("roe")
   roe,
-  @JsonValue('rof')
+  @JsonValue("rof")
   rof,
-  @JsonValue('rog')
+  @JsonValue("rog")
   rog,
-  @JsonValue('roh')
+  @JsonValue("roh")
   roh,
-  @JsonValue('rol')
+  @JsonValue("rol")
   rol,
-  @JsonValue('rom')
+  @JsonValue("rom")
   rom,
-  @JsonValue('ron')
+  @JsonValue("ron")
   ron,
-  @JsonValue('roo')
+  @JsonValue("roo")
   roo,
-  @JsonValue('rop')
+  @JsonValue("rop")
   rop,
-  @JsonValue('ror')
+  @JsonValue("ror")
   ror,
-  @JsonValue('rou')
+  @JsonValue("rou")
   rou,
-  @JsonValue('row')
+  @JsonValue("row")
   row,
-  @JsonValue('rpn')
+  @JsonValue("rpn")
   rpn,
-  @JsonValue('rpt')
+  @JsonValue("rpt")
   rpt,
-  @JsonValue('rri')
+  @JsonValue("rri")
   rri,
-  @JsonValue('rro')
+  @JsonValue("rro")
   rro,
-  @JsonValue('rrt')
+  @JsonValue("rrt")
   rrt,
-  @JsonValue('rsb')
+  @JsonValue("rsb")
   rsb,
-  @JsonValue('rsk')
+  @JsonValue("rsk")
   rsk,
-  @JsonValue('rsl')
+  @JsonValue("rsl")
   rsl,
-  @JsonValue('rsm')
+  @JsonValue("rsm")
   rsm,
-  @JsonValue('rsn')
+  @JsonValue("rsn")
   rsn,
-  @JsonValue('rtc')
+  @JsonValue("rtc")
   rtc,
-  @JsonValue('rth')
+  @JsonValue("rth")
   rth,
-  @JsonValue('rtm')
+  @JsonValue("rtm")
   rtm,
-  @JsonValue('rts')
+  @JsonValue("rts")
   rts,
-  @JsonValue('rtw')
+  @JsonValue("rtw")
   rtw,
-  @JsonValue('rub')
+  @JsonValue("rub")
   rub,
-  @JsonValue('ruc')
+  @JsonValue("ruc")
   ruc,
-  @JsonValue('rue')
+  @JsonValue("rue")
   rue,
-  @JsonValue('ruf')
+  @JsonValue("ruf")
   ruf,
-  @JsonValue('rug')
+  @JsonValue("rug")
   rug,
-  @JsonValue('ruh')
+  @JsonValue("ruh")
   ruh,
-  @JsonValue('rui')
+  @JsonValue("rui")
   rui,
-  @JsonValue('ruk')
+  @JsonValue("ruk")
   ruk,
-  @JsonValue('run')
+  @JsonValue("run")
   run,
-  @JsonValue('ruo')
+  @JsonValue("ruo")
   ruo,
-  @JsonValue('rup')
+  @JsonValue("rup")
   rup,
-  @JsonValue('ruq')
+  @JsonValue("ruq")
   ruq,
-  @JsonValue('rus')
+  @JsonValue("rus")
   rus,
-  @JsonValue('rut')
+  @JsonValue("rut")
   rut,
-  @JsonValue('ruu')
+  @JsonValue("ruu")
   ruu,
-  @JsonValue('ruy')
+  @JsonValue("ruy")
   ruy,
-  @JsonValue('ruz')
+  @JsonValue("ruz")
   ruz,
-  @JsonValue('rwa')
+  @JsonValue("rwa")
   rwa,
-  @JsonValue('rwk')
+  @JsonValue("rwk")
   rwk,
-  @JsonValue('rwl')
+  @JsonValue("rwl")
   rwl,
-  @JsonValue('rwm')
+  @JsonValue("rwm")
   rwm,
-  @JsonValue('rwo')
+  @JsonValue("rwo")
   rwo,
-  @JsonValue('rwr')
+  @JsonValue("rwr")
   rwr,
-  @JsonValue('rxd')
+  @JsonValue("rxd")
   rxd,
-  @JsonValue('rxw')
+  @JsonValue("rxw")
   rxw,
-  @JsonValue('ryn')
+  @JsonValue("ryn")
   ryn,
-  @JsonValue('rys')
+  @JsonValue("rys")
   rys,
-  @JsonValue('ryu')
+  @JsonValue("ryu")
   ryu,
-  @JsonValue('rzh')
+  @JsonValue("rzh")
   rzh,
-  @JsonValue('saa')
+  @JsonValue("saa")
   saa,
-  @JsonValue('sab')
+  @JsonValue("sab")
   sab,
-  @JsonValue('sac')
+  @JsonValue("sac")
   sac,
-  @JsonValue('sad')
+  @JsonValue("sad")
   sad,
-  @JsonValue('sae')
+  @JsonValue("sae")
   sae,
-  @JsonValue('saf')
+  @JsonValue("saf")
   saf,
-  @JsonValue('sag')
+  @JsonValue("sag")
   sag,
-  @JsonValue('sah')
+  @JsonValue("sah")
   sah,
-  @JsonValue('saj')
+  @JsonValue("saj")
   saj,
-  @JsonValue('sak')
+  @JsonValue("sak")
   sak,
-  @JsonValue('sam')
+  @JsonValue("sam")
   sam,
-  @JsonValue('san')
+  @JsonValue("san")
   san,
-  @JsonValue('sao')
+  @JsonValue("sao")
   sao,
-  @JsonValue('saq')
+  @JsonValue("saq")
   saq,
-  @JsonValue('sar')
+  @JsonValue("sar")
   sar,
-  @JsonValue('sas')
+  @JsonValue("sas")
   sas,
-  @JsonValue('sat')
+  @JsonValue("sat")
   sat,
-  @JsonValue('sau')
+  @JsonValue("sau")
   sau,
-  @JsonValue('sav')
+  @JsonValue("sav")
   sav,
-  @JsonValue('saw')
+  @JsonValue("saw")
   saw,
-  @JsonValue('sax')
+  @JsonValue("sax")
   sax,
-  @JsonValue('say')
+  @JsonValue("say")
   say,
-  @JsonValue('saz')
+  @JsonValue("saz")
   saz,
-  @JsonValue('sba')
+  @JsonValue("sba")
   sba,
-  @JsonValue('sbb')
+  @JsonValue("sbb")
   sbb,
-  @JsonValue('sbc')
+  @JsonValue("sbc")
   sbc,
-  @JsonValue('sbd')
+  @JsonValue("sbd")
   sbd,
-  @JsonValue('sbe')
+  @JsonValue("sbe")
   sbe,
-  @JsonValue('sbf')
+  @JsonValue("sbf")
   sbf,
-  @JsonValue('sbg')
+  @JsonValue("sbg")
   sbg,
-  @JsonValue('sbh')
+  @JsonValue("sbh")
   sbh,
-  @JsonValue('sbi')
+  @JsonValue("sbi")
   sbi,
-  @JsonValue('sbj')
+  @JsonValue("sbj")
   sbj,
-  @JsonValue('sbk')
+  @JsonValue("sbk")
   sbk,
-  @JsonValue('sbl')
+  @JsonValue("sbl")
   sbl,
-  @JsonValue('sbm')
+  @JsonValue("sbm")
   sbm,
-  @JsonValue('sbn')
+  @JsonValue("sbn")
   sbn,
-  @JsonValue('sbo')
+  @JsonValue("sbo")
   sbo,
-  @JsonValue('sbp')
+  @JsonValue("sbp")
   sbp,
-  @JsonValue('sbq')
+  @JsonValue("sbq")
   sbq,
-  @JsonValue('sbr')
+  @JsonValue("sbr")
   sbr,
-  @JsonValue('sbs')
+  @JsonValue("sbs")
   sbs,
-  @JsonValue('sbt')
+  @JsonValue("sbt")
   sbt,
-  @JsonValue('sbu')
+  @JsonValue("sbu")
   sbu,
-  @JsonValue('sbv')
+  @JsonValue("sbv")
   sbv,
-  @JsonValue('sbw')
+  @JsonValue("sbw")
   sbw,
-  @JsonValue('sbx')
+  @JsonValue("sbx")
   sbx,
-  @JsonValue('sby')
+  @JsonValue("sby")
   sby,
-  @JsonValue('sbz')
+  @JsonValue("sbz")
   sbz,
-  @JsonValue('scb')
+  @JsonValue("scb")
   scb,
-  @JsonValue('sce')
+  @JsonValue("sce")
   sce,
-  @JsonValue('scf')
+  @JsonValue("scf")
   scf,
-  @JsonValue('scg')
+  @JsonValue("scg")
   scg,
-  @JsonValue('sch')
+  @JsonValue("sch")
   sch,
-  @JsonValue('sci')
+  @JsonValue("sci")
   sci,
-  @JsonValue('sck')
+  @JsonValue("sck")
   sck,
-  @JsonValue('scl')
+  @JsonValue("scl")
   scl,
-  @JsonValue('scn')
+  @JsonValue("scn")
   scn,
-  @JsonValue('sco')
+  @JsonValue("sco")
   sco,
-  @JsonValue('scp')
+  @JsonValue("scp")
   scp,
-  @JsonValue('scq')
+  @JsonValue("scq")
   scq,
-  @JsonValue('scs')
+  @JsonValue("scs")
   scs,
-  @JsonValue('sct')
+  @JsonValue("sct")
   sct,
-  @JsonValue('scu')
+  @JsonValue("scu")
   scu,
-  @JsonValue('scv')
+  @JsonValue("scv")
   scv,
-  @JsonValue('scw')
+  @JsonValue("scw")
   scw,
-  @JsonValue('scx')
+  @JsonValue("scx")
   scx,
-  @JsonValue('sda')
+  @JsonValue("sda")
   sda,
-  @JsonValue('sdb')
+  @JsonValue("sdb")
   sdb,
-  @JsonValue('sdc')
+  @JsonValue("sdc")
   sdc,
-  @JsonValue('sde')
+  @JsonValue("sde")
   sde,
-  @JsonValue('sdf')
+  @JsonValue("sdf")
   sdf,
-  @JsonValue('sdg')
+  @JsonValue("sdg")
   sdg,
-  @JsonValue('sdh')
+  @JsonValue("sdh")
   sdh,
-  @JsonValue('sdj')
+  @JsonValue("sdj")
   sdj,
-  @JsonValue('sdk')
+  @JsonValue("sdk")
   sdk,
-  @JsonValue('sdl')
+  @JsonValue("sdl")
   sdl,
-  @JsonValue('sdn')
+  @JsonValue("sdn")
   sdn,
-  @JsonValue('sdo')
+  @JsonValue("sdo")
   sdo,
-  @JsonValue('sdp')
+  @JsonValue("sdp")
   sdp,
-  @JsonValue('sdq')
+  @JsonValue("sdq")
   sdq,
-  @JsonValue('sdr')
+  @JsonValue("sdr")
   sdr,
-  @JsonValue('sds')
+  @JsonValue("sds")
   sds,
-  @JsonValue('sdt')
+  @JsonValue("sdt")
   sdt,
-  @JsonValue('sdu')
+  @JsonValue("sdu")
   sdu,
-  @JsonValue('sdx')
+  @JsonValue("sdx")
   sdx,
-  @JsonValue('sdz')
+  @JsonValue("sdz")
   sdz,
-  @JsonValue('sea')
+  @JsonValue("sea")
   sea,
-  @JsonValue('seb')
+  @JsonValue("seb")
   seb,
-  @JsonValue('sec')
+  @JsonValue("sec")
   sec,
-  @JsonValue('sed')
+  @JsonValue("sed")
   sed,
-  @JsonValue('see')
+  @JsonValue("see")
   see,
-  @JsonValue('sef')
+  @JsonValue("sef")
   sef,
-  @JsonValue('seg')
+  @JsonValue("seg")
   seg,
-  @JsonValue('seh')
+  @JsonValue("seh")
   seh,
-  @JsonValue('sei')
+  @JsonValue("sei")
   sei,
-  @JsonValue('sej')
+  @JsonValue("sej")
   sej,
-  @JsonValue('sek')
+  @JsonValue("sek")
   sek,
-  @JsonValue('sel')
+  @JsonValue("sel")
   sel,
-  @JsonValue('sen')
+  @JsonValue("sen")
   sen,
-  @JsonValue('seo')
+  @JsonValue("seo")
   seo,
-  @JsonValue('sep')
+  @JsonValue("sep")
   sep,
-  @JsonValue('seq')
+  @JsonValue("seq")
   seq,
-  @JsonValue('ser')
+  @JsonValue("ser")
   ser,
-  @JsonValue('ses')
+  @JsonValue("ses")
   ses,
-  @JsonValue('set')
+  @JsonValue("set")
   setAA,
-  @JsonValue('seu')
+  @JsonValue("seu")
   seu,
-  @JsonValue('sev')
+  @JsonValue("sev")
   sev,
-  @JsonValue('sew')
+  @JsonValue("sew")
   sew,
-  @JsonValue('sey')
+  @JsonValue("sey")
   sey,
-  @JsonValue('sez')
+  @JsonValue("sez")
   sez,
-  @JsonValue('sfb')
+  @JsonValue("sfb")
   sfb,
-  @JsonValue('sfe')
+  @JsonValue("sfe")
   sfe,
-  @JsonValue('sfm')
+  @JsonValue("sfm")
   sfm,
-  @JsonValue('sfs')
+  @JsonValue("sfs")
   sfs,
-  @JsonValue('sfw')
+  @JsonValue("sfw")
   sfw,
-  @JsonValue('sga')
+  @JsonValue("sga")
   sga,
-  @JsonValue('sgb')
+  @JsonValue("sgb")
   sgb,
-  @JsonValue('sgc')
+  @JsonValue("sgc")
   sgc,
-  @JsonValue('sgd')
+  @JsonValue("sgd")
   sgd,
-  @JsonValue('sge')
+  @JsonValue("sge")
   sge,
-  @JsonValue('sgg')
+  @JsonValue("sgg")
   sgg,
-  @JsonValue('sgh')
+  @JsonValue("sgh")
   sgh,
-  @JsonValue('sgi')
+  @JsonValue("sgi")
   sgi,
-  @JsonValue('sgj')
+  @JsonValue("sgj")
   sgj,
-  @JsonValue('sgk')
+  @JsonValue("sgk")
   sgk,
-  @JsonValue('sgm')
+  @JsonValue("sgm")
   sgm,
-  @JsonValue('sgp')
+  @JsonValue("sgp")
   sgp,
-  @JsonValue('sgr')
+  @JsonValue("sgr")
   sgr,
-  @JsonValue('sgs')
+  @JsonValue("sgs")
   sgs,
-  @JsonValue('sgt')
+  @JsonValue("sgt")
   sgt,
-  @JsonValue('sgu')
+  @JsonValue("sgu")
   sgu,
-  @JsonValue('sgw')
+  @JsonValue("sgw")
   sgw,
-  @JsonValue('sgx')
+  @JsonValue("sgx")
   sgx,
-  @JsonValue('sgy')
+  @JsonValue("sgy")
   sgy,
-  @JsonValue('sgz')
+  @JsonValue("sgz")
   sgz,
-  @JsonValue('sha')
+  @JsonValue("sha")
   sha,
-  @JsonValue('shb')
+  @JsonValue("shb")
   shb,
-  @JsonValue('shc')
+  @JsonValue("shc")
   shc,
-  @JsonValue('shd')
+  @JsonValue("shd")
   shd,
-  @JsonValue('she')
+  @JsonValue("she")
   she,
-  @JsonValue('shg')
+  @JsonValue("shg")
   shg,
-  @JsonValue('shh')
+  @JsonValue("shh")
   shh,
-  @JsonValue('shi')
+  @JsonValue("shi")
   shi,
-  @JsonValue('shj')
+  @JsonValue("shj")
   shj,
-  @JsonValue('shk')
+  @JsonValue("shk")
   shk,
-  @JsonValue('shl')
+  @JsonValue("shl")
   shl,
-  @JsonValue('shm')
+  @JsonValue("shm")
   shm,
-  @JsonValue('shn')
+  @JsonValue("shn")
   shn,
-  @JsonValue('sho')
+  @JsonValue("sho")
   sho,
-  @JsonValue('shp')
+  @JsonValue("shp")
   shp,
-  @JsonValue('shq')
+  @JsonValue("shq")
   shq,
-  @JsonValue('shr')
+  @JsonValue("shr")
   shr,
-  @JsonValue('shs')
+  @JsonValue("shs")
   shs,
-  @JsonValue('sht')
+  @JsonValue("sht")
   sht,
-  @JsonValue('shu')
+  @JsonValue("shu")
   shu,
-  @JsonValue('shv')
+  @JsonValue("shv")
   shv,
-  @JsonValue('shw')
+  @JsonValue("shw")
   shw,
-  @JsonValue('shx')
+  @JsonValue("shx")
   shx,
-  @JsonValue('shy')
+  @JsonValue("shy")
   shy,
-  @JsonValue('shz')
+  @JsonValue("shz")
   shz,
-  @JsonValue('sia')
+  @JsonValue("sia")
   sia,
-  @JsonValue('sib')
+  @JsonValue("sib")
   sib,
-  @JsonValue('sid')
+  @JsonValue("sid")
   sid,
-  @JsonValue('sie')
+  @JsonValue("sie")
   sie,
-  @JsonValue('sif')
+  @JsonValue("sif")
   sif,
-  @JsonValue('sig')
+  @JsonValue("sig")
   sig,
-  @JsonValue('sih')
+  @JsonValue("sih")
   sih,
-  @JsonValue('sii')
+  @JsonValue("sii")
   sii,
-  @JsonValue('sij')
+  @JsonValue("sij")
   sij,
-  @JsonValue('sik')
+  @JsonValue("sik")
   sik,
-  @JsonValue('sil')
+  @JsonValue("sil")
   sil,
-  @JsonValue('sim')
+  @JsonValue("sim")
   sim,
-  @JsonValue('sin')
+  @JsonValue("sin")
   sin,
-  @JsonValue('sip')
+  @JsonValue("sip")
   sip,
-  @JsonValue('siq')
+  @JsonValue("siq")
   siq,
-  @JsonValue('sir')
+  @JsonValue("sir")
   sir,
-  @JsonValue('sis')
+  @JsonValue("sis")
   sis,
-  @JsonValue('siu')
+  @JsonValue("siu")
   siu,
-  @JsonValue('siv')
+  @JsonValue("siv")
   siv,
-  @JsonValue('siw')
+  @JsonValue("siw")
   siw,
-  @JsonValue('six')
+  @JsonValue("six")
   six,
-  @JsonValue('siy')
+  @JsonValue("siy")
   siy,
-  @JsonValue('siz')
+  @JsonValue("siz")
   siz,
-  @JsonValue('sja')
+  @JsonValue("sja")
   sja,
-  @JsonValue('sjb')
+  @JsonValue("sjb")
   sjb,
-  @JsonValue('sjd')
+  @JsonValue("sjd")
   sjd,
-  @JsonValue('sje')
+  @JsonValue("sje")
   sje,
-  @JsonValue('sjg')
+  @JsonValue("sjg")
   sjg,
-  @JsonValue('sjk')
+  @JsonValue("sjk")
   sjk,
-  @JsonValue('sjl')
+  @JsonValue("sjl")
   sjl,
-  @JsonValue('sjm')
+  @JsonValue("sjm")
   sjm,
-  @JsonValue('sjn')
+  @JsonValue("sjn")
   sjn,
-  @JsonValue('sjo')
+  @JsonValue("sjo")
   sjo,
-  @JsonValue('sjp')
+  @JsonValue("sjp")
   sjp,
-  @JsonValue('sjr')
+  @JsonValue("sjr")
   sjr,
-  @JsonValue('sjs')
+  @JsonValue("sjs")
   sjs,
-  @JsonValue('sjt')
+  @JsonValue("sjt")
   sjt,
-  @JsonValue('sju')
+  @JsonValue("sju")
   sju,
-  @JsonValue('sjw')
+  @JsonValue("sjw")
   sjw,
-  @JsonValue('ska')
+  @JsonValue("ska")
   ska,
-  @JsonValue('skb')
+  @JsonValue("skb")
   skb,
-  @JsonValue('skc')
+  @JsonValue("skc")
   skc,
-  @JsonValue('skd')
+  @JsonValue("skd")
   skd,
-  @JsonValue('ske')
+  @JsonValue("ske")
   ske,
-  @JsonValue('skf')
+  @JsonValue("skf")
   skf,
-  @JsonValue('skg')
+  @JsonValue("skg")
   skg,
-  @JsonValue('skh')
+  @JsonValue("skh")
   skh,
-  @JsonValue('ski')
+  @JsonValue("ski")
   ski,
-  @JsonValue('skj')
+  @JsonValue("skj")
   skj,
-  @JsonValue('skm')
+  @JsonValue("skm")
   skm,
-  @JsonValue('skn')
+  @JsonValue("skn")
   skn,
-  @JsonValue('sko')
+  @JsonValue("sko")
   sko,
-  @JsonValue('skp')
+  @JsonValue("skp")
   skp,
-  @JsonValue('skq')
+  @JsonValue("skq")
   skq,
-  @JsonValue('skr')
+  @JsonValue("skr")
   skr,
-  @JsonValue('sks')
+  @JsonValue("sks")
   sks,
-  @JsonValue('skt')
+  @JsonValue("skt")
   skt,
-  @JsonValue('sku')
+  @JsonValue("sku")
   sku,
-  @JsonValue('skv')
+  @JsonValue("skv")
   skv,
-  @JsonValue('skw')
+  @JsonValue("skw")
   skw,
-  @JsonValue('skx')
+  @JsonValue("skx")
   skx,
-  @JsonValue('sky')
+  @JsonValue("sky")
   sky,
-  @JsonValue('skz')
+  @JsonValue("skz")
   skz,
-  @JsonValue('slc')
+  @JsonValue("slc")
   slc,
-  @JsonValue('sld')
+  @JsonValue("sld")
   sld,
-  @JsonValue('sle')
+  @JsonValue("sle")
   sle,
-  @JsonValue('slf')
+  @JsonValue("slf")
   slf,
-  @JsonValue('slg')
+  @JsonValue("slg")
   slg,
-  @JsonValue('slh')
+  @JsonValue("slh")
   slh,
-  @JsonValue('sli')
+  @JsonValue("sli")
   sli,
-  @JsonValue('slj')
+  @JsonValue("slj")
   slj,
-  @JsonValue('slk')
+  @JsonValue("slk")
   slk,
-  @JsonValue('sll')
+  @JsonValue("sll")
   sll,
-  @JsonValue('slm')
+  @JsonValue("slm")
   slm,
-  @JsonValue('sln')
+  @JsonValue("sln")
   sln,
-  @JsonValue('slp')
+  @JsonValue("slp")
   slp,
-  @JsonValue('slq')
+  @JsonValue("slq")
   slq,
-  @JsonValue('slr')
+  @JsonValue("slr")
   slr,
-  @JsonValue('sls')
+  @JsonValue("sls")
   sls,
-  @JsonValue('slt')
+  @JsonValue("slt")
   slt,
-  @JsonValue('slu')
+  @JsonValue("slu")
   slu,
-  @JsonValue('slv')
+  @JsonValue("slv")
   slv,
-  @JsonValue('slw')
+  @JsonValue("slw")
   slw,
-  @JsonValue('slx')
+  @JsonValue("slx")
   slx,
-  @JsonValue('sly')
+  @JsonValue("sly")
   sly,
-  @JsonValue('slz')
+  @JsonValue("slz")
   slz,
-  @JsonValue('sma')
+  @JsonValue("sma")
   sma,
-  @JsonValue('smb')
+  @JsonValue("smb")
   smb,
-  @JsonValue('smc')
+  @JsonValue("smc")
   smc,
-  @JsonValue('sme')
+  @JsonValue("sme")
   sme,
-  @JsonValue('smf')
+  @JsonValue("smf")
   smf,
-  @JsonValue('smg')
+  @JsonValue("smg")
   smg,
-  @JsonValue('smh')
+  @JsonValue("smh")
   smh,
-  @JsonValue('smj')
+  @JsonValue("smj")
   smj,
-  @JsonValue('smk')
+  @JsonValue("smk")
   smk,
-  @JsonValue('sml')
+  @JsonValue("sml")
   sml,
-  @JsonValue('smm')
+  @JsonValue("smm")
   smm,
-  @JsonValue('smn')
+  @JsonValue("smn")
   smn,
-  @JsonValue('smo')
+  @JsonValue("smo")
   smo,
-  @JsonValue('smp')
+  @JsonValue("smp")
   smp,
-  @JsonValue('smq')
+  @JsonValue("smq")
   smq,
-  @JsonValue('smr')
+  @JsonValue("smr")
   smr,
-  @JsonValue('sms')
+  @JsonValue("sms")
   sms,
-  @JsonValue('smt')
+  @JsonValue("smt")
   smt,
-  @JsonValue('smu')
+  @JsonValue("smu")
   smu,
-  @JsonValue('smv')
+  @JsonValue("smv")
   smv,
-  @JsonValue('smw')
+  @JsonValue("smw")
   smw,
-  @JsonValue('smx')
+  @JsonValue("smx")
   smx,
-  @JsonValue('smy')
+  @JsonValue("smy")
   smy,
-  @JsonValue('smz')
+  @JsonValue("smz")
   smz,
-  @JsonValue('sna')
+  @JsonValue("sna")
   sna,
-  @JsonValue('snc')
+  @JsonValue("snc")
   snc,
-  @JsonValue('snd')
+  @JsonValue("snd")
   snd,
-  @JsonValue('sne')
+  @JsonValue("sne")
   sne,
-  @JsonValue('snf')
+  @JsonValue("snf")
   snf,
-  @JsonValue('sng')
+  @JsonValue("sng")
   sng,
-  @JsonValue('sni')
+  @JsonValue("sni")
   sni,
-  @JsonValue('snj')
+  @JsonValue("snj")
   snj,
-  @JsonValue('snk')
+  @JsonValue("snk")
   snk,
-  @JsonValue('snl')
+  @JsonValue("snl")
   snl,
-  @JsonValue('snm')
+  @JsonValue("snm")
   snm,
-  @JsonValue('snn')
+  @JsonValue("snn")
   snn,
-  @JsonValue('sno')
+  @JsonValue("sno")
   sno,
-  @JsonValue('snp')
+  @JsonValue("snp")
   snp,
-  @JsonValue('snq')
+  @JsonValue("snq")
   snq,
-  @JsonValue('snr')
+  @JsonValue("snr")
   snr,
-  @JsonValue('sns')
+  @JsonValue("sns")
   sns,
-  @JsonValue('snu')
+  @JsonValue("snu")
   snu,
-  @JsonValue('snv')
+  @JsonValue("snv")
   snv,
-  @JsonValue('snw')
+  @JsonValue("snw")
   snw,
-  @JsonValue('snx')
+  @JsonValue("snx")
   snx,
-  @JsonValue('sny')
+  @JsonValue("sny")
   sny,
-  @JsonValue('snz')
+  @JsonValue("snz")
   snz,
-  @JsonValue('soa')
+  @JsonValue("soa")
   soa,
-  @JsonValue('sob')
+  @JsonValue("sob")
   sob,
-  @JsonValue('soc')
+  @JsonValue("soc")
   soc,
-  @JsonValue('sod')
+  @JsonValue("sod")
   sod,
-  @JsonValue('soe')
+  @JsonValue("soe")
   soe,
-  @JsonValue('sog')
+  @JsonValue("sog")
   sog,
-  @JsonValue('soh')
+  @JsonValue("soh")
   soh,
-  @JsonValue('soi')
+  @JsonValue("soi")
   soi,
-  @JsonValue('soj')
+  @JsonValue("soj")
   soj,
-  @JsonValue('sok')
+  @JsonValue("sok")
   sok,
-  @JsonValue('sol')
+  @JsonValue("sol")
   sol,
-  @JsonValue('som')
+  @JsonValue("som")
   som,
-  @JsonValue('soo')
+  @JsonValue("soo")
   soo,
-  @JsonValue('sop')
+  @JsonValue("sop")
   sop,
-  @JsonValue('soq')
+  @JsonValue("soq")
   soq,
-  @JsonValue('sor')
+  @JsonValue("sor")
   sor,
-  @JsonValue('sos')
+  @JsonValue("sos")
   sos,
-  @JsonValue('sot')
+  @JsonValue("sot")
   sot,
-  @JsonValue('sou')
+  @JsonValue("sou")
   sou,
-  @JsonValue('sov')
+  @JsonValue("sov")
   sov,
-  @JsonValue('sow')
+  @JsonValue("sow")
   sow,
-  @JsonValue('sox')
+  @JsonValue("sox")
   sox,
-  @JsonValue('soy')
+  @JsonValue("soy")
   soy,
-  @JsonValue('soz')
+  @JsonValue("soz")
   soz,
-  @JsonValue('spa')
+  @JsonValue("spa")
   spa,
-  @JsonValue('spb')
+  @JsonValue("spb")
   spb,
-  @JsonValue('spc')
+  @JsonValue("spc")
   spc,
-  @JsonValue('spd')
+  @JsonValue("spd")
   spd,
-  @JsonValue('spe')
+  @JsonValue("spe")
   spe,
-  @JsonValue('spg')
+  @JsonValue("spg")
   spg,
-  @JsonValue('spi')
+  @JsonValue("spi")
   spi,
-  @JsonValue('spk')
+  @JsonValue("spk")
   spk,
-  @JsonValue('spl')
+  @JsonValue("spl")
   spl,
-  @JsonValue('spm')
+  @JsonValue("spm")
   spm,
-  @JsonValue('spn')
+  @JsonValue("spn")
   spn,
-  @JsonValue('spo')
+  @JsonValue("spo")
   spo,
-  @JsonValue('spp')
+  @JsonValue("spp")
   spp,
-  @JsonValue('spq')
+  @JsonValue("spq")
   spq,
-  @JsonValue('spr')
+  @JsonValue("spr")
   spr,
-  @JsonValue('sps')
+  @JsonValue("sps")
   sps,
-  @JsonValue('spt')
+  @JsonValue("spt")
   spt,
-  @JsonValue('spu')
+  @JsonValue("spu")
   spu,
-  @JsonValue('spv')
+  @JsonValue("spv")
   spv,
-  @JsonValue('spx')
+  @JsonValue("spx")
   spx,
-  @JsonValue('spy')
+  @JsonValue("spy")
   spy,
-  @JsonValue('sqa')
+  @JsonValue("sqa")
   sqa,
-  @JsonValue('sqh')
+  @JsonValue("sqh")
   sqh,
-  @JsonValue('sqi')
+  @JsonValue("sqi")
   sqi,
-  @JsonValue('sqk')
+  @JsonValue("sqk")
   sqk,
-  @JsonValue('sqm')
+  @JsonValue("sqm")
   sqm,
-  @JsonValue('sqn')
+  @JsonValue("sqn")
   sqn,
-  @JsonValue('sqo')
+  @JsonValue("sqo")
   sqo,
-  @JsonValue('sqq')
+  @JsonValue("sqq")
   sqq,
-  @JsonValue('sqr')
+  @JsonValue("sqr")
   sqr,
-  @JsonValue('sqs')
+  @JsonValue("sqs")
   sqs,
-  @JsonValue('sqt')
+  @JsonValue("sqt")
   sqt,
-  @JsonValue('squ')
+  @JsonValue("squ")
   squ,
-  @JsonValue('sqx')
+  @JsonValue("sqx")
   sqx,
-  @JsonValue('sra')
+  @JsonValue("sra")
   sra,
-  @JsonValue('srb')
+  @JsonValue("srb")
   srb,
-  @JsonValue('src')
+  @JsonValue("src")
   src,
-  @JsonValue('srd')
+  @JsonValue("srd")
   srd,
-  @JsonValue('sre')
+  @JsonValue("sre")
   sre,
-  @JsonValue('srf')
+  @JsonValue("srf")
   srf,
-  @JsonValue('srg')
+  @JsonValue("srg")
   srg,
-  @JsonValue('srh')
+  @JsonValue("srh")
   srh,
-  @JsonValue('sri')
+  @JsonValue("sri")
   sri,
-  @JsonValue('srk')
+  @JsonValue("srk")
   srk,
-  @JsonValue('srl')
+  @JsonValue("srl")
   srl,
-  @JsonValue('srm')
+  @JsonValue("srm")
   srm,
-  @JsonValue('srn')
+  @JsonValue("srn")
   srn,
-  @JsonValue('sro')
+  @JsonValue("sro")
   sro,
-  @JsonValue('srp')
+  @JsonValue("srp")
   srp,
-  @JsonValue('srq')
+  @JsonValue("srq")
   srq,
-  @JsonValue('srr')
+  @JsonValue("srr")
   srr,
-  @JsonValue('srs')
+  @JsonValue("srs")
   srs,
-  @JsonValue('srt')
+  @JsonValue("srt")
   srt,
-  @JsonValue('sru')
+  @JsonValue("sru")
   sru,
-  @JsonValue('srv')
+  @JsonValue("srv")
   srv,
-  @JsonValue('srw')
+  @JsonValue("srw")
   srw,
-  @JsonValue('srx')
+  @JsonValue("srx")
   srx,
-  @JsonValue('sry')
+  @JsonValue("sry")
   sry,
-  @JsonValue('srz')
+  @JsonValue("srz")
   srz,
-  @JsonValue('ssb')
+  @JsonValue("ssb")
   ssb,
-  @JsonValue('ssc')
+  @JsonValue("ssc")
   ssc,
-  @JsonValue('ssd')
+  @JsonValue("ssd")
   ssd,
-  @JsonValue('sse')
+  @JsonValue("sse")
   sse,
-  @JsonValue('ssf')
+  @JsonValue("ssf")
   ssf,
-  @JsonValue('ssg')
+  @JsonValue("ssg")
   ssg,
-  @JsonValue('ssh')
+  @JsonValue("ssh")
   ssh,
-  @JsonValue('ssi')
+  @JsonValue("ssi")
   ssi,
-  @JsonValue('ssj')
+  @JsonValue("ssj")
   ssj,
-  @JsonValue('ssk')
+  @JsonValue("ssk")
   ssk,
-  @JsonValue('ssl')
+  @JsonValue("ssl")
   ssl,
-  @JsonValue('ssm')
+  @JsonValue("ssm")
   ssm,
-  @JsonValue('ssn')
+  @JsonValue("ssn")
   ssn,
-  @JsonValue('sso')
+  @JsonValue("sso")
   sso,
-  @JsonValue('ssp')
+  @JsonValue("ssp")
   ssp,
-  @JsonValue('ssq')
+  @JsonValue("ssq")
   ssq,
-  @JsonValue('ssr')
+  @JsonValue("ssr")
   ssr,
-  @JsonValue('sss')
+  @JsonValue("sss")
   sss,
-  @JsonValue('sst')
+  @JsonValue("sst")
   sst,
-  @JsonValue('ssu')
+  @JsonValue("ssu")
   ssu,
-  @JsonValue('ssv')
+  @JsonValue("ssv")
   ssv,
-  @JsonValue('ssw')
+  @JsonValue("ssw")
   ssw,
-  @JsonValue('ssx')
+  @JsonValue("ssx")
   ssx,
-  @JsonValue('ssy')
+  @JsonValue("ssy")
   ssy,
-  @JsonValue('ssz')
+  @JsonValue("ssz")
   ssz,
-  @JsonValue('sta')
+  @JsonValue("sta")
   sta,
-  @JsonValue('stb')
+  @JsonValue("stb")
   stb,
-  @JsonValue('std')
+  @JsonValue("std")
   std,
-  @JsonValue('ste')
+  @JsonValue("ste")
   ste,
-  @JsonValue('stf')
+  @JsonValue("stf")
   stf,
-  @JsonValue('stg')
+  @JsonValue("stg")
   stg,
-  @JsonValue('sth')
+  @JsonValue("sth")
   sth,
-  @JsonValue('sti')
+  @JsonValue("sti")
   sti,
-  @JsonValue('stj')
+  @JsonValue("stj")
   stj,
-  @JsonValue('stk')
+  @JsonValue("stk")
   stk,
-  @JsonValue('stl')
+  @JsonValue("stl")
   stl,
-  @JsonValue('stm')
+  @JsonValue("stm")
   stm,
-  @JsonValue('stn')
+  @JsonValue("stn")
   stn,
-  @JsonValue('sto')
+  @JsonValue("sto")
   sto,
-  @JsonValue('stp')
+  @JsonValue("stp")
   stp,
-  @JsonValue('stq')
+  @JsonValue("stq")
   stq,
-  @JsonValue('str')
+  @JsonValue("str")
   str,
-  @JsonValue('sts')
+  @JsonValue("sts")
   sts,
-  @JsonValue('stt')
+  @JsonValue("stt")
   stt,
-  @JsonValue('stu')
+  @JsonValue("stu")
   stu,
-  @JsonValue('stv')
+  @JsonValue("stv")
   stv,
-  @JsonValue('stw')
+  @JsonValue("stw")
   stw,
-  @JsonValue('sty')
+  @JsonValue("sty")
   sty,
-  @JsonValue('sua')
+  @JsonValue("sua")
   sua,
-  @JsonValue('sub')
+  @JsonValue("sub")
   sub,
-  @JsonValue('suc')
+  @JsonValue("suc")
   suc,
-  @JsonValue('sue')
+  @JsonValue("sue")
   sue,
-  @JsonValue('sug')
+  @JsonValue("sug")
   sug,
-  @JsonValue('sui')
+  @JsonValue("sui")
   sui,
-  @JsonValue('suj')
+  @JsonValue("suj")
   suj,
-  @JsonValue('suk')
+  @JsonValue("suk")
   suk,
-  @JsonValue('sun')
+  @JsonValue("sun")
   sun,
-  @JsonValue('suo')
+  @JsonValue("suo")
   suo,
-  @JsonValue('suq')
+  @JsonValue("suq")
   suq,
-  @JsonValue('sur')
+  @JsonValue("sur")
   sur,
-  @JsonValue('sus')
+  @JsonValue("sus")
   sus,
-  @JsonValue('sut')
+  @JsonValue("sut")
   sut,
-  @JsonValue('suv')
+  @JsonValue("suv")
   suv,
-  @JsonValue('suw')
+  @JsonValue("suw")
   suw,
-  @JsonValue('sux')
+  @JsonValue("sux")
   sux,
-  @JsonValue('suy')
+  @JsonValue("suy")
   suy,
-  @JsonValue('suz')
+  @JsonValue("suz")
   suz,
-  @JsonValue('sva')
+  @JsonValue("sva")
   sva,
-  @JsonValue('svb')
+  @JsonValue("svb")
   svb,
-  @JsonValue('svc')
+  @JsonValue("svc")
   svc,
-  @JsonValue('sve')
+  @JsonValue("sve")
   sve,
-  @JsonValue('svk')
+  @JsonValue("svk")
   svk,
-  @JsonValue('svm')
+  @JsonValue("svm")
   svm,
-  @JsonValue('svs')
+  @JsonValue("svs")
   svs,
-  @JsonValue('svx')
+  @JsonValue("svx")
   svx,
-  @JsonValue('swa')
+  @JsonValue("swa")
   swa,
-  @JsonValue('swb')
+  @JsonValue("swb")
   swb,
-  @JsonValue('swc')
+  @JsonValue("swc")
   swc,
-  @JsonValue('swe')
+  @JsonValue("swe")
   swe,
-  @JsonValue('swf')
+  @JsonValue("swf")
   swf,
-  @JsonValue('swg')
+  @JsonValue("swg")
   swg,
-  @JsonValue('swh')
+  @JsonValue("swh")
   swh,
-  @JsonValue('swi')
+  @JsonValue("swi")
   swi,
-  @JsonValue('swj')
+  @JsonValue("swj")
   swj,
-  @JsonValue('swk')
+  @JsonValue("swk")
   swk,
-  @JsonValue('swl')
+  @JsonValue("swl")
   swl,
-  @JsonValue('swm')
+  @JsonValue("swm")
   swm,
-  @JsonValue('swn')
+  @JsonValue("swn")
   swn,
-  @JsonValue('swo')
+  @JsonValue("swo")
   swo,
-  @JsonValue('swp')
+  @JsonValue("swp")
   swp,
-  @JsonValue('swq')
+  @JsonValue("swq")
   swq,
-  @JsonValue('swr')
+  @JsonValue("swr")
   swr,
-  @JsonValue('sws')
+  @JsonValue("sws")
   sws,
-  @JsonValue('swt')
+  @JsonValue("swt")
   swt,
-  @JsonValue('swu')
+  @JsonValue("swu")
   swu,
-  @JsonValue('swv')
+  @JsonValue("swv")
   swv,
-  @JsonValue('sww')
+  @JsonValue("sww")
   sww,
-  @JsonValue('swx')
+  @JsonValue("swx")
   swx,
-  @JsonValue('swy')
+  @JsonValue("swy")
   swy,
-  @JsonValue('sxb')
+  @JsonValue("sxb")
   sxb,
-  @JsonValue('sxc')
+  @JsonValue("sxc")
   sxc,
-  @JsonValue('sxe')
+  @JsonValue("sxe")
   sxe,
-  @JsonValue('sxg')
+  @JsonValue("sxg")
   sxg,
-  @JsonValue('sxk')
+  @JsonValue("sxk")
   sxk,
-  @JsonValue('sxl')
+  @JsonValue("sxl")
   sxl,
-  @JsonValue('sxm')
+  @JsonValue("sxm")
   sxm,
-  @JsonValue('sxn')
+  @JsonValue("sxn")
   sxn,
-  @JsonValue('sxo')
+  @JsonValue("sxo")
   sxo,
-  @JsonValue('sxr')
+  @JsonValue("sxr")
   sxr,
-  @JsonValue('sxs')
+  @JsonValue("sxs")
   sxs,
-  @JsonValue('sxu')
+  @JsonValue("sxu")
   sxu,
-  @JsonValue('sxw')
+  @JsonValue("sxw")
   sxw,
-  @JsonValue('sya')
+  @JsonValue("sya")
   sya,
-  @JsonValue('syb')
+  @JsonValue("syb")
   syb,
-  @JsonValue('syc')
+  @JsonValue("syc")
   syc,
-  @JsonValue('syi')
+  @JsonValue("syi")
   syi,
-  @JsonValue('syk')
+  @JsonValue("syk")
   syk,
-  @JsonValue('syl')
+  @JsonValue("syl")
   syl,
-  @JsonValue('sym')
+  @JsonValue("sym")
   sym,
-  @JsonValue('syn')
+  @JsonValue("syn")
   syn,
-  @JsonValue('syo')
+  @JsonValue("syo")
   syo,
-  @JsonValue('syr')
+  @JsonValue("syr")
   syr,
-  @JsonValue('sys')
+  @JsonValue("sys")
   sys,
-  @JsonValue('syw')
+  @JsonValue("syw")
   syw,
-  @JsonValue('syx')
+  @JsonValue("syx")
   syx,
-  @JsonValue('syy')
+  @JsonValue("syy")
   syy,
-  @JsonValue('sza')
+  @JsonValue("sza")
   sza,
-  @JsonValue('szb')
+  @JsonValue("szb")
   szb,
-  @JsonValue('szc')
+  @JsonValue("szc")
   szc,
-  @JsonValue('szd')
+  @JsonValue("szd")
   szd,
-  @JsonValue('sze')
+  @JsonValue("sze")
   sze,
-  @JsonValue('szg')
+  @JsonValue("szg")
   szg,
-  @JsonValue('szl')
+  @JsonValue("szl")
   szl,
-  @JsonValue('szn')
+  @JsonValue("szn")
   szn,
-  @JsonValue('szp')
+  @JsonValue("szp")
   szp,
-  @JsonValue('szs')
+  @JsonValue("szs")
   szs,
-  @JsonValue('szv')
+  @JsonValue("szv")
   szv,
-  @JsonValue('szw')
+  @JsonValue("szw")
   szw,
-  @JsonValue('szy')
+  @JsonValue("szy")
   szy,
-  @JsonValue('taa')
+  @JsonValue("taa")
   taa,
-  @JsonValue('tab')
+  @JsonValue("tab")
   tab,
-  @JsonValue('tac')
+  @JsonValue("tac")
   tac,
-  @JsonValue('tad')
+  @JsonValue("tad")
   tad,
-  @JsonValue('tae')
+  @JsonValue("tae")
   tae,
-  @JsonValue('taf')
+  @JsonValue("taf")
   taf,
-  @JsonValue('tag')
+  @JsonValue("tag")
   tag,
-  @JsonValue('tah')
+  @JsonValue("tah")
   tah,
-  @JsonValue('taj')
+  @JsonValue("taj")
   taj,
-  @JsonValue('tak')
+  @JsonValue("tak")
   tak,
-  @JsonValue('tal')
+  @JsonValue("tal")
   tal,
-  @JsonValue('tam')
+  @JsonValue("tam")
   tam,
-  @JsonValue('tan')
+  @JsonValue("tan")
   tan,
-  @JsonValue('tao')
+  @JsonValue("tao")
   tao,
-  @JsonValue('tap')
+  @JsonValue("tap")
   tap,
-  @JsonValue('taq')
+  @JsonValue("taq")
   taq,
-  @JsonValue('tar')
+  @JsonValue("tar")
   tar,
-  @JsonValue('tas')
+  @JsonValue("tas")
   tas,
-  @JsonValue('tat')
+  @JsonValue("tat")
   tat,
-  @JsonValue('tau')
+  @JsonValue("tau")
   tau,
-  @JsonValue('tav')
+  @JsonValue("tav")
   tav,
-  @JsonValue('taw')
+  @JsonValue("taw")
   taw,
-  @JsonValue('tax')
+  @JsonValue("tax")
   tax,
-  @JsonValue('tay')
+  @JsonValue("tay")
   tay,
-  @JsonValue('taz')
+  @JsonValue("taz")
   taz,
-  @JsonValue('tba')
+  @JsonValue("tba")
   tba,
-  @JsonValue('tbc')
+  @JsonValue("tbc")
   tbc,
-  @JsonValue('tbd')
+  @JsonValue("tbd")
   tbd,
-  @JsonValue('tbe')
+  @JsonValue("tbe")
   tbe,
-  @JsonValue('tbf')
+  @JsonValue("tbf")
   tbf,
-  @JsonValue('tbg')
+  @JsonValue("tbg")
   tbg,
-  @JsonValue('tbh')
+  @JsonValue("tbh")
   tbh,
-  @JsonValue('tbi')
+  @JsonValue("tbi")
   tbi,
-  @JsonValue('tbj')
+  @JsonValue("tbj")
   tbj,
-  @JsonValue('tbk')
+  @JsonValue("tbk")
   tbk,
-  @JsonValue('tbl')
+  @JsonValue("tbl")
   tbl,
-  @JsonValue('tbm')
+  @JsonValue("tbm")
   tbm,
-  @JsonValue('tbn')
+  @JsonValue("tbn")
   tbn,
-  @JsonValue('tbo')
+  @JsonValue("tbo")
   tbo,
-  @JsonValue('tbp')
+  @JsonValue("tbp")
   tbp,
-  @JsonValue('tbr')
+  @JsonValue("tbr")
   tbr,
-  @JsonValue('tbs')
+  @JsonValue("tbs")
   tbs,
-  @JsonValue('tbt')
+  @JsonValue("tbt")
   tbt,
-  @JsonValue('tbu')
+  @JsonValue("tbu")
   tbu,
-  @JsonValue('tbv')
+  @JsonValue("tbv")
   tbv,
-  @JsonValue('tbw')
+  @JsonValue("tbw")
   tbw,
-  @JsonValue('tbx')
+  @JsonValue("tbx")
   tbx,
-  @JsonValue('tby')
+  @JsonValue("tby")
   tby,
-  @JsonValue('tbz')
+  @JsonValue("tbz")
   tbz,
-  @JsonValue('tca')
+  @JsonValue("tca")
   tca,
-  @JsonValue('tcb')
+  @JsonValue("tcb")
   tcb,
-  @JsonValue('tcc')
+  @JsonValue("tcc")
   tcc,
-  @JsonValue('tcd')
+  @JsonValue("tcd")
   tcd,
-  @JsonValue('tce')
+  @JsonValue("tce")
   tce,
-  @JsonValue('tcf')
+  @JsonValue("tcf")
   tcf,
-  @JsonValue('tcg')
+  @JsonValue("tcg")
   tcg,
-  @JsonValue('tch')
+  @JsonValue("tch")
   tch,
-  @JsonValue('tci')
+  @JsonValue("tci")
   tci,
-  @JsonValue('tck')
+  @JsonValue("tck")
   tck,
-  @JsonValue('tcl')
+  @JsonValue("tcl")
   tcl,
-  @JsonValue('tcm')
+  @JsonValue("tcm")
   tcm,
-  @JsonValue('tcn')
+  @JsonValue("tcn")
   tcn,
-  @JsonValue('tco')
+  @JsonValue("tco")
   tco,
-  @JsonValue('tcp')
+  @JsonValue("tcp")
   tcp,
-  @JsonValue('tcq')
+  @JsonValue("tcq")
   tcq,
-  @JsonValue('tcs')
+  @JsonValue("tcs")
   tcs,
-  @JsonValue('tct')
+  @JsonValue("tct")
   tct,
-  @JsonValue('tcu')
+  @JsonValue("tcu")
   tcu,
-  @JsonValue('tcw')
+  @JsonValue("tcw")
   tcw,
-  @JsonValue('tcx')
+  @JsonValue("tcx")
   tcx,
-  @JsonValue('tcy')
+  @JsonValue("tcy")
   tcy,
-  @JsonValue('tcz')
+  @JsonValue("tcz")
   tcz,
-  @JsonValue('tda')
+  @JsonValue("tda")
   tda,
-  @JsonValue('tdb')
+  @JsonValue("tdb")
   tdb,
-  @JsonValue('tdc')
+  @JsonValue("tdc")
   tdc,
-  @JsonValue('tdd')
+  @JsonValue("tdd")
   tdd,
-  @JsonValue('tde')
+  @JsonValue("tde")
   tde,
-  @JsonValue('tdf')
+  @JsonValue("tdf")
   tdf,
-  @JsonValue('tdg')
+  @JsonValue("tdg")
   tdg,
-  @JsonValue('tdh')
+  @JsonValue("tdh")
   tdh,
-  @JsonValue('tdi')
+  @JsonValue("tdi")
   tdi,
-  @JsonValue('tdj')
+  @JsonValue("tdj")
   tdj,
-  @JsonValue('tdk')
+  @JsonValue("tdk")
   tdk,
-  @JsonValue('tdl')
+  @JsonValue("tdl")
   tdl,
-  @JsonValue('tdm')
+  @JsonValue("tdm")
   tdm,
-  @JsonValue('tdn')
+  @JsonValue("tdn")
   tdn,
-  @JsonValue('tdo')
+  @JsonValue("tdo")
   tdo,
-  @JsonValue('tdq')
+  @JsonValue("tdq")
   tdq,
-  @JsonValue('tdr')
+  @JsonValue("tdr")
   tdr,
-  @JsonValue('tds')
+  @JsonValue("tds")
   tds,
-  @JsonValue('tdt')
+  @JsonValue("tdt")
   tdt,
-  @JsonValue('tdv')
+  @JsonValue("tdv")
   tdv,
-  @JsonValue('tdx')
+  @JsonValue("tdx")
   tdx,
-  @JsonValue('tdy')
+  @JsonValue("tdy")
   tdy,
-  @JsonValue('tea')
+  @JsonValue("tea")
   tea,
-  @JsonValue('teb')
+  @JsonValue("teb")
   teb,
-  @JsonValue('tec')
+  @JsonValue("tec")
   tec,
-  @JsonValue('ted')
+  @JsonValue("ted")
   ted,
-  @JsonValue('tee')
+  @JsonValue("tee")
   tee,
-  @JsonValue('tef')
+  @JsonValue("tef")
   tef,
-  @JsonValue('teg')
+  @JsonValue("teg")
   teg,
-  @JsonValue('teh')
+  @JsonValue("teh")
   teh,
-  @JsonValue('tei')
+  @JsonValue("tei")
   tei,
-  @JsonValue('tek')
+  @JsonValue("tek")
   tek,
-  @JsonValue('tel')
+  @JsonValue("tel")
   tel,
-  @JsonValue('tem')
+  @JsonValue("tem")
   tem,
-  @JsonValue('ten')
+  @JsonValue("ten")
   ten,
-  @JsonValue('teo')
+  @JsonValue("teo")
   teo,
-  @JsonValue('tep')
+  @JsonValue("tep")
   tep,
-  @JsonValue('teq')
+  @JsonValue("teq")
   teq,
-  @JsonValue('ter')
+  @JsonValue("ter")
   ter,
-  @JsonValue('tes')
+  @JsonValue("tes")
   tes,
-  @JsonValue('tet')
+  @JsonValue("tet")
   tet,
-  @JsonValue('teu')
+  @JsonValue("teu")
   teu,
-  @JsonValue('tev')
+  @JsonValue("tev")
   tev,
-  @JsonValue('tew')
+  @JsonValue("tew")
   tew,
-  @JsonValue('tex')
+  @JsonValue("tex")
   tex,
-  @JsonValue('tey')
+  @JsonValue("tey")
   tey,
-  @JsonValue('tez')
+  @JsonValue("tez")
   tez,
-  @JsonValue('tfi')
+  @JsonValue("tfi")
   tfi,
-  @JsonValue('tfn')
+  @JsonValue("tfn")
   tfn,
-  @JsonValue('tfo')
+  @JsonValue("tfo")
   tfo,
-  @JsonValue('tfr')
+  @JsonValue("tfr")
   tfr,
-  @JsonValue('tft')
+  @JsonValue("tft")
   tft,
-  @JsonValue('tga')
+  @JsonValue("tga")
   tga,
-  @JsonValue('tgb')
+  @JsonValue("tgb")
   tgb,
-  @JsonValue('tgc')
+  @JsonValue("tgc")
   tgc,
-  @JsonValue('tgd')
+  @JsonValue("tgd")
   tgd,
-  @JsonValue('tge')
+  @JsonValue("tge")
   tge,
-  @JsonValue('tgf')
+  @JsonValue("tgf")
   tgf,
-  @JsonValue('tgh')
+  @JsonValue("tgh")
   tgh,
-  @JsonValue('tgi')
+  @JsonValue("tgi")
   tgi,
-  @JsonValue('tgj')
+  @JsonValue("tgj")
   tgj,
-  @JsonValue('tgk')
+  @JsonValue("tgk")
   tgk,
-  @JsonValue('tgl')
+  @JsonValue("tgl")
   tgl,
-  @JsonValue('tgn')
+  @JsonValue("tgn")
   tgn,
-  @JsonValue('tgo')
+  @JsonValue("tgo")
   tgo,
-  @JsonValue('tgp')
+  @JsonValue("tgp")
   tgp,
-  @JsonValue('tgq')
+  @JsonValue("tgq")
   tgq,
-  @JsonValue('tgr')
+  @JsonValue("tgr")
   tgr,
-  @JsonValue('tgs')
+  @JsonValue("tgs")
   tgs,
-  @JsonValue('tgt')
+  @JsonValue("tgt")
   tgt,
-  @JsonValue('tgu')
+  @JsonValue("tgu")
   tgu,
-  @JsonValue('tgv')
+  @JsonValue("tgv")
   tgv,
-  @JsonValue('tgw')
+  @JsonValue("tgw")
   tgw,
-  @JsonValue('tgx')
+  @JsonValue("tgx")
   tgx,
-  @JsonValue('tgy')
+  @JsonValue("tgy")
   tgy,
-  @JsonValue('tgz')
+  @JsonValue("tgz")
   tgz,
-  @JsonValue('tha')
+  @JsonValue("tha")
   tha,
-  @JsonValue('thd')
+  @JsonValue("thd")
   thd,
-  @JsonValue('the')
+  @JsonValue("the")
   the,
-  @JsonValue('thf')
+  @JsonValue("thf")
   thf,
-  @JsonValue('thh')
+  @JsonValue("thh")
   thh,
-  @JsonValue('thi')
+  @JsonValue("thi")
   thi,
-  @JsonValue('thk')
+  @JsonValue("thk")
   thk,
-  @JsonValue('thl')
+  @JsonValue("thl")
   thl,
-  @JsonValue('thm')
+  @JsonValue("thm")
   thm,
-  @JsonValue('thn')
+  @JsonValue("thn")
   thn,
-  @JsonValue('thp')
+  @JsonValue("thp")
   thp,
-  @JsonValue('thq')
+  @JsonValue("thq")
   thq,
-  @JsonValue('thr')
+  @JsonValue("thr")
   thr,
-  @JsonValue('ths')
+  @JsonValue("ths")
   ths,
-  @JsonValue('tht')
+  @JsonValue("tht")
   tht,
-  @JsonValue('thu')
+  @JsonValue("thu")
   thu,
-  @JsonValue('thv')
+  @JsonValue("thv")
   thv,
-  @JsonValue('thy')
+  @JsonValue("thy")
   thy,
-  @JsonValue('thz')
+  @JsonValue("thz")
   thz,
-  @JsonValue('tia')
+  @JsonValue("tia")
   tia,
-  @JsonValue('tic')
+  @JsonValue("tic")
   tic,
-  @JsonValue('tif')
+  @JsonValue("tif")
   tif,
-  @JsonValue('tig')
+  @JsonValue("tig")
   tig,
-  @JsonValue('tih')
+  @JsonValue("tih")
   tih,
-  @JsonValue('tii')
+  @JsonValue("tii")
   tii,
-  @JsonValue('tij')
+  @JsonValue("tij")
   tij,
-  @JsonValue('tik')
+  @JsonValue("tik")
   tik,
-  @JsonValue('til')
+  @JsonValue("til")
   til,
-  @JsonValue('tim')
+  @JsonValue("tim")
   tim,
-  @JsonValue('tin')
+  @JsonValue("tin")
   tin,
-  @JsonValue('tio')
+  @JsonValue("tio")
   tio,
-  @JsonValue('tip')
+  @JsonValue("tip")
   tip,
-  @JsonValue('tiq')
+  @JsonValue("tiq")
   tiq,
-  @JsonValue('tir')
+  @JsonValue("tir")
   tir,
-  @JsonValue('tis')
+  @JsonValue("tis")
   tis,
-  @JsonValue('tit')
+  @JsonValue("tit")
   tit,
-  @JsonValue('tiu')
+  @JsonValue("tiu")
   tiu,
-  @JsonValue('tiv')
+  @JsonValue("tiv")
   tiv,
-  @JsonValue('tiw')
+  @JsonValue("tiw")
   tiw,
-  @JsonValue('tix')
+  @JsonValue("tix")
   tix,
-  @JsonValue('tiy')
+  @JsonValue("tiy")
   tiy,
-  @JsonValue('tiz')
+  @JsonValue("tiz")
   tiz,
-  @JsonValue('tja')
+  @JsonValue("tja")
   tja,
-  @JsonValue('tjg')
+  @JsonValue("tjg")
   tjg,
-  @JsonValue('tji')
+  @JsonValue("tji")
   tji,
-  @JsonValue('tjj')
+  @JsonValue("tjj")
   tjj,
-  @JsonValue('tjl')
+  @JsonValue("tjl")
   tjl,
-  @JsonValue('tjm')
+  @JsonValue("tjm")
   tjm,
-  @JsonValue('tjn')
+  @JsonValue("tjn")
   tjn,
-  @JsonValue('tjo')
+  @JsonValue("tjo")
   tjo,
-  @JsonValue('tjp')
+  @JsonValue("tjp")
   tjp,
-  @JsonValue('tjs')
+  @JsonValue("tjs")
   tjs,
-  @JsonValue('tju')
+  @JsonValue("tju")
   tju,
-  @JsonValue('tjw')
+  @JsonValue("tjw")
   tjw,
-  @JsonValue('tka')
+  @JsonValue("tka")
   tka,
-  @JsonValue('tkb')
+  @JsonValue("tkb")
   tkb,
-  @JsonValue('tkd')
+  @JsonValue("tkd")
   tkd,
-  @JsonValue('tke')
+  @JsonValue("tke")
   tke,
-  @JsonValue('tkf')
+  @JsonValue("tkf")
   tkf,
-  @JsonValue('tkg')
+  @JsonValue("tkg")
   tkg,
-  @JsonValue('tkl')
+  @JsonValue("tkl")
   tkl,
-  @JsonValue('tkm')
+  @JsonValue("tkm")
   tkm,
-  @JsonValue('tkn')
+  @JsonValue("tkn")
   tkn,
-  @JsonValue('tkp')
+  @JsonValue("tkp")
   tkp,
-  @JsonValue('tkq')
+  @JsonValue("tkq")
   tkq,
-  @JsonValue('tkr')
+  @JsonValue("tkr")
   tkr,
-  @JsonValue('tks')
+  @JsonValue("tks")
   tks,
-  @JsonValue('tkt')
+  @JsonValue("tkt")
   tkt,
-  @JsonValue('tku')
+  @JsonValue("tku")
   tku,
-  @JsonValue('tkv')
+  @JsonValue("tkv")
   tkv,
-  @JsonValue('tkw')
+  @JsonValue("tkw")
   tkw,
-  @JsonValue('tkx')
+  @JsonValue("tkx")
   tkx,
-  @JsonValue('tkz')
+  @JsonValue("tkz")
   tkz,
-  @JsonValue('tla')
+  @JsonValue("tla")
   tla,
-  @JsonValue('tlb')
+  @JsonValue("tlb")
   tlb,
-  @JsonValue('tlc')
+  @JsonValue("tlc")
   tlc,
-  @JsonValue('tld')
+  @JsonValue("tld")
   tld,
-  @JsonValue('tlf')
+  @JsonValue("tlf")
   tlf,
-  @JsonValue('tlg')
+  @JsonValue("tlg")
   tlg,
-  @JsonValue('tlh')
+  @JsonValue("tlh")
   tlh,
-  @JsonValue('tli')
+  @JsonValue("tli")
   tli,
-  @JsonValue('tlj')
+  @JsonValue("tlj")
   tlj,
-  @JsonValue('tlk')
+  @JsonValue("tlk")
   tlk,
-  @JsonValue('tll')
+  @JsonValue("tll")
   tll,
-  @JsonValue('tlm')
+  @JsonValue("tlm")
   tlm,
-  @JsonValue('tln')
+  @JsonValue("tln")
   tln,
-  @JsonValue('tlo')
+  @JsonValue("tlo")
   tlo,
-  @JsonValue('tlp')
+  @JsonValue("tlp")
   tlp,
-  @JsonValue('tlq')
+  @JsonValue("tlq")
   tlq,
-  @JsonValue('tlr')
+  @JsonValue("tlr")
   tlr,
-  @JsonValue('tls')
+  @JsonValue("tls")
   tls,
-  @JsonValue('tlt')
+  @JsonValue("tlt")
   tlt,
-  @JsonValue('tlu')
+  @JsonValue("tlu")
   tlu,
-  @JsonValue('tlv')
+  @JsonValue("tlv")
   tlv,
-  @JsonValue('tlx')
+  @JsonValue("tlx")
   tlx,
-  @JsonValue('tly')
+  @JsonValue("tly")
   tly,
-  @JsonValue('tma')
+  @JsonValue("tma")
   tma,
-  @JsonValue('tmb')
+  @JsonValue("tmb")
   tmb,
-  @JsonValue('tmc')
+  @JsonValue("tmc")
   tmc,
-  @JsonValue('tmd')
+  @JsonValue("tmd")
   tmd,
-  @JsonValue('tme')
+  @JsonValue("tme")
   tme,
-  @JsonValue('tmf')
+  @JsonValue("tmf")
   tmf,
-  @JsonValue('tmg')
+  @JsonValue("tmg")
   tmg,
-  @JsonValue('tmh')
+  @JsonValue("tmh")
   tmh,
-  @JsonValue('tmi')
+  @JsonValue("tmi")
   tmi,
-  @JsonValue('tmj')
+  @JsonValue("tmj")
   tmj,
-  @JsonValue('tmk')
+  @JsonValue("tmk")
   tmk,
-  @JsonValue('tml')
+  @JsonValue("tml")
   tml,
-  @JsonValue('tmm')
+  @JsonValue("tmm")
   tmm,
-  @JsonValue('tmn')
+  @JsonValue("tmn")
   tmn,
-  @JsonValue('tmo')
+  @JsonValue("tmo")
   tmo,
-  @JsonValue('tmq')
+  @JsonValue("tmq")
   tmq,
-  @JsonValue('tmr')
+  @JsonValue("tmr")
   tmr,
-  @JsonValue('tms')
+  @JsonValue("tms")
   tms,
-  @JsonValue('tmt')
+  @JsonValue("tmt")
   tmt,
-  @JsonValue('tmu')
+  @JsonValue("tmu")
   tmu,
-  @JsonValue('tmv')
+  @JsonValue("tmv")
   tmv,
-  @JsonValue('tmw')
+  @JsonValue("tmw")
   tmw,
-  @JsonValue('tmy')
+  @JsonValue("tmy")
   tmy,
-  @JsonValue('tmz')
+  @JsonValue("tmz")
   tmz,
-  @JsonValue('tna')
+  @JsonValue("tna")
   tna,
-  @JsonValue('tnb')
+  @JsonValue("tnb")
   tnb,
-  @JsonValue('tnc')
+  @JsonValue("tnc")
   tnc,
-  @JsonValue('tnd')
+  @JsonValue("tnd")
   tnd,
-  @JsonValue('tng')
+  @JsonValue("tng")
   tng,
-  @JsonValue('tnh')
+  @JsonValue("tnh")
   tnh,
-  @JsonValue('tni')
+  @JsonValue("tni")
   tni,
-  @JsonValue('tnk')
+  @JsonValue("tnk")
   tnk,
-  @JsonValue('tnl')
+  @JsonValue("tnl")
   tnl,
-  @JsonValue('tnm')
+  @JsonValue("tnm")
   tnm,
-  @JsonValue('tnn')
+  @JsonValue("tnn")
   tnn,
-  @JsonValue('tno')
+  @JsonValue("tno")
   tno,
-  @JsonValue('tnp')
+  @JsonValue("tnp")
   tnp,
-  @JsonValue('tnq')
+  @JsonValue("tnq")
   tnq,
-  @JsonValue('tnr')
+  @JsonValue("tnr")
   tnr,
-  @JsonValue('tns')
+  @JsonValue("tns")
   tns,
-  @JsonValue('tnt')
+  @JsonValue("tnt")
   tnt,
-  @JsonValue('tnu')
+  @JsonValue("tnu")
   tnu,
-  @JsonValue('tnv')
+  @JsonValue("tnv")
   tnv,
-  @JsonValue('tnw')
+  @JsonValue("tnw")
   tnw,
-  @JsonValue('tnx')
+  @JsonValue("tnx")
   tnx,
-  @JsonValue('tny')
+  @JsonValue("tny")
   tny,
-  @JsonValue('tnz')
+  @JsonValue("tnz")
   tnz,
-  @JsonValue('tob')
+  @JsonValue("tob")
   tob,
-  @JsonValue('toc')
+  @JsonValue("toc")
   toc,
-  @JsonValue('tod')
+  @JsonValue("tod")
   tod,
-  @JsonValue('tof')
+  @JsonValue("tof")
   tof,
-  @JsonValue('tog')
+  @JsonValue("tog")
   tog,
-  @JsonValue('toh')
+  @JsonValue("toh")
   toh,
-  @JsonValue('toi')
+  @JsonValue("toi")
   toi,
-  @JsonValue('toj')
+  @JsonValue("toj")
   toj,
-  @JsonValue('tok')
+  @JsonValue("tok")
   tok,
-  @JsonValue('tol')
+  @JsonValue("tol")
   tol,
-  @JsonValue('tom')
+  @JsonValue("tom")
   tom,
-  @JsonValue('ton')
+  @JsonValue("ton")
   ton,
-  @JsonValue('too')
+  @JsonValue("too")
   too,
-  @JsonValue('top')
+  @JsonValue("top")
   top,
-  @JsonValue('toq')
+  @JsonValue("toq")
   toq,
-  @JsonValue('tor')
+  @JsonValue("tor")
   tor,
-  @JsonValue('tos')
+  @JsonValue("tos")
   tos,
-  @JsonValue('tou')
+  @JsonValue("tou")
   tou,
-  @JsonValue('tov')
+  @JsonValue("tov")
   tov,
-  @JsonValue('tow')
+  @JsonValue("tow")
   tow,
-  @JsonValue('tox')
+  @JsonValue("tox")
   tox,
-  @JsonValue('toy')
+  @JsonValue("toy")
   toy,
-  @JsonValue('toz')
+  @JsonValue("toz")
   toz,
-  @JsonValue('tpa')
+  @JsonValue("tpa")
   tpa,
-  @JsonValue('tpc')
+  @JsonValue("tpc")
   tpc,
-  @JsonValue('tpe')
+  @JsonValue("tpe")
   tpe,
-  @JsonValue('tpf')
+  @JsonValue("tpf")
   tpf,
-  @JsonValue('tpg')
+  @JsonValue("tpg")
   tpg,
-  @JsonValue('tpi')
+  @JsonValue("tpi")
   tpi,
-  @JsonValue('tpj')
+  @JsonValue("tpj")
   tpj,
-  @JsonValue('tpk')
+  @JsonValue("tpk")
   tpk,
-  @JsonValue('tpl')
+  @JsonValue("tpl")
   tpl,
-  @JsonValue('tpm')
+  @JsonValue("tpm")
   tpm,
-  @JsonValue('tpn')
+  @JsonValue("tpn")
   tpn,
-  @JsonValue('tpo')
+  @JsonValue("tpo")
   tpo,
-  @JsonValue('tpp')
+  @JsonValue("tpp")
   tpp,
-  @JsonValue('tpq')
+  @JsonValue("tpq")
   tpq,
-  @JsonValue('tpr')
+  @JsonValue("tpr")
   tpr,
-  @JsonValue('tpt')
+  @JsonValue("tpt")
   tpt,
-  @JsonValue('tpu')
+  @JsonValue("tpu")
   tpu,
-  @JsonValue('tpv')
+  @JsonValue("tpv")
   tpv,
-  @JsonValue('tpw')
+  @JsonValue("tpw")
   tpw,
-  @JsonValue('tpx')
+  @JsonValue("tpx")
   tpx,
-  @JsonValue('tpy')
+  @JsonValue("tpy")
   tpy,
-  @JsonValue('tpz')
+  @JsonValue("tpz")
   tpz,
-  @JsonValue('tqb')
+  @JsonValue("tqb")
   tqb,
-  @JsonValue('tql')
+  @JsonValue("tql")
   tql,
-  @JsonValue('tqm')
+  @JsonValue("tqm")
   tqm,
-  @JsonValue('tqn')
+  @JsonValue("tqn")
   tqn,
-  @JsonValue('tqo')
+  @JsonValue("tqo")
   tqo,
-  @JsonValue('tqp')
+  @JsonValue("tqp")
   tqp,
-  @JsonValue('tqq')
+  @JsonValue("tqq")
   tqq,
-  @JsonValue('tqr')
+  @JsonValue("tqr")
   tqr,
-  @JsonValue('tqt')
+  @JsonValue("tqt")
   tqt,
-  @JsonValue('tqu')
+  @JsonValue("tqu")
   tqu,
-  @JsonValue('tqw')
+  @JsonValue("tqw")
   tqw,
-  @JsonValue('tra')
+  @JsonValue("tra")
   tra,
-  @JsonValue('trb')
+  @JsonValue("trb")
   trb,
-  @JsonValue('trc')
+  @JsonValue("trc")
   trc,
-  @JsonValue('trd')
+  @JsonValue("trd")
   trd,
-  @JsonValue('tre')
+  @JsonValue("tre")
   tre,
-  @JsonValue('trf')
+  @JsonValue("trf")
   trf,
-  @JsonValue('trg')
+  @JsonValue("trg")
   trg,
-  @JsonValue('trh')
+  @JsonValue("trh")
   trh,
-  @JsonValue('tri')
+  @JsonValue("tri")
   tri,
-  @JsonValue('trj')
+  @JsonValue("trj")
   trj,
-  @JsonValue('trl')
+  @JsonValue("trl")
   trl,
-  @JsonValue('trm')
+  @JsonValue("trm")
   trm,
-  @JsonValue('trn')
+  @JsonValue("trn")
   trn,
-  @JsonValue('tro')
+  @JsonValue("tro")
   tro,
-  @JsonValue('trp')
+  @JsonValue("trp")
   trp,
-  @JsonValue('trq')
+  @JsonValue("trq")
   trq,
-  @JsonValue('trr')
+  @JsonValue("trr")
   trr,
-  @JsonValue('trs')
+  @JsonValue("trs")
   trs,
-  @JsonValue('trt')
+  @JsonValue("trt")
   trt,
-  @JsonValue('tru')
+  @JsonValue("tru")
   tru,
-  @JsonValue('trv')
+  @JsonValue("trv")
   trv,
-  @JsonValue('trw')
+  @JsonValue("trw")
   trw,
-  @JsonValue('trx')
+  @JsonValue("trx")
   trx,
-  @JsonValue('try')
+  @JsonValue("try")
   tryAA,
-  @JsonValue('trz')
+  @JsonValue("trz")
   trz,
-  @JsonValue('tsa')
+  @JsonValue("tsa")
   tsa,
-  @JsonValue('tsb')
+  @JsonValue("tsb")
   tsb,
-  @JsonValue('tsc')
+  @JsonValue("tsc")
   tsc,
-  @JsonValue('tsd')
+  @JsonValue("tsd")
   tsd,
-  @JsonValue('tse')
+  @JsonValue("tse")
   tse,
-  @JsonValue('tsg')
+  @JsonValue("tsg")
   tsg,
-  @JsonValue('tsh')
+  @JsonValue("tsh")
   tsh,
-  @JsonValue('tsi')
+  @JsonValue("tsi")
   tsi,
-  @JsonValue('tsj')
+  @JsonValue("tsj")
   tsj,
-  @JsonValue('tsk')
+  @JsonValue("tsk")
   tsk,
-  @JsonValue('tsl')
+  @JsonValue("tsl")
   tsl,
-  @JsonValue('tsm')
+  @JsonValue("tsm")
   tsm,
-  @JsonValue('tsn')
+  @JsonValue("tsn")
   tsn,
-  @JsonValue('tso')
+  @JsonValue("tso")
   tso,
-  @JsonValue('tsp')
+  @JsonValue("tsp")
   tsp,
-  @JsonValue('tsq')
+  @JsonValue("tsq")
   tsq,
-  @JsonValue('tsr')
+  @JsonValue("tsr")
   tsr,
-  @JsonValue('tss')
+  @JsonValue("tss")
   tss,
-  @JsonValue('tst')
+  @JsonValue("tst")
   tst,
-  @JsonValue('tsu')
+  @JsonValue("tsu")
   tsu,
-  @JsonValue('tsv')
+  @JsonValue("tsv")
   tsv,
-  @JsonValue('tsw')
+  @JsonValue("tsw")
   tsw,
-  @JsonValue('tsx')
+  @JsonValue("tsx")
   tsx,
-  @JsonValue('tsy')
+  @JsonValue("tsy")
   tsy,
-  @JsonValue('tsz')
+  @JsonValue("tsz")
   tsz,
-  @JsonValue('tta')
+  @JsonValue("tta")
   tta,
-  @JsonValue('ttb')
+  @JsonValue("ttb")
   ttb,
-  @JsonValue('ttc')
+  @JsonValue("ttc")
   ttc,
-  @JsonValue('ttd')
+  @JsonValue("ttd")
   ttd,
-  @JsonValue('tte')
+  @JsonValue("tte")
   tte,
-  @JsonValue('ttf')
+  @JsonValue("ttf")
   ttf,
-  @JsonValue('ttg')
+  @JsonValue("ttg")
   ttg,
-  @JsonValue('tth')
+  @JsonValue("tth")
   tth,
-  @JsonValue('tti')
+  @JsonValue("tti")
   tti,
-  @JsonValue('ttj')
+  @JsonValue("ttj")
   ttj,
-  @JsonValue('ttk')
+  @JsonValue("ttk")
   ttk,
-  @JsonValue('ttl')
+  @JsonValue("ttl")
   ttl,
-  @JsonValue('ttm')
+  @JsonValue("ttm")
   ttm,
-  @JsonValue('ttn')
+  @JsonValue("ttn")
   ttn,
-  @JsonValue('tto')
+  @JsonValue("tto")
   tto,
-  @JsonValue('ttp')
+  @JsonValue("ttp")
   ttp,
-  @JsonValue('ttq')
+  @JsonValue("ttq")
   ttq,
-  @JsonValue('ttr')
+  @JsonValue("ttr")
   ttr,
-  @JsonValue('tts')
+  @JsonValue("tts")
   tts,
-  @JsonValue('ttt')
+  @JsonValue("ttt")
   ttt,
-  @JsonValue('ttu')
+  @JsonValue("ttu")
   ttu,
-  @JsonValue('ttv')
+  @JsonValue("ttv")
   ttv,
-  @JsonValue('ttw')
+  @JsonValue("ttw")
   ttw,
-  @JsonValue('tty')
+  @JsonValue("tty")
   tty,
-  @JsonValue('ttz')
+  @JsonValue("ttz")
   ttz,
-  @JsonValue('tua')
+  @JsonValue("tua")
   tua,
-  @JsonValue('tub')
+  @JsonValue("tub")
   tub,
-  @JsonValue('tuc')
+  @JsonValue("tuc")
   tuc,
-  @JsonValue('tud')
+  @JsonValue("tud")
   tud,
-  @JsonValue('tue')
+  @JsonValue("tue")
   tue,
-  @JsonValue('tuf')
+  @JsonValue("tuf")
   tuf,
-  @JsonValue('tug')
+  @JsonValue("tug")
   tug,
-  @JsonValue('tuh')
+  @JsonValue("tuh")
   tuh,
-  @JsonValue('tui')
+  @JsonValue("tui")
   tui,
-  @JsonValue('tuj')
+  @JsonValue("tuj")
   tuj,
-  @JsonValue('tuk')
+  @JsonValue("tuk")
   tuk,
-  @JsonValue('tul')
+  @JsonValue("tul")
   tul,
-  @JsonValue('tum')
+  @JsonValue("tum")
   tum,
-  @JsonValue('tun')
+  @JsonValue("tun")
   tun,
-  @JsonValue('tuo')
+  @JsonValue("tuo")
   tuo,
-  @JsonValue('tuq')
+  @JsonValue("tuq")
   tuq,
-  @JsonValue('tur')
+  @JsonValue("tur")
   tur,
-  @JsonValue('tus')
+  @JsonValue("tus")
   tus,
-  @JsonValue('tuu')
+  @JsonValue("tuu")
   tuu,
-  @JsonValue('tuv')
+  @JsonValue("tuv")
   tuv,
-  @JsonValue('tux')
+  @JsonValue("tux")
   tux,
-  @JsonValue('tuy')
+  @JsonValue("tuy")
   tuy,
-  @JsonValue('tuz')
+  @JsonValue("tuz")
   tuz,
-  @JsonValue('tva')
+  @JsonValue("tva")
   tva,
-  @JsonValue('tvd')
+  @JsonValue("tvd")
   tvd,
-  @JsonValue('tve')
+  @JsonValue("tve")
   tve,
-  @JsonValue('tvk')
+  @JsonValue("tvk")
   tvk,
-  @JsonValue('tvl')
+  @JsonValue("tvl")
   tvl,
-  @JsonValue('tvm')
+  @JsonValue("tvm")
   tvm,
-  @JsonValue('tvn')
+  @JsonValue("tvn")
   tvn,
-  @JsonValue('tvo')
+  @JsonValue("tvo")
   tvo,
-  @JsonValue('tvs')
+  @JsonValue("tvs")
   tvs,
-  @JsonValue('tvt')
+  @JsonValue("tvt")
   tvt,
-  @JsonValue('tvu')
+  @JsonValue("tvu")
   tvu,
-  @JsonValue('tvw')
+  @JsonValue("tvw")
   tvw,
-  @JsonValue('tvx')
+  @JsonValue("tvx")
   tvx,
-  @JsonValue('tvy')
+  @JsonValue("tvy")
   tvy,
-  @JsonValue('twa')
+  @JsonValue("twa")
   twa,
-  @JsonValue('twb')
+  @JsonValue("twb")
   twb,
-  @JsonValue('twc')
+  @JsonValue("twc")
   twc,
-  @JsonValue('twd')
+  @JsonValue("twd")
   twd,
-  @JsonValue('twe')
+  @JsonValue("twe")
   twe,
-  @JsonValue('twf')
+  @JsonValue("twf")
   twf,
-  @JsonValue('twg')
+  @JsonValue("twg")
   twg,
-  @JsonValue('twh')
+  @JsonValue("twh")
   twh,
-  @JsonValue('twi')
+  @JsonValue("twi")
   twi,
-  @JsonValue('twl')
+  @JsonValue("twl")
   twl,
-  @JsonValue('twm')
+  @JsonValue("twm")
   twm,
-  @JsonValue('twn')
+  @JsonValue("twn")
   twn,
-  @JsonValue('two')
+  @JsonValue("two")
   two,
-  @JsonValue('twp')
+  @JsonValue("twp")
   twp,
-  @JsonValue('twq')
+  @JsonValue("twq")
   twq,
-  @JsonValue('twr')
+  @JsonValue("twr")
   twr,
-  @JsonValue('twt')
+  @JsonValue("twt")
   twt,
-  @JsonValue('twu')
+  @JsonValue("twu")
   twu,
-  @JsonValue('tww')
+  @JsonValue("tww")
   tww,
-  @JsonValue('twx')
+  @JsonValue("twx")
   twx,
-  @JsonValue('twy')
+  @JsonValue("twy")
   twy,
-  @JsonValue('txa')
+  @JsonValue("txa")
   txa,
-  @JsonValue('txb')
+  @JsonValue("txb")
   txb,
-  @JsonValue('txc')
+  @JsonValue("txc")
   txc,
-  @JsonValue('txe')
+  @JsonValue("txe")
   txe,
-  @JsonValue('txg')
+  @JsonValue("txg")
   txg,
-  @JsonValue('txh')
+  @JsonValue("txh")
   txh,
-  @JsonValue('txi')
+  @JsonValue("txi")
   txi,
-  @JsonValue('txj')
+  @JsonValue("txj")
   txj,
-  @JsonValue('txm')
+  @JsonValue("txm")
   txm,
-  @JsonValue('txn')
+  @JsonValue("txn")
   txn,
-  @JsonValue('txo')
+  @JsonValue("txo")
   txo,
-  @JsonValue('txq')
+  @JsonValue("txq")
   txq,
-  @JsonValue('txr')
+  @JsonValue("txr")
   txr,
-  @JsonValue('txs')
+  @JsonValue("txs")
   txs,
-  @JsonValue('txt')
+  @JsonValue("txt")
   txt,
-  @JsonValue('txu')
+  @JsonValue("txu")
   txu,
-  @JsonValue('txx')
+  @JsonValue("txx")
   txx,
-  @JsonValue('txy')
+  @JsonValue("txy")
   txy,
-  @JsonValue('tya')
+  @JsonValue("tya")
   tya,
-  @JsonValue('tye')
+  @JsonValue("tye")
   tye,
-  @JsonValue('tyh')
+  @JsonValue("tyh")
   tyh,
-  @JsonValue('tyi')
+  @JsonValue("tyi")
   tyi,
-  @JsonValue('tyj')
+  @JsonValue("tyj")
   tyj,
-  @JsonValue('tyl')
+  @JsonValue("tyl")
   tyl,
-  @JsonValue('tyn')
+  @JsonValue("tyn")
   tyn,
-  @JsonValue('typ')
+  @JsonValue("typ")
   typ,
-  @JsonValue('tyr')
+  @JsonValue("tyr")
   tyr,
-  @JsonValue('tys')
+  @JsonValue("tys")
   tys,
-  @JsonValue('tyt')
+  @JsonValue("tyt")
   tyt,
-  @JsonValue('tyu')
+  @JsonValue("tyu")
   tyu,
-  @JsonValue('tyv')
+  @JsonValue("tyv")
   tyv,
-  @JsonValue('tyx')
+  @JsonValue("tyx")
   tyx,
-  @JsonValue('tyy')
+  @JsonValue("tyy")
   tyy,
-  @JsonValue('tyz')
+  @JsonValue("tyz")
   tyz,
-  @JsonValue('tza')
+  @JsonValue("tza")
   tza,
-  @JsonValue('tzh')
+  @JsonValue("tzh")
   tzh,
-  @JsonValue('tzj')
+  @JsonValue("tzj")
   tzj,
-  @JsonValue('tzl')
+  @JsonValue("tzl")
   tzl,
-  @JsonValue('tzm')
+  @JsonValue("tzm")
   tzm,
-  @JsonValue('tzn')
+  @JsonValue("tzn")
   tzn,
-  @JsonValue('tzo')
+  @JsonValue("tzo")
   tzo,
-  @JsonValue('tzx')
+  @JsonValue("tzx")
   tzx,
-  @JsonValue('uam')
+  @JsonValue("uam")
   uam,
-  @JsonValue('uan')
+  @JsonValue("uan")
   uan,
-  @JsonValue('uar')
+  @JsonValue("uar")
   uar,
-  @JsonValue('uba')
+  @JsonValue("uba")
   uba,
-  @JsonValue('ubi')
+  @JsonValue("ubi")
   ubi,
-  @JsonValue('ubl')
+  @JsonValue("ubl")
   ubl,
-  @JsonValue('ubr')
+  @JsonValue("ubr")
   ubr,
-  @JsonValue('ubu')
+  @JsonValue("ubu")
   ubu,
-  @JsonValue('uby')
+  @JsonValue("uby")
   uby,
-  @JsonValue('uda')
+  @JsonValue("uda")
   uda,
-  @JsonValue('ude')
+  @JsonValue("ude")
   ude,
-  @JsonValue('udg')
+  @JsonValue("udg")
   udg,
-  @JsonValue('udi')
+  @JsonValue("udi")
   udi,
-  @JsonValue('udj')
+  @JsonValue("udj")
   udj,
-  @JsonValue('udl')
+  @JsonValue("udl")
   udl,
-  @JsonValue('udm')
+  @JsonValue("udm")
   udm,
-  @JsonValue('udu')
+  @JsonValue("udu")
   udu,
-  @JsonValue('ues')
+  @JsonValue("ues")
   ues,
-  @JsonValue('ufi')
+  @JsonValue("ufi")
   ufi,
-  @JsonValue('uga')
+  @JsonValue("uga")
   uga,
-  @JsonValue('ugb')
+  @JsonValue("ugb")
   ugb,
-  @JsonValue('uge')
+  @JsonValue("uge")
   uge,
-  @JsonValue('ugh')
+  @JsonValue("ugh")
   ugh,
-  @JsonValue('ugn')
+  @JsonValue("ugn")
   ugn,
-  @JsonValue('ugo')
+  @JsonValue("ugo")
   ugo,
-  @JsonValue('ugy')
+  @JsonValue("ugy")
   ugy,
-  @JsonValue('uha')
+  @JsonValue("uha")
   uha,
-  @JsonValue('uhn')
+  @JsonValue("uhn")
   uhn,
-  @JsonValue('uig')
+  @JsonValue("uig")
   uig,
-  @JsonValue('uis')
+  @JsonValue("uis")
   uis,
-  @JsonValue('uiv')
+  @JsonValue("uiv")
   uiv,
-  @JsonValue('uji')
+  @JsonValue("uji")
   uji,
-  @JsonValue('uka')
+  @JsonValue("uka")
   uka,
-  @JsonValue('ukg')
+  @JsonValue("ukg")
   ukg,
-  @JsonValue('ukh')
+  @JsonValue("ukh")
   ukh,
-  @JsonValue('uki')
+  @JsonValue("uki")
   uki,
-  @JsonValue('ukk')
+  @JsonValue("ukk")
   ukk,
-  @JsonValue('ukl')
+  @JsonValue("ukl")
   ukl,
-  @JsonValue('ukp')
+  @JsonValue("ukp")
   ukp,
-  @JsonValue('ukq')
+  @JsonValue("ukq")
   ukq,
-  @JsonValue('ukr')
+  @JsonValue("ukr")
   ukr,
-  @JsonValue('uks')
+  @JsonValue("uks")
   uks,
-  @JsonValue('uku')
+  @JsonValue("uku")
   uku,
-  @JsonValue('ukv')
+  @JsonValue("ukv")
   ukv,
-  @JsonValue('ukw')
+  @JsonValue("ukw")
   ukw,
-  @JsonValue('uky')
+  @JsonValue("uky")
   uky,
-  @JsonValue('ula')
+  @JsonValue("ula")
   ula,
-  @JsonValue('ulb')
+  @JsonValue("ulb")
   ulb,
-  @JsonValue('ulc')
+  @JsonValue("ulc")
   ulc,
-  @JsonValue('ule')
+  @JsonValue("ule")
   ule,
-  @JsonValue('ulf')
+  @JsonValue("ulf")
   ulf,
-  @JsonValue('uli')
+  @JsonValue("uli")
   uli,
-  @JsonValue('ulk')
+  @JsonValue("ulk")
   ulk,
-  @JsonValue('ull')
+  @JsonValue("ull")
   ull,
-  @JsonValue('ulm')
+  @JsonValue("ulm")
   ulm,
-  @JsonValue('uln')
+  @JsonValue("uln")
   uln,
-  @JsonValue('ulu')
+  @JsonValue("ulu")
   ulu,
-  @JsonValue('ulw')
+  @JsonValue("ulw")
   ulw,
-  @JsonValue('uma')
+  @JsonValue("uma")
   uma,
-  @JsonValue('umb')
+  @JsonValue("umb")
   umb,
-  @JsonValue('umc')
+  @JsonValue("umc")
   umc,
-  @JsonValue('umd')
+  @JsonValue("umd")
   umd,
-  @JsonValue('umg')
+  @JsonValue("umg")
   umg,
-  @JsonValue('umi')
+  @JsonValue("umi")
   umi,
-  @JsonValue('umm')
+  @JsonValue("umm")
   umm,
-  @JsonValue('umn')
+  @JsonValue("umn")
   umn,
-  @JsonValue('umo')
+  @JsonValue("umo")
   umo,
-  @JsonValue('ump')
+  @JsonValue("ump")
   ump,
-  @JsonValue('umr')
+  @JsonValue("umr")
   umr,
-  @JsonValue('ums')
+  @JsonValue("ums")
   ums,
-  @JsonValue('umu')
+  @JsonValue("umu")
   umu,
-  @JsonValue('una')
+  @JsonValue("una")
   una,
-  @JsonValue('und')
+  @JsonValue("und")
   und,
-  @JsonValue('une')
+  @JsonValue("une")
   une,
-  @JsonValue('ung')
+  @JsonValue("ung")
   ung,
-  @JsonValue('uni')
+  @JsonValue("uni")
   uni,
-  @JsonValue('unk')
+  @JsonValue("unk")
   unk,
-  @JsonValue('unm')
+  @JsonValue("unm")
   unm,
-  @JsonValue('unn')
+  @JsonValue("unn")
   unn,
-  @JsonValue('unr')
+  @JsonValue("unr")
   unr,
-  @JsonValue('unu')
+  @JsonValue("unu")
   unu,
-  @JsonValue('unx')
+  @JsonValue("unx")
   unx,
-  @JsonValue('unz')
+  @JsonValue("unz")
   unz,
-  @JsonValue('uon')
+  @JsonValue("uon")
   uon,
-  @JsonValue('upi')
+  @JsonValue("upi")
   upi,
-  @JsonValue('upv')
+  @JsonValue("upv")
   upv,
-  @JsonValue('ura')
+  @JsonValue("ura")
   ura,
-  @JsonValue('urb')
+  @JsonValue("urb")
   urb,
-  @JsonValue('urc')
+  @JsonValue("urc")
   urc,
-  @JsonValue('urd')
+  @JsonValue("urd")
   urd,
-  @JsonValue('ure')
+  @JsonValue("ure")
   ure,
-  @JsonValue('urf')
+  @JsonValue("urf")
   urf,
-  @JsonValue('urg')
+  @JsonValue("urg")
   urg,
-  @JsonValue('urh')
+  @JsonValue("urh")
   urh,
-  @JsonValue('uri')
+  @JsonValue("uri")
   uri,
-  @JsonValue('urk')
+  @JsonValue("urk")
   urk,
-  @JsonValue('url')
+  @JsonValue("url")
   url,
-  @JsonValue('urm')
+  @JsonValue("urm")
   urm,
-  @JsonValue('urn')
+  @JsonValue("urn")
   urn,
-  @JsonValue('uro')
+  @JsonValue("uro")
   uro,
-  @JsonValue('urp')
+  @JsonValue("urp")
   urp,
-  @JsonValue('urr')
+  @JsonValue("urr")
   urr,
-  @JsonValue('urt')
+  @JsonValue("urt")
   urt,
-  @JsonValue('uru')
+  @JsonValue("uru")
   uru,
-  @JsonValue('urv')
+  @JsonValue("urv")
   urv,
-  @JsonValue('urw')
+  @JsonValue("urw")
   urw,
-  @JsonValue('urx')
+  @JsonValue("urx")
   urx,
-  @JsonValue('ury')
+  @JsonValue("ury")
   ury,
-  @JsonValue('urz')
+  @JsonValue("urz")
   urz,
-  @JsonValue('usa')
+  @JsonValue("usa")
   usa,
-  @JsonValue('ush')
+  @JsonValue("ush")
   ush,
-  @JsonValue('usi')
+  @JsonValue("usi")
   usi,
-  @JsonValue('usk')
+  @JsonValue("usk")
   usk,
-  @JsonValue('usp')
+  @JsonValue("usp")
   usp,
-  @JsonValue('uss')
+  @JsonValue("uss")
   uss,
-  @JsonValue('usu')
+  @JsonValue("usu")
   usu,
-  @JsonValue('uta')
+  @JsonValue("uta")
   uta,
-  @JsonValue('ute')
+  @JsonValue("ute")
   ute,
-  @JsonValue('uth')
+  @JsonValue("uth")
   uth,
-  @JsonValue('utp')
+  @JsonValue("utp")
   utp,
-  @JsonValue('utr')
+  @JsonValue("utr")
   utr,
-  @JsonValue('utu')
+  @JsonValue("utu")
   utu,
-  @JsonValue('uum')
+  @JsonValue("uum")
   uum,
-  @JsonValue('uur')
+  @JsonValue("uur")
   uur,
-  @JsonValue('uuu')
+  @JsonValue("uuu")
   uuu,
-  @JsonValue('uve')
+  @JsonValue("uve")
   uve,
-  @JsonValue('uvh')
+  @JsonValue("uvh")
   uvh,
-  @JsonValue('uvl')
+  @JsonValue("uvl")
   uvl,
-  @JsonValue('uwa')
+  @JsonValue("uwa")
   uwa,
-  @JsonValue('uya')
+  @JsonValue("uya")
   uya,
-  @JsonValue('uzb')
+  @JsonValue("uzb")
   uzb,
-  @JsonValue('uzn')
+  @JsonValue("uzn")
   uzn,
-  @JsonValue('uzs')
+  @JsonValue("uzs")
   uzs,
-  @JsonValue('vaa')
+  @JsonValue("vaa")
   vaa,
-  @JsonValue('vae')
+  @JsonValue("vae")
   vae,
-  @JsonValue('vaf')
+  @JsonValue("vaf")
   vaf,
-  @JsonValue('vag')
+  @JsonValue("vag")
   vag,
-  @JsonValue('vah')
+  @JsonValue("vah")
   vah,
-  @JsonValue('vai')
+  @JsonValue("vai")
   vai,
-  @JsonValue('vaj')
+  @JsonValue("vaj")
   vaj,
-  @JsonValue('val')
+  @JsonValue("val")
   val,
-  @JsonValue('vam')
+  @JsonValue("vam")
   vam,
-  @JsonValue('van')
+  @JsonValue("van")
   van,
-  @JsonValue('vao')
+  @JsonValue("vao")
   vao,
-  @JsonValue('vap')
+  @JsonValue("vap")
   vap,
-  @JsonValue('var')
+  @JsonValue("var")
   varAA,
-  @JsonValue('vas')
+  @JsonValue("vas")
   vas,
-  @JsonValue('vau')
+  @JsonValue("vau")
   vau,
-  @JsonValue('vav')
+  @JsonValue("vav")
   vav,
-  @JsonValue('vay')
+  @JsonValue("vay")
   vay,
-  @JsonValue('vbb')
+  @JsonValue("vbb")
   vbb,
-  @JsonValue('vbk')
+  @JsonValue("vbk")
   vbk,
-  @JsonValue('vec')
+  @JsonValue("vec")
   vec,
-  @JsonValue('ved')
+  @JsonValue("ved")
   ved,
-  @JsonValue('vel')
+  @JsonValue("vel")
   vel,
-  @JsonValue('vem')
+  @JsonValue("vem")
   vem,
-  @JsonValue('ven')
+  @JsonValue("ven")
   ven,
-  @JsonValue('veo')
+  @JsonValue("veo")
   veo,
-  @JsonValue('vep')
+  @JsonValue("vep")
   vep,
-  @JsonValue('ver')
+  @JsonValue("ver")
   ver,
-  @JsonValue('vgr')
+  @JsonValue("vgr")
   vgr,
-  @JsonValue('vgt')
+  @JsonValue("vgt")
   vgt,
-  @JsonValue('vic')
+  @JsonValue("vic")
   vic,
-  @JsonValue('vid')
+  @JsonValue("vid")
   vid,
-  @JsonValue('vie')
+  @JsonValue("vie")
   vie,
-  @JsonValue('vif')
+  @JsonValue("vif")
   vif,
-  @JsonValue('vig')
+  @JsonValue("vig")
   vig,
-  @JsonValue('vil')
+  @JsonValue("vil")
   vil,
-  @JsonValue('vin')
+  @JsonValue("vin")
   vin,
-  @JsonValue('vis')
+  @JsonValue("vis")
   vis,
-  @JsonValue('vit')
+  @JsonValue("vit")
   vit,
-  @JsonValue('viv')
+  @JsonValue("viv")
   viv,
-  @JsonValue('vka')
+  @JsonValue("vka")
   vka,
-  @JsonValue('vkj')
+  @JsonValue("vkj")
   vkj,
-  @JsonValue('vkk')
+  @JsonValue("vkk")
   vkk,
-  @JsonValue('vkl')
+  @JsonValue("vkl")
   vkl,
-  @JsonValue('vkm')
+  @JsonValue("vkm")
   vkm,
-  @JsonValue('vkn')
+  @JsonValue("vkn")
   vkn,
-  @JsonValue('vko')
+  @JsonValue("vko")
   vko,
-  @JsonValue('vkp')
+  @JsonValue("vkp")
   vkp,
-  @JsonValue('vkt')
+  @JsonValue("vkt")
   vkt,
-  @JsonValue('vku')
+  @JsonValue("vku")
   vku,
-  @JsonValue('vkz')
+  @JsonValue("vkz")
   vkz,
-  @JsonValue('vlp')
+  @JsonValue("vlp")
   vlp,
-  @JsonValue('vls')
+  @JsonValue("vls")
   vls,
-  @JsonValue('vma')
+  @JsonValue("vma")
   vma,
-  @JsonValue('vmb')
+  @JsonValue("vmb")
   vmb,
-  @JsonValue('vmc')
+  @JsonValue("vmc")
   vmc,
-  @JsonValue('vmd')
+  @JsonValue("vmd")
   vmd,
-  @JsonValue('vme')
+  @JsonValue("vme")
   vme,
-  @JsonValue('vmf')
+  @JsonValue("vmf")
   vmf,
-  @JsonValue('vmg')
+  @JsonValue("vmg")
   vmg,
-  @JsonValue('vmh')
+  @JsonValue("vmh")
   vmh,
-  @JsonValue('vmi')
+  @JsonValue("vmi")
   vmi,
-  @JsonValue('vmj')
+  @JsonValue("vmj")
   vmj,
-  @JsonValue('vmk')
+  @JsonValue("vmk")
   vmk,
-  @JsonValue('vml')
+  @JsonValue("vml")
   vml,
-  @JsonValue('vmm')
+  @JsonValue("vmm")
   vmm,
-  @JsonValue('vmp')
+  @JsonValue("vmp")
   vmp,
-  @JsonValue('vmq')
+  @JsonValue("vmq")
   vmq,
-  @JsonValue('vmr')
+  @JsonValue("vmr")
   vmr,
-  @JsonValue('vms')
+  @JsonValue("vms")
   vms,
-  @JsonValue('vmu')
+  @JsonValue("vmu")
   vmu,
-  @JsonValue('vmv')
+  @JsonValue("vmv")
   vmv,
-  @JsonValue('vmw')
+  @JsonValue("vmw")
   vmw,
-  @JsonValue('vmx')
+  @JsonValue("vmx")
   vmx,
-  @JsonValue('vmy')
+  @JsonValue("vmy")
   vmy,
-  @JsonValue('vmz')
+  @JsonValue("vmz")
   vmz,
-  @JsonValue('vnk')
+  @JsonValue("vnk")
   vnk,
-  @JsonValue('vnm')
+  @JsonValue("vnm")
   vnm,
-  @JsonValue('vnp')
+  @JsonValue("vnp")
   vnp,
-  @JsonValue('vol')
+  @JsonValue("vol")
   vol,
-  @JsonValue('vor')
+  @JsonValue("vor")
   vor,
-  @JsonValue('vot')
+  @JsonValue("vot")
   vot,
-  @JsonValue('vra')
+  @JsonValue("vra")
   vra,
-  @JsonValue('vro')
+  @JsonValue("vro")
   vro,
-  @JsonValue('vrs')
+  @JsonValue("vrs")
   vrs,
-  @JsonValue('vrt')
+  @JsonValue("vrt")
   vrt,
-  @JsonValue('vsi')
+  @JsonValue("vsi")
   vsi,
-  @JsonValue('vsl')
+  @JsonValue("vsl")
   vsl,
-  @JsonValue('vsv')
+  @JsonValue("vsv")
   vsv,
-  @JsonValue('vto')
+  @JsonValue("vto")
   vto,
-  @JsonValue('vum')
+  @JsonValue("vum")
   vum,
-  @JsonValue('vun')
+  @JsonValue("vun")
   vun,
-  @JsonValue('vut')
+  @JsonValue("vut")
   vut,
-  @JsonValue('vwa')
+  @JsonValue("vwa")
   vwa,
-  @JsonValue('waa')
+  @JsonValue("waa")
   waa,
-  @JsonValue('wab')
+  @JsonValue("wab")
   wab,
-  @JsonValue('wac')
+  @JsonValue("wac")
   wac,
-  @JsonValue('wad')
+  @JsonValue("wad")
   wad,
-  @JsonValue('wae')
+  @JsonValue("wae")
   wae,
-  @JsonValue('waf')
+  @JsonValue("waf")
   waf,
-  @JsonValue('wag')
+  @JsonValue("wag")
   wag,
-  @JsonValue('wah')
+  @JsonValue("wah")
   wah,
-  @JsonValue('wai')
+  @JsonValue("wai")
   wai,
-  @JsonValue('waj')
+  @JsonValue("waj")
   waj,
-  @JsonValue('wal')
+  @JsonValue("wal")
   wal,
-  @JsonValue('wam')
+  @JsonValue("wam")
   wam,
-  @JsonValue('wan')
+  @JsonValue("wan")
   wan,
-  @JsonValue('wao')
+  @JsonValue("wao")
   wao,
-  @JsonValue('wap')
+  @JsonValue("wap")
   wap,
-  @JsonValue('waq')
+  @JsonValue("waq")
   waq,
-  @JsonValue('war')
+  @JsonValue("war")
   war,
-  @JsonValue('was')
+  @JsonValue("was")
   was,
-  @JsonValue('wat')
+  @JsonValue("wat")
   wat,
-  @JsonValue('wau')
+  @JsonValue("wau")
   wau,
-  @JsonValue('wav')
+  @JsonValue("wav")
   wav,
-  @JsonValue('waw')
+  @JsonValue("waw")
   waw,
-  @JsonValue('wax')
+  @JsonValue("wax")
   wax,
-  @JsonValue('way')
+  @JsonValue("way")
   way,
-  @JsonValue('waz')
+  @JsonValue("waz")
   waz,
-  @JsonValue('wba')
+  @JsonValue("wba")
   wba,
-  @JsonValue('wbb')
+  @JsonValue("wbb")
   wbb,
-  @JsonValue('wbe')
+  @JsonValue("wbe")
   wbe,
-  @JsonValue('wbf')
+  @JsonValue("wbf")
   wbf,
-  @JsonValue('wbh')
+  @JsonValue("wbh")
   wbh,
-  @JsonValue('wbi')
+  @JsonValue("wbi")
   wbi,
-  @JsonValue('wbj')
+  @JsonValue("wbj")
   wbj,
-  @JsonValue('wbk')
+  @JsonValue("wbk")
   wbk,
-  @JsonValue('wbl')
+  @JsonValue("wbl")
   wbl,
-  @JsonValue('wbm')
+  @JsonValue("wbm")
   wbm,
-  @JsonValue('wbp')
+  @JsonValue("wbp")
   wbp,
-  @JsonValue('wbq')
+  @JsonValue("wbq")
   wbq,
-  @JsonValue('wbr')
+  @JsonValue("wbr")
   wbr,
-  @JsonValue('wbs')
+  @JsonValue("wbs")
   wbs,
-  @JsonValue('wbt')
+  @JsonValue("wbt")
   wbt,
-  @JsonValue('wbv')
+  @JsonValue("wbv")
   wbv,
-  @JsonValue('wbw')
+  @JsonValue("wbw")
   wbw,
-  @JsonValue('wca')
+  @JsonValue("wca")
   wca,
-  @JsonValue('wci')
+  @JsonValue("wci")
   wci,
-  @JsonValue('wdd')
+  @JsonValue("wdd")
   wdd,
-  @JsonValue('wdg')
+  @JsonValue("wdg")
   wdg,
-  @JsonValue('wdj')
+  @JsonValue("wdj")
   wdj,
-  @JsonValue('wdk')
+  @JsonValue("wdk")
   wdk,
-  @JsonValue('wdt')
+  @JsonValue("wdt")
   wdt,
-  @JsonValue('wdu')
+  @JsonValue("wdu")
   wdu,
-  @JsonValue('wdy')
+  @JsonValue("wdy")
   wdy,
-  @JsonValue('wea')
+  @JsonValue("wea")
   wea,
-  @JsonValue('wec')
+  @JsonValue("wec")
   wec,
-  @JsonValue('wed')
+  @JsonValue("wed")
   wed,
-  @JsonValue('weg')
+  @JsonValue("weg")
   weg,
-  @JsonValue('weh')
+  @JsonValue("weh")
   weh,
-  @JsonValue('wei')
+  @JsonValue("wei")
   wei,
-  @JsonValue('wem')
+  @JsonValue("wem")
   wem,
-  @JsonValue('weo')
+  @JsonValue("weo")
   weo,
-  @JsonValue('wep')
+  @JsonValue("wep")
   wep,
-  @JsonValue('wer')
+  @JsonValue("wer")
   wer,
-  @JsonValue('wes')
+  @JsonValue("wes")
   wes,
-  @JsonValue('wet')
+  @JsonValue("wet")
   wet,
-  @JsonValue('weu')
+  @JsonValue("weu")
   weu,
-  @JsonValue('wew')
+  @JsonValue("wew")
   wew,
-  @JsonValue('wfg')
+  @JsonValue("wfg")
   wfg,
-  @JsonValue('wga')
+  @JsonValue("wga")
   wga,
-  @JsonValue('wgb')
+  @JsonValue("wgb")
   wgb,
-  @JsonValue('wgg')
+  @JsonValue("wgg")
   wgg,
-  @JsonValue('wgi')
+  @JsonValue("wgi")
   wgi,
-  @JsonValue('wgo')
+  @JsonValue("wgo")
   wgo,
-  @JsonValue('wgu')
+  @JsonValue("wgu")
   wgu,
-  @JsonValue('wgy')
+  @JsonValue("wgy")
   wgy,
-  @JsonValue('wha')
+  @JsonValue("wha")
   wha,
-  @JsonValue('whg')
+  @JsonValue("whg")
   whg,
-  @JsonValue('whk')
+  @JsonValue("whk")
   whk,
-  @JsonValue('whu')
+  @JsonValue("whu")
   whu,
-  @JsonValue('wib')
+  @JsonValue("wib")
   wib,
-  @JsonValue('wic')
+  @JsonValue("wic")
   wic,
-  @JsonValue('wie')
+  @JsonValue("wie")
   wie,
-  @JsonValue('wif')
+  @JsonValue("wif")
   wif,
-  @JsonValue('wig')
+  @JsonValue("wig")
   wig,
-  @JsonValue('wih')
+  @JsonValue("wih")
   wih,
-  @JsonValue('wii')
+  @JsonValue("wii")
   wii,
-  @JsonValue('wij')
+  @JsonValue("wij")
   wij,
-  @JsonValue('wik')
+  @JsonValue("wik")
   wik,
-  @JsonValue('wil')
+  @JsonValue("wil")
   wil,
-  @JsonValue('wim')
+  @JsonValue("wim")
   wim,
-  @JsonValue('win')
+  @JsonValue("win")
   win,
-  @JsonValue('wir')
+  @JsonValue("wir")
   wir,
-  @JsonValue('wiu')
+  @JsonValue("wiu")
   wiu,
-  @JsonValue('wiv')
+  @JsonValue("wiv")
   wiv,
-  @JsonValue('wiy')
+  @JsonValue("wiy")
   wiy,
-  @JsonValue('wja')
+  @JsonValue("wja")
   wja,
-  @JsonValue('wji')
+  @JsonValue("wji")
   wji,
-  @JsonValue('wka')
+  @JsonValue("wka")
   wka,
-  @JsonValue('wkb')
+  @JsonValue("wkb")
   wkb,
-  @JsonValue('wkd')
+  @JsonValue("wkd")
   wkd,
-  @JsonValue('wkl')
+  @JsonValue("wkl")
   wkl,
-  @JsonValue('wkr')
+  @JsonValue("wkr")
   wkr,
-  @JsonValue('wku')
+  @JsonValue("wku")
   wku,
-  @JsonValue('wkw')
+  @JsonValue("wkw")
   wkw,
-  @JsonValue('wky')
+  @JsonValue("wky")
   wky,
-  @JsonValue('wla')
+  @JsonValue("wla")
   wla,
-  @JsonValue('wlc')
+  @JsonValue("wlc")
   wlc,
-  @JsonValue('wle')
+  @JsonValue("wle")
   wle,
-  @JsonValue('wlg')
+  @JsonValue("wlg")
   wlg,
-  @JsonValue('wlh')
+  @JsonValue("wlh")
   wlh,
-  @JsonValue('wli')
+  @JsonValue("wli")
   wli,
-  @JsonValue('wlk')
+  @JsonValue("wlk")
   wlk,
-  @JsonValue('wll')
+  @JsonValue("wll")
   wll,
-  @JsonValue('wlm')
+  @JsonValue("wlm")
   wlm,
-  @JsonValue('wln')
+  @JsonValue("wln")
   wln,
-  @JsonValue('wlo')
+  @JsonValue("wlo")
   wlo,
-  @JsonValue('wlr')
+  @JsonValue("wlr")
   wlr,
-  @JsonValue('wls')
+  @JsonValue("wls")
   wls,
-  @JsonValue('wlu')
+  @JsonValue("wlu")
   wlu,
-  @JsonValue('wlv')
+  @JsonValue("wlv")
   wlv,
-  @JsonValue('wlw')
+  @JsonValue("wlw")
   wlw,
-  @JsonValue('wlx')
+  @JsonValue("wlx")
   wlx,
-  @JsonValue('wly')
+  @JsonValue("wly")
   wly,
-  @JsonValue('wma')
+  @JsonValue("wma")
   wma,
-  @JsonValue('wmb')
+  @JsonValue("wmb")
   wmb,
-  @JsonValue('wmc')
+  @JsonValue("wmc")
   wmc,
-  @JsonValue('wmd')
+  @JsonValue("wmd")
   wmd,
-  @JsonValue('wme')
+  @JsonValue("wme")
   wme,
-  @JsonValue('wmg')
+  @JsonValue("wmg")
   wmg,
-  @JsonValue('wmh')
+  @JsonValue("wmh")
   wmh,
-  @JsonValue('wmi')
+  @JsonValue("wmi")
   wmi,
-  @JsonValue('wmm')
+  @JsonValue("wmm")
   wmm,
-  @JsonValue('wmn')
+  @JsonValue("wmn")
   wmn,
-  @JsonValue('wmo')
+  @JsonValue("wmo")
   wmo,
-  @JsonValue('wms')
+  @JsonValue("wms")
   wms,
-  @JsonValue('wmt')
+  @JsonValue("wmt")
   wmt,
-  @JsonValue('wmw')
+  @JsonValue("wmw")
   wmw,
-  @JsonValue('wmx')
+  @JsonValue("wmx")
   wmx,
-  @JsonValue('wnb')
+  @JsonValue("wnb")
   wnb,
-  @JsonValue('wnc')
+  @JsonValue("wnc")
   wnc,
-  @JsonValue('wnd')
+  @JsonValue("wnd")
   wnd,
-  @JsonValue('wne')
+  @JsonValue("wne")
   wne,
-  @JsonValue('wng')
+  @JsonValue("wng")
   wng,
-  @JsonValue('wni')
+  @JsonValue("wni")
   wni,
-  @JsonValue('wnk')
+  @JsonValue("wnk")
   wnk,
-  @JsonValue('wnm')
+  @JsonValue("wnm")
   wnm,
-  @JsonValue('wnn')
+  @JsonValue("wnn")
   wnn,
-  @JsonValue('wno')
+  @JsonValue("wno")
   wno,
-  @JsonValue('wnp')
+  @JsonValue("wnp")
   wnp,
-  @JsonValue('wnu')
+  @JsonValue("wnu")
   wnu,
-  @JsonValue('wnw')
+  @JsonValue("wnw")
   wnw,
-  @JsonValue('wny')
+  @JsonValue("wny")
   wny,
-  @JsonValue('woa')
+  @JsonValue("woa")
   woa,
-  @JsonValue('wob')
+  @JsonValue("wob")
   wob,
-  @JsonValue('woc')
+  @JsonValue("woc")
   woc,
-  @JsonValue('wod')
+  @JsonValue("wod")
   wod,
-  @JsonValue('woe')
+  @JsonValue("woe")
   woe,
-  @JsonValue('wof')
+  @JsonValue("wof")
   wof,
-  @JsonValue('wog')
+  @JsonValue("wog")
   wog,
-  @JsonValue('woi')
+  @JsonValue("woi")
   woi,
-  @JsonValue('wok')
+  @JsonValue("wok")
   wok,
-  @JsonValue('wol')
+  @JsonValue("wol")
   wol,
-  @JsonValue('wom')
+  @JsonValue("wom")
   wom,
-  @JsonValue('won')
+  @JsonValue("won")
   won,
-  @JsonValue('woo')
+  @JsonValue("woo")
   woo,
-  @JsonValue('wor')
+  @JsonValue("wor")
   wor,
-  @JsonValue('wos')
+  @JsonValue("wos")
   wos,
-  @JsonValue('wow')
+  @JsonValue("wow")
   wow,
-  @JsonValue('woy')
+  @JsonValue("woy")
   woy,
-  @JsonValue('wpc')
+  @JsonValue("wpc")
   wpc,
-  @JsonValue('wrb')
+  @JsonValue("wrb")
   wrb,
-  @JsonValue('wrg')
+  @JsonValue("wrg")
   wrg,
-  @JsonValue('wrh')
+  @JsonValue("wrh")
   wrh,
-  @JsonValue('wri')
+  @JsonValue("wri")
   wri,
-  @JsonValue('wrk')
+  @JsonValue("wrk")
   wrk,
-  @JsonValue('wrl')
+  @JsonValue("wrl")
   wrl,
-  @JsonValue('wrm')
+  @JsonValue("wrm")
   wrm,
-  @JsonValue('wrn')
+  @JsonValue("wrn")
   wrn,
-  @JsonValue('wro')
+  @JsonValue("wro")
   wro,
-  @JsonValue('wrp')
+  @JsonValue("wrp")
   wrp,
-  @JsonValue('wrr')
+  @JsonValue("wrr")
   wrr,
-  @JsonValue('wrs')
+  @JsonValue("wrs")
   wrs,
-  @JsonValue('wru')
+  @JsonValue("wru")
   wru,
-  @JsonValue('wrv')
+  @JsonValue("wrv")
   wrv,
-  @JsonValue('wrw')
+  @JsonValue("wrw")
   wrw,
-  @JsonValue('wrx')
+  @JsonValue("wrx")
   wrx,
-  @JsonValue('wry')
+  @JsonValue("wry")
   wry,
-  @JsonValue('wrz')
+  @JsonValue("wrz")
   wrz,
-  @JsonValue('wsa')
+  @JsonValue("wsa")
   wsa,
-  @JsonValue('wsg')
+  @JsonValue("wsg")
   wsg,
-  @JsonValue('wsi')
+  @JsonValue("wsi")
   wsi,
-  @JsonValue('wsk')
+  @JsonValue("wsk")
   wsk,
-  @JsonValue('wsr')
+  @JsonValue("wsr")
   wsr,
-  @JsonValue('wss')
+  @JsonValue("wss")
   wss,
-  @JsonValue('wsu')
+  @JsonValue("wsu")
   wsu,
-  @JsonValue('wsv')
+  @JsonValue("wsv")
   wsv,
-  @JsonValue('wtf')
+  @JsonValue("wtf")
   wtf,
-  @JsonValue('wth')
+  @JsonValue("wth")
   wth,
-  @JsonValue('wti')
+  @JsonValue("wti")
   wti,
-  @JsonValue('wtk')
+  @JsonValue("wtk")
   wtk,
-  @JsonValue('wtm')
+  @JsonValue("wtm")
   wtm,
-  @JsonValue('wtw')
+  @JsonValue("wtw")
   wtw,
-  @JsonValue('wua')
+  @JsonValue("wua")
   wua,
-  @JsonValue('wub')
+  @JsonValue("wub")
   wub,
-  @JsonValue('wud')
+  @JsonValue("wud")
   wud,
-  @JsonValue('wuh')
+  @JsonValue("wuh")
   wuh,
-  @JsonValue('wul')
+  @JsonValue("wul")
   wul,
-  @JsonValue('wum')
+  @JsonValue("wum")
   wum,
-  @JsonValue('wun')
+  @JsonValue("wun")
   wun,
-  @JsonValue('wur')
+  @JsonValue("wur")
   wur,
-  @JsonValue('wut')
+  @JsonValue("wut")
   wut,
-  @JsonValue('wuu')
+  @JsonValue("wuu")
   wuu,
-  @JsonValue('wuv')
+  @JsonValue("wuv")
   wuv,
-  @JsonValue('wux')
+  @JsonValue("wux")
   wux,
-  @JsonValue('wuy')
+  @JsonValue("wuy")
   wuy,
-  @JsonValue('wwa')
+  @JsonValue("wwa")
   wwa,
-  @JsonValue('wwb')
+  @JsonValue("wwb")
   wwb,
-  @JsonValue('wwo')
+  @JsonValue("wwo")
   wwo,
-  @JsonValue('wwr')
+  @JsonValue("wwr")
   wwr,
-  @JsonValue('www')
+  @JsonValue("www")
   www,
-  @JsonValue('wxa')
+  @JsonValue("wxa")
   wxa,
-  @JsonValue('wxw')
+  @JsonValue("wxw")
   wxw,
-  @JsonValue('wyb')
+  @JsonValue("wyb")
   wyb,
-  @JsonValue('wyi')
+  @JsonValue("wyi")
   wyi,
-  @JsonValue('wym')
+  @JsonValue("wym")
   wym,
-  @JsonValue('wyn')
+  @JsonValue("wyn")
   wyn,
-  @JsonValue('wyr')
+  @JsonValue("wyr")
   wyr,
-  @JsonValue('wyy')
+  @JsonValue("wyy")
   wyy,
-  @JsonValue('xaa')
+  @JsonValue("xaa")
   xaa,
-  @JsonValue('xab')
+  @JsonValue("xab")
   xab,
-  @JsonValue('xac')
+  @JsonValue("xac")
   xac,
-  @JsonValue('xad')
+  @JsonValue("xad")
   xad,
-  @JsonValue('xae')
+  @JsonValue("xae")
   xae,
-  @JsonValue('xag')
+  @JsonValue("xag")
   xag,
-  @JsonValue('xai')
+  @JsonValue("xai")
   xai,
-  @JsonValue('xaj')
+  @JsonValue("xaj")
   xaj,
-  @JsonValue('xak')
+  @JsonValue("xak")
   xak,
-  @JsonValue('xal')
+  @JsonValue("xal")
   xal,
-  @JsonValue('xam')
+  @JsonValue("xam")
   xam,
-  @JsonValue('xan')
+  @JsonValue("xan")
   xan,
-  @JsonValue('xao')
+  @JsonValue("xao")
   xao,
-  @JsonValue('xap')
+  @JsonValue("xap")
   xap,
-  @JsonValue('xaq')
+  @JsonValue("xaq")
   xaq,
-  @JsonValue('xar')
+  @JsonValue("xar")
   xar,
-  @JsonValue('xas')
+  @JsonValue("xas")
   xas,
-  @JsonValue('xat')
+  @JsonValue("xat")
   xat,
-  @JsonValue('xau')
+  @JsonValue("xau")
   xau,
-  @JsonValue('xav')
+  @JsonValue("xav")
   xav,
-  @JsonValue('xaw')
+  @JsonValue("xaw")
   xaw,
-  @JsonValue('xay')
+  @JsonValue("xay")
   xay,
-  @JsonValue('xbb')
+  @JsonValue("xbb")
   xbb,
-  @JsonValue('xbc')
+  @JsonValue("xbc")
   xbc,
-  @JsonValue('xbd')
+  @JsonValue("xbd")
   xbd,
-  @JsonValue('xbe')
+  @JsonValue("xbe")
   xbe,
-  @JsonValue('xbg')
+  @JsonValue("xbg")
   xbg,
-  @JsonValue('xbi')
+  @JsonValue("xbi")
   xbi,
-  @JsonValue('xbj')
+  @JsonValue("xbj")
   xbj,
-  @JsonValue('xbm')
+  @JsonValue("xbm")
   xbm,
-  @JsonValue('xbn')
+  @JsonValue("xbn")
   xbn,
-  @JsonValue('xbo')
+  @JsonValue("xbo")
   xbo,
-  @JsonValue('xbp')
+  @JsonValue("xbp")
   xbp,
-  @JsonValue('xbr')
+  @JsonValue("xbr")
   xbr,
-  @JsonValue('xbw')
+  @JsonValue("xbw")
   xbw,
-  @JsonValue('xby')
+  @JsonValue("xby")
   xby,
-  @JsonValue('xcb')
+  @JsonValue("xcb")
   xcb,
-  @JsonValue('xcc')
+  @JsonValue("xcc")
   xcc,
-  @JsonValue('xce')
+  @JsonValue("xce")
   xce,
-  @JsonValue('xcg')
+  @JsonValue("xcg")
   xcg,
-  @JsonValue('xch')
+  @JsonValue("xch")
   xch,
-  @JsonValue('xcl')
+  @JsonValue("xcl")
   xcl,
-  @JsonValue('xcm')
+  @JsonValue("xcm")
   xcm,
-  @JsonValue('xcn')
+  @JsonValue("xcn")
   xcn,
-  @JsonValue('xco')
+  @JsonValue("xco")
   xco,
-  @JsonValue('xcr')
+  @JsonValue("xcr")
   xcr,
-  @JsonValue('xct')
+  @JsonValue("xct")
   xct,
-  @JsonValue('xcu')
+  @JsonValue("xcu")
   xcu,
-  @JsonValue('xcv')
+  @JsonValue("xcv")
   xcv,
-  @JsonValue('xcw')
+  @JsonValue("xcw")
   xcw,
-  @JsonValue('xcy')
+  @JsonValue("xcy")
   xcy,
-  @JsonValue('xda')
+  @JsonValue("xda")
   xda,
-  @JsonValue('xdc')
+  @JsonValue("xdc")
   xdc,
-  @JsonValue('xdk')
+  @JsonValue("xdk")
   xdk,
-  @JsonValue('xdm')
+  @JsonValue("xdm")
   xdm,
-  @JsonValue('xdo')
+  @JsonValue("xdo")
   xdo,
-  @JsonValue('xdq')
+  @JsonValue("xdq")
   xdq,
-  @JsonValue('xdy')
+  @JsonValue("xdy")
   xdy,
-  @JsonValue('xeb')
+  @JsonValue("xeb")
   xeb,
-  @JsonValue('xed')
+  @JsonValue("xed")
   xed,
-  @JsonValue('xeg')
+  @JsonValue("xeg")
   xeg,
-  @JsonValue('xel')
+  @JsonValue("xel")
   xel,
-  @JsonValue('xem')
+  @JsonValue("xem")
   xem,
-  @JsonValue('xep')
+  @JsonValue("xep")
   xep,
-  @JsonValue('xer')
+  @JsonValue("xer")
   xer,
-  @JsonValue('xes')
+  @JsonValue("xes")
   xes,
-  @JsonValue('xet')
+  @JsonValue("xet")
   xet,
-  @JsonValue('xeu')
+  @JsonValue("xeu")
   xeu,
-  @JsonValue('xfa')
+  @JsonValue("xfa")
   xfa,
-  @JsonValue('xga')
+  @JsonValue("xga")
   xga,
-  @JsonValue('xgb')
+  @JsonValue("xgb")
   xgb,
-  @JsonValue('xgd')
+  @JsonValue("xgd")
   xgd,
-  @JsonValue('xgf')
+  @JsonValue("xgf")
   xgf,
-  @JsonValue('xgg')
+  @JsonValue("xgg")
   xgg,
-  @JsonValue('xgi')
+  @JsonValue("xgi")
   xgi,
-  @JsonValue('xgl')
+  @JsonValue("xgl")
   xgl,
-  @JsonValue('xgm')
+  @JsonValue("xgm")
   xgm,
-  @JsonValue('xgr')
+  @JsonValue("xgr")
   xgr,
-  @JsonValue('xgu')
+  @JsonValue("xgu")
   xgu,
-  @JsonValue('xgw')
+  @JsonValue("xgw")
   xgw,
-  @JsonValue('xha')
+  @JsonValue("xha")
   xha,
-  @JsonValue('xhc')
+  @JsonValue("xhc")
   xhc,
-  @JsonValue('xhd')
+  @JsonValue("xhd")
   xhd,
-  @JsonValue('xhe')
+  @JsonValue("xhe")
   xhe,
-  @JsonValue('xhm')
+  @JsonValue("xhm")
   xhm,
-  @JsonValue('xho')
+  @JsonValue("xho")
   xho,
-  @JsonValue('xhr')
+  @JsonValue("xhr")
   xhr,
-  @JsonValue('xht')
+  @JsonValue("xht")
   xht,
-  @JsonValue('xhu')
+  @JsonValue("xhu")
   xhu,
-  @JsonValue('xhv')
+  @JsonValue("xhv")
   xhv,
-  @JsonValue('xib')
+  @JsonValue("xib")
   xib,
-  @JsonValue('xii')
+  @JsonValue("xii")
   xii,
-  @JsonValue('xil')
+  @JsonValue("xil")
   xil,
-  @JsonValue('xin')
+  @JsonValue("xin")
   xin,
-  @JsonValue('xir')
+  @JsonValue("xir")
   xir,
-  @JsonValue('xis')
+  @JsonValue("xis")
   xis,
-  @JsonValue('xiv')
+  @JsonValue("xiv")
   xiv,
-  @JsonValue('xiy')
+  @JsonValue("xiy")
   xiy,
-  @JsonValue('xjb')
+  @JsonValue("xjb")
   xjb,
-  @JsonValue('xjt')
+  @JsonValue("xjt")
   xjt,
-  @JsonValue('xka')
+  @JsonValue("xka")
   xka,
-  @JsonValue('xkb')
+  @JsonValue("xkb")
   xkb,
-  @JsonValue('xkc')
+  @JsonValue("xkc")
   xkc,
-  @JsonValue('xkd')
+  @JsonValue("xkd")
   xkd,
-  @JsonValue('xke')
+  @JsonValue("xke")
   xke,
-  @JsonValue('xkf')
+  @JsonValue("xkf")
   xkf,
-  @JsonValue('xkg')
+  @JsonValue("xkg")
   xkg,
-  @JsonValue('xki')
+  @JsonValue("xki")
   xki,
-  @JsonValue('xkj')
+  @JsonValue("xkj")
   xkj,
-  @JsonValue('xkk')
+  @JsonValue("xkk")
   xkk,
-  @JsonValue('xkl')
+  @JsonValue("xkl")
   xkl,
-  @JsonValue('xkn')
+  @JsonValue("xkn")
   xkn,
-  @JsonValue('xko')
+  @JsonValue("xko")
   xko,
-  @JsonValue('xkp')
+  @JsonValue("xkp")
   xkp,
-  @JsonValue('xkq')
+  @JsonValue("xkq")
   xkq,
-  @JsonValue('xkr')
+  @JsonValue("xkr")
   xkr,
-  @JsonValue('xks')
+  @JsonValue("xks")
   xks,
-  @JsonValue('xkt')
+  @JsonValue("xkt")
   xkt,
-  @JsonValue('xku')
+  @JsonValue("xku")
   xku,
-  @JsonValue('xkv')
+  @JsonValue("xkv")
   xkv,
-  @JsonValue('xkw')
+  @JsonValue("xkw")
   xkw,
-  @JsonValue('xkx')
+  @JsonValue("xkx")
   xkx,
-  @JsonValue('xky')
+  @JsonValue("xky")
   xky,
-  @JsonValue('xkz')
+  @JsonValue("xkz")
   xkz,
-  @JsonValue('xla')
+  @JsonValue("xla")
   xla,
-  @JsonValue('xlb')
+  @JsonValue("xlb")
   xlb,
-  @JsonValue('xlc')
+  @JsonValue("xlc")
   xlc,
-  @JsonValue('xld')
+  @JsonValue("xld")
   xld,
-  @JsonValue('xle')
+  @JsonValue("xle")
   xle,
-  @JsonValue('xlg')
+  @JsonValue("xlg")
   xlg,
-  @JsonValue('xli')
+  @JsonValue("xli")
   xli,
-  @JsonValue('xln')
+  @JsonValue("xln")
   xln,
-  @JsonValue('xlo')
+  @JsonValue("xlo")
   xlo,
-  @JsonValue('xlp')
+  @JsonValue("xlp")
   xlp,
-  @JsonValue('xls')
+  @JsonValue("xls")
   xls,
-  @JsonValue('xlu')
+  @JsonValue("xlu")
   xlu,
-  @JsonValue('xly')
+  @JsonValue("xly")
   xly,
-  @JsonValue('xma')
+  @JsonValue("xma")
   xma,
-  @JsonValue('xmb')
+  @JsonValue("xmb")
   xmb,
-  @JsonValue('xmc')
+  @JsonValue("xmc")
   xmc,
-  @JsonValue('xmd')
+  @JsonValue("xmd")
   xmd,
-  @JsonValue('xme')
+  @JsonValue("xme")
   xme,
-  @JsonValue('xmf')
+  @JsonValue("xmf")
   xmf,
-  @JsonValue('xmg')
+  @JsonValue("xmg")
   xmg,
-  @JsonValue('xmh')
+  @JsonValue("xmh")
   xmh,
-  @JsonValue('xmj')
+  @JsonValue("xmj")
   xmj,
-  @JsonValue('xmk')
+  @JsonValue("xmk")
   xmk,
-  @JsonValue('xml')
+  @JsonValue("xml")
   xml,
-  @JsonValue('xmm')
+  @JsonValue("xmm")
   xmm,
-  @JsonValue('xmn')
+  @JsonValue("xmn")
   xmn,
-  @JsonValue('xmo')
+  @JsonValue("xmo")
   xmo,
-  @JsonValue('xmp')
+  @JsonValue("xmp")
   xmp,
-  @JsonValue('xmq')
+  @JsonValue("xmq")
   xmq,
-  @JsonValue('xmr')
+  @JsonValue("xmr")
   xmr,
-  @JsonValue('xms')
+  @JsonValue("xms")
   xms,
-  @JsonValue('xmt')
+  @JsonValue("xmt")
   xmt,
-  @JsonValue('xmu')
+  @JsonValue("xmu")
   xmu,
-  @JsonValue('xmv')
+  @JsonValue("xmv")
   xmv,
-  @JsonValue('xmw')
+  @JsonValue("xmw")
   xmw,
-  @JsonValue('xmx')
+  @JsonValue("xmx")
   xmx,
-  @JsonValue('xmy')
+  @JsonValue("xmy")
   xmy,
-  @JsonValue('xmz')
+  @JsonValue("xmz")
   xmz,
-  @JsonValue('xna')
+  @JsonValue("xna")
   xna,
-  @JsonValue('xnb')
+  @JsonValue("xnb")
   xnb,
-  @JsonValue('xng')
+  @JsonValue("xng")
   xng,
-  @JsonValue('xnh')
+  @JsonValue("xnh")
   xnh,
-  @JsonValue('xni')
+  @JsonValue("xni")
   xni,
-  @JsonValue('xnj')
+  @JsonValue("xnj")
   xnj,
-  @JsonValue('xnk')
+  @JsonValue("xnk")
   xnk,
-  @JsonValue('xnm')
+  @JsonValue("xnm")
   xnm,
-  @JsonValue('xnn')
+  @JsonValue("xnn")
   xnn,
-  @JsonValue('xno')
+  @JsonValue("xno")
   xno,
-  @JsonValue('xnq')
+  @JsonValue("xnq")
   xnq,
-  @JsonValue('xnr')
+  @JsonValue("xnr")
   xnr,
-  @JsonValue('xns')
+  @JsonValue("xns")
   xns,
-  @JsonValue('xnt')
+  @JsonValue("xnt")
   xnt,
-  @JsonValue('xnu')
+  @JsonValue("xnu")
   xnu,
-  @JsonValue('xny')
+  @JsonValue("xny")
   xny,
-  @JsonValue('xnz')
+  @JsonValue("xnz")
   xnz,
-  @JsonValue('xoc')
+  @JsonValue("xoc")
   xoc,
-  @JsonValue('xod')
+  @JsonValue("xod")
   xod,
-  @JsonValue('xog')
+  @JsonValue("xog")
   xog,
-  @JsonValue('xoi')
+  @JsonValue("xoi")
   xoi,
-  @JsonValue('xok')
+  @JsonValue("xok")
   xok,
-  @JsonValue('xom')
+  @JsonValue("xom")
   xom,
-  @JsonValue('xon')
+  @JsonValue("xon")
   xon,
-  @JsonValue('xoo')
+  @JsonValue("xoo")
   xoo,
-  @JsonValue('xop')
+  @JsonValue("xop")
   xop,
-  @JsonValue('xor')
+  @JsonValue("xor")
   xor,
-  @JsonValue('xow')
+  @JsonValue("xow")
   xow,
-  @JsonValue('xpa')
+  @JsonValue("xpa")
   xpa,
-  @JsonValue('xpb')
+  @JsonValue("xpb")
   xpb,
-  @JsonValue('xpc')
+  @JsonValue("xpc")
   xpc,
-  @JsonValue('xpd')
+  @JsonValue("xpd")
   xpd,
-  @JsonValue('xpe')
+  @JsonValue("xpe")
   xpe,
-  @JsonValue('xpf')
+  @JsonValue("xpf")
   xpf,
-  @JsonValue('xpg')
+  @JsonValue("xpg")
   xpg,
-  @JsonValue('xph')
+  @JsonValue("xph")
   xph,
-  @JsonValue('xpi')
+  @JsonValue("xpi")
   xpi,
-  @JsonValue('xpj')
+  @JsonValue("xpj")
   xpj,
-  @JsonValue('xpk')
+  @JsonValue("xpk")
   xpk,
-  @JsonValue('xpl')
+  @JsonValue("xpl")
   xpl,
-  @JsonValue('xpm')
+  @JsonValue("xpm")
   xpm,
-  @JsonValue('xpn')
+  @JsonValue("xpn")
   xpn,
-  @JsonValue('xpo')
+  @JsonValue("xpo")
   xpo,
-  @JsonValue('xpp')
+  @JsonValue("xpp")
   xpp,
-  @JsonValue('xpq')
+  @JsonValue("xpq")
   xpq,
-  @JsonValue('xpr')
+  @JsonValue("xpr")
   xpr,
-  @JsonValue('xps')
+  @JsonValue("xps")
   xps,
-  @JsonValue('xpt')
+  @JsonValue("xpt")
   xpt,
-  @JsonValue('xpu')
+  @JsonValue("xpu")
   xpu,
-  @JsonValue('xpv')
+  @JsonValue("xpv")
   xpv,
-  @JsonValue('xpw')
+  @JsonValue("xpw")
   xpw,
-  @JsonValue('xpx')
+  @JsonValue("xpx")
   xpx,
-  @JsonValue('xpy')
+  @JsonValue("xpy")
   xpy,
-  @JsonValue('xpz')
+  @JsonValue("xpz")
   xpz,
-  @JsonValue('xqa')
+  @JsonValue("xqa")
   xqa,
-  @JsonValue('xqt')
+  @JsonValue("xqt")
   xqt,
-  @JsonValue('xra')
+  @JsonValue("xra")
   xra,
-  @JsonValue('xrb')
+  @JsonValue("xrb")
   xrb,
-  @JsonValue('xrd')
+  @JsonValue("xrd")
   xrd,
-  @JsonValue('xre')
+  @JsonValue("xre")
   xre,
-  @JsonValue('xrg')
+  @JsonValue("xrg")
   xrg,
-  @JsonValue('xri')
+  @JsonValue("xri")
   xri,
-  @JsonValue('xrm')
+  @JsonValue("xrm")
   xrm,
-  @JsonValue('xrn')
+  @JsonValue("xrn")
   xrn,
-  @JsonValue('xrr')
+  @JsonValue("xrr")
   xrr,
-  @JsonValue('xrt')
+  @JsonValue("xrt")
   xrt,
-  @JsonValue('xru')
+  @JsonValue("xru")
   xru,
-  @JsonValue('xrw')
+  @JsonValue("xrw")
   xrw,
-  @JsonValue('xsa')
+  @JsonValue("xsa")
   xsa,
-  @JsonValue('xsb')
+  @JsonValue("xsb")
   xsb,
-  @JsonValue('xsc')
+  @JsonValue("xsc")
   xsc,
-  @JsonValue('xsd')
+  @JsonValue("xsd")
   xsd,
-  @JsonValue('xse')
+  @JsonValue("xse")
   xse,
-  @JsonValue('xsh')
+  @JsonValue("xsh")
   xsh,
-  @JsonValue('xsi')
+  @JsonValue("xsi")
   xsi,
-  @JsonValue('xsj')
+  @JsonValue("xsj")
   xsj,
-  @JsonValue('xsl')
+  @JsonValue("xsl")
   xsl,
-  @JsonValue('xsm')
+  @JsonValue("xsm")
   xsm,
-  @JsonValue('xsn')
+  @JsonValue("xsn")
   xsn,
-  @JsonValue('xso')
+  @JsonValue("xso")
   xso,
-  @JsonValue('xsp')
+  @JsonValue("xsp")
   xsp,
-  @JsonValue('xsq')
+  @JsonValue("xsq")
   xsq,
-  @JsonValue('xsr')
+  @JsonValue("xsr")
   xsr,
-  @JsonValue('xss')
+  @JsonValue("xss")
   xss,
-  @JsonValue('xsu')
+  @JsonValue("xsu")
   xsu,
-  @JsonValue('xsv')
+  @JsonValue("xsv")
   xsv,
-  @JsonValue('xsy')
+  @JsonValue("xsy")
   xsy,
-  @JsonValue('xta')
+  @JsonValue("xta")
   xta,
-  @JsonValue('xtb')
+  @JsonValue("xtb")
   xtb,
-  @JsonValue('xtc')
+  @JsonValue("xtc")
   xtc,
-  @JsonValue('xtd')
+  @JsonValue("xtd")
   xtd,
-  @JsonValue('xte')
+  @JsonValue("xte")
   xte,
-  @JsonValue('xtg')
+  @JsonValue("xtg")
   xtg,
-  @JsonValue('xth')
+  @JsonValue("xth")
   xth,
-  @JsonValue('xti')
+  @JsonValue("xti")
   xti,
-  @JsonValue('xtj')
+  @JsonValue("xtj")
   xtj,
-  @JsonValue('xtl')
+  @JsonValue("xtl")
   xtl,
-  @JsonValue('xtm')
+  @JsonValue("xtm")
   xtm,
-  @JsonValue('xtn')
+  @JsonValue("xtn")
   xtn,
-  @JsonValue('xto')
+  @JsonValue("xto")
   xto,
-  @JsonValue('xtp')
+  @JsonValue("xtp")
   xtp,
-  @JsonValue('xtq')
+  @JsonValue("xtq")
   xtq,
-  @JsonValue('xtr')
+  @JsonValue("xtr")
   xtr,
-  @JsonValue('xts')
+  @JsonValue("xts")
   xts,
-  @JsonValue('xtt')
+  @JsonValue("xtt")
   xtt,
-  @JsonValue('xtu')
+  @JsonValue("xtu")
   xtu,
-  @JsonValue('xtv')
+  @JsonValue("xtv")
   xtv,
-  @JsonValue('xtw')
+  @JsonValue("xtw")
   xtw,
-  @JsonValue('xty')
+  @JsonValue("xty")
   xty,
-  @JsonValue('xua')
+  @JsonValue("xua")
   xua,
-  @JsonValue('xub')
+  @JsonValue("xub")
   xub,
-  @JsonValue('xud')
+  @JsonValue("xud")
   xud,
-  @JsonValue('xug')
+  @JsonValue("xug")
   xug,
-  @JsonValue('xuj')
+  @JsonValue("xuj")
   xuj,
-  @JsonValue('xul')
+  @JsonValue("xul")
   xul,
-  @JsonValue('xum')
+  @JsonValue("xum")
   xum,
-  @JsonValue('xun')
+  @JsonValue("xun")
   xun,
-  @JsonValue('xuo')
+  @JsonValue("xuo")
   xuo,
-  @JsonValue('xup')
+  @JsonValue("xup")
   xup,
-  @JsonValue('xur')
+  @JsonValue("xur")
   xur,
-  @JsonValue('xut')
+  @JsonValue("xut")
   xut,
-  @JsonValue('xuu')
+  @JsonValue("xuu")
   xuu,
-  @JsonValue('xve')
+  @JsonValue("xve")
   xve,
-  @JsonValue('xvi')
+  @JsonValue("xvi")
   xvi,
-  @JsonValue('xvn')
+  @JsonValue("xvn")
   xvn,
-  @JsonValue('xvo')
+  @JsonValue("xvo")
   xvo,
-  @JsonValue('xvs')
+  @JsonValue("xvs")
   xvs,
-  @JsonValue('xwa')
+  @JsonValue("xwa")
   xwa,
-  @JsonValue('xwc')
+  @JsonValue("xwc")
   xwc,
-  @JsonValue('xwd')
+  @JsonValue("xwd")
   xwd,
-  @JsonValue('xwe')
+  @JsonValue("xwe")
   xwe,
-  @JsonValue('xwg')
+  @JsonValue("xwg")
   xwg,
-  @JsonValue('xwj')
+  @JsonValue("xwj")
   xwj,
-  @JsonValue('xwk')
+  @JsonValue("xwk")
   xwk,
-  @JsonValue('xwl')
+  @JsonValue("xwl")
   xwl,
-  @JsonValue('xwo')
+  @JsonValue("xwo")
   xwo,
-  @JsonValue('xwr')
+  @JsonValue("xwr")
   xwr,
-  @JsonValue('xwt')
+  @JsonValue("xwt")
   xwt,
-  @JsonValue('xww')
+  @JsonValue("xww")
   xww,
-  @JsonValue('xxb')
+  @JsonValue("xxb")
   xxb,
-  @JsonValue('xxk')
+  @JsonValue("xxk")
   xxk,
-  @JsonValue('xxm')
+  @JsonValue("xxm")
   xxm,
-  @JsonValue('xxr')
+  @JsonValue("xxr")
   xxr,
-  @JsonValue('xxt')
+  @JsonValue("xxt")
   xxt,
-  @JsonValue('xya')
+  @JsonValue("xya")
   xya,
-  @JsonValue('xyb')
+  @JsonValue("xyb")
   xyb,
-  @JsonValue('xyj')
+  @JsonValue("xyj")
   xyj,
-  @JsonValue('xyk')
+  @JsonValue("xyk")
   xyk,
-  @JsonValue('xyl')
+  @JsonValue("xyl")
   xyl,
-  @JsonValue('xyt')
+  @JsonValue("xyt")
   xyt,
-  @JsonValue('xyy')
+  @JsonValue("xyy")
   xyy,
-  @JsonValue('xzh')
+  @JsonValue("xzh")
   xzh,
-  @JsonValue('xzm')
+  @JsonValue("xzm")
   xzm,
-  @JsonValue('xzp')
+  @JsonValue("xzp")
   xzp,
-  @JsonValue('yaa')
+  @JsonValue("yaa")
   yaa,
-  @JsonValue('yab')
+  @JsonValue("yab")
   yab,
-  @JsonValue('yac')
+  @JsonValue("yac")
   yac,
-  @JsonValue('yad')
+  @JsonValue("yad")
   yad,
-  @JsonValue('yae')
+  @JsonValue("yae")
   yae,
-  @JsonValue('yaf')
+  @JsonValue("yaf")
   yaf,
-  @JsonValue('yag')
+  @JsonValue("yag")
   yag,
-  @JsonValue('yah')
+  @JsonValue("yah")
   yah,
-  @JsonValue('yai')
+  @JsonValue("yai")
   yai,
-  @JsonValue('yaj')
+  @JsonValue("yaj")
   yaj,
-  @JsonValue('yak')
+  @JsonValue("yak")
   yak,
-  @JsonValue('yal')
+  @JsonValue("yal")
   yal,
-  @JsonValue('yam')
+  @JsonValue("yam")
   yam,
-  @JsonValue('yan')
+  @JsonValue("yan")
   yan,
-  @JsonValue('yao')
+  @JsonValue("yao")
   yao,
-  @JsonValue('yap')
+  @JsonValue("yap")
   yap,
-  @JsonValue('yaq')
+  @JsonValue("yaq")
   yaq,
-  @JsonValue('yar')
+  @JsonValue("yar")
   yar,
-  @JsonValue('yas')
+  @JsonValue("yas")
   yas,
-  @JsonValue('yat')
+  @JsonValue("yat")
   yat,
-  @JsonValue('yau')
+  @JsonValue("yau")
   yau,
-  @JsonValue('yav')
+  @JsonValue("yav")
   yav,
-  @JsonValue('yaw')
+  @JsonValue("yaw")
   yaw,
-  @JsonValue('yax')
+  @JsonValue("yax")
   yax,
-  @JsonValue('yay')
+  @JsonValue("yay")
   yay,
-  @JsonValue('yaz')
+  @JsonValue("yaz")
   yaz,
-  @JsonValue('yba')
+  @JsonValue("yba")
   yba,
-  @JsonValue('ybb')
+  @JsonValue("ybb")
   ybb,
-  @JsonValue('ybe')
+  @JsonValue("ybe")
   ybe,
-  @JsonValue('ybh')
+  @JsonValue("ybh")
   ybh,
-  @JsonValue('ybi')
+  @JsonValue("ybi")
   ybi,
-  @JsonValue('ybj')
+  @JsonValue("ybj")
   ybj,
-  @JsonValue('ybk')
+  @JsonValue("ybk")
   ybk,
-  @JsonValue('ybl')
+  @JsonValue("ybl")
   ybl,
-  @JsonValue('ybm')
+  @JsonValue("ybm")
   ybm,
-  @JsonValue('ybn')
+  @JsonValue("ybn")
   ybn,
-  @JsonValue('ybo')
+  @JsonValue("ybo")
   ybo,
-  @JsonValue('ybx')
+  @JsonValue("ybx")
   ybx,
-  @JsonValue('yby')
+  @JsonValue("yby")
   yby,
-  @JsonValue('ych')
+  @JsonValue("ych")
   ych,
-  @JsonValue('ycl')
+  @JsonValue("ycl")
   ycl,
-  @JsonValue('ycn')
+  @JsonValue("ycn")
   ycn,
-  @JsonValue('ycp')
+  @JsonValue("ycp")
   ycp,
-  @JsonValue('yda')
+  @JsonValue("yda")
   yda,
-  @JsonValue('ydd')
+  @JsonValue("ydd")
   ydd,
-  @JsonValue('yde')
+  @JsonValue("yde")
   yde,
-  @JsonValue('ydg')
+  @JsonValue("ydg")
   ydg,
-  @JsonValue('ydk')
+  @JsonValue("ydk")
   ydk,
-  @JsonValue('yea')
+  @JsonValue("yea")
   yea,
-  @JsonValue('yec')
+  @JsonValue("yec")
   yec,
-  @JsonValue('yee')
+  @JsonValue("yee")
   yee,
-  @JsonValue('yei')
+  @JsonValue("yei")
   yei,
-  @JsonValue('yej')
+  @JsonValue("yej")
   yej,
-  @JsonValue('yel')
+  @JsonValue("yel")
   yel,
-  @JsonValue('yer')
+  @JsonValue("yer")
   yer,
-  @JsonValue('yes')
+  @JsonValue("yes")
   yes,
-  @JsonValue('yet')
+  @JsonValue("yet")
   yet,
-  @JsonValue('yeu')
+  @JsonValue("yeu")
   yeu,
-  @JsonValue('yev')
+  @JsonValue("yev")
   yev,
-  @JsonValue('yey')
+  @JsonValue("yey")
   yey,
-  @JsonValue('yga')
+  @JsonValue("yga")
   yga,
-  @JsonValue('ygi')
+  @JsonValue("ygi")
   ygi,
-  @JsonValue('ygl')
+  @JsonValue("ygl")
   ygl,
-  @JsonValue('ygm')
+  @JsonValue("ygm")
   ygm,
-  @JsonValue('ygp')
+  @JsonValue("ygp")
   ygp,
-  @JsonValue('ygr')
+  @JsonValue("ygr")
   ygr,
-  @JsonValue('ygs')
+  @JsonValue("ygs")
   ygs,
-  @JsonValue('ygu')
+  @JsonValue("ygu")
   ygu,
-  @JsonValue('ygw')
+  @JsonValue("ygw")
   ygw,
-  @JsonValue('yha')
+  @JsonValue("yha")
   yha,
-  @JsonValue('yhd')
+  @JsonValue("yhd")
   yhd,
-  @JsonValue('yhl')
+  @JsonValue("yhl")
   yhl,
-  @JsonValue('yhs')
+  @JsonValue("yhs")
   yhs,
-  @JsonValue('yia')
+  @JsonValue("yia")
   yia,
-  @JsonValue('yid')
+  @JsonValue("yid")
   yid,
-  @JsonValue('yif')
+  @JsonValue("yif")
   yif,
-  @JsonValue('yig')
+  @JsonValue("yig")
   yig,
-  @JsonValue('yih')
+  @JsonValue("yih")
   yih,
-  @JsonValue('yii')
+  @JsonValue("yii")
   yii,
-  @JsonValue('yij')
+  @JsonValue("yij")
   yij,
-  @JsonValue('yik')
+  @JsonValue("yik")
   yik,
-  @JsonValue('yil')
+  @JsonValue("yil")
   yil,
-  @JsonValue('yim')
+  @JsonValue("yim")
   yim,
-  @JsonValue('yin')
+  @JsonValue("yin")
   yin,
-  @JsonValue('yip')
+  @JsonValue("yip")
   yip,
-  @JsonValue('yiq')
+  @JsonValue("yiq")
   yiq,
-  @JsonValue('yir')
+  @JsonValue("yir")
   yir,
-  @JsonValue('yis')
+  @JsonValue("yis")
   yis,
-  @JsonValue('yit')
+  @JsonValue("yit")
   yit,
-  @JsonValue('yiu')
+  @JsonValue("yiu")
   yiu,
-  @JsonValue('yiv')
+  @JsonValue("yiv")
   yiv,
-  @JsonValue('yix')
+  @JsonValue("yix")
   yix,
-  @JsonValue('yiz')
+  @JsonValue("yiz")
   yiz,
-  @JsonValue('yka')
+  @JsonValue("yka")
   yka,
-  @JsonValue('ykg')
+  @JsonValue("ykg")
   ykg,
-  @JsonValue('yki')
+  @JsonValue("yki")
   yki,
-  @JsonValue('ykk')
+  @JsonValue("ykk")
   ykk,
-  @JsonValue('ykl')
+  @JsonValue("ykl")
   ykl,
-  @JsonValue('ykm')
+  @JsonValue("ykm")
   ykm,
-  @JsonValue('ykn')
+  @JsonValue("ykn")
   ykn,
-  @JsonValue('yko')
+  @JsonValue("yko")
   yko,
-  @JsonValue('ykr')
+  @JsonValue("ykr")
   ykr,
-  @JsonValue('ykt')
+  @JsonValue("ykt")
   ykt,
-  @JsonValue('yku')
+  @JsonValue("yku")
   yku,
-  @JsonValue('yky')
+  @JsonValue("yky")
   yky,
-  @JsonValue('yla')
+  @JsonValue("yla")
   yla,
-  @JsonValue('ylb')
+  @JsonValue("ylb")
   ylb,
-  @JsonValue('yle')
+  @JsonValue("yle")
   yle,
-  @JsonValue('ylg')
+  @JsonValue("ylg")
   ylg,
-  @JsonValue('yli')
+  @JsonValue("yli")
   yli,
-  @JsonValue('yll')
+  @JsonValue("yll")
   yll,
-  @JsonValue('ylm')
+  @JsonValue("ylm")
   ylm,
-  @JsonValue('yln')
+  @JsonValue("yln")
   yln,
-  @JsonValue('ylo')
+  @JsonValue("ylo")
   ylo,
-  @JsonValue('ylr')
+  @JsonValue("ylr")
   ylr,
-  @JsonValue('ylu')
+  @JsonValue("ylu")
   ylu,
-  @JsonValue('yly')
+  @JsonValue("yly")
   yly,
-  @JsonValue('ymb')
+  @JsonValue("ymb")
   ymb,
-  @JsonValue('ymc')
+  @JsonValue("ymc")
   ymc,
-  @JsonValue('ymd')
+  @JsonValue("ymd")
   ymd,
-  @JsonValue('yme')
+  @JsonValue("yme")
   yme,
-  @JsonValue('ymg')
+  @JsonValue("ymg")
   ymg,
-  @JsonValue('ymh')
+  @JsonValue("ymh")
   ymh,
-  @JsonValue('ymi')
+  @JsonValue("ymi")
   ymi,
-  @JsonValue('ymk')
+  @JsonValue("ymk")
   ymk,
-  @JsonValue('yml')
+  @JsonValue("yml")
   yml,
-  @JsonValue('ymm')
+  @JsonValue("ymm")
   ymm,
-  @JsonValue('ymn')
+  @JsonValue("ymn")
   ymn,
-  @JsonValue('ymo')
+  @JsonValue("ymo")
   ymo,
-  @JsonValue('ymp')
+  @JsonValue("ymp")
   ymp,
-  @JsonValue('ymq')
+  @JsonValue("ymq")
   ymq,
-  @JsonValue('ymr')
+  @JsonValue("ymr")
   ymr,
-  @JsonValue('yms')
+  @JsonValue("yms")
   yms,
-  @JsonValue('ymx')
+  @JsonValue("ymx")
   ymx,
-  @JsonValue('ymz')
+  @JsonValue("ymz")
   ymz,
-  @JsonValue('yna')
+  @JsonValue("yna")
   yna,
-  @JsonValue('ynd')
+  @JsonValue("ynd")
   ynd,
-  @JsonValue('yne')
+  @JsonValue("yne")
   yne,
-  @JsonValue('yng')
+  @JsonValue("yng")
   yng,
-  @JsonValue('ynk')
+  @JsonValue("ynk")
   ynk,
-  @JsonValue('ynl')
+  @JsonValue("ynl")
   ynl,
-  @JsonValue('ynn')
+  @JsonValue("ynn")
   ynn,
-  @JsonValue('yno')
+  @JsonValue("yno")
   yno,
-  @JsonValue('ynq')
+  @JsonValue("ynq")
   ynq,
-  @JsonValue('yns')
+  @JsonValue("yns")
   yns,
-  @JsonValue('ynu')
+  @JsonValue("ynu")
   ynu,
-  @JsonValue('yob')
+  @JsonValue("yob")
   yob,
-  @JsonValue('yog')
+  @JsonValue("yog")
   yog,
-  @JsonValue('yoi')
+  @JsonValue("yoi")
   yoi,
-  @JsonValue('yok')
+  @JsonValue("yok")
   yok,
-  @JsonValue('yol')
+  @JsonValue("yol")
   yol,
-  @JsonValue('yom')
+  @JsonValue("yom")
   yom,
-  @JsonValue('yon')
+  @JsonValue("yon")
   yon,
-  @JsonValue('yor')
+  @JsonValue("yor")
   yor,
-  @JsonValue('yot')
+  @JsonValue("yot")
   yot,
-  @JsonValue('yox')
+  @JsonValue("yox")
   yox,
-  @JsonValue('yoy')
+  @JsonValue("yoy")
   yoy,
-  @JsonValue('ypa')
+  @JsonValue("ypa")
   ypa,
-  @JsonValue('ypb')
+  @JsonValue("ypb")
   ypb,
-  @JsonValue('ypg')
+  @JsonValue("ypg")
   ypg,
-  @JsonValue('yph')
+  @JsonValue("yph")
   yph,
-  @JsonValue('ypm')
+  @JsonValue("ypm")
   ypm,
-  @JsonValue('ypn')
+  @JsonValue("ypn")
   ypn,
-  @JsonValue('ypo')
+  @JsonValue("ypo")
   ypo,
-  @JsonValue('ypp')
+  @JsonValue("ypp")
   ypp,
-  @JsonValue('ypz')
+  @JsonValue("ypz")
   ypz,
-  @JsonValue('yra')
+  @JsonValue("yra")
   yra,
-  @JsonValue('yrb')
+  @JsonValue("yrb")
   yrb,
-  @JsonValue('yre')
+  @JsonValue("yre")
   yre,
-  @JsonValue('yrk')
+  @JsonValue("yrk")
   yrk,
-  @JsonValue('yrl')
+  @JsonValue("yrl")
   yrl,
-  @JsonValue('yrm')
+  @JsonValue("yrm")
   yrm,
-  @JsonValue('yrn')
+  @JsonValue("yrn")
   yrn,
-  @JsonValue('yro')
+  @JsonValue("yro")
   yro,
-  @JsonValue('yrs')
+  @JsonValue("yrs")
   yrs,
-  @JsonValue('yrw')
+  @JsonValue("yrw")
   yrw,
-  @JsonValue('yry')
+  @JsonValue("yry")
   yry,
-  @JsonValue('ysc')
+  @JsonValue("ysc")
   ysc,
-  @JsonValue('ysd')
+  @JsonValue("ysd")
   ysd,
-  @JsonValue('ysg')
+  @JsonValue("ysg")
   ysg,
-  @JsonValue('ysl')
+  @JsonValue("ysl")
   ysl,
-  @JsonValue('ysm')
+  @JsonValue("ysm")
   ysm,
-  @JsonValue('ysn')
+  @JsonValue("ysn")
   ysn,
-  @JsonValue('yso')
+  @JsonValue("yso")
   yso,
-  @JsonValue('ysp')
+  @JsonValue("ysp")
   ysp,
-  @JsonValue('ysr')
+  @JsonValue("ysr")
   ysr,
-  @JsonValue('yss')
+  @JsonValue("yss")
   yss,
-  @JsonValue('ysy')
+  @JsonValue("ysy")
   ysy,
-  @JsonValue('yta')
+  @JsonValue("yta")
   yta,
-  @JsonValue('ytl')
+  @JsonValue("ytl")
   ytl,
-  @JsonValue('ytp')
+  @JsonValue("ytp")
   ytp,
-  @JsonValue('ytw')
+  @JsonValue("ytw")
   ytw,
-  @JsonValue('yty')
+  @JsonValue("yty")
   yty,
-  @JsonValue('yua')
+  @JsonValue("yua")
   yua,
-  @JsonValue('yub')
+  @JsonValue("yub")
   yub,
-  @JsonValue('yuc')
+  @JsonValue("yuc")
   yuc,
-  @JsonValue('yud')
+  @JsonValue("yud")
   yud,
-  @JsonValue('yue')
+  @JsonValue("yue")
   yue,
-  @JsonValue('yuf')
+  @JsonValue("yuf")
   yuf,
-  @JsonValue('yug')
+  @JsonValue("yug")
   yug,
-  @JsonValue('yui')
+  @JsonValue("yui")
   yui,
-  @JsonValue('yuj')
+  @JsonValue("yuj")
   yuj,
-  @JsonValue('yuk')
+  @JsonValue("yuk")
   yuk,
-  @JsonValue('yul')
+  @JsonValue("yul")
   yul,
-  @JsonValue('yum')
+  @JsonValue("yum")
   yum,
-  @JsonValue('yun')
+  @JsonValue("yun")
   yun,
-  @JsonValue('yup')
+  @JsonValue("yup")
   yup,
-  @JsonValue('yuq')
+  @JsonValue("yuq")
   yuq,
-  @JsonValue('yur')
+  @JsonValue("yur")
   yur,
-  @JsonValue('yut')
+  @JsonValue("yut")
   yut,
-  @JsonValue('yuw')
+  @JsonValue("yuw")
   yuw,
-  @JsonValue('yux')
+  @JsonValue("yux")
   yux,
-  @JsonValue('yuy')
+  @JsonValue("yuy")
   yuy,
-  @JsonValue('yuz')
+  @JsonValue("yuz")
   yuz,
-  @JsonValue('yva')
+  @JsonValue("yva")
   yva,
-  @JsonValue('yvt')
+  @JsonValue("yvt")
   yvt,
-  @JsonValue('ywa')
+  @JsonValue("ywa")
   ywa,
-  @JsonValue('ywg')
+  @JsonValue("ywg")
   ywg,
-  @JsonValue('ywl')
+  @JsonValue("ywl")
   ywl,
-  @JsonValue('ywn')
+  @JsonValue("ywn")
   ywn,
-  @JsonValue('ywq')
+  @JsonValue("ywq")
   ywq,
-  @JsonValue('ywr')
+  @JsonValue("ywr")
   ywr,
-  @JsonValue('ywt')
+  @JsonValue("ywt")
   ywt,
-  @JsonValue('ywu')
+  @JsonValue("ywu")
   ywu,
-  @JsonValue('yww')
+  @JsonValue("yww")
   yww,
-  @JsonValue('yxa')
+  @JsonValue("yxa")
   yxa,
-  @JsonValue('yxg')
+  @JsonValue("yxg")
   yxg,
-  @JsonValue('yxl')
+  @JsonValue("yxl")
   yxl,
-  @JsonValue('yxm')
+  @JsonValue("yxm")
   yxm,
-  @JsonValue('yxu')
+  @JsonValue("yxu")
   yxu,
-  @JsonValue('yxy')
+  @JsonValue("yxy")
   yxy,
-  @JsonValue('yyr')
+  @JsonValue("yyr")
   yyr,
-  @JsonValue('yyu')
+  @JsonValue("yyu")
   yyu,
-  @JsonValue('yyz')
+  @JsonValue("yyz")
   yyz,
-  @JsonValue('yzg')
+  @JsonValue("yzg")
   yzg,
-  @JsonValue('yzk')
+  @JsonValue("yzk")
   yzk,
-  @JsonValue('zaa')
+  @JsonValue("zaa")
   zaa,
-  @JsonValue('zab')
+  @JsonValue("zab")
   zab,
-  @JsonValue('zac')
+  @JsonValue("zac")
   zac,
-  @JsonValue('zad')
+  @JsonValue("zad")
   zad,
-  @JsonValue('zae')
+  @JsonValue("zae")
   zae,
-  @JsonValue('zaf')
+  @JsonValue("zaf")
   zaf,
-  @JsonValue('zag')
+  @JsonValue("zag")
   zag,
-  @JsonValue('zah')
+  @JsonValue("zah")
   zah,
-  @JsonValue('zai')
+  @JsonValue("zai")
   zai,
-  @JsonValue('zaj')
+  @JsonValue("zaj")
   zaj,
-  @JsonValue('zak')
+  @JsonValue("zak")
   zak,
-  @JsonValue('zal')
+  @JsonValue("zal")
   zal,
-  @JsonValue('zam')
+  @JsonValue("zam")
   zam,
-  @JsonValue('zao')
+  @JsonValue("zao")
   zao,
-  @JsonValue('zap')
+  @JsonValue("zap")
   zap,
-  @JsonValue('zaq')
+  @JsonValue("zaq")
   zaq,
-  @JsonValue('zar')
+  @JsonValue("zar")
   zar,
-  @JsonValue('zas')
+  @JsonValue("zas")
   zas,
-  @JsonValue('zat')
+  @JsonValue("zat")
   zat,
-  @JsonValue('zau')
+  @JsonValue("zau")
   zau,
-  @JsonValue('zav')
+  @JsonValue("zav")
   zav,
-  @JsonValue('zaw')
+  @JsonValue("zaw")
   zaw,
-  @JsonValue('zax')
+  @JsonValue("zax")
   zax,
-  @JsonValue('zay')
+  @JsonValue("zay")
   zay,
-  @JsonValue('zaz')
+  @JsonValue("zaz")
   zaz,
-  @JsonValue('zba')
+  @JsonValue("zba")
   zba,
-  @JsonValue('zbc')
+  @JsonValue("zbc")
   zbc,
-  @JsonValue('zbe')
+  @JsonValue("zbe")
   zbe,
-  @JsonValue('zbl')
+  @JsonValue("zbl")
   zbl,
-  @JsonValue('zbt')
+  @JsonValue("zbt")
   zbt,
-  @JsonValue('zbu')
+  @JsonValue("zbu")
   zbu,
-  @JsonValue('zbw')
+  @JsonValue("zbw")
   zbw,
-  @JsonValue('zca')
+  @JsonValue("zca")
   zca,
-  @JsonValue('zcd')
+  @JsonValue("zcd")
   zcd,
-  @JsonValue('zch')
+  @JsonValue("zch")
   zch,
-  @JsonValue('zdj')
+  @JsonValue("zdj")
   zdj,
-  @JsonValue('zea')
+  @JsonValue("zea")
   zea,
-  @JsonValue('zeg')
+  @JsonValue("zeg")
   zeg,
-  @JsonValue('zeh')
+  @JsonValue("zeh")
   zeh,
-  @JsonValue('zen')
+  @JsonValue("zen")
   zen,
-  @JsonValue('zga')
+  @JsonValue("zga")
   zga,
-  @JsonValue('zgb')
+  @JsonValue("zgb")
   zgb,
-  @JsonValue('zgh')
+  @JsonValue("zgh")
   zgh,
-  @JsonValue('zgm')
+  @JsonValue("zgm")
   zgm,
-  @JsonValue('zgn')
+  @JsonValue("zgn")
   zgn,
-  @JsonValue('zgr')
+  @JsonValue("zgr")
   zgr,
-  @JsonValue('zha')
+  @JsonValue("zha")
   zha,
-  @JsonValue('zhb')
+  @JsonValue("zhb")
   zhb,
-  @JsonValue('zhd')
+  @JsonValue("zhd")
   zhd,
-  @JsonValue('zhi')
+  @JsonValue("zhi")
   zhi,
-  @JsonValue('zhn')
+  @JsonValue("zhn")
   zhn,
-  @JsonValue('zho')
+  @JsonValue("zho")
   zho,
-  @JsonValue('zhw')
+  @JsonValue("zhw")
   zhw,
-  @JsonValue('zia')
+  @JsonValue("zia")
   zia,
-  @JsonValue('zib')
+  @JsonValue("zib")
   zib,
-  @JsonValue('zik')
+  @JsonValue("zik")
   zik,
-  @JsonValue('zil')
+  @JsonValue("zil")
   zil,
-  @JsonValue('zim')
+  @JsonValue("zim")
   zim,
-  @JsonValue('zin')
+  @JsonValue("zin")
   zin,
-  @JsonValue('ziw')
+  @JsonValue("ziw")
   ziw,
-  @JsonValue('ziz')
+  @JsonValue("ziz")
   ziz,
-  @JsonValue('zka')
+  @JsonValue("zka")
   zka,
-  @JsonValue('zkb')
+  @JsonValue("zkb")
   zkb,
-  @JsonValue('zkd')
+  @JsonValue("zkd")
   zkd,
-  @JsonValue('zkg')
+  @JsonValue("zkg")
   zkg,
-  @JsonValue('zkh')
+  @JsonValue("zkh")
   zkh,
-  @JsonValue('zkk')
+  @JsonValue("zkk")
   zkk,
-  @JsonValue('zkn')
+  @JsonValue("zkn")
   zkn,
-  @JsonValue('zko')
+  @JsonValue("zko")
   zko,
-  @JsonValue('zkp')
+  @JsonValue("zkp")
   zkp,
-  @JsonValue('zkr')
+  @JsonValue("zkr")
   zkr,
-  @JsonValue('zkt')
+  @JsonValue("zkt")
   zkt,
-  @JsonValue('zku')
+  @JsonValue("zku")
   zku,
-  @JsonValue('zkv')
+  @JsonValue("zkv")
   zkv,
-  @JsonValue('zkz')
+  @JsonValue("zkz")
   zkz,
-  @JsonValue('zla')
+  @JsonValue("zla")
   zla,
-  @JsonValue('zlj')
+  @JsonValue("zlj")
   zlj,
-  @JsonValue('zlm')
+  @JsonValue("zlm")
   zlm,
-  @JsonValue('zln')
+  @JsonValue("zln")
   zln,
-  @JsonValue('zlq')
+  @JsonValue("zlq")
   zlq,
-  @JsonValue('zma')
+  @JsonValue("zma")
   zma,
-  @JsonValue('zmb')
+  @JsonValue("zmb")
   zmb,
-  @JsonValue('zmc')
+  @JsonValue("zmc")
   zmc,
-  @JsonValue('zmd')
+  @JsonValue("zmd")
   zmd,
-  @JsonValue('zme')
+  @JsonValue("zme")
   zme,
-  @JsonValue('zmf')
+  @JsonValue("zmf")
   zmf,
-  @JsonValue('zmg')
+  @JsonValue("zmg")
   zmg,
-  @JsonValue('zmh')
+  @JsonValue("zmh")
   zmh,
-  @JsonValue('zmi')
+  @JsonValue("zmi")
   zmi,
-  @JsonValue('zmj')
+  @JsonValue("zmj")
   zmj,
-  @JsonValue('zmk')
+  @JsonValue("zmk")
   zmk,
-  @JsonValue('zml')
+  @JsonValue("zml")
   zml,
-  @JsonValue('zmm')
+  @JsonValue("zmm")
   zmm,
-  @JsonValue('zmn')
+  @JsonValue("zmn")
   zmn,
-  @JsonValue('zmo')
+  @JsonValue("zmo")
   zmo,
-  @JsonValue('zmp')
+  @JsonValue("zmp")
   zmp,
-  @JsonValue('zmq')
+  @JsonValue("zmq")
   zmq,
-  @JsonValue('zmr')
+  @JsonValue("zmr")
   zmr,
-  @JsonValue('zms')
+  @JsonValue("zms")
   zms,
-  @JsonValue('zmt')
+  @JsonValue("zmt")
   zmt,
-  @JsonValue('zmu')
+  @JsonValue("zmu")
   zmu,
-  @JsonValue('zmv')
+  @JsonValue("zmv")
   zmv,
-  @JsonValue('zmw')
+  @JsonValue("zmw")
   zmw,
-  @JsonValue('zmx')
+  @JsonValue("zmx")
   zmx,
-  @JsonValue('zmy')
+  @JsonValue("zmy")
   zmy,
-  @JsonValue('zmz')
+  @JsonValue("zmz")
   zmz,
-  @JsonValue('zna')
+  @JsonValue("zna")
   zna,
-  @JsonValue('zne')
+  @JsonValue("zne")
   zne,
-  @JsonValue('zng')
+  @JsonValue("zng")
   zng,
-  @JsonValue('znk')
+  @JsonValue("znk")
   znk,
-  @JsonValue('zns')
+  @JsonValue("zns")
   zns,
-  @JsonValue('zoc')
+  @JsonValue("zoc")
   zoc,
-  @JsonValue('zoh')
+  @JsonValue("zoh")
   zoh,
-  @JsonValue('zom')
+  @JsonValue("zom")
   zom,
-  @JsonValue('zoo')
+  @JsonValue("zoo")
   zoo,
-  @JsonValue('zoq')
+  @JsonValue("zoq")
   zoq,
-  @JsonValue('zor')
+  @JsonValue("zor")
   zor,
-  @JsonValue('zos')
+  @JsonValue("zos")
   zos,
-  @JsonValue('zpa')
+  @JsonValue("zpa")
   zpa,
-  @JsonValue('zpb')
+  @JsonValue("zpb")
   zpb,
-  @JsonValue('zpc')
+  @JsonValue("zpc")
   zpc,
-  @JsonValue('zpd')
+  @JsonValue("zpd")
   zpd,
-  @JsonValue('zpe')
+  @JsonValue("zpe")
   zpe,
-  @JsonValue('zpf')
+  @JsonValue("zpf")
   zpf,
-  @JsonValue('zpg')
+  @JsonValue("zpg")
   zpg,
-  @JsonValue('zph')
+  @JsonValue("zph")
   zph,
-  @JsonValue('zpi')
+  @JsonValue("zpi")
   zpi,
-  @JsonValue('zpj')
+  @JsonValue("zpj")
   zpj,
-  @JsonValue('zpk')
+  @JsonValue("zpk")
   zpk,
-  @JsonValue('zpl')
+  @JsonValue("zpl")
   zpl,
-  @JsonValue('zpm')
+  @JsonValue("zpm")
   zpm,
-  @JsonValue('zpn')
+  @JsonValue("zpn")
   zpn,
-  @JsonValue('zpo')
+  @JsonValue("zpo")
   zpo,
-  @JsonValue('zpp')
+  @JsonValue("zpp")
   zpp,
-  @JsonValue('zpq')
+  @JsonValue("zpq")
   zpq,
-  @JsonValue('zpr')
+  @JsonValue("zpr")
   zpr,
-  @JsonValue('zps')
+  @JsonValue("zps")
   zps,
-  @JsonValue('zpt')
+  @JsonValue("zpt")
   zpt,
-  @JsonValue('zpu')
+  @JsonValue("zpu")
   zpu,
-  @JsonValue('zpv')
+  @JsonValue("zpv")
   zpv,
-  @JsonValue('zpw')
+  @JsonValue("zpw")
   zpw,
-  @JsonValue('zpx')
+  @JsonValue("zpx")
   zpx,
-  @JsonValue('zpy')
+  @JsonValue("zpy")
   zpy,
-  @JsonValue('zpz')
+  @JsonValue("zpz")
   zpz,
-  @JsonValue('zqe')
+  @JsonValue("zqe")
   zqe,
-  @JsonValue('zra')
+  @JsonValue("zra")
   zra,
-  @JsonValue('zrg')
+  @JsonValue("zrg")
   zrg,
-  @JsonValue('zrn')
+  @JsonValue("zrn")
   zrn,
-  @JsonValue('zro')
+  @JsonValue("zro")
   zro,
-  @JsonValue('zrp')
+  @JsonValue("zrp")
   zrp,
-  @JsonValue('zrs')
+  @JsonValue("zrs")
   zrs,
-  @JsonValue('zsa')
+  @JsonValue("zsa")
   zsa,
-  @JsonValue('zsk')
+  @JsonValue("zsk")
   zsk,
-  @JsonValue('zsl')
+  @JsonValue("zsl")
   zsl,
-  @JsonValue('zsm')
+  @JsonValue("zsm")
   zsm,
-  @JsonValue('zsr')
+  @JsonValue("zsr")
   zsr,
-  @JsonValue('zsu')
+  @JsonValue("zsu")
   zsu,
-  @JsonValue('zte')
+  @JsonValue("zte")
   zte,
-  @JsonValue('ztg')
+  @JsonValue("ztg")
   ztg,
-  @JsonValue('ztl')
+  @JsonValue("ztl")
   ztl,
-  @JsonValue('ztm')
+  @JsonValue("ztm")
   ztm,
-  @JsonValue('ztn')
+  @JsonValue("ztn")
   ztn,
-  @JsonValue('ztp')
+  @JsonValue("ztp")
   ztp,
-  @JsonValue('ztq')
+  @JsonValue("ztq")
   ztq,
-  @JsonValue('zts')
+  @JsonValue("zts")
   zts,
-  @JsonValue('ztt')
+  @JsonValue("ztt")
   ztt,
-  @JsonValue('ztu')
+  @JsonValue("ztu")
   ztu,
-  @JsonValue('ztx')
+  @JsonValue("ztx")
   ztx,
-  @JsonValue('zty')
+  @JsonValue("zty")
   zty,
-  @JsonValue('zua')
+  @JsonValue("zua")
   zua,
-  @JsonValue('zuh')
+  @JsonValue("zuh")
   zuh,
-  @JsonValue('zul')
+  @JsonValue("zul")
   zul,
-  @JsonValue('zum')
+  @JsonValue("zum")
   zum,
-  @JsonValue('zun')
+  @JsonValue("zun")
   zun,
-  @JsonValue('zuy')
+  @JsonValue("zuy")
   zuy,
-  @JsonValue('zwa')
+  @JsonValue("zwa")
   zwa,
-  @JsonValue('zxx')
+  @JsonValue("zxx")
   zxx,
-  @JsonValue('zyb')
+  @JsonValue("zyb")
   zyb,
-  @JsonValue('zyg')
+  @JsonValue("zyg")
   zyg,
-  @JsonValue('zyj')
+  @JsonValue("zyj")
   zyj,
-  @JsonValue('zyn')
+  @JsonValue("zyn")
   zyn,
-  @JsonValue('zyp')
+  @JsonValue("zyp")
   zyp,
-  @JsonValue('zza')
+  @JsonValue("zza")
   zza,
-  @JsonValue('zzj')
+  @JsonValue("zzj")
   zzj;
 
   factory Iso6393.fromJson(String json) => Iso6393.values.firstWhere(
-        (e) => e.toJson() == json,
-        orElse: () => Iso6393.values.first,
-      );
+    (e) => e.toJson() == json,
+    orElse: () => Iso6393.values.first,
+  );
 
   String toJson() => _$Iso6393EnumMap[this]!;
 }

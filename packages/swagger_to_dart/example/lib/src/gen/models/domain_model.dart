@@ -12,7 +12,7 @@
 ///     ],
 ///     "title": "DomainModel"
 /// }
-library;
+library domain_model;
 
 import 'exports.dart';
 part 'domain_model.freezed.dart';

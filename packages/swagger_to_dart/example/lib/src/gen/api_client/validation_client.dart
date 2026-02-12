@@ -1,4 +1,4 @@
-library;
+library validation_client;
 
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
@@ -13,13 +13,14 @@ abstract class ValidationClient {
     String? baseUrl,
   }) = _ValidationClient;
 
-  @GET('/params/path/{item_id}')
+  @GET("/params/path/{item_id}")
   Future<HttpResponse<Map<String, dynamic>>> validationParamPath({
-    @Path('item_id') required int itemId,
+    @Path("item_id") required int itemId,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'validation'],
       r'summary': r'Demonstrate path parameter validation',
       r'description': r'Path parameter with validation.',
@@ -63,13 +64,14 @@ abstract class ValidationClient {
       },
     },
   });
-  @GET('/params/query')
+  @GET("/params/query")
   Future<HttpResponse<Map<String, dynamic>>> validationParamQuery({
     @Queries() required ValidationParamQueryQueryParameters queries,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'validation'],
       r'summary': r'Demonstrate query parameter validation',
       r'description': r'Query parameters with validation.',
@@ -151,13 +153,14 @@ abstract class ValidationClient {
       },
     },
   });
-  @POST('/params/body')
+  @POST("/params/body")
   Future<HttpResponse<Map<String, dynamic>>> validationParamBody({
     @Body() required BodyValidationParamBody requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'validation'],
       r'summary': r'Demonstrate body parameter validation',
       r'description': r'Body parameters with validation.',
@@ -196,14 +199,15 @@ abstract class ValidationClient {
       },
     },
   });
-  @GET('/params/cookie')
+  @GET("/params/cookie")
   Future<HttpResponse<Map<String, dynamic>>> validationParamCookie({
-    @Header('session') required String? session,
-    @Header('preferences') required String? preferences,
+    @Header("session") required String? session,
+    @Header("preferences") required String? preferences,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'validation'],
       r'summary': r'Param Cookie',
       r'description': r'Cookie parameters.',
@@ -258,14 +262,15 @@ abstract class ValidationClient {
       },
     },
   });
-  @GET('/params/header')
+  @GET("/params/header")
   Future<HttpResponse<Map<String, dynamic>>> validationParamHeader({
-    @Header('user-agent') required String userMinusAgent,
-    @Header('x-token') required String? xMinusToken,
+    @Header("user-agent") required String userMinusAgent,
+    @Header("x-token") required String? xMinusToken,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'validation'],
       r'summary': r'Param Header',
       r'description': r'Header parameters.',
@@ -314,13 +319,14 @@ abstract class ValidationClient {
       },
     },
   });
-  @POST('/validation/complex')
+  @POST("/validation/complex")
   Future<HttpResponse<AllTypesWithValidation>> validationValidationComplex({
     @Body() required AllTypesWithValidation requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'validation'],
       r'summary': r'Demonstrate complex model validation',
       r'description': r'Process a model with complex validation rules.',
@@ -357,13 +363,14 @@ abstract class ValidationClient {
       },
     },
   });
-  @GET('/validation/conditional')
+  @GET("/validation/conditional")
   Future<HttpResponse<Map<String, dynamic>>> validationValidationConditional({
     @Queries() required ValidationValidationConditionalQueryParameters queries,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'validation'],
       r'summary': r'Demonstrate conditional validation',
       r'description': r'Validate that at least one parameter is provided.',
@@ -424,13 +431,14 @@ abstract class ValidationClient {
       },
     },
   });
-  @POST('/validation/conditional_body')
+  @POST("/validation/conditional_body")
   Future<HttpResponse<ConditionalBody>> validationValidationConditionalBody({
     @Body() required ConditionalBody requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'validation'],
       r'summary': r'Validate a model with conditional requirements',
       r'description': r'Validate a body with conditional validation.',
@@ -463,13 +471,14 @@ abstract class ValidationClient {
       },
     },
   });
-  @GET('/constrained/int')
+  @GET("/constrained/int")
   Future<HttpResponse<Map<String, dynamic>>> validationConstrainedInt({
     @Queries() required ValidationConstrainedIntQueryParameters queries,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'validation'],
       r'summary': r'Demonstrate constrained integer validation',
       r'description': r'Handle constrained integer with validation.',
@@ -514,13 +523,14 @@ abstract class ValidationClient {
       },
     },
   });
-  @GET('/constrained/float')
+  @GET("/constrained/float")
   Future<HttpResponse<Map<String, dynamic>>> validationConstrainedFloat({
     @Queries() required ValidationConstrainedFloatQueryParameters queries,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'validation'],
       r'summary': r'Demonstrate constrained float validation',
       r'description': r'Handle constrained float with validation.',
@@ -565,13 +575,14 @@ abstract class ValidationClient {
       },
     },
   });
-  @GET('/constrained/string')
+  @GET("/constrained/string")
   Future<HttpResponse<Map<String, dynamic>>> validationConstrainedString({
     @Queries() required ValidationConstrainedStringQueryParameters queries,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'validation'],
       r'summary': r'Demonstrate constrained string validation',
       r'description': r'Handle constrained string with validation.',

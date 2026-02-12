@@ -17,7 +17,7 @@
 ///     ],
 ///     "title": "Coordinate"
 /// }
-library;
+library coordinate;
 
 import 'exports.dart';
 part 'coordinate.freezed.dart';

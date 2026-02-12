@@ -500,13 +500,15 @@ class ApiClientGenerator {
     String className,
   ) {
     // Check for text/plain with binary format (for ABP framework)
-    final textPlainResponse = responses.values.firstOrNull
-        ?.content?['text/plain'];
-    
-    final isAbpFramework = context.config.generationSource == GenerationSource.abpIO;
+    final textPlainResponse =
+        responses.values.firstOrNull?.content?['text/plain'];
+
+    final isAbpFramework =
+        context.config.generationSource == GenerationSource.abpIO;
     final isBinaryFormat = textPlainResponse != null &&
         textPlainResponse.schema is OpenApiSchemaType &&
-        (textPlainResponse.schema as OpenApiSchemaType).type == OpenApiSchemaVarType.string &&
+        (textPlainResponse.schema as OpenApiSchemaType).type ==
+            OpenApiSchemaVarType.string &&
         (textPlainResponse.schema as OpenApiSchemaType).format == 'binary';
 
     if (isAbpFramework && isBinaryFormat) {
@@ -573,7 +575,34 @@ class ApiClientGenerator {
 }
 
 String encodeWithRawKeys(dynamic value) {
-  String escapeForRaw(String s) => s.replaceAll('"', r'\"');
+  /// Escapes a string for use in a Dart string literal.
+  /// Uses raw strings (r'...') for simple strings without special characters.
+  /// Uses regular strings with escaping for strings containing newlines, backslashes, or single quotes.
+  String escapeString(String s) {
+    // Check if the string contains characters that require regular string (not raw string)
+    // Raw strings cannot contain:
+    // 1. The same quote character used to delimit them (single quote in our case)
+    // 2. Actual newline characters
+    // 3. And they can't escape anything
+    if (s.contains('\n') ||
+        s.contains('\r') ||
+        s.contains(r'\') ||
+        s.contains("'")) {
+      // Use regular string with proper escaping
+      final escaped = s
+          .replaceAll(r'\', r'\\') // Escape backslashes first
+          .replaceAll("'", r"\'") // Escape single quotes
+          .replaceAll('\n', r'\n') // Convert newlines to \n
+          .replaceAll('\r', r'\r') // Convert carriage returns to \r
+          .replaceAll('\t', r'\t') // Convert tabs to \t
+          .replaceAll(r'$', r'\$'); // Escape dollar signs
+      return "'$escaped'";
+    }
+
+    // For simple strings without special characters, raw string is fine
+    // No escaping needed in raw strings
+    return "r'$s'";
+  }
 
   if (value is Map) {
     final buffer = StringBuffer('{');
@@ -582,7 +611,7 @@ String encodeWithRawKeys(dynamic value) {
       if (!first) buffer.write(', ');
       first = false;
 
-      final keyLiteral = "r'${escapeForRaw(key.toString())}'";
+      final keyLiteral = escapeString(key.toString());
       buffer.write('$keyLiteral: ${encodeWithRawKeys(val)}');
     });
     buffer.write('}');
@@ -594,7 +623,7 @@ String encodeWithRawKeys(dynamic value) {
   }
 
   if (value is String) {
-    return "r'${escapeForRaw(value)}'";
+    return escapeString(value);
   }
 
   return value.toString();

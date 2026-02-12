@@ -19,7 +19,7 @@
 ///     "type": "object",
 ///     "required": []
 /// }
-library;
+library advanced_union_modern_query_parameters;
 
 import 'exports.dart';
 part 'advanced_union_modern_query_parameters.freezed.dart';
@@ -33,13 +33,12 @@ abstract class AdvancedUnionModernQueryParameters
   @jsonSerializable
   const factory AdvancedUnionModernQueryParameters({
     /// value
-    @JsonKey(name: AdvancedUnionModernQueryParameters.valueKey_) dynamic value,
+    @JsonKey(name: AdvancedUnionModernQueryParameters.valueKey_) dynamic? value,
   }) = _AdvancedUnionModernQueryParameters;
 
   factory AdvancedUnionModernQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$AdvancedUnionModernQueryParametersFromJson(json);
+  ) => _$AdvancedUnionModernQueryParametersFromJson(json);
 
   static const String valueKey_ = r'value';
 }

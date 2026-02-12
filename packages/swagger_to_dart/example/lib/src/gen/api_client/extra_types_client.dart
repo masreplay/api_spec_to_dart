@@ -1,4 +1,4 @@
-library;
+library extra_types_client;
 
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
@@ -13,13 +13,14 @@ abstract class ExtraTypesClient {
     String? baseUrl,
   }) = _ExtraTypesClient;
 
-  @POST('/extra_types/color/')
+  @POST("/extra_types/color/")
   Future<HttpResponse<Map<String, dynamic>>> extraTypesCreateColor({
     @Body() required ColorModel requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'Extra Types'],
       r'summary': r'Create Color',
       r'operationId': r'Extra Types-create_color',
@@ -55,13 +56,14 @@ abstract class ExtraTypesClient {
       },
     },
   });
-  @POST('/extra_types/country/')
+  @POST("/extra_types/country/")
   Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessCountry({
     @Body() required CountryModel requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'Extra Types'],
       r'summary': r'Process Country',
       r'operationId': r'Extra Types-process_country',
@@ -97,13 +99,14 @@ abstract class ExtraTypesClient {
       },
     },
   });
-  @POST('/extra_types/payment/')
+  @POST("/extra_types/payment/")
   Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessPaymentCard({
     @Body() required PaymentCardModel requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'Extra Types'],
       r'summary': r'Process Payment Card',
       r'operationId': r'Extra Types-process_payment_card',
@@ -139,13 +142,14 @@ abstract class ExtraTypesClient {
       },
     },
   });
-  @POST('/extra_types/phone/')
+  @POST("/extra_types/phone/")
   Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessPhone({
     @Body() required PhoneNumberModel requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'Extra Types'],
       r'summary': r'Process Phone',
       r'operationId': r'Extra Types-process_phone',
@@ -181,13 +185,14 @@ abstract class ExtraTypesClient {
       },
     },
   });
-  @POST('/extra_types/routing/')
+  @POST("/extra_types/routing/")
   Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessRouting({
     @Body() required ABARoutingModel requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'Extra Types'],
       r'summary': r'Process Routing',
       r'operationId': r'Extra Types-process_routing',
@@ -223,13 +228,14 @@ abstract class ExtraTypesClient {
       },
     },
   });
-  @POST('/extra_types/coordinate/')
+  @POST("/extra_types/coordinate/")
   Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessCoordinate({
     @Body() required CoordinateModel requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'Extra Types'],
       r'summary': r'Process Coordinate',
       r'operationId': r'Extra Types-process_coordinate',
@@ -265,13 +271,14 @@ abstract class ExtraTypesClient {
       },
     },
   });
-  @POST('/extra_types/mac/')
+  @POST("/extra_types/mac/")
   Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessMac({
     @Body() required MACAddressModel requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'Extra Types'],
       r'summary': r'Process Mac',
       r'operationId': r'Extra Types-process_mac',
@@ -307,13 +314,14 @@ abstract class ExtraTypesClient {
       },
     },
   });
-  @POST('/extra_types/isbn/')
+  @POST("/extra_types/isbn/")
   Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessIsbn({
     @Body() required IsbnModel requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'Extra Types'],
       r'summary': r'Process Isbn',
       r'operationId': r'Extra Types-process_isbn',
@@ -349,13 +357,14 @@ abstract class ExtraTypesClient {
       },
     },
   });
-  @POST('/extra_types/currency/')
+  @POST("/extra_types/currency/")
   Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessCurrency({
     @Body() required CurrencyModel requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'Extra Types'],
       r'summary': r'Process Currency',
       r'operationId': r'Extra Types-process_currency',
@@ -391,13 +400,14 @@ abstract class ExtraTypesClient {
       },
     },
   });
-  @POST('/extra_types/domain/')
+  @POST("/extra_types/domain/")
   Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessDomain({
     @Body() required DomainModel requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'Extra Types'],
       r'summary': r'Process Domain',
       r'operationId': r'Extra Types-process_domain',
@@ -433,13 +443,14 @@ abstract class ExtraTypesClient {
       },
     },
   });
-  @POST('/extra_types/language/')
+  @POST("/extra_types/language/")
   Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessLanguage({
     @Body() required LanguageModel requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'Extra Types'],
       r'summary': r'Process Language',
       r'operationId': r'Extra Types-process_language',
@@ -475,13 +486,14 @@ abstract class ExtraTypesClient {
       },
     },
   });
-  @POST('/extra_types/script/')
+  @POST("/extra_types/script/")
   Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessScript({
     @Body() required ScriptCodeModel requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'Extra Types'],
       r'summary': r'Process Script',
       r'operationId': r'Extra Types-process_script',
@@ -517,13 +529,14 @@ abstract class ExtraTypesClient {
       },
     },
   });
-  @POST('/extra_types/version/')
+  @POST("/extra_types/version/")
   Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessVersion({
     @Body() required VersionModel requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'Extra Types'],
       r'summary': r'Process Version',
       r'operationId': r'Extra Types-process_version',
@@ -559,13 +572,14 @@ abstract class ExtraTypesClient {
       },
     },
   });
-  @POST('/extra_types/s3/')
+  @POST("/extra_types/s3/")
   Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessS3Path({
     @Body() required S3PathModel requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'Extra Types'],
       r'summary': r'Process S3 Path',
       r'operationId': r'Extra Types-process_s3_path',
@@ -601,13 +615,14 @@ abstract class ExtraTypesClient {
       },
     },
   });
-  @POST('/extra_types/timezone/')
+  @POST("/extra_types/timezone/")
   Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessTimezone({
     @Body() required TimeZoneModel requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'Extra Types'],
       r'summary': r'Process Timezone',
       r'operationId': r'Extra Types-process_timezone',
@@ -643,13 +658,14 @@ abstract class ExtraTypesClient {
       },
     },
   });
-  @POST('/extra_types/ulid/')
+  @POST("/extra_types/ulid/")
   Future<HttpResponse<Map<String, dynamic>>> extraTypesProcessUlid({
     @Body() required UlidModel requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'Extra Types'],
       r'summary': r'Process Ulid',
       r'operationId': r'Extra Types-process_ulid',

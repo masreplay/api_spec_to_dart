@@ -9,24 +9,24 @@
 //     "title": "UserLevel"
 // }
 
-library;
+library user_level;
 
 import 'exports.dart';
 part 'user_level.g.dart';
 
 @JsonEnum(alwaysCreate: true)
 enum UserLevel {
-  @JsonValue('basic')
+  @JsonValue("basic")
   basic,
-  @JsonValue('premium')
+  @JsonValue("premium")
   premium,
-  @JsonValue('admin')
+  @JsonValue("admin")
   admin;
 
   factory UserLevel.fromJson(String json) => UserLevel.values.firstWhere(
-        (e) => e.toJson() == json,
-        orElse: () => UserLevel.values.first,
-      );
+    (e) => e.toJson() == json,
+    orElse: () => UserLevel.values.first,
+  );
 
   String toJson() => _$UserLevelEnumMap[this]!;
 }

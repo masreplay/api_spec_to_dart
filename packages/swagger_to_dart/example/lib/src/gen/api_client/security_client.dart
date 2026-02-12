@@ -1,4 +1,4 @@
-library;
+library security_client;
 
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
@@ -13,14 +13,15 @@ abstract class SecurityClient {
     String? baseUrl,
   }) = _SecurityClient;
 
-  @POST('/token')
+  @POST("/token")
   @FormUrlEncoded()
   Future<HttpResponse<Map<String, dynamic>>> securityLogin({
     @Body() required BodySecurityLogin requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'security'],
       r'summary': r'Get an access token',
       r'description':
@@ -58,12 +59,13 @@ abstract class SecurityClient {
       },
     },
   });
-  @GET('/users/me')
+  @GET("/users/me")
   Future<HttpResponse<Map<String, dynamic>>> securityReadUsersMe({
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'security'],
       r'summary': r'Get current user from token',
       r'description': r'Get current user based on the token.',
@@ -87,12 +89,13 @@ abstract class SecurityClient {
       ],
     },
   });
-  @GET('/items/secure')
+  @GET("/items/secure")
   Future<HttpResponse<List<Map<String, dynamic>>>> securityGetSecureItems({
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'security'],
       r'summary': r'Get items using API key auth',
       r'description': r'Get items using API key auth.',

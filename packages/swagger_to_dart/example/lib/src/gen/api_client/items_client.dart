@@ -1,4 +1,4 @@
-library;
+library items_client;
 
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
@@ -13,13 +13,14 @@ abstract class ItemsClient {
     String? baseUrl,
   }) = _ItemsClient;
 
-  @POST('/items/')
+  @POST("/items/")
   Future<HttpResponse<ItemResponse>> itemsCreateItem({
     @Body() required ItemRequestBody requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'items'],
       r'summary': r'Create Item',
       r'operationId': r'items-create_item',

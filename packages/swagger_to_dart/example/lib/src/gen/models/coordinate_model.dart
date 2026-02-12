@@ -44,7 +44,7 @@
 ///     "type": "object",
 ///     "title": "CoordinateModel"
 /// }
-library;
+library coordinate_model;
 
 import 'exports.dart';
 part 'coordinate_model.freezed.dart';
@@ -57,7 +57,7 @@ abstract class CoordinateModel with _$CoordinateModel {
   @jsonSerializable
   const factory CoordinateModel({
     /// coordinate
-    @JsonKey(name: CoordinateModel.coordinateKey_) dynamic coordinate,
+    @JsonKey(name: CoordinateModel.coordinateKey_) dynamic? coordinate,
 
     /// latitude
     @JsonKey(name: CoordinateModel.latitudeKey_) double? latitude,

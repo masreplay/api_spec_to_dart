@@ -1,4 +1,4 @@
-library;
+library models_client;
 
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
@@ -13,13 +13,14 @@ abstract class ModelsClient {
     String? baseUrl,
   }) = _ModelsClient;
 
-  @POST('/models/user')
+  @POST("/models/user")
   Future<HttpResponse<User>> modelsCreateUser({
     @Body() required UserCreate requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'models'],
       r'summary': r'Create User',
       r'description': r'Create a new user from a Pydantic model.',
@@ -52,13 +53,14 @@ abstract class ModelsClient {
       },
     },
   });
-  @GET('/models/location')
+  @GET("/models/location")
   Future<HttpResponse<Map<String, dynamic>>> modelsGetLocation({
     @Body() required Location requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'models'],
       r'summary': r'Process location information',
       r'description': r'Handle a Pydantic model as query parameters.',
@@ -95,12 +97,13 @@ abstract class ModelsClient {
       },
     },
   });
-  @GET('/response/filtered')
+  @GET("/response/filtered")
   Future<HttpResponse<User>> modelsResponseFiltered({
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'models'],
       r'summary': r'Return a filtered response model',
       r'description': r'Return a response filtered by the response_model.',
@@ -117,13 +120,14 @@ abstract class ModelsClient {
       },
     },
   });
-  @GET('/response/multiple')
+  @GET("/response/multiple")
   Future<HttpResponse<ResponseModelsResponseMultiple>> modelsResponseMultiple({
     @Queries() required ModelsResponseMultipleQueryParameters queries,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'models'],
       r'summary': r'Return different response models based on query',
       r'description':
@@ -170,12 +174,13 @@ abstract class ModelsClient {
       },
     },
   });
-  @GET('/response/list')
+  @GET("/response/list")
   Future<HttpResponse<List<User>>> modelsResponseList({
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
+    @Extras()
+    Map<String, dynamic>? extras = const {
       r'tags': [r'models'],
       r'summary': r'Return a list of models',
       r'description': r'Return a list of items with a response model.',

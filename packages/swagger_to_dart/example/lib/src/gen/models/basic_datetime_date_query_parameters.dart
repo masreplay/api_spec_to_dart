@@ -12,7 +12,7 @@
 ///         "d"
 ///     ]
 /// }
-library;
+library basic_datetime_date_query_parameters;
 
 import 'exports.dart';
 part 'basic_datetime_date_query_parameters.freezed.dart';
@@ -31,8 +31,7 @@ abstract class BasicDatetimeDateQueryParameters
 
   factory BasicDatetimeDateQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$BasicDatetimeDateQueryParametersFromJson(json);
+  ) => _$BasicDatetimeDateQueryParametersFromJson(json);
 
   static const String dKey_ = r'd';
 }

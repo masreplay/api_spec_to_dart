@@ -24,7 +24,7 @@
 ///     ],
 ///     "title": "PaymentCardModel"
 /// }
-library;
+library payment_card_model;
 
 import 'exports.dart';
 part 'payment_card_model.freezed.dart';

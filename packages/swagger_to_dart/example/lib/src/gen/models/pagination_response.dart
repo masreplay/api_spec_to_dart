@@ -36,7 +36,7 @@
 ///     ],
 ///     "title": "PaginationResponse[CategoryResponse]"
 /// }
-library;
+library pagination_response;
 
 import 'exports.dart';
 part 'pagination_response.freezed.dart';
@@ -72,8 +72,7 @@ abstract class PaginationResponse<T> with _$PaginationResponse<T> {
   factory PaginationResponse.fromJson(
     Map<String, dynamic> json,
     T Function(Object? json) fromJsonT,
-  ) =>
-      _$PaginationResponseFromJson<T>(json, fromJsonT);
+  ) => _$PaginationResponseFromJson<T>(json, fromJsonT);
 
   static const String itemsKey_ = r'items';
 

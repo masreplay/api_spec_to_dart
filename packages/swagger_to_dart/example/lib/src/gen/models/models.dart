@@ -1,4 +1,4 @@
-library;
+library models;
 
 export 'aba_routing_model.dart';
 export 'all_types_with_validation.dart';
