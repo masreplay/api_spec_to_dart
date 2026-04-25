@@ -578,7 +578,19 @@ class ApiClientGenerator {
 }
 
 String encodeWithRawKeys(dynamic value) {
-  String escapeForRaw(String s) => s.replaceAll('"', r'\"');
+  // Encode a string as a safe Dart single-quoted string literal.
+  // Raw strings (r'...') cannot contain newlines or single quotes, so we
+  // use a regular string with proper escaping instead.
+  String encodeDartString(String s) {
+    final escaped = s
+        .replaceAll('\\', '\\\\') // backslash must come first
+        .replaceAll("'", "\\'")
+        .replaceAll('\n', '\\n')
+        .replaceAll('\r', '\\r')
+        .replaceAll('\t', '\\t')
+        .replaceAll('\$', '\\\$');
+    return "'$escaped'";
+  }
 
   if (value is Map) {
     final buffer = StringBuffer('{');
@@ -586,9 +598,7 @@ String encodeWithRawKeys(dynamic value) {
     value.forEach((key, val) {
       if (!first) buffer.write(', ');
       first = false;
-
-      final keyLiteral = "r'${escapeForRaw(key.toString())}'";
-      buffer.write('$keyLiteral: ${encodeWithRawKeys(val)}');
+      buffer.write('${encodeDartString(key.toString())}: ${encodeWithRawKeys(val)}');
     });
     buffer.write('}');
     return buffer.toString();
@@ -599,7 +609,7 @@ String encodeWithRawKeys(dynamic value) {
   }
 
   if (value is String) {
-    return "r'${escapeForRaw(value)}'";
+    return encodeDartString(value);
   }
 
   return value.toString();
