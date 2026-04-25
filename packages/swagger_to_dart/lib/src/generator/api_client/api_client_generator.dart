@@ -222,13 +222,14 @@ class ApiClientGenerator {
 
         final requestBody = <Parameter>[];
         final content = method.value.requestBody?.content ?? {};
+        bool _hasJsonBody = false;
 
         for (final entry in content.entries) {
           OpenApiContentType? contentType;
           try {
             contentType = OpenApiContentType.fromJson(entry.key);
           } catch (e) {
-            print('Invalid content type: ${entry.key}');
+            // Unknown content type — skip silently
           }
 
           switch (contentType) {
@@ -238,6 +239,8 @@ class ApiClientGenerator {
             case OpenApiContentType.textJson:
             case OpenApiContentType.applicationWildcardJson:
             case OpenApiContentType.applicationXWwwFormUrlencoded:
+              if (_hasJsonBody) continue;
+              _hasJsonBody = true;
               requestBody.add(
                 Parameter(
                   (b) => b
