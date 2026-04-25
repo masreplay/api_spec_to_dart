@@ -11,7 +11,11 @@ enum OpenApiContentType {
   @JsonValue('application/x-www-form-urlencoded')
   applicationXWwwFormUrlencoded,
   @JsonValue('multipart/form-data')
-  multipartFormData;
+  multipartFormData,
+  @JsonValue('text/json')
+  textJson,
+  @JsonValue('application/*+json')
+  applicationWildcardJson;
 
   factory OpenApiContentType.fromJson(String value) {
     return _$OpenApiContentTypeEnumMap.entries

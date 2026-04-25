@@ -235,6 +235,8 @@ class ApiClientGenerator {
             case null:
               continue;
             case OpenApiContentType.applicationJson:
+            case OpenApiContentType.textJson:
+            case OpenApiContentType.applicationWildcardJson:
             case OpenApiContentType.applicationXWwwFormUrlencoded:
               requestBody.add(
                 Parameter(
