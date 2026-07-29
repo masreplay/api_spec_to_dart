@@ -42,6 +42,10 @@ _ModelConfig _$ModelConfigFromJson(Map<String, dynamic> json) => _ModelConfig(
               ?.map((e) => e as String)
               .toList() ??
           const [],
+      enums: (json['enums'] as Map<String, dynamic>?)?.map(
+            (k, e) => MapEntry(k, Map<String, String>.from(e as Map)),
+          ) ??
+          const <String, Map<String, String>>{},
     );
 
 const _$ModelConfigFieldMap = <String, String>{
@@ -49,6 +53,7 @@ const _$ModelConfigFieldMap = <String, String>{
   'unionClassFallbackName': 'union_class_fallback_name',
   'enumFallbackType': 'enum_fallback_type',
   'removeModelPrefixes': 'remove_model_prefixes',
+  'enums': 'enums',
 };
 
 abstract final class _$ModelConfigJsonKeys {
@@ -56,6 +61,7 @@ abstract final class _$ModelConfigJsonKeys {
   static const String unionClassFallbackName = 'union_class_fallback_name';
   static const String enumFallbackType = 'enum_fallback_type';
   static const String removeModelPrefixes = 'remove_model_prefixes';
+  static const String enums = 'enums';
 }
 
 // ignore: unused_element
@@ -69,6 +75,8 @@ abstract class _$ModelConfigPerFieldToJson {
       _$EnumFallbackTypeEnumMap[instance]!;
   // ignore: unused_element
   static Object? removeModelPrefixes(List<String> instance) => instance;
+  // ignore: unused_element
+  static Object? enums(Map<String, Map<String, String>> instance) => instance;
 }
 
 Map<String, dynamic> _$ModelConfigToJson(_ModelConfig instance) =>
@@ -79,6 +87,7 @@ Map<String, dynamic> _$ModelConfigToJson(_ModelConfig instance) =>
       'enum_fallback_type':
           _$EnumFallbackTypeEnumMap[instance.enumFallbackType]!,
       'remove_model_prefixes': instance.removeModelPrefixes,
+      'enums': instance.enums,
     };
 
 const _$EnumFallbackTypeEnumMap = {

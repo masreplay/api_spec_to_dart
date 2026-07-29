@@ -119,8 +119,18 @@ class Renaming {
   }
 
   String renameEnumValue(
-    Object value,
-  ) {
+    Object value, {
+    String? overrideName,
+  }) {
+    // Opt-in rename from config (swagger_to_dart.yaml `model.enums`). Recased
+    // and guarded the same as any other identifier so reserved words / leading
+    // digits / special chars are safe.
+    if (overrideName != null && overrideName.trim().isNotEmpty) {
+      return Recase.instance.toCamelCase(_guard(
+        overrideName,
+        translateSpecialCharacters: true,
+      ));
+    }
     if (int.tryParse(value.toString()) != null) {
       final intValue = int.parse(value.toString());
       if (intValue < 0) {

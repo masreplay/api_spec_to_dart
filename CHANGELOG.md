@@ -1,3 +1,45 @@
+## 4.3.0 - 2026-07-29
+
+### Added
+
+- Opt-in per-enum member renaming via the `model.enums` config in
+  `swagger_to_dart.yaml`. Keyed by the enum's swagger schema name or its
+  generated Dart class name; the inner map maps each raw enum value (as a
+  string — works for both integer and string enums) to the desired Dart member
+  name. Enums absent from the map are generated unchanged (e.g. `value0`).
+
+  ```yaml
+  model:
+    enums:
+      MyStatusEnum:
+        0: created
+        10: pgRegistered
+  ```
+
+- Override names are recased to camelCase and guarded like any other identifier
+  (reserved words / leading digits / special characters are handled safely).
+- Duplicate resulting member names now fail fast with a descriptive error, and
+  configured values that don't exist on the enum emit a warning instead of
+  being silently ignored.
+
+## 4.2.3 - 2026-07
+
+### Fixed
+
+- Escape newlines and special characters in `extras` string literals.
+
+## 4.2.2 - 2026-07
+
+### Fixed
+
+- Deduplicate the request body when multiple JSON content types are present.
+
+## 4.2.1 - 2026-07
+
+### Added
+
+- Support `text/json` and `application/*+json` content types.
+
 ## 4.2.0 - 2026-01-28
 
 ### Added

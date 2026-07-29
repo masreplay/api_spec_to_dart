@@ -68,6 +68,23 @@ abstract class ModelConfig with _$ModelConfig {
     @Default([])
     @JsonKey(name: 'remove_model_prefixes')
     List<String> removeModelPrefixes,
+
+    /// Opt-in per-enum member renaming. Keyed by the enum's swagger schema
+    /// name OR its generated Dart class name; the inner map is the raw enum
+    /// value (as a string — works for both integer and string enums) to the
+    /// desired Dart member name (recased to camelCase). Enums absent from this
+    /// map are generated unchanged (e.g. `value0`).
+    ///
+    /// ```yaml
+    /// model:
+    ///   enums:
+    ///     MyStatusEnum:
+    ///       0: created
+    ///       10: pgRegistered
+    /// ```
+    @Default(<String, Map<String, String>>{})
+    @JsonKey(name: 'enums')
+    Map<String, Map<String, String>> enums,
   }) = _ModelConfig;
 
   factory ModelConfig.fromJson(Map<String, dynamic> json) =>

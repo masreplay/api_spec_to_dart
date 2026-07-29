@@ -49,6 +49,47 @@ class EnumModelGeneratorStrategy
     // Can be a list of [String] or an [int].
     final values = model.value.enum_ ?? [];
 
+    // Opt-in per-enum member renames from config (model.enums). Keyed by the
+    // raw swagger schema name OR the generated Dart class name; absent enums
+    // fall through to the default `value0` naming.
+    final enumOverrides = context.config.model.enums[model.key] ??
+        context.config.model.enums[className] ??
+        const <String, String>{};
+
+    if (enumOverrides.isNotEmpty) {
+      // Typo guard: warn on configured values not present in the schema.
+      final actualValues = values.map((v) => v.toString()).toSet();
+      for (final key in enumOverrides.keys) {
+        if (!actualValues.contains(key)) {
+          print(
+            'swagger_to_dart: warning: enum "${model.key}" has no value "$key" '
+            'configured under model.enums — ignoring it.',
+          );
+        }
+      }
+    }
+
+    // Resolve each raw value to its Dart member name (applying overrides) and
+    // fail fast on collisions — duplicate enum members would not compile.
+    final memberNames = <String, String>{}; // value.toString() -> member name
+    final seenNames = <String, String>{}; // member name -> value.toString()
+    for (final value in values) {
+      final key = value.toString();
+      final name = Renaming.instance.renameEnumValue(
+        value,
+        overrideName: enumOverrides[key],
+      );
+      final clash = seenNames[name];
+      if (clash != null) {
+        throw ArgumentError(
+          'swagger_to_dart: enum "${model.key}" produces duplicate member '
+          '"$name" for values "$clash" and "$key". Fix the model.enums config.',
+        );
+      }
+      seenNames[name] = key;
+      memberNames[key] = name;
+    }
+
     final enumFallbackType = context.config.model.enumFallbackType;
 
     final orElseCallback = switch (enumFallbackType) {
@@ -88,7 +129,7 @@ class EnumModelGeneratorStrategy
                   (b) => b
                     ..annotations.add(refer(
                         '$JsonValue(${enumType == OpenApiSchemaVarType.integer ? '$value' : '"$value"'})'))
-                    ..name = Renaming.instance.renameEnumValue(value),
+                    ..name = memberNames[value.toString()]!,
                 ),
             ])
             ..constructors.addAll([
