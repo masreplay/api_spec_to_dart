@@ -56,4 +56,12 @@ void main() {
       allOf(contains('String? a,'), contains('String? b,')),
     );
   });
+
+  test('a component allOf with one \$ref keeps the referenced properties', () {
+    expect(
+      files['models/dog.dart'],
+      allOf(contains('required String name,'), contains('bool? bark,')),
+    );
+    expect(files['models/alias.dart'], contains('required int id,'));
+  });
 }

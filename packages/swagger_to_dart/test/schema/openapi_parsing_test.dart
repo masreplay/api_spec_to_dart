@@ -22,4 +22,24 @@ void main() {
     });
     expect(schemas.type, 'object');
   });
+
+  test('normalizeSchemaJson leaves the parsed spec untouched', () {
+    final typeArray = {
+      'type': ['string', 'null'],
+    };
+    final singleAllOf = {
+      'allOf': [
+        {r'$ref': '#/components/schemas/Base'},
+      ],
+      'nullable': true,
+    };
+
+    normalizeSchemaJson(typeArray);
+    normalizeSchemaJson(singleAllOf);
+
+    expect(typeArray, {
+      'type': ['string', 'null'],
+    });
+    expect(singleAllOf, contains('allOf'));
+  });
 }
