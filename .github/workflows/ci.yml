@@ -36,6 +36,38 @@ jobs:
         working-directory: packages/postman_collection
         run: dart test
 
+  example:
+    name: Example app (generate, build, analyze, test)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/swagger_to_dart/example
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - name: Resolve dependencies
+        run: flutter pub get
+
+      - name: Regenerate from the OpenAPI spec
+        run: dart run swagger_to_dart
+
+      - name: Fail if the committed generated code is stale
+        run: |
+          test -z "$(git status --porcelain -- lib/src/gen)" || { git status --porcelain -- lib/src/gen; git diff -- lib/src/gen | head -300; exit 1; }
+
+      - name: Build freezed/json_serializable/retrofit outputs
+        run: dart run build_runner build
+
+      - name: Analyze
+        run: dart analyze --fatal-infos lib test
+
+      - name: Test
+        run: flutter test
+
   pana:
     name: pub.dev score (must stay 160/160)
     runs-on: ubuntu-latest
