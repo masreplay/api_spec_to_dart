@@ -29,7 +29,8 @@ void main() {
         if (dir.existsSync()) dir.deleteSync(recursive: true);
       }
 
-      for (final fixture in Fixture.all().where((f) => !f.isFlutter)) {
+      final fixtures = Fixture.all().where((f) => !f.isFlutter).toList();
+      for (final fixture in fixtures) {
         await fixture.generator().write(p.join(gen.path, fixture.name));
 
         final template = File(
@@ -41,6 +42,20 @@ void main() {
         }
       }
 
+      // `dart analyze` skips the excluded *.g.dart / *.freezed.dart parts, so
+      // compile every fixture for real: a test importing them all.
+      tests.createSync(recursive: true);
+      File(p.join(tests.path, 'compile_test.dart')).writeAsStringSync(
+        [
+          '// ignore_for_file: unused_import',
+          for (final f in fixtures)
+            "import 'package:swagger_to_dart_e2e/gen/${f.name}/gen.dart' "
+                'as ${f.name};',
+          "import 'package:test/test.dart';",
+          "void main() => test('generated code compiles', () {});",
+        ].join('\n'),
+      );
+
       final build = await _dart(['run', 'build_runner', 'build']);
       expect(build.exitCode, 0, reason: '${build.stdout}\n${build.stderr}');
 
@@ -48,14 +63,12 @@ void main() {
         'analyze',
         '--fatal-infos',
         'lib',
-        if (tests.existsSync()) 'test',
+        'test',
       ]);
       expect(analyze.exitCode, 0, reason: '${analyze.stdout}');
 
-      if (tests.existsSync()) {
-        final run = await _dart(['test']);
-        expect(run.exitCode, 0, reason: '${run.stdout}\n${run.stderr}');
-      }
+      final run = await _dart(['test']);
+      expect(run.exitCode, 0, reason: '${run.stdout}\n${run.stderr}');
     },
     timeout: const Timeout(Duration(minutes: 10)),
   );
