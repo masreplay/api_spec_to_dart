@@ -1,0 +1,104 @@
+/// Companion
+///
+/// ```json
+/// {
+///     "anyOf": [
+///         {
+///             "$ref": "#/components/schemas/Hound"
+///         },
+///         {
+///             "$ref": "#/components/schemas/Tabby"
+///         }
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+sealed class Companion {
+  const Companion();
+
+  const factory Companion.hound(Hound value) = CompanionHound;
+  const factory Companion.tabby(Tabby value) = CompanionTabby;
+  const factory Companion.fallback(Map<String, dynamic> value) =
+      CompanionFallback;
+
+  factory Companion.fromJson(Map<String, dynamic> json) {
+    // No discriminator in the spec: the variant whose required keys are all
+    // present and that declares the most of the payload's keys wins (the
+    // earlier one on a tie).
+    const variants = <({Set<String> required, Set<String> declared})>[
+      (required: {'name'}, declared: {'name', 'bark'}),
+      (required: {'name'}, declared: {'name', 'lives'}),
+    ];
+    var best = -1;
+    var bestScore = -1;
+    for (var i = 0; i < variants.length; i++) {
+      final variant = variants[i];
+      if (!variant.required.every(json.containsKey)) continue;
+      final score = json.keys.where(variant.declared.contains).length;
+      if (score > bestScore) {
+        best = i;
+        bestScore = score;
+      }
+    }
+    return switch (best) {
+      0 => CompanionHound(Hound.fromJson(json)),
+      1 => CompanionTabby(Tabby.fromJson(json)),
+      _ => CompanionFallback(json),
+    };
+  }
+
+  Map<String, dynamic> toJson();
+}
+
+final class CompanionHound extends Companion {
+  const CompanionHound(this.value);
+
+  final Hound value;
+
+  @override
+  Map<String, dynamic> toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) =>
+      other is CompanionHound && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'Companion.hound($value)';
+}
+
+final class CompanionTabby extends Companion {
+  const CompanionTabby(this.value);
+
+  final Tabby value;
+
+  @override
+  Map<String, dynamic> toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) =>
+      other is CompanionTabby && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'Companion.tabby($value)';
+}
+
+final class CompanionFallback extends Companion {
+  const CompanionFallback(this.value);
+
+  final Map<String, dynamic> value;
+
+  @override
+  Map<String, dynamic> toJson() => value;
+
+  @override
+  String toString() => 'Companion.fallback($value)';
+}

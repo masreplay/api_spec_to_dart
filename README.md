@@ -313,8 +313,9 @@ response:
 - **With a discriminator**: decoding switches on the discriminator property
   (variants the mapping leaves out, or all of them when it is omitted, use
   their schema name as the value); encoding writes the discriminator back.
-- **Without one**: the first variant whose `fromJson` decodes without
-  throwing wins.
+- **Without one**: among the variants whose required keys are all present,
+  the one declaring the most of the payload's keys wins (the earlier one on
+  a tie).
 - **No match**: the fallback variant wraps the raw `Map<String, dynamic>`;
   with no `union_class_fallback_name` configured, decoding throws
   `ArgumentError` instead.
