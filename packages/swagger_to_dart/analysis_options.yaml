@@ -3,13 +3,13 @@ include: package:lints/recommended.yaml
 linter:
   rules:
     prefer_single_quotes: true
-    prefer_relative_imports: false
     sort_constructors_first: true
 
 analyzer:
   exclude:
     - "**/*.g.dart"
     - "**/*.freezed.dart"
+    - example/**
 
   errors:
     invalid_annotation_target: ignore
