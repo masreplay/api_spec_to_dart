@@ -15,10 +15,12 @@ class RegularModelGeneratorStrategy
     String effectiveTitle = title ?? model.key;
 
     final prefixes = context.config.model.removeModelPrefixes;
-    final className = Renaming.instance.renameClass(
-      effectiveTitle,
-      removePrefixes: prefixes.isNotEmpty ? prefixes : null,
-    );
+    final className =
+        context.componentClassNames[model.key] ??
+        Renaming.instance.renameClass(
+          effectiveTitle,
+          removePrefixes: prefixes.isNotEmpty ? prefixes : null,
+        );
 
     final filename = Renaming.instance.renameFile(className);
 

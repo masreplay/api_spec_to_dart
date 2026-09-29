@@ -43,7 +43,7 @@ void main() {
     expect(lines.where((line) => line.contains('warning')), isEmpty);
   });
 
-  test('two different schemas sharing a title still warn once', () {
+  test('two different schemas sharing a title both generate, silently', () {
     final spec = {
       'openapi': '3.1.0',
       'info': {'title': 'Dup', 'version': '1.0.0'},
@@ -68,8 +68,11 @@ void main() {
       },
     };
 
-    final lines = _capturePrints(() => renderSpec(spec));
+    late RenderResult result;
+    final lines = _capturePrints(() => result = renderSpec(spec));
 
-    expect(lines.where((line) => line.contains('warning')), hasLength(1));
+    expect(lines.where((line) => line.contains('warning')), isEmpty);
+    expect(result.files['models/shared.dart'], contains('String? a,'));
+    expect(result.files['models/foo_b.dart'], contains('int? b,'));
   });
 }

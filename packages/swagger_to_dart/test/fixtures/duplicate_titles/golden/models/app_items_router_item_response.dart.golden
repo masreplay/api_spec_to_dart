@@ -1,0 +1,37 @@
+/// app__items_router__ItemResponse
+///
+/// ```json
+/// {
+///     "properties": {
+///         "price": {
+///             "type": "number"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "price"
+///     ],
+///     "title": "ItemResponse"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'app_items_router_item_response.freezed.dart';
+part 'app_items_router_item_response.g.dart';
+
+@freezed
+abstract class AppItemsRouterItemResponse with _$AppItemsRouterItemResponse {
+  const AppItemsRouterItemResponse._();
+
+  @jsonSerializable
+  const factory AppItemsRouterItemResponse({
+    /// price
+    @JsonKey(name: AppItemsRouterItemResponse.priceKey_) required double price,
+  }) = _AppItemsRouterItemResponse;
+
+  factory AppItemsRouterItemResponse.fromJson(Map<String, dynamic> json) =>
+      _$AppItemsRouterItemResponseFromJson(json);
+
+  static const String priceKey_ = 'price';
+}

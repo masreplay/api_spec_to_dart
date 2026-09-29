@@ -33,10 +33,12 @@ class UnionModelStrategy {
   Library buildComponent(MapEntry<String, OpenApiSchemas> component) {
     final schema = component.value;
     final prefixes = context.config.model.removeModelPrefixes;
-    final className = Renaming.instance.renameClass(
-      schema.title ?? component.key,
-      removePrefixes: prefixes.isNotEmpty ? prefixes : null,
-    );
+    final className =
+        context.componentClassNames[component.key] ??
+        Renaming.instance.renameClass(
+          schema.title ?? component.key,
+          removePrefixes: prefixes.isNotEmpty ? prefixes : null,
+        );
 
     return build(
       className: className,

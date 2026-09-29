@@ -1,0 +1,34 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Duplicate titles", "version": "1.0.0" },
+  "paths": {},
+  "components": {
+    "schemas": {
+      "ItemResponse-Input": {
+        "title": "ItemResponse",
+        "type": "object",
+        "required": ["name"],
+        "properties": { "name": { "type": "string" } }
+      },
+      "app__items_router__ItemResponse": {
+        "title": "ItemResponse",
+        "type": "object",
+        "required": ["price"],
+        "properties": { "price": { "type": "number" } }
+      },
+      "StatusEnumKey": {
+        "title": "Status",
+        "type": "string",
+        "enum": ["on", "off"]
+      },
+      "Holder": {
+        "type": "object",
+        "properties": {
+          "input": { "$ref": "#/components/schemas/ItemResponse-Input" },
+          "item": { "$ref": "#/components/schemas/app__items_router__ItemResponse" },
+          "status": { "$ref": "#/components/schemas/StatusEnumKey" }
+        }
+      }
+    }
+  }
+}

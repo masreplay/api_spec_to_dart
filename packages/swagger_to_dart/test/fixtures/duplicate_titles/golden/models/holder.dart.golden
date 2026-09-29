@@ -1,0 +1,48 @@
+/// Holder
+///
+/// ```json
+/// {
+///     "properties": {
+///         "input": {
+///             "$ref": "#/components/schemas/ItemResponse-Input"
+///         },
+///         "item": {
+///             "$ref": "#/components/schemas/app__items_router__ItemResponse"
+///         },
+///         "status": {
+///             "$ref": "#/components/schemas/StatusEnumKey"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'holder.freezed.dart';
+part 'holder.g.dart';
+
+@freezed
+abstract class Holder with _$Holder {
+  const Holder._();
+
+  @jsonSerializable
+  const factory Holder({
+    /// input
+    @JsonKey(name: Holder.inputKey_) ItemResponse? input,
+
+    /// item
+    @JsonKey(name: Holder.itemKey_) AppItemsRouterItemResponse? item,
+
+    /// status
+    @JsonKey(name: Holder.statusKey_) Status? status,
+  }) = _Holder;
+
+  factory Holder.fromJson(Map<String, dynamic> json) => _$HolderFromJson(json);
+
+  static const String inputKey_ = 'input';
+
+  static const String itemKey_ = 'item';
+
+  static const String statusKey_ = 'status';
+}

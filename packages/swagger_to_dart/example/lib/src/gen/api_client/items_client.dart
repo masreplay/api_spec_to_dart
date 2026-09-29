@@ -13,7 +13,7 @@ abstract class ItemsClient {
   }) = _ItemsClient;
 
   @POST('/items/')
-  Future<HttpResponse<ItemResponse>> itemsCreateItem({
+  Future<HttpResponse<AppRouterItemsRouterItemResponse>> itemsCreateItem({
     @Body() required ItemRequestBody requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,

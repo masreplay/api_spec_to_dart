@@ -217,6 +217,27 @@ class GenericModelGeneratorStrategy
 
   static String? _getKey(String name) => '${name}Key_';
 
+  /// Class name shared by every instantiation of [model]'s generic type
+  /// (`BaseResponse[User]` -> `BaseResponse`).
+  String? baseClassName(MapEntry<String, OpenApiSchemas> model) {
+    final title = model.value.title ?? model.key;
+    final standard = GenericParserFactory.instance
+        .getParser(source: context.config.generationSource, title: title)
+        ?.toStandardFormat(title);
+    if (standard == null) return null;
+
+    final base = GenericParserFactory.instance
+        .detectParser(standard)
+        ?.extractBaseClassName(standard);
+    if (base == null) return null;
+
+    final prefixes = context.config.model.removeModelPrefixes;
+    return Renaming.instance.renameClass(
+      base,
+      removePrefixes: prefixes.isNotEmpty ? prefixes : null,
+    );
+  }
+
   bool shouldUseGenericStrategy(MapEntry<String, OpenApiSchemas> model) {
     final supportGenericArguments =
         context.config.model.supportGenericArguments;
