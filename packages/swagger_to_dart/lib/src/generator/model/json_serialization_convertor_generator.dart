@@ -154,19 +154,17 @@ class TimeOfDayStringJsonConverter implements JsonConverter<TimeOfDay, String> {
 class ColorStringJsonConverter implements JsonConverter<Color, String> {
   const ColorStringJsonConverter();
 
-  // #000000 -> Color(0xFF000000)
-  // #00000000 -> Color(0x00000000)
+  // #000000 (6 digits, no alpha) -> Color(0xFF000000) (opaque)
+  // #00000000 (8 digits) -> Color(0x00000000)
   @override
   Color fromJson(String json) {
-    if (json.startsWith('#')) {
-      return Color(int.parse(json.substring(1), radix: 16));
-    } else {
-      return Color(int.parse(json, radix: 16));
-    }
+    final hex = json.startsWith('#') ? json.substring(1) : json;
+    final argb = hex.length == 6 ? 'FF$hex' : hex;
+    return Color(int.parse(argb, radix: 16));
   }
 
-  // #000000 -> Color(0xFF000000)
-  // #00000000 -> Color(0x00000000)
+  // Color(0xFF000000) -> #ff000000
+  // Color(0x00000000) -> #00000000
   @override
   String toJson(Color object) {
     return '#${object.toARGB32().toRadixString(16).padLeft(8, '0')}';
