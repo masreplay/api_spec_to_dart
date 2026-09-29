@@ -30,20 +30,41 @@ sealed class ResponseModelsResponseMultiple {
   ) = ResponseModelsResponseMultipleFallback;
 
   factory ResponseModelsResponseMultiple.fromJson(Map<String, dynamic> json) {
-    // No discriminator in the spec: the first variant that decodes wins.
-    for (final decode
-        in <ResponseModelsResponseMultiple Function(Map<String, dynamic>)>[
-          (json) => ResponseModelsResponseMultipleUser(User.fromJson(json)),
-          (json) =>
-              ResponseModelsResponseMultipleLocation(Location.fromJson(json)),
-        ]) {
-      try {
-        return decode(json);
-      } catch (_) {
-        // Not this variant; try the next one.
+    // No discriminator in the spec: the variant whose required keys are all
+    // present and that declares the most of the payload's keys wins (the
+    // earlier one on a tie).
+    const variants = <({Set<String> required, Set<String> declared})>[
+      (
+        required: {'username', 'email', 'id'},
+        declared: {
+          'username',
+          'email',
+          'full_name',
+          'id',
+          'is_active',
+          'created_at',
+          'location',
+          'tags',
+        },
+      ),
+      (required: {'lat', 'lng'}, declared: {'lat', 'lng', 'name'}),
+    ];
+    var best = -1;
+    var bestScore = -1;
+    for (var i = 0; i < variants.length; i++) {
+      final variant = variants[i];
+      if (!variant.required.every(json.containsKey)) continue;
+      final score = json.keys.where(variant.declared.contains).length;
+      if (score > bestScore) {
+        best = i;
+        bestScore = score;
       }
     }
-    return ResponseModelsResponseMultipleFallback(json);
+    return switch (best) {
+      0 => ResponseModelsResponseMultipleUser(User.fromJson(json)),
+      1 => ResponseModelsResponseMultipleLocation(Location.fromJson(json)),
+      _ => ResponseModelsResponseMultipleFallback(json),
+    };
   }
 
   Map<String, dynamic> toJson();
