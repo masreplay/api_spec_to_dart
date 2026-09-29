@@ -335,4 +335,68 @@ void main() {
       expect(client, contains('Future<HttpResponse<String>> sendXml('));
     });
   });
+
+  test('JSON bodies with parameters or +json suffixes stay typed', () {
+    Map<String, dynamic> post(String operationId, String mediaType) => {
+      'post': {
+        'tags': ['items'],
+        'operationId': operationId,
+        'requestBody': {
+          'content': {
+            mediaType: {
+              'schema': {r'$ref': '#/components/schemas/Item'},
+            },
+          },
+        },
+        'responses': {
+          '200': {'description': 'OK'},
+        },
+      },
+    };
+    final client = renderSpec(
+      _spec(
+        paths: {
+          '/charset': post('withCharset', 'application/json; charset=utf-8'),
+          '/vendor': post('vendorJson', 'application/vnd.api+json'),
+        },
+        schemas: {
+          'Item': {
+            'type': 'object',
+            'properties': {
+              'id': {'type': 'integer'},
+            },
+          },
+        },
+      ),
+    ).files['api_client/items_client.dart']!;
+
+    expect(
+      RegExp(r'@Body\(\) required Item requestBody').allMatches(client),
+      hasLength(2),
+    );
+    expect(client, isNot(contains('Content-Type')));
+  });
+
+  test('@Extras keeps the spec as written (OpenAPI 3.1 type arrays)', () {
+    final client = renderSpec(
+      _spec(
+        paths: {
+          '/a': _get(
+            'listItems',
+            parameters: [
+              {
+                'name': 'q',
+                'in': 'query',
+                'schema': {
+                  'type': ['string', 'null'],
+                },
+              },
+            ],
+          ),
+        },
+      ),
+    ).files['api_client/items_client.dart']!;
+
+    expect(client, contains("'type': ['string', 'null']"));
+  });
 }

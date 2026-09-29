@@ -35,12 +35,3 @@ Json? _$JsonConverterToJson<Json, Value>(
   Value? value,
   Json? Function(Value value) toJson,
 ) => value == null ? null : toJson(value);
-
-const _$OpenApiContentTypeEnumMap = {
-  OpenApiContentType.applicationJson: 'application/json',
-  OpenApiContentType.applicationXWwwFormUrlencoded:
-      'application/x-www-form-urlencoded',
-  OpenApiContentType.multipartFormData: 'multipart/form-data',
-  OpenApiContentType.textJson: 'text/json',
-  OpenApiContentType.applicationWildcardJson: 'application/*+json',
-};
