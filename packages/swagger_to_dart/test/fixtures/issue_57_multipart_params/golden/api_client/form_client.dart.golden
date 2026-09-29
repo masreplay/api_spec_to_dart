@@ -1,0 +1,135 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'form_client.g.dart';
+
+@RestApi()
+abstract class FormClient {
+  factory FormClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _FormClient;
+
+  @PUT('/form/{id}')
+  @MultiPart()
+  Future<HttpResponse<FormBody>> updateForm_({
+    @Part() required Map<String, dynamic> requestBody,
+    @Path('id') required String id,
+    @Header('trace') required String trace,
+    @Query('page') int? page,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['form'],
+      'operationId': 'updateForm',
+      'parameters': [
+        {
+          'name': 'id',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'trace',
+          'in': 'header',
+          'required': true,
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'page',
+          'in': 'query',
+          'required': false,
+          'schema': {'type': 'integer'},
+        },
+      ],
+      'requestBody': {
+        'required': true,
+        'content': {
+          'multipart/form-data': {
+            'schema': {'\$ref': '#/components/schemas/FormBody'},
+          },
+        },
+      },
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/FormBody'},
+            },
+          },
+        },
+      },
+    },
+  });
+}
+
+extension FormClientX on FormClient {
+  Future<HttpResponse<FormBody>> updateForm({
+    required FormBody requestBody,
+    @Path('id') required String id,
+    @Header('trace') required String trace,
+    @Query('page') int? page,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['form'],
+      'operationId': 'updateForm',
+      'parameters': [
+        {
+          'name': 'id',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'trace',
+          'in': 'header',
+          'required': true,
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'page',
+          'in': 'query',
+          'required': false,
+          'schema': {'type': 'integer'},
+        },
+      ],
+      'requestBody': {
+        'required': true,
+        'content': {
+          'multipart/form-data': {
+            'schema': {'\$ref': '#/components/schemas/FormBody'},
+          },
+        },
+      },
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/FormBody'},
+            },
+          },
+        },
+      },
+    },
+  }) {
+    return updateForm_(
+      requestBody: requestBody.toJson(),
+      id: id,
+      trace: trace,
+      page: page,
+      extras: extras,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+  }
+}

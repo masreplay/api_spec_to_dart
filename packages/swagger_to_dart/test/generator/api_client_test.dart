@@ -210,4 +210,23 @@ void main() {
     expect(client, contains('listItems({'));
     expect(client, contains('listItems2({'));
   });
+
+  test('OpenAPI metadata in @Extras can be turned off (#60)', () {
+    final spec = _spec(paths: {'/a': _get('listItems')});
+    String client(SwaggerToDart config) =>
+        renderSpec(spec, config: config).files['api_client/items_client.dart']!;
+
+    expect(
+      client(const SwaggerToDart()),
+      contains("'operationId': 'listItems'"),
+    );
+
+    final withoutMetadata = client(
+      const SwaggerToDart(
+        apiClient: ApiClientConfig(includeOpenapiExtras: false),
+      ),
+    );
+    expect(withoutMetadata, isNot(contains('operationId')));
+    expect(withoutMetadata, contains('Map<String, dynamic>? extras,'));
+  });
 }

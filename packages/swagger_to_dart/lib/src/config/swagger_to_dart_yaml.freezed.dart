@@ -910,6 +910,11 @@ mixin _$ApiClientConfig {
   @JsonKey(name: 'skipped_parameters')
   List<String> get skippedParameters;
 
+  /// Whether each method's `@Extras()` defaults to the operation's OpenAPI
+  /// metadata (readable by Dio interceptors via `options.extra`).
+  @JsonKey(name: 'include_openapi_extras')
+  bool get includeOpenapiExtras;
+
   /// Create a copy of ApiClientConfig
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -949,7 +954,12 @@ mixin _$ApiClientConfig {
             const DeepCollectionEquality().equals(
               other.skippedParameters,
               _this.skippedParameters,
-            ));
+            ) &&
+            (identical(
+                  other.includeOpenapiExtras,
+                  _this.includeOpenapiExtras,
+                ) ||
+                other.includeOpenapiExtras == _this.includeOpenapiExtras));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -962,13 +972,14 @@ mixin _$ApiClientConfig {
       _this.useClassForQueryParameters,
       _this.useClassForMultipartFormData,
       const DeepCollectionEquality().hash(_this.skippedParameters),
+      _this.includeOpenapiExtras,
     );
   }
 
   @override
   String toString() {
     final _this = this as ApiClientConfig;
-    return 'ApiClientConfig(baseApiClientClassName: ${_this.baseApiClientClassName}, useClassForQueryParameters: ${_this.useClassForQueryParameters}, useClassForMultipartFormData: ${_this.useClassForMultipartFormData}, skippedParameters: ${_this.skippedParameters})';
+    return 'ApiClientConfig(baseApiClientClassName: ${_this.baseApiClientClassName}, useClassForQueryParameters: ${_this.useClassForQueryParameters}, useClassForMultipartFormData: ${_this.useClassForMultipartFormData}, skippedParameters: ${_this.skippedParameters}, includeOpenapiExtras: ${_this.includeOpenapiExtras})';
   }
 }
 
@@ -986,6 +997,7 @@ abstract mixin class $ApiClientConfigCopyWith<$Res> {
     @JsonKey(name: 'use_class_for_multipart_form_data')
     bool useClassForMultipartFormData,
     @JsonKey(name: 'skipped_parameters') List<String> skippedParameters,
+    @JsonKey(name: 'include_openapi_extras') bool includeOpenapiExtras,
   });
 }
 
@@ -1006,6 +1018,7 @@ class _$ApiClientConfigCopyWithImpl<$Res>
     Object? useClassForQueryParameters = null,
     Object? useClassForMultipartFormData = null,
     Object? skippedParameters = null,
+    Object? includeOpenapiExtras = null,
   }) {
     return _then(
       ApiClientConfig(
@@ -1025,6 +1038,10 @@ class _$ApiClientConfigCopyWithImpl<$Res>
             ? _self.skippedParameters
             : skippedParameters // ignore: cast_nullable_to_non_nullable
                   as List<String>,
+        includeOpenapiExtras: null == includeOpenapiExtras
+            ? _self.includeOpenapiExtras
+            : includeOpenapiExtras // ignore: cast_nullable_to_non_nullable
+                  as bool,
       ),
     );
   }
@@ -1131,6 +1148,7 @@ extension ApiClientConfigPatterns on ApiClientConfig {
       @JsonKey(name: 'use_class_for_multipart_form_data')
       bool useClassForMultipartFormData,
       @JsonKey(name: 'skipped_parameters') List<String> skippedParameters,
+      @JsonKey(name: 'include_openapi_extras') bool includeOpenapiExtras,
     )?
     $default, {
     required TResult orElse(),
@@ -1143,6 +1161,7 @@ extension ApiClientConfigPatterns on ApiClientConfig {
           _that.useClassForQueryParameters,
           _that.useClassForMultipartFormData,
           _that.skippedParameters,
+          _that.includeOpenapiExtras,
         );
       case _:
         return orElse();
@@ -1172,6 +1191,7 @@ extension ApiClientConfigPatterns on ApiClientConfig {
       @JsonKey(name: 'use_class_for_multipart_form_data')
       bool useClassForMultipartFormData,
       @JsonKey(name: 'skipped_parameters') List<String> skippedParameters,
+      @JsonKey(name: 'include_openapi_extras') bool includeOpenapiExtras,
     )
     $default,
   ) {
@@ -1183,6 +1203,7 @@ extension ApiClientConfigPatterns on ApiClientConfig {
           _that.useClassForQueryParameters,
           _that.useClassForMultipartFormData,
           _that.skippedParameters,
+          _that.includeOpenapiExtras,
         );
       case _:
         throw StateError('Unexpected subclass');
@@ -1211,6 +1232,7 @@ extension ApiClientConfigPatterns on ApiClientConfig {
       @JsonKey(name: 'use_class_for_multipart_form_data')
       bool useClassForMultipartFormData,
       @JsonKey(name: 'skipped_parameters') List<String> skippedParameters,
+      @JsonKey(name: 'include_openapi_extras') bool includeOpenapiExtras,
     )?
     $default,
   ) {
@@ -1222,6 +1244,7 @@ extension ApiClientConfigPatterns on ApiClientConfig {
           _that.useClassForQueryParameters,
           _that.useClassForMultipartFormData,
           _that.skippedParameters,
+          _that.includeOpenapiExtras,
         );
       case _:
         return null;
@@ -1242,6 +1265,7 @@ class _ApiClientConfig extends ApiClientConfig {
     this.useClassForMultipartFormData = false,
     @JsonKey(name: 'skipped_parameters')
     List<String> skippedParameters = const [],
+    @JsonKey(name: 'include_openapi_extras') this.includeOpenapiExtras = true,
   }) : _skippedParameters = skippedParameters,
        super._();
   factory _ApiClientConfig.fromJson(Map<String, dynamic> json) =>
@@ -1265,6 +1289,12 @@ class _ApiClientConfig extends ApiClientConfig {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_skippedParameters);
   }
+
+  /// Whether each method's `@Extras()` defaults to the operation's OpenAPI
+  /// metadata (readable by Dio interceptors via `options.extra`).
+  @override
+  @JsonKey(name: 'include_openapi_extras')
+  final bool includeOpenapiExtras;
 
   /// Create a copy of ApiClientConfig
   /// with the given fields replaced by the non-null parameter values.
@@ -1301,7 +1331,9 @@ class _ApiClientConfig extends ApiClientConfig {
             const DeepCollectionEquality().equals(
               other.skippedParameters,
               _skippedParameters,
-            ));
+            ) &&
+            (identical(other.includeOpenapiExtras, includeOpenapiExtras) ||
+                other.includeOpenapiExtras == includeOpenapiExtras));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1313,12 +1345,13 @@ class _ApiClientConfig extends ApiClientConfig {
       useClassForQueryParameters,
       useClassForMultipartFormData,
       const DeepCollectionEquality().hash(_skippedParameters),
+      includeOpenapiExtras,
     );
   }
 
   @override
   String toString() {
-    return 'ApiClientConfig(baseApiClientClassName: $baseApiClientClassName, useClassForQueryParameters: $useClassForQueryParameters, useClassForMultipartFormData: $useClassForMultipartFormData, skippedParameters: $skippedParameters)';
+    return 'ApiClientConfig(baseApiClientClassName: $baseApiClientClassName, useClassForQueryParameters: $useClassForQueryParameters, useClassForMultipartFormData: $useClassForMultipartFormData, skippedParameters: $skippedParameters, includeOpenapiExtras: $includeOpenapiExtras)';
   }
 }
 
@@ -1338,6 +1371,7 @@ abstract mixin class _$ApiClientConfigCopyWith<$Res>
     @JsonKey(name: 'use_class_for_multipart_form_data')
     bool useClassForMultipartFormData,
     @JsonKey(name: 'skipped_parameters') List<String> skippedParameters,
+    @JsonKey(name: 'include_openapi_extras') bool includeOpenapiExtras,
   });
 }
 
@@ -1358,6 +1392,7 @@ class __$ApiClientConfigCopyWithImpl<$Res>
     Object? useClassForQueryParameters = null,
     Object? useClassForMultipartFormData = null,
     Object? skippedParameters = null,
+    Object? includeOpenapiExtras = null,
   }) {
     return _then(
       _ApiClientConfig(
@@ -1377,6 +1412,10 @@ class __$ApiClientConfigCopyWithImpl<$Res>
             ? _self._skippedParameters
             : skippedParameters // ignore: cast_nullable_to_non_nullable
                   as List<String>,
+        includeOpenapiExtras: null == includeOpenapiExtras
+            ? _self.includeOpenapiExtras
+            : includeOpenapiExtras // ignore: cast_nullable_to_non_nullable
+                  as bool,
       ),
     );
   }

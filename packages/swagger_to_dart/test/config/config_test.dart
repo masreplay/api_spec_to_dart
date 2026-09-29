@@ -18,6 +18,7 @@ void main() {
     expect(config.apiClient.baseApiClientClassName, 'BaseApiClient');
     expect(config.apiClient.useClassForQueryParameters, isFalse);
     expect(config.apiClient.skippedParameters, isEmpty);
+    expect(config.apiClient.includeOpenapiExtras, isTrue);
   });
 
   test('every option', () {
@@ -41,6 +42,7 @@ swagger_to_dart:
     use_class_for_query_parameters: true
     use_class_for_multipart_form_data: true
     skipped_parameters: [X-API-Key]
+    include_openapi_extras: false
   imports:
     global:
       - "import 'package:app/app.dart';"
@@ -60,6 +62,7 @@ swagger_to_dart:
     expect(config.apiClient.useClassForQueryParameters, isTrue);
     expect(config.apiClient.useClassForMultipartFormData, isTrue);
     expect(config.apiClient.skippedParameters, ['X-API-Key']);
+    expect(config.apiClient.includeOpenapiExtras, isFalse);
     expect(config.imports?.globalImports, ["import 'package:app/app.dart';"]);
   });
 
