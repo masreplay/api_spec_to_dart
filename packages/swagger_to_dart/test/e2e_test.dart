@@ -46,6 +46,7 @@ void main() {
 
       final analyze = await _dart([
         'analyze',
+        '--fatal-infos',
         'lib',
         if (tests.existsSync()) 'test',
       ]);

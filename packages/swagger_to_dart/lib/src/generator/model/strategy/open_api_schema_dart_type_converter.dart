@@ -35,7 +35,7 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
     final finalType = override?.key ?? dartType;
 
     if (_isNullable(schema)) {
-      return _makeNullable(finalType);
+      return nullable(finalType);
     }
 
     return finalType;
@@ -64,12 +64,9 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
     );
   }
 
-  String _makeNullable(String dartType) {
-    if (dartType.endsWith('?')) {
-      return dartType;
-    }
-    return '$dartType?';
-  }
+  /// [dartType] made nullable; `dynamic` and nullable types stay as they are.
+  String nullable(String dartType) =>
+      dartType == 'dynamic' || dartType.endsWith('?') ? dartType : '$dartType?';
 
   String getRef(OpenApiSchemaRef schema) {
     final schemas = context.openApi.getOpenApiSchemasByRef(schema.ref!);
@@ -292,9 +289,12 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
     }
   }
 
+  /// Dart source for the schema's `default`, or null. Inside an annotation
+  /// ([inConstContext]) collection literals need no `const`.
   String? getDefaultValue(
     OpenApiSchema? schema, {
     OpenApiSchema? parent,
+    bool inConstContext = false,
   }) {
     if (schema == null) {
       return null;
@@ -316,7 +316,7 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
           return '$className.$defaultValue';
         }
 
-        return _dartLiteral(default_);
+        return _dartLiteral(default_, constPrefix: !inConstContext);
       case OpenApiSchemaRef schema:
         final dartType = getRef(schema);
         final refSchema = context.openApi.getOpenApiSchemasByRef(schema.ref!)!;
@@ -330,32 +330,26 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
           return '$dartType.$defaultValue';
         }
 
-        return _dartLiteral(default_);
+        return _dartLiteral(default_, constPrefix: !inConstContext);
       case OpenApiSchemaAnyOf schema:
-        return _dartLiteral(schema.default_);
+        return _dartLiteral(schema.default_, constPrefix: !inConstContext);
       case OpenApiSchemaOneOf schema:
-        return _dartLiteral(schema.default_);
+        return _dartLiteral(schema.default_, constPrefix: !inConstContext);
     }
   }
 
-  String? _dartLiteral(Object? value) {
-    if (value == null) return null;
-    if (value is String) {
-      return dartString(value);
-    }
-    if (value is num || value is bool) {
-      return value.toString();
-    }
-    if (value is List) {
-      final items = value.map(_dartLiteral).join(', ');
-      return 'const [$items]';
-    }
-    if (value is Map) {
-      final entries = value.entries
-          .map((e) => '${_dartLiteral(e.key)}: ${_dartLiteral(e.value)}')
-          .join(', ');
-      return 'const {$entries}';
-    }
-    return value.toString();
+  String? _dartLiteral(Object? value, {required bool constPrefix}) {
+    final prefix = constPrefix ? 'const ' : '';
+    return switch (value) {
+      null => null,
+      String() => dartString(value),
+      num() || bool() => '$value',
+      List() =>
+        '$prefix[${value.map((e) => _dartLiteral(e, constPrefix: false)).join(', ')}]',
+      Map() =>
+        '$prefix{${value.entries.map((e) => '${_dartLiteral(e.key, constPrefix: false)}: ${_dartLiteral(e.value, constPrefix: false)}').join(', ')}}',
+      _ => '$value',
+    };
   }
+
 }

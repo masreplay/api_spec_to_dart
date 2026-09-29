@@ -14,6 +14,7 @@ class PropertyGeneratorStrategy extends GeneratorStrategy {
 
     final defaultValue = context.extension.typeConverter.getDefaultValue(
       property.value,
+      inConstContext: true,
     );
 
     final dartType = context.extension.typeConverter.get(
@@ -24,11 +25,11 @@ class PropertyGeneratorStrategy extends GeneratorStrategy {
 
     final isRequired = defaultValue == null && required;
 
-    final isNullable = dartType.endsWith('?');
     final hasDefaultValue = defaultValue != null;
 
-    final adjustedDartType = (!hasDefaultValue && !isNullable && !isRequired)
-        ? '$dartType?'
+    // Optional without a default: the field must accept null.
+    final adjustedDartType = !hasDefaultValue && !isRequired
+        ? context.extension.typeConverter.nullable(dartType)
         : dartType;
 
     return Parameter(

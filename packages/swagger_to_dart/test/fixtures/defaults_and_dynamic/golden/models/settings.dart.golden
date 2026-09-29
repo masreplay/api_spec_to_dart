@@ -1,0 +1,68 @@
+/// Settings
+///
+/// ```json
+/// {
+///     "properties": {
+///         "extra": {},
+///         "tags": {
+///             "type": "array",
+///             "items": {
+///                 "type": "string"
+///             },
+///             "default": [
+///                 "a",
+///                 "b"
+///             ]
+///         },
+///         "limits": {
+///             "type": "object",
+///             "default": {
+///                 "max": 1
+///             }
+///         },
+///         "mode": {
+///             "type": "string",
+///             "default": "fast"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'settings.freezed.dart';
+part 'settings.g.dart';
+
+@freezed
+abstract class Settings with _$Settings {
+  const Settings._();
+
+  @jsonSerializable
+  const factory Settings({
+    /// extra
+    @JsonKey(name: Settings.extraKey_) dynamic extra,
+
+    /// tags
+    @Default(['a', 'b']) @JsonKey(name: Settings.tagsKey_) List<String> tags,
+
+    /// limits
+    @Default({'max': 1})
+    @JsonKey(name: Settings.limitsKey_)
+    Map<String, dynamic> limits,
+
+    /// mode
+    @Default('fast') @JsonKey(name: Settings.modeKey_) String mode,
+  }) = _Settings;
+
+  factory Settings.fromJson(Map<String, dynamic> json) =>
+      _$SettingsFromJson(json);
+
+  static const String extraKey_ = 'extra';
+
+  static const String tagsKey_ = 'tags';
+
+  static const String limitsKey_ = 'limits';
+
+  static const String modeKey_ = 'mode';
+}
