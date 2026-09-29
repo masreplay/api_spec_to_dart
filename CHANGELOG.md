@@ -40,6 +40,11 @@
 
 ### Added
 
+- Union decoding: with a discriminator, by its value — explicit `mapping`,
+  the schema names when there is none, and both when the mapping covers only
+  some variants; without one, the variant whose required keys are all
+  present and that declares the most of the payload's keys (ties keep the
+  earlier variant). No try-and-catch guessing.
 - `api_client.include_openapi_extras` (default `true`): set to `false` to
   stop embedding each operation's OpenAPI metadata as the `@Extras()`
   default. (#60)
