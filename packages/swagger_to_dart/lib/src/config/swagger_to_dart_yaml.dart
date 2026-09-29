@@ -109,6 +109,12 @@ abstract class ApiClientConfig with _$ApiClientConfig {
     @Default([])
     @JsonKey(name: 'skipped_parameters')
     List<String> skippedParameters,
+
+    /// Whether each method's `@Extras()` defaults to the operation's OpenAPI
+    /// metadata (readable by Dio interceptors via `options.extra`).
+    @Default(true)
+    @JsonKey(name: 'include_openapi_extras')
+    bool includeOpenapiExtras,
   }) = _ApiClientConfig;
 
   factory ApiClientConfig.fromJson(Map<String, dynamic> json) =>

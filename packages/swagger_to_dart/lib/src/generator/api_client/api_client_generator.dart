@@ -287,13 +287,16 @@ class ApiClientGenerator {
                       ..._extraParameters(openapiMetadata: method.value.json),
                     ])
                     ..body = Block.of([
+                      // Forward every parameter: path/header/query ones were
+                      // dropped, so the call did not compile (#57).
                       Code(
-                        '''return ${methodName}_($_requestBodyName: $_requestBodyName${canToJson ? '.toJson()' : ''}, extras: extras,
-                      ${parameters.firstWhereOrNull((e) => e.name == _queriesParameterName) != null ? 'queries: queries,' : ''}
-                      cancelToken: cancelToken,
-                      onSendProgress: onSendProgress,
-                      onReceiveProgress: onReceiveProgress
-                      );''',
+                        'return ${methodName}_('
+                        '$_requestBodyName: $_requestBodyName${canToJson ? '.toJson()' : ''}, '
+                        '${parameters.map((p) => '${p.name}: ${p.name}, ').join()}'
+                        'extras: extras, '
+                        'cancelToken: cancelToken, '
+                        'onSendProgress: onSendProgress, '
+                        'onReceiveProgress: onReceiveProgress);',
                       ),
                     ]),
                 ),
@@ -574,7 +577,9 @@ class ApiClientGenerator {
           ..annotations.addAll([refer('Extras()')])
           ..named = true
           ..name = 'extras'
-          ..defaultTo = Code('const ${encodeWithRawKeys(openapiMetadata)}')
+          ..defaultTo = context.config.apiClient.includeOpenapiExtras
+              ? Code('const ${encodeWithRawKeys(openapiMetadata)}')
+              : null
           ..type = refer('Map<String, dynamic>?'),
       ),
     ];

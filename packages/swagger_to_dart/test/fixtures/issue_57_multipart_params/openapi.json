@@ -1,0 +1,47 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Issue 57", "version": "1.0.0" },
+  "paths": {
+    "/form/{id}": {
+      "put": {
+        "tags": ["form"],
+        "operationId": "updateForm",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "trace", "in": "header", "required": true, "schema": { "type": "string" } },
+          { "name": "page", "in": "query", "required": false, "schema": { "type": "integer" } }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": { "$ref": "#/components/schemas/FormBody" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/FormBody" }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "FormBody": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string" },
+          "note": { "type": "string" }
+        }
+      }
+    }
+  }
+}
