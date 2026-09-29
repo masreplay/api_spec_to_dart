@@ -1,4 +1,5 @@
 import 'package:code_builder/code_builder.dart';
+import 'package:swagger_to_dart/src/code/string.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 ///
@@ -93,11 +94,11 @@ class EnumModelGeneratorStrategy
     final enumFallbackType = context.config.model.enumFallbackType;
 
     final orElseCallback = switch (enumFallbackType) {
-      EnumFallbackType.unknown => 'throw ArgumentError("Invalid $className")',
+      EnumFallbackType.unknown => "throw ArgumentError('Invalid $className')",
       EnumFallbackType.first => '$className.values.first',
       EnumFallbackType.last => '$className.values.last',
       EnumFallbackType.throwException =>
-        'throw ArgumentError("Invalid $className")',
+        "throw ArgumentError('Invalid $className')",
     };
 
     final enumType = model.value.type == 'integer'
@@ -131,7 +132,7 @@ class EnumModelGeneratorStrategy
                     (b) => b
                       ..annotations.add(
                         refer(
-                          'JsonValue(${enumType == OpenApiSchemaVarType.integer ? '$value' : '"$value"'})',
+                          'JsonValue(${enumType == OpenApiSchemaVarType.integer ? '$value' : dartString('$value')})',
                         ),
                       )
                       ..name = memberNames[value.toString()]!,

@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:swagger_to_dart/src/code/string.dart';
 import 'package:swagger_to_dart/src/generator/model/strategy/generic_parser_factory.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
@@ -323,20 +324,18 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
           return '$dartType.$defaultValue';
         }
 
-        return default_?.toString();
+        return _dartLiteral(default_);
       case OpenApiSchemaAnyOf schema:
-        final default_ = schema.default_;
-        return default_?.toString();
+        return _dartLiteral(schema.default_);
       case OpenApiSchemaOneOf schema:
-        final default_ = schema.default_;
-        return default_?.toString();
+        return _dartLiteral(schema.default_);
     }
   }
 
   String? _dartLiteral(Object? value) {
     if (value == null) return null;
     if (value is String) {
-      return "'${value.replaceAll("'", "\\'")}'";
+      return dartString(value);
     }
     if (value is num || value is bool) {
       return value.toString();

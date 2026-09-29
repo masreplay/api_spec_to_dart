@@ -48,7 +48,7 @@ class UnionModelStrategy
         (b) => b
           ..annotations.addAll([
             refer('jsonSerializable'),
-            refer('FreezedUnionValue(r"$name")'),
+            refer('FreezedUnionValue(${dartString(name)})'),
           ])
           ..constant = true
           ..factory = true
@@ -168,7 +168,7 @@ class UnionModelStrategy
                     (b) => b
                       ..annotations.addAll([
                         refer('jsonSerializable'),
-                        refer('FreezedUnionValue(r"$fallbackName")'),
+                        refer('FreezedUnionValue(${dartString(fallbackName)})'),
                       ])
                       ..constant = true
                       ..factory = true
@@ -327,11 +327,11 @@ class UnionModelStrategy
     string.write('Freezed(');
 
     if (unionClassFallbackName != null) {
-      string.write('fallbackUnion: r"$unionClassFallbackName", ');
+      string.write('fallbackUnion: ${dartString(unionClassFallbackName)}, ');
     }
 
     if (unionKey != null) {
-      string.write('unionKey: r"$unionKey", ');
+      string.write('unionKey: ${dartString(unionKey)}, ');
     }
 
     string.write(')');

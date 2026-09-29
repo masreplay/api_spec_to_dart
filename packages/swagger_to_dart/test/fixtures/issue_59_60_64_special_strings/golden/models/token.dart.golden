@@ -1,0 +1,43 @@
+/// Token
+/// {
+///     "properties": {
+///         "access_token": {
+///             "type": "string"
+///         },
+///         "note": {
+///             "type": "string",
+///             "default": "it's $free\nnewline"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "access_token"
+///     ]
+/// }
+library token;
+
+import 'exports.dart';
+part 'token.freezed.dart';
+part 'token.g.dart'; // Token
+
+@freezed
+abstract class Token with _$Token {
+  const Token._();
+
+  @jsonSerializable
+  const factory Token({
+    /// accessToken
+    @JsonKey(name: Token.accessTokenKey_) required String accessToken,
+
+    /// note
+    @Default('it\'s \$free\nnewline')
+    @JsonKey(name: Token.noteKey_)
+    String note,
+  }) = _Token;
+
+  factory Token.fromJson(Map<String, dynamic> json) => _$TokenFromJson(json);
+
+  static const String accessTokenKey_ = 'access_token';
+
+  static const String noteKey_ = 'note';
+}

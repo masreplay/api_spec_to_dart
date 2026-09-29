@@ -11,9 +11,9 @@ abstract class PetClient {
   factory PetClient(Dio dio, {ParseErrorLogger? errorLogger, String? baseUrl}) =
       _PetClient;
 
-  @GET("/pets")
+  @GET('/pets')
   Future<HttpResponse<List<Pet>>> listPets({
-    @Query("limit") required int limit,
+    @Query('limit') required int limit,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
@@ -53,7 +53,7 @@ abstract class PetClient {
       },
     },
   });
-  @POST("/pets")
+  @POST('/pets')
   Future<HttpResponse<Pet>> createPet({
     @Body() required Pet requestBody,
     @CancelRequest() CancelToken? cancelToken,
@@ -84,9 +84,9 @@ abstract class PetClient {
       },
     },
   });
-  @GET("/pets/{petId}")
+  @GET('/pets/{petId}')
   Future<HttpResponse<Pet>> showPetById({
-    @Path("petId") required String petId,
+    @Path('petId') required String petId,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,

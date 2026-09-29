@@ -48,11 +48,11 @@ abstract class Pet with _$Pet {
 
   factory Pet.fromJson(Map<String, dynamic> json) => _$PetFromJson(json);
 
-  static const String idKey_ = r'id';
+  static const String idKey_ = 'id';
 
-  static const String nameKey_ = r'name';
+  static const String nameKey_ = 'name';
 
-  static const String tagKey_ = r'tag';
+  static const String tagKey_ = 'tag';
 
-  static const String statusKey_ = r'status';
+  static const String statusKey_ = 'status';
 }

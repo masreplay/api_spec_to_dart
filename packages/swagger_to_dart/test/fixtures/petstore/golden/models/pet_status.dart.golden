@@ -15,16 +15,16 @@ part 'pet_status.g.dart';
 
 @JsonEnum(alwaysCreate: true)
 enum PetStatus {
-  @JsonValue("available")
+  @JsonValue('available')
   available,
-  @JsonValue("pending")
+  @JsonValue('pending')
   pending,
-  @JsonValue("sold")
+  @JsonValue('sold')
   sold;
 
   factory PetStatus.fromJson(String json) => PetStatus.values.firstWhere(
     (e) => e.toJson() == json,
-    orElse: () => throw ArgumentError("Invalid PetStatus"),
+    orElse: () => throw ArgumentError('Invalid PetStatus'),
   );
 
   String toJson() => _$PetStatusEnumMap[this]!;
