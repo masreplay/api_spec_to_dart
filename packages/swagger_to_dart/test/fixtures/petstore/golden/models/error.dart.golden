@@ -36,7 +36,7 @@ abstract class Error with _$Error {
 
   factory Error.fromJson(Map<String, dynamic> json) => _$ErrorFromJson(json);
 
-  static const String codeKey_ = r'code';
+  static const String codeKey_ = 'code';
 
-  static const String messageKey_ = r'message';
+  static const String messageKey_ = 'message';
 }

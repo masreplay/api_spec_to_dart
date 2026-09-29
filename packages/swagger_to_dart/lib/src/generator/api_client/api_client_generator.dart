@@ -1,5 +1,6 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:collection/collection.dart';
+import 'package:swagger_to_dart/src/code/string.dart';
 import 'package:swagger_to_dart/src/swagger_to_dart_base.dart';
 
 const _requestBodyName = 'requestBody';
@@ -306,7 +307,7 @@ class ApiClientGenerator {
               //      .map((e) => '/// $e'),
               // ])
               ..annotations.addAll([
-                refer('$methodType("${path.key}")'),
+                refer('$methodType(${dartString(path.key)})'),
                 if (content[OpenApiContentType.applicationXWwwFormUrlencoded
                         .toJson()] !=
                     null)
@@ -464,16 +465,16 @@ class ApiClientGenerator {
             ..annotations.addAll([
               switch (p.in_) {
                 OpenApiPathMethodParameterType.query => refer(
-                  'Query("${p.name}")',
+                  'Query(${dartString(p.name)})',
                 ),
                 OpenApiPathMethodParameterType.path => refer(
-                  'Path("${p.name}")',
+                  'Path(${dartString(p.name)})',
                 ),
                 OpenApiPathMethodParameterType.header => refer(
-                  'Header("${p.name}")',
+                  'Header(${dartString(p.name)})',
                 ),
                 OpenApiPathMethodParameterType.cookie => refer(
-                  'Header("${p.name}")',
+                  'Header(${dartString(p.name)})',
                 ),
               },
             ])
@@ -571,42 +572,12 @@ class ApiClientGenerator {
   }
 }
 
+/// Dart source for a JSON-like [value] (maps, lists, strings, numbers).
 String encodeWithRawKeys(dynamic value) {
-  // Encode a string as a safe Dart single-quoted string literal.
-  // Raw strings (r'...') cannot contain newlines or single quotes, so we
-  // use a regular string with proper escaping instead.
-  String encodeDartString(String s) {
-    final escaped = s
-        .replaceAll('\\', '\\\\') // backslash must come first
-        .replaceAll("'", "\\'")
-        .replaceAll('\n', '\\n')
-        .replaceAll('\r', '\\r')
-        .replaceAll('\t', '\\t')
-        .replaceAll('\$', '\\\$');
-    return "'$escaped'";
-  }
-
-  if (value is Map) {
-    final buffer = StringBuffer('{');
-    var first = true;
-    value.forEach((key, val) {
-      if (!first) buffer.write(', ');
-      first = false;
-      buffer.write(
-        '${encodeDartString(key.toString())}: ${encodeWithRawKeys(val)}',
-      );
-    });
-    buffer.write('}');
-    return buffer.toString();
-  }
-
-  if (value is List) {
-    return '[${value.map(encodeWithRawKeys).join(', ')}]';
-  }
-
-  if (value is String) {
-    return encodeDartString(value);
-  }
-
-  return value.toString();
+  return switch (value) {
+    Map() => '{${value.entries.map((e) => '${dartString('${e.key}')}: ${encodeWithRawKeys(e.value)}').join(', ')}}',
+    List() => '[${value.map(encodeWithRawKeys).join(', ')}]',
+    String() => dartString(value),
+    _ => '$value',
+  };
 }

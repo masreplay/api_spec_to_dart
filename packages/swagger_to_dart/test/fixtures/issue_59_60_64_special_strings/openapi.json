@@ -1,0 +1,46 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Special strings", "version": "1.0.0" },
+  "paths": {
+    "/auth/refresh": {
+      "post": {
+        "tags": ["auth"],
+        "operationId": "refreshToken",
+        "summary": "Rafraîchir le token d'authentification",
+        "description": "HTTP proxy endpoint.\n\nArgs:\n    request: The original request.\n\nReturns:\n    Costs $5 \\ call.",
+        "parameters": [
+          {
+            "name": "sort",
+            "in": "query",
+            "required": true,
+            "schema": { "$ref": "#/components/schemas/SortOrder" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Token" }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "SortOrder": { "type": "string", "enum": ["asc", "desc"] },
+      "Money": { "type": "string", "enum": ["$usd", "back\\slash"] },
+      "Token": {
+        "type": "object",
+        "required": ["access_token"],
+        "properties": {
+          "access_token": { "type": "string" },
+          "note": { "type": "string", "default": "it's $free\nnewline" }
+        }
+      }
+    }
+  }
+}
