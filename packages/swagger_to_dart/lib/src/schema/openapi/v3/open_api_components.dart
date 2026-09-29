@@ -33,6 +33,7 @@ abstract class OpenApiSchemas with _$OpenApiSchemas {
     @JsonKey(name: 'title') String? title,
     @JsonKey(name: 'description') String? description,
     @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames,
+
     /// `bool` or a schema (Swashbuckle emits `{}` for free-form objects and
     /// `{"type": ...}` for dictionaries).
     @JsonKey(name: 'additionalProperties') Object? additionalProperties,

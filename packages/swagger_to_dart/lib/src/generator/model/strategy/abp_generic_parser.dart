@@ -78,6 +78,6 @@ class AbpGenericParser implements GenericParserBase {
 
   String _unwrap(String argument) =>
       argument.startsWith('[') && argument.endsWith(']')
-          ? argument.substring(1, argument.length - 1)
-          : argument;
+      ? argument.substring(1, argument.length - 1)
+      : argument;
 }

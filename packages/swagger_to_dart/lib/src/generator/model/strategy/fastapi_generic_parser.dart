@@ -7,7 +7,6 @@ class FastApiGenericParser implements GenericParserBase {
 
   static FastApiGenericParser get instance => _instance;
 
-
   @override
   bool isFormat(String input) {
     // FastAPI format uses square brackets, not backtick
@@ -48,11 +47,13 @@ class FastApiGenericParser implements GenericParserBase {
       }
 
       // Recursively process nested generics
-      final processedGenerics = genericTypes.map((type) {
-        // Check if this type itself has generics
-        final converted = toStandardFormat(type.trim());
-        return converted ?? type.trim();
-      }).join(', ');
+      final processedGenerics = genericTypes
+          .map((type) {
+            // Check if this type itself has generics
+            final converted = toStandardFormat(type.trim());
+            return converted ?? type.trim();
+          })
+          .join(', ');
 
       return '$baseClassName<$processedGenerics>';
     } catch (e) {

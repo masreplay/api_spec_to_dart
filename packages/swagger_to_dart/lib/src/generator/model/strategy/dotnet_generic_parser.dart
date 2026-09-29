@@ -7,7 +7,6 @@ class DotNetGenericParser implements GenericParserBase {
 
   static DotNetGenericParser get instance => _instance;
 
-
   @override
   bool isFormat(String input) {
     // .NET format uses angle brackets < >
@@ -48,11 +47,13 @@ class DotNetGenericParser implements GenericParserBase {
       }
 
       // Recursively process nested generics
-      final processedGenerics = genericTypes.map((type) {
-        // Check if this type itself has generics
-        final converted = toStandardFormat(type.trim());
-        return converted ?? type.trim();
-      }).join(', ');
+      final processedGenerics = genericTypes
+          .map((type) {
+            // Check if this type itself has generics
+            final converted = toStandardFormat(type.trim());
+            return converted ?? type.trim();
+          })
+          .join(', ');
 
       return '$baseClassName<$processedGenerics>';
     } catch (e) {

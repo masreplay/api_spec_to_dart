@@ -7,8 +7,8 @@ import 'open_api_paths.dart';
 part 'open_api.freezed.dart';
 part 'open_api.g.dart';
 
-typedef OpenApiPaths
-    = Map<String, Map<OpenApiPathMethodEnum, OpenApiPathMethod>>;
+typedef OpenApiPaths =
+    Map<String, Map<OpenApiPathMethodEnum, OpenApiPathMethod>>;
 
 @freezed
 abstract class OpenApi with _$OpenApi {

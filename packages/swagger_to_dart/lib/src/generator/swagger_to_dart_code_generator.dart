@@ -10,7 +10,10 @@ import 'package:swagger_to_dart/src/generator/model/json_serialization_convertor
 /// Every generated file keyed by its path relative to the output directory,
 /// plus the files whose source could not be formatted (kept unformatted in
 /// [files] so they can be inspected).
-typedef RenderResult = ({Map<String, String> files, Map<String, String> errors});
+typedef RenderResult = ({
+  Map<String, String> files,
+  Map<String, String> errors,
+});
 
 class SwaggerToDartCodeGenerator {
   const SwaggerToDartCodeGenerator(this.context);
@@ -27,7 +30,8 @@ class SwaggerToDartCodeGenerator {
       languageVersion: DartFormatter.latestLanguageVersion,
     );
 
-    for (final MapEntry(key: filePath, value: library) in _libraries().entries) {
+    for (final MapEntry(key: filePath, value: library)
+        in _libraries().entries) {
       final source = '${library.accept(DartEmitter.scoped())}';
       try {
         files[filePath] = formatter.format(source);
@@ -121,9 +125,13 @@ class SwaggerToDartCodeGenerator {
           Directive.export('dart:typed_data'),
           Directive.export('models.dart'),
           Directive.export('package:dio/dio.dart'),
-          Directive.export('package:freezed_annotation/freezed_annotation.dart'),
+          Directive.export(
+            'package:freezed_annotation/freezed_annotation.dart',
+          ),
           Directive.export('json_converter.dart'),
-          Directive.export('package:freezed_annotation/freezed_annotation.dart'),
+          Directive.export(
+            'package:freezed_annotation/freezed_annotation.dart',
+          ),
         ]),
     );
 

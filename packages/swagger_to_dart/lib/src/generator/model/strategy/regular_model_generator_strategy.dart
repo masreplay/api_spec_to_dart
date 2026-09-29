@@ -60,7 +60,7 @@ class RegularModelGeneratorStrategy
                       ..type = refer('String')
                       ..assignment = stringCode(entry.key),
                   );
-                })
+                }),
               ])
               ..constructors.addAll([
                 Constructor(
@@ -81,8 +81,9 @@ class RegularModelGeneratorStrategy
                         return context.extension.propertyGenerator.build(
                           entry,
                           className: className,
-                          required:
-                              (model.value.required_ ?? []).contains(entry.key),
+                          required: (model.value.required_ ?? []).contains(
+                            entry.key,
+                          ),
                         );
                       }),
                     ]),
@@ -92,15 +93,17 @@ class RegularModelGeneratorStrategy
                     ..factory = true
                     ..name = 'fromJson'
                     ..requiredParameters.addAll([
-                      Parameter((b) => b
-                        ..name = 'json'
-                        ..type = refer('Map<String, dynamic>')),
+                      Parameter(
+                        (b) => b
+                          ..name = 'json'
+                          ..type = refer('Map<String, dynamic>'),
+                      ),
                     ])
                     ..lambda = true
                     ..body = Code('_\$${className}FromJson(json)'),
-                )
+                ),
               ]),
-          )
+          ),
         ]),
     );
   }

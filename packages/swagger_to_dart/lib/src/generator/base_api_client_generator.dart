@@ -29,8 +29,9 @@ class BaseApiClientGenerator {
   final GenerationContext context;
 
   Library build() {
-    final className = Renaming.instance
-        .renameClass(context.config.apiClient.baseApiClientClassName);
+    final className = Renaming.instance.renameClass(
+      context.config.apiClient.baseApiClientClassName,
+    );
     final fileName = Renaming.instance.renameFile(className);
 
     return Library(
@@ -41,7 +42,7 @@ class BaseApiClientGenerator {
             Directive.import(import),
           Directive.import('package:dio/dio.dart'),
           Directive.import('package:retrofit/retrofit.dart'),
-          Directive.import('exports.dart')
+          Directive.import('exports.dart'),
         ])
         ..body.addAll([
           Class(
@@ -105,8 +106,9 @@ class BaseApiClientGenerator {
               ..methods.addAll(
                 context.apiClients.map(
                   (apiClient) {
-                    final clientName =
-                        Renaming.instance.renameClass(apiClient.name!);
+                    final clientName = Renaming.instance.renameClass(
+                      apiClient.name!,
+                    );
                     return Method(
                       (b) => b
                         ..type = MethodType.getter
@@ -119,7 +121,7 @@ class BaseApiClientGenerator {
                   },
                 ),
               ),
-          )
+          ),
         ]),
     );
   }

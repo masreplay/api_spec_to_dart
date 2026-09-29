@@ -17,14 +17,14 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
 
     final dartType = switch (schema) {
       OpenApiSchemaType schema => getType(
-          schema,
-          parent: parent,
-          className: className,
-          overrideTypes: overrideTypes,
-        ),
+        schema,
+        parent: parent,
+        className: className,
+        overrideTypes: overrideTypes,
+      ),
       OpenApiSchemaRef schema => getRef(schema),
       OpenApiSchemaAnyOf schema => getAnyOf(schema, className: className),
-      OpenApiSchemaOneOf schema => getOneOf(schema, className: className)
+      OpenApiSchemaOneOf schema => getOneOf(schema, className: className),
     };
 
     final override = overrideTypes.entries.firstWhereOrNull(
@@ -53,12 +53,14 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
 
   bool _hasNullInAnyOf(List<OpenApiSchema> schemas) {
     return schemas.any(
-        (e) => e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_);
+      (e) => e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_,
+    );
   }
 
   bool _hasNullInOneOf(List<OpenApiSchema> schemas) {
     return schemas.any(
-        (e) => e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_);
+      (e) => e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_,
+    );
   }
 
   String _makeNullable(String dartType) {
@@ -88,8 +90,10 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
     }
 
     final base = processedTitle.substring(0, genericStart);
-    final genericsContent =
-        processedTitle.substring(genericStart + 1, genericEnd);
+    final genericsContent = processedTitle.substring(
+      genericStart + 1,
+      genericEnd,
+    );
     final genericTypes = _splitGenerics(genericsContent);
 
     final prefixes = context.config.model.removeModelPrefixes;
@@ -115,8 +119,10 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
         return 'String';
       default:
         final prefixes = context.config.model.removeModelPrefixes;
-        return Renaming.instance.renameClass(type,
-            removePrefixes: prefixes.isNotEmpty ? prefixes : null);
+        return Renaming.instance.renameClass(
+          type,
+          removePrefixes: prefixes.isNotEmpty ? prefixes : null,
+        );
     }
   }
 

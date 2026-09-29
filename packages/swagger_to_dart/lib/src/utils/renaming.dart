@@ -104,10 +104,12 @@ class Renaming {
   }
 
   String renameProperty(String key) {
-    return Recase.instance.toCamelCase(_guard(
-      key,
-      translateSpecialCharacters: true,
-    ));
+    return Recase.instance.toCamelCase(
+      _guard(
+        key,
+        translateSpecialCharacters: true,
+      ),
+    );
   }
 
   String renameFunction(String key) {
@@ -126,10 +128,12 @@ class Renaming {
     // and guarded the same as any other identifier so reserved words / leading
     // digits / special chars are safe.
     if (overrideName != null && overrideName.trim().isNotEmpty) {
-      return Recase.instance.toCamelCase(_guard(
-        overrideName,
-        translateSpecialCharacters: true,
-      ));
+      return Recase.instance.toCamelCase(
+        _guard(
+          overrideName,
+          translateSpecialCharacters: true,
+        ),
+      );
     }
     if (int.tryParse(value.toString()) != null) {
       final intValue = int.parse(value.toString());
@@ -140,10 +144,12 @@ class Renaming {
         return 'value$value';
       }
     } else if (value is String) {
-      return Recase.instance.toCamelCase(_guard(
-        value,
-        translateSpecialCharacters: true,
-      ));
+      return Recase.instance.toCamelCase(
+        _guard(
+          value,
+          translateSpecialCharacters: true,
+        ),
+      );
     } else {
       return 'value$value';
     }

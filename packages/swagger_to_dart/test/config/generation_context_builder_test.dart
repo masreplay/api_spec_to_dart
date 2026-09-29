@@ -6,10 +6,10 @@ import 'package:swagger_to_dart/swagger_to_dart.dart';
 import 'package:test/test.dart';
 
 Map<String, dynamic> _spec(String title) => {
-      'openapi': '3.1.0',
-      'info': {'title': title, 'version': '1'},
-      'paths': <String, dynamic>{},
-    };
+  'openapi': '3.1.0',
+  'info': {'title': title, 'version': '1'},
+  'paths': <String, dynamic>{},
+};
 
 void main() {
   late Directory root;
@@ -18,7 +18,8 @@ void main() {
 
   File file(String relative) => File(p.join(root.path, relative));
 
-  void config(String yaml) => file('swagger_to_dart.yaml').writeAsStringSync(yaml);
+  void config(String yaml) =>
+      file('swagger_to_dart.yaml').writeAsStringSync(yaml);
 
   setUp(() async {
     root = Directory.systemTemp.createTempSync('swagger_to_dart_');

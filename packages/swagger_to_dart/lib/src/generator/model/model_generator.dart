@@ -14,8 +14,9 @@ class ModelGenerator extends LibraryGenerator {
 
     if (schema.enum_ != null) {
       strategy = EnumModelGeneratorStrategy(context);
-    } else if (GenericModelGeneratorStrategy(context)
-        .shouldUseGenericStrategy(model)) {
+    } else if (GenericModelGeneratorStrategy(
+      context,
+    ).shouldUseGenericStrategy(model)) {
       strategy = GenericModelGeneratorStrategy(context);
     } else {
       strategy = RegularModelGeneratorStrategy(context);

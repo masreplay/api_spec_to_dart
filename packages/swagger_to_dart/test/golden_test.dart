@@ -15,7 +15,11 @@ void main() {
   for (final fixture in Fixture.all()) {
     test(fixture.name, () {
       final result = fixture.render();
-      expect(result.errors, isEmpty, reason: 'generated code must be parseable');
+      expect(
+        result.errors,
+        isEmpty,
+        reason: 'generated code must be parseable',
+      );
 
       if (update) {
         fixture.writeGoldens(result.files);
