@@ -4,7 +4,7 @@ abstract class GenericParserBase {
   /// Checks if the input string matches this parser's format.
   bool isFormat(String input);
 
-  /// Converts the input to a standard generic format (e.g., "ClassName<T1, T2>").
+  /// Converts the input to a standard generic format (e.g. `ClassName<T1, T2>`).
   /// Returns null if the input doesn't match this parser's format.
   String? toStandardFormat(String input);
 

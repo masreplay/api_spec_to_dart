@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'swagger_to_dart_yaml.dart';
@@ -9,6 +9,7 @@ part of 'swagger_to_dart_yaml.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 T _$identity<T>(T value) => value;
 
 /// @nodoc
@@ -22,35 +23,43 @@ mixin _$SwaggerToDartYaml {
   @pragma('vm:prefer-inline')
   $SwaggerToDartYamlCopyWith<SwaggerToDartYaml> get copyWith =>
       _$SwaggerToDartYamlCopyWithImpl<SwaggerToDartYaml>(
-          this as SwaggerToDartYaml, _$identity);
+        this as SwaggerToDartYaml,
+        _$identity,
+      );
 
   /// Serializes this SwaggerToDartYaml to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
+    final _this = this as SwaggerToDartYaml;
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is SwaggerToDartYaml &&
-            (identical(other.swaggerToDart, swaggerToDart) ||
-                other.swaggerToDart == swaggerToDart));
+            (identical(other.swaggerToDart, _this.swaggerToDart) ||
+                other.swaggerToDart == _this.swaggerToDart));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, swaggerToDart);
+  int get hashCode {
+    final _this = this as SwaggerToDartYaml;
+    return Object.hash(runtimeType, _this.swaggerToDart);
+  }
 
   @override
   String toString() {
-    return 'SwaggerToDartYaml(swaggerToDart: $swaggerToDart)';
+    final _this = this as SwaggerToDartYaml;
+    return 'SwaggerToDartYaml(swaggerToDart: ${_this.swaggerToDart})';
   }
 }
 
 /// @nodoc
 abstract mixin class $SwaggerToDartYamlCopyWith<$Res> {
   factory $SwaggerToDartYamlCopyWith(
-          SwaggerToDartYaml value, $Res Function(SwaggerToDartYaml) _then) =
-      _$SwaggerToDartYamlCopyWithImpl;
+    SwaggerToDartYaml value,
+    $Res Function(SwaggerToDartYaml) _then,
+  ) = _$SwaggerToDartYamlCopyWithImpl;
   @useResult
   $Res call({@JsonKey(name: 'swagger_to_dart') SwaggerToDart swaggerToDart});
 
@@ -69,15 +78,15 @@ class _$SwaggerToDartYamlCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? swaggerToDart = null,
-  }) {
-    return _then(_self.copyWith(
-      swaggerToDart: null == swaggerToDart
-          ? _self.swaggerToDart
-          : swaggerToDart // ignore: cast_nullable_to_non_nullable
-              as SwaggerToDart,
-    ));
+  $Res call({Object? swaggerToDart = null}) {
+    return _then(
+      SwaggerToDartYaml(
+        swaggerToDart: null == swaggerToDart
+            ? _self.swaggerToDart
+            : swaggerToDart // ignore: cast_nullable_to_non_nullable
+                  as SwaggerToDart,
+      ),
+    );
   }
 
   /// Create a copy of SwaggerToDartYaml
@@ -185,8 +194,9 @@ extension SwaggerToDartYamlPatterns on SwaggerToDartYaml {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            @JsonKey(name: 'swagger_to_dart') SwaggerToDart swaggerToDart)?
-        $default, {
+      @JsonKey(name: 'swagger_to_dart') SwaggerToDart swaggerToDart,
+    )?
+    $default, {
     required TResult orElse(),
   }) {
     final _that = this;
@@ -214,8 +224,9 @@ extension SwaggerToDartYamlPatterns on SwaggerToDartYaml {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            @JsonKey(name: 'swagger_to_dart') SwaggerToDart swaggerToDart)
-        $default,
+      @JsonKey(name: 'swagger_to_dart') SwaggerToDart swaggerToDart,
+    )
+    $default,
   ) {
     final _that = this;
     switch (_that) {
@@ -241,8 +252,9 @@ extension SwaggerToDartYamlPatterns on SwaggerToDartYaml {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            @JsonKey(name: 'swagger_to_dart') SwaggerToDart swaggerToDart)?
-        $default,
+      @JsonKey(name: 'swagger_to_dart') SwaggerToDart swaggerToDart,
+    )?
+    $default,
   ) {
     final _that = this;
     switch (_that) {
@@ -258,9 +270,9 @@ extension SwaggerToDartYamlPatterns on SwaggerToDartYaml {
 
 @_jsonSerializable
 class _SwaggerToDartYaml extends SwaggerToDartYaml {
-  const _SwaggerToDartYaml(
-      {@JsonKey(name: 'swagger_to_dart') required this.swaggerToDart})
-      : super._();
+  const _SwaggerToDartYaml({
+    @JsonKey(name: 'swagger_to_dart') required this.swaggerToDart,
+  }) : super._();
   factory _SwaggerToDartYaml.fromJson(Map<String, dynamic> json) =>
       _$SwaggerToDartYamlFromJson(json);
 
@@ -278,9 +290,7 @@ class _SwaggerToDartYaml extends SwaggerToDartYaml {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$SwaggerToDartYamlToJson(
-      this,
-    );
+    return _$SwaggerToDartYamlToJson(this);
   }
 
   @override
@@ -294,7 +304,9 @@ class _SwaggerToDartYaml extends SwaggerToDartYaml {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, swaggerToDart);
+  int get hashCode {
+    return Object.hash(runtimeType, swaggerToDart);
+  }
 
   @override
   String toString() {
@@ -306,8 +318,9 @@ class _SwaggerToDartYaml extends SwaggerToDartYaml {
 abstract mixin class _$SwaggerToDartYamlCopyWith<$Res>
     implements $SwaggerToDartYamlCopyWith<$Res> {
   factory _$SwaggerToDartYamlCopyWith(
-          _SwaggerToDartYaml value, $Res Function(_SwaggerToDartYaml) _then) =
-      __$SwaggerToDartYamlCopyWithImpl;
+    _SwaggerToDartYaml value,
+    $Res Function(_SwaggerToDartYaml) _then,
+  ) = __$SwaggerToDartYamlCopyWithImpl;
   @override
   @useResult
   $Res call({@JsonKey(name: 'swagger_to_dart') SwaggerToDart swaggerToDart});
@@ -328,15 +341,15 @@ class __$SwaggerToDartYamlCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? swaggerToDart = null,
-  }) {
-    return _then(_SwaggerToDartYaml(
-      swaggerToDart: null == swaggerToDart
-          ? _self.swaggerToDart
-          : swaggerToDart // ignore: cast_nullable_to_non_nullable
-              as SwaggerToDart,
-    ));
+  $Res call({Object? swaggerToDart = null}) {
+    return _then(
+      _SwaggerToDartYaml(
+        swaggerToDart: null == swaggerToDart
+            ? _self.swaggerToDart
+            : swaggerToDart // ignore: cast_nullable_to_non_nullable
+                  as SwaggerToDart,
+      ),
+    );
   }
 
   /// Create a copy of SwaggerToDartYaml
@@ -389,50 +402,65 @@ mixin _$ModelConfig {
 
   @override
   bool operator ==(Object other) {
+    final _this = this as ModelConfig;
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is ModelConfig &&
             (identical(
-                    other.supportGenericArguments, supportGenericArguments) ||
-                other.supportGenericArguments == supportGenericArguments) &&
-            (identical(other.unionClassFallbackName, unionClassFallbackName) ||
-                other.unionClassFallbackName == unionClassFallbackName) &&
-            (identical(other.enumFallbackType, enumFallbackType) ||
-                other.enumFallbackType == enumFallbackType) &&
-            const DeepCollectionEquality()
-                .equals(other.removeModelPrefixes, removeModelPrefixes) &&
-            const DeepCollectionEquality().equals(other.enums, enums));
+                  other.supportGenericArguments,
+                  _this.supportGenericArguments,
+                ) ||
+                other.supportGenericArguments ==
+                    _this.supportGenericArguments) &&
+            (identical(
+                  other.unionClassFallbackName,
+                  _this.unionClassFallbackName,
+                ) ||
+                other.unionClassFallbackName == _this.unionClassFallbackName) &&
+            (identical(other.enumFallbackType, _this.enumFallbackType) ||
+                other.enumFallbackType == _this.enumFallbackType) &&
+            const DeepCollectionEquality().equals(
+              other.removeModelPrefixes,
+              _this.removeModelPrefixes,
+            ) &&
+            const DeepCollectionEquality().equals(other.enums, _this.enums));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
+  int get hashCode {
+    final _this = this as ModelConfig;
+    return Object.hash(
       runtimeType,
-      supportGenericArguments,
-      unionClassFallbackName,
-      enumFallbackType,
-      const DeepCollectionEquality().hash(removeModelPrefixes),
-      const DeepCollectionEquality().hash(enums));
+      _this.supportGenericArguments,
+      _this.unionClassFallbackName,
+      _this.enumFallbackType,
+      const DeepCollectionEquality().hash(_this.removeModelPrefixes),
+      const DeepCollectionEquality().hash(_this.enums),
+    );
+  }
 
   @override
   String toString() {
-    return 'ModelConfig(supportGenericArguments: $supportGenericArguments, unionClassFallbackName: $unionClassFallbackName, enumFallbackType: $enumFallbackType, removeModelPrefixes: $removeModelPrefixes, enums: $enums)';
+    final _this = this as ModelConfig;
+    return 'ModelConfig(supportGenericArguments: ${_this.supportGenericArguments}, unionClassFallbackName: ${_this.unionClassFallbackName}, enumFallbackType: ${_this.enumFallbackType}, removeModelPrefixes: ${_this.removeModelPrefixes}, enums: ${_this.enums})';
   }
 }
 
 /// @nodoc
 abstract mixin class $ModelConfigCopyWith<$Res> {
   factory $ModelConfigCopyWith(
-          ModelConfig value, $Res Function(ModelConfig) _then) =
-      _$ModelConfigCopyWithImpl;
+    ModelConfig value,
+    $Res Function(ModelConfig) _then,
+  ) = _$ModelConfigCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'support_generic_arguments') bool supportGenericArguments,
-      @JsonKey(name: 'union_class_fallback_name')
-      String? unionClassFallbackName,
-      @JsonKey(name: 'enum_fallback_type') EnumFallbackType enumFallbackType,
-      @JsonKey(name: 'remove_model_prefixes') List<String> removeModelPrefixes,
-      @JsonKey(name: 'enums') Map<String, Map<String, String>> enums});
+  $Res call({
+    @JsonKey(name: 'support_generic_arguments') bool supportGenericArguments,
+    @JsonKey(name: 'union_class_fallback_name') String? unionClassFallbackName,
+    @JsonKey(name: 'enum_fallback_type') EnumFallbackType enumFallbackType,
+    @JsonKey(name: 'remove_model_prefixes') List<String> removeModelPrefixes,
+    @JsonKey(name: 'enums') Map<String, Map<String, String>> enums,
+  });
 }
 
 /// @nodoc
@@ -453,28 +481,30 @@ class _$ModelConfigCopyWithImpl<$Res> implements $ModelConfigCopyWith<$Res> {
     Object? removeModelPrefixes = null,
     Object? enums = null,
   }) {
-    return _then(_self.copyWith(
-      supportGenericArguments: null == supportGenericArguments
-          ? _self.supportGenericArguments
-          : supportGenericArguments // ignore: cast_nullable_to_non_nullable
-              as bool,
-      unionClassFallbackName: freezed == unionClassFallbackName
-          ? _self.unionClassFallbackName
-          : unionClassFallbackName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      enumFallbackType: null == enumFallbackType
-          ? _self.enumFallbackType
-          : enumFallbackType // ignore: cast_nullable_to_non_nullable
-              as EnumFallbackType,
-      removeModelPrefixes: null == removeModelPrefixes
-          ? _self.removeModelPrefixes
-          : removeModelPrefixes // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      enums: null == enums
-          ? _self.enums
-          : enums // ignore: cast_nullable_to_non_nullable
-              as Map<String, Map<String, String>>,
-    ));
+    return _then(
+      ModelConfig(
+        supportGenericArguments: null == supportGenericArguments
+            ? _self.supportGenericArguments
+            : supportGenericArguments // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        unionClassFallbackName: freezed == unionClassFallbackName
+            ? _self.unionClassFallbackName
+            : unionClassFallbackName // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        enumFallbackType: null == enumFallbackType
+            ? _self.enumFallbackType
+            : enumFallbackType // ignore: cast_nullable_to_non_nullable
+                  as EnumFallbackType,
+        removeModelPrefixes: null == removeModelPrefixes
+            ? _self.removeModelPrefixes
+            : removeModelPrefixes // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
+        enums: null == enums
+            ? _self.enums
+            : enums // ignore: cast_nullable_to_non_nullable
+                  as Map<String, Map<String, String>>,
+      ),
+    );
   }
 }
 
@@ -572,27 +602,26 @@ extension ModelConfigPatterns on ModelConfig {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            @JsonKey(name: 'support_generic_arguments')
-            bool supportGenericArguments,
-            @JsonKey(name: 'union_class_fallback_name')
-            String? unionClassFallbackName,
-            @JsonKey(name: 'enum_fallback_type')
-            EnumFallbackType enumFallbackType,
-            @JsonKey(name: 'remove_model_prefixes')
-            List<String> removeModelPrefixes,
-            @JsonKey(name: 'enums') Map<String, Map<String, String>> enums)?
-        $default, {
+      @JsonKey(name: 'support_generic_arguments') bool supportGenericArguments,
+      @JsonKey(name: 'union_class_fallback_name')
+      String? unionClassFallbackName,
+      @JsonKey(name: 'enum_fallback_type') EnumFallbackType enumFallbackType,
+      @JsonKey(name: 'remove_model_prefixes') List<String> removeModelPrefixes,
+      @JsonKey(name: 'enums') Map<String, Map<String, String>> enums,
+    )?
+    $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _ModelConfig() when $default != null:
         return $default(
-            _that.supportGenericArguments,
-            _that.unionClassFallbackName,
-            _that.enumFallbackType,
-            _that.removeModelPrefixes,
-            _that.enums);
+          _that.supportGenericArguments,
+          _that.unionClassFallbackName,
+          _that.enumFallbackType,
+          _that.removeModelPrefixes,
+          _that.enums,
+        );
       case _:
         return orElse();
     }
@@ -614,26 +643,25 @@ extension ModelConfigPatterns on ModelConfig {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            @JsonKey(name: 'support_generic_arguments')
-            bool supportGenericArguments,
-            @JsonKey(name: 'union_class_fallback_name')
-            String? unionClassFallbackName,
-            @JsonKey(name: 'enum_fallback_type')
-            EnumFallbackType enumFallbackType,
-            @JsonKey(name: 'remove_model_prefixes')
-            List<String> removeModelPrefixes,
-            @JsonKey(name: 'enums') Map<String, Map<String, String>> enums)
-        $default,
+      @JsonKey(name: 'support_generic_arguments') bool supportGenericArguments,
+      @JsonKey(name: 'union_class_fallback_name')
+      String? unionClassFallbackName,
+      @JsonKey(name: 'enum_fallback_type') EnumFallbackType enumFallbackType,
+      @JsonKey(name: 'remove_model_prefixes') List<String> removeModelPrefixes,
+      @JsonKey(name: 'enums') Map<String, Map<String, String>> enums,
+    )
+    $default,
   ) {
     final _that = this;
     switch (_that) {
       case _ModelConfig():
         return $default(
-            _that.supportGenericArguments,
-            _that.unionClassFallbackName,
-            _that.enumFallbackType,
-            _that.removeModelPrefixes,
-            _that.enums);
+          _that.supportGenericArguments,
+          _that.unionClassFallbackName,
+          _that.enumFallbackType,
+          _that.removeModelPrefixes,
+          _that.enums,
+        );
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -654,26 +682,25 @@ extension ModelConfigPatterns on ModelConfig {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            @JsonKey(name: 'support_generic_arguments')
-            bool supportGenericArguments,
-            @JsonKey(name: 'union_class_fallback_name')
-            String? unionClassFallbackName,
-            @JsonKey(name: 'enum_fallback_type')
-            EnumFallbackType enumFallbackType,
-            @JsonKey(name: 'remove_model_prefixes')
-            List<String> removeModelPrefixes,
-            @JsonKey(name: 'enums') Map<String, Map<String, String>> enums)?
-        $default,
+      @JsonKey(name: 'support_generic_arguments') bool supportGenericArguments,
+      @JsonKey(name: 'union_class_fallback_name')
+      String? unionClassFallbackName,
+      @JsonKey(name: 'enum_fallback_type') EnumFallbackType enumFallbackType,
+      @JsonKey(name: 'remove_model_prefixes') List<String> removeModelPrefixes,
+      @JsonKey(name: 'enums') Map<String, Map<String, String>> enums,
+    )?
+    $default,
   ) {
     final _that = this;
     switch (_that) {
       case _ModelConfig() when $default != null:
         return $default(
-            _that.supportGenericArguments,
-            _that.unionClassFallbackName,
-            _that.enumFallbackType,
-            _that.removeModelPrefixes,
-            _that.enums);
+          _that.supportGenericArguments,
+          _that.unionClassFallbackName,
+          _that.enumFallbackType,
+          _that.removeModelPrefixes,
+          _that.enums,
+        );
       case _:
         return null;
     }
@@ -684,19 +711,20 @@ extension ModelConfigPatterns on ModelConfig {
 
 @_jsonSerializable
 class _ModelConfig extends ModelConfig {
-  const _ModelConfig(
-      {@JsonKey(name: 'support_generic_arguments')
-      this.supportGenericArguments = false,
-      @JsonKey(name: 'union_class_fallback_name') this.unionClassFallbackName,
-      @JsonKey(name: 'enum_fallback_type')
-      this.enumFallbackType = EnumFallbackType.unknown,
-      @JsonKey(name: 'remove_model_prefixes')
-      final List<String> removeModelPrefixes = const [],
-      @JsonKey(name: 'enums') final Map<String, Map<String, String>> enums =
-          const <String, Map<String, String>>{}})
-      : _removeModelPrefixes = removeModelPrefixes,
-        _enums = enums,
-        super._();
+  const _ModelConfig({
+    @JsonKey(name: 'support_generic_arguments')
+    this.supportGenericArguments = false,
+    @JsonKey(name: 'union_class_fallback_name') this.unionClassFallbackName,
+    @JsonKey(name: 'enum_fallback_type')
+    this.enumFallbackType = EnumFallbackType.unknown,
+    @JsonKey(name: 'remove_model_prefixes')
+    List<String> removeModelPrefixes = const [],
+    @JsonKey(name: 'enums')
+    Map<String, Map<String, String>> enums =
+        const <String, Map<String, String>>{},
+  }) : _removeModelPrefixes = removeModelPrefixes,
+       _enums = enums,
+       super._();
   factory _ModelConfig.fromJson(Map<String, dynamic> json) =>
       _$ModelConfigFromJson(json);
 
@@ -765,9 +793,7 @@ class _ModelConfig extends ModelConfig {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$ModelConfigToJson(
-      this,
-    );
+    return _$ModelConfigToJson(this);
   }
 
   @override
@@ -776,26 +802,33 @@ class _ModelConfig extends ModelConfig {
         (other.runtimeType == runtimeType &&
             other is _ModelConfig &&
             (identical(
-                    other.supportGenericArguments, supportGenericArguments) ||
+                  other.supportGenericArguments,
+                  supportGenericArguments,
+                ) ||
                 other.supportGenericArguments == supportGenericArguments) &&
             (identical(other.unionClassFallbackName, unionClassFallbackName) ||
                 other.unionClassFallbackName == unionClassFallbackName) &&
             (identical(other.enumFallbackType, enumFallbackType) ||
                 other.enumFallbackType == enumFallbackType) &&
-            const DeepCollectionEquality()
-                .equals(other._removeModelPrefixes, _removeModelPrefixes) &&
-            const DeepCollectionEquality().equals(other._enums, _enums));
+            const DeepCollectionEquality().equals(
+              other.removeModelPrefixes,
+              _removeModelPrefixes,
+            ) &&
+            const DeepCollectionEquality().equals(other.enums, _enums));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
+  int get hashCode {
+    return Object.hash(
       runtimeType,
       supportGenericArguments,
       unionClassFallbackName,
       enumFallbackType,
       const DeepCollectionEquality().hash(_removeModelPrefixes),
-      const DeepCollectionEquality().hash(_enums));
+      const DeepCollectionEquality().hash(_enums),
+    );
+  }
 
   @override
   String toString() {
@@ -807,17 +840,18 @@ class _ModelConfig extends ModelConfig {
 abstract mixin class _$ModelConfigCopyWith<$Res>
     implements $ModelConfigCopyWith<$Res> {
   factory _$ModelConfigCopyWith(
-          _ModelConfig value, $Res Function(_ModelConfig) _then) =
-      __$ModelConfigCopyWithImpl;
+    _ModelConfig value,
+    $Res Function(_ModelConfig) _then,
+  ) = __$ModelConfigCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'support_generic_arguments') bool supportGenericArguments,
-      @JsonKey(name: 'union_class_fallback_name')
-      String? unionClassFallbackName,
-      @JsonKey(name: 'enum_fallback_type') EnumFallbackType enumFallbackType,
-      @JsonKey(name: 'remove_model_prefixes') List<String> removeModelPrefixes,
-      @JsonKey(name: 'enums') Map<String, Map<String, String>> enums});
+  $Res call({
+    @JsonKey(name: 'support_generic_arguments') bool supportGenericArguments,
+    @JsonKey(name: 'union_class_fallback_name') String? unionClassFallbackName,
+    @JsonKey(name: 'enum_fallback_type') EnumFallbackType enumFallbackType,
+    @JsonKey(name: 'remove_model_prefixes') List<String> removeModelPrefixes,
+    @JsonKey(name: 'enums') Map<String, Map<String, String>> enums,
+  });
 }
 
 /// @nodoc
@@ -838,28 +872,30 @@ class __$ModelConfigCopyWithImpl<$Res> implements _$ModelConfigCopyWith<$Res> {
     Object? removeModelPrefixes = null,
     Object? enums = null,
   }) {
-    return _then(_ModelConfig(
-      supportGenericArguments: null == supportGenericArguments
-          ? _self.supportGenericArguments
-          : supportGenericArguments // ignore: cast_nullable_to_non_nullable
-              as bool,
-      unionClassFallbackName: freezed == unionClassFallbackName
-          ? _self.unionClassFallbackName
-          : unionClassFallbackName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      enumFallbackType: null == enumFallbackType
-          ? _self.enumFallbackType
-          : enumFallbackType // ignore: cast_nullable_to_non_nullable
-              as EnumFallbackType,
-      removeModelPrefixes: null == removeModelPrefixes
-          ? _self._removeModelPrefixes
-          : removeModelPrefixes // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      enums: null == enums
-          ? _self._enums
-          : enums // ignore: cast_nullable_to_non_nullable
-              as Map<String, Map<String, String>>,
-    ));
+    return _then(
+      _ModelConfig(
+        supportGenericArguments: null == supportGenericArguments
+            ? _self.supportGenericArguments
+            : supportGenericArguments // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        unionClassFallbackName: freezed == unionClassFallbackName
+            ? _self.unionClassFallbackName
+            : unionClassFallbackName // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        enumFallbackType: null == enumFallbackType
+            ? _self.enumFallbackType
+            : enumFallbackType // ignore: cast_nullable_to_non_nullable
+                  as EnumFallbackType,
+        removeModelPrefixes: null == removeModelPrefixes
+            ? _self._removeModelPrefixes
+            : removeModelPrefixes // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
+        enums: null == enums
+            ? _self._enums
+            : enums // ignore: cast_nullable_to_non_nullable
+                  as Map<String, Map<String, String>>,
+      ),
+    );
   }
 }
 
@@ -880,59 +916,77 @@ mixin _$ApiClientConfig {
   @pragma('vm:prefer-inline')
   $ApiClientConfigCopyWith<ApiClientConfig> get copyWith =>
       _$ApiClientConfigCopyWithImpl<ApiClientConfig>(
-          this as ApiClientConfig, _$identity);
+        this as ApiClientConfig,
+        _$identity,
+      );
 
   /// Serializes this ApiClientConfig to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
+    final _this = this as ApiClientConfig;
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is ApiClientConfig &&
-            (identical(other.baseApiClientClassName, baseApiClientClassName) ||
-                other.baseApiClientClassName == baseApiClientClassName) &&
-            (identical(other.useClassForQueryParameters,
-                    useClassForQueryParameters) ||
+            (identical(
+                  other.baseApiClientClassName,
+                  _this.baseApiClientClassName,
+                ) ||
+                other.baseApiClientClassName == _this.baseApiClientClassName) &&
+            (identical(
+                  other.useClassForQueryParameters,
+                  _this.useClassForQueryParameters,
+                ) ||
                 other.useClassForQueryParameters ==
-                    useClassForQueryParameters) &&
-            (identical(other.useClassForMultipartFormData,
-                    useClassForMultipartFormData) ||
+                    _this.useClassForQueryParameters) &&
+            (identical(
+                  other.useClassForMultipartFormData,
+                  _this.useClassForMultipartFormData,
+                ) ||
                 other.useClassForMultipartFormData ==
-                    useClassForMultipartFormData) &&
-            const DeepCollectionEquality()
-                .equals(other.skippedParameters, skippedParameters));
+                    _this.useClassForMultipartFormData) &&
+            const DeepCollectionEquality().equals(
+              other.skippedParameters,
+              _this.skippedParameters,
+            ));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
+  int get hashCode {
+    final _this = this as ApiClientConfig;
+    return Object.hash(
       runtimeType,
-      baseApiClientClassName,
-      useClassForQueryParameters,
-      useClassForMultipartFormData,
-      const DeepCollectionEquality().hash(skippedParameters));
+      _this.baseApiClientClassName,
+      _this.useClassForQueryParameters,
+      _this.useClassForMultipartFormData,
+      const DeepCollectionEquality().hash(_this.skippedParameters),
+    );
+  }
 
   @override
   String toString() {
-    return 'ApiClientConfig(baseApiClientClassName: $baseApiClientClassName, useClassForQueryParameters: $useClassForQueryParameters, useClassForMultipartFormData: $useClassForMultipartFormData, skippedParameters: $skippedParameters)';
+    final _this = this as ApiClientConfig;
+    return 'ApiClientConfig(baseApiClientClassName: ${_this.baseApiClientClassName}, useClassForQueryParameters: ${_this.useClassForQueryParameters}, useClassForMultipartFormData: ${_this.useClassForMultipartFormData}, skippedParameters: ${_this.skippedParameters})';
   }
 }
 
 /// @nodoc
 abstract mixin class $ApiClientConfigCopyWith<$Res> {
   factory $ApiClientConfigCopyWith(
-          ApiClientConfig value, $Res Function(ApiClientConfig) _then) =
-      _$ApiClientConfigCopyWithImpl;
+    ApiClientConfig value,
+    $Res Function(ApiClientConfig) _then,
+  ) = _$ApiClientConfigCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'base_api_client_class_name')
-      String baseApiClientClassName,
-      @JsonKey(name: 'use_class_for_query_parameters')
-      bool useClassForQueryParameters,
-      @JsonKey(name: 'use_class_for_multipart_form_data')
-      bool useClassForMultipartFormData,
-      @JsonKey(name: 'skipped_parameters') List<String> skippedParameters});
+  $Res call({
+    @JsonKey(name: 'base_api_client_class_name') String baseApiClientClassName,
+    @JsonKey(name: 'use_class_for_query_parameters')
+    bool useClassForQueryParameters,
+    @JsonKey(name: 'use_class_for_multipart_form_data')
+    bool useClassForMultipartFormData,
+    @JsonKey(name: 'skipped_parameters') List<String> skippedParameters,
+  });
 }
 
 /// @nodoc
@@ -953,24 +1007,26 @@ class _$ApiClientConfigCopyWithImpl<$Res>
     Object? useClassForMultipartFormData = null,
     Object? skippedParameters = null,
   }) {
-    return _then(_self.copyWith(
-      baseApiClientClassName: null == baseApiClientClassName
-          ? _self.baseApiClientClassName
-          : baseApiClientClassName // ignore: cast_nullable_to_non_nullable
-              as String,
-      useClassForQueryParameters: null == useClassForQueryParameters
-          ? _self.useClassForQueryParameters
-          : useClassForQueryParameters // ignore: cast_nullable_to_non_nullable
-              as bool,
-      useClassForMultipartFormData: null == useClassForMultipartFormData
-          ? _self.useClassForMultipartFormData
-          : useClassForMultipartFormData // ignore: cast_nullable_to_non_nullable
-              as bool,
-      skippedParameters: null == skippedParameters
-          ? _self.skippedParameters
-          : skippedParameters // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ));
+    return _then(
+      ApiClientConfig(
+        baseApiClientClassName: null == baseApiClientClassName
+            ? _self.baseApiClientClassName
+            : baseApiClientClassName // ignore: cast_nullable_to_non_nullable
+                  as String,
+        useClassForQueryParameters: null == useClassForQueryParameters
+            ? _self.useClassForQueryParameters
+            : useClassForQueryParameters // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        useClassForMultipartFormData: null == useClassForMultipartFormData
+            ? _self.useClassForMultipartFormData
+            : useClassForMultipartFormData // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        skippedParameters: null == skippedParameters
+            ? _self.skippedParameters
+            : skippedParameters // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
+      ),
+    );
   }
 }
 
@@ -1068,25 +1124,26 @@ extension ApiClientConfigPatterns on ApiClientConfig {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            @JsonKey(name: 'base_api_client_class_name')
-            String baseApiClientClassName,
-            @JsonKey(name: 'use_class_for_query_parameters')
-            bool useClassForQueryParameters,
-            @JsonKey(name: 'use_class_for_multipart_form_data')
-            bool useClassForMultipartFormData,
-            @JsonKey(name: 'skipped_parameters')
-            List<String> skippedParameters)?
-        $default, {
+      @JsonKey(name: 'base_api_client_class_name')
+      String baseApiClientClassName,
+      @JsonKey(name: 'use_class_for_query_parameters')
+      bool useClassForQueryParameters,
+      @JsonKey(name: 'use_class_for_multipart_form_data')
+      bool useClassForMultipartFormData,
+      @JsonKey(name: 'skipped_parameters') List<String> skippedParameters,
+    )?
+    $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _ApiClientConfig() when $default != null:
         return $default(
-            _that.baseApiClientClassName,
-            _that.useClassForQueryParameters,
-            _that.useClassForMultipartFormData,
-            _that.skippedParameters);
+          _that.baseApiClientClassName,
+          _that.useClassForQueryParameters,
+          _that.useClassForMultipartFormData,
+          _that.skippedParameters,
+        );
       case _:
         return orElse();
     }
@@ -1108,23 +1165,25 @@ extension ApiClientConfigPatterns on ApiClientConfig {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            @JsonKey(name: 'base_api_client_class_name')
-            String baseApiClientClassName,
-            @JsonKey(name: 'use_class_for_query_parameters')
-            bool useClassForQueryParameters,
-            @JsonKey(name: 'use_class_for_multipart_form_data')
-            bool useClassForMultipartFormData,
-            @JsonKey(name: 'skipped_parameters') List<String> skippedParameters)
-        $default,
+      @JsonKey(name: 'base_api_client_class_name')
+      String baseApiClientClassName,
+      @JsonKey(name: 'use_class_for_query_parameters')
+      bool useClassForQueryParameters,
+      @JsonKey(name: 'use_class_for_multipart_form_data')
+      bool useClassForMultipartFormData,
+      @JsonKey(name: 'skipped_parameters') List<String> skippedParameters,
+    )
+    $default,
   ) {
     final _that = this;
     switch (_that) {
       case _ApiClientConfig():
         return $default(
-            _that.baseApiClientClassName,
-            _that.useClassForQueryParameters,
-            _that.useClassForMultipartFormData,
-            _that.skippedParameters);
+          _that.baseApiClientClassName,
+          _that.useClassForQueryParameters,
+          _that.useClassForMultipartFormData,
+          _that.skippedParameters,
+        );
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -1145,24 +1204,25 @@ extension ApiClientConfigPatterns on ApiClientConfig {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            @JsonKey(name: 'base_api_client_class_name')
-            String baseApiClientClassName,
-            @JsonKey(name: 'use_class_for_query_parameters')
-            bool useClassForQueryParameters,
-            @JsonKey(name: 'use_class_for_multipart_form_data')
-            bool useClassForMultipartFormData,
-            @JsonKey(name: 'skipped_parameters')
-            List<String> skippedParameters)?
-        $default,
+      @JsonKey(name: 'base_api_client_class_name')
+      String baseApiClientClassName,
+      @JsonKey(name: 'use_class_for_query_parameters')
+      bool useClassForQueryParameters,
+      @JsonKey(name: 'use_class_for_multipart_form_data')
+      bool useClassForMultipartFormData,
+      @JsonKey(name: 'skipped_parameters') List<String> skippedParameters,
+    )?
+    $default,
   ) {
     final _that = this;
     switch (_that) {
       case _ApiClientConfig() when $default != null:
         return $default(
-            _that.baseApiClientClassName,
-            _that.useClassForQueryParameters,
-            _that.useClassForMultipartFormData,
-            _that.skippedParameters);
+          _that.baseApiClientClassName,
+          _that.useClassForQueryParameters,
+          _that.useClassForMultipartFormData,
+          _that.skippedParameters,
+        );
       case _:
         return null;
     }
@@ -1173,17 +1233,17 @@ extension ApiClientConfigPatterns on ApiClientConfig {
 
 @_jsonSerializable
 class _ApiClientConfig extends ApiClientConfig {
-  const _ApiClientConfig(
-      {@JsonKey(name: 'base_api_client_class_name')
-      this.baseApiClientClassName = 'BaseApiClient',
-      @JsonKey(name: 'use_class_for_query_parameters')
-      this.useClassForQueryParameters = false,
-      @JsonKey(name: 'use_class_for_multipart_form_data')
-      this.useClassForMultipartFormData = false,
-      @JsonKey(name: 'skipped_parameters')
-      final List<String> skippedParameters = const []})
-      : _skippedParameters = skippedParameters,
-        super._();
+  const _ApiClientConfig({
+    @JsonKey(name: 'base_api_client_class_name')
+    this.baseApiClientClassName = 'BaseApiClient',
+    @JsonKey(name: 'use_class_for_query_parameters')
+    this.useClassForQueryParameters = false,
+    @JsonKey(name: 'use_class_for_multipart_form_data')
+    this.useClassForMultipartFormData = false,
+    @JsonKey(name: 'skipped_parameters')
+    List<String> skippedParameters = const [],
+  }) : _skippedParameters = skippedParameters,
+       super._();
   factory _ApiClientConfig.fromJson(Map<String, dynamic> json) =>
       _$ApiClientConfigFromJson(json);
 
@@ -1216,9 +1276,7 @@ class _ApiClientConfig extends ApiClientConfig {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$ApiClientConfigToJson(
-      this,
-    );
+    return _$ApiClientConfigToJson(this);
   }
 
   @override
@@ -1228,26 +1286,35 @@ class _ApiClientConfig extends ApiClientConfig {
             other is _ApiClientConfig &&
             (identical(other.baseApiClientClassName, baseApiClientClassName) ||
                 other.baseApiClientClassName == baseApiClientClassName) &&
-            (identical(other.useClassForQueryParameters,
-                    useClassForQueryParameters) ||
+            (identical(
+                  other.useClassForQueryParameters,
+                  useClassForQueryParameters,
+                ) ||
                 other.useClassForQueryParameters ==
                     useClassForQueryParameters) &&
-            (identical(other.useClassForMultipartFormData,
-                    useClassForMultipartFormData) ||
+            (identical(
+                  other.useClassForMultipartFormData,
+                  useClassForMultipartFormData,
+                ) ||
                 other.useClassForMultipartFormData ==
                     useClassForMultipartFormData) &&
-            const DeepCollectionEquality()
-                .equals(other._skippedParameters, _skippedParameters));
+            const DeepCollectionEquality().equals(
+              other.skippedParameters,
+              _skippedParameters,
+            ));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
+  int get hashCode {
+    return Object.hash(
       runtimeType,
       baseApiClientClassName,
       useClassForQueryParameters,
       useClassForMultipartFormData,
-      const DeepCollectionEquality().hash(_skippedParameters));
+      const DeepCollectionEquality().hash(_skippedParameters),
+    );
+  }
 
   @override
   String toString() {
@@ -1259,18 +1326,19 @@ class _ApiClientConfig extends ApiClientConfig {
 abstract mixin class _$ApiClientConfigCopyWith<$Res>
     implements $ApiClientConfigCopyWith<$Res> {
   factory _$ApiClientConfigCopyWith(
-          _ApiClientConfig value, $Res Function(_ApiClientConfig) _then) =
-      __$ApiClientConfigCopyWithImpl;
+    _ApiClientConfig value,
+    $Res Function(_ApiClientConfig) _then,
+  ) = __$ApiClientConfigCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'base_api_client_class_name')
-      String baseApiClientClassName,
-      @JsonKey(name: 'use_class_for_query_parameters')
-      bool useClassForQueryParameters,
-      @JsonKey(name: 'use_class_for_multipart_form_data')
-      bool useClassForMultipartFormData,
-      @JsonKey(name: 'skipped_parameters') List<String> skippedParameters});
+  $Res call({
+    @JsonKey(name: 'base_api_client_class_name') String baseApiClientClassName,
+    @JsonKey(name: 'use_class_for_query_parameters')
+    bool useClassForQueryParameters,
+    @JsonKey(name: 'use_class_for_multipart_form_data')
+    bool useClassForMultipartFormData,
+    @JsonKey(name: 'skipped_parameters') List<String> skippedParameters,
+  });
 }
 
 /// @nodoc
@@ -1291,24 +1359,26 @@ class __$ApiClientConfigCopyWithImpl<$Res>
     Object? useClassForMultipartFormData = null,
     Object? skippedParameters = null,
   }) {
-    return _then(_ApiClientConfig(
-      baseApiClientClassName: null == baseApiClientClassName
-          ? _self.baseApiClientClassName
-          : baseApiClientClassName // ignore: cast_nullable_to_non_nullable
-              as String,
-      useClassForQueryParameters: null == useClassForQueryParameters
-          ? _self.useClassForQueryParameters
-          : useClassForQueryParameters // ignore: cast_nullable_to_non_nullable
-              as bool,
-      useClassForMultipartFormData: null == useClassForMultipartFormData
-          ? _self.useClassForMultipartFormData
-          : useClassForMultipartFormData // ignore: cast_nullable_to_non_nullable
-              as bool,
-      skippedParameters: null == skippedParameters
-          ? _self._skippedParameters
-          : skippedParameters // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ));
+    return _then(
+      _ApiClientConfig(
+        baseApiClientClassName: null == baseApiClientClassName
+            ? _self.baseApiClientClassName
+            : baseApiClientClassName // ignore: cast_nullable_to_non_nullable
+                  as String,
+        useClassForQueryParameters: null == useClassForQueryParameters
+            ? _self.useClassForQueryParameters
+            : useClassForQueryParameters // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        useClassForMultipartFormData: null == useClassForMultipartFormData
+            ? _self.useClassForMultipartFormData
+            : useClassForMultipartFormData // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        skippedParameters: null == skippedParameters
+            ? _self._skippedParameters
+            : skippedParameters // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
+      ),
+    );
   }
 }
 
@@ -1323,36 +1393,48 @@ mixin _$SwaggerToDartImport {
   @pragma('vm:prefer-inline')
   $SwaggerToDartImportCopyWith<SwaggerToDartImport> get copyWith =>
       _$SwaggerToDartImportCopyWithImpl<SwaggerToDartImport>(
-          this as SwaggerToDartImport, _$identity);
+        this as SwaggerToDartImport,
+        _$identity,
+      );
 
   /// Serializes this SwaggerToDartImport to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
+    final _this = this as SwaggerToDartImport;
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is SwaggerToDartImport &&
-            const DeepCollectionEquality()
-                .equals(other.globalImports, globalImports));
+            const DeepCollectionEquality().equals(
+              other.globalImports,
+              _this.globalImports,
+            ));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(globalImports));
+  int get hashCode {
+    final _this = this as SwaggerToDartImport;
+    return Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_this.globalImports),
+    );
+  }
 
   @override
   String toString() {
-    return 'SwaggerToDartImport(globalImports: $globalImports)';
+    final _this = this as SwaggerToDartImport;
+    return 'SwaggerToDartImport(globalImports: ${_this.globalImports})';
   }
 }
 
 /// @nodoc
 abstract mixin class $SwaggerToDartImportCopyWith<$Res> {
   factory $SwaggerToDartImportCopyWith(
-          SwaggerToDartImport value, $Res Function(SwaggerToDartImport) _then) =
-      _$SwaggerToDartImportCopyWithImpl;
+    SwaggerToDartImport value,
+    $Res Function(SwaggerToDartImport) _then,
+  ) = _$SwaggerToDartImportCopyWithImpl;
   @useResult
   $Res call({@JsonKey(name: 'global') List<String> globalImports});
 }
@@ -1369,15 +1451,15 @@ class _$SwaggerToDartImportCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? globalImports = null,
-  }) {
-    return _then(_self.copyWith(
-      globalImports: null == globalImports
-          ? _self.globalImports
-          : globalImports // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ));
+  $Res call({Object? globalImports = null}) {
+    return _then(
+      SwaggerToDartImport(
+        globalImports: null == globalImports
+            ? _self.globalImports
+            : globalImports // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
+      ),
+    );
   }
 }
 
@@ -1475,7 +1557,7 @@ extension SwaggerToDartImportPatterns on SwaggerToDartImport {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(@JsonKey(name: 'global') List<String> globalImports)?
-        $default, {
+    $default, {
     required TResult orElse(),
   }) {
     final _that = this;
@@ -1503,7 +1585,7 @@ extension SwaggerToDartImportPatterns on SwaggerToDartImport {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(@JsonKey(name: 'global') List<String> globalImports)
-        $default,
+    $default,
   ) {
     final _that = this;
     switch (_that) {
@@ -1529,7 +1611,7 @@ extension SwaggerToDartImportPatterns on SwaggerToDartImport {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(@JsonKey(name: 'global') List<String> globalImports)?
-        $default,
+    $default,
   ) {
     final _that = this;
     switch (_that) {
@@ -1544,10 +1626,10 @@ extension SwaggerToDartImportPatterns on SwaggerToDartImport {
 /// @nodoc
 @JsonSerializable()
 class _SwaggerToDartImport extends SwaggerToDartImport {
-  const _SwaggerToDartImport(
-      {@JsonKey(name: 'global') final List<String> globalImports = const []})
-      : _globalImports = globalImports,
-        super._();
+  const _SwaggerToDartImport({
+    @JsonKey(name: 'global') List<String> globalImports = const [],
+  }) : _globalImports = globalImports,
+       super._();
   factory _SwaggerToDartImport.fromJson(Map<String, dynamic> json) =>
       _$SwaggerToDartImportFromJson(json);
 
@@ -1567,13 +1649,13 @@ class _SwaggerToDartImport extends SwaggerToDartImport {
   @pragma('vm:prefer-inline')
   _$SwaggerToDartImportCopyWith<_SwaggerToDartImport> get copyWith =>
       __$SwaggerToDartImportCopyWithImpl<_SwaggerToDartImport>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$SwaggerToDartImportToJson(
-      this,
-    );
+    return _$SwaggerToDartImportToJson(this);
   }
 
   @override
@@ -1581,14 +1663,20 @@ class _SwaggerToDartImport extends SwaggerToDartImport {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _SwaggerToDartImport &&
-            const DeepCollectionEquality()
-                .equals(other._globalImports, _globalImports));
+            const DeepCollectionEquality().equals(
+              other.globalImports,
+              _globalImports,
+            ));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_globalImports));
+  int get hashCode {
+    return Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_globalImports),
+    );
+  }
 
   @override
   String toString() {
@@ -1599,9 +1687,10 @@ class _SwaggerToDartImport extends SwaggerToDartImport {
 /// @nodoc
 abstract mixin class _$SwaggerToDartImportCopyWith<$Res>
     implements $SwaggerToDartImportCopyWith<$Res> {
-  factory _$SwaggerToDartImportCopyWith(_SwaggerToDartImport value,
-          $Res Function(_SwaggerToDartImport) _then) =
-      __$SwaggerToDartImportCopyWithImpl;
+  factory _$SwaggerToDartImportCopyWith(
+    _SwaggerToDartImport value,
+    $Res Function(_SwaggerToDartImport) _then,
+  ) = __$SwaggerToDartImportCopyWithImpl;
   @override
   @useResult
   $Res call({@JsonKey(name: 'global') List<String> globalImports});
@@ -1619,15 +1708,15 @@ class __$SwaggerToDartImportCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? globalImports = null,
-  }) {
-    return _then(_SwaggerToDartImport(
-      globalImports: null == globalImports
-          ? _self._globalImports
-          : globalImports // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ));
+  $Res call({Object? globalImports = null}) {
+    return _then(
+      _SwaggerToDartImport(
+        globalImports: null == globalImports
+            ? _self._globalImports
+            : globalImports // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
+      ),
+    );
   }
 }
 
@@ -1654,54 +1743,73 @@ mixin _$SwaggerToDart {
   @pragma('vm:prefer-inline')
   $SwaggerToDartCopyWith<SwaggerToDart> get copyWith =>
       _$SwaggerToDartCopyWithImpl<SwaggerToDart>(
-          this as SwaggerToDart, _$identity);
+        this as SwaggerToDart,
+        _$identity,
+      );
 
   /// Serializes this SwaggerToDart to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
+    final _this = this as SwaggerToDart;
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is SwaggerToDart &&
-            (identical(other.url, url) || other.url == url) &&
-            (identical(other.generationSource, generationSource) ||
-                other.generationSource == generationSource) &&
-            (identical(other.inputDirectory, inputDirectory) ||
-                other.inputDirectory == inputDirectory) &&
-            (identical(other.outputDirectory, outputDirectory) ||
-                other.outputDirectory == outputDirectory) &&
-            (identical(other.model, model) || other.model == model) &&
-            (identical(other.apiClient, apiClient) ||
-                other.apiClient == apiClient) &&
-            (identical(other.imports, imports) || other.imports == imports));
+            (identical(other.url, _this.url) || other.url == _this.url) &&
+            (identical(other.generationSource, _this.generationSource) ||
+                other.generationSource == _this.generationSource) &&
+            (identical(other.inputDirectory, _this.inputDirectory) ||
+                other.inputDirectory == _this.inputDirectory) &&
+            (identical(other.outputDirectory, _this.outputDirectory) ||
+                other.outputDirectory == _this.outputDirectory) &&
+            (identical(other.model, _this.model) ||
+                other.model == _this.model) &&
+            (identical(other.apiClient, _this.apiClient) ||
+                other.apiClient == _this.apiClient) &&
+            (identical(other.imports, _this.imports) ||
+                other.imports == _this.imports));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, url, generationSource,
-      inputDirectory, outputDirectory, model, apiClient, imports);
+  int get hashCode {
+    final _this = this as SwaggerToDart;
+    return Object.hash(
+      runtimeType,
+      _this.url,
+      _this.generationSource,
+      _this.inputDirectory,
+      _this.outputDirectory,
+      _this.model,
+      _this.apiClient,
+      _this.imports,
+    );
+  }
 
   @override
   String toString() {
-    return 'SwaggerToDart(url: $url, generationSource: $generationSource, inputDirectory: $inputDirectory, outputDirectory: $outputDirectory, model: $model, apiClient: $apiClient, imports: $imports)';
+    final _this = this as SwaggerToDart;
+    return 'SwaggerToDart(url: ${_this.url}, generationSource: ${_this.generationSource}, inputDirectory: ${_this.inputDirectory}, outputDirectory: ${_this.outputDirectory}, model: ${_this.model}, apiClient: ${_this.apiClient}, imports: ${_this.imports})';
   }
 }
 
 /// @nodoc
 abstract mixin class $SwaggerToDartCopyWith<$Res> {
   factory $SwaggerToDartCopyWith(
-          SwaggerToDart value, $Res Function(SwaggerToDart) _then) =
-      _$SwaggerToDartCopyWithImpl;
+    SwaggerToDart value,
+    $Res Function(SwaggerToDart) _then,
+  ) = _$SwaggerToDartCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'url') String? url,
-      @JsonKey(name: 'generation_source') GenerationSource? generationSource,
-      @JsonKey(name: 'input_directory') String inputDirectory,
-      @JsonKey(name: 'output_directory') String outputDirectory,
-      @JsonKey(name: 'model') ModelConfig model,
-      @JsonKey(name: 'api_client') ApiClientConfig apiClient,
-      @JsonKey(name: 'imports') SwaggerToDartImport? imports});
+  $Res call({
+    @JsonKey(name: 'url') String? url,
+    @JsonKey(name: 'generation_source') GenerationSource? generationSource,
+    @JsonKey(name: 'input_directory') String inputDirectory,
+    @JsonKey(name: 'output_directory') String outputDirectory,
+    @JsonKey(name: 'model') ModelConfig model,
+    @JsonKey(name: 'api_client') ApiClientConfig apiClient,
+    @JsonKey(name: 'imports') SwaggerToDartImport? imports,
+  });
 
   $ModelConfigCopyWith<$Res> get model;
   $ApiClientConfigCopyWith<$Res> get apiClient;
@@ -1729,36 +1837,38 @@ class _$SwaggerToDartCopyWithImpl<$Res>
     Object? apiClient = null,
     Object? imports = freezed,
   }) {
-    return _then(_self.copyWith(
-      url: freezed == url
-          ? _self.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as String?,
-      generationSource: freezed == generationSource
-          ? _self.generationSource
-          : generationSource // ignore: cast_nullable_to_non_nullable
-              as GenerationSource?,
-      inputDirectory: null == inputDirectory
-          ? _self.inputDirectory
-          : inputDirectory // ignore: cast_nullable_to_non_nullable
-              as String,
-      outputDirectory: null == outputDirectory
-          ? _self.outputDirectory
-          : outputDirectory // ignore: cast_nullable_to_non_nullable
-              as String,
-      model: null == model
-          ? _self.model
-          : model // ignore: cast_nullable_to_non_nullable
-              as ModelConfig,
-      apiClient: null == apiClient
-          ? _self.apiClient
-          : apiClient // ignore: cast_nullable_to_non_nullable
-              as ApiClientConfig,
-      imports: freezed == imports
-          ? _self.imports
-          : imports // ignore: cast_nullable_to_non_nullable
-              as SwaggerToDartImport?,
-    ));
+    return _then(
+      SwaggerToDart(
+        url: freezed == url
+            ? _self.url
+            : url // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        generationSource: freezed == generationSource
+            ? _self.generationSource
+            : generationSource // ignore: cast_nullable_to_non_nullable
+                  as GenerationSource?,
+        inputDirectory: null == inputDirectory
+            ? _self.inputDirectory
+            : inputDirectory // ignore: cast_nullable_to_non_nullable
+                  as String,
+        outputDirectory: null == outputDirectory
+            ? _self.outputDirectory
+            : outputDirectory // ignore: cast_nullable_to_non_nullable
+                  as String,
+        model: null == model
+            ? _self.model
+            : model // ignore: cast_nullable_to_non_nullable
+                  as ModelConfig,
+        apiClient: null == apiClient
+            ? _self.apiClient
+            : apiClient // ignore: cast_nullable_to_non_nullable
+                  as ApiClientConfig,
+        imports: freezed == imports
+            ? _self.imports
+            : imports // ignore: cast_nullable_to_non_nullable
+                  as SwaggerToDartImport?,
+      ),
+    );
   }
 
   /// Create a copy of SwaggerToDart
@@ -1890,22 +2000,29 @@ extension SwaggerToDartPatterns on SwaggerToDart {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            @JsonKey(name: 'url') String? url,
-            @JsonKey(name: 'generation_source')
-            GenerationSource? generationSource,
-            @JsonKey(name: 'input_directory') String inputDirectory,
-            @JsonKey(name: 'output_directory') String outputDirectory,
-            @JsonKey(name: 'model') ModelConfig model,
-            @JsonKey(name: 'api_client') ApiClientConfig apiClient,
-            @JsonKey(name: 'imports') SwaggerToDartImport? imports)?
-        $default, {
+      @JsonKey(name: 'url') String? url,
+      @JsonKey(name: 'generation_source') GenerationSource? generationSource,
+      @JsonKey(name: 'input_directory') String inputDirectory,
+      @JsonKey(name: 'output_directory') String outputDirectory,
+      @JsonKey(name: 'model') ModelConfig model,
+      @JsonKey(name: 'api_client') ApiClientConfig apiClient,
+      @JsonKey(name: 'imports') SwaggerToDartImport? imports,
+    )?
+    $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _SwaggerToDart() when $default != null:
-        return $default(_that.url, _that.generationSource, _that.inputDirectory,
-            _that.outputDirectory, _that.model, _that.apiClient, _that.imports);
+        return $default(
+          _that.url,
+          _that.generationSource,
+          _that.inputDirectory,
+          _that.outputDirectory,
+          _that.model,
+          _that.apiClient,
+          _that.imports,
+        );
       case _:
         return orElse();
     }
@@ -1927,21 +2044,28 @@ extension SwaggerToDartPatterns on SwaggerToDart {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            @JsonKey(name: 'url') String? url,
-            @JsonKey(name: 'generation_source')
-            GenerationSource? generationSource,
-            @JsonKey(name: 'input_directory') String inputDirectory,
-            @JsonKey(name: 'output_directory') String outputDirectory,
-            @JsonKey(name: 'model') ModelConfig model,
-            @JsonKey(name: 'api_client') ApiClientConfig apiClient,
-            @JsonKey(name: 'imports') SwaggerToDartImport? imports)
-        $default,
+      @JsonKey(name: 'url') String? url,
+      @JsonKey(name: 'generation_source') GenerationSource? generationSource,
+      @JsonKey(name: 'input_directory') String inputDirectory,
+      @JsonKey(name: 'output_directory') String outputDirectory,
+      @JsonKey(name: 'model') ModelConfig model,
+      @JsonKey(name: 'api_client') ApiClientConfig apiClient,
+      @JsonKey(name: 'imports') SwaggerToDartImport? imports,
+    )
+    $default,
   ) {
     final _that = this;
     switch (_that) {
       case _SwaggerToDart():
-        return $default(_that.url, _that.generationSource, _that.inputDirectory,
-            _that.outputDirectory, _that.model, _that.apiClient, _that.imports);
+        return $default(
+          _that.url,
+          _that.generationSource,
+          _that.inputDirectory,
+          _that.outputDirectory,
+          _that.model,
+          _that.apiClient,
+          _that.imports,
+        );
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -1962,21 +2086,28 @@ extension SwaggerToDartPatterns on SwaggerToDart {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            @JsonKey(name: 'url') String? url,
-            @JsonKey(name: 'generation_source')
-            GenerationSource? generationSource,
-            @JsonKey(name: 'input_directory') String inputDirectory,
-            @JsonKey(name: 'output_directory') String outputDirectory,
-            @JsonKey(name: 'model') ModelConfig model,
-            @JsonKey(name: 'api_client') ApiClientConfig apiClient,
-            @JsonKey(name: 'imports') SwaggerToDartImport? imports)?
-        $default,
+      @JsonKey(name: 'url') String? url,
+      @JsonKey(name: 'generation_source') GenerationSource? generationSource,
+      @JsonKey(name: 'input_directory') String inputDirectory,
+      @JsonKey(name: 'output_directory') String outputDirectory,
+      @JsonKey(name: 'model') ModelConfig model,
+      @JsonKey(name: 'api_client') ApiClientConfig apiClient,
+      @JsonKey(name: 'imports') SwaggerToDartImport? imports,
+    )?
+    $default,
   ) {
     final _that = this;
     switch (_that) {
       case _SwaggerToDart() when $default != null:
-        return $default(_that.url, _that.generationSource, _that.inputDirectory,
-            _that.outputDirectory, _that.model, _that.apiClient, _that.imports);
+        return $default(
+          _that.url,
+          _that.generationSource,
+          _that.inputDirectory,
+          _that.outputDirectory,
+          _that.model,
+          _that.apiClient,
+          _that.imports,
+        );
       case _:
         return null;
     }
@@ -1987,16 +2118,16 @@ extension SwaggerToDartPatterns on SwaggerToDart {
 
 @_jsonSerializable
 class _SwaggerToDart extends SwaggerToDart {
-  const _SwaggerToDart(
-      {@JsonKey(name: 'url') this.url,
-      @JsonKey(name: 'generation_source') this.generationSource,
-      @JsonKey(name: 'input_directory')
-      this.inputDirectory = 'schema/swagger.json',
-      @JsonKey(name: 'output_directory') this.outputDirectory = 'lib/src/gen',
-      @JsonKey(name: 'model') this.model = const ModelConfig(),
-      @JsonKey(name: 'api_client') this.apiClient = const ApiClientConfig(),
-      @JsonKey(name: 'imports') this.imports})
-      : super._();
+  const _SwaggerToDart({
+    @JsonKey(name: 'url') this.url,
+    @JsonKey(name: 'generation_source') this.generationSource,
+    @JsonKey(name: 'input_directory')
+    this.inputDirectory = 'schema/swagger.json',
+    @JsonKey(name: 'output_directory') this.outputDirectory = 'lib/src/gen',
+    @JsonKey(name: 'model') this.model = const ModelConfig(),
+    @JsonKey(name: 'api_client') this.apiClient = const ApiClientConfig(),
+    @JsonKey(name: 'imports') this.imports,
+  }) : super._();
   factory _SwaggerToDart.fromJson(Map<String, dynamic> json) =>
       _$SwaggerToDartFromJson(json);
 
@@ -2032,9 +2163,7 @@ class _SwaggerToDart extends SwaggerToDart {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$SwaggerToDartToJson(
-      this,
-    );
+    return _$SwaggerToDartToJson(this);
   }
 
   @override
@@ -2057,8 +2186,18 @@ class _SwaggerToDart extends SwaggerToDart {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, url, generationSource,
-      inputDirectory, outputDirectory, model, apiClient, imports);
+  int get hashCode {
+    return Object.hash(
+      runtimeType,
+      url,
+      generationSource,
+      inputDirectory,
+      outputDirectory,
+      model,
+      apiClient,
+      imports,
+    );
+  }
 
   @override
   String toString() {
@@ -2070,18 +2209,20 @@ class _SwaggerToDart extends SwaggerToDart {
 abstract mixin class _$SwaggerToDartCopyWith<$Res>
     implements $SwaggerToDartCopyWith<$Res> {
   factory _$SwaggerToDartCopyWith(
-          _SwaggerToDart value, $Res Function(_SwaggerToDart) _then) =
-      __$SwaggerToDartCopyWithImpl;
+    _SwaggerToDart value,
+    $Res Function(_SwaggerToDart) _then,
+  ) = __$SwaggerToDartCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'url') String? url,
-      @JsonKey(name: 'generation_source') GenerationSource? generationSource,
-      @JsonKey(name: 'input_directory') String inputDirectory,
-      @JsonKey(name: 'output_directory') String outputDirectory,
-      @JsonKey(name: 'model') ModelConfig model,
-      @JsonKey(name: 'api_client') ApiClientConfig apiClient,
-      @JsonKey(name: 'imports') SwaggerToDartImport? imports});
+  $Res call({
+    @JsonKey(name: 'url') String? url,
+    @JsonKey(name: 'generation_source') GenerationSource? generationSource,
+    @JsonKey(name: 'input_directory') String inputDirectory,
+    @JsonKey(name: 'output_directory') String outputDirectory,
+    @JsonKey(name: 'model') ModelConfig model,
+    @JsonKey(name: 'api_client') ApiClientConfig apiClient,
+    @JsonKey(name: 'imports') SwaggerToDartImport? imports,
+  });
 
   @override
   $ModelConfigCopyWith<$Res> get model;
@@ -2112,36 +2253,38 @@ class __$SwaggerToDartCopyWithImpl<$Res>
     Object? apiClient = null,
     Object? imports = freezed,
   }) {
-    return _then(_SwaggerToDart(
-      url: freezed == url
-          ? _self.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as String?,
-      generationSource: freezed == generationSource
-          ? _self.generationSource
-          : generationSource // ignore: cast_nullable_to_non_nullable
-              as GenerationSource?,
-      inputDirectory: null == inputDirectory
-          ? _self.inputDirectory
-          : inputDirectory // ignore: cast_nullable_to_non_nullable
-              as String,
-      outputDirectory: null == outputDirectory
-          ? _self.outputDirectory
-          : outputDirectory // ignore: cast_nullable_to_non_nullable
-              as String,
-      model: null == model
-          ? _self.model
-          : model // ignore: cast_nullable_to_non_nullable
-              as ModelConfig,
-      apiClient: null == apiClient
-          ? _self.apiClient
-          : apiClient // ignore: cast_nullable_to_non_nullable
-              as ApiClientConfig,
-      imports: freezed == imports
-          ? _self.imports
-          : imports // ignore: cast_nullable_to_non_nullable
-              as SwaggerToDartImport?,
-    ));
+    return _then(
+      _SwaggerToDart(
+        url: freezed == url
+            ? _self.url
+            : url // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        generationSource: freezed == generationSource
+            ? _self.generationSource
+            : generationSource // ignore: cast_nullable_to_non_nullable
+                  as GenerationSource?,
+        inputDirectory: null == inputDirectory
+            ? _self.inputDirectory
+            : inputDirectory // ignore: cast_nullable_to_non_nullable
+                  as String,
+        outputDirectory: null == outputDirectory
+            ? _self.outputDirectory
+            : outputDirectory // ignore: cast_nullable_to_non_nullable
+                  as String,
+        model: null == model
+            ? _self.model
+            : model // ignore: cast_nullable_to_non_nullable
+                  as ModelConfig,
+        apiClient: null == apiClient
+            ? _self.apiClient
+            : apiClient // ignore: cast_nullable_to_non_nullable
+                  as ApiClientConfig,
+        imports: freezed == imports
+            ? _self.imports
+            : imports // ignore: cast_nullable_to_non_nullable
+                  as SwaggerToDartImport?,
+      ),
+    );
   }
 
   /// Create a copy of SwaggerToDart

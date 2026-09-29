@@ -168,26 +168,17 @@ class ApiClientGenerator {
     }
   }
 
-  /// import 'package:dio/dio.dart';
-  /// import 'package:retrofit/retrofit.dart';
-  /// import 'models.dart';
+  /// Builds one retrofit client library for [clientName], e.g.:
   ///
-  /// part 'settings_client.g.dart';
-  ///
+  /// ```dart
   /// @RestApi()
   /// abstract class SettingsClient {
-  ///   factory SettingsClient(
-  ///     Dio dio, {
-  ///     String? baseUrl,
-  ///     ParseErrorLogger? errorLogger,
-  ///   }) = _SettingsClient;
+  ///   factory SettingsClient(Dio dio, {String? baseUrl}) = _SettingsClient;
   ///
-  ///   /// OperationId: settings-get_app_settings
-  ///   /// Summery: Get App Settings
-  ///   /// Description: **Status**: implemented
   ///   @GET('/api/v1/common/settings/')
-  ///   Future<HttpResponse<BaseResponseAppSettingsResponse>>
-  ///   settingsGetAppSettings();
+  ///   Future<HttpResponse<AppSettings>> settingsGetAppSettings();
+  /// }
+  /// ```
   Library build({required String clientName, required OpenApiPaths paths}) {
     final fileName = Renaming.instance.renameFile('${clientName}_client');
     final className = Recase.instance.toPascalCase(fileName);
@@ -222,7 +213,7 @@ class ApiClientGenerator {
 
         final requestBody = <Parameter>[];
         final content = method.value.requestBody?.content ?? {};
-        bool _hasJsonBody = false;
+        bool hasJsonBody = false;
 
         for (final entry in content.entries) {
           OpenApiContentType? contentType;
@@ -239,8 +230,8 @@ class ApiClientGenerator {
             case OpenApiContentType.textJson:
             case OpenApiContentType.applicationWildcardJson:
             case OpenApiContentType.applicationXWwwFormUrlencoded:
-              if (_hasJsonBody) continue;
-              _hasJsonBody = true;
+              if (hasJsonBody) continue;
+              hasJsonBody = true;
               requestBody.add(
                 Parameter(
                   (b) => b
@@ -436,7 +427,7 @@ class ApiClientGenerator {
               .toList(),
           properties: {
             for (final p in queryParameters)
-              if (p.schema case final schema?) p.name: schema,
+              p.name: ?p.schema,
           },
         ),
       );

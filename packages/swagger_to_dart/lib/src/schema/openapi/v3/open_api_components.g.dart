@@ -17,19 +17,19 @@ _OpenApiComponents _$OpenApiComponentsFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$OpenApiComponentsToJson(_OpenApiComponents instance) =>
     <String, dynamic>{
-      if (instance.schemas?.map((k, e) => MapEntry(k, e.toJson()))
-          case final value?)
-        'schemas': value,
-      if (instance.securitySchemes case final value?) 'securitySchemes': value,
+      'schemas': ?instance.schemas?.map((k, e) => MapEntry(k, e.toJson())),
+      'securitySchemes': ?instance.securitySchemes,
     };
 
 _OpenApiSchemas _$OpenApiSchemasFromJson(Map<String, dynamic> json) =>
     _OpenApiSchemas(
       properties: (json['properties'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(
-            k,
-            const OpenApiSchemaJsonConverter()
-                .fromJson(e as Map<String, dynamic>)),
+          k,
+          const OpenApiSchemaJsonConverter().fromJson(
+            e as Map<String, dynamic>,
+          ),
+        ),
       ),
       type: json['type'] as String,
       required_: (json['required'] as List<dynamic>?)
@@ -47,17 +47,15 @@ _OpenApiSchemas _$OpenApiSchemasFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$OpenApiSchemasToJson(_OpenApiSchemas instance) =>
     <String, dynamic>{
-      if (instance.properties?.map((k, e) =>
-              MapEntry(k, const OpenApiSchemaJsonConverter().toJson(e)))
-          case final value?)
-        'properties': value,
+      'properties': ?instance.properties?.map(
+        (k, e) => MapEntry(k, const OpenApiSchemaJsonConverter().toJson(e)),
+      ),
       'type': instance.type,
-      if (instance.required_ case final value?) 'required': value,
-      if (instance.enum_ case final value?) 'enum': value,
-      if (instance.const_ case final value?) 'const': value,
-      if (instance.title case final value?) 'title': value,
-      if (instance.description case final value?) 'description': value,
-      if (instance.xEnumVarnames case final value?) 'x-enum-varnames': value,
-      if (instance.additionalProperties case final value?)
-        'additionalProperties': value,
+      'required': ?instance.required_,
+      'enum': ?instance.enum_,
+      'const': ?instance.const_,
+      'title': ?instance.title,
+      'description': ?instance.description,
+      'x-enum-varnames': ?instance.xEnumVarnames,
+      'additionalProperties': ?instance.additionalProperties,
     };
