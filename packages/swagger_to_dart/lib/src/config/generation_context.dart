@@ -35,12 +35,17 @@ class GenerationContext {
   final Set<String> reservedModelNames = {};
 
   /// Adds a component model. The first model for a file name wins; a
-  /// different model mapping to the same name is reported, not silently lost.
-  void addModel(Library library) {
+  /// different model mapping to the same name is reported, not silently
+  /// lost — unless [isGenericInstantiation], where every instantiation of
+  /// the same generic class (`BaseResponse[User]`, `BaseResponse[Item]`, …)
+  /// is expected to collapse into that one class, so differing source is not
+  /// a collision worth reporting.
+  void addModel(Library library, {bool isGenericInstantiation = false}) {
     final existing = _models[library.name!];
     if (existing == null) {
       _models[library.name!] = library;
-    } else if (_source(existing) != _source(library)) {
+    } else if (!isGenericInstantiation &&
+        _source(existing) != _source(library)) {
       print(
         'swagger_to_dart: warning: two schemas generate ${library.name}.dart; '
         'keeping the first. Give one of them a different title.',

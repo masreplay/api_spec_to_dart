@@ -59,15 +59,18 @@ class ModelGenerator extends LibraryGenerator {
     // instantiations with component-schema arguments go first.
     final deferred = <MapEntry<String, OpenApiSchemas>>[];
     for (final entry in schemas.entries) {
-      if (generic.shouldUseGenericStrategy(entry) &&
-          !generic.hasSchemaArguments(entry)) {
+      final isGeneric = generic.shouldUseGenericStrategy(entry);
+      if (isGeneric && !generic.hasSchemaArguments(entry)) {
         deferred.add(entry);
         continue;
       }
-      context.addModel(build(entry));
+      context.addModel(build(entry), isGenericInstantiation: isGeneric);
     }
     for (final entry in deferred) {
-      context.addModel(build(entry));
+      context.addModel(
+        build(entry),
+        isGenericInstantiation: generic.shouldUseGenericStrategy(entry),
+      );
     }
   }
 
