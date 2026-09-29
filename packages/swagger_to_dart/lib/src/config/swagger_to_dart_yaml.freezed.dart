@@ -905,8 +905,6 @@ mixin _$ApiClientConfig {
   String get baseApiClientClassName;
   @JsonKey(name: 'use_class_for_query_parameters')
   bool get useClassForQueryParameters;
-  @JsonKey(name: 'use_class_for_multipart_form_data')
-  bool get useClassForMultipartFormData;
   @JsonKey(name: 'skipped_parameters')
   List<String> get skippedParameters;
 
@@ -945,12 +943,6 @@ mixin _$ApiClientConfig {
                 ) ||
                 other.useClassForQueryParameters ==
                     _this.useClassForQueryParameters) &&
-            (identical(
-                  other.useClassForMultipartFormData,
-                  _this.useClassForMultipartFormData,
-                ) ||
-                other.useClassForMultipartFormData ==
-                    _this.useClassForMultipartFormData) &&
             const DeepCollectionEquality().equals(
               other.skippedParameters,
               _this.skippedParameters,
@@ -970,7 +962,6 @@ mixin _$ApiClientConfig {
       runtimeType,
       _this.baseApiClientClassName,
       _this.useClassForQueryParameters,
-      _this.useClassForMultipartFormData,
       const DeepCollectionEquality().hash(_this.skippedParameters),
       _this.includeOpenapiExtras,
     );
@@ -979,7 +970,7 @@ mixin _$ApiClientConfig {
   @override
   String toString() {
     final _this = this as ApiClientConfig;
-    return 'ApiClientConfig(baseApiClientClassName: ${_this.baseApiClientClassName}, useClassForQueryParameters: ${_this.useClassForQueryParameters}, useClassForMultipartFormData: ${_this.useClassForMultipartFormData}, skippedParameters: ${_this.skippedParameters}, includeOpenapiExtras: ${_this.includeOpenapiExtras})';
+    return 'ApiClientConfig(baseApiClientClassName: ${_this.baseApiClientClassName}, useClassForQueryParameters: ${_this.useClassForQueryParameters}, skippedParameters: ${_this.skippedParameters}, includeOpenapiExtras: ${_this.includeOpenapiExtras})';
   }
 }
 
@@ -994,8 +985,6 @@ abstract mixin class $ApiClientConfigCopyWith<$Res> {
     @JsonKey(name: 'base_api_client_class_name') String baseApiClientClassName,
     @JsonKey(name: 'use_class_for_query_parameters')
     bool useClassForQueryParameters,
-    @JsonKey(name: 'use_class_for_multipart_form_data')
-    bool useClassForMultipartFormData,
     @JsonKey(name: 'skipped_parameters') List<String> skippedParameters,
     @JsonKey(name: 'include_openapi_extras') bool includeOpenapiExtras,
   });
@@ -1016,7 +1005,6 @@ class _$ApiClientConfigCopyWithImpl<$Res>
   $Res call({
     Object? baseApiClientClassName = null,
     Object? useClassForQueryParameters = null,
-    Object? useClassForMultipartFormData = null,
     Object? skippedParameters = null,
     Object? includeOpenapiExtras = null,
   }) {
@@ -1029,10 +1017,6 @@ class _$ApiClientConfigCopyWithImpl<$Res>
         useClassForQueryParameters: null == useClassForQueryParameters
             ? _self.useClassForQueryParameters
             : useClassForQueryParameters // ignore: cast_nullable_to_non_nullable
-                  as bool,
-        useClassForMultipartFormData: null == useClassForMultipartFormData
-            ? _self.useClassForMultipartFormData
-            : useClassForMultipartFormData // ignore: cast_nullable_to_non_nullable
                   as bool,
         skippedParameters: null == skippedParameters
             ? _self.skippedParameters
@@ -1145,8 +1129,6 @@ extension ApiClientConfigPatterns on ApiClientConfig {
       String baseApiClientClassName,
       @JsonKey(name: 'use_class_for_query_parameters')
       bool useClassForQueryParameters,
-      @JsonKey(name: 'use_class_for_multipart_form_data')
-      bool useClassForMultipartFormData,
       @JsonKey(name: 'skipped_parameters') List<String> skippedParameters,
       @JsonKey(name: 'include_openapi_extras') bool includeOpenapiExtras,
     )?
@@ -1159,7 +1141,6 @@ extension ApiClientConfigPatterns on ApiClientConfig {
         return $default(
           _that.baseApiClientClassName,
           _that.useClassForQueryParameters,
-          _that.useClassForMultipartFormData,
           _that.skippedParameters,
           _that.includeOpenapiExtras,
         );
@@ -1188,8 +1169,6 @@ extension ApiClientConfigPatterns on ApiClientConfig {
       String baseApiClientClassName,
       @JsonKey(name: 'use_class_for_query_parameters')
       bool useClassForQueryParameters,
-      @JsonKey(name: 'use_class_for_multipart_form_data')
-      bool useClassForMultipartFormData,
       @JsonKey(name: 'skipped_parameters') List<String> skippedParameters,
       @JsonKey(name: 'include_openapi_extras') bool includeOpenapiExtras,
     )
@@ -1201,7 +1180,6 @@ extension ApiClientConfigPatterns on ApiClientConfig {
         return $default(
           _that.baseApiClientClassName,
           _that.useClassForQueryParameters,
-          _that.useClassForMultipartFormData,
           _that.skippedParameters,
           _that.includeOpenapiExtras,
         );
@@ -1229,8 +1207,6 @@ extension ApiClientConfigPatterns on ApiClientConfig {
       String baseApiClientClassName,
       @JsonKey(name: 'use_class_for_query_parameters')
       bool useClassForQueryParameters,
-      @JsonKey(name: 'use_class_for_multipart_form_data')
-      bool useClassForMultipartFormData,
       @JsonKey(name: 'skipped_parameters') List<String> skippedParameters,
       @JsonKey(name: 'include_openapi_extras') bool includeOpenapiExtras,
     )?
@@ -1242,7 +1218,6 @@ extension ApiClientConfigPatterns on ApiClientConfig {
         return $default(
           _that.baseApiClientClassName,
           _that.useClassForQueryParameters,
-          _that.useClassForMultipartFormData,
           _that.skippedParameters,
           _that.includeOpenapiExtras,
         );
@@ -1261,8 +1236,6 @@ class _ApiClientConfig extends ApiClientConfig {
     this.baseApiClientClassName = 'BaseApiClient',
     @JsonKey(name: 'use_class_for_query_parameters')
     this.useClassForQueryParameters = false,
-    @JsonKey(name: 'use_class_for_multipart_form_data')
-    this.useClassForMultipartFormData = false,
     @JsonKey(name: 'skipped_parameters')
     List<String> skippedParameters = const [],
     @JsonKey(name: 'include_openapi_extras') this.includeOpenapiExtras = true,
@@ -1277,9 +1250,6 @@ class _ApiClientConfig extends ApiClientConfig {
   @override
   @JsonKey(name: 'use_class_for_query_parameters')
   final bool useClassForQueryParameters;
-  @override
-  @JsonKey(name: 'use_class_for_multipart_form_data')
-  final bool useClassForMultipartFormData;
   final List<String> _skippedParameters;
   @override
   @JsonKey(name: 'skipped_parameters')
@@ -1322,12 +1292,6 @@ class _ApiClientConfig extends ApiClientConfig {
                 ) ||
                 other.useClassForQueryParameters ==
                     useClassForQueryParameters) &&
-            (identical(
-                  other.useClassForMultipartFormData,
-                  useClassForMultipartFormData,
-                ) ||
-                other.useClassForMultipartFormData ==
-                    useClassForMultipartFormData) &&
             const DeepCollectionEquality().equals(
               other.skippedParameters,
               _skippedParameters,
@@ -1343,7 +1307,6 @@ class _ApiClientConfig extends ApiClientConfig {
       runtimeType,
       baseApiClientClassName,
       useClassForQueryParameters,
-      useClassForMultipartFormData,
       const DeepCollectionEquality().hash(_skippedParameters),
       includeOpenapiExtras,
     );
@@ -1351,7 +1314,7 @@ class _ApiClientConfig extends ApiClientConfig {
 
   @override
   String toString() {
-    return 'ApiClientConfig(baseApiClientClassName: $baseApiClientClassName, useClassForQueryParameters: $useClassForQueryParameters, useClassForMultipartFormData: $useClassForMultipartFormData, skippedParameters: $skippedParameters, includeOpenapiExtras: $includeOpenapiExtras)';
+    return 'ApiClientConfig(baseApiClientClassName: $baseApiClientClassName, useClassForQueryParameters: $useClassForQueryParameters, skippedParameters: $skippedParameters, includeOpenapiExtras: $includeOpenapiExtras)';
   }
 }
 
@@ -1368,8 +1331,6 @@ abstract mixin class _$ApiClientConfigCopyWith<$Res>
     @JsonKey(name: 'base_api_client_class_name') String baseApiClientClassName,
     @JsonKey(name: 'use_class_for_query_parameters')
     bool useClassForQueryParameters,
-    @JsonKey(name: 'use_class_for_multipart_form_data')
-    bool useClassForMultipartFormData,
     @JsonKey(name: 'skipped_parameters') List<String> skippedParameters,
     @JsonKey(name: 'include_openapi_extras') bool includeOpenapiExtras,
   });
@@ -1390,7 +1351,6 @@ class __$ApiClientConfigCopyWithImpl<$Res>
   $Res call({
     Object? baseApiClientClassName = null,
     Object? useClassForQueryParameters = null,
-    Object? useClassForMultipartFormData = null,
     Object? skippedParameters = null,
     Object? includeOpenapiExtras = null,
   }) {
@@ -1403,10 +1363,6 @@ class __$ApiClientConfigCopyWithImpl<$Res>
         useClassForQueryParameters: null == useClassForQueryParameters
             ? _self.useClassForQueryParameters
             : useClassForQueryParameters // ignore: cast_nullable_to_non_nullable
-                  as bool,
-        useClassForMultipartFormData: null == useClassForMultipartFormData
-            ? _self.useClassForMultipartFormData
-            : useClassForMultipartFormData // ignore: cast_nullable_to_non_nullable
                   as bool,
         skippedParameters: null == skippedParameters
             ? _self._skippedParameters

@@ -23,6 +23,8 @@
 - Binary/file properties generate as `dio`'s `MultipartFile` for every
   generation source (previously plain `String` outside FastAPI Flutter
   apps) — update code constructing these fields as strings. (#54)
+- Removed `api_client.use_class_for_multipart_form_data`: it never had an
+  effect. Existing configs still parse (the key is ignored).
 - Consuming projects need an SDK lower bound of at least Dart 3.8 —
   generated code now relies on `json_serializable` >=6.10 syntax (see
   Requirements in the README).

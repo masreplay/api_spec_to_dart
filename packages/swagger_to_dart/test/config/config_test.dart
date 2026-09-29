@@ -40,7 +40,7 @@ swagger_to_dart:
   api_client:
     base_api_client_class_name: Api
     use_class_for_query_parameters: true
-    use_class_for_multipart_form_data: true
+    use_class_for_multipart_form_data: true # removed in 5.0.0, still parses
     skipped_parameters: [X-API-Key]
     include_openapi_extras: false
   imports:
@@ -60,7 +60,6 @@ swagger_to_dart:
     });
     expect(config.apiClient.baseApiClientClassName, 'Api');
     expect(config.apiClient.useClassForQueryParameters, isTrue);
-    expect(config.apiClient.useClassForMultipartFormData, isTrue);
     expect(config.apiClient.skippedParameters, ['X-API-Key']);
     expect(config.apiClient.includeOpenapiExtras, isFalse);
     expect(config.imports?.globalImports, ["import 'package:app/app.dart';"]);
