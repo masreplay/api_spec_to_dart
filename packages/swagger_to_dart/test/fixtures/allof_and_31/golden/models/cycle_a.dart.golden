@@ -1,0 +1,41 @@
+/// CycleA
+///
+/// ```json
+/// {
+///     "properties": {
+///         "b": {
+///             "type": "string"
+///         },
+///         "a": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object",
+///     "required": []
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'cycle_a.freezed.dart';
+part 'cycle_a.g.dart';
+
+@freezed
+abstract class CycleA with _$CycleA {
+  const CycleA._();
+
+  @jsonSerializable
+  const factory CycleA({
+    /// b
+    @JsonKey(name: CycleA.bKey_) String? b,
+
+    /// a
+    @JsonKey(name: CycleA.aKey_) String? a,
+  }) = _CycleA;
+
+  factory CycleA.fromJson(Map<String, dynamic> json) => _$CycleAFromJson(json);
+
+  static const String bKey_ = 'b';
+
+  static const String aKey_ = 'a';
+}

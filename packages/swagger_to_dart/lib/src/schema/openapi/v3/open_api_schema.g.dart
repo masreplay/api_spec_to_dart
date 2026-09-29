@@ -27,6 +27,7 @@ OpenApiSchemaType _$OpenApiSchemaTypeFromJson(Map<String, dynamic> json) =>
       default_: json['default'],
       title: json['title'] as String?,
       nullable: json['nullable'] as bool?,
+      additionalProperties: json['additionalProperties'],
       $type: json['runtimeType'] as String?,
     );
 
@@ -47,6 +48,7 @@ Map<String, dynamic> _$OpenApiSchemaTypeToJson(OpenApiSchemaType instance) =>
       'default': ?instance.default_,
       'title': ?instance.title,
       'nullable': ?instance.nullable,
+      'additionalProperties': ?instance.additionalProperties,
       'runtimeType': instance.$type,
     };
 

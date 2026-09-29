@@ -1,0 +1,43 @@
+/// Node
+///
+/// ```json
+/// {
+///     "properties": {
+///         "value": {
+///             "type": "string"
+///         },
+///         "children": {
+///             "type": "array",
+///             "items": {
+///                 "$ref": "#/components/schemas/Node"
+///             }
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'node.freezed.dart';
+part 'node.g.dart';
+
+@freezed
+abstract class Node with _$Node {
+  const Node._();
+
+  @jsonSerializable
+  const factory Node({
+    /// value
+    @JsonKey(name: Node.valueKey_) String? value,
+
+    /// children
+    @JsonKey(name: Node.childrenKey_) List<Node>? children,
+  }) = _Node;
+
+  factory Node.fromJson(Map<String, dynamic> json) => _$NodeFromJson(json);
+
+  static const String valueKey_ = 'value';
+
+  static const String childrenKey_ = 'children';
+}

@@ -45,8 +45,11 @@ abstract class OpenApiSchemas with _$OpenApiSchemas {
     List<OpenApiSchema>? anyOf,
     @JsonKey(name: 'discriminator')
     OpenApiSchemaOneOfDiscriminator? discriminator,
+
+    /// Raw parts: `$ref`s or inline objects whose properties get merged.
+    @JsonKey(name: 'allOf') List<Map<String, dynamic>>? allOf,
   }) = _OpenApiSchemas;
 
   factory OpenApiSchemas.fromJson(Map<String, dynamic> json) =>
-      _$OpenApiSchemasFromJson(json);
+      _$OpenApiSchemasFromJson(normalizeSchemaJson(json));
 }

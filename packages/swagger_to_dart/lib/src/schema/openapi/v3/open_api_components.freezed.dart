@@ -428,6 +428,10 @@ mixin _$OpenApiSchemas {
   @JsonKey(name: 'discriminator')
   OpenApiSchemaOneOfDiscriminator? get discriminator;
 
+  /// Raw parts: `$ref`s or inline objects whose properties get merged.
+  @JsonKey(name: 'allOf')
+  List<Map<String, dynamic>>? get allOf;
+
   /// Create a copy of OpenApiSchemas
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -473,7 +477,8 @@ mixin _$OpenApiSchemas {
             const DeepCollectionEquality().equals(other.oneOf, _this.oneOf) &&
             const DeepCollectionEquality().equals(other.anyOf, _this.anyOf) &&
             (identical(other.discriminator, _this.discriminator) ||
-                other.discriminator == _this.discriminator));
+                other.discriminator == _this.discriminator) &&
+            const DeepCollectionEquality().equals(other.allOf, _this.allOf));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -494,13 +499,14 @@ mixin _$OpenApiSchemas {
       const DeepCollectionEquality().hash(_this.oneOf),
       const DeepCollectionEquality().hash(_this.anyOf),
       _this.discriminator,
+      const DeepCollectionEquality().hash(_this.allOf),
     );
   }
 
   @override
   String toString() {
     final _this = this as OpenApiSchemas;
-    return 'OpenApiSchemas(properties: ${_this.properties}, type: ${_this.type}, required_: ${_this.required_}, enum_: ${_this.enum_}, const_: ${_this.const_}, title: ${_this.title}, description: ${_this.description}, xEnumVarnames: ${_this.xEnumVarnames}, additionalProperties: ${_this.additionalProperties}, oneOf: ${_this.oneOf}, anyOf: ${_this.anyOf}, discriminator: ${_this.discriminator})';
+    return 'OpenApiSchemas(properties: ${_this.properties}, type: ${_this.type}, required_: ${_this.required_}, enum_: ${_this.enum_}, const_: ${_this.const_}, title: ${_this.title}, description: ${_this.description}, xEnumVarnames: ${_this.xEnumVarnames}, additionalProperties: ${_this.additionalProperties}, oneOf: ${_this.oneOf}, anyOf: ${_this.anyOf}, discriminator: ${_this.discriminator}, allOf: ${_this.allOf})';
   }
 }
 
@@ -531,6 +537,7 @@ abstract mixin class $OpenApiSchemasCopyWith<$Res> {
     List<OpenApiSchema>? anyOf,
     @JsonKey(name: 'discriminator')
     OpenApiSchemaOneOfDiscriminator? discriminator,
+    @JsonKey(name: 'allOf') List<Map<String, dynamic>>? allOf,
   });
 
   $OpenApiSchemaOneOfDiscriminatorCopyWith<$Res>? get discriminator;
@@ -561,6 +568,7 @@ class _$OpenApiSchemasCopyWithImpl<$Res>
     Object? oneOf = freezed,
     Object? anyOf = freezed,
     Object? discriminator = freezed,
+    Object? allOf = freezed,
   }) {
     return _then(
       OpenApiSchemas(
@@ -608,6 +616,10 @@ class _$OpenApiSchemasCopyWithImpl<$Res>
             ? _self.discriminator
             : discriminator // ignore: cast_nullable_to_non_nullable
                   as OpenApiSchemaOneOfDiscriminator?,
+        allOf: freezed == allOf
+            ? _self.allOf
+            : allOf // ignore: cast_nullable_to_non_nullable
+                  as List<Map<String, dynamic>>?,
       ),
     );
   }
@@ -743,6 +755,7 @@ extension OpenApiSchemasPatterns on OpenApiSchemas {
       List<OpenApiSchema>? anyOf,
       @JsonKey(name: 'discriminator')
       OpenApiSchemaOneOfDiscriminator? discriminator,
+      @JsonKey(name: 'allOf') List<Map<String, dynamic>>? allOf,
     )?
     $default, {
     required TResult orElse(),
@@ -763,6 +776,7 @@ extension OpenApiSchemasPatterns on OpenApiSchemas {
           _that.oneOf,
           _that.anyOf,
           _that.discriminator,
+          _that.allOf,
         );
       case _:
         return orElse();
@@ -804,6 +818,7 @@ extension OpenApiSchemasPatterns on OpenApiSchemas {
       List<OpenApiSchema>? anyOf,
       @JsonKey(name: 'discriminator')
       OpenApiSchemaOneOfDiscriminator? discriminator,
+      @JsonKey(name: 'allOf') List<Map<String, dynamic>>? allOf,
     )
     $default,
   ) {
@@ -823,6 +838,7 @@ extension OpenApiSchemasPatterns on OpenApiSchemas {
           _that.oneOf,
           _that.anyOf,
           _that.discriminator,
+          _that.allOf,
         );
       case _:
         throw StateError('Unexpected subclass');
@@ -863,6 +879,7 @@ extension OpenApiSchemasPatterns on OpenApiSchemas {
       List<OpenApiSchema>? anyOf,
       @JsonKey(name: 'discriminator')
       OpenApiSchemaOneOfDiscriminator? discriminator,
+      @JsonKey(name: 'allOf') List<Map<String, dynamic>>? allOf,
     )?
     $default,
   ) {
@@ -882,6 +899,7 @@ extension OpenApiSchemasPatterns on OpenApiSchemas {
           _that.oneOf,
           _that.anyOf,
           _that.discriminator,
+          _that.allOf,
         );
       case _:
         return null;
@@ -911,12 +929,14 @@ class _OpenApiSchemas extends OpenApiSchemas {
     @JsonKey(name: 'anyOf')
     List<OpenApiSchema>? anyOf,
     @JsonKey(name: 'discriminator') this.discriminator,
+    @JsonKey(name: 'allOf') List<Map<String, dynamic>>? allOf,
   }) : _properties = properties,
        _required_ = required_,
        _enum_ = enum_,
        _xEnumVarnames = xEnumVarnames,
        _oneOf = oneOf,
        _anyOf = anyOf,
+       _allOf = allOf,
        super._();
   factory _OpenApiSchemas.fromJson(Map<String, dynamic> json) =>
       _$OpenApiSchemasFromJson(json);
@@ -1011,6 +1031,20 @@ class _OpenApiSchemas extends OpenApiSchemas {
   @JsonKey(name: 'discriminator')
   final OpenApiSchemaOneOfDiscriminator? discriminator;
 
+  /// Raw parts: `$ref`s or inline objects whose properties get merged.
+  final List<Map<String, dynamic>>? _allOf;
+
+  /// Raw parts: `$ref`s or inline objects whose properties get merged.
+  @override
+  @JsonKey(name: 'allOf')
+  List<Map<String, dynamic>>? get allOf {
+    final value = _allOf;
+    if (value == null) return null;
+    if (_allOf is EqualUnmodifiableListView) return _allOf;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   /// Create a copy of OpenApiSchemas
   /// with the given fields replaced by the non-null parameter values.
   @override
@@ -1054,7 +1088,8 @@ class _OpenApiSchemas extends OpenApiSchemas {
             const DeepCollectionEquality().equals(other.oneOf, _oneOf) &&
             const DeepCollectionEquality().equals(other.anyOf, _anyOf) &&
             (identical(other.discriminator, discriminator) ||
-                other.discriminator == discriminator));
+                other.discriminator == discriminator) &&
+            const DeepCollectionEquality().equals(other.allOf, _allOf));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1074,12 +1109,13 @@ class _OpenApiSchemas extends OpenApiSchemas {
       const DeepCollectionEquality().hash(_oneOf),
       const DeepCollectionEquality().hash(_anyOf),
       discriminator,
+      const DeepCollectionEquality().hash(_allOf),
     );
   }
 
   @override
   String toString() {
-    return 'OpenApiSchemas(properties: $properties, type: $type, required_: $required_, enum_: $enum_, const_: $const_, title: $title, description: $description, xEnumVarnames: $xEnumVarnames, additionalProperties: $additionalProperties, oneOf: $oneOf, anyOf: $anyOf, discriminator: $discriminator)';
+    return 'OpenApiSchemas(properties: $properties, type: $type, required_: $required_, enum_: $enum_, const_: $const_, title: $title, description: $description, xEnumVarnames: $xEnumVarnames, additionalProperties: $additionalProperties, oneOf: $oneOf, anyOf: $anyOf, discriminator: $discriminator, allOf: $allOf)';
   }
 }
 
@@ -1112,6 +1148,7 @@ abstract mixin class _$OpenApiSchemasCopyWith<$Res>
     List<OpenApiSchema>? anyOf,
     @JsonKey(name: 'discriminator')
     OpenApiSchemaOneOfDiscriminator? discriminator,
+    @JsonKey(name: 'allOf') List<Map<String, dynamic>>? allOf,
   });
 
   @override
@@ -1143,6 +1180,7 @@ class __$OpenApiSchemasCopyWithImpl<$Res>
     Object? oneOf = freezed,
     Object? anyOf = freezed,
     Object? discriminator = freezed,
+    Object? allOf = freezed,
   }) {
     return _then(
       _OpenApiSchemas(
@@ -1190,6 +1228,10 @@ class __$OpenApiSchemasCopyWithImpl<$Res>
             ? _self.discriminator
             : discriminator // ignore: cast_nullable_to_non_nullable
                   as OpenApiSchemaOneOfDiscriminator?,
+        allOf: freezed == allOf
+            ? _self._allOf
+            : allOf // ignore: cast_nullable_to_non_nullable
+                  as List<Map<String, dynamic>>?,
       ),
     );
   }

@@ -22,6 +22,9 @@ sealed class OpenApiSchema with _$OpenApiSchema {
     @JsonKey(name: 'default') Object? default_,
     @JsonKey(name: 'title') String? title,
     @JsonKey(name: 'nullable') bool? nullable,
+
+    /// `bool` or a schema for the values of a map-typed object.
+    @JsonKey(name: 'additionalProperties') Object? additionalProperties,
   }) = OpenApiSchemaType;
 
   @FreezedUnionValue('ref')
@@ -108,6 +111,7 @@ class OpenApiSchemaJsonConverter
 
   @override
   OpenApiSchema fromJson(Map<String, dynamic> json) {
+    json = normalizeSchemaJson(json);
     if (json.containsKey('anyOf')) {
       return OpenApiSchemaAnyOf.fromJson(json);
     } else if (json.containsKey('oneOf')) {
@@ -153,4 +157,26 @@ class OpenApiSchemaJsonConverter
 
     return newJson;
   }
+}
+
+/// Rewrites OpenAPI 3.1 forms into the shapes the models parse:
+/// - `type: [T, "null"]` → `type: T, nullable: true` (several non-null
+///   types → no type, i.e. `dynamic`);
+/// - an `allOf` with a single entry → that entry, keeping the outer keys
+///   (`nullable`, `default`, `description`, ...).
+Map<String, dynamic> normalizeSchemaJson(Map<String, dynamic> json) {
+  if (json['type'] case final List<dynamic> types) {
+    final concrete = types.where((t) => t != 'null').toList();
+    json = {
+      ...json..remove('type'),
+      if (concrete.length == 1) 'type': concrete.single,
+      if (types.contains('null')) 'nullable': true,
+    };
+  }
+
+  if (json['allOf'] case [final Map<String, dynamic> only]) {
+    json = {...normalizeSchemaJson(only), ...json..remove('allOf')};
+  }
+
+  return json;
 }

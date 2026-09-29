@@ -61,6 +61,9 @@ _OpenApiSchemas _$OpenApiSchemasFromJson(
       : OpenApiSchemaOneOfDiscriminator.fromJson(
           json['discriminator'] as Map<String, dynamic>,
         ),
+  allOf: (json['allOf'] as List<dynamic>?)
+      ?.map((e) => e as Map<String, dynamic>)
+      .toList(),
 );
 
 Map<String, dynamic> _$OpenApiSchemasToJson(_OpenApiSchemas instance) =>
@@ -83,4 +86,5 @@ Map<String, dynamic> _$OpenApiSchemasToJson(_OpenApiSchemas instance) =>
           ?.map(const OpenApiSchemaJsonConverter().toJson)
           .toList(),
       'discriminator': ?instance.discriminator?.toJson(),
+      'allOf': ?instance.allOf,
     };
