@@ -1,0 +1,4 @@
+swagger_to_dart:
+  generation_source: FastAPI
+  model:
+    support_generic_arguments: true

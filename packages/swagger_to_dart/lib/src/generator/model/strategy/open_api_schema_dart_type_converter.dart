@@ -1,4 +1,3 @@
-import 'package:collection/collection.dart';
 import 'package:swagger_to_dart/src/code/string.dart';
 import 'package:swagger_to_dart/src/generator/model/strategy/generic_parser_factory.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
@@ -28,11 +27,8 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
       OpenApiSchemaOneOf schema => getOneOf(schema, className: className),
     };
 
-    final override = overrideTypes.entries.firstWhereOrNull(
-      (entry) => entry.value == dartType,
-    );
-
-    final finalType = override?.key ?? dartType;
+    // Generic models map a concrete type to its type parameter (Item -> T).
+    final finalType = overrideTypes[dartType] ?? dartType;
 
     if (_isNullable(schema)) {
       return nullable(finalType);
@@ -75,6 +71,10 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
     return _processGenericTitle(title);
   }
 
+  /// Dart type for a schema title such as `Page[Item]`, `list[str]`,
+  /// `Result<User>` or `int`.
+  String dartTypeForTitle(String title) => _processGenericTitle(title);
+
   String _processGenericTitle(String title) {
     // Convert ABP, FastAPI, or .NET format to standard format if needed
     final parser = GenericParserFactory.instance.detectParser(title);
@@ -114,7 +114,14 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
       case 'number':
         return 'double';
       case 'string':
+      case 'str':
         return 'String';
+      case 'float':
+        return 'double';
+      case 'any':
+        return 'dynamic';
+      case 'dict':
+        return 'Map';
       default:
         final prefixes = context.config.model.removeModelPrefixes;
         return Renaming.instance.renameClass(
