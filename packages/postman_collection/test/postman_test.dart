@@ -8,7 +8,7 @@ void main() {
   group('A group of tests', () {
     test('First Test', () async {
       final file =
-          File('./test/assets/test2.postman_collection_collection.json');
+          File('./test/assets/test2.postman_collection.json');
       final content = file.readAsStringSync();
       final actual = jsonDecode(content);
 

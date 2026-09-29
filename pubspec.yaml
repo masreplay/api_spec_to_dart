@@ -6,3 +6,4 @@ environment:
 
 workspace:
   - packages/swagger_to_dart
+  - packages/postman_collection
