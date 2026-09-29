@@ -1,4 +1,6 @@
 /// ColorModel
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "color": {
@@ -13,11 +15,12 @@
 ///     ],
 ///     "title": "ColorModel"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'color_model.freezed.dart';
-part 'color_model.g.dart'; // ColorModel
+part 'color_model.g.dart';
 
 @freezed
 abstract class ColorModel with _$ColorModel {
@@ -32,5 +35,5 @@ abstract class ColorModel with _$ColorModel {
   factory ColorModel.fromJson(Map<String, dynamic> json) =>
       _$ColorModelFromJson(json);
 
-  static const String colorKey_ = r'color';
+  static const String colorKey_ = 'color';
 }

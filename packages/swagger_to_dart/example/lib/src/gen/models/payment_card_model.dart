@@ -1,4 +1,6 @@
 /// PaymentCardModel
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "card_number": {
@@ -24,11 +26,12 @@
 ///     ],
 ///     "title": "PaymentCardModel"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'payment_card_model.freezed.dart';
-part 'payment_card_model.g.dart'; // PaymentCardModel
+part 'payment_card_model.g.dart';
 
 @freezed
 abstract class PaymentCardModel with _$PaymentCardModel {
@@ -46,7 +49,7 @@ abstract class PaymentCardModel with _$PaymentCardModel {
   factory PaymentCardModel.fromJson(Map<String, dynamic> json) =>
       _$PaymentCardModelFromJson(json);
 
-  static const String cardNumberKey_ = r'card_number';
+  static const String cardNumberKey_ = 'card_number';
 
-  static const String cardBrandKey_ = r'card_brand';
+  static const String cardBrandKey_ = 'card_brand';
 }

@@ -1,4 +1,6 @@
 /// AdvancedDependsQueryQueryParameters
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "q": {
@@ -29,11 +31,12 @@
 ///     "type": "object",
 ///     "required": []
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'advanced_depends_query_query_parameters.freezed.dart';
-part 'advanced_depends_query_query_parameters.g.dart'; // AdvancedDependsQueryQueryParameters
+part 'advanced_depends_query_query_parameters.g.dart';
 
 @freezed
 abstract class AdvancedDependsQueryQueryParameters
@@ -58,12 +61,11 @@ abstract class AdvancedDependsQueryQueryParameters
 
   factory AdvancedDependsQueryQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$AdvancedDependsQueryQueryParametersFromJson(json);
+  ) => _$AdvancedDependsQueryQueryParametersFromJson(json);
 
-  static const String qKey_ = r'q';
+  static const String qKey_ = 'q';
 
-  static const String skipKey_ = r'skip';
+  static const String skipKey_ = 'skip';
 
-  static const String limitKey_ = r'limit';
+  static const String limitKey_ = 'limit';
 }

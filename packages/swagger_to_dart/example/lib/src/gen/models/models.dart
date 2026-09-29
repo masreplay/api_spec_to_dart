@@ -1,5 +1,3 @@
-library;
-
 export 'aba_routing_model.dart';
 export 'all_types_with_validation.dart';
 export 'base_response.dart';
@@ -79,3 +77,4 @@ export 'validation_constrained_string_query_parameters.dart';
 export 'generic_get_items_query_parameters.dart';
 export 'generic_get_categories_query_parameters.dart';
 export 'generic_get_nested_base_and_pagination_query_parameters.dart';
+export 'animal2.dart';

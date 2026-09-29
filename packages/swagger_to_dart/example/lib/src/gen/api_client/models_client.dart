@@ -1,7 +1,6 @@
-library;
-
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
+
 import '../models/models.dart';
 part 'models_client.g.dart';
 
@@ -19,33 +18,34 @@ abstract class ModelsClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'models'],
-      r'summary': r'Create User',
-      r'description': r'Create a new user from a Pydantic model.',
-      r'operationId': r'models-create_user',
-      r'requestBody': {
-        r'content': {
-          r'application/json': {
-            r'schema': {r'$ref': r'#/components/schemas/UserCreate'},
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['models'],
+      'summary': 'Create User',
+      'description': 'Create a new user from a Pydantic model.',
+      'operationId': 'models-create_user',
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {'\$ref': '#/components/schemas/UserCreate'},
           },
         },
-        r'required': true,
+        'required': true,
       },
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/User'},
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/User'},
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -58,37 +58,38 @@ abstract class ModelsClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'models'],
-      r'summary': r'Process location information',
-      r'description': r'Handle a Pydantic model as query parameters.',
-      r'operationId': r'models-get_location',
-      r'requestBody': {
-        r'content': {
-          r'application/json': {
-            r'schema': {r'$ref': r'#/components/schemas/Location'},
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['models'],
+      'summary': 'Process location information',
+      'description': 'Handle a Pydantic model as query parameters.',
+      'operationId': 'models-get_location',
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {'\$ref': '#/components/schemas/Location'},
           },
         },
-        r'required': true,
+        'required': true,
       },
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'additionalProperties': true,
-                r'type': r'object',
-                r'title': r'Response Models-Get Location',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'additionalProperties': true,
+                'type': 'object',
+                'title': 'Response Models-Get Location',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -100,17 +101,18 @@ abstract class ModelsClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'models'],
-      r'summary': r'Return a filtered response model',
-      r'description': r'Return a response filtered by the response_model.',
-      r'operationId': r'models-response_filtered',
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/User'},
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['models'],
+      'summary': 'Return a filtered response model',
+      'description': 'Return a response filtered by the response_model.',
+      'operationId': 'models-response_filtered',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/User'},
             },
           },
         },
@@ -123,47 +125,48 @@ abstract class ModelsClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'models'],
-      r'summary': r'Return different response models based on query',
-      r'description':
-          r'Return different response models based on query parameters.',
-      r'operationId': r'models-response_multiple',
-      r'parameters': [
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['models'],
+      'summary': 'Return different response models based on query',
+      'description':
+          'Return different response models based on query parameters.',
+      'operationId': 'models-response_multiple',
+      'parameters': [
         {
-          r'name': r'is_user',
-          r'in': r'query',
-          r'required': false,
-          r'schema': {
-            r'type': r'boolean',
-            r'description': r'Whether to return a user or location',
-            r'default': true,
-            r'title': r'Is User',
+          'name': 'is_user',
+          'in': 'query',
+          'required': false,
+          'schema': {
+            'type': 'boolean',
+            'description': 'Whether to return a user or location',
+            'default': true,
+            'title': 'Is User',
           },
-          r'description': r'Whether to return a user or location',
-          r'example': true,
+          'description': 'Whether to return a user or location',
+          'example': true,
         },
       ],
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'anyOf': [
-                  {r'$ref': r'#/components/schemas/User'},
-                  {r'$ref': r'#/components/schemas/Location'},
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'anyOf': [
+                  {'\$ref': '#/components/schemas/User'},
+                  {'\$ref': '#/components/schemas/Location'},
                 ],
-                r'title': r'Response Models-Response Multiple',
+                'title': 'Response Models-Response Multiple',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -175,20 +178,21 @@ abstract class ModelsClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'models'],
-      r'summary': r'Return a list of models',
-      r'description': r'Return a list of items with a response model.',
-      r'operationId': r'models-response_list',
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'items': {r'$ref': r'#/components/schemas/User'},
-                r'type': r'array',
-                r'title': r'Response Models-Response List',
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['models'],
+      'summary': 'Return a list of models',
+      'description': 'Return a list of items with a response model.',
+      'operationId': 'models-response_list',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'items': {'\$ref': '#/components/schemas/User'},
+                'type': 'array',
+                'title': 'Response Models-Response List',
               },
             },
           },

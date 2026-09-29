@@ -1,5 +1,6 @@
 /// PaginationResponse_CategoryResponse_
-/// PaginationResponse
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "items": {
@@ -36,6 +37,7 @@
 ///     ],
 ///     "title": "PaginationResponse[CategoryResponse]"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
@@ -50,11 +52,11 @@ abstract class PaginationResponse<T> with _$PaginationResponse<T> {
     converters: jsonSerializableConverters,
     genericArgumentFactories: true,
     createFieldMap: true,
+    explicitToJson: true,
   )
   const factory PaginationResponse({
     /// items
-    @JsonKey(name: PaginationResponse.itemsKey_)
-    required List<CategoryResponse> items,
+    @JsonKey(name: PaginationResponse.itemsKey_) required List<T> items,
 
     /// total
     @JsonKey(name: PaginationResponse.totalKey_) required int total,
@@ -72,16 +74,15 @@ abstract class PaginationResponse<T> with _$PaginationResponse<T> {
   factory PaginationResponse.fromJson(
     Map<String, dynamic> json,
     T Function(Object? json) fromJsonT,
-  ) =>
-      _$PaginationResponseFromJson<T>(json, fromJsonT);
+  ) => _$PaginationResponseFromJson<T>(json, fromJsonT);
 
-  static const String itemsKey_ = r'items';
+  static const String itemsKey_ = 'items';
 
-  static const String totalKey_ = r'total';
+  static const String totalKey_ = 'total';
 
-  static const String pageKey_ = r'page';
+  static const String pageKey_ = 'page';
 
-  static const String perPageKey_ = r'per_page';
+  static const String perPageKey_ = 'per_page';
 
-  static const String totalPagesKey_ = r'total_pages';
+  static const String totalPagesKey_ = 'total_pages';
 }

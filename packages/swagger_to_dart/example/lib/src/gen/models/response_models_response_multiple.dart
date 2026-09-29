@@ -1,4 +1,6 @@
 /// ResponseModelsResponseMultiple
+///
+/// ```json
 /// {
 ///     "anyOf": [
 ///         {
@@ -11,33 +13,91 @@
 ///     "title": "Response Models-Response Multiple",
 ///     "runtimeType": "anyOf"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
-part 'response_models_response_multiple.freezed.dart';
-part 'response_models_response_multiple.g.dart'; // ResponseModelsResponseMultiple
 
-@Freezed(fallbackUnion: r'fallback')
-sealed class ResponseModelsResponseMultiple
-    with _$ResponseModelsResponseMultiple {
-  const ResponseModelsResponseMultiple._();
+sealed class ResponseModelsResponseMultiple {
+  const ResponseModelsResponseMultiple();
 
-  @jsonSerializable
-  @FreezedUnionValue(r'User')
   const factory ResponseModelsResponseMultiple.user(User value) =
       ResponseModelsResponseMultipleUser;
-
-  @jsonSerializable
-  @FreezedUnionValue(r'Location')
   const factory ResponseModelsResponseMultiple.location(Location value) =
       ResponseModelsResponseMultipleLocation;
-
-  @jsonSerializable
-  @FreezedUnionValue(r'fallback')
   const factory ResponseModelsResponseMultiple.fallback(
-    Map<String, dynamic>? value,
+    Map<String, dynamic> value,
   ) = ResponseModelsResponseMultipleFallback;
 
-  factory ResponseModelsResponseMultiple.fromJson(Map<String, dynamic> json) =>
-      _$ResponseModelsResponseMultipleFromJson(json);
+  factory ResponseModelsResponseMultiple.fromJson(Map<String, dynamic> json) {
+    // No discriminator in the spec: the first variant that decodes wins.
+    for (final decode
+        in <ResponseModelsResponseMultiple Function(Map<String, dynamic>)>[
+          (json) => ResponseModelsResponseMultipleUser(User.fromJson(json)),
+          (json) =>
+              ResponseModelsResponseMultipleLocation(Location.fromJson(json)),
+        ]) {
+      try {
+        return decode(json);
+      } catch (_) {
+        // Not this variant; try the next one.
+      }
+    }
+    return ResponseModelsResponseMultipleFallback(json);
+  }
+
+  Map<String, dynamic> toJson();
+}
+
+final class ResponseModelsResponseMultipleUser
+    extends ResponseModelsResponseMultiple {
+  const ResponseModelsResponseMultipleUser(this.value);
+
+  final User value;
+
+  @override
+  Map<String, dynamic> toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ResponseModelsResponseMultipleUser && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'ResponseModelsResponseMultiple.user($value)';
+}
+
+final class ResponseModelsResponseMultipleLocation
+    extends ResponseModelsResponseMultiple {
+  const ResponseModelsResponseMultipleLocation(this.value);
+
+  final Location value;
+
+  @override
+  Map<String, dynamic> toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ResponseModelsResponseMultipleLocation && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'ResponseModelsResponseMultiple.location($value)';
+}
+
+final class ResponseModelsResponseMultipleFallback
+    extends ResponseModelsResponseMultiple {
+  const ResponseModelsResponseMultipleFallback(this.value);
+
+  final Map<String, dynamic> value;
+
+  @override
+  Map<String, dynamic> toJson() => value;
+
+  @override
+  String toString() => 'ResponseModelsResponseMultiple.fallback($value)';
 }

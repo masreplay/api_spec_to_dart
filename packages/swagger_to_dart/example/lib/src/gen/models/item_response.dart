@@ -1,4 +1,6 @@
 /// ItemResponse-Input
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "id": {
@@ -17,11 +19,12 @@
 ///     ],
 ///     "title": "ItemResponse"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'item_response.freezed.dart';
-part 'item_response.g.dart'; // ItemResponse
+part 'item_response.g.dart';
 
 @freezed
 abstract class ItemResponse with _$ItemResponse {
@@ -39,7 +42,7 @@ abstract class ItemResponse with _$ItemResponse {
   factory ItemResponse.fromJson(Map<String, dynamic> json) =>
       _$ItemResponseFromJson(json);
 
-  static const String idKey_ = r'id';
+  static const String idKey_ = 'id';
 
-  static const String nameKey_ = r'name';
+  static const String nameKey_ = 'name';
 }

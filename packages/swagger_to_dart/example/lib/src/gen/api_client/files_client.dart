@@ -1,7 +1,6 @@
-library;
-
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
+
 import '../models/models.dart';
 part 'files_client.g.dart';
 
@@ -20,37 +19,38 @@ abstract class FilesClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'files'],
-      r'summary': r'Handle basic form data',
-      r'description': r'Handle form data.',
-      r'operationId': r'files-form_basic',
-      r'requestBody': {
-        r'content': {
-          r'application/x-www-form-urlencoded': {
-            r'schema': {r'$ref': r'#/components/schemas/Body_files-form_basic'},
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['files'],
+      'summary': 'Handle basic form data',
+      'description': 'Handle form data.',
+      'operationId': 'files-form_basic',
+      'requestBody': {
+        'content': {
+          'application/x-www-form-urlencoded': {
+            'schema': {'\$ref': '#/components/schemas/Body_files-form_basic'},
           },
         },
-        r'required': true,
+        'required': true,
       },
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'additionalProperties': true,
-                r'type': r'object',
-                r'title': r'Response Files-Form Basic',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'additionalProperties': true,
+                'type': 'object',
+                'title': 'Response Files-Form Basic',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -64,39 +64,38 @@ abstract class FilesClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'files'],
-      r'summary': r'Handle single file upload',
-      r'description': r'Handle file upload.',
-      r'operationId': r'files-file_upload',
-      r'requestBody': {
-        r'content': {
-          r'multipart/form-data': {
-            r'schema': {
-              r'$ref': r'#/components/schemas/Body_files-file_upload',
-            },
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['files'],
+      'summary': 'Handle single file upload',
+      'description': 'Handle file upload.',
+      'operationId': 'files-file_upload',
+      'requestBody': {
+        'content': {
+          'multipart/form-data': {
+            'schema': {'\$ref': '#/components/schemas/Body_files-file_upload'},
           },
         },
-        r'required': true,
+        'required': true,
       },
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'additionalProperties': true,
-                r'type': r'object',
-                r'title': r'Response Files-File Upload',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'additionalProperties': true,
+                'type': 'object',
+                'title': 'Response Files-File Upload',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -110,39 +109,40 @@ abstract class FilesClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'files'],
-      r'summary': r'Handle multiple file uploads',
-      r'description': r'Handle multiple file uploads.',
-      r'operationId': r'files-files_multiple',
-      r'requestBody': {
-        r'content': {
-          r'multipart/form-data': {
-            r'schema': {
-              r'$ref': r'#/components/schemas/Body_files-files_multiple',
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['files'],
+      'summary': 'Handle multiple file uploads',
+      'description': 'Handle multiple file uploads.',
+      'operationId': 'files-files_multiple',
+      'requestBody': {
+        'content': {
+          'multipart/form-data': {
+            'schema': {
+              '\$ref': '#/components/schemas/Body_files-files_multiple',
             },
           },
         },
-        r'required': true,
+        'required': true,
       },
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'additionalProperties': true,
-                r'type': r'object',
-                r'title': r'Response Files-Files Multiple',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'additionalProperties': true,
+                'type': 'object',
+                'title': 'Response Files-Files Multiple',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -157,39 +157,38 @@ extension FilesClientX on FilesClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'files'],
-      r'summary': r'Handle single file upload',
-      r'description': r'Handle file upload.',
-      r'operationId': r'files-file_upload',
-      r'requestBody': {
-        r'content': {
-          r'multipart/form-data': {
-            r'schema': {
-              r'$ref': r'#/components/schemas/Body_files-file_upload',
-            },
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['files'],
+      'summary': 'Handle single file upload',
+      'description': 'Handle file upload.',
+      'operationId': 'files-file_upload',
+      'requestBody': {
+        'content': {
+          'multipart/form-data': {
+            'schema': {'\$ref': '#/components/schemas/Body_files-file_upload'},
           },
         },
-        r'required': true,
+        'required': true,
       },
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'additionalProperties': true,
-                r'type': r'object',
-                r'title': r'Response Files-File Upload',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'additionalProperties': true,
+                'type': 'object',
+                'title': 'Response Files-File Upload',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -210,39 +209,40 @@ extension FilesClientX on FilesClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'files'],
-      r'summary': r'Handle multiple file uploads',
-      r'description': r'Handle multiple file uploads.',
-      r'operationId': r'files-files_multiple',
-      r'requestBody': {
-        r'content': {
-          r'multipart/form-data': {
-            r'schema': {
-              r'$ref': r'#/components/schemas/Body_files-files_multiple',
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['files'],
+      'summary': 'Handle multiple file uploads',
+      'description': 'Handle multiple file uploads.',
+      'operationId': 'files-files_multiple',
+      'requestBody': {
+        'content': {
+          'multipart/form-data': {
+            'schema': {
+              '\$ref': '#/components/schemas/Body_files-files_multiple',
             },
           },
         },
-        r'required': true,
+        'required': true,
       },
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'additionalProperties': true,
-                r'type': r'object',
-                r'title': r'Response Files-Files Multiple',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'additionalProperties': true,
+                'type': 'object',
+                'title': 'Response Files-Files Multiple',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },

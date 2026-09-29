@@ -1,4 +1,6 @@
 /// LanguageModel
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "alpha2": {
@@ -8083,11 +8085,12 @@
 ///     "type": "object",
 ///     "title": "LanguageModel"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'language_model.freezed.dart';
-part 'language_model.g.dart'; // LanguageModel
+part 'language_model.g.dart';
 
 @freezed
 abstract class LanguageModel with _$LanguageModel {
@@ -8111,11 +8114,11 @@ abstract class LanguageModel with _$LanguageModel {
   factory LanguageModel.fromJson(Map<String, dynamic> json) =>
       _$LanguageModelFromJson(json);
 
-  static const String alpha2Key_ = r'alpha2';
+  static const String alpha2Key_ = 'alpha2';
 
-  static const String nameKey_ = r'name';
+  static const String nameKey_ = 'name';
 
-  static const String iso6393Key_ = r'iso639_3';
+  static const String iso6393Key_ = 'iso639_3';
 
-  static const String iso6395Key_ = r'iso639_5';
+  static const String iso6395Key_ = 'iso639_5';
 }

@@ -1,4 +1,6 @@
 /// AdvancedCollectionTupleQueryParameters
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "items": {
@@ -11,11 +13,12 @@
 ///         "items"
 ///     ]
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'advanced_collection_tuple_query_parameters.freezed.dart';
-part 'advanced_collection_tuple_query_parameters.g.dart'; // AdvancedCollectionTupleQueryParameters
+part 'advanced_collection_tuple_query_parameters.g.dart';
 
 @freezed
 abstract class AdvancedCollectionTupleQueryParameters
@@ -31,8 +34,7 @@ abstract class AdvancedCollectionTupleQueryParameters
 
   factory AdvancedCollectionTupleQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$AdvancedCollectionTupleQueryParametersFromJson(json);
+  ) => _$AdvancedCollectionTupleQueryParametersFromJson(json);
 
-  static const String itemsKey_ = r'items';
+  static const String itemsKey_ = 'items';
 }

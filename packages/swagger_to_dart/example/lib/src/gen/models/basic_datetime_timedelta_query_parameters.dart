@@ -1,4 +1,6 @@
 /// BasicDatetimeTimedeltaQueryParameters
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "td": {
@@ -12,11 +14,12 @@
 ///         "td"
 ///     ]
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'basic_datetime_timedelta_query_parameters.freezed.dart';
-part 'basic_datetime_timedelta_query_parameters.g.dart'; // BasicDatetimeTimedeltaQueryParameters
+part 'basic_datetime_timedelta_query_parameters.g.dart';
 
 @freezed
 abstract class BasicDatetimeTimedeltaQueryParameters
@@ -32,8 +35,7 @@ abstract class BasicDatetimeTimedeltaQueryParameters
 
   factory BasicDatetimeTimedeltaQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$BasicDatetimeTimedeltaQueryParametersFromJson(json);
+  ) => _$BasicDatetimeTimedeltaQueryParametersFromJson(json);
 
-  static const String tdKey_ = r'td';
+  static const String tdKey_ = 'td';
 }

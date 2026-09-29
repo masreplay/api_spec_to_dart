@@ -1,7 +1,6 @@
-library;
-
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
+
 import '../models/models.dart';
 part 'validation_client.g.dart';
 
@@ -19,44 +18,45 @@ abstract class ValidationClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'validation'],
-      r'summary': r'Demonstrate path parameter validation',
-      r'description': r'Path parameter with validation.',
-      r'operationId': r'validation-param_path',
-      r'parameters': [
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['validation'],
+      'summary': 'Demonstrate path parameter validation',
+      'description': 'Path parameter with validation.',
+      'operationId': 'validation-param_path',
+      'parameters': [
         {
-          r'name': r'item_id',
-          r'in': r'path',
-          r'required': true,
-          r'schema': {
-            r'type': r'integer',
-            r'minimum': 1,
-            r'title': r'Item ID',
-            r'description': r'The ID of the item',
+          'name': 'item_id',
+          'in': 'path',
+          'required': true,
+          'schema': {
+            'type': 'integer',
+            'minimum': 1,
+            'title': 'Item ID',
+            'description': 'The ID of the item',
           },
-          r'description': r'The ID of the item',
-          r'example': 42,
+          'description': 'The ID of the item',
+          'example': 42,
         },
       ],
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'type': r'object',
-                r'additionalProperties': true,
-                r'title': r'Response Validation-Param Path',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'additionalProperties': true,
+                'title': 'Response Validation-Param Path',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -69,82 +69,82 @@ abstract class ValidationClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'validation'],
-      r'summary': r'Demonstrate query parameter validation',
-      r'description': r'Query parameters with validation.',
-      r'operationId': r'validation-param_query',
-      r'parameters': [
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['validation'],
+      'summary': 'Demonstrate query parameter validation',
+      'description': 'Query parameters with validation.',
+      'operationId': 'validation-param_query',
+      'parameters': [
         {
-          r'name': r'q',
-          r'in': r'query',
-          r'required': false,
-          r'schema': {
-            r'anyOf': [
+          'name': 'q',
+          'in': 'query',
+          'required': false,
+          'schema': {
+            'anyOf': [
               {
-                r'type': r'string',
-                r'minLength': 3,
-                r'maxLength': 50,
-                r'pattern': r'^[a-zA-Z0-9_-]+$',
+                'type': 'string',
+                'minLength': 3,
+                'maxLength': 50,
+                'pattern': '^[a-zA-Z0-9_-]+\$',
               },
-              {r'type': r'null'},
+              {'type': 'null'},
             ],
-            r'description':
-                r'Search query string (alphanumeric with hyphens and underscores)',
-            r'title': r'Q',
+            'description': 'Search query string (alphanumeric with hyphens and underscores)',
+            'title': 'Q',
           },
-          r'description':
-              r'Search query string (alphanumeric with hyphens and underscores)',
-          r'example': r'search-term',
+          'description':
+              'Search query string (alphanumeric with hyphens and underscores)',
+          'example': 'search-term',
         },
         {
-          r'name': r'skip',
-          r'in': r'query',
-          r'required': false,
-          r'schema': {
-            r'type': r'integer',
-            r'minimum': 0,
-            r'description': r'Number of items to skip',
-            r'default': 0,
-            r'title': r'Skip',
+          'name': 'skip',
+          'in': 'query',
+          'required': false,
+          'schema': {
+            'type': 'integer',
+            'minimum': 0,
+            'description': 'Number of items to skip',
+            'default': 0,
+            'title': 'Skip',
           },
-          r'description': r'Number of items to skip',
-          r'example': 0,
+          'description': 'Number of items to skip',
+          'example': 0,
         },
         {
-          r'name': r'limit',
-          r'in': r'query',
-          r'required': false,
-          r'schema': {
-            r'type': r'integer',
-            r'maximum': 100,
-            r'minimum': 1,
-            r'description': r'Maximum number of items to return (1-100)',
-            r'default': 10,
-            r'title': r'Limit',
+          'name': 'limit',
+          'in': 'query',
+          'required': false,
+          'schema': {
+            'type': 'integer',
+            'maximum': 100,
+            'minimum': 1,
+            'description': 'Maximum number of items to return (1-100)',
+            'default': 10,
+            'title': 'Limit',
           },
-          r'description': r'Maximum number of items to return (1-100)',
-          r'example': 10,
+          'description': 'Maximum number of items to return (1-100)',
+          'example': 10,
         },
       ],
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'type': r'object',
-                r'additionalProperties': true,
-                r'title': r'Response Validation-Param Query',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'additionalProperties': true,
+                'title': 'Response Validation-Param Query',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -157,39 +157,40 @@ abstract class ValidationClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'validation'],
-      r'summary': r'Demonstrate body parameter validation',
-      r'description': r'Body parameters with validation.',
-      r'operationId': r'validation-param_body',
-      r'requestBody': {
-        r'content': {
-          r'application/json': {
-            r'schema': {
-              r'$ref': r'#/components/schemas/Body_validation-param_body',
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['validation'],
+      'summary': 'Demonstrate body parameter validation',
+      'description': 'Body parameters with validation.',
+      'operationId': 'validation-param_body',
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {
+              '\$ref': '#/components/schemas/Body_validation-param_body',
             },
           },
         },
-        r'required': true,
+        'required': true,
       },
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'additionalProperties': true,
-                r'type': r'object',
-                r'title': r'Response Validation-Param Body',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'additionalProperties': true,
+                'type': 'object',
+                'title': 'Response Validation-Param Body',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -198,60 +199,61 @@ abstract class ValidationClient {
   });
   @GET('/params/cookie')
   Future<HttpResponse<Map<String, dynamic>>> validationParamCookie({
-    @Header('session') required String? session,
-    @Header('preferences') required String? preferences,
+    @Header('session') String? session,
+    @Header('preferences') String? preferences,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'validation'],
-      r'summary': r'Param Cookie',
-      r'description': r'Cookie parameters.',
-      r'operationId': r'validation-param_cookie',
-      r'parameters': [
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['validation'],
+      'summary': 'Param Cookie',
+      'description': 'Cookie parameters.',
+      'operationId': 'validation-param_cookie',
+      'parameters': [
         {
-          r'name': r'session',
-          r'in': r'cookie',
-          r'required': false,
-          r'schema': {
-            r'anyOf': [
-              {r'type': r'string'},
-              {r'type': r'null'},
+          'name': 'session',
+          'in': 'cookie',
+          'required': false,
+          'schema': {
+            'anyOf': [
+              {'type': 'string'},
+              {'type': 'null'},
             ],
-            r'title': r'Session',
+            'title': 'Session',
           },
         },
         {
-          r'name': r'preferences',
-          r'in': r'cookie',
-          r'required': false,
-          r'schema': {
-            r'anyOf': [
-              {r'type': r'string'},
-              {r'type': r'null'},
+          'name': 'preferences',
+          'in': 'cookie',
+          'required': false,
+          'schema': {
+            'anyOf': [
+              {'type': 'string'},
+              {'type': 'null'},
             ],
-            r'title': r'Preferences',
+            'title': 'Preferences',
           },
         },
       ],
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'type': r'object',
-                r'additionalProperties': true,
-                r'title': r'Response Validation-Param Cookie',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'additionalProperties': true,
+                'title': 'Response Validation-Param Cookie',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -260,54 +262,55 @@ abstract class ValidationClient {
   });
   @GET('/params/header')
   Future<HttpResponse<Map<String, dynamic>>> validationParamHeader({
-    @Header('user-agent') required String userMinusAgent,
-    @Header('x-token') required String? xMinusToken,
+    @Header('user-agent') required String userAgent,
+    @Header('x-token') String? xToken,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'validation'],
-      r'summary': r'Param Header',
-      r'description': r'Header parameters.',
-      r'operationId': r'validation-param_header',
-      r'parameters': [
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['validation'],
+      'summary': 'Param Header',
+      'description': 'Header parameters.',
+      'operationId': 'validation-param_header',
+      'parameters': [
         {
-          r'name': r'user-agent',
-          r'in': r'header',
-          r'required': true,
-          r'schema': {r'type': r'string', r'title': r'User-Agent'},
+          'name': 'user-agent',
+          'in': 'header',
+          'required': true,
+          'schema': {'type': 'string', 'title': 'User-Agent'},
         },
         {
-          r'name': r'x-token',
-          r'in': r'header',
-          r'required': false,
-          r'schema': {
-            r'anyOf': [
-              {r'type': r'string'},
-              {r'type': r'null'},
+          'name': 'x-token',
+          'in': 'header',
+          'required': false,
+          'schema': {
+            'anyOf': [
+              {'type': 'string'},
+              {'type': 'null'},
             ],
-            r'title': r'X-Token',
+            'title': 'X-Token',
           },
         },
       ],
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'type': r'object',
-                r'additionalProperties': true,
-                r'title': r'Response Validation-Param Header',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'additionalProperties': true,
+                'title': 'Response Validation-Param Header',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -320,37 +323,36 @@ abstract class ValidationClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'validation'],
-      r'summary': r'Demonstrate complex model validation',
-      r'description': r'Process a model with complex validation rules.',
-      r'operationId': r'validation-validation_complex',
-      r'requestBody': {
-        r'content': {
-          r'application/json': {
-            r'schema': {
-              r'$ref': r'#/components/schemas/AllTypesWithValidation',
-            },
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['validation'],
+      'summary': 'Demonstrate complex model validation',
+      'description': 'Process a model with complex validation rules.',
+      'operationId': 'validation-validation_complex',
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {'\$ref': '#/components/schemas/AllTypesWithValidation'},
           },
         },
-        r'required': true,
+        'required': true,
       },
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'$ref': r'#/components/schemas/AllTypesWithValidation',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                '\$ref': '#/components/schemas/AllTypesWithValidation',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -363,61 +365,62 @@ abstract class ValidationClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'validation'],
-      r'summary': r'Demonstrate conditional validation',
-      r'description': r'Validate that at least one parameter is provided.',
-      r'operationId': r'validation-validation_conditional',
-      r'parameters': [
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['validation'],
+      'summary': 'Demonstrate conditional validation',
+      'description': 'Validate that at least one parameter is provided.',
+      'operationId': 'validation-validation_conditional',
+      'parameters': [
         {
-          r'name': r'user_id',
-          r'in': r'query',
-          r'required': false,
-          r'schema': {
-            r'anyOf': [
-              {r'type': r'integer', r'minimum': 1},
-              {r'type': r'null'},
+          'name': 'user_id',
+          'in': 'query',
+          'required': false,
+          'schema': {
+            'anyOf': [
+              {'type': 'integer', 'minimum': 1},
+              {'type': 'null'},
             ],
-            r'description': r'User ID',
-            r'title': r'User Id',
+            'description': 'User ID',
+            'title': 'User Id',
           },
-          r'description': r'User ID',
-          r'example': 123,
+          'description': 'User ID',
+          'example': 123,
         },
         {
-          r'name': r'username',
-          r'in': r'query',
-          r'required': false,
-          r'schema': {
-            r'anyOf': [
-              {r'type': r'string', r'minLength': 3},
-              {r'type': r'null'},
+          'name': 'username',
+          'in': 'query',
+          'required': false,
+          'schema': {
+            'anyOf': [
+              {'type': 'string', 'minLength': 3},
+              {'type': 'null'},
             ],
-            r'description': r'Username',
-            r'title': r'Username',
+            'description': 'Username',
+            'title': 'Username',
           },
-          r'description': r'Username',
-          r'example': r'johndoe',
+          'description': 'Username',
+          'example': 'johndoe',
         },
       ],
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'type': r'object',
-                r'additionalProperties': true,
-                r'title': r'Response Validation-Validation Conditional',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'additionalProperties': true,
+                'title': 'Response Validation-Validation Conditional',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -430,33 +433,34 @@ abstract class ValidationClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'validation'],
-      r'summary': r'Validate a model with conditional requirements',
-      r'description': r'Validate a body with conditional validation.',
-      r'operationId': r'validation-validation_conditional_body',
-      r'requestBody': {
-        r'content': {
-          r'application/json': {
-            r'schema': {r'$ref': r'#/components/schemas/ConditionalBody'},
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['validation'],
+      'summary': 'Validate a model with conditional requirements',
+      'description': 'Validate a body with conditional validation.',
+      'operationId': 'validation-validation_conditional_body',
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {'\$ref': '#/components/schemas/ConditionalBody'},
           },
         },
-        r'required': true,
+        'required': true,
       },
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/ConditionalBody'},
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/ConditionalBody'},
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -469,45 +473,46 @@ abstract class ValidationClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'validation'],
-      r'summary': r'Demonstrate constrained integer validation',
-      r'description': r'Handle constrained integer with validation.',
-      r'operationId': r'validation-constrained_int',
-      r'parameters': [
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['validation'],
+      'summary': 'Demonstrate constrained integer validation',
+      'description': 'Handle constrained integer with validation.',
+      'operationId': 'validation-constrained_int',
+      'parameters': [
         {
-          r'name': r'value',
-          r'in': r'query',
-          r'required': true,
-          r'schema': {
-            r'type': r'integer',
-            r'minimum': 0,
-            r'exclusiveMaximum': 100,
-            r'description': r'Integer between 0 and 99',
-            r'examples': [42],
-            r'title': r'Value',
+          'name': 'value',
+          'in': 'query',
+          'required': true,
+          'schema': {
+            'type': 'integer',
+            'minimum': 0,
+            'exclusiveMaximum': 100,
+            'description': 'Integer between 0 and 99',
+            'examples': [42],
+            'title': 'Value',
           },
-          r'description': r'Integer between 0 and 99',
+          'description': 'Integer between 0 and 99',
         },
       ],
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'type': r'object',
-                r'additionalProperties': true,
-                r'title': r'Response Validation-Constrained Int',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'additionalProperties': true,
+                'title': 'Response Validation-Constrained Int',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -520,45 +525,46 @@ abstract class ValidationClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'validation'],
-      r'summary': r'Demonstrate constrained float validation',
-      r'description': r'Handle constrained float with validation.',
-      r'operationId': r'validation-constrained_float',
-      r'parameters': [
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['validation'],
+      'summary': 'Demonstrate constrained float validation',
+      'description': 'Handle constrained float with validation.',
+      'operationId': 'validation-constrained_float',
+      'parameters': [
         {
-          r'name': r'value',
-          r'in': r'query',
-          r'required': true,
-          r'schema': {
-            r'type': r'number',
-            r'maximum': 1.0,
-            r'minimum': 0.0,
-            r'description': r'Float between 0.0 and 1.0',
-            r'examples': [0.5],
-            r'title': r'Value',
+          'name': 'value',
+          'in': 'query',
+          'required': true,
+          'schema': {
+            'type': 'number',
+            'maximum': 1.0,
+            'minimum': 0.0,
+            'description': 'Float between 0.0 and 1.0',
+            'examples': [0.5],
+            'title': 'Value',
           },
-          r'description': r'Float between 0.0 and 1.0',
+          'description': 'Float between 0.0 and 1.0',
         },
       ],
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'type': r'object',
-                r'additionalProperties': true,
-                r'title': r'Response Validation-Constrained Float',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'additionalProperties': true,
+                'title': 'Response Validation-Constrained Float',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -571,48 +577,47 @@ abstract class ValidationClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'validation'],
-      r'summary': r'Demonstrate constrained string validation',
-      r'description': r'Handle constrained string with validation.',
-      r'operationId': r'validation-constrained_string',
-      r'parameters': [
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['validation'],
+      'summary': 'Demonstrate constrained string validation',
+      'description': 'Handle constrained string with validation.',
+      'operationId': 'validation-constrained_string',
+      'parameters': [
         {
-          r'name': r'value',
-          r'in': r'query',
-          r'required': true,
-          r'schema': {
-            r'type': r'string',
-            r'minLength': 3,
-            r'maxLength': 50,
-            r'pattern': r'^[a-zA-Z0-9_-]+$',
-            r'description':
-                r'String between 3-50 chars, alphanumeric with hyphens and underscores',
-            r'examples': [r'example-value'],
-            r'title': r'Value',
+          'name': 'value',
+          'in': 'query',
+          'required': true,
+          'schema': {
+            'type': 'string',
+            'minLength': 3,
+            'maxLength': 50,
+            'pattern': '^[a-zA-Z0-9_-]+\$',
+            'description': 'String between 3-50 chars, alphanumeric with hyphens and underscores',
+            'examples': ['example-value'],
+            'title': 'Value',
           },
-          r'description':
-              r'String between 3-50 chars, alphanumeric with hyphens and underscores',
+          'description': 'String between 3-50 chars, alphanumeric with hyphens and underscores',
         },
       ],
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'type': r'object',
-                r'additionalProperties': true,
-                r'title': r'Response Validation-Constrained String',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'additionalProperties': true,
+                'title': 'Response Validation-Constrained String',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },

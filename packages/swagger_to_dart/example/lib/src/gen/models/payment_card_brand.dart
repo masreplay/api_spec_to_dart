@@ -1,24 +1,26 @@
-// PaymentCardBrand
-// {
-//     "type": "string",
-//     "enum": [
-//         "American Express",
-//         "Mastercard",
-//         "Visa",
-//         "Mir",
-//         "Maestro",
-//         "Discover",
-//         "Verve",
-//         "Dankort",
-//         "Troy",
-//         "UnionPay",
-//         "JCB",
-//         "other"
-//     ],
-//     "title": "PaymentCardBrand",
-//     "description": "Payment card brands supported by the [`PaymentCardNumber`][pydantic_extra_types.payment.PaymentCardNumber]."
-// }
-
+/// PaymentCardBrand
+///
+/// ```json
+/// {
+///     "type": "string",
+///     "enum": [
+///         "American Express",
+///         "Mastercard",
+///         "Visa",
+///         "Mir",
+///         "Maestro",
+///         "Discover",
+///         "Verve",
+///         "Dankort",
+///         "Troy",
+///         "UnionPay",
+///         "JCB",
+///         "other"
+///     ],
+///     "title": "PaymentCardBrand",
+///     "description": "Payment card brands supported by the [`PaymentCardNumber`][pydantic_extra_types.payment.PaymentCardNumber]."
+/// }
+/// ```
 library;
 
 import 'exports.dart';

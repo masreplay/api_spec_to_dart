@@ -1,7 +1,6 @@
-library;
-
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
+
 import '../models/models.dart';
 part 'security_client.g.dart';
 
@@ -15,43 +14,43 @@ abstract class SecurityClient {
 
   @POST('/token')
   @FormUrlEncoded()
-  Future<HttpResponse<Map<String, dynamic>>> securityLogin({
+  Future<HttpResponse<Map<String, String>>> securityLogin({
     @Body() required BodySecurityLogin requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'security'],
-      r'summary': r'Get an access token',
-      r'description':
-          r'OAuth2 compatible token login, get an access token for future requests.',
-      r'operationId': r'security-login',
-      r'requestBody': {
-        r'content': {
-          r'application/x-www-form-urlencoded': {
-            r'schema': {r'$ref': r'#/components/schemas/Body_security-login'},
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['security'],
+      'summary': 'Get an access token',
+      'description': 'OAuth2 compatible token login, get an access token for future requests.',
+      'operationId': 'security-login',
+      'requestBody': {
+        'content': {
+          'application/x-www-form-urlencoded': {
+            'schema': {'\$ref': '#/components/schemas/Body_security-login'},
           },
         },
-        r'required': true,
+        'required': true,
       },
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'additionalProperties': {r'type': r'string'},
-                r'type': r'object',
-                r'title': r'Response Security-Login',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'additionalProperties': {'type': 'string'},
+                'type': 'object',
+                'title': 'Response Security-Login',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -63,27 +62,28 @@ abstract class SecurityClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'security'],
-      r'summary': r'Get current user from token',
-      r'description': r'Get current user based on the token.',
-      r'operationId': r'security-read_users_me',
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'additionalProperties': true,
-                r'type': r'object',
-                r'title': r'Response Security-Read Users Me',
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['security'],
+      'summary': 'Get current user from token',
+      'description': 'Get current user based on the token.',
+      'operationId': 'security-read_users_me',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'additionalProperties': true,
+                'type': 'object',
+                'title': 'Response Security-Read Users Me',
               },
             },
           },
         },
       },
-      r'security': [
-        {r'OAuth2PasswordBearer': []},
+      'security': [
+        {'OAuth2PasswordBearer': []},
       ],
     },
   });
@@ -92,27 +92,28 @@ abstract class SecurityClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'security'],
-      r'summary': r'Get items using API key auth',
-      r'description': r'Get items using API key auth.',
-      r'operationId': r'security-get_secure_items',
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'items': {r'additionalProperties': true, r'type': r'object'},
-                r'type': r'array',
-                r'title': r'Response Security-Get Secure Items',
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['security'],
+      'summary': 'Get items using API key auth',
+      'description': 'Get items using API key auth.',
+      'operationId': 'security-get_secure_items',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'items': {'additionalProperties': true, 'type': 'object'},
+                'type': 'array',
+                'title': 'Response Security-Get Secure Items',
               },
             },
           },
         },
       },
-      r'security': [
-        {r'APIKeyHeader': []},
+      'security': [
+        {'APIKeyHeader': []},
       ],
     },
   });
