@@ -1,0 +1,44 @@
+{
+  "openapi": "3.0.1",
+  "info": { "title": "Content types", "version": "1.0.0" },
+  "paths": {
+    "/text": {
+      "post": {
+        "tags": ["content"],
+        "operationId": "sendText",
+        "requestBody": { "required": true, "content": { "text/plain": { "schema": { "type": "string" } } } },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": { "schema": { "$ref": "#/components/schemas/Result" } },
+              "application/json": { "schema": { "$ref": "#/components/schemas/Result" } },
+              "text/json": { "schema": { "$ref": "#/components/schemas/Result" } }
+            }
+          }
+        }
+      }
+    },
+    "/xml": {
+      "post": {
+        "tags": ["content"],
+        "operationId": "sendXml",
+        "requestBody": { "content": { "application/xml": { "schema": { "type": "string" } } } },
+        "responses": { "200": { "description": "OK", "content": { "application/xml": {} } } }
+      }
+    },
+    "/bytes": {
+      "post": {
+        "tags": ["content"],
+        "operationId": "sendBytes",
+        "requestBody": { "content": { "application/octet-stream": { "schema": { "type": "string", "format": "binary" } } } },
+        "responses": { "204": { "description": "Stored" } }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Result": { "type": "object", "properties": { "ok": { "type": "boolean" } } }
+    }
+  }
+}

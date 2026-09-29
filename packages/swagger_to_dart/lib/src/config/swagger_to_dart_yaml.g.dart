@@ -38,7 +38,7 @@ _ModelConfig _$ModelConfigFromJson(Map<String, dynamic> json) => _ModelConfig(
         _$EnumFallbackTypeEnumMap,
         json['enum_fallback_type'],
       ) ??
-      EnumFallbackType.unknown,
+      EnumFallbackType.throwException,
   removeModelPrefixes:
       (json['remove_model_prefixes'] as List<dynamic>?)
           ?.map((e) => e as String)

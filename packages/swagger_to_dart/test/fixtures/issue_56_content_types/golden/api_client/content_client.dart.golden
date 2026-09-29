@@ -1,0 +1,101 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'content_client.g.dart';
+
+@RestApi()
+abstract class ContentClient {
+  factory ContentClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _ContentClient;
+
+  @POST('/text')
+  @Headers(<String, dynamic>{'Content-Type': 'text/plain'})
+  Future<HttpResponse<Result>> sendText({
+    @Body() required String requestBody,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['content'],
+      'operationId': 'sendText',
+      'requestBody': {
+        'required': true,
+        'content': {
+          'text/plain': {
+            'schema': {'type': 'string'},
+          },
+        },
+      },
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {
+            'text/plain': {
+              'schema': {'\$ref': '#/components/schemas/Result'},
+            },
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/Result'},
+            },
+            'text/json': {
+              'schema': {'\$ref': '#/components/schemas/Result'},
+            },
+          },
+        },
+      },
+    },
+  });
+  @POST('/xml')
+  @Headers(<String, dynamic>{'Content-Type': 'application/xml'})
+  Future<HttpResponse<String>> sendXml({
+    @Body() required String requestBody,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['content'],
+      'operationId': 'sendXml',
+      'requestBody': {
+        'content': {
+          'application/xml': {
+            'schema': {'type': 'string'},
+          },
+        },
+      },
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {'application/xml': {}},
+        },
+      },
+    },
+  });
+  @POST('/bytes')
+  @Headers(<String, dynamic>{'Content-Type': 'application/octet-stream'})
+  Future<HttpResponse> sendBytes({
+    @Body() required List<int> requestBody,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['content'],
+      'operationId': 'sendBytes',
+      'requestBody': {
+        'content': {
+          'application/octet-stream': {
+            'schema': {'type': 'string', 'format': 'binary'},
+          },
+        },
+      },
+      'responses': {
+        '204': {'description': 'Stored'},
+      },
+    },
+  });
+}

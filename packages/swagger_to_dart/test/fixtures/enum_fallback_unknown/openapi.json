@@ -1,0 +1,20 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Enum fallback", "version": "1.0.0" },
+  "paths": {},
+  "components": {
+    "schemas": {
+      "Status": { "type": "string", "enum": ["active", "inactive"] },
+      "Level": { "type": "integer", "enum": [1, 2] },
+      "Existing": { "type": "string", "enum": ["unknown", "ok"] },
+      "Holder": {
+        "type": "object",
+        "required": ["status", "level"],
+        "properties": {
+          "status": { "$ref": "#/components/schemas/Status" },
+          "level": { "$ref": "#/components/schemas/Level" }
+        }
+      }
+    }
+  }
+}

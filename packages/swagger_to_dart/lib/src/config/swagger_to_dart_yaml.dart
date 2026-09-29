@@ -39,7 +39,8 @@ abstract class SwaggerToDartYaml with _$SwaggerToDartYaml {
 
 @JsonEnum(alwaysCreate: true)
 enum EnumFallbackType {
-  /// Create a new instance of the enum with the value 'unknown'
+  /// Decode unrecognized values to an `unknown` member (added unless the
+  /// enum already has one).
   unknown,
 
   /// Use the first value of the enum
@@ -62,7 +63,7 @@ abstract class ModelConfig with _$ModelConfig {
     @JsonKey(name: 'support_generic_arguments')
     bool supportGenericArguments,
     @JsonKey(name: 'union_class_fallback_name') String? unionClassFallbackName,
-    @Default(EnumFallbackType.unknown)
+    @Default(EnumFallbackType.throwException)
     @JsonKey(name: 'enum_fallback_type')
     EnumFallbackType enumFallbackType,
     @Default([])
