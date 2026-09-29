@@ -2,16 +2,21 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/masreplay/swagger_to_dart/main/docs/logo-dark.svg" width="400">
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/masreplay/swagger_to_dart/main/docs/logo-light.svg" width="400">
-    <img alt="Swagger to Dart logo" src="https://raw.githubusercontent.com/masreplay/swagger_to_dart/main/docs/logo-light.svg" width="400">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/masreplay/api_spec_to_dart/main/docs/logo-dark.svg" width="400">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/masreplay/api_spec_to_dart/main/docs/logo-light.svg" width="400">
+    <img alt="Swagger to Dart logo" src="https://raw.githubusercontent.com/masreplay/api_spec_to_dart/main/docs/logo-light.svg" width="400">
   </picture>
 </p>
 
 [![Pub Version](https://img.shields.io/pub/v/swagger_to_dart.svg)](https://pub.dev/packages/swagger_to_dart)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-A powerful Dart package that auto-generates type-safe API clients and models from OpenAPI specifications (Swagger). Currently optimized for OpenAPI 3.1.0 specifications.
+A powerful Dart package that auto-generates type-safe API clients and models from OpenAPI specifications (Swagger). Supports OpenAPI 3.0 and 3.1 specifications.
+
+## Requirements
+
+- **Dart >= 3.9** (bundled with **Flutter >= 3.35**) to run `swagger_to_dart` itself.
+- The code it generates uses `json_serializable` >= 6.10, which emits Dart 3.8 syntax (null-aware elements) in `.g.dart` files. Your **consuming project's** own SDK lower bound must be at least `3.8.0` (e.g. `environment: sdk: '>=3.8.0 <4.0.0'`) or that generated code won't compile.
 
 ## Support
 
@@ -107,16 +112,6 @@ analyzer:
 
 ### Generate code from your OpenAPI specification
 
-There are two ways to generate code from your OpenAPI specification:
-
-#### 1. Using the command line
-
-```sh
-dart run swagger_to_dart --input path/to/openapi.json --output lib/api
-```
-
-#### 2. Using a configuration file
-
 Create a `swagger_to_dart.yaml` file in your project root:
 
 ```yaml
@@ -135,18 +130,26 @@ swagger_to_dart:
       - X-API-Key
 ```
 
-Then run:
+See **Configuration Options** below for every key. Then run:
 
 ```sh
 dart run swagger_to_dart
 ```
 
-### Run code generation
-
-After generating the API clients and models, run the build_runner to generate the necessary code:
+The CLI takes one optional flag: `--config` (short `-c`) points to a config
+file at a different path. It defaults to `swagger_to_dart.yaml` in the
+current directory.
 
 ```sh
-dart run build_runner build --delete-conflicting-outputs
+dart run swagger_to_dart [--config path/to/swagger_to_dart.yaml]
+```
+
+### Run code generation
+
+After generating the API clients and models, run build_runner to generate the necessary code:
+
+```sh
+dart run build_runner build
 ```
 
 ## Example Usage
@@ -164,7 +167,7 @@ Once you've set up your configuration file, run the following commands:
 dart run swagger_to_dart
 
 # Then, generate the implementation with freezed, json_serializable, and retrofit
-dart run build_runner build --delete-conflicting-outputs
+dart run build_runner build
 ```
 
 ### 3. Use the generated code
@@ -201,9 +204,138 @@ void main() async {
 
 ## Configuration Options
 
-The package configuration is defined in a `swagger_to_dart.yaml` file
+The package configuration is defined in a `swagger_to_dart.yaml` file. Every
+key, with its default:
 
-### Configuration Fields Explained
+```yaml
+swagger_to_dart:
+  # Fetch the spec from a URL instead of only reading `input_directory`.
+  # On success, `input_directory` is overwritten with the fetched JSON
+  # (pretty-printed) so it stays a fresh local copy. On failure, generation
+  # falls back to the existing local copy with a loud console warning
+  # naming its age; with no local copy either, generation fails.
+  # Default: unset (read `input_directory` only).
+  url: https://api.example.com/openapi.json
+
+  # Local OpenAPI JSON file: read directly when `url` is unset, and used as
+  # the fetch/refresh target when it is set.
+  input_directory: schema/swagger.json # default
+
+  # Where generated models and API clients are written.
+  output_directory: lib/src/gen # default
+
+  # Backend that produced the spec: FastAPI | dotnet | abp.io. Selects the
+  # generic-type-name parser (e.g. `PagedResultDto<UserDto>`-style naming
+  # differs per framework) and, in Flutter projects, which string `format`s
+  # map to native types instead of `String` (color / color-hex -> Color,
+  # FastAPI only; time / duration -> TimeOfDay, FastAPI only).
+  # Default: unset.
+  generation_source: FastAPI
+
+  imports:
+    # Raw import statements prepended verbatim to every generated file.
+    # Default: [].
+    global:
+      - "import 'package:my_app/interceptors.dart';"
+
+  model:
+    # Generate a real generic Dart class (`class Foo<T>`, with a generic
+    # `fromJson`) for a component schema whose title matches
+    # `generation_source`'s generic-instantiation naming convention,
+    # instead of one flat class per instantiation. Default: false.
+    support_generic_arguments: false
+
+    # Name of the fallback variant for a oneOf/anyOf union whose payload
+    # matches no variant (bad/missing discriminator value, or nothing
+    # decodes without error). The fallback wraps the raw
+    # `Map<String, dynamic>`. Default: unset — an unmatched payload throws
+    # `ArgumentError` instead.
+    union_class_fallback_name: fallback
+
+    # What an unrecognized value decodes to. Default: throwException.
+    #   throwException - throws (also what happens at runtime when unset).
+    #   unknown        - adds a real `unknown` member (reusing one if the
+    #                    enum already declares it; int enums get a JSON
+    #                    value below the real ones, e.g. -1) and decodes
+    #                    unrecognized values to it.
+    #   first / last   - decodes to the first / last declared member.
+    enum_fallback_type: throwException
+
+    # Prefixes stripped from a schema's name/title before it becomes a Dart
+    # class name (longest match wins), e.g. ["Api"] turns `ApiUserDto` into
+    # `UserDto`. Applied consistently to regular, enum, union and generic
+    # models and their file names. Default: [].
+    remove_model_prefixes: []
+
+    # Opt-in per-enum member renaming, keyed by the enum's schema name or
+    # generated Dart class name; the inner map is the raw enum value (as a
+    # string — works for string and integer enums) to the desired Dart
+    # member name (recased to camelCase). Enums absent here keep their
+    # default member names (e.g. `value0`). Default: {}.
+    enums:
+      MyStatusEnum:
+        0: created
+        10: pgRegistered
+
+  api_client:
+    # Class name of the shared base client every generated client uses.
+    base_api_client_class_name: BaseApiClient # default
+
+    # Bundle an operation's query parameters into one generated
+    # `<Method>QueryParameters` class, passed as a single `@Queries()`
+    # argument, instead of one named method parameter per query field.
+    # Default: false.
+    use_class_for_query_parameters: false
+
+    # Reserved for a multipart equivalent of the option above. Not yet
+    # wired into the generator: multipart bodies are always emitted as a
+    # `Map<String, dynamic>` `@Part()` regardless of this setting.
+    # Default: false.
+    use_class_for_multipart_form_data: false
+
+    # Operation parameters dropped entirely from the generated method
+    # signature (and so never sent) — e.g. ones your own Dio interceptors
+    # already inject, like `Language` or `X-API-Key`. Default: [].
+    skipped_parameters:
+      - Language
+      - X-API-Key
+
+    # Default each generated method's `@Extras()` to that operation's
+    # OpenAPI metadata (tags, operationId, parameters, responses), readable
+    # via `options.extra` in a Dio interceptor. Set to `false` to stop
+    # embedding it. Default: true.
+    include_openapi_extras: true
+```
+
+## Unions
+
+A component schema that is a `oneOf`/`anyOf` of `$ref`s generates a `sealed`
+class with one `final` subclass per variant, plus a fallback variant when
+`model.union_class_fallback_name` is set. `fromJson`/`toJson` work on the
+variant's own flat JSON — there is no `{"value": ...}` envelope — so a union
+decodes the same way whether it's a field, a list item, a request body or a
+response:
+
+- **With a discriminator**: decoding switches on the discriminator property
+  (the mapping may be omitted — schema names are then used as the values);
+  encoding writes the discriminator back.
+- **Without one**: the first variant whose `fromJson` decodes without
+  throwing wins.
+- **No match**: the fallback variant wraps the raw `Map<String, dynamic>`;
+  with no `union_class_fallback_name` configured, decoding throws
+  `ArgumentError` instead.
+
+```dart
+final Animal animal = Animal.fromJson(json); // AnimalDog, AnimalCat, or the fallback
+
+final label = switch (animal) {
+  AnimalDog(:final value) => 'Dog: ${value.name}',
+  AnimalCat(:final value) => 'Cat: ${value.name}',
+  AnimalFallback(:final value) => 'Unknown animal: $value',
+};
+
+print(animal.toJson()); // flat JSON, discriminator included
+```
 
 ## Handling Breaking Changes
 
@@ -211,7 +343,7 @@ When your API changes, you can use the following workflow to update your generat
 
 1. Update your OpenAPI specification
 2. Run `dart run swagger_to_dart`
-3. Run `dart run build_runner build --delete-conflicting-outputs`
+3. Run `dart run build_runner build`
 4. Check for breaking changes in your codebase and update as needed
 
 ## Contributing
@@ -223,6 +355,11 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 3. Commit your changes (`git commit -m 'Add some amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
+
+This repository is test-driven: every behaviour change starts as a failing
+test, and CI blocks anything that isn't green. See
+[CONTRIBUTING.md](CONTRIBUTING.md) for setup, the package layout and the
+red-green loop.
 
 ## CI/CD
 

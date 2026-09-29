@@ -1,3 +1,135 @@
+## 5.0.0 - 2026-09-29
+
+### Breaking changes
+
+- Generated `oneOf`/`anyOf`-of-`$ref` unions are now plain `sealed` classes
+  whose `fromJson`/`toJson` use the variant's own flat JSON, not freezed
+  unions wrapped in `{"value": ...}` — regenerate, then replace
+  `.when`/`.map`/`.copyWith` on union types with a `switch` over the variant
+  subclasses (`AnimalDog`, `AnimalCat`, ...). (#49, #58)
+- Component schemas that are a top-level `oneOf`/`anyOf` now generate as
+  unions instead of the plain model they used to (incorrectly) produce —
+  update code that treated them as a freezed data class with fields. (#58)
+- `model.enum_fallback_type: unknown` now actually decodes an unmatched
+  value to a new `unknown` member instead of throwing; the default changed
+  from `unknown` to `throwException`, which is the behaviour you already got
+  at runtime if you left this unset. If you set `unknown` explicitly, handle the new
+  member instead of a thrown exception.
+- Identifier escaping was rewritten: only names Dart truly rejects are
+  escaped, with a `$` prefix (`external`, `get`, `set`, `required`, `late`,
+  ... are legal and left alone; a hyphen now separates words, e.g.
+  `some-header` -> `someHeader`). Regenerate and fix references to any old
+  double-escaped names (e.g. `externalaa` -> `external`). (#28, #51)
+- Binary/file properties generate as `dio`'s `MultipartFile` for every
+  generation source (previously plain `String` outside FastAPI Flutter
+  apps) — update code constructing these fields as strings. (#54)
+- Consuming projects need an SDK lower bound of at least Dart 3.8 —
+  generated code now relies on `json_serializable` >=6.10 syntax (see
+  Requirements in the README).
+
+### Added
+
+- `api_client.include_openapi_extras` (default `true`): set to `false` to
+  stop embedding each operation's OpenAPI metadata as the `@Extras()`
+  default. (#60)
+- `allOf` composition: merges the properties and required lists of
+  referenced and inline parts (recursively, cycle-safe); a single-item
+  `allOf` (the usual way to attach `nullable`/a description to a `$ref`)
+  unwraps to the referenced type instead of generating an empty model.
+- OpenAPI 3.1 parsing: `type: [T, "null"]` type arrays, nullable enums (the
+  `null` entry is dropped as a member), and component schemas that omit
+  `type`.
+- `additionalProperties` may be a schema: `Map<String, T>` is generated for
+  typed values, and a schema-valued `additionalProperties` (e.g.
+  Swashbuckle's `{}`) no longer crashes parsing.
+- Typed binary responses for every generation source (previously ABP
+  `text/plain` only): a response whose media type is `image/*`, `audio/*`,
+  `video/*`, `application/octet-stream`, `application/pdf`, or whose schema
+  is `format: binary`, generates `Future<HttpResponse<Uint8List>>` with
+  `@DioResponseType(ResponseType.bytes)`; `text/*` responses generate
+  `Future<HttpResponse<String>>`. (#54)
+- Non-JSON request bodies (`text/*`, XML, binary) generate as
+  `@Body() String` / `@Body() List<int>` with a matching `Content-Type`
+  header instead of being silently dropped. (#56)
+- The response used for a method's return type is now the lowest 2xx status
+  (falling back to `default`) rather than whichever response came first in
+  the spec; a JSON media type wins over `text/plain` when both are present.
+- A spec fetched from `url` always refreshes the local copy at
+  `input_directory`; if the fetch fails, generation falls back to the local
+  copy with a loud console warning naming its age, instead of failing
+  outright or generating from a silently stale file.
+- Untitled inline enums are named from where they're used instead of
+  crashing generation (`Pet.status` -> `PetStatus`, a query parameter `sort`
+  of `listPets` -> `ListPetsSort`, a request body/response ->
+  `<Method>Body`/`<Method>Response`). (#55, #61)
+
+### Fixed
+
+- Two-letter words recase consistently — `id` no longer becomes `iD` after
+  the generator has seen `userID` elsewhere; `Recase` is now stateless
+  instead of sharing mutable state across the whole run. (#63)
+- Generic type substitution resolves by exact schema name/title instead of
+  a reversed, substring-based lookup, so `BaseResponse<User>` and
+  `BaseResponse<Order>` no longer both decode using the first
+  instantiation's field type.
+- Query/header/cookie parameters are only `required` when the spec says so
+  (optional ones without a default are nullable); path parameters are
+  always required. Generic models honour the schema's `required` list
+  instead of making every field required. (#50, #52)
+- The multipart wrapper extension forwards every path/header/query
+  parameter to the underlying retrofit method — required ones used to fail
+  to compile and optional ones were silently dropped. (#57)
+- Duplicate `operationId`s within one client get numeric suffixes instead
+  of generating duplicate, non-compiling methods.
+- Every string literal emitted into generated code (paths, `@Query`/`@Path`/
+  `@Header` names, enum `@JsonValue`, key constants, defaults, union/extras
+  annotations) goes through one escaping helper, fixing invalid code from
+  values containing `$`, quotes, backslashes or control characters.
+  (#59, #60, #64)
+- Two different inline models (enums, unions, query-parameter classes) that
+  want the same class name get a numeric suffix instead of silently sharing
+  one class, and never take a component schema's name; two component schemas
+  mapping to one class name now print a warning.
+- Inline integer enums parse correctly (values were cast to `String`) and
+  keep their JSON type (`@JsonValue(1)`, `int toJson()`); enum defaults
+  resolve through `model.enums` renames instead of the raw generated name.
+- Content without a schema (e.g. `application/pdf: {}`) no longer crashes
+  parsing.
+- `#RRGGBB` colors parse as opaque instead of transparent (FastAPI/Flutter
+  `Color` converter).
+- Nested objects always serialize through `explicitToJson: true` on every
+  generated model.
+- A file that fails to format is still written (for inspection) and the run
+  exits non-zero listing every failing file, instead of silently succeeding
+  with unformatted or missing output; generation errors are no longer
+  swallowed by an unawaited `async` call.
+- Missing config or spec files raise a clear `FileSystemException` naming
+  the path, resolved against the project root instead of the process's
+  working directory.
+- Generated code is lint-clean under `--fatal-infos`: no `dynamic?`, no
+  redundant `const` inside `@Default(...)` collections, unnamed libraries
+  (`library;`, no file names leaking into library names), deduplicated
+  imports/exports, and the `TimeOfDay`/`Color`/`MultipartFile` converters no
+  longer force a `package:flutter` import in pure-Dart projects.
+
+### Changed
+
+- Pub workspace at the repo root (`resolution: workspace`); the generator is
+  now developed and tested alongside an unpublished e2e compile-check
+  package.
+- Latest builders and lints: `build_runner ^2.16`, `freezed ^4.0`,
+  `json_serializable ^6.14`, `lints ^6`; dropped the `analyzer 7.3.0` pin
+  and the unused `logger` dependency.
+- Dropped the generator's runtime dependency on `dio` and `retrofit` (only
+  their type names were used); an OpenAPI `url` is now fetched with
+  `dart:io`'s `HttpClient`.
+- CI now runs format checks, `dart analyze --fatal-infos`, the full
+  unit/golden/e2e test suite, and a `pana` job that keeps the pub.dev score
+  at 160/160, on every push and pull request; publishing runs the same
+  checks first.
+- `dart run build_runner build` replaces `--delete-conflicting-outputs` in
+  the README and Makefile — the flag no longer exists in build_runner 2.16.
+
 ## 4.3.0 - 2026-07-29
 
 ### Added
