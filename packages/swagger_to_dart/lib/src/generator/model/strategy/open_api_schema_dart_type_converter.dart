@@ -186,12 +186,7 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
     }
 
     if (schemas.every((e) => e is OpenApiSchemaRef)) {
-      final strategy = UnionModelStrategy(context);
-
-      final (model, className) = strategy.buildAnyOf(schema);
-      context.addModel(model);
-
-      return className;
+      return UnionModelStrategy(context).registerAnyOf(schema);
     }
 
     return 'dynamic';
@@ -217,12 +212,7 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
     }
 
     if (schemas.every((e) => e is OpenApiSchemaRef)) {
-      final strategy = UnionModelStrategy(context);
-
-      final (model, className) = strategy.buildOneOf(schema);
-      context.addModel(model);
-
-      return className;
+      return UnionModelStrategy(context).registerOneOf(schema);
     }
 
     return 'dynamic';
@@ -236,15 +226,11 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
     Map<String, String> overrideTypes = const {},
   }) {
     if (schema.enum_ case final values?) {
-      final enumClassName = inlineEnumClassName(
-        schema,
-        parent: parent,
-        contextName: contextName,
-      );
-      context.addModel(
-        EnumModelGeneratorStrategy(context).build(
+      return context.registerInlineModel(
+        inlineEnumClassName(schema, parent: parent, contextName: contextName),
+        (name) => EnumModelGeneratorStrategy(context).build(
           MapEntry(
-            enumClassName,
+            name,
             OpenApiSchemas(
               type: schema.type == OpenApiSchemaVarType.integer
                   ? 'integer'
@@ -255,8 +241,6 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
           ),
         ),
       );
-
-      return enumClassName;
     }
 
     switch (schema.type) {
@@ -344,8 +328,10 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
     switch (schema) {
       case OpenApiSchemaType schema:
         if (schema.enum_ case final values?) {
-          final className = inlineEnumClassName(
+          // The registered name (maybe suffixed), same as the field's type.
+          final className = getType(
             schema,
+            className: '',
             parent: parent,
             contextName: contextName,
           );

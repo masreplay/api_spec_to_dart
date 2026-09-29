@@ -1,334 +1,305 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:collection/collection.dart';
 import 'package:swagger_to_dart/src/code/string.dart';
-import 'package:swagger_to_dart/src/generator/model/strategy/strategy.dart';
-import 'package:swagger_to_dart/src/schema/openapi/openapi.dart';
-import 'package:swagger_to_dart/src/utils/utils.dart';
+import 'package:swagger_to_dart/swagger_to_dart.dart';
 
-class UnionModelStrategyParams {
-  const UnionModelStrategyParams({
-    required this.key,
-    required this.schema,
-    required this.refSchemaMap,
-    required this.discriminator,
-  });
+/// One case of a union: its factory constructor name, the discriminator value
+/// selecting it (null without a discriminator) and the referenced model.
+typedef UnionVariant = ({String caseName, String? tag, OpenApiSchemaRef ref});
 
-  final String key;
-  final OpenApiSchema schema;
-  final Map<String, OpenApiSchemaRef> refSchemaMap;
-  final OpenApiSchemaOneOfDiscriminator? discriminator;
-}
+/// A `oneOf`/`anyOf` of references as a plain sealed class whose JSON is the
+/// variant's own flat JSON (#49):
+///
+/// ```dart
+/// sealed class Animal {
+///   const factory Animal.dog(Dog value) = AnimalDog;
+///   factory Animal.fromJson(Map<String, dynamic> json) =>
+///       switch (json['pet_type']) {
+///         'dog' => AnimalDog(Dog.fromJson(json)),
+///         _ => throw ArgumentError.value(...),
+///       };
+///   Map<String, dynamic> toJson();
+/// }
+/// ```
+///
+/// No `value` envelope, so it decodes as a field, a list item, a request
+/// body and a response alike.
+class UnionModelStrategy {
+  const UnionModelStrategy(this.context);
 
-class UnionModelStrategy
-    extends ModelGeneratorStrategy<UnionModelStrategyParams> {
-  const UnionModelStrategy(super.context);
+  final GenerationContext context;
 
-  @override
-  Library build(UnionModelStrategyParams params) {
-    final unionClassFallbackName = context.config.model.unionClassFallbackName;
+  /// The union for a component schema with `oneOf`/`anyOf` (#58).
+  Library buildComponent(MapEntry<String, OpenApiSchemas> component) {
+    final schema = component.value;
     final prefixes = context.config.model.removeModelPrefixes;
-
     final className = Renaming.instance.renameClass(
-      params.key,
+      schema.title ?? component.key,
       removePrefixes: prefixes.isNotEmpty ? prefixes : null,
     );
-    final filename = Renaming.instance.renameFile(className);
 
-    const String valueKeyName = 'value';
+    return build(
+      className: className,
+      variants: _variants(
+        schema.oneOf ?? schema.anyOf ?? [],
+        schema.discriminator,
+      ),
+      discriminator: schema.discriminator?.propertyName,
+      docs: JsonFactory.instance.docs(component.key, schema.toJson()),
+    );
+  }
 
-    final unions = params.refSchemaMap.entries.map((entry) {
-      final name = entry.key;
+  /// Registers the union for an inline all-reference `oneOf` and returns its
+  /// class name.
+  String registerOneOf(OpenApiSchemaOneOf schema) {
+    final refs = schema.oneOf.whereType<OpenApiSchemaRef>();
+    final discriminator = schema.discriminator;
+    final name =
+        schema.title ??
+        '${(discriminator?.mapping?.keys ?? refs.map((e) => e.name)).join('Or')}_Union';
 
-      final type = context.extension.typeConverter.get(
-        entry.value,
+    return _register(
+      name,
+      variants: _variants(schema.oneOf, discriminator),
+      discriminator: discriminator?.propertyName,
+      json: schema.toJson(),
+    );
+  }
+
+  /// Registers the union for an inline all-reference `anyOf` and returns its
+  /// class name.
+  String registerAnyOf(OpenApiSchemaAnyOf schema) {
+    final prefixes = context.config.model.removeModelPrefixes;
+    final name =
+        schema.title ??
+        schema.anyOf
+            .whereType<OpenApiSchemaRef>()
+            .map(context.extension.typeConverter.getRef)
+            .map(
+              (name) => Renaming.instance.renameClass(
+                name,
+                removePrefixes: prefixes.isNotEmpty ? prefixes : null,
+              ),
+            )
+            .sorted((a, b) => a.compareTo(b))
+            .join();
+
+    return _register(
+      name,
+      variants: _variants(schema.anyOf, schema.discriminator),
+      discriminator: schema.discriminator?.propertyName,
+      json: schema.toJson(),
+    );
+  }
+
+  String _register(
+    String name, {
+    required List<UnionVariant> variants,
+    required String? discriminator,
+    required Map<String, dynamic> json,
+  }) {
+    final prefixes = context.config.model.removeModelPrefixes;
+    return context.registerInlineModel(
+      Renaming.instance.renameClass(
+        name,
+        removePrefixes: prefixes.isNotEmpty ? prefixes : null,
+      ),
+      (className) => build(
         className: className,
-      );
-
-      return Constructor(
-        (b) => b
-          ..annotations.addAll([
-            refer('jsonSerializable'),
-            refer('FreezedUnionValue(${dartString(name)})'),
-          ])
-          ..constant = true
-          ..factory = true
-          ..name = Recase.instance.toCamelCase(name)
-          ..redirect = refer(className + Recase.instance.toPascalCase(name))
-          ..requiredParameters.addAll([
-            Parameter(
-              (b) => b
-                ..named = true
-                ..name = valueKeyName
-                ..type = refer(type),
-            ),
-          ]),
-      );
-    }).toList();
-
-    context.addJsonConvertor(
-      Class(
-        (b) => b
-          ..name = '${className}MapJsonConverter'
-          ..implements.addAll([
-            refer('JsonConverter<$className, Map<String, dynamic>>'),
-          ])
-          ..constructors.add(Constructor((b) => b..constant = true))
-          ..fields.addAll([
-            Field(
-              (b) => b
-                ..modifier = FieldModifier.constant
-                ..static = true
-                ..name = 'unionKey'
-                ..type = refer('String')
-                ..assignment = stringCode(valueKeyName),
-            ),
-          ])
-          ..methods.addAll([
-            Method(
-              (b) => b
-                ..annotations.addAll([
-                  refer('override'),
-                ])
-                ..returns = refer(className)
-                ..name = 'fromJson'
-                ..requiredParameters.addAll([
-                  Parameter(
-                    (b) => b
-                      ..name = 'json'
-                      ..type = refer('Map<String, dynamic>'),
-                  ),
-                ])
-                ..body = Code(
-                  'return $className.fromJson({unionKey: json, ...json});',
-                ),
-            ),
-            Method(
-              (b) => b
-                ..annotations.addAll([
-                  refer('override'),
-                ])
-                ..returns = refer('Map<String, dynamic>')
-                ..name = 'toJson'
-                ..requiredParameters.addAll([
-                  Parameter(
-                    (b) => b
-                      ..name = 'object'
-                      ..type = refer(className),
-                  ),
-                ])
-                ..body = Code(
-                  'return {unionKey: object.toJson(), ...object.toJson()};',
-                ),
-            ),
-          ]),
+        variants: variants,
+        discriminator: discriminator,
+        docs: JsonFactory.instance.docs(className, json),
       ),
     );
+  }
+
+  /// Variants keyed by discriminator value: the explicit `mapping`, else the
+  /// referenced schema names (OpenAPI's implicit mapping).
+  List<UnionVariant> _variants(
+    List<OpenApiSchema> schemas,
+    OpenApiSchemaOneOfDiscriminator? discriminator,
+  ) {
+    final refs = schemas.whereType<OpenApiSchemaRef>().toList();
+
+    final List<({String? tag, OpenApiSchemaRef ref})> cases;
+    if (discriminator == null) {
+      cases = [for (final ref in refs) (tag: null, ref: ref)];
+    } else if (discriminator.mapping case final mapping?) {
+      cases = [
+        for (final MapEntry(key: tag, value: target) in mapping.entries)
+          (
+            tag: tag,
+            ref:
+                refs.firstWhereOrNull((e) => e.ref == target) ??
+                OpenApiSchemaRef(ref: target),
+          ),
+      ];
+    } else {
+      cases = [for (final ref in refs) (tag: ref.name, ref: ref)];
+    }
+
+    final names = Renaming.instance.propertyNames(
+      cases.map((c) => c.tag ?? c.ref.name),
+    );
+    return [
+      for (final c in cases)
+        (caseName: names[c.tag ?? c.ref.name]!, tag: c.tag, ref: c.ref),
+    ];
+  }
+
+  Library build({
+    required String className,
+    required List<UnionVariant> variants,
+    required String? discriminator,
+    required List<String> docs,
+  }) {
+    final filename = Renaming.instance.renameFile(className);
+    final fallbackName = context.config.model.unionClassFallbackName;
+    final fallbackCase = fallbackName == null
+        ? null
+        : _unique(
+            Renaming.instance.renameProperty(fallbackName),
+            variants.map((v) => v.caseName),
+          );
+
+    String caseClass(String caseName) =>
+        '$className${Recase.instance.toPascalCase(caseName)}';
+    String typeOf(UnionVariant v) =>
+        context.extension.typeConverter.getRef(v.ref);
+
+    final source = StringBuffer()
+      ..writeln('sealed class $className {')
+      ..writeln('const $className();')
+      ..writeln();
+    for (final v in variants) {
+      source.writeln(
+        'const factory $className.${v.caseName}(${typeOf(v)} value) = '
+        '${caseClass(v.caseName)};',
+      );
+    }
+    if (fallbackCase != null) {
+      source.writeln(
+        'const factory $className.$fallbackCase(Map<String, dynamic> value) = '
+        '${caseClass(fallbackCase)};',
+      );
+    }
+
+    source.writeln();
+
+    final noMatch = fallbackCase != null
+        ? '${caseClass(fallbackCase)}(json)'
+        : discriminator != null
+        ? 'throw ArgumentError.value(json[${dartString(discriminator)}], '
+              '${dartString(discriminator)}, ${dartString('Unknown $className')})'
+        : 'throw ArgumentError.value(json, \'json\', '
+              '${dartString('No $className variant matches')})';
+
+    if (discriminator != null) {
+      source.writeln(
+        'factory $className.fromJson(Map<String, dynamic> json) => '
+        'switch (json[${dartString(discriminator)}]) {',
+      );
+      for (final v in variants) {
+        source.writeln(
+          '${dartString(v.tag!)} => '
+          '${caseClass(v.caseName)}(${typeOf(v)}.fromJson(json)),',
+        );
+      }
+      source.writeln('_ => $noMatch,};');
+    } else {
+      source
+        ..writeln('factory $className.fromJson(Map<String, dynamic> json) {')
+        ..writeln(
+          '// No discriminator in the spec: the first variant that decodes wins.',
+        )
+        ..writeln(
+          'for (final decode in <$className Function(Map<String, dynamic>)>[',
+        );
+      for (final v in variants) {
+        source.writeln(
+          '(json) => ${caseClass(v.caseName)}(${typeOf(v)}.fromJson(json)),',
+        );
+      }
+      source
+        ..writeln(']) {')
+        ..writeln('try { return decode(json); } catch (_) {')
+        ..writeln('// Not this variant; try the next one.')
+        ..writeln('}}')
+        ..writeln(fallbackCase != null ? 'return $noMatch;' : '$noMatch;')
+        ..writeln('}');
+    }
+
+    source
+      ..writeln()
+      ..writeln('Map<String, dynamic> toJson();')
+      ..writeln('}');
+
+    for (final v in variants) {
+      final variantClass = caseClass(v.caseName);
+      final toJson = v.tag == null
+          ? 'value.toJson()'
+          : '{...value.toJson(), ${dartString(discriminator!)}: ${dartString(v.tag!)}}';
+      source
+        ..writeln()
+        ..writeln('final class $variantClass extends $className {')
+        ..writeln('const $variantClass(this.value);')
+        ..writeln()
+        ..writeln('final ${typeOf(v)} value;')
+        ..writeln()
+        ..writeln('@override Map<String, dynamic> toJson() => $toJson;')
+        ..writeln()
+        ..writeln(
+          '@override bool operator ==(Object other) => '
+          'other is $variantClass && other.value == value;',
+        )
+        ..writeln()
+        ..writeln('@override int get hashCode => value.hashCode;')
+        ..writeln()
+        ..writeln(
+          "@override String toString() => '${_label(className, v.caseName)}(\$value)';",
+        )
+        ..writeln('}');
+    }
+
+    if (fallbackCase != null) {
+      final fallbackClass = caseClass(fallbackCase);
+      source
+        ..writeln()
+        ..writeln('final class $fallbackClass extends $className {')
+        ..writeln('const $fallbackClass(this.value);')
+        ..writeln()
+        ..writeln('final Map<String, dynamic> value;')
+        ..writeln()
+        ..writeln('@override Map<String, dynamic> toJson() => value;')
+        ..writeln()
+        ..writeln(
+          "@override String toString() => '${_label(className, fallbackCase)}(\$value)';",
+        )
+        ..writeln('}');
+    }
 
     return Library(
       (b) => b
         ..name = filename
+        ..docs.addAll(docs)
         ..directives.addAll([
           for (final import in context.config.imports?.globalImports ?? [])
             Directive.import(import),
           Directive.import('exports.dart'),
-          Directive.part('$filename.freezed.dart'),
-          Directive.part('$filename.g.dart'),
         ])
-        ..docs.addAll(
-          JsonFactory.instance.docs(params.key, params.schema.toJson()),
-        )
-        ..body.addAll([
-          Class(
-            (b) => b
-              ..annotations.addAll([
-                _freezedAnnotation(
-                  unionClassFallbackName: unionClassFallbackName,
-                  unionKey: params.discriminator?.propertyName,
-                ),
-              ])
-              ..sealed = true
-              ..name = className
-              ..mixins.addAll([refer('_\$$className')])
-              ..constructors.addAll([
-                Constructor(
-                  (b) => b
-                    ..constant = true
-                    ..name = '_',
-                ),
-                ...unions,
-                if (unionClassFallbackName case final fallbackName?)
-                  Constructor(
-                    (b) => b
-                      ..annotations.addAll([
-                        refer('jsonSerializable'),
-                        refer('FreezedUnionValue(${dartString(fallbackName)})'),
-                      ])
-                      ..constant = true
-                      ..factory = true
-                      ..name = Recase.instance.toCamelCase(fallbackName)
-                      ..redirect = refer(
-                        className + Recase.instance.toPascalCase(fallbackName),
-                      )
-                      ..requiredParameters.addAll([
-                        Parameter(
-                          (b) => b
-                            ..named = true
-                            ..name = valueKeyName
-                            ..type = refer('Map<String,dynamic>?'),
-                        ),
-                      ]),
-                  ),
-                Constructor(
-                  (b) => b
-                    ..factory = true
-                    ..name = 'fromJson'
-                    ..requiredParameters.addAll([
-                      Parameter(
-                        (b) => b
-                          ..name = 'json'
-                          ..type = refer('Map<String, dynamic>'),
-                      ),
-                    ])
-                    ..lambda = true
-                    ..body = Code('_\$${className}FromJson(json)'),
-                ),
-              ]),
-          ),
-        ]),
+        ..body.add(Code(source.toString())),
     );
   }
 
-  /// {
-  ///     "oneOf": [
-  ///         {
-  ///             "$ref": "#/components/schemas/AdvertisementsHomeSectionResponse"
-  ///         },
-  ///         {
-  ///             "$ref": "#/components/schemas/CategoriesHomeSectionResponse"
-  ///         },
-  ///         {
-  ///             "$ref": "#/components/schemas/OrdersHomeSectionResponse"
-  ///         },
-  ///         {
-  ///             "$ref": "#/components/schemas/FoodItemHomeSectionResponse"
-  ///         }
-  ///     ],
-  ///     "title": "HomeSectionUnion",
-  ///     "discriminator": {
-  ///         "propertyName": "type",
-  ///         "mapping": {
-  ///             "advertisements": "#/components/schemas/AdvertisementsHomeSectionResponse",
-  ///             "categories": "#/components/schemas/CategoriesHomeSectionResponse",
-  ///             "food_items": "#/components/schemas/FoodItemHomeSectionResponse",
-  ///             "orders": "#/components/schemas/OrdersHomeSectionResponse"
-  ///         }
-  ///     },
-  ///     "runtimeType": "oneOf"
-  /// }
-  (Library, String) buildOneOf(OpenApiSchemaOneOf schema) {
-    final schemas = schema.oneOf;
+  /// `Class.case` for toString, with `$` escaped for the string literal.
+  String _label(String className, String caseName) =>
+      '$className.$caseName'.replaceAll(r'$', r'\$');
 
-    final discriminator = schema.discriminator;
-
-    final prefixes = context.config.model.removeModelPrefixes;
-    final String className;
-    if (schema.title case final title?) {
-      className = Renaming.instance.renameClass(
-        title,
-        removePrefixes: prefixes.isNotEmpty ? prefixes : null,
-      );
-    } else if (discriminator case final discriminator?) {
-      className = Renaming.instance.renameClass(
-        '${discriminator.mapping.keys.join('Or')}_Union',
-        removePrefixes: prefixes.isNotEmpty ? prefixes : null,
-      );
-    } else {
-      className = Renaming.instance.renameClass(
-        '${schema.oneOf.whereType<OpenApiSchemaRef>().map((e) => e.name).join('Or')}_Union',
-        removePrefixes: prefixes.isNotEmpty ? prefixes : null,
-      );
+  String _unique(String name, Iterable<String> taken) {
+    var candidate = name;
+    for (var i = 2; taken.contains(candidate); i++) {
+      candidate = '$name$i';
     }
-
-    final Map<String, OpenApiSchemaRef> refSchemaMap;
-    if (discriminator case final discriminator?) {
-      refSchemaMap = {
-        for (final entry in discriminator.mapping.entries)
-          entry.key: schemas.whereType<OpenApiSchemaRef>().firstWhere(
-            (e) => e.ref == entry.value,
-          ),
-      };
-    } else {
-      refSchemaMap = {
-        for (final refSchema in schemas.whereType<OpenApiSchemaRef>())
-          refSchema.name: refSchema,
-      };
-    }
-
-    final model = build(
-      UnionModelStrategyParams(
-        key: className,
-        schema: schema,
-        refSchemaMap: refSchemaMap,
-        discriminator: discriminator,
-      ),
-    );
-
-    return (model, className);
-  }
-
-  (Library, String) buildAnyOf(OpenApiSchemaAnyOf schema) {
-    final schemas = schema.anyOf;
-    final prefixes = context.config.model.removeModelPrefixes;
-
-    final className = Renaming.instance.renameClass(
-      schema.title ??
-          schemas
-              .whereType<OpenApiSchemaRef>()
-              .map(context.extension.typeConverter.getRef)
-              .map(
-                (name) => Renaming.instance.renameClass(
-                  name,
-                  removePrefixes: prefixes.isNotEmpty ? prefixes : null,
-                ),
-              )
-              .sorted((a, b) => a.compareTo(b))
-              .join(),
-      removePrefixes: prefixes.isNotEmpty ? prefixes : null,
-    );
-
-    final model = build(
-      UnionModelStrategyParams(
-        key: className,
-        schema: schema,
-        refSchemaMap: {
-          for (final refSchema in schemas.whereType<OpenApiSchemaRef>())
-            refSchema.name: refSchema,
-        },
-        discriminator: schema.discriminator,
-      ),
-    );
-
-    return (model, className);
-  }
-
-  Reference _freezedAnnotation({
-    required String? unionClassFallbackName,
-    required String? unionKey,
-  }) {
-    final string = StringBuffer();
-
-    string.write('Freezed(');
-
-    if (unionClassFallbackName != null) {
-      string.write('fallbackUnion: ${dartString(unionClassFallbackName)}, ');
-    }
-
-    if (unionKey != null) {
-      string.write('unionKey: ${dartString(unionKey)}, ');
-    }
-
-    string.write(')');
-
-    return refer(string.toString());
+    return candidate;
   }
 }

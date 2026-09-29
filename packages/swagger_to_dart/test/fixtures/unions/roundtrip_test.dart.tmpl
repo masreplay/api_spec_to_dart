@@ -1,0 +1,51 @@
+import 'package:swagger_to_dart_e2e/gen/unions/models/models.dart';
+import 'package:test/test.dart';
+
+void main() {
+  const dogJson = {'pet_type': 'dog', 'name': 'Rex', 'bark': true};
+  const catJson = {'pet_type': 'cat', 'name': 'Tom', 'lives': 9};
+
+  test('discriminated union decodes flat JSON, no value envelope (#49)', () {
+    final animal = Animal.fromJson(dogJson);
+
+    expect(animal, isA<AnimalDog>());
+    expect((animal as AnimalDog).value.name, 'Rex');
+    expect(animal.toJson(), dogJson);
+  });
+
+  test('component-level oneOf is a union (#58)', () {
+    expect(Animal.fromJson(catJson), Animal.cat(Cat.fromJson(catJson)));
+  });
+
+  test('discriminator without mapping uses schema names', () {
+    expect(
+      ImplicitAnimal.fromJson({...catJson, 'pet_type': 'Cat'}),
+      isA<ImplicitAnimalCat>(),
+    );
+  });
+
+  test('unions work as fields and list items', () {
+    final pet = Pet.fromJson({
+      'animals': [dogJson, catJson],
+      'favorite': catJson,
+      'shape': {'radius': 2},
+    });
+
+    expect(pet.animals.map((a) => a.runtimeType), [AnimalDog, AnimalCat]);
+    expect(pet.favorite, isA<FavoriteCat>());
+    expect(pet.shape, isA<ShapeCircle>());
+    expect(pet.toJson()['animals'], [dogJson, catJson]);
+  });
+
+  test('unknown discriminator value falls back', () {
+    final animal = Animal.fromJson({'pet_type': 'parrot', 'name': 'Polly'});
+
+    expect(animal, isA<AnimalFallback>());
+    expect(animal.toJson(), {'pet_type': 'parrot', 'name': 'Polly'});
+  });
+
+  test('without a discriminator the matching variant is picked', () {
+    expect(Shape.fromJson({'radius': 2}), isA<ShapeCircle>());
+    expect(Shape.fromJson({'width': 1, 'height': 2}), isA<ShapeRect>());
+  });
+}

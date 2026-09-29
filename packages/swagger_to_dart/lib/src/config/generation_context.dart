@@ -31,15 +31,45 @@ class GenerationContext {
   final Map<String, Library> _models = <String, Library>{};
   List<Library> get models => _models.values.toList();
 
-  void addModel(Library library) {
-    // if already exists, throw error
-    if (_models.containsKey(library.name!)) {
-      // print('Model ${library.name!} already exists');
-      return;
-    }
+  /// File names of component schemas; inline models never take them.
+  final Set<String> reservedModelNames = {};
 
-    _models[library.name!] = library;
+  /// Adds a component model. The first model for a file name wins; a
+  /// different model mapping to the same name is reported, not silently lost.
+  void addModel(Library library) {
+    final existing = _models[library.name!];
+    if (existing == null) {
+      _models[library.name!] = library;
+    } else if (_source(existing) != _source(library)) {
+      print(
+        'swagger_to_dart: warning: two schemas generate ${library.name}.dart; '
+        'keeping the first. Give one of them a different title.',
+      );
+    }
   }
+
+  /// Adds an inline model (enum, union, query class) as [className], or as
+  /// `${className}2`, `3`... when a different model already uses the name.
+  /// Returns the class name used.
+  String registerInlineModel(
+    String className,
+    Library Function(String className) build,
+  ) {
+    for (var i = 1; ; i++) {
+      final name = i == 1 ? className : '$className$i';
+      final library = build(name);
+      final existing = _models[library.name!];
+      if (existing == null && !reservedModelNames.contains(library.name)) {
+        _models[library.name!] = library;
+        return name;
+      }
+      if (existing != null && _source(existing) == _source(library)) {
+        return name;
+      }
+    }
+  }
+
+  String _source(Library library) => '${library.accept(DartEmitter())}';
 
   final List<Library> _apiClients = <Library>[];
   List<Library> get apiClients => _apiClients;
@@ -48,23 +78,11 @@ class GenerationContext {
     _apiClients.add(library);
   }
 
-  final Map<String, Class> _jsonConvertor = <String, Class>{};
-  List<Class> get jsonConvertor => _jsonConvertor.values.toList();
-
-  void addJsonConvertor(Class jsonConvertor) {
-    if (_jsonConvertor.containsKey(jsonConvertor.name)) {
-      print('Json convertor ${jsonConvertor.name} already exists');
-      return;
-    }
-
-    _jsonConvertor[jsonConvertor.name] = jsonConvertor;
-  }
-
   /// Builds every model and api client from [openApi], replacing earlier results.
   void generate() {
     _models.clear();
     _apiClients.clear();
-    _jsonConvertor.clear();
+    reservedModelNames.clear();
     extension.modelGenerator.generate();
     extension.apiClientGenerator.generate();
   }

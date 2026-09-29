@@ -32,6 +32,7 @@ abstract class BaseResponse<T> with _$BaseResponse<T> {
     converters: jsonSerializableConverters,
     genericArgumentFactories: true,
     createFieldMap: true,
+    explicitToJson: true,
   )
   const factory BaseResponse({
     /// data

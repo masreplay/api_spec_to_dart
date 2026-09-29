@@ -21,36 +21,54 @@ Map<String, dynamic> _$OpenApiComponentsToJson(_OpenApiComponents instance) =>
       'securitySchemes': ?instance.securitySchemes,
     };
 
-_OpenApiSchemas _$OpenApiSchemasFromJson(Map<String, dynamic> json) =>
-    _OpenApiSchemas(
-      properties: (json['properties'] as Map<String, dynamic>?)?.map(
-        (k, e) => MapEntry(
-          k,
-          const OpenApiSchemaJsonConverter().fromJson(
-            e as Map<String, dynamic>,
-          ),
+_OpenApiSchemas _$OpenApiSchemasFromJson(
+  Map<String, dynamic> json,
+) => _OpenApiSchemas(
+  properties: (json['properties'] as Map<String, dynamic>?)?.map(
+    (k, e) => MapEntry(
+      k,
+      const OpenApiSchemaJsonConverter().fromJson(e as Map<String, dynamic>),
+    ),
+  ),
+  type: json['type'] as String?,
+  required_: (json['required'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList(),
+  enum_: json['enum'] as List<dynamic>?,
+  const_: json['const'],
+  title: json['title'] as String?,
+  description: json['description'] as String?,
+  xEnumVarnames: (json['x-enum-varnames'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList(),
+  additionalProperties: json['additionalProperties'],
+  oneOf: (json['oneOf'] as List<dynamic>?)
+      ?.map(
+        (e) => const OpenApiSchemaJsonConverter().fromJson(
+          e as Map<String, dynamic>,
         ),
-      ),
-      type: json['type'] as String,
-      required_: (json['required'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-      enum_: json['enum'] as List<dynamic>?,
-      const_: json['const'],
-      title: json['title'] as String?,
-      description: json['description'] as String?,
-      xEnumVarnames: (json['x-enum-varnames'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-      additionalProperties: json['additionalProperties'],
-    );
+      )
+      .toList(),
+  anyOf: (json['anyOf'] as List<dynamic>?)
+      ?.map(
+        (e) => const OpenApiSchemaJsonConverter().fromJson(
+          e as Map<String, dynamic>,
+        ),
+      )
+      .toList(),
+  discriminator: json['discriminator'] == null
+      ? null
+      : OpenApiSchemaOneOfDiscriminator.fromJson(
+          json['discriminator'] as Map<String, dynamic>,
+        ),
+);
 
 Map<String, dynamic> _$OpenApiSchemasToJson(_OpenApiSchemas instance) =>
     <String, dynamic>{
       'properties': ?instance.properties?.map(
         (k, e) => MapEntry(k, const OpenApiSchemaJsonConverter().toJson(e)),
       ),
-      'type': instance.type,
+      'type': ?instance.type,
       'required': ?instance.required_,
       'enum': ?instance.enum_,
       'const': ?instance.const_,
@@ -58,4 +76,11 @@ Map<String, dynamic> _$OpenApiSchemasToJson(_OpenApiSchemas instance) =>
       'description': ?instance.description,
       'x-enum-varnames': ?instance.xEnumVarnames,
       'additionalProperties': ?instance.additionalProperties,
+      'oneOf': ?instance.oneOf
+          ?.map(const OpenApiSchemaJsonConverter().toJson)
+          .toList(),
+      'anyOf': ?instance.anyOf
+          ?.map(const OpenApiSchemaJsonConverter().toJson)
+          .toList(),
+      'discriminator': ?instance.discriminator?.toJson(),
     };

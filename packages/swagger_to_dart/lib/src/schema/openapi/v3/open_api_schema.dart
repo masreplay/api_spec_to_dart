@@ -73,7 +73,8 @@ abstract class OpenApiSchemaOneOfDiscriminator
 
   const factory OpenApiSchemaOneOfDiscriminator({
     @JsonKey(name: 'propertyName') required String propertyName,
-    @JsonKey(name: 'mapping') required Map<String, String> mapping,
+    /// Discriminator value → `$ref`. Absent: the schema names are the values.
+    @JsonKey(name: 'mapping') Map<String, String>? mapping,
   }) = _OpenApiSchemaOneOfDiscriminator;
 
   factory OpenApiSchemaOneOfDiscriminator.fromJson(Map<String, dynamic> json) =>

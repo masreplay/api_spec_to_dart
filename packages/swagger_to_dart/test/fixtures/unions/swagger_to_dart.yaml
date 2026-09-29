@@ -1,0 +1,3 @@
+swagger_to_dart:
+  model:
+    union_class_fallback_name: fallback

@@ -35,6 +35,7 @@ abstract class PaginationResponse<T> with _$PaginationResponse<T> {
     converters: jsonSerializableConverters,
     genericArgumentFactories: true,
     createFieldMap: true,
+    explicitToJson: true,
   )
   const factory PaginationResponse({
     /// items

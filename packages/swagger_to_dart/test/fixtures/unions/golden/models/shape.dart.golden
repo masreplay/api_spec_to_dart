@@ -1,0 +1,91 @@
+/// Shape
+///
+/// ```json
+/// {
+///     "anyOf": [
+///         {
+///             "$ref": "#/components/schemas/Circle"
+///         },
+///         {
+///             "$ref": "#/components/schemas/Rect"
+///         }
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+sealed class Shape {
+  const Shape();
+
+  const factory Shape.circle(Circle value) = ShapeCircle;
+  const factory Shape.rect(Rect value) = ShapeRect;
+  const factory Shape.fallback(Map<String, dynamic> value) = ShapeFallback;
+
+  factory Shape.fromJson(Map<String, dynamic> json) {
+    // No discriminator in the spec: the first variant that decodes wins.
+    for (final decode in <Shape Function(Map<String, dynamic>)>[
+      (json) => ShapeCircle(Circle.fromJson(json)),
+      (json) => ShapeRect(Rect.fromJson(json)),
+    ]) {
+      try {
+        return decode(json);
+      } catch (_) {
+        // Not this variant; try the next one.
+      }
+    }
+    return ShapeFallback(json);
+  }
+
+  Map<String, dynamic> toJson();
+}
+
+final class ShapeCircle extends Shape {
+  const ShapeCircle(this.value);
+
+  final Circle value;
+
+  @override
+  Map<String, dynamic> toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ShapeCircle && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'Shape.circle($value)';
+}
+
+final class ShapeRect extends Shape {
+  const ShapeRect(this.value);
+
+  final Rect value;
+
+  @override
+  Map<String, dynamic> toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) => other is ShapeRect && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'Shape.rect($value)';
+}
+
+final class ShapeFallback extends Shape {
+  const ShapeFallback(this.value);
+
+  final Map<String, dynamic> value;
+
+  @override
+  Map<String, dynamic> toJson() => value;
+
+  @override
+  String toString() => 'Shape.fallback($value)';
+}

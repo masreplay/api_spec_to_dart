@@ -26,7 +26,7 @@ abstract class OpenApiSchemas with _$OpenApiSchemas {
     @OpenApiSchemaJsonConverter()
     @JsonKey(name: 'properties')
     required Map<String, OpenApiSchema>? properties,
-    @JsonKey(name: 'type') required String type,
+    @JsonKey(name: 'type') String? type,
     @JsonKey(name: 'required') List<String>? required_,
     @JsonKey(name: 'enum') List<Object?>? enum_,
     @JsonKey(name: 'const') Object? const_,
@@ -37,6 +37,14 @@ abstract class OpenApiSchemas with _$OpenApiSchemas {
     /// `bool` or a schema (Swashbuckle emits `{}` for free-form objects and
     /// `{"type": ...}` for dictionaries).
     @JsonKey(name: 'additionalProperties') Object? additionalProperties,
+    @OpenApiSchemaJsonConverter()
+    @JsonKey(name: 'oneOf')
+    List<OpenApiSchema>? oneOf,
+    @OpenApiSchemaJsonConverter()
+    @JsonKey(name: 'anyOf')
+    List<OpenApiSchema>? anyOf,
+    @JsonKey(name: 'discriminator')
+    OpenApiSchemaOneOfDiscriminator? discriminator,
   }) = _OpenApiSchemas;
 
   factory OpenApiSchemas.fromJson(Map<String, dynamic> json) =>

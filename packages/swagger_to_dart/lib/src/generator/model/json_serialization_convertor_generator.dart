@@ -40,13 +40,11 @@ const jsonSerializableConverters = <JsonConverter>[
       buffer.write(customJsonConverters.map((e) => e.classCall).join(',\n'));
       buffer.write(',\n');
     }
-    if (context.jsonConvertor.isNotEmpty) {
-      buffer.write(context.jsonConvertor.map((e) => '${e.name}()').join(',\n'));
-    }
     buffer.write('];\n');
     buffer.write('''
 const jsonSerializable = JsonSerializable(
   converters: jsonSerializableConverters,
+  explicitToJson: true,
 );
 ''');
 
@@ -55,12 +53,9 @@ const jsonSerializable = JsonSerializable(
         ..name = 'json_converter'
         ..directives.addAll([
           Directive.import('package:json_annotation/json_annotation.dart'),
-          // Model types, for the converters registered by union strategies.
-          if (context.jsonConvertor.isNotEmpty) Directive.import('exports.dart'),
           for (final entry in customJsonConverters) ...entry.imports,
         ])
         ..body.addAll([
-          ...context.jsonConvertor,
           for (final entry in customJsonConverters) Code(entry.code),
           Code(buffer.toString()),
         ]),

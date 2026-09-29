@@ -1347,8 +1347,10 @@ class _$OpenApiSchemaOneOfCopyWithImpl<$Res>
 mixin _$OpenApiSchemaOneOfDiscriminator {
   @JsonKey(name: 'propertyName')
   String get propertyName;
+
+  /// Discriminator value → `$ref`. Absent: the schema names are the values.
   @JsonKey(name: 'mapping')
-  Map<String, String> get mapping;
+  Map<String, String>? get mapping;
 
   /// Create a copy of OpenApiSchemaOneOfDiscriminator
   /// with the given fields replaced by the non-null parameter values.
@@ -1404,7 +1406,7 @@ abstract mixin class $OpenApiSchemaOneOfDiscriminatorCopyWith<$Res> {
   @useResult
   $Res call({
     @JsonKey(name: 'propertyName') String propertyName,
-    @JsonKey(name: 'mapping') Map<String, String> mapping,
+    @JsonKey(name: 'mapping') Map<String, String>? mapping,
   });
 }
 
@@ -1420,17 +1422,17 @@ class _$OpenApiSchemaOneOfDiscriminatorCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? propertyName = null, Object? mapping = null}) {
+  $Res call({Object? propertyName = null, Object? mapping = freezed}) {
     return _then(
       OpenApiSchemaOneOfDiscriminator(
         propertyName: null == propertyName
             ? _self.propertyName
             : propertyName // ignore: cast_nullable_to_non_nullable
                   as String,
-        mapping: null == mapping
+        mapping: freezed == mapping
             ? _self.mapping
             : mapping // ignore: cast_nullable_to_non_nullable
-                  as Map<String, String>,
+                  as Map<String, String>?,
       ),
     );
   }
@@ -1532,7 +1534,7 @@ extension OpenApiSchemaOneOfDiscriminatorPatterns
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
       @JsonKey(name: 'propertyName') String propertyName,
-      @JsonKey(name: 'mapping') Map<String, String> mapping,
+      @JsonKey(name: 'mapping') Map<String, String>? mapping,
     )?
     $default, {
     required TResult orElse(),
@@ -1563,7 +1565,7 @@ extension OpenApiSchemaOneOfDiscriminatorPatterns
   TResult when<TResult extends Object?>(
     TResult Function(
       @JsonKey(name: 'propertyName') String propertyName,
-      @JsonKey(name: 'mapping') Map<String, String> mapping,
+      @JsonKey(name: 'mapping') Map<String, String>? mapping,
     )
     $default,
   ) {
@@ -1592,7 +1594,7 @@ extension OpenApiSchemaOneOfDiscriminatorPatterns
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
       @JsonKey(name: 'propertyName') String propertyName,
-      @JsonKey(name: 'mapping') Map<String, String> mapping,
+      @JsonKey(name: 'mapping') Map<String, String>? mapping,
     )?
     $default,
   ) {
@@ -1611,7 +1613,7 @@ extension OpenApiSchemaOneOfDiscriminatorPatterns
 class _OpenApiSchemaOneOfDiscriminator extends OpenApiSchemaOneOfDiscriminator {
   const _OpenApiSchemaOneOfDiscriminator({
     @JsonKey(name: 'propertyName') required this.propertyName,
-    @JsonKey(name: 'mapping') required Map<String, String> mapping,
+    @JsonKey(name: 'mapping') Map<String, String>? mapping,
   }) : _mapping = mapping,
        super._();
   factory _OpenApiSchemaOneOfDiscriminator.fromJson(
@@ -1621,13 +1623,19 @@ class _OpenApiSchemaOneOfDiscriminator extends OpenApiSchemaOneOfDiscriminator {
   @override
   @JsonKey(name: 'propertyName')
   final String propertyName;
-  final Map<String, String> _mapping;
+
+  /// Discriminator value → `$ref`. Absent: the schema names are the values.
+  final Map<String, String>? _mapping;
+
+  /// Discriminator value → `$ref`. Absent: the schema names are the values.
   @override
   @JsonKey(name: 'mapping')
-  Map<String, String> get mapping {
+  Map<String, String>? get mapping {
+    final value = _mapping;
+    if (value == null) return null;
     if (_mapping is EqualUnmodifiableMapView) return _mapping;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_mapping);
+    return EqualUnmodifiableMapView(value);
   }
 
   /// Create a copy of OpenApiSchemaOneOfDiscriminator
@@ -1683,7 +1691,7 @@ abstract mixin class _$OpenApiSchemaOneOfDiscriminatorCopyWith<$Res>
   @useResult
   $Res call({
     @JsonKey(name: 'propertyName') String propertyName,
-    @JsonKey(name: 'mapping') Map<String, String> mapping,
+    @JsonKey(name: 'mapping') Map<String, String>? mapping,
   });
 }
 
@@ -1699,17 +1707,17 @@ class __$OpenApiSchemaOneOfDiscriminatorCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? propertyName = null, Object? mapping = null}) {
+  $Res call({Object? propertyName = null, Object? mapping = freezed}) {
     return _then(
       _OpenApiSchemaOneOfDiscriminator(
         propertyName: null == propertyName
             ? _self.propertyName
             : propertyName // ignore: cast_nullable_to_non_nullable
                   as String,
-        mapping: null == mapping
+        mapping: freezed == mapping
             ? _self._mapping
             : mapping // ignore: cast_nullable_to_non_nullable
-                  as Map<String, String>,
+                  as Map<String, String>?,
       ),
     );
   }

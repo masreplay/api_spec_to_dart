@@ -133,7 +133,7 @@ class GenericModelGeneratorStrategy
                   (b) => b
                     ..annotations.addAll([
                       refer(
-                        'JsonSerializable(converters: jsonSerializableConverters, genericArgumentFactories: true, createFieldMap: true)',
+                        'JsonSerializable(converters: jsonSerializableConverters, genericArgumentFactories: true, createFieldMap: true, explicitToJson: true)',
                       ),
                     ])
                     ..constant = true
