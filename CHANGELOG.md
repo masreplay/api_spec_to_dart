@@ -23,6 +23,15 @@
 - Binary/file properties generate as `dio`'s `MultipartFile` for every
   generation source (previously plain `String` outside FastAPI Flutter
   apps) — update code constructing these fields as strings. (#54)
+- Two-letter words recase consistently (#63): fields 4.x generated as `iD`
+  are `id` again — rename references after regenerating.
+- Optional query/header/cookie parameters are nullable and no longer
+  `required` (#50); existing call sites keep compiling, but the parameter
+  types are now `T?`.
+- Components that share a title (e.g. FastAPI's `X-Input`/`X-Output`) now
+  generate one class each; the ones that lost the name are named after
+  their schema key (`app__router__items_router__ItemResponse` ->
+  `AppRouterItemsRouterItemResponse`) — update references to those models.
 - Removed `api_client.use_class_for_multipart_form_data`: it never had an
   effect. Existing configs still parse (the key is ignored).
 - Consuming projects need an SDK lower bound of at least Dart 3.8 —
@@ -97,6 +106,21 @@
   resolve through `model.enums` renames instead of the raw generated name.
 - Content without a schema (e.g. `application/pdf: {}`) no longer crashes
   parsing.
+- Components sharing a title no longer collapse into one class (the other
+  references silently decoded the wrong model); enums whose title differs
+  from their schema key compile (class and references used different
+  names).
+- A component `allOf` with a single `$ref` plus its own properties keeps
+  the referenced properties (they were dropped).
+- JSON request bodies declared as `application/json; charset=utf-8` or
+  `application/*+json` stay typed (they became `String`).
+- Spring's `*/*` responses are typed like JSON (were `dynamic`).
+- An operation offering both JSON and multipart bodies generates one body
+  (two `requestBody` parameters did not compile).
+- Defaults that cannot be written as a literal of the field's type
+  (`Uri`, `DateTime`, lists of enums, models) are omitted instead of
+  producing uncompilable code; `Optional[Enum] = X` defaults resolve to
+  `Enum.x`.
 - `#RRGGBB` colors parse as opaque instead of transparent (FastAPI/Flutter
   `Color` converter).
 - Nested objects always serialize through `explicitToJson: true` on every
