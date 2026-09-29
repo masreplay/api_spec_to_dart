@@ -110,10 +110,9 @@ class EnumModelGeneratorStrategy
     );
     return Library(
       (b) => b
-        ..comments.addAll([
-          model.key,
-          ...JsonFactory.instance.encode(model.value.toJson()).split('\n'),
-        ])
+        ..docs.addAll(
+          JsonFactory.instance.docs(model.key, model.value.toJson()),
+        )
         ..name = filename
         ..directives.addAll([
           for (final import in context.config.imports?.globalImports ?? [])

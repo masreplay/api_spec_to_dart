@@ -1,4 +1,6 @@
 /// Pet
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "id": {
@@ -21,11 +23,12 @@
 ///         "name"
 ///     ]
 /// }
-library pet;
+/// ```
+library;
 
 import 'exports.dart';
 part 'pet.freezed.dart';
-part 'pet.g.dart'; // Pet
+part 'pet.g.dart';
 
 @freezed
 abstract class Pet with _$Pet {

@@ -239,7 +239,13 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
           case 'date':
             return 'DateTime';
           case 'color-hex' || 'color':
-            return 'Color';
+            // The Color converter is only generated for FastAPI Flutter apps.
+            if (context.isFlutterProject &&
+                context.config.generationSource == GenerationSource.fastAPI) {
+              return 'Color';
+            }
+
+            return 'String';
           case 'binary':
             if (context.isFlutterProject &&
                 context.config.generationSource == GenerationSource.fastAPI) {

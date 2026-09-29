@@ -1,14 +1,14 @@
-library base_api_client;
-
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
-import 'exports.dart';
-
+/// Empty
+///
+/// ```json
 /// {
 ///     "title": "Empty",
 ///     "version": "1.0.0"
 /// }
+/// ```
 class BaseApiClient {
   BaseApiClient(this.dio, {this.baseUrl, this.errorLogger});
 

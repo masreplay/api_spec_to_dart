@@ -1,13 +1,15 @@
-// Money
-// {
-//     "type": "string",
-//     "enum": [
-//         "$usd",
-//         "back\\slash"
-//     ]
-// }
-
-library money;
+/// Money
+///
+/// ```json
+/// {
+///     "type": "string",
+///     "enum": [
+///         "$usd",
+///         "back\\slash"
+///     ]
+/// }
+/// ```
+library;
 
 import 'exports.dart';
 part 'money.g.dart';

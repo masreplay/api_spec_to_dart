@@ -134,19 +134,12 @@ class UnionModelStrategy
           Directive.part('$filename.freezed.dart'),
           Directive.part('$filename.g.dart'),
         ])
-        ..docs.addAll([
-          '/// ${params.key}',
-          ...JsonFactory.instance
-              .encode(params.schema.toJson())
-              .split('\n')
-              .map((e) => '/// $e'),
-        ])
+        ..docs.addAll(
+          JsonFactory.instance.docs(params.key, params.schema.toJson()),
+        )
         ..body.addAll([
           Class(
             (b) => b
-              ..docs.addAll([
-                '// $className',
-              ])
               ..annotations.addAll([
                 _freezedAnnotation(
                   unionClassFallbackName: unionClassFallbackName,

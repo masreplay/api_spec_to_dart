@@ -78,6 +78,13 @@ void main() {
     expect(dartType(time, config: fastApi, flutter: true), 'TimeOfDay');
   });
 
+  test('Color only exists in Flutter projects', () {
+    final color = {'type': 'string', 'format': 'color'};
+    expect(dartType(color), 'String');
+    expect(dartType(color, config: fastApi), 'String');
+    expect(dartType(color, config: fastApi, flutter: true), 'Color');
+  });
+
   test('collections', () {
     expect(
       dartType({

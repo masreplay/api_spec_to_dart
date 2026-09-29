@@ -1,4 +1,6 @@
 /// Error
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "code": {
@@ -15,11 +17,12 @@
 ///         "message"
 ///     ]
 /// }
-library error;
+/// ```
+library;
 
 import 'exports.dart';
 part 'error.freezed.dart';
-part 'error.g.dart'; // Error
+part 'error.g.dart';
 
 @freezed
 abstract class Error with _$Error {

@@ -97,14 +97,9 @@ class GenericModelGeneratorStrategy
           Directive.part('$filename.freezed.dart'),
           Directive.part('$filename.g.dart'),
         ])
-        ..docs.addAll([
-          '/// ${model.key}',
-          '/// $className',
-          ...JsonFactory.instance
-              .encode(model.value.toJson())
-              .split('\n')
-              .map((e) => '/// $e'),
-        ])
+        ..docs.addAll(
+          JsonFactory.instance.docs(model.key, model.value.toJson()),
+        )
         ..body.addAll([
           Class(
             (b) => b
