@@ -111,6 +111,12 @@
   resolve through `model.enums` renames instead of the raw generated name.
 - Content without a schema (e.g. `application/pdf: {}`) no longer crashes
   parsing.
+- Specs using path-item `summary`/`description`/`parameters`, or `$ref`s
+  to `#/components/parameters`, `#/components/requestBodies` and
+  `#/components/responses`, no longer crash parsing: path-level parameters
+  apply to every operation (an operation's own parameter overrides one with
+  the same name and location) and references are resolved; an unresolvable
+  `$ref` fails with an error naming it.
 - Components sharing a title no longer collapse into one class (the other
   references silently decoded the wrong model); enums whose title differs
   from their schema key compile (class and references used different
