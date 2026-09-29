@@ -1,0 +1,24 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Defaults that do not fit", "version": "1.0.0" },
+  "paths": {},
+  "components": {
+    "schemas": {
+      "Settings": {
+        "type": "object",
+        "properties": {
+          "home": { "type": "string", "format": "uri", "default": "https://example.com" },
+          "since": { "type": "string", "format": "date-time", "default": "2020-01-01T00:00:00Z" },
+          "tags": {
+            "type": "array",
+            "items": { "type": "string", "enum": ["a", "b"] },
+            "default": ["a"]
+          },
+          "owner": { "$ref": "#/components/schemas/Owner", "default": { "name": "me" } },
+          "name": { "type": "string", "default": "kept" }
+        }
+      },
+      "Owner": { "type": "object", "properties": { "name": { "type": "string" } } }
+    }
+  }
+}

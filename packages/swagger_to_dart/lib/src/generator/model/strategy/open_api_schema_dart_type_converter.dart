@@ -340,18 +340,52 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
           );
           return _enumDefault(className, className, values, default_);
         }
+        if (!_literalFits(schema)) return null;
       case OpenApiSchemaRef schema:
-        final values = context.openApi
-            .getOpenApiSchemasByRef(schema.ref!)
-            ?.enum_;
-        if (values != null) {
-          return _enumDefault(schema.name, getRef(schema), values, default_);
+        return _refDefault(schema, default_);
+      case OpenApiSchemaAnyOf(anyOf: final variants) ||
+          OpenApiSchemaOneOf(oneOf: final variants):
+        // `Optional[X] = ...`: the one non-null variant decides.
+        final nonNull = variants.where(
+          (e) =>
+              !(e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_),
+        );
+        switch (nonNull.singleOrNull) {
+          case final OpenApiSchemaRef ref:
+            return _refDefault(ref, default_);
+          case final OpenApiSchemaType type when _literalFits(type):
+            break;
+          default:
+            return null;
         }
-      case OpenApiSchemaAnyOf() || OpenApiSchemaOneOf():
-        break;
     }
 
     return _dartLiteral(default_, constPrefix: !inConstContext);
+  }
+
+  /// A default for a reference: `Enum.member` for enums; models cannot be
+  /// written as literals, so none.
+  String? _refDefault(OpenApiSchemaRef schema, Object default_) {
+    final values = context.openApi.getOpenApiSchemasByRef(schema.ref!)?.enum_;
+    return values == null
+        ? null
+        : _enumDefault(schema.name, getRef(schema), values, default_);
+  }
+
+  /// Whether a JSON default can be written as a literal of the schema's Dart
+  /// type (not for DateTime, Uri, enums in lists, typed maps...).
+  bool _literalFits(OpenApiSchemaType schema) {
+    if (schema.enum_ != null) return false;
+    return switch (schema.type) {
+      OpenApiSchemaVarType.string => getType(schema, className: '') == 'String',
+      OpenApiSchemaVarType.array => switch (schema.items) {
+        null => true,
+        final OpenApiSchemaType items => _literalFits(items),
+        _ => false,
+      },
+      OpenApiSchemaVarType.object => schema.additionalProperties is! Map,
+      _ => true,
+    };
   }
 
   /// Class name of an inline enum: its title, its parent's title, or the

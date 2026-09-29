@@ -1,0 +1,83 @@
+/// Settings
+///
+/// ```json
+/// {
+///     "properties": {
+///         "home": {
+///             "type": "string",
+///             "format": "uri",
+///             "default": "https://example.com"
+///         },
+///         "since": {
+///             "type": "string",
+///             "format": "date-time",
+///             "default": "2020-01-01T00:00:00Z"
+///         },
+///         "tags": {
+///             "type": "array",
+///             "items": {
+///                 "enum": [
+///                     "a",
+///                     "b"
+///                 ],
+///                 "type": "string"
+///             },
+///             "default": [
+///                 "a"
+///             ]
+///         },
+///         "owner": {
+///             "$ref": "#/components/schemas/Owner",
+///             "default": {
+///                 "name": "me"
+///             }
+///         },
+///         "name": {
+///             "type": "string",
+///             "default": "kept"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'settings.freezed.dart';
+part 'settings.g.dart';
+
+@freezed
+abstract class Settings with _$Settings {
+  const Settings._();
+
+  @jsonSerializable
+  const factory Settings({
+    /// home
+    @JsonKey(name: Settings.homeKey_) Uri? home,
+
+    /// since
+    @JsonKey(name: Settings.sinceKey_) DateTime? since,
+
+    /// tags
+    @JsonKey(name: Settings.tagsKey_) List<SettingsTags>? tags,
+
+    /// owner
+    @JsonKey(name: Settings.ownerKey_) Owner? owner,
+
+    /// name
+    @Default('kept') @JsonKey(name: Settings.nameKey_) String name,
+  }) = _Settings;
+
+  factory Settings.fromJson(Map<String, dynamic> json) =>
+      _$SettingsFromJson(json);
+
+  static const String homeKey_ = 'home';
+
+  static const String sinceKey_ = 'since';
+
+  static const String tagsKey_ = 'tags';
+
+  static const String ownerKey_ = 'owner';
+
+  static const String nameKey_ = 'name';
+}
