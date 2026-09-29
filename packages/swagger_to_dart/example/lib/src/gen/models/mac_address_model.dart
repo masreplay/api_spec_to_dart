@@ -1,4 +1,6 @@
 /// MACAddressModel
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "mac_address": {
@@ -12,11 +14,12 @@
 ///     ],
 ///     "title": "MACAddressModel"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'mac_address_model.freezed.dart';
-part 'mac_address_model.g.dart'; // MACAddressModel
+part 'mac_address_model.g.dart';
 
 @freezed
 abstract class MACAddressModel with _$MACAddressModel {
@@ -31,5 +34,5 @@ abstract class MACAddressModel with _$MACAddressModel {
   factory MACAddressModel.fromJson(Map<String, dynamic> json) =>
       _$MACAddressModelFromJson(json);
 
-  static const String macAddressKey_ = r'mac_address';
+  static const String macAddressKey_ = 'mac_address';
 }

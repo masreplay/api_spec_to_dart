@@ -1,4 +1,6 @@
 /// DomainModel
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "domain": {
@@ -12,11 +14,12 @@
 ///     ],
 ///     "title": "DomainModel"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'domain_model.freezed.dart';
-part 'domain_model.g.dart'; // DomainModel
+part 'domain_model.g.dart';
 
 @freezed
 abstract class DomainModel with _$DomainModel {
@@ -31,5 +34,5 @@ abstract class DomainModel with _$DomainModel {
   factory DomainModel.fromJson(Map<String, dynamic> json) =>
       _$DomainModelFromJson(json);
 
-  static const String domainKey_ = r'domain';
+  static const String domainKey_ = 'domain';
 }

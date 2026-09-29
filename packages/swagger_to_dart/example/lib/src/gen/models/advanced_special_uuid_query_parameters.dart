@@ -1,4 +1,6 @@
 /// AdvancedSpecialUuidQueryParameters
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "id": {
@@ -12,11 +14,12 @@
 ///         "id"
 ///     ]
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'advanced_special_uuid_query_parameters.freezed.dart';
-part 'advanced_special_uuid_query_parameters.g.dart'; // AdvancedSpecialUuidQueryParameters
+part 'advanced_special_uuid_query_parameters.g.dart';
 
 @freezed
 abstract class AdvancedSpecialUuidQueryParameters
@@ -32,8 +35,7 @@ abstract class AdvancedSpecialUuidQueryParameters
 
   factory AdvancedSpecialUuidQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$AdvancedSpecialUuidQueryParametersFromJson(json);
+  ) => _$AdvancedSpecialUuidQueryParametersFromJson(json);
 
-  static const String idKey_ = r'id';
+  static const String idKey_ = 'id';
 }

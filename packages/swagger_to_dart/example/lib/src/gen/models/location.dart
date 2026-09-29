@@ -1,4 +1,6 @@
 /// Location
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "lat": {
@@ -31,11 +33,12 @@
 ///     ],
 ///     "title": "Location"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'location.freezed.dart';
-part 'location.g.dart'; // Location
+part 'location.g.dart';
 
 @freezed
 abstract class Location with _$Location {
@@ -56,9 +59,9 @@ abstract class Location with _$Location {
   factory Location.fromJson(Map<String, dynamic> json) =>
       _$LocationFromJson(json);
 
-  static const String latKey_ = r'lat';
+  static const String latKey_ = 'lat';
 
-  static const String lngKey_ = r'lng';
+  static const String lngKey_ = 'lng';
 
-  static const String nameKey_ = r'name';
+  static const String nameKey_ = 'name';
 }

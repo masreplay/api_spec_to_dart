@@ -1,41 +1,6 @@
-library;
-
-import 'exports.dart';
-
-class AnimalMapJsonConverter
-    implements JsonConverter<Animal, Map<String, dynamic>> {
-  const AnimalMapJsonConverter();
-
-  static const String unionKey = r'value';
-
-  @override
-  Animal fromJson(Map<String, dynamic> json) {
-    return Animal.fromJson({unionKey: json, ...json});
-  }
-
-  @override
-  Map<String, dynamic> toJson(Animal object) {
-    return {unionKey: object.toJson(), ...object.toJson()};
-  }
-}
-
-class ResponseModelsResponseMultipleMapJsonConverter
-    implements
-        JsonConverter<ResponseModelsResponseMultiple, Map<String, dynamic>> {
-  const ResponseModelsResponseMultipleMapJsonConverter();
-
-  static const String unionKey = r'value';
-
-  @override
-  ResponseModelsResponseMultiple fromJson(Map<String, dynamic> json) {
-    return ResponseModelsResponseMultiple.fromJson({unionKey: json, ...json});
-  }
-
-  @override
-  Map<String, dynamic> toJson(ResponseModelsResponseMultiple object) {
-    return {unionKey: object.toJson(), ...object.toJson()};
-  }
-}
+import 'package:json_annotation/json_annotation.dart';
+import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
 class MultipartFileJsonConverter
     implements JsonConverter<MultipartFile, MultipartFile> {
@@ -65,10 +30,12 @@ class TimeOfDayStringJsonConverter implements JsonConverter<TimeOfDay, String> {
       final regex = RegExp(r'PT(?:(\d+)H)?(?:(\d+)M)?');
       final match = regex.firstMatch(json);
 
-      final hours =
-          match?.group(1) != null ? int.tryParse(match!.group(1)!) ?? 0 : 0;
-      final minutes =
-          match?.group(2) != null ? int.tryParse(match!.group(2)!) ?? 0 : 0;
+      final hours = match?.group(1) != null
+          ? int.tryParse(match!.group(1)!) ?? 0
+          : 0;
+      final minutes = match?.group(2) != null
+          ? int.tryParse(match!.group(2)!) ?? 0
+          : 0;
 
       return TimeOfDay(hour: hours, minute: minutes);
     }
@@ -111,9 +78,8 @@ const jsonSerializableConverters = <JsonConverter>[
   MultipartFileJsonConverter(),
   TimeOfDayStringJsonConverter(),
   ColorStringJsonConverter(),
-  AnimalMapJsonConverter(),
-  ResponseModelsResponseMultipleMapJsonConverter(),
 ];
 const jsonSerializable = JsonSerializable(
   converters: jsonSerializableConverters,
+  explicitToJson: true,
 );

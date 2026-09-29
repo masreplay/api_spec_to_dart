@@ -1,4 +1,6 @@
 /// ValidationError
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "loc": {
@@ -32,11 +34,12 @@
 ///     ],
 ///     "title": "ValidationError"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'validation_error.freezed.dart';
-part 'validation_error.g.dart'; // ValidationError
+part 'validation_error.g.dart';
 
 @freezed
 abstract class ValidationError with _$ValidationError {
@@ -57,9 +60,9 @@ abstract class ValidationError with _$ValidationError {
   factory ValidationError.fromJson(Map<String, dynamic> json) =>
       _$ValidationErrorFromJson(json);
 
-  static const String locKey_ = r'loc';
+  static const String locKey_ = 'loc';
 
-  static const String msgKey_ = r'msg';
+  static const String msgKey_ = 'msg';
 
-  static const String typeKey_ = r'type';
+  static const String typeKey_ = 'type';
 }

@@ -1,4 +1,6 @@
 /// Body_files-file_upload
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "file": {
@@ -26,11 +28,12 @@
 ///     ],
 ///     "title": "Body_files-file_upload"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'body_files_file_upload.freezed.dart';
-part 'body_files_file_upload.g.dart'; // BodyFilesFileUpload
+part 'body_files_file_upload.g.dart';
 
 @freezed
 abstract class BodyFilesFileUpload with _$BodyFilesFileUpload {
@@ -48,7 +51,7 @@ abstract class BodyFilesFileUpload with _$BodyFilesFileUpload {
   factory BodyFilesFileUpload.fromJson(Map<String, dynamic> json) =>
       _$BodyFilesFileUploadFromJson(json);
 
-  static const String fileKey_ = r'file';
+  static const String fileKey_ = 'file';
 
-  static const String descriptionKey_ = r'description';
+  static const String descriptionKey_ = 'description';
 }

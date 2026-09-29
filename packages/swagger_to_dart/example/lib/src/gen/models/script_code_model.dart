@@ -1,4 +1,6 @@
 /// ScriptCodeModel
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "script_code": {
@@ -198,11 +200,12 @@
 ///     ],
 ///     "title": "ScriptCodeModel"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'script_code_model.freezed.dart';
-part 'script_code_model.g.dart'; // ScriptCodeModel
+part 'script_code_model.g.dart';
 
 @freezed
 abstract class ScriptCodeModel with _$ScriptCodeModel {
@@ -218,5 +221,5 @@ abstract class ScriptCodeModel with _$ScriptCodeModel {
   factory ScriptCodeModel.fromJson(Map<String, dynamic> json) =>
       _$ScriptCodeModelFromJson(json);
 
-  static const String scriptCodeKey_ = r'script_code';
+  static const String scriptCodeKey_ = 'script_code';
 }

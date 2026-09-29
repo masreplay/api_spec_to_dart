@@ -1,4 +1,6 @@
 /// Body_files-form_basic
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "username": {
@@ -25,11 +27,12 @@
 ///     ],
 ///     "title": "Body_files-form_basic"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'body_files_form_basic.freezed.dart';
-part 'body_files_form_basic.g.dart'; // BodyFilesFormBasic
+part 'body_files_form_basic.g.dart';
 
 @freezed
 abstract class BodyFilesFormBasic with _$BodyFilesFormBasic {
@@ -52,9 +55,9 @@ abstract class BodyFilesFormBasic with _$BodyFilesFormBasic {
   factory BodyFilesFormBasic.fromJson(Map<String, dynamic> json) =>
       _$BodyFilesFormBasicFromJson(json);
 
-  static const String usernameKey_ = r'username';
+  static const String usernameKey_ = 'username';
 
-  static const String passwordKey_ = r'password';
+  static const String passwordKey_ = 'password';
 
-  static const String rememberKey_ = r'remember';
+  static const String rememberKey_ = 'remember';
 }

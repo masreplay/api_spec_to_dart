@@ -1,4 +1,6 @@
 /// UserCreate
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "username": {
@@ -43,11 +45,12 @@
 ///     ],
 ///     "title": "UserCreate"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'user_create.freezed.dart';
-part 'user_create.g.dart'; // UserCreate
+part 'user_create.g.dart';
 
 @freezed
 abstract class UserCreate with _$UserCreate {
@@ -71,11 +74,11 @@ abstract class UserCreate with _$UserCreate {
   factory UserCreate.fromJson(Map<String, dynamic> json) =>
       _$UserCreateFromJson(json);
 
-  static const String usernameKey_ = r'username';
+  static const String usernameKey_ = 'username';
 
-  static const String emailKey_ = r'email';
+  static const String emailKey_ = 'email';
 
-  static const String fullNameKey_ = r'full_name';
+  static const String fullNameKey_ = 'full_name';
 
-  static const String passwordKey_ = r'password';
+  static const String passwordKey_ = 'password';
 }

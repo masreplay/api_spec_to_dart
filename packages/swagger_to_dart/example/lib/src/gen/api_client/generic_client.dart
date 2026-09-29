@@ -1,7 +1,6 @@
-library;
-
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
+
 import '../models/models.dart';
 part 'generic_client.g.dart';
 
@@ -19,52 +18,53 @@ abstract class GenericClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'generic'],
-      r'summary': r'Get Items',
-      r'operationId': r'generic-get_items',
-      r'parameters': [
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['generic'],
+      'summary': 'Get Items',
+      'operationId': 'generic-get_items',
+      'parameters': [
         {
-          r'name': r'page',
-          r'in': r'query',
-          r'required': false,
-          r'schema': {
-            r'type': r'integer',
-            r'minimum': 1,
-            r'default': 1,
-            r'title': r'Page',
+          'name': 'page',
+          'in': 'query',
+          'required': false,
+          'schema': {
+            'type': 'integer',
+            'minimum': 1,
+            'default': 1,
+            'title': 'Page',
           },
         },
         {
-          r'name': r'per_page',
-          r'in': r'query',
-          r'required': false,
-          r'schema': {
-            r'type': r'integer',
-            r'maximum': 100,
-            r'minimum': 1,
-            r'default': 10,
-            r'title': r'Per Page',
+          'name': 'per_page',
+          'in': 'query',
+          'required': false,
+          'schema': {
+            'type': 'integer',
+            'maximum': 100,
+            'minimum': 1,
+            'default': 10,
+            'title': 'Per Page',
           },
         },
       ],
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'$ref':
-                    r'#/components/schemas/PaginationResponse_ItemResponse_',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                '\$ref':
+                    '#/components/schemas/PaginationResponse_ItemResponse_',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -73,57 +73,58 @@ abstract class GenericClient {
   });
   @GET('/generic/categories')
   Future<HttpResponse<PaginationResponse<CategoryResponse>>>
-      genericGetCategories({
+  genericGetCategories({
     @Queries() required GenericGetCategoriesQueryParameters queries,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'generic'],
-      r'summary': r'Get Categories',
-      r'operationId': r'generic-get_categories',
-      r'parameters': [
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['generic'],
+      'summary': 'Get Categories',
+      'operationId': 'generic-get_categories',
+      'parameters': [
         {
-          r'name': r'page',
-          r'in': r'query',
-          r'required': false,
-          r'schema': {
-            r'type': r'integer',
-            r'minimum': 1,
-            r'default': 1,
-            r'title': r'Page',
+          'name': 'page',
+          'in': 'query',
+          'required': false,
+          'schema': {
+            'type': 'integer',
+            'minimum': 1,
+            'default': 1,
+            'title': 'Page',
           },
         },
         {
-          r'name': r'per_page',
-          r'in': r'query',
-          r'required': false,
-          r'schema': {
-            r'type': r'integer',
-            r'maximum': 100,
-            r'minimum': 1,
-            r'default': 10,
-            r'title': r'Per Page',
+          'name': 'per_page',
+          'in': 'query',
+          'required': false,
+          'schema': {
+            'type': 'integer',
+            'maximum': 100,
+            'minimum': 1,
+            'default': 10,
+            'title': 'Per Page',
           },
         },
       ],
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'$ref':
-                    r'#/components/schemas/PaginationResponse_CategoryResponse_',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                '\$ref':
+                    '#/components/schemas/PaginationResponse_CategoryResponse_',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -136,34 +137,35 @@ abstract class GenericClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'generic'],
-      r'summary': r'Get Base Response Item',
-      r'operationId': r'generic-get_base_response_item',
-      r'requestBody': {
-        r'content': {
-          r'application/json': {
-            r'schema': {r'$ref': r'#/components/schemas/ItemResponse-Input'},
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['generic'],
+      'summary': 'Get Base Response Item',
+      'operationId': 'generic-get_base_response_item',
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {'\$ref': '#/components/schemas/ItemResponse-Input'},
           },
         },
-        r'required': true,
+        'required': true,
       },
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'$ref': r'#/components/schemas/BaseResponse_ItemResponse_',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                '\$ref': '#/components/schemas/BaseResponse_ItemResponse_',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -172,39 +174,40 @@ abstract class GenericClient {
   });
   @GET('/generic/base-response-category')
   Future<HttpResponse<BaseResponse<CategoryResponse>>>
-      genericGetBaseResponseCategory({
+  genericGetBaseResponseCategory({
     @Body() required CategoryResponse requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'generic'],
-      r'summary': r'Get Base Response Category',
-      r'operationId': r'generic-get_base_response_category',
-      r'requestBody': {
-        r'content': {
-          r'application/json': {
-            r'schema': {r'$ref': r'#/components/schemas/CategoryResponse'},
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['generic'],
+      'summary': 'Get Base Response Category',
+      'operationId': 'generic-get_base_response_category',
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {'\$ref': '#/components/schemas/CategoryResponse'},
           },
         },
-        r'required': true,
+        'required': true,
       },
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'$ref': r'#/components/schemas/BaseResponse_CategoryResponse_',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                '\$ref': '#/components/schemas/BaseResponse_CategoryResponse_',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -213,22 +216,23 @@ abstract class GenericClient {
   });
   @GET('/generic/base-response-list')
   Future<HttpResponse<BaseResponse<List<ItemResponse>>>>
-      genericGetBaseResponseList({
+  genericGetBaseResponseList({
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'generic'],
-      r'summary': r'Get Base Response List',
-      r'operationId': r'generic-get_base_response_list',
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'$ref':
-                    r'#/components/schemas/BaseResponse_list_ItemResponse__',
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['generic'],
+      'summary': 'Get Base Response List',
+      'operationId': 'generic-get_base_response_list',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                '\$ref':
+                    '#/components/schemas/BaseResponse_list_ItemResponse__',
               },
             },
           },
@@ -238,58 +242,58 @@ abstract class GenericClient {
   });
   @GET('/generic/nested-base-and-pagination')
   Future<HttpResponse<BaseResponse<PaginationResponse<ItemResponse>>>>
-      genericGetNestedBaseAndPagination({
+  genericGetNestedBaseAndPagination({
     @Queries()
     required GenericGetNestedBaseAndPaginationQueryParameters queries,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'generic'],
-      r'summary': r'Get Nested Base And Pagination',
-      r'operationId': r'generic-get_nested_base_and_pagination',
-      r'parameters': [
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['generic'],
+      'summary': 'Get Nested Base And Pagination',
+      'operationId': 'generic-get_nested_base_and_pagination',
+      'parameters': [
         {
-          r'name': r'page',
-          r'in': r'query',
-          r'required': false,
-          r'schema': {
-            r'type': r'integer',
-            r'minimum': 1,
-            r'default': 1,
-            r'title': r'Page',
+          'name': 'page',
+          'in': 'query',
+          'required': false,
+          'schema': {
+            'type': 'integer',
+            'minimum': 1,
+            'default': 1,
+            'title': 'Page',
           },
         },
         {
-          r'name': r'per_page',
-          r'in': r'query',
-          r'required': false,
-          r'schema': {
-            r'type': r'integer',
-            r'maximum': 100,
-            r'minimum': 1,
-            r'default': 10,
-            r'title': r'Per Page',
+          'name': 'per_page',
+          'in': 'query',
+          'required': false,
+          'schema': {
+            'type': 'integer',
+            'maximum': 100,
+            'minimum': 1,
+            'default': 10,
+            'title': 'Per Page',
           },
         },
       ],
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'$ref':
-                    r'#/components/schemas/BaseResponse_PaginationResponse_ItemResponse__',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                '\$ref': '#/components/schemas/BaseResponse_PaginationResponse_ItemResponse__',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },

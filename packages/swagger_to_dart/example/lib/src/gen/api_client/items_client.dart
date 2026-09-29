@@ -1,7 +1,6 @@
-library;
-
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
+
 import '../models/models.dart';
 part 'items_client.g.dart';
 
@@ -19,35 +18,35 @@ abstract class ItemsClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'items'],
-      r'summary': r'Create Item',
-      r'operationId': r'items-create_item',
-      r'requestBody': {
-        r'content': {
-          r'application/json': {
-            r'schema': {r'$ref': r'#/components/schemas/ItemRequestBody'},
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['items'],
+      'summary': 'Create Item',
+      'operationId': 'items-create_item',
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {'\$ref': '#/components/schemas/ItemRequestBody'},
           },
         },
-        r'required': true,
+        'required': true,
       },
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'$ref':
-                    r'#/components/schemas/app__router__items_router__ItemResponse',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                '\$ref': '#/components/schemas/app__router__items_router__ItemResponse',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },

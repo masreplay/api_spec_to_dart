@@ -1,4 +1,6 @@
 /// User
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "username": {
@@ -73,11 +75,12 @@
 ///     ],
 ///     "title": "User"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'user.freezed.dart';
-part 'user.g.dart'; // User
+part 'user.g.dart';
 
 @freezed
 abstract class User with _$User {
@@ -112,19 +115,19 @@ abstract class User with _$User {
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
-  static const String usernameKey_ = r'username';
+  static const String usernameKey_ = 'username';
 
-  static const String emailKey_ = r'email';
+  static const String emailKey_ = 'email';
 
-  static const String fullNameKey_ = r'full_name';
+  static const String fullNameKey_ = 'full_name';
 
-  static const String idKey_ = r'id';
+  static const String idKey_ = 'id';
 
-  static const String isActiveKey_ = r'is_active';
+  static const String isActiveKey_ = 'is_active';
 
-  static const String createdAtKey_ = r'created_at';
+  static const String createdAtKey_ = 'created_at';
 
-  static const String locationKey_ = r'location';
+  static const String locationKey_ = 'location';
 
-  static const String tagsKey_ = r'tags';
+  static const String tagsKey_ = 'tags';
 }

@@ -1,4 +1,6 @@
 /// CoordinateModel
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "coordinate": {
@@ -44,11 +46,12 @@
 ///     "type": "object",
 ///     "title": "CoordinateModel"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'coordinate_model.freezed.dart';
-part 'coordinate_model.g.dart'; // CoordinateModel
+part 'coordinate_model.g.dart';
 
 @freezed
 abstract class CoordinateModel with _$CoordinateModel {
@@ -69,9 +72,9 @@ abstract class CoordinateModel with _$CoordinateModel {
   factory CoordinateModel.fromJson(Map<String, dynamic> json) =>
       _$CoordinateModelFromJson(json);
 
-  static const String coordinateKey_ = r'coordinate';
+  static const String coordinateKey_ = 'coordinate';
 
-  static const String latitudeKey_ = r'latitude';
+  static const String latitudeKey_ = 'latitude';
 
-  static const String longitudeKey_ = r'longitude';
+  static const String longitudeKey_ = 'longitude';
 }

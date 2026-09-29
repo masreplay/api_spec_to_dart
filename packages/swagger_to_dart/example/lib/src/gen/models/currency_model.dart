@@ -1,4 +1,6 @@
 /// CurrencyModel
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "currency": {
@@ -386,11 +388,12 @@
 ///     "type": "object",
 ///     "title": "CurrencyModel"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'currency_model.freezed.dart';
-part 'currency_model.g.dart'; // CurrencyModel
+part 'currency_model.g.dart';
 
 @freezed
 abstract class CurrencyModel with _$CurrencyModel {
@@ -408,7 +411,7 @@ abstract class CurrencyModel with _$CurrencyModel {
   factory CurrencyModel.fromJson(Map<String, dynamic> json) =>
       _$CurrencyModelFromJson(json);
 
-  static const String currencyKey_ = r'currency';
+  static const String currencyKey_ = 'currency';
 
-  static const String iso4217Key_ = r'iso4217';
+  static const String iso4217Key_ = 'iso4217';
 }

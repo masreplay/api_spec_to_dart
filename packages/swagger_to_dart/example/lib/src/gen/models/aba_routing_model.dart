@@ -1,4 +1,6 @@
 /// ABARoutingModel
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "routing_number": {
@@ -14,11 +16,12 @@
 ///     ],
 ///     "title": "ABARoutingModel"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'aba_routing_model.freezed.dart';
-part 'aba_routing_model.g.dart'; // ABARoutingModel
+part 'aba_routing_model.g.dart';
 
 @freezed
 abstract class ABARoutingModel with _$ABARoutingModel {
@@ -34,5 +37,5 @@ abstract class ABARoutingModel with _$ABARoutingModel {
   factory ABARoutingModel.fromJson(Map<String, dynamic> json) =>
       _$ABARoutingModelFromJson(json);
 
-  static const String routingNumberKey_ = r'routing_number';
+  static const String routingNumberKey_ = 'routing_number';
 }

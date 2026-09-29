@@ -1,4 +1,6 @@
 /// ValidationConstrainedIntQueryParameters
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "value": {
@@ -12,11 +14,12 @@
 ///         "value"
 ///     ]
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'validation_constrained_int_query_parameters.freezed.dart';
-part 'validation_constrained_int_query_parameters.g.dart'; // ValidationConstrainedIntQueryParameters
+part 'validation_constrained_int_query_parameters.g.dart';
 
 @freezed
 abstract class ValidationConstrainedIntQueryParameters
@@ -32,8 +35,7 @@ abstract class ValidationConstrainedIntQueryParameters
 
   factory ValidationConstrainedIntQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$ValidationConstrainedIntQueryParametersFromJson(json);
+  ) => _$ValidationConstrainedIntQueryParametersFromJson(json);
 
-  static const String valueKey_ = r'value';
+  static const String valueKey_ = 'value';
 }

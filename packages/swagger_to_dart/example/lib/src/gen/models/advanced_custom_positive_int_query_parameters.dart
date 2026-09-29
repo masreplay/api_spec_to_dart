@@ -1,4 +1,6 @@
 /// AdvancedCustomPositiveIntQueryParameters
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "value": {
@@ -16,11 +18,12 @@
 ///         "value2"
 ///     ]
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'advanced_custom_positive_int_query_parameters.freezed.dart';
-part 'advanced_custom_positive_int_query_parameters.g.dart'; // AdvancedCustomPositiveIntQueryParameters
+part 'advanced_custom_positive_int_query_parameters.g.dart';
 
 @freezed
 abstract class AdvancedCustomPositiveIntQueryParameters
@@ -40,10 +43,9 @@ abstract class AdvancedCustomPositiveIntQueryParameters
 
   factory AdvancedCustomPositiveIntQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$AdvancedCustomPositiveIntQueryParametersFromJson(json);
+  ) => _$AdvancedCustomPositiveIntQueryParametersFromJson(json);
 
-  static const String valueKey_ = r'value';
+  static const String valueKey_ = 'value';
 
-  static const String value2Key_ = r'value2';
+  static const String value2Key_ = 'value2';
 }

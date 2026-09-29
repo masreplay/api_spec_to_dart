@@ -1,4 +1,6 @@
 /// ValidationParamQueryQueryParameters
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "q": {
@@ -32,11 +34,12 @@
 ///     "type": "object",
 ///     "required": []
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'validation_param_query_query_parameters.freezed.dart';
-part 'validation_param_query_query_parameters.g.dart'; // ValidationParamQueryQueryParameters
+part 'validation_param_query_query_parameters.g.dart';
 
 @freezed
 abstract class ValidationParamQueryQueryParameters
@@ -61,12 +64,11 @@ abstract class ValidationParamQueryQueryParameters
 
   factory ValidationParamQueryQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$ValidationParamQueryQueryParametersFromJson(json);
+  ) => _$ValidationParamQueryQueryParametersFromJson(json);
 
-  static const String qKey_ = r'q';
+  static const String qKey_ = 'q';
 
-  static const String skipKey_ = r'skip';
+  static const String skipKey_ = 'skip';
 
-  static const String limitKey_ = r'limit';
+  static const String limitKey_ = 'limit';
 }

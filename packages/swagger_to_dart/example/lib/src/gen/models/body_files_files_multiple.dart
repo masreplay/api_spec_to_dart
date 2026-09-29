@@ -1,4 +1,6 @@
 /// Body_files-files_multiple
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "files": {
@@ -22,11 +24,12 @@
 ///     ],
 ///     "title": "Body_files-files_multiple"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'body_files_files_multiple.freezed.dart';
-part 'body_files_files_multiple.g.dart'; // BodyFilesFilesMultiple
+part 'body_files_files_multiple.g.dart';
 
 @freezed
 abstract class BodyFilesFilesMultiple with _$BodyFilesFilesMultiple {
@@ -45,7 +48,7 @@ abstract class BodyFilesFilesMultiple with _$BodyFilesFilesMultiple {
   factory BodyFilesFilesMultiple.fromJson(Map<String, dynamic> json) =>
       _$BodyFilesFilesMultipleFromJson(json);
 
-  static const String filesKey_ = r'files';
+  static const String filesKey_ = 'files';
 
-  static const String notesKey_ = r'notes';
+  static const String notesKey_ = 'notes';
 }

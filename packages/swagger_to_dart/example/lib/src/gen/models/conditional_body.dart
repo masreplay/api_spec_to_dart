@@ -1,4 +1,6 @@
 /// ConditionalBody
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "item_id": {
@@ -29,11 +31,12 @@
 ///     "type": "object",
 ///     "title": "ConditionalBody"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'conditional_body.freezed.dart';
-part 'conditional_body.g.dart'; // ConditionalBody
+part 'conditional_body.g.dart';
 
 @freezed
 abstract class ConditionalBody with _$ConditionalBody {
@@ -51,7 +54,7 @@ abstract class ConditionalBody with _$ConditionalBody {
   factory ConditionalBody.fromJson(Map<String, dynamic> json) =>
       _$ConditionalBodyFromJson(json);
 
-  static const String itemIdKey_ = r'item_id';
+  static const String itemIdKey_ = 'item_id';
 
-  static const String itemNameKey_ = r'item_name';
+  static const String itemNameKey_ = 'item_name';
 }
