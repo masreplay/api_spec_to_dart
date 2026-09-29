@@ -1,5 +1,8 @@
 targets:
   $default:
+    sources:
+      - lib/**
+      - $package$
     builders:
       json_serializable:
         options:
@@ -12,8 +15,3 @@ targets:
           union_key: type
           format: true
           copy_with: true
-          map: true
-          when:
-            when: true
-            maybe_when: true
-            when_or_null: true

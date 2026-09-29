@@ -1,6 +1,6 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: type=lint
+// coverage:ignore-file
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'postman_collection_base.dart';
@@ -9,116 +9,100 @@ part of 'postman_collection_base.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-PostmanCollection _$PostmanCollectionFromJson(Map<String, dynamic> json) {
-  return _PostmanCollection.fromJson(json);
-}
 
 /// @nodoc
 mixin _$PostmanCollection {
-  PostmanCollectionInfo get info => throw _privateConstructorUsedError;
-  List<PostmanCollectionItem> get item => throw _privateConstructorUsedError;
-  PostmanCollectionAuth? get auth => throw _privateConstructorUsedError;
-  List<PostmanCollectionEvent>? get event => throw _privateConstructorUsedError;
-  Map<String, dynamic>? get protocolProfileBehavior =>
-      throw _privateConstructorUsedError;
-  List<PostmanCollectionVariable>? get variable =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            PostmanCollectionInfo info,
-            List<PostmanCollectionItem> item,
-            PostmanCollectionAuth? auth,
-            List<PostmanCollectionEvent>? event,
-            Map<String, dynamic>? protocolProfileBehavior,
-            List<PostmanCollectionVariable>? variable)
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            PostmanCollectionInfo info,
-            List<PostmanCollectionItem> item,
-            PostmanCollectionAuth? auth,
-            List<PostmanCollectionEvent>? event,
-            Map<String, dynamic>? protocolProfileBehavior,
-            List<PostmanCollectionVariable>? variable)?
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            PostmanCollectionInfo info,
-            List<PostmanCollectionItem> item,
-            PostmanCollectionAuth? auth,
-            List<PostmanCollectionEvent>? event,
-            Map<String, dynamic>? protocolProfileBehavior,
-            List<PostmanCollectionVariable>? variable)?
-        $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollection value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollection value)? $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollection value)? $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this PostmanCollection to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  PostmanCollectionInfo get info;
+  List<PostmanCollectionItem> get item;
+  PostmanCollectionAuth? get auth;
+  List<PostmanCollectionEvent>? get event;
+  Map<String, dynamic>? get protocolProfileBehavior;
+  List<PostmanCollectionVariable>? get variable;
 
   /// Create a copy of PostmanCollection
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $PostmanCollectionCopyWith<PostmanCollection> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$PostmanCollectionCopyWithImpl<PostmanCollection>(
+        this as PostmanCollection,
+        _$identity,
+      );
+
+  /// Serializes this PostmanCollection to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    final _this = this as PostmanCollection;
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PostmanCollection &&
+            (identical(other.info, _this.info) || other.info == _this.info) &&
+            const DeepCollectionEquality().equals(other.item, _this.item) &&
+            (identical(other.auth, _this.auth) || other.auth == _this.auth) &&
+            const DeepCollectionEquality().equals(other.event, _this.event) &&
+            const DeepCollectionEquality().equals(
+              other.protocolProfileBehavior,
+              _this.protocolProfileBehavior,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other.variable,
+              _this.variable,
+            ));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode {
+    final _this = this as PostmanCollection;
+    return Object.hash(
+      runtimeType,
+      _this.info,
+      const DeepCollectionEquality().hash(_this.item),
+      _this.auth,
+      const DeepCollectionEquality().hash(_this.event),
+      const DeepCollectionEquality().hash(_this.protocolProfileBehavior),
+      const DeepCollectionEquality().hash(_this.variable),
+    );
+  }
+
+  @override
+  String toString() {
+    final _this = this as PostmanCollection;
+    return 'PostmanCollection(info: ${_this.info}, item: ${_this.item}, auth: ${_this.auth}, event: ${_this.event}, protocolProfileBehavior: ${_this.protocolProfileBehavior}, variable: ${_this.variable})';
+  }
 }
 
 /// @nodoc
-abstract class $PostmanCollectionCopyWith<$Res> {
+abstract mixin class $PostmanCollectionCopyWith<$Res> {
   factory $PostmanCollectionCopyWith(
-          PostmanCollection value, $Res Function(PostmanCollection) then) =
-      _$PostmanCollectionCopyWithImpl<$Res, PostmanCollection>;
+    PostmanCollection value,
+    $Res Function(PostmanCollection) _then,
+  ) = _$PostmanCollectionCopyWithImpl;
   @useResult
-  $Res call(
-      {PostmanCollectionInfo info,
-      List<PostmanCollectionItem> item,
-      PostmanCollectionAuth? auth,
-      List<PostmanCollectionEvent>? event,
-      Map<String, dynamic>? protocolProfileBehavior,
-      List<PostmanCollectionVariable>? variable});
+  $Res call({
+    PostmanCollectionInfo info,
+    List<PostmanCollectionItem> item,
+    PostmanCollectionAuth? auth,
+    List<PostmanCollectionEvent>? event,
+    Map<String, dynamic>? protocolProfileBehavior,
+    List<PostmanCollectionVariable>? variable,
+  });
 
   $PostmanCollectionInfoCopyWith<$Res> get info;
   $PostmanCollectionAuthCopyWith<$Res>? get auth;
 }
 
 /// @nodoc
-class _$PostmanCollectionCopyWithImpl<$Res, $Val extends PostmanCollection>
+class _$PostmanCollectionCopyWithImpl<$Res>
     implements $PostmanCollectionCopyWith<$Res> {
-  _$PostmanCollectionCopyWithImpl(this._value, this._then);
+  _$PostmanCollectionCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final PostmanCollection _self;
+  final $Res Function(PostmanCollection) _then;
 
   /// Create a copy of PostmanCollection
   /// with the given fields replaced by the non-null parameter values.
@@ -132,32 +116,34 @@ class _$PostmanCollectionCopyWithImpl<$Res, $Val extends PostmanCollection>
     Object? protocolProfileBehavior = freezed,
     Object? variable = freezed,
   }) {
-    return _then(_value.copyWith(
-      info: null == info
-          ? _value.info
-          : info // ignore: cast_nullable_to_non_nullable
-              as PostmanCollectionInfo,
-      item: null == item
-          ? _value.item
-          : item // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionItem>,
-      auth: freezed == auth
-          ? _value.auth
-          : auth // ignore: cast_nullable_to_non_nullable
-              as PostmanCollectionAuth?,
-      event: freezed == event
-          ? _value.event
-          : event // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionEvent>?,
-      protocolProfileBehavior: freezed == protocolProfileBehavior
-          ? _value.protocolProfileBehavior
-          : protocolProfileBehavior // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
-      variable: freezed == variable
-          ? _value.variable
-          : variable // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionVariable>?,
-    ) as $Val);
+    return _then(
+      PostmanCollection(
+        info: null == info
+            ? _self.info
+            : info // ignore: cast_nullable_to_non_nullable
+                  as PostmanCollectionInfo,
+        item: null == item
+            ? _self.item
+            : item // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionItem>,
+        auth: freezed == auth
+            ? _self.auth
+            : auth // ignore: cast_nullable_to_non_nullable
+                  as PostmanCollectionAuth?,
+        event: freezed == event
+            ? _self.event
+            : event // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionEvent>?,
+        protocolProfileBehavior: freezed == protocolProfileBehavior
+            ? _self.protocolProfileBehavior
+            : protocolProfileBehavior // ignore: cast_nullable_to_non_nullable
+                  as Map<String, dynamic>?,
+        variable: freezed == variable
+            ? _self.variable
+            : variable // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionVariable>?,
+      ),
+    );
   }
 
   /// Create a copy of PostmanCollection
@@ -165,8 +151,8 @@ class _$PostmanCollectionCopyWithImpl<$Res, $Val extends PostmanCollection>
   @override
   @pragma('vm:prefer-inline')
   $PostmanCollectionInfoCopyWith<$Res> get info {
-    return $PostmanCollectionInfoCopyWith<$Res>(_value.info, (value) {
-      return _then(_value.copyWith(info: value) as $Val);
+    return $PostmanCollectionInfoCopyWith<$Res>(_self.info, (value) {
+      return _then(_self.copyWith(info: value));
     });
   }
 
@@ -175,105 +161,235 @@ class _$PostmanCollectionCopyWithImpl<$Res, $Val extends PostmanCollection>
   @override
   @pragma('vm:prefer-inline')
   $PostmanCollectionAuthCopyWith<$Res>? get auth {
-    if (_value.auth == null) {
+    if (_self.auth == null) {
       return null;
     }
 
-    return $PostmanCollectionAuthCopyWith<$Res>(_value.auth!, (value) {
-      return _then(_value.copyWith(auth: value) as $Val);
+    return $PostmanCollectionAuthCopyWith<$Res>(_self.auth!, (value) {
+      return _then(_self.copyWith(auth: value));
     });
   }
 }
 
-/// @nodoc
-abstract class _$$PostmanCollectionImplCopyWith<$Res>
-    implements $PostmanCollectionCopyWith<$Res> {
-  factory _$$PostmanCollectionImplCopyWith(_$PostmanCollectionImpl value,
-          $Res Function(_$PostmanCollectionImpl) then) =
-      __$$PostmanCollectionImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {PostmanCollectionInfo info,
+/// Adds pattern-matching-related methods to [PostmanCollection].
+extension PostmanCollectionPatterns on PostmanCollection {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PostmanCollection value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollection() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_PostmanCollection value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollection():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_PostmanCollection value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollection() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+      PostmanCollectionInfo info,
       List<PostmanCollectionItem> item,
       PostmanCollectionAuth? auth,
       List<PostmanCollectionEvent>? event,
       Map<String, dynamic>? protocolProfileBehavior,
-      List<PostmanCollectionVariable>? variable});
-
-  @override
-  $PostmanCollectionInfoCopyWith<$Res> get info;
-  @override
-  $PostmanCollectionAuthCopyWith<$Res>? get auth;
-}
-
-/// @nodoc
-class __$$PostmanCollectionImplCopyWithImpl<$Res>
-    extends _$PostmanCollectionCopyWithImpl<$Res, _$PostmanCollectionImpl>
-    implements _$$PostmanCollectionImplCopyWith<$Res> {
-  __$$PostmanCollectionImplCopyWithImpl(_$PostmanCollectionImpl _value,
-      $Res Function(_$PostmanCollectionImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of PostmanCollection
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? info = null,
-    Object? item = null,
-    Object? auth = freezed,
-    Object? event = freezed,
-    Object? protocolProfileBehavior = freezed,
-    Object? variable = freezed,
+      List<PostmanCollectionVariable>? variable,
+    )?
+    $default, {
+    required TResult orElse(),
   }) {
-    return _then(_$PostmanCollectionImpl(
-      info: null == info
-          ? _value.info
-          : info // ignore: cast_nullable_to_non_nullable
-              as PostmanCollectionInfo,
-      item: null == item
-          ? _value._item
-          : item // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionItem>,
-      auth: freezed == auth
-          ? _value.auth
-          : auth // ignore: cast_nullable_to_non_nullable
-              as PostmanCollectionAuth?,
-      event: freezed == event
-          ? _value._event
-          : event // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionEvent>?,
-      protocolProfileBehavior: freezed == protocolProfileBehavior
-          ? _value._protocolProfileBehavior
-          : protocolProfileBehavior // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
-      variable: freezed == variable
-          ? _value._variable
-          : variable // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionVariable>?,
-    ));
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollection() when $default != null:
+        return $default(
+          _that.info,
+          _that.item,
+          _that.auth,
+          _that.event,
+          _that.protocolProfileBehavior,
+          _that.variable,
+        );
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+      PostmanCollectionInfo info,
+      List<PostmanCollectionItem> item,
+      PostmanCollectionAuth? auth,
+      List<PostmanCollectionEvent>? event,
+      Map<String, dynamic>? protocolProfileBehavior,
+      List<PostmanCollectionVariable>? variable,
+    )
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollection():
+        return $default(
+          _that.info,
+          _that.item,
+          _that.auth,
+          _that.event,
+          _that.protocolProfileBehavior,
+          _that.variable,
+        );
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+      PostmanCollectionInfo info,
+      List<PostmanCollectionItem> item,
+      PostmanCollectionAuth? auth,
+      List<PostmanCollectionEvent>? event,
+      Map<String, dynamic>? protocolProfileBehavior,
+      List<PostmanCollectionVariable>? variable,
+    )?
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollection() when $default != null:
+        return $default(
+          _that.info,
+          _that.item,
+          _that.auth,
+          _that.event,
+          _that.protocolProfileBehavior,
+          _that.variable,
+        );
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PostmanCollectionImpl extends _PostmanCollection {
-  const _$PostmanCollectionImpl(
-      {required this.info,
-      required final List<PostmanCollectionItem> item,
-      this.auth,
-      final List<PostmanCollectionEvent>? event,
-      final Map<String, dynamic>? protocolProfileBehavior,
-      final List<PostmanCollectionVariable>? variable})
-      : _item = item,
-        _event = event,
-        _protocolProfileBehavior = protocolProfileBehavior,
-        _variable = variable,
-        super._();
-
-  factory _$PostmanCollectionImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PostmanCollectionImplFromJson(json);
+class _PostmanCollection extends PostmanCollection {
+  const _PostmanCollection({
+    required this.info,
+    required List<PostmanCollectionItem> item,
+    this.auth,
+    List<PostmanCollectionEvent>? event,
+    Map<String, dynamic>? protocolProfileBehavior,
+    List<PostmanCollectionVariable>? variable,
+  }) : _item = item,
+       _event = event,
+       _protocolProfileBehavior = protocolProfileBehavior,
+       _variable = variable,
+       super._();
+  factory _PostmanCollection.fromJson(Map<String, dynamic> json) =>
+      _$PostmanCollectionFromJson(json);
 
   @override
   final PostmanCollectionInfo info;
@@ -318,279 +434,251 @@ class _$PostmanCollectionImpl extends _PostmanCollection {
     return EqualUnmodifiableListView(value);
   }
 
+  /// Create a copy of PostmanCollection
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'PostmanCollection(info: $info, item: $item, auth: $auth, event: $event, protocolProfileBehavior: $protocolProfileBehavior, variable: $variable)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PostmanCollectionCopyWith<_PostmanCollection> get copyWith =>
+      __$PostmanCollectionCopyWithImpl<_PostmanCollection>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$PostmanCollectionToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PostmanCollectionImpl &&
+            other is _PostmanCollection &&
             (identical(other.info, info) || other.info == info) &&
-            const DeepCollectionEquality().equals(other._item, _item) &&
+            const DeepCollectionEquality().equals(other.item, _item) &&
             (identical(other.auth, auth) || other.auth == auth) &&
-            const DeepCollectionEquality().equals(other._event, _event) &&
+            const DeepCollectionEquality().equals(other.event, _event) &&
             const DeepCollectionEquality().equals(
-                other._protocolProfileBehavior, _protocolProfileBehavior) &&
-            const DeepCollectionEquality().equals(other._variable, _variable));
+              other.protocolProfileBehavior,
+              _protocolProfileBehavior,
+            ) &&
+            const DeepCollectionEquality().equals(other.variable, _variable));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
+  int get hashCode {
+    return Object.hash(
       runtimeType,
       info,
       const DeepCollectionEquality().hash(_item),
       auth,
       const DeepCollectionEquality().hash(_event),
       const DeepCollectionEquality().hash(_protocolProfileBehavior),
-      const DeepCollectionEquality().hash(_variable));
-
-  /// Create a copy of PostmanCollection
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PostmanCollectionImplCopyWith<_$PostmanCollectionImpl> get copyWith =>
-      __$$PostmanCollectionImplCopyWithImpl<_$PostmanCollectionImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            PostmanCollectionInfo info,
-            List<PostmanCollectionItem> item,
-            PostmanCollectionAuth? auth,
-            List<PostmanCollectionEvent>? event,
-            Map<String, dynamic>? protocolProfileBehavior,
-            List<PostmanCollectionVariable>? variable)
-        $default,
-  ) {
-    return $default(info, item, auth, event, protocolProfileBehavior, variable);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            PostmanCollectionInfo info,
-            List<PostmanCollectionItem> item,
-            PostmanCollectionAuth? auth,
-            List<PostmanCollectionEvent>? event,
-            Map<String, dynamic>? protocolProfileBehavior,
-            List<PostmanCollectionVariable>? variable)?
-        $default,
-  ) {
-    return $default?.call(
-        info, item, auth, event, protocolProfileBehavior, variable);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            PostmanCollectionInfo info,
-            List<PostmanCollectionItem> item,
-            PostmanCollectionAuth? auth,
-            List<PostmanCollectionEvent>? event,
-            Map<String, dynamic>? protocolProfileBehavior,
-            List<PostmanCollectionVariable>? variable)?
-        $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(
-          info, item, auth, event, protocolProfileBehavior, variable);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollection value) $default,
-  ) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollection value)? $default,
-  ) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollection value)? $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PostmanCollectionImplToJson(
-      this,
+      const DeepCollectionEquality().hash(_variable),
     );
   }
+
+  @override
+  String toString() {
+    return 'PostmanCollection(info: $info, item: $item, auth: $auth, event: $event, protocolProfileBehavior: $protocolProfileBehavior, variable: $variable)';
+  }
 }
 
-abstract class _PostmanCollection extends PostmanCollection {
-  const factory _PostmanCollection(
-          {required final PostmanCollectionInfo info,
-          required final List<PostmanCollectionItem> item,
-          final PostmanCollectionAuth? auth,
-          final List<PostmanCollectionEvent>? event,
-          final Map<String, dynamic>? protocolProfileBehavior,
-          final List<PostmanCollectionVariable>? variable}) =
-      _$PostmanCollectionImpl;
-  const _PostmanCollection._() : super._();
+/// @nodoc
+abstract mixin class _$PostmanCollectionCopyWith<$Res>
+    implements $PostmanCollectionCopyWith<$Res> {
+  factory _$PostmanCollectionCopyWith(
+    _PostmanCollection value,
+    $Res Function(_PostmanCollection) _then,
+  ) = __$PostmanCollectionCopyWithImpl;
+  @override
+  @useResult
+  $Res call({
+    PostmanCollectionInfo info,
+    List<PostmanCollectionItem> item,
+    PostmanCollectionAuth? auth,
+    List<PostmanCollectionEvent>? event,
+    Map<String, dynamic>? protocolProfileBehavior,
+    List<PostmanCollectionVariable>? variable,
+  });
 
-  factory _PostmanCollection.fromJson(Map<String, dynamic> json) =
-      _$PostmanCollectionImpl.fromJson;
+  @override
+  $PostmanCollectionInfoCopyWith<$Res> get info;
+  @override
+  $PostmanCollectionAuthCopyWith<$Res>? get auth;
+}
 
-  @override
-  PostmanCollectionInfo get info;
-  @override
-  List<PostmanCollectionItem> get item;
-  @override
-  PostmanCollectionAuth? get auth;
-  @override
-  List<PostmanCollectionEvent>? get event;
-  @override
-  Map<String, dynamic>? get protocolProfileBehavior;
-  @override
-  List<PostmanCollectionVariable>? get variable;
+/// @nodoc
+class __$PostmanCollectionCopyWithImpl<$Res>
+    implements _$PostmanCollectionCopyWith<$Res> {
+  __$PostmanCollectionCopyWithImpl(this._self, this._then);
+
+  final _PostmanCollection _self;
+  final $Res Function(_PostmanCollection) _then;
 
   /// Create a copy of PostmanCollection
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PostmanCollectionImplCopyWith<_$PostmanCollectionImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? info = null,
+    Object? item = null,
+    Object? auth = freezed,
+    Object? event = freezed,
+    Object? protocolProfileBehavior = freezed,
+    Object? variable = freezed,
+  }) {
+    return _then(
+      _PostmanCollection(
+        info: null == info
+            ? _self.info
+            : info // ignore: cast_nullable_to_non_nullable
+                  as PostmanCollectionInfo,
+        item: null == item
+            ? _self._item
+            : item // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionItem>,
+        auth: freezed == auth
+            ? _self.auth
+            : auth // ignore: cast_nullable_to_non_nullable
+                  as PostmanCollectionAuth?,
+        event: freezed == event
+            ? _self._event
+            : event // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionEvent>?,
+        protocolProfileBehavior: freezed == protocolProfileBehavior
+            ? _self._protocolProfileBehavior
+            : protocolProfileBehavior // ignore: cast_nullable_to_non_nullable
+                  as Map<String, dynamic>?,
+        variable: freezed == variable
+            ? _self._variable
+            : variable // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionVariable>?,
+      ),
+    );
+  }
 
-PostmanCollectionInfo _$PostmanCollectionInfoFromJson(
-    Map<String, dynamic> json) {
-  return _PostmanCollectionInfo.fromJson(json);
+  /// Create a copy of PostmanCollection
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PostmanCollectionInfoCopyWith<$Res> get info {
+    return $PostmanCollectionInfoCopyWith<$Res>(_self.info, (value) {
+      return _then(_self.copyWith(info: value));
+    });
+  }
+
+  /// Create a copy of PostmanCollection
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PostmanCollectionAuthCopyWith<$Res>? get auth {
+    if (_self.auth == null) {
+      return null;
+    }
+
+    return $PostmanCollectionAuthCopyWith<$Res>(_self.auth!, (value) {
+      return _then(_self.copyWith(auth: value));
+    });
+  }
 }
 
 /// @nodoc
 mixin _$PostmanCollectionInfo {
   @JsonKey(name: '_postman_id')
-  String? get postmanId => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get schema => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
-  PostmanCollectionVersion? get version => throw _privateConstructorUsedError;
+  String? get postmanId;
+  String get name;
+  String get schema;
+  String? get description;
+  PostmanCollectionVersion? get version;
   @JsonKey(name: '_exporter_id')
-  String? get exporterId => throw _privateConstructorUsedError;
+  String? get exporterId;
   @JsonKey(name: '_collection_link')
-  String? get collectionLink => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            @JsonKey(name: '_postman_id') String? postmanId,
-            String name,
-            String schema,
-            String? description,
-            PostmanCollectionVersion? version,
-            @JsonKey(name: '_exporter_id') String? exporterId,
-            @JsonKey(name: '_collection_link') String? collectionLink)
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            @JsonKey(name: '_postman_id') String? postmanId,
-            String name,
-            String schema,
-            String? description,
-            PostmanCollectionVersion? version,
-            @JsonKey(name: '_exporter_id') String? exporterId,
-            @JsonKey(name: '_collection_link') String? collectionLink)?
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            @JsonKey(name: '_postman_id') String? postmanId,
-            String name,
-            String schema,
-            String? description,
-            PostmanCollectionVersion? version,
-            @JsonKey(name: '_exporter_id') String? exporterId,
-            @JsonKey(name: '_collection_link') String? collectionLink)?
-        $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionInfo value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionInfo value)? $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionInfo value)? $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this PostmanCollectionInfo to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String? get collectionLink;
 
   /// Create a copy of PostmanCollectionInfo
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $PostmanCollectionInfoCopyWith<PostmanCollectionInfo> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$PostmanCollectionInfoCopyWithImpl<PostmanCollectionInfo>(
+        this as PostmanCollectionInfo,
+        _$identity,
+      );
+
+  /// Serializes this PostmanCollectionInfo to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    final _this = this as PostmanCollectionInfo;
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PostmanCollectionInfo &&
+            (identical(other.postmanId, _this.postmanId) ||
+                other.postmanId == _this.postmanId) &&
+            (identical(other.name, _this.name) || other.name == _this.name) &&
+            (identical(other.schema, _this.schema) ||
+                other.schema == _this.schema) &&
+            (identical(other.description, _this.description) ||
+                other.description == _this.description) &&
+            (identical(other.version, _this.version) ||
+                other.version == _this.version) &&
+            (identical(other.exporterId, _this.exporterId) ||
+                other.exporterId == _this.exporterId) &&
+            (identical(other.collectionLink, _this.collectionLink) ||
+                other.collectionLink == _this.collectionLink));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode {
+    final _this = this as PostmanCollectionInfo;
+    return Object.hash(
+      runtimeType,
+      _this.postmanId,
+      _this.name,
+      _this.schema,
+      _this.description,
+      _this.version,
+      _this.exporterId,
+      _this.collectionLink,
+    );
+  }
+
+  @override
+  String toString() {
+    final _this = this as PostmanCollectionInfo;
+    return 'PostmanCollectionInfo(postmanId: ${_this.postmanId}, name: ${_this.name}, schema: ${_this.schema}, description: ${_this.description}, version: ${_this.version}, exporterId: ${_this.exporterId}, collectionLink: ${_this.collectionLink})';
+  }
 }
 
 /// @nodoc
-abstract class $PostmanCollectionInfoCopyWith<$Res> {
-  factory $PostmanCollectionInfoCopyWith(PostmanCollectionInfo value,
-          $Res Function(PostmanCollectionInfo) then) =
-      _$PostmanCollectionInfoCopyWithImpl<$Res, PostmanCollectionInfo>;
+abstract mixin class $PostmanCollectionInfoCopyWith<$Res> {
+  factory $PostmanCollectionInfoCopyWith(
+    PostmanCollectionInfo value,
+    $Res Function(PostmanCollectionInfo) _then,
+  ) = _$PostmanCollectionInfoCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: '_postman_id') String? postmanId,
-      String name,
-      String schema,
-      String? description,
-      PostmanCollectionVersion? version,
-      @JsonKey(name: '_exporter_id') String? exporterId,
-      @JsonKey(name: '_collection_link') String? collectionLink});
+  $Res call({
+    @JsonKey(name: '_postman_id') String? postmanId,
+    String name,
+    String schema,
+    String? description,
+    PostmanCollectionVersion? version,
+    @JsonKey(name: '_exporter_id') String? exporterId,
+    @JsonKey(name: '_collection_link') String? collectionLink,
+  });
 
   $PostmanCollectionVersionCopyWith<$Res>? get version;
 }
 
 /// @nodoc
-class _$PostmanCollectionInfoCopyWithImpl<$Res,
-        $Val extends PostmanCollectionInfo>
+class _$PostmanCollectionInfoCopyWithImpl<$Res>
     implements $PostmanCollectionInfoCopyWith<$Res> {
-  _$PostmanCollectionInfoCopyWithImpl(this._value, this._then);
+  _$PostmanCollectionInfoCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final PostmanCollectionInfo _self;
+  final $Res Function(PostmanCollectionInfo) _then;
 
   /// Create a copy of PostmanCollectionInfo
   /// with the given fields replaced by the non-null parameter values.
@@ -605,36 +693,38 @@ class _$PostmanCollectionInfoCopyWithImpl<$Res,
     Object? exporterId = freezed,
     Object? collectionLink = freezed,
   }) {
-    return _then(_value.copyWith(
-      postmanId: freezed == postmanId
-          ? _value.postmanId
-          : postmanId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      schema: null == schema
-          ? _value.schema
-          : schema // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      version: freezed == version
-          ? _value.version
-          : version // ignore: cast_nullable_to_non_nullable
-              as PostmanCollectionVersion?,
-      exporterId: freezed == exporterId
-          ? _value.exporterId
-          : exporterId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      collectionLink: freezed == collectionLink
-          ? _value.collectionLink
-          : collectionLink // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      PostmanCollectionInfo(
+        postmanId: freezed == postmanId
+            ? _self.postmanId
+            : postmanId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        name: null == name
+            ? _self.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String,
+        schema: null == schema
+            ? _self.schema
+            : schema // ignore: cast_nullable_to_non_nullable
+                  as String,
+        description: freezed == description
+            ? _self.description
+            : description // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        version: freezed == version
+            ? _self.version
+            : version // ignore: cast_nullable_to_non_nullable
+                  as PostmanCollectionVersion?,
+        exporterId: freezed == exporterId
+            ? _self.exporterId
+            : exporterId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        collectionLink: freezed == collectionLink
+            ? _self.collectionLink
+            : collectionLink // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 
   /// Create a copy of PostmanCollectionInfo
@@ -642,108 +732,238 @@ class _$PostmanCollectionInfoCopyWithImpl<$Res,
   @override
   @pragma('vm:prefer-inline')
   $PostmanCollectionVersionCopyWith<$Res>? get version {
-    if (_value.version == null) {
+    if (_self.version == null) {
       return null;
     }
 
-    return $PostmanCollectionVersionCopyWith<$Res>(_value.version!, (value) {
-      return _then(_value.copyWith(version: value) as $Val);
+    return $PostmanCollectionVersionCopyWith<$Res>(_self.version!, (value) {
+      return _then(_self.copyWith(version: value));
     });
   }
 }
 
-/// @nodoc
-abstract class _$$PostmanCollectionInfoImplCopyWith<$Res>
-    implements $PostmanCollectionInfoCopyWith<$Res> {
-  factory _$$PostmanCollectionInfoImplCopyWith(
-          _$PostmanCollectionInfoImpl value,
-          $Res Function(_$PostmanCollectionInfoImpl) then) =
-      __$$PostmanCollectionInfoImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {@JsonKey(name: '_postman_id') String? postmanId,
+/// Adds pattern-matching-related methods to [PostmanCollectionInfo].
+extension PostmanCollectionInfoPatterns on PostmanCollectionInfo {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PostmanCollectionInfo value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionInfo() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_PostmanCollectionInfo value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionInfo():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_PostmanCollectionInfo value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionInfo() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+      @JsonKey(name: '_postman_id') String? postmanId,
       String name,
       String schema,
       String? description,
       PostmanCollectionVersion? version,
       @JsonKey(name: '_exporter_id') String? exporterId,
-      @JsonKey(name: '_collection_link') String? collectionLink});
-
-  @override
-  $PostmanCollectionVersionCopyWith<$Res>? get version;
-}
-
-/// @nodoc
-class __$$PostmanCollectionInfoImplCopyWithImpl<$Res>
-    extends _$PostmanCollectionInfoCopyWithImpl<$Res,
-        _$PostmanCollectionInfoImpl>
-    implements _$$PostmanCollectionInfoImplCopyWith<$Res> {
-  __$$PostmanCollectionInfoImplCopyWithImpl(_$PostmanCollectionInfoImpl _value,
-      $Res Function(_$PostmanCollectionInfoImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of PostmanCollectionInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? postmanId = freezed,
-    Object? name = null,
-    Object? schema = null,
-    Object? description = freezed,
-    Object? version = freezed,
-    Object? exporterId = freezed,
-    Object? collectionLink = freezed,
+      @JsonKey(name: '_collection_link') String? collectionLink,
+    )?
+    $default, {
+    required TResult orElse(),
   }) {
-    return _then(_$PostmanCollectionInfoImpl(
-      postmanId: freezed == postmanId
-          ? _value.postmanId
-          : postmanId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      schema: null == schema
-          ? _value.schema
-          : schema // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      version: freezed == version
-          ? _value.version
-          : version // ignore: cast_nullable_to_non_nullable
-              as PostmanCollectionVersion?,
-      exporterId: freezed == exporterId
-          ? _value.exporterId
-          : exporterId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      collectionLink: freezed == collectionLink
-          ? _value.collectionLink
-          : collectionLink // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionInfo() when $default != null:
+        return $default(
+          _that.postmanId,
+          _that.name,
+          _that.schema,
+          _that.description,
+          _that.version,
+          _that.exporterId,
+          _that.collectionLink,
+        );
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+      @JsonKey(name: '_postman_id') String? postmanId,
+      String name,
+      String schema,
+      String? description,
+      PostmanCollectionVersion? version,
+      @JsonKey(name: '_exporter_id') String? exporterId,
+      @JsonKey(name: '_collection_link') String? collectionLink,
+    )
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionInfo():
+        return $default(
+          _that.postmanId,
+          _that.name,
+          _that.schema,
+          _that.description,
+          _that.version,
+          _that.exporterId,
+          _that.collectionLink,
+        );
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+      @JsonKey(name: '_postman_id') String? postmanId,
+      String name,
+      String schema,
+      String? description,
+      PostmanCollectionVersion? version,
+      @JsonKey(name: '_exporter_id') String? exporterId,
+      @JsonKey(name: '_collection_link') String? collectionLink,
+    )?
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionInfo() when $default != null:
+        return $default(
+          _that.postmanId,
+          _that.name,
+          _that.schema,
+          _that.description,
+          _that.version,
+          _that.exporterId,
+          _that.collectionLink,
+        );
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PostmanCollectionInfoImpl extends _PostmanCollectionInfo {
-  const _$PostmanCollectionInfoImpl(
-      {@JsonKey(name: '_postman_id') this.postmanId,
-      required this.name,
-      required this.schema,
-      this.description,
-      this.version,
-      @JsonKey(name: '_exporter_id') this.exporterId,
-      @JsonKey(name: '_collection_link') this.collectionLink})
-      : super._();
-
-  factory _$PostmanCollectionInfoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PostmanCollectionInfoImplFromJson(json);
+class _PostmanCollectionInfo extends PostmanCollectionInfo {
+  const _PostmanCollectionInfo({
+    @JsonKey(name: '_postman_id') this.postmanId,
+    required this.name,
+    required this.schema,
+    this.description,
+    this.version,
+    @JsonKey(name: '_exporter_id') this.exporterId,
+    @JsonKey(name: '_collection_link') this.collectionLink,
+  }) : super._();
+  factory _PostmanCollectionInfo.fromJson(Map<String, dynamic> json) =>
+      _$PostmanCollectionInfoFromJson(json);
 
   @override
   @JsonKey(name: '_postman_id')
@@ -763,16 +983,27 @@ class _$PostmanCollectionInfoImpl extends _PostmanCollectionInfo {
   @JsonKey(name: '_collection_link')
   final String? collectionLink;
 
+  /// Create a copy of PostmanCollectionInfo
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'PostmanCollectionInfo(postmanId: $postmanId, name: $name, schema: $schema, description: $description, version: $version, exporterId: $exporterId, collectionLink: $collectionLink)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PostmanCollectionInfoCopyWith<_PostmanCollectionInfo> get copyWith =>
+      __$PostmanCollectionInfoCopyWithImpl<_PostmanCollectionInfo>(
+        this,
+        _$identity,
+      );
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$PostmanCollectionInfoToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PostmanCollectionInfoImpl &&
+            other is _PostmanCollectionInfo &&
             (identical(other.postmanId, postmanId) ||
                 other.postmanId == postmanId) &&
             (identical(other.name, name) || other.name == name) &&
@@ -788,287 +1019,200 @@ class _$PostmanCollectionInfoImpl extends _PostmanCollectionInfo {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, postmanId, name, schema,
-      description, version, exporterId, collectionLink);
-
-  /// Create a copy of PostmanCollectionInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PostmanCollectionInfoImplCopyWith<_$PostmanCollectionInfoImpl>
-      get copyWith => __$$PostmanCollectionInfoImplCopyWithImpl<
-          _$PostmanCollectionInfoImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            @JsonKey(name: '_postman_id') String? postmanId,
-            String name,
-            String schema,
-            String? description,
-            PostmanCollectionVersion? version,
-            @JsonKey(name: '_exporter_id') String? exporterId,
-            @JsonKey(name: '_collection_link') String? collectionLink)
-        $default,
-  ) {
-    return $default(postmanId, name, schema, description, version, exporterId,
-        collectionLink);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            @JsonKey(name: '_postman_id') String? postmanId,
-            String name,
-            String schema,
-            String? description,
-            PostmanCollectionVersion? version,
-            @JsonKey(name: '_exporter_id') String? exporterId,
-            @JsonKey(name: '_collection_link') String? collectionLink)?
-        $default,
-  ) {
-    return $default?.call(postmanId, name, schema, description, version,
-        exporterId, collectionLink);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            @JsonKey(name: '_postman_id') String? postmanId,
-            String name,
-            String schema,
-            String? description,
-            PostmanCollectionVersion? version,
-            @JsonKey(name: '_exporter_id') String? exporterId,
-            @JsonKey(name: '_collection_link') String? collectionLink)?
-        $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(postmanId, name, schema, description, version, exporterId,
-          collectionLink);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionInfo value) $default,
-  ) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionInfo value)? $default,
-  ) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionInfo value)? $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PostmanCollectionInfoImplToJson(
-      this,
+  int get hashCode {
+    return Object.hash(
+      runtimeType,
+      postmanId,
+      name,
+      schema,
+      description,
+      version,
+      exporterId,
+      collectionLink,
     );
   }
+
+  @override
+  String toString() {
+    return 'PostmanCollectionInfo(postmanId: $postmanId, name: $name, schema: $schema, description: $description, version: $version, exporterId: $exporterId, collectionLink: $collectionLink)';
+  }
 }
 
-abstract class _PostmanCollectionInfo extends PostmanCollectionInfo {
-  const factory _PostmanCollectionInfo(
-          {@JsonKey(name: '_postman_id') final String? postmanId,
-          required final String name,
-          required final String schema,
-          final String? description,
-          final PostmanCollectionVersion? version,
-          @JsonKey(name: '_exporter_id') final String? exporterId,
-          @JsonKey(name: '_collection_link') final String? collectionLink}) =
-      _$PostmanCollectionInfoImpl;
-  const _PostmanCollectionInfo._() : super._();
+/// @nodoc
+abstract mixin class _$PostmanCollectionInfoCopyWith<$Res>
+    implements $PostmanCollectionInfoCopyWith<$Res> {
+  factory _$PostmanCollectionInfoCopyWith(
+    _PostmanCollectionInfo value,
+    $Res Function(_PostmanCollectionInfo) _then,
+  ) = __$PostmanCollectionInfoCopyWithImpl;
+  @override
+  @useResult
+  $Res call({
+    @JsonKey(name: '_postman_id') String? postmanId,
+    String name,
+    String schema,
+    String? description,
+    PostmanCollectionVersion? version,
+    @JsonKey(name: '_exporter_id') String? exporterId,
+    @JsonKey(name: '_collection_link') String? collectionLink,
+  });
 
-  factory _PostmanCollectionInfo.fromJson(Map<String, dynamic> json) =
-      _$PostmanCollectionInfoImpl.fromJson;
+  @override
+  $PostmanCollectionVersionCopyWith<$Res>? get version;
+}
 
-  @override
-  @JsonKey(name: '_postman_id')
-  String? get postmanId;
-  @override
-  String get name;
-  @override
-  String get schema;
-  @override
-  String? get description;
-  @override
-  PostmanCollectionVersion? get version;
-  @override
-  @JsonKey(name: '_exporter_id')
-  String? get exporterId;
-  @override
-  @JsonKey(name: '_collection_link')
-  String? get collectionLink;
+/// @nodoc
+class __$PostmanCollectionInfoCopyWithImpl<$Res>
+    implements _$PostmanCollectionInfoCopyWith<$Res> {
+  __$PostmanCollectionInfoCopyWithImpl(this._self, this._then);
+
+  final _PostmanCollectionInfo _self;
+  final $Res Function(_PostmanCollectionInfo) _then;
 
   /// Create a copy of PostmanCollectionInfo
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PostmanCollectionInfoImplCopyWith<_$PostmanCollectionInfoImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? postmanId = freezed,
+    Object? name = null,
+    Object? schema = null,
+    Object? description = freezed,
+    Object? version = freezed,
+    Object? exporterId = freezed,
+    Object? collectionLink = freezed,
+  }) {
+    return _then(
+      _PostmanCollectionInfo(
+        postmanId: freezed == postmanId
+            ? _self.postmanId
+            : postmanId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        name: null == name
+            ? _self.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String,
+        schema: null == schema
+            ? _self.schema
+            : schema // ignore: cast_nullable_to_non_nullable
+                  as String,
+        description: freezed == description
+            ? _self.description
+            : description // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        version: freezed == version
+            ? _self.version
+            : version // ignore: cast_nullable_to_non_nullable
+                  as PostmanCollectionVersion?,
+        exporterId: freezed == exporterId
+            ? _self.exporterId
+            : exporterId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        collectionLink: freezed == collectionLink
+            ? _self.collectionLink
+            : collectionLink // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
+  }
 
-PostmanCollectionVersion _$PostmanCollectionVersionFromJson(
-    Map<String, dynamic> json) {
-  return _PostmanCollectionVersion.fromJson(json);
+  /// Create a copy of PostmanCollectionInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PostmanCollectionVersionCopyWith<$Res>? get version {
+    if (_self.version == null) {
+      return null;
+    }
+
+    return $PostmanCollectionVersionCopyWith<$Res>(_self.version!, (value) {
+      return _then(_self.copyWith(version: value));
+    });
+  }
 }
 
 /// @nodoc
 mixin _$PostmanCollectionVersion {
-  int get major => throw _privateConstructorUsedError;
-  int get minor => throw _privateConstructorUsedError;
-  int get patch => throw _privateConstructorUsedError;
-  String? get identifier => throw _privateConstructorUsedError;
-  Object? get meta => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            int major, int minor, int patch, String? identifier, Object? meta)
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            int major, int minor, int patch, String? identifier, Object? meta)?
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            int major, int minor, int patch, String? identifier, Object? meta)?
-        $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionVersion value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionVersion value)? $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionVersion value)? $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this PostmanCollectionVersion to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  int get major;
+  int get minor;
+  int get patch;
+  String? get identifier;
+  Object? get meta;
 
   /// Create a copy of PostmanCollectionVersion
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $PostmanCollectionVersionCopyWith<PostmanCollectionVersion> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $PostmanCollectionVersionCopyWith<$Res> {
-  factory $PostmanCollectionVersionCopyWith(PostmanCollectionVersion value,
-          $Res Function(PostmanCollectionVersion) then) =
-      _$PostmanCollectionVersionCopyWithImpl<$Res, PostmanCollectionVersion>;
-  @useResult
-  $Res call(
-      {int major, int minor, int patch, String? identifier, Object? meta});
-}
-
-/// @nodoc
-class _$PostmanCollectionVersionCopyWithImpl<$Res,
-        $Val extends PostmanCollectionVersion>
-    implements $PostmanCollectionVersionCopyWith<$Res> {
-  _$PostmanCollectionVersionCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of PostmanCollectionVersion
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $PostmanCollectionVersionCopyWith<PostmanCollectionVersion> get copyWith =>
+      _$PostmanCollectionVersionCopyWithImpl<PostmanCollectionVersion>(
+        this as PostmanCollectionVersion,
+        _$identity,
+      );
+
+  /// Serializes this PostmanCollectionVersion to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? major = null,
-    Object? minor = null,
-    Object? patch = null,
-    Object? identifier = freezed,
-    Object? meta = freezed,
-  }) {
-    return _then(_value.copyWith(
-      major: null == major
-          ? _value.major
-          : major // ignore: cast_nullable_to_non_nullable
-              as int,
-      minor: null == minor
-          ? _value.minor
-          : minor // ignore: cast_nullable_to_non_nullable
-              as int,
-      patch: null == patch
-          ? _value.patch
-          : patch // ignore: cast_nullable_to_non_nullable
-              as int,
-      identifier: freezed == identifier
-          ? _value.identifier
-          : identifier // ignore: cast_nullable_to_non_nullable
-              as String?,
-      meta: freezed == meta ? _value.meta : meta,
-    ) as $Val);
+  bool operator ==(Object other) {
+    final _this = this as PostmanCollectionVersion;
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PostmanCollectionVersion &&
+            (identical(other.major, _this.major) ||
+                other.major == _this.major) &&
+            (identical(other.minor, _this.minor) ||
+                other.minor == _this.minor) &&
+            (identical(other.patch, _this.patch) ||
+                other.patch == _this.patch) &&
+            (identical(other.identifier, _this.identifier) ||
+                other.identifier == _this.identifier) &&
+            const DeepCollectionEquality().equals(other.meta, _this.meta));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode {
+    final _this = this as PostmanCollectionVersion;
+    return Object.hash(
+      runtimeType,
+      _this.major,
+      _this.minor,
+      _this.patch,
+      _this.identifier,
+      const DeepCollectionEquality().hash(_this.meta),
+    );
+  }
+
+  @override
+  String toString() {
+    final _this = this as PostmanCollectionVersion;
+    return 'PostmanCollectionVersion(major: ${_this.major}, minor: ${_this.minor}, patch: ${_this.patch}, identifier: ${_this.identifier}, meta: ${_this.meta})';
   }
 }
 
 /// @nodoc
-abstract class _$$PostmanCollectionVersionImplCopyWith<$Res>
-    implements $PostmanCollectionVersionCopyWith<$Res> {
-  factory _$$PostmanCollectionVersionImplCopyWith(
-          _$PostmanCollectionVersionImpl value,
-          $Res Function(_$PostmanCollectionVersionImpl) then) =
-      __$$PostmanCollectionVersionImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $PostmanCollectionVersionCopyWith<$Res> {
+  factory $PostmanCollectionVersionCopyWith(
+    PostmanCollectionVersion value,
+    $Res Function(PostmanCollectionVersion) _then,
+  ) = _$PostmanCollectionVersionCopyWithImpl;
   @useResult
-  $Res call(
-      {int major, int minor, int patch, String? identifier, Object? meta});
+  $Res call({
+    int major,
+    int minor,
+    int patch,
+    String? identifier,
+    Object? meta,
+  });
 }
 
 /// @nodoc
-class __$$PostmanCollectionVersionImplCopyWithImpl<$Res>
-    extends _$PostmanCollectionVersionCopyWithImpl<$Res,
-        _$PostmanCollectionVersionImpl>
-    implements _$$PostmanCollectionVersionImplCopyWith<$Res> {
-  __$$PostmanCollectionVersionImplCopyWithImpl(
-      _$PostmanCollectionVersionImpl _value,
-      $Res Function(_$PostmanCollectionVersionImpl) _then)
-      : super(_value, _then);
+class _$PostmanCollectionVersionCopyWithImpl<$Res>
+    implements $PostmanCollectionVersionCopyWith<$Res> {
+  _$PostmanCollectionVersionCopyWithImpl(this._self, this._then);
+
+  final PostmanCollectionVersion _self;
+  final $Res Function(PostmanCollectionVersion) _then;
 
   /// Create a copy of PostmanCollectionVersion
   /// with the given fields replaced by the non-null parameter values.
@@ -1081,41 +1225,238 @@ class __$$PostmanCollectionVersionImplCopyWithImpl<$Res>
     Object? identifier = freezed,
     Object? meta = freezed,
   }) {
-    return _then(_$PostmanCollectionVersionImpl(
-      major: null == major
-          ? _value.major
-          : major // ignore: cast_nullable_to_non_nullable
-              as int,
-      minor: null == minor
-          ? _value.minor
-          : minor // ignore: cast_nullable_to_non_nullable
-              as int,
-      patch: null == patch
-          ? _value.patch
-          : patch // ignore: cast_nullable_to_non_nullable
-              as int,
-      identifier: freezed == identifier
-          ? _value.identifier
-          : identifier // ignore: cast_nullable_to_non_nullable
-              as String?,
-      meta: freezed == meta ? _value.meta : meta,
-    ));
+    return _then(
+      PostmanCollectionVersion(
+        major: null == major
+            ? _self.major
+            : major // ignore: cast_nullable_to_non_nullable
+                  as int,
+        minor: null == minor
+            ? _self.minor
+            : minor // ignore: cast_nullable_to_non_nullable
+                  as int,
+        patch: null == patch
+            ? _self.patch
+            : patch // ignore: cast_nullable_to_non_nullable
+                  as int,
+        identifier: freezed == identifier
+            ? _self.identifier
+            : identifier // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        meta: freezed == meta ? _self.meta : meta,
+      ),
+    );
+  }
+}
+
+/// Adds pattern-matching-related methods to [PostmanCollectionVersion].
+extension PostmanCollectionVersionPatterns on PostmanCollectionVersion {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PostmanCollectionVersion value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionVersion() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_PostmanCollectionVersion value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionVersion():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_PostmanCollectionVersion value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionVersion() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+      int major,
+      int minor,
+      int patch,
+      String? identifier,
+      Object? meta,
+    )?
+    $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionVersion() when $default != null:
+        return $default(
+          _that.major,
+          _that.minor,
+          _that.patch,
+          _that.identifier,
+          _that.meta,
+        );
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+      int major,
+      int minor,
+      int patch,
+      String? identifier,
+      Object? meta,
+    )
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionVersion():
+        return $default(
+          _that.major,
+          _that.minor,
+          _that.patch,
+          _that.identifier,
+          _that.meta,
+        );
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+      int major,
+      int minor,
+      int patch,
+      String? identifier,
+      Object? meta,
+    )?
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionVersion() when $default != null:
+        return $default(
+          _that.major,
+          _that.minor,
+          _that.patch,
+          _that.identifier,
+          _that.meta,
+        );
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PostmanCollectionVersionImpl extends _PostmanCollectionVersion {
-  const _$PostmanCollectionVersionImpl(
-      {required this.major,
-      required this.minor,
-      required this.patch,
-      this.identifier,
-      this.meta})
-      : super._();
-
-  factory _$PostmanCollectionVersionImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PostmanCollectionVersionImplFromJson(json);
+class _PostmanCollectionVersion extends PostmanCollectionVersion {
+  const _PostmanCollectionVersion({
+    required this.major,
+    required this.minor,
+    required this.patch,
+    this.identifier,
+    this.meta,
+  }) : super._();
+  factory _PostmanCollectionVersion.fromJson(Map<String, dynamic> json) =>
+      _$PostmanCollectionVersionFromJson(json);
 
   @override
   final int major;
@@ -1128,16 +1469,27 @@ class _$PostmanCollectionVersionImpl extends _PostmanCollectionVersion {
   @override
   final Object? meta;
 
+  /// Create a copy of PostmanCollectionVersion
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'PostmanCollectionVersion(major: $major, minor: $minor, patch: $patch, identifier: $identifier, meta: $meta)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PostmanCollectionVersionCopyWith<_PostmanCollectionVersion> get copyWith =>
+      __$PostmanCollectionVersionCopyWithImpl<_PostmanCollectionVersion>(
+        this,
+        _$identity,
+      );
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$PostmanCollectionVersionToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PostmanCollectionVersionImpl &&
+            other is _PostmanCollectionVersion &&
             (identical(other.major, major) || other.major == major) &&
             (identical(other.minor, minor) || other.minor == minor) &&
             (identical(other.patch, patch) || other.patch == patch) &&
@@ -1148,241 +1500,191 @@ class _$PostmanCollectionVersionImpl extends _PostmanCollectionVersion {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, major, minor, patch, identifier,
-      const DeepCollectionEquality().hash(meta));
+  int get hashCode {
+    return Object.hash(
+      runtimeType,
+      major,
+      minor,
+      patch,
+      identifier,
+      const DeepCollectionEquality().hash(meta),
+    );
+  }
+
+  @override
+  String toString() {
+    return 'PostmanCollectionVersion(major: $major, minor: $minor, patch: $patch, identifier: $identifier, meta: $meta)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$PostmanCollectionVersionCopyWith<$Res>
+    implements $PostmanCollectionVersionCopyWith<$Res> {
+  factory _$PostmanCollectionVersionCopyWith(
+    _PostmanCollectionVersion value,
+    $Res Function(_PostmanCollectionVersion) _then,
+  ) = __$PostmanCollectionVersionCopyWithImpl;
+  @override
+  @useResult
+  $Res call({
+    int major,
+    int minor,
+    int patch,
+    String? identifier,
+    Object? meta,
+  });
+}
+
+/// @nodoc
+class __$PostmanCollectionVersionCopyWithImpl<$Res>
+    implements _$PostmanCollectionVersionCopyWith<$Res> {
+  __$PostmanCollectionVersionCopyWithImpl(this._self, this._then);
+
+  final _PostmanCollectionVersion _self;
+  final $Res Function(_PostmanCollectionVersion) _then;
 
   /// Create a copy of PostmanCollectionVersion
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$PostmanCollectionVersionImplCopyWith<_$PostmanCollectionVersionImpl>
-      get copyWith => __$$PostmanCollectionVersionImplCopyWithImpl<
-          _$PostmanCollectionVersionImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            int major, int minor, int patch, String? identifier, Object? meta)
-        $default,
-  ) {
-    return $default(major, minor, patch, identifier, meta);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            int major, int minor, int patch, String? identifier, Object? meta)?
-        $default,
-  ) {
-    return $default?.call(major, minor, patch, identifier, meta);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            int major, int minor, int patch, String? identifier, Object? meta)?
-        $default, {
-    required TResult orElse(),
+  $Res call({
+    Object? major = null,
+    Object? minor = null,
+    Object? patch = null,
+    Object? identifier = freezed,
+    Object? meta = freezed,
   }) {
-    if ($default != null) {
-      return $default(major, minor, patch, identifier, meta);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionVersion value) $default,
-  ) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionVersion value)? $default,
-  ) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionVersion value)? $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PostmanCollectionVersionImplToJson(
-      this,
+    return _then(
+      _PostmanCollectionVersion(
+        major: null == major
+            ? _self.major
+            : major // ignore: cast_nullable_to_non_nullable
+                  as int,
+        minor: null == minor
+            ? _self.minor
+            : minor // ignore: cast_nullable_to_non_nullable
+                  as int,
+        patch: null == patch
+            ? _self.patch
+            : patch // ignore: cast_nullable_to_non_nullable
+                  as int,
+        identifier: freezed == identifier
+            ? _self.identifier
+            : identifier // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        meta: freezed == meta ? _self.meta : meta,
+      ),
     );
   }
 }
 
-abstract class _PostmanCollectionVersion extends PostmanCollectionVersion {
-  const factory _PostmanCollectionVersion(
-      {required final int major,
-      required final int minor,
-      required final int patch,
-      final String? identifier,
-      final Object? meta}) = _$PostmanCollectionVersionImpl;
-  const _PostmanCollectionVersion._() : super._();
-
-  factory _PostmanCollectionVersion.fromJson(Map<String, dynamic> json) =
-      _$PostmanCollectionVersionImpl.fromJson;
-
-  @override
-  int get major;
-  @override
-  int get minor;
-  @override
-  int get patch;
-  @override
-  String? get identifier;
-  @override
-  Object? get meta;
-
-  /// Create a copy of PostmanCollectionVersion
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PostmanCollectionVersionImplCopyWith<_$PostmanCollectionVersionImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-PostmanCollectionItem _$PostmanCollectionItemFromJson(
-    Map<String, dynamic> json) {
-  return _PostmanCollectionItem.fromJson(json);
-}
-
 /// @nodoc
 mixin _$PostmanCollectionItem {
-  String? get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
-  List<PostmanCollectionVariable>? get variable =>
-      throw _privateConstructorUsedError;
-  List<PostmanCollectionEvent>? get event => throw _privateConstructorUsedError;
-  Map<String, dynamic>? get protocolProfileBehavior =>
-      throw _privateConstructorUsedError;
-  PostmanCollectionRequest? get request => throw _privateConstructorUsedError;
-  List<PostmanCollectionResponse>? get response =>
-      throw _privateConstructorUsedError;
-  List<PostmanCollectionItem>? get item => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            String? id,
-            String name,
-            String? description,
-            List<PostmanCollectionVariable>? variable,
-            List<PostmanCollectionEvent>? event,
-            Map<String, dynamic>? protocolProfileBehavior,
-            PostmanCollectionRequest? request,
-            List<PostmanCollectionResponse>? response,
-            List<PostmanCollectionItem>? item)
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            String? id,
-            String name,
-            String? description,
-            List<PostmanCollectionVariable>? variable,
-            List<PostmanCollectionEvent>? event,
-            Map<String, dynamic>? protocolProfileBehavior,
-            PostmanCollectionRequest? request,
-            List<PostmanCollectionResponse>? response,
-            List<PostmanCollectionItem>? item)?
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            String? id,
-            String name,
-            String? description,
-            List<PostmanCollectionVariable>? variable,
-            List<PostmanCollectionEvent>? event,
-            Map<String, dynamic>? protocolProfileBehavior,
-            PostmanCollectionRequest? request,
-            List<PostmanCollectionResponse>? response,
-            List<PostmanCollectionItem>? item)?
-        $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionItem value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionItem value)? $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionItem value)? $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this PostmanCollectionItem to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String? get id;
+  String get name;
+  String? get description;
+  List<PostmanCollectionVariable>? get variable;
+  List<PostmanCollectionEvent>? get event;
+  Map<String, dynamic>? get protocolProfileBehavior;
+  PostmanCollectionRequest? get request;
+  List<PostmanCollectionResponse>? get response;
+  List<PostmanCollectionItem>? get item;
 
   /// Create a copy of PostmanCollectionItem
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $PostmanCollectionItemCopyWith<PostmanCollectionItem> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$PostmanCollectionItemCopyWithImpl<PostmanCollectionItem>(
+        this as PostmanCollectionItem,
+        _$identity,
+      );
+
+  /// Serializes this PostmanCollectionItem to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    final _this = this as PostmanCollectionItem;
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PostmanCollectionItem &&
+            (identical(other.id, _this.id) || other.id == _this.id) &&
+            (identical(other.name, _this.name) || other.name == _this.name) &&
+            (identical(other.description, _this.description) ||
+                other.description == _this.description) &&
+            const DeepCollectionEquality().equals(
+              other.variable,
+              _this.variable,
+            ) &&
+            const DeepCollectionEquality().equals(other.event, _this.event) &&
+            const DeepCollectionEquality().equals(
+              other.protocolProfileBehavior,
+              _this.protocolProfileBehavior,
+            ) &&
+            (identical(other.request, _this.request) ||
+                other.request == _this.request) &&
+            const DeepCollectionEquality().equals(
+              other.response,
+              _this.response,
+            ) &&
+            const DeepCollectionEquality().equals(other.item, _this.item));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode {
+    final _this = this as PostmanCollectionItem;
+    return Object.hash(
+      runtimeType,
+      _this.id,
+      _this.name,
+      _this.description,
+      const DeepCollectionEquality().hash(_this.variable),
+      const DeepCollectionEquality().hash(_this.event),
+      const DeepCollectionEquality().hash(_this.protocolProfileBehavior),
+      _this.request,
+      const DeepCollectionEquality().hash(_this.response),
+      const DeepCollectionEquality().hash(_this.item),
+    );
+  }
+
+  @override
+  String toString() {
+    final _this = this as PostmanCollectionItem;
+    return 'PostmanCollectionItem(id: ${_this.id}, name: ${_this.name}, description: ${_this.description}, variable: ${_this.variable}, event: ${_this.event}, protocolProfileBehavior: ${_this.protocolProfileBehavior}, request: ${_this.request}, response: ${_this.response}, item: ${_this.item})';
+  }
 }
 
 /// @nodoc
-abstract class $PostmanCollectionItemCopyWith<$Res> {
-  factory $PostmanCollectionItemCopyWith(PostmanCollectionItem value,
-          $Res Function(PostmanCollectionItem) then) =
-      _$PostmanCollectionItemCopyWithImpl<$Res, PostmanCollectionItem>;
+abstract mixin class $PostmanCollectionItemCopyWith<$Res> {
+  factory $PostmanCollectionItemCopyWith(
+    PostmanCollectionItem value,
+    $Res Function(PostmanCollectionItem) _then,
+  ) = _$PostmanCollectionItemCopyWithImpl;
   @useResult
-  $Res call(
-      {String? id,
-      String name,
-      String? description,
-      List<PostmanCollectionVariable>? variable,
-      List<PostmanCollectionEvent>? event,
-      Map<String, dynamic>? protocolProfileBehavior,
-      PostmanCollectionRequest? request,
-      List<PostmanCollectionResponse>? response,
-      List<PostmanCollectionItem>? item});
+  $Res call({
+    String? id,
+    String name,
+    String? description,
+    List<PostmanCollectionVariable>? variable,
+    List<PostmanCollectionEvent>? event,
+    Map<String, dynamic>? protocolProfileBehavior,
+    PostmanCollectionRequest? request,
+    List<PostmanCollectionResponse>? response,
+    List<PostmanCollectionItem>? item,
+  });
 
   $PostmanCollectionRequestCopyWith<$Res>? get request;
 }
 
 /// @nodoc
-class _$PostmanCollectionItemCopyWithImpl<$Res,
-        $Val extends PostmanCollectionItem>
+class _$PostmanCollectionItemCopyWithImpl<$Res>
     implements $PostmanCollectionItemCopyWith<$Res> {
-  _$PostmanCollectionItemCopyWithImpl(this._value, this._then);
+  _$PostmanCollectionItemCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final PostmanCollectionItem _self;
+  final $Res Function(PostmanCollectionItem) _then;
 
   /// Create a copy of PostmanCollectionItem
   /// with the given fields replaced by the non-null parameter values.
@@ -1399,44 +1701,46 @@ class _$PostmanCollectionItemCopyWithImpl<$Res,
     Object? response = freezed,
     Object? item = freezed,
   }) {
-    return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      variable: freezed == variable
-          ? _value.variable
-          : variable // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionVariable>?,
-      event: freezed == event
-          ? _value.event
-          : event // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionEvent>?,
-      protocolProfileBehavior: freezed == protocolProfileBehavior
-          ? _value.protocolProfileBehavior
-          : protocolProfileBehavior // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
-      request: freezed == request
-          ? _value.request
-          : request // ignore: cast_nullable_to_non_nullable
-              as PostmanCollectionRequest?,
-      response: freezed == response
-          ? _value.response
-          : response // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionResponse>?,
-      item: freezed == item
-          ? _value.item
-          : item // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionItem>?,
-    ) as $Val);
+    return _then(
+      PostmanCollectionItem(
+        id: freezed == id
+            ? _self.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        name: null == name
+            ? _self.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String,
+        description: freezed == description
+            ? _self.description
+            : description // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        variable: freezed == variable
+            ? _self.variable
+            : variable // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionVariable>?,
+        event: freezed == event
+            ? _self.event
+            : event // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionEvent>?,
+        protocolProfileBehavior: freezed == protocolProfileBehavior
+            ? _self.protocolProfileBehavior
+            : protocolProfileBehavior // ignore: cast_nullable_to_non_nullable
+                  as Map<String, dynamic>?,
+        request: freezed == request
+            ? _self.request
+            : request // ignore: cast_nullable_to_non_nullable
+                  as PostmanCollectionRequest?,
+        response: freezed == response
+            ? _self.response
+            : response // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionResponse>?,
+        item: freezed == item
+            ? _self.item
+            : item // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionItem>?,
+      ),
+    );
   }
 
   /// Create a copy of PostmanCollectionItem
@@ -1444,27 +1748,111 @@ class _$PostmanCollectionItemCopyWithImpl<$Res,
   @override
   @pragma('vm:prefer-inline')
   $PostmanCollectionRequestCopyWith<$Res>? get request {
-    if (_value.request == null) {
+    if (_self.request == null) {
       return null;
     }
 
-    return $PostmanCollectionRequestCopyWith<$Res>(_value.request!, (value) {
-      return _then(_value.copyWith(request: value) as $Val);
+    return $PostmanCollectionRequestCopyWith<$Res>(_self.request!, (value) {
+      return _then(_self.copyWith(request: value));
     });
   }
 }
 
-/// @nodoc
-abstract class _$$PostmanCollectionItemImplCopyWith<$Res>
-    implements $PostmanCollectionItemCopyWith<$Res> {
-  factory _$$PostmanCollectionItemImplCopyWith(
-          _$PostmanCollectionItemImpl value,
-          $Res Function(_$PostmanCollectionItemImpl) then) =
-      __$$PostmanCollectionItemImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String? id,
+/// Adds pattern-matching-related methods to [PostmanCollectionItem].
+extension PostmanCollectionItemPatterns on PostmanCollectionItem {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PostmanCollectionItem value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionItem() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_PostmanCollectionItem value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionItem():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_PostmanCollectionItem value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionItem() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+      String? id,
       String name,
       String? description,
       List<PostmanCollectionVariable>? variable,
@@ -1472,99 +1860,145 @@ abstract class _$$PostmanCollectionItemImplCopyWith<$Res>
       Map<String, dynamic>? protocolProfileBehavior,
       PostmanCollectionRequest? request,
       List<PostmanCollectionResponse>? response,
-      List<PostmanCollectionItem>? item});
-
-  @override
-  $PostmanCollectionRequestCopyWith<$Res>? get request;
-}
-
-/// @nodoc
-class __$$PostmanCollectionItemImplCopyWithImpl<$Res>
-    extends _$PostmanCollectionItemCopyWithImpl<$Res,
-        _$PostmanCollectionItemImpl>
-    implements _$$PostmanCollectionItemImplCopyWith<$Res> {
-  __$$PostmanCollectionItemImplCopyWithImpl(_$PostmanCollectionItemImpl _value,
-      $Res Function(_$PostmanCollectionItemImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of PostmanCollectionItem
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = freezed,
-    Object? name = null,
-    Object? description = freezed,
-    Object? variable = freezed,
-    Object? event = freezed,
-    Object? protocolProfileBehavior = freezed,
-    Object? request = freezed,
-    Object? response = freezed,
-    Object? item = freezed,
+      List<PostmanCollectionItem>? item,
+    )?
+    $default, {
+    required TResult orElse(),
   }) {
-    return _then(_$PostmanCollectionItemImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      variable: freezed == variable
-          ? _value._variable
-          : variable // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionVariable>?,
-      event: freezed == event
-          ? _value._event
-          : event // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionEvent>?,
-      protocolProfileBehavior: freezed == protocolProfileBehavior
-          ? _value._protocolProfileBehavior
-          : protocolProfileBehavior // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
-      request: freezed == request
-          ? _value.request
-          : request // ignore: cast_nullable_to_non_nullable
-              as PostmanCollectionRequest?,
-      response: freezed == response
-          ? _value._response
-          : response // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionResponse>?,
-      item: freezed == item
-          ? _value._item
-          : item // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionItem>?,
-    ));
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionItem() when $default != null:
+        return $default(
+          _that.id,
+          _that.name,
+          _that.description,
+          _that.variable,
+          _that.event,
+          _that.protocolProfileBehavior,
+          _that.request,
+          _that.response,
+          _that.item,
+        );
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+      String? id,
+      String name,
+      String? description,
+      List<PostmanCollectionVariable>? variable,
+      List<PostmanCollectionEvent>? event,
+      Map<String, dynamic>? protocolProfileBehavior,
+      PostmanCollectionRequest? request,
+      List<PostmanCollectionResponse>? response,
+      List<PostmanCollectionItem>? item,
+    )
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionItem():
+        return $default(
+          _that.id,
+          _that.name,
+          _that.description,
+          _that.variable,
+          _that.event,
+          _that.protocolProfileBehavior,
+          _that.request,
+          _that.response,
+          _that.item,
+        );
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+      String? id,
+      String name,
+      String? description,
+      List<PostmanCollectionVariable>? variable,
+      List<PostmanCollectionEvent>? event,
+      Map<String, dynamic>? protocolProfileBehavior,
+      PostmanCollectionRequest? request,
+      List<PostmanCollectionResponse>? response,
+      List<PostmanCollectionItem>? item,
+    )?
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionItem() when $default != null:
+        return $default(
+          _that.id,
+          _that.name,
+          _that.description,
+          _that.variable,
+          _that.event,
+          _that.protocolProfileBehavior,
+          _that.request,
+          _that.response,
+          _that.item,
+        );
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PostmanCollectionItemImpl extends _PostmanCollectionItem {
-  const _$PostmanCollectionItemImpl(
-      {this.id,
-      required this.name,
-      this.description,
-      final List<PostmanCollectionVariable>? variable,
-      final List<PostmanCollectionEvent>? event,
-      final Map<String, dynamic>? protocolProfileBehavior,
-      this.request,
-      final List<PostmanCollectionResponse>? response,
-      final List<PostmanCollectionItem>? item})
-      : _variable = variable,
-        _event = event,
-        _protocolProfileBehavior = protocolProfileBehavior,
-        _response = response,
-        _item = item,
-        super._();
-
-  factory _$PostmanCollectionItemImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PostmanCollectionItemImplFromJson(json);
+class _PostmanCollectionItem extends PostmanCollectionItem {
+  const _PostmanCollectionItem({
+    this.id,
+    required this.name,
+    this.description,
+    List<PostmanCollectionVariable>? variable,
+    List<PostmanCollectionEvent>? event,
+    Map<String, dynamic>? protocolProfileBehavior,
+    this.request,
+    List<PostmanCollectionResponse>? response,
+    List<PostmanCollectionItem>? item,
+  }) : _variable = variable,
+       _event = event,
+       _protocolProfileBehavior = protocolProfileBehavior,
+       _response = response,
+       _item = item,
+       super._();
+  factory _PostmanCollectionItem.fromJson(Map<String, dynamic> json) =>
+      _$PostmanCollectionItemFromJson(json);
 
   @override
   final String? id;
@@ -1625,32 +2059,46 @@ class _$PostmanCollectionItemImpl extends _PostmanCollectionItem {
     return EqualUnmodifiableListView(value);
   }
 
+  /// Create a copy of PostmanCollectionItem
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'PostmanCollectionItem(id: $id, name: $name, description: $description, variable: $variable, event: $event, protocolProfileBehavior: $protocolProfileBehavior, request: $request, response: $response, item: $item)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PostmanCollectionItemCopyWith<_PostmanCollectionItem> get copyWith =>
+      __$PostmanCollectionItemCopyWithImpl<_PostmanCollectionItem>(
+        this,
+        _$identity,
+      );
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$PostmanCollectionItemToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PostmanCollectionItemImpl &&
+            other is _PostmanCollectionItem &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            const DeepCollectionEquality().equals(other._variable, _variable) &&
-            const DeepCollectionEquality().equals(other._event, _event) &&
+            const DeepCollectionEquality().equals(other.variable, _variable) &&
+            const DeepCollectionEquality().equals(other.event, _event) &&
             const DeepCollectionEquality().equals(
-                other._protocolProfileBehavior, _protocolProfileBehavior) &&
+              other.protocolProfileBehavior,
+              _protocolProfileBehavior,
+            ) &&
             (identical(other.request, request) || other.request == request) &&
-            const DeepCollectionEquality().equals(other._response, _response) &&
-            const DeepCollectionEquality().equals(other._item, _item));
+            const DeepCollectionEquality().equals(other.response, _response) &&
+            const DeepCollectionEquality().equals(other.item, _item));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
+  int get hashCode {
+    return Object.hash(
       runtimeType,
       id,
       name,
@@ -1660,404 +2108,230 @@ class _$PostmanCollectionItemImpl extends _PostmanCollectionItem {
       const DeepCollectionEquality().hash(_protocolProfileBehavior),
       request,
       const DeepCollectionEquality().hash(_response),
-      const DeepCollectionEquality().hash(_item));
-
-  /// Create a copy of PostmanCollectionItem
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PostmanCollectionItemImplCopyWith<_$PostmanCollectionItemImpl>
-      get copyWith => __$$PostmanCollectionItemImplCopyWithImpl<
-          _$PostmanCollectionItemImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            String? id,
-            String name,
-            String? description,
-            List<PostmanCollectionVariable>? variable,
-            List<PostmanCollectionEvent>? event,
-            Map<String, dynamic>? protocolProfileBehavior,
-            PostmanCollectionRequest? request,
-            List<PostmanCollectionResponse>? response,
-            List<PostmanCollectionItem>? item)
-        $default,
-  ) {
-    return $default(id, name, description, variable, event,
-        protocolProfileBehavior, request, response, item);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            String? id,
-            String name,
-            String? description,
-            List<PostmanCollectionVariable>? variable,
-            List<PostmanCollectionEvent>? event,
-            Map<String, dynamic>? protocolProfileBehavior,
-            PostmanCollectionRequest? request,
-            List<PostmanCollectionResponse>? response,
-            List<PostmanCollectionItem>? item)?
-        $default,
-  ) {
-    return $default?.call(id, name, description, variable, event,
-        protocolProfileBehavior, request, response, item);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            String? id,
-            String name,
-            String? description,
-            List<PostmanCollectionVariable>? variable,
-            List<PostmanCollectionEvent>? event,
-            Map<String, dynamic>? protocolProfileBehavior,
-            PostmanCollectionRequest? request,
-            List<PostmanCollectionResponse>? response,
-            List<PostmanCollectionItem>? item)?
-        $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(id, name, description, variable, event,
-          protocolProfileBehavior, request, response, item);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionItem value) $default,
-  ) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionItem value)? $default,
-  ) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionItem value)? $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PostmanCollectionItemImplToJson(
-      this,
+      const DeepCollectionEquality().hash(_item),
     );
   }
+
+  @override
+  String toString() {
+    return 'PostmanCollectionItem(id: $id, name: $name, description: $description, variable: $variable, event: $event, protocolProfileBehavior: $protocolProfileBehavior, request: $request, response: $response, item: $item)';
+  }
 }
 
-abstract class _PostmanCollectionItem extends PostmanCollectionItem {
-  const factory _PostmanCollectionItem(
-      {final String? id,
-      required final String name,
-      final String? description,
-      final List<PostmanCollectionVariable>? variable,
-      final List<PostmanCollectionEvent>? event,
-      final Map<String, dynamic>? protocolProfileBehavior,
-      final PostmanCollectionRequest? request,
-      final List<PostmanCollectionResponse>? response,
-      final List<PostmanCollectionItem>? item}) = _$PostmanCollectionItemImpl;
-  const _PostmanCollectionItem._() : super._();
+/// @nodoc
+abstract mixin class _$PostmanCollectionItemCopyWith<$Res>
+    implements $PostmanCollectionItemCopyWith<$Res> {
+  factory _$PostmanCollectionItemCopyWith(
+    _PostmanCollectionItem value,
+    $Res Function(_PostmanCollectionItem) _then,
+  ) = __$PostmanCollectionItemCopyWithImpl;
+  @override
+  @useResult
+  $Res call({
+    String? id,
+    String name,
+    String? description,
+    List<PostmanCollectionVariable>? variable,
+    List<PostmanCollectionEvent>? event,
+    Map<String, dynamic>? protocolProfileBehavior,
+    PostmanCollectionRequest? request,
+    List<PostmanCollectionResponse>? response,
+    List<PostmanCollectionItem>? item,
+  });
 
-  factory _PostmanCollectionItem.fromJson(Map<String, dynamic> json) =
-      _$PostmanCollectionItemImpl.fromJson;
+  @override
+  $PostmanCollectionRequestCopyWith<$Res>? get request;
+}
 
-  @override
-  String? get id;
-  @override
-  String get name;
-  @override
-  String? get description;
-  @override
-  List<PostmanCollectionVariable>? get variable;
-  @override
-  List<PostmanCollectionEvent>? get event;
-  @override
-  Map<String, dynamic>? get protocolProfileBehavior;
-  @override
-  PostmanCollectionRequest? get request;
-  @override
-  List<PostmanCollectionResponse>? get response;
-  @override
-  List<PostmanCollectionItem>? get item;
+/// @nodoc
+class __$PostmanCollectionItemCopyWithImpl<$Res>
+    implements _$PostmanCollectionItemCopyWith<$Res> {
+  __$PostmanCollectionItemCopyWithImpl(this._self, this._then);
+
+  final _PostmanCollectionItem _self;
+  final $Res Function(_PostmanCollectionItem) _then;
 
   /// Create a copy of PostmanCollectionItem
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PostmanCollectionItemImplCopyWith<_$PostmanCollectionItemImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = freezed,
+    Object? name = null,
+    Object? description = freezed,
+    Object? variable = freezed,
+    Object? event = freezed,
+    Object? protocolProfileBehavior = freezed,
+    Object? request = freezed,
+    Object? response = freezed,
+    Object? item = freezed,
+  }) {
+    return _then(
+      _PostmanCollectionItem(
+        id: freezed == id
+            ? _self.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        name: null == name
+            ? _self.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String,
+        description: freezed == description
+            ? _self.description
+            : description // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        variable: freezed == variable
+            ? _self._variable
+            : variable // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionVariable>?,
+        event: freezed == event
+            ? _self._event
+            : event // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionEvent>?,
+        protocolProfileBehavior: freezed == protocolProfileBehavior
+            ? _self._protocolProfileBehavior
+            : protocolProfileBehavior // ignore: cast_nullable_to_non_nullable
+                  as Map<String, dynamic>?,
+        request: freezed == request
+            ? _self.request
+            : request // ignore: cast_nullable_to_non_nullable
+                  as PostmanCollectionRequest?,
+        response: freezed == response
+            ? _self._response
+            : response // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionResponse>?,
+        item: freezed == item
+            ? _self._item
+            : item // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionItem>?,
+      ),
+    );
+  }
 
-PostmanCollectionAuth _$PostmanCollectionAuthFromJson(
-    Map<String, dynamic> json) {
-  return _PostmanCollectionAuth.fromJson(json);
+  /// Create a copy of PostmanCollectionItem
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PostmanCollectionRequestCopyWith<$Res>? get request {
+    if (_self.request == null) {
+      return null;
+    }
+
+    return $PostmanCollectionRequestCopyWith<$Res>(_self.request!, (value) {
+      return _then(_self.copyWith(request: value));
+    });
+  }
 }
 
 /// @nodoc
 mixin _$PostmanCollectionAuth {
-  PostmanCollectionAuthType get type => throw _privateConstructorUsedError;
-  List<PostmanCollectionAuthAttribute>? get noauth =>
-      throw _privateConstructorUsedError;
-  List<PostmanCollectionAuthAttribute>? get apikey =>
-      throw _privateConstructorUsedError;
-  List<PostmanCollectionAuthAttribute>? get awsv4 =>
-      throw _privateConstructorUsedError;
-  List<PostmanCollectionAuthAttribute>? get basic =>
-      throw _privateConstructorUsedError;
-  List<PostmanCollectionAuthAttribute>? get bearer =>
-      throw _privateConstructorUsedError;
-  List<PostmanCollectionAuthAttribute>? get digest =>
-      throw _privateConstructorUsedError;
-  List<PostmanCollectionAuthAttribute>? get edgegrid =>
-      throw _privateConstructorUsedError;
-  List<PostmanCollectionAuthAttribute>? get hawk =>
-      throw _privateConstructorUsedError;
-  List<PostmanCollectionAuthAttribute>? get ntlm =>
-      throw _privateConstructorUsedError;
-  List<PostmanCollectionAuthAttribute>? get oauth1 =>
-      throw _privateConstructorUsedError;
-  List<PostmanCollectionAuthAttribute>? get oauth2 =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            PostmanCollectionAuthType type,
-            List<PostmanCollectionAuthAttribute>? noauth,
-            List<PostmanCollectionAuthAttribute>? apikey,
-            List<PostmanCollectionAuthAttribute>? awsv4,
-            List<PostmanCollectionAuthAttribute>? basic,
-            List<PostmanCollectionAuthAttribute>? bearer,
-            List<PostmanCollectionAuthAttribute>? digest,
-            List<PostmanCollectionAuthAttribute>? edgegrid,
-            List<PostmanCollectionAuthAttribute>? hawk,
-            List<PostmanCollectionAuthAttribute>? ntlm,
-            List<PostmanCollectionAuthAttribute>? oauth1,
-            List<PostmanCollectionAuthAttribute>? oauth2)
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            PostmanCollectionAuthType type,
-            List<PostmanCollectionAuthAttribute>? noauth,
-            List<PostmanCollectionAuthAttribute>? apikey,
-            List<PostmanCollectionAuthAttribute>? awsv4,
-            List<PostmanCollectionAuthAttribute>? basic,
-            List<PostmanCollectionAuthAttribute>? bearer,
-            List<PostmanCollectionAuthAttribute>? digest,
-            List<PostmanCollectionAuthAttribute>? edgegrid,
-            List<PostmanCollectionAuthAttribute>? hawk,
-            List<PostmanCollectionAuthAttribute>? ntlm,
-            List<PostmanCollectionAuthAttribute>? oauth1,
-            List<PostmanCollectionAuthAttribute>? oauth2)?
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            PostmanCollectionAuthType type,
-            List<PostmanCollectionAuthAttribute>? noauth,
-            List<PostmanCollectionAuthAttribute>? apikey,
-            List<PostmanCollectionAuthAttribute>? awsv4,
-            List<PostmanCollectionAuthAttribute>? basic,
-            List<PostmanCollectionAuthAttribute>? bearer,
-            List<PostmanCollectionAuthAttribute>? digest,
-            List<PostmanCollectionAuthAttribute>? edgegrid,
-            List<PostmanCollectionAuthAttribute>? hawk,
-            List<PostmanCollectionAuthAttribute>? ntlm,
-            List<PostmanCollectionAuthAttribute>? oauth1,
-            List<PostmanCollectionAuthAttribute>? oauth2)?
-        $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionAuth value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionAuth value)? $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionAuth value)? $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this PostmanCollectionAuth to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  PostmanCollectionAuthType get type;
+  List<PostmanCollectionAuthAttribute>? get noauth;
+  List<PostmanCollectionAuthAttribute>? get apikey;
+  List<PostmanCollectionAuthAttribute>? get awsv4;
+  List<PostmanCollectionAuthAttribute>? get basic;
+  List<PostmanCollectionAuthAttribute>? get bearer;
+  List<PostmanCollectionAuthAttribute>? get digest;
+  List<PostmanCollectionAuthAttribute>? get edgegrid;
+  List<PostmanCollectionAuthAttribute>? get hawk;
+  List<PostmanCollectionAuthAttribute>? get ntlm;
+  List<PostmanCollectionAuthAttribute>? get oauth1;
+  List<PostmanCollectionAuthAttribute>? get oauth2;
 
   /// Create a copy of PostmanCollectionAuth
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $PostmanCollectionAuthCopyWith<PostmanCollectionAuth> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $PostmanCollectionAuthCopyWith<$Res> {
-  factory $PostmanCollectionAuthCopyWith(PostmanCollectionAuth value,
-          $Res Function(PostmanCollectionAuth) then) =
-      _$PostmanCollectionAuthCopyWithImpl<$Res, PostmanCollectionAuth>;
-  @useResult
-  $Res call(
-      {PostmanCollectionAuthType type,
-      List<PostmanCollectionAuthAttribute>? noauth,
-      List<PostmanCollectionAuthAttribute>? apikey,
-      List<PostmanCollectionAuthAttribute>? awsv4,
-      List<PostmanCollectionAuthAttribute>? basic,
-      List<PostmanCollectionAuthAttribute>? bearer,
-      List<PostmanCollectionAuthAttribute>? digest,
-      List<PostmanCollectionAuthAttribute>? edgegrid,
-      List<PostmanCollectionAuthAttribute>? hawk,
-      List<PostmanCollectionAuthAttribute>? ntlm,
-      List<PostmanCollectionAuthAttribute>? oauth1,
-      List<PostmanCollectionAuthAttribute>? oauth2});
-}
-
-/// @nodoc
-class _$PostmanCollectionAuthCopyWithImpl<$Res,
-        $Val extends PostmanCollectionAuth>
-    implements $PostmanCollectionAuthCopyWith<$Res> {
-  _$PostmanCollectionAuthCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of PostmanCollectionAuth
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $PostmanCollectionAuthCopyWith<PostmanCollectionAuth> get copyWith =>
+      _$PostmanCollectionAuthCopyWithImpl<PostmanCollectionAuth>(
+        this as PostmanCollectionAuth,
+        _$identity,
+      );
+
+  /// Serializes this PostmanCollectionAuth to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? type = null,
-    Object? noauth = freezed,
-    Object? apikey = freezed,
-    Object? awsv4 = freezed,
-    Object? basic = freezed,
-    Object? bearer = freezed,
-    Object? digest = freezed,
-    Object? edgegrid = freezed,
-    Object? hawk = freezed,
-    Object? ntlm = freezed,
-    Object? oauth1 = freezed,
-    Object? oauth2 = freezed,
-  }) {
-    return _then(_value.copyWith(
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as PostmanCollectionAuthType,
-      noauth: freezed == noauth
-          ? _value.noauth
-          : noauth // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionAuthAttribute>?,
-      apikey: freezed == apikey
-          ? _value.apikey
-          : apikey // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionAuthAttribute>?,
-      awsv4: freezed == awsv4
-          ? _value.awsv4
-          : awsv4 // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionAuthAttribute>?,
-      basic: freezed == basic
-          ? _value.basic
-          : basic // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionAuthAttribute>?,
-      bearer: freezed == bearer
-          ? _value.bearer
-          : bearer // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionAuthAttribute>?,
-      digest: freezed == digest
-          ? _value.digest
-          : digest // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionAuthAttribute>?,
-      edgegrid: freezed == edgegrid
-          ? _value.edgegrid
-          : edgegrid // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionAuthAttribute>?,
-      hawk: freezed == hawk
-          ? _value.hawk
-          : hawk // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionAuthAttribute>?,
-      ntlm: freezed == ntlm
-          ? _value.ntlm
-          : ntlm // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionAuthAttribute>?,
-      oauth1: freezed == oauth1
-          ? _value.oauth1
-          : oauth1 // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionAuthAttribute>?,
-      oauth2: freezed == oauth2
-          ? _value.oauth2
-          : oauth2 // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionAuthAttribute>?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    final _this = this as PostmanCollectionAuth;
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PostmanCollectionAuth &&
+            (identical(other.type, _this.type) || other.type == _this.type) &&
+            const DeepCollectionEquality().equals(other.noauth, _this.noauth) &&
+            const DeepCollectionEquality().equals(other.apikey, _this.apikey) &&
+            const DeepCollectionEquality().equals(other.awsv4, _this.awsv4) &&
+            const DeepCollectionEquality().equals(other.basic, _this.basic) &&
+            const DeepCollectionEquality().equals(other.bearer, _this.bearer) &&
+            const DeepCollectionEquality().equals(other.digest, _this.digest) &&
+            const DeepCollectionEquality().equals(
+              other.edgegrid,
+              _this.edgegrid,
+            ) &&
+            const DeepCollectionEquality().equals(other.hawk, _this.hawk) &&
+            const DeepCollectionEquality().equals(other.ntlm, _this.ntlm) &&
+            const DeepCollectionEquality().equals(other.oauth1, _this.oauth1) &&
+            const DeepCollectionEquality().equals(other.oauth2, _this.oauth2));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode {
+    final _this = this as PostmanCollectionAuth;
+    return Object.hash(
+      runtimeType,
+      _this.type,
+      const DeepCollectionEquality().hash(_this.noauth),
+      const DeepCollectionEquality().hash(_this.apikey),
+      const DeepCollectionEquality().hash(_this.awsv4),
+      const DeepCollectionEquality().hash(_this.basic),
+      const DeepCollectionEquality().hash(_this.bearer),
+      const DeepCollectionEquality().hash(_this.digest),
+      const DeepCollectionEquality().hash(_this.edgegrid),
+      const DeepCollectionEquality().hash(_this.hawk),
+      const DeepCollectionEquality().hash(_this.ntlm),
+      const DeepCollectionEquality().hash(_this.oauth1),
+      const DeepCollectionEquality().hash(_this.oauth2),
+    );
+  }
+
+  @override
+  String toString() {
+    final _this = this as PostmanCollectionAuth;
+    return 'PostmanCollectionAuth(type: ${_this.type}, noauth: ${_this.noauth}, apikey: ${_this.apikey}, awsv4: ${_this.awsv4}, basic: ${_this.basic}, bearer: ${_this.bearer}, digest: ${_this.digest}, edgegrid: ${_this.edgegrid}, hawk: ${_this.hawk}, ntlm: ${_this.ntlm}, oauth1: ${_this.oauth1}, oauth2: ${_this.oauth2})';
   }
 }
 
 /// @nodoc
-abstract class _$$PostmanCollectionAuthImplCopyWith<$Res>
-    implements $PostmanCollectionAuthCopyWith<$Res> {
-  factory _$$PostmanCollectionAuthImplCopyWith(
-          _$PostmanCollectionAuthImpl value,
-          $Res Function(_$PostmanCollectionAuthImpl) then) =
-      __$$PostmanCollectionAuthImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $PostmanCollectionAuthCopyWith<$Res> {
+  factory $PostmanCollectionAuthCopyWith(
+    PostmanCollectionAuth value,
+    $Res Function(PostmanCollectionAuth) _then,
+  ) = _$PostmanCollectionAuthCopyWithImpl;
   @useResult
-  $Res call(
-      {PostmanCollectionAuthType type,
-      List<PostmanCollectionAuthAttribute>? noauth,
-      List<PostmanCollectionAuthAttribute>? apikey,
-      List<PostmanCollectionAuthAttribute>? awsv4,
-      List<PostmanCollectionAuthAttribute>? basic,
-      List<PostmanCollectionAuthAttribute>? bearer,
-      List<PostmanCollectionAuthAttribute>? digest,
-      List<PostmanCollectionAuthAttribute>? edgegrid,
-      List<PostmanCollectionAuthAttribute>? hawk,
-      List<PostmanCollectionAuthAttribute>? ntlm,
-      List<PostmanCollectionAuthAttribute>? oauth1,
-      List<PostmanCollectionAuthAttribute>? oauth2});
+  $Res call({
+    PostmanCollectionAuthType type,
+    List<PostmanCollectionAuthAttribute>? noauth,
+    List<PostmanCollectionAuthAttribute>? apikey,
+    List<PostmanCollectionAuthAttribute>? awsv4,
+    List<PostmanCollectionAuthAttribute>? basic,
+    List<PostmanCollectionAuthAttribute>? bearer,
+    List<PostmanCollectionAuthAttribute>? digest,
+    List<PostmanCollectionAuthAttribute>? edgegrid,
+    List<PostmanCollectionAuthAttribute>? hawk,
+    List<PostmanCollectionAuthAttribute>? ntlm,
+    List<PostmanCollectionAuthAttribute>? oauth1,
+    List<PostmanCollectionAuthAttribute>? oauth2,
+  });
 }
 
 /// @nodoc
-class __$$PostmanCollectionAuthImplCopyWithImpl<$Res>
-    extends _$PostmanCollectionAuthCopyWithImpl<$Res,
-        _$PostmanCollectionAuthImpl>
-    implements _$$PostmanCollectionAuthImplCopyWith<$Res> {
-  __$$PostmanCollectionAuthImplCopyWithImpl(_$PostmanCollectionAuthImpl _value,
-      $Res Function(_$PostmanCollectionAuthImpl) _then)
-      : super(_value, _then);
+class _$PostmanCollectionAuthCopyWithImpl<$Res>
+    implements $PostmanCollectionAuthCopyWith<$Res> {
+  _$PostmanCollectionAuthCopyWithImpl(this._self, this._then);
+
+  final PostmanCollectionAuth _self;
+  final $Res Function(PostmanCollectionAuth) _then;
 
   /// Create a copy of PostmanCollectionAuth
   /// with the given fields replaced by the non-null parameter values.
@@ -2077,90 +2351,329 @@ class __$$PostmanCollectionAuthImplCopyWithImpl<$Res>
     Object? oauth1 = freezed,
     Object? oauth2 = freezed,
   }) {
-    return _then(_$PostmanCollectionAuthImpl(
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as PostmanCollectionAuthType,
-      noauth: freezed == noauth
-          ? _value._noauth
-          : noauth // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionAuthAttribute>?,
-      apikey: freezed == apikey
-          ? _value._apikey
-          : apikey // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionAuthAttribute>?,
-      awsv4: freezed == awsv4
-          ? _value._awsv4
-          : awsv4 // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionAuthAttribute>?,
-      basic: freezed == basic
-          ? _value._basic
-          : basic // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionAuthAttribute>?,
-      bearer: freezed == bearer
-          ? _value._bearer
-          : bearer // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionAuthAttribute>?,
-      digest: freezed == digest
-          ? _value._digest
-          : digest // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionAuthAttribute>?,
-      edgegrid: freezed == edgegrid
-          ? _value._edgegrid
-          : edgegrid // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionAuthAttribute>?,
-      hawk: freezed == hawk
-          ? _value._hawk
-          : hawk // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionAuthAttribute>?,
-      ntlm: freezed == ntlm
-          ? _value._ntlm
-          : ntlm // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionAuthAttribute>?,
-      oauth1: freezed == oauth1
-          ? _value._oauth1
-          : oauth1 // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionAuthAttribute>?,
-      oauth2: freezed == oauth2
-          ? _value._oauth2
-          : oauth2 // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionAuthAttribute>?,
-    ));
+    return _then(
+      PostmanCollectionAuth(
+        type: null == type
+            ? _self.type
+            : type // ignore: cast_nullable_to_non_nullable
+                  as PostmanCollectionAuthType,
+        noauth: freezed == noauth
+            ? _self.noauth
+            : noauth // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionAuthAttribute>?,
+        apikey: freezed == apikey
+            ? _self.apikey
+            : apikey // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionAuthAttribute>?,
+        awsv4: freezed == awsv4
+            ? _self.awsv4
+            : awsv4 // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionAuthAttribute>?,
+        basic: freezed == basic
+            ? _self.basic
+            : basic // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionAuthAttribute>?,
+        bearer: freezed == bearer
+            ? _self.bearer
+            : bearer // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionAuthAttribute>?,
+        digest: freezed == digest
+            ? _self.digest
+            : digest // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionAuthAttribute>?,
+        edgegrid: freezed == edgegrid
+            ? _self.edgegrid
+            : edgegrid // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionAuthAttribute>?,
+        hawk: freezed == hawk
+            ? _self.hawk
+            : hawk // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionAuthAttribute>?,
+        ntlm: freezed == ntlm
+            ? _self.ntlm
+            : ntlm // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionAuthAttribute>?,
+        oauth1: freezed == oauth1
+            ? _self.oauth1
+            : oauth1 // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionAuthAttribute>?,
+        oauth2: freezed == oauth2
+            ? _self.oauth2
+            : oauth2 // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionAuthAttribute>?,
+      ),
+    );
+  }
+}
+
+/// Adds pattern-matching-related methods to [PostmanCollectionAuth].
+extension PostmanCollectionAuthPatterns on PostmanCollectionAuth {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PostmanCollectionAuth value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionAuth() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_PostmanCollectionAuth value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionAuth():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_PostmanCollectionAuth value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionAuth() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+      PostmanCollectionAuthType type,
+      List<PostmanCollectionAuthAttribute>? noauth,
+      List<PostmanCollectionAuthAttribute>? apikey,
+      List<PostmanCollectionAuthAttribute>? awsv4,
+      List<PostmanCollectionAuthAttribute>? basic,
+      List<PostmanCollectionAuthAttribute>? bearer,
+      List<PostmanCollectionAuthAttribute>? digest,
+      List<PostmanCollectionAuthAttribute>? edgegrid,
+      List<PostmanCollectionAuthAttribute>? hawk,
+      List<PostmanCollectionAuthAttribute>? ntlm,
+      List<PostmanCollectionAuthAttribute>? oauth1,
+      List<PostmanCollectionAuthAttribute>? oauth2,
+    )?
+    $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionAuth() when $default != null:
+        return $default(
+          _that.type,
+          _that.noauth,
+          _that.apikey,
+          _that.awsv4,
+          _that.basic,
+          _that.bearer,
+          _that.digest,
+          _that.edgegrid,
+          _that.hawk,
+          _that.ntlm,
+          _that.oauth1,
+          _that.oauth2,
+        );
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+      PostmanCollectionAuthType type,
+      List<PostmanCollectionAuthAttribute>? noauth,
+      List<PostmanCollectionAuthAttribute>? apikey,
+      List<PostmanCollectionAuthAttribute>? awsv4,
+      List<PostmanCollectionAuthAttribute>? basic,
+      List<PostmanCollectionAuthAttribute>? bearer,
+      List<PostmanCollectionAuthAttribute>? digest,
+      List<PostmanCollectionAuthAttribute>? edgegrid,
+      List<PostmanCollectionAuthAttribute>? hawk,
+      List<PostmanCollectionAuthAttribute>? ntlm,
+      List<PostmanCollectionAuthAttribute>? oauth1,
+      List<PostmanCollectionAuthAttribute>? oauth2,
+    )
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionAuth():
+        return $default(
+          _that.type,
+          _that.noauth,
+          _that.apikey,
+          _that.awsv4,
+          _that.basic,
+          _that.bearer,
+          _that.digest,
+          _that.edgegrid,
+          _that.hawk,
+          _that.ntlm,
+          _that.oauth1,
+          _that.oauth2,
+        );
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+      PostmanCollectionAuthType type,
+      List<PostmanCollectionAuthAttribute>? noauth,
+      List<PostmanCollectionAuthAttribute>? apikey,
+      List<PostmanCollectionAuthAttribute>? awsv4,
+      List<PostmanCollectionAuthAttribute>? basic,
+      List<PostmanCollectionAuthAttribute>? bearer,
+      List<PostmanCollectionAuthAttribute>? digest,
+      List<PostmanCollectionAuthAttribute>? edgegrid,
+      List<PostmanCollectionAuthAttribute>? hawk,
+      List<PostmanCollectionAuthAttribute>? ntlm,
+      List<PostmanCollectionAuthAttribute>? oauth1,
+      List<PostmanCollectionAuthAttribute>? oauth2,
+    )?
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionAuth() when $default != null:
+        return $default(
+          _that.type,
+          _that.noauth,
+          _that.apikey,
+          _that.awsv4,
+          _that.basic,
+          _that.bearer,
+          _that.digest,
+          _that.edgegrid,
+          _that.hawk,
+          _that.ntlm,
+          _that.oauth1,
+          _that.oauth2,
+        );
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PostmanCollectionAuthImpl extends _PostmanCollectionAuth {
-  const _$PostmanCollectionAuthImpl(
-      {required this.type,
-      final List<PostmanCollectionAuthAttribute>? noauth,
-      final List<PostmanCollectionAuthAttribute>? apikey,
-      final List<PostmanCollectionAuthAttribute>? awsv4,
-      final List<PostmanCollectionAuthAttribute>? basic,
-      final List<PostmanCollectionAuthAttribute>? bearer,
-      final List<PostmanCollectionAuthAttribute>? digest,
-      final List<PostmanCollectionAuthAttribute>? edgegrid,
-      final List<PostmanCollectionAuthAttribute>? hawk,
-      final List<PostmanCollectionAuthAttribute>? ntlm,
-      final List<PostmanCollectionAuthAttribute>? oauth1,
-      final List<PostmanCollectionAuthAttribute>? oauth2})
-      : _noauth = noauth,
-        _apikey = apikey,
-        _awsv4 = awsv4,
-        _basic = basic,
-        _bearer = bearer,
-        _digest = digest,
-        _edgegrid = edgegrid,
-        _hawk = hawk,
-        _ntlm = ntlm,
-        _oauth1 = oauth1,
-        _oauth2 = oauth2,
-        super._();
-
-  factory _$PostmanCollectionAuthImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PostmanCollectionAuthImplFromJson(json);
+class _PostmanCollectionAuth extends PostmanCollectionAuth {
+  const _PostmanCollectionAuth({
+    required this.type,
+    List<PostmanCollectionAuthAttribute>? noauth,
+    List<PostmanCollectionAuthAttribute>? apikey,
+    List<PostmanCollectionAuthAttribute>? awsv4,
+    List<PostmanCollectionAuthAttribute>? basic,
+    List<PostmanCollectionAuthAttribute>? bearer,
+    List<PostmanCollectionAuthAttribute>? digest,
+    List<PostmanCollectionAuthAttribute>? edgegrid,
+    List<PostmanCollectionAuthAttribute>? hawk,
+    List<PostmanCollectionAuthAttribute>? ntlm,
+    List<PostmanCollectionAuthAttribute>? oauth1,
+    List<PostmanCollectionAuthAttribute>? oauth2,
+  }) : _noauth = noauth,
+       _apikey = apikey,
+       _awsv4 = awsv4,
+       _basic = basic,
+       _bearer = bearer,
+       _digest = digest,
+       _edgegrid = edgegrid,
+       _hawk = hawk,
+       _ntlm = ntlm,
+       _oauth1 = oauth1,
+       _oauth2 = oauth2,
+       super._();
+  factory _PostmanCollectionAuth.fromJson(Map<String, dynamic> json) =>
+      _$PostmanCollectionAuthFromJson(json);
 
   @override
   final PostmanCollectionAuthType type;
@@ -2274,33 +2787,45 @@ class _$PostmanCollectionAuthImpl extends _PostmanCollectionAuth {
     return EqualUnmodifiableListView(value);
   }
 
+  /// Create a copy of PostmanCollectionAuth
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'PostmanCollectionAuth(type: $type, noauth: $noauth, apikey: $apikey, awsv4: $awsv4, basic: $basic, bearer: $bearer, digest: $digest, edgegrid: $edgegrid, hawk: $hawk, ntlm: $ntlm, oauth1: $oauth1, oauth2: $oauth2)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PostmanCollectionAuthCopyWith<_PostmanCollectionAuth> get copyWith =>
+      __$PostmanCollectionAuthCopyWithImpl<_PostmanCollectionAuth>(
+        this,
+        _$identity,
+      );
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$PostmanCollectionAuthToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PostmanCollectionAuthImpl &&
+            other is _PostmanCollectionAuth &&
             (identical(other.type, type) || other.type == type) &&
-            const DeepCollectionEquality().equals(other._noauth, _noauth) &&
-            const DeepCollectionEquality().equals(other._apikey, _apikey) &&
-            const DeepCollectionEquality().equals(other._awsv4, _awsv4) &&
-            const DeepCollectionEquality().equals(other._basic, _basic) &&
-            const DeepCollectionEquality().equals(other._bearer, _bearer) &&
-            const DeepCollectionEquality().equals(other._digest, _digest) &&
-            const DeepCollectionEquality().equals(other._edgegrid, _edgegrid) &&
-            const DeepCollectionEquality().equals(other._hawk, _hawk) &&
-            const DeepCollectionEquality().equals(other._ntlm, _ntlm) &&
-            const DeepCollectionEquality().equals(other._oauth1, _oauth1) &&
-            const DeepCollectionEquality().equals(other._oauth2, _oauth2));
+            const DeepCollectionEquality().equals(other.noauth, _noauth) &&
+            const DeepCollectionEquality().equals(other.apikey, _apikey) &&
+            const DeepCollectionEquality().equals(other.awsv4, _awsv4) &&
+            const DeepCollectionEquality().equals(other.basic, _basic) &&
+            const DeepCollectionEquality().equals(other.bearer, _bearer) &&
+            const DeepCollectionEquality().equals(other.digest, _digest) &&
+            const DeepCollectionEquality().equals(other.edgegrid, _edgegrid) &&
+            const DeepCollectionEquality().equals(other.hawk, _hawk) &&
+            const DeepCollectionEquality().equals(other.ntlm, _ntlm) &&
+            const DeepCollectionEquality().equals(other.oauth1, _oauth1) &&
+            const DeepCollectionEquality().equals(other.oauth2, _oauth2));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
+  int get hashCode {
+    return Object.hash(
       runtimeType,
       type,
       const DeepCollectionEquality().hash(_noauth),
@@ -2313,295 +2838,188 @@ class _$PostmanCollectionAuthImpl extends _PostmanCollectionAuth {
       const DeepCollectionEquality().hash(_hawk),
       const DeepCollectionEquality().hash(_ntlm),
       const DeepCollectionEquality().hash(_oauth1),
-      const DeepCollectionEquality().hash(_oauth2));
+      const DeepCollectionEquality().hash(_oauth2),
+    );
+  }
+
+  @override
+  String toString() {
+    return 'PostmanCollectionAuth(type: $type, noauth: $noauth, apikey: $apikey, awsv4: $awsv4, basic: $basic, bearer: $bearer, digest: $digest, edgegrid: $edgegrid, hawk: $hawk, ntlm: $ntlm, oauth1: $oauth1, oauth2: $oauth2)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$PostmanCollectionAuthCopyWith<$Res>
+    implements $PostmanCollectionAuthCopyWith<$Res> {
+  factory _$PostmanCollectionAuthCopyWith(
+    _PostmanCollectionAuth value,
+    $Res Function(_PostmanCollectionAuth) _then,
+  ) = __$PostmanCollectionAuthCopyWithImpl;
+  @override
+  @useResult
+  $Res call({
+    PostmanCollectionAuthType type,
+    List<PostmanCollectionAuthAttribute>? noauth,
+    List<PostmanCollectionAuthAttribute>? apikey,
+    List<PostmanCollectionAuthAttribute>? awsv4,
+    List<PostmanCollectionAuthAttribute>? basic,
+    List<PostmanCollectionAuthAttribute>? bearer,
+    List<PostmanCollectionAuthAttribute>? digest,
+    List<PostmanCollectionAuthAttribute>? edgegrid,
+    List<PostmanCollectionAuthAttribute>? hawk,
+    List<PostmanCollectionAuthAttribute>? ntlm,
+    List<PostmanCollectionAuthAttribute>? oauth1,
+    List<PostmanCollectionAuthAttribute>? oauth2,
+  });
+}
+
+/// @nodoc
+class __$PostmanCollectionAuthCopyWithImpl<$Res>
+    implements _$PostmanCollectionAuthCopyWith<$Res> {
+  __$PostmanCollectionAuthCopyWithImpl(this._self, this._then);
+
+  final _PostmanCollectionAuth _self;
+  final $Res Function(_PostmanCollectionAuth) _then;
 
   /// Create a copy of PostmanCollectionAuth
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$PostmanCollectionAuthImplCopyWith<_$PostmanCollectionAuthImpl>
-      get copyWith => __$$PostmanCollectionAuthImplCopyWithImpl<
-          _$PostmanCollectionAuthImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            PostmanCollectionAuthType type,
-            List<PostmanCollectionAuthAttribute>? noauth,
-            List<PostmanCollectionAuthAttribute>? apikey,
-            List<PostmanCollectionAuthAttribute>? awsv4,
-            List<PostmanCollectionAuthAttribute>? basic,
-            List<PostmanCollectionAuthAttribute>? bearer,
-            List<PostmanCollectionAuthAttribute>? digest,
-            List<PostmanCollectionAuthAttribute>? edgegrid,
-            List<PostmanCollectionAuthAttribute>? hawk,
-            List<PostmanCollectionAuthAttribute>? ntlm,
-            List<PostmanCollectionAuthAttribute>? oauth1,
-            List<PostmanCollectionAuthAttribute>? oauth2)
-        $default,
-  ) {
-    return $default(type, noauth, apikey, awsv4, basic, bearer, digest,
-        edgegrid, hawk, ntlm, oauth1, oauth2);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            PostmanCollectionAuthType type,
-            List<PostmanCollectionAuthAttribute>? noauth,
-            List<PostmanCollectionAuthAttribute>? apikey,
-            List<PostmanCollectionAuthAttribute>? awsv4,
-            List<PostmanCollectionAuthAttribute>? basic,
-            List<PostmanCollectionAuthAttribute>? bearer,
-            List<PostmanCollectionAuthAttribute>? digest,
-            List<PostmanCollectionAuthAttribute>? edgegrid,
-            List<PostmanCollectionAuthAttribute>? hawk,
-            List<PostmanCollectionAuthAttribute>? ntlm,
-            List<PostmanCollectionAuthAttribute>? oauth1,
-            List<PostmanCollectionAuthAttribute>? oauth2)?
-        $default,
-  ) {
-    return $default?.call(type, noauth, apikey, awsv4, basic, bearer, digest,
-        edgegrid, hawk, ntlm, oauth1, oauth2);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            PostmanCollectionAuthType type,
-            List<PostmanCollectionAuthAttribute>? noauth,
-            List<PostmanCollectionAuthAttribute>? apikey,
-            List<PostmanCollectionAuthAttribute>? awsv4,
-            List<PostmanCollectionAuthAttribute>? basic,
-            List<PostmanCollectionAuthAttribute>? bearer,
-            List<PostmanCollectionAuthAttribute>? digest,
-            List<PostmanCollectionAuthAttribute>? edgegrid,
-            List<PostmanCollectionAuthAttribute>? hawk,
-            List<PostmanCollectionAuthAttribute>? ntlm,
-            List<PostmanCollectionAuthAttribute>? oauth1,
-            List<PostmanCollectionAuthAttribute>? oauth2)?
-        $default, {
-    required TResult orElse(),
+  $Res call({
+    Object? type = null,
+    Object? noauth = freezed,
+    Object? apikey = freezed,
+    Object? awsv4 = freezed,
+    Object? basic = freezed,
+    Object? bearer = freezed,
+    Object? digest = freezed,
+    Object? edgegrid = freezed,
+    Object? hawk = freezed,
+    Object? ntlm = freezed,
+    Object? oauth1 = freezed,
+    Object? oauth2 = freezed,
   }) {
-    if ($default != null) {
-      return $default(type, noauth, apikey, awsv4, basic, bearer, digest,
-          edgegrid, hawk, ntlm, oauth1, oauth2);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionAuth value) $default,
-  ) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionAuth value)? $default,
-  ) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionAuth value)? $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PostmanCollectionAuthImplToJson(
-      this,
+    return _then(
+      _PostmanCollectionAuth(
+        type: null == type
+            ? _self.type
+            : type // ignore: cast_nullable_to_non_nullable
+                  as PostmanCollectionAuthType,
+        noauth: freezed == noauth
+            ? _self._noauth
+            : noauth // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionAuthAttribute>?,
+        apikey: freezed == apikey
+            ? _self._apikey
+            : apikey // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionAuthAttribute>?,
+        awsv4: freezed == awsv4
+            ? _self._awsv4
+            : awsv4 // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionAuthAttribute>?,
+        basic: freezed == basic
+            ? _self._basic
+            : basic // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionAuthAttribute>?,
+        bearer: freezed == bearer
+            ? _self._bearer
+            : bearer // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionAuthAttribute>?,
+        digest: freezed == digest
+            ? _self._digest
+            : digest // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionAuthAttribute>?,
+        edgegrid: freezed == edgegrid
+            ? _self._edgegrid
+            : edgegrid // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionAuthAttribute>?,
+        hawk: freezed == hawk
+            ? _self._hawk
+            : hawk // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionAuthAttribute>?,
+        ntlm: freezed == ntlm
+            ? _self._ntlm
+            : ntlm // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionAuthAttribute>?,
+        oauth1: freezed == oauth1
+            ? _self._oauth1
+            : oauth1 // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionAuthAttribute>?,
+        oauth2: freezed == oauth2
+            ? _self._oauth2
+            : oauth2 // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionAuthAttribute>?,
+      ),
     );
   }
 }
 
-abstract class _PostmanCollectionAuth extends PostmanCollectionAuth {
-  const factory _PostmanCollectionAuth(
-          {required final PostmanCollectionAuthType type,
-          final List<PostmanCollectionAuthAttribute>? noauth,
-          final List<PostmanCollectionAuthAttribute>? apikey,
-          final List<PostmanCollectionAuthAttribute>? awsv4,
-          final List<PostmanCollectionAuthAttribute>? basic,
-          final List<PostmanCollectionAuthAttribute>? bearer,
-          final List<PostmanCollectionAuthAttribute>? digest,
-          final List<PostmanCollectionAuthAttribute>? edgegrid,
-          final List<PostmanCollectionAuthAttribute>? hawk,
-          final List<PostmanCollectionAuthAttribute>? ntlm,
-          final List<PostmanCollectionAuthAttribute>? oauth1,
-          final List<PostmanCollectionAuthAttribute>? oauth2}) =
-      _$PostmanCollectionAuthImpl;
-  const _PostmanCollectionAuth._() : super._();
-
-  factory _PostmanCollectionAuth.fromJson(Map<String, dynamic> json) =
-      _$PostmanCollectionAuthImpl.fromJson;
-
-  @override
-  PostmanCollectionAuthType get type;
-  @override
-  List<PostmanCollectionAuthAttribute>? get noauth;
-  @override
-  List<PostmanCollectionAuthAttribute>? get apikey;
-  @override
-  List<PostmanCollectionAuthAttribute>? get awsv4;
-  @override
-  List<PostmanCollectionAuthAttribute>? get basic;
-  @override
-  List<PostmanCollectionAuthAttribute>? get bearer;
-  @override
-  List<PostmanCollectionAuthAttribute>? get digest;
-  @override
-  List<PostmanCollectionAuthAttribute>? get edgegrid;
-  @override
-  List<PostmanCollectionAuthAttribute>? get hawk;
-  @override
-  List<PostmanCollectionAuthAttribute>? get ntlm;
-  @override
-  List<PostmanCollectionAuthAttribute>? get oauth1;
-  @override
-  List<PostmanCollectionAuthAttribute>? get oauth2;
-
-  /// Create a copy of PostmanCollectionAuth
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PostmanCollectionAuthImplCopyWith<_$PostmanCollectionAuthImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-PostmanCollectionAuthAttribute _$PostmanCollectionAuthAttributeFromJson(
-    Map<String, dynamic> json) {
-  return _PostmanCollectionAuthAttribute.fromJson(json);
-}
-
 /// @nodoc
 mixin _$PostmanCollectionAuthAttribute {
-  String get key => throw _privateConstructorUsedError;
-  Object? get value => throw _privateConstructorUsedError;
-  String? get type => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(String key, Object? value, String? type) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String key, Object? value, String? type)? $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String key, Object? value, String? type)? $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionAuthAttribute value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionAuthAttribute value)? $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionAuthAttribute value)? $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this PostmanCollectionAuthAttribute to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String get key;
+  Object? get value;
+  String? get type;
 
   /// Create a copy of PostmanCollectionAuthAttribute
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $PostmanCollectionAuthAttributeCopyWith<PostmanCollectionAuthAttribute>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $PostmanCollectionAuthAttributeCopyWith<$Res> {
-  factory $PostmanCollectionAuthAttributeCopyWith(
-          PostmanCollectionAuthAttribute value,
-          $Res Function(PostmanCollectionAuthAttribute) then) =
-      _$PostmanCollectionAuthAttributeCopyWithImpl<$Res,
-          PostmanCollectionAuthAttribute>;
-  @useResult
-  $Res call({String key, Object? value, String? type});
-}
-
-/// @nodoc
-class _$PostmanCollectionAuthAttributeCopyWithImpl<$Res,
-        $Val extends PostmanCollectionAuthAttribute>
-    implements $PostmanCollectionAuthAttributeCopyWith<$Res> {
-  _$PostmanCollectionAuthAttributeCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of PostmanCollectionAuthAttribute
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $PostmanCollectionAuthAttributeCopyWith<PostmanCollectionAuthAttribute>
+  get copyWith =>
+      _$PostmanCollectionAuthAttributeCopyWithImpl<
+        PostmanCollectionAuthAttribute
+      >(this as PostmanCollectionAuthAttribute, _$identity);
+
+  /// Serializes this PostmanCollectionAuthAttribute to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? key = null,
-    Object? value = freezed,
-    Object? type = freezed,
-  }) {
-    return _then(_value.copyWith(
-      key: null == key
-          ? _value.key
-          : key // ignore: cast_nullable_to_non_nullable
-              as String,
-      value: freezed == value ? _value.value : value,
-      type: freezed == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    final _this = this as PostmanCollectionAuthAttribute;
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PostmanCollectionAuthAttribute &&
+            (identical(other.key, _this.key) || other.key == _this.key) &&
+            const DeepCollectionEquality().equals(other.value, _this.value) &&
+            (identical(other.type, _this.type) || other.type == _this.type));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode {
+    final _this = this as PostmanCollectionAuthAttribute;
+    return Object.hash(
+      runtimeType,
+      _this.key,
+      const DeepCollectionEquality().hash(_this.value),
+      _this.type,
+    );
+  }
+
+  @override
+  String toString() {
+    final _this = this as PostmanCollectionAuthAttribute;
+    return 'PostmanCollectionAuthAttribute(key: ${_this.key}, value: ${_this.value}, type: ${_this.type})';
   }
 }
 
 /// @nodoc
-abstract class _$$PostmanCollectionAuthAttributeImplCopyWith<$Res>
-    implements $PostmanCollectionAuthAttributeCopyWith<$Res> {
-  factory _$$PostmanCollectionAuthAttributeImplCopyWith(
-          _$PostmanCollectionAuthAttributeImpl value,
-          $Res Function(_$PostmanCollectionAuthAttributeImpl) then) =
-      __$$PostmanCollectionAuthAttributeImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $PostmanCollectionAuthAttributeCopyWith<$Res> {
+  factory $PostmanCollectionAuthAttributeCopyWith(
+    PostmanCollectionAuthAttribute value,
+    $Res Function(PostmanCollectionAuthAttribute) _then,
+  ) = _$PostmanCollectionAuthAttributeCopyWithImpl;
   @useResult
   $Res call({String key, Object? value, String? type});
 }
 
 /// @nodoc
-class __$$PostmanCollectionAuthAttributeImplCopyWithImpl<$Res>
-    extends _$PostmanCollectionAuthAttributeCopyWithImpl<$Res,
-        _$PostmanCollectionAuthAttributeImpl>
-    implements _$$PostmanCollectionAuthAttributeImplCopyWith<$Res> {
-  __$$PostmanCollectionAuthAttributeImplCopyWithImpl(
-      _$PostmanCollectionAuthAttributeImpl _value,
-      $Res Function(_$PostmanCollectionAuthAttributeImpl) _then)
-      : super(_value, _then);
+class _$PostmanCollectionAuthAttributeCopyWithImpl<$Res>
+    implements $PostmanCollectionAuthAttributeCopyWith<$Res> {
+  _$PostmanCollectionAuthAttributeCopyWithImpl(this._self, this._then);
+
+  final PostmanCollectionAuthAttribute _self;
+  final $Res Function(PostmanCollectionAuthAttribute) _then;
 
   /// Create a copy of PostmanCollectionAuthAttribute
   /// with the given fields replaced by the non-null parameter values.
@@ -2612,31 +3030,190 @@ class __$$PostmanCollectionAuthAttributeImplCopyWithImpl<$Res>
     Object? value = freezed,
     Object? type = freezed,
   }) {
-    return _then(_$PostmanCollectionAuthAttributeImpl(
-      key: null == key
-          ? _value.key
-          : key // ignore: cast_nullable_to_non_nullable
-              as String,
-      value: freezed == value ? _value.value : value,
-      type: freezed == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      PostmanCollectionAuthAttribute(
+        key: null == key
+            ? _self.key
+            : key // ignore: cast_nullable_to_non_nullable
+                  as String,
+        value: freezed == value ? _self.value : value,
+        type: freezed == type
+            ? _self.type
+            : type // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
+  }
+}
+
+/// Adds pattern-matching-related methods to [PostmanCollectionAuthAttribute].
+extension PostmanCollectionAuthAttributePatterns
+    on PostmanCollectionAuthAttribute {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PostmanCollectionAuthAttribute value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionAuthAttribute() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_PostmanCollectionAuthAttribute value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionAuthAttribute():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_PostmanCollectionAuthAttribute value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionAuthAttribute() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String key, Object? value, String? type)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionAuthAttribute() when $default != null:
+        return $default(_that.key, _that.value, _that.type);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String key, Object? value, String? type) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionAuthAttribute():
+        return $default(_that.key, _that.value, _that.type);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String key, Object? value, String? type)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionAuthAttribute() when $default != null:
+        return $default(_that.key, _that.value, _that.type);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PostmanCollectionAuthAttributeImpl
-    extends _PostmanCollectionAuthAttribute {
-  const _$PostmanCollectionAuthAttributeImpl(
-      {required this.key, this.value, this.type})
-      : super._();
-
-  factory _$PostmanCollectionAuthAttributeImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$PostmanCollectionAuthAttributeImplFromJson(json);
+class _PostmanCollectionAuthAttribute extends PostmanCollectionAuthAttribute {
+  const _PostmanCollectionAuthAttribute({
+    required this.key,
+    this.value,
+    this.type,
+  }) : super._();
+  factory _PostmanCollectionAuthAttribute.fromJson(Map<String, dynamic> json) =>
+      _$PostmanCollectionAuthAttributeFromJson(json);
 
   @override
   final String key;
@@ -2645,16 +3222,27 @@ class _$PostmanCollectionAuthAttributeImpl
   @override
   final String? type;
 
+  /// Create a copy of PostmanCollectionAuthAttribute
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'PostmanCollectionAuthAttribute(key: $key, value: $value, type: $type)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PostmanCollectionAuthAttributeCopyWith<_PostmanCollectionAuthAttribute>
+  get copyWith =>
+      __$PostmanCollectionAuthAttributeCopyWithImpl<
+        _PostmanCollectionAuthAttribute
+      >(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$PostmanCollectionAuthAttributeToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PostmanCollectionAuthAttributeImpl &&
+            other is _PostmanCollectionAuthAttribute &&
             (identical(other.key, key) || other.key == key) &&
             const DeepCollectionEquality().equals(other.value, value) &&
             (identical(other.type, type) || other.type == type));
@@ -2662,212 +3250,151 @@ class _$PostmanCollectionAuthAttributeImpl
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, key, const DeepCollectionEquality().hash(value), type);
+  int get hashCode {
+    return Object.hash(
+      runtimeType,
+      key,
+      const DeepCollectionEquality().hash(value),
+      type,
+    );
+  }
+
+  @override
+  String toString() {
+    return 'PostmanCollectionAuthAttribute(key: $key, value: $value, type: $type)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$PostmanCollectionAuthAttributeCopyWith<$Res>
+    implements $PostmanCollectionAuthAttributeCopyWith<$Res> {
+  factory _$PostmanCollectionAuthAttributeCopyWith(
+    _PostmanCollectionAuthAttribute value,
+    $Res Function(_PostmanCollectionAuthAttribute) _then,
+  ) = __$PostmanCollectionAuthAttributeCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String key, Object? value, String? type});
+}
+
+/// @nodoc
+class __$PostmanCollectionAuthAttributeCopyWithImpl<$Res>
+    implements _$PostmanCollectionAuthAttributeCopyWith<$Res> {
+  __$PostmanCollectionAuthAttributeCopyWithImpl(this._self, this._then);
+
+  final _PostmanCollectionAuthAttribute _self;
+  final $Res Function(_PostmanCollectionAuthAttribute) _then;
 
   /// Create a copy of PostmanCollectionAuthAttribute
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$PostmanCollectionAuthAttributeImplCopyWith<
-          _$PostmanCollectionAuthAttributeImpl>
-      get copyWith => __$$PostmanCollectionAuthAttributeImplCopyWithImpl<
-          _$PostmanCollectionAuthAttributeImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(String key, Object? value, String? type) $default,
-  ) {
-    return $default(key, value, type);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String key, Object? value, String? type)? $default,
-  ) {
-    return $default?.call(key, value, type);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String key, Object? value, String? type)? $default, {
-    required TResult orElse(),
+  $Res call({
+    Object? key = null,
+    Object? value = freezed,
+    Object? type = freezed,
   }) {
-    if ($default != null) {
-      return $default(key, value, type);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionAuthAttribute value) $default,
-  ) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionAuthAttribute value)? $default,
-  ) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionAuthAttribute value)? $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PostmanCollectionAuthAttributeImplToJson(
-      this,
+    return _then(
+      _PostmanCollectionAuthAttribute(
+        key: null == key
+            ? _self.key
+            : key // ignore: cast_nullable_to_non_nullable
+                  as String,
+        value: freezed == value ? _self.value : value,
+        type: freezed == type
+            ? _self.type
+            : type // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
     );
   }
 }
 
-abstract class _PostmanCollectionAuthAttribute
-    extends PostmanCollectionAuthAttribute {
-  const factory _PostmanCollectionAuthAttribute(
-      {required final String key,
-      final Object? value,
-      final String? type}) = _$PostmanCollectionAuthAttributeImpl;
-  const _PostmanCollectionAuthAttribute._() : super._();
-
-  factory _PostmanCollectionAuthAttribute.fromJson(Map<String, dynamic> json) =
-      _$PostmanCollectionAuthAttributeImpl.fromJson;
-
-  @override
-  String get key;
-  @override
-  Object? get value;
-  @override
-  String? get type;
-
-  /// Create a copy of PostmanCollectionAuthAttribute
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PostmanCollectionAuthAttributeImplCopyWith<
-          _$PostmanCollectionAuthAttributeImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-PostmanCollectionRequest _$PostmanCollectionRequestFromJson(
-    Map<String, dynamic> json) {
-  return _PostmanCollectionRequest.fromJson(json);
-}
-
 /// @nodoc
 mixin _$PostmanCollectionRequest {
-  PostmanCollectionAuth? get auth => throw _privateConstructorUsedError;
-  String get method => throw _privateConstructorUsedError;
-  PostmanCollectionProxyConfig? get proxy => throw _privateConstructorUsedError;
-  PostmanCollectionCertificate? get certificate =>
-      throw _privateConstructorUsedError;
-  List<PostmanCollectionHeader>? get header =>
-      throw _privateConstructorUsedError;
-  PostmanCollectionRequestMode? get body => throw _privateConstructorUsedError;
-  PostmanCollectionUrl? get url => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            PostmanCollectionAuth? auth,
-            String method,
-            PostmanCollectionProxyConfig? proxy,
-            PostmanCollectionCertificate? certificate,
-            List<PostmanCollectionHeader>? header,
-            PostmanCollectionRequestMode? body,
-            PostmanCollectionUrl? url,
-            String? description)
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            PostmanCollectionAuth? auth,
-            String method,
-            PostmanCollectionProxyConfig? proxy,
-            PostmanCollectionCertificate? certificate,
-            List<PostmanCollectionHeader>? header,
-            PostmanCollectionRequestMode? body,
-            PostmanCollectionUrl? url,
-            String? description)?
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            PostmanCollectionAuth? auth,
-            String method,
-            PostmanCollectionProxyConfig? proxy,
-            PostmanCollectionCertificate? certificate,
-            List<PostmanCollectionHeader>? header,
-            PostmanCollectionRequestMode? body,
-            PostmanCollectionUrl? url,
-            String? description)?
-        $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionRequest value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionRequest value)? $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionRequest value)? $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this PostmanCollectionRequest to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  PostmanCollectionAuth? get auth;
+  String get method;
+  PostmanCollectionProxyConfig? get proxy;
+  PostmanCollectionCertificate? get certificate;
+  List<PostmanCollectionHeader>? get header;
+  PostmanCollectionRequestMode? get body;
+  PostmanCollectionUrl? get url;
+  String? get description;
 
   /// Create a copy of PostmanCollectionRequest
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $PostmanCollectionRequestCopyWith<PostmanCollectionRequest> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$PostmanCollectionRequestCopyWithImpl<PostmanCollectionRequest>(
+        this as PostmanCollectionRequest,
+        _$identity,
+      );
+
+  /// Serializes this PostmanCollectionRequest to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    final _this = this as PostmanCollectionRequest;
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PostmanCollectionRequest &&
+            (identical(other.auth, _this.auth) || other.auth == _this.auth) &&
+            (identical(other.method, _this.method) ||
+                other.method == _this.method) &&
+            (identical(other.proxy, _this.proxy) ||
+                other.proxy == _this.proxy) &&
+            (identical(other.certificate, _this.certificate) ||
+                other.certificate == _this.certificate) &&
+            const DeepCollectionEquality().equals(other.header, _this.header) &&
+            (identical(other.body, _this.body) || other.body == _this.body) &&
+            (identical(other.url, _this.url) || other.url == _this.url) &&
+            (identical(other.description, _this.description) ||
+                other.description == _this.description));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode {
+    final _this = this as PostmanCollectionRequest;
+    return Object.hash(
+      runtimeType,
+      _this.auth,
+      _this.method,
+      _this.proxy,
+      _this.certificate,
+      const DeepCollectionEquality().hash(_this.header),
+      _this.body,
+      _this.url,
+      _this.description,
+    );
+  }
+
+  @override
+  String toString() {
+    final _this = this as PostmanCollectionRequest;
+    return 'PostmanCollectionRequest(auth: ${_this.auth}, method: ${_this.method}, proxy: ${_this.proxy}, certificate: ${_this.certificate}, header: ${_this.header}, body: ${_this.body}, url: ${_this.url}, description: ${_this.description})';
+  }
 }
 
 /// @nodoc
-abstract class $PostmanCollectionRequestCopyWith<$Res> {
-  factory $PostmanCollectionRequestCopyWith(PostmanCollectionRequest value,
-          $Res Function(PostmanCollectionRequest) then) =
-      _$PostmanCollectionRequestCopyWithImpl<$Res, PostmanCollectionRequest>;
+abstract mixin class $PostmanCollectionRequestCopyWith<$Res> {
+  factory $PostmanCollectionRequestCopyWith(
+    PostmanCollectionRequest value,
+    $Res Function(PostmanCollectionRequest) _then,
+  ) = _$PostmanCollectionRequestCopyWithImpl;
   @useResult
-  $Res call(
-      {PostmanCollectionAuth? auth,
-      String method,
-      PostmanCollectionProxyConfig? proxy,
-      PostmanCollectionCertificate? certificate,
-      List<PostmanCollectionHeader>? header,
-      PostmanCollectionRequestMode? body,
-      PostmanCollectionUrl? url,
-      String? description});
+  $Res call({
+    PostmanCollectionAuth? auth,
+    String method,
+    PostmanCollectionProxyConfig? proxy,
+    PostmanCollectionCertificate? certificate,
+    List<PostmanCollectionHeader>? header,
+    PostmanCollectionRequestMode? body,
+    PostmanCollectionUrl? url,
+    String? description,
+  });
 
   $PostmanCollectionAuthCopyWith<$Res>? get auth;
   $PostmanCollectionProxyConfigCopyWith<$Res>? get proxy;
@@ -2877,15 +3404,12 @@ abstract class $PostmanCollectionRequestCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PostmanCollectionRequestCopyWithImpl<$Res,
-        $Val extends PostmanCollectionRequest>
+class _$PostmanCollectionRequestCopyWithImpl<$Res>
     implements $PostmanCollectionRequestCopyWith<$Res> {
-  _$PostmanCollectionRequestCopyWithImpl(this._value, this._then);
+  _$PostmanCollectionRequestCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final PostmanCollectionRequest _self;
+  final $Res Function(PostmanCollectionRequest) _then;
 
   /// Create a copy of PostmanCollectionRequest
   /// with the given fields replaced by the non-null parameter values.
@@ -2901,40 +3425,42 @@ class _$PostmanCollectionRequestCopyWithImpl<$Res,
     Object? url = freezed,
     Object? description = freezed,
   }) {
-    return _then(_value.copyWith(
-      auth: freezed == auth
-          ? _value.auth
-          : auth // ignore: cast_nullable_to_non_nullable
-              as PostmanCollectionAuth?,
-      method: null == method
-          ? _value.method
-          : method // ignore: cast_nullable_to_non_nullable
-              as String,
-      proxy: freezed == proxy
-          ? _value.proxy
-          : proxy // ignore: cast_nullable_to_non_nullable
-              as PostmanCollectionProxyConfig?,
-      certificate: freezed == certificate
-          ? _value.certificate
-          : certificate // ignore: cast_nullable_to_non_nullable
-              as PostmanCollectionCertificate?,
-      header: freezed == header
-          ? _value.header
-          : header // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionHeader>?,
-      body: freezed == body
-          ? _value.body
-          : body // ignore: cast_nullable_to_non_nullable
-              as PostmanCollectionRequestMode?,
-      url: freezed == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as PostmanCollectionUrl?,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      PostmanCollectionRequest(
+        auth: freezed == auth
+            ? _self.auth
+            : auth // ignore: cast_nullable_to_non_nullable
+                  as PostmanCollectionAuth?,
+        method: null == method
+            ? _self.method
+            : method // ignore: cast_nullable_to_non_nullable
+                  as String,
+        proxy: freezed == proxy
+            ? _self.proxy
+            : proxy // ignore: cast_nullable_to_non_nullable
+                  as PostmanCollectionProxyConfig?,
+        certificate: freezed == certificate
+            ? _self.certificate
+            : certificate // ignore: cast_nullable_to_non_nullable
+                  as PostmanCollectionCertificate?,
+        header: freezed == header
+            ? _self.header
+            : header // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionHeader>?,
+        body: freezed == body
+            ? _self.body
+            : body // ignore: cast_nullable_to_non_nullable
+                  as PostmanCollectionRequestMode?,
+        url: freezed == url
+            ? _self.url
+            : url // ignore: cast_nullable_to_non_nullable
+                  as PostmanCollectionUrl?,
+        description: freezed == description
+            ? _self.description
+            : description // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 
   /// Create a copy of PostmanCollectionRequest
@@ -2942,12 +3468,12 @@ class _$PostmanCollectionRequestCopyWithImpl<$Res,
   @override
   @pragma('vm:prefer-inline')
   $PostmanCollectionAuthCopyWith<$Res>? get auth {
-    if (_value.auth == null) {
+    if (_self.auth == null) {
       return null;
     }
 
-    return $PostmanCollectionAuthCopyWith<$Res>(_value.auth!, (value) {
-      return _then(_value.copyWith(auth: value) as $Val);
+    return $PostmanCollectionAuthCopyWith<$Res>(_self.auth!, (value) {
+      return _then(_self.copyWith(auth: value));
     });
   }
 
@@ -2956,12 +3482,12 @@ class _$PostmanCollectionRequestCopyWithImpl<$Res,
   @override
   @pragma('vm:prefer-inline')
   $PostmanCollectionProxyConfigCopyWith<$Res>? get proxy {
-    if (_value.proxy == null) {
+    if (_self.proxy == null) {
       return null;
     }
 
-    return $PostmanCollectionProxyConfigCopyWith<$Res>(_value.proxy!, (value) {
-      return _then(_value.copyWith(proxy: value) as $Val);
+    return $PostmanCollectionProxyConfigCopyWith<$Res>(_self.proxy!, (value) {
+      return _then(_self.copyWith(proxy: value));
     });
   }
 
@@ -2970,13 +3496,14 @@ class _$PostmanCollectionRequestCopyWithImpl<$Res,
   @override
   @pragma('vm:prefer-inline')
   $PostmanCollectionCertificateCopyWith<$Res>? get certificate {
-    if (_value.certificate == null) {
+    if (_self.certificate == null) {
       return null;
     }
 
-    return $PostmanCollectionCertificateCopyWith<$Res>(_value.certificate!,
-        (value) {
-      return _then(_value.copyWith(certificate: value) as $Val);
+    return $PostmanCollectionCertificateCopyWith<$Res>(_self.certificate!, (
+      value,
+    ) {
+      return _then(_self.copyWith(certificate: value));
     });
   }
 
@@ -2985,12 +3512,12 @@ class _$PostmanCollectionRequestCopyWithImpl<$Res,
   @override
   @pragma('vm:prefer-inline')
   $PostmanCollectionRequestModeCopyWith<$Res>? get body {
-    if (_value.body == null) {
+    if (_self.body == null) {
       return null;
     }
 
-    return $PostmanCollectionRequestModeCopyWith<$Res>(_value.body!, (value) {
-      return _then(_value.copyWith(body: value) as $Val);
+    return $PostmanCollectionRequestModeCopyWith<$Res>(_self.body!, (value) {
+      return _then(_self.copyWith(body: value));
     });
   }
 
@@ -2999,125 +3526,246 @@ class _$PostmanCollectionRequestCopyWithImpl<$Res,
   @override
   @pragma('vm:prefer-inline')
   $PostmanCollectionUrlCopyWith<$Res>? get url {
-    if (_value.url == null) {
+    if (_self.url == null) {
       return null;
     }
 
-    return $PostmanCollectionUrlCopyWith<$Res>(_value.url!, (value) {
-      return _then(_value.copyWith(url: value) as $Val);
+    return $PostmanCollectionUrlCopyWith<$Res>(_self.url!, (value) {
+      return _then(_self.copyWith(url: value));
     });
   }
 }
 
-/// @nodoc
-abstract class _$$PostmanCollectionRequestImplCopyWith<$Res>
-    implements $PostmanCollectionRequestCopyWith<$Res> {
-  factory _$$PostmanCollectionRequestImplCopyWith(
-          _$PostmanCollectionRequestImpl value,
-          $Res Function(_$PostmanCollectionRequestImpl) then) =
-      __$$PostmanCollectionRequestImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {PostmanCollectionAuth? auth,
+/// Adds pattern-matching-related methods to [PostmanCollectionRequest].
+extension PostmanCollectionRequestPatterns on PostmanCollectionRequest {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PostmanCollectionRequest value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionRequest() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_PostmanCollectionRequest value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionRequest():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_PostmanCollectionRequest value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionRequest() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+      PostmanCollectionAuth? auth,
       String method,
       PostmanCollectionProxyConfig? proxy,
       PostmanCollectionCertificate? certificate,
       List<PostmanCollectionHeader>? header,
       PostmanCollectionRequestMode? body,
       PostmanCollectionUrl? url,
-      String? description});
-
-  @override
-  $PostmanCollectionAuthCopyWith<$Res>? get auth;
-  @override
-  $PostmanCollectionProxyConfigCopyWith<$Res>? get proxy;
-  @override
-  $PostmanCollectionCertificateCopyWith<$Res>? get certificate;
-  @override
-  $PostmanCollectionRequestModeCopyWith<$Res>? get body;
-  @override
-  $PostmanCollectionUrlCopyWith<$Res>? get url;
-}
-
-/// @nodoc
-class __$$PostmanCollectionRequestImplCopyWithImpl<$Res>
-    extends _$PostmanCollectionRequestCopyWithImpl<$Res,
-        _$PostmanCollectionRequestImpl>
-    implements _$$PostmanCollectionRequestImplCopyWith<$Res> {
-  __$$PostmanCollectionRequestImplCopyWithImpl(
-      _$PostmanCollectionRequestImpl _value,
-      $Res Function(_$PostmanCollectionRequestImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of PostmanCollectionRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? auth = freezed,
-    Object? method = null,
-    Object? proxy = freezed,
-    Object? certificate = freezed,
-    Object? header = freezed,
-    Object? body = freezed,
-    Object? url = freezed,
-    Object? description = freezed,
+      String? description,
+    )?
+    $default, {
+    required TResult orElse(),
   }) {
-    return _then(_$PostmanCollectionRequestImpl(
-      auth: freezed == auth
-          ? _value.auth
-          : auth // ignore: cast_nullable_to_non_nullable
-              as PostmanCollectionAuth?,
-      method: null == method
-          ? _value.method
-          : method // ignore: cast_nullable_to_non_nullable
-              as String,
-      proxy: freezed == proxy
-          ? _value.proxy
-          : proxy // ignore: cast_nullable_to_non_nullable
-              as PostmanCollectionProxyConfig?,
-      certificate: freezed == certificate
-          ? _value.certificate
-          : certificate // ignore: cast_nullable_to_non_nullable
-              as PostmanCollectionCertificate?,
-      header: freezed == header
-          ? _value._header
-          : header // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionHeader>?,
-      body: freezed == body
-          ? _value.body
-          : body // ignore: cast_nullable_to_non_nullable
-              as PostmanCollectionRequestMode?,
-      url: freezed == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as PostmanCollectionUrl?,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionRequest() when $default != null:
+        return $default(
+          _that.auth,
+          _that.method,
+          _that.proxy,
+          _that.certificate,
+          _that.header,
+          _that.body,
+          _that.url,
+          _that.description,
+        );
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+      PostmanCollectionAuth? auth,
+      String method,
+      PostmanCollectionProxyConfig? proxy,
+      PostmanCollectionCertificate? certificate,
+      List<PostmanCollectionHeader>? header,
+      PostmanCollectionRequestMode? body,
+      PostmanCollectionUrl? url,
+      String? description,
+    )
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionRequest():
+        return $default(
+          _that.auth,
+          _that.method,
+          _that.proxy,
+          _that.certificate,
+          _that.header,
+          _that.body,
+          _that.url,
+          _that.description,
+        );
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+      PostmanCollectionAuth? auth,
+      String method,
+      PostmanCollectionProxyConfig? proxy,
+      PostmanCollectionCertificate? certificate,
+      List<PostmanCollectionHeader>? header,
+      PostmanCollectionRequestMode? body,
+      PostmanCollectionUrl? url,
+      String? description,
+    )?
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionRequest() when $default != null:
+        return $default(
+          _that.auth,
+          _that.method,
+          _that.proxy,
+          _that.certificate,
+          _that.header,
+          _that.body,
+          _that.url,
+          _that.description,
+        );
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PostmanCollectionRequestImpl extends _PostmanCollectionRequest {
-  const _$PostmanCollectionRequestImpl(
-      {this.auth,
-      required this.method,
-      this.proxy,
-      this.certificate,
-      final List<PostmanCollectionHeader>? header,
-      this.body,
-      this.url,
-      this.description})
-      : _header = header,
-        super._();
-
-  factory _$PostmanCollectionRequestImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PostmanCollectionRequestImplFromJson(json);
+class _PostmanCollectionRequest extends PostmanCollectionRequest {
+  const _PostmanCollectionRequest({
+    this.auth,
+    required this.method,
+    this.proxy,
+    this.certificate,
+    List<PostmanCollectionHeader>? header,
+    this.body,
+    this.url,
+    this.description,
+  }) : _header = header,
+       super._();
+  factory _PostmanCollectionRequest.fromJson(Map<String, dynamic> json) =>
+      _$PostmanCollectionRequestFromJson(json);
 
   @override
   final PostmanCollectionAuth? auth;
@@ -3144,22 +3792,33 @@ class _$PostmanCollectionRequestImpl extends _PostmanCollectionRequest {
   @override
   final String? description;
 
+  /// Create a copy of PostmanCollectionRequest
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'PostmanCollectionRequest(auth: $auth, method: $method, proxy: $proxy, certificate: $certificate, header: $header, body: $body, url: $url, description: $description)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PostmanCollectionRequestCopyWith<_PostmanCollectionRequest> get copyWith =>
+      __$PostmanCollectionRequestCopyWithImpl<_PostmanCollectionRequest>(
+        this,
+        _$identity,
+      );
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$PostmanCollectionRequestToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PostmanCollectionRequestImpl &&
+            other is _PostmanCollectionRequest &&
             (identical(other.auth, auth) || other.auth == auth) &&
             (identical(other.method, method) || other.method == method) &&
             (identical(other.proxy, proxy) || other.proxy == proxy) &&
             (identical(other.certificate, certificate) ||
                 other.certificate == certificate) &&
-            const DeepCollectionEquality().equals(other._header, _header) &&
+            const DeepCollectionEquality().equals(other.header, _header) &&
             (identical(other.body, body) || other.body == body) &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.description, description) ||
@@ -3168,291 +3827,421 @@ class _$PostmanCollectionRequestImpl extends _PostmanCollectionRequest {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, auth, method, proxy, certificate,
-      const DeepCollectionEquality().hash(_header), body, url, description);
-
-  /// Create a copy of PostmanCollectionRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PostmanCollectionRequestImplCopyWith<_$PostmanCollectionRequestImpl>
-      get copyWith => __$$PostmanCollectionRequestImplCopyWithImpl<
-          _$PostmanCollectionRequestImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            PostmanCollectionAuth? auth,
-            String method,
-            PostmanCollectionProxyConfig? proxy,
-            PostmanCollectionCertificate? certificate,
-            List<PostmanCollectionHeader>? header,
-            PostmanCollectionRequestMode? body,
-            PostmanCollectionUrl? url,
-            String? description)
-        $default,
-  ) {
-    return $default(
-        auth, method, proxy, certificate, header, body, url, description);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            PostmanCollectionAuth? auth,
-            String method,
-            PostmanCollectionProxyConfig? proxy,
-            PostmanCollectionCertificate? certificate,
-            List<PostmanCollectionHeader>? header,
-            PostmanCollectionRequestMode? body,
-            PostmanCollectionUrl? url,
-            String? description)?
-        $default,
-  ) {
-    return $default?.call(
-        auth, method, proxy, certificate, header, body, url, description);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            PostmanCollectionAuth? auth,
-            String method,
-            PostmanCollectionProxyConfig? proxy,
-            PostmanCollectionCertificate? certificate,
-            List<PostmanCollectionHeader>? header,
-            PostmanCollectionRequestMode? body,
-            PostmanCollectionUrl? url,
-            String? description)?
-        $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(
-          auth, method, proxy, certificate, header, body, url, description);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionRequest value) $default,
-  ) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionRequest value)? $default,
-  ) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionRequest value)? $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PostmanCollectionRequestImplToJson(
-      this,
+  int get hashCode {
+    return Object.hash(
+      runtimeType,
+      auth,
+      method,
+      proxy,
+      certificate,
+      const DeepCollectionEquality().hash(_header),
+      body,
+      url,
+      description,
     );
+  }
+
+  @override
+  String toString() {
+    return 'PostmanCollectionRequest(auth: $auth, method: $method, proxy: $proxy, certificate: $certificate, header: $header, body: $body, url: $url, description: $description)';
   }
 }
 
-abstract class _PostmanCollectionRequest extends PostmanCollectionRequest {
-  const factory _PostmanCollectionRequest(
-      {final PostmanCollectionAuth? auth,
-      required final String method,
-      final PostmanCollectionProxyConfig? proxy,
-      final PostmanCollectionCertificate? certificate,
-      final List<PostmanCollectionHeader>? header,
-      final PostmanCollectionRequestMode? body,
-      final PostmanCollectionUrl? url,
-      final String? description}) = _$PostmanCollectionRequestImpl;
-  const _PostmanCollectionRequest._() : super._();
+/// @nodoc
+abstract mixin class _$PostmanCollectionRequestCopyWith<$Res>
+    implements $PostmanCollectionRequestCopyWith<$Res> {
+  factory _$PostmanCollectionRequestCopyWith(
+    _PostmanCollectionRequest value,
+    $Res Function(_PostmanCollectionRequest) _then,
+  ) = __$PostmanCollectionRequestCopyWithImpl;
+  @override
+  @useResult
+  $Res call({
+    PostmanCollectionAuth? auth,
+    String method,
+    PostmanCollectionProxyConfig? proxy,
+    PostmanCollectionCertificate? certificate,
+    List<PostmanCollectionHeader>? header,
+    PostmanCollectionRequestMode? body,
+    PostmanCollectionUrl? url,
+    String? description,
+  });
 
-  factory _PostmanCollectionRequest.fromJson(Map<String, dynamic> json) =
-      _$PostmanCollectionRequestImpl.fromJson;
+  @override
+  $PostmanCollectionAuthCopyWith<$Res>? get auth;
+  @override
+  $PostmanCollectionProxyConfigCopyWith<$Res>? get proxy;
+  @override
+  $PostmanCollectionCertificateCopyWith<$Res>? get certificate;
+  @override
+  $PostmanCollectionRequestModeCopyWith<$Res>? get body;
+  @override
+  $PostmanCollectionUrlCopyWith<$Res>? get url;
+}
 
-  @override
-  PostmanCollectionAuth? get auth;
-  @override
-  String get method;
-  @override
-  PostmanCollectionProxyConfig? get proxy;
-  @override
-  PostmanCollectionCertificate? get certificate;
-  @override
-  List<PostmanCollectionHeader>? get header;
-  @override
-  PostmanCollectionRequestMode? get body;
-  @override
-  PostmanCollectionUrl? get url;
-  @override
-  String? get description;
+/// @nodoc
+class __$PostmanCollectionRequestCopyWithImpl<$Res>
+    implements _$PostmanCollectionRequestCopyWith<$Res> {
+  __$PostmanCollectionRequestCopyWithImpl(this._self, this._then);
+
+  final _PostmanCollectionRequest _self;
+  final $Res Function(_PostmanCollectionRequest) _then;
 
   /// Create a copy of PostmanCollectionRequest
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PostmanCollectionRequestImplCopyWith<_$PostmanCollectionRequestImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? auth = freezed,
+    Object? method = null,
+    Object? proxy = freezed,
+    Object? certificate = freezed,
+    Object? header = freezed,
+    Object? body = freezed,
+    Object? url = freezed,
+    Object? description = freezed,
+  }) {
+    return _then(
+      _PostmanCollectionRequest(
+        auth: freezed == auth
+            ? _self.auth
+            : auth // ignore: cast_nullable_to_non_nullable
+                  as PostmanCollectionAuth?,
+        method: null == method
+            ? _self.method
+            : method // ignore: cast_nullable_to_non_nullable
+                  as String,
+        proxy: freezed == proxy
+            ? _self.proxy
+            : proxy // ignore: cast_nullable_to_non_nullable
+                  as PostmanCollectionProxyConfig?,
+        certificate: freezed == certificate
+            ? _self.certificate
+            : certificate // ignore: cast_nullable_to_non_nullable
+                  as PostmanCollectionCertificate?,
+        header: freezed == header
+            ? _self._header
+            : header // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionHeader>?,
+        body: freezed == body
+            ? _self.body
+            : body // ignore: cast_nullable_to_non_nullable
+                  as PostmanCollectionRequestMode?,
+        url: freezed == url
+            ? _self.url
+            : url // ignore: cast_nullable_to_non_nullable
+                  as PostmanCollectionUrl?,
+        description: freezed == description
+            ? _self.description
+            : description // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
+  }
+
+  /// Create a copy of PostmanCollectionRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PostmanCollectionAuthCopyWith<$Res>? get auth {
+    if (_self.auth == null) {
+      return null;
+    }
+
+    return $PostmanCollectionAuthCopyWith<$Res>(_self.auth!, (value) {
+      return _then(_self.copyWith(auth: value));
+    });
+  }
+
+  /// Create a copy of PostmanCollectionRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PostmanCollectionProxyConfigCopyWith<$Res>? get proxy {
+    if (_self.proxy == null) {
+      return null;
+    }
+
+    return $PostmanCollectionProxyConfigCopyWith<$Res>(_self.proxy!, (value) {
+      return _then(_self.copyWith(proxy: value));
+    });
+  }
+
+  /// Create a copy of PostmanCollectionRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PostmanCollectionCertificateCopyWith<$Res>? get certificate {
+    if (_self.certificate == null) {
+      return null;
+    }
+
+    return $PostmanCollectionCertificateCopyWith<$Res>(_self.certificate!, (
+      value,
+    ) {
+      return _then(_self.copyWith(certificate: value));
+    });
+  }
+
+  /// Create a copy of PostmanCollectionRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PostmanCollectionRequestModeCopyWith<$Res>? get body {
+    if (_self.body == null) {
+      return null;
+    }
+
+    return $PostmanCollectionRequestModeCopyWith<$Res>(_self.body!, (value) {
+      return _then(_self.copyWith(body: value));
+    });
+  }
+
+  /// Create a copy of PostmanCollectionRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PostmanCollectionUrlCopyWith<$Res>? get url {
+    if (_self.url == null) {
+      return null;
+    }
+
+    return $PostmanCollectionUrlCopyWith<$Res>(_self.url!, (value) {
+      return _then(_self.copyWith(url: value));
+    });
+  }
 }
 
 PostmanCollectionRequestMode _$PostmanCollectionRequestModeFromJson(
-    Map<String, dynamic> json) {
+  Map<String, dynamic> json,
+) {
   switch (json['mode']) {
     case 'formdata':
       return _PostmanCollectionRequestModeFormdata.fromJson(json);
 
     default:
-      return _PostmanCollectionRequestMode.fromJson(json);
+      return _PostmanCollectionRequestModeRaw.fromJson(json);
   }
 }
 
 /// @nodoc
 mixin _$PostmanCollectionRequestMode {
+  /// Serializes this PostmanCollectionRequestMode to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PostmanCollectionRequestMode);
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'PostmanCollectionRequestMode()';
+  }
+}
+
+/// @nodoc
+class $PostmanCollectionRequestModeCopyWith<$Res> {
+  $PostmanCollectionRequestModeCopyWith(
+    PostmanCollectionRequestMode _,
+    $Res Function(PostmanCollectionRequestMode) __,
+  );
+}
+
+/// Adds pattern-matching-related methods to [PostmanCollectionRequestMode].
+extension PostmanCollectionRequestModePatterns on PostmanCollectionRequestMode {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String? raw, Map<String, dynamic>? options) raw,
-    required TResult Function(List<PostmanFormDataEntry>? formdata) formdata,
-  }) =>
-      throw _privateConstructorUsedError;
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PostmanCollectionRequestModeRaw value)? raw,
+    TResult Function(_PostmanCollectionRequestModeFormdata value)? formdata,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionRequestModeRaw() when raw != null:
+        return raw(_that);
+      case _PostmanCollectionRequestModeFormdata() when formdata != null:
+        return formdata(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? raw, Map<String, dynamic>? options)? raw,
-    TResult? Function(List<PostmanFormDataEntry>? formdata)? formdata,
-  }) =>
-      throw _privateConstructorUsedError;
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PostmanCollectionRequestModeRaw value) raw,
+    required TResult Function(_PostmanCollectionRequestModeFormdata value)
+    formdata,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionRequestModeRaw():
+        return raw(_that);
+      case _PostmanCollectionRequestModeFormdata():
+        return formdata(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PostmanCollectionRequestModeRaw value)? raw,
+    TResult? Function(_PostmanCollectionRequestModeFormdata value)? formdata,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionRequestModeRaw() when raw != null:
+        return raw(_that);
+      case _PostmanCollectionRequestModeFormdata() when formdata != null:
+        return formdata(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? raw, Map<String, dynamic>? options)? raw,
     TResult Function(List<PostmanFormDataEntry>? formdata)? formdata,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_PostmanCollectionRequestMode value) raw,
-    required TResult Function(_PostmanCollectionRequestModeFormdata value)
-        formdata,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_PostmanCollectionRequestMode value)? raw,
-    TResult? Function(_PostmanCollectionRequestModeFormdata value)? formdata,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PostmanCollectionRequestMode value)? raw,
-    TResult Function(_PostmanCollectionRequestModeFormdata value)? formdata,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this PostmanCollectionRequestMode to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $PostmanCollectionRequestModeCopyWith<$Res> {
-  factory $PostmanCollectionRequestModeCopyWith(
-          PostmanCollectionRequestMode value,
-          $Res Function(PostmanCollectionRequestMode) then) =
-      _$PostmanCollectionRequestModeCopyWithImpl<$Res,
-          PostmanCollectionRequestMode>;
-}
-
-/// @nodoc
-class _$PostmanCollectionRequestModeCopyWithImpl<$Res,
-        $Val extends PostmanCollectionRequestMode>
-    implements $PostmanCollectionRequestModeCopyWith<$Res> {
-  _$PostmanCollectionRequestModeCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of PostmanCollectionRequestMode
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-abstract class _$$PostmanCollectionRequestModeImplCopyWith<$Res> {
-  factory _$$PostmanCollectionRequestModeImplCopyWith(
-          _$PostmanCollectionRequestModeImpl value,
-          $Res Function(_$PostmanCollectionRequestModeImpl) then) =
-      __$$PostmanCollectionRequestModeImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String? raw, Map<String, dynamic>? options});
-}
-
-/// @nodoc
-class __$$PostmanCollectionRequestModeImplCopyWithImpl<$Res>
-    extends _$PostmanCollectionRequestModeCopyWithImpl<$Res,
-        _$PostmanCollectionRequestModeImpl>
-    implements _$$PostmanCollectionRequestModeImplCopyWith<$Res> {
-  __$$PostmanCollectionRequestModeImplCopyWithImpl(
-      _$PostmanCollectionRequestModeImpl _value,
-      $Res Function(_$PostmanCollectionRequestModeImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of PostmanCollectionRequestMode
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? raw = freezed,
-    Object? options = freezed,
   }) {
-    return _then(_$PostmanCollectionRequestModeImpl(
-      raw: freezed == raw
-          ? _value.raw
-          : raw // ignore: cast_nullable_to_non_nullable
-              as String?,
-      options: freezed == options
-          ? _value._options
-          : options // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
-    ));
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionRequestModeRaw() when raw != null:
+        return raw(_that.raw, _that.options);
+      case _PostmanCollectionRequestModeFormdata() when formdata != null:
+        return formdata(_that.formdata);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? raw, Map<String, dynamic>? options) raw,
+    required TResult Function(List<PostmanFormDataEntry>? formdata) formdata,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionRequestModeRaw():
+        return raw(_that.raw, _that.options);
+      case _PostmanCollectionRequestModeFormdata():
+        return formdata(_that.formdata);
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String? raw, Map<String, dynamic>? options)? raw,
+    TResult? Function(List<PostmanFormDataEntry>? formdata)? formdata,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionRequestModeRaw() when raw != null:
+        return raw(_that.raw, _that.options);
+      case _PostmanCollectionRequestModeFormdata() when formdata != null:
+        return formdata(_that.formdata);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PostmanCollectionRequestModeImpl extends _PostmanCollectionRequestMode {
-  const _$PostmanCollectionRequestModeImpl(
-      {this.raw, final Map<String, dynamic>? options, final String? $type})
-      : _options = options,
-        $type = $type ?? 'raw',
-        super._();
+class _PostmanCollectionRequestModeRaw extends PostmanCollectionRequestMode {
+  const _PostmanCollectionRequestModeRaw({
+    this.raw,
+    Map<String, dynamic>? options,
+    String? $type,
+  }) : _options = options,
+       $type = $type ?? 'raw',
+       super._();
+  factory _PostmanCollectionRequestModeRaw.fromJson(
+    Map<String, dynamic> json,
+  ) => _$PostmanCollectionRequestModeRawFromJson(json);
 
-  factory _$PostmanCollectionRequestModeImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$PostmanCollectionRequestModeImplFromJson(json);
-
-  @override
   final String? raw;
   final Map<String, dynamic>? _options;
-  @override
   Map<String, dynamic>? get options {
     final value = _options;
     if (value == null) return null;
@@ -3464,179 +4253,99 @@ class _$PostmanCollectionRequestModeImpl extends _PostmanCollectionRequestMode {
   @JsonKey(name: 'mode')
   final String $type;
 
+  /// Create a copy of PostmanCollectionRequestMode
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PostmanCollectionRequestModeRawCopyWith<_PostmanCollectionRequestModeRaw>
+  get copyWith =>
+      __$PostmanCollectionRequestModeRawCopyWithImpl<
+        _PostmanCollectionRequestModeRaw
+      >(this, _$identity);
+
   @override
-  String toString() {
-    return 'PostmanCollectionRequestMode.raw(raw: $raw, options: $options)';
+  Map<String, dynamic> toJson() {
+    return _$PostmanCollectionRequestModeRawToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PostmanCollectionRequestModeImpl &&
+            other is _PostmanCollectionRequestModeRaw &&
             (identical(other.raw, raw) || other.raw == raw) &&
-            const DeepCollectionEquality().equals(other._options, _options));
+            const DeepCollectionEquality().equals(other.options, _options));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, raw, const DeepCollectionEquality().hash(_options));
-
-  /// Create a copy of PostmanCollectionRequestMode
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PostmanCollectionRequestModeImplCopyWith<
-          _$PostmanCollectionRequestModeImpl>
-      get copyWith => __$$PostmanCollectionRequestModeImplCopyWithImpl<
-          _$PostmanCollectionRequestModeImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String? raw, Map<String, dynamic>? options) raw,
-    required TResult Function(List<PostmanFormDataEntry>? formdata) formdata,
-  }) {
-    return raw(this.raw, options);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? raw, Map<String, dynamic>? options)? raw,
-    TResult? Function(List<PostmanFormDataEntry>? formdata)? formdata,
-  }) {
-    return raw?.call(this.raw, options);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? raw, Map<String, dynamic>? options)? raw,
-    TResult Function(List<PostmanFormDataEntry>? formdata)? formdata,
-    required TResult orElse(),
-  }) {
-    if (raw != null) {
-      return raw(this.raw, options);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_PostmanCollectionRequestMode value) raw,
-    required TResult Function(_PostmanCollectionRequestModeFormdata value)
-        formdata,
-  }) {
-    return raw(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_PostmanCollectionRequestMode value)? raw,
-    TResult? Function(_PostmanCollectionRequestModeFormdata value)? formdata,
-  }) {
-    return raw?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PostmanCollectionRequestMode value)? raw,
-    TResult Function(_PostmanCollectionRequestModeFormdata value)? formdata,
-    required TResult orElse(),
-  }) {
-    if (raw != null) {
-      return raw(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PostmanCollectionRequestModeImplToJson(
-      this,
+  int get hashCode {
+    return Object.hash(
+      runtimeType,
+      raw,
+      const DeepCollectionEquality().hash(_options),
     );
   }
-}
 
-abstract class _PostmanCollectionRequestMode
-    extends PostmanCollectionRequestMode {
-  const factory _PostmanCollectionRequestMode(
-          {final String? raw, final Map<String, dynamic>? options}) =
-      _$PostmanCollectionRequestModeImpl;
-  const _PostmanCollectionRequestMode._() : super._();
-
-  factory _PostmanCollectionRequestMode.fromJson(Map<String, dynamic> json) =
-      _$PostmanCollectionRequestModeImpl.fromJson;
-
-  String? get raw;
-  Map<String, dynamic>? get options;
-
-  /// Create a copy of PostmanCollectionRequestMode
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PostmanCollectionRequestModeImplCopyWith<
-          _$PostmanCollectionRequestModeImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  @override
+  String toString() {
+    return 'PostmanCollectionRequestMode.raw(raw: $raw, options: $options)';
+  }
 }
 
 /// @nodoc
-abstract class _$$PostmanCollectionRequestModeFormdataImplCopyWith<$Res> {
-  factory _$$PostmanCollectionRequestModeFormdataImplCopyWith(
-          _$PostmanCollectionRequestModeFormdataImpl value,
-          $Res Function(_$PostmanCollectionRequestModeFormdataImpl) then) =
-      __$$PostmanCollectionRequestModeFormdataImplCopyWithImpl<$Res>;
+abstract mixin class _$PostmanCollectionRequestModeRawCopyWith<$Res>
+    implements $PostmanCollectionRequestModeCopyWith<$Res> {
+  factory _$PostmanCollectionRequestModeRawCopyWith(
+    _PostmanCollectionRequestModeRaw value,
+    $Res Function(_PostmanCollectionRequestModeRaw) _then,
+  ) = __$PostmanCollectionRequestModeRawCopyWithImpl;
   @useResult
-  $Res call({List<PostmanFormDataEntry>? formdata});
+  $Res call({String? raw, Map<String, dynamic>? options});
 }
 
 /// @nodoc
-class __$$PostmanCollectionRequestModeFormdataImplCopyWithImpl<$Res>
-    extends _$PostmanCollectionRequestModeCopyWithImpl<$Res,
-        _$PostmanCollectionRequestModeFormdataImpl>
-    implements _$$PostmanCollectionRequestModeFormdataImplCopyWith<$Res> {
-  __$$PostmanCollectionRequestModeFormdataImplCopyWithImpl(
-      _$PostmanCollectionRequestModeFormdataImpl _value,
-      $Res Function(_$PostmanCollectionRequestModeFormdataImpl) _then)
-      : super(_value, _then);
+class __$PostmanCollectionRequestModeRawCopyWithImpl<$Res>
+    implements _$PostmanCollectionRequestModeRawCopyWith<$Res> {
+  __$PostmanCollectionRequestModeRawCopyWithImpl(this._self, this._then);
+
+  final _PostmanCollectionRequestModeRaw _self;
+  final $Res Function(_PostmanCollectionRequestModeRaw) _then;
 
   /// Create a copy of PostmanCollectionRequestMode
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? formdata = freezed,
-  }) {
-    return _then(_$PostmanCollectionRequestModeFormdataImpl(
-      formdata: freezed == formdata
-          ? _value._formdata
-          : formdata // ignore: cast_nullable_to_non_nullable
-              as List<PostmanFormDataEntry>?,
-    ));
+  $Res call({Object? raw = freezed, Object? options = freezed}) {
+    return _then(
+      _PostmanCollectionRequestModeRaw(
+        raw: freezed == raw
+            ? _self.raw
+            : raw // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        options: freezed == options
+            ? _self._options
+            : options // ignore: cast_nullable_to_non_nullable
+                  as Map<String, dynamic>?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PostmanCollectionRequestModeFormdataImpl
-    extends _PostmanCollectionRequestModeFormdata {
-  const _$PostmanCollectionRequestModeFormdataImpl(
-      {final List<PostmanFormDataEntry>? formdata, final String? $type})
-      : _formdata = formdata,
-        $type = $type ?? 'formdata',
-        super._();
-
-  factory _$PostmanCollectionRequestModeFormdataImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$PostmanCollectionRequestModeFormdataImplFromJson(json);
+class _PostmanCollectionRequestModeFormdata
+    extends PostmanCollectionRequestMode {
+  const _PostmanCollectionRequestModeFormdata({
+    List<PostmanFormDataEntry>? formdata,
+    String? $type,
+  }) : _formdata = formdata,
+       $type = $type ?? 'formdata',
+       super._();
+  factory _PostmanCollectionRequestModeFormdata.fromJson(
+    Map<String, dynamic> json,
+  ) => _$PostmanCollectionRequestModeFormdataFromJson(json);
 
   final List<PostmanFormDataEntry>? _formdata;
-  @override
   List<PostmanFormDataEntry>? get formdata {
     final value = _formdata;
     if (value == null) return null;
@@ -3648,251 +4357,150 @@ class _$PostmanCollectionRequestModeFormdataImpl
   @JsonKey(name: 'mode')
   final String $type;
 
+  /// Create a copy of PostmanCollectionRequestMode
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PostmanCollectionRequestModeFormdataCopyWith<
+    _PostmanCollectionRequestModeFormdata
+  >
+  get copyWith =>
+      __$PostmanCollectionRequestModeFormdataCopyWithImpl<
+        _PostmanCollectionRequestModeFormdata
+      >(this, _$identity);
+
   @override
-  String toString() {
-    return 'PostmanCollectionRequestMode.formdata(formdata: $formdata)';
+  Map<String, dynamic> toJson() {
+    return _$PostmanCollectionRequestModeFormdataToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PostmanCollectionRequestModeFormdataImpl &&
-            const DeepCollectionEquality().equals(other._formdata, _formdata));
+            other is _PostmanCollectionRequestModeFormdata &&
+            const DeepCollectionEquality().equals(other.formdata, _formdata));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_formdata));
+  int get hashCode {
+    return Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_formdata),
+    );
+  }
+
+  @override
+  String toString() {
+    return 'PostmanCollectionRequestMode.formdata(formdata: $formdata)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$PostmanCollectionRequestModeFormdataCopyWith<$Res>
+    implements $PostmanCollectionRequestModeCopyWith<$Res> {
+  factory _$PostmanCollectionRequestModeFormdataCopyWith(
+    _PostmanCollectionRequestModeFormdata value,
+    $Res Function(_PostmanCollectionRequestModeFormdata) _then,
+  ) = __$PostmanCollectionRequestModeFormdataCopyWithImpl;
+  @useResult
+  $Res call({List<PostmanFormDataEntry>? formdata});
+}
+
+/// @nodoc
+class __$PostmanCollectionRequestModeFormdataCopyWithImpl<$Res>
+    implements _$PostmanCollectionRequestModeFormdataCopyWith<$Res> {
+  __$PostmanCollectionRequestModeFormdataCopyWithImpl(this._self, this._then);
+
+  final _PostmanCollectionRequestModeFormdata _self;
+  final $Res Function(_PostmanCollectionRequestModeFormdata) _then;
 
   /// Create a copy of PostmanCollectionRequestMode
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
   @pragma('vm:prefer-inline')
-  _$$PostmanCollectionRequestModeFormdataImplCopyWith<
-          _$PostmanCollectionRequestModeFormdataImpl>
-      get copyWith => __$$PostmanCollectionRequestModeFormdataImplCopyWithImpl<
-          _$PostmanCollectionRequestModeFormdataImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String? raw, Map<String, dynamic>? options) raw,
-    required TResult Function(List<PostmanFormDataEntry>? formdata) formdata,
-  }) {
-    return formdata(this.formdata);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? raw, Map<String, dynamic>? options)? raw,
-    TResult? Function(List<PostmanFormDataEntry>? formdata)? formdata,
-  }) {
-    return formdata?.call(this.formdata);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? raw, Map<String, dynamic>? options)? raw,
-    TResult Function(List<PostmanFormDataEntry>? formdata)? formdata,
-    required TResult orElse(),
-  }) {
-    if (formdata != null) {
-      return formdata(this.formdata);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_PostmanCollectionRequestMode value) raw,
-    required TResult Function(_PostmanCollectionRequestModeFormdata value)
-        formdata,
-  }) {
-    return formdata(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_PostmanCollectionRequestMode value)? raw,
-    TResult? Function(_PostmanCollectionRequestModeFormdata value)? formdata,
-  }) {
-    return formdata?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PostmanCollectionRequestMode value)? raw,
-    TResult Function(_PostmanCollectionRequestModeFormdata value)? formdata,
-    required TResult orElse(),
-  }) {
-    if (formdata != null) {
-      return formdata(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PostmanCollectionRequestModeFormdataImplToJson(
-      this,
+  $Res call({Object? formdata = freezed}) {
+    return _then(
+      _PostmanCollectionRequestModeFormdata(
+        formdata: freezed == formdata
+            ? _self._formdata
+            : formdata // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanFormDataEntry>?,
+      ),
     );
   }
 }
 
-abstract class _PostmanCollectionRequestModeFormdata
-    extends PostmanCollectionRequestMode {
-  const factory _PostmanCollectionRequestModeFormdata(
-          {final List<PostmanFormDataEntry>? formdata}) =
-      _$PostmanCollectionRequestModeFormdataImpl;
-  const _PostmanCollectionRequestModeFormdata._() : super._();
-
-  factory _PostmanCollectionRequestModeFormdata.fromJson(
-          Map<String, dynamic> json) =
-      _$PostmanCollectionRequestModeFormdataImpl.fromJson;
-
-  List<PostmanFormDataEntry>? get formdata;
-
-  /// Create a copy of PostmanCollectionRequestMode
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PostmanCollectionRequestModeFormdataImplCopyWith<
-          _$PostmanCollectionRequestModeFormdataImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-PostmanFormDataEntry _$PostmanFormDataEntryFromJson(Map<String, dynamic> json) {
-  return _PostmanFormDataEntry.fromJson(json);
-}
-
 /// @nodoc
 mixin _$PostmanFormDataEntry {
-  String get key => throw _privateConstructorUsedError;
-  String? get src => throw _privateConstructorUsedError;
-  String? get value => throw _privateConstructorUsedError;
-  String? get type => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(String key, String? src, String? value, String? type)
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String key, String? src, String? value, String? type)?
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String key, String? src, String? value, String? type)?
-        $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanFormDataEntry value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanFormDataEntry value)? $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanFormDataEntry value)? $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this PostmanFormDataEntry to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String get key;
+  String? get src;
+  String? get value;
+  String? get type;
 
   /// Create a copy of PostmanFormDataEntry
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $PostmanFormDataEntryCopyWith<PostmanFormDataEntry> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $PostmanFormDataEntryCopyWith<$Res> {
-  factory $PostmanFormDataEntryCopyWith(PostmanFormDataEntry value,
-          $Res Function(PostmanFormDataEntry) then) =
-      _$PostmanFormDataEntryCopyWithImpl<$Res, PostmanFormDataEntry>;
-  @useResult
-  $Res call({String key, String? src, String? value, String? type});
-}
-
-/// @nodoc
-class _$PostmanFormDataEntryCopyWithImpl<$Res,
-        $Val extends PostmanFormDataEntry>
-    implements $PostmanFormDataEntryCopyWith<$Res> {
-  _$PostmanFormDataEntryCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of PostmanFormDataEntry
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $PostmanFormDataEntryCopyWith<PostmanFormDataEntry> get copyWith =>
+      _$PostmanFormDataEntryCopyWithImpl<PostmanFormDataEntry>(
+        this as PostmanFormDataEntry,
+        _$identity,
+      );
+
+  /// Serializes this PostmanFormDataEntry to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? key = null,
-    Object? src = freezed,
-    Object? value = freezed,
-    Object? type = freezed,
-  }) {
-    return _then(_value.copyWith(
-      key: null == key
-          ? _value.key
-          : key // ignore: cast_nullable_to_non_nullable
-              as String,
-      src: freezed == src
-          ? _value.src
-          : src // ignore: cast_nullable_to_non_nullable
-              as String?,
-      value: freezed == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String?,
-      type: freezed == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    final _this = this as PostmanFormDataEntry;
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PostmanFormDataEntry &&
+            (identical(other.key, _this.key) || other.key == _this.key) &&
+            (identical(other.src, _this.src) || other.src == _this.src) &&
+            (identical(other.value, _this.value) ||
+                other.value == _this.value) &&
+            (identical(other.type, _this.type) || other.type == _this.type));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode {
+    final _this = this as PostmanFormDataEntry;
+    return Object.hash(
+      runtimeType,
+      _this.key,
+      _this.src,
+      _this.value,
+      _this.type,
+    );
+  }
+
+  @override
+  String toString() {
+    final _this = this as PostmanFormDataEntry;
+    return 'PostmanFormDataEntry(key: ${_this.key}, src: ${_this.src}, value: ${_this.value}, type: ${_this.type})';
   }
 }
 
 /// @nodoc
-abstract class _$$PostmanFormDataEntryImplCopyWith<$Res>
-    implements $PostmanFormDataEntryCopyWith<$Res> {
-  factory _$$PostmanFormDataEntryImplCopyWith(_$PostmanFormDataEntryImpl value,
-          $Res Function(_$PostmanFormDataEntryImpl) then) =
-      __$$PostmanFormDataEntryImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $PostmanFormDataEntryCopyWith<$Res> {
+  factory $PostmanFormDataEntryCopyWith(
+    PostmanFormDataEntry value,
+    $Res Function(PostmanFormDataEntry) _then,
+  ) = _$PostmanFormDataEntryCopyWithImpl;
   @useResult
   $Res call({String key, String? src, String? value, String? type});
 }
 
 /// @nodoc
-class __$$PostmanFormDataEntryImplCopyWithImpl<$Res>
-    extends _$PostmanFormDataEntryCopyWithImpl<$Res, _$PostmanFormDataEntryImpl>
-    implements _$$PostmanFormDataEntryImplCopyWith<$Res> {
-  __$$PostmanFormDataEntryImplCopyWithImpl(_$PostmanFormDataEntryImpl _value,
-      $Res Function(_$PostmanFormDataEntryImpl) _then)
-      : super(_value, _then);
+class _$PostmanFormDataEntryCopyWithImpl<$Res>
+    implements $PostmanFormDataEntryCopyWith<$Res> {
+  _$PostmanFormDataEntryCopyWithImpl(this._self, this._then);
+
+  final PostmanFormDataEntry _self;
+  final $Res Function(PostmanFormDataEntry) _then;
 
   /// Create a copy of PostmanFormDataEntry
   /// with the given fields replaced by the non-null parameter values.
@@ -3904,36 +4512,200 @@ class __$$PostmanFormDataEntryImplCopyWithImpl<$Res>
     Object? value = freezed,
     Object? type = freezed,
   }) {
-    return _then(_$PostmanFormDataEntryImpl(
-      key: null == key
-          ? _value.key
-          : key // ignore: cast_nullable_to_non_nullable
-              as String,
-      src: freezed == src
-          ? _value.src
-          : src // ignore: cast_nullable_to_non_nullable
-              as String?,
-      value: freezed == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String?,
-      type: freezed == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      PostmanFormDataEntry(
+        key: null == key
+            ? _self.key
+            : key // ignore: cast_nullable_to_non_nullable
+                  as String,
+        src: freezed == src
+            ? _self.src
+            : src // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        value: freezed == value
+            ? _self.value
+            : value // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        type: freezed == type
+            ? _self.type
+            : type // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
+  }
+}
+
+/// Adds pattern-matching-related methods to [PostmanFormDataEntry].
+extension PostmanFormDataEntryPatterns on PostmanFormDataEntry {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PostmanFormDataEntry value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanFormDataEntry() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_PostmanFormDataEntry value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanFormDataEntry():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_PostmanFormDataEntry value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanFormDataEntry() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String key, String? src, String? value, String? type)?
+    $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanFormDataEntry() when $default != null:
+        return $default(_that.key, _that.src, _that.value, _that.type);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String key, String? src, String? value, String? type)
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanFormDataEntry():
+        return $default(_that.key, _that.src, _that.value, _that.type);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String key, String? src, String? value, String? type)?
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanFormDataEntry() when $default != null:
+        return $default(_that.key, _that.src, _that.value, _that.type);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PostmanFormDataEntryImpl extends _PostmanFormDataEntry {
-  const _$PostmanFormDataEntryImpl(
-      {required this.key, this.src, this.value, this.type})
-      : super._();
-
-  factory _$PostmanFormDataEntryImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PostmanFormDataEntryImplFromJson(json);
+class _PostmanFormDataEntry extends PostmanFormDataEntry {
+  const _PostmanFormDataEntry({
+    required this.key,
+    this.src,
+    this.value,
+    this.type,
+  }) : super._();
+  factory _PostmanFormDataEntry.fromJson(Map<String, dynamic> json) =>
+      _$PostmanFormDataEntryFromJson(json);
 
   @override
   final String key;
@@ -3944,16 +4716,27 @@ class _$PostmanFormDataEntryImpl extends _PostmanFormDataEntry {
   @override
   final String? type;
 
+  /// Create a copy of PostmanFormDataEntry
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'PostmanFormDataEntry(key: $key, src: $src, value: $value, type: $type)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PostmanFormDataEntryCopyWith<_PostmanFormDataEntry> get copyWith =>
+      __$PostmanFormDataEntryCopyWithImpl<_PostmanFormDataEntry>(
+        this,
+        _$identity,
+      );
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$PostmanFormDataEntryToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PostmanFormDataEntryImpl &&
+            other is _PostmanFormDataEntry &&
             (identical(other.key, key) || other.key == key) &&
             (identical(other.src, src) || other.src == src) &&
             (identical(other.value, value) || other.value == value) &&
@@ -3962,298 +4745,163 @@ class _$PostmanFormDataEntryImpl extends _PostmanFormDataEntry {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, key, src, value, type);
+  int get hashCode {
+    return Object.hash(runtimeType, key, src, value, type);
+  }
+
+  @override
+  String toString() {
+    return 'PostmanFormDataEntry(key: $key, src: $src, value: $value, type: $type)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$PostmanFormDataEntryCopyWith<$Res>
+    implements $PostmanFormDataEntryCopyWith<$Res> {
+  factory _$PostmanFormDataEntryCopyWith(
+    _PostmanFormDataEntry value,
+    $Res Function(_PostmanFormDataEntry) _then,
+  ) = __$PostmanFormDataEntryCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String key, String? src, String? value, String? type});
+}
+
+/// @nodoc
+class __$PostmanFormDataEntryCopyWithImpl<$Res>
+    implements _$PostmanFormDataEntryCopyWith<$Res> {
+  __$PostmanFormDataEntryCopyWithImpl(this._self, this._then);
+
+  final _PostmanFormDataEntry _self;
+  final $Res Function(_PostmanFormDataEntry) _then;
 
   /// Create a copy of PostmanFormDataEntry
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$PostmanFormDataEntryImplCopyWith<_$PostmanFormDataEntryImpl>
-      get copyWith =>
-          __$$PostmanFormDataEntryImplCopyWithImpl<_$PostmanFormDataEntryImpl>(
-              this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(String key, String? src, String? value, String? type)
-        $default,
-  ) {
-    return $default(key, src, value, type);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String key, String? src, String? value, String? type)?
-        $default,
-  ) {
-    return $default?.call(key, src, value, type);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String key, String? src, String? value, String? type)?
-        $default, {
-    required TResult orElse(),
+  $Res call({
+    Object? key = null,
+    Object? src = freezed,
+    Object? value = freezed,
+    Object? type = freezed,
   }) {
-    if ($default != null) {
-      return $default(key, src, value, type);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanFormDataEntry value) $default,
-  ) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanFormDataEntry value)? $default,
-  ) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanFormDataEntry value)? $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PostmanFormDataEntryImplToJson(
-      this,
+    return _then(
+      _PostmanFormDataEntry(
+        key: null == key
+            ? _self.key
+            : key // ignore: cast_nullable_to_non_nullable
+                  as String,
+        src: freezed == src
+            ? _self.src
+            : src // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        value: freezed == value
+            ? _self.value
+            : value // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        type: freezed == type
+            ? _self.type
+            : type // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
     );
   }
 }
 
-abstract class _PostmanFormDataEntry extends PostmanFormDataEntry {
-  const factory _PostmanFormDataEntry(
-      {required final String key,
-      final String? src,
-      final String? value,
-      final String? type}) = _$PostmanFormDataEntryImpl;
-  const _PostmanFormDataEntry._() : super._();
-
-  factory _PostmanFormDataEntry.fromJson(Map<String, dynamic> json) =
-      _$PostmanFormDataEntryImpl.fromJson;
-
-  @override
-  String get key;
-  @override
-  String? get src;
-  @override
-  String? get value;
-  @override
-  String? get type;
-
-  /// Create a copy of PostmanFormDataEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PostmanFormDataEntryImplCopyWith<_$PostmanFormDataEntryImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-PostmanCollectionUrl _$PostmanCollectionUrlFromJson(Map<String, dynamic> json) {
-  return _PostmanCollectionUrl.fromJson(json);
-}
-
 /// @nodoc
 mixin _$PostmanCollectionUrl {
-  String? get raw => throw _privateConstructorUsedError;
-  String? get protocol => throw _privateConstructorUsedError;
-  Object? get host => throw _privateConstructorUsedError;
-  Object? get path => throw _privateConstructorUsedError;
-  String? get port => throw _privateConstructorUsedError;
-  List<PostmanCollectionQueryParam>? get query =>
-      throw _privateConstructorUsedError;
-  String? get hash => throw _privateConstructorUsedError;
-  List<PostmanCollectionVariable>? get variable =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            String? raw,
-            String? protocol,
-            Object? host,
-            Object? path,
-            String? port,
-            List<PostmanCollectionQueryParam>? query,
-            String? hash,
-            List<PostmanCollectionVariable>? variable)
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            String? raw,
-            String? protocol,
-            Object? host,
-            Object? path,
-            String? port,
-            List<PostmanCollectionQueryParam>? query,
-            String? hash,
-            List<PostmanCollectionVariable>? variable)?
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            String? raw,
-            String? protocol,
-            Object? host,
-            Object? path,
-            String? port,
-            List<PostmanCollectionQueryParam>? query,
-            String? hash,
-            List<PostmanCollectionVariable>? variable)?
-        $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionUrl value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionUrl value)? $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionUrl value)? $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this PostmanCollectionUrl to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String? get raw;
+  String? get protocol;
+  Object? get host;
+  Object? get path;
+  String? get port;
+  List<PostmanCollectionQueryParam>? get query;
+  String? get hash;
+  List<PostmanCollectionVariable>? get variable;
 
   /// Create a copy of PostmanCollectionUrl
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $PostmanCollectionUrlCopyWith<PostmanCollectionUrl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $PostmanCollectionUrlCopyWith<$Res> {
-  factory $PostmanCollectionUrlCopyWith(PostmanCollectionUrl value,
-          $Res Function(PostmanCollectionUrl) then) =
-      _$PostmanCollectionUrlCopyWithImpl<$Res, PostmanCollectionUrl>;
-  @useResult
-  $Res call(
-      {String? raw,
-      String? protocol,
-      Object? host,
-      Object? path,
-      String? port,
-      List<PostmanCollectionQueryParam>? query,
-      String? hash,
-      List<PostmanCollectionVariable>? variable});
-}
-
-/// @nodoc
-class _$PostmanCollectionUrlCopyWithImpl<$Res,
-        $Val extends PostmanCollectionUrl>
-    implements $PostmanCollectionUrlCopyWith<$Res> {
-  _$PostmanCollectionUrlCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of PostmanCollectionUrl
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $PostmanCollectionUrlCopyWith<PostmanCollectionUrl> get copyWith =>
+      _$PostmanCollectionUrlCopyWithImpl<PostmanCollectionUrl>(
+        this as PostmanCollectionUrl,
+        _$identity,
+      );
+
+  /// Serializes this PostmanCollectionUrl to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? raw = freezed,
-    Object? protocol = freezed,
-    Object? host = freezed,
-    Object? path = freezed,
-    Object? port = freezed,
-    Object? query = freezed,
-    Object? hash = freezed,
-    Object? variable = freezed,
-  }) {
-    return _then(_value.copyWith(
-      raw: freezed == raw
-          ? _value.raw
-          : raw // ignore: cast_nullable_to_non_nullable
-              as String?,
-      protocol: freezed == protocol
-          ? _value.protocol
-          : protocol // ignore: cast_nullable_to_non_nullable
-              as String?,
-      host: freezed == host ? _value.host : host,
-      path: freezed == path ? _value.path : path,
-      port: freezed == port
-          ? _value.port
-          : port // ignore: cast_nullable_to_non_nullable
-              as String?,
-      query: freezed == query
-          ? _value.query
-          : query // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionQueryParam>?,
-      hash: freezed == hash
-          ? _value.hash
-          : hash // ignore: cast_nullable_to_non_nullable
-              as String?,
-      variable: freezed == variable
-          ? _value.variable
-          : variable // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionVariable>?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    final _this = this as PostmanCollectionUrl;
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PostmanCollectionUrl &&
+            (identical(other.raw, _this.raw) || other.raw == _this.raw) &&
+            (identical(other.protocol, _this.protocol) ||
+                other.protocol == _this.protocol) &&
+            const DeepCollectionEquality().equals(other.host, _this.host) &&
+            const DeepCollectionEquality().equals(other.path, _this.path) &&
+            (identical(other.port, _this.port) || other.port == _this.port) &&
+            const DeepCollectionEquality().equals(other.query, _this.query) &&
+            (identical(other.hash, _this.hash) || other.hash == _this.hash) &&
+            const DeepCollectionEquality().equals(
+              other.variable,
+              _this.variable,
+            ));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode {
+    final _this = this as PostmanCollectionUrl;
+    return Object.hash(
+      runtimeType,
+      _this.raw,
+      _this.protocol,
+      const DeepCollectionEquality().hash(_this.host),
+      const DeepCollectionEquality().hash(_this.path),
+      _this.port,
+      const DeepCollectionEquality().hash(_this.query),
+      _this.hash,
+      const DeepCollectionEquality().hash(_this.variable),
+    );
+  }
+
+  @override
+  String toString() {
+    final _this = this as PostmanCollectionUrl;
+    return 'PostmanCollectionUrl(raw: ${_this.raw}, protocol: ${_this.protocol}, host: ${_this.host}, path: ${_this.path}, port: ${_this.port}, query: ${_this.query}, hash: ${_this.hash}, variable: ${_this.variable})';
   }
 }
 
 /// @nodoc
-abstract class _$$PostmanCollectionUrlImplCopyWith<$Res>
-    implements $PostmanCollectionUrlCopyWith<$Res> {
-  factory _$$PostmanCollectionUrlImplCopyWith(_$PostmanCollectionUrlImpl value,
-          $Res Function(_$PostmanCollectionUrlImpl) then) =
-      __$$PostmanCollectionUrlImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $PostmanCollectionUrlCopyWith<$Res> {
+  factory $PostmanCollectionUrlCopyWith(
+    PostmanCollectionUrl value,
+    $Res Function(PostmanCollectionUrl) _then,
+  ) = _$PostmanCollectionUrlCopyWithImpl;
   @useResult
-  $Res call(
-      {String? raw,
-      String? protocol,
-      Object? host,
-      Object? path,
-      String? port,
-      List<PostmanCollectionQueryParam>? query,
-      String? hash,
-      List<PostmanCollectionVariable>? variable});
+  $Res call({
+    String? raw,
+    String? protocol,
+    Object? host,
+    Object? path,
+    String? port,
+    List<PostmanCollectionQueryParam>? query,
+    String? hash,
+    List<PostmanCollectionVariable>? variable,
+  });
 }
 
 /// @nodoc
-class __$$PostmanCollectionUrlImplCopyWithImpl<$Res>
-    extends _$PostmanCollectionUrlCopyWithImpl<$Res, _$PostmanCollectionUrlImpl>
-    implements _$$PostmanCollectionUrlImplCopyWith<$Res> {
-  __$$PostmanCollectionUrlImplCopyWithImpl(_$PostmanCollectionUrlImpl _value,
-      $Res Function(_$PostmanCollectionUrlImpl) _then)
-      : super(_value, _then);
+class _$PostmanCollectionUrlCopyWithImpl<$Res>
+    implements $PostmanCollectionUrlCopyWith<$Res> {
+  _$PostmanCollectionUrlCopyWithImpl(this._self, this._then);
+
+  final PostmanCollectionUrl _self;
+  final $Res Function(PostmanCollectionUrl) _then;
 
   /// Create a copy of PostmanCollectionUrl
   /// with the given fields replaced by the non-null parameter values.
@@ -4269,55 +4917,270 @@ class __$$PostmanCollectionUrlImplCopyWithImpl<$Res>
     Object? hash = freezed,
     Object? variable = freezed,
   }) {
-    return _then(_$PostmanCollectionUrlImpl(
-      raw: freezed == raw
-          ? _value.raw
-          : raw // ignore: cast_nullable_to_non_nullable
-              as String?,
-      protocol: freezed == protocol
-          ? _value.protocol
-          : protocol // ignore: cast_nullable_to_non_nullable
-              as String?,
-      host: freezed == host ? _value.host : host,
-      path: freezed == path ? _value.path : path,
-      port: freezed == port
-          ? _value.port
-          : port // ignore: cast_nullable_to_non_nullable
-              as String?,
-      query: freezed == query
-          ? _value._query
-          : query // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionQueryParam>?,
-      hash: freezed == hash
-          ? _value.hash
-          : hash // ignore: cast_nullable_to_non_nullable
-              as String?,
-      variable: freezed == variable
-          ? _value._variable
-          : variable // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionVariable>?,
-    ));
+    return _then(
+      PostmanCollectionUrl(
+        raw: freezed == raw
+            ? _self.raw
+            : raw // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        protocol: freezed == protocol
+            ? _self.protocol
+            : protocol // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        host: freezed == host ? _self.host : host,
+        path: freezed == path ? _self.path : path,
+        port: freezed == port
+            ? _self.port
+            : port // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        query: freezed == query
+            ? _self.query
+            : query // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionQueryParam>?,
+        hash: freezed == hash
+            ? _self.hash
+            : hash // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        variable: freezed == variable
+            ? _self.variable
+            : variable // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionVariable>?,
+      ),
+    );
+  }
+}
+
+/// Adds pattern-matching-related methods to [PostmanCollectionUrl].
+extension PostmanCollectionUrlPatterns on PostmanCollectionUrl {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PostmanCollectionUrl value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionUrl() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_PostmanCollectionUrl value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionUrl():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_PostmanCollectionUrl value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionUrl() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+      String? raw,
+      String? protocol,
+      Object? host,
+      Object? path,
+      String? port,
+      List<PostmanCollectionQueryParam>? query,
+      String? hash,
+      List<PostmanCollectionVariable>? variable,
+    )?
+    $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionUrl() when $default != null:
+        return $default(
+          _that.raw,
+          _that.protocol,
+          _that.host,
+          _that.path,
+          _that.port,
+          _that.query,
+          _that.hash,
+          _that.variable,
+        );
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+      String? raw,
+      String? protocol,
+      Object? host,
+      Object? path,
+      String? port,
+      List<PostmanCollectionQueryParam>? query,
+      String? hash,
+      List<PostmanCollectionVariable>? variable,
+    )
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionUrl():
+        return $default(
+          _that.raw,
+          _that.protocol,
+          _that.host,
+          _that.path,
+          _that.port,
+          _that.query,
+          _that.hash,
+          _that.variable,
+        );
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+      String? raw,
+      String? protocol,
+      Object? host,
+      Object? path,
+      String? port,
+      List<PostmanCollectionQueryParam>? query,
+      String? hash,
+      List<PostmanCollectionVariable>? variable,
+    )?
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionUrl() when $default != null:
+        return $default(
+          _that.raw,
+          _that.protocol,
+          _that.host,
+          _that.path,
+          _that.port,
+          _that.query,
+          _that.hash,
+          _that.variable,
+        );
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PostmanCollectionUrlImpl extends _PostmanCollectionUrl {
-  const _$PostmanCollectionUrlImpl(
-      {this.raw,
-      this.protocol,
-      this.host,
-      this.path,
-      this.port,
-      final List<PostmanCollectionQueryParam>? query,
-      this.hash,
-      final List<PostmanCollectionVariable>? variable})
-      : _query = query,
-        _variable = variable,
-        super._();
-
-  factory _$PostmanCollectionUrlImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PostmanCollectionUrlImplFromJson(json);
+class _PostmanCollectionUrl extends PostmanCollectionUrl {
+  const _PostmanCollectionUrl({
+    this.raw,
+    this.protocol,
+    this.host,
+    this.path,
+    this.port,
+    List<PostmanCollectionQueryParam>? query,
+    this.hash,
+    List<PostmanCollectionVariable>? variable,
+  }) : _query = query,
+       _variable = variable,
+       super._();
+  factory _PostmanCollectionUrl.fromJson(Map<String, dynamic> json) =>
+      _$PostmanCollectionUrlFromJson(json);
 
   @override
   final String? raw;
@@ -4351,30 +5214,42 @@ class _$PostmanCollectionUrlImpl extends _PostmanCollectionUrl {
     return EqualUnmodifiableListView(value);
   }
 
+  /// Create a copy of PostmanCollectionUrl
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'PostmanCollectionUrl(raw: $raw, protocol: $protocol, host: $host, path: $path, port: $port, query: $query, hash: $hash, variable: $variable)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PostmanCollectionUrlCopyWith<_PostmanCollectionUrl> get copyWith =>
+      __$PostmanCollectionUrlCopyWithImpl<_PostmanCollectionUrl>(
+        this,
+        _$identity,
+      );
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$PostmanCollectionUrlToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PostmanCollectionUrlImpl &&
+            other is _PostmanCollectionUrl &&
             (identical(other.raw, raw) || other.raw == raw) &&
             (identical(other.protocol, protocol) ||
                 other.protocol == protocol) &&
             const DeepCollectionEquality().equals(other.host, host) &&
             const DeepCollectionEquality().equals(other.path, path) &&
             (identical(other.port, port) || other.port == port) &&
-            const DeepCollectionEquality().equals(other._query, _query) &&
+            const DeepCollectionEquality().equals(other.query, _query) &&
             (identical(other.hash, hash) || other.hash == hash) &&
-            const DeepCollectionEquality().equals(other._variable, _variable));
+            const DeepCollectionEquality().equals(other.variable, _variable));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
+  int get hashCode {
+    return Object.hash(
       runtimeType,
       raw,
       protocol,
@@ -4383,285 +5258,165 @@ class _$PostmanCollectionUrlImpl extends _PostmanCollectionUrl {
       port,
       const DeepCollectionEquality().hash(_query),
       hash,
-      const DeepCollectionEquality().hash(_variable));
+      const DeepCollectionEquality().hash(_variable),
+    );
+  }
+
+  @override
+  String toString() {
+    return 'PostmanCollectionUrl(raw: $raw, protocol: $protocol, host: $host, path: $path, port: $port, query: $query, hash: $hash, variable: $variable)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$PostmanCollectionUrlCopyWith<$Res>
+    implements $PostmanCollectionUrlCopyWith<$Res> {
+  factory _$PostmanCollectionUrlCopyWith(
+    _PostmanCollectionUrl value,
+    $Res Function(_PostmanCollectionUrl) _then,
+  ) = __$PostmanCollectionUrlCopyWithImpl;
+  @override
+  @useResult
+  $Res call({
+    String? raw,
+    String? protocol,
+    Object? host,
+    Object? path,
+    String? port,
+    List<PostmanCollectionQueryParam>? query,
+    String? hash,
+    List<PostmanCollectionVariable>? variable,
+  });
+}
+
+/// @nodoc
+class __$PostmanCollectionUrlCopyWithImpl<$Res>
+    implements _$PostmanCollectionUrlCopyWith<$Res> {
+  __$PostmanCollectionUrlCopyWithImpl(this._self, this._then);
+
+  final _PostmanCollectionUrl _self;
+  final $Res Function(_PostmanCollectionUrl) _then;
 
   /// Create a copy of PostmanCollectionUrl
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$PostmanCollectionUrlImplCopyWith<_$PostmanCollectionUrlImpl>
-      get copyWith =>
-          __$$PostmanCollectionUrlImplCopyWithImpl<_$PostmanCollectionUrlImpl>(
-              this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            String? raw,
-            String? protocol,
-            Object? host,
-            Object? path,
-            String? port,
-            List<PostmanCollectionQueryParam>? query,
-            String? hash,
-            List<PostmanCollectionVariable>? variable)
-        $default,
-  ) {
-    return $default(raw, protocol, host, path, port, query, hash, variable);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            String? raw,
-            String? protocol,
-            Object? host,
-            Object? path,
-            String? port,
-            List<PostmanCollectionQueryParam>? query,
-            String? hash,
-            List<PostmanCollectionVariable>? variable)?
-        $default,
-  ) {
-    return $default?.call(
-        raw, protocol, host, path, port, query, hash, variable);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            String? raw,
-            String? protocol,
-            Object? host,
-            Object? path,
-            String? port,
-            List<PostmanCollectionQueryParam>? query,
-            String? hash,
-            List<PostmanCollectionVariable>? variable)?
-        $default, {
-    required TResult orElse(),
+  $Res call({
+    Object? raw = freezed,
+    Object? protocol = freezed,
+    Object? host = freezed,
+    Object? path = freezed,
+    Object? port = freezed,
+    Object? query = freezed,
+    Object? hash = freezed,
+    Object? variable = freezed,
   }) {
-    if ($default != null) {
-      return $default(raw, protocol, host, path, port, query, hash, variable);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionUrl value) $default,
-  ) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionUrl value)? $default,
-  ) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionUrl value)? $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PostmanCollectionUrlImplToJson(
-      this,
+    return _then(
+      _PostmanCollectionUrl(
+        raw: freezed == raw
+            ? _self.raw
+            : raw // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        protocol: freezed == protocol
+            ? _self.protocol
+            : protocol // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        host: freezed == host ? _self.host : host,
+        path: freezed == path ? _self.path : path,
+        port: freezed == port
+            ? _self.port
+            : port // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        query: freezed == query
+            ? _self._query
+            : query // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionQueryParam>?,
+        hash: freezed == hash
+            ? _self.hash
+            : hash // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        variable: freezed == variable
+            ? _self._variable
+            : variable // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionVariable>?,
+      ),
     );
   }
 }
 
-abstract class _PostmanCollectionUrl extends PostmanCollectionUrl {
-  const factory _PostmanCollectionUrl(
-          {final String? raw,
-          final String? protocol,
-          final Object? host,
-          final Object? path,
-          final String? port,
-          final List<PostmanCollectionQueryParam>? query,
-          final String? hash,
-          final List<PostmanCollectionVariable>? variable}) =
-      _$PostmanCollectionUrlImpl;
-  const _PostmanCollectionUrl._() : super._();
-
-  factory _PostmanCollectionUrl.fromJson(Map<String, dynamic> json) =
-      _$PostmanCollectionUrlImpl.fromJson;
-
-  @override
-  String? get raw;
-  @override
-  String? get protocol;
-  @override
-  Object? get host;
-  @override
-  Object? get path;
-  @override
-  String? get port;
-  @override
-  List<PostmanCollectionQueryParam>? get query;
-  @override
-  String? get hash;
-  @override
-  List<PostmanCollectionVariable>? get variable;
-
-  /// Create a copy of PostmanCollectionUrl
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PostmanCollectionUrlImplCopyWith<_$PostmanCollectionUrlImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-PostmanCollectionQueryParam _$PostmanCollectionQueryParamFromJson(
-    Map<String, dynamic> json) {
-  return _PostmanCollectionQueryParam.fromJson(json);
-}
-
 /// @nodoc
 mixin _$PostmanCollectionQueryParam {
-  String? get key => throw _privateConstructorUsedError;
-  String? get value => throw _privateConstructorUsedError;
-  bool? get disabled => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            String? key, String? value, bool? disabled, String? description)
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            String? key, String? value, bool? disabled, String? description)?
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            String? key, String? value, bool? disabled, String? description)?
-        $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionQueryParam value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionQueryParam value)? $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionQueryParam value)? $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this PostmanCollectionQueryParam to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String? get key;
+  String? get value;
+  bool? get disabled;
+  String? get description;
 
   /// Create a copy of PostmanCollectionQueryParam
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $PostmanCollectionQueryParamCopyWith<PostmanCollectionQueryParam>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $PostmanCollectionQueryParamCopyWith<$Res> {
-  factory $PostmanCollectionQueryParamCopyWith(
-          PostmanCollectionQueryParam value,
-          $Res Function(PostmanCollectionQueryParam) then) =
-      _$PostmanCollectionQueryParamCopyWithImpl<$Res,
-          PostmanCollectionQueryParam>;
-  @useResult
-  $Res call({String? key, String? value, bool? disabled, String? description});
-}
-
-/// @nodoc
-class _$PostmanCollectionQueryParamCopyWithImpl<$Res,
-        $Val extends PostmanCollectionQueryParam>
-    implements $PostmanCollectionQueryParamCopyWith<$Res> {
-  _$PostmanCollectionQueryParamCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of PostmanCollectionQueryParam
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $PostmanCollectionQueryParamCopyWith<PostmanCollectionQueryParam>
+  get copyWith =>
+      _$PostmanCollectionQueryParamCopyWithImpl<PostmanCollectionQueryParam>(
+        this as PostmanCollectionQueryParam,
+        _$identity,
+      );
+
+  /// Serializes this PostmanCollectionQueryParam to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? key = freezed,
-    Object? value = freezed,
-    Object? disabled = freezed,
-    Object? description = freezed,
-  }) {
-    return _then(_value.copyWith(
-      key: freezed == key
-          ? _value.key
-          : key // ignore: cast_nullable_to_non_nullable
-              as String?,
-      value: freezed == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String?,
-      disabled: freezed == disabled
-          ? _value.disabled
-          : disabled // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    final _this = this as PostmanCollectionQueryParam;
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PostmanCollectionQueryParam &&
+            (identical(other.key, _this.key) || other.key == _this.key) &&
+            (identical(other.value, _this.value) ||
+                other.value == _this.value) &&
+            (identical(other.disabled, _this.disabled) ||
+                other.disabled == _this.disabled) &&
+            (identical(other.description, _this.description) ||
+                other.description == _this.description));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode {
+    final _this = this as PostmanCollectionQueryParam;
+    return Object.hash(
+      runtimeType,
+      _this.key,
+      _this.value,
+      _this.disabled,
+      _this.description,
+    );
+  }
+
+  @override
+  String toString() {
+    final _this = this as PostmanCollectionQueryParam;
+    return 'PostmanCollectionQueryParam(key: ${_this.key}, value: ${_this.value}, disabled: ${_this.disabled}, description: ${_this.description})';
   }
 }
 
 /// @nodoc
-abstract class _$$PostmanCollectionQueryParamImplCopyWith<$Res>
-    implements $PostmanCollectionQueryParamCopyWith<$Res> {
-  factory _$$PostmanCollectionQueryParamImplCopyWith(
-          _$PostmanCollectionQueryParamImpl value,
-          $Res Function(_$PostmanCollectionQueryParamImpl) then) =
-      __$$PostmanCollectionQueryParamImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $PostmanCollectionQueryParamCopyWith<$Res> {
+  factory $PostmanCollectionQueryParamCopyWith(
+    PostmanCollectionQueryParam value,
+    $Res Function(PostmanCollectionQueryParam) _then,
+  ) = _$PostmanCollectionQueryParamCopyWithImpl;
   @useResult
   $Res call({String? key, String? value, bool? disabled, String? description});
 }
 
 /// @nodoc
-class __$$PostmanCollectionQueryParamImplCopyWithImpl<$Res>
-    extends _$PostmanCollectionQueryParamCopyWithImpl<$Res,
-        _$PostmanCollectionQueryParamImpl>
-    implements _$$PostmanCollectionQueryParamImplCopyWith<$Res> {
-  __$$PostmanCollectionQueryParamImplCopyWithImpl(
-      _$PostmanCollectionQueryParamImpl _value,
-      $Res Function(_$PostmanCollectionQueryParamImpl) _then)
-      : super(_value, _then);
+class _$PostmanCollectionQueryParamCopyWithImpl<$Res>
+    implements $PostmanCollectionQueryParamCopyWith<$Res> {
+  _$PostmanCollectionQueryParamCopyWithImpl(this._self, this._then);
+
+  final PostmanCollectionQueryParam _self;
+  final $Res Function(PostmanCollectionQueryParam) _then;
 
   /// Create a copy of PostmanCollectionQueryParam
   /// with the given fields replaced by the non-null parameter values.
@@ -4673,37 +5428,230 @@ class __$$PostmanCollectionQueryParamImplCopyWithImpl<$Res>
     Object? disabled = freezed,
     Object? description = freezed,
   }) {
-    return _then(_$PostmanCollectionQueryParamImpl(
-      key: freezed == key
-          ? _value.key
-          : key // ignore: cast_nullable_to_non_nullable
-              as String?,
-      value: freezed == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String?,
-      disabled: freezed == disabled
-          ? _value.disabled
-          : disabled // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      PostmanCollectionQueryParam(
+        key: freezed == key
+            ? _self.key
+            : key // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        value: freezed == value
+            ? _self.value
+            : value // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        disabled: freezed == disabled
+            ? _self.disabled
+            : disabled // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        description: freezed == description
+            ? _self.description
+            : description // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
+  }
+}
+
+/// Adds pattern-matching-related methods to [PostmanCollectionQueryParam].
+extension PostmanCollectionQueryParamPatterns on PostmanCollectionQueryParam {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PostmanCollectionQueryParam value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionQueryParam() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_PostmanCollectionQueryParam value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionQueryParam():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_PostmanCollectionQueryParam value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionQueryParam() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+      String? key,
+      String? value,
+      bool? disabled,
+      String? description,
+    )?
+    $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionQueryParam() when $default != null:
+        return $default(
+          _that.key,
+          _that.value,
+          _that.disabled,
+          _that.description,
+        );
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+      String? key,
+      String? value,
+      bool? disabled,
+      String? description,
+    )
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionQueryParam():
+        return $default(
+          _that.key,
+          _that.value,
+          _that.disabled,
+          _that.description,
+        );
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+      String? key,
+      String? value,
+      bool? disabled,
+      String? description,
+    )?
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionQueryParam() when $default != null:
+        return $default(
+          _that.key,
+          _that.value,
+          _that.disabled,
+          _that.description,
+        );
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PostmanCollectionQueryParamImpl extends _PostmanCollectionQueryParam {
-  const _$PostmanCollectionQueryParamImpl(
-      {this.key, this.value, this.disabled, this.description})
-      : super._();
-
-  factory _$PostmanCollectionQueryParamImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$PostmanCollectionQueryParamImplFromJson(json);
+class _PostmanCollectionQueryParam extends PostmanCollectionQueryParam {
+  const _PostmanCollectionQueryParam({
+    this.key,
+    this.value,
+    this.disabled,
+    this.description,
+  }) : super._();
+  factory _PostmanCollectionQueryParam.fromJson(Map<String, dynamic> json) =>
+      _$PostmanCollectionQueryParamFromJson(json);
 
   @override
   final String? key;
@@ -4714,16 +5662,28 @@ class _$PostmanCollectionQueryParamImpl extends _PostmanCollectionQueryParam {
   @override
   final String? description;
 
+  /// Create a copy of PostmanCollectionQueryParam
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'PostmanCollectionQueryParam(key: $key, value: $value, disabled: $disabled, description: $description)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PostmanCollectionQueryParamCopyWith<_PostmanCollectionQueryParam>
+  get copyWith =>
+      __$PostmanCollectionQueryParamCopyWithImpl<_PostmanCollectionQueryParam>(
+        this,
+        _$identity,
+      );
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$PostmanCollectionQueryParamToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PostmanCollectionQueryParamImpl &&
+            other is _PostmanCollectionQueryParam &&
             (identical(other.key, key) || other.key == key) &&
             (identical(other.value, value) || other.value == value) &&
             (identical(other.disabled, disabled) ||
@@ -4734,307 +5694,162 @@ class _$PostmanCollectionQueryParamImpl extends _PostmanCollectionQueryParam {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, key, value, disabled, description);
+  int get hashCode {
+    return Object.hash(runtimeType, key, value, disabled, description);
+  }
+
+  @override
+  String toString() {
+    return 'PostmanCollectionQueryParam(key: $key, value: $value, disabled: $disabled, description: $description)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$PostmanCollectionQueryParamCopyWith<$Res>
+    implements $PostmanCollectionQueryParamCopyWith<$Res> {
+  factory _$PostmanCollectionQueryParamCopyWith(
+    _PostmanCollectionQueryParam value,
+    $Res Function(_PostmanCollectionQueryParam) _then,
+  ) = __$PostmanCollectionQueryParamCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String? key, String? value, bool? disabled, String? description});
+}
+
+/// @nodoc
+class __$PostmanCollectionQueryParamCopyWithImpl<$Res>
+    implements _$PostmanCollectionQueryParamCopyWith<$Res> {
+  __$PostmanCollectionQueryParamCopyWithImpl(this._self, this._then);
+
+  final _PostmanCollectionQueryParam _self;
+  final $Res Function(_PostmanCollectionQueryParam) _then;
 
   /// Create a copy of PostmanCollectionQueryParam
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$PostmanCollectionQueryParamImplCopyWith<_$PostmanCollectionQueryParamImpl>
-      get copyWith => __$$PostmanCollectionQueryParamImplCopyWithImpl<
-          _$PostmanCollectionQueryParamImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            String? key, String? value, bool? disabled, String? description)
-        $default,
-  ) {
-    return $default(key, value, disabled, description);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            String? key, String? value, bool? disabled, String? description)?
-        $default,
-  ) {
-    return $default?.call(key, value, disabled, description);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            String? key, String? value, bool? disabled, String? description)?
-        $default, {
-    required TResult orElse(),
+  $Res call({
+    Object? key = freezed,
+    Object? value = freezed,
+    Object? disabled = freezed,
+    Object? description = freezed,
   }) {
-    if ($default != null) {
-      return $default(key, value, disabled, description);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionQueryParam value) $default,
-  ) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionQueryParam value)? $default,
-  ) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionQueryParam value)? $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PostmanCollectionQueryParamImplToJson(
-      this,
+    return _then(
+      _PostmanCollectionQueryParam(
+        key: freezed == key
+            ? _self.key
+            : key // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        value: freezed == value
+            ? _self.value
+            : value // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        disabled: freezed == disabled
+            ? _self.disabled
+            : disabled // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        description: freezed == description
+            ? _self.description
+            : description // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
     );
   }
 }
 
-abstract class _PostmanCollectionQueryParam
-    extends PostmanCollectionQueryParam {
-  const factory _PostmanCollectionQueryParam(
-      {final String? key,
-      final String? value,
-      final bool? disabled,
-      final String? description}) = _$PostmanCollectionQueryParamImpl;
-  const _PostmanCollectionQueryParam._() : super._();
-
-  factory _PostmanCollectionQueryParam.fromJson(Map<String, dynamic> json) =
-      _$PostmanCollectionQueryParamImpl.fromJson;
-
-  @override
-  String? get key;
-  @override
-  String? get value;
-  @override
-  bool? get disabled;
-  @override
-  String? get description;
-
-  /// Create a copy of PostmanCollectionQueryParam
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PostmanCollectionQueryParamImplCopyWith<_$PostmanCollectionQueryParamImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-PostmanCollectionVariable _$PostmanCollectionVariableFromJson(
-    Map<String, dynamic> json) {
-  return _PostmanCollectionVariable.fromJson(json);
-}
-
 /// @nodoc
 mixin _$PostmanCollectionVariable {
-  String? get id => throw _privateConstructorUsedError;
-  String? get key => throw _privateConstructorUsedError;
-  Object? get value => throw _privateConstructorUsedError;
-  PostmanCollectionVariableType? get type => throw _privateConstructorUsedError;
-  String? get name => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
-  bool? get system => throw _privateConstructorUsedError;
-  bool? get disabled => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            String? id,
-            String? key,
-            Object? value,
-            PostmanCollectionVariableType? type,
-            String? name,
-            String? description,
-            bool? system,
-            bool? disabled)
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            String? id,
-            String? key,
-            Object? value,
-            PostmanCollectionVariableType? type,
-            String? name,
-            String? description,
-            bool? system,
-            bool? disabled)?
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            String? id,
-            String? key,
-            Object? value,
-            PostmanCollectionVariableType? type,
-            String? name,
-            String? description,
-            bool? system,
-            bool? disabled)?
-        $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionVariable value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionVariable value)? $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionVariable value)? $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this PostmanCollectionVariable to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String? get id;
+  String? get key;
+  Object? get value;
+  PostmanCollectionVariableType? get type;
+  String? get name;
+  String? get description;
+  bool? get system;
+  bool? get disabled;
 
   /// Create a copy of PostmanCollectionVariable
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $PostmanCollectionVariableCopyWith<PostmanCollectionVariable> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $PostmanCollectionVariableCopyWith<$Res> {
-  factory $PostmanCollectionVariableCopyWith(PostmanCollectionVariable value,
-          $Res Function(PostmanCollectionVariable) then) =
-      _$PostmanCollectionVariableCopyWithImpl<$Res, PostmanCollectionVariable>;
-  @useResult
-  $Res call(
-      {String? id,
-      String? key,
-      Object? value,
-      PostmanCollectionVariableType? type,
-      String? name,
-      String? description,
-      bool? system,
-      bool? disabled});
-}
-
-/// @nodoc
-class _$PostmanCollectionVariableCopyWithImpl<$Res,
-        $Val extends PostmanCollectionVariable>
-    implements $PostmanCollectionVariableCopyWith<$Res> {
-  _$PostmanCollectionVariableCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of PostmanCollectionVariable
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $PostmanCollectionVariableCopyWith<PostmanCollectionVariable> get copyWith =>
+      _$PostmanCollectionVariableCopyWithImpl<PostmanCollectionVariable>(
+        this as PostmanCollectionVariable,
+        _$identity,
+      );
+
+  /// Serializes this PostmanCollectionVariable to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? id = freezed,
-    Object? key = freezed,
-    Object? value = freezed,
-    Object? type = freezed,
-    Object? name = freezed,
-    Object? description = freezed,
-    Object? system = freezed,
-    Object? disabled = freezed,
-  }) {
-    return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      key: freezed == key
-          ? _value.key
-          : key // ignore: cast_nullable_to_non_nullable
-              as String?,
-      value: freezed == value ? _value.value : value,
-      type: freezed == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as PostmanCollectionVariableType?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      system: freezed == system
-          ? _value.system
-          : system // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      disabled: freezed == disabled
-          ? _value.disabled
-          : disabled // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    final _this = this as PostmanCollectionVariable;
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PostmanCollectionVariable &&
+            (identical(other.id, _this.id) || other.id == _this.id) &&
+            (identical(other.key, _this.key) || other.key == _this.key) &&
+            const DeepCollectionEquality().equals(other.value, _this.value) &&
+            (identical(other.type, _this.type) || other.type == _this.type) &&
+            (identical(other.name, _this.name) || other.name == _this.name) &&
+            (identical(other.description, _this.description) ||
+                other.description == _this.description) &&
+            (identical(other.system, _this.system) ||
+                other.system == _this.system) &&
+            (identical(other.disabled, _this.disabled) ||
+                other.disabled == _this.disabled));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode {
+    final _this = this as PostmanCollectionVariable;
+    return Object.hash(
+      runtimeType,
+      _this.id,
+      _this.key,
+      const DeepCollectionEquality().hash(_this.value),
+      _this.type,
+      _this.name,
+      _this.description,
+      _this.system,
+      _this.disabled,
+    );
+  }
+
+  @override
+  String toString() {
+    final _this = this as PostmanCollectionVariable;
+    return 'PostmanCollectionVariable(id: ${_this.id}, key: ${_this.key}, value: ${_this.value}, type: ${_this.type}, name: ${_this.name}, description: ${_this.description}, system: ${_this.system}, disabled: ${_this.disabled})';
   }
 }
 
 /// @nodoc
-abstract class _$$PostmanCollectionVariableImplCopyWith<$Res>
-    implements $PostmanCollectionVariableCopyWith<$Res> {
-  factory _$$PostmanCollectionVariableImplCopyWith(
-          _$PostmanCollectionVariableImpl value,
-          $Res Function(_$PostmanCollectionVariableImpl) then) =
-      __$$PostmanCollectionVariableImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $PostmanCollectionVariableCopyWith<$Res> {
+  factory $PostmanCollectionVariableCopyWith(
+    PostmanCollectionVariable value,
+    $Res Function(PostmanCollectionVariable) _then,
+  ) = _$PostmanCollectionVariableCopyWithImpl;
   @useResult
-  $Res call(
-      {String? id,
-      String? key,
-      Object? value,
-      PostmanCollectionVariableType? type,
-      String? name,
-      String? description,
-      bool? system,
-      bool? disabled});
+  $Res call({
+    String? id,
+    String? key,
+    Object? value,
+    PostmanCollectionVariableType? type,
+    String? name,
+    String? description,
+    bool? system,
+    bool? disabled,
+  });
 }
 
 /// @nodoc
-class __$$PostmanCollectionVariableImplCopyWithImpl<$Res>
-    extends _$PostmanCollectionVariableCopyWithImpl<$Res,
-        _$PostmanCollectionVariableImpl>
-    implements _$$PostmanCollectionVariableImplCopyWith<$Res> {
-  __$$PostmanCollectionVariableImplCopyWithImpl(
-      _$PostmanCollectionVariableImpl _value,
-      $Res Function(_$PostmanCollectionVariableImpl) _then)
-      : super(_value, _then);
+class _$PostmanCollectionVariableCopyWithImpl<$Res>
+    implements $PostmanCollectionVariableCopyWith<$Res> {
+  _$PostmanCollectionVariableCopyWithImpl(this._self, this._then);
+
+  final PostmanCollectionVariable _self;
+  final $Res Function(PostmanCollectionVariable) _then;
 
   /// Create a copy of PostmanCollectionVariable
   /// with the given fields replaced by the non-null parameter values.
@@ -5050,56 +5865,271 @@ class __$$PostmanCollectionVariableImplCopyWithImpl<$Res>
     Object? system = freezed,
     Object? disabled = freezed,
   }) {
-    return _then(_$PostmanCollectionVariableImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      key: freezed == key
-          ? _value.key
-          : key // ignore: cast_nullable_to_non_nullable
-              as String?,
-      value: freezed == value ? _value.value : value,
-      type: freezed == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as PostmanCollectionVariableType?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      system: freezed == system
-          ? _value.system
-          : system // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      disabled: freezed == disabled
-          ? _value.disabled
-          : disabled // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ));
+    return _then(
+      PostmanCollectionVariable(
+        id: freezed == id
+            ? _self.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        key: freezed == key
+            ? _self.key
+            : key // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        value: freezed == value ? _self.value : value,
+        type: freezed == type
+            ? _self.type
+            : type // ignore: cast_nullable_to_non_nullable
+                  as PostmanCollectionVariableType?,
+        name: freezed == name
+            ? _self.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        description: freezed == description
+            ? _self.description
+            : description // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        system: freezed == system
+            ? _self.system
+            : system // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        disabled: freezed == disabled
+            ? _self.disabled
+            : disabled // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+      ),
+    );
+  }
+}
+
+/// Adds pattern-matching-related methods to [PostmanCollectionVariable].
+extension PostmanCollectionVariablePatterns on PostmanCollectionVariable {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PostmanCollectionVariable value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionVariable() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_PostmanCollectionVariable value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionVariable():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_PostmanCollectionVariable value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionVariable() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+      String? id,
+      String? key,
+      Object? value,
+      PostmanCollectionVariableType? type,
+      String? name,
+      String? description,
+      bool? system,
+      bool? disabled,
+    )?
+    $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionVariable() when $default != null:
+        return $default(
+          _that.id,
+          _that.key,
+          _that.value,
+          _that.type,
+          _that.name,
+          _that.description,
+          _that.system,
+          _that.disabled,
+        );
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+      String? id,
+      String? key,
+      Object? value,
+      PostmanCollectionVariableType? type,
+      String? name,
+      String? description,
+      bool? system,
+      bool? disabled,
+    )
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionVariable():
+        return $default(
+          _that.id,
+          _that.key,
+          _that.value,
+          _that.type,
+          _that.name,
+          _that.description,
+          _that.system,
+          _that.disabled,
+        );
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+      String? id,
+      String? key,
+      Object? value,
+      PostmanCollectionVariableType? type,
+      String? name,
+      String? description,
+      bool? system,
+      bool? disabled,
+    )?
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionVariable() when $default != null:
+        return $default(
+          _that.id,
+          _that.key,
+          _that.value,
+          _that.type,
+          _that.name,
+          _that.description,
+          _that.system,
+          _that.disabled,
+        );
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PostmanCollectionVariableImpl extends _PostmanCollectionVariable {
-  const _$PostmanCollectionVariableImpl(
-      {this.id,
-      this.key,
-      this.value,
-      this.type,
-      this.name,
-      this.description,
-      this.system,
-      this.disabled})
-      : super._();
-
-  factory _$PostmanCollectionVariableImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PostmanCollectionVariableImplFromJson(json);
+class _PostmanCollectionVariable extends PostmanCollectionVariable {
+  const _PostmanCollectionVariable({
+    this.id,
+    this.key,
+    this.value,
+    this.type,
+    this.name,
+    this.description,
+    this.system,
+    this.disabled,
+  }) : super._();
+  factory _PostmanCollectionVariable.fromJson(Map<String, dynamic> json) =>
+      _$PostmanCollectionVariableFromJson(json);
 
   @override
   final String? id;
@@ -5118,16 +6148,28 @@ class _$PostmanCollectionVariableImpl extends _PostmanCollectionVariable {
   @override
   final bool? disabled;
 
+  /// Create a copy of PostmanCollectionVariable
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'PostmanCollectionVariable(id: $id, key: $key, value: $value, type: $type, name: $name, description: $description, system: $system, disabled: $disabled)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PostmanCollectionVariableCopyWith<_PostmanCollectionVariable>
+  get copyWith =>
+      __$PostmanCollectionVariableCopyWithImpl<_PostmanCollectionVariable>(
+        this,
+        _$identity,
+      );
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$PostmanCollectionVariableToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PostmanCollectionVariableImpl &&
+            other is _PostmanCollectionVariable &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.key, key) || other.key == key) &&
             const DeepCollectionEquality().equals(other.value, value) &&
@@ -5142,7 +6184,8 @@ class _$PostmanCollectionVariableImpl extends _PostmanCollectionVariable {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
+  int get hashCode {
+    return Object.hash(
       runtimeType,
       id,
       key,
@@ -5151,235 +6194,174 @@ class _$PostmanCollectionVariableImpl extends _PostmanCollectionVariable {
       name,
       description,
       system,
-      disabled);
+      disabled,
+    );
+  }
+
+  @override
+  String toString() {
+    return 'PostmanCollectionVariable(id: $id, key: $key, value: $value, type: $type, name: $name, description: $description, system: $system, disabled: $disabled)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$PostmanCollectionVariableCopyWith<$Res>
+    implements $PostmanCollectionVariableCopyWith<$Res> {
+  factory _$PostmanCollectionVariableCopyWith(
+    _PostmanCollectionVariable value,
+    $Res Function(_PostmanCollectionVariable) _then,
+  ) = __$PostmanCollectionVariableCopyWithImpl;
+  @override
+  @useResult
+  $Res call({
+    String? id,
+    String? key,
+    Object? value,
+    PostmanCollectionVariableType? type,
+    String? name,
+    String? description,
+    bool? system,
+    bool? disabled,
+  });
+}
+
+/// @nodoc
+class __$PostmanCollectionVariableCopyWithImpl<$Res>
+    implements _$PostmanCollectionVariableCopyWith<$Res> {
+  __$PostmanCollectionVariableCopyWithImpl(this._self, this._then);
+
+  final _PostmanCollectionVariable _self;
+  final $Res Function(_PostmanCollectionVariable) _then;
 
   /// Create a copy of PostmanCollectionVariable
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$PostmanCollectionVariableImplCopyWith<_$PostmanCollectionVariableImpl>
-      get copyWith => __$$PostmanCollectionVariableImplCopyWithImpl<
-          _$PostmanCollectionVariableImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            String? id,
-            String? key,
-            Object? value,
-            PostmanCollectionVariableType? type,
-            String? name,
-            String? description,
-            bool? system,
-            bool? disabled)
-        $default,
-  ) {
-    return $default(id, key, value, type, name, description, system, disabled);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            String? id,
-            String? key,
-            Object? value,
-            PostmanCollectionVariableType? type,
-            String? name,
-            String? description,
-            bool? system,
-            bool? disabled)?
-        $default,
-  ) {
-    return $default?.call(
-        id, key, value, type, name, description, system, disabled);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            String? id,
-            String? key,
-            Object? value,
-            PostmanCollectionVariableType? type,
-            String? name,
-            String? description,
-            bool? system,
-            bool? disabled)?
-        $default, {
-    required TResult orElse(),
+  $Res call({
+    Object? id = freezed,
+    Object? key = freezed,
+    Object? value = freezed,
+    Object? type = freezed,
+    Object? name = freezed,
+    Object? description = freezed,
+    Object? system = freezed,
+    Object? disabled = freezed,
   }) {
-    if ($default != null) {
-      return $default(
-          id, key, value, type, name, description, system, disabled);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionVariable value) $default,
-  ) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionVariable value)? $default,
-  ) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionVariable value)? $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PostmanCollectionVariableImplToJson(
-      this,
+    return _then(
+      _PostmanCollectionVariable(
+        id: freezed == id
+            ? _self.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        key: freezed == key
+            ? _self.key
+            : key // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        value: freezed == value ? _self.value : value,
+        type: freezed == type
+            ? _self.type
+            : type // ignore: cast_nullable_to_non_nullable
+                  as PostmanCollectionVariableType?,
+        name: freezed == name
+            ? _self.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        description: freezed == description
+            ? _self.description
+            : description // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        system: freezed == system
+            ? _self.system
+            : system // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        disabled: freezed == disabled
+            ? _self.disabled
+            : disabled // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+      ),
     );
   }
 }
 
-abstract class _PostmanCollectionVariable extends PostmanCollectionVariable {
-  const factory _PostmanCollectionVariable(
-      {final String? id,
-      final String? key,
-      final Object? value,
-      final PostmanCollectionVariableType? type,
-      final String? name,
-      final String? description,
-      final bool? system,
-      final bool? disabled}) = _$PostmanCollectionVariableImpl;
-  const _PostmanCollectionVariable._() : super._();
-
-  factory _PostmanCollectionVariable.fromJson(Map<String, dynamic> json) =
-      _$PostmanCollectionVariableImpl.fromJson;
-
-  @override
-  String? get id;
-  @override
-  String? get key;
-  @override
-  Object? get value;
-  @override
-  PostmanCollectionVariableType? get type;
-  @override
-  String? get name;
-  @override
-  String? get description;
-  @override
-  bool? get system;
-  @override
-  bool? get disabled;
-
-  /// Create a copy of PostmanCollectionVariable
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PostmanCollectionVariableImplCopyWith<_$PostmanCollectionVariableImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-PostmanCollectionEvent _$PostmanCollectionEventFromJson(
-    Map<String, dynamic> json) {
-  return _PostmanCollectionEvent.fromJson(json);
-}
-
 /// @nodoc
 mixin _$PostmanCollectionEvent {
-  String? get id => throw _privateConstructorUsedError;
-  String get listen => throw _privateConstructorUsedError;
-  PostmanCollectionScript? get script => throw _privateConstructorUsedError;
-  bool? get disabled => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(String? id, String listen, PostmanCollectionScript? script,
-            bool? disabled)
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String? id, String listen,
-            PostmanCollectionScript? script, bool? disabled)?
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String? id, String listen, PostmanCollectionScript? script,
-            bool? disabled)?
-        $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionEvent value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionEvent value)? $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionEvent value)? $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this PostmanCollectionEvent to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String? get id;
+  String get listen;
+  PostmanCollectionScript? get script;
+  bool? get disabled;
 
   /// Create a copy of PostmanCollectionEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $PostmanCollectionEventCopyWith<PostmanCollectionEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$PostmanCollectionEventCopyWithImpl<PostmanCollectionEvent>(
+        this as PostmanCollectionEvent,
+        _$identity,
+      );
+
+  /// Serializes this PostmanCollectionEvent to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    final _this = this as PostmanCollectionEvent;
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PostmanCollectionEvent &&
+            (identical(other.id, _this.id) || other.id == _this.id) &&
+            (identical(other.listen, _this.listen) ||
+                other.listen == _this.listen) &&
+            (identical(other.script, _this.script) ||
+                other.script == _this.script) &&
+            (identical(other.disabled, _this.disabled) ||
+                other.disabled == _this.disabled));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode {
+    final _this = this as PostmanCollectionEvent;
+    return Object.hash(
+      runtimeType,
+      _this.id,
+      _this.listen,
+      _this.script,
+      _this.disabled,
+    );
+  }
+
+  @override
+  String toString() {
+    final _this = this as PostmanCollectionEvent;
+    return 'PostmanCollectionEvent(id: ${_this.id}, listen: ${_this.listen}, script: ${_this.script}, disabled: ${_this.disabled})';
+  }
 }
 
 /// @nodoc
-abstract class $PostmanCollectionEventCopyWith<$Res> {
-  factory $PostmanCollectionEventCopyWith(PostmanCollectionEvent value,
-          $Res Function(PostmanCollectionEvent) then) =
-      _$PostmanCollectionEventCopyWithImpl<$Res, PostmanCollectionEvent>;
+abstract mixin class $PostmanCollectionEventCopyWith<$Res> {
+  factory $PostmanCollectionEventCopyWith(
+    PostmanCollectionEvent value,
+    $Res Function(PostmanCollectionEvent) _then,
+  ) = _$PostmanCollectionEventCopyWithImpl;
   @useResult
-  $Res call(
-      {String? id,
-      String listen,
-      PostmanCollectionScript? script,
-      bool? disabled});
+  $Res call({
+    String? id,
+    String listen,
+    PostmanCollectionScript? script,
+    bool? disabled,
+  });
 
   $PostmanCollectionScriptCopyWith<$Res>? get script;
 }
 
 /// @nodoc
-class _$PostmanCollectionEventCopyWithImpl<$Res,
-        $Val extends PostmanCollectionEvent>
+class _$PostmanCollectionEventCopyWithImpl<$Res>
     implements $PostmanCollectionEventCopyWith<$Res> {
-  _$PostmanCollectionEventCopyWithImpl(this._value, this._then);
+  _$PostmanCollectionEventCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final PostmanCollectionEvent _self;
+  final $Res Function(PostmanCollectionEvent) _then;
 
   /// Create a copy of PostmanCollectionEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -5391,24 +6373,26 @@ class _$PostmanCollectionEventCopyWithImpl<$Res,
     Object? script = freezed,
     Object? disabled = freezed,
   }) {
-    return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      listen: null == listen
-          ? _value.listen
-          : listen // ignore: cast_nullable_to_non_nullable
-              as String,
-      script: freezed == script
-          ? _value.script
-          : script // ignore: cast_nullable_to_non_nullable
-              as PostmanCollectionScript?,
-      disabled: freezed == disabled
-          ? _value.disabled
-          : disabled // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ) as $Val);
+    return _then(
+      PostmanCollectionEvent(
+        id: freezed == id
+            ? _self.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        listen: null == listen
+            ? _self.listen
+            : listen // ignore: cast_nullable_to_non_nullable
+                  as String,
+        script: freezed == script
+            ? _self.script
+            : script // ignore: cast_nullable_to_non_nullable
+                  as PostmanCollectionScript?,
+        disabled: freezed == disabled
+            ? _self.disabled
+            : disabled // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+      ),
+    );
   }
 
   /// Create a copy of PostmanCollectionEvent
@@ -5416,85 +6400,202 @@ class _$PostmanCollectionEventCopyWithImpl<$Res,
   @override
   @pragma('vm:prefer-inline')
   $PostmanCollectionScriptCopyWith<$Res>? get script {
-    if (_value.script == null) {
+    if (_self.script == null) {
       return null;
     }
 
-    return $PostmanCollectionScriptCopyWith<$Res>(_value.script!, (value) {
-      return _then(_value.copyWith(script: value) as $Val);
+    return $PostmanCollectionScriptCopyWith<$Res>(_self.script!, (value) {
+      return _then(_self.copyWith(script: value));
     });
   }
 }
 
-/// @nodoc
-abstract class _$$PostmanCollectionEventImplCopyWith<$Res>
-    implements $PostmanCollectionEventCopyWith<$Res> {
-  factory _$$PostmanCollectionEventImplCopyWith(
-          _$PostmanCollectionEventImpl value,
-          $Res Function(_$PostmanCollectionEventImpl) then) =
-      __$$PostmanCollectionEventImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String? id,
+/// Adds pattern-matching-related methods to [PostmanCollectionEvent].
+extension PostmanCollectionEventPatterns on PostmanCollectionEvent {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PostmanCollectionEvent value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionEvent() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_PostmanCollectionEvent value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionEvent():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_PostmanCollectionEvent value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionEvent() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+      String? id,
       String listen,
       PostmanCollectionScript? script,
-      bool? disabled});
-
-  @override
-  $PostmanCollectionScriptCopyWith<$Res>? get script;
-}
-
-/// @nodoc
-class __$$PostmanCollectionEventImplCopyWithImpl<$Res>
-    extends _$PostmanCollectionEventCopyWithImpl<$Res,
-        _$PostmanCollectionEventImpl>
-    implements _$$PostmanCollectionEventImplCopyWith<$Res> {
-  __$$PostmanCollectionEventImplCopyWithImpl(
-      _$PostmanCollectionEventImpl _value,
-      $Res Function(_$PostmanCollectionEventImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of PostmanCollectionEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = freezed,
-    Object? listen = null,
-    Object? script = freezed,
-    Object? disabled = freezed,
+      bool? disabled,
+    )?
+    $default, {
+    required TResult orElse(),
   }) {
-    return _then(_$PostmanCollectionEventImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      listen: null == listen
-          ? _value.listen
-          : listen // ignore: cast_nullable_to_non_nullable
-              as String,
-      script: freezed == script
-          ? _value.script
-          : script // ignore: cast_nullable_to_non_nullable
-              as PostmanCollectionScript?,
-      disabled: freezed == disabled
-          ? _value.disabled
-          : disabled // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ));
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionEvent() when $default != null:
+        return $default(_that.id, _that.listen, _that.script, _that.disabled);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+      String? id,
+      String listen,
+      PostmanCollectionScript? script,
+      bool? disabled,
+    )
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionEvent():
+        return $default(_that.id, _that.listen, _that.script, _that.disabled);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+      String? id,
+      String listen,
+      PostmanCollectionScript? script,
+      bool? disabled,
+    )?
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionEvent() when $default != null:
+        return $default(_that.id, _that.listen, _that.script, _that.disabled);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PostmanCollectionEventImpl extends _PostmanCollectionEvent {
-  const _$PostmanCollectionEventImpl(
-      {this.id, required this.listen, this.script, this.disabled})
-      : super._();
-
-  factory _$PostmanCollectionEventImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PostmanCollectionEventImplFromJson(json);
+class _PostmanCollectionEvent extends PostmanCollectionEvent {
+  const _PostmanCollectionEvent({
+    this.id,
+    required this.listen,
+    this.script,
+    this.disabled,
+  }) : super._();
+  factory _PostmanCollectionEvent.fromJson(Map<String, dynamic> json) =>
+      _$PostmanCollectionEventFromJson(json);
 
   @override
   final String? id;
@@ -5505,16 +6606,27 @@ class _$PostmanCollectionEventImpl extends _PostmanCollectionEvent {
   @override
   final bool? disabled;
 
+  /// Create a copy of PostmanCollectionEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'PostmanCollectionEvent(id: $id, listen: $listen, script: $script, disabled: $disabled)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PostmanCollectionEventCopyWith<_PostmanCollectionEvent> get copyWith =>
+      __$PostmanCollectionEventCopyWithImpl<_PostmanCollectionEvent>(
+        this,
+        _$identity,
+      );
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$PostmanCollectionEventToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PostmanCollectionEventImpl &&
+            other is _PostmanCollectionEvent &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.listen, listen) || other.listen == listen) &&
             (identical(other.script, script) || other.script == script) &&
@@ -5524,204 +6636,178 @@ class _$PostmanCollectionEventImpl extends _PostmanCollectionEvent {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, listen, script, disabled);
+  int get hashCode {
+    return Object.hash(runtimeType, id, listen, script, disabled);
+  }
+
+  @override
+  String toString() {
+    return 'PostmanCollectionEvent(id: $id, listen: $listen, script: $script, disabled: $disabled)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$PostmanCollectionEventCopyWith<$Res>
+    implements $PostmanCollectionEventCopyWith<$Res> {
+  factory _$PostmanCollectionEventCopyWith(
+    _PostmanCollectionEvent value,
+    $Res Function(_PostmanCollectionEvent) _then,
+  ) = __$PostmanCollectionEventCopyWithImpl;
+  @override
+  @useResult
+  $Res call({
+    String? id,
+    String listen,
+    PostmanCollectionScript? script,
+    bool? disabled,
+  });
+
+  @override
+  $PostmanCollectionScriptCopyWith<$Res>? get script;
+}
+
+/// @nodoc
+class __$PostmanCollectionEventCopyWithImpl<$Res>
+    implements _$PostmanCollectionEventCopyWith<$Res> {
+  __$PostmanCollectionEventCopyWithImpl(this._self, this._then);
+
+  final _PostmanCollectionEvent _self;
+  final $Res Function(_PostmanCollectionEvent) _then;
 
   /// Create a copy of PostmanCollectionEvent
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$PostmanCollectionEventImplCopyWith<_$PostmanCollectionEventImpl>
-      get copyWith => __$$PostmanCollectionEventImplCopyWithImpl<
-          _$PostmanCollectionEventImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(String? id, String listen, PostmanCollectionScript? script,
-            bool? disabled)
-        $default,
-  ) {
-    return $default(id, listen, script, disabled);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String? id, String listen,
-            PostmanCollectionScript? script, bool? disabled)?
-        $default,
-  ) {
-    return $default?.call(id, listen, script, disabled);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String? id, String listen, PostmanCollectionScript? script,
-            bool? disabled)?
-        $default, {
-    required TResult orElse(),
+  $Res call({
+    Object? id = freezed,
+    Object? listen = null,
+    Object? script = freezed,
+    Object? disabled = freezed,
   }) {
-    if ($default != null) {
-      return $default(id, listen, script, disabled);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionEvent value) $default,
-  ) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionEvent value)? $default,
-  ) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionEvent value)? $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PostmanCollectionEventImplToJson(
-      this,
+    return _then(
+      _PostmanCollectionEvent(
+        id: freezed == id
+            ? _self.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        listen: null == listen
+            ? _self.listen
+            : listen // ignore: cast_nullable_to_non_nullable
+                  as String,
+        script: freezed == script
+            ? _self.script
+            : script // ignore: cast_nullable_to_non_nullable
+                  as PostmanCollectionScript?,
+        disabled: freezed == disabled
+            ? _self.disabled
+            : disabled // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+      ),
     );
   }
-}
-
-abstract class _PostmanCollectionEvent extends PostmanCollectionEvent {
-  const factory _PostmanCollectionEvent(
-      {final String? id,
-      required final String listen,
-      final PostmanCollectionScript? script,
-      final bool? disabled}) = _$PostmanCollectionEventImpl;
-  const _PostmanCollectionEvent._() : super._();
-
-  factory _PostmanCollectionEvent.fromJson(Map<String, dynamic> json) =
-      _$PostmanCollectionEventImpl.fromJson;
-
-  @override
-  String? get id;
-  @override
-  String get listen;
-  @override
-  PostmanCollectionScript? get script;
-  @override
-  bool? get disabled;
 
   /// Create a copy of PostmanCollectionEvent
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PostmanCollectionEventImplCopyWith<_$PostmanCollectionEventImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
+  @pragma('vm:prefer-inline')
+  $PostmanCollectionScriptCopyWith<$Res>? get script {
+    if (_self.script == null) {
+      return null;
+    }
 
-PostmanCollectionScript _$PostmanCollectionScriptFromJson(
-    Map<String, dynamic> json) {
-  return _PostmanCollectionScript.fromJson(json);
+    return $PostmanCollectionScriptCopyWith<$Res>(_self.script!, (value) {
+      return _then(_self.copyWith(script: value));
+    });
+  }
 }
 
 /// @nodoc
 mixin _$PostmanCollectionScript {
-  String? get id => throw _privateConstructorUsedError;
-  Map<String, dynamic>? get packages => throw _privateConstructorUsedError;
-  String? get type => throw _privateConstructorUsedError;
-  Object? get exec => throw _privateConstructorUsedError;
-  PostmanCollectionUrl? get src => throw _privateConstructorUsedError;
-  String? get name => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(String? id, Map<String, dynamic>? packages, String? type,
-            Object? exec, PostmanCollectionUrl? src, String? name)
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String? id, Map<String, dynamic>? packages, String? type,
-            Object? exec, PostmanCollectionUrl? src, String? name)?
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String? id, Map<String, dynamic>? packages, String? type,
-            Object? exec, PostmanCollectionUrl? src, String? name)?
-        $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionScript value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionScript value)? $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionScript value)? $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this PostmanCollectionScript to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String? get id;
+  Map<String, dynamic>? get packages;
+  String? get type;
+  Object? get exec;
+  PostmanCollectionUrl? get src;
+  String? get name;
 
   /// Create a copy of PostmanCollectionScript
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $PostmanCollectionScriptCopyWith<PostmanCollectionScript> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$PostmanCollectionScriptCopyWithImpl<PostmanCollectionScript>(
+        this as PostmanCollectionScript,
+        _$identity,
+      );
+
+  /// Serializes this PostmanCollectionScript to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    final _this = this as PostmanCollectionScript;
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PostmanCollectionScript &&
+            (identical(other.id, _this.id) || other.id == _this.id) &&
+            const DeepCollectionEquality().equals(
+              other.packages,
+              _this.packages,
+            ) &&
+            (identical(other.type, _this.type) || other.type == _this.type) &&
+            const DeepCollectionEquality().equals(other.exec, _this.exec) &&
+            (identical(other.src, _this.src) || other.src == _this.src) &&
+            (identical(other.name, _this.name) || other.name == _this.name));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode {
+    final _this = this as PostmanCollectionScript;
+    return Object.hash(
+      runtimeType,
+      _this.id,
+      const DeepCollectionEquality().hash(_this.packages),
+      _this.type,
+      const DeepCollectionEquality().hash(_this.exec),
+      _this.src,
+      _this.name,
+    );
+  }
+
+  @override
+  String toString() {
+    final _this = this as PostmanCollectionScript;
+    return 'PostmanCollectionScript(id: ${_this.id}, packages: ${_this.packages}, type: ${_this.type}, exec: ${_this.exec}, src: ${_this.src}, name: ${_this.name})';
+  }
 }
 
 /// @nodoc
-abstract class $PostmanCollectionScriptCopyWith<$Res> {
-  factory $PostmanCollectionScriptCopyWith(PostmanCollectionScript value,
-          $Res Function(PostmanCollectionScript) then) =
-      _$PostmanCollectionScriptCopyWithImpl<$Res, PostmanCollectionScript>;
+abstract mixin class $PostmanCollectionScriptCopyWith<$Res> {
+  factory $PostmanCollectionScriptCopyWith(
+    PostmanCollectionScript value,
+    $Res Function(PostmanCollectionScript) _then,
+  ) = _$PostmanCollectionScriptCopyWithImpl;
   @useResult
-  $Res call(
-      {String? id,
-      Map<String, dynamic>? packages,
-      String? type,
-      Object? exec,
-      PostmanCollectionUrl? src,
-      String? name});
+  $Res call({
+    String? id,
+    Map<String, dynamic>? packages,
+    String? type,
+    Object? exec,
+    PostmanCollectionUrl? src,
+    String? name,
+  });
 
   $PostmanCollectionUrlCopyWith<$Res>? get src;
 }
 
 /// @nodoc
-class _$PostmanCollectionScriptCopyWithImpl<$Res,
-        $Val extends PostmanCollectionScript>
+class _$PostmanCollectionScriptCopyWithImpl<$Res>
     implements $PostmanCollectionScriptCopyWith<$Res> {
-  _$PostmanCollectionScriptCopyWithImpl(this._value, this._then);
+  _$PostmanCollectionScriptCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final PostmanCollectionScript _self;
+  final $Res Function(PostmanCollectionScript) _then;
 
   /// Create a copy of PostmanCollectionScript
   /// with the given fields replaced by the non-null parameter values.
@@ -5735,29 +6821,31 @@ class _$PostmanCollectionScriptCopyWithImpl<$Res,
     Object? src = freezed,
     Object? name = freezed,
   }) {
-    return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      packages: freezed == packages
-          ? _value.packages
-          : packages // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
-      type: freezed == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String?,
-      exec: freezed == exec ? _value.exec : exec,
-      src: freezed == src
-          ? _value.src
-          : src // ignore: cast_nullable_to_non_nullable
-              as PostmanCollectionUrl?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      PostmanCollectionScript(
+        id: freezed == id
+            ? _self.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        packages: freezed == packages
+            ? _self.packages
+            : packages // ignore: cast_nullable_to_non_nullable
+                  as Map<String, dynamic>?,
+        type: freezed == type
+            ? _self.type
+            : type // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        exec: freezed == exec ? _self.exec : exec,
+        src: freezed == src
+            ? _self.src
+            : src // ignore: cast_nullable_to_non_nullable
+                  as PostmanCollectionUrl?,
+        name: freezed == name
+            ? _self.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 
   /// Create a copy of PostmanCollectionScript
@@ -5765,100 +6853,232 @@ class _$PostmanCollectionScriptCopyWithImpl<$Res,
   @override
   @pragma('vm:prefer-inline')
   $PostmanCollectionUrlCopyWith<$Res>? get src {
-    if (_value.src == null) {
+    if (_self.src == null) {
       return null;
     }
 
-    return $PostmanCollectionUrlCopyWith<$Res>(_value.src!, (value) {
-      return _then(_value.copyWith(src: value) as $Val);
+    return $PostmanCollectionUrlCopyWith<$Res>(_self.src!, (value) {
+      return _then(_self.copyWith(src: value));
     });
   }
 }
 
-/// @nodoc
-abstract class _$$PostmanCollectionScriptImplCopyWith<$Res>
-    implements $PostmanCollectionScriptCopyWith<$Res> {
-  factory _$$PostmanCollectionScriptImplCopyWith(
-          _$PostmanCollectionScriptImpl value,
-          $Res Function(_$PostmanCollectionScriptImpl) then) =
-      __$$PostmanCollectionScriptImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String? id,
+/// Adds pattern-matching-related methods to [PostmanCollectionScript].
+extension PostmanCollectionScriptPatterns on PostmanCollectionScript {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PostmanCollectionScript value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionScript() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_PostmanCollectionScript value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionScript():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_PostmanCollectionScript value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionScript() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+      String? id,
       Map<String, dynamic>? packages,
       String? type,
       Object? exec,
       PostmanCollectionUrl? src,
-      String? name});
-
-  @override
-  $PostmanCollectionUrlCopyWith<$Res>? get src;
-}
-
-/// @nodoc
-class __$$PostmanCollectionScriptImplCopyWithImpl<$Res>
-    extends _$PostmanCollectionScriptCopyWithImpl<$Res,
-        _$PostmanCollectionScriptImpl>
-    implements _$$PostmanCollectionScriptImplCopyWith<$Res> {
-  __$$PostmanCollectionScriptImplCopyWithImpl(
-      _$PostmanCollectionScriptImpl _value,
-      $Res Function(_$PostmanCollectionScriptImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of PostmanCollectionScript
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = freezed,
-    Object? packages = freezed,
-    Object? type = freezed,
-    Object? exec = freezed,
-    Object? src = freezed,
-    Object? name = freezed,
+      String? name,
+    )?
+    $default, {
+    required TResult orElse(),
   }) {
-    return _then(_$PostmanCollectionScriptImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      packages: freezed == packages
-          ? _value._packages
-          : packages // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
-      type: freezed == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String?,
-      exec: freezed == exec ? _value.exec : exec,
-      src: freezed == src
-          ? _value.src
-          : src // ignore: cast_nullable_to_non_nullable
-              as PostmanCollectionUrl?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionScript() when $default != null:
+        return $default(
+          _that.id,
+          _that.packages,
+          _that.type,
+          _that.exec,
+          _that.src,
+          _that.name,
+        );
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+      String? id,
+      Map<String, dynamic>? packages,
+      String? type,
+      Object? exec,
+      PostmanCollectionUrl? src,
+      String? name,
+    )
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionScript():
+        return $default(
+          _that.id,
+          _that.packages,
+          _that.type,
+          _that.exec,
+          _that.src,
+          _that.name,
+        );
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+      String? id,
+      Map<String, dynamic>? packages,
+      String? type,
+      Object? exec,
+      PostmanCollectionUrl? src,
+      String? name,
+    )?
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionScript() when $default != null:
+        return $default(
+          _that.id,
+          _that.packages,
+          _that.type,
+          _that.exec,
+          _that.src,
+          _that.name,
+        );
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PostmanCollectionScriptImpl extends _PostmanCollectionScript {
-  const _$PostmanCollectionScriptImpl(
-      {this.id,
-      final Map<String, dynamic>? packages,
-      this.type,
-      this.exec,
-      this.src,
-      this.name})
-      : _packages = packages,
-        super._();
-
-  factory _$PostmanCollectionScriptImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PostmanCollectionScriptImplFromJson(json);
+class _PostmanCollectionScript extends PostmanCollectionScript {
+  const _PostmanCollectionScript({
+    this.id,
+    Map<String, dynamic>? packages,
+    this.type,
+    this.exec,
+    this.src,
+    this.name,
+  }) : _packages = packages,
+       super._();
+  factory _PostmanCollectionScript.fromJson(Map<String, dynamic> json) =>
+      _$PostmanCollectionScriptFromJson(json);
 
   @override
   final String? id;
@@ -5881,18 +7101,29 @@ class _$PostmanCollectionScriptImpl extends _PostmanCollectionScript {
   @override
   final String? name;
 
+  /// Create a copy of PostmanCollectionScript
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'PostmanCollectionScript(id: $id, packages: $packages, type: $type, exec: $exec, src: $src, name: $name)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PostmanCollectionScriptCopyWith<_PostmanCollectionScript> get copyWith =>
+      __$PostmanCollectionScriptCopyWithImpl<_PostmanCollectionScript>(
+        this,
+        _$identity,
+      );
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$PostmanCollectionScriptToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PostmanCollectionScriptImpl &&
+            other is _PostmanCollectionScript &&
             (identical(other.id, id) || other.id == id) &&
-            const DeepCollectionEquality().equals(other._packages, _packages) &&
+            const DeepCollectionEquality().equals(other.packages, _packages) &&
             (identical(other.type, type) || other.type == type) &&
             const DeepCollectionEquality().equals(other.exec, exec) &&
             (identical(other.src, src) || other.src == src) &&
@@ -5901,263 +7132,225 @@ class _$PostmanCollectionScriptImpl extends _PostmanCollectionScript {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
+  int get hashCode {
+    return Object.hash(
       runtimeType,
       id,
       const DeepCollectionEquality().hash(_packages),
       type,
       const DeepCollectionEquality().hash(exec),
       src,
-      name);
-
-  /// Create a copy of PostmanCollectionScript
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PostmanCollectionScriptImplCopyWith<_$PostmanCollectionScriptImpl>
-      get copyWith => __$$PostmanCollectionScriptImplCopyWithImpl<
-          _$PostmanCollectionScriptImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(String? id, Map<String, dynamic>? packages, String? type,
-            Object? exec, PostmanCollectionUrl? src, String? name)
-        $default,
-  ) {
-    return $default(id, packages, type, exec, src, name);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String? id, Map<String, dynamic>? packages, String? type,
-            Object? exec, PostmanCollectionUrl? src, String? name)?
-        $default,
-  ) {
-    return $default?.call(id, packages, type, exec, src, name);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String? id, Map<String, dynamic>? packages, String? type,
-            Object? exec, PostmanCollectionUrl? src, String? name)?
-        $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(id, packages, type, exec, src, name);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionScript value) $default,
-  ) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionScript value)? $default,
-  ) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionScript value)? $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PostmanCollectionScriptImplToJson(
-      this,
+      name,
     );
   }
+
+  @override
+  String toString() {
+    return 'PostmanCollectionScript(id: $id, packages: $packages, type: $type, exec: $exec, src: $src, name: $name)';
+  }
 }
 
-abstract class _PostmanCollectionScript extends PostmanCollectionScript {
-  const factory _PostmanCollectionScript(
-      {final String? id,
-      final Map<String, dynamic>? packages,
-      final String? type,
-      final Object? exec,
-      final PostmanCollectionUrl? src,
-      final String? name}) = _$PostmanCollectionScriptImpl;
-  const _PostmanCollectionScript._() : super._();
+/// @nodoc
+abstract mixin class _$PostmanCollectionScriptCopyWith<$Res>
+    implements $PostmanCollectionScriptCopyWith<$Res> {
+  factory _$PostmanCollectionScriptCopyWith(
+    _PostmanCollectionScript value,
+    $Res Function(_PostmanCollectionScript) _then,
+  ) = __$PostmanCollectionScriptCopyWithImpl;
+  @override
+  @useResult
+  $Res call({
+    String? id,
+    Map<String, dynamic>? packages,
+    String? type,
+    Object? exec,
+    PostmanCollectionUrl? src,
+    String? name,
+  });
 
-  factory _PostmanCollectionScript.fromJson(Map<String, dynamic> json) =
-      _$PostmanCollectionScriptImpl.fromJson;
+  @override
+  $PostmanCollectionUrlCopyWith<$Res>? get src;
+}
 
-  @override
-  String? get id;
-  @override
-  Map<String, dynamic>? get packages;
-  @override
-  String? get type;
-  @override
-  Object? get exec;
-  @override
-  PostmanCollectionUrl? get src;
-  @override
-  String? get name;
+/// @nodoc
+class __$PostmanCollectionScriptCopyWithImpl<$Res>
+    implements _$PostmanCollectionScriptCopyWith<$Res> {
+  __$PostmanCollectionScriptCopyWithImpl(this._self, this._then);
+
+  final _PostmanCollectionScript _self;
+  final $Res Function(_PostmanCollectionScript) _then;
 
   /// Create a copy of PostmanCollectionScript
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PostmanCollectionScriptImplCopyWith<_$PostmanCollectionScriptImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = freezed,
+    Object? packages = freezed,
+    Object? type = freezed,
+    Object? exec = freezed,
+    Object? src = freezed,
+    Object? name = freezed,
+  }) {
+    return _then(
+      _PostmanCollectionScript(
+        id: freezed == id
+            ? _self.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        packages: freezed == packages
+            ? _self._packages
+            : packages // ignore: cast_nullable_to_non_nullable
+                  as Map<String, dynamic>?,
+        type: freezed == type
+            ? _self.type
+            : type // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        exec: freezed == exec ? _self.exec : exec,
+        src: freezed == src
+            ? _self.src
+            : src // ignore: cast_nullable_to_non_nullable
+                  as PostmanCollectionUrl?,
+        name: freezed == name
+            ? _self.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
+  }
 
-PostmanCollectionResponse _$PostmanCollectionResponseFromJson(
-    Map<String, dynamic> json) {
-  return _PostmanCollectionResponse.fromJson(json);
+  /// Create a copy of PostmanCollectionScript
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PostmanCollectionUrlCopyWith<$Res>? get src {
+    if (_self.src == null) {
+      return null;
+    }
+
+    return $PostmanCollectionUrlCopyWith<$Res>(_self.src!, (value) {
+      return _then(_self.copyWith(src: value));
+    });
+  }
 }
 
 /// @nodoc
 mixin _$PostmanCollectionResponse {
-  String? get name => throw _privateConstructorUsedError;
-  String? get id => throw _privateConstructorUsedError;
-  PostmanCollectionRequest? get originalRequest =>
-      throw _privateConstructorUsedError;
+  String? get name;
+  String? get id;
+  PostmanCollectionRequest? get originalRequest;
   @JsonKey(name: '_postman_previewlanguage')
-  String? get postmanPreviewLanguage => throw _privateConstructorUsedError;
-  Object? get responseTime => throw _privateConstructorUsedError;
-  Object? get timings => throw _privateConstructorUsedError;
-  Object? get header => throw _privateConstructorUsedError;
-  List<PostmanCollectionCookie>? get cookie =>
-      throw _privateConstructorUsedError;
-  String? get body => throw _privateConstructorUsedError;
-  String? get status => throw _privateConstructorUsedError;
-  int? get code => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            String? name,
-            String? id,
-            PostmanCollectionRequest? originalRequest,
-            @JsonKey(name: '_postman_previewlanguage')
-            String? postmanPreviewLanguage,
-            Object? responseTime,
-            Object? timings,
-            Object? header,
-            List<PostmanCollectionCookie>? cookie,
-            String? body,
-            String? status,
-            int? code)
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            String? name,
-            String? id,
-            PostmanCollectionRequest? originalRequest,
-            @JsonKey(name: '_postman_previewlanguage')
-            String? postmanPreviewLanguage,
-            Object? responseTime,
-            Object? timings,
-            Object? header,
-            List<PostmanCollectionCookie>? cookie,
-            String? body,
-            String? status,
-            int? code)?
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            String? name,
-            String? id,
-            PostmanCollectionRequest? originalRequest,
-            @JsonKey(name: '_postman_previewlanguage')
-            String? postmanPreviewLanguage,
-            Object? responseTime,
-            Object? timings,
-            Object? header,
-            List<PostmanCollectionCookie>? cookie,
-            String? body,
-            String? status,
-            int? code)?
-        $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionResponse value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionResponse value)? $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionResponse value)? $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this PostmanCollectionResponse to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String? get postmanPreviewLanguage;
+  Object? get responseTime;
+  Object? get timings;
+  Object? get header;
+  List<PostmanCollectionCookie>? get cookie;
+  String? get body;
+  String? get status;
+  int? get code;
 
   /// Create a copy of PostmanCollectionResponse
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $PostmanCollectionResponseCopyWith<PostmanCollectionResponse> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$PostmanCollectionResponseCopyWithImpl<PostmanCollectionResponse>(
+        this as PostmanCollectionResponse,
+        _$identity,
+      );
+
+  /// Serializes this PostmanCollectionResponse to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    final _this = this as PostmanCollectionResponse;
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PostmanCollectionResponse &&
+            (identical(other.name, _this.name) || other.name == _this.name) &&
+            (identical(other.id, _this.id) || other.id == _this.id) &&
+            (identical(other.originalRequest, _this.originalRequest) ||
+                other.originalRequest == _this.originalRequest) &&
+            (identical(
+                  other.postmanPreviewLanguage,
+                  _this.postmanPreviewLanguage,
+                ) ||
+                other.postmanPreviewLanguage == _this.postmanPreviewLanguage) &&
+            const DeepCollectionEquality().equals(
+              other.responseTime,
+              _this.responseTime,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other.timings,
+              _this.timings,
+            ) &&
+            const DeepCollectionEquality().equals(other.header, _this.header) &&
+            const DeepCollectionEquality().equals(other.cookie, _this.cookie) &&
+            (identical(other.body, _this.body) || other.body == _this.body) &&
+            (identical(other.status, _this.status) ||
+                other.status == _this.status) &&
+            (identical(other.code, _this.code) || other.code == _this.code));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode {
+    final _this = this as PostmanCollectionResponse;
+    return Object.hash(
+      runtimeType,
+      _this.name,
+      _this.id,
+      _this.originalRequest,
+      _this.postmanPreviewLanguage,
+      const DeepCollectionEquality().hash(_this.responseTime),
+      const DeepCollectionEquality().hash(_this.timings),
+      const DeepCollectionEquality().hash(_this.header),
+      const DeepCollectionEquality().hash(_this.cookie),
+      _this.body,
+      _this.status,
+      _this.code,
+    );
+  }
+
+  @override
+  String toString() {
+    final _this = this as PostmanCollectionResponse;
+    return 'PostmanCollectionResponse(name: ${_this.name}, id: ${_this.id}, originalRequest: ${_this.originalRequest}, postmanPreviewLanguage: ${_this.postmanPreviewLanguage}, responseTime: ${_this.responseTime}, timings: ${_this.timings}, header: ${_this.header}, cookie: ${_this.cookie}, body: ${_this.body}, status: ${_this.status}, code: ${_this.code})';
+  }
 }
 
 /// @nodoc
-abstract class $PostmanCollectionResponseCopyWith<$Res> {
-  factory $PostmanCollectionResponseCopyWith(PostmanCollectionResponse value,
-          $Res Function(PostmanCollectionResponse) then) =
-      _$PostmanCollectionResponseCopyWithImpl<$Res, PostmanCollectionResponse>;
+abstract mixin class $PostmanCollectionResponseCopyWith<$Res> {
+  factory $PostmanCollectionResponseCopyWith(
+    PostmanCollectionResponse value,
+    $Res Function(PostmanCollectionResponse) _then,
+  ) = _$PostmanCollectionResponseCopyWithImpl;
   @useResult
-  $Res call(
-      {String? name,
-      String? id,
-      PostmanCollectionRequest? originalRequest,
-      @JsonKey(name: '_postman_previewlanguage') String? postmanPreviewLanguage,
-      Object? responseTime,
-      Object? timings,
-      Object? header,
-      List<PostmanCollectionCookie>? cookie,
-      String? body,
-      String? status,
-      int? code});
+  $Res call({
+    String? name,
+    String? id,
+    PostmanCollectionRequest? originalRequest,
+    @JsonKey(name: '_postman_previewlanguage') String? postmanPreviewLanguage,
+    Object? responseTime,
+    Object? timings,
+    Object? header,
+    List<PostmanCollectionCookie>? cookie,
+    String? body,
+    String? status,
+    int? code,
+  });
 
   $PostmanCollectionRequestCopyWith<$Res>? get originalRequest;
 }
 
 /// @nodoc
-class _$PostmanCollectionResponseCopyWithImpl<$Res,
-        $Val extends PostmanCollectionResponse>
+class _$PostmanCollectionResponseCopyWithImpl<$Res>
     implements $PostmanCollectionResponseCopyWith<$Res> {
-  _$PostmanCollectionResponseCopyWithImpl(this._value, this._then);
+  _$PostmanCollectionResponseCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final PostmanCollectionResponse _self;
+  final $Res Function(PostmanCollectionResponse) _then;
 
   /// Create a copy of PostmanCollectionResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -6176,44 +7369,47 @@ class _$PostmanCollectionResponseCopyWithImpl<$Res,
     Object? status = freezed,
     Object? code = freezed,
   }) {
-    return _then(_value.copyWith(
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      originalRequest: freezed == originalRequest
-          ? _value.originalRequest
-          : originalRequest // ignore: cast_nullable_to_non_nullable
-              as PostmanCollectionRequest?,
-      postmanPreviewLanguage: freezed == postmanPreviewLanguage
-          ? _value.postmanPreviewLanguage
-          : postmanPreviewLanguage // ignore: cast_nullable_to_non_nullable
-              as String?,
-      responseTime:
-          freezed == responseTime ? _value.responseTime : responseTime,
-      timings: freezed == timings ? _value.timings : timings,
-      header: freezed == header ? _value.header : header,
-      cookie: freezed == cookie
-          ? _value.cookie
-          : cookie // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionCookie>?,
-      body: freezed == body
-          ? _value.body
-          : body // ignore: cast_nullable_to_non_nullable
-              as String?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String?,
-      code: freezed == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
+    return _then(
+      PostmanCollectionResponse(
+        name: freezed == name
+            ? _self.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        id: freezed == id
+            ? _self.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        originalRequest: freezed == originalRequest
+            ? _self.originalRequest
+            : originalRequest // ignore: cast_nullable_to_non_nullable
+                  as PostmanCollectionRequest?,
+        postmanPreviewLanguage: freezed == postmanPreviewLanguage
+            ? _self.postmanPreviewLanguage
+            : postmanPreviewLanguage // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        responseTime: freezed == responseTime
+            ? _self.responseTime
+            : responseTime,
+        timings: freezed == timings ? _self.timings : timings,
+        header: freezed == header ? _self.header : header,
+        cookie: freezed == cookie
+            ? _self.cookie
+            : cookie // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionCookie>?,
+        body: freezed == body
+            ? _self.body
+            : body // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        status: freezed == status
+            ? _self.status
+            : status // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        code: freezed == code
+            ? _self.code
+            : code // ignore: cast_nullable_to_non_nullable
+                  as int?,
+      ),
+    );
   }
 
   /// Create a copy of PostmanCollectionResponse
@@ -6221,28 +7417,113 @@ class _$PostmanCollectionResponseCopyWithImpl<$Res,
   @override
   @pragma('vm:prefer-inline')
   $PostmanCollectionRequestCopyWith<$Res>? get originalRequest {
-    if (_value.originalRequest == null) {
+    if (_self.originalRequest == null) {
       return null;
     }
 
-    return $PostmanCollectionRequestCopyWith<$Res>(_value.originalRequest!,
-        (value) {
-      return _then(_value.copyWith(originalRequest: value) as $Val);
+    return $PostmanCollectionRequestCopyWith<$Res>(_self.originalRequest!, (
+      value,
+    ) {
+      return _then(_self.copyWith(originalRequest: value));
     });
   }
 }
 
-/// @nodoc
-abstract class _$$PostmanCollectionResponseImplCopyWith<$Res>
-    implements $PostmanCollectionResponseCopyWith<$Res> {
-  factory _$$PostmanCollectionResponseImplCopyWith(
-          _$PostmanCollectionResponseImpl value,
-          $Res Function(_$PostmanCollectionResponseImpl) then) =
-      __$$PostmanCollectionResponseImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String? name,
+/// Adds pattern-matching-related methods to [PostmanCollectionResponse].
+extension PostmanCollectionResponsePatterns on PostmanCollectionResponse {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PostmanCollectionResponse value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionResponse() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_PostmanCollectionResponse value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionResponse():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_PostmanCollectionResponse value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionResponse() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+      String? name,
       String? id,
       PostmanCollectionRequest? originalRequest,
       @JsonKey(name: '_postman_previewlanguage') String? postmanPreviewLanguage,
@@ -6252,100 +7533,153 @@ abstract class _$$PostmanCollectionResponseImplCopyWith<$Res>
       List<PostmanCollectionCookie>? cookie,
       String? body,
       String? status,
-      int? code});
-
-  @override
-  $PostmanCollectionRequestCopyWith<$Res>? get originalRequest;
-}
-
-/// @nodoc
-class __$$PostmanCollectionResponseImplCopyWithImpl<$Res>
-    extends _$PostmanCollectionResponseCopyWithImpl<$Res,
-        _$PostmanCollectionResponseImpl>
-    implements _$$PostmanCollectionResponseImplCopyWith<$Res> {
-  __$$PostmanCollectionResponseImplCopyWithImpl(
-      _$PostmanCollectionResponseImpl _value,
-      $Res Function(_$PostmanCollectionResponseImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of PostmanCollectionResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = freezed,
-    Object? id = freezed,
-    Object? originalRequest = freezed,
-    Object? postmanPreviewLanguage = freezed,
-    Object? responseTime = freezed,
-    Object? timings = freezed,
-    Object? header = freezed,
-    Object? cookie = freezed,
-    Object? body = freezed,
-    Object? status = freezed,
-    Object? code = freezed,
+      int? code,
+    )?
+    $default, {
+    required TResult orElse(),
   }) {
-    return _then(_$PostmanCollectionResponseImpl(
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      originalRequest: freezed == originalRequest
-          ? _value.originalRequest
-          : originalRequest // ignore: cast_nullable_to_non_nullable
-              as PostmanCollectionRequest?,
-      postmanPreviewLanguage: freezed == postmanPreviewLanguage
-          ? _value.postmanPreviewLanguage
-          : postmanPreviewLanguage // ignore: cast_nullable_to_non_nullable
-              as String?,
-      responseTime:
-          freezed == responseTime ? _value.responseTime : responseTime,
-      timings: freezed == timings ? _value.timings : timings,
-      header: freezed == header ? _value.header : header,
-      cookie: freezed == cookie
-          ? _value._cookie
-          : cookie // ignore: cast_nullable_to_non_nullable
-              as List<PostmanCollectionCookie>?,
-      body: freezed == body
-          ? _value.body
-          : body // ignore: cast_nullable_to_non_nullable
-              as String?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String?,
-      code: freezed == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionResponse() when $default != null:
+        return $default(
+          _that.name,
+          _that.id,
+          _that.originalRequest,
+          _that.postmanPreviewLanguage,
+          _that.responseTime,
+          _that.timings,
+          _that.header,
+          _that.cookie,
+          _that.body,
+          _that.status,
+          _that.code,
+        );
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+      String? name,
+      String? id,
+      PostmanCollectionRequest? originalRequest,
+      @JsonKey(name: '_postman_previewlanguage') String? postmanPreviewLanguage,
+      Object? responseTime,
+      Object? timings,
+      Object? header,
+      List<PostmanCollectionCookie>? cookie,
+      String? body,
+      String? status,
+      int? code,
+    )
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionResponse():
+        return $default(
+          _that.name,
+          _that.id,
+          _that.originalRequest,
+          _that.postmanPreviewLanguage,
+          _that.responseTime,
+          _that.timings,
+          _that.header,
+          _that.cookie,
+          _that.body,
+          _that.status,
+          _that.code,
+        );
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+      String? name,
+      String? id,
+      PostmanCollectionRequest? originalRequest,
+      @JsonKey(name: '_postman_previewlanguage') String? postmanPreviewLanguage,
+      Object? responseTime,
+      Object? timings,
+      Object? header,
+      List<PostmanCollectionCookie>? cookie,
+      String? body,
+      String? status,
+      int? code,
+    )?
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionResponse() when $default != null:
+        return $default(
+          _that.name,
+          _that.id,
+          _that.originalRequest,
+          _that.postmanPreviewLanguage,
+          _that.responseTime,
+          _that.timings,
+          _that.header,
+          _that.cookie,
+          _that.body,
+          _that.status,
+          _that.code,
+        );
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PostmanCollectionResponseImpl extends _PostmanCollectionResponse {
-  const _$PostmanCollectionResponseImpl(
-      {this.name,
-      this.id,
-      this.originalRequest,
-      @JsonKey(name: '_postman_previewlanguage') this.postmanPreviewLanguage,
-      this.responseTime,
-      this.timings,
-      this.header,
-      final List<PostmanCollectionCookie>? cookie,
-      this.body,
-      this.status,
-      this.code})
-      : _cookie = cookie,
-        super._();
-
-  factory _$PostmanCollectionResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PostmanCollectionResponseImplFromJson(json);
+class _PostmanCollectionResponse extends PostmanCollectionResponse {
+  const _PostmanCollectionResponse({
+    this.name,
+    this.id,
+    this.originalRequest,
+    @JsonKey(name: '_postman_previewlanguage') this.postmanPreviewLanguage,
+    this.responseTime,
+    this.timings,
+    this.header,
+    List<PostmanCollectionCookie>? cookie,
+    this.body,
+    this.status,
+    this.code,
+  }) : _cookie = cookie,
+       super._();
+  factory _PostmanCollectionResponse.fromJson(Map<String, dynamic> json) =>
+      _$PostmanCollectionResponseFromJson(json);
 
   @override
   final String? name;
@@ -6379,27 +7713,41 @@ class _$PostmanCollectionResponseImpl extends _PostmanCollectionResponse {
   @override
   final int? code;
 
+  /// Create a copy of PostmanCollectionResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'PostmanCollectionResponse(name: $name, id: $id, originalRequest: $originalRequest, postmanPreviewLanguage: $postmanPreviewLanguage, responseTime: $responseTime, timings: $timings, header: $header, cookie: $cookie, body: $body, status: $status, code: $code)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PostmanCollectionResponseCopyWith<_PostmanCollectionResponse>
+  get copyWith =>
+      __$PostmanCollectionResponseCopyWithImpl<_PostmanCollectionResponse>(
+        this,
+        _$identity,
+      );
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$PostmanCollectionResponseToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PostmanCollectionResponseImpl &&
+            other is _PostmanCollectionResponse &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.originalRequest, originalRequest) ||
                 other.originalRequest == originalRequest) &&
             (identical(other.postmanPreviewLanguage, postmanPreviewLanguage) ||
                 other.postmanPreviewLanguage == postmanPreviewLanguage) &&
-            const DeepCollectionEquality()
-                .equals(other.responseTime, responseTime) &&
+            const DeepCollectionEquality().equals(
+              other.responseTime,
+              responseTime,
+            ) &&
             const DeepCollectionEquality().equals(other.timings, timings) &&
             const DeepCollectionEquality().equals(other.header, header) &&
-            const DeepCollectionEquality().equals(other._cookie, _cookie) &&
+            const DeepCollectionEquality().equals(other.cookie, _cookie) &&
             (identical(other.body, body) || other.body == body) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.code, code) || other.code == code));
@@ -6407,7 +7755,8 @@ class _$PostmanCollectionResponseImpl extends _PostmanCollectionResponse {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
+  int get hashCode {
+    return Object.hash(
       runtimeType,
       name,
       id,
@@ -6419,394 +7768,243 @@ class _$PostmanCollectionResponseImpl extends _PostmanCollectionResponse {
       const DeepCollectionEquality().hash(_cookie),
       body,
       status,
-      code);
-
-  /// Create a copy of PostmanCollectionResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PostmanCollectionResponseImplCopyWith<_$PostmanCollectionResponseImpl>
-      get copyWith => __$$PostmanCollectionResponseImplCopyWithImpl<
-          _$PostmanCollectionResponseImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            String? name,
-            String? id,
-            PostmanCollectionRequest? originalRequest,
-            @JsonKey(name: '_postman_previewlanguage')
-            String? postmanPreviewLanguage,
-            Object? responseTime,
-            Object? timings,
-            Object? header,
-            List<PostmanCollectionCookie>? cookie,
-            String? body,
-            String? status,
-            int? code)
-        $default,
-  ) {
-    return $default(name, id, originalRequest, postmanPreviewLanguage,
-        responseTime, timings, header, cookie, body, status, code);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            String? name,
-            String? id,
-            PostmanCollectionRequest? originalRequest,
-            @JsonKey(name: '_postman_previewlanguage')
-            String? postmanPreviewLanguage,
-            Object? responseTime,
-            Object? timings,
-            Object? header,
-            List<PostmanCollectionCookie>? cookie,
-            String? body,
-            String? status,
-            int? code)?
-        $default,
-  ) {
-    return $default?.call(name, id, originalRequest, postmanPreviewLanguage,
-        responseTime, timings, header, cookie, body, status, code);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            String? name,
-            String? id,
-            PostmanCollectionRequest? originalRequest,
-            @JsonKey(name: '_postman_previewlanguage')
-            String? postmanPreviewLanguage,
-            Object? responseTime,
-            Object? timings,
-            Object? header,
-            List<PostmanCollectionCookie>? cookie,
-            String? body,
-            String? status,
-            int? code)?
-        $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(name, id, originalRequest, postmanPreviewLanguage,
-          responseTime, timings, header, cookie, body, status, code);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionResponse value) $default,
-  ) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionResponse value)? $default,
-  ) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionResponse value)? $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PostmanCollectionResponseImplToJson(
-      this,
+      code,
     );
   }
+
+  @override
+  String toString() {
+    return 'PostmanCollectionResponse(name: $name, id: $id, originalRequest: $originalRequest, postmanPreviewLanguage: $postmanPreviewLanguage, responseTime: $responseTime, timings: $timings, header: $header, cookie: $cookie, body: $body, status: $status, code: $code)';
+  }
 }
 
-abstract class _PostmanCollectionResponse extends PostmanCollectionResponse {
-  const factory _PostmanCollectionResponse(
-      {final String? name,
-      final String? id,
-      final PostmanCollectionRequest? originalRequest,
-      @JsonKey(name: '_postman_previewlanguage')
-      final String? postmanPreviewLanguage,
-      final Object? responseTime,
-      final Object? timings,
-      final Object? header,
-      final List<PostmanCollectionCookie>? cookie,
-      final String? body,
-      final String? status,
-      final int? code}) = _$PostmanCollectionResponseImpl;
-  const _PostmanCollectionResponse._() : super._();
+/// @nodoc
+abstract mixin class _$PostmanCollectionResponseCopyWith<$Res>
+    implements $PostmanCollectionResponseCopyWith<$Res> {
+  factory _$PostmanCollectionResponseCopyWith(
+    _PostmanCollectionResponse value,
+    $Res Function(_PostmanCollectionResponse) _then,
+  ) = __$PostmanCollectionResponseCopyWithImpl;
+  @override
+  @useResult
+  $Res call({
+    String? name,
+    String? id,
+    PostmanCollectionRequest? originalRequest,
+    @JsonKey(name: '_postman_previewlanguage') String? postmanPreviewLanguage,
+    Object? responseTime,
+    Object? timings,
+    Object? header,
+    List<PostmanCollectionCookie>? cookie,
+    String? body,
+    String? status,
+    int? code,
+  });
 
-  factory _PostmanCollectionResponse.fromJson(Map<String, dynamic> json) =
-      _$PostmanCollectionResponseImpl.fromJson;
+  @override
+  $PostmanCollectionRequestCopyWith<$Res>? get originalRequest;
+}
 
-  @override
-  String? get name;
-  @override
-  String? get id;
-  @override
-  PostmanCollectionRequest? get originalRequest;
-  @override
-  @JsonKey(name: '_postman_previewlanguage')
-  String? get postmanPreviewLanguage;
-  @override
-  Object? get responseTime;
-  @override
-  Object? get timings;
-  @override
-  Object? get header;
-  @override
-  List<PostmanCollectionCookie>? get cookie;
-  @override
-  String? get body;
-  @override
-  String? get status;
-  @override
-  int? get code;
+/// @nodoc
+class __$PostmanCollectionResponseCopyWithImpl<$Res>
+    implements _$PostmanCollectionResponseCopyWith<$Res> {
+  __$PostmanCollectionResponseCopyWithImpl(this._self, this._then);
+
+  final _PostmanCollectionResponse _self;
+  final $Res Function(_PostmanCollectionResponse) _then;
 
   /// Create a copy of PostmanCollectionResponse
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PostmanCollectionResponseImplCopyWith<_$PostmanCollectionResponseImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? name = freezed,
+    Object? id = freezed,
+    Object? originalRequest = freezed,
+    Object? postmanPreviewLanguage = freezed,
+    Object? responseTime = freezed,
+    Object? timings = freezed,
+    Object? header = freezed,
+    Object? cookie = freezed,
+    Object? body = freezed,
+    Object? status = freezed,
+    Object? code = freezed,
+  }) {
+    return _then(
+      _PostmanCollectionResponse(
+        name: freezed == name
+            ? _self.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        id: freezed == id
+            ? _self.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        originalRequest: freezed == originalRequest
+            ? _self.originalRequest
+            : originalRequest // ignore: cast_nullable_to_non_nullable
+                  as PostmanCollectionRequest?,
+        postmanPreviewLanguage: freezed == postmanPreviewLanguage
+            ? _self.postmanPreviewLanguage
+            : postmanPreviewLanguage // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        responseTime: freezed == responseTime
+            ? _self.responseTime
+            : responseTime,
+        timings: freezed == timings ? _self.timings : timings,
+        header: freezed == header ? _self.header : header,
+        cookie: freezed == cookie
+            ? _self._cookie
+            : cookie // ignore: cast_nullable_to_non_nullable
+                  as List<PostmanCollectionCookie>?,
+        body: freezed == body
+            ? _self.body
+            : body // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        status: freezed == status
+            ? _self.status
+            : status // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        code: freezed == code
+            ? _self.code
+            : code // ignore: cast_nullable_to_non_nullable
+                  as int?,
+      ),
+    );
+  }
 
-PostmanCollectionCookie _$PostmanCollectionCookieFromJson(
-    Map<String, dynamic> json) {
-  return _PostmanCollectionCookie.fromJson(json);
+  /// Create a copy of PostmanCollectionResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PostmanCollectionRequestCopyWith<$Res>? get originalRequest {
+    if (_self.originalRequest == null) {
+      return null;
+    }
+
+    return $PostmanCollectionRequestCopyWith<$Res>(_self.originalRequest!, (
+      value,
+    ) {
+      return _then(_self.copyWith(originalRequest: value));
+    });
+  }
 }
 
 /// @nodoc
 mixin _$PostmanCollectionCookie {
-  String get domain => throw _privateConstructorUsedError;
-  Object? get expires => throw _privateConstructorUsedError;
-  String? get maxAge => throw _privateConstructorUsedError;
-  bool? get hostOnly => throw _privateConstructorUsedError;
-  bool? get httpOnly => throw _privateConstructorUsedError;
-  String? get name => throw _privateConstructorUsedError;
-  String? get path => throw _privateConstructorUsedError;
-  bool? get secure => throw _privateConstructorUsedError;
-  bool? get session => throw _privateConstructorUsedError;
-  String? get value => throw _privateConstructorUsedError;
-  Object? get extensions => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            String domain,
-            Object? expires,
-            String? maxAge,
-            bool? hostOnly,
-            bool? httpOnly,
-            String? name,
-            String? path,
-            bool? secure,
-            bool? session,
-            String? value,
-            Object? extensions)
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            String domain,
-            Object? expires,
-            String? maxAge,
-            bool? hostOnly,
-            bool? httpOnly,
-            String? name,
-            String? path,
-            bool? secure,
-            bool? session,
-            String? value,
-            Object? extensions)?
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            String domain,
-            Object? expires,
-            String? maxAge,
-            bool? hostOnly,
-            bool? httpOnly,
-            String? name,
-            String? path,
-            bool? secure,
-            bool? session,
-            String? value,
-            Object? extensions)?
-        $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionCookie value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionCookie value)? $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionCookie value)? $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this PostmanCollectionCookie to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String get domain;
+  Object? get expires;
+  String? get maxAge;
+  bool? get hostOnly;
+  bool? get httpOnly;
+  String? get name;
+  String? get path;
+  bool? get secure;
+  bool? get session;
+  String? get value;
+  Object? get extensions;
 
   /// Create a copy of PostmanCollectionCookie
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $PostmanCollectionCookieCopyWith<PostmanCollectionCookie> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $PostmanCollectionCookieCopyWith<$Res> {
-  factory $PostmanCollectionCookieCopyWith(PostmanCollectionCookie value,
-          $Res Function(PostmanCollectionCookie) then) =
-      _$PostmanCollectionCookieCopyWithImpl<$Res, PostmanCollectionCookie>;
-  @useResult
-  $Res call(
-      {String domain,
-      Object? expires,
-      String? maxAge,
-      bool? hostOnly,
-      bool? httpOnly,
-      String? name,
-      String? path,
-      bool? secure,
-      bool? session,
-      String? value,
-      Object? extensions});
-}
-
-/// @nodoc
-class _$PostmanCollectionCookieCopyWithImpl<$Res,
-        $Val extends PostmanCollectionCookie>
-    implements $PostmanCollectionCookieCopyWith<$Res> {
-  _$PostmanCollectionCookieCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of PostmanCollectionCookie
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $PostmanCollectionCookieCopyWith<PostmanCollectionCookie> get copyWith =>
+      _$PostmanCollectionCookieCopyWithImpl<PostmanCollectionCookie>(
+        this as PostmanCollectionCookie,
+        _$identity,
+      );
+
+  /// Serializes this PostmanCollectionCookie to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? domain = null,
-    Object? expires = freezed,
-    Object? maxAge = freezed,
-    Object? hostOnly = freezed,
-    Object? httpOnly = freezed,
-    Object? name = freezed,
-    Object? path = freezed,
-    Object? secure = freezed,
-    Object? session = freezed,
-    Object? value = freezed,
-    Object? extensions = freezed,
-  }) {
-    return _then(_value.copyWith(
-      domain: null == domain
-          ? _value.domain
-          : domain // ignore: cast_nullable_to_non_nullable
-              as String,
-      expires: freezed == expires ? _value.expires : expires,
-      maxAge: freezed == maxAge
-          ? _value.maxAge
-          : maxAge // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hostOnly: freezed == hostOnly
-          ? _value.hostOnly
-          : hostOnly // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      httpOnly: freezed == httpOnly
-          ? _value.httpOnly
-          : httpOnly // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      path: freezed == path
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String?,
-      secure: freezed == secure
-          ? _value.secure
-          : secure // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      session: freezed == session
-          ? _value.session
-          : session // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      value: freezed == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String?,
-      extensions: freezed == extensions ? _value.extensions : extensions,
-    ) as $Val);
+  bool operator ==(Object other) {
+    final _this = this as PostmanCollectionCookie;
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PostmanCollectionCookie &&
+            (identical(other.domain, _this.domain) ||
+                other.domain == _this.domain) &&
+            const DeepCollectionEquality().equals(
+              other.expires,
+              _this.expires,
+            ) &&
+            (identical(other.maxAge, _this.maxAge) ||
+                other.maxAge == _this.maxAge) &&
+            (identical(other.hostOnly, _this.hostOnly) ||
+                other.hostOnly == _this.hostOnly) &&
+            (identical(other.httpOnly, _this.httpOnly) ||
+                other.httpOnly == _this.httpOnly) &&
+            (identical(other.name, _this.name) || other.name == _this.name) &&
+            (identical(other.path, _this.path) || other.path == _this.path) &&
+            (identical(other.secure, _this.secure) ||
+                other.secure == _this.secure) &&
+            (identical(other.session, _this.session) ||
+                other.session == _this.session) &&
+            (identical(other.value, _this.value) ||
+                other.value == _this.value) &&
+            const DeepCollectionEquality().equals(
+              other.extensions,
+              _this.extensions,
+            ));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode {
+    final _this = this as PostmanCollectionCookie;
+    return Object.hash(
+      runtimeType,
+      _this.domain,
+      const DeepCollectionEquality().hash(_this.expires),
+      _this.maxAge,
+      _this.hostOnly,
+      _this.httpOnly,
+      _this.name,
+      _this.path,
+      _this.secure,
+      _this.session,
+      _this.value,
+      const DeepCollectionEquality().hash(_this.extensions),
+    );
+  }
+
+  @override
+  String toString() {
+    final _this = this as PostmanCollectionCookie;
+    return 'PostmanCollectionCookie(domain: ${_this.domain}, expires: ${_this.expires}, maxAge: ${_this.maxAge}, hostOnly: ${_this.hostOnly}, httpOnly: ${_this.httpOnly}, name: ${_this.name}, path: ${_this.path}, secure: ${_this.secure}, session: ${_this.session}, value: ${_this.value}, extensions: ${_this.extensions})';
   }
 }
 
 /// @nodoc
-abstract class _$$PostmanCollectionCookieImplCopyWith<$Res>
-    implements $PostmanCollectionCookieCopyWith<$Res> {
-  factory _$$PostmanCollectionCookieImplCopyWith(
-          _$PostmanCollectionCookieImpl value,
-          $Res Function(_$PostmanCollectionCookieImpl) then) =
-      __$$PostmanCollectionCookieImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $PostmanCollectionCookieCopyWith<$Res> {
+  factory $PostmanCollectionCookieCopyWith(
+    PostmanCollectionCookie value,
+    $Res Function(PostmanCollectionCookie) _then,
+  ) = _$PostmanCollectionCookieCopyWithImpl;
   @useResult
-  $Res call(
-      {String domain,
-      Object? expires,
-      String? maxAge,
-      bool? hostOnly,
-      bool? httpOnly,
-      String? name,
-      String? path,
-      bool? secure,
-      bool? session,
-      String? value,
-      Object? extensions});
+  $Res call({
+    String domain,
+    Object? expires,
+    String? maxAge,
+    bool? hostOnly,
+    bool? httpOnly,
+    String? name,
+    String? path,
+    bool? secure,
+    bool? session,
+    String? value,
+    Object? extensions,
+  });
 }
 
 /// @nodoc
-class __$$PostmanCollectionCookieImplCopyWithImpl<$Res>
-    extends _$PostmanCollectionCookieCopyWithImpl<$Res,
-        _$PostmanCollectionCookieImpl>
-    implements _$$PostmanCollectionCookieImplCopyWith<$Res> {
-  __$$PostmanCollectionCookieImplCopyWithImpl(
-      _$PostmanCollectionCookieImpl _value,
-      $Res Function(_$PostmanCollectionCookieImpl) _then)
-      : super(_value, _then);
+class _$PostmanCollectionCookieCopyWithImpl<$Res>
+    implements $PostmanCollectionCookieCopyWith<$Res> {
+  _$PostmanCollectionCookieCopyWithImpl(this._self, this._then);
+
+  final PostmanCollectionCookie _self;
+  final $Res Function(PostmanCollectionCookie) _then;
 
   /// Create a copy of PostmanCollectionCookie
   /// with the given fields replaced by the non-null parameter values.
@@ -6825,68 +8023,301 @@ class __$$PostmanCollectionCookieImplCopyWithImpl<$Res>
     Object? value = freezed,
     Object? extensions = freezed,
   }) {
-    return _then(_$PostmanCollectionCookieImpl(
-      domain: null == domain
-          ? _value.domain
-          : domain // ignore: cast_nullable_to_non_nullable
-              as String,
-      expires: freezed == expires ? _value.expires : expires,
-      maxAge: freezed == maxAge
-          ? _value.maxAge
-          : maxAge // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hostOnly: freezed == hostOnly
-          ? _value.hostOnly
-          : hostOnly // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      httpOnly: freezed == httpOnly
-          ? _value.httpOnly
-          : httpOnly // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      path: freezed == path
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String?,
-      secure: freezed == secure
-          ? _value.secure
-          : secure // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      session: freezed == session
-          ? _value.session
-          : session // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      value: freezed == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String?,
-      extensions: freezed == extensions ? _value.extensions : extensions,
-    ));
+    return _then(
+      PostmanCollectionCookie(
+        domain: null == domain
+            ? _self.domain
+            : domain // ignore: cast_nullable_to_non_nullable
+                  as String,
+        expires: freezed == expires ? _self.expires : expires,
+        maxAge: freezed == maxAge
+            ? _self.maxAge
+            : maxAge // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        hostOnly: freezed == hostOnly
+            ? _self.hostOnly
+            : hostOnly // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        httpOnly: freezed == httpOnly
+            ? _self.httpOnly
+            : httpOnly // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        name: freezed == name
+            ? _self.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        path: freezed == path
+            ? _self.path
+            : path // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        secure: freezed == secure
+            ? _self.secure
+            : secure // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        session: freezed == session
+            ? _self.session
+            : session // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        value: freezed == value
+            ? _self.value
+            : value // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        extensions: freezed == extensions ? _self.extensions : extensions,
+      ),
+    );
+  }
+}
+
+/// Adds pattern-matching-related methods to [PostmanCollectionCookie].
+extension PostmanCollectionCookiePatterns on PostmanCollectionCookie {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PostmanCollectionCookie value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionCookie() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_PostmanCollectionCookie value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionCookie():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_PostmanCollectionCookie value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionCookie() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+      String domain,
+      Object? expires,
+      String? maxAge,
+      bool? hostOnly,
+      bool? httpOnly,
+      String? name,
+      String? path,
+      bool? secure,
+      bool? session,
+      String? value,
+      Object? extensions,
+    )?
+    $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionCookie() when $default != null:
+        return $default(
+          _that.domain,
+          _that.expires,
+          _that.maxAge,
+          _that.hostOnly,
+          _that.httpOnly,
+          _that.name,
+          _that.path,
+          _that.secure,
+          _that.session,
+          _that.value,
+          _that.extensions,
+        );
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+      String domain,
+      Object? expires,
+      String? maxAge,
+      bool? hostOnly,
+      bool? httpOnly,
+      String? name,
+      String? path,
+      bool? secure,
+      bool? session,
+      String? value,
+      Object? extensions,
+    )
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionCookie():
+        return $default(
+          _that.domain,
+          _that.expires,
+          _that.maxAge,
+          _that.hostOnly,
+          _that.httpOnly,
+          _that.name,
+          _that.path,
+          _that.secure,
+          _that.session,
+          _that.value,
+          _that.extensions,
+        );
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+      String domain,
+      Object? expires,
+      String? maxAge,
+      bool? hostOnly,
+      bool? httpOnly,
+      String? name,
+      String? path,
+      bool? secure,
+      bool? session,
+      String? value,
+      Object? extensions,
+    )?
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionCookie() when $default != null:
+        return $default(
+          _that.domain,
+          _that.expires,
+          _that.maxAge,
+          _that.hostOnly,
+          _that.httpOnly,
+          _that.name,
+          _that.path,
+          _that.secure,
+          _that.session,
+          _that.value,
+          _that.extensions,
+        );
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PostmanCollectionCookieImpl extends _PostmanCollectionCookie {
-  const _$PostmanCollectionCookieImpl(
-      {required this.domain,
-      this.expires,
-      this.maxAge,
-      this.hostOnly,
-      this.httpOnly,
-      this.name,
-      this.path,
-      this.secure,
-      this.session,
-      this.value,
-      this.extensions})
-      : super._();
-
-  factory _$PostmanCollectionCookieImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PostmanCollectionCookieImplFromJson(json);
+class _PostmanCollectionCookie extends PostmanCollectionCookie {
+  const _PostmanCollectionCookie({
+    required this.domain,
+    this.expires,
+    this.maxAge,
+    this.hostOnly,
+    this.httpOnly,
+    this.name,
+    this.path,
+    this.secure,
+    this.session,
+    this.value,
+    this.extensions,
+  }) : super._();
+  factory _PostmanCollectionCookie.fromJson(Map<String, dynamic> json) =>
+      _$PostmanCollectionCookieFromJson(json);
 
   @override
   final String domain;
@@ -6911,16 +8342,27 @@ class _$PostmanCollectionCookieImpl extends _PostmanCollectionCookie {
   @override
   final Object? extensions;
 
+  /// Create a copy of PostmanCollectionCookie
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'PostmanCollectionCookie(domain: $domain, expires: $expires, maxAge: $maxAge, hostOnly: $hostOnly, httpOnly: $httpOnly, name: $name, path: $path, secure: $secure, session: $session, value: $value, extensions: $extensions)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PostmanCollectionCookieCopyWith<_PostmanCollectionCookie> get copyWith =>
+      __$PostmanCollectionCookieCopyWithImpl<_PostmanCollectionCookie>(
+        this,
+        _$identity,
+      );
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$PostmanCollectionCookieToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PostmanCollectionCookieImpl &&
+            other is _PostmanCollectionCookie &&
             (identical(other.domain, domain) || other.domain == domain) &&
             const DeepCollectionEquality().equals(other.expires, expires) &&
             (identical(other.maxAge, maxAge) || other.maxAge == maxAge) &&
@@ -6933,13 +8375,16 @@ class _$PostmanCollectionCookieImpl extends _PostmanCollectionCookie {
             (identical(other.secure, secure) || other.secure == secure) &&
             (identical(other.session, session) || other.session == session) &&
             (identical(other.value, value) || other.value == value) &&
-            const DeepCollectionEquality()
-                .equals(other.extensions, extensions));
+            const DeepCollectionEquality().equals(
+              other.extensions,
+              extensions,
+            ));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
+  int get hashCode {
+    return Object.hash(
       runtimeType,
       domain,
       const DeepCollectionEquality().hash(expires),
@@ -6951,273 +8396,196 @@ class _$PostmanCollectionCookieImpl extends _PostmanCollectionCookie {
       secure,
       session,
       value,
-      const DeepCollectionEquality().hash(extensions));
+      const DeepCollectionEquality().hash(extensions),
+    );
+  }
+
+  @override
+  String toString() {
+    return 'PostmanCollectionCookie(domain: $domain, expires: $expires, maxAge: $maxAge, hostOnly: $hostOnly, httpOnly: $httpOnly, name: $name, path: $path, secure: $secure, session: $session, value: $value, extensions: $extensions)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$PostmanCollectionCookieCopyWith<$Res>
+    implements $PostmanCollectionCookieCopyWith<$Res> {
+  factory _$PostmanCollectionCookieCopyWith(
+    _PostmanCollectionCookie value,
+    $Res Function(_PostmanCollectionCookie) _then,
+  ) = __$PostmanCollectionCookieCopyWithImpl;
+  @override
+  @useResult
+  $Res call({
+    String domain,
+    Object? expires,
+    String? maxAge,
+    bool? hostOnly,
+    bool? httpOnly,
+    String? name,
+    String? path,
+    bool? secure,
+    bool? session,
+    String? value,
+    Object? extensions,
+  });
+}
+
+/// @nodoc
+class __$PostmanCollectionCookieCopyWithImpl<$Res>
+    implements _$PostmanCollectionCookieCopyWith<$Res> {
+  __$PostmanCollectionCookieCopyWithImpl(this._self, this._then);
+
+  final _PostmanCollectionCookie _self;
+  final $Res Function(_PostmanCollectionCookie) _then;
 
   /// Create a copy of PostmanCollectionCookie
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$PostmanCollectionCookieImplCopyWith<_$PostmanCollectionCookieImpl>
-      get copyWith => __$$PostmanCollectionCookieImplCopyWithImpl<
-          _$PostmanCollectionCookieImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            String domain,
-            Object? expires,
-            String? maxAge,
-            bool? hostOnly,
-            bool? httpOnly,
-            String? name,
-            String? path,
-            bool? secure,
-            bool? session,
-            String? value,
-            Object? extensions)
-        $default,
-  ) {
-    return $default(domain, expires, maxAge, hostOnly, httpOnly, name, path,
-        secure, session, value, extensions);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            String domain,
-            Object? expires,
-            String? maxAge,
-            bool? hostOnly,
-            bool? httpOnly,
-            String? name,
-            String? path,
-            bool? secure,
-            bool? session,
-            String? value,
-            Object? extensions)?
-        $default,
-  ) {
-    return $default?.call(domain, expires, maxAge, hostOnly, httpOnly, name,
-        path, secure, session, value, extensions);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            String domain,
-            Object? expires,
-            String? maxAge,
-            bool? hostOnly,
-            bool? httpOnly,
-            String? name,
-            String? path,
-            bool? secure,
-            bool? session,
-            String? value,
-            Object? extensions)?
-        $default, {
-    required TResult orElse(),
+  $Res call({
+    Object? domain = null,
+    Object? expires = freezed,
+    Object? maxAge = freezed,
+    Object? hostOnly = freezed,
+    Object? httpOnly = freezed,
+    Object? name = freezed,
+    Object? path = freezed,
+    Object? secure = freezed,
+    Object? session = freezed,
+    Object? value = freezed,
+    Object? extensions = freezed,
   }) {
-    if ($default != null) {
-      return $default(domain, expires, maxAge, hostOnly, httpOnly, name, path,
-          secure, session, value, extensions);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionCookie value) $default,
-  ) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionCookie value)? $default,
-  ) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionCookie value)? $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PostmanCollectionCookieImplToJson(
-      this,
+    return _then(
+      _PostmanCollectionCookie(
+        domain: null == domain
+            ? _self.domain
+            : domain // ignore: cast_nullable_to_non_nullable
+                  as String,
+        expires: freezed == expires ? _self.expires : expires,
+        maxAge: freezed == maxAge
+            ? _self.maxAge
+            : maxAge // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        hostOnly: freezed == hostOnly
+            ? _self.hostOnly
+            : hostOnly // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        httpOnly: freezed == httpOnly
+            ? _self.httpOnly
+            : httpOnly // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        name: freezed == name
+            ? _self.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        path: freezed == path
+            ? _self.path
+            : path // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        secure: freezed == secure
+            ? _self.secure
+            : secure // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        session: freezed == session
+            ? _self.session
+            : session // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        value: freezed == value
+            ? _self.value
+            : value // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        extensions: freezed == extensions ? _self.extensions : extensions,
+      ),
     );
   }
 }
 
-abstract class _PostmanCollectionCookie extends PostmanCollectionCookie {
-  const factory _PostmanCollectionCookie(
-      {required final String domain,
-      final Object? expires,
-      final String? maxAge,
-      final bool? hostOnly,
-      final bool? httpOnly,
-      final String? name,
-      final String? path,
-      final bool? secure,
-      final bool? session,
-      final String? value,
-      final Object? extensions}) = _$PostmanCollectionCookieImpl;
-  const _PostmanCollectionCookie._() : super._();
-
-  factory _PostmanCollectionCookie.fromJson(Map<String, dynamic> json) =
-      _$PostmanCollectionCookieImpl.fromJson;
-
-  @override
-  String get domain;
-  @override
-  Object? get expires;
-  @override
-  String? get maxAge;
-  @override
-  bool? get hostOnly;
-  @override
-  bool? get httpOnly;
-  @override
-  String? get name;
-  @override
-  String? get path;
-  @override
-  bool? get secure;
-  @override
-  bool? get session;
-  @override
-  String? get value;
-  @override
-  Object? get extensions;
-
-  /// Create a copy of PostmanCollectionCookie
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PostmanCollectionCookieImplCopyWith<_$PostmanCollectionCookieImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-PostmanCollectionCertificate _$PostmanCollectionCertificateFromJson(
-    Map<String, dynamic> json) {
-  return _PostmanCollectionCertificate.fromJson(json);
-}
-
 /// @nodoc
 mixin _$PostmanCollectionCertificate {
-  String? get name => throw _privateConstructorUsedError;
-  List<String>? get matches => throw _privateConstructorUsedError;
-  PostmanCollectionCertificateSrc? get key =>
-      throw _privateConstructorUsedError;
-  PostmanCollectionCertificateSrc? get cert =>
-      throw _privateConstructorUsedError;
-  String? get passphrase => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            String? name,
-            List<String>? matches,
-            PostmanCollectionCertificateSrc? key,
-            PostmanCollectionCertificateSrc? cert,
-            String? passphrase)
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            String? name,
-            List<String>? matches,
-            PostmanCollectionCertificateSrc? key,
-            PostmanCollectionCertificateSrc? cert,
-            String? passphrase)?
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            String? name,
-            List<String>? matches,
-            PostmanCollectionCertificateSrc? key,
-            PostmanCollectionCertificateSrc? cert,
-            String? passphrase)?
-        $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionCertificate value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionCertificate value)? $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionCertificate value)? $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this PostmanCollectionCertificate to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String? get name;
+  List<String>? get matches;
+  PostmanCollectionCertificateSrc? get key;
+  PostmanCollectionCertificateSrc? get cert;
+  String? get passphrase;
 
   /// Create a copy of PostmanCollectionCertificate
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $PostmanCollectionCertificateCopyWith<PostmanCollectionCertificate>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith =>
+      _$PostmanCollectionCertificateCopyWithImpl<PostmanCollectionCertificate>(
+        this as PostmanCollectionCertificate,
+        _$identity,
+      );
+
+  /// Serializes this PostmanCollectionCertificate to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    final _this = this as PostmanCollectionCertificate;
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PostmanCollectionCertificate &&
+            (identical(other.name, _this.name) || other.name == _this.name) &&
+            const DeepCollectionEquality().equals(
+              other.matches,
+              _this.matches,
+            ) &&
+            (identical(other.key, _this.key) || other.key == _this.key) &&
+            (identical(other.cert, _this.cert) || other.cert == _this.cert) &&
+            (identical(other.passphrase, _this.passphrase) ||
+                other.passphrase == _this.passphrase));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode {
+    final _this = this as PostmanCollectionCertificate;
+    return Object.hash(
+      runtimeType,
+      _this.name,
+      const DeepCollectionEquality().hash(_this.matches),
+      _this.key,
+      _this.cert,
+      _this.passphrase,
+    );
+  }
+
+  @override
+  String toString() {
+    final _this = this as PostmanCollectionCertificate;
+    return 'PostmanCollectionCertificate(name: ${_this.name}, matches: ${_this.matches}, key: ${_this.key}, cert: ${_this.cert}, passphrase: ${_this.passphrase})';
+  }
 }
 
 /// @nodoc
-abstract class $PostmanCollectionCertificateCopyWith<$Res> {
+abstract mixin class $PostmanCollectionCertificateCopyWith<$Res> {
   factory $PostmanCollectionCertificateCopyWith(
-          PostmanCollectionCertificate value,
-          $Res Function(PostmanCollectionCertificate) then) =
-      _$PostmanCollectionCertificateCopyWithImpl<$Res,
-          PostmanCollectionCertificate>;
+    PostmanCollectionCertificate value,
+    $Res Function(PostmanCollectionCertificate) _then,
+  ) = _$PostmanCollectionCertificateCopyWithImpl;
   @useResult
-  $Res call(
-      {String? name,
-      List<String>? matches,
-      PostmanCollectionCertificateSrc? key,
-      PostmanCollectionCertificateSrc? cert,
-      String? passphrase});
+  $Res call({
+    String? name,
+    List<String>? matches,
+    PostmanCollectionCertificateSrc? key,
+    PostmanCollectionCertificateSrc? cert,
+    String? passphrase,
+  });
 
   $PostmanCollectionCertificateSrcCopyWith<$Res>? get key;
   $PostmanCollectionCertificateSrcCopyWith<$Res>? get cert;
 }
 
 /// @nodoc
-class _$PostmanCollectionCertificateCopyWithImpl<$Res,
-        $Val extends PostmanCollectionCertificate>
+class _$PostmanCollectionCertificateCopyWithImpl<$Res>
     implements $PostmanCollectionCertificateCopyWith<$Res> {
-  _$PostmanCollectionCertificateCopyWithImpl(this._value, this._then);
+  _$PostmanCollectionCertificateCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final PostmanCollectionCertificate _self;
+  final $Res Function(PostmanCollectionCertificate) _then;
 
   /// Create a copy of PostmanCollectionCertificate
   /// with the given fields replaced by the non-null parameter values.
@@ -7230,28 +8598,30 @@ class _$PostmanCollectionCertificateCopyWithImpl<$Res,
     Object? cert = freezed,
     Object? passphrase = freezed,
   }) {
-    return _then(_value.copyWith(
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      matches: freezed == matches
-          ? _value.matches
-          : matches // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      key: freezed == key
-          ? _value.key
-          : key // ignore: cast_nullable_to_non_nullable
-              as PostmanCollectionCertificateSrc?,
-      cert: freezed == cert
-          ? _value.cert
-          : cert // ignore: cast_nullable_to_non_nullable
-              as PostmanCollectionCertificateSrc?,
-      passphrase: freezed == passphrase
-          ? _value.passphrase
-          : passphrase // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      PostmanCollectionCertificate(
+        name: freezed == name
+            ? _self.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        matches: freezed == matches
+            ? _self.matches
+            : matches // ignore: cast_nullable_to_non_nullable
+                  as List<String>?,
+        key: freezed == key
+            ? _self.key
+            : key // ignore: cast_nullable_to_non_nullable
+                  as PostmanCollectionCertificateSrc?,
+        cert: freezed == cert
+            ? _self.cert
+            : cert // ignore: cast_nullable_to_non_nullable
+                  as PostmanCollectionCertificateSrc?,
+        passphrase: freezed == passphrase
+            ? _self.passphrase
+            : passphrase // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 
   /// Create a copy of PostmanCollectionCertificate
@@ -7259,12 +8629,12 @@ class _$PostmanCollectionCertificateCopyWithImpl<$Res,
   @override
   @pragma('vm:prefer-inline')
   $PostmanCollectionCertificateSrcCopyWith<$Res>? get key {
-    if (_value.key == null) {
+    if (_self.key == null) {
       return null;
     }
 
-    return $PostmanCollectionCertificateSrcCopyWith<$Res>(_value.key!, (value) {
-      return _then(_value.copyWith(key: value) as $Val);
+    return $PostmanCollectionCertificateSrcCopyWith<$Res>(_self.key!, (value) {
+      return _then(_self.copyWith(key: value));
     });
   }
 
@@ -7273,100 +8643,225 @@ class _$PostmanCollectionCertificateCopyWithImpl<$Res,
   @override
   @pragma('vm:prefer-inline')
   $PostmanCollectionCertificateSrcCopyWith<$Res>? get cert {
-    if (_value.cert == null) {
+    if (_self.cert == null) {
       return null;
     }
 
-    return $PostmanCollectionCertificateSrcCopyWith<$Res>(_value.cert!,
-        (value) {
-      return _then(_value.copyWith(cert: value) as $Val);
+    return $PostmanCollectionCertificateSrcCopyWith<$Res>(_self.cert!, (value) {
+      return _then(_self.copyWith(cert: value));
     });
   }
 }
 
-/// @nodoc
-abstract class _$$PostmanCollectionCertificateImplCopyWith<$Res>
-    implements $PostmanCollectionCertificateCopyWith<$Res> {
-  factory _$$PostmanCollectionCertificateImplCopyWith(
-          _$PostmanCollectionCertificateImpl value,
-          $Res Function(_$PostmanCollectionCertificateImpl) then) =
-      __$$PostmanCollectionCertificateImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String? name,
+/// Adds pattern-matching-related methods to [PostmanCollectionCertificate].
+extension PostmanCollectionCertificatePatterns on PostmanCollectionCertificate {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PostmanCollectionCertificate value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionCertificate() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_PostmanCollectionCertificate value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionCertificate():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_PostmanCollectionCertificate value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionCertificate() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+      String? name,
       List<String>? matches,
       PostmanCollectionCertificateSrc? key,
       PostmanCollectionCertificateSrc? cert,
-      String? passphrase});
-
-  @override
-  $PostmanCollectionCertificateSrcCopyWith<$Res>? get key;
-  @override
-  $PostmanCollectionCertificateSrcCopyWith<$Res>? get cert;
-}
-
-/// @nodoc
-class __$$PostmanCollectionCertificateImplCopyWithImpl<$Res>
-    extends _$PostmanCollectionCertificateCopyWithImpl<$Res,
-        _$PostmanCollectionCertificateImpl>
-    implements _$$PostmanCollectionCertificateImplCopyWith<$Res> {
-  __$$PostmanCollectionCertificateImplCopyWithImpl(
-      _$PostmanCollectionCertificateImpl _value,
-      $Res Function(_$PostmanCollectionCertificateImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of PostmanCollectionCertificate
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = freezed,
-    Object? matches = freezed,
-    Object? key = freezed,
-    Object? cert = freezed,
-    Object? passphrase = freezed,
+      String? passphrase,
+    )?
+    $default, {
+    required TResult orElse(),
   }) {
-    return _then(_$PostmanCollectionCertificateImpl(
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      matches: freezed == matches
-          ? _value._matches
-          : matches // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      key: freezed == key
-          ? _value.key
-          : key // ignore: cast_nullable_to_non_nullable
-              as PostmanCollectionCertificateSrc?,
-      cert: freezed == cert
-          ? _value.cert
-          : cert // ignore: cast_nullable_to_non_nullable
-              as PostmanCollectionCertificateSrc?,
-      passphrase: freezed == passphrase
-          ? _value.passphrase
-          : passphrase // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionCertificate() when $default != null:
+        return $default(
+          _that.name,
+          _that.matches,
+          _that.key,
+          _that.cert,
+          _that.passphrase,
+        );
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+      String? name,
+      List<String>? matches,
+      PostmanCollectionCertificateSrc? key,
+      PostmanCollectionCertificateSrc? cert,
+      String? passphrase,
+    )
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionCertificate():
+        return $default(
+          _that.name,
+          _that.matches,
+          _that.key,
+          _that.cert,
+          _that.passphrase,
+        );
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+      String? name,
+      List<String>? matches,
+      PostmanCollectionCertificateSrc? key,
+      PostmanCollectionCertificateSrc? cert,
+      String? passphrase,
+    )?
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionCertificate() when $default != null:
+        return $default(
+          _that.name,
+          _that.matches,
+          _that.key,
+          _that.cert,
+          _that.passphrase,
+        );
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PostmanCollectionCertificateImpl extends _PostmanCollectionCertificate {
-  const _$PostmanCollectionCertificateImpl(
-      {this.name,
-      final List<String>? matches,
-      this.key,
-      this.cert,
-      this.passphrase})
-      : _matches = matches,
-        super._();
-
-  factory _$PostmanCollectionCertificateImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$PostmanCollectionCertificateImplFromJson(json);
+class _PostmanCollectionCertificate extends PostmanCollectionCertificate {
+  const _PostmanCollectionCertificate({
+    this.name,
+    List<String>? matches,
+    this.key,
+    this.cert,
+    this.passphrase,
+  }) : _matches = matches,
+       super._();
+  factory _PostmanCollectionCertificate.fromJson(Map<String, dynamic> json) =>
+      _$PostmanCollectionCertificateFromJson(json);
 
   @override
   final String? name;
@@ -7387,18 +8882,29 @@ class _$PostmanCollectionCertificateImpl extends _PostmanCollectionCertificate {
   @override
   final String? passphrase;
 
+  /// Create a copy of PostmanCollectionCertificate
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'PostmanCollectionCertificate(name: $name, matches: $matches, key: $key, cert: $cert, passphrase: $passphrase)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PostmanCollectionCertificateCopyWith<_PostmanCollectionCertificate>
+  get copyWith =>
+      __$PostmanCollectionCertificateCopyWithImpl<
+        _PostmanCollectionCertificate
+      >(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$PostmanCollectionCertificateToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PostmanCollectionCertificateImpl &&
+            other is _PostmanCollectionCertificate &&
             (identical(other.name, name) || other.name == name) &&
-            const DeepCollectionEquality().equals(other._matches, _matches) &&
+            const DeepCollectionEquality().equals(other.matches, _matches) &&
             (identical(other.key, key) || other.key == key) &&
             (identical(other.cert, cert) || other.cert == cert) &&
             (identical(other.passphrase, passphrase) ||
@@ -7407,528 +8913,517 @@ class _$PostmanCollectionCertificateImpl extends _PostmanCollectionCertificate {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, name,
-      const DeepCollectionEquality().hash(_matches), key, cert, passphrase);
-
-  /// Create a copy of PostmanCollectionCertificate
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PostmanCollectionCertificateImplCopyWith<
-          _$PostmanCollectionCertificateImpl>
-      get copyWith => __$$PostmanCollectionCertificateImplCopyWithImpl<
-          _$PostmanCollectionCertificateImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            String? name,
-            List<String>? matches,
-            PostmanCollectionCertificateSrc? key,
-            PostmanCollectionCertificateSrc? cert,
-            String? passphrase)
-        $default,
-  ) {
-    return $default(name, matches, key, cert, passphrase);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            String? name,
-            List<String>? matches,
-            PostmanCollectionCertificateSrc? key,
-            PostmanCollectionCertificateSrc? cert,
-            String? passphrase)?
-        $default,
-  ) {
-    return $default?.call(name, matches, key, cert, passphrase);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            String? name,
-            List<String>? matches,
-            PostmanCollectionCertificateSrc? key,
-            PostmanCollectionCertificateSrc? cert,
-            String? passphrase)?
-        $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(name, matches, key, cert, passphrase);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionCertificate value) $default,
-  ) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionCertificate value)? $default,
-  ) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionCertificate value)? $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PostmanCollectionCertificateImplToJson(
-      this,
+  int get hashCode {
+    return Object.hash(
+      runtimeType,
+      name,
+      const DeepCollectionEquality().hash(_matches),
+      key,
+      cert,
+      passphrase,
     );
   }
+
+  @override
+  String toString() {
+    return 'PostmanCollectionCertificate(name: $name, matches: $matches, key: $key, cert: $cert, passphrase: $passphrase)';
+  }
 }
 
-abstract class _PostmanCollectionCertificate
-    extends PostmanCollectionCertificate {
-  const factory _PostmanCollectionCertificate(
-      {final String? name,
-      final List<String>? matches,
-      final PostmanCollectionCertificateSrc? key,
-      final PostmanCollectionCertificateSrc? cert,
-      final String? passphrase}) = _$PostmanCollectionCertificateImpl;
-  const _PostmanCollectionCertificate._() : super._();
+/// @nodoc
+abstract mixin class _$PostmanCollectionCertificateCopyWith<$Res>
+    implements $PostmanCollectionCertificateCopyWith<$Res> {
+  factory _$PostmanCollectionCertificateCopyWith(
+    _PostmanCollectionCertificate value,
+    $Res Function(_PostmanCollectionCertificate) _then,
+  ) = __$PostmanCollectionCertificateCopyWithImpl;
+  @override
+  @useResult
+  $Res call({
+    String? name,
+    List<String>? matches,
+    PostmanCollectionCertificateSrc? key,
+    PostmanCollectionCertificateSrc? cert,
+    String? passphrase,
+  });
 
-  factory _PostmanCollectionCertificate.fromJson(Map<String, dynamic> json) =
-      _$PostmanCollectionCertificateImpl.fromJson;
+  @override
+  $PostmanCollectionCertificateSrcCopyWith<$Res>? get key;
+  @override
+  $PostmanCollectionCertificateSrcCopyWith<$Res>? get cert;
+}
 
-  @override
-  String? get name;
-  @override
-  List<String>? get matches;
-  @override
-  PostmanCollectionCertificateSrc? get key;
-  @override
-  PostmanCollectionCertificateSrc? get cert;
-  @override
-  String? get passphrase;
+/// @nodoc
+class __$PostmanCollectionCertificateCopyWithImpl<$Res>
+    implements _$PostmanCollectionCertificateCopyWith<$Res> {
+  __$PostmanCollectionCertificateCopyWithImpl(this._self, this._then);
+
+  final _PostmanCollectionCertificate _self;
+  final $Res Function(_PostmanCollectionCertificate) _then;
 
   /// Create a copy of PostmanCollectionCertificate
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PostmanCollectionCertificateImplCopyWith<
-          _$PostmanCollectionCertificateImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? name = freezed,
+    Object? matches = freezed,
+    Object? key = freezed,
+    Object? cert = freezed,
+    Object? passphrase = freezed,
+  }) {
+    return _then(
+      _PostmanCollectionCertificate(
+        name: freezed == name
+            ? _self.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        matches: freezed == matches
+            ? _self._matches
+            : matches // ignore: cast_nullable_to_non_nullable
+                  as List<String>?,
+        key: freezed == key
+            ? _self.key
+            : key // ignore: cast_nullable_to_non_nullable
+                  as PostmanCollectionCertificateSrc?,
+        cert: freezed == cert
+            ? _self.cert
+            : cert // ignore: cast_nullable_to_non_nullable
+                  as PostmanCollectionCertificateSrc?,
+        passphrase: freezed == passphrase
+            ? _self.passphrase
+            : passphrase // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
+  }
 
-PostmanCollectionCertificateSrc _$PostmanCollectionCertificateSrcFromJson(
-    Map<String, dynamic> json) {
-  return _PostmanCollectionCertificateSrc.fromJson(json);
+  /// Create a copy of PostmanCollectionCertificate
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PostmanCollectionCertificateSrcCopyWith<$Res>? get key {
+    if (_self.key == null) {
+      return null;
+    }
+
+    return $PostmanCollectionCertificateSrcCopyWith<$Res>(_self.key!, (value) {
+      return _then(_self.copyWith(key: value));
+    });
+  }
+
+  /// Create a copy of PostmanCollectionCertificate
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PostmanCollectionCertificateSrcCopyWith<$Res>? get cert {
+    if (_self.cert == null) {
+      return null;
+    }
+
+    return $PostmanCollectionCertificateSrcCopyWith<$Res>(_self.cert!, (value) {
+      return _then(_self.copyWith(cert: value));
+    });
+  }
 }
 
 /// @nodoc
 mixin _$PostmanCollectionCertificateSrc {
-  String? get src => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(String? src) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String? src)? $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String? src)? $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionCertificateSrc value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionCertificateSrc value)? $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionCertificateSrc value)? $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this PostmanCollectionCertificateSrc to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String? get src;
 
   /// Create a copy of PostmanCollectionCertificateSrc
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $PostmanCollectionCertificateSrcCopyWith<PostmanCollectionCertificateSrc>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $PostmanCollectionCertificateSrcCopyWith<$Res> {
-  factory $PostmanCollectionCertificateSrcCopyWith(
-          PostmanCollectionCertificateSrc value,
-          $Res Function(PostmanCollectionCertificateSrc) then) =
-      _$PostmanCollectionCertificateSrcCopyWithImpl<$Res,
-          PostmanCollectionCertificateSrc>;
-  @useResult
-  $Res call({String? src});
-}
-
-/// @nodoc
-class _$PostmanCollectionCertificateSrcCopyWithImpl<$Res,
-        $Val extends PostmanCollectionCertificateSrc>
-    implements $PostmanCollectionCertificateSrcCopyWith<$Res> {
-  _$PostmanCollectionCertificateSrcCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of PostmanCollectionCertificateSrc
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $PostmanCollectionCertificateSrcCopyWith<PostmanCollectionCertificateSrc>
+  get copyWith =>
+      _$PostmanCollectionCertificateSrcCopyWithImpl<
+        PostmanCollectionCertificateSrc
+      >(this as PostmanCollectionCertificateSrc, _$identity);
+
+  /// Serializes this PostmanCollectionCertificateSrc to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? src = freezed,
-  }) {
-    return _then(_value.copyWith(
-      src: freezed == src
-          ? _value.src
-          : src // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    final _this = this as PostmanCollectionCertificateSrc;
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PostmanCollectionCertificateSrc &&
+            (identical(other.src, _this.src) || other.src == _this.src));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode {
+    final _this = this as PostmanCollectionCertificateSrc;
+    return Object.hash(runtimeType, _this.src);
+  }
+
+  @override
+  String toString() {
+    final _this = this as PostmanCollectionCertificateSrc;
+    return 'PostmanCollectionCertificateSrc(src: ${_this.src})';
   }
 }
 
 /// @nodoc
-abstract class _$$PostmanCollectionCertificateSrcImplCopyWith<$Res>
-    implements $PostmanCollectionCertificateSrcCopyWith<$Res> {
-  factory _$$PostmanCollectionCertificateSrcImplCopyWith(
-          _$PostmanCollectionCertificateSrcImpl value,
-          $Res Function(_$PostmanCollectionCertificateSrcImpl) then) =
-      __$$PostmanCollectionCertificateSrcImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $PostmanCollectionCertificateSrcCopyWith<$Res> {
+  factory $PostmanCollectionCertificateSrcCopyWith(
+    PostmanCollectionCertificateSrc value,
+    $Res Function(PostmanCollectionCertificateSrc) _then,
+  ) = _$PostmanCollectionCertificateSrcCopyWithImpl;
   @useResult
   $Res call({String? src});
 }
 
 /// @nodoc
-class __$$PostmanCollectionCertificateSrcImplCopyWithImpl<$Res>
-    extends _$PostmanCollectionCertificateSrcCopyWithImpl<$Res,
-        _$PostmanCollectionCertificateSrcImpl>
-    implements _$$PostmanCollectionCertificateSrcImplCopyWith<$Res> {
-  __$$PostmanCollectionCertificateSrcImplCopyWithImpl(
-      _$PostmanCollectionCertificateSrcImpl _value,
-      $Res Function(_$PostmanCollectionCertificateSrcImpl) _then)
-      : super(_value, _then);
+class _$PostmanCollectionCertificateSrcCopyWithImpl<$Res>
+    implements $PostmanCollectionCertificateSrcCopyWith<$Res> {
+  _$PostmanCollectionCertificateSrcCopyWithImpl(this._self, this._then);
+
+  final PostmanCollectionCertificateSrc _self;
+  final $Res Function(PostmanCollectionCertificateSrc) _then;
 
   /// Create a copy of PostmanCollectionCertificateSrc
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? src = freezed,
+  $Res call({Object? src = freezed}) {
+    return _then(
+      PostmanCollectionCertificateSrc(
+        src: freezed == src
+            ? _self.src
+            : src // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
+  }
+}
+
+/// Adds pattern-matching-related methods to [PostmanCollectionCertificateSrc].
+extension PostmanCollectionCertificateSrcPatterns
+    on PostmanCollectionCertificateSrc {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PostmanCollectionCertificateSrc value)? $default, {
+    required TResult orElse(),
   }) {
-    return _then(_$PostmanCollectionCertificateSrcImpl(
-      src: freezed == src
-          ? _value.src
-          : src // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionCertificateSrc() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_PostmanCollectionCertificateSrc value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionCertificateSrc():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_PostmanCollectionCertificateSrc value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionCertificateSrc() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String? src)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionCertificateSrc() when $default != null:
+        return $default(_that.src);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String? src) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionCertificateSrc():
+        return $default(_that.src);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String? src)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionCertificateSrc() when $default != null:
+        return $default(_that.src);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PostmanCollectionCertificateSrcImpl
-    extends _PostmanCollectionCertificateSrc {
-  const _$PostmanCollectionCertificateSrcImpl({this.src}) : super._();
-
-  factory _$PostmanCollectionCertificateSrcImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$PostmanCollectionCertificateSrcImplFromJson(json);
+class _PostmanCollectionCertificateSrc extends PostmanCollectionCertificateSrc {
+  const _PostmanCollectionCertificateSrc({this.src}) : super._();
+  factory _PostmanCollectionCertificateSrc.fromJson(
+    Map<String, dynamic> json,
+  ) => _$PostmanCollectionCertificateSrcFromJson(json);
 
   @override
   final String? src;
 
+  /// Create a copy of PostmanCollectionCertificateSrc
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'PostmanCollectionCertificateSrc(src: $src)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PostmanCollectionCertificateSrcCopyWith<_PostmanCollectionCertificateSrc>
+  get copyWith =>
+      __$PostmanCollectionCertificateSrcCopyWithImpl<
+        _PostmanCollectionCertificateSrc
+      >(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$PostmanCollectionCertificateSrcToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PostmanCollectionCertificateSrcImpl &&
+            other is _PostmanCollectionCertificateSrc &&
             (identical(other.src, src) || other.src == src));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, src);
+  int get hashCode {
+    return Object.hash(runtimeType, src);
+  }
+
+  @override
+  String toString() {
+    return 'PostmanCollectionCertificateSrc(src: $src)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$PostmanCollectionCertificateSrcCopyWith<$Res>
+    implements $PostmanCollectionCertificateSrcCopyWith<$Res> {
+  factory _$PostmanCollectionCertificateSrcCopyWith(
+    _PostmanCollectionCertificateSrc value,
+    $Res Function(_PostmanCollectionCertificateSrc) _then,
+  ) = __$PostmanCollectionCertificateSrcCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String? src});
+}
+
+/// @nodoc
+class __$PostmanCollectionCertificateSrcCopyWithImpl<$Res>
+    implements _$PostmanCollectionCertificateSrcCopyWith<$Res> {
+  __$PostmanCollectionCertificateSrcCopyWithImpl(this._self, this._then);
+
+  final _PostmanCollectionCertificateSrc _self;
+  final $Res Function(_PostmanCollectionCertificateSrc) _then;
 
   /// Create a copy of PostmanCollectionCertificateSrc
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$PostmanCollectionCertificateSrcImplCopyWith<
-          _$PostmanCollectionCertificateSrcImpl>
-      get copyWith => __$$PostmanCollectionCertificateSrcImplCopyWithImpl<
-          _$PostmanCollectionCertificateSrcImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(String? src) $default,
-  ) {
-    return $default(src);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String? src)? $default,
-  ) {
-    return $default?.call(src);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String? src)? $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(src);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionCertificateSrc value) $default,
-  ) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionCertificateSrc value)? $default,
-  ) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionCertificateSrc value)? $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PostmanCollectionCertificateSrcImplToJson(
-      this,
+  $Res call({Object? src = freezed}) {
+    return _then(
+      _PostmanCollectionCertificateSrc(
+        src: freezed == src
+            ? _self.src
+            : src // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
     );
   }
 }
 
-abstract class _PostmanCollectionCertificateSrc
-    extends PostmanCollectionCertificateSrc {
-  const factory _PostmanCollectionCertificateSrc({final String? src}) =
-      _$PostmanCollectionCertificateSrcImpl;
-  const _PostmanCollectionCertificateSrc._() : super._();
-
-  factory _PostmanCollectionCertificateSrc.fromJson(Map<String, dynamic> json) =
-      _$PostmanCollectionCertificateSrcImpl.fromJson;
-
-  @override
-  String? get src;
-
-  /// Create a copy of PostmanCollectionCertificateSrc
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PostmanCollectionCertificateSrcImplCopyWith<
-          _$PostmanCollectionCertificateSrcImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-PostmanCollectionProxyConfig _$PostmanCollectionProxyConfigFromJson(
-    Map<String, dynamic> json) {
-  return _PostmanCollectionProxyConfig.fromJson(json);
-}
-
 /// @nodoc
 mixin _$PostmanCollectionProxyConfig {
-  String? get match => throw _privateConstructorUsedError;
-  String? get host => throw _privateConstructorUsedError;
-  int? get port => throw _privateConstructorUsedError;
-  bool? get tunnel => throw _privateConstructorUsedError;
-  bool? get disabled => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(String? match, String? host, int? port, bool? tunnel,
-            bool? disabled)
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String? match, String? host, int? port, bool? tunnel,
-            bool? disabled)?
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String? match, String? host, int? port, bool? tunnel,
-            bool? disabled)?
-        $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionProxyConfig value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionProxyConfig value)? $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionProxyConfig value)? $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this PostmanCollectionProxyConfig to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String? get match;
+  String? get host;
+  int? get port;
+  bool? get tunnel;
+  bool? get disabled;
 
   /// Create a copy of PostmanCollectionProxyConfig
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $PostmanCollectionProxyConfigCopyWith<PostmanCollectionProxyConfig>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $PostmanCollectionProxyConfigCopyWith<$Res> {
-  factory $PostmanCollectionProxyConfigCopyWith(
-          PostmanCollectionProxyConfig value,
-          $Res Function(PostmanCollectionProxyConfig) then) =
-      _$PostmanCollectionProxyConfigCopyWithImpl<$Res,
-          PostmanCollectionProxyConfig>;
-  @useResult
-  $Res call(
-      {String? match, String? host, int? port, bool? tunnel, bool? disabled});
-}
-
-/// @nodoc
-class _$PostmanCollectionProxyConfigCopyWithImpl<$Res,
-        $Val extends PostmanCollectionProxyConfig>
-    implements $PostmanCollectionProxyConfigCopyWith<$Res> {
-  _$PostmanCollectionProxyConfigCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of PostmanCollectionProxyConfig
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $PostmanCollectionProxyConfigCopyWith<PostmanCollectionProxyConfig>
+  get copyWith =>
+      _$PostmanCollectionProxyConfigCopyWithImpl<PostmanCollectionProxyConfig>(
+        this as PostmanCollectionProxyConfig,
+        _$identity,
+      );
+
+  /// Serializes this PostmanCollectionProxyConfig to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? match = freezed,
-    Object? host = freezed,
-    Object? port = freezed,
-    Object? tunnel = freezed,
-    Object? disabled = freezed,
-  }) {
-    return _then(_value.copyWith(
-      match: freezed == match
-          ? _value.match
-          : match // ignore: cast_nullable_to_non_nullable
-              as String?,
-      host: freezed == host
-          ? _value.host
-          : host // ignore: cast_nullable_to_non_nullable
-              as String?,
-      port: freezed == port
-          ? _value.port
-          : port // ignore: cast_nullable_to_non_nullable
-              as int?,
-      tunnel: freezed == tunnel
-          ? _value.tunnel
-          : tunnel // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      disabled: freezed == disabled
-          ? _value.disabled
-          : disabled // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    final _this = this as PostmanCollectionProxyConfig;
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PostmanCollectionProxyConfig &&
+            (identical(other.match, _this.match) ||
+                other.match == _this.match) &&
+            (identical(other.host, _this.host) || other.host == _this.host) &&
+            (identical(other.port, _this.port) || other.port == _this.port) &&
+            (identical(other.tunnel, _this.tunnel) ||
+                other.tunnel == _this.tunnel) &&
+            (identical(other.disabled, _this.disabled) ||
+                other.disabled == _this.disabled));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode {
+    final _this = this as PostmanCollectionProxyConfig;
+    return Object.hash(
+      runtimeType,
+      _this.match,
+      _this.host,
+      _this.port,
+      _this.tunnel,
+      _this.disabled,
+    );
+  }
+
+  @override
+  String toString() {
+    final _this = this as PostmanCollectionProxyConfig;
+    return 'PostmanCollectionProxyConfig(match: ${_this.match}, host: ${_this.host}, port: ${_this.port}, tunnel: ${_this.tunnel}, disabled: ${_this.disabled})';
   }
 }
 
 /// @nodoc
-abstract class _$$PostmanCollectionProxyConfigImplCopyWith<$Res>
-    implements $PostmanCollectionProxyConfigCopyWith<$Res> {
-  factory _$$PostmanCollectionProxyConfigImplCopyWith(
-          _$PostmanCollectionProxyConfigImpl value,
-          $Res Function(_$PostmanCollectionProxyConfigImpl) then) =
-      __$$PostmanCollectionProxyConfigImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $PostmanCollectionProxyConfigCopyWith<$Res> {
+  factory $PostmanCollectionProxyConfigCopyWith(
+    PostmanCollectionProxyConfig value,
+    $Res Function(PostmanCollectionProxyConfig) _then,
+  ) = _$PostmanCollectionProxyConfigCopyWithImpl;
   @useResult
-  $Res call(
-      {String? match, String? host, int? port, bool? tunnel, bool? disabled});
+  $Res call({
+    String? match,
+    String? host,
+    int? port,
+    bool? tunnel,
+    bool? disabled,
+  });
 }
 
 /// @nodoc
-class __$$PostmanCollectionProxyConfigImplCopyWithImpl<$Res>
-    extends _$PostmanCollectionProxyConfigCopyWithImpl<$Res,
-        _$PostmanCollectionProxyConfigImpl>
-    implements _$$PostmanCollectionProxyConfigImplCopyWith<$Res> {
-  __$$PostmanCollectionProxyConfigImplCopyWithImpl(
-      _$PostmanCollectionProxyConfigImpl _value,
-      $Res Function(_$PostmanCollectionProxyConfigImpl) _then)
-      : super(_value, _then);
+class _$PostmanCollectionProxyConfigCopyWithImpl<$Res>
+    implements $PostmanCollectionProxyConfigCopyWith<$Res> {
+  _$PostmanCollectionProxyConfigCopyWithImpl(this._self, this._then);
+
+  final PostmanCollectionProxyConfig _self;
+  final $Res Function(PostmanCollectionProxyConfig) _then;
 
   /// Create a copy of PostmanCollectionProxyConfig
   /// with the given fields replaced by the non-null parameter values.
@@ -7941,41 +9436,241 @@ class __$$PostmanCollectionProxyConfigImplCopyWithImpl<$Res>
     Object? tunnel = freezed,
     Object? disabled = freezed,
   }) {
-    return _then(_$PostmanCollectionProxyConfigImpl(
-      match: freezed == match
-          ? _value.match
-          : match // ignore: cast_nullable_to_non_nullable
-              as String?,
-      host: freezed == host
-          ? _value.host
-          : host // ignore: cast_nullable_to_non_nullable
-              as String?,
-      port: freezed == port
-          ? _value.port
-          : port // ignore: cast_nullable_to_non_nullable
-              as int?,
-      tunnel: freezed == tunnel
-          ? _value.tunnel
-          : tunnel // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      disabled: freezed == disabled
-          ? _value.disabled
-          : disabled // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ));
+    return _then(
+      PostmanCollectionProxyConfig(
+        match: freezed == match
+            ? _self.match
+            : match // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        host: freezed == host
+            ? _self.host
+            : host // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        port: freezed == port
+            ? _self.port
+            : port // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        tunnel: freezed == tunnel
+            ? _self.tunnel
+            : tunnel // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        disabled: freezed == disabled
+            ? _self.disabled
+            : disabled // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+      ),
+    );
+  }
+}
+
+/// Adds pattern-matching-related methods to [PostmanCollectionProxyConfig].
+extension PostmanCollectionProxyConfigPatterns on PostmanCollectionProxyConfig {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PostmanCollectionProxyConfig value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionProxyConfig() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_PostmanCollectionProxyConfig value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionProxyConfig():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_PostmanCollectionProxyConfig value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionProxyConfig() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+      String? match,
+      String? host,
+      int? port,
+      bool? tunnel,
+      bool? disabled,
+    )?
+    $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionProxyConfig() when $default != null:
+        return $default(
+          _that.match,
+          _that.host,
+          _that.port,
+          _that.tunnel,
+          _that.disabled,
+        );
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+      String? match,
+      String? host,
+      int? port,
+      bool? tunnel,
+      bool? disabled,
+    )
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionProxyConfig():
+        return $default(
+          _that.match,
+          _that.host,
+          _that.port,
+          _that.tunnel,
+          _that.disabled,
+        );
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+      String? match,
+      String? host,
+      int? port,
+      bool? tunnel,
+      bool? disabled,
+    )?
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionProxyConfig() when $default != null:
+        return $default(
+          _that.match,
+          _that.host,
+          _that.port,
+          _that.tunnel,
+          _that.disabled,
+        );
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PostmanCollectionProxyConfigImpl extends _PostmanCollectionProxyConfig {
-  const _$PostmanCollectionProxyConfigImpl(
-      {this.match, this.host, this.port, this.tunnel, this.disabled})
-      : super._();
-
-  factory _$PostmanCollectionProxyConfigImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$PostmanCollectionProxyConfigImplFromJson(json);
+class _PostmanCollectionProxyConfig extends PostmanCollectionProxyConfig {
+  const _PostmanCollectionProxyConfig({
+    this.match,
+    this.host,
+    this.port,
+    this.tunnel,
+    this.disabled,
+  }) : super._();
+  factory _PostmanCollectionProxyConfig.fromJson(Map<String, dynamic> json) =>
+      _$PostmanCollectionProxyConfigFromJson(json);
 
   @override
   final String? match;
@@ -7988,16 +9683,27 @@ class _$PostmanCollectionProxyConfigImpl extends _PostmanCollectionProxyConfig {
   @override
   final bool? disabled;
 
+  /// Create a copy of PostmanCollectionProxyConfig
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'PostmanCollectionProxyConfig(match: $match, host: $host, port: $port, tunnel: $tunnel, disabled: $disabled)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PostmanCollectionProxyConfigCopyWith<_PostmanCollectionProxyConfig>
+  get copyWith =>
+      __$PostmanCollectionProxyConfigCopyWithImpl<
+        _PostmanCollectionProxyConfig
+      >(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$PostmanCollectionProxyConfigToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PostmanCollectionProxyConfigImpl &&
+            other is _PostmanCollectionProxyConfig &&
             (identical(other.match, match) || other.match == match) &&
             (identical(other.host, host) || other.host == host) &&
             (identical(other.port, port) || other.port == port) &&
@@ -8008,270 +9714,161 @@ class _$PostmanCollectionProxyConfigImpl extends _PostmanCollectionProxyConfig {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, match, host, port, tunnel, disabled);
+  int get hashCode {
+    return Object.hash(runtimeType, match, host, port, tunnel, disabled);
+  }
+
+  @override
+  String toString() {
+    return 'PostmanCollectionProxyConfig(match: $match, host: $host, port: $port, tunnel: $tunnel, disabled: $disabled)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$PostmanCollectionProxyConfigCopyWith<$Res>
+    implements $PostmanCollectionProxyConfigCopyWith<$Res> {
+  factory _$PostmanCollectionProxyConfigCopyWith(
+    _PostmanCollectionProxyConfig value,
+    $Res Function(_PostmanCollectionProxyConfig) _then,
+  ) = __$PostmanCollectionProxyConfigCopyWithImpl;
+  @override
+  @useResult
+  $Res call({
+    String? match,
+    String? host,
+    int? port,
+    bool? tunnel,
+    bool? disabled,
+  });
+}
+
+/// @nodoc
+class __$PostmanCollectionProxyConfigCopyWithImpl<$Res>
+    implements _$PostmanCollectionProxyConfigCopyWith<$Res> {
+  __$PostmanCollectionProxyConfigCopyWithImpl(this._self, this._then);
+
+  final _PostmanCollectionProxyConfig _self;
+  final $Res Function(_PostmanCollectionProxyConfig) _then;
 
   /// Create a copy of PostmanCollectionProxyConfig
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$PostmanCollectionProxyConfigImplCopyWith<
-          _$PostmanCollectionProxyConfigImpl>
-      get copyWith => __$$PostmanCollectionProxyConfigImplCopyWithImpl<
-          _$PostmanCollectionProxyConfigImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(String? match, String? host, int? port, bool? tunnel,
-            bool? disabled)
-        $default,
-  ) {
-    return $default(match, host, port, tunnel, disabled);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String? match, String? host, int? port, bool? tunnel,
-            bool? disabled)?
-        $default,
-  ) {
-    return $default?.call(match, host, port, tunnel, disabled);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String? match, String? host, int? port, bool? tunnel,
-            bool? disabled)?
-        $default, {
-    required TResult orElse(),
+  $Res call({
+    Object? match = freezed,
+    Object? host = freezed,
+    Object? port = freezed,
+    Object? tunnel = freezed,
+    Object? disabled = freezed,
   }) {
-    if ($default != null) {
-      return $default(match, host, port, tunnel, disabled);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionProxyConfig value) $default,
-  ) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionProxyConfig value)? $default,
-  ) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionProxyConfig value)? $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PostmanCollectionProxyConfigImplToJson(
-      this,
+    return _then(
+      _PostmanCollectionProxyConfig(
+        match: freezed == match
+            ? _self.match
+            : match // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        host: freezed == host
+            ? _self.host
+            : host // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        port: freezed == port
+            ? _self.port
+            : port // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        tunnel: freezed == tunnel
+            ? _self.tunnel
+            : tunnel // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        disabled: freezed == disabled
+            ? _self.disabled
+            : disabled // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+      ),
     );
   }
 }
 
-abstract class _PostmanCollectionProxyConfig
-    extends PostmanCollectionProxyConfig {
-  const factory _PostmanCollectionProxyConfig(
-      {final String? match,
-      final String? host,
-      final int? port,
-      final bool? tunnel,
-      final bool? disabled}) = _$PostmanCollectionProxyConfigImpl;
-  const _PostmanCollectionProxyConfig._() : super._();
-
-  factory _PostmanCollectionProxyConfig.fromJson(Map<String, dynamic> json) =
-      _$PostmanCollectionProxyConfigImpl.fromJson;
-
-  @override
-  String? get match;
-  @override
-  String? get host;
-  @override
-  int? get port;
-  @override
-  bool? get tunnel;
-  @override
-  bool? get disabled;
-
-  /// Create a copy of PostmanCollectionProxyConfig
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PostmanCollectionProxyConfigImplCopyWith<
-          _$PostmanCollectionProxyConfigImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-PostmanCollectionHeader _$PostmanCollectionHeaderFromJson(
-    Map<String, dynamic> json) {
-  return _PostmanCollectionHeader.fromJson(json);
-}
-
 /// @nodoc
 mixin _$PostmanCollectionHeader {
-  String get key => throw _privateConstructorUsedError;
-  String get value => throw _privateConstructorUsedError;
-  String? get type => throw _privateConstructorUsedError;
-  bool? get disabled => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(String key, String value, String? type, bool? disabled,
-            String? description)
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String key, String value, String? type, bool? disabled,
-            String? description)?
-        $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String key, String value, String? type, bool? disabled,
-            String? description)?
-        $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionHeader value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionHeader value)? $default,
-  ) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionHeader value)? $default, {
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this PostmanCollectionHeader to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String get key;
+  String get value;
+  String? get type;
+  bool? get disabled;
+  String? get description;
 
   /// Create a copy of PostmanCollectionHeader
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $PostmanCollectionHeaderCopyWith<PostmanCollectionHeader> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $PostmanCollectionHeaderCopyWith<$Res> {
-  factory $PostmanCollectionHeaderCopyWith(PostmanCollectionHeader value,
-          $Res Function(PostmanCollectionHeader) then) =
-      _$PostmanCollectionHeaderCopyWithImpl<$Res, PostmanCollectionHeader>;
-  @useResult
-  $Res call(
-      {String key,
-      String value,
-      String? type,
-      bool? disabled,
-      String? description});
-}
-
-/// @nodoc
-class _$PostmanCollectionHeaderCopyWithImpl<$Res,
-        $Val extends PostmanCollectionHeader>
-    implements $PostmanCollectionHeaderCopyWith<$Res> {
-  _$PostmanCollectionHeaderCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of PostmanCollectionHeader
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $PostmanCollectionHeaderCopyWith<PostmanCollectionHeader> get copyWith =>
+      _$PostmanCollectionHeaderCopyWithImpl<PostmanCollectionHeader>(
+        this as PostmanCollectionHeader,
+        _$identity,
+      );
+
+  /// Serializes this PostmanCollectionHeader to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? key = null,
-    Object? value = null,
-    Object? type = freezed,
-    Object? disabled = freezed,
-    Object? description = freezed,
-  }) {
-    return _then(_value.copyWith(
-      key: null == key
-          ? _value.key
-          : key // ignore: cast_nullable_to_non_nullable
-              as String,
-      value: null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String,
-      type: freezed == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String?,
-      disabled: freezed == disabled
-          ? _value.disabled
-          : disabled // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    final _this = this as PostmanCollectionHeader;
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PostmanCollectionHeader &&
+            (identical(other.key, _this.key) || other.key == _this.key) &&
+            (identical(other.value, _this.value) ||
+                other.value == _this.value) &&
+            (identical(other.type, _this.type) || other.type == _this.type) &&
+            (identical(other.disabled, _this.disabled) ||
+                other.disabled == _this.disabled) &&
+            (identical(other.description, _this.description) ||
+                other.description == _this.description));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode {
+    final _this = this as PostmanCollectionHeader;
+    return Object.hash(
+      runtimeType,
+      _this.key,
+      _this.value,
+      _this.type,
+      _this.disabled,
+      _this.description,
+    );
+  }
+
+  @override
+  String toString() {
+    final _this = this as PostmanCollectionHeader;
+    return 'PostmanCollectionHeader(key: ${_this.key}, value: ${_this.value}, type: ${_this.type}, disabled: ${_this.disabled}, description: ${_this.description})';
   }
 }
 
 /// @nodoc
-abstract class _$$PostmanCollectionHeaderImplCopyWith<$Res>
-    implements $PostmanCollectionHeaderCopyWith<$Res> {
-  factory _$$PostmanCollectionHeaderImplCopyWith(
-          _$PostmanCollectionHeaderImpl value,
-          $Res Function(_$PostmanCollectionHeaderImpl) then) =
-      __$$PostmanCollectionHeaderImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $PostmanCollectionHeaderCopyWith<$Res> {
+  factory $PostmanCollectionHeaderCopyWith(
+    PostmanCollectionHeader value,
+    $Res Function(PostmanCollectionHeader) _then,
+  ) = _$PostmanCollectionHeaderCopyWithImpl;
   @useResult
-  $Res call(
-      {String key,
-      String value,
-      String? type,
-      bool? disabled,
-      String? description});
+  $Res call({
+    String key,
+    String value,
+    String? type,
+    bool? disabled,
+    String? description,
+  });
 }
 
 /// @nodoc
-class __$$PostmanCollectionHeaderImplCopyWithImpl<$Res>
-    extends _$PostmanCollectionHeaderCopyWithImpl<$Res,
-        _$PostmanCollectionHeaderImpl>
-    implements _$$PostmanCollectionHeaderImplCopyWith<$Res> {
-  __$$PostmanCollectionHeaderImplCopyWithImpl(
-      _$PostmanCollectionHeaderImpl _value,
-      $Res Function(_$PostmanCollectionHeaderImpl) _then)
-      : super(_value, _then);
+class _$PostmanCollectionHeaderCopyWithImpl<$Res>
+    implements $PostmanCollectionHeaderCopyWith<$Res> {
+  _$PostmanCollectionHeaderCopyWithImpl(this._self, this._then);
+
+  final PostmanCollectionHeader _self;
+  final $Res Function(PostmanCollectionHeader) _then;
 
   /// Create a copy of PostmanCollectionHeader
   /// with the given fields replaced by the non-null parameter values.
@@ -8284,44 +9881,241 @@ class __$$PostmanCollectionHeaderImplCopyWithImpl<$Res>
     Object? disabled = freezed,
     Object? description = freezed,
   }) {
-    return _then(_$PostmanCollectionHeaderImpl(
-      key: null == key
-          ? _value.key
-          : key // ignore: cast_nullable_to_non_nullable
-              as String,
-      value: null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String,
-      type: freezed == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String?,
-      disabled: freezed == disabled
-          ? _value.disabled
-          : disabled // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      PostmanCollectionHeader(
+        key: null == key
+            ? _self.key
+            : key // ignore: cast_nullable_to_non_nullable
+                  as String,
+        value: null == value
+            ? _self.value
+            : value // ignore: cast_nullable_to_non_nullable
+                  as String,
+        type: freezed == type
+            ? _self.type
+            : type // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        disabled: freezed == disabled
+            ? _self.disabled
+            : disabled // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        description: freezed == description
+            ? _self.description
+            : description // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
+  }
+}
+
+/// Adds pattern-matching-related methods to [PostmanCollectionHeader].
+extension PostmanCollectionHeaderPatterns on PostmanCollectionHeader {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PostmanCollectionHeader value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionHeader() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_PostmanCollectionHeader value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionHeader():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_PostmanCollectionHeader value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionHeader() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+      String key,
+      String value,
+      String? type,
+      bool? disabled,
+      String? description,
+    )?
+    $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionHeader() when $default != null:
+        return $default(
+          _that.key,
+          _that.value,
+          _that.type,
+          _that.disabled,
+          _that.description,
+        );
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+      String key,
+      String value,
+      String? type,
+      bool? disabled,
+      String? description,
+    )
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionHeader():
+        return $default(
+          _that.key,
+          _that.value,
+          _that.type,
+          _that.disabled,
+          _that.description,
+        );
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+      String key,
+      String value,
+      String? type,
+      bool? disabled,
+      String? description,
+    )?
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PostmanCollectionHeader() when $default != null:
+        return $default(
+          _that.key,
+          _that.value,
+          _that.type,
+          _that.disabled,
+          _that.description,
+        );
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PostmanCollectionHeaderImpl extends _PostmanCollectionHeader {
-  const _$PostmanCollectionHeaderImpl(
-      {required this.key,
-      required this.value,
-      this.type,
-      this.disabled,
-      this.description})
-      : super._();
-
-  factory _$PostmanCollectionHeaderImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PostmanCollectionHeaderImplFromJson(json);
+class _PostmanCollectionHeader extends PostmanCollectionHeader {
+  const _PostmanCollectionHeader({
+    required this.key,
+    required this.value,
+    this.type,
+    this.disabled,
+    this.description,
+  }) : super._();
+  factory _PostmanCollectionHeader.fromJson(Map<String, dynamic> json) =>
+      _$PostmanCollectionHeaderFromJson(json);
 
   @override
   final String key;
@@ -8334,16 +10128,27 @@ class _$PostmanCollectionHeaderImpl extends _PostmanCollectionHeader {
   @override
   final String? description;
 
+  /// Create a copy of PostmanCollectionHeader
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'PostmanCollectionHeader(key: $key, value: $value, type: $type, disabled: $disabled, description: $description)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PostmanCollectionHeaderCopyWith<_PostmanCollectionHeader> get copyWith =>
+      __$PostmanCollectionHeaderCopyWithImpl<_PostmanCollectionHeader>(
+        this,
+        _$identity,
+      );
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$PostmanCollectionHeaderToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PostmanCollectionHeaderImpl &&
+            other is _PostmanCollectionHeader &&
             (identical(other.key, key) || other.key == key) &&
             (identical(other.value, value) || other.value == value) &&
             (identical(other.type, type) || other.type == type) &&
@@ -8355,115 +10160,76 @@ class _$PostmanCollectionHeaderImpl extends _PostmanCollectionHeader {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, key, value, type, disabled, description);
-
-  /// Create a copy of PostmanCollectionHeader
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PostmanCollectionHeaderImplCopyWith<_$PostmanCollectionHeaderImpl>
-      get copyWith => __$$PostmanCollectionHeaderImplCopyWithImpl<
-          _$PostmanCollectionHeaderImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(String key, String value, String? type, bool? disabled,
-            String? description)
-        $default,
-  ) {
-    return $default(key, value, type, disabled, description);
+  int get hashCode {
+    return Object.hash(runtimeType, key, value, type, disabled, description);
   }
 
   @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String key, String value, String? type, bool? disabled,
-            String? description)?
-        $default,
-  ) {
-    return $default?.call(key, value, type, disabled, description);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String key, String value, String? type, bool? disabled,
-            String? description)?
-        $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(key, value, type, disabled, description);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PostmanCollectionHeader value) $default,
-  ) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PostmanCollectionHeader value)? $default,
-  ) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PostmanCollectionHeader value)? $default, {
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PostmanCollectionHeaderImplToJson(
-      this,
-    );
+  String toString() {
+    return 'PostmanCollectionHeader(key: $key, value: $value, type: $type, disabled: $disabled, description: $description)';
   }
 }
 
-abstract class _PostmanCollectionHeader extends PostmanCollectionHeader {
-  const factory _PostmanCollectionHeader(
-      {required final String key,
-      required final String value,
-      final String? type,
-      final bool? disabled,
-      final String? description}) = _$PostmanCollectionHeaderImpl;
-  const _PostmanCollectionHeader._() : super._();
+/// @nodoc
+abstract mixin class _$PostmanCollectionHeaderCopyWith<$Res>
+    implements $PostmanCollectionHeaderCopyWith<$Res> {
+  factory _$PostmanCollectionHeaderCopyWith(
+    _PostmanCollectionHeader value,
+    $Res Function(_PostmanCollectionHeader) _then,
+  ) = __$PostmanCollectionHeaderCopyWithImpl;
+  @override
+  @useResult
+  $Res call({
+    String key,
+    String value,
+    String? type,
+    bool? disabled,
+    String? description,
+  });
+}
 
-  factory _PostmanCollectionHeader.fromJson(Map<String, dynamic> json) =
-      _$PostmanCollectionHeaderImpl.fromJson;
+/// @nodoc
+class __$PostmanCollectionHeaderCopyWithImpl<$Res>
+    implements _$PostmanCollectionHeaderCopyWith<$Res> {
+  __$PostmanCollectionHeaderCopyWithImpl(this._self, this._then);
 
-  @override
-  String get key;
-  @override
-  String get value;
-  @override
-  String? get type;
-  @override
-  bool? get disabled;
-  @override
-  String? get description;
+  final _PostmanCollectionHeader _self;
+  final $Res Function(_PostmanCollectionHeader) _then;
 
   /// Create a copy of PostmanCollectionHeader
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PostmanCollectionHeaderImplCopyWith<_$PostmanCollectionHeaderImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? key = null,
+    Object? value = null,
+    Object? type = freezed,
+    Object? disabled = freezed,
+    Object? description = freezed,
+  }) {
+    return _then(
+      _PostmanCollectionHeader(
+        key: null == key
+            ? _self.key
+            : key // ignore: cast_nullable_to_non_nullable
+                  as String,
+        value: null == value
+            ? _self.value
+            : value // ignore: cast_nullable_to_non_nullable
+                  as String,
+        type: freezed == type
+            ? _self.type
+            : type // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        disabled: freezed == disabled
+            ? _self.disabled
+            : disabled // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        description: freezed == description
+            ? _self.description
+            : description // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
+  }
 }
