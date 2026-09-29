@@ -399,4 +399,82 @@ void main() {
 
     expect(client, contains("'type': ['string', 'null']"));
   });
+
+  test('Spring-style */* responses are typed like JSON', () {
+    final client = renderSpec(
+      _spec(
+        paths: {
+          '/item': {
+            'get': {
+              'tags': ['items'],
+              'operationId': 'getItem',
+              'responses': {
+                '200': {
+                  'description': 'OK',
+                  'content': {
+                    '*/*': {
+                      'schema': {r'$ref': '#/components/schemas/Item'},
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+        schemas: {
+          'Item': {
+            'type': 'object',
+            'properties': {
+              'id': {'type': 'integer'},
+            },
+          },
+        },
+      ),
+    ).files['api_client/items_client.dart']!;
+
+    expect(client, contains('Future<HttpResponse<Item>> getItem('));
+  });
+
+  test('an operation accepting JSON and multipart gets one JSON body', () {
+    final client = renderSpec(
+      _spec(
+        paths: {
+          '/item': {
+            'post': {
+              'tags': ['items'],
+              'operationId': 'createItem',
+              'requestBody': {
+                'content': {
+                  'application/json': {
+                    'schema': {r'$ref': '#/components/schemas/Item'},
+                  },
+                  'multipart/form-data': {
+                    'schema': {r'$ref': '#/components/schemas/Item'},
+                  },
+                },
+              },
+              'responses': {
+                '200': {'description': 'OK'},
+              },
+            },
+          },
+        },
+        schemas: {
+          'Item': {
+            'type': 'object',
+            'properties': {
+              'id': {'type': 'integer'},
+            },
+          },
+        },
+      ),
+    ).files['api_client/items_client.dart']!;
+
+    expect(
+      RegExp(r'@(Body|Part)\(\) required \S+ requestBody').allMatches(client),
+      hasLength(1),
+    );
+    expect(client, isNot(contains('MultiPart')));
+    expect(client, contains('@Body() required Item requestBody'));
+  });
 }

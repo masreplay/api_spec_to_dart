@@ -225,10 +225,18 @@ class ApiClientGenerator {
         bool hasMediaType(String type) =>
             content.keys.any((key) => _mediaType(key) == type);
 
+        // One body per method: JSON (or form) wins over multipart.
+        final offersJson = content.entries.any(
+          (e) =>
+              _isJsonContent(e.key, e.value.schema) ||
+              _mediaType(e.key) == 'application/x-www-form-urlencoded',
+        );
+        final isMultipart = !offersJson && hasMediaType('multipart/form-data');
+
         for (final entry in content.entries) {
           switch (_mediaType(entry.key)) {
             case final type
-                when _isJson(type) ||
+                when _isJsonContent(type, entry.value.schema) ||
                     type == 'application/x-www-form-urlencoded':
               if (hasJsonBody) continue;
               hasJsonBody = true;
@@ -248,7 +256,7 @@ class ApiClientGenerator {
                     ),
                 ),
               );
-            case 'multipart/form-data':
+            case 'multipart/form-data' when isMultipart:
               requestBody.add(
                 Parameter(
                   (b) => b
@@ -338,14 +346,12 @@ class ApiClientGenerator {
                   ),
                 if (hasMediaType('application/x-www-form-urlencoded'))
                   refer('FormUrlEncoded()'),
-                if (hasMediaType('multipart/form-data')) refer('MultiPart()'),
+                if (isMultipart) refer('MultiPart()'),
                 if (isBinaryResponse)
                   refer('DioResponseType(ResponseType.bytes)'),
               ])
               ..returns = responseType
-              ..name = hasMediaType('multipart/form-data')
-                  ? '${methodName}_'
-                  : methodName
+              ..name = isMultipart ? '${methodName}_' : methodName
               ..optionalParameters.addAll([
                 ...requestBody,
                 ...parameters,
@@ -544,7 +550,9 @@ class ApiClientGenerator {
     final content = _successResponse(responses)?.content ?? {};
 
     // JSON wins: Swashbuckle lists text/plain and text/json next to it.
-    if (content.entries.firstWhereOrNull((e) => _isJson(e.key))
+    if (content.entries.firstWhereOrNull(
+          (e) => _isJsonContent(e.key, e.value.schema),
+        )
         case final json?) {
       final type = context.extension.typeConverter.get(
         json.value.schema,
@@ -591,6 +599,11 @@ class ApiClientGenerator {
 
   static String _mediaType(String contentType) =>
       contentType.split(';').first.trim().toLowerCase();
+
+  /// JSON, or Spring's `*/*` for anything that is not a file.
+  static bool _isJsonContent(String mediaType, OpenApiSchema? schema) =>
+      _isJson(mediaType) ||
+      (_mediaType(mediaType) == '*/*' && !_isBinary(mediaType, schema));
 
   static bool _isJson(String mediaType) {
     final type = _mediaType(mediaType);
