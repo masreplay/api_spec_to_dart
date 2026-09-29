@@ -69,12 +69,15 @@ void main() {
     expect(dartType({'type': 'string', 'format': 'uuid'}), 'String');
   });
 
-  test('Flutter-only types for FastAPI Flutter projects', () {
+  test('binary strings are multipart files for every source (#54)', () {
     final binary = {'type': 'string', 'format': 'binary'};
-    final time = {'type': 'string', 'format': 'time'};
-    expect(dartType(binary), 'String');
-    expect(dartType(time), 'String');
+    expect(dartType(binary), 'MultipartFile');
     expect(dartType(binary, config: fastApi, flutter: true), 'MultipartFile');
+  });
+
+  test('TimeOfDay only exists in FastAPI Flutter projects', () {
+    final time = {'type': 'string', 'format': 'time'};
+    expect(dartType(time), 'String');
     expect(dartType(time, config: fastApi, flutter: true), 'TimeOfDay');
   });
 

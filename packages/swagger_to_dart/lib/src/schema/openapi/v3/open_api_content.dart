@@ -34,9 +34,10 @@ abstract class OpenApiContentSchema with _$OpenApiContentSchema {
   const OpenApiContentSchema._();
 
   const factory OpenApiContentSchema({
+    /// Absent for e.g. `application/pdf: {}`.
     @OpenApiSchemaJsonConverter()
     @JsonKey(name: 'schema')
-    required OpenApiSchema schema,
+    OpenApiSchema? schema,
     @JsonKey(name: 'example') Object? example,
   }) = _OpenApiContentSchema;
 

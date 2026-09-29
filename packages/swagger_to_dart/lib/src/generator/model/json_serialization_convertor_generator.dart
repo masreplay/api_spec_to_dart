@@ -20,8 +20,7 @@ class JsonConvertorGenerator extends LibraryGenerator {
     final isFlutterProject = context.isFlutterProject;
 
     final customJsonConverters = <CustomJsonConverter>[
-      if (context.config.generationSource == GenerationSource.fastAPI)
-        getFastAPIMultipartFileJsonConvertor(),
+      getFastAPIMultipartFileJsonConvertor(),
       // TimeOfDay and Color only exist in Flutter.
       if (isFlutterProject &&
           (context.config.generationSource == GenerationSource.fastAPI ||

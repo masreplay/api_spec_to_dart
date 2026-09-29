@@ -1,0 +1,79 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Binary", "version": "1.0.0" },
+  "paths": {
+    "/image": {
+      "get": {
+        "tags": ["files"],
+        "operationId": "getImage",
+        "responses": {
+          "200": {
+            "description": "PNG",
+            "content": { "image/png": { "schema": { "type": "string", "format": "binary" } } }
+          }
+        }
+      }
+    },
+    "/report": {
+      "get": {
+        "tags": ["files"],
+        "operationId": "getReport",
+        "responses": { "200": { "description": "PDF", "content": { "application/pdf": {} } } }
+      }
+    },
+    "/text": {
+      "get": {
+        "tags": ["files"],
+        "operationId": "getText",
+        "responses": {
+          "200": { "description": "Text", "content": { "text/plain": { "schema": { "type": "string" } } } }
+        }
+      }
+    },
+    "/pet": {
+      "post": {
+        "tags": ["files"],
+        "operationId": "createPet",
+        "responses": {
+          "default": {
+            "description": "Error",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } }
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": { "schema": { "$ref": "#/components/schemas/Pet" } },
+              "application/json": { "schema": { "$ref": "#/components/schemas/Pet" } }
+            }
+          }
+        }
+      }
+    },
+    "/upload": {
+      "post": {
+        "tags": ["files"],
+        "operationId": "upload",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": { "schema": { "$ref": "#/components/schemas/UploadBody" } }
+          }
+        },
+        "responses": { "204": { "description": "Uploaded" } }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Pet": { "type": "object", "properties": { "name": { "type": "string" } } },
+      "Error": { "type": "object", "properties": { "message": { "type": "string" } } },
+      "UploadBody": {
+        "type": "object",
+        "required": ["file"],
+        "properties": {
+          "file": { "type": "string", "format": "binary" },
+          "note": { "type": "string" }
+        }
+      }
+    }
+  }
+}
