@@ -9,8 +9,9 @@ class PropertyGeneratorStrategy extends GeneratorStrategy {
     required String className,
     bool required = true,
     Map<String, String> overrideTypes = const {},
+    String? name,
   }) {
-    final name = Renaming.instance.renameProperty(property.key);
+    final fieldName = name ?? Renaming.instance.renameProperty(property.key);
 
     final contextName = '${className}_${property.key}';
     final defaultValue = context.extension.typeConverter.getDefaultValue(
@@ -37,16 +38,16 @@ class PropertyGeneratorStrategy extends GeneratorStrategy {
 
     return Parameter(
       (b) => b
-        ..docs.add('/// $name')
+        ..docs.add('/// $fieldName')
         ..named = true
         ..required = isRequired
         ..annotations.addAll([
           if (hasDefaultValue) refer('Default($defaultValue)'),
           refer(
-            'JsonKey(name: $className.${RegularModelGeneratorStrategy.getKey(name)})',
+            'JsonKey(name: $className.${RegularModelGeneratorStrategy.getKey(fieldName)})',
           ),
         ])
-        ..name = name
+        ..name = fieldName
         ..type = refer(adjustedDartType),
     );
   }

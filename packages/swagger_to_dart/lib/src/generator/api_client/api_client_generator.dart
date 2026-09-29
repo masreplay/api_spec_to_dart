@@ -422,6 +422,19 @@ class ApiClientGenerator {
 
     final List<Parameter> result = [];
 
+    // Unique among themselves and the parameters every method declares.
+    final names = Renaming.instance.propertyNames(
+      parameters.map((p) => p.name),
+      reserved: {
+        _requestBodyName,
+        _queriesParameterName,
+        'extras',
+        'cancelToken',
+        'onSendProgress',
+        'onReceiveProgress',
+      },
+    );
+
     if (useClass && queryParameters.isNotEmpty) {
       final strategy = RegularModelGeneratorStrategy(context);
 
@@ -498,7 +511,7 @@ class ApiClientGenerator {
               },
             ])
             ..named = true
-            ..name = Renaming.instance.renameProperty(p.name)
+            ..name = names[p.name]!
             ..required = isRequired && defaultValue == null
             ..defaultTo = defaultValue == null ? null : Code(defaultValue)
             ..type = refer(

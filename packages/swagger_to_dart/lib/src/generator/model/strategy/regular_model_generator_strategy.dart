@@ -10,6 +10,7 @@ class RegularModelGeneratorStrategy
   Library build(MapEntry<String, OpenApiSchemas> model) {
     final title = model.value.title;
     final properties = model.value.properties ?? {};
+    final names = Renaming.instance.propertyNames(properties.keys);
 
     String effectiveTitle = title ?? model.key;
 
@@ -43,7 +44,7 @@ class RegularModelGeneratorStrategy
               ..mixins.addAll([refer('_\$$className')])
               ..fields.addAll([
                 ...properties.entries.map((entry) {
-                  final name = Renaming.instance.renameProperty(entry.key);
+                  final name = names[entry.key]!;
 
                   return Field(
                     (b) => b
@@ -74,6 +75,7 @@ class RegularModelGeneratorStrategy
                         return context.extension.propertyGenerator.build(
                           entry,
                           className: className,
+                          name: names[entry.key],
                           required: (model.value.required_ ?? []).contains(
                             entry.key,
                           ),

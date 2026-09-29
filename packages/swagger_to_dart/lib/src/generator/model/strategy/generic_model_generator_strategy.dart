@@ -83,6 +83,7 @@ class GenericModelGeneratorStrategy
     final filename = Renaming.instance.renameFile(className);
 
     final properties = model.value.properties ?? {};
+    final names = Renaming.instance.propertyNames(properties.keys);
     final genericTypesString = genericTypeParams.join(', ');
 
     return Library(
@@ -110,7 +111,7 @@ class GenericModelGeneratorStrategy
               ..mixins.add(refer('_\$$className<$genericTypesString>'))
               ..fields.addAll([
                 ...properties.entries.map((entry) {
-                  final name = Renaming.instance.renameProperty(entry.key);
+                  final name = names[entry.key]!;
 
                   return Field(
                     (b) => b
@@ -143,6 +144,7 @@ class GenericModelGeneratorStrategy
                         return context.extension.propertyGenerator.build(
                           entry,
                           className: className,
+                          name: names[entry.key],
                           required: (model.value.required_ ?? []).contains(
                             entry.key,
                           ),
