@@ -62,11 +62,9 @@ class GenericModelGeneratorStrategy
       final genericType = i == 0 ? 'T' : 'T${i + 1}';
       genericTypeParams.add(genericType);
 
-      final genericArg = genericArguments[i];
-      final resolvedType = _resolveGenericType(genericArg);
-
-      final finalResolvedType = resolvedType ?? genericArg;
-      overrideTypes[finalResolvedType] = genericType;
+      // ponytail: fields whose type equals the argument's type become the
+      // type parameter; a coincidental same-typed field is substituted too.
+      overrideTypes[_resolveGenericType(genericArguments[i])] = genericType;
 
       fromJsonParams.add(
         Parameter(
@@ -145,6 +143,9 @@ class GenericModelGeneratorStrategy
                         return context.extension.propertyGenerator.build(
                           entry,
                           className: className,
+                          required: (model.value.required_ ?? []).contains(
+                            entry.key,
+                          ),
                           overrideTypes: overrideTypes,
                         );
                       }),
@@ -173,23 +174,43 @@ class GenericModelGeneratorStrategy
     );
   }
 
-  String? _resolveGenericType(String genericArg) {
-    final schemas = context.openApi.components?.schemas ?? {};
-
-    for (final entry in schemas.entries) {
-      final matches =
-          (entry.key == genericArg ||
-          entry.value.title == genericArg ||
-          entry.key.contains(genericArg));
-
-      if (matches) {
-        return context.extension.typeConverter.getRef(
-          OpenApiSchemaRef(ref: '#/components/schemas/${entry.key}'),
-        );
-      }
+  /// Dart type of a generic argument: a component schema when one has
+  /// exactly that name or title, otherwise a primitive/generic title.
+  String _resolveGenericType(String genericArg) {
+    final key = _schemaKey(genericArg);
+    if (key != null) {
+      return context.extension.typeConverter.getRef(
+        OpenApiSchemaRef(ref: '#/components/schemas/$key'),
+      );
     }
+    return context.extension.typeConverter.dartTypeForTitle(genericArg);
+  }
 
+  String? _schemaKey(String name) {
+    final schemas = context.openApi.components?.schemas ?? {};
+    if (schemas.containsKey(name)) return name;
+    for (final entry in schemas.entries) {
+      if (entry.value.title == name) return entry.key;
+    }
     return null;
+  }
+
+  /// Whether every type argument of [model]'s generic title is a component
+  /// schema. Such instantiations substitute unambiguously, so the generic
+  /// class is preferably built from one of them.
+  bool hasSchemaArguments(MapEntry<String, OpenApiSchemas> model) {
+    final title = model.value.title ?? model.key;
+    final standard = GenericParserFactory.instance
+        .getParser(source: context.config.generationSource, title: title)
+        ?.toStandardFormat(title);
+    if (standard == null) return false;
+
+    final arguments = GenericParserFactory.instance
+        .detectParser(standard)
+        ?.extractGenericArguments(standard);
+    return arguments != null &&
+        arguments.isNotEmpty &&
+        arguments.every((a) => _schemaKey(a) != null);
   }
 
   static String? _getKey(String name) => '${name}Key_';

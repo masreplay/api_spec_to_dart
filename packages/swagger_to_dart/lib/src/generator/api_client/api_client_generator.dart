@@ -185,6 +185,7 @@ class ApiClientGenerator {
     final extensionMethods = <Method>[];
 
     final methods = <Method>[];
+    final usedMethodNames = <String>{};
 
     for (final path in paths.entries) {
       for (final method in path.value.entries) {
@@ -192,10 +193,15 @@ class ApiClientGenerator {
           method.key.name,
         );
 
-        final methodName = Renaming.instance.renameFunction(
+        final baseMethodName = Renaming.instance.renameFunction(
           method.value.operationId ??
               '${clientName}_${path.key}_${method.key.name}',
         );
+        // operationIds are not always unique; methods in one class must be.
+        var methodName = baseMethodName;
+        for (var i = 2; !usedMethodNames.add(methodName); i++) {
+          methodName = '$baseMethodName$i';
+        }
 
         final parameters = _handleParameters(
           method.value.parameters ?? [],
@@ -450,14 +456,13 @@ class ApiClientGenerator {
         continue;
       }
 
-      final dartType = context.extension.typeConverter.get(
-        p.schema,
-        className: className,
-      );
-
-      final defaultValue = context.extension.typeConverter.getDefaultValue(
-        p.schema,
-      );
+      final typeConverter = context.extension.typeConverter;
+      final defaultValue = typeConverter.getDefaultValue(p.schema);
+      // Path parameters are always required; others only when the spec says
+      // so (#50). Optional ones without a default must accept null.
+      final isRequired =
+          p.in_ == OpenApiPathMethodParameterType.path || p.required_ == true;
+      final dartType = typeConverter.get(p.schema, className: className);
 
       result.add(
         Parameter(
@@ -480,9 +485,13 @@ class ApiClientGenerator {
             ])
             ..named = true
             ..name = Renaming.instance.renameProperty(p.name)
-            ..required = defaultValue == null
+            ..required = isRequired && defaultValue == null
             ..defaultTo = defaultValue == null ? null : Code(defaultValue)
-            ..type = refer(dartType),
+            ..type = refer(
+              isRequired || defaultValue != null
+                  ? dartType
+                  : typeConverter.nullable(dartType),
+            ),
         ),
       );
     }

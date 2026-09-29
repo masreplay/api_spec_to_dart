@@ -26,13 +26,22 @@ class ModelGenerator extends LibraryGenerator {
   }
 
   void generate() {
-    if (context.openApi.components case final openApiComponents?) {
-      final schemas = openApiComponents.schemas ?? {};
-      for (final entry in schemas.entries) {
-        final model = build(entry);
+    final schemas = context.openApi.components?.schemas ?? {};
+    final generic = GenericModelGeneratorStrategy(context);
 
-        context.addModel(model);
+    // A generic class is built from the first instantiation registered, so
+    // instantiations with component-schema arguments go first.
+    final deferred = <MapEntry<String, OpenApiSchemas>>[];
+    for (final entry in schemas.entries) {
+      if (generic.shouldUseGenericStrategy(entry) &&
+          !generic.hasSchemaArguments(entry)) {
+        deferred.add(entry);
+        continue;
       }
+      context.addModel(build(entry));
+    }
+    for (final entry in deferred) {
+      context.addModel(build(entry));
     }
   }
 }
