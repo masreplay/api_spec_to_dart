@@ -1,5 +1,4 @@
 import 'package:code_builder/code_builder.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 class PropertyGeneratorStrategy extends GeneratorStrategy {
@@ -37,7 +36,7 @@ class PropertyGeneratorStrategy extends GeneratorStrategy {
         ..named = true
         ..required = isRequired
         ..annotations.addAll([
-          if (hasDefaultValue) refer('$Default($defaultValue)'),
+          if (hasDefaultValue) refer('Default($defaultValue)'),
           refer(
               'JsonKey(name: $className.${RegularModelGeneratorStrategy.getKey(name)})'),
         ])

@@ -414,8 +414,11 @@ mixin _$OpenApiSchemas {
   String? get description;
   @JsonKey(name: 'x-enum-varnames')
   List<String>? get xEnumVarnames;
+
+  /// `bool` or a schema (Swashbuckle emits `{}` for free-form objects and
+  /// `{"type": ...}` for dictionaries).
   @JsonKey(name: 'additionalProperties')
-  bool? get additionalProperties;
+  Object? get additionalProperties;
 
   /// Create a copy of OpenApiSchemas
   /// with the given fields replaced by the non-null parameter values.
@@ -455,11 +458,10 @@ mixin _$OpenApiSchemas {
               other.xEnumVarnames,
               _this.xEnumVarnames,
             ) &&
-            (identical(
-                  other.additionalProperties,
-                  _this.additionalProperties,
-                ) ||
-                other.additionalProperties == _this.additionalProperties));
+            const DeepCollectionEquality().equals(
+              other.additionalProperties,
+              _this.additionalProperties,
+            ));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -476,7 +478,7 @@ mixin _$OpenApiSchemas {
       _this.title,
       _this.description,
       const DeepCollectionEquality().hash(_this.xEnumVarnames),
-      _this.additionalProperties,
+      const DeepCollectionEquality().hash(_this.additionalProperties),
     );
   }
 
@@ -505,7 +507,7 @@ abstract mixin class $OpenApiSchemasCopyWith<$Res> {
     @JsonKey(name: 'title') String? title,
     @JsonKey(name: 'description') String? description,
     @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames,
-    @JsonKey(name: 'additionalProperties') bool? additionalProperties,
+    @JsonKey(name: 'additionalProperties') Object? additionalProperties,
   });
 }
 
@@ -565,8 +567,7 @@ class _$OpenApiSchemasCopyWithImpl<$Res>
                   as List<String>?,
         additionalProperties: freezed == additionalProperties
             ? _self.additionalProperties
-            : additionalProperties // ignore: cast_nullable_to_non_nullable
-                  as bool?,
+            : additionalProperties,
       ),
     );
   }
@@ -676,7 +677,7 @@ extension OpenApiSchemasPatterns on OpenApiSchemas {
       @JsonKey(name: 'title') String? title,
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames,
-      @JsonKey(name: 'additionalProperties') bool? additionalProperties,
+      @JsonKey(name: 'additionalProperties') Object? additionalProperties,
     )?
     $default, {
     required TResult orElse(),
@@ -726,7 +727,7 @@ extension OpenApiSchemasPatterns on OpenApiSchemas {
       @JsonKey(name: 'title') String? title,
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames,
-      @JsonKey(name: 'additionalProperties') bool? additionalProperties,
+      @JsonKey(name: 'additionalProperties') Object? additionalProperties,
     )
     $default,
   ) {
@@ -774,7 +775,7 @@ extension OpenApiSchemasPatterns on OpenApiSchemas {
       @JsonKey(name: 'title') String? title,
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames,
-      @JsonKey(name: 'additionalProperties') bool? additionalProperties,
+      @JsonKey(name: 'additionalProperties') Object? additionalProperties,
     )?
     $default,
   ) {
@@ -878,9 +879,11 @@ class _OpenApiSchemas extends OpenApiSchemas {
     return EqualUnmodifiableListView(value);
   }
 
+  /// `bool` or a schema (Swashbuckle emits `{}` for free-form objects and
+  /// `{"type": ...}` for dictionaries).
   @override
   @JsonKey(name: 'additionalProperties')
-  final bool? additionalProperties;
+  final Object? additionalProperties;
 
   /// Create a copy of OpenApiSchemas
   /// with the given fields replaced by the non-null parameter values.
@@ -918,8 +921,10 @@ class _OpenApiSchemas extends OpenApiSchemas {
               other.xEnumVarnames,
               _xEnumVarnames,
             ) &&
-            (identical(other.additionalProperties, additionalProperties) ||
-                other.additionalProperties == additionalProperties));
+            const DeepCollectionEquality().equals(
+              other.additionalProperties,
+              additionalProperties,
+            ));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -935,7 +940,7 @@ class _OpenApiSchemas extends OpenApiSchemas {
       title,
       description,
       const DeepCollectionEquality().hash(_xEnumVarnames),
-      additionalProperties,
+      const DeepCollectionEquality().hash(additionalProperties),
     );
   }
 
@@ -965,7 +970,7 @@ abstract mixin class _$OpenApiSchemasCopyWith<$Res>
     @JsonKey(name: 'title') String? title,
     @JsonKey(name: 'description') String? description,
     @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames,
-    @JsonKey(name: 'additionalProperties') bool? additionalProperties,
+    @JsonKey(name: 'additionalProperties') Object? additionalProperties,
   });
 }
 
@@ -1025,8 +1030,7 @@ class __$OpenApiSchemasCopyWithImpl<$Res>
                   as List<String>?,
         additionalProperties: freezed == additionalProperties
             ? _self.additionalProperties
-            : additionalProperties // ignore: cast_nullable_to_non_nullable
-                  as bool?,
+            : additionalProperties,
       ),
     );
   }

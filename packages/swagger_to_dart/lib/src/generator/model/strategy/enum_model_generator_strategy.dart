@@ -1,5 +1,4 @@
 import 'package:code_builder/code_builder.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 ///
@@ -105,7 +104,7 @@ class EnumModelGeneratorStrategy
         : OpenApiSchemaVarType.string;
 
     final referType =
-        refer(enumType == OpenApiSchemaVarType.integer ? '$int' : '$String');
+        refer(enumType == OpenApiSchemaVarType.integer ? 'int' : 'String');
     return Library(
       (b) => b
         ..comments.addAll([
@@ -121,14 +120,14 @@ class EnumModelGeneratorStrategy
         ])
         ..body.addAll([
           Enum((b) => b
-            ..annotations.add(refer('$JsonEnum(alwaysCreate: true)'))
+            ..annotations.add(refer('JsonEnum(alwaysCreate: true)'))
             ..name = className
             ..values.addAll([
               for (final value in values)
                 EnumValue(
                   (b) => b
                     ..annotations.add(refer(
-                        '$JsonValue(${enumType == OpenApiSchemaVarType.integer ? '$value' : '"$value"'})'))
+                        'JsonValue(${enumType == OpenApiSchemaVarType.integer ? '$value' : '"$value"'})'))
                     ..name = memberNames[value.toString()]!,
                 ),
             ])
