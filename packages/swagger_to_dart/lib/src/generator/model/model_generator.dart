@@ -38,22 +38,7 @@ class ModelGenerator extends LibraryGenerator {
     final schemas = context.openApi.components?.schemas ?? {};
     final generic = GenericModelGeneratorStrategy(context);
 
-    // ponytail: approximates component class names (generic instantiations
-    // are keyed by their full title), so an inline model may take a suffix
-    // it did not strictly need.
-    final prefixes = context.config.model.removeModelPrefixes;
-    for (final MapEntry(:key, :value) in schemas.entries) {
-      for (final name in {key, ?value.title}) {
-        context.reservedModelNames.add(
-          Renaming.instance.renameFile(
-            Renaming.instance.renameClass(
-              name,
-              removePrefixes: prefixes.isNotEmpty ? prefixes : null,
-            ),
-          ),
-        );
-      }
-    }
+    _nameComponents(schemas, generic);
 
     // A generic class is built from the first instantiation registered, so
     // instantiations with component-schema arguments go first.
@@ -112,5 +97,39 @@ class ModelGenerator extends LibraryGenerator {
       required_: [...required],
       allOf: null,
     );
+  }
+
+  /// Assigns every non-generic component a unique class name: its title (or
+  /// key); when another component already took that name, its key; then a
+  /// numeric suffix. Generic instantiations share their base class name.
+  void _nameComponents(
+    Map<String, OpenApiSchemas> schemas,
+    GenericModelGeneratorStrategy generic,
+  ) {
+    final prefixes = context.config.model.removeModelPrefixes;
+    String className(String name) => Renaming.instance.renameClass(
+      name,
+      removePrefixes: prefixes.isNotEmpty ? prefixes : null,
+    );
+
+    final taken = <String>{};
+    for (final entry in schemas.entries) {
+      if (generic.shouldUseGenericStrategy(entry)) {
+        if (generic.baseClassName(entry) case final base?) taken.add(base);
+      }
+    }
+
+    for (final entry in schemas.entries) {
+      if (generic.shouldUseGenericStrategy(entry)) continue;
+      final preferred = className(entry.value.title ?? entry.key);
+      var name = taken.contains(preferred) ? className(entry.key) : preferred;
+      for (var i = 2; taken.contains(name); i++) {
+        name = '${className(entry.key)}$i';
+      }
+      taken.add(name);
+      context.componentClassNames[entry.key] = name;
+    }
+
+    context.reservedModelNames.addAll(taken.map(Renaming.instance.renameFile));
   }
 }

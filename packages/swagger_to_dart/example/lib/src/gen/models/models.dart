@@ -45,6 +45,8 @@ export 'user_create.dart';
 export 'user_level.dart';
 export 'validation_error.dart';
 export 'version_model.dart';
+export 'app_router_generic_router_item_response.dart';
+export 'app_router_items_router_item_response.dart';
 export 'basic_basic_boolean_query_parameters.dart';
 export 'basic_basic_string_query_parameters.dart';
 export 'basic_datetime_date_query_parameters.dart';

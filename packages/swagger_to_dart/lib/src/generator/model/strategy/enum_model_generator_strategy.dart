@@ -40,10 +40,12 @@ class EnumModelGeneratorStrategy
   @override
   Library build(MapEntry<String, OpenApiSchemas> model) {
     final prefixes = context.config.model.removeModelPrefixes;
-    final className = Renaming.instance.renameClass(
-      model.key,
-      removePrefixes: prefixes.isNotEmpty ? prefixes : null,
-    );
+    final className =
+        context.componentClassNames[model.key] ??
+        Renaming.instance.renameClass(
+          model.key,
+          removePrefixes: prefixes.isNotEmpty ? prefixes : null,
+        );
     final filename = Renaming.instance.renameFile(className);
 
     // Strings or ints; a `null` entry (OpenAPI 3.1 nullable enum) is not a

@@ -34,6 +34,11 @@ class GenerationContext {
   /// File names of component schemas; inline models never take them.
   final Set<String> reservedModelNames = {};
 
+  /// Class name of every non-generic component schema, by schema key. Unique
+  /// even when several schemas share a title (e.g. FastAPI's `X-Input` /
+  /// `X-Output`); references and strategies both read it.
+  final Map<String, String> componentClassNames = {};
+
   /// Adds a component model. The first model for a file name wins; a
   /// different model mapping to the same name is reported, not silently
   /// lost — unless [isGenericInstantiation], where every instantiation of
@@ -88,6 +93,7 @@ class GenerationContext {
     _models.clear();
     _apiClients.clear();
     reservedModelNames.clear();
+    componentClassNames.clear();
     extension.modelGenerator.generate();
     extension.apiClientGenerator.generate();
   }

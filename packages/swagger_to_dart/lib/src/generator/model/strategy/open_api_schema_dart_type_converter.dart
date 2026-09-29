@@ -77,6 +77,8 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
       dartType == 'dynamic' || dartType.endsWith('?') ? dartType : '$dartType?';
 
   String getRef(OpenApiSchemaRef schema) {
+    if (context.componentClassNames[schema.name] case final name?) return name;
+
     final schemas = context.openApi.getOpenApiSchemasByRef(schema.ref!);
     final title = schemas?.title ?? schema.name;
 
