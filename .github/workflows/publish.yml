@@ -16,6 +16,16 @@ jobs:
 
       - uses: dart-lang/setup-dart@v1
 
+      - name: Resolve workspace
+        run: dart pub get --no-example
+
+      - name: Analyze
+        run: dart analyze --fatal-infos packages/swagger_to_dart
+
+      - name: Test (unit, golden, e2e)
+        working-directory: packages/swagger_to_dart
+        run: dart test
+
       - name: Remove symlinks and copy actual files
         run: |
           rm -f packages/swagger_to_dart/README.md
