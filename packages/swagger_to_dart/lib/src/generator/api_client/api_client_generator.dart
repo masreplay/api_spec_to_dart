@@ -221,21 +221,15 @@ class ApiClientGenerator {
         final content = method.value.requestBody?.content ?? {};
         bool hasJsonBody = false;
 
-        for (final entry in content.entries) {
-          OpenApiContentType? contentType;
-          try {
-            contentType = OpenApiContentType.fromJson(entry.key);
-          } catch (e) {
-            // Unknown content type — skip silently
-          }
+        // Media types without parameters (`; charset=utf-8`).
+        bool hasMediaType(String type) =>
+            content.keys.any((key) => _mediaType(key) == type);
 
-          switch (contentType) {
-            case null:
-              continue;
-            case OpenApiContentType.applicationJson:
-            case OpenApiContentType.textJson:
-            case OpenApiContentType.applicationWildcardJson:
-            case OpenApiContentType.applicationXWwwFormUrlencoded:
+        for (final entry in content.entries) {
+          switch (_mediaType(entry.key)) {
+            case final type
+                when _isJson(type) ||
+                    type == 'application/x-www-form-urlencoded':
               if (hasJsonBody) continue;
               hasJsonBody = true;
               requestBody.add(
@@ -254,7 +248,7 @@ class ApiClientGenerator {
                     ),
                 ),
               );
-            case OpenApiContentType.multipartFormData:
+            case 'multipart/form-data':
               requestBody.add(
                 Parameter(
                   (b) => b
@@ -305,11 +299,16 @@ class ApiClientGenerator {
                 ),
               );
               break;
+            default:
+              // Text, XML or binary: handled as a raw body below.
+              continue;
           }
         }
 
         // Text, XML or binary bodies (#56): sent as-is with their media type.
-        final rawBody = requestBody.isEmpty ? content.entries.firstOrNull : null;
+        final rawBody = requestBody.isEmpty
+            ? content.entries.firstOrNull
+            : null;
         if (rawBody != null) {
           requestBody.add(
             Parameter(
@@ -337,19 +336,14 @@ class ApiClientGenerator {
                     "Headers(<String, dynamic>{'Content-Type': "
                     '${dartString(rawBody.key)}})',
                   ),
-                if (content[OpenApiContentType.applicationXWwwFormUrlencoded
-                        .toJson()] !=
-                    null)
+                if (hasMediaType('application/x-www-form-urlencoded'))
                   refer('FormUrlEncoded()'),
-                if (content[OpenApiContentType.multipartFormData.toJson()] !=
-                    null)
-                  refer('MultiPart()'),
+                if (hasMediaType('multipart/form-data')) refer('MultiPart()'),
                 if (isBinaryResponse)
                   refer('DioResponseType(ResponseType.bytes)'),
               ])
               ..returns = responseType
-              ..name =
-                  content[OpenApiContentType.multipartFormData.toJson()] != null
+              ..name = hasMediaType('multipart/form-data')
                   ? '${methodName}_'
                   : methodName
               ..optionalParameters.addAll([
@@ -550,7 +544,8 @@ class ApiClientGenerator {
     final content = _successResponse(responses)?.content ?? {};
 
     // JSON wins: Swashbuckle lists text/plain and text/json next to it.
-    if (content.entries.firstWhereOrNull((e) => _isJson(e.key)) case final json?) {
+    if (content.entries.firstWhereOrNull((e) => _isJson(e.key))
+        case final json?) {
       final type = context.extension.typeConverter.get(
         json.value.schema,
         className: className,
@@ -586,14 +581,19 @@ class ApiClientGenerator {
   OpenApiPathMethodResponse? _successResponse(
     OpenApiPathMethodResponses responses,
   ) {
-    final success = responses.keys.where((code) => code.startsWith('2')).sorted();
+    final success = responses.keys
+        .where((code) => code.startsWith('2'))
+        .sorted();
     return success.isNotEmpty
         ? responses[success.first]
         : responses['default'] ?? responses.values.firstOrNull;
   }
 
+  static String _mediaType(String contentType) =>
+      contentType.split(';').first.trim().toLowerCase();
+
   static bool _isJson(String mediaType) {
-    final type = mediaType.split(';').first.trim();
+    final type = _mediaType(mediaType);
     return type == 'application/json' ||
         type == 'text/json' ||
         type.endsWith('+json');
@@ -604,7 +604,6 @@ class ApiClientGenerator {
       const ['image/', 'audio/', 'video/'].any(mediaType.startsWith) ||
       mediaType == 'application/octet-stream' ||
       mediaType == 'application/pdf';
-
 
   List<Parameter> _extraParameters({
     required Map<String, dynamic>? openapiMetadata,
@@ -648,7 +647,8 @@ class ApiClientGenerator {
 /// Dart source for a JSON-like [value] (maps, lists, strings, numbers).
 String encodeWithRawKeys(dynamic value) {
   return switch (value) {
-    Map() => '{${value.entries.map((e) => '${dartString('${e.key}')}: ${encodeWithRawKeys(e.value)}').join(', ')}}',
+    Map() =>
+      '{${value.entries.map((e) => '${dartString('${e.key}')}: ${encodeWithRawKeys(e.value)}').join(', ')}}',
     List() => '[${value.map(encodeWithRawKeys).join(', ')}]',
     String() => dartString(value),
     _ => '$value',
