@@ -298,8 +298,8 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
       case OpenApiSchemaVarType.object:
         // Map values: `additionalProperties` (OpenAPI), `items` (legacy).
         final items = switch (schema.additionalProperties) {
-          final Map<String, dynamic> values => const OpenApiSchemaJsonConverter()
-              .fromJson(values),
+          final Map<String, dynamic> values =>
+            const OpenApiSchemaJsonConverter().fromJson(values),
           _ => schema.items,
         };
         final dartType = items == null
@@ -341,7 +341,9 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
           return _enumDefault(className, className, values, default_);
         }
       case OpenApiSchemaRef schema:
-        final values = context.openApi.getOpenApiSchemasByRef(schema.ref!)?.enum_;
+        final values = context.openApi
+            .getOpenApiSchemasByRef(schema.ref!)
+            ?.enum_;
         if (values != null) {
           return _enumDefault(schema.name, getRef(schema), values, default_);
         }
@@ -399,5 +401,4 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
       _ => '$value',
     };
   }
-
 }

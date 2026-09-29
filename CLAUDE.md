@@ -12,7 +12,9 @@ Rules for agents working in this repo:
   read the diff of every changed `.golden`; never refresh goldens to silence a
   failure you have not explained.
 - **Done means:** `fvm dart test` (includes e2e) and
-  `fvm dart analyze --fatal-infos` pass in `packages/swagger_to_dart`.
+  `fvm dart analyze --fatal-infos` pass in `packages/swagger_to_dart`, and
+  `fvm dart format` leaves the hand-written files you touched unchanged
+  (CI's format step and pana both fail otherwise).
 - Every string emitted into generated code goes through `dartString()`
   (`lib/src/code/string.dart`); never hand-quote.
 - Use `fvm dart …`; outside the repo call the fvm SDK's `dart` binary directly
