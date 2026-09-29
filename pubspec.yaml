@@ -7,3 +7,4 @@ environment:
 workspace:
   - packages/swagger_to_dart
   - packages/postman_collection
+  - packages/swagger_to_dart_e2e
