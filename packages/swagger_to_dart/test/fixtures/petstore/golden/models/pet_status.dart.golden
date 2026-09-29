@@ -1,14 +1,16 @@
-// PetStatus
-// {
-//     "type": "string",
-//     "enum": [
-//         "available",
-//         "pending",
-//         "sold"
-//     ]
-// }
-
-library pet_status;
+/// PetStatus
+///
+/// ```json
+/// {
+///     "type": "string",
+///     "enum": [
+///         "available",
+///         "pending",
+///         "sold"
+///     ]
+/// }
+/// ```
+library;
 
 import 'exports.dart';
 part 'pet_status.g.dart';

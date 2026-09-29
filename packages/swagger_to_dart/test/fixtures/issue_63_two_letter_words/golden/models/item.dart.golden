@@ -1,4 +1,6 @@
 /// Item
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "id": {
@@ -16,11 +18,12 @@
 ///         "id"
 ///     ]
 /// }
-library item;
+/// ```
+library;
 
 import 'exports.dart';
 part 'item.freezed.dart';
-part 'item.g.dart'; // Item
+part 'item.g.dart';
 
 @freezed
 abstract class Item with _$Item {

@@ -1,4 +1,6 @@
 /// Token
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "access_token": {
@@ -14,11 +16,12 @@
 ///         "access_token"
 ///     ]
 /// }
-library token;
+/// ```
+library;
 
 import 'exports.dart';
 part 'token.freezed.dart';
-part 'token.g.dart'; // Token
+part 'token.g.dart';
 
 @freezed
 abstract class Token with _$Token {

@@ -32,7 +32,7 @@ class SwaggerToDartCodeGenerator {
 
     for (final MapEntry(key: filePath, value: library)
         in _libraries().entries) {
-      final source = '${library.accept(DartEmitter.scoped())}';
+      final source = '${_clean(library).accept(DartEmitter.scoped())}';
       try {
         files[filePath] = formatter.format(source);
       } on FormatterException catch (e) {
@@ -76,6 +76,21 @@ class SwaggerToDartCodeGenerator {
   }
 
   Future<void> generate() => write();
+
+  /// Unnamed library (the name only carries the file name internally) with
+  /// duplicate directives removed.
+  Library _clean(Library library) {
+    final seen = <String>{};
+    final directives = [
+      for (final d in library.directives)
+        if (seen.add('${d.type}|${d.url}|${d.as}|${d.show}|${d.hide}')) d,
+    ];
+    return library.rebuild(
+      (b) => b
+        ..name = null
+        ..directives.replace(directives),
+    );
+  }
 
   Map<String, Library> _libraries() {
     final globalImports = [

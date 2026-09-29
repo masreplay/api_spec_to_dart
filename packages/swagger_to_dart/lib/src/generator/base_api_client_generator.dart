@@ -42,19 +42,16 @@ class BaseApiClientGenerator {
             Directive.import(import),
           Directive.import('package:dio/dio.dart'),
           Directive.import('package:retrofit/retrofit.dart'),
-          Directive.import('exports.dart'),
+          if (context.apiClients.isNotEmpty) Directive.import('exports.dart'),
         ])
         ..body.addAll([
           Class(
             (b) => b
               ..docs.addAll([
                 if (context.openApi.info case final info?)
-                  ...JsonFactory.instance
-                      .encode(info.toJson())
-                      .split('\n')
-                      .map((e) => '/// $e'),
-                if (context.openApi.servers case final servers?)
-                  ...servers.map((e) => '/// ${e.url}'),
+                  ...JsonFactory.instance.docs(info.title, info.toJson()),
+                for (final server in context.openApi.servers ?? [])
+                  '/// Server: `${server.url}`',
               ])
               ..name = className
               ..constructors.addAll([
