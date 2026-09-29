@@ -24,7 +24,7 @@ class ModelGenerator extends LibraryGenerator {
     return strategy.build(model);
   }
 
-  Future<void> generate() async {
+  void generate() {
     if (context.openApi.components case final openApiComponents?) {
       final schemas = openApiComponents.schemas ?? {};
       for (final entry in schemas.entries) {

@@ -133,7 +133,7 @@ class ApiClientGenerator {
 
   final GenerationContext context;
 
-  Future<void> generate() async {
+  void generate() {
     // <basic, </datetime/datetime, < post | get ..., OpenApiPathMethod>>>
     final Map<String, OpenApiPaths> group = {};
 

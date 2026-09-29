@@ -57,7 +57,11 @@ class GenerationContext {
     _jsonConvertor[jsonConvertor.name] = jsonConvertor;
   }
 
+  /// Builds every model and api client from [openApi], replacing earlier results.
   void generate() {
+    _models.clear();
+    _apiClients.clear();
+    _jsonConvertor.clear();
     extension.modelGenerator.generate();
     extension.apiClientGenerator.generate();
   }
