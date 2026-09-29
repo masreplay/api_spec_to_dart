@@ -436,23 +436,22 @@ class ApiClientGenerator {
     );
 
     if (useClass && queryParameters.isNotEmpty) {
-      final strategy = RegularModelGeneratorStrategy(context);
-
-      final queryParametersClassName = Renaming.instance.renameClass(
-        '${methodName}QueryParameters',
-      );
-
-      final model = MapEntry<String, OpenApiSchemas>(
-        queryParametersClassName,
-        OpenApiSchemas(
-          type: 'object',
-          required_: queryParameters
-              .where((e) => e.required_ == true)
-              .map((e) => e.name)
-              .toList(),
-          properties: {
-            for (final p in queryParameters) p.name: ?p.schema,
-          },
+      final queriesClassName = context.registerInlineModel(
+        Renaming.instance.renameClass('${methodName}QueryParameters'),
+        (name) => RegularModelGeneratorStrategy(context).build(
+          MapEntry(
+            name,
+            OpenApiSchemas(
+              type: 'object',
+              required_: [
+                for (final p in queryParameters)
+                  if (p.required_ == true) p.name,
+              ],
+              properties: {
+                for (final p in queryParameters) p.name: ?p.schema,
+              },
+            ),
+          ),
         ),
       );
 
@@ -463,11 +462,9 @@ class ApiClientGenerator {
             ..name = _queriesParameterName
             ..required = true
             ..named = true
-            ..type = refer(queryParametersClassName),
+            ..type = refer(queriesClassName),
         ),
       );
-
-      context.addModel(strategy.build(model));
     }
 
     for (final p in parameters) {

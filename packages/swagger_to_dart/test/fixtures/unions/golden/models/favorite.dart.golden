@@ -1,0 +1,94 @@
+/// Favorite
+///
+/// ```json
+/// {
+///     "oneOf": [
+///         {
+///             "$ref": "#/components/schemas/Dog"
+///         },
+///         {
+///             "$ref": "#/components/schemas/Cat"
+///         }
+///     ],
+///     "title": "Favorite",
+///     "discriminator": {
+///         "propertyName": "pet_type",
+///         "mapping": {
+///             "dog": "#/components/schemas/Dog",
+///             "cat": "#/components/schemas/Cat"
+///         }
+///     },
+///     "runtimeType": "oneOf"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+sealed class Favorite {
+  const Favorite();
+
+  const factory Favorite.dog(Dog value) = FavoriteDog;
+  const factory Favorite.cat(Cat value) = FavoriteCat;
+  const factory Favorite.fallback(Map<String, dynamic> value) =
+      FavoriteFallback;
+
+  factory Favorite.fromJson(Map<String, dynamic> json) =>
+      switch (json['pet_type']) {
+        'dog' => FavoriteDog(Dog.fromJson(json)),
+        'cat' => FavoriteCat(Cat.fromJson(json)),
+        _ => FavoriteFallback(json),
+      };
+
+  Map<String, dynamic> toJson();
+}
+
+final class FavoriteDog extends Favorite {
+  const FavoriteDog(this.value);
+
+  final Dog value;
+
+  @override
+  Map<String, dynamic> toJson() => {...value.toJson(), 'pet_type': 'dog'};
+
+  @override
+  bool operator ==(Object other) =>
+      other is FavoriteDog && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'Favorite.dog($value)';
+}
+
+final class FavoriteCat extends Favorite {
+  const FavoriteCat(this.value);
+
+  final Cat value;
+
+  @override
+  Map<String, dynamic> toJson() => {...value.toJson(), 'pet_type': 'cat'};
+
+  @override
+  bool operator ==(Object other) =>
+      other is FavoriteCat && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'Favorite.cat($value)';
+}
+
+final class FavoriteFallback extends Favorite {
+  const FavoriteFallback(this.value);
+
+  final Map<String, dynamic> value;
+
+  @override
+  Map<String, dynamic> toJson() => value;
+
+  @override
+  String toString() => 'Favorite.fallback($value)';
+}

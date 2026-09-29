@@ -1,0 +1,66 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'animals_client.g.dart';
+
+@RestApi()
+abstract class AnimalsClient {
+  factory AnimalsClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _AnimalsClient;
+
+  @GET('/animal')
+  Future<HttpResponse<Animal>> getAnimal({
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['animals'],
+      'operationId': 'getAnimal',
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/Animal'},
+            },
+          },
+        },
+      },
+    },
+  });
+  @POST('/animal')
+  Future<HttpResponse<Pet>> createAnimal({
+    @Body() required Animal requestBody,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['animals'],
+      'operationId': 'createAnimal',
+      'requestBody': {
+        'required': true,
+        'content': {
+          'application/json': {
+            'schema': {'\$ref': '#/components/schemas/Animal'},
+          },
+        },
+      },
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/Pet'},
+            },
+          },
+        },
+      },
+    },
+  });
+}

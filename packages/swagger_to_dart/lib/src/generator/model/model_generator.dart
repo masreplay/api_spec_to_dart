@@ -10,6 +10,14 @@ class ModelGenerator extends LibraryGenerator {
   Library build(MapEntry<String, OpenApiSchemas> model) {
     final schema = model.value;
 
+    // A component that is a oneOf/anyOf of references is a union (#58).
+    final variants = [...?schema.oneOf, ...?schema.anyOf].where(
+      (e) => !(e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_),
+    );
+    if (variants.isNotEmpty && variants.every((e) => e is OpenApiSchemaRef)) {
+      return UnionModelStrategy(context).buildComponent(model);
+    }
+
     final ModelGeneratorStrategy strategy;
 
     if (schema.enum_ != null) {
@@ -28,6 +36,23 @@ class ModelGenerator extends LibraryGenerator {
   void generate() {
     final schemas = context.openApi.components?.schemas ?? {};
     final generic = GenericModelGeneratorStrategy(context);
+
+    // ponytail: approximates component class names (generic instantiations
+    // are keyed by their full title), so an inline model may take a suffix
+    // it did not strictly need.
+    final prefixes = context.config.model.removeModelPrefixes;
+    for (final MapEntry(:key, :value) in schemas.entries) {
+      for (final name in {key, ?value.title}) {
+        context.reservedModelNames.add(
+          Renaming.instance.renameFile(
+            Renaming.instance.renameClass(
+              name,
+              removePrefixes: prefixes.isNotEmpty ? prefixes : null,
+            ),
+          ),
+        );
+      }
+    }
 
     // A generic class is built from the first instantiation registered, so
     // instantiations with component-schema arguments go first.

@@ -167,12 +167,14 @@ _OpenApiSchemaOneOfDiscriminator _$OpenApiSchemaOneOfDiscriminatorFromJson(
   Map<String, dynamic> json,
 ) => _OpenApiSchemaOneOfDiscriminator(
   propertyName: json['propertyName'] as String,
-  mapping: Map<String, String>.from(json['mapping'] as Map),
+  mapping: (json['mapping'] as Map<String, dynamic>?)?.map(
+    (k, e) => MapEntry(k, e as String),
+  ),
 );
 
 Map<String, dynamic> _$OpenApiSchemaOneOfDiscriminatorToJson(
   _OpenApiSchemaOneOfDiscriminator instance,
 ) => <String, dynamic>{
   'propertyName': instance.propertyName,
-  'mapping': instance.mapping,
+  'mapping': ?instance.mapping,
 };

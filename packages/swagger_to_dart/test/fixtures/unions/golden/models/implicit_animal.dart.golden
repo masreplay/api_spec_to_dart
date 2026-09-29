@@ -1,0 +1,88 @@
+/// ImplicitAnimal
+///
+/// ```json
+/// {
+///     "oneOf": [
+///         {
+///             "$ref": "#/components/schemas/Dog"
+///         },
+///         {
+///             "$ref": "#/components/schemas/Cat"
+///         }
+///     ],
+///     "discriminator": {
+///         "propertyName": "pet_type"
+///     }
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+sealed class ImplicitAnimal {
+  const ImplicitAnimal();
+
+  const factory ImplicitAnimal.dog(Dog value) = ImplicitAnimalDog;
+  const factory ImplicitAnimal.cat(Cat value) = ImplicitAnimalCat;
+  const factory ImplicitAnimal.fallback(Map<String, dynamic> value) =
+      ImplicitAnimalFallback;
+
+  factory ImplicitAnimal.fromJson(Map<String, dynamic> json) =>
+      switch (json['pet_type']) {
+        'Dog' => ImplicitAnimalDog(Dog.fromJson(json)),
+        'Cat' => ImplicitAnimalCat(Cat.fromJson(json)),
+        _ => ImplicitAnimalFallback(json),
+      };
+
+  Map<String, dynamic> toJson();
+}
+
+final class ImplicitAnimalDog extends ImplicitAnimal {
+  const ImplicitAnimalDog(this.value);
+
+  final Dog value;
+
+  @override
+  Map<String, dynamic> toJson() => {...value.toJson(), 'pet_type': 'Dog'};
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImplicitAnimalDog && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'ImplicitAnimal.dog($value)';
+}
+
+final class ImplicitAnimalCat extends ImplicitAnimal {
+  const ImplicitAnimalCat(this.value);
+
+  final Cat value;
+
+  @override
+  Map<String, dynamic> toJson() => {...value.toJson(), 'pet_type': 'Cat'};
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImplicitAnimalCat && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'ImplicitAnimal.cat($value)';
+}
+
+final class ImplicitAnimalFallback extends ImplicitAnimal {
+  const ImplicitAnimalFallback(this.value);
+
+  final Map<String, dynamic> value;
+
+  @override
+  Map<String, dynamic> toJson() => value;
+
+  @override
+  String toString() => 'ImplicitAnimal.fallback($value)';
+}

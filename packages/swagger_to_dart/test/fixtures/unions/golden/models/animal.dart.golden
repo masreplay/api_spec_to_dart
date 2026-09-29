@@ -1,0 +1,89 @@
+/// Animal
+///
+/// ```json
+/// {
+///     "oneOf": [
+///         {
+///             "$ref": "#/components/schemas/Dog"
+///         },
+///         {
+///             "$ref": "#/components/schemas/Cat"
+///         }
+///     ],
+///     "discriminator": {
+///         "propertyName": "pet_type",
+///         "mapping": {
+///             "dog": "#/components/schemas/Dog",
+///             "cat": "#/components/schemas/Cat"
+///         }
+///     }
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+sealed class Animal {
+  const Animal();
+
+  const factory Animal.dog(Dog value) = AnimalDog;
+  const factory Animal.cat(Cat value) = AnimalCat;
+  const factory Animal.fallback(Map<String, dynamic> value) = AnimalFallback;
+
+  factory Animal.fromJson(Map<String, dynamic> json) =>
+      switch (json['pet_type']) {
+        'dog' => AnimalDog(Dog.fromJson(json)),
+        'cat' => AnimalCat(Cat.fromJson(json)),
+        _ => AnimalFallback(json),
+      };
+
+  Map<String, dynamic> toJson();
+}
+
+final class AnimalDog extends Animal {
+  const AnimalDog(this.value);
+
+  final Dog value;
+
+  @override
+  Map<String, dynamic> toJson() => {...value.toJson(), 'pet_type': 'dog'};
+
+  @override
+  bool operator ==(Object other) => other is AnimalDog && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'Animal.dog($value)';
+}
+
+final class AnimalCat extends Animal {
+  const AnimalCat(this.value);
+
+  final Cat value;
+
+  @override
+  Map<String, dynamic> toJson() => {...value.toJson(), 'pet_type': 'cat'};
+
+  @override
+  bool operator ==(Object other) => other is AnimalCat && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'Animal.cat($value)';
+}
+
+final class AnimalFallback extends Animal {
+  const AnimalFallback(this.value);
+
+  final Map<String, dynamic> value;
+
+  @override
+  Map<String, dynamic> toJson() => value;
+
+  @override
+  String toString() => 'Animal.fallback($value)';
+}
