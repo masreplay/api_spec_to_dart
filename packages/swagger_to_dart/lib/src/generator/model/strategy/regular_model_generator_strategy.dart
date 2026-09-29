@@ -57,7 +57,7 @@ class RegularModelGeneratorStrategy
                       ..static = true
                       ..modifier = FieldModifier.constant
                       ..name = getKey(name)
-                      ..type = refer('$String')
+                      ..type = refer('String')
                       ..assignment = stringCode(entry.key),
                   );
                 })

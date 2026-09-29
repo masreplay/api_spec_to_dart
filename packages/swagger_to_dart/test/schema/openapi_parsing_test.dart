@@ -13,4 +13,13 @@ void main() {
     expect(openApi.paths, isNotEmpty);
     expect(openApi.components?.schemas, isNotEmpty);
   });
+
+  test('additionalProperties may be a schema object (Swashbuckle)', () {
+    final schemas = OpenApiSchemas.fromJson({
+      'type': 'object',
+      'properties': <String, dynamic>{},
+      'additionalProperties': {'type': 'string'},
+    });
+    expect(schemas.type, 'object');
+  });
 }

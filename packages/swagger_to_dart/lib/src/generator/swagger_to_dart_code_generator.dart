@@ -45,7 +45,10 @@ class SwaggerToDartCodeGenerator {
   /// some files could not be formatted.
   Future<void> write([String? outputDirectory]) async {
     final result = render();
-    final dir = Directory(outputDirectory ?? context.config.outputDirectory);
+    final dir = Directory(
+      outputDirectory ??
+          path.join(context.rootDirectory, context.config.outputDirectory),
+    );
 
     if (dir.existsSync()) await dir.delete(recursive: true);
 

@@ -1,7 +1,5 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:collection/collection.dart';
-import 'package:dio/dio.dart';
-import 'package:retrofit/retrofit.dart' hide Method, Field;
 import 'package:swagger_to_dart/src/swagger_to_dart_base.dart';
 
 const _requestBodyName = 'requestBody';
@@ -235,7 +233,7 @@ class ApiClientGenerator {
               requestBody.add(
                 Parameter(
                   (b) => b
-                    ..annotations.addAll([refer('$Body()')])
+                    ..annotations.addAll([refer('Body()')])
                     ..name = _requestBodyName
                     ..named = true
                     ..required = true
@@ -251,7 +249,7 @@ class ApiClientGenerator {
               requestBody.add(
                 Parameter(
                   (b) => b
-                    ..annotations.addAll([refer('$Part()')])
+                    ..annotations.addAll([refer('Part()')])
                     ..name = _requestBodyName
                     ..named = true
                     ..required = true
@@ -312,10 +310,10 @@ class ApiClientGenerator {
                 if (content[OpenApiContentType.applicationXWwwFormUrlencoded
                         .toJson()] !=
                     null)
-                  refer('$FormUrlEncoded()'),
+                  refer('FormUrlEncoded()'),
                 if (content[OpenApiContentType.multipartFormData.toJson()] !=
                     null)
-                  refer('$MultiPart()'),
+                  refer('MultiPart()'),
                 if (isBinaryResponse)
                   refer('DioResponseType(ResponseType.bytes)'),
               ])
@@ -348,7 +346,7 @@ class ApiClientGenerator {
         ..body.addAll([
           Class(
             (b) => b
-              ..annotations.addAll([refer('$RestApi()')])
+              ..annotations.addAll([refer('RestApi()')])
               ..abstract = true
               ..name = className
               ..constructors.addAll([
@@ -435,7 +433,7 @@ class ApiClientGenerator {
       result.add(
         Parameter(
           (b) => b
-            ..annotations.addAll([refer('$Queries()')])
+            ..annotations.addAll([refer('Queries()')])
             ..name = _queriesParameterName
             ..required = true
             ..named = true
@@ -466,16 +464,16 @@ class ApiClientGenerator {
             ..annotations.addAll([
               switch (p.in_) {
                 OpenApiPathMethodParameterType.query => refer(
-                    '$Query("${p.name}")',
+                    'Query("${p.name}")',
                   ),
                 OpenApiPathMethodParameterType.path => refer(
-                    '$Path("${p.name}")',
+                    'Path("${p.name}")',
                   ),
                 OpenApiPathMethodParameterType.header => refer(
-                    '$Header("${p.name}")',
+                    'Header("${p.name}")',
                   ),
                 OpenApiPathMethodParameterType.cookie => refer(
-                    '$Header("${p.name}")',
+                    'Header("${p.name}")',
                   ),
               },
             ])
@@ -537,28 +535,28 @@ class ApiClientGenerator {
     return [
       Parameter(
         (b) => b
-          ..annotations.addAll([refer('$CancelRequest()')])
+          ..annotations.addAll([refer('CancelRequest()')])
           ..named = true
           ..name = 'cancelToken'
-          ..type = refer('$CancelToken?'),
+          ..type = refer('CancelToken?'),
       ),
       Parameter(
         (b) => b
-          ..annotations.addAll([refer('$SendProgress()')])
+          ..annotations.addAll([refer('SendProgress()')])
           ..named = true
           ..name = 'onSendProgress'
           ..type = refer('ProgressCallback?'),
       ),
       Parameter(
         (b) => b
-          ..annotations.addAll([refer('$ReceiveProgress()')])
+          ..annotations.addAll([refer('ReceiveProgress()')])
           ..named = true
           ..name = 'onReceiveProgress'
           ..type = refer('ProgressCallback?'),
       ),
       Parameter(
         (b) => b
-          ..annotations.addAll([refer('$Extras()')])
+          ..annotations.addAll([refer('Extras()')])
           ..named = true
           ..name = 'extras'
           ..defaultTo = Code('const ${encodeWithRawKeys(openapiMetadata)}')
