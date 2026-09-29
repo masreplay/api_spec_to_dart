@@ -51,5 +51,7 @@ abstract class OpenApiSchemas with _$OpenApiSchemas {
   }) = _OpenApiSchemas;
 
   factory OpenApiSchemas.fromJson(Map<String, dynamic> json) =>
-      _$OpenApiSchemasFromJson(normalizeSchemaJson(json));
+      _$OpenApiSchemasFromJson(
+        normalizeSchemaJson(json, unwrapSingleAllOf: false),
+      );
 }

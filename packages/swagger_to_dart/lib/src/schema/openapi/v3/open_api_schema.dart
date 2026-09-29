@@ -76,6 +76,7 @@ abstract class OpenApiSchemaOneOfDiscriminator
 
   const factory OpenApiSchemaOneOfDiscriminator({
     @JsonKey(name: 'propertyName') required String propertyName,
+
     /// Discriminator value → `$ref`. Absent: the schema names are the values.
     @JsonKey(name: 'mapping') Map<String, String>? mapping,
   }) = _OpenApiSchemaOneOfDiscriminator;
@@ -159,23 +160,36 @@ class OpenApiSchemaJsonConverter
   }
 }
 
-/// Rewrites OpenAPI 3.1 forms into the shapes the models parse:
+/// Rewrites OpenAPI 3.1 forms into the shapes the models parse, returning a
+/// new map (the input is shared with the `@Extras` metadata, so it must not
+/// change):
 /// - `type: [T, "null"]` → `type: T, nullable: true` (several non-null
 ///   types → no type, i.e. `dynamic`);
-/// - an `allOf` with a single entry → that entry, keeping the outer keys
-///   (`nullable`, `default`, `description`, ...).
-Map<String, dynamic> normalizeSchemaJson(Map<String, dynamic> json) {
+/// - with [unwrapSingleAllOf], an `allOf` with a single entry → that entry,
+///   keeping the outer keys (`nullable`, `default`, `description`, ...).
+///   Components keep their `allOf`: it is merged with their own properties.
+Map<String, dynamic> normalizeSchemaJson(
+  Map<String, dynamic> json, {
+  bool unwrapSingleAllOf = true,
+}) {
   if (json['type'] case final List<dynamic> types) {
     final concrete = types.where((t) => t != 'null').toList();
     json = {
-      ...json..remove('type'),
+      for (final MapEntry(:key, :value) in json.entries)
+        if (key != 'type') key: value,
       if (concrete.length == 1) 'type': concrete.single,
       if (types.contains('null')) 'nullable': true,
     };
   }
 
-  if (json['allOf'] case [final Map<String, dynamic> only]) {
-    json = {...normalizeSchemaJson(only), ...json..remove('allOf')};
+  if (json['allOf'] case [
+    final Map<String, dynamic> only,
+  ] when unwrapSingleAllOf) {
+    json = {
+      ...normalizeSchemaJson(only),
+      for (final MapEntry(:key, :value) in json.entries)
+        if (key != 'allOf') key: value,
+    };
   }
 
   return json;
