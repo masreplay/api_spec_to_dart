@@ -1,0 +1,48 @@
+/// Item
+/// {
+///     "properties": {
+///         "id": {
+///             "type": "integer"
+///         },
+///         "userID": {
+///             "type": "string"
+///         },
+///         "other_object_id": {
+///             "type": "integer"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "id"
+///     ]
+/// }
+library item;
+
+import 'exports.dart';
+part 'item.freezed.dart';
+part 'item.g.dart'; // Item
+
+@freezed
+abstract class Item with _$Item {
+  const Item._();
+
+  @jsonSerializable
+  const factory Item({
+    /// id
+    @JsonKey(name: Item.idKey_) required int id,
+
+    /// userID
+    @JsonKey(name: Item.userIDKey_) String? userID,
+
+    /// otherObjectId
+    @JsonKey(name: Item.otherObjectIdKey_) int? otherObjectId,
+  }) = _Item;
+
+  factory Item.fromJson(Map<String, dynamic> json) => _$ItemFromJson(json);
+
+  static const String idKey_ = r'id';
+
+  static const String userIDKey_ = r'userID';
+
+  static const String otherObjectIdKey_ = r'other_object_id';
+}
