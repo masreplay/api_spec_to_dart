@@ -311,8 +311,8 @@ decodes the same way whether it's a field, a list item, a request body or a
 response:
 
 - **With a discriminator**: decoding switches on the discriminator property
-  (the mapping may be omitted — schema names are then used as the values);
-  encoding writes the discriminator back.
+  (variants the mapping leaves out, or all of them when it is omitted, use
+  their schema name as the value); encoding writes the discriminator back.
 - **Without one**: the first variant whose `fromJson` decodes without
   throwing wins.
 - **No match**: the fallback variant wraps the raw `Map<String, dynamic>`;

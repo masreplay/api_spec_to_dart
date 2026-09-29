@@ -69,6 +69,16 @@
         ],
         "discriminator": { "propertyName": "pet_type" }
       },
+      "PartialAnimal": {
+        "oneOf": [
+          { "$ref": "#/components/schemas/Dog" },
+          { "$ref": "#/components/schemas/Cat" }
+        ],
+        "discriminator": {
+          "propertyName": "pet_type",
+          "mapping": { "dog": "#/components/schemas/Dog" }
+        }
+      },
       "Circle": {
         "type": "object",
         "required": ["radius"],

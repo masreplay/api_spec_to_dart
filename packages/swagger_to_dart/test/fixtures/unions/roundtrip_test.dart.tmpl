@@ -24,6 +24,14 @@ void main() {
     );
   });
 
+  test('a partial mapping keeps schema names for unmapped variants', () {
+    final cat = PartialAnimal.fromJson({...catJson, 'pet_type': 'Cat'});
+
+    expect(cat, isA<PartialAnimalCat>());
+    expect(cat.toJson(), {...catJson, 'pet_type': 'Cat'});
+    expect(PartialAnimal.fromJson(dogJson), isA<PartialAnimalDog>());
+  });
+
   test('unions work as fields and list items', () {
     final pet = Pet.fromJson({
       'animals': [dogJson, catJson],
