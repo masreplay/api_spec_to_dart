@@ -115,8 +115,8 @@ class UnionModelStrategy {
     );
   }
 
-  /// Variants keyed by discriminator value: the explicit `mapping`, else the
-  /// referenced schema names (OpenAPI's implicit mapping).
+  /// Variants keyed by discriminator value: the explicit `mapping`, then the
+  /// schema names of the refs it leaves out (OpenAPI's implicit mapping).
   List<UnionVariant> _variants(
     List<OpenApiSchema> schemas,
     OpenApiSchemaOneOfDiscriminator? discriminator,
@@ -127,6 +127,9 @@ class UnionModelStrategy {
     if (discriminator == null) {
       cases = [for (final ref in refs) (tag: null, ref: ref)];
     } else if (discriminator.mapping case final mapping?) {
+      final mapped = {
+        for (final target in mapping.values) target.split('/').last,
+      };
       cases = [
         for (final MapEntry(key: tag, value: target) in mapping.entries)
           (
@@ -135,6 +138,10 @@ class UnionModelStrategy {
                 refs.firstWhereOrNull((e) => e.ref == target) ??
                 OpenApiSchemaRef(ref: target),
           ),
+        // An explicit value that equals a schema name wins over it.
+        for (final ref in refs)
+          if (!mapped.contains(ref.name) && !mapping.containsKey(ref.name))
+            (tag: ref.name, ref: ref),
       ];
     } else {
       cases = [for (final ref in refs) (tag: ref.name, ref: ref)];
