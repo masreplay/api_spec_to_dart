@@ -1,0 +1,58 @@
+/// Pet
+/// {
+///     "properties": {
+///         "id": {
+///             "type": "integer",
+///             "format": "int64"
+///         },
+///         "name": {
+///             "type": "string"
+///         },
+///         "tag": {
+///             "type": "string"
+///         },
+///         "status": {
+///             "$ref": "#/components/schemas/PetStatus"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "id",
+///         "name"
+///     ]
+/// }
+library pet;
+
+import 'exports.dart';
+part 'pet.freezed.dart';
+part 'pet.g.dart'; // Pet
+
+@freezed
+abstract class Pet with _$Pet {
+  const Pet._();
+
+  @jsonSerializable
+  const factory Pet({
+    /// id
+    @JsonKey(name: Pet.idKey_) required int id,
+
+    /// name
+    @JsonKey(name: Pet.nameKey_) required String name,
+
+    /// tag
+    @JsonKey(name: Pet.tagKey_) String? tag,
+
+    /// status
+    @JsonKey(name: Pet.statusKey_) PetStatus? status,
+  }) = _Pet;
+
+  factory Pet.fromJson(Map<String, dynamic> json) => _$PetFromJson(json);
+
+  static const String idKey_ = r'id';
+
+  static const String nameKey_ = r'name';
+
+  static const String tagKey_ = r'tag';
+
+  static const String statusKey_ = r'status';
+}

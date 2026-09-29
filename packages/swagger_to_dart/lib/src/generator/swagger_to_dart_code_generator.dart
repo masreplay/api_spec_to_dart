@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:code_builder/code_builder.dart';
@@ -8,188 +7,154 @@ import 'package:swagger_to_dart/src/config/generation_context.dart';
 import 'package:swagger_to_dart/src/generator/base_api_client_generator.dart';
 import 'package:swagger_to_dart/src/generator/model/json_serialization_convertor_generator.dart';
 
+/// Every generated file keyed by its path relative to the output directory,
+/// plus the files whose source could not be formatted (kept unformatted in
+/// [files] so they can be inspected).
+typedef RenderResult = ({Map<String, String> files, Map<String, String> errors});
+
 class SwaggerToDartCodeGenerator {
   const SwaggerToDartCodeGenerator(this.context);
 
   final GenerationContext context;
 
-  Future<void> generate() async {
+  /// Builds every library in memory. Pure: no file system access.
+  RenderResult render() {
     context.generate();
 
-    print(JsonEncoder.withIndent('  ').convert(context.config.toJson()));
-
-    final dir = Directory(context.config.outputDirectory);
-    print('Output directory: ${dir.path}');
-
-    if (dir.existsSync()) {
-      await dir.delete(recursive: true);
-    }
-    await dir.create(recursive: true);
-
-    final genExportLibrary = Library((b) => b
-      ..name = 'gen'
-      ..directives.addAll([
-        for (final import in context.config.imports?.globalImports ?? [])
-          Directive.import(import),
-        Directive.export('api_client/api_client.dart'),
-        Directive.export('models/models.dart'),
-      ]));
-
-    await writeDartLibraryFile(
-      path.join(dir.path, '${genExportLibrary.name!}.dart'),
-      genExportLibrary,
+    final files = <String, String>{};
+    final errors = <String, String>{};
+    final formatter = DartFormatter(
+      languageVersion: DartFormatter.latestLanguageVersion,
     );
 
-    await generateModels(dir);
-    await generateApiClients(dir);
-
-    print('Code generation completed successfully');
-  }
-
-  Future<void> generateModels(Directory dir) async {
-    print('Generating ${context.models.length} models...');
-
-    final modelsDir = Directory(path.join(dir.path, 'models/'));
-
-    for (final model in context.models) {
-      final filename = model.name;
-      if (filename == null) throw Exception('Model has no name');
-
+    for (final MapEntry(key: filePath, value: library) in _libraries().entries) {
+      final source = '${library.accept(DartEmitter.scoped())}';
       try {
-        await writeDartLibraryFile(
-          path.join(modelsDir.path, '$filename.dart'),
-          model,
-        );
-      } catch (e, stackTrace) {
-        print('Error generating model $filename: $e');
-        print('Stack trace: $stackTrace');
+        files[filePath] = formatter.format(source);
+      } on FormatterException catch (e) {
+        files[filePath] = source;
+        errors[filePath] = e.message();
       }
     }
 
-    final mainLibrary = Library(
+    return (files: files, errors: errors);
+  }
+
+  /// Writes [render] into [outputDirectory] (default: the configured output
+  /// directory), replacing its previous content. Throws after writing when
+  /// some files could not be formatted.
+  Future<void> write([String? outputDirectory]) async {
+    final result = render();
+    final dir = Directory(outputDirectory ?? context.config.outputDirectory);
+
+    if (dir.existsSync()) await dir.delete(recursive: true);
+
+    for (final MapEntry(key: filePath, value: source) in result.files.entries) {
+      final file = File(path.join(dir.path, filePath));
+      await file.parent.create(recursive: true);
+      await file.writeAsString(source, flush: true);
+    }
+
+    print(
+      'Generated ${context.models.length} models and '
+      '${context.apiClients.length} api clients in ${dir.path}',
+    );
+
+    if (result.errors.isNotEmpty) {
+      throw StateError(
+        'Generated code could not be formatted (written unformatted for '
+        'inspection):\n${result.errors.entries.map((e) => '  ${e.key}: ${e.value}').join('\n')}',
+      );
+    }
+  }
+
+  Future<void> generate() => write();
+
+  Map<String, Library> _libraries() {
+    final globalImports = [
+      for (final import in context.config.imports?.globalImports ?? [])
+        Directive.import(import),
+    ];
+
+    final libraries = <String, Library>{
+      'gen.dart': Library(
+        (b) => b
+          ..name = 'gen'
+          ..directives.addAll([
+            ...globalImports,
+            Directive.export('api_client/api_client.dart'),
+            Directive.export('models/models.dart'),
+          ]),
+      ),
+    };
+
+    for (final model in context.models) {
+      final filename = model.name;
+      if (filename == null) throw StateError('Model has no name');
+      libraries['models/$filename.dart'] = model;
+    }
+
+    libraries['models/models.dart'] = Library(
       (b) => b
         ..name = 'models'
         ..directives.addAll([
-          for (final import in context.config.imports?.globalImports ?? [])
-            Directive.import(import),
+          ...globalImports,
           for (final model in context.models)
-            if (model.name != null) Directive.export('${model.name}.dart'),
+            Directive.export('${model.name}.dart'),
         ]),
-    );
-
-    await writeDartLibraryFile(
-      path.join(modelsDir.path, '${mainLibrary.name}.dart'),
-      mainLibrary,
     );
 
     final (library: jsonConverterLibrary, directives: jsonConverterDirectives) =
         JsonConvertorGenerator(context).build();
+    libraries['models/${jsonConverterLibrary.name!}.dart'] =
+        jsonConverterLibrary;
 
-    await writeDartLibraryFile(
-      path.join(modelsDir.path, '${jsonConverterLibrary.name!}.dart'),
-      jsonConverterLibrary,
-    );
-
-    final exportLibrary = Library(
+    libraries['models/exports.dart'] = Library(
       (b) => b
         ..name = 'exports'
         ..directives.addAll([
-          for (final import in context.config.imports?.globalImports ?? [])
-            Directive.import(import),
+          ...globalImports,
           ...jsonConverterDirectives,
           Directive.export('dart:typed_data'),
           Directive.export('models.dart'),
           Directive.export('package:dio/dio.dart'),
-          Directive.export(
-              'package:freezed_annotation/freezed_annotation.dart'),
+          Directive.export('package:freezed_annotation/freezed_annotation.dart'),
           Directive.export('json_converter.dart'),
-          Directive.export(
-              'package:freezed_annotation/freezed_annotation.dart'),
+          Directive.export('package:freezed_annotation/freezed_annotation.dart'),
         ]),
     );
-    await writeDartLibraryFile(
-      path.join(modelsDir.path, '${exportLibrary.name}.dart'),
-      exportLibrary,
-    );
-  }
 
-  Future<void> generateApiClients(Directory dir) async {
-    print('Generating ${context.apiClients.length} api clients...');
-    final apiClientsDir = Directory(path.join(dir.path, 'api_client/'));
     for (final apiClient in context.apiClients) {
       final filename = apiClient.name;
-      if (filename == null) throw Exception('Api client has no name');
-
-      try {
-        await writeDartLibraryFile(
-          path.join(apiClientsDir.path, '$filename.dart'),
-          apiClient,
-        );
-      } catch (e, stackTrace) {
-        print('Error generating api client $filename: $e');
-        print('Stack trace: $stackTrace');
-      }
+      if (filename == null) throw StateError('Api client has no name');
+      libraries['api_client/$filename.dart'] = apiClient;
     }
 
-    // exports
-    final exportsLibrary = Library(
+    libraries['api_client/exports.dart'] = Library(
       (b) => b
         ..name = 'exports.dart'
         ..directives.addAll([
-          for (final import in context.config.imports?.globalImports ?? [])
-            Directive.import(import),
+          ...globalImports,
           Directive.export('dart:typed_data'),
           for (final apiClient in context.apiClients)
             Directive.export('${apiClient.name}.dart'),
         ]),
     );
 
-    await writeDartLibraryFile(
-      path.join(apiClientsDir.path, exportsLibrary.name),
-      exportsLibrary,
-    );
+    final baseApiClientLibrary = BaseApiClientGenerator(context).build();
+    final baseApiClientFileName = '${baseApiClientLibrary.name}.dart';
+    libraries['api_client/$baseApiClientFileName'] = baseApiClientLibrary;
 
-    final baseApiCLientLibrary = BaseApiClientGenerator(context).build();
-    final baseApiCLientLibraryFileName = '${baseApiCLientLibrary.name}.dart';
-
-    await writeDartLibraryFile(
-      path.join(apiClientsDir.path, baseApiCLientLibraryFileName),
-      baseApiCLientLibrary,
-    );
-
-    final baseLibrary = Library(
+    libraries['api_client/api_client.dart'] = Library(
       (b) => b
         ..name = 'api_client.dart'
         ..directives.addAll([
-          for (final import in context.config.imports?.globalImports ?? [])
-            Directive.import(import),
+          ...globalImports,
           Directive.export('exports.dart'),
-          Directive.export(baseApiCLientLibraryFileName),
+          Directive.export(baseApiClientFileName),
         ]),
     );
 
-    await writeDartLibraryFile(
-      path.join(apiClientsDir.path, baseLibrary.name),
-      baseLibrary,
-    );
+    return libraries;
   }
-}
-
-Future<void> writeDartLibraryFile(String filePath, Library library) async {
-  final emitter = DartEmitter.scoped();
-  final formatter = DartFormatter(
-    languageVersion: DartFormatter.latestLanguageVersion,
-  );
-
-  // if dir not found created it
-  final dir = Directory(path.dirname(filePath));
-  if (!dir.existsSync()) {
-    await dir.create(recursive: true);
-  }
-
-  final file = File(filePath);
-  await file.writeAsString(
-    formatter.format('${library.accept(emitter)}'),
-    flush: true,
-  );
 }

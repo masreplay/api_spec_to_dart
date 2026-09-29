@@ -1,0 +1,3 @@
+library exports.dart;
+
+export 'dart:typed_data';
