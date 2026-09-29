@@ -1,15 +1,12 @@
-import 'package:swagger_to_dart/src/generator/model/strategy/debug.dart';
 import 'package:swagger_to_dart/src/generator/model/strategy/generic_parser_base.dart';
 
-class DotNetGenericParser with DebugMixin implements GenericParserBase {
+class DotNetGenericParser implements GenericParserBase {
   DotNetGenericParser._internal();
 
   static DotNetGenericParser get _instance => DotNetGenericParser._internal();
 
   static DotNetGenericParser get instance => _instance;
 
-  @override
-  String get tag => 'DotNetGenericParser';
 
   @override
   bool isFormat(String input) {
