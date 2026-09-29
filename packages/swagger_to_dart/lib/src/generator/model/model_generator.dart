@@ -8,7 +8,8 @@ class ModelGenerator extends LibraryGenerator {
   const ModelGenerator(super.context);
 
   Library build(MapEntry<String, OpenApiSchemas> model) {
-    final schema = model.value;
+    final schema = _mergeAllOf(model.key, model.value, {});
+    model = MapEntry(model.key, schema);
 
     // A component that is a oneOf/anyOf of references is a union (#58).
     final variants = [...?schema.oneOf, ...?schema.anyOf].where(
@@ -68,5 +69,45 @@ class ModelGenerator extends LibraryGenerator {
     for (final entry in deferred) {
       context.addModel(build(entry));
     }
+  }
+
+  /// A schema with its `allOf` parts merged in: properties and required
+  /// lists of referenced components (recursively) and inline objects.
+  /// [visiting] breaks reference cycles.
+  OpenApiSchemas _mergeAllOf(
+    String key,
+    OpenApiSchemas schema,
+    Set<String> visiting,
+  ) {
+    final parts = schema.allOf;
+    if (parts == null || parts.isEmpty) return schema;
+
+    final components = context.openApi.components?.schemas ?? {};
+    final properties = <String, OpenApiSchema>{};
+    final required = <String>{};
+
+    void merge(OpenApiSchemas part) {
+      properties.addAll(part.properties ?? {});
+      required.addAll(part.required_ ?? []);
+    }
+
+    for (final part in parts) {
+      if (part[r'$ref'] case final String ref) {
+        final name = ref.split('/').last;
+        final target = components[name];
+        if (target == null || !visiting.add(name)) continue;
+        merge(_mergeAllOf(name, target, {...visiting, key}));
+      } else {
+        merge(_mergeAllOf(key, OpenApiSchemas.fromJson(part), visiting));
+      }
+    }
+    merge(schema);
+
+    return schema.copyWith(
+      type: 'object',
+      properties: properties,
+      required_: [...required],
+      allOf: null,
+    );
   }
 }

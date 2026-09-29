@@ -1,0 +1,53 @@
+/// Pet
+///
+/// ```json
+/// {
+///     "properties": {
+///         "id": {
+///             "type": "integer"
+///         },
+///         "name": {
+///             "type": "string"
+///         },
+///         "owner": {
+///             "$ref": "#/components/schemas/Owner",
+///             "nullable": true
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "id",
+///         "name"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'pet.freezed.dart';
+part 'pet.g.dart';
+
+@freezed
+abstract class Pet with _$Pet {
+  const Pet._();
+
+  @jsonSerializable
+  const factory Pet({
+    /// id
+    @JsonKey(name: Pet.idKey_) required int id,
+
+    /// name
+    @JsonKey(name: Pet.nameKey_) required String name,
+
+    /// owner
+    @JsonKey(name: Pet.ownerKey_) Owner? owner,
+  }) = _Pet;
+
+  factory Pet.fromJson(Map<String, dynamic> json) => _$PetFromJson(json);
+
+  static const String idKey_ = 'id';
+
+  static const String nameKey_ = 'name';
+
+  static const String ownerKey_ = 'owner';
+}

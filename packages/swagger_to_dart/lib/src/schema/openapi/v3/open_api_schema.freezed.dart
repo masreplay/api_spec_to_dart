@@ -281,6 +281,7 @@ extension OpenApiSchemaPatterns on OpenApiSchema {
       @JsonKey(name: 'default') Object? default_,
       @JsonKey(name: 'title') String? title,
       @JsonKey(name: 'nullable') bool? nullable,
+      @JsonKey(name: 'additionalProperties') Object? additionalProperties,
     )?
     type,
     TResult Function(
@@ -333,6 +334,7 @@ extension OpenApiSchemaPatterns on OpenApiSchema {
           _that.default_,
           _that.title,
           _that.nullable,
+          _that.additionalProperties,
         );
       case OpenApiSchemaRef() when ref != null:
         return ref(
@@ -396,6 +398,7 @@ extension OpenApiSchemaPatterns on OpenApiSchema {
       @JsonKey(name: 'default') Object? default_,
       @JsonKey(name: 'title') String? title,
       @JsonKey(name: 'nullable') bool? nullable,
+      @JsonKey(name: 'additionalProperties') Object? additionalProperties,
     )
     type,
     required TResult Function(
@@ -447,6 +450,7 @@ extension OpenApiSchemaPatterns on OpenApiSchema {
           _that.default_,
           _that.title,
           _that.nullable,
+          _that.additionalProperties,
         );
       case OpenApiSchemaRef():
         return ref(
@@ -507,6 +511,7 @@ extension OpenApiSchemaPatterns on OpenApiSchema {
       @JsonKey(name: 'default') Object? default_,
       @JsonKey(name: 'title') String? title,
       @JsonKey(name: 'nullable') bool? nullable,
+      @JsonKey(name: 'additionalProperties') Object? additionalProperties,
     )?
     type,
     TResult? Function(
@@ -558,6 +563,7 @@ extension OpenApiSchemaPatterns on OpenApiSchema {
           _that.default_,
           _that.title,
           _that.nullable,
+          _that.additionalProperties,
         );
       case OpenApiSchemaRef() when ref != null:
         return ref(
@@ -608,6 +614,7 @@ class OpenApiSchemaType extends OpenApiSchema {
     @JsonKey(name: 'default') this.default_,
     @JsonKey(name: 'title') this.title,
     @JsonKey(name: 'nullable') this.nullable,
+    @JsonKey(name: 'additionalProperties') this.additionalProperties,
     String? $type,
   }) : _enum_ = enum_,
        $type = $type ?? 'type',
@@ -653,6 +660,10 @@ class OpenApiSchemaType extends OpenApiSchema {
   @JsonKey(name: 'nullable')
   final bool? nullable;
 
+  /// `bool` or a schema for the values of a map-typed object.
+  @JsonKey(name: 'additionalProperties')
+  final Object? additionalProperties;
+
   @JsonKey(name: 'runtimeType')
   final String $type;
 
@@ -689,7 +700,11 @@ class OpenApiSchemaType extends OpenApiSchema {
             const DeepCollectionEquality().equals(other.default_, default_) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.nullable, nullable) ||
-                other.nullable == nullable));
+                other.nullable == nullable) &&
+            const DeepCollectionEquality().equals(
+              other.additionalProperties,
+              additionalProperties,
+            ));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -709,12 +724,13 @@ class OpenApiSchemaType extends OpenApiSchema {
       const DeepCollectionEquality().hash(default_),
       title,
       nullable,
+      const DeepCollectionEquality().hash(additionalProperties),
     );
   }
 
   @override
   String toString() {
-    return 'OpenApiSchema.type(enum_: $enum_, type: $type, items: $items, maxLength: $maxLength, minLength: $minLength, format: $format, description: $description, pattern: $pattern, const_: $const_, default_: $default_, title: $title, nullable: $nullable)';
+    return 'OpenApiSchema.type(enum_: $enum_, type: $type, items: $items, maxLength: $maxLength, minLength: $minLength, format: $format, description: $description, pattern: $pattern, const_: $const_, default_: $default_, title: $title, nullable: $nullable, additionalProperties: $additionalProperties)';
   }
 }
 
@@ -741,6 +757,7 @@ abstract mixin class $OpenApiSchemaTypeCopyWith<$Res>
     @JsonKey(name: 'default') Object? default_,
     @JsonKey(name: 'title') String? title,
     @JsonKey(name: 'nullable') bool? nullable,
+    @JsonKey(name: 'additionalProperties') Object? additionalProperties,
   });
 
   $OpenApiSchemaCopyWith<$Res>? get items;
@@ -771,6 +788,7 @@ class _$OpenApiSchemaTypeCopyWithImpl<$Res>
     Object? default_ = freezed,
     Object? title = freezed,
     Object? nullable = freezed,
+    Object? additionalProperties = freezed,
   }) {
     return _then(
       OpenApiSchemaType(
@@ -816,6 +834,9 @@ class _$OpenApiSchemaTypeCopyWithImpl<$Res>
             ? _self.nullable
             : nullable // ignore: cast_nullable_to_non_nullable
                   as bool?,
+        additionalProperties: freezed == additionalProperties
+            ? _self.additionalProperties
+            : additionalProperties,
       ),
     );
   }

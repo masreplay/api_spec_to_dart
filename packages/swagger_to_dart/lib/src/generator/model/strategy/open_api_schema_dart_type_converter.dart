@@ -298,7 +298,12 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
 
         return 'List<$dartType>';
       case OpenApiSchemaVarType.object:
-        final items = schema.items;
+        // Map values: `additionalProperties` (OpenAPI), `items` (legacy).
+        final items = switch (schema.additionalProperties) {
+          final Map<String, dynamic> values => const OpenApiSchemaJsonConverter()
+              .fromJson(values),
+          _ => schema.items,
+        };
         final dartType = items == null
             ? 'dynamic'
             : get(

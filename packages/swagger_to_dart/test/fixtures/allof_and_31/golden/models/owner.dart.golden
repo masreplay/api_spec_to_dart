@@ -1,0 +1,58 @@
+/// Owner
+///
+/// ```json
+/// {
+///     "properties": {
+///         "nickname": {
+///             "type": "string",
+///             "nullable": true
+///         },
+///         "level": {
+///             "enum": [
+///                 "low",
+///                 "high",
+///                 null
+///             ],
+///             "type": "string",
+///             "nullable": true
+///         },
+///         "counts": {
+///             "type": "object",
+///             "additionalProperties": {
+///                 "type": "integer"
+///             }
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'owner.freezed.dart';
+part 'owner.g.dart';
+
+@freezed
+abstract class Owner with _$Owner {
+  const Owner._();
+
+  @jsonSerializable
+  const factory Owner({
+    /// nickname
+    @JsonKey(name: Owner.nicknameKey_) String? nickname,
+
+    /// level
+    @JsonKey(name: Owner.levelKey_) OwnerLevel? level,
+
+    /// counts
+    @JsonKey(name: Owner.countsKey_) Map<String, int>? counts,
+  }) = _Owner;
+
+  factory Owner.fromJson(Map<String, dynamic> json) => _$OwnerFromJson(json);
+
+  static const String nicknameKey_ = 'nickname';
+
+  static const String levelKey_ = 'level';
+
+  static const String countsKey_ = 'counts';
+}

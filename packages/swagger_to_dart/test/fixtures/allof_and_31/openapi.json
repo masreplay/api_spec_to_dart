@@ -1,0 +1,57 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "allOf and 3.1", "version": "1.0.0" },
+  "paths": {},
+  "components": {
+    "schemas": {
+      "Base": {
+        "type": "object",
+        "required": ["id"],
+        "properties": { "id": { "type": "integer" } }
+      },
+      "Pet": {
+        "allOf": [
+          { "$ref": "#/components/schemas/Base" },
+          {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+              "name": { "type": "string" },
+              "owner": { "allOf": [{ "$ref": "#/components/schemas/Owner" }], "nullable": true }
+            }
+          }
+        ]
+      },
+      "Owner": {
+        "type": ["object", "null"],
+        "properties": {
+          "nickname": { "type": ["string", "null"] },
+          "level": { "type": ["string", "null"], "enum": ["low", "high", null] },
+          "counts": { "type": "object", "additionalProperties": { "type": "integer" } }
+        }
+      },
+      "NoType": {
+        "properties": { "a": { "type": "string" } }
+      },
+      "Node": {
+        "type": "object",
+        "properties": {
+          "value": { "type": "string" },
+          "children": { "type": "array", "items": { "$ref": "#/components/schemas/Node" } }
+        }
+      },
+      "CycleA": {
+        "allOf": [
+          { "$ref": "#/components/schemas/CycleB" },
+          { "properties": { "a": { "type": "string" } } }
+        ]
+      },
+      "CycleB": {
+        "allOf": [
+          { "$ref": "#/components/schemas/CycleA" },
+          { "properties": { "b": { "type": "string" } } }
+        ]
+      }
+    }
+  }
+}
