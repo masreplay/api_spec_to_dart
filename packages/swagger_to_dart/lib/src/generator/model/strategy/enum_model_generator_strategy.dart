@@ -51,7 +51,8 @@ class EnumModelGeneratorStrategy
     // Opt-in per-enum member renames from config (model.enums). Keyed by the
     // raw swagger schema name OR the generated Dart class name; absent enums
     // fall through to the default `value0` naming.
-    final enumOverrides = context.config.model.enums[model.key] ??
+    final enumOverrides =
+        context.config.model.enums[model.key] ??
         context.config.model.enums[className] ??
         const <String, String>{};
 
@@ -103,8 +104,9 @@ class EnumModelGeneratorStrategy
         ? OpenApiSchemaVarType.integer
         : OpenApiSchemaVarType.string;
 
-    final referType =
-        refer(enumType == OpenApiSchemaVarType.integer ? 'int' : 'String');
+    final referType = refer(
+      enumType == OpenApiSchemaVarType.integer ? 'int' : 'String',
+    );
     return Library(
       (b) => b
         ..comments.addAll([
@@ -119,42 +121,50 @@ class EnumModelGeneratorStrategy
           Directive.part('$filename.g.dart'),
         ])
         ..body.addAll([
-          Enum((b) => b
-            ..annotations.add(refer('JsonEnum(alwaysCreate: true)'))
-            ..name = className
-            ..values.addAll([
-              for (final value in values)
-                EnumValue(
-                  (b) => b
-                    ..annotations.add(refer(
-                        'JsonValue(${enumType == OpenApiSchemaVarType.integer ? '$value' : '"$value"'})'))
-                    ..name = memberNames[value.toString()]!,
-                ),
-            ])
-            ..constructors.addAll([
-              Constructor(
-                (b) => b
-                  ..requiredParameters.add(Parameter(
+          Enum(
+            (b) => b
+              ..annotations.add(refer('JsonEnum(alwaysCreate: true)'))
+              ..name = className
+              ..values.addAll([
+                for (final value in values)
+                  EnumValue(
                     (b) => b
-                      ..name = 'json'
-                      ..type = referType,
-                  ))
-                  ..lambda = true
-                  ..factory = true
-                  ..name = 'fromJson'
-                  ..body = Code(
-                      '$className.values.firstWhere((e) => e.toJson() == json, orElse: () => $orElseCallback)'),
-              ),
-            ])
-            ..methods.addAll([
-              Method(
-                (b) => b
-                  ..returns = referType
-                  ..name = 'toJson'
-                  ..lambda = true
-                  ..body = Code('_\$${className}EnumMap[this]!'),
-              ),
-            ])),
+                      ..annotations.add(
+                        refer(
+                          'JsonValue(${enumType == OpenApiSchemaVarType.integer ? '$value' : '"$value"'})',
+                        ),
+                      )
+                      ..name = memberNames[value.toString()]!,
+                  ),
+              ])
+              ..constructors.addAll([
+                Constructor(
+                  (b) => b
+                    ..requiredParameters.add(
+                      Parameter(
+                        (b) => b
+                          ..name = 'json'
+                          ..type = referType,
+                      ),
+                    )
+                    ..lambda = true
+                    ..factory = true
+                    ..name = 'fromJson'
+                    ..body = Code(
+                      '$className.values.firstWhere((e) => e.toJson() == json, orElse: () => $orElseCallback)',
+                    ),
+                ),
+              ])
+              ..methods.addAll([
+                Method(
+                  (b) => b
+                    ..returns = referType
+                    ..name = 'toJson'
+                    ..lambda = true
+                    ..body = Code('_\$${className}EnumMap[this]!'),
+                ),
+              ]),
+          ),
         ]),
     );
   }

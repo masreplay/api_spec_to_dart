@@ -49,7 +49,7 @@ enum EnumFallbackType {
   last,
 
   /// Throw an exception
-  throwException;
+  throwException,
 }
 
 @freezed
@@ -116,7 +116,6 @@ abstract class ApiClientConfig with _$ApiClientConfig {
 }
 
 @JsonEnum(alwaysCreate: true)
-
 /// The source of the generation
 enum GenerationSource {
   /// The source is FastAPI

@@ -43,12 +43,13 @@ class Fixture {
   bool get isFlutter => pubspec.dependencies.containsKey('flutter');
 
   GenerationContext context() => GenerationContext(
-        openApi: OpenApi.fromJson(spec),
-        config: config,
-        pubspec: pubspec,
-      );
+    openApi: OpenApi.fromJson(spec),
+    config: config,
+    pubspec: pubspec,
+  );
 
-  SwaggerToDartCodeGenerator generator() => SwaggerToDartCodeGenerator(context());
+  SwaggerToDartCodeGenerator generator() =>
+      SwaggerToDartCodeGenerator(context());
 
   RenderResult render() => generator().render();
 
@@ -61,9 +62,9 @@ class Fixture {
       for (final file in _goldenDir.listSync(recursive: true).whereType<File>())
         if (file.path.endsWith('.golden'))
           p.posix
-                  .joinAll(p.split(p.relative(file.path, from: _goldenDir.path)))
-                  .replaceAll(RegExp(r'\.golden$'), ''):
-              file.readAsStringSync(),
+              .joinAll(p.split(p.relative(file.path, from: _goldenDir.path)))
+              .replaceAll(RegExp(r'\.golden$'), ''): file
+              .readAsStringSync(),
     };
   }
 
@@ -81,11 +82,9 @@ class Fixture {
   }
 
   static List<Fixture> all() =>
-      Directory(p.join('test', 'fixtures'))
-          .listSync()
-          .whereType<Directory>()
-          .map(Fixture.new)
-          .toList()
+      Directory(
+          p.join('test', 'fixtures'),
+        ).listSync().whereType<Directory>().map(Fixture.new).toList()
         ..sort((a, b) => a.name.compareTo(b.name));
 }
 
@@ -93,20 +92,19 @@ GenerationContext contextFor(
   Map<String, dynamic> spec, {
   SwaggerToDart config = const SwaggerToDart(),
   bool flutter = false,
-}) =>
-    GenerationContext(
-      openApi: OpenApi.fromJson(spec),
-      config: config,
-      pubspec: Pubspec(
-        'fixture',
-        dependencies: {if (flutter) 'flutter': SdkDependency('flutter')},
-      ),
-    );
+}) => GenerationContext(
+  openApi: OpenApi.fromJson(spec),
+  config: config,
+  pubspec: Pubspec(
+    'fixture',
+    dependencies: {if (flutter) 'flutter': SdkDependency('flutter')},
+  ),
+);
 
 RenderResult renderSpec(
   Map<String, dynamic> spec, {
   SwaggerToDart config = const SwaggerToDart(),
   bool flutter = false,
-}) =>
-    SwaggerToDartCodeGenerator(contextFor(spec, config: config, flutter: flutter))
-        .render();
+}) => SwaggerToDartCodeGenerator(
+  contextFor(spec, config: config, flutter: flutter),
+).render();

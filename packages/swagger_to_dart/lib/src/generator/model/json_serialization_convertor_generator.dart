@@ -73,7 +73,7 @@ const jsonSerializable = JsonSerializable(
       directives: [
         ...library.directives,
         ...customJsonConverters.expand((e) => e.exports),
-      ]
+      ],
     );
   }
 

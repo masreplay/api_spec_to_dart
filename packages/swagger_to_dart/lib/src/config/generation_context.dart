@@ -92,7 +92,7 @@ class ContextExtension {
 /// Loads the config, the pubspec and the OpenAPI document of a project.
 class GenerationContextBuilder {
   GenerationContextBuilder({this.configPath, String? rootDirectory})
-      : rootDirectory = rootDirectory ?? Directory.current.path;
+    : rootDirectory = rootDirectory ?? Directory.current.path;
 
   final String? configPath;
 
@@ -156,7 +156,9 @@ class GenerationContextBuilder {
         // Always refresh: a write-once cache silently ages while generation
         // uses the live document, so the file stops describing the client.
         await file.parent.create(recursive: true);
-        await file.writeAsString(const JsonEncoder.withIndent('  ').convert(data));
+        await file.writeAsString(
+          const JsonEncoder.withIndent('  ').convert(data),
+        );
 
         return OpenApi.fromJson(data);
       } on Exception catch (e) {

@@ -7,7 +7,10 @@ void main() {
   group('renameClass', () {
     test('PascalCases schema names', () {
       expect(renaming.renameClass('user_create'), 'UserCreate');
-      expect(renaming.renameClass('HTTPValidationError'), 'HttpValidationError');
+      expect(
+        renaming.renameClass('HTTPValidationError'),
+        'HttpValidationError',
+      );
     });
 
     test('removes the longest matching configured prefix', () {

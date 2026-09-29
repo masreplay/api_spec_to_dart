@@ -141,7 +141,8 @@ abstract class PostmanCollectionAuth with _$PostmanCollectionAuth {
 }
 
 @freezed
-abstract class PostmanCollectionAuthAttribute with _$PostmanCollectionAuthAttribute {
+abstract class PostmanCollectionAuthAttribute
+    with _$PostmanCollectionAuthAttribute {
   const PostmanCollectionAuthAttribute._();
 
   const factory PostmanCollectionAuthAttribute({
@@ -229,32 +230,27 @@ abstract class PostmanCollectionRequest with _$PostmanCollectionRequest {
 
     if (data is FormData) {
       return formData(
-        Map<String, dynamic>.fromEntries(
-          [...data.fields, ...data.files],
-        ),
+        Map<String, dynamic>.fromEntries([...data.fields, ...data.files]),
       );
     }
 
     return switch (options.contentType) {
       Headers.multipartFormDataContentType => formData(options.data),
       _ => PostmanCollectionRequestMode.raw(
-          raw: options.data == null
-              ? null
-              : options.data is Map<String, dynamic>
-                  ? JsonEncoder.withIndent('  ').convert(options.data)
-                  : options.data?.toString(),
-          options: {
-            'raw': {'language': 'json'},
-          },
-        ),
+        raw: options.data == null
+            ? null
+            : options.data is Map<String, dynamic>
+            ? JsonEncoder.withIndent('  ').convert(options.data)
+            : options.data?.toString(),
+        options: {
+          'raw': {'language': 'json'},
+        },
+      ),
     };
   }
 }
 
-@Freezed(
-  unionKey: 'mode',
-  fallbackUnion: 'raw',
-)
+@Freezed(unionKey: 'mode', fallbackUnion: 'raw')
 sealed class PostmanCollectionRequestMode with _$PostmanCollectionRequestMode {
   const PostmanCollectionRequestMode._();
 
@@ -418,7 +414,8 @@ abstract class PostmanCollectionCookie with _$PostmanCollectionCookie {
 }
 
 @freezed
-abstract class PostmanCollectionCertificate with _$PostmanCollectionCertificate {
+abstract class PostmanCollectionCertificate
+    with _$PostmanCollectionCertificate {
   const PostmanCollectionCertificate._();
 
   const factory PostmanCollectionCertificate({
@@ -434,19 +431,20 @@ abstract class PostmanCollectionCertificate with _$PostmanCollectionCertificate 
 }
 
 @freezed
-abstract class PostmanCollectionCertificateSrc with _$PostmanCollectionCertificateSrc {
+abstract class PostmanCollectionCertificateSrc
+    with _$PostmanCollectionCertificateSrc {
   const PostmanCollectionCertificateSrc._();
 
-  const factory PostmanCollectionCertificateSrc({
-    String? src,
-  }) = _PostmanCollectionCertificateSrc;
+  const factory PostmanCollectionCertificateSrc({String? src}) =
+      _PostmanCollectionCertificateSrc;
 
   factory PostmanCollectionCertificateSrc.fromJson(Map<String, dynamic> json) =>
       _$PostmanCollectionCertificateSrcFromJson(json);
 }
 
 @freezed
-abstract class PostmanCollectionProxyConfig with _$PostmanCollectionProxyConfig {
+abstract class PostmanCollectionProxyConfig
+    with _$PostmanCollectionProxyConfig {
   const PostmanCollectionProxyConfig._();
 
   const factory PostmanCollectionProxyConfig({
@@ -475,12 +473,7 @@ enum PostmanCollectionAuthType {
   ntlm,
 }
 
-enum PostmanCollectionVariableType {
-  string,
-  boolean,
-  any,
-  number,
-}
+enum PostmanCollectionVariableType { string, boolean, any, number }
 
 @freezed
 abstract class PostmanCollectionHeader with _$PostmanCollectionHeader {

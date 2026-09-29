@@ -21,7 +21,7 @@ sealed class OpenApiSchema with _$OpenApiSchema {
     @JsonKey(name: 'const') Object? const_,
     @JsonKey(name: 'default') Object? default_,
     @JsonKey(name: 'title') String? title,
-    @JsonKey(name: 'nullable') bool? nullable,  
+    @JsonKey(name: 'nullable') bool? nullable,
   }) = OpenApiSchemaType;
 
   @FreezedUnionValue('ref')

@@ -20,7 +20,8 @@ class GenericModelGeneratorStrategy
 
     if (parser == null) {
       throw ArgumentError(
-          'Cannot generate generic model for title: $effectiveTitle');
+        'Cannot generate generic model for title: $effectiveTitle',
+      );
     }
 
     final standardTitle = parser.toStandardFormat(effectiveTitle);
@@ -40,7 +41,8 @@ class GenericModelGeneratorStrategy
     final parser = GenericParserFactory.instance.detectParser(title);
     if (parser == null) {
       throw ArgumentError(
-          'Title is not in a recognized generic format: $title');
+        'Title is not in a recognized generic format: $title',
+      );
     }
 
     final baseClass = parser.extractBaseClassName(title);
@@ -48,7 +50,8 @@ class GenericModelGeneratorStrategy
 
     if (baseClass == null || genericArguments.isEmpty) {
       throw ArgumentError(
-          'Cannot extract base class or generic arguments from: $title');
+        'Cannot extract base class or generic arguments from: $title',
+      );
     }
 
     final overrideTypes = <String, String>{};
@@ -84,98 +87,103 @@ class GenericModelGeneratorStrategy
     final properties = model.value.properties ?? {};
     final genericTypesString = genericTypeParams.join(', ');
 
-    return Library((b) => b
-      ..name = filename
-      ..directives.addAll([
-        for (final import in context.config.imports?.globalImports ?? [])
-          Directive.import(import),
-        Directive.import('exports.dart'),
-        Directive.part('$filename.freezed.dart'),
-        Directive.part('$filename.g.dart'),
-      ])
-      ..docs.addAll([
-        '/// ${model.key}',
-        '/// $className',
-        ...JsonFactory.instance
-            .encode(model.value.toJson())
-            .split('\n')
-            .map((e) => '/// $e'),
-      ])
-      ..body.addAll([
-        Class((b) => b
-          ..annotations.addAll([
-            refer('Freezed(genericArgumentFactories: true)'),
-          ])
-          ..abstract = true
-          ..name = className
-          ..types.addAll(genericTypeParams.map((t) => refer(t)))
-          ..mixins.add(refer('_\$$className<$genericTypesString>'))
-          ..fields.addAll([
-            ...properties.entries.map((entry) {
-              final name = Renaming.instance.renameProperty(entry.key);
+    return Library(
+      (b) => b
+        ..name = filename
+        ..directives.addAll([
+          for (final import in context.config.imports?.globalImports ?? [])
+            Directive.import(import),
+          Directive.import('exports.dart'),
+          Directive.part('$filename.freezed.dart'),
+          Directive.part('$filename.g.dart'),
+        ])
+        ..docs.addAll([
+          '/// ${model.key}',
+          '/// $className',
+          ...JsonFactory.instance
+              .encode(model.value.toJson())
+              .split('\n')
+              .map((e) => '/// $e'),
+        ])
+        ..body.addAll([
+          Class(
+            (b) => b
+              ..annotations.addAll([
+                refer('Freezed(genericArgumentFactories: true)'),
+              ])
+              ..abstract = true
+              ..name = className
+              ..types.addAll(genericTypeParams.map((t) => refer(t)))
+              ..mixins.add(refer('_\$$className<$genericTypesString>'))
+              ..fields.addAll([
+                ...properties.entries.map((entry) {
+                  final name = Renaming.instance.renameProperty(entry.key);
 
-              return Field(
-                (b) => b
-                  ..static = true
-                  ..modifier = FieldModifier.constant
-                  ..name = _getKey(name)
-                  ..type = refer('String')
-                  ..assignment = stringCode(entry.key),
-              );
-            }),
-          ])
-          ..constructors.addAll([
-            Constructor(
-              (b) => b
-                ..constant = true
-                ..name = '_',
-            ),
-            Constructor(
-              (b) => b
-                ..annotations.addAll([
-                  refer(
-                    'JsonSerializable(converters: jsonSerializableConverters, genericArgumentFactories: true, createFieldMap: true)',
-                  ),
-                ])
-                ..constant = true
-                ..factory = true
-                ..redirect = refer('_$className<$genericTypesString>')
-                ..optionalParameters.addAll([
-                  ...properties.entries.map((entry) {
-                    return context.extension.propertyGenerator.build(
-                      entry,
-                      className: className,
-                      overrideTypes: overrideTypes,
-                    );
-                  }),
-                ]),
-            ),
-            Constructor(
-              (b) => b
-                ..factory = true
-                ..name = 'fromJson'
-                ..lambda = true
-                ..requiredParameters.addAll([
-                  Parameter(
+                  return Field(
                     (b) => b
-                      ..name = 'json'
-                      ..type = refer('Map<String, dynamic>'),
-                  ),
-                  ...fromJsonParams,
-                ])
-                ..body = Code(
-                  '_\$${className}FromJson<$genericTypesString>(json${fromJsonParams.isEmpty ? '' : ', '}${fromJsonParams.map((p) => p.name).join(', ')})',
+                      ..static = true
+                      ..modifier = FieldModifier.constant
+                      ..name = _getKey(name)
+                      ..type = refer('String')
+                      ..assignment = stringCode(entry.key),
+                  );
+                }),
+              ])
+              ..constructors.addAll([
+                Constructor(
+                  (b) => b
+                    ..constant = true
+                    ..name = '_',
                 ),
-            ),
-          ]))
-      ]));
+                Constructor(
+                  (b) => b
+                    ..annotations.addAll([
+                      refer(
+                        'JsonSerializable(converters: jsonSerializableConverters, genericArgumentFactories: true, createFieldMap: true)',
+                      ),
+                    ])
+                    ..constant = true
+                    ..factory = true
+                    ..redirect = refer('_$className<$genericTypesString>')
+                    ..optionalParameters.addAll([
+                      ...properties.entries.map((entry) {
+                        return context.extension.propertyGenerator.build(
+                          entry,
+                          className: className,
+                          overrideTypes: overrideTypes,
+                        );
+                      }),
+                    ]),
+                ),
+                Constructor(
+                  (b) => b
+                    ..factory = true
+                    ..name = 'fromJson'
+                    ..lambda = true
+                    ..requiredParameters.addAll([
+                      Parameter(
+                        (b) => b
+                          ..name = 'json'
+                          ..type = refer('Map<String, dynamic>'),
+                      ),
+                      ...fromJsonParams,
+                    ])
+                    ..body = Code(
+                      '_\$${className}FromJson<$genericTypesString>(json${fromJsonParams.isEmpty ? '' : ', '}${fromJsonParams.map((p) => p.name).join(', ')})',
+                    ),
+                ),
+              ]),
+          ),
+        ]),
+    );
   }
 
   String? _resolveGenericType(String genericArg) {
     final schemas = context.openApi.components?.schemas ?? {};
 
     for (final entry in schemas.entries) {
-      final matches = (entry.key == genericArg ||
+      final matches =
+          (entry.key == genericArg ||
           entry.value.title == genericArg ||
           entry.key.contains(genericArg));
 

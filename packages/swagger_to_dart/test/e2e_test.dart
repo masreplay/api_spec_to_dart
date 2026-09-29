@@ -11,10 +11,10 @@ import 'support/fixtures.dart';
 final _project = p.normalize(p.absolute('..', 'swagger_to_dart_e2e'));
 
 Future<ProcessResult> _dart(List<String> arguments) => Process.run(
-      Platform.resolvedExecutable,
-      arguments,
-      workingDirectory: _project,
-    );
+  Platform.resolvedExecutable,
+  arguments,
+  workingDirectory: _project,
+);
 
 /// Generates every non-Flutter fixture into `swagger_to_dart_e2e`, then
 /// proves the output builds with build_runner, analyzes clean under the

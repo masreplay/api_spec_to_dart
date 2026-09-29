@@ -320,8 +320,8 @@ class ApiClientGenerator {
               ..returns = responseType
               ..name =
                   content[OpenApiContentType.multipartFormData.toJson()] != null
-                      ? '${methodName}_'
-                      : methodName
+                  ? '${methodName}_'
+                  : methodName
               ..optionalParameters.addAll([
                 ...requestBody,
                 ...parameters,
@@ -399,8 +399,9 @@ class ApiClientGenerator {
     final useClass = context.config.apiClient.useClassForQueryParameters;
     final skippedParameters = context.config.apiClient.skippedParameters;
 
-    parameters =
-        parameters.where((e) => !skippedParameters.contains(e.name)).toList();
+    parameters = parameters
+        .where((e) => !skippedParameters.contains(e.name))
+        .toList();
 
     final queryParameters = parameters.where(
       (e) => e.in_ == OpenApiPathMethodParameterType.query,
@@ -424,8 +425,7 @@ class ApiClientGenerator {
               .map((e) => e.name)
               .toList(),
           properties: {
-            for (final p in queryParameters)
-              p.name: ?p.schema,
+            for (final p in queryParameters) p.name: ?p.schema,
           },
         ),
       );
@@ -464,17 +464,17 @@ class ApiClientGenerator {
             ..annotations.addAll([
               switch (p.in_) {
                 OpenApiPathMethodParameterType.query => refer(
-                    'Query("${p.name}")',
-                  ),
+                  'Query("${p.name}")',
+                ),
                 OpenApiPathMethodParameterType.path => refer(
-                    'Path("${p.name}")',
-                  ),
+                  'Path("${p.name}")',
+                ),
                 OpenApiPathMethodParameterType.header => refer(
-                    'Header("${p.name}")',
-                  ),
+                  'Header("${p.name}")',
+                ),
                 OpenApiPathMethodParameterType.cookie => refer(
-                    'Header("${p.name}")',
-                  ),
+                  'Header("${p.name}")',
+                ),
               },
             ])
             ..named = true
@@ -494,13 +494,16 @@ class ApiClientGenerator {
     String className,
   ) {
     // Check for text/plain with binary format (for ABP framework)
-    final textPlainResponse = responses.values.firstOrNull
-        ?.content?['text/plain'];
-    
-    final isAbpFramework = context.config.generationSource == GenerationSource.abpIO;
-    final isBinaryFormat = textPlainResponse != null &&
+    final textPlainResponse =
+        responses.values.firstOrNull?.content?['text/plain'];
+
+    final isAbpFramework =
+        context.config.generationSource == GenerationSource.abpIO;
+    final isBinaryFormat =
+        textPlainResponse != null &&
         textPlainResponse.schema is OpenApiSchemaType &&
-        (textPlainResponse.schema as OpenApiSchemaType).type == OpenApiSchemaVarType.string &&
+        (textPlainResponse.schema as OpenApiSchemaType).type ==
+            OpenApiSchemaVarType.string &&
         (textPlainResponse.schema as OpenApiSchemaType).format == 'binary';
 
     if (isAbpFramework && isBinaryFormat) {
@@ -511,7 +514,9 @@ class ApiClientGenerator {
     }
 
     // Default: check for application/json
-    final response = responses.values.firstOrNull
+    final response = responses
+        .values
+        .firstOrNull
         ?.content?[OpenApiContentType.applicationJson.toJson()];
 
     final responseTypeString = response == null
@@ -587,7 +592,9 @@ String encodeWithRawKeys(dynamic value) {
     value.forEach((key, val) {
       if (!first) buffer.write(', ');
       first = false;
-      buffer.write('${encodeDartString(key.toString())}: ${encodeWithRawKeys(val)}');
+      buffer.write(
+        '${encodeDartString(key.toString())}: ${encodeWithRawKeys(val)}',
+      );
     });
     buffer.write('}');
     return buffer.toString();

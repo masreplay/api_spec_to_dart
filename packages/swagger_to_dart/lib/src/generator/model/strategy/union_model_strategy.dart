@@ -60,7 +60,7 @@ class UnionModelStrategy
                 ..named = true
                 ..name = valueKeyName
                 ..type = refer(type),
-            )
+            ),
           ]),
       );
     }).toList();
@@ -81,7 +81,7 @@ class UnionModelStrategy
                 ..name = 'unionKey'
                 ..type = refer('String')
                 ..assignment = stringCode(valueKeyName),
-            )
+            ),
           ])
           ..methods.addAll([
             Method(
@@ -92,12 +92,15 @@ class UnionModelStrategy
                 ..returns = refer(className)
                 ..name = 'fromJson'
                 ..requiredParameters.addAll([
-                  Parameter((b) => b
-                    ..name = 'json'
-                    ..type = refer('Map<String, dynamic>')),
+                  Parameter(
+                    (b) => b
+                      ..name = 'json'
+                      ..type = refer('Map<String, dynamic>'),
+                  ),
                 ])
                 ..body = Code(
-                    'return $className.fromJson({unionKey: json, ...json});'),
+                  'return $className.fromJson({unionKey: json, ...json});',
+                ),
             ),
             Method(
               (b) => b
@@ -107,13 +110,16 @@ class UnionModelStrategy
                 ..returns = refer('Map<String, dynamic>')
                 ..name = 'toJson'
                 ..requiredParameters.addAll([
-                  Parameter((b) => b
-                    ..name = 'object'
-                    ..type = refer(className)),
+                  Parameter(
+                    (b) => b
+                      ..name = 'object'
+                      ..type = refer(className),
+                  ),
                 ])
                 ..body = Code(
-                    'return {unionKey: object.toJson(), ...object.toJson()};'),
-            )
+                  'return {unionKey: object.toJson(), ...object.toJson()};',
+                ),
+            ),
           ]),
       ),
     );
@@ -176,7 +182,7 @@ class UnionModelStrategy
                             ..named = true
                             ..name = valueKeyName
                             ..type = refer('Map<String,dynamic>?'),
-                        )
+                        ),
                       ]),
                   ),
                 Constructor(
@@ -184,15 +190,17 @@ class UnionModelStrategy
                     ..factory = true
                     ..name = 'fromJson'
                     ..requiredParameters.addAll([
-                      Parameter((b) => b
-                        ..name = 'json'
-                        ..type = refer('Map<String, dynamic>')),
+                      Parameter(
+                        (b) => b
+                          ..name = 'json'
+                          ..type = refer('Map<String, dynamic>'),
+                      ),
                     ])
                     ..lambda = true
                     ..body = Code('_\$${className}FromJson(json)'),
-                )
+                ),
               ]),
-          )
+          ),
         ]),
     );
   }
@@ -252,9 +260,9 @@ class UnionModelStrategy
     if (discriminator case final discriminator?) {
       refSchemaMap = {
         for (final entry in discriminator.mapping.entries)
-          entry.key: schemas
-              .whereType<OpenApiSchemaRef>()
-              .firstWhere((e) => e.ref == entry.value),
+          entry.key: schemas.whereType<OpenApiSchemaRef>().firstWhere(
+            (e) => e.ref == entry.value,
+          ),
       };
     } else {
       refSchemaMap = {
@@ -284,10 +292,12 @@ class UnionModelStrategy
           schemas
               .whereType<OpenApiSchemaRef>()
               .map(context.extension.typeConverter.getRef)
-              .map((name) => Renaming.instance.renameClass(
-                    name,
-                    removePrefixes: prefixes.isNotEmpty ? prefixes : null,
-                  ))
+              .map(
+                (name) => Renaming.instance.renameClass(
+                  name,
+                  removePrefixes: prefixes.isNotEmpty ? prefixes : null,
+                ),
+              )
               .sorted((a, b) => a.compareTo(b))
               .join(),
       removePrefixes: prefixes.isNotEmpty ? prefixes : null,
