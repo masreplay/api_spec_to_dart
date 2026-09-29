@@ -35,7 +35,7 @@ _OpenApiSchemas _$OpenApiSchemasFromJson(Map<String, dynamic> json) =>
       required_: (json['required'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      enum_: (json['enum'] as List<dynamic>?)?.map((e) => e as Object).toList(),
+      enum_: json['enum'] as List<dynamic>?,
       const_: json['const'],
       title: json['title'] as String?,
       description: json['description'] as String?,

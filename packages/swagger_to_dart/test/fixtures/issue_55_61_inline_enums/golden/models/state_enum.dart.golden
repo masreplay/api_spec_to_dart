@@ -1,0 +1,30 @@
+/// StateEnum
+///
+/// ```json
+/// {
+///     "type": "integer",
+///     "enum": [
+///         0,
+///         10
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'state_enum.g.dart';
+
+@JsonEnum(alwaysCreate: true)
+enum StateEnum {
+  @JsonValue(0)
+  created,
+  @JsonValue(10)
+  registered;
+
+  factory StateEnum.fromJson(int json) => StateEnum.values.firstWhere(
+    (e) => e.toJson() == json,
+    orElse: () => throw ArgumentError('Invalid StateEnum'),
+  );
+
+  int toJson() => _$StateEnumEnumMap[this]!;
+}

@@ -1,0 +1,31 @@
+/// PetStatus
+///
+/// ```json
+/// {
+///     "properties": {},
+///     "type": "string",
+///     "enum": [
+///         "available",
+///         "sold"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'pet_status.g.dart';
+
+@JsonEnum(alwaysCreate: true)
+enum PetStatus {
+  @JsonValue('available')
+  available,
+  @JsonValue('sold')
+  sold;
+
+  factory PetStatus.fromJson(String json) => PetStatus.values.firstWhere(
+    (e) => e.toJson() == json,
+    orElse: () => throw ArgumentError('Invalid PetStatus'),
+  );
+
+  String toJson() => _$PetStatusEnumMap[this]!;
+}

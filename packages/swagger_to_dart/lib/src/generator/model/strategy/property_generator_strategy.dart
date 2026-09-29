@@ -12,14 +12,17 @@ class PropertyGeneratorStrategy extends GeneratorStrategy {
   }) {
     final name = Renaming.instance.renameProperty(property.key);
 
+    final contextName = '${className}_${property.key}';
     final defaultValue = context.extension.typeConverter.getDefaultValue(
       property.value,
+      contextName: contextName,
       inConstContext: true,
     );
 
     final dartType = context.extension.typeConverter.get(
       property.value,
       className: className,
+      contextName: contextName,
       overrideTypes: overrideTypes,
     );
 

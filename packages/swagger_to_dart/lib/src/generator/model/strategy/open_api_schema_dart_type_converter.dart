@@ -5,10 +5,13 @@ import 'package:swagger_to_dart/swagger_to_dart.dart';
 class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
   const OpenApiSchemaDartTypeConverter(super.context);
 
+  /// Dart type for [schema]. [contextName] (e.g. `Pet_status`,
+  /// `listPets_sort`) names inline enums that have no title.
   String get(
     OpenApiSchema? schema, {
     required String className,
     OpenApiSchema? parent,
+    String? contextName,
     Map<String, String> overrideTypes = const {},
   }) {
     if (schema == null) {
@@ -20,11 +23,20 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
         schema,
         parent: parent,
         className: className,
+        contextName: contextName,
         overrideTypes: overrideTypes,
       ),
       OpenApiSchemaRef schema => getRef(schema),
-      OpenApiSchemaAnyOf schema => getAnyOf(schema, className: className),
-      OpenApiSchemaOneOf schema => getOneOf(schema, className: className),
+      OpenApiSchemaAnyOf schema => getAnyOf(
+        schema,
+        className: className,
+        contextName: contextName,
+      ),
+      OpenApiSchemaOneOf schema => getOneOf(
+        schema,
+        className: className,
+        contextName: contextName,
+      ),
     };
 
     // Generic models map a concrete type to its type parameter (Item -> T).
@@ -157,6 +169,7 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
   String getAnyOf(
     OpenApiSchemaAnyOf schema, {
     required String className,
+    String? contextName,
   }) {
     final anyOf = schema.anyOf;
     final schemas = anyOf.where((e) {
@@ -168,6 +181,7 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
         schemas.first,
         parent: schema,
         className: className,
+        contextName: contextName,
       );
     }
 
@@ -186,6 +200,7 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
   String getOneOf(
     OpenApiSchemaOneOf schema, {
     required String className,
+    String? contextName,
   }) {
     final oneOf = schema.oneOf;
     final schemas = oneOf.where((e) {
@@ -193,7 +208,12 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
     }).toList();
 
     if (schemas.length == 1) {
-      return get(schemas.first, className: className);
+      return get(
+        schemas.first,
+        parent: schema,
+        className: className,
+        contextName: contextName,
+      );
     }
 
     if (schemas.every((e) => e is OpenApiSchemaRef)) {
@@ -212,27 +232,31 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
     OpenApiSchemaType schema, {
     required String className,
     OpenApiSchema? parent,
+    String? contextName,
     Map<String, String> overrideTypes = const {},
   }) {
-    if (schema.enum_ != null) {
-      final strategy = EnumModelGeneratorStrategy(context);
-
-      final name = schema.title ?? parent?.title;
-
-      final className = Renaming.instance.renameEnum(name!);
-      final model = strategy.build(
-        MapEntry(
-          className,
-          OpenApiSchemas(
-            type: 'object',
-            properties: {},
-            enum_: schema.enum_,
+    if (schema.enum_ case final values?) {
+      final enumClassName = inlineEnumClassName(
+        schema,
+        parent: parent,
+        contextName: contextName,
+      );
+      context.addModel(
+        EnumModelGeneratorStrategy(context).build(
+          MapEntry(
+            enumClassName,
+            OpenApiSchemas(
+              type: schema.type == OpenApiSchemaVarType.integer
+                  ? 'integer'
+                  : 'string',
+              properties: {},
+              enum_: values,
+            ),
           ),
         ),
       );
-      context.addModel(model);
 
-      return className;
+      return enumClassName;
     }
 
     switch (schema.type) {
@@ -281,14 +305,24 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
         final items = schema.items;
         final dartType = items == null
             ? 'dynamic'
-            : get(items, className: className, overrideTypes: overrideTypes);
+            : get(
+                items,
+                className: className,
+                contextName: contextName,
+                overrideTypes: overrideTypes,
+              );
 
         return 'List<$dartType>';
       case OpenApiSchemaVarType.object:
         final items = schema.items;
         final dartType = items == null
             ? 'dynamic'
-            : get(items, className: className, overrideTypes: overrideTypes);
+            : get(
+                items,
+                className: className,
+                contextName: contextName,
+                overrideTypes: overrideTypes,
+              );
 
         return 'Map<String, $dartType>';
       case OpenApiSchemaVarType.null_ || OpenApiSchemaVarType.$unknown || null:
@@ -301,48 +335,66 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
   String? getDefaultValue(
     OpenApiSchema? schema, {
     OpenApiSchema? parent,
+    String? contextName,
     bool inConstContext = false,
   }) {
-    if (schema == null) {
-      return null;
-    }
-
-    final default_ = schema.default_;
+    final default_ = schema?.default_;
+    if (schema == null || default_ == null) return null;
 
     switch (schema) {
       case OpenApiSchemaType schema:
-        if (schema.enum_ != null) {
-          final name = schema.title ?? parent?.title ?? 'TemporaryEnum';
-          final className = Renaming.instance.renameEnum(name);
-
-          if (schema.default_ == null) return null;
-          final defaultValue = Renaming.instance.renameEnumValue(
-            schema.default_.toString(),
+        if (schema.enum_ case final values?) {
+          final className = inlineEnumClassName(
+            schema,
+            parent: parent,
+            contextName: contextName,
           );
-
-          return '$className.$defaultValue';
+          return _enumDefault(className, className, values, default_);
         }
-
-        return _dartLiteral(default_, constPrefix: !inConstContext);
       case OpenApiSchemaRef schema:
-        final dartType = getRef(schema);
-        final refSchema = context.openApi.getOpenApiSchemasByRef(schema.ref!)!;
-
-        if (refSchema.enum_ != null && default_ != null) {
-          if (schema.default_ == null) return null;
-          final defaultValue = Renaming.instance.renameEnumValue(
-            schema.default_.toString(),
-          );
-
-          return '$dartType.$defaultValue';
+        final values = context.openApi.getOpenApiSchemasByRef(schema.ref!)?.enum_;
+        if (values != null) {
+          return _enumDefault(schema.name, getRef(schema), values, default_);
         }
-
-        return _dartLiteral(default_, constPrefix: !inConstContext);
-      case OpenApiSchemaAnyOf schema:
-        return _dartLiteral(schema.default_, constPrefix: !inConstContext);
-      case OpenApiSchemaOneOf schema:
-        return _dartLiteral(schema.default_, constPrefix: !inConstContext);
+      case OpenApiSchemaAnyOf() || OpenApiSchemaOneOf():
+        break;
     }
+
+    return _dartLiteral(default_, constPrefix: !inConstContext);
+  }
+
+  /// Class name of an inline enum: its title, its parent's title, or the
+  /// place it is used ([contextName], e.g. `Pet_status` -> `PetStatus`).
+  String inlineEnumClassName(
+    OpenApiSchemaType schema, {
+    OpenApiSchema? parent,
+    String? contextName,
+  }) {
+    final name = schema.title ?? parent?.title ?? contextName;
+    if (name == null) {
+      throw ArgumentError(
+        'swagger_to_dart: cannot name the inline enum ${schema.enum_}; '
+        'give its schema a title.',
+      );
+    }
+    return Renaming.instance.renameEnum(name);
+  }
+
+  /// `Enum.member` for [value], honouring `model.enums` renames; null when the
+  /// default is not one of the enum's values.
+  String? _enumDefault(
+    String enumKey,
+    String className,
+    List<Object?> values,
+    Object value,
+  ) {
+    final member = EnumModelGeneratorStrategy.memberNames(
+      enumKey: enumKey,
+      className: className,
+      values: [...values.whereType<Object>()],
+      overrides: context.config.model.enums,
+    )['$value'];
+    return member == null ? null : '$className.$member';
   }
 
   String? _dartLiteral(Object? value, {required bool constPrefix}) {

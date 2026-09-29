@@ -1,0 +1,31 @@
+/// ListPetsSort
+///
+/// ```json
+/// {
+///     "properties": {},
+///     "type": "string",
+///     "enum": [
+///         "asc",
+///         "desc"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'list_pets_sort.g.dart';
+
+@JsonEnum(alwaysCreate: true)
+enum ListPetsSort {
+  @JsonValue('asc')
+  asc,
+  @JsonValue('desc')
+  desc;
+
+  factory ListPetsSort.fromJson(String json) => ListPetsSort.values.firstWhere(
+    (e) => e.toJson() == json,
+    orElse: () => throw ArgumentError('Invalid ListPetsSort'),
+  );
+
+  String toJson() => _$ListPetsSortEnumMap[this]!;
+}
