@@ -259,12 +259,8 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
 
             return 'String';
           case 'binary':
-            if (context.isFlutterProject &&
-                context.config.generationSource == GenerationSource.fastAPI) {
-              return 'MultipartFile';
-            }
-
-            return 'String';
+            // A file part of a multipart body (dio's MultipartFile).
+            return 'MultipartFile';
           case 'uuid':
             return 'String';
           case 'time' || 'duration':

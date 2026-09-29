@@ -350,6 +350,8 @@ class ApiClientGenerator {
         ..directives.addAll([
           for (final import in context.config.imports?.globalImports ?? [])
             Directive.import(import),
+          if (methods.any((m) => '${m.returns?.symbol}'.contains('Uint8List')))
+            Directive.import('dart:typed_data'),
           Directive.import('package:dio/dio.dart', hide: ['Headers']),
           Directive.import('package:retrofit/retrofit.dart'),
           Directive.import('../models/models.dart'),
@@ -528,47 +530,62 @@ class ApiClientGenerator {
     String className, {
     required String contextName,
   }) {
-    // Check for text/plain with binary format (for ABP framework)
-    final textPlainResponse =
-        responses.values.firstOrNull?.content?['text/plain'];
+    final content = _successResponse(responses)?.content ?? {};
 
-    final isAbpFramework =
-        context.config.generationSource == GenerationSource.abpIO;
-    final isBinaryFormat =
-        textPlainResponse != null &&
-        textPlainResponse.schema is OpenApiSchemaType &&
-        (textPlainResponse.schema as OpenApiSchemaType).type ==
-            OpenApiSchemaVarType.string &&
-        (textPlainResponse.schema as OpenApiSchemaType).format == 'binary';
+    // JSON wins: Swashbuckle lists text/plain and text/json next to it.
+    if (content.entries.firstWhereOrNull((e) => _isJson(e.key)) case final json?) {
+      final type = context.extension.typeConverter.get(
+        json.value.schema,
+        className: className,
+        contextName: contextName,
+      );
+      return (
+        type: refer('Future<HttpResponse<$type>>'),
+        isBinaryResponse: false,
+      );
+    }
 
-    if (isAbpFramework && isBinaryFormat) {
+    // Files and images (#54): raw bytes whatever the media type.
+    if (content.entries.any((e) => _isBinary(e.key, e.value.schema))) {
       return (
         type: refer('Future<HttpResponse<Uint8List>>'),
         isBinaryResponse: true,
       );
     }
 
-    // Default: check for application/json
-    final response = responses
-        .values
-        .firstOrNull
-        ?.content?[OpenApiContentType.applicationJson.toJson()];
+    if (content.keys.any((mediaType) => mediaType.startsWith('text/'))) {
+      return (
+        type: refer('Future<HttpResponse<String>>'),
+        isBinaryResponse: false,
+      );
+    }
 
-    final responseTypeString = response == null
-        ? null
-        : context.extension.typeConverter.get(
-            response.schema,
-            className: className,
-            contextName: contextName,
-          );
-
-    return (
-      type: responseTypeString == null
-          ? refer('Future<HttpResponse>')
-          : refer('Future<HttpResponse<$responseTypeString>>'),
-      isBinaryResponse: false,
-    );
+    return (type: refer('Future<HttpResponse>'), isBinaryResponse: false);
   }
+
+  /// The lowest 2xx response, else `default`, else the first one.
+  OpenApiPathMethodResponse? _successResponse(
+    OpenApiPathMethodResponses responses,
+  ) {
+    final success = responses.keys.where((code) => code.startsWith('2')).sorted();
+    return success.isNotEmpty
+        ? responses[success.first]
+        : responses['default'] ?? responses.values.firstOrNull;
+  }
+
+  static bool _isJson(String mediaType) {
+    final type = mediaType.split(';').first.trim();
+    return type == 'application/json' ||
+        type == 'text/json' ||
+        type.endsWith('+json');
+  }
+
+  static bool _isBinary(String mediaType, OpenApiSchema? schema) =>
+      (schema is OpenApiSchemaType && schema.format == 'binary') ||
+      const ['image/', 'audio/', 'video/'].any(mediaType.startsWith) ||
+      mediaType == 'application/octet-stream' ||
+      mediaType == 'application/pdf';
+
 
   List<Parameter> _extraParameters({
     required Map<String, dynamic>? openapiMetadata,
