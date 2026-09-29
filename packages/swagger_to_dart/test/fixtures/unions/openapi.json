@@ -95,6 +95,22 @@
           { "$ref": "#/components/schemas/Rect" }
         ]
       },
+      "Hound": {
+        "type": "object",
+        "required": ["name"],
+        "properties": { "name": { "type": "string" }, "bark": { "type": "boolean" } }
+      },
+      "Tabby": {
+        "type": "object",
+        "required": ["name"],
+        "properties": { "name": { "type": "string" }, "lives": { "type": "integer" } }
+      },
+      "Companion": {
+        "anyOf": [
+          { "$ref": "#/components/schemas/Hound" },
+          { "$ref": "#/components/schemas/Tabby" }
+        ]
+      },
       "Pet": {
         "type": "object",
         "required": ["animals"],

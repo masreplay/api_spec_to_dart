@@ -24,18 +24,29 @@ sealed class Shape {
   const factory Shape.fallback(Map<String, dynamic> value) = ShapeFallback;
 
   factory Shape.fromJson(Map<String, dynamic> json) {
-    // No discriminator in the spec: the first variant that decodes wins.
-    for (final decode in <Shape Function(Map<String, dynamic>)>[
-      (json) => ShapeCircle(Circle.fromJson(json)),
-      (json) => ShapeRect(Rect.fromJson(json)),
-    ]) {
-      try {
-        return decode(json);
-      } catch (_) {
-        // Not this variant; try the next one.
+    // No discriminator in the spec: the variant whose required keys are all
+    // present and that declares the most of the payload's keys wins (the
+    // earlier one on a tie).
+    const variants = <({Set<String> required, Set<String> declared})>[
+      (required: {'radius'}, declared: {'radius'}),
+      (required: {'width', 'height'}, declared: {'width', 'height'}),
+    ];
+    var best = -1;
+    var bestScore = -1;
+    for (var i = 0; i < variants.length; i++) {
+      final variant = variants[i];
+      if (!variant.required.every(json.containsKey)) continue;
+      final score = json.keys.where(variant.declared.contains).length;
+      if (score > bestScore) {
+        best = i;
+        bestScore = score;
       }
     }
-    return ShapeFallback(json);
+    return switch (best) {
+      0 => ShapeCircle(Circle.fromJson(json)),
+      1 => ShapeRect(Rect.fromJson(json)),
+      _ => ShapeFallback(json),
+    };
   }
 
   Map<String, dynamic> toJson();

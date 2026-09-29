@@ -56,4 +56,16 @@ void main() {
     expect(Shape.fromJson({'radius': 2}), isA<ShapeCircle>());
     expect(Shape.fromJson({'width': 1, 'height': 2}), isA<ShapeRect>());
   });
+
+  test('without a discriminator the variant declaring most keys wins', () {
+    expect(
+      Companion.fromJson({'name': 'Tom', 'lives': 9}),
+      isA<CompanionTabby>(),
+    );
+    expect(
+      Companion.fromJson({'name': 'Rex', 'bark': true}),
+      isA<CompanionHound>(),
+    );
+    expect(Companion.fromJson({'lives': 9}), isA<CompanionFallback>());
+  });
 }

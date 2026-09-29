@@ -216,25 +216,51 @@ class UnionModelStrategy {
       }
       source.writeln('_ => $noMatch,};');
     } else {
+      String setOf(Iterable<String>? keys) => keys == null || keys.isEmpty
+          ? '<String>{}'
+          : '{${keys.toSet().map(dartString).join(', ')}}';
+
       source
         ..writeln('factory $className.fromJson(Map<String, dynamic> json) {')
         ..writeln(
-          '// No discriminator in the spec: the first variant that decodes wins.',
+          '// No discriminator in the spec: the variant whose required keys are all',
         )
         ..writeln(
-          'for (final decode in <$className Function(Map<String, dynamic>)>[',
+          "// present and that declares the most of the payload's keys wins (the",
+        )
+        ..writeln('// earlier one on a tie).')
+        ..writeln(
+          'const variants = <({Set<String> required, Set<String> declared})>[',
         );
       for (final v in variants) {
+        // ponytail: raw component only, so an allOf-composed variant declares
+        // nothing; merge its allOf parts (as ModelGenerator does) if needed.
+        final schema = context.openApi.getOpenApiSchemasByRef(v.ref.ref!);
         source.writeln(
-          '(json) => ${caseClass(v.caseName)}(${typeOf(v)}.fromJson(json)),',
+          '(required: ${setOf(schema?.required_)}, '
+          'declared: ${setOf(schema?.properties?.keys)}),',
         );
       }
       source
-        ..writeln(']) {')
-        ..writeln('try { return decode(json); } catch (_) {')
-        ..writeln('// Not this variant; try the next one.')
-        ..writeln('}}')
-        ..writeln(fallbackCase != null ? 'return $noMatch;' : '$noMatch;')
+        ..writeln('];')
+        ..writeln('var best = -1;')
+        ..writeln('var bestScore = -1;')
+        ..writeln('for (var i = 0; i < variants.length; i++) {')
+        ..writeln('final variant = variants[i];')
+        ..writeln('if (!variant.required.every(json.containsKey)) continue;')
+        ..writeln(
+          'final score = json.keys.where(variant.declared.contains).length;',
+        )
+        ..writeln('if (score > bestScore) { best = i; bestScore = score; }')
+        ..writeln('}')
+        ..writeln('return switch (best) {');
+      for (final (i, v) in variants.indexed) {
+        source.writeln(
+          '$i => ${caseClass(v.caseName)}(${typeOf(v)}.fromJson(json)),',
+        );
+      }
+      source
+        ..writeln('_ => $noMatch,};')
         ..writeln('}');
     }
 
