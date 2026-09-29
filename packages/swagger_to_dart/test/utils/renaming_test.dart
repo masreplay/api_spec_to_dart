@@ -59,4 +59,49 @@ void main() {
       expect(renaming.renameProperty('first_name'), 'firstName');
     });
   });
+
+  group('identifier hygiene', () {
+    test('built-in identifiers are legal names (#51)', () {
+      expect(renaming.renameEnumValue('EXTERNAL'), 'external');
+      expect(renaming.renameProperty('required'), 'required');
+    });
+
+    test('reserved words get a \$ prefix', () {
+      expect(renaming.renameProperty('default'), r'$default');
+      expect(renaming.renameProperty('Class'), r'$class');
+      expect(renaming.renameEnumValue('new'), r'$new');
+    });
+
+    test('hyphens between words separate them (#28)', () {
+      expect(renaming.renameProperty('some-header'), 'someHeader');
+      expect(renaming.renameProperty('X-API-Version'), 'xAPIVersion');
+      expect(renaming.renameEnumValue('in-progress'), 'inProgress');
+    });
+
+    test('lone symbols are spelled out', () {
+      expect(renaming.renameEnumValue('+'), 'plus');
+      expect(renaming.renameEnumValue('-'), 'minus');
+    });
+
+    test('characters that cannot appear in identifiers are dropped', () {
+      expect(renaming.renameEnumValue("a'b"), 'aB');
+      expect(renaming.renameProperty('user\'s'), 'userS');
+    });
+
+    test('names cannot start with a digit or be empty', () {
+      expect(renaming.renameProperty('2fa'), r'$2fa');
+      expect(renaming.renameEnumValue('1st'), r'$1st');
+      expect(renaming.renameEnumValue(''), 'empty');
+    });
+
+    test('propertyNames keeps names unique', () {
+      expect(
+        renaming.propertyNames(
+          ['some-key', 'some_key', 'extras'],
+          reserved: {'extras'},
+        ),
+        {'some-key': 'someKey', 'some_key': 'someKey2', 'extras': 'extras2'},
+      );
+    });
+  });
 }

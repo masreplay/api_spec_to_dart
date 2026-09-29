@@ -8,7 +8,8 @@ class Recase {
 
   static Recase get instance => _instance;
 
-  static const _separateSymbolsList = r' #,-./@\_{}()[]<>:;`~!$%^&*+=|\';
+  // Anything that cannot appear in a word separates words.
+  static final _wordCharacter = RegExp('[A-Za-z0-9]');
   static final _upperCaseRegex = RegExp('[A-Z]');
   static final _lowerCaseRegex = RegExp('[a-z]');
 
@@ -24,7 +25,7 @@ class Recase {
 
     for (var i = 0; i < text.length; i++) {
       final char = text[i];
-      if (_separateSymbolsList.contains(char)) continue;
+      if (!_wordCharacter.hasMatch(char)) continue;
 
       final nextChar = i + 1 == text.length ? null : text[i + 1];
       final nextSecondChar = i + 2 >= text.length ? null : text[i + 2];
@@ -38,7 +39,7 @@ class Recase {
               (!_upperCaseRegex.hasMatch(char) ||
                   (nextSecondChar != null &&
                       _lowerCaseRegex.hasMatch(nextSecondChar)))) ||
-          _separateSymbolsList.contains(nextChar);
+          !_wordCharacter.hasMatch(nextChar);
 
       if (isEndOfWord) {
         words.add(sb.toString());

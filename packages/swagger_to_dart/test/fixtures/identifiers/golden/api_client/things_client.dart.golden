@@ -1,0 +1,67 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'things_client.g.dart';
+
+@RestApi()
+abstract class ThingsClient {
+  factory ThingsClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _ThingsClient;
+
+  @GET('/things/{class}')
+  Future<HttpResponse<Weird>> getThing({
+    @Path('class') required String $class,
+    @Header('X-API-Version') String? xAPIVersion,
+    @Query('extras') String? extras2,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['things'],
+      'operationId': 'getThing',
+      'parameters': [
+        {
+          'name': 'class',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'X-API-Version',
+          'in': 'header',
+          'required': false,
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'extras',
+          'in': 'query',
+          'required': false,
+          'schema': {'type': 'string'},
+        },
+      ],
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/Weird'},
+            },
+          },
+        },
+        '400': {
+          'description': 'Bad',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/Error'},
+            },
+          },
+        },
+      },
+    },
+  });
+}

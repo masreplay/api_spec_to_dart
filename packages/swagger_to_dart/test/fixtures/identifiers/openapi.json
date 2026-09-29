@@ -1,0 +1,63 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Identifiers", "version": "1.0.0" },
+  "paths": {
+    "/things/{class}": {
+      "get": {
+        "tags": ["things"],
+        "operationId": "getThing",
+        "parameters": [
+          { "name": "class", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "X-API-Version", "in": "header", "required": false, "schema": { "type": "string" } },
+          { "name": "extras", "in": "query", "required": false, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Weird" } } }
+          },
+          "400": {
+            "description": "Bad",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Weird": {
+        "type": "object",
+        "properties": {
+          "some-key": { "type": "string" },
+          "some_key": { "type": "string" },
+          "default": { "type": "string" },
+          "class": { "type": "integer" },
+          "new": { "type": "boolean" },
+          "required": { "type": "string" },
+          "get": { "type": "string" },
+          "set": { "type": "string" },
+          "external": { "type": "string" },
+          "dynamic": { "type": "string" },
+          "late": { "type": "string" },
+          "2fa": { "type": "boolean" },
+          "user's": { "type": "string" },
+          "words": { "$ref": "#/components/schemas/Words" },
+          "type": { "$ref": "#/components/schemas/Type" }
+        }
+      },
+      "Words": {
+        "type": "string",
+        "enum": ["EXTERNAL", "new", "default", "+", "-", "in-progress", "a'b", "1st", "get", "required"]
+      },
+      "Error": {
+        "type": "object",
+        "properties": { "message": { "type": "string" } }
+      },
+      "Type": {
+        "type": "object",
+        "properties": { "name": { "type": "string" } }
+      }
+    }
+  }
+}
