@@ -287,12 +287,6 @@ swagger_to_dart:
     # Default: false.
     use_class_for_query_parameters: false
 
-    # Reserved for a multipart equivalent of the option above. Not yet
-    # wired into the generator: multipart bodies are always emitted as a
-    # `Map<String, dynamic>` `@Part()` regardless of this setting.
-    # Default: false.
-    use_class_for_multipart_form_data: false
-
     # Operation parameters dropped entirely from the generated method
     # signature (and so never sent) — e.g. ones your own Dio interceptors
     # already inject, like `Language` or `X-API-Key`. Default: [].

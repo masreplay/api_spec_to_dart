@@ -104,9 +104,6 @@ abstract class ApiClientConfig with _$ApiClientConfig {
     @Default(false)
     @JsonKey(name: 'use_class_for_query_parameters')
     bool useClassForQueryParameters,
-    @Default(false)
-    @JsonKey(name: 'use_class_for_multipart_form_data')
-    bool useClassForMultipartFormData,
     @Default([])
     @JsonKey(name: 'skipped_parameters')
     List<String> skippedParameters,
