@@ -76,19 +76,28 @@ class EnumModelGeneratorStrategy
       overrides: context.config.model.enums,
     );
 
+    final enumType = model.value.type == 'integer'
+        ? OpenApiSchemaVarType.integer
+        : OpenApiSchemaVarType.string;
+
     final enumFallbackType = context.config.model.enumFallbackType;
 
+    // `unknown` fallback: reuse a member named unknown, else add one whose
+    // JSON value cannot clash with a real value.
+    final addUnknown =
+        enumFallbackType == EnumFallbackType.unknown &&
+        !memberNames.containsValue('unknown');
+    final unknownJsonValue = enumType == OpenApiSchemaVarType.integer
+        ? '${values.whereType<int>().fold<int>(0, (a, b) => a < b ? a : b) - 1}'
+        : dartString('unknown');
+
     final orElseCallback = switch (enumFallbackType) {
-      EnumFallbackType.unknown => "throw ArgumentError('Invalid $className')",
+      EnumFallbackType.unknown => '$className.unknown',
       EnumFallbackType.first => '$className.values.first',
       EnumFallbackType.last => '$className.values.last',
       EnumFallbackType.throwException =>
         "throw ArgumentError('Invalid $className')",
     };
-
-    final enumType = model.value.type == 'integer'
-        ? OpenApiSchemaVarType.integer
-        : OpenApiSchemaVarType.string;
 
     final referType = refer(
       enumType == OpenApiSchemaVarType.integer ? 'int' : 'String',
@@ -120,6 +129,12 @@ class EnumModelGeneratorStrategy
                         ),
                       )
                       ..name = memberNames[value.toString()]!,
+                  ),
+                if (addUnknown)
+                  EnumValue(
+                    (b) => b
+                      ..annotations.add(refer('JsonValue($unknownJsonValue)'))
+                      ..name = 'unknown',
                   ),
               ])
               ..constructors.addAll([

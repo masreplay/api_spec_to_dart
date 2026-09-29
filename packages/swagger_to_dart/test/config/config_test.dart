@@ -13,7 +13,7 @@ void main() {
     expect(config.outputDirectory, 'lib/src/gen');
     expect(config.generationSource, isNull);
     expect(config.model.supportGenericArguments, isFalse);
-    expect(config.model.enumFallbackType, EnumFallbackType.unknown);
+    expect(config.model.enumFallbackType, EnumFallbackType.throwException);
     expect(config.model.removeModelPrefixes, isEmpty);
     expect(config.apiClient.baseApiClientClassName, 'BaseApiClient');
     expect(config.apiClient.useClassForQueryParameters, isFalse);

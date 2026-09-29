@@ -270,4 +270,69 @@ void main() {
       contains('required SetModeBody requestBody'),
     );
   });
+
+  group('non-JSON bodies (#56)', () {
+    Map<String, dynamic> post(String operationId, String mediaType) => {
+      'post': {
+        'tags': ['items'],
+        'operationId': operationId,
+        'requestBody': {
+          'required': true,
+          'content': {
+            mediaType: {
+              'schema': {'type': 'string'},
+            },
+          },
+        },
+        'responses': {
+          '200': {
+            'description': 'OK',
+            'content': {
+              'application/xml': {
+                'schema': {'type': 'string'},
+              },
+            },
+          },
+        },
+      },
+    };
+
+    late String client;
+    setUpAll(() {
+      client = renderSpec(
+        _spec(
+          paths: {
+            '/text': post('sendText', 'text/plain'),
+            '/xml': post('sendXml', 'application/xml'),
+            '/bytes': post('sendBytes', 'application/octet-stream'),
+          },
+        ),
+      ).files['api_client/items_client.dart']!;
+    });
+
+    test('text and XML bodies are strings with their content type', () {
+      expect(
+        client,
+        contains("@Headers(<String, dynamic>{'Content-Type': 'text/plain'})"),
+      );
+      expect(
+        client,
+        contains(
+          "@Headers(<String, dynamic>{'Content-Type': 'application/xml'})",
+        ),
+      );
+      expect(
+        RegExp('@Body\\(\\) required String requestBody').allMatches(client),
+        hasLength(2),
+      );
+    });
+
+    test('binary bodies are bytes', () {
+      expect(client, contains('@Body() required List<int> requestBody'));
+    });
+
+    test('XML responses are strings', () {
+      expect(client, contains('Future<HttpResponse<String>> sendXml('));
+    });
+  });
 }

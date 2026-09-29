@@ -308,18 +308,35 @@ class ApiClientGenerator {
           }
         }
 
+        // Text, XML or binary bodies (#56): sent as-is with their media type.
+        final rawBody = requestBody.isEmpty ? content.entries.firstOrNull : null;
+        if (rawBody != null) {
+          requestBody.add(
+            Parameter(
+              (b) => b
+                ..annotations.addAll([refer('Body()')])
+                ..name = _requestBodyName
+                ..named = true
+                ..required = true
+                ..type = refer(
+                  _isBinary(rawBody.key, rawBody.value.schema)
+                      ? 'List<int>'
+                      : 'String',
+                ),
+            ),
+          );
+        }
+
         methods.add(
           Method(
             (b) => b
-              // ..docs.addAll([
-              //  '/// ${method.key.name}',
-              //  ...JsonFactory.instance
-              //      .encode(method.value.toJson())
-              //      .split('\n')
-              //      .map((e) => '/// $e'),
-              // ])
               ..annotations.addAll([
                 refer('$methodType(${dartString(path.key)})'),
+                if (rawBody != null)
+                  refer(
+                    "Headers(<String, dynamic>{'Content-Type': "
+                    '${dartString(rawBody.key)}})',
+                  ),
                 if (content[OpenApiContentType.applicationXWwwFormUrlencoded
                         .toJson()] !=
                     null)
@@ -553,7 +570,9 @@ class ApiClientGenerator {
       );
     }
 
-    if (content.keys.any((mediaType) => mediaType.startsWith('text/'))) {
+    if (content.keys.any(
+      (mediaType) => mediaType.startsWith('text/') || mediaType.contains('xml'),
+    )) {
       return (
         type: refer('Future<HttpResponse<String>>'),
         isBinaryResponse: false,

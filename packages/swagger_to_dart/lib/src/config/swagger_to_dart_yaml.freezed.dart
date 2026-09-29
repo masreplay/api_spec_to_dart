@@ -716,7 +716,7 @@ class _ModelConfig extends ModelConfig {
     this.supportGenericArguments = false,
     @JsonKey(name: 'union_class_fallback_name') this.unionClassFallbackName,
     @JsonKey(name: 'enum_fallback_type')
-    this.enumFallbackType = EnumFallbackType.unknown,
+    this.enumFallbackType = EnumFallbackType.throwException,
     @JsonKey(name: 'remove_model_prefixes')
     List<String> removeModelPrefixes = const [],
     @JsonKey(name: 'enums')
