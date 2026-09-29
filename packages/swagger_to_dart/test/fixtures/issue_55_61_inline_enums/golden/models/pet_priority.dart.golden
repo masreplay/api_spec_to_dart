@@ -1,0 +1,34 @@
+/// PetPriority
+///
+/// ```json
+/// {
+///     "properties": {},
+///     "type": "integer",
+///     "enum": [
+///         1,
+///         2,
+///         3
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'pet_priority.g.dart';
+
+@JsonEnum(alwaysCreate: true)
+enum PetPriority {
+  @JsonValue(1)
+  value1,
+  @JsonValue(2)
+  value2,
+  @JsonValue(3)
+  value3;
+
+  factory PetPriority.fromJson(int json) => PetPriority.values.firstWhere(
+    (e) => e.toJson() == json,
+    orElse: () => throw ArgumentError('Invalid PetPriority'),
+  );
+
+  int toJson() => _$PetPriorityEnumMap[this]!;
+}

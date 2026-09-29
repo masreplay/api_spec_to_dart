@@ -212,6 +212,7 @@ class ApiClientGenerator {
         final responseTypeResult = _handleResponseType(
           method.value.responses ?? {},
           className,
+          contextName: '${methodName}_response',
         );
         final responseType = responseTypeResult.type;
         final isBinaryResponse = responseTypeResult.isBinaryResponse;
@@ -248,6 +249,7 @@ class ApiClientGenerator {
                       context.extension.typeConverter.get(
                         entry.value.schema,
                         className: className,
+                        contextName: '${methodName}_body',
                       ),
                     ),
                 ),
@@ -268,6 +270,7 @@ class ApiClientGenerator {
               final dartType = context.extension.typeConverter.get(
                 entry.value.schema,
                 className: className,
+                contextName: '${methodName}_body',
               );
 
               final canToJson = dartType != 'Map<String, dynamic>';
@@ -460,12 +463,20 @@ class ApiClientGenerator {
       }
 
       final typeConverter = context.extension.typeConverter;
-      final defaultValue = typeConverter.getDefaultValue(p.schema);
+      final contextName = '${methodName}_${p.name}';
+      final defaultValue = typeConverter.getDefaultValue(
+        p.schema,
+        contextName: contextName,
+      );
       // Path parameters are always required; others only when the spec says
       // so (#50). Optional ones without a default must accept null.
       final isRequired =
           p.in_ == OpenApiPathMethodParameterType.path || p.required_ == true;
-      final dartType = typeConverter.get(p.schema, className: className);
+      final dartType = typeConverter.get(
+        p.schema,
+        className: className,
+        contextName: contextName,
+      );
 
       result.add(
         Parameter(
@@ -504,8 +515,9 @@ class ApiClientGenerator {
 
   ({Reference type, bool isBinaryResponse}) _handleResponseType(
     OpenApiPathMethodResponses responses,
-    String className,
-  ) {
+    String className, {
+    required String contextName,
+  }) {
     // Check for text/plain with binary format (for ABP framework)
     final textPlainResponse =
         responses.values.firstOrNull?.content?['text/plain'];
@@ -537,6 +549,7 @@ class ApiClientGenerator {
         : context.extension.typeConverter.get(
             response.schema,
             className: className,
+            contextName: contextName,
           );
 
     return (

@@ -405,7 +405,7 @@ mixin _$OpenApiSchemas {
   @JsonKey(name: 'required')
   List<String>? get required_;
   @JsonKey(name: 'enum')
-  List<Object>? get enum_;
+  List<Object?>? get enum_;
   @JsonKey(name: 'const')
   Object? get const_;
   @JsonKey(name: 'title')
@@ -502,7 +502,7 @@ abstract mixin class $OpenApiSchemasCopyWith<$Res> {
     Map<String, OpenApiSchema>? properties,
     @JsonKey(name: 'type') String type,
     @JsonKey(name: 'required') List<String>? required_,
-    @JsonKey(name: 'enum') List<Object>? enum_,
+    @JsonKey(name: 'enum') List<Object?>? enum_,
     @JsonKey(name: 'const') Object? const_,
     @JsonKey(name: 'title') String? title,
     @JsonKey(name: 'description') String? description,
@@ -551,7 +551,7 @@ class _$OpenApiSchemasCopyWithImpl<$Res>
         enum_: freezed == enum_
             ? _self.enum_
             : enum_ // ignore: cast_nullable_to_non_nullable
-                  as List<Object>?,
+                  as List<Object?>?,
         const_: freezed == const_ ? _self.const_ : const_,
         title: freezed == title
             ? _self.title
@@ -672,7 +672,7 @@ extension OpenApiSchemasPatterns on OpenApiSchemas {
       Map<String, OpenApiSchema>? properties,
       @JsonKey(name: 'type') String type,
       @JsonKey(name: 'required') List<String>? required_,
-      @JsonKey(name: 'enum') List<Object>? enum_,
+      @JsonKey(name: 'enum') List<Object?>? enum_,
       @JsonKey(name: 'const') Object? const_,
       @JsonKey(name: 'title') String? title,
       @JsonKey(name: 'description') String? description,
@@ -722,7 +722,7 @@ extension OpenApiSchemasPatterns on OpenApiSchemas {
       Map<String, OpenApiSchema>? properties,
       @JsonKey(name: 'type') String type,
       @JsonKey(name: 'required') List<String>? required_,
-      @JsonKey(name: 'enum') List<Object>? enum_,
+      @JsonKey(name: 'enum') List<Object?>? enum_,
       @JsonKey(name: 'const') Object? const_,
       @JsonKey(name: 'title') String? title,
       @JsonKey(name: 'description') String? description,
@@ -770,7 +770,7 @@ extension OpenApiSchemasPatterns on OpenApiSchemas {
       Map<String, OpenApiSchema>? properties,
       @JsonKey(name: 'type') String type,
       @JsonKey(name: 'required') List<String>? required_,
-      @JsonKey(name: 'enum') List<Object>? enum_,
+      @JsonKey(name: 'enum') List<Object?>? enum_,
       @JsonKey(name: 'const') Object? const_,
       @JsonKey(name: 'title') String? title,
       @JsonKey(name: 'description') String? description,
@@ -808,7 +808,7 @@ class _OpenApiSchemas extends OpenApiSchemas {
     required Map<String, OpenApiSchema>? properties,
     @JsonKey(name: 'type') required this.type,
     @JsonKey(name: 'required') List<String>? required_,
-    @JsonKey(name: 'enum') List<Object>? enum_,
+    @JsonKey(name: 'enum') List<Object?>? enum_,
     @JsonKey(name: 'const') this.const_,
     @JsonKey(name: 'title') this.title,
     @JsonKey(name: 'description') this.description,
@@ -848,10 +848,10 @@ class _OpenApiSchemas extends OpenApiSchemas {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<Object>? _enum_;
+  final List<Object?>? _enum_;
   @override
   @JsonKey(name: 'enum')
-  List<Object>? get enum_ {
+  List<Object?>? get enum_ {
     final value = _enum_;
     if (value == null) return null;
     if (_enum_ is EqualUnmodifiableListView) return _enum_;
@@ -965,7 +965,7 @@ abstract mixin class _$OpenApiSchemasCopyWith<$Res>
     Map<String, OpenApiSchema>? properties,
     @JsonKey(name: 'type') String type,
     @JsonKey(name: 'required') List<String>? required_,
-    @JsonKey(name: 'enum') List<Object>? enum_,
+    @JsonKey(name: 'enum') List<Object?>? enum_,
     @JsonKey(name: 'const') Object? const_,
     @JsonKey(name: 'title') String? title,
     @JsonKey(name: 'description') String? description,
@@ -1014,7 +1014,7 @@ class __$OpenApiSchemasCopyWithImpl<$Res>
         enum_: freezed == enum_
             ? _self._enum_
             : enum_ // ignore: cast_nullable_to_non_nullable
-                  as List<Object>?,
+                  as List<Object?>?,
         const_: freezed == const_ ? _self.const_ : const_,
         title: freezed == title
             ? _self.title

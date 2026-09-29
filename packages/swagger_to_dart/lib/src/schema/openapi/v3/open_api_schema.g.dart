@@ -8,7 +8,7 @@ part of 'open_api_schema.dart';
 
 OpenApiSchemaType _$OpenApiSchemaTypeFromJson(Map<String, dynamic> json) =>
     OpenApiSchemaType(
-      enum_: (json['enum'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      enum_: json['enum'] as List<dynamic>?,
       type: $enumDecodeNullable(
         _$OpenApiSchemaVarTypeEnumMap,
         json['type'],

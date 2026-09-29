@@ -229,4 +229,45 @@ void main() {
     expect(withoutMetadata, isNot(contains('operationId')));
     expect(withoutMetadata, contains('Map<String, dynamic>? extras,'));
   });
+
+  test('untitled inline enums in bodies and responses are named (#55)', () {
+    final enumSchema = {
+      'type': 'string',
+      'enum': ['a', 'b'],
+    };
+    final files = renderSpec(
+      _spec(
+        paths: {
+          '/mode': {
+            'post': {
+              'tags': ['items'],
+              'operationId': 'setMode',
+              'requestBody': {
+                'content': {
+                  'application/json': {'schema': enumSchema},
+                },
+              },
+              'responses': {
+                '200': {
+                  'description': 'OK',
+                  'content': {
+                    'application/json': {'schema': enumSchema},
+                  },
+                },
+              },
+            },
+          },
+        },
+      ),
+    ).files;
+
+    expect(
+      files['api_client/items_client.dart'],
+      contains('Future<HttpResponse<SetModeResponse>> setMode('),
+    );
+    expect(
+      files['api_client/items_client.dart'],
+      contains('required SetModeBody requestBody'),
+    );
+  });
 }

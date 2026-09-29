@@ -266,7 +266,7 @@ extension OpenApiSchemaPatterns on OpenApiSchema {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-      @JsonKey(name: 'enum') List<String>? enum_,
+      @JsonKey(name: 'enum') List<Object?>? enum_,
       @JsonKey(name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
       OpenApiSchemaVarType? type,
       @OpenApiSchemaJsonConverter()
@@ -381,7 +381,7 @@ extension OpenApiSchemaPatterns on OpenApiSchema {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-      @JsonKey(name: 'enum') List<String>? enum_,
+      @JsonKey(name: 'enum') List<Object?>? enum_,
       @JsonKey(name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
       OpenApiSchemaVarType? type,
       @OpenApiSchemaJsonConverter()
@@ -492,7 +492,7 @@ extension OpenApiSchemaPatterns on OpenApiSchema {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-      @JsonKey(name: 'enum') List<String>? enum_,
+      @JsonKey(name: 'enum') List<Object?>? enum_,
       @JsonKey(name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
       OpenApiSchemaVarType? type,
       @OpenApiSchemaJsonConverter()
@@ -595,7 +595,7 @@ extension OpenApiSchemaPatterns on OpenApiSchema {
 @JsonSerializable()
 class OpenApiSchemaType extends OpenApiSchema {
   const OpenApiSchemaType({
-    @JsonKey(name: 'enum') List<String>? enum_,
+    @JsonKey(name: 'enum') List<Object?>? enum_,
     @JsonKey(name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
     this.type,
     @OpenApiSchemaJsonConverter() @JsonKey(name: 'items') this.items,
@@ -615,9 +615,9 @@ class OpenApiSchemaType extends OpenApiSchema {
   factory OpenApiSchemaType.fromJson(Map<String, dynamic> json) =>
       _$OpenApiSchemaTypeFromJson(json);
 
-  final List<String>? _enum_;
+  final List<Object?>? _enum_;
   @JsonKey(name: 'enum')
-  List<String>? get enum_ {
+  List<Object?>? get enum_ {
     final value = _enum_;
     if (value == null) return null;
     if (_enum_ is EqualUnmodifiableListView) return _enum_;
@@ -728,7 +728,7 @@ abstract mixin class $OpenApiSchemaTypeCopyWith<$Res>
   @override
   @useResult
   $Res call({
-    @JsonKey(name: 'enum') List<String>? enum_,
+    @JsonKey(name: 'enum') List<Object?>? enum_,
     @JsonKey(name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
     OpenApiSchemaVarType? type,
     @OpenApiSchemaJsonConverter() @JsonKey(name: 'items') OpenApiSchema? items,
@@ -777,7 +777,7 @@ class _$OpenApiSchemaTypeCopyWithImpl<$Res>
         enum_: freezed == enum_
             ? _self._enum_
             : enum_ // ignore: cast_nullable_to_non_nullable
-                  as List<String>?,
+                  as List<Object?>?,
         type: freezed == type
             ? _self.type
             : type // ignore: cast_nullable_to_non_nullable

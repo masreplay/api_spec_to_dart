@@ -46,16 +46,15 @@ class EnumModelGeneratorStrategy
     );
     final filename = Renaming.instance.renameFile(className);
 
-    // Can be a list of [String] or an [int].
-    final values = model.value.enum_ ?? [];
+    // Strings or ints; a `null` entry (OpenAPI 3.1 nullable enum) is not a
+    // member — the field's nullability expresses it.
+    final values = [...?model.value.enum_?.whereType<Object>()];
 
-    // Opt-in per-enum member renames from config (model.enums). Keyed by the
-    // raw swagger schema name OR the generated Dart class name; absent enums
-    // fall through to the default `value0` naming.
-    final enumOverrides =
-        context.config.model.enums[model.key] ??
-        context.config.model.enums[className] ??
-        const <String, String>{};
+    final enumOverrides = _overrides(
+      context.config.model.enums,
+      enumKey: model.key,
+      className: className,
+    );
 
     if (enumOverrides.isNotEmpty) {
       // Typo guard: warn on configured values not present in the schema.
@@ -70,26 +69,12 @@ class EnumModelGeneratorStrategy
       }
     }
 
-    // Resolve each raw value to its Dart member name (applying overrides) and
-    // fail fast on collisions — duplicate enum members would not compile.
-    final memberNames = <String, String>{}; // value.toString() -> member name
-    final seenNames = <String, String>{}; // member name -> value.toString()
-    for (final value in values) {
-      final key = value.toString();
-      final name = Renaming.instance.renameEnumValue(
-        value,
-        overrideName: enumOverrides[key],
-      );
-      final clash = seenNames[name];
-      if (clash != null) {
-        throw ArgumentError(
-          'swagger_to_dart: enum "${model.key}" produces duplicate member '
-          '"$name" for values "$clash" and "$key". Fix the model.enums config.',
-        );
-      }
-      seenNames[name] = key;
-      memberNames[key] = name;
-    }
+    final memberNames = EnumModelGeneratorStrategy.memberNames(
+      enumKey: model.key,
+      className: className,
+      values: values,
+      overrides: context.config.model.enums,
+    );
 
     final enumFallbackType = context.config.model.enumFallbackType;
 
@@ -168,4 +153,45 @@ class EnumModelGeneratorStrategy
         ]),
     );
   }
+
+  /// Dart member name for each raw value (`'$value'` → name), applying the
+  /// `model.enums` renames configured for [enumKey] or [className]. Throws
+  /// when two values map to one name (the enum would not compile).
+  static Map<String, String> memberNames({
+    required String enumKey,
+    required String className,
+    required List<Object> values,
+    required Map<String, Map<String, String>> overrides,
+  }) {
+    final renames = _overrides(
+      overrides,
+      enumKey: enumKey,
+      className: className,
+    );
+    final names = <String, String>{}; // value -> member name
+    final seen = <String, String>{}; // member name -> value
+    for (final value in values) {
+      final key = '$value';
+      final name = Renaming.instance.renameEnumValue(
+        value,
+        overrideName: renames[key],
+      );
+      if (seen[name] case final clash?) {
+        throw ArgumentError(
+          'swagger_to_dart: enum "$enumKey" produces duplicate member '
+          '"$name" for values "$clash" and "$key". Fix the model.enums config.',
+        );
+      }
+      seen[name] = key;
+      names[key] = name;
+    }
+    return names;
+  }
+
+  // Keyed by the schema name or the generated Dart class name.
+  static Map<String, String> _overrides(
+    Map<String, Map<String, String>> overrides, {
+    required String enumKey,
+    required String className,
+  }) => overrides[enumKey] ?? overrides[className] ?? const {};
 }

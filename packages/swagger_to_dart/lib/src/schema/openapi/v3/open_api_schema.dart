@@ -9,7 +9,7 @@ sealed class OpenApiSchema with _$OpenApiSchema {
 
   @FreezedUnionValue('type')
   const factory OpenApiSchema.type({
-    @JsonKey(name: 'enum') List<String>? enum_,
+    @JsonKey(name: 'enum') List<Object?>? enum_,
     @JsonKey(name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
     OpenApiSchemaVarType? type,
     @OpenApiSchemaJsonConverter() @JsonKey(name: 'items') OpenApiSchema? items,
