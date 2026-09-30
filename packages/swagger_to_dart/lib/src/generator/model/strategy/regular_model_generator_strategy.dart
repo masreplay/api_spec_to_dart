@@ -10,14 +10,17 @@ class RegularModelGeneratorStrategy
   Library build(MapEntry<String, OpenApiSchemas> model) {
     final title = model.value.title;
     final properties = model.value.properties ?? {};
+    final names = Renaming.instance.propertyNames(properties.keys);
 
     String effectiveTitle = title ?? model.key;
 
     final prefixes = context.config.model.removeModelPrefixes;
-    final className = Renaming.instance.renameClass(
-      effectiveTitle,
-      removePrefixes: prefixes.isNotEmpty ? prefixes : null,
-    );
+    final className =
+        context.componentClassNames[model.key] ??
+        Renaming.instance.renameClass(
+          effectiveTitle,
+          removePrefixes: prefixes.isNotEmpty ? prefixes : null,
+        );
 
     final filename = Renaming.instance.renameFile(className);
 
@@ -31,36 +34,29 @@ class RegularModelGeneratorStrategy
           Directive.part('$filename.freezed.dart'),
           Directive.part('$filename.g.dart'),
         ])
-        ..docs.addAll([
-          '/// ${model.key}',
-          ...JsonFactory.instance
-              .encode(model.value.toJson())
-              .split('\n')
-              .map((e) => '/// $e'),
-        ])
+        ..docs.addAll(
+          JsonFactory.instance.docs(model.key, model.value.toJson()),
+        )
         ..body.addAll([
           Class(
             (b) => b
-              ..docs.addAll([
-                '// $className',
-              ])
               ..annotations.addAll([refer('freezed')])
               ..abstract = true
               ..name = className
               ..mixins.addAll([refer('_\$$className')])
               ..fields.addAll([
                 ...properties.entries.map((entry) {
-                  final name = Renaming.instance.renameProperty(entry.key);
+                  final name = names[entry.key]!;
 
                   return Field(
                     (b) => b
                       ..static = true
                       ..modifier = FieldModifier.constant
                       ..name = getKey(name)
-                      ..type = refer('$String')
+                      ..type = refer('String')
                       ..assignment = stringCode(entry.key),
                   );
-                })
+                }),
               ])
               ..constructors.addAll([
                 Constructor(
@@ -81,8 +77,10 @@ class RegularModelGeneratorStrategy
                         return context.extension.propertyGenerator.build(
                           entry,
                           className: className,
-                          required:
-                              (model.value.required_ ?? []).contains(entry.key),
+                          name: names[entry.key],
+                          required: (model.value.required_ ?? []).contains(
+                            entry.key,
+                          ),
                         );
                       }),
                     ]),
@@ -92,15 +90,17 @@ class RegularModelGeneratorStrategy
                     ..factory = true
                     ..name = 'fromJson'
                     ..requiredParameters.addAll([
-                      Parameter((b) => b
-                        ..name = 'json'
-                        ..type = refer('Map<String, dynamic>')),
+                      Parameter(
+                        (b) => b
+                          ..name = 'json'
+                          ..type = refer('Map<String, dynamic>'),
+                      ),
                     ])
                     ..lambda = true
                     ..body = Code('_\$${className}FromJson(json)'),
-                )
+                ),
               ]),
-          )
+          ),
         ]),
     );
   }

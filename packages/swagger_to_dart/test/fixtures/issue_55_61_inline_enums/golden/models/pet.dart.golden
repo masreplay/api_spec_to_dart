@@ -1,0 +1,79 @@
+/// Pet
+///
+/// ```json
+/// {
+///     "properties": {
+///         "status": {
+///             "enum": [
+///                 "available",
+///                 "sold"
+///             ],
+///             "type": "string",
+///             "default": "available"
+///         },
+///         "priority": {
+///             "enum": [
+///                 1,
+///                 2,
+///                 3
+///             ],
+///             "type": "integer"
+///         },
+///         "tags": {
+///             "type": "array",
+///             "items": {
+///                 "enum": [
+///                     "cute",
+///                     "old"
+///                 ],
+///                 "type": "string"
+///             }
+///         },
+///         "state": {
+///             "$ref": "#/components/schemas/StateEnum",
+///             "default": 0
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "status"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'pet.freezed.dart';
+part 'pet.g.dart';
+
+@freezed
+abstract class Pet with _$Pet {
+  const Pet._();
+
+  @jsonSerializable
+  const factory Pet({
+    /// status
+    @Default(PetStatus.available)
+    @JsonKey(name: Pet.statusKey_)
+    PetStatus status,
+
+    /// priority
+    @JsonKey(name: Pet.priorityKey_) PetPriority? priority,
+
+    /// tags
+    @JsonKey(name: Pet.tagsKey_) List<PetTags>? tags,
+
+    /// state
+    @Default(StateEnum.created) @JsonKey(name: Pet.stateKey_) StateEnum state,
+  }) = _Pet;
+
+  factory Pet.fromJson(Map<String, dynamic> json) => _$PetFromJson(json);
+
+  static const String statusKey_ = 'status';
+
+  static const String priorityKey_ = 'priority';
+
+  static const String tagsKey_ = 'tags';
+
+  static const String stateKey_ = 'state';
+}

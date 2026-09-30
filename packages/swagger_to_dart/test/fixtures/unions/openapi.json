@@ -1,0 +1,138 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Unions", "version": "1.0.0" },
+  "paths": {
+    "/animal": {
+      "get": {
+        "tags": ["animals"],
+        "operationId": "getAnimal",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Animal" } } }
+          }
+        }
+      },
+      "post": {
+        "tags": ["animals"],
+        "operationId": "createAnimal",
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Animal" } } }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Pet" } } }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Dog": {
+        "type": "object",
+        "required": ["pet_type", "name"],
+        "properties": {
+          "pet_type": { "type": "string" },
+          "name": { "type": "string" },
+          "bark": { "type": "boolean" }
+        }
+      },
+      "Cat": {
+        "type": "object",
+        "required": ["pet_type", "name"],
+        "properties": {
+          "pet_type": { "type": "string" },
+          "name": { "type": "string" },
+          "lives": { "type": "integer" }
+        }
+      },
+      "Animal": {
+        "oneOf": [
+          { "$ref": "#/components/schemas/Dog" },
+          { "$ref": "#/components/schemas/Cat" }
+        ],
+        "discriminator": {
+          "propertyName": "pet_type",
+          "mapping": {
+            "dog": "#/components/schemas/Dog",
+            "cat": "#/components/schemas/Cat"
+          }
+        }
+      },
+      "ImplicitAnimal": {
+        "oneOf": [
+          { "$ref": "#/components/schemas/Dog" },
+          { "$ref": "#/components/schemas/Cat" }
+        ],
+        "discriminator": { "propertyName": "pet_type" }
+      },
+      "PartialAnimal": {
+        "oneOf": [
+          { "$ref": "#/components/schemas/Dog" },
+          { "$ref": "#/components/schemas/Cat" }
+        ],
+        "discriminator": {
+          "propertyName": "pet_type",
+          "mapping": { "dog": "#/components/schemas/Dog" }
+        }
+      },
+      "Circle": {
+        "type": "object",
+        "required": ["radius"],
+        "properties": { "radius": { "type": "number" } }
+      },
+      "Rect": {
+        "type": "object",
+        "required": ["width", "height"],
+        "properties": { "width": { "type": "number" }, "height": { "type": "number" } }
+      },
+      "Shape": {
+        "anyOf": [
+          { "$ref": "#/components/schemas/Circle" },
+          { "$ref": "#/components/schemas/Rect" }
+        ]
+      },
+      "Hound": {
+        "type": "object",
+        "required": ["name"],
+        "properties": { "name": { "type": "string" }, "bark": { "type": "boolean" } }
+      },
+      "Tabby": {
+        "type": "object",
+        "required": ["name"],
+        "properties": { "name": { "type": "string" }, "lives": { "type": "integer" } }
+      },
+      "Companion": {
+        "anyOf": [
+          { "$ref": "#/components/schemas/Hound" },
+          { "$ref": "#/components/schemas/Tabby" }
+        ]
+      },
+      "Pet": {
+        "type": "object",
+        "required": ["animals"],
+        "properties": {
+          "animals": { "type": "array", "items": { "$ref": "#/components/schemas/Animal" } },
+          "favorite": {
+            "title": "Favorite",
+            "oneOf": [
+              { "$ref": "#/components/schemas/Dog" },
+              { "$ref": "#/components/schemas/Cat" }
+            ],
+            "discriminator": {
+              "propertyName": "pet_type",
+              "mapping": {
+                "dog": "#/components/schemas/Dog",
+                "cat": "#/components/schemas/Cat"
+              }
+            }
+          },
+          "shape": { "$ref": "#/components/schemas/Shape" }
+        }
+      }
+    }
+  }
+}

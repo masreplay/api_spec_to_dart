@@ -1,4 +1,6 @@
 /// Body_security-login
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "grant_type": {
@@ -56,11 +58,12 @@
 ///     ],
 ///     "title": "Body_security-login"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'body_security_login.freezed.dart';
-part 'body_security_login.g.dart'; // BodySecurityLogin
+part 'body_security_login.g.dart';
 
 @freezed
 abstract class BodySecurityLogin with _$BodySecurityLogin {
@@ -90,15 +93,15 @@ abstract class BodySecurityLogin with _$BodySecurityLogin {
   factory BodySecurityLogin.fromJson(Map<String, dynamic> json) =>
       _$BodySecurityLoginFromJson(json);
 
-  static const String grantTypeKey_ = r'grant_type';
+  static const String grantTypeKey_ = 'grant_type';
 
-  static const String usernameKey_ = r'username';
+  static const String usernameKey_ = 'username';
 
-  static const String passwordKey_ = r'password';
+  static const String passwordKey_ = 'password';
 
-  static const String scopeKey_ = r'scope';
+  static const String scopeKey_ = 'scope';
 
-  static const String clientIdKey_ = r'client_id';
+  static const String clientIdKey_ = 'client_id';
 
-  static const String clientSecretKey_ = r'client_secret';
+  static const String clientSecretKey_ = 'client_secret';
 }

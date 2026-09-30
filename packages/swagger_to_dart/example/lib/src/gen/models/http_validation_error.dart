@@ -1,4 +1,6 @@
 /// HTTPValidationError
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "detail": {
@@ -12,11 +14,12 @@
 ///     "type": "object",
 ///     "title": "HTTPValidationError"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'http_validation_error.freezed.dart';
-part 'http_validation_error.g.dart'; // HttpValidationError
+part 'http_validation_error.g.dart';
 
 @freezed
 abstract class HttpValidationError with _$HttpValidationError {
@@ -32,5 +35,5 @@ abstract class HttpValidationError with _$HttpValidationError {
   factory HttpValidationError.fromJson(Map<String, dynamic> json) =>
       _$HttpValidationErrorFromJson(json);
 
-  static const String detailKey_ = r'detail';
+  static const String detailKey_ = 'detail';
 }

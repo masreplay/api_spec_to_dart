@@ -1,14 +1,17 @@
-library;
-
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+
 import 'exports.dart';
 
+/// FastAPI Type Examples
+///
+/// ```json
 /// {
 ///     "title": "FastAPI Type Examples",
 ///     "description": "Comprehensive examples of types and routes in FastAPI",
 ///     "version": "1.0.0"
 /// }
+/// ```
 class CustomApiClient {
   CustomApiClient(this.dio, {this.baseUrl, this.errorLogger});
 

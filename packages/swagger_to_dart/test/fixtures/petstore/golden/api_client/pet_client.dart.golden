@@ -1,0 +1,116 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'pet_client.g.dart';
+
+@RestApi()
+abstract class PetClient {
+  factory PetClient(Dio dio, {ParseErrorLogger? errorLogger, String? baseUrl}) =
+      _PetClient;
+
+  @GET('/pets')
+  Future<HttpResponse<List<Pet>>> listPets({
+    @Query('limit') int? limit,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['pet'],
+      'operationId': 'listPets',
+      'summary': 'List all pets',
+      'parameters': [
+        {
+          'name': 'limit',
+          'in': 'query',
+          'required': false,
+          'schema': {'type': 'integer', 'maximum': 100},
+        },
+      ],
+      'responses': {
+        '200': {
+          'description': 'A list of pets',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'array',
+                'items': {'\$ref': '#/components/schemas/Pet'},
+              },
+            },
+          },
+        },
+        'default': {
+          'description': 'unexpected error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/Error'},
+            },
+          },
+        },
+      },
+    },
+  });
+  @POST('/pets')
+  Future<HttpResponse<Pet>> createPet({
+    @Body() required Pet requestBody,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['pet'],
+      'operationId': 'createPet',
+      'summary': 'Create a pet',
+      'requestBody': {
+        'required': true,
+        'content': {
+          'application/json': {
+            'schema': {'\$ref': '#/components/schemas/Pet'},
+          },
+        },
+      },
+      'responses': {
+        '201': {
+          'description': 'Created',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/Pet'},
+            },
+          },
+        },
+      },
+    },
+  });
+  @GET('/pets/{petId}')
+  Future<HttpResponse<Pet>> showPetById({
+    @Path('petId') required String petId,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['pet'],
+      'operationId': 'showPetById',
+      'summary': 'Info for a specific pet',
+      'parameters': [
+        {
+          'name': 'petId',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'string'},
+        },
+      ],
+      'responses': {
+        '200': {
+          'description': 'Expected response to a valid request',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/Pet'},
+            },
+          },
+        },
+      },
+    },
+  });
+}

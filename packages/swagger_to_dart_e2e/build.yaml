@@ -1,0 +1,8 @@
+# The consumer setup documented in the README.
+global_options:
+  freezed:
+    runs_before:
+      - json_serializable
+  json_serializable:
+    runs_before:
+      - retrofit_generator

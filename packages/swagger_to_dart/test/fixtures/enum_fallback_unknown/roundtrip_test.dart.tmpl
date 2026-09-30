@@ -1,0 +1,22 @@
+import 'package:swagger_to_dart_e2e/gen/enum_fallback_unknown/models/models.dart';
+import 'package:test/test.dart';
+
+void main() {
+  test('unknown values decode to the unknown member', () {
+    expect(Status.fromJson('archived'), Status.unknown);
+    expect(Level.fromJson(99), Level.unknown);
+    expect(Existing.fromJson('archived'), Existing.unknown);
+  });
+
+  test('model fields fall back too', () {
+    final holder = Holder.fromJson({'status': 'archived', 'level': 99});
+    expect(holder.status, Status.unknown);
+    expect(holder.level, Level.unknown);
+  });
+
+  test('known values still round-trip', () {
+    expect(Status.fromJson('active'), Status.active);
+    expect(Status.active.toJson(), 'active');
+    expect(Level.fromJson(2).toJson(), 2);
+  });
+}

@@ -1,4 +1,6 @@
 /// Parrot
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "name": {
@@ -28,11 +30,12 @@
 ///     ],
 ///     "title": "Parrot"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'parrot.freezed.dart';
-part 'parrot.g.dart'; // Parrot
+part 'parrot.g.dart';
 
 @freezed
 abstract class Parrot with _$Parrot {
@@ -52,9 +55,9 @@ abstract class Parrot with _$Parrot {
 
   factory Parrot.fromJson(Map<String, dynamic> json) => _$ParrotFromJson(json);
 
-  static const String nameKey_ = r'name';
+  static const String nameKey_ = 'name';
 
-  static const String typeKey_ = r'type';
+  static const String typeKey_ = 'type';
 
-  static const String phrasesKey_ = r'phrases';
+  static const String phrasesKey_ = 'phrases';
 }

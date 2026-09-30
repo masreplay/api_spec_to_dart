@@ -1,5 +1,4 @@
 import 'package:code_builder/code_builder.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 class PropertyGeneratorStrategy extends GeneratorStrategy {
@@ -10,38 +9,45 @@ class PropertyGeneratorStrategy extends GeneratorStrategy {
     required String className,
     bool required = true,
     Map<String, String> overrideTypes = const {},
+    String? name,
   }) {
-    final name = Renaming.instance.renameProperty(property.key);
+    final fieldName = name ?? Renaming.instance.renameProperty(property.key);
 
-    final defaultValue =
-        context.extension.typeConverter.getDefaultValue(property.value);
+    final contextName = '${className}_${property.key}';
+    final defaultValue = context.extension.typeConverter.getDefaultValue(
+      property.value,
+      contextName: contextName,
+      inConstContext: true,
+    );
 
     final dartType = context.extension.typeConverter.get(
       property.value,
       className: className,
+      contextName: contextName,
       overrideTypes: overrideTypes,
     );
 
     final isRequired = defaultValue == null && required;
 
-    final isNullable = dartType.endsWith('?');
     final hasDefaultValue = defaultValue != null;
 
-    final adjustedDartType = (!hasDefaultValue && !isNullable && !isRequired)
-        ? '$dartType?'
+    // Optional without a default: the field must accept null.
+    final adjustedDartType = !hasDefaultValue && !isRequired
+        ? context.extension.typeConverter.nullable(dartType)
         : dartType;
 
     return Parameter(
       (b) => b
-        ..docs.add('/// $name')
+        ..docs.add('/// $fieldName')
         ..named = true
         ..required = isRequired
         ..annotations.addAll([
-          if (hasDefaultValue) refer('$Default($defaultValue)'),
+          if (hasDefaultValue) refer('Default($defaultValue)'),
           refer(
-              'JsonKey(name: $className.${RegularModelGeneratorStrategy.getKey(name)})'),
+            'JsonKey(name: $className.${RegularModelGeneratorStrategy.getKey(fieldName)})',
+          ),
         ])
-        ..name = name
+        ..name = fieldName
         ..type = refer(adjustedDartType),
     );
   }

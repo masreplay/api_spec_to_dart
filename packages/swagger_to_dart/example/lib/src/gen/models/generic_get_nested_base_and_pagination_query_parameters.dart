@@ -1,4 +1,6 @@
 /// GenericGetNestedBaseAndPaginationQueryParameters
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "page": {
@@ -15,11 +17,12 @@
 ///     "type": "object",
 ///     "required": []
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'generic_get_nested_base_and_pagination_query_parameters.freezed.dart';
-part 'generic_get_nested_base_and_pagination_query_parameters.g.dart'; // GenericGetNestedBaseAndPaginationQueryParameters
+part 'generic_get_nested_base_and_pagination_query_parameters.g.dart';
 
 @freezed
 abstract class GenericGetNestedBaseAndPaginationQueryParameters
@@ -41,10 +44,9 @@ abstract class GenericGetNestedBaseAndPaginationQueryParameters
 
   factory GenericGetNestedBaseAndPaginationQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$GenericGetNestedBaseAndPaginationQueryParametersFromJson(json);
+  ) => _$GenericGetNestedBaseAndPaginationQueryParametersFromJson(json);
 
-  static const String pageKey_ = r'page';
+  static const String pageKey_ = 'page';
 
-  static const String perPageKey_ = r'per_page';
+  static const String perPageKey_ = 'per_page';
 }

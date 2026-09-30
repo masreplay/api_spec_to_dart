@@ -9,7 +9,7 @@ sealed class OpenApiSchema with _$OpenApiSchema {
 
   @FreezedUnionValue('type')
   const factory OpenApiSchema.type({
-    @JsonKey(name: 'enum') List<String>? enum_,
+    @JsonKey(name: 'enum') List<Object?>? enum_,
     @JsonKey(name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
     OpenApiSchemaVarType? type,
     @OpenApiSchemaJsonConverter() @JsonKey(name: 'items') OpenApiSchema? items,
@@ -21,7 +21,10 @@ sealed class OpenApiSchema with _$OpenApiSchema {
     @JsonKey(name: 'const') Object? const_,
     @JsonKey(name: 'default') Object? default_,
     @JsonKey(name: 'title') String? title,
-    @JsonKey(name: 'nullable') bool? nullable,  
+    @JsonKey(name: 'nullable') bool? nullable,
+
+    /// `bool` or a schema for the values of a map-typed object.
+    @JsonKey(name: 'additionalProperties') Object? additionalProperties,
   }) = OpenApiSchemaType;
 
   @FreezedUnionValue('ref')
@@ -73,7 +76,9 @@ abstract class OpenApiSchemaOneOfDiscriminator
 
   const factory OpenApiSchemaOneOfDiscriminator({
     @JsonKey(name: 'propertyName') required String propertyName,
-    @JsonKey(name: 'mapping') required Map<String, String> mapping,
+
+    /// Discriminator value → `$ref`. Absent: the schema names are the values.
+    @JsonKey(name: 'mapping') Map<String, String>? mapping,
   }) = _OpenApiSchemaOneOfDiscriminator;
 
   factory OpenApiSchemaOneOfDiscriminator.fromJson(Map<String, dynamic> json) =>
@@ -107,6 +112,7 @@ class OpenApiSchemaJsonConverter
 
   @override
   OpenApiSchema fromJson(Map<String, dynamic> json) {
+    json = normalizeSchemaJson(json);
     if (json.containsKey('anyOf')) {
       return OpenApiSchemaAnyOf.fromJson(json);
     } else if (json.containsKey('oneOf')) {
@@ -152,4 +158,39 @@ class OpenApiSchemaJsonConverter
 
     return newJson;
   }
+}
+
+/// Rewrites OpenAPI 3.1 forms into the shapes the models parse, returning a
+/// new map (the input is shared with the `@Extras` metadata, so it must not
+/// change):
+/// - `type: [T, "null"]` → `type: T, nullable: true` (several non-null
+///   types → no type, i.e. `dynamic`);
+/// - with [unwrapSingleAllOf], an `allOf` with a single entry → that entry,
+///   keeping the outer keys (`nullable`, `default`, `description`, ...).
+///   Components keep their `allOf`: it is merged with their own properties.
+Map<String, dynamic> normalizeSchemaJson(
+  Map<String, dynamic> json, {
+  bool unwrapSingleAllOf = true,
+}) {
+  if (json['type'] case final List<dynamic> types) {
+    final concrete = types.where((t) => t != 'null').toList();
+    json = {
+      for (final MapEntry(:key, :value) in json.entries)
+        if (key != 'type') key: value,
+      if (concrete.length == 1) 'type': concrete.single,
+      if (types.contains('null')) 'nullable': true,
+    };
+  }
+
+  if (json['allOf'] case [
+    final Map<String, dynamic> only,
+  ] when unwrapSingleAllOf) {
+    json = {
+      ...normalizeSchemaJson(only),
+      for (final MapEntry(:key, :value) in json.entries)
+        if (key != 'allOf') key: value,
+    };
+  }
+
+  return json;
 }

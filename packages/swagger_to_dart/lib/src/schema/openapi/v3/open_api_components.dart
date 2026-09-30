@@ -26,16 +26,32 @@ abstract class OpenApiSchemas with _$OpenApiSchemas {
     @OpenApiSchemaJsonConverter()
     @JsonKey(name: 'properties')
     required Map<String, OpenApiSchema>? properties,
-    @JsonKey(name: 'type') required String type,
+    @JsonKey(name: 'type') String? type,
     @JsonKey(name: 'required') List<String>? required_,
-    @JsonKey(name: 'enum') List<Object>? enum_,
+    @JsonKey(name: 'enum') List<Object?>? enum_,
     @JsonKey(name: 'const') Object? const_,
     @JsonKey(name: 'title') String? title,
     @JsonKey(name: 'description') String? description,
     @JsonKey(name: 'x-enum-varnames') List<String>? xEnumVarnames,
-    @JsonKey(name: 'additionalProperties') bool? additionalProperties,
+
+    /// `bool` or a schema (Swashbuckle emits `{}` for free-form objects and
+    /// `{"type": ...}` for dictionaries).
+    @JsonKey(name: 'additionalProperties') Object? additionalProperties,
+    @OpenApiSchemaJsonConverter()
+    @JsonKey(name: 'oneOf')
+    List<OpenApiSchema>? oneOf,
+    @OpenApiSchemaJsonConverter()
+    @JsonKey(name: 'anyOf')
+    List<OpenApiSchema>? anyOf,
+    @JsonKey(name: 'discriminator')
+    OpenApiSchemaOneOfDiscriminator? discriminator,
+
+    /// Raw parts: `$ref`s or inline objects whose properties get merged.
+    @JsonKey(name: 'allOf') List<Map<String, dynamic>>? allOf,
   }) = _OpenApiSchemas;
 
   factory OpenApiSchemas.fromJson(Map<String, dynamic> json) =>
-      _$OpenApiSchemasFromJson(json);
+      _$OpenApiSchemasFromJson(
+        normalizeSchemaJson(json, unwrapSingleAllOf: false),
+      );
 }

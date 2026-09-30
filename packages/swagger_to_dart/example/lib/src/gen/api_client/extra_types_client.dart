@@ -1,7 +1,6 @@
-library;
-
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
+
 import '../models/models.dart';
 part 'extra_types_client.g.dart';
 
@@ -19,36 +18,37 @@ abstract class ExtraTypesClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'Extra Types'],
-      r'summary': r'Create Color',
-      r'operationId': r'Extra Types-create_color',
-      r'requestBody': {
-        r'content': {
-          r'application/json': {
-            r'schema': {r'$ref': r'#/components/schemas/ColorModel'},
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Extra Types'],
+      'summary': 'Create Color',
+      'operationId': 'Extra Types-create_color',
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {'\$ref': '#/components/schemas/ColorModel'},
           },
         },
-        r'required': true,
+        'required': true,
       },
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'additionalProperties': true,
-                r'type': r'object',
-                r'title': r'Response Extra Types-Create Color',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'additionalProperties': true,
+                'type': 'object',
+                'title': 'Response Extra Types-Create Color',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -61,36 +61,37 @@ abstract class ExtraTypesClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'Extra Types'],
-      r'summary': r'Process Country',
-      r'operationId': r'Extra Types-process_country',
-      r'requestBody': {
-        r'content': {
-          r'application/json': {
-            r'schema': {r'$ref': r'#/components/schemas/CountryModel'},
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Extra Types'],
+      'summary': 'Process Country',
+      'operationId': 'Extra Types-process_country',
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {'\$ref': '#/components/schemas/CountryModel'},
           },
         },
-        r'required': true,
+        'required': true,
       },
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'additionalProperties': true,
-                r'type': r'object',
-                r'title': r'Response Extra Types-Process Country',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'additionalProperties': true,
+                'type': 'object',
+                'title': 'Response Extra Types-Process Country',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -103,36 +104,37 @@ abstract class ExtraTypesClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'Extra Types'],
-      r'summary': r'Process Payment Card',
-      r'operationId': r'Extra Types-process_payment_card',
-      r'requestBody': {
-        r'content': {
-          r'application/json': {
-            r'schema': {r'$ref': r'#/components/schemas/PaymentCardModel'},
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Extra Types'],
+      'summary': 'Process Payment Card',
+      'operationId': 'Extra Types-process_payment_card',
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {'\$ref': '#/components/schemas/PaymentCardModel'},
           },
         },
-        r'required': true,
+        'required': true,
       },
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'additionalProperties': true,
-                r'type': r'object',
-                r'title': r'Response Extra Types-Process Payment Card',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'additionalProperties': true,
+                'type': 'object',
+                'title': 'Response Extra Types-Process Payment Card',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -145,36 +147,37 @@ abstract class ExtraTypesClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'Extra Types'],
-      r'summary': r'Process Phone',
-      r'operationId': r'Extra Types-process_phone',
-      r'requestBody': {
-        r'content': {
-          r'application/json': {
-            r'schema': {r'$ref': r'#/components/schemas/PhoneNumberModel'},
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Extra Types'],
+      'summary': 'Process Phone',
+      'operationId': 'Extra Types-process_phone',
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {'\$ref': '#/components/schemas/PhoneNumberModel'},
           },
         },
-        r'required': true,
+        'required': true,
       },
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'additionalProperties': true,
-                r'type': r'object',
-                r'title': r'Response Extra Types-Process Phone',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'additionalProperties': true,
+                'type': 'object',
+                'title': 'Response Extra Types-Process Phone',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -187,36 +190,37 @@ abstract class ExtraTypesClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'Extra Types'],
-      r'summary': r'Process Routing',
-      r'operationId': r'Extra Types-process_routing',
-      r'requestBody': {
-        r'content': {
-          r'application/json': {
-            r'schema': {r'$ref': r'#/components/schemas/ABARoutingModel'},
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Extra Types'],
+      'summary': 'Process Routing',
+      'operationId': 'Extra Types-process_routing',
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {'\$ref': '#/components/schemas/ABARoutingModel'},
           },
         },
-        r'required': true,
+        'required': true,
       },
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'additionalProperties': true,
-                r'type': r'object',
-                r'title': r'Response Extra Types-Process Routing',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'additionalProperties': true,
+                'type': 'object',
+                'title': 'Response Extra Types-Process Routing',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -229,36 +233,37 @@ abstract class ExtraTypesClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'Extra Types'],
-      r'summary': r'Process Coordinate',
-      r'operationId': r'Extra Types-process_coordinate',
-      r'requestBody': {
-        r'content': {
-          r'application/json': {
-            r'schema': {r'$ref': r'#/components/schemas/CoordinateModel'},
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Extra Types'],
+      'summary': 'Process Coordinate',
+      'operationId': 'Extra Types-process_coordinate',
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {'\$ref': '#/components/schemas/CoordinateModel'},
           },
         },
-        r'required': true,
+        'required': true,
       },
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'additionalProperties': true,
-                r'type': r'object',
-                r'title': r'Response Extra Types-Process Coordinate',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'additionalProperties': true,
+                'type': 'object',
+                'title': 'Response Extra Types-Process Coordinate',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -271,36 +276,37 @@ abstract class ExtraTypesClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'Extra Types'],
-      r'summary': r'Process Mac',
-      r'operationId': r'Extra Types-process_mac',
-      r'requestBody': {
-        r'content': {
-          r'application/json': {
-            r'schema': {r'$ref': r'#/components/schemas/MACAddressModel'},
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Extra Types'],
+      'summary': 'Process Mac',
+      'operationId': 'Extra Types-process_mac',
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {'\$ref': '#/components/schemas/MACAddressModel'},
           },
         },
-        r'required': true,
+        'required': true,
       },
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'additionalProperties': true,
-                r'type': r'object',
-                r'title': r'Response Extra Types-Process Mac',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'additionalProperties': true,
+                'type': 'object',
+                'title': 'Response Extra Types-Process Mac',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -313,36 +319,37 @@ abstract class ExtraTypesClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'Extra Types'],
-      r'summary': r'Process Isbn',
-      r'operationId': r'Extra Types-process_isbn',
-      r'requestBody': {
-        r'content': {
-          r'application/json': {
-            r'schema': {r'$ref': r'#/components/schemas/ISBNModel'},
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Extra Types'],
+      'summary': 'Process Isbn',
+      'operationId': 'Extra Types-process_isbn',
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {'\$ref': '#/components/schemas/ISBNModel'},
           },
         },
-        r'required': true,
+        'required': true,
       },
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'additionalProperties': true,
-                r'type': r'object',
-                r'title': r'Response Extra Types-Process Isbn',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'additionalProperties': true,
+                'type': 'object',
+                'title': 'Response Extra Types-Process Isbn',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -355,36 +362,37 @@ abstract class ExtraTypesClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'Extra Types'],
-      r'summary': r'Process Currency',
-      r'operationId': r'Extra Types-process_currency',
-      r'requestBody': {
-        r'content': {
-          r'application/json': {
-            r'schema': {r'$ref': r'#/components/schemas/CurrencyModel'},
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Extra Types'],
+      'summary': 'Process Currency',
+      'operationId': 'Extra Types-process_currency',
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {'\$ref': '#/components/schemas/CurrencyModel'},
           },
         },
-        r'required': true,
+        'required': true,
       },
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'additionalProperties': true,
-                r'type': r'object',
-                r'title': r'Response Extra Types-Process Currency',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'additionalProperties': true,
+                'type': 'object',
+                'title': 'Response Extra Types-Process Currency',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -397,36 +405,37 @@ abstract class ExtraTypesClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'Extra Types'],
-      r'summary': r'Process Domain',
-      r'operationId': r'Extra Types-process_domain',
-      r'requestBody': {
-        r'content': {
-          r'application/json': {
-            r'schema': {r'$ref': r'#/components/schemas/DomainModel'},
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Extra Types'],
+      'summary': 'Process Domain',
+      'operationId': 'Extra Types-process_domain',
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {'\$ref': '#/components/schemas/DomainModel'},
           },
         },
-        r'required': true,
+        'required': true,
       },
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'additionalProperties': true,
-                r'type': r'object',
-                r'title': r'Response Extra Types-Process Domain',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'additionalProperties': true,
+                'type': 'object',
+                'title': 'Response Extra Types-Process Domain',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -439,36 +448,37 @@ abstract class ExtraTypesClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'Extra Types'],
-      r'summary': r'Process Language',
-      r'operationId': r'Extra Types-process_language',
-      r'requestBody': {
-        r'content': {
-          r'application/json': {
-            r'schema': {r'$ref': r'#/components/schemas/LanguageModel'},
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Extra Types'],
+      'summary': 'Process Language',
+      'operationId': 'Extra Types-process_language',
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {'\$ref': '#/components/schemas/LanguageModel'},
           },
         },
-        r'required': true,
+        'required': true,
       },
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'additionalProperties': true,
-                r'type': r'object',
-                r'title': r'Response Extra Types-Process Language',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'additionalProperties': true,
+                'type': 'object',
+                'title': 'Response Extra Types-Process Language',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -481,36 +491,37 @@ abstract class ExtraTypesClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'Extra Types'],
-      r'summary': r'Process Script',
-      r'operationId': r'Extra Types-process_script',
-      r'requestBody': {
-        r'content': {
-          r'application/json': {
-            r'schema': {r'$ref': r'#/components/schemas/ScriptCodeModel'},
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Extra Types'],
+      'summary': 'Process Script',
+      'operationId': 'Extra Types-process_script',
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {'\$ref': '#/components/schemas/ScriptCodeModel'},
           },
         },
-        r'required': true,
+        'required': true,
       },
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'additionalProperties': true,
-                r'type': r'object',
-                r'title': r'Response Extra Types-Process Script',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'additionalProperties': true,
+                'type': 'object',
+                'title': 'Response Extra Types-Process Script',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -523,36 +534,37 @@ abstract class ExtraTypesClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'Extra Types'],
-      r'summary': r'Process Version',
-      r'operationId': r'Extra Types-process_version',
-      r'requestBody': {
-        r'content': {
-          r'application/json': {
-            r'schema': {r'$ref': r'#/components/schemas/VersionModel'},
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Extra Types'],
+      'summary': 'Process Version',
+      'operationId': 'Extra Types-process_version',
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {'\$ref': '#/components/schemas/VersionModel'},
           },
         },
-        r'required': true,
+        'required': true,
       },
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'additionalProperties': true,
-                r'type': r'object',
-                r'title': r'Response Extra Types-Process Version',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'additionalProperties': true,
+                'type': 'object',
+                'title': 'Response Extra Types-Process Version',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -565,36 +577,37 @@ abstract class ExtraTypesClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'Extra Types'],
-      r'summary': r'Process S3 Path',
-      r'operationId': r'Extra Types-process_s3_path',
-      r'requestBody': {
-        r'content': {
-          r'application/json': {
-            r'schema': {r'$ref': r'#/components/schemas/S3PathModel'},
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Extra Types'],
+      'summary': 'Process S3 Path',
+      'operationId': 'Extra Types-process_s3_path',
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {'\$ref': '#/components/schemas/S3PathModel'},
           },
         },
-        r'required': true,
+        'required': true,
       },
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'additionalProperties': true,
-                r'type': r'object',
-                r'title': r'Response Extra Types-Process S3 Path',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'additionalProperties': true,
+                'type': 'object',
+                'title': 'Response Extra Types-Process S3 Path',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -607,36 +620,37 @@ abstract class ExtraTypesClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'Extra Types'],
-      r'summary': r'Process Timezone',
-      r'operationId': r'Extra Types-process_timezone',
-      r'requestBody': {
-        r'content': {
-          r'application/json': {
-            r'schema': {r'$ref': r'#/components/schemas/TimeZoneModel'},
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Extra Types'],
+      'summary': 'Process Timezone',
+      'operationId': 'Extra Types-process_timezone',
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {'\$ref': '#/components/schemas/TimeZoneModel'},
           },
         },
-        r'required': true,
+        'required': true,
       },
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'additionalProperties': true,
-                r'type': r'object',
-                r'title': r'Response Extra Types-Process Timezone',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'additionalProperties': true,
+                'type': 'object',
+                'title': 'Response Extra Types-Process Timezone',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -649,36 +663,37 @@ abstract class ExtraTypesClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'Extra Types'],
-      r'summary': r'Process Ulid',
-      r'operationId': r'Extra Types-process_ulid',
-      r'requestBody': {
-        r'content': {
-          r'application/json': {
-            r'schema': {r'$ref': r'#/components/schemas/ULIDModel'},
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Extra Types'],
+      'summary': 'Process Ulid',
+      'operationId': 'Extra Types-process_ulid',
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {'\$ref': '#/components/schemas/ULIDModel'},
           },
         },
-        r'required': true,
+        'required': true,
       },
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'additionalProperties': true,
-                r'type': r'object',
-                r'title': r'Response Extra Types-Process Ulid',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'additionalProperties': true,
+                'type': 'object',
+                'title': 'Response Extra Types-Process Ulid',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },

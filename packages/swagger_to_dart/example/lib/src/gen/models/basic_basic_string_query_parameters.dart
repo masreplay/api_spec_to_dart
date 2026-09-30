@@ -1,4 +1,6 @@
 /// BasicBasicStringQueryParameters
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "text": {
@@ -11,11 +13,12 @@
 ///     "type": "object",
 ///     "required": []
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'basic_basic_string_query_parameters.freezed.dart';
-part 'basic_basic_string_query_parameters.g.dart'; // BasicBasicStringQueryParameters
+part 'basic_basic_string_query_parameters.g.dart';
 
 @freezed
 abstract class BasicBasicStringQueryParameters
@@ -31,5 +34,5 @@ abstract class BasicBasicStringQueryParameters
   factory BasicBasicStringQueryParameters.fromJson(Map<String, dynamic> json) =>
       _$BasicBasicStringQueryParametersFromJson(json);
 
-  static const String textKey_ = r'text';
+  static const String textKey_ = 'text';
 }

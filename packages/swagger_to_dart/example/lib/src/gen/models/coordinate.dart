@@ -1,4 +1,6 @@
 /// Coordinate
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "latitude": {
@@ -17,11 +19,12 @@
 ///     ],
 ///     "title": "Coordinate"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'coordinate.freezed.dart';
-part 'coordinate.g.dart'; // Coordinate
+part 'coordinate.g.dart';
 
 @freezed
 abstract class Coordinate with _$Coordinate {
@@ -39,7 +42,7 @@ abstract class Coordinate with _$Coordinate {
   factory Coordinate.fromJson(Map<String, dynamic> json) =>
       _$CoordinateFromJson(json);
 
-  static const String latitudeKey_ = r'latitude';
+  static const String latitudeKey_ = 'latitude';
 
-  static const String longitudeKey_ = r'longitude';
+  static const String longitudeKey_ = 'longitude';
 }

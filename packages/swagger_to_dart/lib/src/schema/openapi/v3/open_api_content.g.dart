@@ -7,25 +7,31 @@ part of 'open_api_content.dart';
 // **************************************************************************
 
 _OpenApiContentSchema _$OpenApiContentSchemaFromJson(
-        Map<String, dynamic> json) =>
-    _OpenApiContentSchema(
-      schema: const OpenApiSchemaJsonConverter()
-          .fromJson(json['schema'] as Map<String, dynamic>),
-      example: json['example'],
-    );
+  Map<String, dynamic> json,
+) => _OpenApiContentSchema(
+  schema: _$JsonConverterFromJson<Map<String, dynamic>, OpenApiSchema>(
+    json['schema'],
+    const OpenApiSchemaJsonConverter().fromJson,
+  ),
+  example: json['example'],
+);
 
 Map<String, dynamic> _$OpenApiContentSchemaToJson(
-        _OpenApiContentSchema instance) =>
-    <String, dynamic>{
-      'schema': const OpenApiSchemaJsonConverter().toJson(instance.schema),
-      if (instance.example case final value?) 'example': value,
-    };
-
-const _$OpenApiContentTypeEnumMap = {
-  OpenApiContentType.applicationJson: 'application/json',
-  OpenApiContentType.applicationXWwwFormUrlencoded:
-      'application/x-www-form-urlencoded',
-  OpenApiContentType.multipartFormData: 'multipart/form-data',
-  OpenApiContentType.textJson: 'text/json',
-  OpenApiContentType.applicationWildcardJson: 'application/*+json',
+  _OpenApiContentSchema instance,
+) => <String, dynamic>{
+  'schema': ?_$JsonConverterToJson<Map<String, dynamic>, OpenApiSchema>(
+    instance.schema,
+    const OpenApiSchemaJsonConverter().toJson,
+  ),
+  'example': ?instance.example,
 };
+
+Value? _$JsonConverterFromJson<Json, Value>(
+  Object? json,
+  Value? Function(Json json) fromJson,
+) => json == null ? null : fromJson(json as Json);
+
+Json? _$JsonConverterToJson<Json, Value>(
+  Value? value,
+  Json? Function(Value value) toJson,
+) => value == null ? null : toJson(value);

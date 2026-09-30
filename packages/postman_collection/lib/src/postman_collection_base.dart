@@ -9,7 +9,7 @@ part 'postman_collection_base.freezed.dart';
 part 'postman_collection_base.g.dart';
 
 @freezed
-class PostmanCollection with _$PostmanCollection {
+abstract class PostmanCollection with _$PostmanCollection {
   const PostmanCollection._();
 
   const factory PostmanCollection({
@@ -30,7 +30,7 @@ class PostmanCollection with _$PostmanCollection {
 }
 
 @freezed
-class PostmanCollectionInfo with _$PostmanCollectionInfo {
+abstract class PostmanCollectionInfo with _$PostmanCollectionInfo {
   const PostmanCollectionInfo._();
 
   const factory PostmanCollectionInfo({
@@ -51,7 +51,7 @@ class PostmanCollectionInfo with _$PostmanCollectionInfo {
 }
 
 @freezed
-class PostmanCollectionVersion with _$PostmanCollectionVersion {
+abstract class PostmanCollectionVersion with _$PostmanCollectionVersion {
   const PostmanCollectionVersion._();
 
   const factory PostmanCollectionVersion({
@@ -82,7 +82,7 @@ class PostmanCollectionVersion with _$PostmanCollectionVersion {
 }
 
 @freezed
-class PostmanCollectionItem with _$PostmanCollectionItem {
+abstract class PostmanCollectionItem with _$PostmanCollectionItem {
   const PostmanCollectionItem._();
 
   const factory PostmanCollectionItem({
@@ -118,7 +118,7 @@ class PostmanCollectionItem with _$PostmanCollectionItem {
 }
 
 @freezed
-class PostmanCollectionAuth with _$PostmanCollectionAuth {
+abstract class PostmanCollectionAuth with _$PostmanCollectionAuth {
   const PostmanCollectionAuth._();
 
   const factory PostmanCollectionAuth({
@@ -141,7 +141,8 @@ class PostmanCollectionAuth with _$PostmanCollectionAuth {
 }
 
 @freezed
-class PostmanCollectionAuthAttribute with _$PostmanCollectionAuthAttribute {
+abstract class PostmanCollectionAuthAttribute
+    with _$PostmanCollectionAuthAttribute {
   const PostmanCollectionAuthAttribute._();
 
   const factory PostmanCollectionAuthAttribute({
@@ -155,7 +156,7 @@ class PostmanCollectionAuthAttribute with _$PostmanCollectionAuthAttribute {
 }
 
 @freezed
-class PostmanCollectionRequest with _$PostmanCollectionRequest {
+abstract class PostmanCollectionRequest with _$PostmanCollectionRequest {
   const PostmanCollectionRequest._();
 
   const factory PostmanCollectionRequest({
@@ -229,40 +230,35 @@ class PostmanCollectionRequest with _$PostmanCollectionRequest {
 
     if (data is FormData) {
       return formData(
-        Map<String, dynamic>.fromEntries(
-          [...data.fields, ...data.files],
-        ),
+        Map<String, dynamic>.fromEntries([...data.fields, ...data.files]),
       );
     }
 
     return switch (options.contentType) {
       Headers.multipartFormDataContentType => formData(options.data),
       _ => PostmanCollectionRequestMode.raw(
-          raw: options.data == null
-              ? null
-              : options.data is Map<String, dynamic>
-                  ? JsonEncoder.withIndent('  ').convert(options.data)
-                  : options.data?.toString(),
-          options: {
-            'raw': {'language': 'json'},
-          },
-        ),
+        raw: options.data == null
+            ? null
+            : options.data is Map<String, dynamic>
+            ? JsonEncoder.withIndent('  ').convert(options.data)
+            : options.data?.toString(),
+        options: {
+          'raw': {'language': 'json'},
+        },
+      ),
     };
   }
 }
 
-@Freezed(
-  unionKey: 'mode',
-  fallbackUnion: 'raw',
-)
-class PostmanCollectionRequestMode with _$PostmanCollectionRequestMode {
+@Freezed(unionKey: 'mode', fallbackUnion: 'raw')
+sealed class PostmanCollectionRequestMode with _$PostmanCollectionRequestMode {
   const PostmanCollectionRequestMode._();
 
   @FreezedUnionValue('raw')
   const factory PostmanCollectionRequestMode.raw({
     String? raw,
     Map<String, dynamic>? options,
-  }) = _PostmanCollectionRequestMode;
+  }) = _PostmanCollectionRequestModeRaw;
 
   @FreezedUnionValue('formdata')
   const factory PostmanCollectionRequestMode.formdata({
@@ -274,7 +270,7 @@ class PostmanCollectionRequestMode with _$PostmanCollectionRequestMode {
 }
 
 @freezed
-class PostmanFormDataEntry with _$PostmanFormDataEntry {
+abstract class PostmanFormDataEntry with _$PostmanFormDataEntry {
   const PostmanFormDataEntry._();
 
   const factory PostmanFormDataEntry({
@@ -289,7 +285,7 @@ class PostmanFormDataEntry with _$PostmanFormDataEntry {
 }
 
 @freezed
-class PostmanCollectionUrl with _$PostmanCollectionUrl {
+abstract class PostmanCollectionUrl with _$PostmanCollectionUrl {
   const PostmanCollectionUrl._();
 
   const factory PostmanCollectionUrl({
@@ -308,7 +304,7 @@ class PostmanCollectionUrl with _$PostmanCollectionUrl {
 }
 
 @freezed
-class PostmanCollectionQueryParam with _$PostmanCollectionQueryParam {
+abstract class PostmanCollectionQueryParam with _$PostmanCollectionQueryParam {
   const PostmanCollectionQueryParam._();
 
   const factory PostmanCollectionQueryParam({
@@ -323,7 +319,7 @@ class PostmanCollectionQueryParam with _$PostmanCollectionQueryParam {
 }
 
 @freezed
-class PostmanCollectionVariable with _$PostmanCollectionVariable {
+abstract class PostmanCollectionVariable with _$PostmanCollectionVariable {
   const PostmanCollectionVariable._();
 
   const factory PostmanCollectionVariable({
@@ -342,7 +338,7 @@ class PostmanCollectionVariable with _$PostmanCollectionVariable {
 }
 
 @freezed
-class PostmanCollectionEvent with _$PostmanCollectionEvent {
+abstract class PostmanCollectionEvent with _$PostmanCollectionEvent {
   const PostmanCollectionEvent._();
 
   const factory PostmanCollectionEvent({
@@ -357,7 +353,7 @@ class PostmanCollectionEvent with _$PostmanCollectionEvent {
 }
 
 @freezed
-class PostmanCollectionScript with _$PostmanCollectionScript {
+abstract class PostmanCollectionScript with _$PostmanCollectionScript {
   const PostmanCollectionScript._();
 
   const factory PostmanCollectionScript({
@@ -374,7 +370,7 @@ class PostmanCollectionScript with _$PostmanCollectionScript {
 }
 
 @freezed
-class PostmanCollectionResponse with _$PostmanCollectionResponse {
+abstract class PostmanCollectionResponse with _$PostmanCollectionResponse {
   const PostmanCollectionResponse._();
 
   const factory PostmanCollectionResponse({
@@ -396,7 +392,7 @@ class PostmanCollectionResponse with _$PostmanCollectionResponse {
 }
 
 @freezed
-class PostmanCollectionCookie with _$PostmanCollectionCookie {
+abstract class PostmanCollectionCookie with _$PostmanCollectionCookie {
   const PostmanCollectionCookie._();
 
   const factory PostmanCollectionCookie({
@@ -418,7 +414,8 @@ class PostmanCollectionCookie with _$PostmanCollectionCookie {
 }
 
 @freezed
-class PostmanCollectionCertificate with _$PostmanCollectionCertificate {
+abstract class PostmanCollectionCertificate
+    with _$PostmanCollectionCertificate {
   const PostmanCollectionCertificate._();
 
   const factory PostmanCollectionCertificate({
@@ -434,19 +431,20 @@ class PostmanCollectionCertificate with _$PostmanCollectionCertificate {
 }
 
 @freezed
-class PostmanCollectionCertificateSrc with _$PostmanCollectionCertificateSrc {
+abstract class PostmanCollectionCertificateSrc
+    with _$PostmanCollectionCertificateSrc {
   const PostmanCollectionCertificateSrc._();
 
-  const factory PostmanCollectionCertificateSrc({
-    String? src,
-  }) = _PostmanCollectionCertificateSrc;
+  const factory PostmanCollectionCertificateSrc({String? src}) =
+      _PostmanCollectionCertificateSrc;
 
   factory PostmanCollectionCertificateSrc.fromJson(Map<String, dynamic> json) =>
       _$PostmanCollectionCertificateSrcFromJson(json);
 }
 
 @freezed
-class PostmanCollectionProxyConfig with _$PostmanCollectionProxyConfig {
+abstract class PostmanCollectionProxyConfig
+    with _$PostmanCollectionProxyConfig {
   const PostmanCollectionProxyConfig._();
 
   const factory PostmanCollectionProxyConfig({
@@ -475,15 +473,10 @@ enum PostmanCollectionAuthType {
   ntlm,
 }
 
-enum PostmanCollectionVariableType {
-  string,
-  boolean,
-  any,
-  number,
-}
+enum PostmanCollectionVariableType { string, boolean, any, number }
 
 @freezed
-class PostmanCollectionHeader with _$PostmanCollectionHeader {
+abstract class PostmanCollectionHeader with _$PostmanCollectionHeader {
   const PostmanCollectionHeader._();
 
   const factory PostmanCollectionHeader({

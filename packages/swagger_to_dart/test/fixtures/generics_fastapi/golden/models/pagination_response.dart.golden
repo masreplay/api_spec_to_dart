@@ -1,0 +1,56 @@
+/// PaginationResponse_User_
+///
+/// ```json
+/// {
+///     "properties": {
+///         "items": {
+///             "type": "array",
+///             "items": {
+///                 "$ref": "#/components/schemas/User"
+///             }
+///         },
+///         "total": {
+///             "type": "integer"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "items",
+///         "total"
+///     ],
+///     "title": "PaginationResponse[User]"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'pagination_response.freezed.dart';
+part 'pagination_response.g.dart';
+
+@Freezed(genericArgumentFactories: true)
+abstract class PaginationResponse<T> with _$PaginationResponse<T> {
+  const PaginationResponse._();
+
+  @JsonSerializable(
+    converters: jsonSerializableConverters,
+    genericArgumentFactories: true,
+    createFieldMap: true,
+    explicitToJson: true,
+  )
+  const factory PaginationResponse({
+    /// items
+    @JsonKey(name: PaginationResponse.itemsKey_) required List<T> items,
+
+    /// total
+    @JsonKey(name: PaginationResponse.totalKey_) required int total,
+  }) = _PaginationResponse<T>;
+
+  factory PaginationResponse.fromJson(
+    Map<String, dynamic> json,
+    T Function(Object? json) fromJsonT,
+  ) => _$PaginationResponseFromJson<T>(json, fromJsonT);
+
+  static const String itemsKey_ = 'items';
+
+  static const String totalKey_ = 'total';
+}

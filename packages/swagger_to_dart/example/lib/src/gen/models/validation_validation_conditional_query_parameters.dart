@@ -1,4 +1,6 @@
 /// ValidationValidationConditionalQueryParameters
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "user_id": {
@@ -30,11 +32,12 @@
 ///     "type": "object",
 ///     "required": []
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'validation_validation_conditional_query_parameters.freezed.dart';
-part 'validation_validation_conditional_query_parameters.g.dart'; // ValidationValidationConditionalQueryParameters
+part 'validation_validation_conditional_query_parameters.g.dart';
 
 @freezed
 abstract class ValidationValidationConditionalQueryParameters
@@ -54,10 +57,9 @@ abstract class ValidationValidationConditionalQueryParameters
 
   factory ValidationValidationConditionalQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$ValidationValidationConditionalQueryParametersFromJson(json);
+  ) => _$ValidationValidationConditionalQueryParametersFromJson(json);
 
-  static const String userIdKey_ = r'user_id';
+  static const String userIdKey_ = 'user_id';
 
-  static const String usernameKey_ = r'username';
+  static const String usernameKey_ = 'username';
 }

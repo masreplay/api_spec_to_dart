@@ -1,0 +1,144 @@
+/// Weird
+///
+/// ```json
+/// {
+///     "properties": {
+///         "some-key": {
+///             "type": "string"
+///         },
+///         "some_key": {
+///             "type": "string"
+///         },
+///         "default": {
+///             "type": "string"
+///         },
+///         "class": {
+///             "type": "integer"
+///         },
+///         "new": {
+///             "type": "boolean"
+///         },
+///         "required": {
+///             "type": "string"
+///         },
+///         "get": {
+///             "type": "string"
+///         },
+///         "set": {
+///             "type": "string"
+///         },
+///         "external": {
+///             "type": "string"
+///         },
+///         "dynamic": {
+///             "type": "string"
+///         },
+///         "late": {
+///             "type": "string"
+///         },
+///         "2fa": {
+///             "type": "boolean"
+///         },
+///         "user's": {
+///             "type": "string"
+///         },
+///         "words": {
+///             "$ref": "#/components/schemas/Words"
+///         },
+///         "type": {
+///             "$ref": "#/components/schemas/Type"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'weird.freezed.dart';
+part 'weird.g.dart';
+
+@freezed
+abstract class Weird with _$Weird {
+  const Weird._();
+
+  @jsonSerializable
+  const factory Weird({
+    /// someKey
+    @JsonKey(name: Weird.someKeyKey_) String? someKey,
+
+    /// someKey2
+    @JsonKey(name: Weird.someKey2Key_) String? someKey2,
+
+    /// $default
+    @JsonKey(name: Weird.$defaultKey_) String? $default,
+
+    /// $class
+    @JsonKey(name: Weird.$classKey_) int? $class,
+
+    /// $new
+    @JsonKey(name: Weird.$newKey_) bool? $new,
+
+    /// required
+    @JsonKey(name: Weird.requiredKey_) String? required,
+
+    /// get
+    @JsonKey(name: Weird.getKey_) String? get,
+
+    /// set
+    @JsonKey(name: Weird.setKey_) String? set,
+
+    /// external
+    @JsonKey(name: Weird.externalKey_) String? external,
+
+    /// $dynamic
+    @JsonKey(name: Weird.$dynamicKey_) String? $dynamic,
+
+    /// late
+    @JsonKey(name: Weird.lateKey_) String? late,
+
+    /// $2fa
+    @JsonKey(name: Weird.$2faKey_) bool? $2fa,
+
+    /// userS
+    @JsonKey(name: Weird.userSKey_) String? userS,
+
+    /// words
+    @JsonKey(name: Weird.wordsKey_) Words? words,
+
+    /// type
+    @JsonKey(name: Weird.typeKey_) Type? type,
+  }) = _Weird;
+
+  factory Weird.fromJson(Map<String, dynamic> json) => _$WeirdFromJson(json);
+
+  static const String someKeyKey_ = 'some-key';
+
+  static const String someKey2Key_ = 'some_key';
+
+  static const String $defaultKey_ = 'default';
+
+  static const String $classKey_ = 'class';
+
+  static const String $newKey_ = 'new';
+
+  static const String requiredKey_ = 'required';
+
+  static const String getKey_ = 'get';
+
+  static const String setKey_ = 'set';
+
+  static const String externalKey_ = 'external';
+
+  static const String $dynamicKey_ = 'dynamic';
+
+  static const String lateKey_ = 'late';
+
+  static const String $2faKey_ = '2fa';
+
+  static const String userSKey_ = 'user\'s';
+
+  static const String wordsKey_ = 'words';
+
+  static const String typeKey_ = 'type';
+}

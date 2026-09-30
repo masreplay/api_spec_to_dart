@@ -1,4 +1,6 @@
 /// CreateAnimalResponse
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "animal": {
@@ -27,11 +29,12 @@
 ///     ],
 ///     "title": "CreateAnimalResponse"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'create_animal_response.freezed.dart';
-part 'create_animal_response.g.dart'; // CreateAnimalResponse
+part 'create_animal_response.g.dart';
 
 @freezed
 abstract class CreateAnimalResponse with _$CreateAnimalResponse {
@@ -49,7 +52,7 @@ abstract class CreateAnimalResponse with _$CreateAnimalResponse {
   factory CreateAnimalResponse.fromJson(Map<String, dynamic> json) =>
       _$CreateAnimalResponseFromJson(json);
 
-  static const String animalKey_ = r'animal';
+  static const String animalKey_ = 'animal';
 
-  static const String messageKey_ = r'message';
+  static const String messageKey_ = 'message';
 }

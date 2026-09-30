@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'dart:io';
+
 import 'package:args/args.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
@@ -12,8 +14,9 @@ Future<void> main(List<String> arguments) async {
     final builder = GenerationContextBuilder(configPath: configPath);
     final GenerationContext context = await builder.build();
 
-    final generator = SwaggerToDartCodeGenerator(context);
-    await generator.generate();
+    print(const JsonEncoder.withIndent('  ').convert(context.config.toJson()));
+
+    await SwaggerToDartCodeGenerator(context).generate();
   } catch (e, stackTrace) {
     print(e);
     print(stackTrace);

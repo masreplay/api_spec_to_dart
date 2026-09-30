@@ -1,5 +1,6 @@
 /// BaseResponse_CategoryResponse_
-/// BaseResponse
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "data": {
@@ -22,6 +23,7 @@
 ///     ],
 ///     "title": "BaseResponse[CategoryResponse]"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
@@ -36,10 +38,11 @@ abstract class BaseResponse<T> with _$BaseResponse<T> {
     converters: jsonSerializableConverters,
     genericArgumentFactories: true,
     createFieldMap: true,
+    explicitToJson: true,
   )
   const factory BaseResponse({
     /// data
-    @JsonKey(name: BaseResponse.dataKey_) required CategoryResponse data,
+    @JsonKey(name: BaseResponse.dataKey_) required T data,
 
     /// message
     @JsonKey(name: BaseResponse.messageKey_) required String message,
@@ -51,12 +54,11 @@ abstract class BaseResponse<T> with _$BaseResponse<T> {
   factory BaseResponse.fromJson(
     Map<String, dynamic> json,
     T Function(Object? json) fromJsonT,
-  ) =>
-      _$BaseResponseFromJson<T>(json, fromJsonT);
+  ) => _$BaseResponseFromJson<T>(json, fromJsonT);
 
-  static const String dataKey_ = r'data';
+  static const String dataKey_ = 'data';
 
-  static const String messageKey_ = r'message';
+  static const String messageKey_ = 'message';
 
-  static const String codeKey_ = r'code';
+  static const String codeKey_ = 'code';
 }

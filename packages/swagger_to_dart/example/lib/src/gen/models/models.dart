@@ -1,5 +1,3 @@
-library;
-
 export 'aba_routing_model.dart';
 export 'all_types_with_validation.dart';
 export 'base_response.dart';
@@ -47,6 +45,8 @@ export 'user_create.dart';
 export 'user_level.dart';
 export 'validation_error.dart';
 export 'version_model.dart';
+export 'app_router_generic_router_item_response.dart';
+export 'app_router_items_router_item_response.dart';
 export 'basic_basic_boolean_query_parameters.dart';
 export 'basic_basic_string_query_parameters.dart';
 export 'basic_datetime_date_query_parameters.dart';
@@ -79,3 +79,4 @@ export 'validation_constrained_string_query_parameters.dart';
 export 'generic_get_items_query_parameters.dart';
 export 'generic_get_categories_query_parameters.dart';
 export 'generic_get_nested_base_and_pagination_query_parameters.dart';
+export 'animal2.dart';

@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:code_builder/code_builder.dart';
-import 'package:dio/dio.dart';
 import 'package:path/path.dart' as path;
 import 'package:pubspec_parse/pubspec_parse.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
@@ -13,9 +12,13 @@ class GenerationContext {
     required this.pubspec,
     required this.config,
     required this.openApi,
+    this.rootDirectory = '.',
   });
 
   final OpenApi openApi;
+
+  /// The consuming project's root; relative config paths resolve against it.
+  final String rootDirectory;
   final Pubspec pubspec;
   final SwaggerToDart config;
 
@@ -28,15 +31,55 @@ class GenerationContext {
   final Map<String, Library> _models = <String, Library>{};
   List<Library> get models => _models.values.toList();
 
-  void addModel(Library library) {
-    // if already exists, throw error
-    if (_models.containsKey(library.name!)) {
-      // print('Model ${library.name!} already exists');
-      return;
-    }
+  /// File names of component schemas; inline models never take them.
+  final Set<String> reservedModelNames = {};
 
-    _models[library.name!] = library;
+  /// Class name of every non-generic component schema, by schema key. Unique
+  /// even when several schemas share a title (e.g. FastAPI's `X-Input` /
+  /// `X-Output`); references and strategies both read it.
+  final Map<String, String> componentClassNames = {};
+
+  /// Adds a component model. The first model for a file name wins; a
+  /// different model mapping to the same name is reported, not silently
+  /// lost — unless [isGenericInstantiation], where every instantiation of
+  /// the same generic class (`BaseResponse[User]`, `BaseResponse[Item]`, …)
+  /// is expected to collapse into that one class, so differing source is not
+  /// a collision worth reporting.
+  void addModel(Library library, {bool isGenericInstantiation = false}) {
+    final existing = _models[library.name!];
+    if (existing == null) {
+      _models[library.name!] = library;
+    } else if (!isGenericInstantiation &&
+        _source(existing) != _source(library)) {
+      print(
+        'swagger_to_dart: warning: two schemas generate ${library.name}.dart; '
+        'keeping the first. Give one of them a different title.',
+      );
+    }
   }
+
+  /// Adds an inline model (enum, union, query class) as [className], or as
+  /// `${className}2`, `3`... when a different model already uses the name.
+  /// Returns the class name used.
+  String registerInlineModel(
+    String className,
+    Library Function(String className) build,
+  ) {
+    for (var i = 1; ; i++) {
+      final name = i == 1 ? className : '$className$i';
+      final library = build(name);
+      final existing = _models[library.name!];
+      if (existing == null && !reservedModelNames.contains(library.name)) {
+        _models[library.name!] = library;
+        return name;
+      }
+      if (existing != null && _source(existing) == _source(library)) {
+        return name;
+      }
+    }
+  }
+
+  String _source(Library library) => '${library.accept(DartEmitter())}';
 
   final List<Library> _apiClients = <Library>[];
   List<Library> get apiClients => _apiClients;
@@ -45,19 +88,12 @@ class GenerationContext {
     _apiClients.add(library);
   }
 
-  final Map<String, Class> _jsonConvertor = <String, Class>{};
-  List<Class> get jsonConvertor => _jsonConvertor.values.toList();
-
-  void addJsonConvertor(Class jsonConvertor) {
-    if (_jsonConvertor.containsKey(jsonConvertor.name)) {
-      print('Json convertor ${jsonConvertor.name} already exists');
-      return;
-    }
-
-    _jsonConvertor[jsonConvertor.name] = jsonConvertor;
-  }
-
+  /// Builds every model and api client from [openApi], replacing earlier results.
   void generate() {
+    _models.clear();
+    _apiClients.clear();
+    reservedModelNames.clear();
+    componentClassNames.clear();
     extension.modelGenerator.generate();
     extension.apiClientGenerator.generate();
   }
@@ -82,107 +118,120 @@ class ContextExtension {
   ModelGenerator get modelGenerator => ModelGenerator(context);
 }
 
-/// Handles setup and validation for the code generator
+/// Loads the config, the pubspec and the OpenAPI document of a project.
 class GenerationContextBuilder {
-  GenerationContextBuilder({this.configPath});
+  GenerationContextBuilder({this.configPath, String? rootDirectory})
+    : rootDirectory = rootDirectory ?? Directory.current.path;
 
   final String? configPath;
 
-  /// Validates and sets up the environment for code generation
-  Future<GenerationContext> build() async {
-    final rootDir = Directory.current.path;
+  /// The project root holding `pubspec.yaml`; relative config paths resolve
+  /// against it.
+  final String rootDirectory;
 
-    final swaggerToDart = await _loadSwaggerToDartYaml(rootDir);
-    final pubspec = await _loadPubspecYaml(rootDir);
+  Future<GenerationContext> build() async {
+    final swaggerToDart = await _loadSwaggerToDartYaml();
+    final pubspec = await _loadPubspecYaml();
     final openApi = await _loadOpenApi(swaggerToDart);
 
     return GenerationContext(
       config: swaggerToDart,
       pubspec: pubspec,
       openApi: openApi,
+      rootDirectory: rootDirectory,
     );
   }
 
-  Future<Pubspec> _loadPubspecYaml(String rootDir) async {
-    final filePath = path.join(rootDir, 'pubspec.yaml');
-
-    final file = File(filePath);
+  Future<Pubspec> _loadPubspecYaml() async {
+    final file = File(path.join(rootDirectory, 'pubspec.yaml'));
     if (!file.existsSync()) {
-      print('Pubspec file not found: $filePath');
-      throw Exception('Pubspec file not found: $filePath');
+      throw FileSystemException('pubspec.yaml not found', file.path);
     }
 
-    final content = await file.readAsString();
-    return Pubspec.parse(content);
+    return Pubspec.parse(await file.readAsString());
   }
 
-  Future<SwaggerToDart> _loadSwaggerToDartYaml(String rootDir) async {
-    final filePath =
-        configPath ?? path.join(rootDir, SwaggerToDartYaml.filename);
-
-    final file = File(filePath);
-
+  Future<SwaggerToDart> _loadSwaggerToDartYaml() async {
+    final file = File(
+      configPath ?? path.join(rootDirectory, SwaggerToDartYaml.filename),
+    );
     if (!file.existsSync()) {
-      print('swagger_to_dart.yaml file not found: $filePath');
-      throw Exception('swagger_to_dart.yaml file not found: $filePath');
+      throw FileSystemException(
+        '${SwaggerToDartYaml.filename} not found',
+        file.path,
+      );
     }
 
-    final content = await file.readAsString();
-    final yaml = loadYaml(content);
-
+    final yaml = loadYaml(await file.readAsString());
     return SwaggerToDartYaml.fromYamlMap(yaml).swaggerToDart;
   }
 
-  /// Loads and validates the OpenAPI specification
+  /// Fetches the spec from `url` when configured, refreshing the local copy
+  /// at `input_directory`; otherwise (or when the fetch fails and a local
+  /// copy exists) reads the local copy.
   Future<OpenApi> _loadOpenApi(SwaggerToDart config) async {
-    final file = File(config.inputDirectory);
+    final file = File(path.join(rootDirectory, config.inputDirectory));
 
-    // If a URL is provided
     if (config.url case final url?) {
       final uri = Uri.tryParse(url);
-      if (uri == null || !uri.hasAbsolutePath) {
-        print('Invalid URL: $url');
-        throw Exception('Invalid URL: $url');
+      if (uri == null || !uri.hasScheme) {
+        throw FormatException('Invalid OpenAPI url', url);
       }
 
       try {
-        print('Fetching OpenAPI specification from URL: $url');
-        final dio = Dio();
-        final response = await dio.get(url);
+        print('Fetching OpenAPI specification from $url');
+        final data = await _fetchJson(uri);
 
-        if (response.statusCode != 200 && response.statusCode != 201) {
-          throw Exception(
-            'Failed to fetch OpenAPI spec from URL. Status: ${response.statusCode}',
-          );
-        }
-
-        final data = response.data;
-
-        if (data is! Map<String, dynamic>) {
-          print('OpenAPI spec is not a valid JSON object');
-          throw Exception('OpenAPI spec is not a valid JSON object');
-        }
-
-        // Cache the spec locally if file doesn't exist
-        if (!file.existsSync()) {
-          print('Writing OpenAPI specification to file: ${file.path}');
-          await file.writeAsString(jsonEncode(data));
-        }
+        // Always refresh: a write-once cache silently ages while generation
+        // uses the live document, so the file stops describing the client.
+        await file.parent.create(recursive: true);
+        await file.writeAsString(
+          const JsonEncoder.withIndent('  ').convert(data),
+        );
 
         return OpenApi.fromJson(data);
-      } catch (e) {
-        print('Error fetching OpenAPI spec from URL: $e');
+      } on Exception catch (e) {
+        // Generating from a stale spec looks like success and silently drops
+        // endpoints, so the fallback is loud.
+        if (!file.existsSync()) rethrow;
+        final age = DateTime.now().difference(file.lastModifiedSync());
+        print('!' * 78);
+        print('WARNING: could not fetch the OpenAPI spec from $url\n  $e');
+        print(
+          'Falling back to ${file.path}, last modified ${age.inDays} day(s) '
+          'ago. Endpoints added since then are missing from the output.',
+        );
+        print('!' * 78);
       }
     }
 
-    // Otherwise, read from local file
     if (!file.existsSync()) {
-      print('Input file not found: ${config.inputDirectory}');
+      throw FileSystemException('OpenAPI input file not found', file.path);
     }
 
-    final content = await file.readAsString();
-    final map = jsonDecode(content);
+    final json = jsonDecode(await file.readAsString());
+    if (json is! Map<String, dynamic>) {
+      throw FormatException('OpenAPI spec is not a JSON object', file.path);
+    }
+    return OpenApi.fromJson(json);
+  }
 
-    return OpenApi.fromJson(map);
+  Future<Map<String, dynamic>> _fetchJson(Uri uri) async {
+    final client = HttpClient();
+    try {
+      final response = await (await client.getUrl(uri)).close();
+      final body = await response.transform(utf8.decoder).join();
+      if (response.statusCode ~/ 100 != 2) {
+        throw HttpException('HTTP ${response.statusCode}', uri: uri);
+      }
+
+      final json = jsonDecode(body);
+      if (json is! Map<String, dynamic>) {
+        throw FormatException('OpenAPI spec is not a JSON object', uri);
+      }
+      return json;
+    } finally {
+      client.close();
+    }
   }
 }

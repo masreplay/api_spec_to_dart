@@ -10,6 +10,7 @@ analyzer:
     - "**/*.g.dart"
     - "**/*.freezed.dart"
     - "**/*.gen.dart"
+    - example/**
 
   errors:
     invalid_annotation_target: ignore

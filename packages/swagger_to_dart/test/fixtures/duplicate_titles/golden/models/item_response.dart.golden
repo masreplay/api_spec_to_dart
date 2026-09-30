@@ -1,0 +1,37 @@
+/// ItemResponse-Input
+///
+/// ```json
+/// {
+///     "properties": {
+///         "name": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "name"
+///     ],
+///     "title": "ItemResponse"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'item_response.freezed.dart';
+part 'item_response.g.dart';
+
+@freezed
+abstract class ItemResponse with _$ItemResponse {
+  const ItemResponse._();
+
+  @jsonSerializable
+  const factory ItemResponse({
+    /// name
+    @JsonKey(name: ItemResponse.nameKey_) required String name,
+  }) = _ItemResponse;
+
+  factory ItemResponse.fromJson(Map<String, dynamic> json) =>
+      _$ItemResponseFromJson(json);
+
+  static const String nameKey_ = 'name';
+}

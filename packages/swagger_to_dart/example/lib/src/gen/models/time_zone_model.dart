@@ -1,4 +1,6 @@
 /// TimeZoneModel
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "timezone": {
@@ -613,11 +615,12 @@
 ///     ],
 ///     "title": "TimeZoneModel"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'time_zone_model.freezed.dart';
-part 'time_zone_model.g.dart'; // TimeZoneModel
+part 'time_zone_model.g.dart';
 
 @freezed
 abstract class TimeZoneModel with _$TimeZoneModel {
@@ -632,5 +635,5 @@ abstract class TimeZoneModel with _$TimeZoneModel {
   factory TimeZoneModel.fromJson(Map<String, dynamic> json) =>
       _$TimeZoneModelFromJson(json);
 
-  static const String timezoneKey_ = r'timezone';
+  static const String timezoneKey_ = 'timezone';
 }

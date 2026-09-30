@@ -1,0 +1,165 @@
+import 'dart:typed_data';
+
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'files_client.g.dart';
+
+@RestApi()
+abstract class FilesClient {
+  factory FilesClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _FilesClient;
+
+  @GET('/image')
+  @DioResponseType(ResponseType.bytes)
+  Future<HttpResponse<Uint8List>> getImage({
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['files'],
+      'operationId': 'getImage',
+      'responses': {
+        '200': {
+          'description': 'PNG',
+          'content': {
+            'image/png': {
+              'schema': {'type': 'string', 'format': 'binary'},
+            },
+          },
+        },
+      },
+    },
+  });
+  @GET('/report')
+  @DioResponseType(ResponseType.bytes)
+  Future<HttpResponse<Uint8List>> getReport({
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['files'],
+      'operationId': 'getReport',
+      'responses': {
+        '200': {
+          'description': 'PDF',
+          'content': {'application/pdf': {}},
+        },
+      },
+    },
+  });
+  @GET('/text')
+  Future<HttpResponse<String>> getText({
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['files'],
+      'operationId': 'getText',
+      'responses': {
+        '200': {
+          'description': 'Text',
+          'content': {
+            'text/plain': {
+              'schema': {'type': 'string'},
+            },
+          },
+        },
+      },
+    },
+  });
+  @POST('/pet')
+  Future<HttpResponse<Pet>> createPet({
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['files'],
+      'operationId': 'createPet',
+      'responses': {
+        'default': {
+          'description': 'Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/Error'},
+            },
+          },
+        },
+        '201': {
+          'description': 'Created',
+          'content': {
+            'text/plain': {
+              'schema': {'\$ref': '#/components/schemas/Pet'},
+            },
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/Pet'},
+            },
+          },
+        },
+      },
+    },
+  });
+  @POST('/upload')
+  @MultiPart()
+  Future<HttpResponse> upload_({
+    @Part() required Map<String, dynamic> requestBody,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['files'],
+      'operationId': 'upload',
+      'requestBody': {
+        'content': {
+          'multipart/form-data': {
+            'schema': {'\$ref': '#/components/schemas/UploadBody'},
+          },
+        },
+      },
+      'responses': {
+        '204': {'description': 'Uploaded'},
+      },
+    },
+  });
+}
+
+extension FilesClientX on FilesClient {
+  Future<HttpResponse> upload({
+    required UploadBody requestBody,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['files'],
+      'operationId': 'upload',
+      'requestBody': {
+        'content': {
+          'multipart/form-data': {
+            'schema': {'\$ref': '#/components/schemas/UploadBody'},
+          },
+        },
+      },
+      'responses': {
+        '204': {'description': 'Uploaded'},
+      },
+    },
+  }) {
+    return upload_(
+      requestBody: requestBody.toJson(),
+      extras: extras,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+  }
+}

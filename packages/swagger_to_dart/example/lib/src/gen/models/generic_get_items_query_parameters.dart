@@ -1,4 +1,6 @@
 /// GenericGetItemsQueryParameters
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "page": {
@@ -15,11 +17,12 @@
 ///     "type": "object",
 ///     "required": []
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'generic_get_items_query_parameters.freezed.dart';
-part 'generic_get_items_query_parameters.g.dart'; // GenericGetItemsQueryParameters
+part 'generic_get_items_query_parameters.g.dart';
 
 @freezed
 abstract class GenericGetItemsQueryParameters
@@ -42,7 +45,7 @@ abstract class GenericGetItemsQueryParameters
   factory GenericGetItemsQueryParameters.fromJson(Map<String, dynamic> json) =>
       _$GenericGetItemsQueryParametersFromJson(json);
 
-  static const String pageKey_ = r'page';
+  static const String pageKey_ = 'page';
 
-  static const String perPageKey_ = r'per_page';
+  static const String perPageKey_ = 'per_page';
 }

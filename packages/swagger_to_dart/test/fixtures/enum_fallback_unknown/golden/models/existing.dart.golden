@@ -1,0 +1,30 @@
+/// Existing
+///
+/// ```json
+/// {
+///     "type": "string",
+///     "enum": [
+///         "unknown",
+///         "ok"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'existing.g.dart';
+
+@JsonEnum(alwaysCreate: true)
+enum Existing {
+  @JsonValue('unknown')
+  unknown,
+  @JsonValue('ok')
+  ok;
+
+  factory Existing.fromJson(String json) => Existing.values.firstWhere(
+    (e) => e.toJson() == json,
+    orElse: () => Existing.unknown,
+  );
+
+  String toJson() => _$ExistingEnumMap[this]!;
+}

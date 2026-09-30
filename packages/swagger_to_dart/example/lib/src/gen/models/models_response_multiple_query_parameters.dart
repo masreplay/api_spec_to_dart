@@ -1,4 +1,6 @@
 /// ModelsResponseMultipleQueryParameters
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "is_user": {
@@ -11,11 +13,12 @@
 ///     "type": "object",
 ///     "required": []
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'models_response_multiple_query_parameters.freezed.dart';
-part 'models_response_multiple_query_parameters.g.dart'; // ModelsResponseMultipleQueryParameters
+part 'models_response_multiple_query_parameters.g.dart';
 
 @freezed
 abstract class ModelsResponseMultipleQueryParameters
@@ -32,8 +35,7 @@ abstract class ModelsResponseMultipleQueryParameters
 
   factory ModelsResponseMultipleQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$ModelsResponseMultipleQueryParametersFromJson(json);
+  ) => _$ModelsResponseMultipleQueryParametersFromJson(json);
 
-  static const String isUserKey_ = r'is_user';
+  static const String isUserKey_ = 'is_user';
 }

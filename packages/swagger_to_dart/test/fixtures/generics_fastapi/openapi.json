@@ -1,0 +1,89 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Generics", "version": "1.0.0" },
+  "paths": {
+    "/users/{id}": {
+      "get": {
+        "tags": ["users"],
+        "operationId": "getUser",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/BaseResponse_User_" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": ["users"],
+        "operationId": "listUsers",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/BaseResponse_PaginationResponse_User__" }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BaseResponse_str_": {
+        "title": "BaseResponse[str]",
+        "type": "object",
+        "required": ["data", "message"],
+        "properties": {
+          "data": { "type": "string" },
+          "message": { "type": "string" }
+        }
+      },
+      "BaseResponse_User_": {
+        "title": "BaseResponse[User]",
+        "type": "object",
+        "required": ["data", "message"],
+        "properties": {
+          "data": { "$ref": "#/components/schemas/User" },
+          "message": { "type": "string" }
+        }
+      },
+      "BaseResponse_PaginationResponse_User__": {
+        "title": "BaseResponse[PaginationResponse[User]]",
+        "type": "object",
+        "required": ["data", "message"],
+        "properties": {
+          "data": { "$ref": "#/components/schemas/PaginationResponse_User_" },
+          "message": { "type": "string" }
+        }
+      },
+      "PaginationResponse_User_": {
+        "title": "PaginationResponse[User]",
+        "type": "object",
+        "required": ["items", "total"],
+        "properties": {
+          "items": { "type": "array", "items": { "$ref": "#/components/schemas/User" } },
+          "total": { "type": "integer" }
+        }
+      },
+      "User": {
+        "type": "object",
+        "required": ["id"],
+        "properties": {
+          "id": { "type": "integer" },
+          "name": { "type": "string" }
+        }
+      }
+    }
+  }
+}

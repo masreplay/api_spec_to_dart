@@ -1,7 +1,6 @@
-library;
-
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
+
 import '../models/models.dart';
 part 'advanced_client.g.dart';
 
@@ -19,37 +18,38 @@ abstract class AdvancedClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'advanced'],
-      r'summary': r'Handle UUID parameters',
-      r'description': r'Handle UUID parameter.',
-      r'operationId': r'advanced-special_uuid',
-      r'parameters': [
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['advanced'],
+      'summary': 'Handle UUID parameters',
+      'description': 'Handle UUID parameter.',
+      'operationId': 'advanced-special_uuid',
+      'parameters': [
         {
-          r'name': r'id',
-          r'in': r'query',
-          r'required': true,
-          r'schema': {r'type': r'string', r'format': r'uuid', r'title': r'Id'},
+          'name': 'id',
+          'in': 'query',
+          'required': true,
+          'schema': {'type': 'string', 'format': 'uuid', 'title': 'Id'},
         },
       ],
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'type': r'object',
-                r'additionalProperties': true,
-                r'title': r'Response Advanced-Special Uuid',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'additionalProperties': true,
+                'title': 'Response Advanced-Special Uuid',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -62,40 +62,41 @@ abstract class AdvancedClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'advanced'],
-      r'summary': r'Handle enum parameters',
-      r'description': r'Handle Enum parameter.',
-      r'operationId': r'advanced-special_enum',
-      r'parameters': [
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['advanced'],
+      'summary': 'Handle enum parameters',
+      'description': 'Handle Enum parameter.',
+      'operationId': 'advanced-special_enum',
+      'parameters': [
         {
-          r'name': r'level',
-          r'in': r'query',
-          r'required': false,
-          r'schema': {
-            r'$ref': r'#/components/schemas/UserLevel',
-            r'default': r'basic',
+          'name': 'level',
+          'in': 'query',
+          'required': false,
+          'schema': {
+            '\$ref': '#/components/schemas/UserLevel',
+            'default': 'basic',
           },
         },
       ],
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'type': r'object',
-                r'additionalProperties': true,
-                r'title': r'Response Advanced-Special Enum',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'additionalProperties': true,
+                'title': 'Response Advanced-Special Enum',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -108,42 +109,43 @@ abstract class AdvancedClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'advanced'],
-      r'summary': r'Handle literal type parameters',
-      r'description': r'Handle Literal type parameter.',
-      r'operationId': r'advanced-special_literal',
-      r'parameters': [
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['advanced'],
+      'summary': 'Handle literal type parameters',
+      'description': 'Handle Literal type parameter.',
+      'operationId': 'advanced-special_literal',
+      'parameters': [
         {
-          r'name': r'mode',
-          r'in': r'query',
-          r'required': false,
-          r'schema': {
-            r'enum': [r'light', r'dark', r'system'],
-            r'type': r'string',
-            r'default': r'system',
-            r'title': r'Mode',
+          'name': 'mode',
+          'in': 'query',
+          'required': false,
+          'schema': {
+            'enum': ['light', 'dark', 'system'],
+            'type': 'string',
+            'default': 'system',
+            'title': 'Mode',
           },
         },
       ],
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'type': r'object',
-                r'additionalProperties': true,
-                r'title': r'Response Advanced-Special Literal',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'additionalProperties': true,
+                'title': 'Response Advanced-Special Literal',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -156,42 +158,43 @@ abstract class AdvancedClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'advanced'],
-      r'summary': r'Collection List',
-      r'description': r'Handle list of strings query parameter.',
-      r'operationId': r'advanced-collection_list',
-      r'parameters': [
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['advanced'],
+      'summary': 'Collection List',
+      'description': 'Handle list of strings query parameter.',
+      'operationId': 'advanced-collection_list',
+      'parameters': [
         {
-          r'name': r'items',
-          r'in': r'query',
-          r'required': false,
-          r'schema': {
-            r'type': r'array',
-            r'items': {r'type': r'string'},
-            r'default': [r'default'],
-            r'title': r'Items',
+          'name': 'items',
+          'in': 'query',
+          'required': false,
+          'schema': {
+            'type': 'array',
+            'items': {'type': 'string'},
+            'default': ['default'],
+            'title': 'Items',
           },
         },
       ],
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'type': r'object',
-                r'additionalProperties': true,
-                r'title': r'Response Advanced-Collection List',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'additionalProperties': true,
+                'title': 'Response Advanced-Collection List',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -204,43 +207,44 @@ abstract class AdvancedClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'advanced'],
-      r'summary': r'Collection Set',
-      r'description': r'Handle set of integers query parameter.',
-      r'operationId': r'advanced-collection_set',
-      r'parameters': [
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['advanced'],
+      'summary': 'Collection Set',
+      'description': 'Handle set of integers query parameter.',
+      'operationId': 'advanced-collection_set',
+      'parameters': [
         {
-          r'name': r'items',
-          r'in': r'query',
-          r'required': false,
-          r'schema': {
-            r'type': r'array',
-            r'uniqueItems': true,
-            r'items': {r'type': r'integer'},
-            r'default': [1, 2, 3],
-            r'title': r'Items',
+          'name': 'items',
+          'in': 'query',
+          'required': false,
+          'schema': {
+            'type': 'array',
+            'uniqueItems': true,
+            'items': {'type': 'integer'},
+            'default': [1, 2, 3],
+            'title': 'Items',
           },
         },
       ],
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'type': r'object',
-                r'additionalProperties': true,
-                r'title': r'Response Advanced-Collection Set',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'additionalProperties': true,
+                'title': 'Response Advanced-Collection Set',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -253,41 +257,42 @@ abstract class AdvancedClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'advanced'],
-      r'summary': r'Collection Dict',
-      r'description': r'Handle dictionary in request body.',
-      r'operationId': r'advanced-collection_dict',
-      r'requestBody': {
-        r'content': {
-          r'application/json': {
-            r'schema': {
-              r'additionalProperties': true,
-              r'type': r'object',
-              r'title': r'Data',
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['advanced'],
+      'summary': 'Collection Dict',
+      'description': 'Handle dictionary in request body.',
+      'operationId': 'advanced-collection_dict',
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {
+              'additionalProperties': true,
+              'type': 'object',
+              'title': 'Data',
             },
           },
         },
-        r'required': true,
+        'required': true,
       },
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'additionalProperties': true,
-                r'type': r'object',
-                r'title': r'Response Advanced-Collection Dict',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'additionalProperties': true,
+                'type': 'object',
+                'title': 'Response Advanced-Collection Dict',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -300,47 +305,48 @@ abstract class AdvancedClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'advanced'],
-      r'summary': r'Collection Tuple',
-      r'description': r'Handle fixed-size tuple query parameter.',
-      r'operationId': r'advanced-collection_tuple',
-      r'parameters': [
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['advanced'],
+      'summary': 'Collection Tuple',
+      'description': 'Handle fixed-size tuple query parameter.',
+      'operationId': 'advanced-collection_tuple',
+      'parameters': [
         {
-          r'name': r'items',
-          r'in': r'query',
-          r'required': true,
-          r'schema': {
-            r'type': r'array',
-            r'prefixItems': [
-              {r'type': r'integer'},
-              {r'type': r'string'},
-              {r'type': r'boolean'},
+          'name': 'items',
+          'in': 'query',
+          'required': true,
+          'schema': {
+            'type': 'array',
+            'prefixItems': [
+              {'type': 'integer'},
+              {'type': 'string'},
+              {'type': 'boolean'},
             ],
-            r'minItems': 3,
-            r'maxItems': 3,
-            r'title': r'Items',
+            'minItems': 3,
+            'maxItems': 3,
+            'title': 'Items',
           },
         },
       ],
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'type': r'object',
-                r'additionalProperties': true,
-                r'title': r'Response Advanced-Collection Tuple',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'additionalProperties': true,
+                'title': 'Response Advanced-Collection Tuple',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -353,41 +359,42 @@ abstract class AdvancedClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'advanced'],
-      r'summary': r'Collection Variable Tuple',
-      r'description': r'Handle variable-size tuple query parameter.',
-      r'operationId': r'advanced-collection_variable_tuple',
-      r'parameters': [
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['advanced'],
+      'summary': 'Collection Variable Tuple',
+      'description': 'Handle variable-size tuple query parameter.',
+      'operationId': 'advanced-collection_variable_tuple',
+      'parameters': [
         {
-          r'name': r'items',
-          r'in': r'query',
-          r'required': true,
-          r'schema': {
-            r'type': r'array',
-            r'items': {r'type': r'string'},
-            r'title': r'Items',
+          'name': 'items',
+          'in': 'query',
+          'required': true,
+          'schema': {
+            'type': 'array',
+            'items': {'type': 'string'},
+            'title': 'Items',
           },
         },
       ],
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'type': r'object',
-                r'additionalProperties': true,
-                r'title': r'Response Advanced-Collection Variable Tuple',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'additionalProperties': true,
+                'title': 'Response Advanced-Collection Variable Tuple',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -400,44 +407,45 @@ abstract class AdvancedClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'advanced'],
-      r'summary': r'Handle union type parameters',
-      r'description': r'Handle union type parameter.',
-      r'operationId': r'advanced-union_simple',
-      r'parameters': [
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['advanced'],
+      'summary': 'Handle union type parameters',
+      'description': 'Handle union type parameter.',
+      'operationId': 'advanced-union_simple',
+      'parameters': [
         {
-          r'name': r'value',
-          r'in': r'query',
-          r'required': true,
-          r'schema': {
-            r'anyOf': [
-              {r'type': r'integer'},
-              {r'type': r'string'},
-              {r'type': r'boolean'},
+          'name': 'value',
+          'in': 'query',
+          'required': true,
+          'schema': {
+            'anyOf': [
+              {'type': 'integer'},
+              {'type': 'string'},
+              {'type': 'boolean'},
             ],
-            r'title': r'Value',
+            'title': 'Value',
           },
         },
       ],
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'type': r'object',
-                r'additionalProperties': true,
-                r'title': r'Response Advanced-Union Simple',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'additionalProperties': true,
+                'title': 'Response Advanced-Union Simple',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -450,43 +458,44 @@ abstract class AdvancedClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'advanced'],
-      r'summary': r'Handle optional parameters',
-      r'description': r'Handle optional type parameter.',
-      r'operationId': r'advanced-union_optional',
-      r'parameters': [
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['advanced'],
+      'summary': 'Handle optional parameters',
+      'description': 'Handle optional type parameter.',
+      'operationId': 'advanced-union_optional',
+      'parameters': [
         {
-          r'name': r'value',
-          r'in': r'query',
-          r'required': false,
-          r'schema': {
-            r'anyOf': [
-              {r'type': r'string'},
-              {r'type': r'null'},
+          'name': 'value',
+          'in': 'query',
+          'required': false,
+          'schema': {
+            'anyOf': [
+              {'type': 'string'},
+              {'type': 'null'},
             ],
-            r'title': r'Value',
+            'title': 'Value',
           },
         },
       ],
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'type': r'object',
-                r'additionalProperties': true,
-                r'title': r'Response Advanced-Union Optional',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'additionalProperties': true,
+                'title': 'Response Advanced-Union Optional',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -499,44 +508,45 @@ abstract class AdvancedClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'advanced'],
-      r'summary': r'Handle union with modern Python syntax',
-      r'description': r'Handle union with modern Python syntax (Python 3.10+).',
-      r'operationId': r'advanced-union_modern',
-      r'parameters': [
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['advanced'],
+      'summary': 'Handle union with modern Python syntax',
+      'description': 'Handle union with modern Python syntax (Python 3.10+).',
+      'operationId': 'advanced-union_modern',
+      'parameters': [
         {
-          r'name': r'value',
-          r'in': r'query',
-          r'required': false,
-          r'schema': {
-            r'anyOf': [
-              {r'type': r'integer'},
-              {r'type': r'string'},
-              {r'type': r'null'},
+          'name': 'value',
+          'in': 'query',
+          'required': false,
+          'schema': {
+            'anyOf': [
+              {'type': 'integer'},
+              {'type': 'string'},
+              {'type': 'null'},
             ],
-            r'title': r'Value',
+            'title': 'Value',
           },
         },
       ],
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'type': r'object',
-                r'additionalProperties': true,
-                r'title': r'Response Advanced-Union Modern',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'additionalProperties': true,
+                'title': 'Response Advanced-Union Modern',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -549,51 +559,52 @@ abstract class AdvancedClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'advanced'],
-      r'summary': r'Demonstrate custom type validation',
-      r'description': r'Handle custom type for positive integers.',
-      r'operationId': r'advanced-custom_positive_int',
-      r'parameters': [
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['advanced'],
+      'summary': 'Demonstrate custom type validation',
+      'description': 'Handle custom type for positive integers.',
+      'operationId': 'advanced-custom_positive_int',
+      'parameters': [
         {
-          r'name': r'value',
-          r'in': r'query',
-          r'required': true,
-          r'schema': {
-            r'type': r'integer',
-            r'exclusiveMinimum': 0,
-            r'title': r'Value',
+          'name': 'value',
+          'in': 'query',
+          'required': true,
+          'schema': {
+            'type': 'integer',
+            'exclusiveMinimum': 0,
+            'title': 'Value',
           },
         },
         {
-          r'name': r'value2',
-          r'in': r'query',
-          r'required': true,
-          r'schema': {
-            r'type': r'integer',
-            r'exclusiveMaximum': 0,
-            r'title': r'Value2',
+          'name': 'value2',
+          'in': 'query',
+          'required': true,
+          'schema': {
+            'type': 'integer',
+            'exclusiveMaximum': 0,
+            'title': 'Value2',
           },
         },
       ],
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'type': r'object',
-                r'additionalProperties': true,
-                r'title': r'Response Advanced-Custom Positive Int',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'additionalProperties': true,
+                'title': 'Response Advanced-Custom Positive Int',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -606,75 +617,76 @@ abstract class AdvancedClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'advanced'],
-      r'summary': r'Use dependency injection for common parameters',
-      r'description': r'Use dependency injection for common parameters.',
-      r'operationId': r'advanced-depends_query',
-      r'parameters': [
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['advanced'],
+      'summary': 'Use dependency injection for common parameters',
+      'description': 'Use dependency injection for common parameters.',
+      'operationId': 'advanced-depends_query',
+      'parameters': [
         {
-          r'name': r'q',
-          r'in': r'query',
-          r'required': false,
-          r'schema': {
-            r'anyOf': [
-              {r'type': r'string'},
-              {r'type': r'null'},
+          'name': 'q',
+          'in': 'query',
+          'required': false,
+          'schema': {
+            'anyOf': [
+              {'type': 'string'},
+              {'type': 'null'},
             ],
-            r'description': r'Optional search string',
-            r'examples': [r'search'],
-            r'title': r'Q',
+            'description': 'Optional search string',
+            'examples': ['search'],
+            'title': 'Q',
           },
-          r'description': r'Optional search string',
+          'description': 'Optional search string',
         },
         {
-          r'name': r'skip',
-          r'in': r'query',
-          r'required': false,
-          r'schema': {
-            r'type': r'integer',
-            r'minimum': 0,
-            r'description': r'Number of items to skip',
-            r'examples': [0],
-            r'default': 0,
-            r'title': r'Skip',
+          'name': 'skip',
+          'in': 'query',
+          'required': false,
+          'schema': {
+            'type': 'integer',
+            'minimum': 0,
+            'description': 'Number of items to skip',
+            'examples': [0],
+            'default': 0,
+            'title': 'Skip',
           },
-          r'description': r'Number of items to skip',
+          'description': 'Number of items to skip',
         },
         {
-          r'name': r'limit',
-          r'in': r'query',
-          r'required': false,
-          r'schema': {
-            r'type': r'integer',
-            r'maximum': 1000,
-            r'minimum': 1,
-            r'description': r'Max items to return',
-            r'examples': [100],
-            r'default': 100,
-            r'title': r'Limit',
+          'name': 'limit',
+          'in': 'query',
+          'required': false,
+          'schema': {
+            'type': 'integer',
+            'maximum': 1000,
+            'minimum': 1,
+            'description': 'Max items to return',
+            'examples': [100],
+            'default': 100,
+            'title': 'Limit',
           },
-          r'description': r'Max items to return',
+          'description': 'Max items to return',
         },
       ],
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'type': r'object',
-                r'additionalProperties': true,
-                r'title': r'Response Advanced-Depends Query',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'additionalProperties': true,
+                'title': 'Response Advanced-Depends Query',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -687,41 +699,42 @@ abstract class AdvancedClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'advanced'],
-      r'summary': r'Use class-based dependency injection',
-      r'description': r'Use class-based dependency injection.',
-      r'operationId': r'advanced-depends_class',
-      r'parameters': [
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['advanced'],
+      'summary': 'Use class-based dependency injection',
+      'description': 'Use class-based dependency injection.',
+      'operationId': 'advanced-depends_class',
+      'parameters': [
         {
-          r'name': r'db_name',
-          r'in': r'query',
-          r'required': false,
-          r'schema': {
-            r'type': r'string',
-            r'default': r'default',
-            r'title': r'Db Name',
+          'name': 'db_name',
+          'in': 'query',
+          'required': false,
+          'schema': {
+            'type': 'string',
+            'default': 'default',
+            'title': 'Db Name',
           },
         },
       ],
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'type': r'object',
-                r'additionalProperties': true,
-                r'title': r'Response Advanced-Depends Class',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'additionalProperties': true,
+                'title': 'Response Advanced-Depends Class',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -734,37 +747,38 @@ abstract class AdvancedClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'advanced'],
-      r'summary': r'Demonstrate 404 error handling',
-      r'description': r'Raise an HTTP exception if the item is not found.',
-      r'operationId': r'advanced-error_not_found',
-      r'parameters': [
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['advanced'],
+      'summary': 'Demonstrate 404 error handling',
+      'description': 'Raise an HTTP exception if the item is not found.',
+      'operationId': 'advanced-error_not_found',
+      'parameters': [
         {
-          r'name': r'item_id',
-          r'in': r'path',
-          r'required': true,
-          r'schema': {r'type': r'integer', r'title': r'Item Id'},
+          'name': 'item_id',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'integer', 'title': 'Item Id'},
         },
       ],
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'type': r'object',
-                r'additionalProperties': true,
-                r'title': r'Response Advanced-Error Not Found',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'additionalProperties': true,
+                'title': 'Response Advanced-Error Not Found',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },
@@ -777,44 +791,44 @@ abstract class AdvancedClient {
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
-    @Extras() Map<String, dynamic>? extras = const {
-      r'tags': [r'advanced'],
-      r'summary': r'Demonstrate custom error status codes',
-      r'description':
-          r'Raise custom HTTP exceptions based on query parameters.',
-      r'operationId': r'advanced-error_custom',
-      r'parameters': [
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['advanced'],
+      'summary': 'Demonstrate custom error status codes',
+      'description': 'Raise custom HTTP exceptions based on query parameters.',
+      'operationId': 'advanced-error_custom',
+      'parameters': [
         {
-          r'name': r'code',
-          r'in': r'query',
-          r'required': true,
-          r'schema': {
-            r'type': r'integer',
-            r'description': r'HTTP error code to simulate',
-            r'title': r'Code',
+          'name': 'code',
+          'in': 'query',
+          'required': true,
+          'schema': {
+            'type': 'integer',
+            'description': 'HTTP error code to simulate',
+            'title': 'Code',
           },
-          r'description': r'HTTP error code to simulate',
-          r'example': 400,
+          'description': 'HTTP error code to simulate',
+          'example': 400,
         },
       ],
-      r'responses': {
-        r'200': {
-          r'description': r'Successful Response',
-          r'content': {
-            r'application/json': {
-              r'schema': {
-                r'type': r'object',
-                r'additionalProperties': true,
-                r'title': r'Response Advanced-Error Custom',
+      'responses': {
+        '200': {
+          'description': 'Successful Response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'additionalProperties': true,
+                'title': 'Response Advanced-Error Custom',
               },
             },
           },
         },
-        r'422': {
-          r'description': r'Validation Error',
-          r'content': {
-            r'application/json': {
-              r'schema': {r'$ref': r'#/components/schemas/HTTPValidationError'},
+        '422': {
+          'description': 'Validation Error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/HTTPValidationError'},
             },
           },
         },

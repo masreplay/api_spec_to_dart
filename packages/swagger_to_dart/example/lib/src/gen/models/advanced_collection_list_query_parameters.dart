@@ -1,4 +1,6 @@
 /// AdvancedCollectionListQueryParameters
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "items": {
@@ -15,11 +17,12 @@
 ///     "type": "object",
 ///     "required": []
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'advanced_collection_list_query_parameters.freezed.dart';
-part 'advanced_collection_list_query_parameters.g.dart'; // AdvancedCollectionListQueryParameters
+part 'advanced_collection_list_query_parameters.g.dart';
 
 @freezed
 abstract class AdvancedCollectionListQueryParameters
@@ -36,8 +39,7 @@ abstract class AdvancedCollectionListQueryParameters
 
   factory AdvancedCollectionListQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$AdvancedCollectionListQueryParametersFromJson(json);
+  ) => _$AdvancedCollectionListQueryParametersFromJson(json);
 
-  static const String itemsKey_ = r'items';
+  static const String itemsKey_ = 'items';
 }

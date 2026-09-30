@@ -1,3 +1,12 @@
+## 0.1.0
+
+- Build with freezed 4 / json_serializable 6.14 and the latest Dart SDK
+  (SDK floor `^3.9.0`).
+- **Breaking:** freezed 3+ no longer generates `map`/`when` helpers — use Dart
+  pattern matching (`switch (mode) { PostmanCollectionRequestMode(...) => ... }`).
+- Remove stray `*.postman_collection.json` outputs that were shipped inside `lib/`.
+- Fix the package test pointing at a non-existent fixture.
+
 ## 0.0.9
 
 - fix multipart formdata issue

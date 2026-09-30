@@ -1,0 +1,4 @@
+# Written by packages/swagger_to_dart/test/e2e_test.dart
+lib/gen/
+test/
+.dart_tool/

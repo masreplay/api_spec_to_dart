@@ -1,0 +1,109 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'pets_client.g.dart';
+
+@RestApi()
+abstract class PetsClient {
+  factory PetsClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _PetsClient;
+
+  @GET('/owners/{id}/pets')
+  Future<HttpResponse<List<Pet>>> listOwnerPets({
+    @Path('id') required int id,
+    @Query('pageSize') int? pageSize,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['pets'],
+      'operationId': 'listOwnerPets',
+      'parameters': [
+        {
+          'name': 'id',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'integer'},
+        },
+        {
+          'name': 'pageSize',
+          'in': 'query',
+          'schema': {'type': 'integer'},
+        },
+      ],
+      'responses': {
+        '200': {
+          'description': 'The owner\'s pets',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'array',
+                'items': {'\$ref': '#/components/schemas/Pet'},
+              },
+            },
+          },
+        },
+        '404': {
+          'description': 'No such owner',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/Error'},
+            },
+          },
+        },
+      },
+    },
+  });
+  @POST('/owners/{id}/pets')
+  Future<HttpResponse<Pet>> addOwnerPet({
+    @Body() required Pet requestBody,
+    @Path('id') required int id,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['pets'],
+      'operationId': 'addOwnerPet',
+      'requestBody': {
+        'required': true,
+        'content': {
+          'application/json': {
+            'schema': {'\$ref': '#/components/schemas/Pet'},
+          },
+        },
+      },
+      'responses': {
+        '200': {
+          'description': 'The added pet',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/Pet'},
+            },
+          },
+        },
+        '404': {
+          'description': 'No such owner',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/Error'},
+            },
+          },
+        },
+      },
+      'parameters': [
+        {
+          'name': 'id',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'integer'},
+        },
+      ],
+    },
+  });
+}

@@ -1,4 +1,6 @@
 /// VersionModel
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "version": {
@@ -13,11 +15,12 @@
 ///     ],
 ///     "title": "VersionModel"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'version_model.freezed.dart';
-part 'version_model.g.dart'; // VersionModel
+part 'version_model.g.dart';
 
 @freezed
 abstract class VersionModel with _$VersionModel {
@@ -32,5 +35,5 @@ abstract class VersionModel with _$VersionModel {
   factory VersionModel.fromJson(Map<String, dynamic> json) =>
       _$VersionModelFromJson(json);
 
-  static const String versionKey_ = r'version';
+  static const String versionKey_ = 'version';
 }

@@ -1,0 +1,45 @@
+/// UploadBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "file": {
+///             "type": "string",
+///             "format": "binary"
+///         },
+///         "note": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "file"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'upload_body.freezed.dart';
+part 'upload_body.g.dart';
+
+@freezed
+abstract class UploadBody with _$UploadBody {
+  const UploadBody._();
+
+  @jsonSerializable
+  const factory UploadBody({
+    /// file
+    @JsonKey(name: UploadBody.fileKey_) required MultipartFile file,
+
+    /// note
+    @JsonKey(name: UploadBody.noteKey_) String? note,
+  }) = _UploadBody;
+
+  factory UploadBody.fromJson(Map<String, dynamic> json) =>
+      _$UploadBodyFromJson(json);
+
+  static const String fileKey_ = 'file';
+
+  static const String noteKey_ = 'note';
+}

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'open_api_info.dart';
@@ -9,6 +9,7 @@ part of 'open_api_info.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 T _$identity<T>(T value) => value;
 
 /// @nodoc
@@ -32,35 +33,49 @@ mixin _$OpenApiInfo {
 
   @override
   bool operator ==(Object other) {
+    final _this = this as OpenApiInfo;
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is OpenApiInfo &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.version, version) || other.version == version));
+            (identical(other.title, _this.title) ||
+                other.title == _this.title) &&
+            (identical(other.description, _this.description) ||
+                other.description == _this.description) &&
+            (identical(other.version, _this.version) ||
+                other.version == _this.version));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, title, description, version);
+  int get hashCode {
+    final _this = this as OpenApiInfo;
+    return Object.hash(
+      runtimeType,
+      _this.title,
+      _this.description,
+      _this.version,
+    );
+  }
 
   @override
   String toString() {
-    return 'OpenApiInfo(title: $title, description: $description, version: $version)';
+    final _this = this as OpenApiInfo;
+    return 'OpenApiInfo(title: ${_this.title}, description: ${_this.description}, version: ${_this.version})';
   }
 }
 
 /// @nodoc
 abstract mixin class $OpenApiInfoCopyWith<$Res> {
   factory $OpenApiInfoCopyWith(
-          OpenApiInfo value, $Res Function(OpenApiInfo) _then) =
-      _$OpenApiInfoCopyWithImpl;
+    OpenApiInfo value,
+    $Res Function(OpenApiInfo) _then,
+  ) = _$OpenApiInfoCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'title') String title,
-      @JsonKey(name: 'description') String? description,
-      @JsonKey(name: 'version') String? version});
+  $Res call({
+    @JsonKey(name: 'title') String title,
+    @JsonKey(name: 'description') String? description,
+    @JsonKey(name: 'version') String? version,
+  });
 }
 
 /// @nodoc
@@ -79,20 +94,22 @@ class _$OpenApiInfoCopyWithImpl<$Res> implements $OpenApiInfoCopyWith<$Res> {
     Object? description = freezed,
     Object? version = freezed,
   }) {
-    return _then(_self.copyWith(
-      title: null == title
-          ? _self.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: freezed == description
-          ? _self.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      version: freezed == version
-          ? _self.version
-          : version // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      OpenApiInfo(
+        title: null == title
+            ? _self.title
+            : title // ignore: cast_nullable_to_non_nullable
+                  as String,
+        description: freezed == description
+            ? _self.description
+            : description // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        version: freezed == version
+            ? _self.version
+            : version // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
@@ -190,10 +207,11 @@ extension OpenApiInfoPatterns on OpenApiInfo {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            @JsonKey(name: 'title') String title,
-            @JsonKey(name: 'description') String? description,
-            @JsonKey(name: 'version') String? version)?
-        $default, {
+      @JsonKey(name: 'title') String title,
+      @JsonKey(name: 'description') String? description,
+      @JsonKey(name: 'version') String? version,
+    )?
+    $default, {
     required TResult orElse(),
   }) {
     final _that = this;
@@ -221,10 +239,11 @@ extension OpenApiInfoPatterns on OpenApiInfo {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            @JsonKey(name: 'title') String title,
-            @JsonKey(name: 'description') String? description,
-            @JsonKey(name: 'version') String? version)
-        $default,
+      @JsonKey(name: 'title') String title,
+      @JsonKey(name: 'description') String? description,
+      @JsonKey(name: 'version') String? version,
+    )
+    $default,
   ) {
     final _that = this;
     switch (_that) {
@@ -250,10 +269,11 @@ extension OpenApiInfoPatterns on OpenApiInfo {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            @JsonKey(name: 'title') String title,
-            @JsonKey(name: 'description') String? description,
-            @JsonKey(name: 'version') String? version)?
-        $default,
+      @JsonKey(name: 'title') String title,
+      @JsonKey(name: 'description') String? description,
+      @JsonKey(name: 'version') String? version,
+    )?
+    $default,
   ) {
     final _that = this;
     switch (_that) {
@@ -268,11 +288,11 @@ extension OpenApiInfoPatterns on OpenApiInfo {
 /// @nodoc
 @JsonSerializable()
 class _OpenApiInfo extends OpenApiInfo {
-  const _OpenApiInfo(
-      {@JsonKey(name: 'title') required this.title,
-      @JsonKey(name: 'description') required this.description,
-      @JsonKey(name: 'version') required this.version})
-      : super._();
+  const _OpenApiInfo({
+    @JsonKey(name: 'title') required this.title,
+    @JsonKey(name: 'description') required this.description,
+    @JsonKey(name: 'version') required this.version,
+  }) : super._();
   factory _OpenApiInfo.fromJson(Map<String, dynamic> json) =>
       _$OpenApiInfoFromJson(json);
 
@@ -296,9 +316,7 @@ class _OpenApiInfo extends OpenApiInfo {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$OpenApiInfoToJson(
-      this,
-    );
+    return _$OpenApiInfoToJson(this);
   }
 
   @override
@@ -314,7 +332,9 @@ class _OpenApiInfo extends OpenApiInfo {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, title, description, version);
+  int get hashCode {
+    return Object.hash(runtimeType, title, description, version);
+  }
 
   @override
   String toString() {
@@ -326,14 +346,16 @@ class _OpenApiInfo extends OpenApiInfo {
 abstract mixin class _$OpenApiInfoCopyWith<$Res>
     implements $OpenApiInfoCopyWith<$Res> {
   factory _$OpenApiInfoCopyWith(
-          _OpenApiInfo value, $Res Function(_OpenApiInfo) _then) =
-      __$OpenApiInfoCopyWithImpl;
+    _OpenApiInfo value,
+    $Res Function(_OpenApiInfo) _then,
+  ) = __$OpenApiInfoCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'title') String title,
-      @JsonKey(name: 'description') String? description,
-      @JsonKey(name: 'version') String? version});
+  $Res call({
+    @JsonKey(name: 'title') String title,
+    @JsonKey(name: 'description') String? description,
+    @JsonKey(name: 'version') String? version,
+  });
 }
 
 /// @nodoc
@@ -352,19 +374,21 @@ class __$OpenApiInfoCopyWithImpl<$Res> implements _$OpenApiInfoCopyWith<$Res> {
     Object? description = freezed,
     Object? version = freezed,
   }) {
-    return _then(_OpenApiInfo(
-      title: null == title
-          ? _self.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: freezed == description
-          ? _self.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      version: freezed == version
-          ? _self.version
-          : version // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _OpenApiInfo(
+        title: null == title
+            ? _self.title
+            : title // ignore: cast_nullable_to_non_nullable
+                  as String,
+        description: freezed == description
+            ? _self.description
+            : description // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        version: freezed == version
+            ? _self.version
+            : version // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }

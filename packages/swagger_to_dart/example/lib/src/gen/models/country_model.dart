@@ -1,4 +1,6 @@
 /// CountryModel
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "alpha2": {
@@ -52,11 +54,12 @@
 ///     "type": "object",
 ///     "title": "CountryModel"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'country_model.freezed.dart';
-part 'country_model.g.dart'; // CountryModel
+part 'country_model.g.dart';
 
 @freezed
 abstract class CountryModel with _$CountryModel {
@@ -80,11 +83,11 @@ abstract class CountryModel with _$CountryModel {
   factory CountryModel.fromJson(Map<String, dynamic> json) =>
       _$CountryModelFromJson(json);
 
-  static const String alpha2Key_ = r'alpha2';
+  static const String alpha2Key_ = 'alpha2';
 
-  static const String alpha3Key_ = r'alpha3';
+  static const String alpha3Key_ = 'alpha3';
 
-  static const String numericKey_ = r'numeric';
+  static const String numericKey_ = 'numeric';
 
-  static const String shortNameKey_ = r'short_name';
+  static const String shortNameKey_ = 'short_name';
 }

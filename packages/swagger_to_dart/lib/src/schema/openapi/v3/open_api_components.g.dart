@@ -17,47 +17,74 @@ _OpenApiComponents _$OpenApiComponentsFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$OpenApiComponentsToJson(_OpenApiComponents instance) =>
     <String, dynamic>{
-      if (instance.schemas?.map((k, e) => MapEntry(k, e.toJson()))
-          case final value?)
-        'schemas': value,
-      if (instance.securitySchemes case final value?) 'securitySchemes': value,
+      'schemas': ?instance.schemas?.map((k, e) => MapEntry(k, e.toJson())),
+      'securitySchemes': ?instance.securitySchemes,
     };
 
-_OpenApiSchemas _$OpenApiSchemasFromJson(Map<String, dynamic> json) =>
-    _OpenApiSchemas(
-      properties: (json['properties'] as Map<String, dynamic>?)?.map(
-        (k, e) => MapEntry(
-            k,
-            const OpenApiSchemaJsonConverter()
-                .fromJson(e as Map<String, dynamic>)),
-      ),
-      type: json['type'] as String,
-      required_: (json['required'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-      enum_: (json['enum'] as List<dynamic>?)?.map((e) => e as Object).toList(),
-      const_: json['const'],
-      title: json['title'] as String?,
-      description: json['description'] as String?,
-      xEnumVarnames: (json['x-enum-varnames'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-      additionalProperties: json['additionalProperties'] as bool?,
-    );
+_OpenApiSchemas _$OpenApiSchemasFromJson(
+  Map<String, dynamic> json,
+) => _OpenApiSchemas(
+  properties: (json['properties'] as Map<String, dynamic>?)?.map(
+    (k, e) => MapEntry(
+      k,
+      const OpenApiSchemaJsonConverter().fromJson(e as Map<String, dynamic>),
+    ),
+  ),
+  type: json['type'] as String?,
+  required_: (json['required'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList(),
+  enum_: json['enum'] as List<dynamic>?,
+  const_: json['const'],
+  title: json['title'] as String?,
+  description: json['description'] as String?,
+  xEnumVarnames: (json['x-enum-varnames'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList(),
+  additionalProperties: json['additionalProperties'],
+  oneOf: (json['oneOf'] as List<dynamic>?)
+      ?.map(
+        (e) => const OpenApiSchemaJsonConverter().fromJson(
+          e as Map<String, dynamic>,
+        ),
+      )
+      .toList(),
+  anyOf: (json['anyOf'] as List<dynamic>?)
+      ?.map(
+        (e) => const OpenApiSchemaJsonConverter().fromJson(
+          e as Map<String, dynamic>,
+        ),
+      )
+      .toList(),
+  discriminator: json['discriminator'] == null
+      ? null
+      : OpenApiSchemaOneOfDiscriminator.fromJson(
+          json['discriminator'] as Map<String, dynamic>,
+        ),
+  allOf: (json['allOf'] as List<dynamic>?)
+      ?.map((e) => e as Map<String, dynamic>)
+      .toList(),
+);
 
 Map<String, dynamic> _$OpenApiSchemasToJson(_OpenApiSchemas instance) =>
     <String, dynamic>{
-      if (instance.properties?.map((k, e) =>
-              MapEntry(k, const OpenApiSchemaJsonConverter().toJson(e)))
-          case final value?)
-        'properties': value,
-      'type': instance.type,
-      if (instance.required_ case final value?) 'required': value,
-      if (instance.enum_ case final value?) 'enum': value,
-      if (instance.const_ case final value?) 'const': value,
-      if (instance.title case final value?) 'title': value,
-      if (instance.description case final value?) 'description': value,
-      if (instance.xEnumVarnames case final value?) 'x-enum-varnames': value,
-      if (instance.additionalProperties case final value?)
-        'additionalProperties': value,
+      'properties': ?instance.properties?.map(
+        (k, e) => MapEntry(k, const OpenApiSchemaJsonConverter().toJson(e)),
+      ),
+      'type': ?instance.type,
+      'required': ?instance.required_,
+      'enum': ?instance.enum_,
+      'const': ?instance.const_,
+      'title': ?instance.title,
+      'description': ?instance.description,
+      'x-enum-varnames': ?instance.xEnumVarnames,
+      'additionalProperties': ?instance.additionalProperties,
+      'oneOf': ?instance.oneOf
+          ?.map(const OpenApiSchemaJsonConverter().toJson)
+          .toList(),
+      'anyOf': ?instance.anyOf
+          ?.map(const OpenApiSchemaJsonConverter().toJson)
+          .toList(),
+      'discriminator': ?instance.discriminator?.toJson(),
+      'allOf': ?instance.allOf,
     };
