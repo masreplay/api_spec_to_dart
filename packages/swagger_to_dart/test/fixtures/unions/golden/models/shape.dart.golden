@@ -1,0 +1,102 @@
+/// Shape
+///
+/// ```json
+/// {
+///     "anyOf": [
+///         {
+///             "$ref": "#/components/schemas/Circle"
+///         },
+///         {
+///             "$ref": "#/components/schemas/Rect"
+///         }
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+sealed class Shape {
+  const Shape();
+
+  const factory Shape.circle(Circle value) = ShapeCircle;
+  const factory Shape.rect(Rect value) = ShapeRect;
+  const factory Shape.fallback(Map<String, dynamic> value) = ShapeFallback;
+
+  factory Shape.fromJson(Map<String, dynamic> json) {
+    // No discriminator in the spec: the variant whose required keys are all
+    // present and that declares the most of the payload's keys wins (the
+    // earlier one on a tie).
+    const variants = <({Set<String> required, Set<String> declared})>[
+      (required: {'radius'}, declared: {'radius'}),
+      (required: {'width', 'height'}, declared: {'width', 'height'}),
+    ];
+    var best = -1;
+    var bestScore = -1;
+    for (var i = 0; i < variants.length; i++) {
+      final variant = variants[i];
+      if (!variant.required.every(json.containsKey)) continue;
+      final score = json.keys.where(variant.declared.contains).length;
+      if (score > bestScore) {
+        best = i;
+        bestScore = score;
+      }
+    }
+    return switch (best) {
+      0 => ShapeCircle(Circle.fromJson(json)),
+      1 => ShapeRect(Rect.fromJson(json)),
+      _ => ShapeFallback(json),
+    };
+  }
+
+  Map<String, dynamic> toJson();
+}
+
+final class ShapeCircle extends Shape {
+  const ShapeCircle(this.value);
+
+  final Circle value;
+
+  @override
+  Map<String, dynamic> toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ShapeCircle && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'Shape.circle($value)';
+}
+
+final class ShapeRect extends Shape {
+  const ShapeRect(this.value);
+
+  final Rect value;
+
+  @override
+  Map<String, dynamic> toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) => other is ShapeRect && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'Shape.rect($value)';
+}
+
+final class ShapeFallback extends Shape {
+  const ShapeFallback(this.value);
+
+  final Map<String, dynamic> value;
+
+  @override
+  Map<String, dynamic> toJson() => value;
+
+  @override
+  String toString() => 'Shape.fallback($value)';
+}

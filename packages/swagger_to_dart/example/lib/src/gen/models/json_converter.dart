@@ -1,41 +1,6 @@
-library;
-
-import 'exports.dart';
-
-class AnimalMapJsonConverter
-    implements JsonConverter<Animal, Map<String, dynamic>> {
-  const AnimalMapJsonConverter();
-
-  static const String unionKey = r'value';
-
-  @override
-  Animal fromJson(Map<String, dynamic> json) {
-    return Animal.fromJson({unionKey: json, ...json});
-  }
-
-  @override
-  Map<String, dynamic> toJson(Animal object) {
-    return {unionKey: object.toJson(), ...object.toJson()};
-  }
-}
-
-class ResponseModelsResponseMultipleMapJsonConverter
-    implements
-        JsonConverter<ResponseModelsResponseMultiple, Map<String, dynamic>> {
-  const ResponseModelsResponseMultipleMapJsonConverter();
-
-  static const String unionKey = r'value';
-
-  @override
-  ResponseModelsResponseMultiple fromJson(Map<String, dynamic> json) {
-    return ResponseModelsResponseMultiple.fromJson({unionKey: json, ...json});
-  }
-
-  @override
-  Map<String, dynamic> toJson(ResponseModelsResponseMultiple object) {
-    return {unionKey: object.toJson(), ...object.toJson()};
-  }
-}
+import 'package:json_annotation/json_annotation.dart';
+import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
 class MultipartFileJsonConverter
     implements JsonConverter<MultipartFile, MultipartFile> {
@@ -65,10 +30,12 @@ class TimeOfDayStringJsonConverter implements JsonConverter<TimeOfDay, String> {
       final regex = RegExp(r'PT(?:(\d+)H)?(?:(\d+)M)?');
       final match = regex.firstMatch(json);
 
-      final hours =
-          match?.group(1) != null ? int.tryParse(match!.group(1)!) ?? 0 : 0;
-      final minutes =
-          match?.group(2) != null ? int.tryParse(match!.group(2)!) ?? 0 : 0;
+      final hours = match?.group(1) != null
+          ? int.tryParse(match!.group(1)!) ?? 0
+          : 0;
+      final minutes = match?.group(2) != null
+          ? int.tryParse(match!.group(2)!) ?? 0
+          : 0;
 
       return TimeOfDay(hour: hours, minute: minutes);
     }
@@ -88,19 +55,17 @@ class TimeOfDayStringJsonConverter implements JsonConverter<TimeOfDay, String> {
 class ColorStringJsonConverter implements JsonConverter<Color, String> {
   const ColorStringJsonConverter();
 
-  // #000000 -> Color(0xFF000000)
-  // #00000000 -> Color(0x00000000)
+  // #000000 (6 digits, no alpha) -> Color(0xFF000000) (opaque)
+  // #00000000 (8 digits) -> Color(0x00000000)
   @override
   Color fromJson(String json) {
-    if (json.startsWith('#')) {
-      return Color(int.parse(json.substring(1), radix: 16));
-    } else {
-      return Color(int.parse(json, radix: 16));
-    }
+    final hex = json.startsWith('#') ? json.substring(1) : json;
+    final argb = hex.length == 6 ? 'FF$hex' : hex;
+    return Color(int.parse(argb, radix: 16));
   }
 
-  // #000000 -> Color(0xFF000000)
-  // #00000000 -> Color(0x00000000)
+  // Color(0xFF000000) -> #ff000000
+  // Color(0x00000000) -> #00000000
   @override
   String toJson(Color object) {
     return '#${object.toARGB32().toRadixString(16).padLeft(8, '0')}';
@@ -111,9 +76,8 @@ const jsonSerializableConverters = <JsonConverter>[
   MultipartFileJsonConverter(),
   TimeOfDayStringJsonConverter(),
   ColorStringJsonConverter(),
-  AnimalMapJsonConverter(),
-  ResponseModelsResponseMultipleMapJsonConverter(),
 ];
 const jsonSerializable = JsonSerializable(
   converters: jsonSerializableConverters,
+  explicitToJson: true,
 );

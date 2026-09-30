@@ -1,4 +1,6 @@
 /// S3PathModel
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "s3_path": {
@@ -13,11 +15,12 @@
 ///     ],
 ///     "title": "S3PathModel"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 's3_path_model.freezed.dart';
-part 's3_path_model.g.dart'; // S3PathModel
+part 's3_path_model.g.dart';
 
 @freezed
 abstract class S3PathModel with _$S3PathModel {
@@ -32,5 +35,5 @@ abstract class S3PathModel with _$S3PathModel {
   factory S3PathModel.fromJson(Map<String, dynamic> json) =>
       _$S3PathModelFromJson(json);
 
-  static const String s3PathKey_ = r's3_path';
+  static const String s3PathKey_ = 's3_path';
 }

@@ -1,0 +1,31 @@
+/// StatusEnumKey
+///
+/// ```json
+/// {
+///     "type": "string",
+///     "enum": [
+///         "on",
+///         "off"
+///     ],
+///     "title": "Status"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'status.g.dart';
+
+@JsonEnum(alwaysCreate: true)
+enum Status {
+  @JsonValue('on')
+  on,
+  @JsonValue('off')
+  off;
+
+  factory Status.fromJson(String json) => Status.values.firstWhere(
+    (e) => e.toJson() == json,
+    orElse: () => throw ArgumentError('Invalid Status'),
+  );
+
+  String toJson() => _$StatusEnumMap[this]!;
+}

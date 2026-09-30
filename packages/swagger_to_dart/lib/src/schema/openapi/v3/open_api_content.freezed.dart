@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'open_api_content.dart';
@@ -9,13 +9,15 @@ part of 'open_api_content.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$OpenApiContentSchema {
+  /// Absent for e.g. `application/pdf: {}`.
   @OpenApiSchemaJsonConverter()
   @JsonKey(name: 'schema')
-  OpenApiSchema get schema;
+  OpenApiSchema? get schema;
   @JsonKey(name: 'example')
   Object? get example;
 
@@ -25,44 +27,60 @@ mixin _$OpenApiContentSchema {
   @pragma('vm:prefer-inline')
   $OpenApiContentSchemaCopyWith<OpenApiContentSchema> get copyWith =>
       _$OpenApiContentSchemaCopyWithImpl<OpenApiContentSchema>(
-          this as OpenApiContentSchema, _$identity);
+        this as OpenApiContentSchema,
+        _$identity,
+      );
 
   /// Serializes this OpenApiContentSchema to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
+    final _this = this as OpenApiContentSchema;
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is OpenApiContentSchema &&
-            (identical(other.schema, schema) || other.schema == schema) &&
-            const DeepCollectionEquality().equals(other.example, example));
+            (identical(other.schema, _this.schema) ||
+                other.schema == _this.schema) &&
+            const DeepCollectionEquality().equals(
+              other.example,
+              _this.example,
+            ));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, schema, const DeepCollectionEquality().hash(example));
+  int get hashCode {
+    final _this = this as OpenApiContentSchema;
+    return Object.hash(
+      runtimeType,
+      _this.schema,
+      const DeepCollectionEquality().hash(_this.example),
+    );
+  }
 
   @override
   String toString() {
-    return 'OpenApiContentSchema(schema: $schema, example: $example)';
+    final _this = this as OpenApiContentSchema;
+    return 'OpenApiContentSchema(schema: ${_this.schema}, example: ${_this.example})';
   }
 }
 
 /// @nodoc
 abstract mixin class $OpenApiContentSchemaCopyWith<$Res> {
-  factory $OpenApiContentSchemaCopyWith(OpenApiContentSchema value,
-          $Res Function(OpenApiContentSchema) _then) =
-      _$OpenApiContentSchemaCopyWithImpl;
+  factory $OpenApiContentSchemaCopyWith(
+    OpenApiContentSchema value,
+    $Res Function(OpenApiContentSchema) _then,
+  ) = _$OpenApiContentSchemaCopyWithImpl;
   @useResult
-  $Res call(
-      {@OpenApiSchemaJsonConverter()
-      @JsonKey(name: 'schema')
-      OpenApiSchema schema,
-      @JsonKey(name: 'example') Object? example});
+  $Res call({
+    @OpenApiSchemaJsonConverter()
+    @JsonKey(name: 'schema')
+    OpenApiSchema? schema,
+    @JsonKey(name: 'example') Object? example,
+  });
 
-  $OpenApiSchemaCopyWith<$Res> get schema;
+  $OpenApiSchemaCopyWith<$Res>? get schema;
 }
 
 /// @nodoc
@@ -77,25 +95,28 @@ class _$OpenApiContentSchemaCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? schema = null,
-    Object? example = freezed,
-  }) {
-    return _then(_self.copyWith(
-      schema: null == schema
-          ? _self.schema
-          : schema // ignore: cast_nullable_to_non_nullable
-              as OpenApiSchema,
-      example: freezed == example ? _self.example : example,
-    ));
+  $Res call({Object? schema = freezed, Object? example = freezed}) {
+    return _then(
+      OpenApiContentSchema(
+        schema: freezed == schema
+            ? _self.schema
+            : schema // ignore: cast_nullable_to_non_nullable
+                  as OpenApiSchema?,
+        example: freezed == example ? _self.example : example,
+      ),
+    );
   }
 
   /// Create a copy of OpenApiContentSchema
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $OpenApiSchemaCopyWith<$Res> get schema {
-    return $OpenApiSchemaCopyWith<$Res>(_self.schema, (value) {
+  $OpenApiSchemaCopyWith<$Res>? get schema {
+    if (_self.schema == null) {
+      return null;
+    }
+
+    return $OpenApiSchemaCopyWith<$Res>(_self.schema!, (value) {
       return _then(_self.copyWith(schema: value));
     });
   }
@@ -195,11 +216,12 @@ extension OpenApiContentSchemaPatterns on OpenApiContentSchema {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            @OpenApiSchemaJsonConverter()
-            @JsonKey(name: 'schema')
-            OpenApiSchema schema,
-            @JsonKey(name: 'example') Object? example)?
-        $default, {
+      @OpenApiSchemaJsonConverter()
+      @JsonKey(name: 'schema')
+      OpenApiSchema? schema,
+      @JsonKey(name: 'example') Object? example,
+    )?
+    $default, {
     required TResult orElse(),
   }) {
     final _that = this;
@@ -227,11 +249,12 @@ extension OpenApiContentSchemaPatterns on OpenApiContentSchema {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            @OpenApiSchemaJsonConverter()
-            @JsonKey(name: 'schema')
-            OpenApiSchema schema,
-            @JsonKey(name: 'example') Object? example)
-        $default,
+      @OpenApiSchemaJsonConverter()
+      @JsonKey(name: 'schema')
+      OpenApiSchema? schema,
+      @JsonKey(name: 'example') Object? example,
+    )
+    $default,
   ) {
     final _that = this;
     switch (_that) {
@@ -257,11 +280,12 @@ extension OpenApiContentSchemaPatterns on OpenApiContentSchema {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            @OpenApiSchemaJsonConverter()
-            @JsonKey(name: 'schema')
-            OpenApiSchema schema,
-            @JsonKey(name: 'example') Object? example)?
-        $default,
+      @OpenApiSchemaJsonConverter()
+      @JsonKey(name: 'schema')
+      OpenApiSchema? schema,
+      @JsonKey(name: 'example') Object? example,
+    )?
+    $default,
   ) {
     final _that = this;
     switch (_that) {
@@ -276,19 +300,18 @@ extension OpenApiContentSchemaPatterns on OpenApiContentSchema {
 /// @nodoc
 @JsonSerializable()
 class _OpenApiContentSchema extends OpenApiContentSchema {
-  const _OpenApiContentSchema(
-      {@OpenApiSchemaJsonConverter()
-      @JsonKey(name: 'schema')
-      required this.schema,
-      @JsonKey(name: 'example') this.example})
-      : super._();
+  const _OpenApiContentSchema({
+    @OpenApiSchemaJsonConverter() @JsonKey(name: 'schema') this.schema,
+    @JsonKey(name: 'example') this.example,
+  }) : super._();
   factory _OpenApiContentSchema.fromJson(Map<String, dynamic> json) =>
       _$OpenApiContentSchemaFromJson(json);
 
+  /// Absent for e.g. `application/pdf: {}`.
   @override
   @OpenApiSchemaJsonConverter()
   @JsonKey(name: 'schema')
-  final OpenApiSchema schema;
+  final OpenApiSchema? schema;
   @override
   @JsonKey(name: 'example')
   final Object? example;
@@ -300,13 +323,13 @@ class _OpenApiContentSchema extends OpenApiContentSchema {
   @pragma('vm:prefer-inline')
   _$OpenApiContentSchemaCopyWith<_OpenApiContentSchema> get copyWith =>
       __$OpenApiContentSchemaCopyWithImpl<_OpenApiContentSchema>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$OpenApiContentSchemaToJson(
-      this,
-    );
+    return _$OpenApiContentSchemaToJson(this);
   }
 
   @override
@@ -320,8 +343,13 @@ class _OpenApiContentSchema extends OpenApiContentSchema {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, schema, const DeepCollectionEquality().hash(example));
+  int get hashCode {
+    return Object.hash(
+      runtimeType,
+      schema,
+      const DeepCollectionEquality().hash(example),
+    );
+  }
 
   @override
   String toString() {
@@ -332,19 +360,21 @@ class _OpenApiContentSchema extends OpenApiContentSchema {
 /// @nodoc
 abstract mixin class _$OpenApiContentSchemaCopyWith<$Res>
     implements $OpenApiContentSchemaCopyWith<$Res> {
-  factory _$OpenApiContentSchemaCopyWith(_OpenApiContentSchema value,
-          $Res Function(_OpenApiContentSchema) _then) =
-      __$OpenApiContentSchemaCopyWithImpl;
+  factory _$OpenApiContentSchemaCopyWith(
+    _OpenApiContentSchema value,
+    $Res Function(_OpenApiContentSchema) _then,
+  ) = __$OpenApiContentSchemaCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@OpenApiSchemaJsonConverter()
-      @JsonKey(name: 'schema')
-      OpenApiSchema schema,
-      @JsonKey(name: 'example') Object? example});
+  $Res call({
+    @OpenApiSchemaJsonConverter()
+    @JsonKey(name: 'schema')
+    OpenApiSchema? schema,
+    @JsonKey(name: 'example') Object? example,
+  });
 
   @override
-  $OpenApiSchemaCopyWith<$Res> get schema;
+  $OpenApiSchemaCopyWith<$Res>? get schema;
 }
 
 /// @nodoc
@@ -359,25 +389,28 @@ class __$OpenApiContentSchemaCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? schema = null,
-    Object? example = freezed,
-  }) {
-    return _then(_OpenApiContentSchema(
-      schema: null == schema
-          ? _self.schema
-          : schema // ignore: cast_nullable_to_non_nullable
-              as OpenApiSchema,
-      example: freezed == example ? _self.example : example,
-    ));
+  $Res call({Object? schema = freezed, Object? example = freezed}) {
+    return _then(
+      _OpenApiContentSchema(
+        schema: freezed == schema
+            ? _self.schema
+            : schema // ignore: cast_nullable_to_non_nullable
+                  as OpenApiSchema?,
+        example: freezed == example ? _self.example : example,
+      ),
+    );
   }
 
   /// Create a copy of OpenApiContentSchema
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $OpenApiSchemaCopyWith<$Res> get schema {
-    return $OpenApiSchemaCopyWith<$Res>(_self.schema, (value) {
+  $OpenApiSchemaCopyWith<$Res>? get schema {
+    if (_self.schema == null) {
+      return null;
+    }
+
+    return $OpenApiSchemaCopyWith<$Res>(_self.schema!, (value) {
       return _then(_self.copyWith(schema: value));
     });
   }

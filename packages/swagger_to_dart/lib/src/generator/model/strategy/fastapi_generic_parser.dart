@@ -1,15 +1,11 @@
-import 'package:swagger_to_dart/src/generator/model/strategy/debug.dart';
 import 'package:swagger_to_dart/src/generator/model/strategy/generic_parser_base.dart';
 
-class FastApiGenericParser with DebugMixin implements GenericParserBase {
+class FastApiGenericParser implements GenericParserBase {
   FastApiGenericParser._internal();
 
   static FastApiGenericParser get _instance => FastApiGenericParser._internal();
 
   static FastApiGenericParser get instance => _instance;
-
-  @override
-  String get tag => 'FastApiGenericParser';
 
   @override
   bool isFormat(String input) {
@@ -51,11 +47,13 @@ class FastApiGenericParser with DebugMixin implements GenericParserBase {
       }
 
       // Recursively process nested generics
-      final processedGenerics = genericTypes.map((type) {
-        // Check if this type itself has generics
-        final converted = toStandardFormat(type.trim());
-        return converted ?? type.trim();
-      }).join(', ');
+      final processedGenerics = genericTypes
+          .map((type) {
+            // Check if this type itself has generics
+            final converted = toStandardFormat(type.trim());
+            return converted ?? type.trim();
+          })
+          .join(', ');
 
       return '$baseClassName<$processedGenerics>';
     } catch (e) {

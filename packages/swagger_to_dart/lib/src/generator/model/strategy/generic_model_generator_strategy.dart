@@ -20,7 +20,8 @@ class GenericModelGeneratorStrategy
 
     if (parser == null) {
       throw ArgumentError(
-          'Cannot generate generic model for title: $effectiveTitle');
+        'Cannot generate generic model for title: $effectiveTitle',
+      );
     }
 
     final standardTitle = parser.toStandardFormat(effectiveTitle);
@@ -40,7 +41,8 @@ class GenericModelGeneratorStrategy
     final parser = GenericParserFactory.instance.detectParser(title);
     if (parser == null) {
       throw ArgumentError(
-          'Title is not in a recognized generic format: $title');
+        'Title is not in a recognized generic format: $title',
+      );
     }
 
     final baseClass = parser.extractBaseClassName(title);
@@ -48,7 +50,8 @@ class GenericModelGeneratorStrategy
 
     if (baseClass == null || genericArguments.isEmpty) {
       throw ArgumentError(
-          'Cannot extract base class or generic arguments from: $title');
+        'Cannot extract base class or generic arguments from: $title',
+      );
     }
 
     final overrideTypes = <String, String>{};
@@ -59,11 +62,9 @@ class GenericModelGeneratorStrategy
       final genericType = i == 0 ? 'T' : 'T${i + 1}';
       genericTypeParams.add(genericType);
 
-      final genericArg = genericArguments[i];
-      final resolvedType = _resolveGenericType(genericArg);
-
-      final finalResolvedType = resolvedType ?? genericArg;
-      overrideTypes[finalResolvedType] = genericType;
+      // ponytail: fields whose type equals the argument's type become the
+      // type parameter; a coincidental same-typed field is substituted too.
+      overrideTypes[_resolveGenericType(genericArguments[i])] = genericType;
 
       fromJsonParams.add(
         Parameter(
@@ -82,114 +83,160 @@ class GenericModelGeneratorStrategy
     final filename = Renaming.instance.renameFile(className);
 
     final properties = model.value.properties ?? {};
+    final names = Renaming.instance.propertyNames(properties.keys);
     final genericTypesString = genericTypeParams.join(', ');
 
-    return Library((b) => b
-      ..name = filename
-      ..directives.addAll([
-        for (final import in context.config.imports?.globalImports ?? [])
-          Directive.import(import),
-        Directive.import('exports.dart'),
-        Directive.part('$filename.freezed.dart'),
-        Directive.part('$filename.g.dart'),
-      ])
-      ..docs.addAll([
-        '/// ${model.key}',
-        '/// $className',
-        ...JsonFactory.instance
-            .encode(model.value.toJson())
-            .split('\n')
-            .map((e) => '/// $e'),
-      ])
-      ..body.addAll([
-        Class((b) => b
-          ..annotations.addAll([
-            refer('Freezed(genericArgumentFactories: true)'),
-          ])
-          ..abstract = true
-          ..name = className
-          ..types.addAll(genericTypeParams.map((t) => refer(t)))
-          ..mixins.add(refer('_\$$className<$genericTypesString>'))
-          ..fields.addAll([
-            ...properties.entries.map((entry) {
-              final name = Renaming.instance.renameProperty(entry.key);
+    return Library(
+      (b) => b
+        ..name = filename
+        ..directives.addAll([
+          for (final import in context.config.imports?.globalImports ?? [])
+            Directive.import(import),
+          Directive.import('exports.dart'),
+          Directive.part('$filename.freezed.dart'),
+          Directive.part('$filename.g.dart'),
+        ])
+        ..docs.addAll(
+          JsonFactory.instance.docs(model.key, model.value.toJson()),
+        )
+        ..body.addAll([
+          Class(
+            (b) => b
+              ..annotations.addAll([
+                refer('Freezed(genericArgumentFactories: true)'),
+              ])
+              ..abstract = true
+              ..name = className
+              ..types.addAll(genericTypeParams.map((t) => refer(t)))
+              ..mixins.add(refer('_\$$className<$genericTypesString>'))
+              ..fields.addAll([
+                ...properties.entries.map((entry) {
+                  final name = names[entry.key]!;
 
-              return Field(
-                (b) => b
-                  ..static = true
-                  ..modifier = FieldModifier.constant
-                  ..name = _getKey(name)
-                  ..type = refer('String')
-                  ..assignment = stringCode(entry.key),
-              );
-            }),
-          ])
-          ..constructors.addAll([
-            Constructor(
-              (b) => b
-                ..constant = true
-                ..name = '_',
-            ),
-            Constructor(
-              (b) => b
-                ..annotations.addAll([
-                  refer(
-                    'JsonSerializable(converters: jsonSerializableConverters, genericArgumentFactories: true, createFieldMap: true)',
-                  ),
-                ])
-                ..constant = true
-                ..factory = true
-                ..redirect = refer('_$className<$genericTypesString>')
-                ..optionalParameters.addAll([
-                  ...properties.entries.map((entry) {
-                    return context.extension.propertyGenerator.build(
-                      entry,
-                      className: className,
-                      overrideTypes: overrideTypes,
-                    );
-                  }),
-                ]),
-            ),
-            Constructor(
-              (b) => b
-                ..factory = true
-                ..name = 'fromJson'
-                ..lambda = true
-                ..requiredParameters.addAll([
-                  Parameter(
+                  return Field(
                     (b) => b
-                      ..name = 'json'
-                      ..type = refer('Map<String, dynamic>'),
-                  ),
-                  ...fromJsonParams,
-                ])
-                ..body = Code(
-                  '_\$${className}FromJson<$genericTypesString>(json${fromJsonParams.isEmpty ? '' : ', '}${fromJsonParams.map((p) => p.name).join(', ')})',
+                      ..static = true
+                      ..modifier = FieldModifier.constant
+                      ..name = _getKey(name)
+                      ..type = refer('String')
+                      ..assignment = stringCode(entry.key),
+                  );
+                }),
+              ])
+              ..constructors.addAll([
+                Constructor(
+                  (b) => b
+                    ..constant = true
+                    ..name = '_',
                 ),
-            ),
-          ]))
-      ]));
+                Constructor(
+                  (b) => b
+                    ..annotations.addAll([
+                      refer(
+                        'JsonSerializable(converters: jsonSerializableConverters, genericArgumentFactories: true, createFieldMap: true, explicitToJson: true)',
+                      ),
+                    ])
+                    ..constant = true
+                    ..factory = true
+                    ..redirect = refer('_$className<$genericTypesString>')
+                    ..optionalParameters.addAll([
+                      ...properties.entries.map((entry) {
+                        return context.extension.propertyGenerator.build(
+                          entry,
+                          className: className,
+                          name: names[entry.key],
+                          required: (model.value.required_ ?? []).contains(
+                            entry.key,
+                          ),
+                          overrideTypes: overrideTypes,
+                        );
+                      }),
+                    ]),
+                ),
+                Constructor(
+                  (b) => b
+                    ..factory = true
+                    ..name = 'fromJson'
+                    ..lambda = true
+                    ..requiredParameters.addAll([
+                      Parameter(
+                        (b) => b
+                          ..name = 'json'
+                          ..type = refer('Map<String, dynamic>'),
+                      ),
+                      ...fromJsonParams,
+                    ])
+                    ..body = Code(
+                      '_\$${className}FromJson<$genericTypesString>(json${fromJsonParams.isEmpty ? '' : ', '}${fromJsonParams.map((p) => p.name).join(', ')})',
+                    ),
+                ),
+              ]),
+          ),
+        ]),
+    );
   }
 
-  String? _resolveGenericType(String genericArg) {
-    final schemas = context.openApi.components?.schemas ?? {};
-
-    for (final entry in schemas.entries) {
-      final matches = (entry.key == genericArg ||
-          entry.value.title == genericArg ||
-          entry.key.contains(genericArg));
-
-      if (matches) {
-        return context.extension.typeConverter.getRef(
-          OpenApiSchemaRef(ref: '#/components/schemas/${entry.key}'),
-        );
-      }
+  /// Dart type of a generic argument: a component schema when one has
+  /// exactly that name or title, otherwise a primitive/generic title.
+  String _resolveGenericType(String genericArg) {
+    final key = _schemaKey(genericArg);
+    if (key != null) {
+      return context.extension.typeConverter.getRef(
+        OpenApiSchemaRef(ref: '#/components/schemas/$key'),
+      );
     }
+    return context.extension.typeConverter.dartTypeForTitle(genericArg);
+  }
 
+  String? _schemaKey(String name) {
+    final schemas = context.openApi.components?.schemas ?? {};
+    if (schemas.containsKey(name)) return name;
+    for (final entry in schemas.entries) {
+      if (entry.value.title == name) return entry.key;
+    }
     return null;
   }
 
+  /// Whether every type argument of [model]'s generic title is a component
+  /// schema. Such instantiations substitute unambiguously, so the generic
+  /// class is preferably built from one of them.
+  bool hasSchemaArguments(MapEntry<String, OpenApiSchemas> model) {
+    final title = model.value.title ?? model.key;
+    final standard = GenericParserFactory.instance
+        .getParser(source: context.config.generationSource, title: title)
+        ?.toStandardFormat(title);
+    if (standard == null) return false;
+
+    final arguments = GenericParserFactory.instance
+        .detectParser(standard)
+        ?.extractGenericArguments(standard);
+    return arguments != null &&
+        arguments.isNotEmpty &&
+        arguments.every((a) => _schemaKey(a) != null);
+  }
+
   static String? _getKey(String name) => '${name}Key_';
+
+  /// Class name shared by every instantiation of [model]'s generic type
+  /// (`BaseResponse[User]` -> `BaseResponse`).
+  String? baseClassName(MapEntry<String, OpenApiSchemas> model) {
+    final title = model.value.title ?? model.key;
+    final standard = GenericParserFactory.instance
+        .getParser(source: context.config.generationSource, title: title)
+        ?.toStandardFormat(title);
+    if (standard == null) return null;
+
+    final base = GenericParserFactory.instance
+        .detectParser(standard)
+        ?.extractBaseClassName(standard);
+    if (base == null) return null;
+
+    final prefixes = context.config.model.removeModelPrefixes;
+    return Renaming.instance.renameClass(
+      base,
+      removePrefixes: prefixes.isNotEmpty ? prefixes : null,
+    );
+  }
 
   bool shouldUseGenericStrategy(MapEntry<String, OpenApiSchemas> model) {
     final supportGenericArguments =

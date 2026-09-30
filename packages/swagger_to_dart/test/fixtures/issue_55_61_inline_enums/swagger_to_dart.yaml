@@ -1,0 +1,6 @@
+swagger_to_dart:
+  model:
+    enums:
+      StateEnum:
+        0: created
+        10: registered

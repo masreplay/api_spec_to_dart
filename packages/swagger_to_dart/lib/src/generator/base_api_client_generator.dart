@@ -29,8 +29,9 @@ class BaseApiClientGenerator {
   final GenerationContext context;
 
   Library build() {
-    final className = Renaming.instance
-        .renameClass(context.config.apiClient.baseApiClientClassName);
+    final className = Renaming.instance.renameClass(
+      context.config.apiClient.baseApiClientClassName,
+    );
     final fileName = Renaming.instance.renameFile(className);
 
     return Library(
@@ -41,19 +42,16 @@ class BaseApiClientGenerator {
             Directive.import(import),
           Directive.import('package:dio/dio.dart'),
           Directive.import('package:retrofit/retrofit.dart'),
-          Directive.import('exports.dart')
+          if (context.apiClients.isNotEmpty) Directive.import('exports.dart'),
         ])
         ..body.addAll([
           Class(
             (b) => b
               ..docs.addAll([
                 if (context.openApi.info case final info?)
-                  ...JsonFactory.instance
-                      .encode(info.toJson())
-                      .split('\n')
-                      .map((e) => '/// $e'),
-                if (context.openApi.servers case final servers?)
-                  ...servers.map((e) => '/// ${e.url}'),
+                  ...JsonFactory.instance.docs(info.title, info.toJson()),
+                for (final server in context.openApi.servers ?? [])
+                  '/// Server: `${server.url}`',
               ])
               ..name = className
               ..constructors.addAll([
@@ -105,8 +103,9 @@ class BaseApiClientGenerator {
               ..methods.addAll(
                 context.apiClients.map(
                   (apiClient) {
-                    final clientName =
-                        Renaming.instance.renameClass(apiClient.name!);
+                    final clientName = Renaming.instance.renameClass(
+                      apiClient.name!,
+                    );
                     return Method(
                       (b) => b
                         ..type = MethodType.getter
@@ -119,7 +118,7 @@ class BaseApiClientGenerator {
                   },
                 ),
               ),
-          )
+          ),
         ]),
     );
   }

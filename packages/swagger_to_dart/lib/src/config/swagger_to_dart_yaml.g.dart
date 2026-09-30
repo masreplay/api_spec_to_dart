@@ -9,7 +9,8 @@ part of 'swagger_to_dart_yaml.dart';
 _SwaggerToDartYaml _$SwaggerToDartYamlFromJson(Map<String, dynamic> json) =>
     _SwaggerToDartYaml(
       swaggerToDart: SwaggerToDart.fromJson(
-          json['swagger_to_dart'] as Map<String, dynamic>),
+        json['swagger_to_dart'] as Map<String, dynamic>,
+      ),
     );
 
 const _$SwaggerToDartYamlFieldMap = <String, String>{
@@ -27,26 +28,28 @@ abstract class _$SwaggerToDartYamlPerFieldToJson {
 }
 
 Map<String, dynamic> _$SwaggerToDartYamlToJson(_SwaggerToDartYaml instance) =>
-    <String, dynamic>{
-      'swagger_to_dart': instance.swaggerToDart.toJson(),
-    };
+    <String, dynamic>{'swagger_to_dart': instance.swaggerToDart.toJson()};
 
 _ModelConfig _$ModelConfigFromJson(Map<String, dynamic> json) => _ModelConfig(
-      supportGenericArguments:
-          json['support_generic_arguments'] as bool? ?? false,
-      unionClassFallbackName: json['union_class_fallback_name'] as String?,
-      enumFallbackType: $enumDecodeNullable(
-              _$EnumFallbackTypeEnumMap, json['enum_fallback_type']) ??
-          EnumFallbackType.unknown,
-      removeModelPrefixes: (json['remove_model_prefixes'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          const [],
-      enums: (json['enums'] as Map<String, dynamic>?)?.map(
-            (k, e) => MapEntry(k, Map<String, String>.from(e as Map)),
-          ) ??
-          const <String, Map<String, String>>{},
-    );
+  supportGenericArguments: json['support_generic_arguments'] as bool? ?? false,
+  unionClassFallbackName: json['union_class_fallback_name'] as String?,
+  enumFallbackType:
+      $enumDecodeNullable(
+        _$EnumFallbackTypeEnumMap,
+        json['enum_fallback_type'],
+      ) ??
+      EnumFallbackType.throwException,
+  removeModelPrefixes:
+      (json['remove_model_prefixes'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList() ??
+      const [],
+  enums:
+      (json['enums'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, Map<String, String>.from(e as Map)),
+      ) ??
+      const <String, Map<String, String>>{},
+);
 
 const _$ModelConfigFieldMap = <String, String>{
   'supportGenericArguments': 'support_generic_arguments',
@@ -79,16 +82,15 @@ abstract class _$ModelConfigPerFieldToJson {
   static Object? enums(Map<String, Map<String, String>> instance) => instance;
 }
 
-Map<String, dynamic> _$ModelConfigToJson(_ModelConfig instance) =>
-    <String, dynamic>{
-      'support_generic_arguments': instance.supportGenericArguments,
-      if (instance.unionClassFallbackName case final value?)
-        'union_class_fallback_name': value,
-      'enum_fallback_type':
-          _$EnumFallbackTypeEnumMap[instance.enumFallbackType]!,
-      'remove_model_prefixes': instance.removeModelPrefixes,
-      'enums': instance.enums,
-    };
+Map<String, dynamic> _$ModelConfigToJson(
+  _ModelConfig instance,
+) => <String, dynamic>{
+  'support_generic_arguments': instance.supportGenericArguments,
+  'union_class_fallback_name': ?instance.unionClassFallbackName,
+  'enum_fallback_type': _$EnumFallbackTypeEnumMap[instance.enumFallbackType]!,
+  'remove_model_prefixes': instance.removeModelPrefixes,
+  'enums': instance.enums,
+};
 
 const _$EnumFallbackTypeEnumMap = {
   EnumFallbackType.unknown: 'unknown',
@@ -103,28 +105,27 @@ _ApiClientConfig _$ApiClientConfigFromJson(Map<String, dynamic> json) =>
           json['base_api_client_class_name'] as String? ?? 'BaseApiClient',
       useClassForQueryParameters:
           json['use_class_for_query_parameters'] as bool? ?? false,
-      useClassForMultipartFormData:
-          json['use_class_for_multipart_form_data'] as bool? ?? false,
-      skippedParameters: (json['skipped_parameters'] as List<dynamic>?)
+      skippedParameters:
+          (json['skipped_parameters'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           const [],
+      includeOpenapiExtras: json['include_openapi_extras'] as bool? ?? true,
     );
 
 const _$ApiClientConfigFieldMap = <String, String>{
   'baseApiClientClassName': 'base_api_client_class_name',
   'useClassForQueryParameters': 'use_class_for_query_parameters',
-  'useClassForMultipartFormData': 'use_class_for_multipart_form_data',
   'skippedParameters': 'skipped_parameters',
+  'includeOpenapiExtras': 'include_openapi_extras',
 };
 
 abstract final class _$ApiClientConfigJsonKeys {
   static const String baseApiClientClassName = 'base_api_client_class_name';
   static const String useClassForQueryParameters =
       'use_class_for_query_parameters';
-  static const String useClassForMultipartFormData =
-      'use_class_for_multipart_form_data';
   static const String skippedParameters = 'skipped_parameters';
+  static const String includeOpenapiExtras = 'include_openapi_extras';
 }
 
 // ignore: unused_element
@@ -134,55 +135,51 @@ abstract class _$ApiClientConfigPerFieldToJson {
   // ignore: unused_element
   static Object? useClassForQueryParameters(bool instance) => instance;
   // ignore: unused_element
-  static Object? useClassForMultipartFormData(bool instance) => instance;
-  // ignore: unused_element
   static Object? skippedParameters(List<String> instance) => instance;
+  // ignore: unused_element
+  static Object? includeOpenapiExtras(bool instance) => instance;
 }
 
 Map<String, dynamic> _$ApiClientConfigToJson(_ApiClientConfig instance) =>
     <String, dynamic>{
       'base_api_client_class_name': instance.baseApiClientClassName,
       'use_class_for_query_parameters': instance.useClassForQueryParameters,
-      'use_class_for_multipart_form_data':
-          instance.useClassForMultipartFormData,
       'skipped_parameters': instance.skippedParameters,
+      'include_openapi_extras': instance.includeOpenapiExtras,
     };
 
 _SwaggerToDartImport _$SwaggerToDartImportFromJson(Map<String, dynamic> json) =>
     _SwaggerToDartImport(
-      globalImports: (json['global'] as List<dynamic>?)
+      globalImports:
+          (json['global'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           const [],
     );
 
 Map<String, dynamic> _$SwaggerToDartImportToJson(
-        _SwaggerToDartImport instance) =>
-    <String, dynamic>{
-      'global': instance.globalImports,
-    };
+  _SwaggerToDartImport instance,
+) => <String, dynamic>{'global': instance.globalImports};
 
-_SwaggerToDart _$SwaggerToDartFromJson(Map<String, dynamic> json) =>
-    _SwaggerToDart(
-      url: json['url'] as String?,
-      generationSource: json['generation_source'] == null
-          ? null
-          : GenerationSource.fromJson(json['generation_source'] as String),
-      inputDirectory:
-          json['input_directory'] as String? ?? 'schema/swagger.json',
-      outputDirectory: json['output_directory'] as String? ?? 'lib/src/gen',
-      model: json['model'] == null
-          ? const ModelConfig()
-          : ModelConfig.fromJson(json['model'] as Map<String, dynamic>),
-      apiClient: json['api_client'] == null
-          ? const ApiClientConfig()
-          : ApiClientConfig.fromJson(
-              json['api_client'] as Map<String, dynamic>),
-      imports: json['imports'] == null
-          ? null
-          : SwaggerToDartImport.fromJson(
-              json['imports'] as Map<String, dynamic>),
-    );
+_SwaggerToDart _$SwaggerToDartFromJson(
+  Map<String, dynamic> json,
+) => _SwaggerToDart(
+  url: json['url'] as String?,
+  generationSource: json['generation_source'] == null
+      ? null
+      : GenerationSource.fromJson(json['generation_source'] as String),
+  inputDirectory: json['input_directory'] as String? ?? 'schema/swagger.json',
+  outputDirectory: json['output_directory'] as String? ?? 'lib/src/gen',
+  model: json['model'] == null
+      ? const ModelConfig()
+      : ModelConfig.fromJson(json['model'] as Map<String, dynamic>),
+  apiClient: json['api_client'] == null
+      ? const ApiClientConfig()
+      : ApiClientConfig.fromJson(json['api_client'] as Map<String, dynamic>),
+  imports: json['imports'] == null
+      ? null
+      : SwaggerToDartImport.fromJson(json['imports'] as Map<String, dynamic>),
+);
 
 const _$SwaggerToDartFieldMap = <String, String>{
   'url': 'url',
@@ -225,14 +222,13 @@ abstract class _$SwaggerToDartPerFieldToJson {
 
 Map<String, dynamic> _$SwaggerToDartToJson(_SwaggerToDart instance) =>
     <String, dynamic>{
-      if (instance.url case final value?) 'url': value,
-      if (instance.generationSource?.toJson() case final value?)
-        'generation_source': value,
+      'url': ?instance.url,
+      'generation_source': ?instance.generationSource?.toJson(),
       'input_directory': instance.inputDirectory,
       'output_directory': instance.outputDirectory,
       'model': instance.model.toJson(),
       'api_client': instance.apiClient.toJson(),
-      if (instance.imports?.toJson() case final value?) 'imports': value,
+      'imports': ?instance.imports?.toJson(),
     };
 
 const _$GenerationSourceEnumMap = {

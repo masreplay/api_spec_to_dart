@@ -1,7 +1,6 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:collection/collection.dart';
-import 'package:dio/dio.dart';
-import 'package:retrofit/retrofit.dart' hide Method, Field;
+import 'package:swagger_to_dart/src/code/string.dart';
 import 'package:swagger_to_dart/src/swagger_to_dart_base.dart';
 
 const _requestBodyName = 'requestBody';
@@ -133,7 +132,7 @@ class ApiClientGenerator {
 
   final GenerationContext context;
 
-  Future<void> generate() async {
+  void generate() {
     // <basic, </datetime/datetime, < post | get ..., OpenApiPathMethod>>>
     final Map<String, OpenApiPaths> group = {};
 
@@ -168,26 +167,17 @@ class ApiClientGenerator {
     }
   }
 
-  /// import 'package:dio/dio.dart';
-  /// import 'package:retrofit/retrofit.dart';
-  /// import 'models.dart';
+  /// Builds one retrofit client library for [clientName], e.g.:
   ///
-  /// part 'settings_client.g.dart';
-  ///
+  /// ```dart
   /// @RestApi()
   /// abstract class SettingsClient {
-  ///   factory SettingsClient(
-  ///     Dio dio, {
-  ///     String? baseUrl,
-  ///     ParseErrorLogger? errorLogger,
-  ///   }) = _SettingsClient;
+  ///   factory SettingsClient(Dio dio, {String? baseUrl}) = _SettingsClient;
   ///
-  ///   /// OperationId: settings-get_app_settings
-  ///   /// Summery: Get App Settings
-  ///   /// Description: **Status**: implemented
   ///   @GET('/api/v1/common/settings/')
-  ///   Future<HttpResponse<BaseResponseAppSettingsResponse>>
-  ///   settingsGetAppSettings();
+  ///   Future<HttpResponse<AppSettings>> settingsGetAppSettings();
+  /// }
+  /// ```
   Library build({required String clientName, required OpenApiPaths paths}) {
     final fileName = Renaming.instance.renameFile('${clientName}_client');
     final className = Recase.instance.toPascalCase(fileName);
@@ -195,6 +185,7 @@ class ApiClientGenerator {
     final extensionMethods = <Method>[];
 
     final methods = <Method>[];
+    final usedMethodNames = <String>{};
 
     for (final path in paths.entries) {
       for (final method in path.value.entries) {
@@ -202,10 +193,15 @@ class ApiClientGenerator {
           method.key.name,
         );
 
-        final methodName = Renaming.instance.renameFunction(
+        final baseMethodName = Renaming.instance.renameFunction(
           method.value.operationId ??
               '${clientName}_${path.key}_${method.key.name}',
         );
+        // operationIds are not always unique; methods in one class must be.
+        var methodName = baseMethodName;
+        for (var i = 2; !usedMethodNames.add(methodName); i++) {
+          methodName = '$baseMethodName$i';
+        }
 
         final parameters = _handleParameters(
           method.value.parameters ?? [],
@@ -216,35 +212,38 @@ class ApiClientGenerator {
         final responseTypeResult = _handleResponseType(
           method.value.responses ?? {},
           className,
+          contextName: '${methodName}_response',
         );
         final responseType = responseTypeResult.type;
         final isBinaryResponse = responseTypeResult.isBinaryResponse;
 
         final requestBody = <Parameter>[];
         final content = method.value.requestBody?.content ?? {};
-        bool _hasJsonBody = false;
+        bool hasJsonBody = false;
+
+        // Media types without parameters (`; charset=utf-8`).
+        bool hasMediaType(String type) =>
+            content.keys.any((key) => _mediaType(key) == type);
+
+        // One body per method: JSON (or form) wins over multipart.
+        final offersJson = content.entries.any(
+          (e) =>
+              _isJsonContent(e.key, e.value.schema) ||
+              _mediaType(e.key) == 'application/x-www-form-urlencoded',
+        );
+        final isMultipart = !offersJson && hasMediaType('multipart/form-data');
 
         for (final entry in content.entries) {
-          OpenApiContentType? contentType;
-          try {
-            contentType = OpenApiContentType.fromJson(entry.key);
-          } catch (e) {
-            // Unknown content type — skip silently
-          }
-
-          switch (contentType) {
-            case null:
-              continue;
-            case OpenApiContentType.applicationJson:
-            case OpenApiContentType.textJson:
-            case OpenApiContentType.applicationWildcardJson:
-            case OpenApiContentType.applicationXWwwFormUrlencoded:
-              if (_hasJsonBody) continue;
-              _hasJsonBody = true;
+          switch (_mediaType(entry.key)) {
+            case final type
+                when _isJsonContent(type, entry.value.schema) ||
+                    type == 'application/x-www-form-urlencoded':
+              if (hasJsonBody) continue;
+              hasJsonBody = true;
               requestBody.add(
                 Parameter(
                   (b) => b
-                    ..annotations.addAll([refer('$Body()')])
+                    ..annotations.addAll([refer('Body()')])
                     ..name = _requestBodyName
                     ..named = true
                     ..required = true
@@ -252,15 +251,16 @@ class ApiClientGenerator {
                       context.extension.typeConverter.get(
                         entry.value.schema,
                         className: className,
+                        contextName: '${methodName}_body',
                       ),
                     ),
                 ),
               );
-            case OpenApiContentType.multipartFormData:
+            case 'multipart/form-data' when isMultipart:
               requestBody.add(
                 Parameter(
                   (b) => b
-                    ..annotations.addAll([refer('$Part()')])
+                    ..annotations.addAll([refer('Part()')])
                     ..name = _requestBodyName
                     ..named = true
                     ..required = true
@@ -272,6 +272,7 @@ class ApiClientGenerator {
               final dartType = context.extension.typeConverter.get(
                 entry.value.schema,
                 className: className,
+                contextName: '${methodName}_body',
               );
 
               final canToJson = dartType != 'Map<String, dynamic>';
@@ -291,48 +292,66 @@ class ApiClientGenerator {
                       ..._extraParameters(openapiMetadata: method.value.json),
                     ])
                     ..body = Block.of([
+                      // Forward every parameter: path/header/query ones were
+                      // dropped, so the call did not compile (#57).
                       Code(
-                        '''return ${methodName}_($_requestBodyName: $_requestBodyName${canToJson ? '.toJson()' : ''}, extras: extras,
-                      ${parameters.firstWhereOrNull((e) => e.name == _queriesParameterName) != null ? 'queries: queries,' : ''}
-                      cancelToken: cancelToken,
-                      onSendProgress: onSendProgress,
-                      onReceiveProgress: onReceiveProgress
-                      );''',
+                        'return ${methodName}_('
+                        '$_requestBodyName: $_requestBodyName${canToJson ? '.toJson()' : ''}, '
+                        '${parameters.map((p) => '${p.name}: ${p.name}, ').join()}'
+                        'extras: extras, '
+                        'cancelToken: cancelToken, '
+                        'onSendProgress: onSendProgress, '
+                        'onReceiveProgress: onReceiveProgress);',
                       ),
                     ]),
                 ),
               );
               break;
+            default:
+              // Text, XML or binary: handled as a raw body below.
+              continue;
           }
+        }
+
+        // Text, XML or binary bodies (#56): sent as-is with their media type.
+        final rawBody = requestBody.isEmpty
+            ? content.entries.firstOrNull
+            : null;
+        if (rawBody != null) {
+          requestBody.add(
+            Parameter(
+              (b) => b
+                ..annotations.addAll([refer('Body()')])
+                ..name = _requestBodyName
+                ..named = true
+                ..required = true
+                ..type = refer(
+                  _isBinary(rawBody.key, rawBody.value.schema)
+                      ? 'List<int>'
+                      : 'String',
+                ),
+            ),
+          );
         }
 
         methods.add(
           Method(
             (b) => b
-              // ..docs.addAll([
-              //  '/// ${method.key.name}',
-              //  ...JsonFactory.instance
-              //      .encode(method.value.toJson())
-              //      .split('\n')
-              //      .map((e) => '/// $e'),
-              // ])
               ..annotations.addAll([
-                refer('$methodType("${path.key}")'),
-                if (content[OpenApiContentType.applicationXWwwFormUrlencoded
-                        .toJson()] !=
-                    null)
-                  refer('$FormUrlEncoded()'),
-                if (content[OpenApiContentType.multipartFormData.toJson()] !=
-                    null)
-                  refer('$MultiPart()'),
+                refer('$methodType(${dartString(path.key)})'),
+                if (rawBody != null)
+                  refer(
+                    "Headers(<String, dynamic>{'Content-Type': "
+                    '${dartString(rawBody.key)}})',
+                  ),
+                if (hasMediaType('application/x-www-form-urlencoded'))
+                  refer('FormUrlEncoded()'),
+                if (isMultipart) refer('MultiPart()'),
                 if (isBinaryResponse)
                   refer('DioResponseType(ResponseType.bytes)'),
               ])
               ..returns = responseType
-              ..name =
-                  content[OpenApiContentType.multipartFormData.toJson()] != null
-                      ? '${methodName}_'
-                      : methodName
+              ..name = isMultipart ? '${methodName}_' : methodName
               ..optionalParameters.addAll([
                 ...requestBody,
                 ...parameters,
@@ -348,6 +367,8 @@ class ApiClientGenerator {
         ..directives.addAll([
           for (final import in context.config.imports?.globalImports ?? [])
             Directive.import(import),
+          if (methods.any((m) => '${m.returns?.symbol}'.contains('Uint8List')))
+            Directive.import('dart:typed_data'),
           Directive.import('package:dio/dio.dart', hide: ['Headers']),
           Directive.import('package:retrofit/retrofit.dart'),
           Directive.import('../models/models.dart'),
@@ -357,7 +378,7 @@ class ApiClientGenerator {
         ..body.addAll([
           Class(
             (b) => b
-              ..annotations.addAll([refer('$RestApi()')])
+              ..annotations.addAll([refer('RestApi()')])
               ..abstract = true
               ..name = className
               ..constructors.addAll([
@@ -410,8 +431,9 @@ class ApiClientGenerator {
     final useClass = context.config.apiClient.useClassForQueryParameters;
     final skippedParameters = context.config.apiClient.skippedParameters;
 
-    parameters =
-        parameters.where((e) => !skippedParameters.contains(e.name)).toList();
+    parameters = parameters
+        .where((e) => !skippedParameters.contains(e.name))
+        .toList();
 
     final queryParameters = parameters.where(
       (e) => e.in_ == OpenApiPathMethodParameterType.query,
@@ -419,40 +441,49 @@ class ApiClientGenerator {
 
     final List<Parameter> result = [];
 
+    // Unique among themselves and the parameters every method declares.
+    final names = Renaming.instance.propertyNames(
+      parameters.map((p) => p.name),
+      reserved: {
+        _requestBodyName,
+        _queriesParameterName,
+        'extras',
+        'cancelToken',
+        'onSendProgress',
+        'onReceiveProgress',
+      },
+    );
+
     if (useClass && queryParameters.isNotEmpty) {
-      final strategy = RegularModelGeneratorStrategy(context);
-
-      final queryParametersClassName = Renaming.instance.renameClass(
-        '${methodName}QueryParameters',
-      );
-
-      final model = MapEntry<String, OpenApiSchemas>(
-        queryParametersClassName,
-        OpenApiSchemas(
-          type: 'object',
-          required_: queryParameters
-              .where((e) => e.required_ == true)
-              .map((e) => e.name)
-              .toList(),
-          properties: {
-            for (final p in queryParameters)
-              if (p.schema case final schema?) p.name: schema,
-          },
+      final queriesClassName = context.registerInlineModel(
+        Renaming.instance.renameClass('${methodName}QueryParameters'),
+        (name) => RegularModelGeneratorStrategy(context).build(
+          MapEntry(
+            name,
+            OpenApiSchemas(
+              type: 'object',
+              required_: [
+                for (final p in queryParameters)
+                  if (p.required_ == true) p.name,
+              ],
+              properties: {
+                for (final p in queryParameters) p.name: ?p.schema,
+              },
+            ),
+          ),
         ),
       );
 
       result.add(
         Parameter(
           (b) => b
-            ..annotations.addAll([refer('$Queries()')])
+            ..annotations.addAll([refer('Queries()')])
             ..name = _queriesParameterName
             ..required = true
             ..named = true
-            ..type = refer(queryParametersClassName),
+            ..type = refer(queriesClassName),
         ),
       );
-
-      context.addModel(strategy.build(model));
     }
 
     for (final p in parameters) {
@@ -460,13 +491,20 @@ class ApiClientGenerator {
         continue;
       }
 
-      final dartType = context.extension.typeConverter.get(
+      final typeConverter = context.extension.typeConverter;
+      final contextName = '${methodName}_${p.name}';
+      final defaultValue = typeConverter.getDefaultValue(
+        p.schema,
+        contextName: contextName,
+      );
+      // Path parameters are always required; others only when the spec says
+      // so (#50). Optional ones without a default must accept null.
+      final isRequired =
+          p.in_ == OpenApiPathMethodParameterType.path || p.required_ == true;
+      final dartType = typeConverter.get(
         p.schema,
         className: className,
-      );
-
-      final defaultValue = context.extension.typeConverter.getDefaultValue(
-        p.schema,
+        contextName: contextName,
       );
 
       result.add(
@@ -475,24 +513,28 @@ class ApiClientGenerator {
             ..annotations.addAll([
               switch (p.in_) {
                 OpenApiPathMethodParameterType.query => refer(
-                    '$Query("${p.name}")',
-                  ),
+                  'Query(${dartString(p.name)})',
+                ),
                 OpenApiPathMethodParameterType.path => refer(
-                    '$Path("${p.name}")',
-                  ),
+                  'Path(${dartString(p.name)})',
+                ),
                 OpenApiPathMethodParameterType.header => refer(
-                    '$Header("${p.name}")',
-                  ),
+                  'Header(${dartString(p.name)})',
+                ),
                 OpenApiPathMethodParameterType.cookie => refer(
-                    '$Header("${p.name}")',
-                  ),
+                  'Header(${dartString(p.name)})',
+                ),
               },
             ])
             ..named = true
-            ..name = Renaming.instance.renameProperty(p.name)
-            ..required = defaultValue == null
+            ..name = names[p.name]!
+            ..required = isRequired && defaultValue == null
             ..defaultTo = defaultValue == null ? null : Code(defaultValue)
-            ..type = refer(dartType),
+            ..type = refer(
+              isRequired || defaultValue != null
+                  ? dartType
+                  : typeConverter.nullable(dartType),
+            ),
         ),
       );
     }
@@ -502,43 +544,79 @@ class ApiClientGenerator {
 
   ({Reference type, bool isBinaryResponse}) _handleResponseType(
     OpenApiPathMethodResponses responses,
-    String className,
-  ) {
-    // Check for text/plain with binary format (for ABP framework)
-    final textPlainResponse = responses.values.firstOrNull
-        ?.content?['text/plain'];
-    
-    final isAbpFramework = context.config.generationSource == GenerationSource.abpIO;
-    final isBinaryFormat = textPlainResponse != null &&
-        textPlainResponse.schema is OpenApiSchemaType &&
-        (textPlainResponse.schema as OpenApiSchemaType).type == OpenApiSchemaVarType.string &&
-        (textPlainResponse.schema as OpenApiSchemaType).format == 'binary';
+    String className, {
+    required String contextName,
+  }) {
+    final content = _successResponse(responses)?.content ?? {};
 
-    if (isAbpFramework && isBinaryFormat) {
+    // JSON wins: Swashbuckle lists text/plain and text/json next to it.
+    if (content.entries.firstWhereOrNull(
+          (e) => _isJsonContent(e.key, e.value.schema),
+        )
+        case final json?) {
+      final type = context.extension.typeConverter.get(
+        json.value.schema,
+        className: className,
+        contextName: contextName,
+      );
+      return (
+        type: refer('Future<HttpResponse<$type>>'),
+        isBinaryResponse: false,
+      );
+    }
+
+    // Files and images (#54): raw bytes whatever the media type.
+    if (content.entries.any((e) => _isBinary(e.key, e.value.schema))) {
       return (
         type: refer('Future<HttpResponse<Uint8List>>'),
         isBinaryResponse: true,
       );
     }
 
-    // Default: check for application/json
-    final response = responses.values.firstOrNull
-        ?.content?[OpenApiContentType.applicationJson.toJson()];
+    if (content.keys.any(
+      (mediaType) => mediaType.startsWith('text/') || mediaType.contains('xml'),
+    )) {
+      return (
+        type: refer('Future<HttpResponse<String>>'),
+        isBinaryResponse: false,
+      );
+    }
 
-    final responseTypeString = response == null
-        ? null
-        : context.extension.typeConverter.get(
-            response.schema,
-            className: className,
-          );
-
-    return (
-      type: responseTypeString == null
-          ? refer('Future<HttpResponse>')
-          : refer('Future<HttpResponse<$responseTypeString>>'),
-      isBinaryResponse: false,
-    );
+    return (type: refer('Future<HttpResponse>'), isBinaryResponse: false);
   }
+
+  /// The lowest 2xx response, else `default`, else the first one.
+  OpenApiPathMethodResponse? _successResponse(
+    OpenApiPathMethodResponses responses,
+  ) {
+    final success = responses.keys
+        .where((code) => code.startsWith('2'))
+        .sorted();
+    return success.isNotEmpty
+        ? responses[success.first]
+        : responses['default'] ?? responses.values.firstOrNull;
+  }
+
+  static String _mediaType(String contentType) =>
+      contentType.split(';').first.trim().toLowerCase();
+
+  /// JSON, or Spring's `*/*` for anything that is not a file.
+  static bool _isJsonContent(String mediaType, OpenApiSchema? schema) =>
+      _isJson(mediaType) ||
+      (_mediaType(mediaType) == '*/*' && !_isBinary(mediaType, schema));
+
+  static bool _isJson(String mediaType) {
+    final type = _mediaType(mediaType);
+    return type == 'application/json' ||
+        type == 'text/json' ||
+        type.endsWith('+json');
+  }
+
+  static bool _isBinary(String mediaType, OpenApiSchema? schema) =>
+      (schema is OpenApiSchemaType && schema.format == 'binary') ||
+      const ['image/', 'audio/', 'video/'].any(mediaType.startsWith) ||
+      mediaType == 'application/octet-stream' ||
+      mediaType == 'application/pdf';
 
   List<Parameter> _extraParameters({
     required Map<String, dynamic>? openapiMetadata,
@@ -546,71 +624,46 @@ class ApiClientGenerator {
     return [
       Parameter(
         (b) => b
-          ..annotations.addAll([refer('$CancelRequest()')])
+          ..annotations.addAll([refer('CancelRequest()')])
           ..named = true
           ..name = 'cancelToken'
-          ..type = refer('$CancelToken?'),
+          ..type = refer('CancelToken?'),
       ),
       Parameter(
         (b) => b
-          ..annotations.addAll([refer('$SendProgress()')])
+          ..annotations.addAll([refer('SendProgress()')])
           ..named = true
           ..name = 'onSendProgress'
           ..type = refer('ProgressCallback?'),
       ),
       Parameter(
         (b) => b
-          ..annotations.addAll([refer('$ReceiveProgress()')])
+          ..annotations.addAll([refer('ReceiveProgress()')])
           ..named = true
           ..name = 'onReceiveProgress'
           ..type = refer('ProgressCallback?'),
       ),
       Parameter(
         (b) => b
-          ..annotations.addAll([refer('$Extras()')])
+          ..annotations.addAll([refer('Extras()')])
           ..named = true
           ..name = 'extras'
-          ..defaultTo = Code('const ${encodeWithRawKeys(openapiMetadata)}')
+          ..defaultTo = context.config.apiClient.includeOpenapiExtras
+              ? Code('const ${encodeWithRawKeys(openapiMetadata)}')
+              : null
           ..type = refer('Map<String, dynamic>?'),
       ),
     ];
   }
 }
 
+/// Dart source for a JSON-like [value] (maps, lists, strings, numbers).
 String encodeWithRawKeys(dynamic value) {
-  // Encode a string as a safe Dart single-quoted string literal.
-  // Raw strings (r'...') cannot contain newlines or single quotes, so we
-  // use a regular string with proper escaping instead.
-  String encodeDartString(String s) {
-    final escaped = s
-        .replaceAll('\\', '\\\\') // backslash must come first
-        .replaceAll("'", "\\'")
-        .replaceAll('\n', '\\n')
-        .replaceAll('\r', '\\r')
-        .replaceAll('\t', '\\t')
-        .replaceAll('\$', '\\\$');
-    return "'$escaped'";
-  }
-
-  if (value is Map) {
-    final buffer = StringBuffer('{');
-    var first = true;
-    value.forEach((key, val) {
-      if (!first) buffer.write(', ');
-      first = false;
-      buffer.write('${encodeDartString(key.toString())}: ${encodeWithRawKeys(val)}');
-    });
-    buffer.write('}');
-    return buffer.toString();
-  }
-
-  if (value is List) {
-    return '[${value.map(encodeWithRawKeys).join(', ')}]';
-  }
-
-  if (value is String) {
-    return encodeDartString(value);
-  }
-
-  return value.toString();
+  return switch (value) {
+    Map() =>
+      '{${value.entries.map((e) => '${dartString('${e.key}')}: ${encodeWithRawKeys(e.value)}').join(', ')}}',
+    List() => '[${value.map(encodeWithRawKeys).join(', ')}]',
+    String() => dartString(value),
+    _ => '$value',
+  };
 }

@@ -1,4 +1,6 @@
 /// AllTypesWithValidation
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "int_value": {
@@ -59,11 +61,12 @@
 ///     ],
 ///     "title": "AllTypesWithValidation"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'all_types_with_validation.freezed.dart';
-part 'all_types_with_validation.g.dart'; // AllTypesWithValidation
+part 'all_types_with_validation.g.dart';
 
 @freezed
 abstract class AllTypesWithValidation with _$AllTypesWithValidation {
@@ -101,17 +104,17 @@ abstract class AllTypesWithValidation with _$AllTypesWithValidation {
   factory AllTypesWithValidation.fromJson(Map<String, dynamic> json) =>
       _$AllTypesWithValidationFromJson(json);
 
-  static const String intValueKey_ = r'int_value';
+  static const String intValueKey_ = 'int_value';
 
-  static const String floatValueKey_ = r'float_value';
+  static const String floatValueKey_ = 'float_value';
 
-  static const String strValueKey_ = r'str_value';
+  static const String strValueKey_ = 'str_value';
 
-  static const String boolValueKey_ = r'bool_value';
+  static const String boolValueKey_ = 'bool_value';
 
-  static const String emailValueKey_ = r'email_value';
+  static const String emailValueKey_ = 'email_value';
 
-  static const String urlValueKey_ = r'url_value';
+  static const String urlValueKey_ = 'url_value';
 
-  static const String listValueKey_ = r'list_value';
+  static const String listValueKey_ = 'list_value';
 }

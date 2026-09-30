@@ -1,0 +1,91 @@
+/// PartialAnimal
+///
+/// ```json
+/// {
+///     "oneOf": [
+///         {
+///             "$ref": "#/components/schemas/Dog"
+///         },
+///         {
+///             "$ref": "#/components/schemas/Cat"
+///         }
+///     ],
+///     "discriminator": {
+///         "propertyName": "pet_type",
+///         "mapping": {
+///             "dog": "#/components/schemas/Dog"
+///         }
+///     }
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+sealed class PartialAnimal {
+  const PartialAnimal();
+
+  const factory PartialAnimal.dog(Dog value) = PartialAnimalDog;
+  const factory PartialAnimal.cat(Cat value) = PartialAnimalCat;
+  const factory PartialAnimal.fallback(Map<String, dynamic> value) =
+      PartialAnimalFallback;
+
+  factory PartialAnimal.fromJson(Map<String, dynamic> json) =>
+      switch (json['pet_type']) {
+        'dog' => PartialAnimalDog(Dog.fromJson(json)),
+        'Cat' => PartialAnimalCat(Cat.fromJson(json)),
+        _ => PartialAnimalFallback(json),
+      };
+
+  Map<String, dynamic> toJson();
+}
+
+final class PartialAnimalDog extends PartialAnimal {
+  const PartialAnimalDog(this.value);
+
+  final Dog value;
+
+  @override
+  Map<String, dynamic> toJson() => {...value.toJson(), 'pet_type': 'dog'};
+
+  @override
+  bool operator ==(Object other) =>
+      other is PartialAnimalDog && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'PartialAnimal.dog($value)';
+}
+
+final class PartialAnimalCat extends PartialAnimal {
+  const PartialAnimalCat(this.value);
+
+  final Cat value;
+
+  @override
+  Map<String, dynamic> toJson() => {...value.toJson(), 'pet_type': 'Cat'};
+
+  @override
+  bool operator ==(Object other) =>
+      other is PartialAnimalCat && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'PartialAnimal.cat($value)';
+}
+
+final class PartialAnimalFallback extends PartialAnimal {
+  const PartialAnimalFallback(this.value);
+
+  final Map<String, dynamic> value;
+
+  @override
+  Map<String, dynamic> toJson() => value;
+
+  @override
+  String toString() => 'PartialAnimal.fallback($value)';
+}

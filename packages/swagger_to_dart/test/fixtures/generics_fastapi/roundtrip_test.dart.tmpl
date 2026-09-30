@@ -1,0 +1,26 @@
+import 'package:swagger_to_dart_e2e/gen/generics_fastapi/models/models.dart';
+import 'package:test/test.dart';
+
+void main() {
+  test('generic envelopes decode their payload type', () {
+    final response = BaseResponse<PaginationResponse<User>>.fromJson(
+      {
+        'data': {
+          'items': [
+            {'id': 1, 'name': 'Ada'},
+          ],
+          'total': 1,
+        },
+        'message': 'ok',
+      },
+      (json) => PaginationResponse<User>.fromJson(
+        json! as Map<String, dynamic>,
+        (json) => User.fromJson(json! as Map<String, dynamic>),
+      ),
+    );
+
+    expect(response.message, 'ok');
+    expect(response.data.total, 1);
+    expect(response.data.items.single.name, 'Ada');
+  });
+}

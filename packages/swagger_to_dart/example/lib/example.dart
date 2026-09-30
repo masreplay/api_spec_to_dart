@@ -1,3 +1,3 @@
 library;
 
-export 'src/example_base.dart';
+export 'src/gen/gen.dart';

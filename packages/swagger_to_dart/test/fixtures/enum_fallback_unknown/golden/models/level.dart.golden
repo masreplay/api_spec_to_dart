@@ -1,0 +1,32 @@
+/// Level
+///
+/// ```json
+/// {
+///     "type": "integer",
+///     "enum": [
+///         1,
+///         2
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'level.g.dart';
+
+@JsonEnum(alwaysCreate: true)
+enum Level {
+  @JsonValue(1)
+  value1,
+  @JsonValue(2)
+  value2,
+  @JsonValue(-1)
+  unknown;
+
+  factory Level.fromJson(int json) => Level.values.firstWhere(
+    (e) => e.toJson() == json,
+    orElse: () => Level.unknown,
+  );
+
+  int toJson() => _$LevelEnumMap[this]!;
+}

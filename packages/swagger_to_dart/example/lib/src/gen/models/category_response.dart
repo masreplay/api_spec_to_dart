@@ -1,4 +1,6 @@
 /// CategoryResponse
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "id": {
@@ -17,11 +19,12 @@
 ///     ],
 ///     "title": "CategoryResponse"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'category_response.freezed.dart';
-part 'category_response.g.dart'; // CategoryResponse
+part 'category_response.g.dart';
 
 @freezed
 abstract class CategoryResponse with _$CategoryResponse {
@@ -39,7 +42,7 @@ abstract class CategoryResponse with _$CategoryResponse {
   factory CategoryResponse.fromJson(Map<String, dynamic> json) =>
       _$CategoryResponseFromJson(json);
 
-  static const String idKey_ = r'id';
+  static const String idKey_ = 'id';
 
-  static const String nameKey_ = r'name';
+  static const String nameKey_ = 'name';
 }

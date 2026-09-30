@@ -1,4 +1,6 @@
 /// ULIDModel
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "ulid": {
@@ -23,11 +25,12 @@
 ///     ],
 ///     "title": "ULIDModel"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'ulid_model.freezed.dart';
-part 'ulid_model.g.dart'; // UlidModel
+part 'ulid_model.g.dart';
 
 @freezed
 abstract class UlidModel with _$UlidModel {
@@ -42,5 +45,5 @@ abstract class UlidModel with _$UlidModel {
   factory UlidModel.fromJson(Map<String, dynamic> json) =>
       _$UlidModelFromJson(json);
 
-  static const String ulidKey_ = r'ulid';
+  static const String ulidKey_ = 'ulid';
 }

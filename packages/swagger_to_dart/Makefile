@@ -1,5 +1,13 @@
+.PHONY: g test goldens s delete-tag publish
+
 g:
-	fvm dart run build_runner build --delete-conflicting-outputs
+	fvm dart run build_runner build
+
+test:
+	fvm dart test
+
+goldens:
+	UPDATE_GOLDENS=1 fvm dart test -t golden
 
 s:
 	make -C example s

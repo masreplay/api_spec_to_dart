@@ -1,0 +1,31 @@
+/// PetTags
+///
+/// ```json
+/// {
+///     "properties": {},
+///     "type": "string",
+///     "enum": [
+///         "cute",
+///         "old"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'pet_tags.g.dart';
+
+@JsonEnum(alwaysCreate: true)
+enum PetTags {
+  @JsonValue('cute')
+  cute,
+  @JsonValue('old')
+  old;
+
+  factory PetTags.fromJson(String json) => PetTags.values.firstWhere(
+    (e) => e.toJson() == json,
+    orElse: () => throw ArgumentError('Invalid PetTags'),
+  );
+
+  String toJson() => _$PetTagsEnumMap[this]!;
+}

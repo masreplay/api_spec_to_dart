@@ -1,4 +1,6 @@
 /// BasicDatetimeTimeQueryParameters
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "t": {
@@ -12,11 +14,12 @@
 ///         "t"
 ///     ]
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'basic_datetime_time_query_parameters.freezed.dart';
-part 'basic_datetime_time_query_parameters.g.dart'; // BasicDatetimeTimeQueryParameters
+part 'basic_datetime_time_query_parameters.g.dart';
 
 @freezed
 abstract class BasicDatetimeTimeQueryParameters
@@ -31,8 +34,7 @@ abstract class BasicDatetimeTimeQueryParameters
 
   factory BasicDatetimeTimeQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$BasicDatetimeTimeQueryParametersFromJson(json);
+  ) => _$BasicDatetimeTimeQueryParametersFromJson(json);
 
-  static const String tKey_ = r't';
+  static const String tKey_ = 't';
 }

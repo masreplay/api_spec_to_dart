@@ -1,4 +1,6 @@
 /// ItemRequestBody
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "name": {
@@ -40,11 +42,12 @@
 ///     ],
 ///     "title": "ItemRequestBody"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'item_request_body.freezed.dart';
-part 'item_request_body.g.dart'; // ItemRequestBody
+part 'item_request_body.g.dart';
 
 @freezed
 abstract class ItemRequestBody with _$ItemRequestBody {
@@ -69,11 +72,11 @@ abstract class ItemRequestBody with _$ItemRequestBody {
   factory ItemRequestBody.fromJson(Map<String, dynamic> json) =>
       _$ItemRequestBodyFromJson(json);
 
-  static const String nameKey_ = r'name';
+  static const String nameKey_ = 'name';
 
-  static const String descriptionKey_ = r'description';
+  static const String descriptionKey_ = 'description';
 
-  static const String priceKey_ = r'price';
+  static const String priceKey_ = 'price';
 
-  static const String taxKey_ = r'tax';
+  static const String taxKey_ = 'tax';
 }

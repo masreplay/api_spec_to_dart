@@ -1,4 +1,6 @@
 /// ValidationConstrainedFloatQueryParameters
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "value": {
@@ -12,11 +14,12 @@
 ///         "value"
 ///     ]
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'validation_constrained_float_query_parameters.freezed.dart';
-part 'validation_constrained_float_query_parameters.g.dart'; // ValidationConstrainedFloatQueryParameters
+part 'validation_constrained_float_query_parameters.g.dart';
 
 @freezed
 abstract class ValidationConstrainedFloatQueryParameters
@@ -32,8 +35,7 @@ abstract class ValidationConstrainedFloatQueryParameters
 
   factory ValidationConstrainedFloatQueryParameters.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$ValidationConstrainedFloatQueryParametersFromJson(json);
+  ) => _$ValidationConstrainedFloatQueryParametersFromJson(json);
 
-  static const String valueKey_ = r'value';
+  static const String valueKey_ = 'value';
 }

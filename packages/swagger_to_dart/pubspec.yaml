@@ -1,36 +1,31 @@
 name: swagger_to_dart
-description: Convert Swagger to Dart using freezed and retrofit support only 3.1.0 openApi
-version: 4.3.0
+description: Generates type-safe Dart models (freezed) and retrofit API clients from OpenAPI 3.0/3.1 specifications, with unions, generics and enums.
+version: 5.0.0
 homepage: https://github.com/masreplay/api_spec_to_dart
+repository: https://github.com/masreplay/api_spec_to_dart
 issue_tracker: https://github.com/masreplay/api_spec_to_dart/issues
 funding: [https://github.com/sponsors/masreplay]
 topics: [swagger, openapi, generator, freezed, retrofit]
 
 environment:
-  sdk: ">=3.5.0 <4.0.0"
+  sdk: ^3.9.0
+
+resolution: workspace
 
 dependencies:
+  args: ^2.7.0
   code_builder: ^4.10.1
   collection: ^1.18.0
   dart_style: ^3.0.1
-
+  freezed_annotation: ^3.1.0
+  json_annotation: ^4.12.0
   path: ^1.9.1
-  logger: ^2.5.0
-
-  yaml: ^3.1.2
   pubspec_parse: ^1.5.0
-
-  dio: ^5.4.0
-  retrofit: ^4.4.2
-
-  freezed_annotation: ^3.0.0
-  json_annotation: ^4.9.0
-  args: ^2.7.0
+  yaml: ^3.1.2
 
 dev_dependencies:
-  build_runner: ^2.5.2
-  freezed: ^3.0.6
-  json_serializable: ^6.9.0
-  lints: ^4.0.0
-  test: ^1.24.0
-  analyzer: 7.3.0
+  build_runner: ^2.16.1
+  freezed: ^4.0.2
+  json_serializable: ^6.14.1
+  lints: ^6.1.0
+  test: ^1.32.0

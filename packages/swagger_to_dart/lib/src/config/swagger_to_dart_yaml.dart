@@ -39,7 +39,8 @@ abstract class SwaggerToDartYaml with _$SwaggerToDartYaml {
 
 @JsonEnum(alwaysCreate: true)
 enum EnumFallbackType {
-  /// Create a new instance of the enum with the value 'unknown'
+  /// Decode unrecognized values to an `unknown` member (added unless the
+  /// enum already has one).
   unknown,
 
   /// Use the first value of the enum
@@ -49,7 +50,7 @@ enum EnumFallbackType {
   last,
 
   /// Throw an exception
-  throwException;
+  throwException,
 }
 
 @freezed
@@ -62,7 +63,7 @@ abstract class ModelConfig with _$ModelConfig {
     @JsonKey(name: 'support_generic_arguments')
     bool supportGenericArguments,
     @JsonKey(name: 'union_class_fallback_name') String? unionClassFallbackName,
-    @Default(EnumFallbackType.unknown)
+    @Default(EnumFallbackType.throwException)
     @JsonKey(name: 'enum_fallback_type')
     EnumFallbackType enumFallbackType,
     @Default([])
@@ -103,12 +104,15 @@ abstract class ApiClientConfig with _$ApiClientConfig {
     @Default(false)
     @JsonKey(name: 'use_class_for_query_parameters')
     bool useClassForQueryParameters,
-    @Default(false)
-    @JsonKey(name: 'use_class_for_multipart_form_data')
-    bool useClassForMultipartFormData,
     @Default([])
     @JsonKey(name: 'skipped_parameters')
     List<String> skippedParameters,
+
+    /// Whether each method's `@Extras()` defaults to the operation's OpenAPI
+    /// metadata (readable by Dio interceptors via `options.extra`).
+    @Default(true)
+    @JsonKey(name: 'include_openapi_extras')
+    bool includeOpenapiExtras,
   }) = _ApiClientConfig;
 
   factory ApiClientConfig.fromJson(Map<String, dynamic> json) =>
@@ -116,7 +120,6 @@ abstract class ApiClientConfig with _$ApiClientConfig {
 }
 
 @JsonEnum(alwaysCreate: true)
-
 /// The source of the generation
 enum GenerationSource {
   /// The source is FastAPI

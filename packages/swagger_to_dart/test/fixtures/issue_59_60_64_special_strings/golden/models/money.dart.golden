@@ -1,0 +1,30 @@
+/// Money
+///
+/// ```json
+/// {
+///     "type": "string",
+///     "enum": [
+///         "$usd",
+///         "back\\slash"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'money.g.dart';
+
+@JsonEnum(alwaysCreate: true)
+enum Money {
+  @JsonValue('\$usd')
+  usd,
+  @JsonValue('back\\slash')
+  backSlash;
+
+  factory Money.fromJson(String json) => Money.values.firstWhere(
+    (e) => e.toJson() == json,
+    orElse: () => throw ArgumentError('Invalid Money'),
+  );
+
+  String toJson() => _$MoneyEnumMap[this]!;
+}

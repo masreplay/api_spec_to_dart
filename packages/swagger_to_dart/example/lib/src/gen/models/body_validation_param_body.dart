@@ -1,10 +1,13 @@
 /// Body_validation-param_body
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "data": {
 ///             "type": "object",
 ///             "description": "Arbitrary data object",
-///             "title": "Data"
+///             "title": "Data",
+///             "additionalProperties": true
 ///         },
 ///         "importance": {
 ///             "type": "integer",
@@ -19,11 +22,12 @@
 ///     ],
 ///     "title": "Body_validation-param_body"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'body_validation_param_body.freezed.dart';
-part 'body_validation_param_body.g.dart'; // BodyValidationParamBody
+part 'body_validation_param_body.g.dart';
 
 @freezed
 abstract class BodyValidationParamBody with _$BodyValidationParamBody {
@@ -43,7 +47,7 @@ abstract class BodyValidationParamBody with _$BodyValidationParamBody {
   factory BodyValidationParamBody.fromJson(Map<String, dynamic> json) =>
       _$BodyValidationParamBodyFromJson(json);
 
-  static const String dataKey_ = r'data';
+  static const String dataKey_ = 'data';
 
-  static const String importanceKey_ = r'importance';
+  static const String importanceKey_ = 'importance';
 }

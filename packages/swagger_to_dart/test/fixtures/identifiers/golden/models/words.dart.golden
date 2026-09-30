@@ -1,0 +1,54 @@
+/// Words
+///
+/// ```json
+/// {
+///     "type": "string",
+///     "enum": [
+///         "EXTERNAL",
+///         "new",
+///         "default",
+///         "+",
+///         "-",
+///         "in-progress",
+///         "a'b",
+///         "1st",
+///         "get",
+///         "required"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'words.g.dart';
+
+@JsonEnum(alwaysCreate: true)
+enum Words {
+  @JsonValue('EXTERNAL')
+  external,
+  @JsonValue('new')
+  $new,
+  @JsonValue('default')
+  $default,
+  @JsonValue('+')
+  plus,
+  @JsonValue('-')
+  minus,
+  @JsonValue('in-progress')
+  inProgress,
+  @JsonValue('a\'b')
+  aB,
+  @JsonValue('1st')
+  $1st,
+  @JsonValue('get')
+  get,
+  @JsonValue('required')
+  required;
+
+  factory Words.fromJson(String json) => Words.values.firstWhere(
+    (e) => e.toJson() == json,
+    orElse: () => throw ArgumentError('Invalid Words'),
+  );
+
+  String toJson() => _$WordsEnumMap[this]!;
+}

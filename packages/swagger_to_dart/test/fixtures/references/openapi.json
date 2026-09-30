@@ -1,0 +1,94 @@
+{
+  "openapi": "3.0.3",
+  "info": { "title": "References", "version": "1.0.0" },
+  "paths": {
+    "/owners/{id}/pets": {
+      "summary": "An owner's pets",
+      "description": "Pets that belong to one owner.",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": { "type": "integer" }
+        }
+      ],
+      "get": {
+        "tags": ["pets"],
+        "operationId": "listOwnerPets",
+        "parameters": [{ "$ref": "#/components/parameters/PageSize" }],
+        "responses": {
+          "200": {
+            "description": "The owner's pets",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Pet" }
+                }
+              }
+            }
+          },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      },
+      "post": {
+        "tags": ["pets"],
+        "operationId": "addOwnerPet",
+        "requestBody": { "$ref": "#/components/requestBodies/PetBody" },
+        "responses": {
+          "200": {
+            "description": "The added pet",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Pet" }
+              }
+            }
+          },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Pet": {
+        "type": "object",
+        "required": ["name"],
+        "properties": { "name": { "type": "string" } }
+      },
+      "Error": {
+        "type": "object",
+        "required": ["message"],
+        "properties": { "message": { "type": "string" } }
+      }
+    },
+    "parameters": {
+      "PageSize": {
+        "name": "pageSize",
+        "in": "query",
+        "schema": { "type": "integer" }
+      }
+    },
+    "requestBodies": {
+      "PetBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/Pet" }
+          }
+        }
+      }
+    },
+    "responses": {
+      "NotFound": {
+        "description": "No such owner",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/Error" }
+          }
+        }
+      }
+    }
+  }
+}

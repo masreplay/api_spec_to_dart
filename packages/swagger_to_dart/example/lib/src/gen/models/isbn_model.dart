@@ -1,4 +1,6 @@
 /// ISBNModel
+///
+/// ```json
 /// {
 ///     "properties": {
 ///         "isbn": {
@@ -12,11 +14,12 @@
 ///     ],
 ///     "title": "ISBNModel"
 /// }
+/// ```
 library;
 
 import 'exports.dart';
 part 'isbn_model.freezed.dart';
-part 'isbn_model.g.dart'; // IsbnModel
+part 'isbn_model.g.dart';
 
 @freezed
 abstract class IsbnModel with _$IsbnModel {
@@ -31,5 +34,5 @@ abstract class IsbnModel with _$IsbnModel {
   factory IsbnModel.fromJson(Map<String, dynamic> json) =>
       _$IsbnModelFromJson(json);
 
-  static const String isbnKey_ = r'isbn';
+  static const String isbnKey_ = 'isbn';
 }

@@ -14,25 +14,22 @@ typedef CustomJsonConverter = ({
 class JsonConvertorGenerator extends LibraryGenerator {
   const JsonConvertorGenerator(super.context);
 
+  /// The `json_converter.dart` library and the exports `models/exports.dart`
+  /// needs so model files see the converters' types.
   ({Library library, List<Directive> directives}) build() {
     final isFlutterProject = context.isFlutterProject;
 
-    final customJsonConverters = <CustomJsonConverter>[];
-
-    switch (context.config.generationSource) {
-      case GenerationSource.fastAPI:
-        customJsonConverters.add(getFastAPIMultipartFileJsonConvertor());
-        if (isFlutterProject) {
-          customJsonConverters.add(getTimeOfDayStringJsonConvertor());
-          customJsonConverters.add(getColorStringJsonConvertor());
-        }
-        break;
-      case GenerationSource.dotnet:
-        customJsonConverters.add(getTimeOfDayStringJsonConvertor());
-        break;
-      default:
-        break;
-    }
+    final customJsonConverters = <CustomJsonConverter>[
+      getFastAPIMultipartFileJsonConvertor(),
+      // TimeOfDay and Color only exist in Flutter.
+      if (isFlutterProject &&
+          (context.config.generationSource == GenerationSource.fastAPI ||
+              context.config.generationSource == GenerationSource.dotnet))
+        getTimeOfDayStringJsonConvertor(),
+      if (isFlutterProject &&
+          context.config.generationSource == GenerationSource.fastAPI)
+        getColorStringJsonConvertor(),
+    ];
 
     final buffer = StringBuffer();
     buffer.write('''
@@ -42,13 +39,11 @@ const jsonSerializableConverters = <JsonConverter>[
       buffer.write(customJsonConverters.map((e) => e.classCall).join(',\n'));
       buffer.write(',\n');
     }
-    if (context.jsonConvertor.isNotEmpty) {
-      buffer.write(context.jsonConvertor.map((e) => '${e.name}()').join(',\n'));
-    }
     buffer.write('];\n');
     buffer.write('''
 const jsonSerializable = JsonSerializable(
   converters: jsonSerializableConverters,
+  explicitToJson: true,
 );
 ''');
 
@@ -56,13 +51,10 @@ const jsonSerializable = JsonSerializable(
       (b) => b
         ..name = 'json_converter'
         ..directives.addAll([
-          Directive.import('package:dio/dio.dart'),
-          Directive.import('exports.dart'),
           Directive.import('package:json_annotation/json_annotation.dart'),
           for (final entry in customJsonConverters) ...entry.imports,
         ])
         ..body.addAll([
-          ...context.jsonConvertor,
           for (final entry in customJsonConverters) Code(entry.code),
           Code(buffer.toString()),
         ]),
@@ -70,23 +62,15 @@ const jsonSerializable = JsonSerializable(
 
     return (
       library: library,
-      directives: [
-        ...library.directives,
-        ...customJsonConverters.expand((e) => e.exports),
-      ]
+      directives: [...customJsonConverters.expand((e) => e.exports)],
     );
   }
 
   CustomJsonConverter getFastAPIMultipartFileJsonConvertor() {
     return (
       classCall: 'MultipartFileJsonConverter()',
-      imports: [
-        Directive.import('package:dio/dio.dart'),
-        Directive.import('package:json_annotation/json_annotation.dart'),
-      ],
-      exports: [
-        Directive.export('package:flutter/material.dart'),
-      ],
+      imports: [Directive.import('package:dio/dio.dart')],
+      exports: [],
       code: r'''
 class MultipartFileJsonConverter
     implements JsonConverter<MultipartFile, MultipartFile> {
@@ -170,19 +154,17 @@ class TimeOfDayStringJsonConverter implements JsonConverter<TimeOfDay, String> {
 class ColorStringJsonConverter implements JsonConverter<Color, String> {
   const ColorStringJsonConverter();
 
-  // #000000 -> Color(0xFF000000)
-  // #00000000 -> Color(0x00000000)
+  // #000000 (6 digits, no alpha) -> Color(0xFF000000) (opaque)
+  // #00000000 (8 digits) -> Color(0x00000000)
   @override
   Color fromJson(String json) {
-    if (json.startsWith('#')) {
-      return Color(int.parse(json.substring(1), radix: 16));
-    } else {
-      return Color(int.parse(json, radix: 16));
-    }
+    final hex = json.startsWith('#') ? json.substring(1) : json;
+    final argb = hex.length == 6 ? 'FF$hex' : hex;
+    return Color(int.parse(argb, radix: 16));
   }
 
-  // #000000 -> Color(0xFF000000)
-  // #00000000 -> Color(0x00000000)
+  // Color(0xFF000000) -> #ff000000
+  // Color(0x00000000) -> #00000000
   @override
   String toJson(Color object) {
     return '#${object.toARGB32().toRadixString(16).padLeft(8, '0')}';

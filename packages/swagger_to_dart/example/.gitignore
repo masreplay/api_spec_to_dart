@@ -50,3 +50,7 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# build_runner output of the generated client (regenerate with `make s`)
+lib/src/gen/**/*.g.dart
+lib/src/gen/**/*.freezed.dart
