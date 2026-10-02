@@ -1,0 +1,72 @@
+import 'package:swagger_to_dart_e2e/gen/inline_objects/models/models.dart';
+import 'package:test/test.dart';
+
+void main() {
+  test('a nested inline payload decodes into its models and back', () {
+    const json = {
+      'name': 'Ada',
+      'address': {
+        'city': 'London',
+        'kind': 'work',
+        'geo': {'lat': 51.5, 'lng': -0.1},
+      },
+      'roles': [
+        {'id': 1, 'label': 'admin'},
+      ],
+      'scores': {
+        'math': {'value': 9.5},
+      },
+      'meta': {'v': 2},
+      'extra': {
+        'any': [1, 'two'],
+      },
+    };
+
+    final user = GetUserResponse.fromJson(json);
+
+    expect(user.address.city, 'London');
+    expect(user.address.kind, GetUserResponseAddressKind.work);
+    expect(user.address.geo?.lat, 51.5);
+    expect(
+      user.roles?.single,
+      const GetUserResponseRolesItem(id: 1, label: 'admin'),
+    );
+    expect(user.scores?['math']?.value, 9.5);
+    expect(user.toJson(), json);
+  });
+
+  test('required, nullable and default work as for components', () {
+    final user = GetUserResponse.fromJson({
+      'name': 'Ada',
+      'address': {'city': 'Paris', 'geo': null},
+      'roles': [
+        {'id': 2},
+      ],
+    });
+
+    expect(user.address.kind, GetUserResponseAddressKind.home);
+    expect(user.address.geo, isNull);
+    expect(user.roles?.single.label, 'member');
+  });
+
+  test('colliding names compile and decode', () {
+    expect(
+      GetUserResponse2.fromJson({'name': 'root', 'admin': true}).admin,
+      isTrue,
+    );
+    expect(
+      GetPetResponse.fromJson({
+        'pet': {'name': 'Rex'},
+      }).pet,
+      const Pet(name: 'Rex'),
+    );
+    expect(
+      Error.fromJson({
+        'message': 'boom',
+        'response': {'status': 500, 'body': 'oops'},
+      }).response?.status,
+      500,
+    );
+    expect(ErrorResponse.fromJson({'code': 'E1'}).code, 'E1');
+  });
+}

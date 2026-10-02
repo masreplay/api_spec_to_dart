@@ -1,0 +1,33 @@
+/// GetUserResponseMeta
+///
+/// ```json
+/// {
+///     "properties": {
+///         "v": {
+///             "type": "integer"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'get_user_response_meta.freezed.dart';
+part 'get_user_response_meta.g.dart';
+
+@freezed
+abstract class GetUserResponseMeta with _$GetUserResponseMeta {
+  const GetUserResponseMeta._();
+
+  @jsonSerializable
+  const factory GetUserResponseMeta({
+    /// v
+    @JsonKey(name: GetUserResponseMeta.vKey_) int? v,
+  }) = _GetUserResponseMeta;
+
+  factory GetUserResponseMeta.fromJson(Map<String, dynamic> json) =>
+      _$GetUserResponseMetaFromJson(json);
+
+  static const String vKey_ = 'v';
+}

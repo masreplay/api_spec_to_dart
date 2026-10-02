@@ -1,0 +1,51 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'admin_client.g.dart';
+
+@RestApi()
+abstract class AdminClient {
+  factory AdminClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _AdminClient;
+
+  @GET('/admin/users/{id}')
+  Future<HttpResponse<GetUserResponse2>> getUser({
+    @Path('id') required String id,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['admin'],
+      'operationId': 'getUser',
+      'parameters': [
+        {
+          'name': 'id',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'string'},
+        },
+      ],
+      'responses': {
+        '200': {
+          'description': 'Same operation id in another client, another shape',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'properties': {
+                  'name': {'type': 'string'},
+                  'admin': {'type': 'boolean'},
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+}

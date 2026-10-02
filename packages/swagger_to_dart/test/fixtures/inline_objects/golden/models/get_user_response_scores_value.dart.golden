@@ -1,0 +1,33 @@
+/// GetUserResponseScoresValue
+///
+/// ```json
+/// {
+///     "properties": {
+///         "value": {
+///             "type": "number"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'get_user_response_scores_value.freezed.dart';
+part 'get_user_response_scores_value.g.dart';
+
+@freezed
+abstract class GetUserResponseScoresValue with _$GetUserResponseScoresValue {
+  const GetUserResponseScoresValue._();
+
+  @jsonSerializable
+  const factory GetUserResponseScoresValue({
+    /// value
+    @JsonKey(name: GetUserResponseScoresValue.valueKey_) double? value,
+  }) = _GetUserResponseScoresValue;
+
+  factory GetUserResponseScoresValue.fromJson(Map<String, dynamic> json) =>
+      _$GetUserResponseScoresValueFromJson(json);
+
+  static const String valueKey_ = 'value';
+}

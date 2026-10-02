@@ -1,0 +1,147 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'users_client.g.dart';
+
+@RestApi()
+abstract class UsersClient {
+  factory UsersClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _UsersClient;
+
+  @GET('/users/{id}')
+  Future<HttpResponse<GetUserResponse>> getUser({
+    @Path('id') required String id,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['users'],
+      'operationId': 'getUser',
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'required': ['name', 'address'],
+                'properties': {
+                  'name': {'type': 'string'},
+                  'address': {
+                    'type': 'object',
+                    'required': ['city'],
+                    'properties': {
+                      'city': {'type': 'string'},
+                      'kind': {
+                        'type': 'string',
+                        'enum': ['home', 'work'],
+                        'default': 'home',
+                      },
+                      'geo': {
+                        'type': ['object', 'null'],
+                        'properties': {
+                          'lat': {'type': 'number'},
+                          'lng': {'type': 'number'},
+                        },
+                      },
+                    },
+                  },
+                  'roles': {
+                    'type': 'array',
+                    'items': {
+                      'type': 'object',
+                      'required': ['id'],
+                      'properties': {
+                        'id': {'type': 'integer'},
+                        'label': {'type': 'string', 'default': 'member'},
+                      },
+                    },
+                  },
+                  'scores': {
+                    'type': 'object',
+                    'additionalProperties': {
+                      'type': 'object',
+                      'properties': {
+                        'value': {'type': 'number'},
+                      },
+                    },
+                  },
+                  'meta': {
+                    'type': 'object',
+                    'properties': {
+                      'v': {'type': 'integer'},
+                    },
+                    'default': {'v': 1},
+                  },
+                  'extra': {'type': 'object'},
+                },
+              },
+            },
+          },
+        },
+      },
+      'parameters': [
+        {
+          'name': 'id',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'string'},
+        },
+      ],
+    },
+  });
+  @PUT('/users/{id}')
+  Future<HttpResponse> updateUser({
+    @Body() required UpdateUserBody requestBody,
+    @Path('id') required String id,
+    @Query('filter') Map<String, dynamic>? filter,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['users'],
+      'operationId': 'updateUser',
+      'parameters': [
+        {
+          'name': 'id',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'filter',
+          'in': 'query',
+          'schema': {
+            'type': 'object',
+            'properties': {
+              'q': {'type': 'string'},
+            },
+          },
+        },
+      ],
+      'requestBody': {
+        'required': true,
+        'content': {
+          'application/json': {
+            'schema': {
+              'type': 'object',
+              'required': ['name'],
+              'properties': {
+                'name': {'type': 'string'},
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        '204': {'description': 'Updated'},
+      },
+    },
+  });
+}

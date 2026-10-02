@@ -270,6 +270,11 @@ extension OpenApiSchemaPatterns on OpenApiSchema {
       @JsonKey(name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
       OpenApiSchemaVarType? type,
       @OpenApiSchemaJsonConverter()
+      @JsonKey(name: 'properties')
+      Map<String, OpenApiSchema>? properties,
+      @JsonKey(name: 'required', readValue: _requiredNames)
+      List<String>? required_,
+      @OpenApiSchemaJsonConverter()
       @JsonKey(name: 'items')
       OpenApiSchema? items,
       @JsonKey(name: 'maxLength') int? maxLength,
@@ -324,6 +329,8 @@ extension OpenApiSchemaPatterns on OpenApiSchema {
         return type(
           _that.enum_,
           _that.type,
+          _that.properties,
+          _that.required_,
           _that.items,
           _that.maxLength,
           _that.minLength,
@@ -387,6 +394,11 @@ extension OpenApiSchemaPatterns on OpenApiSchema {
       @JsonKey(name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
       OpenApiSchemaVarType? type,
       @OpenApiSchemaJsonConverter()
+      @JsonKey(name: 'properties')
+      Map<String, OpenApiSchema>? properties,
+      @JsonKey(name: 'required', readValue: _requiredNames)
+      List<String>? required_,
+      @OpenApiSchemaJsonConverter()
       @JsonKey(name: 'items')
       OpenApiSchema? items,
       @JsonKey(name: 'maxLength') int? maxLength,
@@ -440,6 +452,8 @@ extension OpenApiSchemaPatterns on OpenApiSchema {
         return type(
           _that.enum_,
           _that.type,
+          _that.properties,
+          _that.required_,
           _that.items,
           _that.maxLength,
           _that.minLength,
@@ -500,6 +514,11 @@ extension OpenApiSchemaPatterns on OpenApiSchema {
       @JsonKey(name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
       OpenApiSchemaVarType? type,
       @OpenApiSchemaJsonConverter()
+      @JsonKey(name: 'properties')
+      Map<String, OpenApiSchema>? properties,
+      @JsonKey(name: 'required', readValue: _requiredNames)
+      List<String>? required_,
+      @OpenApiSchemaJsonConverter()
       @JsonKey(name: 'items')
       OpenApiSchema? items,
       @JsonKey(name: 'maxLength') int? maxLength,
@@ -553,6 +572,8 @@ extension OpenApiSchemaPatterns on OpenApiSchema {
         return type(
           _that.enum_,
           _that.type,
+          _that.properties,
+          _that.required_,
           _that.items,
           _that.maxLength,
           _that.minLength,
@@ -604,6 +625,11 @@ class OpenApiSchemaType extends OpenApiSchema {
     @JsonKey(name: 'enum') List<Object?>? enum_,
     @JsonKey(name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
     this.type,
+    @OpenApiSchemaJsonConverter()
+    @JsonKey(name: 'properties')
+    Map<String, OpenApiSchema>? properties,
+    @JsonKey(name: 'required', readValue: _requiredNames)
+    List<String>? required_,
     @OpenApiSchemaJsonConverter() @JsonKey(name: 'items') this.items,
     @JsonKey(name: 'maxLength') this.maxLength,
     @JsonKey(name: 'minLength') this.minLength,
@@ -617,6 +643,8 @@ class OpenApiSchemaType extends OpenApiSchema {
     @JsonKey(name: 'additionalProperties') this.additionalProperties,
     String? $type,
   }) : _enum_ = enum_,
+       _properties = properties,
+       _required_ = required_,
        $type = $type ?? 'type',
        super._();
   factory OpenApiSchemaType.fromJson(Map<String, dynamic> json) =>
@@ -634,6 +662,30 @@ class OpenApiSchemaType extends OpenApiSchema {
 
   @JsonKey(name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
   final OpenApiSchemaVarType? type;
+  final Map<String, OpenApiSchema>? _properties;
+  @OpenApiSchemaJsonConverter()
+  @JsonKey(name: 'properties')
+  Map<String, OpenApiSchema>? get properties {
+    final value = _properties;
+    if (value == null) return null;
+    if (_properties is EqualUnmodifiableMapView) return _properties;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
+
+  /// Required property names (a stray `required: true` is ignored).
+  final List<String>? _required_;
+
+  /// Required property names (a stray `required: true` is ignored).
+  @JsonKey(name: 'required', readValue: _requiredNames)
+  List<String>? get required_ {
+    final value = _required_;
+    if (value == null) return null;
+    if (_required_ is EqualUnmodifiableListView) return _required_;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @OpenApiSchemaJsonConverter()
   @JsonKey(name: 'items')
   final OpenApiSchema? items;
@@ -687,6 +739,14 @@ class OpenApiSchemaType extends OpenApiSchema {
             other is OpenApiSchemaType &&
             const DeepCollectionEquality().equals(other.enum_, _enum_) &&
             (identical(other.type, type) || other.type == type) &&
+            const DeepCollectionEquality().equals(
+              other.properties,
+              _properties,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other.required_,
+              _required_,
+            ) &&
             (identical(other.items, items) || other.items == items) &&
             (identical(other.maxLength, maxLength) ||
                 other.maxLength == maxLength) &&
@@ -714,6 +774,8 @@ class OpenApiSchemaType extends OpenApiSchema {
       runtimeType,
       const DeepCollectionEquality().hash(_enum_),
       type,
+      const DeepCollectionEquality().hash(_properties),
+      const DeepCollectionEquality().hash(_required_),
       items,
       maxLength,
       minLength,
@@ -730,7 +792,7 @@ class OpenApiSchemaType extends OpenApiSchema {
 
   @override
   String toString() {
-    return 'OpenApiSchema.type(enum_: $enum_, type: $type, items: $items, maxLength: $maxLength, minLength: $minLength, format: $format, description: $description, pattern: $pattern, const_: $const_, default_: $default_, title: $title, nullable: $nullable, additionalProperties: $additionalProperties)';
+    return 'OpenApiSchema.type(enum_: $enum_, type: $type, properties: $properties, required_: $required_, items: $items, maxLength: $maxLength, minLength: $minLength, format: $format, description: $description, pattern: $pattern, const_: $const_, default_: $default_, title: $title, nullable: $nullable, additionalProperties: $additionalProperties)';
   }
 }
 
@@ -747,6 +809,11 @@ abstract mixin class $OpenApiSchemaTypeCopyWith<$Res>
     @JsonKey(name: 'enum') List<Object?>? enum_,
     @JsonKey(name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
     OpenApiSchemaVarType? type,
+    @OpenApiSchemaJsonConverter()
+    @JsonKey(name: 'properties')
+    Map<String, OpenApiSchema>? properties,
+    @JsonKey(name: 'required', readValue: _requiredNames)
+    List<String>? required_,
     @OpenApiSchemaJsonConverter() @JsonKey(name: 'items') OpenApiSchema? items,
     @JsonKey(name: 'maxLength') int? maxLength,
     @JsonKey(name: 'minLength') int? minLength,
@@ -778,6 +845,8 @@ class _$OpenApiSchemaTypeCopyWithImpl<$Res>
   $Res call({
     Object? enum_ = freezed,
     Object? type = freezed,
+    Object? properties = freezed,
+    Object? required_ = freezed,
     Object? items = freezed,
     Object? maxLength = freezed,
     Object? minLength = freezed,
@@ -800,6 +869,14 @@ class _$OpenApiSchemaTypeCopyWithImpl<$Res>
             ? _self.type
             : type // ignore: cast_nullable_to_non_nullable
                   as OpenApiSchemaVarType?,
+        properties: freezed == properties
+            ? _self._properties
+            : properties // ignore: cast_nullable_to_non_nullable
+                  as Map<String, OpenApiSchema>?,
+        required_: freezed == required_
+            ? _self._required_
+            : required_ // ignore: cast_nullable_to_non_nullable
+                  as List<String>?,
         items: freezed == items
             ? _self.items
             : items // ignore: cast_nullable_to_non_nullable
