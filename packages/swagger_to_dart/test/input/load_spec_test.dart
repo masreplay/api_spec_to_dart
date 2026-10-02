@@ -140,14 +140,24 @@ void main() {
 
     String url() => 'http://127.0.0.1:${server.port}/openapi.yaml';
 
+    /// [loadSpec] with what it prints collected into [printed], not shown.
+    Future<Object?> load(String cache, [List<String>? printed]) => runZoned(
+      () => loadSpec(url: url(), path: cache),
+      zoneSpecification: ZoneSpecification(
+        print: (_, _, _, line) => printed?.add(line),
+      ),
+    );
+
     test('fetches YAML and refreshes the local copy', () async {
       final cache = file('openapi.json', '{"stale": true}');
+      final printed = <String>[];
 
-      final spec = await loadSpec(url: url(), path: cache);
+      final spec = await load(cache, printed);
 
       expect(spec, _decoded);
       _expectPlain(spec);
       expect(readSpecSync(cache), _decoded);
+      expect(printed, ['Fetching the API specification from ${url()}']);
     });
 
     test('falls back loudly to the local copy when the fetch fails', () async {
@@ -155,12 +165,7 @@ void main() {
       final cache = file('openapi.json', jsonEncode({'cached': true}));
       final printed = <String>[];
 
-      final spec = await runZoned(
-        () => loadSpec(url: url(), path: cache),
-        zoneSpecification: ZoneSpecification(
-          print: (_, _, _, line) => printed.add(line),
-        ),
-      );
+      final spec = await load(cache, printed);
 
       expect(spec, {'cached': true});
       expect(
@@ -173,7 +178,7 @@ void main() {
       status = 500;
 
       await expectLater(
-        loadSpec(url: url(), path: p.join(root.path, 'none.json')),
+        load(p.join(root.path, 'none.json')),
         throwsA(isA<HttpException>()),
       );
     });
