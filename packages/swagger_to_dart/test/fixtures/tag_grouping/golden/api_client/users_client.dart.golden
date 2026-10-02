@@ -1,0 +1,69 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'users_client.g.dart';
+
+@RestApi()
+abstract class UsersClient {
+  factory UsersClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _UsersClient;
+
+  @GET('/users')
+  Future<HttpResponse<List<User>>> listUsers({
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Users'],
+      'operationId': 'listUsers',
+      'responses': {
+        '200': {
+          'description': 'The users',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'array',
+                'items': {'\$ref': '#/components/schemas/User'},
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+  @GET('/users/{id}')
+  Future<HttpResponse<User>> getUser({
+    @Path('id') required int id,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Users', 'Admin'],
+      'operationId': 'getUser',
+      'responses': {
+        '200': {
+          'description': 'The user',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/User'},
+            },
+          },
+        },
+      },
+      'parameters': [
+        {
+          'name': 'id',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'integer'},
+        },
+      ],
+    },
+  });
+}

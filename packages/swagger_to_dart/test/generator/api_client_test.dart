@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 import 'package:test/test.dart';
 
@@ -198,6 +200,22 @@ void main() {
 
     expect(model, contains('required T data,'));
     expect(model, contains('required String message,'));
+  });
+
+  test('clients hold the operations of their tag, not whole paths (G5)', () {
+    final files = Fixture(
+      Directory('test/fixtures/tag_grouping'),
+    ).render().files;
+    List<String> methods(String client) => [
+      for (final match in RegExp(
+        r'> (\w+)\(\{',
+      ).allMatches(files['api_client/${client}_client.dart']!))
+        match[1]!,
+    ];
+
+    expect(methods('users'), ['listUsers', 'getUser']);
+    expect(methods('admin'), ['deleteUsers', 'getUser']);
+    expect(methods('default'), ['touchUser']);
   });
 
   test('a client using no model does not import the models', () {

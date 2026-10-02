@@ -1,0 +1,70 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Tag grouping", "version": "1.0.0" },
+  "paths": {
+    "/users": {
+      "get": {
+        "tags": ["Users"],
+        "operationId": "listUsers",
+        "responses": {
+          "200": {
+            "description": "The users",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/User" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Admin"],
+        "operationId": "deleteUsers",
+        "responses": { "204": { "description": "Deleted" } }
+      }
+    },
+    "/users/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": { "type": "integer" }
+        }
+      ],
+      "get": {
+        "tags": ["Users", "Admin"],
+        "operationId": "getUser",
+        "responses": {
+          "200": {
+            "description": "The user",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/User" }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "touchUser",
+        "responses": { "204": { "description": "Touched" } }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "required": ["id"],
+        "properties": {
+          "id": { "type": "integer" },
+          "name": { "type": "string" }
+        }
+      }
+    }
+  }
+}

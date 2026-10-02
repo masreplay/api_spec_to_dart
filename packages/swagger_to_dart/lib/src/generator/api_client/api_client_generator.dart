@@ -6,6 +6,14 @@ import 'package:swagger_to_dart/src/swagger_to_dart_base.dart';
 const _requestBodyName = 'requestBody';
 const _queriesParameterName = 'queries';
 
+/// An operation of the spec at [path]; [method] is its key in the path
+/// item (`get`, `post`, ...).
+typedef ApiOperation = ({
+  String path,
+  String method,
+  OpenApiPathMethod operation,
+});
+
 /// Types a client signature can name without the generated models.
 const _libraryTypes = {
   'Future', 'HttpResponse', 'List', 'Map', 'String', 'int', 'double', //
@@ -139,38 +147,29 @@ class ApiClientGenerator {
 
   final GenerationContext context;
 
+  /// One client per operation tag (`default` for untagged operations); an
+  /// operation with several tags is in each of their clients.
   void generate() {
-    // <basic, </datetime/datetime, < post | get ..., OpenApiPathMethod>>>
-    final Map<String, OpenApiPaths> group = {};
+    final group = <String, List<ApiOperation>>{};
 
-    for (final entry in (context.openApi.paths ?? {}).entries) {
-      final path = entry.key;
-      // <post | get ..., OpenApiPathMethod>
-      final methods = entry.value;
-
-      for (final method in methods.values) {
-        final tags = (method.tags ?? []).map(
+    for (final MapEntry(key: path, value: methods)
+        in (context.openApi.paths ?? {}).entries) {
+      for (final MapEntry(key: method, value: operation) in methods.entries) {
+        final tags = (operation.tags ?? []).map(
           (e) => Recase.instance.removeNonAscii(e),
         );
-        if (tags.isEmpty) {
-          group['default'] ??= {};
-          group['default']![path] = methods;
-        } else {
-          for (final tag in tags) {
-            group[tag] ??= {};
-            group[tag]![path] = methods;
-          }
+        for (final tag in tags.isEmpty ? const ['default'] : tags) {
+          (group[tag] ??= []).add((
+            path: path,
+            method: method.name,
+            operation: operation,
+          ));
         }
       }
     }
 
-    for (final entry in group.entries) {
-      final tag = entry.key;
-      final paths = entry.value;
-
-      final apiClient = build(clientName: tag, paths: paths);
-
-      context.addApiClient(apiClient);
+    for (final MapEntry(key: tag, value: operations) in group.entries) {
+      context.addApiClient(build(clientName: tag, operations: operations));
     }
   }
 
@@ -185,7 +184,10 @@ class ApiClientGenerator {
   ///   Future<HttpResponse<AppSettings>> settingsGetAppSettings();
   /// }
   /// ```
-  Library build({required String clientName, required OpenApiPaths paths}) {
+  Library build({
+    required String clientName,
+    required List<ApiOperation> operations,
+  }) {
     final fileName = Renaming.instance.renameFile('${clientName}_client');
     final className = Recase.instance.toPascalCase(fileName);
 
@@ -194,179 +196,174 @@ class ApiClientGenerator {
     final methods = <Method>[];
     final usedMethodNames = <String>{};
 
-    for (final path in paths.entries) {
-      for (final method in path.value.entries) {
-        final methodType = Recase.instance.toScreamingSnakeCase(
-          method.key.name,
-        );
+    for (final (:path, :method, :operation) in operations) {
+      final methodType = Recase.instance.toScreamingSnakeCase(
+        method,
+      );
 
-        final baseMethodName = Renaming.instance.renameFunction(
-          method.value.operationId ??
-              '${clientName}_${path.key}_${method.key.name}',
-        );
-        // operationIds are not always unique; methods in one class must be.
-        var methodName = baseMethodName;
-        for (var i = 2; !usedMethodNames.add(methodName); i++) {
-          methodName = '$baseMethodName$i';
-        }
+      final baseMethodName = Renaming.instance.renameFunction(
+        operation.operationId ?? '${clientName}_${path}_$method',
+      );
+      // operationIds are not always unique; methods in one class must be.
+      var methodName = baseMethodName;
+      for (var i = 2; !usedMethodNames.add(methodName); i++) {
+        methodName = '$baseMethodName$i';
+      }
 
-        final parameters = _handleParameters(
-          method.value.parameters ?? [],
-          className: className,
-          methodName: methodName,
-        );
+      final parameters = _handleParameters(
+        operation.parameters ?? [],
+        className: className,
+        methodName: methodName,
+      );
 
-        final responseTypeResult = _handleResponseType(
-          method.value.responses ?? {},
-          className,
-          contextName: '${methodName}_response',
-        );
-        final responseType = responseTypeResult.type;
-        final isBinaryResponse = responseTypeResult.isBinaryResponse;
+      final responseTypeResult = _handleResponseType(
+        operation.responses ?? {},
+        className,
+        contextName: '${methodName}_response',
+      );
+      final responseType = responseTypeResult.type;
+      final isBinaryResponse = responseTypeResult.isBinaryResponse;
 
-        final requestBody = <Parameter>[];
-        final content = method.value.requestBody?.content ?? {};
-        bool hasJsonBody = false;
+      final requestBody = <Parameter>[];
+      final content = operation.requestBody?.content ?? {};
+      bool hasJsonBody = false;
 
-        // Media types without parameters (`; charset=utf-8`).
-        bool hasMediaType(String type) =>
-            content.keys.any((key) => _mediaType(key) == type);
+      // Media types without parameters (`; charset=utf-8`).
+      bool hasMediaType(String type) =>
+          content.keys.any((key) => _mediaType(key) == type);
 
-        // One body per method: JSON (or form) wins over multipart.
-        final offersJson = content.entries.any(
-          (e) =>
-              _isJsonContent(e.key, e.value.schema) ||
-              _mediaType(e.key) == 'application/x-www-form-urlencoded',
-        );
-        final isMultipart = !offersJson && hasMediaType('multipart/form-data');
+      // One body per method: JSON (or form) wins over multipart.
+      final offersJson = content.entries.any(
+        (e) =>
+            _isJsonContent(e.key, e.value.schema) ||
+            _mediaType(e.key) == 'application/x-www-form-urlencoded',
+      );
+      final isMultipart = !offersJson && hasMediaType('multipart/form-data');
 
-        for (final entry in content.entries) {
-          switch (_mediaType(entry.key)) {
-            case final type
-                when _isJsonContent(type, entry.value.schema) ||
-                    type == 'application/x-www-form-urlencoded':
-              if (hasJsonBody) continue;
-              hasJsonBody = true;
-              requestBody.add(
-                Parameter(
-                  (b) => b
-                    ..annotations.addAll([refer('Body()')])
-                    ..name = _requestBodyName
-                    ..named = true
-                    ..required = true
-                    ..type = refer(
-                      context.extension.typeConverter.get(
-                        entry.value.schema,
-                        className: className,
-                        contextName: '${methodName}_body',
-                      ),
+      for (final entry in content.entries) {
+        switch (_mediaType(entry.key)) {
+          case final type
+              when _isJsonContent(type, entry.value.schema) ||
+                  type == 'application/x-www-form-urlencoded':
+            if (hasJsonBody) continue;
+            hasJsonBody = true;
+            requestBody.add(
+              Parameter(
+                (b) => b
+                  ..annotations.addAll([refer('Body()')])
+                  ..name = _requestBodyName
+                  ..named = true
+                  ..required = true
+                  ..type = refer(
+                    context.extension.typeConverter.get(
+                      entry.value.schema,
+                      className: className,
+                      contextName: '${methodName}_body',
                     ),
-                ),
-              );
-            case 'multipart/form-data' when isMultipart:
-              requestBody.add(
-                Parameter(
-                  (b) => b
-                    ..annotations.addAll([refer('Part()')])
-                    ..name = _requestBodyName
-                    ..named = true
-                    ..required = true
-                    ..type = refer('Map<String, dynamic>'),
-                ),
-              );
-
-              // WORKAROUND for sending class as request body in `multipart/form-data`
-              final dartType = context.extension.typeConverter.get(
-                entry.value.schema,
-                className: className,
-                contextName: '${methodName}_body',
-              );
-
-              final canToJson = dartType != 'Map<String, dynamic>';
-              extensionMethods.add(
-                Method(
-                  (b) => b
-                    ..name = methodName
-                    ..returns = responseType
-                    ..optionalParameters.addAll([
-                      Parameter(
-                        (b) => b
-                          ..name = _requestBodyName
-                          ..required = true
-                          ..type = refer(dartType),
-                      ),
-                      ...parameters,
-                      ..._extraParameters(openapiMetadata: method.value.json),
-                    ])
-                    ..body = Block.of([
-                      // Forward every parameter: path/header/query ones were
-                      // dropped, so the call did not compile (#57).
-                      Code(
-                        'return ${methodName}_('
-                        '$_requestBodyName: $_requestBodyName${canToJson ? '.toJson()' : ''}, '
-                        '${parameters.map((p) => '${p.name}: ${p.name}, ').join()}'
-                        'extras: extras, '
-                        'cancelToken: cancelToken, '
-                        'onSendProgress: onSendProgress, '
-                        'onReceiveProgress: onReceiveProgress);',
-                      ),
-                    ]),
-                ),
-              );
-              break;
-            default:
-              // Text, XML or binary: handled as a raw body below.
-              continue;
-          }
-        }
-
-        // Text, XML or binary bodies (#56): sent as-is with their media type.
-        final rawBody = requestBody.isEmpty
-            ? content.entries.firstOrNull
-            : null;
-        if (rawBody != null) {
-          requestBody.add(
-            Parameter(
-              (b) => b
-                ..annotations.addAll([refer('Body()')])
-                ..name = _requestBodyName
-                ..named = true
-                ..required = true
-                ..type = refer(
-                  _isBinary(rawBody.key, rawBody.value.schema)
-                      ? 'List<int>'
-                      : 'String',
-                ),
-            ),
-          );
-        }
-
-        methods.add(
-          Method(
-            (b) => b
-              ..annotations.addAll([
-                refer('$methodType(${dartString(path.key)})'),
-                if (rawBody != null)
-                  refer(
-                    "Headers(<String, dynamic>{'Content-Type': "
-                    '${dartString(rawBody.key)}})',
                   ),
-                if (hasMediaType('application/x-www-form-urlencoded'))
-                  refer('FormUrlEncoded()'),
-                if (isMultipart) refer('MultiPart()'),
-                if (isBinaryResponse)
-                  refer('DioResponseType(ResponseType.bytes)'),
-              ])
-              ..returns = responseType
-              ..name = isMultipart ? '${methodName}_' : methodName
-              ..optionalParameters.addAll([
-                ...requestBody,
-                ...parameters,
-                ..._extraParameters(openapiMetadata: method.value.json),
-              ]),
+              ),
+            );
+          case 'multipart/form-data' when isMultipart:
+            requestBody.add(
+              Parameter(
+                (b) => b
+                  ..annotations.addAll([refer('Part()')])
+                  ..name = _requestBodyName
+                  ..named = true
+                  ..required = true
+                  ..type = refer('Map<String, dynamic>'),
+              ),
+            );
+
+            // WORKAROUND for sending class as request body in `multipart/form-data`
+            final dartType = context.extension.typeConverter.get(
+              entry.value.schema,
+              className: className,
+              contextName: '${methodName}_body',
+            );
+
+            final canToJson = dartType != 'Map<String, dynamic>';
+            extensionMethods.add(
+              Method(
+                (b) => b
+                  ..name = methodName
+                  ..returns = responseType
+                  ..optionalParameters.addAll([
+                    Parameter(
+                      (b) => b
+                        ..name = _requestBodyName
+                        ..required = true
+                        ..type = refer(dartType),
+                    ),
+                    ...parameters,
+                    ..._extraParameters(openapiMetadata: operation.json),
+                  ])
+                  ..body = Block.of([
+                    // Forward every parameter: path/header/query ones were
+                    // dropped, so the call did not compile (#57).
+                    Code(
+                      'return ${methodName}_('
+                      '$_requestBodyName: $_requestBodyName${canToJson ? '.toJson()' : ''}, '
+                      '${parameters.map((p) => '${p.name}: ${p.name}, ').join()}'
+                      'extras: extras, '
+                      'cancelToken: cancelToken, '
+                      'onSendProgress: onSendProgress, '
+                      'onReceiveProgress: onReceiveProgress);',
+                    ),
+                  ]),
+              ),
+            );
+            break;
+          default:
+            // Text, XML or binary: handled as a raw body below.
+            continue;
+        }
+      }
+
+      // Text, XML or binary bodies (#56): sent as-is with their media type.
+      final rawBody = requestBody.isEmpty ? content.entries.firstOrNull : null;
+      if (rawBody != null) {
+        requestBody.add(
+          Parameter(
+            (b) => b
+              ..annotations.addAll([refer('Body()')])
+              ..name = _requestBodyName
+              ..named = true
+              ..required = true
+              ..type = refer(
+                _isBinary(rawBody.key, rawBody.value.schema)
+                    ? 'List<int>'
+                    : 'String',
+              ),
           ),
         );
       }
+
+      methods.add(
+        Method(
+          (b) => b
+            ..annotations.addAll([
+              refer('$methodType(${dartString(path)})'),
+              if (rawBody != null)
+                refer(
+                  "Headers(<String, dynamic>{'Content-Type': "
+                  '${dartString(rawBody.key)}})',
+                ),
+              if (hasMediaType('application/x-www-form-urlencoded'))
+                refer('FormUrlEncoded()'),
+              if (isMultipart) refer('MultiPart()'),
+              if (isBinaryResponse)
+                refer('DioResponseType(ResponseType.bytes)'),
+            ])
+            ..returns = responseType
+            ..name = isMultipart ? '${methodName}_' : methodName
+            ..optionalParameters.addAll([
+              ...requestBody,
+              ...parameters,
+              ..._extraParameters(openapiMetadata: operation.json),
+            ]),
+        ),
+      );
     }
 
     // An unused import fails analysis: import the models only when a
