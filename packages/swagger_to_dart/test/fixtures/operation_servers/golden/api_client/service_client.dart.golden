@@ -1,0 +1,44 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+part 'service_client.g.dart';
+
+@RestApi()
+abstract class ServiceClient {
+  factory ServiceClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _ServiceClient;
+
+  @GET('/health')
+  Future<HttpResponse> health({
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['service'],
+      'operationId': 'health',
+      'responses': {
+        '204': {'description': 'Healthy'},
+      },
+    },
+  });
+  @GET('/status')
+  Future<HttpResponse> status({
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['service'],
+      'operationId': 'status',
+      'servers': [
+        {'url': 'https://api.example.com'},
+      ],
+      'responses': {
+        '204': {'description': 'Up'},
+      },
+    },
+  });
+}

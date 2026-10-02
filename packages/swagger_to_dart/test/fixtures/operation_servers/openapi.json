@@ -1,0 +1,57 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Operation servers", "version": "1.0.0" },
+  "servers": [{ "url": "https://api.example.com" }],
+  "paths": {
+    "/health": {
+      "get": {
+        "tags": ["service"],
+        "operationId": "health",
+        "responses": { "204": { "description": "Healthy" } }
+      }
+    },
+    "/status": {
+      "get": {
+        "tags": ["service"],
+        "operationId": "status",
+        "servers": [{ "url": "https://api.example.com" }],
+        "responses": { "204": { "description": "Up" } }
+      }
+    },
+    "/token": {
+      "post": {
+        "tags": ["auth"],
+        "operationId": "createToken",
+        "servers": [{ "url": "https://auth.example.com" }],
+        "responses": { "204": { "description": "Issued" } }
+      }
+    },
+    "/files/{id}": {
+      "servers": [
+        {
+          "url": "https://{tenant}.files.example.com/v1/",
+          "variables": { "tenant": { "default": "acme" } }
+        }
+      ],
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": { "type": "string" }
+        }
+      ],
+      "get": {
+        "tags": ["files"],
+        "operationId": "getFile",
+        "responses": { "204": { "description": "Found" } }
+      },
+      "delete": {
+        "tags": ["files"],
+        "operationId": "deleteFile",
+        "servers": [{ "url": "https://archive.example.com" }],
+        "responses": { "204": { "description": "Deleted" } }
+      }
+    }
+  }
+}

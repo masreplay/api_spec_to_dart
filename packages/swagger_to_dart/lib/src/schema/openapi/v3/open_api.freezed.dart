@@ -1030,10 +1030,14 @@ class __$OpenApiTagCopyWithImpl<$Res> implements _$OpenApiTagCopyWith<$Res> {
 
 /// @nodoc
 mixin _$OpenApiServer {
+  /// A URL template: `{name}` stands for one of [variables] (a [Uri]
+  /// would percent-encode the braces).
   @JsonKey(name: 'url')
-  Uri get url;
+  String get url;
   @JsonKey(name: 'description')
   String? get description;
+  @JsonKey(name: 'variables')
+  Map<String, Map<String, dynamic>>? get variables;
 
   /// Create a copy of OpenApiServer
   /// with the given fields replaced by the non-null parameter values.
@@ -1056,20 +1060,29 @@ mixin _$OpenApiServer {
             other is OpenApiServer &&
             (identical(other.url, _this.url) || other.url == _this.url) &&
             (identical(other.description, _this.description) ||
-                other.description == _this.description));
+                other.description == _this.description) &&
+            const DeepCollectionEquality().equals(
+              other.variables,
+              _this.variables,
+            ));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode {
     final _this = this as OpenApiServer;
-    return Object.hash(runtimeType, _this.url, _this.description);
+    return Object.hash(
+      runtimeType,
+      _this.url,
+      _this.description,
+      const DeepCollectionEquality().hash(_this.variables),
+    );
   }
 
   @override
   String toString() {
     final _this = this as OpenApiServer;
-    return 'OpenApiServer(url: ${_this.url}, description: ${_this.description})';
+    return 'OpenApiServer(url: ${_this.url}, description: ${_this.description}, variables: ${_this.variables})';
   }
 }
 
@@ -1081,8 +1094,9 @@ abstract mixin class $OpenApiServerCopyWith<$Res> {
   ) = _$OpenApiServerCopyWithImpl;
   @useResult
   $Res call({
-    @JsonKey(name: 'url') Uri url,
+    @JsonKey(name: 'url') String url,
     @JsonKey(name: 'description') String? description,
+    @JsonKey(name: 'variables') Map<String, Map<String, dynamic>>? variables,
   });
 }
 
@@ -1098,17 +1112,25 @@ class _$OpenApiServerCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? url = null, Object? description = freezed}) {
+  $Res call({
+    Object? url = null,
+    Object? description = freezed,
+    Object? variables = freezed,
+  }) {
     return _then(
       OpenApiServer(
         url: null == url
             ? _self.url
             : url // ignore: cast_nullable_to_non_nullable
-                  as Uri,
+                  as String,
         description: freezed == description
             ? _self.description
             : description // ignore: cast_nullable_to_non_nullable
                   as String?,
+        variables: freezed == variables
+            ? _self.variables
+            : variables // ignore: cast_nullable_to_non_nullable
+                  as Map<String, Map<String, dynamic>>?,
       ),
     );
   }
@@ -1208,8 +1230,9 @@ extension OpenApiServerPatterns on OpenApiServer {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-      @JsonKey(name: 'url') Uri url,
+      @JsonKey(name: 'url') String url,
       @JsonKey(name: 'description') String? description,
+      @JsonKey(name: 'variables') Map<String, Map<String, dynamic>>? variables,
     )?
     $default, {
     required TResult orElse(),
@@ -1217,7 +1240,7 @@ extension OpenApiServerPatterns on OpenApiServer {
     final _that = this;
     switch (_that) {
       case _OpenApiServer() when $default != null:
-        return $default(_that.url, _that.description);
+        return $default(_that.url, _that.description, _that.variables);
       case _:
         return orElse();
     }
@@ -1239,15 +1262,16 @@ extension OpenApiServerPatterns on OpenApiServer {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-      @JsonKey(name: 'url') Uri url,
+      @JsonKey(name: 'url') String url,
       @JsonKey(name: 'description') String? description,
+      @JsonKey(name: 'variables') Map<String, Map<String, dynamic>>? variables,
     )
     $default,
   ) {
     final _that = this;
     switch (_that) {
       case _OpenApiServer():
-        return $default(_that.url, _that.description);
+        return $default(_that.url, _that.description, _that.variables);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -1268,15 +1292,16 @@ extension OpenApiServerPatterns on OpenApiServer {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-      @JsonKey(name: 'url') Uri url,
+      @JsonKey(name: 'url') String url,
       @JsonKey(name: 'description') String? description,
+      @JsonKey(name: 'variables') Map<String, Map<String, dynamic>>? variables,
     )?
     $default,
   ) {
     final _that = this;
     switch (_that) {
       case _OpenApiServer() when $default != null:
-        return $default(_that.url, _that.description);
+        return $default(_that.url, _that.description, _that.variables);
       case _:
         return null;
     }
@@ -1289,16 +1314,30 @@ class _OpenApiServer extends OpenApiServer {
   const _OpenApiServer({
     @JsonKey(name: 'url') required this.url,
     @JsonKey(name: 'description') required this.description,
-  }) : super._();
+    @JsonKey(name: 'variables') Map<String, Map<String, dynamic>>? variables,
+  }) : _variables = variables,
+       super._();
   factory _OpenApiServer.fromJson(Map<String, dynamic> json) =>
       _$OpenApiServerFromJson(json);
 
+  /// A URL template: `{name}` stands for one of [variables] (a [Uri]
+  /// would percent-encode the braces).
   @override
   @JsonKey(name: 'url')
-  final Uri url;
+  final String url;
   @override
   @JsonKey(name: 'description')
   final String? description;
+  final Map<String, Map<String, dynamic>>? _variables;
+  @override
+  @JsonKey(name: 'variables')
+  Map<String, Map<String, dynamic>>? get variables {
+    final value = _variables;
+    if (value == null) return null;
+    if (_variables is EqualUnmodifiableMapView) return _variables;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
 
   /// Create a copy of OpenApiServer
   /// with the given fields replaced by the non-null parameter values.
@@ -1320,18 +1359,24 @@ class _OpenApiServer extends OpenApiServer {
             other is _OpenApiServer &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.description, description) ||
-                other.description == description));
+                other.description == description) &&
+            const DeepCollectionEquality().equals(other.variables, _variables));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode {
-    return Object.hash(runtimeType, url, description);
+    return Object.hash(
+      runtimeType,
+      url,
+      description,
+      const DeepCollectionEquality().hash(_variables),
+    );
   }
 
   @override
   String toString() {
-    return 'OpenApiServer(url: $url, description: $description)';
+    return 'OpenApiServer(url: $url, description: $description, variables: $variables)';
   }
 }
 
@@ -1345,8 +1390,9 @@ abstract mixin class _$OpenApiServerCopyWith<$Res>
   @override
   @useResult
   $Res call({
-    @JsonKey(name: 'url') Uri url,
+    @JsonKey(name: 'url') String url,
     @JsonKey(name: 'description') String? description,
+    @JsonKey(name: 'variables') Map<String, Map<String, dynamic>>? variables,
   });
 }
 
@@ -1362,17 +1408,25 @@ class __$OpenApiServerCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? url = null, Object? description = freezed}) {
+  $Res call({
+    Object? url = null,
+    Object? description = freezed,
+    Object? variables = freezed,
+  }) {
     return _then(
       _OpenApiServer(
         url: null == url
             ? _self.url
             : url // ignore: cast_nullable_to_non_nullable
-                  as Uri,
+                  as String,
         description: freezed == description
             ? _self.description
             : description // ignore: cast_nullable_to_non_nullable
                   as String?,
+        variables: freezed == variables
+            ? _self._variables
+            : variables // ignore: cast_nullable_to_non_nullable
+                  as Map<String, Map<String, dynamic>>?,
       ),
     );
   }

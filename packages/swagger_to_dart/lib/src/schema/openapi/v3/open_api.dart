@@ -38,11 +38,13 @@ abstract class OpenApi with _$OpenApi {
 /// Rewrites `paths` into the shape [OpenApiPaths] parses, returning a new map
 /// (operations are shared with the `@Extras` metadata, so [spec] must not
 /// change):
-/// - a path item keeps only its operations (`summary`, `servers`, ... go);
+/// - a path item keeps only its operations (`summary`, `description`, ...
+///   go);
 /// - its `additionalOperations` move to `x-additional-operations`, by path
 ///   ([OpenApi.additionalOperations]);
 /// - its `parameters` apply to each operation, whose own parameter with the
-///   same `name` and `in` wins;
+///   same `name` and `in` wins, and its `servers` to each operation without
+///   its own;
 /// - `$ref`s in `parameters`, `requestBody` and `responses` (e.g.
 ///   `#/components/parameters/PageSize`) are replaced by their targets.
 Map<String, dynamic> resolveOperations(Map<String, dynamic> spec) {
@@ -53,17 +55,22 @@ Map<String, dynamic> resolveOperations(Map<String, dynamic> spec) {
     for (final p in list as List? ?? const []) _deref(spec, p),
   ];
 
-  Map<String, dynamic> operation(Map<String, dynamic> op, Object? shared) {
+  Map<String, dynamic> operation(
+    Map<String, dynamic> op,
+    Map<String, dynamic> item,
+  ) {
     final own = parameters(op['parameters']);
     final overridden = {for (final p in own) (p['name'], p['in'])};
     final merged = [
-      for (final p in parameters(shared))
+      for (final p in parameters(item['parameters']))
         if (!overridden.contains((p['name'], p['in']))) p,
       ...own,
     ];
     return {
       ...op,
       if (merged.isNotEmpty) 'parameters': merged,
+      if (op['servers'] == null && item['servers'] != null)
+        'servers': item['servers'],
       if (op['requestBody'] case final body?) 'requestBody': _deref(spec, body),
       if (op['responses'] case final Map<String, dynamic> responses)
         'responses': {
@@ -80,7 +87,7 @@ Map<String, dynamic> resolveOperations(Map<String, dynamic> spec) {
           when ops.isNotEmpty)
         path: {
           for (final MapEntry(:key, :value) in ops.entries)
-            key: operation(value as Map<String, dynamic>, item['parameters']),
+            key: operation(value as Map<String, dynamic>, item),
         },
   };
 
@@ -92,7 +99,7 @@ Map<String, dynamic> resolveOperations(Map<String, dynamic> spec) {
         path: {
           for (final MapEntry(:key, :value) in item.entries)
             if (OpenApiPathMethodEnum.values.any((m) => m.name == key))
-              key: operation(value as Map<String, dynamic>, item['parameters']),
+              key: operation(value as Map<String, dynamic>, item),
         },
     },
     // Only when found: resolving twice must keep the first result.
@@ -136,10 +143,19 @@ abstract class OpenApiServer with _$OpenApiServer {
   const OpenApiServer._();
 
   const factory OpenApiServer({
-    @JsonKey(name: 'url') required Uri url,
+    /// A URL template: `{name}` stands for one of [variables] (a [Uri]
+    /// would percent-encode the braces).
+    @JsonKey(name: 'url') required String url,
     @JsonKey(name: 'description') required String? description,
+    @JsonKey(name: 'variables') Map<String, Map<String, dynamic>>? variables,
   }) = _OpenApiServer;
 
   factory OpenApiServer.fromJson(Map<String, dynamic> json) =>
       _$OpenApiServerFromJson(json);
+
+  /// [url] with each variable replaced by its `default`.
+  String get defaultUrl => url.replaceAllMapped(
+    RegExp(r'\{([^}]*)\}'),
+    (m) => '${variables?[m[1]]?['default'] ?? m[0]}',
+  );
 }

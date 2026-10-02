@@ -98,6 +98,24 @@ void main() {
     );
   });
 
+  test('path-level servers apply to operations without their own (G7)', () {
+    const pathServers = [
+      {'url': 'https://files.example.com'},
+    ];
+    const ownServers = [
+      {'url': 'https://archive.example.com'},
+    ];
+
+    final item = _resolve({
+      'servers': pathServers,
+      'get': <String, dynamic>{},
+      'delete': {'servers': ownServers},
+    });
+
+    expect(item['get']['servers'], pathServers);
+    expect(item['delete']['servers'], ownServers);
+  });
+
   test('path-level parameters apply to every operation', () {
     final item = _resolve({
       'parameters': [_id],

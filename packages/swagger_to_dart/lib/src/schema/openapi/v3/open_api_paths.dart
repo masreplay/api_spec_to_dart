@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'open_api.dart';
 import 'open_api_content.dart';
 import 'open_api_schema.dart';
 
@@ -39,6 +40,10 @@ abstract class OpenApiPathMethod with _$OpenApiPathMethod {
     @JsonKey(name: 'requestBody')
     required OpenApiPathMethodRequestBody? requestBody,
     @JsonKey(name: 'responses') required OpenApiPathMethodResponses? responses,
+
+    /// The operation's servers, else its path item's (see
+    /// `resolveOperations`).
+    @JsonKey(name: 'servers') List<OpenApiServer>? servers,
     @JsonKey(readValue: _jsonReadValue) Map<String, dynamic>? json,
   }) = _OpenApiPathMethod;
 
