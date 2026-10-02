@@ -700,13 +700,31 @@ class ApiClientGenerator {
           ..named = true
           ..name = 'extras'
           ..defaultTo = context.config.apiClient.includeOpenapiExtras
-              ? Code('const ${encodeWithRawKeys(openapiMetadata)}')
+              ? Code(
+                  'const ${encodeWithRawKeys(_withoutExamples(openapiMetadata))}',
+                )
               : null
           ..type = refer('Map<String, dynamic>?'),
       ),
     ];
   }
 }
+
+/// [value] without `example`/`examples` keys (nor 2.0's `x-example`/
+/// `x-examples`) at any depth. They hold sample data (phone numbers,
+/// tokens, emails from Postman collections) that must not be compiled into
+/// apps, and nothing reads them at runtime.
+Object? _withoutExamples(Object? value) => switch (value) {
+  Map() => {
+    for (final MapEntry(:key, :value) in value.entries)
+      if (!const {'example', 'examples', 'x-example', 'x-examples'}.contains(
+        key,
+      ))
+        key: _withoutExamples(value),
+  },
+  List() => [for (final e in value) _withoutExamples(e)],
+  _ => value,
+};
 
 /// Dart source for a JSON-like [value] (maps, lists, strings, numbers).
 String encodeWithRawKeys(dynamic value) {

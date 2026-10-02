@@ -548,6 +548,77 @@ void main() {
     expect(client, isNot(contains('Content-Type')));
   });
 
+  test('@Extras leaves out examples, so sample data is not compiled in', () {
+    final client = renderSpec(
+      _spec(
+        paths: {
+          '/a': {
+            'post': {
+              'tags': ['items'],
+              'operationId': 'createItem',
+              'parameters': [
+                {
+                  'name': 'phone',
+                  'in': 'query',
+                  'schema': {'type': 'string', 'example': '+9647700000000'},
+                  'example': '+9647700000000',
+                },
+                {
+                  'name': 'X-Token',
+                  'in': 'header',
+                  'schema': {'type': 'string'},
+                  'examples': {
+                    'live': {'value': 'secret-token'},
+                  },
+                  'x-example': 'secret-token',
+                },
+              ],
+              'requestBody': {
+                'content': {
+                  'application/json': {
+                    'schema': {
+                      'type': 'object',
+                      'properties': {
+                        'email': {'type': 'string'},
+                      },
+                      'example': {'email': 'a@b.c'},
+                    },
+                    'examples': {
+                      'one': {
+                        'value': {'email': 'a@b.c'},
+                      },
+                    },
+                  },
+                },
+              },
+              'responses': {
+                '200': {
+                  'description': 'OK',
+                  'content': {
+                    'application/json': {
+                      'schema': {'type': 'object'},
+                      'example': {'token': 'secret-token'},
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      ),
+    ).files['api_client/items_client.dart']!;
+
+    expect(client, contains("'operationId': 'createItem'"));
+    for (final sample in [
+      'example',
+      '9647700000000',
+      'secret-token',
+      'a@b.c',
+    ]) {
+      expect(client, isNot(contains(sample)), reason: sample);
+    }
+  });
+
   test('@Extras keeps the spec as written (OpenAPI 3.1 type arrays)', () {
     final client = renderSpec(
       _spec(
