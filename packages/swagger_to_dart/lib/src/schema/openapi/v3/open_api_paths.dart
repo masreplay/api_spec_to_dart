@@ -6,6 +6,8 @@ import 'open_api_schema.dart';
 part 'open_api_paths.freezed.dart';
 part 'open_api_paths.g.dart';
 
+/// The operation fields of a path item (`query`: OpenAPI 3.2). Other
+/// methods are `additionalOperations`, see `OpenApi.additionalOperations`.
 enum OpenApiPathMethodEnum {
   get,
   post,
@@ -16,7 +18,7 @@ enum OpenApiPathMethodEnum {
   patch,
   trace,
   connect,
-  pat,
+  query,
 }
 
 typedef OpenApiPathMethodResponses = Map<String, OpenApiPathMethodResponse>;

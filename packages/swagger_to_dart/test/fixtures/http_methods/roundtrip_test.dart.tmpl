@@ -1,0 +1,52 @@
+import 'package:dio/dio.dart';
+// Also exports dart:typed_data (Uint8List).
+import 'package:swagger_to_dart_e2e/gen/http_methods/gen.dart';
+import 'package:test/test.dart';
+
+/// Records each request and answers it with an empty JSON list.
+class _Recorder implements HttpClientAdapter {
+  final requests = <String>[];
+
+  @override
+  Future<ResponseBody> fetch(
+    RequestOptions options,
+    Stream<Uint8List>? requestStream,
+    Future<void>? cancelFuture,
+  ) async {
+    requests.add('${options.method} ${options.uri}');
+    return ResponseBody.fromString(
+      '[]',
+      200,
+      headers: {
+        Headers.contentTypeHeader: [Headers.jsonContentType],
+      },
+    );
+  }
+
+  @override
+  void close({bool force = false}) {}
+}
+
+void main() {
+  test('methods without a retrofit annotation are sent as written', () async {
+    final recorder = _Recorder();
+    final client = ResourcesClient(
+      Dio(BaseOptions(baseUrl: 'https://api.example.com'))
+        ..httpClientAdapter = recorder,
+    );
+
+    await client.getResource();
+    await client.traceResource();
+    await client.queryResources(requestBody: const Filter(prefix: 'a'));
+    await client.purgeResource();
+    await client.linkResource(link: '</next>; rel="next"');
+
+    expect(recorder.requests, [
+      'GET https://api.example.com/x',
+      'TRACE https://api.example.com/x',
+      'QUERY https://api.example.com/x',
+      'PURGE https://api.example.com/x',
+      'LINK https://api.example.com/x',
+    ]);
+  });
+}

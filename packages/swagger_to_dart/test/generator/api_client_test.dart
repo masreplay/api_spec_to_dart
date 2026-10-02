@@ -218,6 +218,47 @@ void main() {
     expect(methods('default'), ['touchUser']);
   });
 
+  group('HTTP methods retrofit has no annotation for use @Method (G6)', () {
+    late String client;
+    setUpAll(() {
+      client = Fixture(
+        Directory('test/fixtures/http_methods'),
+      ).render().files['api_client/resources_client.dart']!;
+    });
+
+    test('trace, OAS 3.2 query and additionalOperations', () {
+      expect(client, contains("@Method('TRACE', '/x')"));
+      expect(client, contains("@Method('QUERY', '/x')"));
+      expect(client, contains("@Method('PURGE', '/x')"));
+      expect(client, contains("@Method('LINK', '/x')"));
+      expect(client, isNot(contains('@TRACE')));
+    });
+
+    test('standard methods keep their annotation', () {
+      expect(client, contains("@GET('/x')"));
+    });
+
+    test('connect', () {
+      final client = renderSpec(
+        _spec(
+          paths: {
+            '/tunnel': {
+              'connect': {
+                'tags': ['items'],
+                'operationId': 'openTunnel',
+                'responses': {
+                  '200': {'description': 'OK'},
+                },
+              },
+            },
+          },
+        ),
+      ).files['api_client/items_client.dart']!;
+
+      expect(client, contains("@Method('CONNECT', '/tunnel')"));
+    });
+  });
+
   test('a client using no model does not import the models', () {
     final client = renderSpec(
       _spec(

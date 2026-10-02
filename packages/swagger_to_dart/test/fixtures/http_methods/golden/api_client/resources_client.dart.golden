@@ -1,0 +1,112 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'resources_client.g.dart';
+
+@RestApi()
+abstract class ResourcesClient {
+  factory ResourcesClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _ResourcesClient;
+
+  @GET('/x')
+  Future<HttpResponse> getResource({
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['resources'],
+      'operationId': 'getResource',
+      'responses': {
+        '204': {'description': 'Found'},
+      },
+    },
+  });
+  @Method('TRACE', '/x')
+  Future<HttpResponse> traceResource({
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['resources'],
+      'operationId': 'traceResource',
+      'responses': {
+        '204': {'description': 'Traced'},
+      },
+    },
+  });
+  @Method('QUERY', '/x')
+  Future<HttpResponse<List<String>>> queryResources({
+    @Body() required Filter requestBody,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['resources'],
+      'operationId': 'queryResources',
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {'\$ref': '#/components/schemas/Filter'},
+          },
+        },
+      },
+      'responses': {
+        '200': {
+          'description': 'The matches',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'array',
+                'items': {'type': 'string'},
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+  @Method('PURGE', '/x')
+  Future<HttpResponse> purgeResource({
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['resources'],
+      'operationId': 'purgeResource',
+      'responses': {
+        '204': {'description': 'Purged'},
+      },
+    },
+  });
+  @Method('LINK', '/x')
+  Future<HttpResponse> linkResource({
+    @Header('Link') required String link,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['resources'],
+      'operationId': 'linkResource',
+      'parameters': [
+        {
+          'name': 'Link',
+          'in': 'header',
+          'required': true,
+          'schema': {'type': 'string'},
+        },
+      ],
+      'responses': {
+        '204': {'description': 'Linked'},
+      },
+    },
+  });
+}
