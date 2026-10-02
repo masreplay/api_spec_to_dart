@@ -200,6 +200,30 @@ void main() {
     expect(model, contains('required String message,'));
   });
 
+  test('a client using no model does not import the models', () {
+    final client = renderSpec(
+      _spec(
+        paths: {
+          '/a': _get(
+            'listNames',
+            parameters: [
+              {
+                'name': 'q',
+                'in': 'query',
+                'schema': {
+                  'type': 'array',
+                  'items': {'type': 'string'},
+                },
+              },
+            ],
+          ),
+        },
+      ),
+    ).files['api_client/items_client.dart']!;
+
+    expect(client, isNot(contains('models.dart')));
+  });
+
   test('duplicate operationIds in one client get unique method names', () {
     final client = renderSpec(
       _spec(
