@@ -70,6 +70,34 @@ void main() {
     });
   });
 
+  group('lenient accessors', () {
+    test('headers from a list (strings too) or a "K: V" string', () {
+      expect(
+        headerEntries([
+          {'key': 'A', 'value': '1'},
+          'B: 2',
+          42,
+        ]),
+        [
+          {'key': 'A', 'value': '1'},
+          {'key': 'B', 'value': '2'},
+        ],
+      );
+      expect(headerEntries('A: 1\r\n// B : x:y\nnot a header\n'), [
+        {'key': 'A', 'value': '1'},
+        {'key': 'B', 'value': 'x:y', 'disabled': true},
+      ]);
+      expect(headerEntries(null), isEmpty);
+    });
+
+    test('descriptions from a string or a {content} object', () {
+      expect(descriptionText('text'), 'text');
+      expect(descriptionText({'content': 'md', 'type': 'text/markdown'}), 'md');
+      expect(descriptionText(''), isNull);
+      expect(descriptionText({'content': 5}), isNull);
+    });
+  });
+
   group('variables', () {
     test('collects enabled, non-secret values by key or id', () {
       expect(
