@@ -4,20 +4,55 @@ import 'infer_schema.dart';
 import 'json_lenient.dart';
 import 'variables.dart';
 
-/// Media types of raw body languages (`options.raw.language`).
-const _languages = {
-  'json': 'application/json',
-  'xml': 'application/xml',
-  'html': 'text/html',
-  'javascript': 'application/javascript',
-  'text': 'text/plain',
-};
-
 const _modes = ['raw', 'urlencoded', 'formdata', 'file', 'graphql'];
+
+/// The media type of a Postman body language (`options.raw.language`, a
+/// saved response's `_postman_previewlanguage`).
+String? languageMediaType(Object? language) =>
+    switch ('$language'.toLowerCase()) {
+      'json' => 'application/json',
+      'xml' => 'application/xml',
+      'html' => 'text/html',
+      'javascript' => 'application/javascript',
+      'text' => 'text/plain',
+      _ => null,
+    };
 
 /// Whether [mediaType] is JSON (`application/json`, `…/json`, `…+json`).
 bool isJsonMediaType(String mediaType) =>
     mediaType.endsWith('/json') || mediaType.endsWith('+json');
+
+/// Adds the raw body [text] named [name] to [content] under [mediaType],
+/// sniffed when null: JSON is parsed leniently (an object when invalid, with
+/// a warning) and inferred; other text is a string.
+void addRawContent(
+  Map<String, MediaContent> content,
+  String text, {
+  String? mediaType,
+  Map<String, String> variables = const {},
+  required String name,
+  void Function(String message)? onWarning,
+}) {
+  if (text.trim().isEmpty) return;
+  final json = mediaType == null || isJsonMediaType(mediaType)
+      ? parseLenientJson(text, variables)
+      : null;
+  mediaType ??= json is Map || json is List ? 'application/json' : 'text/plain';
+  if (!isJsonMediaType(mediaType)) {
+    content
+        .putIfAbsent(mediaType, () => MediaContent('text'))
+        .add(name, substituteVariables(text, variables));
+    return;
+  }
+  if (json == null) {
+    onWarning?.call(
+      "body of '$name' is not valid JSON; described as an object",
+    );
+  }
+  content
+      .putIfAbsent(mediaType, () => MediaContent('json'))
+      .add(name, json ?? const <String, Object?>{});
+}
 
 /// The media type of the first enabled `Content-Type` header, lower case and
 /// without parameters.
@@ -40,7 +75,7 @@ class RequestBodies {
 
   final void Function(String message)? onWarning;
 
-  final _content = <String, _Media>{};
+  final _content = <String, MediaContent>{};
 
   /// Adds a v2.1 request [body] sent with [headers]; its example is [name].
   void add(
@@ -77,8 +112,8 @@ class RequestBodies {
           },
         };
 
-  _Media _media(String mediaType, String kind) =>
-      _content.putIfAbsent(mediaType, () => _Media(kind));
+  MediaContent _media(String mediaType, String kind) =>
+      _content.putIfAbsent(mediaType, () => MediaContent(kind));
 
   void _raw(
     Map<Object?, Object?> body,
@@ -86,29 +121,21 @@ class RequestBodies {
     Map<String, String> variables,
     String name,
   ) {
-    final text = body['raw'];
-    if (text is! String || text.trim().isEmpty) return;
-    final language = switch (body['options']) {
-      {'raw': {'language': final String language}} => language,
-      _ => null,
-    };
-    var mediaType = contentType(headers) ?? _languages[language];
-    final json = mediaType == null || isJsonMediaType(mediaType)
-        ? parseLenientJson(text, variables)
-        : null;
-    mediaType ??= json is Map || json is List
-        ? 'application/json'
-        : 'text/plain';
-    if (!isJsonMediaType(mediaType)) {
-      _media(mediaType, 'text').add(name, substituteVariables(text, variables));
-      return;
-    }
-    if (json == null) {
-      onWarning?.call(
-        "body of '$name' is not valid JSON; described as an object",
+    if (body['raw'] case final String text) {
+      addRawContent(
+        _content,
+        text,
+        mediaType:
+            contentType(headers) ??
+            languageMediaType(switch (body['options']) {
+              {'raw': {'language': final language}} => language,
+              _ => null,
+            }),
+        variables: variables,
+        name: name,
+        onWarning: onWarning,
       );
     }
-    _media(mediaType, 'json').add(name, json ?? const <String, Object?>{});
   }
 
   void _form(
@@ -198,10 +225,10 @@ Object? _scalar(String text) {
   return text;
 }
 
-/// One media type of a request body: `json` (inferred from samples), `form`
-/// (fields), `text` or `binary`.
-class _Media {
-  _Media(this.kind);
+/// One media type of a request or response body: `json` (inferred from
+/// samples), `form` (fields), `text` or `binary`.
+class MediaContent {
+  MediaContent(this.kind);
 
   final String kind;
   final samples = <Object?>[];
