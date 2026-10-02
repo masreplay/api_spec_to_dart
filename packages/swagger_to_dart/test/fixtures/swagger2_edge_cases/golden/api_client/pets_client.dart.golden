@@ -106,9 +106,6 @@ abstract class PetsClient {
                 'type': 'array',
                 'items': {'\$ref': '#/components/schemas/Pet'},
               },
-              'example': [
-                {'name': 'Tom', 'petType': 'Cat'},
-              ],
             },
           },
         },
