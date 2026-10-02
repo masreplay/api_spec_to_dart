@@ -27,6 +27,8 @@ class ModelGenerator extends LibraryGenerator {
       context,
     ).shouldUseGenericStrategy(model)) {
       strategy = GenericModelGeneratorStrategy(context);
+    } else if (TypedefModelStrategy.accepts(schema)) {
+      strategy = TypedefModelStrategy(context);
     } else {
       strategy = RegularModelGeneratorStrategy(context);
     }

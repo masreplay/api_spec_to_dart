@@ -402,6 +402,17 @@ mixin _$OpenApiSchemas {
   Map<String, OpenApiSchema>? get properties;
   @JsonKey(name: 'type')
   String? get type;
+
+  /// An alias component (`Animal: {$ref: Pet}`).
+  @JsonKey(name: r'$ref')
+  String? get ref;
+
+  /// Array components: the item schema.
+  @OpenApiSchemaJsonConverter()
+  @JsonKey(name: 'items')
+  OpenApiSchema? get items;
+  @JsonKey(name: 'format')
+  String? get format;
   @JsonKey(name: 'required')
   List<String>? get required_;
   @JsonKey(name: 'enum')
@@ -456,6 +467,11 @@ mixin _$OpenApiSchemas {
               _this.properties,
             ) &&
             (identical(other.type, _this.type) || other.type == _this.type) &&
+            (identical(other.ref, _this.ref) || other.ref == _this.ref) &&
+            (identical(other.items, _this.items) ||
+                other.items == _this.items) &&
+            (identical(other.format, _this.format) ||
+                other.format == _this.format) &&
             const DeepCollectionEquality().equals(
               other.required_,
               _this.required_,
@@ -489,6 +505,9 @@ mixin _$OpenApiSchemas {
       runtimeType,
       const DeepCollectionEquality().hash(_this.properties),
       _this.type,
+      _this.ref,
+      _this.items,
+      _this.format,
       const DeepCollectionEquality().hash(_this.required_),
       const DeepCollectionEquality().hash(_this.enum_),
       const DeepCollectionEquality().hash(_this.const_),
@@ -506,7 +525,7 @@ mixin _$OpenApiSchemas {
   @override
   String toString() {
     final _this = this as OpenApiSchemas;
-    return 'OpenApiSchemas(properties: ${_this.properties}, type: ${_this.type}, required_: ${_this.required_}, enum_: ${_this.enum_}, const_: ${_this.const_}, title: ${_this.title}, description: ${_this.description}, xEnumVarnames: ${_this.xEnumVarnames}, additionalProperties: ${_this.additionalProperties}, oneOf: ${_this.oneOf}, anyOf: ${_this.anyOf}, discriminator: ${_this.discriminator}, allOf: ${_this.allOf})';
+    return 'OpenApiSchemas(properties: ${_this.properties}, type: ${_this.type}, ref: ${_this.ref}, items: ${_this.items}, format: ${_this.format}, required_: ${_this.required_}, enum_: ${_this.enum_}, const_: ${_this.const_}, title: ${_this.title}, description: ${_this.description}, xEnumVarnames: ${_this.xEnumVarnames}, additionalProperties: ${_this.additionalProperties}, oneOf: ${_this.oneOf}, anyOf: ${_this.anyOf}, discriminator: ${_this.discriminator}, allOf: ${_this.allOf})';
   }
 }
 
@@ -522,6 +541,9 @@ abstract mixin class $OpenApiSchemasCopyWith<$Res> {
     @JsonKey(name: 'properties')
     Map<String, OpenApiSchema>? properties,
     @JsonKey(name: 'type') String? type,
+    @JsonKey(name: r'$ref') String? ref,
+    @OpenApiSchemaJsonConverter() @JsonKey(name: 'items') OpenApiSchema? items,
+    @JsonKey(name: 'format') String? format,
     @JsonKey(name: 'required') List<String>? required_,
     @JsonKey(name: 'enum') List<Object?>? enum_,
     @JsonKey(name: 'const') Object? const_,
@@ -540,6 +562,7 @@ abstract mixin class $OpenApiSchemasCopyWith<$Res> {
     @JsonKey(name: 'allOf') List<Map<String, dynamic>>? allOf,
   });
 
+  $OpenApiSchemaCopyWith<$Res>? get items;
   $OpenApiSchemaOneOfDiscriminatorCopyWith<$Res>? get discriminator;
 }
 
@@ -558,6 +581,9 @@ class _$OpenApiSchemasCopyWithImpl<$Res>
   $Res call({
     Object? properties = freezed,
     Object? type = freezed,
+    Object? ref = freezed,
+    Object? items = freezed,
+    Object? format = freezed,
     Object? required_ = freezed,
     Object? enum_ = freezed,
     Object? const_ = freezed,
@@ -579,6 +605,18 @@ class _$OpenApiSchemasCopyWithImpl<$Res>
         type: freezed == type
             ? _self.type
             : type // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ref: freezed == ref
+            ? _self.ref
+            : ref // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        items: freezed == items
+            ? _self.items
+            : items // ignore: cast_nullable_to_non_nullable
+                  as OpenApiSchema?,
+        format: freezed == format
+            ? _self.format
+            : format // ignore: cast_nullable_to_non_nullable
                   as String?,
         required_: freezed == required_
             ? _self.required_
@@ -622,6 +660,20 @@ class _$OpenApiSchemasCopyWithImpl<$Res>
                   as List<Map<String, dynamic>>?,
       ),
     );
+  }
+
+  /// Create a copy of OpenApiSchemas
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $OpenApiSchemaCopyWith<$Res>? get items {
+    if (_self.items == null) {
+      return null;
+    }
+
+    return $OpenApiSchemaCopyWith<$Res>(_self.items!, (value) {
+      return _then(_self.copyWith(items: value));
+    });
   }
 
   /// Create a copy of OpenApiSchemas
@@ -740,6 +792,11 @@ extension OpenApiSchemasPatterns on OpenApiSchemas {
       @JsonKey(name: 'properties')
       Map<String, OpenApiSchema>? properties,
       @JsonKey(name: 'type') String? type,
+      @JsonKey(name: r'$ref') String? ref,
+      @OpenApiSchemaJsonConverter()
+      @JsonKey(name: 'items')
+      OpenApiSchema? items,
+      @JsonKey(name: 'format') String? format,
       @JsonKey(name: 'required') List<String>? required_,
       @JsonKey(name: 'enum') List<Object?>? enum_,
       @JsonKey(name: 'const') Object? const_,
@@ -766,6 +823,9 @@ extension OpenApiSchemasPatterns on OpenApiSchemas {
         return $default(
           _that.properties,
           _that.type,
+          _that.ref,
+          _that.items,
+          _that.format,
           _that.required_,
           _that.enum_,
           _that.const_,
@@ -803,6 +863,11 @@ extension OpenApiSchemasPatterns on OpenApiSchemas {
       @JsonKey(name: 'properties')
       Map<String, OpenApiSchema>? properties,
       @JsonKey(name: 'type') String? type,
+      @JsonKey(name: r'$ref') String? ref,
+      @OpenApiSchemaJsonConverter()
+      @JsonKey(name: 'items')
+      OpenApiSchema? items,
+      @JsonKey(name: 'format') String? format,
       @JsonKey(name: 'required') List<String>? required_,
       @JsonKey(name: 'enum') List<Object?>? enum_,
       @JsonKey(name: 'const') Object? const_,
@@ -828,6 +893,9 @@ extension OpenApiSchemasPatterns on OpenApiSchemas {
         return $default(
           _that.properties,
           _that.type,
+          _that.ref,
+          _that.items,
+          _that.format,
           _that.required_,
           _that.enum_,
           _that.const_,
@@ -864,6 +932,11 @@ extension OpenApiSchemasPatterns on OpenApiSchemas {
       @JsonKey(name: 'properties')
       Map<String, OpenApiSchema>? properties,
       @JsonKey(name: 'type') String? type,
+      @JsonKey(name: r'$ref') String? ref,
+      @OpenApiSchemaJsonConverter()
+      @JsonKey(name: 'items')
+      OpenApiSchema? items,
+      @JsonKey(name: 'format') String? format,
       @JsonKey(name: 'required') List<String>? required_,
       @JsonKey(name: 'enum') List<Object?>? enum_,
       @JsonKey(name: 'const') Object? const_,
@@ -889,6 +962,9 @@ extension OpenApiSchemasPatterns on OpenApiSchemas {
         return $default(
           _that.properties,
           _that.type,
+          _that.ref,
+          _that.items,
+          _that.format,
           _that.required_,
           _that.enum_,
           _that.const_,
@@ -915,6 +991,9 @@ class _OpenApiSchemas extends OpenApiSchemas {
     @JsonKey(name: 'properties')
     required Map<String, OpenApiSchema>? properties,
     @JsonKey(name: 'type') this.type,
+    @JsonKey(name: r'$ref') this.ref,
+    @OpenApiSchemaJsonConverter() @JsonKey(name: 'items') this.items,
+    @JsonKey(name: 'format') this.format,
     @JsonKey(name: 'required') List<String>? required_,
     @JsonKey(name: 'enum') List<Object?>? enum_,
     @JsonKey(name: 'const') this.const_,
@@ -956,6 +1035,20 @@ class _OpenApiSchemas extends OpenApiSchemas {
   @override
   @JsonKey(name: 'type')
   final String? type;
+
+  /// An alias component (`Animal: {$ref: Pet}`).
+  @override
+  @JsonKey(name: r'$ref')
+  final String? ref;
+
+  /// Array components: the item schema.
+  @override
+  @OpenApiSchemaJsonConverter()
+  @JsonKey(name: 'items')
+  final OpenApiSchema? items;
+  @override
+  @JsonKey(name: 'format')
+  final String? format;
   final List<String>? _required_;
   @override
   @JsonKey(name: 'required')
@@ -1068,6 +1161,9 @@ class _OpenApiSchemas extends OpenApiSchemas {
               _properties,
             ) &&
             (identical(other.type, type) || other.type == type) &&
+            (identical(other.ref, ref) || other.ref == ref) &&
+            (identical(other.items, items) || other.items == items) &&
+            (identical(other.format, format) || other.format == format) &&
             const DeepCollectionEquality().equals(
               other.required_,
               _required_,
@@ -1099,6 +1195,9 @@ class _OpenApiSchemas extends OpenApiSchemas {
       runtimeType,
       const DeepCollectionEquality().hash(_properties),
       type,
+      ref,
+      items,
+      format,
       const DeepCollectionEquality().hash(_required_),
       const DeepCollectionEquality().hash(_enum_),
       const DeepCollectionEquality().hash(const_),
@@ -1115,7 +1214,7 @@ class _OpenApiSchemas extends OpenApiSchemas {
 
   @override
   String toString() {
-    return 'OpenApiSchemas(properties: $properties, type: $type, required_: $required_, enum_: $enum_, const_: $const_, title: $title, description: $description, xEnumVarnames: $xEnumVarnames, additionalProperties: $additionalProperties, oneOf: $oneOf, anyOf: $anyOf, discriminator: $discriminator, allOf: $allOf)';
+    return 'OpenApiSchemas(properties: $properties, type: $type, ref: $ref, items: $items, format: $format, required_: $required_, enum_: $enum_, const_: $const_, title: $title, description: $description, xEnumVarnames: $xEnumVarnames, additionalProperties: $additionalProperties, oneOf: $oneOf, anyOf: $anyOf, discriminator: $discriminator, allOf: $allOf)';
   }
 }
 
@@ -1133,6 +1232,9 @@ abstract mixin class _$OpenApiSchemasCopyWith<$Res>
     @JsonKey(name: 'properties')
     Map<String, OpenApiSchema>? properties,
     @JsonKey(name: 'type') String? type,
+    @JsonKey(name: r'$ref') String? ref,
+    @OpenApiSchemaJsonConverter() @JsonKey(name: 'items') OpenApiSchema? items,
+    @JsonKey(name: 'format') String? format,
     @JsonKey(name: 'required') List<String>? required_,
     @JsonKey(name: 'enum') List<Object?>? enum_,
     @JsonKey(name: 'const') Object? const_,
@@ -1152,6 +1254,8 @@ abstract mixin class _$OpenApiSchemasCopyWith<$Res>
   });
 
   @override
+  $OpenApiSchemaCopyWith<$Res>? get items;
+  @override
   $OpenApiSchemaOneOfDiscriminatorCopyWith<$Res>? get discriminator;
 }
 
@@ -1170,6 +1274,9 @@ class __$OpenApiSchemasCopyWithImpl<$Res>
   $Res call({
     Object? properties = freezed,
     Object? type = freezed,
+    Object? ref = freezed,
+    Object? items = freezed,
+    Object? format = freezed,
     Object? required_ = freezed,
     Object? enum_ = freezed,
     Object? const_ = freezed,
@@ -1191,6 +1298,18 @@ class __$OpenApiSchemasCopyWithImpl<$Res>
         type: freezed == type
             ? _self.type
             : type // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ref: freezed == ref
+            ? _self.ref
+            : ref // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        items: freezed == items
+            ? _self.items
+            : items // ignore: cast_nullable_to_non_nullable
+                  as OpenApiSchema?,
+        format: freezed == format
+            ? _self.format
+            : format // ignore: cast_nullable_to_non_nullable
                   as String?,
         required_: freezed == required_
             ? _self._required_
@@ -1234,6 +1353,20 @@ class __$OpenApiSchemasCopyWithImpl<$Res>
                   as List<Map<String, dynamic>>?,
       ),
     );
+  }
+
+  /// Create a copy of OpenApiSchemas
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $OpenApiSchemaCopyWith<$Res>? get items {
+    if (_self.items == null) {
+      return null;
+    }
+
+    return $OpenApiSchemaCopyWith<$Res>(_self.items!, (value) {
+      return _then(_self.copyWith(items: value));
+    });
   }
 
   /// Create a copy of OpenApiSchemas
