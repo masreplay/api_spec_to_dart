@@ -1,0 +1,144 @@
+{
+  "id": "6f1e2d3c-0000-4000-8000-000000000001",
+  "name": "Legacy Library",
+  "description": "A v1 export.",
+  "timestamp": 1400000000000,
+  "variables": [
+    { "key": "baseUrl", "value": "https://library.example.com/api", "type": "string" }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [{ "key": "token", "value": "SECRET-v1-token", "type": "string" }]
+  },
+  "order": ["r-health"],
+  "folders_order": ["f-books"],
+  "folders": [
+    {
+      "id": "f-books",
+      "name": "Books",
+      "description": "Book catalog",
+      "order": ["r-list", "r-create"],
+      "folders_order": ["f-covers"]
+    },
+    {
+      "id": "f-covers",
+      "name": "Covers",
+      "description": "",
+      "order": ["r-upload", "r-raw-cover"]
+    }
+  ],
+  "requests": [
+    {
+      "id": "r-list",
+      "name": "List books",
+      "collectionId": "6f1e2d3c-0000-4000-8000-000000000001",
+      "folder": "f-books",
+      "method": "GET",
+      "url": "{{baseUrl}}/books?author=:author",
+      "headers": "Accept: application/json\nX-Client: legacy\n// X-Debug: 1\n",
+      "queryParams": [
+        { "key": "author", "value": "tolkien", "description": "Author slug", "enabled": true }
+      ],
+      "dataMode": null,
+      "tests": "pm.test('ok', () => {})",
+      "responses_order": ["resp-list"],
+      "responses": [
+        {
+          "id": "resp-list",
+          "name": "Books",
+          "request": "r-list",
+          "responseCode": { "code": 200, "name": "OK" },
+          "headers": [
+            { "key": "X-Total", "value": "1", "name": "X-Total", "description": "Total books" }
+          ],
+          "mime": "application/json",
+          "language": "javascript",
+          "text": "[{\"id\": 1, \"title\": \"The Hobbit\", \"year\": 1937}]",
+          "time": 31
+        }
+      ]
+    },
+    {
+      "id": "r-create",
+      "name": "Create book",
+      "collectionId": "6f1e2d3c-0000-4000-8000-000000000001",
+      "method": "POST",
+      "url": "{{baseUrl}}/books",
+      "headers": "Content-Type: application/json\n",
+      "dataMode": "raw",
+      "rawModeData": "{\n  \"title\": \"The Hobbit\",\n  \"year\": 1937 // first edition\n}",
+      "currentHelper": "apikeyAuth",
+      "helperAttributes": { "id": "apikey", "key": "X-Library-Key", "value": "SECRET-v1-key", "in": "header" },
+      "responses": [
+        {
+          "id": "resp-create",
+          "name": "Created",
+          "request": "r-create",
+          "responseCode": { "code": 201, "name": "Created" },
+          "headers": [{ "key": "Content-Type", "value": "application/json" }],
+          "text": "{\"id\": 2, \"title\": \"The Hobbit\", \"year\": 1937}"
+        }
+      ]
+    },
+    {
+      "id": "r-upload",
+      "name": "Upload cover",
+      "collectionId": "6f1e2d3c-0000-4000-8000-000000000001",
+      "method": "POST",
+      "url": "{{baseUrl}}/books/:bookId/cover",
+      "headers": "",
+      "pathVariables": { "bookId": "1" },
+      "pathVariableData": [{ "key": "bookId", "value": "1", "description": "Book id" }],
+      "dataMode": "params",
+      "data": [
+        { "key": "cover", "value": "/Users/me/cover.png", "type": "file", "enabled": true },
+        { "key": "caption", "value": "Front", "type": "text", "enabled": true },
+        { "key": "draft", "value": "true", "type": "text", "enabled": false }
+      ]
+    },
+    {
+      "id": "r-raw-cover",
+      "name": "Replace cover",
+      "collectionId": "6f1e2d3c-0000-4000-8000-000000000001",
+      "method": "PUT",
+      "url": "{{baseUrl}}/books/:bookId/cover",
+      "headers": "Content-Type: image/png\n",
+      "dataMode": "binary",
+      "rawModeData": "/Users/me/cover.png"
+    },
+    {
+      "id": "r-search",
+      "name": "Search",
+      "collectionId": "6f1e2d3c-0000-4000-8000-000000000001",
+      "folder": "f-books",
+      "method": "POST",
+      "url": "{{baseUrl}}/search",
+      "headers": "",
+      "dataMode": "urlencoded",
+      "data": [
+        { "key": "q", "value": "hobbit", "type": "text", "enabled": true },
+        { "key": "page", "value": "1", "type": "text", "enabled": true }
+      ]
+    },
+    {
+      "id": "r-health",
+      "name": "Health",
+      "collectionId": "6f1e2d3c-0000-4000-8000-000000000001",
+      "method": "GET",
+      "url": "{{baseUrl}}/health",
+      "headers": "",
+      "currentHelper": "normal",
+      "auth": { "type": "noauth" }
+    },
+    {
+      "id": "r-graphql",
+      "name": "GraphQL",
+      "collectionId": "6f1e2d3c-0000-4000-8000-000000000001",
+      "method": "POST",
+      "url": "{{baseUrl}}/graphql",
+      "headers": "",
+      "dataMode": "graphql",
+      "graphqlModeData": { "query": "{ books { title } }", "variables": "{}" }
+    }
+  ]
+}

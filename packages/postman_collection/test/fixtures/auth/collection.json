@@ -1,0 +1,265 @@
+{
+  "info": {
+    "name": "Auth",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [{ "key": "token", "value": "{{accessToken}}", "type": "string" }]
+  },
+  "variable": [
+    { "key": "accessToken", "value": "SECRET-access-token" },
+    { "key": "tokenUrl", "value": "https://auth.example.com/oauth/token" }
+  ],
+  "item": [
+    {
+      "name": "Inherits bearer",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "X-Token", "value": "{{accessToken}}" }],
+        "url": "https://api.example.com/me"
+      },
+      "response": []
+    },
+    {
+      "name": "Public",
+      "request": {
+        "auth": { "type": "noauth" },
+        "method": "GET",
+        "header": [],
+        "url": "https://api.example.com/public"
+      },
+      "response": []
+    },
+    {
+      "name": "Basic folder",
+      "auth": {
+        "type": "basic",
+        "basic": [
+          { "key": "username", "value": "SECRET-user", "type": "string" },
+          { "key": "password", "value": "SECRET-password", "type": "string" }
+        ]
+      },
+      "item": [
+        {
+          "name": "Inherits basic",
+          "request": { "method": "GET", "header": [], "url": "https://api.example.com/basic" },
+          "response": []
+        },
+        {
+          "name": "Digest",
+          "request": {
+            "auth": {
+              "type": "digest",
+              "digest": [
+                { "key": "username", "value": "SECRET-user", "type": "string" },
+                { "key": "password", "value": "SECRET-password", "type": "string" },
+                { "key": "realm", "value": "SECRET-realm", "type": "string" }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": "https://api.example.com/digest"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "API key in a header",
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            { "key": "key", "value": "X-API-Key", "type": "string" },
+            { "key": "value", "value": "SECRET-api-key", "type": "string" },
+            { "key": "in", "value": "header", "type": "string" }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": "https://api.example.com/apikey/header"
+      },
+      "response": []
+    },
+    {
+      "name": "API key in the query",
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            { "key": "key", "value": "api_key", "type": "string" },
+            { "key": "value", "value": "SECRET-api-key", "type": "string" },
+            { "key": "in", "value": "query", "type": "string" }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": "https://api.example.com/apikey/query"
+      },
+      "response": []
+    },
+    {
+      "name": "OAuth2 authorization code",
+      "request": {
+        "auth": {
+          "type": "oauth2",
+          "oauth2": [
+            { "key": "grant_type", "value": "authorization_code", "type": "string" },
+            { "key": "authUrl", "value": "https://auth.example.com/oauth/authorize", "type": "string" },
+            { "key": "accessTokenUrl", "value": "{{tokenUrl}}", "type": "string" },
+            { "key": "scope", "value": "read:users write:users", "type": "string" },
+            { "key": "clientId", "value": "SECRET-client-id", "type": "string" },
+            { "key": "clientSecret", "value": "SECRET-client-secret", "type": "string" },
+            { "key": "accessToken", "value": "SECRET-oauth-token", "type": "string" },
+            { "key": "refreshToken", "value": "SECRET-refresh-token", "type": "string" }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": "https://api.example.com/oauth2/code"
+      },
+      "response": []
+    },
+    {
+      "name": "OAuth2 client credentials",
+      "request": {
+        "auth": {
+          "type": "oauth2",
+          "oauth2": [
+            { "key": "grant_type", "value": "client_credentials", "type": "string" },
+            { "key": "accessTokenUrl", "value": "{{tokenUrl}}", "type": "string" },
+            { "key": "clientSecret", "value": "SECRET-client-secret", "type": "string" }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": "https://api.example.com/oauth2/client"
+      },
+      "response": []
+    },
+    {
+      "name": "OAuth2 password",
+      "request": {
+        "auth": {
+          "type": "oauth2",
+          "oauth2": [
+            { "key": "grant_type", "value": "password_credentials", "type": "string" },
+            { "key": "accessTokenUrl", "value": "{{tokenUrl}}", "type": "string" },
+            { "key": "username", "value": "SECRET-user", "type": "string" },
+            { "key": "password", "value": "SECRET-password", "type": "string" }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": "https://api.example.com/oauth2/password"
+      },
+      "response": []
+    },
+    {
+      "name": "OAuth2 implicit",
+      "request": {
+        "auth": {
+          "type": "oauth2",
+          "oauth2": [
+            { "key": "grant_type", "value": "implicit", "type": "string" },
+            { "key": "authUrl", "value": "https://auth.example.com/oauth/authorize", "type": "string" },
+            { "key": "scope", "value": "read:users", "type": "string" }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": "https://api.example.com/oauth2/implicit"
+      },
+      "response": []
+    },
+    {
+      "name": "Signed",
+      "item": [
+        {
+          "name": "OAuth1",
+          "request": {
+            "auth": {
+              "type": "oauth1",
+              "oauth1": [
+                { "key": "consumerKey", "value": "SECRET-consumer-key", "type": "string" },
+                { "key": "consumerSecret", "value": "SECRET-consumer-secret", "type": "string" },
+                { "key": "tokenSecret", "value": "SECRET-token-secret", "type": "string" }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": "https://api.example.com/oauth1"
+          },
+          "response": []
+        },
+        {
+          "name": "Hawk",
+          "request": {
+            "auth": {
+              "type": "hawk",
+              "hawk": [
+                { "key": "authId", "value": "SECRET-hawk-id", "type": "string" },
+                { "key": "authKey", "value": "SECRET-hawk-key", "type": "string" }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": "https://api.example.com/hawk"
+          },
+          "response": []
+        },
+        {
+          "name": "AWS",
+          "request": {
+            "auth": {
+              "type": "awsv4",
+              "awsv4": [
+                { "key": "accessKey", "value": "SECRET-aws-access", "type": "string" },
+                { "key": "secretKey", "value": "SECRET-aws-secret", "type": "string" },
+                { "key": "region", "value": "eu-west-1", "type": "string" }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": "https://api.example.com/aws"
+          },
+          "response": []
+        },
+        {
+          "name": "NTLM",
+          "request": {
+            "auth": {
+              "type": "ntlm",
+              "ntlm": [
+                { "key": "username", "value": "SECRET-user", "type": "string" },
+                { "key": "password", "value": "SECRET-password", "type": "string" }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": "https://api.example.com/ntlm"
+          },
+          "response": []
+        },
+        {
+          "name": "EdgeGrid",
+          "request": {
+            "auth": {
+              "type": "edgegrid",
+              "edgegrid": [
+                { "key": "accessToken", "value": "SECRET-eg-access", "type": "string" },
+                { "key": "clientToken", "value": "SECRET-eg-client", "type": "string" },
+                { "key": "clientSecret", "value": "SECRET-eg-secret", "type": "string" }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": "https://api.example.com/edgegrid"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

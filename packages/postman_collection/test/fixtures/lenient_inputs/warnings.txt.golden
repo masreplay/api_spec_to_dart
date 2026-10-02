@@ -1,0 +1,8 @@
+auth type 'jwt' is not in the Postman v2.1 schema; declared as http 'bearer'
+header 'Bad Header Name' of 'Null values' is not a valid header name; skipped
+auth type 'asap' is not in the Postman v2.1 schema; declared as http 'asap'
+body mode 'binary' of 'ASAP auth' is skipped
+body of 'Broken JSON body' is not valid JSON; described as an object
+request 'Bad method' has the invalid method 'NOT VALID'; skipped
+item 'No request' has no request; skipped
+item "a string item" is not an object; skipped

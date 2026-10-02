@@ -1,0 +1,8 @@
+$kind: http-request
+name: 'get book by :id'
+method: GET
+url: '{{base_url}}/books/:id'
+order: 2000
+pathVariables:
+  - key: id
+    value: '1'

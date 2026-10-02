@@ -1,0 +1,69 @@
+{
+  "info": {
+    "name": "Multi host",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "authUrl", "value": "https://auth.example.com" }
+  ],
+  "item": [
+    {
+      "name": "List users",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "https://api.example.com/users",
+          "protocol": "https",
+          "host": ["api", "example", "com"],
+          "path": ["users"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get user",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "https://api.example.com/users/:id",
+          "protocol": "https",
+          "host": ["api", "example", "com"],
+          "path": ["users", ":id"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get token",
+      "request": {
+        "method": "POST",
+        "url": "{{authUrl}}/token"
+      },
+      "response": []
+    },
+    {
+      "name": "Upload",
+      "request": {
+        "method": "PUT",
+        "url": {
+          "raw": "http://localhost:9000/files",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "9000",
+          "path": ["files"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "No scheme",
+      "request": { "method": "GET", "url": "cdn.example.com/assets/app.js" },
+      "response": []
+    },
+    {
+      "name": "Relative",
+      "request": { "method": "GET", "url": "/status" },
+      "response": []
+    }
+  ]
+}
