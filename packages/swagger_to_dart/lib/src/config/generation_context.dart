@@ -165,13 +165,16 @@ class GenerationContextBuilder {
     return SwaggerToDartYaml.fromYamlMap(yaml).swaggerToDart;
   }
 
-  /// The spec at `input_directory`, refreshed from `url` when configured.
+  /// The spec at `input_directory` (refreshed from `url` when configured),
+  /// converted to OpenAPI 3.
   Future<OpenApi> _loadOpenApi(SwaggerToDart config) async {
     final input = path.join(rootDirectory, config.inputDirectory);
-    final json = await loadSpec(url: config.url, path: input);
-    if (json is! Map<String, dynamic>) {
-      throw FormatException('The spec is not a JSON or YAML object', input);
-    }
-    return OpenApi.fromJson(json);
+    final document = await loadSpec(url: config.url, path: input);
+    return OpenApi.fromJson(
+      toOpenApiJson(
+        document,
+        sourceName: path.basenameWithoutExtension(input),
+      ),
+    );
   }
 }
