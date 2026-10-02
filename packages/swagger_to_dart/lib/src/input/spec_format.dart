@@ -31,6 +31,7 @@ SpecFormat detectSpecFormat(Object? document) {
 /// The OpenAPI 3.x JSON for any supported document. [sourceName] (file name
 /// without extension) names a JSON Schema root without a title.
 Map<String, dynamic> toOpenApiJson(Object? document, {String? sourceName}) {
+  document = _versionsAsStrings(document);
   return switch (detectSpecFormat(document)) {
     SpecFormat.openApi3 => document as Map<String, dynamic>,
     SpecFormat.swagger2 => swagger2ToOpenApi(document as Map<String, dynamic>),
@@ -46,3 +47,16 @@ Map<String, dynamic> toOpenApiJson(Object? document, {String? sourceName}) {
     ),
   };
 }
+
+/// YAML reads unquoted `openapi: 3.1`, `swagger: 2.0` and `version: 1.0`
+/// as numbers; the models expect strings.
+Object? _versionsAsStrings(Object? document) => switch (document) {
+  final Map<String, dynamic> map => {
+    ...map,
+    for (final key in const ['openapi', 'swagger'])
+      if (map[key] case final num version) key: '$version',
+    if (map['info'] case final Map info when info['version'] is num)
+      'info': <String, dynamic>{...info, 'version': '${info['version']}'},
+  },
+  _ => document,
+};

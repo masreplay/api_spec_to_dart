@@ -94,7 +94,27 @@ void main() {
         'paths': <String, dynamic>{},
       };
 
-      expect(toOpenApiJson(spec), same(spec));
+      expect(toOpenApiJson(spec), spec);
+    });
+
+    test('YAML-number versions become strings', () {
+      final openApi = toOpenApiJson({
+        'openapi': 3.1,
+        'info': {'title': 'T', 'version': 1.0},
+        'paths': <String, dynamic>{},
+      });
+
+      expect(openApi['openapi'], '3.1');
+      expect(openApi['info'], {'title': 'T', 'version': '1.0'});
+      expect(OpenApi.fromJson(openApi).info?.version, '1.0');
+
+      final swagger = toOpenApiJson({
+        'swagger': 2.0,
+        'info': {'title': 'T', 'version': 2},
+        'paths': <String, dynamic>{},
+      });
+      expect(swagger['info'], {'title': 'T', 'version': '2'});
+      expect(OpenApi.fromJson(swagger).info?.version, '2');
     });
 
     test('Postman input is not wired yet', () {
