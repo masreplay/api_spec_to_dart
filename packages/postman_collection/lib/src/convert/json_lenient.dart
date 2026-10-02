@@ -91,6 +91,39 @@ String _substituteInString(String content, Map<String, String> variables) =>
       return quoted.substring(1, quoted.length - 1);
     });
 
+/// The text of a Postman `description` (a string or `{content}`), or null.
+String? descriptionText(Object? description) => switch (description) {
+  final String text when text.isNotEmpty => text,
+  {'content': final String text} when text.isNotEmpty => text,
+  _ => null,
+};
+
+/// Header entries (`{key, value, …}`) from a header list, whose items may be
+/// `K: V` strings, or from one raw string of `K: V` lines (`//` disables).
+List<Map<Object?, Object?>> headerEntries(Object? header) => switch (header) {
+  final List<Object?> list => [
+    for (final entry in list)
+      if (entry is Map) entry else if (entry is String) ...headerEntries(entry),
+  ],
+  final String text => [
+    for (final line in text.split('\n')) ?_headerLine(line.trim()),
+  ],
+  _ => const [],
+};
+
+Map<Object?, Object?>? _headerLine(String line) {
+  final disabled = line.startsWith('//');
+  final header = disabled ? line.substring(2) : line;
+  final colon = header.indexOf(':');
+  final key = colon < 0 ? '' : header.substring(0, colon).trim();
+  if (key.isEmpty || key.contains(' ')) return null;
+  return {
+    'key': key,
+    'value': header.substring(colon + 1).trim(),
+    if (disabled) 'disabled': true,
+  };
+}
+
 String _bareValue(String? text) {
   if (text == null) return 'null';
   try {
