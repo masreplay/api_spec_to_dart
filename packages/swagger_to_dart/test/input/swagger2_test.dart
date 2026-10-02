@@ -878,6 +878,44 @@ void main() {
     });
   });
 
+  test('the official schemas reject invalid documents (controls)', () {
+    // 2.0: a body parameter needs a schema.
+    expect(
+      () => expectValid(
+        _v2,
+        _swagger(
+          paths: {
+            '/x': {
+              'post': {
+                'parameters': [
+                  {'name': 'b', 'in': 'body'},
+                ],
+                'responses': _ok,
+              },
+            },
+          },
+        ),
+      ),
+      throwsStateError,
+    );
+    // 3.0: `consumes` is 2.0 only.
+    expect(
+      () => expectValid(_v3, {
+        'openapi': '3.0.3',
+        'info': {'title': 'T', 'version': '1'},
+        'paths': {
+          '/x': {
+            'get': {
+              'consumes': ['application/json'],
+              'responses': _ok,
+            },
+          },
+        },
+      }),
+      throwsStateError,
+    );
+  });
+
   group('fixtures', () {
     for (final name in ['swagger2_petstore', 'swagger2_edge_cases']) {
       test('$name is valid 2.0 and converts to valid 3.0', () {
