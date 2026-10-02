@@ -1,0 +1,40 @@
+/// person
+///
+/// ```json
+/// {
+///     "properties": {
+///         "id": {
+///             "type": "integer"
+///         },
+///         "name": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'person.freezed.dart';
+part 'person.g.dart';
+
+@freezed
+abstract class Person with _$Person {
+  const Person._();
+
+  @jsonSerializable
+  const factory Person({
+    /// id
+    @JsonKey(name: Person.idKey_) int? id,
+
+    /// name
+    @JsonKey(name: Person.nameKey_) String? name,
+  }) = _Person;
+
+  factory Person.fromJson(Map<String, dynamic> json) => _$PersonFromJson(json);
+
+  static const String idKey_ = 'id';
+
+  static const String nameKey_ = 'name';
+}
