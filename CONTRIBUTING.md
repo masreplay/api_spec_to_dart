@@ -30,10 +30,18 @@ fvm dart pub get --no-example        # resolves the whole pub workspace
 
 ## The loop
 
-1. **Reproduce.** Add a fixture `test/fixtures/<scenario>/openapi.json`
-   (optionally `swagger_to_dart.yaml`, and a `pubspec.yaml` with a `flutter`
-   dependency for Flutter-only behaviour). Keep the spec minimal — one
-   feature or issue per fixture, e.g. `issue_57_multipart_params`.
+1. **Reproduce.** Add a fixture `test/fixtures/<scenario>/` with an input
+   file. Keep the spec minimal — one feature or issue per fixture, e.g.
+   `issue_57_multipart_params`.
+
+   | File | Role |
+   |---|---|
+   | `openapi.json`, `openapi.yaml`, `swagger.json` (Swagger 2.0), `schema.json` (JSON Schema), `collection.json` (Postman) | The input: the first that exists is read and converted to OpenAPI 3 exactly like users' input (`readSpecSync` + `toOpenApiJson`) |
+   | `swagger_to_dart.yaml` | Generator config (optional) |
+   | `pubspec.yaml` | The consuming project; a `flutter` dependency marks Flutter-only behaviour, which the e2e test skips (optional) |
+   | `golden/<path>.golden` | Expected generated files |
+   | `roundtrip_test.dart.tmpl` | Copied into `swagger_to_dart_e2e/test/` and run against the compiled output (optional) |
+
 2. **Red.** Pick the cheapest failing signal:
    - a unit test for pure logic (`test/utils`, `test/generator`, …),
    - an assertion on `renderSpec(spec).files['models/x.dart']`,
