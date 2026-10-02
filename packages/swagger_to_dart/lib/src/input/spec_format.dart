@@ -1,3 +1,5 @@
+import 'json_schema.dart';
+
 /// The kinds of document [toOpenApiJson] accepts.
 enum SpecFormat { openApi3, swagger2, jsonSchema, postman, unknown }
 
@@ -31,7 +33,10 @@ Map<String, dynamic> toOpenApiJson(Object? document, {String? sourceName}) {
   return switch (detectSpecFormat(document)) {
     SpecFormat.openApi3 => document as Map<String, dynamic>,
     SpecFormat.swagger2 => throw UnimplementedError('Swagger 2.0'),
-    SpecFormat.jsonSchema => throw UnimplementedError('JSON Schema'),
+    SpecFormat.jsonSchema => jsonSchemaToOpenApi(
+      document as Map<String, dynamic>,
+      sourceName: sourceName,
+    ),
     SpecFormat.postman => throw UnsupportedError(
       'Postman input is wired in Task 6',
     ),

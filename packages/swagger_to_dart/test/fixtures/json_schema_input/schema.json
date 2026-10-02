@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/tree.schema.json",
+  "title": "Tree",
+  "description": "A tree of labelled nodes.",
+  "type": "object",
+  "required": ["id", "root"],
+  "properties": {
+    "id": { "type": "string" },
+    "root": { "$ref": "#/$defs/node" },
+    "owner": { "$ref": "#/$defs/person" },
+    "subtrees": { "type": "array", "items": { "$ref": "#" } }
+  },
+  "$defs": {
+    "node": {
+      "$id": "https://example.com/node.schema.json",
+      "title": "Label",
+      "type": "object",
+      "required": ["label"],
+      "properties": {
+        "label": { "title": "Node label", "type": "string" },
+        "children": { "type": "array", "items": { "$ref": "#/$defs/node" } }
+      }
+    },
+    "person": {
+      "title": "Label",
+      "type": "object",
+      "properties": {
+        "id": { "type": "integer" },
+        "name": { "type": "string" }
+      }
+    }
+  }
+}
