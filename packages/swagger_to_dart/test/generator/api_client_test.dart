@@ -297,6 +297,26 @@ void main() {
     });
   });
 
+  test('repeated tags, also after dropping non-ASCII, add a method once', () {
+    final client = renderSpec(
+      _spec(
+        paths: {
+          '/a': {
+            'get': {
+              'tags': ['items', 'items', 'itemsé'],
+              'operationId': 'listItems',
+              'responses': {
+                '200': {'description': 'OK'},
+              },
+            },
+          },
+        },
+      ),
+    ).files['api_client/items_client.dart']!;
+
+    expect(RegExp(r'listItems\d*\(\{').allMatches(client), hasLength(1));
+  });
+
   test('a client using no model does not import the models', () {
     final client = renderSpec(
       _spec(
