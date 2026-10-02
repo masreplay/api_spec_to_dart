@@ -259,6 +259,44 @@ void main() {
     });
   });
 
+  group('operation and path servers give absolute URLs (G7)', () {
+    late Map<String, String> files;
+    setUpAll(() {
+      files = Fixture(
+        Directory('test/fixtures/operation_servers'),
+      ).render().files;
+    });
+
+    test('an operation server', () {
+      expect(
+        files['api_client/auth_client.dart'],
+        contains("@POST('https://auth.example.com/token')"),
+      );
+    });
+
+    test('path servers apply to its operations, with variable defaults; '
+        'the operation level wins', () {
+      final client = files['api_client/files_client.dart']!;
+
+      expect(
+        client,
+        contains("@GET('https://acme.files.example.com/v1/files/{id}')"),
+      );
+      expect(
+        client,
+        contains("@DELETE('https://archive.example.com/files/{id}')"),
+      );
+    });
+
+    test('without servers, or repeating the document server, paths stay '
+        'relative to baseUrl', () {
+      final client = files['api_client/service_client.dart']!;
+
+      expect(client, contains("@GET('/health')"));
+      expect(client, contains("@GET('/status')"));
+    });
+  });
+
   test('a client using no model does not import the models', () {
     final client = renderSpec(
       _spec(

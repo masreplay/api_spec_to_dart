@@ -1,0 +1,70 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+part 'files_client.g.dart';
+
+@RestApi()
+abstract class FilesClient {
+  factory FilesClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _FilesClient;
+
+  @GET('https://acme.files.example.com/v1/files/{id}')
+  Future<HttpResponse> getFile({
+    @Path('id') required String id,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['files'],
+      'operationId': 'getFile',
+      'responses': {
+        '204': {'description': 'Found'},
+      },
+      'parameters': [
+        {
+          'name': 'id',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'string'},
+        },
+      ],
+      'servers': [
+        {
+          'url': 'https://{tenant}.files.example.com/v1/',
+          'variables': {
+            'tenant': {'default': 'acme'},
+          },
+        },
+      ],
+    },
+  });
+  @DELETE('https://archive.example.com/files/{id}')
+  Future<HttpResponse> deleteFile({
+    @Path('id') required String id,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['files'],
+      'operationId': 'deleteFile',
+      'servers': [
+        {'url': 'https://archive.example.com'},
+      ],
+      'responses': {
+        '204': {'description': 'Deleted'},
+      },
+      'parameters': [
+        {
+          'name': 'id',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'string'},
+        },
+      ],
+    },
+  });
+}

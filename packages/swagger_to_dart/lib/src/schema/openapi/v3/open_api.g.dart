@@ -90,12 +90,16 @@ Map<String, dynamic> _$OpenApiTagToJson(_OpenApiTag instance) =>
 
 _OpenApiServer _$OpenApiServerFromJson(Map<String, dynamic> json) =>
     _OpenApiServer(
-      url: Uri.parse(json['url'] as String),
+      url: json['url'] as String,
       description: json['description'] as String?,
+      variables: (json['variables'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, e as Map<String, dynamic>),
+      ),
     );
 
 Map<String, dynamic> _$OpenApiServerToJson(_OpenApiServer instance) =>
     <String, dynamic>{
-      'url': instance.url.toString(),
+      'url': instance.url,
       'description': ?instance.description,
+      'variables': ?instance.variables,
     };

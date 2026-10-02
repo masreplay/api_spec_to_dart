@@ -37,6 +37,9 @@ _OpenApiPathMethod _$OpenApiPathMethodFromJson(Map<String, dynamic> json) =>
           OpenApiPathMethodResponse.fromJson(e as Map<String, dynamic>),
         ),
       ),
+      servers: (json['servers'] as List<dynamic>?)
+          ?.map((e) => OpenApiServer.fromJson(e as Map<String, dynamic>))
+          .toList(),
       json: _jsonReadValue(json, 'json') as Map<String, dynamic>?,
     );
 
@@ -51,6 +54,7 @@ Map<String, dynamic> _$OpenApiPathMethodToJson(_OpenApiPathMethod instance) =>
       'parameters': ?instance.parameters?.map((e) => e.toJson()).toList(),
       'requestBody': ?instance.requestBody?.toJson(),
       'responses': ?instance.responses?.map((k, e) => MapEntry(k, e.toJson())),
+      'servers': ?instance.servers?.map((e) => e.toJson()).toList(),
       'json': ?instance.json,
     };
 

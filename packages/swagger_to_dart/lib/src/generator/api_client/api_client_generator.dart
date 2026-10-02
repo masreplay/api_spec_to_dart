@@ -218,9 +218,10 @@ class ApiClientGenerator {
     final usedMethodNames = <String>{};
 
     for (final (:path, :method, :operation) in operations) {
+      final url = _url(path, operation.servers);
       final httpMethod = _retrofitMethods.contains(method)
-          ? '$method(${dartString(path)})'
-          : 'Method(${dartString(method)}, ${dartString(path)})';
+          ? '$method(${dartString(url)})'
+          : 'Method(${dartString(method)}, ${dartString(url)})';
 
       final baseMethodName = Renaming.instance.renameFunction(
         operation.operationId ??
@@ -454,6 +455,18 @@ class ApiClientGenerator {
             ),
         ]),
     );
+  }
+
+  /// [path] prefixed by the operation's (or its path item's) first server,
+  /// unless that is a document server: dio skips `baseUrl` for absolute
+  /// paths, which would also bypass the `baseUrl` users pass.
+  String _url(String path, List<OpenApiServer>? servers) {
+    final server = servers?.firstOrNull;
+    if (server == null ||
+        (context.openApi.servers ?? []).any((s) => s.url == server.url)) {
+      return path;
+    }
+    return '${server.defaultUrl.replaceFirst(RegExp(r'/+$'), '')}$path';
   }
 
   List<Parameter> _handleParameters(
