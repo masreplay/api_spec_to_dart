@@ -41,10 +41,12 @@ void main() {
     expect(warnings, isEmpty);
   });
 
-  test('jwt is bearer with bearerFormat JWT and warns (not in the schema)', () {
+  test('jwt is bearer with bearerFormat JWT and warns once (not in the '
+      'schema)', () {
     expect(schemes.requirement(auth('jwt', {'secret': 's'})), [
       {'jwt': <String>[]},
     ]);
+    schemes.requirement(auth('jwt', {'secret': 's'}));
     expect(schemes.schemes['jwt'], {
       'type': 'http',
       'scheme': 'bearer',
@@ -61,7 +63,7 @@ void main() {
     );
     expect(schemes.schemes, {
       'apikey': {'type': 'apiKey', 'name': 'X-Api-Key', 'in': 'header'},
-      'apikey2': {'type': 'apiKey', 'name': 'api_key', 'in': 'query'},
+      'apikey_2': {'type': 'apiKey', 'name': 'api_key', 'in': 'query'},
     });
   });
 
@@ -114,7 +116,7 @@ void main() {
           },
         },
       },
-      'oauth22': {
+      'oauth2_2': {
         'type': 'oauth2',
         'flows': {
           'clientCredentials': {
@@ -124,7 +126,7 @@ void main() {
           },
         },
       },
-      'oauth23': {
+      'oauth2_3': {
         'type': 'oauth2',
         'flows': {
           'password': {
@@ -134,7 +136,7 @@ void main() {
           },
         },
       },
-      'oauth24': {
+      'oauth2_4': {
         'type': 'oauth2',
         'flows': {
           'implicit': {
@@ -144,7 +146,7 @@ void main() {
           },
         },
       },
-      'oauth25': {
+      'oauth2_5': {
         'type': 'oauth2',
         'flows': {
           'authorizationCode': {
@@ -249,6 +251,36 @@ void main() {
     ];
     final output = jsonEncode([schemes.schemes, requirements]);
     expect(output, isNot(contains('SECRET')));
+  });
+
+  test('credentials are recognised by name or shape', () {
+    expect(isCredential('X-Auth-Token', 'x'), isTrue);
+    expect(isCredential('api_key', 'x'), isTrue);
+    expect(isCredential('author', 'tolkien'), isFalse);
+    expect(isCredential('X-Forwarded', 'Bearer x'), isTrue);
+    expect(isCredential('note', 'eyJhbGciOi.eyJzdWIi.c2ln'), isTrue);
+    expect(isCredential('note', 'hello'), isFalse);
+  });
+
+  test('examples drop credential strings', () {
+    expect(
+      withoutCredentials({
+        'email': 'a@b.c',
+        'password': 'x',
+        'token': {'access': 'eyJa.eyJb.c', 'expires': 3600},
+        'session_timeout': 30,
+        'ids': ['eyJx.eyJy.z', 'ok'],
+        'author': 'me',
+      }),
+      {
+        'email': 'a@b.c',
+        'token': {'expires': 3600},
+        'session_timeout': 30,
+        'ids': ['ok'],
+        'author': 'me',
+      },
+    );
+    expect(withoutCredentials('text'), 'text');
   });
 
   test('variables used by secret attributes are secret', () {

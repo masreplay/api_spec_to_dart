@@ -313,6 +313,24 @@ void main() {
     ]);
   });
 
+  test('examples drop credentials; schemas keep every field', () {
+    final media =
+        (requestBody(
+                  raw('{"email": "a@b.c", "password": "x"}', 'json'),
+                )!['content']!
+                as Map)['application/json']!
+            as Map;
+    expect((media['schema']! as Map)['properties'], {
+      'email': {'type': 'string'},
+      'password': {'type': 'string'},
+    });
+    expect(media['examples'], {
+      'Example': {
+        'value': {'email': 'a@b.c'},
+      },
+    });
+  });
+
   test('bodies merge by media type; examples are keyed by name', () {
     final bodies = RequestBodies()
       ..add(raw('{"phone": "1", "password": "x"}', 'json'), name: 'By phone')

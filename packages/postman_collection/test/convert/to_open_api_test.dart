@@ -74,6 +74,13 @@ void main() {
         })['info'],
         {'title': 'S', 'version': '7'},
       );
+      expect(
+        convert({
+          'info': {'name': 'S', 'schema': v21, 'version': 3},
+          'item': [],
+        })['info'],
+        {'title': 'S', 'version': '3'},
+      );
     });
 
     test('openapi 3.1.1 with an empty paths object', () {
@@ -325,29 +332,35 @@ void main() {
             'in': 'path',
             'description': 'User id',
             'required': true,
-            'schema': {'type': 'string'},
-            'example': '7',
+            'schema': {
+              'type': 'string',
+              'examples': ['7'],
+            },
           },
           {
             'name': 'section',
             'in': 'path',
             'required': true,
-            'schema': {'type': 'string'},
-            'example': 'posts',
+            'schema': {
+              'type': 'string',
+              'examples': ['posts'],
+            },
           },
           {
             'name': 'page',
             'in': 'path',
             'required': true,
-            'schema': {'type': 'number'},
-            'example': 2,
+            'schema': {
+              'type': 'number',
+              'examples': [2],
+            },
           },
         ],
       );
     });
 
-    test('query: optional, disabled ones too, repeated keys become exploded '
-        'arrays, null or empty keys skipped', () {
+    test('query: optional, disabled ones too, repeated keys become arrays '
+        '(form style explodes them), null or empty keys skipped', () {
       final document = convert(
         collection([
           request('Search', 'GET', {
@@ -377,15 +390,18 @@ void main() {
           'schema': {
             'type': 'array',
             'items': {'type': 'string'},
+            'examples': [
+              ['x', 'y'],
+            ],
           },
-          'explode': true,
-          'example': ['x', 'y'],
         },
         {
           'name': 'debug',
           'in': 'query',
-          'schema': {'type': 'string'},
-          'example': 'true',
+          'schema': {
+            'type': 'string',
+            'examples': ['true'],
+          },
         },
         {
           'name': 'flag',
@@ -439,14 +455,18 @@ void main() {
           'name': 'Accept-Language',
           'in': 'header',
           'description': 'Locale',
-          'schema': {'type': 'string'},
-          'example': 'ar',
+          'schema': {
+            'type': 'string',
+            'examples': ['ar'],
+          },
         },
         {
           'name': 'X-Trace',
           'in': 'header',
-          'schema': {'type': 'string'},
-          'example': 'dup',
+          'schema': {
+            'type': 'string',
+            'examples': ['dup'],
+          },
         },
         {
           'name': 'session',
@@ -746,12 +766,16 @@ void main() {
             'description': 'OK',
             'headers': {
               'X-Rate-Limit': {
-                'schema': {'type': 'string'},
-                'example': '59',
+                'schema': {
+                  'type': 'string',
+                  'examples': ['59'],
+                },
               },
               'X-Request-Id': {
-                'schema': {'type': 'string'},
-                'example': 'abc',
+                'schema': {
+                  'type': 'string',
+                  'examples': ['abc'],
+                },
               },
             },
           },
@@ -974,6 +998,68 @@ void main() {
       );
       expect(jsonEncode(document), isNot(contains('SECRET')));
     });
+
+    test('credential-like parameters and headers have no examples', () {
+      const jwt = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOjF9.c2lnbmF0dXJl';
+      final document = convert(
+        collection([
+          request(
+            'Get',
+            'GET',
+            'https://x.io/a?api_key=k1&access_token=t1&author=tolkien',
+            fields: {
+              'header': [
+                {'key': 'jwt', 'value': jwt},
+                {'key': 'X-Auth-Token', 'value': 't2'},
+                {'key': 'X-Api-Key', 'value': 'k2'},
+                {'key': 'X-Session-Id', 'value': 's1'},
+                {'key': 'X-Forwarded', 'value': jwt},
+                {'key': 'X-Proxy', 'value': 'Bearer t3'},
+                {'key': 'Accept-Language', 'value': 'ar'},
+              ],
+            },
+            response: [
+              {
+                'name': 'ok',
+                'code': 200,
+                'header': [
+                  {'key': 'X-Refresh-Token', 'value': 't4'},
+                  {'key': 'X-Rate-Limit', 'value': '59'},
+                ],
+              },
+            ],
+          ),
+        ]),
+      );
+      final get = operation(document, '/a', 'get');
+      expect(
+        {
+          for (final p in parameters(get))
+            (p as Map)['name']: (p['schema'] as Map)['examples'],
+        },
+        {
+          'api_key': null,
+          'access_token': null,
+          'author': ['tolkien'],
+          'jwt': null,
+          'X-Auth-Token': null,
+          'X-Api-Key': null,
+          'X-Session-Id': null,
+          'X-Forwarded': null,
+          'X-Proxy': null,
+          'Accept-Language': ['ar'],
+        },
+      );
+      final headers =
+          ((get['responses']! as Map)['200']! as Map)['headers']! as Map;
+      expect(headers.map((name, h) => MapEntry(name, (h as Map)['schema'])), {
+        'X-Refresh-Token': {'type': 'string'},
+        'X-Rate-Limit': {
+          'type': 'string',
+          'examples': ['59'],
+        },
+      });
+    });
   });
 
   group('variables', () {
@@ -1021,8 +1107,15 @@ void main() {
       );
       final get = operation(document, '/{version}/a', 'post');
       expect(
-        [for (final p in parameters(get)) (p as Map)['example']],
-        ['v1', 'en', '3'],
+        [
+          for (final p in parameters(get))
+            ((p as Map)['schema'] as Map)['examples'],
+        ],
+        [
+          ['v1'],
+          ['en'],
+          ['3'],
+        ],
       );
       expect(
         ((get['requestBody']! as Map)['content']! as Map)['application/json'],

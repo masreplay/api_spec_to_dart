@@ -369,6 +369,7 @@ Map<String, Object?> _info(Object? info) {
     'description': ?descriptionText(map['description']),
     'version': switch (map['version']) {
       final String version when version.isNotEmpty => version,
+      final num version => '$version',
       {
             'major': final int major,
             'minor': final int minor,
@@ -404,12 +405,15 @@ bool _place(
   return true;
 }
 
-/// [value] with variables substituted, as an example; null when empty or
-/// still referencing a variable.
-String? _example(Object? value, Map<String, String> variables) {
+/// [value] of the parameter or header [name] with variables substituted, as
+/// an example; null when empty, still referencing a variable, or a
+/// credential.
+String? _example(String name, Object? value, Map<String, String> variables) {
   if (value is! String && value is! num && value is! bool) return null;
   final text = substituteVariables('$value', variables);
-  return text.isEmpty || text.contains('{{') ? null : text;
+  return text.isEmpty || text.contains('{{') || isCredential(name, text)
+      ? null
+      : text;
 }
 
 /// The response code of a saved example: `code`, else the reason phrase (or
@@ -493,8 +497,8 @@ class _Operation {
         _parameter('path', param, type)
           ..describe(variable?['description'])
           ..sample(
-            _example(variable?['value'], variables) ??
-                _example('{{$param}}', variables),
+            _example(param, variable?['value'], variables) ??
+                _example(param, '{{$param}}', variables),
           );
       }
     }
@@ -512,7 +516,7 @@ class _Operation {
         parameter.describe(entry['description']);
       }
       final examples = [
-        for (final entry in entries) ?_example(entry['value'], variables),
+        for (final entry in entries) ?_example(key, entry['value'], variables),
       ];
       if (examples.isNotEmpty) {
         parameter.sample(entries.length > 1 ? examples : examples.first);
@@ -538,7 +542,7 @@ class _Operation {
       } else {
         _parameter('header', key)
           ..describe(header['description'])
-          ..sample(_example(header['value'], variables));
+          ..sample(_example(key, header['value'], variables));
       }
     }
 
@@ -586,7 +590,7 @@ class _Operation {
       }
       response.headers.putIfAbsent(
         lower,
-        () => (key, _example(header['value'], variables)),
+        () => (key, _example(key, header['value'], variables)),
       );
     }
     if (example['body'] case final String text) {
@@ -651,23 +655,26 @@ class _Parameter {
     _ => value,
   };
 
-  Map<String, Object?> toJson() => {
-    'name': name,
-    'in': location,
-    'description': ?description,
-    if (location == 'path') 'required': true,
-    'schema': array
-        ? {
-            'type': 'array',
-            'items': {'type': type},
-          }
-        : {'type': type},
-    if (array) 'explode': true,
-    if (location != 'cookie')
-      'example': ?(array && example != null && example is! List
-          ? [example]
-          : example),
-  };
+  /// The example goes in the schema (JSON Schema `examples`) and arrays rely
+  /// on the query `form` style exploding by default: the official OAS schema
+  /// admits a parameter's `example` and `explode` only through
+  /// `dependentSchemas`.
+  Map<String, Object?> toJson() {
+    final value = array && example != null && example is! List
+        ? [example]
+        : example;
+    return {
+      'name': name,
+      'in': location,
+      'description': ?description,
+      if (location == 'path') 'required': true,
+      'schema': {
+        'type': array ? 'array' : type,
+        if (array) 'items': {'type': type},
+        if (value != null) 'examples': [value],
+      },
+    };
+  }
 }
 
 class _Response {
@@ -683,8 +690,10 @@ class _Response {
       'headers': {
         for (final (name, example) in headers.values)
           name: {
-            'schema': {'type': 'string'},
-            'example': ?example,
+            'schema': {
+              'type': 'string',
+              if (example != null) 'examples': [example],
+            },
           },
       },
     if (content.isNotEmpty)
