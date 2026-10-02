@@ -19,6 +19,13 @@ abstract class OpenApi with _$OpenApi {
     @JsonKey(name: 'info') OpenApiInfo? info,
     @JsonKey(name: 'servers') List<OpenApiServer>? servers,
     @JsonKey(name: 'paths') OpenApiPaths? paths,
+
+    /// OpenAPI 3.2 `additionalOperations` (methods such as `PURGE`) by path,
+    /// then by method as sent. [OpenApiPaths] keys operations by
+    /// [OpenApiPathMethodEnum], which cannot name them, so
+    /// [resolveOperations] moves them to this reserved key.
+    @JsonKey(name: 'x-additional-operations')
+    Map<String, Map<String, OpenApiPathMethod>>? additionalOperations,
     @JsonKey(name: 'components') OpenApiComponents? components,
     @JsonKey(name: 'tags') List<OpenApiTag>? tags,
     Map<String, dynamic>? extraJson,
@@ -32,6 +39,8 @@ abstract class OpenApi with _$OpenApi {
 /// (operations are shared with the `@Extras` metadata, so [spec] must not
 /// change):
 /// - a path item keeps only its operations (`summary`, `servers`, ... go);
+/// - its `additionalOperations` move to `x-additional-operations`, by path
+///   ([OpenApi.additionalOperations]);
 /// - its `parameters` apply to each operation, whose own parameter with the
 ///   same `name` and `in` wins;
 /// - `$ref`s in `parameters`, `requestBody` and `responses` (e.g.
@@ -64,6 +73,17 @@ Map<String, dynamic> resolveOperations(Map<String, dynamic> spec) {
     };
   }
 
+  final additional = {
+    for (final MapEntry(key: path, value: item as Map<String, dynamic>)
+        in paths.entries)
+      if (item['additionalOperations'] case final Map<String, dynamic> ops
+          when ops.isNotEmpty)
+        path: {
+          for (final MapEntry(:key, :value) in ops.entries)
+            key: operation(value as Map<String, dynamic>, item['parameters']),
+        },
+  };
+
   return {
     ...spec,
     'paths': {
@@ -75,6 +95,8 @@ Map<String, dynamic> resolveOperations(Map<String, dynamic> spec) {
               key: operation(value as Map<String, dynamic>, item['parameters']),
         },
     },
+    // Only when found: resolving twice must keep the first result.
+    if (additional.isNotEmpty) 'x-additional-operations': additional,
   };
 }
 

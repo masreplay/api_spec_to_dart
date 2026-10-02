@@ -6,13 +6,25 @@ import 'package:swagger_to_dart/src/swagger_to_dart_base.dart';
 const _requestBodyName = 'requestBody';
 const _queriesParameterName = 'queries';
 
-/// An operation of the spec at [path]; [method] is its key in the path
-/// item (`get`, `post`, ...).
+/// An operation of the spec at [path]; [method] is the HTTP method as sent
+/// (`GET`, `QUERY`, `PURGE`).
 typedef ApiOperation = ({
   String path,
   String method,
   OpenApiPathMethod operation,
 });
+
+/// Methods with their own retrofit annotation; the others use
+/// `@Method('X', path)`.
+const _retrofitMethods = {
+  'GET',
+  'POST',
+  'PUT',
+  'DELETE',
+  'PATCH',
+  'HEAD',
+  'OPTIONS',
+};
 
 /// Types a client signature can name without the generated models.
 const _libraryTypes = {
@@ -151,19 +163,28 @@ class ApiClientGenerator {
   /// operation with several tags is in each of their clients.
   void generate() {
     final group = <String, List<ApiOperation>>{};
+    final paths = context.openApi.paths ?? {};
+    final additional = context.openApi.additionalOperations ?? {};
 
-    for (final MapEntry(key: path, value: methods)
-        in (context.openApi.paths ?? {}).entries) {
-      for (final MapEntry(key: method, value: operation) in methods.entries) {
-        final tags = (operation.tags ?? []).map(
+    for (final path in {...paths.keys, ...additional.keys}) {
+      final operations = <ApiOperation>[
+        for (final MapEntry(key: method, value: operation)
+            in (paths[path] ?? {}).entries)
+          (
+            path: path,
+            method: method.name.toUpperCase(),
+            operation: operation,
+          ),
+        for (final MapEntry(key: method, value: operation)
+            in (additional[path] ?? {}).entries)
+          (path: path, method: method, operation: operation),
+      ];
+      for (final operation in operations) {
+        final tags = (operation.operation.tags ?? []).map(
           (e) => Recase.instance.removeNonAscii(e),
         );
         for (final tag in tags.isEmpty ? const ['default'] : tags) {
-          (group[tag] ??= []).add((
-            path: path,
-            method: method.name,
-            operation: operation,
-          ));
+          (group[tag] ??= []).add(operation);
         }
       }
     }
@@ -197,12 +218,13 @@ class ApiClientGenerator {
     final usedMethodNames = <String>{};
 
     for (final (:path, :method, :operation) in operations) {
-      final methodType = Recase.instance.toScreamingSnakeCase(
-        method,
-      );
+      final httpMethod = _retrofitMethods.contains(method)
+          ? '$method(${dartString(path)})'
+          : 'Method(${dartString(method)}, ${dartString(path)})';
 
       final baseMethodName = Renaming.instance.renameFunction(
-        operation.operationId ?? '${clientName}_${path}_$method',
+        operation.operationId ??
+            '${clientName}_${path}_${method.toLowerCase()}',
       );
       // operationIds are not always unique; methods in one class must be.
       var methodName = baseMethodName;
@@ -343,7 +365,7 @@ class ApiClientGenerator {
         Method(
           (b) => b
             ..annotations.addAll([
-              refer('$methodType(${dartString(path)})'),
+              refer(httpMethod),
               if (rawBody != null)
                 refer(
                   "Headers(<String, dynamic>{'Content-Type': "
