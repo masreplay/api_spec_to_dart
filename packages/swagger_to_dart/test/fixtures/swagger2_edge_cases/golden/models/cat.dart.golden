@@ -1,0 +1,65 @@
+/// Cat
+///
+/// ```json
+/// {
+///     "properties": {
+///         "name": {
+///             "type": "string",
+///             "nullable": true
+///         },
+///         "petType": {
+///             "type": "string"
+///         },
+///         "tag": {
+///             "type": "string"
+///         },
+///         "huntingSkill": {
+///             "enum": [
+///                 "clueless",
+///                 "lazy"
+///             ],
+///             "type": "string"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "name",
+///         "petType"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'cat.freezed.dart';
+part 'cat.g.dart';
+
+@freezed
+abstract class Cat with _$Cat {
+  const Cat._();
+
+  @jsonSerializable
+  const factory Cat({
+    /// name
+    @JsonKey(name: Cat.nameKey_) required String? name,
+
+    /// petType
+    @JsonKey(name: Cat.petTypeKey_) required String petType,
+
+    /// tag
+    @JsonKey(name: Cat.tagKey_) String? tag,
+
+    /// huntingSkill
+    @JsonKey(name: Cat.huntingSkillKey_) CatHuntingSkill? huntingSkill,
+  }) = _Cat;
+
+  factory Cat.fromJson(Map<String, dynamic> json) => _$CatFromJson(json);
+
+  static const String nameKey_ = 'name';
+
+  static const String petTypeKey_ = 'petType';
+
+  static const String tagKey_ = 'tag';
+
+  static const String huntingSkillKey_ = 'huntingSkill';
+}

@@ -1,4 +1,5 @@
 import 'json_schema.dart';
+import 'swagger2.dart';
 
 /// The kinds of document [toOpenApiJson] accepts.
 enum SpecFormat { openApi3, swagger2, jsonSchema, postman, unknown }
@@ -32,7 +33,7 @@ SpecFormat detectSpecFormat(Object? document) {
 Map<String, dynamic> toOpenApiJson(Object? document, {String? sourceName}) {
   return switch (detectSpecFormat(document)) {
     SpecFormat.openApi3 => document as Map<String, dynamic>,
-    SpecFormat.swagger2 => throw UnimplementedError('Swagger 2.0'),
+    SpecFormat.swagger2 => swagger2ToOpenApi(document as Map<String, dynamic>),
     SpecFormat.jsonSchema => jsonSchemaToOpenApi(
       document as Map<String, dynamic>,
       sourceName: sourceName,

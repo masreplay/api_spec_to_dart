@@ -1,0 +1,56 @@
+/// Pet
+///
+/// ```json
+/// {
+///     "properties": {
+///         "name": {
+///             "type": "string",
+///             "nullable": true
+///         },
+///         "petType": {
+///             "type": "string"
+///         },
+///         "tag": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "name",
+///         "petType"
+///     ],
+///     "discriminator": {
+///         "propertyName": "petType"
+///     }
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'pet.freezed.dart';
+part 'pet.g.dart';
+
+@freezed
+abstract class Pet with _$Pet {
+  const Pet._();
+
+  @jsonSerializable
+  const factory Pet({
+    /// name
+    @JsonKey(name: Pet.nameKey_) required String? name,
+
+    /// petType
+    @JsonKey(name: Pet.petTypeKey_) required String petType,
+
+    /// tag
+    @JsonKey(name: Pet.tagKey_) String? tag,
+  }) = _Pet;
+
+  factory Pet.fromJson(Map<String, dynamic> json) => _$PetFromJson(json);
+
+  static const String nameKey_ = 'name';
+
+  static const String petTypeKey_ = 'petType';
+
+  static const String tagKey_ = 'tag';
+}
