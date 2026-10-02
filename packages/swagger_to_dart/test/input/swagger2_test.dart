@@ -195,6 +195,78 @@ void main() {
     });
   });
 
+  test('definition names become component keys, refs and titles follow', () {
+    final openApi = _convert(
+      _swagger(
+        paths: {
+          '/pets': _get(
+            [],
+            responses: {
+              '200': {
+                'description': 'OK',
+                'schema': {r'$ref': '#/definitions/Page«Pet»'},
+              },
+            },
+          ),
+        },
+        extra: {
+          'definitions': {
+            'Page_Pet_': {'type': 'object'},
+            'Page«Pet»': {
+              'type': 'object',
+              'properties': {
+                'items': {
+                  'type': 'array',
+                  'items': {r'$ref': '#/definitions/List[Pet]'},
+                },
+                'next': {r'$ref': '#/definitions/Page%C2%ABPet%C2%BB'},
+              },
+            },
+            'List[Pet]': {
+              'type': 'array',
+              'items': {r'$ref': '#/definitions/Pet'},
+            },
+            'Map«string,object»': {
+              'type': 'object',
+              'title': 'Objects',
+              'additionalProperties': {'type': 'object'},
+            },
+            'Pet': {'type': 'object'},
+          },
+        },
+      ),
+    );
+    final schemas = openApi['components']['schemas'] as Map<String, dynamic>;
+
+    expect(schemas.keys, [
+      'Page_Pet_',
+      'Page_Pet_2',
+      'List_Pet_',
+      'Map_string_object_',
+      'Pet',
+    ]);
+    expect(schemas['Page_Pet_'], {'type': 'object'});
+    expect(schemas['Page_Pet_2']['title'], 'Page«Pet»');
+    expect(schemas['Page_Pet_2']['properties'], {
+      'items': {
+        'type': 'array',
+        'items': {r'$ref': '#/components/schemas/List_Pet_'},
+      },
+      'next': {r'$ref': '#/components/schemas/Page_Pet_2'},
+    });
+    expect(schemas['List_Pet_']['title'], 'List[Pet]');
+    expect(schemas['Map_string_object_']['title'], 'Objects');
+    expect(
+      openApi['paths']['/pets']['get']['responses']['200']['content'],
+      {
+        'application/json': {
+          'schema': {r'$ref': '#/components/schemas/Page_Pet_2'},
+        },
+      },
+    );
+    expect(renderSpec(openApi).errors, isEmpty);
+  });
+
   test('global parameters and responses become components, refs follow', () {
     final openApi = _convert(
       _swagger(
