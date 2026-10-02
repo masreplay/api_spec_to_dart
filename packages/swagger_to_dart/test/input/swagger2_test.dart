@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:json_schema/json_schema.dart';
@@ -488,6 +489,45 @@ void main() {
         mediaTypes([file], ['application/x-www-form-urlencoded']),
         ['multipart/form-data'],
       );
+    });
+
+    test('arrays get their collectionFormat as encoding', () {
+      Map<String, dynamic> array(String name, [String? collectionFormat]) => {
+        'name': name,
+        'in': 'formData',
+        'type': 'array',
+        'items': {'type': 'string'},
+        'collectionFormat': ?collectionFormat,
+      };
+      final printed = <String>[];
+
+      final content = runZoned(
+        () => body(
+          post([
+            array('a'),
+            array('b', 'multi'),
+            array('c', 'ssv'),
+            array('d', 'pipes'),
+            array('e', 'tsv'),
+            caption,
+          ]),
+        )['content'],
+        zoneSpecification: ZoneSpecification(
+          print: (_, _, _, line) => printed.add(line),
+        ),
+      );
+
+      expect(content['application/x-www-form-urlencoded']['encoding'], {
+        'a': {'style': 'form', 'explode': false},
+        'b': {'style': 'form', 'explode': true},
+        'c': {'style': 'spaceDelimited', 'explode': false},
+        'd': {'style': 'pipeDelimited', 'explode': false},
+        'e': {'style': 'form', 'explode': false},
+      });
+      // tsv has no OpenAPI 3 equivalent.
+      expect(printed, [
+        allOf(startsWith('swagger_to_dart: warning:'), contains('tsv')),
+      ]);
     });
 
     test('is urlencoded when consumes says so, or without a file', () {
