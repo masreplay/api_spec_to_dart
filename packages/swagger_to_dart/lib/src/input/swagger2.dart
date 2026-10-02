@@ -346,12 +346,31 @@ Map<String, dynamic>? _requestBody(
     },
     if (required.isNotEmpty) 'required': required,
   };
+  final encoding = {
+    for (final p in form)
+      if (p['type'] == 'array') '${p['name']}': _formEncoding(p),
+  };
   return {
     'content': {
-      type: {'schema': schema},
+      type: {'schema': schema, if (encoding.isNotEmpty) 'encoding': encoding},
     },
     if (required.isNotEmpty) 'required': true,
   };
+}
+
+/// The encoding of a formData array: its `collectionFormat` (default csv)
+/// as a style. tsv has none, so it is sent like csv, with a warning.
+Map<String, dynamic> _formEncoding(Map parameter) {
+  final style = _style({...parameter, 'in': 'query'});
+  if (style['x-collectionFormat'] case final format?) {
+    print(
+      'swagger_to_dart: warning: formData parameter ${parameter['name']} '
+      'uses collectionFormat $format, which OpenAPI 3 cannot express; it is '
+      'encoded like csv.',
+    );
+    return {'style': 'form', 'explode': false};
+  }
+  return style;
 }
 
 /// A response (or a ref to one) with a media type per [produces].
