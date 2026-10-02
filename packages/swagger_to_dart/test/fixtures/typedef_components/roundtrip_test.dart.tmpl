@@ -1,0 +1,23 @@
+import 'package:swagger_to_dart_e2e/gen/typedef_components/models/models.dart';
+import 'package:test/test.dart';
+
+void main() {
+  test('typedef components decode and encode as their types', () {
+    const json = {
+      'pets': [
+        {'name': 'Rex'},
+        {'name': 'Tom'},
+      ],
+      'tags': {'color': 'brown'},
+      'id': '0b6a4b7e-3c1d-4f7a-9a52-2f5d8c1e9b10',
+      'best': {'name': 'Rex'},
+    };
+
+    final owner = Owner.fromJson(json);
+
+    final Pets? pets = owner.pets;
+    expect(pets, [const Pet(name: 'Rex'), const Pet(name: 'Tom')]);
+    expect(owner.best, const Animal(name: 'Rex'));
+    expect(owner.toJson(), json);
+  });
+}

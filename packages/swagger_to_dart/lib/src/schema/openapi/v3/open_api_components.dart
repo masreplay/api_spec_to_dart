@@ -27,6 +27,13 @@ abstract class OpenApiSchemas with _$OpenApiSchemas {
     @JsonKey(name: 'properties')
     required Map<String, OpenApiSchema>? properties,
     @JsonKey(name: 'type') String? type,
+
+    /// An alias component (`Animal: {$ref: Pet}`).
+    @JsonKey(name: r'$ref') String? ref,
+
+    /// Array components: the item schema.
+    @OpenApiSchemaJsonConverter() @JsonKey(name: 'items') OpenApiSchema? items,
+    @JsonKey(name: 'format') String? format,
     @JsonKey(name: 'required') List<String>? required_,
     @JsonKey(name: 'enum') List<Object?>? enum_,
     @JsonKey(name: 'const') Object? const_,
