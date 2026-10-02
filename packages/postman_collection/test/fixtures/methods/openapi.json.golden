@@ -1,0 +1,377 @@
+{
+  "openapi": "3.2.0",
+  "info": {
+    "title": "Methods",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://dav.example.com"
+    }
+  ],
+  "paths": {
+    "/files/{name}": {
+      "get": {
+        "summary": "Get file",
+        "operationId": "getFile",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      },
+      "put": {
+        "summary": "Put file",
+        "operationId": "putFile",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      },
+      "post": {
+        "summary": "Post file",
+        "operationId": "postFile",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Patch file",
+        "operationId": "patchFile",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete file",
+        "operationId": "deleteFile",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      },
+      "head": {
+        "summary": "Head file",
+        "operationId": "headFile",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      },
+      "options": {
+        "summary": "File options",
+        "operationId": "fileOptions",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      },
+      "trace": {
+        "summary": "Trace file",
+        "operationId": "traceFile",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      },
+      "additionalOperations": {
+        "COPY": {
+          "summary": "Copy file",
+          "operationId": "copyFile",
+          "parameters": [
+            {
+              "name": "name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "default": {
+              "description": "Default response"
+            }
+          }
+        },
+        "LINK": {
+          "summary": "Link file",
+          "operationId": "linkFile",
+          "parameters": [
+            {
+              "name": "name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "default": {
+              "description": "Default response"
+            }
+          }
+        },
+        "UNLINK": {
+          "summary": "Unlink file",
+          "operationId": "unlinkFile",
+          "parameters": [
+            {
+              "name": "name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "default": {
+              "description": "Default response"
+            }
+          }
+        },
+        "PURGE": {
+          "summary": "Purge file",
+          "operationId": "purgeFile",
+          "parameters": [
+            {
+              "name": "name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "default": {
+              "description": "Default response"
+            }
+          }
+        },
+        "LOCK": {
+          "summary": "Lock file",
+          "operationId": "lockFile",
+          "parameters": [
+            {
+              "name": "name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "default": {
+              "description": "Default response"
+            }
+          }
+        },
+        "UNLOCK": {
+          "summary": "Unlock file",
+          "operationId": "unlockFile",
+          "parameters": [
+            {
+              "name": "name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "default": {
+              "description": "Default response"
+            }
+          }
+        },
+        "PROPFIND": {
+          "summary": "Find properties",
+          "operationId": "findProperties",
+          "parameters": [
+            {
+              "name": "name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "default": {
+              "description": "Default response"
+            }
+          }
+        },
+        "VIEW": {
+          "summary": "View file",
+          "operationId": "viewFile",
+          "parameters": [
+            {
+              "name": "name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "default": {
+              "description": "Default response"
+            }
+          }
+        }
+      }
+    },
+    "/files": {
+      "query": {
+        "summary": "Search files",
+        "operationId": "searchFiles",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Search files": {
+                  "value": {
+                    "name": "report"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/calendars/{name}": {
+      "additionalOperations": {
+        "MKCALENDAR": {
+          "summary": "Custom",
+          "operationId": "custom",
+          "parameters": [
+            {
+              "name": "name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "default": {
+              "description": "Default response"
+            }
+          }
+        }
+      }
+    }
+  }
+}

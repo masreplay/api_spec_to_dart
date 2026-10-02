@@ -1,0 +1,2635 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "Discounts",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "{server_name}",
+      "variables": {
+        "server_name": {
+          "default": "http://85.159.214.45"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "bearer": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Mobile Platform Requests / Login"
+    },
+    {
+      "name": "Mobile Platform Requests / Create"
+    },
+    {
+      "name": "Mobile Platform Requests / End Users"
+    },
+    {
+      "name": "Mobile Platform Requests"
+    },
+    {
+      "name": "Admin Panel Requests / Sellers"
+    },
+    {
+      "name": "Admin Panel Requests / Accounts"
+    },
+    {
+      "name": "Admin Panel Requests / Admin Users"
+    },
+    {
+      "name": "Admin Panel Requests"
+    },
+    {
+      "name": "Service  Locations"
+    },
+    {
+      "name": "Categories"
+    },
+    {
+      "name": "Subscriptions"
+    },
+    {
+      "name": "ADS"
+    },
+    {
+      "name": "Seller Categories"
+    },
+    {
+      "name": "User Categories"
+    }
+  ],
+  "paths": {
+    "/api/v1/login/mobile_user/phone": {
+      "post": {
+        "tags": [
+          "Mobile Platform Requests / Login"
+        ],
+        "summary": "Mobile User Login by phone",
+        "description": "Login using username and password",
+        "operationId": "mobileUserLoginByPhone",
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Mobile User Login by phone": {
+                  "value": {
+                    "phone": "151452222225"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/v1/login/mobile_user/email": {
+      "post": {
+        "tags": [
+          "Mobile Platform Requests / Login"
+        ],
+        "summary": "Mobile User Login by email",
+        "description": "Login using username and password",
+        "operationId": "mobileUserLoginByEmail",
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "device_token": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Mobile User Login by email": {
+                  "value": {
+                    "email": "mustafa17falah@gmail.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/v1/users/mobile_user": {
+      "post": {
+        "tags": [
+          "Mobile Platform Requests / Create"
+        ],
+        "summary": "0-Create Temp Mobile user",
+        "description": "Create a new user",
+        "operationId": "post0CreateTempMobileUser",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "user_type": {
+                    "type": "string"
+                  },
+                  "full_name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "business_name": {
+                    "type": "string"
+                  },
+                  "lang": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "0-Create Temp Mobile user": {
+                  "value": {
+                    "phone": "9647709251462",
+                    "user_type": "end_user",
+                    "full_name": "Raafat Salih"
+                  }
+                },
+                "Seller by email": {
+                  "value": {
+                    "email": "raafat.muhammad@coeng.uobaghdad.edu.iq",
+                    "user_type": "seller",
+                    "business_name": "Techs comp",
+                    "lang": "en"
+                  }
+                },
+                "Seller phone": {
+                  "value": {
+                    "phone": "07222222262",
+                    "user_type": "seller",
+                    "business_name": "Techs comp",
+                    "lang": "en"
+                  }
+                },
+                "End user email": {
+                  "value": {
+                    "email": "fafafffa@khasom.com",
+                    "user_type": "end_user",
+                    "full_name": "Raafat Salih",
+                    "lang": "en"
+                  }
+                },
+                "End user phone": {
+                  "value": {
+                    "phone": "07221112262",
+                    "user_type": "end_user",
+                    "full_name": "Raafat Salih",
+                    "lang": "en"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/api/v1/users/mobile_user_validate": {
+      "put": {
+        "tags": [
+          "Mobile Platform Requests / Create"
+        ],
+        "summary": "1-Validate Mobile user",
+        "description": "Create a new user",
+        "operationId": "put1ValidateMobileUser",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "temp_id": {
+                    "type": "integer"
+                  },
+                  "code": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "1-Validate Mobile user": {
+                  "value": {
+                    "temp_id": 128,
+                    "code": "111111"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/api/v1/users/mobile_user/seller": {
+      "post": {
+        "tags": [
+          "Mobile Platform Requests / Create"
+        ],
+        "summary": "2A-Create Seller",
+        "description": "Create a new user",
+        "operationId": "post2AcreateSeller",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "full_name": {
+                    "type": "string"
+                  },
+                  "business_name": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "city_id": {
+                    "type": "integer"
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "nearest_point": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "device_token": {
+                    "type": "string"
+                  },
+                  "firebase_jwt": {
+                    "type": "string"
+                  },
+                  "firebase_uid": {
+                    "type": "integer"
+                  },
+                  "lang": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "2A-Create Seller": {
+                  "value": {
+                    "id": 128,
+                    "full_name": "Raafat S mi=uhammad",
+                    "business_name": "Hankoush",
+                    "city_id": 1,
+                    "address": "Aaaa asda",
+                    "nearest_point": "ad ad adfa",
+                    "phone": "9647709251462",
+                    "email": "2222@aaffaa.ccc"
+                  }
+                },
+                "Complete seller by email": {
+                  "value": {
+                    "id": 88,
+                    "full_name": "Raafat S mi=uhammad",
+                    "city_id": 1,
+                    "address": "Aaaa asda",
+                    "nearest_point": "ad ad adfa",
+                    "phone": "9647709251462"
+                  }
+                },
+                "Complete seller by phone": {
+                  "value": {
+                    "id": 125,
+                    "full_name": "Raafat S mi=uhammad",
+                    "city_id": 1,
+                    "address": "Aaaa asda",
+                    "nearest_point": "ad ad adfa",
+                    "firebase_uid": 1,
+                    "email": "4444@aaffaa.ccc",
+                    "lang": "en"
+                  }
+                },
+                "Create Seller": {
+                  "value": {
+                    "full_name": "Raafat S mi=uhammad",
+                    "business_name": "Hankoush",
+                    "city_id": 1,
+                    "address": "Aaaa asda",
+                    "nearest_point": "ad ad adfa",
+                    "phone": "9646663651462",
+                    "email": "2123af632@aaffaaaaaa.ccc"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Admin Panel Requests / Sellers"
+        ],
+        "summary": "Get all sellers",
+        "description": "Create a new user",
+        "operationId": "getAllSellers",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "1"
+              ]
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "4"
+              ]
+            }
+          },
+          {
+            "name": "lite",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "0"
+              ]
+            }
+          },
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/api/v1/users/mobile_user/end_user": {
+      "post": {
+        "tags": [
+          "Mobile Platform Requests / Create"
+        ],
+        "summary": "2B-Create End User",
+        "description": "Create a new user",
+        "operationId": "post2BcreateEndUser",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "full_name": {
+                    "type": "string"
+                  },
+                  "business_name": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "city_id": {
+                    "type": "integer"
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "nearest_point": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "device_token": {
+                    "type": "string"
+                  },
+                  "lang": {
+                    "type": "string"
+                  },
+                  "firebase_jwt": {
+                    "type": "string"
+                  },
+                  "firebase_uid": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "examples": {
+                "2B-Create End User": {
+                  "value": {
+                    "id": 47,
+                    "full_name": "Raafat S mi=uhammad",
+                    "business_name": "Hankoush",
+                    "city_id": 1,
+                    "address": "Aaaa asda",
+                    "nearest_point": "ad ad adfa",
+                    "phone": "07709251411",
+                    "email": "aadddashhss@aaffaa.ccc",
+                    "lang": "en"
+                  }
+                },
+                "Complete end user by email": {
+                  "value": {
+                    "id": 67,
+                    "city_id": 1,
+                    "address": "Aaaa asda",
+                    "nearest_point": "ad ad adfa",
+                    "phone": "51515155151",
+                    "lang": "en"
+                  }
+                },
+                "Complete end user by phone": {
+                  "value": {
+                    "id": 63,
+                    "city_id": 1,
+                    "address": "Aaaa asda",
+                    "nearest_point": "ad ad adfa",
+                    "firebase_uid": 1,
+                    "email": "1234@1234.ccc",
+                    "lang": "en"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Mobile Platform Requests / End Users"
+        ],
+        "summary": "Get All end users",
+        "description": "Create a new user",
+        "operationId": "getAllEndUsers",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "1"
+              ]
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "4"
+              ]
+            }
+          },
+          {
+            "name": "lite",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "0"
+              ]
+            }
+          },
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/api/v1/users/mobile_user/end_user/32": {
+      "get": {
+        "tags": [
+          "Mobile Platform Requests / End Users"
+        ],
+        "summary": "Get End User By ID",
+        "description": "Create a new user",
+        "operationId": "getEndUserById",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/api/v1/users/mobile_user/change_password/14": {
+      "put": {
+        "tags": [
+          "Mobile Platform Requests"
+        ],
+        "summary": "Change Mobile User Password",
+        "description": "Change password, if admin, no need for old password",
+        "operationId": "changeMobileUserPassword",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "old_password": {
+                    "type": "string"
+                  },
+                  "new_password": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Change Mobile User Password": {
+                  "value": {}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/api/v1/users/mobile_user/seller/31": {
+      "put": {
+        "tags": [
+          "Mobile Platform Requests"
+        ],
+        "summary": "Update seller (no mandatory field)",
+        "description": "Create a new user",
+        "operationId": "updateSellerNoMandatoryField",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "full_name": {
+                    "type": "string"
+                  },
+                  "business_name": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "nearest_point": {
+                    "type": "string"
+                  },
+                  "enable": {
+                    "type": "boolean"
+                  },
+                  "approve": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "examples": {
+                "Update seller (no mandatory field)": {
+                  "value": {
+                    "full_name": "Raafat S mi=uhamfttmad",
+                    "business_name": "Hankoush",
+                    "address": "Aaaa asda",
+                    "nearest_point": "ad ad adfa",
+                    "enable": true,
+                    "approve": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/api/v1/users/mobile_user/seller/2": {
+      "get": {
+        "tags": [
+          "Admin Panel Requests / Sellers"
+        ],
+        "summary": "Get seller By ID",
+        "description": "Create a new user",
+        "operationId": "getSellerById",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/api/v1/users/mobile_user/seller/8": {
+      "put": {
+        "tags": [
+          "Admin Panel Requests / Sellers"
+        ],
+        "summary": "Update seller",
+        "description": "Create a new user",
+        "operationId": "updateSeller",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "full_name": {
+                    "type": "string"
+                  },
+                  "business_name": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "nearest_point": {
+                    "type": "string"
+                  },
+                  "enable": {
+                    "type": "boolean"
+                  },
+                  "approve": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "examples": {
+                "Update seller": {
+                  "value": {
+                    "full_name": "Raafat S mi=uhamfttmad",
+                    "business_name": "Hankoush",
+                    "address": "Aaaa asda",
+                    "nearest_point": "ad ad adfa",
+                    "enable": true,
+                    "approve": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/api/v1/accounts/": {
+      "post": {
+        "tags": [
+          "Admin Panel Requests / Accounts"
+        ],
+        "summary": "Create Account",
+        "description": "Create a new user",
+        "operationId": "createAccount",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          },
+          {
+            "name": "enctype",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "multipart/form-data"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "account_name": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "push_limits": {
+                    "type": "integer"
+                  },
+                  "sms_limits": {
+                    "type": "integer"
+                  },
+                  "expire_at": {
+                    "type": "string"
+                  },
+                  "cities": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "Create Account": {
+                  "value": {
+                    "account_name": "New Account",
+                    "phone": "07713451918",
+                    "email": "fadiramzi.99@gmail.com",
+                    "push_limits": 0,
+                    "sms_limits": 3,
+                    "expire_at": "2023-07-22",
+                    "cities": [
+                      2,
+                      5,
+                      1
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/api/v1/accounts/image": {
+      "post": {
+        "tags": [
+          "Admin Panel Requests / Accounts"
+        ],
+        "summary": "Update account image (all fields are mandatory)",
+        "description": "Create a new user",
+        "operationId": "updateAccountImageAllFieldsAreMandatory",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          },
+          {
+            "name": "enctype",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "multipart/form-data"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "image": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "account_id": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "examples": {
+                "Update account image (all fields are mandatory)": {
+                  "value": {
+                    "account_id": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/api/v1/accounts/1": {
+      "get": {
+        "tags": [
+          "Admin Panel Requests / Accounts"
+        ],
+        "summary": "Get Account By ID",
+        "description": "Create a new user",
+        "operationId": "getAccountById",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/api/v1/accounts": {
+      "get": {
+        "tags": [
+          "Admin Panel Requests / Accounts"
+        ],
+        "summary": "Get All Accounts",
+        "description": "Create a new user",
+        "operationId": "getAllAccounts",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "1"
+              ]
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "1"
+              ]
+            }
+          },
+          {
+            "name": "lite",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "0"
+              ]
+            }
+          },
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/api/v1/accounts/2": {
+      "put": {
+        "tags": [
+          "Admin Panel Requests / Accounts"
+        ],
+        "summary": "Update Account (no mandatory fields)",
+        "description": "Create a new user",
+        "operationId": "updateAccountNoMandatoryFields",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "account_name": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "push_limits": {
+                    "type": "integer"
+                  },
+                  "sms_limits": {
+                    "type": "integer"
+                  },
+                  "expire_at": {
+                    "type": "string"
+                  },
+                  "cities": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "enable": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "examples": {
+                "Update Account (no mandatory fields)": {
+                  "value": {
+                    "account_name": "New 111",
+                    "phone": "07713451918",
+                    "email": "fadiramzi.99@gmail.com",
+                    "push_limits": 10,
+                    "sms_limits": 4,
+                    "expire_at": "2023-07-22",
+                    "cities": [
+                      2,
+                      5,
+                      1
+                    ],
+                    "enable": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/api/v1/users/admins/3": {
+      "put": {
+        "tags": [
+          "Admin Panel Requests / Admin Users"
+        ],
+        "summary": "Update Admin",
+        "description": "Create a new user",
+        "operationId": "updateAdmin",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "enabled": {
+                    "type": "boolean"
+                  },
+                  "roles": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "Update Admin": {
+                  "value": {
+                    "email": "tes2ddddt@test.com",
+                    "enabled": true,
+                    "roles": [
+                      2,
+                      4
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/api/v1/users/admins": {
+      "post": {
+        "tags": [
+          "Admin Panel Requests / Admin Users"
+        ],
+        "summary": "Create Admin",
+        "description": "Create a new user",
+        "operationId": "createAdmin",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "account_id": {
+                    "type": "integer"
+                  },
+                  "roles": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "Create Admin": {
+                  "value": {
+                    "username": "ffafffafffafaf",
+                    "email": "tes't@test.co;m",
+                    "account_id": 6,
+                    "roles": [
+                      3
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Admin Panel Requests / Admin Users"
+        ],
+        "summary": "Get All Admins",
+        "description": "Create a new user",
+        "operationId": "getAllAdmins",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "1"
+              ]
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "4"
+              ]
+            }
+          },
+          {
+            "name": "lite",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "1"
+              ]
+            }
+          },
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/api/v1/users/admins/1": {
+      "get": {
+        "tags": [
+          "Admin Panel Requests / Admin Users"
+        ],
+        "summary": "Get Admin User By ID",
+        "description": "Create a new user",
+        "operationId": "getAdminUserById",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Admin Panel Requests / Admin Users"
+        ],
+        "summary": "Delete Admin By ID",
+        "description": "Create a new user",
+        "operationId": "deleteAdminById",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/api/v1/users/admins/change_password/3": {
+      "put": {
+        "tags": [
+          "Admin Panel Requests / Admin Users"
+        ],
+        "summary": "Change Admin Password",
+        "description": "Change password, if admin, no need for old password",
+        "operationId": "changeAdminPassword",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "old_password": {
+                    "type": "string"
+                  },
+                  "new_password": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Change Admin Password": {
+                  "value": {}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/api/v1/login/admin": {
+      "post": {
+        "tags": [
+          "Admin Panel Requests"
+        ],
+        "summary": "Admin Login",
+        "description": "Login using username and password",
+        "operationId": "adminLogin",
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "lang": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Admin Login": {
+                  "value": {
+                    "username": "administrator"
+                  }
+                },
+                "Super Admin": {
+                  "value": {
+                    "username": "administrator",
+                    "lang": "en"
+                  }
+                },
+                "Accout Admin": {
+                  "value": {
+                    "username": "admin1",
+                    "lang": "en"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/v1/sellers_locations": {
+      "put": {
+        "tags": [
+          "Service  Locations"
+        ],
+        "summary": "Assign sevice locations",
+        "description": "Create a new user",
+        "operationId": "assignSeviceLocations",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "service_locations": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "Assign sevice locations": {
+                  "value": {
+                    "service_locations": [
+                      1
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Service  Locations"
+        ],
+        "summary": "NOT YET Get All Service locations",
+        "description": "Create a new user",
+        "operationId": "notYetGetAllServiceLocations",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "lang": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "NOT YET Get All Service locations": {
+                  "value": {
+                    "lang": "ar"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/api/v1/sellers_locations/29": {
+      "get": {
+        "tags": [
+          "Service  Locations"
+        ],
+        "summary": "Get Service Location By user id",
+        "description": "Create a new user",
+        "operationId": "getServiceLocationByUserId",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/api/v1/categories/image": {
+      "post": {
+        "tags": [
+          "Categories"
+        ],
+        "summary": "Update category image",
+        "description": "Create a new user",
+        "operationId": "updateCategoryImage",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          },
+          {
+            "name": "enctype",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "multipart/form-data"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "image": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "category_id": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "examples": {
+                "Update category image": {
+                  "value": {
+                    "category_id": 9
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/api/v1/categories": {
+      "get": {
+        "tags": [
+          "Categories"
+        ],
+        "summary": "Get all categories",
+        "description": "Create a new user",
+        "operationId": "getAllCategories",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Categories"
+        ],
+        "summary": "Create Category",
+        "description": "Create a new user",
+        "operationId": "createCategory",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "en_name": {
+                    "type": "string"
+                  },
+                  "ar_name": {
+                    "type": "string"
+                  },
+                  "kur_name": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Create Category": {
+                  "value": {
+                    "en_name": "General555",
+                    "ar_name": "1عام",
+                    "kur_name": "عام"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/api/v1/categories/2": {
+      "put": {
+        "tags": [
+          "Categories"
+        ],
+        "summary": "Update Category",
+        "description": "Create a new user",
+        "operationId": "updateCategory",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "en_name": {
+                    "type": "string"
+                  },
+                  "ar_name": {
+                    "type": "string"
+                  },
+                  "kur_name": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Update Category": {
+                  "value": {
+                    "en_name": "General33",
+                    "ar_name": "1عام 222",
+                    "kur_name": "413عام"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/api/v1/subscriptions/14": {
+      "post": {
+        "tags": [
+          "Subscriptions"
+        ],
+        "summary": "Subscribe",
+        "description": "Create a new user",
+        "operationId": "subscribe",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "subscription_id": {
+                    "type": "string"
+                  },
+                  "lang": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Subscribe": {
+                  "value": {
+                    "subscription_id": "1",
+                    "lang": "en"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Subscriptions"
+        ],
+        "summary": "Get User Subscription",
+        "description": "Create a new user",
+        "operationId": "getUserSubscription",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "subscription_id": {
+                    "type": "string"
+                  },
+                  "lang": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Get User Subscription": {
+                  "value": {
+                    "subscription_id": "1",
+                    "lang": "en"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/api/v1/ads": {
+      "post": {
+        "tags": [
+          "ADS"
+        ],
+        "summary": "Create AD",
+        "description": "Create a new user",
+        "operationId": "createAd",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "category_id": {
+                    "type": "integer"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "discount_percent": {
+                    "type": "integer"
+                  },
+                  "new_price": {
+                    "type": "integer"
+                  },
+                  "currency": {
+                    "type": "string"
+                  },
+                  "start_date": {
+                    "type": "string"
+                  },
+                  "activation_period": {
+                    "type": "integer"
+                  },
+                  "start_time": {
+                    "type": "string"
+                  },
+                  "end_time": {
+                    "type": "string"
+                  },
+                  "images": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "Create AD": {
+                  "value": {
+                    "title": " \"Ad Title\"",
+                    "description": " \"Ad Description\"",
+                    "category_id": 1,
+                    "type": " \"general\"",
+                    "discount_percent": 10,
+                    "new_price": 50,
+                    "currency": " \"IQD\"",
+                    "start_date": " \"2023-05-21\"",
+                    "activation_period": 30,
+                    "start_time": " \"09:00:00\"",
+                    "end_time": " \"18:00:00\""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "ADS"
+        ],
+        "summary": "Get all ADs",
+        "description": "Create a new user",
+        "operationId": "getAllAds",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/api/v1/categories/seller": {
+      "get": {
+        "tags": [
+          "Seller Categories"
+        ],
+        "summary": "Get seller categories",
+        "description": "Create a new user",
+        "operationId": "getSellerCategories",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Seller Categories"
+        ],
+        "summary": "Assign category to seller",
+        "description": "Create a new user",
+        "operationId": "assignCategoryToSeller",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "categories": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "Assign category to seller": {
+                  "value": {
+                    "categories": [
+                      1,
+                      2
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/api/v1/categories/end_user": {
+      "get": {
+        "tags": [
+          "User Categories"
+        ],
+        "summary": "Get end user categories",
+        "description": "Create a new user",
+        "operationId": "getEndUserCategories",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "User Categories"
+        ],
+        "summary": "Assign category to end_user",
+        "description": "Create a new user",
+        "operationId": "assignCategoryToEndUser",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "categories": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "Assign category to end_user": {
+                  "value": {
+                    "categories": [
+                      1,
+                      2
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/api/v1/media/accounts": {
+      "get": {
+        "summary": "Get accounts media",
+        "description": "Create a new user",
+        "operationId": "getAccountsMedia",
+        "parameters": [
+          {
+            "name": "file",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "abcd.jpg"
+              ]
+            }
+          },
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/api/v1/media/seller": {
+      "get": {
+        "summary": "Get sellers media",
+        "description": "Create a new user",
+        "operationId": "getSellersMedia",
+        "parameters": [
+          {
+            "name": "file",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "abcd.jpg"
+              ]
+            }
+          },
+          {
+            "name": "jwt",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}

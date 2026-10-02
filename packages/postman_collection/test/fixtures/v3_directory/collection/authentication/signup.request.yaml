@@ -1,0 +1,11 @@
+$kind: http-request
+method: POST
+url: '{{base_url}}/signup'
+order: 1
+body:
+  type: urlencoded
+  content:
+    - key: email
+      value: jane@example.com
+    - key: password
+      value: hunter2

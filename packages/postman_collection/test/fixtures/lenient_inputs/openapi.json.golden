@@ -1,0 +1,258 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "Lenient inputs",
+    "description": "Exports that break the official schema.",
+    "version": "3"
+  },
+  "servers": [
+    {
+      "url": "{baseUrl}",
+      "variables": {
+        "baseUrl": {
+          "default": "https://api.example.com"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "jwt": []
+    }
+  ],
+  "paths": {
+    "/strings": {
+      "get": {
+        "summary": "Header value null, header as a string",
+        "operationId": "headerValueNullHeaderAsAString",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "1"
+              ]
+            }
+          },
+          {
+            "name": "X-App-Version",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "1.2.3"
+              ]
+            }
+          },
+          {
+            "name": "X-Session",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Disabled",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "yes"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/objects/{id}": {
+      "get": {
+        "summary": "Null values",
+        "operationId": "nullValues",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Numeric id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "examples": [
+                "7"
+              ]
+            }
+          },
+          {
+            "name": "n",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "5"
+              ]
+            }
+          },
+          {
+            "name": "X-Null",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Number",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "42"
+              ]
+            }
+          },
+          {
+            "name": "X-As-String",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "from a string item"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "examples": {
+                  "String code": {
+                    "value": {
+                      "ok": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "/"
+          }
+        ]
+      }
+    },
+    "/asap": {
+      "post": {
+        "summary": "ASAP auth",
+        "operationId": "asapAuth",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "security": [
+          {
+            "asap": []
+          }
+        ]
+      }
+    },
+    "/inherit": {
+      "get": {
+        "summary": "Inherit keyword",
+        "operationId": "inheritKeyword",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/broken": {
+      "patch": {
+        "summary": "Broken JSON body",
+        "operationId": "brokenJsonBody",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              },
+              "examples": {
+                "Broken JSON body": {
+                  "value": {}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/plain-string": {
+      "get": {
+        "summary": "Request as a URL",
+        "operationId": "requestAsAUrl",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/symbols/{id}": {
+      "delete": {
+        "summary": "!!!",
+        "operationId": "deleteSymbolsId",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "jwt": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      },
+      "asap": {
+        "type": "http",
+        "scheme": "asap"
+      }
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "info": {
+    "_postman_id": "1a2b3c4d-0000-4000-8000-000000000002",
+    "name": "Version 2.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "auth": {
+    "type": "oauth2",
+    "oauth2": {
+      "grant_type": "client_credentials",
+      "accessTokenUrl": "https://auth.example.com/token",
+      "scope": "orders:read orders:write",
+      "clientId": "SECRET-client-id",
+      "clientSecret": "SECRET-client-secret",
+      "accessToken": "SECRET-access-token"
+    }
+  },
+  "item": [
+    {
+      "name": "Orders",
+      "auth": {
+        "type": "basic",
+        "basic": { "username": "SECRET-user", "password": "SECRET-password" }
+      },
+      "item": [
+        {
+          "name": "List orders",
+          "request": {
+            "url": "https://orders.example.com/orders",
+            "method": "GET"
+          },
+          "response": []
+        },
+        {
+          "name": "Export orders",
+          "request": {
+            "url": "https://orders.example.com/orders/export",
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": { "key": "X-Export-Key", "value": "SECRET-export-key", "in": "header" }
+            }
+          },
+          "response": [
+            {
+              "name": "CSV",
+              "originalRequest": {
+                "url": "https://orders.example.com/orders/export",
+                "method": "GET",
+                "auth": {
+                  "type": "apikey",
+                  "apikey": { "key": "X-Export-Key", "value": "SECRET-export-key" }
+                }
+              },
+              "code": 200,
+              "header": [{ "key": "Content-Type", "value": "text/csv" }],
+              "body": "id,total\n1,10"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Status",
+      "request": {
+        "url": "https://orders.example.com/status",
+        "method": "GET",
+        "auth": { "type": "noauth" }
+      },
+      "response": []
+    }
+  ]
+}

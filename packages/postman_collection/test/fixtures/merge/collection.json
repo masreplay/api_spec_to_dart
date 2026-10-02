@@ -1,0 +1,93 @@
+{
+  "info": {
+    "name": "Merge",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Login",
+      "item": [
+        {
+          "name": "Login by phone",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Accept-Language", "value": "ar" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"phone\": \"07701234567\", \"password\": \"x\"}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "https://api.example.com/login?channel=sms",
+            "description": "Logs in with a phone number."
+          },
+          "response": [
+            {
+              "name": "Phone login",
+              "originalRequest": {
+                "method": "POST",
+                "header": [{ "key": "X-Device", "value": "android" }],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"phone\": \"07700000000\", \"password\": \"y\", \"otp\": 1234}",
+                  "options": { "raw": { "language": "json" } }
+                },
+                "url": "https://api.example.com/login?channel=sms&debug=1"
+              },
+              "code": 200,
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\"token\": \"t1\", \"user\": {\"id\": 1, \"phone\": \"07700000000\"}}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Web",
+      "item": [
+        {
+          "name": "Login by email",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "X-Client", "value": "web" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\": \"jane@example.com\", \"password\": \"x\"}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "https://api.example.com/login"
+          },
+          "response": [
+            {
+              "name": "Email login",
+              "code": 200,
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\"token\": \"t2\", \"user\": {\"id\": 2, \"email\": \"jane@example.com\"}}"
+            },
+            {
+              "name": "Wrong password",
+              "code": 401,
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\"message\": \"Invalid credentials\"}"
+            }
+          ]
+        },
+        {
+          "name": "Login (form)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                { "key": "email", "value": "jane@example.com" },
+                { "key": "password", "value": "x" }
+              ]
+            },
+            "url": "https://api.example.com/login"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

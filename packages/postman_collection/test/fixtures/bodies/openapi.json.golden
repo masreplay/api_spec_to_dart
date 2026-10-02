@@ -1,0 +1,447 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "Bodies",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "{baseUrl}",
+      "variables": {
+        "baseUrl": {
+          "default": "https://api.example.com"
+        }
+      }
+    }
+  ],
+  "paths": {
+    "/json": {
+      "post": {
+        "summary": "JSON with comments, variables and trailing junk",
+        "operationId": "jsonWithCommentsVariablesAndTrailingJunk",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "integer"
+                  },
+                  "price": {
+                    "type": "number"
+                  },
+                  "active": {
+                    "type": "boolean"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "requestId": {
+                    "type": "string"
+                  },
+                  "count": {
+                    "type": "integer"
+                  },
+                  "at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "missing": {},
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "JSON with comments, variables and trailing junk": {
+                  "value": {
+                    "userId": 42,
+                    "price": 9.5,
+                    "active": true,
+                    "name": "Jane",
+                    "requestId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                    "count": 42,
+                    "at": "2024-01-01T10:00:00.000Z",
+                    "missing": null,
+                    "tags": [
+                      "a",
+                      "b"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/jsonapi": {
+      "post": {
+        "summary": "JSON API",
+        "operationId": "jsonApi",
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string"
+                      },
+                      "attributes": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "JSON API": {
+                  "value": {
+                    "data": {
+                      "type": "users",
+                      "attributes": {
+                        "name": "Jane"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/invalid": {
+      "post": {
+        "summary": "Invalid JSON",
+        "operationId": "invalidJson",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              },
+              "examples": {
+                "Invalid JSON": {
+                  "value": {}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/xml": {
+      "post": {
+        "summary": "XML",
+        "operationId": "xml",
+        "requestBody": {
+          "content": {
+            "application/xml": {
+              "schema": {
+                "type": "string"
+              },
+              "examples": {
+                "XML": {
+                  "value": "<user><name>Jane</name></user>"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/text": {
+      "post": {
+        "summary": "Text",
+        "operationId": "text",
+        "requestBody": {
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string"
+              },
+              "examples": {
+                "Text": {
+                  "value": "hello"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/html": {
+      "post": {
+        "summary": "HTML",
+        "operationId": "html",
+        "requestBody": {
+          "content": {
+            "text/html": {
+              "schema": {
+                "type": "string"
+              },
+              "examples": {
+                "HTML": {
+                  "value": "<p>Hi</p>"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/js": {
+      "post": {
+        "summary": "JavaScript",
+        "operationId": "javaScript",
+        "requestBody": {
+          "content": {
+            "application/javascript": {
+              "schema": {
+                "type": "string"
+              },
+              "examples": {
+                "JavaScript": {
+                  "value": "console.log(1)"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/form": {
+      "post": {
+        "summary": "Form",
+        "operationId": "form",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "description": "Login email"
+                  },
+                  "age": {
+                    "type": "integer"
+                  },
+                  "remember": {
+                    "type": "boolean"
+                  },
+                  "phone": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Form": {
+                  "value": {
+                    "email": "jane@example.com",
+                    "age": 42,
+                    "remember": true,
+                    "phone": "07701234567"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/upload": {
+      "post": {
+        "summary": "Upload",
+        "operationId": "upload",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "metadata": {
+                    "type": "string"
+                  },
+                  "photo": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "The picture"
+                  },
+                  "attachments": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    }
+                  }
+                }
+              },
+              "encoding": {
+                "metadata": {
+                  "contentType": "application/json"
+                }
+              },
+              "examples": {
+                "Upload": {
+                  "value": {
+                    "title": "Holiday",
+                    "metadata": "{\"album\": 1}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/logo": {
+      "put": {
+        "summary": "Binary",
+        "operationId": "binary",
+        "requestBody": {
+          "content": {
+            "image/png": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/graphql": {
+      "post": {
+        "summary": "GraphQL",
+        "operationId": "graphQl",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "query": {
+                    "type": "string"
+                  },
+                  "variables": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      }
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "GraphQL": {
+                  "value": {
+                    "query": "query User($id: ID!) { user(id: $id) { name } }",
+                    "variables": {
+                      "id": 42
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/disabled": {
+      "post": {
+        "summary": "Disabled body",
+        "operationId": "disabledBody",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/null": {
+      "post": {
+        "summary": "Null body",
+        "operationId": "nullBody",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    }
+  }
+}

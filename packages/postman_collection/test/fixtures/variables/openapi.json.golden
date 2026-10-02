@@ -1,0 +1,188 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "Variables",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "{scheme}://{host}:{port}",
+      "variables": {
+        "scheme": {
+          "default": "https"
+        },
+        "host": {
+          "default": "api.example.com"
+        },
+        "port": {
+          "default": "8443"
+        }
+      }
+    }
+  ],
+  "tags": [
+    {
+      "name": "Catalog"
+    }
+  ],
+  "paths": {
+    "/{apiVersion}/products": {
+      "get": {
+        "tags": [
+          "Catalog"
+        ],
+        "summary": "List products",
+        "operationId": "listProducts",
+        "parameters": [
+          {
+            "name": "apiVersion",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "examples": [
+                "v2"
+              ]
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "50"
+              ]
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "ar"
+              ]
+            }
+          },
+          {
+            "name": "X-Off",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Legacy",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "by-id"
+              ]
+            }
+          },
+          {
+            "name": "X-Request-Time",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "1704103200"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Catalog"
+        ],
+        "summary": "Create product",
+        "operationId": "createProduct",
+        "parameters": [
+          {
+            "name": "apiVersion",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "examples": [
+                "v2"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "lang": {
+                    "type": "string"
+                  },
+                  "limit": {
+                    "type": "integer"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "createdAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "flag": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "examples": {
+                "Create product": {
+                  "value": {
+                    "name": "Jane Doe",
+                    "lang": "ar",
+                    "limit": 10,
+                    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                    "createdAt": "2024-01-01T10:00:00.000Z",
+                    "flag": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "servers": [
+          {
+            "url": "{baseUrl}",
+            "variables": {
+              "baseUrl": {
+                "default": "https://api.example.com:8443"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

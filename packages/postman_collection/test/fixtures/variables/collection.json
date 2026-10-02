@@ -1,0 +1,64 @@
+{
+  "info": {
+    "name": "Variables",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "scheme", "value": "https", "type": "string" },
+    { "key": "host", "value": "api.example.com" },
+    { "key": "port", "value": 8443, "type": "number" },
+    { "key": "apiVersion", "value": "v2" },
+    { "key": "baseUrl", "value": "{{scheme}}://{{host}}:{{port}}" },
+    { "key": "lang", "value": "en" },
+    { "key": "limit", "value": "10" },
+    { "key": "off", "value": "never used", "disabled": true },
+    { "id": "legacyId", "value": "by-id" }
+  ],
+  "item": [
+    {
+      "name": "Catalog",
+      "variable": [{ "key": "lang", "value": "ar" }],
+      "item": [
+        {
+          "name": "List products",
+          "variable": [{ "key": "limit", "value": "50" }],
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept-Language", "value": "{{lang}}" },
+              { "key": "X-Off", "value": "{{off}}" },
+              { "key": "X-Legacy", "value": "{{legacyId}}" },
+              { "key": "X-Request-Time", "value": "{{$timestamp}}" }
+            ],
+            "url": {
+              "raw": "{{scheme}}://{{host}}:{{port}}/{{apiVersion}}/products?limit={{limit}}&q={{search}}",
+              "protocol": "{{scheme}}",
+              "host": ["{{host}}"],
+              "port": "{{port}}",
+              "path": ["{{apiVersion}}", "products"],
+              "query": [
+                { "key": "limit", "value": "{{limit}}" },
+                { "key": "q", "value": "{{search}}" }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create product",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\": \"{{$randomFullName}}\", \"lang\": \"{{lang}}\", \"limit\": {{limit}}, \"id\": \"{{$randomUUID}}\", \"createdAt\": \"{{$isoTimestamp}}\", \"flag\": {{$randomBoolean}}}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseUrl}}/{{apiVersion}}/products"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

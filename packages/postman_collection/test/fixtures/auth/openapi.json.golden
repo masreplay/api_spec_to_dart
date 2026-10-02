@@ -1,0 +1,381 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "Auth",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.example.com"
+    }
+  ],
+  "security": [
+    {
+      "bearer": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Basic folder"
+    },
+    {
+      "name": "Signed"
+    }
+  ],
+  "paths": {
+    "/me": {
+      "get": {
+        "summary": "Inherits bearer",
+        "operationId": "inheritsBearer",
+        "parameters": [
+          {
+            "name": "X-Token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/public": {
+      "get": {
+        "summary": "Public",
+        "operationId": "public",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "security": []
+      }
+    },
+    "/basic": {
+      "get": {
+        "tags": [
+          "Basic folder"
+        ],
+        "summary": "Inherits basic",
+        "operationId": "inheritsBasic",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/digest": {
+      "get": {
+        "tags": [
+          "Basic folder"
+        ],
+        "summary": "Digest",
+        "operationId": "digest",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "security": [
+          {
+            "digest": []
+          }
+        ]
+      }
+    },
+    "/apikey/header": {
+      "get": {
+        "summary": "API key in a header",
+        "operationId": "apiKeyInAHeader",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "security": [
+          {
+            "apikey": []
+          }
+        ]
+      }
+    },
+    "/apikey/query": {
+      "get": {
+        "summary": "API key in the query",
+        "operationId": "apiKeyInTheQuery",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "security": [
+          {
+            "apikey_2": []
+          }
+        ]
+      }
+    },
+    "/oauth2/code": {
+      "get": {
+        "summary": "OAuth2 authorization code",
+        "operationId": "oauth2AuthorizationCode",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read:users",
+              "write:users"
+            ]
+          }
+        ]
+      }
+    },
+    "/oauth2/client": {
+      "get": {
+        "summary": "OAuth2 client credentials",
+        "operationId": "oauth2ClientCredentials",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "security": [
+          {
+            "oauth2_2": []
+          }
+        ]
+      }
+    },
+    "/oauth2/password": {
+      "get": {
+        "summary": "OAuth2 password",
+        "operationId": "oauth2Password",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "security": [
+          {
+            "oauth2_3": []
+          }
+        ]
+      }
+    },
+    "/oauth2/implicit": {
+      "get": {
+        "summary": "OAuth2 implicit",
+        "operationId": "oauth2Implicit",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "security": [
+          {
+            "oauth2_4": [
+              "read:users"
+            ]
+          }
+        ]
+      }
+    },
+    "/oauth1": {
+      "get": {
+        "tags": [
+          "Signed"
+        ],
+        "summary": "OAuth1",
+        "operationId": "oauth1",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "security": [
+          {
+            "oauth1": []
+          }
+        ]
+      }
+    },
+    "/hawk": {
+      "get": {
+        "tags": [
+          "Signed"
+        ],
+        "summary": "Hawk",
+        "operationId": "hawk",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "security": [
+          {
+            "hawk": []
+          }
+        ]
+      }
+    },
+    "/aws": {
+      "get": {
+        "tags": [
+          "Signed"
+        ],
+        "summary": "AWS",
+        "operationId": "aws",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "security": [
+          {
+            "awsv4": []
+          }
+        ]
+      }
+    },
+    "/ntlm": {
+      "get": {
+        "tags": [
+          "Signed"
+        ],
+        "summary": "NTLM",
+        "operationId": "ntlm",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "security": [
+          {
+            "ntlm": []
+          }
+        ]
+      }
+    },
+    "/edgegrid": {
+      "get": {
+        "tags": [
+          "Signed"
+        ],
+        "summary": "EdgeGrid",
+        "operationId": "edgeGrid",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "security": [
+          {
+            "edgegrid": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer"
+      },
+      "basic": {
+        "type": "http",
+        "scheme": "basic"
+      },
+      "digest": {
+        "type": "http",
+        "scheme": "digest"
+      },
+      "apikey": {
+        "type": "apiKey",
+        "name": "X-API-Key",
+        "in": "header"
+      },
+      "apikey_2": {
+        "type": "apiKey",
+        "name": "api_key",
+        "in": "query"
+      },
+      "oauth2": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://auth.example.com/oauth/authorize",
+            "tokenUrl": "https://auth.example.com/oauth/token",
+            "scopes": {
+              "read:users": "",
+              "write:users": ""
+            }
+          }
+        }
+      },
+      "oauth2_2": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://auth.example.com/oauth/token",
+            "scopes": {}
+          }
+        }
+      },
+      "oauth2_3": {
+        "type": "oauth2",
+        "flows": {
+          "password": {
+            "tokenUrl": "https://auth.example.com/oauth/token",
+            "scopes": {}
+          }
+        }
+      },
+      "oauth2_4": {
+        "type": "oauth2",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "https://auth.example.com/oauth/authorize",
+            "scopes": {
+              "read:users": ""
+            }
+          }
+        }
+      },
+      "oauth1": {
+        "type": "http",
+        "scheme": "OAuth"
+      },
+      "hawk": {
+        "type": "http",
+        "scheme": "Hawk"
+      },
+      "awsv4": {
+        "type": "http",
+        "scheme": "AWS4-HMAC-SHA256"
+      },
+      "ntlm": {
+        "type": "http",
+        "scheme": "NTLM"
+      },
+      "edgegrid": {
+        "type": "http",
+        "scheme": "EG1-HMAC-SHA256"
+      }
+    }
+  }
+}

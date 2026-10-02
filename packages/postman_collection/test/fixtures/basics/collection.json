@@ -1,0 +1,151 @@
+{
+  "info": {
+    "_postman_id": "0d6f7a52-1c1a-4c43-9f3e-1d2b0b9f1a01",
+    "name": "Pet Store",
+    "description": "A small pet store API.",
+    "version": { "major": 1, "minor": 2, "patch": 0 },
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://petstore.example.com/v1" }
+  ],
+  "item": [
+    {
+      "name": "Pets",
+      "description": "Everything about pets",
+      "item": [
+        {
+          "name": "List pets",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "X-Request-Id", "value": "{{$guid}}", "description": "Correlation id" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/pets?limit=20&tag=dog&tag=cat",
+              "host": ["{{baseUrl}}"],
+              "path": ["pets"],
+              "query": [
+                { "key": "limit", "value": "20", "description": "Page size" },
+                { "key": "tag", "value": "dog" },
+                { "key": "tag", "value": "cat" }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Pets",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/pets?limit=20",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["pets"],
+                  "query": [{ "key": "limit", "value": "20" }]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                { "key": "Content-Type", "value": "application/json" },
+                { "key": "X-Total-Count", "value": "2" }
+              ],
+              "cookie": [],
+              "body": "[\n  {\"id\": 1, \"name\": \"Rex\", \"tag\": \"dog\", \"born\": \"2020-05-01T08:00:00Z\"},\n  {\"id\": 2, \"name\": \"Tom\", \"tag\": null, \"born\": \"2021-01-10T12:30:00Z\"}\n]"
+            }
+          ]
+        },
+        {
+          "name": "Get pet",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pets/:petId",
+              "host": ["{{baseUrl}}"],
+              "path": ["pets", ":petId"],
+              "variable": [
+                { "key": "petId", "value": "1", "description": "The pet id" }
+              ]
+            },
+            "description": "Returns one pet."
+          },
+          "response": [
+            {
+              "name": "Found",
+              "code": 200,
+              "status": "OK",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\"id\": 1, \"name\": \"Rex\", \"tag\": \"dog\"}"
+            },
+            {
+              "name": "Missing",
+              "code": 404,
+              "status": "Not Found",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\"message\": \"Pet not found\"}"
+            }
+          ]
+        },
+        {
+          "name": "Create pet",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Rex\",\n  \"tag\": \"dog\",\n  \"vaccinated\": true\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/pets",
+              "host": ["{{baseUrl}}"],
+              "path": ["pets"]
+            }
+          },
+          "response": [
+            {
+              "name": "Created",
+              "code": 201,
+              "status": "Created",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\"id\": 3, \"name\": \"Rex\", \"tag\": \"dog\", \"vaccinated\": true}"
+            }
+          ]
+        },
+        {
+          "name": "Delete pet",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pets/:petId",
+              "host": ["{{baseUrl}}"],
+              "path": ["pets", ":petId"],
+              "variable": [{ "key": "petId", "value": "1" }]
+            }
+          },
+          "response": [
+            { "name": "Deleted", "code": 204, "status": "No Content", "header": [], "body": null }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["health"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

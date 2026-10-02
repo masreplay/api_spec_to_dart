@@ -1,0 +1,153 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "Payments",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://pay.example.com"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Disputes"
+    }
+  ],
+  "paths": {
+    "/payments": {
+      "post": {
+        "summary": "Create payment",
+        "operationId": "createPayment",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "amount": {
+                    "type": "integer"
+                  },
+                  "currency": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Create payment": {
+                  "value": {
+                    "amount": 100,
+                    "currency": "USD"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    }
+  },
+  "webhooks": {
+    "payment.succeeded": {
+      "post": {
+        "summary": "payment.succeeded",
+        "operationId": "paymentSucceeded",
+        "parameters": [
+          {
+            "name": "X-Signature",
+            "in": "header",
+            "description": "HMAC of the body",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "amount": {
+                        "type": "integer"
+                      }
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "payment.succeeded": {
+                  "value": {
+                    "id": "evt_1",
+                    "type": "payment.succeeded",
+                    "data": {
+                      "amount": 100
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "payment.disputed": {
+      "post": {
+        "tags": [
+          "Disputes"
+        ],
+        "summary": "payment.disputed",
+        "operationId": "paymentDisputed",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "reason": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "payment.disputed": {
+                  "value": {
+                    "id": "evt_2",
+                    "reason": "fraud"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    }
+  }
+}
