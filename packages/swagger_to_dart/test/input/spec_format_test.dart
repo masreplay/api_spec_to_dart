@@ -1,5 +1,6 @@
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 import 'package:test/test.dart';
+import 'package:yaml/yaml.dart';
 
 void main() {
   group('detectSpecFormat', () {
@@ -115,6 +116,26 @@ void main() {
       });
       expect(swagger['info'], {'title': 'T', 'version': '2'});
       expect(OpenApi.fromJson(swagger).info?.version, '2');
+    });
+
+    test('accepts documents as package:yaml loads them', () {
+      final openApi = toOpenApiJson(
+        loadYaml('''
+openapi: 3.0.3
+info: {title: T, version: '1'}
+paths:
+  /a:
+    get:
+      responses:
+        200: {description: OK}
+'''),
+      );
+
+      expect(openApi, isA<Map<String, dynamic>>());
+      expect(openApi['paths']['/a']['get']['responses'], {
+        '200': {'description': 'OK'},
+      });
+      expect(OpenApi.fromJson(openApi).paths?['/a'], isNotNull);
     });
 
     test('Postman input is not wired yet', () {
