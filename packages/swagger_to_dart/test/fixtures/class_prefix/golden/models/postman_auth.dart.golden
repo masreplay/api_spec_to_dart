@@ -1,0 +1,82 @@
+/// Auth
+///
+/// ```json
+/// {
+///     "oneOf": [
+///         {
+///             "$ref": "#/components/schemas/Basic"
+///         },
+///         {
+///             "$ref": "#/components/schemas/Bearer"
+///         }
+///     ],
+///     "discriminator": {
+///         "propertyName": "type",
+///         "mapping": {
+///             "basic": "#/components/schemas/Basic",
+///             "bearer": "#/components/schemas/Bearer"
+///         }
+///     }
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+sealed class PostmanAuth {
+  const PostmanAuth();
+
+  const factory PostmanAuth.basic(PostmanBasic value) = PostmanAuthBasic;
+  const factory PostmanAuth.bearer(PostmanBearer value) = PostmanAuthBearer;
+
+  factory PostmanAuth.fromJson(Map<String, dynamic> json) =>
+      switch (json['type']) {
+        'basic' => PostmanAuthBasic(PostmanBasic.fromJson(json)),
+        'bearer' => PostmanAuthBearer(PostmanBearer.fromJson(json)),
+        _ => throw ArgumentError.value(
+          json['type'],
+          'type',
+          'Unknown PostmanAuth',
+        ),
+      };
+
+  Map<String, dynamic> toJson();
+}
+
+final class PostmanAuthBasic extends PostmanAuth {
+  const PostmanAuthBasic(this.value);
+
+  final PostmanBasic value;
+
+  @override
+  Map<String, dynamic> toJson() => {...value.toJson(), 'type': 'basic'};
+
+  @override
+  bool operator ==(Object other) =>
+      other is PostmanAuthBasic && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'PostmanAuth.basic($value)';
+}
+
+final class PostmanAuthBearer extends PostmanAuth {
+  const PostmanAuthBearer(this.value);
+
+  final PostmanBearer value;
+
+  @override
+  Map<String, dynamic> toJson() => {...value.toJson(), 'type': 'bearer'};
+
+  @override
+  bool operator ==(Object other) =>
+      other is PostmanAuthBearer && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'PostmanAuth.bearer($value)';
+}

@@ -1,0 +1,44 @@
+/// Bearer
+///
+/// ```json
+/// {
+///     "properties": {
+///         "type": {
+///             "type": "string"
+///         },
+///         "token": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "type"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'postman_bearer.freezed.dart';
+part 'postman_bearer.g.dart';
+
+@freezed
+abstract class PostmanBearer with _$PostmanBearer {
+  const PostmanBearer._();
+
+  @jsonSerializable
+  const factory PostmanBearer({
+    /// type
+    @JsonKey(name: PostmanBearer.typeKey_) required String type,
+
+    /// token
+    @JsonKey(name: PostmanBearer.tokenKey_) String? token,
+  }) = _PostmanBearer;
+
+  factory PostmanBearer.fromJson(Map<String, dynamic> json) =>
+      _$PostmanBearerFromJson(json);
+
+  static const String typeKey_ = 'type';
+
+  static const String tokenKey_ = 'token';
+}

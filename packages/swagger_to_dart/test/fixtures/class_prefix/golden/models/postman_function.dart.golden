@@ -1,0 +1,34 @@
+/// Function
+///
+/// ```json
+/// {
+///     "properties": {
+///         "script": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object",
+///     "description": "A name Dart reserves; prefixed, it needs no escape."
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'postman_function.freezed.dart';
+part 'postman_function.g.dart';
+
+@freezed
+abstract class PostmanFunction with _$PostmanFunction {
+  const PostmanFunction._();
+
+  @jsonSerializable
+  const factory PostmanFunction({
+    /// script
+    @JsonKey(name: PostmanFunction.scriptKey_) String? script,
+  }) = _PostmanFunction;
+
+  factory PostmanFunction.fromJson(Map<String, dynamic> json) =>
+      _$PostmanFunctionFromJson(json);
+
+  static const String scriptKey_ = 'script';
+}

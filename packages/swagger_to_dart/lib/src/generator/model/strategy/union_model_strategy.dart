@@ -224,9 +224,11 @@ class UnionModelStrategy {
   }) {
     final prefixes = context.config.model.removeModelPrefixes;
     return context.registerInlineModel(
-      Renaming.instance.renameClass(
-        name,
-        removePrefixes: prefixes.isNotEmpty ? prefixes : null,
+      context.withClassPrefix(
+        Renaming.instance.renameClass(
+          name,
+          removePrefixes: prefixes.isNotEmpty ? prefixes : null,
+        ),
       ),
       (className) => build(
         className: className,

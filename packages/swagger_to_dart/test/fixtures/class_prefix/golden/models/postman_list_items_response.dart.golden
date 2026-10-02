@@ -1,0 +1,33 @@
+/// PostmanListItemsResponse
+///
+/// ```json
+/// {
+///     "properties": {
+///         "items": {
+///             "$ref": "#/components/schemas/Items"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'postman_list_items_response.freezed.dart';
+part 'postman_list_items_response.g.dart';
+
+@freezed
+abstract class PostmanListItemsResponse with _$PostmanListItemsResponse {
+  const PostmanListItemsResponse._();
+
+  @jsonSerializable
+  const factory PostmanListItemsResponse({
+    /// items
+    @JsonKey(name: PostmanListItemsResponse.itemsKey_) PostmanItems? items,
+  }) = _PostmanListItemsResponse;
+
+  factory PostmanListItemsResponse.fromJson(Map<String, dynamic> json) =>
+      _$PostmanListItemsResponseFromJson(json);
+
+  static const String itemsKey_ = 'items';
+}

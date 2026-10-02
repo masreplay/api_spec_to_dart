@@ -1,0 +1,44 @@
+/// Basic
+///
+/// ```json
+/// {
+///     "properties": {
+///         "type": {
+///             "type": "string"
+///         },
+///         "username": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "type"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'postman_basic.freezed.dart';
+part 'postman_basic.g.dart';
+
+@freezed
+abstract class PostmanBasic with _$PostmanBasic {
+  const PostmanBasic._();
+
+  @jsonSerializable
+  const factory PostmanBasic({
+    /// type
+    @JsonKey(name: PostmanBasic.typeKey_) required String type,
+
+    /// username
+    @JsonKey(name: PostmanBasic.usernameKey_) String? username,
+  }) = _PostmanBasic;
+
+  factory PostmanBasic.fromJson(Map<String, dynamic> json) =>
+      _$PostmanBasicFromJson(json);
+
+  static const String typeKey_ = 'type';
+
+  static const String usernameKey_ = 'username';
+}
