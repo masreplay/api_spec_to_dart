@@ -41,6 +41,37 @@ const _configuration = {
   },
 };
 
+/// Names (of parameters, headers, JSON keys) and values that carry
+/// credentials outside auth: tokens, keys, sessions, signatures.
+final _credentialName = RegExp(
+  'token|jwt|secret|passw|api[-_]?key|session|signature|credential|auth(?!or)',
+  caseSensitive: false,
+);
+final _credentialValue = RegExp(
+  r'^(bearer |basic |ey[\w-]+\.[\w-]+\.)',
+  caseSensitive: false,
+);
+
+/// Whether the string [value] of [name] is a credential, so never an
+/// example.
+bool isCredential(String name, String value) =>
+    _credentialName.hasMatch(name) || _credentialValue.hasMatch(value);
+
+/// An example [json] without credential strings (object entries and list
+/// items). Inferred schemas still see every field.
+Object? withoutCredentials(Object? json) => switch (json) {
+  final Map<Object?, Object?> map => {
+    for (final MapEntry(:key, :value) in map.entries)
+      if (!(value is String && isCredential('$key', value)))
+        key: withoutCredentials(value),
+  },
+  final List<Object?> list => [
+    for (final item in list)
+      if (!(item is String && isCredential('', item))) withoutCredentials(item),
+  ],
+  _ => json,
+};
+
 /// The auth that applies to an entity: its own, unless missing, null or
 /// `inherit`, else [inherited].
 Object? inheritAuth(Object? inherited, Object? own) =>
@@ -58,6 +89,8 @@ class SecuritySchemes {
   /// `components.securitySchemes`; identical schemes share a name.
   final schemes = <String, Map<String, Object?>>{};
 
+  final _warnedTypes = <String>{};
+
   /// The OpenAPI `security` for [auth] (already inherited): empty for
   /// `noauth`, null when there is no auth.
   List<Map<String, List<String>>>? requirement(
@@ -68,7 +101,7 @@ class SecuritySchemes {
     final type = auth['type'];
     if (type is! String || type == 'inherit') return null;
     if (type == 'noauth') return const [];
-    if (!_schemaTypes.contains(type)) {
+    if (!_schemaTypes.contains(type) && _warnedTypes.add(type)) {
       onWarning?.call(
         "auth type '$type' is not in the Postman v2.1 schema; "
         "declared as http '${type == 'jwt' ? 'bearer' : type}'",
@@ -111,7 +144,7 @@ class SecuritySchemes {
     var name = base;
     for (var i = 2; schemes.containsKey(name); i++) {
       if (jsonEncode(schemes[name]) == json) return name;
-      name = '$base$i';
+      name = '${base}_$i';
     }
     schemes[name] = scheme;
     return name;

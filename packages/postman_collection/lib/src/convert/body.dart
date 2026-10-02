@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'auth.dart';
 import 'infer_schema.dart';
 import 'json_lenient.dart';
 import 'variables.dart';
@@ -243,16 +244,17 @@ class MediaContent {
     example(name, sample);
   }
 
-  /// Keeps one example per distinct value, keyed by [name] (suffixed when
-  /// taken).
+  /// Keeps one example per distinct value, without credentials, keyed by
+  /// [name] (suffixed when taken).
   void example(String name, Object? value) {
-    final json = jsonEncode(value);
-    if (examples.values.any((example) => jsonEncode(example) == json)) return;
+    final example = withoutCredentials(value);
+    final json = jsonEncode(example);
+    if (examples.values.any((other) => jsonEncode(other) == json)) return;
     var key = name;
     for (var i = 2; examples.containsKey(key); i++) {
       key = '$name $i';
     }
-    examples[key] = value;
+    examples[key] = example;
   }
 
   Map<String, Object?> toJson() => {
