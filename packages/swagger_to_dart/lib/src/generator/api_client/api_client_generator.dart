@@ -180,9 +180,11 @@ class ApiClientGenerator {
           (path: path, method: method, operation: operation),
       ];
       for (final operation in operations) {
-        final tags = (operation.operation.tags ?? []).map(
-          (e) => Recase.instance.removeNonAscii(e),
-        );
+        // A set: a repeated tag must not add the operation twice.
+        final tags = {
+          for (final tag in operation.operation.tags ?? <String>[])
+            Recase.instance.removeNonAscii(tag),
+        };
         for (final tag in tags.isEmpty ? const ['default'] : tags) {
           (group[tag] ??= []).add(operation);
         }
