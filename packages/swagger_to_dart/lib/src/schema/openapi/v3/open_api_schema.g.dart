@@ -14,6 +14,17 @@ OpenApiSchemaType _$OpenApiSchemaTypeFromJson(Map<String, dynamic> json) =>
         json['type'],
         unknownValue: OpenApiSchemaVarType.$unknown,
       ),
+      properties: (json['properties'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(
+          k,
+          const OpenApiSchemaJsonConverter().fromJson(
+            e as Map<String, dynamic>,
+          ),
+        ),
+      ),
+      required_: (_requiredNames(json, 'required') as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
       items: _$JsonConverterFromJson<Map<String, dynamic>, OpenApiSchema>(
         json['items'],
         const OpenApiSchemaJsonConverter().fromJson,
@@ -35,6 +46,10 @@ Map<String, dynamic> _$OpenApiSchemaTypeToJson(OpenApiSchemaType instance) =>
     <String, dynamic>{
       'enum': ?instance.enum_,
       'type': ?_$OpenApiSchemaVarTypeEnumMap[instance.type],
+      'properties': ?instance.properties?.map(
+        (k, e) => MapEntry(k, const OpenApiSchemaJsonConverter().toJson(e)),
+      ),
+      'required': ?instance.required_,
       'items': ?_$JsonConverterToJson<Map<String, dynamic>, OpenApiSchema>(
         instance.items,
         const OpenApiSchemaJsonConverter().toJson,

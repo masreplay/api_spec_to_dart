@@ -1,0 +1,156 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Inline objects", "version": "1.0.0" },
+  "paths": {
+    "/users/{id}": {
+      "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+      "get": {
+        "tags": ["users"],
+        "operationId": "getUser",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["name", "address"],
+                  "properties": {
+                    "name": { "type": "string" },
+                    "address": {
+                      "type": "object",
+                      "required": ["city"],
+                      "properties": {
+                        "city": { "type": "string" },
+                        "kind": { "type": "string", "enum": ["home", "work"], "default": "home" },
+                        "geo": {
+                          "type": ["object", "null"],
+                          "properties": { "lat": { "type": "number" }, "lng": { "type": "number" } }
+                        }
+                      }
+                    },
+                    "roles": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": ["id"],
+                        "properties": {
+                          "id": { "type": "integer" },
+                          "label": { "type": "string", "default": "member" }
+                        }
+                      }
+                    },
+                    "scores": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "object",
+                        "properties": { "value": { "type": "number" } }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": { "v": { "type": "integer" } },
+                      "default": { "v": 1 }
+                    },
+                    "extra": { "type": "object" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["users"],
+        "operationId": "updateUser",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "schema": { "type": "object", "properties": { "q": { "type": "string" } } }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "type": "object", "required": ["name"], "properties": { "name": { "type": "string" } } }
+            }
+          }
+        },
+        "responses": { "204": { "description": "Updated" } }
+      }
+    },
+    "/admin/users/{id}": {
+      "get": {
+        "tags": ["admin"],
+        "operationId": "getUser",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": {
+          "200": {
+            "description": "Same operation id in another client, another shape",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": { "name": { "type": "string" }, "admin": { "type": "boolean" } }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pets/{id}": {
+      "get": {
+        "tags": ["pets"],
+        "operationId": "getPet",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": {
+          "200": {
+            "description": "Titled like the Pet component",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Pet",
+                  "type": "object",
+                  "properties": {
+                    "pet": { "$ref": "#/components/schemas/Pet" },
+                    "seen": { "type": "string", "format": "date-time" }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Pet": {
+        "type": "object",
+        "required": ["name"],
+        "properties": { "name": { "type": "string" } }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "message": { "type": "string" },
+          "response": {
+            "type": "object",
+            "properties": { "status": { "type": "integer" }, "body": { "type": "string" } }
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": { "code": { "type": "string" } }
+      }
+    }
+  }
+}

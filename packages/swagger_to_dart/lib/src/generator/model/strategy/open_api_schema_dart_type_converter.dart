@@ -3,7 +3,15 @@ import 'package:swagger_to_dart/src/generator/model/strategy/generic_parser_fact
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
-  const OpenApiSchemaDartTypeConverter(super.context);
+  const OpenApiSchemaDartTypeConverter(
+    super.context, {
+    this.inlineModels = true,
+  });
+
+  /// Whether inline objects become models. Not for operation parameters:
+  /// retrofit's encoding of a model in `@Query`/`@Header` is undefined, so
+  /// they stay `Map<String, dynamic>`.
+  final bool inlineModels;
 
   /// Dart type for [schema]. [contextName] (e.g. `Pet_status`,
   /// `listPets_sort`) names inline enums that have no title.
@@ -245,6 +253,18 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
       );
     }
 
+    if (schema.properties case final properties?
+        when inlineModels &&
+            properties.isNotEmpty &&
+            (schema.type == null ||
+                schema.type == OpenApiSchemaVarType.object)) {
+      return _inlineObject(
+        schema,
+        className: className,
+        contextName: contextName,
+      );
+    }
+
     switch (schema.type) {
       case OpenApiSchemaVarType.string:
         switch (schema.format) {
@@ -290,7 +310,7 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
             : get(
                 items,
                 className: className,
-                contextName: contextName,
+                contextName: _nestedContext(contextName, items, 'item'),
                 overrideTypes: overrideTypes,
               );
 
@@ -307,7 +327,7 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
             : get(
                 items,
                 className: className,
-                contextName: contextName,
+                contextName: _nestedContext(contextName, items, 'value'),
                 overrideTypes: overrideTypes,
               );
 
@@ -315,6 +335,57 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
       case OpenApiSchemaVarType.null_ || OpenApiSchemaVarType.$unknown || null:
         return 'dynamic';
     }
+  }
+
+  /// Context of an array item or map value: `Pet_roles` → `Pet_roles_item`.
+  /// Inline enums keep the 5.x name, their parent's context (`PetTags`).
+  String? _nestedContext(
+    String? contextName,
+    OpenApiSchema schema,
+    String suffix,
+  ) =>
+      contextName == null ||
+          (schema is OpenApiSchemaType && schema.enum_ != null)
+      ? contextName
+      : '${contextName}_$suffix';
+
+  /// Registers the model of an inline object schema and returns its class
+  /// name: the schema's title, unless a component has that class name, else
+  /// the place it is used ([contextName], `getUser_response` →
+  /// GetUserResponse).
+  String _inlineObject(
+    OpenApiSchemaType schema, {
+    required String className,
+    required String? contextName,
+  }) {
+    final title = switch (schema.title) {
+      final title? => Renaming.instance.renameClass(title),
+      null => null,
+    };
+    final name =
+        title != null && !context.componentClassNames.containsValue(title)
+        ? title
+        : Renaming.instance.renameClass(
+            contextName ??
+                (throw ArgumentError(
+                  'swagger_to_dart: cannot name the inline object with '
+                  'properties ${schema.properties!.keys} in $className; '
+                  'give its schema a title.',
+                )),
+          );
+
+    return context.registerInlineModel(
+      name,
+      (name) => RegularModelGeneratorStrategy(context).build(
+        MapEntry(
+          name,
+          OpenApiSchemas.fromJson(
+            const OpenApiSchemaJsonConverter().toJson(schema),
+          ),
+        ),
+        name: name,
+      ),
+    );
   }
 
   /// Dart source for the schema's `default`, or null. Inside an annotation
@@ -375,7 +446,10 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
   /// Whether a JSON default can be written as a literal of the schema's Dart
   /// type (not for DateTime, Uri, enums in lists, typed maps...).
   bool _literalFits(OpenApiSchemaType schema) {
-    if (schema.enum_ != null) return false;
+    // Enums and inline object models are no literals.
+    if (schema.enum_ != null || (schema.properties?.isNotEmpty ?? false)) {
+      return false;
+    }
     return switch (schema.type) {
       OpenApiSchemaVarType.string => getType(schema, className: '') == 'String',
       OpenApiSchemaVarType.array => switch (schema.items) {

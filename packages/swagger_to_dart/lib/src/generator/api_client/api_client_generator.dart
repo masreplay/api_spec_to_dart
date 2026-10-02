@@ -491,7 +491,10 @@ class ApiClientGenerator {
         continue;
       }
 
-      final typeConverter = context.extension.typeConverter;
+      final typeConverter = OpenApiSchemaDartTypeConverter(
+        context,
+        inlineModels: false,
+      );
       final contextName = '${methodName}_${p.name}';
       final defaultValue = typeConverter.getDefaultValue(
         p.schema,

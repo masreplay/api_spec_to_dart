@@ -12,6 +12,13 @@ sealed class OpenApiSchema with _$OpenApiSchema {
     @JsonKey(name: 'enum') List<Object?>? enum_,
     @JsonKey(name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
     OpenApiSchemaVarType? type,
+    @OpenApiSchemaJsonConverter()
+    @JsonKey(name: 'properties')
+    Map<String, OpenApiSchema>? properties,
+
+    /// Required property names (a stray `required: true` is ignored).
+    @JsonKey(name: 'required', readValue: _requiredNames)
+    List<String>? required_,
     @OpenApiSchemaJsonConverter() @JsonKey(name: 'items') OpenApiSchema? items,
     @JsonKey(name: 'maxLength') int? maxLength,
     @JsonKey(name: 'minLength') int? minLength,
@@ -103,6 +110,9 @@ enum OpenApiSchemaVarType {
 
   $unknown,
 }
+
+Object? _requiredNames(Map<dynamic, dynamic> json, String key) =>
+    json[key] is List ? json[key] : null;
 
 const String _unionKeyType = 'runtimeType';
 

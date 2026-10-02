@@ -58,15 +58,16 @@ class GenerationContext {
     }
   }
 
-  /// Adds an inline model (enum, union, query class) as [className], or as
-  /// `${className}2`, `3`... when a different model already uses the name.
-  /// Returns the class name used.
+  /// Adds an inline model (object, enum, union, query class) as [className],
+  /// or as `${className}2`, `3`... when a different model already uses the
+  /// name. Returns the class name used.
   String registerInlineModel(
     String className,
     Library Function(String className) build,
   ) {
     for (var i = 1; ; i++) {
       final name = i == 1 ? className : '$className$i';
+      final before = {..._models.keys};
       final library = build(name);
       final existing = _models[library.name!];
       if (existing == null && !reservedModelNames.contains(library.name)) {
@@ -76,6 +77,8 @@ class GenerationContext {
       if (existing != null && _source(existing) == _source(library)) {
         return name;
       }
+      // Drop the nested models this attempt registered under its name.
+      _models.removeWhere((key, _) => !before.contains(key));
     }
   }
 

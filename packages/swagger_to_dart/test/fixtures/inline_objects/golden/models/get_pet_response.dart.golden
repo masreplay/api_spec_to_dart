@@ -1,0 +1,43 @@
+/// GetPetResponse
+///
+/// ```json
+/// {
+///     "properties": {
+///         "pet": {
+///             "$ref": "#/components/schemas/Pet"
+///         },
+///         "seen": {
+///             "type": "string",
+///             "format": "date-time"
+///         }
+///     },
+///     "type": "object",
+///     "title": "Pet"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'get_pet_response.freezed.dart';
+part 'get_pet_response.g.dart';
+
+@freezed
+abstract class GetPetResponse with _$GetPetResponse {
+  const GetPetResponse._();
+
+  @jsonSerializable
+  const factory GetPetResponse({
+    /// pet
+    @JsonKey(name: GetPetResponse.petKey_) Pet? pet,
+
+    /// seen
+    @JsonKey(name: GetPetResponse.seenKey_) DateTime? seen,
+  }) = _GetPetResponse;
+
+  factory GetPetResponse.fromJson(Map<String, dynamic> json) =>
+      _$GetPetResponseFromJson(json);
+
+  static const String petKey_ = 'pet';
+
+  static const String seenKey_ = 'seen';
+}
