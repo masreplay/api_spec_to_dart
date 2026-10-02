@@ -1,0 +1,186 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Mixed unions", "version": "1.0.0" },
+  "paths": {
+    "/requests": {
+      "post": {
+        "tags": ["requests"],
+        "operationId": "send",
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Request" } } }
+        },
+        "responses": {
+          "200": {
+            "description": "A union response",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Url" } } }
+          }
+        }
+      },
+      "put": {
+        "tags": ["requests"],
+        "operationId": "resolve",
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Url" } } }
+        },
+        "responses": { "204": { "description": "A union body" } }
+      }
+    },
+    "/descriptions": {
+      "get": {
+        "tags": ["requests"],
+        "operationId": "describe",
+        "responses": {
+          "200": {
+            "description": "A nullable union response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    { "type": "string" },
+                    { "type": "object", "properties": { "content": { "type": "string" } } },
+                    { "type": "null" }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Pet": {
+        "type": "object",
+        "required": ["name"],
+        "properties": { "name": { "type": "string" } }
+      },
+      "Dog": {
+        "type": "object",
+        "required": ["kind", "bark"],
+        "properties": { "kind": { "type": "string" }, "bark": { "type": "boolean" } }
+      },
+      "Cat": {
+        "type": "object",
+        "required": ["kind", "lives"],
+        "properties": { "kind": { "type": "string" }, "lives": { "type": "integer" } }
+      },
+      "Url": {
+        "description": "A component union: object | string.",
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "raw": { "type": "string" },
+              "host": {
+                "description": "An inline union: string | array.",
+                "oneOf": [{ "type": "string" }, { "type": "array", "items": { "type": "string" } }]
+              }
+            }
+          },
+          { "type": "string" }
+        ]
+      },
+      "Request": {
+        "type": "object",
+        "properties": {
+          "url": { "$ref": "#/components/schemas/Url" },
+          "owner": {
+            "description": "ref | string",
+            "oneOf": [{ "$ref": "#/components/schemas/Pet" }, { "type": "string" }]
+          },
+          "description": {
+            "description": "A nullable union.",
+            "oneOf": [
+              { "type": "object", "properties": { "content": { "type": "string" } } },
+              { "type": "string" },
+              { "type": "null" }
+            ]
+          },
+          "formdata": {
+            "description": "A const-discriminated anyOf inside a list.",
+            "type": "array",
+            "items": {
+              "title": "FormParameter",
+              "anyOf": [
+                {
+                  "required": ["key"],
+                  "properties": {
+                    "key": { "type": "string" },
+                    "value": { "type": "string" },
+                    "type": { "type": "string", "const": "text" }
+                  }
+                },
+                {
+                  "required": ["key"],
+                  "properties": {
+                    "key": { "type": "string" },
+                    "src": { "type": ["array", "string", "null"] },
+                    "type": { "type": "string", "const": "file" }
+                  }
+                }
+              ]
+            }
+          },
+          "segments": {
+            "description": "A mixed union inside a list.",
+            "type": "array",
+            "items": {
+              "oneOf": [
+                { "type": "string" },
+                { "type": "object", "properties": { "value": { "type": "string" } } }
+              ]
+            }
+          },
+          "exec": {
+            "description": "A type array.",
+            "type": ["array", "string"],
+            "items": { "type": "string" }
+          },
+          "amount": {
+            "description": "integer merges into number; boolean; a list of models.",
+            "oneOf": [
+              { "type": "integer" },
+              { "type": "number" },
+              { "type": "boolean" },
+              { "type": "array", "items": { "$ref": "#/components/schemas/Pet" } }
+            ]
+          },
+          "when": {
+            "description": "Variants json_serializable converts: dates.",
+            "oneOf": [
+              { "type": "string", "format": "date-time" },
+              { "type": "array", "items": { "type": "string", "format": "date-time" } }
+            ]
+          },
+          "level": {
+            "description": "An inline enum variant.",
+            "anyOf": [
+              { "type": "string", "enum": ["low", "high"] },
+              { "type": "array", "items": { "type": "integer" } }
+            ]
+          },
+          "companion": {
+            "description": "Two objects told apart by keys, or a string.",
+            "oneOf": [
+              { "$ref": "#/components/schemas/Dog" },
+              { "$ref": "#/components/schemas/Cat" },
+              { "type": "string" }
+            ]
+          },
+          "animal": {
+            "description": "Two objects told apart by a discriminator, or a string.",
+            "oneOf": [
+              { "$ref": "#/components/schemas/Dog" },
+              { "$ref": "#/components/schemas/Cat" },
+              { "type": "string" }
+            ],
+            "discriminator": { "propertyName": "kind" }
+          }
+        }
+      }
+    }
+  }
+}

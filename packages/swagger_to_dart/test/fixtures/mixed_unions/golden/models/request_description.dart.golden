@@ -1,0 +1,87 @@
+/// RequestDescription
+///
+/// ```json
+/// {
+///     "oneOf": [
+///         {
+///             "type": "object",
+///             "properties": {
+///                 "content": {
+///                     "type": "string"
+///                 }
+///             }
+///         },
+///         {
+///             "type": "string"
+///         },
+///         {
+///             "type": "null"
+///         }
+///     ],
+///     "description": "A nullable union."
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+sealed class RequestDescription {
+  const RequestDescription();
+
+  const factory RequestDescription.object(RequestDescriptionObjectValue value) =
+      RequestDescriptionObject;
+  const factory RequestDescription.string(String value) =
+      RequestDescriptionString;
+
+  factory RequestDescription.fromJson(Object? json) => switch (json) {
+    String() => RequestDescriptionString(json),
+    Map<String, dynamic>() => RequestDescriptionObject(
+      RequestDescriptionObjectValue.fromJson(json),
+    ),
+    _ => throw ArgumentError.value(
+      json,
+      'json',
+      'No RequestDescription variant matches',
+    ),
+  };
+
+  Object? toJson();
+}
+
+final class RequestDescriptionObject extends RequestDescription {
+  const RequestDescriptionObject(this.value);
+
+  final RequestDescriptionObjectValue value;
+
+  @override
+  Object? toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) =>
+      other is RequestDescriptionObject && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'RequestDescription.object($value)';
+}
+
+final class RequestDescriptionString extends RequestDescription {
+  const RequestDescriptionString(this.value);
+
+  final String value;
+
+  @override
+  Object? toJson() => value;
+
+  @override
+  bool operator ==(Object other) =>
+      other is RequestDescriptionString && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'RequestDescription.string($value)';
+}

@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:swagger_to_dart/src/code/string.dart';
 import 'package:swagger_to_dart/src/generator/model/strategy/generic_parser_factory.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
@@ -57,28 +58,16 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
     return finalType;
   }
 
-  bool _isNullable(OpenApiSchema schema) {
-    return switch (schema) {
-      OpenApiSchemaType schema => schema.nullable == true,
-      OpenApiSchemaRef schema => schema.nullable == true,
-      OpenApiSchemaAnyOf schema =>
-        schema.nullable == true || _hasNullInAnyOf(schema.anyOf),
-      OpenApiSchemaOneOf schema =>
-        schema.nullable == true || _hasNullInOneOf(schema.oneOf),
-    };
-  }
-
-  bool _hasNullInAnyOf(List<OpenApiSchema> schemas) {
-    return schemas.any(
-      (e) => e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_,
-    );
-  }
-
-  bool _hasNullInOneOf(List<OpenApiSchema> schemas) {
-    return schemas.any(
-      (e) => e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_,
-    );
-  }
+  /// Whether JSON null is a value of [schema]: it is `nullable`, or one of
+  /// its `oneOf`/`anyOf` variants is null or nullable.
+  bool _isNullable(OpenApiSchema schema) => switch (schema) {
+    OpenApiSchemaType(:final nullable) ||
+    OpenApiSchemaRef(:final nullable) => nullable == true,
+    OpenApiSchemaAnyOf(:final nullable, anyOf: final variants) ||
+    OpenApiSchemaOneOf(:final nullable, oneOf: final variants) =>
+      nullable == true ||
+          variants.any((e) => UnionModelStrategy.isNull(e) || _isNullable(e)),
+  };
 
   /// [dartType] made nullable; `dynamic` and nullable types stay as they are.
   String nullable(String dartType) =>
@@ -180,38 +169,38 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
     OpenApiSchemaAnyOf schema, {
     required String className,
     String? contextName,
-  }) {
-    final anyOf = schema.anyOf;
-    final schemas = anyOf.where((e) {
-      return !(e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_);
-    }).toList();
-
-    if (schemas.length == 1) {
-      return get(
-        schemas.first,
-        parent: schema,
-        className: className,
-        contextName: contextName,
-      );
-    }
-
-    if (schemas.every((e) => e is OpenApiSchemaRef)) {
-      return UnionModelStrategy(context).registerAnyOf(schema);
-    }
-
-    return 'dynamic';
-  }
+  }) => _union(
+    schema,
+    schema.anyOf,
+    schema.discriminator,
+    className: className,
+    contextName: contextName,
+    registerReferences: () => UnionModelStrategy(context).registerAnyOf(schema),
+  );
 
   String getOneOf(
     OpenApiSchemaOneOf schema, {
     required String className,
     String? contextName,
-  }) {
-    final oneOf = schema.oneOf;
-    final schemas = oneOf.where((e) {
-      return !(e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_);
-    }).toList();
+  }) => _union(
+    schema,
+    schema.oneOf,
+    schema.discriminator,
+    className: className,
+    contextName: contextName,
+    registerReferences: () => UnionModelStrategy(context).registerOneOf(schema),
+  );
 
+  /// The single non-null variant's type, a union (G2), or `dynamic`.
+  String _union(
+    OpenApiSchema schema,
+    List<OpenApiSchema> variants,
+    OpenApiSchemaOneOfDiscriminator? discriminator, {
+    required String className,
+    required String? contextName,
+    required String Function() registerReferences,
+  }) {
+    final schemas = variants.whereNot(UnionModelStrategy.isNull).toList();
     if (schemas.length == 1) {
       return get(
         schemas.first,
@@ -221,11 +210,22 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
       );
     }
 
+    final union = UnionModelStrategy(context);
+    if (union.unionVariants(schemas) == null) return 'dynamic';
     if (schemas.every((e) => e is OpenApiSchemaRef)) {
-      return UnionModelStrategy(context).registerOneOf(schema);
+      return registerReferences();
     }
-
-    return 'dynamic';
+    if (!inlineModels) return 'dynamic';
+    return union.registerInline(
+      schemas,
+      discriminator,
+      name: inlineModelName(
+        schema.title,
+        contextName: contextName,
+        className: className,
+      ),
+      json: const OpenApiSchemaJsonConverter().toJson(schema),
+    );
   }
 
   String getType(
@@ -349,33 +349,40 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
       ? contextName
       : '${contextName}_$suffix';
 
+  /// Class name of an inline model (object or union): its [title], unless a
+  /// component has that class name, else the place it is used
+  /// ([contextName], `getUser_response` → GetUserResponse).
+  String inlineModelName(
+    String? title, {
+    required String? contextName,
+    required String className,
+  }) {
+    final name = title == null ? null : Renaming.instance.renameClass(title);
+    if (name != null && !context.componentClassNames.containsValue(name)) {
+      return name;
+    }
+    if (contextName == null) {
+      throw ArgumentError(
+        'swagger_to_dart: cannot name an inline schema in $className; give '
+        'it a title.',
+      );
+    }
+    return Renaming.instance.renameClass(contextName);
+  }
+
   /// Registers the model of an inline object schema and returns its class
-  /// name: the schema's title, unless a component has that class name, else
-  /// the place it is used ([contextName], `getUser_response` →
-  /// GetUserResponse).
+  /// name.
   String _inlineObject(
     OpenApiSchemaType schema, {
     required String className,
     required String? contextName,
   }) {
-    final title = switch (schema.title) {
-      final title? => Renaming.instance.renameClass(title),
-      null => null,
-    };
-    final name =
-        title != null && !context.componentClassNames.containsValue(title)
-        ? title
-        : Renaming.instance.renameClass(
-            contextName ??
-                (throw ArgumentError(
-                  'swagger_to_dart: cannot name the inline object with '
-                  'properties ${schema.properties!.keys} in $className; '
-                  'give its schema a title.',
-                )),
-          );
-
     return context.registerInlineModel(
-      name,
+      inlineModelName(
+        schema.title,
+        contextName: contextName,
+        className: className,
+      ),
       (name) => RegularModelGeneratorStrategy(context).build(
         MapEntry(
           name,

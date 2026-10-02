@@ -1,0 +1,128 @@
+/// RequestCompanion
+///
+/// ```json
+/// {
+///     "oneOf": [
+///         {
+///             "$ref": "#/components/schemas/Dog"
+///         },
+///         {
+///             "$ref": "#/components/schemas/Cat"
+///         },
+///         {
+///             "type": "string"
+///         }
+///     ],
+///     "description": "Two objects told apart by keys, or a string."
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+sealed class RequestCompanion {
+  const RequestCompanion();
+
+  const factory RequestCompanion.dog(Dog value) = RequestCompanionDog;
+  const factory RequestCompanion.cat(Cat value) = RequestCompanionCat;
+  const factory RequestCompanion.string(String value) = RequestCompanionString;
+
+  factory RequestCompanion.fromJson(Object? json) => switch (json) {
+    String() => RequestCompanionString(json),
+    Map<String, dynamic>() => _fromMap(json),
+    _ => throw ArgumentError.value(
+      json,
+      'json',
+      'No RequestCompanion variant matches',
+    ),
+  };
+
+  static RequestCompanion _fromMap(Map<String, dynamic> json) {
+    // No discriminator in the spec: the variant whose required keys are all
+    // present and that declares the most of the payload's keys wins (the
+    // earlier one on a tie).
+    const variants = <({Set<String> required, Set<String> declared})>[
+      (required: {'kind', 'bark'}, declared: {'kind', 'bark'}),
+      (required: {'kind', 'lives'}, declared: {'kind', 'lives'}),
+    ];
+    var best = -1;
+    var bestScore = -1;
+    for (var i = 0; i < variants.length; i++) {
+      final variant = variants[i];
+      if (!variant.required.every(json.containsKey)) continue;
+      final score = json.keys.where(variant.declared.contains).length;
+      if (score > bestScore) {
+        best = i;
+        bestScore = score;
+      }
+    }
+    return switch (best) {
+      0 => RequestCompanionDog(Dog.fromJson(json)),
+      1 => RequestCompanionCat(Cat.fromJson(json)),
+      _ => throw ArgumentError.value(
+        json,
+        'json',
+        'No RequestCompanion variant matches',
+      ),
+    };
+  }
+
+  Object? toJson();
+}
+
+final class RequestCompanionDog extends RequestCompanion {
+  const RequestCompanionDog(this.value);
+
+  final Dog value;
+
+  @override
+  Object? toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) =>
+      other is RequestCompanionDog && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'RequestCompanion.dog($value)';
+}
+
+final class RequestCompanionCat extends RequestCompanion {
+  const RequestCompanionCat(this.value);
+
+  final Cat value;
+
+  @override
+  Object? toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) =>
+      other is RequestCompanionCat && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'RequestCompanion.cat($value)';
+}
+
+final class RequestCompanionString extends RequestCompanion {
+  const RequestCompanionString(this.value);
+
+  final String value;
+
+  @override
+  Object? toJson() => value;
+
+  @override
+  bool operator ==(Object other) =>
+      other is RequestCompanionString && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'RequestCompanion.string($value)';
+}

@@ -1,0 +1,109 @@
+/// RequestAmount
+///
+/// ```json
+/// {
+///     "oneOf": [
+///         {
+///             "type": "integer"
+///         },
+///         {
+///             "type": "number"
+///         },
+///         {
+///             "type": "boolean"
+///         },
+///         {
+///             "type": "array",
+///             "items": {
+///                 "$ref": "#/components/schemas/Pet"
+///             }
+///         }
+///     ],
+///     "description": "integer merges into number; boolean; a list of models."
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'request_amount.g.dart';
+
+sealed class RequestAmount {
+  const RequestAmount();
+
+  const factory RequestAmount.number(double value) = RequestAmountNumber;
+  const factory RequestAmount.boolean(bool value) = RequestAmountBoolean;
+  const factory RequestAmount.list(List<Pet> value) = RequestAmountList;
+
+  factory RequestAmount.fromJson(Object? json) => switch (json) {
+    num() => RequestAmountNumber(json.toDouble()),
+    bool() => RequestAmountBoolean(json),
+    List() => _$RequestAmountListFromJson({'value': json}),
+    _ => throw ArgumentError.value(
+      json,
+      'json',
+      'No RequestAmount variant matches',
+    ),
+  };
+
+  Object? toJson();
+}
+
+final class RequestAmountNumber extends RequestAmount {
+  const RequestAmountNumber(this.value);
+
+  final double value;
+
+  @override
+  Object? toJson() => value;
+
+  @override
+  bool operator ==(Object other) =>
+      other is RequestAmountNumber && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'RequestAmount.number($value)';
+}
+
+final class RequestAmountBoolean extends RequestAmount {
+  const RequestAmountBoolean(this.value);
+
+  final bool value;
+
+  @override
+  Object? toJson() => value;
+
+  @override
+  bool operator ==(Object other) =>
+      other is RequestAmountBoolean && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'RequestAmount.boolean($value)';
+}
+
+@jsonSerializable
+final class RequestAmountList extends RequestAmount {
+  const RequestAmountList(this.value);
+
+  @JsonKey(name: 'value')
+  final List<Pet> value;
+
+  @override
+  Object? toJson() => _$RequestAmountListToJson(this)['value'];
+
+  @override
+  bool operator ==(Object other) =>
+      other is RequestAmountList &&
+      const DeepCollectionEquality().equals(other.value, value);
+
+  @override
+  int get hashCode => const DeepCollectionEquality().hash(value);
+
+  @override
+  String toString() => 'RequestAmount.list($value)';
+}

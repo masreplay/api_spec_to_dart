@@ -1,0 +1,114 @@
+/// FormParameter
+///
+/// ```json
+/// {
+///     "anyOf": [
+///         {
+///             "properties": {
+///                 "key": {
+///                     "type": "string"
+///                 },
+///                 "value": {
+///                     "type": "string"
+///                 },
+///                 "type": {
+///                     "type": "string",
+///                     "const": "text"
+///                 }
+///             },
+///             "required": [
+///                 "key"
+///             ]
+///         },
+///         {
+///             "properties": {
+///                 "key": {
+///                     "type": "string"
+///                 },
+///                 "src": {
+///                     "oneOf": [
+///                         {
+///                             "type": "array"
+///                         },
+///                         {
+///                             "type": "string"
+///                         }
+///                     ],
+///                     "nullable": true
+///                 },
+///                 "type": {
+///                     "type": "string",
+///                     "const": "file"
+///                 }
+///             },
+///             "required": [
+///                 "key"
+///             ]
+///         }
+///     ],
+///     "title": "FormParameter"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+sealed class FormParameter {
+  const FormParameter();
+
+  const factory FormParameter.text(FormParameterTextValue value) =
+      FormParameterText;
+  const factory FormParameter.file(FormParameterFileValue value) =
+      FormParameterFile;
+
+  factory FormParameter.fromJson(Map<String, dynamic> json) =>
+      switch (json['type']) {
+        'text' => FormParameterText(FormParameterTextValue.fromJson(json)),
+        'file' => FormParameterFile(FormParameterFileValue.fromJson(json)),
+        _ => throw ArgumentError.value(
+          json['type'],
+          'type',
+          'Unknown FormParameter',
+        ),
+      };
+
+  Map<String, dynamic> toJson();
+}
+
+final class FormParameterText extends FormParameter {
+  const FormParameterText(this.value);
+
+  final FormParameterTextValue value;
+
+  @override
+  Map<String, dynamic> toJson() => {...value.toJson(), 'type': 'text'};
+
+  @override
+  bool operator ==(Object other) =>
+      other is FormParameterText && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'FormParameter.text($value)';
+}
+
+final class FormParameterFile extends FormParameter {
+  const FormParameterFile(this.value);
+
+  final FormParameterFileValue value;
+
+  @override
+  Map<String, dynamic> toJson() => {...value.toJson(), 'type': 'file'};
+
+  @override
+  bool operator ==(Object other) =>
+      other is FormParameterFile && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'FormParameter.file($value)';
+}

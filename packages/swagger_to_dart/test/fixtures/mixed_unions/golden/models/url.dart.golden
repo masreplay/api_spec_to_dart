@@ -1,0 +1,88 @@
+/// Url
+///
+/// ```json
+/// {
+///     "description": "A component union: object | string.",
+///     "oneOf": [
+///         {
+///             "type": "object",
+///             "properties": {
+///                 "raw": {
+///                     "type": "string"
+///                 },
+///                 "host": {
+///                     "oneOf": [
+///                         {
+///                             "type": "string"
+///                         },
+///                         {
+///                             "type": "array",
+///                             "items": {
+///                                 "type": "string"
+///                             }
+///                         }
+///                     ],
+///                     "description": "An inline union: string | array."
+///                 }
+///             }
+///         },
+///         {
+///             "type": "string"
+///         }
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+sealed class Url {
+  const Url();
+
+  const factory Url.object(UrlObjectValue value) = UrlObject;
+  const factory Url.string(String value) = UrlString;
+
+  factory Url.fromJson(Object? json) => switch (json) {
+    String() => UrlString(json),
+    Map<String, dynamic>() => UrlObject(UrlObjectValue.fromJson(json)),
+    _ => throw ArgumentError.value(json, 'json', 'No Url variant matches'),
+  };
+
+  Object? toJson();
+}
+
+final class UrlObject extends Url {
+  const UrlObject(this.value);
+
+  final UrlObjectValue value;
+
+  @override
+  Object? toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) => other is UrlObject && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'Url.object($value)';
+}
+
+final class UrlString extends Url {
+  const UrlString(this.value);
+
+  final String value;
+
+  @override
+  Object? toJson() => value;
+
+  @override
+  bool operator ==(Object other) => other is UrlString && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'Url.string($value)';
+}

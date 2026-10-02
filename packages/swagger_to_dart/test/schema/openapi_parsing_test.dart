@@ -42,4 +42,37 @@ void main() {
     });
     expect(singleAllOf, contains('allOf'));
   });
+
+  test('type arrays with an array or object kind become a oneOf', () {
+    expect(
+      normalizeSchemaJson({
+        'type': ['array', 'string', 'null'],
+        'items': {'type': 'string'},
+        'title': 'Src',
+        'description': 'Files',
+      }),
+      {
+        'title': 'Src',
+        'description': 'Files',
+        'oneOf': [
+          {
+            'items': {'type': 'string'},
+            'type': 'array',
+          },
+          {
+            'items': {'type': 'string'},
+            'type': 'string',
+          },
+        ],
+        'nullable': true,
+      },
+    );
+    // A primitive-only mix still has no type (`dynamic`).
+    expect(
+      normalizeSchemaJson({
+        'type': ['string', 'number'],
+      }),
+      isEmpty,
+    );
+  });
 }
