@@ -6,3 +6,4 @@ library;
 export 'src/convert/infer_schema.dart' show inferJsonSchema;
 export 'src/convert/normalize.dart'
     show isPostmanCollection, normalizePostmanCollection;
+export 'src/convert/v3.dart' show postmanCollectionFromV3Files;
