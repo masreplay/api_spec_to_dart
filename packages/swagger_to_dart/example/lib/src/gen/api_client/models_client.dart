@@ -144,7 +144,6 @@ abstract class ModelsClient {
             'title': 'Is User',
           },
           'description': 'Whether to return a user or location',
-          'example': true,
         },
       ],
       'responses': {
