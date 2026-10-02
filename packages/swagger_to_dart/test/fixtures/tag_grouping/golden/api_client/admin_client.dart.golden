@@ -1,0 +1,59 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'admin_client.g.dart';
+
+@RestApi()
+abstract class AdminClient {
+  factory AdminClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _AdminClient;
+
+  @DELETE('/users')
+  Future<HttpResponse> deleteUsers({
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Admin'],
+      'operationId': 'deleteUsers',
+      'responses': {
+        '204': {'description': 'Deleted'},
+      },
+    },
+  });
+  @GET('/users/{id}')
+  Future<HttpResponse<User>> getUser({
+    @Path('id') required int id,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Users', 'Admin'],
+      'operationId': 'getUser',
+      'responses': {
+        '200': {
+          'description': 'The user',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/User'},
+            },
+          },
+        },
+      },
+      'parameters': [
+        {
+          'name': 'id',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'integer'},
+        },
+      ],
+    },
+  });
+}
