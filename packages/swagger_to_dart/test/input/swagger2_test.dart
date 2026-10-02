@@ -400,6 +400,24 @@ void main() {
       );
     });
 
+    test('is one media type: multipart when declared or with a file', () {
+      Iterable<Object?> mediaTypes(
+        List<Map<String, dynamic>> parameters,
+        List<String> consumes,
+      ) => (body(post(parameters, consumes: consumes))['content'] as Map).keys;
+
+      const both = [
+        'application/x-www-form-urlencoded',
+        'multipart/form-data',
+      ];
+      expect(mediaTypes([file, caption], both), ['multipart/form-data']);
+      expect(mediaTypes([caption], both), ['multipart/form-data']);
+      expect(
+        mediaTypes([file], ['application/x-www-form-urlencoded']),
+        ['multipart/form-data'],
+      );
+    });
+
     test('is urlencoded when consumes says so, or without a file', () {
       final urlencoded = body(
         post([caption], consumes: ['application/x-www-form-urlencoded']),

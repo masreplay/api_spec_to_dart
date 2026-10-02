@@ -264,18 +264,13 @@ Map<String, dynamic>? _requestBody(
 
   final form = parameters.where((p) => p['in'] == 'formData').toList();
   if (form.isEmpty) return null;
-  final declared = consumes.where(
-    (type) =>
-        type.startsWith('multipart/form-data') ||
-        type.startsWith('application/x-www-form-urlencoded'),
-  );
-  final types = declared.isNotEmpty
-      ? declared
-      : [
-          form.any((p) => p['type'] == 'file')
-              ? 'multipart/form-data'
-              : 'application/x-www-form-urlencoded',
-        ];
+  // One media type: with both, clients would pick urlencoded and send files
+  // as text.
+  final type =
+      form.any((p) => p['type'] == 'file') ||
+          consumes.any((type) => type.startsWith('multipart/form-data'))
+      ? 'multipart/form-data'
+      : 'application/x-www-form-urlencoded';
   final required = [
     for (final p in form)
       if (p['required'] == true) p['name'],
@@ -293,7 +288,7 @@ Map<String, dynamic>? _requestBody(
   };
   return {
     'content': {
-      for (final type in types) type: {'schema': schema},
+      type: {'schema': schema},
     },
     if (required.isNotEmpty) 'required': true,
   };
