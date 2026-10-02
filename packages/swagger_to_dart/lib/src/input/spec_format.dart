@@ -1,3 +1,4 @@
+import '../utils/yaml.dart';
 import 'json_schema.dart';
 import 'swagger2.dart';
 
@@ -31,7 +32,8 @@ SpecFormat detectSpecFormat(Object? document) {
 /// The OpenAPI 3.x JSON for any supported document. [sourceName] (file name
 /// without extension) names a JSON Schema root without a title.
 Map<String, dynamic> toOpenApiJson(Object? document, {String? sourceName}) {
-  document = _versionsAsStrings(document);
+  // Plain maps also when given package:yaml's YamlMap.
+  document = _versionsAsStrings(YamlMapConverter.toPlain(document));
   return switch (detectSpecFormat(document)) {
     SpecFormat.openApi3 => document as Map<String, dynamic>,
     SpecFormat.swagger2 => swagger2ToOpenApi(document as Map<String, dynamic>),
