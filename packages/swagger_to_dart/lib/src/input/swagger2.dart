@@ -35,8 +35,10 @@ const _flows = {
 /// The OpenAPI 3.0.3 equivalent of the Swagger 2.0 [spec], following
 /// swagger2openapi:
 /// - `definitions`, `parameters` and `responses` become components, with
-///   refs rewritten; body and formData parameters, which OpenAPI 3 has no
-///   parameter for, are inlined where they are used;
+///   refs rewritten; definition names that are no valid component key
+///   (springfox's `Page«Pet»`) are sanitized and kept as the `title`; body
+///   and formData parameters, which OpenAPI 3 has no parameter for, are
+///   inlined where they are used;
 /// - `in: body` and `in: formData` become the `requestBody` (`type: file`
 ///   is binary), with media types from `consumes`;
 /// - responses get media types from `produces`;
@@ -48,6 +50,8 @@ Map<String, dynamic> swagger2ToOpenApi(Map<String, dynamic> spec) {
   final consumes = _strings(spec['consumes']) ?? const ['application/json'];
   final produces = _strings(spec['produces']) ?? const ['application/json'];
   final globalParameters = _map(spec['parameters']);
+  final definitions = _map(spec['definitions']);
+  final schemaKeys = _componentKeys(definitions.keys);
 
   Map? resolve(Object? parameter) => switch (parameter) {
     {r'$ref': final String ref} when ref.startsWith('#/parameters/') =>
@@ -57,8 +61,8 @@ Map<String, dynamic> swagger2ToOpenApi(Map<String, dynamic> spec) {
   };
 
   Object? parameterOrRef(Object? parameter) => switch (parameter) {
-    {r'$ref': final String ref} => {r'$ref': _ref(ref)},
-    final Map parameter => _parameter(parameter),
+    {r'$ref': final String ref} => {r'$ref': _ref(ref, schemaKeys)},
+    final Map parameter => _parameter(parameter, schemaKeys),
     _ => parameter,
   };
 
@@ -80,6 +84,7 @@ Map<String, dynamic> swagger2ToOpenApi(Map<String, dynamic> spec) {
     final body = _requestBody(
       payload,
       _strings(operation['consumes']) ?? consumes,
+      schemaKeys,
     );
     final opProduces = _strings(operation['produces']) ?? produces;
 
@@ -100,7 +105,7 @@ Map<String, dynamic> swagger2ToOpenApi(Map<String, dynamic> spec) {
           for (final MapEntry(:key, :value) in responses.entries)
             '$key': '$key'.startsWith('x-')
                 ? value
-                : _response(value, opProduces),
+                : _response(value, opProduces, schemaKeys),
         },
     };
   }
@@ -123,16 +128,23 @@ Map<String, dynamic> swagger2ToOpenApi(Map<String, dynamic> spec) {
 
   final components = <String, dynamic>{
     'schemas': {
-      for (final MapEntry(:key, :value) in _map(spec['definitions']).entries)
-        key: _schema(value),
+      for (final MapEntry(:key, :value) in definitions.entries)
+        schemaKeys[key]!: switch (_schema(value, schemaKeys)) {
+          // The original name, for generic-name parsers (`Page«Pet»`).
+          final Map schema
+              when schemaKeys[key] != key && schema['title'] == null =>
+            <String, dynamic>{'title': key, ...schema},
+          final schema => schema,
+        },
     },
     'parameters': {
       for (final MapEntry(:key, :value) in globalParameters.entries)
-        if (value is Map && !_isPayload(value)) key: _parameter(value),
+        if (value is Map && !_isPayload(value))
+          key: _parameter(value, schemaKeys),
     },
     'responses': {
       for (final MapEntry(:key, :value) in _map(spec['responses']).entries)
-        key: _response(value, produces),
+        key: _response(value, produces, schemaKeys),
     },
     'securitySchemes': {
       for (final MapEntry(:key, :value) in _map(
@@ -169,9 +181,38 @@ List<String>? _strings(Object? value) =>
 bool _isPayload(Map? parameter) =>
     parameter?['in'] == 'body' || parameter?['in'] == 'formData';
 
-String _ref(String ref) {
+/// OpenAPI 3 component keys (`^[A-Za-z0-9._-]+$`) for definition [names]:
+/// valid names stay; others get `_` for each other character, and a number
+/// when that key is taken (springfox's `Page«Pet»` becomes `Page_Pet_`).
+Map<String, String> _componentKeys(Iterable<String> names) {
+  final valid = RegExp(r'^[A-Za-z0-9._-]+$');
+  final taken = {...names.where(valid.hasMatch)};
+  String unique(String base) {
+    var key = base;
+    for (var i = 2; !taken.add(key); i++) {
+      key = '$base$i';
+    }
+    return key;
+  }
+
+  return {
+    for (final name in names)
+      name: valid.hasMatch(name)
+          ? name
+          : unique(name.replaceAll(RegExp(r'[^A-Za-z0-9._-]'), '_')),
+  };
+}
+
+/// [ref] into OpenAPI 3 components; definitions by their [schemaKeys] (the
+/// name as written, else percent- and JSON-pointer-decoded).
+String _ref(String ref, Map<String, String> schemaKeys) {
+  const definitions = '#/definitions/';
+  if (ref.startsWith(definitions)) {
+    final name = ref.substring(definitions.length);
+    final key = schemaKeys[name] ?? schemaKeys[_decoded(name)] ?? name;
+    return '#/components/schemas/$key';
+  }
   for (final (from, to) in const [
-    ('#/definitions/', '#/components/schemas/'),
     ('#/parameters/', '#/components/parameters/'),
     ('#/responses/', '#/components/responses/'),
   ]) {
@@ -180,13 +221,27 @@ String _ref(String ref) {
   return ref;
 }
 
+/// A JSON pointer segment of a URI fragment, decoded (`%C2%AB` → `«`,
+/// `~1` → `/`).
+String _decoded(String segment) {
+  try {
+    segment = Uri.decodeComponent(segment);
+  } on ArgumentError {
+    // Not percent-encoded after all.
+  }
+  return segment.replaceAll('~1', '/').replaceAll('~0', '~');
+}
+
 /// A 2.0 schema as an OpenAPI 3.0 schema.
-Object? _schema(Object? node) => switch (node) {
-  List() => [for (final e in node) _schema(e)],
+Object? _schema(
+  Object? node,
+  Map<String, String> schemaKeys,
+) => switch (node) {
+  List() => [for (final e in node) _schema(e, schemaKeys)],
   Map() => {
     for (final MapEntry(:key, :value) in node.entries)
       ...switch (key) {
-        r'$ref' when value is String => {r'$ref': _ref(value)},
+        r'$ref' when value is String => {r'$ref': _ref(value, schemaKeys)},
         'x-nullable' => {'nullable': value},
         'discriminator' when value is String => {
           'discriminator': {'propertyName': value},
@@ -197,25 +252,28 @@ Object? _schema(Object? node) => switch (node) {
         'properties' when value is Map => {
           'properties': {
             for (final MapEntry(:key, :value) in value.entries)
-              '$key': _schema(value),
+              '$key': _schema(value, schemaKeys),
           },
         },
         'example' || 'default' || 'enum' => {'$key': value},
         _ when '$key'.startsWith('x-') => {'$key': value},
-        _ => {'$key': _schema(value)},
+        _ => {'$key': _schema(value, schemaKeys)},
       },
   },
   _ => node,
 };
 
 /// The schema of a 2.0 non-body parameter, header or items object.
-Object? _schemaOf(Map parameter) => _schema({
+Object? _schemaOf(Map parameter, Map<String, String> schemaKeys) => _schema({
   for (final MapEntry(:key, :value) in parameter.entries)
     if (_schemaKeys.contains(key)) key: value,
-});
+}, schemaKeys);
 
 /// A query, header or path parameter.
-Map<String, dynamic> _parameter(Map parameter) => {
+Map<String, dynamic> _parameter(
+  Map parameter,
+  Map<String, String> schemaKeys,
+) => {
   for (final MapEntry(:key, :value) in parameter.entries)
     if (const {
           'name',
@@ -227,7 +285,7 @@ Map<String, dynamic> _parameter(Map parameter) => {
         ('$key'.startsWith('x-') && key != 'x-nullable'))
       '$key': value,
   ..._style(parameter),
-  'schema': _schemaOf(parameter),
+  'schema': _schemaOf(parameter, schemaKeys),
 };
 
 /// `style`/`explode` for an array parameter's `collectionFormat` (default
@@ -249,12 +307,14 @@ Map<String, dynamic> _style(Map parameter) {
 Map<String, dynamic>? _requestBody(
   List<Map> parameters,
   List<String> consumes,
+  Map<String, String> schemaKeys,
 ) {
   if (parameters.lastWhereOrNull((p) => p['in'] == 'body') case final body?) {
     return {
       'description': ?body['description'],
       'content': {
-        for (final type in consumes) type: {'schema': _schema(body['schema'])},
+        for (final type in consumes)
+          type: {'schema': _schema(body['schema'], schemaKeys)},
       },
       if (body['required'] == true) 'required': true,
       for (final MapEntry(:key, :value) in body.entries)
@@ -280,7 +340,7 @@ Map<String, dynamic>? _requestBody(
     'properties': {
       for (final p in form)
         '${p['name']}': {
-          ...?_schemaOf(p) as Map?,
+          ...?_schemaOf(p, schemaKeys) as Map?,
           'description': ?p['description'],
         },
     },
@@ -295,9 +355,15 @@ Map<String, dynamic>? _requestBody(
 }
 
 /// A response (or a ref to one) with a media type per [produces].
-Object? _response(Object? response, List<String> produces) {
+Object? _response(
+  Object? response,
+  List<String> produces,
+  Map<String, String> schemaKeys,
+) {
   if (response is! Map) return response;
-  if (response[r'$ref'] case final String ref) return {r'$ref': _ref(ref)};
+  if (response[r'$ref'] case final String ref) {
+    return {r'$ref': _ref(ref, schemaKeys)};
+  }
   final examples = response['examples'] as Map? ?? const {};
   return {
     'description': response['description'] ?? '',
@@ -306,14 +372,14 @@ Object? _response(Object? response, List<String> produces) {
         for (final MapEntry(:key, :value) in headers.entries)
           '$key': {
             'description': ?value['description'],
-            'schema': _schemaOf(value as Map),
+            'schema': _schemaOf(value as Map, schemaKeys),
           },
       },
     if (response.containsKey('schema'))
       'content': {
         for (final type in produces)
           type: {
-            'schema': _schema(response['schema']),
+            'schema': _schema(response['schema'], schemaKeys),
             if (examples.containsKey(type)) 'example': examples[type],
           },
       },
