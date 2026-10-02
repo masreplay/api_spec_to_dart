@@ -463,12 +463,15 @@ class ApiClientGenerator {
   /// unless that is a document server: dio skips `baseUrl` for absolute
   /// paths, which would also bypass the `baseUrl` users pass.
   String _url(String path, List<OpenApiServer>? servers) {
+    String trimmed(String url) => url.replaceFirst(RegExp(r'/+$'), '');
     final server = servers?.firstOrNull;
     if (server == null ||
-        (context.openApi.servers ?? []).any((s) => s.url == server.url)) {
+        (context.openApi.servers ?? []).any(
+          (s) => trimmed(s.url) == trimmed(server.url),
+        )) {
       return path;
     }
-    return '${server.defaultUrl.replaceFirst(RegExp(r'/+$'), '')}$path';
+    return '${trimmed(server.defaultUrl)}$path';
   }
 
   List<Parameter> _handleParameters(

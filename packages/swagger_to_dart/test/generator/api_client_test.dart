@@ -288,6 +288,36 @@ void main() {
       );
     });
 
+    test('a document server matches with or without a trailing slash', () {
+      Map<String, dynamic> get(String operationId, String server) => {
+        'get': {
+          'tags': ['items'],
+          'operationId': operationId,
+          'servers': [
+            {'url': server},
+          ],
+          'responses': {
+            '200': {'description': 'OK'},
+          },
+        },
+      };
+      final client = renderSpec({
+        ..._spec(
+          paths: {
+            '/a': get('getA', 'https://api.example.com'),
+            '/b': get('getB', 'https://api.example.com/v1/'),
+          },
+        ),
+        'servers': [
+          {'url': 'https://api.example.com/'},
+          {'url': 'https://api.example.com/v1'},
+        ],
+      }).files['api_client/items_client.dart']!;
+
+      expect(client, contains("@GET('/a')"));
+      expect(client, contains("@GET('/b')"));
+    });
+
     test('without servers, or repeating the document server, paths stay '
         'relative to baseUrl', () {
       final client = files['api_client/service_client.dart']!;
