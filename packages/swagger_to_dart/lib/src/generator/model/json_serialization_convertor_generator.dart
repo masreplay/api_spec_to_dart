@@ -15,12 +15,15 @@ class JsonConvertorGenerator extends LibraryGenerator {
   const JsonConvertorGenerator(super.context);
 
   /// The `json_converter.dart` library and the exports `models/exports.dart`
-  /// needs so model files see the converters' types.
-  ({Library library, List<Directive> directives}) build() {
+  /// needs so model files see the converters' types. [multipartFile]: some
+  /// model has a dio `MultipartFile` field.
+  ({Library library, List<Directive> directives}) build({
+    required bool multipartFile,
+  }) {
     final isFlutterProject = context.isFlutterProject;
 
     final customJsonConverters = <CustomJsonConverter>[
-      getFastAPIMultipartFileJsonConvertor(),
+      if (multipartFile) getFastAPIMultipartFileJsonConvertor(),
       // TimeOfDay and Color only exist in Flutter.
       if (isFlutterProject &&
           (context.config.generationSource == GenerationSource.fastAPI ||
