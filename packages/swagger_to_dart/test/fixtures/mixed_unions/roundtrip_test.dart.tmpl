@@ -50,10 +50,7 @@ void main() {
     expect(decoded.segments?.last, isA<RequestSegmentsItemObject>());
     expect(decoded.exec, const RequestExec.list(['echo', 'hi']));
     expect(decoded.amount, const RequestAmount.number(1.5));
-    expect(
-      decoded.when,
-      RequestWhen.string(DateTime.utc(2026, 10, 3, 10)),
-    );
+    expect(decoded.when, RequestWhen.string(DateTime.utc(2026, 10, 3, 10)));
     expect(
       decoded.level,
       const RequestLevel.string(RequestLevelStringValue.high),
@@ -93,10 +90,7 @@ void main() {
       () => FormParameter.fromJson({'key': 'k', 'type': 'binary'}),
       throwsArgumentError,
     );
-    expect(
-      () => RequestAnimal.fromJson({'kind': 'Bird'}),
-      throwsArgumentError,
-    );
+    expect(() => RequestAnimal.fromJson({'kind': 'Bird'}), throwsArgumentError);
     expect(() => RequestCompanion.fromJson({'kind': 'x'}), throwsArgumentError);
   });
 }

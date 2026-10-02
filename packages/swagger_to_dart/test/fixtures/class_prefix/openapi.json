@@ -1,0 +1,62 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Class prefix", "version": "1.0.0" },
+  "paths": {
+    "/items": {
+      "get": {
+        "tags": ["items"],
+        "operationId": "listItems",
+        "responses": {
+          "200": {
+            "description": "An inline response object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": { "items": { "$ref": "#/components/schemas/Items" } }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Item": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string" },
+          "kind": { "type": "string", "enum": ["request", "folder"] },
+          "info": { "type": "object", "properties": { "version": { "type": "string" } } },
+          "url": { "oneOf": [{ "type": "string" }, { "type": "array", "items": { "type": "string" } }] },
+          "auth": { "$ref": "#/components/schemas/Auth" },
+          "run": { "$ref": "#/components/schemas/Function" },
+          "children": { "$ref": "#/components/schemas/Items" }
+        }
+      },
+      "Items": { "type": "array", "items": { "$ref": "#/components/schemas/Item" } },
+      "Basic": {
+        "type": "object",
+        "required": ["type"],
+        "properties": { "type": { "type": "string" }, "username": { "type": "string" } }
+      },
+      "Bearer": {
+        "type": "object",
+        "required": ["type"],
+        "properties": { "type": { "type": "string" }, "token": { "type": "string" } }
+      },
+      "Auth": {
+        "oneOf": [{ "$ref": "#/components/schemas/Basic" }, { "$ref": "#/components/schemas/Bearer" }],
+        "discriminator": { "propertyName": "type", "mapping": { "basic": "#/components/schemas/Basic", "bearer": "#/components/schemas/Bearer" } }
+      },
+      "Function": {
+        "description": "A name Dart reserves; prefixed, it needs no escape.",
+        "type": "object",
+        "properties": { "script": { "type": "string" } }
+      }
+    }
+  }
+}

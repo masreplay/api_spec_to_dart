@@ -112,9 +112,11 @@ class ModelGenerator extends LibraryGenerator {
     GenericModelGeneratorStrategy generic,
   ) {
     final prefixes = context.config.model.removeModelPrefixes;
-    String className(String name) => Renaming.instance.renameClass(
-      name,
-      removePrefixes: prefixes.isNotEmpty ? prefixes : null,
+    String className(String name) => context.withClassPrefix(
+      Renaming.instance.renameClass(
+        name,
+        removePrefixes: prefixes.isNotEmpty ? prefixes : null,
+      ),
     );
 
     final taken = <String>{};

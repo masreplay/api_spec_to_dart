@@ -76,9 +76,11 @@ class GenericModelGeneratorStrategy
     }
 
     final prefixes = context.config.model.removeModelPrefixes;
-    final className = Renaming.instance.renameClass(
-      baseClass,
-      removePrefixes: prefixes.isNotEmpty ? prefixes : null,
+    final className = context.withClassPrefix(
+      Renaming.instance.renameClass(
+        baseClass,
+        removePrefixes: prefixes.isNotEmpty ? prefixes : null,
+      ),
     );
     final filename = Renaming.instance.renameFile(className);
 
@@ -232,9 +234,11 @@ class GenericModelGeneratorStrategy
     if (base == null) return null;
 
     final prefixes = context.config.model.removeModelPrefixes;
-    return Renaming.instance.renameClass(
-      base,
-      removePrefixes: prefixes.isNotEmpty ? prefixes : null,
+    return context.withClassPrefix(
+      Renaming.instance.renameClass(
+        base,
+        removePrefixes: prefixes.isNotEmpty ? prefixes : null,
+      ),
     );
   }
 

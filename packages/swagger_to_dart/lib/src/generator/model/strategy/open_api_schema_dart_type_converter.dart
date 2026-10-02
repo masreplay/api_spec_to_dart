@@ -110,7 +110,7 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
         .map((type) => _processGenericTitle(type.trim()))
         .join(', ');
 
-    return '${Renaming.instance.renameClass(base, removePrefixes: prefixes.isNotEmpty ? prefixes : null)}<$processedGenerics>';
+    return '${context.withClassPrefix(Renaming.instance.renameClass(base, removePrefixes: prefixes.isNotEmpty ? prefixes : null))}<$processedGenerics>';
   }
 
   String _convertPrimitiveType(String type) {
@@ -135,9 +135,11 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
         return 'Map';
       default:
         final prefixes = context.config.model.removeModelPrefixes;
-        return Renaming.instance.renameClass(
-          type,
-          removePrefixes: prefixes.isNotEmpty ? prefixes : null,
+        return context.withClassPrefix(
+          Renaming.instance.renameClass(
+            type,
+            removePrefixes: prefixes.isNotEmpty ? prefixes : null,
+          ),
         );
     }
   }
@@ -357,7 +359,9 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
     required String? contextName,
     required String className,
   }) {
-    final name = title == null ? null : Renaming.instance.renameClass(title);
+    final name = title == null
+        ? null
+        : context.withClassPrefix(Renaming.instance.renameClass(title));
     if (name != null && !context.componentClassNames.containsValue(name)) {
       return name;
     }
@@ -367,7 +371,7 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
         'it a title.',
       );
     }
-    return Renaming.instance.renameClass(contextName);
+    return context.withClassPrefix(Renaming.instance.renameClass(contextName));
   }
 
   /// Registers the model of an inline object schema and returns its class
@@ -483,7 +487,7 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
         'give its schema a title.',
       );
     }
-    return Renaming.instance.renameEnum(name);
+    return context.withClassPrefix(Renaming.instance.renameEnum(name));
   }
 
   /// `Enum.member` for [value], honouring `model.enums` renames; null when the

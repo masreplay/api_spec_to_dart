@@ -39,6 +39,19 @@ class GenerationContext {
   /// `X-Output`); references and strategies both read it.
   final Map<String, String> componentClassNames = {};
 
+  /// [className] of a model with `model.class_prefix` prepended as written.
+  /// A name built from a prefixed class has it already, maybe recased
+  /// (`HTTPItem_info` → HttpItemInfo → HTTPItemInfo).
+  String withClassPrefix(String className) {
+    final prefix = config.model.classPrefix ?? '';
+    final name = className.toLowerCase().startsWith(prefix.toLowerCase())
+        ? className.substring(prefix.length)
+        // Prefixed, a reserved word needs no escape: `$Function` →
+        // PostmanFunction.
+        : className.replaceFirst(RegExp(r'^\$'), '');
+    return '$prefix$name';
+  }
+
   /// Adds a component model. The first model for a file name wins; a
   /// different model mapping to the same name is reported, not silently
   /// lost — unless [isGenericInstantiation], where every instantiation of

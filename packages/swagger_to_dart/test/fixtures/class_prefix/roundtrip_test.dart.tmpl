@@ -1,0 +1,39 @@
+import 'package:swagger_to_dart_e2e/gen/class_prefix/models/models.dart';
+import 'package:test/test.dart';
+
+void main() {
+  test('prefixed models decode and re-encode', () {
+    const json = {
+      'name': 'Users',
+      'kind': 'folder',
+      'info': {'version': '1'},
+      'url': ['api', 'users'],
+      'auth': {'type': 'bearer', 'token': 't'},
+      'run': {'script': 'pm.test()'},
+      'children': [
+        {
+          'name': 'List users',
+          'kind': 'request',
+          'info': null,
+          'url': 'https://example.dev/users',
+          'auth': null,
+          'run': null,
+          'children': null,
+        },
+      ],
+    };
+
+    final item = PostmanItem.fromJson(json);
+
+    expect(item.kind, PostmanItemKind.folder);
+    expect(item.url, const PostmanItemUrl.list(['api', 'users']));
+    expect(item.auth, isA<PostmanAuthBearer>());
+    expect(item.run, const PostmanFunction(script: 'pm.test()'));
+    final PostmanItems? children = item.children;
+    expect(
+      children?.single.url,
+      const PostmanItemUrl.string('https://example.dev/users'),
+    );
+    expect(item.toJson(), json);
+  });
+}

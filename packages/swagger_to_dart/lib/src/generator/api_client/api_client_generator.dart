@@ -460,7 +460,9 @@ class ApiClientGenerator {
 
     if (useClass && queryParameters.isNotEmpty) {
       final queriesClassName = context.registerInlineModel(
-        Renaming.instance.renameClass('${methodName}QueryParameters'),
+        context.withClassPrefix(
+          Renaming.instance.renameClass('${methodName}QueryParameters'),
+        ),
         (name) => RegularModelGeneratorStrategy(context).build(
           MapEntry(
             name,
@@ -475,6 +477,7 @@ class ApiClientGenerator {
               },
             ),
           ),
+          name: name,
         ),
       );
 

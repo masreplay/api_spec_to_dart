@@ -1,0 +1,81 @@
+/// PostmanItemUrl
+///
+/// ```json
+/// {
+///     "oneOf": [
+///         {
+///             "type": "string"
+///         },
+///         {
+///             "type": "array",
+///             "items": {
+///                 "type": "string"
+///             }
+///         }
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'postman_item_url.g.dart';
+
+sealed class PostmanItemUrl {
+  const PostmanItemUrl();
+
+  const factory PostmanItemUrl.string(String value) = PostmanItemUrlString;
+  const factory PostmanItemUrl.list(List<String> value) = PostmanItemUrlList;
+
+  factory PostmanItemUrl.fromJson(Object? json) => switch (json) {
+    String() => PostmanItemUrlString(json),
+    List() => _$PostmanItemUrlListFromJson({'value': json}),
+    _ => throw ArgumentError.value(
+      json,
+      'json',
+      'No PostmanItemUrl variant matches',
+    ),
+  };
+
+  Object? toJson();
+}
+
+final class PostmanItemUrlString extends PostmanItemUrl {
+  const PostmanItemUrlString(this.value);
+
+  final String value;
+
+  @override
+  Object? toJson() => value;
+
+  @override
+  bool operator ==(Object other) =>
+      other is PostmanItemUrlString && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'PostmanItemUrl.string($value)';
+}
+
+@jsonSerializable
+final class PostmanItemUrlList extends PostmanItemUrl {
+  const PostmanItemUrlList(this.value);
+
+  @JsonKey(name: 'value')
+  final List<String> value;
+
+  @override
+  Object? toJson() => _$PostmanItemUrlListToJson(this)['value'];
+
+  @override
+  bool operator ==(Object other) =>
+      other is PostmanItemUrlList &&
+      const DeepCollectionEquality().equals(other.value, value);
+
+  @override
+  int get hashCode => const DeepCollectionEquality().hash(value);
+
+  @override
+  String toString() => 'PostmanItemUrl.list($value)';
+}

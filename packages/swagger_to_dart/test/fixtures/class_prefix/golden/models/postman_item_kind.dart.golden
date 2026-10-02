@@ -1,0 +1,32 @@
+/// PostmanItemKind
+///
+/// ```json
+/// {
+///     "properties": {},
+///     "type": "string",
+///     "enum": [
+///         "request",
+///         "folder"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'postman_item_kind.g.dart';
+
+@JsonEnum(alwaysCreate: true)
+enum PostmanItemKind {
+  @JsonValue('request')
+  request,
+  @JsonValue('folder')
+  folder;
+
+  factory PostmanItemKind.fromJson(String json) =>
+      PostmanItemKind.values.firstWhere(
+        (e) => e.toJson() == json,
+        orElse: () => throw ArgumentError('Invalid PostmanItemKind'),
+      );
+
+  String toJson() => _$PostmanItemKindEnumMap[this]!;
+}
