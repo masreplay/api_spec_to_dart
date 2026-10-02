@@ -1,0 +1,44 @@
+/// Cat
+///
+/// ```json
+/// {
+///     "properties": {
+///         "kind": {
+///             "type": "string"
+///         },
+///         "lives": {
+///             "type": "integer"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "kind",
+///         "lives"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'cat.freezed.dart';
+part 'cat.g.dart';
+
+@freezed
+abstract class Cat with _$Cat {
+  const Cat._();
+
+  @jsonSerializable
+  const factory Cat({
+    /// kind
+    @JsonKey(name: Cat.kindKey_) required String kind,
+
+    /// lives
+    @JsonKey(name: Cat.livesKey_) required int lives,
+  }) = _Cat;
+
+  factory Cat.fromJson(Map<String, dynamic> json) => _$CatFromJson(json);
+
+  static const String kindKey_ = 'kind';
+
+  static const String livesKey_ = 'lives';
+}

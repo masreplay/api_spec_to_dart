@@ -1,0 +1,87 @@
+/// RequestWhen
+///
+/// ```json
+/// {
+///     "oneOf": [
+///         {
+///             "type": "string",
+///             "format": "date-time"
+///         },
+///         {
+///             "type": "array",
+///             "items": {
+///                 "type": "string",
+///                 "format": "date-time"
+///             }
+///         }
+///     ],
+///     "description": "Variants json_serializable converts: dates."
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'request_when.g.dart';
+
+sealed class RequestWhen {
+  const RequestWhen();
+
+  const factory RequestWhen.string(DateTime value) = RequestWhenString;
+  const factory RequestWhen.list(List<DateTime> value) = RequestWhenList;
+
+  factory RequestWhen.fromJson(Object? json) => switch (json) {
+    String() => _$RequestWhenStringFromJson({'value': json}),
+    List() => _$RequestWhenListFromJson({'value': json}),
+    _ => throw ArgumentError.value(
+      json,
+      'json',
+      'No RequestWhen variant matches',
+    ),
+  };
+
+  Object? toJson();
+}
+
+@jsonSerializable
+final class RequestWhenString extends RequestWhen {
+  const RequestWhenString(this.value);
+
+  @JsonKey(name: 'value')
+  final DateTime value;
+
+  @override
+  Object? toJson() => _$RequestWhenStringToJson(this)['value'];
+
+  @override
+  bool operator ==(Object other) =>
+      other is RequestWhenString &&
+      const DeepCollectionEquality().equals(other.value, value);
+
+  @override
+  int get hashCode => const DeepCollectionEquality().hash(value);
+
+  @override
+  String toString() => 'RequestWhen.string($value)';
+}
+
+@jsonSerializable
+final class RequestWhenList extends RequestWhen {
+  const RequestWhenList(this.value);
+
+  @JsonKey(name: 'value')
+  final List<DateTime> value;
+
+  @override
+  Object? toJson() => _$RequestWhenListToJson(this)['value'];
+
+  @override
+  bool operator ==(Object other) =>
+      other is RequestWhenList &&
+      const DeepCollectionEquality().equals(other.value, value);
+
+  @override
+  int get hashCode => const DeepCollectionEquality().hash(value);
+
+  @override
+  String toString() => 'RequestWhen.list($value)';
+}

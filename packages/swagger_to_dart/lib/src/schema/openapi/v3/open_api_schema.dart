@@ -170,11 +170,18 @@ class OpenApiSchemaJsonConverter
   }
 }
 
+/// Keys that describe a whole schema, kept outside the `oneOf` a type array
+/// becomes.
+const _outerKeys = {'title', 'description', 'default'};
+
 /// Rewrites OpenAPI 3.1 forms into the shapes the models parse, returning a
 /// new map (the input is shared with the `@Extras` metadata, so it must not
 /// change):
-/// - `type: [T, "null"]` → `type: T, nullable: true` (several non-null
-///   types → no type, i.e. `dynamic`);
+/// - `type: [T, "null"]` → `type: T, nullable: true`;
+/// - several non-null types with an `array` or `object` → a `oneOf` of one
+///   schema per type, each with the other keywords (`items`,
+///   `properties`, ...), which is a union; primitives only → no type, i.e.
+///   `dynamic`;
 /// - with [unwrapSingleAllOf], an `allOf` with a single entry → that entry,
 ///   keeping the outer keys (`nullable`, `default`, `description`, ...).
 ///   Components keep their `allOf`: it is merged with their own properties.
@@ -184,10 +191,28 @@ Map<String, dynamic> normalizeSchemaJson(
 }) {
   if (json['type'] case final List<dynamic> types) {
     final concrete = types.where((t) => t != 'null').toList();
-    json = {
+    final rest = {
       for (final MapEntry(:key, :value) in json.entries)
         if (key != 'type') key: value,
-      if (concrete.length == 1) 'type': concrete.single,
+    };
+    final union =
+        concrete.length > 1 &&
+        concrete.any((t) => t == 'array' || t == 'object');
+    json = {
+      if (!union) ...rest,
+      if (!union && concrete.length == 1) 'type': concrete.single,
+      if (union) ...{
+        for (final MapEntry(:key, :value) in rest.entries)
+          if (_outerKeys.contains(key)) key: value,
+        'oneOf': [
+          for (final type in concrete)
+            {
+              for (final MapEntry(:key, :value) in rest.entries)
+                if (!_outerKeys.contains(key)) key: value,
+              'type': type,
+            },
+        ],
+      },
       if (types.contains('null')) 'nullable': true,
     };
   }

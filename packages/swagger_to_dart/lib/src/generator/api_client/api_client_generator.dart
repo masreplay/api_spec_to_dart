@@ -247,12 +247,16 @@ class ApiClientGenerator {
                     ..name = _requestBodyName
                     ..named = true
                     ..required = true
+                    // retrofit adds a body's toJson() to a map; a mixed
+                    // union's JSON is none, so dio encodes the value as is.
                     ..type = refer(
-                      context.extension.typeConverter.get(
-                        entry.value.schema,
-                        className: className,
-                        contextName: '${methodName}_body',
-                      ),
+                      UnionModelStrategy(context).isMixed(entry.value.schema)
+                          ? 'dynamic'
+                          : context.extension.typeConverter.get(
+                              entry.value.schema,
+                              className: className,
+                              contextName: '${methodName}_body',
+                            ),
                     ),
                 ),
               );

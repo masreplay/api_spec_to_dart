@@ -1,0 +1,52 @@
+/// UrlObjectValue
+///
+/// ```json
+/// {
+///     "properties": {
+///         "raw": {
+///             "type": "string"
+///         },
+///         "host": {
+///             "oneOf": [
+///                 {
+///                     "type": "string"
+///                 },
+///                 {
+///                     "type": "array",
+///                     "items": {
+///                         "type": "string"
+///                     }
+///                 }
+///             ],
+///             "description": "An inline union: string | array."
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'url_object_value.freezed.dart';
+part 'url_object_value.g.dart';
+
+@freezed
+abstract class UrlObjectValue with _$UrlObjectValue {
+  const UrlObjectValue._();
+
+  @jsonSerializable
+  const factory UrlObjectValue({
+    /// raw
+    @JsonKey(name: UrlObjectValue.rawKey_) String? raw,
+
+    /// host
+    @JsonKey(name: UrlObjectValue.hostKey_) UrlObjectValueHost? host,
+  }) = _UrlObjectValue;
+
+  factory UrlObjectValue.fromJson(Map<String, dynamic> json) =>
+      _$UrlObjectValueFromJson(json);
+
+  static const String rawKey_ = 'raw';
+
+  static const String hostKey_ = 'host';
+}

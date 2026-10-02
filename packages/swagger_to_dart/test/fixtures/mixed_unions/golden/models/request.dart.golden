@@ -1,0 +1,285 @@
+/// Request
+///
+/// ```json
+/// {
+///     "properties": {
+///         "url": {
+///             "$ref": "#/components/schemas/Url"
+///         },
+///         "owner": {
+///             "oneOf": [
+///                 {
+///                     "$ref": "#/components/schemas/Pet"
+///                 },
+///                 {
+///                     "type": "string"
+///                 }
+///             ],
+///             "description": "ref | string"
+///         },
+///         "description": {
+///             "oneOf": [
+///                 {
+///                     "type": "object",
+///                     "properties": {
+///                         "content": {
+///                             "type": "string"
+///                         }
+///                     }
+///                 },
+///                 {
+///                     "type": "string"
+///                 },
+///                 {
+///                     "type": "null"
+///                 }
+///             ],
+///             "description": "A nullable union."
+///         },
+///         "formdata": {
+///             "type": "array",
+///             "items": {
+///                 "anyOf": [
+///                     {
+///                         "properties": {
+///                             "key": {
+///                                 "type": "string"
+///                             },
+///                             "value": {
+///                                 "type": "string"
+///                             },
+///                             "type": {
+///                                 "type": "string",
+///                                 "const": "text"
+///                             }
+///                         },
+///                         "required": [
+///                             "key"
+///                         ]
+///                     },
+///                     {
+///                         "properties": {
+///                             "key": {
+///                                 "type": "string"
+///                             },
+///                             "src": {
+///                                 "oneOf": [
+///                                     {
+///                                         "type": "array"
+///                                     },
+///                                     {
+///                                         "type": "string"
+///                                     }
+///                                 ],
+///                                 "nullable": true
+///                             },
+///                             "type": {
+///                                 "type": "string",
+///                                 "const": "file"
+///                             }
+///                         },
+///                         "required": [
+///                             "key"
+///                         ]
+///                     }
+///                 ],
+///                 "title": "FormParameter"
+///             },
+///             "description": "A const-discriminated anyOf inside a list."
+///         },
+///         "segments": {
+///             "type": "array",
+///             "items": {
+///                 "oneOf": [
+///                     {
+///                         "type": "string"
+///                     },
+///                     {
+///                         "type": "object",
+///                         "properties": {
+///                             "value": {
+///                                 "type": "string"
+///                             }
+///                         }
+///                     }
+///                 ]
+///             },
+///             "description": "A mixed union inside a list."
+///         },
+///         "exec": {
+///             "oneOf": [
+///                 {
+///                     "type": "array",
+///                     "items": {
+///                         "type": "string"
+///                     }
+///                 },
+///                 {
+///                     "type": "string",
+///                     "items": {
+///                         "type": "string"
+///                     }
+///                 }
+///             ],
+///             "description": "A type array."
+///         },
+///         "amount": {
+///             "oneOf": [
+///                 {
+///                     "type": "integer"
+///                 },
+///                 {
+///                     "type": "number"
+///                 },
+///                 {
+///                     "type": "boolean"
+///                 },
+///                 {
+///                     "type": "array",
+///                     "items": {
+///                         "$ref": "#/components/schemas/Pet"
+///                     }
+///                 }
+///             ],
+///             "description": "integer merges into number; boolean; a list of models."
+///         },
+///         "when": {
+///             "oneOf": [
+///                 {
+///                     "type": "string",
+///                     "format": "date-time"
+///                 },
+///                 {
+///                     "type": "array",
+///                     "items": {
+///                         "type": "string",
+///                         "format": "date-time"
+///                     }
+///                 }
+///             ],
+///             "description": "Variants json_serializable converts: dates."
+///         },
+///         "level": {
+///             "anyOf": [
+///                 {
+///                     "enum": [
+///                         "low",
+///                         "high"
+///                     ],
+///                     "type": "string"
+///                 },
+///                 {
+///                     "type": "array",
+///                     "items": {
+///                         "type": "integer"
+///                     }
+///                 }
+///             ],
+///             "description": "An inline enum variant."
+///         },
+///         "companion": {
+///             "oneOf": [
+///                 {
+///                     "$ref": "#/components/schemas/Dog"
+///                 },
+///                 {
+///                     "$ref": "#/components/schemas/Cat"
+///                 },
+///                 {
+///                     "type": "string"
+///                 }
+///             ],
+///             "description": "Two objects told apart by keys, or a string."
+///         },
+///         "animal": {
+///             "oneOf": [
+///                 {
+///                     "$ref": "#/components/schemas/Dog"
+///                 },
+///                 {
+///                     "$ref": "#/components/schemas/Cat"
+///                 },
+///                 {
+///                     "type": "string"
+///                 }
+///             ],
+///             "description": "Two objects told apart by a discriminator, or a string.",
+///             "discriminator": {
+///                 "propertyName": "kind"
+///             }
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'request.freezed.dart';
+part 'request.g.dart';
+
+@freezed
+abstract class Request with _$Request {
+  const Request._();
+
+  @jsonSerializable
+  const factory Request({
+    /// url
+    @JsonKey(name: Request.urlKey_) Url? url,
+
+    /// owner
+    @JsonKey(name: Request.ownerKey_) RequestOwner? owner,
+
+    /// description
+    @JsonKey(name: Request.descriptionKey_) RequestDescription? description,
+
+    /// formdata
+    @JsonKey(name: Request.formdataKey_) List<FormParameter>? formdata,
+
+    /// segments
+    @JsonKey(name: Request.segmentsKey_) List<RequestSegmentsItem>? segments,
+
+    /// exec
+    @JsonKey(name: Request.execKey_) RequestExec? exec,
+
+    /// amount
+    @JsonKey(name: Request.amountKey_) RequestAmount? amount,
+
+    /// when
+    @JsonKey(name: Request.whenKey_) RequestWhen? when,
+
+    /// level
+    @JsonKey(name: Request.levelKey_) RequestLevel? level,
+
+    /// companion
+    @JsonKey(name: Request.companionKey_) RequestCompanion? companion,
+
+    /// animal
+    @JsonKey(name: Request.animalKey_) RequestAnimal? animal,
+  }) = _Request;
+
+  factory Request.fromJson(Map<String, dynamic> json) =>
+      _$RequestFromJson(json);
+
+  static const String urlKey_ = 'url';
+
+  static const String ownerKey_ = 'owner';
+
+  static const String descriptionKey_ = 'description';
+
+  static const String formdataKey_ = 'formdata';
+
+  static const String segmentsKey_ = 'segments';
+
+  static const String execKey_ = 'exec';
+
+  static const String amountKey_ = 'amount';
+
+  static const String whenKey_ = 'when';
+
+  static const String levelKey_ = 'level';
+
+  static const String companionKey_ = 'companion';
+
+  static const String animalKey_ = 'animal';
+}

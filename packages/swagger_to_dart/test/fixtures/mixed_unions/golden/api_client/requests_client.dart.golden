@@ -1,0 +1,100 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'requests_client.g.dart';
+
+@RestApi()
+abstract class RequestsClient {
+  factory RequestsClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _RequestsClient;
+
+  @POST('/requests')
+  Future<HttpResponse<Url>> send({
+    @Body() required Request requestBody,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['requests'],
+      'operationId': 'send',
+      'requestBody': {
+        'required': true,
+        'content': {
+          'application/json': {
+            'schema': {'\$ref': '#/components/schemas/Request'},
+          },
+        },
+      },
+      'responses': {
+        '200': {
+          'description': 'A union response',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/Url'},
+            },
+          },
+        },
+      },
+    },
+  });
+  @PUT('/requests')
+  Future<HttpResponse> resolve({
+    @Body() required dynamic requestBody,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['requests'],
+      'operationId': 'resolve',
+      'requestBody': {
+        'required': true,
+        'content': {
+          'application/json': {
+            'schema': {'\$ref': '#/components/schemas/Url'},
+          },
+        },
+      },
+      'responses': {
+        '204': {'description': 'A union body'},
+      },
+    },
+  });
+  @GET('/descriptions')
+  Future<HttpResponse<DescribeResponse?>> describe({
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['requests'],
+      'operationId': 'describe',
+      'responses': {
+        '200': {
+          'description': 'A nullable union response',
+          'content': {
+            'application/json': {
+              'schema': {
+                'oneOf': [
+                  {'type': 'string'},
+                  {
+                    'type': 'object',
+                    'properties': {
+                      'content': {'type': 'string'},
+                    },
+                  },
+                  {'type': 'null'},
+                ],
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+}

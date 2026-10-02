@@ -1,0 +1,85 @@
+/// RequestExec
+///
+/// ```json
+/// {
+///     "oneOf": [
+///         {
+///             "type": "array",
+///             "items": {
+///                 "type": "string"
+///             }
+///         },
+///         {
+///             "type": "string",
+///             "items": {
+///                 "type": "string"
+///             }
+///         }
+///     ],
+///     "description": "A type array."
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'request_exec.g.dart';
+
+sealed class RequestExec {
+  const RequestExec();
+
+  const factory RequestExec.list(List<String> value) = RequestExecList;
+  const factory RequestExec.string(String value) = RequestExecString;
+
+  factory RequestExec.fromJson(Object? json) => switch (json) {
+    String() => RequestExecString(json),
+    List() => _$RequestExecListFromJson({'value': json}),
+    _ => throw ArgumentError.value(
+      json,
+      'json',
+      'No RequestExec variant matches',
+    ),
+  };
+
+  Object? toJson();
+}
+
+@jsonSerializable
+final class RequestExecList extends RequestExec {
+  const RequestExecList(this.value);
+
+  @JsonKey(name: 'value')
+  final List<String> value;
+
+  @override
+  Object? toJson() => _$RequestExecListToJson(this)['value'];
+
+  @override
+  bool operator ==(Object other) =>
+      other is RequestExecList &&
+      const DeepCollectionEquality().equals(other.value, value);
+
+  @override
+  int get hashCode => const DeepCollectionEquality().hash(value);
+
+  @override
+  String toString() => 'RequestExec.list($value)';
+}
+
+final class RequestExecString extends RequestExec {
+  const RequestExecString(this.value);
+
+  final String value;
+
+  @override
+  Object? toJson() => value;
+
+  @override
+  bool operator ==(Object other) =>
+      other is RequestExecString && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'RequestExec.string($value)';
+}

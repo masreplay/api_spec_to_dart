@@ -1,0 +1,84 @@
+/// UrlObjectValueHost
+///
+/// ```json
+/// {
+///     "oneOf": [
+///         {
+///             "type": "string"
+///         },
+///         {
+///             "type": "array",
+///             "items": {
+///                 "type": "string"
+///             }
+///         }
+///     ],
+///     "description": "An inline union: string | array."
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'url_object_value_host.g.dart';
+
+sealed class UrlObjectValueHost {
+  const UrlObjectValueHost();
+
+  const factory UrlObjectValueHost.string(String value) =
+      UrlObjectValueHostString;
+  const factory UrlObjectValueHost.list(List<String> value) =
+      UrlObjectValueHostList;
+
+  factory UrlObjectValueHost.fromJson(Object? json) => switch (json) {
+    String() => UrlObjectValueHostString(json),
+    List() => _$UrlObjectValueHostListFromJson({'value': json}),
+    _ => throw ArgumentError.value(
+      json,
+      'json',
+      'No UrlObjectValueHost variant matches',
+    ),
+  };
+
+  Object? toJson();
+}
+
+final class UrlObjectValueHostString extends UrlObjectValueHost {
+  const UrlObjectValueHostString(this.value);
+
+  final String value;
+
+  @override
+  Object? toJson() => value;
+
+  @override
+  bool operator ==(Object other) =>
+      other is UrlObjectValueHostString && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'UrlObjectValueHost.string($value)';
+}
+
+@jsonSerializable
+final class UrlObjectValueHostList extends UrlObjectValueHost {
+  const UrlObjectValueHostList(this.value);
+
+  @JsonKey(name: 'value')
+  final List<String> value;
+
+  @override
+  Object? toJson() => _$UrlObjectValueHostListToJson(this)['value'];
+
+  @override
+  bool operator ==(Object other) =>
+      other is UrlObjectValueHostList &&
+      const DeepCollectionEquality().equals(other.value, value);
+
+  @override
+  int get hashCode => const DeepCollectionEquality().hash(value);
+
+  @override
+  String toString() => 'UrlObjectValueHost.list($value)';
+}
