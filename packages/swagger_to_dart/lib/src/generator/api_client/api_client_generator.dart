@@ -6,6 +6,13 @@ import 'package:swagger_to_dart/src/swagger_to_dart_base.dart';
 const _requestBodyName = 'requestBody';
 const _queriesParameterName = 'queries';
 
+/// Types a client signature can name without the generated models.
+const _libraryTypes = {
+  'Future', 'HttpResponse', 'List', 'Map', 'String', 'int', 'double', //
+  'num', 'bool', 'dynamic', 'Object', 'DateTime', 'Uri', 'Uint8List',
+  'MultipartFile', 'CancelToken', 'ProgressCallback', 'null',
+};
+
 /// Generated Client Code
 ///
 /// Swagger
@@ -362,6 +369,13 @@ class ApiClientGenerator {
       }
     }
 
+    // An unused import fails analysis: import the models only when a
+    // signature names a type that dart:core, dio or retrofit lacks.
+    final usesModels = [...methods, ...extensionMethods]
+        .expand((m) => [m.returns, ...m.optionalParameters.map((p) => p.type)])
+        .expand((type) => RegExp(r'\w+').allMatches('${type?.symbol}'))
+        .any((name) => !_libraryTypes.contains(name[0]));
+
     return Library(
       (b) => b
         ..directives.addAll([
@@ -371,7 +385,7 @@ class ApiClientGenerator {
             Directive.import('dart:typed_data'),
           Directive.import('package:dio/dio.dart', hide: ['Headers']),
           Directive.import('package:retrofit/retrofit.dart'),
-          Directive.import('../models/models.dart'),
+          if (usesModels) Directive.import('../models/models.dart'),
           Directive.part('$fileName.g.dart'),
         ])
         ..name = fileName
