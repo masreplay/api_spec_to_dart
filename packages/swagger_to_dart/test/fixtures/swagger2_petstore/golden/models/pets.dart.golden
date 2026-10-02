@@ -1,0 +1,22 @@
+/// Pets
+///
+/// ```json
+/// {
+///     "type": "array"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'pets.freezed.dart';
+part 'pets.g.dart';
+
+@freezed
+abstract class Pets with _$Pets {
+  const Pets._();
+
+  @jsonSerializable
+  const factory Pets() = _Pets;
+
+  factory Pets.fromJson(Map<String, dynamic> json) => _$PetsFromJson(json);
+}
