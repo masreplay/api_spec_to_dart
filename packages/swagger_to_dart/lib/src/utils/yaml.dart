@@ -41,11 +41,22 @@ class YamlMapConverter {
     return _mapToYamlString(jsonMap);
   }
 
+  /// [yaml] as plain Dart values: every YamlMap a `Map<String, dynamic>`
+  /// (keys as strings, `<<` merge keys applied), every YamlList a `List`.
+  static Object? toPlain(Object? yaml) => _convertYamlToMap(yaml);
+
   /// Recursively converts YamlMap to a regular Map.
   static dynamic _convertYamlToMap(dynamic yaml) {
     if (yaml is YamlMap) {
       final map = <String, dynamic>{};
+      // YAML 1.1 merge keys (`<<: *base`, `<<: [*a, *b]`), which package:yaml
+      // leaves as a `<<` key: own keys win, then earlier sources.
+      final merged = yaml['<<'];
+      for (final source in merged is YamlList ? merged.reversed : [merged]) {
+        if (source is YamlMap) map.addAll(_convertYamlToMap(source));
+      }
       for (final entry in yaml.entries) {
+        if (entry.key == '<<') continue;
         map[entry.key.toString()] = _convertYamlToMap(entry.value);
       }
       return map;
