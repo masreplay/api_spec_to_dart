@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:path/path.dart' as p;
@@ -8,7 +7,8 @@ import 'package:yaml/yaml.dart';
 
 /// One scenario under `test/fixtures/<name>/`:
 ///
-/// - `openapi.json` — the spec (required)
+/// - the input (required): the first of [inputs] that exists, read and
+///   converted to OpenAPI 3 like users' input
 /// - `swagger_to_dart.yaml` — generator config (optional)
 /// - `pubspec.yaml` — the consuming project; a `flutter` dependency makes
 ///   it a Flutter project (optional)
@@ -22,9 +22,25 @@ class Fixture {
 
   String get name => p.basename(dir.path);
 
-  Map<String, dynamic> get spec =>
-      jsonDecode(File(p.join(dir.path, 'openapi.json')).readAsStringSync())
-          as Map<String, dynamic>;
+  static const inputs = [
+    'openapi.json',
+    'openapi.yaml',
+    'swagger.json',
+    'schema.json',
+    'collection.json',
+  ];
+
+  String get input => inputs
+      .map((file) => p.join(dir.path, file))
+      .firstWhere(
+        (path) => File(path).existsSync(),
+        orElse: () => throw StateError('$name has none of $inputs'),
+      );
+
+  Map<String, dynamic> get spec => toOpenApiJson(
+    readSpecSync(input),
+    sourceName: p.basenameWithoutExtension(input),
+  );
 
   SwaggerToDart get config {
     final file = File(p.join(dir.path, 'swagger_to_dart.yaml'));

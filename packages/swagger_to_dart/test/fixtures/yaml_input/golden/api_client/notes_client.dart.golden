@@ -1,0 +1,86 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'notes_client.g.dart';
+
+@RestApi()
+abstract class NotesClient {
+  factory NotesClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _NotesClient;
+
+  @GET('/notes')
+  Future<HttpResponse<List<Note>>> listNotes({
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['notes'],
+      'operationId': 'listNotes',
+      'description': 'Lists notes.\nNewest first.\n',
+      'responses': {
+        '200': {
+          'description': 'The notes',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'array',
+                'items': {'\$ref': '#/components/schemas/Note'},
+              },
+            },
+          },
+        },
+        'default': {
+          'description': 'Unexpected error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/Error'},
+            },
+          },
+        },
+      },
+    },
+  });
+  @POST('/notes')
+  Future<HttpResponse<Note>> createNote({
+    @Body() required NewNote requestBody,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['notes'],
+      'operationId': 'createNote',
+      'requestBody': {
+        'required': true,
+        'content': {
+          'application/json': {
+            'schema': {'\$ref': '#/components/schemas/NewNote'},
+          },
+        },
+      },
+      'responses': {
+        '201': {
+          'description': 'Created',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/Note'},
+            },
+          },
+        },
+        'default': {
+          'description': 'Unexpected error',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/Error'},
+            },
+          },
+        },
+      },
+    },
+  });
+}
