@@ -98,13 +98,14 @@ class SwaggerToDartCodeGenerator {
         Directive.import(import),
     ];
 
+    final hasApiClients = context.apiClients.isNotEmpty;
     final libraries = <String, Library>{
       'gen.dart': Library(
         (b) => b
           ..name = 'gen'
           ..directives.addAll([
             ...globalImports,
-            Directive.export('api_client/api_client.dart'),
+            if (hasApiClients) Directive.export('api_client/api_client.dart'),
             Directive.export('models/models.dart'),
           ]),
       ),
@@ -126,8 +127,19 @@ class SwaggerToDartCodeGenerator {
         ]),
     );
 
-    final (library: jsonConverterLibrary, directives: jsonConverterDirectives) =
-        JsonConvertorGenerator(context).build();
+    // dio is only needed for MultipartFile (`format: binary` fields).
+    final usesMultipartFile = context.models.any(
+      (model) => RegExp(
+        r'\bMultipartFile\b',
+      ).hasMatch('${model.accept(DartEmitter())}'),
+    );
+
+    final (
+      library: jsonConverterLibrary,
+      directives: jsonConverterDirectives,
+    ) = JsonConvertorGenerator(
+      context,
+    ).build(multipartFile: usesMultipartFile);
     libraries['models/${jsonConverterLibrary.name!}.dart'] =
         jsonConverterLibrary;
 
@@ -139,7 +151,7 @@ class SwaggerToDartCodeGenerator {
           ...jsonConverterDirectives,
           Directive.export('dart:typed_data'),
           Directive.export('models.dart'),
-          Directive.export('package:dio/dio.dart'),
+          if (usesMultipartFile) Directive.export('package:dio/dio.dart'),
           Directive.export(
             'package:freezed_annotation/freezed_annotation.dart',
           ),
@@ -149,6 +161,9 @@ class SwaggerToDartCodeGenerator {
           ),
         ]),
     );
+
+    // A spec without operations generates models only.
+    if (!hasApiClients) return libraries;
 
     for (final apiClient in context.apiClients) {
       final filename = apiClient.name;
