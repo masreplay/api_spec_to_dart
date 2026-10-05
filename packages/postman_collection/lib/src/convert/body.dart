@@ -33,6 +33,7 @@ void addRawContent(
   Map<String, String> variables = const {},
   required String name,
   void Function(String message)? onWarning,
+  Secrets secrets = const Secrets.none(),
 }) {
   if (text.trim().isEmpty) return;
   final json = mediaType == null || isJsonMediaType(mediaType)
@@ -41,7 +42,7 @@ void addRawContent(
   mediaType ??= json is Map || json is List ? 'application/json' : 'text/plain';
   if (!isJsonMediaType(mediaType)) {
     content
-        .putIfAbsent(mediaType, () => MediaContent('text'))
+        .putIfAbsent(mediaType, () => MediaContent('text', secrets))
         .add(name, substituteVariables(text, variables));
     return;
   }
@@ -51,7 +52,7 @@ void addRawContent(
     );
   }
   content
-      .putIfAbsent(mediaType, () => MediaContent('json'))
+      .putIfAbsent(mediaType, () => MediaContent('json', secrets))
       .add(name, json ?? const <String, Object?>{});
 }
 
@@ -72,9 +73,10 @@ String? contentType(Object? headers) {
 
 /// The request bodies of one operation, merged by media type.
 class RequestBodies {
-  RequestBodies({this.onWarning});
+  RequestBodies({this.onWarning, this.secrets = const Secrets.none()});
 
   final void Function(String message)? onWarning;
+  final Secrets secrets;
 
   final _content = <String, MediaContent>{};
 
@@ -114,7 +116,7 @@ class RequestBodies {
         };
 
   MediaContent _media(String mediaType, String kind) =>
-      _content.putIfAbsent(mediaType, () => MediaContent(kind));
+      _content.putIfAbsent(mediaType, () => MediaContent(kind, secrets));
 
   void _raw(
     Map<Object?, Object?> body,
@@ -135,6 +137,7 @@ class RequestBodies {
         variables: variables,
         name: name,
         onWarning: onWarning,
+        secrets: secrets,
       );
     }
   }
@@ -229,9 +232,10 @@ Object? _scalar(String text) {
 /// One media type of a request or response body: `json` (inferred from
 /// samples), `form` (fields), `text` or `binary`.
 class MediaContent {
-  MediaContent(this.kind);
+  MediaContent(this.kind, [this.secrets = const Secrets.none()]);
 
   final String kind;
+  final Secrets secrets;
   final samples = <Object?>[];
   final fields = <String, List<Object?>>{};
   final files = <String, bool>{};
@@ -245,9 +249,10 @@ class MediaContent {
   }
 
   /// Keeps one example per distinct value, without credentials, keyed by
-  /// [name] (suffixed when taken).
+  /// [name] (suffixed when taken). A text that leaks one is no example.
   void example(String name, Object? value) {
-    final example = withoutCredentials(value);
+    if (value is String && secrets.leaks(value)) return;
+    final example = secrets.scrub(value);
     final json = jsonEncode(example);
     if (examples.values.any((other) => jsonEncode(other) == json)) return;
     var key = name;

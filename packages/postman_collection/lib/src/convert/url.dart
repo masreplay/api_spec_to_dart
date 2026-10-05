@@ -3,6 +3,16 @@ import 'variables.dart';
 final _scheme = RegExp(r'^([A-Za-z][A-Za-z0-9+.-]*|\{\{[^{}]+\}\})://');
 final _wholeVariable = RegExp(r'^\{\{[^{}]+\}\}$');
 
+/// A URL's scheme and userinfo (`user:password@`, up to the authority's last
+/// `@`).
+final _userinfo = RegExp(
+  r'((?:[A-Za-z][A-Za-z0-9+.-]*|\{\{[^{}]+\}\})://)[^/?#\s]*@',
+);
+
+/// [text] with the userinfo of every URL in it removed.
+String withoutUserinfo(String text) =>
+    text.replaceAllMapped(_userinfo, (m) => m[1]!);
+
 /// A Postman URL (string or object) split into what OpenAPI needs.
 class ParsedUrl {
   const ParsedUrl(

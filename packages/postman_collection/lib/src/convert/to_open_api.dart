@@ -117,15 +117,14 @@ Map<String, Object?> postmanToOpenApi(
 
 class _Converter {
   _Converter(this.collection, this.onWarning)
-    : secrets = secretVariableNames(collection),
-      schemes = SecuritySchemes(onWarning: onWarning);
+    : secrets = Secrets.of(collection);
 
   final Map<String, Object?> collection;
   final void Function(String message)? onWarning;
 
-  /// Variables used by secret auth attributes: never resolved.
-  final Set<String> secrets;
-  final SecuritySchemes schemes;
+  /// Never resolved (secret variables) and never output (secret values).
+  final Secrets secrets;
+  late final schemes = SecuritySchemes(onWarning: onWarning, secrets: secrets);
 
   /// Operations by `METHOD path`; webhooks by name.
   final _operations = <String, _Operation>{};
@@ -191,7 +190,7 @@ class _Converter {
   /// [variables] with an entity's own `variable` list, minus secrets.
   Map<String, String> _scope(Map<String, String> variables, Object? list) =>
       {...variables, ...collectVariables(list)}
-        ..removeWhere((name, _) => secrets.contains(name));
+        ..removeWhere((name, _) => secrets.variables.contains(name));
 
   void _walk(
     Object? items,
@@ -270,6 +269,7 @@ class _Converter {
         variables,
       ),
       onWarning: onWarning,
+      secrets: secrets,
     );
     final _Operation operation;
     if (webhook) {
@@ -281,7 +281,10 @@ class _Converter {
       operation = _webhooks[key] = create();
     } else {
       _origins[url.origin] = (_origins[url.origin] ?? 0) + 1;
-      _servers.putIfAbsent(url.origin, () => _server(url.origin, variables));
+      _servers.putIfAbsent(
+        url.origin,
+        () => _server(url.origin, variables, secrets),
+      );
       operation = _operations.putIfAbsent('$method ${url.path}', create);
     }
 
@@ -343,20 +346,28 @@ String _camelCase(String text) {
 }
 
 /// A server for [origin]; `{{name}}` becomes a server variable whose default
-/// is the resolved value.
-Map<String, Object?> _server(String origin, Map<String, String> variables) {
+/// is the resolved value (without userinfo, empty when it leaks a secret).
+Map<String, Object?> _server(
+  String origin,
+  Map<String, String> variables,
+  Secrets secrets,
+) {
   if (origin.isEmpty) return {'url': '/'};
   final names = <String>[];
   final url = origin.replaceAllMapped(variableReference, (m) {
     names.add(m[1]!);
     return '{${m[1]}}';
   });
+  String defaultValue(String name) {
+    final value = withoutUserinfo(resolveVariable(name, variables) ?? '');
+    return secrets.leaks(value) ? '' : value;
+  }
+
   return {
     'url': url,
     if (names.isNotEmpty)
       'variables': {
-        for (final name in names)
-          name: {'default': resolveVariable(name, variables) ?? ''},
+        for (final name in names) name: {'default': defaultValue(name)},
       },
   };
 }
@@ -405,13 +416,18 @@ bool _place(
   return true;
 }
 
-/// [value] of the parameter or header [name] with variables substituted, as
-/// an example; null when empty, still referencing a variable, or a
-/// credential.
-String? _example(String name, Object? value, Map<String, String> variables) {
+/// [value] of the parameter or header [name] with variables substituted and
+/// URL userinfo removed, as an example; null when empty, still referencing a
+/// variable, or a credential.
+String? _example(
+  String name,
+  Object? value,
+  Map<String, String> variables,
+  Secrets secrets,
+) {
   if (value is! String && value is! num && value is! bool) return null;
-  final text = substituteVariables('$value', variables);
-  return text.isEmpty || text.contains('{{') || isCredential(name, text)
+  final text = withoutUserinfo(substituteVariables('$value', variables));
+  return text.isEmpty || text.contains('{{') || secrets.hides(name, text)
       ? null
       : text;
 }
@@ -451,7 +467,8 @@ class _Operation {
     required this.tag,
     required this.security,
     required this.onWarning,
-  }) : body = RequestBodies(onWarning: onWarning);
+    required this.secrets,
+  }) : body = RequestBodies(onWarning: onWarning, secrets: secrets);
 
   final String method;
   final String path;
@@ -462,6 +479,7 @@ class _Operation {
   final String? tag;
   final List<Map<String, List<String>>>? security;
   final void Function(String message)? onWarning;
+  final Secrets secrets;
   final RequestBodies body;
   final _parameters = <String, _Parameter>{};
   final _responses = <String, _Response>{};
@@ -497,8 +515,8 @@ class _Operation {
         _parameter('path', param, type)
           ..describe(variable?['description'])
           ..sample(
-            _example(param, variable?['value'], variables) ??
-                _example(param, '{{$param}}', variables),
+            _example(param, variable?['value'], variables, secrets) ??
+                _example(param, '{{$param}}', variables, secrets),
           );
       }
     }
@@ -516,7 +534,8 @@ class _Operation {
         parameter.describe(entry['description']);
       }
       final examples = [
-        for (final entry in entries) ?_example(key, entry['value'], variables),
+        for (final entry in entries)
+          ?_example(key, entry['value'], variables, secrets),
       ];
       if (examples.isNotEmpty) {
         parameter.sample(entries.length > 1 ? examples : examples.first);
@@ -542,7 +561,7 @@ class _Operation {
       } else {
         _parameter('header', key)
           ..describe(header['description'])
-          ..sample(_example(key, header['value'], variables));
+          ..sample(_example(key, header['value'], variables, secrets));
       }
     }
 
@@ -590,7 +609,7 @@ class _Operation {
       }
       response.headers.putIfAbsent(
         lower,
-        () => (key, _example(key, header['value'], variables)),
+        () => (key, _example(key, header['value'], variables, secrets)),
       );
     }
     if (example['body'] case final String text) {
@@ -603,6 +622,7 @@ class _Operation {
         variables: variables,
         name: name,
         onWarning: onWarning,
+        secrets: secrets,
       );
     }
   }
