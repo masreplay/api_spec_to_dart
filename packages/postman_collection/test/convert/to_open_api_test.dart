@@ -275,6 +275,69 @@ void main() {
       ]);
     });
 
+    group('a whole URL that is the server variable', () {
+      const base = {
+        'variable': [
+          {'key': 'baseUrl', 'value': 'https://api.x.io/v1'},
+          {'key': 'getUserUrl', 'value': 'https://api.x.io/v1/users/:id'},
+        ],
+      };
+      const server = [
+        {
+          'url': '{baseUrl}',
+          'variables': {
+            'baseUrl': {'default': 'https://api.x.io/v1'},
+          },
+        },
+      ];
+
+      test('is the root of the server its siblings use, in any order', () {
+        for (final items in [
+          [
+            request('Root', 'GET', '{{baseUrl}}'),
+            request('Users', 'GET', '{{baseUrl}}/users'),
+          ],
+          [
+            request('Users', 'GET', '{{baseUrl}}/users'),
+            request('Root', 'POST', '{{baseUrl}}?dryRun=true'),
+          ],
+        ]) {
+          final document = convert(collection(items, extra: base));
+          expect(document['servers'], server);
+          final paths = document['paths']! as Map;
+          expect(paths.keys.toSet(), {'/', '/users'});
+          for (final item in paths.values) {
+            for (final operation in (item as Map).values) {
+              expect((operation as Map).containsKey('servers'), isFalse);
+            }
+          }
+        }
+      });
+
+      test('is the server when it is the only URL', () {
+        final document = convert(
+          collection([request('Health', 'GET', '{{baseUrl}}')], extra: base),
+        );
+        expect(document['servers'], server);
+        expect((document['paths']! as Map).keys, ['/']);
+        expect(operation(document, '/', 'get').containsKey('servers'), isFalse);
+      });
+
+      test('an endpoint variable no request uses as origin is resolved and '
+          'split', () {
+        final document = convert(
+          collection([
+            request('Orders', 'GET', '{{baseUrl}}/orders'),
+            request('Get user', 'GET', '{{getUserUrl}}'),
+          ], extra: base),
+        );
+        expect(document['servers'], server);
+        expect(operation(document, '/v1/users/{id}', 'get')['servers'], [
+          {'url': 'https://api.x.io'},
+        ]);
+      });
+    });
+
     test('a URL that is one variable uses its value; requests without a URL '
         'are skipped with a warning', () {
       final warnings = <String>[];

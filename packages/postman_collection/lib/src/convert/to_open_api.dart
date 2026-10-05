@@ -142,9 +142,48 @@ class _Converter {
   /// share its path and parameter names.
   final _templates = <String, ParsedUrl>{};
 
+  /// Variables that requests use as their origin (`{{baseUrl}}/users`), the
+  /// variables of whole-URL requests (`{{baseUrl}}`), and whether any other
+  /// URL exists.
+  final _originVariables = <String>{};
+  final _wholeUrlVariables = <String>{};
+  var _otherUrls = false;
+
+  /// Whether a request whose whole URL is variable [name] is the root of
+  /// that server: other requests use [name] as their origin, or it is the
+  /// collection's only URL. Otherwise its value is an endpoint URL.
+  bool _isServerVariable(String name) =>
+      _originVariables.contains(name) ||
+      (!_otherUrls &&
+          _wholeUrlVariables.length == 1 &&
+          _wholeUrlVariables.single == name);
+
+  /// Records how the (non-webhook) requests under [items] use URLs.
+  void _scanUrls(Object? items, {required bool top}) {
+    for (final item in items is List ? items : const []) {
+      if (item is! Map) continue;
+      if (item['request'] != null) {
+        final url = _requestMap(item['request'])?['url'];
+        if (_variableUrl.firstMatch(_urlText(url)) case final whole?) {
+          _wholeUrlVariables.add(whole[1]!);
+        } else if (_hasUrl(url)) {
+          _otherUrls = true;
+          final origin = parseUrl(url).origin;
+          if (_variableOrigin.firstMatch(origin) case final variable?) {
+            _originVariables.add(variable[1]!);
+          }
+        }
+      } else if (item['item'] is List &&
+          !(top && '${item['name']}'.toLowerCase() == 'webhooks')) {
+        _scanUrls(item['item'], top: false);
+      }
+    }
+  }
+
   Map<String, Object?> convert() {
     final variables = _scope(const {}, collection['variable']);
     final security = schemes.requirement(collection['auth'], variables);
+    _scanUrls(collection['item'], top: true);
     _walk(collection['item'], const [], collection['auth'], variables, false);
 
     final origin = _origins.isEmpty
@@ -256,7 +295,7 @@ class _Converter {
     }
     final requestUrl = webhook
         ? request['url']
-        : _requestUrl(request['url'], variables);
+        : _requestUrl(request['url'], variables, _isServerVariable);
     if (requestUrl == null) {
       onWarning?.call(
         "request '$name' has no URL (or a URL variable without a value); "
@@ -343,19 +382,32 @@ class _Converter {
 /// A URL that is one variable, optionally with a query.
 final _variableUrl = RegExp(r'^\s*\{\{([^{}]+)\}\}\s*(\?.*)?$');
 
-/// The request [url] to convert: one that is a single variable is replaced
-/// by the variable's value. Null when there is no URL, or the variable has
-/// no value (the path cannot be known).
-Object? _requestUrl(Object? url, Map<String, String> variables) {
-  final raw = switch (url) {
-    final String raw => raw,
-    {'raw': final String raw} => raw,
-    _ => '',
-  };
-  final structured = url is Map && (url['host'] != null || url['path'] != null);
-  if (raw.trim().isEmpty && !structured) return null;
-  final match = _variableUrl.firstMatch(raw);
-  if (match == null) return url;
+/// An origin that is one variable (`{{baseUrl}}`).
+final _variableOrigin = RegExp(r'^\{\{([^{}]+)\}\}$');
+
+/// The text of a URL (a string, or an object's `raw`).
+String _urlText(Object? url) => switch (url) {
+  final String raw => raw,
+  {'raw': final String raw} => raw,
+  _ => '',
+};
+
+bool _hasUrl(Object? url) =>
+    _urlText(url).trim().isNotEmpty ||
+    url is Map && (url['host'] != null || url['path'] != null);
+
+/// The request [url] to convert. A URL that is one variable stays as it is
+/// when [isServer] says the variable is a server (path `/`), else it is
+/// replaced by the variable's endpoint URL. Null when there is no URL, or
+/// that variable has no value (the path cannot be known).
+Object? _requestUrl(
+  Object? url,
+  Map<String, String> variables,
+  bool Function(String variable) isServer,
+) {
+  if (!_hasUrl(url)) return null;
+  final match = _variableUrl.firstMatch(_urlText(url));
+  if (match == null || isServer(match[1]!)) return url;
   final value = resolveVariable(match[1]!, variables)?.trim() ?? '';
   if (value.isEmpty) return null;
   final resolved = '$value${match[2] ?? ''}';
