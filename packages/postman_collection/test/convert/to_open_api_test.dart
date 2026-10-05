@@ -491,6 +491,96 @@ void main() {
   });
 
   group('merging', () {
+    final users = {
+      'variable': [
+        {'key': 'uid', 'value': '3'},
+      ],
+    };
+    Map<String, Object?> userUrl(String segment, [List<Object?>? variable]) => {
+      'raw': 'https://x.io/users/$segment',
+      'host': ['x', 'io'],
+      'path': ['users', segment],
+      'variable': ?variable,
+    };
+
+    test('equivalent templates merge with the first template\'s names; '
+        'later descriptions and examples carry over', () {
+      final document = convert(
+        collection([
+          request('Get user', 'GET', userUrl(':id')),
+          request(
+            'Get owner',
+            'GET',
+            userUrl(':userId', [
+              {'key': 'userId', 'value': '2', 'description': 'Owner'},
+            ]),
+          ),
+          request('Get by uid', 'GET', userUrl('{{uid}}')),
+        ], extra: users),
+      );
+      expect((document['paths']! as Map).keys, ['/users/{id}']);
+      final get = operation(document, '/users/{id}', 'get');
+      expect(get['summary'], 'Get user');
+      expect(parameters(get), [
+        {
+          'name': 'id',
+          'in': 'path',
+          'description': 'Owner',
+          'required': true,
+          'schema': {'type': 'string'},
+          'example': '2',
+        },
+      ]);
+    });
+
+    test('equivalent templates of different methods share the first '
+        'template', () {
+      final document = convert(
+        collection([
+          request('Get user', 'GET', userUrl(':id')),
+          request(
+            'Delete user',
+            'DELETE',
+            userUrl(':userId', [
+              {'key': 'userId', 'value': '2', 'description': 'Owner'},
+            ]),
+          ),
+          request('Put user', 'PUT', userUrl('{{uid}}')),
+          request('Posts', 'GET', 'https://x.io/users/:userId/posts'),
+          request('Comments', 'GET', 'https://x.io/users/:id/comments'),
+        ], extra: users),
+      );
+      expect((document['paths']! as Map).keys, [
+        '/users/{id}',
+        '/users/{userId}/posts',
+        '/users/{id}/comments',
+      ]);
+      expect(((document['paths']! as Map)['/users/{id}']! as Map).keys, [
+        'get',
+        'delete',
+        'put',
+      ]);
+      expect(parameters(operation(document, '/users/{id}', 'delete')), [
+        {
+          'name': 'id',
+          'in': 'path',
+          'description': 'Owner',
+          'required': true,
+          'schema': {'type': 'string'},
+          'example': '2',
+        },
+      ]);
+      expect(parameters(operation(document, '/users/{id}', 'put')), [
+        {
+          'name': 'id',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'string'},
+          'example': '3',
+        },
+      ]);
+    });
+
     test('same method and path merge; the first item names the operation', () {
       final document = convert(
         collection([
