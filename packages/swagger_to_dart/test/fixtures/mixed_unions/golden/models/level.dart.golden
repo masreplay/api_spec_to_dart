@@ -1,0 +1,30 @@
+/// Level
+///
+/// ```json
+/// {
+///     "enum": [
+///         "low",
+///         "high"
+///     ],
+///     "description": "An enum without a type."
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'level.g.dart';
+
+@JsonEnum(alwaysCreate: true)
+enum Level {
+  @JsonValue('low')
+  low,
+  @JsonValue('high')
+  high;
+
+  factory Level.fromJson(String json) => Level.values.firstWhere(
+    (e) => e.toJson() == json,
+    orElse: () => throw ArgumentError('Invalid Level'),
+  );
+
+  String toJson() => _$LevelEnumMap[this]!;
+}

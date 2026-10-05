@@ -4,7 +4,8 @@
 /// {
 ///     "properties": {
 ///         "url": {
-///             "$ref": "#/components/schemas/Url"
+///             "$ref": "#/components/schemas/Url",
+///             "description": "A required union."
 ///         },
 ///         "owner": {
 ///             "oneOf": [
@@ -85,7 +86,7 @@
 ///                 ],
 ///                 "title": "FormParameter"
 ///             },
-///             "description": "A const-discriminated anyOf inside a list."
+///             "description": "A const-discriminated anyOf inside a list; `type` is optional."
 ///         },
 ///         "segments": {
 ///             "type": "array",
@@ -115,13 +116,45 @@
 ///                     }
 ///                 },
 ///                 {
-///                     "type": "string",
+///                     "type": "string"
+///                 }
+///             ],
+///             "description": "A type array."
+///         },
+///         "objectOrString": {
+///             "oneOf": [
+///                 {
+///                     "type": "object",
+///                     "properties": {
+///                         "a": {
+///                             "type": "string"
+///                         }
+///                     }
+///                 },
+///                 {
+///                     "type": "string"
+///                 }
+///             ],
+///             "description": "A type array whose properties belong to the object only."
+///         },
+///         "objectOrArray": {
+///             "oneOf": [
+///                 {
+///                     "type": "object",
+///                     "properties": {
+///                         "a": {
+///                             "type": "string"
+///                         }
+///                     }
+///                 },
+///                 {
+///                     "type": "array",
 ///                     "items": {
 ///                         "type": "string"
 ///                     }
 ///                 }
 ///             ],
-///             "description": "A type array."
+///             "description": "A type array: items for the array, properties for the object."
 ///         },
 ///         "amount": {
 ///             "oneOf": [
@@ -207,9 +240,62 @@
 ///             "discriminator": {
 ///                 "propertyName": "kind"
 ///             }
+///         },
+///         "urls": {
+///             "type": "object",
+///             "description": "A map of a union.",
+///             "additionalProperties": {
+///                 "$ref": "#/components/schemas/Url"
+///             }
+///         },
+///         "link": {
+///             "oneOf": [
+///                 {
+///                     "$ref": "#/components/schemas/Url"
+///                 },
+///                 {
+///                     "type": "boolean"
+///                 }
+///             ],
+///             "description": "A reference to a mixed union takes its kinds' arms."
+///         },
+///         "herd": {
+///             "oneOf": [
+///                 {
+///                     "$ref": "#/components/schemas/Pets"
+///                 },
+///                 {
+///                     "$ref": "#/components/schemas/Animal"
+///                 },
+///                 {
+///                     "$ref": "#/components/schemas/Level"
+///                 }
+///             ],
+///             "description": "A typedef by its type, an alias by its target, an enum by its values."
+///         },
+///         "target": {
+///             "oneOf": [
+///                 {
+///                     "$ref": "#/components/schemas/Url"
+///                 },
+///                 {
+///                     "$ref": "#/components/schemas/Pet"
+///                 }
+///             ],
+///             "description": "A discriminated mixed union is not spread.",
+///             "discriminator": {
+///                 "propertyName": "kind",
+///                 "mapping": {
+///                     "url": "#/components/schemas/Url",
+///                     "pet": "#/components/schemas/Pet"
+///                 }
+///             }
 ///         }
 ///     },
-///     "type": "object"
+///     "type": "object",
+///     "required": [
+///         "url"
+///     ]
 /// }
 /// ```
 library;
@@ -225,7 +311,7 @@ abstract class Request with _$Request {
   @jsonSerializable
   const factory Request({
     /// url
-    @JsonKey(name: Request.urlKey_) Url? url,
+    @JsonKey(name: Request.urlKey_) required Url url,
 
     /// owner
     @JsonKey(name: Request.ownerKey_) RequestOwner? owner,
@@ -242,6 +328,14 @@ abstract class Request with _$Request {
     /// exec
     @JsonKey(name: Request.execKey_) RequestExec? exec,
 
+    /// objectOrString
+    @JsonKey(name: Request.objectOrStringKey_)
+    RequestObjectOrString? objectOrString,
+
+    /// objectOrArray
+    @JsonKey(name: Request.objectOrArrayKey_)
+    RequestObjectOrArray? objectOrArray,
+
     /// amount
     @JsonKey(name: Request.amountKey_) RequestAmount? amount,
 
@@ -256,6 +350,18 @@ abstract class Request with _$Request {
 
     /// animal
     @JsonKey(name: Request.animalKey_) RequestAnimal? animal,
+
+    /// urls
+    @JsonKey(name: Request.urlsKey_) Map<String, Url>? urls,
+
+    /// link
+    @JsonKey(name: Request.linkKey_) RequestLink? link,
+
+    /// herd
+    @JsonKey(name: Request.herdKey_) PetsOrAnimalOrLevelUnion? herd,
+
+    /// target
+    @JsonKey(name: Request.targetKey_) UrlOrpetUnion? target,
   }) = _Request;
 
   factory Request.fromJson(Map<String, dynamic> json) =>
@@ -273,6 +379,10 @@ abstract class Request with _$Request {
 
   static const String execKey_ = 'exec';
 
+  static const String objectOrStringKey_ = 'objectOrString';
+
+  static const String objectOrArrayKey_ = 'objectOrArray';
+
   static const String amountKey_ = 'amount';
 
   static const String whenKey_ = 'when';
@@ -282,4 +392,12 @@ abstract class Request with _$Request {
   static const String companionKey_ = 'companion';
 
   static const String animalKey_ = 'animal';
+
+  static const String urlsKey_ = 'urls';
+
+  static const String linkKey_ = 'link';
+
+  static const String herdKey_ = 'herd';
+
+  static const String targetKey_ = 'target';
 }

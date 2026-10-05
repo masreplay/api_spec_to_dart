@@ -39,18 +39,23 @@ class GenerationContext {
   /// `X-Output`); references and strategies both read it.
   final Map<String, String> componentClassNames = {};
 
-  /// [className] of a model with `model.class_prefix` prepended as written.
-  /// A name built from a prefixed class has it already, maybe recased
-  /// (`HTTPItem_info` → HttpItemInfo → HTTPItemInfo).
-  String withClassPrefix(String className) {
-    final prefix = config.model.classPrefix ?? '';
-    final name = className.toLowerCase().startsWith(prefix.toLowerCase())
-        ? className.substring(prefix.length)
-        // Prefixed, a reserved word needs no escape: `$Function` →
-        // PostmanFunction.
-        : className.replaceFirst(RegExp(r'^\$'), '');
-    return '$prefix$name';
-  }
+  String get _classPrefix => config.model.classPrefix ?? '';
+
+  /// [className] (a renamed model name) with `model.class_prefix` prepended.
+  /// Called once where a model name is made; names derived from a model's
+  /// class name start from [unprefixed].
+  String withClassPrefix(String className) => _classPrefix.isEmpty
+      ? className
+      // Prefixed, a reserved word needs no escape: `$Function` →
+      // PostmanFunction.
+      : '$_classPrefix${className.replaceFirst(RegExp(r'^\$'), '')}';
+
+  /// A model's [className] without the prefix [withClassPrefix] gave it:
+  /// what names derived from it start from (`PostmanItem` → `Item_info`).
+  String unprefixed(String className) =>
+      _classPrefix.isNotEmpty && className.startsWith(_classPrefix)
+      ? className.substring(_classPrefix.length)
+      : className;
 
   /// Adds a component model. The first model for a file name wins; a
   /// different model mapping to the same name is reported, not silently
@@ -72,12 +77,14 @@ class GenerationContext {
   }
 
   /// Adds an inline model (object, enum, union, query class) as [className],
-  /// or as `${className}2`, `3`... when a different model already uses the
-  /// name. Returns the class name used.
+  /// reusing a model of that name with the same code (docs aside). When a
+  /// different model has the name, it is [orElse] (a title gives way to the
+  /// context), else `${className}2`, `3`... Returns the class name used.
   String registerInlineModel(
     String className,
-    Library Function(String className) build,
-  ) {
+    Library Function(String className) build, {
+    String? orElse,
+  }) {
     for (var i = 1; ; i++) {
       final name = i == 1 ? className : '$className$i';
       final before = {..._models.keys};
@@ -87,15 +94,23 @@ class GenerationContext {
         _models[library.name!] = library;
         return name;
       }
-      if (existing != null && _source(existing) == _source(library)) {
+      if (existing != null && _code(existing) == _code(library)) {
         return name;
       }
       // Drop the nested models this attempt registered under its name.
       _models.removeWhere((key, _) => !before.contains(key));
+      if (orElse != null && orElse != className) {
+        return registerInlineModel(orElse, build);
+      }
     }
   }
 
   String _source(Library library) => '${library.accept(DartEmitter())}';
+
+  /// [library]'s source without its doc comment (the schema it came from:
+  /// a `oneOf` and an `anyOf` of the same variants are one model).
+  String _code(Library library) =>
+      _source(library.rebuild((b) => b.docs.clear()));
 
   final List<Library> _apiClients = <Library>[];
   List<Library> get apiClients => _apiClients;

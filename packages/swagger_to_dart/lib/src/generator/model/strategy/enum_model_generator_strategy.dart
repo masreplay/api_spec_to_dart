@@ -37,10 +37,13 @@ class EnumModelGeneratorStrategy
     extends ModelGeneratorStrategy<MapEntry<String, OpenApiSchemas>> {
   const EnumModelGeneratorStrategy(super.context);
 
+  /// [name] is the class name as is (inline enums are named before they are
+  /// built); components look theirs up.
   @override
-  Library build(MapEntry<String, OpenApiSchemas> model) {
+  Library build(MapEntry<String, OpenApiSchemas> model, {String? name}) {
     final prefixes = context.config.model.removeModelPrefixes;
     final className =
+        name ??
         context.componentClassNames[model.key] ??
         Renaming.instance.renameClass(
           model.key,

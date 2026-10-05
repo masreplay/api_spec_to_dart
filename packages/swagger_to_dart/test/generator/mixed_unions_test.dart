@@ -4,11 +4,14 @@ import 'package:test/test.dart';
 import '../support/fixtures.dart';
 
 /// Generated files for components [schemas] (a `Holder` model wraps
-/// [property] when given) and an operation taking [parameter].
+/// [property] when given), an operation taking [parameter] and an operation
+/// per [responses] entry (operation id → response schema).
 Map<String, String> _render(
   Map<String, dynamic> schemas, {
   Map<String, dynamic>? property,
   Map<String, dynamic>? parameter,
+  Map<String, Map<String, dynamic>> responses = const {},
+  SwaggerToDart config = const SwaggerToDart(),
 }) => renderSpec({
   'openapi': '3.1.0',
   'info': {'title': 't', 'version': '1'},
@@ -25,6 +28,20 @@ Map<String, String> _render(
           },
         },
       },
+    for (final MapEntry(key: operationId, value: schema) in responses.entries)
+      '/$operationId': {
+        'get': {
+          'operationId': operationId,
+          'responses': {
+            '200': {
+              'description': 'ok',
+              'content': {
+                'application/json': {'schema': schema},
+              },
+            },
+          },
+        },
+      },
   },
   'components': {
     'schemas': {
@@ -36,7 +53,28 @@ Map<String, String> _render(
         },
     },
   },
-}).files;
+}, config: config).files;
+
+/// A string | object union component.
+const _url = {
+  'oneOf': [
+    {'type': 'string'},
+    {
+      'type': 'object',
+      'properties': {
+        'raw': {'type': 'string'},
+      },
+    },
+  ],
+};
+
+const _pet = {
+  'type': 'object',
+  'required': ['name'],
+  'properties': {
+    'name': {'type': 'string'},
+  },
+};
 
 void main() {
   test('oneOf of string and object is a sealed union with kind dispatch', () {
@@ -146,7 +184,14 @@ void main() {
       union,
       contains("'file' => FormParameterFile(FormParameterFileValue.fromJson"),
     );
-    expect(union, contains("{...value.toJson(), 'type': 'text'}"));
+    // The `const` property is optional: without it (or with another value)
+    // the keys decide, and each model writes its own value back.
+    expect(union, contains('_ => _fromKeys(json)'));
+    expect(
+      union,
+      contains('static FormParameter _fromKeys(Map<String, dynamic> json) {'),
+    );
+    expect(union, isNot(contains('...value.toJson()')));
   });
 
   test('integers merge into number; primitive-only mixes stay dynamic', () {
@@ -294,5 +339,265 @@ void main() {
       files['api_client/default_client.dart'],
       contains('@Body() required dynamic requestBody'),
     );
+  });
+
+  test('a type array gives each variant only its own kind\'s keywords', () {
+    final object = _render(
+      {},
+      property: {
+        'type': ['object', 'string'],
+        'properties': {
+          'a': {'type': 'string'},
+        },
+      },
+    )['models/holder_value.dart']!;
+    final list = _render(
+      {},
+      property: {
+        'type': ['object', 'array'],
+        'items': {'type': 'string'},
+        'properties': {
+          'a': {'type': 'string'},
+        },
+      },
+    )['models/holder_value.dart']!;
+
+    expect(object, contains('String() => HolderValueString(json)'));
+    expect(object, contains('HolderValueObjectValue.fromJson(json)'));
+    expect(object, isNot(contains('String.fromJson')));
+    expect(
+      list,
+      contains('const factory HolderValue.list(List<String> value)'),
+    );
+    expect(list, contains('HolderValueObjectValue.fromJson(json)'));
+    expect(
+      list,
+      contains(
+        'const factory HolderValue.object(HolderValueObjectValue value)',
+      ),
+    );
+  });
+
+  test('a list or map response of a mixed union is left untyped', () {
+    // retrofit casts list items and map values to Map<String, dynamic>
+    // before fromJson, which a string variant does not survive.
+    final client = _render(
+      {
+        'Url': _url,
+        'Urls': {
+          'type': 'array',
+          'items': {r'$ref': '#/components/schemas/Url'},
+        },
+      },
+      responses: {
+        'listUrls': {
+          'type': 'array',
+          'items': {r'$ref': '#/components/schemas/Url'},
+        },
+        'urlMap': {
+          'type': 'object',
+          'additionalProperties': {r'$ref': '#/components/schemas/Url'},
+        },
+        'urlTypedef': {r'$ref': '#/components/schemas/Urls'},
+        'url': {r'$ref': '#/components/schemas/Url'},
+      },
+    )['api_client/default_client.dart']!;
+
+    expect(client, contains('Future<HttpResponse<List<Object?>>> listUrls('));
+    expect(
+      client,
+      contains('Future<HttpResponse<Map<String, Object?>>> urlMap('),
+    );
+    expect(client, contains('Future<HttpResponse<List<Object?>>> urlTypedef('));
+    expect(client, contains('Future<HttpResponse<Url>> url('));
+  });
+
+  test('variants of one primitive kind are that type, components typedefs', () {
+    final files = _render(
+      {
+        'Method': {
+          'anyOf': [
+            {
+              'type': 'string',
+              'enum': ['GET', 'POST'],
+            },
+            {'type': 'string'},
+          ],
+        },
+        'Scalar': {
+          'oneOf': [
+            {'type': 'string'},
+            {'type': 'integer'},
+          ],
+        },
+        'Amount': {
+          'oneOf': [
+            {'type': 'integer'},
+            {'type': 'number'},
+          ],
+        },
+      },
+      property: {
+        'anyOf': [
+          {
+            'type': 'string',
+            'enum': ['a'],
+          },
+          {'type': 'string'},
+        ],
+      },
+    );
+
+    expect(files['models/holder.dart'], contains('String? value'));
+    expect(files['models/method.dart'], contains('typedef Method = String;'));
+    expect(files['models/scalar.dart'], contains('typedef Scalar = dynamic;'));
+    expect(files['models/amount.dart'], contains('typedef Amount = double;'));
+  });
+
+  test('a oneOf and an anyOf of the same variants are one class', () {
+    final files = _render(
+      {
+        'Pet': _pet,
+        'Holder': {
+          'type': 'object',
+          'properties': {
+            'a': {
+              'type': 'array',
+              'items': {
+                'title': 'Items',
+                'oneOf': [
+                  {r'$ref': '#/components/schemas/Pet'},
+                  {'type': 'string'},
+                ],
+              },
+            },
+            'b': {
+              'type': 'array',
+              'items': {
+                'title': 'Items',
+                'anyOf': [
+                  {r'$ref': '#/components/schemas/Pet'},
+                  {'type': 'string'},
+                ],
+              },
+            },
+          },
+        },
+      },
+    );
+
+    expect(files['models/holder.dart'], contains('List<Items>? a'));
+    expect(files['models/holder.dart'], contains('List<Items>? b'));
+    expect(files.keys, isNot(contains('models/items2.dart')));
+  });
+
+  test('a union titled like a core type is named by its references', () {
+    final files = _render(
+      {'Url': _url, 'Pet': _pet},
+      property: {
+        'title': 'List',
+        'oneOf': [
+          {r'$ref': '#/components/schemas/Pet'},
+          {r'$ref': '#/components/schemas/Url'},
+        ],
+      },
+    );
+
+    expect(files['models/holder.dart'], contains('PetOrUrlUnion? value'));
+    expect(files.keys, isNot(contains('models/list.dart')));
+  });
+
+  group('a reference variant is classified by its target', () {
+    test('a mixed union takes the arms of its kinds', () {
+      final union = _render(
+        {'Url': _url},
+        property: {
+          'oneOf': [
+            {r'$ref': '#/components/schemas/Url'},
+            {'type': 'boolean'},
+          ],
+        },
+      )['models/holder_value.dart']!;
+
+      expect(union, contains('String() => HolderValueUrl(Url.fromJson(json))'));
+      expect(union, contains('bool() => HolderValueBoolean(json)'));
+      expect(
+        union,
+        contains(
+          'Map<String, dynamic>() => HolderValueUrl(Url.fromJson(json))',
+        ),
+      );
+    });
+
+    test('a typedef by its type, an alias by its target', () {
+      final union = _render(
+        {
+          'Pet': _pet,
+          'Pets': {
+            'type': 'array',
+            'items': {r'$ref': '#/components/schemas/Pet'},
+          },
+          'Animal': {r'$ref': '#/components/schemas/Pet'},
+        },
+        property: {
+          'oneOf': [
+            {r'$ref': '#/components/schemas/Pets'},
+            {r'$ref': '#/components/schemas/Animal'},
+            {'type': 'string'},
+          ],
+        },
+      )['models/holder_value.dart']!;
+
+      expect(union, contains('List() => _\$HolderValuePetsFromJson('));
+      expect(union, isNot(contains('Pets.fromJson')));
+      expect(
+        union,
+        contains('Map<String, dynamic>() => HolderValueAnimal(Animal.fromJson'),
+      );
+    });
+
+    test('an enum without a type by its values', () {
+      final union = _render(
+        {
+          'Level': {
+            'enum': ['low', 'high'],
+          },
+        },
+        property: {
+          'oneOf': [
+            {r'$ref': '#/components/schemas/Level'},
+            {
+              'type': 'array',
+              'items': {'type': 'string'},
+            },
+          ],
+        },
+      )['models/holder_value.dart']!;
+
+      expect(union, contains('String() => _\$HolderValueLevelFromJson('));
+      expect(union, isNot(contains('Map<String, dynamic>()')));
+    });
+
+    test('a discriminated mixed union is not spread', () {
+      final union = _render(
+        {'Url': _url, 'Pet': _pet},
+        property: {
+          'oneOf': [
+            {r'$ref': '#/components/schemas/Url'},
+            {r'$ref': '#/components/schemas/Pet'},
+          ],
+          'discriminator': {'propertyName': 'kind'},
+        },
+      )['models/url_or_pet_union.dart']!;
+
+      expect(
+        union,
+        contains("'Url' => UrlOrPetUnionUrl(Url.fromJson(json))"),
+      );
+      expect(union, contains("{...value.toJson(), 'kind': 'Pet'}"));
+      // Url's JSON is not always a map: the tag goes into maps only.
+      expect(union, isNot(contains("{...value.toJson(), 'kind': 'Url'}")));
+      expect(union, contains("{...json, 'kind': 'Url'}"));
+    });
   });
 }

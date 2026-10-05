@@ -174,14 +174,32 @@ class OpenApiSchemaJsonConverter
 /// becomes.
 const _outerKeys = {'title', 'description', 'default'};
 
+/// Keywords of one JSON kind, given only to the `oneOf` variant of that kind.
+const _arrayKeywords = {
+  'items', 'prefixItems', 'minItems', 'maxItems', 'uniqueItems', //
+};
+const _objectKeywords = {
+  'properties', 'required', 'additionalProperties', 'patternProperties', //
+  'minProperties', 'maxProperties',
+};
+
+/// Whether the `oneOf` variant of [type] a type array becomes keeps [key].
+bool _variantKeeps(Object? type, String key) =>
+    !_outerKeys.contains(key) &&
+    (!_arrayKeywords.contains(key) || type == 'array') &&
+    (!_objectKeywords.contains(key) || type == 'object') &&
+    // Values of a list or an object are no enum members.
+    (!const {'enum', 'const'}.contains(key) ||
+        (type != 'array' && type != 'object'));
+
 /// Rewrites OpenAPI 3.1 forms into the shapes the models parse, returning a
 /// new map (the input is shared with the `@Extras` metadata, so it must not
 /// change):
 /// - `type: [T, "null"]` → `type: T, nullable: true`;
 /// - several non-null types with an `array` or `object` → a `oneOf` of one
-///   schema per type, each with the other keywords (`items`,
-///   `properties`, ...), which is a union; primitives only → no type, i.e.
-///   `dynamic`;
+///   schema per type, each with the keywords of its kind (`items` for the
+///   array, `properties` for the object, ...), which is a union; primitives
+///   only → no type, i.e. `dynamic`;
 /// - with [unwrapSingleAllOf], an `allOf` with a single entry → that entry,
 ///   keeping the outer keys (`nullable`, `default`, `description`, ...).
 ///   Components keep their `allOf`: it is merged with their own properties.
@@ -208,7 +226,7 @@ Map<String, dynamic> normalizeSchemaJson(
           for (final type in concrete)
             {
               for (final MapEntry(:key, :value) in rest.entries)
-                if (!_outerKeys.contains(key)) key: value,
+                if (_variantKeeps(type, key)) key: value,
               'type': type,
             },
         ],

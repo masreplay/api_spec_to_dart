@@ -65,12 +65,38 @@ sealed class FormParameter {
       switch (json['type']) {
         'text' => FormParameterText(FormParameterTextValue.fromJson(json)),
         'file' => FormParameterFile(FormParameterFileValue.fromJson(json)),
-        _ => throw ArgumentError.value(
-          json['type'],
-          'type',
-          'Unknown FormParameter',
-        ),
+        _ => _fromKeys(json),
       };
+
+  static FormParameter _fromKeys(Map<String, dynamic> json) {
+    // No discriminator value we know: the variant whose required keys are all
+    // present and that declares the most of the payload's keys wins (the
+    // earlier one on a tie).
+    const variants = <({Set<String> required, Set<String> declared})>[
+      (required: {'key'}, declared: {'key', 'value', 'type'}),
+      (required: {'key'}, declared: {'key', 'src', 'type'}),
+    ];
+    var best = -1;
+    var bestScore = -1;
+    for (var i = 0; i < variants.length; i++) {
+      final variant = variants[i];
+      if (!variant.required.every(json.containsKey)) continue;
+      final score = json.keys.where(variant.declared.contains).length;
+      if (score > bestScore) {
+        best = i;
+        bestScore = score;
+      }
+    }
+    return switch (best) {
+      0 => FormParameterText(FormParameterTextValue.fromJson(json)),
+      1 => FormParameterFile(FormParameterFileValue.fromJson(json)),
+      _ => throw ArgumentError.value(
+        json,
+        'json',
+        'No FormParameter variant matches',
+      ),
+    };
+  }
 
   Map<String, dynamic> toJson();
 }
@@ -81,7 +107,7 @@ final class FormParameterText extends FormParameter {
   final FormParameterTextValue value;
 
   @override
-  Map<String, dynamic> toJson() => {...value.toJson(), 'type': 'text'};
+  Map<String, dynamic> toJson() => value.toJson();
 
   @override
   bool operator ==(Object other) =>
@@ -100,7 +126,7 @@ final class FormParameterFile extends FormParameter {
   final FormParameterFileValue value;
 
   @override
-  Map<String, dynamic> toJson() => {...value.toJson(), 'type': 'file'};
+  Map<String, dynamic> toJson() => value.toJson();
 
   @override
   bool operator ==(Object other) =>

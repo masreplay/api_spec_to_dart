@@ -20,6 +20,22 @@
           }
         }
       }
+    },
+    "/users": {
+      "get": {
+        "tags": ["items"],
+        "operationId": "listUsers",
+        "responses": {
+          "200": {
+            "description": "A generic whose argument is a core type: List is not prefixed",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/BaseResponse_list_User__" }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -34,7 +50,8 @@
           "url": { "oneOf": [{ "type": "string" }, { "type": "array", "items": { "type": "string" } }] },
           "auth": { "$ref": "#/components/schemas/Auth" },
           "run": { "$ref": "#/components/schemas/Function" },
-          "children": { "$ref": "#/components/schemas/Items" }
+          "children": { "$ref": "#/components/schemas/Items" },
+          "thing": { "$ref": "#/components/schemas/PostmanThing" }
         }
       },
       "Items": { "type": "array", "items": { "$ref": "#/components/schemas/Item" } },
@@ -56,6 +73,23 @@
         "description": "A name Dart reserves; prefixed, it needs no escape.",
         "type": "object",
         "properties": { "script": { "type": "string" } }
+      },
+      "PostmanThing": {
+        "description": "A name that starts with the prefix still gets it, once.",
+        "type": "object",
+        "properties": { "v": { "type": "string" } }
+      },
+      "BaseResponse_list_User__": {
+        "title": "BaseResponse[list[User]]",
+        "type": "object",
+        "required": ["data"],
+        "properties": {
+          "data": { "type": "array", "items": { "$ref": "#/components/schemas/User" } }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": { "id": { "type": "integer" } }
       }
     }
   }

@@ -478,6 +478,7 @@ class ApiClientGenerator {
             ),
           ),
           name: name,
+          inlineModels: false,
         ),
       );
 
@@ -564,11 +565,15 @@ class ApiClientGenerator {
           (e) => _isJsonContent(e.key, e.value.schema),
         )
         case final json?) {
-      final type = context.extension.typeConverter.get(
-        json.value.schema,
-        className: className,
-        contextName: contextName,
-      );
+      // retrofit casts list items and map values to a map before fromJson,
+      // which a mixed union's other kinds do not survive.
+      final type =
+          UnionModelStrategy(context).untypedCollection(json.value.schema) ??
+          context.extension.typeConverter.get(
+            json.value.schema,
+            className: className,
+            contextName: contextName,
+          );
       return (
         type: refer('Future<HttpResponse<$type>>'),
         isBinaryResponse: false,

@@ -38,4 +38,28 @@ abstract class ItemsClient {
       },
     },
   });
+  @GET('/users')
+  Future<HttpResponse<PostmanBaseResponse<List<PostmanUser>>>> listUsers({
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['items'],
+      'operationId': 'listUsers',
+      'responses': {
+        '200': {
+          'description':
+              'A generic whose argument is a core type: List is not prefixed',
+          'content': {
+            'application/json': {
+              'schema': {
+                '\$ref': '#/components/schemas/BaseResponse_list_User__',
+              },
+            },
+          },
+        },
+      },
+    },
+  });
 }

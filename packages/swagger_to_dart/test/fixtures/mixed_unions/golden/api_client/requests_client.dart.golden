@@ -97,4 +97,54 @@ abstract class RequestsClient {
       },
     },
   });
+  @GET('/urls')
+  Future<HttpResponse<List<Object?>>> listUrls({
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['requests'],
+      'operationId': 'listUrls',
+      'responses': {
+        '200': {
+          'description':
+              'A list of a union: retrofit casts items to maps, so untyped',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'array',
+                'items': {'\$ref': '#/components/schemas/Url'},
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+  @GET('/url-map')
+  Future<HttpResponse<Map<String, Object?>>> urlMap({
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['requests'],
+      'operationId': 'urlMap',
+      'responses': {
+        '200': {
+          'description':
+              'A map of a union: retrofit casts values to maps, so untyped',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'additionalProperties': {'\$ref': '#/components/schemas/Url'},
+              },
+            },
+          },
+        },
+      },
+    },
+  });
 }
