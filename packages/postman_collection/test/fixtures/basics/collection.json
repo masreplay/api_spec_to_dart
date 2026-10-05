@@ -135,6 +135,15 @@
       ]
     },
     {
+      "name": "API root",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "{{baseUrl}}", "host": ["{{baseUrl}}"] }
+      },
+      "response": []
+    },
+    {
       "name": "Health",
       "request": {
         "method": "GET",

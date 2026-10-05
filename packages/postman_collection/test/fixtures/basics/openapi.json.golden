@@ -296,6 +296,17 @@
         }
       }
     },
+    "/": {
+      "get": {
+        "summary": "API root",
+        "operationId": "apiRoot",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
     "/health": {
       "get": {
         "summary": "Health",
