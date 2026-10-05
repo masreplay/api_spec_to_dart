@@ -1,0 +1,35 @@
+/// GetUserResponseBadge
+///
+/// ```json
+/// {
+///     "properties": {
+///         "label": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object",
+///     "title": "List",
+///     "description": "Titled like dart:core's List: named by context instead."
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'get_user_response_badge.freezed.dart';
+part 'get_user_response_badge.g.dart';
+
+@freezed
+abstract class GetUserResponseBadge with _$GetUserResponseBadge {
+  const GetUserResponseBadge._();
+
+  @jsonSerializable
+  const factory GetUserResponseBadge({
+    /// label
+    @JsonKey(name: GetUserResponseBadge.labelKey_) String? label,
+  }) = _GetUserResponseBadge;
+
+  factory GetUserResponseBadge.fromJson(Map<String, dynamic> json) =>
+      _$GetUserResponseBadgeFromJson(json);
+
+  static const String labelKey_ = 'label';
+}

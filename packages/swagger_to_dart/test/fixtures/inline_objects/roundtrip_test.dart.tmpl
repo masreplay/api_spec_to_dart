@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart' show MultipartFile;
 import 'package:swagger_to_dart_e2e/gen/inline_objects/models/models.dart';
 import 'package:test/test.dart';
 
@@ -20,6 +21,9 @@ void main() {
       'extra': {
         'any': [1, 'two'],
       },
+      'badge': {'label': 'gold'},
+      'primary': {'a': 'x'},
+      'secondary': {'b': 2},
     };
 
     final user = GetUserResponse.fromJson(json);
@@ -68,5 +72,22 @@ void main() {
       500,
     );
     expect(ErrorResponse.fromJson({'code': 'E1'}).code, 'E1');
+    // Titled `List` and `Response`, and a title another model took: named by
+    // context.
+    expect(
+      GetUserResponseBadge.fromJson({'label': 'gold'}),
+      const GetUserResponseBadge(label: 'gold'),
+    );
+    expect(GetStatusResponse.fromJson({'ok': true}).ok, isTrue);
+    expect(Thing.fromJson({'a': 'x'}).a, 'x');
+    expect(GetUserResponseSecondary.fromJson({'b': 2}).b, 2);
+  });
+
+  test('an inline multipart body keeps its file for the form', () {
+    final file = MultipartFile.fromString('avatar', filename: 'a.png');
+    final json = UploadAvatarBody(file: file, caption: 'me').toJson();
+
+    expect(json['file'], same(file));
+    expect(json['caption'], 'me');
   });
 }

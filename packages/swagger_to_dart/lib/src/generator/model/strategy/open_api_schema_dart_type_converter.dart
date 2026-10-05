@@ -3,6 +3,42 @@ import 'package:swagger_to_dart/src/code/string.dart';
 import 'package:swagger_to_dart/src/generator/model/strategy/generic_parser_factory.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
+/// Types a generic title can name that are no generated model, so they get
+/// no `model.class_prefix` (`BaseResponse[list[User]]`).
+const _coreTypes = {
+  'List', 'Map', 'Set', 'Iterable', 'DateTime', 'String', 'int', 'double', //
+  'num', 'bool', 'Object', 'dynamic', 'Uri',
+};
+
+/// Names an inline schema's title must not give a class: generated code and
+/// the libraries it imports (dart:core, dio, json_annotation, freezed,
+/// retrofit) use them, so the class would shadow them or clash.
+const _reservedTypeNames = {
+  // dart:core
+  'BigInt', 'Comparable', 'DateTime', 'Deprecated', 'Duration', 'Enum', //
+  'Error', 'Exception', 'Expando', 'Function', 'Future', 'Invocation',
+  'Iterable', 'Iterator', 'List', 'Map', 'MapEntry', 'Match', 'Never',
+  'Null', 'Object', 'Pattern', 'Record', 'RegExp', 'Set', 'Sink',
+  'StackTrace', 'Stream', 'String', 'StringBuffer', 'Symbol', 'Type', 'Uri',
+  'ArgumentError', 'FormatException', 'RangeError', 'StateError',
+  'TypeError', 'UnsupportedError',
+  // dio
+  'BackgroundTransformer', 'BaseOptions', 'CancelToken', 'Dio', 'DioError',
+  'DioException', 'DioExceptionType', 'DioMediaType', 'FormData', 'Headers',
+  'HttpClientAdapter', 'Interceptor', 'Interceptors', 'InterceptorsWrapper',
+  'ListFormat', 'ListParam', 'LogInterceptor', 'MultipartFile', 'Options',
+  'ProgressCallback', 'QueuedInterceptor', 'RedirectRecord',
+  'RequestOptions', 'Response', 'ResponseBody', 'ResponseType',
+  'Transformer',
+  // json_annotation, freezed_annotation, collection
+  'Default', 'DeepCollectionEquality', 'Freezed', 'JsonConverter',
+  'JsonEnum', 'JsonKey', 'JsonLiteral', 'JsonSerializable', 'JsonValue',
+  // retrofit
+  'Body', 'CancelRequest', 'Extra', 'Extras', 'Field', 'FormUrlEncoded',
+  'Header', 'HttpResponse', 'Method', 'MultiPart', 'ParseErrorLogger', 'Part',
+  'Path', 'Queries', 'Query', 'ReceiveProgress', 'RestApi', 'SendProgress',
+};
+
 class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
   const OpenApiSchemaDartTypeConverter(
     super.context, {
@@ -13,6 +49,11 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
   /// retrofit's encoding of a model in `@Query`/`@Header` is undefined, so
   /// they stay `Map<String, dynamic>`.
   final bool inlineModels;
+
+  /// Whether a title must not name the class [className]: generated code
+  /// or a library it imports uses that name.
+  static bool isReservedTypeName(String className) =>
+      _reservedTypeNames.contains(className);
 
   /// Dart type for [schema]. [contextName] (e.g. `Pet_status`,
   /// `listPets_sort`) names inline enums that have no title.
@@ -105,12 +146,22 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
     );
     final genericTypes = _splitGenerics(genericsContent);
 
-    final prefixes = context.config.model.removeModelPrefixes;
     final processedGenerics = genericTypes
         .map((type) => _processGenericTitle(type.trim()))
         .join(', ');
 
-    return '${context.withClassPrefix(Renaming.instance.renameClass(base, removePrefixes: prefixes.isNotEmpty ? prefixes : null))}<$processedGenerics>';
+    return '${_modelType(base)}<$processedGenerics>';
+  }
+
+  /// A title's class (`list` → List, `User` → PostmanUser): core types keep
+  /// their name, models get `model.class_prefix`.
+  String _modelType(String title) {
+    final prefixes = context.config.model.removeModelPrefixes;
+    final name = Renaming.instance.renameClass(
+      title,
+      removePrefixes: prefixes.isNotEmpty ? prefixes : null,
+    );
+    return _coreTypes.contains(name) ? name : context.withClassPrefix(name);
   }
 
   String _convertPrimitiveType(String type) {
@@ -134,13 +185,7 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
       case 'dict':
         return 'Map';
       default:
-        final prefixes = context.config.model.removeModelPrefixes;
-        return context.withClassPrefix(
-          Renaming.instance.renameClass(
-            type,
-            removePrefixes: prefixes.isNotEmpty ? prefixes : null,
-          ),
-        );
+        return _modelType(type);
     }
   }
 
@@ -193,7 +238,9 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
     registerReferences: () => UnionModelStrategy(context).registerOneOf(schema),
   );
 
-  /// The single non-null variant's type, a union (G2), or `dynamic`.
+  /// The single non-null variant's type, the one primitive type of all
+  /// variants (`anyOf: [enum, string]` is a `String`), a union (G2), or
+  /// `dynamic`.
   String _union(
     OpenApiSchema schema,
     List<OpenApiSchema> variants,
@@ -213,19 +260,22 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
     }
 
     final union = UnionModelStrategy(context);
+    if (union.primitiveType(schemas) case final type?) return type;
     if (union.unionVariants(schemas) == null) return 'dynamic';
     if (schemas.every((e) => e is OpenApiSchemaRef)) {
       return registerReferences();
     }
     if (!inlineModels) return 'dynamic';
+    final (:name, :orElse) = inlineModelNames(
+      schema.title,
+      contextName: contextName,
+      className: className,
+    );
     return union.registerInline(
       schemas,
       discriminator,
-      name: inlineModelName(
-        schema.title,
-        contextName: contextName,
-        className: className,
-      ),
+      name: name,
+      orElse: orElse,
       json: const OpenApiSchemaJsonConverter().toJson(schema),
     );
   }
@@ -251,6 +301,7 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
               enum_: values,
             ),
           ),
+          name: name,
         ),
       );
     }
@@ -351,27 +402,33 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
       ? contextName
       : '${contextName}_$suffix';
 
-  /// Class name of an inline model (object or union): its [title], unless a
-  /// component has that class name, else the place it is used
-  /// ([contextName], `getUser_response` → GetUserResponse).
-  String inlineModelName(
+  /// Class names of an inline model (object or union): its [title], unless a
+  /// component or a type generated code uses has that name, else the place it
+  /// is used ([contextName], `getUser_response` → GetUserResponse). [orElse]
+  /// (the context) takes over when another inline model has the title.
+  ({String name, String? orElse}) inlineModelNames(
     String? title, {
     required String? contextName,
     required String className,
   }) {
-    final name = title == null
+    final byContext = contextName == null
+        ? null
+        : context.withClassPrefix(Renaming.instance.renameClass(contextName));
+    final byTitle = title == null
         ? null
         : context.withClassPrefix(Renaming.instance.renameClass(title));
-    if (name != null && !context.componentClassNames.containsValue(name)) {
-      return name;
+    if (byTitle != null &&
+        !context.componentClassNames.containsValue(byTitle) &&
+        !_reservedTypeNames.contains(byTitle)) {
+      return (name: byTitle, orElse: byContext);
     }
-    if (contextName == null) {
+    if (byContext == null) {
       throw ArgumentError(
         'swagger_to_dart: cannot name an inline schema in $className; give '
         'it a title.',
       );
     }
-    return context.withClassPrefix(Renaming.instance.renameClass(contextName));
+    return (name: byContext, orElse: null);
   }
 
   /// Registers the model of an inline object schema and returns its class
@@ -381,12 +438,13 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
     required String className,
     required String? contextName,
   }) {
+    final (:name, :orElse) = inlineModelNames(
+      schema.title,
+      contextName: contextName,
+      className: className,
+    );
     return context.registerInlineModel(
-      inlineModelName(
-        schema.title,
-        contextName: contextName,
-        className: className,
-      ),
+      name,
       (name) => RegularModelGeneratorStrategy(context).build(
         MapEntry(
           name,
@@ -396,6 +454,7 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
         ),
         name: name,
       ),
+      orElse: orElse,
     );
   }
 
@@ -474,20 +533,27 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
   }
 
   /// Class name of an inline enum: its title, its parent's title, or the
-  /// place it is used ([contextName], e.g. `Pet_status` -> `PetStatus`).
+  /// place it is used ([contextName], e.g. `Pet_status` -> `PetStatus`). A
+  /// title naming a type generated code uses gives way to the context.
   String inlineEnumClassName(
     OpenApiSchemaType schema, {
     OpenApiSchema? parent,
     String? contextName,
   }) {
-    final name = schema.title ?? parent?.title ?? contextName;
+    String? named(String? name) => name == null
+        ? null
+        : context.withClassPrefix(Renaming.instance.renameEnum(name));
+    final byTitle = named(schema.title ?? parent?.title);
+    final name = byTitle != null && !_reservedTypeNames.contains(byTitle)
+        ? byTitle
+        : named(contextName) ?? byTitle;
     if (name == null) {
       throw ArgumentError(
         'swagger_to_dart: cannot name the inline enum ${schema.enum_}; '
         'give its schema a title.',
       );
     }
-    return context.withClassPrefix(Renaming.instance.renameEnum(name));
+    return name;
   }
 
   /// `Enum.member` for [value], honouring `model.enums` renames; null when the

@@ -14,6 +14,15 @@
 ///         },
 ///         "best": {
 ///             "$ref": "#/components/schemas/Animal"
+///         },
+///         "levels": {
+///             "$ref": "#/components/schemas/Levels"
+///         },
+///         "method": {
+///             "$ref": "#/components/schemas/Method"
+///         },
+///         "scalar": {
+///             "$ref": "#/components/schemas/Scalar"
 ///         }
 ///     },
 ///     "type": "object"
@@ -42,6 +51,15 @@ abstract class Owner with _$Owner {
 
     /// best
     @JsonKey(name: Owner.bestKey_) Animal? best,
+
+    /// levels
+    @JsonKey(name: Owner.levelsKey_) Levels? levels,
+
+    /// method
+    @JsonKey(name: Owner.methodKey_) Method? method,
+
+    /// scalar
+    @JsonKey(name: Owner.scalarKey_) Scalar? scalar,
   }) = _Owner;
 
   factory Owner.fromJson(Map<String, dynamic> json) => _$OwnerFromJson(json);
@@ -53,4 +71,10 @@ abstract class Owner with _$Owner {
   static const String idKey_ = 'id';
 
   static const String bestKey_ = 'best';
+
+  static const String levelsKey_ = 'levels';
+
+  static const String methodKey_ = 'method';
+
+  static const String scalarKey_ = 'scalar';
 }

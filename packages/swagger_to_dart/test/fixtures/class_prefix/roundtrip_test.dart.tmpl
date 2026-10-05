@@ -19,8 +19,10 @@ void main() {
           'auth': null,
           'run': null,
           'children': null,
+          'thing': null,
         },
       ],
+      'thing': {'v': 'x'},
     };
 
     final item = PostmanItem.fromJson(json);
@@ -29,11 +31,28 @@ void main() {
     expect(item.url, const PostmanItemUrl.list(['api', 'users']));
     expect(item.auth, isA<PostmanAuthBearer>());
     expect(item.run, const PostmanFunction(script: 'pm.test()'));
+    expect(item.thing, const PostmanPostmanThing(v: 'x'));
     final PostmanItems? children = item.children;
     expect(
       children?.single.url,
       const PostmanItemUrl.string('https://example.dev/users'),
     );
     expect(item.toJson(), json);
+  });
+
+  test('a generic of a core type keeps the core type unprefixed', () {
+    final response = PostmanBaseResponse<List<PostmanUser>>.fromJson(
+      {
+        'data': [
+          {'id': 1},
+        ],
+      },
+      (json) => [
+        for (final user in json! as List<dynamic>)
+          PostmanUser.fromJson(user as Map<String, dynamic>),
+      ],
+    );
+
+    expect(response.data.single.id, 1);
   });
 }

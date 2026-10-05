@@ -1,0 +1,112 @@
+/// PetsOrAnimalOrLevelUnion
+///
+/// ```json
+/// {
+///     "oneOf": [
+///         {
+///             "$ref": "#/components/schemas/Pets"
+///         },
+///         {
+///             "$ref": "#/components/schemas/Animal"
+///         },
+///         {
+///             "$ref": "#/components/schemas/Level"
+///         }
+///     ],
+///     "description": "A typedef by its type, an alias by its target, an enum by its values.",
+///     "runtimeType": "oneOf"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'pets_or_animal_or_level_union.g.dart';
+
+sealed class PetsOrAnimalOrLevelUnion {
+  const PetsOrAnimalOrLevelUnion();
+
+  const factory PetsOrAnimalOrLevelUnion.pets(Pets value) =
+      PetsOrAnimalOrLevelUnionPets;
+  const factory PetsOrAnimalOrLevelUnion.animal(Animal value) =
+      PetsOrAnimalOrLevelUnionAnimal;
+  const factory PetsOrAnimalOrLevelUnion.level(Level value) =
+      PetsOrAnimalOrLevelUnionLevel;
+
+  factory PetsOrAnimalOrLevelUnion.fromJson(Object? json) => switch (json) {
+    String() => _$PetsOrAnimalOrLevelUnionLevelFromJson({'value': json}),
+    List() => _$PetsOrAnimalOrLevelUnionPetsFromJson({'value': json}),
+    Map<String, dynamic>() => PetsOrAnimalOrLevelUnionAnimal(
+      Animal.fromJson(json),
+    ),
+    _ => throw ArgumentError.value(
+      json,
+      'json',
+      'No PetsOrAnimalOrLevelUnion variant matches',
+    ),
+  };
+
+  Object? toJson();
+}
+
+@jsonSerializable
+final class PetsOrAnimalOrLevelUnionPets extends PetsOrAnimalOrLevelUnion {
+  const PetsOrAnimalOrLevelUnionPets(this.value);
+
+  @JsonKey(name: 'value')
+  final Pets value;
+
+  @override
+  Object? toJson() => _$PetsOrAnimalOrLevelUnionPetsToJson(this)['value'];
+
+  @override
+  bool operator ==(Object other) =>
+      other is PetsOrAnimalOrLevelUnionPets &&
+      const DeepCollectionEquality().equals(other.value, value);
+
+  @override
+  int get hashCode => const DeepCollectionEquality().hash(value);
+
+  @override
+  String toString() => 'PetsOrAnimalOrLevelUnion.pets($value)';
+}
+
+final class PetsOrAnimalOrLevelUnionAnimal extends PetsOrAnimalOrLevelUnion {
+  const PetsOrAnimalOrLevelUnionAnimal(this.value);
+
+  final Animal value;
+
+  @override
+  Object? toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) =>
+      other is PetsOrAnimalOrLevelUnionAnimal && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'PetsOrAnimalOrLevelUnion.animal($value)';
+}
+
+@jsonSerializable
+final class PetsOrAnimalOrLevelUnionLevel extends PetsOrAnimalOrLevelUnion {
+  const PetsOrAnimalOrLevelUnionLevel(this.value);
+
+  @JsonKey(name: 'value')
+  final Level value;
+
+  @override
+  Object? toJson() => _$PetsOrAnimalOrLevelUnionLevelToJson(this)['value'];
+
+  @override
+  bool operator ==(Object other) =>
+      other is PetsOrAnimalOrLevelUnionLevel &&
+      const DeepCollectionEquality().equals(other.value, value);
+
+  @override
+  int get hashCode => const DeepCollectionEquality().hash(value);
+
+  @override
+  String toString() => 'PetsOrAnimalOrLevelUnion.level($value)';
+}

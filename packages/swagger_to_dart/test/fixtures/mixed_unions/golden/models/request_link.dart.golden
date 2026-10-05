@@ -1,0 +1,76 @@
+/// RequestLink
+///
+/// ```json
+/// {
+///     "oneOf": [
+///         {
+///             "$ref": "#/components/schemas/Url"
+///         },
+///         {
+///             "type": "boolean"
+///         }
+///     ],
+///     "description": "A reference to a mixed union takes its kinds' arms."
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+sealed class RequestLink {
+  const RequestLink();
+
+  const factory RequestLink.url(Url value) = RequestLinkUrl;
+  const factory RequestLink.boolean(bool value) = RequestLinkBoolean;
+
+  factory RequestLink.fromJson(Object? json) => switch (json) {
+    String() => RequestLinkUrl(Url.fromJson(json)),
+    bool() => RequestLinkBoolean(json),
+    Map<String, dynamic>() => RequestLinkUrl(Url.fromJson(json)),
+    _ => throw ArgumentError.value(
+      json,
+      'json',
+      'No RequestLink variant matches',
+    ),
+  };
+
+  Object? toJson();
+}
+
+final class RequestLinkUrl extends RequestLink {
+  const RequestLinkUrl(this.value);
+
+  final Url value;
+
+  @override
+  Object? toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) =>
+      other is RequestLinkUrl && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'RequestLink.url($value)';
+}
+
+final class RequestLinkBoolean extends RequestLink {
+  const RequestLinkBoolean(this.value);
+
+  final bool value;
+
+  @override
+  Object? toJson() => value;
+
+  @override
+  bool operator ==(Object other) =>
+      other is RequestLinkBoolean && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'RequestLink.boolean($value)';
+}

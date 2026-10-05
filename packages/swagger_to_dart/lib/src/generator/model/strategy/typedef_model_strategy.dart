@@ -7,21 +7,24 @@ const _coreTypes = {
   'Uri', 'dynamic', 'Object',
 };
 
-/// A component that is no object model (an array, a primitive, a map or a
-/// `$ref` alias) as `typedef Pets = List<Pet>;`.
+/// A component that is no object model (an array, a primitive, a map, a
+/// `$ref` alias, or a `oneOf`/`anyOf` that is no union) as
+/// `typedef Pets = List<Pet>;`.
 class TypedefModelStrategy
     extends ModelGeneratorStrategy<MapEntry<String, OpenApiSchemas>> {
   const TypedefModelStrategy(super.context);
 
-  /// Whether [schema] is such a component. `type: object` with neither
-  /// properties nor `additionalProperties` stays a (free-form) class.
+  /// Whether [schema] is such a component, once unions are ruled out.
+  /// `type: object` with neither properties nor `additionalProperties` stays
+  /// a (free-form) class.
   static bool accepts(OpenApiSchemas schema) =>
       (schema.properties?.isEmpty ?? true) &&
       schema.enum_ == null &&
-      schema.oneOf == null &&
-      schema.anyOf == null &&
       schema.allOf == null &&
       (schema.ref != null ||
+          // One primitive type (`anyOf: [enum, string]`), or `dynamic`.
+          schema.oneOf != null ||
+          schema.anyOf != null ||
           switch (schema.type) {
             null => false,
             'object' =>
@@ -35,11 +38,29 @@ class TypedefModelStrategy
     final className =
         context.componentClassNames[model.key] ??
         Renaming.instance.renameClass(model.key);
-    final dartType = context.extension.typeConverter.get(
-      const OpenApiSchemaJsonConverter().fromJson(model.value.toJson()),
-      className: className,
-      contextName: className,
-    );
+    final typeConverter = context.extension.typeConverter;
+    final base = context.unprefixed(className);
+    // Items and values are `${Typedef}Item`/`Value`, inline enums too, so
+    // the typedef keeps its own name.
+    final dartType = switch (const OpenApiSchemaJsonConverter().fromJson(
+      model.value.toJson(),
+    )) {
+      OpenApiSchemaType(
+        type: OpenApiSchemaVarType.array,
+        :final items?,
+      ) =>
+        'List<${typeConverter.get(items, className: className, contextName: '${base}_item')}>',
+      OpenApiSchemaType(
+        type: OpenApiSchemaVarType.object,
+        additionalProperties: final Map<String, dynamic> values,
+      ) =>
+        'Map<String, ${typeConverter.get(const OpenApiSchemaJsonConverter().fromJson(values), className: className, contextName: '${base}_value')}>',
+      final schema => typeConverter.get(
+        schema,
+        className: className,
+        contextName: '${base}_value',
+      ),
+    };
     // `exports.dart` only when the type uses it: an unused import is a
     // warning in the consumer's analysis.
     final usesExports = RegExp(

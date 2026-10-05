@@ -1,0 +1,53 @@
+/// BaseResponse_Pets_
+///
+/// ```json
+/// {
+///     "properties": {
+///         "data": {
+///             "$ref": "#/components/schemas/Pets"
+///         },
+///         "message": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "data",
+///         "message"
+///     ],
+///     "title": "BaseResponse[Pets]"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'base_response.freezed.dart';
+part 'base_response.g.dart';
+
+@Freezed(genericArgumentFactories: true)
+abstract class BaseResponse<T> with _$BaseResponse<T> {
+  const BaseResponse._();
+
+  @JsonSerializable(
+    converters: jsonSerializableConverters,
+    genericArgumentFactories: true,
+    createFieldMap: true,
+    explicitToJson: true,
+  )
+  const factory BaseResponse({
+    /// data
+    @JsonKey(name: BaseResponse.dataKey_) required T data,
+
+    /// message
+    @JsonKey(name: BaseResponse.messageKey_) required String message,
+  }) = _BaseResponse<T>;
+
+  factory BaseResponse.fromJson(
+    Map<String, dynamic> json,
+    T Function(Object? json) fromJsonT,
+  ) => _$BaseResponseFromJson<T>(json, fromJsonT);
+
+  static const String dataKey_ = 'data';
+
+  static const String messageKey_ = 'message';
+}

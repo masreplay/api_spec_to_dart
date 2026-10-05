@@ -52,7 +52,24 @@
                       "properties": { "v": { "type": "integer" } },
                       "default": { "v": 1 }
                     },
-                    "extra": { "type": "object" }
+                    "extra": { "type": "object" },
+                    "badge": {
+                      "title": "List",
+                      "description": "Titled like dart:core's List: named by context instead.",
+                      "type": "object",
+                      "properties": { "label": { "type": "string" } }
+                    },
+                    "primary": {
+                      "title": "Thing",
+                      "type": "object",
+                      "properties": { "a": { "type": "string" } }
+                    },
+                    "secondary": {
+                      "title": "Thing",
+                      "description": "Another model has the title: named by context instead.",
+                      "type": "object",
+                      "properties": { "b": { "type": "integer" } }
+                    }
                   }
                 }
               }
@@ -127,6 +144,49 @@
             "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } }
           }
         }
+      }
+    },
+    "/status": {
+      "get": {
+        "tags": ["users"],
+        "operationId": "getStatus",
+        "responses": {
+          "200": {
+            "description": "Titled like dio's Response: named by context instead",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response",
+                  "type": "object",
+                  "properties": { "ok": { "type": "boolean" } }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}/avatar": {
+      "post": {
+        "tags": ["users"],
+        "operationId": "uploadAvatar",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": ["file"],
+                "properties": {
+                  "file": { "type": "string", "format": "binary" },
+                  "caption": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": { "204": { "description": "Uploaded" } }
       }
     }
   },

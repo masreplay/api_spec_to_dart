@@ -44,4 +44,41 @@ void main() {
     expect(files['models/animal.dart'], contains('typedef Animal = Pet;'));
     expect(files['models/owner.dart'], contains('Pets? pets'));
   });
+
+  test('inline enums of array and map typedefs are named by context', () {
+    final files = renderSpec({
+      'openapi': '3.1.0',
+      'info': {'title': 't', 'version': '1'},
+      'paths': <String, dynamic>{},
+      'components': {
+        'schemas': {
+          'Levels': {
+            'type': 'array',
+            'items': {
+              'type': 'string',
+              'enum': ['low', 'high'],
+            },
+          },
+          'Codes': {
+            'type': 'object',
+            'additionalProperties': {
+              'type': 'integer',
+              'enum': [1, 2],
+            },
+          },
+        },
+      },
+    }).files;
+
+    expect(
+      files['models/levels.dart'],
+      contains('typedef Levels = List<LevelsItem>;'),
+    );
+    expect(files['models/levels_item.dart'], contains('enum LevelsItem'));
+    expect(
+      files['models/codes.dart'],
+      contains('typedef Codes = Map<String, CodesValue>;'),
+    );
+    expect(files.keys, isNot(contains('models/levels2.dart')));
+  });
 }

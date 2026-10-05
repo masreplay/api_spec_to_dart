@@ -1,0 +1,85 @@
+/// RequestObjectOrString
+///
+/// ```json
+/// {
+///     "oneOf": [
+///         {
+///             "type": "object",
+///             "properties": {
+///                 "a": {
+///                     "type": "string"
+///                 }
+///             }
+///         },
+///         {
+///             "type": "string"
+///         }
+///     ],
+///     "description": "A type array whose properties belong to the object only."
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+sealed class RequestObjectOrString {
+  const RequestObjectOrString();
+
+  const factory RequestObjectOrString.object(
+    RequestObjectOrStringObjectValue value,
+  ) = RequestObjectOrStringObject;
+  const factory RequestObjectOrString.string(String value) =
+      RequestObjectOrStringString;
+
+  factory RequestObjectOrString.fromJson(Object? json) => switch (json) {
+    String() => RequestObjectOrStringString(json),
+    Map<String, dynamic>() => RequestObjectOrStringObject(
+      RequestObjectOrStringObjectValue.fromJson(json),
+    ),
+    _ => throw ArgumentError.value(
+      json,
+      'json',
+      'No RequestObjectOrString variant matches',
+    ),
+  };
+
+  Object? toJson();
+}
+
+final class RequestObjectOrStringObject extends RequestObjectOrString {
+  const RequestObjectOrStringObject(this.value);
+
+  final RequestObjectOrStringObjectValue value;
+
+  @override
+  Object? toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) =>
+      other is RequestObjectOrStringObject && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'RequestObjectOrString.object($value)';
+}
+
+final class RequestObjectOrStringString extends RequestObjectOrString {
+  const RequestObjectOrStringString(this.value);
+
+  final String value;
+
+  @override
+  Object? toJson() => value;
+
+  @override
+  bool operator ==(Object other) =>
+      other is RequestObjectOrStringString && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'RequestObjectOrString.string($value)';
+}

@@ -218,6 +218,93 @@ void main() {
     expect(files.keys, isNot(contains('models/list_pets_filter.dart')));
   });
 
+  test('query parameter classes keep untyped inline parameters', () {
+    final files = renderSpec(
+      _spec(
+        [('/pets', 'pets', 'listPets', _withAddress)],
+        parameters: [
+          {
+            'name': 'filter',
+            'in': 'query',
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'q': {'type': 'string'},
+              },
+            },
+          },
+          {
+            'name': 'ids',
+            'in': 'query',
+            'schema': {
+              'oneOf': [
+                {'type': 'string'},
+                {
+                  'type': 'array',
+                  'items': {'type': 'string'},
+                },
+              ],
+            },
+          },
+        ],
+      ),
+      config: const SwaggerToDart(
+        apiClient: ApiClientConfig(useClassForQueryParameters: true),
+      ),
+    ).files;
+    final queries = files['models/list_pets_query_parameters.dart']!;
+
+    expect(queries, contains('Map<String, dynamic>? filter'));
+    expect(queries, contains('dynamic ids'));
+    expect(
+      files.keys.where(
+        (f) => f.startsWith('models/list_pets_query_parameters_'),
+      ),
+      isEmpty,
+    );
+  });
+
+  test('a title another inline model took gives way to the context', () {
+    Map<String, dynamic> titled(String property) => {
+      'title': 'Thing',
+      'type': 'object',
+      'properties': {
+        property: {'type': 'string'},
+      },
+    };
+    final files = renderSpec(
+      _spec([
+        ('/a', 'a', 'getA', titled('a')),
+        ('/b', 'b', 'getB', titled('b')),
+      ]),
+    ).files;
+
+    expect(files['models/thing.dart'], contains('String? a'));
+    expect(files['models/get_b_response.dart'], contains('String? b'));
+    expect(files.keys, isNot(contains('models/thing2.dart')));
+  });
+
+  test('a title naming a core or dio type gives way to the context', () {
+    Map<String, dynamic> titled(String title) => {
+      'title': title,
+      'type': 'object',
+      'properties': {
+        'v': {'type': 'string'},
+      },
+    };
+    final files = renderSpec(
+      _spec([
+        ('/a', 'a', 'getA', titled('List')),
+        ('/b', 'b', 'getB', titled('Response')),
+      ]),
+    ).files;
+
+    expect(files['api_client/a_client.dart'], contains('<GetAResponse>'));
+    expect(files['api_client/b_client.dart'], contains('<GetBResponse>'));
+    expect(files.keys, isNot(contains('models/list.dart')));
+    expect(files.keys, isNot(contains('models/response.dart')));
+  });
+
   test('an inline object without a title needs a context name', () {
     final context = contextFor(_spec([]));
 

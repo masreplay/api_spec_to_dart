@@ -42,6 +42,9 @@
 ///         },
 ///         "children": {
 ///             "$ref": "#/components/schemas/Items"
+///         },
+///         "thing": {
+///             "$ref": "#/components/schemas/PostmanThing"
 ///         }
 ///     },
 ///     "type": "object",
@@ -82,6 +85,9 @@ abstract class PostmanItem with _$PostmanItem {
 
     /// children
     @JsonKey(name: PostmanItem.childrenKey_) PostmanItems? children,
+
+    /// thing
+    @JsonKey(name: PostmanItem.thingKey_) PostmanPostmanThing? thing,
   }) = _PostmanItem;
 
   factory PostmanItem.fromJson(Map<String, dynamic> json) =>
@@ -100,4 +106,6 @@ abstract class PostmanItem with _$PostmanItem {
   static const String runKey_ = 'run';
 
   static const String childrenKey_ = 'children';
+
+  static const String thingKey_ = 'thing';
 }

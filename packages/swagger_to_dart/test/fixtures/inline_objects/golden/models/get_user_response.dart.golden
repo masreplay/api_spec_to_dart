@@ -79,6 +79,35 @@
 ///         },
 ///         "extra": {
 ///             "type": "object"
+///         },
+///         "badge": {
+///             "type": "object",
+///             "properties": {
+///                 "label": {
+///                     "type": "string"
+///                 }
+///             },
+///             "description": "Titled like dart:core's List: named by context instead.",
+///             "title": "List"
+///         },
+///         "primary": {
+///             "type": "object",
+///             "properties": {
+///                 "a": {
+///                     "type": "string"
+///                 }
+///             },
+///             "title": "Thing"
+///         },
+///         "secondary": {
+///             "type": "object",
+///             "properties": {
+///                 "b": {
+///                     "type": "integer"
+///                 }
+///             },
+///             "description": "Another model has the title: named by context instead.",
+///             "title": "Thing"
 ///         }
 ///     },
 ///     "type": "object",
@@ -120,6 +149,16 @@ abstract class GetUserResponse with _$GetUserResponse {
 
     /// extra
     @JsonKey(name: GetUserResponse.extraKey_) Map<String, dynamic>? extra,
+
+    /// badge
+    @JsonKey(name: GetUserResponse.badgeKey_) GetUserResponseBadge? badge,
+
+    /// primary
+    @JsonKey(name: GetUserResponse.primaryKey_) Thing? primary,
+
+    /// secondary
+    @JsonKey(name: GetUserResponse.secondaryKey_)
+    GetUserResponseSecondary? secondary,
   }) = _GetUserResponse;
 
   factory GetUserResponse.fromJson(Map<String, dynamic> json) =>
@@ -136,4 +175,10 @@ abstract class GetUserResponse with _$GetUserResponse {
   static const String metaKey_ = 'meta';
 
   static const String extraKey_ = 'extra';
+
+  static const String badgeKey_ = 'badge';
+
+  static const String primaryKey_ = 'primary';
+
+  static const String secondaryKey_ = 'secondary';
 }

@@ -11,16 +11,9 @@ class ModelGenerator extends LibraryGenerator {
     final schema = _mergeAllOf(model.key, model.value, {});
     model = MapEntry(model.key, schema);
 
-    // A component oneOf/anyOf that is a union (#58, G2), or of one reference.
+    // A component oneOf/anyOf that is a union (#58, G2).
     final union = UnionModelStrategy(context);
-    final variants = [
-      ...?schema.oneOf,
-      ...?schema.anyOf,
-    ].where((e) => !UnionModelStrategy.isNull(e)).toList();
-    if (union.unionVariants(variants) != null ||
-        (variants.length == 1 && variants.single is OpenApiSchemaRef)) {
-      return union.buildComponent(model);
-    }
+    if (union.isUnionComponent(schema)) return union.buildComponent(model);
 
     final ModelGeneratorStrategy strategy;
 

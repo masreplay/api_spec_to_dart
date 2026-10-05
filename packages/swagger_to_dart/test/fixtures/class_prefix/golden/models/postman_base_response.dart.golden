@@ -1,0 +1,47 @@
+/// BaseResponse_list_User__
+///
+/// ```json
+/// {
+///     "properties": {
+///         "data": {
+///             "type": "array",
+///             "items": {
+///                 "$ref": "#/components/schemas/User"
+///             }
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "data"
+///     ],
+///     "title": "BaseResponse[list[User]]"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'postman_base_response.freezed.dart';
+part 'postman_base_response.g.dart';
+
+@Freezed(genericArgumentFactories: true)
+abstract class PostmanBaseResponse<T> with _$PostmanBaseResponse<T> {
+  const PostmanBaseResponse._();
+
+  @JsonSerializable(
+    converters: jsonSerializableConverters,
+    genericArgumentFactories: true,
+    createFieldMap: true,
+    explicitToJson: true,
+  )
+  const factory PostmanBaseResponse({
+    /// data
+    @JsonKey(name: PostmanBaseResponse.dataKey_) required T data,
+  }) = _PostmanBaseResponse<T>;
+
+  factory PostmanBaseResponse.fromJson(
+    Map<String, dynamic> json,
+    T Function(Object? json) fromJsonT,
+  ) => _$PostmanBaseResponseFromJson<T>(json, fromJsonT);
+
+  static const String dataKey_ = 'data';
+}

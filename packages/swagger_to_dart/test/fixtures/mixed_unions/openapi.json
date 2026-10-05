@@ -48,6 +48,38 @@
           }
         }
       }
+    },
+    "/urls": {
+      "get": {
+        "tags": ["requests"],
+        "operationId": "listUrls",
+        "responses": {
+          "200": {
+            "description": "A list of a union: retrofit casts items to maps, so untyped",
+            "content": {
+              "application/json": {
+                "schema": { "type": "array", "items": { "$ref": "#/components/schemas/Url" } }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/url-map": {
+      "get": {
+        "tags": ["requests"],
+        "operationId": "urlMap",
+        "responses": {
+          "200": {
+            "description": "A map of a union: retrofit casts values to maps, so untyped",
+            "content": {
+              "application/json": {
+                "schema": { "type": "object", "additionalProperties": { "$ref": "#/components/schemas/Url" } }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -57,6 +89,9 @@
         "required": ["name"],
         "properties": { "name": { "type": "string" } }
       },
+      "Pets": { "type": "array", "items": { "$ref": "#/components/schemas/Pet" } },
+      "Animal": { "$ref": "#/components/schemas/Pet" },
+      "Level": { "description": "An enum without a type.", "enum": ["low", "high"] },
       "Dog": {
         "type": "object",
         "required": ["kind", "bark"],
@@ -85,8 +120,9 @@
       },
       "Request": {
         "type": "object",
+        "required": ["url"],
         "properties": {
-          "url": { "$ref": "#/components/schemas/Url" },
+          "url": { "description": "A required union.", "$ref": "#/components/schemas/Url" },
           "owner": {
             "description": "ref | string",
             "oneOf": [{ "$ref": "#/components/schemas/Pet" }, { "type": "string" }]
@@ -100,7 +136,7 @@
             ]
           },
           "formdata": {
-            "description": "A const-discriminated anyOf inside a list.",
+            "description": "A const-discriminated anyOf inside a list; `type` is optional.",
             "type": "array",
             "items": {
               "title": "FormParameter",
@@ -138,6 +174,17 @@
             "description": "A type array.",
             "type": ["array", "string"],
             "items": { "type": "string" }
+          },
+          "objectOrString": {
+            "description": "A type array whose properties belong to the object only.",
+            "type": ["object", "string"],
+            "properties": { "a": { "type": "string" } }
+          },
+          "objectOrArray": {
+            "description": "A type array: items for the array, properties for the object.",
+            "type": ["object", "array"],
+            "items": { "type": "string" },
+            "properties": { "a": { "type": "string" } }
           },
           "amount": {
             "description": "integer merges into number; boolean; a list of models.",
@@ -178,6 +225,31 @@
               { "type": "string" }
             ],
             "discriminator": { "propertyName": "kind" }
+          },
+          "urls": {
+            "description": "A map of a union.",
+            "type": "object",
+            "additionalProperties": { "$ref": "#/components/schemas/Url" }
+          },
+          "link": {
+            "description": "A reference to a mixed union takes its kinds' arms.",
+            "oneOf": [{ "$ref": "#/components/schemas/Url" }, { "type": "boolean" }]
+          },
+          "herd": {
+            "description": "A typedef by its type, an alias by its target, an enum by its values.",
+            "oneOf": [
+              { "$ref": "#/components/schemas/Pets" },
+              { "$ref": "#/components/schemas/Animal" },
+              { "$ref": "#/components/schemas/Level" }
+            ]
+          },
+          "target": {
+            "description": "A discriminated mixed union is not spread.",
+            "oneOf": [{ "$ref": "#/components/schemas/Url" }, { "$ref": "#/components/schemas/Pet" }],
+            "discriminator": {
+              "propertyName": "kind",
+              "mapping": { "url": "#/components/schemas/Url", "pet": "#/components/schemas/Pet" }
+            }
           }
         }
       }

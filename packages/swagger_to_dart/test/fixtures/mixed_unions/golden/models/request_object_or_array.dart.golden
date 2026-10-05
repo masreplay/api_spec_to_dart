@@ -1,0 +1,92 @@
+/// RequestObjectOrArray
+///
+/// ```json
+/// {
+///     "oneOf": [
+///         {
+///             "type": "object",
+///             "properties": {
+///                 "a": {
+///                     "type": "string"
+///                 }
+///             }
+///         },
+///         {
+///             "type": "array",
+///             "items": {
+///                 "type": "string"
+///             }
+///         }
+///     ],
+///     "description": "A type array: items for the array, properties for the object."
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'request_object_or_array.g.dart';
+
+sealed class RequestObjectOrArray {
+  const RequestObjectOrArray();
+
+  const factory RequestObjectOrArray.object(
+    RequestObjectOrArrayObjectValue value,
+  ) = RequestObjectOrArrayObject;
+  const factory RequestObjectOrArray.list(List<String> value) =
+      RequestObjectOrArrayList;
+
+  factory RequestObjectOrArray.fromJson(Object? json) => switch (json) {
+    List() => _$RequestObjectOrArrayListFromJson({'value': json}),
+    Map<String, dynamic>() => RequestObjectOrArrayObject(
+      RequestObjectOrArrayObjectValue.fromJson(json),
+    ),
+    _ => throw ArgumentError.value(
+      json,
+      'json',
+      'No RequestObjectOrArray variant matches',
+    ),
+  };
+
+  Object? toJson();
+}
+
+final class RequestObjectOrArrayObject extends RequestObjectOrArray {
+  const RequestObjectOrArrayObject(this.value);
+
+  final RequestObjectOrArrayObjectValue value;
+
+  @override
+  Object? toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) =>
+      other is RequestObjectOrArrayObject && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'RequestObjectOrArray.object($value)';
+}
+
+@jsonSerializable
+final class RequestObjectOrArrayList extends RequestObjectOrArray {
+  const RequestObjectOrArrayList(this.value);
+
+  @JsonKey(name: 'value')
+  final List<String> value;
+
+  @override
+  Object? toJson() => _$RequestObjectOrArrayListToJson(this)['value'];
+
+  @override
+  bool operator ==(Object other) =>
+      other is RequestObjectOrArrayList &&
+      const DeepCollectionEquality().equals(other.value, value);
+
+  @override
+  int get hashCode => const DeepCollectionEquality().hash(value);
+
+  @override
+  String toString() => 'RequestObjectOrArray.list($value)';
+}

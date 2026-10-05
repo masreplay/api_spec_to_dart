@@ -1,0 +1,33 @@
+/// User
+///
+/// ```json
+/// {
+///     "properties": {
+///         "id": {
+///             "type": "integer"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'postman_user.freezed.dart';
+part 'postman_user.g.dart';
+
+@freezed
+abstract class PostmanUser with _$PostmanUser {
+  const PostmanUser._();
+
+  @jsonSerializable
+  const factory PostmanUser({
+    /// id
+    @JsonKey(name: PostmanUser.idKey_) int? id,
+  }) = _PostmanUser;
+
+  factory PostmanUser.fromJson(Map<String, dynamic> json) =>
+      _$PostmanUserFromJson(json);
+
+  static const String idKey_ = 'id';
+}
