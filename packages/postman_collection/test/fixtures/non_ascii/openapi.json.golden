@@ -180,7 +180,7 @@
     "/café/menu": {
       "get": {
         "summary": "Café ☕",
-        "operationId": "caf",
+        "operationId": "getMenu",
         "responses": {
           "default": {
             "description": "Default response"

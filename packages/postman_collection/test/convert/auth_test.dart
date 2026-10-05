@@ -174,6 +174,13 @@ void main() {
     expect(warnings, isEmpty);
   });
 
+  test('an empty type is no auth and warns once', () {
+    expect(schemes.requirement({'type': ''}), isNull);
+    expect(schemes.requirement({'type': ' '}), isNull);
+    expect(schemes.schemes, isEmpty);
+    expect(warnings, hasLength(1));
+  });
+
   test('an unknown type uses http with its name and warns', () {
     expect(schemes.requirement(auth('asap', {'kid': 'k'})), [
       {'asap': <String>[]},

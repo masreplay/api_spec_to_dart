@@ -22,11 +22,11 @@
   ],
   "tags": [
     {
-      "name": "Books / Covers"
-    },
-    {
       "name": "Books",
       "description": "Book catalog"
+    },
+    {
+      "name": "Books / Covers"
     }
   ],
   "paths": {

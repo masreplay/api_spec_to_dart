@@ -189,6 +189,12 @@ class SecuritySchemes {
     final type = auth['type'];
     if (type is! String || type == 'inherit') return null;
     if (type == 'noauth') return const [];
+    if (type.trim().isEmpty) {
+      if (_warnedTypes.add('')) {
+        onWarning?.call('auth without a type is treated as no auth');
+      }
+      return null;
+    }
     if (!_schemaTypes.contains(type) && _warnedTypes.add(type)) {
       onWarning?.call(
         "auth type '$type' is not in the Postman v2.1 schema; "

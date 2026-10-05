@@ -24,12 +24,14 @@ bool isJsonMediaType(String mediaType) =>
     mediaType.endsWith('/json') || mediaType.endsWith('+json');
 
 /// Adds the raw body [text] named [name] to [content] under [mediaType],
-/// sniffed when null: JSON is parsed leniently (an object when invalid, with
-/// a warning) and inferred; other text is a string.
+/// sniffed when null (JSON, else [textMediaType]): JSON is parsed leniently
+/// (an object when invalid, with a warning) and inferred; other text is a
+/// string.
 void addRawContent(
   Map<String, MediaContent> content,
   String text, {
   String? mediaType,
+  String textMediaType = 'text/plain',
   Map<String, String> variables = const {},
   required String name,
   void Function(String message)? onWarning,
@@ -39,21 +41,42 @@ void addRawContent(
   final json = mediaType == null || isJsonMediaType(mediaType)
       ? parseLenientJson(text, variables)
       : null;
-  mediaType ??= json is Map || json is List ? 'application/json' : 'text/plain';
+  mediaType ??= json is Map || json is List
+      ? 'application/json'
+      : textMediaType;
   if (!isJsonMediaType(mediaType)) {
-    content
-        .putIfAbsent(mediaType, () => MediaContent('text', secrets))
-        .add(name, substituteVariables(text, variables));
+    _mediaContent(
+      content,
+      mediaType,
+      'text',
+      secrets,
+    ).add(name, substituteVariables(text, variables));
     return;
   }
-  if (json == null) {
+  final media = _mediaContent(content, mediaType, 'json', secrets);
+  if (json != null) {
+    media.add(name, json);
+  } else {
     onWarning?.call(
       "body of '$name' is not valid JSON; described as an object",
     );
+    media.samples.add(const <String, Object?>{});
   }
-  content
-      .putIfAbsent(mediaType, () => MediaContent('json', secrets))
-      .add(name, json ?? const <String, Object?>{});
+}
+
+/// The [kind] content of [mediaType]; a JSON body replaces a file body of
+/// the same media type.
+MediaContent _mediaContent(
+  Map<String, MediaContent> content,
+  String mediaType,
+  String kind,
+  Secrets secrets,
+) {
+  final existing = content[mediaType];
+  if (existing != null && !(kind == 'json' && existing.kind == 'binary')) {
+    return existing;
+  }
+  return content[mediaType] = MediaContent(kind, secrets);
 }
 
 /// The media type of the first enabled `Content-Type` header, lower case and
@@ -116,7 +139,7 @@ class RequestBodies {
         };
 
   MediaContent _media(String mediaType, String kind) =>
-      _content.putIfAbsent(mediaType, () => MediaContent(kind, secrets));
+      _mediaContent(_content, mediaType, kind, secrets);
 
   void _raw(
     Map<Object?, Object?> body,

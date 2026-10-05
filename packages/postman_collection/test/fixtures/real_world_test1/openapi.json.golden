@@ -20,6 +20,9 @@
     },
     {
       "name": "Auth Using Social"
+    },
+    {
+      "name": "Cart"
     }
   ],
   "paths": {
