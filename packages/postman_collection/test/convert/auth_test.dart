@@ -254,63 +254,105 @@ void main() {
   });
 
   test('credentials are recognised by name or shape', () {
-    expect(isCredential('X-Auth-Token', 'x'), isTrue);
-    expect(isCredential('api_key', 'x'), isTrue);
-    expect(isCredential('author', 'tolkien'), isFalse);
-    expect(isCredential('X-Forwarded', 'Bearer x'), isTrue);
-    expect(isCredential('note', 'eyJhbGciOi.eyJzdWIi.c2ln'), isTrue);
-    expect(isCredential('note', 'hello'), isFalse);
+    const none = Secrets.none();
+    expect(none.hides('X-Auth-Token', 'x'), isTrue);
+    expect(none.hides('api_key', 'x'), isTrue);
+    expect(none.hides('X-Authorization', 'x'), isTrue);
+    expect(none.hides('Proxy-Authorization', 'x'), isTrue);
+    expect(none.hides('Set-Cookie', 'x'), isTrue);
+    expect(none.hides('author', 'tolkien'), isFalse);
+    expect(none.hides('authority', 'x'), isFalse);
+    expect(none.hides('X-Forwarded', 'Bearer x'), isTrue);
+    expect(none.hides('note', 'eyJhbGciOi.eyJzdWIi.c2ln'), isTrue);
+    expect(none.hides('note', 'hello'), isFalse);
   });
 
-  test('examples drop credential strings', () {
+  test('examples drop subtrees under credential names and credential '
+      'strings, and URLs lose their userinfo', () {
     expect(
-      withoutCredentials({
+      const Secrets.none().scrub({
         'email': 'a@b.c',
         'password': 'x',
-        'token': {'access': 'eyJa.eyJb.c', 'expires': 3600},
+        'token': {'access': 'x', 'expires': 3600},
         'session_timeout': 30,
+        'tokens': ['x'],
         'ids': ['eyJx.eyJy.z', 'ok'],
         'author': 'me',
+        'callback': 'https://u:p@ss@hooks.x.io/cb',
       }),
       {
         'email': 'a@b.c',
-        'token': {'expires': 3600},
-        'session_timeout': 30,
         'ids': ['ok'],
         'author': 'me',
+        'callback': 'https://hooks.x.io/cb',
       },
     );
-    expect(withoutCredentials('text'), 'text');
+    expect(const Secrets.none().scrub('text'), 'text');
   });
 
-  test('variables used by secret attributes are secret', () {
-    expect(
-      secretVariableNames({
-        'auth': auth('bearer', {'token': 'Bearer {{token}}'}),
-        'item': [
-          {
-            'request': {
-              'auth': auth('apikey', {
-                'key': '{{headerName}}',
-                'value': '{{apiKey}}',
-              }),
-            },
+  test('secrets: variables of secret attributes or typed secret, and the '
+      'literal values of secret attributes at every level', () {
+    final secrets = Secrets.of({
+      'auth': auth('bearer', {'token': 'Bearer {{token}}'}),
+      'variable': [
+        {'key': 'token', 'value': 'SECRET-variable'},
+        {'key': 'session', 'value': 'SECRET-typed', 'type': 'secret'},
+        {'key': 'baseUrl', 'value': 'https://x.io'},
+      ],
+      'item': [
+        {
+          'request': {
+            'auth': auth('apikey', {
+              'key': '{{headerName}}',
+              'value': '{{apiKey}}',
+            }),
           },
-          {
-            'auth': {
-              'type': 'oauth2',
-              'oauth2': [
-                {'key': 'accessTokenUrl', 'value': '{{tokenUrl}}'},
-                {'key': 'clientSecret', 'value': '{{clientSecret}}'},
-              ],
-              'basic': [
-                {'key': 'password', 'value': '{{inactive}}'},
-              ],
+          'response': [
+            {
+              'originalRequest': {
+                'auth': auth('basic', {
+                  'username': 'abc',
+                  'password': 'SECRET-original',
+                }),
+              },
             },
+          ],
+        },
+        {
+          'auth': {
+            'type': 'oauth2',
+            'oauth2': [
+              {'key': 'accessTokenUrl', 'value': '{{tokenUrl}}'},
+              {'key': 'redirect_uri', 'value': '{{baseUrl}}/callback'},
+              {'key': 'clientSecret', 'value': '{{clientSecret}}'},
+              {'key': 'useBrowser', 'value': true},
+            ],
+            'basic': [
+              {'key': 'password', 'value': '{{inactive}}'},
+            ],
           },
-        ],
-      }),
-      {'token', 'apiKey', 'clientSecret', 'inactive'},
-    );
+        },
+      ],
+    });
+    expect(secrets.variables, {
+      'token',
+      'apiKey',
+      'clientSecret',
+      'inactive',
+      'session',
+    });
+    expect(secrets.values, {
+      'Bearer {{token}}',
+      '{{apiKey}}',
+      'abc',
+      'SECRET-original',
+      '{{clientSecret}}',
+      '{{inactive}}',
+      'SECRET-variable',
+      'SECRET-typed',
+    });
+    expect(secrets.leaks('my SECRET-original value'), isTrue);
+    expect(secrets.leaks('abc'), isTrue);
+    expect(secrets.leaks('abcdef'), isFalse);
   });
 }

@@ -1037,6 +1037,242 @@ void main() {
         'X-Rate-Limit': '59',
       });
     });
+
+    Map<String, Object?> json(Object body) => {
+      'mode': 'raw',
+      'raw': jsonEncode(body),
+      'options': {
+        'raw': {'language': 'json'},
+      },
+    };
+
+    test('(a) values of *Authorization* headers are not examples', () {
+      final document = convert(
+        collection([
+          request(
+            'Get',
+            'GET',
+            'https://x.io/a',
+            fields: {
+              'header': [
+                {'key': 'X-Authorization', 'value': 'SECRET-opaque'},
+                {
+                  'key': 'Proxy-Authorization',
+                  'value': 'Digest username="u", response="SECRET-digest"',
+                },
+              ],
+            },
+          ),
+        ]),
+      );
+      expect(jsonEncode(document), isNot(contains('SECRET')));
+      expect(
+        [
+          for (final p in parameters(operation(document, '/a', 'get')))
+            (p as Map)['name'],
+        ],
+        ['X-Authorization', 'Proxy-Authorization'],
+      );
+    });
+
+    test('(b) Set-Cookie values in saved responses are not examples', () {
+      final document = convert(
+        collection([
+          request(
+            'Login',
+            'POST',
+            'https://x.io/login',
+            response: [
+              {
+                'name': 'ok',
+                'code': 200,
+                'header': [
+                  {'key': 'Set-Cookie', 'value': 'sid=SECRET-cookie; Path=/'},
+                ],
+              },
+            ],
+          ),
+        ]),
+      );
+      expect(jsonEncode(document), isNot(contains('SECRET')));
+      final responses =
+          operation(document, '/login', 'post')['responses']! as Map;
+      expect(((responses['200']! as Map)['headers']! as Map).keys, [
+        'Set-Cookie',
+      ]);
+    });
+
+    test('(c) everything under a credential-named key is dropped from '
+        'examples', () {
+      final body = {
+        'token': {'value': 'SECRET-nested'},
+        'auth': {'key': 'SECRET-auth'},
+        'tokens': ['SECRET-list'],
+        'name': 'ok',
+      };
+      final document = convert(
+        collection([
+          request(
+            'Create',
+            'POST',
+            'https://x.io/a',
+            fields: {'body': json(body)},
+            response: [
+              {
+                'name': 'ok',
+                'code': 200,
+                'header': [
+                  {'key': 'Content-Type', 'value': 'application/json'},
+                ],
+                'body': jsonEncode(body),
+              },
+            ],
+          ),
+        ]),
+      );
+      expect(jsonEncode(document), isNot(contains('SECRET')));
+      final create = operation(document, '/a', 'post');
+      final media =
+          ((create['requestBody']! as Map)['content']!
+                  as Map)['application/json']!
+              as Map;
+      expect((media['schema']! as Map)['properties'], contains('token'));
+      expect(media['examples'], {
+        'Create': {
+          'value': {'name': 'ok'},
+        },
+      });
+    });
+
+    test('(d) literal auth secrets and secret variable values are dropped '
+        'wherever they are reused', () {
+      final document = convert(
+        collection(
+          [
+            request(
+              'Create',
+              'POST',
+              'https://x.io/a?q=SECRET-literal',
+              fields: {
+                'header': [
+                  {'key': 'X-Note', 'value': 'see SECRET-literal here'},
+                ],
+                'body': json({
+                  'accessKey': 'SECRET-literal',
+                  'note': 'SECRET-variable',
+                  'other': 'SECRET-original',
+                  'short': 'xy',
+                  'kept': 'visible',
+                }),
+              },
+              response: [
+                {
+                  'name': 'ok',
+                  'code': 200,
+                  'originalRequest': {
+                    'method': 'POST',
+                    'url': 'https://x.io/a',
+                    'auth': {
+                      'type': 'basic',
+                      'basic': [
+                        {'key': 'username', 'value': 'xy'},
+                        {'key': 'password', 'value': 'SECRET-original'},
+                      ],
+                    },
+                  },
+                  'body': 'logged in with SECRET-literal',
+                },
+              ],
+            ),
+            {
+              'name': 'Folder',
+              'auth': {
+                'type': 'apikey',
+                'apikey': [
+                  {'key': 'key', 'value': 'X-Key'},
+                  {'key': 'value', 'value': '{{apiKey}}'},
+                ],
+              },
+              'item': [request('Get', 'GET', 'https://x.io/b')],
+            },
+          ],
+          extra: {
+            'auth': {
+              'type': 'bearer',
+              'bearer': [
+                {'key': 'token', 'value': 'SECRET-literal'},
+              ],
+            },
+            'variable': [
+              {'key': 'apiKey', 'value': 'SECRET-variable'},
+            ],
+          },
+        ),
+      );
+      expect(jsonEncode(document), isNot(contains('SECRET')));
+      final media =
+          ((operation(document, '/a', 'post')['requestBody']!
+                      as Map)['content']!
+                  as Map)['application/json']!
+              as Map;
+      expect(media['examples'], {
+        'Create': {
+          'value': {'kept': 'visible'},
+        },
+      });
+    });
+
+    test('(e) userinfo never reaches server defaults or other URLs', () {
+      final document = convert(
+        collection(
+          [
+            request(
+              'Get',
+              'GET',
+              '{{baseUrl}}/a?callback=https://u:SECRET-cb@hooks.x.io/cb',
+              fields: {
+                'auth': {
+                  'type': 'oauth2',
+                  'oauth2': [
+                    {
+                      'key': 'authUrl',
+                      'value': 'https://u:SECRET-oauth@auth.x.io/authorize',
+                    },
+                    {'key': 'accessTokenUrl', 'value': '{{baseUrl}}/token'},
+                  ],
+                },
+              },
+            ),
+          ],
+          extra: {
+            'variable': [
+              {'key': 'baseUrl', 'value': 'https://user:SECRET-pass@api.x.io'},
+            ],
+          },
+        ),
+      );
+      expect(jsonEncode(document), isNot(contains('SECRET')));
+      expect(document['servers'], [
+        {
+          'url': '{baseUrl}',
+          'variables': {
+            'baseUrl': {'default': 'https://api.x.io'},
+          },
+        },
+      ]);
+      expect(
+        (parameters(operation(document, '/a', 'get')).single as Map)['example'],
+        'https://hooks.x.io/cb',
+      );
+      final flow =
+          ((((document['components']! as Map)['securitySchemes']!
+                          as Map)['oauth2']!
+                      as Map)['flows']!
+                  as Map)['authorizationCode']!
+              as Map;
+      expect(flow['authorizationUrl'], 'https://auth.x.io/authorize');
+      expect(flow['tokenUrl'], 'https://api.x.io/token');
+    });
   });
 
   group('variables', () {

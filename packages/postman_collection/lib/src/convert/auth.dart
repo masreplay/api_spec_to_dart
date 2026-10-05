@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'url.dart';
 import 'variables.dart';
 
 /// `http` schemes by Postman auth type, named as the `Authorization` header
@@ -29,22 +30,27 @@ const _schemaTypes = {
   'ntlm',
 };
 
-/// The only attributes ever read: configuration, never secrets.
+/// Auth attributes (of any type) that configure a flow and never hold a
+/// secret. Every other attribute's value is a secret. Only apikey `key`/`in`
+/// and oauth2 grant type, URLs and scopes are ever read.
 const _configuration = {
-  'apikey': {'key', 'in'},
-  'oauth2': {
-    'grant_type',
-    'authUrl',
-    'accessTokenUrl',
-    'refreshTokenUrl',
-    'scope',
-  },
+  // apikey
+  'key', 'in',
+  // oauth2
+  'grant_type', 'authUrl', 'accessTokenUrl', 'refreshTokenUrl', 'scope',
+  'redirect_uri', 'audience', 'resource', 'tokenName', 'headerPrefix',
+  'addTokenTo', 'client_authentication', 'tokenType', 'challengeAlgorithm',
+  // digest, oauth1, hawk, jwt, awsv4, ntlm, edgegrid settings
+  'algorithm', 'qop', 'realm', 'nonceCount', 'signatureMethod', 'version',
+  'region', 'service', 'domain', 'workstation', 'baseURL', 'headersToSign',
+  'maxBodySize', 'queryParamKey', 'header', 'payload',
 };
 
 /// Names (of parameters, headers, JSON keys) and values that carry
-/// credentials outside auth: tokens, keys, sessions, signatures.
+/// credentials outside auth: tokens, keys, sessions, cookies, signatures.
 final _credentialName = RegExp(
-  'token|jwt|secret|passw|api[-_]?key|session|signature|credential|auth(?!or)',
+  'token|jwt|secret|passw|api[-_]?key|session|signature|credential|cookie|'
+  'authoriz|auth(?!or)',
   caseSensitive: false,
 );
 final _credentialValue = RegExp(
@@ -52,24 +58,105 @@ final _credentialValue = RegExp(
   caseSensitive: false,
 );
 
-/// Whether the string [value] of [name] is a credential, so never an
-/// example.
-bool isCredential(String name, String value) =>
-    _credentialName.hasMatch(name) || _credentialValue.hasMatch(value);
+/// What one collection must never leak into OpenAPI.
+class Secrets {
+  const Secrets.none() : variables = const {}, values = const {};
 
-/// An example [json] without credential strings (object entries and list
-/// items). Inferred schemas still see every field.
-Object? withoutCredentials(Object? json) => switch (json) {
-  final Map<Object?, Object?> map => {
-    for (final MapEntry(:key, :value) in map.entries)
-      if (!(value is String && isCredential('$key', value)))
-        key: withoutCredentials(value),
-  },
-  final List<Object?> list => [
-    for (final item in list)
-      if (!(item is String && isCredential('', item))) withoutCredentials(item),
-  ],
-  _ => json,
+  Secrets._(this.variables, this.values);
+
+  /// The secrets of [collection]: variables used by secret auth attributes
+  /// (at every level, saved examples included) or typed `secret`, and the
+  /// literal values of those attributes and variables.
+  factory Secrets.of(Object? collection) {
+    final variables = <String>{};
+    final values = <String>{};
+    final variableLists = <List<Object?>>[];
+    void walk(Object? node) {
+      if (node is List) {
+        node.forEach(walk);
+        return;
+      }
+      if (node is! Map) return;
+      if (node['auth'] case final Map<Object?, Object?> auth) {
+        for (final MapEntry(key: type, value: attributes) in auth.entries) {
+          if (type == 'type') continue;
+          for (final MapEntry(:key, :value) in _attributes(
+            attributes,
+          ).entries) {
+            if (_configuration.contains(key)) continue;
+            if (_text(value) case final text?) {
+              values.add(text);
+              variables.addAll(
+                variableReference.allMatches(text).map((m) => m[1]!),
+              );
+            }
+          }
+        }
+      }
+      if (node['variable'] case final List<Object?> list) {
+        variableLists.add(list);
+      }
+      node.values.forEach(walk);
+    }
+
+    walk(collection);
+    for (final variable in variableLists.expand((list) => list)) {
+      if (variable is! Map) continue;
+      final name = variable['key'] ?? variable['id'];
+      if (name is! String) continue;
+      if (variable['type'] == 'secret') variables.add(name);
+      if (variables.contains(name)) {
+        if (_text(variable['value']) case final text?) values.add(text);
+      }
+    }
+    return Secrets._(variables, values);
+  }
+
+  /// Variable names that stay unresolved.
+  final Set<String> variables;
+
+  /// Literal secret values.
+  final Set<String> values;
+
+  /// Whether [text] (an example or default) is or contains a credential: a
+  /// bearer or basic credential, a JWT, or a literal secret. Secrets shorter
+  /// than four characters count only when equal, so they cannot match
+  /// everywhere.
+  bool leaks(String text) =>
+      _credentialValue.hasMatch(text) ||
+      values.any(
+        (secret) => secret.length < 4 ? text == secret : text.contains(secret),
+      );
+
+  /// Whether the example [text] of [name] (a parameter, header or JSON key)
+  /// would leak a credential.
+  bool hides(String name, String text) =>
+      _credentialName.hasMatch(name) || leaks(text);
+
+  /// [example] without credentials: subtrees under credential-named keys and
+  /// leaking strings are dropped, and URLs lose their userinfo. Inferred
+  /// schemas still see every field.
+  Object? scrub(Object? example) => switch (example) {
+    final Map<Object?, Object?> map => {
+      for (final MapEntry(:key, :value) in map.entries)
+        if (!_credentialName.hasMatch('$key') &&
+            !(value is String && leaks(value)))
+          key: scrub(value),
+    },
+    final List<Object?> list => [
+      for (final item in list)
+        if (!(item is String && leaks(item))) scrub(item),
+    ],
+    final String text => withoutUserinfo(text),
+    _ => example,
+  };
+}
+
+/// A non-empty string or number as text.
+String? _text(Object? value) => switch (value) {
+  final String text when text.isNotEmpty => text,
+  final num number => '$number',
+  _ => null,
 };
 
 /// The auth that applies to an entity: its own, unless missing, null or
@@ -82,9 +169,10 @@ Object? inheritAuth(Object? inherited, Object? own) =>
 /// The security schemes of one document, built from Postman auth objects.
 /// Secret attribute values are never read.
 class SecuritySchemes {
-  SecuritySchemes({this.onWarning});
+  SecuritySchemes({this.onWarning, this.secrets = const Secrets.none()});
 
   final void Function(String message)? onWarning;
+  final Secrets secrets;
 
   /// `components.securitySchemes`; identical schemes share a name.
   final schemes = <String, Map<String, Object?>>{};
@@ -108,8 +196,13 @@ class SecuritySchemes {
       );
     }
     final attributes = _attributes(auth[type]);
-    String text(String key) =>
-        substituteVariables('${attributes[key] ?? ''}', variables);
+    String text(String key) {
+      final text = withoutUserinfo(
+        substituteVariables('${attributes[key] ?? ''}', variables),
+      );
+      return secrets.leaks(text) ? '' : text;
+    }
+
     final (scheme, scopes) = switch (type) {
       'apikey' => (
         {
@@ -191,30 +284,3 @@ Map<String, Object?> _attributes(Object? attributes) => switch (attributes) {
   },
   _ => const {},
 };
-
-/// Variables referenced by secret auth attributes anywhere in [node]. They
-/// stay unresolved, so their values cannot reach examples.
-Set<String> secretVariableNames(Object? node) {
-  final names = <String>{};
-  void walk(Object? node) {
-    if (node is List) {
-      node.forEach(walk);
-      return;
-    }
-    if (node is! Map) return;
-    if (node['auth'] case final Map<Object?, Object?> auth) {
-      for (final MapEntry(key: type, value: attributes) in auth.entries) {
-        final configuration = _configuration[type] ?? const {};
-        for (final MapEntry(:key, :value) in _attributes(attributes).entries) {
-          if (!configuration.contains(key) && value is String) {
-            names.addAll(variableReference.allMatches(value).map((m) => m[1]!));
-          }
-        }
-      }
-    }
-    node.values.forEach(walk);
-  }
-
-  walk(node);
-  return names;
-}
