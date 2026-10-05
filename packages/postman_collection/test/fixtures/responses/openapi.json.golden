@@ -30,11 +30,9 @@
             "headers": {
               "X-RateLimit-Remaining": {
                 "schema": {
-                  "type": "string",
-                  "examples": [
-                    "59"
-                  ]
-                }
+                  "type": "string"
+                },
+                "example": "59"
               }
             },
             "content": {
@@ -113,11 +111,9 @@
             "headers": {
               "X-Trace": {
                 "schema": {
-                  "type": "string",
-                  "examples": [
-                    "abc"
-                  ]
-                }
+                  "type": "string"
+                },
+                "example": "abc"
               }
             },
             "content": {
@@ -220,11 +216,9 @@
             "headers": {
               "X-Custom": {
                 "schema": {
-                  "type": "string",
-                  "examples": [
-                    "yes"
-                  ]
-                }
+                  "type": "string"
+                },
+                "example": "yes"
               }
             },
             "content": {

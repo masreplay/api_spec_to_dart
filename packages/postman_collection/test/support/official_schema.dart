@@ -4,19 +4,13 @@ import 'dart:io';
 import 'package:json_schema/json_schema.dart';
 
 /// An official schema from the repo's `schemas/` directory. `json_schema`
-/// 5.2.2 cannot compile `dependentSchemas` (only checks parameter
-/// style/explode combinations), so it is stripped.
+/// 5.2.2 cannot compile `dependentSchemas`, so it is rewritten to the
+/// equivalent `if`/`then` at load time (the files stay unmodified).
 JsonSchema officialSchema(String relativePath) {
-  Object? strip(Object? node) => switch (node) {
-    Map() => {
-      for (final MapEntry(:key, :value) in node.entries)
-        if (key != 'dependentSchemas') key as String: strip(value),
-    },
-    List() => [for (final e in node) strip(e)],
-    _ => node,
-  };
   final file = File('../../schemas/$relativePath');
-  return JsonSchema.create(strip(jsonDecode(file.readAsStringSync()))!);
+  return JsonSchema.create(
+    rewriteDependentSchemas(jsonDecode(file.readAsStringSync()))!,
+  );
 }
 
 void expectValid(JsonSchema schema, Object? json) {
@@ -29,4 +23,65 @@ void expectValid(JsonSchema schema, Object? json) {
           .join('\n'),
     );
   }
+}
+
+/// `dependentSchemas` (unsupported by json_schema 5.2.2) rewritten to the
+/// equivalent `if: {required: [k]}, then: S`, with S moved under `$defs` so
+/// JSON pointers into it keep resolving.
+Object? rewriteDependentSchemas(Object? root) {
+  final moved = <String, String>{}; // old pointer prefix -> new prefix
+  Object? walk(Object? node, String path) {
+    if (node is List) {
+      return [for (var i = 0; i < node.length; i++) walk(node[i], '$path/$i')];
+    }
+    if (node is! Map) return node;
+    final out = <String, Object?>{};
+    for (final MapEntry(:key, :value) in node.entries) {
+      if (key == 'dependentSchemas') continue;
+      out[key as String] = walk(value, '$path/${_escape(key)}');
+    }
+    if (node['dependentSchemas'] case final Map deps) {
+      final defs = Map<String, Object?>.from((out[r'$defs'] as Map?) ?? {});
+      final conditions = <Object?>[];
+      for (final MapEntry(:key, :value) in deps.entries) {
+        final name = '__dependent_$key';
+        moved['$path/dependentSchemas/${_escape(key as String)}'] =
+            '$path/\$defs/$name';
+        defs[name] = walk(value, '$path/\$defs/$name');
+        conditions.add({
+          'if': {
+            'required': [key],
+          },
+          'then': {r'$ref': '#$path/\$defs/$name'},
+        });
+      }
+      out[r'$defs'] = defs;
+      out['allOf'] = [...?(out['allOf'] as List?), ...conditions];
+    }
+    return out;
+  }
+
+  Object? fixRefs(Object? node) => switch (node) {
+    Map() => {
+      for (final MapEntry(:key, :value) in node.entries)
+        key as String: key == r'$ref' && value is String
+            ? _move(value, moved)
+            : fixRefs(value),
+    },
+    List() => [for (final e in node) fixRefs(e)],
+    _ => node,
+  };
+
+  return fixRefs(walk(root, ''));
+}
+
+String _escape(String key) => key.replaceAll('~', '~0').replaceAll('/', '~1');
+
+String _move(String ref, Map<String, String> moved) {
+  for (final MapEntry(:key, :value) in moved.entries) {
+    if (ref == '#$key' || ref.startsWith('#$key/')) {
+      return '#$value${ref.substring(key.length + 1)}';
+    }
+  }
+  return ref;
 }

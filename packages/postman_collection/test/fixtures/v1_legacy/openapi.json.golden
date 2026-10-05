@@ -44,11 +44,9 @@
             "description": "Book id",
             "required": true,
             "schema": {
-              "type": "string",
-              "examples": [
-                "1"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "1"
           }
         ],
         "requestBody": {
@@ -132,31 +130,25 @@
             "in": "query",
             "description": "Author slug",
             "schema": {
-              "type": "string",
-              "examples": [
-                "tolkien"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "tolkien"
           },
           {
             "name": "X-Client",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "legacy"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "legacy"
           },
           {
             "name": "X-Debug",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "1"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "1"
           }
         ],
         "responses": {
@@ -165,11 +157,9 @@
             "headers": {
               "X-Total": {
                 "schema": {
-                  "type": "string",
-                  "examples": [
-                    "1"
-                  ]
-                }
+                  "type": "string"
+                },
+                "example": "1"
               }
             },
             "content": {

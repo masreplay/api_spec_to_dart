@@ -35,11 +35,9 @@
             "in": "query",
             "description": "Page size",
             "schema": {
-              "type": "string",
-              "examples": [
-                "20"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "20"
           },
           {
             "name": "tag",
@@ -48,25 +46,22 @@
               "type": "array",
               "items": {
                 "type": "string"
-              },
-              "examples": [
-                [
-                  "dog",
-                  "cat"
-                ]
-              ]
-            }
+              }
+            },
+            "explode": true,
+            "example": [
+              "dog",
+              "cat"
+            ]
           },
           {
             "name": "X-Request-Id",
             "in": "header",
             "description": "Correlation id",
             "schema": {
-              "type": "string",
-              "examples": [
-                "3fa85f64-5717-4562-b3fc-2c963f66afa6"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "responses": {
@@ -75,11 +70,9 @@
             "headers": {
               "X-Total-Count": {
                 "schema": {
-                  "type": "string",
-                  "examples": [
-                    "2"
-                  ]
-                }
+                  "type": "string"
+                },
+                "example": "2"
               }
             },
             "content": {
@@ -219,11 +212,9 @@
             "description": "The pet id",
             "required": true,
             "schema": {
-              "type": "string",
-              "examples": [
-                "1"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "1"
           }
         ],
         "responses": {
@@ -293,11 +284,9 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "examples": [
-                "1"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "1"
           }
         ],
         "responses": {

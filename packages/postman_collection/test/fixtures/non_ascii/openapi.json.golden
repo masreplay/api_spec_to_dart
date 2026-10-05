@@ -82,11 +82,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "requestBody": {
