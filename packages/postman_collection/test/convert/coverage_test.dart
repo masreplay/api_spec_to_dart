@@ -46,7 +46,7 @@ const coverage = <String, String>{
   'item.protocolProfileBehavior': 'dropped: client config',
   // item-group
   'item-group.name':
-      'mapped: tag (folder path joined with " / "); a '
+      'mapped: tag (folder path joined with " / "), empty folders too; a '
       'Webhooks folder gives webhooks',
   'item-group.description': 'mapped: tag description',
   'item-group.variable': 'mapped: variables resolved within the folder',
@@ -56,17 +56,15 @@ const coverage = <String, String>{
   'item-group.protocolProfileBehavior': 'dropped: client config',
   // variable
   'variable.id': 'mapped: variable name when key is missing',
-  'variable.key': 'mapped: variable name',
+  'variable.key': 'mapped: variable name; path parameter (url.variable)',
   'variable.value':
       'mapped: substituted text: examples, samples and server '
-      'variable defaults',
+      'variable defaults; path parameter example (url.variable)',
   'variable.type':
-      'dropped: not representable in OpenAPI (substitution is '
-      'text; schemas follow the substituted value)',
+      'mapped: path parameter schema type (url.variable); collection '
+      'variables substitute as text',
   'variable.name': 'dropped: a display name is not representable in OpenAPI',
-  'variable.description':
-      'dropped: not representable in OpenAPI (variables '
-      'surface only as values)',
+  'variable.description': 'mapped: path parameter description (url.variable)',
   'variable.system': 'dropped: a Postman flag is not representable in OpenAPI',
   'variable.disabled': 'mapped: disabled variables stay unresolved',
   // event and script
@@ -164,7 +162,8 @@ const coverage = <String, String>{
   'auth-attribute.key': 'mapped: picks the configuration attributes',
   'auth-attribute.value':
       'mapped: apikey name and location, oauth2 grant '
-      'type, URLs and scopes; every other value is a secret, never copied',
+      'type, URLs and scopes; every other value is a secret, never copied, '
+      'and examples containing one are dropped',
   'auth-attribute.type': 'dropped: not representable in OpenAPI',
   // proxy-config
   'proxy-config.match': 'dropped: client config',
@@ -282,6 +281,19 @@ void main() {
         ),
         reason: path,
       );
+    }
+  });
+
+  test('fields the converter reads are mapped', () {
+    for (final path in [
+      // url.variable entries are variable objects: path parameter type and
+      // description.
+      'variable.type',
+      'variable.description',
+      'variable.key',
+      'variable.value',
+    ]) {
+      expect(coverage[path], startsWith('mapped: '), reason: path);
     }
   });
 
