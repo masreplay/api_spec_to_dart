@@ -30,15 +30,34 @@ void main() {
     expect(inferJsonSchema(['2024-01-01']), {'type': 'string'});
     expect(
       inferJsonSchema([
-        '2024-01-01 10:00:00',
-        '2024-01-01T10:00:00.123456+03:00',
-        '2024-01-01T10:00',
+        '2024-01-01t10:00:00.123456+03:00',
+        '2016-12-31T23:59:60z',
+        '2024-02-29T00:00:00-12:30',
       ]),
       {'type': 'string', 'format': 'date-time'},
     );
     expect(inferJsonSchema(['2024-01-01T10:00:00Z', 'soon']), {
       'type': 'string',
     });
+  });
+
+  test('date-time follows RFC 3339: seconds, offset, T and valid ranges', () {
+    for (final notDateTime in [
+      '2024-01-01 10:00:00Z',
+      '2024-01-01T10:00Z',
+      '2024-01-01T10:00:00',
+      '2024-02-30T10:00:00Z',
+      '2023-02-29T10:00:00Z',
+      '2024-13-01T10:00:00Z',
+      '2024-01-01T24:00:00Z',
+      '2024-01-01T10:60:00Z',
+      '2024-01-01T10:00:61Z',
+      '2024-01-01T10:00:00+24:00',
+    ]) {
+      expect(inferJsonSchema([notDateTime]), {
+        'type': 'string',
+      }, reason: notDateTime);
+    }
   });
 
   test('different kinds become oneOf', () {
