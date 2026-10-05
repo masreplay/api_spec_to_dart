@@ -138,6 +138,10 @@ class _Converter {
   final _origins = <String, int>{};
   final _servers = <String, Map<String, Object?>>{};
 
+  /// The first URL of each path shape (`/users/{}`): equivalent templates
+  /// share its path and parameter names.
+  final _templates = <String, ParsedUrl>{};
+
   Map<String, Object?> convert() {
     final variables = _scope(const {}, collection['variable']);
     final security = schemes.requirement(collection['auth'], variables);
@@ -254,15 +258,21 @@ class _Converter {
       return;
     }
     final url = parseUrl(request['url']);
+    final template = webhook
+        ? url
+        : _templates.putIfAbsent(
+            url.path.replaceAll(RegExp(r'\{[^{}]*\}'), '{}'),
+            () => url,
+          );
     _Operation create() => _Operation(
       method: method,
-      path: url.path,
+      path: template.path,
       origin: url.origin,
       summary: name,
       description:
           descriptionText(request['description']) ??
           descriptionText(item['description']),
-      operationId: _operationId(name, method, url.path),
+      operationId: _operationId(name, method, template.path),
       tag: _tag(folders),
       security: schemes.requirement(
         inheritAuth(auth, request['auth']),
@@ -285,10 +295,16 @@ class _Converter {
         url.origin,
         () => _server(url.origin, variables, secrets),
       );
-      operation = _operations.putIfAbsent('$method ${url.path}', create);
+      operation = _operations.putIfAbsent('$method ${template.path}', create);
     }
 
-    operation.addRequest(url, request, variables, name);
+    operation.addRequest(
+      url,
+      request,
+      variables,
+      name,
+      pathNames: template.pathParams,
+    );
     for (final example
         in item['response'] is List ? item['response'] as List : const []) {
       if (example is Map) operation.addExample(example, variables);
@@ -493,32 +509,31 @@ class _Operation {
     () => _Parameter(name, location, type),
   );
 
-  /// Adds the parameters and body of a request named [name]. Path parameters
-  /// only come from the operation's own requests, not saved examples.
+  /// Adds the parameters and body of a request named [name]. Its path
+  /// parameters take [pathNames] (the operation template's, by position);
+  /// saved examples give none.
   void addRequest(
     ParsedUrl url,
     Map<Object?, Object?> request,
     Map<String, String> variables,
     String name, {
-    bool path = true,
+    List<String> pathNames = const [],
   }) {
-    if (path) {
-      for (final param in url.pathParams) {
-        final variable = url.variables
-            .where((variable) => variable['key'] == param)
-            .firstOrNull;
-        final type = switch (variable?['type']) {
-          'number' => 'number',
-          'boolean' => 'boolean',
-          _ => 'string',
-        };
-        _parameter('path', param, type)
-          ..describe(variable?['description'])
-          ..sample(
-            _example(param, variable?['value'], variables, secrets) ??
-                _example(param, '{{$param}}', variables, secrets),
-          );
-      }
+    for (final (i, param) in url.pathParams.indexed.take(pathNames.length)) {
+      final variable = url.variables
+          .where((variable) => variable['key'] == param)
+          .firstOrNull;
+      final type = switch (variable?['type']) {
+        'number' => 'number',
+        'boolean' => 'boolean',
+        _ => 'string',
+      };
+      _parameter('path', pathNames[i], type)
+        ..describe(variable?['description'])
+        ..sample(
+          _example(param, variable?['value'], variables, secrets) ??
+              _example(param, '{{$param}}', variables, secrets),
+        );
     }
 
     final query = <String, List<Map<Object?, Object?>>>{};
@@ -583,13 +598,7 @@ class _Operation {
         ? example['name'] as String
         : 'Example';
     if (_requestMap(example['originalRequest']) case final request?) {
-      addRequest(
-        parseUrl(request['url']),
-        request,
-        variables,
-        name,
-        path: false,
-      );
+      addRequest(parseUrl(request['url']), request, variables, name);
     }
 
     final code = _statusCode(example);
