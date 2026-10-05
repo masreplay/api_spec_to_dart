@@ -132,11 +132,9 @@
             "name": "provider",
             "in": "query",
             "schema": {
-              "type": "string",
-              "examples": [
-                "google"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "google"
           },
           {
             "name": "Accept-Language",

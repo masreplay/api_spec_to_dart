@@ -655,26 +655,22 @@ class _Parameter {
     _ => value,
   };
 
-  /// The example goes in the schema (JSON Schema `examples`) and arrays rely
-  /// on the query `form` style exploding by default: the official OAS schema
-  /// admits a parameter's `example` and `explode` only through
-  /// `dependentSchemas`.
-  Map<String, Object?> toJson() {
-    final value = array && example != null && example is! List
+  Map<String, Object?> toJson() => {
+    'name': name,
+    'in': location,
+    'description': ?description,
+    if (location == 'path') 'required': true,
+    'schema': array
+        ? {
+            'type': 'array',
+            'items': {'type': type},
+          }
+        : {'type': type},
+    if (array) 'explode': true,
+    'example': ?(array && example != null && example is! List
         ? [example]
-        : example;
-    return {
-      'name': name,
-      'in': location,
-      'description': ?description,
-      if (location == 'path') 'required': true,
-      'schema': {
-        'type': array ? 'array' : type,
-        if (array) 'items': {'type': type},
-        if (value != null) 'examples': [value],
-      },
-    };
-  }
+        : example),
+  };
 }
 
 class _Response {
@@ -690,10 +686,8 @@ class _Response {
       'headers': {
         for (final (name, example) in headers.values)
           name: {
-            'schema': {
-              'type': 'string',
-              if (example != null) 'examples': [example],
-            },
+            'schema': {'type': 'string'},
+            'example': ?example,
           },
       },
     if (content.isNotEmpty)

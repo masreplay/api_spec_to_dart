@@ -332,35 +332,29 @@ void main() {
             'in': 'path',
             'description': 'User id',
             'required': true,
-            'schema': {
-              'type': 'string',
-              'examples': ['7'],
-            },
+            'schema': {'type': 'string'},
+            'example': '7',
           },
           {
             'name': 'section',
             'in': 'path',
             'required': true,
-            'schema': {
-              'type': 'string',
-              'examples': ['posts'],
-            },
+            'schema': {'type': 'string'},
+            'example': 'posts',
           },
           {
             'name': 'page',
             'in': 'path',
             'required': true,
-            'schema': {
-              'type': 'number',
-              'examples': [2],
-            },
+            'schema': {'type': 'number'},
+            'example': 2,
           },
         ],
       );
     });
 
-    test('query: optional, disabled ones too, repeated keys become arrays '
-        '(form style explodes them), null or empty keys skipped', () {
+    test('query: optional, disabled ones too, repeated keys become exploded '
+        'arrays, null or empty keys skipped', () {
       final document = convert(
         collection([
           request('Search', 'GET', {
@@ -390,18 +384,15 @@ void main() {
           'schema': {
             'type': 'array',
             'items': {'type': 'string'},
-            'examples': [
-              ['x', 'y'],
-            ],
           },
+          'explode': true,
+          'example': ['x', 'y'],
         },
         {
           'name': 'debug',
           'in': 'query',
-          'schema': {
-            'type': 'string',
-            'examples': ['true'],
-          },
+          'schema': {'type': 'string'},
+          'example': 'true',
         },
         {
           'name': 'flag',
@@ -455,18 +446,14 @@ void main() {
           'name': 'Accept-Language',
           'in': 'header',
           'description': 'Locale',
-          'schema': {
-            'type': 'string',
-            'examples': ['ar'],
-          },
+          'schema': {'type': 'string'},
+          'example': 'ar',
         },
         {
           'name': 'X-Trace',
           'in': 'header',
-          'schema': {
-            'type': 'string',
-            'examples': ['dup'],
-          },
+          'schema': {'type': 'string'},
+          'example': 'dup',
         },
         {
           'name': 'session',
@@ -766,16 +753,12 @@ void main() {
             'description': 'OK',
             'headers': {
               'X-Rate-Limit': {
-                'schema': {
-                  'type': 'string',
-                  'examples': ['59'],
-                },
+                'schema': {'type': 'string'},
+                'example': '59',
               },
               'X-Request-Id': {
-                'schema': {
-                  'type': 'string',
-                  'examples': ['abc'],
-                },
+                'schema': {'type': 'string'},
+                'example': 'abc',
               },
             },
           },
@@ -1033,31 +1016,25 @@ void main() {
       );
       final get = operation(document, '/a', 'get');
       expect(
-        {
-          for (final p in parameters(get))
-            (p as Map)['name']: (p['schema'] as Map)['examples'],
-        },
+        {for (final p in parameters(get)) (p as Map)['name']: p['example']},
         {
           'api_key': null,
           'access_token': null,
-          'author': ['tolkien'],
+          'author': 'tolkien',
           'jwt': null,
           'X-Auth-Token': null,
           'X-Api-Key': null,
           'X-Session-Id': null,
           'X-Forwarded': null,
           'X-Proxy': null,
-          'Accept-Language': ['ar'],
+          'Accept-Language': 'ar',
         },
       );
       final headers =
           ((get['responses']! as Map)['200']! as Map)['headers']! as Map;
-      expect(headers.map((name, h) => MapEntry(name, (h as Map)['schema'])), {
-        'X-Refresh-Token': {'type': 'string'},
-        'X-Rate-Limit': {
-          'type': 'string',
-          'examples': ['59'],
-        },
+      expect(headers.map((name, h) => MapEntry(name, (h as Map)['example'])), {
+        'X-Refresh-Token': null,
+        'X-Rate-Limit': '59',
       });
     });
   });
@@ -1107,15 +1084,8 @@ void main() {
       );
       final get = operation(document, '/{version}/a', 'post');
       expect(
-        [
-          for (final p in parameters(get))
-            ((p as Map)['schema'] as Map)['examples'],
-        ],
-        [
-          ['v1'],
-          ['en'],
-          ['3'],
-        ],
+        [for (final p in parameters(get)) (p as Map)['example']],
+        ['v1', 'en', '3'],
       );
       expect(
         ((get['requestBody']! as Map)['content']! as Map)['application/json'],

@@ -77,11 +77,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "requestBody": {
@@ -129,11 +127,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "requestBody": {
@@ -191,11 +187,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "requestBody": {
@@ -295,11 +289,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "requestBody": {
@@ -354,11 +346,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "requestBody": {
@@ -476,31 +466,25 @@
             "name": "page",
             "in": "query",
             "schema": {
-              "type": "string",
-              "examples": [
-                "1"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "1"
           },
           {
             "name": "limit",
             "in": "query",
             "schema": {
-              "type": "string",
-              "examples": [
-                "4"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "4"
           },
           {
             "name": "lite",
             "in": "query",
             "schema": {
-              "type": "string",
-              "examples": [
-                "0"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "0"
           },
           {
             "name": "jwt",
@@ -513,11 +497,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "responses": {
@@ -547,11 +529,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "requestBody": {
@@ -658,31 +638,25 @@
             "name": "page",
             "in": "query",
             "schema": {
-              "type": "string",
-              "examples": [
-                "1"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "1"
           },
           {
             "name": "limit",
             "in": "query",
             "schema": {
-              "type": "string",
-              "examples": [
-                "4"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "4"
           },
           {
             "name": "lite",
             "in": "query",
             "schema": {
-              "type": "string",
-              "examples": [
-                "0"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "0"
           },
           {
             "name": "jwt",
@@ -695,11 +669,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "responses": {
@@ -729,11 +701,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "responses": {
@@ -763,11 +733,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "requestBody": {
@@ -819,11 +787,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "requestBody": {
@@ -894,11 +860,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "responses": {
@@ -928,11 +892,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "requestBody": {
@@ -1003,21 +965,17 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           },
           {
             "name": "enctype",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "multipart/form-data"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "multipart/form-data"
           }
         ],
         "requestBody": {
@@ -1099,21 +1057,17 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           },
           {
             "name": "enctype",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "multipart/form-data"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "multipart/form-data"
           }
         ],
         "requestBody": {
@@ -1168,11 +1122,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "responses": {
@@ -1195,31 +1147,25 @@
             "name": "page",
             "in": "query",
             "schema": {
-              "type": "string",
-              "examples": [
-                "1"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "1"
           },
           {
             "name": "limit",
             "in": "query",
             "schema": {
-              "type": "string",
-              "examples": [
-                "1"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "1"
           },
           {
             "name": "lite",
             "in": "query",
             "schema": {
-              "type": "string",
-              "examples": [
-                "0"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "0"
           },
           {
             "name": "jwt",
@@ -1232,11 +1178,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "responses": {
@@ -1266,11 +1210,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "requestBody": {
@@ -1356,11 +1298,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "requestBody": {
@@ -1425,11 +1365,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "requestBody": {
@@ -1491,31 +1429,25 @@
             "name": "page",
             "in": "query",
             "schema": {
-              "type": "string",
-              "examples": [
-                "1"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "1"
           },
           {
             "name": "limit",
             "in": "query",
             "schema": {
-              "type": "string",
-              "examples": [
-                "4"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "4"
           },
           {
             "name": "lite",
             "in": "query",
             "schema": {
-              "type": "string",
-              "examples": [
-                "1"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "1"
           },
           {
             "name": "jwt",
@@ -1528,11 +1460,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "responses": {
@@ -1562,11 +1492,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "responses": {
@@ -1594,11 +1522,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "responses": {
@@ -1628,11 +1554,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "requestBody": {
@@ -1677,11 +1601,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "requestBody": {
@@ -1751,11 +1673,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "requestBody": {
@@ -1809,11 +1729,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "requestBody": {
@@ -1864,11 +1782,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "responses": {
@@ -1898,21 +1814,17 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           },
           {
             "name": "enctype",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "multipart/form-data"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "multipart/form-data"
           }
         ],
         "requestBody": {
@@ -1967,11 +1879,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "responses": {
@@ -1999,11 +1909,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "requestBody": {
@@ -2062,11 +1970,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "requestBody": {
@@ -2125,11 +2031,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "requestBody": {
@@ -2182,11 +2086,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "requestBody": {
@@ -2241,11 +2143,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "requestBody": {
@@ -2341,11 +2241,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "responses": {
@@ -2375,11 +2273,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "responses": {
@@ -2407,11 +2303,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "requestBody": {
@@ -2468,11 +2362,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "responses": {
@@ -2500,11 +2392,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "requestBody": {
@@ -2551,11 +2441,9 @@
             "name": "file",
             "in": "query",
             "schema": {
-              "type": "string",
-              "examples": [
-                "abcd.jpg"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "abcd.jpg"
           },
           {
             "name": "jwt",
@@ -2568,11 +2456,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "responses": {
@@ -2592,11 +2478,9 @@
             "name": "file",
             "in": "query",
             "schema": {
-              "type": "string",
-              "examples": [
-                "abcd.jpg"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "abcd.jpg"
           },
           {
             "name": "jwt",
@@ -2609,11 +2493,9 @@
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           }
         ],
         "responses": {

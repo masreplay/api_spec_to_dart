@@ -79,11 +79,9 @@
             "in": "header",
             "description": "Client platform",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ios"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ios"
           }
         ],
         "requestBody": {
@@ -129,11 +127,9 @@
             "in": "query",
             "description": "Page size",
             "schema": {
-              "type": "string",
-              "examples": [
-                "10"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "10"
           }
         ],
         "responses": {
@@ -224,11 +220,9 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "examples": [
-                "1"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "1"
           }
         ],
         "responses": {

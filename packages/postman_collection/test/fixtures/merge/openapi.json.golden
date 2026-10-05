@@ -28,51 +28,41 @@
             "name": "channel",
             "in": "query",
             "schema": {
-              "type": "string",
-              "examples": [
-                "sms"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "sms"
           },
           {
             "name": "Accept-Language",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "ar"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "ar"
           },
           {
             "name": "debug",
             "in": "query",
             "schema": {
-              "type": "string",
-              "examples": [
-                "1"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "1"
           },
           {
             "name": "X-Device",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "android"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "android"
           },
           {
             "name": "X-Client",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "web"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "web"
           }
         ],
         "requestBody": {

@@ -30,21 +30,17 @@
             "name": "page",
             "in": "query",
             "schema": {
-              "type": "string",
-              "examples": [
-                "1"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "1"
           },
           {
             "name": "X-App-Version",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "1.2.3"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "1.2.3"
           },
           {
             "name": "X-Session",
@@ -57,11 +53,9 @@
             "name": "X-Disabled",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "yes"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "yes"
           }
         ],
         "responses": {
@@ -82,21 +76,17 @@
             "description": "Numeric id",
             "required": true,
             "schema": {
-              "type": "string",
-              "examples": [
-                "7"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "7"
           },
           {
             "name": "n",
             "in": "query",
             "schema": {
-              "type": "string",
-              "examples": [
-                "5"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "5"
           },
           {
             "name": "X-Null",
@@ -109,21 +99,17 @@
             "name": "X-Number",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "42"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "42"
           },
           {
             "name": "X-As-String",
             "in": "header",
             "schema": {
-              "type": "string",
-              "examples": [
-                "from a string item"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "from a string item"
           }
         ],
         "responses": {
