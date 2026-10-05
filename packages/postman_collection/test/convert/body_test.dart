@@ -112,13 +112,56 @@ void main() {
     expect((requestBody(raw('hello'))!['content'] as Map).keys, ['text/plain']);
   });
 
-  test('invalid json falls back to an object and warns', () {
+  test('invalid json falls back to an object, with no example, and warns', () {
     final warnings = <String>[];
     final content =
         requestBody(raw('{"a": }', 'json'), warnings: warnings)!['content']
             as Map;
-    expect((content['application/json'] as Map)['schema'], {'type': 'object'});
+    expect(content['application/json'], {
+      'schema': {'type': 'object'},
+    });
     expect(warnings, hasLength(1));
+  });
+
+  test('a JSON body wins over a file body of the same media type', () {
+    final file = {
+      'mode': 'file',
+      'file': {'src': '/tmp/a.json'},
+    };
+    final headers = [
+      {'key': 'Content-Type', 'value': 'application/json'},
+    ];
+    const expected = {
+      'content': {
+        'application/json': {
+          'schema': {
+            'type': 'object',
+            'properties': {
+              'a': {'type': 'integer'},
+            },
+          },
+          'examples': {
+            'Json': {
+              'value': {'a': 1},
+            },
+          },
+        },
+      },
+    };
+    expect(
+      (RequestBodies()
+            ..add(file, headers: headers, name: 'Upload')
+            ..add(raw('{"a": 1}', 'json'), name: 'Json'))
+          .toJson(),
+      expected,
+    );
+    expect(
+      (RequestBodies()
+            ..add(raw('{"a": 1}', 'json'), name: 'Json')
+            ..add(file, headers: headers, name: 'Upload'))
+          .toJson(),
+      expected,
+    );
   });
 
   test('urlencoded: an object whose values are inferred', () {

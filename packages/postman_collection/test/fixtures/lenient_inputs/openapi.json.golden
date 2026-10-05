@@ -20,6 +20,11 @@
       "jwt": []
     }
   ],
+  "tags": [
+    {
+      "name": "Empty folder"
+    }
+  ],
   "paths": {
     "/strings": {
       "get": {
@@ -179,11 +184,6 @@
             "application/json": {
               "schema": {
                 "type": "object"
-              },
-              "examples": {
-                "Broken JSON body": {
-                  "value": {}
-                }
               }
             }
           }

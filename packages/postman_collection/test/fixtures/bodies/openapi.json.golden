@@ -143,11 +143,6 @@
             "application/json": {
               "schema": {
                 "type": "object"
-              },
-              "examples": {
-                "Invalid JSON": {
-                  "value": {}
-                }
               }
             }
           }

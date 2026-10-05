@@ -203,6 +203,9 @@ void main() {
           request('0-Create temp user', 'POST', 'https://x.io/temp'),
           request('تسجيل 2', 'POST', 'https://x.io/auth/login'),
           request('getUserByID', 'PUT', 'https://x.io/users/:id'),
+          request('Café ☕', 'GET', 'https://x.io/café/menu'),
+          request('Naïve search', 'GET', 'https://x.io/search'),
+          request('Users المستخدمين', 'GET', 'https://x.io/users2'),
         ]),
       );
       final ids = [
@@ -218,6 +221,9 @@ void main() {
         'getProfile',
         'post0CreateTempUser',
         'postAuthLogin',
+        'getMenu',
+        'getSearch',
+        'users',
       ]);
     });
 
@@ -259,17 +265,62 @@ void main() {
         warnings,
       );
       expect((document['paths']! as Map).keys, ['/a']);
-      expect(document.containsKey('tags'), isFalse);
+      expect(document['tags'], [
+        {'name': 'Cart'},
+      ]);
       expect(warnings, [
         contains("'Lost'"),
         contains('junk'),
         contains("'Odd'"),
       ]);
     });
+
+    test('a URL that is one variable uses its value; requests without a URL '
+        'are skipped with a warning', () {
+      final warnings = <String>[];
+      final document = convert(
+        collection(
+          [
+            request('Get user', 'GET', '{{getUserUrl}}'),
+            request('List orders', 'GET', '{{listOrdersUrl}}?page=1'),
+            request('Unknown', 'GET', '{{nowhere}}'),
+            {
+              'name': 'No URL',
+              'request': {'method': 'GET'},
+            },
+            request('Empty URL', 'GET', ''),
+            request('Root', 'GET', 'https://api.x.io'),
+          ],
+          extra: {
+            'variable': [
+              {'key': 'getUserUrl', 'value': 'https://api.x.io/users/:id'},
+              {'key': 'listOrdersUrl', 'value': 'https://api.x.io/orders'},
+            ],
+          },
+        ),
+        warnings,
+      );
+      expect((document['paths']! as Map).keys, ['/users/{id}', '/orders', '/']);
+      expect(document['servers'], [
+        {'url': 'https://api.x.io'},
+      ]);
+      expect(
+        [
+          for (final p in parameters(operation(document, '/orders', 'get')))
+            (p as Map)['name'],
+        ],
+        ['page'],
+      );
+      expect(warnings, [
+        contains("'Unknown'"),
+        contains("'No URL'"),
+        contains("'Empty URL'"),
+      ]);
+    });
   });
 
-  test('folder paths become tags with folder descriptions; root requests '
-      'are untagged', () {
+  test('folder paths become tags with folder descriptions, empty folders '
+      'too; root requests are untagged', () {
     final document = convert(
       collection([
         {
@@ -282,6 +333,7 @@ void main() {
               'description': {'content': 'Admin calls'},
               'item': [request('Ban', 'POST', 'https://x.io/ban')],
             },
+            {'name': 'Later', 'description': 'Nothing yet', 'item': []},
           ],
         },
         {
@@ -294,6 +346,7 @@ void main() {
     expect(document['tags'], [
       {'name': 'Users', 'description': 'User calls'},
       {'name': 'Users / Admin', 'description': 'Admin calls'},
+      {'name': 'Users / Later', 'description': 'Nothing yet'},
       {'name': 'Orders'},
     ]);
     expect(operation(document, '/users', 'get')['tags'], ['Users']);
@@ -861,6 +914,30 @@ void main() {
         'default': {'description': 'Default response'},
       });
     });
+
+    test('a javascript or text preview that parses as JSON is JSON (v1 '
+        'previews have no json language)', () {
+      final content = {
+        for (final MapEntry(:key, :value) in responses([
+          example(
+            'js json',
+            code: 200,
+            language: 'javascript',
+            body: '{"a": 1}',
+          ),
+          example('text json', code: 201, language: 'Text', body: '[1]'),
+          example('js code', code: 202, language: 'javascript', body: 'f(1)'),
+          example('text', code: 203, language: 'text', body: 'plain'),
+        ]).entries)
+          key: ((value as Map)['content'] as Map).keys.toList(),
+      };
+      expect(content, {
+        '200': ['application/json'],
+        '201': ['application/json'],
+        '202': ['application/javascript'],
+        '203': ['text/plain'],
+      });
+    });
   });
 
   group('methods', () {
@@ -1009,6 +1086,64 @@ void main() {
         {'basic': <String>[]},
       ]);
       expect(operation(document, '/d', 'get').containsKey('security'), isFalse);
+    });
+
+    test('an empty auth type is no auth, with a warning', () {
+      final warnings = <String>[];
+      final document = convert(
+        collection(
+          [
+            request(
+              'Open',
+              'GET',
+              'https://x.io/a',
+              fields: {
+                'auth': {'type': ''},
+              },
+            ),
+          ],
+          extra: {'auth': auth('bearer')},
+        ),
+        warnings,
+      );
+      expect(operation(document, '/a', 'get')['security'], isEmpty);
+      expect(
+        ((document['components']! as Map)['securitySchemes']! as Map).keys,
+        ['bearer'],
+      );
+      expect(warnings, [contains('without a type')]);
+    });
+
+    test('oauth2 configuration does not make its variables secret', () {
+      final document = convert(
+        collection(
+          [request('Get', 'GET', '{{baseUrl}}/a')],
+          extra: {
+            'auth': {
+              'type': 'oauth2',
+              'oauth2': [
+                {'key': 'redirect_uri', 'value': '{{baseUrl}}/callback'},
+                {'key': 'audience', 'value': '{{audience}}'},
+                {'key': 'clientSecret', 'value': '{{clientSecret}}'},
+              ],
+            },
+            'variable': [
+              {'key': 'baseUrl', 'value': 'https://api.x.io'},
+              {'key': 'audience', 'value': 'https://api.x.io'},
+              {'key': 'clientSecret', 'value': 'SECRET-client'},
+            ],
+          },
+        ),
+      );
+      expect(document['servers'], [
+        {
+          'url': '{baseUrl}',
+          'variables': {
+            'baseUrl': {'default': 'https://api.x.io'},
+          },
+        },
+      ]);
+      expect(jsonEncode(document), isNot(contains('SECRET')));
     });
 
     test('without collection auth, noauth needs no security', () {

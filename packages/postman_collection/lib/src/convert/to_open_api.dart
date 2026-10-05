@@ -131,7 +131,7 @@ class _Converter {
   final _webhooks = <String, _Operation>{};
   final _operationIds = <String>{};
 
-  /// Folder tags with their folder descriptions.
+  /// Every folder's tag with the folder description, in collection order.
   final _tagDescriptions = <String, String?>{};
 
   /// How many requests use each origin, and its server object.
@@ -170,19 +170,16 @@ class _Converter {
         operation.toJson(security, null),
       );
     }
-    final tags = {
-      for (final operation in [..._operations.values, ..._webhooks.values])
-        ?operation.tag,
-    };
     return {
       'openapi': v32 ? '3.2.0' : '3.1.1',
       'info': _info(collection['info']),
       if (origin != null && origin.isNotEmpty) 'servers': [_servers[origin]],
       if (security != null && security.isNotEmpty) 'security': security,
-      if (tags.isNotEmpty)
+      if (_tagDescriptions.isNotEmpty)
         'tags': [
-          for (final tag in tags)
-            {'name': tag, 'description': ?_tagDescriptions[tag]},
+          for (final MapEntry(key: tag, value: description)
+              in _tagDescriptions.entries)
+            {'name': tag, 'description': ?description},
         ],
       'paths': paths,
       if (webhooks.isNotEmpty) 'webhooks': webhooks,
@@ -257,7 +254,17 @@ class _Converter {
       );
       return;
     }
-    final url = parseUrl(request['url']);
+    final requestUrl = webhook
+        ? request['url']
+        : _requestUrl(request['url'], variables);
+    if (requestUrl == null) {
+      onWarning?.call(
+        "request '$name' has no URL (or a URL variable without a value); "
+        'skipped',
+      );
+      return;
+    }
+    final url = parseUrl(requestUrl);
     final template = webhook
         ? url
         : _templates.putIfAbsent(
@@ -314,7 +321,12 @@ class _Converter {
   /// A unique ASCII camelCase operationId from [name], or from the method and
   /// path when the name has no ASCII letters.
   String _operationId(String name, String method, String path) {
-    var id = _camelCase(name);
+    // A word mixing ASCII and other letters (Café) would lose part of itself.
+    final mixed = _word
+        .allMatches(name)
+        .map((m) => m[0]!)
+        .any((w) => !_asciiWord.hasMatch(w) && w.contains(RegExp('[A-Za-z]')));
+    var id = mixed ? '' : _camelCase(name);
     if (!id.contains(RegExp('[A-Za-z]'))) {
       id = _camelCase('$method $path');
     } else if (id.startsWith(RegExp('[0-9]'))) {
@@ -326,6 +338,37 @@ class _Converter {
     }
     return unique;
   }
+}
+
+/// A URL that is one variable, optionally with a query.
+final _variableUrl = RegExp(r'^\s*\{\{([^{}]+)\}\}\s*(\?.*)?$');
+
+/// The request [url] to convert: one that is a single variable is replaced
+/// by the variable's value. Null when there is no URL, or the variable has
+/// no value (the path cannot be known).
+Object? _requestUrl(Object? url, Map<String, String> variables) {
+  final raw = switch (url) {
+    final String raw => raw,
+    {'raw': final String raw} => raw,
+    _ => '',
+  };
+  final structured = url is Map && (url['host'] != null || url['path'] != null);
+  if (raw.trim().isEmpty && !structured) return null;
+  final match = _variableUrl.firstMatch(raw);
+  if (match == null) return url;
+  final value = resolveVariable(match[1]!, variables)?.trim() ?? '';
+  if (value.isEmpty) return null;
+  final resolved = '$value${match[2] ?? ''}';
+  return url is Map
+      ? {
+          ...url,
+          'raw': resolved,
+          'protocol': null,
+          'host': null,
+          'port': null,
+          'path': null,
+        }
+      : resolved;
 }
 
 /// A v2.1 request (a URL string means GET), or null.
@@ -343,16 +386,22 @@ String? _tag(List<String> folders) {
   return names.isEmpty ? null : names.join(' / ');
 }
 
+/// Words: runs of letters, marks and digits of any script.
+final _word = RegExp(r'[\p{L}\p{M}\p{N}]+', unicode: true);
+final _asciiWord = RegExp(r'^[A-Za-z0-9]+$');
+
+/// The camelCase of [text]'s ASCII words (other words are dropped whole).
 String _camelCase(String text) {
   final words = [
-    for (final chunk in text.split(RegExp('[^A-Za-z0-9]+')))
-      ...chunk
-          .replaceAllMapped(
-            RegExp('([a-z0-9])([A-Z])'),
-            (m) => '${m[1]} ${m[2]}',
-          )
-          .split(' '),
-  ].where((word) => word.isNotEmpty);
+    for (final match in _word.allMatches(text))
+      if (_asciiWord.hasMatch(match[0]!))
+        ...match[0]!
+            .replaceAllMapped(
+              RegExp('([a-z0-9])([A-Z])'),
+              (m) => '${m[1]} ${m[2]}',
+            )
+            .split(' '),
+  ];
   return [
     for (final (i, word) in words.indexed)
       i == 0
@@ -622,12 +671,19 @@ class _Operation {
       );
     }
     if (example['body'] case final String text) {
+      // v1 previews have no json language: JSON shows as javascript or text.
+      final language = example['_postman_previewlanguage'];
+      final sniff = const {
+        'javascript',
+        'text',
+      }.contains('$language'.toLowerCase());
       addRawContent(
         response.content,
         text,
         mediaType:
             contentType(example['header']) ??
-            languageMediaType(example['_postman_previewlanguage']),
+            (sniff ? null : languageMediaType(language)),
+        textMediaType: languageMediaType(language) ?? 'text/plain',
         variables: variables,
         name: name,
         onWarning: onWarning,

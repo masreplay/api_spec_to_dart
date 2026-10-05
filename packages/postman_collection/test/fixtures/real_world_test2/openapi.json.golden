@@ -21,6 +21,9 @@
   ],
   "tags": [
     {
+      "name": "Mobile Platform Requests"
+    },
+    {
       "name": "Mobile Platform Requests / Login"
     },
     {
@@ -30,7 +33,7 @@
       "name": "Mobile Platform Requests / End Users"
     },
     {
-      "name": "Mobile Platform Requests"
+      "name": "Admin Panel Requests"
     },
     {
       "name": "Admin Panel Requests / Sellers"
@@ -40,9 +43,6 @@
     },
     {
       "name": "Admin Panel Requests / Admin Users"
-    },
-    {
-      "name": "Admin Panel Requests"
     },
     {
       "name": "Service  Locations"
