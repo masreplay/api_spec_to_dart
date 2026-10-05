@@ -339,6 +339,31 @@ void main() {
     ]);
   });
 
+  test('a folder with only a definition is an empty item-group', () {
+    expect(
+      postmanCollectionFromV3Files({
+        'a.request.yaml': "\$kind: http-request\nurl: 'https://x.io/a'",
+        'empty/.resources/definition.yaml':
+            '\$kind: collection\nname: Later\ndescription: Nothing yet\n'
+            'order: 1',
+        'nested/deeper/.resources/definition.yaml': '\$kind: collection',
+      })['item'],
+      [
+        {'name': 'Later', 'description': 'Nothing yet', 'item': []},
+        {
+          'name': 'a',
+          'request': {'url': 'https://x.io/a'},
+        },
+        {
+          'name': 'nested',
+          'item': [
+            {'name': 'deeper', 'item': []},
+          ],
+        },
+      ],
+    );
+  });
+
   test('without a definition the name comes from the argument', () {
     final collection = postmanCollectionFromV3Files({
       'a.request.yaml': "\$kind: http-request\nurl: 'https://x.io/a'",

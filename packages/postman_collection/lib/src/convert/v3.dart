@@ -55,8 +55,9 @@ Map<String, Object?> postmanCollectionFromV3Files(
 
   requests.map(_parent).forEach(addFolder);
   for (final path in paths) {
-    if (path.endsWith('/$_definition') && !_inResources(path)) {
-      addFolder(path.substring(0, path.length - _definition.length - 1));
+    if (path.endsWith('/$_definition')) {
+      final folder = path.substring(0, path.length - _definition.length - 1);
+      if (!_inResources('$folder/')) addFolder(folder);
     }
   }
 
