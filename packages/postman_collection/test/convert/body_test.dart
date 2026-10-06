@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:postman_collection/src/convert/body.dart';
 import 'package:test/test.dart';
 
@@ -338,6 +340,33 @@ void main() {
           },
         },
       },
+    );
+  });
+
+  test('out-of-range numbers in raw JSON, form values and GraphQL '
+      'variables are text, so the body encodes', () {
+    final bodies = RequestBodies()
+      ..add(raw('{"n": 1e999}', 'json'), name: 'raw')
+      ..add({
+        'mode': 'urlencoded',
+        'urlencoded': [
+          {'key': 'n', 'value': '1e999'},
+        ],
+      }, name: 'form')
+      ..add({
+        'mode': 'graphql',
+        'graphql': {'query': '{ a }', 'variables': '{"n": -1e999}'},
+      }, name: 'graphql');
+    final json = jsonEncode(bodies.toJson());
+    expect(json, contains('"n":"1e999"'));
+    expect(json, contains('"n":"Infinity"'));
+    expect(json, contains('"n":"-Infinity"'));
+  });
+
+  test('a text body that is JSON with out-of-range numbers encodes', () {
+    expect(
+      () => jsonEncode(requestBody(raw('{"n": 1e999}', 'text'))),
+      returnsNormally,
     );
   });
 

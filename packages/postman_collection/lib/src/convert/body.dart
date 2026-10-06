@@ -280,17 +280,18 @@ String _decodeComponent(String text) {
 /// [text] decoded when it is a JSON object or array, else null.
 Object? _json(String text) {
   try {
-    final value = jsonDecode(text);
+    final value = jsonDecode(text, reviver: nonFiniteAsText);
     return value is Map || value is List ? value : null;
   } on FormatException {
     return null;
   }
 }
 
-/// A form value as JSON would read it: numbers and booleans, else the text.
+/// A form value as JSON would read it: numbers (in the double range) and
+/// booleans, else the text.
 Object? _scalar(String text) {
   try {
-    final value = jsonDecode(text);
+    final value = jsonDecode(text, reviver: nonFiniteAsText);
     if (value is num || value is bool) return value;
   } on FormatException {
     // Not a JSON scalar: keep the text.
