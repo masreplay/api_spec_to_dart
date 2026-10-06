@@ -1,0 +1,55 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'admin_panel_requests_client.g.dart';
+
+@RestApi()
+abstract class AdminPanelRequestsClient {
+  factory AdminPanelRequestsClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _AdminPanelRequestsClient;
+
+  @POST('/api/v1/login/admin')
+  Future<HttpResponse> adminLogin({
+    @Body() required AdminLoginBody requestBody,
+    @Header('Accept-Language') String? acceptLanguage,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Admin Panel Requests'],
+      'summary': 'Admin Login',
+      'description': 'Login using username and password',
+      'operationId': 'adminLogin',
+      'parameters': [
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'username': {'type': 'string'},
+                'password': {'type': 'string'},
+                'lang': {'type': 'string'},
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+      'security': [],
+    },
+  });
+}

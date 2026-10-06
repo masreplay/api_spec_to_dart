@@ -181,19 +181,53 @@ class ApiClientGenerator {
       ];
       for (final operation in operations) {
         // A set: a repeated tag must not add the operation twice.
-        final tags = {
-          for (final tag in operation.operation.tags ?? <String>[])
-            Recase.instance.removeNonAscii(tag),
-        };
+        final tags = {...?operation.operation.tags};
         for (final tag in tags.isEmpty ? const ['default'] : tags) {
           (group[tag] ??= []).add(operation);
         }
       }
     }
 
+    final usedFileNames = <String>{};
     for (final MapEntry(key: tag, value: operations) in group.entries) {
-      context.addApiClient(build(clientName: tag, operations: operations));
+      // A tag without ASCII words (`المستخدمين`) is named by its paths.
+      final base = Recase.instance.toSnakeCase(tag).isEmpty
+          ? _commonPath(operations)
+          : tag;
+      var clientName = base;
+      for (
+        var i = 2;
+        !usedFileNames.add(
+          Renaming.instance.renameFile('${clientName}_client'),
+        );
+        i++
+      ) {
+        clientName = '$base$i';
+      }
+      context.addApiClient(
+        build(clientName: clientName, operations: operations),
+      );
     }
+  }
+
+  /// The static path segments [operations] share (`/users/{id}` and
+  /// `/users` → `users`), else `tag`.
+  static String _commonPath(List<ApiOperation> operations) {
+    List<String> segments(String path) => [
+      for (final segment in path.split('/'))
+        if (Recase.instance.toSnakeCase(segment).isNotEmpty &&
+            !segment.startsWith('{'))
+          segment,
+    ];
+    final common = operations
+        .map((o) => segments(o.path))
+        .reduce(
+          (a, b) => [
+            for (var i = 0; i < a.length && i < b.length && a[i] == b[i]; i++)
+              a[i],
+          ],
+        );
+    return common.isEmpty ? 'tag' : common.join('_');
   }
 
   /// Builds one retrofit client library for [clientName], e.g.:
@@ -275,7 +309,14 @@ class ApiClientGenerator {
             requestBody.add(
               Parameter(
                 (b) => b
-                  ..annotations.addAll([refer('Body()')])
+                  // A form has no null: leave unset optional fields out.
+                  ..annotations.addAll([
+                    refer(
+                      hasMediaType('application/x-www-form-urlencoded')
+                          ? 'Body(nullToAbsent: true)'
+                          : 'Body()',
+                    ),
+                  ])
                   ..name = _requestBodyName
                   ..named = true
                   ..required = true
@@ -332,7 +373,9 @@ class ApiClientGenerator {
                     // dropped, so the call did not compile (#57).
                     Code(
                       'return ${methodName}_('
-                      '$_requestBodyName: $_requestBodyName${canToJson ? '.toJson()' : ''}, '
+                      // A form has no null: leave unset optional
+                      // fields out.
+                      '$_requestBodyName: $_requestBodyName${canToJson ? '.toJson()..removeWhere((_, value) => value == null)' : ''}, '
                       '${parameters.map((p) => '${p.name}: ${p.name}, ').join()}'
                       'extras: extras, '
                       'cancelToken: cancelToken, '

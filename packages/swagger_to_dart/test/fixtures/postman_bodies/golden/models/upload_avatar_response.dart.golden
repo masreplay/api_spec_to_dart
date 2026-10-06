@@ -1,0 +1,41 @@
+/// UploadAvatarResponse
+///
+/// ```json
+/// {
+///     "properties": {
+///         "url": {
+///             "type": "string"
+///         },
+///         "size": {
+///             "type": "integer"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'upload_avatar_response.freezed.dart';
+part 'upload_avatar_response.g.dart';
+
+@freezed
+abstract class UploadAvatarResponse with _$UploadAvatarResponse {
+  const UploadAvatarResponse._();
+
+  @jsonSerializable
+  const factory UploadAvatarResponse({
+    /// url
+    @JsonKey(name: UploadAvatarResponse.urlKey_) String? url,
+
+    /// size
+    @JsonKey(name: UploadAvatarResponse.sizeKey_) int? size,
+  }) = _UploadAvatarResponse;
+
+  factory UploadAvatarResponse.fromJson(Map<String, dynamic> json) =>
+      _$UploadAvatarResponseFromJson(json);
+
+  static const String urlKey_ = 'url';
+
+  static const String sizeKey_ = 'size';
+}

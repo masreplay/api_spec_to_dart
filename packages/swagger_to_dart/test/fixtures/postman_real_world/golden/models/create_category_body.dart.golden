@@ -1,0 +1,49 @@
+/// CreateCategoryBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "en_name": {
+///             "type": "string"
+///         },
+///         "ar_name": {
+///             "type": "string"
+///         },
+///         "kur_name": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'create_category_body.freezed.dart';
+part 'create_category_body.g.dart';
+
+@freezed
+abstract class CreateCategoryBody with _$CreateCategoryBody {
+  const CreateCategoryBody._();
+
+  @jsonSerializable
+  const factory CreateCategoryBody({
+    /// enName
+    @JsonKey(name: CreateCategoryBody.enNameKey_) String? enName,
+
+    /// arName
+    @JsonKey(name: CreateCategoryBody.arNameKey_) String? arName,
+
+    /// kurName
+    @JsonKey(name: CreateCategoryBody.kurNameKey_) String? kurName,
+  }) = _CreateCategoryBody;
+
+  factory CreateCategoryBody.fromJson(Map<String, dynamic> json) =>
+      _$CreateCategoryBodyFromJson(json);
+
+  static const String enNameKey_ = 'en_name';
+
+  static const String arNameKey_ = 'ar_name';
+
+  static const String kurNameKey_ = 'kur_name';
+}

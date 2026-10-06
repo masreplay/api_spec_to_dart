@@ -1,0 +1,33 @@
+/// GetUserResponseAddress
+///
+/// ```json
+/// {
+///     "properties": {
+///         "city": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'get_user_response_address.freezed.dart';
+part 'get_user_response_address.g.dart';
+
+@freezed
+abstract class GetUserResponseAddress with _$GetUserResponseAddress {
+  const GetUserResponseAddress._();
+
+  @jsonSerializable
+  const factory GetUserResponseAddress({
+    /// city
+    @JsonKey(name: GetUserResponseAddress.cityKey_) String? city,
+  }) = _GetUserResponseAddress;
+
+  factory GetUserResponseAddress.fromJson(Map<String, dynamic> json) =>
+      _$GetUserResponseAddressFromJson(json);
+
+  static const String cityKey_ = 'city';
+}

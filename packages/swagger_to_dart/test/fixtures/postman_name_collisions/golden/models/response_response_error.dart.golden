@@ -1,0 +1,33 @@
+/// ResponseResponseError
+///
+/// ```json
+/// {
+///     "properties": {
+///         "message": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'response_response_error.freezed.dart';
+part 'response_response_error.g.dart';
+
+@freezed
+abstract class ResponseResponseError with _$ResponseResponseError {
+  const ResponseResponseError._();
+
+  @jsonSerializable
+  const factory ResponseResponseError({
+    /// message
+    @JsonKey(name: ResponseResponseError.messageKey_) String? message,
+  }) = _ResponseResponseError;
+
+  factory ResponseResponseError.fromJson(Map<String, dynamic> json) =>
+      _$ResponseResponseErrorFromJson(json);
+
+  static const String messageKey_ = 'message';
+}

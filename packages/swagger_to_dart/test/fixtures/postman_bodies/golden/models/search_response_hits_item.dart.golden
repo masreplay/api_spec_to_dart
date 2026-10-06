@@ -1,0 +1,41 @@
+/// SearchResponseHitsItem
+///
+/// ```json
+/// {
+///     "properties": {
+///         "id": {
+///             "type": "integer"
+///         },
+///         "score": {
+///             "type": "number"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'search_response_hits_item.freezed.dart';
+part 'search_response_hits_item.g.dart';
+
+@freezed
+abstract class SearchResponseHitsItem with _$SearchResponseHitsItem {
+  const SearchResponseHitsItem._();
+
+  @jsonSerializable
+  const factory SearchResponseHitsItem({
+    /// id
+    @JsonKey(name: SearchResponseHitsItem.idKey_) int? id,
+
+    /// score
+    @JsonKey(name: SearchResponseHitsItem.scoreKey_) double? score,
+  }) = _SearchResponseHitsItem;
+
+  factory SearchResponseHitsItem.fromJson(Map<String, dynamic> json) =>
+      _$SearchResponseHitsItemFromJson(json);
+
+  static const String idKey_ = 'id';
+
+  static const String scoreKey_ = 'score';
+}

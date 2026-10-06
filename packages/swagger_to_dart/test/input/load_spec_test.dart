@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:path/path.dart' as p;
+import 'package:postman_collection/io.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 import 'package:test/test.dart';
 import 'package:yaml/yaml.dart';
@@ -102,11 +103,37 @@ void main() {
     expect(readSpecSync(file('openapi.yml', _yaml)), _decoded);
   });
 
-  test('a directory is a Postman v3 collection, read later', () async {
-    final dir = p.join(root.path, 'collection');
-    Directory(dir).createSync();
+  test('a directory is a Postman v3 collection', () async {
+    final dir = p.join(root.path, 'Books');
+    File(p.join(dir, 'books.request.yaml'))
+      ..createSync(recursive: true)
+      ..writeAsStringSync(
+        "\$kind: http-request\nmethod: GET\nurl: 'https://x.io/books'",
+      );
 
-    expect(await loadSpec(path: dir), {'x-postman-v3-directory': dir});
+    final spec = await loadSpec(path: dir);
+
+    expect(spec, readPostmanCollectionDirectory(dir));
+    expect(spec, containsPair('info', containsPair('name', 'Books')));
+    expect(readSpecSync(dir), spec);
+  });
+
+  test('prints v3 directory warnings', () {
+    final dir = p.join(root.path, 'Socket');
+    File(p.join(dir, 'chat.request.yaml'))
+      ..createSync(recursive: true)
+      ..writeAsStringSync("\$kind: websocket-request\nurl: 'wss://x.io'");
+    final printed = <String>[];
+
+    runZoned(
+      () => readSpecSync(dir),
+      zoneSpecification: ZoneSpecification(
+        print: (_, _, _, line) => printed.add(line),
+      ),
+    );
+
+    expect(printed, hasLength(1));
+    expect(printed.single, startsWith('swagger_to_dart: warning: '));
   });
 
   test('a missing input names its path', () {

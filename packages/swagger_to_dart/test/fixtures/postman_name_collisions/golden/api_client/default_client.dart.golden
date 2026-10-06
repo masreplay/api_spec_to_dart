@@ -1,0 +1,135 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'default_client.g.dart';
+
+@RestApi()
+abstract class DefaultClient {
+  factory DefaultClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _DefaultClient;
+
+  @GET('/response')
+  Future<HttpResponse<ResponseResponse>> response({
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'summary': 'Response',
+      'operationId': 'response',
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'properties': {
+                  'data': {
+                    'type': 'object',
+                    'properties': {
+                      'ok': {'type': 'boolean'},
+                    },
+                  },
+                  'error': {
+                    'type': 'object',
+                    'properties': {
+                      'message': {'type': 'string'},
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+  @GET('/list')
+  Future<HttpResponse<List<ListResponseItem>>> list({
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'summary': 'List',
+      'operationId': 'list',
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'array',
+                'items': {
+                  'type': 'object',
+                  'properties': {
+                    'map': {
+                      'type': 'object',
+                      'properties': {
+                        'string': {'type': 'string'},
+                      },
+                    },
+                    'list': {
+                      'type': 'array',
+                      'items': {'type': 'integer'},
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+  @POST('/error')
+  Future<HttpResponse<ErrorResponse>> error({
+    @Body() required ErrorBody requestBody,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'summary': 'Error',
+      'operationId': 'error',
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'type': {'type': 'string'},
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'properties': {
+                  'response': {'type': 'integer'},
+                  'object': {
+                    'type': 'object',
+                    'properties': {
+                      'hashCode': {'type': 'integer'},
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+}

@@ -277,7 +277,8 @@ extension UsersClientX on UsersClient {
     },
   }) {
     return uploadAvatar_(
-      requestBody: requestBody.toJson(),
+      requestBody: requestBody.toJson()
+        ..removeWhere((_, value) => value == null),
       id: id,
       extras: extras,
       cancelToken: cancelToken,

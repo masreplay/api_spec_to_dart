@@ -1,0 +1,40 @@
+import 'package:dio/dio.dart';
+import 'package:retrofit/retrofit.dart';
+
+import 'exports.dart';
+
+/// متجر 🛒
+///
+/// ```json
+/// {
+///     "title": "متجر 🛒",
+///     "description": "واجهة برمجة المتجر",
+///     "version": "1.0.0"
+/// }
+/// ```
+/// Server: `https://shop.example.com`
+class BaseApiClient {
+  BaseApiClient(this.dio, {this.baseUrl, this.errorLogger});
+
+  final String? baseUrl;
+
+  final Dio dio;
+
+  final ParseErrorLogger? errorLogger;
+
+  UsersClient get usersClient {
+    return UsersClient(dio, baseUrl: baseUrl, errorLogger: errorLogger);
+  }
+
+  OrdersClient get ordersClient {
+    return OrdersClient(dio, baseUrl: baseUrl, errorLogger: errorLogger);
+  }
+
+  ProductsClient get productsClient {
+    return ProductsClient(dio, baseUrl: baseUrl, errorLogger: errorLogger);
+  }
+
+  DefaultClient get defaultClient {
+    return DefaultClient(dio, baseUrl: baseUrl, errorLogger: errorLogger);
+  }
+}

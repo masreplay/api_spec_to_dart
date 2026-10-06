@@ -1,0 +1,37 @@
+/// VariableType
+///
+/// ```json
+/// {
+///     "properties": {},
+///     "type": "string",
+///     "enum": [
+///         "string",
+///         "boolean",
+///         "any",
+///         "number"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'variable_type.g.dart';
+
+@JsonEnum(alwaysCreate: true)
+enum VariableType {
+  @JsonValue('string')
+  string,
+  @JsonValue('boolean')
+  boolean,
+  @JsonValue('any')
+  any,
+  @JsonValue('number')
+  number;
+
+  factory VariableType.fromJson(String json) => VariableType.values.firstWhere(
+    (e) => e.toJson() == json,
+    orElse: () => throw ArgumentError('Invalid VariableType'),
+  );
+
+  String toJson() => _$VariableTypeEnumMap[this]!;
+}

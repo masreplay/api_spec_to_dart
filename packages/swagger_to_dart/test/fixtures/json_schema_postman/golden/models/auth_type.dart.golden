@@ -1,0 +1,58 @@
+/// AuthType
+///
+/// ```json
+/// {
+///     "properties": {},
+///     "type": "string",
+///     "enum": [
+///         "apikey",
+///         "awsv4",
+///         "basic",
+///         "bearer",
+///         "digest",
+///         "edgegrid",
+///         "hawk",
+///         "noauth",
+///         "oauth1",
+///         "oauth2",
+///         "ntlm"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'auth_type.g.dart';
+
+@JsonEnum(alwaysCreate: true)
+enum AuthType {
+  @JsonValue('apikey')
+  apikey,
+  @JsonValue('awsv4')
+  awsv4,
+  @JsonValue('basic')
+  basic,
+  @JsonValue('bearer')
+  bearer,
+  @JsonValue('digest')
+  digest,
+  @JsonValue('edgegrid')
+  edgegrid,
+  @JsonValue('hawk')
+  hawk,
+  @JsonValue('noauth')
+  noauth,
+  @JsonValue('oauth1')
+  oauth1,
+  @JsonValue('oauth2')
+  oauth2,
+  @JsonValue('ntlm')
+  ntlm;
+
+  factory AuthType.fromJson(String json) => AuthType.values.firstWhere(
+    (e) => e.toJson() == json,
+    orElse: () => throw ArgumentError('Invalid AuthType'),
+  );
+
+  String toJson() => _$AuthTypeEnumMap[this]!;
+}

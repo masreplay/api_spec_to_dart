@@ -1,0 +1,37 @@
+/// AssignCategoryToEndUserBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "categories": {
+///             "type": "array",
+///             "items": {
+///                 "type": "integer"
+///             }
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'assign_category_to_end_user_body.freezed.dart';
+part 'assign_category_to_end_user_body.g.dart';
+
+@freezed
+abstract class AssignCategoryToEndUserBody with _$AssignCategoryToEndUserBody {
+  const AssignCategoryToEndUserBody._();
+
+  @jsonSerializable
+  const factory AssignCategoryToEndUserBody({
+    /// categories
+    @JsonKey(name: AssignCategoryToEndUserBody.categoriesKey_)
+    List<int>? categories,
+  }) = _AssignCategoryToEndUserBody;
+
+  factory AssignCategoryToEndUserBody.fromJson(Map<String, dynamic> json) =>
+      _$AssignCategoryToEndUserBodyFromJson(json);
+
+  static const String categoriesKey_ = 'categories';
+}

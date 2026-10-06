@@ -1,0 +1,42 @@
+/// UploadAvatarBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "caption": {
+///             "type": "string"
+///         },
+///         "file": {
+///             "type": "string",
+///             "format": "binary"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'upload_avatar_body.freezed.dart';
+part 'upload_avatar_body.g.dart';
+
+@freezed
+abstract class UploadAvatarBody with _$UploadAvatarBody {
+  const UploadAvatarBody._();
+
+  @jsonSerializable
+  const factory UploadAvatarBody({
+    /// caption
+    @JsonKey(name: UploadAvatarBody.captionKey_) String? caption,
+
+    /// file
+    @JsonKey(name: UploadAvatarBody.fileKey_) MultipartFile? file,
+  }) = _UploadAvatarBody;
+
+  factory UploadAvatarBody.fromJson(Map<String, dynamic> json) =>
+      _$UploadAvatarBodyFromJson(json);
+
+  static const String captionKey_ = 'caption';
+
+  static const String fileKey_ = 'file';
+}

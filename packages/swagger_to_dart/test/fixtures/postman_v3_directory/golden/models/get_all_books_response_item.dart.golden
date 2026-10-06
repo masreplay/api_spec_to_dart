@@ -1,0 +1,58 @@
+/// GetAllBooksResponseItem
+///
+/// ```json
+/// {
+///     "properties": {
+///         "id": {
+///             "type": "integer"
+///         },
+///         "title": {
+///             "type": "string"
+///         },
+///         "author": {
+///             "type": "string"
+///         },
+///         "published": {
+///             "type": "string",
+///             "format": "date-time"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'get_all_books_response_item.freezed.dart';
+part 'get_all_books_response_item.g.dart';
+
+@freezed
+abstract class GetAllBooksResponseItem with _$GetAllBooksResponseItem {
+  const GetAllBooksResponseItem._();
+
+  @jsonSerializable
+  const factory GetAllBooksResponseItem({
+    /// id
+    @JsonKey(name: GetAllBooksResponseItem.idKey_) int? id,
+
+    /// title
+    @JsonKey(name: GetAllBooksResponseItem.titleKey_) String? title,
+
+    /// author
+    @JsonKey(name: GetAllBooksResponseItem.authorKey_) String? author,
+
+    /// published
+    @JsonKey(name: GetAllBooksResponseItem.publishedKey_) DateTime? published,
+  }) = _GetAllBooksResponseItem;
+
+  factory GetAllBooksResponseItem.fromJson(Map<String, dynamic> json) =>
+      _$GetAllBooksResponseItemFromJson(json);
+
+  static const String idKey_ = 'id';
+
+  static const String titleKey_ = 'title';
+
+  static const String authorKey_ = 'author';
+
+  static const String publishedKey_ = 'published';
+}

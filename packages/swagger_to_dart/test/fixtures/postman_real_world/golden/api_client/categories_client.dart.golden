@@ -1,0 +1,250 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'categories_client.g.dart';
+
+@RestApi()
+abstract class CategoriesClient {
+  factory CategoriesClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _CategoriesClient;
+
+  @POST('/api/v1/categories/image')
+  @MultiPart()
+  Future<HttpResponse> updateCategoryImage_({
+    @Part() required Map<String, dynamic> requestBody,
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @Header('enctype') String? enctype,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Categories'],
+      'summary': 'Update category image',
+      'description': 'Create a new user',
+      'operationId': 'updateCategoryImage',
+      'parameters': [
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'enctype',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'multipart/form-data': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'image': {'type': 'string', 'format': 'binary'},
+                'category_id': {'type': 'integer'},
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+  @GET('/api/v1/categories')
+  Future<HttpResponse> getAllCategories({
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Categories'],
+      'summary': 'Get all categories',
+      'description': 'Create a new user',
+      'operationId': 'getAllCategories',
+      'parameters': [
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+  @POST('/api/v1/categories')
+  Future<HttpResponse> createCategory({
+    @Body() required CreateCategoryBody requestBody,
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Categories'],
+      'summary': 'Create Category',
+      'description': 'Create a new user',
+      'operationId': 'createCategory',
+      'parameters': [
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'en_name': {'type': 'string'},
+                'ar_name': {'type': 'string'},
+                'kur_name': {'type': 'string'},
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+  @PUT('/api/v1/categories/2')
+  Future<HttpResponse> updateCategory({
+    @Body() required UpdateCategoryBody requestBody,
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Categories'],
+      'summary': 'Update Category',
+      'description': 'Create a new user',
+      'operationId': 'updateCategory',
+      'parameters': [
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'en_name': {'type': 'string'},
+                'ar_name': {'type': 'string'},
+                'kur_name': {'type': 'string'},
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+}
+
+extension CategoriesClientX on CategoriesClient {
+  Future<HttpResponse> updateCategoryImage({
+    required UpdateCategoryImageBody requestBody,
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @Header('enctype') String? enctype,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Categories'],
+      'summary': 'Update category image',
+      'description': 'Create a new user',
+      'operationId': 'updateCategoryImage',
+      'parameters': [
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'enctype',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'multipart/form-data': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'image': {'type': 'string', 'format': 'binary'},
+                'category_id': {'type': 'integer'},
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  }) {
+    return updateCategoryImage_(
+      requestBody: requestBody.toJson()
+        ..removeWhere((_, value) => value == null),
+      jwt: jwt,
+      acceptLanguage: acceptLanguage,
+      enctype: enctype,
+      extras: extras,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+  }
+}

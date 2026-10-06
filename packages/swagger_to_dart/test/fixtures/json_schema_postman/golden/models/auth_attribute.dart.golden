@@ -1,0 +1,51 @@
+/// auth-attribute
+///
+/// ```json
+/// {
+///     "properties": {
+///         "key": {
+///             "type": "string"
+///         },
+///         "value": {},
+///         "type": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "key"
+///     ],
+///     "description": "Represents an attribute for any authorization method provided by Postman. For example `username` and `password` are set as auth attributes for Basic Authentication method."
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'auth_attribute.freezed.dart';
+part 'auth_attribute.g.dart';
+
+@freezed
+abstract class AuthAttribute with _$AuthAttribute {
+  const AuthAttribute._();
+
+  @jsonSerializable
+  const factory AuthAttribute({
+    /// key
+    @JsonKey(name: AuthAttribute.keyKey_) required String key,
+
+    /// value
+    @JsonKey(name: AuthAttribute.valueKey_) dynamic value,
+
+    /// type
+    @JsonKey(name: AuthAttribute.typeKey_) String? type,
+  }) = _AuthAttribute;
+
+  factory AuthAttribute.fromJson(Map<String, dynamic> json) =>
+      _$AuthAttributeFromJson(json);
+
+  static const String keyKey_ = 'key';
+
+  static const String valueKey_ = 'value';
+
+  static const String typeKey_ = 'type';
+}

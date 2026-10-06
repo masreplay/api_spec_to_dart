@@ -1,0 +1,62 @@
+/// SearchBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "query": {
+///             "type": "string"
+///         },
+///         "filters": {
+///             "type": "object",
+///             "properties": {
+///                 "inStock": {
+///                     "type": "boolean"
+///                 },
+///                 "price": {
+///                     "type": "object",
+///                     "properties": {
+///                         "max": {
+///                             "type": "number"
+///                         }
+///                     }
+///                 }
+///             }
+///         },
+///         "page": {
+///             "type": "integer"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'search_body.freezed.dart';
+part 'search_body.g.dart';
+
+@freezed
+abstract class SearchBody with _$SearchBody {
+  const SearchBody._();
+
+  @jsonSerializable
+  const factory SearchBody({
+    /// query
+    @JsonKey(name: SearchBody.queryKey_) String? query,
+
+    /// filters
+    @JsonKey(name: SearchBody.filtersKey_) SearchBodyFilters? filters,
+
+    /// page
+    @JsonKey(name: SearchBody.pageKey_) int? page,
+  }) = _SearchBody;
+
+  factory SearchBody.fromJson(Map<String, dynamic> json) =>
+      _$SearchBodyFromJson(json);
+
+  static const String queryKey_ = 'query';
+
+  static const String filtersKey_ = 'filters';
+
+  static const String pageKey_ = 'page';
+}

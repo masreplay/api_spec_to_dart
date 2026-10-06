@@ -1,0 +1,17 @@
+$kind: http-request
+method: POST
+url: '{{base_url}}/login'
+order: 2
+headers:
+  - key: X-Device
+    value: ios
+    description: Client platform
+body:
+  type: formdata
+  content:
+    - key: username
+      type: text
+      value: jane
+    - key: avatar
+      type: file
+      src: ./avatar.png

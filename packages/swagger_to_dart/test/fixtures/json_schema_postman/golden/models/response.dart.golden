@@ -1,0 +1,133 @@
+/// response
+///
+/// ```json
+/// {
+///     "properties": {
+///         "id": {
+///             "type": "string",
+///             "description": "A unique, user defined identifier that can  be used to refer to this response from requests."
+///         },
+///         "originalRequest": {
+///             "$ref": "#/components/schemas/request"
+///         },
+///         "responseTime": {
+///             "description": "The time taken by the request to complete. If a number, the unit is milliseconds. If the response is manually created, this can be set to `null`.",
+///             "title": "ResponseTime",
+///             "nullable": true
+///         },
+///         "timings": {
+///             "type": "object",
+///             "description": "Set of timing information related to request and response in milliseconds",
+///             "title": "Response Timings",
+///             "nullable": true
+///         },
+///         "header": {
+///             "oneOf": [
+///                 {
+///                     "type": "array",
+///                     "items": {
+///                         "oneOf": [
+///                             {
+///                                 "$ref": "#/components/schemas/header"
+///                             },
+///                             {
+///                                 "type": "string",
+///                                 "title": "Header"
+///                             }
+///                         ]
+///                     },
+///                     "description": "No HTTP request is complete without its headers, and the same is true for a Postman request. This field is an array containing all the headers.",
+///                     "title": "Header"
+///                 },
+///                 {
+///                     "type": "string",
+///                     "nullable": true
+///                 }
+///             ],
+///             "title": "Headers"
+///         },
+///         "cookie": {
+///             "type": "array",
+///             "items": {
+///                 "$ref": "#/components/schemas/cookie"
+///             }
+///         },
+///         "body": {
+///             "type": "string",
+///             "description": "The raw text of the response.",
+///             "nullable": true
+///         },
+///         "status": {
+///             "type": "string",
+///             "description": "The response status, e.g: '200 OK'"
+///         },
+///         "code": {
+///             "type": "integer",
+///             "description": "The numerical response code, example: 200, 201, 404, etc."
+///         }
+///     },
+///     "type": "object",
+///     "description": "A response represents an HTTP response."
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'response.freezed.dart';
+part 'response.g.dart';
+
+@freezed
+abstract class Response with _$Response {
+  const Response._();
+
+  @jsonSerializable
+  const factory Response({
+    /// id
+    @JsonKey(name: Response.idKey_) String? id,
+
+    /// originalRequest
+    @JsonKey(name: Response.originalRequestKey_) Request? originalRequest,
+
+    /// responseTime
+    @JsonKey(name: Response.responseTimeKey_) dynamic responseTime,
+
+    /// timings
+    @JsonKey(name: Response.timingsKey_) Map<String, dynamic>? timings,
+
+    /// header
+    @JsonKey(name: Response.headerKey_) ResponseHeader? header,
+
+    /// cookie
+    @JsonKey(name: Response.cookieKey_) List<Cookie>? cookie,
+
+    /// body
+    @JsonKey(name: Response.bodyKey_) String? body,
+
+    /// status
+    @JsonKey(name: Response.statusKey_) String? status,
+
+    /// code
+    @JsonKey(name: Response.codeKey_) int? code,
+  }) = _Response;
+
+  factory Response.fromJson(Map<String, dynamic> json) =>
+      _$ResponseFromJson(json);
+
+  static const String idKey_ = 'id';
+
+  static const String originalRequestKey_ = 'originalRequest';
+
+  static const String responseTimeKey_ = 'responseTime';
+
+  static const String timingsKey_ = 'timings';
+
+  static const String headerKey_ = 'header';
+
+  static const String cookieKey_ = 'cookie';
+
+  static const String bodyKey_ = 'body';
+
+  static const String statusKey_ = 'status';
+
+  static const String codeKey_ = 'code';
+}

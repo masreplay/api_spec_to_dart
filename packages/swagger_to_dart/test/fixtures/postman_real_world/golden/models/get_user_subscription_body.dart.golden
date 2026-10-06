@@ -1,0 +1,42 @@
+/// GetUserSubscriptionBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "subscription_id": {
+///             "type": "string"
+///         },
+///         "lang": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'get_user_subscription_body.freezed.dart';
+part 'get_user_subscription_body.g.dart';
+
+@freezed
+abstract class GetUserSubscriptionBody with _$GetUserSubscriptionBody {
+  const GetUserSubscriptionBody._();
+
+  @jsonSerializable
+  const factory GetUserSubscriptionBody({
+    /// subscriptionId
+    @JsonKey(name: GetUserSubscriptionBody.subscriptionIdKey_)
+    String? subscriptionId,
+
+    /// lang
+    @JsonKey(name: GetUserSubscriptionBody.langKey_) String? lang,
+  }) = _GetUserSubscriptionBody;
+
+  factory GetUserSubscriptionBody.fromJson(Map<String, dynamic> json) =>
+      _$GetUserSubscriptionBodyFromJson(json);
+
+  static const String subscriptionIdKey_ = 'subscription_id';
+
+  static const String langKey_ = 'lang';
+}

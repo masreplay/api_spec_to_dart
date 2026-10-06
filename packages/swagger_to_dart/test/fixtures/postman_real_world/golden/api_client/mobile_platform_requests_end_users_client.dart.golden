@@ -1,0 +1,91 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+part 'mobile_platform_requests_end_users_client.g.dart';
+
+@RestApi()
+abstract class MobilePlatformRequestsEndUsersClient {
+  factory MobilePlatformRequestsEndUsersClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _MobilePlatformRequestsEndUsersClient;
+
+  @GET('/api/v1/users/mobile_user/end_user')
+  Future<HttpResponse> getAllEndUsers({
+    @Query('page') String? page,
+    @Query('limit') String? limit,
+    @Query('lite') String? lite,
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Mobile Platform Requests / End Users'],
+      'summary': 'Get All end users',
+      'description': 'Create a new user',
+      'operationId': 'getAllEndUsers',
+      'parameters': [
+        {
+          'name': 'page',
+          'in': 'query',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'limit',
+          'in': 'query',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'lite',
+          'in': 'query',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+  @GET('/api/v1/users/mobile_user/end_user/32')
+  Future<HttpResponse> getEndUserById({
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Mobile Platform Requests / End Users'],
+      'summary': 'Get End User By ID',
+      'description': 'Create a new user',
+      'operationId': 'getEndUserById',
+      'parameters': [
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+}

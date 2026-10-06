@@ -1,0 +1,50 @@
+{
+  "info": {
+    "name": "Conflicting examples",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get item",
+      "request": { "method": "GET", "url": "https://api.test/items/:id" },
+      "response": [
+        {
+          "name": "Number id",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "body": "{\"id\": 1, \"name\": \"First\", \"price\": 2, \"tags\": [\"a\"], \"owner\": {\"id\": 1, \"email\": \"a@b.test\"}, \"updatedAt\": \"2024-05-01T10:00:00Z\"}"
+        },
+        {
+          "name": "String id and nulls",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "body": "{\"id\": \"item-2\", \"name\": null, \"price\": 2.5, \"tags\": [], \"owner\": null, \"updatedAt\": null}"
+        },
+        {
+          "name": "Missing keys",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "body": "{\"name\": \"Third\", \"owner\": {\"email\": null, \"roles\": [\"admin\"]}}"
+        }
+      ]
+    },
+    {
+      "name": "List items",
+      "request": { "method": "GET", "url": "https://api.test/items" },
+      "response": [
+        {
+          "name": "Mixed rows",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "body": "[{\"id\": 1, \"score\": 1}, {\"id\": \"two\", \"score\": 1.5, \"extra\": {\"x\": 1}}, {}]"
+        },
+        {
+          "name": "Empty",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "body": "[]"
+        }
+      ]
+    }
+  ]
+}

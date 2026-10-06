@@ -1,0 +1,102 @@
+/// GetItemResponse
+///
+/// ```json
+/// {
+///     "properties": {
+///         "id": {
+///             "oneOf": [
+///                 {
+///                     "type": "integer"
+///                 },
+///                 {
+///                     "type": "string"
+///                 }
+///             ]
+///         },
+///         "name": {
+///             "type": "string",
+///             "nullable": true
+///         },
+///         "price": {
+///             "type": "number"
+///         },
+///         "tags": {
+///             "type": "array",
+///             "items": {
+///                 "type": "string"
+///             }
+///         },
+///         "owner": {
+///             "type": "object",
+///             "properties": {
+///                 "id": {
+///                     "type": "integer"
+///                 },
+///                 "email": {
+///                     "type": "string",
+///                     "nullable": true
+///                 },
+///                 "roles": {
+///                     "type": "array",
+///                     "items": {
+///                         "type": "string"
+///                     }
+///                 }
+///             },
+///             "nullable": true
+///         },
+///         "updatedAt": {
+///             "type": "string",
+///             "format": "date-time",
+///             "nullable": true
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'get_item_response.freezed.dart';
+part 'get_item_response.g.dart';
+
+@freezed
+abstract class GetItemResponse with _$GetItemResponse {
+  const GetItemResponse._();
+
+  @jsonSerializable
+  const factory GetItemResponse({
+    /// id
+    @JsonKey(name: GetItemResponse.idKey_) dynamic id,
+
+    /// name
+    @JsonKey(name: GetItemResponse.nameKey_) String? name,
+
+    /// price
+    @JsonKey(name: GetItemResponse.priceKey_) double? price,
+
+    /// tags
+    @JsonKey(name: GetItemResponse.tagsKey_) List<String>? tags,
+
+    /// owner
+    @JsonKey(name: GetItemResponse.ownerKey_) GetItemResponseOwner? owner,
+
+    /// updatedAt
+    @JsonKey(name: GetItemResponse.updatedAtKey_) DateTime? updatedAt,
+  }) = _GetItemResponse;
+
+  factory GetItemResponse.fromJson(Map<String, dynamic> json) =>
+      _$GetItemResponseFromJson(json);
+
+  static const String idKey_ = 'id';
+
+  static const String nameKey_ = 'name';
+
+  static const String priceKey_ = 'price';
+
+  static const String tagsKey_ = 'tags';
+
+  static const String ownerKey_ = 'owner';
+
+  static const String updatedAtKey_ = 'updatedAt';
+}

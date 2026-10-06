@@ -1,0 +1,49 @@
+/// UpdateCategoryBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "en_name": {
+///             "type": "string"
+///         },
+///         "ar_name": {
+///             "type": "string"
+///         },
+///         "kur_name": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'update_category_body.freezed.dart';
+part 'update_category_body.g.dart';
+
+@freezed
+abstract class UpdateCategoryBody with _$UpdateCategoryBody {
+  const UpdateCategoryBody._();
+
+  @jsonSerializable
+  const factory UpdateCategoryBody({
+    /// enName
+    @JsonKey(name: UpdateCategoryBody.enNameKey_) String? enName,
+
+    /// arName
+    @JsonKey(name: UpdateCategoryBody.arNameKey_) String? arName,
+
+    /// kurName
+    @JsonKey(name: UpdateCategoryBody.kurNameKey_) String? kurName,
+  }) = _UpdateCategoryBody;
+
+  factory UpdateCategoryBody.fromJson(Map<String, dynamic> json) =>
+      _$UpdateCategoryBodyFromJson(json);
+
+  static const String enNameKey_ = 'en_name';
+
+  static const String arNameKey_ = 'ar_name';
+
+  static const String kurNameKey_ = 'kur_name';
+}

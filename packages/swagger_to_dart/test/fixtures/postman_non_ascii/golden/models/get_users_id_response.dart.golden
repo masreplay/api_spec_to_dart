@@ -1,0 +1,49 @@
+/// GetUsersIdResponse
+///
+/// ```json
+/// {
+///     "properties": {
+///         "الاسم": {
+///             "type": "string"
+///         },
+///         "الاسم ": {
+///             "type": "string"
+///         },
+///         "🚀": {
+///             "type": "boolean"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'get_users_id_response.freezed.dart';
+part 'get_users_id_response.g.dart';
+
+@freezed
+abstract class GetUsersIdResponse with _$GetUsersIdResponse {
+  const GetUsersIdResponse._();
+
+  @jsonSerializable
+  const factory GetUsersIdResponse({
+    /// empty
+    @JsonKey(name: GetUsersIdResponse.emptyKey_) String? empty,
+
+    /// empty2
+    @JsonKey(name: GetUsersIdResponse.empty2Key_) String? empty2,
+
+    /// empty3
+    @JsonKey(name: GetUsersIdResponse.empty3Key_) bool? empty3,
+  }) = _GetUsersIdResponse;
+
+  factory GetUsersIdResponse.fromJson(Map<String, dynamic> json) =>
+      _$GetUsersIdResponseFromJson(json);
+
+  static const String emptyKey_ = 'الاسم';
+
+  static const String empty2Key_ = 'الاسم ';
+
+  static const String empty3Key_ = '🚀';
+}

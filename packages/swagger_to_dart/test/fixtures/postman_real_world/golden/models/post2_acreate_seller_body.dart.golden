@@ -1,0 +1,131 @@
+/// Post2AcreateSellerBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "id": {
+///             "type": "integer"
+///         },
+///         "full_name": {
+///             "type": "string"
+///         },
+///         "business_name": {
+///             "type": "string"
+///         },
+///         "password": {
+///             "type": "string"
+///         },
+///         "city_id": {
+///             "type": "integer"
+///         },
+///         "address": {
+///             "type": "string"
+///         },
+///         "nearest_point": {
+///             "type": "string"
+///         },
+///         "phone": {
+///             "type": "string"
+///         },
+///         "email": {
+///             "type": "string"
+///         },
+///         "device_token": {
+///             "type": "string"
+///         },
+///         "firebase_jwt": {
+///             "type": "string"
+///         },
+///         "firebase_uid": {
+///             "type": "integer"
+///         },
+///         "lang": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'post2_acreate_seller_body.freezed.dart';
+part 'post2_acreate_seller_body.g.dart';
+
+@freezed
+abstract class Post2AcreateSellerBody with _$Post2AcreateSellerBody {
+  const Post2AcreateSellerBody._();
+
+  @jsonSerializable
+  const factory Post2AcreateSellerBody({
+    /// id
+    @JsonKey(name: Post2AcreateSellerBody.idKey_) int? id,
+
+    /// fullName
+    @JsonKey(name: Post2AcreateSellerBody.fullNameKey_) String? fullName,
+
+    /// businessName
+    @JsonKey(name: Post2AcreateSellerBody.businessNameKey_)
+    String? businessName,
+
+    /// password
+    @JsonKey(name: Post2AcreateSellerBody.passwordKey_) String? password,
+
+    /// cityId
+    @JsonKey(name: Post2AcreateSellerBody.cityIdKey_) int? cityId,
+
+    /// address
+    @JsonKey(name: Post2AcreateSellerBody.addressKey_) String? address,
+
+    /// nearestPoint
+    @JsonKey(name: Post2AcreateSellerBody.nearestPointKey_)
+    String? nearestPoint,
+
+    /// phone
+    @JsonKey(name: Post2AcreateSellerBody.phoneKey_) String? phone,
+
+    /// email
+    @JsonKey(name: Post2AcreateSellerBody.emailKey_) String? email,
+
+    /// deviceToken
+    @JsonKey(name: Post2AcreateSellerBody.deviceTokenKey_) String? deviceToken,
+
+    /// firebaseJwt
+    @JsonKey(name: Post2AcreateSellerBody.firebaseJwtKey_) String? firebaseJwt,
+
+    /// firebaseUid
+    @JsonKey(name: Post2AcreateSellerBody.firebaseUidKey_) int? firebaseUid,
+
+    /// lang
+    @JsonKey(name: Post2AcreateSellerBody.langKey_) String? lang,
+  }) = _Post2AcreateSellerBody;
+
+  factory Post2AcreateSellerBody.fromJson(Map<String, dynamic> json) =>
+      _$Post2AcreateSellerBodyFromJson(json);
+
+  static const String idKey_ = 'id';
+
+  static const String fullNameKey_ = 'full_name';
+
+  static const String businessNameKey_ = 'business_name';
+
+  static const String passwordKey_ = 'password';
+
+  static const String cityIdKey_ = 'city_id';
+
+  static const String addressKey_ = 'address';
+
+  static const String nearestPointKey_ = 'nearest_point';
+
+  static const String phoneKey_ = 'phone';
+
+  static const String emailKey_ = 'email';
+
+  static const String deviceTokenKey_ = 'device_token';
+
+  static const String firebaseJwtKey_ = 'firebase_jwt';
+
+  static const String firebaseUidKey_ = 'firebase_uid';
+
+  static const String langKey_ = 'lang';
+}

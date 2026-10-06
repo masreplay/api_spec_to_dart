@@ -1,0 +1,69 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
+// Also exports dart:typed_data (Uint8List).
+import 'package:swagger_to_dart_e2e/gen/swagger2_edge_cases/gen.dart';
+import 'package:test/test.dart';
+
+/// Captures each request's options and body, and answers with a session.
+class _Capture implements HttpClientAdapter {
+  late RequestOptions options;
+  late String body;
+
+  @override
+  Future<ResponseBody> fetch(
+    RequestOptions options,
+    Stream<Uint8List>? requestStream,
+    Future<void>? cancelFuture,
+  ) async {
+    this.options = options;
+    body = utf8.decode(await requestStream!.expand((b) => b).toList());
+    return ResponseBody.fromString(
+      '{"expiresAt": "2024-01-02T03:04:05Z"}',
+      200,
+      headers: {
+        Headers.contentTypeHeader: [Headers.jsonContentType],
+      },
+    );
+  }
+
+  @override
+  void close({bool force = false}) {}
+}
+
+void main() {
+  late _Capture capture;
+  late Dio dio;
+
+  setUp(() {
+    capture = _Capture();
+    dio = Dio(BaseOptions(baseUrl: 'https://api.example.com'))
+      ..httpClientAdapter = capture;
+  });
+
+  test('urlencoded bodies leave unset optional fields out', () async {
+    final client = AuthClient(dio);
+
+    await client.login(requestBody: const LoginBody(username: 'ada'));
+    expect(capture.body, 'username=ada&remember=false');
+
+    await client.login(requestBody: const LoginBody(username: 'ada', note: 'hi'));
+    expect(capture.body, 'username=ada&remember=false&note=hi');
+  });
+
+  test('multipart bodies leave unset optional fields out', () async {
+    final client = PetsClient(dio);
+
+    await client.uploadPetPhoto(
+      requestBody: UploadPetPhotoBody(
+        file: MultipartFile.fromString('png', filename: 'a.png'),
+      ),
+      petId: '1',
+    );
+
+    final form = capture.options.data as FormData;
+    expect(form.fields, isEmpty);
+    expect(form.files.map((e) => e.key), ['file']);
+    expect(capture.body, isNot(contains('caption')));
+  });
+}

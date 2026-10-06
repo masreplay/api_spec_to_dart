@@ -94,6 +94,38 @@ void main() {
       expect(renaming.renameEnumValue(''), 'empty');
     });
 
+    test('short names without ASCII letters are no acronyms', () {
+      expect(renaming.renameProperty('عمر'), 'empty');
+      expect(renaming.renameProperty('🚀'), 'empty');
+      expect(renaming.renameProperty('الاسم '), 'empty');
+      expect(renaming.renameProperty('A.B'), 'aB');
+      expect(renaming.renameProperty('ID'), 'id');
+      expect(renaming.renameClass('عمر'), isNot('عمر'));
+    });
+
+    test('propertyNames avoids Object and freezed members', () {
+      expect(
+        renaming.propertyNames([
+          'hashCode',
+          'runtimeType',
+          'toString',
+          'noSuchMethod',
+          'copyWith',
+          'toJson',
+          'id',
+        ]),
+        {
+          'hashCode': 'hashCode2',
+          'runtimeType': 'runtimeType2',
+          'toString': 'toString2',
+          'noSuchMethod': 'noSuchMethod2',
+          'copyWith': 'copyWith2',
+          'toJson': 'toJson2',
+          'id': 'id',
+        },
+      );
+    });
+
     test('propertyNames keeps names unique', () {
       expect(
         renaming.propertyNames(

@@ -1,0 +1,53 @@
+/// GetItemResponseOwner
+///
+/// ```json
+/// {
+///     "properties": {
+///         "id": {
+///             "type": "integer"
+///         },
+///         "email": {
+///             "type": "string",
+///             "nullable": true
+///         },
+///         "roles": {
+///             "type": "array",
+///             "items": {
+///                 "type": "string"
+///             }
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'get_item_response_owner.freezed.dart';
+part 'get_item_response_owner.g.dart';
+
+@freezed
+abstract class GetItemResponseOwner with _$GetItemResponseOwner {
+  const GetItemResponseOwner._();
+
+  @jsonSerializable
+  const factory GetItemResponseOwner({
+    /// id
+    @JsonKey(name: GetItemResponseOwner.idKey_) int? id,
+
+    /// email
+    @JsonKey(name: GetItemResponseOwner.emailKey_) String? email,
+
+    /// roles
+    @JsonKey(name: GetItemResponseOwner.rolesKey_) List<String>? roles,
+  }) = _GetItemResponseOwner;
+
+  factory GetItemResponseOwner.fromJson(Map<String, dynamic> json) =>
+      _$GetItemResponseOwnerFromJson(json);
+
+  static const String idKey_ = 'id';
+
+  static const String emailKey_ = 'email';
+
+  static const String rolesKey_ = 'roles';
+}

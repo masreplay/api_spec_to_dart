@@ -1,0 +1,45 @@
+/// UrlObjectValuePathListValueItemObjectValue
+///
+/// ```json
+/// {
+///     "properties": {
+///         "type": {
+///             "type": "string"
+///         },
+///         "value": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'url_object_value_path_list_value_item_object_value.freezed.dart';
+part 'url_object_value_path_list_value_item_object_value.g.dart';
+
+@freezed
+abstract class UrlObjectValuePathListValueItemObjectValue
+    with _$UrlObjectValuePathListValueItemObjectValue {
+  const UrlObjectValuePathListValueItemObjectValue._();
+
+  @jsonSerializable
+  const factory UrlObjectValuePathListValueItemObjectValue({
+    /// type
+    @JsonKey(name: UrlObjectValuePathListValueItemObjectValue.typeKey_)
+    String? type,
+
+    /// value
+    @JsonKey(name: UrlObjectValuePathListValueItemObjectValue.valueKey_)
+    String? value,
+  }) = _UrlObjectValuePathListValueItemObjectValue;
+
+  factory UrlObjectValuePathListValueItemObjectValue.fromJson(
+    Map<String, dynamic> json,
+  ) => _$UrlObjectValuePathListValueItemObjectValueFromJson(json);
+
+  static const String typeKey_ = 'type';
+
+  static const String valueKey_ = 'value';
+}

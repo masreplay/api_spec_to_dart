@@ -1,0 +1,98 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'users_client.g.dart';
+
+@RestApi()
+abstract class UsersClient {
+  factory UsersClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _UsersClient;
+
+  @GET('/users/{id}')
+  Future<HttpResponse<GetUserResponse>> getUser({
+    @Path('id') required double id,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Users'],
+      'summary': 'Get user',
+      'operationId': 'getUser',
+      'parameters': [
+        {
+          'name': 'id',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'number'},
+        },
+      ],
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'properties': {
+                  'id': {'type': 'integer'},
+                  'name': {'type': 'string'},
+                  'createdAt': {'type': 'string', 'format': 'date-time'},
+                  'address': {
+                    'type': 'object',
+                    'properties': {
+                      'city': {'type': 'string'},
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+  @GET('/users')
+  Future<HttpResponse<List<ListUsersResponseItem>>> listUsers({
+    @Query('page') String? page,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Users'],
+      'summary': 'List users',
+      'operationId': 'listUsers',
+      'parameters': [
+        {
+          'name': 'page',
+          'in': 'query',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'array',
+                'items': {
+                  'type': 'object',
+                  'properties': {
+                    'id': {'type': 'integer'},
+                    'name': {'type': 'string'},
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+}

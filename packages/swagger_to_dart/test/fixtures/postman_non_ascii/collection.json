@@ -1,0 +1,88 @@
+{
+  "info": {
+    "name": "متجر 🛒",
+    "description": "واجهة برمجة المتجر",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "المستخدمين",
+      "description": "إدارة المستخدمين",
+      "item": [
+        {
+          "name": "جلب المستخدمين",
+          "request": { "method": "GET", "url": "https://shop.example.com/users" },
+          "response": [
+            {
+              "name": "قائمة",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "body": "[{\"الاسم\": \"علي\", \"name\": \"Ali\", \"عمر\": 30}]"
+            }
+          ]
+        },
+        {
+          "name": "جلب مستخدم",
+          "request": { "method": "GET", "url": "https://shop.example.com/users/:id" },
+          "response": [
+            {
+              "name": "موجود",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "body": "{\"الاسم\": \"علي\", \"الاسم \": \"مكرر\", \"🚀\": true}"
+            }
+          ]
+        },
+        {
+          "name": "تسجيل 2",
+          "request": { "method": "POST", "url": "https://shop.example.com/users" },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "الطلبات 📦",
+      "item": [
+        {
+          "name": "Create order 🚀",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Accept-Language", "value": "ar" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"ملاحظة\": \"توصيل سريع\", \"items\": [{\"sku\": \"A1\"}]}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "https://shop.example.com/orders"
+          },
+          "response": []
+        },
+        {
+          "name": "Create order",
+          "request": { "method": "PUT", "url": "https://shop.example.com/orders/:id" },
+          "response": []
+        },
+        {
+          "name": "🚀",
+          "request": { "method": "DELETE", "url": "https://shop.example.com/orders/:id" },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "المنتجات",
+      "item": [
+        {
+          "name": "جلب المنتجات",
+          "request": { "method": "GET", "url": "https://shop.example.com/products" },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Café ☕",
+      "request": { "method": "GET", "url": "https://shop.example.com/café/menu" },
+      "response": []
+    }
+  ]
+}
