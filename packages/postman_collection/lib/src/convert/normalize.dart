@@ -494,7 +494,7 @@ Map<String, Object?> _response(
 
 Object? _tryDecode(String text) {
   try {
-    return jsonDecode(text);
+    return jsonDecode(text, reviver: nonFiniteAsText);
   } on FormatException {
     return null;
   }

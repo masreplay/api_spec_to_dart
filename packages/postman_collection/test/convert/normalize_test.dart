@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:postman_collection/convert.dart';
 import 'package:test/test.dart';
 
@@ -486,5 +488,30 @@ void main() {
         'raw': '{}',
       });
     });
+  });
+
+  test('v1 JSON text fields with out-of-range numbers normalize to an '
+      'encodable collection', () {
+    final collection = normalizePostmanCollection({
+      'id': 'c',
+      'name': 'n',
+      'order': ['r'],
+      'requests': [
+        v1Request('r', {
+          'url': 'https://x.io/:id',
+          'pathVariables': '{"id": 1e999}',
+          'currentHelper': 'basicAuth',
+          'helperAttributes': '{"username": "u", "n": -1e999}',
+          'responses': [
+            {
+              'id': 'x',
+              'name': 'x',
+              'request': '{"url": "https://x.io", "n": 1e999}',
+            },
+          ],
+        }),
+      ],
+    });
+    expect(() => jsonEncode(collection), returnsNormally);
   });
 }
