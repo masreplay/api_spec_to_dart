@@ -11,6 +11,17 @@
 ///         },
 ///         "🚀": {
 ///             "type": "boolean"
+///         },
+///         "العنوان": {
+///             "type": "object",
+///             "properties": {
+///                 "المدينة": {
+///                     "type": "string"
+///                 },
+///                 "city": {
+///                     "type": "string"
+///                 }
+///             }
 ///         }
 ///     },
 ///     "type": "object"
@@ -36,6 +47,10 @@ abstract class GetUsersIdResponse with _$GetUsersIdResponse {
 
     /// empty3
     @JsonKey(name: GetUsersIdResponse.empty3Key_) bool? empty3,
+
+    /// empty4
+    @JsonKey(name: GetUsersIdResponse.empty4Key_)
+    GetUsersIdResponseEmpty4? empty4,
   }) = _GetUsersIdResponse;
 
   factory GetUsersIdResponse.fromJson(Map<String, dynamic> json) =>
@@ -46,4 +61,6 @@ abstract class GetUsersIdResponse with _$GetUsersIdResponse {
   static const String empty2Key_ = 'الاسم ';
 
   static const String empty3Key_ = '🚀';
+
+  static const String empty4Key_ = 'العنوان';
 }
