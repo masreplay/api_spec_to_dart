@@ -538,8 +538,8 @@ void main() {
     expect(secrets.leaks('value-of-username'), isFalse);
   });
 
-  test('name-only secrecy does not spread and skips URLs, paths, '
-      'references and apikey names', () {
+  test('name-only secrecy spreads to referenced non-URL variables only and '
+      'skips URLs, paths and apikey names', () {
     final secrets = Secrets.of({
       'auth': {
         'type': 'apikey',
@@ -558,15 +558,29 @@ void main() {
         {'key': 'apiKeyHeader', 'value': 'X-API-Key'},
         {'key': 'apiKeyIn', 'value': 'header'},
         {'key': 'apiKeyValue', 'value': 'SECRET-value'},
-        {'key': 'authToken', 'value': 'Bearer {{rawPart}}'},
-        {'key': 'rawPart', 'value': 'visible-part'},
+        {'key': 'authToken', 'value': 'Bearer {{hostVar}}{{rawPart}}'},
+        {'key': 'hostVar', 'value': 'https://h.x.io'},
+        {'key': 'rawPart', 'value': 'SECRET-part'},
+        {'key': 'token', 'value': '{{raw_thing}}'},
+        {'key': 'raw_thing', 'value': 'SECRET-rawref'},
+        {'key': 'pathRef', 'value': '{{token_path}}'},
+        {'key': 'session', 'value': '{{pathRef}}/x'},
         {'key': 'api_key', 'value': 'SECRET-plain'},
       ],
     });
-    expect(secrets.variables, {'apiKeyValue', 'authToken', 'api_key'});
+    expect(secrets.variables, {
+      'apiKeyValue',
+      'authToken',
+      'rawPart',
+      'token',
+      'raw_thing',
+      'api_key',
+    });
     expect(secrets.leaks('SECRET-plain'), isTrue);
+    expect(secrets.leaks('SECRET-part'), isTrue);
+    expect(secrets.leaks('SECRET-rawref'), isTrue);
     expect(secrets.leaks('https://api.x.io'), isFalse);
-    expect(secrets.leaks('visible-part'), isFalse);
+    expect(secrets.leaks('https://h.x.io'), isFalse);
   });
 
   test('a secret variable that references others makes them secret too, '
