@@ -140,7 +140,7 @@ Map<Object?, Object?>? _headerLine(String line) {
 String _bareValue(String? text) {
   if (text == null) return 'null';
   try {
-    jsonDecode(text);
+    jsonDecode(text, reviver: nonFiniteAsText);
     return text;
   } on FormatException {
     return jsonEncode(text);
