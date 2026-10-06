@@ -1,0 +1,36 @@
+/// SchemaEmpty4ObjectValue
+///
+/// ```json
+/// {
+///     "properties": {
+///         "card": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "card"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'schema_empty4_object_value.freezed.dart';
+part 'schema_empty4_object_value.g.dart';
+
+@freezed
+abstract class SchemaEmpty4ObjectValue with _$SchemaEmpty4ObjectValue {
+  const SchemaEmpty4ObjectValue._();
+
+  @jsonSerializable
+  const factory SchemaEmpty4ObjectValue({
+    /// card
+    @JsonKey(name: SchemaEmpty4ObjectValue.cardKey_) required String card,
+  }) = _SchemaEmpty4ObjectValue;
+
+  factory SchemaEmpty4ObjectValue.fromJson(Map<String, dynamic> json) =>
+      _$SchemaEmpty4ObjectValueFromJson(json);
+
+  static const String cardKey_ = 'card';
+}

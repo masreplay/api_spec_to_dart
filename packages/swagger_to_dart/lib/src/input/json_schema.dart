@@ -40,7 +40,10 @@ Map<String, dynamic> jsonSchemaToOpenApi(
   };
 
   final title = '${document['title'] ?? sourceName ?? 'Schema'}';
-  final baseName = Renaming.instance.renameClass(title);
+  // The first candidate with ASCII words: `عمر` names no class.
+  final baseName = [document['title'], sourceName, 'Schema']
+      .map((name) => name == null ? '' : Renaming.instance.renameClass('$name'))
+      .firstWhere((name) => name.isNotEmpty);
   var rootName = baseName;
   for (var i = 2; definitions.containsKey(rootName); i++) {
     rootName = '$baseName$i';

@@ -1,0 +1,33 @@
+/// مستخدم
+///
+/// ```json
+/// {
+///     "properties": {
+///         "id": {
+///             "type": "integer"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'schema2.freezed.dart';
+part 'schema2.g.dart';
+
+@freezed
+abstract class Schema2 with _$Schema2 {
+  const Schema2._();
+
+  @jsonSerializable
+  const factory Schema2({
+    /// id
+    @JsonKey(name: Schema2.idKey_) int? id,
+  }) = _Schema2;
+
+  factory Schema2.fromJson(Map<String, dynamic> json) =>
+      _$Schema2FromJson(json);
+
+  static const String idKey_ = 'id';
+}

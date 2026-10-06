@@ -414,9 +414,13 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
     final byContext = contextName == null
         ? null
         : context.withClassPrefix(Renaming.instance.renameClass(contextName));
-    final byTitle = title == null
-        ? null
-        : context.withClassPrefix(Renaming.instance.renameClass(title));
+    // A title without ASCII words (`طلب`) names nothing.
+    final byTitle = switch (title == null
+        ? ''
+        : Renaming.instance.renameClass(title)) {
+      '' => null,
+      final name => context.withClassPrefix(name),
+    };
     if (byTitle != null &&
         !context.componentClassNames.containsValue(byTitle) &&
         !_reservedTypeNames.contains(byTitle)) {
@@ -540,9 +544,12 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
     OpenApiSchema? parent,
     String? contextName,
   }) {
-    String? named(String? name) => name == null
-        ? null
-        : context.withClassPrefix(Renaming.instance.renameEnum(name));
+    // A name without ASCII words (`نوع`) names nothing.
+    String? named(String? name) =>
+        switch (name == null ? '' : Renaming.instance.renameEnum(name)) {
+          '' => null,
+          final name => context.withClassPrefix(name),
+        };
     final byTitle = named(schema.title ?? parent?.title);
     final name = byTitle != null && !_reservedTypeNames.contains(byTitle)
         ? byTitle

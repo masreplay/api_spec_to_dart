@@ -1,0 +1,21 @@
+import 'package:swagger_to_dart_e2e/gen/non_ascii_names/models/models.dart';
+import 'package:test/test.dart';
+
+void main() {
+  test('values under keys without ASCII words decode and re-encode', () {
+    const json = {
+      'name': 'Ali',
+      'العنوان': {'city': 'Baghdad'},
+      '😀': 'happy',
+      '_': {'note': 'n'},
+      r'$': {'iban': 'IQ00'},
+    };
+
+    final person = Schema.fromJson(json);
+    expect(person.empty?.city, 'Baghdad');
+    expect(person.empty2, SchemaEmpty2.happy);
+    expect(person.empty3?.note, 'n');
+    expect(person.empty4, isA<SchemaEmpty4Object2>());
+    expect(person.toJson(), json);
+  });
+}

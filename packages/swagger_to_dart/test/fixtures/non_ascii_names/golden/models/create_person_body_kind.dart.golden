@@ -1,0 +1,32 @@
+/// CreatePersonBodyKind
+///
+/// ```json
+/// {
+///     "properties": {},
+///     "type": "string",
+///     "enum": [
+///         "a",
+///         "b"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'create_person_body_kind.g.dart';
+
+@JsonEnum(alwaysCreate: true)
+enum CreatePersonBodyKind {
+  @JsonValue('a')
+  a,
+  @JsonValue('b')
+  b;
+
+  factory CreatePersonBodyKind.fromJson(String json) =>
+      CreatePersonBodyKind.values.firstWhere(
+        (e) => e.toJson() == json,
+        orElse: () => throw ArgumentError('Invalid CreatePersonBodyKind'),
+      );
+
+  String toJson() => _$CreatePersonBodyKindEnumMap[this]!;
+}
