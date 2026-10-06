@@ -1,0 +1,24 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+part 'fa_client.g.dart';
+
+@RestApi()
+abstract class FaClient {
+  factory FaClient(Dio dio, {ParseErrorLogger? errorLogger, String? baseUrl}) =
+      _FaClient;
+
+  @POST('/2fa/enable')
+  Future<HttpResponse> enable2fa({
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['2FA'],
+      'operationId': 'enable2fa',
+      'responses': {
+        '204': {'description': 'OK'},
+      },
+    },
+  });
+}

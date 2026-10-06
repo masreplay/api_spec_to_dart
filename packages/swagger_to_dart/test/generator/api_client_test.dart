@@ -262,6 +262,32 @@ void main() {
     );
   });
 
+  test('tags starting with digits name clients by their words', () {
+    final files = Fixture(Directory('test/fixtures/digit_tags')).render().files;
+
+    expect(
+      files.keys.where((f) => f.endsWith('_client.dart')),
+      unorderedEquals([
+        'api_client/auth_client.dart',
+        'api_client/users_client.dart',
+        'api_client/fa_client.dart',
+        'api_client/fa_verify_client.dart',
+        'api_client/base_api_client.dart',
+        'api_client/api_client.dart',
+      ]),
+    );
+    expect(files['api_client/auth_client.dart'], contains('class AuthClient'));
+    expect(
+      files['api_client/base_api_client.dart'],
+      allOf(
+        contains('AuthClient get authClient'),
+        contains('UsersClient get usersClient'),
+        contains('FaClient get faClient'),
+        contains('FaVerifyClient get faVerifyClient'),
+      ),
+    );
+  });
+
   group('HTTP methods retrofit has no annotation for use @Method (G6)', () {
     late String client;
     setUpAll(() {
