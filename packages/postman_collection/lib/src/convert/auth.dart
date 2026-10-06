@@ -70,6 +70,12 @@ bool _isCredentialName(String name) =>
 /// Variable names that hold endpoints even when they sound like credentials
 /// (`tokenUrl`, `authUrl`): they resolve.
 final _endpointName = RegExp(r'(url|uri|endpoint|host)$', caseSensitive: false);
+
+/// Variable values that are a URL, a path or a reference, not a credential.
+final _locationValue = RegExp(
+  r'^([a-z][a-z0-9+.-]*://|/|\{\{)',
+  caseSensitive: false,
+);
 final _credentialValue = RegExp(
   r'^(bearer |basic |ey[\w-]+\.[\w-]+\.)',
   caseSensitive: false,
@@ -89,14 +95,18 @@ class Secrets {
 
   /// The secrets of [collection]: variables used by credential auth
   /// attributes (at every level, saved examples included), by literal
-  /// Authorization-like or Cookie headers, typed `secret`, named like a
-  /// credential (except endpoints such as `tokenUrl`), or referenced by
-  /// another secret variable; the literal values of those attributes and
-  /// headers, and the raw values of those variables.
+  /// Authorization-like or Cookie headers, typed `secret`, or referenced by
+  /// another such variable; the literal values of those attributes and
+  /// headers, and the raw values of those variables. A variable named like a
+  /// credential is secret too, without making the variables it references
+  /// secret, unless its name is an endpoint's (`tokenUrl`), a value is a
+  /// URL, path or reference, or it names an apikey header or parameter.
   factory Secrets.of(Object? collection) {
     final variables = <String>{};
     final values = <String>{};
     final variableLists = <List<Object?>>[];
+    // Variables naming an apikey's header or parameter: identifiers.
+    final apiKeyNames = <String>{};
     void secret(String? text) {
       if (text == null || text.isEmpty) return;
       values.add(text);
@@ -118,6 +128,10 @@ class Secrets {
             if (_credentialAttribute.hasMatch(key) ||
                 (type == 'apikey' && key == 'value')) {
               secret(_text(value));
+            } else if (type == 'apikey' && (key == 'key' || key == 'in')) {
+              apiKeyNames.addAll(
+                variableReference.allMatches('$value').map((m) => m[1]!),
+              );
             }
           }
         }
@@ -142,13 +156,14 @@ class Secrets {
 
     walk(collection);
     final variableValues = <String, List<String>>{};
+    final named = <String>{};
     for (final variable in variableLists.expand((list) => list)) {
       if (variable is! Map) continue;
       final name = variable['key'] ?? variable['id'];
       if (name is! String) continue;
-      if (variable['type'] == 'secret' ||
-          (_isCredentialName(name) && !_endpointName.hasMatch(name))) {
-        variables.add(name);
+      if (variable['type'] == 'secret') variables.add(name);
+      if (_isCredentialName(name) && !_endpointName.hasMatch(name)) {
+        named.add(name);
       }
       if (_text(variable['value']) case final text?) {
         (variableValues[name] ??= []).add(text);
@@ -163,6 +178,15 @@ class Secrets {
           if (variables.add(match[1]!)) pending.add(match[1]!);
         }
       }
+    }
+    // Secret by name only: the values count, references do not spread.
+    for (final name in named.difference(apiKeyNames)) {
+      final texts = variableValues[name] ?? const [];
+      if (variables.contains(name) || texts.any(_locationValue.hasMatch)) {
+        continue;
+      }
+      variables.add(name);
+      values.addAll(texts);
     }
     return Secrets._(variables, values);
   }

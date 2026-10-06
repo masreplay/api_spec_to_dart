@@ -268,11 +268,13 @@ List<Map<String, String>> _urlEncodedFields(String text) => [
       },
 ];
 
-/// [text] percent-decoded, or as written when malformed.
+/// [text] percent-decoded, or as written when malformed or not UTF-8.
 String _decodeComponent(String text) {
   try {
     return Uri.decodeQueryComponent(text);
   } on ArgumentError {
+    return text;
+  } on FormatException {
     return text;
   }
 }
