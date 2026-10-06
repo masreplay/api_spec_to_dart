@@ -1,0 +1,114 @@
+/// Items
+///
+/// ```json
+/// {
+///     "anyOf": [
+///         {
+///             "$ref": "#/components/schemas/item"
+///         },
+///         {
+///             "$ref": "#/components/schemas/item-group"
+///         }
+///     ],
+///     "title": "Items",
+///     "runtimeType": "anyOf"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+sealed class Items {
+  const Items();
+
+  const factory Items.item(Item value) = ItemsItem;
+  const factory Items.itemGroup(ItemGroup value) = ItemsItemGroup;
+
+  factory Items.fromJson(Map<String, dynamic> json) {
+    // No discriminator in the spec: the variant whose required keys are all
+    // present and that declares the most of the payload's keys wins (the
+    // earlier one on a tie).
+    const variants = <({Set<String> required, Set<String> declared})>[
+      (
+        required: {'request'},
+        declared: {
+          'id',
+          'name',
+          'description',
+          'variable',
+          'event',
+          'request',
+          'response',
+          'protocolProfileBehavior',
+        },
+      ),
+      (
+        required: {'item'},
+        declared: {
+          'name',
+          'description',
+          'variable',
+          'item',
+          'event',
+          'auth',
+          'protocolProfileBehavior',
+        },
+      ),
+    ];
+    var best = -1;
+    var bestScore = -1;
+    for (var i = 0; i < variants.length; i++) {
+      final variant = variants[i];
+      if (!variant.required.every(json.containsKey)) continue;
+      final score = json.keys.where(variant.declared.contains).length;
+      if (score > bestScore) {
+        best = i;
+        bestScore = score;
+      }
+    }
+    return switch (best) {
+      0 => ItemsItem(Item.fromJson(json)),
+      1 => ItemsItemGroup(ItemGroup.fromJson(json)),
+      _ => throw ArgumentError.value(json, 'json', 'No Items variant matches'),
+    };
+  }
+
+  Map<String, dynamic> toJson();
+}
+
+final class ItemsItem extends Items {
+  const ItemsItem(this.value);
+
+  final Item value;
+
+  @override
+  Map<String, dynamic> toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) => other is ItemsItem && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'Items.item($value)';
+}
+
+final class ItemsItemGroup extends Items {
+  const ItemsItemGroup(this.value);
+
+  final ItemGroup value;
+
+  @override
+  Map<String, dynamic> toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ItemsItemGroup && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'Items.itemGroup($value)';
+}

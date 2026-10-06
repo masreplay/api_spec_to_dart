@@ -1,0 +1,33 @@
+/// ErrorBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "type": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'error_body.freezed.dart';
+part 'error_body.g.dart';
+
+@freezed
+abstract class ErrorBody with _$ErrorBody {
+  const ErrorBody._();
+
+  @jsonSerializable
+  const factory ErrorBody({
+    /// type
+    @JsonKey(name: ErrorBody.typeKey_) String? type,
+  }) = _ErrorBody;
+
+  factory ErrorBody.fromJson(Map<String, dynamic> json) =>
+      _$ErrorBodyFromJson(json);
+
+  static const String typeKey_ = 'type';
+}

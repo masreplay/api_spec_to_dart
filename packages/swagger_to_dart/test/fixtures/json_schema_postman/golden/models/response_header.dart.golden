@@ -1,0 +1,94 @@
+/// ResponseHeader
+///
+/// ```json
+/// {
+///     "oneOf": [
+///         {
+///             "type": "array",
+///             "items": {
+///                 "oneOf": [
+///                     {
+///                         "$ref": "#/components/schemas/header"
+///                     },
+///                     {
+///                         "type": "string",
+///                         "title": "Header"
+///                     }
+///                 ]
+///             },
+///             "description": "No HTTP request is complete without its headers, and the same is true for a Postman request. This field is an array containing all the headers.",
+///             "title": "Header"
+///         },
+///         {
+///             "type": "string",
+///             "nullable": true
+///         }
+///     ],
+///     "title": "Headers"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'response_header.g.dart';
+
+sealed class ResponseHeader {
+  const ResponseHeader();
+
+  const factory ResponseHeader.list(List<ResponseHeaderListValueItem> value) =
+      ResponseHeaderList;
+  const factory ResponseHeader.string(String value) = ResponseHeaderString;
+
+  factory ResponseHeader.fromJson(Object? json) => switch (json) {
+    String() => ResponseHeaderString(json),
+    List() => _$ResponseHeaderListFromJson({'value': json}),
+    _ => throw ArgumentError.value(
+      json,
+      'json',
+      'No ResponseHeader variant matches',
+    ),
+  };
+
+  Object? toJson();
+}
+
+@jsonSerializable
+final class ResponseHeaderList extends ResponseHeader {
+  const ResponseHeaderList(this.value);
+
+  @JsonKey(name: 'value')
+  final List<ResponseHeaderListValueItem> value;
+
+  @override
+  Object? toJson() => _$ResponseHeaderListToJson(this)['value'];
+
+  @override
+  bool operator ==(Object other) =>
+      other is ResponseHeaderList &&
+      const DeepCollectionEquality().equals(other.value, value);
+
+  @override
+  int get hashCode => const DeepCollectionEquality().hash(value);
+
+  @override
+  String toString() => 'ResponseHeader.list($value)';
+}
+
+final class ResponseHeaderString extends ResponseHeader {
+  const ResponseHeaderString(this.value);
+
+  final String value;
+
+  @override
+  Object? toJson() => value;
+
+  @override
+  bool operator ==(Object other) =>
+      other is ResponseHeaderString && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'ResponseHeader.string($value)';
+}

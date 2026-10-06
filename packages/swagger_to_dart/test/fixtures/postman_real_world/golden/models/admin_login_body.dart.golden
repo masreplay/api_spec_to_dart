@@ -1,0 +1,49 @@
+/// AdminLoginBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "username": {
+///             "type": "string"
+///         },
+///         "password": {
+///             "type": "string"
+///         },
+///         "lang": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'admin_login_body.freezed.dart';
+part 'admin_login_body.g.dart';
+
+@freezed
+abstract class AdminLoginBody with _$AdminLoginBody {
+  const AdminLoginBody._();
+
+  @jsonSerializable
+  const factory AdminLoginBody({
+    /// username
+    @JsonKey(name: AdminLoginBody.usernameKey_) String? username,
+
+    /// password
+    @JsonKey(name: AdminLoginBody.passwordKey_) String? password,
+
+    /// lang
+    @JsonKey(name: AdminLoginBody.langKey_) String? lang,
+  }) = _AdminLoginBody;
+
+  factory AdminLoginBody.fromJson(Map<String, dynamic> json) =>
+      _$AdminLoginBodyFromJson(json);
+
+  static const String usernameKey_ = 'username';
+
+  static const String passwordKey_ = 'password';
+
+  static const String langKey_ = 'lang';
+}

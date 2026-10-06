@@ -1,0 +1,33 @@
+/// GetResponseItemsItem
+///
+/// ```json
+/// {
+///     "properties": {
+///         "id": {
+///             "type": "integer"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'get_response_items_item.freezed.dart';
+part 'get_response_items_item.g.dart';
+
+@freezed
+abstract class GetResponseItemsItem with _$GetResponseItemsItem {
+  const GetResponseItemsItem._();
+
+  @jsonSerializable
+  const factory GetResponseItemsItem({
+    /// id
+    @JsonKey(name: GetResponseItemsItem.idKey_) int? id,
+  }) = _GetResponseItemsItem;
+
+  factory GetResponseItemsItem.fromJson(Map<String, dynamic> json) =>
+      _$GetResponseItemsItemFromJson(json);
+
+  static const String idKey_ = 'id';
+}

@@ -1,0 +1,121 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'default_client.g.dart';
+
+@RestApi()
+abstract class DefaultClient {
+  factory DefaultClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _DefaultClient;
+
+  @GET('/items/{id}')
+  Future<HttpResponse<GetItemResponse>> getItem({
+    @Path('id') required String id,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'summary': 'Get item',
+      'operationId': 'getItem',
+      'parameters': [
+        {
+          'name': 'id',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'string'},
+        },
+      ],
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'properties': {
+                  'id': {
+                    'oneOf': [
+                      {'type': 'integer'},
+                      {'type': 'string'},
+                    ],
+                  },
+                  'name': {
+                    'type': ['string', 'null'],
+                  },
+                  'price': {'type': 'number'},
+                  'tags': {
+                    'type': 'array',
+                    'items': {'type': 'string'},
+                  },
+                  'owner': {
+                    'type': ['object', 'null'],
+                    'properties': {
+                      'id': {'type': 'integer'},
+                      'email': {
+                        'type': ['string', 'null'],
+                      },
+                      'roles': {
+                        'type': 'array',
+                        'items': {'type': 'string'},
+                      },
+                    },
+                  },
+                  'updatedAt': {
+                    'type': ['string', 'null'],
+                    'format': 'date-time',
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+  @GET('/items')
+  Future<HttpResponse<List<ListItemsResponseItem>>> listItems({
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'summary': 'List items',
+      'operationId': 'listItems',
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'array',
+                'items': {
+                  'type': 'object',
+                  'properties': {
+                    'id': {
+                      'oneOf': [
+                        {'type': 'integer'},
+                        {'type': 'string'},
+                      ],
+                    },
+                    'score': {'type': 'number'},
+                    'extra': {
+                      'type': 'object',
+                      'properties': {
+                        'x': {'type': 'integer'},
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+}

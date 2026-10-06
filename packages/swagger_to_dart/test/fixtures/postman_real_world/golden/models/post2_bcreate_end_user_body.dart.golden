@@ -1,0 +1,131 @@
+/// Post2BcreateEndUserBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "id": {
+///             "type": "integer"
+///         },
+///         "full_name": {
+///             "type": "string"
+///         },
+///         "business_name": {
+///             "type": "string"
+///         },
+///         "password": {
+///             "type": "string"
+///         },
+///         "city_id": {
+///             "type": "integer"
+///         },
+///         "address": {
+///             "type": "string"
+///         },
+///         "nearest_point": {
+///             "type": "string"
+///         },
+///         "phone": {
+///             "type": "string"
+///         },
+///         "email": {
+///             "type": "string"
+///         },
+///         "device_token": {
+///             "type": "string"
+///         },
+///         "lang": {
+///             "type": "string"
+///         },
+///         "firebase_jwt": {
+///             "type": "string"
+///         },
+///         "firebase_uid": {
+///             "type": "integer"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'post2_bcreate_end_user_body.freezed.dart';
+part 'post2_bcreate_end_user_body.g.dart';
+
+@freezed
+abstract class Post2BcreateEndUserBody with _$Post2BcreateEndUserBody {
+  const Post2BcreateEndUserBody._();
+
+  @jsonSerializable
+  const factory Post2BcreateEndUserBody({
+    /// id
+    @JsonKey(name: Post2BcreateEndUserBody.idKey_) int? id,
+
+    /// fullName
+    @JsonKey(name: Post2BcreateEndUserBody.fullNameKey_) String? fullName,
+
+    /// businessName
+    @JsonKey(name: Post2BcreateEndUserBody.businessNameKey_)
+    String? businessName,
+
+    /// password
+    @JsonKey(name: Post2BcreateEndUserBody.passwordKey_) String? password,
+
+    /// cityId
+    @JsonKey(name: Post2BcreateEndUserBody.cityIdKey_) int? cityId,
+
+    /// address
+    @JsonKey(name: Post2BcreateEndUserBody.addressKey_) String? address,
+
+    /// nearestPoint
+    @JsonKey(name: Post2BcreateEndUserBody.nearestPointKey_)
+    String? nearestPoint,
+
+    /// phone
+    @JsonKey(name: Post2BcreateEndUserBody.phoneKey_) String? phone,
+
+    /// email
+    @JsonKey(name: Post2BcreateEndUserBody.emailKey_) String? email,
+
+    /// deviceToken
+    @JsonKey(name: Post2BcreateEndUserBody.deviceTokenKey_) String? deviceToken,
+
+    /// lang
+    @JsonKey(name: Post2BcreateEndUserBody.langKey_) String? lang,
+
+    /// firebaseJwt
+    @JsonKey(name: Post2BcreateEndUserBody.firebaseJwtKey_) String? firebaseJwt,
+
+    /// firebaseUid
+    @JsonKey(name: Post2BcreateEndUserBody.firebaseUidKey_) int? firebaseUid,
+  }) = _Post2BcreateEndUserBody;
+
+  factory Post2BcreateEndUserBody.fromJson(Map<String, dynamic> json) =>
+      _$Post2BcreateEndUserBodyFromJson(json);
+
+  static const String idKey_ = 'id';
+
+  static const String fullNameKey_ = 'full_name';
+
+  static const String businessNameKey_ = 'business_name';
+
+  static const String passwordKey_ = 'password';
+
+  static const String cityIdKey_ = 'city_id';
+
+  static const String addressKey_ = 'address';
+
+  static const String nearestPointKey_ = 'nearest_point';
+
+  static const String phoneKey_ = 'phone';
+
+  static const String emailKey_ = 'email';
+
+  static const String deviceTokenKey_ = 'device_token';
+
+  static const String langKey_ = 'lang';
+
+  static const String firebaseJwtKey_ = 'firebase_jwt';
+
+  static const String firebaseUidKey_ = 'firebase_uid';
+}

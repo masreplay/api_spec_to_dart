@@ -1,0 +1,10 @@
+$kind: http-example
+response:
+  statusCode: 404
+  statusText: Not Found
+  headers:
+    - key: Content-Type
+      value: application/json
+  body:
+    type: json
+    content: '{"message": "No such book"}'

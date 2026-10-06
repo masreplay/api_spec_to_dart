@@ -1,0 +1,33 @@
+/// CreateOrderBodyItemsItem
+///
+/// ```json
+/// {
+///     "properties": {
+///         "sku": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'create_order_body_items_item.freezed.dart';
+part 'create_order_body_items_item.g.dart';
+
+@freezed
+abstract class CreateOrderBodyItemsItem with _$CreateOrderBodyItemsItem {
+  const CreateOrderBodyItemsItem._();
+
+  @jsonSerializable
+  const factory CreateOrderBodyItemsItem({
+    /// sku
+    @JsonKey(name: CreateOrderBodyItemsItem.skuKey_) String? sku,
+  }) = _CreateOrderBodyItemsItem;
+
+  factory CreateOrderBodyItemsItem.fromJson(Map<String, dynamic> json) =>
+      _$CreateOrderBodyItemsItemFromJson(json);
+
+  static const String skuKey_ = 'sku';
+}

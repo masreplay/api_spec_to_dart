@@ -1,0 +1,81 @@
+/// ResponseHeaderListValueItem
+///
+/// ```json
+/// {
+///     "oneOf": [
+///         {
+///             "$ref": "#/components/schemas/header"
+///         },
+///         {
+///             "type": "string",
+///             "title": "Header"
+///         }
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+sealed class ResponseHeaderListValueItem {
+  const ResponseHeaderListValueItem();
+
+  const factory ResponseHeaderListValueItem.header(Header value) =
+      ResponseHeaderListValueItemHeader;
+  const factory ResponseHeaderListValueItem.string(String value) =
+      ResponseHeaderListValueItemString;
+
+  factory ResponseHeaderListValueItem.fromJson(Object? json) => switch (json) {
+    String() => ResponseHeaderListValueItemString(json),
+    Map<String, dynamic>() => ResponseHeaderListValueItemHeader(
+      Header.fromJson(json),
+    ),
+    _ => throw ArgumentError.value(
+      json,
+      'json',
+      'No ResponseHeaderListValueItem variant matches',
+    ),
+  };
+
+  Object? toJson();
+}
+
+final class ResponseHeaderListValueItemHeader
+    extends ResponseHeaderListValueItem {
+  const ResponseHeaderListValueItemHeader(this.value);
+
+  final Header value;
+
+  @override
+  Object? toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ResponseHeaderListValueItemHeader && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'ResponseHeaderListValueItem.header($value)';
+}
+
+final class ResponseHeaderListValueItemString
+    extends ResponseHeaderListValueItem {
+  const ResponseHeaderListValueItemString(this.value);
+
+  final String value;
+
+  @override
+  Object? toJson() => value;
+
+  @override
+  bool operator ==(Object other) =>
+      other is ResponseHeaderListValueItemString && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'ResponseHeaderListValueItem.string($value)';
+}

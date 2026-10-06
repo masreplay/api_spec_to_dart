@@ -1,0 +1,82 @@
+/// FormParameterTextValue
+///
+/// ```json
+/// {
+///     "properties": {
+///         "key": {
+///             "type": "string"
+///         },
+///         "value": {
+///             "type": "string"
+///         },
+///         "disabled": {
+///             "type": "boolean",
+///             "description": "When set to true, prevents this form data entity from being sent.",
+///             "default": false
+///         },
+///         "type": {
+///             "type": "string",
+///             "const": "text"
+///         },
+///         "contentType": {
+///             "type": "string",
+///             "description": "Override Content-Type header of this form data entity."
+///         },
+///         "description": {
+///             "$ref": "#/components/schemas/description"
+///         }
+///     },
+///     "required": [
+///         "key"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'form_parameter_text_value.freezed.dart';
+part 'form_parameter_text_value.g.dart';
+
+@freezed
+abstract class FormParameterTextValue with _$FormParameterTextValue {
+  const FormParameterTextValue._();
+
+  @jsonSerializable
+  const factory FormParameterTextValue({
+    /// key
+    @JsonKey(name: FormParameterTextValue.keyKey_) required String key,
+
+    /// value
+    @JsonKey(name: FormParameterTextValue.valueKey_) String? value,
+
+    /// disabled
+    @Default(false)
+    @JsonKey(name: FormParameterTextValue.disabledKey_)
+    bool disabled,
+
+    /// type
+    @JsonKey(name: FormParameterTextValue.typeKey_) String? type,
+
+    /// contentType
+    @JsonKey(name: FormParameterTextValue.contentTypeKey_) String? contentType,
+
+    /// description
+    @JsonKey(name: FormParameterTextValue.descriptionKey_)
+    Description? description,
+  }) = _FormParameterTextValue;
+
+  factory FormParameterTextValue.fromJson(Map<String, dynamic> json) =>
+      _$FormParameterTextValueFromJson(json);
+
+  static const String keyKey_ = 'key';
+
+  static const String valueKey_ = 'value';
+
+  static const String disabledKey_ = 'disabled';
+
+  static const String typeKey_ = 'type';
+
+  static const String contentTypeKey_ = 'contentType';
+
+  static const String descriptionKey_ = 'description';
+}

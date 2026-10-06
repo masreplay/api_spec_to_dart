@@ -1,0 +1,33 @@
+/// SearchBodyVariables
+///
+/// ```json
+/// {
+///     "properties": {
+///         "q": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'search_body_variables.freezed.dart';
+part 'search_body_variables.g.dart';
+
+@freezed
+abstract class SearchBodyVariables with _$SearchBodyVariables {
+  const SearchBodyVariables._();
+
+  @jsonSerializable
+  const factory SearchBodyVariables({
+    /// q
+    @JsonKey(name: SearchBodyVariables.qKey_) String? q,
+  }) = _SearchBodyVariables;
+
+  factory SearchBodyVariables.fromJson(Map<String, dynamic> json) =>
+      _$SearchBodyVariablesFromJson(json);
+
+  static const String qKey_ = 'q';
+}

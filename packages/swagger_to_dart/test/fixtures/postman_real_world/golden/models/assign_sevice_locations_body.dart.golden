@@ -1,0 +1,37 @@
+/// AssignSeviceLocationsBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "service_locations": {
+///             "type": "array",
+///             "items": {
+///                 "type": "integer"
+///             }
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'assign_sevice_locations_body.freezed.dart';
+part 'assign_sevice_locations_body.g.dart';
+
+@freezed
+abstract class AssignSeviceLocationsBody with _$AssignSeviceLocationsBody {
+  const AssignSeviceLocationsBody._();
+
+  @jsonSerializable
+  const factory AssignSeviceLocationsBody({
+    /// serviceLocations
+    @JsonKey(name: AssignSeviceLocationsBody.serviceLocationsKey_)
+    List<int>? serviceLocations,
+  }) = _AssignSeviceLocationsBody;
+
+  factory AssignSeviceLocationsBody.fromJson(Map<String, dynamic> json) =>
+      _$AssignSeviceLocationsBodyFromJson(json);
+
+  static const String serviceLocationsKey_ = 'service_locations';
+}

@@ -1,0 +1,159 @@
+/// UrlObjectValue
+///
+/// ```json
+/// {
+///     "properties": {
+///         "raw": {
+///             "type": "string",
+///             "description": "The string representation of the request URL, including the protocol, host, path, hash, query parameter(s) and path variable(s)."
+///         },
+///         "protocol": {
+///             "type": "string",
+///             "description": "The protocol associated with the request, E.g: 'http'"
+///         },
+///         "host": {
+///             "oneOf": [
+///                 {
+///                     "type": "string"
+///                 },
+///                 {
+///                     "type": "array",
+///                     "items": {
+///                         "type": "string"
+///                     },
+///                     "description": "The host, split into subdomain strings."
+///                 }
+///             ],
+///             "description": "The host for the URL, E.g: api.yourdomain.com. Can be stored as a string or as an array of strings.",
+///             "title": "Host"
+///         },
+///         "path": {
+///             "oneOf": [
+///                 {
+///                     "type": "string"
+///                 },
+///                 {
+///                     "type": "array",
+///                     "items": {
+///                         "oneOf": [
+///                             {
+///                                 "type": "string"
+///                             },
+///                             {
+///                                 "type": "object",
+///                                 "properties": {
+///                                     "type": {
+///                                         "type": "string"
+///                                     },
+///                                     "value": {
+///                                         "type": "string"
+///                                     }
+///                                 }
+///                             }
+///                         ]
+///                     },
+///                     "description": "The complete path of the current url, broken down into segments. A segment could be a string, or a path variable."
+///                 }
+///             ]
+///         },
+///         "port": {
+///             "type": "string",
+///             "description": "The port number present in this URL. An empty value implies 80/443 depending on whether the protocol field contains http/https."
+///         },
+///         "query": {
+///             "type": "array",
+///             "items": {
+///                 "type": "object",
+///                 "properties": {
+///                     "key": {
+///                         "type": "string",
+///                         "nullable": true
+///                     },
+///                     "value": {
+///                         "type": "string",
+///                         "nullable": true
+///                     },
+///                     "disabled": {
+///                         "type": "boolean",
+///                         "description": "If set to true, the current query parameter will not be sent with the request.",
+///                         "default": false
+///                     },
+///                     "description": {
+///                         "$ref": "#/components/schemas/description"
+///                     }
+///                 },
+///                 "title": "QueryParam"
+///             },
+///             "description": "An array of QueryParams, which is basically the query string part of the URL, parsed into separate variables"
+///         },
+///         "hash": {
+///             "type": "string",
+///             "description": "Contains the URL fragment (if any). Usually this is not transmitted over the network, but it could be useful to store this in some cases."
+///         },
+///         "variable": {
+///             "type": "array",
+///             "items": {
+///                 "$ref": "#/components/schemas/variable"
+///             },
+///             "description": "Postman supports path variables with the syntax `/path/:variableName/to/somewhere`. These variables are stored in this field."
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'url_object_value.freezed.dart';
+part 'url_object_value.g.dart';
+
+@freezed
+abstract class UrlObjectValue with _$UrlObjectValue {
+  const UrlObjectValue._();
+
+  @jsonSerializable
+  const factory UrlObjectValue({
+    /// raw
+    @JsonKey(name: UrlObjectValue.rawKey_) String? raw,
+
+    /// protocol
+    @JsonKey(name: UrlObjectValue.protocolKey_) String? protocol,
+
+    /// host
+    @JsonKey(name: UrlObjectValue.hostKey_) Host? host,
+
+    /// path
+    @JsonKey(name: UrlObjectValue.pathKey_) UrlObjectValuePath? path,
+
+    /// port
+    @JsonKey(name: UrlObjectValue.portKey_) String? port,
+
+    /// query
+    @JsonKey(name: UrlObjectValue.queryKey_) List<QueryParam>? query,
+
+    /// hash
+    @JsonKey(name: UrlObjectValue.hashKey_) String? hash,
+
+    /// variable
+    @JsonKey(name: UrlObjectValue.variableKey_) List<Variable>? variable,
+  }) = _UrlObjectValue;
+
+  factory UrlObjectValue.fromJson(Map<String, dynamic> json) =>
+      _$UrlObjectValueFromJson(json);
+
+  static const String rawKey_ = 'raw';
+
+  static const String protocolKey_ = 'protocol';
+
+  static const String hostKey_ = 'host';
+
+  static const String pathKey_ = 'path';
+
+  static const String portKey_ = 'port';
+
+  static const String queryKey_ = 'query';
+
+  static const String hashKey_ = 'hash';
+
+  static const String variableKey_ = 'variable';
+}

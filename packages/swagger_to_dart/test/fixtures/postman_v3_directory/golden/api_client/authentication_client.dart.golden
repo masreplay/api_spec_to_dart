@@ -1,0 +1,137 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'authentication_client.g.dart';
+
+@RestApi()
+abstract class AuthenticationClient {
+  factory AuthenticationClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _AuthenticationClient;
+
+  @POST('/signup')
+  @FormUrlEncoded()
+  Future<HttpResponse> signup({
+    @Body(nullToAbsent: true) required SignupBody requestBody,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Authentication'],
+      'summary': 'signup',
+      'operationId': 'signup',
+      'requestBody': {
+        'content': {
+          'application/x-www-form-urlencoded': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'email': {'type': 'string'},
+                'password': {'type': 'string'},
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+      'security': [],
+    },
+  });
+  @POST('/login')
+  @MultiPart()
+  Future<HttpResponse> login_({
+    @Part() required Map<String, dynamic> requestBody,
+    @Header('X-Device') String? xDevice,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Authentication'],
+      'summary': 'login',
+      'operationId': 'login',
+      'parameters': [
+        {
+          'name': 'X-Device',
+          'in': 'header',
+          'description': 'Client platform',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'multipart/form-data': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'username': {'type': 'string'},
+                'avatar': {'type': 'string', 'format': 'binary'},
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+      'security': [],
+    },
+  });
+}
+
+extension AuthenticationClientX on AuthenticationClient {
+  Future<HttpResponse> login({
+    required LoginBody requestBody,
+    @Header('X-Device') String? xDevice,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Authentication'],
+      'summary': 'login',
+      'operationId': 'login',
+      'parameters': [
+        {
+          'name': 'X-Device',
+          'in': 'header',
+          'description': 'Client platform',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'multipart/form-data': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'username': {'type': 'string'},
+                'avatar': {'type': 'string', 'format': 'binary'},
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+      'security': [],
+    },
+  }) {
+    return login_(
+      requestBody: requestBody.toJson()
+        ..removeWhere((_, value) => value == null),
+      xDevice: xDevice,
+      extras: extras,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+  }
+}

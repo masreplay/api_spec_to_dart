@@ -2,11 +2,12 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:path/path.dart' as p;
+import 'package:postman_collection/io.dart';
 import 'package:yaml/yaml.dart';
 
 import '../utils/yaml.dart';
 
-/// Reads [path] (a JSON or YAML file, or a directory = Postman v3) or fetches
+/// Reads [path] (a JSON or YAML file, or a Postman v3 directory) or fetches
 /// [url], and returns the decoded document.
 ///
 /// A fetched document refreshes the local copy at [path]; when the fetch
@@ -55,7 +56,10 @@ Future<Object?> loadSpec({String? url, required String path}) async {
 /// The local-file half of [loadSpec], synchronous (used by test fixtures).
 Object? readSpecSync(String path) {
   if (FileSystemEntity.isDirectorySync(path)) {
-    return {'x-postman-v3-directory': path};
+    return readPostmanCollectionDirectory(
+      path,
+      onWarning: (message) => print('swagger_to_dart: warning: $message'),
+    );
   }
   final file = File(path);
   if (!file.existsSync()) {

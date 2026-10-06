@@ -1,0 +1,96 @@
+/// Schema
+///
+/// ```json
+/// {
+///     "properties": {
+///         "info": {
+///             "$ref": "#/components/schemas/info"
+///         },
+///         "item": {
+///             "type": "array",
+///             "items": {
+///                 "oneOf": [
+///                     {
+///                         "$ref": "#/components/schemas/item"
+///                     },
+///                     {
+///                         "$ref": "#/components/schemas/item-group"
+///                     }
+///                 ],
+///                 "title": "Items"
+///             },
+///             "description": "Items are the basic unit for a Postman collection. You can think of them as corresponding to a single API endpoint. Each Item has one request and may have multiple API responses associated with it."
+///         },
+///         "event": {
+///             "$ref": "#/components/schemas/event-list"
+///         },
+///         "variable": {
+///             "$ref": "#/components/schemas/variable-list"
+///         },
+///         "auth": {
+///             "oneOf": [
+///                 {
+///                     "type": "null"
+///                 },
+///                 {
+///                     "$ref": "#/components/schemas/auth"
+///                 }
+///             ]
+///         },
+///         "protocolProfileBehavior": {
+///             "$ref": "#/components/schemas/protocol-profile-behavior"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "info",
+///         "item"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'schema.freezed.dart';
+part 'schema.g.dart';
+
+@freezed
+abstract class Schema with _$Schema {
+  const Schema._();
+
+  @jsonSerializable
+  const factory Schema({
+    /// info
+    @JsonKey(name: Schema.infoKey_) required Info info,
+
+    /// item
+    @JsonKey(name: Schema.itemKey_) required List<Items> item,
+
+    /// event
+    @JsonKey(name: Schema.eventKey_) EventList? event,
+
+    /// variable
+    @JsonKey(name: Schema.variableKey_) VariableList? variable,
+
+    /// auth
+    @JsonKey(name: Schema.authKey_) Auth? auth,
+
+    /// protocolProfileBehavior
+    @JsonKey(name: Schema.protocolProfileBehaviorKey_)
+    ProtocolProfileBehavior? protocolProfileBehavior,
+  }) = _Schema;
+
+  factory Schema.fromJson(Map<String, dynamic> json) => _$SchemaFromJson(json);
+
+  static const String infoKey_ = 'info';
+
+  static const String itemKey_ = 'item';
+
+  static const String eventKey_ = 'event';
+
+  static const String variableKey_ = 'variable';
+
+  static const String authKey_ = 'auth';
+
+  static const String protocolProfileBehaviorKey_ = 'protocolProfileBehavior';
+}

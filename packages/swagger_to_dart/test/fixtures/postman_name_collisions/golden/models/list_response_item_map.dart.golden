@@ -1,0 +1,33 @@
+/// ListResponseItemMap
+///
+/// ```json
+/// {
+///     "properties": {
+///         "string": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'list_response_item_map.freezed.dart';
+part 'list_response_item_map.g.dart';
+
+@freezed
+abstract class ListResponseItemMap with _$ListResponseItemMap {
+  const ListResponseItemMap._();
+
+  @jsonSerializable
+  const factory ListResponseItemMap({
+    /// string
+    @JsonKey(name: ListResponseItemMap.stringKey_) String? string,
+  }) = _ListResponseItemMap;
+
+  factory ListResponseItemMap.fromJson(Map<String, dynamic> json) =>
+      _$ListResponseItemMapFromJson(json);
+
+  static const String stringKey_ = 'string';
+}

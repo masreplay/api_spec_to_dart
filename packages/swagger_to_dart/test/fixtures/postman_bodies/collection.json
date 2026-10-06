@@ -1,0 +1,127 @@
+{
+  "info": {
+    "name": "Bodies",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://api.test" },
+    { "key": "limit", "value": "10" }
+  ],
+  "item": [
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/login",
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            { "key": "username", "value": "ada" },
+            { "key": "remember", "value": "true" }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Token",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "body": "{\"expiresIn\": 3600}"
+        }
+      ]
+    },
+    {
+      "name": "Upload avatar",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/users/:userId/avatar",
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            { "key": "caption", "value": "me", "type": "text" },
+            { "key": "file", "type": "file", "src": "avatar.png" }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Stored",
+          "code": 201,
+          "_postman_previewlanguage": "json",
+          "body": "{\"url\": \"https://cdn.test/a.png\", \"size\": 1024}"
+        }
+      ]
+    },
+    {
+      "name": "Search",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "X-Request-Id", "value": "{{$guid}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/search?limit={{limit}}&tag=a&tag=b",
+          "host": ["{{baseUrl}}"],
+          "path": ["search"],
+          "query": [
+            { "key": "limit", "value": "{{limit}}" },
+            { "key": "tag", "value": "a" },
+            { "key": "tag", "value": "b" }
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  // free text\n  \"query\": \"{{$randomWord}}\",\n  \"filters\": {\"inStock\": true, \"price\": {\"max\": 9.99}},\n  \"page\": {{limit}}\n}",
+          "options": { "raw": { "language": "json" } }
+        }
+      },
+      "response": [
+        {
+          "name": "Hits",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "body": "{\"hits\": [{\"id\": 1, \"score\": 0.5}], \"total\": 1}"
+        }
+      ]
+    },
+    {
+      "name": "Graph",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/graphql",
+        "body": {
+          "mode": "graphql",
+          "graphql": { "query": "query { me { id } }", "variables": "{\"first\": 2}" }
+        }
+      },
+      "response": [
+        {
+          "name": "Data",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "body": "{\"data\": {\"me\": {\"id\": \"u1\"}}}"
+        }
+      ]
+    },
+    {
+      "name": "Raw text",
+      "request": {
+        "method": "PUT",
+        "url": "{{baseUrl}}/notes/:id",
+        "body": { "mode": "raw", "raw": "hello", "options": { "raw": { "language": "text" } } }
+      },
+      "response": [
+        { "name": "Echo", "code": 200, "_postman_previewlanguage": "text", "body": "hello" }
+      ]
+    },
+    {
+      "name": "Upload file",
+      "request": {
+        "method": "PUT",
+        "url": "{{baseUrl}}/files/:name",
+        "body": { "mode": "file", "file": { "src": "a.bin" } }
+      }
+    }
+  ]
+}

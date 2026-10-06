@@ -1,0 +1,46 @@
+/// ErrorResponse
+///
+/// ```json
+/// {
+///     "properties": {
+///         "response": {
+///             "type": "integer"
+///         },
+///         "object": {
+///             "type": "object",
+///             "properties": {
+///                 "hashCode": {
+///                     "type": "integer"
+///                 }
+///             }
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'error_response.freezed.dart';
+part 'error_response.g.dart';
+
+@freezed
+abstract class ErrorResponse with _$ErrorResponse {
+  const ErrorResponse._();
+
+  @jsonSerializable
+  const factory ErrorResponse({
+    /// response
+    @JsonKey(name: ErrorResponse.responseKey_) int? response,
+
+    /// object
+    @JsonKey(name: ErrorResponse.objectKey_) ErrorResponseObject? object,
+  }) = _ErrorResponse;
+
+  factory ErrorResponse.fromJson(Map<String, dynamic> json) =>
+      _$ErrorResponseFromJson(json);
+
+  static const String responseKey_ = 'response';
+
+  static const String objectKey_ = 'object';
+}

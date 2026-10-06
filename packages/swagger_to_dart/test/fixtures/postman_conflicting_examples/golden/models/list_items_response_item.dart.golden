@@ -1,0 +1,62 @@
+/// ListItemsResponseItem
+///
+/// ```json
+/// {
+///     "properties": {
+///         "id": {
+///             "oneOf": [
+///                 {
+///                     "type": "integer"
+///                 },
+///                 {
+///                     "type": "string"
+///                 }
+///             ]
+///         },
+///         "score": {
+///             "type": "number"
+///         },
+///         "extra": {
+///             "type": "object",
+///             "properties": {
+///                 "x": {
+///                     "type": "integer"
+///                 }
+///             }
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'list_items_response_item.freezed.dart';
+part 'list_items_response_item.g.dart';
+
+@freezed
+abstract class ListItemsResponseItem with _$ListItemsResponseItem {
+  const ListItemsResponseItem._();
+
+  @jsonSerializable
+  const factory ListItemsResponseItem({
+    /// id
+    @JsonKey(name: ListItemsResponseItem.idKey_) dynamic id,
+
+    /// score
+    @JsonKey(name: ListItemsResponseItem.scoreKey_) double? score,
+
+    /// extra
+    @JsonKey(name: ListItemsResponseItem.extraKey_)
+    ListItemsResponseItemExtra? extra,
+  }) = _ListItemsResponseItem;
+
+  factory ListItemsResponseItem.fromJson(Map<String, dynamic> json) =>
+      _$ListItemsResponseItemFromJson(json);
+
+  static const String idKey_ = 'id';
+
+  static const String scoreKey_ = 'score';
+
+  static const String extraKey_ = 'extra';
+}

@@ -1,0 +1,9 @@
+$kind: http-request
+method: GET
+url: '{{base_url}}/books'
+order: 1000
+queryParams:
+  - key: limit
+    value: '10'
+    description: Page size
+examples: './.resources/get all books.resources/examples/'

@@ -1,0 +1,33 @@
+/// ListItemsResponseItemExtra
+///
+/// ```json
+/// {
+///     "properties": {
+///         "x": {
+///             "type": "integer"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'list_items_response_item_extra.freezed.dart';
+part 'list_items_response_item_extra.g.dart';
+
+@freezed
+abstract class ListItemsResponseItemExtra with _$ListItemsResponseItemExtra {
+  const ListItemsResponseItemExtra._();
+
+  @jsonSerializable
+  const factory ListItemsResponseItemExtra({
+    /// x
+    @JsonKey(name: ListItemsResponseItemExtra.xKey_) int? x,
+  }) = _ListItemsResponseItemExtra;
+
+  factory ListItemsResponseItemExtra.fromJson(Map<String, dynamic> json) =>
+      _$ListItemsResponseItemExtraFromJson(json);
+
+  static const String xKey_ = 'x';
+}

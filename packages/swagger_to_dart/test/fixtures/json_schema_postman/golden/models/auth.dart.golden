@@ -1,0 +1,185 @@
+/// auth
+///
+/// ```json
+/// {
+///     "properties": {
+///         "type": {
+///             "enum": [
+///                 "apikey",
+///                 "awsv4",
+///                 "basic",
+///                 "bearer",
+///                 "digest",
+///                 "edgegrid",
+///                 "hawk",
+///                 "noauth",
+///                 "oauth1",
+///                 "oauth2",
+///                 "ntlm"
+///             ],
+///             "type": "string"
+///         },
+///         "noauth": {},
+///         "apikey": {
+///             "type": "array",
+///             "items": {
+///                 "$ref": "#/components/schemas/auth-attribute"
+///             },
+///             "description": "The attributes for API Key Authentication.",
+///             "title": "API Key Authentication"
+///         },
+///         "awsv4": {
+///             "type": "array",
+///             "items": {
+///                 "$ref": "#/components/schemas/auth-attribute"
+///             },
+///             "description": "The attributes for [AWS Auth](http://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html).",
+///             "title": "AWS Signature v4"
+///         },
+///         "basic": {
+///             "type": "array",
+///             "items": {
+///                 "$ref": "#/components/schemas/auth-attribute"
+///             },
+///             "description": "The attributes for [Basic Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication).",
+///             "title": "Basic Authentication"
+///         },
+///         "bearer": {
+///             "type": "array",
+///             "items": {
+///                 "$ref": "#/components/schemas/auth-attribute"
+///             },
+///             "description": "The helper attributes for [Bearer Token Authentication](https://tools.ietf.org/html/rfc6750)",
+///             "title": "Bearer Token Authentication"
+///         },
+///         "digest": {
+///             "type": "array",
+///             "items": {
+///                 "$ref": "#/components/schemas/auth-attribute"
+///             },
+///             "description": "The attributes for [Digest Authentication](https://en.wikipedia.org/wiki/Digest_access_authentication).",
+///             "title": "Digest Authentication"
+///         },
+///         "edgegrid": {
+///             "type": "array",
+///             "items": {
+///                 "$ref": "#/components/schemas/auth-attribute"
+///             },
+///             "description": "The attributes for [Akamai EdgeGrid Authentication](https://developer.akamai.com/legacy/introduction/Client_Auth.html).",
+///             "title": "EdgeGrid Authentication"
+///         },
+///         "hawk": {
+///             "type": "array",
+///             "items": {
+///                 "$ref": "#/components/schemas/auth-attribute"
+///             },
+///             "description": "The attributes for [Hawk Authentication](https://github.com/hueniverse/hawk)",
+///             "title": "Hawk Authentication"
+///         },
+///         "ntlm": {
+///             "type": "array",
+///             "items": {
+///                 "$ref": "#/components/schemas/auth-attribute"
+///             },
+///             "description": "The attributes for [NTLM Authentication](https://msdn.microsoft.com/en-us/library/cc237488.aspx)",
+///             "title": "NTLM Authentication"
+///         },
+///         "oauth1": {
+///             "type": "array",
+///             "items": {
+///                 "$ref": "#/components/schemas/auth-attribute"
+///             },
+///             "description": "The attributes for [OAuth2](https://oauth.net/1/)",
+///             "title": "OAuth1"
+///         },
+///         "oauth2": {
+///             "type": "array",
+///             "items": {
+///                 "$ref": "#/components/schemas/auth-attribute"
+///             },
+///             "description": "Helper attributes for [OAuth2](https://oauth.net/2/)",
+///             "title": "OAuth2"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "type"
+///     ],
+///     "description": "Represents authentication helpers provided by Postman"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'auth.freezed.dart';
+part 'auth.g.dart';
+
+@freezed
+abstract class Auth with _$Auth {
+  const Auth._();
+
+  @jsonSerializable
+  const factory Auth({
+    /// type
+    @JsonKey(name: Auth.typeKey_) required AuthType type,
+
+    /// noauth
+    @JsonKey(name: Auth.noauthKey_) dynamic noauth,
+
+    /// apikey
+    @JsonKey(name: Auth.apikeyKey_) List<AuthAttribute>? apikey,
+
+    /// awsv4
+    @JsonKey(name: Auth.awsv4Key_) List<AuthAttribute>? awsv4,
+
+    /// basic
+    @JsonKey(name: Auth.basicKey_) List<AuthAttribute>? basic,
+
+    /// bearer
+    @JsonKey(name: Auth.bearerKey_) List<AuthAttribute>? bearer,
+
+    /// digest
+    @JsonKey(name: Auth.digestKey_) List<AuthAttribute>? digest,
+
+    /// edgegrid
+    @JsonKey(name: Auth.edgegridKey_) List<AuthAttribute>? edgegrid,
+
+    /// hawk
+    @JsonKey(name: Auth.hawkKey_) List<AuthAttribute>? hawk,
+
+    /// ntlm
+    @JsonKey(name: Auth.ntlmKey_) List<AuthAttribute>? ntlm,
+
+    /// oauth1
+    @JsonKey(name: Auth.oauth1Key_) List<AuthAttribute>? oauth1,
+
+    /// oauth2
+    @JsonKey(name: Auth.oauth2Key_) List<AuthAttribute>? oauth2,
+  }) = _Auth;
+
+  factory Auth.fromJson(Map<String, dynamic> json) => _$AuthFromJson(json);
+
+  static const String typeKey_ = 'type';
+
+  static const String noauthKey_ = 'noauth';
+
+  static const String apikeyKey_ = 'apikey';
+
+  static const String awsv4Key_ = 'awsv4';
+
+  static const String basicKey_ = 'basic';
+
+  static const String bearerKey_ = 'bearer';
+
+  static const String digestKey_ = 'digest';
+
+  static const String edgegridKey_ = 'edgegrid';
+
+  static const String hawkKey_ = 'hawk';
+
+  static const String ntlmKey_ = 'ntlm';
+
+  static const String oauth1Key_ = 'oauth1';
+
+  static const String oauth2Key_ = 'oauth2';
+}

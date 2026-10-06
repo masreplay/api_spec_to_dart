@@ -1,0 +1,42 @@
+/// UpdateCategoryImageBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "image": {
+///             "type": "string",
+///             "format": "binary"
+///         },
+///         "category_id": {
+///             "type": "integer"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'update_category_image_body.freezed.dart';
+part 'update_category_image_body.g.dart';
+
+@freezed
+abstract class UpdateCategoryImageBody with _$UpdateCategoryImageBody {
+  const UpdateCategoryImageBody._();
+
+  @jsonSerializable
+  const factory UpdateCategoryImageBody({
+    /// image
+    @JsonKey(name: UpdateCategoryImageBody.imageKey_) MultipartFile? image,
+
+    /// categoryId
+    @JsonKey(name: UpdateCategoryImageBody.categoryIdKey_) int? categoryId,
+  }) = _UpdateCategoryImageBody;
+
+  factory UpdateCategoryImageBody.fromJson(Map<String, dynamic> json) =>
+      _$UpdateCategoryImageBodyFromJson(json);
+
+  static const String imageKey_ = 'image';
+
+  static const String categoryIdKey_ = 'category_id';
+}

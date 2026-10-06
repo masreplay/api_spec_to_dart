@@ -1,0 +1,82 @@
+/// ScriptExec
+///
+/// ```json
+/// {
+///     "oneOf": [
+///         {
+///             "type": "array",
+///             "items": {
+///                 "type": "string"
+///             },
+///             "description": "This is an array of strings, where each line represents a single line of code. Having lines separate makes it possible to easily track changes made to scripts."
+///         },
+///         {
+///             "type": "string"
+///         }
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'script_exec.g.dart';
+
+sealed class ScriptExec {
+  const ScriptExec();
+
+  const factory ScriptExec.list(List<String> value) = ScriptExecList;
+  const factory ScriptExec.string(String value) = ScriptExecString;
+
+  factory ScriptExec.fromJson(Object? json) => switch (json) {
+    String() => ScriptExecString(json),
+    List() => _$ScriptExecListFromJson({'value': json}),
+    _ => throw ArgumentError.value(
+      json,
+      'json',
+      'No ScriptExec variant matches',
+    ),
+  };
+
+  Object? toJson();
+}
+
+@jsonSerializable
+final class ScriptExecList extends ScriptExec {
+  const ScriptExecList(this.value);
+
+  @JsonKey(name: 'value')
+  final List<String> value;
+
+  @override
+  Object? toJson() => _$ScriptExecListToJson(this)['value'];
+
+  @override
+  bool operator ==(Object other) =>
+      other is ScriptExecList &&
+      const DeepCollectionEquality().equals(other.value, value);
+
+  @override
+  int get hashCode => const DeepCollectionEquality().hash(value);
+
+  @override
+  String toString() => 'ScriptExec.list($value)';
+}
+
+final class ScriptExecString extends ScriptExec {
+  const ScriptExecString(this.value);
+
+  final String value;
+
+  @override
+  Object? toJson() => value;
+
+  @override
+  bool operator ==(Object other) =>
+      other is ScriptExecString && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'ScriptExec.string($value)';
+}

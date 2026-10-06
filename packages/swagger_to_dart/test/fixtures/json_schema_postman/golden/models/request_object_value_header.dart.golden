@@ -1,0 +1,81 @@
+/// RequestObjectValueHeader
+///
+/// ```json
+/// {
+///     "oneOf": [
+///         {
+///             "$ref": "#/components/schemas/header-list"
+///         },
+///         {
+///             "type": "string"
+///         }
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'request_object_value_header.g.dart';
+
+sealed class RequestObjectValueHeader {
+  const RequestObjectValueHeader();
+
+  const factory RequestObjectValueHeader.headerList(HeaderList value) =
+      RequestObjectValueHeaderHeaderList;
+  const factory RequestObjectValueHeader.string(String value) =
+      RequestObjectValueHeaderString;
+
+  factory RequestObjectValueHeader.fromJson(Object? json) => switch (json) {
+    String() => RequestObjectValueHeaderString(json),
+    List() => _$RequestObjectValueHeaderHeaderListFromJson({'value': json}),
+    _ => throw ArgumentError.value(
+      json,
+      'json',
+      'No RequestObjectValueHeader variant matches',
+    ),
+  };
+
+  Object? toJson();
+}
+
+@jsonSerializable
+final class RequestObjectValueHeaderHeaderList
+    extends RequestObjectValueHeader {
+  const RequestObjectValueHeaderHeaderList(this.value);
+
+  @JsonKey(name: 'value')
+  final HeaderList value;
+
+  @override
+  Object? toJson() => _$RequestObjectValueHeaderHeaderListToJson(this)['value'];
+
+  @override
+  bool operator ==(Object other) =>
+      other is RequestObjectValueHeaderHeaderList &&
+      const DeepCollectionEquality().equals(other.value, value);
+
+  @override
+  int get hashCode => const DeepCollectionEquality().hash(value);
+
+  @override
+  String toString() => 'RequestObjectValueHeader.headerList($value)';
+}
+
+final class RequestObjectValueHeaderString extends RequestObjectValueHeader {
+  const RequestObjectValueHeaderString(this.value);
+
+  final String value;
+
+  @override
+  Object? toJson() => value;
+
+  @override
+  bool operator ==(Object other) =>
+      other is RequestObjectValueHeaderString && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'RequestObjectValueHeader.string($value)';
+}

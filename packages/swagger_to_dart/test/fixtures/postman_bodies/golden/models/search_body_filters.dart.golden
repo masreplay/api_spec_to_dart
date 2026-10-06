@@ -1,0 +1,46 @@
+/// SearchBodyFilters
+///
+/// ```json
+/// {
+///     "properties": {
+///         "inStock": {
+///             "type": "boolean"
+///         },
+///         "price": {
+///             "type": "object",
+///             "properties": {
+///                 "max": {
+///                     "type": "number"
+///                 }
+///             }
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'search_body_filters.freezed.dart';
+part 'search_body_filters.g.dart';
+
+@freezed
+abstract class SearchBodyFilters with _$SearchBodyFilters {
+  const SearchBodyFilters._();
+
+  @jsonSerializable
+  const factory SearchBodyFilters({
+    /// inStock
+    @JsonKey(name: SearchBodyFilters.inStockKey_) bool? inStock,
+
+    /// price
+    @JsonKey(name: SearchBodyFilters.priceKey_) SearchBodyFiltersPrice? price,
+  }) = _SearchBodyFilters;
+
+  factory SearchBodyFilters.fromJson(Map<String, dynamic> json) =>
+      _$SearchBodyFiltersFromJson(json);
+
+  static const String inStockKey_ = 'inStock';
+
+  static const String priceKey_ = 'price';
+}

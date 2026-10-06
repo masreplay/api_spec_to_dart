@@ -9,6 +9,9 @@
 ///         "remember": {
 ///             "type": "boolean",
 ///             "default": false
+///         },
+///         "note": {
+///             "type": "string"
 ///         }
 ///     },
 ///     "type": "object",
@@ -34,6 +37,9 @@ abstract class LoginBody with _$LoginBody {
 
     /// remember
     @Default(false) @JsonKey(name: LoginBody.rememberKey_) bool remember,
+
+    /// note
+    @JsonKey(name: LoginBody.noteKey_) String? note,
   }) = _LoginBody;
 
   factory LoginBody.fromJson(Map<String, dynamic> json) =>
@@ -42,4 +48,6 @@ abstract class LoginBody with _$LoginBody {
   static const String usernameKey_ = 'username';
 
   static const String rememberKey_ = 'remember';
+
+  static const String noteKey_ = 'note';
 }

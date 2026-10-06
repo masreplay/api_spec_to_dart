@@ -1,0 +1,64 @@
+/// event
+///
+/// ```json
+/// {
+///     "properties": {
+///         "id": {
+///             "type": "string",
+///             "description": "A unique identifier for the enclosing event."
+///         },
+///         "listen": {
+///             "type": "string",
+///             "description": "Can be set to `test` or `prerequest` for test scripts or pre-request scripts respectively."
+///         },
+///         "script": {
+///             "$ref": "#/components/schemas/script"
+///         },
+///         "disabled": {
+///             "type": "boolean",
+///             "description": "Indicates whether the event is disabled. If absent, the event is assumed to be enabled.",
+///             "default": false
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "listen"
+///     ],
+///     "description": "Defines a script associated with an associated event name"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'event.freezed.dart';
+part 'event.g.dart';
+
+@freezed
+abstract class Event with _$Event {
+  const Event._();
+
+  @jsonSerializable
+  const factory Event({
+    /// id
+    @JsonKey(name: Event.idKey_) String? id,
+
+    /// listen
+    @JsonKey(name: Event.listenKey_) required String listen,
+
+    /// script
+    @JsonKey(name: Event.scriptKey_) Script? script,
+
+    /// disabled
+    @Default(false) @JsonKey(name: Event.disabledKey_) bool disabled,
+  }) = _Event;
+
+  factory Event.fromJson(Map<String, dynamic> json) => _$EventFromJson(json);
+
+  static const String idKey_ = 'id';
+
+  static const String listenKey_ = 'listen';
+
+  static const String scriptKey_ = 'script';
+
+  static const String disabledKey_ = 'disabled';
+}

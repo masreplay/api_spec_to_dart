@@ -1,0 +1,49 @@
+/// ListResponseItem
+///
+/// ```json
+/// {
+///     "properties": {
+///         "map": {
+///             "type": "object",
+///             "properties": {
+///                 "string": {
+///                     "type": "string"
+///                 }
+///             }
+///         },
+///         "list": {
+///             "type": "array",
+///             "items": {
+///                 "type": "integer"
+///             }
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'list_response_item.freezed.dart';
+part 'list_response_item.g.dart';
+
+@freezed
+abstract class ListResponseItem with _$ListResponseItem {
+  const ListResponseItem._();
+
+  @jsonSerializable
+  const factory ListResponseItem({
+    /// map
+    @JsonKey(name: ListResponseItem.mapKey_) ListResponseItemMap? map,
+
+    /// list
+    @JsonKey(name: ListResponseItem.listKey_) List<int>? list,
+  }) = _ListResponseItem;
+
+  factory ListResponseItem.fromJson(Map<String, dynamic> json) =>
+      _$ListResponseItemFromJson(json);
+
+  static const String mapKey_ = 'map';
+
+  static const String listKey_ = 'list';
+}
