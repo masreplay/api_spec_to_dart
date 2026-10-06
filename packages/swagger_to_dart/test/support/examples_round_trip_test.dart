@@ -75,8 +75,9 @@ void main() {
       source,
       contains('''
   test('listUsers 200 example Ada\\'s decodes', () {
-    for (final json in (jsonDecode(r\'\'\'[{"id":1}]\'\'\') as List)
-        .whereType<Map<String, dynamic>>()) {
+    for (final item in jsonDecode(r\'\'\'[{"id":1}]\'\'\') as List) {
+      // A null or primitive element fails the cast instead of being skipped.
+      final json = item as Map<String, dynamic>;
       final once = ListUsersResponseItem.fromJson(json);'''),
     );
     expect(source, contains("// createUser 201 example Ada's: skipped, "));

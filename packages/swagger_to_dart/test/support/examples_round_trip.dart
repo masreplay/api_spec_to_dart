@@ -111,8 +111,9 @@ ${_roundTrip(model)}
               tests++;
               lines.add('''
   test(${dartString('$label decodes')}, () {
-    for (final json in (jsonDecode($literal) as List)
-        .whereType<Map<String, dynamic>>()) {
+    for (final item in jsonDecode($literal) as List) {
+      // A null or primitive element fails the cast instead of being skipped.
+      final json = item as Map<String, dynamic>;
 ${_roundTrip('${model}Item', indent: '  ')}
     }
   });
