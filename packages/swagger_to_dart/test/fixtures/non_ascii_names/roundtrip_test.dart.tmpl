@@ -5,6 +5,7 @@ void main() {
   test('values under keys without ASCII words decode and re-encode', () {
     const json = {
       'name': 'Ali',
+      'color': 'أزرق',
       'العنوان': {'city': 'Baghdad'},
       '😀': 'happy',
       '_': {'note': 'n'},
@@ -12,6 +13,7 @@ void main() {
     };
 
     final person = Schema.fromJson(json);
+    expect(person.color, SchemaColor.value2);
     expect(person.empty?.city, 'Baghdad');
     expect(person.empty2, SchemaEmpty2.happy);
     expect(person.empty3?.note, 'n');

@@ -271,4 +271,20 @@ void main() {
       expect(keys(null), ['Schema']);
     });
   });
+
+  test('enum values without ASCII words are value1, value2, …', () {
+    final result = renderSpec(
+      _components({
+        'Color': {
+          'type': 'string',
+          'enum': ['أحمر', 'red', 'أزرق'],
+        },
+      }),
+    );
+    expect(result.errors, isEmpty);
+    final color = result.files['models/color.dart']!;
+    expect(color, contains("@JsonValue('أحمر')\n  value1,"));
+    expect(color, contains("@JsonValue('red')\n  red,"));
+    expect(color, contains("@JsonValue('أزرق')\n  value3;"));
+  });
 }

@@ -168,7 +168,13 @@ class Renaming {
     return _type(Recase.instance.toPascalCase(key));
   }
 
-  String renameEnumValue(Object value, {String? overrideName}) {
+  /// A value without ASCII words (`أحمر`) is named by its 1-based
+  /// [position] (`value1`), so several such values stay distinct.
+  String renameEnumValue(
+    Object value, {
+    String? overrideName,
+    int? position,
+  }) {
     // Opt-in rename from config (swagger_to_dart.yaml `model.enums`).
     if (overrideName != null && overrideName.trim().isNotEmpty) {
       return renameProperty(overrideName);
@@ -179,7 +185,9 @@ class Renaming {
       return intValue < 0 ? 'valueMinus${intValue.abs()}' : 'value$intValue';
     }
 
-    return renameProperty('$value');
+    final name = Recase.instance.toCamelCase(_spellSymbols('$value'));
+    if (name.isEmpty && position != null) return 'value$position';
+    return _member(name);
   }
 
   String renameClass(String value, {List<String>? removePrefixes}) {

@@ -52,6 +52,13 @@ void main() {
         'pgRegistered',
       );
     });
+
+    test('names a value without ASCII words by its position', () {
+      expect(renaming.renameEnumValue('أحمر', position: 1), 'value1');
+      expect(renaming.renameEnumValue('😀', position: 3), 'value3');
+      expect(renaming.renameEnumValue('+', position: 2), 'plus');
+      expect(renaming.renameEnumValue('red', position: 2), 'red');
+    });
   });
 
   group('renameProperty', () {
