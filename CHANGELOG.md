@@ -1,3 +1,98 @@
+## 6.0.0
+
+Swagger 2.0, Postman collections and JSON Schema documents are now inputs,
+in JSON or YAML (see Inputs in the README). Generated output changes for
+existing OpenAPI specs too: regenerate, run `build_runner`, then follow the
+migration notes below.
+
+### Breaking changes
+
+- **Inline objects become models (G1).** An inline object schema with
+  `properties` (a property, array item, map value, request body or
+  response) generates a freezed model named by its `title` or by where it
+  is used (`GetUserResponse`, `UpdateUserBody`, `GetUserResponseAddress`,
+  `…RolesItem`, `…ScoresValue`) instead of `Map<String, dynamic>`.
+  Migration: replace map access (`response['name']`) with fields
+  (`response.name`) and build bodies with the model's constructor. Inline
+  objects used as parameters, and objects without `properties`, stay
+  `Map<String, dynamic>`. A `default` on an inline object is dropped (5.x
+  emitted it as a map literal); set it yourself where you relied on it.
+- **Mixed unions become sealed classes (G2).** A `oneOf`/`anyOf` or type
+  array that mixes JSON kinds with at least one array or object variant
+  (e.g. `string | object`) generates a `sealed` class with a
+  `fromJson(Object? json)` that switches on the JSON kind, instead of
+  `dynamic` (properties) or an empty class (components). Migration: switch
+  over the variant subclasses (`UrlString`, `UrlObject`, …) where you used
+  to type-test the `dynamic`. Mixes of primitives only stay `dynamic`, as
+  do mixed unions used as parameters or request bodies; a list or map of
+  them as a response is `List<Object?>` / `Map<String, Object?>`.
+- **Models-only output and fewer exports (G4).** A spec without operations
+  generates no `api_client/` directory, and `gen.dart` exports only the
+  models. `models/exports.dart` exports `package:dio/dio.dart` and the
+  `MultipartFile` JSON converter only when a model has a `MultipartFile`
+  field. Migration: import `package:dio/dio.dart` yourself where you relied
+  on the generated exports for it.
+- **Clients hold the operations of their tag (G5).** An operation now goes
+  to the client of each of its own tags; 5.x copied every operation of a
+  path into the client of every tag on that path. Migration: call a method
+  on the client of its operation's tag (methods that moved no longer exist
+  on the other client).
+- **HTTP methods without a retrofit annotation use `@Method` (G6).**
+  `trace`, `connect`, OpenAPI 3.2 `query` and `additionalOperations`
+  (e.g. `PURGE`) generate `@Method('TRACE', path)` etc.; 5.x emitted
+  annotations that do not exist, so such clients did not compile. The
+  unused `pat` value of `OpenApiPathMethodEnum` is removed. Migration:
+  only code using `OpenApiPathMethodEnum.pat` from this package's API needs
+  a change.
+- **`@Extras` leaves out examples.** With `api_client.include_openapi_extras`
+  on, the embedded operation metadata no longer contains `example`,
+  `examples`, `x-example` or `x-examples`, so sample data (which may hold
+  real values) is not compiled into apps. Migration: read examples from the
+  spec instead of `options.extra`.
+
+### Added
+
+- **Inputs.** `input_directory` and `url` accept:
+  - OpenAPI 3.0, 3.1 and 3.2;
+  - Swagger 2.0, converted to OpenAPI 3.0.3 (definitions, global
+    parameters and responses, `body`/`formData`, `consumes`/`produces`,
+    `host`/`basePath`/`schemes`, `securityDefinitions`, `x-nullable`,
+    `collectionFormat`);
+  - Postman collections: v1, v2.0 and v2.1 exports, the Postman API
+    `{"collection": …}` envelope and v3 collection directories, converted
+    by [postman_collection](https://pub.dev/packages/postman_collection)
+    (folders become clients, saved examples become typed responses);
+    credential values are never copied into the output;
+  - JSON Schema documents (`definitions` / `$defs`, any draft): models
+    only, one per definition, named by its key (definition titles are
+    ignored), plus the root named by its `title` or the file name;
+  - YAML for every format (`.yaml`/`.yml` files and YAML URL responses).
+
+  The format is detected from the content. `loadSpec`, `readSpecSync`,
+  `toOpenApiJson`, `detectSpecFormat` and `SpecFormat` are exported for
+  tools built on the package.
+- **Operation and path `servers` (G7).** An operation- or path-level server
+  that differs from the document's gives an absolute URL in the annotation
+  (`@POST('https://auth.example.com/token')`, server variables filled with
+  their defaults); dio does not prepend `baseUrl` to absolute URLs. The
+  operation level wins over the path level.
+- **`model.class_prefix` (G8).** Prefixes every generated model name once
+  (component and inline classes, enums, unions, typedefs, and their file
+  names): `Postman` turns `Item` into `PostmanItem` in `postman_item.dart`.
+  Core types are never prefixed.
+
+### Fixed
+
+- **Non-object components (G3).** Array, map, primitive and `$ref`-alias
+  components generate `typedef Pets = List<Pet>;` etc. instead of an empty
+  freezed class that lost the data. References now use the typedef's
+  type.
+- An operation with a repeated tag (or two tags that are equal once
+  non-ASCII characters are dropped) is added to the client once instead of
+  as `listItems`, `listItems2`, ….
+- A client whose methods use no model no longer imports `models.dart`
+  (an `unused_import` warning).
+
 ## 5.0.0 - 2026-09-29
 
 ### Breaking changes
