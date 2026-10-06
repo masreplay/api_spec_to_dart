@@ -29,6 +29,7 @@ and is reinstated on pub.dev.
 | `PostmanCollectionUrl` | sealed `PostmanUrl` (`PostmanUrlObjectValue` or a string) |
 | `PostmanCollectionResponse` | `PostmanResponse` |
 | `PostmanCollectionInfo`, `…Auth`, `…AuthAttribute`, `…AuthType`, `…Header`, `…QueryParam`, `…Variable`, `…VariableType`, `…Event`, `…Script`, `…Cookie`, `…Certificate`, `…ProxyConfig`, `…Version` | `PostmanInfo`, `PostmanAuth`, `PostmanAuthAttribute`, `PostmanAuthType`, `PostmanHeader`, `PostmanQueryParam`, `PostmanVariable`, `PostmanVariableType`, `PostmanEvent`, `PostmanScript`, `PostmanCookie`, `PostmanCertificate`, `PostmanProxyConfig`, `PostmanVersion` |
+| `PostmanCollectionCertificateSrc` (a certificate's `key` and `cert`) | `PostmanCertificateKey` and `PostmanCertificateCert`, each with `src` |
 | `PostmanCollectionDocumentationMixin`, `getRequestOptionsFromRetrofit`, `PostmanCollectionRequest.fromRequestOptions` | Removed: copy the `PostmanRecorder` interceptor from `example/lib/src/dio_recipe.dart` |
 | `toSentenceCase` | Removed |
 

@@ -9,7 +9,7 @@
       "url": "{server_name}",
       "variables": {
         "server_name": {
-          "default": "http://85.159.214.45"
+          "default": "http://203.0.113.10"
         }
       }
     }
@@ -152,7 +152,7 @@
               "examples": {
                 "Mobile User Login by email": {
                   "value": {
-                    "email": "mustafa17falah@gmail.com"
+                    "email": "user1@example.com"
                   }
                 }
               }
@@ -221,14 +221,14 @@
               "examples": {
                 "0-Create Temp Mobile user": {
                   "value": {
-                    "phone": "9647709251462",
+                    "phone": "9647700000000",
                     "user_type": "end_user",
-                    "full_name": "Raafat Salih"
+                    "full_name": "Test User"
                   }
                 },
                 "Seller by email": {
                   "value": {
-                    "email": "raafat.muhammad@coeng.uobaghdad.edu.iq",
+                    "email": "user3@example.com",
                     "user_type": "seller",
                     "business_name": "Techs comp",
                     "lang": "en"
@@ -236,7 +236,7 @@
                 },
                 "Seller phone": {
                   "value": {
-                    "phone": "07222222262",
+                    "phone": "07700000002",
                     "user_type": "seller",
                     "business_name": "Techs comp",
                     "lang": "en"
@@ -244,17 +244,17 @@
                 },
                 "End user email": {
                   "value": {
-                    "email": "fafafffa@khasom.com",
+                    "email": "user4@example.com",
                     "user_type": "end_user",
-                    "full_name": "Raafat Salih",
+                    "full_name": "Test User",
                     "lang": "en"
                   }
                 },
                 "End user phone": {
                   "value": {
-                    "phone": "07221112262",
+                    "phone": "07700000001",
                     "user_type": "end_user",
-                    "full_name": "Raafat Salih",
+                    "full_name": "Test User",
                     "lang": "en"
                   }
                 }
@@ -402,29 +402,29 @@
                 "2A-Create Seller": {
                   "value": {
                     "id": 128,
-                    "full_name": "Raafat S mi=uhammad",
-                    "business_name": "Hankoush",
+                    "full_name": "Test U mi=user",
+                    "business_name": "Example Shop",
                     "city_id": 1,
                     "address": "Aaaa asda",
                     "nearest_point": "ad ad adfa",
-                    "phone": "9647709251462",
+                    "phone": "9647700000000",
                     "email": "2222@aaffaa.ccc"
                   }
                 },
                 "Complete seller by email": {
                   "value": {
                     "id": 88,
-                    "full_name": "Raafat S mi=uhammad",
+                    "full_name": "Test U mi=user",
                     "city_id": 1,
                     "address": "Aaaa asda",
                     "nearest_point": "ad ad adfa",
-                    "phone": "9647709251462"
+                    "phone": "9647700000000"
                   }
                 },
                 "Complete seller by phone": {
                   "value": {
                     "id": 125,
-                    "full_name": "Raafat S mi=uhammad",
+                    "full_name": "Test U mi=user",
                     "city_id": 1,
                     "address": "Aaaa asda",
                     "nearest_point": "ad ad adfa",
@@ -435,12 +435,12 @@
                 },
                 "Create Seller": {
                   "value": {
-                    "full_name": "Raafat S mi=uhammad",
-                    "business_name": "Hankoush",
+                    "full_name": "Test U mi=user",
+                    "business_name": "Example Shop",
                     "city_id": 1,
                     "address": "Aaaa asda",
                     "nearest_point": "ad ad adfa",
-                    "phone": "9646663651462",
+                    "phone": "9647700000005",
                     "email": "2123af632@aaffaaaaaa.ccc"
                   }
                 }
@@ -585,12 +585,12 @@
                 "2B-Create End User": {
                   "value": {
                     "id": 47,
-                    "full_name": "Raafat S mi=uhammad",
-                    "business_name": "Hankoush",
+                    "full_name": "Test U mi=user",
+                    "business_name": "Example Shop",
                     "city_id": 1,
                     "address": "Aaaa asda",
                     "nearest_point": "ad ad adfa",
-                    "phone": "07709251411",
+                    "phone": "07700000003",
                     "email": "aadddashhss@aaffaa.ccc",
                     "lang": "en"
                   }
@@ -821,8 +821,8 @@
               "examples": {
                 "Update seller (no mandatory field)": {
                   "value": {
-                    "full_name": "Raafat S mi=uhamfttmad",
-                    "business_name": "Hankoush",
+                    "full_name": "Test U mi=userftt",
+                    "business_name": "Example Shop",
                     "address": "Aaaa asda",
                     "nearest_point": "ad ad adfa",
                     "enable": true,
@@ -926,8 +926,8 @@
               "examples": {
                 "Update seller": {
                   "value": {
-                    "full_name": "Raafat S mi=uhamfttmad",
-                    "business_name": "Hankoush",
+                    "full_name": "Test U mi=userftt",
+                    "business_name": "Example Shop",
                     "address": "Aaaa asda",
                     "nearest_point": "ad ad adfa",
                     "enable": true,
@@ -1014,8 +1014,8 @@
                 "Create Account": {
                   "value": {
                     "account_name": "New Account",
-                    "phone": "07713451918",
-                    "email": "fadiramzi.99@gmail.com",
+                    "phone": "07700000004",
+                    "email": "user2@example.com",
                     "push_limits": 0,
                     "sms_limits": 3,
                     "expire_at": "2023-07-22",
@@ -1254,8 +1254,8 @@
                 "Update Account (no mandatory fields)": {
                   "value": {
                     "account_name": "New 111",
-                    "phone": "07713451918",
-                    "email": "fadiramzi.99@gmail.com",
+                    "phone": "07700000004",
+                    "email": "user2@example.com",
                     "push_limits": 10,
                     "sms_limits": 4,
                     "expire_at": "2023-07-22",

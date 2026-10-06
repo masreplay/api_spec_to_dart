@@ -60,7 +60,7 @@
               "examples": {
                 "Send": {
                   "value": {
-                    "phone": "+9647713000846",
+                    "phone": "+9647700000000",
                     "channel": "twilio"
                   }
                 }
@@ -108,7 +108,7 @@
               "examples": {
                 "Verify": {
                   "value": {
-                    "phone": "+9647713000846",
+                    "phone": "+9647700000000",
                     "code": "236337"
                   }
                 }

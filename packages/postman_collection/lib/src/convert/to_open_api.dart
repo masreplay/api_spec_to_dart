@@ -244,7 +244,9 @@ class _Converter {
         onWarning?.call('item ${jsonEncode(item)} is not an object; skipped');
         continue;
       }
-      final name = item['name'] is String ? item['name'] as String : '';
+      final name = item['name'] is String
+          ? secrets.redact(item['name'] as String)!
+          : '';
       final scope = _scope(variables, item['variable']);
       if (item['request'] != null) {
         _request(item, name, folders, auth, scope, webhook);
@@ -501,7 +503,9 @@ Map<String, Object?> _info(Object? info, Secrets secrets) {
   final map = info is Map ? info : const {};
   final name = map['name'];
   return {
-    'title': name is String && name.isNotEmpty ? name : 'Postman collection',
+    'title': name is String && name.isNotEmpty
+        ? secrets.redact(name)!
+        : 'Postman collection',
     'description': ?secrets.redact(descriptionText(map['description'])),
     'version': switch (map['version']) {
       final String version when version.isNotEmpty => version,
@@ -704,7 +708,7 @@ class _Operation {
     Map<String, String> variables,
   ) {
     final name = example['name'] is String && example['name'] != ''
-        ? example['name'] as String
+        ? secrets.redact(example['name'] as String)!
         : 'Example';
     if (_requestMap(example['originalRequest']) case final request?) {
       addRequest(parseUrl(request['url']), request, variables, name);

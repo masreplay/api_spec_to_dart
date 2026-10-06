@@ -34,10 +34,11 @@ class PostmanRecorder extends Interceptor {
 
 /// [options] (method, URL, headers and body) as a Postman item.
 ///
-/// Exported collections get shared, so credentials stay out: headers whose
-/// names look like credentials ([isCredentialName]: `Authorization`,
-/// `Cookie`, `X-Api-Key`, ...) are left out, and such query and form values
-/// become `<redacted>`. JSON bodies are recorded as sent.
+/// Exported collections get shared, so credentials stay out: URL userinfo
+/// (`user:password@`) is dropped, headers whose names look like credentials
+/// ([isCredentialName]: `Authorization`, `Cookie`, `X-Api-Key`, ...) are left
+/// out, and such query and form values become `<redacted>`. JSON bodies are
+/// recorded as sent.
 PostmanItem postmanItemFromRequestOptions(RequestOptions options) {
   final uri = _redacted(options.uri);
   return PostmanItem(
@@ -86,14 +87,18 @@ const _redactedValue = '<redacted>';
 String _value(String key, Object? value) =>
     isCredentialName(key) ? _redactedValue : '$value';
 
-Uri _redacted(Uri uri) => uri.hasQuery
-    ? uri.replace(
-        queryParameters: {
-          for (final MapEntry(:key, :value) in uri.queryParametersAll.entries)
-            key: [for (final v in value) _value(key, v)],
-        },
-      )
-    : uri;
+/// [uri] without userinfo and with credential query values redacted.
+Uri _redacted(Uri uri) {
+  if (uri.userInfo.isNotEmpty) uri = uri.replace(userInfo: '');
+  return uri.hasQuery
+      ? uri.replace(
+          queryParameters: {
+            for (final MapEntry(:key, :value) in uri.queryParametersAll.entries)
+              key: [for (final v in value) _value(key, v)],
+          },
+        )
+      : uri;
+}
 
 PostmanRequestObjectValueBody? _body(
   RequestOptions options,

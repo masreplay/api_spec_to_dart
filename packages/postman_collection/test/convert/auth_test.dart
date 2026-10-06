@@ -281,6 +281,16 @@ void main() {
       'authIdentity',
       'author',
       'authority',
+      // `pass` counts only as a word or camelCase segment.
+      'passenger',
+      'passport',
+      'Passport',
+      'PASSPORT',
+      'bypass',
+      'compass',
+      'passive',
+      'subscription',
+      'functions',
     ]) {
       expect(none.hides(name, 'x'), isFalse, reason: name);
     }
@@ -316,6 +326,26 @@ void main() {
       'oAuthCode',
       'oauth_token',
       'OAuth',
+      // Private keys and short password spellings.
+      'private_key',
+      'privateKey',
+      'X-Private-Key',
+      'pwd',
+      'userPwd',
+      'pass',
+      'Pass',
+      'userPass',
+      'user_pass',
+      'X-Pass',
+      'DB_PASS',
+      'pass1',
+      'passphrase',
+      'Passcode',
+      // Vendor key headers.
+      'Ocp-Apim-Subscription-Key',
+      'subscription_key',
+      'x-functions-key',
+      'functionsKey',
     ]) {
       expect(none.hides(name, 'x'), isTrue, reason: name);
     }
@@ -468,6 +498,89 @@ void main() {
       for (final MapEntry(key: type, value: keys) in credentials.entries)
         for (final key in keys) 'SECRET-$type-$key',
     });
+  });
+
+  test('variables named like credentials are secret; URL-like ones and '
+      'identifiers are not', () {
+    final secrets = Secrets.of({
+      'variable': [
+        for (final name in [
+          'api_key',
+          'accessToken',
+          'password',
+          'privateKey',
+          'userPass',
+          'x-functions-key',
+          'tokenUrl',
+          'authUrl',
+          'redirect_uri',
+          'tokenEndpoint',
+          'sessionHost',
+          'username',
+          'clientId',
+          'consumerKey',
+          'authId',
+          'accessKeyId',
+          'passenger',
+        ])
+          {'key': name, 'value': 'value-of-$name'},
+      ],
+    });
+    expect(secrets.variables, {
+      'api_key',
+      'accessToken',
+      'password',
+      'privateKey',
+      'userPass',
+      'x-functions-key',
+    });
+    expect(secrets.leaks('value-of-password'), isTrue);
+    expect(secrets.leaks('value-of-username'), isFalse);
+  });
+
+  test('name-only secrecy spreads to referenced non-URL variables only and '
+      'skips URLs, paths and apikey names', () {
+    final secrets = Secrets.of({
+      'auth': {
+        'type': 'apikey',
+        'apikey': [
+          {'key': 'key', 'value': '{{apiKeyHeader}}'},
+          {'key': 'value', 'value': '{{apiKeyValue}}'},
+          {'key': 'in', 'value': '{{apiKeyIn}}'},
+        ],
+      },
+      'variable': [
+        {'key': 'baseUrl', 'value': 'https://api.x.io'},
+        {'key': 'oauth_callback', 'value': '{{baseUrl}}/callback'},
+        {'key': 'token_path', 'value': '/oauth/token'},
+        {'key': 'auth_server', 'value': 'https://auth.x.io'},
+        {'key': 'tokenUrl2', 'value': 'https://t2.x.io'},
+        {'key': 'apiKeyHeader', 'value': 'X-API-Key'},
+        {'key': 'apiKeyIn', 'value': 'header'},
+        {'key': 'apiKeyValue', 'value': 'SECRET-value'},
+        {'key': 'authToken', 'value': 'Bearer {{hostVar}}{{rawPart}}'},
+        {'key': 'hostVar', 'value': 'https://h.x.io'},
+        {'key': 'rawPart', 'value': 'SECRET-part'},
+        {'key': 'token', 'value': '{{raw_thing}}'},
+        {'key': 'raw_thing', 'value': 'SECRET-rawref'},
+        {'key': 'pathRef', 'value': '{{token_path}}'},
+        {'key': 'session', 'value': '{{pathRef}}/x'},
+        {'key': 'api_key', 'value': 'SECRET-plain'},
+      ],
+    });
+    expect(secrets.variables, {
+      'apiKeyValue',
+      'authToken',
+      'rawPart',
+      'token',
+      'raw_thing',
+      'api_key',
+    });
+    expect(secrets.leaks('SECRET-plain'), isTrue);
+    expect(secrets.leaks('SECRET-part'), isTrue);
+    expect(secrets.leaks('SECRET-rawref'), isTrue);
+    expect(secrets.leaks('https://api.x.io'), isFalse);
+    expect(secrets.leaks('https://h.x.io'), isFalse);
   });
 
   test('a secret variable that references others makes them secret too, '
