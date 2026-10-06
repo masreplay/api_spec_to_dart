@@ -15,7 +15,7 @@ abstract class SecurityClient {
   @POST('/token')
   @FormUrlEncoded()
   Future<HttpResponse<Map<String, String>>> securityLogin({
-    @Body() required BodySecurityLogin requestBody,
+    @Body(nullToAbsent: true) required BodySecurityLogin requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,

@@ -11,6 +11,7 @@ export 'category_response.dart';
 export 'color_model.dart';
 export 'conditional_body.dart';
 export 'coordinate.dart';
+export 'coordinate_model_coordinate.dart';
 export 'coordinate_model.dart';
 export 'country_model.dart';
 export 'animal.dart';

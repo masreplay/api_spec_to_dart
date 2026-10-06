@@ -15,7 +15,7 @@ abstract class FilesClient {
   @POST('/forms/basic')
   @FormUrlEncoded()
   Future<HttpResponse<Map<String, dynamic>>> filesFormBasic({
-    @Body() required BodyFilesFormBasic requestBody,
+    @Body(nullToAbsent: true) required BodyFilesFormBasic requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
@@ -196,7 +196,8 @@ extension FilesClientX on FilesClient {
     },
   }) {
     return filesFileUpload_(
-      requestBody: requestBody.toJson(),
+      requestBody: requestBody.toJson()
+        ..removeWhere((_, value) => value == null),
       extras: extras,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
@@ -250,7 +251,8 @@ extension FilesClientX on FilesClient {
     },
   }) {
     return filesFilesMultiple_(
-      requestBody: requestBody.toJson(),
+      requestBody: requestBody.toJson()
+        ..removeWhere((_, value) => value == null),
       extras: extras,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,

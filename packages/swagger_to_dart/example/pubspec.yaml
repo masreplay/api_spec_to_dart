@@ -28,5 +28,11 @@ dev_dependencies:
   swagger_to_dart:
     path: ../
 
+# swagger_to_dart from path needs the unreleased postman_collection 1.0.0
+# beside it; drop this once 1.0.0 is on pub.dev.
+dependency_overrides:
+  postman_collection:
+    path: ../../postman_collection
+
 flutter:
   generate: true

@@ -29,8 +29,15 @@ sealed class Animal {
   const factory Animal.parrot(Parrot value) = AnimalParrot;
   const factory Animal.fallback(Map<String, dynamic> value) = AnimalFallback;
 
-  factory Animal.fromJson(Map<String, dynamic> json) {
-    // No discriminator in the spec: the variant whose required keys are all
+  factory Animal.fromJson(Map<String, dynamic> json) => switch (json['type']) {
+    'dog' => AnimalDog(Dog.fromJson(json)),
+    'cat' => AnimalCat(Cat.fromJson(json)),
+    'parrot' => AnimalParrot(Parrot.fromJson(json)),
+    _ => _fromKeys(json),
+  };
+
+  static Animal _fromKeys(Map<String, dynamic> json) {
+    // No discriminator value we know: the variant whose required keys are all
     // present and that declares the most of the payload's keys wins (the
     // earlier one on a tie).
     const variants = <({Set<String> required, Set<String> declared})>[
