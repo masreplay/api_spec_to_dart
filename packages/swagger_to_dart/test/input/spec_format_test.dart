@@ -301,6 +301,48 @@ paths:
         expect(schemas(jsonSchema)['Holder']['properties']['items'], items);
       });
 
+      test('also under a property named like a data keyword', () {
+        final spec = toOpenApiJson({
+          'openapi': '3.1.0',
+          'info': {'title': 'T', 'version': '1'},
+          'paths': <String, dynamic>{},
+          'components': {
+            'schemas': {
+              'Page': page,
+              'Pet': {'type': 'object'},
+              'Holder': {
+                'type': 'object',
+                'properties': {
+                  for (final key in ['default', 'enum', 'example'])
+                    key: {
+                      r'$ref': '#/components/schemas/Page/properties/items',
+                    },
+                },
+                'patternProperties': {
+                  'const': {
+                    r'$ref': '#/components/schemas/Page/properties/items',
+                  },
+                },
+                'default': {
+                  r'$ref': '#/components/schemas/Page/properties/items',
+                },
+              },
+            },
+          },
+        });
+        final holder = schemas(spec)['Holder'];
+        expect(holder['properties'], {
+          'default': items,
+          'enum': items,
+          'example': items,
+        });
+        expect(holder['patternProperties'], {'const': items});
+        // A default is data: left as written.
+        expect(holder['default'], {
+          r'$ref': '#/components/schemas/Page/properties/items',
+        });
+      });
+
       test('a pointer into itself is left as it is', () {
         const self = {r'$ref': '#/components/schemas/A/items'};
         final spec = toOpenApiJson({
