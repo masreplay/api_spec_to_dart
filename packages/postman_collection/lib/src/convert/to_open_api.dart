@@ -503,7 +503,9 @@ Map<String, Object?> _info(Object? info, Secrets secrets) {
   final map = info is Map ? info : const {};
   final name = map['name'];
   return {
-    'title': name is String && name.isNotEmpty ? name : 'Postman collection',
+    'title': name is String && name.isNotEmpty
+        ? secrets.redact(name)!
+        : 'Postman collection',
     'description': ?secrets.redact(descriptionText(map['description'])),
     'version': switch (map['version']) {
       final String version when version.isNotEmpty => version,

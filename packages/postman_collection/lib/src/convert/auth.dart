@@ -71,9 +71,9 @@ bool _isCredentialName(String name) =>
 /// (`tokenUrl`, `authUrl`): they resolve.
 final _endpointName = RegExp(r'(url|uri|endpoint|host)$', caseSensitive: false);
 
-/// Variable values that are a URL, a path or a reference, not a credential.
+/// Variable values that are a URL or a path, not a credential.
 final _locationValue = RegExp(
-  r'^([a-z][a-z0-9+.-]*://|/|\{\{)',
+  r'^([a-z][a-z0-9+.-]*://|/)',
   caseSensitive: false,
 );
 final _credentialValue = RegExp(
@@ -98,9 +98,10 @@ class Secrets {
   /// Authorization-like or Cookie headers, typed `secret`, or referenced by
   /// another such variable; the literal values of those attributes and
   /// headers, and the raw values of those variables. A variable named like a
-  /// credential is secret too, without making the variables it references
-  /// secret, unless its name is an endpoint's (`tokenUrl`), a value is a
-  /// URL, path or reference, or it names an apikey header or parameter.
+  /// credential is secret too, unless its name is an endpoint's
+  /// (`tokenUrl`), every value resolves to a URL or path, or it names an
+  /// apikey header or parameter; it makes the variables it references
+  /// secret, except those whose values all resolve to URLs or paths.
   factory Secrets.of(Object? collection) {
     final variables = <String>{};
     final values = <String>{};
@@ -156,14 +157,14 @@ class Secrets {
 
     walk(collection);
     final variableValues = <String, List<String>>{};
-    final named = <String>{};
+    final namedCandidates = <String>{};
     for (final variable in variableLists.expand((list) => list)) {
       if (variable is! Map) continue;
       final name = variable['key'] ?? variable['id'];
       if (name is! String) continue;
       if (variable['type'] == 'secret') variables.add(name);
       if (_isCredentialName(name) && !_endpointName.hasMatch(name)) {
-        named.add(name);
+        namedCandidates.add(name);
       }
       if (_text(variable['value']) case final text?) {
         (variableValues[name] ??= []).add(text);
@@ -179,14 +180,35 @@ class Secrets {
         }
       }
     }
-    // Secret by name only: the values count, references do not spread.
-    for (final name in named.difference(apiKeyNames)) {
-      final texts = variableValues[name] ?? const [];
-      if (variables.contains(name) || texts.any(_locationValue.hasMatch)) {
-        continue;
+    // Whether every value of [name] resolves to a URL or a path: it starts
+    // with one, or with a reference to such a variable.
+    bool location(String name, [Set<String> seen = const {}]) {
+      final texts = variableValues[name];
+      if (texts == null || seen.contains(name)) return false;
+      return texts.every(
+        (text) =>
+            _locationValue.hasMatch(text) ||
+            switch (variableReference.matchAsPrefix(text)) {
+              final match? => location(match[1]!, {...seen, name}),
+              null => false,
+            },
+      );
+    }
+
+    // Secret by name only: references spread, except to URLs and paths.
+    final named = [
+      for (final name in namedCandidates.difference(apiKeyNames))
+        if (!location(name) && variables.add(name)) name,
+    ];
+    while (named.isNotEmpty) {
+      for (final text in variableValues[named.removeLast()] ?? const []) {
+        values.add(text);
+        for (final match in variableReference.allMatches(text)) {
+          if (!location(match[1]!) && variables.add(match[1]!)) {
+            named.add(match[1]!);
+          }
+        }
       }
-      variables.add(name);
-      values.addAll(texts);
     }
     return Secrets._(variables, values);
   }

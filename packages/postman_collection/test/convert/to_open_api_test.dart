@@ -2375,6 +2375,59 @@ void main() {
       );
     });
 
+    test('a name-only secret makes the variables it references secret '
+        'unless they are URLs or paths', () {
+      final document = convert(
+        collection(
+          [
+            request(
+              'A',
+              'GET',
+              '{{baseUrl}}/a?t={{token}}&u={{authKey}}&cb={{oauth_callback}}',
+            ),
+            {
+              'name': 'Folder',
+              'variable': [
+                {'key': 'session_token', 'value': 'SK_FOLDER'},
+              ],
+              'item': [
+                request('B', 'GET', '{{baseUrl}}/b?s={{session_token}}'),
+              ],
+            },
+          ],
+          extra: {
+            'variable': [
+              {'key': 'baseUrl', 'value': 'https://api.x.io'},
+              {'key': 'token', 'value': '{{raw_thing}}'},
+              {'key': 'raw_thing', 'value': 'SK_RAWREF'},
+              {'key': 'authKey', 'value': '{{prefix}}SK_TAIL'},
+              {'key': 'prefix', 'value': 'SK_PRE'},
+              {'key': 'oauth_callback', 'value': '{{baseUrl}}/callback'},
+              {'key': 'session_token', 'value': '/path'},
+            ],
+          },
+        ),
+      );
+      final output = jsonEncode(document);
+      expect(output, isNot(contains('SK_')));
+      expect(output, contains('"default":"https://api.x.io"'));
+      expect(output, contains('"example":"https://api.x.io/callback"'));
+    });
+
+    test('the title loses secret values', () {
+      final document = convert({
+        'info': {'name': 'x SK_N', 'schema': v21},
+        'item': [request('A', 'GET', 'https://x.io/a')],
+        'auth': {
+          'type': 'bearer',
+          'bearer': [
+            {'key': 'token', 'value': 'SK_N'},
+          ],
+        },
+      });
+      expect((document['info']! as Map)['title'], 'x ***');
+    });
+
     test('URL-encoded text with non-UTF-8 escapes keeps them as written', () {
       final document = convert(
         collection([
