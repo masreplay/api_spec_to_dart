@@ -298,9 +298,10 @@ void main() {
       ),
     );
 
+    // The pointers follow the renamed key, then are replaced by their target.
     expect(openApi['components']['schemas']['Holder']['properties'], {
-      'items': {r'$ref': '#/components/schemas/Page_Pet_/properties/items'},
-      'encoded': {r'$ref': '#/components/schemas/Page_Pet_/properties/items'},
+      'items': {'type': 'array', 'items': <String, dynamic>{}},
+      'encoded': {'type': 'array', 'items': <String, dynamic>{}},
       'broken': {r'$ref': '#/components/schemas/Foo%C2'},
     });
   });

@@ -1,0 +1,36 @@
+{
+  "swagger": "2.0",
+  "info": { "title": "Pointer refs", "version": "1.0.0" },
+  "paths": {
+    "/pets": {
+      "get": {
+        "tags": ["pets"],
+        "operationId": "listPets",
+        "produces": ["application/json"],
+        "responses": {
+          "200": { "description": "OK", "schema": { "$ref": "#/definitions/Page/properties/items" } }
+        }
+      }
+    },
+    "/meta": {
+      "get": {
+        "tags": ["pets"],
+        "operationId": "getMeta",
+        "produces": ["application/json"],
+        "responses": {
+          "200": { "description": "OK", "schema": { "$ref": "#/definitions/Page/properties/meta" } }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Page": {
+      "type": "object",
+      "properties": {
+        "items": { "type": "array", "items": { "$ref": "#/definitions/Pet" } },
+        "meta": { "type": "object", "properties": { "total": { "type": "integer" } } }
+      }
+    },
+    "Pet": { "type": "object", "properties": { "id": { "type": "integer" } } }
+  }
+}

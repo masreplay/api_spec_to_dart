@@ -1,0 +1,48 @@
+/// Page
+///
+/// ```json
+/// {
+///     "properties": {
+///         "items": {
+///             "type": "array",
+///             "items": {
+///                 "$ref": "#/components/schemas/Pet"
+///             }
+///         },
+///         "meta": {
+///             "type": "object",
+///             "properties": {
+///                 "total": {
+///                     "type": "integer"
+///                 }
+///             }
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'page.freezed.dart';
+part 'page.g.dart';
+
+@freezed
+abstract class Page with _$Page {
+  const Page._();
+
+  @jsonSerializable
+  const factory Page({
+    /// items
+    @JsonKey(name: Page.itemsKey_) List<Pet>? items,
+
+    /// meta
+    @JsonKey(name: Page.metaKey_) PageMeta? meta,
+  }) = _Page;
+
+  factory Page.fromJson(Map<String, dynamic> json) => _$PageFromJson(json);
+
+  static const String itemsKey_ = 'items';
+
+  static const String metaKey_ = 'meta';
+}
