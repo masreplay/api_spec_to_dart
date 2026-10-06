@@ -69,4 +69,15 @@ void main() {
     ]);
     expect(url.value.raw, isNot(contains('s3cr3t')));
   });
+
+  test('URL userinfo is not recorded', () {
+    final url =
+        _request(
+              RequestOptions(
+                path: 'https://user:SECRET-pass@api.example.com/x',
+              ),
+            ).url!
+            as PostmanUrlObject;
+    expect(url.value.raw, 'https://api.example.com/x');
+  });
 }
