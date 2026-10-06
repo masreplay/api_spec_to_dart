@@ -2294,6 +2294,165 @@ void main() {
       ]);
     });
 
+    test('name-only secrecy keeps URL, path, reference and apikey-name '
+        'variables resolving', () {
+      final document = convert(
+        collection(
+          [
+            {
+              'name': 'Folder',
+              'description': 'Hosted at https://api.x.io',
+              'item': [
+                request(
+                  'Login',
+                  'GET',
+                  '{{baseUrl}}{{token_path}}?cb={{oauth_callback}}'
+                      '&key={{api_key}}',
+                ),
+              ],
+            },
+            request('A', 'GET', '{{auth_server}}/a'),
+            request('B', 'GET', '{{tokenService}}/b'),
+            request('C', 'GET', '{{session_api}}/c'),
+            request('D', 'GET', '{{auth-domain}}/d'),
+            request('E', 'GET', '{{tokenUrl2}}/e'),
+          ],
+          extra: {
+            'auth': {
+              'type': 'apikey',
+              'apikey': [
+                {'key': 'key', 'value': '{{apiKeyHeader}}'},
+                {'key': 'value', 'value': 'SECRET-apikey'},
+              ],
+            },
+            'variable': [
+              {'key': 'baseUrl', 'value': 'https://api.x.io'},
+              {'key': 'oauth_callback', 'value': '{{baseUrl}}/callback'},
+              {'key': 'token_path', 'value': '/oauth/token'},
+              {'key': 'auth_server', 'value': 'https://auth.x.io'},
+              {'key': 'tokenService', 'value': 'https://tok.x.io'},
+              {'key': 'session_api', 'value': 'https://s.x.io'},
+              {'key': 'auth-domain', 'value': 'https://d.x.io'},
+              {'key': 'tokenUrl2', 'value': 'https://t2.x.io'},
+              {'key': 'apiKeyHeader', 'value': 'X-API-Key'},
+              {'key': 'api_key', 'value': 'SECRET-plain'},
+            ],
+          },
+        ),
+      );
+      final output = jsonEncode(document);
+      expect(output, isNot(contains('SECRET')));
+      // `{{baseUrl}}{{token_path}}` is the server; the path variable keeps
+      // its value as the server variable's default.
+      expect(output, contains('"default":"/oauth/token"'));
+      final login = operation(document, '/', 'get');
+      expect(
+        {
+          for (final p in parameters(login).cast<Map<Object?, Object?>>())
+            p['name']: p['example'],
+        },
+        {'cb': 'https://api.x.io/callback', 'key': null},
+      );
+      for (final url in [
+        'https://api.x.io',
+        'https://auth.x.io',
+        'https://tok.x.io',
+        'https://s.x.io',
+        'https://d.x.io',
+        'https://t2.x.io',
+      ]) {
+        expect(output, contains('"default":"$url"'), reason: url);
+      }
+      expect((document['tags']! as List).cast<Map<Object?, Object?>>().single, {
+        'name': 'Folder',
+        'description': 'Hosted at https://api.x.io',
+      });
+      expect(
+        ((document['components']! as Map)['securitySchemes']! as Map)
+            .values
+            .single,
+        {'type': 'apiKey', 'name': 'X-API-Key', 'in': 'header'},
+      );
+    });
+
+    test('URL-encoded text with non-UTF-8 escapes keeps them as written', () {
+      final document = convert(
+        collection([
+          request(
+            'Form',
+            'POST',
+            'https://x.io/f',
+            fields: {
+              'header': [
+                {
+                  'key': 'Content-Type',
+                  'value': 'application/x-www-form-urlencoded',
+                },
+              ],
+              'body': {'mode': 'raw', 'raw': 'a=%ff&b=1&c=%e2%82'},
+            },
+            response: [
+              {
+                'name': 'ok',
+                'code': 200,
+                'header': [
+                  {
+                    'key': 'Content-Type',
+                    'value': 'application/x-www-form-urlencoded',
+                  },
+                ],
+                'body': 'a=Jos%E9',
+              },
+            ],
+          ),
+        ]),
+      );
+      final post = operation(document, '/f', 'post');
+      final form =
+          ((post['requestBody']! as Map)['content']!
+                  as Map)['application/x-www-form-urlencoded']!
+              as Map;
+      expect(((form['examples']! as Map)['Form']! as Map)['value'], {
+        'a': '%ff',
+        'b': 1,
+        'c': '%e2%82',
+      });
+    });
+
+    test('request and folder names lose secret values', () {
+      final document = convert(
+        collection(
+          [
+            {
+              'name': 'Folder SECRET-tok',
+              'item': [
+                request(
+                  'Token SECRET-tok',
+                  'POST',
+                  'https://x.io/t',
+                  fields: {
+                    'body': json({'a': 1}),
+                  },
+                ),
+              ],
+            },
+          ],
+          extra: {
+            'auth': {
+              'type': 'bearer',
+              'bearer': [
+                {'key': 'token', 'value': 'SECRET-tok'},
+              ],
+            },
+          },
+        ),
+      );
+      expect(jsonEncode(document), isNot(contains('SECRET')));
+      final post = operation(document, '/t', 'post');
+      expect(post['summary'], 'Token ***');
+      expect(post['operationId'], 'token');
+    });
+
     test('raw urlencoded bodies are scrubbed field by field', () {
       final document = convert(
         collection([

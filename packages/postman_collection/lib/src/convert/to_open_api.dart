@@ -244,7 +244,9 @@ class _Converter {
         onWarning?.call('item ${jsonEncode(item)} is not an object; skipped');
         continue;
       }
-      final name = item['name'] is String ? item['name'] as String : '';
+      final name = item['name'] is String
+          ? secrets.redact(item['name'] as String)!
+          : '';
       final scope = _scope(variables, item['variable']);
       if (item['request'] != null) {
         _request(item, name, folders, auth, scope, webhook);
