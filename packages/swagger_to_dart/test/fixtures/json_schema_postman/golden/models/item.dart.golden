@@ -72,7 +72,7 @@ abstract class Item with _$Item {
     @JsonKey(name: Item.requestKey_) required Request request,
 
     /// response
-    @JsonKey(name: Item.responseKey_) List<Response>? response,
+    @JsonKey(name: Item.responseKey_) List<Response2>? response,
 
     /// protocolProfileBehavior
     @JsonKey(name: Item.protocolProfileBehaviorKey_)

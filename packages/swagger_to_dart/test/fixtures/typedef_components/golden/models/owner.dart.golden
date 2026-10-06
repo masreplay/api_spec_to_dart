@@ -59,7 +59,7 @@ abstract class Owner with _$Owner {
     @JsonKey(name: Owner.levelsKey_) Levels? levels,
 
     /// method
-    @JsonKey(name: Owner.methodKey_) Method? method,
+    @JsonKey(name: Owner.methodKey_) Method2? method,
 
     /// scalar
     @JsonKey(name: Owner.scalarKey_) Scalar? scalar,

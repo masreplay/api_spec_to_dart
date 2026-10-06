@@ -23,7 +23,7 @@ void main() {
     expect(pets, [const Pet(name: 'Rex'), const Pet(name: 'Tom')]);
     expect(owner.best, const Animal(name: 'Rex'));
     expect(owner.levels, [LevelsItem.low, LevelsItem.high]);
-    final Method? method = owner.method;
+    final Method2? method = owner.method;
     expect(method, 'PURGE');
     expect(owner.scalar, 3);
     final Behavior? behavior = owner.behavior;

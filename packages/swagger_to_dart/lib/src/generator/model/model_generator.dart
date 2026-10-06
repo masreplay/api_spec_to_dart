@@ -100,7 +100,8 @@ class ModelGenerator extends LibraryGenerator {
 
   /// Assigns every non-generic component a unique class name: its title (or
   /// key); when another component already took that name, its key; then a
-  /// numeric suffix. A name without ASCII words (`عمر`) is `Schema`.
+  /// numeric suffix, also when dio, retrofit or generated code uses the
+  /// name (`Response2`). A name without ASCII words (`عمر`) is `Schema`.
   /// Generic instantiations share their base class name.
   void _nameComponents(
     Map<String, OpenApiSchemas> schemas,
@@ -131,8 +132,11 @@ class ModelGenerator extends LibraryGenerator {
         final title? => context.withClassPrefix(title),
         null => byKey,
       };
-      var name = taken.contains(preferred) ? byKey : preferred;
-      for (var i = 2; taken.contains(name); i++) {
+      bool clashes(String name) =>
+          taken.contains(name) ||
+          OpenApiSchemaDartTypeConverter.isClashingComponentName(name);
+      var name = clashes(preferred) ? byKey : preferred;
+      for (var i = 2; clashes(name); i++) {
         name = '$byKey$i';
       }
       taken.add(name);

@@ -31,29 +31,30 @@
 library;
 
 import 'exports.dart';
-part 'header.freezed.dart';
-part 'header.g.dart';
+part 'header2.freezed.dart';
+part 'header2.g.dart';
 
 @freezed
-abstract class Header with _$Header {
-  const Header._();
+abstract class Header2 with _$Header2 {
+  const Header2._();
 
   @jsonSerializable
-  const factory Header({
+  const factory Header2({
     /// key
-    @JsonKey(name: Header.keyKey_) required String key,
+    @JsonKey(name: Header2.keyKey_) required String key,
 
     /// value
-    @JsonKey(name: Header.valueKey_) required String value,
+    @JsonKey(name: Header2.valueKey_) required String value,
 
     /// disabled
-    @Default(false) @JsonKey(name: Header.disabledKey_) bool disabled,
+    @Default(false) @JsonKey(name: Header2.disabledKey_) bool disabled,
 
     /// description
-    @JsonKey(name: Header.descriptionKey_) Description? description,
-  }) = _Header;
+    @JsonKey(name: Header2.descriptionKey_) Description? description,
+  }) = _Header2;
 
-  factory Header.fromJson(Map<String, dynamic> json) => _$HeaderFromJson(json);
+  factory Header2.fromJson(Map<String, dynamic> json) =>
+      _$Header2FromJson(json);
 
   static const String keyKey_ = 'key';
 

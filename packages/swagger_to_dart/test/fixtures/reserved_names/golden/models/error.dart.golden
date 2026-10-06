@@ -1,0 +1,32 @@
+/// Error
+///
+/// ```json
+/// {
+///     "properties": {
+///         "code": {
+///             "type": "integer"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'error.freezed.dart';
+part 'error.g.dart';
+
+@freezed
+abstract class Error with _$Error {
+  const Error._();
+
+  @jsonSerializable
+  const factory Error({
+    /// code
+    @JsonKey(name: Error.codeKey_) int? code,
+  }) = _Error;
+
+  factory Error.fromJson(Map<String, dynamic> json) => _$ErrorFromJson(json);
+
+  static const String codeKey_ = 'code';
+}

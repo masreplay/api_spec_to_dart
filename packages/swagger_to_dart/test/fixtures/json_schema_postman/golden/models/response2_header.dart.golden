@@ -1,4 +1,4 @@
-/// ResponseHeader
+/// Response2Header
 ///
 /// ```json
 /// {
@@ -30,22 +30,22 @@
 library;
 
 import 'exports.dart';
-part 'response_header.g.dart';
+part 'response2_header.g.dart';
 
-sealed class ResponseHeader {
-  const ResponseHeader();
+sealed class Response2Header {
+  const Response2Header();
 
-  const factory ResponseHeader.list(List<ResponseHeaderListValueItem> value) =
-      ResponseHeaderList;
-  const factory ResponseHeader.string(String value) = ResponseHeaderString;
+  const factory Response2Header.list(List<Response2HeaderListValueItem> value) =
+      Response2HeaderList;
+  const factory Response2Header.string(String value) = Response2HeaderString;
 
-  factory ResponseHeader.fromJson(Object? json) => switch (json) {
-    String() => ResponseHeaderString(json),
-    List() => _$ResponseHeaderListFromJson({'value': json}),
+  factory Response2Header.fromJson(Object? json) => switch (json) {
+    String() => Response2HeaderString(json),
+    List() => _$Response2HeaderListFromJson({'value': json}),
     _ => throw ArgumentError.value(
       json,
       'json',
-      'No ResponseHeader variant matches',
+      'No Response2Header variant matches',
     ),
   };
 
@@ -53,29 +53,29 @@ sealed class ResponseHeader {
 }
 
 @jsonSerializable
-final class ResponseHeaderList extends ResponseHeader {
-  const ResponseHeaderList(this.value);
+final class Response2HeaderList extends Response2Header {
+  const Response2HeaderList(this.value);
 
   @JsonKey(name: 'value')
-  final List<ResponseHeaderListValueItem> value;
+  final List<Response2HeaderListValueItem> value;
 
   @override
-  Object? toJson() => _$ResponseHeaderListToJson(this)['value'];
+  Object? toJson() => _$Response2HeaderListToJson(this)['value'];
 
   @override
   bool operator ==(Object other) =>
-      other is ResponseHeaderList &&
+      other is Response2HeaderList &&
       const DeepCollectionEquality().equals(other.value, value);
 
   @override
   int get hashCode => const DeepCollectionEquality().hash(value);
 
   @override
-  String toString() => 'ResponseHeader.list($value)';
+  String toString() => 'Response2Header.list($value)';
 }
 
-final class ResponseHeaderString extends ResponseHeader {
-  const ResponseHeaderString(this.value);
+final class Response2HeaderString extends Response2Header {
+  const Response2HeaderString(this.value);
 
   final String value;
 
@@ -84,11 +84,11 @@ final class ResponseHeaderString extends ResponseHeader {
 
   @override
   bool operator ==(Object other) =>
-      other is ResponseHeaderString && other.value == value;
+      other is Response2HeaderString && other.value == value;
 
   @override
   int get hashCode => value.hashCode;
 
   @override
-  String toString() => 'ResponseHeader.string($value)';
+  String toString() => 'Response2Header.string($value)';
 }
