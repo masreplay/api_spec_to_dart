@@ -24,8 +24,9 @@ The files here stay untouched. `package:json_schema` 5.2.2 cannot compile
 two constructs, so the tests' loader (`test/support/official_schema.dart` in
 each package) applies two semantically equivalent rewrites in memory:
 
-- `dependentSchemas` (OpenAPI 3.1/3.2 state parameter
-  `style`/`explode`/`example` rules with it): each `dependentSchemas: {k: S}`
+- `dependentSchemas` (OpenAPI 3.1/3.2 use it in `license`, `parameter`,
+  `header` and `encoding`, and 3.2 also in `media-type`): each
+  `dependentSchemas: {k: S}`
   becomes `allOf: [{if: {required: [k]}, then: S}]`, with `S` moved under
   `$defs` and the `$ref`s into it repointed.
 - Remote `$ref`s that are alone in their object (the Swagger 2.0 schema
