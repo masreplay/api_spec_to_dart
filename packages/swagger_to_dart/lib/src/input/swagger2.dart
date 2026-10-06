@@ -206,13 +206,22 @@ Map<String, String> _componentKeys(Iterable<String> names) {
 }
 
 /// [ref] into OpenAPI 3 components; definitions by their [schemaKeys] (the
-/// name as written, else percent- and JSON-pointer-decoded).
+/// name as written, else percent- and JSON-pointer-decoded). A pointer into
+/// a definition (`#/definitions/Page«Pet»/properties/items`) maps its first
+/// segment.
 String _ref(String ref, Map<String, String> schemaKeys) {
   const definitions = '#/definitions/';
   if (ref.startsWith(definitions)) {
-    final name = ref.substring(definitions.length);
-    final key = schemaKeys[name] ?? schemaKeys[_decoded(name)] ?? name;
-    return '#/components/schemas/$key';
+    final pointer = ref.substring(definitions.length);
+    String? key(String name) => schemaKeys[name] ?? schemaKeys[_decoded(name)];
+    final slash = pointer.indexOf('/');
+    final mapped =
+        key(pointer) ??
+        switch (slash > 0 ? key(pointer.substring(0, slash)) : null) {
+          final name? => '$name${pointer.substring(slash)}',
+          null => pointer,
+        };
+    return '#/components/schemas/$mapped';
   }
   for (final (from, to) in const [
     ('#/parameters/', '#/components/parameters/'),
@@ -230,6 +239,8 @@ String _decoded(String segment) {
     segment = Uri.decodeComponent(segment);
   } on ArgumentError {
     // Not percent-encoded after all.
+  } on FormatException {
+    // Percent-encoded, but not UTF-8 (`Foo%C2`).
   }
   return segment.replaceAll('~1', '/').replaceAll('~0', '~');
 }

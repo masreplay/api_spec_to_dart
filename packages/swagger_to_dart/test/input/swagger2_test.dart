@@ -268,6 +268,43 @@ void main() {
     expect(renderSpec(openApi).errors, isEmpty);
   });
 
+  test('pointers into renamed definitions and malformed escapes', () {
+    final openApi = _convert(
+      _swagger(
+        paths: {},
+        extra: {
+          'definitions': {
+            'Page«Pet»': {
+              'type': 'object',
+              'properties': {
+                'items': {'type': 'array', 'items': <String, dynamic>{}},
+              },
+            },
+            'Holder': {
+              'type': 'object',
+              'properties': {
+                'items': {
+                  r'$ref': '#/definitions/Page«Pet»/properties/items',
+                },
+                'encoded': {
+                  r'$ref': '#/definitions/Page%C2%ABPet%C2%BB/properties/items',
+                },
+                // Dangling, and not valid percent-encoding.
+                'broken': {r'$ref': '#/definitions/Foo%C2'},
+              },
+            },
+          },
+        },
+      ),
+    );
+
+    expect(openApi['components']['schemas']['Holder']['properties'], {
+      'items': {r'$ref': '#/components/schemas/Page_Pet_/properties/items'},
+      'encoded': {r'$ref': '#/components/schemas/Page_Pet_/properties/items'},
+      'broken': {r'$ref': '#/components/schemas/Foo%C2'},
+    });
+  });
+
   test('global parameters and responses become components, refs follow', () {
     final openApi = _convert(
       _swagger(
