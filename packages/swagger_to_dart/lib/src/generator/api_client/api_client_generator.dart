@@ -364,7 +364,7 @@ class ApiClientGenerator {
               contextName: '${methodName}_body',
             );
 
-            final canToJson = dartType != 'Map<String, dynamic>';
+            final canToJson = _isModel(entry.value.schema, dartType);
             extensionMethods.add(
               Method(
                 (b) => b
@@ -516,6 +516,27 @@ class ApiClientGenerator {
             ),
         ]),
     );
+  }
+
+  /// Whether [schema] ([dartType]) is a generated model with `toJson()`,
+  /// following `$ref` aliases: a free-form object or a map typedef
+  /// (`Free: {type: object}`) is a `Map` already.
+  bool _isModel(OpenApiSchema? schema, String dartType) {
+    final components = context.openApi.components?.schemas ?? {};
+    final seen = <String>{};
+    while (schema is OpenApiSchemaRef && seen.add(schema.name)) {
+      final component = components[schema.name];
+      if (component == null) return true;
+      if (!TypedefModelStrategy.accepts(component) ||
+          UnionModelStrategy(context).isUnionComponent(component)) {
+        return true;
+      }
+      schema = const OpenApiSchemaJsonConverter().fromJson(component.toJson());
+    }
+    return switch (schema) {
+      OpenApiSchemaType(:final properties) => properties?.isNotEmpty ?? false,
+      _ => dartType != 'Map<String, dynamic>',
+    };
   }
 
   /// [path] prefixed by the operation's (or its path item's) first server,
