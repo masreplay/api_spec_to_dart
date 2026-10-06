@@ -3,15 +3,25 @@ import 'variables.dart';
 final _scheme = RegExp(r'^([A-Za-z][A-Za-z0-9+.-]*|\{\{[^{}]+\}\})://');
 final _wholeVariable = RegExp(r'^\{\{[^{}]+\}\}$');
 
+/// A literal OpenAPI-style `{name}` path segment.
+final _braceSegment = RegExp(r'^\{([^{}]+)\}$');
+
 /// A URL's scheme and userinfo (`user:password@`, up to the authority's last
 /// `@`).
 final _userinfo = RegExp(
   r'((?:[A-Za-z][A-Za-z0-9+.-]*|\{\{[^{}]+\}\})://)[^/?#\s]*@',
 );
 
+/// Userinfo with a password but no scheme (`user:password@host`), at the
+/// start of a word; `mailto:` and emails (no `:`) are not userinfo.
+final _bareUserinfo = RegExp(
+  r'''(^|[\s"'(<=,])(?!mailto:)[^\s/?#@:"'<>]+:[^\s/?#"'<>]*@''',
+);
+
 /// [text] with the userinfo of every URL in it removed.
-String withoutUserinfo(String text) =>
-    text.replaceAllMapped(_userinfo, (m) => m[1]!);
+String withoutUserinfo(String text) => text
+    .replaceAllMapped(_userinfo, (m) => m[1]!)
+    .replaceAllMapped(_bareUserinfo, (m) => m[1]!);
 
 /// A Postman URL (string or object) split into what OpenAPI needs.
 class ParsedUrl {
@@ -52,7 +62,7 @@ ParsedUrl parseUrl(Object? url) {
     final List<Object?> host => host.join('.'),
     final String host => host,
     _ => null,
-  };
+  }?.split('@').last;
   final origin = host == null
       ? raw.origin
       : _origin(switch (object['protocol']) {
@@ -79,9 +89,12 @@ ParsedUrl parseUrl(Object? url) {
 
   final path = [
     for (final segment in segments)
-      segment.length > 1 && segment.startsWith(':')
-          ? name(segment.substring(1))
-          : segment.replaceAllMapped(variableReference, (m) => name(m[1]!)),
+      if (segment.length > 1 && segment.startsWith(':'))
+        name(segment.substring(1))
+      else if (_braceSegment.firstMatch(segment) case final brace?)
+        name(brace[1]!)
+      else
+        segment.replaceAllMapped(variableReference, (m) => name(m[1]!)),
   ].join('/');
   return ParsedUrl(
     origin,

@@ -380,6 +380,73 @@ void main() {
         contains("'Empty URL'"),
       ]);
     });
+    test('(NB2) an endpoint variable is substituted one level: its own '
+        'variables stay the server and path parameters', () {
+      final document = convert(
+        collection(
+          [
+            request('Orders', 'GET', '{{baseUrl}}/orders'),
+            request('Get user', 'GET', '{{getUserUrl}}'),
+            request('Send', 'POST', '{{sendUrl}}'),
+          ],
+          extra: {
+            'variable': [
+              {'key': 'baseUrl', 'value': 'https://api.x.io/v1'},
+              {'key': 'getUserUrl', 'value': '{{baseUrl}}/users/{{userId}}'},
+              {'key': 'userId', 'value': '7'},
+              {
+                'key': 'sendUrl',
+                'value': '{{baseUrl}}/bot{{botToken}}/sendMessage',
+              },
+              {'key': 'botToken', 'value': '123456:SECRET-n1'},
+            ],
+          },
+        ),
+      );
+      expect(jsonEncode(document), isNot(contains('SECRET')));
+      expect((document['paths']! as Map).keys, [
+        '/orders',
+        '/users/{userId}',
+        '/bot{botToken}/sendMessage',
+      ]);
+      expect(document['servers'], [
+        {
+          'url': '{baseUrl}',
+          'variables': {
+            'baseUrl': {'default': 'https://api.x.io/v1'},
+          },
+        },
+      ]);
+      final getUser = operation(document, '/users/{userId}', 'get');
+      expect(getUser.containsKey('servers'), isFalse);
+      expect(parameters(getUser), [
+        {
+          'name': 'userId',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'string'},
+          'example': '7',
+        },
+      ]);
+    });
+
+    test('(R8) an object URL with empty raw, a blank host and no path has '
+        'no URL', () {
+      final warnings = <String>[];
+      final document = convert(
+        collection([
+          request('Blank', 'GET', {
+            'raw': '',
+            'host': [''],
+          }),
+          request('Root', 'GET', 'https://api.x.io'),
+        ]),
+        warnings,
+      );
+      expect((document['paths']! as Map).keys, ['/']);
+      expect(operation(document, '/', 'get')['summary'], 'Root');
+      expect(warnings, [contains("'Blank'")]);
+    });
   });
 
   test('folder paths become tags with folder descriptions, empty folders '
@@ -693,6 +760,32 @@ void main() {
           'required': true,
           'schema': {'type': 'string'},
           'example': '3',
+        },
+      ]);
+    });
+
+    test('(R7) a literal {name} segment is a declared path parameter and '
+        'merges with :name', () {
+      final document = convert(
+        collection([
+          request('By brace', 'GET', 'https://x.io/users/{id}'),
+          request('By colon', 'GET', {
+            'raw': 'https://x.io/users/:userId',
+            'variable': [
+              {'key': 'userId', 'value': '7', 'description': 'The user'},
+            ],
+          }),
+        ]),
+      );
+      expect((document['paths']! as Map).keys, ['/users/{id}']);
+      expect(parameters(operation(document, '/users/{id}', 'get')), [
+        {
+          'name': 'id',
+          'in': 'path',
+          'description': 'The user',
+          'required': true,
+          'schema': {'type': 'string'},
+          'example': '7',
         },
       ]);
     });
@@ -1503,9 +1596,10 @@ void main() {
                       as Map)['content']!
                   as Map)['application/json']!
               as Map;
+      // The basic-auth username `xy` is an identifier, not a secret.
       expect(media['examples'], {
         'Create': {
-          'value': {'kept': 'visible'},
+          'value': {'short': 'xy', 'kept': 'visible'},
         },
       });
     });
@@ -1560,6 +1654,398 @@ void main() {
               as Map;
       expect(flow['authorizationUrl'], 'https://auth.x.io/authorize');
       expect(flow['tokenUrl'], 'https://api.x.io/token');
+    });
+
+    /// Every server object in [document] (document and operation level).
+    List<Map<Object?, Object?>> servers(Map<String, Object?> document) => [
+      for (final server in (document['servers'] as List?) ?? const [])
+        server as Map,
+      for (final item in (document['paths']! as Map).values)
+        for (final operation in (item as Map).values)
+          for (final server
+              in ((operation as Map)['servers'] as List?) ?? const [])
+            server as Map,
+    ];
+
+    test('(1e) userinfo without a scheme never reaches server defaults, '
+        'server URLs, OAuth URLs or URL-shaped examples', () {
+      final document = convert(
+        collection(
+          [
+            request(
+              'A',
+              'GET',
+              '{{baseUrl}}/a?callback=u:SECRET-e6@hooks.x.io/cb&email=a@b.io',
+            ),
+            request('B', 'GET', '{{scheme}}://{{host}}/b'),
+            request('C', 'GET', {
+              'raw': '',
+              'protocol': 'https',
+              'host': 'user:SECRET-e4@obj.x.io',
+              'path': ['c'],
+            }),
+          ],
+          extra: {
+            'auth': {
+              'type': 'oauth2',
+              'oauth2': [
+                {'key': 'authUrl', 'value': 'u:SECRET-e5@auth.x.io/authorize'},
+              ],
+            },
+            'variable': [
+              {'key': 'baseUrl', 'value': 'user:SECRET-e2@api.x.io'},
+              {'key': 'scheme', 'value': 'https'},
+              {'key': 'host', 'value': 'user:SECRET-e3@api.x.io'},
+            ],
+          },
+        ),
+      );
+      expect(jsonEncode(document), isNot(contains('SECRET')));
+      expect(servers(document), [
+        {
+          'url': '{baseUrl}',
+          'variables': {
+            'baseUrl': {'default': 'api.x.io'},
+          },
+        },
+        {
+          'url': '{scheme}://{host}',
+          'variables': {
+            'scheme': {'default': 'https'},
+            'host': {'default': 'api.x.io'},
+          },
+        },
+        {'url': 'https://obj.x.io'},
+      ]);
+      expect(
+        {
+          for (final p in parameters(operation(document, '/a', 'get')))
+            (p as Map)['name']: p['example'],
+        },
+        {'callback': 'hooks.x.io/cb', 'email': 'a@b.io'},
+      );
+      expect(
+        jsonEncode(document['components']),
+        contains('"authorizationUrl":"auth.x.io/authorize"'),
+      );
+    });
+
+    test('(NB1) identifiers are not secrets: client ids and usernames keep '
+        'server defaults, OAuth URLs and examples; a password reused '
+        'elsewhere is still dropped', () {
+      final oauth = convert(
+        collection(
+          [request('Get', 'GET', '{{baseUrl}}/a')],
+          extra: {
+            'auth': {
+              'type': 'oauth2',
+              'oauth2': [
+                {'key': 'clientId', 'value': 'shop'},
+                {'key': 'clientSecret', 'value': 'SECRET-cs'},
+                {'key': 'authUrl', 'value': 'https://shop.x.io/authorize'},
+                {'key': 'accessTokenUrl', 'value': 'https://shop.x.io/token'},
+              ],
+            },
+            'variable': [
+              {'key': 'baseUrl', 'value': 'https://shop.x.io'},
+            ],
+          },
+        ),
+      );
+      expect(jsonEncode(oauth), isNot(contains('SECRET')));
+      expect(servers(oauth), [
+        {
+          'url': '{baseUrl}',
+          'variables': {
+            'baseUrl': {'default': 'https://shop.x.io'},
+          },
+        },
+      ]);
+      final flow =
+          ((((oauth['components']! as Map)['securitySchemes']!
+                          as Map)['oauth2']!
+                      as Map)['flows']!
+                  as Map)['authorizationCode']!
+              as Map;
+      expect(flow['authorizationUrl'], 'https://shop.x.io/authorize');
+      expect(flow['tokenUrl'], 'https://shop.x.io/token');
+
+      final basic = convert(
+        collection(
+          [
+            request(
+              'Create',
+              'POST',
+              '{{baseUrl}}/users',
+              fields: {
+                'body': json({
+                  'user': 'admin',
+                  'pin': 'SECRET-pw',
+                  'kept': 'x',
+                }),
+              },
+            ),
+          ],
+          extra: {
+            'auth': {
+              'type': 'basic',
+              'basic': [
+                {'key': 'username', 'value': 'admin'},
+                {'key': 'password', 'value': 'SECRET-pw'},
+              ],
+            },
+            'variable': [
+              {'key': 'baseUrl', 'value': 'https://example.com/admin/api'},
+            ],
+          },
+        ),
+      );
+      expect(jsonEncode(basic), isNot(contains('SECRET')));
+      expect(servers(basic), [
+        {
+          'url': '{baseUrl}',
+          'variables': {
+            'baseUrl': {'default': 'https://example.com/admin/api'},
+          },
+        },
+      ]);
+      expect(
+        (((operation(basic, '/users', 'post')['requestBody']!
+                    as Map)['content']!
+                as Map)['application/json']!
+            as Map)['examples'],
+        {
+          'Create': {
+            'value': {'user': 'admin', 'kept': 'x'},
+          },
+        },
+      );
+    });
+
+    test('(R1, R5) literal Authorization-like and Cookie header values are '
+        'dropped wherever they are reused', () {
+      final document = convert(
+        collection([
+          request(
+            'Create',
+            'POST',
+            'https://x.io/a',
+            fields: {
+              'header': [
+                {'key': 'Authorization', 'value': 'Bearer SECRET-r5a'},
+                {'key': 'Cookie', 'value': 'sid=SECRET-r5b'},
+                {'key': 'X-Authorisation', 'value': 'SECRET-r1'},
+              ],
+              'body': json({
+                'note': 'SECRET-r5a',
+                'other': 'SECRET-r5b',
+                'british': 'SECRET-r1',
+                'kept': 'x',
+              }),
+            },
+            response: [
+              {'name': 'ok', 'code': 200, 'body': 'echo SECRET-r5a'},
+            ],
+          ),
+        ]),
+      );
+      expect(jsonEncode(document), isNot(contains('SECRET')));
+      expect(
+        [
+          for (final p in parameters(operation(document, '/a', 'post')))
+            (p as Map)['name'],
+        ],
+        ['sid', 'X-Authorisation'],
+      );
+    });
+
+    test('(R2) a literal secret reused as a number is dropped', () {
+      final document = convert(
+        collection(
+          [
+            request(
+              'Json',
+              'POST',
+              'https://x.io/a',
+              fields: {
+                'body': json({'pin': 98765432, 'n': 1}),
+              },
+            ),
+            request(
+              'Form',
+              'POST',
+              'https://x.io/b',
+              fields: {
+                'body': {
+                  'mode': 'urlencoded',
+                  'urlencoded': [
+                    {'key': 'pin', 'value': '98765432'},
+                    {'key': 'n', 'value': '1'},
+                  ],
+                },
+              },
+            ),
+          ],
+          extra: {
+            'auth': {
+              'type': 'bearer',
+              'bearer': [
+                {'key': 'token', 'value': '98765432'},
+              ],
+            },
+          },
+        ),
+      );
+      expect(jsonEncode(document), isNot(contains('98765432')));
+    });
+
+    test('(R3) a secret variable that references another makes it secret', () {
+      final document = convert(
+        collection(
+          [
+            request(
+              'Get',
+              'GET',
+              'https://x.io/a?q={{rawToken}}',
+              fields: {
+                'header': [
+                  {'key': 'X-Note', 'value': '{{rawToken}}'},
+                ],
+                'body': json({'note': '{{rawToken}}', 'loop': '{{a}}'}),
+              },
+            ),
+          ],
+          extra: {
+            'auth': {
+              'type': 'bearer',
+              'bearer': [
+                {'key': 'token', 'value': '{{token}}'},
+              ],
+            },
+            'variable': [
+              {'key': 'token', 'value': '{{rawToken}}{{a}}'},
+              {'key': 'rawToken', 'value': 'SECRET-raw'},
+              {'key': 'a', 'value': '{{token}}'},
+            ],
+          },
+        ),
+      );
+      expect(jsonEncode(document), isNot(contains('SECRET')));
+    });
+
+    test('(R4) JSON served as text is scrubbed like JSON; embedded tokens '
+        'in text drop the example', () {
+      const jwt = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOjF9.c2lnbmF0dXJl';
+      Map<String, Object?> text(String name, String type, String body) => {
+        'name': name,
+        'code': 200,
+        'header': [
+          {'key': 'Content-Type', 'value': type},
+        ],
+        'body': body,
+      };
+      final document = convert(
+        collection([
+          request(
+            'Login',
+            'POST',
+            'https://x.io/login',
+            response: [
+              text(
+                'html',
+                'text/html',
+                jsonEncode({
+                  'access_token': 'SECRET-r4a',
+                  'jwt': jwt,
+                  'name': 'ok',
+                }),
+              ),
+              text('plain', 'text/plain', 'your token is $jwt, keep it'),
+              text('bearer', 'text/plain', 'use Bearer SECRET-r4b now'),
+              text('fine', 'text/plain', 'all good'),
+            ],
+          ),
+        ]),
+      );
+      final output = jsonEncode(document);
+      expect(output, isNot(contains('SECRET')));
+      expect(output, isNot(contains('eyJ')));
+      final content =
+          ((operation(document, '/login', 'post')['responses']! as Map)['200']!
+                  as Map)['content']!
+              as Map;
+      expect((content['text/html']! as Map)['examples'], {
+        'html': {'value': '{"name":"ok"}'},
+      });
+      expect((content['text/plain']! as Map)['examples'], {
+        'fine': {'value': 'all good'},
+      });
+    });
+
+    test('(R6) descriptions lose secret values', () {
+      const secret = 'SECRET-r6';
+      final document = convert(
+        collection(
+          [
+            {
+              'name': 'Folder',
+              'description': 'folder $secret',
+              'item': [
+                request(
+                  'Get',
+                  'POST',
+                  {
+                    'raw': 'https://x.io/a/:id?q=1',
+                    'query': [
+                      {'key': 'q', 'value': '1', 'description': 'q $secret'},
+                    ],
+                    'variable': [
+                      {'key': 'id', 'description': 'id $secret'},
+                    ],
+                  },
+                  fields: {
+                    'description': 'request $secret',
+                    'header': [
+                      {
+                        'key': 'X-Note',
+                        'value': 'n',
+                        'description': 'header $secret',
+                      },
+                    ],
+                    'body': {
+                      'mode': 'formdata',
+                      'formdata': [
+                        {
+                          'key': 'f',
+                          'value': 'v',
+                          'description': 'field $secret',
+                        },
+                      ],
+                    },
+                  },
+                ),
+              ],
+            },
+          ],
+          extra: {
+            'info': {
+              'name': 'Test',
+              'schema': v21,
+              'description': 'info $secret',
+            },
+            'auth': {
+              'type': 'bearer',
+              'bearer': [
+                {'key': 'token', 'value': secret},
+              ],
+            },
+          },
+        ),
+      );
+      final output = jsonEncode(document);
+      expect(output, isNot(contains('SECRET')));
+      expect('***'.allMatches(output), hasLength(7));
+      expect((document['info']! as Map)['description'], 'info ***');
     });
   });
 

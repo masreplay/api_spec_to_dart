@@ -265,6 +265,7 @@ void main() {
     expect(none.hides('X-Auth-Token', 'x'), isTrue);
     expect(none.hides('api_key', 'x'), isTrue);
     expect(none.hides('X-Authorization', 'x'), isTrue);
+    expect(none.hides('X-Authorisation', 'x'), isTrue);
     expect(none.hides('Proxy-Authorization', 'x'), isTrue);
     expect(none.hides('Set-Cookie', 'x'), isTrue);
     expect(none.hides('author', 'tolkien'), isFalse);
@@ -351,7 +352,6 @@ void main() {
     expect(secrets.values, {
       'Bearer {{token}}',
       '{{apiKey}}',
-      'abc',
       'SECRET-original',
       '{{clientSecret}}',
       '{{inactive}}',
@@ -359,7 +359,125 @@ void main() {
       'SECRET-typed',
     });
     expect(secrets.leaks('my SECRET-original value'), isTrue);
-    expect(secrets.leaks('abc'), isTrue);
-    expect(secrets.leaks('abcdef'), isFalse);
+    expect(secrets.leaks('abc'), isFalse);
+  });
+
+  test('only credential-class attributes are secret values; identifiers '
+      'are not', () {
+    const credentials = {
+      'basic': ['password'],
+      'bearer': ['token'],
+      'digest': ['password'],
+      'oauth1': ['consumerSecret', 'token', 'tokenSecret', 'privateKey'],
+      'oauth2': ['accessToken', 'refreshToken', 'clientSecret', 'password'],
+      'hawk': ['authKey'],
+      'awsv4': ['secretKey', 'sessionToken'],
+      'ntlm': ['password'],
+      'edgegrid': ['accessToken', 'clientToken', 'clientSecret'],
+      'jwt': ['secret', 'privateKey'],
+      'apikey': ['value'],
+    };
+    const identifiers = {
+      'basic': ['username'],
+      'bearer': <String>[],
+      'digest': ['username', 'realm', 'nonce', 'opaque'],
+      'oauth1': ['consumerKey', 'realm', 'nonce', 'timestamp'],
+      'oauth2': ['clientId', 'username', 'state', 'tokenName'],
+      'hawk': ['authId', 'nonce', 'user'],
+      'awsv4': ['accessKey', 'region', 'service'],
+      'ntlm': ['username', 'domain'],
+      'edgegrid': ['baseURL', 'nonce'],
+      'jwt': ['payload'],
+      'apikey': ['key'],
+    };
+    final secrets = Secrets.of({
+      'item': [
+        for (final type in credentials.keys)
+          {
+            'request': {
+              'auth': auth(type, {
+                for (final key in credentials[type]!) key: 'SECRET-$type-$key',
+                for (final key in identifiers[type]!) key: 'id-$type-$key',
+              }),
+            },
+          },
+      ],
+    });
+    expect(secrets.values, {
+      for (final MapEntry(key: type, value: keys) in credentials.entries)
+        for (final key in keys) 'SECRET-$type-$key',
+    });
+  });
+
+  test('a secret variable that references others makes them secret too, '
+      'cycles included', () {
+    final secrets = Secrets.of({
+      'auth': auth('bearer', {'token': '{{token}}'}),
+      'variable': [
+        {'key': 'token', 'value': 'Bearer {{rawToken}}{{a}}'},
+        {'key': 'rawToken', 'value': 'SECRET-raw'},
+        {'key': 'a', 'value': '{{token}}'},
+        {'key': 'other', 'value': 'visible'},
+      ],
+    });
+    expect(secrets.variables, {'token', 'rawToken', 'a'});
+    expect(secrets.leaks('x SECRET-raw'), isTrue);
+    expect(secrets.leaks('visible'), isFalse);
+  });
+
+  test('literal Authorization-like and Cookie header values are secret '
+      'values', () {
+    final secrets = Secrets.of({
+      'item': [
+        {
+          'request': {
+            'header': [
+              {'key': 'Authorization', 'value': 'Bearer SECRET-bearer'},
+              {'key': 'X-Authorisation', 'value': 'SECRET-british'},
+              {'key': 'Cookie', 'value': 'sid=SECRET-sid; lang=ar'},
+              {'key': 'Proxy-Authorization', 'value': 'Basic {{basic}}'},
+              {'key': 'Accept', 'value': 'application/json'},
+            ],
+          },
+        },
+      ],
+      'variable': [
+        {'key': 'basic', 'value': 'SECRET-basic'},
+      ],
+    });
+    expect(secrets.leaks('a SECRET-bearer b'), isTrue);
+    expect(secrets.leaks('a SECRET-british b'), isTrue);
+    expect(secrets.leaks('a SECRET-sid b'), isTrue);
+    expect(secrets.leaks('a SECRET-basic b'), isTrue);
+    expect(secrets.variables, {'basic'});
+    expect(secrets.leaks('application/json'), isFalse);
+  });
+
+  test('numbers leak by their text; text examples find embedded tokens', () {
+    final secrets = Secrets.of({
+      'auth': auth('bearer', {'token': '98765432'}),
+    });
+    expect(secrets.scrub({'pin': 98765432, 'n': 1}), {'n': 1});
+    expect(secrets.scrub([98765432, 1]), [1]);
+    expect(secrets.leaksText('jwt is eyJhbGciOi.eyJzdWIi.c2ln here'), isTrue);
+    expect(secrets.leaksText('use Bearer abc now'), isTrue);
+    expect(secrets.leaksText('a basic plan'), isFalse);
+  });
+
+  test('descriptions lose secret values', () {
+    final secrets = Secrets.of({
+      'auth': auth('bearer', {'token': 'SECRET-long-token'}),
+      'item': [
+        {
+          'request': {
+            'auth': auth('basic', {'password': 'SECRET-long'}),
+          },
+        },
+      ],
+    });
+    expect(
+      secrets.redact('use SECRET-long-token or SECRET-long'),
+      'use *** or ***',
+    );
   });
 }

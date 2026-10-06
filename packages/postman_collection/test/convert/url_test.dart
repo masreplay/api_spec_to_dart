@@ -82,6 +82,34 @@ void main() {
       '{{protocol}}://{{host}}:{{port}}',
     );
     expect(parseUrl('{{host}}:{{port}}/a').origin, 'http://{{host}}:{{port}}');
+    expect(
+      parseUrl({
+        'protocol': 'https',
+        'host': 'user:SECRET@api.x.io',
+        'path': ['a'],
+      }).origin,
+      'https://api.x.io',
+    );
+    expect(
+      parseUrl({
+        'host': ['u:SECRET@api', 'x', 'io'],
+      }).origin,
+      'http://api.x.io',
+    );
+  });
+
+  test('userinfo is removed with or without a scheme; emails stay', () {
+    expect(withoutUserinfo('user:SECRET@api.x.io/v1'), 'api.x.io/v1');
+    expect(withoutUserinfo('https://u:p@ss@x.io/a'), 'https://x.io/a');
+    expect(withoutUserinfo('see u:SECRET@h.io/cb now'), 'see h.io/cb now');
+    expect(withoutUserinfo('a@b.io'), 'a@b.io');
+    expect(withoutUserinfo('mailto:a@b.io'), 'mailto:a@b.io');
+  });
+
+  test('a literal {name} segment is a path parameter, like :name', () {
+    final url = parseUrl('https://x.io/users/{id}/posts/{{postId}}');
+    expect(url.path, '/users/{id}/posts/{postId}');
+    expect(url.pathParams, ['id', 'postId']);
   });
 
   test('an object URL without host, path or query falls back to raw', () {

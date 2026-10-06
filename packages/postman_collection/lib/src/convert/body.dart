@@ -190,7 +190,7 @@ class RequestBodies {
           encoding[key] = type;
         }
         if (descriptionText(param['description']) case final text?) {
-          descriptions[key] = text;
+          descriptions[key] = secrets.redact(text)!;
         }
       }
     }
@@ -241,6 +241,16 @@ class RequestBodies {
   }
 }
 
+/// [text] decoded when it is a JSON object or array, else null.
+Object? _json(String text) {
+  try {
+    final value = jsonDecode(text);
+    return value is Map || value is List ? value : null;
+  } on FormatException {
+    return null;
+  }
+}
+
 /// A form value as JSON would read it: numbers and booleans, else the text.
 Object? _scalar(String text) {
   try {
@@ -272,10 +282,21 @@ class MediaContent {
   }
 
   /// Keeps one example per distinct value, without credentials, keyed by
-  /// [name] (suffixed when taken). A text that leaks one is no example.
+  /// [name] (suffixed when taken). A text or number that leaks one is no
+  /// example; a text that is JSON is scrubbed as JSON.
   void example(String name, Object? value) {
-    if (value is String && secrets.leaks(value)) return;
-    final example = secrets.scrub(value);
+    final parsed = kind == 'text' && value is String ? _json(value) : null;
+    if (parsed == null && (value is String || value is num)) {
+      final text = '$value';
+      if (kind == 'text' ? secrets.leaksText(text) : secrets.leaks(text)) {
+        return;
+      }
+    }
+    var example = secrets.scrub(parsed ?? value);
+    if (parsed != null) {
+      final text = jsonEncode(example);
+      example = text == jsonEncode(parsed) ? value : text;
+    }
     final json = jsonEncode(example);
     if (examples.values.any((other) => jsonEncode(other) == json)) return;
     var key = name;
