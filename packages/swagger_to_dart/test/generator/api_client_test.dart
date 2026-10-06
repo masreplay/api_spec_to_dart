@@ -789,4 +789,17 @@ void main() {
     expect(client, isNot(contains('MultiPart')));
     expect(client, contains('@Body() required Item requestBody'));
   });
+
+  test('a multipart body typed as a map typedef is sent as is', () {
+    final client = Fixture(
+      Directory('test/fixtures/issue_57_multipart_params'),
+    ).render().files['api_client/form_client.dart']!;
+
+    String call(String method) => RegExp(
+      'return ${method}_\\(\\s*requestBody: ([^,]+),',
+    ).firstMatch(client)![1]!;
+    expect(call('sendFree'), 'requestBody');
+    expect(call('sendAlias'), 'requestBody');
+    expect(call('updateForm'), startsWith('requestBody.toJson()'));
+  });
 }

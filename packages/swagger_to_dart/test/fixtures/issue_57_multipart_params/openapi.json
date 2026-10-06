@@ -30,6 +30,26 @@
           }
         }
       }
+    },
+    "/free": {
+      "post": {
+        "tags": ["form"],
+        "operationId": "sendFree",
+        "requestBody": {
+          "content": { "multipart/form-data": { "schema": { "$ref": "#/components/schemas/Free" } } }
+        },
+        "responses": { "204": { "description": "OK" } }
+      }
+    },
+    "/alias": {
+      "post": {
+        "tags": ["form"],
+        "operationId": "sendAlias",
+        "requestBody": {
+          "content": { "multipart/form-data": { "schema": { "$ref": "#/components/schemas/FreeAlias" } } }
+        },
+        "responses": { "204": { "description": "OK" } }
+      }
     }
   },
   "components": {
@@ -41,7 +61,9 @@
           "name": { "type": "string" },
           "note": { "type": "string" }
         }
-      }
+      },
+      "Free": { "type": "object" },
+      "FreeAlias": { "$ref": "#/components/schemas/Free" }
     }
   }
 }
