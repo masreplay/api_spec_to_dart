@@ -1,4 +1,4 @@
-## 1.0.0
+## 1.0.0 - 2026-10-06
 
 **Breaking rewrite.** The package now lives in the
 [api_spec_to_dart](https://github.com/masreplay/api_spec_to_dart) monorepo
