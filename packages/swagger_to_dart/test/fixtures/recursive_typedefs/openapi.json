@@ -1,0 +1,36 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Recursive typedefs", "version": "1.0.0" },
+  "paths": {
+    "/tree": {
+      "get": {
+        "tags": ["trees"],
+        "operationId": "getTree",
+        "responses": {
+          "200": { "description": "OK", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Tree" } } } }
+        }
+      },
+      "put": {
+        "tags": ["trees"],
+        "operationId": "putNode",
+        "requestBody": { "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Node" } } } },
+        "responses": {
+          "200": { "description": "OK", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/A" } } } }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Tree": { "type": "array", "items": { "$ref": "#/components/schemas/Tree" } },
+      "Node": { "type": "object", "additionalProperties": { "$ref": "#/components/schemas/Node" } },
+      "A": { "$ref": "#/components/schemas/B" },
+      "B": { "type": "array", "items": { "$ref": "#/components/schemas/A" } },
+      "Forest": { "type": "array", "items": { "$ref": "#/components/schemas/Branch" } },
+      "Branch": {
+        "type": "object",
+        "properties": { "children": { "$ref": "#/components/schemas/Forest" } }
+      }
+    }
+  }
+}

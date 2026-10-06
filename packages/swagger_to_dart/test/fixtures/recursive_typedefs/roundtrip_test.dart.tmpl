@@ -1,0 +1,26 @@
+import 'package:swagger_to_dart_e2e/gen/recursive_typedefs/models/models.dart';
+import 'package:test/test.dart';
+
+void main() {
+  test('recursive typedefs hold nested JSON', () {
+    const Tree tree = [
+      [[], []],
+    ];
+    const Node node = {
+      'a': {'b': {}},
+    };
+    const A a = [
+      [[]],
+    ];
+    expect(tree.single, hasLength(2));
+    expect(node['a'], {'b': {}});
+    expect(a.single, [[]]);
+
+    final branch = Branch.fromJson({
+      'children': [
+        {'children': []},
+      ],
+    });
+    expect(branch.children?.single.children, isEmpty);
+  });
+}
