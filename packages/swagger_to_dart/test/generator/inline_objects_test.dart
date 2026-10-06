@@ -342,4 +342,17 @@ void main() {
     // dart:core types generated code never uses keep their name.
     expect(files['models/error.dart'], contains('class Error '));
   });
+
+  test('union case classes do not take a component\'s name', () {
+    final files = Fixture(
+      Directory('test/fixtures/reserved_names'),
+    ).render().files;
+
+    expect(files['models/pet_dog.dart'], contains('class PetDog '));
+    expect(
+      files['models/pet.dart'],
+      contains('final class PetDog2 extends Pet'),
+    );
+    expect(files['models/pet.dart'], isNot(contains('class PetDog ')));
+  });
 }

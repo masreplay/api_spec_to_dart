@@ -598,8 +598,33 @@ class UnionModelStrategy {
             variants.map((v) => v.caseName),
           );
 
-    String caseClass(String caseName) =>
-        '$className${Recase.instance.toPascalCase(caseName)}';
+    // Case classes share the models' namespace: a component or model of
+    // the name (`PetDog` next to `Pet.dog`) suffixes the case class, and
+    // later inline models avoid it.
+    final caseClasses = <String, String>{};
+    for (final caseName in [
+      ...variants.map((v) => v.caseName),
+      ?fallbackCase,
+    ]) {
+      final base = '$className${Recase.instance.toPascalCase(caseName)}';
+      var name = base;
+      for (
+        var i = 2;
+        context.componentClassNames.containsValue(name) ||
+            context.models.any(
+              (m) => m.name == Renaming.instance.renameFile(name),
+            ) ||
+            caseClasses.containsValue(name);
+        i++
+      ) {
+        name = '$base$i';
+      }
+      caseClasses[caseName] = name;
+    }
+    context.reservedModelNames.addAll(
+      caseClasses.values.map(Renaming.instance.renameFile),
+    );
+    String caseClass(String caseName) => caseClasses[caseName]!;
     final shapes = {
       for (final v in variants)
         v.caseName:
