@@ -24,5 +24,14 @@ as a recipe to copy into your app:
   and a raw JSON, text or form-data body), built with the generated models.
 - `recorder.collection('My API')` wraps them in a `PostmanCollection`;
   `jsonEncode(collection.toJson())` is a v2.1 collection Postman imports.
-- The `Authorization` header is not recorded, since exported collections get
-  shared. Add folders, saved responses or auth with the same models.
+- Exported collections get shared, so credentials stay out: headers whose
+  names look like credentials (`Authorization`, `Proxy-Authorization`,
+  `Cookie`, `X-Api-Key`, …) are not recorded, and query, form and
+  urlencoded values with such names become `<redacted>`. JSON bodies are
+  recorded as sent; scrub them yourself if they carry secrets.
+- Recording never breaks the request: a body that is not JSON is recorded as
+  its `toString()`. A `Map` sent as `application/x-www-form-urlencoded` is
+  recorded as an urlencoded body.
+- Add folders, saved responses or auth with the same models.
+
+`test/dio_recipe_test.dart` covers the recipe (`dart test`).

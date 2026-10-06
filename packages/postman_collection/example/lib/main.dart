@@ -29,7 +29,7 @@ Future<void> main() async {
     switch (item) {
       case PostmanItemsItem(value: PostmanItem(:final name, :final request)):
         final method = switch (request) {
-          PostmanRequestObject(:final value) => value.method,
+          PostmanRequestObject(:final value) => value.method ?? 'GET',
           PostmanRequestString() => 'GET',
         };
         print('$method: $name');
