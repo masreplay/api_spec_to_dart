@@ -22,7 +22,7 @@ jobs:
       - name: Format
         run: |
           git ls-files 'packages/swagger_to_dart/*.dart' 'packages/postman_collection/*.dart' \
-            | grep -v -E '\.(g|freezed)\.dart$|/example/' \
+            | grep -v -E '\.(g|freezed)\.dart$|^packages/swagger_to_dart/example/' \
             | xargs dart format --output=none --set-exit-if-changed
 
       - name: Analyze
@@ -35,6 +35,13 @@ jobs:
       - name: Test postman_collection
         working-directory: packages/postman_collection
         run: dart test
+
+      - name: Analyze and test the postman_collection example
+        working-directory: packages/postman_collection/example
+        run: |
+          dart pub get
+          dart analyze --fatal-infos
+          dart test
 
   example:
     name: Example app (generate, build, analyze, test)
