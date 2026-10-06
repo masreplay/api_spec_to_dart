@@ -13,9 +13,10 @@ final _userinfo = RegExp(
 );
 
 /// Userinfo with a password but no scheme (`user:password@host`), at the
-/// start of a word; `mailto:` and emails (no `:`) are not userinfo.
+/// start, after `//` or after punctuation that cannot be part of a URL
+/// authority; `mailto:` and emails (no `:`) are not userinfo.
 final _bareUserinfo = RegExp(
-  r'''(^|[\s"'(<=,])(?!mailto:)[^\s/?#@:"'<>]+:[^\s/?#"'<>]*@''',
+  r'''(^|//|[^\w.:@/%~+-])(?!mailto:)[\w.%~+-]+:[^\s/?#"'<>]*@''',
 );
 
 /// [text] with the userinfo of every URL in it removed.
@@ -119,7 +120,11 @@ _parseRaw(String raw) {
   final query = question < 0 ? '' : rest.substring(question + 1);
   if (question >= 0) rest = rest.substring(0, question);
   final scheme = _scheme.matchAsPrefix(rest);
-  if (scheme != null) rest = rest.substring(scheme.end);
+  if (scheme != null) {
+    rest = rest.substring(scheme.end);
+  } else if (rest.startsWith('//')) {
+    rest = rest.substring(2); // protocol-relative
+  }
   final slash = rest.indexOf('/');
   final authority = slash < 0 ? rest : rest.substring(0, slash);
   return (

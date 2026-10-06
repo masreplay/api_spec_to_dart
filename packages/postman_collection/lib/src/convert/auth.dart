@@ -45,9 +45,10 @@ final _authorizationHeader = RegExp('authori[sz]ation', caseSensitive: false);
 
 /// Names (of parameters, headers, JSON keys) and values that carry
 /// credentials outside auth: tokens, keys, sessions, cookies, signatures.
+/// A bare `auth` counts; identifiers such as `authId` and `author` do not.
 final _credentialName = RegExp(
   'token|jwt|secret|passw|api[-_]?key|session|signature|credential|cookie|'
-  'authori[sz]|auth(?!or)',
+  'authori[sz]|authentication|auth[-_]?key|auth(?![a-z]|[-_]id)',
   caseSensitive: false,
 );
 final _credentialValue = RegExp(
@@ -154,10 +155,24 @@ class Secrets {
   /// than four characters count only when equal, so they cannot match
   /// everywhere.
   bool leaks(String text) =>
-      _credentialValue.hasMatch(text) ||
-      values.any(
-        (secret) => secret.length < 4 ? text == secret : text.contains(secret),
-      );
+      _credentialValue.hasMatch(text) || _containsSecret(text);
+
+  bool _containsSecret(String text) => values.any(
+    (secret) => secret.length < 4 ? text == secret : text.contains(secret),
+  );
+
+  /// [sample] (for schema inference) without the entries whose key contains
+  /// a literal secret, such as a map keyed by a token.
+  Object? withoutSecretKeys(Object? sample) => switch (sample) {
+    final Map<Object?, Object?> map => {
+      for (final MapEntry(:key, :value) in map.entries)
+        if (!_containsSecret('$key')) key: withoutSecretKeys(value),
+    },
+    final List<Object?> list => [
+      for (final item in list) withoutSecretKeys(item),
+    ],
+    _ => sample,
+  };
 
   /// [leaks] for a free text example: a bearer token or JWT anywhere in it
   /// counts too.
@@ -183,13 +198,15 @@ class Secrets {
   bool hides(String name, String text) =>
       _credentialName.hasMatch(name) || leaks(text);
 
-  /// [example] without credentials: subtrees under credential-named keys and
-  /// leaking strings are dropped, and URLs lose their userinfo. Inferred
+  /// [example] without credentials: subtrees under credential-named or
+  /// leaking keys and leaking strings are dropped, and URLs lose their userinfo. Inferred
   /// schemas still see every field.
   Object? scrub(Object? example) => switch (example) {
     final Map<Object?, Object?> map => {
       for (final MapEntry(:key, :value) in map.entries)
-        if (!_credentialName.hasMatch('$key') && !_leaksScalar(value))
+        if (!_credentialName.hasMatch('$key') &&
+            !_containsSecret('$key') &&
+            !_leaksScalar(value))
           key: scrub(value),
     },
     final List<Object?> list => [

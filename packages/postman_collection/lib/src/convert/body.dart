@@ -277,7 +277,7 @@ class MediaContent {
   final examples = <String, Object?>{};
 
   void add(String name, Object? sample) {
-    samples.add(sample);
+    samples.add(secrets.withoutSecretKeys(sample));
     example(name, sample);
   }
 

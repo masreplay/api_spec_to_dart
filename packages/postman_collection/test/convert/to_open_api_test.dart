@@ -1982,6 +1982,174 @@ void main() {
       });
     });
 
+    test('(L1) a JSON key that is a secret value drops its entry, in JSON '
+        'and in JSON served as text', () {
+      Map<String, Object?> example(String name, String type) => {
+        'name': name,
+        'code': 200,
+        'header': [
+          {'key': 'Content-Type', 'value': type},
+        ],
+        'body': jsonEncode({
+          'zq9k1zz': {'x': 1},
+          'a': 'b',
+        }),
+      };
+      final document = convert(
+        collection(
+          [
+            request(
+              'Get',
+              'GET',
+              'https://x.io/a',
+              response: [
+                example('json', 'application/json'),
+                example('text', 'text/plain'),
+              ],
+            ),
+          ],
+          extra: {
+            'auth': {
+              'type': 'bearer',
+              'bearer': [
+                {'key': 'token', 'value': 'zq9k1zz'},
+              ],
+            },
+          },
+        ),
+      );
+      expect(jsonEncode(document), isNot(contains('zq9k1zz')));
+      final content =
+          ((operation(document, '/a', 'get')['responses']! as Map)['200']!
+                  as Map)['content']!
+              as Map;
+      expect((content['application/json']! as Map)['examples'], {
+        'json': {
+          'value': {'a': 'b'},
+        },
+      });
+      expect((content['text/plain']! as Map)['examples'], {
+        'text': {'value': '{"a":"b"}'},
+      });
+    });
+
+    test('(L2) protocol-relative and embedded userinfo is removed', () {
+      final document = convert(
+        collection(
+          [
+            request(
+              'Get',
+              'GET',
+              '{{baseUrl}}/a?cb=//u:SECRET-p2@h.io/x',
+              response: [
+                {
+                  'name': 'xml',
+                  'code': 200,
+                  'header': [
+                    {'key': 'Content-Type', 'value': 'text/xml'},
+                  ],
+                  'body': '<a>u:SECRET-p3@h.io</a>',
+                },
+              ],
+            ),
+          ],
+          extra: {
+            'variable': [
+              {'key': 'baseUrl', 'value': '//u:SECRET-p1@api.x.io'},
+            ],
+          },
+        ),
+      );
+      expect(jsonEncode(document), isNot(contains('SECRET')));
+      expect(document['servers'], [
+        {
+          'url': '{baseUrl}',
+          'variables': {
+            'baseUrl': {'default': '//api.x.io'},
+          },
+        },
+      ]);
+      final get = operation(document, '/a', 'get');
+      expect((parameters(get).single as Map)['example'], '//h.io/x');
+      expect(
+        ((((get['responses']! as Map)['200']! as Map)['content']!
+                as Map)['text/xml']!
+            as Map)['examples'],
+        {
+          'xml': {'value': '<a>h.io</a>'},
+        },
+      );
+    });
+
+    test('(L3) response descriptions lose secret values', () {
+      final document = convert(
+        collection(
+          [
+            request(
+              'Get',
+              'GET',
+              'https://x.io/a',
+              response: [
+                {'name': 'ok', 'code': 200, 'status': 'OK SECRET-l3'},
+              ],
+            ),
+          ],
+          extra: {
+            'auth': {
+              'type': 'bearer',
+              'bearer': [
+                {'key': 'token', 'value': 'SECRET-l3'},
+              ],
+            },
+          },
+        ),
+      );
+      expect(jsonEncode(document), isNot(contains('SECRET')));
+      expect(
+        ((operation(document, '/a', 'get')['responses']! as Map)['200']!
+            as Map)['description'],
+        'OK ***',
+      );
+    });
+
+    test('(L4) identifier-named keys keep their examples; credential-named '
+        'ones do not', () {
+      final document = convert(
+        collection([
+          request(
+            'Create',
+            'POST',
+            'https://x.io/a?authId=id-1&auth_token=SECRET-l4a',
+            fields: {
+              'body': json({
+                'authId': 'id-1',
+                'clientId': 'c-1',
+                'username': 'u-1',
+                'authKey': 'SECRET-l4b',
+                'authToken': 'SECRET-l4c',
+              }),
+            },
+          ),
+        ]),
+      );
+      expect(jsonEncode(document), isNot(contains('SECRET')));
+      final create = operation(document, '/a', 'post');
+      expect(
+        {for (final p in parameters(create)) (p as Map)['name']: p['example']},
+        {'authId': 'id-1', 'auth_token': null},
+      );
+      expect(
+        (((create['requestBody']! as Map)['content']!
+                as Map)['application/json']!
+            as Map)['examples'],
+        {
+          'Create': {
+            'value': {'authId': 'id-1', 'clientId': 'c-1', 'username': 'u-1'},
+          },
+        },
+      );
+    });
+
     test('(R6) descriptions lose secret values', () {
       const secret = 'SECRET-r6';
       final document = convert(
