@@ -281,6 +281,16 @@ void main() {
       'authIdentity',
       'author',
       'authority',
+      // `pass` counts only as a word or camelCase segment.
+      'passenger',
+      'passport',
+      'Passport',
+      'PASSPORT',
+      'bypass',
+      'compass',
+      'passive',
+      'subscription',
+      'functions',
     ]) {
       expect(none.hides(name, 'x'), isFalse, reason: name);
     }
@@ -316,6 +326,26 @@ void main() {
       'oAuthCode',
       'oauth_token',
       'OAuth',
+      // Private keys and short password spellings.
+      'private_key',
+      'privateKey',
+      'X-Private-Key',
+      'pwd',
+      'userPwd',
+      'pass',
+      'Pass',
+      'userPass',
+      'user_pass',
+      'X-Pass',
+      'DB_PASS',
+      'pass1',
+      'passphrase',
+      'Passcode',
+      // Vendor key headers.
+      'Ocp-Apim-Subscription-Key',
+      'subscription_key',
+      'x-functions-key',
+      'functionsKey',
     ]) {
       expect(none.hides(name, 'x'), isTrue, reason: name);
     }
@@ -468,6 +498,44 @@ void main() {
       for (final MapEntry(key: type, value: keys) in credentials.entries)
         for (final key in keys) 'SECRET-$type-$key',
     });
+  });
+
+  test('variables named like credentials are secret; URL-like ones and '
+      'identifiers are not', () {
+    final secrets = Secrets.of({
+      'variable': [
+        for (final name in [
+          'api_key',
+          'accessToken',
+          'password',
+          'privateKey',
+          'userPass',
+          'x-functions-key',
+          'tokenUrl',
+          'authUrl',
+          'redirect_uri',
+          'tokenEndpoint',
+          'sessionHost',
+          'username',
+          'clientId',
+          'consumerKey',
+          'authId',
+          'accessKeyId',
+          'passenger',
+        ])
+          {'key': name, 'value': 'value-of-$name'},
+      ],
+    });
+    expect(secrets.variables, {
+      'api_key',
+      'accessToken',
+      'password',
+      'privateKey',
+      'userPass',
+      'x-functions-key',
+    });
+    expect(secrets.leaks('value-of-password'), isTrue);
+    expect(secrets.leaks('value-of-username'), isFalse);
   });
 
   test('a secret variable that references others makes them secret too, '
