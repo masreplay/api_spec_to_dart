@@ -278,6 +278,9 @@ void main() {
       'consumerKey',
       'accessKeyId',
       'authenticated',
+      'authIdentity',
+      'author',
+      'authority',
     ]) {
       expect(none.hides(name, 'x'), isFalse, reason: name);
     }
@@ -292,6 +295,27 @@ void main() {
       'password',
       'client_secret',
       'apiKey',
+      // camelCase credential compounds of `auth`.
+      'authCode',
+      'authPass',
+      'authBearer',
+      'authBasic',
+      'authValue',
+      'authHash',
+      'authHeader',
+      'authData',
+      'authPin',
+      'authOtp',
+      'authBlob',
+      'authSecret',
+      'authCookie',
+      'authCredential',
+      'auth_code',
+      'X-Auth-Header',
+      'oauthCode',
+      'oAuthCode',
+      'oauth_token',
+      'OAuth',
     ]) {
       expect(none.hides(name, 'x'), isTrue, reason: name);
     }

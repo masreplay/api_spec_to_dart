@@ -45,10 +45,13 @@ final _authorizationHeader = RegExp('authori[sz]ation', caseSensitive: false);
 
 /// Names (of parameters, headers, JSON keys) and values that carry
 /// credentials outside auth: tokens, keys, sessions, cookies, signatures.
-/// A bare `auth` counts; identifiers such as `authId` and `author` do not.
+/// A bare `auth` counts, and so do credential compounds such as `authCode`,
+/// `authPass` or `oauthCode`; identifiers such as `authId` and `author` do
+/// not.
 final _credentialName = RegExp(
   'token|jwt|secret|passw|api[-_]?key|session|signature|credential|cookie|'
-  'authori[sz]|authentication|auth[-_]?key|auth(?![a-z]|[-_]id)',
+  'authori[sz]|authentication|auth(?![a-z]|[-_]id)|'
+  'auth[-_]?(key|code|pass|bearer|basic|hash|header|value|data|pin|otp|blob)',
   caseSensitive: false,
 );
 final _credentialValue = RegExp(
