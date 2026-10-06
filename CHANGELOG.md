@@ -1,4 +1,4 @@
-## 6.0.0
+## 6.0.0 - 2026-10-06
 
 Swagger 2.0, Postman collections and JSON Schema documents are now inputs,
 in JSON or YAML (see Inputs in the README). Generated output changes for
