@@ -1,0 +1,116 @@
+{
+  "info": {
+    "name": "Lenient inputs",
+    "description": { "content": "Exports that break the official schema.", "type": "text/markdown" },
+    "version": 3,
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "jwt",
+    "jwt": [
+      { "key": "secret", "value": "SECRET-jwt-signing-key" },
+      { "key": "payload", "value": "{\"sub\": 1}" },
+      { "key": "algorithm", "value": "HS256" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://api.example.com" },
+    { "key": "sessionToken", "value": "SECRET-session", "type": "secret" },
+    { "value": "no key" },
+    "not a variable"
+  ],
+  "item": [
+    {
+      "name": "Header value null, header as a string",
+      "request": {
+        "method": "get",
+        "header": "X-App-Version: 1.2.3\nX-Session: {{sessionToken}}\n// X-Disabled: yes",
+        "url": "{{baseUrl}}/strings?page=1"
+      },
+      "response": []
+    },
+    {
+      "name": "Null values",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "X-Null", "value": null },
+          { "key": "X-Number", "value": 42 },
+          { "key": "Bad Header Name", "value": "x" },
+          { "value": "no key" },
+          "X-As-String: from a string item"
+        ],
+        "url": {
+          "path": ["objects", ":id"],
+          "query": [
+            { "key": "n", "value": 5 },
+            { "key": null, "value": "dropped" }
+          ],
+          "variable": [{ "key": "id", "value": 7, "description": { "content": "Numeric id" } }]
+        },
+        "description": ["not", "a", "description"]
+      },
+      "response": [
+        {
+          "name": "String code",
+          "code": "201",
+          "header": [{ "key": "Content-Type", "value": null }],
+          "body": "{\"ok\": true}",
+          "responseTime": { "total": 5 }
+        }
+      ]
+    },
+    {
+      "name": "ASAP auth",
+      "request": {
+        "auth": {
+          "type": "asap",
+          "asap": [{ "key": "privateKey", "value": "SECRET-asap-key" }]
+        },
+        "method": "POST",
+        "body": { "mode": "binary", "binary": "x" },
+        "url": "{{baseUrl}}/asap"
+      },
+      "response": []
+    },
+    {
+      "name": "Inherit keyword",
+      "request": {
+        "auth": { "type": "inherit" },
+        "method": "GET",
+        "url": "{{baseUrl}}/inherit"
+      },
+      "response": []
+    },
+    {
+      "name": "Broken JSON body",
+      "request": {
+        "method": "PATCH",
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"a\": 1, oops }",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": "{{baseUrl}}/broken"
+      },
+      "response": []
+    },
+    {
+      "name": "Bad method",
+      "request": { "method": "NOT VALID", "url": "{{baseUrl}}/bad" },
+      "response": []
+    },
+    { "name": "No request" },
+    { "name": "Empty folder", "item": [] },
+    "a string item",
+    {
+      "name": "Request as a URL",
+      "request": "{{baseUrl}}/plain-string"
+    },
+    {
+      "name": "!!!",
+      "request": { "method": "DELETE", "url": "{{baseUrl}}/symbols/:id" },
+      "response": []
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+$kind: collection
+name: Bookstore API
+description: The worked example of Postman's collection-schema-v3 skill.
+variables:
+  - key: base_url
+    value: 'https://api.bookstore.com/v1'
+auth:
+  type: bearer
+  credentials:
+    - key: token
+      value: '{{token}}'

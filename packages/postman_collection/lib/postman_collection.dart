@@ -1,5 +1,6 @@
 library;
 
+export 'convert.dart';
 export 'src/client/client.dart';
 export 'src/doc/doc.dart';
 export 'src/format/format.dart';

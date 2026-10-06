@@ -1,0 +1,57 @@
+{
+  "info": {
+    "name": "Payments",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create payment",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\"amount\": 100, \"currency\": \"USD\"}" },
+        "url": "https://pay.example.com/payments"
+      },
+      "response": []
+    },
+    {
+      "name": "Webhooks",
+      "description": "Events we send to your callback URL.",
+      "item": [
+        {
+          "name": "payment.succeeded",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "X-Signature", "value": "sha256=abc", "description": "HMAC of the body" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"id\": \"evt_1\", \"type\": \"payment.succeeded\", \"data\": {\"amount\": 100}}"
+            },
+            "url": "{{callbackUrl}}"
+          },
+          "response": [
+            { "name": "Acknowledged", "code": 204, "header": [], "body": "" }
+          ]
+        },
+        {
+          "name": "Disputes",
+          "item": [
+            {
+              "name": "payment.disputed",
+              "request": {
+                "method": "POST",
+                "header": [{ "key": "Content-Type", "value": "application/json" }],
+                "body": { "mode": "raw", "raw": "{\"id\": \"evt_2\", \"reason\": \"fraud\"}" },
+                "url": "{{callbackUrl}}"
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

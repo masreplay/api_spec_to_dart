@@ -1,0 +1,192 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "متجر 🛒",
+    "description": "واجهة برمجة المتجر",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://shop.example.com"
+    }
+  ],
+  "tags": [
+    {
+      "name": "المستخدمين",
+      "description": "إدارة المستخدمين"
+    },
+    {
+      "name": "الطلبات 📦"
+    }
+  ],
+  "paths": {
+    "/users": {
+      "get": {
+        "tags": [
+          "المستخدمين"
+        ],
+        "summary": "جلب المستخدمين",
+        "operationId": "getUsers",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "المستخدمين"
+        ],
+        "summary": "تسجيل 2",
+        "operationId": "postUsers",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "tags": [
+          "المستخدمين"
+        ],
+        "summary": "جلب مستخدم",
+        "operationId": "getUsersId",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/orders": {
+      "post": {
+        "tags": [
+          "الطلبات 📦"
+        ],
+        "summary": "Create order 🚀",
+        "operationId": "createOrder",
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "ar"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ملاحظة": {
+                    "type": "string"
+                  },
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "sku": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "Create order 🚀": {
+                  "value": {
+                    "ملاحظة": "توصيل سريع",
+                    "items": [
+                      {
+                        "sku": "A1"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/orders/{id}": {
+      "put": {
+        "tags": [
+          "الطلبات 📦"
+        ],
+        "summary": "Create order",
+        "operationId": "createOrder2",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "الطلبات 📦"
+        ],
+        "summary": "🚀",
+        "operationId": "deleteOrdersId",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/café/menu": {
+      "get": {
+        "summary": "Café ☕",
+        "operationId": "getMenu",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    }
+  }
+}
