@@ -1,0 +1,41 @@
+/// SignupBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "email": {
+///             "type": "string"
+///         },
+///         "password": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'signup_body.freezed.dart';
+part 'signup_body.g.dart';
+
+@freezed
+abstract class SignupBody with _$SignupBody {
+  const SignupBody._();
+
+  @jsonSerializable
+  const factory SignupBody({
+    /// email
+    @JsonKey(name: SignupBody.emailKey_) String? email,
+
+    /// password
+    @JsonKey(name: SignupBody.passwordKey_) String? password,
+  }) = _SignupBody;
+
+  factory SignupBody.fromJson(Map<String, dynamic> json) =>
+      _$SignupBodyFromJson(json);
+
+  static const String emailKey_ = 'email';
+
+  static const String passwordKey_ = 'password';
+}

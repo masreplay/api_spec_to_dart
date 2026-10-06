@@ -155,7 +155,8 @@ extension FilesClientX on FilesClient {
     },
   }) {
     return upload_(
-      requestBody: requestBody.toJson(),
+      requestBody: requestBody.toJson()
+        ..removeWhere((_, value) => value == null),
       extras: extras,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,

@@ -1,0 +1,103 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'subscriptions_client.g.dart';
+
+@RestApi()
+abstract class SubscriptionsClient {
+  factory SubscriptionsClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _SubscriptionsClient;
+
+  @POST('/api/v1/subscriptions/14')
+  Future<HttpResponse> subscribe({
+    @Body() required SubscribeBody requestBody,
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Subscriptions'],
+      'summary': 'Subscribe',
+      'description': 'Create a new user',
+      'operationId': 'subscribe',
+      'parameters': [
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'subscription_id': {'type': 'string'},
+                'lang': {'type': 'string'},
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+  @GET('/api/v1/subscriptions/14')
+  Future<HttpResponse> getUserSubscription({
+    @Body() required GetUserSubscriptionBody requestBody,
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Subscriptions'],
+      'summary': 'Get User Subscription',
+      'description': 'Create a new user',
+      'operationId': 'getUserSubscription',
+      'parameters': [
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'subscription_id': {'type': 'string'},
+                'lang': {'type': 'string'},
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+}

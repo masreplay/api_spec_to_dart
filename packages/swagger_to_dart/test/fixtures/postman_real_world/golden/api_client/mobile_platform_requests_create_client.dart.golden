@@ -1,0 +1,217 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'mobile_platform_requests_create_client.g.dart';
+
+@RestApi()
+abstract class MobilePlatformRequestsCreateClient {
+  factory MobilePlatformRequestsCreateClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _MobilePlatformRequestsCreateClient;
+
+  @POST('/api/v1/users/mobile_user')
+  Future<HttpResponse> post0CreateTempMobileUser({
+    @Body() required Post0CreateTempMobileUserBody requestBody,
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Mobile Platform Requests / Create'],
+      'summary': '0-Create Temp Mobile user',
+      'description': 'Create a new user',
+      'operationId': 'post0CreateTempMobileUser',
+      'parameters': [
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'phone': {'type': 'string'},
+                'user_type': {'type': 'string'},
+                'full_name': {'type': 'string'},
+                'email': {'type': 'string'},
+                'business_name': {'type': 'string'},
+                'lang': {'type': 'string'},
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+  @PUT('/api/v1/users/mobile_user_validate')
+  Future<HttpResponse> put1ValidateMobileUser({
+    @Body() required Put1ValidateMobileUserBody requestBody,
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Mobile Platform Requests / Create'],
+      'summary': '1-Validate Mobile user',
+      'description': 'Create a new user',
+      'operationId': 'put1ValidateMobileUser',
+      'parameters': [
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'temp_id': {'type': 'integer'},
+                'code': {'type': 'string'},
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+  @POST('/api/v1/users/mobile_user/seller')
+  Future<HttpResponse> post2AcreateSeller({
+    @Body() required Post2AcreateSellerBody requestBody,
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Mobile Platform Requests / Create'],
+      'summary': '2A-Create Seller',
+      'description': 'Create a new user',
+      'operationId': 'post2AcreateSeller',
+      'parameters': [
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'id': {'type': 'integer'},
+                'full_name': {'type': 'string'},
+                'business_name': {'type': 'string'},
+                'password': {'type': 'string'},
+                'city_id': {'type': 'integer'},
+                'address': {'type': 'string'},
+                'nearest_point': {'type': 'string'},
+                'phone': {'type': 'string'},
+                'email': {'type': 'string'},
+                'device_token': {'type': 'string'},
+                'firebase_jwt': {'type': 'string'},
+                'firebase_uid': {'type': 'integer'},
+                'lang': {'type': 'string'},
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+  @POST('/api/v1/users/mobile_user/end_user')
+  Future<HttpResponse> post2BcreateEndUser({
+    @Body() required Post2BcreateEndUserBody requestBody,
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Mobile Platform Requests / Create'],
+      'summary': '2B-Create End User',
+      'description': 'Create a new user',
+      'operationId': 'post2BcreateEndUser',
+      'parameters': [
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'id': {'type': 'integer'},
+                'full_name': {'type': 'string'},
+                'business_name': {'type': 'string'},
+                'password': {'type': 'string'},
+                'city_id': {'type': 'integer'},
+                'address': {'type': 'string'},
+                'nearest_point': {'type': 'string'},
+                'phone': {'type': 'string'},
+                'email': {'type': 'string'},
+                'device_token': {'type': 'string'},
+                'lang': {'type': 'string'},
+                'firebase_jwt': {'type': 'string'},
+                'firebase_uid': {'type': 'integer'},
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+}

@@ -1,0 +1,35 @@
+/// NotYetGetAllServiceLocationsBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "lang": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'not_yet_get_all_service_locations_body.freezed.dart';
+part 'not_yet_get_all_service_locations_body.g.dart';
+
+@freezed
+abstract class NotYetGetAllServiceLocationsBody
+    with _$NotYetGetAllServiceLocationsBody {
+  const NotYetGetAllServiceLocationsBody._();
+
+  @jsonSerializable
+  const factory NotYetGetAllServiceLocationsBody({
+    /// lang
+    @JsonKey(name: NotYetGetAllServiceLocationsBody.langKey_) String? lang,
+  }) = _NotYetGetAllServiceLocationsBody;
+
+  factory NotYetGetAllServiceLocationsBody.fromJson(
+    Map<String, dynamic> json,
+  ) => _$NotYetGetAllServiceLocationsBodyFromJson(json);
+
+  static const String langKey_ = 'lang';
+}

@@ -1,0 +1,79 @@
+/// Host
+///
+/// ```json
+/// {
+///     "oneOf": [
+///         {
+///             "type": "string"
+///         },
+///         {
+///             "type": "array",
+///             "items": {
+///                 "type": "string"
+///             },
+///             "description": "The host, split into subdomain strings."
+///         }
+///     ],
+///     "description": "The host for the URL, E.g: api.yourdomain.com. Can be stored as a string or as an array of strings.",
+///     "title": "Host"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'host.g.dart';
+
+sealed class Host {
+  const Host();
+
+  const factory Host.string(String value) = HostString;
+  const factory Host.list(List<String> value) = HostList;
+
+  factory Host.fromJson(Object? json) => switch (json) {
+    String() => HostString(json),
+    List() => _$HostListFromJson({'value': json}),
+    _ => throw ArgumentError.value(json, 'json', 'No Host variant matches'),
+  };
+
+  Object? toJson();
+}
+
+final class HostString extends Host {
+  const HostString(this.value);
+
+  final String value;
+
+  @override
+  Object? toJson() => value;
+
+  @override
+  bool operator ==(Object other) => other is HostString && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'Host.string($value)';
+}
+
+@jsonSerializable
+final class HostList extends Host {
+  const HostList(this.value);
+
+  @JsonKey(name: 'value')
+  final List<String> value;
+
+  @override
+  Object? toJson() => _$HostListToJson(this)['value'];
+
+  @override
+  bool operator ==(Object other) =>
+      other is HostList &&
+      const DeepCollectionEquality().equals(other.value, value);
+
+  @override
+  int get hashCode => const DeepCollectionEquality().hash(value);
+
+  @override
+  String toString() => 'Host.list($value)';
+}

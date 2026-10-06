@@ -1,0 +1,49 @@
+/// GetUsersResponseItem
+///
+/// ```json
+/// {
+///     "properties": {
+///         "الاسم": {
+///             "type": "string"
+///         },
+///         "name": {
+///             "type": "string"
+///         },
+///         "عمر": {
+///             "type": "integer"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'get_users_response_item.freezed.dart';
+part 'get_users_response_item.g.dart';
+
+@freezed
+abstract class GetUsersResponseItem with _$GetUsersResponseItem {
+  const GetUsersResponseItem._();
+
+  @jsonSerializable
+  const factory GetUsersResponseItem({
+    /// empty
+    @JsonKey(name: GetUsersResponseItem.emptyKey_) String? empty,
+
+    /// name
+    @JsonKey(name: GetUsersResponseItem.nameKey_) String? name,
+
+    /// empty2
+    @JsonKey(name: GetUsersResponseItem.empty2Key_) int? empty2,
+  }) = _GetUsersResponseItem;
+
+  factory GetUsersResponseItem.fromJson(Map<String, dynamic> json) =>
+      _$GetUsersResponseItemFromJson(json);
+
+  static const String emptyKey_ = 'الاسم';
+
+  static const String nameKey_ = 'name';
+
+  static const String empty2Key_ = 'عمر';
+}

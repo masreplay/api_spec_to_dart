@@ -1,0 +1,265 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'admin_panel_requests_admin_users_client.g.dart';
+
+@RestApi()
+abstract class AdminPanelRequestsAdminUsersClient {
+  factory AdminPanelRequestsAdminUsersClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _AdminPanelRequestsAdminUsersClient;
+
+  @PUT('/api/v1/users/admins/3')
+  Future<HttpResponse> updateAdmin({
+    @Body() required UpdateAdminBody requestBody,
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Admin Panel Requests / Admin Users'],
+      'summary': 'Update Admin',
+      'description': 'Create a new user',
+      'operationId': 'updateAdmin',
+      'parameters': [
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'email': {'type': 'string'},
+                'enabled': {'type': 'boolean'},
+                'roles': {
+                  'type': 'array',
+                  'items': {'type': 'integer'},
+                },
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+  @POST('/api/v1/users/admins')
+  Future<HttpResponse> createAdmin({
+    @Body() required CreateAdminBody requestBody,
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Admin Panel Requests / Admin Users'],
+      'summary': 'Create Admin',
+      'description': 'Create a new user',
+      'operationId': 'createAdmin',
+      'parameters': [
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'username': {'type': 'string'},
+                'password': {'type': 'string'},
+                'email': {'type': 'string'},
+                'account_id': {'type': 'integer'},
+                'roles': {
+                  'type': 'array',
+                  'items': {'type': 'integer'},
+                },
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+  @GET('/api/v1/users/admins')
+  Future<HttpResponse> getAllAdmins({
+    @Query('page') String? page,
+    @Query('limit') String? limit,
+    @Query('lite') String? lite,
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Admin Panel Requests / Admin Users'],
+      'summary': 'Get All Admins',
+      'description': 'Create a new user',
+      'operationId': 'getAllAdmins',
+      'parameters': [
+        {
+          'name': 'page',
+          'in': 'query',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'limit',
+          'in': 'query',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'lite',
+          'in': 'query',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+  @GET('/api/v1/users/admins/1')
+  Future<HttpResponse> getAdminUserById({
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Admin Panel Requests / Admin Users'],
+      'summary': 'Get Admin User By ID',
+      'description': 'Create a new user',
+      'operationId': 'getAdminUserById',
+      'parameters': [
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+  @DELETE('/api/v1/users/admins/1')
+  Future<HttpResponse> deleteAdminById({
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Admin Panel Requests / Admin Users'],
+      'summary': 'Delete Admin By ID',
+      'description': 'Create a new user',
+      'operationId': 'deleteAdminById',
+      'parameters': [
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+  @PUT('/api/v1/users/admins/change_password/3')
+  Future<HttpResponse> changeAdminPassword({
+    @Body() required ChangeAdminPasswordBody requestBody,
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Admin Panel Requests / Admin Users'],
+      'summary': 'Change Admin Password',
+      'description': 'Change password, if admin, no need for old password',
+      'operationId': 'changeAdminPassword',
+      'parameters': [
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'old_password': {'type': 'string'},
+                'new_password': {'type': 'string'},
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+}

@@ -1,0 +1,37 @@
+/// AssignCategoryToSellerBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "categories": {
+///             "type": "array",
+///             "items": {
+///                 "type": "integer"
+///             }
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'assign_category_to_seller_body.freezed.dart';
+part 'assign_category_to_seller_body.g.dart';
+
+@freezed
+abstract class AssignCategoryToSellerBody with _$AssignCategoryToSellerBody {
+  const AssignCategoryToSellerBody._();
+
+  @jsonSerializable
+  const factory AssignCategoryToSellerBody({
+    /// categories
+    @JsonKey(name: AssignCategoryToSellerBody.categoriesKey_)
+    List<int>? categories,
+  }) = _AssignCategoryToSellerBody;
+
+  factory AssignCategoryToSellerBody.fromJson(Map<String, dynamic> json) =>
+      _$AssignCategoryToSellerBodyFromJson(json);
+
+  static const String categoriesKey_ = 'categories';
+}

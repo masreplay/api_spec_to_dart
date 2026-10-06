@@ -122,7 +122,8 @@ extension FormClientX on FormClient {
     },
   }) {
     return updateForm_(
-      requestBody: requestBody.toJson(),
+      requestBody: requestBody.toJson()
+        ..removeWhere((_, value) => value == null),
       id: id,
       trace: trace,
       page: page,

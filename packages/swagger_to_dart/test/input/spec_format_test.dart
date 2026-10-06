@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:postman_collection/convert.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 import 'package:test/test.dart';
 import 'package:yaml/yaml.dart';
@@ -50,8 +53,15 @@ void main() {
         {'name': 'C', 'requests': <Object?>[], 'order': <Object?>[]},
         SpecFormat.postman,
       ),
-      'postman v3 directory': (
-        {'x-postman-v3-directory': 'api'},
+      'postman v2.1 without a schema url': (
+        {
+          'info': {'name': 'C'},
+          'item': <Object?>[],
+        },
+        SpecFormat.postman,
+      ),
+      'postman v1 with folders': (
+        {'id': 'c', 'requests': <Object?>[], 'folders': <Object?>[]},
         SpecFormat.postman,
       ),
       'JSON Schema definitions': (
@@ -138,17 +148,47 @@ paths:
       expect(OpenApi.fromJson(openApi).paths?['/a'], isNotNull);
     });
 
-    test('Postman input is not wired yet', () {
-      expect(
-        () => toOpenApiJson({'x-postman-v3-directory': 'api'}),
-        throwsA(
-          isA<UnsupportedError>().having(
-            (e) => e.message,
-            'message',
-            'Postman input is wired in Task 6',
-          ),
+    test('converts a Postman collection with postmanToOpenApi', () {
+      final collection = {
+        'info': {
+          'name': 'Users',
+          'schema':
+              'https://schema.getpostman.com/json/collection/v2.1.0/collection.json',
+        },
+        'item': [
+          {
+            'name': 'Get user',
+            'request': {'method': 'GET', 'url': 'https://api.test/users/:id'},
+          },
+        ],
+      };
+
+      final spec = runZoned(() => toOpenApiJson(collection));
+
+      expect(spec, postmanToOpenApi(collection));
+      expect(spec['paths'], contains('/users/{id}'));
+      expect(OpenApi.fromJson(spec).paths?['/users/{id}'], isNotNull);
+    });
+
+    test('prints Postman conversion warnings', () {
+      final printed = <String>[];
+
+      runZoned(
+        () => toOpenApiJson({
+          'info': {'name': 'C'},
+          'item': [
+            {'name': 'Folder-less note'},
+          ],
+        }),
+        zoneSpecification: ZoneSpecification(
+          print: (_, _, _, line) => printed.add(line),
         ),
       );
+
+      expect(printed, [
+        "swagger_to_dart: warning: item 'Folder-less note' has no request; "
+            'skipped',
+      ]);
     });
 
     test('an unknown document is a format error', () {

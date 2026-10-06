@@ -1,0 +1,95 @@
+/// description
+///
+/// ```json
+/// {
+///     "description": "A Description can be a raw text, or be an object, which holds the description along with its format.",
+///     "oneOf": [
+///         {
+///             "type": "object",
+///             "properties": {
+///                 "content": {
+///                     "type": "string",
+///                     "description": "The content of the description goes here, as a raw string."
+///                 },
+///                 "type": {
+///                     "type": "string",
+///                     "description": "Holds the mime type of the raw description content. E.g: 'text/markdown' or 'text/html'.\nThe type is used to correctly render the description when generating documentation, or in the Postman app."
+///                 },
+///                 "version": {
+///                     "description": "Description can have versions associated with it, which should be put in this property."
+///                 }
+///             },
+///             "title": "Description"
+///         },
+///         {
+///             "type": "string"
+///         },
+///         {
+///             "type": "null"
+///         }
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+sealed class Description {
+  const Description();
+
+  const factory Description.object(DescriptionObjectValue value) =
+      DescriptionObject;
+  const factory Description.string(String value) = DescriptionString;
+
+  factory Description.fromJson(Object? json) => switch (json) {
+    String() => DescriptionString(json),
+    Map<String, dynamic>() => DescriptionObject(
+      DescriptionObjectValue.fromJson(json),
+    ),
+    _ => throw ArgumentError.value(
+      json,
+      'json',
+      'No Description variant matches',
+    ),
+  };
+
+  Object? toJson();
+}
+
+final class DescriptionObject extends Description {
+  const DescriptionObject(this.value);
+
+  final DescriptionObjectValue value;
+
+  @override
+  Object? toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) =>
+      other is DescriptionObject && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'Description.object($value)';
+}
+
+final class DescriptionString extends Description {
+  const DescriptionString(this.value);
+
+  final String value;
+
+  @override
+  Object? toJson() => value;
+
+  @override
+  bool operator ==(Object other) =>
+      other is DescriptionString && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'Description.string($value)';
+}

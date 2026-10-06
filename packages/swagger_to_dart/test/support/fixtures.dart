@@ -28,14 +28,19 @@ class Fixture {
     'swagger.json',
     'schema.json',
     'collection.json',
+    'collection', // a Postman v3 directory
   ];
 
   String get input => inputs
       .map((file) => p.join(dir.path, file))
       .firstWhere(
-        (path) => File(path).existsSync(),
+        (path) =>
+            FileSystemEntity.typeSync(path) != FileSystemEntityType.notFound,
         orElse: () => throw StateError('$name has none of $inputs'),
       );
+
+  /// Whether the input is a Postman collection (file or v3 directory).
+  bool get isPostman => p.basename(input).startsWith('collection');
 
   Map<String, dynamic> get spec => toOpenApiJson(
     readSpecSync(input),

@@ -1,0 +1,100 @@
+/// UrlObjectValuePath
+///
+/// ```json
+/// {
+///     "oneOf": [
+///         {
+///             "type": "string"
+///         },
+///         {
+///             "type": "array",
+///             "items": {
+///                 "oneOf": [
+///                     {
+///                         "type": "string"
+///                     },
+///                     {
+///                         "type": "object",
+///                         "properties": {
+///                             "type": {
+///                                 "type": "string"
+///                             },
+///                             "value": {
+///                                 "type": "string"
+///                             }
+///                         }
+///                     }
+///                 ]
+///             },
+///             "description": "The complete path of the current url, broken down into segments. A segment could be a string, or a path variable."
+///         }
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'url_object_value_path.g.dart';
+
+sealed class UrlObjectValuePath {
+  const UrlObjectValuePath();
+
+  const factory UrlObjectValuePath.string(String value) =
+      UrlObjectValuePathString;
+  const factory UrlObjectValuePath.list(
+    List<UrlObjectValuePathListValueItem> value,
+  ) = UrlObjectValuePathList;
+
+  factory UrlObjectValuePath.fromJson(Object? json) => switch (json) {
+    String() => UrlObjectValuePathString(json),
+    List() => _$UrlObjectValuePathListFromJson({'value': json}),
+    _ => throw ArgumentError.value(
+      json,
+      'json',
+      'No UrlObjectValuePath variant matches',
+    ),
+  };
+
+  Object? toJson();
+}
+
+final class UrlObjectValuePathString extends UrlObjectValuePath {
+  const UrlObjectValuePathString(this.value);
+
+  final String value;
+
+  @override
+  Object? toJson() => value;
+
+  @override
+  bool operator ==(Object other) =>
+      other is UrlObjectValuePathString && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'UrlObjectValuePath.string($value)';
+}
+
+@jsonSerializable
+final class UrlObjectValuePathList extends UrlObjectValuePath {
+  const UrlObjectValuePathList(this.value);
+
+  @JsonKey(name: 'value')
+  final List<UrlObjectValuePathListValueItem> value;
+
+  @override
+  Object? toJson() => _$UrlObjectValuePathListToJson(this)['value'];
+
+  @override
+  bool operator ==(Object other) =>
+      other is UrlObjectValuePathList &&
+      const DeepCollectionEquality().equals(other.value, value);
+
+  @override
+  int get hashCode => const DeepCollectionEquality().hash(value);
+
+  @override
+  String toString() => 'UrlObjectValuePath.list($value)';
+}

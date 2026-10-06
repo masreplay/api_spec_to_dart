@@ -1,0 +1,49 @@
+/// GetResponse
+///
+/// ```json
+/// {
+///     "properties": {
+///         "total": {
+///             "type": "integer"
+///         },
+///         "items": {
+///             "type": "array",
+///             "items": {
+///                 "type": "object",
+///                 "properties": {
+///                     "id": {
+///                         "type": "integer"
+///                     }
+///                 }
+///             }
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'get_response.freezed.dart';
+part 'get_response.g.dart';
+
+@freezed
+abstract class GetResponse with _$GetResponse {
+  const GetResponse._();
+
+  @jsonSerializable
+  const factory GetResponse({
+    /// total
+    @JsonKey(name: GetResponse.totalKey_) int? total,
+
+    /// items
+    @JsonKey(name: GetResponse.itemsKey_) List<GetResponseItemsItem>? items,
+  }) = _GetResponse;
+
+  factory GetResponse.fromJson(Map<String, dynamic> json) =>
+      _$GetResponseFromJson(json);
+
+  static const String totalKey_ = 'total';
+
+  static const String itemsKey_ = 'items';
+}

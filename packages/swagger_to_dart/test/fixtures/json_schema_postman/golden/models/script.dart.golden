@@ -1,0 +1,79 @@
+/// script
+///
+/// ```json
+/// {
+///     "properties": {
+///         "id": {
+///             "type": "string",
+///             "description": "A unique, user defined identifier that can  be used to refer to this script from requests."
+///         },
+///         "type": {
+///             "type": "string",
+///             "description": "Type of the script. E.g: 'text/javascript'"
+///         },
+///         "exec": {
+///             "oneOf": [
+///                 {
+///                     "type": "array",
+///                     "items": {
+///                         "type": "string"
+///                     },
+///                     "description": "This is an array of strings, where each line represents a single line of code. Having lines separate makes it possible to easily track changes made to scripts."
+///                 },
+///                 {
+///                     "type": "string"
+///                 }
+///             ]
+///         },
+///         "src": {
+///             "$ref": "#/components/schemas/url"
+///         },
+///         "name": {
+///             "type": "string",
+///             "description": "Script name"
+///         }
+///     },
+///     "type": "object",
+///     "description": "A script is a snippet of Javascript code that can be used to to perform setup or teardown operations on a particular response."
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'script.freezed.dart';
+part 'script.g.dart';
+
+@freezed
+abstract class Script with _$Script {
+  const Script._();
+
+  @jsonSerializable
+  const factory Script({
+    /// id
+    @JsonKey(name: Script.idKey_) String? id,
+
+    /// type
+    @JsonKey(name: Script.typeKey_) String? type,
+
+    /// exec
+    @JsonKey(name: Script.execKey_) ScriptExec? exec,
+
+    /// src
+    @JsonKey(name: Script.srcKey_) Url? src,
+
+    /// name
+    @JsonKey(name: Script.nameKey_) String? name,
+  }) = _Script;
+
+  factory Script.fromJson(Map<String, dynamic> json) => _$ScriptFromJson(json);
+
+  static const String idKey_ = 'id';
+
+  static const String typeKey_ = 'type';
+
+  static const String execKey_ = 'exec';
+
+  static const String srcKey_ = 'src';
+
+  static const String nameKey_ = 'name';
+}

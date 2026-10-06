@@ -1,0 +1,45 @@
+/// CreateOrderBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "items": {
+///             "type": "array",
+///             "items": {
+///                 "type": "object",
+///                 "properties": {
+///                     "sku": {
+///                         "type": "string"
+///                     },
+///                     "quantity": {
+///                         "type": "integer"
+///                     }
+///                 }
+///             }
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'create_order_body.freezed.dart';
+part 'create_order_body.g.dart';
+
+@freezed
+abstract class CreateOrderBody with _$CreateOrderBody {
+  const CreateOrderBody._();
+
+  @jsonSerializable
+  const factory CreateOrderBody({
+    /// items
+    @JsonKey(name: CreateOrderBody.itemsKey_)
+    List<CreateOrderBodyItemsItem>? items,
+  }) = _CreateOrderBody;
+
+  factory CreateOrderBody.fromJson(Map<String, dynamic> json) =>
+      _$CreateOrderBodyFromJson(json);
+
+  static const String itemsKey_ = 'items';
+}

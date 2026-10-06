@@ -1,0 +1,125 @@
+/// CreateAdBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "title": {
+///             "type": "string"
+///         },
+///         "description": {
+///             "type": "string"
+///         },
+///         "category_id": {
+///             "type": "integer"
+///         },
+///         "type": {
+///             "type": "string"
+///         },
+///         "discount_percent": {
+///             "type": "integer"
+///         },
+///         "new_price": {
+///             "type": "integer"
+///         },
+///         "currency": {
+///             "type": "string"
+///         },
+///         "start_date": {
+///             "type": "string"
+///         },
+///         "activation_period": {
+///             "type": "integer"
+///         },
+///         "start_time": {
+///             "type": "string"
+///         },
+///         "end_time": {
+///             "type": "string"
+///         },
+///         "images": {
+///             "type": "array",
+///             "items": {
+///                 "type": "string",
+///                 "format": "binary"
+///             }
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'create_ad_body.freezed.dart';
+part 'create_ad_body.g.dart';
+
+@freezed
+abstract class CreateAdBody with _$CreateAdBody {
+  const CreateAdBody._();
+
+  @jsonSerializable
+  const factory CreateAdBody({
+    /// title
+    @JsonKey(name: CreateAdBody.titleKey_) String? title,
+
+    /// description
+    @JsonKey(name: CreateAdBody.descriptionKey_) String? description,
+
+    /// categoryId
+    @JsonKey(name: CreateAdBody.categoryIdKey_) int? categoryId,
+
+    /// type
+    @JsonKey(name: CreateAdBody.typeKey_) String? type,
+
+    /// discountPercent
+    @JsonKey(name: CreateAdBody.discountPercentKey_) int? discountPercent,
+
+    /// newPrice
+    @JsonKey(name: CreateAdBody.newPriceKey_) int? newPrice,
+
+    /// currency
+    @JsonKey(name: CreateAdBody.currencyKey_) String? currency,
+
+    /// startDate
+    @JsonKey(name: CreateAdBody.startDateKey_) String? startDate,
+
+    /// activationPeriod
+    @JsonKey(name: CreateAdBody.activationPeriodKey_) int? activationPeriod,
+
+    /// startTime
+    @JsonKey(name: CreateAdBody.startTimeKey_) String? startTime,
+
+    /// endTime
+    @JsonKey(name: CreateAdBody.endTimeKey_) String? endTime,
+
+    /// images
+    @JsonKey(name: CreateAdBody.imagesKey_) List<MultipartFile>? images,
+  }) = _CreateAdBody;
+
+  factory CreateAdBody.fromJson(Map<String, dynamic> json) =>
+      _$CreateAdBodyFromJson(json);
+
+  static const String titleKey_ = 'title';
+
+  static const String descriptionKey_ = 'description';
+
+  static const String categoryIdKey_ = 'category_id';
+
+  static const String typeKey_ = 'type';
+
+  static const String discountPercentKey_ = 'discount_percent';
+
+  static const String newPriceKey_ = 'new_price';
+
+  static const String currencyKey_ = 'currency';
+
+  static const String startDateKey_ = 'start_date';
+
+  static const String activationPeriodKey_ = 'activation_period';
+
+  static const String startTimeKey_ = 'start_time';
+
+  static const String endTimeKey_ = 'end_time';
+
+  static const String imagesKey_ = 'images';
+}

@@ -1,0 +1,46 @@
+/// SearchBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "query": {
+///             "type": "string"
+///         },
+///         "variables": {
+///             "type": "object",
+///             "properties": {
+///                 "q": {
+///                     "type": "string"
+///                 }
+///             }
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'search_body.freezed.dart';
+part 'search_body.g.dart';
+
+@freezed
+abstract class SearchBody with _$SearchBody {
+  const SearchBody._();
+
+  @jsonSerializable
+  const factory SearchBody({
+    /// query
+    @JsonKey(name: SearchBody.queryKey_) String? query,
+
+    /// variables
+    @JsonKey(name: SearchBody.variablesKey_) SearchBodyVariables? variables,
+  }) = _SearchBody;
+
+  factory SearchBody.fromJson(Map<String, dynamic> json) =>
+      _$SearchBodyFromJson(json);
+
+  static const String queryKey_ = 'query';
+
+  static const String variablesKey_ = 'variables';
+}

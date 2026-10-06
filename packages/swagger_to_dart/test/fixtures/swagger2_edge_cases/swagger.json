@@ -210,7 +210,8 @@
             "in": "formData",
             "type": "boolean",
             "default": false
-          }
+          },
+          { "name": "note", "in": "formData", "type": "string" }
         ],
         "responses": {
           "200": {

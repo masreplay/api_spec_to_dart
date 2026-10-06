@@ -1,0 +1,99 @@
+/// item
+///
+/// ```json
+/// {
+///     "properties": {
+///         "id": {
+///             "type": "string",
+///             "description": "A unique ID that is used to identify collections internally"
+///         },
+///         "name": {
+///             "type": "string",
+///             "description": "A human readable identifier for the current item."
+///         },
+///         "description": {
+///             "$ref": "#/components/schemas/description"
+///         },
+///         "variable": {
+///             "$ref": "#/components/schemas/variable-list"
+///         },
+///         "event": {
+///             "$ref": "#/components/schemas/event-list"
+///         },
+///         "request": {
+///             "$ref": "#/components/schemas/request"
+///         },
+///         "response": {
+///             "type": "array",
+///             "items": {
+///                 "$ref": "#/components/schemas/response"
+///             },
+///             "title": "Responses"
+///         },
+///         "protocolProfileBehavior": {
+///             "$ref": "#/components/schemas/protocol-profile-behavior"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "request"
+///     ],
+///     "description": "Items are entities which contain an actual HTTP request, and sample responses attached to it."
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'item.freezed.dart';
+part 'item.g.dart';
+
+@freezed
+abstract class Item with _$Item {
+  const Item._();
+
+  @jsonSerializable
+  const factory Item({
+    /// id
+    @JsonKey(name: Item.idKey_) String? id,
+
+    /// name
+    @JsonKey(name: Item.nameKey_) String? name,
+
+    /// description
+    @JsonKey(name: Item.descriptionKey_) Description? description,
+
+    /// variable
+    @JsonKey(name: Item.variableKey_) VariableList? variable,
+
+    /// event
+    @JsonKey(name: Item.eventKey_) EventList? event,
+
+    /// request
+    @JsonKey(name: Item.requestKey_) required Request request,
+
+    /// response
+    @JsonKey(name: Item.responseKey_) List<Response>? response,
+
+    /// protocolProfileBehavior
+    @JsonKey(name: Item.protocolProfileBehaviorKey_)
+    ProtocolProfileBehavior? protocolProfileBehavior,
+  }) = _Item;
+
+  factory Item.fromJson(Map<String, dynamic> json) => _$ItemFromJson(json);
+
+  static const String idKey_ = 'id';
+
+  static const String nameKey_ = 'name';
+
+  static const String descriptionKey_ = 'description';
+
+  static const String variableKey_ = 'variable';
+
+  static const String eventKey_ = 'event';
+
+  static const String requestKey_ = 'request';
+
+  static const String responseKey_ = 'response';
+
+  static const String protocolProfileBehaviorKey_ = 'protocolProfileBehavior';
+}

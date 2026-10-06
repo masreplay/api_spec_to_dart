@@ -1,0 +1,84 @@
+/// CreateAccountBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "account_name": {
+///             "type": "string"
+///         },
+///         "phone": {
+///             "type": "string"
+///         },
+///         "email": {
+///             "type": "string"
+///         },
+///         "push_limits": {
+///             "type": "integer"
+///         },
+///         "sms_limits": {
+///             "type": "integer"
+///         },
+///         "expire_at": {
+///             "type": "string"
+///         },
+///         "cities": {
+///             "type": "array",
+///             "items": {
+///                 "type": "integer"
+///             }
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'create_account_body.freezed.dart';
+part 'create_account_body.g.dart';
+
+@freezed
+abstract class CreateAccountBody with _$CreateAccountBody {
+  const CreateAccountBody._();
+
+  @jsonSerializable
+  const factory CreateAccountBody({
+    /// accountName
+    @JsonKey(name: CreateAccountBody.accountNameKey_) String? accountName,
+
+    /// phone
+    @JsonKey(name: CreateAccountBody.phoneKey_) String? phone,
+
+    /// email
+    @JsonKey(name: CreateAccountBody.emailKey_) String? email,
+
+    /// pushLimits
+    @JsonKey(name: CreateAccountBody.pushLimitsKey_) int? pushLimits,
+
+    /// smsLimits
+    @JsonKey(name: CreateAccountBody.smsLimitsKey_) int? smsLimits,
+
+    /// expireAt
+    @JsonKey(name: CreateAccountBody.expireAtKey_) String? expireAt,
+
+    /// cities
+    @JsonKey(name: CreateAccountBody.citiesKey_) List<int>? cities,
+  }) = _CreateAccountBody;
+
+  factory CreateAccountBody.fromJson(Map<String, dynamic> json) =>
+      _$CreateAccountBodyFromJson(json);
+
+  static const String accountNameKey_ = 'account_name';
+
+  static const String phoneKey_ = 'phone';
+
+  static const String emailKey_ = 'email';
+
+  static const String pushLimitsKey_ = 'push_limits';
+
+  static const String smsLimitsKey_ = 'sms_limits';
+
+  static const String expireAtKey_ = 'expire_at';
+
+  static const String citiesKey_ = 'cities';
+}

@@ -1,0 +1,170 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'ads_client.g.dart';
+
+@RestApi()
+abstract class AdsClient {
+  factory AdsClient(Dio dio, {ParseErrorLogger? errorLogger, String? baseUrl}) =
+      _AdsClient;
+
+  @POST('/api/v1/ads')
+  @MultiPart()
+  Future<HttpResponse> createAd_({
+    @Part() required Map<String, dynamic> requestBody,
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['ADS'],
+      'summary': 'Create AD',
+      'description': 'Create a new user',
+      'operationId': 'createAd',
+      'parameters': [
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'multipart/form-data': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'title': {'type': 'string'},
+                'description': {'type': 'string'},
+                'category_id': {'type': 'integer'},
+                'type': {'type': 'string'},
+                'discount_percent': {'type': 'integer'},
+                'new_price': {'type': 'integer'},
+                'currency': {'type': 'string'},
+                'start_date': {'type': 'string'},
+                'activation_period': {'type': 'integer'},
+                'start_time': {'type': 'string'},
+                'end_time': {'type': 'string'},
+                'images': {
+                  'type': 'array',
+                  'items': {'type': 'string', 'format': 'binary'},
+                },
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+  @GET('/api/v1/ads')
+  Future<HttpResponse> getAllAds({
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['ADS'],
+      'summary': 'Get all ADs',
+      'description': 'Create a new user',
+      'operationId': 'getAllAds',
+      'parameters': [
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+}
+
+extension AdsClientX on AdsClient {
+  Future<HttpResponse> createAd({
+    required CreateAdBody requestBody,
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['ADS'],
+      'summary': 'Create AD',
+      'description': 'Create a new user',
+      'operationId': 'createAd',
+      'parameters': [
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'multipart/form-data': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'title': {'type': 'string'},
+                'description': {'type': 'string'},
+                'category_id': {'type': 'integer'},
+                'type': {'type': 'string'},
+                'discount_percent': {'type': 'integer'},
+                'new_price': {'type': 'integer'},
+                'currency': {'type': 'string'},
+                'start_date': {'type': 'string'},
+                'activation_period': {'type': 'integer'},
+                'start_time': {'type': 'string'},
+                'end_time': {'type': 'string'},
+                'images': {
+                  'type': 'array',
+                  'items': {'type': 'string', 'format': 'binary'},
+                },
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  }) {
+    return createAd_(
+      requestBody: requestBody.toJson()
+        ..removeWhere((_, value) => value == null),
+      jwt: jwt,
+      acceptLanguage: acceptLanguage,
+      extras: extras,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+  }
+}

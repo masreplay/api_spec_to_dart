@@ -1,0 +1,62 @@
+/// QueryParam
+///
+/// ```json
+/// {
+///     "properties": {
+///         "key": {
+///             "type": "string",
+///             "nullable": true
+///         },
+///         "value": {
+///             "type": "string",
+///             "nullable": true
+///         },
+///         "disabled": {
+///             "type": "boolean",
+///             "description": "If set to true, the current query parameter will not be sent with the request.",
+///             "default": false
+///         },
+///         "description": {
+///             "$ref": "#/components/schemas/description"
+///         }
+///     },
+///     "type": "object",
+///     "title": "QueryParam"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'query_param.freezed.dart';
+part 'query_param.g.dart';
+
+@freezed
+abstract class QueryParam with _$QueryParam {
+  const QueryParam._();
+
+  @jsonSerializable
+  const factory QueryParam({
+    /// key
+    @JsonKey(name: QueryParam.keyKey_) String? key,
+
+    /// value
+    @JsonKey(name: QueryParam.valueKey_) String? value,
+
+    /// disabled
+    @Default(false) @JsonKey(name: QueryParam.disabledKey_) bool disabled,
+
+    /// description
+    @JsonKey(name: QueryParam.descriptionKey_) Description? description,
+  }) = _QueryParam;
+
+  factory QueryParam.fromJson(Map<String, dynamic> json) =>
+      _$QueryParamFromJson(json);
+
+  static const String keyKey_ = 'key';
+
+  static const String valueKey_ = 'value';
+
+  static const String disabledKey_ = 'disabled';
+
+  static const String descriptionKey_ = 'description';
+}
