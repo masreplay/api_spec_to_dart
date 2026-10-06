@@ -8,17 +8,4 @@
 /// ```
 library;
 
-import 'exports.dart';
-part 'protocol_profile_behavior.freezed.dart';
-part 'protocol_profile_behavior.g.dart';
-
-@freezed
-abstract class ProtocolProfileBehavior with _$ProtocolProfileBehavior {
-  const ProtocolProfileBehavior._();
-
-  @jsonSerializable
-  const factory ProtocolProfileBehavior() = _ProtocolProfileBehavior;
-
-  factory ProtocolProfileBehavior.fromJson(Map<String, dynamic> json) =>
-      _$ProtocolProfileBehaviorFromJson(json);
-}
+typedef ProtocolProfileBehavior = Map<String, dynamic>;
