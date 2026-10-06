@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:path/path.dart' as p;
@@ -42,9 +43,14 @@ class Fixture {
   /// Whether the input is a Postman collection (file or v3 directory).
   bool get isPostman => p.basename(input).startsWith('collection');
 
-  Map<String, dynamic> get spec => toOpenApiJson(
-    readSpecSync(input),
-    sourceName: p.basenameWithoutExtension(input),
+  /// The input as OpenAPI 3. Conversion warnings are captured, not printed
+  /// (the input and converter tests assert them), so test output stays clean.
+  Map<String, dynamic> get spec => runZoned(
+    () => toOpenApiJson(
+      readSpecSync(input),
+      sourceName: p.basenameWithoutExtension(input),
+    ),
+    zoneSpecification: ZoneSpecification(print: (_, _, _, line) {}),
   );
 
   SwaggerToDart get config {
