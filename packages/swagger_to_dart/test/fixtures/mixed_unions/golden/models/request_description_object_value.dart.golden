@@ -1,0 +1,34 @@
+/// RequestDescriptionObjectValue
+///
+/// ```json
+/// {
+///     "properties": {
+///         "content": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'request_description_object_value.freezed.dart';
+part 'request_description_object_value.g.dart';
+
+@freezed
+abstract class RequestDescriptionObjectValue
+    with _$RequestDescriptionObjectValue {
+  const RequestDescriptionObjectValue._();
+
+  @jsonSerializable
+  const factory RequestDescriptionObjectValue({
+    /// content
+    @JsonKey(name: RequestDescriptionObjectValue.contentKey_) String? content,
+  }) = _RequestDescriptionObjectValue;
+
+  factory RequestDescriptionObjectValue.fromJson(Map<String, dynamic> json) =>
+      _$RequestDescriptionObjectValueFromJson(json);
+
+  static const String contentKey_ = 'content';
+}

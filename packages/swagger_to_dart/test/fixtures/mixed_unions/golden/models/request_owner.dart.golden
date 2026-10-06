@@ -1,0 +1,75 @@
+/// RequestOwner
+///
+/// ```json
+/// {
+///     "oneOf": [
+///         {
+///             "$ref": "#/components/schemas/Pet"
+///         },
+///         {
+///             "type": "string"
+///         }
+///     ],
+///     "description": "ref | string"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+sealed class RequestOwner {
+  const RequestOwner();
+
+  const factory RequestOwner.pet(Pet value) = RequestOwnerPet;
+  const factory RequestOwner.string(String value) = RequestOwnerString;
+
+  factory RequestOwner.fromJson(Object? json) => switch (json) {
+    String() => RequestOwnerString(json),
+    Map<String, dynamic>() => RequestOwnerPet(Pet.fromJson(json)),
+    _ => throw ArgumentError.value(
+      json,
+      'json',
+      'No RequestOwner variant matches',
+    ),
+  };
+
+  Object? toJson();
+}
+
+final class RequestOwnerPet extends RequestOwner {
+  const RequestOwnerPet(this.value);
+
+  final Pet value;
+
+  @override
+  Object? toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) =>
+      other is RequestOwnerPet && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'RequestOwner.pet($value)';
+}
+
+final class RequestOwnerString extends RequestOwner {
+  const RequestOwnerString(this.value);
+
+  final String value;
+
+  @override
+  Object? toJson() => value;
+
+  @override
+  bool operator ==(Object other) =>
+      other is RequestOwnerString && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'RequestOwner.string($value)';
+}

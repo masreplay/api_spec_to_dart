@@ -1,0 +1,35 @@
+/// RequestObjectOrStringObjectValue
+///
+/// ```json
+/// {
+///     "properties": {
+///         "a": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'request_object_or_string_object_value.freezed.dart';
+part 'request_object_or_string_object_value.g.dart';
+
+@freezed
+abstract class RequestObjectOrStringObjectValue
+    with _$RequestObjectOrStringObjectValue {
+  const RequestObjectOrStringObjectValue._();
+
+  @jsonSerializable
+  const factory RequestObjectOrStringObjectValue({
+    /// a
+    @JsonKey(name: RequestObjectOrStringObjectValue.aKey_) String? a,
+  }) = _RequestObjectOrStringObjectValue;
+
+  factory RequestObjectOrStringObjectValue.fromJson(
+    Map<String, dynamic> json,
+  ) => _$RequestObjectOrStringObjectValueFromJson(json);
+
+  static const String aKey_ = 'a';
+}

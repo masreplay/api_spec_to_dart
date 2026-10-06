@@ -1,0 +1,35 @@
+/// GetUserResponseSecondary
+///
+/// ```json
+/// {
+///     "properties": {
+///         "b": {
+///             "type": "integer"
+///         }
+///     },
+///     "type": "object",
+///     "title": "Thing",
+///     "description": "Another model has the title: named by context instead."
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'get_user_response_secondary.freezed.dart';
+part 'get_user_response_secondary.g.dart';
+
+@freezed
+abstract class GetUserResponseSecondary with _$GetUserResponseSecondary {
+  const GetUserResponseSecondary._();
+
+  @jsonSerializable
+  const factory GetUserResponseSecondary({
+    /// b
+    @JsonKey(name: GetUserResponseSecondary.bKey_) int? b,
+  }) = _GetUserResponseSecondary;
+
+  factory GetUserResponseSecondary.fromJson(Map<String, dynamic> json) =>
+      _$GetUserResponseSecondaryFromJson(json);
+
+  static const String bKey_ = 'b';
+}

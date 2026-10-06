@@ -1,0 +1,5 @@
+swagger_to_dart:
+  generation_source: FastAPI
+  model:
+    class_prefix: Postman
+    support_generic_arguments: true

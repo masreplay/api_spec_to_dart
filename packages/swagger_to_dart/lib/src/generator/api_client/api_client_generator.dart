@@ -279,12 +279,16 @@ class ApiClientGenerator {
                   ..name = _requestBodyName
                   ..named = true
                   ..required = true
+                  // retrofit adds a body's toJson() to a map; a mixed
+                  // union's JSON is none, so dio encodes the value as is.
                   ..type = refer(
-                    context.extension.typeConverter.get(
-                      entry.value.schema,
-                      className: className,
-                      contextName: '${methodName}_body',
-                    ),
+                    UnionModelStrategy(context).isMixed(entry.value.schema)
+                        ? 'dynamic'
+                        : context.extension.typeConverter.get(
+                            entry.value.schema,
+                            className: className,
+                            contextName: '${methodName}_body',
+                          ),
                   ),
               ),
             );
@@ -507,7 +511,9 @@ class ApiClientGenerator {
 
     if (useClass && queryParameters.isNotEmpty) {
       final queriesClassName = context.registerInlineModel(
-        Renaming.instance.renameClass('${methodName}QueryParameters'),
+        context.withClassPrefix(
+          Renaming.instance.renameClass('${methodName}QueryParameters'),
+        ),
         (name) => RegularModelGeneratorStrategy(context).build(
           MapEntry(
             name,
@@ -522,6 +528,8 @@ class ApiClientGenerator {
               },
             ),
           ),
+          name: name,
+          inlineModels: false,
         ),
       );
 
@@ -542,7 +550,10 @@ class ApiClientGenerator {
         continue;
       }
 
-      final typeConverter = context.extension.typeConverter;
+      final typeConverter = OpenApiSchemaDartTypeConverter(
+        context,
+        inlineModels: false,
+      );
       final contextName = '${methodName}_${p.name}';
       final defaultValue = typeConverter.getDefaultValue(
         p.schema,
@@ -605,11 +616,15 @@ class ApiClientGenerator {
           (e) => _isJsonContent(e.key, e.value.schema),
         )
         case final json?) {
-      final type = context.extension.typeConverter.get(
-        json.value.schema,
-        className: className,
-        contextName: contextName,
-      );
+      // retrofit casts list items and map values to a map before fromJson,
+      // which a mixed union's other kinds do not survive.
+      final type =
+          UnionModelStrategy(context).untypedCollection(json.value.schema) ??
+          context.extension.typeConverter.get(
+            json.value.schema,
+            className: className,
+            contextName: contextName,
+          );
       return (
         type: refer('Future<HttpResponse<$type>>'),
         isBinaryResponse: false,

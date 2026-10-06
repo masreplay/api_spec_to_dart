@@ -1,0 +1,48 @@
+/// Error
+///
+/// ```json
+/// {
+///     "properties": {
+///         "message": {
+///             "type": "string"
+///         },
+///         "response": {
+///             "type": "object",
+///             "properties": {
+///                 "status": {
+///                     "type": "integer"
+///                 },
+///                 "body": {
+///                     "type": "string"
+///                 }
+///             }
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'error.freezed.dart';
+part 'error.g.dart';
+
+@freezed
+abstract class Error with _$Error {
+  const Error._();
+
+  @jsonSerializable
+  const factory Error({
+    /// message
+    @JsonKey(name: Error.messageKey_) String? message,
+
+    /// response
+    @JsonKey(name: Error.responseKey_) ErrorResponse2? response,
+  }) = _Error;
+
+  factory Error.fromJson(Map<String, dynamic> json) => _$ErrorFromJson(json);
+
+  static const String messageKey_ = 'message';
+
+  static const String responseKey_ = 'response';
+}

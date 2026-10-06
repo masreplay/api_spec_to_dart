@@ -70,6 +70,11 @@ abstract class ModelConfig with _$ModelConfig {
     @JsonKey(name: 'remove_model_prefixes')
     List<String> removeModelPrefixes,
 
+    /// Prepended to every generated model class (components, inline
+    /// objects, enums and unions): `Postman` turns `Item` into
+    /// `PostmanItem` in `postman_item.dart`.
+    @JsonKey(name: 'class_prefix') String? classPrefix,
+
     /// Opt-in per-enum member renaming. Keyed by the enum's swagger schema
     /// name OR its generated Dart class name; the inner map is the raw enum
     /// value (as a string — works for both integer and string enums) to the

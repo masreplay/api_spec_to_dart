@@ -42,4 +42,49 @@ void main() {
     });
     expect(singleAllOf, contains('allOf'));
   });
+
+  test('type arrays with an array or object kind become a oneOf', () {
+    // Each variant gets the keywords of its own kind only.
+    expect(
+      normalizeSchemaJson({
+        'type': ['array', 'string', 'object', 'null'],
+        'items': {'type': 'string'},
+        'properties': {
+          'a': {'type': 'string'},
+        },
+        'required': ['a'],
+        'format': 'uri',
+        'title': 'Src',
+        'description': 'Files',
+      }),
+      {
+        'title': 'Src',
+        'description': 'Files',
+        'oneOf': [
+          {
+            'items': {'type': 'string'},
+            'format': 'uri',
+            'type': 'array',
+          },
+          {'format': 'uri', 'type': 'string'},
+          {
+            'properties': {
+              'a': {'type': 'string'},
+            },
+            'required': ['a'],
+            'format': 'uri',
+            'type': 'object',
+          },
+        ],
+        'nullable': true,
+      },
+    );
+    // A primitive-only mix still has no type (`dynamic`).
+    expect(
+      normalizeSchemaJson({
+        'type': ['string', 'number'],
+      }),
+      isEmpty,
+    );
+  });
 }

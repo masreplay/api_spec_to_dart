@@ -1,0 +1,47 @@
+/// GetUserResponseRolesItem
+///
+/// ```json
+/// {
+///     "properties": {
+///         "id": {
+///             "type": "integer"
+///         },
+///         "label": {
+///             "type": "string",
+///             "default": "member"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "id"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'get_user_response_roles_item.freezed.dart';
+part 'get_user_response_roles_item.g.dart';
+
+@freezed
+abstract class GetUserResponseRolesItem with _$GetUserResponseRolesItem {
+  const GetUserResponseRolesItem._();
+
+  @jsonSerializable
+  const factory GetUserResponseRolesItem({
+    /// id
+    @JsonKey(name: GetUserResponseRolesItem.idKey_) required int id,
+
+    /// label
+    @Default('member')
+    @JsonKey(name: GetUserResponseRolesItem.labelKey_)
+    String label,
+  }) = _GetUserResponseRolesItem;
+
+  factory GetUserResponseRolesItem.fromJson(Map<String, dynamic> json) =>
+      _$GetUserResponseRolesItemFromJson(json);
+
+  static const String idKey_ = 'id';
+
+  static const String labelKey_ = 'label';
+}

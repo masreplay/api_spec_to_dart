@@ -1,0 +1,57 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'pets_client.g.dart';
+
+@RestApi()
+abstract class PetsClient {
+  factory PetsClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _PetsClient;
+
+  @GET('/pets')
+  Future<HttpResponse<Pets>> listPets({
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['pets'],
+      'operationId': 'listPets',
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/Pets'},
+            },
+          },
+        },
+      },
+    },
+  });
+  @GET('/pets/page')
+  Future<HttpResponse<BaseResponse<Pets>>> pagePets({
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['pets'],
+      'operationId': 'pagePets',
+      'responses': {
+        '200': {
+          'description': 'A typedef as a generic argument',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/BaseResponse_Pets_'},
+            },
+          },
+        },
+      },
+    },
+  });
+}

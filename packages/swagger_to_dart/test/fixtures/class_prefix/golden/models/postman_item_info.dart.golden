@@ -1,0 +1,33 @@
+/// PostmanItemInfo
+///
+/// ```json
+/// {
+///     "properties": {
+///         "version": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'postman_item_info.freezed.dart';
+part 'postman_item_info.g.dart';
+
+@freezed
+abstract class PostmanItemInfo with _$PostmanItemInfo {
+  const PostmanItemInfo._();
+
+  @jsonSerializable
+  const factory PostmanItemInfo({
+    /// version
+    @JsonKey(name: PostmanItemInfo.versionKey_) String? version,
+  }) = _PostmanItemInfo;
+
+  factory PostmanItemInfo.fromJson(Map<String, dynamic> json) =>
+      _$PostmanItemInfoFromJson(json);
+
+  static const String versionKey_ = 'version';
+}

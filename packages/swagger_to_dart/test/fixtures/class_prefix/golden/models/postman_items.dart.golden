@@ -1,0 +1,15 @@
+/// Items
+///
+/// ```json
+/// {
+///     "type": "array",
+///     "items": {
+///         "$ref": "#/components/schemas/Item"
+///     }
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+typedef PostmanItems = List<PostmanItem>;

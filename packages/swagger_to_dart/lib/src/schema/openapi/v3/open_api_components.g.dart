@@ -31,6 +31,12 @@ _OpenApiSchemas _$OpenApiSchemasFromJson(
     ),
   ),
   type: json['type'] as String?,
+  ref: json[r'$ref'] as String?,
+  items: _$JsonConverterFromJson<Map<String, dynamic>, OpenApiSchema>(
+    json['items'],
+    const OpenApiSchemaJsonConverter().fromJson,
+  ),
+  format: json['format'] as String?,
   required_: (json['required'] as List<dynamic>?)
       ?.map((e) => e as String)
       .toList(),
@@ -72,6 +78,12 @@ Map<String, dynamic> _$OpenApiSchemasToJson(_OpenApiSchemas instance) =>
         (k, e) => MapEntry(k, const OpenApiSchemaJsonConverter().toJson(e)),
       ),
       'type': ?instance.type,
+      r'$ref': ?instance.ref,
+      'items': ?_$JsonConverterToJson<Map<String, dynamic>, OpenApiSchema>(
+        instance.items,
+        const OpenApiSchemaJsonConverter().toJson,
+      ),
+      'format': ?instance.format,
       'required': ?instance.required_,
       'enum': ?instance.enum_,
       'const': ?instance.const_,
@@ -88,3 +100,13 @@ Map<String, dynamic> _$OpenApiSchemasToJson(_OpenApiSchemas instance) =>
       'discriminator': ?instance.discriminator?.toJson(),
       'allOf': ?instance.allOf,
     };
+
+Value? _$JsonConverterFromJson<Json, Value>(
+  Object? json,
+  Value? Function(Json json) fromJson,
+) => json == null ? null : fromJson(json as Json);
+
+Json? _$JsonConverterToJson<Json, Value>(
+  Value? value,
+  Json? Function(Value value) toJson,
+) => value == null ? null : toJson(value);

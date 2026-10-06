@@ -1,0 +1,111 @@
+/// Item
+///
+/// ```json
+/// {
+///     "properties": {
+///         "name": {
+///             "type": "string"
+///         },
+///         "kind": {
+///             "enum": [
+///                 "request",
+///                 "folder"
+///             ],
+///             "type": "string"
+///         },
+///         "info": {
+///             "type": "object",
+///             "properties": {
+///                 "version": {
+///                     "type": "string"
+///                 }
+///             }
+///         },
+///         "url": {
+///             "oneOf": [
+///                 {
+///                     "type": "string"
+///                 },
+///                 {
+///                     "type": "array",
+///                     "items": {
+///                         "type": "string"
+///                     }
+///                 }
+///             ]
+///         },
+///         "auth": {
+///             "$ref": "#/components/schemas/Auth"
+///         },
+///         "run": {
+///             "$ref": "#/components/schemas/Function"
+///         },
+///         "children": {
+///             "$ref": "#/components/schemas/Items"
+///         },
+///         "thing": {
+///             "$ref": "#/components/schemas/PostmanThing"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "name"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'postman_item.freezed.dart';
+part 'postman_item.g.dart';
+
+@freezed
+abstract class PostmanItem with _$PostmanItem {
+  const PostmanItem._();
+
+  @jsonSerializable
+  const factory PostmanItem({
+    /// name
+    @JsonKey(name: PostmanItem.nameKey_) required String name,
+
+    /// kind
+    @JsonKey(name: PostmanItem.kindKey_) PostmanItemKind? kind,
+
+    /// info
+    @JsonKey(name: PostmanItem.infoKey_) PostmanItemInfo? info,
+
+    /// url
+    @JsonKey(name: PostmanItem.urlKey_) PostmanItemUrl? url,
+
+    /// auth
+    @JsonKey(name: PostmanItem.authKey_) PostmanAuth? auth,
+
+    /// run
+    @JsonKey(name: PostmanItem.runKey_) PostmanFunction? run,
+
+    /// children
+    @JsonKey(name: PostmanItem.childrenKey_) PostmanItems? children,
+
+    /// thing
+    @JsonKey(name: PostmanItem.thingKey_) PostmanPostmanThing? thing,
+  }) = _PostmanItem;
+
+  factory PostmanItem.fromJson(Map<String, dynamic> json) =>
+      _$PostmanItemFromJson(json);
+
+  static const String nameKey_ = 'name';
+
+  static const String kindKey_ = 'kind';
+
+  static const String infoKey_ = 'info';
+
+  static const String urlKey_ = 'url';
+
+  static const String authKey_ = 'auth';
+
+  static const String runKey_ = 'run';
+
+  static const String childrenKey_ = 'children';
+
+  static const String thingKey_ = 'thing';
+}

@@ -1,0 +1,258 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Mixed unions", "version": "1.0.0" },
+  "paths": {
+    "/requests": {
+      "post": {
+        "tags": ["requests"],
+        "operationId": "send",
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Request" } } }
+        },
+        "responses": {
+          "200": {
+            "description": "A union response",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Url" } } }
+          }
+        }
+      },
+      "put": {
+        "tags": ["requests"],
+        "operationId": "resolve",
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Url" } } }
+        },
+        "responses": { "204": { "description": "A union body" } }
+      }
+    },
+    "/descriptions": {
+      "get": {
+        "tags": ["requests"],
+        "operationId": "describe",
+        "responses": {
+          "200": {
+            "description": "A nullable union response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    { "type": "string" },
+                    { "type": "object", "properties": { "content": { "type": "string" } } },
+                    { "type": "null" }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/urls": {
+      "get": {
+        "tags": ["requests"],
+        "operationId": "listUrls",
+        "responses": {
+          "200": {
+            "description": "A list of a union: retrofit casts items to maps, so untyped",
+            "content": {
+              "application/json": {
+                "schema": { "type": "array", "items": { "$ref": "#/components/schemas/Url" } }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/url-map": {
+      "get": {
+        "tags": ["requests"],
+        "operationId": "urlMap",
+        "responses": {
+          "200": {
+            "description": "A map of a union: retrofit casts values to maps, so untyped",
+            "content": {
+              "application/json": {
+                "schema": { "type": "object", "additionalProperties": { "$ref": "#/components/schemas/Url" } }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Pet": {
+        "type": "object",
+        "required": ["name"],
+        "properties": { "name": { "type": "string" } }
+      },
+      "Pets": { "type": "array", "items": { "$ref": "#/components/schemas/Pet" } },
+      "Animal": { "$ref": "#/components/schemas/Pet" },
+      "Level": { "description": "An enum without a type.", "enum": ["low", "high"] },
+      "Dog": {
+        "type": "object",
+        "required": ["kind", "bark"],
+        "properties": { "kind": { "type": "string" }, "bark": { "type": "boolean" } }
+      },
+      "Cat": {
+        "type": "object",
+        "required": ["kind", "lives"],
+        "properties": { "kind": { "type": "string" }, "lives": { "type": "integer" } }
+      },
+      "Url": {
+        "description": "A component union: object | string.",
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "raw": { "type": "string" },
+              "host": {
+                "description": "An inline union: string | array.",
+                "oneOf": [{ "type": "string" }, { "type": "array", "items": { "type": "string" } }]
+              }
+            }
+          },
+          { "type": "string" }
+        ]
+      },
+      "Request": {
+        "type": "object",
+        "required": ["url"],
+        "properties": {
+          "url": { "description": "A required union.", "$ref": "#/components/schemas/Url" },
+          "owner": {
+            "description": "ref | string",
+            "oneOf": [{ "$ref": "#/components/schemas/Pet" }, { "type": "string" }]
+          },
+          "description": {
+            "description": "A nullable union.",
+            "oneOf": [
+              { "type": "object", "properties": { "content": { "type": "string" } } },
+              { "type": "string" },
+              { "type": "null" }
+            ]
+          },
+          "formdata": {
+            "description": "A const-discriminated anyOf inside a list; `type` is optional.",
+            "type": "array",
+            "items": {
+              "title": "FormParameter",
+              "anyOf": [
+                {
+                  "required": ["key"],
+                  "properties": {
+                    "key": { "type": "string" },
+                    "value": { "type": "string" },
+                    "type": { "type": "string", "const": "text" }
+                  }
+                },
+                {
+                  "required": ["key"],
+                  "properties": {
+                    "key": { "type": "string" },
+                    "src": { "type": ["array", "string", "null"] },
+                    "type": { "type": "string", "const": "file" }
+                  }
+                }
+              ]
+            }
+          },
+          "segments": {
+            "description": "A mixed union inside a list.",
+            "type": "array",
+            "items": {
+              "oneOf": [
+                { "type": "string" },
+                { "type": "object", "properties": { "value": { "type": "string" } } }
+              ]
+            }
+          },
+          "exec": {
+            "description": "A type array.",
+            "type": ["array", "string"],
+            "items": { "type": "string" }
+          },
+          "objectOrString": {
+            "description": "A type array whose properties belong to the object only.",
+            "type": ["object", "string"],
+            "properties": { "a": { "type": "string" } }
+          },
+          "objectOrArray": {
+            "description": "A type array: items for the array, properties for the object.",
+            "type": ["object", "array"],
+            "items": { "type": "string" },
+            "properties": { "a": { "type": "string" } }
+          },
+          "amount": {
+            "description": "integer merges into number; boolean; a list of models.",
+            "oneOf": [
+              { "type": "integer" },
+              { "type": "number" },
+              { "type": "boolean" },
+              { "type": "array", "items": { "$ref": "#/components/schemas/Pet" } }
+            ]
+          },
+          "when": {
+            "description": "Variants json_serializable converts: dates.",
+            "oneOf": [
+              { "type": "string", "format": "date-time" },
+              { "type": "array", "items": { "type": "string", "format": "date-time" } }
+            ]
+          },
+          "level": {
+            "description": "An inline enum variant.",
+            "anyOf": [
+              { "type": "string", "enum": ["low", "high"] },
+              { "type": "array", "items": { "type": "integer" } }
+            ]
+          },
+          "companion": {
+            "description": "Two objects told apart by keys, or a string.",
+            "oneOf": [
+              { "$ref": "#/components/schemas/Dog" },
+              { "$ref": "#/components/schemas/Cat" },
+              { "type": "string" }
+            ]
+          },
+          "animal": {
+            "description": "Two objects told apart by a discriminator, or a string.",
+            "oneOf": [
+              { "$ref": "#/components/schemas/Dog" },
+              { "$ref": "#/components/schemas/Cat" },
+              { "type": "string" }
+            ],
+            "discriminator": { "propertyName": "kind" }
+          },
+          "urls": {
+            "description": "A map of a union.",
+            "type": "object",
+            "additionalProperties": { "$ref": "#/components/schemas/Url" }
+          },
+          "link": {
+            "description": "A reference to a mixed union takes its kinds' arms.",
+            "oneOf": [{ "$ref": "#/components/schemas/Url" }, { "type": "boolean" }]
+          },
+          "herd": {
+            "description": "A typedef by its type, an alias by its target, an enum by its values.",
+            "oneOf": [
+              { "$ref": "#/components/schemas/Pets" },
+              { "$ref": "#/components/schemas/Animal" },
+              { "$ref": "#/components/schemas/Level" }
+            ]
+          },
+          "target": {
+            "description": "A discriminated mixed union is not spread.",
+            "oneOf": [{ "$ref": "#/components/schemas/Url" }, { "$ref": "#/components/schemas/Pet" }],
+            "discriminator": {
+              "propertyName": "kind",
+              "mapping": { "url": "#/components/schemas/Url", "pet": "#/components/schemas/Pet" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

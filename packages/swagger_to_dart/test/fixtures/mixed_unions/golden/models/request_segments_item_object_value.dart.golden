@@ -1,0 +1,34 @@
+/// RequestSegmentsItemObjectValue
+///
+/// ```json
+/// {
+///     "properties": {
+///         "value": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'request_segments_item_object_value.freezed.dart';
+part 'request_segments_item_object_value.g.dart';
+
+@freezed
+abstract class RequestSegmentsItemObjectValue
+    with _$RequestSegmentsItemObjectValue {
+  const RequestSegmentsItemObjectValue._();
+
+  @jsonSerializable
+  const factory RequestSegmentsItemObjectValue({
+    /// value
+    @JsonKey(name: RequestSegmentsItemObjectValue.valueKey_) String? value,
+  }) = _RequestSegmentsItemObjectValue;
+
+  factory RequestSegmentsItemObjectValue.fromJson(Map<String, dynamic> json) =>
+      _$RequestSegmentsItemObjectValueFromJson(json);
+
+  static const String valueKey_ = 'value';
+}

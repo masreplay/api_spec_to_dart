@@ -1,0 +1,112 @@
+/// RequestAnimal
+///
+/// ```json
+/// {
+///     "oneOf": [
+///         {
+///             "$ref": "#/components/schemas/Dog"
+///         },
+///         {
+///             "$ref": "#/components/schemas/Cat"
+///         },
+///         {
+///             "type": "string"
+///         }
+///     ],
+///     "description": "Two objects told apart by a discriminator, or a string.",
+///     "discriminator": {
+///         "propertyName": "kind"
+///     }
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+sealed class RequestAnimal {
+  const RequestAnimal();
+
+  const factory RequestAnimal.dog(Dog value) = RequestAnimalDog;
+  const factory RequestAnimal.cat(Cat value) = RequestAnimalCat;
+  const factory RequestAnimal.string(String value) = RequestAnimalString;
+
+  factory RequestAnimal.fromJson(Object? json) => switch (json) {
+    String() => RequestAnimalString(json),
+    Map<String, dynamic>() => _fromMap(json),
+    _ => throw ArgumentError.value(
+      json,
+      'json',
+      'No RequestAnimal variant matches',
+    ),
+  };
+
+  static RequestAnimal _fromMap(Map<String, dynamic> json) =>
+      switch (json['kind']) {
+        'Dog' => RequestAnimalDog(Dog.fromJson(json)),
+        'Cat' => RequestAnimalCat(Cat.fromJson(json)),
+        _ => throw ArgumentError.value(
+          json['kind'],
+          'kind',
+          'Unknown RequestAnimal',
+        ),
+      };
+
+  Object? toJson();
+}
+
+final class RequestAnimalDog extends RequestAnimal {
+  const RequestAnimalDog(this.value);
+
+  final Dog value;
+
+  @override
+  Object? toJson() => {...value.toJson(), 'kind': 'Dog'};
+
+  @override
+  bool operator ==(Object other) =>
+      other is RequestAnimalDog && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'RequestAnimal.dog($value)';
+}
+
+final class RequestAnimalCat extends RequestAnimal {
+  const RequestAnimalCat(this.value);
+
+  final Cat value;
+
+  @override
+  Object? toJson() => {...value.toJson(), 'kind': 'Cat'};
+
+  @override
+  bool operator ==(Object other) =>
+      other is RequestAnimalCat && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'RequestAnimal.cat($value)';
+}
+
+final class RequestAnimalString extends RequestAnimal {
+  const RequestAnimalString(this.value);
+
+  final String value;
+
+  @override
+  Object? toJson() => value;
+
+  @override
+  bool operator ==(Object other) =>
+      other is RequestAnimalString && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'RequestAnimal.string($value)';
+}

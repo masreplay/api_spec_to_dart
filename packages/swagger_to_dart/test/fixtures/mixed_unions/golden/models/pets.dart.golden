@@ -1,0 +1,15 @@
+/// Pets
+///
+/// ```json
+/// {
+///     "type": "array",
+///     "items": {
+///         "$ref": "#/components/schemas/Pet"
+///     }
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+typedef Pets = List<Pet>;

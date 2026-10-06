@@ -12,6 +12,13 @@ sealed class OpenApiSchema with _$OpenApiSchema {
     @JsonKey(name: 'enum') List<Object?>? enum_,
     @JsonKey(name: 'type', unknownEnumValue: OpenApiSchemaVarType.$unknown)
     OpenApiSchemaVarType? type,
+    @OpenApiSchemaJsonConverter()
+    @JsonKey(name: 'properties')
+    Map<String, OpenApiSchema>? properties,
+
+    /// Required property names (a stray `required: true` is ignored).
+    @JsonKey(name: 'required', readValue: _requiredNames)
+    List<String>? required_,
     @OpenApiSchemaJsonConverter() @JsonKey(name: 'items') OpenApiSchema? items,
     @JsonKey(name: 'maxLength') int? maxLength,
     @JsonKey(name: 'minLength') int? minLength,
@@ -104,6 +111,9 @@ enum OpenApiSchemaVarType {
   $unknown,
 }
 
+Object? _requiredNames(Map<dynamic, dynamic> json, String key) =>
+    json[key] is List ? json[key] : null;
+
 const String _unionKeyType = 'runtimeType';
 
 class OpenApiSchemaJsonConverter
@@ -160,11 +170,36 @@ class OpenApiSchemaJsonConverter
   }
 }
 
+/// Keys that describe a whole schema, kept outside the `oneOf` a type array
+/// becomes.
+const _outerKeys = {'title', 'description', 'default'};
+
+/// Keywords of one JSON kind, given only to the `oneOf` variant of that kind.
+const _arrayKeywords = {
+  'items', 'prefixItems', 'minItems', 'maxItems', 'uniqueItems', //
+};
+const _objectKeywords = {
+  'properties', 'required', 'additionalProperties', 'patternProperties', //
+  'minProperties', 'maxProperties',
+};
+
+/// Whether the `oneOf` variant of [type] a type array becomes keeps [key].
+bool _variantKeeps(Object? type, String key) =>
+    !_outerKeys.contains(key) &&
+    (!_arrayKeywords.contains(key) || type == 'array') &&
+    (!_objectKeywords.contains(key) || type == 'object') &&
+    // Values of a list or an object are no enum members.
+    (!const {'enum', 'const'}.contains(key) ||
+        (type != 'array' && type != 'object'));
+
 /// Rewrites OpenAPI 3.1 forms into the shapes the models parse, returning a
 /// new map (the input is shared with the `@Extras` metadata, so it must not
 /// change):
-/// - `type: [T, "null"]` → `type: T, nullable: true` (several non-null
-///   types → no type, i.e. `dynamic`);
+/// - `type: [T, "null"]` → `type: T, nullable: true`;
+/// - several non-null types with an `array` or `object` → a `oneOf` of one
+///   schema per type, each with the keywords of its kind (`items` for the
+///   array, `properties` for the object, ...), which is a union; primitives
+///   only → no type, i.e. `dynamic`;
 /// - with [unwrapSingleAllOf], an `allOf` with a single entry → that entry,
 ///   keeping the outer keys (`nullable`, `default`, `description`, ...).
 ///   Components keep their `allOf`: it is merged with their own properties.
@@ -174,10 +209,28 @@ Map<String, dynamic> normalizeSchemaJson(
 }) {
   if (json['type'] case final List<dynamic> types) {
     final concrete = types.where((t) => t != 'null').toList();
-    json = {
+    final rest = {
       for (final MapEntry(:key, :value) in json.entries)
         if (key != 'type') key: value,
-      if (concrete.length == 1) 'type': concrete.single,
+    };
+    final union =
+        concrete.length > 1 &&
+        concrete.any((t) => t == 'array' || t == 'object');
+    json = {
+      if (!union) ...rest,
+      if (!union && concrete.length == 1) 'type': concrete.single,
+      if (union) ...{
+        for (final MapEntry(:key, :value) in rest.entries)
+          if (_outerKeys.contains(key)) key: value,
+        'oneOf': [
+          for (final type in concrete)
+            {
+              for (final MapEntry(:key, :value) in rest.entries)
+                if (_variantKeeps(type, key)) key: value,
+              'type': type,
+            },
+        ],
+      },
       if (types.contains('null')) 'nullable': true,
     };
   }
