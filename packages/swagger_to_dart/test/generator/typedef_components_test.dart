@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:io';
+
 import 'package:test/test.dart';
 
 import '../support/fixtures.dart';
@@ -109,5 +112,34 @@ void main() {
       contains('typedef Codes = Map<String, CodesValue>;'),
     );
     expect(files.keys, isNot(contains('models/levels2.dart')));
+  });
+
+  test('a typedef reaching itself is cut with Object? and a warning', () {
+    final lines = <String>[];
+    final files = runZoned(
+      () => Fixture(Directory('test/fixtures/recursive_typedefs')).render(),
+      zoneSpecification: ZoneSpecification(
+        print: (_, _, _, line) => lines.add(line),
+      ),
+    ).files;
+
+    expect(
+      files['models/tree.dart'],
+      contains('typedef Tree = List<Object?>;'),
+    );
+    expect(
+      files['models/node.dart'],
+      contains('typedef Node = Map<String, Object?>;'),
+    );
+    // Of A = B, B = List<A>, the reference back to the earlier one is cut.
+    expect(files['models/a.dart'], contains('typedef A = B;'));
+    expect(files['models/b.dart'], contains('typedef B = List<Object?>;'));
+    // A model in between breaks the cycle: nothing to cut.
+    expect(
+      files['models/forest.dart'],
+      contains('typedef Forest = List<Branch>;'),
+    );
+    expect(lines, hasLength(3));
+    expect(lines, everyElement(contains('refers to itself')));
   });
 }

@@ -1,0 +1,13 @@
+/// Tree
+///
+/// ```json
+/// {
+///     "type": "array",
+///     "items": {
+///         "$ref": "#/components/schemas/Tree"
+///     }
+/// }
+/// ```
+library;
+
+typedef Tree = List<Object?>;
