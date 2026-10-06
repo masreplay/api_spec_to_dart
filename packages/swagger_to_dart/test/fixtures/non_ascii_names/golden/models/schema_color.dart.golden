@@ -1,0 +1,34 @@
+/// SchemaColor
+///
+/// ```json
+/// {
+///     "properties": {},
+///     "type": "string",
+///     "enum": [
+///         "أحمر",
+///         "أزرق",
+///         "red"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'schema_color.g.dart';
+
+@JsonEnum(alwaysCreate: true)
+enum SchemaColor {
+  @JsonValue('أحمر')
+  value1,
+  @JsonValue('أزرق')
+  value2,
+  @JsonValue('red')
+  red;
+
+  factory SchemaColor.fromJson(String json) => SchemaColor.values.firstWhere(
+    (e) => e.toJson() == json,
+    orElse: () => throw ArgumentError('Invalid SchemaColor'),
+  );
+
+  String toJson() => _$SchemaColorEnumMap[this]!;
+}

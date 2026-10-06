@@ -191,11 +191,12 @@ class EnumModelGeneratorStrategy
     );
     final names = <String, String>{}; // value -> member name
     final seen = <String, String>{}; // member name -> value
-    for (final value in values) {
+    for (final (i, value) in values.indexed) {
       final key = '$value';
       final name = Renaming.instance.renameEnumValue(
         value,
         overrideName: renames[key],
+        position: i + 1,
       );
       if (seen[name] case final clash?) {
         throw ArgumentError(

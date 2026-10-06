@@ -1,3 +1,4 @@
+export 'schema_color.dart';
 export 'schema_empty.dart';
 export 'schema_empty2.dart';
 export 'schema_empty3.dart';

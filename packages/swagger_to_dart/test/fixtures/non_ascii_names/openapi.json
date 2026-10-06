@@ -45,6 +45,7 @@
         "type": "object",
         "properties": {
           "name": { "type": "string" },
+          "color": { "type": "string", "enum": ["أحمر", "أزرق", "red"] },
           "العنوان": { "type": "object", "properties": { "city": { "type": "string" } } },
           "😀": { "type": "string", "enum": ["happy", "sad"] },
           "_": { "type": "object", "properties": { "note": { "type": "string" } } },
