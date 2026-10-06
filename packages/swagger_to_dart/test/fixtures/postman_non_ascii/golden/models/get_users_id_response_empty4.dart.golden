@@ -1,0 +1,41 @@
+/// GetUsersIdResponseEmpty4
+///
+/// ```json
+/// {
+///     "properties": {
+///         "المدينة": {
+///             "type": "string"
+///         },
+///         "city": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'get_users_id_response_empty4.freezed.dart';
+part 'get_users_id_response_empty4.g.dart';
+
+@freezed
+abstract class GetUsersIdResponseEmpty4 with _$GetUsersIdResponseEmpty4 {
+  const GetUsersIdResponseEmpty4._();
+
+  @jsonSerializable
+  const factory GetUsersIdResponseEmpty4({
+    /// empty
+    @JsonKey(name: GetUsersIdResponseEmpty4.emptyKey_) String? empty,
+
+    /// city
+    @JsonKey(name: GetUsersIdResponseEmpty4.cityKey_) String? city,
+  }) = _GetUsersIdResponseEmpty4;
+
+  factory GetUsersIdResponseEmpty4.fromJson(Map<String, dynamic> json) =>
+      _$GetUsersIdResponseEmpty4FromJson(json);
+
+  static const String emptyKey_ = 'المدينة';
+
+  static const String cityKey_ = 'city';
+}

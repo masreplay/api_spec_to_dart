@@ -20,7 +20,9 @@ class PropertyGeneratorStrategy extends GeneratorStrategy {
       inlineModels: inlineModels,
     );
 
-    final contextName = '${context.unprefixed(className)}_${property.key}';
+    // The unique field name, not the key: a key without ASCII words
+    // (`العنوان`, `😀`) would name a nested model after its parent.
+    final contextName = '${context.unprefixed(className)}_$fieldName';
     final defaultValue = typeConverter.getDefaultValue(
       property.value,
       contextName: contextName,

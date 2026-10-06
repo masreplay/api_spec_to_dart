@@ -89,6 +89,13 @@ abstract class UsersClient {
                   'الاسم': {'type': 'string'},
                   'الاسم ': {'type': 'string'},
                   '🚀': {'type': 'boolean'},
+                  'العنوان': {
+                    'type': 'object',
+                    'properties': {
+                      'المدينة': {'type': 'string'},
+                      'city': {'type': 'string'},
+                    },
+                  },
                 },
               },
             },
