@@ -58,8 +58,9 @@ fvm dart pub get --no-example        # resolves the whole pub workspace
    - `roundtrip_test.dart.tmpl` in the fixture when generated code must
      *behave* (it is copied into `swagger_to_dart_e2e/test/` and run).
      Postman fixtures also get a generated round-trip test: every saved
-     JSON example must decode with its response model and re-encode to the
-     same value.
+     JSON example of the typed response (the lowest 2xx status, the one the
+     generator types) must decode with its response model and re-encode to
+     the same value; examples of other statuses are not checked.
 
    Run it and watch it fail for the reason you expect.
 3. **Green.** Minimal change in `lib/`.
