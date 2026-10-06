@@ -1,0 +1,96 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Class prefix", "version": "1.0.0" },
+  "paths": {
+    "/items": {
+      "get": {
+        "tags": ["items"],
+        "operationId": "listItems",
+        "responses": {
+          "200": {
+            "description": "An inline response object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": { "items": { "$ref": "#/components/schemas/Items" } }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": ["items"],
+        "operationId": "listUsers",
+        "responses": {
+          "200": {
+            "description": "A generic whose argument is a core type: List is not prefixed",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/BaseResponse_list_User__" }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Item": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string" },
+          "kind": { "type": "string", "enum": ["request", "folder"] },
+          "info": { "type": "object", "properties": { "version": { "type": "string" } } },
+          "url": { "oneOf": [{ "type": "string" }, { "type": "array", "items": { "type": "string" } }] },
+          "auth": { "$ref": "#/components/schemas/Auth" },
+          "run": { "$ref": "#/components/schemas/Function" },
+          "children": { "$ref": "#/components/schemas/Items" },
+          "thing": { "$ref": "#/components/schemas/PostmanThing" }
+        }
+      },
+      "Items": { "type": "array", "items": { "$ref": "#/components/schemas/Item" } },
+      "Basic": {
+        "type": "object",
+        "required": ["type"],
+        "properties": { "type": { "type": "string" }, "username": { "type": "string" } }
+      },
+      "Bearer": {
+        "type": "object",
+        "required": ["type"],
+        "properties": { "type": { "type": "string" }, "token": { "type": "string" } }
+      },
+      "Auth": {
+        "oneOf": [{ "$ref": "#/components/schemas/Basic" }, { "$ref": "#/components/schemas/Bearer" }],
+        "discriminator": { "propertyName": "type", "mapping": { "basic": "#/components/schemas/Basic", "bearer": "#/components/schemas/Bearer" } }
+      },
+      "Function": {
+        "description": "A name Dart reserves; prefixed, it needs no escape.",
+        "type": "object",
+        "properties": { "script": { "type": "string" } }
+      },
+      "PostmanThing": {
+        "description": "A name that starts with the prefix still gets it, once.",
+        "type": "object",
+        "properties": { "v": { "type": "string" } }
+      },
+      "BaseResponse_list_User__": {
+        "title": "BaseResponse[list[User]]",
+        "type": "object",
+        "required": ["data"],
+        "properties": {
+          "data": { "type": "array", "items": { "$ref": "#/components/schemas/User" } }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": { "id": { "type": "integer" } }
+      }
+    }
+  }
+}

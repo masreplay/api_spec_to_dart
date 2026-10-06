@@ -1,0 +1,61 @@
+/// FormParameterFileValue
+///
+/// ```json
+/// {
+///     "properties": {
+///         "key": {
+///             "type": "string"
+///         },
+///         "src": {
+///             "oneOf": [
+///                 {
+///                     "type": "array"
+///                 },
+///                 {
+///                     "type": "string"
+///                 }
+///             ],
+///             "nullable": true
+///         },
+///         "type": {
+///             "type": "string",
+///             "const": "file"
+///         }
+///     },
+///     "required": [
+///         "key"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'form_parameter_file_value.freezed.dart';
+part 'form_parameter_file_value.g.dart';
+
+@freezed
+abstract class FormParameterFileValue with _$FormParameterFileValue {
+  const FormParameterFileValue._();
+
+  @jsonSerializable
+  const factory FormParameterFileValue({
+    /// key
+    @JsonKey(name: FormParameterFileValue.keyKey_) required String key,
+
+    /// src
+    @JsonKey(name: FormParameterFileValue.srcKey_)
+    FormParameterFileValueSrc? src,
+
+    /// type
+    @JsonKey(name: FormParameterFileValue.typeKey_) String? type,
+  }) = _FormParameterFileValue;
+
+  factory FormParameterFileValue.fromJson(Map<String, dynamic> json) =>
+      _$FormParameterFileValueFromJson(json);
+
+  static const String keyKey_ = 'key';
+
+  static const String srcKey_ = 'src';
+
+  static const String typeKey_ = 'type';
+}

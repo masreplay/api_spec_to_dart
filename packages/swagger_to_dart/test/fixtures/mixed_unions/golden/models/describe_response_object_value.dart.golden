@@ -1,0 +1,33 @@
+/// DescribeResponseObjectValue
+///
+/// ```json
+/// {
+///     "properties": {
+///         "content": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'describe_response_object_value.freezed.dart';
+part 'describe_response_object_value.g.dart';
+
+@freezed
+abstract class DescribeResponseObjectValue with _$DescribeResponseObjectValue {
+  const DescribeResponseObjectValue._();
+
+  @jsonSerializable
+  const factory DescribeResponseObjectValue({
+    /// content
+    @JsonKey(name: DescribeResponseObjectValue.contentKey_) String? content,
+  }) = _DescribeResponseObjectValue;
+
+  factory DescribeResponseObjectValue.fromJson(Map<String, dynamic> json) =>
+      _$DescribeResponseObjectValueFromJson(json);
+
+  static const String contentKey_ = 'content';
+}

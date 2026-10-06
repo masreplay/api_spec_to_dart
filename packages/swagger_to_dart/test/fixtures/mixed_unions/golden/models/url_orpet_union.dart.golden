@@ -1,0 +1,97 @@
+/// UrlOrpetUnion
+///
+/// ```json
+/// {
+///     "oneOf": [
+///         {
+///             "$ref": "#/components/schemas/Url"
+///         },
+///         {
+///             "$ref": "#/components/schemas/Pet"
+///         }
+///     ],
+///     "description": "A discriminated mixed union is not spread.",
+///     "discriminator": {
+///         "propertyName": "kind",
+///         "mapping": {
+///             "url": "#/components/schemas/Url",
+///             "pet": "#/components/schemas/Pet"
+///         }
+///     },
+///     "runtimeType": "oneOf"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+sealed class UrlOrpetUnion {
+  const UrlOrpetUnion();
+
+  const factory UrlOrpetUnion.url(Url value) = UrlOrpetUnionUrl;
+  const factory UrlOrpetUnion.pet(Pet value) = UrlOrpetUnionPet;
+
+  factory UrlOrpetUnion.fromJson(Object? json) => switch (json) {
+    String() => UrlOrpetUnionUrl(Url.fromJson(json)),
+    Map<String, dynamic>() => _fromMap(json),
+    _ => throw ArgumentError.value(
+      json,
+      'json',
+      'No UrlOrpetUnion variant matches',
+    ),
+  };
+
+  static UrlOrpetUnion _fromMap(Map<String, dynamic> json) =>
+      switch (json['kind']) {
+        'url' => UrlOrpetUnionUrl(Url.fromJson(json)),
+        'pet' => UrlOrpetUnionPet(Pet.fromJson(json)),
+        _ => throw ArgumentError.value(
+          json['kind'],
+          'kind',
+          'Unknown UrlOrpetUnion',
+        ),
+      };
+
+  Object? toJson();
+}
+
+final class UrlOrpetUnionUrl extends UrlOrpetUnion {
+  const UrlOrpetUnionUrl(this.value);
+
+  final Url value;
+
+  @override
+  Object? toJson() => switch (value.toJson()) {
+    final Map<String, dynamic> json => {...json, 'kind': 'url'},
+    final json => json,
+  };
+
+  @override
+  bool operator ==(Object other) =>
+      other is UrlOrpetUnionUrl && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'UrlOrpetUnion.url($value)';
+}
+
+final class UrlOrpetUnionPet extends UrlOrpetUnion {
+  const UrlOrpetUnionPet(this.value);
+
+  final Pet value;
+
+  @override
+  Object? toJson() => {...value.toJson(), 'kind': 'pet'};
+
+  @override
+  bool operator ==(Object other) =>
+      other is UrlOrpetUnionPet && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'UrlOrpetUnion.pet($value)';
+}

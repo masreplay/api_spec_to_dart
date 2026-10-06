@@ -1,0 +1,85 @@
+/// DescribeResponse
+///
+/// ```json
+/// {
+///     "oneOf": [
+///         {
+///             "type": "string"
+///         },
+///         {
+///             "type": "object",
+///             "properties": {
+///                 "content": {
+///                     "type": "string"
+///                 }
+///             }
+///         },
+///         {
+///             "type": "null"
+///         }
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+sealed class DescribeResponse {
+  const DescribeResponse();
+
+  const factory DescribeResponse.string(String value) = DescribeResponseString;
+  const factory DescribeResponse.object(DescribeResponseObjectValue value) =
+      DescribeResponseObject;
+
+  factory DescribeResponse.fromJson(Object? json) => switch (json) {
+    String() => DescribeResponseString(json),
+    Map<String, dynamic>() => DescribeResponseObject(
+      DescribeResponseObjectValue.fromJson(json),
+    ),
+    _ => throw ArgumentError.value(
+      json,
+      'json',
+      'No DescribeResponse variant matches',
+    ),
+  };
+
+  Object? toJson();
+}
+
+final class DescribeResponseString extends DescribeResponse {
+  const DescribeResponseString(this.value);
+
+  final String value;
+
+  @override
+  Object? toJson() => value;
+
+  @override
+  bool operator ==(Object other) =>
+      other is DescribeResponseString && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'DescribeResponse.string($value)';
+}
+
+final class DescribeResponseObject extends DescribeResponse {
+  const DescribeResponseObject(this.value);
+
+  final DescribeResponseObjectValue value;
+
+  @override
+  Object? toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) =>
+      other is DescribeResponseObject && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'DescribeResponse.object($value)';
+}

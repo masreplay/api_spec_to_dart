@@ -6,8 +6,15 @@ class RegularModelGeneratorStrategy
     extends ModelGeneratorStrategy<MapEntry<String, OpenApiSchemas>> {
   const RegularModelGeneratorStrategy(super.context);
 
+  /// [name] is the class name as is (inline models are named before they
+  /// are built); components look theirs up. Without [inlineModels] (query
+  /// parameters), inline objects stay `Map<String, dynamic>`.
   @override
-  Library build(MapEntry<String, OpenApiSchemas> model) {
+  Library build(
+    MapEntry<String, OpenApiSchemas> model, {
+    String? name,
+    bool inlineModels = true,
+  }) {
     final title = model.value.title;
     final properties = model.value.properties ?? {};
     final names = Renaming.instance.propertyNames(properties.keys);
@@ -16,6 +23,7 @@ class RegularModelGeneratorStrategy
 
     final prefixes = context.config.model.removeModelPrefixes;
     final className =
+        name ??
         context.componentClassNames[model.key] ??
         Renaming.instance.renameClass(
           effectiveTitle,
@@ -81,6 +89,7 @@ class RegularModelGeneratorStrategy
                           required: (model.value.required_ ?? []).contains(
                             entry.key,
                           ),
+                          inlineModels: inlineModels,
                         );
                       }),
                     ]),

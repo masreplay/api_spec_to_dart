@@ -1,0 +1,90 @@
+/// RequestLevel
+///
+/// ```json
+/// {
+///     "anyOf": [
+///         {
+///             "enum": [
+///                 "low",
+///                 "high"
+///             ],
+///             "type": "string"
+///         },
+///         {
+///             "type": "array",
+///             "items": {
+///                 "type": "integer"
+///             }
+///         }
+///     ],
+///     "description": "An inline enum variant."
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'request_level.g.dart';
+
+sealed class RequestLevel {
+  const RequestLevel();
+
+  const factory RequestLevel.string(RequestLevelStringValue value) =
+      RequestLevelString;
+  const factory RequestLevel.list(List<int> value) = RequestLevelList;
+
+  factory RequestLevel.fromJson(Object? json) => switch (json) {
+    String() => _$RequestLevelStringFromJson({'value': json}),
+    List() => _$RequestLevelListFromJson({'value': json}),
+    _ => throw ArgumentError.value(
+      json,
+      'json',
+      'No RequestLevel variant matches',
+    ),
+  };
+
+  Object? toJson();
+}
+
+@jsonSerializable
+final class RequestLevelString extends RequestLevel {
+  const RequestLevelString(this.value);
+
+  @JsonKey(name: 'value')
+  final RequestLevelStringValue value;
+
+  @override
+  Object? toJson() => _$RequestLevelStringToJson(this)['value'];
+
+  @override
+  bool operator ==(Object other) =>
+      other is RequestLevelString &&
+      const DeepCollectionEquality().equals(other.value, value);
+
+  @override
+  int get hashCode => const DeepCollectionEquality().hash(value);
+
+  @override
+  String toString() => 'RequestLevel.string($value)';
+}
+
+@jsonSerializable
+final class RequestLevelList extends RequestLevel {
+  const RequestLevelList(this.value);
+
+  @JsonKey(name: 'value')
+  final List<int> value;
+
+  @override
+  Object? toJson() => _$RequestLevelListToJson(this)['value'];
+
+  @override
+  bool operator ==(Object other) =>
+      other is RequestLevelList &&
+      const DeepCollectionEquality().equals(other.value, value);
+
+  @override
+  int get hashCode => const DeepCollectionEquality().hash(value);
+
+  @override
+  String toString() => 'RequestLevel.list($value)';
+}

@@ -1,0 +1,41 @@
+/// GetUserResponseAddressGeo
+///
+/// ```json
+/// {
+///     "properties": {
+///         "lat": {
+///             "type": "number"
+///         },
+///         "lng": {
+///             "type": "number"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'get_user_response_address_geo.freezed.dart';
+part 'get_user_response_address_geo.g.dart';
+
+@freezed
+abstract class GetUserResponseAddressGeo with _$GetUserResponseAddressGeo {
+  const GetUserResponseAddressGeo._();
+
+  @jsonSerializable
+  const factory GetUserResponseAddressGeo({
+    /// lat
+    @JsonKey(name: GetUserResponseAddressGeo.latKey_) double? lat,
+
+    /// lng
+    @JsonKey(name: GetUserResponseAddressGeo.lngKey_) double? lng,
+  }) = _GetUserResponseAddressGeo;
+
+  factory GetUserResponseAddressGeo.fromJson(Map<String, dynamic> json) =>
+      _$GetUserResponseAddressGeoFromJson(json);
+
+  static const String latKey_ = 'lat';
+
+  static const String lngKey_ = 'lng';
+}

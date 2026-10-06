@@ -374,6 +374,12 @@ mixin _$ModelConfig {
   @JsonKey(name: 'remove_model_prefixes')
   List<String> get removeModelPrefixes;
 
+  /// Prepended to every generated model class (components, inline
+  /// objects, enums and unions): `Postman` turns `Item` into
+  /// `PostmanItem` in `postman_item.dart`.
+  @JsonKey(name: 'class_prefix')
+  String? get classPrefix;
+
   /// Opt-in per-enum member renaming. Keyed by the enum's swagger schema
   /// name OR its generated Dart class name; the inner map is the raw enum
   /// value (as a string — works for both integer and string enums) to the
@@ -423,6 +429,8 @@ mixin _$ModelConfig {
               other.removeModelPrefixes,
               _this.removeModelPrefixes,
             ) &&
+            (identical(other.classPrefix, _this.classPrefix) ||
+                other.classPrefix == _this.classPrefix) &&
             const DeepCollectionEquality().equals(other.enums, _this.enums));
   }
 
@@ -436,6 +444,7 @@ mixin _$ModelConfig {
       _this.unionClassFallbackName,
       _this.enumFallbackType,
       const DeepCollectionEquality().hash(_this.removeModelPrefixes),
+      _this.classPrefix,
       const DeepCollectionEquality().hash(_this.enums),
     );
   }
@@ -443,7 +452,7 @@ mixin _$ModelConfig {
   @override
   String toString() {
     final _this = this as ModelConfig;
-    return 'ModelConfig(supportGenericArguments: ${_this.supportGenericArguments}, unionClassFallbackName: ${_this.unionClassFallbackName}, enumFallbackType: ${_this.enumFallbackType}, removeModelPrefixes: ${_this.removeModelPrefixes}, enums: ${_this.enums})';
+    return 'ModelConfig(supportGenericArguments: ${_this.supportGenericArguments}, unionClassFallbackName: ${_this.unionClassFallbackName}, enumFallbackType: ${_this.enumFallbackType}, removeModelPrefixes: ${_this.removeModelPrefixes}, classPrefix: ${_this.classPrefix}, enums: ${_this.enums})';
   }
 }
 
@@ -459,6 +468,7 @@ abstract mixin class $ModelConfigCopyWith<$Res> {
     @JsonKey(name: 'union_class_fallback_name') String? unionClassFallbackName,
     @JsonKey(name: 'enum_fallback_type') EnumFallbackType enumFallbackType,
     @JsonKey(name: 'remove_model_prefixes') List<String> removeModelPrefixes,
+    @JsonKey(name: 'class_prefix') String? classPrefix,
     @JsonKey(name: 'enums') Map<String, Map<String, String>> enums,
   });
 }
@@ -479,6 +489,7 @@ class _$ModelConfigCopyWithImpl<$Res> implements $ModelConfigCopyWith<$Res> {
     Object? unionClassFallbackName = freezed,
     Object? enumFallbackType = null,
     Object? removeModelPrefixes = null,
+    Object? classPrefix = freezed,
     Object? enums = null,
   }) {
     return _then(
@@ -499,6 +510,10 @@ class _$ModelConfigCopyWithImpl<$Res> implements $ModelConfigCopyWith<$Res> {
             ? _self.removeModelPrefixes
             : removeModelPrefixes // ignore: cast_nullable_to_non_nullable
                   as List<String>,
+        classPrefix: freezed == classPrefix
+            ? _self.classPrefix
+            : classPrefix // ignore: cast_nullable_to_non_nullable
+                  as String?,
         enums: null == enums
             ? _self.enums
             : enums // ignore: cast_nullable_to_non_nullable
@@ -607,6 +622,7 @@ extension ModelConfigPatterns on ModelConfig {
       String? unionClassFallbackName,
       @JsonKey(name: 'enum_fallback_type') EnumFallbackType enumFallbackType,
       @JsonKey(name: 'remove_model_prefixes') List<String> removeModelPrefixes,
+      @JsonKey(name: 'class_prefix') String? classPrefix,
       @JsonKey(name: 'enums') Map<String, Map<String, String>> enums,
     )?
     $default, {
@@ -620,6 +636,7 @@ extension ModelConfigPatterns on ModelConfig {
           _that.unionClassFallbackName,
           _that.enumFallbackType,
           _that.removeModelPrefixes,
+          _that.classPrefix,
           _that.enums,
         );
       case _:
@@ -648,6 +665,7 @@ extension ModelConfigPatterns on ModelConfig {
       String? unionClassFallbackName,
       @JsonKey(name: 'enum_fallback_type') EnumFallbackType enumFallbackType,
       @JsonKey(name: 'remove_model_prefixes') List<String> removeModelPrefixes,
+      @JsonKey(name: 'class_prefix') String? classPrefix,
       @JsonKey(name: 'enums') Map<String, Map<String, String>> enums,
     )
     $default,
@@ -660,6 +678,7 @@ extension ModelConfigPatterns on ModelConfig {
           _that.unionClassFallbackName,
           _that.enumFallbackType,
           _that.removeModelPrefixes,
+          _that.classPrefix,
           _that.enums,
         );
       case _:
@@ -687,6 +706,7 @@ extension ModelConfigPatterns on ModelConfig {
       String? unionClassFallbackName,
       @JsonKey(name: 'enum_fallback_type') EnumFallbackType enumFallbackType,
       @JsonKey(name: 'remove_model_prefixes') List<String> removeModelPrefixes,
+      @JsonKey(name: 'class_prefix') String? classPrefix,
       @JsonKey(name: 'enums') Map<String, Map<String, String>> enums,
     )?
     $default,
@@ -699,6 +719,7 @@ extension ModelConfigPatterns on ModelConfig {
           _that.unionClassFallbackName,
           _that.enumFallbackType,
           _that.removeModelPrefixes,
+          _that.classPrefix,
           _that.enums,
         );
       case _:
@@ -719,6 +740,7 @@ class _ModelConfig extends ModelConfig {
     this.enumFallbackType = EnumFallbackType.throwException,
     @JsonKey(name: 'remove_model_prefixes')
     List<String> removeModelPrefixes = const [],
+    @JsonKey(name: 'class_prefix') this.classPrefix,
     @JsonKey(name: 'enums')
     Map<String, Map<String, String>> enums =
         const <String, Map<String, String>>{},
@@ -746,6 +768,13 @@ class _ModelConfig extends ModelConfig {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_removeModelPrefixes);
   }
+
+  /// Prepended to every generated model class (components, inline
+  /// objects, enums and unions): `Postman` turns `Item` into
+  /// `PostmanItem` in `postman_item.dart`.
+  @override
+  @JsonKey(name: 'class_prefix')
+  final String? classPrefix;
 
   /// Opt-in per-enum member renaming. Keyed by the enum's swagger schema
   /// name OR its generated Dart class name; the inner map is the raw enum
@@ -814,6 +843,8 @@ class _ModelConfig extends ModelConfig {
               other.removeModelPrefixes,
               _removeModelPrefixes,
             ) &&
+            (identical(other.classPrefix, classPrefix) ||
+                other.classPrefix == classPrefix) &&
             const DeepCollectionEquality().equals(other.enums, _enums));
   }
 
@@ -826,13 +857,14 @@ class _ModelConfig extends ModelConfig {
       unionClassFallbackName,
       enumFallbackType,
       const DeepCollectionEquality().hash(_removeModelPrefixes),
+      classPrefix,
       const DeepCollectionEquality().hash(_enums),
     );
   }
 
   @override
   String toString() {
-    return 'ModelConfig(supportGenericArguments: $supportGenericArguments, unionClassFallbackName: $unionClassFallbackName, enumFallbackType: $enumFallbackType, removeModelPrefixes: $removeModelPrefixes, enums: $enums)';
+    return 'ModelConfig(supportGenericArguments: $supportGenericArguments, unionClassFallbackName: $unionClassFallbackName, enumFallbackType: $enumFallbackType, removeModelPrefixes: $removeModelPrefixes, classPrefix: $classPrefix, enums: $enums)';
   }
 }
 
@@ -850,6 +882,7 @@ abstract mixin class _$ModelConfigCopyWith<$Res>
     @JsonKey(name: 'union_class_fallback_name') String? unionClassFallbackName,
     @JsonKey(name: 'enum_fallback_type') EnumFallbackType enumFallbackType,
     @JsonKey(name: 'remove_model_prefixes') List<String> removeModelPrefixes,
+    @JsonKey(name: 'class_prefix') String? classPrefix,
     @JsonKey(name: 'enums') Map<String, Map<String, String>> enums,
   });
 }
@@ -870,6 +903,7 @@ class __$ModelConfigCopyWithImpl<$Res> implements _$ModelConfigCopyWith<$Res> {
     Object? unionClassFallbackName = freezed,
     Object? enumFallbackType = null,
     Object? removeModelPrefixes = null,
+    Object? classPrefix = freezed,
     Object? enums = null,
   }) {
     return _then(
@@ -890,6 +924,10 @@ class __$ModelConfigCopyWithImpl<$Res> implements _$ModelConfigCopyWith<$Res> {
             ? _self._removeModelPrefixes
             : removeModelPrefixes // ignore: cast_nullable_to_non_nullable
                   as List<String>,
+        classPrefix: freezed == classPrefix
+            ? _self.classPrefix
+            : classPrefix // ignore: cast_nullable_to_non_nullable
+                  as String?,
         enums: null == enums
             ? _self._enums
             : enums // ignore: cast_nullable_to_non_nullable

@@ -1,0 +1,41 @@
+/// GetUserResponse2
+///
+/// ```json
+/// {
+///     "properties": {
+///         "name": {
+///             "type": "string"
+///         },
+///         "admin": {
+///             "type": "boolean"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'get_user_response2.freezed.dart';
+part 'get_user_response2.g.dart';
+
+@freezed
+abstract class GetUserResponse2 with _$GetUserResponse2 {
+  const GetUserResponse2._();
+
+  @jsonSerializable
+  const factory GetUserResponse2({
+    /// name
+    @JsonKey(name: GetUserResponse2.nameKey_) String? name,
+
+    /// admin
+    @JsonKey(name: GetUserResponse2.adminKey_) bool? admin,
+  }) = _GetUserResponse2;
+
+  factory GetUserResponse2.fromJson(Map<String, dynamic> json) =>
+      _$GetUserResponse2FromJson(json);
+
+  static const String nameKey_ = 'name';
+
+  static const String adminKey_ = 'admin';
+}

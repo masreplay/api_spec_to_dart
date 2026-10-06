@@ -1,0 +1,34 @@
+/// GetStatusResponse
+///
+/// ```json
+/// {
+///     "properties": {
+///         "ok": {
+///             "type": "boolean"
+///         }
+///     },
+///     "type": "object",
+///     "title": "Response"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'get_status_response.freezed.dart';
+part 'get_status_response.g.dart';
+
+@freezed
+abstract class GetStatusResponse with _$GetStatusResponse {
+  const GetStatusResponse._();
+
+  @jsonSerializable
+  const factory GetStatusResponse({
+    /// ok
+    @JsonKey(name: GetStatusResponse.okKey_) bool? ok,
+  }) = _GetStatusResponse;
+
+  factory GetStatusResponse.fromJson(Map<String, dynamic> json) =>
+      _$GetStatusResponseFromJson(json);
+
+  static const String okKey_ = 'ok';
+}

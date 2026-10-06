@@ -1,0 +1,31 @@
+/// LevelsItem
+///
+/// ```json
+/// {
+///     "properties": {},
+///     "type": "string",
+///     "enum": [
+///         "low",
+///         "high"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'levels_item.g.dart';
+
+@JsonEnum(alwaysCreate: true)
+enum LevelsItem {
+  @JsonValue('low')
+  low,
+  @JsonValue('high')
+  high;
+
+  factory LevelsItem.fromJson(String json) => LevelsItem.values.firstWhere(
+    (e) => e.toJson() == json,
+    orElse: () => throw ArgumentError('Invalid LevelsItem'),
+  );
+
+  String toJson() => _$LevelsItemEnumMap[this]!;
+}

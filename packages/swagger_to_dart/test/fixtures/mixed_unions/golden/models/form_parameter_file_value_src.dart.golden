@@ -1,0 +1,78 @@
+/// FormParameterFileValueSrc
+///
+/// ```json
+/// {
+///     "oneOf": [
+///         {
+///             "type": "array"
+///         },
+///         {
+///             "type": "string"
+///         }
+///     ],
+///     "nullable": true
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+sealed class FormParameterFileValueSrc {
+  const FormParameterFileValueSrc();
+
+  const factory FormParameterFileValueSrc.list(List<dynamic> value) =
+      FormParameterFileValueSrcList;
+  const factory FormParameterFileValueSrc.string(String value) =
+      FormParameterFileValueSrcString;
+
+  factory FormParameterFileValueSrc.fromJson(Object? json) => switch (json) {
+    String() => FormParameterFileValueSrcString(json),
+    List() => FormParameterFileValueSrcList(json),
+    _ => throw ArgumentError.value(
+      json,
+      'json',
+      'No FormParameterFileValueSrc variant matches',
+    ),
+  };
+
+  Object? toJson();
+}
+
+final class FormParameterFileValueSrcList extends FormParameterFileValueSrc {
+  const FormParameterFileValueSrcList(this.value);
+
+  final List<dynamic> value;
+
+  @override
+  Object? toJson() => value;
+
+  @override
+  bool operator ==(Object other) =>
+      other is FormParameterFileValueSrcList &&
+      const DeepCollectionEquality().equals(other.value, value);
+
+  @override
+  int get hashCode => const DeepCollectionEquality().hash(value);
+
+  @override
+  String toString() => 'FormParameterFileValueSrc.list($value)';
+}
+
+final class FormParameterFileValueSrcString extends FormParameterFileValueSrc {
+  const FormParameterFileValueSrcString(this.value);
+
+  final String value;
+
+  @override
+  Object? toJson() => value;
+
+  @override
+  bool operator ==(Object other) =>
+      other is FormParameterFileValueSrcString && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'FormParameterFileValueSrc.string($value)';
+}

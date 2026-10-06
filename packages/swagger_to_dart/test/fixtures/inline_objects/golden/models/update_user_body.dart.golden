@@ -1,0 +1,36 @@
+/// UpdateUserBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "name": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "name"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'update_user_body.freezed.dart';
+part 'update_user_body.g.dart';
+
+@freezed
+abstract class UpdateUserBody with _$UpdateUserBody {
+  const UpdateUserBody._();
+
+  @jsonSerializable
+  const factory UpdateUserBody({
+    /// name
+    @JsonKey(name: UpdateUserBody.nameKey_) required String name,
+  }) = _UpdateUserBody;
+
+  factory UpdateUserBody.fromJson(Map<String, dynamic> json) =>
+      _$UpdateUserBodyFromJson(json);
+
+  static const String nameKey_ = 'name';
+}

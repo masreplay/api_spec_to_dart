@@ -1,0 +1,93 @@
+import 'package:dio/dio.dart' show MultipartFile;
+import 'package:swagger_to_dart_e2e/gen/inline_objects/models/models.dart';
+import 'package:test/test.dart';
+
+void main() {
+  test('a nested inline payload decodes into its models and back', () {
+    const json = {
+      'name': 'Ada',
+      'address': {
+        'city': 'London',
+        'kind': 'work',
+        'geo': {'lat': 51.5, 'lng': -0.1},
+      },
+      'roles': [
+        {'id': 1, 'label': 'admin'},
+      ],
+      'scores': {
+        'math': {'value': 9.5},
+      },
+      'meta': {'v': 2},
+      'extra': {
+        'any': [1, 'two'],
+      },
+      'badge': {'label': 'gold'},
+      'primary': {'a': 'x'},
+      'secondary': {'b': 2},
+    };
+
+    final user = GetUserResponse.fromJson(json);
+
+    expect(user.address.city, 'London');
+    expect(user.address.kind, GetUserResponseAddressKind.work);
+    expect(user.address.geo?.lat, 51.5);
+    expect(
+      user.roles?.single,
+      const GetUserResponseRolesItem(id: 1, label: 'admin'),
+    );
+    expect(user.scores?['math']?.value, 9.5);
+    expect(user.toJson(), json);
+  });
+
+  test('required, nullable and default work as for components', () {
+    final user = GetUserResponse.fromJson({
+      'name': 'Ada',
+      'address': {'city': 'Paris', 'geo': null},
+      'roles': [
+        {'id': 2},
+      ],
+    });
+
+    expect(user.address.kind, GetUserResponseAddressKind.home);
+    expect(user.address.geo, isNull);
+    expect(user.roles?.single.label, 'member');
+  });
+
+  test('colliding names compile and decode', () {
+    expect(
+      GetUserResponse2.fromJson({'name': 'root', 'admin': true}).admin,
+      isTrue,
+    );
+    expect(
+      GetPetResponse.fromJson({
+        'pet': {'name': 'Rex'},
+      }).pet,
+      const Pet(name: 'Rex'),
+    );
+    expect(
+      Error.fromJson({
+        'message': 'boom',
+        'response': {'status': 500, 'body': 'oops'},
+      }).response?.status,
+      500,
+    );
+    expect(ErrorResponse.fromJson({'code': 'E1'}).code, 'E1');
+    // Titled `List` and `Response`, and a title another model took: named by
+    // context.
+    expect(
+      GetUserResponseBadge.fromJson({'label': 'gold'}),
+      const GetUserResponseBadge(label: 'gold'),
+    );
+    expect(GetStatusResponse.fromJson({'ok': true}).ok, isTrue);
+    expect(Thing.fromJson({'a': 'x'}).a, 'x');
+    expect(GetUserResponseSecondary.fromJson({'b': 2}).b, 2);
+  });
+
+  test('an inline multipart body keeps its file for the form', () {
+    final file = MultipartFile.fromString('avatar', filename: 'a.png');
+    final json = UploadAvatarBody(file: file, caption: 'me').toJson();
+
+    expect(json['file'], same(file));
+    expect(json['caption'], 'me');
+  });
+}

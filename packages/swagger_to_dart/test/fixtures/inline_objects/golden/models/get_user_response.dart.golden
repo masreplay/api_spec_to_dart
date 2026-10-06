@@ -1,0 +1,184 @@
+/// GetUserResponse
+///
+/// ```json
+/// {
+///     "properties": {
+///         "name": {
+///             "type": "string"
+///         },
+///         "address": {
+///             "type": "object",
+///             "properties": {
+///                 "city": {
+///                     "type": "string"
+///                 },
+///                 "kind": {
+///                     "enum": [
+///                         "home",
+///                         "work"
+///                     ],
+///                     "type": "string",
+///                     "default": "home"
+///                 },
+///                 "geo": {
+///                     "type": "object",
+///                     "properties": {
+///                         "lat": {
+///                             "type": "number"
+///                         },
+///                         "lng": {
+///                             "type": "number"
+///                         }
+///                     },
+///                     "nullable": true
+///                 }
+///             },
+///             "required": [
+///                 "city"
+///             ]
+///         },
+///         "roles": {
+///             "type": "array",
+///             "items": {
+///                 "type": "object",
+///                 "properties": {
+///                     "id": {
+///                         "type": "integer"
+///                     },
+///                     "label": {
+///                         "type": "string",
+///                         "default": "member"
+///                     }
+///                 },
+///                 "required": [
+///                     "id"
+///                 ]
+///             }
+///         },
+///         "scores": {
+///             "type": "object",
+///             "additionalProperties": {
+///                 "type": "object",
+///                 "properties": {
+///                     "value": {
+///                         "type": "number"
+///                     }
+///                 }
+///             }
+///         },
+///         "meta": {
+///             "type": "object",
+///             "properties": {
+///                 "v": {
+///                     "type": "integer"
+///                 }
+///             },
+///             "default": {
+///                 "v": 1
+///             }
+///         },
+///         "extra": {
+///             "type": "object"
+///         },
+///         "badge": {
+///             "type": "object",
+///             "properties": {
+///                 "label": {
+///                     "type": "string"
+///                 }
+///             },
+///             "description": "Titled like dart:core's List: named by context instead.",
+///             "title": "List"
+///         },
+///         "primary": {
+///             "type": "object",
+///             "properties": {
+///                 "a": {
+///                     "type": "string"
+///                 }
+///             },
+///             "title": "Thing"
+///         },
+///         "secondary": {
+///             "type": "object",
+///             "properties": {
+///                 "b": {
+///                     "type": "integer"
+///                 }
+///             },
+///             "description": "Another model has the title: named by context instead.",
+///             "title": "Thing"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "name",
+///         "address"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'get_user_response.freezed.dart';
+part 'get_user_response.g.dart';
+
+@freezed
+abstract class GetUserResponse with _$GetUserResponse {
+  const GetUserResponse._();
+
+  @jsonSerializable
+  const factory GetUserResponse({
+    /// name
+    @JsonKey(name: GetUserResponse.nameKey_) required String name,
+
+    /// address
+    @JsonKey(name: GetUserResponse.addressKey_)
+    required GetUserResponseAddress address,
+
+    /// roles
+    @JsonKey(name: GetUserResponse.rolesKey_)
+    List<GetUserResponseRolesItem>? roles,
+
+    /// scores
+    @JsonKey(name: GetUserResponse.scoresKey_)
+    Map<String, GetUserResponseScoresValue>? scores,
+
+    /// meta
+    @JsonKey(name: GetUserResponse.metaKey_) GetUserResponseMeta? meta,
+
+    /// extra
+    @JsonKey(name: GetUserResponse.extraKey_) Map<String, dynamic>? extra,
+
+    /// badge
+    @JsonKey(name: GetUserResponse.badgeKey_) GetUserResponseBadge? badge,
+
+    /// primary
+    @JsonKey(name: GetUserResponse.primaryKey_) Thing? primary,
+
+    /// secondary
+    @JsonKey(name: GetUserResponse.secondaryKey_)
+    GetUserResponseSecondary? secondary,
+  }) = _GetUserResponse;
+
+  factory GetUserResponse.fromJson(Map<String, dynamic> json) =>
+      _$GetUserResponseFromJson(json);
+
+  static const String nameKey_ = 'name';
+
+  static const String addressKey_ = 'address';
+
+  static const String rolesKey_ = 'roles';
+
+  static const String scoresKey_ = 'scores';
+
+  static const String metaKey_ = 'meta';
+
+  static const String extraKey_ = 'extra';
+
+  static const String badgeKey_ = 'badge';
+
+  static const String primaryKey_ = 'primary';
+
+  static const String secondaryKey_ = 'secondary';
+}

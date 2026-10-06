@@ -1,0 +1,18 @@
+/// Scalar
+///
+/// ```json
+/// {
+///     "description": "A primitive-only mix: dynamic.",
+///     "oneOf": [
+///         {
+///             "type": "string"
+///         },
+///         {
+///             "type": "integer"
+///         }
+///     ]
+/// }
+/// ```
+library;
+
+typedef Scalar = dynamic;
