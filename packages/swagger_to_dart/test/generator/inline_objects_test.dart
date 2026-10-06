@@ -355,4 +355,42 @@ void main() {
     );
     expect(files['models/pet.dart'], isNot(contains('class PetDog ')));
   });
+
+  test(
+    'a nested model taking its parent\'s title gives the parent the context',
+    () {
+      final result = renderSpec(
+        _spec([
+          (
+            '/pet',
+            'pets',
+            'getPet',
+            {
+              'type': 'object',
+              'title': 'Pet',
+              'properties': {
+                'child': {
+                  'type': 'object',
+                  'title': 'Pet',
+                  'properties': {
+                    'name': {'type': 'string'},
+                  },
+                },
+              },
+            },
+          ),
+        ]),
+      );
+      expect(result.errors, isEmpty);
+      expect(
+        result.files['api_client/pets_client.dart'],
+        contains('Future<HttpResponse<GetPetResponse>> getPet('),
+      );
+      expect(
+        result.files['models/get_pet_response.dart'],
+        contains('Pet? child'),
+      );
+      expect(result.files['models/pet.dart'], contains('String? name'));
+    },
+  );
 }

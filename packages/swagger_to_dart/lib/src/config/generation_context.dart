@@ -100,18 +100,19 @@ class GenerationContext {
       if (existing != null && _code(existing) == _code(library)) {
         return name;
       }
-      // A model nested in this one took its name: every suffix would be
-      // taken the same way.
-      if (existing != null && !before.contains(library.name)) {
-        throw StateError(
-          'swagger_to_dart: a model nested in $name is named $name too; '
-          'give the nested schema a title.',
-        );
-      }
+      final nestedTook = existing != null && !before.contains(library.name);
       // Drop the nested models this attempt registered under its name.
       _models.removeWhere((key, _) => !before.contains(key));
       if (orElse != null && orElse != className) {
         return registerInlineModel(orElse, build);
+      }
+      // A model nested in this one took its name: every suffix would be
+      // taken the same way.
+      if (nestedTook) {
+        throw StateError(
+          'swagger_to_dart: a model nested in $name is named $name too; '
+          'rename one of them.',
+        );
       }
     }
   }
