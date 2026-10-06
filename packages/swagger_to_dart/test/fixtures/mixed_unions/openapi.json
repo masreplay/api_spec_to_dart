@@ -118,6 +118,15 @@
           { "type": "string" }
         ]
       },
+      "Free": { "description": "A free-form object component: a Map typedef.", "type": "object" },
+      "PetOrFree": {
+        "description": "A model, a free-form object and a string: maps without `name` are Free.",
+        "oneOf": [
+          { "$ref": "#/components/schemas/Pet" },
+          { "$ref": "#/components/schemas/Free" },
+          { "type": "string" }
+        ]
+      },
       "Request": {
         "type": "object",
         "required": ["url"],

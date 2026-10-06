@@ -148,6 +148,36 @@ void main() {
     );
   });
 
+  test('a free-form object component variant is a map arm beside a model', () {
+    final holder = _render(
+      {
+        'Pet': {
+          'type': 'object',
+          'required': ['name'],
+          'properties': {
+            'name': {'type': 'string'},
+          },
+        },
+        'Free': {'type': 'object'},
+      },
+      property: {
+        'oneOf': [
+          {r'$ref': '#/components/schemas/Pet'},
+          {r'$ref': '#/components/schemas/Free'},
+          {'type': 'string'},
+        ],
+      },
+    )['models/holder_value.dart']!;
+
+    expect(holder, contains('const factory HolderValue.free(Free value)'));
+    // Pet needs `name`; any other map is Free.
+    expect(holder, contains("(required: {'name'}, declared: {'name'})"));
+    expect(
+      holder,
+      contains('1 => _\$HolderValueFreeFromJson({\'value\': json})'),
+    );
+  });
+
   test('object variants pinning one const property are discriminated', () {
     final files = _render(
       {},

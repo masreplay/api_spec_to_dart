@@ -163,6 +163,27 @@ void main() {
     }
   });
 
+  test('a free-form object variant keeps any map a model does not fit', () {
+    expect(
+      PetOrFree.fromJson({'name': 'Rex'}),
+      const PetOrFree.pet(Pet(name: 'Rex')),
+    );
+    final free = PetOrFree.fromJson({'x': 1});
+    expect(free, isA<PetOrFreeFree>());
+    final Free value = (free as PetOrFreeFree).value;
+    expect(value, {'x': 1});
+    for (final json in <Object?>[
+      {'name': 'Rex'},
+      {
+        'x': 1,
+        'y': [true, null],
+      },
+      'hi',
+    ]) {
+      expect(PetOrFree.fromJson(json).toJson(), json);
+    }
+  });
+
   test('JSON no variant takes throws', () {
     expect(() => Url.fromJson(1), throwsArgumentError);
     expect(() => FormParameter.fromJson({'value': 'v'}), throwsArgumentError);

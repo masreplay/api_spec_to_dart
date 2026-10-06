@@ -1,0 +1,11 @@
+/// Free
+///
+/// ```json
+/// {
+///     "type": "object",
+///     "description": "A free-form object component: a Map typedef."
+/// }
+/// ```
+library;
+
+typedef Free = Map<String, dynamic>;
