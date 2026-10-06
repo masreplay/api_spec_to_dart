@@ -142,4 +142,52 @@ void main() {
     expect(lines, hasLength(3));
     expect(lines, everyElement(contains('refers to itself')));
   });
+
+  test('a reference inside an inline object model is no cycle', () {
+    final lines = <String>[];
+    final files = runZoned(
+      () => renderSpec({
+        'openapi': '3.1.0',
+        'info': {'title': 't', 'version': '1'},
+        'paths': <String, dynamic>{},
+        'components': {
+          'schemas': {
+            'Tree': {
+              'type': 'array',
+              'items': {
+                'type': 'object',
+                'properties': {
+                  'name': {'type': 'string'},
+                },
+                'additionalProperties': {r'$ref': '#/components/schemas/Tree'},
+              },
+            },
+            'Grid': {
+              'type': 'array',
+              'items': {
+                'type': 'object',
+                'properties': {
+                  'rows': {r'$ref': '#/components/schemas/Grid'},
+                },
+                'items': {r'$ref': '#/components/schemas/Grid'},
+              },
+            },
+          },
+        },
+      }),
+      zoneSpecification: ZoneSpecification(
+        print: (_, _, _, line) => lines.add(line),
+      ),
+    ).files;
+
+    expect(
+      files['models/tree.dart'],
+      contains('typedef Tree = List<TreeItem>;'),
+    );
+    expect(
+      files['models/grid.dart'],
+      contains('typedef Grid = List<GridItem>;'),
+    );
+    expect(lines, isEmpty);
+  });
 }

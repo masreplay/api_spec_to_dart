@@ -136,15 +136,17 @@ class TypedefModelStrategy
     };
   }
 
-  /// Component names [json] references outside inline objects (whose
-  /// classes may refer to anything).
+  /// Component names [json] references outside inline objects: an object
+  /// with properties is a model, and classes may refer to anything.
   static Iterable<String> _references(Object? json) sync* {
     switch (json) {
       case {r'$ref': final String ref}:
         yield ref.split('/').last;
+      case {'properties': final Map properties} when properties.isNotEmpty:
+        return;
       case final Map map:
-        for (final MapEntry(:key, :value) in map.entries) {
-          if (key != 'properties') yield* _references(value);
+        for (final value in map.values) {
+          yield* _references(value);
         }
       case final List list:
         for (final e in list) {
