@@ -25,8 +25,8 @@ bool isJsonMediaType(String mediaType) =>
 
 /// Adds the raw body [text] named [name] to [content] under [mediaType],
 /// sniffed when null (JSON, else [textMediaType]): JSON is parsed leniently
-/// (an object when invalid, with a warning) and inferred; other text is a
-/// string.
+/// (an object when invalid, with a warning) and inferred; URL-encoded text
+/// is read as form fields; other text is a string.
 void addRawContent(
   Map<String, MediaContent> content,
   String text, {
@@ -38,6 +38,10 @@ void addRawContent(
   Secrets secrets = const Secrets.none(),
 }) {
   if (text.trim().isEmpty) return;
+  if (mediaType == _urlEncoded) {
+    _addForm(content, false, _urlEncodedFields(text), variables, name, secrets);
+    return;
+  }
   final json = mediaType == null || isJsonMediaType(mediaType)
       ? parseLenientJson(text, variables)
       : null;
@@ -118,7 +122,14 @@ class RequestBodies {
       case 'raw':
         _raw(body, headers, variables, name);
       case 'urlencoded' || 'formdata':
-        _form(mode == 'formdata', body[mode], variables, name);
+        _addForm(
+          _content,
+          mode == 'formdata',
+          body[mode],
+          variables,
+          name,
+          secrets,
+        );
       case 'file':
         _media(contentType(headers) ?? 'application/octet-stream', 'binary');
       case 'graphql':
@@ -165,62 +176,6 @@ class RequestBodies {
     }
   }
 
-  void _form(
-    bool multipart,
-    Object? params,
-    Map<String, String> variables,
-    String name,
-  ) {
-    final values = <String, List<Object?>>{};
-    final files = <String, bool>{};
-    final encoding = <String, String>{};
-    final descriptions = <String, String>{};
-    for (final param in params is List ? params : const []) {
-      if (param case {'key': final String key} when key.isNotEmpty) {
-        final fieldValues = values[key] ??= [];
-        if (multipart && param['type'] == 'file') {
-          files[key] = files.containsKey(key) || param['src'] is List;
-        } else {
-          fieldValues.add(
-            _scalar(substituteVariables('${param['value'] ?? ''}', variables)),
-          );
-        }
-        if (param['contentType'] case final String type
-            when multipart && type.isNotEmpty) {
-          encoding[key] = type;
-        }
-        if (descriptionText(param['description']) case final text?) {
-          descriptions[key] = secrets.redact(text)!;
-        }
-      }
-    }
-    if (values.isEmpty) return;
-    final media = _media(
-      multipart ? 'multipart/form-data' : 'application/x-www-form-urlencoded',
-      'form',
-    );
-    final example = <String, Object?>{};
-    for (final MapEntry(:key, value: fieldValues) in values.entries) {
-      final samples = media.fields[key] ??= [];
-      if (files[key] case final array?) {
-        media.files[key] = (media.files[key] ?? false) || array;
-      } else {
-        final sample = fieldValues.length == 1
-            ? fieldValues.single
-            : fieldValues;
-        samples.add(sample);
-        example[key] = sample;
-      }
-    }
-    encoding.forEach(
-      (key, type) => media.encoding.putIfAbsent(key, () => type),
-    );
-    descriptions.forEach(
-      (key, text) => media.descriptions.putIfAbsent(key, () => text),
-    );
-    media.example(name, example);
-  }
-
   void _graphql(Object? graphql, Map<String, String> variables, String name) {
     if (graphql is! Map) return;
     final graphqlVariables = switch (graphql['variables']) {
@@ -238,6 +193,87 @@ class RequestBodies {
           when operation.isNotEmpty)
         'operationName': operation,
     });
+  }
+}
+
+const _urlEncoded = 'application/x-www-form-urlencoded';
+
+/// Form [params] (`{key, value, type, src, contentType, description}`) as
+/// one example of the `form` content of [content].
+void _addForm(
+  Map<String, MediaContent> content,
+  bool multipart,
+  Object? params,
+  Map<String, String> variables,
+  String name,
+  Secrets secrets,
+) {
+  final values = <String, List<Object?>>{};
+  final files = <String, bool>{};
+  final encoding = <String, String>{};
+  final descriptions = <String, String>{};
+  for (final param in params is List ? params : const []) {
+    if (param case {'key': final String key} when key.isNotEmpty) {
+      final fieldValues = values[key] ??= [];
+      if (multipart && param['type'] == 'file') {
+        files[key] = files.containsKey(key) || param['src'] is List;
+      } else {
+        fieldValues.add(
+          _scalar(substituteVariables('${param['value'] ?? ''}', variables)),
+        );
+      }
+      if (param['contentType'] case final String type
+          when multipart && type.isNotEmpty) {
+        encoding[key] = type;
+      }
+      if (descriptionText(param['description']) case final text?) {
+        descriptions[key] = secrets.redact(text)!;
+      }
+    }
+  }
+  if (values.isEmpty) return;
+  final media = _mediaContent(
+    content,
+    multipart ? 'multipart/form-data' : _urlEncoded,
+    'form',
+    secrets,
+  );
+  final example = <String, Object?>{};
+  for (final MapEntry(:key, value: fieldValues) in values.entries) {
+    final samples = media.fields[key] ??= [];
+    if (files[key] case final array?) {
+      media.files[key] = (media.files[key] ?? false) || array;
+    } else {
+      final sample = fieldValues.length == 1 ? fieldValues.single : fieldValues;
+      samples.add(sample);
+      example[key] = sample;
+    }
+  }
+  encoding.forEach((key, type) => media.encoding.putIfAbsent(key, () => type));
+  descriptions.forEach(
+    (key, text) => media.descriptions.putIfAbsent(key, () => text),
+  );
+  media.example(name, example);
+}
+
+/// The `key=value` pairs of a URL-encoded [text] as form params.
+List<Map<String, String>> _urlEncodedFields(String text) => [
+  for (final pair in text.split('&'))
+    if (pair.trim() case final pair when pair.isNotEmpty)
+      {
+        'key': _decodeComponent(pair.split('=').first),
+        'value': pair.contains('=')
+            ? _decodeComponent(pair.substring(pair.indexOf('=') + 1))
+            : '',
+      },
+];
+
+/// [text] percent-decoded, or as written when malformed.
+String _decodeComponent(String text) {
+  try {
+    return Uri.decodeQueryComponent(text);
+  } on ArgumentError {
+    return text;
   }
 }
 
@@ -282,15 +318,15 @@ class MediaContent {
   }
 
   /// Keeps one example per distinct value, without credentials, keyed by
-  /// [name] (suffixed when taken). A text or number that leaks one is no
-  /// example; a text that is JSON is scrubbed as JSON.
+  /// [name] (suffixed when taken). A text or number that leaks one, or a
+  /// text with a bearer token or JWT inside, is no example; a text that is
+  /// JSON is scrubbed as JSON.
   void example(String name, Object? value) {
     final parsed = kind == 'text' && value is String ? _json(value) : null;
-    if (parsed == null && (value is String || value is num)) {
-      final text = '$value';
-      if (kind == 'text' ? secrets.leaksText(text) : secrets.leaks(text)) {
-        return;
-      }
+    if (parsed == null &&
+        (value is String || value is num) &&
+        secrets.leaksText('$value')) {
+      return;
     }
     var example = secrets.scrub(parsed ?? value);
     if (parsed != null) {

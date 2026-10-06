@@ -704,7 +704,7 @@ class _Operation {
     Map<String, String> variables,
   ) {
     final name = example['name'] is String && example['name'] != ''
-        ? example['name'] as String
+        ? secrets.redact(example['name'] as String)!
         : 'Example';
     if (_requestMap(example['originalRequest']) case final request?) {
       addRequest(parseUrl(request['url']), request, variables, name);
