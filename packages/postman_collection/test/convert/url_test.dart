@@ -104,6 +104,14 @@ void main() {
     expect(withoutUserinfo('see u:SECRET@h.io/cb now'), 'see h.io/cb now');
     expect(withoutUserinfo('a@b.io'), 'a@b.io');
     expect(withoutUserinfo('mailto:a@b.io'), 'mailto:a@b.io');
+    // Protocol-relative and after punctuation (L2).
+    expect(withoutUserinfo('//u:SECRET@api.x.io'), '//api.x.io');
+    expect(withoutUserinfo('cb=//u:SECRET@h.io/x'), 'cb=//h.io/x');
+    expect(withoutUserinfo('<a>u:SECRET@h.io</a>'), '<a>h.io</a>');
+    expect(withoutUserinfo('a;u:SECRET@h.io'), 'a;h.io');
+    expect(withoutUserinfo('x.io/a:b@c'), 'x.io/a:b@c');
+    expect(parseUrl('//u:SECRET@api.x.io/a').origin, 'http://api.x.io');
+    expect(parseUrl('//u:SECRET@api.x.io/a').path, '/a');
   });
 
   test('a literal {name} segment is a path parameter, like :name', () {

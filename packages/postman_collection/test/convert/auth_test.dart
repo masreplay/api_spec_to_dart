@@ -269,6 +269,32 @@ void main() {
     expect(none.hides('Proxy-Authorization', 'x'), isTrue);
     expect(none.hides('Set-Cookie', 'x'), isTrue);
     expect(none.hides('author', 'tolkien'), isFalse);
+    // Identifiers are not credentials (L4).
+    for (final name in [
+      'authId',
+      'auth_id',
+      'clientId',
+      'username',
+      'consumerKey',
+      'accessKeyId',
+      'authenticated',
+    ]) {
+      expect(none.hides(name, 'x'), isFalse, reason: name);
+    }
+    for (final name in [
+      'auth',
+      'X-Auth',
+      'auth_token',
+      'authToken',
+      'authKey',
+      'auth-key',
+      'Authentication',
+      'password',
+      'client_secret',
+      'apiKey',
+    ]) {
+      expect(none.hides(name, 'x'), isTrue, reason: name);
+    }
     expect(none.hides('authority', 'x'), isFalse);
     expect(none.hides('X-Forwarded', 'Bearer x'), isTrue);
     expect(none.hides('note', 'eyJhbGciOi.eyJzdWIi.c2ln'), isTrue);
@@ -296,6 +322,17 @@ void main() {
       },
     );
     expect(const Secrets.none().scrub('text'), 'text');
+    // A key that is a secret value drops its subtree (L1).
+    final secrets = Secrets.of({
+      'auth': auth('bearer', {'token': 'zq9k1zz'}),
+    });
+    expect(
+      secrets.scrub({
+        'zq9k1zz': {'x': 1},
+        'a': 'b',
+      }),
+      {'a': 'b'},
+    );
   });
 
   test('secrets: variables of secret attributes or typed secret, and the '

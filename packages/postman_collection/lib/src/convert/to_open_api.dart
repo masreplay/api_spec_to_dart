@@ -713,7 +713,9 @@ class _Operation {
     final code = _statusCode(example);
     final response = _responses.putIfAbsent(code, _Response.new);
     response.description ??= switch (example['status']) {
-      final String status when status.trim().isNotEmpty => status,
+      final String status when status.trim().isNotEmpty => secrets.redact(
+        status,
+      ),
       _ =>
         _reasonPhrases[int.tryParse(code)] ??
             (code == 'default' ? 'Default response' : 'Response'),
