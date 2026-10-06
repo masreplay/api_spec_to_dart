@@ -11,12 +11,23 @@
 [![Pub Version](https://img.shields.io/pub/v/swagger_to_dart.svg)](https://pub.dev/packages/swagger_to_dart)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-A powerful Dart package that auto-generates type-safe API clients and models from OpenAPI specifications (Swagger). Supports OpenAPI 3.0 and 3.1 specifications.
+Generates Dart models ([freezed](https://pub.dev/packages/freezed)) and
+[retrofit](https://pub.dev/packages/retrofit) API clients from an API
+description:
+
+- OpenAPI 3.0, 3.1 and 3.2
+- Swagger 2.0
+- Postman collections: v1, v2.0 and v2.1 exports, and v3 collection directories
+- JSON Schema documents (models only)
+
+Input can be JSON or YAML, read from a local file or fetched from a URL. See
+[Inputs](#inputs).
 
 ## Requirements
 
 - **Dart >= 3.9** (bundled with **Flutter >= 3.35**) to run `swagger_to_dart` itself.
 - The code it generates uses `json_serializable` >= 6.10, which emits Dart 3.8 syntax (null-aware elements) in `.g.dart` files. Your **consuming project's** own SDK lower bound must be at least `3.8.0` (e.g. `environment: sdk: '>=3.8.0 <4.0.0'`) or that generated code won't compile.
+- Generated clients need `dio` and `retrofit`. A spec without operations (a JSON Schema document, or an OpenAPI file with only `components`) generates models only; that output needs neither `retrofit` nor `retrofit_generator`, and needs `dio` only when a model has a binary (`MultipartFile`) field.
 
 ## Support
 
@@ -26,19 +37,20 @@ A powerful Dart package that auto-generates type-safe API clients and models fro
 - [Spring Boot](https://spring.io/projects/spring-boot)
 - [AspNet Core](https://dotnet.microsoft.com/apps/aspnet)
 - [Flask](https://flask.palletsprojects.com/)
-- Any other framework that generates OpenAPI 3.1.0 specs with JSON format
+- [Postman](https://www.postman.com/) collections
+- Any other tool that produces OpenAPI 3.x or Swagger 2.0, in JSON or YAML
 
 ## Features
 
-- 🚀 Generates Dart models with [freezed](https://pub.dev/packages/freezed) for immutability and serialization
-- 🔄 Creates [retrofit](https://pub.dev/packages/retrofit) API clients for type-safe HTTP requests
-- 🧩 Supports nested objects, enums, and complex data structures
-- 📊 Handles query parameters, path parameters, and request bodies
-- 📝 Generates documentation comments from OpenAPI descriptions
-- 🌐 Fetch OpenAPI specifications directly from URLs (JSON format)
-- 💾 Automatically saves fetched specs locally
-- 🛠️ Customizable output with configuration options
-- ⚡ Supports FastAPI, NestJS, Spring Boot, and any other framework that generates OpenAPI 3.1.0 specs
+- Immutable [freezed](https://pub.dev/packages/freezed) models with JSON
+  serialization, including models for inline objects, enums, generics and
+  `sealed` unions (also unions that mix strings, numbers, arrays and objects).
+- [retrofit](https://pub.dev/packages/retrofit) clients, one per tag (one per
+  folder for Postman collections).
+- Path, query, header and cookie parameters; JSON, form, multipart, text and
+  binary bodies and responses.
+- Documentation comments from the spec's descriptions.
+- Fetches the spec from a URL and keeps a local copy.
 
 ## Getting Started
 
@@ -202,6 +214,96 @@ void main() async {
 }
 ```
 
+## Inputs
+
+`input_directory` (or `url`) may point at any of these. The format is
+detected from the document's content, checked top to bottom; the first match
+wins. Every format is converted to OpenAPI 3 first, then generated the same
+way.
+
+| Format | Detected by | Converted to |
+|---|---|---|
+| OpenAPI 3.0, 3.1, 3.2 | `openapi: 3.x` | Used as is |
+| Swagger 2.0 | `swagger: "2.0"` | OpenAPI 3.0.3 |
+| Postman v2.0 / v2.1 export | `info.schema` is a Postman schema URL | OpenAPI 3.1.1 (3.2.0 when a request uses `QUERY` or a non-standard method) |
+| Postman v1 export | top-level `requests` and `order` | as above |
+| Postman API response | a `{"collection": {...}}` envelope | as above |
+| Postman v3 collection | `input_directory` is a directory | as above |
+| JSON Schema | top-level `definitions`, `$defs` or `$schema` | OpenAPI 3.1.0 with schemas only (no client) |
+
+Anything else fails with `Not an OpenAPI 3, Swagger 2.0, JSON Schema or
+Postman document`.
+
+**YAML.** Files ending in `.yaml`/`.yml`, and other files or URL responses
+that do not start with `{` or `[`, are parsed as YAML, for every format.
+Anchors are resolved, and unquoted versions (`openapi: 3.1`,
+`swagger: 2.0`) are read as strings.
+
+### Postman
+
+Point `input_directory` at a collection export (`collection.json`) or at a
+v3 collection directory (Postman's file-based format:
+`.resources/definition.yaml`, `*.request.yaml`, `*.example.yaml`). v1 and v2.0
+collections are upgraded to v2.1 first. How a collection maps to OpenAPI:
+
+| Postman | Generated |
+|---|---|
+| folder | a tag (`Parent / Child`), so one client per folder; requests at the root go to `DefaultClient` |
+| request | one method; the name gives the summary and the method name (camelCase; names without ASCII letters fall back to method + path) |
+| URL origin | the most frequent origin (e.g. `{{baseUrl}}`) is the server; requests on other origins get absolute URLs |
+| `:id` / `{{id}}` path segments | path parameters |
+| query parameters, headers | optional parameters (`Content-Type`, `Accept`, `Authorization` and transport headers are left out; `Cookie` becomes cookie parameters) |
+| raw JSON body (comments and `{{variables}}` allowed) | a body model inferred from the sample |
+| urlencoded / form-data / file / GraphQL body | form model / multipart model (file parts are `MultipartFile`) / binary / `{query, variables, operationName}` |
+| saved examples | responses per status and media type, with models inferred from every example of that response |
+| same method and path in several requests | one method; `/users/{id}` and `/users/{userId}` count as the same path |
+| auth (collection, folder, request) | `securitySchemes` in the converted spec; generated clients leave auth to your dio interceptors |
+| collection variables | resolved in URLs, headers and bodies; values become examples and server defaults |
+| scripts, tests, cookies, proxy, certificates | dropped |
+
+- **Inferred models:** no field is `required`, so every field is nullable.
+  Integers mixed with decimals become `double`. A string becomes `DateTime`
+  only when every sample is an RFC 3339 timestamp. Values of different JSON
+  kinds become a sealed union when one of them is an array or an object,
+  else `dynamic`. Objects whose keys are all numbers, UUIDs or
+  dates become a `Map`.
+- **Secrets:** credential values (passwords, tokens, client secrets, API key
+  values, private keys), and variables holding them, are never copied into
+  examples, defaults or descriptions. Identifiers such as usernames and
+  client ids are kept.
+- **v3 directories:** gRPC, WebSocket, Socket.IO, MQTT, MCP and LLM requests
+  are skipped with a warning, since they are not HTTP.
+- Requests without a saved example have no typed response.
+
+Every property of the official v2.1.0 collection schema is listed, as mapped
+or dropped with the reason, in the converter's
+[coverage table](https://github.com/masreplay/api_spec_to_dart/blob/main/packages/postman_collection/test/convert/coverage_test.dart);
+a test fails when the schema has a property the table does not list. The
+converter is also usable on its own: `postmanToOpenApi` in
+[postman_collection](https://pub.dev/packages/postman_collection).
+
+### Swagger 2.0
+
+Converted to OpenAPI 3.0.3 the way
+[swagger2openapi](https://github.com/Mermade/oas-kit) does: `definitions`,
+`parameters` and `responses` move to `components` (refs follow; keys like
+`Page«Pet»` become valid names such as `Page_Pet_`), `body` and `formData`
+parameters become request bodies (`type: file` is binary), `consumes`/
+`produces` become media types, `host` + `basePath` + `schemes` become
+`servers`, `securityDefinitions` become `securitySchemes`, `x-nullable`
+becomes `nullable`, and `collectionFormat` becomes `style`/`explode`
+(`tsv` has no OpenAPI 3 equivalent and is kept as `x-collectionFormat`).
+
+### JSON Schema
+
+A JSON Schema document (any draft) generates models only. Each entry of
+`definitions` or `$defs` becomes a model named by its **key** (definition
+titles are ignored). The root schema becomes a model named by its `title`,
+else by the input file name (`collection.json` gives `Collection`), unless
+it only holds definitions. `#/definitions/…`, `#/$defs/…` and `#` refs are
+rewritten. Postman's own collection schema is generated this way into
+[postman_collection](https://pub.dev/packages/postman_collection)'s models.
+
 ## Configuration Options
 
 The package configuration is defined in a `swagger_to_dart.yaml` file. Every
@@ -209,16 +311,18 @@ key, with its default:
 
 ```yaml
 swagger_to_dart:
-  # Fetch the spec from a URL instead of only reading `input_directory`.
-  # On success, `input_directory` is overwritten with the fetched JSON
-  # (pretty-printed) so it stays a fresh local copy. On failure, generation
+  # Fetch the spec (JSON or YAML, any supported format) from a URL instead
+  # of only reading `input_directory`. On success, `input_directory` is
+  # overwritten with the fetched document as pretty-printed JSON so it stays
+  # a fresh local copy. On failure, generation
   # falls back to the existing local copy with a loud console warning
   # naming its age; with no local copy either, generation fails.
   # Default: unset (read `input_directory` only).
   url: https://api.example.com/openapi.json
 
-  # Local OpenAPI JSON file: read directly when `url` is unset, and used as
-  # the fetch/refresh target when it is set.
+  # The input: a JSON or YAML file in any supported format (see Inputs), or
+  # a Postman v3 collection directory. Read directly when `url` is unset,
+  # and used as the fetch/refresh target when it is set.
   input_directory: schema/swagger.json # default
 
   # Where generated models and API clients are written.
@@ -267,6 +371,12 @@ swagger_to_dart:
     # models and their file names. Default: [].
     remove_model_prefixes: []
 
+    # Prepended once to every generated model name: component and inline
+    # classes, enums, unions and typedefs, and their file names (`Postman`
+    # turns `Item` into `PostmanItem` in `postman_item.dart`). Core types
+    # such as `String` or `List` are never prefixed. Default: unset.
+    class_prefix: Postman
+
     # Opt-in per-enum member renaming, keyed by the enum's schema name or
     # generated Dart class name; the inner map is the raw enum value (as a
     # string — works for string and integer enums) to the desired Dart
@@ -296,12 +406,29 @@ swagger_to_dart:
 
     # Default each generated method's `@Extras()` to that operation's
     # OpenAPI metadata (tags, operationId, parameters, responses), readable
-    # via `options.extra` in a Dio interceptor. Set to `false` to stop
-    # embedding it. Default: true.
+    # via `options.extra` in a Dio interceptor. `example`/`examples` (and
+    # Swagger 2.0 `x-example`/`x-examples`) are left out, so sample data is
+    # not compiled into the app. Set to `false` to stop embedding it.
+    # Default: true.
     include_openapi_extras: true
 ```
 
-## Unions
+## Generated models
+
+- **Inline objects** (a schema with `properties` that is not a component)
+  become models named by where they are used: the response of `getUser` is
+  `GetUserResponse`, the body of `updateUser` is `UpdateUserBody`, the
+  `address` property of `GetUserResponse` is `GetUserResponseAddress`, array
+  items end in `Item` and map values in `Value`. A `title` names the model instead, unless a
+  component, another model or a `dart:core`/dio type already has that name.
+  Inline objects used as parameters, and objects without `properties`, stay
+  `Map<String, dynamic>`.
+- **Components that are not objects** (arrays, maps, primitives and `$ref`
+  aliases) become typedefs, e.g. `typedef Pets = List<Pet>;`.
+- **`model.class_prefix`** prefixes every model name once (see
+  Configuration Options).
+
+### Unions
 
 A component schema that is a `oneOf`/`anyOf` of `$ref`s generates a `sealed`
 class with one `final` subclass per variant, plus a fallback variant when
@@ -331,6 +458,31 @@ final label = switch (animal) {
 
 print(animal.toJson()); // flat JSON, discriminator included
 ```
+
+### Mixed unions
+
+A `oneOf`/`anyOf`, or a type array such as `[string, object]`, that mixes
+JSON kinds with at least one array or object also generates a `sealed`
+class. Its `fromJson(Object? json)` switches on the JSON kind first, then
+on the discriminator or keys among object variants. Cases are named
+`string`, `integer`, `number`, `boolean`, `list`, `object`, or after the
+referenced schema; an `integer` and a `number` variant merge into one
+`number` case (`double`). Object variants that each pin one `const` property to a different value
+are discriminated by it.
+
+```dart
+final Url url = Url.fromJson(json); // a String or an object
+
+final raw = switch (url) {
+  UrlString(:final value) => value,
+  UrlObject(:final value) => value.raw,
+};
+```
+
+Mixes of primitives only (`string | integer`) stay `dynamic`. Mixed unions
+used as parameters or request bodies are `dynamic`, and a list or map of
+them as a response is `List<Object?>` / `Map<String, Object?>` (decode the
+items with `Url.fromJson`).
 
 ## Handling Breaking Changes
 

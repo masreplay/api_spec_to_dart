@@ -1,6 +1,6 @@
 name: swagger_to_dart
-description: Generates type-safe Dart models (freezed) and retrofit API clients from OpenAPI 3.0/3.1 specifications, with unions, generics and enums.
-version: 5.0.0
+description: Generates freezed models and retrofit API clients from OpenAPI 3.x, Swagger 2.0, Postman collections and JSON Schema, in JSON or YAML.
+version: 6.0.0
 homepage: https://github.com/masreplay/api_spec_to_dart
 repository: https://github.com/masreplay/api_spec_to_dart
 issue_tracker: https://github.com/masreplay/api_spec_to_dart/issues
