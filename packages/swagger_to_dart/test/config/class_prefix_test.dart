@@ -241,4 +241,28 @@ swagger_to_dart:
       contains('class PostmanBaseResponse<T>'),
     );
   });
+
+  test('model.class_prefix must be an ASCII PascalCase word', () {
+    for (final prefix in ['postman', '1Api', 'My-Api', 'Ünï', "''"]) {
+      expect(
+        () => _config('swagger_to_dart:\n  model:\n    class_prefix: $prefix'),
+        throwsA(
+          isA<FormatException>().having(
+            (e) => e.message,
+            'message',
+            contains('class_prefix'),
+          ),
+        ),
+        reason: prefix,
+      );
+    }
+    for (final prefix in ['Postman', 'Api2', 'X']) {
+      expect(
+        _config(
+          'swagger_to_dart:\n  model:\n    class_prefix: $prefix',
+        ).model.classPrefix,
+        prefix,
+      );
+    }
+  });
 }
