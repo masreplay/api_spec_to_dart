@@ -1,0 +1,12 @@
+export 'schema_color.dart';
+export 'schema_empty.dart';
+export 'schema_empty2.dart';
+export 'schema_empty3.dart';
+export 'schema_empty4_object_value.dart';
+export 'schema_empty4_object2_value.dart';
+export 'schema_empty4.dart';
+export 'schema.dart';
+export 'schema2.dart';
+export 'get_people_id_response.dart';
+export 'create_person_body_kind.dart';
+export 'create_person_body.dart';

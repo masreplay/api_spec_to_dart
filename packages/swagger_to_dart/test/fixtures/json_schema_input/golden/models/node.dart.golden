@@ -1,0 +1,47 @@
+/// node
+///
+/// ```json
+/// {
+///     "properties": {
+///         "label": {
+///             "type": "string",
+///             "title": "Node label"
+///         },
+///         "children": {
+///             "type": "array",
+///             "items": {
+///                 "$ref": "#/components/schemas/node"
+///             }
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "label"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'node.freezed.dart';
+part 'node.g.dart';
+
+@freezed
+abstract class Node with _$Node {
+  const Node._();
+
+  @jsonSerializable
+  const factory Node({
+    /// label
+    @JsonKey(name: Node.labelKey_) required String label,
+
+    /// children
+    @JsonKey(name: Node.childrenKey_) List<Node>? children,
+  }) = _Node;
+
+  factory Node.fromJson(Map<String, dynamic> json) => _$NodeFromJson(json);
+
+  static const String labelKey_ = 'label';
+
+  static const String childrenKey_ = 'children';
+}

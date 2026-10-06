@@ -1,0 +1,88 @@
+/// Owner
+///
+/// ```json
+/// {
+///     "properties": {
+///         "pets": {
+///             "$ref": "#/components/schemas/Pets"
+///         },
+///         "tags": {
+///             "$ref": "#/components/schemas/Tags"
+///         },
+///         "id": {
+///             "$ref": "#/components/schemas/PetId"
+///         },
+///         "best": {
+///             "$ref": "#/components/schemas/Animal"
+///         },
+///         "levels": {
+///             "$ref": "#/components/schemas/Levels"
+///         },
+///         "method": {
+///             "$ref": "#/components/schemas/Method"
+///         },
+///         "scalar": {
+///             "$ref": "#/components/schemas/Scalar"
+///         },
+///         "behavior": {
+///             "$ref": "#/components/schemas/Behavior"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'owner.freezed.dart';
+part 'owner.g.dart';
+
+@freezed
+abstract class Owner with _$Owner {
+  const Owner._();
+
+  @jsonSerializable
+  const factory Owner({
+    /// pets
+    @JsonKey(name: Owner.petsKey_) Pets? pets,
+
+    /// tags
+    @JsonKey(name: Owner.tagsKey_) Tags? tags,
+
+    /// id
+    @JsonKey(name: Owner.idKey_) PetId? id,
+
+    /// best
+    @JsonKey(name: Owner.bestKey_) Animal? best,
+
+    /// levels
+    @JsonKey(name: Owner.levelsKey_) Levels? levels,
+
+    /// method
+    @JsonKey(name: Owner.methodKey_) Method2? method,
+
+    /// scalar
+    @JsonKey(name: Owner.scalarKey_) Scalar? scalar,
+
+    /// behavior
+    @JsonKey(name: Owner.behaviorKey_) Behavior? behavior,
+  }) = _Owner;
+
+  factory Owner.fromJson(Map<String, dynamic> json) => _$OwnerFromJson(json);
+
+  static const String petsKey_ = 'pets';
+
+  static const String tagsKey_ = 'tags';
+
+  static const String idKey_ = 'id';
+
+  static const String bestKey_ = 'best';
+
+  static const String levelsKey_ = 'levels';
+
+  static const String methodKey_ = 'method';
+
+  static const String scalarKey_ = 'scalar';
+
+  static const String behaviorKey_ = 'behavior';
+}

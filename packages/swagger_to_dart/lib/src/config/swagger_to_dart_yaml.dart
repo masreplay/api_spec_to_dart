@@ -70,6 +70,11 @@ abstract class ModelConfig with _$ModelConfig {
     @JsonKey(name: 'remove_model_prefixes')
     List<String> removeModelPrefixes,
 
+    /// Prepended to every generated model class (components, inline
+    /// objects, enums and unions): `Postman` turns `Item` into
+    /// `PostmanItem` in `postman_item.dart`.
+    @JsonKey(name: 'class_prefix') String? classPrefix,
+
     /// Opt-in per-enum member renaming. Keyed by the enum's swagger schema
     /// name OR its generated Dart class name; the inner map is the raw enum
     /// value (as a string — works for both integer and string enums) to the
@@ -88,8 +93,18 @@ abstract class ModelConfig with _$ModelConfig {
     Map<String, Map<String, String>> enums,
   }) = _ModelConfig;
 
-  factory ModelConfig.fromJson(Map<String, dynamic> json) =>
-      _$ModelConfigFromJson(json);
+  factory ModelConfig.fromJson(Map<String, dynamic> json) {
+    final config = _$ModelConfigFromJson(json);
+    if (config.classPrefix case final prefix?
+        when !RegExp(r'^[A-Z][A-Za-z0-9]*$').hasMatch(prefix)) {
+      throw FormatException(
+        'swagger_to_dart: model.class_prefix must start with an ASCII '
+        'capital letter followed by ASCII letters or digits (e.g. Postman)',
+        prefix,
+      );
+    }
+    return config;
+  }
 }
 
 @freezed

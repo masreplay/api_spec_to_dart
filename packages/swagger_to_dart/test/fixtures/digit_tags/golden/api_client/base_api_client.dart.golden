@@ -1,0 +1,38 @@
+import 'package:dio/dio.dart';
+import 'package:retrofit/retrofit.dart';
+
+import 'exports.dart';
+
+/// Digit tags
+///
+/// ```json
+/// {
+///     "title": "Digit tags",
+///     "version": "1.0.0"
+/// }
+/// ```
+class BaseApiClient {
+  BaseApiClient(this.dio, {this.baseUrl, this.errorLogger});
+
+  final String? baseUrl;
+
+  final Dio dio;
+
+  final ParseErrorLogger? errorLogger;
+
+  AuthClient get authClient {
+    return AuthClient(dio, baseUrl: baseUrl, errorLogger: errorLogger);
+  }
+
+  UsersClient get usersClient {
+    return UsersClient(dio, baseUrl: baseUrl, errorLogger: errorLogger);
+  }
+
+  FaClient get faClient {
+    return FaClient(dio, baseUrl: baseUrl, errorLogger: errorLogger);
+  }
+
+  FaVerifyClient get faVerifyClient {
+    return FaVerifyClient(dio, baseUrl: baseUrl, errorLogger: errorLogger);
+  }
+}

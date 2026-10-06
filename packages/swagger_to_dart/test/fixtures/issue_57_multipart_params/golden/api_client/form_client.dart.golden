@@ -66,6 +66,52 @@ abstract class FormClient {
       },
     },
   });
+  @POST('/free')
+  @MultiPart()
+  Future<HttpResponse> sendFree_({
+    @Part() required Map<String, dynamic> requestBody,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['form'],
+      'operationId': 'sendFree',
+      'requestBody': {
+        'content': {
+          'multipart/form-data': {
+            'schema': {'\$ref': '#/components/schemas/Free'},
+          },
+        },
+      },
+      'responses': {
+        '204': {'description': 'OK'},
+      },
+    },
+  });
+  @POST('/alias')
+  @MultiPart()
+  Future<HttpResponse> sendAlias_({
+    @Part() required Map<String, dynamic> requestBody,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['form'],
+      'operationId': 'sendAlias',
+      'requestBody': {
+        'content': {
+          'multipart/form-data': {
+            'schema': {'\$ref': '#/components/schemas/FreeAlias'},
+          },
+        },
+      },
+      'responses': {
+        '204': {'description': 'OK'},
+      },
+    },
+  });
 }
 
 extension FormClientX on FormClient {
@@ -122,10 +168,71 @@ extension FormClientX on FormClient {
     },
   }) {
     return updateForm_(
-      requestBody: requestBody.toJson(),
+      requestBody: requestBody.toJson()
+        ..removeWhere((_, value) => value == null),
       id: id,
       trace: trace,
       page: page,
+      extras: extras,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+  }
+
+  Future<HttpResponse> sendFree({
+    required Free requestBody,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['form'],
+      'operationId': 'sendFree',
+      'requestBody': {
+        'content': {
+          'multipart/form-data': {
+            'schema': {'\$ref': '#/components/schemas/Free'},
+          },
+        },
+      },
+      'responses': {
+        '204': {'description': 'OK'},
+      },
+    },
+  }) {
+    return sendFree_(
+      requestBody: requestBody,
+      extras: extras,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+  }
+
+  Future<HttpResponse> sendAlias({
+    required FreeAlias requestBody,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['form'],
+      'operationId': 'sendAlias',
+      'requestBody': {
+        'content': {
+          'multipart/form-data': {
+            'schema': {'\$ref': '#/components/schemas/FreeAlias'},
+          },
+        },
+      },
+      'responses': {
+        '204': {'description': 'OK'},
+      },
+    },
+  }) {
+    return sendAlias_(
+      requestBody: requestBody,
       extras: extras,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,

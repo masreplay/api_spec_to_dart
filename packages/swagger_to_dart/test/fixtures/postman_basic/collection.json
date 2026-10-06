@@ -1,0 +1,85 @@
+{
+  "info": {
+    "name": "Shop",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [{ "key": "baseUrl", "value": "https://api.shop.test" }],
+  "item": [
+    {
+      "name": "Users",
+      "description": "Accounts",
+      "item": [
+        {
+          "name": "Get user",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/users/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["users", ":id"],
+              "variable": [{ "key": "id", "value": "7", "type": "number" }]
+            }
+          },
+          "response": [
+            {
+              "name": "Found",
+              "code": 200,
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\"id\": 7, \"name\": \"Ada\", \"createdAt\": \"2024-01-02T03:04:05Z\", \"address\": {\"city\": \"Baghdad\"}}"
+            }
+          ]
+        },
+        {
+          "name": "List users",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/users?page=1",
+              "host": ["{{baseUrl}}"],
+              "path": ["users"],
+              "query": [{ "key": "page", "value": "1" }]
+            }
+          },
+          "response": [
+            {
+              "name": "Page",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "body": "[{\"id\": 1, \"name\": \"Ada\"}, {\"id\": 2, \"name\": \"Grace\"}]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "Create order",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/orders",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"items\": [{\"sku\": \"A1\", \"quantity\": 2}]}",
+              "options": { "raw": { "language": "json" } }
+            }
+          },
+          "response": [
+            {
+              "name": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "body": "{\"id\": \"o-1\", \"total\": 9.5}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Health",
+      "request": { "method": "GET", "url": "{{baseUrl}}/health" }
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+/// PetOrFree
+///
+/// ```json
+/// {
+///     "description": "A model, a free-form object and a string: maps without `name` are Free.",
+///     "oneOf": [
+///         {
+///             "$ref": "#/components/schemas/Pet"
+///         },
+///         {
+///             "$ref": "#/components/schemas/Free"
+///         },
+///         {
+///             "type": "string"
+///         }
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'pet_or_free.g.dart';
+
+sealed class PetOrFree {
+  const PetOrFree();
+
+  const factory PetOrFree.pet(Pet value) = PetOrFreePet;
+  const factory PetOrFree.free(Free value) = PetOrFreeFree;
+  const factory PetOrFree.string(String value) = PetOrFreeString;
+
+  factory PetOrFree.fromJson(Object? json) => switch (json) {
+    String() => PetOrFreeString(json),
+    Map<String, dynamic>() => _fromMap(json),
+    _ => throw ArgumentError.value(
+      json,
+      'json',
+      'No PetOrFree variant matches',
+    ),
+  };
+
+  static PetOrFree _fromMap(Map<String, dynamic> json) {
+    // No discriminator in the spec: the variant whose required keys are all
+    // present and that declares the most of the payload's keys wins (the
+    // earlier one on a tie).
+    const variants = <({Set<String> required, Set<String> declared})>[
+      (required: {'name'}, declared: {'name'}),
+      (required: <String>{}, declared: <String>{}),
+    ];
+    var best = -1;
+    var bestScore = -1;
+    for (var i = 0; i < variants.length; i++) {
+      final variant = variants[i];
+      if (!variant.required.every(json.containsKey)) continue;
+      final score = json.keys.where(variant.declared.contains).length;
+      if (score > bestScore) {
+        best = i;
+        bestScore = score;
+      }
+    }
+    return switch (best) {
+      0 => PetOrFreePet(Pet.fromJson(json)),
+      1 => _$PetOrFreeFreeFromJson({'value': json}),
+      _ => throw ArgumentError.value(
+        json,
+        'json',
+        'No PetOrFree variant matches',
+      ),
+    };
+  }
+
+  Object? toJson();
+}
+
+final class PetOrFreePet extends PetOrFree {
+  const PetOrFreePet(this.value);
+
+  final Pet value;
+
+  @override
+  Object? toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) =>
+      other is PetOrFreePet && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'PetOrFree.pet($value)';
+}
+
+@jsonSerializable
+final class PetOrFreeFree extends PetOrFree {
+  const PetOrFreeFree(this.value);
+
+  @JsonKey(name: 'value')
+  final Free value;
+
+  @override
+  Object? toJson() => _$PetOrFreeFreeToJson(this)['value'];
+
+  @override
+  bool operator ==(Object other) =>
+      other is PetOrFreeFree &&
+      const DeepCollectionEquality().equals(other.value, value);
+
+  @override
+  int get hashCode => const DeepCollectionEquality().hash(value);
+
+  @override
+  String toString() => 'PetOrFree.free($value)';
+}
+
+final class PetOrFreeString extends PetOrFree {
+  const PetOrFreeString(this.value);
+
+  final String value;
+
+  @override
+  Object? toJson() => value;
+
+  @override
+  bool operator ==(Object other) =>
+      other is PetOrFreeString && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'PetOrFree.string($value)';
+}

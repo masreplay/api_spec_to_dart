@@ -1,0 +1,46 @@
+/// UploadPetPhotoBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "file": {
+///             "type": "string",
+///             "format": "binary",
+///             "description": "The photo"
+///         },
+///         "caption": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "file"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'upload_pet_photo_body.freezed.dart';
+part 'upload_pet_photo_body.g.dart';
+
+@freezed
+abstract class UploadPetPhotoBody with _$UploadPetPhotoBody {
+  const UploadPetPhotoBody._();
+
+  @jsonSerializable
+  const factory UploadPetPhotoBody({
+    /// file
+    @JsonKey(name: UploadPetPhotoBody.fileKey_) required MultipartFile file,
+
+    /// caption
+    @JsonKey(name: UploadPetPhotoBody.captionKey_) String? caption,
+  }) = _UploadPetPhotoBody;
+
+  factory UploadPetPhotoBody.fromJson(Map<String, dynamic> json) =>
+      _$UploadPetPhotoBodyFromJson(json);
+
+  static const String fileKey_ = 'file';
+
+  static const String captionKey_ = 'caption';
+}

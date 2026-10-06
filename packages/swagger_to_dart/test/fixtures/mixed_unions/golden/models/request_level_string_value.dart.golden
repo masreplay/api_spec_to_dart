@@ -1,0 +1,32 @@
+/// RequestLevelStringValue
+///
+/// ```json
+/// {
+///     "properties": {},
+///     "type": "string",
+///     "enum": [
+///         "low",
+///         "high"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'request_level_string_value.g.dart';
+
+@JsonEnum(alwaysCreate: true)
+enum RequestLevelStringValue {
+  @JsonValue('low')
+  low,
+  @JsonValue('high')
+  high;
+
+  factory RequestLevelStringValue.fromJson(String json) =>
+      RequestLevelStringValue.values.firstWhere(
+        (e) => e.toJson() == json,
+        orElse: () => throw ArgumentError('Invalid RequestLevelStringValue'),
+      );
+
+  String toJson() => _$RequestLevelStringValueEnumMap[this]!;
+}

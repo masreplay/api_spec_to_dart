@@ -1,5 +1,6 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:swagger_to_dart/src/code/string.dart';
+import 'package:swagger_to_dart/src/utils/warning.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 ///
@@ -37,10 +38,13 @@ class EnumModelGeneratorStrategy
     extends ModelGeneratorStrategy<MapEntry<String, OpenApiSchemas>> {
   const EnumModelGeneratorStrategy(super.context);
 
+  /// [name] is the class name as is (inline enums are named before they are
+  /// built); components look theirs up.
   @override
-  Library build(MapEntry<String, OpenApiSchemas> model) {
+  Library build(MapEntry<String, OpenApiSchemas> model, {String? name}) {
     final prefixes = context.config.model.removeModelPrefixes;
     final className =
+        name ??
         context.componentClassNames[model.key] ??
         Renaming.instance.renameClass(
           model.key,
@@ -63,8 +67,8 @@ class EnumModelGeneratorStrategy
       final actualValues = values.map((v) => v.toString()).toSet();
       for (final key in enumOverrides.keys) {
         if (!actualValues.contains(key)) {
-          print(
-            'swagger_to_dart: warning: enum "${model.key}" has no value "$key" '
+          printWarning(
+            'enum "${model.key}" has no value "$key" '
             'configured under model.enums — ignoring it.',
           );
         }
@@ -187,11 +191,12 @@ class EnumModelGeneratorStrategy
     );
     final names = <String, String>{}; // value -> member name
     final seen = <String, String>{}; // member name -> value
-    for (final value in values) {
+    for (final (i, value) in values.indexed) {
       final key = '$value';
       final name = Renaming.instance.renameEnumValue(
         value,
         overrideName: renames[key],
+        position: i + 1,
       );
       if (seen[name] case final clash?) {
         throw ArgumentError(

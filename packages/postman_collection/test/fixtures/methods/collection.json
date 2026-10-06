@@ -1,0 +1,35 @@
+{
+  "info": {
+    "name": "Methods",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    { "name": "Get file", "request": { "method": "GET", "url": "https://dav.example.com/files/:name" }, "response": [] },
+    { "name": "Put file", "request": { "method": "PUT", "url": "https://dav.example.com/files/:name" }, "response": [] },
+    { "name": "Post file", "request": { "method": "POST", "url": "https://dav.example.com/files/:name" }, "response": [] },
+    { "name": "Patch file", "request": { "method": "PATCH", "url": "https://dav.example.com/files/:name" }, "response": [] },
+    { "name": "Delete file", "request": { "method": "DELETE", "url": "https://dav.example.com/files/:name" }, "response": [] },
+    { "name": "Head file", "request": { "method": "HEAD", "url": "https://dav.example.com/files/:name" }, "response": [] },
+    { "name": "File options", "request": { "method": "OPTIONS", "url": "https://dav.example.com/files/:name" }, "response": [] },
+    { "name": "Trace file", "request": { "method": "TRACE", "url": "https://dav.example.com/files/:name" }, "response": [] },
+    { "name": "Copy file", "request": { "method": "COPY", "url": "https://dav.example.com/files/:name" }, "response": [] },
+    { "name": "Link file", "request": { "method": "LINK", "url": "https://dav.example.com/files/:name" }, "response": [] },
+    { "name": "Unlink file", "request": { "method": "UNLINK", "url": "https://dav.example.com/files/:name" }, "response": [] },
+    { "name": "Purge file", "request": { "method": "PURGE", "url": "https://dav.example.com/files/:name" }, "response": [] },
+    { "name": "Lock file", "request": { "method": "LOCK", "url": "https://dav.example.com/files/:name" }, "response": [] },
+    { "name": "Unlock file", "request": { "method": "UNLOCK", "url": "https://dav.example.com/files/:name" }, "response": [] },
+    { "name": "Find properties", "request": { "method": "PROPFIND", "url": "https://dav.example.com/files/:name" }, "response": [] },
+    { "name": "View file", "request": { "method": "VIEW", "url": "https://dav.example.com/files/:name" }, "response": [] },
+    {
+      "name": "Search files",
+      "request": {
+        "method": "QUERY",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\"name\": \"report\"}" },
+        "url": "https://dav.example.com/files"
+      },
+      "response": []
+    },
+    { "name": "Custom", "request": { "method": "MKCALENDAR", "url": "https://dav.example.com/calendars/:name" }, "response": [] }
+  ]
+}

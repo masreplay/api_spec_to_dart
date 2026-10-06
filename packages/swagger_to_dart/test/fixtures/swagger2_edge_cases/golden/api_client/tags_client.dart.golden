@@ -1,0 +1,51 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+part 'tags_client.g.dart';
+
+@RestApi()
+abstract class TagsClient {
+  factory TagsClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _TagsClient;
+
+  @GET('/tags/{names}')
+  Future<HttpResponse<List<String>>> getTags({
+    @Path('names') required List<String> names,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['tags'],
+      'operationId': 'getTags',
+      'parameters': [
+        {
+          'name': 'names',
+          'in': 'path',
+          'required': true,
+          'style': 'simple',
+          'explode': false,
+          'schema': {
+            'type': 'array',
+            'items': {'type': 'string'},
+          },
+        },
+      ],
+      'responses': {
+        '200': {
+          'description': 'The tags',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'array',
+                'items': {'type': 'string'},
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+}

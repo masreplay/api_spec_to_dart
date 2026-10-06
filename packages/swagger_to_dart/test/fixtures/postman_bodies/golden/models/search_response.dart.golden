@@ -1,0 +1,52 @@
+/// SearchResponse
+///
+/// ```json
+/// {
+///     "properties": {
+///         "hits": {
+///             "type": "array",
+///             "items": {
+///                 "type": "object",
+///                 "properties": {
+///                     "id": {
+///                         "type": "integer"
+///                     },
+///                     "score": {
+///                         "type": "number"
+///                     }
+///                 }
+///             }
+///         },
+///         "total": {
+///             "type": "integer"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'search_response.freezed.dart';
+part 'search_response.g.dart';
+
+@freezed
+abstract class SearchResponse with _$SearchResponse {
+  const SearchResponse._();
+
+  @jsonSerializable
+  const factory SearchResponse({
+    /// hits
+    @JsonKey(name: SearchResponse.hitsKey_) List<SearchResponseHitsItem>? hits,
+
+    /// total
+    @JsonKey(name: SearchResponse.totalKey_) int? total,
+  }) = _SearchResponse;
+
+  factory SearchResponse.fromJson(Map<String, dynamic> json) =>
+      _$SearchResponseFromJson(json);
+
+  static const String hitsKey_ = 'hits';
+
+  static const String totalKey_ = 'total';
+}

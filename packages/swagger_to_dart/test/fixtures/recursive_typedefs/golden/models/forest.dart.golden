@@ -1,0 +1,15 @@
+/// Forest
+///
+/// ```json
+/// {
+///     "type": "array",
+///     "items": {
+///         "$ref": "#/components/schemas/Branch"
+///     }
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+typedef Forest = List<Branch>;

@@ -1,0 +1,45 @@
+/// NewNote
+///
+/// ```json
+/// {
+///     "properties": {
+///         "text": {
+///             "type": "string"
+///         },
+///         "pinned": {
+///             "type": "boolean",
+///             "default": false
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "text"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'new_note.freezed.dart';
+part 'new_note.g.dart';
+
+@freezed
+abstract class NewNote with _$NewNote {
+  const NewNote._();
+
+  @jsonSerializable
+  const factory NewNote({
+    /// text
+    @JsonKey(name: NewNote.textKey_) required String text,
+
+    /// pinned
+    @Default(false) @JsonKey(name: NewNote.pinnedKey_) bool pinned,
+  }) = _NewNote;
+
+  factory NewNote.fromJson(Map<String, dynamic> json) =>
+      _$NewNoteFromJson(json);
+
+  static const String textKey_ = 'text';
+
+  static const String pinnedKey_ = 'pinned';
+}

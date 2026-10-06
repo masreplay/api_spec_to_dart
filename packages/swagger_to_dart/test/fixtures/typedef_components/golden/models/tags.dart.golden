@@ -1,0 +1,13 @@
+/// Tags
+///
+/// ```json
+/// {
+///     "type": "object",
+///     "additionalProperties": {
+///         "type": "string"
+///     }
+/// }
+/// ```
+library;
+
+typedef Tags = Map<String, String>;

@@ -1,0 +1,65 @@
+/// UrlEncodedParameter
+///
+/// ```json
+/// {
+///     "properties": {
+///         "key": {
+///             "type": "string"
+///         },
+///         "value": {
+///             "type": "string"
+///         },
+///         "disabled": {
+///             "type": "boolean",
+///             "default": false
+///         },
+///         "description": {
+///             "$ref": "#/components/schemas/description"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "key"
+///     ],
+///     "title": "UrlEncodedParameter"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'url_encoded_parameter.freezed.dart';
+part 'url_encoded_parameter.g.dart';
+
+@freezed
+abstract class UrlEncodedParameter with _$UrlEncodedParameter {
+  const UrlEncodedParameter._();
+
+  @jsonSerializable
+  const factory UrlEncodedParameter({
+    /// key
+    @JsonKey(name: UrlEncodedParameter.keyKey_) required String key,
+
+    /// value
+    @JsonKey(name: UrlEncodedParameter.valueKey_) String? value,
+
+    /// disabled
+    @Default(false)
+    @JsonKey(name: UrlEncodedParameter.disabledKey_)
+    bool disabled,
+
+    /// description
+    @JsonKey(name: UrlEncodedParameter.descriptionKey_)
+    Description? description,
+  }) = _UrlEncodedParameter;
+
+  factory UrlEncodedParameter.fromJson(Map<String, dynamic> json) =>
+      _$UrlEncodedParameterFromJson(json);
+
+  static const String keyKey_ = 'key';
+
+  static const String valueKey_ = 'value';
+
+  static const String disabledKey_ = 'disabled';
+
+  static const String descriptionKey_ = 'description';
+}

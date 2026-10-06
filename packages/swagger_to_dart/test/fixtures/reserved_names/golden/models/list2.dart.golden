@@ -1,0 +1,35 @@
+/// List
+///
+/// ```json
+/// {
+///     "properties": {
+///         "items": {
+///             "type": "array",
+///             "items": {
+///                 "type": "string"
+///             }
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'list2.freezed.dart';
+part 'list2.g.dart';
+
+@freezed
+abstract class List2 with _$List2 {
+  const List2._();
+
+  @jsonSerializable
+  const factory List2({
+    /// items
+    @JsonKey(name: List2.itemsKey_) List<String>? items,
+  }) = _List2;
+
+  factory List2.fromJson(Map<String, dynamic> json) => _$List2FromJson(json);
+
+  static const String itemsKey_ = 'items';
+}

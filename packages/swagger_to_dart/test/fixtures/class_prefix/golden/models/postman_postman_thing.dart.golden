@@ -1,0 +1,34 @@
+/// PostmanThing
+///
+/// ```json
+/// {
+///     "properties": {
+///         "v": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object",
+///     "description": "A name that starts with the prefix still gets it, once."
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'postman_postman_thing.freezed.dart';
+part 'postman_postman_thing.g.dart';
+
+@freezed
+abstract class PostmanPostmanThing with _$PostmanPostmanThing {
+  const PostmanPostmanThing._();
+
+  @jsonSerializable
+  const factory PostmanPostmanThing({
+    /// v
+    @JsonKey(name: PostmanPostmanThing.vKey_) String? v,
+  }) = _PostmanPostmanThing;
+
+  factory PostmanPostmanThing.fromJson(Map<String, dynamic> json) =>
+      _$PostmanPostmanThingFromJson(json);
+
+  static const String vKey_ = 'v';
+}

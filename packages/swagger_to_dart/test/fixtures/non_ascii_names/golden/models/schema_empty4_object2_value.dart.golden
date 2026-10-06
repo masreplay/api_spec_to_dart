@@ -1,0 +1,36 @@
+/// SchemaEmpty4Object2Value
+///
+/// ```json
+/// {
+///     "properties": {
+///         "iban": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "iban"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'schema_empty4_object2_value.freezed.dart';
+part 'schema_empty4_object2_value.g.dart';
+
+@freezed
+abstract class SchemaEmpty4Object2Value with _$SchemaEmpty4Object2Value {
+  const SchemaEmpty4Object2Value._();
+
+  @jsonSerializable
+  const factory SchemaEmpty4Object2Value({
+    /// iban
+    @JsonKey(name: SchemaEmpty4Object2Value.ibanKey_) required String iban,
+  }) = _SchemaEmpty4Object2Value;
+
+  factory SchemaEmpty4Object2Value.fromJson(Map<String, dynamic> json) =>
+      _$SchemaEmpty4Object2ValueFromJson(json);
+
+  static const String ibanKey_ = 'iban';
+}

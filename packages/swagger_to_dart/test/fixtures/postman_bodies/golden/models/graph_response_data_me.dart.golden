@@ -1,0 +1,33 @@
+/// GraphResponseDataMe
+///
+/// ```json
+/// {
+///     "properties": {
+///         "id": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'graph_response_data_me.freezed.dart';
+part 'graph_response_data_me.g.dart';
+
+@freezed
+abstract class GraphResponseDataMe with _$GraphResponseDataMe {
+  const GraphResponseDataMe._();
+
+  @jsonSerializable
+  const factory GraphResponseDataMe({
+    /// id
+    @JsonKey(name: GraphResponseDataMe.idKey_) String? id,
+  }) = _GraphResponseDataMe;
+
+  factory GraphResponseDataMe.fromJson(Map<String, dynamic> json) =>
+      _$GraphResponseDataMeFromJson(json);
+
+  static const String idKey_ = 'id';
+}

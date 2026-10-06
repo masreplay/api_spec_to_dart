@@ -1,0 +1,31 @@
+/// SchemaEmpty2
+///
+/// ```json
+/// {
+///     "properties": {},
+///     "type": "string",
+///     "enum": [
+///         "happy",
+///         "sad"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'schema_empty2.g.dart';
+
+@JsonEnum(alwaysCreate: true)
+enum SchemaEmpty2 {
+  @JsonValue('happy')
+  happy,
+  @JsonValue('sad')
+  sad;
+
+  factory SchemaEmpty2.fromJson(String json) => SchemaEmpty2.values.firstWhere(
+    (e) => e.toJson() == json,
+    orElse: () => throw ArgumentError('Invalid SchemaEmpty2'),
+  );
+
+  String toJson() => _$SchemaEmpty2EnumMap[this]!;
+}

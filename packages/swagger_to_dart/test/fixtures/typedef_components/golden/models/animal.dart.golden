@@ -1,0 +1,12 @@
+/// Animal
+///
+/// ```json
+/// {
+///     "$ref": "#/components/schemas/Pet"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+typedef Animal = Pet;

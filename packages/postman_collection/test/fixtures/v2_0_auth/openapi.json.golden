@@ -1,0 +1,114 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "Version 2.0",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://orders.example.com"
+    }
+  ],
+  "security": [
+    {
+      "oauth2": [
+        "orders:read",
+        "orders:write"
+      ]
+    }
+  ],
+  "tags": [
+    {
+      "name": "Orders"
+    }
+  ],
+  "paths": {
+    "/orders": {
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "List orders",
+        "operationId": "listOrders",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/orders/export": {
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Export orders",
+        "operationId": "exportOrders",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/csv": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {
+                  "CSV": {
+                    "value": "id,total\n1,10"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apikey": []
+          }
+        ]
+      }
+    },
+    "/status": {
+      "get": {
+        "summary": "Status",
+        "operationId": "status",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "oauth2": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://auth.example.com/token",
+            "scopes": {
+              "orders:read": "",
+              "orders:write": ""
+            }
+          }
+        }
+      },
+      "basic": {
+        "type": "http",
+        "scheme": "basic"
+      },
+      "apikey": {
+        "type": "apiKey",
+        "name": "X-Export-Key",
+        "in": "header"
+      }
+    }
+  }
+}

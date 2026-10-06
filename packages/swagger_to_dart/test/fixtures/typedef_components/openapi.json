@@ -1,0 +1,86 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Typedef components", "version": "1.0.0" },
+  "paths": {
+    "/pets": {
+      "get": {
+        "tags": ["pets"],
+        "operationId": "listPets",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Pets" } } }
+          }
+        }
+      }
+    },
+    "/pets/page": {
+      "get": {
+        "tags": ["pets"],
+        "operationId": "pagePets",
+        "responses": {
+          "200": {
+            "description": "A typedef as a generic argument",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/BaseResponse_Pets_" } }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Pet": {
+        "type": "object",
+        "properties": { "name": { "type": "string" } }
+      },
+      "Pets": { "type": "array", "items": { "$ref": "#/components/schemas/Pet" } },
+      "Tags": { "type": "object", "additionalProperties": { "type": "string" } },
+      "PetId": { "type": "string", "format": "uuid" },
+      "Animal": { "$ref": "#/components/schemas/Pet" },
+      "Levels": {
+        "description": "Its inline enum is LevelsItem, so the typedef keeps its name.",
+        "type": "array",
+        "items": { "type": "string", "enum": ["low", "high"] }
+      },
+      "Method": {
+        "description": "An open enum: one primitive type.",
+        "anyOf": [
+          { "type": "string", "enum": ["GET", "POST"] },
+          { "type": "string" }
+        ]
+      },
+      "Behavior": {
+        "description": "A free-form object (Postman's protocol-profile-behavior): a map.",
+        "type": "object"
+      },
+      "Scalar": {
+        "description": "A primitive-only mix: dynamic.",
+        "oneOf": [{ "type": "string" }, { "type": "integer" }]
+      },
+      "BaseResponse_Pets_": {
+        "title": "BaseResponse[Pets]",
+        "type": "object",
+        "required": ["data", "message"],
+        "properties": {
+          "data": { "$ref": "#/components/schemas/Pets" },
+          "message": { "type": "string" }
+        }
+      },
+      "Owner": {
+        "type": "object",
+        "properties": {
+          "pets": { "$ref": "#/components/schemas/Pets" },
+          "tags": { "$ref": "#/components/schemas/Tags" },
+          "id": { "$ref": "#/components/schemas/PetId" },
+          "best": { "$ref": "#/components/schemas/Animal" },
+          "levels": { "$ref": "#/components/schemas/Levels" },
+          "method": { "$ref": "#/components/schemas/Method" },
+          "scalar": { "$ref": "#/components/schemas/Scalar" },
+          "behavior": { "$ref": "#/components/schemas/Behavior" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,344 @@
+import 'dart:typed_data';
+
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'pets_client.g.dart';
+
+@RestApi()
+abstract class PetsClient {
+  factory PetsClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _PetsClient;
+
+  @GET('/pets')
+  Future<HttpResponse<List<Pet>>> listPets({
+    @Query('pageSize') int pageSize = 20,
+    @Header('X-Trace-Id') String? xTraceId,
+    @Query('tags') List<String>? tags,
+    @Query('ids') List<int>? ids,
+    @Query('names') List<String>? names,
+    @Query('codes') List<String>? codes,
+    @Query('flags') List<String>? flags,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['pets'],
+      'operationId': 'listPets',
+      'parameters': [
+        {
+          'name': 'pageSize',
+          'in': 'query',
+          'schema': {'type': 'integer', 'default': 20},
+        },
+        {
+          'name': 'X-Trace-Id',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'tags',
+          'in': 'query',
+          'style': 'form',
+          'explode': false,
+          'schema': {
+            'type': 'array',
+            'items': {'type': 'string'},
+          },
+        },
+        {
+          'name': 'ids',
+          'in': 'query',
+          'style': 'form',
+          'explode': true,
+          'schema': {
+            'type': 'array',
+            'items': {'type': 'integer'},
+          },
+        },
+        {
+          'name': 'names',
+          'in': 'query',
+          'style': 'spaceDelimited',
+          'explode': false,
+          'schema': {
+            'type': 'array',
+            'items': {'type': 'string'},
+          },
+        },
+        {
+          'name': 'codes',
+          'in': 'query',
+          'style': 'pipeDelimited',
+          'explode': false,
+          'schema': {
+            'type': 'array',
+            'items': {'type': 'string'},
+          },
+        },
+        {
+          'name': 'flags',
+          'in': 'query',
+          'x-collectionFormat': 'tsv',
+          'schema': {
+            'type': 'array',
+            'items': {'type': 'string'},
+          },
+        },
+      ],
+      'responses': {
+        '200': {
+          'description': 'The pets',
+          'headers': {
+            'X-Rate-Limit': {
+              'description': 'Calls left this hour',
+              'schema': {'type': 'integer'},
+            },
+          },
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'array',
+                'items': {'\$ref': '#/components/schemas/Pet'},
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+  @POST('/pets')
+  Future<HttpResponse<Pet>> createPet({
+    @Body() required Pet requestBody,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['pets'],
+      'operationId': 'createPet',
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {'\$ref': '#/components/schemas/Pet'},
+          },
+          'application/xml': {
+            'schema': {'\$ref': '#/components/schemas/Pet'},
+          },
+        },
+        'required': true,
+      },
+      'responses': {
+        '201': {
+          'description': 'Created',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/Pet'},
+            },
+          },
+        },
+      },
+    },
+  });
+  @GET('/pets/{petId}')
+  Future<HttpResponse<Pet>> getPet({
+    @Path('petId') required String petId,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['pets'],
+      'operationId': 'getPet',
+      'responses': {
+        '200': {
+          'description': 'The pet',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/Pet'},
+            },
+          },
+        },
+        '404': {
+          'description': 'Not found',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/Error'},
+            },
+          },
+        },
+      },
+      'parameters': [
+        {
+          'name': 'petId',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'string'},
+        },
+      ],
+    },
+  });
+  @DELETE('/pets/{petId}')
+  Future<HttpResponse> deletePet({
+    @Path('petId') required String petId,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['pets'],
+      'operationId': 'deletePet',
+      'security': [
+        {
+          'code': ['pets:read'],
+        },
+      ],
+      'responses': {
+        '204': {'description': 'Deleted'},
+      },
+      'parameters': [
+        {
+          'name': 'petId',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'string'},
+        },
+      ],
+    },
+  });
+  @GET('/pets/{petId}/photo')
+  @DioResponseType(ResponseType.bytes)
+  Future<HttpResponse<Uint8List>> getPetPhoto({
+    @Path('petId') required String petId,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['pets'],
+      'operationId': 'getPetPhoto',
+      'responses': {
+        '200': {
+          'description': 'The photo',
+          'content': {
+            'image/png': {
+              'schema': {'type': 'string', 'format': 'binary'},
+            },
+          },
+        },
+      },
+      'parameters': [
+        {
+          'name': 'petId',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'string'},
+        },
+      ],
+    },
+  });
+  @POST('/pets/{petId}/photo')
+  @MultiPart()
+  Future<HttpResponse> uploadPetPhoto_({
+    @Part() required Map<String, dynamic> requestBody,
+    @Path('petId') required String petId,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['pets'],
+      'operationId': 'uploadPetPhoto',
+      'requestBody': {
+        'content': {
+          'multipart/form-data': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'file': {
+                  'type': 'string',
+                  'format': 'binary',
+                  'description': 'The photo',
+                },
+                'caption': {'type': 'string'},
+              },
+              'required': ['file'],
+            },
+          },
+        },
+        'required': true,
+      },
+      'responses': {
+        '204': {'description': 'Uploaded'},
+      },
+      'parameters': [
+        {
+          'name': 'petId',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'string'},
+        },
+      ],
+    },
+  });
+}
+
+extension PetsClientX on PetsClient {
+  Future<HttpResponse> uploadPetPhoto({
+    required UploadPetPhotoBody requestBody,
+    @Path('petId') required String petId,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['pets'],
+      'operationId': 'uploadPetPhoto',
+      'requestBody': {
+        'content': {
+          'multipart/form-data': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'file': {
+                  'type': 'string',
+                  'format': 'binary',
+                  'description': 'The photo',
+                },
+                'caption': {'type': 'string'},
+              },
+              'required': ['file'],
+            },
+          },
+        },
+        'required': true,
+      },
+      'responses': {
+        '204': {'description': 'Uploaded'},
+      },
+      'parameters': [
+        {
+          'name': 'petId',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'string'},
+        },
+      ],
+    },
+  }) {
+    return uploadPetPhoto_(
+      requestBody: requestBody.toJson()
+        ..removeWhere((_, value) => value == null),
+      petId: petId,
+      extras: extras,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+  }
+}

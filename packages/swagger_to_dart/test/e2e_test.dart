@@ -6,6 +6,7 @@ import 'dart:io';
 import 'package:path/path.dart' as p;
 import 'package:test/test.dart';
 
+import 'support/examples_round_trip.dart';
 import 'support/fixtures.dart';
 
 final _project = p.normalize(p.absolute('..', 'swagger_to_dart_e2e'));
@@ -18,7 +19,8 @@ Future<ProcessResult> _dart(List<String> arguments) => Process.run(
 
 /// Generates every non-Flutter fixture into `swagger_to_dart_e2e`, then
 /// proves the output builds with build_runner, analyzes clean under the
-/// README's consumer lints, and passes the fixtures' round-trip tests.
+/// README's consumer lints, and passes the fixtures' round-trip tests and,
+/// for Postman fixtures, the saved examples' round-trips.
 void main() {
   test(
     'generated code compiles, analyzes clean and round-trips',
@@ -39,6 +41,20 @@ void main() {
         if (template.existsSync()) {
           tests.createSync(recursive: true);
           template.copySync(p.join(tests.path, '${fixture.name}_test.dart'));
+        }
+
+        // Postman fixtures: every saved JSON example must decode with its
+        // generated response model and re-encode to a fixpoint.
+        if (fixture.isPostman) {
+          final source = examplesRoundTripTest(
+            fixture.spec,
+            library: 'package:swagger_to_dart_e2e/gen/${fixture.name}/gen.dart',
+          );
+          if (source != null) {
+            File(p.join(tests.path, '${fixture.name}_examples_test.dart'))
+              ..createSync(recursive: true)
+              ..writeAsStringSync(source);
+          }
         }
       }
 

@@ -1,0 +1,114 @@
+/// عمر
+///
+/// ```json
+/// {
+///     "properties": {
+///         "name": {
+///             "type": "string"
+///         },
+///         "color": {
+///             "enum": [
+///                 "أحمر",
+///                 "أزرق",
+///                 "red"
+///             ],
+///             "type": "string"
+///         },
+///         "العنوان": {
+///             "type": "object",
+///             "properties": {
+///                 "city": {
+///                     "type": "string"
+///                 }
+///             }
+///         },
+///         "😀": {
+///             "enum": [
+///                 "happy",
+///                 "sad"
+///             ],
+///             "type": "string"
+///         },
+///         "_": {
+///             "type": "object",
+///             "properties": {
+///                 "note": {
+///                     "type": "string"
+///                 }
+///             }
+///         },
+///         "$": {
+///             "oneOf": [
+///                 {
+///                     "type": "object",
+///                     "properties": {
+///                         "card": {
+///                             "type": "string"
+///                         }
+///                     },
+///                     "required": [
+///                         "card"
+///                     ]
+///                 },
+///                 {
+///                     "type": "object",
+///                     "properties": {
+///                         "iban": {
+///                             "type": "string"
+///                         }
+///                     },
+///                     "required": [
+///                         "iban"
+///                     ]
+///                 }
+///             ]
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'schema.freezed.dart';
+part 'schema.g.dart';
+
+@freezed
+abstract class Schema with _$Schema {
+  const Schema._();
+
+  @jsonSerializable
+  const factory Schema({
+    /// name
+    @JsonKey(name: Schema.nameKey_) String? name,
+
+    /// color
+    @JsonKey(name: Schema.colorKey_) SchemaColor? color,
+
+    /// empty
+    @JsonKey(name: Schema.emptyKey_) SchemaEmpty? empty,
+
+    /// empty2
+    @JsonKey(name: Schema.empty2Key_) SchemaEmpty2? empty2,
+
+    /// empty3
+    @JsonKey(name: Schema.empty3Key_) SchemaEmpty3? empty3,
+
+    /// empty4
+    @JsonKey(name: Schema.empty4Key_) SchemaEmpty4? empty4,
+  }) = _Schema;
+
+  factory Schema.fromJson(Map<String, dynamic> json) => _$SchemaFromJson(json);
+
+  static const String nameKey_ = 'name';
+
+  static const String colorKey_ = 'color';
+
+  static const String emptyKey_ = 'العنوان';
+
+  static const String empty2Key_ = '😀';
+
+  static const String empty3Key_ = '_';
+
+  static const String empty4Key_ = '\$';
+}

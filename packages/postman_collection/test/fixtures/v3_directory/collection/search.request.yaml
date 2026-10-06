@@ -1,0 +1,6 @@
+$kind: graphql-request
+url: '{{base_url}}/graphql'
+order: 4000
+query: |-
+  query Books($q: String) { books(q: $q) { title } }
+variables: '{"q": "dune"}'

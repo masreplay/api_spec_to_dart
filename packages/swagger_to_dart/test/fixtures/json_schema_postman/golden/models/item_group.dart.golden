@@ -1,0 +1,106 @@
+/// item-group
+///
+/// ```json
+/// {
+///     "properties": {
+///         "name": {
+///             "type": "string",
+///             "description": "A folder's friendly name is defined by this field. You would want to set this field to a value that would allow you to easily identify this folder."
+///         },
+///         "description": {
+///             "$ref": "#/components/schemas/description"
+///         },
+///         "variable": {
+///             "$ref": "#/components/schemas/variable-list"
+///         },
+///         "item": {
+///             "type": "array",
+///             "items": {
+///                 "anyOf": [
+///                     {
+///                         "$ref": "#/components/schemas/item"
+///                     },
+///                     {
+///                         "$ref": "#/components/schemas/item-group"
+///                     }
+///                 ],
+///                 "title": "Items"
+///             },
+///             "description": "Items are entities which contain an actual HTTP request, and sample responses attached to it. Folders may contain many items."
+///         },
+///         "event": {
+///             "$ref": "#/components/schemas/event-list"
+///         },
+///         "auth": {
+///             "oneOf": [
+///                 {
+///                     "type": "null"
+///                 },
+///                 {
+///                     "$ref": "#/components/schemas/auth"
+///                 }
+///             ]
+///         },
+///         "protocolProfileBehavior": {
+///             "$ref": "#/components/schemas/protocol-profile-behavior"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "item"
+///     ],
+///     "description": "One of the primary goals of Postman is to organize the development of APIs. To this end, it is necessary to be able to group requests together. This can be achived using 'Folders'. A folder just is an ordered set of requests."
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'item_group.freezed.dart';
+part 'item_group.g.dart';
+
+@freezed
+abstract class ItemGroup with _$ItemGroup {
+  const ItemGroup._();
+
+  @jsonSerializable
+  const factory ItemGroup({
+    /// name
+    @JsonKey(name: ItemGroup.nameKey_) String? name,
+
+    /// description
+    @JsonKey(name: ItemGroup.descriptionKey_) Description? description,
+
+    /// variable
+    @JsonKey(name: ItemGroup.variableKey_) VariableList? variable,
+
+    /// item
+    @JsonKey(name: ItemGroup.itemKey_) required List<Items> item,
+
+    /// event
+    @JsonKey(name: ItemGroup.eventKey_) EventList? event,
+
+    /// auth
+    @JsonKey(name: ItemGroup.authKey_) Auth? auth,
+
+    /// protocolProfileBehavior
+    @JsonKey(name: ItemGroup.protocolProfileBehaviorKey_)
+    ProtocolProfileBehavior? protocolProfileBehavior,
+  }) = _ItemGroup;
+
+  factory ItemGroup.fromJson(Map<String, dynamic> json) =>
+      _$ItemGroupFromJson(json);
+
+  static const String nameKey_ = 'name';
+
+  static const String descriptionKey_ = 'description';
+
+  static const String variableKey_ = 'variable';
+
+  static const String itemKey_ = 'item';
+
+  static const String eventKey_ = 'event';
+
+  static const String authKey_ = 'auth';
+
+  static const String protocolProfileBehaviorKey_ = 'protocolProfileBehavior';
+}

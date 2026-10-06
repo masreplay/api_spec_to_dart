@@ -1,0 +1,6 @@
+$kind: collection
+name: Authentication
+description: Sign up and log in.
+order: 500
+auth:
+  type: noauth

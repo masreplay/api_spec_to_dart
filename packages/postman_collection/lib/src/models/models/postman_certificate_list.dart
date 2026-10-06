@@ -1,0 +1,16 @@
+/// certificate-list
+///
+/// ```json
+/// {
+///     "type": "array",
+///     "items": {
+///         "$ref": "#/components/schemas/certificate"
+///     },
+///     "description": "A representation of a list of ssl certificates"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+typedef PostmanCertificateList = List<PostmanCertificate>;

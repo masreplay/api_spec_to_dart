@@ -1,3 +1,190 @@
+## 6.0.0 - 2026-10-06
+
+Swagger 2.0, Postman collections and JSON Schema documents are now inputs,
+in JSON or YAML (see Inputs in the README). Generated output changes for
+existing OpenAPI specs too: regenerate, run `build_runner`, then follow the
+migration notes below.
+
+### Breaking changes
+
+- **Inline objects become models (G1).** An inline object schema with
+  `properties` (a property, array item, map value, request body or
+  response) generates a freezed model named by its `title` or by where it
+  is used (`GetUserResponse`, `UpdateUserBody`, `GetUserResponseAddress`,
+  `…RolesItem`, `…ScoresValue`) instead of `Map<String, dynamic>`.
+  Migration: replace map access (`response['name']`) with fields
+  (`response.name`) and build bodies with the model's constructor. Inline
+  objects used as parameters, and objects without `properties`, stay
+  `Map<String, dynamic>`. A `default` on an inline object is dropped (5.x
+  emitted it as a map literal); set it yourself where you relied on it.
+- **Mixed unions become sealed classes (G2).** A `oneOf`/`anyOf` or type
+  array that mixes JSON kinds with at least one array or object variant
+  (e.g. `string | object`) generates a `sealed` class with a
+  `fromJson(Object? json)` that switches on the JSON kind, instead of
+  `dynamic` (properties) or an empty class (components). Migration: switch
+  over the variant subclasses (`UrlString`, `UrlObject`, …) where you used
+  to type-test the `dynamic`. Mixes of different primitive kinds
+  (`string | integer`) stay `dynamic`, as do mixed unions used as
+  parameters or request bodies; a list or map of them as a response is
+  `List<Object?>` / `Map<String, Object?>`.
+- **Unions of one primitive kind are typed.** A `oneOf`/`anyOf` whose
+  variants are all one primitive kind is that type instead of `dynamic`:
+  `[enum, string]` is a `String`, and `[integer, number]` is a `double`, so
+  a JSON `1` decodes as `1.0` and is sent back as `1.0`. Migration: drop
+  casts from the old `dynamic`; compare such numbers as `double`.
+- **Models-only output and fewer exports (G4).** A spec without operations
+  generates no `api_client/` directory, and `gen.dart` exports only the
+  models. `models/exports.dart` exports `package:dio/dio.dart` and the
+  `MultipartFile` JSON converter only when a model has a `MultipartFile`
+  field. Migration: import `package:dio/dio.dart` yourself where you relied
+  on the generated exports for it.
+- **Clients hold the operations of their tag (G5).** An operation now goes
+  to the client of each of its own tags; 5.x copied every operation of a
+  path into the client of every tag on that path. Migration: call a method
+  on the client of its operation's tag (methods that moved no longer exist
+  on the other client).
+- **HTTP methods without a retrofit annotation use `@Method` (G6).**
+  `trace`, `connect`, OpenAPI 3.2 `query` and `additionalOperations`
+  (e.g. `PURGE`) generate `@Method('TRACE', path)` etc.; 5.x emitted
+  annotations that do not exist, so such clients did not compile. The
+  unused `pat` value of `OpenApiPathMethodEnum` is removed. Migration:
+  only code using `OpenApiPathMethodEnum.pat` from this package's API needs
+  a change.
+- **Non-object components become typedefs (G3).** Array, map, primitive
+  and `$ref`-alias components generate `typedef Pets = List<Pet>;` etc.
+  instead of an empty freezed class that lost the data; references use the
+  typedef's type. Migration: `Pets.fromJson(json)` and `Pets()` no longer
+  exist; decode and build the aliased type (`List<Pet>`,
+  `[for (final e in json) Pet.fromJson(e)]`) directly.
+- **Free-form object components become `Map` typedefs.** A component
+  `{type: object}` without `properties` (and without
+  `additionalProperties: false`) generates
+  `typedef Name = Map<String, dynamic>;` instead of an empty freezed class
+  that dropped every key. Migration: the name stays; use map access
+  (`value['key']`) instead of the empty class.
+- **Clients are grouped by the tag as written.** Tags that only differ in
+  case or non-ASCII characters (`pets`/`Pets`, `Items`/`Items 📦`) are
+  separate clients, the later one with a number (`Pets2Client`,
+  `Items2Client`); 5.x merged them or wrote both to one file. Migration:
+  call the moved methods on the numbered client.
+- **New dependency: postman_collection ^1.0.0.** It converts Postman input.
+  Its 1.0.0 is a breaking rewrite of the 0.x models (see its
+  [CHANGELOG](https://github.com/masreplay/api_spec_to_dart/blob/main/packages/postman_collection/CHANGELOG.md));
+  a project that also depends on postman_collection 0.x must move to 1.0.0.
+- **`@Extras` leaves out examples.** With `api_client.include_openapi_extras`
+  on, the embedded operation metadata no longer contains `example`,
+  `examples`, `x-example` or `x-examples`, so sample data (which may hold
+  real values) is not compiled into apps. Migration: read examples from the
+  spec instead of `options.extra`.
+- **Operation and path `servers` override `baseUrl` (G7).** An operation-
+  or path-level server that differs from the document's makes that
+  method's URL absolute, and dio ignores `baseUrl` for absolute URLs: the
+  `baseUrl` you pass to a client (e.g. a staging host) no longer applies
+  to those methods. Migration: rewrite such requests in an interceptor, or
+  remove the per-operation servers from the spec you generate from.
+- **Model names that clash get a number.** A component named like a type
+  that dio, retrofit or the generated code uses (`Response`, `Method`,
+  `List`, `Headers`, `Header`, `HttpResponse`, `JsonKey`, …) is generated
+  as `Response2`, `Method2`, … (dart:core types the generated code never
+  names, such as `Error`, keep their name). Inline enums whose title is
+  such a name are named by their context instead (`PetType`), and
+  `model.class_prefix` applies to inline enums too. Migration: rename
+  references after regenerating.
+- **Stricter input.** A document that is none of OpenAPI 3 (an `openapi`
+  field starting with `3.`), Swagger 2.0, JSON Schema or a Postman
+  collection throws a `FormatException`. Migration: add the missing
+  `openapi` field.
+- **Library API.** For tools built on the package: `OpenApiServer.url` is a
+  `String` (a URL template; `defaultUrl` fills its variables) instead of a
+  `Uri`; `ApiClientGenerator.build` takes `operations:` (a list of
+  `ApiOperation`) instead of `paths:`; `JsonConvertorGenerator.build`
+  requires `multipartFile:`.
+
+### Added
+
+- **Inputs.** `input_directory` and `url` accept:
+  - OpenAPI 3.0, 3.1 and 3.2;
+  - Swagger 2.0, converted to OpenAPI 3.0.3 (definitions, global
+    parameters and responses, `body`/`formData`, `consumes`/`produces`,
+    `host`/`basePath`/`schemes`, `securityDefinitions`, `x-nullable`,
+    `collectionFormat`);
+  - Postman collections: v1, v2.0 and v2.1 exports, the Postman API
+    `{"collection": …}` envelope and v3 collection directories, converted
+    by [postman_collection](https://pub.dev/packages/postman_collection)
+    (folders become clients, saved examples become typed responses);
+    credential values from auth, credential-named variables, parameters,
+    headers and JSON keys, bearer tokens and JWTs are kept out of the
+    output, while free text (XML, GraphQL query text, descriptions) loses
+    only known secret values;
+  - JSON Schema documents (`definitions` / `$defs`, any draft): models
+    only, one per definition, named by its key (definition titles are
+    ignored), plus the root named by its `title` or the file name;
+  - YAML for every format (`.yaml`/`.yml` files and YAML URL responses).
+
+  The format is detected from the content. `loadSpec`, `readSpecSync`,
+  `toOpenApiJson`, `detectSpecFormat` and `SpecFormat` are exported for
+  tools built on the package.
+- **Operation and path `servers` (G7).** An operation- or path-level server
+  that differs from the document's gives an absolute URL in the annotation
+  (`@POST('https://auth.example.com/token')`, server variables filled with
+  their defaults); dio does not prepend `baseUrl` to absolute URLs. The
+  operation level wins over the path level.
+- **`model.class_prefix` (G8).** Prefixes every generated model name once
+  (component and inline classes, enums, unions, typedefs, and their file
+  names): `Postman` turns `Item` into `PostmanItem` in `postman_item.dart`.
+  Core types are never prefixed. The prefix must be an ASCII capital letter
+  followed by ASCII letters or digits; anything else is a config error.
+
+### Fixed
+
+- An operation with a repeated tag is added to its client once instead of
+  as `listItems`, `listItems2`, ….
+- **Non-ASCII tags** (e.g. Arabic Postman folder names) generate valid,
+  unique clients named by their operations' common path (`المستخدمين` on
+  `/users…` gives `UsersClient`, else `TagClient`); 5.x generated clients
+  with empty names that overwrote each other.
+- **Reserved member names.** A JSON key whose field would be named
+  `hashCode`, `runtimeType`, `toString`, `noSuchMethod`, `copyWith` or
+  `toJson` gets a numeric suffix (`hashCode2`) and keeps its JSON key;
+  json_serializable used to crash on such models.
+- **Form bodies omit unset optional fields.** urlencoded bodies
+  (`@Body(nullToAbsent: true)`) and multipart bodies no longer send the
+  model's null fields. JSON bodies are unchanged (null and absent can differ
+  there).
+- A union variant that references a nullable typedef of a model
+  (`typedef Wrap = WrapValue?`) is a typed variant holding `WrapValue`,
+  instead of turning the whole union `dynamic`.
+- A `$ref` that points into a schema
+  (`#/definitions/Page«Pet»/properties/items`, in Swagger 2.0, JSON Schema
+  or OpenAPI 3) is replaced by the schema it points to, so it is typed
+  (`List<Pet>`) instead of naming a class that is never generated; in
+  Swagger 2.0 it follows a renamed definition's new key. A dangling `$ref`
+  with invalid percent-encoding no longer throws.
+- **Names without ASCII letters.** Components named in Arabic (or emoji)
+  are `Schema`, `Schema2`, … with a warning, instead of an empty class
+  name in `models/.dart`; such inline titles and enum titles are ignored
+  (the context names the model); a JSON Schema root titled that way is
+  named by its file. Enum values without ASCII words are `value1`,
+  `value2`, … by position instead of throwing, and operationIds without
+  them name the method by HTTP method and path (`getPeopleId`) instead of
+  `empty`, `empty2`. A nested object, enum or union under a key without
+  ASCII words (`العنوان`, `😀`, `_`) is named after its field
+  (`UserEmpty`) instead of hanging the generator.
+- Tags starting with digits (`1. Auth`, `01 - Users`, `2FA`) give
+  compiling clients named from their first letter (`AuthClient`,
+  `UsersClient`, `FaClient`); 5.x generated `1AuthClient`.
+- Recursive typedef components (`Tree = List<Tree>`, `Node =
+  Map<String, Node>`, `A = B` with `B = List<A>`) type the reference that
+  closes the cycle `Object?` (with a warning) instead of generating an
+  illegal typedef.
+- A union case class whose name a component already has (`PetDog` next to
+  union `Pet` with a `Dog` case) gets a number (`PetDog2`) instead of an
+  ambiguous export.
+- A multipart body that is a map typedef (`Free: {type: object}`) is sent
+  as is instead of calling a `toJson()` the map lacks.
+- A client whose methods use no model no longer imports `models.dart`
+  (an `unused_import` warning).
+
 ## 5.0.0 - 2026-09-29
 
 ### Breaking changes

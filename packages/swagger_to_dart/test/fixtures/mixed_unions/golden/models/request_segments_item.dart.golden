@@ -1,0 +1,84 @@
+/// RequestSegmentsItem
+///
+/// ```json
+/// {
+///     "oneOf": [
+///         {
+///             "type": "string"
+///         },
+///         {
+///             "type": "object",
+///             "properties": {
+///                 "value": {
+///                     "type": "string"
+///                 }
+///             }
+///         }
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+sealed class RequestSegmentsItem {
+  const RequestSegmentsItem();
+
+  const factory RequestSegmentsItem.string(String value) =
+      RequestSegmentsItemString;
+  const factory RequestSegmentsItem.object(
+    RequestSegmentsItemObjectValue value,
+  ) = RequestSegmentsItemObject;
+
+  factory RequestSegmentsItem.fromJson(Object? json) => switch (json) {
+    String() => RequestSegmentsItemString(json),
+    Map<String, dynamic>() => RequestSegmentsItemObject(
+      RequestSegmentsItemObjectValue.fromJson(json),
+    ),
+    _ => throw ArgumentError.value(
+      json,
+      'json',
+      'No RequestSegmentsItem variant matches',
+    ),
+  };
+
+  Object? toJson();
+}
+
+final class RequestSegmentsItemString extends RequestSegmentsItem {
+  const RequestSegmentsItemString(this.value);
+
+  final String value;
+
+  @override
+  Object? toJson() => value;
+
+  @override
+  bool operator ==(Object other) =>
+      other is RequestSegmentsItemString && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'RequestSegmentsItem.string($value)';
+}
+
+final class RequestSegmentsItemObject extends RequestSegmentsItem {
+  const RequestSegmentsItemObject(this.value);
+
+  final RequestSegmentsItemObjectValue value;
+
+  @override
+  Object? toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) =>
+      other is RequestSegmentsItemObject && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'RequestSegmentsItem.object($value)';
+}

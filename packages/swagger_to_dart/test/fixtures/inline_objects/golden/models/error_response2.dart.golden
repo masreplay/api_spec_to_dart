@@ -1,0 +1,41 @@
+/// ErrorResponse2
+///
+/// ```json
+/// {
+///     "properties": {
+///         "status": {
+///             "type": "integer"
+///         },
+///         "body": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'error_response2.freezed.dart';
+part 'error_response2.g.dart';
+
+@freezed
+abstract class ErrorResponse2 with _$ErrorResponse2 {
+  const ErrorResponse2._();
+
+  @jsonSerializable
+  const factory ErrorResponse2({
+    /// status
+    @JsonKey(name: ErrorResponse2.statusKey_) int? status,
+
+    /// body
+    @JsonKey(name: ErrorResponse2.bodyKey_) String? body,
+  }) = _ErrorResponse2;
+
+  factory ErrorResponse2.fromJson(Map<String, dynamic> json) =>
+      _$ErrorResponse2FromJson(json);
+
+  static const String statusKey_ = 'status';
+
+  static const String bodyKey_ = 'body';
+}

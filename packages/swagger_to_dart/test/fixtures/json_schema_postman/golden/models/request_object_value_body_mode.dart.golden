@@ -1,0 +1,41 @@
+/// RequestObjectValueBodyMode
+///
+/// ```json
+/// {
+///     "properties": {},
+///     "type": "string",
+///     "enum": [
+///         "raw",
+///         "urlencoded",
+///         "formdata",
+///         "file",
+///         "graphql"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'request_object_value_body_mode.g.dart';
+
+@JsonEnum(alwaysCreate: true)
+enum RequestObjectValueBodyMode {
+  @JsonValue('raw')
+  raw,
+  @JsonValue('urlencoded')
+  urlencoded,
+  @JsonValue('formdata')
+  formdata,
+  @JsonValue('file')
+  file,
+  @JsonValue('graphql')
+  graphql;
+
+  factory RequestObjectValueBodyMode.fromJson(String json) =>
+      RequestObjectValueBodyMode.values.firstWhere(
+        (e) => e.toJson() == json,
+        orElse: () => throw ArgumentError('Invalid RequestObjectValueBodyMode'),
+      );
+
+  String toJson() => _$RequestObjectValueBodyModeEnumMap[this]!;
+}

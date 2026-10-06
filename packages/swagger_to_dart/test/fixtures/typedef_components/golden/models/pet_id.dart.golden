@@ -1,0 +1,11 @@
+/// PetId
+///
+/// ```json
+/// {
+///     "type": "string",
+///     "format": "uuid"
+/// }
+/// ```
+library;
+
+typedef PetId = String;

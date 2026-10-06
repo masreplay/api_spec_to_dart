@@ -87,6 +87,13 @@ swagger_to_dart:
     );
   });
 
+  test('rejects an input that is no API description', () async {
+    config('swagger_to_dart:\n  input_directory: schema/openapi.json\n');
+    file('schema/openapi.json').writeAsStringSync('{"hello": "world"}');
+
+    await expectLater(build(), throwsA(isA<FormatException>()));
+  });
+
   test('writes the output directory relative to the project root', () async {
     config('swagger_to_dart:\n  input_directory: schema/openapi.json\n');
     file('schema/openapi.json').writeAsStringSync(jsonEncode(_spec('Local')));

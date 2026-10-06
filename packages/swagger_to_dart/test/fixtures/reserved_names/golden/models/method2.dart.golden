@@ -1,0 +1,10 @@
+/// Method
+///
+/// ```json
+/// {
+///     "type": "string"
+/// }
+/// ```
+library;
+
+typedef Method2 = String;

@@ -22,7 +22,7 @@ jobs:
       - name: Format
         run: |
           git ls-files 'packages/swagger_to_dart/*.dart' 'packages/postman_collection/*.dart' \
-            | grep -v -E '\.(g|freezed)\.dart$|/example/' \
+            | grep -v -E '\.(g|freezed)\.dart$|^packages/swagger_to_dart/example/' \
             | xargs dart format --output=none --set-exit-if-changed
 
       - name: Analyze
@@ -35,6 +35,13 @@ jobs:
       - name: Test postman_collection
         working-directory: packages/postman_collection
         run: dart test
+
+      - name: Analyze and test the postman_collection example
+        working-directory: packages/postman_collection/example
+        run: |
+          dart pub get
+          dart analyze --fatal-infos
+          dart test
 
   example:
     name: Example app (generate, build, analyze, test)
@@ -68,6 +75,30 @@ jobs:
       - name: Test
         run: flutter test
 
+  postman_models:
+    name: Postman models (regenerate from the official schema, fail on drift)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/postman_collection
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+
+      - name: Resolve workspace
+        working-directory: .
+        run: dart pub get --no-example
+
+      - name: Regenerate the models (swagger_to_dart, then build_runner)
+        run: make models
+
+      - name: Fail if the committed models are stale
+        run: |
+          test -z "$(git status --porcelain)" || { git status --porcelain; git diff | head -300; exit 1; }
+
   pana:
     name: pub.dev score (must stay 160/160)
     runs-on: ubuntu-latest
@@ -84,5 +115,12 @@ jobs:
         run: |
           pkg="$RUNNER_TEMP/swagger_to_dart"
           cp -RL packages/swagger_to_dart "$pkg"
+          sed -i '/^resolution: workspace$/d' "$pkg/pubspec.yaml"
+          dart pub global run pana --no-warning --exit-code-threshold 0 "$pkg"
+
+      - name: Score postman_collection the way pub.dev does
+        run: |
+          pkg="$RUNNER_TEMP/postman_collection"
+          cp -RL packages/postman_collection "$pkg"
           sed -i '/^resolution: workspace$/d' "$pkg/pubspec.yaml"
           dart pub global run pana --no-warning --exit-code-threshold 0 "$pkg"

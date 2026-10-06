@@ -1,0 +1,64 @@
+/// Tree
+///
+/// ```json
+/// {
+///     "properties": {
+///         "id": {
+///             "type": "string"
+///         },
+///         "root": {
+///             "$ref": "#/components/schemas/node"
+///         },
+///         "owner": {
+///             "$ref": "#/components/schemas/person"
+///         },
+///         "subtrees": {
+///             "type": "array",
+///             "items": {
+///                 "$ref": "#/components/schemas/Tree"
+///             }
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "id",
+///         "root"
+///     ],
+///     "description": "A tree of labelled nodes."
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'tree.freezed.dart';
+part 'tree.g.dart';
+
+@freezed
+abstract class Tree with _$Tree {
+  const Tree._();
+
+  @jsonSerializable
+  const factory Tree({
+    /// id
+    @JsonKey(name: Tree.idKey_) required String id,
+
+    /// root
+    @JsonKey(name: Tree.rootKey_) required Node root,
+
+    /// owner
+    @JsonKey(name: Tree.ownerKey_) Person? owner,
+
+    /// subtrees
+    @JsonKey(name: Tree.subtreesKey_) List<Tree>? subtrees,
+  }) = _Tree;
+
+  factory Tree.fromJson(Map<String, dynamic> json) => _$TreeFromJson(json);
+
+  static const String idKey_ = 'id';
+
+  static const String rootKey_ = 'root';
+
+  static const String ownerKey_ = 'owner';
+
+  static const String subtreesKey_ = 'subtrees';
+}

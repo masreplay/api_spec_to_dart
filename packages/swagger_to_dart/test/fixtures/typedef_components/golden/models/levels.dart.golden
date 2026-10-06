@@ -1,0 +1,20 @@
+/// Levels
+///
+/// ```json
+/// {
+///     "type": "array",
+///     "items": {
+///         "enum": [
+///             "low",
+///             "high"
+///         ],
+///         "type": "string"
+///     },
+///     "description": "Its inline enum is LevelsItem, so the typedef keeps its name."
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+typedef Levels = List<LevelsItem>;

@@ -1,0 +1,50 @@
+/// MobileUserLoginByEmailBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "email": {
+///             "type": "string"
+///         },
+///         "password": {
+///             "type": "string"
+///         },
+///         "device_token": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'mobile_user_login_by_email_body.freezed.dart';
+part 'mobile_user_login_by_email_body.g.dart';
+
+@freezed
+abstract class MobileUserLoginByEmailBody with _$MobileUserLoginByEmailBody {
+  const MobileUserLoginByEmailBody._();
+
+  @jsonSerializable
+  const factory MobileUserLoginByEmailBody({
+    /// email
+    @JsonKey(name: MobileUserLoginByEmailBody.emailKey_) String? email,
+
+    /// password
+    @JsonKey(name: MobileUserLoginByEmailBody.passwordKey_) String? password,
+
+    /// deviceToken
+    @JsonKey(name: MobileUserLoginByEmailBody.deviceTokenKey_)
+    String? deviceToken,
+  }) = _MobileUserLoginByEmailBody;
+
+  factory MobileUserLoginByEmailBody.fromJson(Map<String, dynamic> json) =>
+      _$MobileUserLoginByEmailBodyFromJson(json);
+
+  static const String emailKey_ = 'email';
+
+  static const String passwordKey_ = 'password';
+
+  static const String deviceTokenKey_ = 'device_token';
+}

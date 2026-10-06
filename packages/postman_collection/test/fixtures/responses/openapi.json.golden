@@ -1,0 +1,255 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "Responses",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://shop.example.com"
+    }
+  ],
+  "paths": {
+    "/orders/{id}": {
+      "get": {
+        "summary": "Get order",
+        "operationId": "getOrder",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "59"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "oneOf": [
+                        {
+                          "type": "integer"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "total": {
+                      "type": "number"
+                    },
+                    "paidAt": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "format": "date-time"
+                    },
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "sku": {
+                            "type": "string"
+                          },
+                          "qty": {
+                            "type": "integer"
+                          }
+                        }
+                      }
+                    },
+                    "note": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "Paid order": {
+                    "value": {
+                      "id": 1,
+                      "total": 10,
+                      "paidAt": "2024-01-01T10:00:00Z",
+                      "items": [
+                        {
+                          "sku": "A1",
+                          "qty": 2
+                        }
+                      ]
+                    }
+                  },
+                  "Unpaid order": {
+                    "value": {
+                      "id": "2",
+                      "total": 12.5,
+                      "paidAt": null,
+                      "items": [],
+                      "note": "gift"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {
+              "X-Trace": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "abc"
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "Not found": {
+                    "value": {
+                      "title": "Not Found",
+                      "status": 404
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "422 Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "errors": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Validation": {
+                    "value": {
+                      "errors": {
+                        "id": [
+                          "must be a number"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {
+                  "Server error page": {
+                    "value": "<h1>Oops</h1>"
+                  }
+                }
+              }
+            }
+          },
+          "206": {
+            "description": "Partial Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                },
+                "examples": {
+                  "Sniffed list": {
+                    "value": [
+                      1,
+                      2,
+                      3
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "299": {
+            "description": "Response",
+            "headers": {
+              "X-Custom": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "yes"
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {
+                  "Plain": {
+                    "value": "just text"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Something odd"
+          }
+        }
+      }
+    },
+    "/ping": {
+      "get": {
+        "summary": "Ping",
+        "operationId": "ping",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    }
+  }
+}

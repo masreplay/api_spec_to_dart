@@ -1,0 +1,41 @@
+/// Put1ValidateMobileUserBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "temp_id": {
+///             "type": "integer"
+///         },
+///         "code": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'put1_validate_mobile_user_body.freezed.dart';
+part 'put1_validate_mobile_user_body.g.dart';
+
+@freezed
+abstract class Put1ValidateMobileUserBody with _$Put1ValidateMobileUserBody {
+  const Put1ValidateMobileUserBody._();
+
+  @jsonSerializable
+  const factory Put1ValidateMobileUserBody({
+    /// tempId
+    @JsonKey(name: Put1ValidateMobileUserBody.tempIdKey_) int? tempId,
+
+    /// code
+    @JsonKey(name: Put1ValidateMobileUserBody.codeKey_) String? code,
+  }) = _Put1ValidateMobileUserBody;
+
+  factory Put1ValidateMobileUserBody.fromJson(Map<String, dynamic> json) =>
+      _$Put1ValidateMobileUserBodyFromJson(json);
+
+  static const String tempIdKey_ = 'temp_id';
+
+  static const String codeKey_ = 'code';
+}

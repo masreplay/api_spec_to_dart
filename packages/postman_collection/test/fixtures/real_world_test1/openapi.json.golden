@@ -1,0 +1,188 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "API V1.0.0",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "{endpoint}",
+      "variables": {
+        "endpoint": {
+          "default": ""
+        }
+      }
+    }
+  ],
+  "tags": [
+    {
+      "name": "Auth Using OTP"
+    },
+    {
+      "name": "Auth Using Social"
+    },
+    {
+      "name": "Cart"
+    }
+  ],
+  "paths": {
+    "/auth/otp/send": {
+      "post": {
+        "tags": [
+          "Auth Using OTP"
+        ],
+        "summary": "Send",
+        "description": "available channels: twilio, whatsapp",
+        "operationId": "send",
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "channel": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Send": {
+                  "value": {
+                    "phone": "+9647700000000",
+                    "channel": "twilio"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/auth/otp/verify": {
+      "post": {
+        "tags": [
+          "Auth Using OTP"
+        ],
+        "summary": "Verify",
+        "operationId": "verify",
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "code": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Verify": {
+                  "value": {
+                    "phone": "+9647700000000",
+                    "code": "236337"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/auth/social/redirect": {
+      "get": {
+        "tags": [
+          "Auth Using Social"
+        ],
+        "summary": "Provider Redirect",
+        "operationId": "providerRedirect",
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "google"
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/auth/social/callback": {
+      "get": {
+        "tags": [
+          "Auth Using Social"
+        ],
+        "summary": "Provider Callback",
+        "operationId": "providerCallback",
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    }
+  }
+}

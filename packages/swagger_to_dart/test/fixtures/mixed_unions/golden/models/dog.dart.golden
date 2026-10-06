@@ -1,0 +1,44 @@
+/// Dog
+///
+/// ```json
+/// {
+///     "properties": {
+///         "kind": {
+///             "type": "string"
+///         },
+///         "bark": {
+///             "type": "boolean"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "kind",
+///         "bark"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'dog.freezed.dart';
+part 'dog.g.dart';
+
+@freezed
+abstract class Dog with _$Dog {
+  const Dog._();
+
+  @jsonSerializable
+  const factory Dog({
+    /// kind
+    @JsonKey(name: Dog.kindKey_) required String kind,
+
+    /// bark
+    @JsonKey(name: Dog.barkKey_) required bool bark,
+  }) = _Dog;
+
+  factory Dog.fromJson(Map<String, dynamic> json) => _$DogFromJson(json);
+
+  static const String kindKey_ = 'kind';
+
+  static const String barkKey_ = 'bark';
+}

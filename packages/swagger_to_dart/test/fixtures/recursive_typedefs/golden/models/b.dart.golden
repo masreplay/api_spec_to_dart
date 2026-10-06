@@ -1,0 +1,13 @@
+/// B
+///
+/// ```json
+/// {
+///     "type": "array",
+///     "items": {
+///         "$ref": "#/components/schemas/A"
+///     }
+/// }
+/// ```
+library;
+
+typedef B = List<Object?>;

@@ -1,4 +1,5 @@
 import 'package:code_builder/code_builder.dart';
+import 'package:swagger_to_dart/src/utils/warning.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 ///
@@ -11,13 +12,9 @@ class ModelGenerator extends LibraryGenerator {
     final schema = _mergeAllOf(model.key, model.value, {});
     model = MapEntry(model.key, schema);
 
-    // A component that is a oneOf/anyOf of references is a union (#58).
-    final variants = [...?schema.oneOf, ...?schema.anyOf].where(
-      (e) => !(e is OpenApiSchemaType && e.type == OpenApiSchemaVarType.null_),
-    );
-    if (variants.isNotEmpty && variants.every((e) => e is OpenApiSchemaRef)) {
-      return UnionModelStrategy(context).buildComponent(model);
-    }
+    // A component oneOf/anyOf that is a union (#58, G2).
+    final union = UnionModelStrategy(context);
+    if (union.isUnionComponent(schema)) return union.buildComponent(model);
 
     final ModelGeneratorStrategy strategy;
 
@@ -27,6 +24,8 @@ class ModelGenerator extends LibraryGenerator {
       context,
     ).shouldUseGenericStrategy(model)) {
       strategy = GenericModelGeneratorStrategy(context);
+    } else if (TypedefModelStrategy.accepts(schema)) {
+      strategy = TypedefModelStrategy(context);
     } else {
       strategy = RegularModelGeneratorStrategy(context);
     }
@@ -101,16 +100,23 @@ class ModelGenerator extends LibraryGenerator {
 
   /// Assigns every non-generic component a unique class name: its title (or
   /// key); when another component already took that name, its key; then a
-  /// numeric suffix. Generic instantiations share their base class name.
+  /// numeric suffix, also when dio, retrofit or generated code uses the
+  /// name (`Response2`). A name without ASCII words (`عمر`) is `Schema`.
+  /// Generic instantiations share their base class name.
   void _nameComponents(
     Map<String, OpenApiSchemas> schemas,
     GenericModelGeneratorStrategy generic,
   ) {
     final prefixes = context.config.model.removeModelPrefixes;
-    String className(String name) => Renaming.instance.renameClass(
-      name,
-      removePrefixes: prefixes.isNotEmpty ? prefixes : null,
-    );
+    String? renamed(String? name) => switch (name == null
+        ? ''
+        : Renaming.instance.renameClass(
+            name,
+            removePrefixes: prefixes.isNotEmpty ? prefixes : null,
+          )) {
+      '' => null,
+      final renamed => renamed,
+    };
 
     final taken = <String>{};
     for (final entry in schemas.entries) {
@@ -121,13 +127,26 @@ class ModelGenerator extends LibraryGenerator {
 
     for (final entry in schemas.entries) {
       if (generic.shouldUseGenericStrategy(entry)) continue;
-      final preferred = className(entry.value.title ?? entry.key);
-      var name = taken.contains(preferred) ? className(entry.key) : preferred;
-      for (var i = 2; taken.contains(name); i++) {
-        name = '${className(entry.key)}$i';
+      final byKey = context.withClassPrefix(renamed(entry.key) ?? 'Schema');
+      final preferred = switch (renamed(entry.value.title)) {
+        final title? => context.withClassPrefix(title),
+        null => byKey,
+      };
+      bool clashes(String name) =>
+          taken.contains(name) ||
+          OpenApiSchemaDartTypeConverter.isClashingComponentName(name);
+      var name = clashes(preferred) ? byKey : preferred;
+      for (var i = 2; clashes(name); i++) {
+        name = '$byKey$i';
       }
       taken.add(name);
       context.componentClassNames[entry.key] = name;
+      if (renamed(entry.value.title) == null && renamed(entry.key) == null) {
+        printWarning(
+          'component "${entry.key}" has no ASCII letters or digits to name '
+          'a class; generated as $name. Give it a title.',
+        );
+      }
     }
 
     context.reservedModelNames.addAll(taken.map(Renaming.instance.renameFile));

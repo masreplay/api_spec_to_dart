@@ -1,0 +1,81 @@
+/// Response2HeaderListValueItem
+///
+/// ```json
+/// {
+///     "oneOf": [
+///         {
+///             "$ref": "#/components/schemas/header"
+///         },
+///         {
+///             "type": "string",
+///             "title": "Header"
+///         }
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+sealed class Response2HeaderListValueItem {
+  const Response2HeaderListValueItem();
+
+  const factory Response2HeaderListValueItem.header(Header2 value) =
+      Response2HeaderListValueItemHeader;
+  const factory Response2HeaderListValueItem.string(String value) =
+      Response2HeaderListValueItemString;
+
+  factory Response2HeaderListValueItem.fromJson(Object? json) => switch (json) {
+    String() => Response2HeaderListValueItemString(json),
+    Map<String, dynamic>() => Response2HeaderListValueItemHeader(
+      Header2.fromJson(json),
+    ),
+    _ => throw ArgumentError.value(
+      json,
+      'json',
+      'No Response2HeaderListValueItem variant matches',
+    ),
+  };
+
+  Object? toJson();
+}
+
+final class Response2HeaderListValueItemHeader
+    extends Response2HeaderListValueItem {
+  const Response2HeaderListValueItemHeader(this.value);
+
+  final Header2 value;
+
+  @override
+  Object? toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) =>
+      other is Response2HeaderListValueItemHeader && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'Response2HeaderListValueItem.header($value)';
+}
+
+final class Response2HeaderListValueItemString
+    extends Response2HeaderListValueItem {
+  const Response2HeaderListValueItemString(this.value);
+
+  final String value;
+
+  @override
+  Object? toJson() => value;
+
+  @override
+  bool operator ==(Object other) =>
+      other is Response2HeaderListValueItemString && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'Response2HeaderListValueItem.string($value)';
+}

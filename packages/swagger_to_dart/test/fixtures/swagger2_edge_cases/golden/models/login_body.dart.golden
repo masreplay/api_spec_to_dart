@@ -1,0 +1,53 @@
+/// LoginBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "username": {
+///             "type": "string"
+///         },
+///         "remember": {
+///             "type": "boolean",
+///             "default": false
+///         },
+///         "note": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "username"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'login_body.freezed.dart';
+part 'login_body.g.dart';
+
+@freezed
+abstract class LoginBody with _$LoginBody {
+  const LoginBody._();
+
+  @jsonSerializable
+  const factory LoginBody({
+    /// username
+    @JsonKey(name: LoginBody.usernameKey_) required String username,
+
+    /// remember
+    @Default(false) @JsonKey(name: LoginBody.rememberKey_) bool remember,
+
+    /// note
+    @JsonKey(name: LoginBody.noteKey_) String? note,
+  }) = _LoginBody;
+
+  factory LoginBody.fromJson(Map<String, dynamic> json) =>
+      _$LoginBodyFromJson(json);
+
+  static const String usernameKey_ = 'username';
+
+  static const String rememberKey_ = 'remember';
+
+  static const String noteKey_ = 'note';
+}

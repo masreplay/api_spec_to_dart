@@ -52,6 +52,13 @@ void main() {
         'pgRegistered',
       );
     });
+
+    test('names a value without ASCII words by its position', () {
+      expect(renaming.renameEnumValue('أحمر', position: 1), 'value1');
+      expect(renaming.renameEnumValue('😀', position: 3), 'value3');
+      expect(renaming.renameEnumValue('+', position: 2), 'plus');
+      expect(renaming.renameEnumValue('red', position: 2), 'red');
+    });
   });
 
   group('renameProperty', () {
@@ -92,6 +99,40 @@ void main() {
       expect(renaming.renameProperty('2fa'), r'$2fa');
       expect(renaming.renameEnumValue('1st'), r'$1st');
       expect(renaming.renameEnumValue(''), 'empty');
+    });
+
+    test('short names without ASCII letters are no acronyms', () {
+      expect(renaming.renameProperty('عمر'), 'empty');
+      expect(renaming.renameProperty('🚀'), 'empty');
+      expect(renaming.renameProperty('الاسم '), 'empty');
+      expect(renaming.renameProperty('A.B'), 'aB');
+      expect(renaming.renameProperty('ID'), 'id');
+      // No ASCII word, no class name: callers fall back (clients are named
+      // by their paths).
+      expect(renaming.renameClass('عمر'), '');
+    });
+
+    test('propertyNames avoids Object and freezed members', () {
+      expect(
+        renaming.propertyNames([
+          'hashCode',
+          'runtimeType',
+          'toString',
+          'noSuchMethod',
+          'copyWith',
+          'toJson',
+          'id',
+        ]),
+        {
+          'hashCode': 'hashCode2',
+          'runtimeType': 'runtimeType2',
+          'toString': 'toString2',
+          'noSuchMethod': 'noSuchMethod2',
+          'copyWith': 'copyWith2',
+          'toJson': 'toJson2',
+          'id': 'id',
+        },
+      );
     });
 
     test('propertyNames keeps names unique', () {

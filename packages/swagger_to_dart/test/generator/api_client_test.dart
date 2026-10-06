@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 import 'package:test/test.dart';
 
@@ -200,6 +202,245 @@ void main() {
     expect(model, contains('required String message,'));
   });
 
+  test('clients hold the operations of their tag, not whole paths (G5)', () {
+    final files = Fixture(
+      Directory('test/fixtures/tag_grouping'),
+    ).render().files;
+    List<String> methods(String client) => [
+      for (final match in RegExp(
+        r'> (\w+)\(\{',
+      ).allMatches(files['api_client/${client}_client.dart']!))
+        match[1]!,
+    ];
+
+    expect(methods('users'), ['listUsers', 'getUser']);
+    expect(methods('admin'), ['deleteUsers', 'getUser']);
+    expect(methods('default'), ['touchUser']);
+  });
+
+  test('tags without ASCII name clients by their paths, uniquely', () {
+    Map<String, dynamic> op(String tag, String id) => {
+      'tags': [tag],
+      'operationId': id,
+      'responses': {
+        '200': {'description': 'OK'},
+      },
+    };
+    final files = renderSpec(
+      _spec(
+        paths: {
+          '/users': {'get': op('المستخدمين', 'listUsers')},
+          '/users/{id}': {'get': op('المستخدمين', 'getUser')},
+          '/orders/{id}': {'get': op('الطلبات 📦', 'getOrder')},
+          '/products': {'get': op('🛒', 'listProducts')},
+          '/products/{id}': {'get': op('Products', 'getProduct')},
+          '/{id}': {'get': op('😀', 'root')},
+          '/pets': {'get': op('pets', 'listPets')},
+          '/pets/{id}': {'get': op('Pets', 'getPet')},
+        },
+      ),
+    ).files;
+
+    expect(
+      files.keys.where((f) => f.endsWith('_client.dart')),
+      unorderedEquals([
+        'api_client/users_client.dart',
+        'api_client/orders_client.dart',
+        'api_client/products_client.dart',
+        'api_client/products2_client.dart',
+        'api_client/tag_client.dart',
+        'api_client/pets_client.dart',
+        'api_client/pets2_client.dart',
+        'api_client/base_api_client.dart',
+        'api_client/api_client.dart',
+      ]),
+    );
+    expect(files['api_client/users_client.dart'], contains('getUser('));
+    expect(
+      files['api_client/base_api_client.dart'],
+      contains('Pets2Client get pets2Client'),
+    );
+  });
+
+  test('tags starting with digits name clients by their words', () {
+    final files = Fixture(Directory('test/fixtures/digit_tags')).render().files;
+
+    expect(
+      files.keys.where((f) => f.endsWith('_client.dart')),
+      unorderedEquals([
+        'api_client/auth_client.dart',
+        'api_client/users_client.dart',
+        'api_client/fa_client.dart',
+        'api_client/fa_verify_client.dart',
+        'api_client/base_api_client.dart',
+        'api_client/api_client.dart',
+      ]),
+    );
+    expect(files['api_client/auth_client.dart'], contains('class AuthClient'));
+    expect(
+      files['api_client/base_api_client.dart'],
+      allOf(
+        contains('AuthClient get authClient'),
+        contains('UsersClient get usersClient'),
+        contains('FaClient get faClient'),
+        contains('FaVerifyClient get faVerifyClient'),
+      ),
+    );
+  });
+
+  group('HTTP methods retrofit has no annotation for use @Method (G6)', () {
+    late String client;
+    setUpAll(() {
+      client = Fixture(
+        Directory('test/fixtures/http_methods'),
+      ).render().files['api_client/resources_client.dart']!;
+    });
+
+    test('trace, OAS 3.2 query and additionalOperations', () {
+      expect(client, contains("@Method('TRACE', '/x')"));
+      expect(client, contains("@Method('QUERY', '/x')"));
+      expect(client, contains("@Method('PURGE', '/x')"));
+      expect(client, contains("@Method('LINK', '/x')"));
+      expect(client, isNot(contains('@TRACE')));
+    });
+
+    test('standard methods keep their annotation', () {
+      expect(client, contains("@GET('/x')"));
+    });
+
+    test('connect', () {
+      final client = renderSpec(
+        _spec(
+          paths: {
+            '/tunnel': {
+              'connect': {
+                'tags': ['items'],
+                'operationId': 'openTunnel',
+                'responses': {
+                  '200': {'description': 'OK'},
+                },
+              },
+            },
+          },
+        ),
+      ).files['api_client/items_client.dart']!;
+
+      expect(client, contains("@Method('CONNECT', '/tunnel')"));
+    });
+  });
+
+  group('operation and path servers give absolute URLs (G7)', () {
+    late Map<String, String> files;
+    setUpAll(() {
+      files = Fixture(
+        Directory('test/fixtures/operation_servers'),
+      ).render().files;
+    });
+
+    test('an operation server', () {
+      expect(
+        files['api_client/auth_client.dart'],
+        contains("@POST('https://auth.example.com/token')"),
+      );
+    });
+
+    test('path servers apply to its operations, with variable defaults; '
+        'the operation level wins', () {
+      final client = files['api_client/files_client.dart']!;
+
+      expect(
+        client,
+        contains("@GET('https://acme.files.example.com/v1/files/{id}')"),
+      );
+      expect(
+        client,
+        contains("@DELETE('https://archive.example.com/files/{id}')"),
+      );
+    });
+
+    test('a document server matches with or without a trailing slash', () {
+      Map<String, dynamic> get(String operationId, String server) => {
+        'get': {
+          'tags': ['items'],
+          'operationId': operationId,
+          'servers': [
+            {'url': server},
+          ],
+          'responses': {
+            '200': {'description': 'OK'},
+          },
+        },
+      };
+      final client = renderSpec({
+        ..._spec(
+          paths: {
+            '/a': get('getA', 'https://api.example.com'),
+            '/b': get('getB', 'https://api.example.com/v1/'),
+          },
+        ),
+        'servers': [
+          {'url': 'https://api.example.com/'},
+          {'url': 'https://api.example.com/v1'},
+        ],
+      }).files['api_client/items_client.dart']!;
+
+      expect(client, contains("@GET('/a')"));
+      expect(client, contains("@GET('/b')"));
+    });
+
+    test('without servers, or repeating the document server, paths stay '
+        'relative to baseUrl', () {
+      final client = files['api_client/service_client.dart']!;
+
+      expect(client, contains("@GET('/health')"));
+      expect(client, contains("@GET('/status')"));
+    });
+  });
+
+  test('repeated tags, also after dropping non-ASCII, add a method once', () {
+    final client = renderSpec(
+      _spec(
+        paths: {
+          '/a': {
+            'get': {
+              'tags': ['items', 'items', 'itemsé'],
+              'operationId': 'listItems',
+              'responses': {
+                '200': {'description': 'OK'},
+              },
+            },
+          },
+        },
+      ),
+    ).files['api_client/items_client.dart']!;
+
+    expect(RegExp(r'listItems\d*\(\{').allMatches(client), hasLength(1));
+  });
+
+  test('a client using no model does not import the models', () {
+    final client = renderSpec(
+      _spec(
+        paths: {
+          '/a': _get(
+            'listNames',
+            parameters: [
+              {
+                'name': 'q',
+                'in': 'query',
+                'schema': {
+                  'type': 'array',
+                  'items': {'type': 'string'},
+                },
+              },
+            ],
+          ),
+        },
+      ),
+    ).files['api_client/items_client.dart']!;
+
+    expect(client, isNot(contains('models.dart')));
+  });
+
   test('duplicate operationIds in one client get unique method names', () {
     final client = renderSpec(
       _spec(
@@ -377,6 +618,77 @@ void main() {
     expect(client, isNot(contains('Content-Type')));
   });
 
+  test('@Extras leaves out examples, so sample data is not compiled in', () {
+    final client = renderSpec(
+      _spec(
+        paths: {
+          '/a': {
+            'post': {
+              'tags': ['items'],
+              'operationId': 'createItem',
+              'parameters': [
+                {
+                  'name': 'phone',
+                  'in': 'query',
+                  'schema': {'type': 'string', 'example': '+9647700000000'},
+                  'example': '+9647700000000',
+                },
+                {
+                  'name': 'X-Token',
+                  'in': 'header',
+                  'schema': {'type': 'string'},
+                  'examples': {
+                    'live': {'value': 'secret-token'},
+                  },
+                  'x-example': 'secret-token',
+                },
+              ],
+              'requestBody': {
+                'content': {
+                  'application/json': {
+                    'schema': {
+                      'type': 'object',
+                      'properties': {
+                        'email': {'type': 'string'},
+                      },
+                      'example': {'email': 'a@b.c'},
+                    },
+                    'examples': {
+                      'one': {
+                        'value': {'email': 'a@b.c'},
+                      },
+                    },
+                  },
+                },
+              },
+              'responses': {
+                '200': {
+                  'description': 'OK',
+                  'content': {
+                    'application/json': {
+                      'schema': {'type': 'object'},
+                      'example': {'token': 'secret-token'},
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      ),
+    ).files['api_client/items_client.dart']!;
+
+    expect(client, contains("'operationId': 'createItem'"));
+    for (final sample in [
+      'example',
+      '9647700000000',
+      'secret-token',
+      'a@b.c',
+    ]) {
+      expect(client, isNot(contains(sample)), reason: sample);
+    }
+  });
+
   test('@Extras keeps the spec as written (OpenAPI 3.1 type arrays)', () {
     final client = renderSpec(
       _spec(
@@ -476,5 +788,18 @@ void main() {
     );
     expect(client, isNot(contains('MultiPart')));
     expect(client, contains('@Body() required Item requestBody'));
+  });
+
+  test('a multipart body typed as a map typedef is sent as is', () {
+    final client = Fixture(
+      Directory('test/fixtures/issue_57_multipart_params'),
+    ).render().files['api_client/form_client.dart']!;
+
+    String call(String method) => RegExp(
+      'return ${method}_\\(\\s*requestBody: ([^,]+),',
+    ).firstMatch(client)![1]!;
+    expect(call('sendFree'), 'requestBody');
+    expect(call('sendAlias'), 'requestBody');
+    expect(call('updateForm'), startsWith('requestBody.toJson()'));
   });
 }

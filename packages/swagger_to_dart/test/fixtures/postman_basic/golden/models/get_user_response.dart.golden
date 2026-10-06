@@ -1,0 +1,63 @@
+/// GetUserResponse
+///
+/// ```json
+/// {
+///     "properties": {
+///         "id": {
+///             "type": "integer"
+///         },
+///         "name": {
+///             "type": "string"
+///         },
+///         "createdAt": {
+///             "type": "string",
+///             "format": "date-time"
+///         },
+///         "address": {
+///             "type": "object",
+///             "properties": {
+///                 "city": {
+///                     "type": "string"
+///                 }
+///             }
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'get_user_response.freezed.dart';
+part 'get_user_response.g.dart';
+
+@freezed
+abstract class GetUserResponse with _$GetUserResponse {
+  const GetUserResponse._();
+
+  @jsonSerializable
+  const factory GetUserResponse({
+    /// id
+    @JsonKey(name: GetUserResponse.idKey_) int? id,
+
+    /// name
+    @JsonKey(name: GetUserResponse.nameKey_) String? name,
+
+    /// createdAt
+    @JsonKey(name: GetUserResponse.createdAtKey_) DateTime? createdAt,
+
+    /// address
+    @JsonKey(name: GetUserResponse.addressKey_) GetUserResponseAddress? address,
+  }) = _GetUserResponse;
+
+  factory GetUserResponse.fromJson(Map<String, dynamic> json) =>
+      _$GetUserResponseFromJson(json);
+
+  static const String idKey_ = 'id';
+
+  static const String nameKey_ = 'name';
+
+  static const String createdAtKey_ = 'createdAt';
+
+  static const String addressKey_ = 'address';
+}

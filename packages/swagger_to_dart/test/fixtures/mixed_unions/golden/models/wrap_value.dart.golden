@@ -1,0 +1,33 @@
+/// WrapValue
+///
+/// ```json
+/// {
+///     "properties": {
+///         "a": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'wrap_value.freezed.dart';
+part 'wrap_value.g.dart';
+
+@freezed
+abstract class WrapValue with _$WrapValue {
+  const WrapValue._();
+
+  @jsonSerializable
+  const factory WrapValue({
+    /// a
+    @JsonKey(name: WrapValue.aKey_) String? a,
+  }) = _WrapValue;
+
+  factory WrapValue.fromJson(Map<String, dynamic> json) =>
+      _$WrapValueFromJson(json);
+
+  static const String aKey_ = 'a';
+}

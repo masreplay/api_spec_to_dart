@@ -1,0 +1,75 @@
+/// Post0CreateTempMobileUserBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "phone": {
+///             "type": "string"
+///         },
+///         "user_type": {
+///             "type": "string"
+///         },
+///         "full_name": {
+///             "type": "string"
+///         },
+///         "email": {
+///             "type": "string"
+///         },
+///         "business_name": {
+///             "type": "string"
+///         },
+///         "lang": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'post0_create_temp_mobile_user_body.freezed.dart';
+part 'post0_create_temp_mobile_user_body.g.dart';
+
+@freezed
+abstract class Post0CreateTempMobileUserBody
+    with _$Post0CreateTempMobileUserBody {
+  const Post0CreateTempMobileUserBody._();
+
+  @jsonSerializable
+  const factory Post0CreateTempMobileUserBody({
+    /// phone
+    @JsonKey(name: Post0CreateTempMobileUserBody.phoneKey_) String? phone,
+
+    /// userType
+    @JsonKey(name: Post0CreateTempMobileUserBody.userTypeKey_) String? userType,
+
+    /// fullName
+    @JsonKey(name: Post0CreateTempMobileUserBody.fullNameKey_) String? fullName,
+
+    /// email
+    @JsonKey(name: Post0CreateTempMobileUserBody.emailKey_) String? email,
+
+    /// businessName
+    @JsonKey(name: Post0CreateTempMobileUserBody.businessNameKey_)
+    String? businessName,
+
+    /// lang
+    @JsonKey(name: Post0CreateTempMobileUserBody.langKey_) String? lang,
+  }) = _Post0CreateTempMobileUserBody;
+
+  factory Post0CreateTempMobileUserBody.fromJson(Map<String, dynamic> json) =>
+      _$Post0CreateTempMobileUserBodyFromJson(json);
+
+  static const String phoneKey_ = 'phone';
+
+  static const String userTypeKey_ = 'user_type';
+
+  static const String fullNameKey_ = 'full_name';
+
+  static const String emailKey_ = 'email';
+
+  static const String businessNameKey_ = 'business_name';
+
+  static const String langKey_ = 'lang';
+}

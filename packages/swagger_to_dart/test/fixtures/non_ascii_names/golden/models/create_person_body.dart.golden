@@ -1,0 +1,47 @@
+/// CreatePersonBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "kind": {
+///             "enum": [
+///                 "a",
+///                 "b"
+///             ],
+///             "type": "string",
+///             "title": "نوع"
+///         },
+///         "user": {
+///             "$ref": "#/components/schemas/مستخدم"
+///         }
+///     },
+///     "type": "object",
+///     "title": "طلب"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'create_person_body.freezed.dart';
+part 'create_person_body.g.dart';
+
+@freezed
+abstract class CreatePersonBody with _$CreatePersonBody {
+  const CreatePersonBody._();
+
+  @jsonSerializable
+  const factory CreatePersonBody({
+    /// kind
+    @JsonKey(name: CreatePersonBody.kindKey_) CreatePersonBodyKind? kind,
+
+    /// user
+    @JsonKey(name: CreatePersonBody.userKey_) Schema2? user,
+  }) = _CreatePersonBody;
+
+  factory CreatePersonBody.fromJson(Map<String, dynamic> json) =>
+      _$CreatePersonBodyFromJson(json);
+
+  static const String kindKey_ = 'kind';
+
+  static const String userKey_ = 'user';
+}

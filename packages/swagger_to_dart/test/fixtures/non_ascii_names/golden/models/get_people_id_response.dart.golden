@@ -1,0 +1,33 @@
+/// GetPeopleIdResponse
+///
+/// ```json
+/// {
+///     "properties": {
+///         "id": {
+///             "type": "integer"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'get_people_id_response.freezed.dart';
+part 'get_people_id_response.g.dart';
+
+@freezed
+abstract class GetPeopleIdResponse with _$GetPeopleIdResponse {
+  const GetPeopleIdResponse._();
+
+  @jsonSerializable
+  const factory GetPeopleIdResponse({
+    /// id
+    @JsonKey(name: GetPeopleIdResponse.idKey_) int? id,
+  }) = _GetPeopleIdResponse;
+
+  factory GetPeopleIdResponse.fromJson(Map<String, dynamic> json) =>
+      _$GetPeopleIdResponseFromJson(json);
+
+  static const String idKey_ = 'id';
+}

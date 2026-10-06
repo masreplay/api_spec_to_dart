@@ -1,0 +1,137 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'people_client.g.dart';
+
+@RestApi()
+abstract class PeopleClient {
+  factory PeopleClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _PeopleClient;
+
+  @GET('/people/{id}')
+  Future<HttpResponse<GetPeopleIdResponse>> getPeopleId({
+    @Path('id') required int id,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['people'],
+      'operationId': 'جلب',
+      'parameters': [
+        {
+          'name': 'id',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'integer'},
+        },
+      ],
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'properties': {
+                  'id': {'type': 'integer'},
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+  @DELETE('/people/{id}')
+  Future<HttpResponse> deletePeopleId({
+    @Path('id') required int id,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['people'],
+      'operationId': 'حذف',
+      'parameters': [
+        {
+          'name': 'id',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'integer'},
+        },
+      ],
+      'responses': {
+        '204': {'description': 'OK'},
+      },
+    },
+  });
+  @GET('/people')
+  Future<HttpResponse<List<Schema>>> listPeople({
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['people'],
+      'operationId': 'listPeople',
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'array',
+                'items': {'\$ref': '#/components/schemas/عمر'},
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+  @POST('/people')
+  Future<HttpResponse<Schema2>> createPerson({
+    @Body() required CreatePersonBody requestBody,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['people'],
+      'operationId': 'createPerson',
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {
+              'type': 'object',
+              'title': 'طلب',
+              'properties': {
+                'kind': {
+                  'type': 'string',
+                  'title': 'نوع',
+                  'enum': ['a', 'b'],
+                },
+                'user': {'\$ref': '#/components/schemas/مستخدم'},
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/مستخدم'},
+            },
+          },
+        },
+      },
+    },
+  });
+}

@@ -1,0 +1,94 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'mobile_platform_requests_login_client.g.dart';
+
+@RestApi()
+abstract class MobilePlatformRequestsLoginClient {
+  factory MobilePlatformRequestsLoginClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _MobilePlatformRequestsLoginClient;
+
+  @POST('/api/v1/login/mobile_user/phone')
+  Future<HttpResponse> mobileUserLoginByPhone({
+    @Body() required MobileUserLoginByPhoneBody requestBody,
+    @Header('Accept-Language') String? acceptLanguage,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Mobile Platform Requests / Login'],
+      'summary': 'Mobile User Login by phone',
+      'description': 'Login using username and password',
+      'operationId': 'mobileUserLoginByPhone',
+      'parameters': [
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'phone': {'type': 'string'},
+                'password': {'type': 'string'},
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+      'security': [],
+    },
+  });
+  @POST('/api/v1/login/mobile_user/email')
+  Future<HttpResponse> mobileUserLoginByEmail({
+    @Body() required MobileUserLoginByEmailBody requestBody,
+    @Header('Accept-Language') String? acceptLanguage,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Mobile Platform Requests / Login'],
+      'summary': 'Mobile User Login by email',
+      'description': 'Login using username and password',
+      'operationId': 'mobileUserLoginByEmail',
+      'parameters': [
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'email': {'type': 'string'},
+                'password': {'type': 'string'},
+                'device_token': {'type': 'string'},
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+      'security': [],
+    },
+  });
+}

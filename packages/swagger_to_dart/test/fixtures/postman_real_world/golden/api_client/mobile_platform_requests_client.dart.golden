@@ -1,0 +1,107 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'mobile_platform_requests_client.g.dart';
+
+@RestApi()
+abstract class MobilePlatformRequestsClient {
+  factory MobilePlatformRequestsClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _MobilePlatformRequestsClient;
+
+  @PUT('/api/v1/users/mobile_user/change_password/14')
+  Future<HttpResponse> changeMobileUserPassword({
+    @Body() required ChangeMobileUserPasswordBody requestBody,
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Mobile Platform Requests'],
+      'summary': 'Change Mobile User Password',
+      'description': 'Change password, if admin, no need for old password',
+      'operationId': 'changeMobileUserPassword',
+      'parameters': [
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'old_password': {'type': 'string'},
+                'new_password': {'type': 'string'},
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+  @PUT('/api/v1/users/mobile_user/seller/31')
+  Future<HttpResponse> updateSellerNoMandatoryField({
+    @Body() required UpdateSellerNoMandatoryFieldBody requestBody,
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Mobile Platform Requests'],
+      'summary': 'Update seller (no mandatory field)',
+      'description': 'Create a new user',
+      'operationId': 'updateSellerNoMandatoryField',
+      'parameters': [
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'full_name': {'type': 'string'},
+                'business_name': {'type': 'string'},
+                'address': {'type': 'string'},
+                'nearest_point': {'type': 'string'},
+                'enable': {'type': 'boolean'},
+                'approve': {'type': 'boolean'},
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+}

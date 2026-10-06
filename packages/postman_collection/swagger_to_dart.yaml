@@ -1,0 +1,8 @@
+# Generates lib/src/models from Postman's official v2.1.0 collection schema.
+# Run `make models` after changing this file or the generator.
+swagger_to_dart:
+  input_directory: ../../schemas/postman/v2.1.0/collection.json
+  output_directory: lib/src/models
+  model:
+    class_prefix: Postman
+    enum_fallback_type: unknown

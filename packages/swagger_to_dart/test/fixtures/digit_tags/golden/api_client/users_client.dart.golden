@@ -1,0 +1,27 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+part 'users_client.g.dart';
+
+@RestApi()
+abstract class UsersClient {
+  factory UsersClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _UsersClient;
+
+  @GET('/users')
+  Future<HttpResponse> listUsers({
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['01 - Users'],
+      'operationId': 'listUsers',
+      'responses': {
+        '204': {'description': 'OK'},
+      },
+    },
+  });
+}

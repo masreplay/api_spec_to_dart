@@ -118,7 +118,6 @@ abstract class BasicClient {
           'in': 'query',
           'required': false,
           'schema': {'type': 'boolean', 'default': false, 'title': 'Flag'},
-          'example': true,
         },
       ],
       'responses': {
@@ -168,7 +167,6 @@ abstract class BasicClient {
             'maxLength': 50,
             'title': 'Text',
           },
-          'example': 'example_text',
         },
       ],
       'responses': {

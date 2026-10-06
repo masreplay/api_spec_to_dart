@@ -6,6 +6,33 @@ import 'package:swagger_to_dart/src/swagger_to_dart_base.dart';
 const _requestBodyName = 'requestBody';
 const _queriesParameterName = 'queries';
 
+/// An operation of the spec at [path]; [method] is the HTTP method as sent
+/// (`GET`, `QUERY`, `PURGE`).
+typedef ApiOperation = ({
+  String path,
+  String method,
+  OpenApiPathMethod operation,
+});
+
+/// Methods with their own retrofit annotation; the others use
+/// `@Method('X', path)`.
+const _retrofitMethods = {
+  'GET',
+  'POST',
+  'PUT',
+  'DELETE',
+  'PATCH',
+  'HEAD',
+  'OPTIONS',
+};
+
+/// Types a client signature can name without the generated models.
+const _libraryTypes = {
+  'Future', 'HttpResponse', 'List', 'Map', 'String', 'int', 'double', //
+  'num', 'bool', 'dynamic', 'Object', 'DateTime', 'Uri', 'Uint8List',
+  'MultipartFile', 'CancelToken', 'ProgressCallback', 'null',
+};
+
 /// Generated Client Code
 ///
 /// Swagger
@@ -132,39 +159,86 @@ class ApiClientGenerator {
 
   final GenerationContext context;
 
+  /// One client per operation tag (`default` for untagged operations); an
+  /// operation with several tags is in each of their clients.
   void generate() {
-    // <basic, </datetime/datetime, < post | get ..., OpenApiPathMethod>>>
-    final Map<String, OpenApiPaths> group = {};
+    final group = <String, List<ApiOperation>>{};
+    final paths = context.openApi.paths ?? {};
+    final additional = context.openApi.additionalOperations ?? {};
 
-    for (final entry in (context.openApi.paths ?? {}).entries) {
-      final path = entry.key;
-      // <post | get ..., OpenApiPathMethod>
-      final methods = entry.value;
-
-      for (final method in methods.values) {
-        final tags = (method.tags ?? []).map(
-          (e) => Recase.instance.removeNonAscii(e),
-        );
-        if (tags.isEmpty) {
-          group['default'] ??= {};
-          group['default']![path] = methods;
-        } else {
-          for (final tag in tags) {
-            group[tag] ??= {};
-            group[tag]![path] = methods;
-          }
+    for (final path in {...paths.keys, ...additional.keys}) {
+      final operations = <ApiOperation>[
+        for (final MapEntry(key: method, value: operation)
+            in (paths[path] ?? {}).entries)
+          (
+            path: path,
+            method: method.name.toUpperCase(),
+            operation: operation,
+          ),
+        for (final MapEntry(key: method, value: operation)
+            in (additional[path] ?? {}).entries)
+          (path: path, method: method, operation: operation),
+      ];
+      for (final operation in operations) {
+        // A set: a repeated tag must not add the operation twice.
+        final tags = {...?operation.operation.tags};
+        for (final tag in tags.isEmpty ? const ['default'] : tags) {
+          (group[tag] ??= []).add(operation);
         }
       }
     }
 
-    for (final entry in group.entries) {
-      final tag = entry.key;
-      final paths = entry.value;
-
-      final apiClient = build(clientName: tag, paths: paths);
-
-      context.addApiClient(apiClient);
+    final usedFileNames = <String>{};
+    for (final MapEntry(key: tag, value: operations) in group.entries) {
+      // A tag without ASCII words (`المستخدمين`) is named by its paths.
+      final base = switch (_withoutLeadingDigits(tag)) {
+        '' => _commonPath(operations),
+        final words => words,
+      };
+      var clientName = base;
+      for (
+        var i = 2;
+        !usedFileNames.add(
+          Renaming.instance.renameFile('${clientName}_client'),
+        );
+        i++
+      ) {
+        clientName = '$base$i';
+      }
+      context.addApiClient(
+        build(clientName: clientName, operations: operations),
+      );
     }
+  }
+
+  /// The static path segments [operations] share (`/users/{id}` and
+  /// `/users` → `users`), else `tag`.
+  static String _commonPath(List<ApiOperation> operations) {
+    List<String> segments(String path) => [
+      for (final segment in path.split('/'))
+        if (Recase.instance.toSnakeCase(segment).isNotEmpty &&
+            !segment.startsWith('{'))
+          segment,
+    ];
+    final common = operations
+        .map((o) => segments(o.path))
+        .reduce(
+          (a, b) => [
+            for (var i = 0; i < a.length && i < b.length && a[i] == b[i]; i++)
+              a[i],
+          ],
+        );
+    return switch (_withoutLeadingDigits(common.join('_'))) {
+      '' => 'tag',
+      final words => words,
+    };
+  }
+
+  /// [name] from its first ASCII letter: a class cannot start with the
+  /// digits of `1. Auth` or `2fa`. Empty when [name] has no ASCII words.
+  static String _withoutLeadingDigits(String name) {
+    final start = name.indexOf(RegExp('[A-Za-z]'));
+    return start == -1 ? '' : name.substring(start);
   }
 
   /// Builds one retrofit client library for [clientName], e.g.:
@@ -178,189 +252,216 @@ class ApiClientGenerator {
   ///   Future<HttpResponse<AppSettings>> settingsGetAppSettings();
   /// }
   /// ```
-  Library build({required String clientName, required OpenApiPaths paths}) {
+  Library build({
+    required String clientName,
+    required List<ApiOperation> operations,
+  }) {
     final fileName = Renaming.instance.renameFile('${clientName}_client');
-    final className = Recase.instance.toPascalCase(fileName);
+    // As BaseApiClient names it.
+    final className = Renaming.instance.renameClass(fileName);
 
     final extensionMethods = <Method>[];
 
     final methods = <Method>[];
     final usedMethodNames = <String>{};
 
-    for (final path in paths.entries) {
-      for (final method in path.value.entries) {
-        final methodType = Recase.instance.toScreamingSnakeCase(
-          method.key.name,
-        );
+    for (final (:path, :method, :operation) in operations) {
+      final url = _url(path, operation.servers);
+      final httpMethod = _retrofitMethods.contains(method)
+          ? '$method(${dartString(url)})'
+          : 'Method(${dartString(method)}, ${dartString(url)})';
 
-        final baseMethodName = Renaming.instance.renameFunction(
-          method.value.operationId ??
-              '${clientName}_${path.key}_${method.key.name}',
-        );
-        // operationIds are not always unique; methods in one class must be.
-        var methodName = baseMethodName;
-        for (var i = 2; !usedMethodNames.add(methodName); i++) {
-          methodName = '$baseMethodName$i';
-        }
+      final operationId = operation.operationId;
+      final baseMethodName = Renaming.instance.renameFunction(
+        switch (operationId) {
+          null => '${clientName}_${path}_${method.toLowerCase()}',
+          // No ASCII words (`جلب`): by method and path, like Postman's.
+          _ when Recase.instance.toCamelCase(operationId).isEmpty =>
+            '${method.toLowerCase()}_$path',
+          _ => operationId,
+        },
+      );
+      // operationIds are not always unique; methods in one class must be.
+      var methodName = baseMethodName;
+      for (var i = 2; !usedMethodNames.add(methodName); i++) {
+        methodName = '$baseMethodName$i';
+      }
 
-        final parameters = _handleParameters(
-          method.value.parameters ?? [],
-          className: className,
-          methodName: methodName,
-        );
+      final parameters = _handleParameters(
+        operation.parameters ?? [],
+        className: className,
+        methodName: methodName,
+      );
 
-        final responseTypeResult = _handleResponseType(
-          method.value.responses ?? {},
-          className,
-          contextName: '${methodName}_response',
-        );
-        final responseType = responseTypeResult.type;
-        final isBinaryResponse = responseTypeResult.isBinaryResponse;
+      final responseTypeResult = _handleResponseType(
+        operation.responses ?? {},
+        className,
+        contextName: '${methodName}_response',
+      );
+      final responseType = responseTypeResult.type;
+      final isBinaryResponse = responseTypeResult.isBinaryResponse;
 
-        final requestBody = <Parameter>[];
-        final content = method.value.requestBody?.content ?? {};
-        bool hasJsonBody = false;
+      final requestBody = <Parameter>[];
+      final content = operation.requestBody?.content ?? {};
+      bool hasJsonBody = false;
 
-        // Media types without parameters (`; charset=utf-8`).
-        bool hasMediaType(String type) =>
-            content.keys.any((key) => _mediaType(key) == type);
+      // Media types without parameters (`; charset=utf-8`).
+      bool hasMediaType(String type) =>
+          content.keys.any((key) => _mediaType(key) == type);
 
-        // One body per method: JSON (or form) wins over multipart.
-        final offersJson = content.entries.any(
-          (e) =>
-              _isJsonContent(e.key, e.value.schema) ||
-              _mediaType(e.key) == 'application/x-www-form-urlencoded',
-        );
-        final isMultipart = !offersJson && hasMediaType('multipart/form-data');
+      // One body per method: JSON (or form) wins over multipart.
+      final offersJson = content.entries.any(
+        (e) =>
+            _isJsonContent(e.key, e.value.schema) ||
+            _mediaType(e.key) == 'application/x-www-form-urlencoded',
+      );
+      final isMultipart = !offersJson && hasMediaType('multipart/form-data');
 
-        for (final entry in content.entries) {
-          switch (_mediaType(entry.key)) {
-            case final type
-                when _isJsonContent(type, entry.value.schema) ||
-                    type == 'application/x-www-form-urlencoded':
-              if (hasJsonBody) continue;
-              hasJsonBody = true;
-              requestBody.add(
-                Parameter(
-                  (b) => b
-                    ..annotations.addAll([refer('Body()')])
-                    ..name = _requestBodyName
-                    ..named = true
-                    ..required = true
-                    ..type = refer(
-                      context.extension.typeConverter.get(
-                        entry.value.schema,
-                        className: className,
-                        contextName: '${methodName}_body',
-                      ),
+      for (final entry in content.entries) {
+        switch (_mediaType(entry.key)) {
+          case final type
+              when _isJsonContent(type, entry.value.schema) ||
+                  type == 'application/x-www-form-urlencoded':
+            if (hasJsonBody) continue;
+            hasJsonBody = true;
+            requestBody.add(
+              Parameter(
+                (b) => b
+                  // A form has no null: leave unset optional fields out.
+                  ..annotations.addAll([
+                    refer(
+                      hasMediaType('application/x-www-form-urlencoded')
+                          ? 'Body(nullToAbsent: true)'
+                          : 'Body()',
                     ),
-                ),
-              );
-            case 'multipart/form-data' when isMultipart:
-              requestBody.add(
-                Parameter(
-                  (b) => b
-                    ..annotations.addAll([refer('Part()')])
-                    ..name = _requestBodyName
-                    ..named = true
-                    ..required = true
-                    ..type = refer('Map<String, dynamic>'),
-                ),
-              );
-
-              // WORKAROUND for sending class as request body in `multipart/form-data`
-              final dartType = context.extension.typeConverter.get(
-                entry.value.schema,
-                className: className,
-                contextName: '${methodName}_body',
-              );
-
-              final canToJson = dartType != 'Map<String, dynamic>';
-              extensionMethods.add(
-                Method(
-                  (b) => b
-                    ..name = methodName
-                    ..returns = responseType
-                    ..optionalParameters.addAll([
-                      Parameter(
-                        (b) => b
-                          ..name = _requestBodyName
-                          ..required = true
-                          ..type = refer(dartType),
-                      ),
-                      ...parameters,
-                      ..._extraParameters(openapiMetadata: method.value.json),
-                    ])
-                    ..body = Block.of([
-                      // Forward every parameter: path/header/query ones were
-                      // dropped, so the call did not compile (#57).
-                      Code(
-                        'return ${methodName}_('
-                        '$_requestBodyName: $_requestBodyName${canToJson ? '.toJson()' : ''}, '
-                        '${parameters.map((p) => '${p.name}: ${p.name}, ').join()}'
-                        'extras: extras, '
-                        'cancelToken: cancelToken, '
-                        'onSendProgress: onSendProgress, '
-                        'onReceiveProgress: onReceiveProgress);',
-                      ),
-                    ]),
-                ),
-              );
-              break;
-            default:
-              // Text, XML or binary: handled as a raw body below.
-              continue;
-          }
-        }
-
-        // Text, XML or binary bodies (#56): sent as-is with their media type.
-        final rawBody = requestBody.isEmpty
-            ? content.entries.firstOrNull
-            : null;
-        if (rawBody != null) {
-          requestBody.add(
-            Parameter(
-              (b) => b
-                ..annotations.addAll([refer('Body()')])
-                ..name = _requestBodyName
-                ..named = true
-                ..required = true
-                ..type = refer(
-                  _isBinary(rawBody.key, rawBody.value.schema)
-                      ? 'List<int>'
-                      : 'String',
-                ),
-            ),
-          );
-        }
-
-        methods.add(
-          Method(
-            (b) => b
-              ..annotations.addAll([
-                refer('$methodType(${dartString(path.key)})'),
-                if (rawBody != null)
-                  refer(
-                    "Headers(<String, dynamic>{'Content-Type': "
-                    '${dartString(rawBody.key)}})',
+                  ])
+                  ..name = _requestBodyName
+                  ..named = true
+                  ..required = true
+                  // retrofit adds a body's toJson() to a map; a mixed
+                  // union's JSON is none, so dio encodes the value as is.
+                  ..type = refer(
+                    UnionModelStrategy(context).isMixed(entry.value.schema)
+                        ? 'dynamic'
+                        : context.extension.typeConverter.get(
+                            entry.value.schema,
+                            className: className,
+                            contextName: '${methodName}_body',
+                          ),
                   ),
-                if (hasMediaType('application/x-www-form-urlencoded'))
-                  refer('FormUrlEncoded()'),
-                if (isMultipart) refer('MultiPart()'),
-                if (isBinaryResponse)
-                  refer('DioResponseType(ResponseType.bytes)'),
-              ])
-              ..returns = responseType
-              ..name = isMultipart ? '${methodName}_' : methodName
-              ..optionalParameters.addAll([
-                ...requestBody,
-                ...parameters,
-                ..._extraParameters(openapiMetadata: method.value.json),
-              ]),
+              ),
+            );
+          case 'multipart/form-data' when isMultipart:
+            requestBody.add(
+              Parameter(
+                (b) => b
+                  ..annotations.addAll([refer('Part()')])
+                  ..name = _requestBodyName
+                  ..named = true
+                  ..required = true
+                  ..type = refer('Map<String, dynamic>'),
+              ),
+            );
+
+            // WORKAROUND for sending class as request body in `multipart/form-data`
+            final dartType = context.extension.typeConverter.get(
+              entry.value.schema,
+              className: className,
+              contextName: '${methodName}_body',
+            );
+
+            final canToJson = _isModel(entry.value.schema, dartType);
+            extensionMethods.add(
+              Method(
+                (b) => b
+                  ..name = methodName
+                  ..returns = responseType
+                  ..optionalParameters.addAll([
+                    Parameter(
+                      (b) => b
+                        ..name = _requestBodyName
+                        ..required = true
+                        ..type = refer(dartType),
+                    ),
+                    ...parameters,
+                    ..._extraParameters(openapiMetadata: operation.json),
+                  ])
+                  ..body = Block.of([
+                    // Forward every parameter: path/header/query ones were
+                    // dropped, so the call did not compile (#57).
+                    Code(
+                      'return ${methodName}_('
+                      // A form has no null: leave unset optional
+                      // fields out.
+                      '$_requestBodyName: $_requestBodyName${canToJson ? '.toJson()..removeWhere((_, value) => value == null)' : ''}, '
+                      '${parameters.map((p) => '${p.name}: ${p.name}, ').join()}'
+                      'extras: extras, '
+                      'cancelToken: cancelToken, '
+                      'onSendProgress: onSendProgress, '
+                      'onReceiveProgress: onReceiveProgress);',
+                    ),
+                  ]),
+              ),
+            );
+            break;
+          default:
+            // Text, XML or binary: handled as a raw body below.
+            continue;
+        }
+      }
+
+      // Text, XML or binary bodies (#56): sent as-is with their media type.
+      final rawBody = requestBody.isEmpty ? content.entries.firstOrNull : null;
+      if (rawBody != null) {
+        requestBody.add(
+          Parameter(
+            (b) => b
+              ..annotations.addAll([refer('Body()')])
+              ..name = _requestBodyName
+              ..named = true
+              ..required = true
+              ..type = refer(
+                _isBinary(rawBody.key, rawBody.value.schema)
+                    ? 'List<int>'
+                    : 'String',
+              ),
           ),
         );
       }
+
+      methods.add(
+        Method(
+          (b) => b
+            ..annotations.addAll([
+              refer(httpMethod),
+              if (rawBody != null)
+                refer(
+                  "Headers(<String, dynamic>{'Content-Type': "
+                  '${dartString(rawBody.key)}})',
+                ),
+              if (hasMediaType('application/x-www-form-urlencoded'))
+                refer('FormUrlEncoded()'),
+              if (isMultipart) refer('MultiPart()'),
+              if (isBinaryResponse)
+                refer('DioResponseType(ResponseType.bytes)'),
+            ])
+            ..returns = responseType
+            ..name = isMultipart ? '${methodName}_' : methodName
+            ..optionalParameters.addAll([
+              ...requestBody,
+              ...parameters,
+              ..._extraParameters(openapiMetadata: operation.json),
+            ]),
+        ),
+      );
     }
+
+    // An unused import fails analysis: import the models only when a
+    // signature names a type that dart:core, dio or retrofit lacks.
+    final usesModels = [...methods, ...extensionMethods]
+        .expand((m) => [m.returns, ...m.optionalParameters.map((p) => p.type)])
+        .expand((type) => RegExp(r'\w+').allMatches('${type?.symbol}'))
+        .any((name) => !_libraryTypes.contains(name[0]));
 
     return Library(
       (b) => b
@@ -371,7 +472,7 @@ class ApiClientGenerator {
             Directive.import('dart:typed_data'),
           Directive.import('package:dio/dio.dart', hide: ['Headers']),
           Directive.import('package:retrofit/retrofit.dart'),
-          Directive.import('../models/models.dart'),
+          if (usesModels) Directive.import('../models/models.dart'),
           Directive.part('$fileName.g.dart'),
         ])
         ..name = fileName
@@ -423,6 +524,42 @@ class ApiClientGenerator {
     );
   }
 
+  /// Whether [schema] ([dartType]) is a generated model with `toJson()`,
+  /// following `$ref` aliases: a free-form object or a map typedef
+  /// (`Free: {type: object}`) is a `Map` already.
+  bool _isModel(OpenApiSchema? schema, String dartType) {
+    final components = context.openApi.components?.schemas ?? {};
+    final seen = <String>{};
+    while (schema is OpenApiSchemaRef && seen.add(schema.name)) {
+      final component = components[schema.name];
+      if (component == null) return true;
+      if (!TypedefModelStrategy.accepts(component) ||
+          UnionModelStrategy(context).isUnionComponent(component)) {
+        return true;
+      }
+      schema = const OpenApiSchemaJsonConverter().fromJson(component.toJson());
+    }
+    return switch (schema) {
+      OpenApiSchemaType(:final properties) => properties?.isNotEmpty ?? false,
+      _ => dartType != 'Map<String, dynamic>',
+    };
+  }
+
+  /// [path] prefixed by the operation's (or its path item's) first server,
+  /// unless that is a document server: dio skips `baseUrl` for absolute
+  /// paths, which would also bypass the `baseUrl` users pass.
+  String _url(String path, List<OpenApiServer>? servers) {
+    String trimmed(String url) => url.replaceFirst(RegExp(r'/+$'), '');
+    final server = servers?.firstOrNull;
+    if (server == null ||
+        (context.openApi.servers ?? []).any(
+          (s) => trimmed(s.url) == trimmed(server.url),
+        )) {
+      return path;
+    }
+    return '${trimmed(server.defaultUrl)}$path';
+  }
+
   List<Parameter> _handleParameters(
     List<OpenApiPathMethodParameter> parameters, {
     required String methodName,
@@ -456,7 +593,9 @@ class ApiClientGenerator {
 
     if (useClass && queryParameters.isNotEmpty) {
       final queriesClassName = context.registerInlineModel(
-        Renaming.instance.renameClass('${methodName}QueryParameters'),
+        context.withClassPrefix(
+          Renaming.instance.renameClass('${methodName}QueryParameters'),
+        ),
         (name) => RegularModelGeneratorStrategy(context).build(
           MapEntry(
             name,
@@ -471,6 +610,8 @@ class ApiClientGenerator {
               },
             ),
           ),
+          name: name,
+          inlineModels: false,
         ),
       );
 
@@ -491,7 +632,10 @@ class ApiClientGenerator {
         continue;
       }
 
-      final typeConverter = context.extension.typeConverter;
+      final typeConverter = OpenApiSchemaDartTypeConverter(
+        context,
+        inlineModels: false,
+      );
       final contextName = '${methodName}_${p.name}';
       final defaultValue = typeConverter.getDefaultValue(
         p.schema,
@@ -554,11 +698,15 @@ class ApiClientGenerator {
           (e) => _isJsonContent(e.key, e.value.schema),
         )
         case final json?) {
-      final type = context.extension.typeConverter.get(
-        json.value.schema,
-        className: className,
-        contextName: contextName,
-      );
+      // retrofit casts list items and map values to a map before fromJson,
+      // which a mixed union's other kinds do not survive.
+      final type =
+          UnionModelStrategy(context).untypedCollection(json.value.schema) ??
+          context.extension.typeConverter.get(
+            json.value.schema,
+            className: className,
+            contextName: contextName,
+          );
       return (
         type: refer('Future<HttpResponse<$type>>'),
         isBinaryResponse: false,
@@ -649,13 +797,31 @@ class ApiClientGenerator {
           ..named = true
           ..name = 'extras'
           ..defaultTo = context.config.apiClient.includeOpenapiExtras
-              ? Code('const ${encodeWithRawKeys(openapiMetadata)}')
+              ? Code(
+                  'const ${encodeWithRawKeys(_withoutExamples(openapiMetadata))}',
+                )
               : null
           ..type = refer('Map<String, dynamic>?'),
       ),
     ];
   }
 }
+
+/// [value] without `example`/`examples` keys (nor 2.0's `x-example`/
+/// `x-examples`) at any depth. They hold sample data (phone numbers,
+/// tokens, emails from Postman collections) that must not be compiled into
+/// apps, and nothing reads them at runtime.
+Object? _withoutExamples(Object? value) => switch (value) {
+  Map() => {
+    for (final MapEntry(:key, :value) in value.entries)
+      if (!const {'example', 'examples', 'x-example', 'x-examples'}.contains(
+        key,
+      ))
+        key: _withoutExamples(value),
+  },
+  List() => [for (final e in value) _withoutExamples(e)],
+  _ => value,
+};
 
 /// Dart source for a JSON-like [value] (maps, lists, strings, numbers).
 String encodeWithRawKeys(dynamic value) {

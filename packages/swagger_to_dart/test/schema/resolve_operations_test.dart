@@ -50,6 +50,72 @@ void main() {
     expect(item.keys, ['get', 'delete']);
   });
 
+  test('OAS 3.2 query is an operation; pat is not', () {
+    final item = _resolve({
+      'query': <String, dynamic>{},
+      'pat': <String, dynamic>{},
+    });
+
+    expect(item.keys, ['query']);
+  });
+
+  test('additionalOperations move to x-additional-operations, resolved like '
+      'operations (G6)', () {
+    final spec = resolveOperations(
+      _spec(
+        {
+          'parameters': [_id],
+          'get': <String, dynamic>{},
+          'additionalOperations': {
+            'PURGE': {
+              'parameters': [
+                {r'$ref': '#/components/parameters/PageSize'},
+              ],
+            },
+            'LINK': <String, dynamic>{},
+          },
+        },
+        components: {
+          'parameters': {'PageSize': _pageSize},
+        },
+      ),
+    );
+
+    expect(spec['paths']['/pets/{id}'].keys, ['get']);
+    expect(spec['x-additional-operations'], {
+      '/pets/{id}': {
+        'PURGE': {
+          'parameters': [_id, _pageSize],
+        },
+        'LINK': {
+          'parameters': [_id],
+        },
+      },
+    });
+    expect(
+      OpenApi.fromJson(spec).additionalOperations?['/pets/{id}']?.keys,
+      ['PURGE', 'LINK'],
+    );
+  });
+
+  test('path-level servers apply to operations without their own (G7)', () {
+    const pathServers = [
+      {'url': 'https://files.example.com'},
+    ];
+    const ownServers = [
+      {'url': 'https://archive.example.com'},
+    ];
+
+    final item = _resolve({
+      'servers': pathServers,
+      'get': <String, dynamic>{},
+      'delete': {'servers': ownServers},
+    });
+
+    expect(item['get']['servers'], pathServers);
+    expect(item['delete']['servers'], ownServers);
+  });
+
   test('path-level parameters apply to every operation', () {
     final item = _resolve({
       'parameters': [_id],

@@ -1,0 +1,78 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Reserved names", "version": "1.0.0" },
+  "paths": {
+    "/status": {
+      "get": {
+        "tags": ["core"],
+        "operationId": "http",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": { "application/json": { "schema": { "type": "object", "properties": { "ok": { "type": "boolean" } } } } }
+          }
+        }
+      }
+    },
+    "/echo": {
+      "post": {
+        "tags": ["core"],
+        "operationId": "response",
+        "requestBody": {
+          "content": { "application/json": { "schema": { "type": "object", "properties": { "text": { "type": "string" } } } } }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Response" } } }
+          }
+        }
+      }
+    },
+    "/pets": {
+      "get": {
+        "tags": ["core"],
+        "operationId": "getPet",
+        "responses": {
+          "200": { "description": "OK", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Pet" } } } },
+          "201": { "description": "OK", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/PetDog" } } } }
+        }
+      }
+    },
+    "/things": {
+      "put": {
+        "tags": ["core"],
+        "operationId": "putThings",
+        "parameters": [
+          { "name": "method", "in": "query", "schema": { "$ref": "#/components/schemas/Method" } }
+        ],
+        "requestBody": {
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Headers" } } }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/List" } } }
+          },
+          "400": {
+            "description": "Bad",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Response": { "type": "object", "properties": { "data": { "type": "string" } } },
+      "Method": { "type": "string" },
+      "Headers": { "type": "object", "properties": { "accept": { "type": "string" } } },
+      "List": { "type": "object", "properties": { "items": { "type": "array", "items": { "type": "string" } } } },
+      "Error": { "type": "object", "properties": { "code": { "type": "integer" } } },
+      "Dog": { "type": "object", "properties": { "bark": { "type": "string" } }, "required": ["bark"] },
+      "Cat": { "type": "object", "properties": { "meow": { "type": "string" } }, "required": ["meow"] },
+      "Pet": { "oneOf": [{ "$ref": "#/components/schemas/Dog" }, { "$ref": "#/components/schemas/Cat" }] },
+      "PetDog": { "type": "object", "properties": { "x": { "type": "string" } } }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+/// CreateOrderResponse
+///
+/// ```json
+/// {
+///     "properties": {
+///         "id": {
+///             "type": "string"
+///         },
+///         "total": {
+///             "type": "number"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'create_order_response.freezed.dart';
+part 'create_order_response.g.dart';
+
+@freezed
+abstract class CreateOrderResponse with _$CreateOrderResponse {
+  const CreateOrderResponse._();
+
+  @jsonSerializable
+  const factory CreateOrderResponse({
+    /// id
+    @JsonKey(name: CreateOrderResponse.idKey_) String? id,
+
+    /// total
+    @JsonKey(name: CreateOrderResponse.totalKey_) double? total,
+  }) = _CreateOrderResponse;
+
+  factory CreateOrderResponse.fromJson(Map<String, dynamic> json) =>
+      _$CreateOrderResponseFromJson(json);
+
+  static const String idKey_ = 'id';
+
+  static const String totalKey_ = 'total';
+}

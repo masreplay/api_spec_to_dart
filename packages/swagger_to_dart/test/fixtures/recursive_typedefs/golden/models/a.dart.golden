@@ -1,0 +1,12 @@
+/// A
+///
+/// ```json
+/// {
+///     "$ref": "#/components/schemas/B"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+typedef A = B;

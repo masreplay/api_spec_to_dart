@@ -1,0 +1,107 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'users_client.g.dart';
+
+@RestApi()
+abstract class UsersClient {
+  factory UsersClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _UsersClient;
+
+  @GET('/users')
+  Future<HttpResponse<List<GetUsersResponseItem>>> getUsers({
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['المستخدمين'],
+      'summary': 'جلب المستخدمين',
+      'operationId': 'getUsers',
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'array',
+                'items': {
+                  'type': 'object',
+                  'properties': {
+                    'الاسم': {'type': 'string'},
+                    'name': {'type': 'string'},
+                    'عمر': {'type': 'integer'},
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+  @POST('/users')
+  Future<HttpResponse> postUsers({
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['المستخدمين'],
+      'summary': 'تسجيل 2',
+      'operationId': 'postUsers',
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+  @GET('/users/{id}')
+  Future<HttpResponse<GetUsersIdResponse>> getUsersId({
+    @Path('id') required String id,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['المستخدمين'],
+      'summary': 'جلب مستخدم',
+      'operationId': 'getUsersId',
+      'parameters': [
+        {
+          'name': 'id',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'string'},
+        },
+      ],
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'properties': {
+                  'الاسم': {'type': 'string'},
+                  'الاسم ': {'type': 'string'},
+                  '🚀': {'type': 'boolean'},
+                  'العنوان': {
+                    'type': 'object',
+                    'properties': {
+                      'المدينة': {'type': 'string'},
+                      'city': {'type': 'string'},
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+}

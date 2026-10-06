@@ -1,0 +1,33 @@
+/// SearchBodyFiltersPrice
+///
+/// ```json
+/// {
+///     "properties": {
+///         "max": {
+///             "type": "number"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'search_body_filters_price.freezed.dart';
+part 'search_body_filters_price.g.dart';
+
+@freezed
+abstract class SearchBodyFiltersPrice with _$SearchBodyFiltersPrice {
+  const SearchBodyFiltersPrice._();
+
+  @jsonSerializable
+  const factory SearchBodyFiltersPrice({
+    /// max
+    @JsonKey(name: SearchBodyFiltersPrice.maxKey_) double? max,
+  }) = _SearchBodyFiltersPrice;
+
+  factory SearchBodyFiltersPrice.fromJson(Map<String, dynamic> json) =>
+      _$SearchBodyFiltersPriceFromJson(json);
+
+  static const String maxKey_ = 'max';
+}

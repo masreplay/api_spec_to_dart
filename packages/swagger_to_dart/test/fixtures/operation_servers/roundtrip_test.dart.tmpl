@@ -1,0 +1,52 @@
+import 'package:dio/dio.dart';
+// Also exports dart:typed_data (Uint8List).
+import 'package:swagger_to_dart_e2e/gen/operation_servers/gen.dart';
+import 'package:test/test.dart';
+
+/// Records each request and answers it with an empty JSON list.
+class _Recorder implements HttpClientAdapter {
+  final requests = <String>[];
+
+  @override
+  Future<ResponseBody> fetch(
+    RequestOptions options,
+    Stream<Uint8List>? requestStream,
+    Future<void>? cancelFuture,
+  ) async {
+    requests.add('${options.method} ${options.uri}');
+    return ResponseBody.fromString(
+      '[]',
+      200,
+      headers: {
+        Headers.contentTypeHeader: [Headers.jsonContentType],
+      },
+    );
+  }
+
+  @override
+  void close({bool force = false}) {}
+}
+
+void main() {
+  test('operation and path servers win over baseUrl, others keep it', () async {
+    final recorder = _Recorder();
+    final api = BaseApiClient(
+      Dio(BaseOptions(baseUrl: 'https://staging.example.com'))
+        ..httpClientAdapter = recorder,
+    );
+
+    await api.serviceClient.health();
+    await api.serviceClient.status();
+    await api.authClient.createToken();
+    await api.filesClient.getFile(id: '7');
+    await api.filesClient.deleteFile(id: '7');
+
+    expect(recorder.requests, [
+      'GET https://staging.example.com/health',
+      'GET https://staging.example.com/status',
+      'POST https://auth.example.com/token',
+      'GET https://acme.files.example.com/v1/files/7',
+      'DELETE https://archive.example.com/files/7',
+    ]);
+  });
+}

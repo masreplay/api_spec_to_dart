@@ -1,0 +1,33 @@
+/// Headers
+///
+/// ```json
+/// {
+///     "properties": {
+///         "accept": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'headers2.freezed.dart';
+part 'headers2.g.dart';
+
+@freezed
+abstract class Headers2 with _$Headers2 {
+  const Headers2._();
+
+  @jsonSerializable
+  const factory Headers2({
+    /// accept
+    @JsonKey(name: Headers2.acceptKey_) String? accept,
+  }) = _Headers2;
+
+  factory Headers2.fromJson(Map<String, dynamic> json) =>
+      _$Headers2FromJson(json);
+
+  static const String acceptKey_ = 'accept';
+}

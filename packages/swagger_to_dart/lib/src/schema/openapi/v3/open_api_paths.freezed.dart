@@ -32,6 +32,11 @@ mixin _$OpenApiPathMethod {
   OpenApiPathMethodRequestBody? get requestBody;
   @JsonKey(name: 'responses')
   OpenApiPathMethodResponses? get responses;
+
+  /// The operation's servers, else its path item's (see
+  /// `resolveOperations`).
+  @JsonKey(name: 'servers')
+  List<OpenApiServer>? get servers;
   @JsonKey(readValue: _jsonReadValue)
   Map<String, dynamic>? get json;
 
@@ -77,6 +82,10 @@ mixin _$OpenApiPathMethod {
               other.responses,
               _this.responses,
             ) &&
+            const DeepCollectionEquality().equals(
+              other.servers,
+              _this.servers,
+            ) &&
             const DeepCollectionEquality().equals(other.json, _this.json));
   }
 
@@ -95,6 +104,7 @@ mixin _$OpenApiPathMethod {
       const DeepCollectionEquality().hash(_this.parameters),
       _this.requestBody,
       const DeepCollectionEquality().hash(_this.responses),
+      const DeepCollectionEquality().hash(_this.servers),
       const DeepCollectionEquality().hash(_this.json),
     );
   }
@@ -102,7 +112,7 @@ mixin _$OpenApiPathMethod {
   @override
   String toString() {
     final _this = this as OpenApiPathMethod;
-    return 'OpenApiPathMethod(tags: ${_this.tags}, summary: ${_this.summary}, description: ${_this.description}, operationId: ${_this.operationId}, deprecated: ${_this.deprecated}, security: ${_this.security}, parameters: ${_this.parameters}, requestBody: ${_this.requestBody}, responses: ${_this.responses}, json: ${_this.json})';
+    return 'OpenApiPathMethod(tags: ${_this.tags}, summary: ${_this.summary}, description: ${_this.description}, operationId: ${_this.operationId}, deprecated: ${_this.deprecated}, security: ${_this.security}, parameters: ${_this.parameters}, requestBody: ${_this.requestBody}, responses: ${_this.responses}, servers: ${_this.servers}, json: ${_this.json})';
   }
 }
 
@@ -123,6 +133,7 @@ abstract mixin class $OpenApiPathMethodCopyWith<$Res> {
     @JsonKey(name: 'parameters') List<OpenApiPathMethodParameter>? parameters,
     @JsonKey(name: 'requestBody') OpenApiPathMethodRequestBody? requestBody,
     @JsonKey(name: 'responses') OpenApiPathMethodResponses? responses,
+    @JsonKey(name: 'servers') List<OpenApiServer>? servers,
     @JsonKey(readValue: _jsonReadValue) Map<String, dynamic>? json,
   });
 
@@ -151,6 +162,7 @@ class _$OpenApiPathMethodCopyWithImpl<$Res>
     Object? parameters = freezed,
     Object? requestBody = freezed,
     Object? responses = freezed,
+    Object? servers = freezed,
     Object? json = freezed,
   }) {
     return _then(
@@ -191,6 +203,10 @@ class _$OpenApiPathMethodCopyWithImpl<$Res>
             ? _self.responses
             : responses // ignore: cast_nullable_to_non_nullable
                   as OpenApiPathMethodResponses?,
+        servers: freezed == servers
+            ? _self.servers
+            : servers // ignore: cast_nullable_to_non_nullable
+                  as List<OpenApiServer>?,
         json: freezed == json
             ? _self.json
             : json // ignore: cast_nullable_to_non_nullable
@@ -319,6 +335,7 @@ extension OpenApiPathMethodPatterns on OpenApiPathMethod {
       @JsonKey(name: 'parameters') List<OpenApiPathMethodParameter>? parameters,
       @JsonKey(name: 'requestBody') OpenApiPathMethodRequestBody? requestBody,
       @JsonKey(name: 'responses') OpenApiPathMethodResponses? responses,
+      @JsonKey(name: 'servers') List<OpenApiServer>? servers,
       @JsonKey(readValue: _jsonReadValue) Map<String, dynamic>? json,
     )?
     $default, {
@@ -337,6 +354,7 @@ extension OpenApiPathMethodPatterns on OpenApiPathMethod {
           _that.parameters,
           _that.requestBody,
           _that.responses,
+          _that.servers,
           _that.json,
         );
       case _:
@@ -369,6 +387,7 @@ extension OpenApiPathMethodPatterns on OpenApiPathMethod {
       @JsonKey(name: 'parameters') List<OpenApiPathMethodParameter>? parameters,
       @JsonKey(name: 'requestBody') OpenApiPathMethodRequestBody? requestBody,
       @JsonKey(name: 'responses') OpenApiPathMethodResponses? responses,
+      @JsonKey(name: 'servers') List<OpenApiServer>? servers,
       @JsonKey(readValue: _jsonReadValue) Map<String, dynamic>? json,
     )
     $default,
@@ -386,6 +405,7 @@ extension OpenApiPathMethodPatterns on OpenApiPathMethod {
           _that.parameters,
           _that.requestBody,
           _that.responses,
+          _that.servers,
           _that.json,
         );
       case _:
@@ -417,6 +437,7 @@ extension OpenApiPathMethodPatterns on OpenApiPathMethod {
       @JsonKey(name: 'parameters') List<OpenApiPathMethodParameter>? parameters,
       @JsonKey(name: 'requestBody') OpenApiPathMethodRequestBody? requestBody,
       @JsonKey(name: 'responses') OpenApiPathMethodResponses? responses,
+      @JsonKey(name: 'servers') List<OpenApiServer>? servers,
       @JsonKey(readValue: _jsonReadValue) Map<String, dynamic>? json,
     )?
     $default,
@@ -434,6 +455,7 @@ extension OpenApiPathMethodPatterns on OpenApiPathMethod {
           _that.parameters,
           _that.requestBody,
           _that.responses,
+          _that.servers,
           _that.json,
         );
       case _:
@@ -456,11 +478,13 @@ class _OpenApiPathMethod extends OpenApiPathMethod {
     required List<OpenApiPathMethodParameter>? parameters,
     @JsonKey(name: 'requestBody') required this.requestBody,
     @JsonKey(name: 'responses') required OpenApiPathMethodResponses? responses,
+    @JsonKey(name: 'servers') List<OpenApiServer>? servers,
     @JsonKey(readValue: _jsonReadValue) Map<String, dynamic>? json,
   }) : _tags = tags,
        _security = security,
        _parameters = parameters,
        _responses = responses,
+       _servers = servers,
        _json = json,
        super._();
   factory _OpenApiPathMethod.fromJson(Map<String, dynamic> json) =>
@@ -525,6 +549,22 @@ class _OpenApiPathMethod extends OpenApiPathMethod {
     return EqualUnmodifiableMapView(value);
   }
 
+  /// The operation's servers, else its path item's (see
+  /// `resolveOperations`).
+  final List<OpenApiServer>? _servers;
+
+  /// The operation's servers, else its path item's (see
+  /// `resolveOperations`).
+  @override
+  @JsonKey(name: 'servers')
+  List<OpenApiServer>? get servers {
+    final value = _servers;
+    if (value == null) return null;
+    if (_servers is EqualUnmodifiableListView) return _servers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   final Map<String, dynamic>? _json;
   @override
   @JsonKey(readValue: _jsonReadValue)
@@ -573,6 +613,7 @@ class _OpenApiPathMethod extends OpenApiPathMethod {
               other.responses,
               _responses,
             ) &&
+            const DeepCollectionEquality().equals(other.servers, _servers) &&
             const DeepCollectionEquality().equals(other.json, _json));
   }
 
@@ -590,13 +631,14 @@ class _OpenApiPathMethod extends OpenApiPathMethod {
       const DeepCollectionEquality().hash(_parameters),
       requestBody,
       const DeepCollectionEquality().hash(_responses),
+      const DeepCollectionEquality().hash(_servers),
       const DeepCollectionEquality().hash(_json),
     );
   }
 
   @override
   String toString() {
-    return 'OpenApiPathMethod(tags: $tags, summary: $summary, description: $description, operationId: $operationId, deprecated: $deprecated, security: $security, parameters: $parameters, requestBody: $requestBody, responses: $responses, json: $json)';
+    return 'OpenApiPathMethod(tags: $tags, summary: $summary, description: $description, operationId: $operationId, deprecated: $deprecated, security: $security, parameters: $parameters, requestBody: $requestBody, responses: $responses, servers: $servers, json: $json)';
   }
 }
 
@@ -619,6 +661,7 @@ abstract mixin class _$OpenApiPathMethodCopyWith<$Res>
     @JsonKey(name: 'parameters') List<OpenApiPathMethodParameter>? parameters,
     @JsonKey(name: 'requestBody') OpenApiPathMethodRequestBody? requestBody,
     @JsonKey(name: 'responses') OpenApiPathMethodResponses? responses,
+    @JsonKey(name: 'servers') List<OpenApiServer>? servers,
     @JsonKey(readValue: _jsonReadValue) Map<String, dynamic>? json,
   });
 
@@ -648,6 +691,7 @@ class __$OpenApiPathMethodCopyWithImpl<$Res>
     Object? parameters = freezed,
     Object? requestBody = freezed,
     Object? responses = freezed,
+    Object? servers = freezed,
     Object? json = freezed,
   }) {
     return _then(
@@ -688,6 +732,10 @@ class __$OpenApiPathMethodCopyWithImpl<$Res>
             ? _self._responses
             : responses // ignore: cast_nullable_to_non_nullable
                   as OpenApiPathMethodResponses?,
+        servers: freezed == servers
+            ? _self._servers
+            : servers // ignore: cast_nullable_to_non_nullable
+                  as List<OpenApiServer>?,
         json: freezed == json
             ? _self._json
             : json // ignore: cast_nullable_to_non_nullable

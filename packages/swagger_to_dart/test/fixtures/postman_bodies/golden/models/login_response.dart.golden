@@ -1,0 +1,33 @@
+/// LoginResponse
+///
+/// ```json
+/// {
+///     "properties": {
+///         "expiresIn": {
+///             "type": "integer"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'login_response.freezed.dart';
+part 'login_response.g.dart';
+
+@freezed
+abstract class LoginResponse with _$LoginResponse {
+  const LoginResponse._();
+
+  @jsonSerializable
+  const factory LoginResponse({
+    /// expiresIn
+    @JsonKey(name: LoginResponse.expiresInKey_) int? expiresIn,
+  }) = _LoginResponse;
+
+  factory LoginResponse.fromJson(Map<String, dynamic> json) =>
+      _$LoginResponseFromJson(json);
+
+  static const String expiresInKey_ = 'expiresIn';
+}

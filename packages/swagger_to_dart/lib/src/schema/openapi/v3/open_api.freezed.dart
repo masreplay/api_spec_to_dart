@@ -22,6 +22,13 @@ mixin _$OpenApi {
   List<OpenApiServer>? get servers;
   @JsonKey(name: 'paths')
   OpenApiPaths? get paths;
+
+  /// OpenAPI 3.2 `additionalOperations` (methods such as `PURGE`) by path,
+  /// then by method as sent. [OpenApiPaths] keys operations by
+  /// [OpenApiPathMethodEnum], which cannot name them, so
+  /// [resolveOperations] moves them to this reserved key.
+  @JsonKey(name: 'x-additional-operations')
+  Map<String, Map<String, OpenApiPathMethod>>? get additionalOperations;
   @JsonKey(name: 'components')
   OpenApiComponents? get components;
   @JsonKey(name: 'tags')
@@ -52,6 +59,10 @@ mixin _$OpenApi {
               _this.servers,
             ) &&
             const DeepCollectionEquality().equals(other.paths, _this.paths) &&
+            const DeepCollectionEquality().equals(
+              other.additionalOperations,
+              _this.additionalOperations,
+            ) &&
             (identical(other.components, _this.components) ||
                 other.components == _this.components) &&
             const DeepCollectionEquality().equals(other.tags, _this.tags) &&
@@ -71,6 +82,7 @@ mixin _$OpenApi {
       _this.info,
       const DeepCollectionEquality().hash(_this.servers),
       const DeepCollectionEquality().hash(_this.paths),
+      const DeepCollectionEquality().hash(_this.additionalOperations),
       _this.components,
       const DeepCollectionEquality().hash(_this.tags),
       const DeepCollectionEquality().hash(_this.extraJson),
@@ -80,7 +92,7 @@ mixin _$OpenApi {
   @override
   String toString() {
     final _this = this as OpenApi;
-    return 'OpenApi(openapi: ${_this.openapi}, info: ${_this.info}, servers: ${_this.servers}, paths: ${_this.paths}, components: ${_this.components}, tags: ${_this.tags}, extraJson: ${_this.extraJson})';
+    return 'OpenApi(openapi: ${_this.openapi}, info: ${_this.info}, servers: ${_this.servers}, paths: ${_this.paths}, additionalOperations: ${_this.additionalOperations}, components: ${_this.components}, tags: ${_this.tags}, extraJson: ${_this.extraJson})';
   }
 }
 
@@ -94,6 +106,8 @@ abstract mixin class $OpenApiCopyWith<$Res> {
     @JsonKey(name: 'info') OpenApiInfo? info,
     @JsonKey(name: 'servers') List<OpenApiServer>? servers,
     @JsonKey(name: 'paths') OpenApiPaths? paths,
+    @JsonKey(name: 'x-additional-operations')
+    Map<String, Map<String, OpenApiPathMethod>>? additionalOperations,
     @JsonKey(name: 'components') OpenApiComponents? components,
     @JsonKey(name: 'tags') List<OpenApiTag>? tags,
     Map<String, dynamic>? extraJson,
@@ -119,6 +133,7 @@ class _$OpenApiCopyWithImpl<$Res> implements $OpenApiCopyWith<$Res> {
     Object? info = freezed,
     Object? servers = freezed,
     Object? paths = freezed,
+    Object? additionalOperations = freezed,
     Object? components = freezed,
     Object? tags = freezed,
     Object? extraJson = freezed,
@@ -141,6 +156,10 @@ class _$OpenApiCopyWithImpl<$Res> implements $OpenApiCopyWith<$Res> {
             ? _self.paths
             : paths // ignore: cast_nullable_to_non_nullable
                   as OpenApiPaths?,
+        additionalOperations: freezed == additionalOperations
+            ? _self.additionalOperations
+            : additionalOperations // ignore: cast_nullable_to_non_nullable
+                  as Map<String, Map<String, OpenApiPathMethod>>?,
         components: freezed == components
             ? _self.components
             : components // ignore: cast_nullable_to_non_nullable
@@ -284,6 +303,8 @@ extension OpenApiPatterns on OpenApi {
       @JsonKey(name: 'info') OpenApiInfo? info,
       @JsonKey(name: 'servers') List<OpenApiServer>? servers,
       @JsonKey(name: 'paths') OpenApiPaths? paths,
+      @JsonKey(name: 'x-additional-operations')
+      Map<String, Map<String, OpenApiPathMethod>>? additionalOperations,
       @JsonKey(name: 'components') OpenApiComponents? components,
       @JsonKey(name: 'tags') List<OpenApiTag>? tags,
       Map<String, dynamic>? extraJson,
@@ -299,6 +320,7 @@ extension OpenApiPatterns on OpenApi {
           _that.info,
           _that.servers,
           _that.paths,
+          _that.additionalOperations,
           _that.components,
           _that.tags,
           _that.extraJson,
@@ -328,6 +350,8 @@ extension OpenApiPatterns on OpenApi {
       @JsonKey(name: 'info') OpenApiInfo? info,
       @JsonKey(name: 'servers') List<OpenApiServer>? servers,
       @JsonKey(name: 'paths') OpenApiPaths? paths,
+      @JsonKey(name: 'x-additional-operations')
+      Map<String, Map<String, OpenApiPathMethod>>? additionalOperations,
       @JsonKey(name: 'components') OpenApiComponents? components,
       @JsonKey(name: 'tags') List<OpenApiTag>? tags,
       Map<String, dynamic>? extraJson,
@@ -342,6 +366,7 @@ extension OpenApiPatterns on OpenApi {
           _that.info,
           _that.servers,
           _that.paths,
+          _that.additionalOperations,
           _that.components,
           _that.tags,
           _that.extraJson,
@@ -370,6 +395,8 @@ extension OpenApiPatterns on OpenApi {
       @JsonKey(name: 'info') OpenApiInfo? info,
       @JsonKey(name: 'servers') List<OpenApiServer>? servers,
       @JsonKey(name: 'paths') OpenApiPaths? paths,
+      @JsonKey(name: 'x-additional-operations')
+      Map<String, Map<String, OpenApiPathMethod>>? additionalOperations,
       @JsonKey(name: 'components') OpenApiComponents? components,
       @JsonKey(name: 'tags') List<OpenApiTag>? tags,
       Map<String, dynamic>? extraJson,
@@ -384,6 +411,7 @@ extension OpenApiPatterns on OpenApi {
           _that.info,
           _that.servers,
           _that.paths,
+          _that.additionalOperations,
           _that.components,
           _that.tags,
           _that.extraJson,
@@ -402,11 +430,14 @@ class _OpenApi extends OpenApi {
     @JsonKey(name: 'info') this.info,
     @JsonKey(name: 'servers') List<OpenApiServer>? servers,
     @JsonKey(name: 'paths') OpenApiPaths? paths,
+    @JsonKey(name: 'x-additional-operations')
+    Map<String, Map<String, OpenApiPathMethod>>? additionalOperations,
     @JsonKey(name: 'components') this.components,
     @JsonKey(name: 'tags') List<OpenApiTag>? tags,
     Map<String, dynamic>? extraJson,
   }) : _servers = servers,
        _paths = paths,
+       _additionalOperations = additionalOperations,
        _tags = tags,
        _extraJson = extraJson,
        super._();
@@ -437,6 +468,27 @@ class _OpenApi extends OpenApi {
     final value = _paths;
     if (value == null) return null;
     if (_paths is EqualUnmodifiableMapView) return _paths;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
+
+  /// OpenAPI 3.2 `additionalOperations` (methods such as `PURGE`) by path,
+  /// then by method as sent. [OpenApiPaths] keys operations by
+  /// [OpenApiPathMethodEnum], which cannot name them, so
+  /// [resolveOperations] moves them to this reserved key.
+  final Map<String, Map<String, OpenApiPathMethod>>? _additionalOperations;
+
+  /// OpenAPI 3.2 `additionalOperations` (methods such as `PURGE`) by path,
+  /// then by method as sent. [OpenApiPaths] keys operations by
+  /// [OpenApiPathMethodEnum], which cannot name them, so
+  /// [resolveOperations] moves them to this reserved key.
+  @override
+  @JsonKey(name: 'x-additional-operations')
+  Map<String, Map<String, OpenApiPathMethod>>? get additionalOperations {
+    final value = _additionalOperations;
+    if (value == null) return null;
+    if (_additionalOperations is EqualUnmodifiableMapView)
+      return _additionalOperations;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(value);
   }
@@ -487,6 +539,10 @@ class _OpenApi extends OpenApi {
             (identical(other.info, info) || other.info == info) &&
             const DeepCollectionEquality().equals(other.servers, _servers) &&
             const DeepCollectionEquality().equals(other.paths, _paths) &&
+            const DeepCollectionEquality().equals(
+              other.additionalOperations,
+              _additionalOperations,
+            ) &&
             (identical(other.components, components) ||
                 other.components == components) &&
             const DeepCollectionEquality().equals(other.tags, _tags) &&
@@ -502,6 +558,7 @@ class _OpenApi extends OpenApi {
       info,
       const DeepCollectionEquality().hash(_servers),
       const DeepCollectionEquality().hash(_paths),
+      const DeepCollectionEquality().hash(_additionalOperations),
       components,
       const DeepCollectionEquality().hash(_tags),
       const DeepCollectionEquality().hash(_extraJson),
@@ -510,7 +567,7 @@ class _OpenApi extends OpenApi {
 
   @override
   String toString() {
-    return 'OpenApi(openapi: $openapi, info: $info, servers: $servers, paths: $paths, components: $components, tags: $tags, extraJson: $extraJson)';
+    return 'OpenApi(openapi: $openapi, info: $info, servers: $servers, paths: $paths, additionalOperations: $additionalOperations, components: $components, tags: $tags, extraJson: $extraJson)';
   }
 }
 
@@ -525,6 +582,8 @@ abstract mixin class _$OpenApiCopyWith<$Res> implements $OpenApiCopyWith<$Res> {
     @JsonKey(name: 'info') OpenApiInfo? info,
     @JsonKey(name: 'servers') List<OpenApiServer>? servers,
     @JsonKey(name: 'paths') OpenApiPaths? paths,
+    @JsonKey(name: 'x-additional-operations')
+    Map<String, Map<String, OpenApiPathMethod>>? additionalOperations,
     @JsonKey(name: 'components') OpenApiComponents? components,
     @JsonKey(name: 'tags') List<OpenApiTag>? tags,
     Map<String, dynamic>? extraJson,
@@ -552,6 +611,7 @@ class __$OpenApiCopyWithImpl<$Res> implements _$OpenApiCopyWith<$Res> {
     Object? info = freezed,
     Object? servers = freezed,
     Object? paths = freezed,
+    Object? additionalOperations = freezed,
     Object? components = freezed,
     Object? tags = freezed,
     Object? extraJson = freezed,
@@ -574,6 +634,10 @@ class __$OpenApiCopyWithImpl<$Res> implements _$OpenApiCopyWith<$Res> {
             ? _self._paths
             : paths // ignore: cast_nullable_to_non_nullable
                   as OpenApiPaths?,
+        additionalOperations: freezed == additionalOperations
+            ? _self._additionalOperations
+            : additionalOperations // ignore: cast_nullable_to_non_nullable
+                  as Map<String, Map<String, OpenApiPathMethod>>?,
         components: freezed == components
             ? _self.components
             : components // ignore: cast_nullable_to_non_nullable
@@ -966,10 +1030,14 @@ class __$OpenApiTagCopyWithImpl<$Res> implements _$OpenApiTagCopyWith<$Res> {
 
 /// @nodoc
 mixin _$OpenApiServer {
+  /// A URL template: `{name}` stands for one of [variables] (a [Uri]
+  /// would percent-encode the braces).
   @JsonKey(name: 'url')
-  Uri get url;
+  String get url;
   @JsonKey(name: 'description')
   String? get description;
+  @JsonKey(name: 'variables')
+  Map<String, Map<String, dynamic>>? get variables;
 
   /// Create a copy of OpenApiServer
   /// with the given fields replaced by the non-null parameter values.
@@ -992,20 +1060,29 @@ mixin _$OpenApiServer {
             other is OpenApiServer &&
             (identical(other.url, _this.url) || other.url == _this.url) &&
             (identical(other.description, _this.description) ||
-                other.description == _this.description));
+                other.description == _this.description) &&
+            const DeepCollectionEquality().equals(
+              other.variables,
+              _this.variables,
+            ));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode {
     final _this = this as OpenApiServer;
-    return Object.hash(runtimeType, _this.url, _this.description);
+    return Object.hash(
+      runtimeType,
+      _this.url,
+      _this.description,
+      const DeepCollectionEquality().hash(_this.variables),
+    );
   }
 
   @override
   String toString() {
     final _this = this as OpenApiServer;
-    return 'OpenApiServer(url: ${_this.url}, description: ${_this.description})';
+    return 'OpenApiServer(url: ${_this.url}, description: ${_this.description}, variables: ${_this.variables})';
   }
 }
 
@@ -1017,8 +1094,9 @@ abstract mixin class $OpenApiServerCopyWith<$Res> {
   ) = _$OpenApiServerCopyWithImpl;
   @useResult
   $Res call({
-    @JsonKey(name: 'url') Uri url,
+    @JsonKey(name: 'url') String url,
     @JsonKey(name: 'description') String? description,
+    @JsonKey(name: 'variables') Map<String, Map<String, dynamic>>? variables,
   });
 }
 
@@ -1034,17 +1112,25 @@ class _$OpenApiServerCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? url = null, Object? description = freezed}) {
+  $Res call({
+    Object? url = null,
+    Object? description = freezed,
+    Object? variables = freezed,
+  }) {
     return _then(
       OpenApiServer(
         url: null == url
             ? _self.url
             : url // ignore: cast_nullable_to_non_nullable
-                  as Uri,
+                  as String,
         description: freezed == description
             ? _self.description
             : description // ignore: cast_nullable_to_non_nullable
                   as String?,
+        variables: freezed == variables
+            ? _self.variables
+            : variables // ignore: cast_nullable_to_non_nullable
+                  as Map<String, Map<String, dynamic>>?,
       ),
     );
   }
@@ -1144,8 +1230,9 @@ extension OpenApiServerPatterns on OpenApiServer {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-      @JsonKey(name: 'url') Uri url,
+      @JsonKey(name: 'url') String url,
       @JsonKey(name: 'description') String? description,
+      @JsonKey(name: 'variables') Map<String, Map<String, dynamic>>? variables,
     )?
     $default, {
     required TResult orElse(),
@@ -1153,7 +1240,7 @@ extension OpenApiServerPatterns on OpenApiServer {
     final _that = this;
     switch (_that) {
       case _OpenApiServer() when $default != null:
-        return $default(_that.url, _that.description);
+        return $default(_that.url, _that.description, _that.variables);
       case _:
         return orElse();
     }
@@ -1175,15 +1262,16 @@ extension OpenApiServerPatterns on OpenApiServer {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-      @JsonKey(name: 'url') Uri url,
+      @JsonKey(name: 'url') String url,
       @JsonKey(name: 'description') String? description,
+      @JsonKey(name: 'variables') Map<String, Map<String, dynamic>>? variables,
     )
     $default,
   ) {
     final _that = this;
     switch (_that) {
       case _OpenApiServer():
-        return $default(_that.url, _that.description);
+        return $default(_that.url, _that.description, _that.variables);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -1204,15 +1292,16 @@ extension OpenApiServerPatterns on OpenApiServer {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-      @JsonKey(name: 'url') Uri url,
+      @JsonKey(name: 'url') String url,
       @JsonKey(name: 'description') String? description,
+      @JsonKey(name: 'variables') Map<String, Map<String, dynamic>>? variables,
     )?
     $default,
   ) {
     final _that = this;
     switch (_that) {
       case _OpenApiServer() when $default != null:
-        return $default(_that.url, _that.description);
+        return $default(_that.url, _that.description, _that.variables);
       case _:
         return null;
     }
@@ -1225,16 +1314,30 @@ class _OpenApiServer extends OpenApiServer {
   const _OpenApiServer({
     @JsonKey(name: 'url') required this.url,
     @JsonKey(name: 'description') required this.description,
-  }) : super._();
+    @JsonKey(name: 'variables') Map<String, Map<String, dynamic>>? variables,
+  }) : _variables = variables,
+       super._();
   factory _OpenApiServer.fromJson(Map<String, dynamic> json) =>
       _$OpenApiServerFromJson(json);
 
+  /// A URL template: `{name}` stands for one of [variables] (a [Uri]
+  /// would percent-encode the braces).
   @override
   @JsonKey(name: 'url')
-  final Uri url;
+  final String url;
   @override
   @JsonKey(name: 'description')
   final String? description;
+  final Map<String, Map<String, dynamic>>? _variables;
+  @override
+  @JsonKey(name: 'variables')
+  Map<String, Map<String, dynamic>>? get variables {
+    final value = _variables;
+    if (value == null) return null;
+    if (_variables is EqualUnmodifiableMapView) return _variables;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
 
   /// Create a copy of OpenApiServer
   /// with the given fields replaced by the non-null parameter values.
@@ -1256,18 +1359,24 @@ class _OpenApiServer extends OpenApiServer {
             other is _OpenApiServer &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.description, description) ||
-                other.description == description));
+                other.description == description) &&
+            const DeepCollectionEquality().equals(other.variables, _variables));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode {
-    return Object.hash(runtimeType, url, description);
+    return Object.hash(
+      runtimeType,
+      url,
+      description,
+      const DeepCollectionEquality().hash(_variables),
+    );
   }
 
   @override
   String toString() {
-    return 'OpenApiServer(url: $url, description: $description)';
+    return 'OpenApiServer(url: $url, description: $description, variables: $variables)';
   }
 }
 
@@ -1281,8 +1390,9 @@ abstract mixin class _$OpenApiServerCopyWith<$Res>
   @override
   @useResult
   $Res call({
-    @JsonKey(name: 'url') Uri url,
+    @JsonKey(name: 'url') String url,
     @JsonKey(name: 'description') String? description,
+    @JsonKey(name: 'variables') Map<String, Map<String, dynamic>>? variables,
   });
 }
 
@@ -1298,17 +1408,25 @@ class __$OpenApiServerCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? url = null, Object? description = freezed}) {
+  $Res call({
+    Object? url = null,
+    Object? description = freezed,
+    Object? variables = freezed,
+  }) {
     return _then(
       _OpenApiServer(
         url: null == url
             ? _self.url
             : url // ignore: cast_nullable_to_non_nullable
-                  as Uri,
+                  as String,
         description: freezed == description
             ? _self.description
             : description // ignore: cast_nullable_to_non_nullable
                   as String?,
+        variables: freezed == variables
+            ? _self._variables
+            : variables // ignore: cast_nullable_to_non_nullable
+                  as Map<String, Map<String, dynamic>>?,
       ),
     );
   }

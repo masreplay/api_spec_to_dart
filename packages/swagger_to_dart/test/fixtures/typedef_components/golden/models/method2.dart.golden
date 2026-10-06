@@ -1,0 +1,22 @@
+/// Method
+///
+/// ```json
+/// {
+///     "description": "An open enum: one primitive type.",
+///     "anyOf": [
+///         {
+///             "enum": [
+///                 "GET",
+///                 "POST"
+///             ],
+///             "type": "string"
+///         },
+///         {
+///             "type": "string"
+///         }
+///     ]
+/// }
+/// ```
+library;
+
+typedef Method2 = String;

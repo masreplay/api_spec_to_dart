@@ -1,4 +1,4 @@
-import 'dart:convert';
+import 'dart:async';
 import 'dart:io';
 
 import 'package:path/path.dart' as p;
@@ -8,7 +8,8 @@ import 'package:yaml/yaml.dart';
 
 /// One scenario under `test/fixtures/<name>/`:
 ///
-/// - `openapi.json` — the spec (required)
+/// - the input (required): the first of [inputs] that exists, read and
+///   converted to OpenAPI 3 like users' input
 /// - `swagger_to_dart.yaml` — generator config (optional)
 /// - `pubspec.yaml` — the consuming project; a `flutter` dependency makes
 ///   it a Flutter project (optional)
@@ -22,9 +23,35 @@ class Fixture {
 
   String get name => p.basename(dir.path);
 
-  Map<String, dynamic> get spec =>
-      jsonDecode(File(p.join(dir.path, 'openapi.json')).readAsStringSync())
-          as Map<String, dynamic>;
+  static const inputs = [
+    'openapi.json',
+    'openapi.yaml',
+    'swagger.json',
+    'schema.json',
+    'collection.json',
+    'collection', // a Postman v3 directory
+  ];
+
+  String get input => inputs
+      .map((file) => p.join(dir.path, file))
+      .firstWhere(
+        (path) =>
+            FileSystemEntity.typeSync(path) != FileSystemEntityType.notFound,
+        orElse: () => throw StateError('$name has none of $inputs'),
+      );
+
+  /// Whether the input is a Postman collection (file or v3 directory).
+  bool get isPostman => p.basename(input).startsWith('collection');
+
+  /// The input as OpenAPI 3. Conversion warnings are captured, not printed
+  /// (the input and converter tests assert them), so test output stays clean.
+  Map<String, dynamic> get spec => runZoned(
+    () => toOpenApiJson(
+      readSpecSync(input),
+      sourceName: p.basenameWithoutExtension(input),
+    ),
+    zoneSpecification: ZoneSpecification(print: (_, _, _, line) {}),
+  );
 
   SwaggerToDart get config {
     final file = File(p.join(dir.path, 'swagger_to_dart.yaml'));

@@ -1,0 +1,32 @@
+/// PetDog
+///
+/// ```json
+/// {
+///     "properties": {
+///         "x": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'pet_dog.freezed.dart';
+part 'pet_dog.g.dart';
+
+@freezed
+abstract class PetDog with _$PetDog {
+  const PetDog._();
+
+  @jsonSerializable
+  const factory PetDog({
+    /// x
+    @JsonKey(name: PetDog.xKey_) String? x,
+  }) = _PetDog;
+
+  factory PetDog.fromJson(Map<String, dynamic> json) => _$PetDogFromJson(json);
+
+  static const String xKey_ = 'x';
+}

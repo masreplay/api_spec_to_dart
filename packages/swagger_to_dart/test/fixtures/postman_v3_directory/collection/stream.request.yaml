@@ -1,0 +1,5 @@
+$kind: grpc-request
+url: 'grpc.bookstore.com:443'
+methodPath: bookstore.Books/StreamBooks
+message:
+  content: '{}'

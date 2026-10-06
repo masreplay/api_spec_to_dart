@@ -1,0 +1,32 @@
+/// Branch
+///
+/// ```json
+/// {
+///     "properties": {
+///         "children": {
+///             "$ref": "#/components/schemas/Forest"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'branch.freezed.dart';
+part 'branch.g.dart';
+
+@freezed
+abstract class Branch with _$Branch {
+  const Branch._();
+
+  @jsonSerializable
+  const factory Branch({
+    /// children
+    @JsonKey(name: Branch.childrenKey_) Forest? children,
+  }) = _Branch;
+
+  factory Branch.fromJson(Map<String, dynamic> json) => _$BranchFromJson(json);
+
+  static const String childrenKey_ = 'children';
+}

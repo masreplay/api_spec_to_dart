@@ -72,6 +72,16 @@ const _builtInIdentifiers = {
   'typedef',
 };
 
+/// Members of every generated model (Object's and freezed's).
+const _modelMembers = {
+  'hashCode',
+  'runtimeType',
+  'toString',
+  'noSuchMethod',
+  'copyWith',
+  'toJson',
+};
+
 const _symbolNames = {
   '+': 'plus',
   '-': 'minus',
@@ -130,10 +140,11 @@ class Renaming {
 
   /// Dart names for the JSON [keys] of one scope, unique among themselves and
   /// against [reserved] names (`some-key` and `some_key` → `someKey`,
-  /// `someKey2`).
+  /// `someKey2`). By default these are the members every model has
+  /// (`hashCode`, `toJson`, ...), which a field cannot override.
   Map<String, String> propertyNames(
     Iterable<String> keys, {
-    Set<String> reserved = const {},
+    Set<String> reserved = _modelMembers,
   }) {
     final used = {...reserved};
     return {
@@ -157,7 +168,13 @@ class Renaming {
     return _type(Recase.instance.toPascalCase(key));
   }
 
-  String renameEnumValue(Object value, {String? overrideName}) {
+  /// A value without ASCII words (`أحمر`) is named by its 1-based
+  /// [position] (`value1`), so several such values stay distinct.
+  String renameEnumValue(
+    Object value, {
+    String? overrideName,
+    int? position,
+  }) {
     // Opt-in rename from config (swagger_to_dart.yaml `model.enums`).
     if (overrideName != null && overrideName.trim().isNotEmpty) {
       return renameProperty(overrideName);
@@ -168,7 +185,9 @@ class Renaming {
       return intValue < 0 ? 'valueMinus${intValue.abs()}' : 'value$intValue';
     }
 
-    return renameProperty('$value');
+    final name = Recase.instance.toCamelCase(_spellSymbols('$value'));
+    if (name.isEmpty && position != null) return 'value$position';
+    return _member(name);
   }
 
   String renameClass(String value, {List<String>? removePrefixes}) {

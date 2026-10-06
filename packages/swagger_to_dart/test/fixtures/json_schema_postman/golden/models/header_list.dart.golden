@@ -1,0 +1,16 @@
+/// header-list
+///
+/// ```json
+/// {
+///     "type": "array",
+///     "items": {
+///         "$ref": "#/components/schemas/header"
+///     },
+///     "description": "A representation for a list of headers"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+typedef HeaderList = List<Header2>;

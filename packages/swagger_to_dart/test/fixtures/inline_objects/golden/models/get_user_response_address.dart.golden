@@ -1,0 +1,69 @@
+/// GetUserResponseAddress
+///
+/// ```json
+/// {
+///     "properties": {
+///         "city": {
+///             "type": "string"
+///         },
+///         "kind": {
+///             "enum": [
+///                 "home",
+///                 "work"
+///             ],
+///             "type": "string",
+///             "default": "home"
+///         },
+///         "geo": {
+///             "type": "object",
+///             "properties": {
+///                 "lat": {
+///                     "type": "number"
+///                 },
+///                 "lng": {
+///                     "type": "number"
+///                 }
+///             },
+///             "nullable": true
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "city"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'get_user_response_address.freezed.dart';
+part 'get_user_response_address.g.dart';
+
+@freezed
+abstract class GetUserResponseAddress with _$GetUserResponseAddress {
+  const GetUserResponseAddress._();
+
+  @jsonSerializable
+  const factory GetUserResponseAddress({
+    /// city
+    @JsonKey(name: GetUserResponseAddress.cityKey_) required String city,
+
+    /// kind
+    @Default(GetUserResponseAddressKind.home)
+    @JsonKey(name: GetUserResponseAddress.kindKey_)
+    GetUserResponseAddressKind kind,
+
+    /// geo
+    @JsonKey(name: GetUserResponseAddress.geoKey_)
+    GetUserResponseAddressGeo? geo,
+  }) = _GetUserResponseAddress;
+
+  factory GetUserResponseAddress.fromJson(Map<String, dynamic> json) =>
+      _$GetUserResponseAddressFromJson(json);
+
+  static const String cityKey_ = 'city';
+
+  static const String kindKey_ = 'kind';
+
+  static const String geoKey_ = 'geo';
+}

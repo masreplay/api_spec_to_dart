@@ -1,0 +1,35 @@
+/// Holder
+///
+/// ```json
+/// {
+///     "properties": {
+///         "default": {
+///             "type": "array",
+///             "items": {
+///                 "$ref": "#/components/schemas/Pet"
+///             }
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'holder.freezed.dart';
+part 'holder.g.dart';
+
+@freezed
+abstract class Holder with _$Holder {
+  const Holder._();
+
+  @jsonSerializable
+  const factory Holder({
+    /// $default
+    @JsonKey(name: Holder.$defaultKey_) List<Pet>? $default,
+  }) = _Holder;
+
+  factory Holder.fromJson(Map<String, dynamic> json) => _$HolderFromJson(json);
+
+  static const String $defaultKey_ = 'default';
+}

@@ -1,0 +1,33 @@
+/// Response
+///
+/// ```json
+/// {
+///     "properties": {
+///         "data": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'response2.freezed.dart';
+part 'response2.g.dart';
+
+@freezed
+abstract class Response2 with _$Response2 {
+  const Response2._();
+
+  @jsonSerializable
+  const factory Response2({
+    /// data
+    @JsonKey(name: Response2.dataKey_) String? data,
+  }) = _Response2;
+
+  factory Response2.fromJson(Map<String, dynamic> json) =>
+      _$Response2FromJson(json);
+
+  static const String dataKey_ = 'data';
+}

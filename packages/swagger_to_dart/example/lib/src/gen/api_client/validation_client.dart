@@ -36,7 +36,6 @@ abstract class ValidationClient {
             'description': 'The ID of the item',
           },
           'description': 'The ID of the item',
-          'example': 42,
         },
       ],
       'responses': {
@@ -95,7 +94,6 @@ abstract class ValidationClient {
           },
           'description':
               'Search query string (alphanumeric with hyphens and underscores)',
-          'example': 'search-term',
         },
         {
           'name': 'skip',
@@ -109,7 +107,6 @@ abstract class ValidationClient {
             'title': 'Skip',
           },
           'description': 'Number of items to skip',
-          'example': 0,
         },
         {
           'name': 'limit',
@@ -124,7 +121,6 @@ abstract class ValidationClient {
             'title': 'Limit',
           },
           'description': 'Maximum number of items to return (1-100)',
-          'example': 10,
         },
       ],
       'responses': {
@@ -385,7 +381,6 @@ abstract class ValidationClient {
             'title': 'User Id',
           },
           'description': 'User ID',
-          'example': 123,
         },
         {
           'name': 'username',
@@ -400,7 +395,6 @@ abstract class ValidationClient {
             'title': 'Username',
           },
           'description': 'Username',
-          'example': 'johndoe',
         },
       ],
       'responses': {
@@ -489,7 +483,6 @@ abstract class ValidationClient {
             'minimum': 0,
             'exclusiveMaximum': 100,
             'description': 'Integer between 0 and 99',
-            'examples': [42],
             'title': 'Value',
           },
           'description': 'Integer between 0 and 99',
@@ -541,7 +534,6 @@ abstract class ValidationClient {
             'maximum': 1.0,
             'minimum': 0.0,
             'description': 'Float between 0.0 and 1.0',
-            'examples': [0.5],
             'title': 'Value',
           },
           'description': 'Float between 0.0 and 1.0',
@@ -594,7 +586,6 @@ abstract class ValidationClient {
             'maxLength': 50,
             'pattern': '^[a-zA-Z0-9_-]+\$',
             'description': 'String between 3-50 chars, alphanumeric with hyphens and underscores',
-            'examples': ['example-value'],
             'title': 'Value',
           },
           'description': 'String between 3-50 chars, alphanumeric with hyphens and underscores',

@@ -1,0 +1,140 @@
+/// FormParameter
+///
+/// ```json
+/// {
+///     "anyOf": [
+///         {
+///             "properties": {
+///                 "key": {
+///                     "type": "string"
+///                 },
+///                 "value": {
+///                     "type": "string"
+///                 },
+///                 "type": {
+///                     "type": "string",
+///                     "const": "text"
+///                 }
+///             },
+///             "required": [
+///                 "key"
+///             ]
+///         },
+///         {
+///             "properties": {
+///                 "key": {
+///                     "type": "string"
+///                 },
+///                 "src": {
+///                     "oneOf": [
+///                         {
+///                             "type": "array"
+///                         },
+///                         {
+///                             "type": "string"
+///                         }
+///                     ],
+///                     "nullable": true
+///                 },
+///                 "type": {
+///                     "type": "string",
+///                     "const": "file"
+///                 }
+///             },
+///             "required": [
+///                 "key"
+///             ]
+///         }
+///     ],
+///     "title": "FormParameter"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+sealed class FormParameter {
+  const FormParameter();
+
+  const factory FormParameter.text(FormParameterTextValue value) =
+      FormParameterText;
+  const factory FormParameter.file(FormParameterFileValue value) =
+      FormParameterFile;
+
+  factory FormParameter.fromJson(Map<String, dynamic> json) =>
+      switch (json['type']) {
+        'text' => FormParameterText(FormParameterTextValue.fromJson(json)),
+        'file' => FormParameterFile(FormParameterFileValue.fromJson(json)),
+        _ => _fromKeys(json),
+      };
+
+  static FormParameter _fromKeys(Map<String, dynamic> json) {
+    // No discriminator value we know: the variant whose required keys are all
+    // present and that declares the most of the payload's keys wins (the
+    // earlier one on a tie).
+    const variants = <({Set<String> required, Set<String> declared})>[
+      (required: {'key'}, declared: {'key', 'value', 'type'}),
+      (required: {'key'}, declared: {'key', 'src', 'type'}),
+    ];
+    var best = -1;
+    var bestScore = -1;
+    for (var i = 0; i < variants.length; i++) {
+      final variant = variants[i];
+      if (!variant.required.every(json.containsKey)) continue;
+      final score = json.keys.where(variant.declared.contains).length;
+      if (score > bestScore) {
+        best = i;
+        bestScore = score;
+      }
+    }
+    return switch (best) {
+      0 => FormParameterText(FormParameterTextValue.fromJson(json)),
+      1 => FormParameterFile(FormParameterFileValue.fromJson(json)),
+      _ => throw ArgumentError.value(
+        json,
+        'json',
+        'No FormParameter variant matches',
+      ),
+    };
+  }
+
+  Map<String, dynamic> toJson();
+}
+
+final class FormParameterText extends FormParameter {
+  const FormParameterText(this.value);
+
+  final FormParameterTextValue value;
+
+  @override
+  Map<String, dynamic> toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) =>
+      other is FormParameterText && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'FormParameter.text($value)';
+}
+
+final class FormParameterFile extends FormParameter {
+  const FormParameterFile(this.value);
+
+  final FormParameterFileValue value;
+
+  @override
+  Map<String, dynamic> toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) =>
+      other is FormParameterFile && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'FormParameter.file($value)';
+}

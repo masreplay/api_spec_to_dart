@@ -1,0 +1,224 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
+import 'package:dio/dio.dart';
+import 'package:swagger_to_dart_e2e/gen/mixed_unions/api_client/requests_client.dart';
+import 'package:swagger_to_dart_e2e/gen/mixed_unions/models/models.dart';
+import 'package:test/test.dart';
+
+/// Answers every request with [body] as JSON.
+class _JsonAdapter implements HttpClientAdapter {
+  _JsonAdapter(this.body);
+
+  final Object? body;
+
+  @override
+  Future<ResponseBody> fetch(
+    RequestOptions options,
+    Stream<Uint8List>? requestStream,
+    Future<void>? cancelFuture,
+  ) async => ResponseBody.fromString(
+    jsonEncode(body),
+    200,
+    headers: {
+      Headers.contentTypeHeader: [Headers.jsonContentType],
+    },
+  );
+
+  @override
+  void close({bool force = false}) {}
+}
+
+RequestsClient _client(Object? body) =>
+    RequestsClient(Dio()..httpClientAdapter = _JsonAdapter(body));
+
+/// [json] without the null values a model writes for absent keys.
+Map<String, Object?> _present(Map<String, Object?> json) => {
+  for (final MapEntry(:key, :value) in json.entries) key: ?value,
+};
+
+void main() {
+  const request = {
+    'url': {
+      'raw': 'https://example.dev/a',
+      'host': ['example', 'dev'],
+    },
+    'owner': {'name': 'Rex'},
+    'description': {'content': 'Fetches a'},
+    'formdata': [
+      {'key': 'name', 'value': 'Rex', 'type': 'text'},
+      {
+        'key': 'photos',
+        'src': ['/a.png', '/b.png'],
+        'type': 'file',
+      },
+      {'key': 'avatar', 'src': '/c.png', 'type': 'file'},
+    ],
+    'segments': [
+      'users',
+      {'value': ':id'},
+    ],
+    'exec': ['echo', 'hi'],
+    'objectOrString': {'a': 'x'},
+    'objectOrArray': ['x', 'y'],
+    'amount': 1.5,
+    'when': '2026-10-03T10:00:00.000Z',
+    'level': 'high',
+    'companion': {'kind': 'cat', 'lives': 9},
+    'animal': {'kind': 'Dog', 'bark': true},
+    'urls': {
+      'home': 'https://example.dev',
+      'api': {'raw': 'https://api.example.dev', 'host': 'api'},
+    },
+    'link': true,
+    'herd': [
+      {'name': 'Rex'},
+    ],
+    'target': {'kind': 'url', 'raw': 'https://example.dev/t', 'host': null},
+  };
+
+  test('each JSON kind decodes into its case', () {
+    final decoded = Request.fromJson(request);
+
+    final url = decoded.url as UrlObject;
+    expect(url.value.host, const UrlObjectValueHost.list(['example', 'dev']));
+    expect(decoded.owner, const RequestOwner.pet(Pet(name: 'Rex')));
+    expect(decoded.description, isA<RequestDescriptionObject>());
+    expect(decoded.formdata?.map((p) => p.runtimeType), [
+      FormParameterText,
+      FormParameterFile,
+      FormParameterFile,
+    ]);
+    expect(
+      (decoded.formdata?.last as FormParameterFile).value.src,
+      const FormParameterFileValueSrc.string('/c.png'),
+    );
+    expect(decoded.segments?.first, const RequestSegmentsItem.string('users'));
+    expect(decoded.segments?.last, isA<RequestSegmentsItemObject>());
+    expect(decoded.exec, const RequestExec.list(['echo', 'hi']));
+    expect(decoded.objectOrString, isA<RequestObjectOrStringObject>());
+    expect(decoded.objectOrArray, const RequestObjectOrArray.list(['x', 'y']));
+    expect(decoded.amount, const RequestAmount.number(1.5));
+    expect(decoded.when, RequestWhen.string(DateTime.utc(2026, 10, 3, 10)));
+    expect(
+      decoded.level,
+      const RequestLevel.string(RequestLevelStringValue.high),
+    );
+    expect(decoded.companion, isA<RequestCompanionCat>());
+    expect(decoded.animal, isA<RequestAnimalDog>());
+    expect(decoded.urls?['home'], const Url.string('https://example.dev'));
+    expect(decoded.urls?['api'], isA<UrlObject>());
+    expect(decoded.link, const RequestLink.boolean(true));
+    expect(decoded.herd, isA<PetsOrAnimalOrLevelUnionPets>());
+    expect(decoded.target, isA<UrlOrpetUnionUrl>());
+  });
+
+  test('every case re-encodes to the JSON it came from', () {
+    expect(Request.fromJson(request).toJson(), request);
+
+    final other = {
+      'url': 'https://example.dev/b',
+      'owner': 'someone',
+      'description': null,
+      'formdata': <Object?>[],
+      'segments': <Object?>[],
+      'exec': 'echo hi',
+      'objectOrString': 'plain',
+      'objectOrArray': {'a': 'x'},
+      'amount': [
+        {'name': 'Tom'},
+      ],
+      'when': ['2026-10-03T10:00:00.000Z'],
+      'level': [1, 2],
+      'companion': 'stray',
+      'animal': 'unknown',
+      'urls': <String, Object?>{},
+      'link': 'https://example.dev/l',
+      'herd': 'low',
+      'target': {'kind': 'pet', 'name': 'Tom'},
+    };
+    expect(Request.fromJson(other).toJson(), other);
+
+    for (final amount in [2, true]) {
+      expect(RequestAmount.fromJson(amount).toJson(), amount);
+    }
+    expect(
+      PetsOrAnimalOrLevelUnion.fromJson({'name': 'Rex'}),
+      const PetsOrAnimalOrLevelUnion.animal(Animal(name: 'Rex')),
+    );
+  });
+
+  test('without its optional const property a form parameter fits by keys', () {
+    for (final (json, variant) in [
+      ({'key': 'k'}, FormParameterText),
+      ({'key': 'k', 'value': 'v'}, FormParameterText),
+      ({'key': 'k', 'src': '/f'}, FormParameterFile),
+      // An unknown value: the keys decide, and the value is kept.
+      ({'key': 'k', 'type': 'binary'}, FormParameterText),
+    ]) {
+      final parameter = FormParameter.fromJson(json);
+
+      expect(parameter.runtimeType, variant, reason: '$json');
+      expect(_present(parameter.toJson()), json);
+    }
+  });
+
+  test('a free-form object variant keeps any map a model does not fit', () {
+    expect(
+      PetOrFree.fromJson({'name': 'Rex'}),
+      const PetOrFree.pet(Pet(name: 'Rex')),
+    );
+    final free = PetOrFree.fromJson({'x': 1});
+    expect(free, isA<PetOrFreeFree>());
+    final Free value = (free as PetOrFreeFree).value;
+    expect(value, {'x': 1});
+    for (final json in <Object?>[
+      {'name': 'Rex'},
+      {
+        'x': 1,
+        'y': [true, null],
+      },
+      'hi',
+    ]) {
+      expect(PetOrFree.fromJson(json).toJson(), json);
+    }
+  });
+
+  test('a nullable typedef of an object is a union variant', () {
+    expect(
+      WrapOrString.fromJson({'a': 'x'}),
+      const WrapOrString.wrap(WrapValue(a: 'x')),
+    );
+    for (final json in <Object?>[
+      {'a': 'x'},
+      'hi',
+    ]) {
+      expect(WrapOrString.fromJson(json).toJson(), json);
+    }
+  });
+
+  test('JSON no variant takes throws', () {
+    expect(() => Url.fromJson(1), throwsArgumentError);
+    expect(() => FormParameter.fromJson({'value': 'v'}), throwsArgumentError);
+    expect(() => RequestAnimal.fromJson({'kind': 'Bird'}), throwsArgumentError);
+    expect(() => RequestCompanion.fromJson({'kind': 'x'}), throwsArgumentError);
+  });
+
+  test('union responses decode, list and map responses stay JSON', () async {
+    final url = await _client('https://example.dev')
+        .send(requestBody: const Request(url: Url.string('x')));
+    expect(url.data, const Url.string('https://example.dev'));
+
+    final urls = await _client([
+      'a',
+      {'raw': 'b'},
+    ]).listUrls();
+    expect(urls.data.map(Url.fromJson), [
+      const Url.string('a'),
+      const Url.object(UrlObjectValue(raw: 'b')),
+    ]);
+
+    final map = await _client({'a': 'b'}).urlMap();
+    expect(Url.fromJson(map.data['a']), const Url.string('b'));
+  });
+}

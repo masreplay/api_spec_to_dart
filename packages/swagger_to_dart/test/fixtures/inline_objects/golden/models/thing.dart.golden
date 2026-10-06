@@ -1,0 +1,33 @@
+/// Thing
+///
+/// ```json
+/// {
+///     "properties": {
+///         "a": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object",
+///     "title": "Thing"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'thing.freezed.dart';
+part 'thing.g.dart';
+
+@freezed
+abstract class Thing with _$Thing {
+  const Thing._();
+
+  @jsonSerializable
+  const factory Thing({
+    /// a
+    @JsonKey(name: Thing.aKey_) String? a,
+  }) = _Thing;
+
+  factory Thing.fromJson(Map<String, dynamic> json) => _$ThingFromJson(json);
+
+  static const String aKey_ = 'a';
+}

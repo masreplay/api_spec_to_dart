@@ -1,0 +1,41 @@
+/// ListUsersResponseItem
+///
+/// ```json
+/// {
+///     "properties": {
+///         "id": {
+///             "type": "integer"
+///         },
+///         "name": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'list_users_response_item.freezed.dart';
+part 'list_users_response_item.g.dart';
+
+@freezed
+abstract class ListUsersResponseItem with _$ListUsersResponseItem {
+  const ListUsersResponseItem._();
+
+  @jsonSerializable
+  const factory ListUsersResponseItem({
+    /// id
+    @JsonKey(name: ListUsersResponseItem.idKey_) int? id,
+
+    /// name
+    @JsonKey(name: ListUsersResponseItem.nameKey_) String? name,
+  }) = _ListUsersResponseItem;
+
+  factory ListUsersResponseItem.fromJson(Map<String, dynamic> json) =>
+      _$ListUsersResponseItemFromJson(json);
+
+  static const String idKey_ = 'id';
+
+  static const String nameKey_ = 'name';
+}

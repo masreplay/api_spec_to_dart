@@ -1,0 +1,67 @@
+{
+  "openapi": "3.2.0",
+  "info": { "title": "HTTP methods", "version": "1.0.0" },
+  "paths": {
+    "/x": {
+      "get": {
+        "tags": ["resources"],
+        "operationId": "getResource",
+        "responses": { "204": { "description": "Found" } }
+      },
+      "trace": {
+        "tags": ["resources"],
+        "operationId": "traceResource",
+        "responses": { "204": { "description": "Traced" } }
+      },
+      "query": {
+        "tags": ["resources"],
+        "operationId": "queryResources",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Filter" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The matches",
+            "content": {
+              "application/json": {
+                "schema": { "type": "array", "items": { "type": "string" } }
+              }
+            }
+          }
+        }
+      },
+      "additionalOperations": {
+        "PURGE": {
+          "tags": ["resources"],
+          "operationId": "purgeResource",
+          "responses": { "204": { "description": "Purged" } }
+        },
+        "LINK": {
+          "tags": ["resources"],
+          "operationId": "linkResource",
+          "parameters": [
+            {
+              "name": "Link",
+              "in": "header",
+              "required": true,
+              "schema": { "type": "string" }
+            }
+          ],
+          "responses": { "204": { "description": "Linked" } }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Filter": {
+        "type": "object",
+        "properties": { "prefix": { "type": "string" } }
+      }
+    }
+  }
+}

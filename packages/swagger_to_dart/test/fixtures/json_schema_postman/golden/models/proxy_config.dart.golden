@@ -1,0 +1,77 @@
+/// proxy-config
+///
+/// ```json
+/// {
+///     "properties": {
+///         "match": {
+///             "type": "string",
+///             "description": "The Url match for which the proxy config is defined",
+///             "default": "http+https://*/*"
+///         },
+///         "host": {
+///             "type": "string",
+///             "description": "The proxy server host"
+///         },
+///         "port": {
+///             "type": "integer",
+///             "description": "The proxy server port",
+///             "default": 8080
+///         },
+///         "tunnel": {
+///             "type": "boolean",
+///             "description": "The tunneling details for the proxy config",
+///             "default": false
+///         },
+///         "disabled": {
+///             "type": "boolean",
+///             "description": "When set to true, ignores this proxy configuration entity",
+///             "default": false
+///         }
+///     },
+///     "type": "object",
+///     "description": "Using the Proxy, you can configure your custom proxy into the postman for particular url match"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'proxy_config.freezed.dart';
+part 'proxy_config.g.dart';
+
+@freezed
+abstract class ProxyConfig with _$ProxyConfig {
+  const ProxyConfig._();
+
+  @jsonSerializable
+  const factory ProxyConfig({
+    /// match
+    @Default('http+https://*/*')
+    @JsonKey(name: ProxyConfig.matchKey_)
+    String match,
+
+    /// host
+    @JsonKey(name: ProxyConfig.hostKey_) String? host,
+
+    /// port
+    @Default(8080) @JsonKey(name: ProxyConfig.portKey_) int port,
+
+    /// tunnel
+    @Default(false) @JsonKey(name: ProxyConfig.tunnelKey_) bool tunnel,
+
+    /// disabled
+    @Default(false) @JsonKey(name: ProxyConfig.disabledKey_) bool disabled,
+  }) = _ProxyConfig;
+
+  factory ProxyConfig.fromJson(Map<String, dynamic> json) =>
+      _$ProxyConfigFromJson(json);
+
+  static const String matchKey_ = 'match';
+
+  static const String hostKey_ = 'host';
+
+  static const String portKey_ = 'port';
+
+  static const String tunnelKey_ = 'tunnel';
+
+  static const String disabledKey_ = 'disabled';
+}

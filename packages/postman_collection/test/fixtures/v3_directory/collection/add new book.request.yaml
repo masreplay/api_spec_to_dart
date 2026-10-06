@@ -1,0 +1,14 @@
+$kind: http-request
+method: POST
+url: '{{base_url}}/books'
+order: 3000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "title": "Example Book",
+      "author": "Jane Doe"
+    }

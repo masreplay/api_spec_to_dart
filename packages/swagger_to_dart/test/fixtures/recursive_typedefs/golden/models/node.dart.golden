@@ -1,0 +1,13 @@
+/// Node
+///
+/// ```json
+/// {
+///     "type": "object",
+///     "additionalProperties": {
+///         "$ref": "#/components/schemas/Node"
+///     }
+/// }
+/// ```
+library;
+
+typedef Node = Map<String, Object?>;

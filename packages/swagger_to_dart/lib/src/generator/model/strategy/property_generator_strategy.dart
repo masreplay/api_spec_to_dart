@@ -4,23 +4,32 @@ import 'package:swagger_to_dart/swagger_to_dart.dart';
 class PropertyGeneratorStrategy extends GeneratorStrategy {
   const PropertyGeneratorStrategy(super.context);
 
+  /// [inlineModels] is false for the properties of a query parameters class:
+  /// parameters keep `Map<String, dynamic>` for inline objects.
   Parameter build(
     MapEntry<String, OpenApiSchema> property, {
     required String className,
     bool required = true,
     Map<String, String> overrideTypes = const {},
     String? name,
+    bool inlineModels = true,
   }) {
     final fieldName = name ?? Renaming.instance.renameProperty(property.key);
+    final typeConverter = OpenApiSchemaDartTypeConverter(
+      context,
+      inlineModels: inlineModels,
+    );
 
-    final contextName = '${className}_${property.key}';
-    final defaultValue = context.extension.typeConverter.getDefaultValue(
+    // The unique field name, not the key: a key without ASCII words
+    // (`العنوان`, `😀`) would name a nested model after its parent.
+    final contextName = '${context.unprefixed(className)}_$fieldName';
+    final defaultValue = typeConverter.getDefaultValue(
       property.value,
       contextName: contextName,
       inConstContext: true,
     );
 
-    final dartType = context.extension.typeConverter.get(
+    final dartType = typeConverter.get(
       property.value,
       className: className,
       contextName: contextName,
@@ -33,7 +42,7 @@ class PropertyGeneratorStrategy extends GeneratorStrategy {
 
     // Optional without a default: the field must accept null.
     final adjustedDartType = !hasDefaultValue && !isRequired
-        ? context.extension.typeConverter.nullable(dartType)
+        ? typeConverter.nullable(dartType)
         : dartType;
 
     return Parameter(

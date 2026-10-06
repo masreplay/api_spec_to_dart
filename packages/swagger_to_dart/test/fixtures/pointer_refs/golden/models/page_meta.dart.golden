@@ -1,0 +1,33 @@
+/// PageMeta
+///
+/// ```json
+/// {
+///     "properties": {
+///         "total": {
+///             "type": "integer"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'page_meta.freezed.dart';
+part 'page_meta.g.dart';
+
+@freezed
+abstract class PageMeta with _$PageMeta {
+  const PageMeta._();
+
+  @jsonSerializable
+  const factory PageMeta({
+    /// total
+    @JsonKey(name: PageMeta.totalKey_) int? total,
+  }) = _PageMeta;
+
+  factory PageMeta.fromJson(Map<String, dynamic> json) =>
+      _$PageMetaFromJson(json);
+
+  static const String totalKey_ = 'total';
+}

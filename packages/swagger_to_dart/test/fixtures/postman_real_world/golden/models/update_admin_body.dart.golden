@@ -1,0 +1,52 @@
+/// UpdateAdminBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "email": {
+///             "type": "string"
+///         },
+///         "enabled": {
+///             "type": "boolean"
+///         },
+///         "roles": {
+///             "type": "array",
+///             "items": {
+///                 "type": "integer"
+///             }
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'update_admin_body.freezed.dart';
+part 'update_admin_body.g.dart';
+
+@freezed
+abstract class UpdateAdminBody with _$UpdateAdminBody {
+  const UpdateAdminBody._();
+
+  @jsonSerializable
+  const factory UpdateAdminBody({
+    /// email
+    @JsonKey(name: UpdateAdminBody.emailKey_) String? email,
+
+    /// enabled
+    @JsonKey(name: UpdateAdminBody.enabledKey_) bool? enabled,
+
+    /// roles
+    @JsonKey(name: UpdateAdminBody.rolesKey_) List<int>? roles,
+  }) = _UpdateAdminBody;
+
+  factory UpdateAdminBody.fromJson(Map<String, dynamic> json) =>
+      _$UpdateAdminBodyFromJson(json);
+
+  static const String emailKey_ = 'email';
+
+  static const String enabledKey_ = 'enabled';
+
+  static const String rolesKey_ = 'roles';
+}

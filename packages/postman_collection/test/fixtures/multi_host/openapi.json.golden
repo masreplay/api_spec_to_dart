@@ -1,0 +1,115 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "Multi host",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.example.com"
+    }
+  ],
+  "paths": {
+    "/users": {
+      "get": {
+        "summary": "List users",
+        "operationId": "listUsers",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "summary": "Get user",
+        "operationId": "getUser",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/token": {
+      "post": {
+        "summary": "Get token",
+        "operationId": "getToken",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "servers": [
+          {
+            "url": "{authUrl}",
+            "variables": {
+              "authUrl": {
+                "default": "https://auth.example.com"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "/files": {
+      "put": {
+        "summary": "Upload",
+        "operationId": "upload",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "servers": [
+          {
+            "url": "http://localhost:9000"
+          }
+        ]
+      }
+    },
+    "/assets/app.js": {
+      "get": {
+        "summary": "No scheme",
+        "operationId": "noScheme",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "servers": [
+          {
+            "url": "http://cdn.example.com"
+          }
+        ]
+      }
+    },
+    "/status": {
+      "get": {
+        "summary": "Relative",
+        "operationId": "relative",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "servers": [
+          {
+            "url": "/"
+          }
+        ]
+      }
+    }
+  }
+}

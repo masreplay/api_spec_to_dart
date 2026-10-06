@@ -1,0 +1,25 @@
+/// Wrap
+///
+/// ```json
+/// {
+///     "description": "A nullable inline object: typedef Wrap = WrapValue?.",
+///     "anyOf": [
+///         {
+///             "type": "object",
+///             "properties": {
+///                 "a": {
+///                     "type": "string"
+///                 }
+///             }
+///         },
+///         {
+///             "type": "null"
+///         }
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+typedef Wrap = WrapValue?;

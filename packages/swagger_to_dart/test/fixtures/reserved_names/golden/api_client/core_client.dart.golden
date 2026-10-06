@@ -1,0 +1,149 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'core_client.g.dart';
+
+@RestApi()
+abstract class CoreClient {
+  factory CoreClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _CoreClient;
+
+  @GET('/status')
+  Future<HttpResponse<HttpResponse2>> http({
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['core'],
+      'operationId': 'http',
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'properties': {
+                  'ok': {'type': 'boolean'},
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+  @POST('/echo')
+  Future<HttpResponse<Response2>> response({
+    @Body() required ResponseBody2 requestBody,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['core'],
+      'operationId': 'response',
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'text': {'type': 'string'},
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/Response'},
+            },
+          },
+        },
+      },
+    },
+  });
+  @GET('/pets')
+  Future<HttpResponse<Pet>> getPet({
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['core'],
+      'operationId': 'getPet',
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/Pet'},
+            },
+          },
+        },
+        '201': {
+          'description': 'OK',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/PetDog'},
+            },
+          },
+        },
+      },
+    },
+  });
+  @PUT('/things')
+  Future<HttpResponse<List2>> putThings({
+    @Body() required Headers2 requestBody,
+    @Query('method') Method2? method,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['core'],
+      'operationId': 'putThings',
+      'parameters': [
+        {
+          'name': 'method',
+          'in': 'query',
+          'schema': {'\$ref': '#/components/schemas/Method'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {'\$ref': '#/components/schemas/Headers'},
+          },
+        },
+      },
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/List'},
+            },
+          },
+        },
+        '400': {
+          'description': 'Bad',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/Error'},
+            },
+          },
+        },
+      },
+    },
+  });
+}

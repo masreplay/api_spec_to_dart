@@ -1,0 +1,200 @@
+{
+  "info": {
+    "name": "Bodies",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://api.example.com" },
+    { "key": "userId", "value": "42" },
+    { "key": "price", "value": "9.5" },
+    { "key": "active", "value": "true" },
+    { "key": "name", "value": "Jane" }
+  ],
+  "item": [
+    {
+      "name": "JSON with comments, variables and trailing junk",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"userId\": {{userId}}, // a number once substituted\r\n  \"price\": {{price}},\r\n  \"active\": {{active}},\r\n  \"name\": \"{{name}}\",\r\n  \"requestId\": \"{{$guid}}\",\r\n  \"count\": {{$randomInt}},\r\n  \"at\": \"{{$isoTimestamp}}\",\r\n  \"missing\": {{undefinedVar}},\r\n  /* \"old\": 1, */\r\n  \"tags\": [\"a\", \"b\",],\r\n}\r\n\r\ntrailing junk",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": "{{baseUrl}}/json"
+      },
+      "response": []
+    },
+    {
+      "name": "JSON API",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/vnd.api+json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"data\": {\"type\": \"users\", \"attributes\": {\"name\": \"Jane\"}}}"
+        },
+        "url": "{{baseUrl}}/jsonapi"
+      },
+      "response": []
+    },
+    {
+      "name": "Invalid JSON",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"a\": }",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": "{{baseUrl}}/invalid"
+      },
+      "response": []
+    },
+    {
+      "name": "XML",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "<user><name>{{name}}</name></user>",
+          "options": { "raw": { "language": "xml" } }
+        },
+        "url": "{{baseUrl}}/xml"
+      },
+      "response": []
+    },
+    {
+      "name": "Text",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "hello",
+          "options": { "raw": { "language": "text" } }
+        },
+        "url": "{{baseUrl}}/text"
+      },
+      "response": []
+    },
+    {
+      "name": "HTML",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "<p>Hi</p>",
+          "options": { "raw": { "language": "html" } }
+        },
+        "url": "{{baseUrl}}/html"
+      },
+      "response": []
+    },
+    {
+      "name": "JavaScript",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "console.log(1)",
+          "options": { "raw": { "language": "javascript" } }
+        },
+        "url": "{{baseUrl}}/js"
+      },
+      "response": []
+    },
+    {
+      "name": "Form",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            { "key": "email", "value": "jane@example.com", "description": "Login email" },
+            { "key": "age", "value": "{{userId}}" },
+            { "key": "remember", "value": "true", "disabled": true },
+            { "key": "phone", "value": "07701234567" }
+          ]
+        },
+        "url": "{{baseUrl}}/form"
+      },
+      "response": []
+    },
+    {
+      "name": "Upload",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            { "key": "title", "value": "Holiday", "type": "text" },
+            { "key": "metadata", "value": "{\"album\": 1}", "type": "text", "contentType": "application/json" },
+            { "key": "photo", "type": "file", "src": "/Users/jane/photo.jpg", "description": "The picture" },
+            { "key": "attachments", "type": "file", "src": ["/tmp/a.pdf", "/tmp/b.pdf"] }
+          ]
+        },
+        "url": "{{baseUrl}}/upload"
+      },
+      "response": []
+    },
+    {
+      "name": "Binary",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "image/png" }],
+        "body": { "mode": "file", "file": { "src": "/Users/jane/logo.png" } },
+        "url": "{{baseUrl}}/logo"
+      },
+      "response": []
+    },
+    {
+      "name": "GraphQL",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "graphql",
+          "graphql": {
+            "query": "query User($id: ID!) { user(id: $id) { name } }",
+            "variables": "{\n  \"id\": {{userId}}\n}"
+          }
+        },
+        "url": "{{baseUrl}}/graphql"
+      },
+      "response": []
+    },
+    {
+      "name": "Disabled body",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"ignored\": true}",
+          "disabled": true
+        },
+        "url": "{{baseUrl}}/disabled"
+      },
+      "response": []
+    },
+    {
+      "name": "Null body",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": null,
+        "url": "{{baseUrl}}/null"
+      },
+      "response": []
+    }
+  ]
+}

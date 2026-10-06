@@ -1,0 +1,50 @@
+/// RequestObjectValueBodyFile
+///
+/// ```json
+/// {
+///     "properties": {
+///         "src": {
+///             "oneOf": [
+///                 {
+///                     "type": "string",
+///                     "description": "Contains the name of the file to upload. _Not the path_."
+///                 },
+///                 {
+///                     "type": "null",
+///                     "description": "A null src indicates that no file has been selected as a part of the request body"
+///                 }
+///             ]
+///         },
+///         "content": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'request_object_value_body_file.freezed.dart';
+part 'request_object_value_body_file.g.dart';
+
+@freezed
+abstract class RequestObjectValueBodyFile with _$RequestObjectValueBodyFile {
+  const RequestObjectValueBodyFile._();
+
+  @jsonSerializable
+  const factory RequestObjectValueBodyFile({
+    /// src
+    @JsonKey(name: RequestObjectValueBodyFile.srcKey_) String? src,
+
+    /// content
+    @JsonKey(name: RequestObjectValueBodyFile.contentKey_) String? content,
+  }) = _RequestObjectValueBodyFile;
+
+  factory RequestObjectValueBodyFile.fromJson(Map<String, dynamic> json) =>
+      _$RequestObjectValueBodyFileFromJson(json);
+
+  static const String srcKey_ = 'src';
+
+  static const String contentKey_ = 'content';
+}

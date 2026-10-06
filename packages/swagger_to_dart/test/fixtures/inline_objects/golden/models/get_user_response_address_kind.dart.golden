@@ -1,0 +1,32 @@
+/// GetUserResponseAddressKind
+///
+/// ```json
+/// {
+///     "properties": {},
+///     "type": "string",
+///     "enum": [
+///         "home",
+///         "work"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'get_user_response_address_kind.g.dart';
+
+@JsonEnum(alwaysCreate: true)
+enum GetUserResponseAddressKind {
+  @JsonValue('home')
+  home,
+  @JsonValue('work')
+  work;
+
+  factory GetUserResponseAddressKind.fromJson(String json) =>
+      GetUserResponseAddressKind.values.firstWhere(
+        (e) => e.toJson() == json,
+        orElse: () => throw ArgumentError('Invalid GetUserResponseAddressKind'),
+      );
+
+  String toJson() => _$GetUserResponseAddressKindEnumMap[this]!;
+}

@@ -1,0 +1,88 @@
+/// Pet
+///
+/// ```json
+/// {
+///     "oneOf": [
+///         {
+///             "$ref": "#/components/schemas/Dog"
+///         },
+///         {
+///             "$ref": "#/components/schemas/Cat"
+///         }
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+sealed class Pet {
+  const Pet();
+
+  const factory Pet.dog(Dog value) = PetDog2;
+  const factory Pet.cat(Cat value) = PetCat;
+
+  factory Pet.fromJson(Map<String, dynamic> json) {
+    // No discriminator in the spec: the variant whose required keys are all
+    // present and that declares the most of the payload's keys wins (the
+    // earlier one on a tie).
+    const variants = <({Set<String> required, Set<String> declared})>[
+      (required: {'bark'}, declared: {'bark'}),
+      (required: {'meow'}, declared: {'meow'}),
+    ];
+    var best = -1;
+    var bestScore = -1;
+    for (var i = 0; i < variants.length; i++) {
+      final variant = variants[i];
+      if (!variant.required.every(json.containsKey)) continue;
+      final score = json.keys.where(variant.declared.contains).length;
+      if (score > bestScore) {
+        best = i;
+        bestScore = score;
+      }
+    }
+    return switch (best) {
+      0 => PetDog2(Dog.fromJson(json)),
+      1 => PetCat(Cat.fromJson(json)),
+      _ => throw ArgumentError.value(json, 'json', 'No Pet variant matches'),
+    };
+  }
+
+  Map<String, dynamic> toJson();
+}
+
+final class PetDog2 extends Pet {
+  const PetDog2(this.value);
+
+  final Dog value;
+
+  @override
+  Map<String, dynamic> toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) => other is PetDog2 && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'Pet.dog($value)';
+}
+
+final class PetCat extends Pet {
+  const PetCat(this.value);
+
+  final Cat value;
+
+  @override
+  Map<String, dynamic> toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) => other is PetCat && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'Pet.cat($value)';
+}

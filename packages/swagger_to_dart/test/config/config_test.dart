@@ -15,6 +15,7 @@ void main() {
     expect(config.model.supportGenericArguments, isFalse);
     expect(config.model.enumFallbackType, EnumFallbackType.throwException);
     expect(config.model.removeModelPrefixes, isEmpty);
+    expect(config.model.classPrefix, isNull);
     expect(config.apiClient.baseApiClientClassName, 'BaseApiClient');
     expect(config.apiClient.useClassForQueryParameters, isFalse);
     expect(config.apiClient.skippedParameters, isEmpty);
@@ -33,6 +34,7 @@ swagger_to_dart:
     union_class_fallback_name: fallback
     enum_fallback_type: last
     remove_model_prefixes: [Dto]
+    class_prefix: Api
     enums:
       StatusEnum:
         0: created
@@ -55,6 +57,7 @@ swagger_to_dart:
     expect(config.model.unionClassFallbackName, 'fallback');
     expect(config.model.enumFallbackType, EnumFallbackType.last);
     expect(config.model.removeModelPrefixes, ['Dto']);
+    expect(config.model.classPrefix, 'Api');
     expect(config.model.enums, {
       'StatusEnum': {'0': 'created', '10': 'pgRegistered'},
     });
