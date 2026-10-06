@@ -1,0 +1,75 @@
+/// WrapOrString
+///
+/// ```json
+/// {
+///     "description": "A union whose object variant is a nullable typedef.",
+///     "oneOf": [
+///         {
+///             "$ref": "#/components/schemas/Wrap"
+///         },
+///         {
+///             "type": "string"
+///         }
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+sealed class WrapOrString {
+  const WrapOrString();
+
+  const factory WrapOrString.wrap(WrapValue value) = WrapOrStringWrap;
+  const factory WrapOrString.string(String value) = WrapOrStringString;
+
+  factory WrapOrString.fromJson(Object? json) => switch (json) {
+    String() => WrapOrStringString(json),
+    Map<String, dynamic>() => WrapOrStringWrap(WrapValue.fromJson(json)),
+    _ => throw ArgumentError.value(
+      json,
+      'json',
+      'No WrapOrString variant matches',
+    ),
+  };
+
+  Object? toJson();
+}
+
+final class WrapOrStringWrap extends WrapOrString {
+  const WrapOrStringWrap(this.value);
+
+  final WrapValue value;
+
+  @override
+  Object? toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) =>
+      other is WrapOrStringWrap && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'WrapOrString.wrap($value)';
+}
+
+final class WrapOrStringString extends WrapOrString {
+  const WrapOrStringString(this.value);
+
+  final String value;
+
+  @override
+  Object? toJson() => value;
+
+  @override
+  bool operator ==(Object other) =>
+      other is WrapOrStringString && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'WrapOrString.string($value)';
+}

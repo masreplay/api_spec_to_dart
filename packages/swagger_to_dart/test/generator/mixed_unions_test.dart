@@ -178,6 +178,42 @@ void main() {
     );
   });
 
+  test('a nullable typedef of an inline object is a model variant', () {
+    final files = _render(
+      {
+        // typedef Wrap = WrapValue?
+        'Wrap': {
+          'anyOf': [
+            {
+              'type': 'object',
+              'properties': {
+                'a': {'type': 'string'},
+              },
+            },
+            {'type': 'null'},
+          ],
+        },
+      },
+      property: {
+        'oneOf': [
+          {r'$ref': '#/components/schemas/Wrap'},
+          {'type': 'string'},
+        ],
+      },
+    );
+
+    expect(files['models/wrap.dart'], contains('typedef Wrap = WrapValue?;'));
+    // The variant holds the non-null type: it decodes from a map and its
+    // `toJson()` needs no null check.
+    expect(
+      files['models/holder_value.dart'],
+      allOf(
+        contains('const factory HolderValue.wrap(WrapValue value)'),
+        contains('HolderValueWrap(WrapValue.fromJson(json))'),
+      ),
+    );
+  });
+
   test('object variants pinning one const property are discriminated', () {
     final files = _render(
       {},
