@@ -1,0 +1,11 @@
+/// Behavior
+///
+/// ```json
+/// {
+///     "type": "object",
+///     "description": "A free-form object (Postman's protocol-profile-behavior): a map."
+/// }
+/// ```
+library;
+
+typedef Behavior = Map<String, dynamic>;

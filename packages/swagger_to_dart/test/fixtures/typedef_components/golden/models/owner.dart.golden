@@ -23,6 +23,9 @@
 ///         },
 ///         "scalar": {
 ///             "$ref": "#/components/schemas/Scalar"
+///         },
+///         "behavior": {
+///             "$ref": "#/components/schemas/Behavior"
 ///         }
 ///     },
 ///     "type": "object"
@@ -60,6 +63,9 @@ abstract class Owner with _$Owner {
 
     /// scalar
     @JsonKey(name: Owner.scalarKey_) Scalar? scalar,
+
+    /// behavior
+    @JsonKey(name: Owner.behaviorKey_) Behavior? behavior,
   }) = _Owner;
 
   factory Owner.fromJson(Map<String, dynamic> json) => _$OwnerFromJson(json);
@@ -77,4 +83,6 @@ abstract class Owner with _$Owner {
   static const String methodKey_ = 'method';
 
   static const String scalarKey_ = 'scalar';
+
+  static const String behaviorKey_ = 'behavior';
 }

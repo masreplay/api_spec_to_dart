@@ -45,6 +45,35 @@ void main() {
     expect(files['models/owner.dart'], contains('Pets? pets'));
   });
 
+  test('a free-form object component is a map typedef, not an empty class', () {
+    final files = renderSpec({
+      'openapi': '3.1.0',
+      'info': {'title': 't', 'version': '1'},
+      'paths': <String, dynamic>{},
+      'components': {
+        'schemas': {
+          // Postman's protocol-profile-behavior.
+          'Behavior': {'type': 'object', 'title': 'Behavior'},
+          'Closed': {'type': 'object', 'additionalProperties': false},
+          'Item': {
+            'type': 'object',
+            'properties': {
+              'behavior': {r'$ref': '#/components/schemas/Behavior'},
+            },
+          },
+        },
+      },
+    }).files;
+
+    expect(
+      files['models/behavior.dart'],
+      contains('typedef Behavior = Map<String, dynamic>;'),
+    );
+    // No key can hold data: the empty class loses nothing.
+    expect(files['models/closed.dart'], contains('class Closed'));
+    expect(files['models/item.dart'], contains('Behavior? behavior'));
+  });
+
   test('inline enums of array and map typedefs are named by context', () {
     final files = renderSpec({
       'openapi': '3.1.0',
