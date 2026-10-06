@@ -340,7 +340,7 @@ Map<String, dynamic>? _requestBody(
     'properties': {
       for (final p in form)
         '${p['name']}': {
-          ...?_schemaOf(p, schemaKeys) as Map?,
+          ...?_schemaOf(p, schemaKeys) as Map<String, dynamic>?,
           'description': ?p['description'],
         },
     },

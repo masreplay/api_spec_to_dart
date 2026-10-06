@@ -473,6 +473,32 @@ void main() {
       );
     });
 
+    test(
+      'property schemas are Map<String, dynamic> (the models cast them)',
+      () {
+        final properties =
+            body(
+                  post([file, caption]),
+                )['content']['multipart/form-data']['schema']['properties']
+                as Map;
+
+        expect(properties.values, everyElement(isA<Map<String, dynamic>>()));
+        // What used to throw once inline properties were parsed.
+        expect(
+          () => OpenApi.fromJson(
+            toOpenApiJson(
+              _swagger(
+                paths: {
+                  '/x': post([file, caption]),
+                },
+              ),
+            ),
+          ),
+          returnsNormally,
+        );
+      },
+    );
+
     test('is one media type: multipart when declared or with a file', () {
       Iterable<Object?> mediaTypes(
         List<Map<String, dynamic>> parameters,

@@ -15,7 +15,7 @@ abstract class AuthClient {
   @POST('/login')
   @FormUrlEncoded()
   Future<HttpResponse<Session>> login({
-    @Body() required Map<String, dynamic> requestBody,
+    @Body() required LoginBody requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
