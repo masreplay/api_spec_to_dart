@@ -197,5 +197,124 @@ paths:
         throwsA(isA<FormatException>()),
       );
     });
+
+    group('a \$ref into a schema is replaced by what it points to', () {
+      const page = {
+        'type': 'object',
+        'properties': {
+          'items': {
+            'type': 'array',
+            'items': {r'$ref': '#/components/schemas/Pet'},
+          },
+        },
+      };
+      const items = {
+        'type': 'array',
+        'items': {r'$ref': '#/components/schemas/Pet'},
+      };
+      Map<String, dynamic> schemas(Map<String, dynamic> spec) =>
+          spec['components']['schemas'] as Map<String, dynamic>;
+
+      test('OpenAPI 3', () {
+        final spec = toOpenApiJson({
+          'openapi': '3.1.0',
+          'info': {'title': 'T', 'version': '1'},
+          'paths': <String, dynamic>{},
+          'components': {
+            'schemas': {
+              'Page': page,
+              'Pet': {'type': 'object'},
+              'Holder': {
+                'type': 'object',
+                'properties': {
+                  'items': {
+                    r'$ref': '#/components/schemas/Page/properties/items',
+                    'description': 'kept',
+                  },
+                  'pet': {r'$ref': '#/components/schemas/Pet'},
+                },
+              },
+            },
+          },
+        });
+        expect(schemas(spec)['Holder']['properties'], {
+          'items': {...items, 'description': 'kept'},
+          'pet': {r'$ref': '#/components/schemas/Pet'},
+        });
+      });
+
+      test('Swagger 2.0 and JSON Schema', () {
+        final swagger = toOpenApiJson({
+          'swagger': '2.0',
+          'info': {'title': 'T', 'version': '1'},
+          'paths': {
+            '/x': {
+              'get': {
+                'responses': {
+                  '200': {
+                    'description': 'ok',
+                    'schema': {r'$ref': '#/definitions/Page/properties/items'},
+                  },
+                },
+              },
+            },
+          },
+          'definitions': {
+            'Page': {
+              'type': 'object',
+              'properties': {
+                'items': {
+                  'type': 'array',
+                  'items': {r'$ref': '#/definitions/Pet'},
+                },
+              },
+            },
+            'Pet': {'type': 'object'},
+          },
+        });
+        expect(
+          swagger['paths']['/x']['get']['responses']['200']['content']['application/json']['schema'],
+          items,
+        );
+
+        final jsonSchema = toOpenApiJson({
+          r'$schema': 'http://json-schema.org/draft-07/schema#',
+          'definitions': {
+            'Page': {
+              'type': 'object',
+              'properties': {
+                'items': {
+                  'type': 'array',
+                  'items': {r'$ref': '#/definitions/Pet'},
+                },
+              },
+            },
+            'Pet': {'type': 'object'},
+            'Holder': {
+              'type': 'object',
+              'properties': {
+                'items': {r'$ref': '#/definitions/Page/properties/items'},
+              },
+            },
+          },
+        });
+        expect(schemas(jsonSchema)['Holder']['properties']['items'], items);
+      });
+
+      test('a pointer into itself is left as it is', () {
+        const self = {r'$ref': '#/components/schemas/A/items'};
+        final spec = toOpenApiJson({
+          'openapi': '3.1.0',
+          'info': {'title': 'T', 'version': '1'},
+          'paths': <String, dynamic>{},
+          'components': {
+            'schemas': {
+              'A': {'type': 'array', 'items': self},
+            },
+          },
+        });
+        expect(schemas(spec)['A'], {'type': 'array', 'items': self});
+      });
+    });
   });
 }

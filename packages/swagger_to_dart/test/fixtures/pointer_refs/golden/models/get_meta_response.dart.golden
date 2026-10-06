@@ -1,0 +1,33 @@
+/// GetMetaResponse
+///
+/// ```json
+/// {
+///     "properties": {
+///         "total": {
+///             "type": "integer"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'get_meta_response.freezed.dart';
+part 'get_meta_response.g.dart';
+
+@freezed
+abstract class GetMetaResponse with _$GetMetaResponse {
+  const GetMetaResponse._();
+
+  @jsonSerializable
+  const factory GetMetaResponse({
+    /// total
+    @JsonKey(name: GetMetaResponse.totalKey_) int? total,
+  }) = _GetMetaResponse;
+
+  factory GetMetaResponse.fromJson(Map<String, dynamic> json) =>
+      _$GetMetaResponseFromJson(json);
+
+  static const String totalKey_ = 'total';
+}

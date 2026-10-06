@@ -1,0 +1,32 @@
+/// Pet
+///
+/// ```json
+/// {
+///     "properties": {
+///         "id": {
+///             "type": "integer"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'pet.freezed.dart';
+part 'pet.g.dart';
+
+@freezed
+abstract class Pet with _$Pet {
+  const Pet._();
+
+  @jsonSerializable
+  const factory Pet({
+    /// id
+    @JsonKey(name: Pet.idKey_) int? id,
+  }) = _Pet;
+
+  factory Pet.fromJson(Map<String, dynamic> json) => _$PetFromJson(json);
+
+  static const String idKey_ = 'id';
+}
