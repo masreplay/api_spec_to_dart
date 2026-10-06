@@ -268,9 +268,15 @@ collections are upgraded to v2.1 first. How a collection maps to OpenAPI:
   else `dynamic`. Objects whose keys are all numbers, UUIDs or
   dates become a `Map`.
 - **Secrets:** credential values (passwords, tokens, client secrets, API key
-  values, private keys), and variables holding them, are never copied into
-  examples, defaults or descriptions. Identifiers such as usernames and
-  client ids are kept.
+  values, private keys) are kept out of examples, defaults and descriptions.
+  Variables holding them (used by auth or `Authorization`/`Cookie` headers,
+  typed `secret`, or named like a credential) stay unresolved `{{name}}`
+  references; values under credential-named parameters, headers and JSON
+  keys, bearer tokens and JWTs are dropped from examples. Free text (XML or
+  HTML bodies, GraphQL query text, descriptions, values under keys such as
+  `access`) loses only known secret values, the literal values of those
+  auth attributes, headers and variables; a credential written literally
+  only there stays. Identifiers such as usernames and client ids are kept.
 - **v3 directories:** gRPC, WebSocket, Socket.IO, MQTT, MCP and LLM requests
   are skipped with a warning, since they are not HTTP.
 - Requests without a saved example have no typed response.

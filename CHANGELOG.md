@@ -77,7 +77,10 @@ migration notes below.
     `{"collection": …}` envelope and v3 collection directories, converted
     by [postman_collection](https://pub.dev/packages/postman_collection)
     (folders become clients, saved examples become typed responses);
-    credential values are never copied into the output;
+    credential values from auth, credential-named variables, parameters,
+    headers and JSON keys, bearer tokens and JWTs are kept out of the
+    output, while free text (XML, GraphQL query text, descriptions) loses
+    only known secret values;
   - JSON Schema documents (`definitions` / `$defs`, any draft): models
     only, one per definition, named by its key (definition titles are
     ignored), plus the root named by its `title` or the file name;
