@@ -51,6 +51,10 @@
           { "type": "string" }
         ]
       },
+      "Behavior": {
+        "description": "A free-form object (Postman's protocol-profile-behavior): a map.",
+        "type": "object"
+      },
       "Scalar": {
         "description": "A primitive-only mix: dynamic.",
         "oneOf": [{ "type": "string" }, { "type": "integer" }]
@@ -73,7 +77,8 @@
           "best": { "$ref": "#/components/schemas/Animal" },
           "levels": { "$ref": "#/components/schemas/Levels" },
           "method": { "$ref": "#/components/schemas/Method" },
-          "scalar": { "$ref": "#/components/schemas/Scalar" }
+          "scalar": { "$ref": "#/components/schemas/Scalar" },
+          "behavior": { "$ref": "#/components/schemas/Behavior" }
         }
       }
     }

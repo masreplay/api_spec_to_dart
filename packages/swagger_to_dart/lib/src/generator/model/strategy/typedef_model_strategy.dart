@@ -15,8 +15,9 @@ class TypedefModelStrategy
   const TypedefModelStrategy(super.context);
 
   /// Whether [schema] is such a component, once unions are ruled out.
-  /// `type: object` with neither properties nor `additionalProperties` stays
-  /// a (free-form) class.
+  /// `type: object` without properties is a map (free-form when it has no
+  /// `additionalProperties`), unless `additionalProperties: false` leaves
+  /// no key to keep.
   static bool accepts(OpenApiSchemas schema) =>
       (schema.properties?.isEmpty ?? true) &&
       schema.enum_ == null &&
@@ -27,9 +28,7 @@ class TypedefModelStrategy
           schema.anyOf != null ||
           switch (schema.type) {
             null => false,
-            'object' =>
-              schema.additionalProperties is Map ||
-                  schema.additionalProperties == true,
+            'object' => schema.additionalProperties != false,
             _ => true,
           });
 
