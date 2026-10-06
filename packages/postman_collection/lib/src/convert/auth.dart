@@ -43,15 +43,37 @@ final _credentialAttribute = RegExp(
 /// Headers whose literal values carry a credential after the scheme word.
 final _authorizationHeader = RegExp('authori[sz]ation', caseSensitive: false);
 
-/// Names (of parameters, headers, JSON keys) and values that carry
-/// credentials outside auth: tokens, keys, sessions, cookies, signatures.
-/// A bare `auth` counts, and so do credential compounds such as `authCode`,
-/// `authPass` or `oauthCode`; identifiers such as `authId` and `author` do
-/// not.
+/// Names (of parameters, headers, JSON keys, variables) that carry
+/// credentials outside auth: tokens, passwords, keys, sessions, cookies,
+/// signatures. A bare `auth` counts, and so do credential compounds such as
+/// `authCode`, `authPass` or `oauthCode`; identifiers such as `authId` and
+/// `author` do not.
 final _credentialName = RegExp(
-  'token|jwt|secret|passw|api[-_]?key|session|signature|credential|cookie|'
+  'token|jwt|secret|passw|pwd|passphrase|passcode|private[-_]?key|'
+  'api[-_]?key|subscription[-_]?key|functions[-_]?key|'
+  'session|signature|credential|cookie|'
   'authori[sz]|authentication|auth(?![a-z]|[-_]id)|'
   'auth[-_]?(key|code|pass|bearer|basic|hash|header|value|data|pin|otp|blob)',
+  caseSensitive: false,
+);
+
+/// `pass` as a word or camelCase segment (`pass`, `userPass`, `DB_PASS`),
+/// not inside words such as `passenger`, `passport` or `bypass`.
+final _passSegment = RegExp(
+  '(^|[^A-Za-z])[Pp]ass(?![a-z])|[a-z]Pass(?![a-z])|'
+  '(^|[^A-Z])PASS(?![A-Z])',
+);
+
+bool _isCredentialName(String name) =>
+    _credentialName.hasMatch(name) || _passSegment.hasMatch(name);
+
+/// Variable names that hold endpoints even when they sound like credentials
+/// (`tokenUrl`, `authUrl`): they resolve.
+final _endpointName = RegExp(r'(url|uri|endpoint|host)$', caseSensitive: false);
+
+/// Variable values that are a URL or a path, not a credential.
+final _locationValue = RegExp(
+  r'^([a-z][a-z0-9+.-]*://|/)',
   caseSensitive: false,
 );
 final _credentialValue = RegExp(
@@ -74,12 +96,18 @@ class Secrets {
   /// The secrets of [collection]: variables used by credential auth
   /// attributes (at every level, saved examples included), by literal
   /// Authorization-like or Cookie headers, typed `secret`, or referenced by
-  /// another secret variable; the literal values of those attributes and
-  /// headers, and the raw values of those variables.
+  /// another such variable; the literal values of those attributes and
+  /// headers, and the raw values of those variables. A variable named like a
+  /// credential is secret too, unless its name is an endpoint's
+  /// (`tokenUrl`), every value resolves to a URL or path, or it names an
+  /// apikey header or parameter; it makes the variables it references
+  /// secret, except those whose values all resolve to URLs or paths.
   factory Secrets.of(Object? collection) {
     final variables = <String>{};
     final values = <String>{};
     final variableLists = <List<Object?>>[];
+    // Variables naming an apikey's header or parameter: identifiers.
+    final apiKeyNames = <String>{};
     void secret(String? text) {
       if (text == null || text.isEmpty) return;
       values.add(text);
@@ -101,6 +129,10 @@ class Secrets {
             if (_credentialAttribute.hasMatch(key) ||
                 (type == 'apikey' && key == 'value')) {
               secret(_text(value));
+            } else if (type == 'apikey' && (key == 'key' || key == 'in')) {
+              apiKeyNames.addAll(
+                variableReference.allMatches('$value').map((m) => m[1]!),
+              );
             }
           }
         }
@@ -125,11 +157,15 @@ class Secrets {
 
     walk(collection);
     final variableValues = <String, List<String>>{};
+    final namedCandidates = <String>{};
     for (final variable in variableLists.expand((list) => list)) {
       if (variable is! Map) continue;
       final name = variable['key'] ?? variable['id'];
       if (name is! String) continue;
       if (variable['type'] == 'secret') variables.add(name);
+      if (_isCredentialName(name) && !_endpointName.hasMatch(name)) {
+        namedCandidates.add(name);
+      }
       if (_text(variable['value']) case final text?) {
         (variableValues[name] ??= []).add(text);
       }
@@ -141,6 +177,36 @@ class Secrets {
         values.add(text);
         for (final match in variableReference.allMatches(text)) {
           if (variables.add(match[1]!)) pending.add(match[1]!);
+        }
+      }
+    }
+    // Whether every value of [name] resolves to a URL or a path: it starts
+    // with one, or with a reference to such a variable.
+    bool location(String name, [Set<String> seen = const {}]) {
+      final texts = variableValues[name];
+      if (texts == null || seen.contains(name)) return false;
+      return texts.every(
+        (text) =>
+            _locationValue.hasMatch(text) ||
+            switch (variableReference.matchAsPrefix(text)) {
+              final match? => location(match[1]!, {...seen, name}),
+              null => false,
+            },
+      );
+    }
+
+    // Secret by name only: references spread, except to URLs and paths.
+    final named = [
+      for (final name in namedCandidates.difference(apiKeyNames))
+        if (!location(name) && variables.add(name)) name,
+    ];
+    while (named.isNotEmpty) {
+      for (final text in variableValues[named.removeLast()] ?? const []) {
+        values.add(text);
+        for (final match in variableReference.allMatches(text)) {
+          if (!location(match[1]!) && variables.add(match[1]!)) {
+            named.add(match[1]!);
+          }
         }
       }
     }
@@ -199,15 +265,15 @@ class Secrets {
   /// Whether the example [text] of [name] (a parameter, header or JSON key)
   /// would leak a credential.
   bool hides(String name, String text) =>
-      _credentialName.hasMatch(name) || leaks(text);
+      _isCredentialName(name) || leaks(text);
 
   /// [example] without credentials: subtrees under credential-named or
-  /// leaking keys and leaking strings are dropped, and URLs lose their userinfo. Inferred
-  /// schemas still see every field.
+  /// leaking keys and leaking strings are dropped, and URLs lose their
+  /// userinfo. Inferred schemas still see every field.
   Object? scrub(Object? example) => switch (example) {
     final Map<Object?, Object?> map => {
       for (final MapEntry(:key, :value) in map.entries)
-        if (!_credentialName.hasMatch('$key') &&
+        if (!_isCredentialName('$key') &&
             !_containsSecret('$key') &&
             !_leaksScalar(value))
           key: scrub(value),
@@ -220,9 +286,10 @@ class Secrets {
     _ => example,
   };
 
-  /// Whether a string, or a number by its text, leaks a credential.
+  /// Whether a string (a bearer token or JWT inside counts), or a number by
+  /// its text, leaks a credential.
   bool _leaksScalar(Object? value) =>
-      (value is String || value is num) && leaks('$value');
+      (value is String || value is num) && leaksText('$value');
 }
 
 /// A non-empty string or number as text.

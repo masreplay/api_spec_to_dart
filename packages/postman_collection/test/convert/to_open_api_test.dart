@@ -2215,6 +2215,427 @@ void main() {
       expect('***'.allMatches(output), hasLength(7));
       expect((document['info']! as Map)['description'], 'info ***');
     });
+
+    test('variables named like credentials are secret wherever they are '
+        'used; URL-like and identifier variables still resolve', () {
+      final document = convert(
+        collection(
+          [
+            request(
+              'Get',
+              'POST',
+              '{{baseUrl}}/a?key={{api_key}}&t={{accessToken}}&u={{username}}',
+              fields: {
+                'header': [
+                  {'key': 'X-Custom', 'value': '{{private_key}}'},
+                  {'key': 'X-Client', 'value': '{{clientId}}'},
+                ],
+                'body': json({
+                  'user': '{{password}}',
+                  'pin': '{{userPass}}',
+                  'sub': '{{subscriptionKey}}',
+                  'login': '{{username}}',
+                  'callback': '{{tokenUrl}}',
+                }),
+              },
+            ),
+          ],
+          extra: {
+            'variable': [
+              {'key': 'baseUrl', 'value': 'https://api.x.io'},
+              {'key': 'api_key', 'value': 'SECRET-QUERYKEY'},
+              {'key': 'accessToken', 'value': 'SECRET-access'},
+              {'key': 'password', 'value': 'SECRET-password'},
+              {'key': 'private_key', 'value': 'SECRET-private'},
+              {'key': 'userPass', 'value': 'SECRET-pass'},
+              {'key': 'subscriptionKey', 'value': 'SECRET-subscription'},
+              {'key': 'username', 'value': 'alice'},
+              {'key': 'clientId', 'value': 'client-1'},
+              {'key': 'tokenUrl', 'value': 'https://auth.x.io/token'},
+            ],
+          },
+        ),
+      );
+      final output = jsonEncode(document);
+      expect(output, isNot(contains('SECRET')));
+      final post = operation(document, '/a', 'post');
+      expect(
+        {
+          for (final p in parameters(post).cast<Map<Object?, Object?>>())
+            p['name']: p['example'],
+        },
+        {
+          'key': null,
+          't': null,
+          'u': 'alice',
+          'X-Custom': null,
+          'X-Client': 'client-1',
+        },
+      );
+      final media =
+          ((post['requestBody']! as Map)['content']!
+                  as Map)['application/json']!
+              as Map;
+      // Secret variables stay unresolved references.
+      expect(((media['examples']! as Map)['Get']! as Map)['value'], {
+        'user': '{{password}}',
+        'pin': '{{userPass}}',
+        'sub': '{{subscriptionKey}}',
+        'login': 'alice',
+        'callback': 'https://auth.x.io/token',
+      });
+      expect(document['servers'], [
+        {
+          'url': '{baseUrl}',
+          'variables': {
+            'baseUrl': {'default': 'https://api.x.io'},
+          },
+        },
+      ]);
+    });
+
+    test('name-only secrecy keeps URL, path, reference and apikey-name '
+        'variables resolving', () {
+      final document = convert(
+        collection(
+          [
+            {
+              'name': 'Folder',
+              'description': 'Hosted at https://api.x.io',
+              'item': [
+                request(
+                  'Login',
+                  'GET',
+                  '{{baseUrl}}{{token_path}}?cb={{oauth_callback}}'
+                      '&key={{api_key}}',
+                ),
+              ],
+            },
+            request('A', 'GET', '{{auth_server}}/a'),
+            request('B', 'GET', '{{tokenService}}/b'),
+            request('C', 'GET', '{{session_api}}/c'),
+            request('D', 'GET', '{{auth-domain}}/d'),
+            request('E', 'GET', '{{tokenUrl2}}/e'),
+          ],
+          extra: {
+            'auth': {
+              'type': 'apikey',
+              'apikey': [
+                {'key': 'key', 'value': '{{apiKeyHeader}}'},
+                {'key': 'value', 'value': 'SECRET-apikey'},
+              ],
+            },
+            'variable': [
+              {'key': 'baseUrl', 'value': 'https://api.x.io'},
+              {'key': 'oauth_callback', 'value': '{{baseUrl}}/callback'},
+              {'key': 'token_path', 'value': '/oauth/token'},
+              {'key': 'auth_server', 'value': 'https://auth.x.io'},
+              {'key': 'tokenService', 'value': 'https://tok.x.io'},
+              {'key': 'session_api', 'value': 'https://s.x.io'},
+              {'key': 'auth-domain', 'value': 'https://d.x.io'},
+              {'key': 'tokenUrl2', 'value': 'https://t2.x.io'},
+              {'key': 'apiKeyHeader', 'value': 'X-API-Key'},
+              {'key': 'api_key', 'value': 'SECRET-plain'},
+            ],
+          },
+        ),
+      );
+      final output = jsonEncode(document);
+      expect(output, isNot(contains('SECRET')));
+      // `{{baseUrl}}{{token_path}}` is the server; the path variable keeps
+      // its value as the server variable's default.
+      expect(output, contains('"default":"/oauth/token"'));
+      final login = operation(document, '/', 'get');
+      expect(
+        {
+          for (final p in parameters(login).cast<Map<Object?, Object?>>())
+            p['name']: p['example'],
+        },
+        {'cb': 'https://api.x.io/callback', 'key': null},
+      );
+      for (final url in [
+        'https://api.x.io',
+        'https://auth.x.io',
+        'https://tok.x.io',
+        'https://s.x.io',
+        'https://d.x.io',
+        'https://t2.x.io',
+      ]) {
+        expect(output, contains('"default":"$url"'), reason: url);
+      }
+      expect((document['tags']! as List).cast<Map<Object?, Object?>>().single, {
+        'name': 'Folder',
+        'description': 'Hosted at https://api.x.io',
+      });
+      expect(
+        ((document['components']! as Map)['securitySchemes']! as Map)
+            .values
+            .single,
+        {'type': 'apiKey', 'name': 'X-API-Key', 'in': 'header'},
+      );
+    });
+
+    test('a name-only secret makes the variables it references secret '
+        'unless they are URLs or paths', () {
+      final document = convert(
+        collection(
+          [
+            request(
+              'A',
+              'GET',
+              '{{baseUrl}}/a?t={{token}}&u={{authKey}}&cb={{oauth_callback}}',
+            ),
+            {
+              'name': 'Folder',
+              'variable': [
+                {'key': 'session_token', 'value': 'SK_FOLDER'},
+              ],
+              'item': [
+                request('B', 'GET', '{{baseUrl}}/b?s={{session_token}}'),
+              ],
+            },
+          ],
+          extra: {
+            'variable': [
+              {'key': 'baseUrl', 'value': 'https://api.x.io'},
+              {'key': 'token', 'value': '{{raw_thing}}'},
+              {'key': 'raw_thing', 'value': 'SK_RAWREF'},
+              {'key': 'authKey', 'value': '{{prefix}}SK_TAIL'},
+              {'key': 'prefix', 'value': 'SK_PRE'},
+              {'key': 'oauth_callback', 'value': '{{baseUrl}}/callback'},
+              {'key': 'session_token', 'value': '/path'},
+            ],
+          },
+        ),
+      );
+      final output = jsonEncode(document);
+      expect(output, isNot(contains('SK_')));
+      expect(output, contains('"default":"https://api.x.io"'));
+      expect(output, contains('"example":"https://api.x.io/callback"'));
+    });
+
+    test('the title loses secret values', () {
+      final document = convert({
+        'info': {'name': 'x SK_N', 'schema': v21},
+        'item': [request('A', 'GET', 'https://x.io/a')],
+        'auth': {
+          'type': 'bearer',
+          'bearer': [
+            {'key': 'token', 'value': 'SK_N'},
+          ],
+        },
+      });
+      expect((document['info']! as Map)['title'], 'x ***');
+    });
+
+    test('URL-encoded text with non-UTF-8 escapes keeps them as written', () {
+      final document = convert(
+        collection([
+          request(
+            'Form',
+            'POST',
+            'https://x.io/f',
+            fields: {
+              'header': [
+                {
+                  'key': 'Content-Type',
+                  'value': 'application/x-www-form-urlencoded',
+                },
+              ],
+              'body': {'mode': 'raw', 'raw': 'a=%ff&b=1&c=%e2%82'},
+            },
+            response: [
+              {
+                'name': 'ok',
+                'code': 200,
+                'header': [
+                  {
+                    'key': 'Content-Type',
+                    'value': 'application/x-www-form-urlencoded',
+                  },
+                ],
+                'body': 'a=Jos%E9',
+              },
+            ],
+          ),
+        ]),
+      );
+      final post = operation(document, '/f', 'post');
+      final form =
+          ((post['requestBody']! as Map)['content']!
+                  as Map)['application/x-www-form-urlencoded']!
+              as Map;
+      expect(((form['examples']! as Map)['Form']! as Map)['value'], {
+        'a': '%ff',
+        'b': 1,
+        'c': '%e2%82',
+      });
+    });
+
+    test('request and folder names lose secret values', () {
+      final document = convert(
+        collection(
+          [
+            {
+              'name': 'Folder SECRET-tok',
+              'item': [
+                request(
+                  'Token SECRET-tok',
+                  'POST',
+                  'https://x.io/t',
+                  fields: {
+                    'body': json({'a': 1}),
+                  },
+                ),
+              ],
+            },
+          ],
+          extra: {
+            'auth': {
+              'type': 'bearer',
+              'bearer': [
+                {'key': 'token', 'value': 'SECRET-tok'},
+              ],
+            },
+          },
+        ),
+      );
+      expect(jsonEncode(document), isNot(contains('SECRET')));
+      final post = operation(document, '/t', 'post');
+      expect(post['summary'], 'Token ***');
+      expect(post['operationId'], 'token');
+    });
+
+    test('raw urlencoded bodies are scrubbed field by field', () {
+      final document = convert(
+        collection([
+          request(
+            'Token',
+            'POST',
+            'https://x.io/token',
+            fields: {
+              'header': [
+                {
+                  'key': 'Content-Type',
+                  'value': 'application/x-www-form-urlencoded',
+                },
+              ],
+              'body': {
+                'mode': 'raw',
+                'raw':
+                    'grant_type=password&client_id=app&'
+                    'client_secret=SECRET-client&password=SECRET-pass'
+                    '&username=alice%40x.io&scope=a+b&flag&bad=%zz',
+              },
+            },
+            response: [
+              {
+                'name': 'ok',
+                'code': 200,
+                'header': [
+                  {
+                    'key': 'Content-Type',
+                    'value': 'application/x-www-form-urlencoded',
+                  },
+                ],
+                'body': 'access_token=SECRET-access&expires_in=3600',
+              },
+            ],
+          ),
+        ]),
+      );
+      expect(jsonEncode(document), isNot(contains('SECRET')));
+      final post = operation(document, '/token', 'post');
+      final form =
+          ((post['requestBody']! as Map)['content']!
+                  as Map)['application/x-www-form-urlencoded']!
+              as Map;
+      expect(((form['schema']! as Map)['properties']! as Map).keys, [
+        'grant_type',
+        'client_id',
+        'client_secret',
+        'password',
+        'username',
+        'scope',
+        'flag',
+        'bad',
+      ]);
+      expect(((form['examples']! as Map)['Token']! as Map)['value'], {
+        'grant_type': 'password',
+        'client_id': 'app',
+        'username': 'alice@x.io',
+        'scope': 'a b',
+        'flag': '',
+        'bad': '%zz',
+      });
+      final response =
+          ((((post['responses']! as Map)['200']! as Map)['content']!
+                      as Map)['application/x-www-form-urlencoded']!
+                  as Map)['examples']!
+              as Map;
+      expect((response['ok']! as Map)['value'], {'expires_in': 3600});
+    });
+
+    test('JSON strings with an embedded bearer token or JWT are dropped', () {
+      const jwt = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOjF9.SECRET-sig';
+      final document = convert(
+        collection([
+          request(
+            'Create',
+            'POST',
+            'https://x.io/a',
+            fields: {
+              'body': json({
+                'note': 'use Bearer SECRET-abc to call',
+                'link': 'https://x.io/?t=$jwt',
+                'ok': 'fine',
+              }),
+            },
+          ),
+          request(
+            'Text',
+            'POST',
+            'https://x.io/b',
+            fields: {'body': json('call with Bearer SECRET-top')},
+          ),
+        ]),
+      );
+      expect(jsonEncode(document), isNot(contains('SECRET')));
+      final media =
+          ((operation(document, '/a', 'post')['requestBody']!
+                      as Map)['content']!
+                  as Map)['application/json']!
+              as Map;
+      expect(((media['examples']! as Map)['Create']! as Map)['value'], {
+        'ok': 'fine',
+      });
+    });
+
+    test('saved example names lose secret values', () {
+      final document = convert(
+        collection(
+          [
+            request(
+              'Get',
+              'GET',
+              'https://x.io/a',
+              response: [
+                {'name': 'with SECRET-token', 'code': 200, 'body': 'ok'},
+              ],
+            ),
+          ],
+          extra: {
+            'auth': {
+              'type': 'bearer',
+              'bearer': [
+                {'key': 'token', 'value': 'SECRET-token'},
+              ],
+            },
+          },
+        ),
+      );
+      expect(jsonEncode(document), isNot(contains('SECRET')));
+    });
   });
 
   group('variables', () {
