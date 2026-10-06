@@ -32,10 +32,14 @@ class PostmanRecorder extends Interceptor {
   );
 }
 
-/// [options] (method, URL, headers and body) as a Postman item. The
-/// `Authorization` header is left out: exported collections get shared.
+/// [options] (method, URL, headers and body) as a Postman item.
+///
+/// Exported collections get shared, so credentials stay out: headers whose
+/// names look like credentials ([isCredentialName]: `Authorization`,
+/// `Cookie`, `X-Api-Key`, ...) are left out, and such query and form values
+/// become `<redacted>`. JSON bodies are recorded as sent.
 PostmanItem postmanItemFromRequestOptions(RequestOptions options) {
-  final uri = options.uri;
+  final uri = _redacted(options.uri);
   return PostmanItem(
     name: '${options.method} ${uri.path}',
     request: PostmanRequest.object(
@@ -60,23 +64,51 @@ PostmanItem postmanItemFromRequestOptions(RequestOptions options) {
         ),
         header: PostmanRequestObjectValueHeader.headerList([
           for (final MapEntry(:key, :value) in options.headers.entries)
-            if (key.toLowerCase() != 'authorization')
+            if (!isCredentialName(key))
               PostmanHeader(key: key, value: '$value'),
         ]),
-        body: _body(options.data),
+        body: _body(options),
       ),
     ),
   );
 }
 
-PostmanRequestObjectValueBody? _body(Object? data) => switch (data) {
+/// Whether a header, query or form field named [name] likely holds a
+/// credential.
+bool isCredentialName(String name) => RegExp(
+  'auth|token|secret|passw|pwd|api[-_]?key|cookie|session|signature|'
+  'credential',
+  caseSensitive: false,
+).hasMatch(name);
+
+const _redactedValue = '<redacted>';
+
+String _value(String key, Object? value) =>
+    isCredentialName(key) ? _redactedValue : '$value';
+
+Uri _redacted(Uri uri) => uri.hasQuery
+    ? uri.replace(
+        queryParameters: {
+          for (final MapEntry(:key, :value) in uri.queryParametersAll.entries)
+            key: [for (final v in value) _value(key, v)],
+        },
+      )
+    : uri;
+
+PostmanRequestObjectValueBody? _body(
+  RequestOptions options,
+) => switch (options.data) {
   null => null,
-  FormData() => PostmanRequestObjectValueBody(
+  final FormData data => PostmanRequestObjectValueBody(
     mode: PostmanRequestObjectValueBodyMode.formdata,
     formdata: [
       for (final MapEntry(:key, :value) in data.fields)
         PostmanFormParameter.text(
-          PostmanFormParameterTextValue(key: key, value: value, type: 'text'),
+          PostmanFormParameterTextValue(
+            key: key,
+            value: _value(key, value),
+            type: 'text',
+          ),
         ),
       for (final MapEntry(:key, :value) in data.files)
         PostmanFormParameter.file(
@@ -88,15 +120,39 @@ PostmanRequestObjectValueBody? _body(Object? data) => switch (data) {
         ),
     ],
   ),
-  String() => PostmanRequestObjectValueBody(
+  final Map<Object?, Object?> data
+      when '${options.contentType}'.startsWith(
+        Headers.formUrlEncodedContentType,
+      ) =>
+    PostmanRequestObjectValueBody(
+      mode: PostmanRequestObjectValueBodyMode.urlencoded,
+      urlencoded: [
+        for (final MapEntry(:key, :value) in data.entries)
+          PostmanUrlEncodedParameter(key: '$key', value: _value('$key', value)),
+      ],
+    ),
+  final String data => PostmanRequestObjectValueBody(
     mode: PostmanRequestObjectValueBodyMode.raw,
     raw: data,
   ),
-  _ => PostmanRequestObjectValueBody(
-    mode: PostmanRequestObjectValueBodyMode.raw,
-    raw: const JsonEncoder.withIndent('  ').convert(data),
-    options: {
-      'raw': {'language': 'json'},
-    },
-  ),
+  final data => _json(data),
 };
+
+/// [data] as a raw JSON body, or as its `toString()` when it is no JSON:
+/// recording never breaks the request.
+PostmanRequestObjectValueBody _json(Object data) {
+  try {
+    return PostmanRequestObjectValueBody(
+      mode: PostmanRequestObjectValueBodyMode.raw,
+      raw: const JsonEncoder.withIndent('  ').convert(data),
+      options: {
+        'raw': {'language': 'json'},
+      },
+    );
+  } on Object {
+    return PostmanRequestObjectValueBody(
+      mode: PostmanRequestObjectValueBodyMode.raw,
+      raw: '$data',
+    );
+  }
+}

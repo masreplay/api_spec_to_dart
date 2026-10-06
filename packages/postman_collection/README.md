@@ -50,10 +50,25 @@ void main() {
 }
 ```
 
-The models follow the official schema: wherever it says "one of", the model
-is a sealed class to `switch` on. Unknown enum values (an auth `type` such as
-`jwt`) decode to `unknown`. The models read v2.1; for v1, v2.0 or the Postman
-API envelope, call `normalizePostmanCollection(json)` first.
+Wherever the official schema says "one of", the model is a sealed class to
+`switch` on. The models read v2.1; for v1, v2.0 or the Postman API envelope,
+call `normalizePostmanCollection(json)` first.
+
+### The models are strict
+
+The models follow the official v2.1 schema exactly:
+
+- **They throw on exports that break it**, for example `"version": 3` (the
+  schema allows an object or a string), a header without `value`, or any
+  other shape the schema does not allow. Real-world exports often do. For
+  those, use `postmanToOpenApi`: it reads raw JSON leniently and warns
+  instead of throwing.
+- **`toJson` writes only what the schema defines.** `fromJson` silently drops
+  everything else, including fields Postman itself writes:
+  - the saved response `name` and `_postman_previewlanguage`;
+  - `info._exporter_id` and `info._collection_link`.
+- **Unknown enum values decode to `unknown`.** An auth `type` such as `jwt`
+  re-encodes as `"unknown"`, and its attributes (the `jwt` key) are lost.
 
 ### Generated models
 

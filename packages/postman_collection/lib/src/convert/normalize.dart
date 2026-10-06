@@ -16,7 +16,12 @@ bool isPostmanCollection(Object? json) {
 /// [json] as a v2.1 collection map (envelope unwrapped, v1/v2.0 upgraded).
 Map<String, Object?> normalizePostmanCollection(Object? json) {
   final collection = _unwrap(json);
-  if (_isV1(collection)) return _fromV1(collection as Map<Object?, Object?>);
+  if (_isV1(collection)) {
+    // String keys throughout, as `jsonDecode` gives: the v1 conversion keeps
+    // some sub-maps as they came, and the typed models need string keys.
+    return _stringKeyed(_fromV1(collection as Map<Object?, Object?>))
+        as Map<String, Object?>;
+  }
   if (!_isV2(collection)) {
     throw const FormatException('Not a Postman collection');
   }
@@ -51,6 +56,15 @@ Object? _copy(Object? node) => switch (node) {
       '$key': key == 'auth' ? _auth(value) : _copy(value),
   },
   final List<Object?> list => [for (final item in list) _copy(item)],
+  _ => node,
+};
+
+Object? _stringKeyed(Object? node) => switch (node) {
+  final Map<Object?, Object?> map => {
+    for (final MapEntry(:key, :value) in map.entries)
+      '$key': _stringKeyed(value),
+  },
+  final List<Object?> list => [for (final item in list) _stringKeyed(item)],
   _ => node,
 };
 
