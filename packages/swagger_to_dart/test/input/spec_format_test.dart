@@ -163,7 +163,7 @@ paths:
         ],
       };
 
-      final spec = runZoned(() => toOpenApiJson(collection));
+      final spec = toOpenApiJson(collection);
 
       expect(spec, postmanToOpenApi(collection));
       expect(spec['paths'], contains('/users/{id}'));

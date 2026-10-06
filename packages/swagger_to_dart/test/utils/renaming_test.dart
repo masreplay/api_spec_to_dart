@@ -100,7 +100,9 @@ void main() {
       expect(renaming.renameProperty('الاسم '), 'empty');
       expect(renaming.renameProperty('A.B'), 'aB');
       expect(renaming.renameProperty('ID'), 'id');
-      expect(renaming.renameClass('عمر'), isNot('عمر'));
+      // No ASCII word, no class name: callers fall back (clients are named
+      // by their paths).
+      expect(renaming.renameClass('عمر'), '');
     });
 
     test('propertyNames avoids Object and freezed members', () {
