@@ -374,7 +374,8 @@ swagger_to_dart:
     # Prepended once to every generated model name: component and inline
     # classes, enums, unions and typedefs, and their file names (`Postman`
     # turns `Item` into `PostmanItem` in `postman_item.dart`). Core types
-    # such as `String` or `List` are never prefixed. Default: unset.
+    # such as `String` or `List` are never prefixed. Must be an ASCII
+    # capital letter followed by ASCII letters or digits. Default: unset.
     class_prefix: Postman
 
     # Opt-in per-enum member renaming, keyed by the enum's schema name or
@@ -424,7 +425,19 @@ swagger_to_dart:
   Inline objects used as parameters, and objects without `properties`, stay
   `Map<String, dynamic>`.
 - **Components that are not objects** (arrays, maps, primitives and `$ref`
-  aliases) become typedefs, e.g. `typedef Pets = List<Pet>;`.
+  aliases) become typedefs, e.g. `typedef Pets = List<Pet>;`. A typedef
+  that would refer to itself (`Tree = List<Tree>`) types that reference
+  `Object?` instead, with a warning.
+- **Names that clash** with a type dio, retrofit or the generated code uses
+  (`Response`, `Method`, `List`, `Headers`, `HttpResponse`) get a number
+  (`Response2`), as do union case classes a component already names.
+- **Names without ASCII letters** (Arabic, emoji): such components are
+  `Schema`, `Schema2`, … (with a warning; give them a `title`), fields are
+  `empty`, `empty2`, … with nested models named after them
+  (`UserEmpty`), enum values are `value1`, `value2`, … by position, and
+  methods are named by HTTP method and path (`getPeopleId`). Clients of
+  tags starting with digits are named from the first letter (`1. Auth` →
+  `AuthClient`).
 - **`model.class_prefix`** prefixes every model name once (see
   Configuration Options).
 
@@ -479,7 +492,9 @@ final raw = switch (url) {
 };
 ```
 
-Mixes of primitives only (`string | integer`) stay `dynamic`. Mixed unions
+Variants of one primitive kind are that type (`[enum, string]` is a
+`String`, `[integer, number]` a `double`); mixes of different primitive
+kinds (`string | integer`) stay `dynamic`. Mixed unions
 used as parameters or request bodies are `dynamic`, and a list or map of
 them as a response is `List<Object?>` / `Map<String, Object?>` (decode the
 items with `Url.fromJson`).
