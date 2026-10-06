@@ -12,6 +12,16 @@
         }
       }
     },
+    "/holder": {
+      "get": {
+        "tags": ["pets"],
+        "operationId": "getHolder",
+        "produces": ["application/json"],
+        "responses": {
+          "200": { "description": "OK", "schema": { "$ref": "#/definitions/Holder" } }
+        }
+      }
+    },
     "/meta": {
       "get": {
         "tags": ["pets"],
@@ -31,6 +41,10 @@
         "meta": { "type": "object", "properties": { "total": { "type": "integer" } } }
       }
     },
-    "Pet": { "type": "object", "properties": { "id": { "type": "integer" } } }
+    "Pet": { "type": "object", "properties": { "id": { "type": "integer" } } },
+    "Holder": {
+      "type": "object",
+      "properties": { "default": { "$ref": "#/definitions/Page/properties/items" } }
+    }
   }
 }

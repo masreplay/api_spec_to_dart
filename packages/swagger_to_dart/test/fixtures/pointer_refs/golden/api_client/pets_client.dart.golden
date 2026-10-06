@@ -36,6 +36,27 @@ abstract class PetsClient {
       },
     },
   });
+  @GET('/holder')
+  Future<HttpResponse<Holder>> getHolder({
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['pets'],
+      'operationId': 'getHolder',
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/Holder'},
+            },
+          },
+        },
+      },
+    },
+  });
   @GET('/meta')
   Future<HttpResponse<GetMetaResponse>> getMeta({
     @CancelRequest() CancelToken? cancelToken,

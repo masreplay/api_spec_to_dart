@@ -50,15 +50,19 @@ Map<String, dynamic> toOpenApiJson(Object? document, {String? sourceName}) {
 /// (`#/components/schemas/Page/properties/items`) replaced by the schema it
 /// points to (its sibling keys kept): only whole components become models.
 /// A pointer met again inside its own replacement ([expanding]) stays.
+/// [names]: [node] maps names to schemas (`properties`), so a key such as
+/// `default` is a name, not data.
 Object? _inlinePointers(
   Object? node,
   Map<String, dynamic> document,
-  Set<String> expanding,
-) {
+  Set<String> expanding, {
+  bool names = false,
+}) {
   const schemas = '#/components/schemas/';
   switch (node) {
     case {r'$ref': final String ref}
-        when ref.startsWith(schemas) &&
+        when !names &&
+            ref.startsWith(schemas) &&
             ref.substring(schemas.length).contains('/') &&
             !expanding.contains(ref):
       final target = _pointed(document, ref);
@@ -71,9 +75,14 @@ Object? _inlinePointers(
     case final Map map:
       return <String, dynamic>{
         for (final MapEntry(:key, :value) in map.entries)
-          '$key': _data.contains(key)
+          '$key': !names && _data.contains(key)
               ? value
-              : _inlinePointers(value, document, expanding),
+              : _inlinePointers(
+                  value,
+                  document,
+                  expanding,
+                  names: !names && _named.contains(key),
+                ),
       };
     case final List list:
       return [for (final e in list) _inlinePointers(e, document, expanding)];
@@ -84,6 +93,16 @@ Object? _inlinePointers(
 
 /// Keywords whose values are data, not schemas.
 const _data = {'enum', 'const', 'default', 'example', 'examples'};
+
+/// Keywords whose values map names (not keywords) to schemas.
+const _named = {
+  'schemas',
+  'properties',
+  'patternProperties',
+  'dependentSchemas',
+  'definitions',
+  r'$defs',
+};
 
 /// The value at the JSON pointer of the local [ref] (`#/a/b~1c`), or null.
 Object? _pointed(Map<String, dynamic> document, String ref) {
