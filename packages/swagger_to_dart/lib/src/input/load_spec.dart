@@ -5,6 +5,7 @@ import 'package:path/path.dart' as p;
 import 'package:postman_collection/io.dart';
 import 'package:yaml/yaml.dart';
 
+import '../utils/warning.dart';
 import '../utils/yaml.dart';
 
 /// Reads [path] (a JSON or YAML file, or a Postman v3 directory) or fetches
@@ -58,7 +59,7 @@ Object? readSpecSync(String path) {
   if (FileSystemEntity.isDirectorySync(path)) {
     return readPostmanCollectionDirectory(
       path,
-      onWarning: (message) => print('swagger_to_dart: warning: $message'),
+      onWarning: printWarning,
     );
   }
   final file = File(path);

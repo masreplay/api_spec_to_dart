@@ -1,5 +1,7 @@
 import 'package:collection/collection.dart';
 
+import '../utils/warning.dart';
+
 const _methods = {'get', 'put', 'post', 'delete', 'options', 'head', 'patch'};
 
 /// Keys of a 2.0 non-body parameter, header or items object that make up
@@ -363,8 +365,8 @@ Map<String, dynamic>? _requestBody(
 Map<String, dynamic> _formEncoding(Map parameter) {
   final style = _style({...parameter, 'in': 'query'});
   if (style['x-collectionFormat'] case final format?) {
-    print(
-      'swagger_to_dart: warning: formData parameter ${parameter['name']} '
+    printWarning(
+      'formData parameter ${parameter['name']} '
       'uses collectionFormat $format, which OpenAPI 3 cannot express; it is '
       'encoded like csv.',
     );
