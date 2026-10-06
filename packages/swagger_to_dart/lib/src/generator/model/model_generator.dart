@@ -1,4 +1,5 @@
 import 'package:code_builder/code_builder.dart';
+import 'package:swagger_to_dart/src/utils/warning.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 ///
@@ -99,18 +100,22 @@ class ModelGenerator extends LibraryGenerator {
 
   /// Assigns every non-generic component a unique class name: its title (or
   /// key); when another component already took that name, its key; then a
-  /// numeric suffix. Generic instantiations share their base class name.
+  /// numeric suffix. A name without ASCII words (`عمر`) is `Schema`.
+  /// Generic instantiations share their base class name.
   void _nameComponents(
     Map<String, OpenApiSchemas> schemas,
     GenericModelGeneratorStrategy generic,
   ) {
     final prefixes = context.config.model.removeModelPrefixes;
-    String className(String name) => context.withClassPrefix(
-      Renaming.instance.renameClass(
-        name,
-        removePrefixes: prefixes.isNotEmpty ? prefixes : null,
-      ),
-    );
+    String? renamed(String? name) => switch (name == null
+        ? ''
+        : Renaming.instance.renameClass(
+            name,
+            removePrefixes: prefixes.isNotEmpty ? prefixes : null,
+          )) {
+      '' => null,
+      final renamed => renamed,
+    };
 
     final taken = <String>{};
     for (final entry in schemas.entries) {
@@ -121,13 +126,23 @@ class ModelGenerator extends LibraryGenerator {
 
     for (final entry in schemas.entries) {
       if (generic.shouldUseGenericStrategy(entry)) continue;
-      final preferred = className(entry.value.title ?? entry.key);
-      var name = taken.contains(preferred) ? className(entry.key) : preferred;
+      final byKey = context.withClassPrefix(renamed(entry.key) ?? 'Schema');
+      final preferred = switch (renamed(entry.value.title)) {
+        final title? => context.withClassPrefix(title),
+        null => byKey,
+      };
+      var name = taken.contains(preferred) ? byKey : preferred;
       for (var i = 2; taken.contains(name); i++) {
-        name = '${className(entry.key)}$i';
+        name = '$byKey$i';
       }
       taken.add(name);
       context.componentClassNames[entry.key] = name;
+      if (renamed(entry.value.title) == null && renamed(entry.key) == null) {
+        printWarning(
+          'component "${entry.key}" has no ASCII letters or digits to name '
+          'a class; generated as $name. Give it a title.',
+        );
+      }
     }
 
     context.reservedModelNames.addAll(taken.map(Renaming.instance.renameFile));

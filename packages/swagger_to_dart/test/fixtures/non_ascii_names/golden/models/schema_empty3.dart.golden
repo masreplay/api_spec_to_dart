@@ -1,0 +1,33 @@
+/// SchemaEmpty3
+///
+/// ```json
+/// {
+///     "properties": {
+///         "note": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'schema_empty3.freezed.dart';
+part 'schema_empty3.g.dart';
+
+@freezed
+abstract class SchemaEmpty3 with _$SchemaEmpty3 {
+  const SchemaEmpty3._();
+
+  @jsonSerializable
+  const factory SchemaEmpty3({
+    /// note
+    @JsonKey(name: SchemaEmpty3.noteKey_) String? note,
+  }) = _SchemaEmpty3;
+
+  factory SchemaEmpty3.fromJson(Map<String, dynamic> json) =>
+      _$SchemaEmpty3FromJson(json);
+
+  static const String noteKey_ = 'note';
+}

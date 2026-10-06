@@ -143,4 +143,132 @@ void main() {
       throwsA(isA<StateError>()),
     );
   });
+
+  group('names without ASCII words', () {
+    final arabicComponents = _components({
+      'عمر': {
+        'type': 'object',
+        'properties': {
+          'name': {'type': 'string'},
+        },
+      },
+      'مستخدم': {
+        'type': 'object',
+        'properties': {
+          'id': {'type': 'integer'},
+        },
+      },
+    });
+
+    test('components are Schema, Schema2 with a warning', () {
+      final lines = <String>[];
+      final result = runZoned(
+        () => renderSpec(arabicComponents),
+        zoneSpecification: ZoneSpecification(
+          print: (_, _, _, line) => lines.add(line),
+        ),
+      );
+      expect(result.errors, isEmpty);
+      expect(result.files['models/schema.dart'], contains('class Schema '));
+      expect(result.files['models/schema2.dart'], contains('class Schema2 '));
+      expect(result.files.keys, isNot(contains('models/.dart')));
+      expect(
+        lines,
+        containsAll([
+          contains('"عمر"'),
+          allOf(contains('"مستخدم"'), contains('Schema2')),
+        ]),
+      );
+    });
+
+    test('components get the class prefix after the fallback', () {
+      final result = runZoned(
+        () => renderSpec(
+          arabicComponents,
+          config: const SwaggerToDart(
+            model: ModelConfig(classPrefix: 'Postman'),
+          ),
+        ),
+        zoneSpecification: ZoneSpecification(print: (_, _, _, _) {}),
+      );
+      expect(
+        result.files['models/postman_schema.dart'],
+        contains('class PostmanSchema '),
+      );
+      expect(
+        result.files['models/postman_schema2.dart'],
+        contains('class PostmanSchema2 '),
+      );
+    });
+
+    test('inline object and enum titles are no names', () {
+      for (final prefix in [null, 'Postman']) {
+        final result = renderSpec(
+          {
+            'openapi': '3.1.0',
+            'info': {'title': 't', 'version': '1'},
+            'paths': {
+              '/y': {
+                'post': {
+                  'operationId': 'send',
+                  'requestBody': {
+                    'content': {
+                      'application/json': {
+                        'schema': {
+                          'type': 'object',
+                          'title': 'طلب',
+                          'properties': {
+                            'kind': {
+                              'type': 'string',
+                              'title': 'نوع',
+                              'enum': ['a', 'b'],
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                  'responses': {
+                    '200': {'description': 'ok'},
+                  },
+                },
+              },
+            },
+          },
+          config: SwaggerToDart(model: ModelConfig(classPrefix: prefix)),
+        );
+        final p = prefix ?? '';
+        expect(result.errors, isEmpty);
+        expect(
+          result.files['api_client/default_client.dart'],
+          contains('required ${p}SendBody requestBody'),
+        );
+        expect(
+          Renaming.instance.renameFile('${p}SendBody'),
+          isIn(result.files.keys.map((k) => k.split('/').last.split('.')[0])),
+        );
+        expect(
+          result.files.values.join(),
+          contains('${p}SendBodyKind? kind'),
+        );
+      }
+    });
+
+    test('a JSON Schema root titled in Arabic is named by its source', () {
+      Iterable<String> keys(String? sourceName) =>
+          (toOpenApiJson({
+                    r'$schema': 'http://json-schema.org/draft-07/schema#',
+                    'title': 'عمر',
+                    'type': 'object',
+                    'properties': {
+                      'name': {'type': 'string'},
+                    },
+                  }, sourceName: sourceName)['components']['schemas']
+                  as Map<String, dynamic>)
+              .keys;
+      expect(keys('person'), ['Person']);
+      expect(keys('عمر'), ['Schema']);
+      expect(keys(null), ['Schema']);
+    });
+  });
 }

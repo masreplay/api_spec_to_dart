@@ -1,0 +1,112 @@
+/// SchemaEmpty4
+///
+/// ```json
+/// {
+///     "oneOf": [
+///         {
+///             "type": "object",
+///             "properties": {
+///                 "card": {
+///                     "type": "string"
+///                 }
+///             },
+///             "required": [
+///                 "card"
+///             ]
+///         },
+///         {
+///             "type": "object",
+///             "properties": {
+///                 "iban": {
+///                     "type": "string"
+///                 }
+///             },
+///             "required": [
+///                 "iban"
+///             ]
+///         }
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+sealed class SchemaEmpty4 {
+  const SchemaEmpty4();
+
+  const factory SchemaEmpty4.object(SchemaEmpty4ObjectValue value) =
+      SchemaEmpty4Object;
+  const factory SchemaEmpty4.object2(SchemaEmpty4Object2Value value) =
+      SchemaEmpty4Object2;
+
+  factory SchemaEmpty4.fromJson(Map<String, dynamic> json) {
+    // No discriminator in the spec: the variant whose required keys are all
+    // present and that declares the most of the payload's keys wins (the
+    // earlier one on a tie).
+    const variants = <({Set<String> required, Set<String> declared})>[
+      (required: {'card'}, declared: {'card'}),
+      (required: {'iban'}, declared: {'iban'}),
+    ];
+    var best = -1;
+    var bestScore = -1;
+    for (var i = 0; i < variants.length; i++) {
+      final variant = variants[i];
+      if (!variant.required.every(json.containsKey)) continue;
+      final score = json.keys.where(variant.declared.contains).length;
+      if (score > bestScore) {
+        best = i;
+        bestScore = score;
+      }
+    }
+    return switch (best) {
+      0 => SchemaEmpty4Object(SchemaEmpty4ObjectValue.fromJson(json)),
+      1 => SchemaEmpty4Object2(SchemaEmpty4Object2Value.fromJson(json)),
+      _ => throw ArgumentError.value(
+        json,
+        'json',
+        'No SchemaEmpty4 variant matches',
+      ),
+    };
+  }
+
+  Map<String, dynamic> toJson();
+}
+
+final class SchemaEmpty4Object extends SchemaEmpty4 {
+  const SchemaEmpty4Object(this.value);
+
+  final SchemaEmpty4ObjectValue value;
+
+  @override
+  Map<String, dynamic> toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) =>
+      other is SchemaEmpty4Object && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'SchemaEmpty4.object($value)';
+}
+
+final class SchemaEmpty4Object2 extends SchemaEmpty4 {
+  const SchemaEmpty4Object2(this.value);
+
+  final SchemaEmpty4Object2Value value;
+
+  @override
+  Map<String, dynamic> toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) =>
+      other is SchemaEmpty4Object2 && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'SchemaEmpty4.object2($value)';
+}

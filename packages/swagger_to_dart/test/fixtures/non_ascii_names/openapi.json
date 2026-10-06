@@ -1,0 +1,65 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Non-ASCII names", "version": "1.0.0" },
+  "paths": {
+    "/people": {
+      "get": {
+        "tags": ["people"],
+        "operationId": "listPeople",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": { "application/json": { "schema": { "type": "array", "items": { "$ref": "#/components/schemas/عمر" } } } }
+          }
+        }
+      },
+      "post": {
+        "tags": ["people"],
+        "operationId": "createPerson",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "title": "طلب",
+                "properties": {
+                  "kind": { "type": "string", "title": "نوع", "enum": ["a", "b"] },
+                  "user": { "$ref": "#/components/schemas/مستخدم" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/مستخدم" } } }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "عمر": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "العنوان": { "type": "object", "properties": { "city": { "type": "string" } } },
+          "😀": { "type": "string", "enum": ["happy", "sad"] },
+          "_": { "type": "object", "properties": { "note": { "type": "string" } } },
+          "$": {
+            "oneOf": [
+              { "type": "object", "properties": { "card": { "type": "string" } }, "required": ["card"] },
+              { "type": "object", "properties": { "iban": { "type": "string" } }, "required": ["iban"] }
+            ]
+          }
+        }
+      },
+      "مستخدم": {
+        "type": "object",
+        "properties": { "id": { "type": "integer" } }
+      }
+    }
+  }
+}

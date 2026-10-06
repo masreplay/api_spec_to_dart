@@ -1,0 +1,33 @@
+/// SchemaEmpty
+///
+/// ```json
+/// {
+///     "properties": {
+///         "city": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'schema_empty.freezed.dart';
+part 'schema_empty.g.dart';
+
+@freezed
+abstract class SchemaEmpty with _$SchemaEmpty {
+  const SchemaEmpty._();
+
+  @jsonSerializable
+  const factory SchemaEmpty({
+    /// city
+    @JsonKey(name: SchemaEmpty.cityKey_) String? city,
+  }) = _SchemaEmpty;
+
+  factory SchemaEmpty.fromJson(Map<String, dynamic> json) =>
+      _$SchemaEmptyFromJson(json);
+
+  static const String cityKey_ = 'city';
+}
