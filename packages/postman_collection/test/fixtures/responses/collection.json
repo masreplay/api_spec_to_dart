@@ -1,0 +1,87 @@
+{
+  "info": {
+    "name": "Responses",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get order",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "https://shop.example.com/orders/:id"
+      },
+      "response": [
+        {
+          "name": "Paid order",
+          "code": 200,
+          "status": "OK",
+          "header": [
+            { "key": "Content-Type", "value": "application/json; charset=utf-8" },
+            { "key": "X-RateLimit-Remaining", "value": "59" },
+            { "key": "Date", "value": "Mon, 01 Jan 2024 10:00:00 GMT" },
+            { "key": "Content-Length", "value": "120" },
+            { "key": "Connection", "value": "keep-alive" }
+          ],
+          "body": "{\"id\": 1, \"total\": 10, \"paidAt\": \"2024-01-01T10:00:00Z\", \"items\": [{\"sku\": \"A1\", \"qty\": 2}]}"
+        },
+        {
+          "name": "Unpaid order",
+          "code": 200,
+          "status": "OK",
+          "header": [
+            { "key": "Content-Type", "value": "application/json" }
+          ],
+          "body": "{\"id\": \"2\", \"total\": 12.5, \"paidAt\": null, \"items\": [], \"note\": \"gift\"}"
+        },
+        {
+          "name": "Not found",
+          "status": "Not Found",
+          "header": "Content-Type: application/problem+json\nX-Trace: abc",
+          "body": "{\"title\": \"Not Found\", \"status\": 404}"
+        },
+        {
+          "name": "Validation",
+          "status": "422 Unprocessable Entity",
+          "_postman_previewlanguage": "json",
+          "header": [],
+          "body": "{\"errors\": {\"id\": [\"must be a number\"]}}"
+        },
+        {
+          "name": "Server error page",
+          "code": 500,
+          "_postman_previewlanguage": "html",
+          "header": null,
+          "body": "<h1>Oops</h1>"
+        },
+        {
+          "name": "Sniffed list",
+          "code": 206,
+          "header": [],
+          "body": "[1, 2, 3]"
+        },
+        {
+          "name": "Plain",
+          "code": 299,
+          "header": ["X-Custom: yes"],
+          "body": "just text"
+        },
+        {
+          "name": "Unknown",
+          "status": "Something odd",
+          "header": [],
+          "body": ""
+        }
+      ]
+    },
+    {
+      "name": "Ping",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "https://shop.example.com/ping"
+      },
+      "response": []
+    }
+  ]
+}

@@ -1,0 +1,371 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "Legacy Library",
+    "description": "A v1 export.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "{baseUrl}",
+      "variables": {
+        "baseUrl": {
+          "default": "https://library.example.com/api"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "bearer": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Books",
+      "description": "Book catalog"
+    },
+    {
+      "name": "Books / Covers"
+    }
+  ],
+  "paths": {
+    "/books/{bookId}/cover": {
+      "post": {
+        "tags": [
+          "Books / Covers"
+        ],
+        "summary": "Upload cover",
+        "operationId": "uploadCover",
+        "parameters": [
+          {
+            "name": "bookId",
+            "in": "path",
+            "description": "Book id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "1"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "cover": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "caption": {
+                    "type": "string"
+                  },
+                  "draft": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "examples": {
+                "Upload cover": {
+                  "value": {
+                    "caption": "Front",
+                    "draft": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Books / Covers"
+        ],
+        "summary": "Replace cover",
+        "operationId": "replaceCover",
+        "parameters": [
+          {
+            "name": "bookId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "image/png": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/books": {
+      "get": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "List books",
+        "operationId": "listBooks",
+        "parameters": [
+          {
+            "name": "author",
+            "in": "query",
+            "description": "Author slug",
+            "schema": {
+              "type": "string"
+            },
+            "example": "tolkien"
+          },
+          {
+            "name": "X-Client",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "legacy"
+          },
+          {
+            "name": "X-Debug",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "1"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Total": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "1"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "year": {
+                        "type": "integer"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Books": {
+                    "value": [
+                      {
+                        "id": 1,
+                        "title": "The Hobbit",
+                        "year": 1937
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Create book",
+        "operationId": "createBook",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "year": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "examples": {
+                "Create book": {
+                  "value": {
+                    "title": "The Hobbit",
+                    "year": 1937
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "year": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "Created": {
+                    "value": {
+                      "id": 2,
+                      "title": "The Hobbit",
+                      "year": 1937
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apikey": []
+          }
+        ]
+      }
+    },
+    "/search": {
+      "post": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Search",
+        "operationId": "search",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "q": {
+                    "type": "string"
+                  },
+                  "page": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "examples": {
+                "Search": {
+                  "value": {
+                    "q": "hobbit",
+                    "page": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "summary": "Health",
+        "operationId": "health",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "security": []
+      }
+    },
+    "/graphql": {
+      "post": {
+        "summary": "GraphQL",
+        "operationId": "graphQl",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "query": {
+                    "type": "string"
+                  },
+                  "variables": {
+                    "type": "object"
+                  }
+                }
+              },
+              "examples": {
+                "GraphQL": {
+                  "value": {
+                    "query": "{ books { title } }",
+                    "variables": {}
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer"
+      },
+      "apikey": {
+        "type": "apiKey",
+        "name": "X-Library-Key",
+        "in": "header"
+      }
+    }
+  }
+}
