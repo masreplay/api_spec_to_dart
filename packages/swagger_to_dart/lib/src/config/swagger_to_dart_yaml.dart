@@ -93,8 +93,18 @@ abstract class ModelConfig with _$ModelConfig {
     Map<String, Map<String, String>> enums,
   }) = _ModelConfig;
 
-  factory ModelConfig.fromJson(Map<String, dynamic> json) =>
-      _$ModelConfigFromJson(json);
+  factory ModelConfig.fromJson(Map<String, dynamic> json) {
+    final config = _$ModelConfigFromJson(json);
+    if (config.classPrefix case final prefix?
+        when !RegExp(r'^[A-Z][A-Za-z0-9]*$').hasMatch(prefix)) {
+      throw FormatException(
+        'swagger_to_dart: model.class_prefix must start with an ASCII '
+        'capital letter followed by ASCII letters or digits (e.g. Postman)',
+        prefix,
+      );
+    }
+    return config;
+  }
 }
 
 @freezed
