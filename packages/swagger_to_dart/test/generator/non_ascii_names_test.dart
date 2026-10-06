@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'dart:isolate';
 
 import 'package:code_builder/code_builder.dart';
@@ -286,5 +287,17 @@ void main() {
     expect(color, contains("@JsonValue('أحمر')\n  value1,"));
     expect(color, contains("@JsonValue('red')\n  red,"));
     expect(color, contains("@JsonValue('أزرق')\n  value3;"));
+  });
+
+  test('operationIds without ASCII words name methods by method and path', () {
+    final client = Fixture(
+      Directory('test/fixtures/non_ascii_names'),
+    ).render().files['api_client/people_client.dart']!;
+    expect(
+      client,
+      contains('Future<HttpResponse<GetPeopleIdResponse>> getPeopleId('),
+    );
+    expect(client, contains('Future<HttpResponse> deletePeopleId('));
+    expect(client, isNot(contains(' empty(')));
   });
 }

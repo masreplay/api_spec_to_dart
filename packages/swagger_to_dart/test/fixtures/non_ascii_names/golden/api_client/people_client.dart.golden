@@ -12,6 +12,64 @@ abstract class PeopleClient {
     String? baseUrl,
   }) = _PeopleClient;
 
+  @GET('/people/{id}')
+  Future<HttpResponse<GetPeopleIdResponse>> getPeopleId({
+    @Path('id') required int id,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['people'],
+      'operationId': 'جلب',
+      'parameters': [
+        {
+          'name': 'id',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'integer'},
+        },
+      ],
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'properties': {
+                  'id': {'type': 'integer'},
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+  @DELETE('/people/{id}')
+  Future<HttpResponse> deletePeopleId({
+    @Path('id') required int id,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['people'],
+      'operationId': 'حذف',
+      'parameters': [
+        {
+          'name': 'id',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'integer'},
+        },
+      ],
+      'responses': {
+        '204': {'description': 'OK'},
+      },
+    },
+  });
   @GET('/people')
   Future<HttpResponse<List<Schema>>> listPeople({
     @CancelRequest() CancelToken? cancelToken,

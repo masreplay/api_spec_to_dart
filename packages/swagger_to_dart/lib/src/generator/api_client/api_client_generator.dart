@@ -271,9 +271,15 @@ class ApiClientGenerator {
           ? '$method(${dartString(url)})'
           : 'Method(${dartString(method)}, ${dartString(url)})';
 
+      final operationId = operation.operationId;
       final baseMethodName = Renaming.instance.renameFunction(
-        operation.operationId ??
-            '${clientName}_${path}_${method.toLowerCase()}',
+        switch (operationId) {
+          null => '${clientName}_${path}_${method.toLowerCase()}',
+          // No ASCII words (`جلب`): by method and path, like Postman's.
+          _ when Recase.instance.toCamelCase(operationId).isEmpty =>
+            '${method.toLowerCase()}_$path',
+          _ => operationId,
+        },
       );
       // operationIds are not always unique; methods in one class must be.
       var methodName = baseMethodName;
