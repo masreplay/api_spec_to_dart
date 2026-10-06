@@ -1,5 +1,6 @@
 import 'package:postman_collection/convert.dart';
 
+import '../utils/warning.dart';
 import '../utils/yaml.dart';
 import 'json_schema.dart';
 import 'swagger2.dart';
@@ -36,7 +37,7 @@ Map<String, dynamic> toOpenApiJson(Object? document, {String? sourceName}) {
     ),
     SpecFormat.postman => postmanToOpenApi(
       document,
-      onWarning: (message) => print('swagger_to_dart: warning: $message'),
+      onWarning: printWarning,
     ),
     SpecFormat.unknown => throw const FormatException(
       'Not an OpenAPI 3, Swagger 2.0, JSON Schema or Postman document',

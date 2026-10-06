@@ -4,6 +4,7 @@ import 'package:code_builder/code_builder.dart';
 import 'package:path/path.dart' as path;
 import 'package:pubspec_parse/pubspec_parse.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
+import 'package:swagger_to_dart/src/utils/warning.dart';
 import 'package:yaml/yaml.dart';
 
 class GenerationContext {
@@ -68,8 +69,8 @@ class GenerationContext {
       _models[library.name!] = library;
     } else if (!isGenericInstantiation &&
         _source(existing) != _source(library)) {
-      print(
-        'swagger_to_dart: warning: two schemas generate ${library.name}.dart; '
+      printWarning(
+        'two schemas generate ${library.name}.dart; '
         'keeping the first. Give one of them a different title.',
       );
     }

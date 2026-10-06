@@ -1,5 +1,6 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:swagger_to_dart/src/code/string.dart';
+import 'package:swagger_to_dart/src/utils/warning.dart';
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 
 ///
@@ -66,8 +67,8 @@ class EnumModelGeneratorStrategy
       final actualValues = values.map((v) => v.toString()).toSet();
       for (final key in enumOverrides.keys) {
         if (!actualValues.contains(key)) {
-          print(
-            'swagger_to_dart: warning: enum "${model.key}" has no value "$key" '
+          printWarning(
+            'enum "${model.key}" has no value "$key" '
             'configured under model.enums — ignoring it.',
           );
         }
