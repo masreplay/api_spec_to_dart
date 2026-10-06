@@ -1,0 +1,299 @@
+/// request
+///
+/// ```json
+/// {
+///     "description": "A request represents an HTTP request. If a string, the string is assumed to be the request URL and the method is assumed to be 'GET'.",
+///     "oneOf": [
+///         {
+///             "type": "object",
+///             "properties": {
+///                 "url": {
+///                     "$ref": "#/components/schemas/url"
+///                 },
+///                 "auth": {
+///                     "oneOf": [
+///                         {
+///                             "type": "null"
+///                         },
+///                         {
+///                             "$ref": "#/components/schemas/auth"
+///                         }
+///                     ]
+///                 },
+///                 "proxy": {
+///                     "$ref": "#/components/schemas/proxy-config"
+///                 },
+///                 "certificate": {
+///                     "$ref": "#/components/schemas/certificate"
+///                 },
+///                 "method": {
+///                     "anyOf": [
+///                         {
+///                             "enum": [
+///                                 "GET",
+///                                 "PUT",
+///                                 "POST",
+///                                 "PATCH",
+///                                 "DELETE",
+///                                 "COPY",
+///                                 "HEAD",
+///                                 "OPTIONS",
+///                                 "LINK",
+///                                 "UNLINK",
+///                                 "PURGE",
+///                                 "LOCK",
+///                                 "UNLOCK",
+///                                 "PROPFIND",
+///                                 "VIEW"
+///                             ],
+///                             "type": "string",
+///                             "description": "The Standard HTTP method associated with this request."
+///                         },
+///                         {
+///                             "type": "string",
+///                             "description": "The Custom HTTP method associated with this request."
+///                         }
+///                     ]
+///                 },
+///                 "description": {
+///                     "$ref": "#/components/schemas/description"
+///                 },
+///                 "header": {
+///                     "oneOf": [
+///                         {
+///                             "$ref": "#/components/schemas/header-list"
+///                         },
+///                         {
+///                             "type": "string"
+///                         }
+///                     ]
+///                 },
+///                 "body": {
+///                     "oneOf": [
+///                         {
+///                             "type": "object",
+///                             "properties": {
+///                                 "mode": {
+///                                     "enum": [
+///                                         "raw",
+///                                         "urlencoded",
+///                                         "formdata",
+///                                         "file",
+///                                         "graphql"
+///                                     ],
+///                                     "description": "Postman stores the type of data associated with this request in this field."
+///                                 },
+///                                 "raw": {
+///                                     "type": "string"
+///                                 },
+///                                 "graphql": {
+///                                     "type": "object"
+///                                 },
+///                                 "urlencoded": {
+///                                     "type": "array",
+///                                     "items": {
+///                                         "type": "object",
+///                                         "properties": {
+///                                             "key": {
+///                                                 "type": "string"
+///                                             },
+///                                             "value": {
+///                                                 "type": "string"
+///                                             },
+///                                             "disabled": {
+///                                                 "type": "boolean",
+///                                                 "default": false
+///                                             },
+///                                             "description": {
+///                                                 "$ref": "#/components/schemas/description"
+///                                             }
+///                                         },
+///                                         "required": [
+///                                             "key"
+///                                         ],
+///                                         "title": "UrlEncodedParameter"
+///                                     }
+///                                 },
+///                                 "formdata": {
+///                                     "type": "array",
+///                                     "items": {
+///                                         "anyOf": [
+///                                             {
+///                                                 "properties": {
+///                                                     "key": {
+///                                                         "type": "string"
+///                                                     },
+///                                                     "value": {
+///                                                         "type": "string"
+///                                                     },
+///                                                     "disabled": {
+///                                                         "type": "boolean",
+///                                                         "description": "When set to true, prevents this form data entity from being sent.",
+///                                                         "default": false
+///                                                     },
+///                                                     "type": {
+///                                                         "type": "string",
+///                                                         "const": "text"
+///                                                     },
+///                                                     "contentType": {
+///                                                         "type": "string",
+///                                                         "description": "Override Content-Type header of this form data entity."
+///                                                     },
+///                                                     "description": {
+///                                                         "$ref": "#/components/schemas/description"
+///                                                     }
+///                                                 },
+///                                                 "required": [
+///                                                     "key"
+///                                                 ]
+///                                             },
+///                                             {
+///                                                 "properties": {
+///                                                     "key": {
+///                                                         "type": "string"
+///                                                     },
+///                                                     "src": {
+///                                                         "oneOf": [
+///                                                             {
+///                                                                 "type": "array"
+///                                                             },
+///                                                             {
+///                                                                 "type": "string"
+///                                                             }
+///                                                         ],
+///                                                         "nullable": true
+///                                                     },
+///                                                     "disabled": {
+///                                                         "type": "boolean",
+///                                                         "description": "When set to true, prevents this form data entity from being sent.",
+///                                                         "default": false
+///                                                     },
+///                                                     "type": {
+///                                                         "type": "string",
+///                                                         "const": "file"
+///                                                     },
+///                                                     "contentType": {
+///                                                         "type": "string",
+///                                                         "description": "Override Content-Type header of this form data entity."
+///                                                     },
+///                                                     "description": {
+///                                                         "$ref": "#/components/schemas/description"
+///                                                     }
+///                                                 },
+///                                                 "required": [
+///                                                     "key"
+///                                                 ]
+///                                             }
+///                                         ],
+///                                         "title": "FormParameter"
+///                                     }
+///                                 },
+///                                 "file": {
+///                                     "type": "object",
+///                                     "properties": {
+///                                         "src": {
+///                                             "oneOf": [
+///                                                 {
+///                                                     "type": "string",
+///                                                     "description": "Contains the name of the file to upload. _Not the path_."
+///                                                 },
+///                                                 {
+///                                                     "type": "null",
+///                                                     "description": "A null src indicates that no file has been selected as a part of the request body"
+///                                                 }
+///                                             ]
+///                                         },
+///                                         "content": {
+///                                             "type": "string"
+///                                         }
+///                                     }
+///                                 },
+///                                 "options": {
+///                                     "type": "object",
+///                                     "description": "Additional configurations and options set for various body modes."
+///                                 },
+///                                 "disabled": {
+///                                     "type": "boolean",
+///                                     "description": "When set to true, prevents request body from being sent.",
+///                                     "default": false
+///                                 }
+///                             },
+///                             "description": "This field contains the data usually contained in the request body."
+///                         },
+///                         {
+///                             "type": "null"
+///                         }
+///                     ]
+///                 }
+///             },
+///             "title": "Request"
+///         },
+///         {
+///             "type": "string"
+///         }
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+sealed class PostmanRequest {
+  const PostmanRequest();
+
+  const factory PostmanRequest.object(PostmanRequestObjectValue value) =
+      PostmanRequestObject;
+  const factory PostmanRequest.string(String value) = PostmanRequestString;
+
+  factory PostmanRequest.fromJson(Object? json) => switch (json) {
+    String() => PostmanRequestString(json),
+    Map<String, dynamic>() => PostmanRequestObject(
+      PostmanRequestObjectValue.fromJson(json),
+    ),
+    _ => throw ArgumentError.value(
+      json,
+      'json',
+      'No PostmanRequest variant matches',
+    ),
+  };
+
+  Object? toJson();
+}
+
+final class PostmanRequestObject extends PostmanRequest {
+  const PostmanRequestObject(this.value);
+
+  final PostmanRequestObjectValue value;
+
+  @override
+  Object? toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) =>
+      other is PostmanRequestObject && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'PostmanRequest.object($value)';
+}
+
+final class PostmanRequestString extends PostmanRequest {
+  const PostmanRequestString(this.value);
+
+  final String value;
+
+  @override
+  Object? toJson() => value;
+
+  @override
+  bool operator ==(Object other) =>
+      other is PostmanRequestString && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'PostmanRequest.string($value)';
+}
