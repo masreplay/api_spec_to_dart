@@ -290,7 +290,7 @@ abstract class PetsClient {
 
 extension PetsClientX on PetsClient {
   Future<HttpResponse> uploadPetPhoto({
-    required Map<String, dynamic> requestBody,
+    required UploadPetPhotoBody requestBody,
     @Path('petId') required String petId,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
@@ -332,7 +332,7 @@ extension PetsClientX on PetsClient {
     },
   }) {
     return uploadPetPhoto_(
-      requestBody: requestBody,
+      requestBody: requestBody.toJson(),
       petId: petId,
       extras: extras,
       cancelToken: cancelToken,
