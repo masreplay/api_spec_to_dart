@@ -44,6 +44,21 @@ migration notes below.
   unused `pat` value of `OpenApiPathMethodEnum` is removed. Migration:
   only code using `OpenApiPathMethodEnum.pat` from this package's API needs
   a change.
+- **Free-form object components become `Map` typedefs.** A component
+  `{type: object}` without `properties` (and without
+  `additionalProperties: false`) generates
+  `typedef Name = Map<String, dynamic>;` instead of an empty freezed class
+  that dropped every key. Migration: the name stays; use map access
+  (`value['key']`) instead of the empty class.
+- **Clients are grouped by the tag as written.** Tags that only differ in
+  case or non-ASCII characters (`pets`/`Pets`, `Items`/`Items 📦`) are
+  separate clients, the later one with a number (`Pets2Client`,
+  `Items2Client`); 5.x merged them or wrote both to one file. Migration:
+  call the moved methods on the numbered client.
+- **New dependency: postman_collection ^1.0.0.** It converts Postman input.
+  Its 1.0.0 is a breaking rewrite of the 0.x models (see its
+  [CHANGELOG](https://github.com/masreplay/api_spec_to_dart/blob/main/packages/postman_collection/CHANGELOG.md));
+  a project that also depends on postman_collection 0.x must move to 1.0.0.
 - **`@Extras` leaves out examples.** With `api_client.include_openapi_extras`
   on, the embedded operation metadata no longer contains `example`,
   `examples`, `x-example` or `x-examples`, so sample data (which may hold
@@ -87,9 +102,27 @@ migration notes below.
   components generate `typedef Pets = List<Pet>;` etc. instead of an empty
   freezed class that lost the data. References now use the typedef's
   type.
-- An operation with a repeated tag (or two tags that are equal once
-  non-ASCII characters are dropped) is added to the client once instead of
+- An operation with a repeated tag is added to its client once instead of
   as `listItems`, `listItems2`, ….
+- **Non-ASCII tags** (e.g. Arabic Postman folder names) generate valid,
+  unique clients named by their operations' common path (`المستخدمين` on
+  `/users…` gives `UsersClient`, else `TagClient`); 5.x generated clients
+  with empty names that overwrote each other.
+- **Reserved member names.** A JSON key whose field would be named
+  `hashCode`, `runtimeType`, `toString`, `noSuchMethod`, `copyWith` or
+  `toJson` gets a numeric suffix (`hashCode2`) and keeps its JSON key;
+  json_serializable used to crash on such models.
+- **Form bodies omit unset optional fields.** urlencoded bodies
+  (`@Body(nullToAbsent: true)`) and multipart bodies no longer send the
+  model's null fields. JSON bodies are unchanged (null and absent can differ
+  there).
+- A union variant that references a nullable typedef of a model
+  (`typedef Wrap = WrapValue?`) is a typed variant holding `WrapValue`,
+  instead of turning the whole union `dynamic`.
+- Swagger 2.0: a `$ref` into a renamed definition
+  (`#/definitions/Page«Pet»/properties/items`) follows the new component
+  key, and a dangling `$ref` with invalid percent-encoding no longer
+  throws.
 - A client whose methods use no model no longer imports `models.dart`
   (an `unused_import` warning).
 

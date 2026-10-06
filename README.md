@@ -248,13 +248,13 @@ collections are upgraded to v2.1 first. How a collection maps to OpenAPI:
 
 | Postman | Generated |
 |---|---|
-| folder | a tag (`Parent / Child`), so one client per folder; requests at the root go to `DefaultClient` |
+| folder | a tag (`Parent / Child`), so one client per folder (`ParentChildClient`); requests at the root go to `DefaultClient`. A folder name without ASCII letters names its client by its requests' common path (`/users…` gives `UsersClient`); clashing names get a number (`Users2Client`) |
 | request | one method; the name gives the summary and the method name (camelCase; names without ASCII letters fall back to method + path) |
 | URL origin | the most frequent origin (e.g. `{{baseUrl}}`) is the server; requests on other origins get absolute URLs |
 | `:id` / `{{id}}` path segments | path parameters |
 | query parameters, headers | optional parameters (`Content-Type`, `Accept`, `Authorization` and transport headers are left out; `Cookie` becomes cookie parameters) |
 | raw JSON body (comments and `{{variables}}` allowed) | a body model inferred from the sample |
-| urlencoded / form-data / file / GraphQL body | form model / multipart model (file parts are `MultipartFile`) / binary / `{query, variables, operationName}` |
+| urlencoded / form-data / file / GraphQL body | form model / multipart model (file parts are `MultipartFile`; unset optional fields are not sent) / binary / `{query, variables, operationName}` |
 | saved examples | responses per status and media type, with models inferred from every example of that response |
 | same method and path in several requests | one method; `/users/{id}` and `/users/{userId}` count as the same path |
 | auth (collection, folder, request) | `securitySchemes` in the converted spec; generated clients leave auth to your dio interceptors |
