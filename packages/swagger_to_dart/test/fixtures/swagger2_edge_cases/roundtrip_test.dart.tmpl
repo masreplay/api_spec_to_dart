@@ -51,7 +51,7 @@ void main() {
     expect(capture.body, 'username=ada&remember=false&note=hi');
   });
 
-  test('multipart bodies leave unset optional fields out', () async {
+  test('multipart bodies send set optional fields and leave unset ones out', () async {
     final client = PetsClient(dio);
 
     await client.uploadPetPhoto(
@@ -65,5 +65,17 @@ void main() {
     expect(form.fields, isEmpty);
     expect(form.files.map((e) => e.key), ['file']);
     expect(capture.body, isNot(contains('caption')));
+
+    await client.uploadPetPhoto(
+      requestBody: UploadPetPhotoBody(
+        file: MultipartFile.fromString('png', filename: 'a.png'),
+        caption: 'x',
+      ),
+      petId: '1',
+    );
+
+    final set = capture.options.data as FormData;
+    expect(set.fields.map((e) => (e.key, e.value)), [('caption', 'x')]);
+    expect(set.files.map((e) => e.key), ['file']);
   });
 }
