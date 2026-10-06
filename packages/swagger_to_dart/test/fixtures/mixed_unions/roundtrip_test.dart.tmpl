@@ -184,6 +184,19 @@ void main() {
     }
   });
 
+  test('a nullable typedef of an object is a union variant', () {
+    expect(
+      WrapOrString.fromJson({'a': 'x'}),
+      const WrapOrString.wrap(WrapValue(a: 'x')),
+    );
+    for (final json in <Object?>[
+      {'a': 'x'},
+      'hi',
+    ]) {
+      expect(WrapOrString.fromJson(json).toJson(), json);
+    }
+  });
+
   test('JSON no variant takes throws', () {
     expect(() => Url.fromJson(1), throwsArgumentError);
     expect(() => FormParameter.fromJson({'value': 'v'}), throwsArgumentError);

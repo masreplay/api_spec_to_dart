@@ -148,6 +148,8 @@ class UnionModelStrategy {
       if (component.ref case final alias?) {
         return _shape(OpenApiSchemaRef(ref: alias), seen);
       }
+      // `typedef Wrap = WrapValue?`: the shape of its one member.
+      if (members.length == 1) return _shape(members.single, seen);
       final kind = members.isNotEmpty
           ? _primitiveKind(members, seen)
           : switch (component.type) {
@@ -497,6 +499,43 @@ class UnionModelStrategy {
     );
   }
 
+  /// The Dart type of a variant, never nullable: a reference to a nullable
+  /// typedef (`typedef Wrap = WrapValue?`, or an alias of one) is the
+  /// typedef's non-null type, which decodes with `fromJson` and encodes
+  /// without a null check.
+  String _nonNullType(
+    OpenApiSchema schema, {
+    required String className,
+    required String contextName,
+  }) =>
+      (schema is OpenApiSchemaRef ? _nullableTypedefTarget(schema) : null) ??
+      context.extension.typeConverter
+          .get(schema, className: className, contextName: contextName)
+          .replaceFirst(RegExp(r'\?$'), '');
+
+  String? _nullableTypedefTarget(OpenApiSchemaRef schema) {
+    final component = context.openApi.getOpenApiSchemasByRef(schema.ref!);
+    if (component == null ||
+        !TypedefModelStrategy.accepts(component) ||
+        isUnionComponent(component)) {
+      return null;
+    }
+    if (component.ref case final alias?) {
+      return _nullableTypedefTarget(OpenApiSchemaRef(ref: alias));
+    }
+    // Only a `oneOf`/`anyOf` typedef holds a nullable model; this is the
+    // call TypedefModelStrategy makes for its type.
+    if (component.oneOf == null && component.anyOf == null) return null;
+    final typeConverter = context.extension.typeConverter;
+    final typedef = typeConverter.getRef(schema);
+    final type = typeConverter.get(
+      const OpenApiSchemaJsonConverter().fromJson(component.toJson()),
+      className: typedef,
+      contextName: '${context.unprefixed(typedef)}_value',
+    );
+    return type.endsWith('?') ? type.substring(0, type.length - 1) : null;
+  }
+
   bool _canBeObject(OpenApiSchema schema) =>
       (_shape(schema)?.kinds ?? {UnionKind.object}).contains(UnionKind.object);
 
@@ -571,13 +610,11 @@ class UnionModelStrategy {
     final base = context.unprefixed(className);
     final types = {
       for (final v in variants)
-        v.caseName: context.extension.typeConverter
-            .get(
-              v.schema,
-              className: className,
-              contextName: '${base}_${v.caseName}_value',
-            )
-            .replaceFirst(RegExp(r'\?$'), ''),
+        v.caseName: _nonNullType(
+          v.schema,
+          className: className,
+          contextName: '${base}_${v.caseName}_value',
+        ),
     };
     _Decode decodeOf(UnionVariant v) {
       final shape = shapes[v.caseName]!;
@@ -627,7 +664,7 @@ class UnionModelStrategy {
 
     final noVariant = fallbackCase != null
         ? '${caseClass(fallbackCase)}(json)'
-        : 'throw ArgumentError.value(json, \'json\', '
+        : 'throw ArgumentError.value(json, ${dartString('json')}, '
               '${dartString('No $className variant matches')})';
 
     /// Picks among the object variants, as a member starting with [header].

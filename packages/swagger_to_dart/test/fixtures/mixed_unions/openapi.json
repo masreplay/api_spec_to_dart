@@ -127,6 +127,14 @@
           { "type": "string" }
         ]
       },
+      "Wrap": {
+        "description": "A nullable inline object: typedef Wrap = WrapValue?.",
+        "anyOf": [{ "type": "object", "properties": { "a": { "type": "string" } } }, { "type": "null" }]
+      },
+      "WrapOrString": {
+        "description": "A union whose object variant is a nullable typedef.",
+        "oneOf": [{ "$ref": "#/components/schemas/Wrap" }, { "type": "string" }]
+      },
       "Request": {
         "type": "object",
         "required": ["url"],
