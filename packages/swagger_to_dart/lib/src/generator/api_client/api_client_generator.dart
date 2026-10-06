@@ -191,9 +191,10 @@ class ApiClientGenerator {
     final usedFileNames = <String>{};
     for (final MapEntry(key: tag, value: operations) in group.entries) {
       // A tag without ASCII words (`المستخدمين`) is named by its paths.
-      final base = Recase.instance.toSnakeCase(tag).isEmpty
-          ? _commonPath(operations)
-          : tag;
+      final base = switch (_withoutLeadingDigits(tag)) {
+        '' => _commonPath(operations),
+        final words => words,
+      };
       var clientName = base;
       for (
         var i = 2;
@@ -227,7 +228,17 @@ class ApiClientGenerator {
               a[i],
           ],
         );
-    return common.isEmpty ? 'tag' : common.join('_');
+    return switch (_withoutLeadingDigits(common.join('_'))) {
+      '' => 'tag',
+      final words => words,
+    };
+  }
+
+  /// [name] from its first ASCII letter: a class cannot start with the
+  /// digits of `1. Auth` or `2fa`. Empty when [name] has no ASCII words.
+  static String _withoutLeadingDigits(String name) {
+    final start = name.indexOf(RegExp('[A-Za-z]'));
+    return start == -1 ? '' : name.substring(start);
   }
 
   /// Builds one retrofit client library for [clientName], e.g.:
@@ -246,7 +257,8 @@ class ApiClientGenerator {
     required List<ApiOperation> operations,
   }) {
     final fileName = Renaming.instance.renameFile('${clientName}_client');
-    final className = Recase.instance.toPascalCase(fileName);
+    // As BaseApiClient names it.
+    final className = Renaming.instance.renameClass(fileName);
 
     final extensionMethods = <Method>[];
 

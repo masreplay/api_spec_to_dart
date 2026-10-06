@@ -1,0 +1,18 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Digit tags", "version": "1.0.0" },
+  "paths": {
+    "/login": {
+      "post": { "tags": ["1. Auth"], "operationId": "login", "responses": { "204": { "description": "OK" } } }
+    },
+    "/users": {
+      "get": { "tags": ["01 - Users"], "operationId": "listUsers", "responses": { "204": { "description": "OK" } } }
+    },
+    "/2fa/enable": {
+      "post": { "tags": ["2FA"], "operationId": "enable2fa", "responses": { "204": { "description": "OK" } } }
+    },
+    "/2fa/verify": {
+      "post": { "tags": ["2"], "operationId": "verify2fa", "responses": { "204": { "description": "OK" } } }
+    }
+  }
+}
