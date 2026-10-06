@@ -39,6 +39,15 @@ const _reservedTypeNames = {
   'Path', 'Queries', 'Query', 'ReceiveProgress', 'RestApi', 'SendProgress',
 };
 
+/// dart:core types generated code never names: a component may shadow them
+/// (`Error` stays `Error`).
+const _unusedCoreTypes = {
+  'BigInt', 'Comparable', 'Deprecated', 'Duration', 'Enum', 'Error', //
+  'Exception', 'Expando', 'FormatException', 'Invocation', 'Iterator',
+  'Match', 'Pattern', 'RangeError', 'RegExp', 'Sink', 'StackTrace', 'Stream',
+  'StringBuffer', 'Symbol', 'Type', 'TypeError', 'UnsupportedError',
+};
+
 class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
   const OpenApiSchemaDartTypeConverter(
     super.context, {
@@ -54,6 +63,11 @@ class OpenApiSchemaDartTypeConverter extends GeneratorStrategy {
   /// or a library it imports uses that name.
   static bool isReservedTypeName(String className) =>
       _reservedTypeNames.contains(className);
+
+  /// Whether a component must not be the class [className]: generated code
+  /// or a library it imports uses that name (`Response`, `List`, `Headers`).
+  static bool isClashingComponentName(String className) =>
+      isReservedTypeName(className) && !_unusedCoreTypes.contains(className);
 
   /// Dart type for [schema]. [contextName] (e.g. `Pet_status`,
   /// `listPets_sort`) names inline enums that have no title.

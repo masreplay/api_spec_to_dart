@@ -13,4 +13,4 @@ library;
 
 import 'exports.dart';
 
-typedef HeaderList = List<Header>;
+typedef HeaderList = List<Header2>;

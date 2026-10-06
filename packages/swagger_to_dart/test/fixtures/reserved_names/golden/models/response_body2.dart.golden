@@ -1,0 +1,33 @@
+/// ResponseBody2
+///
+/// ```json
+/// {
+///     "properties": {
+///         "text": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'response_body2.freezed.dart';
+part 'response_body2.g.dart';
+
+@freezed
+abstract class ResponseBody2 with _$ResponseBody2 {
+  const ResponseBody2._();
+
+  @jsonSerializable
+  const factory ResponseBody2({
+    /// text
+    @JsonKey(name: ResponseBody2.textKey_) String? text,
+  }) = _ResponseBody2;
+
+  factory ResponseBody2.fromJson(Map<String, dynamic> json) =>
+      _$ResponseBody2FromJson(json);
+
+  static const String textKey_ = 'text';
+}

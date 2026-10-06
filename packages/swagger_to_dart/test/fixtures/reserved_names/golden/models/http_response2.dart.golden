@@ -1,0 +1,33 @@
+/// HttpResponse2
+///
+/// ```json
+/// {
+///     "properties": {
+///         "ok": {
+///             "type": "boolean"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'http_response2.freezed.dart';
+part 'http_response2.g.dart';
+
+@freezed
+abstract class HttpResponse2 with _$HttpResponse2 {
+  const HttpResponse2._();
+
+  @jsonSerializable
+  const factory HttpResponse2({
+    /// ok
+    @JsonKey(name: HttpResponse2.okKey_) bool? ok,
+  }) = _HttpResponse2;
+
+  factory HttpResponse2.fromJson(Map<String, dynamic> json) =>
+      _$HttpResponse2FromJson(json);
+
+  static const String okKey_ = 'ok';
+}

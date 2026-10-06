@@ -78,8 +78,9 @@ class GenerationContext {
 
   /// Adds an inline model (object, enum, union, query class) as [className],
   /// reusing a model of that name with the same code (docs aside). When a
-  /// different model has the name, it is [orElse] (a title gives way to the
-  /// context), else `${className}2`, `3`... Returns the class name used.
+  /// different model, or a type generated code uses (`HttpResponse`), has
+  /// the name, it is [orElse] (a title gives way to the context), else
+  /// `${className}2`, `3`... Returns the class name used.
   String registerInlineModel(
     String className,
     Library Function(String className) build, {
@@ -90,7 +91,9 @@ class GenerationContext {
       final before = {..._models.keys};
       final library = build(name);
       final existing = _models[library.name!];
-      if (existing == null && !reservedModelNames.contains(library.name)) {
+      if (existing == null &&
+          !reservedModelNames.contains(library.name) &&
+          !OpenApiSchemaDartTypeConverter.isReservedTypeName(name)) {
         _models[library.name!] = library;
         return name;
       }

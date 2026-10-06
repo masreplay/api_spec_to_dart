@@ -73,45 +73,45 @@
 library;
 
 import 'exports.dart';
-part 'response.freezed.dart';
-part 'response.g.dart';
+part 'response2.freezed.dart';
+part 'response2.g.dart';
 
 @freezed
-abstract class Response with _$Response {
-  const Response._();
+abstract class Response2 with _$Response2 {
+  const Response2._();
 
   @jsonSerializable
-  const factory Response({
+  const factory Response2({
     /// id
-    @JsonKey(name: Response.idKey_) String? id,
+    @JsonKey(name: Response2.idKey_) String? id,
 
     /// originalRequest
-    @JsonKey(name: Response.originalRequestKey_) Request? originalRequest,
+    @JsonKey(name: Response2.originalRequestKey_) Request? originalRequest,
 
     /// responseTime
-    @JsonKey(name: Response.responseTimeKey_) dynamic responseTime,
+    @JsonKey(name: Response2.responseTimeKey_) dynamic responseTime,
 
     /// timings
-    @JsonKey(name: Response.timingsKey_) Map<String, dynamic>? timings,
+    @JsonKey(name: Response2.timingsKey_) Map<String, dynamic>? timings,
 
     /// header
-    @JsonKey(name: Response.headerKey_) ResponseHeader? header,
+    @JsonKey(name: Response2.headerKey_) Response2Header? header,
 
     /// cookie
-    @JsonKey(name: Response.cookieKey_) List<Cookie>? cookie,
+    @JsonKey(name: Response2.cookieKey_) List<Cookie>? cookie,
 
     /// body
-    @JsonKey(name: Response.bodyKey_) String? body,
+    @JsonKey(name: Response2.bodyKey_) String? body,
 
     /// status
-    @JsonKey(name: Response.statusKey_) String? status,
+    @JsonKey(name: Response2.statusKey_) String? status,
 
     /// code
-    @JsonKey(name: Response.codeKey_) int? code,
-  }) = _Response;
+    @JsonKey(name: Response2.codeKey_) int? code,
+  }) = _Response2;
 
-  factory Response.fromJson(Map<String, dynamic> json) =>
-      _$ResponseFromJson(json);
+  factory Response2.fromJson(Map<String, dynamic> json) =>
+      _$Response2FromJson(json);
 
   static const String idKey_ = 'id';
 

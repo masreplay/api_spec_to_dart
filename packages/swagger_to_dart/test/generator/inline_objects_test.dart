@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:swagger_to_dart/swagger_to_dart.dart';
 import 'package:test/test.dart';
 
@@ -321,5 +323,23 @@ void main() {
         ),
       ),
     );
+  });
+
+  test('names dio, retrofit and dart:core use get a suffix', () {
+    final files = Fixture(
+      Directory('test/fixtures/reserved_names'),
+    ).render().files;
+    final client = files['api_client/core_client.dart']!;
+
+    // Inline models named by context.
+    expect(client, contains('Future<HttpResponse<HttpResponse2>> http('));
+    expect(client, contains('required ResponseBody2 requestBody'));
+    // Components.
+    expect(client, contains('Future<HttpResponse<Response2>> response('));
+    expect(client, contains('Method2? method'));
+    expect(client, contains('required Headers2 requestBody'));
+    expect(client, contains('Future<HttpResponse<List2>> putThings('));
+    // dart:core types generated code never uses keep their name.
+    expect(files['models/error.dart'], contains('class Error '));
   });
 }

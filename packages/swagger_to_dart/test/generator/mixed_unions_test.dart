@@ -515,7 +515,7 @@ void main() {
     );
 
     expect(files['models/holder.dart'], contains('String? value'));
-    expect(files['models/method.dart'], contains('typedef Method = String;'));
+    expect(files['models/method2.dart'], contains('typedef Method2 = String;'));
     expect(files['models/scalar.dart'], contains('typedef Scalar = dynamic;'));
     expect(files['models/amount.dart'], contains('typedef Amount = double;'));
   });
