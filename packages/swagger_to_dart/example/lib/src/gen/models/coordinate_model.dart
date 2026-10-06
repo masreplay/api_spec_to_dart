@@ -60,7 +60,8 @@ abstract class CoordinateModel with _$CoordinateModel {
   @jsonSerializable
   const factory CoordinateModel({
     /// coordinate
-    @JsonKey(name: CoordinateModel.coordinateKey_) dynamic coordinate,
+    @JsonKey(name: CoordinateModel.coordinateKey_)
+    CoordinateModelCoordinate? coordinate,
 
     /// latitude
     @JsonKey(name: CoordinateModel.latitudeKey_) double? latitude,
