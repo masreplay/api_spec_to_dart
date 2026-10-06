@@ -1,0 +1,16 @@
+/// variable-list
+///
+/// ```json
+/// {
+///     "type": "array",
+///     "items": {
+///         "$ref": "#/components/schemas/variable"
+///     },
+///     "description": "Collection variables allow you to define a set of variables, that are a *part of the collection*, as opposed to environments, which are separate entities.\n*Note: Collection variables must not contain any sensitive information.*"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+typedef PostmanVariableList = List<PostmanVariable>;

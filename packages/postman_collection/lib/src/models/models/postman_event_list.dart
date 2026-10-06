@@ -1,0 +1,16 @@
+/// event-list
+///
+/// ```json
+/// {
+///     "type": "array",
+///     "items": {
+///         "$ref": "#/components/schemas/event"
+///     },
+///     "description": "Postman allows you to configure scripts to run when specific events occur. These scripts are stored here, and can be referenced in the collection by their ID."
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+typedef PostmanEventList = List<PostmanEvent>;

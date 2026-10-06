@@ -1,3 +1,10 @@
+# Builds the freezed/json_serializable parts of the models swagger_to_dart
+# generates into lib/src/models (`make models`).
+global_options:
+  freezed:
+    runs_before:
+      - json_serializable
+
 targets:
   $default:
     sources:
@@ -6,12 +13,8 @@ targets:
     builders:
       json_serializable:
         options:
-          create_factory: true
-          create_to_json: true
           explicit_to_json: true
           include_if_null: false
       freezed:
         options:
-          union_key: type
           format: true
-          copy_with: true
