@@ -1,0 +1,90 @@
+/// UrlObjectValuePathListValueItem
+///
+/// ```json
+/// {
+///     "oneOf": [
+///         {
+///             "type": "string"
+///         },
+///         {
+///             "type": "object",
+///             "properties": {
+///                 "type": {
+///                     "type": "string"
+///                 },
+///                 "value": {
+///                     "type": "string"
+///                 }
+///             }
+///         }
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+
+sealed class UrlObjectValuePathListValueItem {
+  const UrlObjectValuePathListValueItem();
+
+  const factory UrlObjectValuePathListValueItem.string(String value) =
+      UrlObjectValuePathListValueItemString;
+  const factory UrlObjectValuePathListValueItem.object(
+    UrlObjectValuePathListValueItemObjectValue value,
+  ) = UrlObjectValuePathListValueItemObject;
+
+  factory UrlObjectValuePathListValueItem.fromJson(Object? json) =>
+      switch (json) {
+        String() => UrlObjectValuePathListValueItemString(json),
+        Map<String, dynamic>() => UrlObjectValuePathListValueItemObject(
+          UrlObjectValuePathListValueItemObjectValue.fromJson(json),
+        ),
+        _ => throw ArgumentError.value(
+          json,
+          'json',
+          'No UrlObjectValuePathListValueItem variant matches',
+        ),
+      };
+
+  Object? toJson();
+}
+
+final class UrlObjectValuePathListValueItemString
+    extends UrlObjectValuePathListValueItem {
+  const UrlObjectValuePathListValueItemString(this.value);
+
+  final String value;
+
+  @override
+  Object? toJson() => value;
+
+  @override
+  bool operator ==(Object other) =>
+      other is UrlObjectValuePathListValueItemString && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'UrlObjectValuePathListValueItem.string($value)';
+}
+
+final class UrlObjectValuePathListValueItemObject
+    extends UrlObjectValuePathListValueItem {
+  const UrlObjectValuePathListValueItemObject(this.value);
+
+  final UrlObjectValuePathListValueItemObjectValue value;
+
+  @override
+  Object? toJson() => value.toJson();
+
+  @override
+  bool operator ==(Object other) =>
+      other is UrlObjectValuePathListValueItemObject && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  String toString() => 'UrlObjectValuePathListValueItem.object($value)';
+}

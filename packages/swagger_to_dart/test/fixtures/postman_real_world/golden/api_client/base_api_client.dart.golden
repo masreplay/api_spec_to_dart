@@ -1,0 +1,128 @@
+import 'package:dio/dio.dart';
+import 'package:retrofit/retrofit.dart';
+
+import 'exports.dart';
+
+/// Discounts
+///
+/// ```json
+/// {
+///     "title": "Discounts",
+///     "version": "1.0.0"
+/// }
+/// ```
+/// Server: `{server_name}`
+class BaseApiClient {
+  BaseApiClient(this.dio, {this.baseUrl, this.errorLogger});
+
+  final String? baseUrl;
+
+  final Dio dio;
+
+  final ParseErrorLogger? errorLogger;
+
+  MobilePlatformRequestsLoginClient get mobilePlatformRequestsLoginClient {
+    return MobilePlatformRequestsLoginClient(
+      dio,
+      baseUrl: baseUrl,
+      errorLogger: errorLogger,
+    );
+  }
+
+  MobilePlatformRequestsCreateClient get mobilePlatformRequestsCreateClient {
+    return MobilePlatformRequestsCreateClient(
+      dio,
+      baseUrl: baseUrl,
+      errorLogger: errorLogger,
+    );
+  }
+
+  AdminPanelRequestsSellersClient get adminPanelRequestsSellersClient {
+    return AdminPanelRequestsSellersClient(
+      dio,
+      baseUrl: baseUrl,
+      errorLogger: errorLogger,
+    );
+  }
+
+  MobilePlatformRequestsEndUsersClient
+  get mobilePlatformRequestsEndUsersClient {
+    return MobilePlatformRequestsEndUsersClient(
+      dio,
+      baseUrl: baseUrl,
+      errorLogger: errorLogger,
+    );
+  }
+
+  MobilePlatformRequestsClient get mobilePlatformRequestsClient {
+    return MobilePlatformRequestsClient(
+      dio,
+      baseUrl: baseUrl,
+      errorLogger: errorLogger,
+    );
+  }
+
+  AdminPanelRequestsAccountsClient get adminPanelRequestsAccountsClient {
+    return AdminPanelRequestsAccountsClient(
+      dio,
+      baseUrl: baseUrl,
+      errorLogger: errorLogger,
+    );
+  }
+
+  AdminPanelRequestsAdminUsersClient get adminPanelRequestsAdminUsersClient {
+    return AdminPanelRequestsAdminUsersClient(
+      dio,
+      baseUrl: baseUrl,
+      errorLogger: errorLogger,
+    );
+  }
+
+  AdminPanelRequestsClient get adminPanelRequestsClient {
+    return AdminPanelRequestsClient(
+      dio,
+      baseUrl: baseUrl,
+      errorLogger: errorLogger,
+    );
+  }
+
+  ServiceLocationsClient get serviceLocationsClient {
+    return ServiceLocationsClient(
+      dio,
+      baseUrl: baseUrl,
+      errorLogger: errorLogger,
+    );
+  }
+
+  CategoriesClient get categoriesClient {
+    return CategoriesClient(dio, baseUrl: baseUrl, errorLogger: errorLogger);
+  }
+
+  SubscriptionsClient get subscriptionsClient {
+    return SubscriptionsClient(dio, baseUrl: baseUrl, errorLogger: errorLogger);
+  }
+
+  AdsClient get adsClient {
+    return AdsClient(dio, baseUrl: baseUrl, errorLogger: errorLogger);
+  }
+
+  SellerCategoriesClient get sellerCategoriesClient {
+    return SellerCategoriesClient(
+      dio,
+      baseUrl: baseUrl,
+      errorLogger: errorLogger,
+    );
+  }
+
+  UserCategoriesClient get userCategoriesClient {
+    return UserCategoriesClient(
+      dio,
+      baseUrl: baseUrl,
+      errorLogger: errorLogger,
+    );
+  }
+
+  DefaultClient get defaultClient {
+    return DefaultClient(dio, baseUrl: baseUrl, errorLogger: errorLogger);
+  }
+}

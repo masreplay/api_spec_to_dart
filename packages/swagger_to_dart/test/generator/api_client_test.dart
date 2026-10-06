@@ -218,6 +218,50 @@ void main() {
     expect(methods('default'), ['touchUser']);
   });
 
+  test('tags without ASCII name clients by their paths, uniquely', () {
+    Map<String, dynamic> op(String tag, String id) => {
+      'tags': [tag],
+      'operationId': id,
+      'responses': {
+        '200': {'description': 'OK'},
+      },
+    };
+    final files = renderSpec(
+      _spec(
+        paths: {
+          '/users': {'get': op('المستخدمين', 'listUsers')},
+          '/users/{id}': {'get': op('المستخدمين', 'getUser')},
+          '/orders/{id}': {'get': op('الطلبات 📦', 'getOrder')},
+          '/products': {'get': op('🛒', 'listProducts')},
+          '/products/{id}': {'get': op('Products', 'getProduct')},
+          '/{id}': {'get': op('😀', 'root')},
+          '/pets': {'get': op('pets', 'listPets')},
+          '/pets/{id}': {'get': op('Pets', 'getPet')},
+        },
+      ),
+    ).files;
+
+    expect(
+      files.keys.where((f) => f.endsWith('_client.dart')),
+      unorderedEquals([
+        'api_client/users_client.dart',
+        'api_client/orders_client.dart',
+        'api_client/products_client.dart',
+        'api_client/products2_client.dart',
+        'api_client/tag_client.dart',
+        'api_client/pets_client.dart',
+        'api_client/pets2_client.dart',
+        'api_client/base_api_client.dart',
+        'api_client/api_client.dart',
+      ]),
+    );
+    expect(files['api_client/users_client.dart'], contains('getUser('));
+    expect(
+      files['api_client/base_api_client.dart'],
+      contains('Pets2Client get pets2Client'),
+    );
+  });
+
   group('HTTP methods retrofit has no annotation for use @Method (G6)', () {
     late String client;
     setUpAll(() {

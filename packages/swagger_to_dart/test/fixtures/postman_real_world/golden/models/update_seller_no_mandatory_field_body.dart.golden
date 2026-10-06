@@ -1,0 +1,79 @@
+/// UpdateSellerNoMandatoryFieldBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "full_name": {
+///             "type": "string"
+///         },
+///         "business_name": {
+///             "type": "string"
+///         },
+///         "address": {
+///             "type": "string"
+///         },
+///         "nearest_point": {
+///             "type": "string"
+///         },
+///         "enable": {
+///             "type": "boolean"
+///         },
+///         "approve": {
+///             "type": "boolean"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'update_seller_no_mandatory_field_body.freezed.dart';
+part 'update_seller_no_mandatory_field_body.g.dart';
+
+@freezed
+abstract class UpdateSellerNoMandatoryFieldBody
+    with _$UpdateSellerNoMandatoryFieldBody {
+  const UpdateSellerNoMandatoryFieldBody._();
+
+  @jsonSerializable
+  const factory UpdateSellerNoMandatoryFieldBody({
+    /// fullName
+    @JsonKey(name: UpdateSellerNoMandatoryFieldBody.fullNameKey_)
+    String? fullName,
+
+    /// businessName
+    @JsonKey(name: UpdateSellerNoMandatoryFieldBody.businessNameKey_)
+    String? businessName,
+
+    /// address
+    @JsonKey(name: UpdateSellerNoMandatoryFieldBody.addressKey_)
+    String? address,
+
+    /// nearestPoint
+    @JsonKey(name: UpdateSellerNoMandatoryFieldBody.nearestPointKey_)
+    String? nearestPoint,
+
+    /// enable
+    @JsonKey(name: UpdateSellerNoMandatoryFieldBody.enableKey_) bool? enable,
+
+    /// approve
+    @JsonKey(name: UpdateSellerNoMandatoryFieldBody.approveKey_) bool? approve,
+  }) = _UpdateSellerNoMandatoryFieldBody;
+
+  factory UpdateSellerNoMandatoryFieldBody.fromJson(
+    Map<String, dynamic> json,
+  ) => _$UpdateSellerNoMandatoryFieldBodyFromJson(json);
+
+  static const String fullNameKey_ = 'full_name';
+
+  static const String businessNameKey_ = 'business_name';
+
+  static const String addressKey_ = 'address';
+
+  static const String nearestPointKey_ = 'nearest_point';
+
+  static const String enableKey_ = 'enable';
+
+  static const String approveKey_ = 'approve';
+}

@@ -1,0 +1,381 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'default_client.g.dart';
+
+@RestApi()
+abstract class DefaultClient {
+  factory DefaultClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _DefaultClient;
+
+  @POST('/login')
+  @FormUrlEncoded()
+  Future<HttpResponse<LoginResponse>> login({
+    @Body(nullToAbsent: true) required LoginBody requestBody,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'summary': 'Login',
+      'operationId': 'login',
+      'requestBody': {
+        'content': {
+          'application/x-www-form-urlencoded': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'username': {'type': 'string'},
+                'remember': {'type': 'boolean'},
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'properties': {
+                  'expiresIn': {'type': 'integer'},
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+  @POST('/users/{userId}/avatar')
+  @MultiPart()
+  Future<HttpResponse<UploadAvatarResponse>> uploadAvatar_({
+    @Part() required Map<String, dynamic> requestBody,
+    @Path('userId') required String userId,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'summary': 'Upload avatar',
+      'operationId': 'uploadAvatar',
+      'parameters': [
+        {
+          'name': 'userId',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'multipart/form-data': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'caption': {'type': 'string'},
+                'file': {'type': 'string', 'format': 'binary'},
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        '201': {
+          'description': 'Created',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'properties': {
+                  'url': {'type': 'string'},
+                  'size': {'type': 'integer'},
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+  @POST('/search')
+  Future<HttpResponse<SearchResponse>> search({
+    @Body() required SearchBody requestBody,
+    @Query('limit') String? limit,
+    @Query('tag') List<String>? tag,
+    @Header('X-Request-Id') String? xRequestId,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'summary': 'Search',
+      'operationId': 'search',
+      'parameters': [
+        {
+          'name': 'limit',
+          'in': 'query',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'tag',
+          'in': 'query',
+          'schema': {
+            'type': 'array',
+            'items': {'type': 'string'},
+          },
+          'explode': true,
+        },
+        {
+          'name': 'X-Request-Id',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'query': {'type': 'string'},
+                'filters': {
+                  'type': 'object',
+                  'properties': {
+                    'inStock': {'type': 'boolean'},
+                    'price': {
+                      'type': 'object',
+                      'properties': {
+                        'max': {'type': 'number'},
+                      },
+                    },
+                  },
+                },
+                'page': {'type': 'integer'},
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'properties': {
+                  'hits': {
+                    'type': 'array',
+                    'items': {
+                      'type': 'object',
+                      'properties': {
+                        'id': {'type': 'integer'},
+                        'score': {'type': 'number'},
+                      },
+                    },
+                  },
+                  'total': {'type': 'integer'},
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+  @POST('/graphql')
+  Future<HttpResponse<GraphResponse>> graph({
+    @Body() required GraphBody requestBody,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'summary': 'Graph',
+      'operationId': 'graph',
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'query': {'type': 'string'},
+                'variables': {
+                  'type': 'object',
+                  'properties': {
+                    'first': {'type': 'integer'},
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'properties': {
+                  'data': {
+                    'type': 'object',
+                    'properties': {
+                      'me': {
+                        'type': 'object',
+                        'properties': {
+                          'id': {'type': 'string'},
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+  @PUT('/notes/{id}')
+  @Headers(<String, dynamic>{'Content-Type': 'text/plain'})
+  Future<HttpResponse<String>> rawText({
+    @Body() required String requestBody,
+    @Path('id') required String id,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'summary': 'Raw text',
+      'operationId': 'rawText',
+      'parameters': [
+        {
+          'name': 'id',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'text/plain': {
+            'schema': {'type': 'string'},
+          },
+        },
+      },
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {
+            'text/plain': {
+              'schema': {'type': 'string'},
+            },
+          },
+        },
+      },
+    },
+  });
+  @PUT('/files/{name}')
+  @Headers(<String, dynamic>{'Content-Type': 'application/octet-stream'})
+  Future<HttpResponse> uploadFile({
+    @Body() required List<int> requestBody,
+    @Path('name') required String name,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'summary': 'Upload file',
+      'operationId': 'uploadFile',
+      'parameters': [
+        {
+          'name': 'name',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'application/octet-stream': {
+            'schema': {'type': 'string', 'format': 'binary'},
+          },
+        },
+      },
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+}
+
+extension DefaultClientX on DefaultClient {
+  Future<HttpResponse<UploadAvatarResponse>> uploadAvatar({
+    required UploadAvatarBody requestBody,
+    @Path('userId') required String userId,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'summary': 'Upload avatar',
+      'operationId': 'uploadAvatar',
+      'parameters': [
+        {
+          'name': 'userId',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'multipart/form-data': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'caption': {'type': 'string'},
+                'file': {'type': 'string', 'format': 'binary'},
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        '201': {
+          'description': 'Created',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'properties': {
+                  'url': {'type': 'string'},
+                  'size': {'type': 'integer'},
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  }) {
+    return uploadAvatar_(
+      requestBody: requestBody.toJson()
+        ..removeWhere((_, value) => value == null),
+      userId: userId,
+      extras: extras,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+  }
+}

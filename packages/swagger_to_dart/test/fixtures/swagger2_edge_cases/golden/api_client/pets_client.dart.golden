@@ -332,7 +332,8 @@ extension PetsClientX on PetsClient {
     },
   }) {
     return uploadPetPhoto_(
-      requestBody: requestBody.toJson(),
+      requestBody: requestBody.toJson()
+        ..removeWhere((_, value) => value == null),
       petId: petId,
       extras: extras,
       cancelToken: cancelToken,

@@ -1,0 +1,34 @@
+/// CertificateCert
+///
+/// ```json
+/// {
+///     "properties": {
+///         "src": {
+///             "description": "The path to file containing key for certificate, on the file system"
+///         }
+///     },
+///     "type": "object",
+///     "description": "An object containing path to file certificate, on the file system"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'certificate_cert.freezed.dart';
+part 'certificate_cert.g.dart';
+
+@freezed
+abstract class CertificateCert with _$CertificateCert {
+  const CertificateCert._();
+
+  @jsonSerializable
+  const factory CertificateCert({
+    /// src
+    @JsonKey(name: CertificateCert.srcKey_) dynamic src,
+  }) = _CertificateCert;
+
+  factory CertificateCert.fromJson(Map<String, dynamic> json) =>
+      _$CertificateCertFromJson(json);
+
+  static const String srcKey_ = 'src';
+}

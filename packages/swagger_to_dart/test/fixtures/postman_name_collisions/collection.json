@@ -1,0 +1,96 @@
+{
+  "info": {
+    "name": "Name collisions",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Admin",
+      "item": [
+        {
+          "name": "Users",
+          "item": [
+            {
+              "name": "Get",
+              "request": { "method": "GET", "url": "https://api.test/admin/users" },
+              "response": [
+                {
+                  "name": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "body": "{\"total\": 1, \"items\": [{\"id\": 1}]}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Public",
+      "item": [
+        {
+          "name": "Users",
+          "item": [
+            {
+              "name": "Get",
+              "request": { "method": "GET", "url": "https://api.test/public/users" },
+              "response": [
+                {
+                  "name": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "body": "{\"name\": \"Ada\"}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Response",
+      "request": { "method": "GET", "url": "https://api.test/response" },
+      "response": [
+        {
+          "name": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "body": "{\"data\": {\"ok\": true}, \"error\": {\"message\": \"none\"}}"
+        }
+      ]
+    },
+    {
+      "name": "List",
+      "request": { "method": "GET", "url": "https://api.test/list" },
+      "response": [
+        {
+          "name": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "body": "[{\"map\": {\"string\": \"s\"}, \"list\": [1]}]"
+        }
+      ]
+    },
+    {
+      "name": "Error",
+      "request": {
+        "method": "POST",
+        "url": "https://api.test/error",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"type\": \"x\"}",
+          "options": { "raw": { "language": "json" } }
+        }
+      },
+      "response": [
+        {
+          "name": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "body": "{\"response\": 1, \"object\": {\"hashCode\": 2}}"
+        }
+      ]
+    }
+  ]
+}

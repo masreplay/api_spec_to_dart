@@ -1,0 +1,134 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'service_locations_client.g.dart';
+
+@RestApi()
+abstract class ServiceLocationsClient {
+  factory ServiceLocationsClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _ServiceLocationsClient;
+
+  @PUT('/api/v1/sellers_locations')
+  Future<HttpResponse> assignSeviceLocations({
+    @Body() required AssignSeviceLocationsBody requestBody,
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Service  Locations'],
+      'summary': 'Assign sevice locations',
+      'description': 'Create a new user',
+      'operationId': 'assignSeviceLocations',
+      'parameters': [
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'service_locations': {
+                  'type': 'array',
+                  'items': {'type': 'integer'},
+                },
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+  @GET('/api/v1/sellers_locations')
+  Future<HttpResponse> notYetGetAllServiceLocations({
+    @Body() required NotYetGetAllServiceLocationsBody requestBody,
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Service  Locations'],
+      'summary': 'NOT YET Get All Service locations',
+      'description': 'Create a new user',
+      'operationId': 'notYetGetAllServiceLocations',
+      'parameters': [
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'lang': {'type': 'string'},
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+  @GET('/api/v1/sellers_locations/29')
+  Future<HttpResponse> getServiceLocationByUserId({
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Service  Locations'],
+      'summary': 'Get Service Location By user id',
+      'description': 'Create a new user',
+      'operationId': 'getServiceLocationByUserId',
+      'parameters': [
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+}

@@ -72,6 +72,16 @@ const _builtInIdentifiers = {
   'typedef',
 };
 
+/// Members of every generated model (Object's and freezed's).
+const _modelMembers = {
+  'hashCode',
+  'runtimeType',
+  'toString',
+  'noSuchMethod',
+  'copyWith',
+  'toJson',
+};
+
 const _symbolNames = {
   '+': 'plus',
   '-': 'minus',
@@ -130,10 +140,11 @@ class Renaming {
 
   /// Dart names for the JSON [keys] of one scope, unique among themselves and
   /// against [reserved] names (`some-key` and `some_key` → `someKey`,
-  /// `someKey2`).
+  /// `someKey2`). By default these are the members every model has
+  /// (`hashCode`, `toJson`, ...), which a field cannot override.
   Map<String, String> propertyNames(
     Iterable<String> keys, {
-    Set<String> reserved = const {},
+    Set<String> reserved = _modelMembers,
   }) {
     final used = {...reserved};
     return {

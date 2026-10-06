@@ -1,0 +1,33 @@
+/// Get2Response
+///
+/// ```json
+/// {
+///     "properties": {
+///         "name": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'get2_response.freezed.dart';
+part 'get2_response.g.dart';
+
+@freezed
+abstract class Get2Response with _$Get2Response {
+  const Get2Response._();
+
+  @jsonSerializable
+  const factory Get2Response({
+    /// name
+    @JsonKey(name: Get2Response.nameKey_) String? name,
+  }) = _Get2Response;
+
+  factory Get2Response.fromJson(Map<String, dynamic> json) =>
+      _$Get2ResponseFromJson(json);
+
+  static const String nameKey_ = 'name';
+}

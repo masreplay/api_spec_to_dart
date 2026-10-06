@@ -1,0 +1,33 @@
+/// ResponseResponseData
+///
+/// ```json
+/// {
+///     "properties": {
+///         "ok": {
+///             "type": "boolean"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'response_response_data.freezed.dart';
+part 'response_response_data.g.dart';
+
+@freezed
+abstract class ResponseResponseData with _$ResponseResponseData {
+  const ResponseResponseData._();
+
+  @jsonSerializable
+  const factory ResponseResponseData({
+    /// ok
+    @JsonKey(name: ResponseResponseData.okKey_) bool? ok,
+  }) = _ResponseResponseData;
+
+  factory ResponseResponseData.fromJson(Map<String, dynamic> json) =>
+      _$ResponseResponseDataFromJson(json);
+
+  static const String okKey_ = 'ok';
+}

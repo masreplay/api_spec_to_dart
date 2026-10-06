@@ -1,0 +1,42 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'public_users_client.g.dart';
+
+@RestApi()
+abstract class PublicUsersClient {
+  factory PublicUsersClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _PublicUsersClient;
+
+  @GET('/public/users')
+  Future<HttpResponse<Get2Response>> get2({
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Public / Users'],
+      'summary': 'Get',
+      'operationId': 'get2',
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {
+            'application/json': {
+              'schema': {
+                'type': 'object',
+                'properties': {
+                  'name': {'type': 'string'},
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+}

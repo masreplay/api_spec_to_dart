@@ -1,0 +1,91 @@
+/// FormParameterFileValue
+///
+/// ```json
+/// {
+///     "properties": {
+///         "key": {
+///             "type": "string"
+///         },
+///         "src": {
+///             "oneOf": [
+///                 {
+///                     "type": "array"
+///                 },
+///                 {
+///                     "type": "string"
+///                 }
+///             ],
+///             "nullable": true
+///         },
+///         "disabled": {
+///             "type": "boolean",
+///             "description": "When set to true, prevents this form data entity from being sent.",
+///             "default": false
+///         },
+///         "type": {
+///             "type": "string",
+///             "const": "file"
+///         },
+///         "contentType": {
+///             "type": "string",
+///             "description": "Override Content-Type header of this form data entity."
+///         },
+///         "description": {
+///             "$ref": "#/components/schemas/description"
+///         }
+///     },
+///     "required": [
+///         "key"
+///     ]
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'form_parameter_file_value.freezed.dart';
+part 'form_parameter_file_value.g.dart';
+
+@freezed
+abstract class FormParameterFileValue with _$FormParameterFileValue {
+  const FormParameterFileValue._();
+
+  @jsonSerializable
+  const factory FormParameterFileValue({
+    /// key
+    @JsonKey(name: FormParameterFileValue.keyKey_) required String key,
+
+    /// src
+    @JsonKey(name: FormParameterFileValue.srcKey_)
+    FormParameterFileValueSrc? src,
+
+    /// disabled
+    @Default(false)
+    @JsonKey(name: FormParameterFileValue.disabledKey_)
+    bool disabled,
+
+    /// type
+    @JsonKey(name: FormParameterFileValue.typeKey_) String? type,
+
+    /// contentType
+    @JsonKey(name: FormParameterFileValue.contentTypeKey_) String? contentType,
+
+    /// description
+    @JsonKey(name: FormParameterFileValue.descriptionKey_)
+    Description? description,
+  }) = _FormParameterFileValue;
+
+  factory FormParameterFileValue.fromJson(Map<String, dynamic> json) =>
+      _$FormParameterFileValueFromJson(json);
+
+  static const String keyKey_ = 'key';
+
+  static const String srcKey_ = 'src';
+
+  static const String disabledKey_ = 'disabled';
+
+  static const String typeKey_ = 'type';
+
+  static const String contentTypeKey_ = 'contentType';
+
+  static const String descriptionKey_ = 'description';
+}

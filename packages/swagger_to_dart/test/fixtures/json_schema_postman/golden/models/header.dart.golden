@@ -1,0 +1,65 @@
+/// header
+///
+/// ```json
+/// {
+///     "properties": {
+///         "key": {
+///             "type": "string",
+///             "description": "This holds the LHS of the HTTP Header, e.g ``Content-Type`` or ``X-Custom-Header``"
+///         },
+///         "value": {
+///             "type": "string",
+///             "description": "The value (or the RHS) of the Header is stored in this field."
+///         },
+///         "disabled": {
+///             "type": "boolean",
+///             "description": "If set to true, the current header will not be sent with requests.",
+///             "default": false
+///         },
+///         "description": {
+///             "$ref": "#/components/schemas/description"
+///         }
+///     },
+///     "type": "object",
+///     "required": [
+///         "key",
+///         "value"
+///     ],
+///     "description": "Represents a single HTTP Header"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'header.freezed.dart';
+part 'header.g.dart';
+
+@freezed
+abstract class Header with _$Header {
+  const Header._();
+
+  @jsonSerializable
+  const factory Header({
+    /// key
+    @JsonKey(name: Header.keyKey_) required String key,
+
+    /// value
+    @JsonKey(name: Header.valueKey_) required String value,
+
+    /// disabled
+    @Default(false) @JsonKey(name: Header.disabledKey_) bool disabled,
+
+    /// description
+    @JsonKey(name: Header.descriptionKey_) Description? description,
+  }) = _Header;
+
+  factory Header.fromJson(Map<String, dynamic> json) => _$HeaderFromJson(json);
+
+  static const String keyKey_ = 'key';
+
+  static const String valueKey_ = 'value';
+
+  static const String disabledKey_ = 'disabled';
+
+  static const String descriptionKey_ = 'description';
+}

@@ -1,0 +1,41 @@
+/// MobileUserLoginByPhoneBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "phone": {
+///             "type": "string"
+///         },
+///         "password": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'mobile_user_login_by_phone_body.freezed.dart';
+part 'mobile_user_login_by_phone_body.g.dart';
+
+@freezed
+abstract class MobileUserLoginByPhoneBody with _$MobileUserLoginByPhoneBody {
+  const MobileUserLoginByPhoneBody._();
+
+  @jsonSerializable
+  const factory MobileUserLoginByPhoneBody({
+    /// phone
+    @JsonKey(name: MobileUserLoginByPhoneBody.phoneKey_) String? phone,
+
+    /// password
+    @JsonKey(name: MobileUserLoginByPhoneBody.passwordKey_) String? password,
+  }) = _MobileUserLoginByPhoneBody;
+
+  factory MobileUserLoginByPhoneBody.fromJson(Map<String, dynamic> json) =>
+      _$MobileUserLoginByPhoneBodyFromJson(json);
+
+  static const String phoneKey_ = 'phone';
+
+  static const String passwordKey_ = 'password';
+}

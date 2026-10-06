@@ -1,0 +1,320 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'admin_panel_requests_accounts_client.g.dart';
+
+@RestApi()
+abstract class AdminPanelRequestsAccountsClient {
+  factory AdminPanelRequestsAccountsClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _AdminPanelRequestsAccountsClient;
+
+  @POST('/api/v1/accounts/')
+  Future<HttpResponse> createAccount({
+    @Body() required CreateAccountBody requestBody,
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @Header('enctype') String? enctype,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Admin Panel Requests / Accounts'],
+      'summary': 'Create Account',
+      'description': 'Create a new user',
+      'operationId': 'createAccount',
+      'parameters': [
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'enctype',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'account_name': {'type': 'string'},
+                'phone': {'type': 'string'},
+                'email': {'type': 'string'},
+                'push_limits': {'type': 'integer'},
+                'sms_limits': {'type': 'integer'},
+                'expire_at': {'type': 'string'},
+                'cities': {
+                  'type': 'array',
+                  'items': {'type': 'integer'},
+                },
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+  @POST('/api/v1/accounts/image')
+  @MultiPart()
+  Future<HttpResponse> updateAccountImageAllFieldsAreMandatory_({
+    @Part() required Map<String, dynamic> requestBody,
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @Header('enctype') String? enctype,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Admin Panel Requests / Accounts'],
+      'summary': 'Update account image (all fields are mandatory)',
+      'description': 'Create a new user',
+      'operationId': 'updateAccountImageAllFieldsAreMandatory',
+      'parameters': [
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'enctype',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'multipart/form-data': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'image': {'type': 'string', 'format': 'binary'},
+                'account_id': {'type': 'integer'},
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+  @GET('/api/v1/accounts/1')
+  Future<HttpResponse> getAccountById({
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Admin Panel Requests / Accounts'],
+      'summary': 'Get Account By ID',
+      'description': 'Create a new user',
+      'operationId': 'getAccountById',
+      'parameters': [
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+  @GET('/api/v1/accounts')
+  Future<HttpResponse> getAllAccounts({
+    @Query('page') String? page,
+    @Query('limit') String? limit,
+    @Query('lite') String? lite,
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Admin Panel Requests / Accounts'],
+      'summary': 'Get All Accounts',
+      'description': 'Create a new user',
+      'operationId': 'getAllAccounts',
+      'parameters': [
+        {
+          'name': 'page',
+          'in': 'query',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'limit',
+          'in': 'query',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'lite',
+          'in': 'query',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+  @PUT('/api/v1/accounts/2')
+  Future<HttpResponse> updateAccountNoMandatoryFields({
+    @Body() required UpdateAccountNoMandatoryFieldsBody requestBody,
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Admin Panel Requests / Accounts'],
+      'summary': 'Update Account (no mandatory fields)',
+      'description': 'Create a new user',
+      'operationId': 'updateAccountNoMandatoryFields',
+      'parameters': [
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'account_name': {'type': 'string'},
+                'phone': {'type': 'string'},
+                'email': {'type': 'string'},
+                'push_limits': {'type': 'integer'},
+                'sms_limits': {'type': 'integer'},
+                'expire_at': {'type': 'string'},
+                'cities': {
+                  'type': 'array',
+                  'items': {'type': 'integer'},
+                },
+                'enable': {'type': 'integer'},
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+}
+
+extension AdminPanelRequestsAccountsClientX
+    on AdminPanelRequestsAccountsClient {
+  Future<HttpResponse> updateAccountImageAllFieldsAreMandatory({
+    required UpdateAccountImageAllFieldsAreMandatoryBody requestBody,
+    @Header('jwt') String? jwt,
+    @Header('Accept-Language') String? acceptLanguage,
+    @Header('enctype') String? enctype,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['Admin Panel Requests / Accounts'],
+      'summary': 'Update account image (all fields are mandatory)',
+      'description': 'Create a new user',
+      'operationId': 'updateAccountImageAllFieldsAreMandatory',
+      'parameters': [
+        {
+          'name': 'jwt',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+        {
+          'name': 'enctype',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'multipart/form-data': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'image': {'type': 'string', 'format': 'binary'},
+                'account_id': {'type': 'integer'},
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  }) {
+    return updateAccountImageAllFieldsAreMandatory_(
+      requestBody: requestBody.toJson()
+        ..removeWhere((_, value) => value == null),
+      jwt: jwt,
+      acceptLanguage: acceptLanguage,
+      enctype: enctype,
+      extras: extras,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+  }
+}

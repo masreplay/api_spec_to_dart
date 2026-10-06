@@ -1,0 +1,99 @@
+/// UpdateAccountNoMandatoryFieldsBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "account_name": {
+///             "type": "string"
+///         },
+///         "phone": {
+///             "type": "string"
+///         },
+///         "email": {
+///             "type": "string"
+///         },
+///         "push_limits": {
+///             "type": "integer"
+///         },
+///         "sms_limits": {
+///             "type": "integer"
+///         },
+///         "expire_at": {
+///             "type": "string"
+///         },
+///         "cities": {
+///             "type": "array",
+///             "items": {
+///                 "type": "integer"
+///             }
+///         },
+///         "enable": {
+///             "type": "integer"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'update_account_no_mandatory_fields_body.freezed.dart';
+part 'update_account_no_mandatory_fields_body.g.dart';
+
+@freezed
+abstract class UpdateAccountNoMandatoryFieldsBody
+    with _$UpdateAccountNoMandatoryFieldsBody {
+  const UpdateAccountNoMandatoryFieldsBody._();
+
+  @jsonSerializable
+  const factory UpdateAccountNoMandatoryFieldsBody({
+    /// accountName
+    @JsonKey(name: UpdateAccountNoMandatoryFieldsBody.accountNameKey_)
+    String? accountName,
+
+    /// phone
+    @JsonKey(name: UpdateAccountNoMandatoryFieldsBody.phoneKey_) String? phone,
+
+    /// email
+    @JsonKey(name: UpdateAccountNoMandatoryFieldsBody.emailKey_) String? email,
+
+    /// pushLimits
+    @JsonKey(name: UpdateAccountNoMandatoryFieldsBody.pushLimitsKey_)
+    int? pushLimits,
+
+    /// smsLimits
+    @JsonKey(name: UpdateAccountNoMandatoryFieldsBody.smsLimitsKey_)
+    int? smsLimits,
+
+    /// expireAt
+    @JsonKey(name: UpdateAccountNoMandatoryFieldsBody.expireAtKey_)
+    String? expireAt,
+
+    /// cities
+    @JsonKey(name: UpdateAccountNoMandatoryFieldsBody.citiesKey_)
+    List<int>? cities,
+
+    /// enable
+    @JsonKey(name: UpdateAccountNoMandatoryFieldsBody.enableKey_) int? enable,
+  }) = _UpdateAccountNoMandatoryFieldsBody;
+
+  factory UpdateAccountNoMandatoryFieldsBody.fromJson(
+    Map<String, dynamic> json,
+  ) => _$UpdateAccountNoMandatoryFieldsBodyFromJson(json);
+
+  static const String accountNameKey_ = 'account_name';
+
+  static const String phoneKey_ = 'phone';
+
+  static const String emailKey_ = 'email';
+
+  static const String pushLimitsKey_ = 'push_limits';
+
+  static const String smsLimitsKey_ = 'sms_limits';
+
+  static const String expireAtKey_ = 'expire_at';
+
+  static const String citiesKey_ = 'cities';
+
+  static const String enableKey_ = 'enable';
+}

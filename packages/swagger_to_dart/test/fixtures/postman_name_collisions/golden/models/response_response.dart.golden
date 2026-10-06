@@ -1,0 +1,51 @@
+/// ResponseResponse
+///
+/// ```json
+/// {
+///     "properties": {
+///         "data": {
+///             "type": "object",
+///             "properties": {
+///                 "ok": {
+///                     "type": "boolean"
+///                 }
+///             }
+///         },
+///         "error": {
+///             "type": "object",
+///             "properties": {
+///                 "message": {
+///                     "type": "string"
+///                 }
+///             }
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'response_response.freezed.dart';
+part 'response_response.g.dart';
+
+@freezed
+abstract class ResponseResponse with _$ResponseResponse {
+  const ResponseResponse._();
+
+  @jsonSerializable
+  const factory ResponseResponse({
+    /// data
+    @JsonKey(name: ResponseResponse.dataKey_) ResponseResponseData? data,
+
+    /// error
+    @JsonKey(name: ResponseResponse.errorKey_) ResponseResponseError? error,
+  }) = _ResponseResponse;
+
+  factory ResponseResponse.fromJson(Map<String, dynamic> json) =>
+      _$ResponseResponseFromJson(json);
+
+  static const String dataKey_ = 'data';
+
+  static const String errorKey_ = 'error';
+}

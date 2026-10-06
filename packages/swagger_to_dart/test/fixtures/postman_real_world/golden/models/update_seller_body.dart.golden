@@ -1,0 +1,73 @@
+/// UpdateSellerBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "full_name": {
+///             "type": "string"
+///         },
+///         "business_name": {
+///             "type": "string"
+///         },
+///         "address": {
+///             "type": "string"
+///         },
+///         "nearest_point": {
+///             "type": "string"
+///         },
+///         "enable": {
+///             "type": "boolean"
+///         },
+///         "approve": {
+///             "type": "boolean"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'update_seller_body.freezed.dart';
+part 'update_seller_body.g.dart';
+
+@freezed
+abstract class UpdateSellerBody with _$UpdateSellerBody {
+  const UpdateSellerBody._();
+
+  @jsonSerializable
+  const factory UpdateSellerBody({
+    /// fullName
+    @JsonKey(name: UpdateSellerBody.fullNameKey_) String? fullName,
+
+    /// businessName
+    @JsonKey(name: UpdateSellerBody.businessNameKey_) String? businessName,
+
+    /// address
+    @JsonKey(name: UpdateSellerBody.addressKey_) String? address,
+
+    /// nearestPoint
+    @JsonKey(name: UpdateSellerBody.nearestPointKey_) String? nearestPoint,
+
+    /// enable
+    @JsonKey(name: UpdateSellerBody.enableKey_) bool? enable,
+
+    /// approve
+    @JsonKey(name: UpdateSellerBody.approveKey_) bool? approve,
+  }) = _UpdateSellerBody;
+
+  factory UpdateSellerBody.fromJson(Map<String, dynamic> json) =>
+      _$UpdateSellerBodyFromJson(json);
+
+  static const String fullNameKey_ = 'full_name';
+
+  static const String businessNameKey_ = 'business_name';
+
+  static const String addressKey_ = 'address';
+
+  static const String nearestPointKey_ = 'nearest_point';
+
+  static const String enableKey_ = 'enable';
+
+  static const String approveKey_ = 'approve';
+}

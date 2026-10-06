@@ -1,0 +1,33 @@
+/// GraphBodyVariables
+///
+/// ```json
+/// {
+///     "properties": {
+///         "first": {
+///             "type": "integer"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'graph_body_variables.freezed.dart';
+part 'graph_body_variables.g.dart';
+
+@freezed
+abstract class GraphBodyVariables with _$GraphBodyVariables {
+  const GraphBodyVariables._();
+
+  @jsonSerializable
+  const factory GraphBodyVariables({
+    /// first
+    @JsonKey(name: GraphBodyVariables.firstKey_) int? first,
+  }) = _GraphBodyVariables;
+
+  factory GraphBodyVariables.fromJson(Map<String, dynamic> json) =>
+      _$GraphBodyVariablesFromJson(json);
+
+  static const String firstKey_ = 'first';
+}

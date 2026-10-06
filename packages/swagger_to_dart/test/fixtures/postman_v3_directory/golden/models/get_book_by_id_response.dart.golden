@@ -1,0 +1,33 @@
+/// GetBookByIdResponse
+///
+/// ```json
+/// {
+///     "properties": {
+///         "message": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'get_book_by_id_response.freezed.dart';
+part 'get_book_by_id_response.g.dart';
+
+@freezed
+abstract class GetBookByIdResponse with _$GetBookByIdResponse {
+  const GetBookByIdResponse._();
+
+  @jsonSerializable
+  const factory GetBookByIdResponse({
+    /// message
+    @JsonKey(name: GetBookByIdResponse.messageKey_) String? message,
+  }) = _GetBookByIdResponse;
+
+  factory GetBookByIdResponse.fromJson(Map<String, dynamic> json) =>
+      _$GetBookByIdResponseFromJson(json);
+
+  static const String messageKey_ = 'message';
+}

@@ -1,0 +1,46 @@
+/// GraphBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "query": {
+///             "type": "string"
+///         },
+///         "variables": {
+///             "type": "object",
+///             "properties": {
+///                 "first": {
+///                     "type": "integer"
+///                 }
+///             }
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'graph_body.freezed.dart';
+part 'graph_body.g.dart';
+
+@freezed
+abstract class GraphBody with _$GraphBody {
+  const GraphBody._();
+
+  @jsonSerializable
+  const factory GraphBody({
+    /// query
+    @JsonKey(name: GraphBody.queryKey_) String? query,
+
+    /// variables
+    @JsonKey(name: GraphBody.variablesKey_) GraphBodyVariables? variables,
+  }) = _GraphBody;
+
+  factory GraphBody.fromJson(Map<String, dynamic> json) =>
+      _$GraphBodyFromJson(json);
+
+  static const String queryKey_ = 'query';
+
+  static const String variablesKey_ = 'variables';
+}

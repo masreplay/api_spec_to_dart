@@ -1,0 +1,108 @@
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+import '../models/models.dart';
+part 'orders_client.g.dart';
+
+@RestApi()
+abstract class OrdersClient {
+  factory OrdersClient(
+    Dio dio, {
+    ParseErrorLogger? errorLogger,
+    String? baseUrl,
+  }) = _OrdersClient;
+
+  @POST('/orders')
+  Future<HttpResponse> createOrder({
+    @Body() required CreateOrderBody requestBody,
+    @Header('Accept-Language') String? acceptLanguage,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['الطلبات 📦'],
+      'summary': 'Create order 🚀',
+      'operationId': 'createOrder',
+      'parameters': [
+        {
+          'name': 'Accept-Language',
+          'in': 'header',
+          'schema': {'type': 'string'},
+        },
+      ],
+      'requestBody': {
+        'content': {
+          'application/json': {
+            'schema': {
+              'type': 'object',
+              'properties': {
+                'ملاحظة': {'type': 'string'},
+                'items': {
+                  'type': 'array',
+                  'items': {
+                    'type': 'object',
+                    'properties': {
+                      'sku': {'type': 'string'},
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+  @PUT('/orders/{id}')
+  Future<HttpResponse> createOrder2({
+    @Path('id') required String id,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['الطلبات 📦'],
+      'summary': 'Create order',
+      'operationId': 'createOrder2',
+      'parameters': [
+        {
+          'name': 'id',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'string'},
+        },
+      ],
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+  @DELETE('/orders/{id}')
+  Future<HttpResponse> deleteOrdersId({
+    @Path('id') required String id,
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['الطلبات 📦'],
+      'summary': '🚀',
+      'operationId': 'deleteOrdersId',
+      'parameters': [
+        {
+          'name': 'id',
+          'in': 'path',
+          'required': true,
+          'schema': {'type': 'string'},
+        },
+      ],
+      'responses': {
+        'default': {'description': 'Default response'},
+      },
+    },
+  });
+}

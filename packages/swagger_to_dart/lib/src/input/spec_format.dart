@@ -1,3 +1,5 @@
+import 'package:postman_collection/convert.dart';
+
 import '../utils/yaml.dart';
 import 'json_schema.dart';
 import 'swagger2.dart';
@@ -11,16 +13,7 @@ SpecFormat detectSpecFormat(Object? document) {
   // YAML reads unquoted `3.1` and `2.0` as numbers.
   if ('${document['openapi']}'.startsWith('3.')) return SpecFormat.openApi3;
   if ('${document['swagger']}' == '2.0') return SpecFormat.swagger2;
-  if (document case {
-    'info': {'schema': final String schema},
-  } when schema.contains('postman')) {
-    return SpecFormat.postman;
-  }
-  if (document['collection'] is Map ||
-      (document.containsKey('requests') && document.containsKey('order')) ||
-      document.containsKey('x-postman-v3-directory')) {
-    return SpecFormat.postman;
-  }
+  if (isPostmanCollection(document)) return SpecFormat.postman;
   if (document.containsKey('definitions') ||
       document.containsKey(r'$defs') ||
       document.containsKey(r'$schema')) {
@@ -41,8 +34,9 @@ Map<String, dynamic> toOpenApiJson(Object? document, {String? sourceName}) {
       document as Map<String, dynamic>,
       sourceName: sourceName,
     ),
-    SpecFormat.postman => throw UnsupportedError(
-      'Postman input is wired in Task 6',
+    SpecFormat.postman => postmanToOpenApi(
+      document,
+      onWarning: (message) => print('swagger_to_dart: warning: $message'),
     ),
     SpecFormat.unknown => throw const FormatException(
       'Not an OpenAPI 3, Swagger 2.0, JSON Schema or Postman document',

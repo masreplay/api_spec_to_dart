@@ -12,6 +12,7 @@ class Recase {
   static final _wordCharacter = RegExp('[A-Za-z0-9]');
   static final _upperCaseRegex = RegExp('[A-Z]');
   static final _lowerCaseRegex = RegExp('[a-z]');
+  static final _acronym = RegExp(r'^[A-Za-z0-9]{0,3}$');
 
   String removeNonAscii(String text) {
     return text.replaceAll(RegExp(r'[^\x00-\x7F]'), '');
@@ -59,8 +60,8 @@ class Recase {
 
   /// Convert text to camelCase
   String toCamelCase(String text) {
-    // Special case for acronyms
-    if (text.length <= 3 && text.toUpperCase() == text) {
+    // Special case for acronyms (only word characters: not `عمر` or ` `)
+    if (_acronym.hasMatch(text) && text.toUpperCase() == text) {
       return text.toLowerCase();
     }
 
@@ -74,7 +75,7 @@ class Recase {
   /// Convert text to PascalCase
   String toPascalCase(String text) {
     // Special case for acronyms like "API"
-    if (text.length <= 3 && text.toUpperCase() == text) {
+    if (_acronym.hasMatch(text) && text.toUpperCase() == text) {
       return text;
     }
 

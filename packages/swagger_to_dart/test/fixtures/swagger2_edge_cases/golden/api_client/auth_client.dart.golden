@@ -15,7 +15,7 @@ abstract class AuthClient {
   @POST('/login')
   @FormUrlEncoded()
   Future<HttpResponse<Session>> login({
-    @Body() required LoginBody requestBody,
+    @Body(nullToAbsent: true) required LoginBody requestBody,
     @CancelRequest() CancelToken? cancelToken,
     @SendProgress() ProgressCallback? onSendProgress,
     @ReceiveProgress() ProgressCallback? onReceiveProgress,
@@ -32,6 +32,7 @@ abstract class AuthClient {
               'properties': {
                 'username': {'type': 'string'},
                 'remember': {'type': 'boolean', 'default': false},
+                'note': {'type': 'string'},
               },
               'required': ['username'],
             },

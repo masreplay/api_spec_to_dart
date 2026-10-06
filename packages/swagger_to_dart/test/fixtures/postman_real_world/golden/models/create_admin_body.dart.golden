@@ -1,0 +1,68 @@
+/// CreateAdminBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "username": {
+///             "type": "string"
+///         },
+///         "password": {
+///             "type": "string"
+///         },
+///         "email": {
+///             "type": "string"
+///         },
+///         "account_id": {
+///             "type": "integer"
+///         },
+///         "roles": {
+///             "type": "array",
+///             "items": {
+///                 "type": "integer"
+///             }
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'create_admin_body.freezed.dart';
+part 'create_admin_body.g.dart';
+
+@freezed
+abstract class CreateAdminBody with _$CreateAdminBody {
+  const CreateAdminBody._();
+
+  @jsonSerializable
+  const factory CreateAdminBody({
+    /// username
+    @JsonKey(name: CreateAdminBody.usernameKey_) String? username,
+
+    /// password
+    @JsonKey(name: CreateAdminBody.passwordKey_) String? password,
+
+    /// email
+    @JsonKey(name: CreateAdminBody.emailKey_) String? email,
+
+    /// accountId
+    @JsonKey(name: CreateAdminBody.accountIdKey_) int? accountId,
+
+    /// roles
+    @JsonKey(name: CreateAdminBody.rolesKey_) List<int>? roles,
+  }) = _CreateAdminBody;
+
+  factory CreateAdminBody.fromJson(Map<String, dynamic> json) =>
+      _$CreateAdminBodyFromJson(json);
+
+  static const String usernameKey_ = 'username';
+
+  static const String passwordKey_ = 'password';
+
+  static const String emailKey_ = 'email';
+
+  static const String accountIdKey_ = 'account_id';
+
+  static const String rolesKey_ = 'roles';
+}

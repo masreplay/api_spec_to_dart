@@ -1,0 +1,41 @@
+/// AddNewBookBody
+///
+/// ```json
+/// {
+///     "properties": {
+///         "title": {
+///             "type": "string"
+///         },
+///         "author": {
+///             "type": "string"
+///         }
+///     },
+///     "type": "object"
+/// }
+/// ```
+library;
+
+import 'exports.dart';
+part 'add_new_book_body.freezed.dart';
+part 'add_new_book_body.g.dart';
+
+@freezed
+abstract class AddNewBookBody with _$AddNewBookBody {
+  const AddNewBookBody._();
+
+  @jsonSerializable
+  const factory AddNewBookBody({
+    /// title
+    @JsonKey(name: AddNewBookBody.titleKey_) String? title,
+
+    /// author
+    @JsonKey(name: AddNewBookBody.authorKey_) String? author,
+  }) = _AddNewBookBody;
+
+  factory AddNewBookBody.fromJson(Map<String, dynamic> json) =>
+      _$AddNewBookBodyFromJson(json);
+
+  static const String titleKey_ = 'title';
+
+  static const String authorKey_ = 'author';
+}
