@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:postman_collection/src/convert/json_lenient.dart';
 import 'package:postman_collection/src/convert/variables.dart';
 import 'package:test/test.dart';
@@ -16,6 +18,28 @@ void main() {
         }),
         {'id': 5, 'n': '{{name}}'},
       );
+    });
+
+    test('out-of-range numbers become text, so the result encodes', () {
+      final json = parseLenientJson(
+        '{"a": 1e999, "b": [-1e999], "c": {{big}}, "d": 1.5}',
+        {'big': '1e999'},
+      );
+      expect(json, {
+        'a': 'Infinity',
+        'b': ['-Infinity'],
+        'c': 'Infinity',
+        'd': 1.5,
+      });
+      expect(() => jsonEncode(json), returnsNormally);
+    });
+
+    test('no-break spaces separate tokens; raw control characters inside '
+        'strings are escaped', () {
+      expect(parseLenientJson('{\u00a0"a":\u00a01,\u00a0"b": "x\ty\nz"}'), {
+        'a': 1,
+        'b': 'x\ty\nz',
+      });
     });
 
     test('an unresolved bare variable becomes null', () {

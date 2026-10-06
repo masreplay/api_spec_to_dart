@@ -10,7 +10,10 @@ import 'variables.dart';
 /// - a bare `{{name}}` takes the variable's text as JSON when that is a JSON
 ///   value (a string otherwise), and `null` when it is unresolved;
 /// - inside strings, `{{name}}` is substituted and unresolved references stay
-///   as written.
+///   as written; raw control characters are escaped;
+/// - no-break spaces count as whitespace;
+/// - numbers out of the double range become text (`'Infinity'`), so the
+///   result can be encoded again.
 Object? parseLenientJson(
   String text, [
   Map<String, String> variables = const {},
@@ -56,7 +59,7 @@ Object? parseLenientJson(
       case '{' || '[':
         emit(char);
         depth++;
-      case ' ' || '\t' || '\r' || '\n' || '﻿':
+      case ' ' || '\t' || '\r' || '\n' || '﻿' || '\u00a0':
         break;
       default:
         emit(char);
@@ -64,7 +67,7 @@ Object? parseLenientJson(
     i++;
   }
   try {
-    return jsonDecode(out.toString());
+    return jsonDecode(out.toString(), reviver: nonFiniteAsText);
   } on FormatException {
     return null;
   }
@@ -83,13 +86,23 @@ int _stringEnd(String text, int start) {
   return text.length;
 }
 
+/// A `jsonDecode` reviver that turns numbers out of the double range
+/// (`1e999`, decoded as infinity) into text, which `jsonEncode` accepts.
+Object? nonFiniteAsText(Object? key, Object? value) =>
+    value is double && !value.isFinite ? '$value' : value;
+
 String _substituteInString(String content, Map<String, String> variables) =>
-    content.replaceAllMapped(variableReference, (m) {
-      final value = resolveVariable(m[1]!, variables);
-      if (value == null) return m[0]!;
-      final quoted = jsonEncode(value);
-      return quoted.substring(1, quoted.length - 1);
-    });
+    content
+        .replaceAllMapped(
+          RegExp(r'[\x00-\x1f]'),
+          (m) => '\\u${m[0]!.codeUnitAt(0).toRadixString(16).padLeft(4, '0')}',
+        )
+        .replaceAllMapped(variableReference, (m) {
+          final value = resolveVariable(m[1]!, variables);
+          if (value == null) return m[0]!;
+          final quoted = jsonEncode(value);
+          return quoted.substring(1, quoted.length - 1);
+        });
 
 /// The text of a Postman `description` (a string or `{content}`), or null.
 String? descriptionText(Object? description) => switch (description) {
