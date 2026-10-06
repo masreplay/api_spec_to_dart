@@ -211,7 +211,7 @@ class _Converter {
     }
     return {
       'openapi': v32 ? '3.2.0' : '3.1.1',
-      'info': _info(collection['info']),
+      'info': _info(collection['info'], secrets),
       if (origin != null && origin.isNotEmpty) 'servers': [_servers[origin]],
       if (security != null && security.isNotEmpty) 'security': security,
       if (_tagDescriptions.isNotEmpty)
@@ -255,7 +255,7 @@ class _Converter {
         if (_tag(path) case final tag?) {
           _tagDescriptions.putIfAbsent(
             tag,
-            () => descriptionText(item['description']),
+            () => secrets.redact(descriptionText(item['description'])),
           );
         }
         _walk(
@@ -315,9 +315,10 @@ class _Converter {
       path: template.path,
       origin: url.origin,
       summary: name,
-      description:
-          descriptionText(request['description']) ??
-          descriptionText(item['description']),
+      description: secrets.redact(
+        descriptionText(request['description']) ??
+            descriptionText(item['description']),
+      ),
       operationId: _operationId(name, method, template.path),
       tag: _tag(folders),
       security: schemes.requirement(
@@ -392,14 +393,19 @@ String _urlText(Object? url) => switch (url) {
   _ => '',
 };
 
+/// Whether [url] has any text, host or path (blank ones do not count).
 bool _hasUrl(Object? url) =>
     _urlText(url).trim().isNotEmpty ||
-    url is Map && (url['host'] != null || url['path'] != null);
+    url is Map && (_filled(url['host']) || _filled(url['path']));
+
+bool _filled(Object? part) =>
+    (part is List ? part.join() : '${part ?? ''}').trim().isNotEmpty;
 
 /// The request [url] to convert. A URL that is one variable stays as it is
 /// when [isServer] says the variable is a server (path `/`), else it is
-/// replaced by the variable's endpoint URL. Null when there is no URL, or
-/// that variable has no value (the path cannot be known).
+/// replaced by the variable's endpoint URL (its value, not resolved
+/// further). Null when there is no URL, or that variable has no value (the
+/// path cannot be known).
 Object? _requestUrl(
   Object? url,
   Map<String, String> variables,
@@ -408,7 +414,9 @@ Object? _requestUrl(
   if (!_hasUrl(url)) return null;
   final match = _variableUrl.firstMatch(_urlText(url));
   if (match == null || isServer(match[1]!)) return url;
-  final value = resolveVariable(match[1]!, variables)?.trim() ?? '';
+  // One level only: the value's own variables stay a server variable and
+  // path parameters.
+  final value = variables[match[1]!]?.trim() ?? '';
   if (value.isEmpty) return null;
   final resolved = '$value${match[2] ?? ''}';
   return url is Map
@@ -489,12 +497,12 @@ Map<String, Object?> _server(
   };
 }
 
-Map<String, Object?> _info(Object? info) {
+Map<String, Object?> _info(Object? info, Secrets secrets) {
   final map = info is Map ? info : const {};
   final name = map['name'];
   return {
     'title': name is String && name.isNotEmpty ? name : 'Postman collection',
-    'description': ?descriptionText(map['description']),
+    'description': ?secrets.redact(descriptionText(map['description'])),
     'version': switch (map['version']) {
       final String version when version.isNotEmpty => version,
       final num version => '$version',
@@ -607,7 +615,7 @@ class _Operation {
     String type = 'string',
   ]) => _parameters.putIfAbsent(
     '$location ${location == 'header' ? name.toLowerCase() : name}',
-    () => _Parameter(name, location, type),
+    () => _Parameter(name, location, type, secrets),
   );
 
   /// Adds the parameters and body of a request named [name]. Its path
@@ -773,16 +781,18 @@ class _Operation {
 }
 
 class _Parameter {
-  _Parameter(this.name, this.location, this.type);
+  _Parameter(this.name, this.location, this.type, this.secrets);
 
   final String name;
   final String location;
   final String type;
+  final Secrets secrets;
   String? description;
   bool array = false;
   Object? example;
 
-  void describe(Object? text) => description ??= descriptionText(text);
+  void describe(Object? text) =>
+      description ??= secrets.redact(descriptionText(text));
 
   /// Keeps the first example; path examples take their schema's type.
   void sample(Object? value) => example ??= switch ((type, value)) {

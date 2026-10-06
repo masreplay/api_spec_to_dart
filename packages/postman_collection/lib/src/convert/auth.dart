@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'json_lenient.dart';
 import 'url.dart';
 import 'variables.dart';
 
@@ -30,31 +31,33 @@ const _schemaTypes = {
   'ntlm',
 };
 
-/// Auth attributes (of any type) that configure a flow and never hold a
-/// secret. Every other attribute's value is a secret. Only apikey `key`/`in`
-/// and oauth2 grant type, URLs and scopes are ever read.
-const _configuration = {
-  // apikey
-  'key', 'in',
-  // oauth2
-  'grant_type', 'authUrl', 'accessTokenUrl', 'refreshTokenUrl', 'scope',
-  'redirect_uri', 'audience', 'resource', 'tokenName', 'headerPrefix',
-  'addTokenTo', 'client_authentication', 'tokenType', 'challengeAlgorithm',
-  // digest, oauth1, hawk, jwt, awsv4, ntlm, edgegrid settings
-  'algorithm', 'qop', 'realm', 'nonceCount', 'signatureMethod', 'version',
-  'region', 'service', 'domain', 'workstation', 'baseURL', 'headersToSign',
-  'maxBodySize', 'queryParamKey', 'header', 'payload',
-};
+/// Auth attributes whose values are credentials: passwords, tokens,
+/// secrets, private keys, hawk `authKey`, PKCE `code_verifier` (plus apikey
+/// `value`). Identifiers (usernames, client ids, consumer keys, `authId`,
+/// access key ids, realms, nonces) and flow settings are not secrets.
+final _credentialAttribute = RegExp(
+  r'token$|passw|secret|private_?key|^authKey$|^code_verifier$',
+  caseSensitive: false,
+);
+
+/// Headers whose literal values carry a credential after the scheme word.
+final _authorizationHeader = RegExp('authori[sz]ation', caseSensitive: false);
 
 /// Names (of parameters, headers, JSON keys) and values that carry
 /// credentials outside auth: tokens, keys, sessions, cookies, signatures.
 final _credentialName = RegExp(
   'token|jwt|secret|passw|api[-_]?key|session|signature|credential|cookie|'
-  'authoriz|auth(?!or)',
+  'authori[sz]|auth(?!or)',
   caseSensitive: false,
 );
 final _credentialValue = RegExp(
   r'^(bearer |basic |ey[\w-]+\.[\w-]+\.)',
+  caseSensitive: false,
+);
+
+/// [_credentialValue] anywhere in a text (a bearer token or a JWT).
+final _credentialInText = RegExp(
+  r'\bbearer\s+\S|\bey[\w-]+\.[\w-]+\.',
   caseSensitive: false,
 );
 
@@ -64,13 +67,21 @@ class Secrets {
 
   Secrets._(this.variables, this.values);
 
-  /// The secrets of [collection]: variables used by secret auth attributes
-  /// (at every level, saved examples included) or typed `secret`, and the
-  /// literal values of those attributes and variables.
+  /// The secrets of [collection]: variables used by credential auth
+  /// attributes (at every level, saved examples included), by literal
+  /// Authorization-like or Cookie headers, typed `secret`, or referenced by
+  /// another secret variable; the literal values of those attributes and
+  /// headers, and the raw values of those variables.
   factory Secrets.of(Object? collection) {
     final variables = <String>{};
     final values = <String>{};
     final variableLists = <List<Object?>>[];
+    void secret(String? text) {
+      if (text == null || text.isEmpty) return;
+      values.add(text);
+      variables.addAll(variableReference.allMatches(text).map((m) => m[1]!));
+    }
+
     void walk(Object? node) {
       if (node is List) {
         node.forEach(walk);
@@ -83,14 +94,23 @@ class Secrets {
           for (final MapEntry(:key, :value) in _attributes(
             attributes,
           ).entries) {
-            if (_configuration.contains(key)) continue;
-            if (_text(value) case final text?) {
-              values.add(text);
-              variables.addAll(
-                variableReference.allMatches(text).map((m) => m[1]!),
-              );
+            if (_credentialAttribute.hasMatch(key) ||
+                (type == 'apikey' && key == 'value')) {
+              secret(_text(value));
             }
           }
+        }
+      }
+      for (final header in headerEntries(node['header'])) {
+        final (key, value) = ('${header['key']}', header['value']);
+        if (value is! String) continue;
+        if (key.toLowerCase() == 'cookie') {
+          for (final cookie in value.split(';')) {
+            secret(cookie.substring(cookie.indexOf('=') + 1).trim());
+          }
+        } else if (_authorizationHeader.hasMatch(key)) {
+          // `Bearer x`, `Basic x`: the credential follows the scheme.
+          secret(value.trim().replaceFirst(RegExp(r'^\S+\s+'), ''));
         }
       }
       if (node['variable'] case final List<Object?> list) {
@@ -100,13 +120,24 @@ class Secrets {
     }
 
     walk(collection);
+    final variableValues = <String, List<String>>{};
     for (final variable in variableLists.expand((list) => list)) {
       if (variable is! Map) continue;
       final name = variable['key'] ?? variable['id'];
       if (name is! String) continue;
       if (variable['type'] == 'secret') variables.add(name);
-      if (variables.contains(name)) {
-        if (_text(variable['value']) case final text?) values.add(text);
+      if (_text(variable['value']) case final text?) {
+        (variableValues[name] ??= []).add(text);
+      }
+    }
+    // Secret variables make the variables they reference secret too.
+    final pending = [...variables];
+    while (pending.isNotEmpty) {
+      for (final text in variableValues[pending.removeLast()] ?? const []) {
+        values.add(text);
+        for (final match in variableReference.allMatches(text)) {
+          if (variables.add(match[1]!)) pending.add(match[1]!);
+        }
       }
     }
     return Secrets._(variables, values);
@@ -128,6 +159,25 @@ class Secrets {
         (secret) => secret.length < 4 ? text == secret : text.contains(secret),
       );
 
+  /// [leaks] for a free text example: a bearer token or JWT anywhere in it
+  /// counts too.
+  bool leaksText(String text) =>
+      _credentialInText.hasMatch(text) || leaks(text);
+
+  /// [text] (a description) with every literal secret replaced by `***`.
+  String? redact(String? text) {
+    if (text == null) return null;
+    var redacted = text;
+    for (final secret in values.toList()..sort((a, b) => b.length - a.length)) {
+      if (secret.length >= 4) {
+        redacted = redacted.replaceAll(secret, '***');
+      } else if (redacted == secret) {
+        return '***';
+      }
+    }
+    return redacted;
+  }
+
   /// Whether the example [text] of [name] (a parameter, header or JSON key)
   /// would leak a credential.
   bool hides(String name, String text) =>
@@ -139,17 +189,20 @@ class Secrets {
   Object? scrub(Object? example) => switch (example) {
     final Map<Object?, Object?> map => {
       for (final MapEntry(:key, :value) in map.entries)
-        if (!_credentialName.hasMatch('$key') &&
-            !(value is String && leaks(value)))
+        if (!_credentialName.hasMatch('$key') && !_leaksScalar(value))
           key: scrub(value),
     },
     final List<Object?> list => [
       for (final item in list)
-        if (!(item is String && leaks(item))) scrub(item),
+        if (!_leaksScalar(item)) scrub(item),
     ],
     final String text => withoutUserinfo(text),
     _ => example,
   };
+
+  /// Whether a string, or a number by its text, leaks a credential.
+  bool _leaksScalar(Object? value) =>
+      (value is String || value is num) && leaks('$value');
 }
 
 /// A non-empty string or number as text.
