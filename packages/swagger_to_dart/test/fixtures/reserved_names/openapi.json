@@ -29,6 +29,16 @@
         }
       }
     },
+    "/pets": {
+      "get": {
+        "tags": ["core"],
+        "operationId": "getPet",
+        "responses": {
+          "200": { "description": "OK", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Pet" } } } },
+          "201": { "description": "OK", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/PetDog" } } } }
+        }
+      }
+    },
     "/things": {
       "put": {
         "tags": ["core"],
@@ -58,7 +68,11 @@
       "Method": { "type": "string" },
       "Headers": { "type": "object", "properties": { "accept": { "type": "string" } } },
       "List": { "type": "object", "properties": { "items": { "type": "array", "items": { "type": "string" } } } },
-      "Error": { "type": "object", "properties": { "code": { "type": "integer" } } }
+      "Error": { "type": "object", "properties": { "code": { "type": "integer" } } },
+      "Dog": { "type": "object", "properties": { "bark": { "type": "string" } }, "required": ["bark"] },
+      "Cat": { "type": "object", "properties": { "meow": { "type": "string" } }, "required": ["meow"] },
+      "Pet": { "oneOf": [{ "$ref": "#/components/schemas/Dog" }, { "$ref": "#/components/schemas/Cat" }] },
+      "PetDog": { "type": "object", "properties": { "x": { "type": "string" } } }
     }
   }
 }

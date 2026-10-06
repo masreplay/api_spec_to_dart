@@ -72,6 +72,35 @@ abstract class CoreClient {
       },
     },
   });
+  @GET('/pets')
+  Future<HttpResponse<Pet>> getPet({
+    @CancelRequest() CancelToken? cancelToken,
+    @SendProgress() ProgressCallback? onSendProgress,
+    @ReceiveProgress() ProgressCallback? onReceiveProgress,
+    @Extras()
+    Map<String, dynamic>? extras = const {
+      'tags': ['core'],
+      'operationId': 'getPet',
+      'responses': {
+        '200': {
+          'description': 'OK',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/Pet'},
+            },
+          },
+        },
+        '201': {
+          'description': 'OK',
+          'content': {
+            'application/json': {
+              'schema': {'\$ref': '#/components/schemas/PetDog'},
+            },
+          },
+        },
+      },
+    },
+  });
   @PUT('/things')
   Future<HttpResponse<List2>> putThings({
     @Body() required Headers2 requestBody,
