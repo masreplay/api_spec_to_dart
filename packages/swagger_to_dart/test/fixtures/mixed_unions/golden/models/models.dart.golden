@@ -7,6 +7,8 @@ export 'cat.dart';
 export 'url_object_value_host.dart';
 export 'url_object_value.dart';
 export 'url.dart';
+export 'free.dart';
+export 'pet_or_free.dart';
 export 'request_owner.dart';
 export 'request_description_object_value.dart';
 export 'request_description.dart';
